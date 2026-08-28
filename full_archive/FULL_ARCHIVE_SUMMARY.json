@@ -1,0 +1,11 @@
+{
+  "schema": "V270_FULL_ARCHIVE_PARTS_V1",
+  "archive_file_name": "v2.7.0-full-workspace-20260828.tar.zst",
+  "archive_bytes": 4939633376,
+  "archive_sha256": "2B97102D44F9229D253A546C78E2B08E4312E9F27DA7B08EFD3F9E94C68AE027",
+  "part_bytes_target": 1572864000,
+  "part_count": 4,
+  "parts_total_bytes": 4939633376,
+  "reconstruction_windows": "copy /b v2.7.0-full-workspace-20260828.tar.zst.part-001+v2.7.0-full-workspace-20260828.tar.zst.part-002+v2.7.0-full-workspace-20260828.tar.zst.part-003+v2.7.0-full-workspace-20260828.tar.zst.part-004 v2.7.0-full-workspace-20260828.tar.zst",
+  "reconstruction_posix": "cat v2.7.0-full-workspace-20260828.tar.zst.part-* > v2.7.0-full-workspace-20260828.tar.zst"
+}

@@ -10,9 +10,14 @@
 
 ## 使用 Git LFS 的内容
 
-- `full_archive/v2.7.0-full-workspace-20260828.tar.zst`
+- `full_archive/v2.7.0-full-workspace-20260828.tar.zst.part-001`
+- `full_archive/v2.7.0-full-workspace-20260828.tar.zst.part-002`
+- `full_archive/v2.7.0-full-workspace-20260828.tar.zst.part-003`
+- `full_archive/v2.7.0-full-workspace-20260828.tar.zst.part-004`
+- `full_archive/FULL_ARCHIVE_PARTS.csv`
+- `full_archive/FULL_ARCHIVE_SUMMARY.json`
 
-它保存原始 v2.7.0 工作区全内容，包括普通 Git 不适合承载的大量 PNG、PDF、Lua/LUC cache 和重复生成物。
+四个 LFS 分卷按序拼接后恢复 `v2.7.0-full-workspace-20260828.tar.zst`。该归档保存原始 v2.7.0 工作区全内容，包括普通 Git 不适合承载的大量 PNG、PDF、Lua/LUC cache 和重复生成物。完整归档为 4,939,633,376 bytes、211,202 个 tar 条目，SHA-256 为 `2B97102D44F9229D253A546C78E2B08E4312E9F27DA7B08EFD3F9E94C68AE027`。
 
 ## 为什么需要分层
 
@@ -25,4 +30,3 @@
 ## 时间一致性
 
 本归档生成期间支线仍可能返回新 handoff。`docs/CURRENT_STATUS_SNAPSHOT.md` 明确记录了中央 revision 550 与归档中后到事实的区别。
-

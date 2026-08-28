@@ -26,7 +26,7 @@
 - 关键视觉证据：128 个文件，约 11 MB。
 - 完整路径级清单：覆盖全部原始文件，包含路径、大小、时间、扩展名、是否进入正文包及排除原因。
 - 本地 Git 历史：通过 `project-history.bundle` 保存全部本地分支和提交。
-- 全量原始内容：放入 `full_archive/` 的压缩归档，并使用 Git LFS 管理。
+- 全量原始内容：4.60 GiB 的压缩归档拆为 4 个分卷，放入 `full_archive/` 并使用 Git LFS 管理；重组后的 SHA-256 为 `2B97102D44F9229D253A546C78E2B08E4312E9F27DA7B08EFD3F9E94C68AE027`。
 
 ## 重要说明
 
@@ -42,12 +42,21 @@ docs/                       耗时分析、优化建议、时间线、模型提�
 inventory/                  全量文件清单与体积统计
 analysis_payload/           可直接供模型搜索和阅读的过程/源码正文
 selected_visual_evidence/   当前关键视觉证据与官方 R116 PDF
-full_archive/               全量压缩归档（Git LFS）
+full_archive/               全量压缩归档分卷、逐卷哈希和重组说明（Git LFS）
 tools/                      构建本归档的可复现脚本
 project-history.bundle      全部本地 Git 分支历史
 ```
 
+## 恢复全量归档
+
+先按 `full_archive/FULL_ARCHIVE_PARTS.csv` 核对 4 个分卷的大小与 SHA-256，再按文件名顺序拼接：
+
+```powershell
+cmd /c copy /b full_archive\v2.7.0-full-workspace-20260828.tar.zst.part-001+full_archive\v2.7.0-full-workspace-20260828.tar.zst.part-002+full_archive\v2.7.0-full-workspace-20260828.tar.zst.part-003+full_archive\v2.7.0-full-workspace-20260828.tar.zst.part-004 full_archive\v2.7.0-full-workspace-20260828.tar.zst
+```
+
+重组文件应为 4,939,633,376 bytes，且 SHA-256 应与上述值一致。随后可用 `tar -tf` 校验并用 `tar -xf` 解包。
+
 ## 数据安全
 
 归档前对常见 GitHub PAT、私钥、API key、client secret、password 赋值模式进行了路径级扫描，候选文件数为 0。仓库必须保持 private；不要改为 public。
-
