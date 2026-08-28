@@ -1,0 +1,11 @@
+audit_id,source_group,source_locator,declared_pt,effective_pt,scale_chain,same_role_check,R168_manual_decision,note
+F001,TIKZ_BASE,"tikzset slfig style",9.2,9.2,none,N/A,PASS,"Base declaration exists; all visible nodes are covered by explicit every-node or local overrides; no resizebox/scalebox/transform-shape."
+F002,EVERY_NODE,"tikzpicture every node",9.4,9.4,none,PASS,PASS,"Default visible node text is internally consistent at 9.4pt; no accumulated graphics scaling."
+F003,HEADING,"node at (-4.275,1.75)",9.9,9.9,none,PASS,PASS,"Blue bold heading is a deliberate hierarchy step, visually balanced and fully readable."
+F004,SEQUENCE_DIGITS,"c1/c2/c3 nodes",9.4,9.4,none,PASS,PASS,"All eighteen sequence digits inherit the same 9.4pt declaration; circle geometry does not scale text."
+F005,COUNT_FORMULA,"countbox node",9.4,9.4,none,PASS,PASS,"Count vector formula uses the common 9.4pt node size; natural subscripts only."
+F006,ARROW_LABEL,"flow label node",8.8,8.8,none,PASS,PASS,"Below legacy 9.5pt source gate, but R168 makes this advisory; actual label is clear, uncrowded, and not visually weak."
+F007,SUPPORT_FORMULA,"node at (1.65,-.90)",9.2,9.2,none,PASS,PASS,"Below legacy 9.5pt source gate only; actual formula remains sharp and balanced under R168."
+F008,WARNING_TEXT,"warning node local font",9.2,9.2,none,PASS,PASS,"Below legacy numeric source gate only; red-card message remains comfortably readable and visually proportional."
+F009,COEFFICIENT_LABEL,"coefficient node first line",9.4,9.4,none,PASS,PASS,"First line inherits 9.4pt and aligns naturally with the formula line and gray card."
+F010,COEFFICIENT_FORMULA,"coefficient node second line",9.4,9.4,none,PASS,PASS,"Formula base is 9.4pt with a natural k subscript; no manual scriptstyle or scale reduction."

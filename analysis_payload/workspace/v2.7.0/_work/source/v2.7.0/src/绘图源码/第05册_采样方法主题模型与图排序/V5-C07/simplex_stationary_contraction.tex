@@ -1,0 +1,45 @@
+% v2.3.1 figure UID: FIG-P720-01
+% v2.6.0 reverse redraw for FIG-P720-01: preserve all 19 coordinates and 15 directed iterates while opening the stationary-point and formula-card layout.
+\tikzset{slfig-FIG-P720-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P720-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  patha/.style={draw=SLDeepBlue,line width=0.80pt},
+  pathb/.style={draw=SLMidBlue,line width=0.80pt,dashed},
+  pathc/.style={draw=SLTextGray,line width=0.78pt,dash dot},
+  alt={对象—关系—结论：三个真实初值在同一三状态概率单纯形上按固定PageRank算子迭代；三条路径的步长逐次缩短并收敛到唯一星形平稳点，同心收缩区与一范数不等式共同说明压缩率不超过d。}]
+\coordinate (e1) at (-5.8,-1.70); \coordinate (e2) at (-1.2,-1.70); \coordinate (e3) at (-3.5,2.28);
+\fill[fill=SLSoftBlue,opacity=.04] (e1)--(e2)--(e3)--cycle;
+\draw[draw=SLDeepBlue,line width=0.94pt] (e1)--(e2)--(e3)--cycle;
+\node[below=1.2mm] at (e1) {$e_1$}; \node[below=1.2mm] at (e2) {$e_2$}; \node[above=1.2mm] at (e3) {$e_3$};
+\coordinate (star) at (-3.313,0.339);
+\draw[draw=SLRuleGray,line width=0.50pt,fill=SLSoftBlue,fill opacity=.030] (star) circle (0.78);
+\draw[draw=SLRuleGray,line width=0.50pt,fill=SLSoftBlue,fill opacity=.030] (star) circle (0.42);
+
+\coordinate (a0) at (-5.110,-1.302); \coordinate (a1) at (-2.764,0.263); \coordinate (a2) at (-3.414,0.554); \coordinate (a3) at (-3.318,0.232); \coordinate (a4) at (-3.300,0.373);
+\coordinate (b0) at (-1.890,-1.302); \coordinate (b1) at (-3.408,1.378); \coordinate (b2) at (-3.414,-0.041); \coordinate (b3) at (-3.249,0.430); \coordinate (b4) at (-3.336,0.330);
+\coordinate (c0) at (-3.500,1.484); \coordinate (c1) at (-3.408,-0.108); \coordinate (c2) at (-3.242,0.455); \coordinate (c3) at (-3.341,0.324); \coordinate (c4) at (-3.306,0.334);
+\foreach \s/\t/\al/\aw in {a0/a1/1.65mm/1.18mm,a1/a2/1.40mm/1.00mm,a2/a3/1.05mm/.78mm,a3/a4/.65mm/.48mm,a4/star/.35mm/.26mm}{\draw[patha,-{Stealth[length=\al,width=\aw]}] (\s)--(\t);}
+\foreach \s/\t/\al/\aw in {b0/b1/1.65mm/1.18mm,b1/b2/1.45mm/1.04mm,b2/b3/1.10mm/.80mm,b3/b4/.60mm/.44mm,b4/star/.30mm/.23mm}{\draw[pathb,-{Stealth[length=\al,width=\aw]}] (\s)--(\t);}
+\foreach \s/\t/\al/\aw in {c0/c1/1.55mm/1.10mm,c1/c2/1.25mm/.90mm,c2/c3/.72mm/.52mm,c3/c4/.35mm/.26mm,c4/star/.20mm/.16mm}{\draw[pathc,-{Stealth[length=\al,width=\aw]}] (\s)--(\t);}
+\node[draw=SLDeepBlue,rectangle,minimum size=3.4mm,inner sep=0pt] at (a0) {};
+\node[draw=SLMidBlue,circle,minimum size=3.4mm,inner sep=0pt] at (b0) {};
+\node[draw=SLTextGray,regular polygon,regular polygon sides=3,minimum size=4.2mm,inner sep=0pt] at (c0) {};
+\node[star,star points=5,draw=SLDeepBlue,fill=SLDeepBlue,text=white,minimum size=6.0mm,inner sep=0pt] at (star) {};
+\node[text=white,inner sep=0pt] at (star) {$r^*$};
+\node[text=SLTextGray,font=\fontsize{8.8pt}{10.5pt}\selectfont] at (-3.5,-2.56)
+  {三条路径均由同一$G$的真实数值迭代生成};
+
+\node[draw=SLRuleGray,rounded corners=3pt,fill=white,text width=78mm,minimum height=42mm,
+  inner xsep=2.0mm,inner ysep=2.0mm,align=left] at (4.00,0.16)
+  {$T(x)=Gx=dSx+(1-d)v$，$0\le d<1$。\\[4.5pt]
+   $\displaystyle \|Gx-Gy\|_1\le d\|x-y\|_1$\\[4.5pt]
+   $\displaystyle \|r^{(t)}-r^*\|_1\le d^t\|r^{(0)}-r^*\|_1$。\\[4.5pt]
+   初值形状不同，终点唯一；同心区域表示到$r^*$的距离持续收缩。};
+\end{tikzpicture}
+\caption{阻尼PageRank在概率单纯形上的压缩迭代与唯一平稳点}
+\label{fig:V5-C07-simplex-contraction}
+\end{figure}

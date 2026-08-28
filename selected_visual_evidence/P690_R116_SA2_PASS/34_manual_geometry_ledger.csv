@@ -1,0 +1,15 @@
+geometry_id,gate,manual_verdict,post_observation_note
+GE001,bilateral component alignment,PASS,Corresponding left/right nodes and fixed-parameter boxes align cleanly without obvious imbalance.
+GE002,left coupling topology,PASS,"θ_m—z_mn is undirected and boundary-to-boundary, matching a coupled posterior relation."
+GE003,left observed-word arrow,PASS,w_mn→z_mn direction is leftward and ends at the target boundary.
+GE004,left fixed-parameter arrow,PASS,φ→z_mn direction is upward and ends at the target boundary.
+GE005,mean-field cut corridor,PASS,Two separated cut slashes and two edge stubs create a visible geometric break between factor nodes.
+GE006,right observed-word arrow,PASS,w_mn→q(z_mn) direction is leftward and ends at the factor boundary.
+GE007,right fixed-parameter arrow,PASS,φ→q(z_mn) direction is upward and ends at the factor boundary.
+GE008,approximation transition,PASS,The transition arrow reads uniquely from true posterior (left) to mean-field family (right).
+GE009,edge endpoint discipline,PASS,All node-related edges and arrows stop at node/box boundaries; none crosses label ink.
+GE010,left panel containment,PASS,Left objects are enclosed with visible padding and no border crossings except the designed transition contact.
+GE011,right panel containment,PASS,Right objects are enclosed with visible padding and no border crossings except the designed transition contact.
+GE012,label clearance,PASS,"Titles, transition label, formulas, and embedded labels are mutually legible and unobstructed."
+GE013,summary and caption spacing,PASS,"The conclusion callout and caption remain separated, aligned, and unclipped."
+GE014,page integration,PASS,"Figure, caption, adjacent self-check, proposition block, header, footer, and margins form a balanced page."

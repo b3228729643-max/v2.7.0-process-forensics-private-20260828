@@ -1,0 +1,1011 @@
+% STAGE10-CHAPTER: V2-C02
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; rigorous_modeling; mathematical_development; multiple_perspectives; algorithm_engineering; examples_exercises; closure_self_check
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V2-C02-CH01}; CH-02=\label{struct:V2-C02-CH02}; CH-03=\label{struct:V2-C02-CH03}; CH-04=\label{struct:V2-C02-CH04}; CH-05=\label{struct:V2-C02-CH05}; CH-06=\label{struct:V2-C02-CH06}; CH-07=\label{struct:V2-C02-CH07}; CH-08=\label{struct:V2-C02-CH08}; CH-09=\label{struct:V2-C02-CH09}; CH-10=\label{struct:V2-C02-CH10}; CH-11=\label{struct:V2-C02-CH11}; CH-12=\label{struct:V2-C02-CH12}; CH-13=\label{struct:V2-C02-CH13}; CH-14=\label{struct:V2-C02-CH14}; CH-15=\label{struct:V2-C02-CH15}; CH-16=\label{struct:V2-C02-CH16}; CH-17=\label{struct:V2-C02-CH17}; CH-18=\label{struct:V2-C02-CH18}; CH-19=\label{struct:V2-C02-CH19}; CH-20=\label{struct:V2-C02-CH20}; CH-21=\label{struct:V2-C02-CH21}; CH-22=\label{struct:V2-C02-CH22}; CH-23=\label{struct:V2-C02-CH23}; CH-24=\label{struct:V2-C02-CH24}; CH-25=\label{struct:V2-C02-CH25}; CH-26=\label{struct:V2-C02-CH26}; CH-27=\label{struct:V2-C02-CH27}; CH-28=\label{struct:V2-C02-CH28}; CH-29=\label{struct:V2-C02-CH29}; CH-30=\label{struct:V2-C02-CH30}; CH-31=\label{struct:V2-C02-CH31}; CH-32=\label{struct:V2-C02-CH32}; CH-33=\label{struct:V2-C02-CH33}; CH-34=\label{struct:V2-C02-CH34}; CH-35=\label{struct:V2-C02-CH35}; CH-36=\label{struct:V2-C02-CH36}; CH-37=\label{struct:V2-C02-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V2-C02-lp-balls -> SLM-03-02-003
+% FIGURE-KNOWLEDGE-MAP: fig:V2-C02-kd-tree -> SLM-03-03-001
+\chapter{\kNN{}法}\label{chap:V2-C02}
+\index{k近邻法@\kNN{} 法}
+
+\SLChapterOpening{从距离度量直达局部投票、回归与kd树检索}{邻域选择怎样共同决定预测并影响搜索代价}{能够计算邻域预测、构造kd树并执行带剪枝的查询}{范数、排序、条件风险与递归数据结构}{若距离尺度、并列或剪枝依据不清，回看度量与搜索两节}
+
+\phantomsection\label{struct:V2-C02-CH01}
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 严格定义$L_p$距离、\kNN{}集合和多数表决，并解释距离、$k$值与决策规则三要素；
+  \item 能够从局部0--1经验风险推导多数表决，并把方法扩展到多类分类与回归；
+  \item 能够手工构造平衡kd树，执行带回溯与剪枝的精确最近邻搜索，并分析复杂度退化条件。
+\end{itemize}}
+
+\phantomsection\label{struct:V2-C02-CH02}
+\begin{prerequisitebox}
+需要掌握向量坐标、绝对值、求和、$L_p$范数、指示函数、有限集合上的最小化以及二叉树。还应理解训练样本与查询样本的区别，并会计算分类0--1损失和回归平方损失。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V2-C02-CH03}
+% KNOWLEDGE-PLAN: KN-V2-C13-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}\kNN{}法先修自检固定核验“能否分别计算$(1,2)$与$(4,6)$的$L_1,L_2,L_\infty$距离”；请分别计算$(1,2)$与$(4,6)$的$L_1,L_2,L_\infty$距离并写出中间结果，再按“$L_1,L_2,L_\infty$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否分别计算$(1,2)$与$(4,6)$的$L_1,L_2,L_\infty$距离？
+  \item 能否用指示函数写出某类别在有限样本集合中的出现次数？
+  \item 能否说明二叉树节点的左子树、右子树和叶节点分别是什么？
+\end{enumerate}
+若有一项不能完成，请先回看范数与距离、经验风险和树结构；kd树搜索中的剪枝依赖这些基础。
+\end{precheckbox}
+
+\phantomsection\label{struct:V2-C02-CH04}
+\begin{dependencybox}
+向量范数 $\to$ 距离度量；距离与训练集 $\to$ 邻域；邻域标签计数 $\to$ 多数表决；局部同质性 $\to$ 分类与回归估计；坐标轴切分 $\to$ kd树；距离下界 $\to$ 回溯剪枝；维度升高 $\to$ 搜索效率退化。
+\end{dependencybox}
+
+% KNOWLEDGE-PLAN: KN-V2-C13-CONCEPT-001 L1
+\paragraph{读前自检：模型认识卡： 法。}\kNN{}模型卡给定查询$x\in\mathbb R^n$、带标签训练集、距离和$1\le k\le N$；请计算一个训练点到$x$的距离并更新最近邻集合，核对分类/回归输出类型与任务一致。\par
+
+\begin{keypointbox}[title=模型认识卡：\kNN{}法]
+\textbf{任务与输入：}分类或回归，查询$x\in\mathbb R^n$与带标签训练集。\quad
+\textbf{输出类型：}类别、实值或局部频率。\par
+\textbf{模型：}由距离$D$、近邻数$k$与聚合规则共同确定的局部预测器。\quad
+\textbf{策略：}最小化固定邻域上的局部经验损失。\quad
+\textbf{算法：}线性扫描或kd树维护$k$个最优候选。\par
+\textbf{预测：}分类投票、回归均值。\quad
+\textbf{关键假设与边界：}距离须表达任务相似性；kd树加速依赖低维、较平衡且分布不过度集中的数据。
+\end{keypointbox}
+
+\phantomsection\label{struct:V2-C02-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V2-C02
+\index[symbols]{t-eq-x-i-y-i-i-eq-1-n--s790fe57d015d@$T=\{(x_i,y_i)\}_{i=1}^{N}$：含$N$个样本的训练集}
+\index[symbols]{minus-mathcaly-minus-eq-c-1-minus-ldots-minus-c-c--sac92bcf2509f@$\mathcal Y=\{c_1,\ldots,c_C\}$：分类标签空间}
+\index[symbols]{k--s8aa6406e231e@$k$：用于预测的近邻个数}
+\index[symbols]{p--scd94a8d6f5e8@$p$：本章$L_p$距离的阶数，不表示概率}
+\index[symbols]{n-k-x--s7fef01830cd5@$N_k(x)$：查询$x$的$k$个最近训练样本}
+\index[symbols]{minus-ind-minus-minus-cdot-minus--sc6bbd4e78afe@$\ind(\cdot)$：条件成立取1，否则取0的指示函数}
+\index[symbols]{n-c-x--s8ad4dee00433@$n_c(x)$：邻域中类别$c$的样本数}
+\index[symbols]{a-h--s62279fc4d789@$a,h$：kd树切分轴与节点深度}
+\index[symbols]{r--scd440d94d48f@$r$：本章近邻搜索的当前最优距离或候选半径}
+% STAGE19-SYMBOL-INDEX-END: V2-C02
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$T=\{(x_i,y_i)\}_{i=1}^{N}$ & $x_i\in\R^n$ & 含$N$个样本的训练集\\
+$\mathcal Y=\{c_1,\ldots,c_C\}$ & 有限集合 & 分类标签空间\\
+$k$ & $\{1,\ldots,N\}$ & 用于预测的近邻个数\\
+$p$ & $[1,\infty]$ & $L_p$距离的阶数\\
+$N_k(x)$ & $k$元索引集合 & 查询$x$的$k$个最近训练样本\\
+$\ind(\cdot)$ & $\{0,1\}$ & 条件成立取1，否则取0的指示函数\\
+$n_c(x)$ & $\{0,\ldots,k\}$ & 邻域中类别$c$的样本数\\
+$a,h$ & $\{1,\ldots,n\}$、非负整数 & kd树切分轴与节点深度\\
+$r$ & 非负实数 & 搜索过程中当前最优距离或候选半径\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{距离度量、$k$值与分类决策}{sec:V2-C02-S01}
+\phantomsection\label{struct:V2-C02-CH06}
+\knowledgeanchor{SLM-03-00-001}{k近邻法@\kNN{} 法}
+\kNN{}法没有先拟合一个有限维参数向量，而是在收到查询$x$时，从训练集中寻找距离最近的$k$个样本，再用其输出作局部决策。这种“先保存、后计算”的方式也称为惰性学习；训练阶段轻，预测成本取决于近邻搜索。
+
+% KNOWLEDGE-PLAN: KN-V2-C13-CONCEPT-003 L1
+\paragraph{读前自检：距离度量。}\kNN{}法中的距离度量把问题限定在“对$x_i,x_j\in\R^n$和$1\le p<\infty$”；请把$L_p(x_i,x_j)$展开一次并检查其类型或边界，检查是否得到当前定义中的$p$决定“近”的几何含义，必须在选择邻域前固定。\par
+
+\knowledgeanchor{SLM-03-02-003}{距离度量}
+\phantomsection\label{struct:V2-C02-CH07}
+% KNOWLEDGE-PLAN: KN-V2-C13-DEFINITION-001 L1
+\paragraph{读前自检：L p 距离。}在“对$x_i,x_j\in\R^n$和$1\le p<\infty$”成立时处理L p 距离：请把$L_p(x_i,x_j)$展开一次并检查其类型或边界，并以当前定义中的$p$决定“近”的几何含义，必须在选择邻域前固定判定结果。\par
+
+\begin{definition}[$L_p$距离]\label{def:V2-C02-lp}
+对$x_i,x_j\in\R^n$和$1\le p<\infty$，定义
+\[
+L_p(x_i,x_j)=\left(\sum_{\ell=1}^{n}\abs{x_i^{(\ell)}-x_j^{(\ell)}}^p\right)^{1/p}.
+\]
+当$p=1$时为曼哈顿距离，当$p=2$时为欧氏距离；极限情形
+\[
+L_\infty(x_i,x_j)=\max_{1\le\ell\le n}\abs{x_i^{(\ell)}-x_j^{(\ell)}}
+\]
+取各坐标差的最大值。这里的$p$决定“近”的几何含义，必须在选择邻域前固定。
+\end{definition}
+
+\knowledgeanchor{SLM-03-02-004}{k值的选择}
+\phantomsection\label{struct:V2-C02-CH09}
+\textbf{学习策略。}$k$很小时，预测由极少数样本决定，局部边界曲折、训练误差低而方差较大；$k$增大后，邻域跨越更广，决策更平滑、方差下降但偏差可能上升。当$k=N$时，每个查询的邻域都是全部训练样本，因此分类器确定地输出训练集总体多数类；若最高票并列，则按预先声明的稳定规则决胜。实践中应在训练数据内部用交叉验证选择$k$，不能反复查看测试集后调参。
+
+\knowledgeanchor{SLM-03-02-005}{分类决策规则}
+给定已经确定的$N_k(x)$，多数表决写成
+\[
+\widehat y(x)=\argmax_{c\in\mathcal Y}
+\sum_{i\in N_k(x)}\ind(y_i=c)
+=\argmax_{c\in\mathcal Y}n_c(x).
+\]
+若多个类别并列达到最大计数，$\argmax$是集合；算法必须预先规定稳定规则，例如按固定类别顺序选择，或在并列类中比较总距离。二分类常取奇数$k$减少计数平局，但多分类仍可能平局。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V2-C02-CH11}
+% CORE-DERIVATION-PLAN: KN-V2-C13-DERIVATION-001
+\SLKnowledgeBridge{把邻域分类转化为“错分数最少”等价于“票数最多”。}{固定邻域 $N_k(x)$、类别集合 $\mathcal Y$ 与候选常量类别 $c$。}{邻域非空；并列时必须预先声明稳定的决胜规则。}{先写局部风险 $R(c)=\sum_{i\in N_k(x)}\ind\{y_i\neq c\}$。}
+
+\begin{derivationgoalbox}
+证明固定邻域上的多数表决等价于最小化“用一个常量类别代表整个邻域”的0--1经验风险。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+固定查询$x$及其邻域$N_k(x)$。候选动作$c\in\mathcal Y$对邻域中的每个样本都预测同一类别，损失为$\ind(y_i\ne c)$。
+\end{derivationprepbox}
+\textbf{推导第1步：}候选类别$c$的局部经验风险为
+\[
+\widehat R_x(c)=\frac1k\sum_{i\in N_k(x)}\ind(y_i\ne c).
+\]
+\textbf{推导第2步：}对每个$i$，$\ind(y_i\ne c)=1-\ind(y_i=c)$，所以
+\[
+\widehat R_x(c)=1-\frac1k\sum_{i\in N_k(x)}\ind(y_i=c)
+=1-\frac{n_c(x)}{k}.
+\]
+\textbf{推导第3步：}常数$1$与正因子$1/k$不改变最优类别，故
+\[
+\argmin_{c\in\mathcal Y}\widehat R_x(c)
+=\argmax_{c\in\mathcal Y}n_c(x),
+\]
+这正是多数表决。推导只依赖已固定的邻域，不说明距离或$k$本身已经最优。
+
+\phantomsection\label{struct:V2-C02-CH12}
+\begin{theorem}[局部多数表决的经验风险最优性]\label{thm:V2-C02-vote}
+对任意非空有限邻域$N_k(x)$和有限类别集$\mathcal Y$，使用0--1损失且在整个邻域内输出同一类别时，经验风险的全部最小化解恰为计数$n_c(x)$最大的类别。若最大计数并列，则每个并列类别都是风险最小化解。
+\end{theorem}
+
+\phantomsection\label{struct:V2-C02-CH13}
+% KNOWLEDGE-PLAN: KN-V2-C13-PROOF-001 L1
+\paragraph{读前自检：证明：局部多数表决的经验风险最优性。}局部风险满足$\widehat R_x(c)=1-n_c(x)/k$；设$n_{c_\star}(x)=\max_c n_c(x)$，请比较任意$c$的计数并核对$\widehat R_x(c_\star)\le\widehat R_x(c)$，再证明非最大计数类别不可能最优。\par
+
+\begin{proof}
+证明目标是比较任意两个候选类别的经验风险。由上面的恒等式，对每个$c$都有$\widehat R_x(c)=1-n_c(x)/k$。设$c_\star$满足$n_{c_\star}(x)=\max_c n_c(x)$，则任意$c$都满足$n_{c_\star}(x)\ge n_c(x)$。两边乘以负数$-1/k$会反转不等号，再加1得到
+\[
+\widehat R_x(c_\star)=1-\frac{n_{c_\star}(x)}k
+\le1-\frac{n_c(x)}k=\widehat R_x(c).
+\]
+所以每个最大计数类别都是最小风险解。反过来，若某$c'$不是最大计数类别，则存在$c_\star$使$n_{c_\star}(x)>n_{c'}(x)$，从而$\widehat R_x(c_\star)<\widehat R_x(c')$，故$c'$不可能最优。两方向合并后，最小化解集合与最大计数类别集合完全相同，定理得证。
+\end{proof}
+
+\phantomsection\label{struct:V2-C02-CH14}
+% KNOWLEDGE-PLAN: KN-V2-C13-CONCEPT-006 L1
+\paragraph{读前自检：几何解释：L p 单位球 z L p(z 0) 1 的形状随 p 改变。}$L_p$单位球为$\{z:L_p(z,0)\le1\}$；请把二维点$(1,0)$与$(1,1)$分别代入$p=1,2,\infty$，核对菱形、圆与正方形的边界差异。\par
+
+\begin{geometrybox}
+\textbf{几何解释。}
+$L_p$单位球$\{z:L_p(z,0)\le1\}$的形状随$p$改变。在二维中，$p=1$是菱形，$p=2$是圆，$p=\infty$是轴对齐正方形。同一组训练点在不同几何下可能产生不同近邻次序，所以距离选择是模型的一部分，而不是无关紧要的计算细节。
+\end{geometrybox}
+
+\phantomsection\label{struct:V2-C02-CH15}
+% KNOWLEDGE-PLAN: KN-V2-C13-CONCEPT-007 L1
+\paragraph{读前自检：概率解释：邻域比例 p(c x) n c(x)/k 可看作局部条件概率的经验估计：它假设足够靠近……。}$k$近邻局部类别比例为$\widehat p(c\mid x)=n_c(x)/k$，其中$k>0$；请把邻域内各类计数求和，核对$\sum_c n_c(x)=k$从而概率非负且总和为1。\par
+
+\begin{probabilitybox}
+邻域比例$\widehat p(c\mid x)=n_c(x)/k$可看作局部条件概率的经验估计：它假设足够靠近$x$的样本具有近似相同的条件分布。邻域太小会使估计波动大，邻域太大又会混合不同区域。该比例未必经过校准，尤其在距离失真、类别不均衡或采样机制改变时不能直接当作可靠概率。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V2-C02-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}
+\kNN{}预测把一个组合搜索问题分成两层：先按距离选出$k$个最小者，再在有限类别集合上最小化局部经验风险。第一层没有可训练参数的梯度优化；第二层由计数直接求解。交叉验证选择距离、特征缩放与$k$，属于外层模型选择问题。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V2-C02-CH17}
+% FIGURE-KNOWLEDGE: fig:V2-C02-lp-balls=SLM-03-02-003
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C02/fig_v2_c02_lp_balls.tex}
+图\ref{fig:V2-C02-lp-balls}把相同半径下的可达集合画在同一坐标系中：$L_1$边界由坐标绝对值之和固定，$L_2$边界由平方和固定，$L_\infty$边界由最大坐标差固定。因此距离阶数改变时，邻域边界与近邻次序都可能改变。
+
+\phantomsection\label{struct:V2-C02-CH18}
+\begin{example}[距离阶数改变近邻]\label{exm:V2-C02-lp-small}
+查询$x=(0,0)$，候选点$a=(3,0)$与$b=(2,2)$。分别在$L_1$和$L_2$距离下判断最近邻。
+\end{example}
+\SLExampleSolutionHeading{exm:V2-C02-lp-small}
+\begin{solution}
+\SLReadTranslation{题目要求完成“距离阶数改变近邻”：按初始化—更新—停止/回溯顺序手算关键中间量。}
+\SolGiven 状态、时间索引和初始量按题面定义；每一步更新只使用上一层已确定的合法中间量。
+\SLMethodTrigger{先固定比较维度和数据隔离规则，再逐候选计算同口径指标并按预声明规则选择。}
+\SolDerive
+两种距离下的逐点计算为
+\[
+\begin{aligned}
+L_1(x,a)&=|3|+|0|=3,&
+L_1(x,b)&=|2|+|2|=4,\\
+L_2(x,a)&=\sqrt{3^2+0^2}=3,&
+L_2(x,b)&=\sqrt{2^2+2^2}=\sqrt8.
+\end{aligned}
+\]
+于是
+\[
+L_1(x,a)<L_1(x,b),
+\qquad
+L_2(x,a)>L_2(x,b).
+\]
+独立地比较平方欧氏距离可避免开方：$L_2^2(x,a)=9>8=L_2^2(x,b)$，仍选$b$；而$L_1$直接比较$3<4$选$a$。因此$L_1$下最近邻为$a$，$L_2$下最近邻为$b$；最近邻会随距离阶数改变，距离应依据特征含义和验证结果选择。
+\end{solution}
+
+表\ref{tab:V2-C02-distances}汇总了三种常见距离的计算形式及其二维单位球，便于比较距离阶数对邻域几何的影响。
+
+\begin{table}[htbp]
+\centering
+\caption{常见距离的计算与二维单位球}\label{tab:V2-C02-distances}
+\begin{tabular}{@{}lll@{}}
+\toprule 距离 & 表达式 & 二维单位球\\ \midrule
+$L_1$ & $\sum_\ell|x^{(\ell)}-z^{(\ell)}|$ & 菱形\\
+$L_2$ & $\sqrt{\sum_\ell(x^{(\ell)}-z^{(\ell)})^2}$ & 圆\\
+$L_\infty$ & $\max_\ell|x^{(\ell)}-z^{(\ell)}|$ & 轴对齐正方形\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% KNOWLEDGE-PLAN: KN-V2-C13-CONCEPT-009 L1
+\paragraph{读前自检：k近邻模型。}固定训练集、距离度量与$k=1$；请写出由相邻训练点等距位置形成的决策边界，并核对距离决定近邻次序、$k$决定平滑尺度、投票规则决定输出，三者共同定义\kNN{}模型。\par
+
+\SLReviewSection{\kNN{}模型与三要素}{sec:V2-C02-S02}
+\knowledgeanchor{SLM-03-02-001}{k近邻模型@\kNN{} 模型}
+\knowledgeanchor{SLM-03-02-002}{模型}
+\phantomsection\label{struct:V2-C02-CH08}
+固定训练集、距离度量和$k$后，特征空间被划分成若干决策区域：区域内的查询共享相同或相近的邻域与预测。$k=1$时每个训练点拥有一个以“离它最近”为条件的单元，边界由相邻训练点的等距位置组成；$k$增大时，预测由更大范围的标签组合决定。
+
+\kNN{}法的三要素是：距离度量决定近邻次序，$k$值决定局部平滑尺度，分类决策规则把邻域标签转换为输出。任意一个要素改变，都可能改变最终模型，因此三者应共同进入验证方案。
+
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：k近邻算法。}$k$近邻算法输入带标签训练集、查询$x$、距离和$1\le k\le N$；请扫描一个样本并更新当前最近$k$项，核对处理完$N$个样本后按固定并列规则投票输出。\par
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：k近邻法算法。}$k$近邻法对查询点计算全部训练距离；请完成一次“插入候选并裁回$k$项”的更新，核对距离次序不降且完整扫描后停止。\par
+
+\knowledgeanchor{SLM-03-01-002}{k近邻算法@\kNN{} 算法}
+\knowledgeanchor{SLM-03-01-001}{k近邻法算法@\kNN{} 法算法}
+\phantomsection\label{struct:V2-C02-CH10}
+最直接的实现是线性扫描全部训练样本并保留$k$个最小距离。它不依赖空间索引，对任何能计算的距离都适用，也是检查kd树结果是否正确的基准。
+
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：线性扫描的 分类：执行契约。}线性扫描的\kNN{}分类输入非空训练集$T$、查询$x$和$1\le k\le N$；请计算一个有限非负距离，将候选插入临时$H^+$并按固定并列规则裁至$k$项，核对次序后提交$H,r$，完成$N$个距离时停止。\par
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：线性扫描的 分类。}线性扫描的\kNN{}分类维护至多$k$个按距离排序的候选；请把一个新训练样本的距离插入$H$并裁回$k$项，核对候选数不超过$k$、距离次序不降，完整扫描$N$项后再由固定投票规则输出类别。\par
+
+\begin{AlgorithmContract}{
+  input={非空有限训练集$T$、查询$x$、近邻数$k$、距离与固定并列规则},
+  output={预测、最后合法候选集、实际距离数$i_{\rm done}$、状态与诊断},
+  preconditions={$1\le k\le N$；样本与查询同维有限；距离和两类并列规则均已定义},
+  initialization={$\widehat y=\bot,H=\varnothing,r=+\infty,i_{\rm done}=0$且诊断为空},
+  loop={按稳定样本次序恰好扫描$i=1,\ldots,N$},
+  update={距离合法后在临时$H^+$中插入候选、裁至$k$个并核验次序，再提交$H,r$},
+  domain={距离必须为有限非负实数；候选集大小始终不超过$k$},
+  failure={输入契约失败返回$\mathtt{invalid\_input}$；距离或候选不变量失败返回$\mathtt{numerical\_failure}$并保留旧$H$},
+  stop={完成$N$个距离或首次失败时停止},
+  budget={固定执行$N$次距离计算；本精确基准不接受人为提前截断},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$i_{\rm done}$只在一个候选更新完整提交后增加},
+  diagnostics={失败样本位置；成功时记录最终半径、距离并列次数和类别票数},
+  complexity={最大堆实现为$O(N(n+\log k))$时间与$O(k)$候选空间}
+}
+\begin{algorithm}[H]
+\caption{线性扫描的\kNN{}分类}\label{alg:V2-C02-knn}
+\KwIn{非空训练集$T=\{(x_i,y_i)\}_{i=1}^{N}$，查询$x$}
+\KwOut{预测$\widehat y$、近邻集合$N_k(x)$、实际完成距离数$i_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{$k\in\{1,\ldots,N\}$，距离$D$，距离并列规则与类别并列规则}
+初始化$\widehat y\leftarrow\bot$、候选集合$H\leftarrow\varnothing$、候选半径$r\leftarrow+\infty$、$i_{\rm done}\leftarrow0$，诊断为空\;
+若训练集为空、$k$越界、样本与查询维数不一致、输入含非有限坐标、距离规则或并列规则未定义，则返回当前空候选、$i_{\rm done}=0$、$\mathtt{invalid\_input}$及字段诊断\;
+\For{$i\leftarrow1$ \KwTo $N$}{
+  计算$d_i\leftarrow D(x,x_i)$；若求值失败、$d_i$非有限或$d_i<0$，则返回最后合法$H,r$、未定义预测、$i_{\rm done}$、$\mathtt{numerical\_failure}$，诊断为失败位置$i$\;
+  在临时候选$H^+$中按稳定次序纳入$(d_i,i,y_i)$；若$|H^+|>k$，删除距离最大且并列优先级最低者；令$r^+$为$H^+$中最大距离\;
+  若候选次序或$|H^+|\le k$不变量失败，则返回未改动的$H,r$与$\mathtt{numerical\_failure}$诊断；否则$H\leftarrow H^+$、$r\leftarrow r^+$、$i_{\rm done}\leftarrow i$\;
+}
+对每个$c\in\mathcal Y$计算$n_c\leftarrow\sum_{i\in H}\ind(y_i=c)$，按预设规则选择最大计数类别$\widehat y$\;
+返回$\widehat y,H,i_{\rm done}=N,\mathtt{completed}$，最终诊断记录最终半径$r$、并列次数与各类票数\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+算法\ref{alg:V2-C02-knn}在有限$N$步后停止，不涉及参数优化的迭代收敛。候选集合可用大小为$k$的最大堆维护；线性扫描时每个新距离与当前最差候选比较。稳定次序保证距离并列时结果可复现。
+
+
+\SLTeachSection{多类分类与回归扩展}{sec:V2-C02-S03}
+多数表决原生支持$C>2$的多类分类，只需对每个类别计数。回归情形把标签改为实数$y_i\in\R$，在平方损失下用邻域均值
+\[
+\widehat y(x)=\frac1k\sum_{i\in N_k(x)}y_i.
+\]
+若采用绝对损失，则邻域中位数比均值更符合风险最小化目标；因此“聚合规则”必须与损失函数一致。
+
+% CORE-DERIVATION-PLAN: KN-V2-C13-DERIVATION-002
+\SLKnowledgeBridge{把局部常量预测写成一维平方损失极小化。}{非空邻域 $N_k(x)$、响应 $y_i\in\R$ 与常量预测 $a\in\R$。}{$k\ge1$；邻域固定；平方损失有限。}{先对 $Q(a)=\sum_{i\in N_k(x)}(y_i-a)^2$ 求一阶导数。}
+
+\begin{derivationgoalbox}
+说明平方损失下邻域均值为何是最佳常量回归预测。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+固定非空邻域$N_k(x)$且$k\ge1$，响应$y_i\in\R$。候选输出$a\in\R$在整个邻域内取同一常数，局部目标为平方损失之和；因此只需在实数轴上检查一阶驻点和二阶导数符号。
+\end{derivationprepbox}
+% DERIVATION-CHECK: step-1; step-2; step-3
+\textbf{推导第1步：}设候选预测为$a\in\R$，展开局部平方风险：
+\[
+Q(a)=\sum_{i\in N_k(x)}y_i^2-2a\sum_{i\in N_k(x)}y_i+ka^2.
+\]
+\textbf{推导第2步：}逐项求导得到
+\[
+Q'(a)=2ka-2\sum_{i\in N_k(x)}y_i,\qquad Q''(a)=2k.
+\]
+\textbf{推导第3步：}令$Q'(a)=0$可得$a=k^{-1}\sum_i y_i$。因为$k\ge1$，所以$Q''(a)=2k>0$，该驻点是唯一全局最小点。邻域均值因此是平方损失对应的最优常量，而不是任意选择。
+
+\begin{probabilitybox}
+多类邻域比例给出局部类别频率；回归邻域均值估计局部条件期望$\E(Y\mid X=x)$。二者都依赖邻域内分布近似稳定。距离加权可以让更近样本贡献更大，但零距离样本需要单独规则，权重函数及其参数也必须用训练数据验证。
+\end{probabilitybox}
+
+
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：k近邻法的实现：kd树。}kd树结点以第$a$个坐标和切分值$s$划分$n$维样本；请把点集分成$x^{(a)}<s$与$x^{(a)}\ge s$两侧，核对左右子树仍保存$n$维点且原距离定义不变。\par
+
+\SLTeachSection{kd树的构造}{sec:V2-C02-S04}
+\knowledgeanchor{SLM-03-03-001}{k近邻法的实现：kd树@\kNN{} 法的实现：kd树}
+kd树是一棵保存$n$维样本点的二叉树。每个内部节点选择一个坐标轴和一个切分值，把空间分成两个轴对齐区域；左、右子树分别保存切分值两侧的点。树结构不改变距离定义或预测规则，只加速候选邻域的寻找。
+
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-006 L1
+\paragraph{读前自检：构造kd树。}对构造kd树，条件“为避免把近邻个数$k$与空间维数混淆，本章用$n$表示特征维数”不可省；请将$a=1+(h\bmod n)$左端按正文定义展开一层，再逐项对齐右端，再用坐标并列时需要固定次级排序，保证每次递归的点数严格减少作检查。\par
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-007 L1
+\paragraph{读前自检：构造平衡kd树。}构造平衡kd树把问题限定在“为避免把近邻个数$k$与空间维数混淆，本章用$n$表示特征维数”；请将$a=1+(h\bmod n)$左端按定义展开一层，再与右端逐项对齐，检查是否得到坐标并列时需要固定次级排序，保证每次递归的点数严格减少。\par
+
+\knowledgeanchor{SLM-03-03-002}{构造kd树}
+\knowledgeanchor{SLM-03-02-006}{构造平衡kd树}
+为避免把近邻个数$k$与空间维数混淆，本章用$n$表示特征维数。深度为$h$的节点选择轴$a=1+(h\bmod n)$，再取该轴坐标的中位点作为节点；小于中位坐标的点进入左子树，其余未选点进入右子树。坐标并列时需要固定次级排序，保证每次递归的点数严格减少。
+
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-008 L1
+\paragraph{读前自检：按坐标循环构造平衡kd树：执行契约。}按坐标循环构造平衡kd树输入“有限带标记点集$S\subset\mathbb R^n$、节点预算$B$、轴与并列规则”，条件“$n\ge1$”；请执行“稳定选中位点、验证左右严格真分割后才连接候选节点并增加$m$”，以“任务栈为空、节点预算耗尽或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-009 L1
+\paragraph{读前自检：按坐标循环构造平衡kd树。}按坐标循环构造平衡kd树输入“有限带标记点集$S\subset\mathbb R^n$、节点预算$B$、轴与并列规则”，条件“$n\ge1$”；请做一轮“稳定选中位点、验证左右严格真分割后才连接候选节点并增加$m$”，以“任务栈为空、节点预算耗尽或首次失败时停止”核对停止证书。\par
+
+\begin{AlgorithmContract}{
+  input={有限带标记点集$S\subset\mathbb R^n$、节点预算$B$、轴与并列规则},
+  output={最后合法部分或完整kd树、实际节点数$m$、状态与诊断},
+  preconditions={$n\ge1$；点同维有限；样本序号唯一；$B\in\mathbb N_0$；并列排序固定},
+  initialization={$\mathcal T=\varnothing,Q=\varnothing,m=0$；非空$S$生成根任务},
+  loop={显式栈逐次处理非空子集任务$(S_t,h_t,\ell_t)$},
+  update={稳定选中位点、验证左右严格真分割后才连接候选节点并增加$m$},
+  domain={每个任务子集有限；坐标比较一致；左右子集不交、覆盖且严格缩小},
+  failure={输入契约失败返回$\mathtt{invalid\_input}$；排序、选择或分割不变量失败返回$\mathtt{numerical\_failure}$并保留旧树},
+  stop={任务栈为空、节点预算耗尽或首次失败时停止},
+  budget={$B$是最多可提交的非空树节点数；非空$S$且$B=0$立即预算停止},
+  status={$\mathtt{completed}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$m$记录实际成功连接的节点数},
+  diagnostics={失败子集与深度；预算时记录未展开任务；成功时记录树高与并列次数},
+  complexity={逐层重排为$O(N\log^2N)$；预排序或线性选中位数典型$O(N\log N)$}
+}
+\begin{algorithm}[H]
+\caption{按坐标循环构造平衡kd树}\label{alg:V2-C02-kd-build}
+\KwIn{有限带标记点集$S\subset\R^n$}
+\KwOut{最后合法的部分或完整kd树$\mathcal T$、实际建成节点数$m$、$\mathtt{status}$与最终诊断}
+\KwData{节点预算$B\in\mathbb N_0$；轴规则$a=1+(h\bmod n)$；固定并列排序与样本唯一序号}
+$\mathcal T\leftarrow\varnothing$，待处理栈$Q\leftarrow\varnothing$，$m\leftarrow0$，诊断初始化为空\;
+若$n<1$、点的维数不一致、坐标非有限、样本序号不唯一、并列规则缺失或$B\notin\mathbb N_0$，则返回空树、$m=0$、$\mathtt{invalid\_input}$及字段诊断\;
+若$S\ne\varnothing$，把任务$(S,0,\mathrm{root})$压入$Q$；否则返回空树、$m=0,\mathtt{completed}$及“空输入对应合法空树”诊断\;
+\While{$Q\ne\varnothing$}{
+  \If{$m=B$}{返回最后合法部分树$\mathcal T$、$m,\mathtt{budget\_stop}$，最终诊断记录未展开任务数与最大已建深度\;}
+  弹出非空任务$(S_t,h_t,\ell_t)$，令$a\leftarrow1+(h_t\bmod n)$，按$(x^{(a)},\mathrm{id})$稳定选择中位点$q$\;
+  若排序或选择失败、比较结果不一致，则返回未改动的$\mathcal T,m,\mathtt{numerical\_failure}$及失败子集、深度诊断\;
+  在临时状态中令$S_L,S_R$为$q$前后的点；若二者不交、并集或严格缩小不变量失败，则返回未改动的最后合法树与$\mathtt{numerical\_failure}$诊断\;
+  构造记录$(q,a,h_t)$的候选节点并连接到位置$\ell_t$；连接核验成功后提交到$\mathcal T$并令$m\leftarrow m+1$\;
+  对非空的$S_R,S_L$分别把深度$h_t+1$的右、左任务压入$Q$\;
+}
+返回完整$\mathcal T,m=|S|,\mathtt{completed}$，最终诊断记录节点数、树高与并列处理次数\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+\begin{example}[六点平衡kd树]\label{exm:V2-C02-kd-build}
+对点集$\{(2,3),(5,4),(9,6),(4,7),(8,1),(7,2)\}$构造kd树。切分轴按第一、第二坐标交替；偶数个点时取稳定排序后的上中位点，坐标并列时按样本序号排序。
+\end{example}
+\SLExampleSolutionHeading{exm:V2-C02-kd-build}
+\begin{solution}
+\SLReadTranslation{题目要求完成“六点平衡kd树”：按初始化—更新—停止/回溯顺序手算关键中间量。}
+\SolGiven 状态、时间索引和初始量按题面定义；每一步更新只使用上一层已确定的合法中间量。
+\SLMethodTrigger{围绕“六点平衡kd树”先声明对象与条件，再完成必要计算并回收结论。}
+\SolDerive
+第一层按第一坐标排序：
+\[
+(2,3),(4,7),(5,4),\boxed{(7,2)},(8,1),(9,6),
+\]
+故根为$(7,2)$，左右子集为
+\[
+S_L=\{(2,3),(4,7),(5,4)\},
+\qquad
+S_R=\{(8,1),(9,6)\}.
+\]
+第二层改按第二坐标排序：
+\[
+S_L:(2,3),\boxed{(5,4)},(4,7),
+\qquad
+S_R:(8,1),\boxed{(9,6)}.
+\]
+因此左子树根为$(5,4)$，孩子为$(2,3)$与$(4,7)$；右子树根为$(9,6)$，其左孩子为$(8,1)$。预先固定上中位数与并列规则后，构造结果唯一。
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}c c X X X@{}}
+\toprule
+深度 & 切分轴 & 旧点集 & 中位点与子集 & 停止证书\\
+\midrule
+0 & 第1坐标 & 6点全集 & 根$(7,2)$；左3点、右2点 & 根已提交，递归处理两侧\\
+1左 & 第2坐标 & $S_L$ & 根$(5,4)$；孩子$(2,3),(4,7)$ & 子集降为单点\\
+1右 & 第2坐标 & $S_R$ & 根$(9,6)$；左孩子$(8,1)$ & 子集降为单点/空集\\
+\bottomrule
+\end{tabularx}
+\end{center}
+独立核验时逐结点清点可见6个输入点各出现且只出现一次，左右子集大小满足$3+1+2=6$，并且每个孩子都位于父结点切分规则允许的一侧。因此上述树是题设稳定排序与上中位点规则下的唯一构造结果。
+\end{solution}
+
+% FIGURE-KNOWLEDGE: fig:V2-C02-kd-tree=SLM-03-03-002
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C02/fig_v2_c02_kd_tree.tex}
+图\ref{fig:V2-C02-kd-tree}与第\ref{sec:V2-C02-S04}节的递归构造相对应：根结点按第一坐标切分，下一层按第二坐标切分；每条根到叶路径给出一组轴对齐约束。树的左右位置只编码递归区域，不表示节点之间的欧氏距离。
+
+
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-010 L1
+\paragraph{读前自检：搜索kd树。}围绕搜索kd树，先采用条件“候选堆未满时不能据此剪枝，堆满后才用当前第$k$近距离作为搜索半径”，再构造一个满足条件的最小结点状态并执行一次分支或停止判断；最后验证结点输出与分支条件相符且没有遗漏停止情形。\par
+
+\SLAdvancedSection{kd树的搜索}{sec:V2-C02-S05}
+\knowledgeanchor{SLM-03-03-003}{搜索kd树}
+搜索先沿查询点所在的切分区域下降到叶节点，随后沿路径回溯并维护至多$k$个候选。切分平面距离只给出一个便宜、通常不紧的可剪枝下界；候选堆未满时不能据此剪枝，堆满后才用当前第$k$近距离作为搜索半径。
+
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-011 L1
+\paragraph{读前自检：用kd树的 搜索。}用kd树的 搜索中的“若节点以第$a$轴的值$q^{(a)}$切分”决定可执行范围；请将$\delta=|x^{(a)}-q^{(a)}|$左端按定义展开一层，再与右端逐项对齐，结果须满足$\delta=|x^{(a)}-q^{(a)}|$是远侧区域距离的一个简单保守下界。\par
+
+\knowledgeanchor{SLM-03-03-004}{用kd树的\kNN{}搜索}
+对$L_p$距离，任意向量的距离不小于任一坐标差。若节点以第$a$轴的值$q^{(a)}$切分，则$\delta=|x^{(a)}-q^{(a)}|$是远侧区域距离的一个简单保守下界，并不保证等于该区域真实最近距离。候选堆已满且$\delta\ge r_k$时，另一侧不可能产生严格优于当前第$k$名的点。
+
+\begin{lemma}[kd树切分平面的安全剪枝]\label{lem:V2-C02-kd-prune}
+设大小为$k$的候选堆已经填满，堆顶第$k$近距离为$r_k$，且$1\le p\le\infty$。某切分平面为$z^{(a)}=s$，而待检查区域完全位于平面的另一侧。若$|x^{(a)}-s|\ge r_k$，则该区域中不存在与$x$距离严格小于$r_k$的点。若还需按规则区分等距离候选，应在等号时访问该区域或证明并列规则与其无关；堆未满时不得剪去任何非空远侧区域。
+\end{lemma}
+% KNOWLEDGE-PLAN: KN-V2-C13-PROOF-002 L1
+\paragraph{读前自检：证明：kd树切分平面的安全剪枝。}把kd树切分平面的安全剪枝放在“由于$x$与$z$位于切分平面的两侧”下考察：把$L_p(x,z)$用到的关键定义展开并完成下一步变形，并检查故任何该区域点都不能进入距离严格小于$r_k$的候选集合，剪枝不会遗漏更优点。\par
+
+\begin{proof}
+取另一侧区域任意点$z$。由于$x$与$z$位于切分平面的两侧，坐标差满足$|x^{(a)}-z^{(a)}|\ge|x^{(a)}-s|$。当$p<\infty$时，
+\[
+L_p(x,z)=\left(\sum_{\ell=1}^{n}|x^{(\ell)}-z^{(\ell)}|^p\right)^{1/p}
+\ge |x^{(a)}-z^{(a)}|
+\ge |x^{(a)}-s|\ge r_k.
+\]
+$p=\infty$时，最大坐标差同样不小于第$a$坐标差。故任何该区域点都不能进入距离严格小于$r_k$的候选集合，剪枝不会遗漏更优点。
+\end{proof}
+
+\phantomsection\label{struct:V2-C02-CH19}
+\phantomsection\label{struct:V2-C02-CH20}
+\phantomsection\label{struct:V2-C02-CH21}
+\phantomsection\label{struct:V2-C02-CH22}
+\phantomsection\label{struct:V2-C02-CH23}
+\phantomsection\label{struct:V2-C02-CH24}
+\phantomsection\label{struct:V2-C02-CH25}
+% CHAPTER-CHECK: CH-25=not_applicable; reason=no_training_parameter_iteration
+\begin{notapplicablebox}[title=有限步终止与统计一致性]
+\kNN{}法没有训练参数的迭代收敛过程。线性扫描和kd树搜索讨论的是有限步终止与剪枝正确性；统计一致性则需要另行给出样本量、$k$和邻域半径的渐近条件，不能把二者写成训练迭代收敛。
+\end{notapplicablebox}
+% KNOWLEDGE-PLAN: KN-V2-C13-ALGORITHM_IDEA-012 L2
+\begin{keypointbox}[title={kd树的精确\kNN{}搜索：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={含$N\ge1$个有限点的kd树$\mathcal T$、查询$x$、近邻数$k$、$L_p$距离与固定并列规则},
+  output={排序后的$k$个近邻$H$、状态以及访问、剪枝和失败诊断},
+  preconditions={树有限、无环且分割轴和子树关系一致；$x$同维有限；$1\le k\le N$且距离规则有效},
+  initialization={$H=\varnothing$，任务栈$Q$仅含根任务；访问与剪枝计数为$0$},
+  loop={不断弹出一个有限子树任务，直至栈空、发生失败或外部访问预算耗尽},
+  update={先用保守下界判定剪枝；否则核验点距离、更新至多$k$个候选，再按确定次序压入近远子树},
+  domain={距离和子树下界为有限非负实数；候选堆大小不超过$k$且并列顺序固定},
+  failure={树或参数违规返回$\mathtt{invalid\_input}$；距离、下界或堆不变量失败返回$\mathtt{numerical\_failure}$并保留旧$H$},
+  stop={完整精确搜索在任务栈清空时停止；失败或明确访问预算耗尽时提前停止},
+  budget={精确模式最多访问有限树的$N$个结点；若实现另设访问上限，耗尽只返回预算停止},
+  status={$\mathtt{completed}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={访问数在结点距离通过核验后增加；剪枝数在一个子树任务被合法排除后增加},
+  diagnostics={失败结点、最终候选半径、访问数、剪枝数、距离并列数与预算余量},
+  complexity={平衡低维树平均查询约$O(\log N+k\log k)$；最坏访问全部结点并用$O(k+h)$工作空间}
+}
+\begin{algorithm}[H]
+\caption{kd树的精确\kNN{}搜索}\label{alg:V2-C02-kd-search}
+\KwIn{非空kd树$\mathcal T$，查询$x\in\R^n$，$k\in\{1,\ldots,N\}$}
+\KwOut{按距离与稳定并列规则排序的$k$个近邻集合$H$}
+\KwData{距离$L_p$；大小至多为$k$的最大堆$H$；任务栈$Q$}
+$H\leftarrow\varnothing$，把根任务$(\operatorname{root},0)$压入$Q$\;
+\While{$Q\ne\varnothing$}{
+  弹出任务$(t,\ell)$；若$|H|=k$且$\ell$不优于堆顶距离$r_k$（含并列规则），则剪去该子树并继续\;
+  计算$d=L_p(x,q_t)$，将$(d,t)$插入$H$；若$|H|>k$则删除最差候选，并令$r_k$为堆顶距离\;
+  按查询坐标确定近、远子树，并令$\delta=|x^{(a_t)}-q_t^{(a_t)}|$\;
+  若近侧非空则压入下界$0$的近侧任务；若远侧非空且$|H|<k$或$\delta$可能优于$r_k$，则压入下界$\delta$的远侧任务\;
+}
+返回排序后的$H$与$\mathtt{completed}$\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{工程实现须核验树无环、距离有限且非负，并记录访问/剪枝计数；访问预算耗尽返回$\mathtt{budget\_stop}$，完整搜索栈清空才返回$\mathtt{completed}$。}
+
+算法\ref{alg:V2-C02-kd-search}直接输出一般\kNN{}；$k=1$只是其特例。停止来自有限搜索栈清空，正确性来自保守下界不会剪去可能进入前$k$名的点，而不是数值迭代收敛。
+
+
+\SLAdvancedSection{例题、复杂度与练习}{sec:V2-C02-S06}
+\phantomsection\label{struct:V2-C02-CH26}
+\phantomsection\label{struct:V2-C02-CH27}
+% KNOWLEDGE-PLAN: KN-V2-C13-BOUNDARY-002 L1
+\paragraph{读前自检：复杂度分析：例题、复杂度与练习。}例题、复杂度与练习要求先确认“若构造平衡kd树，每层重新排序时为$O(N\log^2N)$”；请随后由$n$的总成本剥离一次迭代或一次样本因子，用线性扫描的候选堆为$O(k)$验收。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界假设每次读取一个稠密$n$维样本并计算$L_p$距离需$O(n)$，训练样本驻留内存；平衡kd树的典型界依赖近似均匀的低维分布，最坏界不作该分布假设。堆维护按二叉最大堆计，其他索引结构应按其操作成本重计。
+设训练样本数为$N$、特征维数为$n$、近邻数为$k$。
+
+\textbf{训练复杂度：}直接线性扫描形式只需登记训练样本，复制存储时为$O(Nn)$。若构造平衡kd树，每层重新排序时为$O(N\log^2N)$；预排序或线性选中位数时典型为$O(N\log N)$。
+
+\textbf{预测复杂度：}线性扫描对一个查询计算$N$次$n$维距离，配合大小$k$的堆为$O(N(n+\log k))$。低维且分布较均匀时，kd树最近邻搜索常接近$O(\log N)$次节点访问，最坏仍为$O(N)$，每次完整距离计算另需$O(n)$。
+
+\textbf{存储复杂度：}训练样本与树节点的数据为$O(Nn)$，树链接为$O(N)$，平衡递归栈为$O(\log N)$；线性扫描的候选堆为$O(k)$。
+\end{complexitybox}
+
+\phantomsection\label{struct:V2-C02-CH28}
+\phantomsection\label{struct:V2-C02-CH29}
+\begin{applicabilitybox}
+\textbf{适用条件：}特征距离能表达任务相似性、同一区域的输出较平滑、样本量允许保存并在预测时检索。kd树更适合维度较低、连续数值特征和轴对齐切分仍有辨别力的场景。\textbf{局限性：}预测与存储成本随训练集增长；尺度、无关特征和高维距离集中会破坏邻域；类别不均衡与采样密度差异会偏置投票；kd树在高维或高度相关数据上可能退化为近线性搜索。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V2-C02-CH30}
+% KNOWLEDGE-PLAN: KN-V2-C13-BOUNDARY-004 L1
+\paragraph{读前自检：常见错误与误用边界：例题、复杂度与练习。}从例题、复杂度与练习的条件“边界框首项禁止把平均$O(\log N)$写成无条件最坏复杂度”出发，请把固定错误“把平均$O(\log N)$写成无条件最坏复杂度”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法；所得量应符合改写后的运算或判断有定义，且不再触发“把平均$O(\log N)$写成无条件最坏复杂度”。\par
+
+\begin{warningbox}
+典型误用包括：混淆近邻个数$k$与特征维数；未缩放不同量纲特征；用训练样本原顺序代替距离排序；没有规定距离或类别平局；把局部频率直接称为真实概率；回归时仍使用多数表决；kd树回溯只检查叶节点而漏掉祖先；用到切分节点的完整距离代替到切分平面的下界；把平均$O(\log N)$写成无条件最坏复杂度。
+\end{warningbox}
+
+\phantomsection\label{struct:V2-C02-CH31}
+% KNOWLEDGE-PLAN: KN-V2-C13-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：例题、复杂度与练习。}例题、复杂度与练习依赖“概念对比：$k$控制邻域样本数，$p$控制距离几何”；请据此按表格顺序核对例题、复杂度与练习对比表的首个数据行，并直接核对例题、复杂度与练习首行两端的对象、条件与不可互换项逐列一致。\par
+
+\begin{comparisonbox}
+\textbf{概念对比：}$k$控制邻域样本数，$p$控制距离几何；前者调节平滑程度，后者改变近邻次序。线性扫描适用于任意距离且结果易核验，但每次查询检查全部样本；kd树以额外构造和树存储换取低维查询加速。分类用多数类最小化局部0--1损失，平方损失回归用均值；两种聚合不能互换。
+\end{comparisonbox}
+
+\phantomsection\label{struct:V2-C02-CH32}
+\begin{example}[不同$L_p$距离下的最近邻]\label{exm:V2-C02-original-distance}
+设$x_1=(1,1)$，候选$x_2=(5,1)$与$x_3=(4,4)$。对范数参数$p\geq 1$，从$x_1$出发有$L_p(x_1,x_2)=4$；而
+\[
+L_p(x_1,x_3)=(3^p+3^p)^{1/p}=3\,2^{1/p}.
+\]
+近邻会随$p$改变，需要逐个比较而不能只凭图形印象判断。
+\end{example}
+
+\phantomsection\label{struct:V2-C02-CH33}
+\SLExampleSolutionHeading{exm:V2-C02-original-distance}
+\begin{solution}
+\SLReadTranslation{题目要求完成“不同 L p 距离下的最近邻”：按初始化—更新—停止/回溯顺序手算关键中间量。}
+\SolGiven 状态、时间索引和初始量按题面定义；每一步更新只使用上一层已确定的合法中间量。
+\SLMethodTrigger{先固定比较维度和数据隔离规则，再逐候选计算同口径指标并按预声明规则选择。}
+\SolPlan 先完成“不同 L p 距离下的最近邻”所需的中间量，再做一次题型相关核验，最后回收题目各问。
+\SolDerive
+对$p=1,2,3,4$逐项比较：
+\[
+\begin{array}{c|c|c|c}
+p&L_p(x_1,x_2)&L_p(x_1,x_3)&\text{较近点}\\ \hline
+1&4&6&x_2\\
+2&4&3\sqrt2\approx4.24&x_2\\
+3&4&3\sqrt[3]{2}\approx3.78&x_3\\
+4&4&3\sqrt[4]{2}\approx3.57&x_3
+\end{array}
+\]
+连续范数参数$p\geq 1$下的换序阈值满足
+\[
+3\,2^{1/p}=4
+\Longleftrightarrow
+\frac{\log2}{p}=\log\frac43
+\Longleftrightarrow
+p=\frac{\log2}{\log(4/3)}\approx2.41.
+\]
+函数$2^{1/p}$随$p$严格递减，故该阈值至多出现一次；边界核验为$p=1$时距离$6>4$，而$p\to\infty$时距离趋于$3<4$。因此连续参数在$p<\log2/\log(4/3)$时$x_2$更近，在$p$大于该阈值时$x_3$更近，等号处并列；特别地，整数$p=1,2$选$x_2$，整数$p\ge3$选$x_3$。
+
+\begin{SLRunningExample}{RUN-CLS-2D-01}{V2-C02-knn}{贯穿例：四点二维分类数据}{保留四个训练点及其标签，用欧氏距离说明局部记忆式分类。}
+仍取$x_i\in\{(-1,-1),(-1,1),(1,-1),(1,1)\}$，标签由第一坐标的符号给出。对查询点$q=(0.8,0.6)$，四个欧氏距离中最小者是
+\[
+\lVert q-(1,1)\rVert_2=\sqrt{0.2}=0.447\ldots,
+\]
+故$k=1$时预测$+1$。两个坐标在该数据中量纲和取值范围一致，因此这里没有把未标准化量纲差异偷偷带入距离；\kNN{}也不需要上一章的线性可分假设。上一站见\SLRunningExampleRef{RUN-CLS-2D-01}{V2-C01-perceptron}{感知机的线性分隔表示}；下一站见\SLRunningExampleRef{RUN-CLS-2D-01}{V2-C03-naive-bayes}{朴素贝叶斯的生成式表示}。
+\end{SLRunningExample}
+\end{solution}
+
+
+\phantomsection\label{struct:V2-C02-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V2-C02-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-3-0001
+% EXERCISE-TYPE: geometric_explanation,method_comparison
+% SOLUTION-SOURCE: original_book; source_id=EXR-3-0001
+\begin{exercise}\label{ex:V2-C02-S06-01}
+说明$k=1$与较大$k$如何改变特征空间划分的复杂度，并讨论训练误差和泛化误差的不同趋势。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S06-01}
+\begin{chapterexercisesolution}{ex:V2-C02-S06-01}
+分类规则可形式化为
+\[
+\widehat y_k(x)
+=\underset{c\in\mathcal Y}{\arg\max}
+\sum_{i\in\mathcal N_k(x)}\mathbf1\{y_i=c\},
+\]
+其中类别票数平局按预先固定的类别顺序处理；距离平局则按预先固定的训练样本顺序$\prec$处理。$k=1$时，令
+\[
+i^*(x)=\min_{\prec}\underset{1\leq j\leq n}{\arg\min}\,D(x,x_j),
+\qquad
+V_i^{\prec}=\{x:i^*(x)=i\}.
+\]
+于是$\{V_i^{\prec}\}_{i=1}^n$是互不相交且覆盖输入空间的带平局规则Voronoi划分，并且
+\[
+\widehat y_1(x)=y_i\quad(x\in V_i^{\prec}).
+\]
+在训练点互异且评价时包含样本自身的条件下，
+\[
+\widehat R_{\mathrm{train}}(1)=0;
+\]
+存在重复位置但标签冲突时，这个结论不成立。增大$k$后，单点标签必须得到更大邻域支持，零散小区域通常被合并，可概括为
+\[
+k\uparrow\quad\Longrightarrow\quad
+\text{模型局部波动与方差通常下降，偏差通常上升}.
+\]
+训练误差与泛化误差不必同向变化；后者必须由独立验证估计，不能由训练误差推出。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-3-0003
+% EXERCISE-TYPE: manual_algorithm,parameter_update
+% SOLUTION-SOURCE: original_book; source_id=EXR-3-0003
+\begin{exercise}\label{ex:V2-C02-S06-03}
+把最近邻kd树搜索改为输出两个近邻，并说明当候选只有一个时为什么不能剪除任何非空远侧区域。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S06-03}
+\begin{chapterexercisesolution}{ex:V2-C02-S06-03}
+令候选集合$C$至多含两个点，并按距离维护最大堆。搜索半径定义为
+\[
+r_2=
+\begin{cases}
++\infty,&|C|<2,\\
+\max_{z\in C}D(x,z),&|C|=2.
+\end{cases}
+\]
+访问新点$q$时执行
+\[
+C\leftarrow
+\begin{cases}
+C\cup\{q\},&|C|<2,\\
+(C\setminus\{z_{\max}\})\cup\{q\},&|C|=2, D(x,q)<r_2,\\
+C,&\text{其他情形}.
+\end{cases}
+\]
+设远侧区域的距离下界为$\delta$。只寻找严格更近点时，安全剪枝条件是
+\[
+\delta\geq r_2.
+\]
+候选只有一个时$r_2=+\infty$，任意有限$\delta$都满足$\delta<r_2$，所以不能剪除非空远侧区域；候选凑满两个后才可使用该条件。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C02-S01-01}
+计算$x=(1,1)$与$z=(4,5)$之间的$L_1,L_2,L_\infty$距离，并按从小到大排列。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S01-01}
+\begin{chapterexercisesolution}{ex:V2-C02-S01-01}
+坐标差为$z-x=(3,4)$，因此
+\[
+\begin{aligned}
+L_1(x,z)&=|3|+|4|=7,\\
+L_2(x,z)&=\sqrt{3^2+4^2}=5,\\
+L_\infty(x,z)&=\max\{|3|,|4|\}=4.
+\end{aligned}
+\]
+所以本题数值次序为
+\[
+L_\infty(x,z)<L_2(x,z)<L_1(x,z).
+\]
+这是同一对点在三种度量下的数值比较，不表示某一种度量对所有任务都更合适。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: error_diagnosis,definition_discrimination
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C02-S01-03}
+说明为什么特征“年龄”和“年收入”直接使用欧氏距离可能使收入坐标支配近邻，并给出一种不泄漏测试信息的处理方式。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S01-03}
+\begin{chapterexercisesolution}{ex:V2-C02-S01-03}
+设两个样本的年龄差与收入差分别为$\Delta a,\Delta s$，未经缩放的欧氏距离为
+\[
+D^2=\Delta a^2+\Delta s^2.
+\]
+若$|\Delta s|\gg|\Delta a|$，则
+\[
+\frac{\Delta s^2}{D^2}
+=\frac{\Delta s^2}{\Delta a^2+\Delta s^2}
+\approx1,
+\]
+近邻次序便几乎只由收入坐标决定。只在训练集上估计
+\[
+\mu_j^{\rm tr}=\frac1{N_{\rm tr}}\sum_{i\in\rm tr}x_{ij},
+\qquad
+s_j^{\rm tr}>0,
+\]
+再对训练、验证和测试统一应用
+\[
+x'_{ij}=\frac{x_{ij}-\mu_j^{\rm tr}}{s_j^{\rm tr}}.
+\]
+验证与测试样本不得参与$\mu_j^{\rm tr},s_j^{\rm tr}$的估计，否则会泄漏待评估数据的信息；若$s_j^{\rm tr}=0$，该常量特征应删除或按预定规则处理。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: method_comparison,complexity_analysis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C02-S02-03}
+比较线性扫描用无序长度$k$候选表与最大堆维护候选时，处理一个新样本的最坏代价。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S02-03}
+\begin{chapterexercisesolution}{ex:V2-C02-S02-03}
+对一个$n$维新样本，距离计算代价为$O(n)$。候选已满时，无序表与最大堆的维护代价分别为
+\[
+T_{\rm list}=O(k),
+\qquad
+T_{\rm heap}=O(\log k).
+\]
+因此每处理一个训练样本，最坏代价为
+\[
+T_{\rm list}^{(1)}=O(n+k),
+\qquad
+T_{\rm heap}^{(1)}=O(n+\log k).
+\]
+线性扫描$N$个训练样本时，
+\[
+T_{\rm list}^{(N)}=O\!\left(N(n+k)\right),
+\qquad
+T_{\rm heap}^{(N)}=O\!\left(N(n+\log k)\right),
+\]
+两种方法的候选存储均为$O(k)$。当距离计算$O(n)$占主导时，堆只降低维护候选的部分。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: probability_explanation,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C02-S03-01}
+某查询的7个邻居标签为$A,A,A,B,B,C,C$。计算三类局部频率并给出预测。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S03-01}
+\begin{chapterexercisesolution}{ex:V2-C02-S03-01}
+三类计数与局部经验频率为
+\[
+(n_A,n_B,n_C)=(3,2,2),
+\qquad
+(\widehat p_A,\widehat p_B,\widehat p_C)
+=\left(\frac37,\frac27,\frac27\right).
+\]
+归一化检查给出
+\[
+\widehat p_A+\widehat p_B+\widehat p_C
+=\frac{3+2+2}{7}=1.
+\]
+多数表决为
+\[
+\widehat y
+=\underset{c\in\{A,B,C\}}{\arg\max}\ n_c
+=A.
+\]
+这些是当前邻域的经验频率；是否接近真实条件概率仍取决于样本量、邻域尺度与采样分布。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: derivation_completion,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C02-S03-02}
+回归邻域的响应为$2,4,9$。分别计算平方损失下的均值预测及其损失，并与预测$a=4$比较。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S03-02}
+\begin{chapterexercisesolution}{ex:V2-C02-S03-02}
+令常数预测为$a\in\mathbb R$，平方损失为
+\[
+L(a)=(2-a)^2+(4-a)^2+(9-a)^2.
+\]
+其驻点与二阶导数为
+\[
+L'(a)=2(a-2)+2(a-4)+2(a-9)=6a-30=0
+\Longrightarrow a^*=5,
+\qquad
+L''(a)=6>0.
+\]
+故$a^*=5$是唯一全局最小点。代值比较：
+\[
+\begin{aligned}
+L(5)&=(2-5)^2+(4-5)^2+(9-5)^2=9+1+16=26,\\
+L(4)&=(2-4)^2+(4-4)^2+(9-4)^2=4+0+25=29.
+\end{aligned}
+\]
+于是$L(5)<L(4)$；比较使用的是同一邻域与同一平方损失。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: error_diagnosis,parameter_update
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C02-S03-03}
+距离加权回归使用权重$1/D(x,x_i)$时，若某训练点与查询完全重合会发生什么？给出稳定处理规则。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S03-03}
+\begin{chapterexercisesolution}{ex:V2-C02-S03-03}
+令零距离样本指标集为
+\[
+I_0(x)=\{i:D(x,x_i)=0\}.
+\]
+若$I_0(x)=\varnothing$，可使用归一化权重
+\[
+\widetilde w_i(x)
+=\frac{D(x,x_i)^{-1}}{\sum_jD(x,x_j)^{-1}},
+\qquad
+\widehat y(x)=\sum_i\widetilde w_i(x)y_i.
+\]
+若$I_0(x)\neq\varnothing$，原权重出现$1/0$，应切换到预先声明的零距离规则。例如平方损失回归取
+\[
+\widehat y(x)=\frac1{|I_0(x)|}\sum_{i\in I_0(x)}y_i,
+\]
+绝对损失回归可取这些响应的中位数；多数表决只适用于分类，不能作为通用回归聚合。另一方案是使用$1/(D+\varepsilon)$，但$\varepsilon>0$成为必须在训练流程内选择的超参数。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: manual_algorithm,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C02-S04-01}
+对点$(1,4),(2,2),(3,5),(4,1),(5,3)$，从第一坐标开始按中位数构造kd树；偶数个点时取稳定排序后的上中位点。写出根及第一层两个子树的根。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S04-01}
+\begin{chapterexercisesolution}{ex:V2-C02-S04-01}
+第一层按第一坐标排序：
+\[
+(1,4),(2,2),\underbrace{(3,5)}_{\text{中位点}},(4,1),(5,3),
+\]
+故根为$(3,5)$，左右子集分别为
+\[
+S_L=\{(1,4),(2,2)\},
+\qquad
+S_R=\{(4,1),(5,3)\}.
+\]
+下一层按第二坐标稳定排序，并依题设取上中位点：
+\[
+S_L:(2,2),\underbrace{(1,4)}_{\text{中位点}},
+\qquad
+S_R:(4,1),\underbrace{(5,3)}_{\text{中位点}}.
+\]
+因此左、右子树根分别为$(1,4)$与$(5,3)$。若改用下中位数会得到另一棵合法树，所以该约定必须在题设中固定并在递归中保持一致。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: error_diagnosis,manual_algorithm
+\begin{exercise}\label{ex:V2-C02-S04-03}
+三个点在当前切分轴上的坐标都相等。说明只按“严格小于去左，其余去右”可能造成什么问题，并给出修复办法。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S04-03}
+\begin{chapterexercisesolution}{ex:V2-C02-S04-03}
+设当前集合$S$含$m=3$个点，且切分坐标均等于$c$。若只用“$x^{(a)}<c$进左侧，否则进右侧”，则
+\[
+S_L=\varnothing,
+\qquad
+S_R=S\quad\text{（若中位点未先删除）},
+\]
+递归规模不变，因而可能无法终止。即使先删除中位点，也只有
+\[
+|S_L|=0,
+\qquad
+|S_R|=m-1=2,
+\]
+树会严重偏斜。修复方法是用“切分坐标、样本唯一序号”形成稳定全序，按排序位置选择中位元素$q$并从集合中删除：
+\[
+S_L=\{s_{(1)},\ldots,s_{(h-1)}\},
+\qquad
+S_R=\{s_{(h+1)},\ldots,s_{(m)}\}.
+\]
+于是$|S_L|,|S_R|<m$，每次递归规模严格减小，有限点集上必然终止。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: manual_algorithm,definition_discrimination
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C02-S05-01}
+当前最近距离$r=2$，查询到切分平面的距离$\delta=2.5$。在只需严格更近点时是否访问远侧子树？说明依据。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S05-01}
+\begin{chapterexercisesolution}{ex:V2-C02-S05-01}
+设远侧区域任意点为$z$，切分轴为$a$。坐标差给出距离下界
+\[
+D_p(x,z)\geq |x^{(a)}-z^{(a)}|\geq\delta=2.5.
+\]
+当前最近距离$r=2$，所以
+\[
+\inf_{z\in\text{远侧}}D_p(x,z)\geq2.5>2=r.
+\]
+远侧不可能包含严格更近点，因此不访问该子树。剪枝判据使用查询到切分平面的距离$\delta$，而不是查询到当前节点的完整距离。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: geometric_explanation,method_comparison
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C02-S05-03}
+解释为何高维空间中kd树可能访问接近全部节点，即使树保持平衡。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C02-S05-03}
+\begin{chapterexercisesolution}{ex:V2-C02-S05-03}
+kd树在一次回溯中只能用单个切分坐标给出下界
+\[
+\delta=|x^{(a)}-q^{(a)}|,
+\qquad
+D_2(x,q)=\sqrt{\sum_{j=1}^{d}(x^{(j)}-q^{(j)})^2}\geq\delta.
+\]
+高维时，完整距离由$d$个坐标差累积，而$\delta$只使用其中一个，因而常出现
+\[
+\delta<r,
+\]
+使远侧子树无法剪枝。以独立均匀坐标为例，两个随机点满足
+\[
+\mathbb E\,D_2^2(X,Y)=\sum_{j=1}^{d}\mathbb E(X_j-Y_j)^2=\frac d6,
+\]
+典型距离随$\sqrt d$增长，而单轴下界仍为常数量级。平衡性只保证树高$O(\log N)$，不保证访问节点数也是$O(\log N)$；最坏情况下仍有
+\[
+T_{\rm query}=O(Nd),
+\]
+接近线性扫描。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V2-C13-CONCEPT-012 L1
+\paragraph{读前自检：本章结论与下一步。}\kNN{}法章末由“距离度量、邻域、投票规则与kd树”落到“先更新候选，再用到切分平面的距离下界剪枝”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V2-C02-CH36}
+\SLChapterFiveSummary{距离度量、邻域、投票规则与kd树}{由局部经验风险推出分类多数表决和回归均值}{先更新候选，再用到切分平面的距离下界剪枝}{\kNN{}分类、回归与低维相似样本检索}{进入朴素贝叶斯法，对比局部记忆与生成式概率建模}
+
+\phantomsection\label{struct:V2-C02-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否计算$L_1,L_2,L_\infty$并说明改变$p$为何会改变近邻？若不能，回看第\ref{sec:V2-C02-S01}节。
+  \item 能否从局部0--1风险推出多数表决，并为平局规定可复现规则？若不能，回看第\ref{sec:V2-C02-S01}--\ref{sec:V2-C02-S02}节。
+  \item 能否手工构造一棵平衡kd树并处理坐标并列？若不能，回看第\ref{sec:V2-C02-S04}节。
+  \item 能否在每次回溯时先更新候选，再用切分平面下界判断远侧分支，并区分平均与最坏复杂度？若不能，回看第\ref{sec:V2-C02-S05}--\ref{sec:V2-C02-S06}节。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

@@ -1,0 +1,11 @@
+check_id,opened_at_utc,verdict,hard_defect_id,note
+MS001,2026-08-28T03:25:48.3989453Z,PASS,,all four contours use the same rotated quadratic family (x1+x2)^2+x2^2=constant
+MS002,2026-08-28T03:25:48.3989453Z,PASS,,Hessian [[1;1],[1;2]] is positive definite with determinant1 and positive eigenvalues
+MS003,2026-08-28T03:25:48.3989453Z,PASS,,q0 through q7 alternate vertical x2 updates and horizontal x1 updates
+MS004,2026-08-28T03:25:48.3989453Z,PASS,,each vertical update satisfies x1+2*x2=0 at its endpoint
+MS005,2026-08-28T03:25:48.3989453Z,PASS,,each horizontal update satisfies x1+x2=0 at its endpoint
+MS006,2026-08-28T03:25:48.3989453Z,PASS,,objective values 2.92 2.56 1.28 .64 .32 .16 .08 .04 strictly decrease
+MS007,2026-08-28T03:25:48.3989453Z,PASS,,x-star at origin is the true unique optimum while q7 is only an approximation
+MS008,2026-08-28T03:25:48.3989453Z,PASS,,source alt text and current chapter statement match the axis-aligned coordinate-descent interpretation
+MS009,2026-08-28T03:25:48.3989453Z,PASS,,actual plot paths distinguish solid horizontal x1 updates from dashed vertical x2 updates in grayscale
+MS010,2026-08-28T03:25:48.3989453Z,FAIL,HARD-LEGEND-X2-SEGMENTS-COLLAPSE,legend does not preserve that role distinction because both samples are solid continuous lines

@@ -1,0 +1,39 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V3-C05",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 1,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V3-C05-01",
+      "source_path": "绘图源码/第03册_优化模型与序列模型/V3-C05/fig_v3_c05_lattice.tex",
+      "source_file": "fig_v3_c05_lattice.tex",
+      "source_kind": "tikz",
+      "label": "fig:V3-C05-lattice",
+      "caption": "HMM状态格：前向/后向对路径求和，Viterbi保留最大概率前驱",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "读图时应回答：“HMM状态格：前向/后向对路径求和，Viterbi保留最大概率前驱”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第03册_优化模型与序列模型/chapters/V3-C05.tex",
+        "target_label": "fig:V3-C05-lattice",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-10-02-005"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：HMM状态格：前向/后向对路径求和，Viterbi保留最大概率前驱"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

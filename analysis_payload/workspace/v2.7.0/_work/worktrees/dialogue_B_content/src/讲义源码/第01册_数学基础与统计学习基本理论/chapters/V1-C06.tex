@@ -1,0 +1,835 @@
+% STAGE08-CHAPTER: V1-C06
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V1-C06-CH01}; CH-02=\label{struct:V1-C06-CH02}; CH-03=\label{struct:V1-C06-CH03}; CH-04=\label{struct:V1-C06-CH04}; CH-05=\label{struct:V1-C06-CH05}; CH-06=\label{struct:V1-C06-CH06}; CH-07=\label{struct:V1-C06-CH07}; CH-08=\label{struct:V1-C06-CH08}; CH-09=\label{struct:V1-C06-CH09}; CH-10=\label{struct:V1-C06-CH10}; CH-11=\label{struct:V1-C06-CH11}; CH-12=\label{struct:V1-C06-CH12}; CH-13=\label{struct:V1-C06-CH13}; CH-14=\label{struct:V1-C06-CH14}; CH-15=\label{struct:V1-C06-CH15}; CH-16=\label{struct:V1-C06-CH16}; CH-17=\label{struct:V1-C06-CH17}; CH-18=\label{struct:V1-C06-CH18}; CH-19=\label{struct:V1-C06-CH19}; CH-20=\label{struct:V1-C06-CH20}; CH-21=\label{struct:V1-C06-CH21}; CH-22=\label{struct:V1-C06-CH22}; CH-23=\label{struct:V1-C06-CH23}; CH-24=\label{struct:V1-C06-CH24}; CH-25=\label{struct:V1-C06-CH25}; CH-26=\label{struct:V1-C06-CH26}; CH-27=\label{struct:V1-C06-CH27}; CH-28=\label{struct:V1-C06-CH28}; CH-29=\label{struct:V1-C06-CH29}; CH-30=\label{struct:V1-C06-CH30}; CH-31=\label{struct:V1-C06-CH31}; CH-32=\label{struct:V1-C06-CH32}; CH-33=\label{struct:V1-C06-CH33}; CH-34=\label{struct:V1-C06-CH34}; CH-35=\label{struct:V1-C06-CH35}; CH-36=\label{struct:V1-C06-CH36}; CH-37=\label{struct:V1-C06-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V1-C06-binary-entropy -> PRE-IN-002
+\chapter{信息论基础}\label{chap:V1-C06}
+\SLChapterOpening{从熵直达KL、互信息与树划分准则}{如何量化不确定性、分布差异与条件信息}{能够复现KL非负及互信息恒等式的完整条件链}{\cref{chap:V1-C04}的联合条件分布、期望和对数函数；本章先补有限Jensen不等式}{支撑或归一化不闭合时返回KL定义和条件熵节}
+\index{信息论}
+
+
+\phantomsection\label{struct:V1-C06-CH01}
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 从事件信息量建立熵、条件熵、联合熵与互信息，并掌握各自的取值条件；
+  \item 完整证明KL散度非负，理解交叉熵与最大似然之间的等价关系；
+  \item 能够计算信息增益、信息增益比和基尼指数，并用于分类划分评价。
+\end{itemize}}
+
+\phantomsection\label{struct:V1-C06-CH02}
+\begin{prerequisitebox}
+需要离散概率分布、条件概率、联合与边缘分布、期望和对数函数。Jensen不等式在下文首次使用前给出有限加权版本。约定 $0\log0=0$，对数底为2时单位为比特，底为$e$时单位为奈特。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V1-C06-CH03}
+% KNOWLEDGE-PLAN: KN-V1-C06-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}信息论基础先修自检固定核验“能否验证一组非负数是否构成归一化概率分布”；请验证一组非负数实际构成归一化概率分布并写出中间结果，再按“中间结果直接回答首项“能否验证一组非负数是否构成归一化概率分布”并给出通过或失败”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否验证一组非负数是否构成归一化概率分布？
+  \item 能否把 $p(x,y)$ 分解成 $p(x\mid y)p(y)$？
+  \item 能否说明 $-\log p$ 随$p$减小而增大，并判断 $\log$ 的凹凸性？
+\end{enumerate}
+若不能完成，先回看\cref{sec:V1-C04-S02,sec:V1-C04-S03,sec:V1-C04-S04}；Jensen不等式无需预习，紧接着的前置知识框会给出本章所需版本。
+\end{precheckbox}
+
+\phantomsection\label{struct:V1-C06-CH04}
+\begin{dependencybox}
+信息量 $\to$ 熵 $\to$ 联合熵与条件熵 $\to$ 互信息；
+交叉熵 $-$ 熵 $\to$ KL散度；
+条件熵下降 $\to$ 信息增益 $\to$ 信息增益比；类别不纯度 $\to$ 基尼指数。
+\end{dependencybox}
+
+\phantomsection\label{pre:V1-C06-finite-jensen}
+\begin{keypointbox}[title=前置知识：有限加权Jensen不等式]
+设$D$为凸集，$x_1,\ldots,x_m\in D$，权重$\lambda_i\ge0$且
+$\sum_{i=1}^m\lambda_i=1$。若$f:D\to\mathbb R$为凸函数，则
+\[
+f\!\left(\sum_{i=1}^m\lambda_i x_i\right)
+\le \sum_{i=1}^m\lambda_i f(x_i);
+\]
+若$f$为凹函数，不等号反向。严格凸（或严格凹）时，在所有正权重点属于定义域的条件下，等号要求这些点相同。
+
+本章反复使用凹函数$\log$。例如取$x_1=1,x_2=4$及$\lambda_1=\lambda_2=1/2$，有
+\[
+\log\frac{1+4}{2}=\log 2.5
+\ge \frac12\log1+\frac12\log4=\log2,
+\]
+方向与数值大小一致。使用时必须同时核对：点位于定义域内、权重非负、权重和为$1$。\cref{sec:V1-C07-S05}将在凸函数体系中给出归纳证明和概率形式。
+\end{keypointbox}
+
+\phantomsection\label{struct:V1-C06-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V1-C06
+\index[symbols]{i-x--sd6e62ce3f6e0@$I(x)$：事件结果$x$的自信息 $-\log p(x)$}
+\index[symbols]{h-x-h-x-minus-midy-minus--s1a10d16f921d@$H(X),H(X\mid Y)$：熵与条件熵}
+\index[symbols]{d-minus-mathrm-minus-kl-p-minus-vertq-minus--s5c46d9916e44@$D_{\mathrm{KL}}(P\Vert Q)$：相对熵}
+\index[symbols]{h-p-q--s762bbbff0e81@$H(P,Q)$：用$Q$编码来自$P$的数据的交叉熵}
+\index[symbols]{i-x-u003b-y--s754d14db1c62@$I(X;Y)$：互信息}
+% STAGE19-SYMBOL-INDEX-END: V1-C06
+\textbf{本章主线约定。}除“扩展讨论”明确另述外，$X,Y$均取值于有限字母表，所有边缘熵、联合熵与条件熵因而是有限实数，有限求和也可直接换序。若允许可数无限支持或一般测度空间，互信息以KL散度定义；只有相关熵均有限时才把它改写为熵的差，绝不进行未定义的$+\infty-\infty$运算。
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值 & 含义\\ \midrule
+$I(x)$ & $[0,\infty]$ & 事件结果$x$的自信息 $-\log p(x)$\\
+$H(X),H(X\mid Y)$ & $[0,\infty)$ & 主线有限字母表上的熵与条件熵\\
+$D_{\mathrm{KL}}(P\Vert Q)$ & $[0,+\infty]$ & 相对熵\\
+$H(P,Q)$ & $[0,+\infty]$ & 用$Q$编码来自$P$的数据的交叉熵\\
+$I(X;Y)$ & $[0,\infty)$ & 主线有限字母表上的互信息\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{信息量与熵}{sec:V1-C06-S01}
+\phantomsection\label{struct:V1-C06-CH06}
+\knowledgeanchor{PRE-IN-001}{信息量}
+结果$x$的自信息在扩展实数中定义为
+\[
+I(x)=
+\begin{cases}
+-\log p(x),&p(x)>0,\\
++\infty,&p(x)=0.
+\end{cases}
+\]
+零概率点不会在该模型下以正概率被观察到，但把其自信息记为$+\infty$可准确记录支持失败。独立事件同时发生时概率相乘，而有限自信息相加，这解释了对数形式；概率1的确定事件信息量为0。
+
+% KNOWLEDGE-PLAN: KN-V1-C06-FORMULA-001 L1
+\paragraph{读前自检：熵。}对信息论基础中的熵，条件“若$X$有$K$个可能值”不可省；请在共同支持上代入$H(X)$并合并一项，再用上界当且仅当分布均匀时取得作检查。\par
+
+\phantomsection\label{struct:V1-C06-CH07}
+\knowledgeanchor{PRE-IN-002}{熵}
+\begin{definition}[离散熵]
+对质量函数$p$，随机变量$X$的熵为
+\[
+H(X)=-\sum_xp(x)\log p(x)=\mathbb E[-\log p(X)].
+\]
+\end{definition}
+熵是观察之前的平均不确定性，而单个结果的信息量是观察之后针对该结果的量。
+
+\phantomsection\label{struct:V1-C06-CH12}
+\begin{theorem}[有限均匀分布最大熵]
+若$X$有$K$个可能值，则 $0\le H(X)\le\log K$；上界当且仅当分布均匀时取得。
+\end{theorem}
+\phantomsection\label{struct:V1-C06-CH15}
+% KNOWLEDGE-PLAN: KN-V1-C06-PROOF-001 L1
+\paragraph{读前自检：证明：有限均匀分布最大熵。}设$P$支撑于至多$K$个点。请用Jensen不等式推出$H(P)\le\log K$，并核对等号仅在$K$点均匀时成立。\par
+
+\begin{proof}
+记正概率支持为$S=\{x:p(x)>0\}$。由$\log$的凹性直接应用Jensen不等式，
+\[
+H(P)=\sum_{x\in S}p(x)\log\frac1{p(x)}
+\le\log\!\left(\sum_{x\in S}p(x)\frac1{p(x)}\right)
+=\log|S|\le\log K.
+\]
+第一处等号要求$1/p(x)$在$S$上为常数，第二处等号要求$|S|=K$，故上界等号当且仅当$P$在全部$K$点上均匀。另一方面，$0<p(x)\le1$使每个$-p(x)\log p(x)$非负，故$H(P)\ge0$。此证明不依赖后文才定义的KL散度。
+\end{proof}
+
+\phantomsection\label{struct:V1-C06-CH19}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C06/fig_v1_c06_binary_entropy.tex}
+对称性给出$H_{\mathrm b}(p)=H_{\mathrm b}(1-p)$；二阶导数为负说明\cref{fig:V1-C06-binary-entropy}中的曲线严格凹，驻点$p=1/2$因此是唯一最大点。
+\SLReviewSection{条件熵与联合熵}{sec:V1-C06-S02}
+\knowledgeanchor{PRE-IN-003}{条件熵}
+在本章有限字母表约定下，
+\[
+H(X\mid Y)=-\sum_{x,y}p(x,y)\log p(x\mid y)=\sum_yp(y)H(X\mid Y=y).
+\]
+它先在每个条件分布中计算不确定性，再按条件变量的概率平均。
+\knowledgeanchor{PRE-IN-004}{联合熵}
+联合熵定义为
+\[
+H(X,Y)=-\sum_{x,y}p(x,y)\log p(x,y).
+\]
+利用 $p(x,y)=p(y)p(x\mid y)$，得到链式法则
+\[
+H(X,Y)=H(Y)+H(X\mid Y)=H(X)+H(Y\mid X).
+\]
+
+\phantomsection\label{struct:V1-C06-CH13}
+\begin{lemma}[条件化不增加离散熵]
+若$X,Y$取值于有限字母表，则$H(X\mid Y)\le H(X)$，等号当且仅当$X,Y$独立（忽略零概率点）。
+\end{lemma}
+% KNOWLEDGE-PLAN: KN-V1-C06-PROOF-002 L1
+\paragraph{读前自检：证明：条件化不增加离散熵。}条件化不增加离散熵可写成$H(X)-H(X\mid Y)=I(X;Y)$；请把互信息展开为$D_{\mathrm{KL}}(P_{XY}\Vert P_XP_Y)$，由非负性核对$H(X\mid Y)\le H(X)$，并指出等号对应$X,Y$独立。\par
+
+\begin{proof}
+有限字母表保证$H(X)$与$H(X\mid Y)$均有限，所以下面的差不是$+\infty-\infty$。令$S=\{(x,y):p(x,y)>0\}$并记$\Delta=H(X)-H(X\mid Y)$。直接展开后，
+\[
+\Delta=\sum_{(x,y)\in S}p(x,y)
+\log\frac{p(x,y)}{p_X(x)p_Y(y)}.
+\]
+不引用后文的互信息或KL结论，而对$-\Delta$直接使用$\log$的凹性：
+\[
+-\Delta
+\le\log\!\sum_{(x,y)\in S}p_X(x)p_Y(y)
+\le\log1=0.
+\]
+因此$H(X\mid Y)\le H(X)$。等号要求$p(x,y)=p_X(x)p_Y(y)$并且边缘乘积分布在$S$外没有质量，恰好等价于$X,Y$独立（零概率点按通常约定忽略）。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V1-C06-BOUNDARY-001 L1
+\paragraph{读前自检：常见错误与误用边界：条件熵与联合熵。}令$P(Z=n)=C/[n(\log n)^2]$（$n\ge2$），$B\sim\operatorname{Bernoulli}(1/2)$且与$Z$独立，并取$X=(B,Z),Y=B$；请核对$H(X)=H(X\mid Y)=+\infty$使熵差未定义，而$D_{\mathrm{KL}}(P_{XY}\Vert P_X\otimes P_Y)=\log2$。\par
+
+\begin{warningbox}
+\textbf{扩展讨论：无限熵反例不能用“$\infty=\infty$”判断独立。}令$Z$取值$n\ge2$且$P(Z=n)=C/[n(\log n)^2]$，其中$C$为归一化常数，则$H(Z)=+\infty$。再令$B\sim\operatorname{Bernoulli}(1/2)$与$Z$独立，并取$X=(B,Z),Y=B$。此时$Y$由$X$决定，二者显然相关，却有
+\[
+H(X)=+\infty,
+\qquad
+H(X\mid Y)=+\infty.
+\]
+差$H(X)-H(X\mid Y)$没有定义；按KL定义计算才得到良定义的$I(X;Y)=H(B)=\log2$。因此一般版本必须以$I(X;Y)=D_{\mathrm{KL}}(P_{XY}\Vert P_X\otimes P_Y)$为定义。
+\end{warningbox}
+
+% CORE-DERIVATION-PLAN: KN-V1-C06-DERIVATION-001
+\SLKnowledgeBridge{用 Jensen 不等式建立非负性，并准确识别等号成立条件。}{概率分布 $P,Q$，且 $P$ 的支持包含在 $Q$ 的支持中。}{$P,Q$ 均归一化；在 $P(x)>0$ 处有 $Q(x)>0$。}{先在 $P$ 下对 $\log\dfrac{Q(X)}{P(X)}$ 应用凹函数 $\log$ 的 Jensen 不等式。}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C06-FORMULA-004 L1
+\paragraph{读前自检：KL散度（相对熵）。}围绕KL散度（相对熵），先采用条件“若$P(x)>0,Q(x)=0$”，再在共同支持上代入$D_{\mathrm{KL}}(P\Vert Q)$并合并一项；最后验证交换两分布通常会改变数值，且可能把有限值变为无穷。\par
+% KNOWLEDGE-PLAN: KN-V1-C06-DEFINITION-002 L1
+\paragraph{读前自检：KL散度的定义和狄利克雷分布的性质。}KL散度的定义和狄利克雷分布的性质中的“若$P(x)>0,Q(x)=0$”决定可执行范围；请在共同支持上代入$D_{\mathrm{KL}}(P\Vert Q)$并合并一项，结果须满足交换两分布通常会改变数值，且可能把有限值变为无穷。\par
+
+\SLTeachSection{KL散度与交叉熵}{sec:V1-C06-S03}
+\knowledgeanchor{PRE-IN-005}{KL散度（相对熵）}
+\knowledgeanchor{SLM-E-00-001}{KL散度的定义和狄利克雷分布的性质}
+\knowledgeanchor{SLM-E-01-001}{KL散度的定义}
+对有限离散分布$P,Q$，约定$0\log(0/q)=0$；若$P(x)>0,Q(x)=0$，则该项为$+\infty$。定义
+\begin{equation}\label{eq:V1-C06-kl-definition}
+D_{\mathrm{KL}}(P\Vert Q)=\sum_xP(x)\log\frac{P(x)}{Q(x)}.
+\end{equation}
+若$P,Q$在$\mathbb R^d$上相对于Lebesgue测度有密度$p,q$，主线直接应用
+\[
+D_{\mathrm{KL}}(P\Vert Q)
+=\int_{\mathbb R^d}p(x)\log\!\bigl(p(x)/q(x)\bigr)\,\mathrm dx,
+\]
+并约定$p>0,q=0$处散度为$+\infty$。
+\textbf{扩展讨论（一般测度空间）。}若$P\ll Q$（$P$对$Q$绝对连续），用Radon--Nikodym导数定义
+\[
+D_{\mathrm{KL}}(P\Vert Q)=\int\log\!\left(\frac{\mathrm dP}{\mathrm dQ}\right)\,\mathrm dP.
+\]
+当$P,Q$相对于同一支配测度分别有密度$p,q$时，这才化为$\int p\log(p/q)$。若$P\not\ll Q$，即存在事件$A$满足$P(A)>0,Q(A)=0$，则定义散度为$+\infty$；这比只比较单点密度更准确。交换两分布通常会改变数值，且可能把有限值变为无穷。
+
+\knowledgeanchor{PRE-IN-006}{交叉熵}
+在主线有限字母表上，$H(P)<\infty$。交叉熵 $H(P,Q)=-\sum_xP(x)\log Q(x)$ 因而在扩展实数中满足
+\[
+H(P,Q)=H(P)+D_{\mathrm{KL}}(P\Vert Q).
+\]
+若$Q$在$P$的正支持上取零，则等式两边均为$+\infty$；这里从不把它倒写成两个无穷量之差。当数据分布$P$固定时，最小化交叉熵等价于最小化KL散度，也等价于最大化模型$Q$的期望对数似然。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V1-C06-CH11}
+\begin{derivationgoalbox}
+逐步证明KL散度非负，并确定等号条件。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+先处理$P$的支持包含于$Q$支持且两者归一化的情形；使用凹函数$\log$的Jensen不等式。
+\end{derivationprepbox}
+\textbf{推导第1步：}记 $S=\{x:P(x)>0\}$。在 $S$ 上把负散度写成
+\[
+-D_{\mathrm{KL}}(P\Vert Q)=\sum_{x\in S}P(x)\log\frac{Q(x)}{P(x)}.
+\]
+
+\textbf{推导第2步：}由 $\log$ 的凹性，
+\[
+-D_{\mathrm{KL}}(P\Vert Q)
+\le \log\sum_{x\in S}Q(x)
+\le \log 1=0.
+\]
+第二个不等式不能擅自把 $S$ 外的 $Q$ 质量计入求和；这正是支持集边界需要单独写出的原因。
+
+\textbf{推导第3步：}两边乘以 $-1$ 得到
+% CORE-DERIVATION-PLAN: KN-V1-C06-DERIVATION-002
+\SLKnowledgeBridge{把联合分布相对独立分布的 KL 散度拆成熵差。}{有限字母表上的联合分布 $p(x,y)$ 及边缘分布 $p_X,p_Y$。}{分布已归一化，并采用 $0\log0=0$；有限求和可重新分组。}{先展开 $\log\dfrac{p(x,y)}{p_X(x)p_Y(y)}=\log p(x,y)-\log p_X(x)-\log p_Y(y)$。}
+
+\begin{equation}\label{eq:V1-C06-kl-nonnegative}
+D_{\mathrm{KL}}(P\Vert Q)\ge0.
+\end{equation}
+若取等，则既要有 $Q(x)/P(x)$ 在 $S$ 上为常数，又要有 $\sum_{x\in S}Q(x)=1$。归一化迫使该常数为1且 $S$ 外的 $Q$ 质量为0，故 $Q=P$。反过来，若$Q=P$，则每个$P(x)>0$的项都有$\log(P(x)/Q(x))=\log1=0$，而$P(x)=0$的项按$0\log0=0$约定贡献为零，故总和为零。若某点满足 $P(x)>0,Q(x)=0$，则散度为 $+\infty$，非负性仍成立。
+
+\phantomsection\label{struct:V1-C06-CH14}
+% KNOWLEDGE-PLAN: KN-V1-C06-COROLLARY-001 L1
+\paragraph{读前自检：Corollary：真实类别分布固定时，交叉熵的最小值是其自身熵，并且只有预测分布等于真实分布时……。}真实类别分布$P$固定时，交叉熵满足$H(P,Q)=H(P)+D_{\mathrm{KL}}(P\Vert Q)$；请减去$H(P)$并用KL非负性核对最小值为$H(P)$，等号仅在$Q=P$时取得。\par
+
+\begin{corollary}
+真实类别分布固定时，交叉熵的最小值是其自身熵，并且只有预测分布等于真实分布时达到。
+\end{corollary}
+
+\phantomsection\label{struct:V1-C06-CH20}
+\begin{example}[二元分布的双向KL比较]\label{exm:V1-C06-kl-asymmetry}
+真实二元分布为$P=(0.8,0.2)$，模型为$Q=(0.6,0.4)$。分别计算两个方向的KL散度并比较。
+\end{example}
+\SLExampleSolutionHeading{exm:V1-C06-kl-asymmetry}
+\begin{solution}
+\SLReadTranslation{在同一二元支持上分别按$P\Vert Q$与$Q\Vert P$的次序计算KL散度，并用数值结果判断其是否对称。}
+\SolGiven $P=(0.8,0.2)$与$Q=(0.6,0.4)$均归一化且在共同支持上严格为正，所以两个方向的KL都有限。
+\SLMethodTrigger{保持分子分母次序分别展开两个KL和式，再用方向无关的总变差与Pinsker下界检查数值量级。}
+\SolPlan 计算$\sum_iP_i\log(P_i/Q_i)$和$\sum_iQ_i\log(Q_i/P_i)$，比较两值，并核验它们都不小于$2\|P-Q\|_{\mathrm{TV}}^2$。
+\SolDerive
+两个分布在有限支持$\{1,2\}$上均严格为正，所以两个方向的KL都有限。以自然对数计，
+\[
+\begin{aligned}
+D_{\mathrm{KL}}(P\Vert Q)
+&=0.8\log\frac{0.8}{0.6}+0.2\log\frac{0.2}{0.4}\\
+&=0.8\log\frac43+0.2\log\frac12
+\approx0.09152,\\
+D_{\mathrm{KL}}(Q\Vert P)
+&=0.6\log\frac{0.6}{0.8}+0.4\log\frac{0.4}{0.2}\\
+&=0.6\log\frac34+0.4\log2
+\approx0.10465.
+\end{aligned}
+\]
+\SolCheck 总变差距离为$\lVert P-Q\rVert_{\mathrm{TV}}=0.2$；Pinsker不等式对两个方向都给出下界$2(0.2)^2=0.08$，而$0.09152$与$0.10465$均满足该界。
+
+\SolAnswer $D_{\mathrm{KL}}(P\Vert Q)\approx0.09152$，$D_{\mathrm{KL}}(Q\Vert P)\approx0.10465$；两值不同，故KL散度不对称，也不是度量距离。
+\end{solution}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C06-CONCEPT-003 L1
+\paragraph{读前自检：互信息。}信息论基础中的互信息要求先确认“设$X,Y$取值于有限字母表，联合分布$p(x,y)$已归一化”；请随后在共同支持上代入$I(X;Y)$并合并一项，用若观察$Y$不能改变$X$的条件分布，则条件熵等于边缘熵，互信息为0验收。\par
+
+\SLTeachSection{互信息}{sec:V1-C06-S04}
+\knowledgeanchor{PRE-IN-007}{互信息}
+% DERIVATION-ID: V1-C06-mutual-information-identities
+\begin{derivationgoalbox}
+从KL定义推出互信息的熵差表达式，并说明该表达式为何关于$X,Y$对称。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+设$X,Y$取值于有限字母表，联合分布$p(x,y)$已归一化；边缘分布为$p_X(x)=\sum_y p(x,y)$与$p_Y(y)=\sum_xp(x,y)$，并采用$0\log0=0$约定。有限性保证下列拆项与熵差均合法。
+\end{derivationprepbox}
+\textbf{推导第1步：展开KL。}按定义
+\begin{equation}\label{eq:V1-C06-mi-kl}
+I(X;Y)=D_{\mathrm{KL}}(p_{XY}\Vert p_Xp_Y)
+=\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p_X(x)p_Y(y)}.
+\end{equation}
+式\eqref{eq:V1-C06-mi-kl}也是可数或一般空间中的基本定义（一般空间把$p_Xp_Y$换成乘积分布$P_X\otimes P_Y$）；即使某些熵为$+\infty$，该KL定义仍不会制造$+\infty-\infty$。
+将对数拆成三项并分别求和，得到
+\begin{equation}\label{eq:V1-C06-mi-symmetric}
+I(X;Y)=H(X)+H(Y)-H(X,Y).
+\end{equation}
+
+\textbf{推导第2步：使用熵的链式法则。}由$H(X,Y)=H(Y)+H(X\mid Y)$，
+\begin{equation}\label{eq:V1-C06-mi-entropy-difference}
+I(X;Y)=H(X)-H(X\mid Y).
+\end{equation}
+再把$H(X,Y)=H(X)+H(Y\mid X)$代入$I(X;Y)=H(X)+H(Y)-H(X,Y)$，逐项约去$H(X)$，得到
+\[
+I(X;Y)=H(X)+H(Y)-\{H(X)+H(Y\mid X)\}=H(Y)-H(Y\mid X).
+\]
+
+\textbf{推导第3步：核对性质。}式$H(X)+H(Y)-H(X,Y)$在交换$X,Y$后不变，所以互信息对称；其KL形式给出$I(X;Y)\ge0$，且等号成立当且仅当$p(x,y)=p_X(x)p_Y(y)$，即两变量独立。互信息因此衡量观察一个变量后另一个变量不确定性的平均下降。
+
+\phantomsection\label{struct:V1-C06-CH16}
+\begin{geometrybox}
+\textbf{几何解释。}可以把联合分布与“独立模型”$p_Xp_Y$看作概率单纯形中的两个点，互信息用KL量化二者偏离。它不是对称度量，却以零集合精确刻画独立流形。
+\end{geometrybox}
+\phantomsection\label{struct:V1-C06-CH17}
+\begin{probabilitybox}
+若观察$Y$不能改变$X$的条件分布，则条件熵等于边缘熵，互信息为0；若$Y$完全决定$X$，则条件熵为0，互信息达到$H(X)$。
+\end{probabilitybox}
+\phantomsection\label{struct:V1-C06-CH18}
+\begin{optimizationbox}
+\textbf{优化解释。}最大化互信息可用于选择保留标签信息的特征或表示，但高维中联合密度估计困难，有限样本估计会产生偏差；实际目标常采用可计算下界或离散计数估计。
+\end{optimizationbox}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C06-CONCEPT-007 L1
+\paragraph{读前自检：信息增益。}把数据集$D$按常量特征$A$分组；请计算$H(D\mid A)=H(D)$，代入$g(D,A)=H(D)-H(D\mid A)$并核对信息增益为$0$。\par
+
+\SLAdvancedSection{信息增益与信息增益比}{sec:V1-C06-S05}
+\knowledgeanchor{PRE-IN-008}{信息增益}
+数据集$D$按特征$A$分组后，信息增益定义为
+\[
+g(D,A)=H(D)-H(D\mid A),
+\]
+等于经验标签与特征之间的互信息。取值越大，划分后标签越纯。
+\knowledgeanchor{PRE-IN-009}{信息增益比}
+为抑制取值很多的特征偏好，定义 $g_R(D,A)=g(D,A)/H_A(D)$，其中 $H_A(D)$ 是样本在特征取值上的划分熵；分母为0时该特征不能形成有效划分。
+
+\phantomsection\label{struct:V1-C06-CH08}
+\textbf{模型。}在一个决策树节点上，以经验频率估计标签分布和“特征取值--标签”联合分布。
+\phantomsection\label{struct:V1-C06-CH09}
+\textbf{学习策略。}比较候选特征造成的加权条件熵下降，并在信息增益相近时用增益比控制多值偏好。
+
+\phantomsection\label{struct:V1-C06-CH10}
+\phantomsection\label{struct:V1-C06-CH21}
+\phantomsection\label{struct:V1-C06-CH22}
+\phantomsection\label{struct:V1-C06-CH23}
+\phantomsection\label{struct:V1-C06-CH24}
+\phantomsection\label{struct:V1-C06-CH25}
+\phantomsection\label{struct:V1-C06-CH26}
+\phantomsection\label{struct:V1-C06-CH27}
+% KNOWLEDGE-PLAN: KN-V1-C06-ALGORITHM_IDEA-001 L2
+
+% KNOWLEDGE-PLAN: KN-V1-C06-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={离散特征的信息增益与增益比评估：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限数据$D$、类别数$K$、有序候选离散特征集$\mathcal A$、冻结的增益/增益比准则与并列规则},
+  output={最后合法评分记录、推荐特征或空推荐、实际候选/样本计数、状态与最终诊断},
+  preconditions={$n\ge1$、$K\ge1$，标签和登记特征值合法有限，评分准则与并列规则预先固定},
+  initialization={计算父标签计数与熵，置评分记录为空且$a_{\rm done}=s_{\rm done}=0$},
+  loop={按固定顺序逐候选构造临时取值--类别表，扫描$n$个样本后计算条件熵、划分熵与分数},
+  update={候选计数表和分数全部有限后才原子追加评分记录并增加$a_{\rm done}$},
+  domain={经验概率非负且归一；约定$0\log0=0$；划分熵为零时增益比未定义并从该排序排除},
+  failure={数据、标签、特征编码或规则非法返回$\mathtt{invalid\_input}$；计数、对数、熵或分数非有限返回$\mathtt{numerical\_failure}$并保留最后合法评分前缀},
+  stop={全部候选完成，或首次失败时停止；空候选及无有效增益比候选正常完成但不推荐},
+  budget={至多$|\mathcal A|$个候选与$n|\mathcal A|$次样本访问，另有有限状态表扫描},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$a_{\rm done}$计实际完成候选数，$s_{\rm done}$计实际成功读取的候选--样本对数},
+  diagnostics={父熵、各划分熵与有效标志、并列集合、空推荐原因、失败候选/样本与阶段},
+  complexity={$O(n|\mathcal A|+K\sum_AV_A)$时间；顺序候选时$O(K\max_AV_A+|\mathcal A|)$额外空间}
+}
+\begin{algorithm}[H]
+\caption{离散特征的信息增益与增益比评估}\label{alg:V1-C06-gain}
+\KwIn{数据$D$，有序候选$\mathcal A$，$K$，评分准则与固定并列规则}
+\KwOut{最后合法评分记录与推荐；$a_{\rm done},s_{\rm done}$；$\mathtt{status}$与诊断}
+若$n<1$、$K<1$、标签/特征编码或规则非法，返回空记录、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+初始化类别计数并计算父节点熵$H_D$，置$a_{\rm done}=s_{\rm done}=0$；若非有限则返回$\mathtt{numerical\_failure}$及父熵诊断\;
+若$\mathcal A=\varnothing$，返回空记录与推荐、$\mathtt{completed}$及空候选诊断\;
+\For{$A\in\mathcal A$}{
+  初始化临时“取值--类别”计数表\;
+  \For{$i\leftarrow1$ \KwTo $n$}{读取并更新临时计数；成功后增加$s_{\rm done}$；若计数异常，返回旧记录、$\mathtt{numerical\_failure}$及$(A,i)$诊断\;}
+  形成临时$H(D\mid A),H_A(D),g_A$；若$H_A(D)>0$则形成$r_A$，否则标记增益比未定义\;
+  若任一应定义量非有限，则返回旧记录、$\mathtt{numerical\_failure}$及$A$评分诊断\;
+  原子追加$(A,g_A,r_A,\text{有效标志})$并增加$a_{\rm done}$\;
+}
+按冻结准则从完整有效记录中选择；若集合为空则保持空推荐；返回$\mathtt{completed}$及并列/退化最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{首次阅读只做“父熵—条件熵—得分—选择”；实现时再处理零分母、非法编码、并列与失败状态}
+
+\textbf{终止与退化说明。}候选特征集和样本集均有限时，过程完成确定次数的计数与比较后终止，不存在参数极限过程。空数据、空候选集或全部增益比分母为零时，评分规则在当前输入上未定义，应报告相应退化条件而不产生特征推荐。
+
+
+\SLAdvancedSection{基尼指数}{sec:V1-C06-S06}
+\knowledgeanchor{PRE-IN-010}{基尼指数}
+类别概率为$p_1,\ldots,p_K$时，基尼不纯度为
+\[
+G(p)=1-\sum_{k=1}^{K}p_k^2=\sum_kp_k(1-p_k).
+\]
+它等于按$p$随机抽取两个独立标签时二者不同的概率。二分类时 $G=2p(1-p)$；纯节点为0，均匀类别分布达到最大值 $1-1/K$。
+
+
+\phantomsection\label{struct:V1-C06-CH28}
+\phantomsection\label{struct:V1-C06-CH29}
+% KNOWLEDGE-PLAN: KN-V1-C06-BOUNDARY-002 L1
+\paragraph{读前自检：复杂度分析：基尼指数。}信息论基础中的基尼指数依赖“若需现场排序、哈希扩容或处理开放词表，应把相应实现成本另行加入”；请据此由$n$的总成本剥离一次迭代或一次样本因子，并直接核对预测复杂度：本算法只给出特征排序，并未训练可对新样本输出标签的预测器。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界假设每个离散特征值已映射为可在单位时间索引的有限状态，顺序扫描全部$n$个样本和$M$个候选特征；$V_j$只计已登记的状态数。若需现场排序、哈希扩容或处理开放词表，应把相应实现成本另行加入。
+设$n$为样本数、$K$为类别数、$M$为候选特征数，$V_j$为第$j$个特征的取值数。\textbf{训练复杂度：}逐特征计数与评分为$O(nM+K\sum_jV_j)$；计数已知后，熵或基尼的计算线性于非零状态数。\textbf{预测复杂度：}本算法只给出特征排序，并未训练可对新样本输出标签的预测器。\textbf{存储复杂度：}顺序处理特征时为$O(K\max_jV_j+M)$，同时保存全部“取值--类别”表时为$O(K\sum_jV_j)$。
+\end{complexitybox}
+
+\phantomsection\label{struct:V1-C06-CH30}
+\phantomsection\label{struct:V1-C06-CH31}
+\begin{applicabilitybox}
+\textbf{适用条件：}离散熵和基于频数的划分准则适用于类别或经过明确离散化的特征；交叉熵适合概率预测并要求模型对真实支持赋正概率。\textbf{局限性：}高维互信息的经验估计偏差较大，信息增益偏爱多值特征，增益比可能偏爱极端不均衡划分，KL散度不对称且不满足三角不等式。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V1-C06-CH32}
+% KNOWLEDGE-PLAN: KN-V1-C06-BOUNDARY-004 L1
+\paragraph{读前自检：常见错误与误用边界：基尼指数。}信息论基础中的基尼指数以“边界框首项禁止把条件熵写成未按条件变量概率加权的平均”为约束；请把固定错误“把条件熵写成未按条件变量概率加权的平均”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，并确认改写后的运算或判断有定义，且不再触发“把条件熵写成未按条件变量概率加权的平均”。\par
+
+\begin{warningbox}
+典型误用包括：漏写负号导致“熵”为负；混用对数底却比较绝对数值；把条件熵写成未按条件变量概率加权的平均；交换KL方向；在模型概率为零处忽略无限损失；把信息增益比的零分母当作零；使用未归一化计数代替概率计算熵。
+\end{warningbox}
+
+\phantomsection\label{struct:V1-C06-CH33}
+\begin{comparisonbox}
+\textbf{概念对比：}熵描述单一分布的不确定性，交叉熵评价用另一分布编码的代价；在本章有限字母表主线下，KL等于交叉熵减去熵，而一般情形应保留KL本身的定义，不能相减两个无穷量。互信息是联合分布偏离边缘独立模型的KL。信息增益使用熵下降，基尼下降使用二次不纯度下降，二者常给出相近但不必相同的划分排序。KL不是距离，而互信息虽对变量对称，也不是变量取值之间的距离。
+\end{comparisonbox}
+
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V1-C06-CH34}
+\phantomsection\label{struct:V1-C06-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S01-01}
+以2为底计算概率分别为 $1/2,1/4,1/8$ 的结果所携带的信息量。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S01-01}
+\begin{chapterexercisesolution}{ex:V1-C06-S01-01}
+自信息$I(p)=-\log_2p$在$0<p\le1$时有限，零概率事件按极限取$I(0)=+\infty$。对三个正概率，
+\[
+\begin{aligned}
+I(1/2)&=-\log_2(2^{-1})=1\ \text{bit},\\
+I(1/4)&=-\log_2(2^{-2})=2\ \text{bit},\\
+I(1/8)&=-\log_2(2^{-3})=3\ \text{bit},\\
+I(p/2)&=-\log_2p+1=I(p)+1.
+\end{aligned}
+\]
+这些是单个结果的信息量；只有对完整归一化分布作概率加权后才得到熵。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S01-02}
+计算伯努利$(1/4)$的二元熵，并与伯努利$(1/2)$比较。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S01-02}
+\begin{chapterexercisesolution}{ex:V1-C06-S01-02}
+伯努利分布支持为$\{0,1\}$，采用$0\log0=0$约定，故所有$p\in[0,1]$的二元熵均有限。以2为底，
+\[
+\begin{aligned}
+H_{\mathrm b}(1/4)
+&=-\frac14\log_2\frac14-\frac34\log_2\frac34\\
+&=\frac12-\frac34\log_2\frac34
+\approx0.8113\ \text{bit},\\
+H_{\mathrm b}(1/2)
+&=-2\left(\frac12\log_2\frac12\right)=1\ \text{bit},\\
+H_{\mathrm b}(1/4)&<H_{\mathrm b}(1/2).
+\end{aligned}
+\]
+因此偏置伯努利变量在$p=1/4$时的熵约为$0.8113$ bit，小于公平情形的$1$ bit。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S01-03}
+证明独立随机变量$X,Y$满足 $H(X,Y)=H(X)+H(Y)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S01-03}
+\begin{chapterexercisesolution}{ex:V1-C06-S01-03}
+设$X,Y$离散独立，边缘分布已归一化，并假定$H(X),H(Y)<\infty$，从而下列求和可合法拆分。由$p(x,y)=p_X(x)p_Y(y)$，
+\[
+\begin{aligned}
+H(X,Y)
+&=-\sum_{x,y}p_X(x)p_Y(y)
+\log\!\bigl(p_X(x)p_Y(y)\bigr)\\
+&=-\sum_xp_X(x)\log p_X(x)\sum_yp_Y(y)\\
+&\quad-\sum_yp_Y(y)\log p_Y(y)\sum_xp_X(x)\\
+&=H(X)+H(Y).
+\end{aligned}
+\]
+零质量项按$0\log0=0$处理；没有独立性时只能使用$H(X,Y)=H(X)+H(Y\mid X)$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S02-01}
+若 $Y=X$，证明 $H(X\mid Y)=0$ 并求 $H(X,Y)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S02-01}
+\begin{chapterexercisesolution}{ex:V1-C06-S02-01}
+设$X$离散且$H(X)<\infty$，并令$Y=X$。联合支持仅在对角线$\{(x,x)\}$上；对每个$p_Y(y)>0$的条件值，
+\[
+\begin{aligned}
+P(X=x\mid Y=y)&=\mathbf1\{x=y\},\\
+H(X\mid Y=y)
+&=-1\log1-\sum_{x\ne y}0\log0=0,\\
+H(X\mid Y)&=\sum_y p_Y(y)H(X\mid Y=y)=0,\\
+H(X,Y)&=H(Y)+H(X\mid Y)=H(X).
+\end{aligned}
+\]
+所以当$Y=X$时，观测$Y$完全消除了$X$的不确定性，并有$H(X,Y)=H(X)$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S02-02}
+设$X,Y$是公平比特，且 $P(X=Y)=3/4$，联合分布对交换和0/1翻转对称。求 $H(X\mid Y)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S02-02}
+\begin{chapterexercisesolution}{ex:V1-C06-S02-02}
+联合支持为$\{0,1\}^2$。交换与翻转对称性连同$P(X=Y)=3/4$给出
+\[
+\begin{aligned}
+p(0,0)=p(1,1)&=\frac38,\qquad
+p(0,1)=p(1,0)=\frac18,\\
+P(X=Y\mid Y=y)&=\frac34,\qquad
+P(X\ne Y\mid Y=y)=\frac14,\\
+H(X\mid Y=y)&=H_{\mathrm b}(1/4),\qquad y\in\{0,1\},\\
+H(X\mid Y)&=\frac12H_{\mathrm b}(1/4)+\frac12H_{\mathrm b}(1/4)
+\approx0.8113\ \text{bit}.
+\end{aligned}
+\]
+因此给定任一$Y$值后的翻转概率都是$1/4$，条件熵为$H_{\mathrm b}(1/4)\approx0.8113$ bit。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S02-03}
+用链式法则把 $H(X_1,X_2,X_3)$ 展开，并说明变量独立时如何化简。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S02-03}
+\begin{chapterexercisesolution}{ex:V1-C06-S02-03}
+假定三个离散变量的相关熵均有限。逐次应用链式法则，
+\[
+\begin{aligned}
+H(X_1,X_2,X_3)
+&=H(X_1)+H(X_2,X_3\mid X_1)\\
+&=H(X_1)+H(X_2\mid X_1)
++H(X_3\mid X_1,X_2).
+\end{aligned}
+\]
+若$X_1,X_2,X_3$相互独立，则
+\[
+H(X_2\mid X_1)=H(X_2),\qquad
+H(X_3\mid X_1,X_2)=H(X_3),
+\]
+故联合熵化为$\sum_{i=1}^3H(X_i)$；仅有两两独立不足以保证最后一个条件等式。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S03-01}
+对 $P=(1/2,1/2)$、$Q=(3/4,1/4)$，计算 $D(P\Vert Q)$ 与 $D(Q\Vert P)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S03-01}
+\begin{chapterexercisesolution}{ex:V1-C06-S03-01}
+$P,Q$在二点支持上均严格为正，故两个KL有限。以自然对数计，
+\[
+\begin{aligned}
+D_{\mathrm{KL}}(P\Vert Q)
+&=\frac12\log\frac{1/2}{3/4}
++\frac12\log\frac{1/2}{1/4}\\
+&=\frac12\log\frac43\approx0.1438,\\
+D_{\mathrm{KL}}(Q\Vert P)
+&=\frac34\log\frac{3/4}{1/2}
++\frac14\log\frac{1/4}{1/2}\\
+&=\frac34\log\frac32+\frac14\log\frac12
+\approx0.1308.
+\end{aligned}
+\]
+期望权重随方向改变，所以两者不同。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S03-02}
+证明经验分布上的平均负对数似然就是经验分布与模型分布的交叉熵。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S03-02}
+\begin{chapterexercisesolution}{ex:V1-C06-S03-02}
+设$n\ge1$，经验分布支持为样本中出现的有限集合，并要求$Q_\theta(x_i)>0$以得到有限目标。定义
+\[
+\begin{aligned}
+\widehat P_n(x)&=\frac1n\sum_{i=1}^n\mathbf1\{x_i=x\},\\
+H(\widehat P_n,Q_\theta)
+&=-\sum_x\widehat P_n(x)\log Q_\theta(x)\\
+&=-\frac1n\sum_x\sum_{i=1}^n
+\mathbf1\{x_i=x\}\log Q_\theta(x)\\
+&=-\frac1n\sum_{i=1}^n\log Q_\theta(x_i).
+\end{aligned}
+\]
+若某个已观察$x_i$满足$Q_\theta(x_i)=0$，两侧都按扩展实数取$+\infty$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S03-03}
+若$P$在某点概率为正而$Q$在该点概率为零，解释交叉熵和KL为何为无穷。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S03-03}
+\begin{chapterexercisesolution}{ex:V1-C06-S03-03}
+设存在支持点$x_0$满足$P(x_0)>0$而$Q(x_0)=0$。该点破坏$P\ll Q$，并产生
+\[
+\begin{aligned}
+-P(x_0)\log Q(x_0)
+&=-P(x_0)(-\infty)=+\infty,\\
+P(x_0)\log\frac{P(x_0)}{Q(x_0)}
+&=P(x_0)\log\frac{P(x_0)}0=+\infty,\\
+H(P,Q)&=+\infty,\qquad
+D_{\mathrm{KL}}(P\Vert Q)&=+\infty.
+\end{aligned}
+\]
+这不是$0\log0=0$的情形，因为乘在对数前的权重$P(x_0)$严格为正；概率平滑会改变模型本身。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S04-01}
+若 $Y=X$ 且$X$为公平比特，求 $I(X;Y)$；若$Y$与$X$独立又是多少？
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S04-01}
+\begin{chapterexercisesolution}{ex:V1-C06-S04-01}
+$X$是支持$\{0,1\}$上的公平比特，故$H(X)=1$ bit且所有熵有限。用$I(X;Y)=H(X)-H(X\mid Y)$，
+\[
+\begin{aligned}
+Y=X&\Longrightarrow H(X\mid Y)=0
+\Longrightarrow I(X;Y)=1-0=1\ \text{bit},\\
+Y\perp X&\Longrightarrow H(X\mid Y)=H(X)=1
+\Longrightarrow I(X;Y)=1-1=0.
+\end{aligned}
+\]
+两种情形分别对应完全确定与不减少任何平均不确定性。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S04-02}
+证明 $I(X;Y)=I(Y;X)$，要求从联合分布的求和式展开。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S04-02}
+\begin{chapterexercisesolution}{ex:V1-C06-S04-02}
+设$X,Y$离散且互信息求和良定义；在$p(x,y)=0$处采用$0\log0=0$，在正联合质量处边缘也必为正。直接交换有限或绝对收敛求和次序：
+\[
+\begin{aligned}
+I(X;Y)
+&=\sum_{x,y}p(x,y)
+\log\frac{p(x,y)}{p_X(x)p_Y(y)}\\
+&=\sum_{y,x}p(y,x)
+\log\frac{p(y,x)}{p_Y(y)p_X(x)}\\
+&=I(Y;X).
+\end{aligned}
+\]
+这里$p(y,x)$表示同一联合质量换序书写；对称性不推广到任意$D_{\mathrm{KL}}(P\Vert Q)$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S04-03}
+设$X\to Y\to Z$构成马尔可夫链。用“$Z$只通过$Y$获得$X$信息”的含义解释数据处理不等式 $I(X;Z)\le I(X;Y)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S04-03}
+\begin{chapterexercisesolution}{ex:V1-C06-S04-03}
+马尔可夫链$X\to Y\to Z$表示$p(z\mid x,y)=p(z\mid y)$，即$X\perp Z\mid Y$。假定相关互信息有限，则链式法则给出
+\[
+\begin{aligned}
+I(X;Y,Z)
+&=I(X;Y)+I(X;Z\mid Y)=I(X;Y),\\
+I(X;Y,Z)
+&=I(X;Z)+I(X;Y\mid Z),\\
+I(X;Y)-I(X;Z)
+&=I(X;Y\mid Z)\ge0.
+\end{aligned}
+\]
+因此$I(X;Z)\le I(X;Y)$；经过从$Y$到$Z$的随机通道只能保留或丢失关于$X$的信息。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S05-01}
+父节点有正负样本各4个。某特征把数据分成两个子节点，分别为 $(3+,1-)$ 与 $(1+,3-)$。求以2为底的信息增益。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S05-01}
+\begin{chapterexercisesolution}{ex:V1-C06-S05-01}
+父节点含8个样本且正负各半；两个非空子节点各含4个样本，经验概率均有有限支持。以2为底，
+\[
+\begin{aligned}
+H(Y)&=H_{\mathrm b}(1/2)=1,\\
+H(Y\mid A)
+&=\frac48H_{\mathrm b}(3/4)+\frac48H_{\mathrm b}(1/4)
+=H_{\mathrm b}(1/4)\\
+&=-\frac14\log_2\frac14-\frac34\log_2\frac34
+\approx0.8113,\\
+\operatorname{Gain}(A)
+&=H(Y)-H(Y\mid A)\approx1-0.8113=0.1887\ \text{bit}.
+\end{aligned}
+\]
+所以该划分的信息增益约为$0.1887$ bit。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S05-02}
+说明“样本编号”特征为何可能有最大信息增益，却不适合作为泛化划分。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S05-02}
+\begin{chapterexercisesolution}{ex:V1-C06-S05-02}
+设训练集有$n$个互异编号，按编号划分后每个非空子节点仅含一个样本，故其经验标签分布是点质量：
+\[
+\begin{aligned}
+H(Y\mid \mathrm{ID}=i)&=0,\qquad i=1,\ldots,n,\\
+H(Y\mid\mathrm{ID})
+&=\sum_{i=1}^n\frac1n\,0=0,\\
+\operatorname{Gain}(\mathrm{ID})
+&=H(Y)-H(Y\mid\mathrm{ID})=H(Y).
+\end{aligned}
+\]
+该最大训练增益来自逐样本记忆；新编号没有可复用条件分布，因此不能据此保证泛化。增益比、最小叶规模和验证集只能作为额外控制。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S05-03}
+某特征在所有样本上取值相同。求其信息增益、划分熵，并说明增益比如何处理。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S05-03}
+\begin{chapterexercisesolution}{ex:V1-C06-S05-03}
+特征$A$只有一个观测取值$a_0$且$P_n(A=a_0)=1$，因此划分支持退化为单点。于是
+\[
+\begin{aligned}
+H_n(Y\mid A)&=1\cdot H_n(Y)=H_n(Y),\\
+\operatorname{Gain}(A)&=H_n(Y)-H_n(Y\mid A)=0,\\
+H_n(A)&=-1\log_2 1=0,\\
+\operatorname{GainRatio}(A)&=\frac{0}{0}\quad\text{未定义}.
+\end{aligned}
+\]
+算法必须先检查$H_n(A)>0$；此处应排除该特征，而不是把未定义比值强行设成有效分数。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S06-01}
+计算类别计数 $(6,3,1)$ 的基尼不纯度，并与纯节点比较。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S06-01}
+\begin{chapterexercisesolution}{ex:V1-C06-S06-01}
+节点有10个样本，类别支持为三类，经验概率$\boldsymbol p=(0.6,0.3,0.1)$已归一化。计算
+\[
+\begin{aligned}
+G(\boldsymbol p)
+&=1-\sum_{k=1}^3p_k^2\\
+&=1-(0.6^2+0.3^2+0.1^2)\\
+&=1-(0.36+0.09+0.01)=0.54,\\
+G(1,0,0)&=1-1^2=0.
+\end{aligned}
+\]
+纯节点不纯度为零；$0.54$也等于从该经验分布独立抽取两个标签时二者不同的概率。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S06-02}
+父节点有10个样本，且父节点基尼指数为$G_{\mathrm{parent}}=0.50$。候选划分产生大小分别为4和6、基尼指数分别为0.375和0.50的两个子节点。求加权基尼指数与基尼下降。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S06-02}
+\begin{chapterexercisesolution}{ex:V1-C06-S06-02}
+两个子节点非空且大小之和为$4+6=10$，对应权重为$4/10$与$6/10$且和为$1$。因此
+\[
+\begin{aligned}
+G_{\mathrm{child}}
+&=\frac4{10}(0.375)+\frac6{10}(0.5)\\
+&=0.15+0.30=0.45,\\
+\Delta G&=G_{\mathrm{parent}}-G_{\mathrm{child}}
+=0.50-0.45=0.05.
+\end{aligned}
+\]
+核验：对二分类节点有$0\le G\le0.5$，这里$G_{\mathrm{child}}=0.45$合法；同时$\Delta G=0.05\ge0$，说明该候选划分使不纯度下降。故加权基尼指数为$0.45$，基尼下降为$0.05$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C06-S06-03}
+证明二分类基尼 $2p(1-p)$ 在 $p=1/2$ 最大，并比较二元熵在端点和中心的行为。
+\end{exercise}
+\phantomsection\label{sol:V1-C06-S06-03}
+\begin{chapterexercisesolution}{ex:V1-C06-S06-03}
+定义域为概率闭区间$p\in[0,1]$。基尼函数在内部可微，且需连同端点检查：
+\[
+\begin{aligned}
+G(p)&=1-p^2-(1-p)^2=2p(1-p),\\
+G'(p)&=2-4p=0\Longleftrightarrow p=\frac12,\\
+G''(p)&=-4<0,\qquad
+G(0)=G(1)=0,\quad G(1/2)=\frac12.
+\end{aligned}
+\]
+二元熵按$0\log0=0$连续延拓后满足
+\[
+H_{\mathrm b}(0)=H_{\mathrm b}(1)=0,\qquad
+H_{\mathrm b}(1/2)=1\ \text{bit},
+\]
+也在中心最大，但尺度和曲率不同。
+\end{chapterexercisesolution}
+
+\end{SLChapterExercisePairSection}
+
+\phantomsection\label{struct:V1-C06-CH36}
+% KNOWLEDGE-PLAN: KN-V1-C06-CONCEPT-010 L1
+\paragraph{读前自检：本章结论与下一步。}信息论基础章末由“熵、KL散度、交叉熵、互信息与基尼指数”落到“先核对绝对连续与归一化，再计算候选划分分数”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\SLChapterFiveSummary{熵、KL散度、交叉熵、互信息与基尼指数}{Jensen证明KL非负，熵链式法则推出互信息恒等式}{先核对绝对连续与归一化，再计算候选划分分数}{概率模型损失解释与决策树特征选择}{\NextChapter{7}{凸优化与拉格朗日对偶}；本章信息论准则将在\GlobalChapterRef{15}{2}{4}的决策树等处复用}
+
+\phantomsection\label{struct:V1-C06-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否从联合分布推导熵的链式法则、互信息的熵差与KL形式，并说明独立时的化简？
+  \item 能否在不交换方向的前提下完整复现KL非负证明及等号条件？
+  \item 能否由计数表正确计算信息增益、增益比与加权基尼，并处理零分母？不能则回看\cref{sec:V1-C06-S02}--\cref{sec:V1-C06-S06}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

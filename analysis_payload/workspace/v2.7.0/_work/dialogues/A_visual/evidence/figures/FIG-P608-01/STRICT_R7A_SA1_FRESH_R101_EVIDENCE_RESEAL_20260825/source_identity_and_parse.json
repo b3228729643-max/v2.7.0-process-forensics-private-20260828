@@ -1,0 +1,121 @@
+{
+  "handoff_id": "A-R101-P608-SA1-FRESH-R7A-EVIDENCE-RESEAL-20260825",
+  "route": "SA1=gpt-5.6-sol/xhigh",
+  "figure_id": "FIG-P608-01",
+  "source": {
+    "absolute_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_trace_running_mean.tex",
+    "ordinary_file": true,
+    "bytes": 3429,
+    "sha256": "78C30F4A934F63E0EF1BBACF400A24F22477D38589F99503AE468F7024A35C05",
+    "read_only_audit_boundary": true,
+    "parsed": {
+      "line_count": 58,
+      "interesting_source_lines": [
+        {
+          "line": 3,
+          "text": "% direct panel/segment labels and print-safe type/stroke hierarchy."
+        },
+        {
+          "line": 4,
+          "text": "\\tikzset{slfig-FIG-P608-01/.style={font=\\fontsize{9.6pt}{11.6pt}\\selectfont,"
+        },
+        {
+          "line": 7,
+          "text": "% 300 dpi audit scale.  The two t glyphs retain natural math script style."
+        },
+        {
+          "line": 13,
+          "text": "  \\scriptstyle t}"
+        },
+        {
+          "line": 19,
+          "text": "  axis lines=left,clip=false,scaled ticks=false,"
+        },
+        {
+          "line": 21,
+          "text": "  tick label style={font=\\fontsize{9.6pt}{11.6pt}\\selectfont},"
+        },
+        {
+          "line": 22,
+          "text": "  label style={font=\\fontsize{10.8pt}{13.0pt}\\selectfont},"
+        },
+        {
+          "line": 23,
+          "text": "  ylabel style={rotate=-90,anchor=east,at={(axis description cs:-0.12,0.5)}},"
+        },
+        {
+          "line": 24,
+          "text": "  title style={font=\\fontsize{10.8pt}{13.0pt}\\selectfont,"
+        },
+        {
+          "line": 26,
+          "text": "\\nextgroupplot[ymin=1.4,ymax=4.05,ytick={2,3,4},ylabel={$X_{\\slfigTraceScriptT}$},"
+        },
+        {
+          "line": 27,
+          "text": "  xticklabels={},title={轨迹 $X_t$}]"
+        },
+        {
+          "line": 35,
+          "text": "  % Keep the warm-up annotation outside the patterned region.  A label"
+        },
+        {
+          "line": 37,
+          "text": "  \\node[anchor=north west,font=\\fontsize{9.6pt}{11.6pt}\\selectfont,text=SLGray,"
+        },
+        {
+          "line": 40,
+          "text": "  \\node[anchor=north,font=\\fontsize{9.6pt}{11.6pt}\\selectfont,text=SLGray]"
+        },
+        {
+          "line": 43,
+          "text": "  xlabel={$t$},ylabel={$\\overline X_{6:\\slfigTraceScriptT}$},"
+        },
+        {
+          "line": 53,
+          "text": "  \\node[anchor=south east,font=\\fontsize{9.6pt}{11.6pt}\\selectfont,text=SLTeal]"
+        },
+        {
+          "line": 57,
+          "text": "\\caption{舍弃前5步后，保留样本运行均值在目标值2附近波动；本图仅作诊断，不构成收敛证明}\\label{fig:V5-C03-trace-running-mean}"
+        }
+      ],
+      "declared_roles": {
+        "every_node_pt": 9.6,
+        "tick_label_pt": 9.6,
+        "axis_label_pt": 10.8,
+        "panel_title_pt": 10.8,
+        "annotation_pt": 9.6,
+        "caption_inherited_pt": 9.6,
+        "natural_script_command": "\\scriptstyle t"
+      },
+      "graphics_scale_commands_found": [
+        {
+          "line": 7,
+          "text": "% 300 dpi audit scale.  The two t glyphs retain natural math script style."
+        },
+        {
+          "line": 19,
+          "text": "  axis lines=left,clip=false,scaled ticks=false,"
+        }
+      ]
+    }
+  },
+  "r101": {
+    "absolute_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r101_fullbook\\main_full.pdf",
+    "ordinary_file": true,
+    "bytes": 4947496,
+    "sha256": "0870FF226DC383875C4A1B6EABB06AAB942317DA294D90D2864B3030D46DF1A1",
+    "pages": 814,
+    "physical_page_1based": 659,
+    "page_rect_pt": [
+      0.0,
+      0.0,
+      595.2760009765625,
+      841.8900146484375
+    ],
+    "read_only_audit_boundary": true
+  },
+  "prohibited_build_tools_used": [],
+  "source_and_pdf_identity_pass": true
+}

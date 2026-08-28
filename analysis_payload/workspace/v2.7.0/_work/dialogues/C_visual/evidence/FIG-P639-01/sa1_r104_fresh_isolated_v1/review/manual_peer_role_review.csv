@@ -1,0 +1,23 @@
+review_id,peer_pair_id,reviewer_type,human_certification,manual_decision,manual_observation,evidence
+PEERR-001,PEER-001,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"T16/T17 are same-size annotation lines; measured ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-002,PEER-002,AI_SA1_VISUAL_REVIEW,false,ADVISORY_NOT_HARD,"T19 is mixed Chinese/math and T20 is pure Chinese; line-bbox ratio 1.1053 reflects script mix at one PDF text size, is not a visible severe imbalance, and is advisory under R168.",render/figure_crop_native_300dpi.png
+PEERR-003,PEER-003,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"The two distribution labels match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-004,PEER-004,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"The two mean labels match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-005,PEER-005,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks -2/-1 match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-006,PEER-006,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks -2/0 differ only by glyph shape; ratio 1.0400 lies inside R168 advisory band.",pairs/peer_role_measurements.csv
+PEERR-007,PEER-007,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks -2/1 match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-008,PEER-008,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks -2/2 match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-009,PEER-009,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks -2/3 differ only by glyph shape; ratio 1.0400.",pairs/peer_role_measurements.csv
+PEERR-010,PEER-010,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks -1/0 differ only by glyph shape; ratio 1.0400.",pairs/peer_role_measurements.csv
+PEERR-011,PEER-011,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks -1/1 match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-012,PEER-012,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks -1/2 match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-013,PEER-013,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks -1/3 differ only by glyph shape; ratio 1.0400.",pairs/peer_role_measurements.csv
+PEERR-014,PEER-014,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks 0/1 differ only by glyph shape; ratio 1.0400.",pairs/peer_role_measurements.csv
+PEERR-015,PEER-015,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks 0/2 differ only by glyph shape; ratio 1.0400.",pairs/peer_role_measurements.csv
+PEERR-016,PEER-016,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks 0/3 match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-017,PEER-017,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks 1/2 match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-018,PEER-018,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks 1/3 differ only by glyph shape; ratio 1.0400.",pairs/peer_role_measurements.csv
+PEERR-019,PEER-019,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"x ticks 2/3 differ only by glyph shape; ratio 1.0400.",pairs/peer_role_measurements.csv
+PEERR-020,PEER-020,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"y ticks 0/0.25 match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-021,PEER-021,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"y ticks 0/0.5 match at ratio 1.0000.",pairs/peer_role_measurements.csv
+PEERR-022,PEER-022,AI_SA1_VISUAL_REVIEW,false,PEER_CLEAR,"y ticks 0.25/0.5 match at ratio 1.0000.",pairs/peer_role_measurements.csv

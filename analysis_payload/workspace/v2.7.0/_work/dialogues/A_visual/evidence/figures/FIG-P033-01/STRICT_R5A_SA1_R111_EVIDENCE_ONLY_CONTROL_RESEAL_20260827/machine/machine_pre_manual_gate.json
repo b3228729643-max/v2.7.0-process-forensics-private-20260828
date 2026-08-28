@@ -1,0 +1,23 @@
+{
+  "status": "PASS_CANDIDATE_PENDING_MANUAL_OPEN",
+  "pdf_identity_pass": true,
+  "source_identity_pass": true,
+  "page_count_pass": true,
+  "codepoint_groups_pass": true,
+  "all_85_glyph_rasters_nonempty": true,
+  "geometry_semantics_pass": true,
+  "atomic_object_count": 99,
+  "unordered_pair_count": 4851,
+  "all_pairs_enumerated": true,
+  "hard_failures_found_pre_manual": [],
+  "advisories": [
+    "Source-local 9.2 pt and 9.4 pt declarations are below the older 9.5 pt target; under R168 this is advisory unless actually unreadable or unbalanced."
+  ],
+  "manual_open_required": [
+    "full-page 300 dpi",
+    "body+caption native1x",
+    "semantic overlay",
+    "native1x ROI sheet",
+    "nearest8x ROI sheet and individual critical ROIs"
+  ]
+}

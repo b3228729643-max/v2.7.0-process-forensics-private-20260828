@@ -1,0 +1,52 @@
+{
+  "p_integral_0_5": 1.0,
+  "qL_integral_0_5": 1.0,
+  "qR_integral_0_5": 1.0,
+  "p_positive_on": "(0,5)",
+  "qL_zero_on": "(2.5,5]",
+  "p_absolutely_continuous_wrt_qL": false,
+  "p_absolutely_continuous_wrt_qR": true,
+  "recomputed_points": [
+    {
+      "x": 0.0,
+      "p": 0.0,
+      "q_L": 0.4,
+      "q_R": 0.2,
+      "w_R": 0.0
+    },
+    {
+      "x": 1.0,
+      "p": 0.192,
+      "q_L": 0.4,
+      "q_R": 0.2,
+      "w_R": 0.96
+    },
+    {
+      "x": 2.5,
+      "p": 0.3,
+      "q_L": 0.4,
+      "q_R": 0.2,
+      "w_R": 1.4999999999999998
+    },
+    {
+      "x": 4.0,
+      "p": 0.192,
+      "q_L": 0.0,
+      "q_R": 0.2,
+      "w_R": 0.96
+    },
+    {
+      "x": 5.0,
+      "p": 0.0,
+      "q_L": 0.0,
+      "q_R": 0.2,
+      "w_R": 0.0
+    }
+  ],
+  "expected_ratio_card": {
+    "w(1)": "24/25",
+    "w(5/2)": "3/2",
+    "w(4)": "24/25"
+  },
+  "semantic_decision": "PASS"
+}

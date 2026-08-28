@@ -1,0 +1,17 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{595}
+\setcounter{chapter}{32}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{马尔可夫链蒙特卡罗法}
+\sectionmark{本章局部知识依赖}
+图\ref{fig:V5-C03-dependency}要求分支阅读：先沿“MH构造$\to K\to$细致平衡证书”核对
+$\pi(\mathrm dx)K(x,\mathrm dy)=\pi(\mathrm dy)K(y,\mathrm dx)$只推出$\pi K=\pi$；
+再分别沿链结构分支判断遍历时间平均与边缘分布收敛所需的附加条件，并沿诊断分支检查轨迹相关性。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_dependency_graph.tex}
+\FloatBarrier
+\noindent\textbf{读图检查（仅针对图\ref{fig:V5-C03-dependency}）。}只沿细致平衡分支能得到$\pi K=\pi$，不能得到不可约或遍历；时间平均须另行核验有限状态不可约或一般状态正Harris常返，边缘分布收敛还须在相应结构条件上核验非周期性。图中的“通常相关轨迹”只是诊断动机；独立核$K(x,\mathrm dy)=\pi(\mathrm dy)$说明相关性不是任意转移核的必然结论。
+\end{document}

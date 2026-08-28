@@ -1,0 +1,1327 @@
+% STAGE13-CHAPTER: V5-C05
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V5-C05-CH01}; CH-02=\label{struct:V5-C05-CH02}; CH-03=\label{struct:V5-C05-CH03}; CH-04=\label{struct:V5-C05-CH04}; CH-05=\label{struct:V5-C05-CH05}; CH-06=\label{struct:V5-C05-CH06}; CH-07=\label{struct:V5-C05-CH07}; CH-08=\label{struct:V5-C05-CH08}; CH-09=\label{struct:V5-C05-CH09}; CH-10=\label{struct:V5-C05-CH10}; CH-11=\label{struct:V5-C05-CH11}; CH-12=\label{struct:V5-C05-CH12}; CH-13=\label{struct:V5-C05-CH13}; CH-14=\label{struct:V5-C05-CH14}; CH-15=\label{struct:V5-C05-CH15}; CH-16=\label{struct:V5-C05-CH16}; CH-17=\label{struct:V5-C05-CH17}; CH-18=\label{struct:V5-C05-CH18}; CH-19=\label{struct:V5-C05-CH19}; CH-20=\label{struct:V5-C05-CH20}; CH-21=\label{struct:V5-C05-CH21}; CH-22=\label{struct:V5-C05-CH22}; CH-23=\label{struct:V5-C05-CH23}; CH-24=\label{struct:V5-C05-CH24}; CH-25=\label{struct:V5-C05-CH25}; CH-26=\label{struct:V5-C05-CH26}; CH-27=\label{struct:V5-C05-CH27}; CH-28=\label{struct:V5-C05-CH28}; CH-29=\label{struct:V5-C05-CH29}; CH-30=\label{struct:V5-C05-CH30}; CH-31=\label{struct:V5-C05-CH31}; CH-32=\label{struct:V5-C05-CH32}; CH-33=\label{struct:V5-C05-CH33}; CH-34=\label{struct:V5-C05-CH34}; CH-35=\label{struct:V5-C05-CH35}; CH-36=\label{struct:V5-C05-CH36}; CH-37=\label{struct:V5-C05-CH37}
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1.1-EXERCISE-LAYOUT: grouped; kept=10; source_group=1; supplement=9
+% DERIVATION-CHECK: step-1; step-2; step-3
+% FORMAL-RESULT-CHECK: results=7; proofs=7
+% ALGORITHM-CHECK: algorithms=1; deterministic-contracts=1
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C05-dependency-graph -> SLM-20-01-001,SLM-20-01-002,SLM-20-01-003,SLM-20-02-001,SLM-E-02-001,SLM-20-01-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C05-multinomial-counts -> SLM-20-01-002,SLM-20-01-003
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C05-distribution-relations -> SLM-20-01-003,SLM-20-02-001,SLM-20-01-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C05-gamma-normalization -> SLM-20-02-001,SLM-E-02-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C05-simplex-geometry -> SLM-20-01-001,SLM-20-02-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C05-dirichlet-shape-atlas -> SLM-20-02-001,SLM-E-02-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C05-concentration-mean -> SLM-E-02-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C05-conjugate-update -> SLM-20-01-003,SLM-20-02-001,SLM-20-01-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C05-posterior-predictive -> SLM-20-01-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C05-exponential-family-moments -> SLM-E-02-001
+% REPRODUCTION-NODE: V5-C05-S01 -> SLM-20-00-001
+% REPRODUCTION-NODE: V5-C05-S02 -> PRE-PR-031
+% REPRODUCTION-NODE: V5-C05-S03 -> PRE-PR-032,SLM-E-00-001,SLM-20-01-001
+% SOURCE-BOUNDARY-DIFFERENCE: conjugate posterior alpha+n belongs to V5-C05; later chapter may only cite it.
+
+\chapter{狄利克雷分布与共轭先验}\label{chap:V5-C05}
+\index{狄利克雷分布}
+\index{Dirichlet分布|see{狄利克雷分布}}
+\index{共轭先验}
+
+% KNOWLEDGE-PLAN: KN-V5-C34-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：狄利克雷分布与共轭先验。}狄利克雷分布与共轭先验章地图沿“类别计数$\to$Gamma/Beta恒等式$\to$Dirichlet分布$\to$共轭预测”推进；请标出该路线第一次改变对象类型的位置，并核对前一步产出正是后一步输入。\par
+
+\SLChapterOpening{类别计数$\to$Gamma/Beta恒等式$\to$Dirichlet分布$\to$共轭预测}
+{怎样在单纯形上归一化先验，并从完整似然推导后验、证据与预测？}
+{读完可证明Gamma归一化构造、计算Dirichlet矩，并完成共轭闭式更新。}
+{概率质量函数、变量变换Jacobian、Bayes公式、Gamma/Beta积分与协方差。}
+{先复习计数向量与有序序列的区别，再进入多项分布。}
+\phantomsection\label{struct:V5-C05-CH01}
+% KNOWLEDGE-PLAN: KN-V5-C34-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}狄利克雷分布与共轭先验的首个可检验目标是“区分类别观测序列与多项计数向量，写出各自的概率、支持集以及只与参数有关的似然核”；请区分类别观测序列与多项计数向量，写出各自的概率、支持集以及只与参数有关的似然核并写出中间结果，再按“中间结果逐项包含首目标“区分类别观测序列与多项计数向量，写出各自的概率、支持集以及只与参数有关的似然核”声明的对象、条件与结论”验收。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 区分类别观测序列与多项计数向量，写出各自的概率、支持集以及只与参数有关的似然核；
+  \item 从Gamma函数、Beta函数和多元Beta函数建立狄利克雷密度的归一化常数；
+  \item 在单纯形参考测度下严格定义狄利克雷分布，推导矩、协方差、边缘、聚合、条件与期望对数；
+  \item 用独立同率Gamma变量的归一化构造证明分布归一化，并把这一构造转化为可复算的抽样步骤；
+  \item 完整推导\DirichletMultinomial{}共轭后验、边际证据、单步与多步后验预测；
+  \item 分清均值参数、浓度参数、伪计数和众数修正，正确处理边界参数与数值退化。
+\end{itemize}
+}
+
+\phantomsection\label{struct:V5-C05-CH02}
+% KNOWLEDGE-PLAN: KN-V5-C34-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}Dirichlet先修要求会用Gamma/Beta积分与单纯形变量变换；请先验证$B(a,b)=\Gamma(a)\Gamma(b)/\Gamma(a+b)$，再核对$a,b>0$保证积分有限。\par
+
+\begin{prerequisitebox}
+本章使用概率质量函数、联合密度、条件概率、期望与协方差、变量变换的Jacobian、Bayes公式和指数族对数配分函数。直接前置包括第1册概率基础中的Gamma与Beta积分、第2册贝叶斯估计中的先验--似然--后验分解，以及本章前面的多项分布。读者需要能对有限类别计数、能进行分部积分，并能区分“概率密度的归一化常数”和“似然中与参数无关的常数”。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V5-C05-CH03}
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 若$Y_1,\ldots,Y_N$取值于$K$个类别，能否由序列写出计数$n_i=\sum_{t=1}^N\mathbf 1\{Y_t=i\}$并核验$\sum_i n_i=N$？
+  \item 能否解释同一个计数向量对应$N!/\prod_i n_i!$条不同的有序类别序列？
+  \item 能否由分部积分证明$\Gamma(a+1)=a\Gamma(a)$，并说明该等式要求$a>0$？
+  \item 能否写出Bayes公式的归一化分母，并判断何时只保留“正比于”的参数核？
+  \item 能否为变量变换列出取值域与Jacobian，而不只做代数替换？
+\end{enumerate}
+第1--2项不足时先复习离散联合分布；第3项不足时回看Gamma函数；第4项不足时回看贝叶斯估计；第5项直接关系到狄利克雷归一化证明。
+\end{precheckbox}
+
+\phantomsection\label{struct:V5-C05-CH04}
+% KNOWLEDGE-PLAN: KN-V5-C34-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}狄利克雷分布与共轭先验依赖链含“第1册的Gamma/Beta积分与第2册的Bayes先验—似然—后验分解 $\to$ 本章的Dirichlet共轭”到“类别概率向量$\boldsymbol\theta$ $\to$ 类别序列与计数向量 $\to$ 多项似然”这一跳；请固定写出前者输出类型与后者输入类型，并核对两者相同或存在正文声明的转换。\par
+
+\begin{dependencybox}
+第1册的Gamma/Beta积分与第2册的Bayes先验—似然—后验分解 $\to$ 本章的Dirichlet共轭；
+类别概率向量$\boldsymbol\theta$
+$\to$ 类别序列与计数向量
+$\to$ 多项似然；
+Gamma函数
+$\to$ Beta函数与多元Beta函数
+$\to$ 单纯形上的狄利克雷密度；
+独立Gamma变量
+$\to$ 归一化比例
+$\to$ 狄利克雷抽样与矩；
+Dirichlet先验$+$多项计数
+$\to$ 参数逐分量相加
+$\to$ 闭式后验、边际证据与后验预测。
+\end{dependencybox}
+图\ref{fig:V5-C05-dependency-graph}给出本章共轭更新、预测结论与解释支线的学习顺序；后续主题模型只是应用出口，不是本章的学习前置。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dependency_graph.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先看左侧“类别计数”和“Gamma/Beta归一化”怎样汇入多项似然与Dirichlet先验；再看中央实线主链如何把参数逐分量相加为$\operatorname{Dir}(\boldsymbol\alpha+\boldsymbol n)$，并读出$\Pr(Y_{N+1}=i\mid\boldsymbol n,\boldsymbol\alpha)=(\alpha_i+n_i)/(\alpha_0+N)$；最终区分下方无箭头的参数解释支线与虚线的主题模型应用出口。\par
+
+\phantomsection\label{struct:V5-C05-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V5-C05
+\index[symbols]{k--s83a003593aec@$K$：类别数；非退化单纯形通常取$K\ge2$}
+\index[symbols]{y-t--s223a71bb0e8d@$Y_t$：第$t$次类别观测}
+\index[symbols]{minus-boldsymboln-minus-eq-n-1-minus-ldots-minus-n-k--s3de0c5f579de@$\boldsymbol n=(n_1,\ldots,n_K)$：类别计数，$N=\sum_i n_i$}
+\index[symbols]{minus-boldsymbol-minus-minus-theta-minus-eq-minus-theta-minus-1-minus-ld--sfe23cb81bfbc@$\boldsymbol\theta=(\theta_1,\ldots,\theta_K)$：类别概率向量，$\sum_i\theta_i=1$}
+\index[symbols]{minus-delta-minus-k-minus-1--s2664286af6bc@$\Delta_{K-1}$：$\theta_i\ge0$且分量和为$1$的集合}
+\index[symbols]{minus-boldsymbol-minus-minus-alpha-minus-eq-minus-alpha-minus-1-minus-ld--scfbda2a2c9fa@$\boldsymbol\alpha=(\alpha_1,\ldots,\alpha_K)$：狄利克雷形状参数}
+\index[symbols]{minus-alpha-minus-0--s6584242226b8@$\alpha_0$：总浓度$\sum_i\alpha_i$}
+\index[symbols]{minus-boldsymbolm-minus--s749e992d2038@$\boldsymbol m$：均值参数$\boldsymbol\alpha/\alpha_0$}
+\index[symbols]{minus-gamma-minus-a--s58a70cc31f30@$\Gamma(a)$：Gamma函数}
+\index[symbols]{b-a-b-u3001-b-minus-boldsymbol-minus-minus-alpha-minus--s67d9119f815e@$B(a,b)$、$B(\boldsymbol\alpha)$：二元与多元Beta函数}
+\index[symbols]{minus-psi-minus-a--s6e32e345e730@$\psi(a)$：digamma函数$\mathrm d\log\Gamma(a)/\mathrm da$}
+\index[symbols]{posterior-alpha-vector@$\boldsymbol\alpha^{\mathrm{post}}$：后验参数$\boldsymbol\alpha+\boldsymbol n$}
+\index[symbols]{posterior-alpha-total@$\alpha_0^{\mathrm{post}}$：后验总浓度$\alpha_0+N$}
+% STAGE19-SYMBOL-INDEX-END: V5-C05
+\begin{symboltablebox}
+\small
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 类型、维数或范围 & 含义\\ \midrule
+$K$ & 正整数 & 类别数；非退化单纯形通常取$K\ge2$\\
+$Y_t$ & $\{1,\ldots,K\}$中离散变量 & 第$t$次类别观测\\
+$\boldsymbol n=(n_1,\ldots,n_K)$ & $\mathbb N_0^K$ & 类别计数，$N=\sum_i n_i$\\
+$\boldsymbol\theta=(\theta_1,\ldots,\theta_K)$ & $\Delta_{K-1}$ & 类别概率向量，$\sum_i\theta_i=1$\\
+$\Delta_{K-1}$ & $(K-1)$维单纯形 & $\theta_i\ge0$且分量和为$1$的集合\\
+$\boldsymbol\alpha=(\alpha_1,\ldots,\alpha_K)$ & $(0,\infty)^K$ & 狄利克雷形状参数\\
+$\alpha_0$ & 正实数 & 总浓度$\sum_i\alpha_i$\\
+$\boldsymbol m$ & $\Delta_{K-1}$ & 均值参数$\boldsymbol\alpha/\alpha_0$\\
+$\Gamma(a)$ & $a>0$ & Gamma函数\\
+$B(a,b)$、$B(\boldsymbol\alpha)$ & 正实数 & 二元与多元Beta函数\\
+$\psi(a)$ & $a>0$ & digamma函数$\mathrm d\log\Gamma(a)/\mathrm da$\\
+$\boldsymbol\alpha^{\mathrm{post}}$ & $(0,\infty)^K$ & 后验参数$\boldsymbol\alpha+\boldsymbol n$\\
+$\alpha_0^{\mathrm{post}}$ & 正实数 & 后验总浓度$\alpha_0+N$\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V5-C34-CONCEPT-001 L1
+\paragraph{读前自检：狄利克雷—多项建模入口。}\DirichletMultinomial{}入口假设每次观测落入$K$个互斥类别之一，参数$\theta_i\ge0,\sum_i\theta_i=1$；请把一条类别序列压缩为计数$n_i$，核对$\sum_i n_i=N$。\par
+% KNOWLEDGE-PLAN: KN-V5-C34-DEFINITION-001 L1
+\paragraph{读前自检：多项分布定义。}多项计数$\boldsymbol n$满足$n_i\in\mathbb N_0$与$\sum_i n_i=N$；请代入$N!\prod_i\theta_i^{n_i}/\prod_i n_i!$，并在所有合法计数上求和核对为1。\par
+
+\SLReviewSection{多项分布}{sec:V5-C05-S01}
+\knowledgeanchor{SLM-20-01-001}{狄利克雷—多项建模入口}
+\knowledgeanchor{SLM-20-01-002}{多项分布定义}
+\knowledgeanchor{SLM-20-01-003}{多项分布}
+
+\phantomsection\label{struct:V5-C05-CH06}
+\textbf{问题提出。}设每次观测只落入$K$个互斥类别之一。若只记录类别序列，概率是逐次类别概率的乘积；若压缩为计数向量，还必须乘上产生相同计数的序列条数。贝叶斯推断要寻找一个定义在单纯形上的先验，使多项似然乘入以后仍属于同一分布族。本章将说明这个先验是狄利克雷分布，并进一步给出证据与预测，而不是只停留在未归一化后验核。
+
+\phantomsection\label{struct:V5-C05-CH07}
+% KNOWLEDGE-PLAN: KN-V5-C34-DEFINITION-002 L1
+\paragraph{读前自检：类别分布与多项分布。}类别序列概率为$\prod_t\theta_{y_t}$，计数向量概率还含多项系数；请将同一计数的序列数$N!/\prod_i n_i!$乘入，核对两种观测对象的支持与概率不同。\par
+
+\begin{definition}[类别分布与多项分布]\label{def:V5-C05-multinomial}
+给定$\boldsymbol\theta\in\Delta_{K-1}$，若
+\[
+\Pr(Y=i\mid\boldsymbol\theta)=\theta_i,\qquad i=1,\ldots,K,
+\]
+则称$Y$服从以$\boldsymbol\theta$为参数的类别分布。令$Y_1,\ldots,Y_N$在给定$\boldsymbol\theta$后条件独立同分布，并定义$n_i=\sum_{t=1}^N\mathbf 1\{Y_t=i\}$。计数向量$\boldsymbol n$的支持为
+\[
+\mathcal C_{N,K}
+=\{\boldsymbol n\in\mathbb N_0^K:\textstyle\sum_{i=1}^K n_i=N\},
+\]
+其概率质量函数为
+\begin{equation}\label{eq:V5-C05-multinomial-pmf}
+\Pr(\boldsymbol n\mid N,\boldsymbol\theta)
+=\frac{N!}{\prod_{i=1}^K n_i!}
+\prod_{i=1}^K\theta_i^{n_i},
+\qquad \boldsymbol n\in\mathcal C_{N,K}.
+\end{equation}
+约定$0^0=1$只用于表示计数为零时该因子不参与乘积。
+\end{definition}
+\index{多项分布}
+\index{类别分布}
+
+对一条确定的有序序列$\boldsymbol y=(y_1,\ldots,y_N)$，
+\begin{equation}\label{eq:V5-C05-sequence-likelihood}
+\Pr(\boldsymbol y\mid\boldsymbol\theta)
+=\prod_{t=1}^N\theta_{y_t}
+=\prod_{i=1}^K\theta_i^{n_i}.
+\end{equation}
+式\eqref{eq:V5-C05-multinomial-pmf}中的组合系数计算同一计数对应的序列数。它与$\boldsymbol\theta$无关，所以在推导后验参数核时可以消去；在计算计数向量的概率或边际证据时不能遗漏。图\ref{fig:V5-C05-multinomial-counts}把“序列压缩为计数”与“计数概率重新乘组合系数”画成两条不同路径。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_multinomial_counts.tex}
+
+\phantomsection\label{struct:V5-C05-CH08}
+\textbf{模型。}本章的基本贝叶斯模型是
+\begin{equation}\label{eq:V5-C05-bayes-model}
+\boldsymbol\theta\sim\operatorname{Dir}(\boldsymbol\alpha),
+\qquad
+Y_t\mid\boldsymbol\theta\overset{\mathrm{iid}}{\sim}
+\operatorname{Categorical}(\boldsymbol\theta),
+\quad t=1,\ldots,N.
+\end{equation}
+模型对象包括类别集合、$K$维参数向量、参考单纯形、严格正超参数$\boldsymbol\alpha$、观测序列或经核验的计数向量。若只收到计数，必须同时收到$N$或核验$N=\sum_i n_i$；不能把概率参数$\boldsymbol\theta$与随机计数$\boldsymbol n$混为一类向量。
+
+\phantomsection\label{struct:V5-C05-CH09}
+\textbf{学习策略。}先把多项似然写成各$\theta_i$的幂，再选择具有同样乘积幂结构的先验。观测到$n_i$次类别$i$后，指数由$\alpha_i-1$增加到$\alpha_i+n_i-1$。这条“指数相加”规则说明分布族闭合，但完整推断还要核验三件事：先验是否可正规化，后验归一化常数是什么，以及预测与证据中哪些组合系数需要保留。
+
+\phantomsection\label{struct:V5-C05-CH10}
+\textbf{学习算法。}从原始序列开始时先按类别扫描并累加计数，然后逐分量计算$\alpha_i^{\mathrm{post}}=\alpha_i+n_i$。从已验证计数开始时直接做向量加法。闭式更新没有需要等待的迭代收敛过程；后文算法仍将明确输入、退化分支、数值稳定和复杂度。图\ref{fig:V5-C05-distribution-relations}同时区分类别/多项、Bernoulli/二项以及Dirichlet/Beta之间的维数关系与共轭关系。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_distribution_relations.tex}
+
+\SLTeachSection{Gamma函数与Beta分布}{sec:V5-C05-S02}
+
+\phantomsection\label{struct:V5-C05-CH11}
+% CORE-DERIVATION-PLAN: KN-V5-C34-DERIVATION-001
+\SLKnowledgeBridge{通过变量变换把 Gamma积分分解为总量和比例，并推广到单纯形。}{正参数 $a,b$、独立 Gamma变量及变换 $s=x+y$、$t=x/(x+y)$。}{统一采用 shape--rate 参数化；明确变换区域并计入 Jacobian $s$。}{先把 $\Gamma(a)\Gamma(b)$ 写成第一象限二重积分，再作 $(x,y)=(st,s(1-t))$ 变换。}
+
+\begin{derivationgoalbox}
+从Gamma积分建立Beta--Gamma恒等式，再把它推广为多元Beta函数；随后利用独立Gamma变量的和与比例证明狄利克雷密度归一化，并为矩、共轭和后验预测提供统一计算工具。
+\end{derivationgoalbox}
+
+\begin{derivationprepbox}
+以下Gamma分布统一采用shape--rate参数化：
+\[
+g(x\mid a,b)=\frac{b^a}{\Gamma(a)}x^{a-1}e^{-bx},
+\qquad x>0,\ a,b>0.
+\]
+rate是指数项中的$b$；若把scale写成$b$会导致后续和分布与数值计算全部错位。变量变换证明同时记录取值域与Jacobian。
+\end{derivationprepbox}
+
+对$a>0$，
+\begin{equation}\label{eq:V5-C05-gamma-definition}
+\Gamma(a)=\int_0^\infty x^{a-1}e^{-x}\,\mathrm dx.
+\end{equation}
+分部积分给出$\Gamma(a+1)=a\Gamma(a)$，并由$\Gamma(1)=1$得到$\Gamma(n)=(n-1)!$。二元Beta函数定义为
+\begin{equation}\label{eq:V5-C05-beta-definition}
+B(a,b)=\int_0^1 t^{a-1}(1-t)^{b-1}\,\mathrm dt,
+\qquad a,b>0.
+\end{equation}
+
+\textbf{步骤1：写成二维Gamma积分。}考虑$\Gamma(a)\Gamma(b)$并把两个正半轴积分合并为正象限积分。\par
+\textbf{步骤2：改用总量与比例。}令$x=st$、$y=s(1-t)$，其中$s>0$、$0<t<1$，Jacobian绝对值为$s$。\par
+\textbf{步骤3：分离两个积分。}被积函数化为$s^{a+b-1}e^{-s}t^{a-1}(1-t)^{b-1}$，从而总量积分和比例积分分别成为$\Gamma(a+b)$与$B(a,b)$。
+
+\phantomsection\label{struct:V5-C05-CH12}
+% KNOWLEDGE-PLAN: KN-V5-C34-THEOREM-001 L1
+\paragraph{读前自检：Beta--Gamma恒等式。}把Beta--Gamma恒等式放在“对$a,b>0$”下考察：把$B(a,b)$展开一次并检查其类型或边界，并检查展开后的量满足定义中的域、维数或符号限制。\par
+
+\begin{theorem}[Beta--Gamma恒等式]\label{thm:V5-C05-beta-gamma}
+对$a,b>0$，
+\begin{equation}\label{eq:V5-C05-beta-gamma}
+B(a,b)=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}.
+\end{equation}
+\end{theorem}
+
+\phantomsection\label{struct:V5-C05-CH13}
+% KNOWLEDGE-PLAN: KN-V5-C34-PROOF-001 L1
+\paragraph{读前自检：证明：Beta--Gamma恒等式。}Beta--Gamma恒等式要求先确认“由Tonelli定理”；请随后把$\Gamma(a)\Gamma(b)$用到的关键定义展开并完成下一步变形，用变形没有增加前提且得到证明所述结论验收。\par
+
+\begin{proof}
+由Tonelli定理，非负被积函数允许把两个Gamma积分写成
+\[
+\Gamma(a)\Gamma(b)
+=\int_0^\infty\!\!\int_0^\infty
+x^{a-1}y^{b-1}e^{-(x+y)}\,\mathrm dx\,\mathrm dy.
+\]
+在正象限使用$x=st$、$y=s(1-t)$。变换把区域一一映到
+$s>0$、$0<t<1$，且
+\[
+\left|\frac{\partial(x,y)}{\partial(s,t)}\right|=s.
+\]
+因此
+\begin{align*}
+\Gamma(a)\Gamma(b)
+&=\int_0^\infty\!\!\int_0^1
+s^{a+b-1}e^{-s}t^{a-1}(1-t)^{b-1}
+\,\mathrm dt\,\mathrm ds\\
+&=\Gamma(a+b)B(a,b).
+\end{align*}
+由于$\Gamma(a+b)>0$，两边除以该量得到式\eqref{eq:V5-C05-beta-gamma}。
+\end{proof}
+
+Beta分布的密度为
+\[
+f(t\mid a,b)=\frac{t^{a-1}(1-t)^{b-1}}{B(a,b)},
+\qquad 0<t<1.
+\]
+多元Beta函数把式\eqref{eq:V5-C05-beta-gamma}推广为
+\begin{equation}\label{eq:V5-C05-multivariate-beta}
+B(\boldsymbol\alpha)
+=\frac{\prod_{i=1}^K\Gamma(\alpha_i)}
+{\Gamma(\alpha_0)},
+\qquad \alpha_0=\sum_{i=1}^K\alpha_i.
+\end{equation}
+
+% KNOWLEDGE-PLAN: KN-V5-C34-BOUNDARY-001 L1
+\paragraph{读前自检：狄利克雷分布的矩与条件性质。}Dirichlet参数$\alpha_i>0$、$\alpha_0=\sum_i\alpha_i$；请代入$E\Theta_i=\alpha_i/\alpha_0$与协方差公式，核对各均值之和为1且非对角协方差非正。\par
+% KNOWLEDGE-PLAN: KN-V5-C34-DEFINITION-003 L1
+\paragraph{读前自检：狄利克雷分布定义。}Dirichlet密度定义在开单纯形$\theta_i>0,\sum_i\theta_i=1$上；请写出$B(\boldsymbol\alpha)^{-1}\prod_i\theta_i^{\alpha_i-1}$，核对$\alpha_i>0$时积分为1。\par
+
+\SLTeachSection{狄利克雷分布}{sec:V5-C05-S03}
+\knowledgeanchor{SLM-E-02-001}{狄利克雷分布的矩与条件性质}
+\knowledgeanchor{SLM-20-02-001}{狄利克雷分布定义}
+
+\SLReadTranslation{首次阅读只追踪四件事：Gamma变量归一化后为什么得到单纯形上的分布，均值与方差怎样解释参数，计数怎样更新共轭后验，以及后验怎样给出下一次预测。Jacobian细节、任意阶矩、期望对数与边际证据属于进阶支线，不是理解共轭更新的前置。}
+
+% KNOWLEDGE-PLAN: KN-V5-C34-DEFINITION-004 L1
+\paragraph{读前自检：狄利克雷分布。}若$G_i\sim\operatorname{Gamma}(\alpha_i,1)$独立并令$S=\sum_iG_i$、$\Theta_i=G_i/S$；请核对$\Theta$落在单纯形，并由Gamma归一化表示确认其为$\operatorname{Dir}(\alpha)$。\par
+
+\begin{definition}[狄利克雷分布]\label{def:V5-C05-dirichlet}
+设$K\ge2$、$\alpha_i>0$，并令
+\[
+\Delta_{K-1}^{\circ}
+=\{\boldsymbol\theta\in(0,1)^K:
+\textstyle\sum_{i=1}^K\theta_i=1\}.
+\]
+若$\boldsymbol\Theta$在单纯形上相对于坐标
+$(\theta_1,\ldots,\theta_{K-1})$的$(K-1)$维Lebesgue测度具有密度
+\begin{equation}\label{eq:V5-C05-dirichlet-density}
+p(\boldsymbol\theta\mid\boldsymbol\alpha)
+=\frac1{B(\boldsymbol\alpha)}
+\prod_{i=1}^K\theta_i^{\alpha_i-1},
+\qquad
+\theta_K=1-\sum_{i=1}^{K-1}\theta_i,
+\end{equation}
+则记$\boldsymbol\Theta\sim\operatorname{Dir}(\boldsymbol\alpha)$。边界按其极限行为理解；密度不是相对于整个$\mathbb R^K$的$K$维Lebesgue测度定义的。
+\end{definition}
+\index{狄利克雷分布!定义}
+\index{单纯形}
+
+当$K=2$时，$\Theta_2=1-\Theta_1$，式\eqref{eq:V5-C05-dirichlet-density}退化为
+$\Theta_1\sim\operatorname{Beta}(\alpha_1,\alpha_2)$。若某个$\alpha_i<1$，密度靠近相应面时可以趋于无穷，但只要所有$\alpha_i>0$仍可积；把$\alpha_i=0$代入密度不再给出可正规化的狄利克雷分布。
+
+图\ref{fig:V5-C05-simplex-geometry}说明三分类概率向量虽然写成三个分量，却只有两个自由度。
+% v2.6 layout: former forced clear removed; natural pagination.
+\paragraph{几何面：概率向量住在哪里？}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_simplex_geometry.tex}
+
+\begin{theorem}[Gamma归一化构造]\label{thm:V5-C05-gamma-normalization}
+设$G_i$彼此独立，且
+\[
+G_i\sim\operatorname{Gamma}(\alpha_i,b),
+\qquad i=1,\ldots,K,
+\]
+其中采用共同rate $b>0$。令$S=\sum_iG_i$、$\Theta_i=G_i/S$。则
+\[
+\boldsymbol\Theta\sim\operatorname{Dir}(\boldsymbol\alpha),
+\qquad
+S\sim\operatorname{Gamma}(\alpha_0,b),
+\]
+并且$\boldsymbol\Theta$与$S$独立。
+\end{theorem}
+\paragraph{进阶证明：变量变换与Jacobian。}
+以下证明用于核验归一化常数；首次阅读可先接受定理结论，直接转到均值、方差与共轭更新。
+\begin{proof}
+联合密度为
+\[
+\prod_{i=1}^K
+\frac{b^{\alpha_i}}{\Gamma(\alpha_i)}
+g_i^{\alpha_i-1}e^{-bg_i}.
+\]
+作变量变换$g_i=s\theta_i$，$i<K$，以及
+$g_K=s(1-\sum_{i<K}\theta_i)$。取值域是$s>0$与
+$\boldsymbol\theta\in\Delta_{K-1}^{\circ}$，Jacobian绝对值为$s^{K-1}$。代入后联合密度分解为
+\[
+\underbrace{\frac{b^{\alpha_0}}{\Gamma(\alpha_0)}
+s^{\alpha_0-1}e^{-bs}}_{\operatorname{Gamma}(\alpha_0,b)}
+\;
+\underbrace{\frac{\Gamma(\alpha_0)}
+{\prod_i\Gamma(\alpha_i)}
+\prod_i\theta_i^{\alpha_i-1}}_{\operatorname{Dir}(\boldsymbol\alpha)}.
+\]
+两个因子分别只含$s$与$\boldsymbol\theta$。第一个因子已经是归一化的
+$\operatorname{Gamma}(\alpha_0,b)$密度；原始联合密度的积分为$1$，所以由
+Tonelli定理，
+\[
+1=\int_0^\infty f_S(s)\,\mathrm ds
+\int_{\Delta_{K-1}}h(\boldsymbol\theta)\,\mathrm d\boldsymbol\theta
+=\int_{\Delta_{K-1}}h(\boldsymbol\theta)\,\mathrm d\boldsymbol\theta.
+\]
+因此第二个因子也归一化，其常数正是$1/B(\boldsymbol\alpha)$。这先证明定义
+\ref{def:V5-C05-dirichlet}归一化，再由联合密度分解得到所述边缘分布与独立性，避免把待证的Dirichlet归一化当作前提。
+\end{proof}
+
+图\ref{fig:V5-C05-gamma-normalization}把“独立正变量—总量—比例向量”分成三个可检验步骤；共同rate保证归一化比例具有所述Dirichlet参数。
+% v2.6 layout: former forced clear removed; natural pagination.
+\paragraph{构造面：正变量怎样变成概率向量？}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_gamma_normalization.tex}
+
+% KNOWLEDGE-PLAN: KN-V5-C34-PROPOSITION-001 L1
+\paragraph{读前自检：均值、方差与协方差。}对$\Theta\sim\operatorname{Dir}(\alpha)$，请计算$E\Theta_i=\alpha_i/\alpha_0$与$\operatorname{Cov}(\Theta_i,\Theta_j)$，核对总和恒为1导致每行协方差和为0。\par
+
+\begin{proposition}[均值、方差与协方差]\label{prop:V5-C05-basic-moments}
+若$\boldsymbol\Theta\sim\operatorname{Dir}(\boldsymbol\alpha)$，则
+\begin{align}
+\mathbb E(\Theta_i)
+&=\frac{\alpha_i}{\alpha_0},\label{eq:V5-C05-dirichlet-mean}\\
+\operatorname{Var}(\Theta_i)
+&=\frac{\alpha_i(\alpha_0-\alpha_i)}
+{\alpha_0^2(\alpha_0+1)},\label{eq:V5-C05-dirichlet-var}\\
+\operatorname{Cov}(\Theta_i,\Theta_j)
+&=-\frac{\alpha_i\alpha_j}
+{\alpha_0^2(\alpha_0+1)},\quad i\ne j.
+\label{eq:V5-C05-dirichlet-cov}
+\end{align}
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C34-PROOF-003 L1
+\paragraph{读前自检：证明：均值、方差与协方差。}对均值、方差与协方差，条件“分别把$\Theta_i$、$\Theta_i^2$与$\Theta_i\Theta_j$乘入密度”不可省；请把$\Gamma(a+1)=a\Gamma(a)$按证明中的分解展开一层，再用各项维数闭合且需消失的交叉项确为零作检查。\par
+
+\begin{proof}
+分别把$\Theta_i$、$\Theta_i^2$与$\Theta_i\Theta_j$乘入密度，所得积分都是参数增加后的多元Beta积分。由$\Gamma(a+1)=a\Gamma(a)$得
+\[
+\mathbb E\Theta_i^2
+=\frac{\alpha_i(\alpha_i+1)}
+{\alpha_0(\alpha_0+1)},\qquad
+\mathbb E(\Theta_i\Theta_j)
+=\frac{\alpha_i\alpha_j}
+{\alpha_0(\alpha_0+1)}.
+\]
+分别减去均值平方与均值乘积便得到方差和协方差。
+\end{proof}
+
+\SLAdvancedSection{一般矩、条件分布与期望对数}{sec:V5-C05-S03-advanced}
+以下结果服务于变分推断和高阶性质；首次阅读可跳到第\ref{sec:V5-C05-S04}节的共轭更新。
+
+\begin{proposition}[一般矩公式]\label{prop:V5-C05-general-moment}
+若$\boldsymbol\Theta\sim\operatorname{Dir}(\boldsymbol\alpha)$，且
+$r_i>-\alpha_i$，则
+\begin{equation}\label{eq:V5-C05-general-moment}
+\mathbb E\!\left[\prod_{i=1}^K\Theta_i^{r_i}\right]
+=\frac{B(\boldsymbol\alpha+\boldsymbol r)}
+{B(\boldsymbol\alpha)}.
+\end{equation}
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C34-PROOF-004 L1
+\paragraph{读前自检：证明：一般矩公式。}一般矩公式把问题限定在“条件$r_i>-\alpha_i$保证新积分有限”；请把$\alpha_i+r_i-1$用到的关键定义展开并完成下一步变形，检查是否得到变形没有增加前提且得到证明所述结论。\par
+
+\begin{proof}
+把乘积幂移入式\eqref{eq:V5-C05-dirichlet-density}，积分中的指数变为
+$\alpha_i+r_i-1$。条件$r_i>-\alpha_i$保证新积分有限，于是
+\[
+\mathbb E\!\left[\prod_i\Theta_i^{r_i}\right]
+=\frac1{B(\boldsymbol\alpha)}
+\int_{\Delta_{K-1}}\prod_i
+\theta_i^{\alpha_i+r_i-1}\,\mathrm d\boldsymbol\theta
+=\frac{B(\boldsymbol\alpha+\boldsymbol r)}
+{B(\boldsymbol\alpha)}.
+\]
+\end{proof}
+
+\begin{proposition}[聚合与条件性质]\label{prop:V5-C05-aggregation}
+把$\{1,\ldots,K\}$分成互不相交的非空组$A_1,\ldots,A_L$。若
+$\boldsymbol\Theta\sim\operatorname{Dir}(\boldsymbol\alpha)$，则
+\[
+\left(\sum_{i\in A_1}\Theta_i,\ldots,
+\sum_{i\in A_L}\Theta_i\right)
+\sim\operatorname{Dir}\!\left(
+\sum_{i\in A_1}\alpha_i,\ldots,
+\sum_{i\in A_L}\alpha_i\right).
+\]
+因而
+\begin{equation}\label{eq:V5-C05-beta-marginal}
+\Theta_i\sim\operatorname{Beta}(\alpha_i,\alpha_0-\alpha_i).
+\end{equation}
+此外，下式取正则条件分布版本。令
+$\boldsymbol U=(\Theta_j/(1-\Theta_i))_{j\ne i}$；则对
+$\operatorname{Beta}(\alpha_i,\alpha_0-\alpha_i)$几乎处处的$t\in(0,1)$（并可选取对每个$0<t<1$都成立的版本），
+\begin{equation}\label{eq:V5-C05-normalized-conditional}
+\mathcal L(\boldsymbol U\mid\Theta_i=t)
+=\operatorname{Dir}(\boldsymbol\alpha_{-i}),
+\end{equation}
+且右侧不依赖$t$。等价地，该正则条件核相对于剩余单纯形测度的密度为
+\[
+k(t,\boldsymbol u)
+=\frac{1}{B(\boldsymbol\alpha_{-i})}
+  \prod_{j\ne i}u_j^{\alpha_j-1},
+\qquad \boldsymbol u\in\Delta_{K-2}^{\circ},
+\]
+其中右端不含$t$；这避免把零概率事件$\{\Theta_i=t\}$当作普通离散条件事件。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C34-PROOF-005 L1
+\paragraph{读前自检：证明：聚合与条件性质。}在“采用该定理中的独立Gamma表示”成立时处理聚合与条件性质：请把$\frac{\Theta_j}{1-\Theta_i}$用到的关键定义展开并完成下一步变形，并以而$\Theta_i$只由 $G_i$与该和决定，故$\boldsymbol U$与$\Theta_i$独立判定结果。\par
+
+\begin{proof}
+采用定理\ref{thm:V5-C05-gamma-normalization}中的独立Gamma表示。每一组
+$H_\ell=\sum_{i\in A_\ell}G_i$是shape为$\sum_{i\in A_\ell}\alpha_i$、
+rate为$b$的Gamma变量；不同组仍独立。把$H_1,\ldots,H_L$除以共同总和便得到聚合结论。取两组$\{i\}$与其补集得到式\eqref{eq:V5-C05-beta-marginal}。另一方面，
+\[
+\frac{\Theta_j}{1-\Theta_i}
+=\frac{G_j}{\sum_{\ell\ne i}G_\ell},\qquad j\ne i.
+\]
+该归一化比例服从$\operatorname{Dir}(\boldsymbol\alpha_{-i})$，并独立于
+$\sum_{\ell\ne i}G_\ell$；它还独立于$G_i$。而$\Theta_i$只由
+$G_i$与该和决定，故$\boldsymbol U$与$\Theta_i$独立。于是可把无条件Dirichlet密度选作上述正则条件核；该核对边缘分布几乎处处唯一，并且此版本对所有$0<t<1$都有定义。
+\end{proof}
+
+\begin{proposition}[期望对数]\label{prop:V5-C05-expected-log}
+若$\boldsymbol\Theta\sim\operatorname{Dir}(\boldsymbol\alpha)$，则
+\begin{equation}\label{eq:V5-C05-expected-log}
+\mathbb E[\log\Theta_i]
+=\psi(\alpha_i)-\psi(\alpha_0).
+\end{equation}
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C34-PROOF-006 L1
+\paragraph{读前自检：证明：期望对数。}Dirichlet期望对数由归一化常数求导得到；请对$\log B(\alpha)$关于$\alpha_i$求导，核对$E[\log\Theta_i]=\psi(\alpha_i)-\psi(\alpha_0)$。\par
+
+\begin{proof}
+归一化恒等式为
+\[
+B(\boldsymbol\alpha)
+=\int_{\Delta_{K-1}}\prod_j\theta_j^{\alpha_j-1}
+\,\mathrm d\boldsymbol\theta.
+\]
+在所有$\alpha_j>0$的紧子区域内可用一个可积上界控制参数导数；对
+$\alpha_i$求导并除以$B(\boldsymbol\alpha)$得到
+\[
+\frac{\partial}{\partial\alpha_i}\log B(\boldsymbol\alpha)
+=\mathbb E[\log\Theta_i].
+\]
+再由式\eqref{eq:V5-C05-multivariate-beta}求导：
+\[
+\frac{\partial}{\partial\alpha_i}\log B(\boldsymbol\alpha)
+=\psi(\alpha_i)-\psi(\alpha_0),
+\]
+故式\eqref{eq:V5-C05-expected-log}成立。
+\end{proof}
+
+图\ref{fig:V5-C05-exponential-family-moments}把$\log B(\boldsymbol\alpha)$的梯度与期望充分统计$\mathbb E\log\Theta_i$对应起来。必须区分
+$\mathbb E[\log\Theta_i]$与$\log\mathbb E[\Theta_i]$；严格非退化时，凹性给出前者更小。
+% v2.6 layout: former forced clear removed; natural pagination.
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_exponential_family_moments.tex}
+
+% KNOWLEDGE-PLAN: KN-V5-C34-FORMULA-001 L1
+\paragraph{读前自检：共轭先验。}共轭先验要求后验仍属于同一分布族；请把多项似然核$\prod_i\theta_i^{n_i}$乘Dirichlet先验核，合并指数并核对后验参数为$\alpha_i+n_i$。\par
+
+\SLTeachSection{\DirichletMultinomial{}共轭}{sec:V5-C05-S04}
+\knowledgeanchor{SLM-20-01-004}{共轭先验}
+
+给定计数$\boldsymbol n\in\mathcal C_{N,K}$，似然与先验分别为
+\begin{align}
+p(\boldsymbol n\mid\boldsymbol\theta)
+&=\frac{N!}{\prod_i n_i!}\prod_i\theta_i^{n_i},
+\label{eq:V5-C05-count-likelihood}\\
+p(\boldsymbol\theta\mid\boldsymbol\alpha)
+&=\frac1{B(\boldsymbol\alpha)}
+\prod_i\theta_i^{\alpha_i-1}.
+\label{eq:V5-C05-dirichlet-prior}
+\end{align}
+后验推导保留归一化常数：
+\begin{align}
+p(\boldsymbol\theta\mid\boldsymbol n,\boldsymbol\alpha)
+&=\frac{
+p(\boldsymbol n\mid\boldsymbol\theta)
+p(\boldsymbol\theta\mid\boldsymbol\alpha)}
+{p(\boldsymbol n\mid\boldsymbol\alpha)}\notag\\
+&\propto
+\prod_i\theta_i^{n_i}
+\prod_i\theta_i^{\alpha_i-1}\notag\\
+&=\prod_i\theta_i^{\alpha_i+n_i-1}.
+\label{eq:V5-C05-posterior-kernel}
+\end{align}
+令$\boldsymbol\alpha^{\mathrm{post}}=\boldsymbol\alpha+\boldsymbol n$，对式
+\eqref{eq:V5-C05-posterior-kernel}在单纯形上积分得到$B(\boldsymbol\alpha^{\mathrm{post}})$。
+
+% KNOWLEDGE-PLAN: KN-V5-C34-THEOREM-003 L1
+\paragraph{读前自检：共轭。}\DirichletMultinomial{}共轭要求$\alpha_i>0$且计数$n_i\ge0$；请合并先验与似然的幂指数，核对$\alpha+n$仍严格为正并定义合法Dirichlet后验。\par
+
+\begin{theorem}[\DirichletMultinomial{}共轭]\label{thm:V5-C05-conjugacy}
+在模型\eqref{eq:V5-C05-bayes-model}中，若
+$\boldsymbol\alpha\in(0,\infty)^K$且
+$\boldsymbol n\in\mathcal C_{N,K}$，则
+\begin{equation}\label{eq:V5-C05-conjugate-posterior}
+\boldsymbol\Theta\mid\boldsymbol n,\boldsymbol\alpha
+\sim\operatorname{Dir}(\boldsymbol\alpha+\boldsymbol n).
+\end{equation}
+\emph{进阶旁支（边际证据）。}若还需比较模型或核验计数概率，则计数向量的边际概率为
+\begin{equation}\label{eq:V5-C05-dirichlet-multinomial}
+p(\boldsymbol n\mid\boldsymbol\alpha)
+=\frac{N!}{\prod_i n_i!}
+\frac{B(\boldsymbol\alpha+\boldsymbol n)}
+{B(\boldsymbol\alpha)}.
+\end{equation}
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C34-PROOF-007 L1
+\paragraph{读前自检：证明：共轭。}证明共轭时只保留关于$\theta$的核；请计算$\prod_i\theta_i^{\alpha_i-1}\prod_i\theta_i^{n_i}$，核对指数为$\alpha_i+n_i-1$并由Beta常数归一化。\par
+
+\begin{proof}
+式\eqref{eq:V5-C05-posterior-kernel}与定义
+\ref{def:V5-C05-dirichlet}的核相同，参数为
+$\boldsymbol\alpha^{\mathrm{post}}=\boldsymbol\alpha+\boldsymbol n$。所有
+$\alpha_i^{\mathrm{post}}>0$，所以归一化积分有限且为$B(\boldsymbol\alpha^{\mathrm{post}})$，由此得到
+\[
+p(\boldsymbol\theta\mid\boldsymbol n,\boldsymbol\alpha)
+=\frac1{B(\boldsymbol\alpha+\boldsymbol n)}
+\prod_i\theta_i^{\alpha_i+n_i-1}.
+\]
+对联合分布积分则有
+\begin{align*}
+p(\boldsymbol n\mid\boldsymbol\alpha)
+&=\int_{\Delta_{K-1}}
+p(\boldsymbol n\mid\boldsymbol\theta)
+p(\boldsymbol\theta\mid\boldsymbol\alpha)
+\,\mathrm d\boldsymbol\theta\\
+&=\frac{N!}{\prod_i n_i!}
+\frac1{B(\boldsymbol\alpha)}
+\int_{\Delta_{K-1}}\prod_i
+\theta_i^{\alpha_i+n_i-1}\,\mathrm d\boldsymbol\theta\\
+&=\frac{N!}{\prod_i n_i!}
+\frac{B(\boldsymbol\alpha+\boldsymbol n)}
+{B(\boldsymbol\alpha)}.
+\end{align*}
+这同时给出后验归一化分母与计数向量证据。
+\end{proof}
+
+图\ref{fig:V5-C05-conjugate-update}把先验形状、观测计数与后验形状按分量对齐；相加发生在参数上，不是把两个概率向量相加。
+% v2.6 layout: former forced clear removed; natural pagination.
+\paragraph{共轭面：数据怎样改写参数？}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_conjugate_update.tex}
+
+% KNOWLEDGE-PLAN: KN-V5-C34-PROPOSITION-005 L1
+\paragraph{读前自检：后验预测。}Dirichlet后验为$\operatorname{Dir}(\alpha+n)$；请对下一类别概率取后验期望，核对$P(Y_{N+1}=i\mid n,\alpha)=(\alpha_i+n_i)/(\alpha_0+N)$且总和为1。\par
+
+\begin{proposition}[后验预测]\label{prop:V5-C05-predictive}
+在定理\ref{thm:V5-C05-conjugacy}的条件下，新观测的后验预测概率为
+\begin{equation}\label{eq:V5-C05-one-step-predictive}
+\Pr(Y_{N+1}=i\mid\boldsymbol n,\boldsymbol\alpha)
+=\frac{\alpha_i+n_i}{\alpha_0+N}.
+\end{equation}
+若未来$M$次观测的计数为$\boldsymbol r\in\mathcal C_{M,K}$，则
+\begin{equation}\label{eq:V5-C05-future-count-predictive}
+\Pr(\boldsymbol r\mid\boldsymbol n,\boldsymbol\alpha)
+=\frac{M!}{\prod_i r_i!}
+\frac{B(\boldsymbol\alpha+\boldsymbol n+\boldsymbol r)}
+{B(\boldsymbol\alpha+\boldsymbol n)}.
+\end{equation}
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C34-PROOF-008 L1
+\paragraph{读前自检：证明：后验预测。}后验预测证明用全概率公式积分$P(Y_{N+1}=i\mid\theta)=\theta_i$；请对$\operatorname{Dir}(\alpha+n)$求$E\Theta_i$，核对得到$(\alpha_i+n_i)/(\alpha_0+N)$。\par
+
+\begin{proof}
+由全概率公式和式\eqref{eq:V5-C05-dirichlet-mean}，
+\[
+\Pr(Y_{N+1}=i\mid\boldsymbol n,\boldsymbol\alpha)
+=\int\theta_i\,
+p(\boldsymbol\theta\mid\boldsymbol n,\boldsymbol\alpha)
+\,\mathrm d\boldsymbol\theta
+=\frac{\alpha_i+n_i}{\alpha_0+N}.
+\]
+把后验$\operatorname{Dir}(\boldsymbol\alpha+\boldsymbol n)$视作未来计数的先验，再应用式\eqref{eq:V5-C05-dirichlet-multinomial}，得到
+\eqref{eq:V5-C05-future-count-predictive}。
+\end{proof}
+
+\SLDirectSection{后验预测与例题}{sec:V5-C05-S05}
+
+\phantomsection\label{struct:V5-C05-CH14}
+\textbf{几何解释。}均值 $\boldsymbol m=\boldsymbol\alpha/\alpha_0$
+给出单纯形中的中心，而 $\alpha_0$ 控制围绕该中心的集中程度；二者必须分开解释。
+
+\paragraph{浓度面之一：形状参数跨过一时，密度怎样改变？}
+图\ref{fig:V5-C05-dirichlet-shape-atlas}在同一三分类单纯形上比较全部形状分量大于、等于和小于 $1$ 时的真实密度边界行为。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dirichlet_shape_atlas.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先比较三图共同的单纯形坐标；再看 $(2,2,2)$ 在三条面上趋零、$(1,1,1)$ 保持常数、$(1/2,1/2,1/2)$ 在三条面附近发散。由此可知，内点 MAP 公式不能跨过 $\alpha_i\le1$ 继续使用。\par
+
+\paragraph{浓度面之二：固定均值时，总浓度怎样改变不确定性？}
+图\ref{fig:V5-C05-concentration-mean}固定 $\boldsymbol m=(0.5,0.3,0.2)$，只改变总浓度 $\alpha_0$。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_concentration_mean.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先沿左侧线性 $\alpha_0$ 轴核对三组 $\boldsymbol\alpha=\alpha_0\boldsymbol m$；再沿同一线型的箭头找到右侧同心的 $0.8\sigma$ 协方差椭圆。三椭圆中心相同而面积比为 $1:4/11:4/31$，故变化来自浓度而非均值。\par
+
+\phantomsection\label{struct:V5-C05-CH15}
+\textbf{概率解释。}把$\alpha_i$看作更新规则中的先验质量，则观测类别$i$一次就把该分量加一。式\eqref{eq:V5-C05-one-step-predictive}等价于Pólya瓮规则：当前类别$i$的质量为$\alpha_i+n_i$，总质量为$\alpha_0+N$；抽到一个类别后把对应质量再加一。因此未来观测虽然在给定
+$\boldsymbol\Theta$后条件独立，积分掉$\boldsymbol\Theta$以后却具有正的同类强化，并且预测序列仍可交换。
+
+\phantomsection\label{struct:V5-C05-CH16}
+\textbf{优化解释与边界。}狄利克雷后验均值是
+\[
+\widehat\theta_i^{\mathrm{mean}}
+=\frac{\alpha_i+n_i}{\alpha_0+N}.
+\]
+若所有$\alpha_i^{\mathrm{post}}=\alpha_i+n_i>1$，拉格朗日乘子法给出唯一内点众数
+\begin{equation}\label{eq:V5-C05-map}
+\widehat\theta_i^{\mathrm{MAP}}
+=\frac{\alpha_i^{\mathrm{post}}-1}{\alpha_0^{\mathrm{post}}-K}.
+\end{equation}
+若任一$\alpha_i^{\mathrm{post}}\le1$，式\eqref{eq:V5-C05-map}的内点条件失效；峰值可能位于边界，某些方向的密度还会无界。“$\alpha_i$是伪计数”适合描述后验更新与预测；“$\alpha_i-1$是众数修正”只在内点众数条件成立时使用，二者不能互换。
+
+\phantomsection\label{struct:V5-C05-CH17}
+\textbf{图形辅助。}图\ref{fig:V5-C05-posterior-predictive}沿
+$\boldsymbol\alpha\to\boldsymbol\alpha+\boldsymbol n\to
+(\boldsymbol\alpha+\boldsymbol n)/(\alpha_0+N)$展示先验、数据与预测的三段映射。图\ref{fig:V5-C05-distribution-relations}说明二维Dirichlet是Beta分布，而不是说任意单个分量都与其他分量独立；单分量边缘为Beta，但所有分量受和为$1$的约束而负相关。
+% v2.6 layout: former forced clear removed; natural pagination.
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_posterior_predictive.tex}
+
+\phantomsection\label{struct:V5-C05-CH18}
+\Needspace{6\baselineskip}
+\begin{example}[三分类先验的矩、更新与预测]\label{exm:V5-C05-three-category}
+取
+\[
+\boldsymbol\alpha=(2,3,5),\qquad
+\boldsymbol n=(4,1,0).
+\]
+求先验与后验均值、下一类别预测、后验MAP，以及未来依次出现类别$1,2$与不计顺序各出现一次的概率。
+\end{example}
+
+\Needspace{4\baselineskip}
+\SLExampleSolutionHeading{exm:V5-C05-three-category}
+\begin{solution}
+\SLReadTranslation{先用Dirichlet矩公式读取先验中心，再把计数加到参数得到后验；随后分别计算后验均值、内点MAP、下一类预测，以及“指定顺序”和“无序计数”两种未来事件。}
+\SolGiven $\boldsymbol\alpha=(2,3,5)$、$\boldsymbol n=(4,1,0)$，故先验总浓度为$10$、样本数为$5$；更新后参数各分量都大于$1$，内点MAP公式适用。
+\SLMethodTrigger{遇到\DirichletMultinomial{}共轭模型，先做$\boldsymbol\alpha^{\rm post}=\boldsymbol\alpha+\boldsymbol n$；均值与单步预测除以总浓度，MAP则用$(\alpha_i^{\rm post}-1)/(\alpha_0^{\rm post}-K)$。}
+\SolPlan 依次求先验/后验总浓度与均值、后验MAP，再按Pólya预测逐步更新分母；无序事件最后乘相应排列数。
+\SolDerive 先验与后验更新链为
+\[
+\alpha_0=2+3+5=10,\qquad
+\boldsymbol\alpha^{\mathrm{post}}
+=\boldsymbol\alpha+\boldsymbol n=(6,4,5),\qquad
+\alpha_0^{\mathrm{post}}=15.
+\]
+因此
+\[
+\mathbb E(\boldsymbol\Theta)
+=\left(\frac15,\frac3{10},\frac12\right),
+\qquad
+\mathbb E(\boldsymbol\Theta\mid\boldsymbol n)
+=\left(\frac25,\frac4{15},\frac13\right).
+\]
+后一向量也是下一次观测的预测概率。所有$\alpha_i^{\mathrm{post}}>1$，所以后验MAP为
+\[
+\left(\frac5{12},\frac14,\frac13\right).
+\]
+未来依次出现类别$1$、类别$2$的概率是
+\[
+\frac6{15}\frac4{16}=\frac1{10};
+\]
+若只关心未来两次中两个类别各出现一次，则还要计入两种顺序，概率为$1/5$。
+
+\SolCheck 后验预测分量和为$2/5+4/15+1/3=1$；MAP分量和为$5/12+1/4+1/3=1$。反向顺序的概率为$(4/15)(6/16)=1/10$，与正向顺序相加确为$1/5$。
+\SolAnswer 先验均值为$(1/5,3/10,1/2)$；后验为$\operatorname{Dir}(6,4,5)$，其均值及下一次预测均为$(2/5,4/15,1/3)$，MAP为$(5/12,1/4,1/3)$。未来指定顺序$(1,2)$的概率为$1/10$，两个类别无序各出现一次的概率为$1/5$。
+\end{solution}
+
+
+\phantomsection\label{struct:V5-C05-CH19}
+\textbf{伪代码。}算法\ref{alg:V5-C05-closed-form-update}是由共轭公式派生的确定性闭式流程，不是需要迭代至收敛的优化程序。它接受原始类别序列或经验证的计数向量，二者只能选择一种；算法保留完整组合系数，因此同一过程既能给后验参数，也能给计数证据与未来计数预测。
+
+\phantomsection\label{struct:V5-C05-CH20}
+\textbf{输入与输出。}输入是类别数$K$、严格正先验参数
+$\boldsymbol\alpha$、原始序列$\boldsymbol y$或计数向量
+$\boldsymbol n$，以及可选的未来计数$\boldsymbol r$。输出为经核验的
+$N$与$\boldsymbol n$、后验参数$\boldsymbol\alpha^{\mathrm{post}}$、完整预测向量、可选计数向量对数证据和可选未来计数对数概率。
+
+\phantomsection\label{struct:V5-C05-CH21}
+\textbf{参数含义。}$K$决定向量维数；$\alpha_i>0$保证先验可正规化；
+$\alpha_0$与$\alpha_0^{\mathrm{post}}$分别是先验和后验总浓度；$N$是已观测样本数；
+$M=\sum_i r_i$是未来计数总数。数值实现采用
+$\log\Gamma$累加计算$\log B$，不直接形成可能上溢的阶乘与Gamma乘积。
+
+\phantomsection\label{struct:V5-C05-CH22}
+\textbf{初始化。}先核验$K\ge1$、$\boldsymbol\alpha$长度为$K$且所有分量有限严格为正。若输入序列，初始化
+$n_i\leftarrow0$；若输入计数，复制为整数工作向量并核验非负。空序列或全零计数是合法的$N=0$情形，后验等于先验；$K=1$是退化零维单纯形，唯一概率为$1$。
+这里的$K=1$只是算法对退化情形的显式扩展，不属于定义
+\ref{def:V5-C05-dirichlet}所规定的$K\ge2$非退化Dirichlet分布。
+
+\phantomsection\label{struct:V5-C05-CH23}
+\textbf{循环变量与更新顺序。}序列输入时，循环变量$t=1,\ldots,N$，按观测顺序核验
+$y_t\in\{1,\ldots,K\}$并执行$n_{y_t}\leftarrow n_{y_t}+1$。计数完成后，按
+$i=1,\ldots,K$依次更新$\alpha_i^{\mathrm{post}}\leftarrow\alpha_i+n_i$，再统一计算
+$\alpha_0^{\mathrm{post}}$与预测概率$\alpha_i^{\mathrm{post}}/\alpha_0^{\mathrm{post}}$。未来计数只用于预测，不得混入当前后验。
+
+\phantomsection\label{struct:V5-C05-CH24}
+\textbf{判断条件与停止条件。}类别序列与计数向量必须恰好提供一种：仅序列时核验类别并累计计数，仅计数时核验后复制；两者都给或都不给均返回$\mathtt{invalid\_input}$。任何维数不符、非有限超参数、非正
+$\alpha_i$、非法类别、非整数或负计数、总数不一致、未来计数非法，也都以$\mathtt{invalid\_input}$停止并附具体诊断；停止前的部分计数不作为后验输出。两条合法分支汇合后才统一计算$N$、后验参数、证据与预测。正常情形在一次输入扫描和一次长度$K$的向量扫描后结束，没有容差型终止条件。
+
+\phantomsection\label{struct:V5-C05-CH25}
+\textbf{正确性依据与收敛条件。}正确性依据是定理
+\ref{thm:V5-C05-conjugacy}和命题\ref{prop:V5-C05-predictive}。计数向量对数证据由式
+\eqref{eq:V5-C05-dirichlet-multinomial}在对数域稳定求值。该闭式算法没有渐近迭代，因此“迭代收敛条件”不适用；完成有限次精确算术操作即得到理论值。浮点输出仍需满足有限性、概率非负以及预测和在舍入容差内等于$1$。不收敛或不适用情形是：把它误用于非多项似然、非Dirichlet先验、含负权计数的数据，或要求从未知复杂后验产生样本。
+
+\phantomsection\label{struct:V5-C05-CH26}
+\textbf{训练时间复杂度。}从原始序列计数并形成后验的训练时间复杂度为
+$O(N+K)$；若已经提供合法计数，则为$O(K)$。计算计数边际证据再做常数次
+$K$项$\log\Gamma$求和，仍为$O(K)$。
+
+\phantomsection\label{struct:V5-C05-CH27}
+\textbf{预测时间复杂度与空间复杂度。}形成全部$K$类预测概率的预测时间复杂度为
+$O(K)$；在已保存$\alpha_i^{\mathrm{post}},\alpha_0^{\mathrm{post}}$后查询单个类别是$O(1)$。计算一个长度
+$K$的未来计数概率为$O(K)$。工作空间复杂度为$O(K)$；若允许原地覆盖调用方计数可减少常数，但不能破坏原始计数输入。
+
+\begingroup
+\SetAlgoLined
+% KNOWLEDGE-PLAN: KN-V5-C34-ALGORITHM_IDEA-001 L1
+% KNOWLEDGE-PLAN: KN-V5-C34-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：闭式更新与后验预测。}闭式更新与后验预测输入“类别数$K$、严格正Dirichlet参数、恰好一种观测表示及可选总数/未来计数”，条件“$K$为正整数，参数长度为$K$且有限严格为正，类别序列与计数向量恰好提供一种”；请执行一轮“后验/预测/特殊函数结果全部通过后才原子提交完整输出”，以“所有有限扫描和输出一致性检查完成时返回$\mathtt{completed}$，没有渐近收敛判定”核对停止证书。\par
+
+\begin{AlgorithmContract}{
+  input={类别数$K$、严格正Dirichlet参数、恰好一种观测表示及可选总数/未来计数},
+  output={最后合法计数工作状态、完整后验/预测、实际处理量$w$、状态与最终诊断},
+  preconditions={$K$为正整数，参数长度为$K$且有限严格为正，类别序列与计数向量恰好提供一种},
+  initialization={序列模式清零$K$维临时计数；计数模式验证后复制工作向量；$w=0$且完整输出尚未提交},
+  loop={有限扫描输入观测，再有限扫描$K$个类别形成后验、预测与可选对数概率},
+  update={计数只写临时向量；后验/预测/特殊函数结果全部通过后才原子提交完整输出},
+  domain={类别合法、计数为非负整数、总数一致；后验参数正；预测非负有限且和为$1$},
+  failure={输入契约失败返回$\mathtt{invalid\_input}$；合法输入上的特殊函数、求和或概率检查失效返回$\mathtt{numerical\_failure}$并保留最后合法工作状态},
+  stop={所有有限扫描和输出一致性检查完成时返回$\mathtt{completed}$，没有渐近收敛判定},
+  budget={序列模式至多$N+K$个主体项，计数模式至多$2K$个主体项；未来计数另至多$K$项},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$w$记录已实际检查/形成的观测项、类别项和可选未来计数项总数},
+  diagnostics={首个非法字段/位置、空数据或$K=1$退化、预测归一化误差、特殊函数阶段与计划/实际处理量},
+  complexity={序列输入$O(N+K)$、计数输入$O(K)$，工作空间$O(K)$}
+}
+\begin{algorithm}[H]
+\caption{\DirichletMultinomial{}闭式更新与后验预测}\label{alg:V5-C05-closed-form-update}
+\KwIn{$K\ge1$；严格正$\boldsymbol\alpha$；二选一的类别序列$\boldsymbol y$或计数$\boldsymbol n$；可选总数$N_{\rm in}$与未来计数$\boldsymbol r$}
+\KwOut{最后合法工作状态及完整后验/预测；实际处理量$w$；$\mathtt{status}$与最终诊断}
+$w\leftarrow0$\;
+核验$K$是正整数、$\boldsymbol\alpha$长度为$K$且分量有限严格为正；失败则返回$\mathtt{invalid\_input}$及字段诊断\;
+\uIf{仅提供类别序列$\boldsymbol y$}{
+  初始化$n_i\leftarrow0$，$i=1,\ldots,K$\;
+  \For{$t\leftarrow1,\ldots,|\boldsymbol y|$}{
+    $w\leftarrow w+1$\;
+    若$y_t\notin\{1,\ldots,K\}$，则返回$\mathtt{invalid\_input}$、诊断$\mathtt{invalid\_class}(t)$且不返回部分后验\;
+    $n_{y_t}\leftarrow n_{y_t}+1$\;
+  }
+}
+\uElseIf{仅提供计数向量$\boldsymbol n$}{
+  $w\leftarrow w+K$\;
+  若其长度不是$K$，则返回最后合法空工作状态、$\mathtt{invalid\_input}$及$\mathtt{length\_mismatch}$诊断\;
+  若任一分量不是非负整数，则返回最后合法空工作状态、$\mathtt{invalid\_input}$及$\mathtt{invalid\_count}(i)$诊断；否则复制为工作向量\;
+}
+\Else{
+  返回$\mathtt{invalid\_input}$，并诊断“类别序列与计数向量必须恰好提供一种”\;
+}
+令$N\leftarrow\sum_i n_i$；此后两种输入共用同一后验、证据与预测分支\;
+若提供$N_{\rm in}$但$N_{\rm in}\ne N$，则返回$\mathtt{invalid\_input}$及$\mathtt{total\_mismatch}$诊断\;
+\For{$i\leftarrow1,\ldots,K$}{
+  $w\leftarrow w+1$\;
+  在临时向量中令$\alpha_i^+\leftarrow\alpha_i+n_i$\;
+}
+令$\alpha_0^+=\sum_i\alpha_i^+$，$p_i^+=\alpha_i^+/\alpha_0^+$\;
+用$\log\Gamma$计算临时计数对数证据
+$\log N!-\sum_i\log n_i!+\log B(\boldsymbol\alpha^+)-\log B(\boldsymbol\alpha)$\;
+若提供$\boldsymbol r$，逐项核验并增加$w$；非法时返回计数工作状态、$\mathtt{invalid\_input}$及未来计数位置诊断；否则在对数域形成临时未来概率\;
+判断全部临时输出有限、预测非负且和在容差内为$1$；失败则返回计数工作状态、$\mathtt{numerical\_failure}$及特殊函数/预测诊断\;
+原子提交$(\boldsymbol\alpha^{\mathrm{post}},\alpha_0^{\mathrm{post}},\boldsymbol p_{\mathrm{pred}})$及可选对数概率；返回完整结果、$w,\mathtt{completed}$及归一化/退化最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\FloatBarrier
+\SLRobustImplementationStrip{核心流程跟踪先验参数加计数、得到后验、读取均值与后验预测；特殊函数、空计数和边界状态属于稳健实现细节}
+\endgroup
+
+\begin{notapplicablebox}[title=\SLComplexityAssumptionsTitle]
+类别索引访问、浮点加法和一次$\log\Gamma$求值按固定精度视为
+$O(1)$；输入是稠密长度$K$向量。若使用任意精度算术，单次特殊函数成本随目标精度增长，不能再把上述界理解为位复杂度。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V5-C05-CH28}
+\textbf{适用条件。}该方法适合有限互斥类别、固定概率向量、条件独立类别观测和
+Dirichlet先验。它也适合作为更大概率模型中的局部共轭更新。若概率随样本协变量变化、类别并非互斥、观测带非整数权重或先验不是Dirichlet，必须重新推导后验，不能机械相加。
+
+\phantomsection\label{struct:V5-C05-CH29}
+\textbf{局限性。}共轭性提高可计算性，却不自动表达类别间的任意相关结构；单个
+Dirichlet只能给出由和约束产生的负协方差。固定$\boldsymbol\alpha$也可能过强地平滑稀有类别。层次Dirichlet、混合分布或协变量模型可以扩大表达能力，但相应超参数推断通常不再保持本章全部闭式性质。
+
+\phantomsection\label{struct:V5-C05-CH30}
+\textbf{常见错误。}不得把$B(\boldsymbol\alpha)$与其倒数互换；不得在计数证据中丢掉多项组合系数；不得允许$\alpha_i=0$后仍声称先验可正规化；不得把
+$\alpha_0$和均值向量混成同一作用；不得写
+$\mathbb E\log\Theta_i=\log\mathbb E\Theta_i$；不得在$\alpha_i^{\mathrm{post}}\le1$时套用内点
+MAP公式；多步预测必须在每一步更新分子和分母。
+
+\begin{samepage}
+\phantomsection\label{struct:V5-C05-CH31}
+\textbf{易混淆概念对比。}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 对比 & 本章对象 & 容易误写的对象\\ \midrule
+有序序列与计数 & 序列概率无组合系数 & 计数概率必须乘序列条数\\
+概率向量与计数向量 & $\boldsymbol\theta\in\Delta_{K-1}$ & $\boldsymbol n\in\mathbb N_0^K$且和为$N$\\
+均值与浓度 & $\boldsymbol\alpha/\alpha_0$控制中心 & $\alpha_0$控制集中程度\\
+先验质量与众数修正 & 更新使用$\alpha_i$ & 内点MAP使用$\alpha_i-1$\\
+边缘与独立 & 单分量边缘是Beta & 分量并不相互独立\\
+单步与多步预测 & 每次观测后更新计数 & 重复乘同一单步概率通常错误\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\end{samepage}
+
+\phantomsection\label{struct:V5-C05-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[Beta特例与Bernoulli更新]\label{exm:V5-C05-beta-update}
+令$\Theta\sim\operatorname{Beta}(2,3)$。先核验归一化常数、均值与方差；随后观察四次Bernoulli试验，其中三次成功、一次失败，求后验和下一次成功概率。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C05-beta-update}
+\begin{solution}
+\SLReadTranslation{先核验$\operatorname{Beta}(2,3)$的归一化并求先验矩，再把三次成功和一次失败分别加入两个形状参数，读取后验及下一次成功的后验预测。}
+\SolGiven 先验形状参数为$a=2,b=3$；Bernoulli数据的成功、失败计数为$s=3,f=1$，四个量均满足共轭更新的合法条件。
+\SLMethodTrigger{Beta归一化用$B(a,b)$，均值和方差用$a/(a+b)$与$ab/[(a+b)^2(a+b+1)]$；Bernoulli计数使后验变为$\operatorname{Beta}(a+s,b+f)$。}
+\SolPlan 先由Gamma函数比值计算$B(2,3)$和先验矩，再更新为$(5,4)$，最后用后验均值给出下一次成功概率。
+\SolDerive
+\nopagebreak[4]
+由式\eqref{eq:V5-C05-beta-gamma}，
+\[
+B(2,3)=\frac{\Gamma(2)\Gamma(3)}{\Gamma(5)}
+=\frac{1!\,2!}{4!}=\frac1{12}.
+\]
+所以密度为$12\theta(1-\theta)^2$。均值和方差分别是
+\[
+\mathbb E\Theta=\frac25,\qquad
+\operatorname{Var}(\Theta)=\frac{2\cdot3}{5^2(5+1)}=\frac1{25}.
+\]
+三次成功与一次失败把两个参数分别加$3$与$1$，故
+\[
+\Theta\mid D\sim\operatorname{Beta}(5,4),
+\qquad
+\Pr(Y_{\mathrm{new}}=1\mid D)=\frac59.
+\]
+\SolCheck 密度积分为$12B(2,3)=1$；先验方差$1/25>0$，且后验预测$5/9$恰等于$\operatorname{Beta}(5,4)$的后验均值。
+\SolAnswer 先验密度为$12\theta(1-\theta)^2$，均值$2/5$、方差$1/25$；观测后$\Theta\mid D\sim\operatorname{Beta}(5,4)$，下一次成功概率为$5/9$。
+\end{solution}
+
+\Needspace{6\baselineskip}
+\begin{example}[Gamma归一化的确定性测试]\label{exm:V5-C05-gamma-interface}
+给定正值$(g_1,g_2,g_3)=(2,3,5)$。检验归一化与支持处理，给出$\boldsymbol\theta$和总量$s$；说明该确定性输入能检验什么、不能证明什么。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C05-gamma-interface}
+\begin{solution}
+\SLReadTranslation{把三个给定正数视为Gamma归一化接口的一次确定性输入：先求总量$s$，再逐分量除以$s$得到单纯形向量；同时区分“数值接口测试”与“随机生成分布证明”。}
+\SolGiven $(g_1,g_2,g_3)=(2,3,5)$均严格为正，故$s=\sum_i g_i$严格为正，归一化除法有定义。
+\SLMethodTrigger{对正Gamma变量接口使用$s=\sum_i g_i$与$\theta_i=g_i/s$；确定性测试应核对正支持、分量和及反向重构，而分布结论还需要独立Gamma随机样本的生成假设。}
+\SolPlan 计算$s$和三个比值，检查$\boldsymbol\theta$落在开单纯形并用$s\boldsymbol\theta$重构输入，最后界定该固定输入能验证的范围。
+\SolDerive
+\nopagebreak[4]
+总量$s=2+3+5=10$，归一化结果为
+\[
+\boldsymbol\theta=\left(\frac15,\frac3{10},\frac12\right).
+\]
+支持与归一化检查为
+\[
+g_i>0,\qquad s=\sum_{i=1}^3g_i=10>0,\qquad
+\theta_i=\frac{g_i}{s}>0,\qquad \sum_i\theta_i=1.
+\]
+\SolCheck 反向重构满足$s\boldsymbol\theta=(2,3,5)=\boldsymbol g$，且$1/5+3/10+1/2=1$；三分量都严格为正。
+\SolAnswer $s=10$且$\boldsymbol\theta=(1/5,3/10,1/2)$。该固定输入可检验求和、除法、输出维数、正支持与归一化，但不是带随机源记录的独立Gamma抽样，不能单独证明抽样器生成Dirichlet分布，也不能估计其矩。
+\end{solution}
+
+\Needspace{6\baselineskip}
+\begin{example}[计数证据与序列证据]\label{exm:V5-C05-evidence}
+取$\boldsymbol\alpha=(1,1,1)$、$\boldsymbol n=(2,1,1)$。求后验、下一次预测、该计数向量的边际概率，以及一条指定顺序为$(1,1,2,3)$的序列边际概率。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C05-evidence}
+\begin{solution}
+\SLReadTranslation{同一组观测先做Dirichlet共轭更新并求下一类预测；再分别计算“只给计数向量”的边际证据和“给定一条具体顺序”的序列边际，二者只差序列排列数。}
+\SolGiven $\boldsymbol\alpha=(1,1,1)$、$\boldsymbol n=(2,1,1)$，样本总数$N=4$，计数向量的多项系数为$4!/(2!1!1!)$。
+\SLMethodTrigger{后验参数等于先验参数加计数，单步预测取后验参数占总浓度之比；指定序列证据是Beta函数比值，计数证据还须乘多项组合系数。}
+\SolPlan 先求后验与预测，再计算$B(\boldsymbol\alpha)$和$B(\boldsymbol\alpha+\boldsymbol n)$；最后分别保留或加入组合系数，比较两种证据。
+\SolDerive
+\nopagebreak[4]
+后验为$\operatorname{Dir}(3,2,2)$，预测为
+$(3/7,2/7,2/7)$。计算
+\[
+B(1,1,1)=\frac12,\qquad
+B(3,2,2)=\frac{\Gamma(3)\Gamma(2)\Gamma(2)}{\Gamma(7)}
+=\frac1{360}.
+\]
+计数组合系数为$4!/(2!1!1!)=12$，所以
+\[
+p(\boldsymbol n\mid\boldsymbol\alpha)
+=12\,\frac{1/360}{1/2}=\frac1{15}.
+\]
+指定有序序列没有组合系数，其边际概率为
+\[
+\frac{B(3,2,2)}{B(1,1,1)}=\frac1{180}.
+\]
+\SolCheck 预测分量和为$(3+2+2)/7=1$；十二条具有相同计数的序列概率相加正好得到$12(1/180)=1/15$，与计数证据一致。
+\SolAnswer 后验为$\operatorname{Dir}(3,2,2)$，下一次预测为$(3/7,2/7,2/7)$；计数向量边际证据为$1/15$，指定顺序$(1,1,2,3)$的序列边际为$1/180$，二者相差组合系数$12$。
+\end{solution}
+
+\phantomsection\label{struct:V5-C05-CH33}
+\Needspace{4\baselineskip}
+\phantomsection\label{struct:V5-C05-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V5-C05-CH35}
+本章共10道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-20-0001; source_number=20.1
+% SOLUTION-SOURCE: original_book; source_id=EXR-20-0001; source_number=20.1
+\begin{exercise}\label{ex:V5-C05-S03-01}
+设$\boldsymbol\Theta\sim\operatorname{Dir}(\boldsymbol\alpha)$。从归一化积分或一般矩公式推导
+$\mathbb E(\Theta_i)=\alpha_i/\alpha_0$，不得只引用结论；同时指出交换求导或积分所需的参数条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C05-S03-01}
+\begin{chapterexercisesolution}{ex:V5-C05-S03-01}
+\nopagebreak[4]
+在所有$\alpha_j>0$时，取$\boldsymbol r=\boldsymbol e_i$代入式
+\eqref{eq:V5-C05-general-moment}：
+\[
+\mathbb E\Theta_i
+=\frac{B(\alpha_1,\ldots,\alpha_i+1,\ldots,\alpha_K)}
+{B(\boldsymbol\alpha)}.
+\]
+利用$\Gamma(\alpha_i+1)=\alpha_i\Gamma(\alpha_i)$和
+$\Gamma(\alpha_0+1)=\alpha_0\Gamma(\alpha_0)$，比值化为
+\[
+\frac{B(\boldsymbol\alpha+\boldsymbol e_i)}
+{B(\boldsymbol\alpha)}
+=\frac{\Gamma(\alpha_i+1)}{\Gamma(\alpha_i)}
+\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_0+1)}
+=\frac{\alpha_i}{\alpha_0}.
+\]
+若直接从积分计算，把
+$\theta_i\prod_j\theta_j^{\alpha_j-1}$合并为新Dirichlet核即可得到同一比值。参数严格为正保证原密度与提高一个指数后的密度都可积；若用参数求导法，还要在正参数的紧子区域上给出可积控制函数。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C05-S01-01}
+四次独立类别观测取三类，$\boldsymbol\theta=(1/2,1/3,1/6)$，计数为
+$(2,1,1)$。求该计数向量的概率和指定序列$(1,1,2,3)$的概率，并解释二者的倍数关系。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C05-S01-01}
+\begin{chapterexercisesolution}{ex:V5-C05-S01-01}
+\nopagebreak[4]
+组合系数是
+\[
+\frac{4!}{2!1!1!}=12.
+\]
+指定序列的概率为
+\[
+\left(\frac12\right)^2\frac13\frac16=\frac1{72}.
+\]
+计数向量概率为$12/72=1/6$。倍数$12$正是具有两个类别$1$、一个类别$2$和一个类别$3$的不同序列数。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C05-S02-01}
+从二维Gamma积分完成Beta--Gamma变量变换证明，并计算
+$B(2,3)$。随后核验$\operatorname{Beta}(2,3)$的均值$2/5$与方差$1/25$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C05-S02-01}
+\begin{chapterexercisesolution}{ex:V5-C05-S02-01}
+\nopagebreak[4]
+令$x=st$、$y=s(1-t)$，取值域为$s>0$、$0<t<1$，Jacobian为$s$。于是
+\[
+\Gamma(a)\Gamma(b)
+=\int_0^\infty s^{a+b-1}e^{-s}\,\mathrm ds
+\int_0^1t^{a-1}(1-t)^{b-1}\,\mathrm dt
+=\Gamma(a+b)B(a,b).
+\]
+对$a=2,b=3$，
+$B(2,3)=1!\,2!/4!=1/12$。Beta矩公式给出
+\[
+\mathbb E\Theta=\frac2{2+3}=\frac25,\qquad
+\operatorname{Var}(\Theta)
+=\frac{2\cdot3}{(2+3)^2(2+3+1)}
+=\frac1{25}.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C05-S03-02}
+设$G_i$独立且$G_i\sim\operatorname{Gamma}(\alpha_i,b)$。写出
+$(G_1,\ldots,G_K)\mapsto(S,\Theta_1,\ldots,\Theta_{K-1})$的取值域和Jacobian，并证明$S$与$\boldsymbol\Theta$独立。若各分量rate不同，指出原证明在哪一步不再分离。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C05-S03-02}
+\begin{chapterexercisesolution}{ex:V5-C05-S03-02}
+\nopagebreak[4]
+设$K\ge2$、$\alpha_i>0$、$b>0$，且$G_1,\ldots,G_K$相互独立并满足$G_i\sim\operatorname{Gamma}(\alpha_i,b)$。记$\alpha_0=\sum_i\alpha_i$，其完整联合密度为
+\[
+f_{\boldsymbol G}(\boldsymbol g)
+=\frac{b^{\alpha_0}}{\prod_{i=1}^K\Gamma(\alpha_i)}
+ \left(\prod_{i=1}^K g_i^{\alpha_i-1}\right)
+ e^{-b\sum_i g_i}\boldsymbol1_{(0,\infty)^K}(\boldsymbol g).
+\]
+令$S=\sum_iG_i$、$\Theta_i=G_i/S$。从$(s,\theta_1,\ldots,\theta_{K-1})$到$(g_1,\ldots,g_K)$的变换为$g_i=s\theta_i$，其中
+$s>0$、$\theta_i>0$且$\sum_{i<K}\theta_i<1$，并置
+$\theta_K=1-\sum_{i<K}\theta_i$；Jacobian绝对值为$s^{K-1}$。共同rate $b$使指数项变为
+\[
+\exp\!\left(-b\sum_i s\theta_i\right)=e^{-bs},
+\]
+而幂次与Jacobian合并为$s^{\alpha_0-1}\prod_i\theta_i^{\alpha_i-1}$。所以变换后的联合密度逐因子分解为
+\[
+\underbrace{\frac{b^{\alpha_0}}{\Gamma(\alpha_0)}
+s^{\alpha_0-1}e^{-bs}}_{\operatorname{Gamma}(\alpha_0,b)\text{密度}}
+\;
+\underbrace{\frac{\Gamma(\alpha_0)}{\prod_i\Gamma(\alpha_i)}
+\prod_{i=1}^K\theta_i^{\alpha_i-1}}_{\operatorname{Dir}(\boldsymbol\alpha)\text{密度}}.
+\]
+两因子分别只依赖$s$与$\boldsymbol\theta$，且各自积分为$1$，故$S\sim\operatorname{Gamma}(\alpha_0,b)$、$\boldsymbol\Theta\sim\operatorname{Dir}(\boldsymbol\alpha)$，并且二者独立。
+
+若rate为$b_i$，指数项成为
+\[
+\exp\!\left(-s\sum_i b_i\theta_i\right),
+\]
+同时含$s$和$\boldsymbol\theta$，不再能按上述方式分离。归一化比例一般也不再服从参数仅为$\boldsymbol\alpha$的Dirichlet分布。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C05-S03-03}
+对$\boldsymbol\Theta\sim\operatorname{Dir}(2,3,5)$，计算均值向量、三个方差和三种不同分量协方差；核验协方差矩阵每行元素之和为$0$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C05-S03-03}
+\begin{chapterexercisesolution}{ex:V5-C05-S03-03}
+\nopagebreak[4]
+$\alpha_0=10$，所以
+\[
+\mathbb E\boldsymbol\Theta
+=\left(\frac15,\frac3{10},\frac12\right).
+\]
+三个方差为
+\[
+\operatorname{Var}(\Theta_1)=\frac4{275},\qquad
+\operatorname{Var}(\Theta_2)=\frac{21}{1100},\qquad
+\operatorname{Var}(\Theta_3)=\frac1{44}.
+\]
+三个协方差为
+\[
+\operatorname{Cov}(\Theta_1,\Theta_2)=-\frac3{550},\quad
+\operatorname{Cov}(\Theta_1,\Theta_3)=-\frac1{110},\quad
+\operatorname{Cov}(\Theta_2,\Theta_3)=-\frac3{220}.
+\]
+第一行之和为
+$4/275-3/550-1/110=0$；第二行之和为
+$-3/550+21/1100-3/220=0$；第三行之和为
+$-1/110-3/220+1/44=0$。这是
+$\sum_i\Theta_i=1$导致
+$\operatorname{Cov}(\Theta_i,\sum_j\Theta_j)=0$的矩阵表现。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C05-S03-04}
+仍取$\operatorname{Dir}(2,3,5)$。求$\Theta_1$的边缘分布；给定
+$\Theta_1=1/4$时，求归一化剩余比例的条件分布，以及
+$\mathbb E(\Theta_2\mid\Theta_1=1/4)$和
+$\mathbb E(\Theta_3\mid\Theta_1=1/4)$。解释为什么“给定其余全部分量后$\Theta_1$仍为Beta”是错误说法。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C05-S03-04}
+\begin{chapterexercisesolution}{ex:V5-C05-S03-04}
+\nopagebreak[4]
+由聚合性质，
+\[
+\Theta_1\sim\operatorname{Beta}(2,8).
+\]
+给定$\Theta_1=1/4$后，
+\[
+\left(\frac{\Theta_2}{3/4},
+\frac{\Theta_3}{3/4}\right)
+\sim\operatorname{Dir}(3,5).
+\]
+因此
+\[
+\mathbb E(\Theta_2\mid\Theta_1=1/4)
+=\frac34\frac38=\frac9{32},
+\qquad
+\mathbb E(\Theta_3\mid\Theta_1=1/4)
+=\frac34\frac58=\frac{15}{32}.
+\]
+若给定其余全部$K-1$个分量，则
+$\Theta_1=1-\sum_{j\ne1}\Theta_j$已经确定，条件分布退化为点质量；Beta结论针对单分量边缘，或针对“固定一个分量后归一化剩余比例”的条件分布。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C05-S03-05}
+利用$\psi(n)=H_{n-1}-\gamma$，求
+$\operatorname{Dir}(2,3,5)$下
+$\mathbb E\log\Theta_1$与$\mathbb E\log\Theta_3$。用Jensen不等式比较
+$\mathbb E\log\Theta_1$和$\log\mathbb E\Theta_1$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C05-S03-05}
+\begin{chapterexercisesolution}{ex:V5-C05-S03-05}
+\nopagebreak[4]
+对$\alpha_0=10$，
+\[
+\mathbb E\log\Theta_1
+=\psi(2)-\psi(10)=1-H_9,
+\]
+\[
+\mathbb E\log\Theta_3
+=\psi(5)-\psi(10)=H_4-H_9.
+\]
+由于$\Theta_1$非退化且$\log$严格凹，
+\[
+\mathbb E\log\Theta_1
+<\log\mathbb E\Theta_1
+=\log\frac15.
+\]
+这也说明用均值取对数替代期望对数会系统性偏大。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C05-S04-01}
+先验为$\operatorname{Dir}(1,1,1)$，观测计数为$(2,1,1)$。求后验、预测、计数向量边际概率和一条固定顺序序列的边际概率；指出组合系数在哪一个答案中出现。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C05-S04-01}
+\begin{chapterexercisesolution}{ex:V5-C05-S04-01}
+\nopagebreak[4]
+后验更新与预测为
+\[
+\boldsymbol\alpha^{\rm post}=(1,1,1)+(2,1,1)=(3,2,2),
+\qquad
+\boldsymbol p_{\rm pred}=\left(\frac37,\frac27,\frac27\right).
+\]
+由
+$B(1,1,1)=1/2$、$B(3,2,2)=1/360$，
+固定顺序序列的边际概率为
+\[
+\frac{B(3,2,2)}{B(1,1,1)}=\frac1{180}.
+\]
+计数向量还要乘组合系数：
+\[
+p(\boldsymbol n)
+=\frac{4!}{2!1!1!}\frac{B(3,2,2)}{B(1,1,1)}
+=12\cdot\frac1{180}=\frac1{15}.
+\]
+组合系数只出现在计数向量答案中。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C05-S05-01}
+先验参数为$(2,3,5)$，当前计数为$(4,1,0)$。求未来依次出现类别$1$、类别$2$的概率，以及未来两次中两个类别各出现一次而不计顺序的概率。说明为何不能把当前单步预测的两个分量直接相乘。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C05-S05-01}
+\begin{chapterexercisesolution}{ex:V5-C05-S05-01}
+\nopagebreak[4]
+当前后验参数是$(6,4,5)$，总和为$15$。指定顺序$1$后$2$的概率为
+\[
+\frac6{15}\frac4{16}=\frac1{10}.
+\]
+反序$2$后$1$的概率是
+$\frac4{15}\frac6{16}=1/10$，所以
+\[
+P(\{1,2\}\text{各一次})
+=\frac6{15}\frac4{16}
++\frac4{15}\frac6{16}
+=\frac15.
+\]
+不能直接把当前预测分量
+$6/15$与$4/15$相乘，因为第一次未来观测后总质量由$15$变为$16$，对应类别的分子也可能更新。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C05-S05-02}
+后验参数为$\boldsymbol\alpha^{\mathrm{post}}=(1/2,3,3/2)$。求后验均值；判断式
+\eqref{eq:V5-C05-map}能否使用，并描述靠近$\theta_1=0$的密度行为。再比较
+$\operatorname{Dir}(2,3,5)$与$\operatorname{Dir}(20,30,50)$的均值和方差，说明“伪计数”“众数修正”“浓度”三种解释的边界。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C05-S05-02}
+\begin{chapterexercisesolution}{ex:V5-C05-S05-02}
+\nopagebreak[4]
+$\alpha_0^{\mathrm{post}}=5$，后验均值为
+\[
+\left(\frac1{10},\frac35,\frac3{10}\right).
+\]
+因为$\alpha_1^{\mathrm{post}}=1/2\le1$，内点条件不成立，式
+\eqref{eq:V5-C05-map}不能使用。密度含因子
+$\theta_1^{-1/2}$，在保持其他分量为正并令$\theta_1\downarrow0$时趋于无穷；峰值位于边界意义下。
+
+$\operatorname{Dir}(2,3,5)$与
+$\operatorname{Dir}(20,30,50)$均值同为
+$(1/5,3/10,1/2)$，但后者总浓度从$10$增至$100$，方差按
+$1/(\alpha_0+1)$型因子显著缩小。更新和预测中的先验质量是
+$\alpha_i$；内点众数的指数修正是$\alpha_i-1$；总浓度是
+$\alpha_0$。这三种解释作用于不同公式。
+\[
+\operatorname{Var}(\Theta_i)
+=\frac{\mu_i(1-\mu_i)}{\alpha_0+1},\qquad
+\frac{\operatorname{Var}_{(20,30,50)}(\Theta_i)}
+{\operatorname{Var}_{(2,3,5)}(\Theta_i)}
+=\frac{11}{101}.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V5-C34-CONCEPT-003 L1
+\paragraph{读前自检：本章结论与下一步。}Dirichlet章末把单纯形先验、类别计数与共轭预测串成$\alpha\to\alpha+n$；请核对后验参数仍严格为正，并对全部类别求和预测式$(\alpha_i+n_i)/(\alpha_0+N)$，确认等于1。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V5-C05-CH36}
+\SLChapterFiveSummary{Dirichlet是单纯形上的分布；形状向量控制中心与浓度，类别计数产生加法式后验更新。}
+{同率独立Gamma变量经总量—比例变换分解出Gamma与Dirichlet密度，Jacobian为$s^{K-1}$；多元Beta比值给出矩与证据。}
+{闭式算法累计计数，计算$\boldsymbol\alpha^{\mathrm{post}}=\boldsymbol\alpha+\boldsymbol n$，再输出后验预测。}
+{适用于有限类别与严格正形状参数；序列概率和计数概率的组合系数不能混用，MAP还需内点条件。}
+{下一章把两组Dirichlet积分应用到LDA，形成折叠联合与留一Gibbs条件。}
+
+\phantomsection\label{struct:V5-C05-CH37}
+\begin{selfcheckbox}
+\small
+\begin{enumerate}[leftmargin=2.2em,itemsep=0.15em,topsep=0.25em,parsep=0pt]
+  \item 能否分别写出类别序列与计数向量的概率，定位组合系数，并用Beta--Gamma变量变换的区域和Jacobian得到多元归一化常数？
+  \item 能否说明Dirichlet密度的参考测度、可正规化条件和边界行为，再由一般矩公式核验均值、方差、协方差及行和为零？
+  \item 能否区分Beta边缘、归一化剩余比例条件分布和退化条件分布，并由$\log B(\boldsymbol\alpha)$求导得到期望对数而不以均值对数替代？
+  \item 能否逐行推导后验与两种证据，正确处理组合系数，并执行算法\ref{alg:V5-C05-closed-form-update}的空样本、非法类别、$K=1$和对数域分支？
+  \item 能否按Pólya更新计算多步预测，并判断MAP内点条件，分别解释$\alpha_i$、$\alpha_i-1$和$\alpha_0$？
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

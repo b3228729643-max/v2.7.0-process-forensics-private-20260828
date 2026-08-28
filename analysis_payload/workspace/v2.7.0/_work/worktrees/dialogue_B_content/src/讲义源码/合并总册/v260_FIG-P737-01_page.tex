@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{734}
+\setcounter{chapter}{37}
+\setcounter{section}{1}
+\setcounter{figure}{2}
+\pagestyle{headings}
+\chaptermark{无监督学习方法总结}
+\sectionmark{聚类、降维、主题模型与采样的联系}
+图\ref{fig:V5-C08-three-axis}把“任务--表示--推断”三轴仅作为粗粒度定位投影：$(T,R,I)$不能唯一确定方法，完整可核验规格仍须写成$\mathfrak U=(\mathcal X,\mathcal T,\mathcal R,J,\mathcal A,\mathcal E,\mathcal B)$。图中的方法行都是限定条件下的代表示例，而非方法与三轴选项的唯一绑定。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/task_representation_inference_cube.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先按任务、表示、推断读取五行代表示例；再沿两处分叉核对“同一低秩$R$可接平方损失或计数似然$J$”以及“同一潜变量$R$可接VI或Gibbs推断$I$”；最后把候选补回$\mathfrak U=(\mathcal X,\mathcal T,\mathcal R,J,\mathcal A,\mathcal E,\mathcal B)$七项规格，确认三轴投影既非唯一绑定，也不是完整规格的替代。
+\end{document}

@@ -1,0 +1,33 @@
+﻿object_id,object_class,panel_id,role,description,bbox_x0_pt,bbox_y0_pt,bbox_x1_pt,bbox_y1_pt,source_line
+S001,TEXT_OR_FORMULA,LEFT,panel_title,1. 经验 ACF：预设窗口,155.417,532.839,262.461,547.842,17
+S002,TEXT_OR_FORMULA,LEFT,axis_label,经验 ACF rhohat_k,86.54,588.097,98.029,640.863,18
+S003,TEXT_OR_FORMULA,LEFT,tick_label,y tick 1,115.78,562.744,120.514,572.308,19
+S004,TEXT_OR_FORMULA,LEFT,tick_label,y tick 0.75,103.968,588.408,120.514,597.972,19
+S005,TEXT_OR_FORMULA,LEFT,tick_label,y tick 0.5,108.703,614.119,120.515,623.683,19
+S006,TEXT_OR_FORMULA,LEFT,tick_label,y tick 0.25,103.968,639.839,120.514,649.403,19
+S007,TEXT_OR_FORMULA,LEFT,tick_label,y tick 0,115.78,665.551,120.514,675.115,19
+S008,TEXT_OR_FORMULA,LEFT,tick_label,x tick 0,130.558,674.635,135.292,684.199,19
+S009,TEXT_OR_FORMULA,LEFT,tick_label,x tick 1,148.985,674.606,153.719,684.17,19
+S010,TEXT_OR_FORMULA,LEFT,tick_label,x tick 2,167.413,674.654,172.147,684.218,19
+S011,TEXT_OR_FORMULA,LEFT,tick_label,x tick 3,185.841,674.654,190.575,684.218,19
+S012,TEXT_OR_FORMULA,LEFT,tick_label,x tick 4,204.268,674.664,209.002,684.228,19
+S013,TEXT_OR_FORMULA,LEFT,tick_label,x tick 5,222.696,674.52,227.43,684.084,19
+S014,TEXT_OR_FORMULA,LEFT,tick_label,x tick 6,241.123,674.673,245.857,684.237,19
+S015,TEXT_OR_FORMULA,LEFT,axis_label,滞后 k,195.402,690.327,222.427,700.784,18
+S016,TEXT_OR_FORMULA,LEFT,annotation,截断 K=6,200.909,569.52,246.1,579.763,25-26
+S017,TEXT_OR_FORMULA,LEFT,continuation_mark,ellipsis after the preset window,267.496,647.599,276.611,657.163,27-28
+S018,TEXT_OR_FORMULA,RIGHT,panel_title,2. 有限样本加权 ESS,317.238,555.14,413.163,570.143,32
+S019,TEXT_OR_FORMULA,RIGHT,formula,"tauhat_K,n weighted-window formula",317.238,574.173,427.947,602.915,33
+S020,TEXT_OR_FORMULA,RIGHT,formula,"Nhat_eff = n/tauhat_K,n",317.238,603.704,366.793,626.835,34
+S021,TEXT_OR_FORMULA,RIGHT,formula,"tauhat_K,n > 0",387.519,609.825,422.635,620.714,34
+S022,TEXT_OR_FORMULA,RIGHT,explanatory_text,preset K=6<n; include only 1<=k<=K,317.238,630.79,497.768,644.638,35
+S023,TEXT_OR_FORMULA,RIGHT,explanatory_text,later lags not shown or included,317.238,647.982,432.008,658.225,36
+S024,TEXT_OR_FORMULA,RIGHT,explanatory_text,"finite-trajectory diagnostic, not convergence proof",317.238,661.73,451.136,671.973,37
+S025,TEXT_OR_FORMULA,CAPTION,caption_label,图 32.9,76.138,704.872,108.127,720.669,40-41
+S026,TEXT_OR_FORMULA,CAPTION,caption_text,fixed-window positive autocorrelation increases variance weight and reduces ESS,119.036,708.8,509.789,720.483,40-41
+G001,PANEL_BACKGROUND,LEFT,panel_background,light-blue ACF window fill,140.0,558.0,266.0,679.0,21
+G002,AXIS_AND_TICKS,LEFT,axis_and_ticks,left and bottom axes with tick marks,126.0,558.0,304.0,682.0,19
+G003,DATA_CURVE,LEFT,data_curve,seven ACF stems and circular markers for k=0..6,132.0,563.0,259.0,679.0,22
+G004,WINDOW_BOUNDARY,LEFT,window_boundary,dashed K=6.5 boundary,267.0,557.0,269.0,680.0,24
+G005,PANEL_BORDER,RIGHT,panel_border,rounded ESS explanation box,308.0,542.0,509.0,682.0,30
+G006,LINE_ARROW,BETWEEN,line_arrow,left-to-right connector arrow,296.0,613.0,307.0,617.0,38

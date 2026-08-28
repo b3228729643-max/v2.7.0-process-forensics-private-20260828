@@ -1,0 +1,17 @@
+object_id,semantic_object,panel,native_manual_finding,source_alignment,r168_disposition
+O01,left panel title,LEFT,"Blue bold title is fully formed, left-aligned over the left construction, and visually dominant without crowding.",Matches source title exactly.,R168_CLEAR
+O02,Dirichlet exponential-family density,LEFT,"All delimiters, summation, subscripts, Greek letters, and minus sign render distinctly; the line is centered and uncut.",Matches p(theta|alpha)=h(theta) exp{sum eta_k T_k(theta)-A(alpha)}.,R168_CLEAR
+O03,density-decomposition brace,LEFT,"The thin gray brace is continuous, symmetric around its cusp, and does not touch formula ink or card ink.",Matches the decorative brace connecting the density components.,R168_CLEAR
+O04,brace explanation,LEFT,"The one-line Chinese explanation is crisp at native 300 dpi and remains unambiguous in the native1x and NN8x ROI.",Matches the source explanation that three terms plus the log partition determine the density.,R168_CLEAR_WITH_LEGACY_SIZE_ADVISORY
+O05,base-measure card,LEFT,"Rounded pale card, English role label, indicator symbol, simplex subscript, and theta argument are all complete and internally centered.",Matches h(theta)=1_Delta^(K-1)(theta).,R168_CLEAR
+O06,natural-parameter card,LEFT,"Rounded pale card and both text lines are complete; eta_k, alpha_k, and the subtraction by one are readily distinguished.",Matches eta_k=alpha_k-1.,R168_CLEAR
+O07,sufficient-statistic card,LEFT,"Lower centered card is fully inside the panel; T_k(theta)=log theta_k is legible with intact subscripts.",Matches the sufficient statistic in source and caption.,R168_CLEAR
+O08,vertical panel divider,GLOBAL,"The pale vertical rule is straight, uninterrupted, and separated from semantic ink on both sides; it ends above the caption.",Matches the source panel divider.,R168_CLEAR
+O09,right panel title,RIGHT,"Blue bold title is complete and balanced against O01; no glyph is clipped at the right page edge.",Matches source title exactly.,R168_CLEAR
+O10,log-partition formula,RIGHT,"A(alpha), summation, log Gamma terms, alpha_k, and alpha_0 are complete with clear operator spacing.",Matches A(alpha)=sum log Gamma(alpha_k)-log Gamma(alpha_0).,R168_CLEAR
+O11,downward implication arrow,RIGHT,"Double-line downward arrow has an intact head and is centered between the log-partition and derivative tiers.",Matches the source Downarrow relationship.,R168_CLEAR
+O12,partial-derivative formula,RIGHT,"Fraction bar, partial symbols, A, alpha_k, and subscript are intact; the derivative is isolated from arrow and result frame.",Matches partial A / partial alpha_k.,R168_CLEAR
+O13,expected-log result card,RIGHT,"Blue outline is closed and uncut; the expected-log identity is centered with no border contact or missing glyph.",Matches E[log Theta_k]=psi(alpha_k)-psi(alpha_0).,R168_CLEAR
+O14,mean-log nonidentity warning card,RIGHT,"Red outline/fill survives grayscale by tone and frame; the not-equal relation and both expectations remain distinct.",Matches E[log Theta_k] != log E[Theta_k].,R168_CLEAR
+O15,caption label,CAPTION,"Bold Figure 34.6 label is complete and separated from the caption body by normal inline spacing.",Matches the rendered figure number.,R168_CLEAR
+O16,caption body,CAPTION,"Two-line caption is fully readable, uncut, and reproduces the sufficient statistic, derivative identity, and non-substitution claim.",Matches current source caption and current V5-C05 context.,R168_CLEAR

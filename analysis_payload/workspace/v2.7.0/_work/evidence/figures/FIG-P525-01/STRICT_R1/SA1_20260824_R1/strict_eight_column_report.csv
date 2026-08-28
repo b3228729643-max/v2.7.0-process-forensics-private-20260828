@@ -1,0 +1,20 @@
+﻿CHECK_ID,CATEGORY,EVIDENCE,METRIC,THRESHOLD,OBSERVED,BOOLEAN,STATUS
+R01,INPUT,render_manifest.json,frozen input / independently located page,PDF only; page uniquely located,main_full.pdf page 571/813; sha256=8e1dc2f8ee0dea220db9445ab28c4cd2daecd232f3a36b98383d97caabc531ed,true,PASS
+R02,RENDER,full_page_200dpi.png,whole-page native render,200dpi,200dpi Poppler native,true,PASS
+R03,RENDER,full_page_300dpi_native.png,measurement render,"300dpi, 1:1, no resize","2481x3508px, scale 4.167815",true,PASS
+R04,COVERAGE,glyph_inventory.csv;graphic_component_inventory.csv,visible glyph/semantic/graphic enumeration,all scoped reader-visible elements,"glyphs=112, semantics=14, graphics=15",true,PASS
+R05,MASKS,mask_manifest.csv,per-glyph and component raw masks,PDF bbox + no-dilation raw masks,masks=141,true,PASS
+R06,SOURCE_FONT,after_font_audit.csv;shared_style_font_context.tex,all ordinary effective_pt,>=9.5pt,"ordinary node=10.0pt via statlearnbook.sty:L276; legend=8.8pt; failure glyphs=19, components=2",false,FAIL
+R07,PIXEL_HEIGHT,after_pixel_measurements.csv;critical/PIXEL_FAIL_FORMULA_OPERATORS_overlay_8x.png,per-glyph H_ink,class thresholds 30/24/17/22/15px,pixel failures=11,false,FAIL
+R08,SAME_CLASS,same_class_ratio_audit.csv,same role+script/morphology H_ink ratio,"[0.92,1.08]",see CSV,false,FAIL
+R09,ROLE_RATIO,role_ratio_audit.csv,legend/base source-effective ratio,"[0.95,1.10]",8.8/10.0=0.8800,false,FAIL
+R10,OVERLAP,after_overlap_report.csv;overlap_reconciliation.json,all registered raw-mask pair overlaps,0 unique pixels,"unique=387; pair-sum=387; duplicate=0; four raw-mask pairs exact",false,FAIL
+R11,CLIP,after_overlap_report.csv;overlap_reconciliation.json,figure text/graphics clipping,0 pixels,"all registered relation clip pixels=0",true,PASS
+R12,CLEARANCE,after_overlap_report.csv,text-text / text-line / text-border / edge,>=4 / >=3 / >=5 / >=6 px,20.000 / 0.000 / 7.000 / 48.000,false,FAIL
+R13,CROSS_PANEL,strict_audit_summary.json,cross-panel relation,single-panel explicit pass,0 panels beyond PANEL_SINGLE,true,PASS
+R14,HARMONY,full_page_200dpi.png;figure_crop_300dpi.png;standalone_300dpi.png;grayscale_300dpi.png,FONT_VISUAL_HARMONY_PASS,no undersized / intrusive typography,ordinary nodes 10.0pt; explicit 8.8pt legend visibly undersized,false,FAIL
+R15,MATH,math_semantics_recheck.md,fixed Phi coefficient identifiability,no unconditional multiple-solution claim,"det(Phi)=0.4288; theta=(0.3, 0.45, 0.25); source L403 unqualified",false,FAIL
+R16,TEXT,adjacent_source_context.tex;math_semantics_recheck.md,figure/body consistency,all claims conditionally correct,L403 conflicts with fixed affine-independent example,false,FAIL
+R17,GRAYSCALE,grayscale_300dpi.png,geometry distinguishability without color,stable semantics,solid boundaries + dashed spokes + circle/diamond shape encoding,true,PASS
+R18,PAGE,full_page_200dpi.png,page integration,no visual clipping/abnormal break,figure/caption placement intact; independent font gate fails separately,true,PASS
+R19,FINAL,strict_audit_summary.json,all hard gates,all true,FAIL; route to SA2,false,FAIL

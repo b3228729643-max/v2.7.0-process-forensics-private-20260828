@@ -1,0 +1,19 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{766}
+\setcounter{chapter}{32}
+\setcounter{figure}{5}
+\pagestyle{headings}
+\chaptermark{马尔可夫链蒙特卡罗法}
+\sectionmark{接受率推导}
+设比值
+\[
+r=\frac{\pi(y)q(y,x)}{\pi(x)q(x,y)}.
+\]
+MH 接受概率为 $\alpha(x,y)=\min\{1,r\}$。图\ref{fig:V5-C03-acceptance-function}同时画出比值小于与大于 $1$ 的两段；“截到 $1$”来自概率上界，而不是数值补丁。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_acceptance_function.tex}
+\paragraph{常见特例。}
+若 $q(x,y)=q(y,x)$，提议项消去；若 $q(x,y)=q(y)$ 与当前状态无关，则比值可写为独立提议权重之比 $w(y)/w(x)$。
+\end{document}

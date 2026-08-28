@@ -1,0 +1,53 @@
+{
+  "schema": "P602_DIRECT_LUALATEX_INVOCATION_V1",
+  "authorization": "P602_ASCII_CACHE_DIRECT_RETRY_SLOT_GRANTED",
+  "invocation_ordinal": 1,
+  "invocation_limit": 1,
+  "invocation_started": true,
+  "started_utc": "2026-08-25T05:47:47.9459680Z",
+  "finished_utc": "2026-08-25T05:47:48.5692390Z",
+  "duration_seconds": 0.623,
+  "pid": 16572,
+  "executable": "D:\\texlive\\2026\\bin\\windows\\lualatex.exe",
+  "executable_sha256": "CC944A1DB010B47FCF5CCB5D1B184CBA208FE7FEA9F18BEC414940E6FD3E24A6",
+  "arguments": [
+    "-interaction=nonstopmode",
+    "-halt-on-error",
+    "-file-line-error",
+    "-recorder",
+    "-output-directory=D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v2\\01_build",
+    "v260_FIG-P602-01_standalone.tex"
+  ],
+  "working_directory": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\讲义源码\\合并总册",
+  "source": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "sha256": "2B15B4BEEA7A922FEE24259678DBAE2A54915955915E6714A350122A6251E349"
+  },
+  "wrapper": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\讲义源码\\合并总册\\v260_FIG-P602-01_standalone.tex",
+    "sha256": "AFE3464AEA950331908CD3C56DD0392A6D5010138C4EE9341B78F7FD3E9F7279"
+  },
+  "child_environment": {
+    "TEXMFVAR": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_preflight\\texmf-var",
+    "TEXMFCACHE": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_preflight\\texmf-cache",
+    "TEXMFCONFIG": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_preflight\\texmf-config"
+  },
+  "pre_tex_process_count": 0,
+  "natural_exit": true,
+  "exit_code": 1,
+  "post_tex_process_count": 0,
+  "pdf_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v2\\01_build\\v260_FIG-P602-01_standalone.pdf",
+  "pdf_exists": false,
+  "pdf_bytes": null,
+  "pdf_sha256": null,
+  "stdout_path": "01_build/lualatex.stdout.txt",
+  "stderr_path": "01_build/lualatex.stderr.txt",
+  "log_path": "01_build/v260_FIG-P602-01_standalone.log",
+  "fls_path": "01_build/v260_FIG-P602-01_standalone.fls",
+  "artifact_operation_marker_executed_once_immediately_before_invocation": true,
+  "artifact_operation_marker_exit_code": 0,
+  "second_invocation_performed": false,
+  "automatic_retry_performed": false,
+  "build_slot_released_after_natural_exit": true,
+  "result": "BUILD_FAIL_NO_CANDIDATE"
+}

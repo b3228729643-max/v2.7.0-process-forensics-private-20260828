@@ -1,0 +1,36 @@
+{
+  "figure_id": "FIG-P608-01",
+  "handoff_id": "A-R101-P608-SA1-FRESH-R7A-EVIDENCE-RESEAL-20260825",
+  "route": "SA1=gpt-5.6-sol/xhigh",
+  "result": "FAIL_TO_SA2_AWAIT_ROOT",
+  "awaiting": "new root mechanical plus sampling/counterexample acceptance",
+  "sa3_started": false,
+  "central_fail_claimed": false,
+  "a_local_pass_claimed": false,
+  "N": 172,
+  "C": 14706,
+  "pair_coverage_complete": true,
+  "manual_ledger_rows": 391,
+  "machine_reuse_entries": 1893,
+  "hard_failure_count": 1,
+  "hard_failures": [
+    {
+      "id": "HARD-LOWPROFILE-TXT-098",
+      "target": "TXT-098",
+      "target_h_px": 28,
+      "target_area_px": 56,
+      "mandatory_peer_page": 187,
+      "mandatory_peer_sequence": 345,
+      "peer_raw_h_px": 28,
+      "peer_raw_area_px": 72,
+      "peer_foreign_px": 11,
+      "peer_clean_area_px": 61,
+      "height_ratio": 1.0,
+      "area_ratio_clean": 0.9180327868852459,
+      "area_ratio_raw": 0.7777777777777778,
+      "required_interval": [0.92, 1.08]
+    }
+  ],
+  "consumer_validation": "PASS",
+  "consumer_validation_failures": 0
+}

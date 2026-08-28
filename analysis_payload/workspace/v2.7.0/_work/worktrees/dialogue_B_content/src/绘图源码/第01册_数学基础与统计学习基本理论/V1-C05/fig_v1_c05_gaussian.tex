@@ -1,0 +1,57 @@
+% v2.6.0 figure UID: FIG-P077-01
+% Image-reference reverse redraw: exact Gaussian formulas retained; comparison hierarchy and label clearance refined.
+\tikzset{
+  slfig-FIG-P077-01/.style={every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P077-01-label/.style={
+    slfig direct label,font=\fontsize{9.2pt}{11.2pt}\selectfont,
+    fill=white,fill opacity=.95,text opacity=1,inner xsep=1.1pt,inner ysep=.8pt
+  }
+}
+\pgfplotsset{slfig-FIG-P077-01-axis/.style={
+  axis line style={draw=SLInk!90,line width=.60pt},
+  tick style={draw=SLInk!80,line width=.55pt},
+  tick label style={font=\fontsize{8.8pt}{10.5pt}\selectfont},
+  label style={font=\fontsize{9.4pt}{11.2pt}\selectfont},
+  clip=false
+}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P077-01,alt={对象—关系—结论：方差增大使高斯密度变宽、峰值降低，但曲线下面积保持为1}]
+\begin{axis}[slfig-FIG-P077-01-axis,
+  slfig axis,width=.86\linewidth,height=6.2cm,
+  axis lines=left,xlabel={$x$},ylabel={密度},
+  xmin=-4.5,xmax=4.5,ymin=-.065,ymax=.43,
+  domain=-4.5:4.5,samples=321,smooth,
+  xtick={-4,0,4},ytick={0,.2,.4},clip=false
+]
+  \path[name path=zero] (axis cs:-4.5,0)--(axis cs:4.5,0);
+  \addplot[name path=wide,draw=none,no marks]
+    {1/sqrt(8*pi)*exp(-x^2/8)};
+  \addplot[fill=SLTeal,fill opacity=.08,draw=none]
+    fill between[of=wide and zero];
+  \addplot[name path=narrow,draw=none,no marks]
+    {1/sqrt(2*pi)*exp(-x^2/2)};
+  \addplot[fill=SLBlue,fill opacity=.09,draw=none]
+    fill between[of=narrow and zero];
+  \addplot[draw=SLBlue,line width=1.05pt,no marks]
+    {1/sqrt(2*pi)*exp(-x^2/2)};
+  \addplot[draw=SLTeal,line width=.90pt,
+    dash pattern=on 3.4pt off 2.0pt,no marks]
+    {1/sqrt(8*pi)*exp(-x^2/8)};
+  \draw[draw=SLGray!85,line width=.55pt,dash pattern=on 2.8pt off 1.8pt]
+    (axis cs:0,0)--(axis cs:0,.405);
+  \node[slfig-FIG-P077-01-label,anchor=south west] at (axis cs:.95,.305)
+    {$\mathcal N(0,1)$；峰值 $1/\sqrt{2\pi}$};
+  \node[slfig-FIG-P077-01-label,anchor=south west] at (axis cs:2.05,.135)
+    {$\mathcal N(0,2^2)$；峰值 $1/(2\sqrt{2\pi})$};
+  \draw[draw=SLGray!88,line width=.52pt,decorate,
+    decoration={brace,mirror,amplitude=3pt}]
+    (axis cs:-3.5,-.018)--(axis cs:3.5,-.018)
+    node[pos=.50,below=3pt,font=\fontsize{9.2pt}{11.0pt}\selectfont,
+      fill=white,inner sep=.8pt]
+    {两条曲线：面积 $=1$};
+\end{axis}
+\end{tikzpicture}
+\caption{方差增大使高斯密度变宽、峰值降低，但曲线下面积保持为1}\label{fig:V1-C05-gaussian}
+\end{figure}

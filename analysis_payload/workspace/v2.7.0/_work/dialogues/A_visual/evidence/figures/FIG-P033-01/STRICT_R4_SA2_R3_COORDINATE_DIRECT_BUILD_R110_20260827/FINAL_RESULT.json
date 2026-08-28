@@ -1,0 +1,55 @@
+{
+  "uid": "FIG-P033-01",
+  "handoff_id": "A-R110-P033-SA2-DIRECT-BUILD-R4-20260827",
+  "status": "LOCAL_SA2_PASS_AWAIT_OFFICIAL_CANDIDATE_AND_FRESH_SA1",
+  "build": {
+    "exit_code": 0,
+    "natural_exit": true,
+    "interrupted": false,
+    "invocation_count": 1,
+    "retry_count": 0,
+    "latexmk_count": 0,
+    "child_pid": 26468,
+    "duration_seconds": 121.918,
+    "pdf_bytes": 31553,
+    "pdf_sha256": "CECFB8085EE0DB6327607879DE4600A45F4F8B312D4E1B2A9BAE9B675156153A",
+    "tex_processes_after": 0
+  },
+  "identity": {
+    "source_bytes": 2383,
+    "source_sha256": "D3C1D38ECB8468EC3294F7D18BD886316829F14690A516000189CE853A07BC05",
+    "wrapper_bytes": 394,
+    "wrapper_sha256": "6D5CAFA79EC5F2939FEE2A73A7360F1E5C3D88C522F2C6044905D4160B3C90F6"
+  },
+  "machine": {
+    "glyph_count": 38,
+    "drawing_count": 14,
+    "object_count": 52,
+    "unordered_pair_count": 1326,
+    "expected_unordered_pair_count": 1326,
+    "critical_bbox_candidate_count": 123,
+    "clip_failures": 0,
+    "empty_bbox_failures": 0,
+    "tofu_or_replacement_count": 0,
+    "target_bbox_clearance_px": 9.0,
+    "target_actual_empty_rows_300dpi": 21,
+    "target_shared_ink_pixels": 0
+  },
+  "manual": {
+    "glyph_rows": 38,
+    "drawing_rows": 14,
+    "critical_relation_groups": 16,
+    "opened_views": 6,
+    "non_pass_rows": 0,
+    "blank_notes": 0,
+    "script_generated_manual_fields": 0
+  },
+  "page_integration_risk": {
+    "projected_label_to_caption_clearance_px": 57.59842519685039,
+    "basis": "independent R110 physical-page 300dpi measurement minus verified 27.401575px source displacement",
+    "requires_official_candidate_confirmation": true
+  },
+  "hard_failures": 0,
+  "commit_created": false,
+  "fresh_role_started": false
+}

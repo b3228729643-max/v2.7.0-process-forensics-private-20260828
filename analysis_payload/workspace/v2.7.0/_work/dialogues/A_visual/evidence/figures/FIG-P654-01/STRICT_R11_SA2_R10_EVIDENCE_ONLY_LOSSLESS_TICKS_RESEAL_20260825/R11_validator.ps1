@@ -1,0 +1,10 @@
+param([Parameter(Mandatory=$true)][string]$TargetRoot,[Parameter(Mandatory=$true)][string]$OutputJson)
+$ErrorActionPreference='Stop'; $dst=(Resolve-Path -LiteralPath $TargetRoot).Path; $exclude=@('PAYLOAD_MANIFEST.csv','PAYLOAD_MANIFEST.json','WRITE_STOPPED.json')
+function Rows($root){Get-ChildItem -LiteralPath $root -File -Recurse | Where-Object {$exclude -notcontains $_.Name} | Sort-Object FullName | ForEach-Object {$fi=[IO.FileInfo]$_; [pscustomobject]@{relative_path=$fi.FullName.Substring($root.Length).TrimStart('\');bytes=$fi.Length;sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant();mtime_utc_ticks=$fi.LastWriteTimeUtc.Ticks.ToString([Globalization.CultureInfo]::InvariantCulture);mtime_utc_7digit=$fi.LastWriteTimeUtc.ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ',[Globalization.CultureInfo]::InvariantCulture)}}}
+$fs=@(Rows $dst); $csvRaw=@(Import-Csv (Join-Path $dst 'PAYLOAD_MANIFEST.csv')); $jsonRaw=@(Get-Content (Join-Path $dst 'PAYLOAD_MANIFEST.json') -Raw | ConvertFrom-Json)
+$csv=@(foreach($x in $csvRaw) {[pscustomobject]@{relative_path=$x.relative_path;bytes=[int64]$x.bytes;sha256=$x.sha256;mtime_utc_ticks=$x.mtime_utc_ticks;mtime_utc_7digit=$x.mtime_utc_7digit}})
+$jsonNorm=@(foreach($e in $jsonRaw){foreach($x in $e) {[pscustomobject]@{relative_path=$x.relative_path;bytes=[int64]$x.bytes;sha256=$x.sha256;mtime_utc_ticks=$x.mtime_utc_ticks;mtime_utc_7digit=$x.mtime_utc_7digit}}})
+$a=$fs|ConvertTo-Json -Compress; $b=$csv|ConvertTo-Json -Compress; $c=$jsonNorm|ConvertTo-Json -Compress
+$result=@{filesystem_count=$fs.Count;csv_count=$csv.Count;json_count=$jsonNorm.Count;filesystem_csv_equal=($a -eq $b);filesystem_json_equal=($a -eq $c);csv_json_equal=($b -eq $c);all_fields_equal=(($a -eq $b)-and($a -eq $c));status='PASS'}
+if(!$result.all_fields_equal){$result.status='FAIL';throw ($result|ConvertTo-Json -Compress)}
+$result|ConvertTo-Json -Compress|Set-Content -LiteralPath $OutputJson -Encoding UTF8; $result|ConvertTo-Json -Compress

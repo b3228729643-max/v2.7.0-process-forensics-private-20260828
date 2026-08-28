@@ -1,0 +1,111 @@
+{
+  "status": "STATIC_FONT_CONTOUR_PASS_AWAIT_RASTER",
+  "role": "PANEL_MAIN|FORMULA_BLOCK|BASE_MATH",
+  "role_point_size": 10.7,
+  "source_point_size_max_min_ratio": 1.0,
+  "source_point_size_span_pt": 0.0,
+  "role_counts": {
+    "italic_n_or_alpha": 6,
+    "binary_plus": 3,
+    "uppercase_total_N": 1
+  },
+  "glyphs": {
+    "italic_n": {
+      "font": "IBMPlexMath-Regular.otf",
+      "codepoint": "U+1D45B",
+      "glyph_name": "uni1D45B",
+      "bounds_font_units": [
+        66,
+        -12,
+        584,
+        528
+      ],
+      "height_units": 540,
+      "units_per_em": 1000,
+      "role_point_size": 10.7,
+      "continuous_height_at_300dpi_px": 24.075,
+      "conservative_integer_envelope_px": [
+        24,
+        25
+      ]
+    },
+    "italic_alpha": {
+      "font": "IBMPlexMath-Regular.otf",
+      "codepoint": "U+1D6FC",
+      "glyph_name": "uni1D6FC",
+      "bounds_font_units": [
+        67,
+        -12,
+        608,
+        528
+      ],
+      "height_units": 540,
+      "units_per_em": 1000,
+      "role_point_size": 10.7,
+      "continuous_height_at_300dpi_px": 24.075,
+      "conservative_integer_envelope_px": [
+        24,
+        25
+      ]
+    },
+    "uppercase_total_N": {
+      "font": "MezenetsUnicode.otf",
+      "codepoint": "U+004E",
+      "glyph_name": "N",
+      "bounds_font_units": [
+        21,
+        -13,
+        533,
+        524
+      ],
+      "height_units": 537,
+      "units_per_em": 1000,
+      "role_point_size": 10.7,
+      "continuous_height_at_300dpi_px": 23.94125,
+      "conservative_integer_envelope_px": [
+        23,
+        24
+      ]
+    },
+    "binary_plus": {
+      "font": "LibertinusMath-Regular.otf",
+      "codepoint": "U+002B",
+      "glyph_name": "plus",
+      "bounds_font_units": [
+        50.0,
+        -14.0,
+        598.0,
+        534.0
+      ],
+      "height_units": 548.0,
+      "units_per_em": 1000,
+      "role_point_size": 10.7,
+      "continuous_height_at_300dpi_px": 24.431667,
+      "conservative_integer_envelope_px": [
+        24,
+        25
+      ]
+    }
+  },
+  "median_height_units": 540.0,
+  "contour_ratios_to_frozen_role_median": {
+    "italic_n": 1.0,
+    "italic_alpha": 1.0,
+    "binary_plus": 1.014814814815,
+    "uppercase_total_N": 0.994444444444
+  },
+  "contour_ratio_gate": [
+    0.92,
+    1.08
+  ],
+  "conservative_integer_rounding_ratios": {
+    "lower_bound_total_N_vs_upper_base": 0.92,
+    "upper_bound_plus_vs_lower_base": 1.041666666667
+  },
+  "absolute_base_math_min_px": 22,
+  "minimum_conservative_integer_height_px": 23,
+  "all_contour_ratios_pass": true,
+  "all_conservative_integer_rounding_ratios_pass": true,
+  "all_conservative_integer_heights_pass": true,
+  "note": "Static contour/raster-envelope proof only. The next explicitly authorized PDF must remeasure native 300dpi pixels; no PASS is claimed here."
+}

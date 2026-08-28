@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>统计学习方法讲义 v2.6.0——FIG-P126-01 独立图验证（v2.7.0 完整解析版）</title>
+<meta name="Subject" content="统计学习方法初学者讲义 v2.7.0 完整解析版"/>
+<meta name="Keywords" content="统计学习方法, v2.7.0"/>
+<meta name="Author" content=""/>
+<meta name="Creator" content="LaTeX with hyperref"/>
+<meta name="Producer" content="LuaTeX-1.24.0"/>
+<meta name="CreationDate" content="2026-08-28T16:07:26+08"/>
+<meta name="ModDate" content="2026-08-28T16:07:26+08"/>
+</head>
+<body>
+<doc>
+  <page width="595.276000" height="841.890000">
+    <flow>
+      <block xMin="307.131000" yMin="70.038468" xMax="317.398383" yMax="82.113998">
+        <line xMin="307.131000" yMin="70.038468" xMax="317.398383" yMax="82.113998">
+          <word xMin="307.131000" yMin="70.038468" xMax="312.700116" yMax="80.001108">𝑥</word>
+          <word xMin="312.700000" yMin="73.147618" xMax="317.398383" yMax="82.113998">2</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="225.844000" yMin="72.149084" xMax="241.507168" yMax="82.518420">
+        <line xMin="225.844000" yMin="72.149084" xMax="241.507168" yMax="82.518420">
+          <word xMin="225.844000" yMin="73.352790" xMax="231.664175" yMax="82.518420">𝑥</word>
+          <word xMin="231.755000" yMin="72.149084" xMax="241.507168" yMax="78.564984">(0)</word>
+        </line>
+      </block>
+      <block xMin="260.531000" yMin="86.153275" xMax="264.772101" yMax="94.721155">
+        <line xMin="260.531000" yMin="86.153275" xMax="264.772101" yMax="94.721155">
+          <word xMin="260.531000" yMin="86.153275" xMax="264.772101" yMax="94.721155">2</word>
+        </line>
+      </block>
+      <block xMin="209.947000" yMin="95.714275" xMax="214.188101" yMax="104.282155">
+        <line xMin="209.947000" yMin="95.714275" xMax="214.188101" yMax="104.282155">
+          <word xMin="209.947000" yMin="95.714275" xMax="214.188101" yMax="104.282155">1</word>
+        </line>
+      </block>
+      <block xMin="280.853000" yMin="105.478275" xMax="285.094101" yMax="114.046155">
+        <line xMin="280.853000" yMin="105.478275" xMax="285.094101" yMax="114.046155">
+          <word xMin="280.853000" yMin="105.478275" xMax="285.094101" yMax="114.046155">4</word>
+        </line>
+      </block>
+      <block xMin="250.591000" yMin="116.001275" xMax="254.832101" yMax="124.569155">
+        <line xMin="250.591000" yMin="116.001275" xMax="254.832101" yMax="124.569155">
+          <word xMin="250.591000" yMin="116.001275" xMax="254.832101" yMax="124.569155">3</word>
+        </line>
+      </block>
+      <block xMin="272.905000" yMin="126.102275" xMax="277.146101" yMax="134.670155">
+        <line xMin="272.905000" yMin="126.102275" xMax="277.146101" yMax="134.670155">
+          <word xMin="272.905000" yMin="126.102275" xMax="277.146101" yMax="134.670155">5</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="291.014000" yMin="118.375275" xMax="295.255101" yMax="126.943155">
+        <line xMin="291.014000" yMin="118.375275" xMax="295.255101" yMax="126.943155">
+          <word xMin="291.014000" yMin="118.375275" xMax="295.255101" yMax="126.943155">6</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="387.997000" yMin="126.408468" xMax="398.129887" yMax="138.447998">
+        <line xMin="387.997000" yMin="126.408468" xMax="398.129887" yMax="138.447998">
+          <word xMin="387.997000" yMin="126.408468" xMax="393.566116" yMax="136.371108">𝑥</word>
+          <word xMin="393.566000" yMin="129.481618" xMax="398.129887" yMax="138.447998">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="279.927000" yMin="133.197275" xMax="284.168101" yMax="141.765155">
+        <line xMin="279.927000" yMin="133.197275" xMax="284.168101" yMax="141.765155">
+          <word xMin="279.927000" yMin="133.197275" xMax="284.168101" yMax="141.765155">7</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="310.433000" yMin="145.190084" xMax="320.412681" yMax="155.560420">
+        <line xMin="310.433000" yMin="145.190084" xMax="320.412681" yMax="155.560420">
+          <word xMin="310.433000" yMin="146.394790" xMax="316.253175" yMax="155.560420">𝑥</word>
+          <word xMin="316.345000" yMin="145.190084" xMax="320.412681" yMax="151.605984">∗</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="267.167000" yMin="227.636888" xMax="299.566887" yMax="240.054998">
+        <line xMin="267.167000" yMin="227.636888" xMax="299.566887" yMax="240.054998">
+          <word xMin="267.167000" yMin="227.636888" xMax="287.092280" yMax="238.306875">更新</word>
+          <word xMin="289.434000" yMin="228.015468" xMax="295.003116" yMax="237.978108">𝑥</word>
+          <word xMin="295.003000" yMin="231.088618" xMax="299.566887" yMax="240.054998">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="321.457000" yMin="227.636888" xMax="353.990383" yMax="240.090998">
+        <line xMin="321.457000" yMin="227.636888" xMax="353.990383" yMax="240.090998">
+          <word xMin="321.457000" yMin="227.636888" xMax="341.382280" yMax="238.306875">更新</word>
+          <word xMin="343.723000" yMin="228.015468" xMax="349.292116" yMax="237.978108">𝑥</word>
+          <word xMin="349.292000" yMin="231.124618" xMax="353.990383" yMax="240.090998">2</word>
+        </line>
+      </block>
+    </flow>
+  </page>
+</doc>
+</body>
+</html>

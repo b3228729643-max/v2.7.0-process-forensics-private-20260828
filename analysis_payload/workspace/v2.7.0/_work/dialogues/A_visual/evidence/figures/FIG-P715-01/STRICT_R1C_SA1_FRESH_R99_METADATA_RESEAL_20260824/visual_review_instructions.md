@@ -1,0 +1,1 @@
+Open every PNG named in review_contact_sheets/ at original resolution. Each cell includes ORIGINAL native 1x, TARGET OVERLAY native 1x, MASK ONLY native 1x, and the same 80x80 tile at nearest-neighbour 8x. Open every critical_pairs/*.png at original resolution. Only then run --phase mark-reviewed.

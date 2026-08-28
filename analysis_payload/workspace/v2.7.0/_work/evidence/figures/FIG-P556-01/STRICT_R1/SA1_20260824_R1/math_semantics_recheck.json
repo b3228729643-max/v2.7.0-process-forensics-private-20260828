@@ -1,0 +1,124 @@
+{
+  "mapping": "r -> 0.2+0.5r",
+  "fixed_point": 0.4,
+  "low_sequence": [
+    0.05,
+    0.225,
+    0.3125,
+    0.35625,
+    0.37812500000000004
+  ],
+  "high_sequence": [
+    0.9,
+    0.65,
+    0.525,
+    0.4625,
+    0.43125
+  ],
+  "probability_at_fixed_point": [
+    0.4,
+    0.6
+  ],
+  "pass": true,
+  "checks": [
+    {
+      "CHECK_ID": "MAP",
+      "SOURCE_LINES": "L28; adjacent L624",
+      "INPUT_R": "symbolic",
+      "FORMULA": "f(r)=0.2+0.5r",
+      "EXPECTED": "[0,1] -> [0.2,0.7]",
+      "OBSERVED": "[0.2,0.7]",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "FIXED_POINT",
+      "SOURCE_LINES": "L30-L31; adjacent L624",
+      "INPUT_R": "r=f(r)",
+      "FORMULA": "r=0.2+0.5r",
+      "EXPECTED": "0.4",
+      "OBSERVED": "0.400000",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "CONTRACTION",
+      "SOURCE_LINES": "L48-L49",
+      "INPUT_R": "symbolic",
+      "FORMULA": "|f'(r)|=0.5",
+      "EXPECTED": "0.5<1",
+      "OBSERVED": "0.5<1",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "COBWEB_LOW_0_TO_1",
+      "SOURCE_LINES": "L35-L36",
+      "INPUT_R": "0.050000",
+      "FORMULA": "0.2+0.5r",
+      "EXPECTED": "0.225000",
+      "OBSERVED": "0.225000",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "COBWEB_LOW_1_TO_2",
+      "SOURCE_LINES": "L35-L36",
+      "INPUT_R": "0.225000",
+      "FORMULA": "0.2+0.5r",
+      "EXPECTED": "0.312500",
+      "OBSERVED": "0.312500",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "COBWEB_LOW_2_TO_3",
+      "SOURCE_LINES": "L35-L36",
+      "INPUT_R": "0.312500",
+      "FORMULA": "0.2+0.5r",
+      "EXPECTED": "0.356250",
+      "OBSERVED": "0.356250",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "COBWEB_LOW_3_TO_4",
+      "SOURCE_LINES": "L35-L36",
+      "INPUT_R": "0.356250",
+      "FORMULA": "0.2+0.5r",
+      "EXPECTED": "0.378125",
+      "OBSERVED": "0.378125",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "COBWEB_HIGH_0_TO_1",
+      "SOURCE_LINES": "L43-L44",
+      "INPUT_R": "0.900000",
+      "FORMULA": "0.2+0.5r",
+      "EXPECTED": "0.650000",
+      "OBSERVED": "0.650000",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "COBWEB_HIGH_1_TO_2",
+      "SOURCE_LINES": "L43-L44",
+      "INPUT_R": "0.650000",
+      "FORMULA": "0.2+0.5r",
+      "EXPECTED": "0.525000",
+      "OBSERVED": "0.525000",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "COBWEB_HIGH_2_TO_3",
+      "SOURCE_LINES": "L43-L44",
+      "INPUT_R": "0.525000",
+      "FORMULA": "0.2+0.5r",
+      "EXPECTED": "0.462500",
+      "OBSERVED": "0.462500",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "COBWEB_HIGH_3_TO_4",
+      "SOURCE_LINES": "L43-L44",
+      "INPUT_R": "0.462500",
+      "FORMULA": "0.2+0.5r",
+      "EXPECTED": "0.431250",
+      "OBSERVED": "0.431250",
+      "PASS_FAIL": "PASS"
+    }
+  ]
+}

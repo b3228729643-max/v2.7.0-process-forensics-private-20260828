@@ -1,0 +1,13 @@
+ADVISORY_ID,GLYPH_IDS,FACT,ACTUALLY_REVIEWED,HARD_FAIL_UNDER_R168,DECISION,NOTE
+ADV001,"GLY0004,GLY0016,GLY0066,GLY0095","U+003D H=13px; areas 175,175,174,174",true,false,ADVISORY,"All four equals signs have identical two-bar contours, correct equality semantics and area ratio 1.006; legacy 22px operator-height taxonomy does not indicate unreadability."
+ADV002,"GLY0047,GLY0076","U+2192 H=16px; areas 169,168",true,false,ADVISORY,"Both right arrows include shaft and head, point in the correct direction and match within area ratio 1.006."
+ADV003,"GLY0012,GLY0024,GLY0032,GLY0057,GLY0063,GLY0072,GLY0086,GLY0092,GLY0101","U+002C H=12px; W=6–7px; area=51–60px",true,false,ADVISORY,"Every formula comma mask is nonempty/complete/pure; minor antialias area spread is visually immaterial under R168."
+ADV004,GLY0038,"U+FF1A H=19px area=28px",true,false,ADVISORY,"Both colon dots are present and clearly visible; no wrong codepoint."
+ADV005,GLY0042,"U+4E00 H=4px W=32px area=70px",true,false,ADVISORY,"一 is inherently one horizontal stroke; the entire 32px-wide stroke is present, so the low bounding height is not missing ink."
+ADV006,GLY0112,"U+3001 H=10px W=10px area=39px",true,false,ADVISORY,"Ideographic comma is complete and correctly low-profile."
+ADV007,GLY0127,"U+FF0C at 9.1656pt: H=11px area=38px",true,false,ADVISORY,"Explanation comma has full dot/tail, pure mask and clear reading at its source size."
+ADV008,GLY0137,"U+002E bold caption period H=11px area=47px",true,false,ADVISORY,"Figure-number period is nonempty, correct and visually unambiguous."
+ADV009,"GLY0166,GLY0186","U+FF0C caption peers H=13px area=46px each",true,false,ADVISORY,"Caption fullwidth commas match exactly in height and area."
+ADV010,GLY0175,"U+FF1B H=28px area=56px",true,false,ADVISORY,"Fullwidth semicolon contains both dot and comma-tail and is correctly rendered."
+ADV011,"SRC001–SRC007","declared figure sizes 8.6/9.2pt, no graphics scaling",true,false,ADVISORY,"R168 treats modest numeric undershoot as advisory absent actual unreadability or severe visual imbalance; native views are clear and harmonious."
+ADV012,"ROLE001–ROLE007","raw median ratios affected by mixed glyph topology",true,false,ADVISORY,"x/y, a/b and line medians are not exact-glyph matched; identical source roles and direct visual review show no severe size imbalance."

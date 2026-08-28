@@ -1,0 +1,25 @@
+﻿scope_type,scope_id,opened,decision,note
+VIEW,full_page_200dpi,YES,PASS_LAYOUT_CONTEXT,physical page 702/printed 689; figure integrates with page; no source clipping or overflow
+VIEW,figure_crop_300dpi,YES,FAIL_TYPOGRAPHY,all eight nodes and seven paths readable; formula hierarchy is visibly oversized and title/formula spacing is too tight
+VIEW,standalone_300dpi,YES,FAIL_TYPOGRAPHY,graph semantics and direction are clear; hard type and bbox gates fail
+VIEW,grayscale_300dpi,YES,PASS_GRAYSCALE,structure and edges remain distinguishable without color
+PANEL,trial,YES,PASS,node text and border clean
+PANEL,gamma,YES,FAIL_GLYPH_HEIGHT,G0017 Chinese 一 H=4<30
+PANEL,families,YES,FAIL_D_RATIO,Latin/Greek x-height D ratio failure
+PANEL,posterior,YES,FAIL_TYPOGRAPHY_AND_CLEARANCE,"11.8pt formula, D/E failures, title/formula bbox collisions"
+PANEL,predictive,YES,FAIL_TYPOGRAPHY_AND_CLEARANCE,"equals glyphs H=14<22, D/E failures, title/formula bbox collisions"
+PANEL,simplex,YES,PASS,parent mapping and own-border relation verified
+PANEL,mom,YES,PASS,G0083 same-codepoint reference PASS
+PANEL,lda,YES,PASS,application target node readable
+PANEL,application_edge,YES,PASS,dashed edge and label readable; source endpoint semantics checked
+ROLE,NODE_LABEL,YES,FAIL,G0017 and D ratio failures
+ROLE,FORMULA_BLOCK,YES,FAIL,"pixel, D/E, source role ratio, visual harmony and bbox spacing failures"
+ROLE,EDGE_LABEL,YES,PASS,9.6pt application label is legible and separated
+ROLE,GRAPHIC,YES,PASS_MASK,"all 21 path masks, including math rule, opened at 1x/8x; foreign=0/missing=0"
+SCRIPT,BASE_MATH_OPERATOR,YES,FAIL,"numeric failures=G0059,G0066"
+SCRIPT,BASE_MATH_SYMBOL,YES,PASS_OR_REFERENCE,numeric failures=none
+SCRIPT,CJK_FULL,YES,FAIL,numeric failures=G0017
+SCRIPT,LATIN_GREEK_XHEIGHT,YES,PASS_OR_REFERENCE,numeric failures=none
+SCRIPT,LATIN_UPPER_DIGIT,YES,PASS_OR_REFERENCE,numeric failures=none
+SCRIPT,LOW_PROFILE_PUNCTUATION,YES,PASS_OR_REFERENCE,numeric failures=none
+SCRIPT,NATURAL_SCRIPT,YES,PASS_OR_REFERENCE,numeric failures=none

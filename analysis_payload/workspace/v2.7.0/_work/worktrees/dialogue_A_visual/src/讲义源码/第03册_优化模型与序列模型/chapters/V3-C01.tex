@@ -1,0 +1,1178 @@
+% STAGE11-CHAPTER: V3-C01
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V3-C01-CH01}; CH-02=\label{struct:V3-C01-CH02}; CH-03=\label{struct:V3-C01-CH03}; CH-04=\label{struct:V3-C01-CH04}; CH-05=\label{struct:V3-C01-CH05}; CH-06=\label{struct:V3-C01-CH06}; CH-07=\label{struct:V3-C01-CH07}; CH-08=\label{struct:V3-C01-CH08}; CH-09=\label{struct:V3-C01-CH09}; CH-10=\label{struct:V3-C01-CH10}; CH-11=\label{struct:V3-C01-CH11}; CH-12=\label{struct:V3-C01-CH12}; CH-13=\label{struct:V3-C01-CH13}; CH-14=\label{struct:V3-C01-CH14}; CH-15=\label{struct:V3-C01-CH15}; CH-16=\label{struct:V3-C01-CH16}; CH-17=\label{struct:V3-C01-CH17}; CH-18=\label{struct:V3-C01-CH18}; CH-19=\label{struct:V3-C01-CH19}; CH-20=\label{struct:V3-C01-CH20}; CH-21=\label{struct:V3-C01-CH21}; CH-22=\label{struct:V3-C01-CH22}; CH-23=\label{struct:V3-C01-CH23}; CH-24=\label{struct:V3-C01-CH24}; CH-25=\label{struct:V3-C01-CH25}; CH-26=\label{struct:V3-C01-CH26}; CH-27=\label{struct:V3-C01-CH27}; CH-28=\label{struct:V3-C01-CH28}; CH-29=\label{struct:V3-C01-CH29}; CH-30=\label{struct:V3-C01-CH30}; CH-31=\label{struct:V3-C01-CH31}; CH-32=\label{struct:V3-C01-CH32}; CH-33=\label{struct:V3-C01-CH33}; CH-34=\label{struct:V3-C01-CH34}; CH-35=\label{struct:V3-C01-CH35}; CH-36=\label{struct:V3-C01-CH36}; CH-37=\label{struct:V3-C01-CH37}
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=18; source_group=none; supplement=18
+
+\chapter{最大熵模型}\label{chap:V3-C01}
+\index{最大熵模型}
+\index{最大熵原理}
+\index{条件熵}
+\index{改进的迭代尺度法}
+
+% KNOWLEDGE-PLAN: KN-V3-C17-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：最大熵模型。}最大熵模型章地图沿“从熵约束直达指数族、对偶目标与IIS”推进；请标出该路线第一次改变对象类型的位置，并核对前一步产出正是后一步输入。\par
+
+\SLChapterOpening{从熵约束直达指数族、对偶目标与IIS}{怎样在可靠特征期望约束下选择条件分布并估计参数}{能推导最大熵指数族、梯度协方差结构与IIS尺度方程}{概率归一化、熵、Lagrange乘子与一维求根}{约束或支撑检查失败时返回\cref{sec:V3-C01-S01,sec:V3-C01-S03}；优化细节不稳时回看\cref{sec:V3-C01-S04}}
+\phantomsection\label{struct:V3-C01-CH01}
+% KNOWLEDGE-PLAN: KN-V3-C17-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}最大熵模型的首个可检验目标是“能把“只服从已知约束、其余保持最少偏置”的原则写成严格的条件熵约束优化问题”；请把“只服从已知约束、其余保持最少偏置”的原则写成严格的条件熵约束优化问题并写出中间结果，再按“中间结果逐项包含首目标“能把“只服从已知约束、其余保持最少偏置”的原则写成严格的条件熵约束优化问题”声明的对象、条件与结论”验收。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能把“只服从已知约束、其余保持最少偏置”的原则写成严格的条件熵约束优化问题；
+  \item 能从经验特征期望约束逐行推导指数族条件分布、对数配分函数、对偶目标及其梯度；
+  \item 能证明最大熵对偶极大化与条件极大似然估计等价，并解释梯度为何是两种特征期望之差；
+  \item 掌握改进的迭代尺度法（IIS）和BFGS方法的输入、初始化、更新、停止及收敛条件；
+  \item 能诊断不可行约束、冗余特征、零频数、数值溢出和参数不可识别等实际问题。
+\end{itemize}}
+
+\phantomsection\label{struct:V3-C01-CH02}
+\begin{prerequisitebox}
+本章使用离散条件概率、经验分布、数学期望、熵、极大似然、凸函数、等式约束的拉格朗日乘子法、对偶问题、梯度、Hessian矩阵、Newton法与拟Newton法。设训练集为
+$T=\{(x_k,y_k)\}_{k=1}^{N}$，输入与输出的有限取值集合分别为$\mathcal X$与$\mathcal Y$。若实际变量连续，本章公式应在选定的离散特征或有限样本支撑上理解。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V3-C01-CH03}
+% KNOWLEDGE-PLAN: KN-V3-C17-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}最大熵模型先修自检固定核验“能否验证$\widetilde P(x,y)=\nu(x,y)/N$与$\widetilde P(x)=\nu(x)/N$均已归一化”；请验证$\widetilde P(x,y)=\nu(x,y)/N$与$\widetilde P(x)=\nu(x)/N$均已归一化并写出中间结果，再按“$\widetilde P(x,y)=\nu(x,y)/N$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否验证$\widetilde P(x,y)=\nu(x,y)/N$与$\widetilde P(x)=\nu(x)/N$均已归一化？
+  \item 能否对$p\log p$求导，并说明约定$0\log0=0$为何与极限相容？
+  \item 能否写出带等式约束的拉格朗日函数，并区分原变量与乘子？
+  \item 能否说明半正定Hessian与凸目标、全局极小点之间的关系？
+\end{enumerate}
+若第1项或第2项不能完成，应先复习离散分布与熵；若第3项或第4项不熟悉，应先复习第1册的约束优化、对偶与拟Newton法。
+\end{precheckbox}
+
+\phantomsection\label{struct:V3-C01-CH04}
+\begin{dependencybox}
+经验分布 $\to$ 特征经验期望；
+条件概率模型 $\to$ 模型特征期望；
+期望匹配约束 $\to$ 可行模型集合；
+条件熵最大化 $\to$ 拉格朗日对偶 $\to$ 指数族条件分布；
+对数配分函数 $\to$ 条件似然与矩条件；
+光滑凸优化 $\to$ IIS或BFGS参数学习。
+\end{dependencybox}
+
+\begin{keypointbox}[title=模型认识卡：最大熵模型]
+\textbf{任务与输入：}有限输出条件概率建模，输入为样本与特征$f_i(x,y)$。\quad
+\textbf{输出类型：}归一化条件分布。\par
+\textbf{模型：}$P_w(y\mid x)\propto\exp\{w^{\mathsf T}f(x,y)\}$。\quad
+\textbf{策略：}在经验矩约束下最大化条件熵，等价地优化条件似然对偶。\quad
+\textbf{算法：}一般实值特征可用BFGS；满足非负尺度条件时可用IIS。\par
+\textbf{预测：}取条件概率或最大概率类别。\quad
+\textbf{关键假设与边界：}约束须可行且参数可识别；零频、冗余特征与分离会破坏有限参数解。
+\end{keypointbox}
+
+\phantomsection\label{struct:V3-C01-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V3-C01
+\index[symbols]{minus-widetildep-minus-x-y--sed8157855f3c@$\widetilde P(x,y)$：训练样本联合经验分布}
+\index[symbols]{minus-widetildep-minus-x--sc81195852c01@$\widetilde P(x)$：输入的边缘经验分布}
+\index[symbols]{p-y-minus-midx-minus--s0daad677611a@$P(y\mid x)$：待学习的条件概率，且对每个$x$按$y$归一化}
+\index[symbols]{f-i-x-y--s6303ea7a326a@$f_i(x,y)$：第$i$个特征函数，$i=1,\ldots,n$}
+\index[symbols]{minus-widetildee-minus-f-i--s2e00e9a76dd6@$\widetilde E(f_i)$：特征在联合经验分布下的期望}
+\index[symbols]{e-p-f-i--s75fdb9e5cfd7@$E_P(f_i)$：特征在$\widetilde P(x)P(y\mid x)$下的期望}
+\index[symbols]{w--s29654dec936b@$w$：拉格朗日乘子组成的参数向量}
+\index[symbols]{z-w-x--s37b7ac4e30d4@$Z_w(x)$：对输入$x$的配分函数}
+\index[symbols]{f-u0023-x-y--s0e6d874e7f0f@$f^\#(x,y)$：IIS中的特征总量$\sum_i f_i(x,y)$}
+\index[symbols]{minus-delta-minus-i--s56eddfe40259@$\delta_i$：IIS对参数$w_i$的一次增量}
+% STAGE19-SYMBOL-INDEX-END: V3-C01
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$\widetilde P(x,y)$ & $[0,1]$ & 训练样本联合经验分布\\
+$\widetilde P(x)$ & $[0,1]$ & 输入的边缘经验分布\\
+$P(y\mid x)$ & $[0,1]$ & 待学习的条件概率，且对每个$x$按$y$归一化\\
+$f_i(x,y)$ & $\mathbb R$ & 第$i$个特征函数，$i=1,\ldots,n$\\
+$\widetilde E(f_i)$ & $\mathbb R$ & 特征在联合经验分布下的期望\\
+$E_P(f_i)$ & $\mathbb R$ & 特征在$\widetilde P(x)P(y\mid x)$下的期望\\
+$w$ & $\mathbb R^n$ & 拉格朗日乘子组成的参数向量\\
+$Z_w(x)$ & $(0,\infty)$ & 对输入$x$的配分函数\\
+$f^\#(x,y)$ & $\mathbb R$ & IIS中的特征总量$\sum_i f_i(x,y)$\\
+$\delta_i$ & $\mathbb R$ & IIS对参数$w_i$的一次增量\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V3-C17-FORMULA-001 L1
+\paragraph{读前自检：最大熵模型。}在“概率建模常只有部分可靠信息，例如若干事件概率之和、某些统计量的均值或训练样本给出的特征频率”成立时处理最大熵模型：请在共同支持上代入最大熵模型并合并一项，并以最大熵方法把“没有证据时不额外偏向某一结果”表述为熵最大化判定结果。\par
+
+\SLDirectSection{最大熵原理}{sec:V3-C01-S01}
+\phantomsection\label{struct:V3-C01-CH06}
+\knowledgeanchor{SLM-06-02-002}{最大熵模型}
+概率建模常只有部分可靠信息，例如若干事件概率之和、某些统计量的均值或训练样本给出的特征频率。问题不是任意补齐未知概率，而是在满足这些信息的所有分布中选择一个模型。最大熵方法把“没有证据时不额外偏向某一结果”表述为熵最大化。
+
+% KNOWLEDGE-PLAN: KN-V3-C17-FORMULA-002 L1
+\paragraph{读前自检：最大熵原理。}最大熵原理在非空约束集合$\mathcal C$中选择$P^\star\in\arg\max_{P\in\mathcal C}H(P)$；请核对候选分布非负、归一化并满足线性矩约束，再比较其熵。\par
+
+\knowledgeanchor{SLM-06-02-003}{最大熵原理}
+\phantomsection\label{struct:V3-C01-CH07}
+\begin{definition}[最大熵原理]\label{def:V3-C01-maxent-principle}
+设$\mathcal C$是由已知线性约束和概率归一化约束确定的非空分布集合。最大熵原理在$\mathcal C$中选择
+\[
+P^\star\in\arg\max_{P\in\mathcal C}H(P),
+\qquad H(P)=-\sum_zP(z)\log P(z).
+\]
+若目标严格凹且可行集合为凸集，则最优分布唯一。
+\end{definition}
+
+\phantomsection\label{struct:V3-C01-CH08}
+\textbf{模型。}模型对象是一个概率分布或条件概率分布；可行集合编码已经确认的信息，熵目标只在这个集合内部比较候选模型。没有约束时，有限集合上的最大熵分布是均匀分布；加入约束后，最优解通常不再均匀，但不会引入约束未要求的额外结构。
+
+\phantomsection\label{struct:V3-C01-CH09}
+\textbf{学习策略。}以熵为不确定性度量，在全部经验约束下最大化条件熵。约束负责“拟合已知事实”，熵负责“控制未被事实确定的自由度”。这与把误差项和正则项简单相加不同：基本最大熵模型把特征期望写成硬等式约束。
+
+\phantomsection\label{struct:V3-C01-CH11}
+% CORE-DERIVATION-PLAN: KN-V3-C17-DERIVATION-001
+\SLKnowledgeBridge{从条件熵优化的驻点方程看清指数项与配分函数的来源。}{条件分布 $P(y\mid x)$、线性特征约束及每个 $x$ 上的归一化约束。}{考虑概率单纯形内部解 $P(y\mid x)>0$；可行集凸，负熵为凸函数。}{先写包含特征约束和 $\sum_yP(y\mid x)=1$ 的拉格朗日函数，并对每个 $P(y\mid x)$ 求偏导。}
+
+\begin{derivationgoalbox}
+从条件熵约束优化问题推导最优条件分布的指数族形式，并明确配分函数如何由归一化约束产生。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+对$\widetilde P(x)>0$的输入考虑$P(y\mid x)>0$的内部解。使用
+$\partial[p\log p]/\partial p=\log p+1$。线性等式约束与概率单纯形构成凸可行集，$-H(P)$为凸函数。
+\end{derivationprepbox}
+
+\textbf{推导第1步：写出拉格朗日函数。}
+\[
+\begin{aligned}
+\mathcal L(P,w,\lambda)
+={}&\sum_{x,y}\widetilde P(x)P(y\mid x)\log P(y\mid x)\\
+&+\sum_{i=1}^{n}w_i\{\widetilde E(f_i)-E_P(f_i)\}
++\sum_x\lambda(x)\left\{1-\sum_yP(y\mid x)\right\}.
+\end{aligned}
+\]
+
+\textbf{推导第2步：对每个概率分量求驻点。}
+\[
+\frac{\partial\mathcal L}{\partial P(y\mid x)}
+=\widetilde P(x)\left[\log P(y\mid x)+1-\sum_iw_if_i(x,y)\right]-\lambda(x)=0.
+\]
+将只依赖$x$的项合并为$c(x)$，得到
+\[
+P(y\mid x)=c(x)\exp\left\{\sum_{i=1}^{n}w_if_i(x,y)\right\}.
+\]
+
+\textbf{推导第3步：用归一化确定$c(x)$。}
+对$y$求和并令结果为1，定义
+\[
+Z_w(x)=\sum_{y\in\mathcal Y}\exp\left\{\sum_{i=1}^{n}w_if_i(x,y)\right\},
+\]
+便有
+\[
+P_w(y\mid x)=\frac{1}{Z_w(x)}
+\exp\left\{\sum_{i=1}^{n}w_if_i(x,y)\right\}.
+\]
+配分函数严格为正，因此条件概率有定义并自动归一化。
+
+\phantomsection\label{struct:V3-C01-CH12}
+\begin{theorem}[最大熵模型的指数形式]\label{thm:V3-C01-exponential-form}
+若期望约束可行，且最优解位于相关概率单纯形的相对内部，则存在参数$w\in\mathbb R^n$，使最大熵模型具有本节给出的指数族形式。反过来，若某个$P_w$满足全部期望约束，则它是条件熵最大化问题的全局最优解。
+\end{theorem}
+
+\phantomsection\label{struct:V3-C01-CH13}
+% KNOWLEDGE-PLAN: KN-V3-C17-PROOF-001 L1
+\paragraph{读前自检：证明：最大熵模型的指数形式。}最大熵指数形式的反向证明把$-H(P)$视为概率单纯形上的凸函数，并把期望约束写成仿射等式；请核对原可行性、驻点与乘子条件构成KKT证书，再用严格凹性判断条件分布何时唯一。\par
+
+\begin{proof}
+前半部分由拉格朗日驻点方程和归一化推导得到。对后半部分，$-H(P)$在概率单纯形上为凸函数，期望约束是仿射等式；因此满足原始可行性、驻点条件和乘子条件的点满足凸问题的KKT条件。凸问题的KKT点是全局极小点$-H(P)$，也就是全局最大点$H(P)$。若在有效方向上条件熵严格凹，则对应的条件分布唯一。至此两方向均成立。
+\end{proof}
+
+\phantomsection\label{struct:V3-C01-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}特征权重$w_i$是相应期望约束的对偶变量。正的$w_i$提高$f_i(x,y)$较大的结果的未归一化得分，负的$w_i$降低它们；$Z_w(x)$把这些得分投影回概率单纯形。对偶学习就是调整影子价格，直到模型期望与经验期望一致。
+\end{optimizationbox}
+
+
+% KNOWLEDGE-PLAN: KN-V3-C17-FORMULA-003 L1
+\paragraph{读前自检：极大似然估计。}最大熵模型条件对数似然的梯度为$\widetilde E(f_i)-E_{P_w}(f_i)$；请对$w_i$求导$\log Z_w(x)$，核对最优点的每个坐标满足经验与模型特征期望相等。\par
+
+\SLTeachSection{对偶目标与参数估计}{sec:V3-C01-S04}
+\knowledgeanchor{SLM-06-02-006}{极大似然估计}
+指数模型的平均条件对数似然为
+\[
+\ell(w)=\sum_{x,y}\widetilde P(x,y)\log P_w(y\mid x)
+=\sum_iw_i\widetilde E(f_i)-\sum_x\widetilde P(x)\log Z_w(x).
+\]
+因此最小化负对数似然
+\[
+J(w)=\sum_x\widetilde P(x)\log Z_w(x)-\sum_iw_i\widetilde E(f_i)
+\]
+与最大化最大熵对偶函数是同一个优化问题。
+
+% KNOWLEDGE-PLAN: KN-V3-C17-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：模型学习的最优化算法。}把模型学习的最优化算法放在“对$w_i$求导”下考察：独立化简$\nabla J(w)=0$的两端，并检查两端运算均有定义、类型一致且化为同一结果。\par
+
+\knowledgeanchor{SLM-06-03-002}{模型学习的最优化算法}
+对$w_i$求导，
+\[
+\frac{\partial J}{\partial w_i}
+=\sum_{x,y}\widetilde P(x)P_w(y\mid x)f_i(x,y)-\widetilde E(f_i)
+=E_{P_w}(f_i)-\widetilde E(f_i).
+\]
+Hessian是条件特征协方差的经验加权和：
+\[
+\frac{\partial^2J}{\partial w_i\partial w_j}
+=\sum_x\widetilde P(x)\operatorname{Cov}_{P_w(\cdot\mid x)}
+\!\bigl(f_i(x,Y),f_j(x,Y)\bigr),
+\]
+故半正定。最优性条件$\nabla J(w)=0$恰好是全部特征期望匹配。
+
+% KNOWLEDGE-PLAN: KN-V3-C17-CONCEPT-003 L1
+\paragraph{读前自检：拟牛顿法。}最大熵模型的拟牛顿求解以负条件对数似然$J(w)$为目标；请用正定$G_k$形成$p_k=-G_k\nabla J(w_k)$，核对非驻点处为下降方向并以梯度范数判停。\par
+% KNOWLEDGE-PLAN: KN-V3-C17-FORMULA-004 L1
+\paragraph{读前自检：最大熵模型学习的BFGS算法。}最大熵模型学习的BFGS状态为$w_k,G_k$及梯度；请计算$s_k,y_k$并完成一次逆BFGS更新，核对$G_{k+1}y_k=s_k$且曲率条件失败时不提交。\par
+
+\knowledgeanchor{SLM-06-03-004}{拟牛顿法}
+\knowledgeanchor{SLM-06-02-007}{最大熵模型学习的BFGS算法}
+\phantomsection\label{struct:V3-C01-CH10}
+\phantomsection\label{struct:V3-C01-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}含$K$个结果的概率向量位于$(K-1)$维单纯形中；每条线性期望约束对应一个仿射超平面。可行模型集合是单纯形与这些超平面的交集。熵的等高面向均匀分布方向鼓起，最大熵解是可行截面上熵值最高的点。
+\end{geometrybox}
+
+\phantomsection\label{struct:V3-C01-CH15}
+\begin{probabilitybox}
+熵越大，概率质量越不集中。最大熵不是声称真实世界一定最随机，而是说：在当前约束以外没有可验证信息时，不应凭空把质量集中到少数结果。新增可靠约束后，可行集合缩小，模型才相应偏离均匀分布。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V3-C01-CH17}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C01/fig_v3_c01_simplex.tex}
+% FIGURE-KNOWLEDGE-MAP: fig:V3-C01-simplex -> SLM-06-02-003
+图\ref{fig:V3-C01-simplex}把概率归一化表示为单纯形，把已知统计量表示为线性约束；可行集是两者的交集，最大熵解是在该交集内而不是在整个单纯形内选择熵最大点。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C17-DEFINITION-002 L1
+\paragraph{读前自检：最大熵模型的定义。}最大熵模型约束经验特征期望$\widetilde E(f_i)$等于模型期望$E_P(f_i)$；请对一个$f_i$分别按经验联合分布和$\widetilde P(x)P(y\mid x)$求和，核对两侧均为标量。\par
+
+\SLReviewSection{最大熵模型的定义}{sec:V3-C01-S02}
+\knowledgeanchor{SLM-06-02-004}{最大熵模型的定义}
+对训练集定义频数$\nu(x,y)$与$\nu(x)$，经验分布为
+\[
+\widetilde P(x,y)=\frac{\nu(x,y)}{N},\qquad
+\widetilde P(x)=\frac{\nu(x)}{N}.
+\]
+给定特征$f_i(x,y)$，其经验期望与模型期望分别为
+\[
+\widetilde E(f_i)=\sum_{x,y}\widetilde P(x,y)f_i(x,y),
+\qquad
+E_P(f_i)=\sum_{x,y}\widetilde P(x)P(y\mid x)f_i(x,y).
+\]
+期望匹配约束$E_P(f_i)=\widetilde E(f_i)$要求模型在输入经验分布下复现训练数据中的特征统计量。
+
+% KNOWLEDGE-PLAN: KN-V3-C17-FORMULA-005 L1
+\paragraph{读前自检：满足经验约束的最大熵条件模型。}满足经验约束的最大熵条件模型以“$H(P)=-\sum_{x,y}\widetilde P(x)P(y\mid x)\log P(y\mid x).$”为约束；请在共同支持上代入$H(P)$并合并一项，并确认未在训练支撑中出现的输入需要依赖特征设计、参数共享或额外建模规则外推。\par
+
+\knowledgeanchor{SLM-06-03-001}{满足经验约束的最大熵条件模型}
+% KNOWLEDGE-PLAN: KN-V3-C17-DEFINITION-003 L1
+\paragraph{读前自检：条件最大熵模型。}先锁定条件最大熵模型的条件“$H(P)=-\sum_{x,y}\widetilde P(x)P(y\mid x)\log P(y\mid x).$”：在共同支持上代入$H(P)$并合并一项，所得结果应满足在$\mathcal C$中使$H(P)$最大的条件分布称为最大熵模型。\par
+
+\begin{definition}[条件最大熵模型]\label{def:V3-C01-conditional-maxent}
+设
+\[
+\mathcal C=\left\{P:\ E_P(f_i)=\widetilde E(f_i),\ i=1,\ldots,n,\
+\sum_{y\in\mathcal Y}P(y\mid x)=1,\ P(y\mid x)\geq0\right\}.
+\]
+条件熵定义为
+\[
+H(P)=-\sum_{x,y}\widetilde P(x)P(y\mid x)\log P(y\mid x).
+\]
+若$\mathcal C$非空，则在$\mathcal C$中使$H(P)$最大的条件分布称为最大熵模型。
+\end{definition}
+
+条件熵是$H(Y\mid X)$在输入边缘分布取$\widetilde P(x)$时的经验版本。只对$\widetilde P(x)>0$的输入取值施加数据驱动的约束；未在训练支撑中出现的输入需要依赖特征设计、参数共享或额外建模规则外推。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C17-FORMULA-006 L1
+\paragraph{读前自检：最大熵模型的学习。}对最大熵模型的学习，条件“以下对每个特征约束引入乘子$w_i$，并对每个$x$的归一化约束引入乘子$\lambda(x)$”不可省；请在共同支持上代入$\liminf_k\|\nabla J(w^{(k)})\|=0$并合并一项，再用达到迭代上限而梯度或期望残差仍未满足容差时，应保留最后参数并报告残差，不能称为已经收敛作检查。\par
+
+\SLTeachSection{约束与指数族形式}{sec:V3-C01-S03}
+\knowledgeanchor{SLM-06-02-005}{最大熵模型的学习}
+学习问题写成
+\[
+\max_{P\in\mathcal C}H(P),
+\]
+等价地最小化$-H(P)$。以下对每个特征约束引入乘子$w_i$，并对每个$x$的归一化约束引入乘子$\lambda(x)$。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V3-C01-CH19}
+\phantomsection\label{struct:V3-C01-CH20}
+\textbf{算法与输入输出。}BFGS输入特征、经验分布、初始参数、梯度容差和线搜索参数，输出参数$w$、条件概率模型、目标值与梯度范数。算法以正定矩阵$B_k$近似Hessian，不显式求真实Hessian。
+
+\phantomsection\label{struct:V3-C01-CH21}
+\textbf{参数。}最大迭代次数$T_{\max}$、线搜索上限$L_{\max}$、梯度容差$\varepsilon_g$、参数与目标相对变化容差$\varepsilon_w,\varepsilon_J$、曲率容差$\varepsilon_c$，以及强Wolfe常数$0<c_1<c_2<1$。低曲率时采用Powell型阻尼曲率对，修复失败则返回明确状态。
+
+\phantomsection\label{struct:V3-C01-CH22}
+\textbf{初始化。}取$w^{(0)}=0$和正定对称矩阵$B_0=I$；在稀疏高维问题中可取对角缩放。初始化后计算$J(w^{(0)})$与$g_0=\nabla J(w^{(0)})$。
+
+\phantomsection\label{struct:V3-C01-CH23}
+\textbf{更新规则。}方向由$B_kp_k=-g_k$给出，强Wolfe线搜索同时控制充分下降与方向导数；仅在曲率内积为正且高于数值容差时采用BFGS秩二更新，从而保持$B_{k+1}$正定。
+
+\phantomsection\label{struct:V3-C01-CH24}
+\textbf{停止条件。}梯度无穷范数达到容差时返回$\mathtt{converged}$；参数相对变化与目标相对变化同时很小而梯度未达标时，只说明数值推进停滞，返回$\mathtt{numerical\_failure}$并把“数值停滞”作为具体诊断。迭代上限只是保护条件；达到上限只能报告$\mathtt{budget\_stop}$，不能表述为收敛。
+
+\phantomsection\label{struct:V3-C01-CH25}
+\textbf{收敛条件。}若$J$下有界、初始水平集有界、梯度Lipschitz连续，搜索方向保持下降性，强Wolfe线搜索成功且阻尼曲率对保持正定近似，则标准全局结论给出$\liminf_k\|\nabla J(w^{(k)})\|=0$，有限聚点为一阶驻点。因为$J$凸，任一有限驻点都是全局极小点；若Hessian在有效参数空间正定，则最优参数唯一。线搜索失败、曲率修复失败或迭代预算用尽时只返回最后合法参数与残差，不能援引该结论。
+
+\textbf{异常、退化与未满足停止准则的情形。}约束不可行、经验期望为零但模型支撑强制为正、指数或对数不是有限实数、线搜索找不到下降步、IIS一维方程无根时，算法应停止并说明相应数学条件。达到迭代上限而梯度或期望残差仍未满足容差时，应保留最后参数并报告残差，不能称为已经收敛。
+
+\phantomsection\label{struct:V3-C01-CH26}
+\phantomsection\label{struct:V3-C01-CH27}
+% KNOWLEDGE-PLAN: KN-V3-C17-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：约束与指数族形式。}约束与指数族形式把问题限定在“若每个样本平均有$s$个非零特征、类别数为$K$、参数数为$n$、外层迭代数为$T$”；请由$s$的总成本剥离一次迭代或一次样本因子，检查是否得到曲率条件或线搜索条件不满足时，应重置近似矩阵、拒绝该步或停止并说明原因。\par
+
+\begin{complexitybox}
+\textbf{训练时间复杂度。}若每个样本平均有$s$个非零特征、类别数为$K$、参数数为$n$、外层迭代数为$T$，一次目标与梯度计算约为$O(NKs)$。若维护Hessian近似$B_k$的稳定秩更新，方向求解与更新合计为$O(n^2)$，总训练约为$O(T[NKs+n^2])$；若每轮从头对稠密$B_k$分解，线性代数项改为$O(Tn^3)$。
+
+\textbf{正确性依据。}IIS的尺度方程来自似然增量的可分下界驻点，接受更新时保持目标不下降；BFGS在方向为下降方向且线搜索满足充分下降与曲率条件时接受迭代。曲率条件或线搜索条件不满足时，应重置近似矩阵、拒绝该步或停止并说明原因。
+\end{complexitybox}
+
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V3-C17-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={条件最大熵模型的BFGS学习：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限实值特征、经验分布、有限初值$w^{(0)}$、梯度/变化容差与线搜索预算},
+  output={最后合法$w,J,g,P_w$、更新数、线搜索数、曲率重置数、状态与诊断},
+  preconditions={经验分布归一且支撑相容；特征与初值有限；容差、Armijo/强Wolfe常数和预算合法},
+  initialization={$w=w^{(0)},B=I$且计数为$0$；新鲜计算$J,g,P_w$并核验概率归一化},
+  loop={在外层预算内求下降方向、执行有限强Wolfe线搜索并构造阻尼BFGS曲率更新},
+  update={候选$w^+,J^+,g^+,P_{w^+},B^+$全部通过有限性、归一化与正定核验后原子提交},
+  domain={$w,g\in\mathbb R^n$；概率非负归一；目标、梯度、方向导数和曲率量均为有限实数},
+  failure={输入违规返回$\mathtt{invalid\_input}$；方向、概率、曲率或无证书停滞失败返回$\mathtt{numerical\_failure}$；找不到可接受步长返回$\mathtt{line\_search\_failed}$},
+  stop={梯度证书达标才返回收敛；失败、线搜索失败或外层预算耗尽也停止},
+  budget={至多$T_{\max}$次已提交更新，每轮至多$L_{\max}$次线搜索试算},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{line\_search\_failed}$},
+  iterations={$k_{\rm done}$计已提交更新，$\ell_{\rm done}$计候选试算，$c_{\rm reset}$计曲率重置},
+  diagnostics={梯度与期望残差证书、双相对变化、失败阶段、搜索区间、方向导数和重置数},
+  complexity={完整BFGS每轮约$O(NKs+n^2)$时间与$O(n^2+NK)$工作空间}
+}
+\begin{algorithm}[H]
+\caption{条件最大熵模型的BFGS学习}\label{alg:V3-C01-bfgs}
+\KwIn{有限实值特征$f_1,\ldots,f_n$，经验分布，初值$w^{(0)}$}
+\KwOut{最后合法$w,J,g,P_w$、$k_{\rm done},\ell_{\rm done},c_{\rm reset}$、$\mathtt{status}$与最终诊断}
+\KwData{$T_{\max},L_{\max}\in\mathbb N_0$；$\varepsilon_g,\varepsilon_w,\varepsilon_J,\varepsilon_c>0$；合法Armijo与强Wolfe常数}
+$w\leftarrow w^{(0)}$，$B\leftarrow I$，$k_{\rm done}\leftarrow0$，$\ell_{\rm done}\leftarrow0$，$c_{\rm reset}\leftarrow0$，诊断为空\;
+若经验分布或支撑非法、特征/维数/初值非有限或不相容，或预算、容差、线搜索常数越界，则返回当前初值、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算$J\leftarrow J(w)$、$g\leftarrow\nabla J(w)$与$P_w$；若目标、梯度、配分函数或概率非有限，则返回最后合法初值、$\mathtt{numerical\_failure}$及初始化阶段诊断\;
+若$\lVert g\rVert_\infty\le\varepsilon_g$，则返回最后合法初值与$\mathtt{converged}$，最终诊断记录“零步梯度及期望残差证书”\;
+\While{$k_{\rm done}<T_{\max}$}{
+  \If{$\lVert g\rVert_\infty\le\varepsilon_g$}{返回最后合法状态与$\mathtt{converged}$，最终诊断记录梯度及期望残差证书\;}
+  求解$Bp=-g$；若求解失败、$p$非有限或$g^{\mathsf T}p\ge0$，则取临时$B^0\leftarrow I,p\leftarrow-g$并令$c_{\rm reset}\leftarrow c_{\rm reset}+1$；否则$B^0\leftarrow B$\;
+  若重置后$p$仍非有限或不是下降方向，则返回最后合法$w,J,g,P_w$、当前计数、$\mathtt{numerical\_failure}$，诊断为方向阶段$k_{\rm done}$\;
+  在至多$L_{\max}$次试算中寻找同时满足Armijo与强Wolfe条件的$\lambda>0$；每次令$\ell_{\rm done}\leftarrow\ell_{\rm done}+1$，候选非有限时只拒绝不提交\;
+  \If{没有有限可接受步长}{返回最后合法$w,J,g,P_w,k_{\rm done},\ell_{\rm done},c_{\rm reset},\mathtt{line\_search\_failed}$，诊断记录搜索区间与末次方向导数\;}
+  令$w^+\leftarrow w+\lambda p$并新鲜计算$J^+,g^+,P_{w^+}$；若任一结果非有限或概率未归一化，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为候选求值阶段$(k_{\rm done},\lambda)$\;
+  计算$s\leftarrow w^+-w$、$y\leftarrow g^+-g$与双相对变化$q_w,q_J$；以$B^0$按阻尼曲率规则构造$B^+$，若曲率分母或$B^+$不可靠则置$B^+\leftarrow I$并令$c_{\rm reset}\leftarrow c_{\rm reset}+1$\;
+  核验$B^+$有限、对称正定后原子提交$(w,J,g,P_w,B)\leftarrow(w^+,J^+,g^+,P_{w^+},B^+)$，令$k_{\rm done}\leftarrow k_{\rm done}+1$\;
+  \If{$\lVert g\rVert_\infty\le\varepsilon_g$}{返回最后合法状态与$\mathtt{converged}$，最终诊断记录梯度及期望残差证书和曲率重置数\;}
+  \If{$q_w\le\varepsilon_w$且$q_J\le\varepsilon_J$}{返回最后合法状态与$\mathtt{numerical\_failure}$，最终诊断记录具体原因为“数值停滞但梯度未达标”、双相对变化和曲率重置数\;}
+}
+返回最后合法$w,J,g,P_w,k_{\rm done},\ell_{\rm done},c_{\rm reset},\mathtt{budget\_stop}$，最终诊断记录外层预算耗尽与期望残差\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{BFGS允许一般有限实值特征；非负尺度条件只属于IIS。梯度证书返回$\mathtt{converged}$，双相对变化阈值只返回$\mathtt{numerical\_failure}$并把“数值停滞”写入诊断，实际耗尽$T_{\max}$才返回$\mathtt{budget\_stop}$。}
+
+% KNOWLEDGE-PLAN: KN-V3-C17-BOUNDARY-002 L1
+\paragraph{读前自检：复杂度分析：约束与指数族形式。}在“预测时间复杂度”成立时处理约束与指数族形式：请由$s_x$的总成本剥离一次迭代或一次样本因子，并以稠密特征或结构化输出会改变$Ks_x$项判定结果。\par
+
+\begin{complexitybox}
+\textbf{预测时间复杂度。}对一个具有$s_x$个激活特征的新输入，计算$K$类得分、稳定配分函数和最大概率类别约为$O(Ks_x)$。\\
+\textbf{存储与空间复杂度。}保存稀疏训练特征和概率工作量约为$O(Ns+NK)$，完整BFGS矩阵需$O(n^2)$。有限内存拟Newton法保存$h$对历史向量时为$O(hn)$。\textbf{复杂度假设：}类别得分可由稀疏激活特征直接累计；稠密特征或结构化输出会改变$Ks_x$项。
+\end{complexitybox}
+
+% KNOWLEDGE-PLAN: KN-V3-C17-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：改进的迭代尺度法。}改进的迭代尺度法所用的明确前提是“从条件对数似然增量构造可按坐标分离的下界，推导IIS每个增量$\delta_i$的一维方程”；完成计算$e^{\sum_i[f_i/f^\#](\delta_i f^\#)} \leq\sum_i\frac{f_i}{f^\#}e^{\delta_i f^\#},$两边之差并判号后，核对不等号方向、边界取等和定义域彼此相容。\par
+% KNOWLEDGE-PLAN: KN-V3-C17-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：改进的迭代尺度算法IIS。}IIS用$\sum_i f_i/f^{\#}=1$对指数项应用Jensen上界；请展开该上界并对增量$\delta_i$求导，核对常总特征量时得到一维尺度方程。\par
+
+\SLAdvancedSection{改进的迭代尺度法}{sec:V3-C01-S05}
+\knowledgeanchor{SLM-06-03-003}{改进的迭代尺度法}
+\knowledgeanchor{SLM-06-01-007}{改进的迭代尺度算法IIS}
+% CORE-DERIVATION-PLAN: KN-V3-C17-DERIVATION-002
+\SLKnowledgeBridge{把条件对数似然增量下界分离成每个特征参数的一维方程。}{非负特征 $f_i(x,y)$、总特征量 $f^\#=\sum_i f_i$、当前模型 $P_w$ 与增量 $\delta_i$。}{$f_i\ge0$；使用 $-\log a\ge1-a$ 与指数函数的加权 Jensen 不等式；零总特征项不依赖增量。}{先写 $L(w+\delta)-L(w)$，再把归一化项表示成当前模型下 $e^{\sum_i\delta_if_i}$ 的期望。}
+
+\begin{derivationgoalbox}
+从条件对数似然增量构造可按坐标分离的下界，推导IIS每个增量$\delta_i$的一维方程，并说明常特征总量时为何有闭式解。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+设特征$f_i(x,y)\geq0$，当前模型为$P_w(y\mid x)$，新参数为$w+\delta$；记$f^\#(x,y)=\sum_i f_i(x,y)$。使用$-\log a\geq1-a$以及凸函数$e^u$的加权Jensen不等式；当$f^\#=0$时全部$f_i=0$，该项不依赖$\delta$。
+\end{derivationprepbox}
+
+\textbf{推导第1步：写出精确似然增量。}IIS从当前$w$寻找增量$\delta=(\delta_1,\ldots,\delta_n)^T$。由新旧条件概率之比，
+\[
+\ell(w+\delta)-\ell(w)
+=\sum_i\delta_i\widetilde E(f_i)
+-\sum_x\widetilde P(x)\log\sum_yP_w(y\mid x)
+e^{\sum_i\delta_i f_i(x,y)}.
+\]
+对第二项使用$-\log a\geq1-a$，再在$f^\#>0$处使用
+\[
+e^{\sum_i[f_i/f^\#](\delta_i f^\#)}
+\leq\sum_i\frac{f_i}{f^\#}e^{\delta_i f^\#},
+\]
+得到关于各$\delta_i$可分的完整下界
+\[
+\begin{aligned}
+\ell(w+\delta)-\ell(w)
+&\geq B(\delta\mid w)\\
+&=\sum_i\delta_i\widetilde E(f_i)
+-\sum_{x,y}\widetilde P(x)P_w(y\mid x)
+ \sum_{i:f^\#(x,y)>0}\frac{f_i(x,y)}{f^\#(x,y)}
+ \bigl(e^{\delta_i f^\#(x,y)}-1\bigr).
+\end{aligned}
+\]
+当$f^\#(x,y)=0$时，非负性推出全部$f_i(x,y)=0$，对应项对$\delta$恒为零，因而不进入内层和式。这一约定同时避免了$0/0$。
+
+\textbf{推导第2步：对分离下界逐坐标求驻点。}记
+\[
+f^\#(x,y)=\sum_{i=1}^{n}f_i(x,y).
+\]
+逐项求导得到
+\[
+\frac{\partial B}{\partial\delta_i}
+=\widetilde E(f_i)-
+\sum_{x,y}\widetilde P(x)P_w(y\mid x)f_i(x,y)
+e^{\delta_i f^\#(x,y)}.
+\]
+令该导数为零得到尺度方程
+\[
+\sum_{x,y}\widetilde P(x)P_w(y\mid x)f_i(x,y)
+\exp\{\delta_i f^\#(x,y)\}=\widetilde E(f_i).
+\]
+记左侧为$g_i(\delta_i)$，则
+\[
+g_i'(\delta_i)=\sum_{x,y}\widetilde P(x)P_w(y\mid x)
+f_i(x,y)f^\#(x,y)e^{\delta_i f^\#(x,y)}\geq0.
+\]
+若模型在某个$f_i>0$且$f^\#>0$的配置上有正质量，则$g_i$严格递增，有限根至多一个。有限根存在还要求$\widetilde E(f_i)$落在$g_i$的值域内；支撑不相容时没有有限根。若$\widetilde E(f_i)=E_{P_w}(f_i)=0$，该坐标不被数据或当前模型识别，应固定而不是声称根唯一；若$\widetilde E(f_i)=0<E_{P_w}(f_i)$，极限解为$\delta_i\to-\infty$，也不存在有限Newton根。
+
+若$f^\#(x,y)\equiv M$且$M>0$为常数，则
+\textbf{推导第3步：化简常特征总量情形。}把$M$移出指数，左侧成为$e^{M\delta_i}E_{P_w}(f_i)$，所以
+\[
+\delta_i=\frac1M\log\frac{\widetilde E(f_i)}{E_{P_w}(f_i)}.
+\]
+该闭式只适用于分子、分母均为正的可识别坐标；$M=0$时所有特征恒为零，尺度方程不含参数，不能使用上式。
+
+\textbf{零坐标分类。}令$e_i=\widetilde E(f_i)$、$m_i=E_{P_w}(f_i)$。当$e_i=m_i=0$时，该坐标在当前支撑上不可识别，固定$\delta_i=0$并继续，不能把整个问题判为不可行；当$|e_i-m_i|\leq\varepsilon$时记为“已匹配”；当$e_i,m_i>0$且未匹配时才进入有限一维求根。若$e_i>0,m_i=0$，经验正质量落在模型零支撑上，才是需要报告的支撑冲突；若$e_i=0,m_i>0$，无正则闭式只在$\delta_i\to-\infty$的边界达到，有限精度实现应按预登记规则删除/固定该稀疏坐标或改用正则化，而不是伪造有限根。
+
+IIS的每轮更新提高对数似然下界，但通常比利用联合曲率的拟Newton法慢。它的教学价值在于把“期望不匹配”转化为每个参数的一维修正，并明确说明归一化因子与特征总量为何进入更新方程。
+
+% KNOWLEDGE-PLAN: KN-V3-C17-ALGORITHM_IDEA-005 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C17-ALGORITHM_IDEA-006 L2
+\begin{keypointbox}[title={改进的迭代尺度法（IIS）：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限非负特征、合法经验分布、外层预算$T_{\max}$、每坐标求根预算$B_{\rm root}$、容差与边界坐标规则},
+  output={最后合法$w,P_w$、期望残差、完成轮数$t_{\rm done}$、求根坐标数$s_{\rm done}$、根函数求值数$q_{\rm done}$、状态与诊断},
+  preconditions={经验分布归一化；特征和$f^\#$有限非负；支撑、边界规则、预算与容差已登记},
+  initialization={$w=0,t_{\rm done}=s_{\rm done}=q_{\rm done}=0$；预计算经验期望与$f^\#$},
+  loop={每轮由同一旧模型计算全部期望，在临时向量中独立求各$\delta_i$后统一验收},
+  update={$w^+=w+\delta$及其归一化模型、目标全部有限且不下降后才原子提交},
+  domain={$f_i,f^\#,e_i,m_i,P_w$非负有限；有限根只在尺度方程值域内求取},
+  failure={非法接口或固定支撑冲突返回$\mathtt{invalid\_input}$；非有限模型、期望、根或候选返回$\mathtt{numerical\_failure}$},
+  stop={期望残差证书、外层/求根预算耗尽或首次失败时停止},
+  budget={$T_{\max}$个完整同步更新轮；每个可更新坐标至多$B_{\rm root}$次根函数求值},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$t_{\rm done}$计同步提交轮，$s_{\rm done}$计已求有限根坐标，$q_{\rm done}$计实际根函数求值},
+  diagnostics={失败$(t,i)$与支撑/求根阶段、最大期望残差、零坐标分类、目标增量及预算余量},
+  complexity={每轮模型期望约$O(NKs)$，另加实际$q_{\rm done}$次尺度方程求值；空间$O(n+NK)$}
+}
+\begin{algorithm}[H]
+\caption{改进的迭代尺度法（IIS）}\label{alg:V3-C01-iis}
+\KwIn{非负特征$f_i$，经验分布，边界坐标处理规则}
+\KwOut{最后合法$w,P_w$、期望残差、$t_{\rm done},s_{\rm done},q_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{$T_{\max},B_{\rm root}\in\mathbb N_0$；期望容差$\varepsilon>0$；求根与目标数值容差}
+$w\leftarrow0$，$t_{\rm done}\leftarrow0$，$s_{\rm done}\leftarrow0$，$q_{\rm done}\leftarrow0$，预计算$\widetilde E(f_i)$和$f^\#(x,y)$，诊断为空\;
+若经验分布未归一化、特征或$f^\#$为负/非有限、边界规则未登记，或预算、容差不合法，则返回零参数、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算初始$P_w$、目标与模型期望；若配分函数、概率、目标或期望非有限，则返回最后合法零参数、$\mathtt{numerical\_failure}$及初始化阶段诊断\;
+令$r\leftarrow\max_i|E_{P_w}(f_i)-\widetilde E(f_i)|$；若$r\le\varepsilon$，则返回最后合法零参数与$\mathtt{converged}$，最终诊断记录“零轮期望匹配证书”\;
+\While{$t_{\rm done}<T_{\max}$}{
+  令$r\leftarrow\max_i|E_{P_w}(f_i)-\widetilde E(f_i)|$；若$r\le\varepsilon$，则返回最后合法状态与$\mathtt{converged}$，最终诊断记录期望匹配证书\;
+  在临时向量置$\delta_i\leftarrow0$\;
+  \For{$i\leftarrow1$ \KwTo $n$}{
+    令$e_i\leftarrow\widetilde E(f_i)$、$m_i\leftarrow E_{P_w}(f_i)$\;
+    若$e_i=m_i=0$或$|e_i-m_i|\le\varepsilon$，保持$\delta_i=0$并记录坐标类别\;
+    若$e_i>0,m_i=0$，则返回最后合法$w,P_w,t_{\rm done},s_{\rm done},q_{\rm done},\mathtt{invalid\_input}$，诊断为支撑冲突$(t_{\rm done},i)$\;
+    若$e_i=0,m_i>0$，则仅应用预登记的有限删除、固定或正则化规则；规则不能产生有限候选时返回最后合法状态与$\mathtt{invalid\_input}$，诊断为边界坐标$(t_{\rm done},i)$\;
+    对$e_i,m_i>0$且未匹配的坐标，在至多$B_{\rm root}$次根函数求值内求单调尺度方程的有限根，每次令$q_{\rm done}\leftarrow q_{\rm done}+1$\;
+    若求根预算耗尽且无证书，则返回最后合法状态与$\mathtt{budget\_stop}$，最终诊断记录坐标$i$与括区间\;
+    若根函数、括区间或有限根非有限，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为求根阶段$(t_{\rm done},i)$；否则令$s_{\rm done}\leftarrow s_{\rm done}+1$\;
+  }
+  在临时状态计算$w^+\leftarrow w+\delta$及$P_{w^+}$、目标和全部模型期望；若任一结果非有限、概率未归一化或目标下降超出容差，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为同步验收阶段$t_{\rm done}$\;
+  原子提交$w\leftarrow w^+,P_w\leftarrow P_{w^+}$及新目标、期望，令$t_{\rm done}\leftarrow t_{\rm done}+1$\;
+}
+返回最后合法$w,P_w$、期望残差、$t_{\rm done},s_{\rm done},q_{\rm done},\mathtt{budget\_stop}$，最终诊断记录外层预算耗尽与最大残差\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{核心流程跟踪经验／模型期望残差、逐坐标增量、整轮同时提交和双证书停止；16行长框是本章唯一IIS稳健实现细节源}
+
+\SLDirectSection{例题、优化计算与练习}{sec:V3-C01-S06}
+\phantomsection\label{struct:V3-C01-CH18}
+\phantomsection\label{struct:V3-C01-CH32}
+\begin{example}[两事件约束的最大熵分布]\label{exm:V3-C01-two-groups}
+结果集合为$\{a,b,c,d,e\}$，约束为$P(a)+P(b)=3/10$和总概率为1。求最大熵分布，并写出对应的单特征指数模型。
+
+\phantomsection\label{struct:V3-C01-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V3-C01-two-groups}
+\begin{solution}
+\SLReadTranslation{题目要求完成“两事件约束的最大熵分布”：依据题面概率模型求出目标量，并解释条件化、归一化或边缘化。}
+\SolGiven 题面概率、权重或密度均处于合法范围；条件分母/归一化常数应为正，支持集与随机变量取值域保持一致。
+\SLMethodTrigger{先写目标、可行域和必要条件，再求候选点并检查二阶/边界条件。}
+\SolPlan 先完成“两事件约束的最大熵分布”所需的中间量，再做一次题型相关核验，最后回收题目各问。
+\SolDerive
+令$p=(p_a,p_b,p_c,p_d,p_e)^{\mathsf T}$。优化问题及可行域为
+\[
+\begin{aligned}
+\max_{p\in\mathbb R^5}\quad
+&H(p)=-\sum_{y\in\{a,b,c,d,e\}}p_y\log p_y,\\
+\text{s.t.}\quad
+&p_y\geq0,\qquad \sum_y p_y=1,\\
+&p_a+p_b=\frac{3}{10},
+\end{aligned}
+\]
+其中约定$0\log0=0$。在两个组内分别应用熵的严格凹性，固定组概率和时唯一最优点是均分点，故
+\[
+\begin{aligned}
+p_a=p_b&=\frac12\cdot\frac{3}{10}=\frac{3}{20},\\
+p_c=p_d=p_e&=\frac13\left(1-\frac{3}{10}\right)=\frac{7}{30}.
+\end{aligned}
+\]
+令$f(y)=\mathbf1\{y\in\{a,b\}\}$，相应单特征指数模型为
+\[
+P_w(y)=\frac{e^{wf(y)}}{Z(w)},
+\qquad
+Z(w)=2e^w+3.
+\]
+由约束得到可复算参数链
+\[
+\begin{aligned}
+\frac{2e^w}{2e^w+3}&=\frac{3}{10}\\
+\Longrightarrow\quad 20e^w&=6e^w+9\\
+\Longrightarrow\quad e^w&=\frac{9}{14}\\
+\Longrightarrow\quad w&=\log\frac{9}{14}.
+\end{aligned}
+\]
+代回$Z(w)$作独立核验：$e^w=9/14$给出$Z=2(9/14)+3=30/7$，所以组内每个前两项概率为$(9/14)/(30/7)=3/20$，其余三项各为$1/(30/7)=7/30$，恰好恢复严格凹性推导的解。五个概率非负、和为$1$，且前两项之和为$3/10$。因此唯一最大熵分布为$(3/20,3/20,7/30,7/30,7/30)$，对应指数参数$w=\log(9/14)$。
+\end{solution}
+
+\phantomsection\label{struct:V3-C01-CH28}
+% KNOWLEDGE-PLAN: KN-V3-C17-BOUNDARY-003 L1
+\paragraph{读前自检：适用条件与局限：例题、优化计算与练习。}最大熵模型用于有限输出且特征期望约束可行的任务；请核对每个$x$上的$P(y\mid x)$非负归一、经验约束存在可行解，并在任一条件失败时判定该模型规格不可直接训练。\par
+
+\begin{applicabilitybox}
+\textbf{适用条件。}最大熵模型适合输出空间有限、能够构造有意义特征、训练统计量可可靠估计且需要条件概率输出的分类或标注问题。特征可以重叠而无须条件独立；优化前必须确认约束可行、样本支撑足够、参数规模与样本量相容。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V3-C01-CH29}
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+大量稀疏特征会带来高计算与存储成本；完全或近完全分离可能使无正则化参数发散；硬期望约束对抽样噪声敏感；模型只在选定特征所张成的指数族内表达关系，遗漏关键交互特征时，最大熵原则不能自动创造该结构。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V3-C01-CH30}
+% KNOWLEDGE-PLAN: KN-V3-C17-BOUNDARY-005 L1
+\paragraph{读前自检：常见错误与误用边界：例题、优化计算与练习。}把例题、优化计算与练习放在“边界框首项禁止忘记对每个$x$按$y$归一化，或用全局一个配分常数替代$Z_w(x)$”下考察：把固定错误“忘记对每个$x$按$y$归一化，或用全局一个配分常数替代$Z_w(x)$”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，并检查改写后的运算或判断有定义，且不再触发“忘记对每个$x$按$y$归一化，或用全局一个配分常数替代$Z_w(x)$”。\par
+
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 把联合经验分布$\widetilde P(x,y)$与模型联合量$\widetilde P(x)P(y\mid x)$混为一谈；
+  \item 忘记对每个$x$按$y$归一化，或用全局一个配分常数替代$Z_w(x)$；
+  \item 在最小化负对数似然时把梯度符号写成经验期望减模型期望；
+  \item 对冗余特征仍宣称参数唯一，忽略共同平移或线性相关方向；
+  \item 直接计算巨大指数，未使用减最大得分与log-sum-exp。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V3-C01-CH31}
+\begin{comparisonbox}
+\textbf{概念对比。}\par\smallskip
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 概念 & 约束或目标 & 关键含义\\ \midrule
+最大熵 & 满足特征期望约束时最大化$H(P)$ & 从可行分布中选择最少额外偏置者\\
+条件极大似然 & 最大化$\sum\widetilde P(x,y)\log P_w(y\mid x)$ & 在指数参数族中拟合观测条件分布\\
+逻辑斯谛回归 & 线性得分经二类或多类指数归一化 & 最大熵指数族在特定特征设计下的实例\\
+朴素贝叶斯 & 建模$P(Y)P(X\mid Y)$并作条件独立假设 & 生成式分解，不以熵约束为定义\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+
+\phantomsection\label{struct:V3-C01-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V3-C01-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S01-01}
+在三个结果上没有其他约束。用拉格朗日乘子证明最大熵分布为$(1/3,1/3,1/3)$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S01-01}
+\begin{chapterexercisesolution}{ex:V3-C01-S01-01}
+令概率向量$p\in\mathbb R^3$，并约定$0\log0=0$。目标与可行域为
+\[
+\max_{p\in\Delta_3}H(p),
+\qquad
+H(p)=-\sum_{j=1}^{3}p_j\log p_j,
+\qquad
+\Delta_3=\left\{p:p_j\geq0,\ \sum_{j=1}^{3}p_j=1\right\}.
+\]
+在正概率内点写拉格朗日函数
+\[
+L(p,\lambda)=-\sum_{j=1}^{3}p_j\log p_j
++\lambda\left(\sum_{j=1}^{3}p_j-1\right).
+\]
+驻点与归一化给出
+\[
+\begin{aligned}
+\frac{\partial L}{\partial p_j}=-(\log p_j+1)+\lambda=0
+&\Longrightarrow p_j=e^{\lambda-1},\\
+\sum_{j=1}^{3}p_j=1
+&\Longrightarrow 3e^{\lambda-1}=1
+\Longrightarrow p_j=\frac13.
+\end{aligned}
+\]
+$\Delta_3$是非空紧凸集，$H$在其上连续且严格凹；因此该可行驻点是唯一全局最大点。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S01-02}
+四个结果满足$P_1+P_2=1/2$，其余没有约束。求最大熵分布。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S01-02}
+\begin{chapterexercisesolution}{ex:V3-C01-S01-02}
+可行域为
+\[
+\mathcal C=\left\{p\in\mathbb R^4:
+p_j\geq0,\ \sum_{j=1}^{4}p_j=1,\ p_1+p_2=\frac12\right\},
+\]
+所以也有$p_3+p_4=1/2$。对固定和为$s$的两个非负数，熵的严格凹性给出
+\[
+-u\log u-v\log v
+\leq -2\frac{s}{2}\log\frac{s}{2},
+\qquad
+u+v=s,
+\]
+且等号当且仅当$u=v=s/2$。分别取$s=1/2$，得到
+\[
+p_1=p_2=p_3=p_4=\frac14,
+\qquad
+H(p)=-4\cdot\frac14\log\frac14=\log4.
+\]
+均匀分布属于$\mathcal C$，并由严格凹性成为唯一最大熵解。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S01-03}
+说明为什么“最大熵”不能解释为“无论已知什么都取均匀分布”，并给出一个反例约束。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S01-03}
+\begin{chapterexercisesolution}{ex:V3-C01-S01-03}
+最大熵是在约束可行域内优化，而不是先验地选择均匀分布：
+\[
+p^\star\in\arg\max_{p\in\mathcal C}H(p),
+\qquad
+\mathcal C\subseteq\Delta_K.
+\]
+例如在二点空间上施加$P_1=0.8$，则
+\[
+\mathcal C
+=\{(p_1,p_2)\in\Delta_2:p_1=0.8\}
+=\{(0.8,0.2)\}.
+\]
+此时
+\[
+(0.5,0.5)\notin\mathcal C,
+\qquad
+\arg\max_{p\in\mathcal C}H(p)=\{(0.8,0.2)\}.
+\]
+因此最大熵只在约束未确定的自由度上保持最少额外偏置，不能覆盖已知概率信息。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S02-01}
+训练集中$(a,1),(a,1),(a,0),(b,0)$各出现一次。写出$\widetilde P(x,y)$和$\widetilde P(x)$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S02-01}
+\begin{chapterexercisesolution}{ex:V3-C01-S02-01}
+样本量$N=4$，经验联合分布按频数除以$N$定义。完整表为
+\[
+\begin{array}{c|cc|c}
+&y=0&y=1&\widetilde P(x)\\ \hline
+x=a&\frac14&\frac12&\frac34\\
+x=b&\frac14&0&\frac14
+\end{array}
+\]
+也即
+\[
+\widetilde P(x,y)=\frac1{4}
+\begin{cases}
+2,&(x,y)=(a,1),\\
+1,&(x,y)\in\{(a,0),(b,0)\},\\
+0,&\text{其他组合}.
+\end{cases}
+\]
+边缘化与归一化复核为
+\[
+\widetilde P(a)=\frac14+\frac12=\frac34,
+\quad
+\widetilde P(b)=\frac14,
+\quad
+\sum_{x,y}\widetilde P(x,y)=\sum_x\widetilde P(x)=1.
+\]
+因此经验联合分布与边缘分布均已正确归一化，且$\widetilde P(a)=3/4$、$\widetilde P(b)=1/4$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S02-02}
+令$f(x,y)=\mathbf1\{y=1\}$。证明期望匹配约束等价于模型的经验输入加权正类概率等于训练正类比例。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S02-02}
+\begin{chapterexercisesolution}{ex:V3-C01-S02-02}
+对$f(x,y)=\mathbf1\{y=1\}$，经验期望化简为
+\[
+\begin{aligned}
+\widetilde E(f)
+&=\sum_{x,y}\widetilde P(x,y)\mathbf1\{y=1\}\\
+&=\sum_x\widetilde P(x,1)
+=\widetilde P(Y=1).
+\end{aligned}
+\]
+模型期望使用联合量$\widetilde P(x)P_w(y\mid x)$，故
+\[
+\begin{aligned}
+E_{P_w}(f)
+&=\sum_{x,y}\widetilde P(x)P_w(y\mid x)\mathbf1\{y=1\}\\
+&=\sum_x\widetilde P(x)P_w(1\mid x).
+\end{aligned}
+\]
+于是期望匹配约束恰等价于
+\[
+E_{P_w}(f)=\widetilde E(f)
+\quad\Longleftrightarrow\quad
+\sum_x\widetilde P(x)P_w(1\mid x)=\widetilde P(Y=1).
+\]
+因此该特征的期望匹配要求模型加权后的正类概率恰好等于经验正类边缘概率。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S02-03}
+若两个特征完全相同$f_1=f_2$，说明约束集合与参数表示分别会发生什么。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S02-03}
+\begin{chapterexercisesolution}{ex:V3-C01-S02-03}
+若$f_1=f_2=f$，两条期望约束完全重复：
+\[
+E_{P}(f_1)=\widetilde E(f_1)
+\quad\Longleftrightarrow\quad
+E_{P}(f_2)=\widetilde E(f_2).
+\]
+指数得分只依赖参数和
+\[
+w_1f_1(x,y)+w_2f_2(x,y)
+=(w_1+w_2)f(x,y).
+\]
+因此对任意$t\in\mathbb R$，有不变链
+\[
+(w_1,w_2)\mapsto(w_1+t,w_2-t)
+\Longrightarrow w_1+w_2\ \text{不变}
+\Longrightarrow P_{w_1,w_2}(y\mid x)\ \text{不变}.
+\]
+约束集合没有改变，但参数沿$(1,-1)^{\mathsf T}$方向不可识别；可合并重复特征或增加可识别约束。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S03-01}
+只有一个二值输出特征$f(x,y)=\mathbf1\{y=1\}$，求$P_w(1\mid x)$与$P_w(0\mid x)$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S03-01}
+\begin{chapterexercisesolution}{ex:V3-C01-S03-01}
+输出支持集为$\mathcal Y=\{0,1\}$，且$f(x,0)=0$、$f(x,1)=1$。因此
+\[
+Z_w(x)=\sum_{y\in\{0,1\}}e^{wf(x,y)}=1+e^w.
+\]
+两个条件概率为
+\[
+P_w(1\mid x)=\frac{e^w}{1+e^w},
+\qquad
+P_w(0\mid x)=\frac{1}{1+e^w}.
+\]
+对任意有限$w\in\mathbb R$，边界与归一化满足
+\[
+0<P_w(y\mid x)<1,
+\qquad
+P_w(0\mid x)+P_w(1\mid x)=1.
+\]
+该特征不依赖$x$，所以所得二项逻辑斯谛概率也不随输入变化。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S03-02}
+证明对所有特征权重同时加上一个只产生输入函数$c(x)$的参数方向，不改变条件概率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S03-02}
+\begin{chapterexercisesolution}{ex:V3-C01-S03-02}
+设原得分为$s_w(x,y)$，新参数方向对同一$x$的所有$y$只增加$c(x)$。新配分函数满足
+\[
+\begin{aligned}
+Z'(x)
+&=\sum_{y'}e^{s_w(x,y')+c(x)}\\
+&=e^{c(x)}\sum_{y'}e^{s_w(x,y')}\\
+&=e^{c(x)}Z_w(x).
+\end{aligned}
+\]
+故条件概率具有消去链
+\[
+\begin{aligned}
+P'(y\mid x)
+&=\frac{e^{s_w(x,y)+c(x)}}{Z'(x)}\\
+&=\frac{e^{c(x)}e^{s_w(x,y)}}{e^{c(x)}Z_w(x)}\\
+&=P_w(y\mid x).
+\end{aligned}
+\]
+只产生$c(x)$的参数方向不改变条件分布，因而属于不可识别方向。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S03-03}
+给定某输入的三类得分$(2,0,-1)$，写出稳定计算条件概率的方法。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S03-03}
+\begin{chapterexercisesolution}{ex:V3-C01-S03-03}
+设得分向量$s=(2,0,-1)^{\mathsf T}$，先取有限最大值$m=\max_j s_j=2$。稳定的log-sum-exp为
+\[
+\operatorname{LSE}(s)
+=m+\log\sum_j e^{s_j-m}
+=2+\log(1+e^{-2}+e^{-3}).
+\]
+于是概率链为
+\[
+\begin{aligned}
+p
+&=\frac{(e^2,1,e^{-1})}{e^2+1+e^{-1}}\\
+&=\frac{(1,e^{-2},e^{-3})}{1+e^{-2}+e^{-3}}\\
+&\approx(0.8438,0.1142,0.0420).
+\end{aligned}
+\]
+共同减去$m$不改变归一化结果，却使最大指数等于$1$；若任一得分非有限，应先报告输入或数值失败而不是继续归一化。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S04-01}
+从$\log P_w(y\mid x)=w^Tf(x,y)-\log Z_w(x)$推导$J$的第$i$个梯度分量。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S04-01}
+\begin{chapterexercisesolution}{ex:V3-C01-S04-01}
+设$w,f(x,y)\in\mathbb R^n$。条件负对数似然可写为
+\[
+J(w)=\sum_x\widetilde P(x)\log Z_w(x)-w^{\mathsf T}\widetilde E(f),
+\qquad
+Z_w(x)=\sum_y e^{w^{\mathsf T}f(x,y)}.
+\]
+对第$i$个坐标求导，得到
+\[
+\begin{aligned}
+\frac{\partial}{\partial w_i}\log Z_w(x)
+&=\frac{\sum_y e^{w^{\mathsf T}f(x,y)}f_i(x,y)}{Z_w(x)}\\
+&=\sum_yP_w(y\mid x)f_i(x,y).
+\end{aligned}
+\]
+因此
+\[
+\begin{aligned}
+\frac{\partial J}{\partial w_i}
+&=\sum_x\widetilde P(x)\sum_yP_w(y\mid x)f_i(x,y)-\widetilde E(f_i)\\
+&=E_{P_w}(f_i)-\widetilde E(f_i).
+\end{aligned}
+\]
+所以梯度第$i$个分量就是模型特征期望与经验特征期望之差。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S04-02}
+为什么最大熵模型的负对数似然是凸函数？请用任意方向$v$说明。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S04-02}
+\begin{chapterexercisesolution}{ex:V3-C01-S04-02}
+设$f(x,Y),v\in\mathbb R^n$。Hessian是条件协方差矩阵的非负加权和：
+\[
+\nabla^2J(w)
+=\sum_x\widetilde P(x)\operatorname{Cov}_{P_w(\cdot\mid x)}[f(x,Y)].
+\]
+对任意方向$v$，有条件到结论链
+\[
+\begin{aligned}
+v^{\mathsf T}\nabla^2J(w)v
+&=\sum_x\widetilde P(x)
+\operatorname{Var}_{P_w(\cdot\mid x)}\!\left(v^{\mathsf T}f(x,Y)\right)\\
+&\geq0
+\Longrightarrow \nabla^2J(w)\succeq0
+\Longrightarrow J\ \text{为凸函数}.
+\end{aligned}
+\]
+若某个非零$v$使上述条件方差处处为零，则该方向可能不可识别，故一般只能推出凸性而非严格凸性。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S04-03}
+BFGS某轮有$y_k^Ts_k\leq0$。说明为什么不应机械使用标准更新，并给出处理方式。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S04-03}
+\begin{chapterexercisesolution}{ex:V3-C01-S04-03}
+记
+\[
+s_k=w_{k+1}-w_k,
+\qquad
+y_k=\nabla J(w_{k+1})-\nabla J(w_k),
+\qquad
+\rho_k=(y_k^{\mathsf T}s_k)^{-1}.
+\]
+标准逆Hessian更新为
+\[
+H_{k+1}=(I-\rho_ks_ky_k^{\mathsf T})H_k
+(I-\rho_ky_ks_k^{\mathsf T})+\rho_ks_ks_k^{\mathsf T}.
+\]
+正定保持所需曲率条件是
+\[
+H_k\succ0,\quad y_k^{\mathsf T}s_k>0
+\Longrightarrow H_{k+1}\succ0.
+\]
+若$y_k^{\mathsf T}s_k\leq0$，则$\rho_k$无效或符号错误，不能机械代入。可跳过本次更新，或用阻尼向量$\widetilde y_k$保证
+\[
+s_k^{\mathsf T}\widetilde y_k\geq\varepsilon\lVert s_k\rVert_2^2>0,
+\]
+必要时把$H_k$重置为正定对角矩阵，并复查线搜索与梯度的有限性。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S05-01}
+若$f^\#\equiv2$，某特征经验期望为$0.30$，当前模型期望为$0.20$，求IIS增量。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S05-01}
+\begin{chapterexercisesolution}{ex:V3-C01-S05-01}
+这里$M=f^\#=2>0$，且经验期望与模型期望均为正。IIS尺度方程为
+\[
+0.20e^{2\delta}=0.30.
+\]
+逐步求解得到
+\[
+\delta
+=\frac12\log\frac{0.30}{0.20}
+=\frac12\log1.5
+\approx0.2027>0.
+\]
+因此参数按$w_i^+=w_i+\delta$增加；随后必须重算配分函数，不能只改某一个概率分量。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S05-02}
+若某特征经验期望为0而当前模型期望为正，常数$f^\#$公式给出什么极限？应如何处理？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S05-02}
+\begin{chapterexercisesolution}{ex:V3-C01-S05-02}
+设常数$f^\#=M>0$且当前模型期望$E_{P_w}(f)>0$。闭式增量形式为
+\[
+\delta=\frac1M\log\frac{\widetilde E(f)}{E_{P_w}(f)}.
+\]
+当$\widetilde E(f)=0$时，只能取边界极限
+\[
+\widetilde E(f)\downarrow0
+\Longrightarrow
+\frac{\widetilde E(f)}{E_{P_w}(f)}\downarrow0
+\Longrightarrow
+\delta\to-\infty.
+\]
+因此尺度方程没有有限根，有限精度实现不得执行“无穷更新”。应先核查零频数，再选择删除或合并稀疏特征，或用平滑、正则化把最优参数留在有限域内。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S05-03}
+说明IIS为什么需要在一次外层迭代中用同一旧模型计算全部$\delta_i$，再同时更新。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S05-03}
+\begin{chapterexercisesolution}{ex:V3-C01-S05-03}
+在第$t$轮，全部一维尺度方程都以同一旧状态$w^{(t)}$及同一分布$P_{w^{(t)}}$构造：
+\[
+g_i\!\left(\delta_i^{(t)};P_{w^{(t)}}\right)
+=\widetilde E(f_i),
+\qquad i=1,\ldots,n.
+\]
+求得整组增量后才进行同步状态更新
+\[
+\delta^{(t)}=(\delta_1^{(t)},\ldots,\delta_n^{(t)})^{\mathsf T},
+\qquad
+w^{(t+1)}=w^{(t)}+\delta^{(t)}.
+\]
+若先改一个坐标，状态会变成
+\[
+w^{(t)}\to w^{(t)}+\delta_1^{(t)}e_1
+\Longrightarrow
+P_w\ \text{已改变},
+\]
+后续旧方程便不再对应同一个可分下界，原单调改进论证随之失效。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S06-01}
+在例题中验证所得分布的熵比组内不均分方案$(0.1,0.2,7/30,7/30,7/30)$更大。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S06-01}
+\begin{chapterexercisesolution}{ex:V3-C01-S06-01}
+两方案的后三项相同，只需比较前两项。令
+\[
+h(p)=-p\log p-(0.3-p)\log(0.3-p),
+\qquad 0<p<0.3.
+\]
+其导数链为
+\[
+\begin{aligned}
+h'(p)&=\log\frac{0.3-p}{p},\\
+h'(p)=0&\Longleftrightarrow p=0.15,\\
+h''(p)&=-\frac1p-\frac1{0.3-p}<0.
+\end{aligned}
+\]
+因此$p=0.15$是唯一最大点，而且两种完整分布的熵差为
+\[
+\begin{aligned}
+H_{\mathrm{equal}}-H_{\mathrm{unequal}}
+&=-0.3\log0.15+0.1\log0.1+0.2\log0.2\\
+&\approx0.01697>0.
+\end{aligned}
+\]
+因此在约束允许的分配中，等分剩余质量取得唯一的最大熵。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S06-02}
+某模型的两个特征梯度为$(0.04,-0.02)^T$。解释每个符号在最小化$J$时建议的修正方向。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S06-02}
+\begin{chapterexercisesolution}{ex:V3-C01-S06-02}
+设最小化目标的梯度为
+\[
+g=\nabla J(w)=(0.04,-0.02)^{\mathsf T}.
+\]
+取步长$\eta>0$时，负梯度更新为
+\[
+w^+=w-\eta g
+=w+\eta(-0.04,0.02)^{\mathsf T}.
+\]
+故$w_1$应减小、$w_2$应增大。对充分小的$\eta$，一阶变化为
+\[
+J(w^+)-J(w)
+=-\eta\lVert g\rVert_2^2+O(\eta^2)<0.
+\]
+具体步长仍须由曲率或线搜索确定，不能把期望差直接当作最终参数增量。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C01-S06-03}
+设计最大熵模型的验收清单，至少覆盖概率、约束、优化与数值四类检查。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C01-S06-03}
+\begin{chapterexercisesolution}{ex:V3-C01-S06-03}
+设$w,f(x,y)\in\mathbb R^n$，验收时先检查概率对象及支持集：
+\[
+\forall x,\ y\in\mathcal Y:\quad
+P_w(y\mid x)\geq0,
+\qquad
+\sum_{y\in\mathcal Y}P_w(y\mid x)=1,
+\qquad
+\log Z_w(x)\in\mathbb R.
+\]
+约束残差向量与优化诊断量可定义为
+\[
+r_i=E_{P_w}(f_i)-\widetilde E(f_i),
+\qquad
+\lVert r\rVert_\infty\leq\varepsilon_{\mathrm{mom}},
+\qquad
+\lVert\nabla J(w)\rVert_2\leq\varepsilon_{\mathrm{opt}}.
+\]
+完整清单至少包括
+\[
+\begin{array}{c|l}
+\text{概率}&P_w\text{非负、归一化，输出支持与题设一致}\\
+\text{约束}&\lVert r\rVert_\infty\text{及每个超差坐标}\\
+\text{优化}&J(w)\text{有限、梯度范数、相对改变量、停止原因}\\
+\text{数值}&\text{得分、log-sum-exp、曲率量均为有限实数}
+\end{array}
+\]
+此外应报告冗余特征、正则化与维数核对，不能只凭训练准确率验收。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V3-C17-CONCEPT-006 L1
+\paragraph{读前自检：本章结论与下一步。}最大熵模型章末由“满足特征期望约束的条件分布与指数族参数”落到“IIS最大化可分下界，BFGS沿联合曲率求解，并先检查有限根与可行域”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V3-C01-CH36}
+\SLChapterFiveSummary{满足特征期望约束的条件分布与指数族参数}{由Lagrange驻点、归一化和对偶微分得到指数族、梯度与协方差Hessian}{IIS最大化可分下界，BFGS沿联合曲率求解，并先检查有限根与可行域}{需要从矩条件构造条件概率模型且特征与支撑可信时}{进入支持向量机的约束优化；本章自检失败则返回相应定义、对偶或尺度方程}
+
+\phantomsection\label{struct:V3-C01-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{概念：}能否区分最大熵原理、条件最大熵模型和均匀分布？未通过则回看第1、2节。
+  \item \textbf{推导：}能否从期望约束写出拉格朗日函数，并逐行得到$P_w$与$Z_w(x)$？未通过则回看第3节。
+  \item \textbf{等价性：}能否推导$J$的梯度和Hessian，并说明与极大似然及期望匹配的关系？未通过则回看第4节。
+  \item \textbf{算法：}能否叙述IIS和BFGS的输入、初始化、更新、停止、收敛与复杂度？未通过则回看第4、5节。
+  \item \textbf{应用：}能否诊断不可行约束、参数冗余、零频数和指数溢出？未通过则回看第6节；五项均可独立回答，并能完成每节至少两道练习，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

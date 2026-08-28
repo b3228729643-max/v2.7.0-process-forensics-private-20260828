@@ -1,0 +1,24 @@
+% Evidence-only standalone harness for FIG-P186-01 (R1B).
+% It imports the permitted live figure source verbatim; it does not modify it.
+\documentclass[border=0pt]{standalone}
+\usepackage{ctex}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta}
+\pgfplotsset{compat=1.18}
+
+% Minimal declarations required by the figure source itself.
+% The visual conformance audit uses the official full-book raster, not this harness.
+\definecolor{SLInk}{HTML}{172331}
+\definecolor{SLBlue}{HTML}{245889}
+\definecolor{SLTeal}{HTML}{087B74}
+\definecolor{SLGold}{HTML}{BD7A17}
+\pgfplotsset{slfig axis/.style={scale only axis}}
+
+\makeatletter
+\renewenvironment{figure}[1][]{\par\centering}{\par}
+\let\caption\@gobble
+\makeatother
+
+\begin{document}
+\input{D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/source/v2.7.0/src/绘图源码/第02册_基础监督学习方法/V2-C01/fig_v2_c01_separator.tex}
+\end{document}

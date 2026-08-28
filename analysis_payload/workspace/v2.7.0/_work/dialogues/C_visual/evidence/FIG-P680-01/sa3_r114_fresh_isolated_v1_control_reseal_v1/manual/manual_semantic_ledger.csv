@@ -1,0 +1,10 @@
+SEMANTIC_ID,OBJECTS,CLAIM_CHECKED,SOURCE_OR_CAPTION_BASIS,OBSERVED_GEOMETRY_OR_TEXT,SEMANTIC_ERROR,MANUAL_VERDICT
+S01,O01,"Both routes share the document-topic-word conditional structure",figure_source_line_16_and_current_caption,O01_is_the_single_top_parent_node,NO,CLEAR
+S02,O03+O09,"Complete Bayes LDA is the left model objective",figure_source_lines_18_24,O09_runs_from_O01_to_O03_with_a_solid_teal_arrow,NO,CLEAR
+S03,O04+O10,"Point-parameter LDA is the right model objective",figure_source_lines_19_26,O10_runs_from_O01_to_O04_with_a_dashed_gold_arrow,NO,CLEAR
+S04,O03+O06+O11,"Collapsed Gibbs is the inference method for the complete Bayes branch",figure_source_lines_18_21_27,O11_connects_O03_down_to_O06,NO,CLEAR
+S05,O04+O07+O12,"Mean-field variational EM is the inference method for the point-parameter branch",figure_source_lines_19_22_28,O12_connects_O04_down_to_O07,NO,CLEAR
+S06,O08,"The two model/posterior results cannot be compared only by algorithm name",figure_source_line_29_and_current_caption,O08_states_the_warning_without_ambiguity,NO,CLEAR
+S07,O09+O10+O11+O12,"Arrows denote learning dependency rather than posterior identity",current_caption_and_chapter_dependency_box,all_four_arrowheads_have_unambiguous_direction_and_no_crossing,NO,CLEAR
+S08,O13+O14,"Caption text agrees with nodes, arrows, and warning",figure_source_line_32_and_PDF_page_729,caption_names_both_models_both_inference_methods_and_the_arrow_disclaimer,NO,CLEAR
+S09,O01+O03+O04+O06+O07+O08,"Reader path is top-to-bottom with two parallel branches and a final warning",current_figure_geometry,layout_has_no_backtracking_crossing_or_false_merge,NO,CLEAR

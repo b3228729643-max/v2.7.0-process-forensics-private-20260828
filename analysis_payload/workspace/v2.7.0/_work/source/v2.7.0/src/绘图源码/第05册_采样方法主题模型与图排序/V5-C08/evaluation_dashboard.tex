@@ -1,0 +1,62 @@
+% v2.7.0 figure UID: FIG-P748-01
+% Five complementary evaluation cards; all microplots are explicitly conceptual, not numerical evidence.
+\tikzset{slfig-FIG-P748-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P748-01,
+  every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=left,outer sep=0pt},
+  card/.style={draw=SLRuleGray,fill=SLSoftGray,line width=.72pt,rounded corners=2pt,inner xsep=2.2mm,inner ysep=2mm},
+  conclusion/.style={draw=SLDeepBlue,fill=SLDeepBlue,text=white,line width=.86pt,
+    rounded corners=2pt,text width=125mm,minimum height=15.5mm,inner xsep=2.2mm,inner ysep=1.3mm,align=center},
+  alt={对象—关系—结论：五个等宽评价卡并列呈现互补证据。拟合卡报告holdout loss向下、单位nats及均值加减SE；任务效用卡报告预登记任务效用向上、单位百分比及估计加减95\%CI；稳定性卡报告ARI向上、无量纲且可为负，并报告中位数加IQR；可解释性卡报告盲评一致率向上、单位百分比及比例加减CI；计算代价卡报告时间秒和内存GB均向下，并用多次运行IQR描述波动。每卡底部的点、区间、分布或资源条只提示概念形态，不是可复算数值结果；卡片位置、边框、点线形状、纹理与文字共同编码。结论条要求联合报告指标、不确定性、分布和资源，不制造无依据的单一总分。}]
+\node[card] (fit) at (-5.00,1.75) {\parbox[t][27mm][t]{40mm}{\raggedright
+  {\bfseries\fontsize{10.2pt}{12.2pt}\selectfont 拟合}\\[-.1mm]
+  {\fontsize{12pt}{14pt}\selectfont holdout loss$\downarrow$}\\[-.2mm]
+  {\fontsize{12pt}{14pt}\selectfont [nats]}\\[-.2mm]
+  {\fontsize{12pt}{14pt}\selectfont 均值$\pm$SE}}};
+\node[card] (task) at (0,1.75) {\parbox[t][27mm][t]{40mm}{\raggedright
+  {\bfseries\fontsize{10.2pt}{12.2pt}\selectfont 任务效用}\\[-.1mm]
+  {\fontsize{12pt}{14pt}\selectfont 预登记任务效用$\uparrow$}\\[-.2mm]
+  {\fontsize{12pt}{14pt}\selectfont [\%]}\\[-.2mm]
+  {\fontsize{12pt}{14pt}\selectfont 估计$\pm$95\%CI}}};
+\node[card] (stab) at (5.00,1.75) {\parbox[t][27mm][t]{40mm}{\raggedright
+  {\bfseries\fontsize{10.2pt}{12.2pt}\selectfont 稳定性}\\[-.1mm]
+  {\fontsize{12pt}{14pt}\selectfont ARI$\uparrow$}\\[-.2mm]
+  {\fontsize{12pt}{14pt}\selectfont 无量纲；可为负}\\[-.2mm]
+  {\fontsize{12pt}{14pt}\selectfont 中位数＋IQR}}};
+\node[card] (interp) at (-2.50,-1.65) {\parbox[t][27mm][t]{40mm}{\raggedright
+  {\bfseries\fontsize{10.2pt}{12.2pt}\selectfont 可解释性}\\[-.1mm]
+  {\fontsize{12pt}{14pt}\selectfont 盲评一致率$\uparrow$}\\[-.2mm]
+  {\fontsize{12pt}{14pt}\selectfont [\%]}\\[-.2mm]
+  {\fontsize{12pt}{14pt}\selectfont 比例$\pm$CI}}};
+\node[card] (cost) at (2.50,-1.65) {\parbox[t][27mm][t]{40mm}{\raggedright
+  {\bfseries\fontsize{10.2pt}{12.2pt}\selectfont 计算代价}\\[-.1mm]
+  {\fontsize{12pt}{14pt}\selectfont 时间$\downarrow$ [s]}\\[-.2mm]
+  {\fontsize{12pt}{14pt}\selectfont 内存$\downarrow$ [GB]}\\[-.2mm]
+  {\fontsize{12pt}{14pt}\selectfont 多次运行IQR}}};
+\node[conclusion] (joint) at (0,-4.25)
+  {联合报告：主指标＋不确定性／分布＋稳定性＋解释性＋资源；不制造无依据的单一总分。\\
+   微图仅作概念形态提示，不代表可复算数值结果。};
+
+% Concept-only microplots: no coordinates, tick values, sample size or data source are asserted.
+\draw[draw=SLDeepBlue,line width=.76pt] (-6.25,.48)--(-4.15,.48);
+\draw[draw=SLDeepBlue,line width=.76pt] (-5.55,.36)--(-5.55,.60);
+\draw[draw=SLDeepBlue,fill=white,line width=.72pt] (-5.20,.48) circle (1.35pt);
+
+\fill[pattern=north east lines,pattern color=SLMidBlue] (-1.29,.36) rectangle (.55,.58);
+\draw[draw=SLRuleGray,dashed,line width=.65pt] (-1.30,.35) rectangle (1.30,.59);
+
+\foreach \x/\y in {3.95/.42,4.25/.51,4.55/.38,4.85/.55,5.15/.44,5.45/.50,5.75/.40}{\fill[SLDeepBlue] (\x,\y) circle (1pt);}
+
+\fill[pattern=dots,pattern color=SLAccentOrange] (-3.74,-2.96) rectangle (-1.95,-2.72);
+\draw[draw=SLRuleGray,densely dotted,line width=.65pt] (-3.75,-2.97) rectangle (-1.25,-2.71);
+
+\fill[fill=SLDeepBlue] (1.31,-2.70) rectangle (3.05,-2.57);
+\draw[draw=SLRuleGray,line width=.65pt] (1.30,-2.71) rectangle (3.80,-2.56);
+\fill[pattern=north west lines,pattern color=SLMidBlue] (1.31,-2.98) rectangle (2.45,-2.85);
+\draw[draw=SLRuleGray,dashed,line width=.65pt] (1.30,-2.99) rectangle (3.80,-2.84);
+\end{tikzpicture}
+\caption{五个互补评价维度须联合报告：拟合、预登记任务效用、稳定性、可解释性与计算代价各保留方向、单位及不确定性或资源口径；微图仅提示概念形态，不是可复算结果，也不合成无依据总分。}
+\label{fig:V5-C08-evaluation}
+\end{figure}

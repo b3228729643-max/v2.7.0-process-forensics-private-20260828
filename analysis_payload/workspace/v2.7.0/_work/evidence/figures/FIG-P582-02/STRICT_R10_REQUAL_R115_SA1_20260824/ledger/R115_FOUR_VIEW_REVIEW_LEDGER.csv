@@ -1,0 +1,5 @@
+VIEW,REVIEWER,ACTUAL_OPENED,NATIVE_MEASUREMENT_SOURCE,RESULT,FINDING
+full_page_200dpi.png,R115_SA1_requalification_current_identity,YES,NO (context-only; 300dpi used for pixels),FAIL_FONT_SIZE,"Page fusion, reading order, and caption association are coherent; the undersized chart text remains visible but fails the explicit font-size gate."
+figure_crop_300dpi.png,R115_SA1_requalification_current_identity,YES,YES,FAIL_FONT_SIZE,"No visible collision, clipping, or unintended occlusion; small tick and annotation text is confirmed below the required size floor."
+standalone_300dpi.png,R115_SA1_requalification_current_identity,YES,YES,FAIL_FONT_SIZE,"Bar hierarchy, annotation card, reference line, and low bars are legible and uncrowded; size gate remains failed."
+grayscale_300dpi.png,R115_SA1_requalification_current_identity,YES,YES,FAIL_FONT_SIZE,"Hierarchy and reference-line contrast survive grayscale conversion; no extra visual defect, while the same size defect remains."

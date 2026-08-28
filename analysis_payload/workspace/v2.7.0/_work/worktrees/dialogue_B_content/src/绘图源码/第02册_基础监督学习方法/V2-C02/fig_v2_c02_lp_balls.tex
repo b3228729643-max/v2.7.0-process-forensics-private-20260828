@@ -1,0 +1,59 @@
+% v2.3.1 figure UID: FIG-P206-01
+% v2.6.0 Image-reference reverse redraw: print-safe line/marker redundancy without moving geometry.
+\tikzset{
+  slfig-FIG-P206-01/.style={font=\fontsize{9.2pt}{11pt}\selectfont,every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P206-01-direct-label/.style={font=\fontsize{9.2pt}{11pt}\selectfont,fill=white,fill opacity=.82,text opacity=1,inner sep=.9pt},
+  slfig-FIG-P206-01-query-label/.style={font=\fontsize{9.2pt}{11pt}\selectfont,fill=white,fill opacity=.82,text opacity=1,inner sep=.9pt},
+  slfig-FIG-P206-01-note/.style={font=\fontsize{9.2pt}{11pt}\selectfont,fill=white,fill opacity=.92,text opacity=1,draw=SLGray!28,rounded corners=1.4pt,line width=.40pt,inner sep=2.1pt}
+}
+\pgfplotsset{
+  slfig-FIG-P206-01-axis/.style={tick label style={font=\fontsize{8.5pt}{10.2pt}\selectfont},label style={font=\fontsize{9.5pt}{11.4pt}\selectfont},axis line style={draw=SLInk,line width=.50pt},clip=false},
+  slfig-FIG-P206-01-pone/.style={draw=SLBlue,line width=1.02pt,solid},
+  slfig-FIG-P206-01-ptwo/.style={draw=SLTeal,line width=.96pt,dash pattern=on 3.6pt off 2.2pt},
+  slfig-FIG-P206-01-pinf/.style={draw=SLGold,line width=.90pt,dash pattern=on 4.4pt off 1.8pt on .8pt off 1.8pt},
+  slfig-FIG-P206-01-guide/.style={draw=SLGray!68,line width=.52pt,dash pattern=on 3pt off 2.3pt},
+  slfig-FIG-P206-01-query/.style={only marks,mark=*,mark size=2.05pt,draw=SLInk,fill=SLInk},
+  slfig-FIG-P206-01-hit-one/.style={only marks,mark=o,mark size=2.05pt,draw=SLBlue,fill=white,line width=.82pt},
+  slfig-FIG-P206-01-hit-two/.style={only marks,mark=*,mark size=1.9pt,draw=SLTeal,fill=SLTeal},
+  slfig-FIG-P206-01-hit-inf/.style={only marks,mark=square*,mark size=1.75pt,draw=SLGold,fill=SLGold}
+}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P206-01]
+\begin{axis}[slfig-FIG-P206-01-axis,
+  slfig axis,width=.69\linewidth,height=.62\linewidth,
+  xmin=-1.55,xmax=1.55,ymin=-1.42,ymax=1.48,
+  axis equal image,axis lines=middle,
+  xlabel={$z^{(1)}$},ylabel={$z^{(2)}$},
+  xtick={-1,1},ytick={-1,1},clip=false,
+]
+  \addplot[slfig-FIG-P206-01-pone]
+    coordinates {(0,1) (1,0) (0,-1) (-1,0) (0,1)};
+  \addplot[slfig-FIG-P206-01-ptwo,domain=0:360,samples=361]
+    ({cos(x)},{sin(x)});
+  \addplot[slfig-FIG-P206-01-pinf]
+    coordinates {(-1,-1) (1,-1) (1,1) (-1,1) (-1,-1)};
+  \addplot[slfig-FIG-P206-01-guide] coordinates {(0,0) (1.34,.25)};
+  \addplot[slfig-FIG-P206-01-guide] coordinates {(0,0) (.84,1.14)};
+  \addplot[slfig-FIG-P206-01-query]
+    coordinates {(1.34,.25) (.84,1.14)};
+  \addplot[slfig-FIG-P206-01-hit-one]
+    coordinates {(.8438,.1570) (.4242,.5758)};
+  \addplot[slfig-FIG-P206-01-hit-two]
+    coordinates {(.9830,.1834) (.5933,.8052)};
+  \addplot[slfig-FIG-P206-01-hit-inf]
+    coordinates {(1,.1866) (.7368,1)};
+  \node[slfig-FIG-P206-01-direct-label,text=SLBlue] at (axis cs:-.72,.40) {$p=1$};
+  \draw[draw=SLTeal,line width=.48pt]
+    (axis cs:.34,.94)--(axis cs:.40,1.18);
+  \node[slfig-FIG-P206-01-direct-label,fill=none,text=SLTeal,anchor=south]
+    at (axis cs:.43,1.28) {$p=2$};
+  \node[slfig-FIG-P206-01-direct-label,text=SLGold] at (axis cs:-1.20,-.82) {$p=\infty$};
+  \node[slfig-FIG-P206-01-query-label,anchor=west] at (axis cs:1.35,.27) {$q_1$};
+  \node[slfig-FIG-P206-01-query-label,anchor=south] at (axis cs:.84,1.15) {$q_2$};
+  \node[slfig-FIG-P206-01-note,anchor=west,text width=32mm] at (axis cs:1.18,-.95)
+    {同一查询射线上，三种边界的首次交点不同};
+\end{axis}
+\end{tikzpicture}
+\caption{二维$L_p$单位球。不同边界形状会改变哪些训练点先进入查询邻域。}\label{fig:V2-C02-lp-balls}
+\end{figure}

@@ -1,0 +1,22 @@
+{
+  "uid": "FIG-P639-01",
+  "round": "R105",
+  "authority": "current R168 adjudication supplied by root before sealing",
+  "advisory_only": [
+    "source point sizes 8.5/9.2 below the legacy 9.5 point threshold",
+    "minus raw height 4 pixels",
+    "equals raw height 13 pixels",
+    "low-stroke CJK 一 raw height 4 pixels",
+    "same-color low-profile punctuation calibration gaps",
+    "note-CJK 1.08 role-ratio observation"
+  ],
+  "true_hard_gates": {
+    "missing_tofu_wrong_glyph": "PASS",
+    "mathematical_semantics": "PASS",
+    "actual_unreadability": "PASS",
+    "visually_gross_imbalance": "PASS",
+    "crop": "PASS",
+    "true_illegal_overlap": "PASS"
+  },
+  "final_sa3_verdict": "PASS"
+}

@@ -1,0 +1,16 @@
+ELEMENT_ID,MANUAL_GLYPH_CODEPOINT_JUDGMENT,MANUAL_READABILITY_JUDGMENT,MANUAL_CLIP_JUDGMENT,MANUAL_TEXT_GRAPHIC_JUDGMENT,MANUAL_OBSERVATION
+T01,CORRECT_X_SUBSCRIPT_1,READABLE,NOT_CLIPPED,TRUE_COLLISION_CONFIRMED,"The third contour visibly traverses x_1; vector sequence 8 intersects dark glyph ink at 19 native 300 dpi pixels."
+T02,CORRECT_X_SUBSCRIPT_2,READABLE,NOT_CLIPPED,CLEAR,"The x_2 glyph is separated from the vertical-axis arrowhead and all contours in native1x and nearest8x."
+T03,CORRECT_X_SUPERSCRIPT_PAREN_0,READABLE,NOT_CLIPPED,CLEAR,"The start label is complete, correctly raised, and separated from the start marker and dashed arrow."
+T04,CORRECT_DIGIT_1,READABLE,NOT_CLIPPED,TRUE_COLLISION_CONFIRMED,"The outer contour traverses the upper ink of step digit 1; vector sequence 6 intersects 6 native 300 dpi dark pixels."
+T05,CORRECT_DIGIT_2,READABLE,NOT_CLIPPED,TRUE_COLLISION_CONFIRMED,"The second contour traverses the baseline/lower ink of step digit 2; vector sequence 7 intersects 4 native 300 dpi dark pixels."
+T06,CORRECT_DIGIT_3,READABLE,NOT_CLIPPED,CLEAR,"Digit 3 has visible white clearance from the dashed arrow, square marker, contour, and neighboring labels."
+T07,CORRECT_DIGIT_4,READABLE,NOT_CLIPPED,CLEAR_BBOX_ONLY,"The fourth contour enters the text bbox but the native vector-to-dark-ink mask has 0 shared pixels; nearest8x confirms separation."
+T08,CORRECT_DIGIT_5,READABLE,NOT_CLIPPED,TRUE_COLLISION_CONFIRMED,"The horizontal axis runs through the bottom of digit 5; vector sequence 2 intersects 22 native 300 dpi dark pixels."
+T09,CORRECT_DIGIT_6,READABLE,NOT_CLIPPED,CLEAR,"Digit 6 is distinct from the y-axis, optimum star, contour, and labels 4/7."
+T10,CORRECT_DIGIT_7,READABLE,NOT_CLIPPED,CLEAR,"Digit 7 is distinct from the star, x-star label, axes, and digit 6."
+T11,CORRECT_X_MATHEMATICAL_ASTERISK,READABLE,NOT_CLIPPED,CLEAR,"The x-star label is complete and has visible separation from the star, y-axis, inner contour, and digit 7."
+T12,CORRECT_HAN_UPDATE_X_SUBSCRIPT_1,READABLE,NOT_CLIPPED,SEMANTIC_GROUP_DEFECT,"Label ink is clear, but its swatch and the x_2 swatch collapse to equal-luminance continuous samples in grayscale."
+T13,CORRECT_HAN_UPDATE_X_SUBSCRIPT_2,READABLE,NOT_CLIPPED,SEMANTIC_GROUP_DEFECT,"Label ink is clear, but PDF drawing sequence 34 is continuous rather than preserving the declared dashed distinction."
+T14,CORRECT_HAN_CAPTION_AND_FIGURE_NUMBER,READABLE,NOT_CLIPPED,CLEAR,"Figure number and complete caption are visible on one line with no tofu, missing glyph, overlap, or crop."
+

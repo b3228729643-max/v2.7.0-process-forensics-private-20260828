@@ -1,0 +1,17 @@
+pair_id	object_a	object_b	relation	reviewer	sheet	cell	native1x_opened	nearest8x_opened	intersection_px	clearance_px	threshold_px	illegal_overlap	clearance_failure	decision	note
+P14119	T0063	T0077	TEXT_TEXT	gpt-5.6-sol/xhigh	critical_pair_sheet_001.png	1	TRUE	TRUE	0	10.0	4	FALSE	FALSE	PASS	Summation line and following formula line are visibly separate; native gap is clear.
+P20832	T0100	G0025	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_001.png	2	TRUE	TRUE	0	11.0	5	FALSE	FALSE	PASS	M-matrix numerator 1 remains centered with clear space to its cell border.
+P20840	T0100	G0033	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_001.png	3	TRUE	TRUE	0	11.0	5	FALSE	FALSE	PASS	M-matrix numerator 1 does not touch the intended focus border.
+P21147	T0102	G0025	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_001.png	4	TRUE	TRUE	0	9.0	5	FALSE	FALSE	PASS	M-matrix denominator 2 has visible right-side clearance to the cell border.
+P21155	T0102	G0033	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_001.png	5	TRUE	TRUE	0	9.0	5	FALSE	FALSE	PASS	M-matrix denominator 2 remains separate from the focus border.
+P22074	T0108	G0031	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_001.png	6	TRUE	TRUE	0	11.0	5	FALSE	FALSE	PASS	Second M fraction numerator 1 has clear left-side space to its cell border.
+P22373	T0110	G0031	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_001.png	7	TRUE	TRUE	0	9.0	5	FALSE	FALSE	PASS	Second M fraction denominator 2 has visible right-side border clearance.
+P23411	T0118	T0129	TEXT_TEXT	gpt-5.6-sol/xhigh	critical_pair_sheet_001.png	8	TRUE	TRUE	0	8.434	4	FALSE	FALSE	PASS	Column-normalization subscript and next update formula are on distinct baselines with no contact.
+P23831	T0121	T0132	TEXT_TEXT	gpt-5.6-sol/xhigh	critical_pair_sheet_002.png	1	TRUE	TRUE	0	11.0	4	FALSE	FALSE	PASS	Lower index glyphs on adjacent formula lines have a clean native gap.
+P28355	T0158	G0037	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_002.png	2	TRUE	TRUE	0	11.0	5	FALSE	FALSE	PASS	P-matrix numerator 1 is centered with clear space to the cell border.
+P28361	T0158	G0043	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_002.png	3	TRUE	TRUE	0	11.0	5	FALSE	FALSE	PASS	P-matrix numerator 1 remains separate from the focus border.
+P28554	T0160	G0037	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_002.png	4	TRUE	TRUE	0	9.0	5	FALSE	FALSE	PASS	P-matrix denominator 2 has visible right-side space to its cell border.
+P28560	T0160	G0043	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_002.png	5	TRUE	TRUE	0	9.0	5	FALSE	FALSE	PASS	P-matrix denominator 2 remains separate from the focus border.
+P28751	T0162	G0039	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_002.png	6	TRUE	TRUE	0	11.0	5	FALSE	FALSE	PASS	Second P fraction numerator 1 has clear left-side space to its cell border.
+P28942	T0164	G0039	MATRIX_TEXT_TO_CELL_BORDER	gpt-5.6-sol/xhigh	critical_pair_sheet_002.png	7	TRUE	TRUE	0	10.0	5	FALSE	FALSE	PASS	Second P fraction denominator 2 has visible right-side border clearance.
+P30101	T0178	T0189	TEXT_TEXT	gpt-5.6-sol/xhigh	critical_pair_sheet_002.png	8	TRUE	TRUE	0	10.1803	4	FALSE	FALSE	PASS	Indexed bridge formula and conditional-probability line remain visibly distinct.

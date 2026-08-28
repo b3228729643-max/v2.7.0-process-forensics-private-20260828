@@ -1,0 +1,55 @@
+{
+  "assigned_scope": "Fresh isolated R110 SA3 audit of FIG-P634-01 only; read official PDF/current P634 source/active Goal and necessary V5-C04 context; write only the new evidence root.",
+  "completed": [
+    "Verified PDF/source identities",
+    "Located current Figure 33.3 at physical page 684 and printed page 671",
+    "Rendered and opened all required page/crop/grayscale/overlay/native1x/nearest8x views",
+    "Froze 46 objects and all 1035 unordered pairs",
+    "Completed genuine per-ID manual object/pair/text/ROI/view/hard-gate review",
+    "Verified coordinate-sweep/Gibbs semantics, formulas, codepoints, geometry, caption, and page integration"
+  ],
+  "files_changed": [
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P634-01\\sa3_r110_fresh_isolated_v1"
+  ],
+  "decisions": {
+    "outcome": "SA3_PASS_AWAIT_MAIN_C_LOCAL_PASS_ACCEPTANCE",
+    "physical_page": 684,
+    "printed_page": 671,
+    "figure_number": "33.3",
+    "source_font_pass": true,
+    "pixel_height_pass": true,
+    "same_class_ratio_pass": true,
+    "role_ratio_pass": true,
+    "overlap_candidate_pixel_count": 0,
+    "mask_contamination_pixel_count": 0,
+    "overlap_pixel_count": 0,
+    "pixel_adjudication_status": "CLEAR",
+    "clip_pixel_count": 0,
+    "min_text_clearance_px": 5,
+    "visual_harmony_pass": true,
+    "math_semantics_pass": true,
+    "text_consistency_pass": true,
+    "grayscale_pass": true,
+    "page_integration_pass": true,
+    "r168_advisory": "21 px mathematical italic x-height is a readable lowercase x-height/raster taxonomy edge, not a hard failure."
+  },
+  "unresolved": [],
+  "validation": {
+    "object_count": 46,
+    "all_unordered_pair_count": 1035,
+    "text_span_count": 47,
+    "critical_roi_count": 5,
+    "opened_view_count": 18,
+    "manual_object_count": 46,
+    "manual_relevant_close_pair_count": 38,
+    "manual_text_count": 47,
+    "manual_roi_count": 5,
+    "manual_view_count": 18,
+    "expected_final_seal": "unique strict-latest WRITE_STOPPED; all files/directories read-only; ADS/cache/pyc/reparse=0"
+  },
+  "next_action": "Parent /root performs Main C local acceptance from this sealed evidence; do not start another UID or role.",
+  "report_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P634-01\\sa3_r110_fresh_isolated_v1\\REPORT.md",
+  "handoff_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P634-01\\sa3_r110_fresh_isolated_v1\\HANDOFF.json",
+  "manifest_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P634-01\\sa3_r110_fresh_isolated_v1\\MANIFEST.json",
+  "write_stopped_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P634-01\\sa3_r110_fresh_isolated_v1\\WRITE_STOPPED"
+}

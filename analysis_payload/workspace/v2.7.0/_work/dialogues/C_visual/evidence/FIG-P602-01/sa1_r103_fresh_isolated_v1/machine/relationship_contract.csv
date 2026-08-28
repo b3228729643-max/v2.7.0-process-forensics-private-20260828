@@ -1,0 +1,8 @@
+﻿RELATION_ID,FOREGROUND_OBJECT,FROM_OBJECT,TO_OBJECT,LABEL_OBJECT,SEMANTIC,EXPECTED_GEOMETRY
+R01,E01,B01,B02,T13,proposal,dashed gray shaft and head stop clear of both node strokes
+R02,E02,B02,B03,T14,calculate,light-gray vertical arrow preserves top-to-bottom reading
+R03,E03,B03,B04,T15,decide,light-gray vertical arrow points to diamond apex
+R04,E04,B04,B05,T16,accept,solid blue branch leaves left diamond edge and points to accepted outcome
+R05,E05,B04,B06,T17,reject,dash-pattern blue branch leaves right diamond edge and points to rejected outcome
+R06,E06,B06,B06,T18,rejection self-loop,dash-pattern return curve and arrowhead encode retained old state
+R07,M01,T06,T06,NONE,fraction rule,horizontal rule separates reverse-flow numerator from forward-flow denominator

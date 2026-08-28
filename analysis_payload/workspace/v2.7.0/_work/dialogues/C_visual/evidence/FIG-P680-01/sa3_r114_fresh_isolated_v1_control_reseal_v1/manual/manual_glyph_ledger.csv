@@ -1,0 +1,16 @@
+ELEMENT_ID,TEXT_ROLE,OBSERVED_GLYPH_CONTENT,NATIVE300_OBSERVATION,NEAREST8X_OBSERVATION,MISSING_TOFU_WRONG_CODEPOINT,READABILITY,MANUAL_VERDICT
+T01,node_text,"共享“文档–主题–单词”条件结构",all_glyphs_present_and_sharp,quotes_and_dashes_resolve_cleanly,NO,READABLE,CLEAR
+T02,node_text,两层混合、条件独立与词袋计数,all_glyphs_present_and_sharp,Chinese_strokes_and_punctuation_complete,NO,READABLE,CLEAR
+T03,row_label,模型目标,bold_glyphs_complete,bold_strokes_not_filled_or_broken,NO,READABLE,CLEAR
+T04,node_text,完整_Bayes_LDA,Chinese_and_Latin_complete,Latin_capitals_and_Chinese_are_clean,NO,READABLE,CLEAR
+T05,node_formula_text,"U+1D703 theta; U+1D711 varphi; 均为随机变量",math_and_Chinese_complete,theta_and_varphi_have_distinct_correct_shapes,NO,READABLE,CLEAR
+T06,node_text,点参数_LDA_变体,Chinese_and_Latin_complete,Latin_capitals_and_Chinese_are_clean,NO,READABLE,CLEAR
+T07,node_formula_text,"U+1D711 varphi; 作为待估参数",math_and_Chinese_complete,varphi_is_not_phi_or_empty_box,NO,READABLE,CLEAR
+T08,row_label,推断方法,bold_glyphs_complete,bold_strokes_not_filled_or_broken,NO,READABLE,CLEAR
+T09,node_text,折叠_Gibbs,Chinese_and_Latin_complete,capital_G_and_descenders_are_clean,NO,READABLE,CLEAR
+T10,node_formula_text,"积分消去; U+1D703 theta; U+1D711 varphi",math_and_Chinese_complete,both_math_symbols_are_correct_and_separate,NO,READABLE,CLEAR
+T11,node_text,平均场变分_EM,Chinese_and_Latin_complete,all_strokes_and_capitals_complete,NO,READABLE,CLEAR
+T12,node_text,ELBO_坐标上升,Latin_and_Chinese_complete,ELBO_capitals_not_merged,NO,READABLE,CLEAR
+T13,warning_text,模型与后验不同_结果不可只按算法名直接比较,red_text_complete,thin_red_strokes_remain_continuous,NO,READABLE,CLEAR
+T14,caption,figure_number_and_caption_line_1,bold_number_and_body_complete,full_line_has_no_tofu_or_missing_terminal_glyph,NO,READABLE,CLEAR
+T15,caption,caption_line_2,body_complete,full_line_has_no_tofu_or_missing_terminal_glyph,NO,READABLE,CLEAR

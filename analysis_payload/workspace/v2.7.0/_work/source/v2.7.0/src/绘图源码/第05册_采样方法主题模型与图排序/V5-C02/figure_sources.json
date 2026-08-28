@@ -1,0 +1,293 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V5-C02",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 9,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V5-C02-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_dependency_graph.tex",
+      "source_file": "fig_v5_c02_dependency_graph.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C02-dependency",
+      "caption": "本章知识依赖：由期望、积分与独立抽样进入蒙特卡罗估计，再分别学习三种直接采样或重加权方法，最后统一进行误差和支持诊断",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读图时应回答：“本章知识依赖：由期望、积分与独立抽样进入蒙特卡罗估计，再分别学习三种直接采样或重加权方法，最后统一进行误差和支持诊断”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+        "target_label": "fig:V5-C02-dependency",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-001",
+        "PRE-SA-002",
+        "PRE-SA-003",
+        "PRE-SA-004",
+        "PRE-SA-005"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：本章知识依赖：由期望、积分与独立抽样进入蒙特卡罗估计，再分别学习三种直接采样或重加权方法，最后统一进行误差和支持诊断"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C02-02",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_mc_integral.tex",
+      "source_file": "fig_v5_c02_mc_integral.tex",
+      "source_kind": "pgfplots",
+      "label": "fig:V5-C02-mc-integral",
+      "caption": "蒙特卡罗积分把曲线下的面积改写为分布下的期望；竖线表示固定的四个均匀样本，虚线表示该积分的参考值",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读图时应回答：“蒙特卡罗积分把曲线下的面积改写为分布下的期望；竖线表示固定的四个均匀样本，虚线表示该积分的参考值”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+        "target_label": "fig:V5-C02-mc-integral",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-01-005"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C02-02"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：蒙特卡罗积分把曲线下的面积改写为分布下的期望；竖线表示固定的四个均匀样本，虚线表示该积分的参考值"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C02-03",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_running_mean.tex",
+      "source_file": "fig_v5_c02_running_mean.tex",
+      "source_kind": "pgfplots",
+      "label": "fig:V5-C02-running-mean",
+      "caption": "固定样本序列 $0.8,0.1,0.7,0.4$ 下 $U_i^2$ 的运行均值；曲线先降后升再下降，说明收敛结论不等于逐步单调逼近",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读图时应回答：“固定样本序列 $0.8,0.1,0.7,0.4$ 下 $U_i^2$ 的运行均值；曲线先降后升再下降，说明收敛结论不等于逐步单调逼近”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+        "target_label": "fig:V5-C02-running-mean",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-001",
+        "SLM-19-01-004"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C02-03"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：固定样本序列 0.8,0.1,0.7,0.4 下 U下标i上标2 的运行均值；曲线先降后升再下降，说明收敛结论不等于逐步单调逼近"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C02-04",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_generalized_inverse.tex",
+      "source_file": "fig_v5_c02_generalized_inverse.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C02-generalized-inverse",
+      "caption": "广义逆采用首次达到规则：连续情形沿水平线找到交点；离散情形中 $u=0.7$ 落在第二个跳点，而 $u=0.72$ 落在第三个跳点",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "读图时应回答：“广义逆采用首次达到规则：连续情形沿水平线找到交点；离散情形中 $u=0.7$ 落在第二个跳点，而 $u=0.72$ 落在第三个跳点”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+        "target_label": "fig:V5-C02-generalized-inverse",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-003"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C02-04"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：广义逆采用首次达到规则：连续情形沿水平线找到交点；离散情形中 u=0.7 落在第二个跳点，而 u=0.72 落在第三个跳点"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-P577-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_envelope.tex",
+      "source_file": "fig_v5_c02_rejection_envelope.tex",
+      "source_kind": "pgfplots",
+      "label": "fig:V5-C02-rejection-envelope",
+      "caption": "包络满足 p≤cq（几乎处处）；随机点 (Y,Ucq(Y)) 落在 p 曲线下方（含边界）时接受 Y。",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "先比较 p 与 cq 并核对最小差1/10，再按含边界门 Ucq(Y)≤p(Y) 复算圆点与三角点，最后由面积得到接受率5/8、平均提议数8/5和拒绝区面积3/5，同时区分普通拒绝与包络失效。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+        "target_label": "fig:V5-C02-rejection-envelope",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-004",
+        "SLM-19-01-003"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-P577-01"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—数值—结论：支撑集[0,1]上的实线为p(y)=6y(1-y)，虚线为cq(y)=8/5，浅填充为拒绝区；p不超过cq（几乎处处），最小差为1/10。圆点y=1/4、h=4/5、p=9/8、U=1/2不超过45/64，故接受；三角点y=3/4、h=27/20、p=9/8、U=27/32大于45/64，故普通拒绝但包络仍合法。接受率为5/8，平均提议数为8/5，拒绝区面积为3/5；普通拒绝不等于包络失效。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C02-05",
+      "canonical_uid": "FIG-P577-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-P578-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex",
+      "source_file": "fig_v5_c02_rejection_flow.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C02-rejection-flow",
+      "caption": "带预算的接受--拒绝必须区分普通拒绝、收满目标、未收满而预算耗尽，以及包络证书失败。",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "先看随机调用前的完整预检与零目标/零预算短路，再核对每轮提议数和接受前缀的原子更新，最后按完成优先于预算的顺序判停，并区分普通拒绝、随机/数值失败与包络证书失败。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+        "target_label": "fig:V5-C02-rejection-flow",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-004",
+        "SLM-19-01-003"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：带预算的接受—拒绝状态机在任何随机调用前验证标量、密度、支持覆盖与全局包络证书，随后初始化空前缀和计数；每个成功候选使提议数加一，只有接受分支原子追加候选并增加接受数，普通拒绝保持前缀和接受数不变；每轮先检查接受数是否达到目标，再检查提议预算，因而同轮同时命中时返回 completed，随机源或数值失败保留最后合法前缀与失败位置，包络失败返回 invalid_input 和 envelope_condition_failure 诊断。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C02-06",
+      "canonical_uid": "FIG-P578-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-P580-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_is_support.tex",
+      "source_file": "fig_v5_c02_is_support.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C02-is-support",
+      "caption": "重要性抽样要求 $p\\ll q$；$q$ 未覆盖的目标区域不能由增加样本或有限加权恢复。",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "在共同定义域上先识别 $q_L=0<p$ 的支持缺口，再由同一归一化密度公式复算右图三个真实比率；最终只判断 $p\\ll q$ 是否成立，不把支持覆盖误读为低方差或估计可靠。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+        "target_label": "fig:V5-C02-is-support",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-005"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "reason": "v2.7.0_analytic_normalized_densities_and_exact_importance_ratios"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：共同定义域[0,5]上的目标密度p与左右提议密度qL、qR均解析归一化；左图在x=5/2后qL=0而p>0，并用纹理标出缺失目标区域；右图qR=1/5全域为正，三个不同点形由同一公式给出w(1)=0.96、w(5/2)=1.50、w(4)=0.96；因此重要性抽样要求p绝对连续于q，支持缺口不能由增加样本或有限加权恢复，而支持覆盖本身不保证低方差或可靠性。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C02-07",
+      "canonical_uid": "FIG-P580-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-V5-C02-08",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_weight_ess.tex",
+      "source_file": "fig_v5_c02_weight_ess.tex",
+      "source_kind": "pgfplots",
+      "label": "fig:V5-C02-weight-ess",
+      "caption": "退化归一化权重 $0.90,0.05,0.03,0.02$；其启发式有效样本量约为 $1.23$，提示少数样本主导估计，但不能单独证明估计可靠",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读图时应回答：“退化归一化权重 $0.90,0.05,0.03,0.02$；其启发式有效样本量约为 $1.23$，提示少数样本主导估计，但不能单独证明估计可靠”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+        "target_label": "fig:V5-C02-weight-ess",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-005"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C02-08"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：退化归一化权重 0.90,0.05,0.03,0.02；其启发式有效样本量约为 1.23，提示少数样本主导估计，但不能单独证明估计可靠"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C02-09",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rmse_rate.tex",
+      "source_file": "fig_v5_c02_rmse_rate.tex",
+      "source_kind": "pgfplots",
+      "label": "fig:V5-C02-rmse-rate",
+      "caption": "独立同分布且方差有限时的理论均方根误差速率；相关样本或无限方差情形不能直接沿用这条直线",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读图时应回答：“独立同分布且方差有限时的理论均方根误差速率；相关样本或无限方差情形不能直接沿用这条直线”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+        "target_label": "fig:V5-C02-rmse-rate",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-001"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C02-09"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：独立同分布且方差有限时的理论均方根误差速率；相关样本或无限方差情形不能直接沿用这条直线"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

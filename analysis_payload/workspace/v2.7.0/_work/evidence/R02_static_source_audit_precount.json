@@ -1,0 +1,556 @@
+{
+  "schema_version": 1,
+  "source_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码",
+  "passed": false,
+  "summary": {
+    "chapter_files": 37,
+    "chapters": 37,
+    "algorithms": 66,
+    "contracted_algorithms": 66,
+    "labels": 2946,
+    "findings": 1
+  },
+  "findings": [
+    {
+      "code": "algorithm_count",
+      "file": ".",
+      "line": 1,
+      "message": "expected at least 70 algorithms including compatible splits, found 66"
+    }
+  ],
+  "algorithm_records": [
+    {
+      "file": "第01册_数学基础与统计学习基本理论/chapters/V1-C02.tex",
+      "line": 226,
+      "labels": [
+        "alg:V1-C02-power"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第01册_数学基础与统计学习基本理论/chapters/V1-C03.tex",
+      "line": 229,
+      "labels": [
+        "alg:V1-C03-gradient-descent"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第01册_数学基础与统计学习基本理论/chapters/V1-C04.tex",
+      "line": 305,
+      "labels": [
+        "alg:V1-C04-bayes"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第01册_数学基础与统计学习基本理论/chapters/V1-C05.tex",
+      "line": 356,
+      "labels": [
+        "alg:V1-C05-dirichlet"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第01册_数学基础与统计学习基本理论/chapters/V1-C06.tex",
+      "line": 395,
+      "labels": [
+        "alg:V1-C06-gain"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第01册_数学基础与统计学习基本理论/chapters/V1-C07.tex",
+      "line": 430,
+      "labels": [
+        "alg:V1-C07-kkt-check"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第01册_数学基础与统计学习基本理论/chapters/V1-C08.tex",
+      "line": 315,
+      "labels": [
+        "alg:V1-C08-bfgs"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第01册_数学基础与统计学习基本理论/chapters/V1-C08.tex",
+      "line": 477,
+      "labels": [
+        "alg:V1-C08-gradient"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第01册_数学基础与统计学习基本理论/chapters/V1-C09.tex",
+      "line": 253,
+      "labels": [
+        "alg:V1-C09-finite-erm"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第01册_数学基础与统计学习基本理论/chapters/V1-C10.tex",
+      "line": 329,
+      "labels": [
+        "alg:V1-C10-kfold"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C01.tex",
+      "line": 308,
+      "labels": [
+        "alg:V2-C01-primal"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C01.tex",
+      "line": 514,
+      "labels": [
+        "alg:V2-C01-dual"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C02.tex",
+      "line": 281,
+      "labels": [
+        "alg:V2-C02-knn"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C02.tex",
+      "line": 370,
+      "labels": [
+        "alg:V2-C02-kd-build"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C02.tex",
+      "line": 502,
+      "labels": [
+        "alg:V2-C02-kd-search"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C03.tex",
+      "line": 351,
+      "labels": [
+        "alg:V2-C03-nb"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C04.tex",
+      "line": 397,
+      "labels": [
+        "alg:V2-C04-id3-c45"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C04.tex",
+      "line": 506,
+      "labels": [
+        "alg:V2-C04-entropy-prune"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C04.tex",
+      "line": 615,
+      "labels": [
+        "alg:V2-C04-cart-grow"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C04.tex",
+      "line": 684,
+      "labels": [
+        "alg:V2-C04-cart-prune"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第02册_基础监督学习方法/chapters/V2-C05.tex",
+      "line": 359,
+      "labels": [
+        "alg:V2-C05-newton"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C01.tex",
+      "line": 361,
+      "labels": [
+        "alg:V3-C01-bfgs"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C01.tex",
+      "line": 509,
+      "labels": [
+        "alg:V3-C01-iis"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C02.tex",
+      "line": 674,
+      "labels": [
+        "alg:V3-C02-smo"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "line": 202,
+      "labels": [
+        "alg:V3-C03-adaboost"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "line": 484,
+      "labels": [
+        "alg:V3-C03-regression-tree-boost"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "line": 551,
+      "labels": [
+        "alg:V3-C03-gradient-candidate"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "line": 607,
+      "labels": [
+        "alg:V3-C03-gradient-boost"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "line": 317,
+      "labels": [
+        "alg:V3-C04-em"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "line": 507,
+      "labels": [
+        "alg:V3-C04-gmm"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "line": 692,
+      "labels": [
+        "alg:V3-C04-gem-f"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "line": 756,
+      "labels": [
+        "alg:V3-C04-gem-q"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "line": 827,
+      "labels": [
+        "alg:V3-C04-gem-block"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "line": 249,
+      "labels": [
+        "alg:V3-C05-generate"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "line": 530,
+      "labels": [
+        "alg:V3-C05-forward-scaled"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "line": 576,
+      "labels": [
+        "alg:V3-C05-backward-scaled"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "line": 730,
+      "labels": [
+        "alg:V3-C05-bw"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "line": 844,
+      "labels": [
+        "alg:V3-C05-viterbi"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第03册_优化模型与序列模型/chapters/V3-C06.tex",
+      "line": 510,
+      "labels": [
+        "alg:V3-C06-bfgs",
+        "struct:V3-C06-CH22",
+        "struct:V3-C06-CH23",
+        "struct:V3-C06-CH24",
+        "struct:V3-C06-CH25"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C01.tex",
+      "line": 328,
+      "labels": [
+        "alg:V4-C01-selection"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "line": 280,
+      "labels": [
+        "alg:V4-C02-agglomerative"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "line": 475,
+      "labels": [
+        "alg:V4-C02-kmeans"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "line": 525,
+      "labels": [
+        "alg:V4-C02-kmeans-empty-repair"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "line": 581,
+      "labels": [
+        "alg:V4-C02-kmeans-multistart"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C03.tex",
+      "line": 473,
+      "labels": [
+        "alg:V4-C03-subspace-svd"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C04.tex",
+      "line": 513,
+      "labels": [
+        "alg:V4-C04-pca"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C05.tex",
+      "line": 585,
+      "labels": [
+        "alg:V4-C05-lsa"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C05.tex",
+      "line": 633,
+      "labels": [
+        "alg:V4-C05-nmf-fro"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C06.tex",
+      "line": 476,
+      "labels": [
+        "alg:V4-C06-plsa-em"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第04册_无监督学习与矩阵分解/chapters/V4-C06.tex",
+      "line": 539,
+      "labels": [
+        "alg:V4-C06-plsa-foldin"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C01.tex",
+      "line": 778,
+      "labels": [
+        "alg:V5-C01-distribution-propagation"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "line": 567,
+      "labels": [
+        "alg:V5-C02-iid-mc-online"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "line": 623,
+      "labels": [
+        "alg:V5-C02-generalized-inverse"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "line": 689,
+      "labels": [
+        "alg:V5-C02-rejection-math",
+        "alg:V5-C02-rejection-budget"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "line": 764,
+      "labels": [
+        "alg:V5-C02-importance-estimation"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "line": 714,
+      "labels": [
+        "alg:V5-C03-general-mh"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "line": 778,
+      "labels": [
+        "alg:V5-C03-component-mh"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "line": 827,
+      "labels": [
+        "alg:V5-C03-trace-diagnostics"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+      "line": 589,
+      "labels": [
+        "alg:V5-C04-systematic-gibbs"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+      "line": 797,
+      "labels": [
+        "alg:V5-C05-closed-form-update"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "line": 312,
+      "labels": [
+        "alg:V5-C06-generate"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "line": 913,
+      "labels": [
+        "alg:V5-C06-gibbs"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "line": 1026,
+      "labels": [
+        "alg:V5-C06-vem"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C07.tex",
+      "line": 642,
+      "labels": [
+        "alg:V5-C07-basic-power"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C07.tex",
+      "line": 691,
+      "labels": [
+        "alg:V5-C07-general-power"
+      ],
+      "has_contract": true
+    },
+    {
+      "file": "第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+      "line": 656,
+      "labels": [
+        "alg:V5-C08-selection-protocol"
+      ],
+      "has_contract": true
+    }
+  ]
+}

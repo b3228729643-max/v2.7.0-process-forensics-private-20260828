@@ -1,0 +1,41 @@
+{
+  "native_measurement_grid_px": [
+    2481,
+    3508
+  ],
+  "object_count": 90,
+  "glyph_count": 71,
+  "graphic_count": 19,
+  "unordered_pair_expected": 4005,
+  "unordered_pair_actual": 4005,
+  "illegal_overlap_pixel_count": 0,
+  "illegal_overlap_pair_count": 0,
+  "clearance_fail_count": 0,
+  "clip_pixel_count": 0,
+  "text_to_body_crop_edge_min_px": 20,
+  "text_to_body_crop_edge_min_id": "G013",
+  "relation_minima": {
+    "NODE_TEXT_TO_BORDER": {
+      "minimum_px": 13.0,
+      "pair_id": "PAIR-060-090",
+      "pair_count": 14
+    },
+    "TEXT_FORMULA_TO_LINE_MARKER": {
+      "minimum_px": 5.0,
+      "pair_id": "PAIR-045-089",
+      "pair_count": 1335
+    },
+    "TEXT_TEXT_INDEPENDENT": {
+      "minimum_px": 33.242,
+      "pair_id": "PAIR-004-064",
+      "pair_count": 2277
+    }
+  },
+  "critical_pair_count": 18,
+  "math_rule_object_count": 0,
+  "math_rule_reconciliation": "PASS: the figure has no visible path-based accent/fraction/root/overline rule; O(N^-1/2) is entirely in the PDF character stream",
+  "background_occluder_count": 2,
+  "background_occluder_note": "annotation white rectangle plus condition-node white fill accounted from PDF drawings; neither is visible foreground denominator",
+  "machine_hard_gates_pass": true,
+  "manual_fields_generated_by_script": false
+}

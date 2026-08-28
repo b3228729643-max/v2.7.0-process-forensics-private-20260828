@@ -1,0 +1,78 @@
+% v2.3.1 figure UID: UFIG-P158-01
+% Proposed post-v2.3.1 polish for UFIG-P158-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-UFIG-P158-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+% Unnumbered, leakage-free model-selection workflow. The two-row layout avoids global scaling.
+\begin{center}
+\begin{tikzpicture}[slfig-UFIG-P158-01,
+  flowstep/.style={slfig node,line width=.76pt,minimum width=18mm,text width=16mm,
+    minimum height=10.5mm,inner xsep=2.5mm,inner ysep=1.6mm,
+    font=\fontsize{9.2pt}{11pt}\selectfont},
+  mini/.style={slfig node accent,line width=.72pt,minimum width=14mm,text width=12mm,
+    minimum height=9mm,inner xsep=2.2mm,inner ysep=1.5mm,
+    font=\fontsize{9.2pt}{11pt}\selectfont},
+  badge/.style={circle,fill=SLBlue,text=white,minimum size=5.2mm,inner sep=0pt,
+    font=\bfseries\fontsize{9.2pt}{11pt}\selectfont},
+  mainflow/.style={-{Stealth[length=2.2mm,width=1.4mm]},draw=SLBlue,
+    line width=.98pt,shorten >=.65mm},
+  feedback/.style={-{Stealth[length=1.9mm,width=1.2mm]},draw=SLGray,
+    line width=.72pt,dash pattern=on 3.2pt off 2.2pt,shorten >=.8mm},
+  testflow/.style={-{Stealth[length=2.1mm,width=1.35mm]},draw=SLRed,
+    line width=.88pt,shorten >=.75mm},
+]
+  % First row: freeze the rule, create development folds, and keep every fit inside its fold.
+  \node[flowstep] (raw) at (0,0) {原始数据};
+  \node[badge] at ([xshift=-1mm,yshift=1mm]raw.north west) {1};
+  \node[flowstep] (split) at (24mm,0) {固定切分};
+  \node[badge] at ([xshift=-1mm,yshift=1mm]split.north west) {2};
+  \node[mini] (prep) at (47mm,0) {预处理};
+  \node[mini] (select) at (63mm,0) {特征选择};
+  \node[mini] (fit) at (79mm,0) {拟合};
+  \node[mini] (valid) at (95mm,0) {折内验证};
+  \node[badge] at ([xshift=-1mm,yshift=1mm]prep.north west) {3};
+  \node[flowstep] (choose) at (117mm,0) {汇总验证损失\\选择候选};
+  \node[badge] at ([xshift=-1mm,yshift=1mm]choose.north west) {4};
+
+  \draw[mainflow] (raw)--(split);
+  \draw[mainflow] (split)--(prep);
+  \draw[mainflow] (prep)--(select);
+  \draw[mainflow] (select)--(fit);
+  \draw[mainflow] (fit)--(valid);
+  \draw[mainflow] (valid)--(choose);
+
+  \node[slfig compact note,line width=.56pt,minimum width=62mm,minimum height=6mm,
+    font=\fontsize{9.2pt}{11pt}\selectfont]
+    (folds) at (71mm,-12.5mm)
+    {$K$ 折：每一折都重新执行完整流水线，不复用折外拟合状态};
+  \draw[feedback] (choose.south) |- (36mm,-18.5mm) |- (prep.west);
+  \node[font=\fontsize{9.2pt}{11pt}\selectfont,text=SLGray]
+    at (71mm,-22.5mm) {反馈仅留在开发区};
+
+  % Second row is read right-to-left: retrain on all development data, then unlock one test use.
+  \node[flowstep] (refit) at (88mm,-34mm) {全部开发集\\重新训练};
+  \node[badge] at ([xshift=-1mm,yshift=1mm]refit.north west) {5};
+  \node[flowstep] (final) at (20mm,-34mm) {最终一次评估};
+  \node[badge] at ([xshift=-1mm,yshift=1mm]final.north west) {6};
+  \draw[mainflow] (choose.south) |- (refit.east);
+  \draw[mainflow] (refit.west)--(final.east);
+
+  \node[slfig locked,line width=.78pt,rounded corners=1.7mm,minimum width=26mm,minimum height=11mm,
+        align=center,font=\fontsize{9.2pt}{11pt}\selectfont] (test) at (-5mm,-34mm)
+        {\textbf{锁定测试集}\\仅最终一次使用};
+  \draw[mainflow] (split.south) |- (test.north);
+  \draw[testflow]
+    (test.east)--(final.west);
+
+  \begin{scope}[on background layer]
+  \node[draw=SLTeal,fill=SLTealBG,line width=.72pt,rounded corners=2mm,
+        fit=(prep)(select)(fit)(valid)(folds)(choose)(refit),inner sep=3.5mm,
+        label={[font=\bfseries\fontsize{9.2pt}{11pt}\selectfont,text=SLTeal]
+          above:开发集（允许循环选择）}] (dev) {};
+  \node[draw=SLRed,fill=SLRedBG,line width=.86pt,
+        dash pattern=on 3.2pt off 2.2pt,rounded corners=2mm,
+        fit=(test),inner sep=2.5mm,
+        label={[font=\bfseries\fontsize{9.2pt}{11pt}\selectfont,text=SLRed]
+          below:测试区（禁止反馈）}] {};
+  \end{scope}
+\end{tikzpicture}
+\end{center}

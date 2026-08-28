@@ -1,0 +1,18 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{702}
+\setcounter{chapter}{30}
+\setcounter{figure}{2}
+\pagestyle{headings}
+\chaptermark{马尔可夫链基础}
+\sectionmark{遍历定理与可逆性}
+\paragraph{首次到达与首次正回返。}定义
+\[
+  \tau_i=\inf\{t\ge0:X_t=i\},\qquad
+  \tau_i^+=\inf\{t\ge1:X_t=i\}.
+\]
+从状态 $i$ 出发，若 $\mathbb E_i[\tau_i^+]<\infty$，称 $i$ 正常返。图\ref{fig:V5-C01-return-time}强调正回返从 $t>0$ 开始计时，并与从其他状态出发的首次到达区分。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_return_time.tex}
+\end{document}

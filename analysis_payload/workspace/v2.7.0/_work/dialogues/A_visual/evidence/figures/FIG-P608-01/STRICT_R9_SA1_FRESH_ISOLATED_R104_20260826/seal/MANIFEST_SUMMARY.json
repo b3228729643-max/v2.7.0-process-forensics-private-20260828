@@ -1,0 +1,47 @@
+{
+  "handoff_id": "A-R104-P608-SA1-FRESH-ISOLATED-20260826",
+  "figure_uid": "FIG-P608-01",
+  "candidate": "R104",
+  "role": "fresh isolated read-only SA1",
+  "decision": "PASS",
+  "next_status": "SA1_PASS_READY_FOR_FRESH_ISOLATED_SA3",
+  "a_local_pass_claimed": false,
+  "sa3_started": false,
+  "sealed_at": "2026-08-26T02:47:00+08:00",
+  "identity": {
+    "candidate_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r104_fullbook\\main_full.pdf",
+    "candidate_pdf_sha256": "e5c871642fbddbec6508be1b61bd911fe281ca5acfbd16b0449b13357770a641",
+    "current_source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_trace_running_mean.tex",
+    "current_source_sha256": "78c30f4a934f63e0ef1bbacf400a24f22477d38589f99503ae468f7024a35c05"
+  },
+  "denominators": {
+    "objects": 89,
+    "text_glyphs": 68,
+    "graphics": 21,
+    "unordered_pairs_expected": 3916,
+    "unordered_pairs_checked": 3916,
+    "raw_drawing_records_mapped": 58,
+    "portable_masks": 89,
+    "manual_glyph_cells": 68,
+    "manual_math_rules": 6,
+    "manual_relation_rois": 23,
+    "manual_views": 5,
+    "manual_role_script_rows": 23
+  },
+  "hard_fail_counts": {
+    "missing_tofu_wrong_glyph": 0,
+    "semantic_error": 0,
+    "unreadable": 0,
+    "visible_size_imbalance": 0,
+    "clip_pixels": 0,
+    "illegal_overlap_pixels": 0,
+    "machine_gate_failures": 0
+  },
+  "manifest_policy": {
+    "listed_scope": "all regular files under evidence root present before manifest creation, except the manifest path itself and WSTOP",
+    "excluded": [
+      "seal/SEALED_FILES_MANIFEST.csv",
+      "WSTOP.json"
+    ]
+  }
+}

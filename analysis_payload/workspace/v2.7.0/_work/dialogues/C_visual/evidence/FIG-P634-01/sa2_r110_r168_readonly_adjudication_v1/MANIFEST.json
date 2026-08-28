@@ -1,0 +1,248 @@
+{
+  "schema": "C-FIG-P634-01-R110-SA2-R168-READONLY-MANIFEST-V1",
+  "root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P634-01\\sa2_r110_r168_readonly_adjudication_v1",
+  "hash_algorithm": "SHA256",
+  "manifested_file_count": 46,
+  "exclusions": [
+    {
+      "relative_path": "MANIFEST.json",
+      "reason": "self-hash exclusion"
+    },
+    {
+      "relative_path": "WRITE_STOPPED",
+      "reason": "seal marker is created after the complete payload and manifest"
+    }
+  ],
+  "files": [
+    {
+      "relative_path": "HANDOFF_C-FIG-P634-01-R110-SA2-R168-READONLY-ADJUDICATION-V1.json",
+      "bytes": 2382,
+      "sha256": "12A42F69B877F7698B003082F701A6675B8DFF0D01E26C8E363E19C3FFE0A1E7"
+    },
+    {
+      "relative_path": "SA2_R110_R168_READONLY_ADJUDICATION_REPORT.md",
+      "bytes": 5758,
+      "sha256": "B6C7E74ABC6B01E48644A2B5302BC167B54F7419DE89ED42B00D636EB1AA0FAB"
+    },
+    {
+      "relative_path": "after_font_audit.csv",
+      "bytes": 3542,
+      "sha256": "2AF1892DE1950EA52148E85B61E7D8463A9AECB80D07FB91793BB0642850EF91"
+    },
+    {
+      "relative_path": "after_model_route.md",
+      "bytes": 690,
+      "sha256": "81EC6264EAB1A118DD71CE059172B64CC5DA9511B01640646DFF620443AFB3EB"
+    },
+    {
+      "relative_path": "after_overlap_adjudication.md",
+      "bytes": 2629,
+      "sha256": "D9E340ADD68D05D5211CE25EDE048CFF73BF674B90FECF8A18895BF841C1F646"
+    },
+    {
+      "relative_path": "after_overlap_report.csv",
+      "bytes": 271,
+      "sha256": "203653C4E7BFB415A1F52D8D657F91DC8661877A92F3718C975C48A51953E969"
+    },
+    {
+      "relative_path": "after_pixel_measurements.csv",
+      "bytes": 910,
+      "sha256": "9D04DCC24804D108EB4DAA45765FE9208CBE6979D9179C002559132BC599C1D3"
+    },
+    {
+      "relative_path": "after_visual_acceptance.md",
+      "bytes": 3135,
+      "sha256": "A69885A1939466BC4D3E76178D7B75539C3FAA756559146C98636464ABDE0A25"
+    },
+    {
+      "relative_path": "ledgers/critical_roi_denominator.csv",
+      "bytes": 611,
+      "sha256": "F65C0A4F8466CBB6A7AE54D6A6B0F2354581966E8D6DC77A26CEDE82B09A641C"
+    },
+    {
+      "relative_path": "ledgers/manual_candidate_pair_adjudication.csv",
+      "bytes": 3841,
+      "sha256": "BAC020F176EBD4293611FA90C2CFF81344BA7671A1D18EC91292569E1D7BF692"
+    },
+    {
+      "relative_path": "ledgers/manual_object_review.csv",
+      "bytes": 5551,
+      "sha256": "C524E99A4D870283D2D0084F28BC51AE9B4F58134ED599C5039AF6F12E3A833A"
+    },
+    {
+      "relative_path": "ledgers/manual_roi_review.csv",
+      "bytes": 950,
+      "sha256": "01163B386D17944DAE1CD16784967636C9D0F459F5E8954436EEC2F9A968EA61"
+    },
+    {
+      "relative_path": "ledgers/manual_view_coverage.csv",
+      "bytes": 1521,
+      "sha256": "4B248C359FAB0C86FC17E2913BEF5652E8F8D540E3D1E83D85AD13FE5B570262"
+    },
+    {
+      "relative_path": "ledgers/object_denominator.csv",
+      "bytes": 3269,
+      "sha256": "9C0ABE0FEBF93351EA57065086A29CF806377052EE52A7EAAE74271917D0CA70"
+    },
+    {
+      "relative_path": "ledgers/object_geometry_components.csv",
+      "bytes": 223,
+      "sha256": "B9C1A5FF336E14C2AF097090B5BA866F80A74755DBF67C5258EF59F86B178F8F"
+    },
+    {
+      "relative_path": "ledgers/text_denominator.csv",
+      "bytes": 1158,
+      "sha256": "5039AF4D10B89270D18DF3526804EB7A0D8C89CF96E50A17EE3446CC7E274FC4"
+    },
+    {
+      "relative_path": "overlays/object_id_overlay_300dpi.png",
+      "bytes": 195683,
+      "sha256": "4CD12EAB352062D8AB2B4A91243756DB33ABFCB95D3CBE8A953A2E9134CB3005"
+    },
+    {
+      "relative_path": "overlays/semantic_class_overlay_300dpi.png",
+      "bytes": 176509,
+      "sha256": "0FF745FA335EC00DC4C4A54C4869CF8356E8608BA19BE5E746E1F961D73CA4F7"
+    },
+    {
+      "relative_path": "overlays/semantic_foreground_mask_overlay_300dpi.png",
+      "bytes": 186369,
+      "sha256": "869B76337256BC9F0479B096E867A3AC8C32736456921B2E886B7E8B79B3081E"
+    },
+    {
+      "relative_path": "overlays/text_measurement_overlay_300dpi.png",
+      "bytes": 188564,
+      "sha256": "22D4B39FE476326910B0440C571F9B77BF4F4FFC8824DB0F2F90BE3B14F20E34"
+    },
+    {
+      "relative_path": "raw/all_unordered_pair_geometry.csv",
+      "bytes": 82835,
+      "sha256": "1E18B12E9BE70B87AADD7ACBDC9A42500E9690132B8D378D64E5F434F9A8305B"
+    },
+    {
+      "relative_path": "raw/build_manifest.py",
+      "bytes": 1335,
+      "sha256": "F86E9FCF0259A31C9DDED27526DFD9B3D66AC8418BB1E4822AC1ED554CEAB2AE"
+    },
+    {
+      "relative_path": "raw/build_mechanical_visual_evidence.py",
+      "bytes": 14441,
+      "sha256": "1128A4A4D6D7AD3884434AEF15C2AC74E142C8807C4ED88D7DE8584B610A338F"
+    },
+    {
+      "relative_path": "raw/candidate_pixel_metrics.csv",
+      "bytes": 3633,
+      "sha256": "8CDCBF3D3959EA7675C4895A6E93C88FB0F4DD984FC6323DC582B93684CEE1B4"
+    },
+    {
+      "relative_path": "raw/machine_candidate_pair_geometry.csv",
+      "bytes": 3020,
+      "sha256": "10A01826FC5699971B2452DC29FCCD4DF9C2586F6C0DE1AE108EA7DE3460CF9E"
+    },
+    {
+      "relative_path": "raw/mechanical_identity_and_counts.json",
+      "bytes": 623,
+      "sha256": "547577535CDF5FCA69D1A2BF23B2CD3517DEEC127C8E0AFFE94E8B0C3B5A99EB"
+    },
+    {
+      "relative_path": "raw/text_raster_metrics.csv",
+      "bytes": 1705,
+      "sha256": "61FA662A796F86FC00D04C9D2E29317BC9AC1D45A6C39744DDAC4D349AA2CF00"
+    },
+    {
+      "relative_path": "renders/figure_only_300dpi.png",
+      "bytes": 126797,
+      "sha256": "97BF6B269BB5749A0BF952447097306B3FFD3BC0225BEAA04207A7CDDCC1096F"
+    },
+    {
+      "relative_path": "renders/figure_only_grayscale_300dpi.png",
+      "bytes": 59246,
+      "sha256": "F88C352E46ACAB60FD6BE4CB6921FF44E541E20EDC026561A1196C57A33994C1"
+    },
+    {
+      "relative_path": "renders/figure_with_caption_300dpi.png",
+      "bytes": 185655,
+      "sha256": "1F50F5F64EF178BDB97C0F4772435C9EC05EF14165486EBFA8F3393614BFB5BA"
+    },
+    {
+      "relative_path": "renders/figure_with_caption_grayscale_300dpi.png",
+      "bytes": 86079,
+      "sha256": "5D0BF6FBB61AEE3D99337BFEB612750D30A3DB93C3870D5588D6A97C3C5E6468"
+    },
+    {
+      "relative_path": "renders/physical_0684_300dpi.png",
+      "bytes": 1042950,
+      "sha256": "C3FBBBFE8BE83D0BBA6A775831D38BDAB298255EB9C62C33C35A3A80B1731329"
+    },
+    {
+      "relative_path": "rois/C01_native1x_300dpi.png",
+      "bytes": 14708,
+      "sha256": "E152AC76D0F74754356A724A86AE6B9762E94E9DC3C09E11ED577D860DF05236"
+    },
+    {
+      "relative_path": "rois/C01_nearest8x.png",
+      "bytes": 64253,
+      "sha256": "916CA5DD6CCD61B7423EB4C6F791870B10FCFBDD8EAD3E500688D6535F42A2DE"
+    },
+    {
+      "relative_path": "rois/C02_native1x_300dpi.png",
+      "bytes": 45246,
+      "sha256": "C9C7DD4C3D0C2B200A690810AE5B45DB98A84D5C27610E222C80CC0A6212BCFD"
+    },
+    {
+      "relative_path": "rois/C02_nearest8x.png",
+      "bytes": 143785,
+      "sha256": "FA0254EA373ADE0AD1555970C04DC8570CBEE78E09805D2F10798A2E3E93ADB1"
+    },
+    {
+      "relative_path": "rois/C03_native1x_300dpi.png",
+      "bytes": 33777,
+      "sha256": "C3C4D786D4AEBF5B2FA28D0D7334F7603CC580A83FE17CC407D23566CCC7275F"
+    },
+    {
+      "relative_path": "rois/C03_nearest8x.png",
+      "bytes": 92542,
+      "sha256": "1B6585B15F9DDCB22915536A6920DF01ACC2A6A98F3AEA9DA393955248925080"
+    },
+    {
+      "relative_path": "rois/C04_native1x_300dpi.png",
+      "bytes": 19954,
+      "sha256": "992ED14644BF28A86FB5A360A79E38504D39945BD49065D3B5DEC3FA71ACD852"
+    },
+    {
+      "relative_path": "rois/C04_nearest8x.png",
+      "bytes": 73654,
+      "sha256": "CAB12B1BC7C722F573D0E19D48EF3FBAF229B6E94487FF1F30478CCFA41FC081"
+    },
+    {
+      "relative_path": "rois/C05_native1x_300dpi.png",
+      "bytes": 28732,
+      "sha256": "619ACF0FA9D8B48F774655E8C13C252944FC94E4A2AE9B1F474BC9664597CB8F"
+    },
+    {
+      "relative_path": "rois/C05_nearest8x.png",
+      "bytes": 78731,
+      "sha256": "F7BBACF53A5B5BF43829E8543F5B744EB79B10B1F842FD2644FA39F2DE5A5120"
+    },
+    {
+      "relative_path": "rois/C06_native1x_300dpi.png",
+      "bytes": 58016,
+      "sha256": "B923B40804CF5368B133CEA324E76D641E07C68BE18C8EDF4CC66B53CEFB79D7"
+    },
+    {
+      "relative_path": "rois/C06_nearest8x.png",
+      "bytes": 143072,
+      "sha256": "86CA9151BAC012CA4BFA89357EE1108C10A5EF4E73115950915A5166B887D4A6"
+    },
+    {
+      "relative_path": "rois/critical_rois_native1x_contact.png",
+      "bytes": 216653,
+      "sha256": "92E135EBDC3CC9074B5DA42945C0BB344B60F491B91D758234368C6B9F8E988A"
+    },
+    {
+      "relative_path": "rois/critical_rois_nearest8x_contact.png",
+      "bytes": 251950,
+      "sha256": "95A132957763917C52F38D6418FFF94BCCB508EB63E620E6325723B0DBAC0736"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+semantic_id,manual_reviewer,scope,manual_verdict,manual_observation
+S01,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"variable and axes",PASS,"Horizontal p and vertical H_2(p) match the plotted source formula and standard binary-entropy notation."
+S02,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"ticks and units",PASS,"x ticks 0,1/2,1 and y ticks 0,1 encode the correct probability domain and bit-valued range."
+S03,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"maximum annotation",PASS,"The label 最大不确定性：1 比特 is placed at the unique p=1/2 maximum and agrees with the source expression."
+S04,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"endpoint annotations",PASS,"Both 确定性 labels correspond to degenerate Bernoulli distributions and the two zero-entropy endpoint markers."
+S05,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"symmetry annotation",PASS,"H_2(p)=H_2(1-p) is mathematically exact and geometrically centered within the symmetric curve."
+S06,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"caption/source consistency",PASS,"PDF caption matches the source caption: maximum 1 bit at p=1/2 and convergence to 0 at deterministic endpoints."
+S07,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"adjacent prose integration",PASS,"The paragraph below invokes symmetry and strict concavity to explain the same curve and unique maximum; notation remains consistent."
+S08,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"reading path",PASS,"Reader can follow endpoints -> rising/falling curve -> central maximum -> symmetry formula -> one-sentence caption without ambiguity."

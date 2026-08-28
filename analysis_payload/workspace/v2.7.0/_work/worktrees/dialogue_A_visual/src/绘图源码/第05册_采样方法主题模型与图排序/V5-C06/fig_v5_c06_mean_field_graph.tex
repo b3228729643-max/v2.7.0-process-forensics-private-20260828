@@ -1,0 +1,62 @@
+% v2.6.0 figure UID: FIG-P690-01
+% Mean-field comparison: real formula bands, an unobstructed transition corridor,
+% and a geometric break instead of an opaque white eraser.
+\tikzset{slfig-FIG-P690-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P690-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  latent/.style={circle,draw=SLMidBlue,fill=white,minimum size=10mm,inner sep=1pt},
+  qlatent/.style={latent,minimum size=15.5mm,font=\fontsize{9.2pt}{11.0pt}\selectfont},
+  observed/.style={circle,draw=SLDeepBlue,fill=SLDeepBlue,text=white,minimum size=10mm,inner sep=1pt},
+  param/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,minimum width=20mm,minimum height=8mm},
+  panel/.style={draw=SLRuleGray,rounded corners=3pt,densely dashed,inner xsep=5.8mm,inner ysep=5.5mm},
+  dep/.style={draw=SLMidBlue,line width=0.90pt},
+  input/.style={->,draw=SLDeepBlue,line width=0.80pt},
+  cutedge/.style={draw=SLRuleGray,densely dashed,line width=0.55pt},
+  cutmark/.style={draw=SLAccentOrange,line width=0.70pt},
+  >={Stealth[length=2.2mm,width=1.6mm]},
+  alt={对象—关系—结论：左右面板使用完全相同的节点位置。真实单文档后验中主题比例与主题指派耦合；平均场近似切断这一后验依赖，但仍保留观测词与固定主题词参数对责任度更新的输入。}]
+
+\node[font=\bfseries\fontsize{9.6pt}{11.5pt}\selectfont,text=SLDeepBlue] at (-4.40,2.55)
+  {真实后验：$\theta_m$ 与 $z_{mn}$ 耦合};
+\node[latent] (tl) at (-6.40,0.75) {$\theta_m$};
+\node[latent] (zl) at (-4.40,0.75) {$z_{mn}$};
+\node[observed] (wl) at (-2.40,0.75) {$w_{mn}$};
+\node[param] (pl) at (-4.40,-0.85) {$\boldsymbol\varphi$ 固定};
+\draw[dep] (tl) -- (zl);
+\draw[input] (wl) -- (zl);
+\draw[input] (pl) -- (zl);
+\node[panel,fit=(tl)(zl)(wl)(pl)] (leftpanel) {};
+\node[text=SLTextGray] at (-4.40,-2.25)
+  {$p(\theta_m,z_{mn}\mid w_m,\boldsymbol\varphi)$};
+
+\node[font=\bfseries\fontsize{9.6pt}{11.5pt}\selectfont,text=SLDeepBlue] at (4.40,2.55)
+  {平均场：切断近似后验依赖};
+\node[qlatent] (tr) at (2.40,0.75) {$q(\theta_m)$};
+\node[qlatent] (zr) at (4.40,0.75) {$q(z_{mn})$};
+\node[observed] (wr) at (6.40,0.75) {$w_{mn}$};
+\node[param] (pr) at (4.40,-0.85) {$\boldsymbol\varphi$ 固定};
+\draw[cutedge] (tr.east) -- (3.21,0.75);
+\draw[cutedge] (3.59,0.75) -- (zr.west);
+\draw[cutmark] (3.34,0.59) -- (3.39,0.89);
+\draw[cutmark] (3.41,0.59) -- (3.46,0.89);
+\draw[input] (wr) -- (zr);
+\draw[input] (pr) -- (zr);
+\node[panel,fit=(tr)(zr)(wr)(pr)] (rightpanel) {};
+\node[text=SLTextGray] at (4.40,-2.25)
+  {$q(\theta_m)\prod_n q(z_{mn})$};
+
+\draw[->,draw=SLDeepBlue,line width=0.85pt] (leftpanel.east) -- (rightpanel.west)
+  node[midway,above=2.2mm,font=\fontsize{9.2pt}{10.8pt}\selectfont,
+       text width=26mm,align=center]{选择可计算的\\乘积分布族};
+\node[draw=SLMidBlue,fill=SLSoftBlue,rounded corners=2pt,
+  text width=125mm,minimum height=10mm,inner xsep=3.0mm,inner ysep=1.8mm] at (0,-3.84)
+  {切断的是近似后验中的直接依赖，不是删除生成模型依赖；\\
+   $w_{mn}$ 与$\boldsymbol\varphi$仍进入$q(z_{mn})$的责任度更新。};
+\end{tikzpicture}
+\caption{固定主题--词参数$\boldsymbol\varphi$时，平均场近似把单文档后验中耦合的$\boldsymbol\theta_m$与$z_{mn}$替换为两个变分因子族；被切断的是近似后验中的直接依赖，固定参数仍通过词似然进入责任度更新}
+\label{fig:V5-C06-mean-field-graph}
+\end{figure}

@@ -1,0 +1,710 @@
+% STAGE11-CHAPTER: V3-C07
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V3-C07-CH01}; CH-02=\label{struct:V3-C07-CH02}; CH-03=\label{struct:V3-C07-CH03}; CH-04=\label{struct:V3-C07-CH04}; CH-05=\label{struct:V3-C07-CH05}; CH-06=\label{struct:V3-C07-CH06}; CH-07=\label{struct:V3-C07-CH07}; CH-08=\label{struct:V3-C07-CH08}; CH-09=\label{struct:V3-C07-CH09}; CH-10=\label{struct:V3-C07-CH10}; CH-11=\label{struct:V3-C07-CH11}; CH-12=\label{struct:V3-C07-CH12}; CH-13=\label{struct:V3-C07-CH13}; CH-14=\label{struct:V3-C07-CH14}; CH-15=\label{struct:V3-C07-CH15}; CH-16=\label{struct:V3-C07-CH16}; CH-17=\label{struct:V3-C07-CH17}; CH-18=\label{struct:V3-C07-CH18}; CH-19=\label{struct:V3-C07-CH19}; CH-20=\label{struct:V3-C07-CH20}; CH-21=\label{struct:V3-C07-CH21}; CH-22=\label{struct:V3-C07-CH22}; CH-23=\label{struct:V3-C07-CH23}; CH-24=\label{struct:V3-C07-CH24}; CH-25=\label{struct:V3-C07-CH25}; CH-26=\label{struct:V3-C07-CH26}; CH-27=\label{struct:V3-C07-CH27}; CH-28=\label{struct:V3-C07-CH28}; CH-29=\label{struct:V3-C07-CH29}; CH-30=\label{struct:V3-C07-CH30}; CH-31=\label{struct:V3-C07-CH31}; CH-32=\label{struct:V3-C07-CH32}; CH-33=\label{struct:V3-C07-CH33}; CH-34=\label{struct:V3-C07-CH34}; CH-35=\label{struct:V3-C07-CH35}; CH-36=\label{struct:V3-C07-CH36}; CH-37=\label{struct:V3-C07-CH37}
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=10; source_group=none; supplement=10
+
+\chapter{监督学习方法总结}\label{chap:V3-C07}
+\index{监督学习方法总结}
+\index{生成方法}
+\index{判别方法}
+\index{模型选择}
+
+% KNOWLEDGE-PLAN: KN-V3-C23-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：监督学习方法总结。}监督学习方法总结章地图以“从任务约束直达模型、准则、算法与评估选择”组织内容；请把路线拆成起点、关键工具和终点，并核对三者的输入输出类型能依次衔接。\par
+
+\SLChapterOpening{从任务约束直达模型、准则、算法与评估选择}{怎样在同一信息边界下比较已经学习的监督方法}{能拆分完整学习选择、辨别方法类别并执行无测试反馈的候选比较}{风险、正则化、数据划分、校准与复杂度}{任务或评价口径不清时返回\cref{sec:V3-C07-S01}；候选不可比时回看\cref{sec:V3-C07-S05}}
+\phantomsection\label{struct:V3-C07-CH01}
+% KNOWLEDGE-PLAN: KN-V3-C23-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}监督学习方法总结目标中的“用“任务、模型、策略、算法、评估”五个层次统一描述监督学习方法”必须可复核；请用“任务、模型、策略、算法、评估”五个层次统一描述监督学习方法，所得结果仅在“中间结果逐项包含首目标“用“任务、模型、策略、算法、评估”五个层次统一描述监督学习方法”声明的对象、条件与结论”时通过。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 用“任务、模型、策略、算法、评估”五个层次统一描述监督学习方法；
+  \item 区分生成方法与判别方法、概率模型与非概率模型，并指出这些分类维度并不等价；
+  \item 比较线性模型、核方法、树模型与集成方法的表示能力、计算代价和归纳偏好；
+  \item 从数据规模、特征类型、错误代价、概率需求和部署约束出发选择候选方法；
+  \item 能够设计无数据泄漏的训练、验证、选择和最终评估流程。
+\end{itemize}}
+
+\phantomsection\label{struct:V3-C07-CH02}
+% KNOWLEDGE-PLAN: KN-V3-C23-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}监督学习方法总结的最短先修明确要求“本章依赖前文关于监督学习、经验风险、结构风险、生成模型、判别模型、交叉验证和常见分类指标的定义”；请把首项“本章依赖前文关于监督学习、经验风险、结构风险、生成模型、判别模型、交叉验证和常见分类指标的定义”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章依赖前文关于监督学习、经验风险、结构风险、生成模型、判别模型、交叉验证和常见分类指标的定义”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章依赖前文关于监督学习、经验风险、结构风险、生成模型、判别模型、交叉验证和常见分类指标的定义，并默认读者已经学习感知机、\kNN{}、朴素贝叶斯、决策树、逻辑斯谛回归、最大熵模型、支持向量机、提升方法、隐马尔可夫模型与条件随机场。比较方法时必须固定任务、数据划分和评价指标，不能把不同实验条件下的结果直接排列。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V3-C07-CH03}
+% KNOWLEDGE-PLAN: KN-V3-C23-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}监督学习方法总结先修自检固定核验“能否写出经验风险最小化与带正则项的结构风险最小化目标”；请写出经验风险最小化与带正则项的结构风险最小化目标并写出中间结果，再按“中间结果直接回答首项“能否写出经验风险最小化与带正则项的结构风险最小化目标”并给出通过或失败”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否写出经验风险最小化与带正则项的结构风险最小化目标？
+  \item 能否解释训练集、验证集与测试集各自允许参与哪些决策？
+  \item 能否分别举出生成概率模型、判别概率模型和非概率判别模型？
+  \item 能否说明“模型表达能力强”不等于“有限样本上测试误差一定小”？
+\end{enumerate}
+若第1项或第2项不能独立作答，应先复习统计学习基本框架与模型选择；若第3项混淆，应回看朴素贝叶斯、逻辑斯谛回归和支持向量机；若第4项不确定，应回看过拟合、正则化和泛化能力。
+\end{precheckbox}
+
+\phantomsection\label{struct:V3-C07-CH04}
+\begin{dependencybox}
+学习任务 $\to$ 数据表示与损失；
+模型族 $\to$ 可表达的决策规则；
+学习策略 $\to$ 经验目标与正则化；
+学习算法 $\to$ 参数或结构的求解；
+验证协议 $\to$ 超参数和模型选择；
+独立测试 $\to$ 对部署风险的有限样本估计。
+\end{dependencybox}
+
+% KNOWLEDGE-PLAN: KN-V3-C23-CONCEPT-001 L1
+\paragraph{读前自检：模型认识卡：监督学习方案选择。}监督学习方案选择卡固定任务、训练/验证划分、有限候选$\mathcal F_m$与预算；请在训练集拟合每个候选并按同一验证指标选取一项，核对候选集和规则在看分数前已冻结。\par
+
+\begin{keypointbox}[title=模型认识卡：监督学习方案选择]
+\textbf{任务与输入：}固定任务、训练开发数据、有限候选集与资源约束。\quad
+\textbf{输出类型：}锁定的学习方案与一次最终评估规则。\par
+\textbf{模型：}候选模型族$\mathcal F_m$。\quad
+\textbf{策略：}在同一损失、数据边界和约束下比较验证风险。\quad
+\textbf{算法：}折内拟合、候选汇总、可行性筛选、近优并列决策与全量重训。\par
+\textbf{预测：}由锁定候选给出。\quad
+\textbf{关键假设与边界：}候选和规则须在查看验证结果前冻结；测试集不得返回选择闭环。
+\end{keypointbox}
+
+\phantomsection\label{struct:V3-C07-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V3-C07
+\index[symbols]{t-eq-x-i-y-i-i-eq-1-n--sf40137013193@$T=\{(x_i,y_i)\}_{i=1}^{N}$：监督训练数据}
+\index[symbols]{minus-mathcalx-minus-minus-mathcaly-minus--s096552d9aa85@$\mathcal X,\mathcal Y$：输入空间与输出空间}
+\index[symbols]{minus-mathcalf-minus--s3e6dd80e70d2@$\mathcal F$：候选模型或假设空间}
+\index[symbols]{f-minus-theta-minus--s7d1528fa07f2@$f_\theta$：参数为$\theta$的模型}
+\index[symbols]{l-y-f-x--se7ce66d0ac00@$L(y,f(x))$：单样本损失}
+\index[symbols]{minus-widehatr-minus-n-f--s7affce831651@$\widehat R_N(f)$：经验风险}
+\index[symbols]{minus-omega-minus-f--s22b33fe862bc@$\Omega(f)$：复杂度或正则项}
+\index[symbols]{minus-lambda-minus--s37db2bf57b72@$\lambda$：监督学习模型选择中的正则化强度}
+\index[symbols]{minus-mathcalm-minus--s04f70db7c2e1@$\mathcal M$：待比较的方法与超参数配置}
+\index[symbols]{c-a-y--s6eeafce8e916@$C(a,y)$：采取动作$a$而真实标签为$y$的代价}
+% STAGE19-SYMBOL-INDEX-END: V3-C07
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$T=\{(x_i,y_i)\}_{i=1}^{N}$ & 样本集合 & 监督训练数据\\
+$\mathcal X,\mathcal Y$ & 集合 & 输入空间与输出空间\\
+$\mathcal F$ & 函数集合 & 候选模型或假设空间\\
+$f_\theta$ & $\mathcal X\to\mathcal Y$或分布 & 参数为$\theta$的模型\\
+$L(y,f(x))$ & $[0,\infty)$ & 单样本损失\\
+$\widehat R_N(f)$ & $[0,\infty)$ & 经验风险\\
+$\Omega(f)$ & $[0,\infty)$ & 复杂度或正则项\\
+$\lambda$ & $[0,\infty)$ & 监督学习模型选择中的正则化强度\\
+$\mathcal M$ & 有限候选集合 & 待比较的方法与超参数配置\\
+$C(a,y)$ & $[0,\infty)$ & 采取动作$a$而真实标签为$y$的代价\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{监督学习方法的共同框架}{sec:V3-C07-S01}
+\phantomsection\label{struct:V3-C07-CH06}
+监督学习不是某一个固定算法，而是一类从带标签样本学习预测规则的问题。比较方法之前应先问五个问题：预测什么、允许使用什么信息、如何衡量错误、在什么模型族中搜索、通过什么计算过程得到结果。若这五项没有固定，所谓“哪个算法更好”没有可检验含义。
+
+\knowledgeanchor{SLM-12-00-001}{监督学习方法总结}
+监督学习方法可以写成闭环：任务给出$(\mathcal X,\mathcal Y)$和数据生成条件；模型规定$f\in\mathcal F$；策略规定风险或约束；算法根据有限样本求出$\widehat f$；评估在未参与选择的数据上估计误差。数据预处理、特征构造和阈值选择也属于学习流程，必须与模型一起接受验证。
+
+\phantomsection\label{struct:V3-C07-CH07}
+\phantomsection\label{def:V3-C07-learning-procedure}
+% KNOWLEDGE-PLAN: KN-V3-C23-CONCEPT-003 L1
+\paragraph{读前自检：本章工作性框架：监督学习方案。}把本章工作性框架：监督学习方案放在“这个四元组是本讲义用于检查比较条件是否齐全的记号，不作为来源教材中的编号定义”下考察：把$\mathscr A$展开一次并检查其类型或边界，并检查它接收$T$并输出预测规则及其适用条件说明。\par
+
+\begin{keypointbox}[title=本章工作性框架：监督学习方案]
+为便于比较本章已经学习的方法，设训练样本$T$来自未知分布$P(X,Y)$，并把一次完整学习选择记为四元组
+\[
+\mathscr A=(\mathcal F,\mathcal J,\mathcal O,\mathcal E),
+\]
+其中$\mathcal F$是模型族，$\mathcal J$是由损失与正则项构成的学习准则，$\mathcal O$是求解准则的算法，$\mathcal E$是固定的数据划分、指标和选择规则。这个四元组是本讲义用于检查比较条件是否齐全的记号，不作为来源教材中的编号定义；它接收$T$并输出预测规则及其适用条件说明。
+\end{keypointbox}
+
+\phantomsection\label{struct:V3-C07-CH08}
+\textbf{模型。}模型描述输入与输出之间允许出现的关系。线性分类器用超平面组织决策；决策树用分区组织决策；概率模型给出条件分布或联合分布；核方法在由核决定的特征空间中使用线性结构；集成方法组合多个基学习器。模型族既提供表达能力，也引入归纳偏好。
+
+% KNOWLEDGE-PLAN: KN-V3-C23-CONCEPT-004 L1
+\paragraph{读前自检：学习策略。}监督学习策略以损失$L$定义经验风险$\widehat R_N(f)$，并可加$\lambda\Omega(f)$形成结构风险；请把同一候选$f$代入两式，核对正则项只在$\lambda>0$时改变候选排序。\par
+
+\knowledgeanchor{SLM-12-03-001}{学习策略}
+\phantomsection\label{struct:V3-C07-CH09}
+\textbf{学习策略。}给定损失$L$，经验风险为
+\[
+\widehat R_N(f)=\frac1N\sum_{i=1}^{N}L(y_i,f(x_i)).
+\]
+结构风险最小化进一步求
+\[
+\widehat f\in\arg\min_{f\in\mathcal F}
+\left\{\widehat R_N(f)+\lambda\Omega(f)\right\}.
+\]
+不同方法的差异可能来自模型族，也可能来自损失、正则化或约束；只比较最终公式而忽略这些层次会产生错误归因。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V3-C07-CH11}
+% CORE-DERIVATION-PLAN: KN-V3-C23-DERIVATION-001
+\SLKnowledgeBridge{分离参数拟合、超参数选择与最终测试，阻断评价信息回流。}{预先固定的候选集合 $\mathcal M$、训练集、验证集与封存测试集。}{每个候选只访问训练部分拟合；验证集只用于选择；测试集在方案锁定前不得访问。}{先条件于训练数据观察：训练风险同时参与了参数最小化，因此不是所选模型的独立泛化评价。}
+
+\begin{derivationgoalbox}
+说明为什么模型选择必须使用未参与拟合的数据，而不能用训练风险直接选择任意复杂度。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+候选集合$\mathcal M$在查看验证与测试结果前固定；训练、验证、测试样本按任务允许的独立或分组机制划分。对每个$m$，训练算法只访问训练部分；损失可积，最终测试集在方案锁定前不参与任何选择。
+\end{derivationprepbox}
+
+\textbf{推导第1步：固定候选。}对每个预先给定的候选$m\in\mathcal M$，训练算法只使用训练集得到$\widehat f_m$。训练风险同时参与了参数选择，因而对该模型的未知风险通常偏乐观。
+
+\textbf{推导第2步：条件比较。}给定训练集以后，$\widehat f_m$已经固定。独立验证样本上的损失均值
+\[
+\widehat R_{\mathrm{val}}(\widehat f_m)
+=\frac1{n_{\mathrm{val}}}\sum_{i\in I_{\mathrm{val}}}
+L(y_i,\widehat f_m(x_i))
+\]
+才是在相同条件下比较候选的估计量。所有预处理参数也必须仅由训练部分确定。
+
+\textbf{推导第3步：选择后再评估。}令
+\[
+\widehat m\in\arg\min_{m\in\mathcal M}
+\widehat R_{\mathrm{val}}(\widehat f_m).
+\]
+验证集已经参与$\widehat m$的选择，因此不能再把同一个验证误差报告为无偏最终性能。应在锁定整个方案后，用独立测试集估计$R(\widehat f_{\widehat m})$。
+
+\phantomsection\label{struct:V3-C07-CH12}
+\begin{theorem}[有限候选的验证误差控制]\label{thm:V3-C07-validation}
+给定训练集后，设$M=|\mathcal M|<\infty$，各候选模型固定，验证损失独立且位于$[0,1]$。则对任意$\delta\in(0,1)$，以至少$1-\delta$的概率，对所有$m\in\mathcal M$同时成立
+\[
+R(\widehat f_m)\leq
+\widehat R_{\mathrm{val}}(\widehat f_m)
++\sqrt{\frac{\log M+\log(1/\delta)}{2n_{\mathrm{val}}}}.
+\]
+\end{theorem}
+
+\phantomsection\label{struct:V3-C07-CH13}
+\begin{proof}
+证明目标是得到一个对全部候选同时成立的事件。固定$m$后，对独立的$[0,1]$损失应用单侧Hoeffding不等式，得到
+\[
+P\!\left(R(\widehat f_m)-\widehat R_{\mathrm{val}}(\widehat f_m)>\epsilon\right)
+\leq e^{-2n_{\mathrm{val}}\epsilon^2}.
+\]
+对$M$个候选取并集界，任一候选违反该界的概率不超过$M e^{-2n_{\mathrm{val}}\epsilon^2}$。令该上界等于$\delta$并解出$\epsilon$，得到定理中的根号项。由于事件对全部$m$同时成立，也适用于由验证集选出的$\widehat m$。这只控制预先给定的有限候选集合；反复查看验证结果并继续扩展候选会改变$M$及选择过程，需使用嵌套验证或新的独立数据。证毕。
+\end{proof}
+
+
+\SLReviewSection{生成方法与判别方法比较}{sec:V3-C07-S02}
+生成方法学习联合分布$P(X,Y)$，常通过$P(Y)P(X\mid Y)$分解后再用Bayes公式预测；判别方法直接学习$P(Y\mid X)$或决策函数$f(X)$。这个分类关注学习对象，不等同于“是否输出概率”。逻辑斯谛回归是判别概率模型，支持向量机通常是判别非概率模型，朴素贝叶斯和隐马尔可夫模型属于生成概率模型，条件随机场属于判别概率模型。
+
+\phantomsection\label{struct:V3-C07-CH15}
+\textbf{概率解释。}生成方法能够计算或近似$P(X)$、处理某些缺失变量并从模型采样，但需要为输入分布作较强假设。判别方法把建模能力集中于预测所需的条件边界，通常减少对$P(X)$无关部分的假设。若生成假设接近真实，小样本时额外结构可能降低方差；若假设偏离严重，偏差会抵消这一优势。
+
+\begin{comparisonbox}
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 维度 & 生成方法 & 判别方法\\ \midrule
+学习对象 & $P(X,Y)$或$P(Y)P(X\mid Y)$ & $P(Y\mid X)$或决策函数\\
+预测 & 由联合分布导出条件规则 & 直接计算条件概率或得分\\
+额外能力 & 可描述输入、采样、部分缺失推断 & 聚焦预测边界，少建模无关变化\\
+主要风险 & 输入分布假设错误 & 条件模型仍可能失配或过拟合\\
+代表方法 & 朴素贝叶斯、HMM & 逻辑斯谛回归、SVM、CRF\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+
+\SLReviewSection{概率模型与非概率模型}{sec:V3-C07-S03}
+\knowledgeanchor{SLM-12-02-001}{模型}
+概率模型以满足非负性和归一化的分布描述不确定性；非概率模型可以输出距离、间隔、排序分数或确定性结构。二者都能产生决策，但分数不能在未经验证时解释为概率。即使模型输出归一化概率，有限样本、正则化、类别重加权和分布漂移也可能导致校准偏差。
+
+\phantomsection\label{struct:V3-C07-CH14}
+\textbf{几何解释。}在线性二分类中，$w^Tx+b=0$给出同一个超平面。逻辑斯谛回归把有符号法向距离单调映射为概率，支持向量机把距离与间隔损失联系起来，感知机只依据符号纠正误分类。几何边界可以相近，但训练策略和输出语义不同。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C23-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：学习算法。}从监督学习方法总结中的学习算法的条件“算法的迭代变量、停止条件与数值精度会影响训练成本，但不能改变模型和损失所规定的统计目标”出发，请把“算法的迭代变量、停止条件与数值精度会影响训练成本，但不能改变模型和损失所规定的统计目标”中的已声明对象依次标成输入、输出与判据；所得量应符合测试集只有从锁定方案到一次最终评价的单向边，若测试结果返回候选族或超参数，测试集便转化为新的验证信息。\par
+
+\SLTeachSection{线性模型、核方法与集成方法}{sec:V3-C07-S04}
+\knowledgeanchor{SLM-12-04-001}{学习算法}
+学习算法把策略变成可执行的求解过程。线性模型通常优化有限维参数；核方法通过Gram矩阵或核展开在隐式特征空间求解；树模型递归选择分裂；提升方法按轮加入基学习器。算法的迭代变量、停止条件与数值精度会影响训练成本，但不能改变模型和损失所规定的统计目标。
+
+\phantomsection\label{struct:V3-C07-CH17}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C07/fig_v3_c07_selection_loop.tex}
+% FIGURE-KNOWLEDGE-MAP: fig:V3-C07-selection-loop -> SLM-12-04-001
+图\ref{fig:V3-C07-selection-loop}把训练、验证反馈限制在候选选择闭环内；测试集只有从锁定方案到一次最终评价的单向边，若测试结果返回候选族或超参数，测试集便转化为新的验证信息。
+
+% KNOWLEDGE-PLAN: KN-V3-C23-COMPARISON-002 L1
+\paragraph{读前自检：易混淆概念对比：线性模型、核方法与集成方法。}线性模型、核方法与集成方法依赖“对比表首个数据行是“线性模型｜原特征或基函数上线性｜常为$O(Nd)$级迭代｜快速、可解释、易正则化””；请据此按列复述“线性模型｜原特征或基函数上线性｜常为$O(Nd)$级迭代｜快速、可解释、易正则化”中的对象、假设与结论，并直接核对各列均对应首行对象“线性模型”，且未与表中下一行互换。\par
+
+\begin{comparisonbox}
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 方法族 & 归纳偏好 & 主要计算量 & 典型优势\\ \midrule
+线性模型 & 原特征或基函数上线性 & 常为$O(Nd)$级迭代 & 快速、可解释、易正则化\\
+核方法 & 核定义的平滑相似性 & 朴素Gram存储$O(N^2)$ & 小中样本非线性边界\\
+树模型 & 轴对齐递归分区 & 依分裂搜索而定 & 混合类型、非线性与交互\\
+集成方法 & 多个弱或不稳定模型组合 & 基学习器成本乘轮数 & 提升预测能力、控制偏差或方差\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+
+\SLTeachSection{模型选择与适用条件}{sec:V3-C07-S05}
+\knowledgeanchor{SLM-12-01-001}{适用问题}
+方法选择应先写成约束表：输出是类别、序列还是连续量；是否需要概率；错误代价是否对称；训练样本与特征维数多大；特征是否稀疏、混合或具有序列结构；预测延迟、内存和解释性要求是什么；分布漂移如何监测。候选方法由这些条件筛出，再用同一验证协议比较，而不是从算法名称出发寻找理由。
+
+\phantomsection\label{struct:V3-C07-CH16}
+\textbf{优化解释。}模型选择是外层离散优化，参数拟合是内层优化。设候选配置为$m$，训练算子为$\widehat\theta(m;T_{\mathrm{tr}})$，则外层目标是
+\[
+\min_{m\in\mathcal M}
+\widehat R_{\mathrm{val}}
+\bigl(\widehat\theta(m;T_{\mathrm{tr}})\bigr).
+\]
+若同一验证集被反复用于扩展$\mathcal M$，外层同样会过拟合。嵌套交叉验证把外层性能评估与内层超参数选择分开。
+
+\phantomsection\label{struct:V3-C07-CH10}
+\textbf{学习算法。}下面给出一个不依赖具体编程语言的方法筛选流程。它要求先固定指标和约束，再产生候选；测试集只在方案锁定后使用一次。
+
+\phantomsection\label{struct:V3-C07-CH21}
+\textbf{参数含义。}候选集合$\mathcal M$含方法族、特征流程和超参数；$K$是交叉验证折数；$\tau$是允许的最大延迟或资源阈值；$\epsilon$是把验证性能视为近似相当的容差。
+
+\phantomsection\label{struct:V3-C07-CH19}
+\phantomsection\label{struct:V3-C07-CH20}
+\phantomsection\label{struct:V3-C07-CH22}
+\phantomsection\label{struct:V3-C07-CH23}
+\phantomsection\label{struct:V3-C07-CH24}
+\phantomsection\label{struct:V3-C07-CH25}
+% KNOWLEDGE-PLAN: KN-V3-C23-CONCEPT-007 L1
+\paragraph{读前自检：受约束的监督学习方案选择流程。}受约束的监督学习方案选择流程以“一次测试：锁定方案后只在独立测试集评价一次”为约束；请把$T\setminus D_k$展开一次并检查其类型或边界，并确认先应用硬约束得到可行集$\mathcal V$。\par
+
+\begin{keypointbox}[title=受约束的监督学习方案选择流程]
+\phantomsection\label{alg:V3-C07-selection}
+\begin{enumerate}[leftmargin=2.2em,nosep]
+  \item \textbf{冻结：}在查看验证结果前固定\kFold{}划分、候选$\mathcal M$、折内预处理、主指标、资源阈值$\tau_r$、$\epsilon$近优与并列规则。
+  \item \textbf{折内拟合：}对每个$(m,k)$，只用$T\setminus D_k$拟合预处理器和模型，只在$D_k$计算分数与资源量；失败候选位置化记录并退出比较。
+  \item \textbf{同口径汇总：}只有恰有$K$个成功折的候选才按共同分母汇总；先应用硬约束得到可行集$\mathcal V$。
+  \item \textbf{选择与重训：}在$\mathcal V$中形成$\epsilon$近优集，再按冻结的复杂度、波动和并列规则选$m^*$，最后用全部开发数据重训$f^*$。
+  \item \textbf{一次测试：}锁定方案后只在独立测试集评价一次；测试结果不得反向改变候选、阈值或预处理。
+\end{enumerate}
+\end{keypointbox}
+\SLRobustImplementationStrip{每折记录至少含候选、折号、内部停止状态、验证指标和资源量；任一预处理都必须在训练折内拟合。无可行候选与全量重训失败均应显式报告，不能伪造“最佳方案”。}
+
+有限候选数与固定的\kFold{}保证外层选择在有限步后停止；所有入选候选都以相同分母$K$和预先冻结的汇总口径比较，内层最优化仍按各模型已经给定的数学停止准则求解。
+
+独立测试集不参与上述选择；$m^*$固定后，只用它评价最终泛化误差一次。
+
+\phantomsection\label{struct:V3-C07-CH26}
+\textbf{训练时间复杂度。}若候选$m$在一个训练折上的拟合成本为$C_m$、验证预测成本为$E_m$，\kFold{}选择总成本约为$\sum_m K(C_m+E_m)$，另加所选方案在全部开发数据上的一次重训。
+
+\phantomsection\label{struct:V3-C07-CH27}
+\textbf{预测时间复杂度。}最终部署预测复杂度由所选模型给出，记为$P_{m^*}(d)$；模型选择过程不能用验证阶段的总成本替代该部署成本。\\
+\textbf{存储与空间复杂度。}除数据外，串行执行需要当前候选模型的最大工作存储量$S_m$及折外预测$O(N)$；并行执行多个候选时，各候选的工作存储量近似相加。\textbf{复杂度假设：}各折顺序复用存储空间；缓存全部候选会增加到近似求和规模。
+
+\textbf{正确性依据。}每个候选的分数只由其未参与拟合的验证折产生，硬约束先于并列决胜规则应用；方案锁定后才用全部开发数据重训，并且测试集只评估一次。因此所得方案满足预先给定的可行性与选择规则；内层训练未完成或没有可行候选时，不产生虚假的最优方案。
+
+\textbf{更新顺序与停止情形。}依次固定候选与数据划分、逐折拟合和验证、汇总可比指标、应用既定并列规则、重训选中方案，最后一次性测试。若没有可比较的候选、某折缺少必要类别或资源指标口径不一致，应停止比较或排除相应候选并说明原因；外层枚举结束并不表示内层训练已经满足停止准则。
+
+
+\SLAdvancedSection{综合自检与学习路线}{sec:V3-C07-S06}
+模型选择应同时说明任务、数据划分、预处理、候选模型、评价指标、资源约束与失效条件，才能比较不同方案并解释结论。
+
+\phantomsection\label{struct:V3-C07-CH18}
+\phantomsection\label{struct:V3-C07-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[代价与资源共同约束下的方法选择]\label{exm:V3-C07-selection}
+某二分类任务的验证结果如下：线性模型的召回率为$0.91$、延迟2毫秒；核模型的召回率为$0.93$、延迟18毫秒；提升树的召回率为$0.94$、延迟7毫秒。部署要求延迟不超过10毫秒，且把召回率相差不超过$0.02$视为近似相当。应如何选择？
+
+\phantomsection\label{struct:V3-C07-CH33}
+\end{example}
+{\let\needspace\Needspace\setlength{\smallskipamount}{3pt}\SLExampleSolutionHeading{exm:V3-C07-selection}}
+\begin{solution}
+\SLReadTranslation{选择顺序是先满足延迟硬约束，再只在可行模型中比较召回率；$0.02$容差用于判断可行候选是否近似相当。}
+\SolGiven 线性、核、提升树的$(\text{召回率},\text{延迟})$依次为$(0.91,2)$、$(0.93,18)$、$(0.94,7)$；延迟上限为$10$毫秒，近似相当阈值为$0.02$。
+\SLMethodTrigger{硬约束必须先筛掉不可行候选；性能容差不能让违反资源约束的模型重新进入比较。}
+\SolPlan 先按延迟构造可行集，再比较可行模型的召回率差是否超过$0.02$，最后按冻结规则选模并复核资源与性能。
+\SolDerive
+记线性、核与提升树模型分别为$L,K,B$。候选的召回率与延迟为
+\[
+\begin{array}{c|ccc}
+m&L&K&B\\ \hline
+r_m&0.91&0.93&0.94\\
+t_m\text{（毫秒）}&2&18&7
+\end{array}
+\]
+延迟硬约束先确定可行集：
+\[
+\mathcal F
+=\{m\in\{L,K,B\}:t_m\leq 10\}
+=\{L,B\},
+\qquad K\notin\mathcal F.
+\]
+在可行候选中，召回率差为
+\[
+|r_B-r_L|=|0.94-0.91|=0.03>0.02,
+\]
+所以两者不属于预先定义的“近似相当”，选择结果为
+\[
+m^*=\underset{m\in\mathcal F}{\arg\max}\ r_m=B.
+\]
+\SolCheck 所选$B$满足$7\le10$毫秒，且相对唯一另一可行候选$L$有$0.03>0.02$的召回优势；$K$虽比$L$的召回率高，但因$18>10$不在可行集。
+\SolAnswer 按预先冻结的延迟硬约束与召回容差，应选择提升树$B$；锁定后仍须在独立测试集报告召回率、误判代价和实际延迟。
+\end{solution}
+
+\phantomsection\label{struct:V3-C07-CH28}
+% KNOWLEDGE-PLAN: KN-V3-C23-BOUNDARY-001 L1
+\paragraph{读前自检：适用条件与局限：综合自检与学习路线。}监督学习方案框架要求输入、输出、损失和验证协议都明确，且数据划分代表部署依赖结构；请把时间序列随机打散作为单一违例，指出信息泄漏位置，并改用保持时间顺序的划分核对。\par
+
+\begin{applicabilitybox}
+\textbf{适用条件。}本章框架适用于可以明确输入、输出、损失和验证协议的监督任务。训练与验证样本应代表部署条件，标签含义应稳定，评价指标必须与实际错误代价一致，候选模型及调整预算应在查看测试结果前确定。序列、分组或时间数据还必须使用尊重依赖结构的划分。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V3-C07-CH29}
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+有限验证不能证明模型在所有未来分布上可靠；稀有子群、极端代价和分布漂移可能没有被平均指标揭示。统计预测能力也不能自动提供因果解释、公平性或安全保证。候选集合之外的方法不会被比较，计算预算本身会限制可达到的结果。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V3-C07-CH30}
+% KNOWLEDGE-PLAN: KN-V3-C23-BOUNDARY-003 L1
+\paragraph{读前自检：常见错误与误用边界：综合自检与学习路线。}对综合自检与学习路线，条件“边界框首项禁止用测试集反复调参，再把最后一次测试分数称为独立评估”不可省；请把固定错误“用测试集反复调参，再把最后一次测试分数称为独立评估”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，再用改写后的运算或判断有定义，且不再触发“用测试集反复调参，再把最后一次测试分数称为独立评估”作检查。\par
+
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 用测试集反复调参，再把最后一次测试分数称为独立评估；
+  \item 在交叉验证之前用全数据做标准化、特征选择或缺失值填补；
+  \item 把算法名称当作完整方案，忽略损失、正则化、停止条件和阈值；
+  \item 只比较平均分数，不报告波动、校准、子群表现与资源约束；
+  \item 看到验证结果后修改指标、候选集合或容差，却不重新建立独立验证层。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V3-C07-CH31}
+\begin{comparisonbox}
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 概念对 & 第一项 & 第二项\\ \midrule
+模型与算法 & 规定可表达的函数或分布 & 规定如何求得参数或结构\\
+生成与概率 & 生成/判别按学习对象划分 & 概率/非概率按输出数学对象划分\\
+验证误差与测试误差 & 用于选择方案 & 用于锁定方案后的最终估计\\
+高表达能力与高泛化能力 & 描述可拟合关系的丰富程度 & 描述未知样本上的预测表现\\
+相关解释与因果解释 & 描述模型条件关联 & 需要额外识别假设和研究设计\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+
+\phantomsection\label{struct:V3-C07-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V3-C07-CH35}
+本章共10道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C07-S01-01}
+分别指出模型、策略、算法和评估协议在“带$L_2$正则的逻辑斯谛回归，用阻尼Newton法训练并以五折交叉验证选择$\lambda$”中的对应部分。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C07-S01-01}
+\begin{chapterexercisesolution}{ex:V3-C07-S01-01}
+模型是线性对数几率条件概率族
+\[
+P_w(Y=1\mid x)=\sigma(w^{\mathsf T}x+b).
+\]
+策略是对每个候选$\lambda\geq0$最小化
+\[
+J_\lambda(w,b)
+=-\sum_i\log P_{w,b}(y_i\mid x_i)
++\frac{\lambda}{2}\lVert w\rVert_2^2.
+\]
+算法是带步长$\eta_t\in(0,1]$的阻尼Newton更新
+\[
+\theta_{t+1}=\theta_t-\eta_t[\nabla^2J_\lambda(\theta_t)]^{-1}
+\nabla J_\lambda(\theta_t).
+\]
+评估协议是五折、折内预处理、候选$\lambda$集合、指标与最终重训规则；四者任一改变都会形成不同学习方案。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C07-S01-02}
+验证集有200个样本，候选模型数$M=8$，取$\delta=0.05$。计算定理\ref{thm:V3-C07-validation}中的同时偏差上界。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C07-S01-02}
+\begin{chapterexercisesolution}{ex:V3-C07-S01-02}
+代入验证样本数$n=200$、候选数$M=8$及$\delta=0.05$，同时偏差项为
+\[
+\begin{aligned}
+\varepsilon
+&=\sqrt{\frac{\log M+\log(1/\delta)}{2n}}\\
+&=\sqrt{\frac{\log8+\log20}{400}}\\
+&=\sqrt{\frac{2.0794+2.9957}{400}}\\
+&\approx0.1126.
+\end{aligned}
+\]
+因此定理给出的同时事件形式为
+\[
+\max_{1\leq m\leq8}\bigl(R_m-\widehat R_m\bigr)\leq0.1126
+\]
+（概率至少$1-\delta$）。这是与定理一致的单侧同时上界；它不控制$\widehat R_m-R_m$这一反方向。若需要双侧绝对偏差，必须改用含$log(2M/\delta)$的常数。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C07-S02-01}
+判断逻辑斯谛回归、朴素贝叶斯、支持向量机和条件随机场属于生成方法还是判别方法，并说明依据。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C07-S02-01}
+\begin{chapterexercisesolution}{ex:V3-C07-S02-01}
+分类依据是学习对象：
+\[
+\begin{array}{c|c|c}
+\text{方法}&\text{主要学习对象}&\text{类别}\\ \hline
+\text{逻辑斯谛回归}&P(Y\mid X)&\text{判别}\\
+\text{朴素贝叶斯}&P(Y)P(X\mid Y)&\text{生成}\\
+\text{支持向量机}&g(X)\text{及分离边界}&\text{判别}\\
+\text{条件随机场}&P(Y_{1:n}\mid X)&\text{判别}
+\end{array}
+\]
+生成模型可由联合分布得到条件分布
+\[
+\begin{aligned}
+P(Y=y\mid X=x)
+  &=\frac{P(Y=y)P(X=x\mid Y=y)}{\sum_{y'}P(Y=y')P(X=x\mid Y=y')},\\
+\widehat y(x)
+  &=\arg\max_y P(Y=y\mid X=x).
+\end{aligned}
+\]
+但分类仍由其建模对象决定，而不是由是否出现概率符号决定。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C07-S02-02}
+某文本分类任务只有很少标注样本，但已有可信的类别词频模型。解释生成方法可能具有的优势以及必须核查的假设。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C07-S02-02}
+\begin{chapterexercisesolution}{ex:V3-C07-S02-02}
+若可信词频模型提供类条件分布，预测可写为
+\[
+P(Y=k\mid x)
+\propto P(Y=k)P(x\mid Y=k).
+\]
+在朴素分解下，参数结构进一步减少为
+\[
+P(x\mid Y=k)=\prod_{j}P(x_j\mid Y=k),
+\]
+少量标注数据主要估计先验与少数修正量，可能降低方差。必须核验
+\[
+\text{条件独立近似、词表一致、未登录词平滑、类别先验稳定},
+\]
+否则结构优势会转化为系统偏差。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C07-S03-01}
+某SVM输出得分$3.2$。能否据此报告正类概率为$0.96$？说明还需要什么步骤。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C07-S03-01}
+\begin{chapterexercisesolution}{ex:V3-C07-S03-01}
+不能直接报告。对任意$c>0$，分类边界满足
+\[
+\operatorname{sign}g(x)=\operatorname{sign}[c\,g(x)],
+\]
+但数值$3.2$会变成$3.2c$，说明得分尺度不是概率。若需概率，应在独立校准集或折外预测上拟合，例如
+\[
+\widehat P(Y=1\mid g)
+=\frac1{1+\exp(Ag+B)},
+\]
+再用Brier分数、对数损失和可靠性图验证。校准拟合与评估不能复用同一训练得分而忽略过拟合。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C07-S03-02}
+给定三类概率$(0.6,0.3,0.1)$和0—1损失，求Bayes动作；若把真实第2类判成第1类的代价改为5，说明还需怎样计算。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C07-S03-02}
+\begin{chapterexercisesolution}{ex:V3-C07-S03-02}
+在0--1损失下，条件风险为
+\[
+R(a\mid x)=1-P(Y=a\mid x),
+\]
+故
+\[
+a^*=\arg\min_aR(a\mid x)
+=\arg\max_aP(Y=a\mid x)=1.
+\]
+一般代价矩阵$C(a,y)$下必须计算
+\[
+R(a\mid x)=\sum_{y=1}^{3}C(a,y)P(Y=y\mid x),
+\qquad
+a^*\in\arg\min_aR(a\mid x).
+\]
+只给$C(1,2)=5$不足以比较全部动作，还需其余代价元素。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C07-S04-01}
+样本数$N$很大而特征维数$d$中等时，比较线性模型与需要完整Gram矩阵的核方法的存储需求。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C07-S04-01}
+\begin{chapterexercisesolution}{ex:V3-C07-S04-01}
+忽略共同训练数据后，线性模型参数状态为
+\[
+w\in\mathbb R^d,
+\qquad
+S_{\mathrm{linear}}=O(d).
+\]
+完整核方法保存Gram矩阵
+\[
+G\in\mathbb R^{N\times N},
+\qquad
+S_{\mathrm{kernel}}=O(N^2).
+\]
+当$N\gg d$时，
+\[
+\frac{S_{\mathrm{kernel}}}{S_{\mathrm{linear}}}
+=O\!\left(\frac{N^2}{d}\right),
+\]
+二次存储通常成为瓶颈，可考虑线性模型、核近似或分块求解。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C07-S04-02}
+解释为什么提升树虽由简单树组成，整体模型仍可具有很强表达能力。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C07-S04-02}
+\begin{chapterexercisesolution}{ex:V3-C07-S04-02}
+提升树的整体函数是加法模型
+\[
+F_M(x)=F_0(x)+\nu\sum_{m=1}^{M}T_m(x),
+\qquad 0<\nu\leq1.
+\]
+每轮树拟合当前负梯度或重加权误差：
+\[
+r_{mi}=-\left.\frac{\partial L(y_i,F)}{\partial F}\right|_{F=F_{m-1}(x_i)},
+\qquad
+T_m\approx r_m.
+\]
+不同树在不同区域叠加分段修正，能形成细致分区与高阶交互；表达能力随$M$、树深和$\nu$增长，因此需正则化、早停和独立验证。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C07-S05-01}
+一个任务需要毫秒级预测、系数方向可解释且样本数远大于维数。给出首选基线及仍需验证的风险。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C07-S05-01}
+\begin{chapterexercisesolution}{ex:V3-C07-S05-01}
+首选基线可取带正则的逻辑斯谛回归：
+\[
+P(Y=1\mid x)=\sigma(w^{\mathsf T}x+b),
+\qquad
+T_{\mathrm{pred}}=O(d),\quad S_{\mathrm{model}}=O(d).
+\]
+其系数方向满足
+\[
+w_j>0\Longrightarrow
+\text{在其他输入固定时，第$j$维增加会提高logit},
+\]
+但仍需验证线性logit、共线性、校准、类别不平衡、折外预处理和部署漂移；相关系数不能解释成因果效应。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C07-S06-01}
+列出一份可复现监督学习实验至少应记录的六类信息。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C07-S06-01}
+\begin{chapterexercisesolution}{ex:V3-C07-S06-01}
+可把一次实验登记为结构化记录
+\[
+\mathcal R=(\mathcal T,\mathcal D,\mathcal P,\mathcal M,
+\mathcal O,\mathcal V,\mathcal E),
+\]
+其中至少包括
+\[
+\begin{array}{c|l}
+\mathcal T&\text{任务、标签与评价对象}\\
+\mathcal D&\text{数据来源、时间、划分及排除规则}\\
+\mathcal P&\text{特征与折内预处理}\\
+\mathcal M&\text{模型、损失、正则化与超参数域}\\
+\mathcal O&\text{优化器、初始化、随机种子与停止条件}\\
+\mathcal V&\text{验证指标、选择规则与并列规则}\\
+\mathcal E&\text{阈值、资源测量及一次性测试结果}
+\end{array}
+\]
+记录需足以重建数据边界、训练状态和选择过程，而不只保存最终分数。
+具体地，训练信息与评价信息至少满足
+\[
+\begin{aligned}
+\mathcal R_{\mathrm{train}}
+  &=(\mathcal D,\mathcal P,\mathcal M,\mathcal O),\\
+\mathcal R_{\mathrm{eval}}
+  &=(\mathcal V,\mathcal E),\qquad
+\mathcal R=(\mathcal T,\mathcal R_{\mathrm{train}},\mathcal R_{\mathrm{eval}}).
+\end{aligned}
+\]
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V3-C23-CONCEPT-008 L1
+\paragraph{读前自检：本章结论与下一步。}监督学习方法总结章末把“任务、模型族、学习准则、求解算法与评估协议”收束为“用交叉验证形成可行候选集，在$\epsilon$近优集合中按复杂度、波动与约束选择”；请把$\epsilon$代入对应定义并写出结果类型，再核对“代入结果满足定义域与取值域”且该结果能直接进入章末所述方法。\par
+% KNOWLEDGE-PLAN: KN-V3-C23-CONCEPT-009 L1
+\paragraph{读前自检：全册方法选择速查。}在“需要条件概率且强调可解释系数时，先检查逻辑斯谛回归或最大熵模型”成立时处理全册方法选择速查：请把“需要条件概率且强调可解释系数时，先检查逻辑斯谛回归或最大熵模型”中的已声明对象依次标成输入、输出与判据，并以存在隐变量时先写出完整数据似然，再判断EM的E步和M步是否可计算、单调性条件是否成立判定结果。\par
+% KNOWLEDGE-PLAN: KN-V3-C23-CONCEPT-010 L1
+\paragraph{读前自检：模型选择的数学核对条件。}模型选择的数学核对条件所用的明确前提是“下列条件限定候选之间何时可以比较，并把拟合、选择和最终评价分开”；完成把$\epsilon$展开一次并检查其类型或边界后，核对只有这些数学对象与信息边界都固定，候选得分才具有可比性。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V3-C07-CH36}
+\SLChapterFiveSummary{任务、模型族、学习准则、求解算法与评估协议}{按学习对象区分生成/判别，按输出语义区分概率/非概率，并在相同数据边界比较风险}{用交叉验证形成可行候选集，在$\epsilon$近优集合中按复杂度、波动与约束选择}{需要为具体监督任务比较方法、调参或解释为什么某方法不适用时}{进入无监督学习；任何测试反馈都不得反向改变本章已经固定的选择规则}
+
+\phantomsection\label{struct:V3-C07-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{框架：}能否把任一已学方法拆成模型、策略、算法和评估协议？未通过则回看第1节。
+  \item \textbf{分类：}能否不看表格区分生成/判别与概率/非概率，并为四种组合各判断实例？未通过则回看第2、3节。
+  \item \textbf{比较：}能否从归纳偏好、训练成本、预测成本、概率语义和可解释性比较四类模型？未通过则回看第4节。
+  \item \textbf{选择：}能否设计不泄漏的交叉验证、候选筛选和一次性测试流程？未通过则回看第5节及流程\ref{alg:V3-C07-selection}。
+  \item \textbf{应用：}能否为一个新任务列出错误代价、资源约束、漂移风险和复现记录？未通过则回看第6节；五项均能独立作答，并能完成每节至少两道练习，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+
+\begin{keypointbox}[title=全册方法选择速查]
+\begin{enumerate}[leftmargin=2.2em,nosep]
+  \item 需要条件概率且强调可解释系数时，先检查逻辑斯谛回归或最大熵模型；需要生成机制时再比较朴素贝叶斯等生成模型。
+  \item 需要大间隔与核化非线性时检查支持向量机，同时评估Gram矩阵、支持向量数和概率校准成本。
+  \item 需要处理复杂交互且允许加法集成时比较提升方法，并把树深、学习率、轮数和早停作为联合控制量。
+  \item 存在隐变量时先写出完整数据似然，再判断EM的E步和M步是否可计算、单调性条件是否成立。
+  \item 面向序列时区分生成式HMM与判别式CRF，分别核对条件独立假设、特征设计和动态规划复杂度。
+  \item 无论选择哪类方法，都必须冻结数据划分、预处理、评价指标、阈值、资源测量和测试时点。
+\end{enumerate}
+\end{keypointbox}
+
+\begin{warningbox}
+本册结论不能替代任务验证：同一算法在标签口径、错误代价、数据漂移或部署预算改变后可能不再合适。最终选择必须保留失败模式、替代基线和可复现实验记录。
+
+建议为一个真实任务完成一页复盘记录：写明首选模型与基线、三项关键假设、验证协议、资源上限、最可能的失效情形以及触发改换方法的观测信号。若这些信息无法明确填写，说明方法选择仍未闭环。
+
+比较候选模型时应固定数据划分、预处理、初始化、计算预算与评价口径，使结论可以重复核验。
+\end{warningbox}
+
+\begin{keypointbox}[title=模型选择的数学核对条件]
+下列条件限定候选之间何时可以比较，并把拟合、选择和最终评价分开。
+\begin{enumerate}[leftmargin=2.2em,nosep]
+  \item 各候选必须使用同一训练--验证划分，并且每个预处理参数只由对应训练折估计。
+  \item 各内层问题必须给出有限目标值、可行参数和各自的停止准则；无有限解的候选不参与排序。
+  \item 先按预定得分形成$\epsilon$近优集合，再用复杂度、波动与资源约束作并列选择，不能由测试误差反向改变规则。
+  \item 概率阈值若属于预测规则，应在训练开发数据内一并选择；最终测试集只估计固定规则的误差。
+\end{enumerate}
+只有这些数学对象与信息边界都固定，候选得分才具有可比性。
+\end{keypointbox}
+\end{SLCompactClosure}

@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 2 册}{统计学习方法讲义 v2.6.0}{基础监督学习方法}
+\begin{document}
+\setcounter{page}{249}
+\setcounter{chapter}{13}
+\setcounter{figure}{1}
+\pagestyle{headings}
+\chaptermark{k近邻法}
+\begin{optimizationbox}
+平衡 kd 树在当前深度选定切分轴并提交中位样本，再对左右子集递归。每个样本在树中出现且只出现一次，子树位置编码递归区域。
+\end{optimizationbox}
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C02/fig_v2_c02_kd_tree.tex}
+图\ref{fig:V2-C02-kd-tree}中，根按第一坐标切分，下一层按第二坐标切分；每条根到叶路径对应一组轴对齐约束，而不是样本之间的欧氏距离。
+\end{document}

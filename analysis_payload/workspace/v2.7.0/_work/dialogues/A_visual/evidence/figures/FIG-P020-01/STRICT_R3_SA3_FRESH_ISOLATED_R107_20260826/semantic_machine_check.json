@@ -1,0 +1,28 @@
+{
+  "source_node_order": [
+    "对象声明",
+    "关系与映射",
+    "运算与逻辑",
+    "可核验任务"
+  ],
+  "pdf_node_order": [
+    "对象声明",
+    "关系与映射",
+    "运算与逻辑",
+    "可核验任务"
+  ],
+  "main_arrow_directions": [
+    "left-to-right",
+    "left-to-right",
+    "left-to-right"
+  ],
+  "inline_mapping_arrow": "定义域 to 值域 (left-to-right)",
+  "return_arrow": "task south descends, returns left, then points upward to object south",
+  "return_annotation": "逆向核对：任务所用定义逐项返回检查",
+  "caption_pdf_text": "图1.1数学语言从对象声明到任务陈述的依赖关系。每一条箭头都表示右侧内容使用左侧定义。",
+  "caption_source_text": "图1.1数学语言从对象声明到任务陈述的依赖关系。每一条箭头都表示右侧内容使用左侧定义。",
+  "neighbor_body_text": "使用图1.1时应从任务端逆向核对：对象、取值域、映射和目标只要有一项未定义，就先补全声明再计算；箭头记录使用关系，不是可逆蕴含。",
+  "math_rule_object_count": 0,
+  "math_rule_reason": "No formula or TeX math accent/rule occurs in the target TikZ body; all 16 intersecting PDF drawing/path objects are exhaustively classified as 14 diagram foreground components plus 2 backgrounds.",
+  "machine_semantic_status": "PASS"
+}

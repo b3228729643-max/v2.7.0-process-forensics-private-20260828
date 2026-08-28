@@ -1,0 +1,41 @@
+{
+  "reviewer": "R115_SA1_requalification_current_identity",
+  "reviewed_at_local": "2026-08-24T11:24:07+08:00",
+  "review_protocol": "Current reviewer independently opened CS001-CS015 at 8x-nearest and inspected every cell's ORIGINAL/TARGET OVERLAY/MASK ONLY triad; opened the listed 1x and 8x relation packages, the pre/opaque/final/XOR occlusion packages, low-profile samples, graphic masks, and the four required views. No historical FIG-P582-02 or FIG-P580 evidence was read.",
+  "glyph_mask_judgment": {
+    "original_match": true,
+    "overlay_complete": true,
+    "mask_only_pure": true,
+    "manual_raw_mask_decision": "PASS",
+    "note": "Per-cell manual result is recorded separately in the generated glyph ledger; font and strict category gates are deliberately not collapsed into this raw-mask decision."
+  },
+  "relation_judgment": {
+    "all_opened_packages_have_zero_visible_intersection": true,
+    "note": "Opened all nine table-designated critical packages plus R0085 as an extra card/reference proximity package; each included original/A/B/intersection/overlay/8x-nearest evidence."
+  },
+  "occlusion_judgment": {
+    "pre_opaque_final_xor_coherent": true,
+    "note": "Three required packages have covered-XOR=0 and show no hidden text loss."
+  },
+  "font_visual_harmony": {
+    "size_pass": false,
+    "weight_pass": true,
+    "color_pass": true,
+    "overall_pass": false,
+    "note": "The 8.6pt tick labels and 9.2/9.4pt bar/card/annotation text look undersized beside the page body and the chart geometry. Stroke weight is restrained and internally coherent; blue/teal/gray encode roles coherently and remain distinguishable in grayscale. No scale reduction can repair this because the current effective sizes already violate the 9.5pt floor."
+  },
+  "four_view_judgment": {
+    "full_page_200dpi": "Page fusion, reading order, and caption association are coherent; the undersized chart text remains visible but fails the explicit font-size gate.",
+    "figure_crop_300dpi": "No visible collision, clipping, or unintended occlusion; small tick and annotation text is confirmed below the required size floor.",
+    "standalone_300dpi": "Bar hierarchy, annotation card, reference line, and low bars are legible and uncrowded; size gate remains failed.",
+    "grayscale_300dpi": "Hierarchy and reference-line contrast survive grayscale conversion; no extra visual defect, while the same size defect remains."
+  },
+  "math_semantics": {
+    "pass": true,
+    "note": "0.90+0.05+0.03+0.02=1; reciprocal squared sum is 1/(0.81+0.0025+0.0009+0.0004)=1.2288..., correctly rounded to 1.23. The 1/4 reference and the reliability caveat agree with nearby text."
+  },
+  "strict_classification_finding": {
+    "pass": false,
+    "note": "The preliminary low-profile table improperly reduced '=' and '≈' below the 22px base-math/relationship gate and reduced CJK '一' below the 30px CJK gate. Low-profile punctuation lacks the required independent same-codepoint/font/size calibration closure."
+  }
+}

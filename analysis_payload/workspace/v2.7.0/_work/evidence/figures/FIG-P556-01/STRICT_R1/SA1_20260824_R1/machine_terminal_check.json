@@ -1,0 +1,84 @@
+{
+  "audit_id": "FIG-P556-01/STRICT_R1/SA1_20260824_R1",
+  "machine_evidence_integrity_pass": true,
+  "quality_result": "FAIL",
+  "grid": {
+    "grid_id": "FULL_PAGE_NATIVE_300DPI",
+    "input_pdf_page": 601,
+    "dpi": 300,
+    "native_png": "full_page_300dpi_native.png",
+    "width_px": 2481,
+    "height_px": 3508,
+    "pdf_page_rect_pt": [
+      0.0,
+      0.0,
+      595.2760009765625,
+      841.8900146484375
+    ],
+    "pdf_to_native_px_scale": [
+      4.167814586729296,
+      4.166815069620342
+    ],
+    "origin": "top-left pixel (0,0), direct Poppler native render",
+    "resize_after_render": false,
+    "measurement_policy": "All pixel measurements use this immutable full-page 300dpi grid; crops preserve its coordinates."
+  },
+  "checks": [
+    {
+      "CHECK_ID": "MC01_REQUIRED_ARTIFACTS",
+      "REQUIREMENT": "all required evidence files exist",
+      "OBSERVED": "21/21",
+      "EVIDENCE": "full_page_200dpi.png;full_page_300dpi_native.png;full_page_300dpi_grid.json;figure_crop_300dpi.png;standalone_300dpi.png;grayscale_300dpi.png;after_font_audit.csv;after_pixel_measurements.csv;after_overlap_report.csv;after_text_measurement_overlay_300dpi.png;after_visual_acceptance.md;same_class_ratio_audit.csv;role_ratio_audit.csv;cross_panel_ratio_audit.csv;math_semantics_recheck.md;math_semantics_recheck.csv;math_semantics_recheck.json;strict_audit_summary.json;strict_eight_column_report.csv;critical_artifacts.csv;SA1_RESULT.md",
+      "STATUS": "PASS"
+    },
+    {
+      "CHECK_ID": "MC02_FULL_PAGE_NATIVE_GRID",
+      "REQUIREMENT": "immutable full-page 300dpi 1:1 grid; integer-pixel rounding permitted",
+      "OBSERVED": "actual=2481x3508px; target=2480.317x3507.875px; axis_relative_error=0.027550%,0.003562%",
+      "EVIDENCE": "full_page_300dpi_native.png;full_page_300dpi_grid.json;render_manifest.json",
+      "STATUS": "PASS"
+    },
+    {
+      "CHECK_ID": "MC03_MASK_LINKS",
+      "REQUIREMENT": "every glyph/semantic/graphic mask resolves",
+      "OBSERVED": "170/170",
+      "EVIDENCE": "mask_manifest.csv",
+      "STATUS": "PASS"
+    },
+    {
+      "CHECK_ID": "MC04_GLYPH_SCHEMA",
+      "REQUIREMENT": "all 124 glyph rows have raw-H_ink, role/script and mask fields",
+      "OBSERVED": "glyphs=124; complete=True",
+      "EVIDENCE": "after_pixel_measurements.csv",
+      "STATUS": "PASS"
+    },
+    {
+      "CHECK_ID": "MC05_RELATION_SCHEMA",
+      "REQUIREMENT": "all registered relations and all TEXT_TEXT vector bboxes are populated",
+      "OBSERVED": "relations=735; text-bbox=True",
+      "EVIDENCE": "after_overlap_report.csv",
+      "STATUS": "PASS"
+    },
+    {
+      "CHECK_ID": "MC06_CRITICAL_EVIDENCE",
+      "REQUIREMENT": "every failed/critical relation has raw ROI, two masks, overlap and 8x overlay",
+      "OBSERVED": "needed=2; manifest=4",
+      "EVIDENCE": "critical_artifacts.csv",
+      "STATUS": "PASS"
+    },
+    {
+      "CHECK_ID": "MC07_COUNT_CROSSCHECK",
+      "REQUIREMENT": "summary counts equal CSV recomputation",
+      "OBSERVED": "overlap=30; clip=0; font_fail=76; pixel_fail=30",
+      "EVIDENCE": "strict_audit_summary.json;after_*_audit.csv",
+      "STATUS": "PASS"
+    },
+    {
+      "CHECK_ID": "MC08_FINAL_RESULT",
+      "REQUIREMENT": "summary result equals all-hard-gates conjunction",
+      "OBSERVED": "expected=FAIL; summary=FAIL",
+      "EVIDENCE": "strict_audit_summary.json",
+      "STATUS": "PASS"
+    }
+  ]
+}

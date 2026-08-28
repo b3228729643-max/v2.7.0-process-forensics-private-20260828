@@ -1,0 +1,131 @@
+{
+  "schema": "P126_R19_STATIC_PROJECTION_V1",
+  "results": [
+    {
+      "id": "x0",
+      "source_roi": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P126-01\\STRICT_R18_SA1_FRESH_ISOLATED_R116_20260828\\ROI-10_x0_outer_contour_clearance_native1x.png",
+      "roi_size_px": [
+        115,
+        105
+      ],
+      "target_bbox_current_xyxy": [
+        17,
+        31,
+        86,
+        72
+      ],
+      "shift_px_300dpi": [
+        17,
+        0
+      ],
+      "source_delta": "xshift=4pt",
+      "inner_sep_pt": 0.8,
+      "inner_sep_px_300dpi_ceiling": 4,
+      "projected_background_bbox_xyxy": [
+        33,
+        29,
+        103,
+        73
+      ],
+      "target_ink_pixels": 363,
+      "allowed_neutral_contour_antialias_pixels_under_background": 258,
+      "unclassified_color_like_antialias_pixels_under_background": 28,
+      "protected_region_bboxes_xyxy": {
+        "q0_marker_and_vertical_update": [
+          0,
+          72,
+          16,
+          105
+        ]
+      },
+      "projected_background_to_protected_region_gap_px": {
+        "q0_marker_and_vertical_update": 17.0
+      },
+      "projected_background_protected_region_overlap_area_px": {
+        "q0_marker_and_vertical_update": 0
+      },
+      "minimum_target_ink_to_remaining_visible_obstacle_px": 5.0,
+      "native_projection": "STATIC_x0_projection_native1x.png",
+      "nearest8x_projection": "STATIC_x0_projection_nearest8x.png"
+    },
+    {
+      "id": "digit5",
+      "source_roi": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P126-01\\STRICT_R18_SA1_FRESH_ISOLATED_R116_20260828\\ROI-13_step5_contour_contact_native1x.png",
+      "roi_size_px": [
+        100,
+        105
+      ],
+      "target_bbox_current_xyxy": [
+        59,
+        55,
+        78,
+        85
+      ],
+      "shift_px_300dpi": [
+        -17,
+        0
+      ],
+      "source_delta": "xshift=-2pt -> -6pt",
+      "inner_sep_pt": 0.8,
+      "inner_sep_px_300dpi_ceiling": 4,
+      "projected_background_bbox_xyxy": [
+        41,
+        56,
+        63,
+        87
+      ],
+      "target_ink_pixels": 98,
+      "allowed_neutral_contour_antialias_pixels_under_background": 31,
+      "unclassified_color_like_antialias_pixels_under_background": 28,
+      "protected_region_bboxes_xyxy": {
+        "incoming_vertical_update": [
+          0,
+          0,
+          22,
+          43
+        ],
+        "outgoing_horizontal_update": [
+          20,
+          20,
+          100,
+          36
+        ],
+        "q5_marker": [
+          87,
+          55,
+          100,
+          85
+        ],
+        "x_axis": [
+          0,
+          98,
+          100,
+          105
+        ],
+        "label7_region": [
+          78,
+          86,
+          100,
+          105
+        ]
+      },
+      "projected_background_to_protected_region_gap_px": {
+        "incoming_vertical_update": 23.021728866442675,
+        "outgoing_horizontal_update": 20.0,
+        "q5_marker": 24.0,
+        "x_axis": 11.0,
+        "label7_region": 15.0
+      },
+      "projected_background_protected_region_overlap_area_px": {
+        "incoming_vertical_update": 0,
+        "outgoing_horizontal_update": 0,
+        "q5_marker": 0,
+        "x_axis": 0,
+        "label7_region": 0
+      },
+      "minimum_target_ink_to_remaining_visible_obstacle_px": 5.0,
+      "native_projection": "STATIC_digit5_projection_native1x.png",
+      "nearest8x_projection": "STATIC_digit5_projection_nearest8x.png"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+% Evidence-only wrapper: compiles the current authoritative figure source without modifying it.
+\documentclass[11pt]{article}
+\usepackage[paperwidth=170mm,paperheight=145mm,margin=5mm]{geometry}
+\usepackage{ctex}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{forest}
+\definecolor{SLInk}{HTML}{1F2937}
+\definecolor{SLBlue}{HTML}{1F5A91}
+\definecolor{SLTeal}{HTML}{0F857F}
+\definecolor{SLBlueBG}{HTML}{F3F7FB}
+\definecolor{SLGray}{HTML}{6B7280}
+\forestset{slfig tree/.style={for tree={align=center}}}
+\pagestyle{empty}
+\begin{document}
+\input{D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/source/v2.7.0/src/绘图源码/第02册_基础监督学习方法/V2-C02/fig_v2_c02_kd_tree.tex}
+\end{document}

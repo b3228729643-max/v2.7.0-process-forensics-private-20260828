@@ -1,0 +1,60 @@
+{
+  "schema": "FIG-P656-01-SA3-SEAL-VALIDATION-v1",
+  "handoff_id": "C-FIG-P656-01-R108-SA3-FRESH-ISOLATED-V1",
+  "result": "SA3_PASS_AWAIT_MAIN_C_LOCAL_PASS_ACCEPTANCE",
+  "valid": true,
+  "denominator": {
+    "N": 50,
+    "unordered_pairs_expected": 1225,
+    "unordered_pairs_enumerated": 1225
+  },
+  "machine": {
+    "object_masks": 50,
+    "critical_relations": 29,
+    "critical_roi_images": 10,
+    "overlap_candidates": 0,
+    "empty_masks": 0,
+    "mask_contamination": 0,
+    "crop_edge_foreground": 0
+  },
+  "manual": {
+    "objects": 50,
+    "critical_relations": 29,
+    "views": 13,
+    "hard_gates": 27,
+    "semantic_recomputation": "complete",
+    "font_and_R168_audit": "complete"
+  },
+  "parse_validation": {
+    "json_files": [
+      "identity_provenance.json",
+      "machine_gate_summary.json",
+      "result_card.json"
+    ],
+    "csv_files": [
+      "all_pairs_machine.csv",
+      "critical_relations_machine.csv",
+      "critical_relations_machine_schema.csv",
+      "critical_rois_index.csv",
+      "font_runs_machine.csv",
+      "manual_critical_relations.csv",
+      "manual_hard_gate_review.csv",
+      "manual_object_review.csv",
+      "manual_view_review.csv",
+      "objects_machine.csv"
+    ]
+  },
+  "filesystem_checks": {
+    "nondefault_ads": [],
+    "reparse_entries": [],
+    "cache_or_pyc_entries": []
+  },
+  "manifest_policy": {
+    "covers": "all intended payload recursively",
+    "self_exclusion": "MANIFEST.sha256",
+    "control_exclusions": [
+      ".WRITE_STOPPED.prepared",
+      "WRITE_STOPPED"
+    ]
+  }
+}

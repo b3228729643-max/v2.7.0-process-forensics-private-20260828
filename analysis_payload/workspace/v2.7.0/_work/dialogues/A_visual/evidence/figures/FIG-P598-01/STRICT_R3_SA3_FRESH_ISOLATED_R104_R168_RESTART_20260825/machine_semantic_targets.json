@@ -1,0 +1,34 @@
+{
+  "state_sequence": [
+    "a",
+    "b",
+    "b",
+    "c",
+    "c",
+    "b",
+    "a"
+  ],
+  "time_labels": [
+    "t=0",
+    "t=1",
+    "t=2",
+    "t=3",
+    "t=4",
+    "t=5",
+    "t=T"
+  ],
+  "required_transition_count": 6,
+  "required_labels": [
+    "K(x_t,d x_{t+1})",
+    "K(x,dy)",
+    "保持",
+    "重复状态形成相邻相关"
+  ],
+  "required_visual_meanings": [
+    "equal time spacing",
+    "adjacent-state correlation",
+    "double-circle repeat/stay",
+    "continuous directed arrows",
+    "caption/page integration"
+  ]
+}

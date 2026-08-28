@@ -1,0 +1,32 @@
+{
+  "relation_id": "R006527",
+  "object_a": "D012_BORDER_NODE_POSTERIOR",
+  "object_b": "D035_EDGE_FAMILIES_POSTERIOR_SHAFT",
+  "kind_a": "GRAPHIC",
+  "kind_b": "GRAPHIC",
+  "parent_a": "NODE_POSTERIOR",
+  "parent_b": "EDGE_FAMILIES_POSTERIOR",
+  "role_a": "NODE_BORDER",
+  "role_b": "LINE_ARROW",
+  "gate_type": "EDGE_NODE_ENDPOINT_DESIGN",
+  "gate_px": "N/A_DESIGN",
+  "raw_overlap_pixel_count": 0,
+  "raw_mask_clearance_px": 19.0,
+  "text_text_vector_bbox_clearance_px": "N/A",
+  "ownership_or_whitelist_reason": "edge intentionally terminates at owned endpoint border",
+  "machine_decision": "PASS",
+  "critical_relation": true,
+  "evidence_1x": "pair_evidence/R006527__1x.png",
+  "evidence_8x": "pair_evidence/R006527__8x_nearest.png",
+  "raw": "pair_evidence/R006527__raw.png",
+  "mask_a": "pair_evidence/R006527__mask_a.png",
+  "mask_b": "pair_evidence/R006527__mask_b.png",
+  "intersection": "pair_evidence/R006527__intersection.png",
+  "overlay": "pair_evidence/R006527__overlay.png",
+  "roi_full_page_px": [
+    1123,
+    375,
+    1649,
+    608
+  ]
+}

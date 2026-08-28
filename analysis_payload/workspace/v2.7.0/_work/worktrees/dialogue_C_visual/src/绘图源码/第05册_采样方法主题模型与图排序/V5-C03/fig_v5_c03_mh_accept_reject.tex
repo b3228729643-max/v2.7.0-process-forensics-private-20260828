@@ -1,0 +1,36 @@
+% v2.7.0 figure UID: FIG-P602-01
+% One-way MH update: proposal, positive-flow acceptance ratio, decision, and rejection self-loop.
+\tikzset{slfig-FIG-P602-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P602-01,>=Stealth,
+  every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=center},
+  obj/.style={draw=SLRuleGray,rounded corners=2pt,fill=SLSoftGray,minimum width=42mm,minimum height=10.5mm,inner xsep=3mm,inner ysep=1.6mm,line width=.62pt},
+  state/.style={obj,draw=SLBlue,fill=white,line width=.82pt},
+  ratio/.style={draw=SLBlue,rounded corners=2pt,fill=SLBlue!5,minimum width=112mm,minimum height=18mm,inner xsep=4mm,inner ysep=2.0mm,line width=.82pt},
+  decision/.style={diamond,aspect=3.0,draw=SLBlue,fill=white,text width=52mm,inner sep=1.4pt,line width=.92pt},
+  edge-label/.style={fill=white,inner sep=1.2pt,font=\fontsize{9.6pt}{11.6pt}\selectfont},
+  proposal/.style={-{Stealth[length=1.9mm]},draw=SLGray,line width=.66pt,densely dashed},
+  process/.style={-{Stealth[length=2.0mm]},draw=SLRuleGray,line width=.72pt},
+  accepted/.style={-{Stealth[length=2.1mm]},draw=SLBlue,line width=.96pt},
+  rejected/.style={-{Stealth[length=2.1mm]},draw=SLBlue,line width=.90pt,dash pattern=on 4.2pt off 1.7pt on .8pt off 1.7pt}]
+  \node[state] (x) at (0,0) {当前状态\\状态变量 $X_t$};
+  \node[obj] (y) at (0,-1.55) {按提议核抽取候选\\候选变量 $Y$};
+  \node[ratio] (a) at (0,-3.55) {计算接受率（未规范化目标记为 $\pi_{\mathrm{u}}$ 且正向流为正）\\[.6ex]
+    {\fontsize{11.2pt}{13.6pt}\selectfont$\displaystyle
+      \alpha_t(Y)\text{ 取 }\min\!\left\{1\ \text{与}
+      \frac{\pi_{\mathrm{u}}(Y)q(X_t\mid Y)}{\pi_{\mathrm{u}}(X_t)q(Y\mid X_t)}\right\}$}};
+  \node[decision] (d) at (0,-6.25) {抽取区间 $[0\ \text{到}\ 1]$ 的均匀变量 $U$\\并判定 $U\le\alpha_t(Y)$？};
+  \node[state] (ay) at (-4.20,-8.25) {接受候选\\$X_{t+1}$ 取 $Y$};
+  \node[state,double] (rx) at (4.20,-8.25) {拒绝并记录旧状态\\$X_{t+1}$ 保持 $X_t$};
+
+  \draw[proposal] (x.south)--node[edge-label,right=1.8mm,text=SLGray] {提议} (y.north);
+  \draw[process] (y.south)--node[edge-label,right=1.8mm] {计算} (a.north);
+  \draw[process] (a.south)--node[edge-label,right=1.8mm] {判定} (d.north);
+  \draw[accepted] (d.south west)--node[edge-label,pos=.56,above left=1.0mm] {接受} (ay.north);
+  \draw[rejected] (d.south east)--node[edge-label,pos=.56,above right=1.0mm] {拒绝} (rx.north);
+  \draw[rejected] (rx.south east) to[out=-48,in=-132,looseness=2.30]
+    node[edge-label,pos=.50,below=3.0mm] {拒绝后保持旧状态} (rx.south west);
+\end{tikzpicture}
+\caption{Metropolis--Hastings 单次更新中的提议判定及拒绝自环。}\label{fig:V5-C03-mh-accept-reject}
+\end{figure}

@@ -1,0 +1,69 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V2-C02",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 2,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V2-C02-01",
+      "source_path": "绘图源码/第02册_基础监督学习方法/V2-C02/fig_v2_c02_lp_balls.tex",
+      "source_file": "fig_v2_c02_lp_balls.tex",
+      "source_kind": "tikz",
+      "label": "fig:V2-C02-lp-balls",
+      "caption": "二维$L_p$单位球。不同边界形状会改变哪些训练点先进入查询邻域。",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "读图时应回答：“二维$L_p$单位球。不同边界形状会改变哪些训练点先进入查询邻域。”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第02册_基础监督学习方法/chapters/V2-C02.tex",
+        "target_label": "fig:V2-C02-lp-balls",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-03-02-003"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：二维L下标p单位球。不同边界形状会改变哪些训练点先进入查询邻域。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V2-C02-02",
+      "source_path": "绘图源码/第02册_基础监督学习方法/V2-C02/fig_v2_c02_kd_tree.tex",
+      "source_file": "fig_v2_c02_kd_tree.tex",
+      "source_kind": "tikz",
+      "label": "fig:V2-C02-kd-tree",
+      "caption": "六点示例的一棵平衡kd树。节点同时保存样本与本层切分轴。",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "读图时应回答：“六点示例的一棵平衡kd树。节点同时保存样本与本层切分轴。”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第02册_基础监督学习方法/chapters/V2-C02.tex",
+        "target_label": "fig:V2-C02-kd-tree",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-03-03-001"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V2-C02-02"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：六点示例的一棵平衡kd树。节点同时保存样本与本层切分轴。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

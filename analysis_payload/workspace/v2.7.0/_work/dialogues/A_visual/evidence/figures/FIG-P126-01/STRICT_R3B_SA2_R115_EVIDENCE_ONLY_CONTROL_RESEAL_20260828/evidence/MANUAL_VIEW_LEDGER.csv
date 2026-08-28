@@ -1,0 +1,18 @@
+view_id,reviewer,opened_at_utc,evidence_path,decision,hard_defect,note
+V01,Codex-root,2026-08-28T01:06:37Z,full_page_native300dpi.png,PASS,false,one-page standalone rendering is centered and unclipped
+V02,Codex-root,2026-08-28T01:06:37Z,full_page_grayscale_native300dpi.png,PASS,false,axes contours path points labels and legend text remain readable in grayscale
+V03,Codex-root,2026-08-28T01:06:37Z,figure_crop_native300dpi.png,PASS,false,complete figure body is visible with no edge clipping
+V04,Codex-root,2026-08-28T01:06:37Z,figure_crop_grayscale_native300dpi.png,PASS,false,figure geometry and numeric labels remain readable without color
+V05,Codex-root,2026-08-28T01:06:37Z,logical_object_overlay_native300dpi.png,PASS,false,all fourteen logical object boxes cover reader-visible content without an unassigned foreground item
+V06,Codex-root,2026-08-28T01:06:37Z,logical_object_contact_sheet_part1.png,PASS,false,O01 through O08 are complete and individually attributable
+V07,Codex-root,2026-08-28T01:06:37Z,logical_object_contact_sheet_part2.png,PASS,false,O09 through O14 are complete and individually attributable
+V08,Codex-root,2026-08-28T01:06:37Z,candidate_pair_contact_sheet_part01.png,PASS,false,first nine machine candidate relationships show only intended contacts or visible separation
+V09,Codex-root,2026-08-28T01:06:37Z,candidate_pair_contact_sheet_part02.png,PASS,false,second nine machine candidate relationships show no illegal label or path collision
+V10,Codex-root,2026-08-28T01:06:37Z,candidate_pair_contact_sheet_part03.png,PASS,false,third nine machine candidate relationships preserve sequential endpoint contacts and distinct labels
+V11,Codex-root,2026-08-28T01:06:37Z,candidate_pair_contact_sheet_part04.png,FAIL,true,geometry candidates pass but the final legend pair shows two continuous samples rather than solid versus dashed
+V12,Codex-root,2026-08-28T01:06:37Z,critical_relation_contact_sheet.png,FAIL,true,four prior collision sites are clear; legend style contrast remains the sole failed relation
+V13,Codex-root,2026-08-28T01:06:37Z,critical_x1_contour_native1x.png|critical_x1_contour_nearest8x.png,PASS,false,x1 label and closest contour have continuous white separation at native and nearest8x
+V14,Codex-root,2026-08-28T01:06:37Z,critical_step1_contour_native1x.png|critical_step1_contour_nearest8x.png,PASS,false,numeral1 and nearest contour have positive visible clearance
+V15,Codex-root,2026-08-28T01:06:37Z,critical_step2_contour_native1x.png|critical_step2_contour_nearest8x.png,PASS,false,numeral2 and contour do not share visible ink
+V16,Codex-root,2026-08-28T01:06:37Z,critical_step5_horizontal_axis_native1x.png|critical_step5_horizontal_axis_nearest8x.png,PASS,false,numeral5 and horizontal axis are visibly separated
+V17,Codex-root,2026-08-28T01:06:37Z,critical_legend_solid_vs_dash_native1x.png|critical_legend_solid_vs_dash_nearest8x.png|LEGEND_GRAYSCALE_PIXEL_RUN_AUDIT.json,FAIL,true,both legend swatches are continuous horizontal runs; the x2 sample lacks multi-dash structure

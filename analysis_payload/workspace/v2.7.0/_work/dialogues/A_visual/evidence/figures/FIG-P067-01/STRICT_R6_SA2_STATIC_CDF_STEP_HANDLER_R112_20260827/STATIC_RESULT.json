@@ -1,0 +1,31 @@
+{
+  "handoff_id": "A-R112-P067-SA2-STATIC-CDF-STEP-HANDLER-20260827",
+  "uid": "FIG-P067-01",
+  "status": "STATIC_PATCH_READY_REQUEST_CONTROLLED_DIRECT_BUILD_SLOT",
+  "source_scope_file_count": 1,
+  "diff_insertions": 1,
+  "diff_deletions": 1,
+  "diff_check_pass": true,
+  "index_empty": true,
+  "handler_before": "const plot mark right",
+  "handler_after": "const plot mark left",
+  "cdf_coordinates_preserved": true,
+  "filled_endpoints_preserved": true,
+  "open_endpoints_preserved": true,
+  "pmf_data_preserved": true,
+  "tick_label_patch_preserved": true,
+  "other_source_tokens_preserved_by_reverse_substitution_hash": true,
+  "projected_intervals": {
+    "[.5,1)": "0",
+    "[1,2)": ".15",
+    "[2,3)": ".45",
+    "[3,4)": ".80",
+    "[4,4.5]": "1"
+  },
+  "tex_invocation_count": 0,
+  "rendered_candidate_count": 0,
+  "commit_created": false,
+  "fresh_role_started": false,
+  "local_pass_claimed": false,
+  "required_next_action": "MAIN_REVIEW_AND_EXPLICIT_SINGLE_CONTROLLED_STANDALONE_DIRECT_LUALATEX_BUILD_SLOT"
+}

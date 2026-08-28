@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{712}
+\setcounter{chapter}{30}
+\setcounter{figure}{6}
+\pagestyle{headings}
+\chaptermark{马尔可夫链基础}
+\sectionmark{随机游走}
+图\ref{fig:V5-C01-random-walk}展示三节点路径上的简单游走及其惰性版本。端点度数为$1$、中点度数为$2$，所以平稳分布为$(1/4,\allowbreak 1/2,\allowbreak 1/4)$；加入自环后该分布不变。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_random_walk.tex}
+\textbf{边界提醒。}连通性保证平稳分布唯一，但普通逐步分布在二部图上仍可按奇偶振荡；惰性化用于消除周期性。
+\end{document}
+

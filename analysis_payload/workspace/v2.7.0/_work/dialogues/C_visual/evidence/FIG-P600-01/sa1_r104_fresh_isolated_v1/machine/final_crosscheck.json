@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "uid": "FIG-P600-01",
+  "handoff_id": "C-FIG-P600-01-R104-SA1-FRESH-ISOLATED-V1",
+  "tex": "DISABLED",
+  "source_writer": "NONE",
+  "manual_decision_generated_by_machine": false,
+  "overlap_pixel_count": 0,
+  "clip_pixel_count": 0,
+  "hard_failure_ids": [],
+  "sa1_result": "SA1_PASS_REQUEST_FRESH_ISOLATED_SA3",
+  "checks": {
+    "official_pdf_identity": "PASS",
+    "glyph_manual_rows": 197,
+    "graphic_manual_rows": 18,
+    "object_denominator": 29,
+    "all_unordered_pairs": 406,
+    "pair_intersection_candidates": 0,
+    "critical_pair_rows": 29,
+    "ledgers/manual_clip_reviewer_ledger.csv": 29,
+    "ledgers/manual_view_hard_gate_ledger.csv": 5,
+    "ledgers/manual_source_font_reviewer_ledger.csv": 8,
+    "ledgers/manual_peer_role_reviewer_ledger.csv": 11,
+    "ledgers/manual_semantic_reviewer_ledger.csv": 12,
+    "ledgers/manual_r168_advisory_ledger.csv": 12,
+    "ordinary_file_counts": {
+      "glyph_cards": 197,
+      "glyph_native": 788,
+      "glyph_contact_sheets": 17,
+      "graphic_cards": 18,
+      "graphic_native": 90,
+      "graphic_contact_sheets": 2,
+      "pair_cards": 29,
+      "pair_native": 174
+    },
+    "png_files_opened_by_machine_crosscheck": 1326,
+    "required_schema_named_payloads": [
+      "IDENTITY.md",
+      "after_visual_acceptance.md",
+      "RESULT.md",
+      "full_page_200dpi.png",
+      "figure_crop_300dpi.png",
+      "standalone_300dpi.png",
+      "grayscale_300dpi.png",
+      "after_text_measurement_overlay_300dpi.png",
+      "after_font_audit.csv",
+      "after_pixel_measurements.csv",
+      "after_overlap_report.csv"
+    ]
+  }
+}

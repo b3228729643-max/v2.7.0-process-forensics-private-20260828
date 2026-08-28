@@ -1,0 +1,30 @@
+ELEMENT_ID,SOURCE_LINE,DECLARED_PT,GRAPHICS_SCALE,EFFECTIVE_TEX_PT,PDF_BASE_SPAN_PT,MANUAL_FONT_OBSERVATION,SOURCE_FONT_PASS
+T01,94,9.6,1.0,9.6,9.5641,"Base math uses the figure-wide 9.6 pt node font; stacked fractions are natural math scripts, not an imposed shrink.",true
+T02,96,9.6,1.0,9.6,9.5641,"Joint-density base symbols remain 9.6 TeX pt; numerator/denominator spans at 6.6949 PDF pt are normal 70-percent math scripts.",true
+T03,98,9.6,1.0,9.6,9.5641,"Quadratic form inherits the same node font; superscripts/subscripts are semantic math scripts only.",true
+T04,73,9.6,1.0,9.6,9.5641,"x1 axis label inherits the unscaled node font; subscript 1 is naturally derived.",true
+T05,74,9.6,1.0,9.6,9.5641,"x2 axis label inherits the unscaled node font; subscript 2 is naturally derived.",true
+T06,84,9.6,1.0,9.6,9.5641,"Horizontal-slice label uses the same 9.6 pt base, including the 4/5 fraction.",true
+T07,89,9.6,1.0,9.6,9.5641,"Vertical-slice label uses the common 9.6 pt base without local scaling.",true
+T08,93,9.6,1.0,9.6,9.5641,"Point label uses the common 9.6 pt base and no transform shape.",true
+T09,100,9.6,1.0,9.6,9.5641,"Chinese annotation and embedded math inherit one 9.6 pt node font; no panel-level reduction.",true
+T10,147,9.6,1.0,9.6,9.5641,"Horizontal-map Chinese label inherits the common node font.",true
+T11,147,9.6,1.0,9.6,9.5641,"Horizontal-map normalization formula inherits 9.6 pt; subscript is natural.",true
+T12,116,9.6,1.0,9.6,9.5641,"Upper conditional identity uses the common base font; fraction scripts are natural.",true
+T13,117,9.6,1.0,9.6,9.5641,"Upper distribution/marginal line uses the common base font; all fraction scripts derive from it.",true
+T14,121,9.6,1.0,9.6,9.5641,"Upper integral/peak formula uses the common base font; integral limits and radical content use semantic script levels.",true
+T15,107,9.6,1.0,9.6,9.5641,"Upper t label inherits the common node font despite the coordinate-only y=3.1cm scope.",true
+T16,113,9.6,1.0,9.6,9.5641,"Upper mean fraction inherits the common base font; numerator and denominator are natural scripts.",true
+T17,150,9.6,1.0,9.6,9.5641,"Vertical-map Chinese label inherits the same node font as T10.",true
+T18,150,9.6,1.0,9.6,9.5641,"Vertical-map normalization formula inherits 9.6 pt; subscript is natural.",true
+T19,137,9.6,1.0,9.6,9.5641,"Lower conditional identity matches T12 in declared and extracted base size.",true
+T20,138,9.6,1.0,9.6,9.5641,"Lower distribution/marginal line matches T13 in declared and extracted base size.",true
+T21,142,9.6,1.0,9.6,9.5641,"Lower integral/peak formula matches T14 in declared and extracted base size.",true
+T22,128,9.6,1.0,9.6,9.5641,"Lower t label matches T15; the y-unit scope changes geometry only, not text.",true
+T23,134,9.6,1.0,9.6,9.5641,"Lower mean fraction inherits the common base font; numerator/denominator are natural scripts.",true
+T24,155,9.6,1.0,9.6,9.5641,"First note line uses the common node font; no text-width scaling is present.",true
+T25,155,9.6,1.0,9.6,9.5641,"Second note line uses the same common node font and line spacing.",true
+T26,155,9.6,1.0,9.6,9.5641,"Third note line uses the same common node font and line spacing.",true
+T27,157,caption_style,1.0,caption_style,9.9626,"Caption number is document caption style, unscaled and larger/bolder by semantic role.",true
+T28,157,caption_style,1.0,caption_style,9.8625,"Caption first line uses the document caption body style, unscaled.",true
+T29,157,caption_style,1.0,caption_style,9.8625,"Caption second line uses the same document caption body style as T28.",true

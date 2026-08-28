@@ -1,0 +1,13 @@
+pair_id,reviewer,raw_1x_opened,raw_nearest8x_opened,overlay_nearest8x_opened,a_mask_opened,b_mask_opened,intersection_opened,actual_illegal_overlap,actual_clearance_failure,decision,note
+PAIR-01306,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,p1 base and natural subscript are one formula parent and remain readable
+PAIR-01585,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,p2 base and natural subscript are one formula parent; bbox gap rule does not apply internally
+PAIR-01860,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,p3 base and natural subscript are one formula parent and remain readable
+PAIR-02220,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,p4 glyph is visibly below the dashed y=1 guide; intersection count is bbox mask attribution pollution
+PAIR-02245,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,p4 glyph is visibly separated from the blue top step; 1px machine clearance is not a reader-visible collision
+PAIR-02876,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,t=1 dashed guide passes through inter-character whitespace beside the colon dots; no ink contact
+PAIR-03795,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,F and X belong to one axis-label formula; contact is designed TeX subscript composition
+PAIR-03916,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,X and following delimiter belong to one axis-label formula and remain legible
+PAIR-06688,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,t=4 guide is occluded by the note background before text paint; raw ROI has no reader-visible line through 跳
+PAIR-06898,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,p_i base and natural subscript are one formula parent and remain readable
+PAIR-07171,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,p_X base and natural subscript are one formula parent and remain readable
+PAIR-07260,A-R112-P067-SA1-FRESH-ISOLATED-20260827,true,true,true,true,true,true,false,false,PASS_R168,X and delimiter belong to one axis-label formula and remain readable

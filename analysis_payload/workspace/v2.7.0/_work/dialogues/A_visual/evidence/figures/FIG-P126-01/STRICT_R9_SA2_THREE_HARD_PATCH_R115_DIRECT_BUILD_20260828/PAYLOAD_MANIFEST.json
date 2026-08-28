@@ -1,0 +1,960 @@
+{
+  "schema": "P126_R9_PAYLOAD_MANIFEST_V1",
+  "handoff_id": "A-R115-P126-SA2-DIRECT-BUILD-R9-20260828",
+  "verdict": "LOCAL_SA2_FAIL_RETURN_TO_MAIN_SOURCE_SCOPE",
+  "payload_count": 136,
+  "rows": [
+    {
+      "relative_path": "BUILD_RESULT.json",
+      "bytes": 4316,
+      "sha256": "43AFE70058098E709F3BC58B410E50A1501530C18354FABD1B9C20000145027D",
+      "creation_time_utc_ticks": 639234906083301061,
+      "last_write_time_utc_ticks": 639234906083301061
+    },
+    {
+      "relative_path": "BUILD_START.json",
+      "bytes": 2945,
+      "sha256": "984AD251FF45589276FEFD9A4FFF88281130D5F3EE22980ADFCF37A98BC3CD08",
+      "creation_time_utc_ticks": 639234905433676148,
+      "last_write_time_utc_ticks": 639234905433676148
+    },
+    {
+      "relative_path": "BUILD_STDERR.log",
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "creation_time_utc_ticks": 639234905433773886,
+      "last_write_time_utc_ticks": 639234905433773886
+    },
+    {
+      "relative_path": "BUILD_STDOUT.log",
+      "bytes": 28418,
+      "sha256": "E20C7CF5D760671854C55FD91D61992A156B659B6F7AC7BFDA31DEC7EA926898",
+      "creation_time_utc_ticks": 639234905433763885,
+      "last_write_time_utc_ticks": 639234906075064198
+    },
+    {
+      "relative_path": "build/symbols.idx",
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "creation_time_utc_ticks": 639234906008527036,
+      "last_write_time_utc_ticks": 639234906008527036
+    },
+    {
+      "relative_path": "build/v260_FIG-P126-01_standalone.aux",
+      "bytes": 471,
+      "sha256": "DFE474755A576BFDF03E0193DD93F1794E3A10D3BBCBD12DC985B662DBF95E25",
+      "creation_time_utc_ticks": 639234906009175373,
+      "last_write_time_utc_ticks": 639234906019398907
+    },
+    {
+      "relative_path": "build/v260_FIG-P126-01_standalone.idx",
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "creation_time_utc_ticks": 639234906008485602,
+      "last_write_time_utc_ticks": 639234906008485602
+    },
+    {
+      "relative_path": "build/v260_FIG-P126-01_standalone.log",
+      "bytes": 149053,
+      "sha256": "FE41B15182BBBA3C676F2E4B220326D3E0C7C4545BD9CC60066BA12596FAFD70",
+      "creation_time_utc_ticks": 639234905440313756,
+      "last_write_time_utc_ticks": 639234906075064198
+    },
+    {
+      "relative_path": "build/v260_FIG-P126-01_standalone.pdf",
+      "bytes": 34051,
+      "sha256": "CE80FD14D39FE32269BF8535B0381006338AD14D9490292FB5B07230AFDA5573",
+      "creation_time_utc_ticks": 639234906002539987,
+      "last_write_time_utc_ticks": 639234906075035884
+    },
+    {
+      "relative_path": "candidate_relations_part01.png",
+      "bytes": 66492,
+      "sha256": "BAF152D2116CE6A2FC31CBC41E4DCF2E9A368F09F9872A8F6D4041EFD1D89F79",
+      "creation_time_utc_ticks": 639234911776382173,
+      "last_write_time_utc_ticks": 639234911776542631
+    },
+    {
+      "relative_path": "candidate_relations_part02.png",
+      "bytes": 65197,
+      "sha256": "D2FC3F5371272AAE1097984D9DC8A5E810612288E083BDD5E03D2FC94E8D5D0F",
+      "creation_time_utc_ticks": 639234911776663554,
+      "last_write_time_utc_ticks": 639234911776852785
+    },
+    {
+      "relative_path": "candidate_relations_part03.png",
+      "bytes": 68756,
+      "sha256": "CE16435E3E2E0C1E99605D2708A2A6977FEF054FF43D8170DB5B2C4584FFC13A",
+      "creation_time_utc_ticks": 639234911776974778,
+      "last_write_time_utc_ticks": 639234911777152430
+    },
+    {
+      "relative_path": "candidate_relations_part04.png",
+      "bytes": 57105,
+      "sha256": "444786DFEE057A3ADE18ACEDF6B215001AAFD60586E1EE95925BD518C015242C",
+      "creation_time_utc_ticks": 639234911777238403,
+      "last_write_time_utc_ticks": 639234911777391295
+    },
+    {
+      "relative_path": "candidate_relations_part05.png",
+      "bytes": 57437,
+      "sha256": "9BC2DD89C22A9C92755789128FCCA2AD567629F9D4446215F6A073587DBA0A16",
+      "creation_time_utc_ticks": 639234911777540293,
+      "last_write_time_utc_ticks": 639234911777722574
+    },
+    {
+      "relative_path": "candidate_relations_part06.png",
+      "bytes": 69481,
+      "sha256": "D9EC9AD59018C890AE2635F428763A8CD58F3A26F1417CD994D306EE8A8E04CB",
+      "creation_time_utc_ticks": 639234911777815677,
+      "last_write_time_utc_ticks": 639234911778005797
+    },
+    {
+      "relative_path": "candidate_relations_part07.png",
+      "bytes": 69592,
+      "sha256": "F501B48FD57F0FF8C8766BA17B396DD673CC96BCF7A7D50581B4056A4A97B8E3",
+      "creation_time_utc_ticks": 639234911778111484,
+      "last_write_time_utc_ticks": 639234911778312180
+    },
+    {
+      "relative_path": "candidate_relations_part08.png",
+      "bytes": 57734,
+      "sha256": "425D6324F48E144BE3BDEE56A4195918F5CB4FAE9E32DA8722F620E93226C8DC",
+      "creation_time_utc_ticks": 639234911778428840,
+      "last_write_time_utc_ticks": 639234911778603467
+    },
+    {
+      "relative_path": "candidate_relations_part09.png",
+      "bytes": 79919,
+      "sha256": "C61B46B854D0A8A605C891B06FB428E7603AFF3FD699476AC0418E2BB1F93996",
+      "creation_time_utc_ticks": 639234911778723142,
+      "last_write_time_utc_ticks": 639234911778917411
+    },
+    {
+      "relative_path": "candidate_relations_part10.png",
+      "bytes": 82792,
+      "sha256": "3F348141D4353B04914E90CD0748A82F5E7F05856542290D4DF2670917BC938C",
+      "creation_time_utc_ticks": 639234911779027562,
+      "last_write_time_utc_ticks": 639234911779220699
+    },
+    {
+      "relative_path": "candidate_relations_part11.png",
+      "bytes": 79925,
+      "sha256": "7431C834B6963D23B3B2EDC5774E64A38AFB2C02A2C4031DE2C1AE81481649E5",
+      "creation_time_utc_ticks": 639234911779323833,
+      "last_write_time_utc_ticks": 639234911779523925
+    },
+    {
+      "relative_path": "figure_crop_300_grayscale.png",
+      "bytes": 32036,
+      "sha256": "B4864927C7089C42EC1E54C4BC854A14FBD6651325CCC9E13EE07AE204262610",
+      "creation_time_utc_ticks": 639234909609753538,
+      "last_write_time_utc_ticks": 639234909609799825
+    },
+    {
+      "relative_path": "figure_crop_300_native1x.png",
+      "bytes": 60899,
+      "sha256": "4B537B040B0B128728587C46C3368D69970D05EF74C538A1800B242240073D53",
+      "creation_time_utc_ticks": 639234909609522151,
+      "last_write_time_utc_ticks": 639234909609670459
+    },
+    {
+      "relative_path": "FINAL_CROSSCHECK.json",
+      "bytes": 1002,
+      "sha256": "25C6E346CFE347216F6788435C20422C4F4AE7A084746966E4136457D15D1FD5",
+      "creation_time_utc_ticks": 639234914725742639,
+      "last_write_time_utc_ticks": 639234914725742639
+    },
+    {
+      "relative_path": "full_page_300_grayscale.png",
+      "bytes": 50096,
+      "sha256": "F0F0307E5BE92DD21C240715174B36472108A93979AE0695FC392B13CF986256",
+      "creation_time_utc_ticks": 639234909608760008,
+      "last_write_time_utc_ticks": 639234909608975005
+    },
+    {
+      "relative_path": "full_page_300.png",
+      "bytes": 109236,
+      "sha256": "B7DF64965E6C8EFEEF0830754FE257AEB458D2B8ABAC3F23520DCF2058A8A199",
+      "creation_time_utc_ticks": 639234907006607299,
+      "last_write_time_utc_ticks": 639234907009030994
+    },
+    {
+      "relative_path": "HANDOFF.md",
+      "bytes": 727,
+      "sha256": "C7156CAEBB8899B38486968AC06C3D339A51C4C10C250EBD37BF322AA6DFE77B",
+      "creation_time_utc_ticks": 639234914725784812,
+      "last_write_time_utc_ticks": 639234914725784812
+    },
+    {
+      "relative_path": "HARD_MEASUREMENTS.json",
+      "bytes": 551,
+      "sha256": "72D1A8600EAFF1EB0FC2AA7900B22BD4BF8E05324A63999F2A0E0F32C82BFF57",
+      "creation_time_utc_ticks": 639234914725719181,
+      "last_write_time_utc_ticks": 639234914725719181
+    },
+    {
+      "relative_path": "label6_roi_native1x.png",
+      "bytes": 3594,
+      "sha256": "F764A01486A9B2EE3A1E51FF6EC4D02DDC89505EB3581D261FFD98BA4EAF3D5D",
+      "creation_time_utc_ticks": 639234909611188400,
+      "last_write_time_utc_ticks": 639234909611203942
+    },
+    {
+      "relative_path": "label6_roi_nearest8x.png",
+      "bytes": 9729,
+      "sha256": "8E6F3009F8C0A2618353DA498C8FD658EAB7FEC3C6BFB94BA4D870C96526FEB9",
+      "creation_time_utc_ticks": 639234909611211029,
+      "last_write_time_utc_ticks": 639234909611211029
+    },
+    {
+      "relative_path": "label7_roi_native1x.png",
+      "bytes": 4870,
+      "sha256": "D7D9FD5EFD37C1E908A3A95F987A0DE98197026681A8F87B0F29EAD04E66CA7D",
+      "creation_time_utc_ticks": 639234909611211029,
+      "last_write_time_utc_ticks": 639234909611211029
+    },
+    {
+      "relative_path": "label7_roi_nearest8x.png",
+      "bytes": 12323,
+      "sha256": "BDD010C15734F88C78323B3CA56C3A60D539A0A8DF49765DDE10ECF522F8B0B6",
+      "creation_time_utc_ticks": 639234909611281373,
+      "last_write_time_utc_ticks": 639234909611347264
+    },
+    {
+      "relative_path": "legend_roi_native1x.png",
+      "bytes": 4901,
+      "sha256": "8740B6DF44C18321413C5D5F826DA6FA3BD819CA9AAAD151FF62FC3D956C92E2",
+      "creation_time_utc_ticks": 639234909610968191,
+      "last_write_time_utc_ticks": 639234909610968191
+    },
+    {
+      "relative_path": "legend_roi_nearest8x.png",
+      "bytes": 16752,
+      "sha256": "3E6245188DAA0A46130BBDEFF5F3FD520C68560D1495C6787F701DBEEAA553DC",
+      "creation_time_utc_ticks": 639234909611040628,
+      "last_write_time_utc_ticks": 639234909611188400
+    },
+    {
+      "relative_path": "MACHINE_ALL_PAIRS.csv",
+      "bytes": 84273,
+      "sha256": "FD78C6DCFAE4875AE8F66EE9686146279062DCB2A0A63850021044E9B5D863B5",
+      "creation_time_utc_ticks": 639234909609474402,
+      "last_write_time_utc_ticks": 639234909609522151
+    },
+    {
+      "relative_path": "MACHINE_OBJECTS.csv",
+      "bytes": 4410,
+      "sha256": "27F55765E6D5D3422C83C289E72FD648EADB4901E526DF4387B65E62C00D32D9",
+      "creation_time_utc_ticks": 639234909609418042,
+      "last_write_time_utc_ticks": 639234909609429182
+    },
+    {
+      "relative_path": "MACHINE_SUMMARY.json",
+      "bytes": 1389,
+      "sha256": "353BEA0958AA0F9BE369C7B0FB4F28FEDF5FB59D5653D98E964B169F1951FB59",
+      "creation_time_utc_ticks": 639234909611407335,
+      "last_write_time_utc_ticks": 639234909611417331
+    },
+    {
+      "relative_path": "MANUAL_GLYPH_CODEPOINT_LEDGER.csv",
+      "bytes": 3596,
+      "sha256": "5B5A2BE47EADFECFAD3ACEA4F18BF878983B07D8B5F4BEF88F5E0F266F745D15",
+      "creation_time_utc_ticks": 639234914725709182,
+      "last_write_time_utc_ticks": 639234914725709182
+    },
+    {
+      "relative_path": "MANUAL_HARD_GATE_LEDGER.csv",
+      "bytes": 834,
+      "sha256": "8399C7491E106AA30999388A9D405B986FDA745B7A58A495F5DF54AD4CD0A1DA",
+      "creation_time_utc_ticks": 639234914725719181,
+      "last_write_time_utc_ticks": 639234914725719181
+    },
+    {
+      "relative_path": "MANUAL_MATH_SEMANTIC_LEDGER.csv",
+      "bytes": 1018,
+      "sha256": "9F0425B1EDC9BFC53414D83FE22B45FAB46B788B80704789EE520A1815528C55",
+      "creation_time_utc_ticks": 639234914725719181,
+      "last_write_time_utc_ticks": 639234914725719181
+    },
+    {
+      "relative_path": "MANUAL_OBJECT_LEDGER.csv",
+      "bytes": 8904,
+      "sha256": "DA103BD67574682DFCC1E0D41581988F2B035063DDC5E2C595401C0A7DBE74BD",
+      "creation_time_utc_ticks": 639234914725480277,
+      "last_write_time_utc_ticks": 639234914725488811
+    },
+    {
+      "relative_path": "MANUAL_PAIR_LEDGER.csv",
+      "bytes": 341740,
+      "sha256": "FC732772F2BA3D6329016B9958455CB0D0890AE665189B09E70E97D6F4993F7E",
+      "creation_time_utc_ticks": 639234914725498829,
+      "last_write_time_utc_ticks": 639234914725570285
+    },
+    {
+      "relative_path": "MANUAL_VIEW_LEDGER.csv",
+      "bytes": 5108,
+      "sha256": "B2A11BD9396488EE080B9E58949C40C88F5096485598B8671A871A625F3540A0",
+      "creation_time_utc_ticks": 639234914725709182,
+      "last_write_time_utc_ticks": 639234914725709182
+    },
+    {
+      "relative_path": "object_contact_sheet.png",
+      "bytes": 129907,
+      "sha256": "9B74D7DAC92F94C0B1BB31F39395367B7A942A0981D7AF8314EE0A62AE920786",
+      "creation_time_utc_ticks": 639234909610788547,
+      "last_write_time_utc_ticks": 639234909610968191
+    },
+    {
+      "relative_path": "object_overlay_figure_300.png",
+      "bytes": 78001,
+      "sha256": "BEEBEA956198DE5375F81B1455E6D8C54AAC4AB80A1457E910E8508B1AABEF73",
+      "creation_time_utc_ticks": 639234909610518195,
+      "last_write_time_utc_ticks": 639234909610630487
+    },
+    {
+      "relative_path": "object_overlay_full_300.png",
+      "bytes": 122696,
+      "sha256": "F204B6EF042BD9C25652A390F73E2D537FC1B03F9C649862013FEE296CA83E90",
+      "creation_time_utc_ticks": 639234909609914925,
+      "last_write_time_utc_ticks": 639234909610508193
+    },
+    {
+      "relative_path": "REPORT.md",
+      "bytes": 2662,
+      "sha256": "0CA6376B0DFD65E1251C6039F1BC47A82B1E011FAECAE95B1FAA148EEDD112B8",
+      "creation_time_utc_ticks": 639234914725774790,
+      "last_write_time_utc_ticks": 639234914725774790
+    },
+    {
+      "relative_path": "RESULT.json",
+      "bytes": 780,
+      "sha256": "6B5B2A481D9D999DF9C77E5C759EF57FA7F6C1FAF5ED7A9E9064B81272CDAB71",
+      "creation_time_utc_ticks": 639234914725752636,
+      "last_write_time_utc_ticks": 639234914725752636
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman10-bold.lua",
+      "bytes": 211481,
+      "sha256": "75104086EB826332C5F40BF18C6A0E9704704696709CCD885EFDD8A666DBDD1A",
+      "creation_time_utc_ticks": 639234905775346860,
+      "last_write_time_utc_ticks": 639234905775536759
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman10-bold.luc",
+      "bytes": 128402,
+      "sha256": "BF67DC77CE7115BF2253AAA1F2370F128B563562BB4E4217D4D5C7B33C691D57",
+      "creation_time_utc_ticks": 639234905775579666,
+      "last_write_time_utc_ticks": 639234905775647265
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman10-regular.lua",
+      "bytes": 211876,
+      "sha256": "26BD3C6834BE2DB3522BEB2C6BC3C8303B534AF6110034176B686C50F1B6C197",
+      "creation_time_utc_ticks": 639234905757608496,
+      "last_write_time_utc_ticks": 639234905757754715
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman10-regular.luc",
+      "bytes": 127319,
+      "sha256": "499EF5D0B814DE1F07B602A0DBD2CDC5559C804EBED5C90AE7461B8E85805E32",
+      "creation_time_utc_ticks": 639234905757849351,
+      "last_write_time_utc_ticks": 639234905757890451
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman9-regular.lua",
+      "bytes": 211852,
+      "sha256": "77EB5F833EC4F55910FA45084490AF7B67FE2B1A683BEF0F086764F031A386F1",
+      "creation_time_utc_ticks": 639234905785907676,
+      "last_write_time_utc_ticks": 639234905786055258
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman9-regular.luc",
+      "bytes": 127952,
+      "sha256": "809B2F3516589A0D98BD832475433EFF279047FE2AD3ECC66AB2ADA644173B69",
+      "creation_time_utc_ticks": 639234905786150977,
+      "last_write_time_utc_ticks": 639234905786190825
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/noto-sans-sc-bold-truetype-.lua",
+      "bytes": 4678340,
+      "sha256": "A25E56B3A3B82007EA2DABE303161E82B3C20A8E8D800D28E2CFF06287423D27",
+      "creation_time_utc_ticks": 639234905930062532,
+      "last_write_time_utc_ticks": 639234905933357601
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/noto-sans-sc-bold-truetype-.luc",
+      "bytes": 2604675,
+      "sha256": "3C4FCE1E89CEC115A95574F30104AF9117BD7B1976688A096519A85563ABDF3B",
+      "creation_time_utc_ticks": 639234905933550809,
+      "last_write_time_utc_ticks": 639234905934070118
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/noto-sans-sc-truetype-.lua",
+      "bytes": 4672039,
+      "sha256": "76A2A834C6AD06A4B9CFB7A496DB9AB74B18F6044CBC78637EBD1298623BBBC2",
+      "creation_time_utc_ticks": 639234905902278263,
+      "last_write_time_utc_ticks": 639234905905671771
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/noto-sans-sc-truetype-.luc",
+      "bytes": 2595769,
+      "sha256": "C4D2E7D342157D8AE430F9FC9997BF0FE0111A79BDDAEA3509F894E89EF55836",
+      "creation_time_utc_ticks": 639234905905803315,
+      "last_write_time_utc_ticks": 639234905906304210
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/notoserifsc-vf.lua",
+      "bytes": 4876661,
+      "sha256": "E255B50644FC3BC59EBD0148900AE132FC67AF7502E859CC9FFB57C73FB80273",
+      "creation_time_utc_ticks": 639234905870922149,
+      "last_write_time_utc_ticks": 639234905874487187
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/notoserifsc-vf.luc",
+      "bytes": 2713935,
+      "sha256": "8BA373F5E88E41C0997AF288FE382519F14F8649719465C5B15B02966E293F45",
+      "creation_time_utc_ticks": 639234905874607733,
+      "last_write_time_utc_ticks": 639234905875201292
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simhei.lua",
+      "bytes": 3301441,
+      "sha256": "AB374BC8F837DCB953C1486FB104BD3DBF86007A534C00DA6C6AA0CF1467DE6D",
+      "creation_time_utc_ticks": 639234905800864541,
+      "last_write_time_utc_ticks": 639234905803276987
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simhei.luc",
+      "bytes": 1763210,
+      "sha256": "ACD07DE06899DDD07D9EAB7EB297F9F6D8EBBBE54E37B2AB33FF765C7ED37A40",
+      "creation_time_utc_ticks": 639234905803398234,
+      "last_write_time_utc_ticks": 639234905803760744
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simkai.lua",
+      "bytes": 3530495,
+      "sha256": "C7C578FEFB417E8DCAFB2EA28321753A49A6AF298392DD62D379934B0FE41717",
+      "creation_time_utc_ticks": 639234905795650870,
+      "last_write_time_utc_ticks": 639234905798204080
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simkai.luc",
+      "bytes": 2057650,
+      "sha256": "113CC858A2D8D1AE3AC7812F747173B80C7F97868EBABB6D4E0581F25539137D",
+      "creation_time_utc_ticks": 639234905798315515,
+      "last_write_time_utc_ticks": 639234905798669029
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simsun-1.lua",
+      "bytes": 4393136,
+      "sha256": "12EF4749E2B79EF7AB6F96F60945FB4E2A724E7FE1F7D5B9A0A82B7A1F3DFA9F",
+      "creation_time_utc_ticks": 639234905787945647,
+      "last_write_time_utc_ticks": 639234905790999276
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simsun-1.luc",
+      "bytes": 1996857,
+      "sha256": "68DE28E98D442FC7437B93CF0EEBEA15409FE7A15345379B144140DDC587ECA7",
+      "creation_time_utc_ticks": 639234905791105105,
+      "last_write_time_utc_ticks": 639234905791579614
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwomath-regular.lua",
+      "bytes": 1595090,
+      "sha256": "B0B57B9C2AF0DF9E9D0361FB168FB76DC48C5EFC7E538421825B89FF0B58A451",
+      "creation_time_utc_ticks": 639234905947240761,
+      "last_write_time_utc_ticks": 639234905948627482
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwomath-regular.luc",
+      "bytes": 926180,
+      "sha256": "B5B0C2F76AEA797D932BE0D9D28C634240937091C05A5856A9B27896210BCD38",
+      "creation_time_utc_ticks": 639234905949152320,
+      "last_write_time_utc_ticks": 639234905950243002
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-bold.lua",
+      "bytes": 1040340,
+      "sha256": "ED8A5EC27B422520B3BE4BAA9F502F32A3CE32DD420AB01C171536595283A418",
+      "creation_time_utc_ticks": 639234905827760280,
+      "last_write_time_utc_ticks": 639234905828518690
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-bold.luc",
+      "bytes": 610426,
+      "sha256": "EB64584E3BA978778C8D10911D5D3CFBFE542A2F58B104B0C15A0CFA6270B7FC",
+      "creation_time_utc_ticks": 639234905828630169,
+      "last_write_time_utc_ticks": 639234905828761937
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-bolditalic.lua",
+      "bytes": 1085532,
+      "sha256": "FA6A761CFC5EAB870B7A9D29DB59F543EEA661657745F8EB95B503C1FED8784D",
+      "creation_time_utc_ticks": 639234905821111118,
+      "last_write_time_utc_ticks": 639234905821820481
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-bolditalic.luc",
+      "bytes": 622765,
+      "sha256": "49CEB56BA530383DBCFC4DEFA157336CE570E838B58D2AFCABDC9F2521BAF124",
+      "creation_time_utc_ticks": 639234905821941610,
+      "last_write_time_utc_ticks": 639234905822066308
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-italic.lua",
+      "bytes": 1086958,
+      "sha256": "1FB4BBA4775FBB8C0C54D50098EC65810BFDCA18D8C159FBB40C9150EB16AF7B",
+      "creation_time_utc_ticks": 639234905834915244,
+      "last_write_time_utc_ticks": 639234905835637815
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-italic.luc",
+      "bytes": 641063,
+      "sha256": "5D8090EF521E858A5F93F06A3D885A0B009E7855466EFF1427C61ED374170927",
+      "creation_time_utc_ticks": 639234905835699454,
+      "last_write_time_utc_ticks": 639234905835820993
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-regular.lua",
+      "bytes": 1041173,
+      "sha256": "7BDE37AD8B7676A83AD8B1009658E2DBBFD25F8208C8A69B69CCE035D95A2059",
+      "creation_time_utc_ticks": 639234905813616566,
+      "last_write_time_utc_ticks": 639234905814305674
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-regular.luc",
+      "bytes": 628656,
+      "sha256": "C5F8D85C70904844F66721988DD2CC28D2FBF513CD674CA910E45D4817187A62",
+      "creation_time_utc_ticks": 639234905814435561,
+      "last_write_time_utc_ticks": 639234905814554374
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-bold.lua",
+      "bytes": 366441,
+      "sha256": "527A6778212F7E4EAAEF55AEABE324EAA28B1C5CC8B0C2D4A9C1954D8221E011",
+      "creation_time_utc_ticks": 639234905840582814,
+      "last_write_time_utc_ticks": 639234905840790578
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-bold.luc",
+      "bytes": 212902,
+      "sha256": "C4E584D6D34BE6F12B1DFC3B1C24F64BC75FA349D86C3C4B732F7CC0250BE3F6",
+      "creation_time_utc_ticks": 639234905840920374,
+      "last_write_time_utc_ticks": 639234905840920374
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-bolditalic.lua",
+      "bytes": 369380,
+      "sha256": "D2AD0826D556E9B768CB83EEEB4566AA3036C7B415553E4F821EA12D76EBD83B",
+      "creation_time_utc_ticks": 639234905839639167,
+      "last_write_time_utc_ticks": 639234905839872887
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-bolditalic.luc",
+      "bytes": 213994,
+      "sha256": "50ED91A2CBFA6AA80A67603DBF9FFCD596576F11D734A35D37A1E80544A93B00",
+      "creation_time_utc_ticks": 639234905839940822,
+      "last_write_time_utc_ticks": 639234905840002155
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-italic.lua",
+      "bytes": 378368,
+      "sha256": "1DAD07D62216EF0A582B67366B0FDF1B8A356135644658DFFA1AD0A95F108FC3",
+      "creation_time_utc_ticks": 639234905841539785,
+      "last_write_time_utc_ticks": 639234905841753660
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-italic.luc",
+      "bytes": 217283,
+      "sha256": "B734374BF0FEDED9C8368C7AE04BDE15642C96697DACC8B326815F147386845D",
+      "creation_time_utc_ticks": 639234905841822278,
+      "last_write_time_utc_ticks": 639234905841881287
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-regular.lua",
+      "bytes": 370511,
+      "sha256": "83CBCC7C0C9DC3CF7DC173632CE38F967759A10F0EA1EA730914E39441732EB7",
+      "creation_time_utc_ticks": 639234905838303813,
+      "last_write_time_utc_ticks": 639234905838548414
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-regular.luc",
+      "bytes": 213467,
+      "sha256": "F8A31740CAE1E90980FF808B1A7465E7928C07B60BF4100E3AA8EB2105196482",
+      "creation_time_utc_ticks": 639234905838668483,
+      "last_write_time_utc_ticks": 639234905838729207
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/xitsmath-bold.lua",
+      "bytes": 515860,
+      "sha256": "BF1916F959C64A389D24AD40A3121175E4E4E8FE396524DF8FF8A9460611194B",
+      "creation_time_utc_ticks": 639234905957091548,
+      "last_write_time_utc_ticks": 639234905957426140
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/xitsmath-bold.luc",
+      "bytes": 291895,
+      "sha256": "827E1E29EDA6658E79479332D45A08F9C39D4D0647E5D37E3ECF01C8D4B9DFF6",
+      "creation_time_utc_ticks": 639234905957515834,
+      "last_write_time_utc_ticks": 639234905957614846
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/streams/notoserifscvfttf-1.lua",
+      "bytes": 27947636,
+      "sha256": "A38762BB2E949115BC252577DB7B1E7E06C9ECB6CB960F2FBAAE26DCC00B2B8F",
+      "creation_time_utc_ticks": 639234906063275014,
+      "last_write_time_utc_ticks": 639234906071307887
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/streams/notoserifscvfttf-1.luc",
+      "bytes": 14788270,
+      "sha256": "DBB84911A356413180420A133726B4BE5E086343C2FBCC722C9CE4F6C4120660",
+      "creation_time_utc_ticks": 639234906072567829,
+      "last_write_time_utc_ticks": 639234906074608737
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/names/luaotfload-lookup-cache.lua",
+      "bytes": 14411,
+      "sha256": "8EED69F327D69D208ABC8EF15AE3A4F7766D9891C7073FAEA1ED8329B90D1B4B",
+      "creation_time_utc_ticks": 639234905757182105,
+      "last_write_time_utc_ticks": 639234906017713144
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/names/luaotfload-lookup-cache.luc",
+      "bytes": 9565,
+      "sha256": "FF0D81147E50BB3D03DCBBC55029FB174A9D009BFA1C6DA6875733219CFCF358",
+      "creation_time_utc_ticks": 639234905757182105,
+      "last_write_time_utc_ticks": 639234906017713144
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/names/luaotfload-names.lua.gz",
+      "bytes": 233878,
+      "sha256": "6D3B79E7434F76369C6C3E81CE826CD2AB492C3F72E30154E61B9CF4A7D019A1",
+      "creation_time_utc_ticks": 639234905752789042,
+      "last_write_time_utc_ticks": 639234905755604983
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/names/luaotfload-names.luc.gz",
+      "bytes": 343188,
+      "sha256": "11D82B11098D931DBF9659981C154AAEA4CA2862E47C960400FC1FF2F791E297",
+      "creation_time_utc_ticks": 639234905752789042,
+      "last_write_time_utc_ticks": 639234905757040496
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_kaiti.lua.gz",
+      "bytes": 61873,
+      "sha256": "18A597D752029E520A7C4DAE16DA2B00BEF407B43A4398E3BE1B7335AE9F91F8",
+      "creation_time_utc_ticks": 639234905799327254,
+      "last_write_time_utc_ticks": 639234905799418286
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_kaiti.luc",
+      "bytes": 379033,
+      "sha256": "BE4202315550D58B8160CC51A73EAA622837ABC69C073751C43C71E23CC02584",
+      "creation_time_utc_ticks": 639234905799458496,
+      "last_write_time_utc_ticks": 639234905799458496
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman10-bold.lua.gz",
+      "bytes": 3574,
+      "sha256": "EDAE17D361A230EE9165FE59DEB5B1A535F272C5F2A3AC0B003A78494295FDB2",
+      "creation_time_utc_ticks": 639234905775701652,
+      "last_write_time_utc_ticks": 639234905775701652
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman10-bold.luc",
+      "bytes": 17367,
+      "sha256": "7981BE3514451D4FEC3C5A9C5B91C11100926D2DFEF4DAE16B22D99D676852AB",
+      "creation_time_utc_ticks": 639234905775701652,
+      "last_write_time_utc_ticks": 639234905775701652
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman10-regular.lua.gz",
+      "bytes": 3574,
+      "sha256": "0BE61FF213D017427BC806C05D260DCD55B6F3157C0090DA6F057F3E888E1B17",
+      "creation_time_utc_ticks": 639234905769822230,
+      "last_write_time_utc_ticks": 639234905769822230
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman10-regular.luc",
+      "bytes": 17367,
+      "sha256": "7981BE3514451D4FEC3C5A9C5B91C11100926D2DFEF4DAE16B22D99D676852AB",
+      "creation_time_utc_ticks": 639234905769822230,
+      "last_write_time_utc_ticks": 639234905769822230
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman9-regular.lua.gz",
+      "bytes": 3574,
+      "sha256": "37639F469A6448B4AE1C2FA3159221EEB0C10D147C4CDC2857B801BDFB00291D",
+      "creation_time_utc_ticks": 639234905786243881,
+      "last_write_time_utc_ticks": 639234905786243881
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman9-regular.luc",
+      "bytes": 17367,
+      "sha256": "7981BE3514451D4FEC3C5A9C5B91C11100926D2DFEF4DAE16B22D99D676852AB",
+      "creation_time_utc_ticks": 639234905786243881,
+      "last_write_time_utc_ticks": 639234905786243881
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notosanssc-bold.lua.gz",
+      "bytes": 72054,
+      "sha256": "3A4978982EB8FE5EFC8D8CFB72814AD686818BCB6D0A6EB2395B26CE1C639153",
+      "creation_time_utc_ticks": 639234905934740472,
+      "last_write_time_utc_ticks": 639234905934921202
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notosanssc-bold.luc",
+      "bytes": 419047,
+      "sha256": "ABC6D4CDEDEB4D1E9094F174168EF4BB3ACE268985EA117B273A7C498B55F000",
+      "creation_time_utc_ticks": 639234905934985349,
+      "last_write_time_utc_ticks": 639234905934985349
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notosanssc-regular.lua.gz",
+      "bytes": 72028,
+      "sha256": "57E80566ECCABCF1AC784A4617FFCC0FE357DD14B00F49DD8B5CF58CA34ED258",
+      "creation_time_utc_ticks": 639234905906910030,
+      "last_write_time_utc_ticks": 639234905907114613
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notosanssc-regular.luc",
+      "bytes": 418981,
+      "sha256": "4AC074656A14348480265877B297906BE5F7E9FD2853A6AC0CC9AAE50C3FCE7B",
+      "creation_time_utc_ticks": 639234905907152721,
+      "last_write_time_utc_ticks": 639234905907152721
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notoserifsc-extralight.lua.gz",
+      "bytes": 73050,
+      "sha256": "3838FD4854CB1FEFF9A216B5530210F3B401252CFF250072B61D999CDF3DE707",
+      "creation_time_utc_ticks": 639234905875874146,
+      "last_write_time_utc_ticks": 639234905876002880
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notoserifsc-extralight.luc",
+      "bytes": 422494,
+      "sha256": "FBD44C9515E9E02A6B10BA530B7A29F1DC11C8CACC5C4360598E7ED776733FC4",
+      "creation_time_utc_ticks": 639234905876063130,
+      "last_write_time_utc_ticks": 639234905876063130
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_simhei.lua.gz",
+      "bytes": 61889,
+      "sha256": "74135614DB34844E0B3E354A0545189F93E4CCC3F794F47E053BB940AC2B40A1",
+      "creation_time_utc_ticks": 639234905804419506,
+      "last_write_time_utc_ticks": 639234905804529657
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_simhei.luc",
+      "bytes": 379050,
+      "sha256": "EF32CD5DA009CE0D57C53B547537C62946BF56E9FBC8BD58DB724030C75AE218",
+      "creation_time_utc_ticks": 639234905804569930,
+      "last_write_time_utc_ticks": 639234905804569930
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_simsun.lua.gz",
+      "bytes": 132439,
+      "sha256": "C01EE605CEC5285198AB9FB0CE4F5C9DC98BF51526C9B109B42CE85F7D97D520",
+      "creation_time_utc_ticks": 639234905793529191,
+      "last_write_time_utc_ticks": 639234905793819036
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_simsun.luc",
+      "bytes": 733306,
+      "sha256": "4A3BDC4E65F75FA1915B127D70819150FBA22C7CB236F9317EA151DD7ADD1067",
+      "creation_time_utc_ticks": 639234905793953261,
+      "last_write_time_utc_ticks": 639234905793953261
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwomath-regular.lua.gz",
+      "bytes": 26045,
+      "sha256": "F5ADE84961A2C50E4F91F8FB858EC37B1774D2BBCC53630F1C43FB8EA6CE262D",
+      "creation_time_utc_ticks": 639234905950760826,
+      "last_write_time_utc_ticks": 639234905950878127
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwomath-regular.luc",
+      "bytes": 128126,
+      "sha256": "1F4EE4A76B29AAC86821C60F236F0F0FF4B2F2F8FCD88CC2E6EA3D2E3EB3F75E",
+      "creation_time_utc_ticks": 639234905950910954,
+      "last_write_time_utc_ticks": 639234905950910954
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-bold.lua.gz",
+      "bytes": 8620,
+      "sha256": "0289616B13F7E25354121A8E52BBB789A8EB675AF6C4477CA5234E4F5A2B41F4",
+      "creation_time_utc_ticks": 639234905828859562,
+      "last_write_time_utc_ticks": 639234905828862959
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-bold.luc",
+      "bytes": 42808,
+      "sha256": "FCAD87067B08CC5C850D74FEFB82DA64611A3B63990C3534097E030954166D49",
+      "creation_time_utc_ticks": 639234905828862959,
+      "last_write_time_utc_ticks": 639234905828862959
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-bolditalic.lua.gz",
+      "bytes": 8662,
+      "sha256": "854E9B2DB38AD0C9A4A73CB12DF95E0677E57127E7E55E2F0E0B20692B8CA8D3",
+      "creation_time_utc_ticks": 639234905822168671,
+      "last_write_time_utc_ticks": 639234905822188817
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-bolditalic.luc",
+      "bytes": 43029,
+      "sha256": "55227549CBFB186DBEBE6F34D60972121BE897C9947A21153AB72304A1FD2CBC",
+      "creation_time_utc_ticks": 639234905822188817,
+      "last_write_time_utc_ticks": 639234905822188817
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-italic.lua.gz",
+      "bytes": 8662,
+      "sha256": "8EA8417B5FD9E63C468A470D9F2C16A3076BF8DF48CB981A46C52CA3528FAC62",
+      "creation_time_utc_ticks": 639234905835954913,
+      "last_write_time_utc_ticks": 639234905835954913
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-italic.luc",
+      "bytes": 43029,
+      "sha256": "55227549CBFB186DBEBE6F34D60972121BE897C9947A21153AB72304A1FD2CBC",
+      "creation_time_utc_ticks": 639234905835954913,
+      "last_write_time_utc_ticks": 639234905835954913
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-regular.lua.gz",
+      "bytes": 8620,
+      "sha256": "34103C618936BE87C908E8EAD5E02BDA04AF6246F90953A8C3363BD089877007",
+      "creation_time_utc_ticks": 639234905814647962,
+      "last_write_time_utc_ticks": 639234905814668374
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-regular.luc",
+      "bytes": 42808,
+      "sha256": "FCAD87067B08CC5C850D74FEFB82DA64611A3B63990C3534097E030954166D49",
+      "creation_time_utc_ticks": 639234905814678453,
+      "last_write_time_utc_ticks": 639234905814678453
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-bold.lua.gz",
+      "bytes": 4296,
+      "sha256": "AA05ACF9EDA0248EE7855DB7DC3F4245DF80F5CE02359A7AA17A40A908C9BB69",
+      "creation_time_utc_ticks": 639234905840973672,
+      "last_write_time_utc_ticks": 639234905840973672
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-bold.luc",
+      "bytes": 21380,
+      "sha256": "97E3B525595192A05AEE3BB57DE0442A8BA91B15D323E3EE0D54E2A997AF5D14",
+      "creation_time_utc_ticks": 639234905841034629,
+      "last_write_time_utc_ticks": 639234905841034629
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-bolditalic.lua.gz",
+      "bytes": 4296,
+      "sha256": "AA05ACF9EDA0248EE7855DB7DC3F4245DF80F5CE02359A7AA17A40A908C9BB69",
+      "creation_time_utc_ticks": 639234905840062080,
+      "last_write_time_utc_ticks": 639234905840116062
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-bolditalic.luc",
+      "bytes": 21380,
+      "sha256": "97E3B525595192A05AEE3BB57DE0442A8BA91B15D323E3EE0D54E2A997AF5D14",
+      "creation_time_utc_ticks": 639234905840127547,
+      "last_write_time_utc_ticks": 639234905840127547
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-italic.lua.gz",
+      "bytes": 4296,
+      "sha256": "AA05ACF9EDA0248EE7855DB7DC3F4245DF80F5CE02359A7AA17A40A908C9BB69",
+      "creation_time_utc_ticks": 639234905841941313,
+      "last_write_time_utc_ticks": 639234905841941313
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-italic.luc",
+      "bytes": 21380,
+      "sha256": "97E3B525595192A05AEE3BB57DE0442A8BA91B15D323E3EE0D54E2A997AF5D14",
+      "creation_time_utc_ticks": 639234905841941313,
+      "last_write_time_utc_ticks": 639234905841941313
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-regular.lua.gz",
+      "bytes": 4296,
+      "sha256": "D59A5E4EFC98FF6021D3EB56BC7920DA16001AA9663C2D831FC95B04F4A571B7",
+      "creation_time_utc_ticks": 639234905838791929,
+      "last_write_time_utc_ticks": 639234905838791929
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-regular.luc",
+      "bytes": 21380,
+      "sha256": "97E3B525595192A05AEE3BB57DE0442A8BA91B15D323E3EE0D54E2A997AF5D14",
+      "creation_time_utc_ticks": 639234905838791929,
+      "last_write_time_utc_ticks": 639234905838791929
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_xitsmath-bold.lua.gz",
+      "bytes": 11578,
+      "sha256": "C9799A8C04573116C645FEE7A65B5C2C813E970EF706294A9DAC8329BFF9E2B9",
+      "creation_time_utc_ticks": 639234905957723313,
+      "last_write_time_utc_ticks": 639234905957760224
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_xitsmath-bold.luc",
+      "bytes": 58217,
+      "sha256": "99FBF557C691F7C883C82B5331E7B90E2FC972E725B77829777F563C44A15CE3",
+      "creation_time_utc_ticks": 639234905957760224,
+      "last_write_time_utc_ticks": 639234905957760224
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-cid-auto-adobe-gb1.lua.gz",
+      "bytes": 395605,
+      "sha256": "99D62B5EF866D0146EB8821B8615A622526CE10D214DB4797404972B3D7488ED",
+      "creation_time_utc_ticks": 639234905781229997,
+      "last_write_time_utc_ticks": 639234905783639517
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-cid-auto-adobe-gb1.luc",
+      "bytes": 1829283,
+      "sha256": "97A836A64EBE9CA0C5A5394AD4614CC36943C521FE01F7262F16BB82BF89B548",
+      "creation_time_utc_ticks": 639234905783981383,
+      "last_write_time_utc_ticks": 639234905784018248
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-cid-auto-adobe-japan1.lua.gz",
+      "bytes": 334445,
+      "sha256": "996B0E17754FA1EACC23175F1B91294814339A10C1CF0CBE760E420FF9450420",
+      "creation_time_utc_ticks": 639234905765705469,
+      "last_write_time_utc_ticks": 639234905768120836
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-cid-auto-adobe-japan1.luc",
+      "bytes": 1643763,
+      "sha256": "DDF3E0C84CA292B0B8CDB96CE43939BE1C98CC2282FC14FCB045661B80530CD7",
+      "creation_time_utc_ticks": 639234905768428722,
+      "last_write_time_utc_ticks": 639234905768490977
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-jisx0208.luc",
+      "bytes": 93919,
+      "sha256": "AEB22C44E475E5FDE3C85213A1AF8B49CFF04F0FD9876EFBE6C86F5096CE4543",
+      "creation_time_utc_ticks": 639234905773154020,
+      "last_write_time_utc_ticks": 639234905773154020
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-kinsoku_default.lua.gz",
+      "bytes": 2454,
+      "sha256": "90162C41E85CA4CD9C44615E61B0DC2B364F9A702DE6D63DB60FB4F4D80C4C42",
+      "creation_time_utc_ticks": 639234905772668251,
+      "last_write_time_utc_ticks": 639234905772668251
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-kinsoku_default.luc",
+      "bytes": 17654,
+      "sha256": "DFBBE58844675F2C9FB6A433CCA01B40D870BA964D2926EDFC63D1211CD1E7BB",
+      "creation_time_utc_ticks": 639234905772668251,
+      "last_write_time_utc_ticks": 639234905772668251
+    }
+  ]
+}

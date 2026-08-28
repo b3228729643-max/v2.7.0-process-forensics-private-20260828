@@ -1,0 +1,26 @@
+﻿drawing_index,seqno,type,semantic_object_id,role,bbox_pt,item_count,foreground_covered,notes
+5,13,s,G_L_X_TICKS,TICKS,"[175.889, 411.83, 313.893, 416.082]",5,True,direct get_drawings path
+6,14,s,G_L_Y_TICKS,TICKS,"[173.763, 313.623, 178.015, 413.956]",5,True,direct get_drawings path
+7,15,s,G_L_X_AXIS,LINE_ARROW,"[175.889, 413.956, 317.091, 413.956]",1,True,direct get_drawings path
+8,16,f,G_L_X_ARROWHEAD,ARROWHEAD,"[315.609, 411.979, 319.562, 415.933]",3,True,direct get_drawings path
+9,17,s,G_L_Y_AXIS,LINE_ARROW,"[175.889, 294.02, 175.889, 413.956]",1,True,direct get_drawings path
+10,18,f,G_L_Y_ARROWHEAD,ARROWHEAD,"[173.912, 291.55, 177.866, 295.503]",3,True,direct get_drawings path
+12,30,s,G_L_TARGET_CURVE,DATA_CURVE,"[175.889, 353.755, 313.893, 413.956]",300,True,direct get_drawings path
+13,31,s,G_L_Q_POSITIVE,PROPOSAL_LINE,"[175.889, 333.688, 244.891, 333.688]",1,True,direct get_drawings path
+14,32,s,G_L_Q_ZERO,PROPOSAL_LINE,"[244.891, 413.956, 313.893, 413.956]",1,True,direct get_drawings path
+15,33,s,G_L_SUPPORT_BOUNDARY,REFERENCE_LINE,"[244.891, 322.653, 244.891, 413.956]",1,True,direct get_drawings path
+16,37,fs,G_L_Q_FILLED_MARKER,MARKER,"[242.102, 330.898, 247.681, 336.478]",1,True,direct get_drawings path
+17,39,s,G_L_Q_OPEN_MARKER,MARKER,"[242.102, 411.166, 247.681, 416.746]",4,True,direct get_drawings path
+18,43,s,G_R_X_TICKS,TICKS,"[342.237, 411.83, 480.241, 416.082]",5,True,direct get_drawings path
+19,44,s,G_R_Y_TICKS,TICKS,"[340.111, 313.623, 344.363, 413.956]",5,True,direct get_drawings path
+20,45,s,G_R_X_AXIS,LINE_ARROW,"[342.237, 413.956, 483.439, 413.956]",1,True,direct get_drawings path
+21,46,f,G_R_X_ARROWHEAD,ARROWHEAD,"[481.957, 411.979, 485.91, 415.933]",3,True,direct get_drawings path
+22,47,s,G_R_Y_AXIS,LINE_ARROW,"[342.237, 294.02, 342.237, 413.956]",1,True,direct get_drawings path
+23,48,f,G_R_Y_ARROWHEAD,ARROWHEAD,"[340.26, 291.55, 344.214, 295.503]",3,True,direct get_drawings path
+24,59,s,G_R_TARGET_CURVE,DATA_CURVE,"[342.237, 353.755, 480.241, 413.956]",300,True,direct get_drawings path
+25,60,s,G_R_Q_LINE,PROPOSAL_LINE,"[342.237, 373.822, 480.241, 373.822]",1,True,direct get_drawings path
+26,61,fs,G_R_RATIO_CARD_BORDER,NODE_BORDER,"[347.205, 295.563, 475.272, 345.73]",8,True,seq61 is split: visible gray stroke here; white fill separately inventoried as opaque background
+27,64,s,G_R_MARK_X1,MARKER,"[366.849, 372.441, 372.827, 378.418]",4,True,direct get_drawings path
+28,65,fs,G_R_MARK_XMID,MARKER,"[408.45, 350.967, 414.029, 356.547]",1,True,direct get_drawings path
+29,67,fs,G_R_MARK_X4,MARKER,"[449.879, 372.241, 455.401, 377.023]",3,True,direct get_drawings path
+PATTERN_XOBJECT,PATTERN_XOBJECT,tiling-pattern,G_L_HATCH_PATTERN,PATTERN_REGION,"[244.891, 353.76, 313.893, 413.956]",repeated,True,pattern=north east lines; get_drawings does not expand repeated paint; final-visible pixels isolated inside analytic p-versus-zero fill region

@@ -1,0 +1,16 @@
+object_id,role,raw_members,visible_content,review_scope
+E001,x1_axis,"L001;V001;T014;T015",horizontal axis arrow and x1 label,axis geometry label codepoints and clipping
+E002,x2_axis,"L002;V002;T016;T017",vertical axis arrow and x2 label,axis geometry label codepoints and clipping
+E003,contour_outer,V003,outer rotated quadratic contour,shape continuity rotation and clipping
+E004,contour_mid_outer,V004,second rotated quadratic contour,shape continuity rotation and clipping
+E005,contour_mid_inner,V005,third rotated quadratic contour,shape continuity rotation and clipping
+E006,contour_inner,V006,inner rotated quadratic contour,shape continuity rotation and clipping
+E007,x1_updates,"L003;L004;L005;V007;V008;V009",three horizontal blue update segments and arrowheads,axis-aligned geometry direction and collisions
+E008,x2_updates,"L006;L007;L008;L009;V010;V011;V012;V013",four vertical teal dashed update segments and arrowheads,axis-aligned geometry dash visibility and collisions
+E009,start_state,"V014;T001;T002;T003;T004",initial point marker and x(0) label,marker-label integrity codepoints and collisions
+E010,iteration_labels,"T005;T006;T007;T008;T009;T010;T011",visible numeric labels 1 through 7,codepoints readability and path clearance
+E011,x2_step_markers,"R001;R002;R003;R004",four teal square markers at vertical-step endpoints,marker presence geometry and collisions
+E012,x1_step_markers,"V015;V016;V017",three blue round markers at horizontal-step endpoints,marker presence geometry and collisions
+E013,optimum,"V018;T012;T013",gold star and x-star label,optimum semantics readability and collisions
+E014,legend_x1,"V019;T018;T019;T020;T021",solid sample and text update x1,solid role grayscale distinction and readability
+E015,legend_x2,"V020;T022;T023;T024;T025",intended segmented sample and text update x2,multisegment role grayscale distinction and readability

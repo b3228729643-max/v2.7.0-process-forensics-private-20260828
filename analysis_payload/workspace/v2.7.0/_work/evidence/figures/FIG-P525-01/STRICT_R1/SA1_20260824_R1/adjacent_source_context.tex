@@ -1,0 +1,32 @@
+0382: \phantomsection\label{struct:V4-C06-CH14}
+0383: % KNOWLEDGE-PLAN: KN-V4-C29-CONCEPT-009 L1
+0384: \paragraph{读前自检：几何解释：每个 k 是 (M-1) 维单词单纯形中的主题点。}PLSA数值例给出$\theta_{:j}=(0.6,0.4)^{\mathsf T}$及词概率$(0.2,0.7)$；请算$P(w_i\mid d_j)=0.4$和两主题后验，核对责任度为$(0.3,0.7)$且和为1。\par
+0385: 
+0386: \begin{geometrybox}
+0387: \textbf{几何解释。}每个$\phi_{:k}$是$(M-1)$维单词单纯形中的主题点。文档分布$P(w\mid d_j)=\Phi\theta_{:j}$是这些主题点的凸组合，因此全部训练文档都落在由主题点张成的凸包中。$K=1$时凸包退化为一点；$K=2$时为线段；主题点线性相关或重复时，有效维数低于$K-1$。
+0388: \end{geometrybox}
+0389: 
+0390: \phantomsection\label{struct:V4-C06-CH15}
+0391: \begin{probabilitybox}
+0392: 责任度$\gamma_{ijk}$不是“单词$w_i$永远属于主题$k$”的概率，而是给定单词与文档后的局部后验。同一个词在不同文档中可由不同主题解释。$\Phi$刻画主题的词分布，$\Theta$刻画训练文档的主题分布，二者必须与后验责任度分开。
+0393: \end{probabilitybox}
+0394: 
+0395: \phantomsection\label{struct:V4-C06-CH16}
+0396: \begin{optimizationbox}
+0397: \textbf{优化解释。}固定经验$\pi_j$时，PLSA等价于在列随机约束下最小化经验条件分布与$\Phi\Theta$之间的加权KL散度。目标对$\Phi$和$\Theta$分别具有较好结构，但对二者联合非凸；主题置换、重复主题和边界零概率都会造成非唯一解。
+0398: \end{optimizationbox}
+0399: 
+0400: \phantomsection\label{struct:V4-C06-CH17}
+0401: % FIGURE-KNOWLEDGE: fig:V4-C06-simplex=SLM-18-01-005
+0402: \input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C06/fig_v4_c06_simplex.tex}
+0403: 图\ref{fig:V4-C06-simplex}把外层三角形表示为单词单纯形，把蓝色三角形表示为主题凸包。文档点的位置由$\theta_{:j}$决定；不同参数可以给出相同文档点，说明潜在表示不必唯一。
+0404: 
+0405: \phantomsection\label{struct:V4-C06-CH18}
+0406: \textbf{小型数值例子。}设某文档只有两个主题，$\theta_{:j}=(0.6,0.4)^{\mathsf T}$；某单词在两主题下的概率为$0.2$与$0.7$。则
+0407: $P(w_i\mid d_j)=0.2\times0.6+0.7\times0.4=0.4$。若观察到该词，后验责任度为
+0408: \[
+0409: P(z_1\mid w_i,d_j)=\frac{0.2\times0.6}{0.4}=0.3,
+0410: \qquad
+0411: P(z_2\mid w_i,d_j)=0.7.
+0412: \]
+0413: 先验主题权重为$(0.6,0.4)$，观察到更偏向第二主题的词后，后验转为$(0.3,0.7)$。

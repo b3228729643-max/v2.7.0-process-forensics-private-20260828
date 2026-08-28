@@ -1,0 +1,63 @@
+{
+  "generated_at_utc": "2026-08-25T19:20:31.510810Z",
+  "checks": {
+    "pdf_hash_unchanged": true,
+    "source_hash_unchanged": true,
+    "object_count_is_128": true,
+    "pair_formula_closes": true,
+    "all_unordered_pair_rows_close": true,
+    "glyph_manual_bijection": true,
+    "graphic_manual_bijection": true,
+    "critical_manual_bijection": true,
+    "manual_view_paths_exist": true,
+    "critical_evidence_six_views_each_exist": true,
+    "all_manual_timestamp_ledgers_close": true,
+    "semantic_check_pass": true,
+    "hard_fail_pairs_recorded": true,
+    "result_matches_hard_fail": true,
+    "sa3_not_authorized": true
+  },
+  "crosscheck_pass": true,
+  "manual_time_checks": [
+    {
+      "file": "manual_view_ledger.csv",
+      "rows": 16,
+      "max_manual_time_utc": "2026-08-25T19:11:22.581337Z",
+      "ledger_last_write_time_utc": "2026-08-25T19:17:11.986577Z",
+      "violations": [],
+      "pass": true
+    },
+    {
+      "file": "manual_glyph_ledger.csv",
+      "rows": 68,
+      "max_manual_time_utc": "2026-08-25T19:11:22.581337Z",
+      "ledger_last_write_time_utc": "2026-08-25T19:14:33.623490Z",
+      "violations": [],
+      "pass": true
+    },
+    {
+      "file": "manual_graphic_ledger.csv",
+      "rows": 60,
+      "max_manual_time_utc": "2026-08-25T19:11:22.581337Z",
+      "ledger_last_write_time_utc": "2026-08-25T19:17:12.368522Z",
+      "violations": [],
+      "pass": true
+    },
+    {
+      "file": "manual_pair_ledger.csv",
+      "rows": 12,
+      "max_manual_time_utc": "2026-08-25T19:11:22.581337Z",
+      "ledger_last_write_time_utc": "2026-08-25T19:17:12.724100Z",
+      "violations": [],
+      "pass": true
+    }
+  ],
+  "manual_hard_fail_pairs": [
+    "PAIR-06596",
+    "PAIR-06650"
+  ],
+  "manual_graphic_fail_count": 6,
+  "manual_glyph_pass_count": 68,
+  "missing_view_paths": [],
+  "missing_critical_evidence": []
+}

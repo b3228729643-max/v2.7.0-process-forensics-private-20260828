@@ -1,0 +1,15 @@
+% Independent R5 punctuation calibration.  This file is evidence-only and
+% uses the project package from the frozen worktree without altering it.
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\pagestyle{empty}
+\begin{document}
+\noindent\small\color{SLBodyText}Metropolis--Hastings\par
+\noindent\small\color{SLBodyText}提议、接受与拒绝自环。\par
+% Use the candidate's exact source declaration.  In the compiled PDF this
+% produces the same measured 9.564pt effective size as the frozen TikZ label;
+% it does not borrow any parent-glyph height.
+\noindent\fontsize{9.6pt}{11.6pt}\selectfont\color{SLBodyText}自环：保留\par
+\noindent\fontsize{9.6pt}{11.6pt}\selectfont\color{SLBodyText}$q(x,y)$\quad$\cdot$\par
+\noindent\small\bfseries\color{SLBodyText}32.5\par
+\end{document}

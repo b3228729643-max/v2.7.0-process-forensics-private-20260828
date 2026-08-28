@@ -1,0 +1,11 @@
+element_id,role,declared_pt,graphics_scale,effective_pt,threshold_ink_h_px_300dpi,r168_decision,reviewer,note
+O02,STATE_LABEL,9.2,1.0,9.2,21,CLEAR,SA1,"x 为小写数学字形；21px墨迹可读，未因低于旧9.5pt元数据线而自动失败。"
+O04,STATE_LABEL,9.2,1.0,9.2,29,CLEAR,SA1,"y 的下伸部完整；与 x 同源级字号，视觉差来自字形。"
+O06,PROPOSAL_FORMULA,9.2,1.0,9.2,39,CLEAR,SA1,"a 提议公式逐字清楚，浅灰框内对比充分。"
+O08,PROPOSAL_FORMULA,9.2,1.0,9.2,39,CLEAR,SA1,"b 提议公式与 O06 同级，无明显字号漂移。"
+O10,CLIP_FORMULA,9.2,1.0,9.2,38,CLEAR,SA1,"min(a,b) 在浅金框中实际可读且未触边。"
+O11,FLOW_HEADING,8.6,1.0,8.6,33,CLEAR_ADVISORY,SA1,"标题略小且为辅助灰色角色，但300/2400dpi与整页肉眼均清楚；按R168仅记元数据advisory。"
+O18,ACCEPTED_EQUATION,9.2,1.0,9.2,39,CLEAR,SA1,"正向等式的变量、括号、逗号和alpha均可辨。"
+O19,ACCEPTED_EQUATION,9.2,1.0,9.2,39,CLEAR,SA1,"反向等式与O18同构同高，行距没有压字。"
+O21,CONCLUSION_TEXT,9.2,1.0,9.2,45,CLEAR,SA1,"结论首行中文与双箭头清晰，无缺字或错码。"
+O22,CONCLUSION_TEXT,9.2,1.0,9.2,39,CLEAR,SA1,"结论次行中π与中文混排仍实际可读，底部未裁。"

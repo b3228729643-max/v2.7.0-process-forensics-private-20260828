@@ -1,0 +1,63 @@
+{
+  "handoff_id": "C-FIG-P640-01-SA2-ANNOTATION-BACKGROUND-DIRECT-BUILD-R3",
+  "uid": "FIG-P640-01",
+  "role": "SA2",
+  "result": "LOCAL_SA2_PASS_READY_FOR_MAIN",
+  "local_pass_claimed": false,
+  "main_acceptance_pending": true,
+  "write_stopped_utc": "2026-08-25T23:24:51.3944723Z",
+  "payload_file_count": 62,
+  "control_file_count": 1,
+  "seal_file_count": 1,
+  "expected_ordinary_file_count": 64,
+  "manifest_listed_file_count": 62,
+  "manifest_self_excluded": true,
+  "write_stopped_self_excluded": true,
+  "manifest_bytes": 21523,
+  "manifest_sha256": "1C1C2EEC3B7051594C81942C564432F183A0E1A7AF0F0293E9DBFA6B9BC16B39",
+  "canonical_payload_recordset_sha256": "4CCB446699B11BEB4C92E6EE89578CDC0FBB10C454D6FBCD4185D41DA97CC226",
+  "payload_and_manifest_readonly": true,
+  "write_stopped_readonly_boundary": "EXCLUDED_MARKER_ARCHIVE",
+  "ads_count": 0,
+  "pyc_or_cache_count": 0,
+  "machine_denominators": {
+    "objects": 40,
+    "glyphs_including_spaces": 160,
+    "glyphs_nonspace": 145,
+    "unordered_pairs": 780,
+    "critical_pairs": 76,
+    "clips": 40,
+    "pdf_drawings": 20
+  },
+  "manual_decisions": {
+    "objects_pass": 40,
+    "glyph_groups_pass": 7,
+    "critical_pairs_pass": 76,
+    "hard_gates_pass": 15,
+    "views_pass": 12
+  },
+  "pair_0779": {
+    "shared_pixels_native_300dpi": 0,
+    "foreground_center_distance_px": 4,
+    "orthogonal_blank_pixel_gap": 3,
+    "required_blank_pixel_gap": 3
+  },
+  "pair_0688": {
+    "final_visible_curve_glyph_intersection": 0,
+    "native_1x_pass": true,
+    "native_8x_pass": true,
+    "adjudication": "VISIBLE_CURVE_LEFT_BELOW_FIRST_N_WITH_CLEAN_WHITE_SEPARATION"
+  },
+  "hard_failure_count": 0,
+  "new_regression_count": 0,
+  "tex_invocation_count": 1,
+  "tex_retry_count": 0,
+  "post_tex_process_count": 0,
+  "source_sha256": "A1CB852A7B433D3B3FB39EB4F4E0310FD1F76631F01F366AF9D4B1B1B2FF434B",
+  "wrapper_sha256": "495C5D0D36BE60B82BDB44AF4E352960680416785F991F8F0A15F0E495ABDC5C",
+  "pdf_sha256": "E2AE5C0DACA6C9D07B43D61D00E9FA5580E63417DE15871D8DC6BA3842F9F2D2",
+  "next_action": "WAIT_MAIN_REVIEW_OF_R3_LOCAL_SA2_PASS",
+  "tex_retry_authorized": false,
+  "source_commit_authorized": false,
+  "central_state_or_inventory_written": false
+}

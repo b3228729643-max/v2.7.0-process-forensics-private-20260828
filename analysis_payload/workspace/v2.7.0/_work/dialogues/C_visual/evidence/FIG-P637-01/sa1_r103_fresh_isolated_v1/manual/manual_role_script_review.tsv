@@ -1,0 +1,13 @@
+review_id	class_type	class_name	glyph_count	declared_pt	pdf_observed_pt_range	ink_height_px_range	manual_decision	reviewer_note
+ROLE_ANNOTATION	ROLE	ANNOTATION	8	9.2	6.415900-9.165630	19-34	PASS_R168	更新x1/更新x2 use consistent source size; smaller observed values are natural math subscripts, not imbalance.
+ROLE_AXIS_ANNOTATION	ROLE	AXIS_ANNOTATION	4	9.2	9.165176-9.165630	34-47	PASS_R168	长轴 is rotated and therefore has a taller projected ink box than horizontal 短轴; the source font and visual weight match.
+ROLE_AXIS_TITLE	ROLE	AXIS_TITLE	4	9.2	6.415900-9.165630	19-21	PASS_R168	Axis x1/x2 titles are equally sized and legible; subscript metrics explain the smaller observed point size.
+ROLE_CAPTION	ROLE	CAPTION	73	PDF_OBSERVED_ONLY	8.966380-9.992483	10-38	PASS_R168	Two-line caption is fully readable and evenly set; punctuation and subscripts account for low-profile ink boxes.
+ROLE_CAPTION_LABEL	ROLE	CAPTION_LABEL	5	PDF_OBSERVED_ONLY	9.962640-9.992483	7-38	PASS_R168	图33.4 is visually distinct without severe scale imbalance; period height is punctuation-intrinsic.
+ROLE_INFO_NODE	ROLE	INFO_NODE_TEXT	30	9.2	9.165630	4-34	PASS_R168	Information-node prose is uniform and readable; 一 and punctuation create the minimum ink heights by glyph shape.
+ROLE_NUMERIC	ROLE	NUMERIC_LABEL	7	8.8	8.767130	25-26	PASS_R168	State labels 0 through 6 form a tight peer class with only a one-pixel natural raster variation.
+SCRIPT_CJK	SCRIPT	CJK_FULL_HEIGHT	97	8.8/9.2/PDF_OBSERVED_ONLY	9.165176-9.962640	4-47	PASS_R168	All CJK glyphs are recognizable with correct codepoints; 4px 一 and rotated 47px 轴 are shape/projection extrema, not failures.
+SCRIPT_LATIN_LOWER	SCRIPT	LATIN_GREEK_LOWER	10	9.2/PDF_OBSERVED_ONLY	9.165630-9.992483	21-31	PASS_R168	Math italic x and Latin Gibbs letters have complete contours; natural typeface and caption-role differences remain visually balanced.
+SCRIPT_DIGIT_UPPER	SCRIPT	LATIN_UPPER_OR_DIGIT	13	8.8/PDF_OBSERVED_ONLY	8.767130-9.992483	25-29	PASS_R168	State numerals and caption digits are crisp and role-consistent, with no peer readability defect.
+SCRIPT_PUNCT	SCRIPT	LOW_PROFILE_PUNCTUATION	7	9.2/PDF_OBSERVED_ONLY	9.165630-9.992483	7-16	PASS_R168	Full-width colon, semicolons, comma, enumeration comma, period, and full stop have complete intended marks.
+SCRIPT_SUBSCRIPT	SCRIPT	NATURAL_SUBSCRIPT	4	9.2/PDF_OBSERVED_ONLY	6.415900	19	PASS_R168	All four natural subscripts 1/2 are complete and readable; smaller metrics are semantically correct typography.

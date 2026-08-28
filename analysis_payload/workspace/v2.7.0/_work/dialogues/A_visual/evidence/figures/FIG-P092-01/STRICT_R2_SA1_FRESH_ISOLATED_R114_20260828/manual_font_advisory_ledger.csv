@@ -1,0 +1,7 @@
+check_id,role,source_basis,pdf_observation,native_visual_observation,R168_hard_issue,manual_verdict
+F01,TICK_LABELS,"source line 11 declares 8.8pt","PDF spans for tick digits extract at approximately 9.27 PDF points","All five tick labels, including the stacked 1/2, are readily legible at full-page and native crop scale",NONE,PASS
+F02,ANNOTATIONS,"source lines 7 and 31-39 declare 9.2pt","Chinese and baseline-math annotation spans extract at approximately 9.17 PDF points","Maximum, certainty, and symmetry annotations are clearly readable without crowding or imbalance",NONE,PASS
+F03,AXIS_LABELS,"source line 12 declares 9.4pt","axis-label baseline spans extract at approximately 9.96 PDF points","p and H_2(p) are prominent enough to read and do not overpower the data curve",NONE,PASS
+F04,SYMMETRY_SUBSCRIPTS,"source lines 37-39 use ordinary TeX subscripts from a 9.2pt base","subscript 2 spans extract at approximately 6.42 PDF points","Both subscript 2 glyphs remain unmistakable in native1x and nearest8x views",NONE,PASS
+F05,CAPTION,"source line 42 uses the document caption style","caption baseline spans extract at approximately 9.96 PDF points","Figure label and full caption sentence are comfortably readable and balanced",NONE,PASS
+F06,R168_POLICY,"older numeric size/pixel/ratio/taxonomy/microgrid thresholds are advisory only","no numeric datum was used alone to decide FAIL","Current-PDF hard conditions were judged from native visual evidence and semantics",NONE,PASS

@@ -1,0 +1,17 @@
+view_id	file	opened_at_utc	observation
+VIEW001	standalone_300dpi.png	2026-08-27T09:09:25Z	A4 standalone page opened; figure is centered, caption area clear, and no page clipping is visible.
+VIEW002	figure_native1x_300dpi.png	2026-08-27T09:09:34Z	Full native figure opened; both panels, axes, annotations, endpoints, and PMF markers are readable.
+VIEW003	figure_grayscale_300dpi.png	2026-08-27T09:09:43Z	Grayscale figure opened; structural contrast and all labels remain usable without color.
+VIEW004	atomic_bbox_overlay_300dpi.png	2026-08-27T09:09:54Z	Atomic overlay opened; 65 glyph and 50 path boxes cover visible foreground without figure-edge escape.
+VIEW005	critical_y_ticks_native1x_300dpi.png	2026-08-27T09:10:02Z	Native tick ROI opened; 0.35, 0.3, and 0.15 are distinct and have no shared foreground.
+VIEW006	critical_y_ticks_nearest8x.png	2026-08-27T09:10:10Z	Nearest-8x tick ROI opened; the two one-pixel native gaps expand to clean eight-pixel bands.
+VIEW007	glyph_roi_sheet_01.png	2026-08-27T09:10:31Z	Glyph cells G001-G024 opened and individually checked for codepoint, readability, and cropping.
+VIEW008	glyph_roi_sheet_02.png	2026-08-27T09:10:55Z	Glyph cells G025-G048 opened and individually checked, including PMF y labels.
+VIEW009	glyph_roi_sheet_03.png	2026-08-27T09:11:19Z	Glyph cells G049-G065 opened and individually checked, including the one-stroke CJK glyph and formulas.
+VIEW010	path_roi_sheet_01.png	2026-08-27T09:11:36Z	Path cells P001-P024 opened; upper/lower ticks, axes, and guides are present and unbroken.
+VIEW011	path_roi_sheet_02.png	2026-08-27T09:12:00Z	Path cells P025-P048 opened; CDF path, endpoints, PMF stems, and arrowheads are identifiable.
+VIEW012	path_roi_sheet_03.png	2026-08-27T09:12:24Z	Path cells P049-P050 opened; final two PMF markers are complete.
+VIEW013	cdf_panel_native1x_300dpi.png	2026-08-27T09:12:26Z	Native CDF panel opened; five intervals and four paired endpoints have the intended right-continuous placement.
+VIEW014	cdf_panel_nearest8x.png	2026-08-27T09:12:27Z	Nearest-8x CDF panel opened; horizontal segments and open/filled endpoint relations remain distinct.
+VIEW015	pmf_panel_native1x_300dpi.png	2026-08-27T09:12:35Z	Native PMF panel opened; four masses, four supports, and the local label offset are clear.
+VIEW016	pmf_panel_nearest8x.png	2026-08-27T09:12:36Z	Nearest-8x PMF panel opened; stems, markers, and y-axis labels remain separated and readable.

@@ -1,0 +1,99 @@
+% v2.7.0 figure UID: FIG-P695-01
+% Two-model comparison: fixed five-row grid, explicit model boundary, no connectors.
+\tikzset{slfig-FIG-P695-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P695-01,
+  every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=left,
+    inner xsep=2.0mm,inner ysep=1.3mm,outer sep=0pt},
+  head/.style={draw=SLDeepBlue,fill=SLDeepBlue,text=white,
+    rounded corners=1.5pt,minimum height=10mm,align=center,
+    font=\fontsize{10.2pt}{12.2pt}\selectfont\bfseries,line width=0.84pt},
+  key/.style={draw=SLRuleGray,fill=SLSoftGray,
+    rounded corners=1.2pt,text width=25mm,align=center,
+    font=\fontsize{9.6pt}{11.6pt}\selectfont\bfseries,line width=0.74pt},
+  gibbs/.style={draw=SLMidBlue,fill=SLSoftBlue,
+    rounded corners=1.2pt,text width=55.5mm,align=left,
+    line width=0.78pt},
+  variational/.style={draw=SLRuleGray,dashed,fill=white,
+    rounded corners=1.2pt,text width=55.5mm,align=left,
+    line width=0.78pt},
+  modelrow/.style={minimum height=18mm},
+  variablerow/.style={minimum height=16mm},
+  updaterow/.style={minimum height=23mm},
+  outputrow/.style={minimum height=18mm},
+  riskrow/.style={minimum height=23mm},
+  alt={对象—关系—结论：左列是完整Bayes LDA的折叠Gibbs，积分消去随机的文档主题向量和主题词向量，以主题指派及计数为链状态并输出相关后验样本；右列是无主题词Dirichlet先验的点参数LDA变分EM，局部E步只固定当前主题词参数并更新每篇文档的gamma与eta，全局再以期望计数更新varphi、以受保护Newton更新alpha。前者适合需要后验不确定性或多峰信息的情形，后者适合大语料、批量化或预算敏感情形。同一点参数模型的可行块更新可使ELBO逐块非降，但ELBO不等于真实证据；公平比较须冻结相同切分、词表、预算与评价口径，并同时登记模型差异和推断差异。}]
+\node[head,text width=25mm] at (-6.35,6.60) {比较维度};
+\node[head,text width=55.5mm] at (-1.55,6.60)
+  {折叠 Gibbs\\（完整 Bayes LDA）};
+\node[head,text width=55.5mm] at (4.83,6.60)
+  {平均场变分 EM\\（点参数 LDA）};
+
+\node[key,modelrow] at (-6.35,4.80) {模型目标};
+\node[gibbs,modelrow] at (-1.55,4.80)
+  {\textbf{完整 Bayes LDA：}\\
+   $\boldsymbol\theta_m\sim\operatorname{Dir}(\boldsymbol\alpha)$，
+   $\boldsymbol\varphi_k\sim\operatorname{Dir}(\boldsymbol\beta)$；\\
+   折叠二者，抽样$p(\boldsymbol z\mid\boldsymbol w,\boldsymbol\alpha,\boldsymbol\beta)$。};
+\node[variational,modelrow] at (4.83,4.80)
+  {\textbf{点参数 LDA：无 $\boldsymbol\beta$ 先验。}\\
+   $\boldsymbol\varphi_k$为待估参数；最大化\\
+   同一点参数模型的ELBO。};
+
+\node[key,variablerow] at (-6.35,2.85) {局部/全局\\变量};
+\node[gibbs,variablerow] at (-1.55,2.85)
+  {局部链状态：$z_i$；共享计数：\\
+   $n_{mk},n_{kv},n_{k\cdot}$；$\boldsymbol\theta,\boldsymbol\varphi$已折叠。};
+\node[variational,variablerow] at (4.83,2.85)
+  {局部E步固定\textbf{当前}$\boldsymbol\varphi$：\\
+   $(\boldsymbol\gamma_m,\boldsymbol\eta_m)$；全局：
+   $(\boldsymbol\varphi,\boldsymbol\alpha)$。};
+
+\node[key,updaterow] at (-6.35,0.65) {核心更新};
+\node[gibbs,updaterow] at (-1.55,0.65)
+  {\textbf{留一计数满条件：}\\[-0.3mm]
+   $\displaystyle p(z_i=k\mid\cdot)\propto
+   \frac{n_{kv}^{-i}+\beta_v}{n_{k\cdot}^{-i}+\beta_0}
+   (n_{mk}^{-i}+\alpha_k)$；\\
+   执行“减--算--抽--加”。};
+\node[variational,updaterow] at (4.83,0.65)
+  {局部$\boldsymbol\eta_m\leftrightarrow\boldsymbol\gamma_m$；
+   全部文档成功后\\
+   $C_{kv}=\sum_{m,n}\eta_{mnk}\mathbf1\{w_{mn}=v\}$；\\
+   $\varphi_{kv}=C_{kv}/C_{k\cdot}$；
+   $\boldsymbol\alpha$用受保护Newton，\\
+   候选须在正域且ELBO不下降。};
+
+\node[key,outputrow] at (-6.35,-1.65) {输出、优势\\与适用性};
+\node[gibbs,outputrow] at (-1.55,-1.65)
+  {输出相关后验样本；保留后验不确定性\\
+   与多峰信息。稀疏计数实现自然；\\
+   适于需要不确定性或多峰信息时。};
+\node[variational,outputrow] at (4.83,-1.65)
+  {输出$(\boldsymbol\varphi,\boldsymbol\alpha,\{q_m\})$点参数/近似；\\
+   确定且易批量化；适于大语料、\\
+   批量处理或预算敏感情形。};
+
+\node[key,riskrow] at (-6.35,-3.95) {风险与诊断};
+\node[gibbs,riskrow] at (-1.55,-3.95)
+  {烧入不等于收敛；检查混合、自相关/ESS、\\
+   多链主题匹配后的一致性；\\
+   单链样本轨迹不能充当收敛证书。};
+\node[variational,riskrow] at (4.83,-3.95)
+  {近似族与局部最优；检查多启动、局部未收敛、\\
+   空主题、线搜索与数值失败。同一点参数模型的\\
+   可行块更新使ELBO逐块非降；\\
+   ELBO不等于真实证据。};
+
+\node[draw=SLDeepBlue,fill=SLSoftBlue,rounded corners=2pt,
+  text width=151mm,minimum height=11mm,align=center,line width=0.84pt]
+  at (0,-5.90)
+  {\textbf{公平比较：}冻结同一训练/验证/测试切分、词表与预处理、$K$、计算预算和评价口径；
+   同时登记模型差异与推断差异。};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{完整Bayes折叠Gibbs与无$\boldsymbol\beta$先验的点参数变分EM：二者模型目标、状态、更新、输出和诊断均不同，公平比较须同时登记模型与推断差异。}
+\label{fig:V5-C06-method-comparison}
+\end{figure}

@@ -1,0 +1,1290 @@
+% STAGE12-CHAPTER: V4-C03
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V4-C03-CH01}; CH-02=\label{struct:V4-C03-CH02}; CH-03=\label{struct:V4-C03-CH03}; CH-04=\label{struct:V4-C03-CH04}; CH-05=\label{struct:V4-C03-CH05}; CH-06=\label{struct:V4-C03-CH06}; CH-07=\label{struct:V4-C03-CH07}; CH-08=\label{struct:V4-C03-CH08}; CH-09=\label{struct:V4-C03-CH09}; CH-10=\label{struct:V4-C03-CH10}; CH-11=\label{struct:V4-C03-CH11}; CH-12=\label{struct:V4-C03-CH12}; CH-13=\label{struct:V4-C03-CH13}; CH-14=\label{struct:V4-C03-CH14}; CH-15=\label{struct:V4-C03-CH15}; CH-16=\label{struct:V4-C03-CH16}; CH-17=\label{struct:V4-C03-CH17}; CH-18=\label{struct:V4-C03-CH18}; CH-19=\label{struct:V4-C03-CH19}; CH-20=\label{struct:V4-C03-CH20}; CH-21=\label{struct:V4-C03-CH21}; CH-22=\label{struct:V4-C03-CH22}; CH-23=\label{struct:V4-C03-CH23}; CH-24=\label{struct:V4-C03-CH24}; CH-25=\label{struct:V4-C03-CH25}; CH-26=\label{struct:V4-C03-CH26}; CH-27=\label{struct:V4-C03-CH27}; CH-28=\label{struct:V4-C03-CH28}; CH-29=\label{struct:V4-C03-CH29}; CH-30=\label{struct:V4-C03-CH30}; CH-31=\label{struct:V4-C03-CH31}; CH-32=\label{struct:V4-C03-CH32}; CH-33=\label{struct:V4-C03-CH33}; CH-34=\label{struct:V4-C03-CH34}; CH-35=\label{struct:V4-C03-CH35}; CH-36=\label{struct:V4-C03-CH36}; CH-37=\label{struct:V4-C03-CH37}
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% FIGURE-KNOWLEDGE-MAP: fig:V4-C03-svd-geometry -> SLM-15-01-006
+
+\chapter{奇异值分解}\label{chap:V4-C03}
+\index{奇异值分解}
+\index{紧奇异值分解}
+\index{截断奇异值分解}
+\index{低秩近似}
+\index{Frobenius范数}
+
+\SLChapterOpening{从矩阵映射直达SVD、截断与最佳低秩近似}{怎样用正交方向和奇异值解释矩阵并控制近似误差}{能构造完整/紧/截断SVD，证明Eckart--Young--Mirsky及其唯一性边界}{谱分解、正交投影、矩阵范数、秩与零空间}{维数或左右方向不清时回到\cref{sec:V4-C03-S01,sec:V4-C03-S02}；低秩取等条件失败时回看\cref{sec:V4-C03-S05}}
+
+\phantomsection\label{struct:V4-C03-CH01}
+% KNOWLEDGE-PLAN: KN-V4-C26-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}奇异值分解学习目标固定核验“能对任意$m\times n$实矩阵写出完整、紧和截断SVD，并逐项核对维数”；请实际完成“对任意$m\times n$实矩阵写出完整、紧和截断SVD，并逐项核对维数”，并用“$m\times n$的核验结果逐项满足本条首目标（能对任意$m\times n$实矩阵写出完整、紧和截断SVD，并逐项核对维数）”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能对任意$m\times n$实矩阵写出完整、紧和截断SVD，并逐项核对维数；
+  \item 能从$A^TA$的谱分解构造SVD，完整证明存在性并说明非唯一来源；
+  \item 能推导奇异值与$A^TA,AA^T$特征值、左右奇异向量及四个基本子空间的关系；
+  \item 能说明稳定截断SVD算法的输入、子空间迭代、残差、停止、收敛与复杂度；
+  \item 能证明截断SVD在Frobenius范数和谱范数下的低秩最优性，并计算误差。
+\end{itemize}}
+
+\phantomsection\label{struct:V4-C03-CH02}
+% KNOWLEDGE-PLAN: KN-V4-C26-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}奇异值分解的最短先修要求能计算$A^{\mathsf T}A$、识别正半定谱并核对矩阵乘法；请对$A\in\mathbb R^{m\times n}$写出$A^{\mathsf T}A\in\mathbb R^{n\times n}$，并说明其特征值为何非负。\par
+
+\begin{prerequisitebox}
+本章使用矩阵乘法、转置、秩、零空间、值域、正交补、实对称矩阵谱分解、正半定矩阵、特征值与特征向量、向量二范数、Frobenius范数和正交投影。统一记
+\[
+A\in\mathbb R^{m\times n},\qquad p=\min(m,n),\qquad r=\operatorname{rank}(A).
+\]
+所有矩形对角矩阵都只在前$p$个主对角位置可能非零。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V4-C03-CH03}
+% KNOWLEDGE-PLAN: KN-V4-C26-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}奇异值分解先修自检固定核验“若$A\in\mathbb R^{m\times n}$，能否写出$A^TA$与$AA^T$的维数”；请在$A\in\mathbb R^{m\times n}$条件下，实际写出$A^TA$与$AA^T$的维数并写出中间结果，再按“$A\in\mathbb R^{m\times n}$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 若$A\in\mathbb R^{m\times n}$，能否写出$A^TA$与$AA^T$的维数？
+  \item 能否证明$x^TA^TAx=\|Ax\|_2^2\geq0$？
+  \item 能否用秩--零度定理写出$\dim N(A)=n-r$与$\dim N(A^T)=m-r$？
+  \item 能否说明正交矩阵左乘或右乘保持向量二范数与Frobenius范数？
+\end{enumerate}
+第1项未通过应先复习矩阵维数；第2项未通过应复习正半定性；第3项未通过应复习基本子空间；第4项未通过应复习正交变换。
+\end{precheckbox}
+
+\phantomsection\label{struct:V4-C03-CH04}
+\begin{dependencybox}
+对称矩阵谱分解 $\to$ $A^TA$的非负特征值；
+特征值平方根 $\to$ 奇异值；
+正特征向量经$A$映射 $\to$ 左奇异向量；
+正交补全 $\to$ 完整SVD；
+奇异值排序 $\to$ 紧SVD与截断SVD；
+正交不变范数 $\to$ 低秩最优近似和误差公式。
+\end{dependencybox}
+
+\begin{keypointbox}[title=数据方向桥：SVD先看线性映射，再看样本]
+本章的$A\in\mathbb R^{m\times n}$首先是任意线性映射矩阵，不自动把某一维解释为样本。若应用中每个$m$维样本占一列，则
+\[
+A=X_{\rm col}=[x_1,\ldots,x_n]
+=X_{\rm row}^{\mathsf T},
+\qquad X_{\rm row}\in\mathbb R^{n\times m}.
+\]
+例如四个二维样本对应$A\in\mathbb R^{2\times4}$与$X_{\rm row}\in\mathbb R^{4\times2}$。选择哪种语义后，$AA^{\mathsf T}$与$A^{\mathsf T}A$的对象空间也随之确定。
+\end{keypointbox}
+
+\phantomsection\label{struct:V4-C03-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V4-C03
+\index[symbols]{a--s502c9e705e18@$A$：本章待分解的任意实矩阵，不表示图的邻接矩阵}
+\index[symbols]{p--s01e9cc42aee9@$p$：本章矩阵尺寸给出的奇异值槽位数$\min(m,n)$，不是距离阶数}
+\index[symbols]{r--sd61da1e8f2fd@$r$：本章矩阵$A$的秩及正奇异值个数，不表示搜索半径}
+\index[symbols]{u--s629762f1d656@$U$：左正交矩阵，列为左奇异向量}
+\index[symbols]{v--sf2348b211ccb@$V$：右正交矩阵，列为右奇异向量}
+\index[symbols]{minus-sigma-minus--s6da6a5396fa2@$\Sigma$：本章SVD中的$m\times n$矩形奇异值矩阵，不表示协方差矩阵}
+\index[symbols]{minus-sigma-minus-j--saf842c69e546@$\sigma_j$：第$j$个奇异值，按非增次序排列}
+\index[symbols]{u-r-minus-sigma-minus-r-v-r--s1c30e850fc31@$U_r,\Sigma_r,V_r$：紧SVD的三个因子}
+\index[symbols]{a-k--s3a9a93a2fb8f@$A_k$：保留前$k$项的截断近似}
+\index[symbols]{u007c-minus-cdot-minus-u007c-2-u007c-minus-cdot-minus-u007c-f--sf15ef5a146a9@$\lVert \cdot\rVert_2,\lVert \cdot\rVert_F$：谱范数与Frobenius范数}
+% STAGE19-SYMBOL-INDEX-END: V4-C03
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 维数或取值 & 含义\\ \midrule
+$A$ & $m\times n$ & 待分解实矩阵\\
+$p$ & $\min(m,n)$ & 可能出现的奇异值个数\\
+$r$ & $0,\ldots,p$ & $A$的秩及正奇异值个数\\
+$U$ & $m\times m$ & 左正交矩阵，列为左奇异向量\\
+$V$ & $n\times n$ & 右正交矩阵，列为右奇异向量\\
+$\Sigma$ & $m\times n$ & 矩形对角矩阵\\
+$\sigma_j$ & 非负数 & 第$j$个奇异值，按非增次序排列\\
+$U_r,\Sigma_r,V_r$ & $m\times r,r\times r,n\times r$ & 紧SVD的三个因子\\
+$A_k$ & $m\times n$ & 保留前$k$项的截断近似\\
+$\|\cdot\|_2,\|\cdot\|_F$ & 非负数 & 谱范数与Frobenius范数\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+
+% KNOWLEDGE-PLAN: KN-V4-C26-FORMULA-001 L1
+\paragraph{读前自检：奇异值分解。}奇异值分解要求先确认“奇异值分解把任意矩形线性变换拆成两个正交坐标变换和一个沿坐标轴的非负缩放”；请随后把“奇异值分解把任意矩形线性变换拆成两个正交坐标变换和一个沿坐标轴的非负缩放”中的已声明对象代回奇异值分解的定义，用它既适用于方阵，也适用于长矩阵、宽矩阵、满秩矩阵和秩亏矩阵验收。\par
+
+\SLDirectSection{SVD定义与存在性}{sec:V4-C03-S01}
+\phantomsection\label{struct:V4-C03-CH06}
+\knowledgeanchor{SLM-15-00-001}{奇异值分解}
+奇异值分解把任意矩形线性变换拆成两个正交坐标变换和一个沿坐标轴的非负缩放。它既适用于方阵，也适用于长矩阵、宽矩阵、满秩矩阵和秩亏矩阵，是矩阵压缩、最小二乘、主成分分析与潜在语义表示的基础工具。
+
+% KNOWLEDGE-PLAN: KN-V4-C26-DEFINITION-001 L1
+\paragraph{读前自检：奇异值分解的定义与性质。}奇异值分解对任意$A\in\mathbb R^{m\times n}$写成$A=U\Sigma V^{\mathsf T}$；请标出$U,\Sigma,V$的完整形状，核对两次内维相消并验证$U,V$正交、$\Sigma$对角元非负。\par
+% KNOWLEDGE-PLAN: KN-V4-C26-THEOREM-001 L1
+\paragraph{读前自检：定义与定理。}SVD定义与存在定理以实矩阵$A\in\mathbb R^{m\times n}$为对象；请从$A^{\mathsf T}A=V\Lambda V^{\mathsf T}$取$\sigma_i=\sqrt{\lambda_i}$，核对正特征值对应的$u_i=Av_i/\sigma_i$为单位向量。\par
+% KNOWLEDGE-PLAN: KN-V4-C26-FORMULA-002 L1
+\paragraph{读前自检：奇异值分解的矩阵因子形式。}SVD矩阵因子形式为$A=U\Sigma V^{\mathsf T}$，其中$U\in\mathbb R^{m\times m}$、$\Sigma\in\mathbb R^{m\times n}$、$V\in\mathbb R^{n\times n}$；请逐因子相乘核对结果仍为$m\times n$。\par
+
+\knowledgeanchor{SLM-15-01-002}{奇异值分解的定义与性质}
+\knowledgeanchor{SLM-15-01-003}{定义与定理}
+\knowledgeanchor{SLM-15-01-001}{奇异值分解的矩阵因子形式}
+\phantomsection\label{struct:V4-C03-CH07}
+% KNOWLEDGE-PLAN: KN-V4-C26-DEFINITION-002 L1
+\paragraph{读前自检：完整奇异值分解。}完整SVD要求$U^{\mathsf T}U=I_m$、$V^{\mathsf T}V=I_n$且$\sigma_1\ge\cdots\ge\sigma_p\ge0$；请对一个矩形$A$核对三因子维数，并由$U^{\mathsf T}AV$回代得到$\Sigma$。\par
+
+% CORE-DERIVATION-PLAN: KN-V4-C26-DERIVATION-001
+\SLKnowledgeBridge{从右奇异向量出发构造奇异值与左奇异向量，并核对维数。}{$A\in\R^{m\times n}$、$A^{\mathsf T}A$ 的正交特征向量 $v_i$ 与特征值 $\lambda_i\ge0$。}{$A^{\mathsf T}A$ 对称正半定；对正特征值定义 $\sigma_i=\sqrt{\lambda_i}>0$。}{先做谱分解 $A^{\mathsf T}A=V\Lambda V^{\mathsf T}$，并令 $u_i=Av_i/\sigma_i$。}
+
+\begin{definition}[完整奇异值分解]\label{def:V4-C03-full-svd}
+矩阵$A\in\mathbb R^{m\times n}$的完整奇异值分解是
+\[
+A=U\Sigma V^T,
+\]
+其中$U^TU=UU^T=I_m$，$V^TV=VV^T=I_n$，并且
+\[
+\Sigma=
+\begin{bmatrix}
+\operatorname{diag}(\sigma_1,\ldots,\sigma_p)&0\\
+0&0
+\end{bmatrix}_{m\times n},
+\qquad
+\sigma_1\geq\cdots\geq\sigma_p\geq0.
+\]
+$\sigma_j$称为奇异值，$U$和$V$的列分别称为左、右奇异向量。
+\end{definition}
+
+\phantomsection\label{struct:V4-C03-CH08}
+\textbf{模型。}SVD把$A:\mathbb R^n\to\mathbb R^m$表示为
+\[
+x\ \xmapsto{\,V^T\,}\ y
+\ \xmapsto{\,\Sigma\,}\ z
+\ \xmapsto{\,U\,}\ Ax.
+\]
+$V^T$与$U$保持长度和夹角，$\Sigma$只沿互相正交的方向缩放；零奇异值对应被压到零的方向。
+
+\begin{SLRunningExample}{RUN-DOC-TERM-01}{V4-C03-svd}{贯穿例：文档—词项矩阵小例}{把同一词项计数表首先视为未经中心化或概率化的实矩阵，建立后续各章的共同输入。}
+词项为行、文档为列，精确取
+\[
+\boldsymbol X=\begin{bmatrix}2&0&1\\1&2&0\\0&1&3\end{bmatrix}.
+\]
+三列总数依次为$3,3,4$，全矩阵总计数为$10$。本章只把
+$\boldsymbol X\in\mathbb R^{3\times3}$作为原始有限实矩阵做SVD；非负整数含义与列和不会进入SVD存在性条件，也不要求预先中心化或归一化。因此该数据与本章“任意实矩阵”假设相容。下一站见\SLRunningExampleRef{RUN-DOC-TERM-01}{V4-C04-pca}{PCA对同一矩阵的中心化样本表示}。
+\end{SLRunningExample}
+
+\textbf{预备结论。}实对称矩阵$B$存在正交谱分解$B=Q\Lambda Q^T$。若$B$正半定，则每个特征值非负。下文把这一结论用于$B=A^TA$，从而构造右奇异向量和奇异值。
+
+
+\phantomsection\label{struct:V4-C03-CH09}
+\textbf{学习策略。}先从$A^TA$的谱分解构造完整SVD，再用左右奇异向量方程核对结果；随后区分紧SVD与截断SVD，并把数值算法的残差、谱隙和低秩误差公式放在同一条验证链中。
+
+% KNOWLEDGE-PLAN: KN-V4-C26-THEOREM-002 L1
+\paragraph{读前自检：奇异值分解基本定理。}SVD基本定理从$A^{\mathsf T}Av_i=\sigma_i^2v_i$与$u_i=Av_i/\sigma_i$出发；请计算$u_i^{\mathsf T}u_j$，利用$v_i$正交核对正奇异值对应的左奇异向量也标准正交。\par
+
+\knowledgeanchor{SLM-15-01-004}{奇异值分解基本定理}
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V4-C03-CH11}
+\begin{derivationgoalbox}
+由$A^TA$的谱分解构造$V,\Sigma,U$，并验证三因子维数及$A=U\Sigma V^T$。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+$A^TA\in\mathbb R^{n\times n}$实对称且正半定，因为
+$x^TA^TAx=\|Ax\|_2^2\geq0$。因此存在$n$维标准正交特征向量$v_1,\ldots,v_n$和非负特征值
+$\lambda_1\geq\cdots\geq\lambda_n\geq0$。
+\end{derivationprepbox}
+
+\textbf{推导第1步：确定$V$与奇异值。}
+令
+\[
+V=[v_1,\ldots,v_n]\in\mathbb R^{n\times n},\qquad
+\sigma_j=\sqrt{\lambda_j}\quad(j=1,\ldots,p).
+\]
+若$r=\operatorname{rank}(A)$，则$\sigma_1,\ldots,\sigma_r>0$，其余奇异值为0。由
+\[
+\lambda_j=\frac{\|Av_j\|_2^2}{\|v_j\|_2^2}
+\]
+可知$\lambda_j=0$当且仅当$Av_j=0$。
+
+\textbf{推导第2步：构造$U$并证明正交性。}
+对$j=1,\ldots,r$定义
+\[
+u_j=\frac{Av_j}{\sigma_j}\in\mathbb R^m.
+\]
+对$i,j\leq r$，
+\[
+u_i^Tu_j
+=\frac{v_i^TA^TAv_j}{\sigma_i\sigma_j}
+=\frac{\lambda_jv_i^Tv_j}{\sigma_i\sigma_j}
+=\delta_{ij}.
+\]
+因此$u_1,\ldots,u_r$标准正交。再从$N(A^T)$选取$m-r$个标准正交向量补全，得到
+$U=[u_1,\ldots,u_m]\in\mathbb R^{m\times m}$。
+
+\textbf{推导第3步：构造$\Sigma$并验证矩阵等式。}
+令$\Sigma\in\mathbb R^{m\times n}$的第$j$个主对角元为$\sigma_j$，其余元素为0。对$v_j$这组基中的任意向量，
+\[
+U\Sigma V^Tv_j=
+\begin{cases}
+\sigma_ju_j=Av_j,&j\leq r,\\
+0=Av_j,&j>r.
+\end{cases}
+\]
+两个线性变换在$\mathbb R^n$的一组基上取值相同，所以
+$U\Sigma V^T=A$。维数链为
+$(m\times m)(m\times n)(n\times n)=m\times n$。
+
+\phantomsection\label{struct:V4-C03-CH12}
+% KNOWLEDGE-PLAN: KN-V4-C26-THEOREM-003 L1
+\paragraph{读前自检：奇异值分解存在性。}SVD存在性构造先对$A^{\mathsf T}A$谱分解，再补齐左右零空间基；请逐列核对$Av_i=\sigma_i u_i$，并确认这些列与补齐列组成正交$U,V$后有$A=U\Sigma V^{\mathsf T}$。\par
+
+\begin{theorem}[奇异值分解存在性]\label{thm:V4-C03-svd-existence}
+每个$A\in\mathbb R^{m\times n}$都存在完整SVD。奇异值作为$A^TA$非负特征值的平方根是唯一的；单个奇异向量未必唯一：向量符号可同时改变，重奇异值对应子空间内可作正交旋转，零奇异值对应的基可任意正交补全。
+\end{theorem}
+
+\phantomsection\label{struct:V4-C03-CH13}
+% KNOWLEDGE-PLAN: KN-V4-C26-PROOF-001 L1
+\paragraph{读前自检：证明：奇异值分解存在性。}证明SVD存在时，对每个$\sigma_i>0$定义$u_i=Av_i/\sigma_i$；请先验证其两两正交，再说明$N(A)$与$N(A^{\mathsf T})$的标准正交基如何补齐$V,U$，核对矩阵等式逐列成立。\par
+
+\begin{proof}
+上面的三步构造给出正交矩阵$U,V$、矩形对角矩阵$\Sigma$并验证$A=U\Sigma V^T$，因此存在性成立。$A^TA$的特征值多重集合由$A$唯一确定，非负平方根也唯一，故奇异值唯一。若把某对$(u_j,v_j)$同时换成$(-u_j,-v_j)$，外积$\sigma_ju_jv_j^T$不变；若干奇异值相等时，在相应左右子空间中应用同一个正交变换也保持乘积；零空间的正交基只负责补全，不影响$A$。这些构造分别说明非唯一来源。
+\end{proof}
+
+\SLReviewSection{奇异值和左右奇异向量}{sec:V4-C03-S02}
+\knowledgeanchor{SLM-15-01-007}{奇异值分解的主要性质}
+从$A=U\Sigma V^T$出发，
+\[
+A^TA=V\Sigma^T\Sigma V^T,\qquad
+AA^T=U\Sigma\Sigma^TU^T.
+\]
+因此$A^TA$与$AA^T$的非零特征值相同，均为
+$\sigma_1^2,\ldots,\sigma_r^2$。前者的对应特征向量为$v_j$，后者的对应特征向量为$u_j$。
+
+比较$AV=U\Sigma$与$A^TU=V\Sigma^T$的列，可得
+\[
+Av_j=\sigma_ju_j,\qquad
+A^Tu_j=\sigma_jv_j,\qquad j=1,\ldots,r.
+\]
+零奇异方向满足
+\[
+Av_j=0\quad(j=r+1,\ldots,n),\qquad
+A^Tu_j=0\quad(j=r+1,\ldots,m).
+\]
+由此得到
+\[
+\begin{aligned}
+R(A)&=\operatorname{span}(u_1,\ldots,u_r),&
+N(A^T)&=\operatorname{span}(u_{r+1},\ldots,u_m),\\
+R(A^T)&=\operatorname{span}(v_1,\ldots,v_r),&
+N(A)&=\operatorname{span}(v_{r+1},\ldots,v_n).
+\end{aligned}
+\]
+
+\begin{theorem}[谱范数与最小放大率]\label{thm:V4-C03-singular-extrema}
+对任意$A\in\mathbb R^{m\times n}$，
+\[
+\max_{\|x\|_2=1}\|Ax\|_2=\sigma_1.
+\]
+若$A$列满秩，则
+\[
+\min_{\|x\|_2=1}\|Ax\|_2=\sigma_n>0.
+\]
+极值方向分别可取$v_1$和$v_n$。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V4-C26-PROOF-002 L1
+\paragraph{读前自检：证明：谱范数与最小放大率。}谱范数与最小放大率所用的明确前提是“令$y=V^Tx$”；完成把$\|Ax\|_2^2$用到的关键定义展开并完成下一步变形后，核对列满秩时$n\leq m$且所有$n$个奇异值为正。\par
+
+\begin{proof}
+令$y=V^Tx$，则$\|y\|_2=\|x\|_2=1$，并且
+\[
+\|Ax\|_2^2=\|\Sigma y\|_2^2
+=\sum_{j=1}^{p}\sigma_j^2y_j^2.
+\]
+该加权和不超过$\sigma_1^2\sum_jy_j^2=\sigma_1^2$，取$y=e_1$达到上界。列满秩时$n\leq m$且所有$n$个奇异值为正，加权和不小于$\sigma_n^2\sum_jy_j^2=\sigma_n^2$，取$y=e_n$达到下界。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V4-C26-FORMULA-004 L1
+\paragraph{读前自检：紧奇异值分解与截断奇异值分解。}设$r=\operatorname{rank}(A)>0$；请从完整SVD删除零奇异值列得到紧SVD，再只保留前$k\le r$项得到截断SVD，核对前者精确重构$A$、后者在$k<r$时留下尾部误差。\par
+% KNOWLEDGE-PLAN: KN-V4-C26-FORMULA-005 L1
+\paragraph{读前自检：紧奇异值分解。}紧SVD只保留$r=\operatorname{rank}(A)>0$个正奇异值；请核对$U_r\in\mathbb R^{m\times r}$、$\Sigma_r\in\mathbb R^{r\times r}$、$V_r\in\mathbb R^{n\times r}$相乘后精确得到$A$。\par
+
+\SLTeachSection{紧致与截断SVD}{sec:V4-C03-S03}
+\knowledgeanchor{SLM-15-01-005}{紧奇异值分解与截断奇异值分解}
+\knowledgeanchor{SLM-15-02-001}{紧奇异值分解}
+% KNOWLEDGE-PLAN: KN-V4-C26-DEFINITION-003 L1
+\paragraph{读前自检：紧奇异值分解。}紧SVD满足$U_r^{\mathsf T}U_r=V_r^{\mathsf T}V_r=I_r$；请计算$U_rU_r^{\mathsf T}$的形状与平方，核对它一般是投影矩阵而非$I_m$。\par
+
+\begin{definition}[紧奇异值分解]\label{def:V4-C03-compact-svd}
+若$r=\operatorname{rank}(A)>0$，只保留正奇异值及其向量，得到
+\[
+A=U_r\Sigma_rV_r^T,
+\]
+其中
+\[
+U_r\in\mathbb R^{m\times r},\quad
+\Sigma_r=\operatorname{diag}(\sigma_1,\ldots,\sigma_r)\in\mathbb R^{r\times r},\quad
+V_r\in\mathbb R^{n\times r}.
+\]
+$U_r^TU_r=V_r^TV_r=I_r$，但$U_rU_r^T$与$V_rV_r^T$通常只是投影矩阵。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V4-C26-DEFINITION-004 L1
+\paragraph{读前自检：零矩阵的秩 0 紧SVD。}零矩阵$A=0_{m\times n}$的紧SVD取$r=0$；请依次相乘$U_0\in\mathbb R^{m\times0}$、$\Sigma_0\in\mathbb R^{0\times0}$与$V_0^{\mathsf T}\in\mathbb R^{0\times n}$，核对结果形状为$m\times n$且$U_0^{\mathsf T}U_0=V_0^{\mathsf T}V_0=I_0$。\par
+
+\begin{definition}[零矩阵的秩$0$紧SVD]\label{def:V4-C03-rank-zero-svd}
+若$A=0_{m\times n}$，则$r=0$，其紧SVD采用空因子约定
+\[
+U_0\in\mathbb R^{m\times0},\qquad
+\Sigma_0\in\mathbb R^{0\times0},\qquad
+V_0\in\mathbb R^{n\times0},\qquad
+A=U_0\Sigma_0V_0^{\mathsf T}=0_{m\times n}.
+\]
+这里没有正奇异三元组需要计算；空列正交条件$U_0^{\mathsf T}U_0=V_0^{\mathsf T}V_0=I_0$按空矩阵约定成立。完整SVD仍可用任意正交$U,V$和全零$\Sigma$表示。因而“范数为零”是合法的秩$0$结果，不是数值失败。
+\end{definition}
+
+\begin{example}[零矩阵回归例]\label{exm:V4-C03-zero-svd}
+求$A=0_{2\times3}$的紧SVD，写出三个因子的维数，并判断算法应返回的状态。说明为什么后续构造中不能执行除以奇异值的步骤。
+\end{example}
+\SLExampleSolutionHeading{exm:V4-C03-zero-svd}
+\begin{solution}
+\SLReadTranslation{零矩阵没有正奇异值列；需要用秩零空因子写出紧SVD，并判断这种退化分解是否仍是合法输出。}
+\SolGiven $A=0_{2\times3}$，故$\|A\|_F=0$且$r=\operatorname{rank}(A)=0$；紧SVD只保留正奇异值对应的列。
+\SLMethodTrigger{先由零矩阵确定秩，再按秩零空因子约定写出三因子形状；核对精确重构，并检查所有除以奇异值的步骤。}
+\SolPlan 依次求$r$、写$U_0,\Sigma_0,V_0$的空维数、核对乘积外部形状与重构误差，最后说明为何不存在可执行的$Av_j/\sigma_j$步骤。
+\SolDerive 取
+\[
+U_0\in\mathbb R^{2\times0},\qquad
+\Sigma_0\in\mathbb R^{0\times0},\qquad
+V_0\in\mathbb R^{3\times0}.
+\]
+于是
+\[
+U_0\Sigma_0V_0^{\mathsf T}
+\in\mathbb R^{2\times3},
+\qquad
+U_0\Sigma_0V_0^{\mathsf T}=0_{2\times3}=A.
+\]
+
+\SolCheck 三个内部维数依次为$0$并能相消，乘积外部形状为$2\times3$；重构误差
+$\|A-U_0\Sigma_0V_0^{\mathsf T}\|_F=0$。由于不存在$\sigma_j>0$，算法不得执行$u_j=Av_j/\sigma_j$。
+
+\SolAnswer 应正常返回上述合法的秩零空分解；零范数表示退化但精确的紧SVD，而不是数值失败。
+\end{solution}
+
+% KNOWLEDGE-PLAN: KN-V4-C26-FORMULA-006 L1
+\paragraph{读前自检：截断奇异值分解。}截断SVD在$r=\operatorname{rank}(A)>0$且$1\le k\le r$时定义$A_k=U_k\Sigma_kV_k^{\mathsf T}$；请标出三因子的形状并核对$A_k\in\mathbb R^{m\times n}$、$\operatorname{rank}(A_k)=k$。\par
+
+\knowledgeanchor{SLM-15-03-001}{截断奇异值分解}
+% KNOWLEDGE-PLAN: KN-V4-C26-DEFINITION-005 L1
+\paragraph{读前自检：截断奇异值分解。}截断SVD满足$A_k=\sum_{j=1}^k\sigma_ju_jv_j^{\mathsf T}$且前$r$个奇异值为正；请分别代入$k<r$与$k=r$，核对前者遗漏非零项而$A_k\ne A$，后者精确重构$A$。\par
+
+\begin{definition}[截断奇异值分解]\label{def:V4-C03-truncated-svd}
+若$r=\operatorname{rank}(A)>0$，对$1\leq k\leq r$，令$U_k,V_k$取前$k$列，$\Sigma_k$取前$k$个奇异值，定义
+\[
+A_k=U_k\Sigma_kV_k^T
+=\sum_{j=1}^{k}\sigma_ju_jv_j^T.
+\]
+$A_k\in\mathbb R^{m\times n}$且$\operatorname{rank}(A_k)=k$。由紧SVD的精确重构与$\sigma_1,\ldots,\sigma_r>0$可知
+\[
+A_k=A\iff k=r,\qquad
+1\leq k<r\Longrightarrow A_k\ne A.
+\]
+因此$k<r$时$A_k$是对$A$的有损近似，而$k=r$时$A_r$就是精确的紧SVD重构。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V4-C26-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：紧致与截断SVD。}完整、紧与截断SVD的表格分别使用$m/n$、秩$r$和保留秩$k$；请逐行核对三者的$U,\Sigma,V$形状，并确认只有完整与紧形式在相应条件下精确重构$A$。\par
+
+\begin{comparisonbox}
+\textbf{三种形式的维数。}\par\smallskip
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 形式 & 左因子 & 对角因子 & 右因子\\ \midrule
+完整SVD & $U:m\times m$ & $\Sigma:m\times n$ & $V:n\times n$\\
+紧SVD & $U_r:m\times r$ & $\Sigma_r:r\times r$ & $V_r:n\times r$\\
+截断SVD & $U_k:m\times k$ & $\Sigma_k:k\times k$ & $V_k:n\times k$\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+紧SVD仍精确表示$A$，存储量约为$r(m+n+1)$；截断SVD用$k(m+n+1)$个标量近似$mn$个矩阵元素。只有在$k(m+n+1)<mn$并计入索引与精度后，才产生实际存储节省。
+
+\begin{keypointbox}[title=第一次阅读路线]
+先掌握SVD定义、紧/截断形式与低秩误差公式；双边子空间迭代只是“怎样在大矩阵上近似算出前$k$项”的数值求解器进阶，不参与SVD存在性或Eckart--Young--Mirsky最优性的定义。手算与概念题可直接跳至\cref{sec:V4-C03-S05}。
+\end{keypointbox}
+
+
+\SLAdvancedSection{SVD的计算}{sec:V4-C03-S04}
+\knowledgeanchor{SLM-15-02-002}{奇异值分解的计算}
+教学型构造可先对$A^TA$求特征分解，再令
+$\sigma_j=\sqrt{\lambda_j}$和$u_j=Av_j/\sigma_j$。该路线适合手算和证明，但显式形成$A^TA$会把二范数条件数平方：
+\[
+\kappa_2(A^TA)=\kappa_2(A)^2
+\]
+（在非零奇异子空间上）。数值计算通常先把$A$正交双对角化，或用只需矩阵--向量乘法的子空间方法求前几个奇异三元组。
+
+\phantomsection\label{struct:V4-C03-CH10}
+
+\phantomsection\label{struct:V4-C03-CH19}
+\phantomsection\label{struct:V4-C03-CH20}
+\textbf{算法所需量与计算结果。}下面的双边子空间迭代用于求前$k$个奇异三元组。计算需要$A$、目标秩、子空间宽度、初始子空间、迭代上限和容差；返回最后合法Ritz状态、实际提交轮/块乘/压缩SVD计数，以及$\mathtt{status}\in\{\mathtt{converged},\mathtt{budget\_stop},\mathtt{invalid\_input},\mathtt{numerical\_failure}\}$。若数值秩小于$k$、矩阵为零或初始化无效，应说明已检测的有效秩和诊断结论，不能给出并不存在的$k$个三元组。算法不显式形成$A^TA$。
+
+\phantomsection\label{struct:V4-C03-CH21}
+\textbf{参数含义。}取$1\leq k\leq\ell=k+s\leq p$，$s\geq0$为额外方向数；$T_{\max}\geq1$为最大迭代数；$\varepsilon_{\rm sub},\varepsilon_{\rm res}>0$分别控制投影变化与奇异三元组残差。若$\sigma_k$与$\sigma_{k+1}$接近，应增大$\ell$或迭代预算。
+
+\phantomsection\label{struct:V4-C03-CH22}
+\textbf{初始化。}先检查$A$元素有限、尺寸非空、$1\leq k\leq\ell\leq p$、两项容差为正且$T_{\max}\geq1$。若$\|A\|_F=0$，不进入迭代，直接按\cref{def:V4-C03-rank-zero-svd}返回$r=0$的空紧分解与$\mathtt{completed}$。否则构造$Q^{(0)}\in\mathbb R^{m\times\ell}$且列标准正交；可对固定随机种子产生的矩阵作QR分解，也可从经过挑选的数据列开始。若正交化后的有效列数不是$\ell$，初始化无效；还必须检查$Q^{(0)}$与主左奇异子空间有非零投影。
+
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V4-C26-ALGORITHM_IDEA-001 L2
+
+% KNOWLEDGE-PLAN: KN-V4-C26-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={截断SVD的双边子空间迭代：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限矩阵$A$、目标秩$k$、工作宽度$\ell$、初始左子空间、迭代预算和子空间/残差容差},
+  output={零矩阵时的$U_0,\Sigma_0,V_0,r=0$，否则最后合法$U_k,\Sigma_k,V_k$与证书；提交轮数$t_{\rm done}$、矩阵块乘数$b_{\rm done}$、压缩SVD数$s_{\rm done}$、状态与诊断},
+  preconditions={$A$非空有限，$1\le k\le\ell\le\min(m,n)$；$T_{\max}\ge1$，容差为正；初始接口维数相容},
+  initialization={先检测零矩阵；非零时正交化$Q^{(0)}$，置$t_{\rm done}=b_{\rm done}=s_{\rm done}=0$；在第一次完整Ritz提取前模型为$\bot$},
+  loop={每轮依次执行$A^TQ$、$AZ$、压缩SVD并形成左右残差与投影变化候选},
+  update={完整$k$个有限Ritz三元组及全部证书通过后，才原子提交模型、子空间和轮计数},
+  domain={$Q,Z$列正交且有效宽度至少$k$；奇异值有限非负；左右残差及投影差有限},
+  failure={接口、预算或容差非法返回$\mathtt{invalid\_input}$；正交化秩不足、非有限块乘、压缩SVD或目标秩不可达返回$\mathtt{numerical\_failure}$并保留最后合法Ritz状态},
+  stop={双残差证书、$T_{\max}$个提交轮耗尽或首次失败时停止},
+  budget={至多$T_{\max}$轮；每个尝试轮恰有两次矩阵块乘和一次宽度不超过$\ell$的压缩SVD},
+  status={$\mathtt{completed}$（仅合法秩$0$分支）、$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$t_{\rm done}$计完整原子提交轮，$b_{\rm done}$计已完成块乘，$s_{\rm done}$计已完成压缩SVD；三者分别报告},
+  diagnostics={实际工作宽度、检测有效秩、$\eta_t,\rho_t$、失败轮/左右阶段、正交残差与预算余量},
+  complexity={每轮两次稠密块乘$O(mn\ell)$，正交化与压缩分解另为$O((m+n)\ell^2)$；工作空间$O((m+n)\ell)$}
+}
+\begin{algorithm}[!t]
+\caption{截断SVD的双边子空间迭代}\label{alg:V4-C03-subspace-svd}
+\KwIn{有限矩阵$A\in\mathbb R^{m\times n}$，$1\leq k\leq\ell\leq p$，$Q^{(0)}$，$T_{\max}\geq1$，$\varepsilon_{\rm sub},\varepsilon_{\rm res}>0$}
+\KwOut{最后合法Ritz三元组与证书；$t_{\rm done},b_{\rm done},s_{\rm done}$；$\mathtt{status}$及诊断}
+若$A,k,\ell,Q^{(0)}$、预算或容差接口非法，则返回$\bot$、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+若$\|A\|_F=0$，则返回$U_0\in\mathbb R^{m\times0},\Sigma_0\in\mathbb R^{0\times0},V_0\in\mathbb R^{n\times0},r=0$、计数$0$、$\mathtt{completed}$及零矩阵精确重构诊断\;
+正交化$Q^{(0)}$；若有效列数不足$\ell$，则返回$\bot$、计数$0$、$\mathtt{numerical\_failure}$及初始化秩诊断\;
+令$Q\leftarrow Q^{(0)},\ell_t\leftarrow\ell,t_{\rm done}\leftarrow0,b_{\rm done}\leftarrow0,s_{\rm done}\leftarrow0$，最后合法模型为$\bot$\;
+\While{$t_{\rm done}<T_{\max}$}{
+  计算$Z^+=\operatorname{orth}(A^TQ)$并令$b_{\rm done}\leftarrow b_{\rm done}+1$；若非有限或有效列数不足$k$，返回最后合法模型与$\mathtt{numerical\_failure}$及右阶段诊断；否则按实际宽度缩小$\ell_t$\;
+  计算$Q^+=\operatorname{orth}(AZ^+)$并令$b_{\rm done}\leftarrow b_{\rm done}+1$；若非有限或有效列数不足$k$，返回最后合法模型与$\mathtt{numerical\_failure}$及左阶段诊断；否则按实际宽度缩小$\ell_t$\;
+  计算$\eta^+=\|Q^+Q^{+T}-QQ^T\|_F$，对$B^+=Q^{+T}A$求压缩SVD并令$s_{\rm done}\leftarrow s_{\rm done}+1$\;
+  恢复前$k$个Ritz三元组并计算左右最大残差$\rho^+$；若SVD、三元组、$\eta^+$或$\rho^+$非有限，则返回上一合法模型与$\mathtt{numerical\_failure}$及Ritz阶段诊断\;
+  原子提交$(Q,U_k,\Sigma_k,V_k,\eta,\rho)\leftarrow(Q^+,U_k^+,\Sigma_k^+,V_k^+,\eta^+,\rho^+)$，令$t_{\rm done}\leftarrow t_{\rm done}+1$\;
+  若$\eta\le\varepsilon_{\rm sub}$且$\rho\le\varepsilon_{\rm res}$，则返回最后合法模型、实际计数、$\mathtt{converged}$及双证书诊断\;
+}
+返回最后合法模型、实际计数、$\mathtt{budget\_stop}$及“预算耗尽、双证书未满足”诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{核心流程跟踪$A^{\mathsf T}Q$与$AZ$两次正交化、压缩SVD、双边残差和停止；秩亏与数值失败分支属于稳健实现细节}
+
+\phantomsection\label{struct:V4-C03-CH23}
+\textbf{循环变量与更新顺序。}循环变量是$t=1,\ldots,T_{\max}$。每轮依次计算右子空间$Z^{(t)}$、左子空间$Q^{(t)}$、投影差、压缩矩阵SVD和左右残差；后一步只使用本轮已更新对象。一次双边更新等价于把左子空间乘以$AA^T$后重新正交化，但分两次乘法可避免形成法方程矩阵。
+
+\phantomsection\label{struct:V4-C03-CH24}
+\textbf{判断与停止条件。}正常停止同时要求投影矩阵变化和左右残差达到容差；达到迭代上限时返回最后有效结果并明确说明尚未满足收敛准则。正交化后有效列数不足$k$或出现非有限数时异常停止。仅观察奇异值变化可能漏掉重根子空间旋转。
+
+\phantomsection\label{struct:V4-C03-CH25}
+\textbf{收敛条件。}若初始子空间与前$\ell_t$个左奇异子空间有满秩投影，并且目标子空间与其余方向之间存在谱隙，则精确算术下子空间迭代收敛。只有在$\ell_t<p$、$\sigma_{\ell_t}>0$且$\sigma_{\ell_t}>\sigma_{\ell_t+1}$时，单一边界的主误差因子才可写成
+$(\sigma_{\ell_t+1}/\sigma_{\ell_t})^{2t}$；比值接近1时收敛慢。若$\ell_t=p$，工作子空间之外没有奇异方向，因而无需定义该比值；若工作宽度因数值秩缩小，应使用实际$\ell_t$。重奇异值时应评价整个不变子空间，而不是某一列向量。
+
+\textbf{异常与退化情形。}空尺寸矩阵、非有限元素、不合法的$k,\ell$、非正容差、非正迭代预算或初始子空间有效列不足都使计算条件不成立；目标数值秩小于$k$时只能说明有效秩和诊断结论，不能给出$k$个正奇异三元组。元素全零的非空矩阵例外：其数值秩与精确秩同为0，算法合法完成并返回空紧分解。若应用确实需要补出零奇异值对应的任意基，必须另行使用完整SVD的基补全过程，不能把它冒充为本迭代已经算出的正三元组。
+
+\textbf{正确性依据。}每轮压缩矩阵满足$B^{(t)}=Q^{(t)T}A$，其左奇异向量经$Q^{(t)}$提升后仍标准正交；左右残差为零时，返回的三元组满足$Av_j=\sigma_ju_j$与$A^Tu_j=\sigma_jv_j$。当迭代子空间包含目标左奇异子空间时，Rayleigh--Ritz压缩恢复相应奇异三元组。
+
+\textbf{不收敛或不适用情形。}初始子空间漏掉目标方向、谱隙过小、容差低于浮点精度可达范围、矩阵--向量乘法不一致或迭代预算不足时，方法可能未收敛。此时应报告残差和停止原因，改用更宽子空间、重启或稳定的直接SVD；带缺失权重、非负约束的目标也不由本算法求解。
+
+\phantomsection\label{struct:V4-C03-CH26}
+\phantomsection\label{struct:V4-C03-CH27}
+% KNOWLEDGE-PLAN: KN-V4-C26-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：SVD的计算。}稠密$m\times n$矩阵的完整SVD时间量级为$O(mn\min(m,n))$；请令$m\ge n$化简该量级，并与只求前$k$个奇异三元组所需的输出存储$O((m+n)k)$对照，并核对时间与存储量级和算法框一致。\par
+
+\begin{complexitybox}
+\textbf{训练时间复杂度。}稠密$A$的一轮两次矩阵--块乘法为$O(mn\ell)$，QR与压缩矩阵处理为$O((m+n)\ell^2)$；$T$轮主代价为$O(Tmn\ell)$。完整稠密SVD通常为$O(mn\min(m,n))$量级。\\
+\textbf{新向量投影代价。}本算法只完成矩阵分解，不定义监督学习的逐样本预测。若下游把$b$个新向量投到$V_k$或$U_k$坐标，另需$O(nkb)$或$O(mkb)$，这属于因子应用而非分解计算。\\
+\textbf{空间复杂度。}若$A$已存储，需要$O(mn)$；子空间、工作矩阵与压缩因子需要$O((m+n)\ell)$量级。对可流式乘法的线性算子，可不显式保存$A$。\\
+\textbf{复杂度假设。}上述界假设$A$为稠密实矩阵、一次标量运算为常数成本、QR与小SVD采用稳定稠密实现，且$k\leq\ell\ll p$；稀疏或算子表示应把$mn\ell$替换为实际块乘法成本。
+\end{complexitybox}
+
+% KNOWLEDGE-PLAN: KN-V4-C26-FORMULA-008 L1
+\paragraph{读前自检：奇异值分解与矩阵近似。}矩阵近似用Frobenius范数$\lVert A\rVert_F^2=\operatorname{tr}(A^{\mathsf T}A)$；请把$A-U_k\Sigma_kV_k^{\mathsf T}$代入，核对误差平方等于尾部奇异值平方和。\par
+% KNOWLEDGE-PLAN: KN-V4-C26-CONCEPT-003 L1
+\paragraph{读前自检：弗罗贝尼乌斯范数。}Frobenius范数定义为全部元素平方和开方；请计算$\operatorname{tr}(A^{\mathsf T}A)$，核对两式相等且结果为非负标量。\par
+
+\SLTeachSection{低秩矩阵近似}{sec:V4-C03-S05}
+\knowledgeanchor{SLM-15-03-002}{奇异值分解与矩阵近似}
+\knowledgeanchor{SLM-15-03-003}{弗罗贝尼乌斯范数}
+% KNOWLEDGE-PLAN: KN-V4-C26-DEFINITION-006 L1
+\paragraph{读前自检：Frobenius范数。}Frobenius范数对正交左右变换不变；请展开$\lVert QAP^{\mathsf T}\rVert_F^2$的迹并用$Q^{\mathsf T}Q=P^{\mathsf T}P=I$，核对结果为$\lVert A\rVert_F^2$。\par
+
+\begin{definition}[Frobenius范数]\label{def:V4-C03-frobenius}
+对$A=[a_{ij}]\in\mathbb R^{m\times n}$，
+\[
+\|A\|_F=\left(\sum_{i=1}^{m}\sum_{j=1}^{n}a_{ij}^2\right)^{1/2}
+=\sqrt{\operatorname{tr}(A^TA)}.
+\]
+若$Q,P$为维数相容的正交矩阵，则
+$\|QAP^T\|_F=\|A\|_F$。
+\end{definition}
+
+由正交不变性，
+\[
+\|A\|_F^2=\|\Sigma\|_F^2=\sum_{j=1}^{p}\sigma_j^2,
+\qquad
+\|A\|_2=\sigma_1.
+\]
+截断后的误差为
+\[
+A-A_k=\sum_{j=k+1}^{r}\sigma_ju_jv_j^T,
+\]
+候选误差因而满足
+\[
+\|A-A_k\|_F^2=\sum_{j=k+1}^{r}\sigma_j^2,\qquad
+\|A-A_k\|_2=\sigma_{k+1}.
+\]
+
+% KNOWLEDGE-PLAN: KN-V4-C26-DEFINITION-007 L1
+\paragraph{读前自检：Frobenius能量与相对范数误差。}截断SVD的保留能量$E_k=\sum_{j=1}^k\sigma_j^2/\sum_{j=1}^r\sigma_j^2$要求$A\ne0$；请对给定奇异值求$E_k$，核对其位于$[0,1]$且相对Frobenius误差平方为$1-E_k$。\par
+
+\begin{definition}[Frobenius能量与相对范数误差]\label{def:V4-C03-energy-error}
+当$A\ne0$时，保留前$k$项的平方Frobenius能量比例与尾部平方损失为
+\[
+E_k=\frac{\sum_{j\le k}\sigma_j^2}{\sum_j\sigma_j^2},
+\qquad
+L_k=\frac{\|A-A_k\|_F^2}{\|A\|_F^2}=1-E_k.
+\]
+相对Frobenius\emph{范数}误差则是
+\[
+\frac{\|A-A_k\|_F}{\|A\|_F}=\sqrt{L_k}=\sqrt{1-E_k}.
+\]
+因此“保留$90\%$能量”等价于“尾部平方损失$10\%$”，但范数相对误差是$\sqrt{0.1}\approx31.62\%$，不是$10\%$。报告百分比时必须写明是平方能量、平方损失还是范数误差。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V4-C26-PREREQUISITE-007 L1
+\paragraph{读前自检：矩阵的最优近似。}矩阵$A$的秩至多$k$近似满足$\lVert A-B\rVert_2\ge\sigma_{k+1}$和$\lVert A-B\rVert_F^2\ge\sum_{j>k}\sigma_j^2$；请把$B=A_k$代入，核对截断SVD同时达到两个下界。\par
+% KNOWLEDGE-PLAN: KN-V4-C26-CONCEPT-004 L1
+\paragraph{读前自检：截断SVD的低秩最优性。}截断SVD低秩最优性以$\operatorname{rank}(B)\le k$为条件；请分别投影到被舍弃的$v_{k+1}$方向并展开Frobenius正交和，核对谱范数下界$\sigma_{k+1}$与Frobenius尾能量下界。\par
+
+\knowledgeanchor{SLM-15-03-004}{矩阵的最优近似}
+\knowledgeanchor{SLM-15-03-005}{截断SVD的低秩最优性}
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V4-C26-THEOREM-005 L1
+\paragraph{读前自检：Eckart--Young--Mirsky低秩最优性。}把Eckart--Young--Mirsky低秩最优性放在“若$\sigma_k>\sigma_{k+1}$，前$k$维左右奇异子空间唯一”下考察：把$\|A-B\|_2\geq\sigma_{k+1},$按证明中的分解展开一层，并检查若$\sigma_k=\sigma_{k+1}$，截断边界穿过重奇异值子空间。\par
+
+\begin{theorem}[Eckart--Young--Mirsky低秩最优性]\label{thm:V4-C03-eym}
+设$A\in\mathbb R^{m\times n}$的奇异值为
+$\sigma_1\geq\cdots\geq\sigma_p\geq0$，且$1\leq k<r$。对任意
+$B\in\mathbb R^{m\times n}$且$\operatorname{rank}(B)\leq k$，
+\[
+\|A-B\|_2\geq\sigma_{k+1},\qquad
+\|A-B\|_F\geq\left(\sum_{j=k+1}^{r}\sigma_j^2\right)^{1/2}.
+\]
+$A_k=U_k\Sigma_kV_k^T$同时达到两个下界。若$\sigma_k>\sigma_{k+1}$，前$k$维左右奇异子空间唯一，且Frobenius范数下的最优矩阵$A_k$唯一；谱范数下的最优矩阵即使存在该间隙也可能不唯一。若$\sigma_k=\sigma_{k+1}$，截断边界穿过重奇异值子空间，Frobenius最优矩阵也可能不唯一。
+\end{theorem}
+
+% KNOWLEDGE-PLAN: KN-V4-C26-PROOF-003 L2
+\begin{keypointbox}[title={证明：Eckart--Young--Mirsky低秩最优性：证明阅读检查}]
+\textbf{动手检查。}待证结论与所需条件分别是什么？请在最小维度或最小样本上写出第一处关键变形，并指出少一个条件时证明会在哪一步中断。\par
+\textbf{1.} 先写清对象类型、目标结论与符号作用域。\par
+\textbf{2.} 逐项核对定义域、维数、支持集、量词与交换运算所需条件。\par
+\textbf{3.} 写出第一处可执行的数学动作，不用“显然”跳过入口。\par
+\textbf{4.} 沿现有编号完成中间关系，并单独核对归一化、边界或等号条件。\par
+\textbf{5.} 回到待证结论，再说明它与后续公式、算法、图或例题的连接。
+\end{keypointbox}
+\paragraph{继续核对。}完成上面的最小任务后，再对照主体逐项核对定义域、更新式或关键变形、停止条件以及返回值；阅读检查不代替正文中的数学论证。
+
+\begin{proof}
+\textbf{谱范数下界。}考虑$(k+1)$维子空间
+$S=\operatorname{span}(v_1,\ldots,v_{k+1})$。因为
+$\operatorname{rank}(B)\leq k$，线性映射$B|_S$的零空间至少一维，所以存在单位向量$x\in S$使$Bx=0$。写
+$x=\sum_{j=1}^{k+1}c_jv_j$，则
+\[
+\|(A-B)x\|_2^2=\|Ax\|_2^2
+=\sum_{j=1}^{k+1}\sigma_j^2c_j^2
+\geq\sigma_{k+1}^2\sum_{j=1}^{k+1}c_j^2
+=\sigma_{k+1}^2.
+\]
+取单位向量上的最大值，得到$\|A-B\|_2\geq\sigma_{k+1}$。
+
+\textbf{Frobenius范数下界。}令$\mathcal Q$为$B$的列空间，维数$q\leq k$，$P_{\mathcal Q}$为其正交投影。由于$P_{\mathcal Q}B=B$，
+\[
+A-B=(I-P_{\mathcal Q})A+\{P_{\mathcal Q}A-B\}.
+\]
+两项的每一列互相正交，所以
+\[
+\|A-B\|_F^2
+=\|(I-P_{\mathcal Q})A\|_F^2
++\|P_{\mathcal Q}A-B\|_F^2
+\geq\|(I-P_{\mathcal Q})A\|_F^2.
+\]
+取$\mathcal Q$的一组标准正交基$q_1,\ldots,q_q$，由
+$AA^T=\sum_{j=1}^{p}\sigma_j^2u_ju_j^T$，
+\[
+\|P_{\mathcal Q}A\|_F^2
+=\sum_{i=1}^{q}q_i^TAA^Tq_i
+=\sum_{j=1}^{p}\sigma_j^2\alpha_j,
+\quad
+\alpha_j=\sum_{i=1}^{q}(u_j^Tq_i)^2.
+\]
+这里$0\leq\alpha_j\leq1$。若$\mathcal Q$含有$N(A^T)$中的分量，则这些分量不出现在$j=1,\ldots,p$的和中，因此只能断言
+$\sum_{j=1}^{p}\alpha_j\leq q\leq k$；该不等式已足够。按奇异值非增排列，这个加权和不超过$\sum_{j=1}^{k}\sigma_j^2$。因此
+\[
+\|(I-P_{\mathcal Q})A\|_F^2
+=\|A\|_F^2-\|P_{\mathcal Q}A\|_F^2
+\geq\sum_{j=k+1}^{r}\sigma_j^2.
+\]
+最后，$A_k$的误差奇异值恰为
+$\sigma_{k+1},\ldots,\sigma_r$，所以它同时达到谱范数与Frobenius范数下界。
+
+\textbf{Frobenius取等与唯一性。}上述两个不等式同时取等时，必须有
+$P_{\mathcal Q}A=B$，并且投影能量达到$\sum_{j=1}^k\sigma_j^2$。若
+$\sigma_k>\sigma_{k+1}$，加权和取等迫使$\alpha_j=1$（$j\leq k$）且
+$\alpha_j=0$（$j>k$），故$\mathcal Q=\operatorname{span}(u_1,\ldots,u_k)$；再由
+$B=P_{\mathcal Q}A$得到$B=A_k$，Frobenius最优矩阵唯一。若
+$\sigma_k=\sigma_{k+1}=s$，设严格大于$s$的奇异值有$a<k$个，则可在$s$对应的重根子空间中任选$k-a$维子空间；不同选择给出不同的$P_{\mathcal Q}A$，但舍弃奇异值平方和相同，所以最优误差唯一而最优矩阵一般不唯一。
+
+\textbf{谱范数非唯一性。}即使$\sigma_k>\sigma_{k+1}$，取非零$t$满足$|t|\leq\sigma_{k+1}$，矩阵
+\[
+B_t=A_k+t\,u_1v_1^T
+\]
+仍有秩不超过$k$，而$A-B_t$的最大奇异值为
+$\max\{|t|,\sigma_{k+1}\}=\sigma_{k+1}$。因此$B_t$与$A_k$都是谱范数最优解，说明谱隙不推出谱范数最优矩阵唯一。
+\end{proof}
+
+\phantomsection\label{struct:V4-C03-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}截断SVD精确求解
+\[
+\min_{\operatorname{rank}(B)\leq k}\|A-B\|_F
+\]
+以及谱范数版本。秩约束是非凸集合，但正交不变性把问题化为保留最大的$k$个对角缩放。若加入非负、稀疏、缺失观测或加权误差约束，截断SVD通常不再是该新问题的最优解。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V4-C03-CH15}
+% KNOWLEDGE-PLAN: KN-V4-C26-CONCEPT-006 L1
+\paragraph{读前自检：概率解释：若观测矩阵满足 A L E ，其中 L 的秩不超过 k ，噪声元素独立且 E ij N……。}低秩高斯噪声解释假设$A=L+E$、$\operatorname{rank}(L)\le k$且$E_{ij}\sim\mathcal N(0,\tau^2)$独立同分布；请展开负对数似然中依赖$L$的部分，核对它与$\lVert A-L\rVert_F^2$成正比。\par
+
+\begin{probabilitybox}
+若观测矩阵满足$A=L+E$，其中$L$的秩不超过$k$，噪声元素独立且
+$E_{ij}\sim\mathcal N(0,\tau^2)$，则固定$\tau$时负对数似然与
+$\|A-L\|_F^2$只差正比例和常数。截断SVD因而是该同方差高斯噪声模型下的最大似然低秩估计。异方差或重尾噪声需要不同损失。
+\end{probabilitybox}
+
+% KNOWLEDGE-PLAN: KN-V4-C26-CONCEPT-007 L1
+\paragraph{读前自检：几何解释。}SVD几何解释把单位球依次经$V^{\mathsf T}$、$\Sigma$与$U$映射；请跟踪一个单位向量，核对正交因子保持长度而$\Sigma$把各轴缩放为$\sigma_j$，最大半轴为$\lVert A\rVert_2$。\par
+
+\SLAdvancedSection{代数推导与几何解释}{sec:V4-C03-S06}
+\knowledgeanchor{SLM-15-01-006}{几何解释}
+\phantomsection\label{struct:V4-C03-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}单位球先经$V^T$旋转或反射，仍为单位球；再经$\Sigma$沿正交坐标轴缩放为半轴长度
+$\sigma_1,\ldots,\sigma_p$的椭球，零奇异值把相应方向压扁；最后经$U$旋转或反射到输出空间。最大半轴给出$\|A\|_2$，非零半轴个数给出秩。
+\end{geometrybox}
+
+\phantomsection\label{struct:V4-C03-CH17}
+如\cref{fig:V4-C03-svd-geometry}所示，两个正交变换只改变坐标方向，所有长度伸缩都集中在$\Sigma$的非负对角元上。
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C03/fig_v4_c03_svd_geometry.tex}
+
+% KNOWLEDGE-PLAN: KN-V4-C26-PREREQUISITE-008 L1
+\paragraph{读前自检：矩阵的外积展开式。}SVD外积展开为$A=\sum_{j=1}^r\sigma_ju_jv_j^{\mathsf T}$；请写出单项的$(a,b)$元素并核对其秩为1，再比较前$k$项与前$k+1$项的Frobenius误差平方相差$\sigma_{k+1}^2$。\par
+
+\knowledgeanchor{SLM-15-03-006}{矩阵的外积展开式}
+将$U\Sigma$按列、$V^T$按行分块，可得
+\[
+A=\sum_{j=1}^{r}\sigma_ju_jv_j^T.
+\]
+每个$u_jv_j^T$是秩1矩阵，其$(a,b)$元素为$u_{aj}v_{bj}$。奇异值给这些正交秩1成分排序；前$k$项之和就是$A_k$，后一项加入后误差能量减少$\sigma_{k+1}^2$。
+
+\textbf{谱分解联系。}前文把$A^TA$的正交谱分解用于构造右奇异向量；同样地，$AA^T$给出左奇异向量，而且两者具有相同的非零谱。这个联系也解释了SVD、协方差特征分解和主成分方向之间的关系。
+
+\textbf{四个基本子空间。}SVD给出彼此正交的分解
+\[
+\mathbb R^n=R(A^T)\oplus N(A),\qquad
+\mathbb R^m=R(A)\oplus N(A^T).
+\]
+$V_r$张成输入中会被映射的方向，$V_0$张成被消去的方向；$U_r$张成所有可能输出，$U_0$张成输出空间中无法由$A$产生的方向。
+
+
+\SLDirectSection{例题与练习}{sec:V4-C03-S07}
+\phantomsection\label{struct:V4-C03-CH18}
+\phantomsection\label{struct:V4-C03-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[一个长矩阵的完整、紧与截断SVD]\label{exm:V4-C03-tall}
+给定
+\[
+A=\begin{bmatrix}
+3&0\\
+0&1\\
+0&0
+\end{bmatrix}\in\mathbb R^{3\times2}.
+\]
+写出完整SVD与紧SVD，并求最佳秩1近似及两种范数误差。
+
+\phantomsection\label{struct:V4-C03-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V4-C03-tall}
+\begin{solution}
+\SLReadTranslation{要区分同一 $3\times2$ 矩阵的完整SVD、紧SVD和最佳秩$1$截断，并分别报告谱范数与Frobenius范数误差。}
+\SolGiven $A\in\mathbb R^{3\times2}$、$\operatorname{rank}(A)=2$；完整分解取 $U\in\mathbb R^{3\times3}$，紧分解只保留两个正奇异值对应的列。
+\SLMethodTrigger{先由 $A^{\mathsf T}A$ 求右奇异向量与奇异值，再由 $u_j=Av_j/\sigma_j$ 构造左奇异向量；Eckart--Young定理把最佳秩$1$误差化为舍弃奇异值。}
+\SolPlan 求 $A^{\mathsf T}A$ 的谱，写出完整与紧分解；保留首个奇异三元组得到 $A_1$，再用尾部奇异值计算并直接复核两种误差。
+\SolDerive
+\textbf{完整与紧SVD。}$A^TA=\operatorname{diag}(9,1)$，所以奇异值为$3,1$，可取
+\[
+U=I_3,\qquad
+\Sigma=\begin{bmatrix}3&0\\0&1\\0&0\end{bmatrix},\qquad
+V=I_2.
+\]
+矩阵秩$r=2$，紧SVD为
+\[
+U_r=\begin{bmatrix}1&0\\0&1\\0&0\end{bmatrix},\quad
+\Sigma_r=\begin{bmatrix}3&0\\0&1\end{bmatrix},\quad
+V_r=I_2.
+\]
+\textbf{秩$1$截断。}保留首项得到
+\[
+A_1=3u_1v_1^T
+=3e_1^{(3)}\bigl(e_1^{(2)}\bigr)^T=
+\begin{bmatrix}3&0\\0&0\\0&0\end{bmatrix}.
+\]
+被舍弃奇异值只有1，因此
+$\|A-A_1\|_F=1$且$\|A-A_1\|_2=1$。维数检查为
+$(3\times1)(1\times1)(1\times2)=3\times2$。
+
+\SolCheck 直接相乘有$U\Sigma V^T=A$，而
+$A-A_1=\operatorname{diag}_{3\times2}(0,1)$，其唯一非零奇异值为$1$；这同时复核了两种误差和重构尺寸。
+
+\SolAnswer 完整SVD可取 $U=I_3$、$\Sigma=\operatorname{diag}_{3\times2}(3,1)$、$V=I_2$；紧SVD保留前两列；最佳秩$1$近似为 $A_1=\operatorname{diag}_{3\times2}(3,0)$，且 $\|A-A_1\|_F=\|A-A_1\|_2=1$。
+\end{solution}
+
+\phantomsection\label{struct:V4-C03-CH28}
+% KNOWLEDGE-PLAN: KN-V4-C26-BOUNDARY-002 L1
+\paragraph{读前自检：适用条件与局限：例题与练习。}SVD适用于线性低秩结构且Frobenius误差合理的矩阵任务；请计算截断误差$\sum_{j>k}\sigma_j^2$，核对奇异值尾部未衰减或目标为非线性结构时不能仅凭该误差宣称适用。\par
+
+\begin{applicabilitybox}
+\textbf{适用条件。}SVD适合线性结构、二范数或Frobenius误差合理、需要正交方向排序的矩阵任务。截断SVD适合奇异值衰减较快且目标是压缩、去噪、潜在语义坐标或线性降维的场景；目标秩应由误差、稳定性和下游效用联合选择。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V4-C03-CH29}
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+SVD对异常值敏感，Frobenius目标默认各元素同等可信；缺失元素不能先任意填零后仍沿用完整观测结论；正交成分可能含正负载荷而缺少直接语义；奇异值衰减慢时，低秩压缩收益有限。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V4-C03-CH30}
+% KNOWLEDGE-PLAN: KN-V4-C26-BOUNDARY-004 L1
+\paragraph{读前自检：常见错误与误用边界：例题与练习。}先锁定例题与练习的条件“边界框首项禁止形成$A^TA$后忽略条件数平方和小奇异值误差”：把固定错误“形成$A^TA$后忽略条件数平方和小奇异值误差”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，所得结果应满足改写后的运算或判断有定义，且不再触发“形成$A^TA$后忽略条件数平方和小奇异值误差”。\par
+
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 把$U,\Sigma,V$的维数都写成$n\times n$，忽略矩形矩阵；
+  \item 把$V$误写成$V^T$的列，或在重构时漏掉转置；
+  \item 令$u_j=Av_j/\sigma_j$时对$\sigma_j=0$作除法；
+  \item 把紧SVD和截断SVD都写成近似号，未区分精确与有损；
+  \item 形成$A^TA$后忽略条件数平方和小奇异值误差；
+  \item 只报告累计奇异值而不是累计平方奇异值作为Frobenius能量。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V4-C03-CH31}
+% KNOWLEDGE-PLAN: KN-V4-C26-COMPARISON-002 L1
+\paragraph{读前自检：易混淆概念对比：例题与练习。}对例题与练习，条件“对比表首个数据行是“完整SVD｜两侧正交、矩形对角｜任意实矩阵存在｜存储与全分解成本高””不可省；请按列复述“完整SVD｜两侧正交、矩形对角｜任意实矩阵存在｜存储与全分解成本高”中的对象、假设与结论，再用各列均对应首行对象“完整SVD”，且未与表中下一行互换作检查。\par
+
+\begin{comparisonbox}
+\textbf{分解与近似对比。}\par\smallskip
+\begingroup
+\footnotesize
+\renewcommand{\arraystretch}{0.92}
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 方法 & 约束或结构 & 主要保证 & 典型边界\\ \midrule
+完整SVD & 两侧正交、矩形对角 & 任意实矩阵存在 & 存储与全分解成本高\\
+截断SVD & 秩不超过$k$ & 二范数和Frobenius最优 & 不处理非负或缺失约束\\
+对称特征分解 & 方阵且对称 & 正交特征基 & 不直接适用一般矩形矩阵\\
+QR分解 & 列空间正交基与上三角 & 稳定求解线性系统 & 不按能量给低秩最优排序\\
+非负矩阵分解 & 因子元素非负 & 部件式可解释性 & 非凸且无SVD式全局最优保证\\
+\bottomrule
+\end{tabularx}
+\endgroup
+\end{comparisonbox}
+
+\phantomsection\label{struct:V4-C03-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V4-C03-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-OB-01}
+求矩阵
+\[
+A=\begin{bmatrix}1&2&0\\2&0&2\end{bmatrix}
+\]
+的奇异值分解，并核对三个因子的维数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-OB-01}
+\begin{chapterexercisesolution}{ex:V4-C03-OB-01}
+先算
+\[
+AA^T=\begin{bmatrix}5&2\\2&8\end{bmatrix},
+\]
+其特征值为$9,4$，故奇异值为$\sigma_1=3,\sigma_2=2$。可取
+\[
+u_1=\frac1{\sqrt5}\begin{bmatrix}1\\2\end{bmatrix},
+\qquad
+u_2=\frac1{\sqrt5}\begin{bmatrix}-2\\1\end{bmatrix}.
+\]
+由$v_j=A^Tu_j/\sigma_j$得到
+\[
+v_1=\frac1{3\sqrt5}\begin{bmatrix}5\\2\\4\end{bmatrix},
+\qquad
+v_2=\frac1{\sqrt5}\begin{bmatrix}0\\-2\\1\end{bmatrix}.
+\]
+再取右零空间单位向量
+$v_3=(-2,1,2)^T/3$。于是
+\[
+U=[u_1,u_2],\quad
+\Sigma=\begin{bmatrix}3&0&0\\0&2&0\end{bmatrix},\quad
+V=[v_1,v_2,v_3]
+\]
+满足$A=U\Sigma V^T$。维数依次为$2\times2$、$2\times3$、$3\times3$；直接检查$Av_j=\sigma_ju_j$（$j=1,2$）和$Av_3=0$即可核对乘积。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-OB-02}
+求矩阵
+\[
+A=\begin{bmatrix}2&4\\1&3\\0&0\\0&0\end{bmatrix}
+\]
+的奇异值分解，并把$A$写成奇异值加权的秩1外积之和。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-OB-02}
+\begin{chapterexercisesolution}{ex:V4-C03-OB-02}
+\[
+A^TA=\begin{bmatrix}5&11\\11&25\end{bmatrix},
+\]
+其特征值为$\lambda_\pm=15\pm\sqrt{221}$，故
+$\sigma_\pm=\sqrt{15\pm\sqrt{221}}$。令
+\[
+d_\pm=\sqrt{121+(10\pm\sqrt{221})^2},\qquad
+v_\pm=\frac1{d_\pm}
+\begin{bmatrix}11\\10\pm\sqrt{221}\end{bmatrix}.
+\]
+两个$v_\pm$互相正交，因为其未归一化向量的内积为
+$121+(10+\sqrt{221})(10-\sqrt{221})=0$。再令
+\[
+u_\pm=\frac{Av_\pm}{\sigma_\pm}.
+\]
+它们是$\mathbb R^4$中的标准正交向量，且第三、第四分量为零。以$e_3,e_4$补全左正交基，得到
+\[
+U=[u_+,u_-,e_3,e_4],\quad
+\Sigma=\begin{bmatrix}\sigma_+&0\\0&\sigma_-\\0&0\\0&0\end{bmatrix},
+\quad V=[v_+,v_-].
+\]
+因此
+\[
+A=U\Sigma V^T
+=\sigma_+u_+v_+^T+\sigma_-u_-v_-^T.
+\]
+这也逐项给出了两个秩1外积成分。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-OB-03}
+比较一般矩阵的奇异值分解与实对称矩阵的正交对角化。对称矩阵的特征值可能为负时，说明怎样由特征分解构造SVD；再说明正半定情形有什么简化。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-OB-03}
+\begin{chapterexercisesolution}{ex:V4-C03-OB-03}
+一般$A\in\mathbb R^{m\times n}$的SVD为$A=U\Sigma V^T$，左右正交基通常来自不同空间，$\Sigma$的对角元非负。对实对称矩阵
+$A=Q\Lambda Q^T$，写
+$D=\operatorname{diag}(d_i)$，其中$\lambda_i\ne0$时$d_i=\operatorname{sign}(\lambda_i)$，零特征值处取$d_i=1$。则
+\[
+A=Q\Lambda Q^{\mathsf T}
+=Q(D|\Lambda|)Q^{\mathsf T}
+=(QD)|\Lambda|Q^{\mathsf T}
+\]
+是一组SVD：$QD$与$Q$正交，$|\Lambda|$的对角元为$|\lambda_i|$。若$A\succeq0$，则$\Lambda\ge0$，可直接取$U=V=Q$、$\Sigma=\Lambda$。因此对称对角化保留特征值符号，而SVD把符号吸收到奇异向量中。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-OB-04}
+证明任意非零秩1矩阵都可写成两个非零向量的外积，并给出一个$2\times2$的具体例子。说明这种外积表示为什么不是唯一的。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-OB-04}
+\begin{chapterexercisesolution}{ex:V4-C03-OB-04}
+设非零矩阵$A=[a_1,\ldots,a_n]$的秩为1，选取一个非零列$u$。因为列空间是一维的，存在$c_j\in\mathbb R$使
+\[
+a_j=c_ju\quad(j=1,\ldots,n),
+\qquad
+v=(c_1,\ldots,c_n)^{\mathsf T},
+\]
+从而
+\[
+A=[c_1u,\ldots,c_nu]=uv^{\mathsf T},
+\qquad
+u\ne0,\ v\ne0.
+\]
+例如
+\[
+\begin{bmatrix}2&-1\\4&-2\end{bmatrix}
+=\begin{bmatrix}1\\2\end{bmatrix}
+\begin{bmatrix}2&-1\end{bmatrix}.
+\]
+对任意$c\ne0$，有
+\[
+(cu)(v/c)^{\mathsf T}=uv^{\mathsf T}=A,
+\]
+所以未施加单位范数与符号约定时外积因子不唯一。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-OB-05}
+查询$q_1,\ldots,q_4$与网页$u_1,\ldots,u_5$之间的点击权重为
+\[
+C=\begin{bmatrix}
+0&20&5&0&0\\
+10&0&0&3&0\\
+0&0&0&0&1\\
+0&0&1&0&0
+\end{bmatrix}.
+\]
+求$C$的紧SVD，并解释左奇异向量、奇异值和右奇异向量在查询--网页二部图中的含义。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-OB-05}
+\begin{chapterexercisesolution}{ex:V4-C03-OB-05}
+数值计算给出一组紧SVD $C=U_r\Sigma_rV_r^T$：
+\[
+\Sigma_r\approx\operatorname{diag}(20.616958,\ 10.440307,\ 1,\ 0.970075),
+\]
+\[
+U_r\approx
+\begin{bmatrix}
+0.999930&0&0&-0.011790\\
+0&1&0&0\\
+0&0&1&0\\
+0.011790&0&0&0.999930
+\end{bmatrix},
+\]
+\[
+V_r^T\approx
+\begin{bmatrix}
+0&0.970008&0.243074&0&0\\
+0.957826&0&0&0.287348&0\\
+0&0&0&0&1\\
+0&-0.243074&0.970008&0&0
+\end{bmatrix}.
+\]
+将三因子相乘可恢复给定点击矩阵，数值舍入造成的误差在显示精度范围内。$U_r$的列描述查询侧的潜在模式，$V_r$的列描述网页侧的潜在模式，奇异值衡量对应模式的强度：首个模式主要连接$q_1$与$u_2,u_3$，第二个模式主要连接$q_2$与$u_1,u_4$，第三个模式对应$q_3$与$u_5$，第四个较弱模式区分$q_4$与$q_1$在$u_3$上的点击。奇异向量整体符号以及重根子空间内的基选择不影响这些关系。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S01-01}
+若$A\in\mathbb R^{5\times3}$，写出完整SVD中$U,\Sigma,V$的维数和奇异值的最大个数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S01-01}
+\begin{chapterexercisesolution}{ex:V4-C03-S01-01}
+对$A\in\mathbb R^{5\times3}$，完整SVD的维数链为
+\[
+A_{5\times3}
+=U_{5\times5}\Sigma_{5\times3}V_{3\times3}^{\mathsf T},
+\]
+\[
+p=\min\{5,3\}=3,
+\qquad
+\#\{j:\sigma_j>0\}=\operatorname{rank}(A)\le3.
+\]
+因此共有3个按重数计的奇异值槽位，正奇异值个数可能少于3。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S01-02}
+求$A=\operatorname{diag}(3,-2)$的一组SVD，并说明负号如何处理。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S01-02}
+\begin{chapterexercisesolution}{ex:V4-C03-S01-02}
+可取
+\[
+U=\begin{bmatrix}1&0\\0&-1\end{bmatrix},\quad
+\Sigma=\begin{bmatrix}3&0\\0&2\end{bmatrix},\quad
+V=I_2.
+\]
+于是$U\Sigma V^T=\operatorname{diag}(3,-2)$。奇异值按定义非负，原矩阵的负号吸收到左或右奇异向量中。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S02-01}
+已知$A^TA$的特征值为$25,9,0$，求$A$的奇异值和秩。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S02-01}
+\begin{chapterexercisesolution}{ex:V4-C03-S02-01}
+若$A^{\mathsf T}A$的特征值为$25,9,0$，则
+\[
+(\sigma_1,\sigma_2,\sigma_3)
+=(\sqrt{25},\sqrt9,\sqrt0)=(5,3,0),
+\]
+\[
+\operatorname{rank}(A)
+=\#\{j:\sigma_j>0\}=2.
+\]
+完整$U,V$可以再含零空间方向，但零奇异值不增加秩。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S02-03}
+证明$N(A^TA)=N(A)$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S02-03}
+\begin{chapterexercisesolution}{ex:V4-C03-S02-03}
+正向蕴含为
+\[
+x\in N(A)
+\Longrightarrow Ax=0
+\Longrightarrow A^{\mathsf T}Ax=0
+\Longrightarrow x\in N(A^{\mathsf T}A).
+\]
+反向若$x\in N(A^{\mathsf T}A)$，则
+\[
+0=x^{\mathsf T}A^{\mathsf T}Ax
+=\norm{Ax}_2^2
+\Longrightarrow Ax=0
+\Longrightarrow x\in N(A).
+\]
+故$N(A)=N(A^{\mathsf T}A)$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S03-02}
+若奇异值为$10,4,1,0$，秩是多少？取$k=2$时$A_k$的秩是多少，是否等于$A$？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S03-02}
+\begin{chapterexercisesolution}{ex:V4-C03-S03-02}
+由三个正奇异值可得
+\[
+r=\#\{j:\sigma_j>0\}=3,
+\qquad
+A=\sum_{j=1}^{3}\sigma_ju_jv_j^{\mathsf T}.
+\]
+取$k=2$时
+\[
+A_2=\sum_{j=1}^{2}\sigma_ju_jv_j^{\mathsf T},
+\qquad
+\operatorname{rank}(A_2)=2,
+\]
+且$\sigma_3=1>0$推出$A-A_2=\sigma_3u_3v_3^{\mathsf T}\ne0$。只有保留全部三个正奇异值才得到精确紧SVD。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S03-03}
+比较存储一个$1000\times500$稠密矩阵与其$k=20$截断SVD所需标量数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S03-03}
+\begin{chapterexercisesolution}{ex:V4-C03-S03-03}
+原矩阵存储量为
+\[
+M_{\mathrm{full}}=1000\times500=500000.
+\]
+秩20截断分解只存$U_{20}$、20个奇异值和$V_{20}$：
+\[
+M_{20}=1000\times20+20+500\times20=30020,
+\]
+\[
+\frac{M_{20}}{M_{\mathrm{full}}}
+=\frac{30020}{500000}=0.06004=6.004\%.
+\]
+这只是标量数比较，实际还要计入存储格式和计算成本。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S04-01}
+若$\kappa_2(A)=10^6$，显式形成$A^TA$后在非零子空间上的条件数是多少量级？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S04-01}
+\begin{chapterexercisesolution}{ex:V4-C03-S04-01}
+设$A$满列秩且$\kappa_2(A)=10^6$。因为$A^{\mathsf T}A$的极值特征值为$\sigma_{\max}^2,\sigma_{\min}^2$，所以
+\[
+\kappa_2(A^{\mathsf T}A)
+=\frac{\lambda_{\max}(A^{\mathsf T}A)}{\lambda_{\min}(A^{\mathsf T}A)}
+=\frac{\sigma_{\max}^2}{\sigma_{\min}^2}
+=\kappa_2(A)^2=10^{12}.
+\]
+条件数平方会放大小奇异方向的相对误差，因此数值实现通常避免显式形成法方程。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S04-02}
+在算法中$A$为$800\times300$，$k=10,s=5$。写出$Q,Z,B$的维数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S04-02}
+\begin{chapterexercisesolution}{ex:V4-C03-S04-02}
+令目标秩$k=10$、过采样$s=5$，则
+\[
+\ell=k+s=15,
+\qquad
+A\in\mathbb R^{800\times300},
+\qquad
+\Omega\in\mathbb R^{300\times15}.
+\]
+随机子空间各步维数为
+\[
+Y=A\Omega\in\mathbb R^{800\times15},
+\quad
+Q\in\mathbb R^{800\times15},
+\quad
+B=Q^{\mathsf T}A\in\mathbb R^{15\times300}.
+\]
+若$B=\widetilde U\Sigma V^{\mathsf T}$，则$\widetilde U\in\mathbb R^{15\times15}$，而$Q\widetilde U$恢复为800维左奇异向量。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S05-01}
+矩阵奇异值为$6,3,2,1$。求$\|A\|_F$和最佳秩2近似的Frobenius误差。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S05-01}
+\begin{chapterexercisesolution}{ex:V4-C03-S05-01}
+\[
+\|A\|_F=\sqrt{6^2+3^2+2^2+1^2}=\sqrt{50}=5\sqrt2.
+\]
+最佳秩2近似舍弃$2,1$，故
+\[
+\norm{A-A_2}_F
+=\sqrt{2^2+1^2}=\sqrt5,
+\qquad
+\frac{\norm{A-A_2}_F^2}{\norm A_F^2}
+=\frac5{50}=10\%.
+\]
+所以该题的平方Frobenius损失是$10\%$，而相对Frobenius范数误差为
+$\sqrt{5/50}=\sqrt{0.1}\approx31.62\%$；二者不能共用“误差$10\%$”这一含混说法。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S05-03}
+若$\sigma_2=\sigma_3=4$且取$k=2$，解释为什么最佳误差唯一而最佳子空间可能不唯一。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S05-03}
+\begin{chapterexercisesolution}{ex:V4-C03-S05-03}
+最佳秩2误差由Eckart--Young公式给出：
+\[
+\min_{\operatorname{rank}(B)\le2}\norm{A-B}_F^2
+=\sum_{j>2}\sigma_j^2.
+\]
+题设$\sigma_2=\sigma_3=4$使截断边界穿过重根子空间。若$\sigma_1>4$，第一奇异方向必须保留，并在$\sigma=4$子空间中任选一维；若$\sigma_1=4$，则至少前三个方向同属同一重根子空间，可任选二维子空间。不同选择都满足
+\[
+\norm{A-B}_F^2=\sum_{j>2}\sigma_j^2,
+\]
+所以最优误差唯一，而主子空间及近似矩阵一般不唯一。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S06-01}
+若$A$的奇异值为$5,2,0$，描述单位球经$A$后的几何形状和像空间维数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S06-01}
+\begin{chapterexercisesolution}{ex:V4-C03-S06-01}
+若奇异值为$5,2,0$，则对单位右奇异向量$v_j$有
+\[
+Av_1=5u_1,
+\qquad
+Av_2=2u_2,
+\qquad
+Av_3=0.
+\]
+因此单位球像是半轴长$5,2,0$的退化椭球，并且
+\[
+\dim R(A)=\#\{j:\sigma_j>0\}=2
+=\operatorname{rank}(A).
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S06-03}
+$A\in\mathbb R^{4\times6}$且$r=3$。写出四个基本子空间的维数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S06-03}
+\begin{chapterexercisesolution}{ex:V4-C03-S06-03}
+对$A\in\mathbb R^{4\times6}$且$\operatorname{rank}(A)=3$，秩--零化度给出
+\[
+\dim R(A)=3,
+\qquad
+\dim N(A^{\mathsf T})=4-3=1,
+\]
+\[
+\dim R(A^{\mathsf T})=3,
+\qquad
+\dim N(A)=6-3=3.
+\]
+于是两组正交分解的维数分别满足$3+1=4$与$3+3=6$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C03-S07-01}
+对例题矩阵取$k=1$，计算保留能量比例
+$\sum_{j\leq k}\sigma_j^2/\sum_j\sigma_j^2$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C03-S07-01}
+\begin{chapterexercisesolution}{ex:V4-C03-S07-01}
+例题矩阵的奇异值为$3,1$。取$k=1$时
+\[
+E_1
+=\frac{\sum_{j\le1}\sigma_j^2}{\sum_j\sigma_j^2}
+=\frac{3^2}{3^2+1^2}
+=\frac9{10}=90\%.
+\]
+不能改用
+\[
+\frac{\sigma_1}{\sigma_1+\sigma_2}
+=\frac34=75\%,
+\]
+因为Frobenius能量对应奇异值平方和。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+\begin{SLCompactClosure}
+\begin{spacing}{1.92}
+
+\phantomsection\label{struct:V4-C03-CH36}
+\SLChapterFiveSummary{左右奇异子空间、奇异值、紧分解与截断矩阵}{由$A^TA$谱分解构造SVD，再用投影能量和正交分解证明最佳低秩误差及取等条件}{稳定算法避免机械形成$A^TA$，同时检查重构、正交性、左右残差和子空间变化}{矩阵压缩、去噪、潜在表示或PCA前的低秩线性代数时}{进入PCA；谱隙只保证相应子空间/Frobenius解的条件性唯一，不保证谱范数解唯一}
+
+\phantomsection\label{struct:V4-C03-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em,itemsep=1.7em]
+  \item \textbf{定义：}能否对长矩阵和宽矩阵分别写出完整、紧、截断SVD维数？未通过则回看第1、3节。
+  \item \textbf{证明：}能否从$A^TA$谱分解三步构造SVD并处理零空间？未通过则回看第1节。
+  \item \textbf{性质：}能否推导谱关系、奇异向量方程与四个基本子空间？未通过则回看第2、6节。
+  \item \textbf{算法：}能否说明初始化、双边更新、残差、停止、谱隙与复杂度？未通过则回看第4节。
+  \item \textbf{最优性：}能否证明并应用两种范数下的截断误差公式？未通过则回看第5节；五项均可独立作答，并能完成每节至少两道练习，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+\end{spacing}
+\end{SLCompactClosure}

@@ -1,0 +1,30 @@
+{
+  "status": "FROZEN_PRE_MANUAL",
+  "uid": "FIG-P033-01",
+  "candidate": "R111",
+  "physical_page": 29,
+  "N": 99,
+  "decomposition": {
+    "char": 85,
+    "line": 5,
+    "rect": 2,
+    "curve": 7
+  },
+  "C_N_2": 4851,
+  "object_table_sha256": "958FAA823187F184598E8FC62B0D621EF30C70C5C5856B4FAF80D30AC63F2419",
+  "all_pairs_table_sha256": "A15A2122D129EABBF0F922A5ECAC4CAA096D2535782C2A6CBBBC33DE9B094369",
+  "disposition_counts": {
+    "BACKGROUND_SUPPORT_INCLUDED_NOT_FOREGROUND_COLLISION": 279,
+    "BBOX_INTERSECTION_REQUIRES_MANUAL_PIXEL_REVIEW": 45,
+    "INTENDED_COMPOUND_PATH": 4,
+    "INTENDED_CONTAINER_RELATION": 26,
+    "INTENDED_GEOMETRY_CONTACT": 4,
+    "INTENDED_TEXT_RUN_CONSTITUENTS": 1061,
+    "NEAR_BBOX_ADVISORY": 6,
+    "SEPARATED_BBOX": 3426
+  },
+  "manual_review_queue_count": 81,
+  "background_policy": "All 3 nonempty support-background atoms remain in N. Their fill pixels are explicitly excluded from illegal-foreground collision counts; the equation note box remains a mixed container whose visible border clearance is manually reviewed.",
+  "machine_hard_gate_direction": "PASS_CANDIDATE_PENDING_ACTUAL_OPEN_OF_FINAL_SHEETS_AND_ROIS",
+  "r168": "Tiny font/raster/outline differences are advisory only. Hard failure is restricted to missing/tofu/wrong codepoint or math meaning, actually unreadable/obviously unbalanced, real clipping, illegal overlap, or geometry/semantic error."
+}

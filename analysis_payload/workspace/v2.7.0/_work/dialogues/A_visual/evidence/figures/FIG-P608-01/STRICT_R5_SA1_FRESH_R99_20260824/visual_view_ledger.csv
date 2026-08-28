@@ -1,0 +1,8 @@
+VIEW,PURPOSE,REVIEWER,REVIEWED_AT,OPENED,PASS,NOTE
+full_page_200dpi.png,page integration,SA1_FRESH_R99,2026-08-24T23:56:46+08:00,True,PASS,"full A4 page: figure fits reading flow, no displacement or page collision"
+figure_crop_300dpi.png,native colour figure,SA1_FRESH_R99,2026-08-24T23:56:46+08:00,True,PASS,"colour hierarchy, plot/data prominence, labels, paths, and crop opened at native grid"
+standalone_300dpi.png,direct clipped native standalone render,SA1_FRESH_R99,2026-08-24T23:56:46+08:00,True,PASS,direct R99 clip has the same intended figure content and no crop loss
+grayscale_300dpi.png,grayscale hierarchy,SA1_FRESH_R99,2026-08-24T23:56:46+08:00,True,PASS,"data path, reference line, boundaries, and text remain distinguishable without colour"
+colorblind_protanopia_300dpi.png,protanopia hierarchy,SA1_FRESH_R99,2026-08-24T23:56:46+08:00,True,PASS,"blue data, teal target, gold boundary, and text remain distinguishable under the fixed simulation"
+colorblind_deuteranopia_300dpi.png,deuteranopia hierarchy,SA1_FRESH_R99,2026-08-24T23:56:46+08:00,True,PASS,"blue data, teal target, gold boundary, and text remain distinguishable under the fixed simulation"
+colorblind_tritanopia_300dpi.png,tritanopia hierarchy,SA1_FRESH_R99,2026-08-24T23:56:46+08:00,True,PASS,"blue data, teal target, gold boundary, and text remain distinguishable under the fixed simulation"

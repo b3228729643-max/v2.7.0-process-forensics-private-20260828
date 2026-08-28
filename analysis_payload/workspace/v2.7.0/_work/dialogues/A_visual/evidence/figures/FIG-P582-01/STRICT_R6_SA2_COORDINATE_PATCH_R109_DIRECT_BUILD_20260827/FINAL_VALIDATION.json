@@ -1,0 +1,78 @@
+{
+  "uid": "FIG-P582-01",
+  "handoff_id": "A-R109-P582-SA2-DIRECT-BUILD-R6-20260827",
+  "round": "STRICT_R6_SA2_COORDINATE_PATCH_R109_DIRECT_BUILD_20260827",
+  "status": "LOCAL_SA2_PASS_AWAIT_ATOMIC_COMMIT_AUTHORIZATION",
+  "hard_gate_pass": true,
+  "pdf_sha256": "2F96CF1B220E0A0A56D264F428D5BCE93005557040D94EB1CBB516D832E2927A",
+  "source_sha256": "989E12DFD1B7A7F58A7953F36A8E8F24427A56154EED33325262045C17583A57",
+  "denominator": {
+    "N": 95,
+    "glyphs": 78,
+    "graphics": 17,
+    "C": 4465,
+    "critical": 32
+  },
+  "target": {
+    "legacy_route_pair": "P05555",
+    "r6_pair_id": "PAIR-03495",
+    "objects": [
+      "GLYPH-042",
+      "GLYPH-062"
+    ],
+    "shared_pixels_native_300dpi": 0,
+    "white_clearance_px": 27.0
+  },
+  "upper_plot_regression_min_clearance_px": 90.411159,
+  "manual_counts": {
+    "glyph": 78,
+    "graphic": 17,
+    "relation": 36,
+    "view": 9,
+    "semantic": 8
+  },
+  "timestamp_checks": {
+    "manual/glyph_manual_ledger.csv": true,
+    "manual/graphic_manual_ledger.csv": true,
+    "manual/relation_manual_ledger.csv": true,
+    "manual/view_manual_ledger.csv": true,
+    "manual/semantic_manual_ledger.csv": true
+  },
+  "timestamp_errors": {
+    "manual/glyph_manual_ledger.csv": [],
+    "manual/graphic_manual_ledger.csv": [],
+    "manual/relation_manual_ledger.csv": [],
+    "manual/view_manual_ledger.csv": [],
+    "manual/semantic_manual_ledger.csv": []
+  },
+  "checks": {
+    "pdf_identity": true,
+    "source_identity": true,
+    "denominator_N95": true,
+    "glyph_denominator_78": true,
+    "graphic_denominator_17": true,
+    "pair_denominator_C4465": true,
+    "all_unordered_pairs_exact": true,
+    "pair_ids_unique": true,
+    "no_empty_masks": true,
+    "no_page_edge_clip_candidates": true,
+    "critical_denominator_32": true,
+    "critical_manual_complete": true,
+    "glyph_manual_complete": true,
+    "glyph_manual_all_pass": true,
+    "graphic_manual_complete": true,
+    "graphic_manual_all_pass": true,
+    "relation_manual_all_pass": true,
+    "view_manual_all_pass": true,
+    "semantic_manual_all_pass": true,
+    "manual_times_not_future": true,
+    "target_pair_fixed": true,
+    "target_legacy_route_recorded": true,
+    "upper_plot_regression_clear": true,
+    "source_semantic_machine_checks": true,
+    "source_font_min_9_5": true,
+    "forbidden_scale_tokens_zero": true,
+    "machine_did_not_generate_manual_fields": true
+  },
+  "manual_fields_generated_or_overwritten_by_validator": false
+}

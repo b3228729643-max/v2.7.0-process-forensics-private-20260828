@@ -1,0 +1,28 @@
+% Read-only excerpt from the current adjacent chapter source V5-C03.tex.
+% Source lines 200--232; only the portion needed to adjudicate FIG-P600-01 is retained.
+\paragraph{读前自检：细致平衡。}设$\pi$为概率密度，马尔可夫核$K$有密度$k$，且$\pi(x)k(x,y)=\pi(y)k(y,x)$对$\mu\otimes\mu$几乎处处成立。请对$x$积分，核对总流入为$\pi(y)$，故$\pi K=\pi$。\par
+
+\begin{definition}[细致平衡]
+若对任意可测集合$A,B\in\mathcal B$都有
+\begin{equation}\label{eq:V5-C03-general-detailed-balance}
+\int_A\pi(\mathrm dx)K(x,B)
+=\int_B\pi(\mathrm dy)K(y,A),
+\end{equation}
+则称$K$关于$\pi$满足细致平衡，或称平稳链关于$\pi$可逆。若$K$有密度$k(x,y)$，条件化为
+\begin{equation}\label{eq:V5-C03-density-detailed-balance}
+\pi(x)k(x,y)=\pi(y)k(y,x)
+\quad\text{对}\ \mu\otimes\mu\ \text{几乎处处成立}.
+\end{equation}
+\end{definition}
+
+从局部流到平稳分布的推导分三步。第一步，式\eqref{eq:V5-C03-density-detailed-balance}把$x\to y$的平稳概率流与$y\to x$的反向流配对。第二步，对$x$积分，
+\[
+\int\pi(x)k(x,y)\,\mu(\mathrm dx)
+=\int\pi(y)k(y,x)\,\mu(\mathrm dx).
+\]
+第三步使用$\int k(y,x)\mu(\mathrm dx)=1$，右端成为$\pi(y)$，于是总流入等于目标质量。图\ref{fig:V5-C03-mh-balance-flux}把成对流与拒绝自环分开绘制。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mh_balance_flux.tex}
+
+\begin{proposition}[细致平衡推出平稳]\label{prop:V5-C03-db-stationary}
+若概率测度$\pi$与马尔可夫核$K$满足式\eqref{eq:V5-C03-general-detailed-balance}，则$\pi K=\pi$。
+\end{proposition}

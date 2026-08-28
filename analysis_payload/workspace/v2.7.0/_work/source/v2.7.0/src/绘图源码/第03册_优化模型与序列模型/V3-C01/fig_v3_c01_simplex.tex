@@ -1,0 +1,161 @@
+% v2.6.0 figure UID: FIG-P282-01
+% Image-reference reverse redraw: preserve the simplex data and strengthen the feasible-point reading path.
+\tikzset{
+  slfig-FIG-P282-01/.style={
+    every path/.append style={line cap=round,line join=round},
+    font=\fontsize{9.2}{11}\selectfont,
+  },
+  slfig-FIG-P282-01-focus-label/.style={
+    slfig direct label,font=\fontsize{9.4}{11.2}\selectfont,
+    text=SLGold!82!black,fill=none,inner sep=0pt,
+  },
+  slfig-FIG-P282-01-contour-label/.style={
+    font=\fontsize{9}{10.6}\selectfont,text=SLInk!70,
+    fill=none,inner sep=0pt,
+  },
+  slfig-FIG-P282-01-constraint-label/.style={
+    font=\fontsize{9.2}{11}\selectfont,fill=none,inner sep=0pt,
+  },
+  slfig-FIG-P282-01-vertex/.style={font=\fontsize{9.6}{11.4}\selectfont,text=SLInk!92},
+}
+\pgfplotsset{
+  slfig-FIG-P282-01-axis/.style={clip=false},
+  slfig-FIG-P282-01-simplex/.style={draw=SLBlue!92,line width=1.00pt,fill=SLBlue,fill opacity=.035},
+  slfig-FIG-P282-01-contour/.style={contour/draw color=SLInk!64,line width=.56pt,smooth},
+  slfig-FIG-P282-01-full-one/.style={draw=SLBlue!52,line width=.52pt,densely dashed},
+  slfig-FIG-P282-01-full-two/.style={draw=SLTeal!58,line width=.52pt,dash dot},
+  slfig-FIG-P282-01-feasible-one/.style={draw=SLBlue,line width=1.00pt},
+  slfig-FIG-P282-01-feasible-two/.style={draw=SLTeal,line width=1.00pt,dash pattern=on 6pt off 2pt},
+}
+% Entropy contours below are numerical solutions of H(p)=-sum_i p_i ln p_i.
+% Explicit barycentric transform: x=p_2+p_3/2, y=(sqrt(3)/2)p_3.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P282-01]
+\begin{axis}[slfig axis,slfig-FIG-P282-01-axis,
+  width=.78\linewidth,height=.69\linewidth,
+  xmin=-.12,xmax=1.38,ymin=-.12,ymax=.99,
+  axis equal image,hide axis,clip=false,
+]
+  \addplot[slfig-FIG-P282-01-simplex]
+    coordinates {(0,0) (.5,.8660254) (1,0)}\closedcycle;
+
+  \addplot[
+    contour prepared={labels=false},slfig-FIG-P282-01-contour,
+  ] table[
+    x expr=\thisrow{p2}+.5*\thisrow{p3},
+    y expr=.8660254*\thisrow{p3},
+    z=H,
+  ] {
+    p1 p2 p3 H
+    % Numerically solved -sum p_i ln p_i = 0.80
+    0.6221467 0.0445199 0.3333333 0.80
+    0.6833946 0.0770707 0.2395347 0.80
+    0.7119860 0.1440070 0.1440070 0.80
+    0.6833946 0.2395347 0.0770707 0.80
+    0.6221467 0.3333333 0.0445199 0.80
+    0.5545696 0.4143114 0.0311190 0.80
+    0.4862547 0.4862547 0.0274905 0.80
+    0.4143114 0.5545696 0.0311190 0.80
+    0.3333333 0.6221467 0.0445199 0.80
+    0.2395347 0.6833946 0.0770707 0.80
+    0.1440070 0.7119860 0.1440070 0.80
+    0.0770707 0.6833946 0.2395347 0.80
+    0.0445199 0.6221467 0.3333333 0.80
+    0.0311190 0.5545696 0.4143114 0.80
+    0.0274905 0.4862547 0.4862547 0.80
+    0.0311190 0.4143114 0.5545696 0.80
+    0.0445199 0.3333333 0.6221467 0.80
+    0.0770707 0.2395347 0.6833946 0.80
+    0.1440070 0.1440070 0.7119860 0.80
+    0.2395347 0.0770707 0.6833946 0.80
+    0.3333333 0.0445199 0.6221467 0.80
+    0.4143114 0.0311190 0.5545696 0.80
+    0.4862547 0.0274905 0.4862547 0.80
+    0.5545696 0.0311190 0.4143114 0.80
+    0.6221467 0.0445199 0.3333333 0.80
+
+    % Numerically solved -sum p_i ln p_i = 0.95
+    0.5471779 0.1194888 0.3333333 0.95
+    0.5846883 0.1493287 0.2659830 0.95
+    0.6002461 0.1998769 0.1998769 0.95
+    0.5846883 0.2659830 0.1493287 0.95
+    0.5471779 0.3333333 0.1194888 0.95
+    0.5004902 0.3945170 0.1049929 0.95
+    0.4496385 0.4496385 0.1007230 0.95
+    0.3945170 0.5004902 0.1049929 0.95
+    0.3333333 0.5471779 0.1194888 0.95
+    0.2659830 0.5846883 0.1493287 0.95
+    0.1998769 0.6002461 0.1998769 0.95
+    0.1493287 0.5846883 0.2659830 0.95
+    0.1194888 0.5471779 0.3333333 0.95
+    0.1049929 0.5004902 0.3945170 0.95
+    0.1007230 0.4496385 0.4496385 0.95
+    0.1049929 0.3945170 0.5004902 0.95
+    0.1194888 0.3333333 0.5471779 0.95
+    0.1493287 0.2659830 0.5846883 0.95
+    0.1998769 0.1998769 0.6002461 0.95
+    0.2659830 0.1493287 0.5846883 0.95
+    0.3333333 0.1194888 0.5471779 0.95
+    0.3945170 0.1049929 0.5004902 0.95
+    0.4496385 0.1007230 0.4496385 0.95
+    0.5004902 0.1049929 0.3945170 0.95
+    0.5471779 0.1194888 0.3333333 0.95
+
+    % Numerically solved -sum p_i ln p_i = 1.05
+    0.4590562 0.2076105 0.3333333 1.05
+    0.4775120 0.2277872 0.2947008 1.05
+    0.4844746 0.2577627 0.2577627 1.05
+    0.4775120 0.2947008 0.2277872 1.05
+    0.4590562 0.3333333 0.2076105 1.05
+    0.4334471 0.3699775 0.1965754 1.05
+    0.4034414 0.4034414 0.1931172 1.05
+    0.3699775 0.4334471 0.1965754 1.05
+    0.3333333 0.4590562 0.2076105 1.05
+    0.2947008 0.4775120 0.2277872 1.05
+    0.2577627 0.4844746 0.2577627 1.05
+    0.2277872 0.4775120 0.2947008 1.05
+    0.2076105 0.4590562 0.3333333 1.05
+    0.1965754 0.4334471 0.3699775 1.05
+    0.1931172 0.4034414 0.4034414 1.05
+    0.1965754 0.3699775 0.4334471 1.05
+    0.2076105 0.3333333 0.4590562 1.05
+    0.2277872 0.2947008 0.4775120 1.05
+    0.2577627 0.2577627 0.4844746 1.05
+    0.2947008 0.2277872 0.4775120 1.05
+    0.3333333 0.2076105 0.4590562 1.05
+    0.3699775 0.1965754 0.4334471 1.05
+    0.4034414 0.1931172 0.4034414 1.05
+    0.4334471 0.1965754 0.3699775 1.05
+    0.4590562 0.2076105 0.3333333 1.05
+  };
+
+  % Full constraint lines (light) and their simplex-feasible segments (dark).
+  \addplot[slfig-FIG-P282-01-full-one]
+    coordinates {(.638,-.1005) (.232,.6028)};
+  \addplot[slfig-FIG-P282-01-full-two]
+    coordinates {(.3077,-.0774) (.5757,.8510)};
+  \addplot[slfig-FIG-P282-01-feasible-one]
+    coordinates {(.58,0) (.29,.5023)};
+  \addplot[slfig-FIG-P282-01-feasible-two]
+    coordinates {(.33,0) (.5533,.7736)};
+
+  \addplot[only marks,mark=*,mark size=3.1pt,draw=SLGold!82!black,fill=SLGold]
+    coordinates {(.4133333,.2886751)};
+  \draw[draw=SLGold!82!black,line width=.55pt]
+    (axis cs:.4133333,.2886751)--(axis cs:.4133333,.08)--(axis cs:1.00,.08)--(axis cs:1.00,.18);
+  \node[slfig-FIG-P282-01-focus-label,anchor=west,align=left]
+    at (axis cs:1.04,.20) {唯一可行\\最大熵点};
+  \node[slfig-FIG-P282-01-contour-label,anchor=west,align=left]
+    at (axis cs:1.04,.62) {等高线\\外层：$H=0.80$\\中层：$H=0.95$\\内层：$H=1.05$};
+  \node[slfig-FIG-P282-01-constraint-label,text=SLBlue,anchor=east]
+    at (axis cs:.23,.64) {约束 1};
+  \node[slfig-FIG-P282-01-constraint-label,text=SLTeal!82!black,anchor=west]
+    at (axis cs:.67,.82) {约束 2};
+  \node[slfig-FIG-P282-01-vertex,anchor=north east] at (axis cs:-.01,-.02) {$p_1=1$};
+  \node[slfig-FIG-P282-01-vertex,anchor=north west] at (axis cs:1.01,-.02) {$p_2=1$};
+  \node[slfig-FIG-P282-01-vertex,anchor=south] at (axis cs:.5,.88) {$p_3=1$};
+\end{axis}
+\end{tikzpicture}
+\caption{概率单纯形上的熵等高线与线性约束；本例约束交点是唯一可行的最大熵点}\label{fig:V3-C01-simplex}
+\end{figure}

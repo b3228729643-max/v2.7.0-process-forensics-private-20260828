@@ -1,0 +1,1805 @@
+% STAGE13-CHAPTER: V5-C06
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V5-C06-CH01}; CH-02=\label{struct:V5-C06-CH02}; CH-03=\label{struct:V5-C06-CH03}; CH-04=\label{struct:V5-C06-CH04}; CH-05=\label{struct:V5-C06-CH05}; CH-06=\label{struct:V5-C06-CH06}; CH-07=\label{struct:V5-C06-CH07}; CH-08=\label{struct:V5-C06-CH08}; CH-09=\label{struct:V5-C06-CH09}; CH-10=\label{struct:V5-C06-CH10}; CH-11=\label{struct:V5-C06-CH11}; CH-12=\label{struct:V5-C06-CH12}; CH-13=\label{struct:V5-C06-CH13}; CH-14=\label{struct:V5-C06-CH14}; CH-15=\label{struct:V5-C06-CH15}; CH-16=\label{struct:V5-C06-CH16}; CH-17=\label{struct:V5-C06-CH17}; CH-18=\label{struct:V5-C06-CH18}; CH-19=\label{struct:V5-C06-CH19}; CH-20=\label{struct:V5-C06-CH20}; CH-21=\label{struct:V5-C06-CH21}; CH-22=\label{struct:V5-C06-CH22}; CH-23=\label{struct:V5-C06-CH23}; CH-24=\label{struct:V5-C06-CH24}; CH-25=\label{struct:V5-C06-CH25}; CH-26=\label{struct:V5-C06-CH26}; CH-27=\label{struct:V5-C06-CH27}; CH-28=\label{struct:V5-C06-CH28}; CH-29=\label{struct:V5-C06-CH29}; CH-30=\label{struct:V5-C06-CH30}; CH-31=\label{struct:V5-C06-CH31}; CH-32=\label{struct:V5-C06-CH32}; CH-33=\label{struct:V5-C06-CH33}; CH-34=\label{struct:V5-C06-CH34}; CH-35=\label{struct:V5-C06-CH35}; CH-36=\label{struct:V5-C06-CH36}; CH-37=\label{struct:V5-C06-CH37}
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1.1-EXERCISE-LAYOUT: grouped; kept=16; source_group=4; supplement=12
+% DERIVATION-CHECK: step-1; step-2; step-3
+% FORMAL-RESULT-CHECK: results=7; proofs=7
+% ALGORITHM-CHECK: algorithms=5; deterministic-contracts=5
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C06-dependency-graph -> SLM-20-00-001,PRE-TM-003,SLM-20-02-002,SLM-20-02-003
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C06-generative-process -> PRE-TM-003,SLM-20-02-004,SLM-20-01-005
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C06-plate-graph -> SLM-20-02-005
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C06-collapsed-gibbs-counts -> SLM-20-03-001,SLM-20-03-002,SLM-20-03-003,SLM-20-03-004,SLM-20-03-005,SLM-20-02-008
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C06-elbo-geometry -> SLM-20-04-001,SLM-20-04-002,SLM-20-04-003,SLM-20-03-006
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C06-mean-field-graph -> SLM-20-04-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C06-variational-updates -> SLM-20-04-004,SLM-20-04-005,SLM-20-04-006,SLM-20-05-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C06-method-comparison -> SLM-20-03-001,SLM-20-04-001,SLM-20-04-006,SLM-20-05-001
+% REPRODUCTION-NODE: V5-C06-S02 -> PRE-TM-003
+% SOURCE-BOUNDARY-DIFFERENCE: generic Dirichlet--multinomial conjugacy belongs to V5-C05; this chapter cites and specializes it without re-proving the generic result.
+
+\chapter{潜在狄利克雷分配}\label{chap:V5-C06}
+\index{潜在狄利克雷分配}
+\index{LDA|see{潜在狄利克雷分配}}
+\index{主题模型}
+
+% KNOWLEDGE-PLAN: KN-V5-C35-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：潜在狄利克雷分配。}潜在狄利克雷分配章地图把“词袋语料$\to$LDA生成模型$\to$折叠Gibbs/变分推断$\to$留出评价”作为主线；请为其中首条箭头补出必要条件，并检查终点仍落在本章声明的输出域。\par
+
+\SLChapterOpening{词袋语料$\to$LDA生成模型$\to$折叠Gibbs/变分推断$\to$留出评价}
+{怎样从概率图完整推导LDA联合分布，并合法消元或构造变分近似？}
+{读完可推出折叠计数条件、KL--ELBO恒等式和可归一化的坐标更新。}
+{条件独立、Dirichlet共轭、Gibbs抽样、KL散度、Jensen不等式、EM与Newton法。}
+{先掌握\GlobalChapterRef{34}{5}{5}的多元Beta积分和\GlobalChapterRef{33}{5}{4}的坐标Gibbs，再进入生成过程。}
+
+\phantomsection\label{struct:V5-C06-CH01}
+% KNOWLEDGE-PLAN: KN-V5-C35-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}潜在狄利克雷分配学习目标固定核验“把语料、文档、主题和单词写成维数明确的随机变量，并从概率图读出完整联合分布”；请实际完成“把语料、文档、主题和单词写成维数明确的随机变量，并从概率图读出完整联合分布”，并用“中间结果逐项包含首目标“把语料、文档、主题和单词写成维数明确的随机变量，并从概率图读出完整联合分布”声明的对象、条件与结论”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 把语料、文档、主题和单词写成维数明确的随机变量，并从概率图读出完整联合分布；
+  \item 解释文档--主题分布与主题--词分布的两层混合，以及词袋交换性所允许和不允许的结论；
+  \item 由\DirichletMultinomial{}积分逐步推出折叠联合分布、留一计数和Gibbs满条件分布；
+  \item 从KL--ELBO恒等式推出平均场坐标更新、主题--词参数更新和超参数Newton更新；
+  \item 按严格输入输出契约复现文本生成、折叠Gibbs、通用变分EM、局部变分推断和完整变分EM；
+  \item 用留出似然、困惑度、稳定性和资源复杂度评价主题模型，而不把训练目标误当成泛化能力。
+\end{itemize}
+}
+
+\phantomsection\label{struct:V5-C06-CH02}
+% KNOWLEDGE-PLAN: KN-V5-C35-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}LDA最短先修要求能归一化Dirichlet--类别模型并区分KL、Jensen与Gibbs条件更新；请对$K$维正参数$\alpha$写出$E\theta_k=\alpha_k/\alpha_0$，核对各主题权重和为1。\par
+
+\begin{prerequisitebox}
+本章直接使用离散随机变量与条件独立、Bayes公式、KL散度、Jensen不等式、
+\DirichletMultinomial{}共轭、Gibbs抽样、EM算法和Newton法。尤其需要熟悉\GlobalChapterRef{34}{5}{5}的结论：
+Dirichlet先验与类别计数相乘后，后验参数按分量加上计数；这一通用共轭结论在本章只作局部调用，不重复证明。读者还应能区分概率向量、计数向量和独热向量。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V5-C06-CH03}
+% KNOWLEDGE-PLAN: KN-V5-C35-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}潜在狄利克雷分配先修自检固定核验“能否把$p(a,b,c)=p(a)p(b\mid a)p(c\mid b)$画成有向图，并从图中说明$c\perp a\mid b$”；请把$p(a,b,c)=p(a)p(b\mid a)p(c\mid b)$画成有向图，并从图中说明$c\perp a\mid b$并写出中间结果，再按“$p(a,b,c)=p(a)p(b\mid a)p(c\mid b)$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否把$p(a,b,c)=p(a)p(b\mid a)p(c\mid b)$画成有向图，并从图中说明$c\perp a\mid b$？
+  \item 若$\boldsymbol\theta\sim\operatorname{Dir}(\boldsymbol\alpha)$且类别计数为$\boldsymbol n$，能否写出积分
+  $\int\prod_k\theta_k^{n_k}p(\boldsymbol\theta\mid\boldsymbol\alpha)\,\mathrm d\boldsymbol\theta$的Beta函数比值？
+  \item 能否说明Gibbs抽样中“先删当前状态再计算条件概率”的原因？
+  \item 能否由$\log p(x)=\mathcal L(q)+\KL(q\|p)$判断最大化ELBO与最小化KL的关系？
+  \item 能否在单纯形约束下用拉格朗日乘子把一组正权重归一化？
+\end{enumerate}
+第1项不足时回看概率图与条件独立；第2项不足时回看\GlobalChapterRef{34}{5}{5}的\DirichletMultinomial{}共轭；
+第3项不足时回看Gibbs抽样；第4--5项不足时回看变分推断、EM和约束优化。
+\end{precheckbox}
+
+\phantomsection\label{struct:V5-C06-CH04}
+% KNOWLEDGE-PLAN: KN-V5-C35-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}潜在狄利克雷分配把“所引章节的\DirichletMultinomial{}共轭与所引章节的Gibbs坐标更新 $\to$ 本章两条推断路线”接到“有限类别与独热编码$\to$文档、主题和单词变量”；请用$\to$补全这一步的等式或判据，再检查两端维数、支持或对象类型。\par
+
+\begin{dependencybox}
+\GlobalChapterRef{34}{5}{5}的\DirichletMultinomial{}共轭与\GlobalChapterRef{33}{5}{4}的Gibbs坐标更新 $\to$ 本章两条推断路线；
+有限类别与独热编码$\to$文档、主题和单词变量；
+\DirichletMultinomial{}共轭$\to$积分消去$\boldsymbol\theta,\boldsymbol\varphi$
+$\to$折叠Gibbs；
+KL散度与Jensen不等式$\to$ELBO$\to$平均场坐标更新；
+EM与Newton法$\to$全局主题参数和超参数学习；
+留出预测$\to$困惑度与模型比较。图\ref{fig:V5-C06-dependency-graph}只画这些直接依赖，不把诊断性远缘关系冒充前置课程。
+\end{dependencybox}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_dependency_graph.tex}
+
+\begin{keypointbox}[title=数据方向桥：LDA语料仍按列放文档]
+若把词元压缩成计数矩阵，本章采用$X_{\rm wd}\in\mathbb N_0^{V\times M}$：词表项在行，文档在列。与全书默认行样本表示的关系是
+\[
+X_{{\rm doc},{\rm row}}=X_{\rm wd}^{\mathsf T}
+\in\mathbb N_0^{M\times V}.
+\]
+例如$V=1000,M=200$时，两种维数为$1000\times200$与$200\times1000$。LDA内部的$\theta_m$仍对应一篇文档，$\varphi_k$仍对应一个主题；矩阵转置不交换这两个概率对象的角色。
+\end{keypointbox}
+
+\phantomsection\label{struct:V5-C06-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V5-C06
+\index[symbols]{m-v-k--s0a553ec1313c@$M,V,K$：文档数、词表大小、主题数；角色：三个基本规模参数}
+\index[symbols]{n-m-i--sab7ca9215267@$N_m,I$：第$m$篇长度、总词元数；角色：计算复杂度的样本规模}
+\index[symbols]{w-mn--se5a53a82594a@$w_{mn}$：第$m$篇第$n$个词元；角色：观测变量}
+\index[symbols]{z-mn--s32a8da2181af@$z_{mn}$：词元的主题指派；角色：离散隐变量}
+\index[symbols]{minus-boldsymbol-minus-minus-theta-minus-m--sf7d47f7f095a@$\boldsymbol\theta_m$：文档--主题概率向量；角色：文档级隐变量}
+\index[symbols]{minus-boldsymbol-minus-minus-varphi-minus-k--sb2217db38d80@$\boldsymbol\varphi_k$：主题--词概率向量；角色：主题级参数或隐变量}
+\index[symbols]{minus-boldsymbol-minus-minus-alpha-minus--s4f106bbffd01@$\boldsymbol\alpha$：文档主题先验；角色：Dirichlet超参数}
+\index[symbols]{minus-boldsymbol-minus-minus-beta-minus--sb5087e9bdbf6@$\boldsymbol\beta$：主题词先验；角色：Dirichlet超参数}
+\index[symbols]{n-mk-n-kv--s0a8553e38c22@$n_{mk},n_{kv}$：文档--主题、主题--词计数；角色：折叠推断充分统计量}
+\index[symbols]{minus-boldsymbol-minus-minus-gamma-minus-m--sded0b7f677e5@$\boldsymbol\gamma_m$：$q(\boldsymbol\theta_m)$参数；角色：局部变分参数}
+\index[symbols]{minus-boldsymbol-minus-minus-eta-minus-mn--s055f19bb8ebf@$\boldsymbol\eta_{mn}$：$q(z_{mn})$参数；角色：主题责任度}
+\index[symbols]{minus-psi-minus-minus-psi-minus-u0027--s3f066ea944e0@$\psi,\psi'$：digamma、trigamma；角色：Dirichlet对数矩与Newton步}
+% STAGE19-SYMBOL-INDEX-END: V5-C06
+% KNOWLEDGE-PLAN: KN-V5-C35-PREREQUISITE-006 L1
+\paragraph{读前自检：本章符号表。}潜在狄利克雷分配符号表规定$M,V,K$、$N_m,I$的类型或范围；请把$M,V,K$代入紧随其后的定义关系，逐项核对输入形状、输出形状与取值域。\par
+
+\begin{symboltablebox}
+\small
+\begin{longtable}{@{}p{0.17\textwidth}p{0.25\textwidth}p{0.22\textwidth}p{0.27\textwidth}@{}}
+\toprule
+符号 & 对象与读法 & 维数/范围 & 角色 \\
+\midrule
+$M,V,K$ & 文档数、词表大小、主题数 & 正整数 & 三个基本规模参数 \\
+$N_m,I$ & 第$m$篇长度、总词元数 & $I=\sum_mN_m$ & 计算复杂度的样本规模 \\
+$w_{mn}$ & 第$m$篇第$n$个词元 & $\{1,\ldots,V\}$ & 观测变量 \\
+$z_{mn}$ & 词元的主题指派 & $\{1,\ldots,K\}$ & 离散隐变量 \\
+$\boldsymbol\theta_m$ & 文档--主题概率向量 & $\Delta^{K-1}$ & 文档级隐变量 \\
+$\boldsymbol\varphi_k$ & 主题--词概率向量 & $\Delta^{V-1}$ & 主题级参数或隐变量 \\
+$\boldsymbol\alpha$ & 文档主题先验 & $\mathbb R_{>0}^{K}$ & Dirichlet超参数 \\
+$\boldsymbol\beta$ & 主题词先验 & $\mathbb R_{>0}^{V}$ & Dirichlet超参数 \\
+$n_{mk},n_{kv}$ & 文档--主题、主题--词计数 & 非负整数 & 折叠推断充分统计量 \\
+$\boldsymbol\gamma_m$ & $q(\boldsymbol\theta_m)$参数 & $\mathbb R_{>0}^{K}$ & 局部变分参数 \\
+$\boldsymbol\eta_{mn}$ & $q(z_{mn})$参数 & $\Delta^{K-1}$ & 主题责任度 \\
+$\psi,\psi'$ & digamma、trigamma & 标量函数 & Dirichlet对数矩与Newton步 \\
+\bottomrule
+\end{longtable}
+为使低维数值例的式面更紧凑，下文在等号右侧直接列出全部坐标时采用如下显式排版约定：
+$\boldsymbol\alpha,\boldsymbol\beta,\boldsymbol\theta,\boldsymbol\varphi,
+\boldsymbol\eta,\boldsymbol\gamma$表示向量，而带下标的$\alpha_k,\beta_v$等表示分量；括号中的完整数列按符号表给出的维数解释为对应向量。
+该约定不改变对象的维数、归一化约束或推导含义。
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V5-C35-CONCEPT-002 L1
+\paragraph{读前自检：潜在狄利克雷分配。}LDA把文档表示成主题混合$\theta_m$，再给每个词位置分配主题$z_{mn}$并生成$w_{mn}$；请沿“文档--主题混合--位置主题--单词”写出一项条件概率，核对“分配”指位置级主题指派。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-CONCEPT-003 L1
+\paragraph{读前自检：LDA生成过程与概率图。}LDA生成过程先采样$\varphi_k\sim\operatorname{Dir}(\beta)$和$\theta_m\sim\operatorname{Dir}(\alpha)$，再采样$z_{mn},w_{mn}$；请按箭头顺序写出联合分布的四类因子并核对板内索引。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-CONCEPT-004 L1
+\paragraph{读前自检：LDA文档—主题—词模型。}LDA文档--主题--词模型满足$P(w_{mn}=v\mid\theta_m,\varphi)=\sum_k\theta_{mk}\varphi_{kv}$；请对$v$求和，核对主题混合与主题词分布均归一时得到1。\par
+
+\SLReviewSection{文档—主题—单词关系}{sec:V5-C06-S01}
+\knowledgeanchor{SLM-20-00-001}{潜在狄利克雷分配}
+\knowledgeanchor{PRE-TM-003}{LDA生成过程与概率图}
+\knowledgeanchor{SLM-20-02-002}{LDA文档—主题—词模型}
+\knowledgeanchor{SLM-20-02-003}{LDA的混合主题思想}
+
+\phantomsection\label{struct:V5-C06-CH06}
+\textbf{问题提出。}一个文档通常不只谈一个主题，一个主题也不会只使用一个词。
+若直接给每篇文档估计一个$V$维词频向量，短文档会非常稀疏，文档之间也无法共享统计强度。
+LDA在二者之间加入$K$个潜在主题：每篇文档先混合主题，每个词位置再选择主题，最后由所选主题产生单词。于是
+\[
+\text{文档}\longrightarrow\text{主题混合}\longrightarrow
+\text{逐位置主题}\longrightarrow\text{单词}.
+\]
+两层Dirichlet先验分别平滑文档--主题分布和主题--词分布。学习任务不是为文档贴唯一标签，而是从只观察到的词序列反推主题词义、文档主题比例和逐词主题指派。
+
+\begin{notationbox}
+“潜在”指$z_{mn}$和$\boldsymbol\theta_m$未被直接观察；“狄利克雷”指概率向量的先验；
+“分配”指每个词位置的主题指派。LDA不是线性判别分析，也不等于把文档硬聚成一个主题。
+\end{notationbox}
+
+
+\phantomsection\label{struct:V5-C06-CH07}
+% KNOWLEDGE-PLAN: KN-V5-C35-DEFINITION-001 L1
+\paragraph{读前自检：潜在狄利克雷分配模型。}LDA给定$M$篇文档、$K$个主题和$V$词表，要求$\theta_m\in\Delta^{K-1}$、$\varphi_k\in\Delta^{V-1}$；请核对两向量维数与归一化，并标出$z_{mn}$和$w_{mn}$的取值集合。\par
+
+\begin{definition}[潜在狄利克雷分配模型]\label{def:V5-C06-lda}
+给定词表$\mathcal W=\{1,\ldots,V\}$、主题数$K$和文档数$M$。
+对每个主题$k$，取
+$\boldsymbol\varphi_k\sim\operatorname{Dir}(\boldsymbol\beta)$；
+对每篇文档$m$，取
+$\boldsymbol\theta_m\sim\operatorname{Dir}(\boldsymbol\alpha)$。
+对文档$m$的每个位置$n$，依次生成
+\[
+z_{mn}\mid\boldsymbol\theta_m\sim\operatorname{Cat}(\boldsymbol\theta_m),
+\qquad
+w_{mn}\mid z_{mn}=k,\boldsymbol\varphi
+\sim\operatorname{Cat}(\boldsymbol\varphi_k).
+\]
+所有$\alpha_k>0$、$\beta_v>0$。本章明确区分两个相关但目标不同的模型：
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{完整Bayes LDA：}$\boldsymbol\varphi_k\sim\operatorname{Dir}(\boldsymbol\beta)$，折叠Gibbs积分消去$\boldsymbol\theta,\boldsymbol\varphi$；
+  \item \textbf{点参数LDA变体：}$\boldsymbol\varphi_k\in\Delta^{V-1}$是待估参数，不对$\boldsymbol\varphi_k$放置Dirichlet先验，变分EM最大化该参数模型的ELBO。
+\end{enumerate}
+两者共享条件似然$p(w_{mn}\mid z_{mn},\boldsymbol\varphi)$和文档先验
+$\boldsymbol\theta_m\sim\operatorname{Dir}(\boldsymbol\alpha)$，但不是同一个后验，也不能把
+$\boldsymbol\beta$平滑项临时加入点参数变体后仍声称优化同一目标。
+\end{definition}
+
+\SLReadTranslation{首次阅读固定走“完整Bayes模型$\to$积分消去$\boldsymbol\theta,\boldsymbol\varphi$$\to$折叠Gibbs满条件$\to$减—算—抽—加”这一条完整路线。第\ref{sec:V5-C06-S04}节的变分EM是对点参数变体的进阶对照：它优化ELBO，不是对前一条完整Bayes后验换一种算法。}
+
+% KNOWLEDGE-PLAN: KN-V5-C35-DEFINITION-002 L1
+\paragraph{读前自检：模型定义。}LDA模型定义区分对$\theta,\varphi$积分的完整Bayes模型与点参数变体；请写出后验$p(z,\theta,\varphi\mid w,\alpha,\beta)$的分子，核对折叠Gibbs与点参数变分EM针对的未知对象不同。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：LDA的文本生成算法。}LDA文本生成算法以$M,K,V,N_m,\alpha,\beta$为输入；请先采样一列$\varphi_k$和一篇文档的$\theta_m$，再采样一个$z_{mn},w_{mn}$，核对概率向量归一并在全部计划对象生成后停止。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-CONCEPT-006 L1
+\paragraph{读前自检：概率图模型。}LDA概率图在给定$\theta_m$与全部$\varphi_k$时，使同一文档各位置条件独立；请写出$P(z_{mn},w_{mn}\mid\theta_m,\varphi)$，核对跨位置共享$\theta_m$仍会产生边缘相关。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-PREREQUISITE-007 L1
+\paragraph{读前自检：随机变量序列的可交换性。}LDA文档内词位置在积分掉共享$\theta_m$后可交换但一般不独立；请置换两个位置并比较条件联合乘积，核对乘积因子次序改变而数值不变。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-FORMULA-001 L1
+\paragraph{读前自检：概率公式。}LDA完整联合分布由主题词先验、文档主题先验、主题指派和发词因子相乘；请对一个位置写出$\theta_{m,z_{mn}}\varphi_{z_{mn},w_{mn}}$，核对所有索引落在$M,K,V$声明范围。\par
+
+\SLTeachSection{LDA生成过程与概率图}{sec:V5-C06-S02}
+\knowledgeanchor{SLM-20-02-004}{模型定义}
+\knowledgeanchor{SLM-20-01-005}{LDA的文本生成算法}
+\knowledgeanchor{SLM-20-02-005}{概率图模型}
+\knowledgeanchor{SLM-20-02-006}{随机变量序列的可交换性}
+\knowledgeanchor{SLM-20-02-007}{概率公式}
+
+\phantomsection\label{struct:V5-C06-CH08}
+对完整Bayes LDA，联合分布分解为
+\begin{align}
+&p(\boldsymbol w,\boldsymbol z,\boldsymbol\theta,
+\boldsymbol\varphi\mid\boldsymbol\alpha,\boldsymbol\beta)
+\label{eq:V5-C06-joint}\\
+&\quad=
+\prod_{k=1}^{K}p(\boldsymbol\varphi_k\mid\boldsymbol\beta)
+\prod_{m=1}^{M}\left[
+p(\boldsymbol\theta_m\mid\boldsymbol\alpha)
+\prod_{n=1}^{N_m}
+p(z_{mn}\mid\boldsymbol\theta_m)
+p(w_{mn}\mid z_{mn},\boldsymbol\varphi)
+\right].\notag
+\end{align}
+点参数变体则以$\boldsymbol\varphi$为给定参数，其联合分布为
+\begin{equation}
+p_{\mathrm{par}}(\boldsymbol w,\boldsymbol z,\boldsymbol\theta
+\mid\boldsymbol\alpha,\boldsymbol\varphi)
+=\prod_{m=1}^{M}\left[
+p(\boldsymbol\theta_m\mid\boldsymbol\alpha)
+\prod_{n=1}^{N_m}p(z_{mn}\mid\boldsymbol\theta_m)
+p(w_{mn}\mid z_{mn},\boldsymbol\varphi)
+\right].
+\label{eq:V5-C06-parameterized-joint}
+\end{equation}
+板块图中，$N_m$板块嵌在$M$板块内，表示每篇文档的每个词位置都重复生成；
+$K$板块表示主题词向量重复$K$次。图\ref{fig:V5-C06-plate-graph}用统一符号展示这一生成依赖。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_plate_graph.tex}
+
+\phantomsection\label{struct:V5-C06-CH09}
+\textbf{学习策略。}已知$\boldsymbol w$后，目标是后验
+\[
+p(\boldsymbol z,\boldsymbol\theta,\boldsymbol\varphi
+\mid\boldsymbol w,\boldsymbol\alpha,\boldsymbol\beta).
+\]
+对$\boldsymbol z$求和并对两组概率向量积分会产生指数规模耦合，通常不能精确计算。
+折叠Gibbs在完整Bayes模型中积分消去共轭概率向量，再对$\boldsymbol z$抽样；
+变分EM在式\eqref{eq:V5-C06-parameterized-joint}的点参数变体中，以可计算的平均场分布近似
+$p_{\mathrm{par}}(\boldsymbol\theta,\boldsymbol z\mid\boldsymbol w,
+\boldsymbol\alpha,\boldsymbol\varphi)$并交替更新局部变分参数与全局点参数。
+前者提供完整Bayes后验的相关样本，后者提供另一个明确参数模型的确定性局部近似。
+
+\begin{proposition}[条件独立生成蕴含文档内交换性]\label{prop:V5-C06-exchangeable}
+在给定$\boldsymbol\theta_m$和$\boldsymbol\varphi$时，文档$m$各词位置独立同分布，且
+\[
+p(w_{mn}=v\mid\boldsymbol\theta_m,\boldsymbol\varphi)
+=\sum_{k=1}^{K}\theta_{mk}\varphi_{kv}.
+\]
+因此任意置换词位置不改变条件联合概率；积分消去
+$\boldsymbol\theta_m$后，词位置仍交换，但一般不再边缘独立。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C35-PROOF-001 L1
+\paragraph{读前自检：证明：条件独立生成蕴含文档内交换性。}LDA文档内词元在给定$\boldsymbol\theta_m$时的联合概率为$\prod_n\sum_k\theta_{mk}\varphi_{k,w_{mn}}$；请置换位置指标核对乘积不变，再指出边缘化后各位置仍因共享$\boldsymbol\theta_m$而不独立。\par
+
+\begin{proof}
+对任意位置置换$\pi$，条件联合概率是
+\[
+\prod_{n=1}^{N_m}\sum_k\theta_{mk}\varphi_{k,w_{mn}},
+\]
+乘法交换律使其等于置换后的乘积。再对
+$p(\boldsymbol\theta_m\mid\boldsymbol\alpha)$积分不会破坏置换不变性。
+但两个位置共享同一个随机$\boldsymbol\theta_m$；边缘化后它们通过该共同原因相关，所以不能由交换性推出独立性。
+\end{proof}
+
+\phantomsection\label{struct:V5-C06-CH10}
+\textbf{生成算法。}图\ref{fig:V5-C06-generative-process}以三条泳道展示完整Bayes LDA 的四步祖先采样；$n=1,\ldots,N_m$嵌套在每个$m$内，侧注只用于区分点参数变体。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_generative_process.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}沿
+$\boldsymbol\beta\to\boldsymbol\varphi_k$、
+$\boldsymbol\alpha\to\boldsymbol\theta_m$、
+$\boldsymbol\theta_m\to z_{mn}$、
+$z_{mn}\to w_{mn}$与$\boldsymbol\varphi_k\to w_{mn}$，核对
+式\eqref{eq:V5-C06-joint}的主题词先验、文档主题先验、主题指派和发词四类因子；
+再区分完整Bayes中随机的$\boldsymbol\varphi_k$与点参数变体中每个
+$\boldsymbol\varphi_k$为待估参数，二者不是同一后验。
+
+\begingroup\SetAlgoLined
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：LDA文本生成（祖先采样）：执行契约。}LDA文本生成（祖先采样）输入“文档/主题/词表规模、文档长度、严格正Dirichlet参数及可复现随机生成器状态”，条件“$M,K,V$为正整数，$N_m\in\mathbb N_0$，先验向量维数相容且有限严格为正，随机接口已登记”；请执行“概率向量完整通过单纯形检查后才原子追加”，以“完成$K+M+2I$个计划随机对象、空语料有限循环完成或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：LDA文本生成（祖先采样）。}LDA文本生成（祖先采样）输入“文档/主题/词表规模、文档长度、严格正Dirichlet参数及可复现随机生成器状态”，条件“$M,K,V$为正整数，$N_m\in\mathbb N_0$，先验向量维数相容且有限严格为正，随机接口已登记”；请做一轮“概率向量完整通过单纯形检查后才原子追加”，以“完成$K+M+2I$个计划随机对象、空语料有限循环完成或首次失败时停止”核对停止证书。\par
+
+\begin{AlgorithmContract}{
+  input={文档/主题/词表规模、文档长度、严格正Dirichlet参数及可复现随机生成器状态},
+  output={最后合法主题/文档概率前缀与词元前缀、$k_{\rm done},m_{\rm done},i_{\rm done},q_{\rm done}$、状态与最终诊断},
+  preconditions={$M,K,V$为正整数，$N_m\in\mathbb N_0$，先验向量维数相容且有限严格为正，随机接口已登记},
+  initialization={初始化生成器与空输出，四个实际计数清零；总词位$I=\sum_mN_m$},
+  loop={先逐主题抽$\varphi_k$，再逐文档抽$\theta_m$，最后每词位依次抽$z_{mn}$与$w_{mn}$},
+  update={概率向量完整通过单纯形检查后才原子追加；一个词位的主题和词两次抽样均成功后才原子追加词元对},
+  domain={$\varphi_k\in\Delta^{V-1},\theta_m\in\Delta^{K-1}$；主题/词索引合法；已提交输出有限},
+  failure={维数/长度/先验非法返回$\mathtt{invalid\_input}$；随机源调用失败返回$\mathtt{random\_source\_failure}$；抽样概率、归一化或索引异常返回$\mathtt{numerical\_failure}$并保留最后合法前缀},
+  stop={完成$K+M+2I$个计划随机对象、空语料有限循环完成或首次失败时停止},
+  budget={至多$K$次主题Dirichlet、$M$次文档Dirichlet和$2I$次类别随机调用},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$k_{\rm done}$、$m_{\rm done}$、$i_{\rm done}$计已提交主题/文档/词位，$q_{\rm done}$计实际随机调用},
+  diagnostics={随机源末状态、失败$(k)$或$(m,n,\mathrm{stage})$、概率和误差、空文档表及计划/实际工作量},
+  complexity={$O(KV+MK+I(K+V))$直接类别扫描时间；保存全部输出空间$O(KV+MK+I)$}
+}
+\begin{algorithm}[tbp]
+\caption{LDA文本生成（祖先采样）}\label{alg:V5-C06-generate}
+\KwIn{$M,K,V$；长度$N_1,\ldots,N_M$；严格正的$\boldsymbol\alpha,\boldsymbol\beta$；随机数生成器状态}
+\KwOut{最后合法生成前缀；$k_{\rm done},m_{\rm done},i_{\rm done},q_{\rm done}$；$\mathtt{status}$与最终诊断}
+置$k_{\rm done}=m_{\rm done}=i_{\rm done}=q_{\rm done}=0$并初始化空输出；若维数、长度、先验或随机接口非法，则返回空前缀、$\mathtt{invalid\_input}$及字段诊断\;
+\For{$k\leftarrow1$ \KwTo $K$}{
+  调用随机源抽取临时$\varphi_k$并增加$q_{\rm done}$；调用失败时返回最后合法前缀、$\mathtt{random\_source\_failure}$及主题$k$诊断\;
+  若向量非有限、非负性或归一化失败，则返回前缀、$\mathtt{numerical\_failure}$及主题概率诊断；否则原子追加并令$k_{\rm done}\leftarrow k$\;
+}
+\For{$m\leftarrow1$ \KwTo $M$}{
+  调用随机源抽取临时$\theta_m$并增加$q_{\rm done}$；调用失败时返回前缀、$\mathtt{random\_source\_failure}$及文档$m$诊断\;
+  若向量检查失败，则返回前缀、$\mathtt{numerical\_failure}$及文档概率诊断；否则原子追加并令$m_{\rm done}\leftarrow m$\;
+  \For{$n\leftarrow1$ \KwTo $N_m$}{
+    依次抽临时$z_{mn}$和$w_{mn}$，每次调用增加$q_{\rm done}$；任一随机调用失败则返回前缀、$\mathtt{random\_source\_failure}$及$(m,n)$阶段诊断\;
+    若索引越界或类别概率检查失败，则返回前缀、$\mathtt{numerical\_failure}$及词位诊断；否则原子追加$(z_{mn},w_{mn})$并增加$i_{\rm done}$\;
+  }
+}
+返回完整样本、实际计数、$\mathtt{completed}$及概率误差/生成器末状态最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\textbf{初始化与更新顺序。}初始化随机数生成器及空输出容器，先按主题编号抽取全部
+$\boldsymbol\varphi_k$，再按文档编号抽取$\boldsymbol\theta_m$，最后按词位顺序先抽
+$z_{mn}$、后抽$w_{mn}$。\textbf{停止条件}是所有有限循环正常完成；
+\textbf{异常与退化}包括非法维数、非正先验、非有限概率及随机数生成失败，空文档是合法退化输入。
+\textbf{正确性依据}是式\eqref{eq:V5-C06-joint}的祖先分解。
+若保存全部输出，\textbf{空间复杂度}为$O(KV+MK+I)$；
+\textbf{复杂度假设}是Dirichlet抽样与类别线性扫描都按相应向量长度计费，此时生成时间为
+$O\!\left(KV+MK+I(K+V)\right)$。若先以$O(KV+MK)$时间为每个
+$\boldsymbol\varphi_k$和$\boldsymbol\theta_m$建立别名表，使每次类别抽样为$O(1)$，
+则总生成时间可降为$O(KV+MK+I)$。
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C06-generate | 收敛条件=祖先采样只执行预先给定的有限循环，不存在迭代收敛目标; 不收敛或不适用情形=该算法生成模拟数据而不拟合观测语料，故后验不收敛问题不适用; 训练时间复杂度=文本生成不是训练任务，相关代价已单列为生成时间; 预测时间复杂度=文本生成不是给定模型后的预测接口，故预测复杂度不适用
+
+
+\phantomsection\label{struct:V5-C06-CH11}
+% CORE-DERIVATION-PLAN: KN-V5-C35-DERIVATION-001
+\SLKnowledgeBridge{积分消去文档--主题和主题--词分布，只保留计数。}{主题指派 $z$、词元 $w$、Dirichlet超参数 $\alpha,\beta$ 及计数 $n_{mk},n_{kv}$。}{$\alpha_k,\beta_v>0$；删去当前词元后的计数用上标 $-i$；采用多元 Beta函数。}{先按文档和主题分组联合分布，并分别应用 \DirichletMultinomial{}积分。}
+
+\begin{derivationgoalbox}
+从式\eqref{eq:V5-C06-joint}积分消去
+$\boldsymbol\theta$和$\boldsymbol\varphi$，得到只依赖计数的
+$p(\boldsymbol w,\boldsymbol z\mid\boldsymbol\alpha,\boldsymbol\beta)$；
+随后用“加入一个词元前后”的比值推出Gibbs满条件分布。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+记$\alpha_0=\sum_k\alpha_k$、$\beta_0=\sum_v\beta_v$；
+$n_{mk}=\sum_n\mathbf1\{z_{mn}=k\}$，
+$n_{kv}=\sum_{m,n}\mathbf1\{z_{mn}=k,w_{mn}=v\}$，
+$n_{m\cdot}=\sum_kn_{mk}$，$n_{k\cdot}=\sum_vn_{kv}$；并记
+$\boldsymbol n_m=(n_{m1},\ldots,n_{mK})$、
+$\boldsymbol n_k=(n_{k1},\ldots,n_{kV})$。上标$^{-i}$表示删去当前词元$i=(m,n)$后的计数。
+多元Beta函数记为$B(\boldsymbol a)=\prod_j\Gamma(a_j)/\Gamma(\sum_ja_j)$。
+\end{derivationprepbox}
+
+\textbf{推导第1步：按主题收集单词似然。}
+\[
+p(\boldsymbol w\mid\boldsymbol z,\boldsymbol\varphi)
+=\prod_{k=1}^{K}\prod_{v=1}^{V}\varphi_{kv}^{n_{kv}}.
+\]
+由定义\ref{def:V5-C06-lda}中的$\beta_v>0$，每个主题的先验密度与有序词元似然的乘积为
+\[
+\frac1{B(\boldsymbol\beta)}
+\prod_{v=1}^V\varphi_{kv}^{\beta_v-1}
+\prod_{v=1}^V\varphi_{kv}^{n_{kv}}
+=\frac1{B(\boldsymbol\beta)}
+\prod_{v=1}^V\varphi_{kv}^{n_{kv}+\beta_v-1}.
+\]
+在$\Delta_{V-1}$上逐项积分，并使用定理\ref{thm:V5-C05-conjugacy}背后的多元Beta恒等式，得到
+\[
+\int_{\Delta_{V-1}}
+\frac1{B(\boldsymbol\beta)}
+\prod_{v=1}^V\varphi_{kv}^{n_{kv}+\beta_v-1}
+\,\mathrm d\boldsymbol\varphi_k
+=\frac{B(\boldsymbol n_k+\boldsymbol\beta)}{B(\boldsymbol\beta)}.
+\]
+这里$\boldsymbol w,\boldsymbol z$表示按位置编号的词元与主题指派，故似然是逐位置概率的乘积，没有计数向量概率中的多项组合系数。对$k=1,\ldots,K$相乘得到
+\begin{equation}
+p(\boldsymbol w\mid\boldsymbol z,\boldsymbol\beta)
+=\prod_{k=1}^{K}
+\frac{B(\boldsymbol n_k+\boldsymbol\beta)}{B(\boldsymbol\beta)}.
+\label{eq:V5-C06-collapsed-word}
+\end{equation}
+\textbf{推导第2步：按文档收集主题指派。}把上一行中的主题索引$k$与词索引$v$分别换成文档索引$m$与主题索引$k$，并由$\alpha_k>0$，对每篇文档逐项写出
+\[
+\int_{\Delta_{K-1}}
+\frac1{B(\boldsymbol\alpha)}
+\prod_{k=1}^K\theta_{mk}^{n_{mk}+\alpha_k-1}
+\,\mathrm d\boldsymbol\theta_m
+=\frac{B(\boldsymbol n_m+\boldsymbol\alpha)}{B(\boldsymbol\alpha)}.
+\]
+这仍是有序主题指派的逐位置似然积分；没有额外的多项组合系数。对$m=1,\ldots,M$相乘，积分消去$\boldsymbol\theta_m$：
+\begin{equation}
+p(\boldsymbol z\mid\boldsymbol\alpha)
+=\prod_{m=1}^{M}
+\frac{B(\boldsymbol n_m+\boldsymbol\alpha)}{B(\boldsymbol\alpha)}.
+\label{eq:V5-C06-collapsed-topic}
+\end{equation}
+
+\phantomsection\label{struct:V5-C06-CH12}
+\begin{theorem}[LDA的折叠联合分布]\label{thm:V5-C06-collapsed-joint}
+在定义\ref{def:V5-C06-lda}的条件下，
+\begin{equation}
+p(\boldsymbol w,\boldsymbol z\mid\boldsymbol\alpha,\boldsymbol\beta)
+=\prod_{k=1}^{K}
+\frac{B(\boldsymbol n_k+\boldsymbol\beta)}{B(\boldsymbol\beta)}
+\prod_{m=1}^{M}
+\frac{B(\boldsymbol n_m+\boldsymbol\alpha)}{B(\boldsymbol\alpha)}.
+\label{eq:V5-C06-collapsed-joint}
+\end{equation}
+该式保留了与$\boldsymbol z$有关的全部归一化常数。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C35-PROOF-002 L1
+\paragraph{读前自检：证明：LDA的折叠联合分布。}LDA折叠联合分布的被积函数非负，且主题参数与文档参数两组积分变量互不重叠；请分别写出逐主题、逐文档的多元Beta比值并相乘，核对$\alpha_k,\beta_v>0$保证积分有限且无需多项组合系数。\par
+
+\begin{proof}
+从式\eqref{eq:V5-C06-joint}出发，被积函数非负，Tonelli定理允许改变积分次序。上面的逐主题计算给出式\eqref{eq:V5-C06-collapsed-word}，逐文档计算给出式\eqref{eq:V5-C06-collapsed-topic}。两组积分变量互不重叠，故两式相乘即得\eqref{eq:V5-C06-collapsed-joint}。所有$\alpha_k,\beta_v$严格为正，确保每个多元Beta积分有限；由于对象是有序词元与指派的联合概率，整个推导中都不出现多项组合系数。
+\end{proof}
+
+\phantomsection\label{struct:V5-C06-CH13}
+\begin{corollary}[文档内主题指派的交换性]\label{cor:V5-C06-topic-exchangeable}
+固定观测词和其他文档后，若同时置换文档$m$的词位置及相应主题指派，式
+\eqref{eq:V5-C06-collapsed-joint}不变。
+\end{corollary}
+% KNOWLEDGE-PLAN: KN-V5-C35-PROOF-003 L1
+\paragraph{读前自检：证明：文档内主题指派的交换性。}LDA折叠联合分布只通过$n_{mk}$与$n_{kv}$依赖位置数据；请同步置换词元和主题指派，核对两组计数及Beta比值不变，再只置换词元构造$n_{kv}$可能改变的对照。\par
+
+\begin{proof}
+折叠联合分布只通过$n_{mk}$和$n_{kv}$依赖位置数据；同步置换不改变任一计数，
+故每个Beta函数比值不变。若只置换词而不随之置换指派，$n_{kv}$可能改变，结论不成立。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：LDA折叠Gibbs抽样。}LDA折叠Gibbs对词元$i=(m,n)$、观测词$v$采用留一计数；请对每个主题计算$(n_{mk}^{-i}+\alpha_k)(n_{kv}^{-i}+\beta_v)/(n_{k\cdot}^{-i}+\beta_0)$，再对$k$归一化，并核对得到合法满条件概率。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-CONCEPT-007 L1
+\paragraph{读前自检：折叠抽样的留一计数思想。}折叠抽样更新词元$i$前必须先从文档--主题和主题--词计数表减去其旧主题；请执行一次“减一”，核对两张表总计数各减少1，再用留一计数计算候选权重。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-BOUNDARY-001 L1
+\paragraph{读前自检：LDA折叠Gibbs条件更新。}LDA折叠Gibbs满条件由文档主题计数因子与主题词计数因子相乘；请为全部$k$算未归一化权重并除以权重和，核对概率非负且总和为1。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-FORMULA-002 L1
+\paragraph{读前自检：主题分布与主题词分布的后验汇总。}折叠Gibbs样本的后验汇总用$\widehat\theta_{mk}=(n_{mk}+\alpha_k)/(N_m+\alpha_0)$和$\widehat\varphi_{kv}=(n_{kv}+\beta_v)/(n_{k\cdot}+\beta_0)$；请逐行求和核对为1。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：折叠Gibbs扫描流程。}折叠Gibbs扫描以当前主题指派和一致计数表为状态；请对一个词元完成“减--算--抽--加”，核对两张计数表与新指派一致，整轮提交后按扫描预算停止并保留链诊断。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-CONCEPT-008 L1
+\paragraph{读前自检：主题指派与计数表。}主题指派$z_i$与计数$n_{mk},n_{kv},n_{k\cdot}$必须同步；请改变一个词元的主题，逐项更新受影响的旧、新主题计数，核对文档总数和主题总数守恒。\par
+
+\SLTeachSection{折叠Gibbs推断}{sec:V5-C06-S03}
+\knowledgeanchor{SLM-20-03-001}{LDA折叠Gibbs抽样}
+\knowledgeanchor{SLM-20-03-002}{折叠抽样的留一计数思想}
+\knowledgeanchor{SLM-20-03-003}{LDA折叠Gibbs条件更新}
+\knowledgeanchor{SLM-20-03-004}{主题分布与主题词分布的后验汇总}
+\knowledgeanchor{SLM-20-03-005}{折叠Gibbs扫描流程}
+\knowledgeanchor{SLM-20-02-008}{主题指派与计数表}
+
+\begin{proposition}[折叠Gibbs满条件分布]\label{prop:V5-C06-gibbs-conditional}
+设当前词元$i=(m,n)$的观测词为$v$。删去其旧主题后的满条件概率满足
+\begin{equation}
+p(z_i=k\mid\boldsymbol z_{-i},\boldsymbol w,
+\boldsymbol\alpha,\boldsymbol\beta)
+\propto
+\frac{n_{kv}^{-i}+\beta_v}{n_{k\cdot}^{-i}+\beta_0}
+\frac{n_{mk}^{-i}+\alpha_k}{n_{m\cdot}^{-i}+\alpha_0}.
+\label{eq:V5-C06-gibbs-conditional}
+\end{equation}
+右端对$k=1,\ldots,K$归一化后才是概率。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C35-PROOF-004 L1
+\paragraph{读前自检：证明：折叠Gibbs满条件分布。}折叠Gibbs比较候选主题$k$时只保留主题--词与文档--主题计数因子；请用$\Gamma(x+1)/\Gamma(x)=x$分别约去两个Beta函数比值，核对所得两项相乘即为未归一化满条件权重。\par
+
+\begin{proof}
+在式\eqref{eq:V5-C06-collapsed-joint}中，除主题$k$的词计数因子和文档$m$的主题计数因子外，其余因子在比较候选$k$时相消。
+使用$\Gamma(x+1)/\Gamma(x)=x$，把“加入当前词元”后的Beta函数除以留一Beta函数，分别得到
+\[
+\frac{n_{kv}^{-i}+\beta_v}{n_{k\cdot}^{-i}+\beta_0},
+\qquad
+\frac{n_{mk}^{-i}+\alpha_k}{n_{m\cdot}^{-i}+\alpha_0}.
+\]
+两项相乘即为未归一化权重。第二项分母虽对$k$相同，保留它能显示完整的后验预测来源。
+\end{proof}
+
+\textbf{推导第3步：用留一状态的Beta函数比值形成满条件。}
+命题\ref{prop:V5-C06-gibbs-conditional}把折叠联合分布中所有与候选主题无关的因子约去，
+再对$K$个正权重统一归一化；这一“先留一、后作比”的顺序也是实现计数守恒的依据。
+
+图\ref{fig:V5-C06-collapsed-gibbs-counts}把一次更新需要读写的两张计数表并列画出：
+先从旧主题的文档--主题计数和主题--词计数各减一，再计算所有候选权重，抽取新主题后再各加一。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_collapsed_gibbs_counts.tex}
+
+样本之后可用后验均值平滑估计
+\begin{align}
+\widehat\theta_{mk}
+&=\frac{n_{mk}+\alpha_k}{n_{m\cdot}+\alpha_0},
+&
+\widehat\varphi_{kv}
+&=\frac{n_{kv}+\beta_v}{n_{k\cdot}+\beta_0}.
+\label{eq:V5-C06-gibbs-postprocess}
+\end{align}
+这些是给定某个保留样本的后验均值；更稳健的做法是对多个保留样本的预测量或计数平滑估计取平均，而不是只报告最后一次扫描。
+
+\begin{implementationbox}
+实现折叠Gibbs抽样时，输入应同时包括$\boldsymbol w$、$\boldsymbol\alpha$、
+$\boldsymbol\beta$与$K$，避免把模型参数与数据割裂。
+燃烧期结束后还要继续留样，
+可按预先规定或诊断选择间隔，并报告有效样本量、链间差异和随机种子。燃烧期不是算法完成的同义词。
+\end{implementationbox}
+
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-006 L1
+\paragraph{读前自检：LDA变分EM局部—全局更新。}LDA变分EM在局部$q_m(z_m,\theta_m)$与全局点参数$\varphi,\alpha$间交替；请完成一次局部责任度归一化，再用期望计数更新一行$\varphi_k$，核对ELBO不下降后提交。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-007 L1
+\paragraph{读前自检：平均场变分推断。}平均场变分族把隐变量分解为若干$q_j(h_j)$；请固定其余因子并计算$q_j^*(h_j)\propto\exp(E_{-j}\log p(w,h))$，核对归一化常数有限。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-008 L1
+\paragraph{读前自检：LDA变分EM算法。}LDA变分EM以语料、$K$、正$\alpha$与列随机$\varphi$为输入；请完成一篇文档的局部坐标迭代和一次全局期望计数更新，只在ELBO/归一化门禁通过时提交，按双容差或预算停止。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-009 L1
+\paragraph{读前自检：通用变分EM坐标上升。}通用变分EM坐标上升固定其余$q_{-j}$时更新$q_j$，再固定$q$更新模型参数；请执行一个坐标最优更新，核对归一化且ELBO不降后再进入M步。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-CONCEPT-009 L1
+\paragraph{读前自检：LDA变分更新推导。}LDA变分更新从$\log p(w,h)$中保留含当前因子的项并对其余变量取期望；请指数化并归一化一次，核对得到的责任度非负且和为1。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-010 L1
+\paragraph{读前自检：LDA的变分参数估计算法。}LDA变分参数估计维护局部责任度/Dirichlet参数与全局主题词分布；请用局部期望计数更新一个$\varphi_{kv}$并归一化，核对ELBO不降，按外层容差或预算停止。\par
+
+\SLAdvancedSection{变分EM推断}{sec:V5-C06-S04}
+\knowledgeanchor{SLM-20-04-001}{LDA变分EM局部—全局更新}
+\knowledgeanchor{SLM-20-04-002}{平均场变分推断}
+\knowledgeanchor{SLM-20-04-003}{LDA变分EM算法}
+\knowledgeanchor{SLM-20-03-006}{通用变分EM坐标上升}
+\knowledgeanchor{SLM-20-04-004}{LDA变分更新推导}
+\knowledgeanchor{SLM-20-04-005}{LDA的变分参数估计算法}
+
+\begin{theorem}[KL--ELBO恒等式]\label{thm:V5-C06-elbo}
+设$0<p(\boldsymbol w)<\infty$，联合密度与$q$相对于同一支配测度可测，$q\ll p(\boldsymbol h\mid\boldsymbol w)$，并且
+\[
+\mathbb E_q\!\left|\log p(\boldsymbol w,\boldsymbol h)\right|<\infty,
+\qquad
+\mathbb E_q\!\left|\log q(\boldsymbol h)\right|<\infty.
+\]
+这些条件排除了未定义的$\infty-\infty$。则
+\begin{equation}
+\log p(\boldsymbol w)
+=\mathcal L(q)+
+\KL\!\left(q(\boldsymbol h)\,
+\middle\|\,p(\boldsymbol h\mid\boldsymbol w)\right),
+\label{eq:V5-C06-elbo-identity}
+\end{equation}
+其中$\boldsymbol h$汇总隐变量，且
+\[
+\mathcal L(q)=
+\mathbb E_q\log p(\boldsymbol w,\boldsymbol h)
+-\mathbb E_q\log q(\boldsymbol h).
+\]
+因此$\mathcal L(q)\le\log p(\boldsymbol w)$，等号当且仅当$q$等于精确后验（几乎处处）。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C35-PROOF-005 L1
+\paragraph{读前自检：证明：KL--ELBO恒等式。}KL--ELBO恒等式假定$0<p(\boldsymbol w)<\infty$、$q$对后验绝对连续且相关项绝对可积；请把$\log p(\boldsymbol h\mid\boldsymbol w)=\log p(\boldsymbol w,\boldsymbol h)-\log p(\boldsymbol w)$代入KL，核对$\KL(q\|p)=\log p(\boldsymbol w)-\mathcal L(q)$。\par
+
+\begin{proof}
+由$0<p(\boldsymbol w)<\infty$与绝对连续性，Bayes等式在$q$几乎处处成立：
+$\log p(\boldsymbol h\mid\boldsymbol w)
+=\log p(\boldsymbol w,\boldsymbol h)-\log p(\boldsymbol w)$。
+上述绝对可积条件允许分别积分并整理，不会出现$\infty-\infty$：
+\begin{align*}
+\KL(q\|p)
+&=\mathbb E_q\log q(\boldsymbol h)
+-\mathbb E_q\log p(\boldsymbol h\mid\boldsymbol w)\\
+&=\log p(\boldsymbol w)-\mathcal L(q).
+\end{align*}
+KL非负给出下界与等号条件。
+\end{proof}
+
+图\ref{fig:V5-C06-elbo-geometry}显示：受限族$\mathcal Q$中最优$q^*$通常仍与真实后验有正KL距离，故“E步后ELBO等于证据”一般错误。
+% v2.6 layout: former forced clear removed; natural pagination.
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_elbo_geometry.tex}
+
+以下变分推导只针对式\eqref{eq:V5-C06-parameterized-joint}的点参数变体；
+$\boldsymbol\beta$不属于该变体的ELBO。为使该模型的对数项、坐标命题与评价口径使用同一支持，先冻结训练活动词表
+$\mathcal V_{\mathrm{tr}}$：每个$v\in\mathcal V_{\mathrm{tr}}$在训练语料中至少出现一次，测试时的词表外项要么映射到一个已在训练中出现的显式
+$\mathtt{UNK}$，要么返回$\mathtt{invalid\_input}(\mathtt{support\_failure},v)$。本点参数模型的可行域规定
+\[
+\varphi_{kv}>0\quad(k=1,\ldots,K,\ v\in\mathcal V_{\mathrm{tr}}),
+\qquad \sum_{v\in\mathcal V_{\mathrm{tr}}}\varphi_{kv}=1.
+\]
+这是模型支持的明示限制，不是在实现中偷偷加入$\boldsymbol\beta$平滑。对固定$\boldsymbol\varphi$的单文档，采用平均场族
+\begin{equation}
+q(\boldsymbol\theta_m,\boldsymbol z_m
+\mid\boldsymbol\gamma_m,\boldsymbol\eta_m)
+=\operatorname{Dir}(\boldsymbol\theta_m\mid\boldsymbol\gamma_m)
+\prod_{n=1}^{N_m}\operatorname{Cat}(z_{mn}\mid\boldsymbol\eta_{mn}).
+\label{eq:V5-C06-mean-field}
+\end{equation}
+图\ref{fig:V5-C06-mean-field-graph}强调：近似族主动切断了后验中
+$\boldsymbol\theta_m$与各$z_{mn}$的依赖，这换来可计算性，也造成近似误差。
+% v2.6 layout: former forced clear removed; natural pagination.
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_mean_field_graph.tex}
+
+% KNOWLEDGE-PLAN: KN-V5-C35-PROPOSITION-003 L1
+\paragraph{读前自检：平均场坐标最优形式。}平均场坐标最优形式以“设$A$关于支配测度$\mu_j$几乎处处为实值且可测”为约束；请把$q_j^*(h_j)$展开一次并检查其类型或边界，并确认展开后的量满足定义中的域、维数或符号限制。\par
+
+\begin{proposition}[平均场坐标最优形式]\label{prop:V5-C06-mean-field-coordinate}
+固定其他变分因子，令$A(h_j)=\mathbb E_{q_{-j}}\log p(\boldsymbol w,\boldsymbol h)$。设$A$关于支配测度$\mu_j$几乎处处为实值且可测，并且
+\[
+0<Z_j=\int e^{A(h_j)}\,\mu_j(\mathrm dh_j)<\infty.
+\]
+再假定
+\[
+\int e^{A(h_j)}\lvert A(h_j)\rvert\,\mu_j(\mathrm dh_j)<\infty.
+\]
+则该坐标的正规化最优解存在并满足
+\begin{equation}
+q_j^*(h_j)=\frac{e^{A(h_j)}}{Z_j},
+\qquad
+\log q_j^*(h_j)=A(h_j)-\log Z_j,
+\label{eq:V5-C06-coordinate-general}
+\end{equation}
+并在$\mu_j$零测集意义下唯一。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C35-PROOF-006 L1
+\paragraph{读前自检：证明：平均场坐标最优形式。}平均场坐标更新只比较$q_j\ll q_j^*$且熵项、$A(h_j)$项可积的密度；请将坐标目标改写为$\log Z_j-\KL(q_j\|q_j^*)$，核对$q_j=q_j^*$几乎处处时唯一取到最大值。\par
+
+\begin{proof}
+把ELBO中与$q_j$有关的部分记为
+\[
+\mathcal F(q_j)=\int q_j(h_j)A(h_j)\,\mu_j(\mathrm dh_j)
+-\int q_j(h_j)\log q_j(h_j)\,\mu_j(\mathrm dh_j),
+\]
+并只比较满足$q_j\ll q_j^*$、$\int q_j\lvert A\rvert\,\mathrm d\mu_j<\infty$且
+$\int q_j\lvert\log q_j\rvert\,\mathrm d\mu_j<\infty$的概率密度。新增的加权可积条件给出
+\[
+\int q_j^*\lvert A\rvert\,\mathrm d\mu_j
+=Z_j^{-1}\int e^A\lvert A\rvert\,\mathrm d\mu_j<\infty,
+\qquad
+\int q_j^*\lvert\log q_j^*\rvert\,\mathrm d\mu_j<\infty,
+\]
+所以$q_j^*$本身属于比较类，$\mathcal F(q_j^*)$不是$\infty-\infty$。由$\log q_j^*=A-\log Z_j$，逐项代入可得
+\[
+\mathcal F(q_j^*)-\mathcal F(q_j)
+=\int q_j\log\frac{q_j}{q_j^*}\,\mathrm d\mu_j
+=\KL(q_j\|q_j^*)\ge0.
+\]
+因此$q_j^*$达到最大值；等号当且仅当$q_j=q_j^*$几乎处处，故最优解唯一。若$Z_j=0$或$Z_j=\infty$，则此正规化坐标更新不存在；即使$0<Z_j<\infty$，若$\int e^A\lvert A\rvert\,\mathrm d\mu_j=\infty$，上述两项分开定义的ELBO坐标目标仍可能出现未定义的$\infty-\infty$，也不能只写“$\propto e^A$”掩盖该缺口。
+\end{proof}
+
+将命题\ref{prop:V5-C06-mean-field-coordinate}用于LDA之前，必须先核验当前观察词满足
+$w_{mn}\in\mathcal V_{\mathrm{tr}}$且$\varphi_{k,w_{mn}}>0$对每个$k$成立。否则
+$\log\varphi_{k,w_{mn}}=-\infty$，函数$A$不再满足命题中“几乎处处为实值”的假设；本章当前版本不能继续套用该命题，而应返回
+$\mathtt{invalid\_input}(\mathtt{support\_failure},m,n,w_{mn})$。在上述严格正支持下，局部更新为
+\begin{align}
+\eta_{mnk}
+&\propto \varphi_{k,w_{mn}}
+\exp\!\left\{\psi(\gamma_{mk})-
+\psi\!\left(\sum_{\ell=1}^{K}\gamma_{m\ell}\right)\right\},
+\label{eq:V5-C06-eta-update}\\
+\gamma_{mk}
+&=\alpha_k+\sum_{n=1}^{N_m}\eta_{mnk}.
+\label{eq:V5-C06-gamma-update}
+\end{align}
+每次计算$\boldsymbol\eta_{mn}$后必须对$k$归一化；在对数域使用
+log-sum-exp可避免小概率下溢。式\eqref{eq:V5-C06-eta-update}和
+\eqref{eq:V5-C06-gamma-update}交替至局部ELBO增量足够小。
+
+固定全部局部变分参数，点参数变体的主题--词参数M步是归一化期望计数：
+\begin{equation}
+\varphi_{kv}
+=\frac{\displaystyle\sum_{m=1}^{M}\sum_{n=1}^{N_m}
+\eta_{mnk}\mathbf1\{w_{mn}=v\}}
+{\displaystyle\sum_{v'=1}^{V}\sum_{m=1}^{M}\sum_{n=1}^{N_m}
+\eta_{mnk}\mathbf1\{w_{mn}=v'\}}.
+\label{eq:V5-C06-phi-update}
+\end{equation}
+
+记式\eqref{eq:V5-C06-phi-update}的分子为
+$C_{kv}=\sum_{m,n}\eta_{mnk}\mathbf1\{w_{mn}=v\}$。严格正的
+$\boldsymbol\varphi$与有限严格正的$\boldsymbol\gamma_m$使式
+\eqref{eq:V5-C06-eta-update}归一化后有$\eta_{mnk}>0$。又因每个
+$v\in\mathcal V_{\mathrm{tr}}$至少出现一次，故$C_{kv}>0$且
+$C_{k\cdot}=\sum_v C_{kv}>0$，从而M步仍给出
+$\varphi_{kv}=C_{kv}/C_{k\cdot}>0$。这条推导证明严格正支持是不变量；若浮点计算形成零或非有限的$C_{kv}$，那是数值支持塌缩，候选不得提交。
+
+\begin{correctionbox}
+原书对应公式给出的只是期望计数和，还不是主题--词概率。
+式\eqref{eq:V5-C06-phi-update}进一步除以该主题全部词的期望计数总和。
+本章选定的点参数变体不对$\boldsymbol\varphi$置先验，故式中不得临时加入
+$\beta_v$或$\beta_v-1$。若要采用后验均值或MAP平滑，必须另行定义含
+$\boldsymbol\varphi_k\sim\operatorname{Dir}(\boldsymbol\beta)$的目标，并同步重写ELBO、M步和评价口径。
+当某主题的期望总计数为零时，式\eqref{eq:V5-C06-phi-update}无定义；当活动词表中的某个
+$C_{kv}$被数值计算成零时，后续责任度和困惑度会遇到$\log0$。本章算法分别把这两类候选记为
+$\texttt{numerical\_failure}(\texttt{empty\_topic},k)$与
+$\texttt{numerical\_failure}(\texttt{support\_collapse},k,v)$，不进入后续Newton步，也不静默沿用旧参数或临时加平滑常数。
+\end{correctionbox}
+
+对$\boldsymbol\alpha$，令$\gamma_{m0}=\sum_k\gamma_{mk}$、
+$\alpha_0=\sum_k\alpha_k$，ELBO梯度与Hessian为
+\begin{align}
+g_k(\boldsymbol\alpha)
+&=M\{\psi(\alpha_0)-\psi(\alpha_k)\}
++\sum_{m=1}^{M}\{\psi(\gamma_{mk})-\psi(\gamma_{m0})\},
+\label{eq:V5-C06-alpha-gradient}\\
+H_{k\ell}(\boldsymbol\alpha)
+&=M\{\psi'(\alpha_0)-\mathbf1(k=\ell)\psi'(\alpha_k)\}.
+\label{eq:V5-C06-alpha-hessian}
+\end{align}
+Newton候选为
+\begin{equation}
+\boldsymbol\alpha^{\mathrm{new}}
+=\boldsymbol\alpha^{\mathrm{old}}
+-H(\boldsymbol\alpha^{\mathrm{old}})^{-1}
+\boldsymbol g(\boldsymbol\alpha^{\mathrm{old}}).
+\label{eq:V5-C06-alpha-newton}
+\end{equation}
+实际实现必须阻尼或线搜索，保证所有分量仍严格为正且ELBO不下降。
+
+\begin{proposition}[受限变分EM的单调性边界]\label{prop:V5-C06-vem-monotone}
+若每个E步和M步都在各自可行域内不降低同一个ELBO，则ELBO序列单调不减；
+若其上有界，则ELBO数值收敛。该结论不保证参数达到全局最优，也不保证真实证据在受限平均场E步后等于ELBO。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C35-PROOF-007 L1
+\paragraph{读前自检：证明：受限变分EM的单调性边界。}受限变分EM的单调性只在每个局部或参数子步不降低同一ELBO时成立；请比较第$t$轮前后ELBO，构造一次近似子步下降的反例，并说明此时必须拒绝候选或显式报告下降。\par
+
+\begin{proof}
+记第$t$轮参数为$(q^{(t)},\Theta^{(t)})$。坐标E步给出
+\[
+\mathcal L(q^{(t+1)},\Theta^{(t)})
+\ge\mathcal L(q^{(t)},\Theta^{(t)}),
+\]
+M步给出
+\[
+\mathcal L(q^{(t+1)},\Theta^{(t+1)})
+\ge\mathcal L(q^{(t+1)},\Theta^{(t)}).
+\]
+合并即得单调性；单调有界实数列收敛。由于$\mathcal Q$通常不含精确后验，
+式\eqref{eq:V5-C06-elbo-identity}中的KL间隙可能严格为正；非凸性又允许不同初始化到达不同驻点。
+\end{proof}
+
+\begin{limitationbox}
+有些表述把受限平均场E步写成
+$\log p(\boldsymbol w\mid\Theta^{(t-1)})
+=\mathcal L(q^{(t)},\Theta^{(t-1)})$。
+一般只能写“$\ge$”；只有$q^{(t)}$恰为精确后验时才取等号。
+因此本章把可审计结论限定为ELBO逐块单调，不夸大成每一步都精确最大化真实证据。
+坐标更新达到数值稳定时，也只能报告坐标稳定点或局部驻点；多启动用于比较可行局部解，不能证明找到了变分族上的全局最优。
+\end{limitationbox}
+
+
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-011 L1
+\paragraph{读前自检：LDA两类推断路线总结。}LDA两类推断中，折叠Gibbs输出相关主题指派样本，变分EM输出确定性近似参数；请对照一个词元的条件更新与一个局部责任度更新，核对两者的状态、输出和诊断不同。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-012 L1
+\paragraph{读前自检：LDA变分EM超参数与评估。}LDA变分EM的$K,\alpha,\beta$及多启动预算必须在留出评价前冻结；请比较两个候选的留出困惑度与ELBO稳定性，核对不能用训练ELBO单独选择主题数。\par
+
+\SLAdvancedSection{超参数、实现与评估}{sec:V5-C06-S05}
+\knowledgeanchor{SLM-20-04-006}{LDA两类推断路线总结}
+\knowledgeanchor{SLM-20-05-001}{LDA变分EM超参数与评估}
+
+\phantomsection\label{struct:V5-C06-CH14}
+\textbf{几何解释。}$\boldsymbol\theta_m$位于主题单纯形，表示文档是$K$个主题的凸组合；
+$\boldsymbol\varphi_k$位于词汇单纯形，表示主题是$V$个词的概率组合。
+模型把高维文档词频投影到低维主题单纯形，再映回词汇单纯形。若同时置换主题标签以及
+$\boldsymbol\theta$、$\boldsymbol\varphi$相应坐标，观测分布不变，因此主题标签不可识别；比较两次运行需先做主题匹配。
+
+\phantomsection\label{struct:V5-C06-CH15}
+\textbf{概率解释。}给定$\boldsymbol\theta_m,\boldsymbol\varphi$时，各词位置条件独立；
+边缘化共享的$\boldsymbol\theta_m$后，同文档词元相关。交换性只保证对位置作同步置换后联合概率不变，不表示词元边缘独立。
+Dirichlet先验可理解为平滑伪计数：小$\alpha_0$偏好少数主题占优，大$\alpha_0$把文档主题混合拉向均值；
+$\boldsymbol\beta$对主题词分布起同样作用。
+
+\phantomsection\label{struct:V5-C06-CH16}
+\textbf{优化解释。}折叠Gibbs不是直接最大化一个确定性目标，而是构造以后验为平稳分布的马尔可夫链；
+变分EM则在受限分布族和模型参数之间坐标上升ELBO。前者误差来自有限链长、相关样本和混合；后者误差来自近似族、局部最优和有限迭代。二者的“收敛”不可混用。
+
+\phantomsection\label{struct:V5-C06-CH17}
+\textbf{图形辅助。}图\ref{fig:V5-C06-variational-updates}把点参数 LDA 的局部 VI 成功门与语料级 VEM 提交门分开；局部预算或失败不拥有通往 M 步的边。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_variational_updates.tex}
+\FloatBarrier
+\textbf{读图检查。}先沿 (a) 逐文档确认只有 $\mathtt{completed}/\mathtt{converged}$ 形成 $\mathrm{LocalOK}_m$，局部预算或失败不进 $C$/M 步；再沿 (b) 核对全部 $\mathrm{LocalOK}_m$ 到齐后才可进入 $C$、$\varphi$ 与受保护 Newton。外层 $\mathtt{budget\_stop}$ 只有在该启动仍 $\mathtt{feasible}$ 时才以“预算候选／未收敛”进入 $\mathcal S_{\rm acc}$，其余失败终点只留记录。
+
+图\ref{fig:V5-C06-method-comparison}把完整Bayes折叠Gibbs与无
+$\boldsymbol\beta$先验的点参数变分EM按模型目标、局部/全局变量、核心更新、
+输出与适用性、风险与诊断逐项并列。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_method_comparison.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先确认左列积分消去
+$\boldsymbol\theta,\boldsymbol\varphi$并以$\boldsymbol z$和计数为链状态，
+右列只在局部E步固定当前$\boldsymbol\varphi$，再由全局期望计数与受保护Newton分别更新
+$\boldsymbol\varphi,\boldsymbol\alpha$；最后只在相同训练/验证/测试切分、
+词表与预处理、主题数、计算预算和评价口径下比较，并同时登记模型差异与推断差异。
+
+\phantomsection\label{struct:V5-C06-CH18}
+\textbf{小型数值例子。}设$K=2$，当前词$v$的留一计数为
+\[
+(n_{1v}^{-i},n_{2v}^{-i})=(3,1),\quad
+(n_{1\cdot}^{-i},n_{2\cdot}^{-i})=(8,6),\quad
+(n_{m1}^{-i},n_{m2}^{-i})=(2,4),
+\]
+并取对称$\alpha=(1,1)$、每词$\beta_v=1$、$V=5$。
+式\eqref{eq:V5-C06-gibbs-conditional}给出未归一化权重
+\[
+r_1=\frac4{13}\frac3{8}=\frac3{26},\qquad
+r_2=\frac2{11}\frac5{8}=\frac5{44}.
+\]
+归一化后$p(z_i=1)=66/131$、$p(z_i=2)=65/131$。两个局部因子接近，说明不能只看“当前词更像哪个主题”，还要同时看文档主题计数。
+
+对一次变分坐标更新，若
+$\boldsymbol\gamma=(3,2)$且该词在两主题下概率为$(0.6,0.2)$，则
+\[
+\psi(3)-\psi(5)=-\frac7{12},\qquad
+\psi(2)-\psi(5)=-\frac{13}{12}.
+\]
+未归一化责任度约为$(0.3348,0.0677)$，归一化为$(0.832,0.168)$。
+
+
+\phantomsection\label{struct:V5-C06-CH19}
+\textbf{伪代码。}主线只保留两条推断算法：完整Bayes折叠Gibbs与点参数LDA变分EM；算法\ref{alg:V5-C06-generate}仅用于说明生成方向。通用变分EM和单文档局部更新改作稳健实现细节条带，避免把模型路线、通用模板和子程序误读为五个并列选择。
+
+\phantomsection\label{struct:V5-C06-CH20}
+\textbf{输入与输出。}生成算法输入维数、长度、先验和随机数，输出完整模拟语料；
+Gibbs输入语料、$K,\boldsymbol\alpha,\boldsymbol\beta$及扫描计划，输出保留样本、后验均值和诊断；
+通用变分EM输入模型、数据、可行族和两个块优化器，输出$q$与模型参数；
+局部变分推断输入一篇文档、固定全局参数和容差，输出$\boldsymbol\gamma_m,\boldsymbol\eta_m$及局部ELBO；
+完整变分EM输入语料和初始化，输出全局参数、全部局部参数和ELBO轨迹。
+
+\phantomsection\label{struct:V5-C06-CH21}
+\textbf{参数含义。}$K$控制表示维度而非已知真主题数；$\boldsymbol\alpha$控制文档主题稀疏与均值；
+$\boldsymbol\beta$只属于完整Bayes/Gibbs模型并控制主题词先验，点参数变分EM不使用它；
+$T_{\mathrm B}$是燃烧扫描数，$T_{\mathrm S}$是留样扫描数，$L$是抽样间隔；
+$\varepsilon_{\mathrm{loc}},\varepsilon_{\mathrm{out}}$分别是局部和外层ELBO相对增量阈值；
+$T_{\mathrm{loc}},T_{\mathrm{out}}$是硬迭代上限；$R_{\mathrm{chain}}$是独立Gibbs链数，
+$R_{\mathrm{start}}$是变分随机启动数，$J_{\mathrm{ls}}$是每次Newton更新的最大回溯候选数。
+
+\phantomsection\label{struct:V5-C06-CH22}
+\begin{implementationbox}
+Gibbs可按固定种子均匀指派主题并一次性建立两张计数表；必须核验表的行列和与$\boldsymbol z$一致。
+变分EM可用多次随机单纯形初始化、确定性分块初始化或外部可复现实验初始化；每篇文档取
+$\eta_{mnk}=1/K$、$\gamma_{mk}=\alpha_k+N_m/K$是合法起点。空文档不更新主题责任度，只保留先验$\boldsymbol\gamma_m=\boldsymbol\alpha$。
+
+\phantomsection\label{struct:V5-C06-CH23}
+\textbf{循环变量与更新顺序。}Gibbs按扫描$t$、文档$m$、位置$n$、候选主题$k$循环，严格执行“减旧计数--算$K$个权重--归一化--抽新主题--加新计数”。
+局部变分按迭代$s$，先更新所有$\boldsymbol\eta_{mn}$，再汇总更新$\boldsymbol\gamma_m$。
+外层变分EM按轮次$r$，先对所有文档完成局部E步，再汇总期望计数更新$\boldsymbol\varphi$，最后以受保护Newton步更新$\boldsymbol\alpha$。
+
+\phantomsection\label{struct:V5-C06-CH24}
+\textbf{判断、停止、返回与异常。}任何非法词索引、非正超参数、非有限概率、计数不守恒或归一化失败都使过程立即停止并指出位置。
+Gibbs在完成预设燃烧与留样计划后停止；若达到预算仍未满足诊断条件，应说明当前样本尚不足以支持稳定推断。变分循环同时检查ELBO不下降、相对增量和硬上限；若Newton候选越过正域则回溯。
+结果应同时给出实际迭代数、目标轨迹和初始化方式。
+\end{implementationbox}
+
+\phantomsection\label{struct:V5-C06-CH25}
+\Needspace{3\baselineskip}
+\textbf{正确性与收敛条件。}Gibbs更新由命题\ref{prop:V5-C06-gibbs-conditional}保证；在有限状态、不可约、非周期等条件下链以目标后验为平稳分布，但有限样本仍有Monte Carlo误差。
+变分更新由命题\ref{prop:V5-C06-mean-field-coordinate}与
+\ref{prop:V5-C06-vem-monotone}保证同一个点参数模型ELBO逐块非降。
+零概率锁死、主题空置、坏初始化、过严/过松容差、数值下溢或Newton越界都可能导致数值失败或预算停止；这些状态都不得写成数学收敛。
+
+\phantomsection\label{struct:V5-C06-CH26}
+\textbf{训练时间复杂度与预测时间复杂度。}令$I=\sum_mN_m$。稠密实现的一次Gibbs扫描计算$K$个候选，时间为$O(IK)$；
+$R_{\mathrm{chain}}$条独立链的总训练时间为
+$O\!\left(R_{\mathrm{chain}}(T_{\mathrm B}+LT_{\mathrm S})IK\right)$。
+一次局部变分全语料扫描为$O(IK)$，一次M步汇总亦为$O(IK+KV)$。
+若每轮Newton最多试$J_{\mathrm{ls}}$个回溯候选，并利用式\eqref{eq:V5-C06-alpha-hessian}
+“对角矩阵加秩一矩阵”的结构在线性时间内求解，则$R_{\mathrm{start}}$次启动的总时间为
+\[
+O\!\left(R_{\mathrm{start}}T_{\mathrm{out}}
+\left[T_{\mathrm{loc}}IK+IK+KV+J_{\mathrm{ls}}K\right]\right).
+\]
+若每个Newton候选改用普通稠密线性求解，则最后一项改为
+$J_{\mathrm{ls}}K^3$。因此不能把多启动或回溯候选数藏进常数。
+新文档折入固定主题模型需$O(T_{\mathrm{loc}}N_mK)$，逐词预测另需$O(N_mK)$。
+
+\phantomsection\label{struct:V5-C06-CH27}
+\textbf{空间复杂度与复杂度假设。}Gibbs当前链的计数与指派工作内存为
+$O(KV+MK+I)$；若把$T_{\mathrm S}$个完整$\boldsymbol z$样本全部驻留内存，还须加
+$O(T_{\mathrm S}I)$，而逐样本流式落盘或在线汇总可保持前一工作内存界。
+批量变分若把全部责任度作为驻留输出需$O(IK+KV+MK)$；只有在
+$\boldsymbol\eta$逐文档流式落盘或不保留时，E步工作内存才可降到
+$O(KV+MK+K\max_mN_m)$。上述界把固定精度加法、digamma和一次类别抽样视为$O(1)$；稀疏词表、别名采样和并行同步会改变常数或参数化界，不能无条件宣称更低复杂度。
+
+\begingroup\SetAlgoLined
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-013 L2
+
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-014 L2
+\begin{keypointbox}[title={LDA折叠Gibbs抽样：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={合法语料、主题数、严格正先验、完整初始指派、固定词元顺序、扫描预算$T$与随机源},
+  output={最后合法指派/计数、完整扫描链、$t_{\rm done}$、成功词元步$i_{\rm done}$、随机调用$q_{\rm done}$、状态与最终诊断},
+  preconditions={$K\ge1,T\in\mathbb N_0$；词索引与初始主题索引合法；计数可由指派一致重建；随机类别接口合法},
+  initialization={由$z^{(0)}$重建并核对$n_{mk},n_{kv},n_{k\cdot}$，置$t_{\rm done}=i_{\rm done}=q_{\rm done}=0$},
+  loop={按固定扫描和词元次序，对每词元先临时减旧计数、形成满条件、抽新主题并恢复新计数},
+  update={减计数、抽样与加计数组成原子单词元事务；任一步失败均回滚旧指派/计数；整扫描完成后才追加链},
+  domain={全部计数为非负整数且边际一致；条件概率有限非负、和为正并归一；指派索引合法},
+  failure={语料/初值/预算非法返回$\mathtt{invalid\_input}$；类别随机源失败返回$\mathtt{random\_source\_failure}$；计数、条件归一化或索引异常返回$\mathtt{numerical\_failure}$并原子回滚},
+  stop={完成$T$个完整扫描、$T=0$或首次词元失败时停止；达到扫描上限只表示$\mathtt{completed}$的固定预算执行},
+  budget={至多$TI$个词元条件更新和随机调用，$I$为语料词元数},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$t_{\rm done}$计完整提交扫描，$i_{\rm done}$计成功词元事务，$q_{\rm done}$计实际类别随机调用},
+  diagnostics={失败$(t,i,\mathrm{stage})$、回滚确认、最小条件归一化常数、计数不变量和计划/实际扫描},
+  complexity={$O(TIK)$时间；当前链工作空间$O(KV+MK+I)$，保存全部扫描另需$O(TI)$}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begin{algorithm}[tbp]
+\caption{LDA折叠Gibbs抽样}\label{alg:V5-C06-gibbs}
+\KwIn{语料$\boldsymbol w$；主题数$K$；严格正$\boldsymbol\alpha,\boldsymbol\beta$；初始指派$\boldsymbol z^{(0)}$；扫描数$T$}
+\KwOut{最后合法指派/计数与完整扫描链；$t_{\rm done},i_{\rm done},q_{\rm done}$；$\mathtt{status}$与最终诊断}
+若语料、$K,T$、先验、初始指派或随机接口非法，则返回空结果、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+由$z^{(0)}$建立并核对计数，置$t_{\rm done}=i_{\rm done}=q_{\rm done}=0$；重建不变量失败则返回初始指派、$\mathtt{numerical\_failure}$及初始化诊断\;
+若$T=0$，则返回初始指派/计数、空扫描链、$\mathtt{completed}$及零预算诊断\;
+\For{扫描$t\leftarrow1$ \KwTo $T$}{
+  \For{$i$依预定词元次序遍历，且$i=(m,n),\ v=w_i$}{
+    保存旧指派和三项计数，再在临时事务中减一；若将产生负计数则回滚并返回$\mathtt{numerical\_failure}$及$(t,i)$计数诊断\;
+    计算并归一化$K$个条件概率；非有限、负值或总和非正时回滚并返回最后合法状态、$\mathtt{numerical\_failure}$及条件诊断\;
+    调用随机源并增加$q_{\rm done}$；调用失败或主题索引非法时回滚，分别返回$\mathtt{random\_source\_failure}$或$\mathtt{numerical\_failure}$及抽样诊断\;
+    原子提交新指派及三项加一并增加$i_{\rm done}$\;
+  }
+  原子追加$z^{(t)}\leftarrow z$并令$t_{\rm done}\leftarrow t$\;
+}
+返回最后合法指派/计数、完整链、实际计数、$\mathtt{completed}$及计数不变量最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-015 L2
+\begin{keypointbox}[title={算法执行契约：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={数据、联合模型、变分族、E/M更新接口、可行初值、外层预算$T_{\max}$、ELBO/残差容差},
+  output={最后合法$q,\Theta,\mathcal L$、ELBO轨迹、提交轮数$t_{\rm done}$、E步数$e_{\rm done}$、M步数$m_{\rm done}$、状态与最终诊断},
+  preconditions={$T_{\max}\in\mathbb N_0$；初值可行；ELBO和一阶残差可稳定计算；E/M接口承诺同一模型目标},
+  initialization={$q=q^{(0)},\Theta=\Theta^{(0)}$，新鲜计算有限ELBO/残差，$t_{\rm done}=e_{\rm done}=m_{\rm done}=0$},
+  loop={每轮在临时对象中先固定旧$\Theta$完成E步，再固定新$q^+$完成M步并复算同一ELBO},
+  update={$q^+,\Theta^+,\mathcal L^+$、可行性和单调门全部通过后才原子提交完整轮},
+  domain={$q\in\mathcal Q$、$\Theta$在参数域；ELBO/残差有限；提交轨迹不下降超过舍入容差},
+  failure={接口/初值/预算非法返回$\mathtt{invalid\_input}$；E/M更新、ELBO、可行性或单调门失败返回$\mathtt{numerical\_failure}$并回滚到上一合法轮},
+  stop={ELBO相对增量与一阶残差双证书、$T_{\max}$轮耗尽或首次失败时停止},
+  budget={至多$T_{\max}$个完整E--M提交轮，各轮各一次登记E步和M步接口调用},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$t_{\rm done}$计完整提交轮，$e_{\rm done}$和$m_{\rm done}$计实际成功完成的E/M接口调用},
+  diagnostics={初末ELBO、相对增量、一阶残差、失败$(t,\mathrm{E/M/ELBO})$、回滚确认及预算余量},
+  complexity={总时间为实际E/M调用成本之和；至少保存最后合法与当前候选两套状态}
+}
+\phantomsection\label{alg:V5-C06-generic-vem}
+\SLRobustImplementationStrip{通用变分EM模板：每轮在临时对象上依次完成E块与M块，复算同一ELBO及一阶残差；只有可行性、单调门和有限性全通过才原子提交。双证书满足报$\mathtt{converged}$，预算耗尽报$\mathtt{budget\_stop}$，接口或单调门失败回滚并报$\mathtt{numerical\_failure}$。}
+\end{AlgorithmContract}
+
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-016 L2
+\begin{keypointbox}[title={算法执行契约：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={单文档词索引、训练活动词表、固定严格正$\alpha$与在活动词表上严格正的主题--词概率$\varphi$、局部预算$T_{\rm loc}$及ELBO/参数容差},
+  output={最后合法$\gamma_m,\eta_m$与局部ELBO、提交轮$s_{\rm done}$、责任度更新$p_{\rm done}$、状态与最终诊断},
+  preconditions={词索引属于训练活动词表，$\alpha$有限严格正，$\varphi$逐主题归一且每个目标词在每个主题下严格为正，预算非负、容差合法},
+  initialization={非空文档用均匀$\eta$及$\gamma=\alpha+N_m/K$并计算基线ELBO；$s_{\rm done}=p_{\rm done}=0$},
+  loop={每轮在临时表中逐词以log-sum-exp更新责任度，再同步形成$\gamma^+$与局部ELBO},
+  update={全篇$\eta^+,\gamma^+$、ELBO和单纯形检查全部通过后才原子提交完整局部轮},
+  domain={$\eta_{mn}\in\operatorname{ri}(\Delta^{K-1})$、$\gamma_{mk}>0$、目标词混合概率严格为正且ELBO有限},
+  failure={词表外项或任一目标词概率非正返回$\mathtt{invalid\_input}(\mathtt{support\_failure})$；其他接口/词索引/概率模型非法返回$\mathtt{invalid\_input}$；责任度归一化、digamma、ELBO或单调门失败返回$\mathtt{numerical\_failure}$并回滚},
+  stop={空文档直接$\mathtt{completed}$；非空文档双容差证书、$T_{\rm loc}$轮耗尽或首次失败时停止},
+  budget={非空文档至多$T_{\rm loc}$个完整局部轮和$T_{\rm loc}N_m$次责任度向量更新},
+  status={$\mathtt{completed}$、$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$s_{\rm done}$计完整提交局部轮，$p_{\rm done}$计成功形成的词责任度候选},
+  diagnostics={空文档分支、初末ELBO、相对增量、最大参数变化、失败$(s,n)$与回滚、预算余量},
+  complexity={$O(s_{\rm done}N_mK)$时间、$O(N_mK+K)$空间}
+}
+\phantomsection\label{alg:V5-C06-local-vi}
+\SLRobustImplementationStrip{单文档局部子程序：空文档返回$\gamma_m=\alpha$；非空文档在对数域同步更新式\eqref{eq:V5-C06-eta-update}与\eqref{eq:V5-C06-gamma-update}，整篇候选通过ELBO与参数双门后才提交。词表支持失败报$\mathtt{invalid\_input}$，预算耗尽报$\mathtt{budget\_stop}$，数值或单调门失败回滚。}
+\end{AlgorithmContract}
+
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-017 L1
+\paragraph{读前自检：点参数LDA变分EM（多启动）：执行契约。}点参数LDA变分EM（多启动）输入“训练语料及活动词表、主题数$K$、严格正初始$\alpha,\varphi$、局部/外层双预算和容差、可复现启动表及Newton回溯预算”，条件“语料词索引和维数合法，活动词表每项至少出现一次，$K,R_{\rm start}\ge1$，初值在整个活动词表上严格正归一，全部预算为非负整数且容差/并列规则冻结”；请执行“完整局部推断、临时主题矩阵、临时$\alpha$和新ELBO全部通过归一化/单调门禁后，才原子提交一次外层轮”，以“每启动满足外层ELBO/参数双证书、外层预算耗尽或首次启动内失败”判停。\par
+% KNOWLEDGE-PLAN: KN-V5-C35-ALGORITHM_IDEA-018 L2
+\begin{keypointbox}[title={点参数LDA变分EM（多启动）：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={训练语料及活动词表、主题数$K$、严格正初始$\alpha,\varphi$、局部/外层双预算和容差、可复现启动表及Newton回溯预算},
+  output={各启动最后合法状态与轨迹、同口径最佳$\widehat\alpha,\widehat\varphi,\gamma,\eta$或未定义标志、实际启动/外层/文档/主题/线搜索计数、规范状态与最终诊断},
+  preconditions={语料词索引和维数合法，活动词表每项至少出现一次，$K,R_{\rm start}\ge1$，初值在整个活动词表上严格正归一，全部预算为非负整数且容差/并列规则冻结},
+  initialization={清空$\mathtt{record}[1{:}R_{\rm start}]$并置总计数为$0$；每个记录独立保存$\mathtt{feasible}$、$\mathtt{status}$、最后合法参数、最终ELBO和诊断，启动内临时标志不得在跨启动选择中使用},
+  loop={按启动、外层轮、文档、主题和Newton试探的命名循环推进；启动内失败先设置局部标志并带标签退出，退出前必须原子写入该启动记录},
+  update={完整局部推断、临时主题矩阵、临时$\alpha$和新ELBO全部通过归一化/单调门禁后，才原子提交一次外层轮},
+  domain={$\alpha$严格正，$\varphi$在活动词表上逐项严格正且逐主题归一，局部责任度和$\gamma$有限严格正，已提交ELBO有限且不异常下降},
+  failure={词表/支持契约失败返回$\mathtt{invalid\_input}(\mathtt{support\_failure})$；其他全局输入非法返回$\mathtt{invalid\_input}$；启动源失败记录$\mathtt{random\_source\_failure}$；局部预算耗尽传播$\mathtt{budget\_stop}$；空主题、支持塌缩或非有限更新记录$\mathtt{numerical\_failure}$；Newton预算内无正参数上升步记录$\mathtt{line\_search\_failed}$，均保留上一合法启动状态},
+  stop={每启动满足外层ELBO/参数双证书、外层预算耗尽或首次启动内失败；全部启动记录完成后按冻结口径选择},
+  budget={至多$R_{\rm start}T_{\rm out}$个原子外层轮；每轮至多$M T_{\rm loc}$个局部轮、$K$个主题更新与$J_{\rm ls}$个Newton候选},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{line\_search\_failed}$、$\mathtt{random\_source\_failure}$},
+  iterations={$s_{\rm done}$计实际记录启动，$r_{\rm done}$计原子外层轮，$m_{\rm done},k_{\rm done},j_{\rm done}$分别计完成文档、主题与Newton试探},
+  diagnostics={$\mathtt{record}[s]$逐启动保存ELBO/双停止量、可行性、局部状态、空主题、Newton余量、失败$(s,r,m,k,j)$与命名循环阶段；跨启动选择只读记录数组并报告候选集合},
+  complexity={最坏外层代价按$R_{\rm start}T_{\rm out}$乘以全部局部推断、稀疏词元责任度、主题归一和实际Newton试探成本累计}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\paragraph{稳健实现说明：多启动与受保护Newton。}
+\begin{algorithm}[tbp]
+\caption{点参数LDA变分EM（多启动）}\label{alg:V5-C06-vem}
+\KwIn{语料$\mathcal D$；$K$；严格正初始$\boldsymbol\alpha,\boldsymbol\varphi$；
+$\varepsilon_{\mathrm{loc}},\varepsilon_{\mathrm{out}},T_{\mathrm{loc}},T_{\mathrm{out}}$；
+$R_{\mathrm{start}}$个可复现启动；Newton回溯上限$J_{\mathrm{ls}}$}
+\KwOut{各启动最后合法状态与最佳参数；$s_{\rm done},r_{\rm done},m_{\rm done},k_{\rm done},j_{\rm done}$；$\mathtt{status}$与诊断}
+冻结训练活动词表并核验其中每个词至少出现一次；再核验词索引、维数、$\alpha$正性、$\varphi$在整个活动词表上的严格正性、容差、预算与启动表。支持失败返回空结果、计数$0$、$\mathtt{invalid\_input}$及$\mathtt{support\_failure}$位置诊断，其余输入失败返回字段诊断\;
+清空$\mathtt{record}[1{:}R_{\mathrm{start}}]$并置$s_{\rm done}=r_{\rm done}=m_{\rm done}=k_{\rm done}=j_{\rm done}=0$\;
+\For{标记启动循环$\mathtt{start\_loop}$：$s\leftarrow1$ \KwTo $R_{\mathrm{start}}$}{
+  置局部$\mathtt{startup\_ok}\leftarrow\mathtt{true}$并初始化该启动临时状态；置$\mathtt{record}[s].\mathtt{feasible}\leftarrow\mathtt{false}$、$\mathtt{record}[s].\mathtt{status}\leftarrow\mathtt{invalid\_input}$\;
+  若启动随机源失败，置失败状态$\mathtt{random\_source\_failure}$和$\mathtt{startup\_ok}\leftarrow\mathtt{false}$\;
+  若启动状态合法则计算基线ELBO；非有限时置失败状态$\mathtt{numerical\_failure}$和$\mathtt{startup\_ok}\leftarrow\mathtt{false}$\;
+  \If{$\mathtt{startup\_ok}=\mathtt{true}$}{
+    \For{标记外层循环$\mathtt{outer\_loop}$：$r\leftarrow1$ \KwTo $T_{\mathrm{out}}$}{
+      \For{标记文档循环$\mathtt{document\_loop}$：$m\leftarrow1$ \KwTo $M$}{
+        按式\eqref{eq:V5-C06-eta-update}--\eqref{eq:V5-C06-gamma-update}及局部实现条带执行单文档更新并增加$m_{\rm done}$；保存局部状态与诊断\;
+        若局部未收敛，设置相应$\mathtt{budget\_stop}$或$\mathtt{numerical\_failure}$，令$\mathtt{startup\_ok}\leftarrow\mathtt{false}$并\textbf{break }$\mathtt{document\_loop}$\;
+      }
+      若$\mathtt{startup\_ok}=\mathtt{false}$，则\textbf{break }$\mathtt{outer\_loop}$；不得执行M步\;
+      汇总临时$C_{kv}^+$\;
+      \For{标记主题循环$\mathtt{topic\_loop}$：$k\leftarrow1$ \KwTo $K$}{
+        若该行任一$C_{kv}^+$非有限，记录$(s,r,k,v)$与$\mathtt{numerical\_failure}(\mathtt{nonfinite\_count})$，令$\mathtt{startup\_ok}\leftarrow\mathtt{false}$并\textbf{break }$\mathtt{topic\_loop}$\;
+        计算$C_{k\cdot}^+$；若$C_{k\cdot}^+\le0$，记录$(s,r,k)$与$\mathtt{numerical\_failure}(\mathtt{empty\_topic})$，令$\mathtt{startup\_ok}\leftarrow\mathtt{false}$并\textbf{break }$\mathtt{topic\_loop}$\;
+        若该行任一$C_{kv}^+\le0$，记录$(s,r,k,v)$与$\mathtt{numerical\_failure}(\mathtt{support\_collapse})$，令$\mathtt{startup\_ok}\leftarrow\mathtt{false}$并\textbf{break }$\mathtt{topic\_loop}$\;
+        对每个$v$在临时行形成严格正$\varphi_{kv}^+=C_{kv}^+/C_{k\cdot}^+$，核验整行正性与归一化后增加$k_{\rm done}$\;
+      }
+      若$\mathtt{startup\_ok}=\mathtt{false}$，则\textbf{break }$\mathtt{outer\_loop}$\;
+      在至多$J_{\rm ls}$个候选内形成严格正$\alpha^+$并逐次增加$j_{\rm done}$；若无合格步，置$\mathtt{line\_search\_failed}$与$\mathtt{startup\_ok}=\mathtt{false}$并\textbf{break }$\mathtt{outer\_loop}$\;
+      用完整临时候选计算ELBO；若非有限或异常下降，置$\mathtt{numerical\_failure}$与$\mathtt{startup\_ok}=\mathtt{false}$并\textbf{break }$\mathtt{outer\_loop}$\;
+      原子提交$(\alpha,\varphi,\gamma,\eta,\mathrm{ELBO})$整轮候选并增加$r_{\rm done}$\;
+      若外层双证书满足，置启动状态$\mathtt{converged}$并\textbf{break }$\mathtt{outer\_loop}$\;
+    }
+    若$\mathtt{startup\_ok}=\mathtt{true}$且未收敛，置启动状态$\mathtt{budget\_stop}$\;
+  }
+  原子写入$\mathtt{record}[s].\mathtt{feasible}\leftarrow\mathtt{startup\_ok}$、$\mathtt{record}[s].\mathtt{status}$、最后合法参数、最终ELBO、计数和诊断，并增加$s_{\rm done}$\;
+  \If{$\mathtt{startup\_ok}=\mathtt{false}$}{在此唯一位置\textbf{continue }$\mathtt{start\_loop}$\;}
+}
+令$\mathcal S_{\rm acc}=\{s:\mathtt{record}[s].\mathtt{feasible}=\mathtt{true},\ \mathtt{record}[s].\mathtt{status}\in\{\mathtt{converged},\mathtt{budget\_stop}\}\}$；跨启动阶段只读$\mathtt{record}$，在评价口径相同的$\mathcal S_{\rm acc}$中按记录的最终ELBO和冻结并列规则选择\;
+若$\mathcal S_{\rm acc}=\varnothing$，按全部$\mathtt{record}[s].\mathtt{status}$的确定性优先级返回$\mathtt{random\_source\_failure}$、$\mathtt{line\_search\_failed}$、$\mathtt{budget\_stop}$或$\mathtt{numerical\_failure}$及全部失败位置\;
+返回最佳最后合法参数、所选启动规范状态、实际计数和跨启动最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\FloatBarrier
+\SLRobustImplementationStrip{核心五步是逐文档局部E步、汇总期望计数、归一化M步、ELBO验收、在同一评价口径内选择多启动；36行故障树属于稳健实现细节}
+\endgroup
+
+\phantomsection\label{struct:V5-C06-CH28}
+\textbf{适用条件。}LDA适合无监督探索中长文本集合、词袋近似尚可、主题可由共现词解释且主题数可通过验证选择的场景。
+短文本、强顺序语义、动态主题、监督预测或词义高度上下文化时，需要聚合文本、序列主题模型、动态/监督扩展或上下文表示；不能只调$K$掩盖模型错配。
+
+\phantomsection\label{struct:V5-C06-CH29}
+\textbf{局限性。}主题标签置换不可识别；似然非凸导致局部最优；Gibbs可能混合缓慢，平均场常低估后验相关与方差；固定$K$、词袋假设和单一词义限制表达；高频停用词、极稀有词和语料漂移会扭曲主题。主题“可解释”仍需人工和稳定性检验，不能由困惑度单独保证。
+
+\phantomsection\label{struct:V5-C06-CH30}
+\begin{pitfallbox}
+Gibbs计算前未删当前词元；把$n_{mk}$和$n_{kv}$方向写反；遗漏$\boldsymbol\beta$；
+把完整Bayes Gibbs与点参数变分EM写成同一个后验；把未归一化期望计数当$\boldsymbol\varphi$；
+在$\eta$更新中漏掉digamma或归一化；把ELBO当真实对数证据；
+Newton步产生非正$\alpha$仍继续；用训练词同时推断文档主题并评价同一词的预测概率；只跑一条链或一次初始化便宣布稳定。
+\end{pitfallbox}
+
+\phantomsection\label{struct:V5-C06-CH31}
+% KNOWLEDGE-PLAN: KN-V5-C35-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：稳健实现说明：多启动与受保护Newton。}围绕稳健实现说明：多启动与受保护Newton，先采用条件“对比表首个数据行是“$\boldsymbol\theta_m$与$\boldsymbol\varphi_k$｜前者是文档在主题上的分布，维数$K$｜后者是主题在词表上的分布，维数$V$””，再按列复述“$\boldsymbol\theta_m$与$\boldsymbol\varphi_k$｜前者是文档在主题上的分布，维数$K$｜后者是主题在词表上的分布，维数$V$”中的对象、假设与结论；最后验证各列均对应首行对象“$\boldsymbol\theta_m$与$\boldsymbol\varphi_k$”，且未与表中下一行互换。\par
+
+\begin{comparisonbox}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.18\textwidth}XX@{}}
+\toprule
+对象 & 第一项 & 第二项 \\
+\midrule
+$\boldsymbol\theta_m$与$\boldsymbol\varphi_k$ & 前者是文档在主题上的分布，维数$K$ & 后者是主题在词表上的分布，维数$V$ \\
+$\boldsymbol\alpha$与$\boldsymbol\beta$ & 前者平滑文档--主题计数 & 后者平滑主题--词计数 \\
+$\boldsymbol\eta_{mn}$与$\boldsymbol\varphi_k$ & 前者是某词元属于主题的变分责任度 & 后者是给定主题生成词的模型概率 \\
+折叠与非折叠 & 折叠法积分消去共轭概率向量 & 非折叠法显式抽样或近似它们 \\
+Gibbs与变分 & 前者输出相关后验样本并需链诊断 & 后者输出确定性近似并需ELBO与多启动诊断 \\
+困惑度与解释性 & 困惑度衡量留出预测 & 解释性关注语义连贯、稳定与人工可读性 \\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+评估时，把训练集之外的词元记为$\mathcal H$，用训练部分或文档已观察部分推断
+$\widehat{\boldsymbol\theta}_m$，再计算
+\begin{equation}
+\operatorname{perplexity}(\mathcal H)
+=\exp\!\left\{-\frac{1}{|\mathcal H|}
+\sum_{(m,n)\in\mathcal H}
+\log\sum_{k=1}^{K}\widehat\theta_{mk}\widehat\varphi_{k,w_{mn}}
+\right\}.
+\label{eq:V5-C06-perplexity}
+\end{equation}
+必须固定切分、词表和未知词处理；文档完成式评价不能让留出词参与
+$\widehat{\boldsymbol\theta}_m$的推断。对每个留出词还须在取对数前核验
+$w_{mn}\in\mathcal V_{\mathrm{tr}}$（或已经映射到训练中出现过的$\mathtt{UNK}$）以及
+$\sum_k\widehat\theta_{mk}\widehat\varphi_{k,w_{mn}}>0$；任一条件失败就返回
+$\mathtt{invalid\_input}(\mathtt{support\_failure},m,n,w_{mn})$，困惑度记为未定义，不能把$\log0$送入浮点计算。
+
+\paragraph{公平比较原则。}
+比较两条路线时，应使用同一训练/验证/测试切分，并只在训练数据上确定词表与预处理规则；固定$K$、初始化原则和计算预算。Gibbs法报告链间一致性、自相关或有效样本量，变分法报告ELBO轨迹与不同初值的离散程度；两者使用同一困惑度、主题稳定性和语义连贯度口径。
+还必须把“完整Bayes LDA”和“点参数LDA变体”登记为不同模型配置；否则二者结果差异同时包含模型目标与推断方法变化，不能归因于推断算法。若词表、遮罩、预算或主题匹配规则不同，同样不能作单因素归因。
+
+
+\Needspace{4\baselineskip}
+\SLDirectSection{例题与练习}{sec:V5-C06-S06}
+\begin{SLRunningExample}{RUN-DOC-TERM-01}{V5-C06-lda}{贯穿例：文档—词项矩阵小例}{把同一非负整数词项计数矩阵展开为有序词元，并为主题比例与主题词分布加入Dirichlet随机层。}
+沿用词为行、文档为列的计数矩阵
+\[
+\boldsymbol X=\begin{bmatrix}2&0&1\\1&2&0\\0&1&3\end{bmatrix}.
+\]
+矩阵元素均为非负整数，三列总数分别为$3,3,4$且没有空文档，因而既符合上一站的词项计数约定，也能合法展开为LDA的有序观测词元。本章不把它只写成$WH$，而是分别用$\boldsymbol\theta_m$与$\boldsymbol\varphi_k$生成主题指派和单词；矩阵总计数等于词元数$I=10$。上一站见\SLRunningExampleRef{RUN-DOC-TERM-01}{V4-C06-plsa}{第4册第6章的PLSA概率分解}。
+\end{SLRunningExample}
+
+\phantomsection\label{struct:V5-C06-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[一次折叠Gibbs更新]\label{exm:V5-C06-gibbs-step}
+取本章小型例子的计数与超参数。求两个候选主题的满条件概率，并说明旧主题计数何时删除、何时恢复。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C06-gibbs-step}
+\begin{solution}
+\SLReadTranslation{更新当前词元主题前，先从“文档--主题”和“主题--词”两张计数表删除它的旧贡献；用删除后的计数比较两个候选主题，归一化抽样后再把词元加入新主题。}
+\SolGiven 本章小例的删除后计数与正超参数已固定；两个候选未归一化质量为有限正数，因此归一化分母严格为正。
+\SLMethodTrigger{折叠Gibbs单点更新必须遵循“减旧计数--算$K$个满条件质量--归一化抽样--加新计数”，且两个计数因子都使用排除当前词元的同一状态。}
+\SolPlan 先删除旧主题贡献，按式\eqref{eq:V5-C06-gibbs-conditional}分别算$r_1,r_2$，除以$r_1+r_2$得到概率；抽样后只把新主题对应的两项计数各加一。
+\SolDerive 删去当前词元后得
+\[
+r_1=\frac3{26},\qquad r_2=\frac5{44},\qquad
+r_1+r_2=\frac{131}{572}.
+\]
+归一化后
+\[
+\Pr(z_i=1\mid\boldsymbol z_{-i},\boldsymbol w)
+=\frac{r_1}{r_1+r_2}=\frac{66}{131},\qquad
+\Pr(z_i=2\mid\boldsymbol z_{-i},\boldsymbol w)=\frac{65}{131}.
+\]
+必须在计算前从旧主题对应的两张表各减一；抽到新主题后再加一。
+\SolCheck $66/131+65/131=1$；若把抽得的新主题再删去并把旧主题加回，两张计数表都精确恢复到更新前状态，说明“减--算--抽--加”保持词元总数守恒。
+\SolAnswer 本次两个候选主题的满条件概率为$(66/131,65/131)$。旧主题贡献必须在计算前从两张计数表各删除一次，抽样后再向新主题对应的两张表各加一；漏删、重复删或漏加都会改变目标Gibbs核。
+\end{solution}
+\Needspace{6\baselineskip}
+\begin{example}[一次平均场责任度更新]\label{exm:V5-C06-vi-step}
+给定$K=2$、$\boldsymbol\gamma=(3,2)$以及
+$(\varphi_{1v},\varphi_{2v})=(0.6,0.2)$，计算$\boldsymbol\eta_n$。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C06-vi-step}
+\begin{solution}
+\SLReadTranslation{对当前词元分别计算两个主题的平均场未归一化责任度：文档主题项由digamma差给出，主题词项由$\varphi_{kv}$给出；最后统一归一化。}
+\SolGiven $K=2$、$\boldsymbol\gamma=(3,2)$，总参数为$5$；$(\varphi_{1v},\varphi_{2v})=(0.6,0.2)$均严格为正，两个候选权重有共同的正归一化分母。
+\SLMethodTrigger{坐标更新使用$u_k=\exp\{\psi(\gamma_k)-\psi(\sum_j\gamma_j)+\log\varphi_{kv}\}=\varphi_{kv}e^{\psi(\gamma_k)-\psi(5)}$，再令$\eta_{nk}=u_k/\sum_j u_j$。}
+\SolPlan 先利用整数digamma恒等式求两个差值，形成$u_1,u_2$，再归一化并用权重比独立核对责任度比。
+\SolDerive 整数digamma差给出
+\[
+\psi(3)-\psi(5)=-\frac7{12},\qquad
+\psi(2)-\psi(5)=-\frac{13}{12},
+\]
+故未归一化权重和责任度依次为
+\[
+\boldsymbol u
+=\bigl(0.6e^{-7/12},\,0.2e^{-13/12}\bigr)
+\approx(0.3348,0.0677),\qquad
+\boldsymbol\eta_n
+=\frac{\boldsymbol u}{u_1+u_2}
+\approx(0.832,0.168).
+\]
+\SolCheck 两个主题词概率都严格为正，且
+$u_1/u_2=3e^{1/2}\approx4.946$与$0.832/0.168$在舍入误差内一致；同时$0.832+0.168=1$。
+\SolAnswer 当前词元的平均场责任度约为$\boldsymbol\eta_n=(0.832,0.168)$。统一归一化和$\varphi_{kv}>0$是该对数形式坐标更新的定义条件，不是事后的显示修正。
+\end{solution}
+\Needspace{6\baselineskip}
+\begin{example}[留出困惑度]\label{exm:V5-C06-perplexity}
+两个留出词的预测概率分别为$0.25$和$0.5$。求每词困惑度；若错误地把概率改成训练后重估得到的$0.5$和$0.8$，说明为什么数值虽更小却不可比较。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C06-perplexity}
+\begin{solution}
+\SLReadTranslation{用训练完成后冻结的模型评估两个留出词：先平均它们的负对数预测概率，再指数化为每词困惑度；使用留出词重估后的概率属于信息泄漏，不能与冻结协议横向比较。}
+\SolGiven 合法留出预测概率为$0.25,0.5$，均严格为正，留出词数为$N=2$；另一组$0.5,0.8$来自看过留出词后的重估模型。
+\SLMethodTrigger{固定模型的每词困惑度为$\exp\{-N^{-1}\sum_{i=1}^N\log p(w_i)\}$；所有候选数值必须来自同一训练/冻结/评估协议。}
+\SolPlan 将两个合法概率代入平均负对数似然并化成几何平均的倒数；再单独计算泄漏数值，只用于说明协议改变而非性能提升。
+\SolDerive
+\[
+\operatorname{perplexity}
+=\exp\{-\tfrac12(\log0.25+\log0.5)\}
+=\frac1{\sqrt{0.125}}=2\sqrt2\approx2.828.
+\]
+若让留出词参与重估，则表面数值变成
+\[
+\operatorname{perplexity}_{\rm leak}
+=\exp\{-\tfrac12(\log0.5+\log0.8)\}
+=\frac1{\sqrt{0.4}}\approx1.581.
+\]
+\SolCheck 合法值也可由预测概率几何平均复算：
+$\operatorname{perplexity}=1/\sqrt{0.25\cdot0.5}=2\sqrt2$；两个概率均严格为正，因此没有支持失败。
+\SolAnswer 冻结模型的合法留出困惑度为$2\sqrt2\approx2.828$。重估后得到的$1/\sqrt{0.4}\approx1.581$使用了留出信息，与前者不是同一评估协议，不能据此宣称困惑度改善。
+\end{solution}
+
+\phantomsection\label{struct:V5-C06-CH33}
+\Needspace{4\baselineskip}
+\phantomsection\label{struct:V5-C06-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V5-C06-CH35}
+本章共16道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-20-0002; source_number=20.2
+% SOLUTION-SOURCE: original_book; source_id=EXR-20-0002; source_number=20.2
+\begin{exercise}\label{ex:V5-C06-S01-01}
+对第四册潜在语义分析章使用的固定小语料建立$K=2$的LDA分析方案：给出词表、生成变量、一次可复现初始化、至少一次推断更新以及文档主题和主题关键词的输出格式。若不实际运行随机程序，哪些结论只能写成“计算方案”而不能虚构成数值结果？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S01-01}
+\begin{chapterexercisesolution}{ex:V5-C06-S01-01}
+\nopagebreak[4]
+沿用第四册固定的词袋矩阵，按下列顺序编码词表：
+（\texttt{book}, \texttt{dads}, \texttt{dummies}, \texttt{estate},
+\texttt{guide}, \texttt{investing}, \texttt{market}, \texttt{real},
+\texttt{rich}, \texttt{stock}, \texttt{value}）。九篇文档依次为
+$T1=$（\texttt{guide}, \texttt{investing}, \texttt{market}, \texttt{stock}），
+$T2=$（\texttt{dummies}, \texttt{investing}），
+$T3=$（\texttt{book}, \texttt{investing}, \texttt{market}, \texttt{stock}），
+$T4=$（\texttt{book}, \texttt{investing}, \texttt{value}），
+$T5=$（\texttt{investing}, \texttt{value}），
+$T6=$（\texttt{dads}, \texttt{guide}, \texttt{investing}, \texttt{rich}, \texttt{rich}），
+$T7=$（\texttt{estate}, \texttt{investing}, \texttt{real}），
+$T8=$（\texttt{dummies}, \texttt{investing}, \texttt{stock}），
+$T9=$（\texttt{dads}, \texttt{estate}, \texttt{investing}, \texttt{real}, \texttt{rich}），
+共31个词元。
+
+取$K=2$、$\boldsymbol\alpha=(1,1)$、$\boldsymbol\beta=\boldsymbol1_{11}$；
+每篇文档内部按上述词表顺序展开词元，并令
+$z_{mn}^{(0)}=1$当且仅当$m+n$为偶数，否则令其为2。这给出不依赖随机数的可复现初始化。
+以$T1$首词\texttt{guide}为一次手算更新：删去它后，
+$(n_{11}^{-i},n_{12}^{-i})=(1,2)$、
+$(n_{1,\mathrm{guide}}^{-i},n_{2,\mathrm{guide}}^{-i})=(1,0)$、
+$(n_{1\cdot}^{-i},n_{2\cdot}^{-i})=(14,16)$，故两个未归一化权重为
+\[
+r_1=\frac{1+1}{3+2}\frac{1+1}{14+11}=\frac4{125},\qquad
+r_2=\frac{2+1}{3+2}\frac{0+1}{16+11}=\frac1{45}.
+\]
+归一化链为
+\[
+r_1+r_2=\frac{61}{1125},\qquad
+\Pr(z_i=1\mid-)=\frac{36}{61},\qquad
+\Pr(z_i=2\mid-)=\frac{25}{61}.
+\]
+这一步核验的是“减--算”；实际“抽--加”
+还须记录伪随机生成器、实现版本与种子，不能把未执行的随机抽样写成既成结果。
+
+最终输出应固定为两张表：$T_m\mid\widehat\theta_{m1},\widehat\theta_{m2}$，以及
+$k\mid$按$\widehat\varphi_{kv}$降序排列的词与概率；另附迭代数、留样规则、种子和诊断量。
+其中每个留样状态的归一化估计量是
+\[
+\widehat\theta_{mk}
+=\frac{n_{mk}+\alpha_k}{N_m+\alpha_0},\qquad
+\widehat\varphi_{kv}
+=\frac{n_{kv}+\beta_v}{n_{k\cdot}+\beta_0},
+\]
+多次留样时再对这些估计量作样本平均。
+变分方案也须记录初始$\boldsymbol\varphi$，按算法\ref{alg:V5-C06-vem}完成局部更新和一次归一化期望计数M步。
+若没有实际运行程序，只能报告上述数据编码、公式、手算条件更新、输出表结构和验收条件；
+不能声称某词最终属于某主题、某文档比例为何值，也不能虚构困惑度或收敛轮数。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-20-0003; source_number=20.3
+% SOLUTION-SOURCE: original_book; source_id=EXR-20-0003; source_number=20.3
+\begin{exercise}\label{ex:V5-C06-S03-01}
+分别指出折叠Gibbs与变分EM中Dirichlet分布出现的位置，并解释共轭性、平滑和期望对数各自为何重要。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S03-01}
+\begin{chapterexercisesolution}{ex:V5-C06-S03-01}
+\nopagebreak[4]
+Gibbs中$\boldsymbol\theta_m\sim\operatorname{Dir}(\boldsymbol\alpha)$、
+$\boldsymbol\varphi_k\sim\operatorname{Dir}(\boldsymbol\beta)$与类别似然共轭，使二者可积分消去，留下Beta函数比值和式\eqref{eq:V5-C06-gibbs-conditional}；
+$\boldsymbol\alpha,\boldsymbol\beta$又以伪计数平滑零计数。
+\[
+\int p(\boldsymbol\theta_m\mid\boldsymbol\alpha)
+\prod_k\theta_{mk}^{n_{mk}}\,\mathrm d\boldsymbol\theta_m
+=\frac{B(\boldsymbol n_m+\boldsymbol\alpha)}{B(\boldsymbol\alpha)},\qquad
+\int p(\boldsymbol\varphi_k\mid\boldsymbol\beta)
+\prod_v\varphi_{kv}^{n_{kv}}\,\mathrm d\boldsymbol\varphi_k
+=\frac{B(\boldsymbol n_k+\boldsymbol\beta)}{B(\boldsymbol\beta)}.
+\]
+
+变分法中$q(\boldsymbol\theta_m)=\operatorname{Dir}(\boldsymbol\gamma_m)$，其
+\[
+\mathbb E_q\log\theta_{mk}
+=\psi(\gamma_{mk})-\psi(\gamma_{m0}),\qquad
+\eta_{mnk}\propto
+\varphi_{k,w_{mn}}\exp\{\mathbb E_q\log\theta_{mk}\},
+\]
+进入责任度更新；模型先验仍通过
+\[
+\gamma_{mk}=\alpha_k+\sum_n\eta_{mnk},\qquad
+\sum_k\eta_{mnk}=1
+\]
+提供平滑。
+因此共轭性保证解析族闭合，平滑避免零概率，期望对数则是平均场坐标更新的自然参数，三者作用不同。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-20-0004; source_number=20.4
+% SOLUTION-SOURCE: original_book; source_id=EXR-20-0004; source_number=20.4
+\begin{exercise}\label{ex:V5-C06-S05-01}
+以$I,K,V,M,T_{\mathrm G},T_{\mathrm E},T_{\mathrm M}$为规模参数，给出稠密折叠Gibbs和批量变分EM的训练时间、预测时间与空间复杂度，并说明每个界的实现假设。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S05-01}
+\begin{chapterexercisesolution}{ex:V5-C06-S05-01}
+\nopagebreak[4]
+令$T_{\mathrm G}$为Gibbs总扫描数，则稠密候选计算是
+$O(T_{\mathrm G}IK)$。更完整地，
+\[
+\text{Gibbs训练}=O(T_{\mathrm G}IK),\qquad
+\text{新文档折入}=O(T_{\mathrm E}N_mK),\qquad
+\text{工作空间}=O(KV+MK+I).
+\]
+若$T_{\mathrm S}$个完整指派样本全部驻留内存，还须加$O(T_{\mathrm S}I)$，流式落盘或在线汇总则不加。
+令变分EM外层为$T_{\mathrm M}$、每个E步平均$T_{\mathrm E}$轮，则训练为
+\[
+\text{变分训练}
+=O(T_{\mathrm M}T_{\mathrm E}IK+T_{\mathrm M}KV),\qquad
+\text{新文档推断}=O(T_{\mathrm E}N_mK).
+\]
+批量保存责任度与流式处理的空间界分别为
+\[
+O(IK+KV+MK),\qquad
+O(K\max_mN_m+KV+MK).
+\]
+这里还假设每个外层轮次只做固定上限个Newton候选，并利用Hessian的对角加秩一结构以$O(K)$求解；若用普通稠密求解，训练界另加$O(T_{\mathrm M}K^3)$。
+这些界假设稠密遍历$K$个主题、固定精度特殊函数和$O(1)$数组访问；稀疏/并行实现需另列同步与索引成本。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-20-0005; source_number=20.5
+% SOLUTION-SOURCE: original_book; source_id=EXR-20-0005; source_number=20.5
+\begin{exercise}\label{ex:V5-C06-S04-01}
+证明精确块更新下变分EM的ELBO单调不减；说明为什么这不自动证明真实证据在每个受限E步后等于ELBO，也不保证参数收敛到全局最优。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S04-01}
+\begin{chapterexercisesolution}{ex:V5-C06-S04-01}
+\nopagebreak[4]
+固定模型参数的精确块E更新不会降低ELBO；固定新$q$的精确块M更新也不会降低ELBO，故
+\[
+\mathcal L(q^{t},\Theta^{t})
+\le\mathcal L(q^{t+1},\Theta^{t})
+\le\mathcal L(q^{t+1},\Theta^{t+1}).
+\]
+ELBO有上界时其数值收敛。由式\eqref{eq:V5-C06-elbo-identity}，
+\[
+\log p(\boldsymbol w\mid\Theta)
+=\mathcal L(q,\Theta)
++\KL\!\left(q(\boldsymbol h)\,\middle\|\,p(\boldsymbol h\mid\boldsymbol w,\Theta)\right),
+\]
+ELBO等于真实证据还要求KL间隙为零；受限平均场通常不满足。
+非凸目标、标签置换和边界驻点又说明ELBO值收敛不等于参数唯一，更不等于全局最优。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S02-01}
+写出$M=3,K=4,V=10$时$\boldsymbol\theta,\boldsymbol\varphi,\boldsymbol z,\boldsymbol w$的维数与取值域，并把式\eqref{eq:V5-C06-joint}按板块逐项核对。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S02-01}
+\begin{chapterexercisesolution}{ex:V5-C06-S02-01}
+\nopagebreak[4]
+\[
+\boldsymbol\theta=(\theta_{mk})\in(\Delta^3)^3
+\quad(3\times4),\qquad
+\boldsymbol\varphi=(\varphi_{kv})\in(\Delta^9)^4
+\quad(4\times10).
+\]
+两组离散变量按文档长度形成锯齿形序列：
+\[
+z_{mn}\in\{1,2,3,4\},\qquad
+w_{mn}\in\{1,\ldots,10\},\qquad
+n=1,\ldots,N_m.
+\]
+式\eqref{eq:V5-C06-joint}逐板块展开为
+\[
+\prod_{k=1}^{4}p(\boldsymbol\varphi_k\mid\boldsymbol\beta)
+\prod_{m=1}^{3}p(\boldsymbol\theta_m\mid\boldsymbol\alpha)
+\prod_{m=1}^{3}\prod_{n=1}^{N_m}
+p(z_{mn}\mid\boldsymbol\theta_m)
+p(w_{mn}\mid z_{mn},\boldsymbol\varphi).
+\]
+因此有4个主题先验因子、3个文档先验因子和$\sum_mN_m$对“主题指派×单词发射”因子，恰与三个板块重复次数一致。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S02-02}
+从概率图判断：$w_{mn}$在给定哪些变量时与其他词位置条件独立？边缘化$\boldsymbol\theta_m$后，同文档两个词是否仍独立？给出理由。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S02-02}
+\begin{chapterexercisesolution}{ex:V5-C06-S02-02}
+\nopagebreak[4]
+给定$z_{mn}$和全部$\varphi$时，$w_{mn}$与其他位置的词和主题条件独立；若不显式给$z_{mn}$，给定$\theta_m,\varphi$后积分该位置主题，词位置仍条件独立。
+\[
+p(\boldsymbol w_m\mid\boldsymbol z_m,\boldsymbol\varphi)
+=\prod_{n=1}^{N_m}\varphi_{z_{mn},w_{mn}},\qquad
+p(\boldsymbol w_m\mid\boldsymbol\theta_m,\boldsymbol\varphi)
+=\prod_{n=1}^{N_m}\sum_k\theta_{mk}\varphi_{k,w_{mn}}.
+\]
+边缘化共享的$\theta_m$后，同文档位置通常相关，因为观察一个词会改变对$\theta_m$的后验，从而改变另一词的预测分布。
+\[
+p(w_{m1},w_{m2}\mid\boldsymbol\varphi,\boldsymbol\alpha)
+=\int
+\prod_{j=1}^{2}\left(\sum_k\theta_{mk}\varphi_{k,w_{mj}}\right)
+p(\boldsymbol\theta_m\mid\boldsymbol\alpha)\,
+\mathrm d\boldsymbol\theta_m
+\ne
+\prod_{j=1}^{2}p(w_{mj}\mid\boldsymbol\varphi,\boldsymbol\alpha)
+\]
+一般成立，右侧不等是共享随机混合比例造成的。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S02-03}
+证明给定$\boldsymbol\theta_m,\boldsymbol\varphi$时词序列交换；再构造一个共享随机主题比例的二词例子，说明交换不等于边缘独立。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S02-03}
+\begin{chapterexercisesolution}{ex:V5-C06-S02-03}
+\nopagebreak[4]
+给定参数时联合概率是同一组位置因子的乘积，置换不改变乘积。
+\[
+p(w_{m1:N_m}\mid\boldsymbol\theta_m,\boldsymbol\varphi)
+=\prod_{n=1}^{N_m}\sum_k\theta_{mk}\varphi_{k,w_{mn}}
+=p(w_{m,\pi(1):\pi(N_m)}\mid\boldsymbol\theta_m,\boldsymbol\varphi)
+\]
+对任意置换$\pi$都成立。
+反例取随机$\Theta\sim\operatorname{Beta}(1,1)$，给定$\Theta$后两个二元词独立且成功概率为$\Theta$。
+\[
+\Pr(W_1=1)=\Pr(W_2=1)=\mathbb E\Theta=\frac12,\qquad
+\Pr(W_1=W_2=1)=\mathbb E\Theta^2=\frac13\ne\frac14.
+\]
+所以两词边缘不独立；但联合式对两位置对称，故仍交换。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S03-02}
+从两个Dirichlet积分完整推出式\eqref{eq:V5-C06-collapsed-joint}，写清每个Beta函数的向量维数和积分变量。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S03-02}
+\begin{chapterexercisesolution}{ex:V5-C06-S03-02}
+\nopagebreak[4]
+对每个主题$k$，在$V$分量概率向量上积分得
+\[
+\int_{\Delta^{V-1}}
+\frac1{B(\boldsymbol\beta)}\prod_v\varphi_{kv}^{n_{kv}+\beta_v-1}
+\,\mathrm d\boldsymbol\varphi_k
+=\frac{B(\boldsymbol n_k+\boldsymbol\beta)}{B(\boldsymbol\beta)}.
+\]
+对每篇文档$m$，在$K$分量概率向量上积分得
+\[
+\int_{\Delta^{K-1}}
+\frac1{B(\boldsymbol\alpha)}\prod_k\theta_{mk}^{n_{mk}+\alpha_k-1}
+\,\mathrm d\boldsymbol\theta_m
+=\frac{B(\boldsymbol n_m+\boldsymbol\alpha)}{B(\boldsymbol\alpha)}.
+\]
+分别对$K$个主题和$M$篇文档相乘即得式\eqref{eq:V5-C06-collapsed-joint}。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S03-03}
+对当前词元$i=(m,n)$，用Gamma函数比值从折叠联合分布推出式\eqref{eq:V5-C06-gibbs-conditional}；解释上标$^{-i}$为何必须同时作用于两类计数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S03-03}
+\begin{chapterexercisesolution}{ex:V5-C06-S03-03}
+\nopagebreak[4]
+候选$k$相对留一状态只把$n_{kv}^{-i}$与$n_{mk}^{-i}$各加1。
+Beta函数比值用$\Gamma(x+1)/\Gamma(x)=x$化为
+\[
+r_k=
+\frac{n_{kv}^{-i}+\beta_v}{n_{k\cdot}^{-i}+\beta_0}
+\frac{n_{mk}^{-i}+\alpha_k}{n_{m\cdot}^{-i}+\alpha_0}.
+\]
+满条件概率还须在主题上归一化：
+\[
+\Pr(z_i=k\mid\boldsymbol z_{-i},\boldsymbol w)
+=\frac{r_k}{\sum_{\ell=1}^{K}r_\ell}.
+\]
+若只从一张表删旧词元，两张表不再描述同一个$\boldsymbol z_{-i}$，所得比值就不是任何一致联合分布的满条件概率。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S03-04}
+取$K=2,V=3$，$\alpha=(1,1)$、$\beta=(1,1,1)$，留一计数
+$(n_{1v},n_{2v})=(2,1)$、$(n_{1\cdot},n_{2\cdot})=(5,4)$、
+$(n_{m1},n_{m2})=(1,3)$。计算一次主题更新的归一化概率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S03-04}
+\begin{chapterexercisesolution}{ex:V5-C06-S03-04}
+\nopagebreak[4]
+两个权重为
+\[
+r_1=\frac{2+1}{5+3}\frac{1+1}{1+3+2}
+=\frac18,
+\qquad
+r_2=\frac{1+1}{4+3}\frac{3+1}{1+3+2}
+=\frac4{21}.
+\]
+归一化链为
+\[
+r_1+r_2=\frac{53}{168},\qquad
+p(z_i=1\mid-)=\frac{21}{53},\qquad
+p(z_i=2\mid-)=\frac{32}{53}.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S03-05}
+给定$\alpha=(2,1)$、$\beta=(1,1,1)$，某文档主题计数$(3,2)$，两个主题的词计数行分别为$(4,1,0)$和$(1,2,2)$。计算平滑后的$\widehat{\boldsymbol\theta}_m$与两行$\widehat{\boldsymbol\varphi}$，核验各行和为1。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S03-05}
+\begin{chapterexercisesolution}{ex:V5-C06-S03-05}
+\nopagebreak[4]
+文档后验伪计数为$(5,3)$，故
+\[
+\widehat{\boldsymbol\theta}_m
+=\frac{(3,2)+(2,1)}{3+2+2+1}
+=\left(\frac58,\frac38\right).
+\]
+第一主题词伪计数为$(5,2,1)$，第二主题为$(2,3,3)$，所以
+\[
+\widehat\varphi_1=(5/8,1/4,1/8),\qquad
+\widehat\varphi_2=(1/4,3/8,3/8).
+\]
+归一化核验为
+\[
+\sum_k\widehat\theta_{mk}=1,\qquad
+\sum_v\widehat\varphi_{1v}=1,\qquad
+\sum_v\widehat\varphi_{2v}=1.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S04-02}
+从KL定义证明式\eqref{eq:V5-C06-elbo-identity}，并分别说明$\mathcal Q$包含精确后验和不包含精确后验时最优KL间隙。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S04-02}
+\begin{chapterexercisesolution}{ex:V5-C06-S04-02}
+\nopagebreak[4]
+把$\log p(h\mid w)=\log p(w,h)-\log p(w)$代入
+$\KL(q\|p)=\mathbb E_q\log q-\mathbb E_q\log p(h\mid w)$，得到
+\[
+\begin{aligned}
+\KL\!\left(q(h)\,\middle\|\,p(h\mid w)\right)
+&=\mathbb E_q\log q(h)-\mathbb E_q\log p(w,h)+\log p(w)\\
+&=\log p(w)-\mathcal L(q),
+\end{aligned}
+\]
+即
+\[
+\log p(w)=\mathcal L(q)
++\KL\!\left(q(h)\,\middle\|\,p(h\mid w)\right).
+\]
+若$\mathcal Q$含精确后验，最优$q$可使KL为0，ELBO达到证据；
+对任一可行$q\ne p(h\mid w)$，KL严格为正。若$\mathcal Q$中的最小值实际取到且精确后验不属于$\mathcal Q$，
+则最优间隙严格为正；若只有下确界，则该下确界也可能为0而不取到。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S04-03}
+利用拉格朗日乘子推出式\eqref{eq:V5-C06-eta-update}，必须写出$\sum_k\eta_{mnk}=1$约束和归一化常数。再按本章点参数模型的支持契约，分别判断“某主题对观察词概率为零”“留出词不在训练活动词表”“某主题期望总计数为零”三类输入应在何处停止。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S04-03}
+\begin{chapterexercisesolution}{ex:V5-C06-S04-03}
+\nopagebreak[4]
+与$\eta_{mn}$有关的目标为
+\[
+\sum_k\eta_{mnk}
+\{\log\varphi_{k,w_{mn}}+\psi(\gamma_{mk})-\psi(\gamma_{m0})\}
+-\sum_k\eta_{mnk}\log\eta_{mnk}
++\lambda(\sum_k\eta_{mnk}-1).
+\]
+记$a_k=\log\varphi_{k,w_{mn}}+\psi(\gamma_{mk})-\psi(\gamma_{m0})$，求偏导得
+\[
+\frac{\partial}{\partial\eta_{mnk}}
+=a_k-\log\eta_{mnk}-1+\lambda=0,
+\qquad
+\eta_{mnk}=e^{\lambda-1}e^{a_k}.
+\]
+由$\sum_k\eta_{mnk}=1$确定归一化常数：
+\[
+u_k=e^{a_k},\qquad
+Z_{mn}=\sum_{\ell=1}^{K}u_\ell,\qquad
+\eta_{mnk}=\frac{u_k}{Z_{mn}},
+\]
+即式\eqref{eq:V5-C06-eta-update}。
+
+\textbf{边界核验。}三类测试不能进入同一条浮点归一化链：
+\textbf{（1）}若某个$\varphi_{k,w_{mn}}=0$，在局部更新取对数之前返回
+\[
+\mathtt{invalid\_input}(\mathtt{support\_failure}).
+\]
+\textbf{（2）}若留出词不属于$\mathcal V_{\rm tr}$且未映射到已训练
+$\mathtt{UNK}$，在困惑度取对数之前返回同一
+$\mathtt{support\_failure}$，困惑度未定义。
+\textbf{（3）}若某主题$C_{k\cdot}=0$，在M步除法之前返回
+\[
+\mathtt{numerical\_failure}(\mathtt{empty\_topic}).
+\]
+此外，若$C_{k\cdot}>0$但某个活动词的$C_{kv}=0$，则命名为
+\[
+\mathtt{numerical\_failure}(\mathtt{support\_collapse}).
+\]
+四条分支都保留上一合法状态，不把$\log0$或$0/0$送入数值计算。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S04-04}
+取$\alpha=(1,1)$，三词责任度为$(0.8,0.2)$、$(0.3,0.7)$、$(0.6,0.4)$。完成一次$\boldsymbol\gamma$更新；若下一轮责任度不变，说明停止判据还应检查什么。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S04-04}
+\begin{chapterexercisesolution}{ex:V5-C06-S04-04}
+\nopagebreak[4]
+责任度列和为$(1.7,1.3)$，故
+\[
+\boldsymbol\gamma
+=\boldsymbol\alpha+\sum_{n=1}^{3}\boldsymbol\eta_n
+=(1,1)+(1.7,1.3)=(2.7,2.3).
+\]
+下一轮责任度不变意味着坐标固定，但停止还须核验
+\[
+\frac{|\mathcal L^{(t+1)}-\mathcal L^{(t)}|}
+{1+|\mathcal L^{(t)}|}<\varepsilon,\qquad
+\min_k\gamma_k>0,\qquad
+\max_n\left|\sum_k\eta_{nk}-1\right|<\varepsilon_{\rm norm},
+\]
+并要求局部ELBO有限，以排除下溢造成的伪不变。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S04-05}
+某主题对三个词的期望计数依次为$2.5,1,0.5$。求无先验的
+$\boldsymbol\varphi_k$更新，说明原计数为何不是概率；再说明Newton更新
+$\boldsymbol\alpha$时如何保护正性。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S04-05}
+\begin{chapterexercisesolution}{ex:V5-C06-S04-05}
+\nopagebreak[4]
+总计数为4，所以
+\[
+\boldsymbol\varphi_k
+=\frac{(2.5,1,0.5)}{2.5+1+0.5}
+=(0.625,0.25,0.125),\qquad
+\sum_v\varphi_{kv}=1.
+\]
+原计数向量和为4而非1，不能作为类别概率。Newton候选先解
+\[
+H(\boldsymbol\alpha)\boldsymbol\Delta
+=\boldsymbol g(\boldsymbol\alpha),\qquad
+\boldsymbol\alpha^{+}
+=\boldsymbol\alpha-\rho\boldsymbol\Delta,\quad
+\rho\in\{1,\tfrac12,\tfrac14,\ldots\},
+\]
+再回溯到
+\[
+\min_k\alpha_k^{+}>0,\qquad
+\mathcal L(\boldsymbol\alpha^{+})\ge\mathcal L(\boldsymbol\alpha).
+\]
+若步长低于下限仍失败，则保留旧值并返回诊断。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C06-S05-02}
+为同一语料设计Gibbs与变分EM的公平比较：固定训练/验证/测试切分、$K$、词表和预算，列出至少四项诊断与两个评价指标，并说明文档完成式困惑度如何避免信息泄漏。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C06-S05-02}
+\begin{chapterexercisesolution}{ex:V5-C06-S05-02}
+\nopagebreak[4]
+先冻结同一分层切分、词表、未知词规则、$K$与总计算预算：
+\[
+(\mathcal D_{\rm tr},\mathcal D_{\rm va},\mathcal D_{\rm te},
+\mathcal V,K,B)_{\rm Gibbs}
+=(\mathcal D_{\rm tr},\mathcal D_{\rm va},\mathcal D_{\rm te},
+\mathcal V,K,B)_{\rm VI}.
+\]
+Gibbs至少报告链间主题匹配后的计数稳定性、有效样本量/自相关、留样数和随机种子；变分至少报告ELBO轨迹、不同初始化的离散程度、局部未收敛文档数和边界/空主题。
+共同指标可用文档完成式留出困惑度与主题稳定/语义连贯度，并同时报告运行时间和最大工作存储量。
+文档完成时只用文档的观察部分推断
+\[
+\widehat{\boldsymbol\theta}_m
+=\operatorname{Infer}(\boldsymbol w_m^{\rm obs};\widehat{\boldsymbol\varphi}),
+\qquad
+\ell_m^{\rm hold}
+=\sum_{v\in\boldsymbol w_m^{\rm hold}}
+\log\sum_k\widehat\theta_{mk}\widehat\varphi_{kv},
+\]
+再以
+\[
+\operatorname{PPL}
+=\exp\!\left\{-\frac{\sum_m\ell_m^{\rm hold}}
+{\sum_m|\boldsymbol w_m^{\rm hold}|}\right\}
+\]
+评价被遮住的词；若遮住词参与E步，就发生信息泄漏。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V5-C35-CONCEPT-010 L1
+\paragraph{读前自检：本章结论与下一步。}潜在狄利克雷分配章末由“LDA以文档主题向量与主题词向量形成两层混合生成模型，词袋交换性不等于词元独立”落到“折叠Gibbs执行“减—算—抽—加”，变分EM在局部责任度与全局参数之间交替”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V5-C06-CH36}
+\SLChapterFiveSummary{LDA以文档主题向量与主题词向量形成两层混合生成模型，词袋交换性不等于词元独立。}
+{两组严格正Dirichlet先验经多元Beta积分得到折叠联合；ELBO恒等式和KL差给出可归一化坐标最优。}
+{折叠Gibbs执行“减—算—抽—加”，变分EM在局部责任度与全局参数之间交替。}
+{适用于计数语料与明确词表；燃烧期不是收敛证明，ELBO不等于真实证据，困惑度也不等于解释性。}
+{\NextChapter{36}{\PageRank{}算法}；\GlobalChapterRef{37}{5}{8}统一比较矩阵分解、概率主题模型与采样推断。}
+
+\phantomsection\label{struct:V5-C06-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{概念：}能否区分$\theta/\varphi$、$\alpha/\beta$、$\eta/\varphi$，并解释交换性不等于独立？不能则回看定义\ref{def:V5-C06-lda}和\cref{sec:V5-C06-S05}。
+  \item \textbf{推导：}能否不跳步推出折叠联合、留一比值、KL--ELBO恒等式和两条平均场更新？不能则回看\cref{sec:V5-C06-S03,sec:V5-C06-S04}的正式结果。
+  \item \textbf{算法：}能否写出Gibbs“减--算--抽--加”顺序，以及变分EM内外循环、停止条件和异常分支？不能则回看算法\ref{alg:V5-C06-gibbs}--\ref{alg:V5-C06-vem}。
+  \item \textbf{应用与复现：}能否为新语料冻结切分、词表和预处理，选择$K$，设计多启动/多链，并在相同初始化预算下用无泄漏困惑度、稳定性和诊断公平比较？不能则回看\cref{sec:V5-C06-S05}。
+  \item \textbf{诊断：}能否区分链未混合、局部ELBO未收敛、空主题与评价泄漏，并为每类问题给出对应证据？不能则回看\cref{sec:V5-C06-S05}的诊断要求；五类均能独立完成，才算掌握本章，只会调用现成主题模型而不能解释计数、ELBO和评价切分，不视为通过。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

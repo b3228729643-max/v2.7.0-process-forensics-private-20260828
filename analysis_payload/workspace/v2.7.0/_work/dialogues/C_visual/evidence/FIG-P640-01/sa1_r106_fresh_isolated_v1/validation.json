@@ -1,0 +1,365 @@
+{
+  "handoff_id": "C-FIG-P640-01-R106-SA1-FRESH-ISOLATED-V1",
+  "validator": "validate_evidence.py",
+  "checks": [
+    {
+      "check": "identity.uid",
+      "pass": true,
+      "observed": "FIG-P640-01"
+    },
+    {
+      "check": "identity.handoff_id",
+      "pass": true,
+      "observed": "C-FIG-P640-01-R106-SA1-FRESH-ISOLATED-V1"
+    },
+    {
+      "check": "identity.physical_page",
+      "pass": true,
+      "observed": 690
+    },
+    {
+      "check": "identity.printed_page",
+      "pass": true,
+      "observed": 677
+    },
+    {
+      "check": "identity.figure_number",
+      "pass": true,
+      "observed": "33.7"
+    },
+    {
+      "check": "identity.pdf_pages",
+      "pass": true,
+      "observed": 817
+    },
+    {
+      "check": "identity.pdf_bytes",
+      "pass": true,
+      "observed": 4967249
+    },
+    {
+      "check": "identity.pdf_sha256",
+      "pass": true,
+      "observed": "0FA4A5A0B35D2566D71B5472B49E9B4A8A60CBAE76B3FA744B92783AFC6BC31A"
+    },
+    {
+      "check": "rows.machine_span_inventory.csv",
+      "pass": true,
+      "observed": 74
+    },
+    {
+      "check": "rows.machine_glyph_inventory.csv",
+      "pass": true,
+      "observed": 242
+    },
+    {
+      "check": "rows.machine_drawing_inventory.csv",
+      "pass": true,
+      "observed": 20
+    },
+    {
+      "check": "rows.machine_object_inventory.csv",
+      "pass": true,
+      "observed": 94
+    },
+    {
+      "check": "rows.machine_all_pairs.csv",
+      "pass": true,
+      "observed": 4371
+    },
+    {
+      "check": "rows.machine_critical_candidates.csv",
+      "pass": true,
+      "observed": 71
+    },
+    {
+      "check": "rows.machine_role_metrics.csv",
+      "pass": true,
+      "observed": 43
+    },
+    {
+      "check": "rows.id_safe_filename.csv",
+      "pass": true,
+      "observed": 262
+    },
+    {
+      "check": "rows.manual_glyph_review.csv",
+      "pass": true,
+      "observed": 242
+    },
+    {
+      "check": "rows.manual_object_review.csv",
+      "pass": true,
+      "observed": 94
+    },
+    {
+      "check": "rows.manual_critical_relation_review.csv",
+      "pass": true,
+      "observed": 71
+    },
+    {
+      "check": "rows.manual_role_peer_review.csv",
+      "pass": true,
+      "observed": 49
+    },
+    {
+      "check": "rows.manual_view_review.csv",
+      "pass": true,
+      "observed": 27
+    },
+    {
+      "check": "rows.manual_hard_gate_review.csv",
+      "pass": true,
+      "observed": 20
+    },
+    {
+      "check": "unique.objects",
+      "pass": true,
+      "observed": "94/94"
+    },
+    {
+      "check": "unique.glyphs",
+      "pass": true,
+      "observed": "242/242"
+    },
+    {
+      "check": "unique.pairs",
+      "pass": true,
+      "observed": "4371/4371"
+    },
+    {
+      "check": "unique.critical",
+      "pass": true,
+      "observed": "71/71"
+    },
+    {
+      "check": "set.manual_objects",
+      "pass": true,
+      "observed": "94/94"
+    },
+    {
+      "check": "set.manual_glyphs",
+      "pass": true,
+      "observed": "242/242"
+    },
+    {
+      "check": "set.manual_critical",
+      "pass": true,
+      "observed": "71/71"
+    },
+    {
+      "check": "pairs.C94_2",
+      "pass": true,
+      "observed": 4371
+    },
+    {
+      "check": "manual.manual_glyph_review.csv.no_blank_fields",
+      "pass": true,
+      "observed": 242
+    },
+    {
+      "check": "manual.manual_glyph_review.csv.all_pass",
+      "pass": true,
+      "observed": 242
+    },
+    {
+      "check": "manual.manual_glyph_review.csv.unique_ids",
+      "pass": true,
+      "observed": 242
+    },
+    {
+      "check": "manual.manual_glyph_review.csv.unique_notes",
+      "pass": true,
+      "observed": 242
+    },
+    {
+      "check": "manual.manual_object_review.csv.no_blank_fields",
+      "pass": true,
+      "observed": 94
+    },
+    {
+      "check": "manual.manual_object_review.csv.all_pass",
+      "pass": true,
+      "observed": 94
+    },
+    {
+      "check": "manual.manual_object_review.csv.unique_ids",
+      "pass": true,
+      "observed": 94
+    },
+    {
+      "check": "manual.manual_object_review.csv.unique_notes",
+      "pass": true,
+      "observed": 94
+    },
+    {
+      "check": "manual.manual_critical_relation_review.csv.no_blank_fields",
+      "pass": true,
+      "observed": 71
+    },
+    {
+      "check": "manual.manual_critical_relation_review.csv.all_pass",
+      "pass": true,
+      "observed": 71
+    },
+    {
+      "check": "manual.manual_critical_relation_review.csv.unique_ids",
+      "pass": true,
+      "observed": 71
+    },
+    {
+      "check": "manual.manual_critical_relation_review.csv.unique_notes",
+      "pass": true,
+      "observed": 71
+    },
+    {
+      "check": "manual.manual_role_peer_review.csv.no_blank_fields",
+      "pass": true,
+      "observed": 49
+    },
+    {
+      "check": "manual.manual_role_peer_review.csv.all_pass",
+      "pass": true,
+      "observed": 49
+    },
+    {
+      "check": "manual.manual_role_peer_review.csv.unique_ids",
+      "pass": true,
+      "observed": 49
+    },
+    {
+      "check": "manual.manual_role_peer_review.csv.unique_notes",
+      "pass": true,
+      "observed": 49
+    },
+    {
+      "check": "manual.manual_view_review.csv.no_blank_fields",
+      "pass": true,
+      "observed": 27
+    },
+    {
+      "check": "manual.manual_view_review.csv.all_pass",
+      "pass": true,
+      "observed": 27
+    },
+    {
+      "check": "manual.manual_view_review.csv.unique_ids",
+      "pass": true,
+      "observed": 27
+    },
+    {
+      "check": "manual.manual_view_review.csv.unique_notes",
+      "pass": true,
+      "observed": 27
+    },
+    {
+      "check": "manual.manual_hard_gate_review.csv.no_blank_fields",
+      "pass": true,
+      "observed": 20
+    },
+    {
+      "check": "manual.manual_hard_gate_review.csv.all_pass",
+      "pass": true,
+      "observed": 20
+    },
+    {
+      "check": "manual.manual_hard_gate_review.csv.unique_ids",
+      "pass": true,
+      "observed": 20
+    },
+    {
+      "check": "manual.manual_hard_gate_review.csv.unique_notes",
+      "pass": true,
+      "observed": 20
+    },
+    {
+      "check": "glyph.manual_booleans",
+      "pass": true,
+      "observed": 242
+    },
+    {
+      "check": "glyph.manual_zero_defects",
+      "pass": true,
+      "observed": 242
+    },
+    {
+      "check": "glyph.r168_hard_failure_zero",
+      "pass": true,
+      "observed": 242
+    },
+    {
+      "check": "critical.manual_views",
+      "pass": true,
+      "observed": 71
+    },
+    {
+      "check": "critical.illegal_overlap_zero",
+      "pass": true,
+      "observed": 71
+    },
+    {
+      "check": "files.required_core",
+      "pass": true,
+      "observed": 14
+    },
+    {
+      "check": "files.glyph_masks",
+      "pass": true,
+      "observed": 242
+    },
+    {
+      "check": "files.object_masks",
+      "pass": true,
+      "observed": 20
+    },
+    {
+      "check": "files.glyph_contacts",
+      "pass": true,
+      "observed": 13
+    },
+    {
+      "check": "files.math_contacts",
+      "pass": true,
+      "observed": 2
+    },
+    {
+      "check": "files.critical_roi",
+      "pass": true,
+      "observed": 142
+    },
+    {
+      "check": "files.critical_roi_exact_set",
+      "pass": true,
+      "observed": 142
+    },
+    {
+      "check": "png.all_openable",
+      "pass": true,
+      "observed": {
+        "count": 427,
+        "errors": []
+      }
+    },
+    {
+      "check": "summary.objects",
+      "pass": true,
+      "observed": 94
+    },
+    {
+      "check": "summary.pairs",
+      "pass": true,
+      "observed": 4371
+    },
+    {
+      "check": "summary.empty_masks",
+      "pass": true,
+      "observed": [
+        0,
+        0
+      ]
+    }
+  ],
+  "check_count": 70,
+  "failed_check_count": 0,
+  "result": "PASS"
+}

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\evidence\figures\FIG-P157-01\STRICT_R6_SA3_R93\audit_fig_p157_sa3.py", line 967, in <module>
+    main()
+  File "D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\evidence\figures\FIG-P157-01\STRICT_R6_SA3_R93\audit_fig_p157_sa3.py", line 857, in main
+    same_class_pass &= all(
+                       ^^^^
+  File "D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\evidence\figures\FIG-P157-01\STRICT_R6_SA3_R93\audit_fig_p157_sa3.py", line 858, in <genexpr>
+    max(float(r["H_INK_PX"]) for r in group) / min(float(r["H_INK_PX"]) for r in group) <= 1.08
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\evidence\figures\FIG-P157-01\STRICT_R6_SA3_R93\audit_fig_p157_sa3.py", line 858, in <genexpr>
+    max(float(r["H_INK_PX"]) for r in group) / min(float(r["H_INK_PX"]) for r in group) <= 1.08
+              ~^^^^^^^^^^^^
+KeyError: 'H_INK_PX'

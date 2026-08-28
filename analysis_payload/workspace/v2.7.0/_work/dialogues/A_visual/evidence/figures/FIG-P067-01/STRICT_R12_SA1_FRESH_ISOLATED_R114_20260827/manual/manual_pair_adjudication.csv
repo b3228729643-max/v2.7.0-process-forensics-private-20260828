@@ -1,0 +1,98 @@
+PAIR_ID,OBJECT_A,OBJECT_B,COMPOSITE_CANDIDATE_PX,MANUAL_CLASS,TRUE_ILLEGAL_OVERLAP_PX,UNRESOLVED,POST_OBSERVATION_NOTE,OPENED_EVIDENCE
+P0358,T06,G11,3566,FALSE_BBOX_ENVELOPE,0,false,Curve envelope spans the annotation box but the visible step segments are elsewhere and no blue ink crosses the sentence,figure_native1x_300dpi.png + nearest8x_cdf_note_t1_left.png
+P0368,T06,G21,50,NEARBY_NO_INK_CONTACT,0,false,The t=1 guide passes through interword whitespace with 9 native pixels to annotation ink and causes no misread,nearest8x_cdf_note_t1_left.png
+P0410,T07,G01,0,FALSE_BBOX_DESCENDER_ENVELOPE,0,false,p_1 ink does not touch the baseline; the font bbox alone reaches the axis envelope,nearest8x_cdf_t1.png
+P0420,T07,G11,373,OPAQUE_BACKPLATE_SEPARATION,0,false,p_1 backplate interrupts a short plateau segment and leaves at least 6 pixels from text ink to blue geometry,nearest8x_cdf_t1.png
+P0481,T08,G11,393,OPAQUE_BACKPLATE_SEPARATION,0,false,p_2 backplate separates label ink from the step while preserving both jump endpoints,nearest8x_cdf_t2.png
+P0541,T09,G11,391,OPAQUE_BACKPLATE_SEPARATION,0,false,p_3 backplate separates label ink from the step while preserving both jump endpoints,nearest8x_cdf_t3.png
+P0600,T10,G11,412,OPAQUE_BACKPLATE_SEPARATION,0,false,p_4 backplate separates label ink from the final plateau and endpoint,nearest8x_cdf_t4.png
+P1218,T21,G46,70,R168_ADVISORY_NEAR_MISS,0,false,The backplated annotation has a one-native-pixel whitespace clearance from the t=4 guide; no glyph or guide foreground is shared and the phrase is fully readable,nearest8x_pmf_note_guide_focus.png
+P1312,G01,G02,37,LEGAL_AXIS_JUNCTION,0,false,CDF axes meet at their intended origin with no unrelated object involved,figure_native1x_300dpi.png
+P1313,G01,G03,67,LEGAL_AXIS_TICK_JUNCTION,0,false,CDF x tick 1 intentionally crosses the x axis,nearest8x_cdf_t1.png
+P1314,G01,G04,52,LEGAL_AXIS_TICK_JUNCTION,0,false,CDF x tick 2 intentionally crosses the x axis,nearest8x_cdf_t2.png
+P1315,G01,G05,38,LEGAL_AXIS_TICK_JUNCTION,0,false,CDF x tick 3 intentionally crosses the x axis,nearest8x_cdf_t3.png
+P1316,G01,G06,38,LEGAL_AXIS_TICK_JUNCTION,0,false,CDF x tick 4 intentionally crosses the x axis,nearest8x_cdf_t4.png
+P1317,G01,G07,24,LEGAL_AXIS_TICK_JUNCTION,0,false,CDF zero tick intentionally joins the y axis at the origin,figure_native1x_300dpi.png
+P1321,G01,G11,364,LEGAL_DATA_BASELINE_CONTACT,0,false,The initial CDF level F=0 lies on the baseline as mathematically required before t=1,figure_native1x_300dpi.png
+P1326,G01,G16,181,LEGAL_ENDPOINT_BASELINE_CONTACT,0,false,Open pre-jump marker at t=1 is centered on F=0 and therefore meets the baseline intentionally,nearest8x_cdf_t1.png
+P1331,G01,G21,10,LEGAL_REFERENCE_BASELINE_CONTACT,0,false,t=1 guide terminates on the CDF baseline,nearest8x_cdf_t1.png
+P1332,G01,G22,6,LEGAL_REFERENCE_BASELINE_CONTACT,0,false,t=2 guide terminates on the CDF baseline,nearest8x_cdf_t2.png
+P1333,G01,G23,4,LEGAL_REFERENCE_BASELINE_CONTACT,0,false,t=3 guide terminates on the CDF baseline,nearest8x_cdf_t3.png
+P1334,G01,G24,4,LEGAL_REFERENCE_BASELINE_CONTACT,0,false,t=4 guide terminates on the CDF baseline,nearest8x_cdf_t4.png
+P1361,G02,G07,40,LEGAL_AXIS_TICK_JUNCTION,0,false,CDF y tick 0 intentionally crosses the y axis,figure_native1x_300dpi.png
+P1362,G02,G08,38,LEGAL_AXIS_TICK_JUNCTION,0,false,CDF y tick 0.45 intentionally crosses the y axis,figure_native1x_300dpi.png
+P1363,G02,G09,52,LEGAL_AXIS_TICK_JUNCTION,0,false,CDF y tick 0.8 intentionally crosses the y axis,figure_native1x_300dpi.png
+P1364,G02,G10,45,LEGAL_AXIS_TICK_JUNCTION,0,false,CDF y tick 1 intentionally crosses the y axis,figure_native1x_300dpi.png
+P1408,G03,G11,15,LEGAL_DATA_TICK_ALIGNMENT,0,false,The first jump is centered on tick 1 and shares its x coordinate by design,nearest8x_cdf_t1.png
+P1413,G03,G16,58,LEGAL_ENDPOINT_TICK_ALIGNMENT,0,false,The open t=1 endpoint is centered over tick 1,nearest8x_cdf_t1.png
+P1418,G03,G21,15,LEGAL_REFERENCE_TICK_ALIGNMENT,0,false,The t=1 reference guide is centered on tick 1,nearest8x_cdf_t1.png
+P1450,G04,G11,9,LEGAL_DATA_TICK_ALIGNMENT,0,false,The second jump is centered on tick 2 and shares its x coordinate by design,nearest8x_cdf_t2.png
+P1461,G04,G22,9,LEGAL_REFERENCE_TICK_ALIGNMENT,0,false,The t=2 reference guide is centered on tick 2,nearest8x_cdf_t2.png
+P1491,G05,G11,6,LEGAL_DATA_TICK_ALIGNMENT,0,false,The third jump is centered on tick 3 and shares its x coordinate by design,nearest8x_cdf_t3.png
+P1503,G05,G23,6,LEGAL_REFERENCE_TICK_ALIGNMENT,0,false,The t=3 reference guide is centered on tick 3,nearest8x_cdf_t3.png
+P1531,G06,G11,6,LEGAL_DATA_TICK_ALIGNMENT,0,false,The fourth jump is centered on tick 4 and shares its x coordinate by design,nearest8x_cdf_t4.png
+P1544,G06,G24,6,LEGAL_REFERENCE_TICK_ALIGNMENT,0,false,The t=4 reference guide is centered on tick 4,nearest8x_cdf_t4.png
+P1717,G11,G12,333,LEGAL_CURVE_FILLED_MARKER_JUNCTION,0,false,Filled marker t=1 is the right-continuous endpoint of the step,nearest8x_cdf_t1.png
+P1718,G11,G13,351,LEGAL_CURVE_FILLED_MARKER_JUNCTION,0,false,Filled marker t=2 is the right-continuous endpoint of the step,nearest8x_cdf_t2.png
+P1719,G11,G14,343,LEGAL_CURVE_FILLED_MARKER_JUNCTION,0,false,Filled marker t=3 is the right-continuous endpoint of the step,nearest8x_cdf_t3.png
+P1720,G11,G15,178,LEGAL_CURVE_FILLED_MARKER_JUNCTION,0,false,Filled marker t=4 is the right-continuous endpoint of the step and terminal plateau,nearest8x_cdf_t4.png
+P1721,G11,G16,146,LEGAL_CURVE_OPEN_MARKER_JUNCTION,0,false,Open marker t=1 denotes the excluded left-limit endpoint on the step,nearest8x_cdf_t1.png
+P1722,G11,G17,269,LEGAL_CURVE_OPEN_MARKER_JUNCTION,0,false,Open marker t=2 denotes the excluded left-limit endpoint on the step,nearest8x_cdf_t2.png
+P1723,G11,G18,263,LEGAL_CURVE_OPEN_MARKER_JUNCTION,0,false,Open marker t=3 denotes the excluded left-limit endpoint on the step,nearest8x_cdf_t3.png
+P1724,G11,G19,281,LEGAL_CURVE_OPEN_MARKER_JUNCTION,0,false,Open marker t=4 denotes the excluded left-limit endpoint on the step,nearest8x_cdf_t4.png
+P1725,G11,G20,2406,LEGAL_TERMINAL_REFERENCE_COINCIDENCE,0,false,The final CDF plateau equals 1 and intentionally lies on the dashed F=1 reference,nearest8x_cdf_t4.png + figure_grayscale_300dpi.png
+P1726,G11,G21,440,LEGAL_JUMP_GUIDE_ALIGNMENT,0,false,t=1 guide crosses the step at the first jump to link the paired endpoints,nearest8x_cdf_t1.png
+P1727,G11,G22,538,LEGAL_JUMP_GUIDE_ALIGNMENT,0,false,t=2 guide crosses the step at the second jump to link the paired endpoints,nearest8x_cdf_t2.png
+P1728,G11,G23,556,LEGAL_JUMP_GUIDE_ALIGNMENT,0,false,t=3 guide crosses the step at the third jump to link the paired endpoints,nearest8x_cdf_t3.png
+P1729,G11,G24,435,LEGAL_JUMP_GUIDE_ALIGNMENT,0,false,t=4 guide crosses the step at the fourth jump to link the paired endpoints,nearest8x_cdf_t4.png
+P1760,G12,G21,95,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Filled t=1 marker is centered on its vertical guide,nearest8x_cdf_t1.png
+P1794,G13,G22,100,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Filled t=2 marker is centered on its vertical guide,nearest8x_cdf_t2.png
+P1827,G14,G23,95,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Filled t=3 marker is centered on its vertical guide,nearest8x_cdf_t3.png
+P1855,G15,G20,95,LEGAL_MARKER_REFERENCE_ALIGNMENT,0,false,Filled terminal marker is centered on F=1 and the reference line,nearest8x_cdf_t4.png
+P1859,G15,G24,80,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Filled t=4 marker is centered on its vertical guide,nearest8x_cdf_t4.png
+P1886,G16,G21,50,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Open t=1 marker is centered on its vertical guide,nearest8x_cdf_t1.png
+P1916,G17,G22,80,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Open t=2 marker is centered on its vertical guide,nearest8x_cdf_t2.png
+P1945,G18,G23,75,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Open t=3 marker is centered on its vertical guide,nearest8x_cdf_t3.png
+P1973,G19,G24,80,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Open t=4 marker is centered on its vertical guide,nearest8x_cdf_t4.png
+P1996,G20,G21,14,LEGAL_REFERENCE_GRID_JUNCTION,0,false,F=1 reference and t=1 guide cross as subordinate alignment aids,figure_native1x_300dpi.png
+P1997,G20,G22,14,LEGAL_REFERENCE_GRID_JUNCTION,0,false,F=1 reference and t=2 guide cross as subordinate alignment aids,figure_native1x_300dpi.png
+P1998,G20,G23,10,LEGAL_REFERENCE_GRID_JUNCTION,0,false,F=1 reference and t=3 guide cross as subordinate alignment aids,figure_native1x_300dpi.png
+P1999,G20,G24,25,LEGAL_REFERENCE_GRID_JUNCTION,0,false,F=1 reference and t=4 guide cross as subordinate alignment aids,nearest8x_cdf_t4.png
+P2116,G25,G26,34,LEGAL_AXIS_JUNCTION,0,false,PMF axes meet at their intended origin with no unrelated object involved,figure_native1x_300dpi.png
+P2117,G25,G27,76,LEGAL_AXIS_TICK_JUNCTION,0,false,PMF x tick 1 intentionally crosses the x axis,figure_native1x_300dpi.png
+P2118,G25,G28,68,LEGAL_AXIS_TICK_JUNCTION,0,false,PMF x tick 2 intentionally crosses the x axis,figure_native1x_300dpi.png
+P2119,G25,G29,68,LEGAL_AXIS_TICK_JUNCTION,0,false,PMF x tick 3 intentionally crosses the x axis,nearest8x_pmf_t3.png
+P2120,G25,G30,68,LEGAL_AXIS_TICK_JUNCTION,0,false,PMF x tick 4 intentionally crosses the x axis,figure_native1x_300dpi.png
+P2121,G25,G31,32,LEGAL_AXIS_TICK_JUNCTION,0,false,PMF zero tick intentionally joins the y axis at the origin,figure_native1x_300dpi.png
+P2125,G25,G35,50,LEGAL_STEM_BASELINE_JUNCTION,0,false,First PMF stem begins on the baseline,figure_native1x_300dpi.png
+P2126,G25,G36,42,LEGAL_STEM_BASELINE_JUNCTION,0,false,Second PMF stem begins on the baseline,figure_native1x_300dpi.png
+P2127,G25,G37,42,LEGAL_STEM_BASELINE_JUNCTION,0,false,Third PMF stem begins on the baseline,nearest8x_pmf_t3.png
+P2128,G25,G38,42,LEGAL_STEM_BASELINE_JUNCTION,0,false,Fourth PMF stem begins on the baseline,figure_native1x_300dpi.png
+P2133,G25,G43,50,LEGAL_GUIDE_BASELINE_JUNCTION,0,false,t=1 PMF guide terminates on the baseline,figure_native1x_300dpi.png
+P2134,G25,G44,42,LEGAL_GUIDE_BASELINE_JUNCTION,0,false,t=2 PMF guide terminates on the baseline,figure_native1x_300dpi.png
+P2135,G25,G45,42,LEGAL_GUIDE_BASELINE_JUNCTION,0,false,t=3 PMF guide terminates on the baseline,nearest8x_pmf_t3.png
+P2136,G25,G46,42,LEGAL_GUIDE_BASELINE_JUNCTION,0,false,t=4 PMF guide terminates on the baseline,nearest8x_pmf_note_guide_focus.png
+P2141,G26,G31,58,LEGAL_AXIS_TICK_JUNCTION,0,false,PMF y tick 0 intentionally crosses the y axis,figure_native1x_300dpi.png
+P2142,G26,G32,62,LEGAL_AXIS_TICK_JUNCTION,0,false,PMF y tick 0.15 intentionally crosses the y axis,figure_native1x_300dpi.png
+P2143,G26,G33,62,LEGAL_AXIS_TICK_JUNCTION,0,false,PMF y tick 0.3 intentionally crosses the y axis,figure_native1x_300dpi.png
+P2144,G26,G34,62,LEGAL_AXIS_TICK_JUNCTION,0,false,PMF y tick 0.35 intentionally crosses the y axis,figure_native1x_300dpi.png
+P2164,G27,G35,50,LEGAL_STEM_TICK_ALIGNMENT,0,false,First PMF stem is centered on x tick 1,figure_native1x_300dpi.png
+P2172,G27,G43,50,LEGAL_GUIDE_TICK_ALIGNMENT,0,false,t=1 guide is centered on x tick 1,figure_native1x_300dpi.png
+P2183,G28,G36,42,LEGAL_STEM_TICK_ALIGNMENT,0,false,Second PMF stem is centered on x tick 2,figure_native1x_300dpi.png
+P2191,G28,G44,42,LEGAL_GUIDE_TICK_ALIGNMENT,0,false,t=2 guide is centered on x tick 2,figure_native1x_300dpi.png
+P2201,G29,G37,42,LEGAL_STEM_TICK_ALIGNMENT,0,false,Third PMF stem is centered on x tick 3,nearest8x_pmf_t3.png
+P2209,G29,G45,42,LEGAL_GUIDE_TICK_ALIGNMENT,0,false,t=3 guide is centered on x tick 3,nearest8x_pmf_t3.png
+P2218,G30,G38,42,LEGAL_STEM_TICK_ALIGNMENT,0,false,Fourth PMF stem is centered on x tick 4,figure_native1x_300dpi.png
+P2226,G30,G46,42,LEGAL_GUIDE_TICK_ALIGNMENT,0,false,t=4 guide is centered on x tick 4,nearest8x_pmf_note_guide_focus.png
+P2284,G35,G39,50,LEGAL_STEM_MARKER_JUNCTION,0,false,First stem terminates at its mass marker,figure_native1x_300dpi.png
+P2288,G35,G43,290,LEGAL_STEM_GUIDE_COLOCATION,0,false,First teal data stem intentionally overprints its gray alignment guide without ambiguity,figure_native1x_300dpi.png
+P2295,G36,G40,50,LEGAL_STEM_MARKER_JUNCTION,0,false,Second stem terminates at its mass marker,figure_native1x_300dpi.png
+P2299,G36,G44,473,LEGAL_STEM_GUIDE_COLOCATION,0,false,Second teal data stem intentionally overprints its gray alignment guide without ambiguity,figure_native1x_300dpi.png
+P2305,G37,G41,50,LEGAL_STEM_MARKER_JUNCTION,0,false,Third stem terminates at its mass marker,nearest8x_pmf_t3.png
+P2309,G37,G45,549,LEGAL_STEM_GUIDE_COLOCATION,0,false,Third teal data stem intentionally overprints its gray alignment guide without ambiguity,nearest8x_pmf_t3.png
+P2314,G38,G42,50,LEGAL_STEM_MARKER_JUNCTION,0,false,Fourth stem terminates at its mass marker,figure_native1x_300dpi.png
+P2318,G38,G46,321,LEGAL_STEM_GUIDE_COLOCATION,0,false,Fourth teal data stem intentionally overprints its gray alignment guide without ambiguity,nearest8x_pmf_note_guide_focus.png
+P2322,G39,G43,95,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,First PMF marker is centered on its alignment guide,figure_native1x_300dpi.png
+P2329,G40,G44,95,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Second PMF marker is centered on its alignment guide,figure_native1x_300dpi.png
+P2335,G41,G45,95,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Third PMF marker is centered on its alignment guide,nearest8x_pmf_t3.png
+P2340,G42,G46,95,LEGAL_MARKER_GUIDE_ALIGNMENT,0,false,Fourth PMF marker is centered on its alignment guide,nearest8x_pmf_note_guide_focus.png

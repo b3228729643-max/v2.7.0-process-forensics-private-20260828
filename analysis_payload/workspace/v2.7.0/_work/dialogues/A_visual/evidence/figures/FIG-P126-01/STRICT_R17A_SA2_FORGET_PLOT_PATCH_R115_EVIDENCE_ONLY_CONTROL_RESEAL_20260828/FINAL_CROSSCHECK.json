@@ -1,0 +1,70 @@
+{
+  "schema": "P126_R17_FINAL_CROSSCHECK_V1",
+  "handoff_id": "A-R115-P126-SA2-DIRECT-BUILD-R17-CONTROLLER-STATIC-20260828",
+  "operation": "P126_R115_R17_DIRECT_BUILD_CONTROLLER_STATIC_PREPARATION",
+  "review_input_pdf": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P126-01\\STRICT_R17_SA2_FORGET_PLOT_PATCH_R115_DIRECT_BUILD_20260828\\build\\v260_FIG-P126-01_standalone.pdf",
+    "bytes": 34138,
+    "sha256": "F336C6C8A47B17F18257F5BAFDE58817766D1BEE12C60931857B221C20002A73",
+    "pages": 1,
+    "page_size": "A4",
+    "pdf_version": "1.7",
+    "encrypted": false
+  },
+  "reader_visible_objects": 60,
+  "unordered_pairs": 1770,
+  "expected_unordered_pairs": 1770,
+  "manual_objects_reviewed": 60,
+  "manual_pairs_reviewed": 1770,
+  "manual_views_opened": 20,
+  "glyph_codepoints_reviewed": 25,
+  "math_semantic_page_checks": 14,
+  "blank_manual_rows": 0,
+  "unresolved_rows": 0,
+  "illegal_visible_ink_overlaps": 0,
+  "clips": 0,
+  "hard_failures": 0,
+  "legend": {
+    "x1_median_rgb": [31, 78, 121],
+    "x1_occupied_run_lengths_px": [75],
+    "x1_internal_blank_run_lengths_px": [],
+    "x2_median_rgb": [15, 118, 110],
+    "x2_occupied_run_lengths_px": [11, 11, 11, 11],
+    "x2_internal_blank_run_lengths_px": [11, 10, 10],
+    "color_distinct": true,
+    "grayscale_distinct": true
+  },
+  "critical_clearances": {
+    "digit6_q6_marker_shared_pixels": 0,
+    "digit6_q6_marker_blank_gap_px": 14,
+    "digit7_q7_marker_shared_pixels": 0,
+    "digit7_q7_marker_blank_gap_px": 30,
+    "digit6_digit4_shared_pixels": 0,
+    "digit6_digit4_blank_gap_px": 50,
+    "digit7_digit5_shared_pixels": 0,
+    "digit7_digit5_blank_gap_px": 21,
+    "glyph_contour_shared_pixels": 0,
+    "nearest_glyph_contour_center_distance_px": 1,
+    "nearest_glyph_contour_r168_classification": "ADVISORY_ONLY"
+  },
+  "build": {
+    "controller_pid": 22460,
+    "child_pid": 8332,
+    "controller_exit_code": 0,
+    "child_exit_code": 0,
+    "natural": true,
+    "interrupted": false,
+    "controller_invocations": 1,
+    "direct_lualatex_invocations": 1,
+    "retry": 0,
+    "latexmk": 0,
+    "version_probe": 0,
+    "second_invocation": 0,
+    "terminal_tex_family_counts": [0, 0, 0, 0]
+  },
+  "source_after_review": {
+    "bytes": 4686,
+    "sha256": "2887758F5CC94987BE750E1EC53B555FB88CE8F71B7260CABBE0A17DDF237405"
+  },
+  "verdict": "LOCAL_SA2_PASS_READY_FOR_MAIN_REVIEW_AND_ATOMIC_COMMIT_AUTH"
+}

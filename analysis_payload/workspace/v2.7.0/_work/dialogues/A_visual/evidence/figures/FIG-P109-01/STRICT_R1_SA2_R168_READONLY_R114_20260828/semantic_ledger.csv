@@ -1,0 +1,9 @@
+SEMANTIC_ID,OBJECT_IDS,INTENDED_READING,POST_OBSERVATION_STATUS,OBSERVATION
+S01,O01,"Recognize the closed light-blue shape as feasible set C",CLEAR,"Fill and outline establish a single bounded region."
+S02,"O03;O04;O05;O06","Identify two points x and y inside C",CLEAR,"Markers and labels are unambiguous and spatially associated."
+S03,"O02;O07;O08;O09","Follow the full segment and sampled convex combinations from x to y",CLEAR,"Straight line and three aligned markers give a coherent left-to-right reading path."
+S04,O10,"Interpret z as a convex combination of x and y",CLEAR,"Opaque formula background preserves legibility and its placement associates it with the segment."
+S05,O11,"Name the region as convex feasible set C",HARD_DEFECT_GEOMETRIC_PRESENTATION,"The wording is correct, but the set boundary crosses the C glyph, so the naming label is not cleanly separated from geometry."
+S06,"O12;O13","Read the formal convexity implication after the diagram",CLEAR,"Formula is complete, framed, and ordered from assumptions to conclusion."
+S07,O14,"Read the one-sentence conclusion after the formal statement",CLEAR,"Caption matches the visual and does not add extraneous method text."
+S08,"O01;O02;O13;O14","Complete region -> segment -> formal implication -> caption reading path",CLEAR_EXCEPT_S05_COLLISION,"Overall path and page integration are coherent; the sole interruption is the O01-O11 boundary/glyph collision."

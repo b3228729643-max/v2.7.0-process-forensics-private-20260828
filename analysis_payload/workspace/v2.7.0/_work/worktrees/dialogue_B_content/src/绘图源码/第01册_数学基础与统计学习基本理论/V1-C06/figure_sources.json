@@ -1,0 +1,40 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V1-C06",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 1,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V1-C06-01",
+      "source_path": "绘图源码/第01册_数学基础与统计学习基本理论/V1-C06/fig_v1_c06_binary_entropy.tex",
+      "source_file": "fig_v1_c06_binary_entropy.tex",
+      "source_kind": "pgfplots",
+      "label": "fig:V1-C06-binary-entropy",
+      "caption": "二元熵在$p=1/2$处达到1比特，在确定分布两端趋于0",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读图时应回答：“二元熵在$p=1/2$处达到1比特，在确定分布两端趋于0”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第01册_数学基础与统计学习基本理论/chapters/V1-C06.tex",
+        "target_label": "fig:V1-C06-binary-entropy",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-IN-002"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V1-C06-01"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：二元熵在p=1/2处达到1比特，在确定分布两端趋于0"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

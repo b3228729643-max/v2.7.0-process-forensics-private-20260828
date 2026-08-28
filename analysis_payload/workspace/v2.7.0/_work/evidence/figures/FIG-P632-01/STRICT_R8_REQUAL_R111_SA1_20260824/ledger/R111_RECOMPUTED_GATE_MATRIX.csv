@@ -1,0 +1,16 @@
+﻿GATE,COUNT_OR_SCOPE,RESULT,EVIDENCE
+GLYPH_SET_AND_CONTACT_SHEET_HUMAN_REVIEW,413 glyphs; 42 sheets; all cells,PASS,contact_sheet_actual_open_ledger_R111_SA1_REQUAL_CURRENT.csv and glyph_manual_review_ledger_R111_SA1_REQUAL_CURRENT.csv
+FONT_AT_LEAST_9_5PT,413 glyphs,PASS,after_font_audit.csv: 0 effective-point failures; natural scripts use base effective point treatment.
+STRICT_NATIVE_PIXEL_GLYPH,413 glyphs,FAIL,"30 pixel failures, including G092 natural-script low-height failure."
+D_INTRA_PANEL,28 panel-role-script rows,FAIL,13 D failures in de_actual_baselines.csv.
+E_CROSS_PANEL,28 panel-role-script rows,FAIL,12 E failures in de_actual_baselines.csv.
+ROLE_RATIO_RAW_EVIDENCE,413 glyphs,FAIL,ROLE_RATIO is ACTUAL_BASELINE_PENDING in every after_pixel_measurements.csv row.
+ROLE_RATIO_RECOMPUTED_HELPER,413 glyphs,PASS,role_ratio_recomputed_R111_SA1.csv: 0 recomputed failures; does not cure raw pending evidence.
+TEXT_GRAPHIC_CLEARANCE_AND_OVERLAP,390 relations,FAIL,"36 physical raw-clearance failures. All measured overlaps are 0; R0046 is an evidence inconsistency, not physical failure."
+R0046_RESULT_CONSISTENCY,R0046,FAIL,Legacy RESULT=FAIL despite raw overlap=0 and raw clearance=16>=8; corrected foreground reconstruction is PASS at 20.518px.
+SEMANTIC_PARENT_MAPPING,G204-G209,FAIL,"Six pi(a,t) glyphs assigned P06 but source places them in P07."
+PRE_HALO_FINAL_VISIBLE_AND_PAINT_ORDER,O01-O03,PASS,pre equals final and XOR zero in current actual-open occlusion ledger.
+FIGURE_EDGE_CLIP_CLEARANCE,12 edge relations,PASS,0 edge failures and 0 clipping failures.
+MATH_SEMANTICS,5 checks,PASS,R111_MATH_SEMANTICS_LEDGER.csv.
+FOUR_VIEW,4 views,PASS,R111_FOUR_VIEW_REVIEW_LEDGER.csv.
+FONT_VISUAL_HARMONY,size; weight; color,FAIL,Size fails strict native pixel gate; weight and color individually pass.

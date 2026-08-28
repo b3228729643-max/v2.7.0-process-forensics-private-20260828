@@ -1,0 +1,6 @@
+VIEW_ID,PATH,ACTUALLY_OPENED,IDENTITY_MATCH,READABLE,CLIPPED,ILLEGAL_OVERLAP_VISIBLE,FONT_HARMONY,GRAYSCALE_OR_PAGE_FUSION,DECISION,NOTE
+VIEW001,renders/full_page_200dpi.png,true,true,true,false,false,PASS,PASS,PASS,"Physical page 651 / printed 638 opened; Figure 32.4 sits naturally between derivation and Proposition 32.1, caption and body fully visible."
+VIEW002,renders/figure_crop_300dpi.png,true,true,true,false,false,PASS,PASS,PASS,"Native 1951x860 figure+caption opened; all labels/formulas/arrows/borders/caption legible, no genuine collision or crop."
+VIEW003,renders/standalone_300dpi.png,true,true,true,false,false,PASS,N/A,PASS,"Official-PDF-derived 1384x722 body opened; no resize, all directional geometry and two-line card remain clear."
+VIEW004,renders/grayscale_300dpi.png,true,true,true,false,false,PASS,PASS,PASS,"Grayscale opened; blue/gold/gray roles retain adequate tonal separation and reading order."
+VIEW005,renders/after_text_measurement_overlay_300dpi.png,true,true,true,false,false,PASS,N/A,PASS,"All 197 red glyph boxes and 11 blue parent boxes opened; mapping covers every visible character without cutting contours."

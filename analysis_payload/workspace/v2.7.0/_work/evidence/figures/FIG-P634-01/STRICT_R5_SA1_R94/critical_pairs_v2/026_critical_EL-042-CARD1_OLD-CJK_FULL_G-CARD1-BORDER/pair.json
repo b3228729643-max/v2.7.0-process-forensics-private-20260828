@@ -1,0 +1,41 @@
+{
+  "a": "EL-042-CARD1_OLD-CJK_FULL",
+  "b": "G-CARD1-BORDER",
+  "relation": "TEXT_BORDER",
+  "record": {
+    "PAIR_ID": "PAIR-005179",
+    "OBJECT_A": "EL-042-CARD1_OLD-CJK_FULL",
+    "OBJECT_B": "G-CARD1-BORDER",
+    "CATEGORY_A": "TEXT_ELEMENT",
+    "CATEGORY_B": "GRAPHIC",
+    "RELATION": "TEXT_BORDER",
+    "THRESHOLD_PX": "5.0",
+    "METHOD": "exact_separated_raw_masks_local_EDT",
+    "OVERLAP_PIXELS": 0,
+    "MIN_RAW_INK_GAP_PX": "11.000",
+    "A_NEAREST_X": 1274,
+    "A_NEAREST_Y": 2253,
+    "B_NEAREST_X": 1274,
+    "B_NEAREST_Y": 2265,
+    "STATUS": "PASS",
+    "REASON": "final-visible text/formula ink to final-visible border stroke"
+  },
+  "raw_roi_page_px": [
+    1250,
+    2229,
+    1299,
+    2290
+  ],
+  "context_roi_page_px": [
+    480,
+    2127,
+    1904,
+    2282
+  ],
+  "mask_color": {
+    "A": "red",
+    "B": "blue",
+    "intersection": "yellow"
+  },
+  "geometry": "all foreground mask pixels are sampled from official_page_682_300dpi.png at 1:1; 8x is nearest-only review"
+}

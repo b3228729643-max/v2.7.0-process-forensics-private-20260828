@@ -1,0 +1,11 @@
+source_construct,declared_pt,cumulative_graphics_scale,effective_pt,panel,role,manual_harmony_pass,decision,note
+slfig-FIG-P608-01 every node,9.6,1.0,9.6,P1/P2,BASE,true,PASS,General visible reader text exceeds 9.5 pt and is balanced.
+tick label style,9.6,1.0,9.6,P1/P2,TICK,true,PASS,Uniform tick labels; native glyph heights clear.
+warmup annotation,9.6,1.0,9.6,P1,ANNOTATION,true,PASS,Two-line annotation remains open and readable outside hatch field.
+retained annotation,9.6,1.0,9.6,P1,ANNOTATION,true,PASS,Single-line annotation is clear and does not crowd the curve.
+target annotation,9.6,1.0,9.6,P2,ANNOTATION,true,PASS,Teal label is subordinate yet clear in color and grayscale.
+label style,10.8,1.0,10.8,P1/P2,AXIS_LABEL,true,PASS,Axis labels are proportionate to base text.
+title style,10.8,1.0,10.8,P1/P2,PANEL_TITLE,true,PASS,Panel titles are prominent without dominating the plots.
+natural TeX subscript from base formula,7.56,1.0,7.56,P1/P2,NATURAL_SCRIPT,true,PASS,Only subscript glyphs use script size; all measured at or above 15 px and remain legible.
+custom equality rule pair,9.6 base,1.0,9.6 base,P1,MATH_OPERATOR,true,PASS,Each two-rule equality operator spans at least the baseline math threshold and is semantically unmistakable.
+overline path,10.8 base,1.0,10.8 base,P2,MATH_RULE,true,PASS,Overlines are complete centered and neither clipped nor fused to unrelated objects.

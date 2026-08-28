@@ -1,0 +1,152 @@
+{
+  "terminal_check": "PASS",
+  "failures": [],
+  "checks": {
+    "denominator_N124": {
+      "pass": true,
+      "detail": {
+        "glyphs": 103,
+        "graphics": 21,
+        "unique": 124
+      }
+    },
+    "pair_denominator_7626": {
+      "pass": true,
+      "detail": 7626
+    },
+    "pair_endpoints_known": {
+      "pass": true,
+      "detail": "all endpoints resolve"
+    },
+    "math_rule_one": {
+      "pass": true,
+      "detail": [
+        "P006"
+      ]
+    },
+    "empty_masks_zero": {
+      "pass": true,
+      "detail": "all nonempty"
+    },
+    "mask_manual_purity": {
+      "pass": true,
+      "detail": "all 124 foreign=0/missing=0"
+    },
+    "coverage_closure": {
+      "pass": true,
+      "detail": {
+        "unassigned_text_pixels": 0,
+        "foreground_coverage_residual_pixels": 0,
+        "foreground_coverage_excess_pixels": 0
+      }
+    },
+    "glyph_manual_103": {
+      "pass": true,
+      "detail": 103
+    },
+    "graphic_manual_21": {
+      "pass": true,
+      "detail": 21
+    },
+    "critical_manual_37": {
+      "pass": true,
+      "detail": 37
+    },
+    "all_pair_manual_7626": {
+      "pass": true,
+      "detail": "every pair has row-specific adjudication"
+    },
+    "pair_results": {
+      "pass": true,
+      "detail": {
+        "failures": 17,
+        "intentional": 19,
+        "final_overlap_sum": 0
+      }
+    },
+    "low_profile_two_pass": {
+      "pass": true,
+      "detail": [
+        [
+          "G0063",
+          "PASS_REFERENCE"
+        ],
+        [
+          "G0083",
+          "PASS_REFERENCE"
+        ]
+      ]
+    },
+    "glyph_hard_failures": {
+      "pass": true,
+      "detail": [
+        "G0017",
+        "G0059",
+        "G0066"
+      ]
+    },
+    "D_E_failures_recorded": {
+      "pass": true,
+      "detail": {
+        "D": 5,
+        "E": 5
+      }
+    },
+    "visual_ledger_complete": {
+      "pass": true,
+      "detail": 24
+    },
+    "font_ledger_no_pending": {
+      "pass": true,
+      "detail": 32
+    },
+    "matrix_route": {
+      "pass": true,
+      "detail": "FAIL_TO_SA2"
+    },
+    "result_exact": {
+      "pass": true,
+      "detail": "FAIL_TO_SA2"
+    },
+    "source_identity": {
+      "pass": true,
+      "detail": "01EA85F46A9567D7ED6CF88C92346F9BE317FAFDDCF1F7791C07B2A3ED3858EB"
+    },
+    "business_source_read_only": {
+      "pass": true,
+      "detail": {
+        "target_diff_empty": true,
+        "target_staged_empty": true,
+        "unrelated_concurrent_status": [
+          " M \"src/\\347\\273\\230\\345\\233\\276\\346\\272\\220\\347\\240\\201/\\347\\254\\25405\\345\\206\\214_\\351\\207\\207\\346\\240\\267\\346\\226\\271\\346\\263\\225\\344\\270\\273\\351\\242\\230\\346\\250\\241\\345\\236\\213\\344\\270\\216\\345\\233\\276\\346\\216\\222\\345\\272\\217/V5-C03/fig_v5_c03_trace_running_mean.tex\""
+        ]
+      }
+    },
+    "worktree_commit": {
+      "pass": true,
+      "detail": "7f65bd75ce94aee876aa25735e92214bb5ebe004"
+    },
+    "required_root_files": {
+      "pass": true,
+      "detail": []
+    },
+    "referenced_png_openable": {
+      "pass": true,
+      "detail": {
+        "count": 764,
+        "bad": []
+      }
+    },
+    "safe_relative_names": {
+      "pass": true,
+      "detail": "no NTFS ADS-style colon in relative names"
+    },
+    "contact_sheet_counts": {
+      "pass": true,
+      "detail": {
+        "glyph": 26,
+        "graphic": 6
+      }
+    }
+  }
+}

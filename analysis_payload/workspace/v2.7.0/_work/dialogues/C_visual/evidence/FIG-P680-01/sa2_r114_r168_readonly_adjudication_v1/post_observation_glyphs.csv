@@ -1,0 +1,18 @@
+OBJECT_ID,READER_VISIBLE_SAMPLE,PDF_FONT_OBSERVATION,PIXEL_OBSERVATION,CODEPOINT_OBSERVATION,MANUAL_ADJUDICATION,EVIDENCE
+T01,"共享“文档--主题--单词”条件结构",NotoSerifSC/STIXTwoText at 9.364880 pt,"Chinese ink 35-36 px; typographic dash is intentionally short punctuation","curly quotes and U+2013 en dashes present; no replacement glyph",CLEAR,glyph_observations.csv
+T02,两层混合、条件独立与词袋计数,NotoSerifSC at 9.364880 pt,"Chinese ink 35-36 px; punctuation separately smaller","all expected Chinese codepoints present",CLEAR,glyph_observations.csv
+T03,模型目标,NotoSansSC-Bold at 9.763390 pt,"36-39 px glyph ink",all expected Chinese codepoints present,CLEAR,glyph_observations.csv
+T04,完整 Bayes LDA,NotoSerifSC/STIXTwoText at 9.364880 pt,"Chinese 36 px; Latin x-height/cap forms visibly complete","Bayes and LDA extracted without substitution",CLEAR,glyph_observations.csv
+T05,"theta, phi 均为随机变量",NotoSerifSC/STIXTwoMath at 9.364880 pt,"Chinese 34-36 px; theta 29 px; phi 28 px","theta U+1D703; phi U+1D711; no replacement glyph",CLEAR,glyph_observations.csv
+T06,点参数 LDA 变体,NotoSerifSC/STIXTwoText at 9.364880 pt,"Chinese 35-36 px; Latin glyphs visibly complete",LDA extracted without substitution,CLEAR,glyph_observations.csv
+T07,phi 作为待估参数,NotoSerifSC/STIXTwoMath at 9.364880 pt,"Chinese 35-36 px; phi 28 px","phi U+1D711; no replacement glyph",CLEAR,glyph_observations.csv
+T08,推断方法,NotoSansSC-Bold at 9.763390 pt,"38-39 px glyph ink",all expected Chinese codepoints present,CLEAR,glyph_observations.csv
+T09,折叠 Gibbs,NotoSerifSC/STIXTwoText at 9.364880 pt,"Chinese 36 px; Latin x-height/cap forms visibly complete",Gibbs extracted without substitution,CLEAR,glyph_observations.csv
+T10,"积分消去 theta, phi",NotoSerifSC/STIXTwoMath at 9.364880 pt,"Chinese 35-36 px; theta 29 px; phi 28 px; comma is punctuation only","theta U+1D703; phi U+1D711; no replacement glyph",CLEAR,glyph_observations.csv
+T11,平均场变分 EM,NotoSerifSC/STIXTwoText at 9.364880 pt,"Chinese 35-36 px; Latin cap forms visibly complete",EM extracted without substitution,CLEAR,glyph_observations.csv
+T12,ELBO 坐标上升,NotoSerifSC/STIXTwoText at 9.364880 pt,"Chinese 35-36 px; Latin cap forms visibly complete",ELBO extracted without substitution,CLEAR,glyph_observations.csv
+T13,模型与后验不同，结果不可只按算法名直接比较,NotoSerifSC at 9.165630 pt,"Chinese ink 35 px; crisp at native1x and NN8x",all expected Chinese codepoints present,CLEAR,glyph_observations.csv
+T14,图 35.1,NotoSansSC/STIXTwoText-Bold at 9.862510-9.962640 pt,"bold glyph ink 26-38 px",digits and punctuation present,CLEAR,glyph_observations.csv
+T15,complete two-line caption,NotoSerifSC/STIXTwoText at 9.862510-9.962640 pt,"Chinese main glyphs 37-39 px; Latin names and punctuation visibly complete","U+2013 en dashes and all Bayes/LDA/Gibbs/EM glyphs present",CLEAR,glyph_observations.csv
+SUMMARY,221 extracted glyph rows,all fonts named and embedded in current text layer,"no reader-critical missing ink; punctuation-only minima are not treated as missing semantic glyphs","U+FFFD count 0; U+0000 count 0; tofu observed 0",CLEAR,"glyph_observations.csv; native and NN8x ROIs"
+

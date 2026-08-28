@@ -1,0 +1,203 @@
+{
+  "method": "native-final-raster + exact-vector-subtraction + exclusive-connected-component",
+  "component_count": 260,
+  "owned_component_count": 256,
+  "initial_multi_owner_components": [
+    {
+      "component": 26,
+      "exclusive_owner_indices": [
+        85,
+        86
+      ],
+      "pixel_count": 756
+    },
+    {
+      "component": 33,
+      "exclusive_owner_indices": [
+        82,
+        83
+      ],
+      "pixel_count": 714
+    },
+    {
+      "component": 91,
+      "exclusive_owner_indices": [
+        113,
+        114
+      ],
+      "pixel_count": 28
+    },
+    {
+      "component": 174,
+      "exclusive_owner_indices": [
+        138,
+        139
+      ],
+      "pixel_count": 402
+    }
+  ],
+  "resolved_component_splits": [
+    {
+      "component": 26,
+      "method": "PDF-char-candidate-support; later text-show glyph owns shared floor/ceil boundary pixels",
+      "pre_reassignment_pixels_by_glyph": {
+        "G086": 466,
+        "G087": 290
+      },
+      "assigned_pixels_by_glyph": {
+        "G086": 466,
+        "G087": 290
+      },
+      "shared_candidate_pixels": 2,
+      "unassigned_pixels": 0,
+      "dominant_connected_component_reassignment": null
+    },
+    {
+      "component": 33,
+      "method": "PDF-char-candidate-support; later text-show glyph owns shared floor/ceil boundary pixels",
+      "pre_reassignment_pixels_by_glyph": {
+        "G083": 290,
+        "G084": 421,
+        "G085": 3
+      },
+      "assigned_pixels_by_glyph": {
+        "G083": 290,
+        "G084": 421,
+        "G085": 3
+      },
+      "shared_candidate_pixels": 10,
+      "unassigned_pixels": 0,
+      "dominant_connected_component_reassignment": null
+    },
+    {
+      "component": 91,
+      "method": "PDF-char-candidate-support; later text-show glyph owns shared floor/ceil boundary pixels",
+      "pre_reassignment_pixels_by_glyph": {
+        "G114": 20,
+        "G115": 8
+      },
+      "assigned_pixels_by_glyph": {
+        "G114": 20,
+        "G115": 8
+      },
+      "shared_candidate_pixels": 2,
+      "unassigned_pixels": 0,
+      "dominant_connected_component_reassignment": null
+    },
+    {
+      "component": 174,
+      "method": "PDF-char-candidate-support; later text-show glyph owns shared floor/ceil boundary pixels",
+      "pre_reassignment_pixels_by_glyph": {
+        "G140": 401,
+        "G139": 1
+      },
+      "assigned_pixels_by_glyph": {
+        "G140": 402
+      },
+      "shared_candidate_pixels": 2,
+      "unassigned_pixels": 0,
+      "dominant_connected_component_reassignment": {
+        "glyph": "G140",
+        "component_pixels": 402,
+        "discarded_minor_boundary_pixels": 1
+      }
+    }
+  ],
+  "extended_visible_contour_corrections": [
+    {
+      "glyph": "G035",
+      "char": "[",
+      "semantic_parent": "T08",
+      "raw_char_bbox_wholepage_px": [
+        633,
+        1603,
+        657,
+        1653
+      ],
+      "ownership_roi_wholepage_px": [
+        633,
+        1560,
+        669,
+        1684
+      ],
+      "previous_owned_px": 300,
+      "recovered_complete_contour_px": 714,
+      "final_owned_px": 714,
+      "cleared_foreign_candidate_pixels": {},
+      "method": "native final raster, exact dark-glyph color, narrow non-overlapping stretchy-delimiter ROI"
+    },
+    {
+      "glyph": "G048",
+      "char": "]",
+      "semantic_parent": "T08",
+      "raw_char_bbox_wholepage_px": [
+        847,
+        1603,
+        871,
+        1653
+      ],
+      "ownership_roi_wholepage_px": [
+        845,
+        1560,
+        873,
+        1684
+      ],
+      "previous_owned_px": 300,
+      "recovered_complete_contour_px": 714,
+      "final_owned_px": 714,
+      "cleared_foreign_candidate_pixels": {},
+      "method": "native final raster, exact dark-glyph color, narrow non-overlapping stretchy-delimiter ROI"
+    },
+    {
+      "glyph": "G120",
+      "char": "[",
+      "semantic_parent": "T20",
+      "raw_char_bbox_wholepage_px": [
+        1659,
+        1600,
+        1683,
+        1650
+      ],
+      "ownership_roi_wholepage_px": [
+        1657,
+        1560,
+        1696,
+        1684
+      ],
+      "previous_owned_px": 300,
+      "recovered_complete_contour_px": 755,
+      "final_owned_px": 755,
+      "cleared_foreign_candidate_pixels": {
+        "G114": 20,
+        "G115": 8
+      },
+      "method": "native final raster, exact dark-glyph color, narrow non-overlapping stretchy-delimiter ROI"
+    },
+    {
+      "glyph": "G133",
+      "char": "]",
+      "semantic_parent": "T20",
+      "raw_char_bbox_wholepage_px": [
+        1873,
+        1600,
+        1897,
+        1650
+      ],
+      "ownership_roi_wholepage_px": [
+        1881,
+        1560,
+        1901,
+        1684
+      ],
+      "previous_owned_px": 300,
+      "recovered_complete_contour_px": 731,
+      "final_owned_px": 731,
+      "cleared_foreign_candidate_pixels": {},
+      "method": "native final raster, exact dark-glyph color, narrow non-overlapping stretchy-delimiter ROI"
+    }
+  ],
+  "unresolved_component_splits": [],
+  "glyph_count": 193,
+  "empty_glyph_count": 0,
+  "pairwise_glyph_mask_intersection_px": 0
+}

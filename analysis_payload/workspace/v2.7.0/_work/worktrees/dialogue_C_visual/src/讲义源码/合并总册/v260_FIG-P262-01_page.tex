@@ -1,0 +1,18 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 2 册}{统计学习方法讲义 v2.6.0}{基础监督学习方法}
+\begin{document}
+\setcounter{page}{315}
+\setcounter{chapter}{16}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{逻辑斯谛回归}
+\begin{keypointbox}
+逻辑斯谛函数把任意实数线性预测量压缩到开区间$(0,1)$，因此可直接解释为条件概率。
+\end{keypointbox}
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C05/fig_v2_c05_sigmoid.tex}
+图\ref{fig:V2-C05-sigmoid}中，原点处斜率最大；两侧逐渐饱和，反映极端线性预测量对概率变化的边际影响减弱。
+\begin{example}[由线性预测量计算概率]
+若$z=\log 3$，则$\sigma(z)=3/4$；若将符号反转，则中心对称关系给出$\sigma(-z)=1/4$。
+\end{example}
+\end{document}

@@ -1,0 +1,16 @@
+reviewer,scope,panel,role,script_or_class,count,min_h_ink_px,median_h_ink_px,max_h_ink_px,peer_reference,ratio_or_status,crowding,protrusion_or_imbalance,decision,note
+SA3,ROLE-01,LEFT,PANEL_TITLE,CJK,8,37,39,39,RIGHT/PANEL_TITLE/CJK,1.000,false,false,PASS,左标题8个汉字与右标题同中位数；加粗层级明确且不压图体
+SA3,ROLE-02,RIGHT,PANEL_TITLE,CJK,8,37,39,39,LEFT/PANEL_TITLE/CJK,1.000,false,false,PASS,右标题与左标题同字号同字重；两面板视觉重心均衡
+SA3,ROLE-03,LEFT,ANNOTATION,CJK,13,32,34,34,RIGHT/ANNOTATION/CJK,1.000,false,false,PASS,左注释单行清楚并在灰框内保持16px以上节点边框净空
+SA3,ROLE-04,RIGHT,ANNOTATION,CJK,16,33,34,34,LEFT/ANNOTATION/CJK,1.000,false,false,PASS,右注释两行行距自然且中位字高与左注释一致
+SA3,ROLE-05,LEFT,NODE_LABEL,MATH_BASE_K,3,27,27,27,RIGHT/NODE_LABEL/MATH_BASE_K,1.000,false,false,PASS,左侧三个K基字符同高同字形且居中
+SA3,ROLE-06,RIGHT,NODE_LABEL,MATH_BASE_K,3,27,27,27,LEFT/NODE_LABEL/MATH_BASE_K,1.000,false,false,PASS,右侧三个K基字符与左侧完全同级；下标变化不改变基字
+SA3,ROLE-07,LEFT,FORMULA,MATH_BASE_K,4,27,27,27,RIGHT/FORMULA/MATH_BASE_K,1.000,false,false,PASS,系统扫描公式K基字一致；等号与省略号低轮廓均清晰
+SA3,ROLE-08,RIGHT,FORMULA,MATH_BASE_K,3,27,27,28,LEFT/FORMULA/MATH_BASE_K,1.037,false,false,PASS,随机扫描公式K/J基字与左式相称；求和号较高是数学结构所需而非字号失衡
+SA3,ROLE-09,LEFT,FORMULA,NATURAL_SCRIPT,6,14,19,21,RIGHT/FORMULA/NATURAL_SCRIPT,1.026,false,false,PASS,sys及数字/变量自然下标均清楚；14px旧门差按R168仅advisory
+SA3,ROLE-10,RIGHT,FORMULA,NATURAL_SCRIPT,10,10,19.5,28,LEFT/FORMULA/NATURAL_SCRIPT,1.026,false,false,PASS,rand和求和上下限均可读；高度差由上下标数学结构解释且无严重失衡
+SA3,ROLE-11,PAGE,CAPTION,CJK,47,34,36,38,FIGURE/ANNOTATION/CJK,1.059,false,false,PASS,题注字高略高于框内注释并与正文自然融合；换行不拥挤
+SA3,ROLE-12,BOTH,PANEL_TITLE_vs_ANNOTATION,CJK_MEDIANS,2,34,36.5,39,annotation_base,1.147,false,false,PASS,标题39px对注释34px比例1.147形成合规层级且不喧宾夺主
+SA3,ROLE-13,BOTH,LOW_PROFILE_PUNCTUATION,colon_ellipsis_period_semicolon,8,7,13,28,SAME_CODEPOINT_VISUAL_CHECK,R168_ADVISORY,false,false,PASS,各低轮廓标点逐ID实看均完整可辨；缺独立校准属于R168微分类advisory非字体硬FAIL
+SA3,ROLE-14,BOTH,SOURCE_EFFECTIVE_PT,base9.2_title9.8,4,9.2,9.5,9.8,legacy_9.5pt_source_gate,R168_ADVISORY,false,false,PASS,单源无scale/resizebox；9.2pt低于旧9.5pt但300dpi实际清晰且无严重字号失衡
+SA3,ROLE-15,BOTH,VISUAL_HARMONY,all_visible_roles,173,,,,four_view_review,BALANCED,false,false,PASS,标题-节点-公式-注释-题注阅读路径清楚；彩色与灰度均无突兀或过密区域

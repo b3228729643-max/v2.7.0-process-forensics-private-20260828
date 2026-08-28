@@ -1,0 +1,120 @@
+{
+  "status": "PASS",
+  "formal_disclaimer": "SA2 local self-check only; not an official SA1/SA3/root acceptance",
+  "rows": [
+    {
+      "GATE": "SOURCE_FONT_GE_9_5",
+      "VALUE": "true",
+      "THRESHOLD": ">=9.5pt ordinary",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "LITERAL_CJK_YI_COUNT",
+      "VALUE": 0,
+      "THRESHOLD": "0",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "RAW_PIXEL_FAILURES",
+      "VALUE": 0,
+      "THRESHOLD": "0",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "D_FAILURES",
+      "VALUE": 0,
+      "THRESHOLD": "0",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "E_FAILURES",
+      "VALUE": 0,
+      "THRESHOLD": "0",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "CROSS_PANEL_ROLE_FAILURES",
+      "VALUE": 0,
+      "THRESHOLD": "0; source<=1.05, ink<=1.10",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "OVERLAP_FAILED_PAIRS",
+      "VALUE": 0,
+      "THRESHOLD": "0",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "CLEARANCE_FAILED_PAIRS",
+      "VALUE": 0,
+      "THRESHOLD": "0",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "CLIP_OBJECTS",
+      "VALUE": 0,
+      "THRESHOLD": "0",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "EDGE_FAILED_OBJECTS",
+      "VALUE": 0,
+      "THRESHOLD": "0; >=6px",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "EL035_SCRIPT_BORDER_GAP",
+      "VALUE": "16.000",
+      "THRESHOLD": ">=5px; design >=8px",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "EL035_LITERAL_J_BORDER_GAP",
+      "VALUE": "18.000",
+      "THRESHOLD": ">=5px; design >=8px",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "EMPTY_FOREGROUND_GRAPHICS",
+      "VALUE": 0,
+      "THRESHOLD": "0",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "UNORDERED_PAIR_COVERAGE",
+      "VALUE": 4656,
+      "THRESHOLD": "4656",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "MANIFEST_UNIQUE_OBJECT_IDS",
+      "VALUE": 290,
+      "THRESHOLD": "290",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "CRITICAL_PAIR_PACK_COUNT",
+      "VALUE": 17,
+      "THRESHOLD": "17",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "INCOMPLETE_CRITICAL_PAIR_PACKS",
+      "VALUE": 0,
+      "THRESHOLD": "0",
+      "STATUS": "PASS"
+    },
+    {
+      "GATE": "SUMMARY_BOTTOM_UP_CONSISTENCY",
+      "VALUE": "true",
+      "THRESHOLD": "true",
+      "STATUS": "PASS"
+    }
+  ],
+  "machine_end_check": {
+    "status": "PASS",
+    "scope": "local SA2 candidate evidence only; root official rebuild and independent validation remain mandatory",
+    "required_outputs_present": true,
+    "candidate_gate_pass": true
+  }
+}

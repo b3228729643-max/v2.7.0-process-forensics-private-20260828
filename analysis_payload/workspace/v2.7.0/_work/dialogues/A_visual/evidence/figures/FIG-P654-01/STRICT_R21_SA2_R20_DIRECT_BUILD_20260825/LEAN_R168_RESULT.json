@@ -1,0 +1,60 @@
+{
+  "figure_uid": "FIG-P654-01",
+  "round": "R21",
+  "policy": "USER_FONT_REVIEW_RELAXATION_R168",
+  "status": "LEAN_LOCAL_PASS_READY_FOR_SEAL",
+  "pdf": {
+    "relative_path": "build/v260_FIG-P654-01_standalone.pdf",
+    "pages": 1,
+    "a4": true,
+    "bytes": 43970,
+    "sha256": "3F1D7A22BCA99828074360790CBED5EA755F6A5C27CB1AE821ABB77FE457C241"
+  },
+  "source_sha256": "2EF1663B13A7982ACD5835217D0BB317FBF44146B08BE19F439430A2B42FABE7",
+  "wrapper_sha256": "FE44F2E6005D884A6916A11C6EBCB89CF40BD523A64D8F8C6BC8124DBABC0CA1",
+  "build": {
+    "invocations": 1,
+    "engine": "direct lualatex",
+    "exit_code": 0,
+    "natural_exit": true,
+    "pdf_count": 1,
+    "residual_tex_process_count": 0
+  },
+  "machine": {
+    "glyph_count": 93,
+    "graphic_count": 21,
+    "object_count": 114,
+    "unordered_pair_expected": 6441,
+    "unordered_pair_actual": 6441,
+    "critical_pair_count": 174,
+    "object_failure_count": 0,
+    "pair_failure_count": 0,
+    "illegal_overlap_failure_count": 0,
+    "clip_failure_count": 0,
+    "verdict": "PASS"
+  },
+  "manual": {
+    "glyph_ids_reviewed": 93,
+    "graphic_ids_reviewed": 21,
+    "full_page_views": 1,
+    "glyph_contact_sheets_opened": 5,
+    "graphic_contact_sheets_opened": 6,
+    "pair_matrix_blocks_opened": 4,
+    "named_critical_overlays_opened": 7,
+    "missing_or_tofu": 0,
+    "wrong_codepoint_or_math_semantics": 0,
+    "unreadable_objects": 0,
+    "plainly_visible_size_imbalance": 0,
+    "real_clip_or_unintended_overlap": 0,
+    "broken_or_wrong_relations": 0,
+    "verdict": "PASS",
+    "ledger": "MANUAL_R168_VISUAL_LEDGER.md",
+    "ledger_authorship": "human visual observations written after opening the named evidence; no script-generated reviewer, boolean, decision, or note fields"
+  },
+  "advisory_only": [
+    "1--2 px native-raster separation among adjacent Gamma letters remains visually readable and non-overlapping",
+    "fine peer/taxonomy height and area ratios are retained as measurements but do not trigger a hard failure under R168"
+  ],
+  "hard_gate_verdict": "PASS",
+  "route": "P654_R21_LEAN_LOCAL_PASS_READY_REQUEST_COMMIT"
+}

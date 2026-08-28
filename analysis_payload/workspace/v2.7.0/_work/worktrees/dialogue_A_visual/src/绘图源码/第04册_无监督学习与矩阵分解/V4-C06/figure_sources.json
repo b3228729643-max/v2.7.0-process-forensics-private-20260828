@@ -1,0 +1,68 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V4-C06",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 2,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V4-C06-01",
+      "source_path": "绘图源码/第04册_无监督学习与矩阵分解/V4-C06/fig_v4_c06_plsa_dag.tex",
+      "source_file": "fig_v4_c06_plsa_dag.tex",
+      "source_kind": "tikz",
+      "label": "fig:V4-C06-plsa-dag",
+      "caption": "PLSA生成图：文档决定主题混合，主题决定单词分布；给定主题后单词与文档条件独立",
+      "semantic_type": "probabilistic_graphical_model",
+      "teaching_objective": "读图时应回答：“PLSA生成图：文档决定主题混合，主题决定单词分布；给定主题后单词与文档条件独立”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第04册_无监督学习与矩阵分解/chapters/V4-C06.tex",
+        "target_label": "fig:V4-C06-plsa-dag",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-18-01-003"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：PLSA生成图：文档决定主题混合，主题决定单词分布；给定主题后单词与文档条件独立"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V4-C06-02",
+      "source_path": "绘图源码/第04册_无监督学习与矩阵分解/V4-C06/fig_v4_c06_simplex.tex",
+      "source_file": "fig_v4_c06_simplex.tex",
+      "source_kind": "tikz",
+      "label": "fig:V4-C06-simplex",
+      "caption": "三个单词维度中的主题单纯形：文档分布是主题点按$\\theta_{:j}$形成的凸组合",
+      "semantic_type": "geometric_or_partition_diagram",
+      "teaching_objective": "读图时应回答：“三个单词维度中的主题单纯形：文档分布是主题点按$\\theta_{:j}$形成的凸组合”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第04册_无监督学习与矩阵分解/chapters/V4-C06.tex",
+        "target_label": "fig:V4-C06-simplex",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-18-01-005"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：三个单词维度中的主题单纯形：文档分布是主题点按θ下标(:j)形成的凸组合"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

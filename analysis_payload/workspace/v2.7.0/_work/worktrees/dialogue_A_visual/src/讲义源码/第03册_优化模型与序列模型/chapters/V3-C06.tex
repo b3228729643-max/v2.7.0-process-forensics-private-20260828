@@ -1,0 +1,1106 @@
+% STAGE11-CHAPTER: V3-C06
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V3-C06-CH01}; CH-02=\label{struct:V3-C06-CH02}; CH-03=\label{struct:V3-C06-CH03}; CH-04=\label{struct:V3-C06-CH04}; CH-05=\label{struct:V3-C06-CH05}; CH-06=\label{struct:V3-C06-CH06}; CH-07=\label{struct:V3-C06-CH07}; CH-08=\label{struct:V3-C06-CH08}; CH-09=\label{struct:V3-C06-CH09}; CH-10=\label{struct:V3-C06-CH10}; CH-11=\label{struct:V3-C06-CH11}; CH-12=\label{struct:V3-C06-CH12}; CH-13=\label{struct:V3-C06-CH13}; CH-14=\label{struct:V3-C06-CH14}; CH-15=\label{struct:V3-C06-CH15}; CH-16=\label{struct:V3-C06-CH16}; CH-17=\label{struct:V3-C06-CH17}; CH-18=\label{struct:V3-C06-CH18}; CH-19=\label{struct:V3-C06-CH19}; CH-20=\label{struct:V3-C06-CH20}; CH-21=\label{struct:V3-C06-CH21}; CH-22=\label{struct:V3-C06-CH22}; CH-23=\label{struct:V3-C06-CH23}; CH-24=\label{struct:V3-C06-CH24}; CH-25=\label{struct:V3-C06-CH25}; CH-26=\label{struct:V3-C06-CH26}; CH-27=\label{struct:V3-C06-CH27}; CH-28=\label{struct:V3-C06-CH28}; CH-29=\label{struct:V3-C06-CH29}; CH-30=\label{struct:V3-C06-CH30}; CH-31=\label{struct:V3-C06-CH31}; CH-32=\label{struct:V3-C06-CH32}; CH-33=\label{struct:V3-C06-CH33}; CH-34=\label{struct:V3-C06-CH34}; CH-35=\label{struct:V3-C06-CH35}; CH-36=\label{struct:V3-C06-CH36}; CH-37=\label{struct:V3-C06-CH37}
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=18; source_group=none; supplement=18
+
+\chapter{条件随机场}\label{chap:V3-C06}
+\index{条件随机场}
+\index{概率无向图模型}
+\index{前向--后向算法}
+\index{改进迭代尺度}
+\index{Viterbi算法}
+
+% KNOWLEDGE-PLAN: KN-V3-C22-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：条件随机场。}条件随机场章地图以“从图马尔可夫性直达线性链CRF、前后向与Viterbi”组织内容；请把路线拆成起点、关键工具和终点，并核对三者的输入输出类型能依次衔接。\par
+
+\SLChapterOpening{从图马尔可夫性直达线性链CRF、前后向与Viterbi}{怎样在给定观测时联合建模整条标签序列}{能证明正分布的团因子分解并推导CRF概率、梯度与解码}{条件独立、图分隔、指数族与动态规划}{图分解条件不清时回到\cref{sec:V3-C06-S01}；概率或解码递推失败时回看\cref{sec:V3-C06-S03,sec:V3-C06-S05}}
+\phantomsection\label{struct:V3-C06-CH01}
+% KNOWLEDGE-PLAN: KN-V3-C22-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}条件随机场目标中的“从条件独立、团、势函数和归一化出发理解概率无向图模型的因子分解”必须可复核；请从条件独立、团、势函数和归一化出发理解概率无向图模型的因子分解，所得结果仅在“中间结果逐项包含首目标“从条件独立、团、势函数和归一化出发理解概率无向图模型的因子分解”声明的对象、条件与结论”时通过。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 从条件独立、团、势函数和归一化出发理解概率无向图模型的因子分解；
+  \item 写出一般条件随机场与线性链条件随机场的严格定义，并在局部特征、全局特征和矩阵三种表示之间转换；
+  \item 用前向--后向递推计算规范化因子、单点/相邻点边缘概率和特征期望；
+  \item 从条件对数似然推导梯度与Hessian，理解改进迭代尺度和BFGS学习；
+  \item 用Viterbi动态规划求最优标记序列，并分析学习、推断与预测的时间和空间复杂度。
+\end{itemize}}
+
+\phantomsection\label{struct:V3-C06-CH02}
+% KNOWLEDGE-PLAN: KN-V3-C22-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}条件随机场的最短先修明确要求“本章需要联合概率、条件概率、条件独立、指数族、极大似然、凸函数、梯度、Hessian、BFGS和动态规划”；请把首项“本章需要联合概率、条件概率、条件独立、指数族、极大似然、凸函数、梯度、Hessian、BFGS和动态规划”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章需要联合概率、条件概率、条件独立、指数族、极大似然、凸函数、梯度、Hessian、BFGS和动态规划”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章需要联合概率、条件概率、条件独立、指数族、极大似然、凸函数、梯度、Hessian、BFGS和动态规划。序列写为$x=(x_1,\ldots,x_n)$与$y=(y_1,\ldots,y_n)$，真实标签集合记为$\mathcal Y$，大小$m=|\mathcal Y|$；加入两个仅用于边界计算的状态后，明确记
+\[
+\overline{\mathcal Y}=\mathcal Y\cup\{\mathsf{start},\mathsf{stop}\},
+\qquad
+\bar m=|\overline{\mathcal Y}|=m+2.
+\]
+边界状态不属于$\mathcal Y$，也不会成为真实位置的预测标签。条件随机场只建模$P(Y\mid X)$，不要求为观测序列$X$指定生成分布。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V3-C06-CH03}
+% KNOWLEDGE-PLAN: KN-V3-C22-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}条件随机场先修自检固定核验“能否把$A\perp B\mid C$写成条件概率乘积关系，并说明分母为零时为何不能使用比值形式”；请把$A\perp B\mid C$写成条件概率乘积关系，并说明分母为零时为何不能使用比值形式并写出中间结果，再按“$A\perp B\mid C$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否把$A\perp B\mid C$写成条件概率乘积关系，并说明分母为零时为何不能使用比值形式？
+  \item 能否验证$Z(x)=\sum_y\exp s(x,y)$使$\exp s(x,y)/Z(x)$按$y$归一化？
+  \item 能否用动态规划说明“到达同一状态的最优前缀只需保留一个”？
+  \item 能否写出BFGS中参数差与梯度差，并检查曲率条件？
+\end{enumerate}
+若第1项或第2项不熟悉，应复习条件概率与指数族；若第3项不能说明，应回看HMM的Viterbi算法；若第4项不确定，应复习拟牛顿法。
+\end{precheckbox}
+
+\phantomsection\label{struct:V3-C06-CH04}
+% KNOWLEDGE-PLAN: KN-V3-C22-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}条件随机场依赖链含“条件独立 $\to$ 无向图马尔可夫性 $\to$ 最大团因子分解”到“势函数 $\to$ 条件指数族 $\to$ 线性链条件随机场”这一跳；请固定写出前者输出类型与后者输入类型，并核对两者相同或存在正文声明的转换。\par
+
+\begin{dependencybox}
+条件独立 $\to$ 无向图马尔可夫性 $\to$ 最大团因子分解；
+势函数 $\to$ 条件指数族 $\to$ 线性链条件随机场；
+链式因子 $\to$ 前向--后向 $\to$ 边缘概率与特征期望；
+条件似然 $\to$ 梯度/曲率 $\to$ IIS或BFGS学习；
+加性路径得分 $\to$ 最优子结构 $\to$ Viterbi预测。
+\end{dependencybox}
+
+\begin{keypointbox}[title=模型认识卡：条件随机场]
+\textbf{任务与输入：}给定观测$x$联合标注有限标签序列$y$。\quad
+\textbf{输出类型：}条件序列概率、边缘概率或MAP路径。\par
+\textbf{模型：}$P_w(y\mid x)\propto\exp\{w^{\mathsf T}F(y,x)\}$，仅对合法路径归一化。\quad
+\textbf{策略：}最大化正则化条件似然。\quad
+\textbf{算法：}前向--后向求配分函数与梯度，BFGS学习，Viterbi解码。\par
+\textbf{预测：}取全局最大得分合法路径。\quad
+\textbf{关键假设与边界：}标签链局部依赖、合法支持非空；禁止转移为零但合法路径权重严格为正。
+\end{keypointbox}
+
+\phantomsection\label{struct:V3-C06-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V3-C06
+\index[symbols]{g-eq-v-e--s6ea1efae2cab@$G=(V,E)$：随机变量之间的依赖结构}
+\index[symbols]{c-y-c--s67ad70c41ee2@$C,Y_C$：团及团中随机变量}
+\index[symbols]{minus-psi-minus-c-y-c--s85c8360f069e@$\psi_C(Y_C)$：团上的势函数}
+\index[symbols]{x-y--s0085c1e30d0a@$X,Y$：观测序列与标记序列}
+\index[symbols]{label-set-m@${\mathcal Y},m$：真实标签集合及其大小}
+\index[symbols]{minus-overline-minus-minus-mathcaly-minus--se6cfc3c8cbdc@$\overline{\mathcal Y}$：加入起点和终点后的计算状态集}
+\index[symbols]{f-k-y-i-minus-1-y-i-x-i--s20bace1beab8@$f_k(y_{i-1},y_i,x,i)$：第$k$个局部特征函数}
+\index[symbols]{f-k-y-x--s17fa67d6268f@$F_k(y,x)$：第$k$个全局特征总和}
+\index[symbols]{w-minus-in-minus-minus-mathbbr-minus-k--s5853fb4f3345@$w\in\mathbb R^K$：全部特征权重}
+\index[symbols]{m-i-x--s0d6f544206c4@$M_i(x)$：含边界状态的非负局部因子矩阵}
+\index[symbols]{minus-alpha-minus-i-minus-beta-minus-i--s95f89ee23817@$\alpha_i,\beta_i$：前向与后向非规范化权重}
+\index[symbols]{z-w-x--sfdd9352117dc@$Z_w(x)$：给定$x$的规范化因子}
+% STAGE19-SYMBOL-INDEX-END: V3-C06
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$G=(V,E)$ & 无向图 & 随机变量之间的依赖结构\\
+$C,Y_C$ & 结点子集 & 团及团中随机变量\\
+$\psi_C(Y_C)$ & $(0,\infty)$ & 团上的势函数\\
+$X,Y$ & 随机序列 & 观测序列与标记序列\\
+$\mathcal Y,m$ & 有限集、正整数 & 真实标签集合及其大小$m=|\mathcal Y|$\\
+$\overline{\mathcal Y}$ & 有限集，大小$\bar m=m+2$ & 加入起点和终点后的计算状态集\\
+$f_k(y_{i-1},y_i,x,i)$ & $\mathbb R$ & 第$k$个局部特征函数\\
+$F_k(y,x)$ & $\mathbb R$ & 第$k$个全局特征总和\\
+$w\in\mathbb R^K$ & 参数向量 & 全部特征权重\\
+$M_i(x)$ & $\mathbb R_+^{\bar m\times\bar m}$ & 含边界状态的非负局部因子矩阵\\
+$\alpha_i,\beta_i$ & $\mathbb R_+^{\bar m}$ & 前向与后向非规范化权重\\
+$Z_w(x)$ & $(0,\infty)$ & 给定$x$的规范化因子\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLReviewSection{概率图、因子与势函数}{sec:V3-C06-S01}
+\phantomsection\label{struct:V3-C06-CH06}
+序列标注需要同时利用观测与相邻标签关系。若为所有标签序列逐一指定概率，参数量和求和规模都随长度指数增长；图结构把全局分布拆成局部因子，使条件独立、计算和参数共享能够统一表达。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-CONCEPT-002 L1
+\paragraph{读前自检：因子到条件概率的概念桥。}CRF局部因子相乘只给出合法路径的非规范化权重；请对全部合法标签路径求和得到$Z(x)$，再用单条路径权重除以$Z(x)$，核对所得条件概率非负且总和为1。\par
+
+\begin{keypointbox}[title=因子到条件概率的概念桥]
+\textbf{因子}是作用在少量变量上的非负函数；严格正的因子常称\textbf{势函数}，它本身不是概率。把一条合法路径的局部因子相乘，得到\textbf{非规范化权重}；对所有合法路径求和得到\textbf{配分函数}$Z(x)$，再用权重除以$Z(x)$才得到条件概率。\textbf{合法路径}从$\mathsf{start}$出发、只走允许转移并在$\mathsf{stop}$结束；禁止转移由硬因子$0$编码，不要求对这些非法路径谈严格正性。
+\end{keypointbox}
+
+\knowledgeanchor{PRE-SQ-009}{概率图模型与条件独立}
+概率图模型用结点表示随机变量，用边或有向箭头表达直接依赖。无向图中的“无边”只有结合分隔集合和马尔可夫性质才具有条件独立含义，不能把任意未相连结点解释为无条件独立。成对、局部和全局马尔可夫性从不同尺度描述同一结构，在严格正分布下可与最大团因子分解联系起来。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-002 L1
+\paragraph{读前自检：条件随机场。}条件随机场要求先确认“条件随机场是给定输入随机变量$X$时，输出随机变量$Y$构成马尔可夫随机场的条件概率模型”；请随后把“条件随机场是给定输入随机变量$X$时，输出随机变量$Y$构成马尔可夫随机场的条件概率模型”中的已声明对象代回条件随机场的定义，用对象、条件与结论逐项闭合，且每项都可直接判为成立或失败验收。\par
+
+\knowledgeanchor{SLM-11-00-001}{条件随机场}
+条件随机场是给定输入随机变量$X$时，输出随机变量$Y$构成马尔可夫随机场的条件概率模型。它把输入序列视为已知条件，允许特征同时依赖整个$x$与局部标签，从而避免HMM必须生成观测的限制。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-CONCEPT-003 L1
+\paragraph{读前自检：概率无向图模型。}从概率无向图模型的条件“$P$满足图$G$给出的全局马尔可夫性：当结点集$C$在图中分隔$A$与$B$时”出发，请把$P(Y_v\mid Y_{V\setminus\{v\}})$在其支持上求和或积分一次；所得量应符合全局形式更适合从图上读取独立关系，局部形式更适合设计局部计算。\par
+% KNOWLEDGE-PLAN: KN-V3-C22-DEFINITION-001 L1
+\paragraph{读前自检：模型定义。}条件随机场中的模型定义依赖“$P$满足图$G$给出的全局马尔可夫性：当结点集$C$在图中分隔$A$与$B$时”；请据此把$P(Y_v\mid Y_{V\setminus\{v\}})$展开一次并检查其类型或边界，并直接核对全局形式更适合从图上读取独立关系，局部形式更适合设计局部计算。\par
+% KNOWLEDGE-PLAN: KN-V3-C22-CONCEPT-004 L1
+\paragraph{读前自检：概率无向图模型的马尔可夫性质。}概率无向图模型的马尔可夫性质以“$P$满足图$G$给出的全局马尔可夫性：当结点集$C$在图中分隔$A$与$B$时”为约束；请把$P(Y_v\mid Y_{V\setminus\{v\}})$在其支持上求和或积分一次，并确认全局形式更适合从图上读取独立关系，局部形式更适合设计局部计算。\par
+
+\knowledgeanchor{SLM-11-01-001}{概率无向图模型}
+\knowledgeanchor{SLM-11-01-002}{模型定义}
+\knowledgeanchor{SLM-11-01-003}{概率无向图模型的马尔可夫性质}
+\phantomsection\label{struct:V3-C06-CH07}
+% KNOWLEDGE-PLAN: KN-V3-C22-DEFINITION-002 L1
+\paragraph{读前自检：概率无向图模型。}先锁定概率无向图模型的条件“对每个最大团$C$给定严格正势函数$\psi_C(y_C)$”：把$P(y)$在其支持上求和或积分一次，所得结果应满足势函数不是边缘概率，不要求单独求和为1，整体乘积经$Z$归一化后才成为分布。\par
+
+\begin{definition}[概率无向图模型]\label{def:V3-C06-mrf}
+设$Y=(Y_v)_{v\in V}$具有联合分布$P(Y)$，无向图$G=(V,E)$的每个结点$v$对应$Y_v$。若$P$满足图$G$给出的全局马尔可夫性：当结点集$C$在图中分隔$A$与$B$时，
+\[
+Y_A\perp Y_B\mid Y_C,
+\]
+则称$P$是由$G$表示的概率无向图模型或马尔可夫随机场。
+\end{definition}
+
+局部马尔可夫性把结点$v$与其邻居集合$N(v)$之外的变量分离：
+\[
+P(Y_v\mid Y_{V\setminus\{v\}})
+=P(Y_v\mid Y_{N(v)}),
+\]
+其中等式只在相应条件事件概率为正时解释。全局形式更适合从图上读取独立关系，局部形式更适合设计局部计算。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-CONCEPT-005 L1
+\paragraph{读前自检：团与最大团。}对团与最大团，条件“若再加入任何结点都会破坏这一性质”不可省；请把“若再加入任何结点都会破坏这一性质”中的已声明对象代回团与最大团的定义，再用最大团不是结点数最大的团，而是不能被严格包含于更大团的团作检查。\par
+
+\knowledgeanchor{SLM-11-02-001}{团与最大团}
+无向图中任意两结点都有边相连的结点子集称为团；若再加入任何结点都会破坏这一性质，则为最大团。最大团不是结点数最大的团，而是不能被严格包含于更大团的团。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-FORMULA-001 L1
+\paragraph{读前自检：因子分解、势函数与归一化。}因子分解、势函数与归一化把问题限定在“对每个最大团$C$给定严格正势函数$\psi_C(y_C)$”；请把$P(y)$展开一次并检查其类型或边界，检查是否得到势函数不是边缘概率，不要求单独求和为1，整体乘积经$Z$归一化后才成为分布。\par
+% KNOWLEDGE-PLAN: KN-V3-C22-FORMULA-002 L1
+\paragraph{读前自检：概率无向图模型的因子分解。}在“对每个最大团$C$给定严格正势函数$\psi_C(y_C)$”成立时处理概率无向图模型的因子分解：请把$P(y)$在其支持上求和或积分一次，并以势函数不是边缘概率，不要求单独求和为1，整体乘积经$Z$归一化后才成为分布判定结果。\par
+
+\knowledgeanchor{PRE-SQ-010}{因子分解、势函数与归一化}
+\knowledgeanchor{SLM-11-01-004}{概率无向图模型的因子分解}
+对每个最大团$C$给定严格正势函数$\psi_C(y_C)$，定义
+\[
+P(y)=\frac1Z\prod_C\psi_C(y_C),\qquad
+Z=\sum_{y}\prod_C\psi_C(y_C).
+\]
+$Z$把所有非规范化权重归一化。常写$\psi_C(y_C)=\exp\{-E_C(y_C)\}$；势函数不是边缘概率，不要求单独求和为1，整体乘积经$Z$归一化后才成为分布。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-THEOREM-001 L1
+\paragraph{读前自检：Hammersley--Clifford定理。}Hammersley--Clifford定理所用的明确前提是“严格正性保证当前定义中的对数有限”；完成把$\sum_{y_A,y_B}g(y_A,y_C)h(y_B,y_C)$用到的关键定义展开并完成下一步变形后，核对由于没有最大团能够同时跨越被$C$分隔的$A$与$B$。\par
+
+\knowledgeanchor{SLM-11-01-005}{Hammersley--Clifford定理}
+\phantomsection\label{struct:V3-C06-CH12}
+\begin{theorem}[合法支持上的Hammersley--Clifford因子分解]\label{thm:V3-C06-hc}
+设$\Omega$是由$G$的局部硬约束给出的非空有限合法配置空间，$P(y)=0$对$y\notin\Omega$，且$P(y)>0$对每个$y\in\Omega$。把这些硬约束作为取值$0/1$的团因子后，若$P$在合法支持上满足$G$的马尔可夫性，则存在严格正的软团势$\psi_C$，使
+\[
+P(y)=\frac{\mathbb I\{y\in\Omega\}}{Z}\prod_C\psi_C(y_C).
+\]
+反向地，这种“局部硬因子$\times$严格正软势”的分解在合法条件事件上满足$G$给出的全局马尔可夫性。无硬约束时$\Omega$就是全部配置，退化为通常定理。
+\end{theorem}
+
+\phantomsection\label{struct:V3-C06-CH13}
+% KNOWLEDGE-PLAN: KN-V3-C22-PROOF-001 L1
+\paragraph{读前自检：证明：合法支持上的Hammersley--Clifford因子分解。}若$P$由$G$的局部$0/1$硬团因子与严格正软团势分解，且$S$分隔$A,B$、$P(y_S)>0$，请按两侧重组因子并归一化，核对$Y_A\perp Y_B\mid Y_S$。\par
+
+\begin{proof}
+先把描述$\Omega$的局部$0/1$硬因子提出；它们只删除非法配置，不参与取对数。固定一个合法基准配置$y^0$，在合法支持上记$h(y)=\log P(y)$；严格正性保证这里的对数有限。对与局部硬约束相容的坐标块$D\subseteq V$定义Möbius交互项
+\[
+\theta_D(y_D)=
+\sum_{B\subseteq D}(-1)^{|D\setminus B|}
+h(y_B,y^0_{V\setminus B}).
+\]
+布尔格上的Möbius反演逐项给出
+\[
+h(y)=\sum_{D\subseteq V}\theta_D(y_D).
+\]
+若$D$不是团，则其中含有一对不相邻结点$u,v$。由严格正分布的图马尔可夫性可取成对形式
+$Y_u\perp Y_v\mid Y_{V\setminus\{u,v\}}$。因此对任意其余变量配置$c$，条件优势比为1，即
+\[
+h(y_u,y_v,c)-h(y_u,y_v^0,c)
+-h(y_u^0,y_v,c)+h(y_u^0,y_v^0,c)=0.
+\]
+在$\theta_D$的交替和中，先按是否含$u,v$把合法四项配对，上式使每一组都抵消，故$\theta_D\equiv0$。所以合法支持上的$h$只含团上的交互项。将每个非最大团项分配给任一包含它的最大团，并令
+$\psi_C(y_C)=\exp\{\sum_{D\mapsto C}\theta_D(y_D)\}>0$，便有
+$P(y)=Z^{-1}\mathbb I\{y\in\Omega\}\prod_C\psi_C(y_C)$；常数项吸收到$Z$中。这完成正向构造。
+
+再证因子分解到全局马尔可夫性。设$C$分隔$A$与$B$。把全部最大团因子按是否涉及$A$归入第一组，其余归入第二组；由于没有最大团能够同时跨越被$C$分隔的$A$与$B$，可写
+\[
+P(y_A,y_B,y_C)=Z^{-1}g(y_A,y_C)h(y_B,y_C).
+\]
+固定$y_C$并分别对$y_A,y_B$求和，条件分布的归一化常数分解为
+\[
+\sum_{y_A,y_B}g(y_A,y_C)h(y_B,y_C)
+=\Bigl(\sum_{y_A}g\Bigr)\Bigl(\sum_{y_B}h\Bigr).
+\]
+因此$P(y_A,y_B\mid y_C)=P(y_A\mid y_C)P(y_B\mid y_C)$，全局马尔可夫性成立。两个方向都已证明。
+\end{proof}
+
+\phantomsection\label{struct:V3-C06-CH17}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C06/fig_v3_c06_chain.tex}
+% FIGURE-KNOWLEDGE-MAP: fig:V3-C06-chain -> SLM-11-04-001
+图\ref{fig:V3-C06-chain}显示：给定整段观测$x$后，标签之间只保留相邻边，局部势仍可读取整个$x$。链结构提供动态规划所需的最优子结构，并不意味着特征只能依赖相邻观测。
+
+
+\SLDirectSection{线性链条件随机场}{sec:V3-C06-S02}
+\knowledgeanchor{PRE-SQ-011}{序列标注问题}
+序列标注给定观测$x=(x_1,\ldots,x_n)$，输出同长度标签$y=(y_1,\ldots,y_n)$。逐位置独立分类忽略相邻标签约束，而枚举$m^n$条序列代价过高。线性链条件随机场用相邻标签因子保留结构，再以动态规划完成求和和最大化。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-DEFINITION-003 L1
+\paragraph{读前自检：条件随机场的定义与形式。}条件随机场的定义与形式中的“设$X,Y$为随机变量，$P(Y\mid X)$为给定$X$时$Y$的条件分布”决定可执行范围；请把$P(Y_v\mid X,Y_{V\setminus\{v\}})$展开一次并检查其类型或边界，结果须满足展开后的量满足定义中的域、维数或符号限制。\par
+% KNOWLEDGE-PLAN: KN-V3-C22-DEFINITION-004 L1
+\paragraph{读前自检：条件随机场的定义。}把条件随机场的定义放在“设$X,Y$为随机变量，$P(Y\mid X)$为给定$X$时$Y$的条件分布”下考察：把$P(Y_v\mid X,Y_{V\setminus\{v\}})$展开一次并检查其类型或边界，并检查展开后的量满足定义中的域、维数或符号限制。\par
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-003 L1
+\paragraph{读前自检：一般条件随机场。}一般条件随机场要求先确认“设$X,Y$为随机变量，$P(Y\mid X)$为给定$X$时$Y$的条件分布”；请随后把$P(Y_v\mid X,Y_{V\setminus\{v\}})$展开一次并检查其类型或边界，用展开后的量满足定义中的域、维数或符号限制验收。\par
+
+\knowledgeanchor{SLM-11-02-002}{条件随机场的定义与形式}
+\knowledgeanchor{SLM-11-02-003}{条件随机场的定义}
+\knowledgeanchor{SLM-11-03-001}{一般条件随机场}
+% KNOWLEDGE-PLAN: KN-V3-C22-DEFINITION-005 L1
+\paragraph{读前自检：条件随机场。}从条件随机场的条件“当$Y_1,\ldots,Y_n$构成链时”出发，请把$P(Y_i\mid X,Y_{-i})$展开一次并检查其类型或边界；所得量应符合注意整个观测序列$X$都可以进入局部特征，链结构只限制标签之间的直接依赖。\par
+
+\begin{definition}[条件随机场]\label{def:V3-C06-crf}
+设$X,Y$为随机变量，$P(Y\mid X)$为给定$X$时$Y$的条件分布。若对无向图$G=(V,E)$中的每个结点$v$都有
+\[
+P(Y_v\mid X,Y_{V\setminus\{v\}})
+=P(Y_v\mid X,Y_{N(v)}),
+\]
+则称$P(Y\mid X)$为图$G$上的条件随机场。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-004 L1
+\paragraph{读前自检：线性链条件随机场。}线性链条件随机场依赖“当$Y_1,\ldots,Y_n$构成链时”；请据此把$P(Y_i\mid X,Y_{-i})$展开一次并检查其类型或边界，并直接核对注意整个观测序列$X$都可以进入局部特征，链结构只限制标签之间的直接依赖。\par
+
+\knowledgeanchor{SLM-11-04-001}{线性链条件随机场}
+当$Y_1,\ldots,Y_n$构成链时，内部位置满足
+\[
+P(Y_i\mid X,Y_{-i})
+=P(Y_i\mid X,Y_{i-1},Y_{i+1}),
+\]
+端点只保留存在的邻居。注意整个观测序列$X$都可以进入局部特征，链结构只限制标签之间的直接依赖。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-005 L1
+\paragraph{读前自检：线性链条件随机场的参数化形式。}线性链CRF用转移特征$t_k$、状态特征$s_l$及系数$u_k,v_l$构造$P(y\mid x)$；请对一条合法路径累加特征得分并除以$Z(x)$，核对对全部标签序列求和为1，且$\mathsf{start},\mathsf{stop}$不占真实标签位置。\par
+
+\knowledgeanchor{SLM-11-02-004}{线性链条件随机场的参数化形式}
+\knowledgeanchor{SLM-11-02-005}{条件随机场的参数化形式}
+\phantomsection\label{struct:V3-C06-CH08}
+\textbf{模型。}令$t_k(y_{i-1},y_i,x,i)$为转移特征，$s_l(y_i,x,i)$为状态特征；为避免与后文$L_2$正则强度$\lambda$混淆，分别把两类特征系数记为$u_k$与$v_l$，则
+\[
+P(y\mid x)=\frac1{Z(x)}\exp\!\left[
+\sum_{i,k}u_k t_k(y_{i-1},y_i,x,i)
++\sum_{i,l}v_l s_l(y_i,x,i)\right],
+\]
+其中$Z(x)$对全部候选标签序列求和。令$y_0=\mathsf{start}$、$y_{n+1}=\mathsf{stop}$；这两个边界状态不属于任何真实标签位置，只允许起点到$y_1$及$y_n$到终点的边界转移。
+
+\knowledgeanchor{SLM-11-02-006}{条件随机场的简化形式}
+把$u_k,v_l$依次并入统一参数向量$w$，并把全部局部特征统一记为$f_k(y_{i-1},y_i,x,i)$，定义
+\[
+F_k(y,x)=\sum_{i=1}^{n+1}f_k(y_{i-1},y_i,x,i),
+\quad F(y,x)=(F_1,\ldots,F_K)^T.
+\]
+则
+\[
+P_w(y\mid x)=\frac{\exp\{w^TF(y,x)\}}{Z_w(x)},
+\qquad Z_w(x)=\sum_y\exp\{w^TF(y,x)\}.
+\]
+这是条件对数线性模型。$w_k$为正时提高激活特征的序列得分，为负时降低得分；概率仍由全部路径共同归一化。
+
+\begin{SLRunningExample}{RUN-SEQ-SHORT-01}{V3-C06-crf}{贯穿例：三时刻天气序列}{把同一观测与标签序列改写为条件模型，在不生成观测的前提下复用局部和转移结构。}
+精确复用观测$x=(\text{干},\text{湿},\text{干})$与标签
+$y=(\text{晴},\text{雨},\text{晴})$。本章直接对给定$x$后的标签序列建模：若把该路径的局部得分与两次标签转移得分之和记为$S(y,x)$，则
+\[
+p(y\mid x)=\frac{\exp\{S(y,x)\}}
+{\sum_{y'}\exp\{S(y',x)\}}.
+\]
+同一“逐位置局部项加相邻标签转移项”的结构与线性链CRF相容；有限标签集和有限得分保证规范化因子为正。本章把$x$当作已经观测到的条件，不要求给出$p(x)$，局部特征还可以读取整个$x$。因此上一站HMM的发射分布及“给定状态后观测独立”假设不能外推到这里。上一站见\SLRunningExampleRef{RUN-SEQ-SHORT-01}{V3-C05-hmm}{HMM对同一序列的联合生成模型}。
+\end{SLRunningExample}
+
+\knowledgeanchor{SLM-11-02-007}{条件随机场的矩阵形式}
+在增广状态集$\overline{\mathcal Y}$上，对$i=1,\ldots,n+1$定义$\bar m\times\bar m$矩阵
+\[
+M_i(a,b\mid x)=
+\begin{cases}
+\exp\!\left\{\displaystyle\sum_{k=1}^{K}w_k f_k(a,b,x,i)\right\},
+& (a,b)\text{在位置$i$可行},\\[4pt]
+0,&\text{其他情形},
+\end{cases}
+\]
+其中$i=1$只允许$\mathsf{start}\to\mathcal Y$，$2\leq i\leq n$只允许$\mathcal Y\to\mathcal Y$，$i=n+1$只允许$\mathcal Y\to\mathsf{stop}$。一条合法路径的非规范化权重为$\prod_{i=1}^{n+1}M_i(y_{i-1},y_i\mid x)$，规范化因子是所有start--stop路径权重之和，即$M_1\cdots M_{n+1}$的start--stop元素。零填充只用于统一矩阵维数，不引入额外标签路径。
+
+\phantomsection\label{struct:V3-C06-CH11}
+% CORE-DERIVATION-PLAN: KN-V3-C22-DERIVATION-001
+\SLKnowledgeBridge{在一条边处拼接前缀、局部因子与后缀，并除以配分函数。}{前向量 $\alpha_{i-1}(a)$、边因子 $M_i(a,b\mid x)$、后向量 $\beta_i(b)$ 与 $Z_w(x)$。}{标签集有限、不可行转移因子为 $0$、$Z_w(x)>0$；前后向量使用一致的数值缩放。}{先按固定相邻标签 $(a,b)$ 把整条序列权重分成“前缀 × 当前边 × 后缀”。}
+
+\begin{derivationgoalbox}
+由前后向量得到相邻标签边缘概率，并据此计算特征期望。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+给定输入$x$与有限标签集$\mathcal Y$；矩阵因子$M_i(a,b\mid x)\geq0$，不可行转移填0；$Z_w(x)>0$。前向量汇总固定终点前缀权重，后向量汇总固定起点后缀权重，二者采用相同的缩放或对数域约定。
+\end{derivationprepbox}
+
+\textbf{推导第1步：拆分路径。}固定位置$i$的相邻标签为$(a,b)$。所有满足该约束的路径权重分成三段：到$a$的前缀总权重$\alpha_{i-1}(a)$、局部因子$M_i(a,b\mid x)$和从$b$出发的后缀总权重$\beta_i(b)$。
+
+\textbf{推导第2步：规范化。}三段相乘并除以全部路径权重和，得到
+\[
+P(Y_{i-1}=a,Y_i=b\mid x)
+=\frac{\alpha_{i-1}(a)M_i(a,b\mid x)\beta_i(b)}{Z_w(x)}.
+\]
+对$a$求和可得$P(Y_i=b\mid x)=\alpha_i(b)\beta_i(b)/Z_w(x)$。
+
+\textbf{推导第3步：交换有限求和。}因为$F_k(y,x)=\sum_if_k(y_{i-1},y_i,x,i)$且所有集合有限，
+\[
+\mathbb E_w[F_k\mid x]
+=\sum_{i=1}^{n+1}\sum_{a,b}
+f_k(a,b,x,i)
+P(Y_{i-1}=a,Y_i=b\mid x).
+\]
+这把对$m^n$条序列的求和化为$n+1$组$m^2$个局部边缘。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-CONCEPT-007 L1
+\paragraph{读前自检：概率计算。}线性链CRF用前向量$\alpha_i$与后向量$\beta_i$计算单点边缘；请形成$P(Y_i=b\mid x)\propto\alpha_i(b)\beta_i(b)$并对$b$归一，核对概率和为1。\par
+
+\knowledgeanchor{SLM-11-03-004}{概率计算}
+单点边缘用于逐位置置信度，相邻点边缘用于转移统计。为避免长序列下溢，可以在每一步缩放$\alpha_i,\beta_i$并累计对数缩放因子，或在对数域使用log-sum-exp；前后向必须采用相容的缩放约定。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-FORMULA-003 L1
+\paragraph{读前自检：期望值的计算。}CRF经验特征期望由真实标签直接计数，模型期望由前向--后向边缘加权；请对同一特征$f_k$各算一项，核对两侧都是可比较标量。\par
+
+\knowledgeanchor{SLM-11-03-005}{期望值的计算}
+对训练集经验分布，经验特征期望由真实标记直接计数；模型特征期望需要对每个输入$x_j$做前向--后向。二者之差构成条件对数似然的梯度，是训练算法的核心信号。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-009 L1
+\paragraph{读前自检：条件随机场的学习算法。}条件随机场学习目标为带$L_2$正则的负条件对数似然$J(w)=\sum_j[\log Z_w(x_j)-w^TF(y_j,x_j)]+\lambda\lVert w\rVert_2^2/2$；请对$w_k$求导，核对得到模型特征期望减经验计数再加$\lambda w_k$。\par
+
+\SLAdvancedSection{改进迭代尺度与拟牛顿学习}{sec:V3-C06-S04}
+\knowledgeanchor{SLM-11-04-002}{条件随机场的学习算法}
+\phantomsection\label{struct:V3-C06-CH09}
+\textbf{学习策略。}对训练集$\{(x_j,y_j)\}_{j=1}^{N}$，带$L_2$正则的负条件对数似然为
+\[
+J(w)=\sum_{j=1}^{N}\left[
+\log Z_w(x_j)-w^TF(y_j,x_j)\right]
++\frac{\lambda}{2}\|w\|_2^2.
+\]
+它只比较同一$x_j$下的标签序列，不建模$P(X)$。
+
+\phantomsection\label{struct:V3-C06-CH16}
+% CORE-DERIVATION-PLAN: KN-V3-C22-DERIVATION-002
+\SLKnowledgeBridge{把经验特征计数、模型特征期望和凸性放在同一公式中。}{参数 $w\in\R^K$、全局特征 $F(y,x)$、配分函数 $Z_w(x)$ 与正则强度 $\lambda$。}{每个输入的可行标签序列有限，$Z_w(x)>0$，且 $\lambda\ge0$。}{先把单样本负对数似然写为 $\log Z_w(x)-w^{\mathsf T}F(y,x)$，再逐项求导。}
+
+\begin{derivationgoalbox}
+推导CRF负条件对数似然的梯度与Hessian，说明模型期望、经验计数和凸性从何而来。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+参数$w\in\mathbb R^K$，全局特征$F(y,x)\in\mathbb R^K$，每个训练输入的可行标签序列有限且$Z_w(x)>0$；有限求和允许交换求导与求和，$L_2$正则强度$\lambda\geq0$。
+\end{derivationprepbox}
+\textbf{推导第1步：求配分函数的导数。}由$Z_w(x)=\sum_y e^{w^TF(y,x)}$，
+\[
+\frac{\partial\log Z_w(x)}{\partial w_k}
+=\frac{\sum_yF_k(y,x)e^{w^TF(y,x)}}{Z_w(x)}
+=\mathbb E_w(F_k\mid x).
+\]
+\textbf{推导第2步：组合各项。}对第$k$个参数求导，
+\[
+\frac{\partial J}{\partial w_k}
+=\sum_j\left[
+\mathbb E_w(F_k\mid x_j)-F_k(y_j,x_j)
+\right]+\lambda w_k.
+\]
+\textbf{推导第3步：再求一次导数。}指数族期望对参数的导数是条件协方差，故
+$\nabla^2J(w)=\sum_j\operatorname{Cov}_w(F\mid x_j)+\lambda I$。协方差矩阵半正定，所以Hessian半正定；$\lambda>0$时提供严格正曲率。最优点使正则化后的模型期望与经验统计平衡。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：改进的迭代尺度法。}IIS闭式增量只在$\lambda=0$、特征非负且总特征量$F^{\#}(y,x)\equiv S>0$时成立；请把经验期望与模型期望代入$\delta_k=S^{-1}\log[\widetilde E(F_k)/E_w(F_k)]$，并先检查零期望分支。\par
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-010 L1
+\paragraph{读前自检：条件随机场模型学习的改进的迭代尺度法。}条件随机场IIS若$F^{\#}$不恒定或$\lambda>0$，就不能直接用对数比闭式更新；请写出含$\exp{\delta_kF^{\#}(y,x)}$或$\lambda(w_k+\delta_k)$的一元条件，核对该坐标应由求根而非闭式式更新。\par
+
+\knowledgeanchor{SLM-11-04-003}{改进的迭代尺度法}
+\knowledgeanchor{SLM-11-01-006}{条件随机场模型学习的改进的迭代尺度法}
+IIS逐坐标寻找增量$\delta_k$，使更新后的模型期望向经验期望靠近。只有在无正则$\lambda=0$、全部尺度特征非负，且每条候选路径的总特征量$F^{\#}(y,x)=\sum_rF_r(y,x)$恒等于同一常数$S>0$时，尺度方程才化为闭式更新
+\[
+\delta_k=\frac1S\log
+\frac{\widetilde E[F_k]}{E_w[F_k]},
+\qquad w_k\leftarrow w_k+\delta_k.
+\]
+若$F^{\#}$不恒定，无正则IIS需要为每个坐标求解含$\exp\{\delta_kF^{\#}(y,x)\}$的一元尺度方程，或在满足条件时加入松弛特征。若$\lambda>0$，精确坐标最优条件还包含$\lambda(w_k+\delta_k)$，通常也需一维求根；此时不能使用上面的对数比闭式式。IIS每轮需要重新计算模型期望，特征稀疏时才具有可接受成本。
+
+对每个坐标必须先分类零期望分支。记经验期望为$e_k$、模型期望为$m_k$：$e_k=m_k=0$时该坐标在当前支撑上不可识别，固定增量为0；$|e_k-m_k|$在容差内时标为已匹配；$e_k,m_k>0$时才使用对数比或一维求根；$e_k>0,m_k=0$表示经验正质量落在模型零支撑上，应返回支撑冲突；$e_k=0,m_k>0$对应无正则边界解$\delta_k\to-\infty$，应按预登记的删除、固定或正则化规则处理，不能执行无穷更新或把整个问题笼统判为不可行。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-CONCEPT-008 L1
+\paragraph{读前自检：拟牛顿法。}CRF拟牛顿学习用梯度差近似曲率而不显式形成完整Hessian；请核对特征向量$F(y,x)\in\mathbb R^K$与参数$w$同维，写出“经验特征计数减模型期望计数再加正则项”的梯度，并检查BFGS曲率对$(s_k,y_k)$的维数要求。\par
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-011 L1
+\paragraph{读前自检：条件随机场模型学习的BFGS算法。}CRF的BFGS学习每次目标与梯度计算都调用前向--后向；请形成一个满足Wolfe条件的候选$w^+$，用$s_k=w^+-w_k$和梯度差$y_k$检查曲率条件，核对梯度范数达容差才报告收敛，目标停滞或预算耗尽须另报状态。\par
+
+\knowledgeanchor{SLM-11-04-004}{拟牛顿法}
+\knowledgeanchor{SLM-11-02-008}{条件随机场模型学习的BFGS算法}
+\phantomsection\label{struct:V3-C06-CH10}
+\textbf{学习算法。}BFGS用梯度差近似曲率，不显式计算CRF的完整Hessian。每次目标和梯度计算都调用前向--后向；线搜索保证下降并维护曲率条件。
+
+\phantomsection\label{struct:V3-C06-CH21}
+\textbf{参数含义。}$\lambda$为正则强度，$B_k$为Hessian近似，$c_1,c_2$为Wolfe条件常数，$\varepsilon_g$为梯度容差，$\varepsilon_J$为目标相对变化停滞容差，$T_{\max}$为最大迭代数。\textbf{停止条件：}梯度满足容差时视为收敛；目标变化停滞或达到最大迭代数时停止并输出当前参数，同时给出梯度范数以区分是否满足收敛容差。
+
+\phantomsection\label{struct:V3-C06-CH26}
+\textbf{训练时间复杂度。}设所有序列总长度为$L$，标签数$m$、参数数$K$、每个转移平均激活$r$个特征、优化迭代数$T$。一次目标与梯度约为$O(Lm^2r)$；完整BFGS总训练约为$O(T[Lm^2r+K^2])$，L-BFGS以历史长度$h$把线性代数项降为$O(ThK)$。
+
+\phantomsection\label{struct:V3-C06-CH14}
+\textbf{几何解释。}每条候选序列对应特征空间中的点$F(y,x)\in\mathbb R^K$，参数$w$给出线性得分$w^TF(y,x)$。预测选择投影最大的点；训练则调整法向量$w$，使真实序列特征相对模型平均特征获得更高得分。
+
+\phantomsection\label{struct:V3-C06-CH15}
+\textbf{概率解释。}规范化因子对同一$x$的所有路径求和，因此不同序列相互竞争概率质量。局部因子大不代表局部事件概率大，只有结合前缀、后缀和$Z_w(x)$才能得到边缘概率。
+
+\textbf{优化解释。}正则化条件对数似然的梯度等于经验特征计数与模型期望特征计数之差再加正则项；训练就是调节$w$使两类计数匹配。Hessian由条件协方差与正则项组成。$\lambda>0$时目标强凸且二次项使其强制有界，有限极小点唯一；$\lambda=0$时仅能保证凸，冗余特征可造成不可识别平坦方向，条件分离还可能使有限极小点不存在。BFGS的全局结论必须同时假定有限极小点存在、水平集有界、梯度光滑以及线搜索和曲率门禁持续成立。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-012 L1
+\paragraph{读前自检：条件随机场的概率计算问题。}CRF相邻点边缘满足$P(Y_{i-1}=a,Y_i=b\mid x)$由前向量、局部势和后向量相乘再除以$Z_w(x)$；请对$a,b$求和，核对总和为1。\par
+
+\SLTeachSection{条件随机场的概率计算}{sec:V3-C06-S03}
+\knowledgeanchor{SLM-11-03-002}{条件随机场的概率计算问题}
+概率计算包括$Z_w(x)$、单点边缘$P(Y_i=b\mid x)$、相邻点边缘$P(Y_{i-1}=a,Y_i=b\mid x)$及特征期望。逐条枚举有$m^n$项；链结构使共享前缀和后缀只计算一次。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：前向--后向算法。}前向--后向算法输入“训练序列、有限特征函数、正则强度$\lambda$、有限初值、强Wolfe参数、外层与线搜索预算及容差”，条件“序列与标签支撑相容”；请做一轮“候选$w^+,J^+,g^+,B^+$全部通过有限性与曲率门禁后原子提交”，以“梯度范数证书、外层预算耗尽或首次失败时停止”核对停止证书。\par
+
+\knowledgeanchor{SLM-11-03-003}{前向--后向算法}
+把$\alpha_i,\beta_i$都视为以$\overline{\mathcal Y}$为坐标的$\bar m$维向量。初始化$\alpha_0(\mathsf{start})=1$，其余坐标为0；对$i=1,\ldots,n+1$及$b\in\overline{\mathcal Y}$递推
+\[
+\alpha_i(b)=\sum_{a\in\overline{\mathcal Y}}\alpha_{i-1}(a)M_i(a,b\mid x).
+\]
+反向初始化$\beta_{n+1}(\mathsf{stop})=1$，其余坐标为0，并对$i=n,\ldots,0$及$a\in\overline{\mathcal Y}$递推
+\[
+\beta_i(a)=\sum_{b\in\overline{\mathcal Y}}M_{i+1}(a,b\mid x)\beta_{i+1}(b).
+\]
+由不可行转移的零填充，内部位置只有$\mathcal Y$坐标可能非零；因此计算量仍由$m^2$个真实标签转移主导，并且$Z_w(x)=\alpha_{n+1}(\mathsf{stop})=\beta_0(\mathsf{start})$。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V3-C06-CH19}
+\phantomsection\label{struct:V3-C06-CH20}
+% KNOWLEDGE-PLAN: KN-V3-C22-ALGORITHM_IDEA-003 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C22-ALGORITHM_IDEA-004 L2
+\begin{keypointbox}[title={线性链CRF的BFGS学习：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={训练序列、有限特征函数、正则强度$\lambda$、有限初值、强Wolfe参数、外层与线搜索预算及容差},
+  output={最后合法$w,J,g$、已提交步数$k_{\rm done}$、线搜索试算数$\ell_{\rm done}$、前向--后向调用数$q_{\rm fb}$、状态与最终诊断},
+  preconditions={序列与标签支撑相容；$\lambda\ge0$；初值、预算、容差、Armijo--Wolfe常数与回缩率合法},
+  initialization={$w=w^{(0)},B=I,k_{\rm done}=\ell_{\rm done}=0$，以前向--后向新鲜计算$J,g$并令$q_{\rm fb}=1$},
+  loop={每轮由最后合法状态构造下降方向，并在至多$L_{\max}$次试算内寻找强Wolfe步长},
+  update={候选$w^+,J^+,g^+,B^+$全部通过有限性与曲率门禁后原子提交；被拒绝候选绝不覆盖最后合法状态},
+  domain={配分函数为有限正数，边缘概率归一化，$w,J,g,p,B$有限且$B$保持对称正定},
+  failure={接口非法返回$\mathtt{invalid\_input}$；前向--后向、方向或曲率对象失败返回$\mathtt{numerical\_failure}$；试算预算耗尽返回$\mathtt{line\_search\_failed}$},
+  stop={梯度范数证书、外层预算耗尽或首次失败时停止；目标相对变化只作停滞诊断而不单独宣称收敛},
+  budget={$T_{\max}$个原子提交步；每步至多$L_{\max}$次线搜索试算及相应前向--后向调用},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{line\_search\_failed}$},
+  iterations={$k_{\rm done}$计实际提交步，$\ell_{\rm done}$计累计试算，$q_{\rm fb}$计实际前向--后向调用},
+  diagnostics={最终梯度范数、目标相对变化、失败阶段与$(k,\ell)$、配分函数范围、曲率内积、重置次数和预算余量},
+  complexity={一次前向--后向为$O(Lm^2r)$时间；稠密BFGS另需每步$O(d^2)$时间与$O(d^2)$空间，实际代价按$q_{\rm fb}$计}
+}
+\begin{algorithm}[H]
+\SetArgSty{textnormal}
+\caption{线性链CRF的BFGS学习}\label{alg:V3-C06-bfgs}
+\KwIn{训练序列、特征、$\lambda,w^{(0)}$、$T_{\max},L_{\max}$、强Wolfe参数及$\varepsilon_g,\varepsilon_J,\varepsilon_c$}
+\KwOut{最后合法$w,J,g$；$k_{\rm done},\ell_{\rm done},q_{\rm fb}$；$\mathtt{status}$与最终诊断}
+$w\leftarrow w^{(0)},B\leftarrow I,k_{\rm done}\leftarrow0,\ell_{\rm done}\leftarrow0,q_{\rm fb}\leftarrow0$，诊断为空\;
+若序列/标签支撑、维数、$\lambda$、初值、预算或线搜索参数非法，则返回初始占位、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+以前向--后向计算$J,g$并令$q_{\rm fb}\leftarrow1$；若配分函数、边缘、$J$或$g$非有限，则返回最后合法初值、$\mathtt{numerical\_failure}$及初始化诊断\;
+\phantomsection\label{struct:V3-C06-CH22}
+若$\|g\|_\infty\le\varepsilon_g$，则返回当前状态、计数与$\mathtt{converged}$，诊断记录零步梯度证书\;
+\While{$k_{\rm done}<T_{\max}$}{
+  解$Bp=-g$；若求解非有限则返回最后合法状态与$\mathtt{numerical\_failure}$及方向求解诊断；若$p^Tg\ge0$，则令$B\leftarrow I,p\leftarrow-g$并记录重置\;
+  $\eta\leftarrow1$，本轮接受标志置假\;
+  \For{$\ell\leftarrow1$ \KwTo $L_{\max}$}{
+    试算$w_{\rm tr}=w+\eta p$，以前向--后向计算$J_{\rm tr},g_{\rm tr}$，并令$\ell_{\rm done}\leftarrow\ell_{\rm done}+1,q_{\rm fb}\leftarrow q_{\rm fb}+1$\;
+    若候选有限且满足Armijo与强Wolfe条件，则保留候选并置接受标志为真，跳出试算循环；否则令$\eta\leftarrow\rho\eta$\;
+  }
+  若未接受，则返回最后合法$w,J,g$、现有计数、$\mathtt{line\_search\_failed}$及失败$(k_{\rm done},L_{\max})$诊断\;
+  \phantomsection\label{struct:V3-C06-CH23}
+  由$s=w_{\rm tr}-w,q=g_{\rm tr}-g$形成阻尼BFGS候选$B^+$；曲率低于$\varepsilon_c$时重置$B^+=I$；若$B^+$仍非有限或非正定，则返回旧状态与$\mathtt{numerical\_failure}$及曲率阶段诊断\;
+  保存旧$J$，再原子提交$(w,J,g,B)\leftarrow(w_{\rm tr},J_{\rm tr},g_{\rm tr},B^+)$并令$k_{\rm done}\leftarrow k_{\rm done}+1$\;
+  \phantomsection\label{struct:V3-C06-CH24}
+  若$\|g\|_\infty\le\varepsilon_g$，则返回最后合法状态、$\mathtt{converged}$及梯度证书与目标相对变化诊断\;
+}
+\phantomsection\label{struct:V3-C06-CH25}
+返回最后合法状态、实际计数、$\mathtt{budget\_stop}$及“梯度未达标、外层预算耗尽”诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{梯度证书满足才返回$\mathtt{converged}$；所有前向--后向、线搜索与曲率对象在原子提交前核验，线搜索失败和外层预算耗尽保留不同状态。}
+
+若预算耗尽而梯度容差未满足，不能称为已经收敛。仅当有限极小点存在、水平集有界、梯度Lipschitz连续且线搜索与曲率条件持续满足时，才可说有限聚点为全局极小点；$\lambda>0$时该极小点唯一，$\lambda=0$时还须排除不可识别和分离方向。
+
+\phantomsection\label{struct:V3-C06-CH27}
+\textbf{预测时间复杂度。}长度为$n$的单条序列用Viterbi扫描$m^2$个相邻标签对，计入每条边$r$个激活特征后为$O(nm^2r)$；局部得分预缓存时为$O(nm^2)$。\\
+\textbf{存储与空间复杂度。}只求$Z$时可滚动保存两个$m$维向量；求全部边缘通常保存$O(Lm)$向量，并临时处理$m^2$转移。完整BFGS保存$O(K^2)$矩阵，L-BFGS保存$O(hK)$历史向量；Viterbi回溯为$O(nm)$。\textbf{复杂度假设：}采用一阶稠密标签链；稀疏转移约束可按允许边数替换$m^2$。
+
+\textbf{正确性依据。}前向--后向递推按相同的局部势分解枚举全部合法路径，因而给出规范化因子和边缘概率；BFGS只在下降方向、有限目标梯度与Wolfe线搜索同时成立时接受参数更新。线搜索、曲率或数值条件不满足时，保留最后一组合法参数并停止。
+
+\textbf{更新顺序与停止情形。}每轮先用前向--后向得到同一参数下的目标和梯度，再求下降方向、执行线搜索、接受新参数，最后更新曲率近似。若分区函数或梯度不是有限实数、线搜索未得到可接受步长或所有路径均被禁止，则停止并说明相应数学条件；目标停滞或达到最大迭代数而梯度容差仍未满足时，应报告梯度范数，不能称为已经收敛。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-013 L1
+\paragraph{读前自检：条件随机场的预测算法。}从条件随机场的预测算法的条件“$y^*=\operatorname*{arg\,max}_yP_w(y\mid x) =\operatorname*{arg\,max}_y w^TF(y,x),$”出发，请把$y^*$展开一次并检查其类型或边界；所得量应符合预测无需计算规范化因子，但仍须寻找全局最优路径。\par
+
+\SLTeachSection{Viterbi预测}{sec:V3-C06-S05}
+\knowledgeanchor{SLM-11-05-001}{条件随机场的预测算法}
+预测求
+\[
+y^*=\operatorname*{arg\,max}_yP_w(y\mid x)
+=\operatorname*{arg\,max}_y w^TF(y,x),
+\]
+因为对固定$x$，$Z_w(x)$与$y$无关，指数函数严格单调。预测无需计算规范化因子，但仍须寻找全局最优路径。
+
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-014 L1
+\paragraph{读前自检：条件随机场预测的Viterbi算法。}条件随机场预测的Viterbi算法依赖“$\delta_i(b)=\max_a\{\delta_{i-1}(a)+q_i(a,b)\},\qquad \Psi_i(b)=\operatorname*{arg\,max}_a\{\delta_{i-1}(a)+q_i(a,b)\}.$”；请据此把$\delta_i(b)$展开一次并检查其类型或边界，并直接核对该递推式给出从start到stop的全局最大得分路径。\par
+
+\knowledgeanchor{SLM-11-03-006}{条件随机场预测的Viterbi算法}
+令局部加性得分为$q_i(a,b)=\sum_kw_kf_k(a,b,x,i)$。初始化
+\[
+\delta_1(b)=q_1(\mathsf{start},b).
+\]
+对$i=2,\ldots,n$递推
+\[
+\delta_i(b)=\max_a\{\delta_{i-1}(a)+q_i(a,b)\},\qquad
+\Psi_i(b)=\operatorname*{arg\,max}_a\{\delta_{i-1}(a)+q_i(a,b)\}.
+\]
+结合终止得分选出$y_n^*$，再按$y_{i-1}^*=\Psi_i(y_i^*)$回溯。
+
+\begin{theorem}[Viterbi递推的最优性]\label{thm:V3-C06-viterbi}
+若序列总得分是相邻局部得分之和，则该递推式给出从start到stop的全局最大得分路径。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V3-C22-PROOF-002 L1
+\paragraph{读前自检：证明：Viterbi递推的最优性。}Viterbi递推的最优性以“若前缀不是最优，用同终点$a$的最优前缀替换会提高或保持总得分”为约束；请把$i=1$用到的关键定义展开并完成下一步变形，并确认因此对$a$取最大得到$\delta_i(b)$。\par
+
+\begin{proof}
+对位置$i$归纳。$i=1$时，$\delta_1(b)$按定义是到达$b$的唯一一步最优得分。假设$\delta_{i-1}(a)$已是到达每个$a$的最优前缀得分。任一到达$b$的长度$i$路径必从某个$a$转入，其得分等于到$a$的前缀得分加$q_i(a,b)$；若前缀不是最优，用同终点$a$的最优前缀替换会提高或保持总得分。因此对$a$取最大得到$\delta_i(b)$。终点取最大并沿记录的$\Psi$回溯，恢复达到该值的完整路径。证毕。
+\end{proof}
+
+
+\SLDirectSection{序列标注例题与练习}{sec:V3-C06-S06}
+\phantomsection\label{struct:V3-C06-CH18}
+\phantomsection\label{struct:V3-C06-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[手工执行三步Viterbi]\label{exm:V3-C06-viterbi}
+标签为$A,B$。位置1从start到$A,B$的得分为$0.4,0.1$；位置2的局部得分依次为$q_2(A,A)=0.3$、$q_2(B,A)=0.6$、$q_2(A,B)=0.5$、$q_2(B,B)=0.2$；位置3对应得分为$0.2,0.4,0.1,0.3$。本例把两个终止附加分都取为0，求最优路径，位置2平分时选$A$作前驱。
+\SLReadTranslation{输入给的是局部加性得分；目标是整条start--stop合法路径的总分最大值，终止分虽为0也必须在口径中保留。}
+\SLMethodTrigger{同一位置、同一当前标签共享完全相同的未来子问题，因此只保留最大前缀分数和获胜前驱。}
+
+\phantomsection\label{struct:V3-C06-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V3-C06-viterbi}
+\begin{solution}
+\SLReadTranslation{题目要求完成“手工执行三步Viterbi”：按初始化—更新—停止/回溯顺序手算关键中间量。}
+\SolGiven 状态、时间索引和初始量按题面定义；每一步更新只使用上一层已确定的合法中间量。
+\SLMethodTrigger{先写初始化与递推量，再逐时刻更新，最后回溯或求和。}
+\SolDerive
+\textbf{逐层递推。}初始化$\delta_1(A)=0.4$、$\delta_1(B)=0.1$。位置2有
+\[
+\delta_2(A)=\max(0.4+0.3,0.1+0.6)=0.7,
+\]
+平分规则记录$\Psi_2(A)=A$；
+\[
+\delta_2(B)=\max(0.4+0.5,0.1+0.2)=0.9,
+\quad\Psi_2(B)=A.
+\]
+位置3有
+\[
+\delta_3(A)=\max(0.7+0.2,0.9+0.4)=1.3,
+\quad\Psi_3(A)=B,
+\]
+以及$\delta_3(B)=\max(0.7+0.1,0.9+0.3)=1.2$。终点选$A$，回溯得$y_2=B$、$y_1=A$。
+
+\textbf{独立核验。}把回溯路径直接代回局部得分，得到$0.4+0.5+0.4=1.3$；另一条共享前缀$(A,B,B)$得分为$0.4+0.5+0.3=1.2$，与终止层两项一致。
+
+\textbf{结论。}在给定平分规则下，最优路径为$(A,B,A)$，总得分为$1.3$。
+\SLStuckHint{为每个位置画两格：格内写最大累计分，格旁写前驱；不要只保留每层全局最大值。}
+\SLTransfer{若终止因子不为0，把它作为第$n+1$步加入终态比较；若某转移禁止，则把其对数得分设为$-\infty$并跳过。}
+\end{solution}
+
+\phantomsection\label{struct:V3-C06-CH28}
+% KNOWLEDGE-PLAN: KN-V3-C22-BOUNDARY-015 L1
+\paragraph{读前自检：适用条件与局限：序列标注例题与练习。}线性链CRF要求输入已观测、标签集有限且局部特征可在给定$x$与相邻标签时计算；请逐项核对这三个接口，并在输出含未建模长程依赖时判定线性链规格不足。\par
+
+\begin{applicabilitybox}
+\textbf{适用条件。}线性链CRF适合输入已观测、输出为有限标签序列、相邻标签依赖占主导且需要联合归一化的任务。训练与部署的标签集合、分词或位置定义必须一致；特征应能在给定$x$和局部标签时计算；数据量应足以估计参数，长尾特征需正则化。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V3-C06-CH29}
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+一阶链难以表示长距离标签依赖；精确推断代价随标签数平方增长；大量稀疏特征使训练缓慢；条件训练不能生成或评估输入分布；标签偏差虽比局部归一化模型缓解，但数据偏差、特征缺失与分布漂移仍会影响结果。高阶CRF会进一步扩大状态和计算量。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V3-C06-CH30}
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 把势函数或局部因子当作已经归一化的概率；
+  \item 在前向、后向或Viterbi中遗漏start/stop边界因子；
+  \item 计算梯度时只用真实路径特征，漏掉模型期望；
+  \item 在长序列上直接连乘指数权重，产生上溢或下溢；
+  \item 把逐位置边缘最大化与整条序列MAP预测混为同一决策。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V3-C06-CH31}
+\begin{comparisonbox}
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 对比 & 第一项 & 第二项\\ \midrule
+HMM与CRF & 生成$P(X,Y)$并约束观测生成 & 直接建模$P(Y\mid X)$，特征更灵活\\
+最大熵与线性链CRF & 单个非结构化标签的条件指数族，不含链式标签依赖 & 具有链式标签因子的条件指数族\\
+前向--后向与Viterbi & 以求和半环计算概率和边缘 & 以最大值和回溯计算MAP路径\\
+势函数与概率 & 局部正权重，不单独归一化 & 全局除以$Z(x)$后的分布\\
+IIS与BFGS & 依赖尺度方程的坐标更新 & 以梯度差构造曲率近似\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+
+\phantomsection\label{struct:V3-C06-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V3-C06-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S01-01}
+在链$Y_1-Y_2-Y_3-Y_4$中，给出一条由图结构蕴含的条件独立关系。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S01-01}
+\begin{chapterexercisesolution}{ex:V3-C06-S01-01}
+在无向链$Y_1-Y_2-Y_3-Y_4$中，结点集$\{Y_2\}$分隔$Y_1$与$\{Y_3,Y_4\}$。全局马尔可夫性给出
+\[
+Y_1\perp(Y_3,Y_4)\mid Y_2.
+\]
+等价的条件分布表达为
+\[
+\begin{aligned}
+P(y_1,y_3,y_4\mid y_2)
+  &=P(y_1\mid y_2)P(y_3,y_4\mid y_2),\\
+P(y_1\mid y_2,y_3,y_4)
+  &=P(y_1\mid y_2)
+\end{aligned}
+\]
+（在条件事件概率为正时）。这是条件独立，不推出无条件独立。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S01-02}
+两个二值变量的势函数矩阵为$\psi=\begin{psmallmatrix}1&2\\3&4\end{psmallmatrix}$。若只有这一个团，求$Z$和四个联合概率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S01-02}
+\begin{chapterexercisesolution}{ex:V3-C06-S01-02}
+两个二值变量共有四个配置，势权重均非负。配分函数为
+\[
+Z=\sum_{a,b\in\{0,1\}}\psi(a,b)=1+2+3+4=10>0.
+\]
+联合分布为
+\[
+P(a,b)=\frac{\psi(a,b)}{Z}
+=\begin{pmatrix}0.1&0.2\\0.3&0.4\end{pmatrix}.
+\]
+四项非负且
+\[
+\sum_{a,b}P(a,b)=\frac{10}{10}=1.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S01-03}
+说明Hammersley--Clifford定理中严格正性条件的作用。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S01-03}
+\begin{chapterexercisesolution}{ex:V3-C06-S01-03}
+严格正性只要求在声明的合法支持$\Omega$上成立：
+\[
+P(y)>0\qquad\text{对所有 }y\in\Omega.
+\]
+于是$\log P(y)$处处有限，才能构造团势的加性分解
+\[
+\log P(y)=\sum_{C}\varphi_C(y_C)-\log Z
+\quad\Longleftrightarrow\quad
+P(y)=\frac1Z\prod_C\psi_C(y_C),
+\]
+其中$\psi_C=e^{\varphi_C}>0$。非法配置$y\notin\Omega$可由局部$0/1$硬因子赋零，不违反这一条件；若某个声明为合法的配置仍有$P(y)=0$，则$\log P(y)=-\infty$，不能直接使用严格正软势的结论。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S02-01}
+证明$P_w(y\mid x)$对所有$y$求和为1。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S02-01}
+\begin{chapterexercisesolution}{ex:V3-C06-S02-01}
+对有限标签序列支持$\mathcal Y(x)$，定义
+\[
+Z_w(x)=\sum_{y\in\mathcal Y(x)}\exp\{w^{\mathsf T}F(y,x)\}>0.
+\]
+因此
+\[
+\begin{aligned}
+\sum_{y\in\mathcal Y(x)}P_w(y\mid x)
+&=\sum_y\frac{\exp\{w^{\mathsf T}F(y,x)\}}{Z_w(x)}\\
+&=\frac{Z_w(x)}{Z_w(x)}=1.
+\end{aligned}
+\]
+每条合法路径对应的指数权重严格为正，故所得条件概率在合法支持上归一化；非法路径不进入求和。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S02-02}
+某序列的全局特征为$F=(2,1,-1)^T$，参数$w=(0.5,-0.2,0.3)^T$。求非规范化权重。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S02-02}
+\begin{chapterexercisesolution}{ex:V3-C06-S02-02}
+这里$w,F\in\mathbb R^3$。路径得分为
+\[
+w^{\mathsf T}F
+=0.5\times2+(-0.2)\times1+0.3\times(-1)
+=0.5.
+\]
+非规范化权重为
+\[
+\widetilde P_w(y\mid x)=e^{w^{\mathsf T}F}=e^{0.5}\approx1.6487.
+\]
+条件概率还需除以包含所有合法路径的$Z_w(x)$；只有一个路径权重时不能完成归一化。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S02-03}
+解释为什么CRF允许特征依赖整个$x$，却仍可用线性链动态规划。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S02-03}
+\begin{chapterexercisesolution}{ex:V3-C06-S02-03}
+给定观测$x$后，局部因子可依赖整个$x$，但对未知标签只需满足链式分解
+\[
+\widetilde P_w(y\mid x)
+=\left[\prod_{i=1}^{n}M_i(y_{i-1},y_i\mid x)\right]
+M_{n+1}(y_n,\mathsf{stop}\mid x).
+\]
+前向状态仍按相邻标签递推：
+\[
+\alpha_i(b)=\sum_{a\in\mathcal Y}\alpha_{i-1}(a)M_i(a,b\mid x).
+\]
+$x$在条件化后只是已知系数，不扩大标签图的团；因此每层仍计算$m^2$个转移。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S03-01}
+标签数$m=3$、序列长度$n=100$。比较枚举与前向算法在路径数量量级上的差异。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S03-01}
+\begin{chapterexercisesolution}{ex:V3-C06-S03-01}
+标签支持大小$m=3$、长度$n=100$，枚举路径数为
+\[
+m^n=3^{100}\approx5.15\times10^{47}.
+\]
+前向算法的状态、初始化、递推与终止为
+\[
+\alpha_1(b)=M_1(\mathsf{start},b),
+\quad
+\alpha_i(b)=\sum_a\alpha_{i-1}(a)M_i(a,b),
+\quad
+Z=\sum_b\alpha_n(b)M_{n+1}(b,\mathsf{stop}).
+\]
+核心转移数为
+\[
+n m^2=100\times9=900,
+\]
+量级$O(nm^2)$远小于指数枚举。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S03-02}
+已知$\alpha_{i-1}(a)=2$、$M_i(a,b)=3$、$\beta_i(b)=5$、$Z=60$，求该相邻标签事件的边缘概率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S03-02}
+\begin{chapterexercisesolution}{ex:V3-C06-S03-02}
+相邻标签事件的边缘公式为
+\[
+P(Y_{i-1}=a,Y_i=b\mid x)
+=\frac{\alpha_{i-1}(a)M_i(a,b)\beta_i(b)}{Z}.
+\]
+代入题设数值得到
+\[
+\frac{2\times3\times5}{60}
+=\frac{30}{60}=\frac12.
+\]
+同一位置所有$(a,b)$边缘还应满足
+\[
+\sum_{a,b}P(Y_{i-1}=a,Y_i=b\mid x)=1.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S03-03}
+某二值特征只在位置2、转移$A\to B$时取1。写出它在给定$x$下的模型期望。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S03-03}
+\begin{chapterexercisesolution}{ex:V3-C06-S03-03}
+该全局特征为事件指示函数
+\[
+F(y,x)=\mathbf1\{y_1=A,y_2=B\}.
+\]
+所以模型期望为
+\[
+\mathbb E_w[F\mid x]
+=P(Y_1=A,Y_2=B\mid x)
+=\frac{\alpha_1(A)M_2(A,B\mid x)\beta_2(B)}{Z_w(x)}.
+\]
+若特征可在多个位置激活，则
+\[
+\mathbb E_w[F\mid x]
+=\sum_iP(Y_{i-1}=A,Y_i=B\mid x).
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S04-01}
+当$\lambda=0$时，写出最优点第$k$维梯度为零所表达的矩匹配关系。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S04-01}
+\begin{chapterexercisesolution}{ex:V3-C06-S04-01}
+无正则负对数似然的第$k$维梯度为
+\[
+\frac{\partial J}{\partial w_k}
+=\sum_j\mathbb E_w[F_k(Y,x_j)\mid x_j]
+-\sum_jF_k(y_j,x_j).
+\]
+最优点梯度为零给出矩匹配
+\[
+\sum_j\mathbb E_w(F_k\mid x_j)
+=\sum_jF_k(y_j,x_j).
+\]
+加入$L_2$正则后，梯度多出$\lambda w_k$，两侧一般不再精确相等。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S04-02}
+在$\lambda=0$、非负特征且$F^{\#}\equiv S=4$的常数总量情形中，某特征经验期望为0.30、模型期望为0.20。求闭式尺度更新增量。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S04-02}
+\begin{chapterexercisesolution}{ex:V3-C06-S04-02}
+常数总量$S=4>0$且两个期望均为正，闭式尺度方程为
+\[
+0.20e^{4\delta}=0.30.
+\]
+因此
+\[
+\delta=\frac14\log\frac{0.30}{0.20}
+=\frac14\log1.5\approx0.1014>0.
+\]
+参数增加，使该特征激活路径权重上升；若有正则、负特征或非常数总量，应回到一般一元方程或其他优化器。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S04-03}
+说明为什么BFGS线搜索必须检查下降方向和曲率条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S04-03}
+\begin{chapterexercisesolution}{ex:V3-C06-S04-03}
+设当前梯度$g_k=\nabla J(w_k)$与搜索方向$p_k$。下降方向条件是
+\[
+g_k^{\mathsf T}p_k<0.
+\]
+若$g_k^{\mathsf T}p_k\geq0$，正步长不保证目标下降，应重置近似并改用$-g_k$。记
+\[
+s_k=w_{k+1}-w_k,
+\qquad
+q_k=g_{k+1}-g_k.
+\]
+BFGS正定保持需要
+\[
+s_k^{\mathsf T}q_k>0.
+\]
+若曲率条件失败，应阻尼、跳过或重置更新，并复查线搜索与数值有限性。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S05-01}
+为什么CRF的Viterbi预测可以忽略$Z_w(x)$，而计算边缘概率不能忽略？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S05-01}
+\begin{chapterexercisesolution}{ex:V3-C06-S05-01}
+对固定$x$，MAP路径满足
+\[
+\arg\max_yP_w(y\mid x)
+=\arg\max_y\frac{e^{w^{\mathsf T}F(y,x)}}{Z_w(x)}
+=\arg\max_y w^{\mathsf T}F(y,x),
+\]
+因为$Z_w(x)>0$与$y$无关。边缘概率却必须归一化：
+\[
+P(Y_i=b\mid x)
+=\frac{\sum_{y:y_i=b}e^{w^{\mathsf T}F(y,x)}}{Z_w(x)},
+\qquad
+\sum_bP(Y_i=b\mid x)=1.
+\]
+去掉$Z_w(x)$后不再得到概率。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S05-02}
+标签数$m=20$、长度$n=50$。给出Viterbi核心时间复杂度和保存全部回溯指针的空间复杂度。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S05-02}
+\begin{chapterexercisesolution}{ex:V3-C06-S05-02}
+Viterbi递推状态为
+\[
+\delta_i(b)=\max_{a\in\{1,\ldots,m\}}
+\{\delta_{i-1}(a)+q_i(a,b)\}.
+\]
+每个位置有$m^2$次候选比较，所以
+\[
+T_{\mathrm{Vit}}=O(nm^2)=O(50\times20^2)=O(20000).
+\]
+保存全部前驱指针需要
+\[
+S_{\Psi}=O(nm)=O(50\times20)=O(1000),
+\]
+另有$O(m)$滚动得分空间。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S05-03}
+逐位置选择最大边缘标签与Viterbi路径可能不同。解释原因。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S05-03}
+\begin{chapterexercisesolution}{ex:V3-C06-S05-03}
+逐位置决策为
+\[
+\widehat y_i^{\mathrm{marg}}\in\arg\max_bP(Y_i=b\mid x),
+\]
+它逐位置最小化0--1损失。Viterbi则求
+\[
+\widehat y^{\mathrm{MAP}}\in\arg\max_yP(y\mid x),
+\]
+优化整条序列的联合概率。各位置最大边缘可能由不同路径贡献，故
+\[
+(\widehat y_1^{\mathrm{marg}},\ldots,\widehat y_n^{\mathrm{marg}})
+\neq\widehat y^{\mathrm{MAP}}
+\]
+一般可能发生。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S06-01}
+对例题中的位置2，若平分时改选$B$作为$\delta_2(A)$的前驱，最终最优路径是否改变？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S06-01}
+\begin{chapterexercisesolution}{ex:V3-C06-S06-01}
+终止状态仍由
+\[
+y_3^*=\arg\max\{\delta_3(A),\delta_3(B)\}=A
+\]
+确定。回溯状态链为
+\[
+y_2^*=\Psi_3(A)=B,
+\qquad
+y_1^*=\Psi_2(B)=A.
+\]
+因此
+\[
+y^*=(A,B,A).
+\]
+修改的是$\Psi_2(A)$，而回溯没有访问该指针，所以最终路径不变。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S06-02}
+设计两个检查量，用于发现前向--后向实现中的归一化或索引错误。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S06-02}
+\begin{chapterexercisesolution}{ex:V3-C06-S06-02}
+第一类检查是前向、后向终止量一致：
+\[
+Z_w(x)=\alpha_{n+1}(\mathsf{stop})
+=\beta_0(\mathsf{start})>0.
+\]
+第二类检查是边缘归一化与相容性：
+\[
+\sum_bP(Y_i=b\mid x)=1,
+\qquad
+\sum_{a,b}P(Y_{i-1}=a,Y_i=b\mid x)=1,
+\]
+以及
+\[
+\sum_aP(Y_{i-1}=a,Y_i=b\mid x)=P(Y_i=b\mid x).
+\]
+超出预定容差通常表明归一化、边界或索引错误。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C06-S06-03}
+若任务存在必须满足的标签转移禁令，如何在CRF中编码，并说明数值实现注意事项。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C06-S06-03}
+\begin{chapterexercisesolution}{ex:V3-C06-S06-03}
+对禁止转移$(a,b)$，可定义
+\[
+M_i(a,b\mid x)=0
+\quad\Longleftrightarrow\quad
+q_i(a,b\mid x)=-\infty.
+\]
+于是任何包含该转移的路径权重为零。递推时只在可行前驱集$\mathcal A_i(b)$上聚合：
+\[
+\alpha_i(b)=\sum_{a\in\mathcal A_i(b)}\alpha_{i-1}(a)M_i(a,b),
+\qquad
+\delta_i(b)=\max_{a\in\mathcal A_i(b)}[\delta_{i-1}(a)+q_i(a,b)].
+\]
+对数域log-sum-exp应跳过$-\infty$项，并检查至少存在一条start--stop可行路径；否则$Z_w(x)=0$，条件模型未定义。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V3-C22-CONCEPT-009 L1
+\paragraph{读前自检：本章结论与下一步。}条件随机场章末由“图分隔、团势、条件对数线性序列与局部特征”落到“IIS或BFGS优化条件似然”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\setstretch{1.22}
+\phantomsection\label{struct:V3-C06-CH36}
+\SLChapterFiveSummary{图分隔、团势、条件对数线性序列与局部特征}{严格正性配合Möbius反演得到团分解；前向--后向得到配分函数、边缘与特征期望}{IIS或BFGS优化条件似然；Viterbi以最大递推和前驱指针求整条序列MAP}{需要联合预测有限标签序列并显式表达相邻标签依赖时}{进入监督方法总结；若图条件、归一化或MAP自检失败则返回对应主节}
+
+\phantomsection\label{struct:V3-C06-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{定义：}能否写出无向图马尔可夫性、最大团因子分解和一般CRF定义？未通过则回看第1、2节。
+  \item \textbf{表示：}能否从局部转移/状态特征得到全局向量形式和矩阵形式？未通过则回看第2节。
+  \item \textbf{概率：}能否推导相邻边缘和特征期望，并说明缩放或log-sum-exp？未通过则回看第3节。
+  \item \textbf{学习：}能否写出负条件对数似然、梯度和BFGS流程，并说明IIS闭式更新的条件？未通过则回看第4节。
+  \item \textbf{预测：}能否独立填写Viterbi递推表、终止并回溯，同时给出复杂度？未通过则回看第5、6节；五项均能独立完成，并能通过边缘归一化与路径得分检查，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

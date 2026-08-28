@@ -1,0 +1,483 @@
+{
+  "handoff_id": "A-R7-P654-SA2-NARROW-DIRECT-20260825",
+  "model_route": "SA2=gpt-5.6-sol/max",
+  "timestamp_utc": "2026-08-24T20:57:59.992254+00:00",
+  "checks": [
+    {
+      "CHECK": "PDF_BYTES",
+      "PASS": true,
+      "ACTUAL": 43385,
+      "EXPECTED": 43385
+    },
+    {
+      "CHECK": "PDF_SHA256",
+      "PASS": true,
+      "ACTUAL": "A7DBDECEA7B54C1649CD341112B7BB37FF379600CB6A61B54EDDBAF154E9E5D6",
+      "EXPECTED": "A7DBDECEA7B54C1649CD341112B7BB37FF379600CB6A61B54EDDBAF154E9E5D6"
+    },
+    {
+      "CHECK": "PDF_PAGES",
+      "PASS": true,
+      "ACTUAL": 1,
+      "EXPECTED": 1
+    },
+    {
+      "CHECK": "PAGE_PT",
+      "PASS": true,
+      "ACTUAL": [
+        595.2760009765625,
+        841.8900146484375
+      ],
+      "EXPECTED": [
+        595.276,
+        841.89
+      ]
+    },
+    {
+      "CHECK": "SOURCE_SHA256",
+      "PASS": true,
+      "ACTUAL": "EA4A19FF940A177D4D754C4277896A2F38B75C1E6F252D8A374F418B84E31E6D",
+      "EXPECTED": "EA4A19FF940A177D4D754C4277896A2F38B75C1E6F252D8A374F418B84E31E6D"
+    },
+    {
+      "CHECK": "WRAPPER_SHA256",
+      "PASS": true,
+      "ACTUAL": "FE44F2E6005D884A6916A11C6EBCB89CF40BD523A64D8F8C6BC8124DBABC0CA1",
+      "EXPECTED": "FE44F2E6005D884A6916A11C6EBCB89CF40BD523A64D8F8C6BC8124DBABC0CA1"
+    },
+    {
+      "CHECK": "OBJECT_N",
+      "PASS": true,
+      "ACTUAL": 116,
+      "EXPECTED": 116
+    },
+    {
+      "CHECK": "UNIQUE_OBJECT_IDS",
+      "PASS": true,
+      "ACTUAL": 116,
+      "EXPECTED": 116
+    },
+    {
+      "CHECK": "TEXT_GLYPH_N",
+      "PASS": true,
+      "ACTUAL": 95,
+      "EXPECTED": 95
+    },
+    {
+      "CHECK": "FOREGROUND_GRAPHIC_N",
+      "PASS": true,
+      "ACTUAL": 21,
+      "EXPECTED": 21
+    },
+    {
+      "CHECK": "EMPTY_FINAL_MASKS",
+      "PASS": true,
+      "ACTUAL": 0,
+      "EXPECTED": 0
+    },
+    {
+      "CHECK": "MISSING_STROKE_PX",
+      "PASS": true,
+      "ACTUAL": 0,
+      "EXPECTED": 0
+    },
+    {
+      "CHECK": "FOREIGN_PIXEL_PX",
+      "PASS": true,
+      "ACTUAL": 0,
+      "EXPECTED": 0
+    },
+    {
+      "CHECK": "CLIP_PIXEL_COUNT",
+      "PASS": true,
+      "ACTUAL": 0,
+      "EXPECTED": 0
+    },
+    {
+      "CHECK": "SAFE_FILENAME_MAP",
+      "PASS": true,
+      "ACTUAL": [
+        116,
+        116,
+        true
+      ],
+      "EXPECTED": [
+        116,
+        116,
+        true
+      ]
+    },
+    {
+      "CHECK": "OPEN_ORDINARY_PNG_raw_masks",
+      "PASS": true,
+      "ACTUAL": [
+        116,
+        116
+      ],
+      "EXPECTED": [
+        116,
+        116
+      ]
+    },
+    {
+      "CHECK": "OPEN_ORDINARY_PNG_pre_masks",
+      "PASS": true,
+      "ACTUAL": [
+        116,
+        116
+      ],
+      "EXPECTED": [
+        116,
+        116
+      ]
+    },
+    {
+      "CHECK": "OPEN_ORDINARY_PNG_evidence_1x",
+      "PASS": true,
+      "ACTUAL": [
+        116,
+        116
+      ],
+      "EXPECTED": [
+        116,
+        116
+      ]
+    },
+    {
+      "CHECK": "OPEN_ORDINARY_PNG_evidence_8x_nearest",
+      "PASS": true,
+      "ACTUAL": [
+        116,
+        116
+      ],
+      "EXPECTED": [
+        116,
+        116
+      ]
+    },
+    {
+      "CHECK": "GLYPH_MANUAL_ROWS",
+      "PASS": true,
+      "ACTUAL": [
+        95,
+        []
+      ],
+      "EXPECTED": [
+        95,
+        []
+      ]
+    },
+    {
+      "CHECK": "GLYPH_MANUAL_FAILURES",
+      "PASS": true,
+      "ACTUAL": [],
+      "EXPECTED": []
+    },
+    {
+      "CHECK": "GLYPH_COMPLETENESS_PURITY",
+      "PASS": true,
+      "ACTUAL": "all rows",
+      "EXPECTED": "all TRUE/0"
+    },
+    {
+      "CHECK": "GLYPH_CONTACT_SHEETS",
+      "PASS": true,
+      "ACTUAL": [
+        16,
+        16
+      ],
+      "EXPECTED": [
+        16,
+        16
+      ]
+    },
+    {
+      "CHECK": "GRAPHIC_MANUAL_ROWS",
+      "PASS": true,
+      "ACTUAL": 21,
+      "EXPECTED": 21
+    },
+    {
+      "CHECK": "GRAPHIC_CONTACT_SHEETS",
+      "PASS": true,
+      "ACTUAL": [
+        21,
+        21
+      ],
+      "EXPECTED": [
+        21,
+        21
+      ]
+    },
+    {
+      "CHECK": "ALL_UNORDERED_PAIRS",
+      "PASS": true,
+      "ACTUAL": 6670,
+      "EXPECTED": 6670
+    },
+    {
+      "CHECK": "UNIQUE_PAIR_IDS",
+      "PASS": true,
+      "ACTUAL": 6670,
+      "EXPECTED": 6670
+    },
+    {
+      "CHECK": "PAIR_MACHINE_FAILURES",
+      "PASS": true,
+      "ACTUAL": [],
+      "EXPECTED": []
+    },
+    {
+      "CHECK": "FINAL_RAW_OVERLAP",
+      "PASS": true,
+      "ACTUAL": 0,
+      "EXPECTED": 0
+    },
+    {
+      "CHECK": "INDEPENDENT_PRE_OCCLUSION_OVERLAP",
+      "PASS": true,
+      "ACTUAL": [],
+      "EXPECTED": []
+    },
+    {
+      "CHECK": "CLEARANCE_FAILURES",
+      "PASS": true,
+      "ACTUAL": [],
+      "EXPECTED": []
+    },
+    {
+      "CHECK": "LDA_BORDER_APPLICATION_RAW_SEPARATION_AFTER_FILL_EXCLUSION",
+      "PASS": true,
+      "ACTUAL": [
+        {
+          "PAIR_ID": "PAIR_06344",
+          "PRE": "0",
+          "FINAL": "0",
+          "RAW_CLEARANCE": "5.0"
+        },
+        {
+          "PAIR_ID": "PAIR_06345",
+          "PRE": "0",
+          "FINAL": "0",
+          "RAW_CLEARANCE": "5.0"
+        }
+      ],
+      "EXPECTED": "two pairs, PRE=0, FINAL=0, RAW_CLEARANCE=5px"
+    },
+    {
+      "CHECK": "CRITICAL_PAIR_MANUAL_ROWS",
+      "PASS": true,
+      "ACTUAL": 50,
+      "EXPECTED": 50
+    },
+    {
+      "CHECK": "CRITICAL_PAIR_BUNDLES",
+      "PASS": true,
+      "ACTUAL": [],
+      "EXPECTED": []
+    },
+    {
+      "CHECK": "FOREGROUND_DRAWING_DUAL_INVENTORY",
+      "PASS": true,
+      "ACTUAL": 21,
+      "EXPECTED": 21
+    },
+    {
+      "CHECK": "TEXTTRACE_RAWDICT_RAWMASK_DUAL_INVENTORY",
+      "PASS": true,
+      "ACTUAL": 95,
+      "EXPECTED": 95
+    },
+    {
+      "CHECK": "MATH_RULE_OBJECT_AND_MANUAL_ROW",
+      "PASS": true,
+      "ACTUAL": [
+        "GFX_MATH_RULE_PREDICTIVE_FRACTION"
+      ],
+      "EXPECTED": [
+        "GFX_MATH_RULE_PREDICTIVE_FRACTION"
+      ]
+    },
+    {
+      "CHECK": "RAW_OWNERSHIP_ROWS",
+      "PASS": true,
+      "ACTUAL": [
+        116,
+        []
+      ],
+      "EXPECTED": [
+        116,
+        []
+      ]
+    },
+    {
+      "CHECK": "TRIAL_N_FINAL_VISIBLE_MASK_OWNERSHIP",
+      "PASS": true,
+      "ACTUAL": [
+        {
+          "ELEMENT_ID": "FRM_TRIAL_005",
+          "SEQNO": "2",
+          "PRE_OCCLUSION_AREA_PX": "297",
+          "FINAL_VISIBLE_AREA_PX": "297",
+          "OCCLUDED_PX": "0",
+          "LATER_FOREGROUND_OWNERS": "NONE",
+          "MISSING_STROKE_PX": "0",
+          "FOREIGN_PIXEL_PX": "0",
+          "CLIP_PIXEL_COUNT": "0",
+          "STATUS": "PASS_NO_OCCLUSION"
+        }
+      ],
+      "EXPECTED": "pre=final=297px; occluded=0; owner=NONE; complete/pure"
+    },
+    {
+      "CHECK": "SOURCE_FONT_GATE",
+      "PASS": true,
+      "ACTUAL": [],
+      "EXPECTED": []
+    },
+    {
+      "CHECK": "PIXEL_GATE_ALL_PASS",
+      "PASS": true,
+      "ACTUAL": [],
+      "EXPECTED": []
+    },
+    {
+      "CHECK": "TRIAL_N_PIXEL_GATE_EXACT_PASS",
+      "PASS": true,
+      "ACTUAL": [
+        {
+          "ELEMENT_ID": "FRM_TRIAL_005",
+          "H_INK_PX": "22",
+          "H_INK_THRESHOLD_PX": "22",
+          "INK_AREA_PX": "297",
+          "MISSING_STROKE_PX": "0",
+          "FOREIGN_PIXEL_PX": "0"
+        }
+      ],
+      "EXPECTED": [
+        {
+          "ELEMENT_ID": "FRM_TRIAL_005",
+          "H_INK_PX": "22",
+          "H_INK_THRESHOLD_PX": "22",
+          "INK_AREA_PX": "297",
+          "MISSING_STROKE_PX": "0",
+          "FOREIGN_PIXEL_PX": "0"
+        }
+      ]
+    },
+    {
+      "CHECK": "LOW_PROFILE_COUNT",
+      "PASS": true,
+      "ACTUAL": 0,
+      "EXPECTED": 0
+    },
+    {
+      "CHECK": "D_E_LEDGER",
+      "PASS": true,
+      "ACTUAL": [],
+      "EXPECTED": []
+    },
+    {
+      "CHECK": "MANUAL_MODEL_ROUTE",
+      "PASS": true,
+      "ACTUAL": "SA2=gpt-5.6-sol/max",
+      "EXPECTED": "SA2=gpt-5.6-sol/max"
+    },
+    {
+      "CHECK": "MANUAL_VISUAL_COUNTS",
+      "PASS": true,
+      "ACTUAL": [
+        95,
+        21,
+        50
+      ],
+      "EXPECTED": [
+        95,
+        21,
+        50
+      ]
+    },
+    {
+      "CHECK": "FOUR_VIEWS_PLUS_OVERLAY_MANUAL",
+      "PASS": true,
+      "ACTUAL": [
+        "full_page_200dpi.png",
+        "figure_crop_300dpi.png",
+        "standalone_300dpi.png",
+        "grayscale_300dpi.png",
+        "after_text_measurement_overlay_300dpi.png"
+      ],
+      "EXPECTED": 5
+    },
+    {
+      "CHECK": "MATH_TEXT_READING_SEMANTICS",
+      "PASS": true,
+      "ACTUAL": [],
+      "EXPECTED": []
+    },
+    {
+      "CHECK": "VIEW_NATIVE_DIMENSIONS",
+      "PASS": true,
+      "ACTUAL": {
+        "full_page_200dpi.png": [
+          1654,
+          2339
+        ],
+        "figure_crop_300dpi.png": [
+          1985,
+          705
+        ],
+        "standalone_300dpi.png": [
+          1985,
+          624
+        ],
+        "grayscale_300dpi.png": [
+          1985,
+          705
+        ],
+        "after_text_measurement_overlay_300dpi.png": [
+          1985,
+          705
+        ]
+      },
+      "EXPECTED": {
+        "full_page_200dpi.png": [
+          1654,
+          2339
+        ],
+        "figure_crop_300dpi.png": [
+          1985,
+          705
+        ],
+        "standalone_300dpi.png": [
+          1985,
+          624
+        ],
+        "grayscale_300dpi.png": [
+          1985,
+          705
+        ],
+        "after_text_measurement_overlay_300dpi.png": [
+          1985,
+          705
+        ]
+      }
+    }
+  ],
+  "all_terminal_checks_pass": true,
+  "object_count_N": 116,
+  "unordered_pair_count": 6670,
+  "hard_failures": [],
+  "target_repair": {
+    "ELEMENT_ID": "FRM_TRIAL_005",
+    "CHAR": "𝑛",
+    "H_INK_PX": 22,
+    "THRESHOLD_PX": 22,
+    "INK_AREA_PX": 297,
+    "PRE_OCCLUSION_AREA_PX": 297,
+    "MASK_COMPLETE": true,
+    "MASK_PURE": true,
+    "OWNERSHIP_LOSS_PX": 0
+  },
+  "result": "LOCAL_SA2_PATCH_VERIFIED_REQUEST_FRESH_SA1"
+}

@@ -1,0 +1,30 @@
+{
+  "pair": {
+    "PAIR_ID": "PAIR_0171",
+    "OBJECT_A": "T_P1_X_TICK_1",
+    "OBJECT_B": "T_P1_ANNOT_Q065",
+    "TYPE_A": "TEXT",
+    "TYPE_B": "TEXT",
+    "ROLE_A": "TICK_LABEL",
+    "ROLE_B": "ANNOTATION",
+    "RELATION_TYPE": "TEXT_TEXT",
+    "REQUIRED_CLEARANCE_PX": "4.0",
+    "TEXT_TEXT_PDF_BBOX_CLEARANCE_PX": "0.000",
+    "RAW_MASK_BBOX_CLEARANCE_PX": "1.000",
+    "RAW_MASK_CLEARANCE_PX": "6.708",
+    "CLEARANCE_MARGIN_PX": "2.708",
+    "RAW_INTERSECTION_PX": 0,
+    "FINAL_VISIBLE_MASK_BASIS": "true",
+    "INTENTIONAL_CONNECTION": "false",
+    "DISPOSITION": "TEXT_TEXT_PDF_BBOX_CLEARANCE_FAILURE",
+    "PASS_FAIL": "FAIL",
+    "REASON": "TEXT_TEXT PDF/vector bbox clearance 0.000px < required 4.0px"
+  },
+  "roi_native_300dpi": [
+    672,
+    854,
+    806,
+    940
+  ],
+  "scaling": "1:1; 8x nearest is human-only"
+}

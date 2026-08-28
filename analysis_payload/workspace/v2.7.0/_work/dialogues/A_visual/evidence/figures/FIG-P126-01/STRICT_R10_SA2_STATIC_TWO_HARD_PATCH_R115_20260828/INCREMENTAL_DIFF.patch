@@ -1,0 +1,10 @@
+--- authorized-before/fig_v1_c08_coordinate.tex
++++ r10-static/fig_v1_c08_coordinate.tex
+@@
+-    anchor=south east,xshift=-6pt,yshift=10pt,
++    anchor=south east,xshift=-6pt,yshift=15pt,
+@@
+-  \addlegendimage{draw=SLTeal,line width=1.05pt,
+-    dash pattern=on .06cm off .09cm,line cap=butt}
++  \addlegendimage{only marks,mark=-,mark repeat=1,mark phase=1,
++    mark size=1.8pt,mark options={draw=SLTeal,line width=1.05pt}}

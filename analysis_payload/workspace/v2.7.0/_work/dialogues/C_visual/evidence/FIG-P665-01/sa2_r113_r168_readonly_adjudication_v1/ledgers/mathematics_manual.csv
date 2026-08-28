@@ -1,0 +1,11 @@
+math_id,claim,independent_recomputation,manual_disposition
+M01,domain and concentration,"For K>=2 and every alpha_i>0, alpha_0=sum_i alpha_i and Theta lies in the simplex interior, as stated in current V5-C05 context.",CORRECT
+M02,Dirichlet kernel,"p(theta|alpha)=B(alpha)^(-1) product_i theta_i^(alpha_i-1) on the simplex; this is the current contextual density.",CORRECT
+M03,exponential-family split,"Writing eta_k=alpha_k-1 and T_k(theta)=log theta_k gives product_k theta_k^(alpha_k-1)=exp(sum_k eta_k T_k(theta)).",CORRECT
+M04,base measure,"Relative to the simplex reference measure used in the context, h(theta)=1_Delta^(K-1)(theta) restricts support and contributes no alpha-dependent factor.",CORRECT_IN_CONTEXT
+M05,log partition,"B(alpha)=product_k Gamma(alpha_k)/Gamma(alpha_0), hence A(alpha)=log B(alpha)=sum_k log Gamma(alpha_k)-log Gamma(alpha_0).",CORRECT
+M06,derivative of alpha_0,"Because partial alpha_0 / partial alpha_k=1, differentiating -log Gamma(alpha_0) contributes -psi(alpha_0).",CORRECT
+M07,full derivative,"partial A/partial alpha_k=psi(alpha_k)-psi(alpha_0).",CORRECT
+M08,moment identity,"Differentiating the normalized exponential-family integral under the stated domination conditions yields partial A/partial alpha_k=E[T_k(Theta)]=E[log Theta_k].",CORRECT
+M09,mean-log separation,"For the nondegenerate Dirichlet coordinate in the stated K>=2 positive-parameter context, strict concavity of log gives E[log Theta_k] < log E[Theta_k], so the displayed not-equal warning is valid.",CORRECT
+M10,caption claim,"The caption identifies log theta_k as sufficient statistic, gives the correct derivative/moment identity, and warns against replacing expected log by log expected value.",CORRECT

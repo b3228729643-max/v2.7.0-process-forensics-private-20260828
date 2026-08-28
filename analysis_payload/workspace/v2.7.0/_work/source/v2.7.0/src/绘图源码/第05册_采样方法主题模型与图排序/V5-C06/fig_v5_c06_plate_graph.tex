@@ -1,0 +1,47 @@
+% v2.6.0 figure UID: FIG-P683-01
+% Semantic lock: 18 node / 5 draw, N_m nested in M, K separate; no resizebox.
+\tikzset{slfig-FIG-P683-01/.style={font=\fontsize{9.4pt}{11.3pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P683-01,slfig high,>=Stealth,
+  every node/.style={font=\fontsize{9.4pt}{11.3pt}\selectfont},
+  latent/.style={circle,draw=SLTeal,fill=SLTealBG,line width=.80pt,minimum size=8.2mm,inner sep=0pt,font=\fontsize{9.6pt}{11.5pt}\selectfont},
+  hyper/.style={draw=none,fill=none,inner sep=1pt,text=SLGray,font=\fontsize{9.6pt}{11.5pt}\selectfont},
+  obs/.style={circle,draw=SLBlue,fill=SLBlue,line width=.85pt,text=white,minimum size=8.2mm,inner sep=0pt,font=\bfseries\fontsize{9.6pt}{11.5pt}\selectfont},
+  edge/.style={-{Stealth[length=2.1mm,width=1.5mm]},draw=SLBlue,line width=.95pt},
+  plate/.style={draw=SLGray!62,line width=.66pt,rounded corners=2.2pt,dash pattern=on 2.6pt off 1.8pt},
+  plabel/.style={text=SLGray,font=\fontsize{9.2pt}{11.0pt}\selectfont,inner sep=0pt},
+  legendtext/.style={anchor=west,font=\fontsize{9.2pt}{11.0pt}\selectfont,inner sep=0pt},
+  alt={对象—关系—结论：完整Bayes LDA盘式图把超参数、潜变量和观测变量分开：每篇文档共享一个主题比例，每个词位拥有一个主题指派，所有文档共享带Dirichlet先验的主题词分布；盘框标明重复次数，箭头只表示条件依赖方向}]
+\node[hyper] (alpha) at (-5.95,1.25) {$\alpha$};
+\node[latent] (theta) at (-3.05,1.25) {$\theta_m$};
+\node[latent] (z) at (-.65,1.25) {$z_{mn}$};
+\node[obs] (w) at (1.65,1.25) {$w_{mn}$};
+\node[hyper] (beta) at (-5.95,-2.10) {$\beta$};
+\node[latent] (phi) at (-.65,-2.10) {$\varphi_k$};
+
+\node[plate,fit=(z)(w),inner xsep=4.6mm,inner ysep=4.4mm] (nplate) {};
+\node[plate,fit=(theta)(nplate),inner xsep=5.2mm,inner ysep=6.8mm] (mplate) {};
+\node[plate,fit=(phi),inner xsep=4.5mm,inner ysep=3.5mm] (kplate) {};
+
+\draw[edge] (alpha) -- (theta);
+\draw[edge] (theta) -- (z);
+\draw[edge] (z) -- (w);
+\draw[edge] (beta) -- (phi);
+\draw[edge] (phi) -- (w);
+
+\node[plabel,anchor=south east] at ($(nplate.north east)+(-1.5mm,1.55mm)$) {$N_m$ 个词位};
+\node[plabel,anchor=north east] at ($(mplate.south east)+(0,-1.9mm)$) {$M$ 篇文档};
+\node[plabel,anchor=north east] at ($(kplate.south east)+(0,-1.9mm)$) {$K$ 个主题};
+\node[obs,minimum size=6.4mm] at (5.45,.95) {};
+\node[legendtext] at (6.25,.95) {观测变量};
+\node[latent,minimum size=6.4mm] at (5.45,0) {};
+\node[legendtext] at (6.25,0) {潜变量};
+\node[hyper] at (5.45,-.95) {$\alpha,\beta$};
+\node[legendtext] at (6.25,-.95) {超参数（plate 外）};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{完整Bayes LDA盘式图把超参数、潜变量和观测变量分开：每篇文档共享一个主题比例，每个词位拥有一个主题指派，所有文档共享带Dirichlet先验的主题词分布；盘框标明重复次数，箭头只表示条件依赖方向}
+\label{fig:V5-C06-plate-graph}
+\end{figure}

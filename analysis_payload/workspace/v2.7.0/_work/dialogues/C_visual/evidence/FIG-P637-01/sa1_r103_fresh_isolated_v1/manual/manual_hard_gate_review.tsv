@@ -1,0 +1,17 @@
+gate_id	gate	decision	evidence_basis	reviewer_note
+HG01	TOFU_OR_MISSING_GLYPH	PASS	131 per-glyph original/overlay/mask cells	No tofu squares, blank replacements, or absent visible glyphs were found.
+HG02	WRONG_GLYPH_OR_CODEPOINT	PASS	glyph inventory plus 11 sheets	All mathematical, Latin, numeric, punctuation, and CJK glyph shapes match their intended text and codepoints.
+HG03	MATH_SEMANTICS	PASS	x1/x2 axis and update labels; caption x1/x2	Subscripts are correctly attached, horizontal arrows update x1, vertical arrows update x2, and no mathematical rule path is missing.
+HG04	ACTUAL_READABILITY	PASS	full page, figure crop, standalone, grayscale	Every label, state numeral, information-node line, and both caption lines is readable at native render.
+HG05	OBVIOUS_SEVERE_FONT_IMBALANCE	PASS	role/script ledger and native views	No text class is visually overwhelming or vanishing; natural subscripts, punctuation, and rotated projection explain size extrema.
+HG06	SOURCE_FONT_CONFIGURATION	PASS_R168_ADVISORY	read-only current figure source	The source explicitly uses 9.2pt for figure text and 8.8pt for state numerals with no geometric scaling; legacy absolute thresholds are advisory under R168.
+HG07	GEOMETRY	PASS	standalone plot and object cards	Axes, three nested tilted contours, long/short principal guides, state markers, and rectangular Gibbs moves are geometrically coherent.
+HG08	RELATIONSHIP_SEMANTICS	PASS	trajectory sequence 0-6	Moves alternate horizontal and vertical from 0 through 6; arrowheads, markers, and update labels express the intended Gibbs path.
+HG09	OBJECT_CONTENT_COMPLETENESS	PASS	16 text plus 21 graphic objects	All 37 independent visible objects are inventoried; all 31 mapped PDF drawings are included or explicitly excluded as background fills.
+HG10	REAL_CLIPPING	PASS	37-row clip ledger	Clip pixel count is zero for every object; minimum assigned-viewport ink margin is 9px.
+HG11	ILLEGAL_OVERLAP	PASS	666 unordered pairs and 42 reviewed cards	No text-text or text-graphic masks intersect. All 42 graphic intersections are individually reviewed intended geometry or endpoint connections.
+HG12	MASK_CONTAMINATION	PASS	131 glyph triptychs and 21 graphic cards	All per-glyph and per-graphic masks contain the target ink without missing strokes or foreign-object pixels.
+HG13	GRAYSCALE_SURVIVAL	PASS	grayscale_300dpi.png	Line orientation, contour nesting, arrowheads, and filled markers preserve every essential relation without color dependence.
+HG14	PAGE_INTEGRATION	PASS	full_page_200dpi.png and full_page_300dpi.png	Figure size, surrounding whitespace, caption, following paragraph, and page furniture form a clean full-page composition.
+HG15	CAPTION_AND_CONTEXT	PASS	figure_crop_300dpi.png	Caption accurately describes horizontal x1 and vertical x2 updates and clearly labels the path as a fixed teaching demonstration.
+HG16	RENDER_PATHS	PASS	300dpi native, 200dpi page, exact 8x nearest tiles/cards	Full page, figure crop, standalone, grayscale, contact sheets, and pair cards all preserve the same content and topology.

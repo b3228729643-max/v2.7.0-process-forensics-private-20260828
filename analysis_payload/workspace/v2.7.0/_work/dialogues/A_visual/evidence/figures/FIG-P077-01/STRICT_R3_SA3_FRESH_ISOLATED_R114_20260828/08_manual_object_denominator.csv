@@ -1,0 +1,26 @@
+OBJECT_ID,OBJECT_TYPE,SEMANTIC_ROLE,SOURCE_REFERENCE,RAW_EVIDENCE,POST_OBSERVATION_DESCRIPTION,IN_FROZEN_DENOMINATOR
+T01,TEXT,x tick -4,source L26,raw spans S01,"Visible sharp minus-four tick label below the left tick",true
+T02,TEXT,x tick 0,source L26,raw spans S02,"Visible sharp zero tick label centered below x=0",true
+T03,TEXT,x tick 4,source L26,raw spans S03,"Visible sharp four tick label below the right tick",true
+T04,TEXT,y tick 0,source L26,raw spans S04,"Visible sharp zero tick label left of the origin",true
+T05,TEXT,y tick 0.2,source L26,raw spans S05,"Visible sharp 0.2 tick label left of the axis",true
+T06,TEXT,y tick 0.4,source L26,raw spans S06,"Visible sharp 0.4 tick label left of the axis",true
+T07,FORMULA_TEXT,narrow-density direct label,source L44-L45,raw spans S07-S09,"Visible N(0,1) label and exact peak formula on opaque white ground",true
+T08,FORMULA_TEXT,wide-density direct label base,source L46-L47,"raw spans S10+S12-S14","Visible N(0,2^2) base label and exact peak formula on opaque white ground",true
+T09,FORMULA_SCRIPT,wide-density exponent 2,source L46-L47,raw span S11,"Visible superscript two; separately denominated because it is script-sized",true
+T10,MIXED_TEXT,area normalization annotation,source L51-L53,raw spans S15-S16,"Visible centered statement that both curve areas equal one",true
+T11,FORMULA_TEXT,x-axis label,source L23,raw span S17,"Visible italic x centered below the zero tick",true
+T12,TEXT,y-axis label,source L23,raw span S18,"Visible vertical Chinese label 密度",true
+T13,CAPTION_TEXT,caption label,source L56,raw spans S19-S20,"Visible bold 图 5.1 label",true
+T14,CAPTION_TEXT,caption conclusion,source L56,raw spans S21-S22,"Visible one-line conclusion matching the source and curve geometry",true
+G01,LINE_ARROW,x-axis baseline arrow and its three tick marks,source L21-L27,raw geometry G01,"Visible horizontal axis with right arrow; tick strokes included as one inseparable axis object",true
+G02,LINE_ARROW,y-axis baseline arrow and its three tick marks,source L21-L27,raw geometry G02,"Visible vertical axis with upper arrow; tick strokes included as one inseparable axis object",true
+G03,DATA_CURVE,standard normal density curve,source L37-L38,raw geometry G03,"Visible solid blue symmetric density with peak near 0.4 at x=0",true
+G04,DATA_CURVE,wide normal density curve,source L39-L41,raw geometry G04,"Visible teal dashed symmetric density with peak near 0.2 at x=0",true
+G05,DATA_FILL,standard normal area fill,source L33-L36,raw geometry G05,"Visible pale blue area between standard curve and zero path",true
+G06,DATA_FILL,wide normal area fill,source L29-L32,raw geometry G06,"Visible pale teal area between wide curve and zero path",true
+G07,REFERENCE_LINE,x=0 reference line,source L42-L43,raw geometry G07,"Visible gray dashed vertical center reference",true
+G08,BRACE,area comparison brace,source L48-L50,raw geometry G08,"Visible gray brace spanning both displayed density regions",true
+B01,BACKGROUND,narrow-label opacity ground,source L5-L8 and L44-L45,raw geometry B01,"Visible by its intended occlusion of data ink behind T07; not semantic foreground",true
+B02,BACKGROUND,wide-label opacity ground,source L5-L8 and L46-L47,raw geometry B02,"Visible by its intended occlusion of data ink behind T08/T09; not semantic foreground",true
+B03,BACKGROUND,area-note opacity ground,source L51-L53,raw geometry B03,"Visible by its intended interruption of the x-axis behind T10; not semantic foreground",true

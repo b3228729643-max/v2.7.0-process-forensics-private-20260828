@@ -1,0 +1,22 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{692}
+\setcounter{chapter}{35}
+\setcounter{section}{4}
+\setcounter{figure}{7}
+\pagestyle{headings}
+\chaptermark{潜在狄利克雷分配}
+\sectionmark{超参数、实现与评估}
+图\ref{fig:V5-C06-method-comparison}把完整Bayes折叠Gibbs与无
+$\boldsymbol\beta$先验的点参数变分EM按模型目标、局部/全局变量、核心更新、
+输出与适用性、风险与诊断逐项并列。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_method_comparison.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先确认左列积分消去
+$\boldsymbol\theta,\boldsymbol\varphi$并以$\boldsymbol z$和计数为链状态，
+右列只在局部E步固定当前$\boldsymbol\varphi$，再由全局期望计数与受保护Newton分别更新
+$\boldsymbol\varphi,\boldsymbol\alpha$；最后只在相同训练/验证/测试切分、
+词表与预处理、主题数、计算预算和评价口径下比较，并同时登记模型差异与推断差异。
+\end{document}

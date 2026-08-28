@@ -1,0 +1,28 @@
+% Stage 17 final official entry: Volume 3, V3-C01--V3-C07.
+% Match the merged-book compatibility policy: the installed experimental
+% tagged-PDF block layer rejects enumitem keys used by the chapter map.
+% Standard PDF metadata remains supplied by \SLSetBookMetadata/hyperref.
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第3册}{统计学习方法初学者讲义}{优化模型与序列模型}
+\begin{document}
+\raggedbottom
+\frontmatter
+\SLMakeTitle
+\chapter*{本册导读}\addcontentsline{toc}{chapter}{本册导读}
+本册从最大熵原理出发，依次学习支持向量机、提升方法、EM算法、隐马尔可夫模型与条件随机场，并在末章比较监督学习方法的模型假设、学习策略和计算路径。学习时应同时追踪“目标函数如何构造、约束如何进入优化、隐变量或序列结构如何被处理”三条主线；各章均配置完整推导、算法伪代码、例题、分层练习和自检。
+\SLPrintSourceNotice
+\SLPrintContents
+\mainmatter
+\index{统计学习方法}
+\input{chapters/V3-C01}
+\input{chapters/V3-C02}
+\input{chapters/V3-C03}
+\input{chapters/V3-C04}
+\input{chapters/V3-C05}
+\input{chapters/V3-C06}
+\input{chapters/V3-C07}
+\backmatter
+\SLPrintReferences
+\printbookindexes
+\end{document}

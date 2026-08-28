@@ -1,0 +1,1462 @@
+{
+  "figure_uid": "FIG-P033-01",
+  "pdf_physical_page": 29,
+  "atomicity_rule": "Every non-whitespace rendered glyph is a separate atom. Every foreground PDF paint path is a separate atom. No semantic text/path grouping is used.",
+  "background_exclusions": [
+    {
+      "pdf_drawing_index": 14,
+      "reason": "BACKGROUND_EXCLUSION: pale filled subspace field; no foreground stroke in this paint object."
+    },
+    {
+      "pdf_drawing_index": 23,
+      "reason": "BACKGROUND_EXCLUSION: white residual-label knockout mask; no visible foreground stroke."
+    },
+    {
+      "pdf_drawing_index": 26,
+      "reason": "BACKGROUND_EXCLUSION: white distance-label knockout mask; no visible foreground stroke."
+    }
+  ],
+  "glyph_count": 85,
+  "foreground_path_count": 11,
+  "atom_count": 96,
+  "unordered_pair_count": 4560,
+  "atoms": [
+    {
+      "atom_id": "GLYPH-001",
+      "kind": "VISIBLE_GLYPH",
+      "char": "子",
+      "bbox_pt": [
+        170.759,
+        624.097,
+        180.722,
+        634.767
+      ],
+      "source_locator": "rawdict:block=20,line=0,span=0,char=0",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-002",
+      "kind": "VISIBLE_GLYPH",
+      "char": "空",
+      "bbox_pt": [
+        180.722,
+        624.097,
+        190.684,
+        634.767
+      ],
+      "source_locator": "rawdict:block=20,line=0,span=0,char=1",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-003",
+      "kind": "VISIBLE_GLYPH",
+      "char": "间",
+      "bbox_pt": [
+        190.684,
+        624.097,
+        200.647,
+        634.767
+      ],
+      "source_locator": "rawdict:block=20,line=0,span=0,char=2",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-004",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑆",
+      "bbox_pt": [
+        202.988,
+        624.476,
+        208.308,
+        634.438
+      ],
+      "source_locator": "rawdict:block=20,line=0,span=1,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-005",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑥",
+      "bbox_pt": [
+        209.6,
+        528.5,
+        215.448,
+        538.463
+      ],
+      "source_locator": "rawdict:block=21,line=0,span=0,char=0",
+      "font": "XITSMath-Bold",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-006",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑝",
+      "bbox_pt": [
+        260.118,
+        596.336,
+        265.807,
+        606.299
+      ],
+      "source_locator": "rawdict:block=22,line=0,span=0,char=0",
+      "font": "XITSMath-Bold",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-007",
+      "kind": "VISIBLE_GLYPH",
+      "char": "=",
+      "bbox_pt": [
+        268.574,
+        596.216,
+        275.747,
+        606.179
+      ],
+      "source_locator": "rawdict:block=22,line=0,span=1,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-008",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑃",
+      "bbox_pt": [
+        278.507,
+        596.216,
+        284.175,
+        606.179
+      ],
+      "source_locator": "rawdict:block=22,line=0,span=1,char=2",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-009",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑆",
+      "bbox_pt": [
+        283.28,
+        599.721,
+        288.615,
+        608.687
+      ],
+      "source_locator": "rawdict:block=22,line=0,span=2,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 8.966
+    },
+    {
+      "atom_id": "GLYPH-010",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑥",
+      "bbox_pt": [
+        289.282,
+        596.336,
+        295.13,
+        606.299
+      ],
+      "source_locator": "rawdict:block=22,line=0,span=3,char=0",
+      "font": "XITSMath-Bold",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-011",
+      "kind": "VISIBLE_GLYPH",
+      "char": "∈",
+      "bbox_pt": [
+        297.897,
+        596.216,
+        305.07,
+        606.179
+      ],
+      "source_locator": "rawdict:block=22,line=0,span=4,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-012",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑆",
+      "bbox_pt": [
+        307.83,
+        596.216,
+        313.15,
+        606.179
+      ],
+      "source_locator": "rawdict:block=22,line=0,span=4,char=1",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-013",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑟",
+      "bbox_pt": [
+        304.398,
+        510.666,
+        308.44,
+        519.831
+      ],
+      "source_locator": "rawdict:block=23,line=0,span=0,char=0",
+      "font": "XITSMath-Bold",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-014",
+      "kind": "VISIBLE_GLYPH",
+      "char": "=",
+      "bbox_pt": [
+        310.986,
+        510.556,
+        318.062,
+        519.721
+      ],
+      "source_locator": "rawdict:block=23,line=0,span=1,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-015",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑥",
+      "bbox_pt": [
+        320.608,
+        510.666,
+        325.988,
+        519.831
+      ],
+      "source_locator": "rawdict:block=23,line=0,span=2,char=1",
+      "font": "XITSMath-Bold",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-016",
+      "kind": "VISIBLE_GLYPH",
+      "char": "−",
+      "bbox_pt": [
+        328.025,
+        510.556,
+        335.101,
+        519.721
+      ],
+      "source_locator": "rawdict:block=23,line=0,span=3,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-017",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑝",
+      "bbox_pt": [
+        337.138,
+        510.666,
+        342.372,
+        519.831
+      ],
+      "source_locator": "rawdict:block=23,line=0,span=4,char=0",
+      "font": "XITSMath-Bold",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-018",
+      "kind": "VISIBLE_GLYPH",
+      "char": "∈",
+      "bbox_pt": [
+        344.917,
+        510.556,
+        351.791,
+        519.721
+      ],
+      "source_locator": "rawdict:block=23,line=0,span=5,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-019",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑆",
+      "bbox_pt": [
+        354.33,
+        510.556,
+        359.784,
+        519.721
+      ],
+      "source_locator": "rawdict:block=23,line=0,span=5,char=1",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-020",
+      "kind": "VISIBLE_GLYPH",
+      "char": "⟂",
+      "bbox_pt": [
+        360.066,
+        509.351,
+        364.615,
+        515.767
+      ],
+      "source_locator": "rawdict:block=23,line=0,span=6,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 6.416
+    },
+    {
+      "atom_id": "GLYPH-021",
+      "kind": "VISIBLE_GLYPH",
+      "char": "最",
+      "bbox_pt": [
+        315.311,
+        542.043,
+        324.477,
+        551.859
+      ],
+      "source_locator": "rawdict:block=24,line=0,span=0,char=0",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-022",
+      "kind": "VISIBLE_GLYPH",
+      "char": "短",
+      "bbox_pt": [
+        324.477,
+        542.043,
+        333.642,
+        551.859
+      ],
+      "source_locator": "rawdict:block=24,line=0,span=0,char=1",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-023",
+      "kind": "VISIBLE_GLYPH",
+      "char": "距",
+      "bbox_pt": [
+        333.642,
+        542.043,
+        342.808,
+        551.859
+      ],
+      "source_locator": "rawdict:block=24,line=0,span=0,char=2",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-024",
+      "kind": "VISIBLE_GLYPH",
+      "char": "离",
+      "bbox_pt": [
+        342.808,
+        542.043,
+        351.973,
+        551.859
+      ],
+      "source_locator": "rawdict:block=24,line=0,span=0,char=3",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-025",
+      "kind": "VISIBLE_GLYPH",
+      "char": "‖",
+      "bbox_pt": [
+        348.146,
+        475.186,
+        352.06,
+        484.351
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=0,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-026",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑥",
+      "bbox_pt": [
+        352.06,
+        475.296,
+        357.44,
+        484.461
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=1,char=0",
+      "font": "XITSMath-Bold",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-027",
+      "kind": "VISIBLE_GLYPH",
+      "char": "‖",
+      "bbox_pt": [
+        357.44,
+        475.186,
+        361.354,
+        484.351
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=2,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-028",
+      "kind": "VISIBLE_GLYPH",
+      "char": "2",
+      "bbox_pt": [
+        361.354,
+        473.982,
+        364.94,
+        480.398
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=3,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 6.416
+    },
+    {
+      "atom_id": "GLYPH-029",
+      "kind": "VISIBLE_GLYPH",
+      "char": "=",
+      "bbox_pt": [
+        367.853,
+        475.186,
+        374.929,
+        484.351
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=5,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-030",
+      "kind": "VISIBLE_GLYPH",
+      "char": "‖",
+      "bbox_pt": [
+        377.468,
+        475.186,
+        381.381,
+        484.351
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=5,char=2",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-031",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑝",
+      "bbox_pt": [
+        381.389,
+        475.296,
+        386.623,
+        484.461
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=6,char=0",
+      "font": "XITSMath-Bold",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-032",
+      "kind": "VISIBLE_GLYPH",
+      "char": "‖",
+      "bbox_pt": [
+        386.622,
+        475.186,
+        390.536,
+        484.351
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=7,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-033",
+      "kind": "VISIBLE_GLYPH",
+      "char": "2",
+      "bbox_pt": [
+        390.536,
+        473.982,
+        394.122,
+        480.398
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=8,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 6.416
+    },
+    {
+      "atom_id": "GLYPH-034",
+      "kind": "VISIBLE_GLYPH",
+      "char": "+",
+      "bbox_pt": [
+        396.526,
+        475.186,
+        403.602,
+        484.351
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=10,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-035",
+      "kind": "VISIBLE_GLYPH",
+      "char": "‖",
+      "bbox_pt": [
+        405.637,
+        475.186,
+        409.55,
+        484.351
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=10,char=2",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-036",
+      "kind": "VISIBLE_GLYPH",
+      "char": "𝑟",
+      "bbox_pt": [
+        409.552,
+        475.296,
+        413.594,
+        484.461
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=11,char=0",
+      "font": "XITSMath-Bold",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-037",
+      "kind": "VISIBLE_GLYPH",
+      "char": "‖",
+      "bbox_pt": [
+        413.594,
+        475.186,
+        417.508,
+        484.351
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=12,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 9.166
+    },
+    {
+      "atom_id": "GLYPH-038",
+      "kind": "VISIBLE_GLYPH",
+      "char": "2",
+      "bbox_pt": [
+        417.508,
+        473.982,
+        421.094,
+        480.398
+      ],
+      "source_locator": "rawdict:block=25,line=0,span=13,char=0",
+      "font": "STIXTwoMath-Regular",
+      "size_pt": 6.416
+    },
+    {
+      "atom_id": "GLYPH-039",
+      "kind": "VISIBLE_GLYPH",
+      "char": "图",
+      "bbox_pt": [
+        62.362,
+        639.696,
+        72.325,
+        654.122
+      ],
+      "source_locator": "rawdict:block=26,line=0,span=0,char=0",
+      "font": "NotoSansSC-Bold",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-040",
+      "kind": "VISIBLE_GLYPH",
+      "char": "2",
+      "bbox_pt": [
+        74.523,
+        643.661,
+        79.356,
+        653.624
+      ],
+      "source_locator": "rawdict:block=26,line=0,span=1,char=0",
+      "font": "STIXTwoText-Bold",
+      "size_pt": 9.863
+    },
+    {
+      "atom_id": "GLYPH-041",
+      "kind": "VISIBLE_GLYPH",
+      "char": ".",
+      "bbox_pt": [
+        79.356,
+        643.661,
+        82.051,
+        653.624
+      ],
+      "source_locator": "rawdict:block=26,line=0,span=1,char=1",
+      "font": "STIXTwoText-Bold",
+      "size_pt": 9.863
+    },
+    {
+      "atom_id": "GLYPH-042",
+      "kind": "VISIBLE_GLYPH",
+      "char": "1",
+      "bbox_pt": [
+        82.051,
+        643.661,
+        86.883,
+        653.624
+      ],
+      "source_locator": "rawdict:block=26,line=0,span=1,char=2",
+      "font": "STIXTwoText-Bold",
+      "size_pt": 9.863
+    },
+    {
+      "atom_id": "GLYPH-043",
+      "kind": "VISIBLE_GLYPH",
+      "char": "向",
+      "bbox_pt": [
+        96.846,
+        643.283,
+        106.809,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=0",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-044",
+      "kind": "VISIBLE_GLYPH",
+      "char": "量",
+      "bbox_pt": [
+        106.809,
+        643.283,
+        116.771,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=1",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-045",
+      "kind": "VISIBLE_GLYPH",
+      "char": "的",
+      "bbox_pt": [
+        116.771,
+        643.283,
+        126.734,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=2",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-046",
+      "kind": "VISIBLE_GLYPH",
+      "char": "正",
+      "bbox_pt": [
+        126.734,
+        643.283,
+        136.697,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=3",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-047",
+      "kind": "VISIBLE_GLYPH",
+      "char": "交",
+      "bbox_pt": [
+        136.697,
+        643.283,
+        146.659,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=4",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-048",
+      "kind": "VISIBLE_GLYPH",
+      "char": "分",
+      "bbox_pt": [
+        146.659,
+        643.283,
+        156.622,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=5",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-049",
+      "kind": "VISIBLE_GLYPH",
+      "char": "解",
+      "bbox_pt": [
+        156.622,
+        643.283,
+        166.585,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=6",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-050",
+      "kind": "VISIBLE_GLYPH",
+      "char": "。",
+      "bbox_pt": [
+        166.585,
+        643.283,
+        176.547,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=7",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-051",
+      "kind": "VISIBLE_GLYPH",
+      "char": "投",
+      "bbox_pt": [
+        175.631,
+        643.283,
+        185.593,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=8",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-052",
+      "kind": "VISIBLE_GLYPH",
+      "char": "影",
+      "bbox_pt": [
+        185.593,
+        643.283,
+        195.556,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=9",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-053",
+      "kind": "VISIBLE_GLYPH",
+      "char": "向",
+      "bbox_pt": [
+        195.556,
+        643.283,
+        205.519,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=10",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-054",
+      "kind": "VISIBLE_GLYPH",
+      "char": "量",
+      "bbox_pt": [
+        205.519,
+        643.283,
+        215.481,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=11",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-055",
+      "kind": "VISIBLE_GLYPH",
+      "char": "属",
+      "bbox_pt": [
+        215.481,
+        643.283,
+        225.444,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=12",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-056",
+      "kind": "VISIBLE_GLYPH",
+      "char": "于",
+      "bbox_pt": [
+        225.444,
+        643.283,
+        235.406,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=13",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-057",
+      "kind": "VISIBLE_GLYPH",
+      "char": "子",
+      "bbox_pt": [
+        235.406,
+        643.283,
+        245.369,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=14",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-058",
+      "kind": "VISIBLE_GLYPH",
+      "char": "空",
+      "bbox_pt": [
+        245.369,
+        643.283,
+        255.332,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=15",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-059",
+      "kind": "VISIBLE_GLYPH",
+      "char": "间",
+      "bbox_pt": [
+        255.332,
+        643.283,
+        265.294,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=16",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-060",
+      "kind": "VISIBLE_GLYPH",
+      "char": "，",
+      "bbox_pt": [
+        265.294,
+        643.283,
+        275.257,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=17",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-061",
+      "kind": "VISIBLE_GLYPH",
+      "char": "残",
+      "bbox_pt": [
+        274.35,
+        643.283,
+        284.313,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=18",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-062",
+      "kind": "VISIBLE_GLYPH",
+      "char": "差",
+      "bbox_pt": [
+        284.313,
+        643.283,
+        294.276,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=19",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-063",
+      "kind": "VISIBLE_GLYPH",
+      "char": "属",
+      "bbox_pt": [
+        294.276,
+        643.283,
+        304.238,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=20",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-064",
+      "kind": "VISIBLE_GLYPH",
+      "char": "于",
+      "bbox_pt": [
+        304.238,
+        643.283,
+        314.201,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=21",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-065",
+      "kind": "VISIBLE_GLYPH",
+      "char": "其",
+      "bbox_pt": [
+        314.201,
+        643.283,
+        324.164,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=22",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-066",
+      "kind": "VISIBLE_GLYPH",
+      "char": "正",
+      "bbox_pt": [
+        324.164,
+        643.283,
+        334.126,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=23",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-067",
+      "kind": "VISIBLE_GLYPH",
+      "char": "交",
+      "bbox_pt": [
+        334.126,
+        643.283,
+        344.089,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=24",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-068",
+      "kind": "VISIBLE_GLYPH",
+      "char": "补",
+      "bbox_pt": [
+        344.089,
+        643.283,
+        354.052,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=25",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-069",
+      "kind": "VISIBLE_GLYPH",
+      "char": "，",
+      "bbox_pt": [
+        354.052,
+        643.283,
+        364.014,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=26",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-070",
+      "kind": "VISIBLE_GLYPH",
+      "char": "虚",
+      "bbox_pt": [
+        363.098,
+        643.283,
+        373.06,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=27",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-071",
+      "kind": "VISIBLE_GLYPH",
+      "char": "线",
+      "bbox_pt": [
+        373.06,
+        643.283,
+        383.023,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=28",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-072",
+      "kind": "VISIBLE_GLYPH",
+      "char": "残",
+      "bbox_pt": [
+        383.023,
+        643.283,
+        392.986,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=29",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-073",
+      "kind": "VISIBLE_GLYPH",
+      "char": "差",
+      "bbox_pt": [
+        392.986,
+        643.283,
+        402.948,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=30",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-074",
+      "kind": "VISIBLE_GLYPH",
+      "char": "给",
+      "bbox_pt": [
+        402.948,
+        643.283,
+        412.911,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=31",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-075",
+      "kind": "VISIBLE_GLYPH",
+      "char": "出",
+      "bbox_pt": [
+        412.911,
+        643.283,
+        422.874,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=32",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-076",
+      "kind": "VISIBLE_GLYPH",
+      "char": "到",
+      "bbox_pt": [
+        422.874,
+        643.283,
+        432.836,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=33",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-077",
+      "kind": "VISIBLE_GLYPH",
+      "char": "子",
+      "bbox_pt": [
+        432.836,
+        643.283,
+        442.799,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=34",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-078",
+      "kind": "VISIBLE_GLYPH",
+      "char": "空",
+      "bbox_pt": [
+        442.799,
+        643.283,
+        452.762,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=35",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-079",
+      "kind": "VISIBLE_GLYPH",
+      "char": "间",
+      "bbox_pt": [
+        452.762,
+        643.283,
+        462.724,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=36",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-080",
+      "kind": "VISIBLE_GLYPH",
+      "char": "的",
+      "bbox_pt": [
+        462.724,
+        643.283,
+        472.687,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=37",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-081",
+      "kind": "VISIBLE_GLYPH",
+      "char": "最",
+      "bbox_pt": [
+        472.687,
+        643.283,
+        482.649,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=38",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-082",
+      "kind": "VISIBLE_GLYPH",
+      "char": "短",
+      "bbox_pt": [
+        482.649,
+        643.283,
+        492.612,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=39",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-083",
+      "kind": "VISIBLE_GLYPH",
+      "char": "距",
+      "bbox_pt": [
+        492.612,
+        643.283,
+        502.575,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=40",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-084",
+      "kind": "VISIBLE_GLYPH",
+      "char": "离",
+      "bbox_pt": [
+        502.575,
+        643.283,
+        512.537,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=41",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "GLYPH-085",
+      "kind": "VISIBLE_GLYPH",
+      "char": "。",
+      "bbox_pt": [
+        512.537,
+        643.283,
+        522.5,
+        653.953
+      ],
+      "source_locator": "rawdict:block=26,line=1,span=0,char=42",
+      "font": "NotoSerifSC-ExtraLight",
+      "size_pt": 9.963
+    },
+    {
+      "atom_id": "PATH-001",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 15,
+      "bbox_pt": [
+        155.413,
+        542.192,
+        373.258,
+        601.791
+      ],
+      "stroke": [
+        0.5821200013160706,
+        0.6018800139427185,
+        0.6413999795913696
+      ],
+      "fill": null,
+      "width_pt": 0.597760021686554,
+      "dash": "[] 0",
+      "pdf_path_item_count": 1,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    },
+    {
+      "atom_id": "PATH-002",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 16,
+      "bbox_pt": [
+        160.346,
+        561.922,
+        378.191,
+        621.52
+      ],
+      "stroke": [
+        0.5821200013160706,
+        0.6018800139427185,
+        0.6413999795913696
+      ],
+      "fill": null,
+      "width_pt": 0.597760021686554,
+      "dash": "[] 0",
+      "pdf_path_item_count": 1,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    },
+    {
+      "atom_id": "PATH-003",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 17,
+      "bbox_pt": [
+        174.321,
+        491.123,
+        282.622,
+        603.435
+      ],
+      "stroke": [
+        0.12157999724149704,
+        0.30588001012802124,
+        0.4745199978351593
+      ],
+      "fill": null,
+      "width_pt": 0.9763299822807312,
+      "dash": "[] 0",
+      "pdf_path_item_count": 1,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    },
+    {
+      "atom_id": "PATH-004",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 18,
+      "bbox_pt": [
+        281.367,
+        489.493,
+        284.194,
+        492.372
+      ],
+      "stroke": [
+        0.12157999724149704,
+        0.30588001012802124,
+        0.4745199978351593
+      ],
+      "fill": [
+        0.12157999724149704,
+        0.30588001012802124,
+        0.4745199978351593
+      ],
+      "width_pt": 0.9762958288192749,
+      "dash": "[] 0",
+      "pdf_path_item_count": 4,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    },
+    {
+      "atom_id": "PATH-005",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 19,
+      "bbox_pt": [
+        174.321,
+        571.488,
+        302.109,
+        603.435
+      ],
+      "stroke": [
+        0.058820001780986786,
+        0.46274998784065247,
+        0.43136999011039734
+      ],
+      "fill": null,
+      "width_pt": 0.9763299822807312,
+      "dash": "[] 0",
+      "pdf_path_item_count": 1,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    },
+    {
+      "atom_id": "PATH-006",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 20,
+      "bbox_pt": [
+        301.114,
+        570.712,
+        304.306,
+        572.641
+      ],
+      "stroke": [
+        0.058820001780986786,
+        0.46274998784065247,
+        0.43136999011039734
+      ],
+      "fill": [
+        0.058820001780986786,
+        0.46274998784065247,
+        0.43136999011039734
+      ],
+      "width_pt": 0.9763215184211731,
+      "dash": "[] 0",
+      "pdf_path_item_count": 4,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    },
+    {
+      "atom_id": "PATH-007",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 21,
+      "bbox_pt": [
+        286.138,
+        491.704,
+        305.85,
+        570.553
+      ],
+      "stroke": [
+        0.41962000727653503,
+        0.44707000255584717,
+        0.5019500255584717
+      ],
+      "fill": null,
+      "width_pt": 0.7770799994468689,
+      "dash": "[ 2.39105 1.99255 ] 0",
+      "pdf_path_item_count": 1,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    },
+    {
+      "atom_id": "PATH-008",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 22,
+      "bbox_pt": [
+        285.425,
+        489.611,
+        287.233,
+        492.696
+      ],
+      "stroke": [
+        0.41962000727653503,
+        0.44707000255584717,
+        0.5019500255584717
+      ],
+      "fill": [
+        0.41962000727653503,
+        0.44707000255584717,
+        0.5019500255584717
+      ],
+      "width_pt": 0.7770732641220093,
+      "dash": "[] 0",
+      "pdf_path_item_count": 4,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    },
+    {
+      "atom_id": "PATH-009",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 24,
+      "bbox_pt": [
+        293.819,
+        560.928,
+        303.444,
+        572.959
+      ],
+      "stroke": [
+        0.41962000727653503,
+        0.44707000255584717,
+        0.5019500255584717
+      ],
+      "fill": null,
+      "width_pt": 0.5778399705886841,
+      "dash": "[] 0",
+      "pdf_path_item_count": 2,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    },
+    {
+      "atom_id": "PATH-010",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 25,
+      "bbox_pt": [
+        292.29,
+        486.712,
+        314.106,
+        568.909
+      ],
+      "stroke": [
+        0.41962000727653503,
+        0.44707000255584717,
+        0.5019500255584717
+      ],
+      "fill": null,
+      "width_pt": 0.5180699825286865,
+      "dash": "[] 0",
+      "pdf_path_item_count": 6,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    },
+    {
+      "atom_id": "PATH-011",
+      "kind": "FOREGROUND_PAINTED_PATH",
+      "pdf_drawing_index": 27,
+      "bbox_pt": [
+        341.061,
+        467.337,
+        428.551,
+        491.272
+      ],
+      "stroke": [
+        0.7960799932479858,
+        0.8353000283241272,
+        0.8823500275611877
+      ],
+      "fill": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "width_pt": 0.5479400157928467,
+      "dash": "[] 0",
+      "pdf_path_item_count": 8,
+      "atomicity_note": "One PDF painted path (one get_drawings entry); internal line/curve commands share a single paint operation and are not merged with another painted path."
+    }
+  ]
+}

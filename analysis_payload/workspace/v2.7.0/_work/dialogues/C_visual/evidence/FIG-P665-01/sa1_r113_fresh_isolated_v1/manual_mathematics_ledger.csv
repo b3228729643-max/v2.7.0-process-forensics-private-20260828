@@ -1,0 +1,9 @@
+math_id,claim,independent_recomputation,manual_decision
+M01,"Dirichlet density exponential-family decomposition","From p(theta|alpha)=B(alpha)^(-1) product_j theta_j^(alpha_j-1) on the simplex, write h(theta)=1_Delta(theta), eta_j=alpha_j-1, T_j(theta)=log theta_j, and A(alpha)=log B(alpha). This gives h exp{sum eta_j T_j-A} exactly.",CORRECT
+M02,"Displayed base measure","Relative to the chapter's (K-1)-dimensional simplex reference measure, h(theta)=1_Delta^(K-1)(theta) supplies the support indicator and no alpha-dependent term.",CORRECT
+M03,"Displayed natural parameter","Matching the exponent theta_k^(alpha_k-1) gives eta_k=alpha_k-1 componentwise.",CORRECT
+M04,"Displayed sufficient statistic","Taking logs of theta_k^(alpha_k-1) gives the sufficient statistic T_k(theta)=log theta_k.",CORRECT
+M05,"Displayed log-partition function","B(alpha)=product_j Gamma(alpha_j)/Gamma(alpha_0), alpha_0=sum_j alpha_j; therefore A=log B=sum_j log Gamma(alpha_j)-log Gamma(alpha_0).",CORRECT
+M06,"Derivative of A","Differentiate using d log Gamma(x)/dx=psi(x) and d alpha_0/d alpha_k=1: partial A/partial alpha_k=psi(alpha_k)-psi(alpha_0).",CORRECT
+M07,"Expected log identity","Because eta_k=alpha_k-1 has unit Jacobian in alpha_k, the regular exponential-family identity partial A/partial eta_k=E[T_k] gives E[log Theta_k]=psi(alpha_k)-psi(alpha_0). The current chapter proof independently reaches the same result by differentiating log B under the integral.",CORRECT
+M08,"Expectation of log versus log of expectation","For alpha_j>0 and K>=2, Theta_k is positive and nondegenerate; strict concavity of log gives E log Theta_k < log E Theta_k=log(alpha_k/alpha_0). The displayed not-equal statement is therefore valid.",CORRECT

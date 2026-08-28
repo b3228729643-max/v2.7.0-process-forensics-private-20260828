@@ -1,0 +1,19 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{753}
+\setcounter{chapter}{37}
+\setcounter{section}{5}
+\setcounter{figure}{7}
+\pagestyle{headings}
+\chaptermark{无监督学习方法总结}
+\sectionmark{全书综合自检}
+图\ref{fig:V5-C08-course-map}把全书方法放回“问题定义--建模--计算--证据--边界”主闭环；
+下层监督与无监督任务共享线性代数、优化、概率、推断四类可复用计算引擎，隔离验证后的结论只能单向进入可复现报告，报告不回流。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/full_course_synthesis_map.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看上层五站主闭环及边界暴露／证据失败后返回问题定义的反馈；
+再看下层监督与无监督两路如何共同进入共享引擎池并汇入隔离验证；
+最终确认只有隔离验证后的结论能单向进入可复现报告，报告没有回流。
+\end{document}

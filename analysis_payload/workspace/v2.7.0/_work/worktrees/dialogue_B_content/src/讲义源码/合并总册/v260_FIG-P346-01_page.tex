@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 3 册}{统计学习方法讲义 v2.6.0}{优化模型与序列模型}
+\begin{document}
+\setcounter{page}{426}
+\setcounter{chapter}{20}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{EM 算法及其推广}
+\begin{geometrybox}
+下界 $B(\theta,2)$ 与目标函数 $\ell(\theta)$ 在 $\theta=2$ 处函数值和导数相同，因此该点既是接触点，也是两曲线共享切线的位置。
+\end{geometrybox}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C04/fig_v3_c04_bound.tex}
+图\ref{fig:V3-C04-bound}中的差值恒为非负二次项；固定辅助分布后，E 步建立相切下界，M 步提高该下界。
+\textbf{进入 E 步与 M 步。}两步优化的变量不同，但都沿着可验证的下界关系推进原目标。
+\end{document}

@@ -1,0 +1,26 @@
+{
+  "status": "STATIC_LAYOUT_PREFLIGHT_PASS_AWAIT_PDF",
+  "changed_node": "N_LDA",
+  "old_coordinate_cm": [
+    6.35,
+    -2.55
+  ],
+  "new_coordinate_cm": [
+    6.35,
+    -2.75
+  ],
+  "vertical_extension_cm": 0.2,
+  "vertical_extension_at_300dpi_px": 23.622047,
+  "midpoint_label_clearance_gain_each_side_px": 11.811024,
+  "required_native_clearance_px": 3,
+  "original_failed_clearance_px": 0,
+  "predicted_new_clearance_lower_bound_px": 11.811024,
+  "semantic_edge_unchanged": "predictive -> application label -> lda",
+  "other_node_coordinates_changed": 0,
+  "node_dimensions_changed": 0,
+  "relationship_count_before_after": [
+    7,
+    7
+  ],
+  "note": "The downstream node moves 0.20cm down; the midpoint label gains half that separation from both endpoint borders. Native PDF remeasurement remains mandatory after an explicit build grant."
+}

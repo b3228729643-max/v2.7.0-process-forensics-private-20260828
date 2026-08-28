@@ -1,0 +1,116 @@
+% v2.7.0 figure UID: FIG-P669-01
+% Fixed m, linear alpha0 axis, and exact projected covariance ellipses.
+\begingroup
+\tikzset{slfig-FIG-P669-01/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P669-01,slfig high,>=Stealth,
+  every node/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont,align=center},
+  alt={对象—关系—结论：左图用线性总浓度轴列出固定均值m=(0.5,0.3,0.2)下alpha0为3、10、30的三个参数向量；每个带有不同点形和线型的箭头直接连到右侧同一单纯形中的对应0.8sigma协方差椭圆。三个椭圆共心于m，随alpha0增大依次收缩，说明总浓度不改变均值而按1/(alpha0+1)缩小方差和负协方差。}]
+\def\SLAxisZero{-5.40}
+\def\SLAxisLength{4.40}
+\def\SLAxisY{-.15}
+\pgfmathsetmacro{\SLxThree}{\SLAxisZero+\SLAxisLength*3/30}
+\pgfmathsetmacro{\SLxTen}{\SLAxisZero+\SLAxisLength*10/30}
+\pgfmathsetmacro{\SLxThirty}{\SLAxisZero+\SLAxisLength}
+\coordinate (SLP669p3) at (\SLxThree,\SLAxisY);
+\coordinate (SLP669p10) at (\SLxTen,\SLAxisY);
+\coordinate (SLP669p30) at (\SLxThirty,\SLAxisY);
+
+\node[font=\fontsize{10.1pt}{12.1pt}\selectfont\bfseries,text=SLBlue]
+  at (-3.25,3.50) {总浓度参数：严格线性 $\alpha_0$ 轴};
+\node[draw=SLRule,fill=white,rounded corners=2pt,text width=55mm,
+  inner xsep=2.2mm,inner ysep=1.2mm] at (-3.25,2.55)
+  {$\boldsymbol m=(0.5,0.3,0.2)$ 固定，$\boldsymbol\alpha=\alpha_0\boldsymbol m$；\\
+   轴上距原点的位置严格按 $0:3:10:30$ 线性。};
+\node[anchor=west,text=SLGold] at (-5.25,1.65)
+  {圆点·点线：$\alpha_0=3,\quad \boldsymbol\alpha=(1.5,0.9,0.6)$};
+\node[anchor=west,text=SLTeal] at (-5.25,1.05)
+  {方点·虚线：$\alpha_0=10,\quad \boldsymbol\alpha=(5,3,2)$};
+\node[anchor=west,text=SLBlue] at (-5.25,.45)
+  {三角点·实线：$\alpha_0=30,\quad \boldsymbol\alpha=(15,9,6)$};
+\draw[-{Stealth[length=1.9mm]},draw=SLRule,line width=.82pt]
+  (\SLAxisZero,\SLAxisY)--({\SLAxisZero+\SLAxisLength+.28},\SLAxisY)
+  node[right=2pt] {$\alpha_0$};
+\foreach \SLtick in {0,3,10,20,30}{%
+  \pgfmathsetmacro{\SLtickx}{\SLAxisZero+\SLAxisLength*\SLtick/30}
+  \draw[draw=SLRule,line width=.55pt] (\SLtickx,{ \SLAxisY-.07})--(\SLtickx,{ \SLAxisY+.07});
+  \node[anchor=north] at (\SLtickx,{\SLAxisY-.10}) {$\SLtick$};}
+\fill[SLGold] (SLP669p3) circle (2.9pt);
+\node[draw=SLTeal,fill=SLTeal,rectangle,minimum size=5.8pt,inner sep=0pt] at (SLP669p10) {};
+\path[fill=SLBlue,draw=SLBlue]
+  (\SLxThirty,{\SLAxisY+.09})--
+  ({\SLxThirty-.085},{\SLAxisY-.065})--
+  ({\SLxThirty+.085},{\SLAxisY-.065})--cycle;
+\node[font=\fontsize{10.1pt}{12.1pt}\selectfont\bfseries,text=SLBlue]
+  at (3.15,3.28) {同一单纯形：均值不动，协方差收缩};
+\begin{scope}[shift={(1.10,-.60)}]
+  \fill[SLBlueBG] (0,0)--(4,0)--(2,3.464101615138)--cycle;
+  \draw[draw=SLBlue,line width=.82pt] (0,0)--(4,0)--(2,3.464101615138)--cycle;
+  \def\SLmux{1.6}
+  \def\SLmuy{0.692820323028}
+  % Exact lower-triangular Cholesky maps at Mahalanobis radius 0.8.
+  \begin{scope}[cm={.8*.871779788708,.8*.079471941424,0,.8*.688247201612,(\SLmux,\SLmuy)}]
+    \fill[SLGold,fill opacity=.07] (0,0) circle (1);
+    \draw[draw=SLGold,line width=.86pt,densely dotted] (0,0) circle (1);
+  \end{scope}
+  \begin{scope}[cm={.8*.525702992538,.8*.047923383830,0,.8*.415028678320,(\SLmux,\SLmuy)}]
+    \draw[draw=SLTeal,line width=.86pt,densely dashed] (0,0) circle (1);
+  \end{scope}
+  \begin{scope}[cm={.8*.313152544504,.8*.028547164084,0,.8*.247225693029,(\SLmux,\SLmuy)}]
+    \draw[draw=SLBlue,line width=.86pt,solid] (0,0) circle (1);
+  \end{scope}
+  % These are the transformed (-1,0) points: actual named ellipse boundaries.
+  \coordinate (SLP669e3west) at
+    ({\SLmux-.8*.871779788708},{\SLmuy-.8*.079471941424});
+  \coordinate (SLP669e10west) at
+    ({\SLmux-.8*.525702992538},{\SLmuy-.8*.047923383830});
+  \coordinate (SLP669e30west) at
+    ({\SLmux-.8*.313152544504},{\SLmuy-.8*.028547164084});
+  \draw[draw=SLRule,line width=.76pt] (\SLmux,\SLmuy) circle (3.1pt);
+  \draw[draw=SLRule,line width=.76pt] ({\SLmux-.085},\SLmuy)--({\SLmux+.085},\SLmuy);
+  \draw[draw=SLRule,line width=.76pt] (\SLmux,{\SLmuy-.085})--(\SLmux,{\SLmuy+.085});
+  \node[fill=white,rounded corners=1pt,inner sep=1.5pt] (SLP669meanlabel) at (2.72,1.43)
+    {$\mathbb E[\boldsymbol\Theta]=\boldsymbol m=(.5,.3,.2)$};
+  \draw[-{Stealth[length=1.6mm]},draw=SLRule,line width=.52pt]
+    (SLP669meanlabel.south west) -- (\SLmux,\SLmuy);
+  \node[anchor=south west,inner sep=1.5pt] at (0,0) {$(1,0,0)$};
+  \node[anchor=south east,inner sep=1.5pt] at (4,0) {$(0,1,0)$};
+  \node[anchor=north,inner sep=1.5pt] at (2,3.464101615138) {$(0,0,1)$};
+\end{scope}
+
+% Each arrow starts at the true linear-axis point and ends on the matching ellipse stroke.
+\draw[-{Stealth[length=1.8mm]},draw=SLGold,line width=.70pt,densely dotted]
+  (SLP669p3) .. controls (-3.75,-.58) and (.30,-.46) .. (SLP669e3west);
+\draw[-{Stealth[length=1.8mm]},draw=SLTeal,line width=.70pt,densely dashed]
+  (SLP669p10) .. controls (-2.80,-.49) and (.75,-.38) .. (SLP669e10west);
+\draw[-{Stealth[length=1.8mm]},draw=SLBlue,line width=.70pt,solid]
+  (SLP669p30) .. controls (-.20,-.38) and (1.35,-.28) .. (SLP669e30west);
+
+\draw[draw=SLGold,line width=.86pt,densely dotted] (4.72,1.52)--(5.25,1.52);
+\node[anchor=west,text=SLGold] at (5.32,1.52) {$\alpha_0=3$};
+\draw[draw=SLTeal,line width=.86pt,densely dashed] (4.72,1.02)--(5.25,1.02);
+\node[anchor=west,text=SLTeal] at (5.32,1.02) {$\alpha_0=10$};
+\draw[draw=SLBlue,line width=.86pt,solid] (4.72,.52)--(5.25,.52);
+\node[anchor=west,text=SLBlue] at (5.32,.52) {$\alpha_0=30$};
+\node[draw=SLRule,fill=white,rounded corners=2pt,text width=42mm,
+  inner xsep=2.2mm,inner ysep=1.2mm] at (3.40,2.30)
+  {$0.8\sigma$ 协方差椭圆；不是密度等高线，也不是置信域。};
+
+\node[draw=SLRule,fill=white,rounded corners=2pt,text width=140mm,
+  inner xsep=2.6mm,inner ysep=1.4mm] at (.15,-2.03)
+  {$\operatorname{Var}(\Theta_i)=\dfrac{m_i(1-m_i)}{\alpha_0+1},\qquad
+    \operatorname{Cov}(\Theta_i,\Theta_j)=-\dfrac{m_im_j}{\alpha_0+1},\quad i\ne j$\\
+   $x=4\theta_2+2\theta_3,\ y=2\sqrt3\,\theta_3,\qquad
+    \Sigma_{xy}(\alpha_0)=\dfrac1{\alpha_0+1}
+    \begin{pmatrix}3.04&0.277128129211\\0.277128129211&1.92\end{pmatrix}$\\
+   $(\boldsymbol z-\boldsymbol\mu)^\mathsf T\Sigma_{xy}^{-1}
+    (\boldsymbol z-\boldsymbol\mu)=0.8^2$；面积比 $1:4/11:4/31$。};
+\end{tikzpicture}
+\captionsetup{width=.96\linewidth}
+\caption{固定均值 $\boldsymbol m=(0.5,0.3,0.2)$ 时，增大总浓度 $\alpha_0$ 不移动均值，却使方差和负协方差按 $1/(\alpha_0+1)$ 收缩。}
+\label{fig:V5-C05-concentration-mean}
+\end{figure}
+\endgroup

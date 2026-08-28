@@ -1,0 +1,41 @@
+{
+  "schema": "P657_R111_SA2_READONLY_RESEAL_AUDIT_V1",
+  "handoff_id": "C-FIG-P657-01-R111-SA2-R168-READONLY-RESEAL-V1",
+  "old_root_resolved": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_v1",
+  "new_root_resolved": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_reseal_v1",
+  "business_decision": "SA2_NO_SOURCE_CHANGE_READY_FOR_FRESH_SA1",
+  "old_material_rows": 487,
+  "copied_material_identity_mismatch": 0,
+  "payload_count": 489,
+  "payload_manifest_gate": {
+    "manifest_rows": 489,
+    "expected_file_count": 490,
+    "actual_file_count": 490,
+    "duplicate_paths": 0,
+    "missing_paths": 0,
+    "extra_paths": 0,
+    "bytes_mismatch": 0,
+    "sha256_mismatch": 0,
+    "last_write_ticks_mismatch": 0
+  },
+  "hygiene_before_seal": {
+    "json_parse_failures": 0,
+    "csv_parse_failures": 0,
+    "ads_count": 0,
+    "cache_pyc_count": 0,
+    "reparse_count": 0
+  },
+  "readonly_gate_before_this_control_move": {
+    "file_count": 490,
+    "readonly_file_count": 490,
+    "directory_count_including_root": 10,
+    "readonly_directory_count_including_root": 10,
+    "writable_file_count": 0,
+    "writable_directory_count_including_root": 0
+  },
+  "old_controls_copied": 0,
+  "invocation_ordinal": 1,
+  "retry_count": 0,
+  "next_control_move": "SEAL_AUDIT.json moved from outside root as read-only file",
+  "final_marker_contract": "WRITE_STOPPED precreated outside root, read-only, strict-latest, moved as unique final root-content operation"
+}

@@ -1,0 +1,15 @@
+AUDIT_ID,source_construct,source_declared_pt,effective_pt,pdf_extracted_pt,D_over_E_or_ratio,R168_status,manual_reviewer,manual_decision,manual_note
+F001,slfig-FIG-P608-01 every-node font,9.6,9.6,9.564,0.9963,BASELINE_CLEAR,SA3_R105_FRESH_ISOLATED,PASS,No transform-shape or graphic scale reduces text; annotation CJK ink height 34-35 px.
+F002,tick-label style,9.6,9.6,9.564,0.9963,TICKS_CLEAR,SA3_R105_FRESH_ISOLATED,PASS,Digits have 26-27 px ink height; punctuation is peer-calibrated separately.
+F003,label style including x/y labels,10.8,10.8,10.760,0.9963,AXIS_LABEL_CLEAR,SA3_R105_FRESH_ISOLATED,PASS,Base math X has 30 px ink; xlabel t has 28 px ink.
+F004,title style,10.8,10.8,10.760,0.9963,TITLE_CLEAR,SA3_R105_FRESH_ISOLATED,PASS,CJK title ink 38-40 px and base math X 30 px; visual emphasis is balanced.
+F005,warm-up node local font,9.6,9.6,9.564,0.9963,ANNOTATION_CLEAR,SA3_R105_FRESH_ISOLATED,PASS,CJK 34 px; base t 25 px; digits 26 px; no crowding.
+F006,retained-sample node local font,9.6,9.6,9.564,0.9963,ANNOTATION_CLEAR,SA3_R105_FRESH_ISOLATED,PASS,CJK 35 px; base t 25 px; digits 26-27 px; no crowding.
+F007,target-value node local font,9.6,9.6,9.564,0.9963,ANNOTATION_CLEAR,SA3_R105_FRESH_ISOLATED,PASS,Teal CJK 35 px and digit 2 is 26 px; unobstructed in color and grayscale.
+F008,slfigTraceScriptT script-style t,7.56,7.56,7.532,0.9963,R168_ADVISORY_SCRIPTSTYLE,SA3_R105_FRESH_ISOLATED,PASS,Manual source script styling is advisory under R168; both visible t glyphs are complete and clearly readable at 21 px without imbalance.
+F009,natural TeX subscripts in X_t and overline-X_6:t,7.56,7.56,7.532,0.9963,NATURAL_SCRIPT_CLEAR,SA3_R105_FRESH_ISOLATED,PASS,All script glyphs measure 18-22 px and remain visually distinct.
+F010,slfigTraceTallEq two-rule math relation,NA,NA,PATH_RULE,NA,MATH_RELATION_CLEAR,SA3_R105_FRESH_ISOLATED,PASS,Four path rules form two unmistakable equals signs; 1x and 8x review shows neither clipping nor semantic ambiguity.
+F011,comma calibration U+002C,9.6,9.6,9.564,H=1.0000;AREA=1.0000,PEER_CALIBRATED,SA3_R105_FRESH_ISOLATED,PASS,G0009 G0011 G0019 G0021 each have H=10 px and area=42 px.
+F012,ellipsis calibration U+2026,9.6,9.6,9.564,H=1.0000;AREA=1.0000,PEER_CALIBRATED,SA3_R105_FRESH_ISOLATED,PASS,G0010 and G0020 each have H=6 px and area=74 px.
+F013,decimal-point calibration U+002E,9.6,9.6,9.564,H=1.0000;AREA=1.0000,PEER_CALIBRATED,SA3_R105_FRESH_ISOLATED,PASS,G0039 G0042 G0046 each have H=6 px and area=27 px.
+F014,resizebox-scalebox-scale-transform-shape scan,ABSENT,ABSENT,NA,NA,NO_SCALING_OVERRIDE,SA3_R105_FRESH_ISOLATED,PASS,Source contains no resizebox scalebox graphic scale or transform-shape override.

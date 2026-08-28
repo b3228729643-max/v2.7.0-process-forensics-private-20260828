@@ -1,0 +1,7 @@
+endpoint_id,transition,reviewer,overlay,core_mask_intersection_px,core_mask_clearance_px,decision,note
+E01,0->1,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E01_0_1_arrow_to_target.png,1,0.0000,PASS,Observed continuous arrowhead arrival at target border at native and 8x.
+E02,1->2,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E02_1_2_arrow_to_target.png,0,0.0000,PASS,Observed adjacent core masks and continuous arrowhead arrival at target border at native and 8x.
+E03,2->3,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E03_2_3_arrow_to_target.png,2,0.0000,PASS,Observed continuous arrowhead arrival at target border at native and 8x.
+E04,3->4,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E04_3_4_arrow_to_target.png,0,0.0000,PASS,Observed adjacent core masks and continuous arrowhead arrival at target border at native and 8x.
+E05,4->5,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E05_4_5_arrow_to_target.png,0,1.8284,PASS,Observed visually continuous arrowhead arrival; sub-2px core-mask gap is bridged by low-contrast antialias pixels and is not a visible discontinuity.
+E06,5->T,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E06_5_T_arrow_to_target.png,0,2.6056,PASS,Observed visually continuous arrowhead arrival; 2.606px core-mask gap is bridged by low-contrast antialias pixels and is not a visible discontinuity.

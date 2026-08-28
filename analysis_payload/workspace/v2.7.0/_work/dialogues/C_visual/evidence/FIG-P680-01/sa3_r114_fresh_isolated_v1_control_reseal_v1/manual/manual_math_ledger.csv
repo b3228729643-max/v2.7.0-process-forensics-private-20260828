@@ -1,0 +1,4 @@
+MATH_ID,LOCATION,EXPECTED_MEANING,OBSERVED_RENDER,SOURCE_CONTEXT_CHECK,WRONG_CODEPOINT_OR_MATH,MANUAL_VERDICT,POST_OBSERVATION_NOTE
+M01,T05,"theta and varphi are random variables in complete Bayes LDA","U+1D703 theta and U+1D711 varphi are distinct, italic, and followed by 均为随机变量",matches_figure_source_line_18_and_chapter_model_definition,NO,CLEAR,"No missing subscript, operator, or punctuation."
+M02,T07,"varphi is an estimated parameter in the point-parameter LDA variant","U+1D711 varphi is shown once and followed by 作为待估参数",matches_figure_source_line_19_and_chapter_lines_238_to_262,NO,CLEAR,"The point-parameter branch is not mislabeled as the full Bayes posterior."
+M03,T10,"collapsed Gibbs integrates out theta and varphi","积分消去 followed by U+1D703 theta comma U+1D711 varphi",matches_figure_source_line_21_and_chapter_dependency_route,NO,CLEAR,"Symbol order and inference claim agree with the surrounding chapter text."

@@ -1,0 +1,14 @@
+gate_id,reviewer,evidence_basis,r168_state,hard_candidate,note
+HG01_IDENTITY,/root/sa2_fig_p641_r110_r168_readonly_v1,Official PDF and source bytes plus SHA256,CLEAR,NO,Both required identities match exactly.
+HG02_LOCALIZATION,/root/sa2_fig_p641_r110_r168_readonly_v1,Caption search plus official page inspection,CLEAR,NO,Fig33.8 is independently located on physical 691 printed 678.
+HG03_VISIBLE_OBJECTS,/root/sa2_fig_p641_r110_r168_readonly_v1,29 foreground objects plus 7 background fills,CLEAR,NO,No visible foreground path or text line is unassigned.
+HG04_UNORDERED_PAIRS,/root/sa2_fig_p641_r110_r168_readonly_v1,all_unordered_pairs.csv,CLEAR,NO,N=29 gives exactly 406 unique unordered pairs.
+HG05_TEXT_GLYPHS,/root/sa2_fig_p641_r110_r168_readonly_v1,162-codepoint denominator plus opened contact sheets,CLEAR,NO,No missing tofu wrong or unreadable glyph is visible.
+HG06_FONT_HARMONY,/root/sa2_fig_p641_r110_r168_readonly_v1,source audit and four views,CLEAR_WITH_ADVISORY,NO,T08 is source 9.2pt but remains readily readable and balanced; R168 makes the numeric shortfall advisory only.
+HG07_CLIPPING,/root/sa2_fig_p641_r110_r168_readonly_v1,full page figure crop standalone and mask extents,CLEAR,NO,CLIP_PIXEL_COUNT=0.
+HG08_OVERLAP,/root/sa2_fig_p641_r110_r168_readonly_v1,406 pairs and 37 relation ROIs,CLEAR,NO,OVERLAP_CANDIDATE=234 pixels and OVERLAP_ILLEGAL=0 pixels.
+HG09_GEOMETRY,/root/sa2_fig_p641_r110_r168_readonly_v1,node text clearances and graph topology,CLEAR,NO,Labels are centered; borders and connections are clean; no malformed geometry.
+HG10_SEMANTICS,/root/sa2_fig_p641_r110_r168_readonly_v1,source graph and chapter caption context,CLEAR,NO,Markov blanket alpha z y and retained factors p(theta|alpha) p(z,y|theta) are correct; p(alpha) cancels.
+HG11_GRAYSCALE,/root/sa2_fig_p641_r110_r168_readonly_v1,grayscale crops opened,CLEAR,NO,Dashed surrounds and hierarchy remain distinguishable.
+HG12_PAGE_INTEGRATION,/root/sa2_fig_p641_r110_r168_readonly_v1,full_page_200dpi opened,CLEAR,NO,Figure placement and caption integrate naturally with the page.
+HG13_ISOLATION,/root/sa2_fig_p641_r110_r168_readonly_v1,execution ledger,CLEAR,NO,TeX runs source writes builds Git reads second role and external evidence reads all remained zero.

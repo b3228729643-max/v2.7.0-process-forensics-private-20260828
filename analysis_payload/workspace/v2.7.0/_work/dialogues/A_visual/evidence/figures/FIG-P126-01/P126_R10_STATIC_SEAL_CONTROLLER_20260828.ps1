@@ -1,0 +1,30 @@
+$ErrorActionPreference='Stop'
+Set-StrictMode -Version Latest
+$Root='D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\dialogues\A_visual\evidence\figures\FIG-P126-01\STRICT_R10_SA2_STATIC_TWO_HARD_PATCH_R115_20260828'
+$Stage='D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\dialogues\A_visual\evidence\figures\FIG-P126-01\P126_R10_STATIC_WRITE_STOPPED_STAGE_20260828.tmp'
+$Result='D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\dialogues\A_visual\evidence\figures\FIG-P126-01\P126_R10_STATIC_SEAL_CONTROLLER_RESULT_20260828.json'
+function Hash([string]$p){(Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash.ToUpperInvariant()}
+function Rel([string]$p){[IO.Path]::GetRelativePath($Root,$p).Replace('\','/')}
+function Tick([datetime]$d){$d.ToUniversalTime().Ticks}
+function FileRO([string]$p){(Get-Item -LiteralPath $p -Force).IsReadOnly=$true}
+function DirRO([string]$p){$i=Get-Item -LiteralPath $p -Force;$i.Attributes=$i.Attributes -bor [IO.FileAttributes]::ReadOnly}
+function Snapshot(){
+  $r=[Collections.Generic.List[string]]::new()
+  foreach($f in @(Get-ChildItem -LiteralPath $Root -Recurse -Force -File|Sort-Object FullName)){$r.Add(('F`t{0}`t{1}`t{2}`t{3}`t{4}`t{5}' -f (Rel $f.FullName),$f.Length,(Hash $f.FullName),(Tick $f.CreationTimeUtc),(Tick $f.LastWriteTimeUtc),[int]$f.Attributes))}
+  foreach($d in @((Get-Item -LiteralPath $Root -Force))+@(Get-ChildItem -LiteralPath $Root -Recurse -Force -Directory|Sort-Object FullName)){$rp=if($d.FullName-eq$Root){'.'}else{Rel $d.FullName};$r.Add(('D`t{0}`t{1}`t{2}`t{3}'-f $rp,(Tick $d.CreationTimeUtc),(Tick $d.LastWriteTimeUtc),[int]$d.Attributes))}
+  $b=[Text.UTF8Encoding]::new($false).GetBytes((($r-join"`n")+"`n"));[Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($b))
+}
+if(Test-Path -LiteralPath $Stage){throw'STAGE_EXISTS'};if(Test-Path -LiteralPath $Result){throw'RESULT_EXISTS'}
+foreach($n in @('PAYLOAD_MANIFEST.csv','SEAL_AUDIT.json','WRITE_STOPPED')){if(Test-Path -LiteralPath(Join-Path $Root $n)){throw"CONTROL_EXISTS:$n"}}
+$files=@(Get-ChildItem -LiteralPath $Root -Recurse -Force -File|Sort-Object FullName);if($files.Count-ne10){throw"PAYLOAD_COUNT:$($files.Count)"}
+$rows=@($files|ForEach-Object{[pscustomobject][ordered]@{relative_path=Rel $_.FullName;bytes=[int64]$_.Length;sha256=Hash $_.FullName;creation_time_utc_ticks=Tick $_.CreationTimeUtc;last_write_time_utc_ticks=Tick $_.LastWriteTimeUtc}})
+$manifest=Join-Path $Root 'PAYLOAD_MANIFEST.csv';$rows|Export-Csv -LiteralPath $manifest -NoTypeInformation -Encoding utf8
+$audit=Join-Path $Root 'SEAL_AUDIT.json';$a=[ordered]@{schema='P126_R10_STATIC_SEAL_AUDIT_V1';handoff_id='A-R115-P126-SA2-STATIC-TWO-HARD-PATCH-R10-20260828';status='STATIC_ONLY_NOT_RENDERED_NOT_PASS';static_scope_result='BLOCKED_BY_PREDICTED_DIGIT4_OCCLUSION';payload_count=10;control_count=3;ordinary_count=13;manifest_sha256=Hash $manifest;tex_invocations=0};[IO.File]::WriteAllText($audit,(($a|ConvertTo-Json -Depth 5)+"`n"),[Text.UTF8Encoding]::new($false))
+$pre=@(Get-ChildItem -LiteralPath $Root -Recurse -Force -File);if($pre.Count-ne12){throw'PREMARKER_COUNT'};foreach($f in $pre){FileRO $f.FullName};$ds=@(Get-ChildItem -LiteralPath $Root -Recurse -Force -Directory|Sort-Object{$_.FullName.Length}-Descending);foreach($d in $ds){DirRO $d.FullName};DirRO $Root
+$allDirs=@((Get-Item -LiteralPath $Root -Force))+@(Get-ChildItem -LiteralPath $Root -Recurse -Force -Directory);if(@($pre|Where-Object{-not$_.IsReadOnly}).Count-ne0-or@($allDirs|Where-Object{($_.Attributes-band[IO.FileAttributes]::ReadOnly)-eq0}).Count-ne0){throw'RO_GATE'}
+$max=(@($pre|ForEach-Object{$_.LastWriteTimeUtc.Ticks})+@($allDirs|ForEach-Object{$_.LastWriteTimeUtc.Ticks})|Measure-Object -Maximum).Maximum;$future=[Math]::Max([DateTime]::UtcNow.AddMinutes(5).Ticks,[int64]$max+[TimeSpan]::FromMinutes(2).Ticks)
+$lines=@('SCHEMA=P126_R10_STATIC_WRITE_STOPPED_V1','HANDOFF_ID=A-R115-P126-SA2-STATIC-TWO-HARD-PATCH-R10-20260828','UID=FIG-P126-01','STATUS=STATIC_ONLY_NOT_RENDERED_NOT_PASS','STATIC_SCOPE_RESULT=BLOCKED_BY_PREDICTED_DIGIT4_OCCLUSION','PAYLOAD_COUNT=10','CONTROL_COUNT=3','ORDINARY_COUNT=13','SOURCE_AFTER_SHA256=E8803BC9E2347840D7EA0D482D83C20F43FD62DA8023F37C49168241B48AAF81','MANIFEST_SHA256='+(Hash $manifest),'SEAL_AUDIT_SHA256='+(Hash $audit),'TEX_INVOCATIONS=0','CONTROLLER_INVOCATION_COUNT=1','CONTROLLER_RETRY_COUNT=0','POSTMARKER_WRITES=0')
+if(@($lines|Where-Object{$_-notmatch'^[A-Z0-9_]+=[^=\t\r\n]+$'}).Count-ne0){throw'MARKER_SYNTAX'};[IO.File]::WriteAllLines($Stage,$lines,[Text.UTF8Encoding]::new($false));FileRO $Stage;[IO.File]::SetLastWriteTimeUtc($Stage,[DateTime]::new($future,[DateTimeKind]::Utc));FileRO $Stage
+$marker=Join-Path $Root 'WRITE_STOPPED';Move-Item -LiteralPath $Stage -Destination $marker
+$s1=Snapshot;Start-Sleep -Milliseconds 250;$s2=Snapshot;if($s1-ne$s2){throw'POSTMARKER_CHANGE'};$ff=@(Get-ChildItem -LiteralPath $Root -Recurse -Force -File);$dd=@((Get-Item -LiteralPath $Root -Force))+@(Get-ChildItem -LiteralPath $Root -Recurse -Force -Directory);$m=Get-Item -LiteralPath $marker;$after=@($ff+$dd|Where-Object{$_.FullName-ne$m.FullName-and$_.LastWriteTimeUtc.Ticks-ge$m.LastWriteTimeUtc.Ticks});$mx=($ff+$dd|Where-Object{$_.FullName-ne$m.FullName}|ForEach-Object{$_.LastWriteTimeUtc.Ticks}|Measure-Object -Maximum).Maximum;if($ff.Count-ne13-or@($ff|Where-Object{-not$_.IsReadOnly}).Count-ne0-or@($dd|Where-Object{($_.Attributes-band[IO.FileAttributes]::ReadOnly)-eq0}).Count-ne0-or$after.Count-ne0){throw'FINAL_GATE'}
+$o=[ordered]@{schema='P126_R10_STATIC_SEAL_CONTROLLER_RESULT_V1';exit=0;invocation_count=1;retry_count=0;payload_count=10;control_count=3;ordinary_count=13;directory_count_including_root=$dd.Count;readonly_files=$ff.Count;readonly_dirs=$dd.Count;marker_sha256=Hash $marker;marker_ticks=$m.LastWriteTimeUtc.Ticks;strict_latest_margin_ticks=[int64]$m.LastWriteTimeUtc.Ticks-[int64]$mx;at_or_after=0;postmarker_snapshot1=$s1;postmarker_snapshot2=$s2;postmarker_writes=0};[IO.File]::WriteAllText($Result,(($o|ConvertTo-Json -Depth 5)+"`n"),[Text.UTF8Encoding]::new($false));$o|ConvertTo-Json -Compress

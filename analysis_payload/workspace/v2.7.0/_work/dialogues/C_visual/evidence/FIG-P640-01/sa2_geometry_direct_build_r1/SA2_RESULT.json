@@ -1,0 +1,60 @@
+{
+  "handoff_id": "C-FIG-P640-01-SA2-GEOMETRY-DIRECT-BUILD-R1",
+  "uid": "FIG-P640-01",
+  "role": "SA2",
+  "candidate_kind": "ONE_DIRECT_LUALATEX_STANDALONE",
+  "result": "FAIL_TO_SA2",
+  "local_pass_claimed": false,
+  "generated_local": "2026-08-26T04:47:11.5939398+08:00",
+  "source": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C04\\fig_v5_c04_mixing_rho_comparison.tex",
+    "bytes": 2717,
+    "sha256": "FFAE906011BBAD21FD1AD53997693934828394C2AE516649CCCF8DA5938D9B89",
+    "worktree_head": "95ab454ce5846daba9b33dda2d5f68a6f993a1ef",
+    "diff_scope": "one authorized source file; one insertion and one deletion; ymin=0 changed to ymin=-.04"
+  },
+  "wrapper": {
+    "bytes": 402,
+    "sha256": "495C5D0D36BE60B82BDB44AF4E352960680416785F991F8F0A15F0E495ABDC5C"
+  },
+  "build": {
+    "pid": 24496,
+    "invocation_count": 1,
+    "retry_count": 0,
+    "natural_exit": true,
+    "exit_code": 0,
+    "success_hard_gate": true,
+    "post_tex_process_count": 0
+  },
+  "pdf": {
+    "page_count": 1,
+    "bytes": 40373,
+    "sha256": "0ECC4B13E75A981AD23E7EBCA1CB2BAEBEF83D85EEE3A4518395C54AC296B87A"
+  },
+  "denominators": {
+    "objects": 40,
+    "glyphs_including_spaces": 160,
+    "glyphs_nonspace": 145,
+    "unordered_pairs": 780,
+    "critical_pairs": 76,
+    "clips": 40,
+    "views": 9,
+    "hard_gates": 15
+  },
+  "hard_failures": [
+    {
+      "gate_id": "H09_P099_TICK_MARKER_CLEARANCE",
+      "pair_id": "PAIR_0779",
+      "object_a": "G08",
+      "object_b": "G10",
+      "reason": "The .99 vertical x tick penetrates the lower ring of the open endpoint marker.",
+      "axis_marker_overlap_pixel_count_native_300dpi": 6,
+      "overlap_bbox_inclusive_px_native_300dpi": [2090, 759, 2091, 761]
+    }
+  ],
+  "r168_font_route": "PASS; no hard font failure; micro-ratio metadata and raster differences are advisory only",
+  "next_role": "SA2",
+  "tex_retry_authorized": false,
+  "source_commit_authorized": false,
+  "central_state_or_inventory_written": false
+}

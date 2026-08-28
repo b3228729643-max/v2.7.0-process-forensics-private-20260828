@@ -1,0 +1,10 @@
+group_id,scope,pair_count,opened_evidence,manual_decision,note
+PVG-01,全部C90取2无序pair分母,4005,all_unordered_pairs_matrix_10x.png|all_unordered_pairs.csv,PASS,矩阵实际打开；无红色失败单元且CSV行数严格等于4005
+PVG-02,独立TEXT-TEXT,2277,all_unordered_pairs.csv|semantic_relationship_overlay_1x.png,PASS,最小bbox净空33.242px高于4px；语义父对象映射无误
+PVG-03,TEXT或FORMULA到线箭头标记,1335,all_unordered_pairs.csv|critical_pairs_contact_01.png,PASS,最小raw-mask净空5px高于3px；5个三角注释critical逐一打开
+PVG-04,节点文字到final-visible边框,14,all_unordered_pairs.csv|critical_pairs_contact_01.png|critical_pairs_contact_02.png|critical_pairs_contact_03.png,PASS,最小净空13px高于5px；13个critical逐一打开
+PVG-05,非相交GRAPHIC-GRAPHIC,18,all_unordered_pairs.csv|graphic_contact_sheet_01.png|graphic_contact_sheet_02.png|graphic_contact_sheet_03.png,PASS,所有独立图形pair无非法交叠
+PVG-06,同父对象设计关系,264,all_unordered_pairs_matrix_10x.png|glyph_contact_sheet_05.png|glyph_contact_sheet_09.png,PASS,16个有像素交集的pair均为公式字偶或轴线-刻度-箭头设计连接；无缺损遮挡
+PVG-07,坐标系统有意连接,96,all_unordered_pairs.csv|graphic_contact_sheet_02.png|graphic_contact_sheet_03.png,PASS,4个有交集pair为轴交点或曲线端点与轴的坐标几何连接
+PVG-08,速率三角与曲线构造关系,1,PAIR-088-089_1x.png|PAIR-088-089_8x_nearest.png|graphic_contact_sheet_03.png,PASS,36个交集像素位于三角斜边与理论曲线的有意重合；语义表示样本×4与误差÷2
+PVG-09,图像边与裁切,71,text_to_image_edge_clearance.csv|standalone_300dpi.png,PASS,文字到chart crop边最小20px高于6px；CLIP_PIXEL_COUNT=0

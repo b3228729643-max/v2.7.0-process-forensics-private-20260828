@@ -1,0 +1,58 @@
+ 356: \input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_gibbs_vs_mh.tex}
+ 357: 
+ 358: \phantomsection\label{struct:V5-C04-CH16}
+ 359: \textbf{优化解释及不适用边界。}标准Gibbs抽样没有要逐轮单调下降的目标函数，因此“优化收敛率”“局部最优点”和“每步改进损失”不适用于本算法。若把条件抽样改成条件众数，会得到迭代条件众数或坐标上升方法；其输出是点估计，不能替代后验样本。这里唯一可作设计优化的是分块、参数化与实现成本，而不是把随机状态更新解释成确定性下降。
+ 360: 
+ 361: \phantomsection\label{struct:V5-C04-CH17}
+ 362: \textbf{图形辅助。}图\ref{fig:V5-C04-coordinate-sweep}强调轮内新旧坐标的混合使用；图\ref{fig:V5-C04-gibbs-axis-path}强调坐标方向路径；图\ref{fig:V5-C04-gibbs-vs-mh}强调精确条件提议与一般提议的接受规则。三图分别服务于更新顺序、几何混合与算法边界，不能互相替代。
+ 363: 
+ 364: \phantomsection\label{struct:V5-C04-CH18}
+ 365: \begin{proposition}[二元正态Gibbs的边缘递推]\label{prop:V5-C04-bivariate-normal}
+ 366: 设
+ 367: \[
+ 368: (X_1,X_2)^\mathsf T\sim
+ 369: N\!\left(0,
+ 370: \begin{pmatrix}1&\rho\\ \rho&1\end{pmatrix}\right),
+ 371: \qquad |\rho|<1.
+ 372: \]
+ 373: 按$x_1$后$x_2$的顺序系统扫描，并令$\sigma=\sqrt{1-\rho^2}$。则
+ 374: \begin{align}
+ 375: X_1^{(t)}&=\rho X_2^{(t-1)}+\sigma\varepsilon_{1t},\\
+ 376: X_2^{(t)}&=\rho X_1^{(t)}+\sigma\varepsilon_{2t}
+ 377: =\rho^2X_2^{(t-1)}+\xi_t,
+ 378: \end{align}
+ 379: 其中$\varepsilon_{1t},\varepsilon_{2t}$独立同分布于$N(0,1)$，$\xi_t$独立于过去且$\operatorname{Var}(\xi_t)=1-\rho^4$。在平稳状态下，$X_2$的滞后$k$自相关为$\rho^{2k}$，从而
+ 380: \[
+ 381: \tau_{\mathrm{int}}=\frac{1+\rho^2}{1-\rho^2},
+ 382: \qquad
+ 383: \frac{N_{\mathrm{eff}}}{N}=\frac{1-\rho^2}{1+\rho^2}.
+ 384: \]
+ 385: \end{proposition}
+ 386: % KNOWLEDGE-PLAN: KN-V5-C33-PROOF-004 L1
+ 387: \paragraph{读前自检：证明：二元正态Gibbs的边缘递推。}二元正态Gibbs按$x_1$后$x_2$扫描且$|\rho|<1$；请把两条满条件更新代入，得到$X_2^{(t)}=\rho^2X_2^{(t-1)}+\xi_t$，再算$\operatorname{Var}(\xi_t)=1-\rho^4$并核对滞后相关为$\rho^{2k}$。\par
+ 388: 
+ 389: \begin{proof}
+ 390: 联合密度指数中的二次型满足
+ 391: \[
+ 392: x_1^2-2\rho x_1x_2+x_2^2
+ 393: =(x_1-\rho x_2)^2+(1-\rho^2)x_2^2.
+ 394: \]
+ 395: 固定$x_2$后，与$x_1$有关的部分给出
+ 396: $X_1\mid X_2=x_2\sim N(\rho x_2,1-\rho^2)$；交换坐标得到
+ 397: $X_2\mid X_1=x_1\sim N(\rho x_1,1-\rho^2)$。代入两步更新便得到边缘递推，其中
+ 398: \[
+ 399: \xi_t=\sigma(\rho\varepsilon_{1t}+\varepsilon_{2t}),
+ 400: \qquad
+ 401: \operatorname{Var}(\xi_t)
+ 402: =(1-\rho^2)(1+\rho^2)=1-\rho^4.
+ 403: \]
+ 404: 这是系数为$\rho^2$的平稳AR(1)递推，所以$\operatorname{Corr}(X_2^{(t)},X_2^{(t+k)})=\rho^{2k}$。对几何级数求和得到
+ 405: $1+2\sum_{k\ge1}\rho^{2k}=(1+\rho^2)/(1-\rho^2)$，再按ESS定义取倒数比例。
+ 406: \end{proof}
+ 407: 
+ 408: 图\ref{fig:V5-C04-bivariate-normal-conditionals}显示两个正态满条件切片。
+ 409: \input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_bivariate_normal_conditionals.tex}
+ 410: % v2.6 layout: former forced clear removed; natural pagination.
+ 411: 图\ref{fig:V5-C04-mixing-rho-comparison}使用上述解析自相关而非伪造轨迹，比较不同$|\rho|$下的混合速度。
+ 412: \input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_mixing_rho_comparison.tex}
+ 413: \FloatBarrier

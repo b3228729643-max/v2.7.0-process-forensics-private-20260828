@@ -1,0 +1,3 @@
+# R3 target-mask method
+
+Each glyph starts with an official-PDF rawdict character box, font, colour and text operator. The canonical raster is Poppler's direct R94 300dpi page render.  Target foreground is projected along the known source-colour-to-opaque-white segment with the mandated >=20/255 contrast floor; this deliberately does not use a tight-bbox modal-background estimate.  Every glyph has a native raw mask, zero-halo record, final-visible mask and one red-only target overlay triptych.  `foreign_px` is computed independently for each glyph from non-target contrast pixels in its immutable raw character box.

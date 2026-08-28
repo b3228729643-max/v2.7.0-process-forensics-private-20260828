@@ -1,0 +1,40 @@
+{
+  "handoff_id": "A-R111-P033-SA1-FRESH-ISOLATED-20260827",
+  "uid": "FIG-P033-01",
+  "candidate": "R111",
+  "coordinator_verdict": "CONTENT_PASS_DIRECTION_PRESERVED_ROOT_REJECT_WRITE_STOPPED_PLACEHOLDERS",
+  "sa3_authorized": false,
+  "evidence_root_readonly": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P033-01\\STRICT_R5_SA1_FRESH_ISOLATED_R111_20260827",
+  "accepted_facts": {
+    "N": 99,
+    "C": 4851,
+    "focused_manual_pairs": 81,
+    "unresolved_pairs": 0,
+    "canonical_illegal_overlap_pixels": 0,
+    "clipping_pixels": 0,
+    "r168_hard_failures": 0,
+    "payload": 43,
+    "controls": 3,
+    "ordinary": 46,
+    "manifest_fs_mismatch": 0,
+    "readonly_files": "46/46",
+    "readonly_directories": "7/7",
+    "write_stopped_latest_margin_ticks": 859637,
+    "postmarker_files": 0
+  },
+  "decisive_failure": {
+    "file": "seal/WRITE_STOPPED.md",
+    "unresolved_placeholder_count": 7,
+    "corrupted_true_declaration_count": 3,
+    "effect": "The final sentinel does not bind resolved seal/report/handoff identities or valid closure booleans."
+  },
+  "prohibited": [
+    "modify or reseal R5 in place",
+    "start SA3",
+    "claim SA1 PASS as centrally accepted",
+    "run TeX",
+    "write business source or Git"
+  ],
+  "requested_next_action": "MAIN_REVIEW_AND_ONE_NEW_EVIDENCE_ONLY_CONTROL_RESEAL_AUTHORIZATION",
+  "coordinator_report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P033-01_R111_R5_COORDINATOR_ROOT_REJECT_20260827.md"
+}

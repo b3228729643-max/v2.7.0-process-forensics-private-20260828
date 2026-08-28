@@ -1,0 +1,27 @@
+{
+  "math_semantics_pass": true,
+  "probability_semantics_pass": true,
+  "text_consistency_pass": true,
+  "checks": [
+    {
+      "CHECK_ID": "TEACHING_DEPENDENCY",
+      "OBSERVED": "inputs expectation/integral, IID and LLN all point to Monte Carlo estimate; diagram deliberately denotes teaching dependency rather than a runtime algorithm",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "METHOD_DISTINCTION",
+      "OBSERVED": "inverse transform and accept-reject are direct-sampling routes; importance sampling retains proposal samples and changes contribution weights; figure body L76 and caption agree",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "DIAGNOSTIC_SCOPE",
+      "OBSERVED": "error/support diagnostics apply across methods; weighted ESS reduces to ordinary sample-count diagnostic for unweighted direct samples, so common outlet is not a false probability claim",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "ARROW_DIRECTION",
+      "OBSERVED": "all arrows point prerequisite -> core -> three parallel methods -> common diagnostic outlet; source footnote explicitly rejects temporal/serial interpretation of border/icon coding",
+      "PASS_FAIL": "PASS"
+    }
+  ]
+}

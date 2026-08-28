@@ -1,0 +1,3057 @@
+{
+  "result": "PASS",
+  "scope": "evidence completeness and parse/open integrity; distinct from figure gate",
+  "figure_gate_result": "FAIL",
+  "expected_actual_match": true,
+  "zero_byte_files": 0,
+  "ads_count": 0,
+  "unsafe_filename_count": 0,
+  "glyph_count": 108,
+  "manual_glyph_ledger_rows": 108,
+  "visual_harmony_rows": 64,
+  "text_text_pair_count": 45,
+  "text_graphic_matrix_count": 140,
+  "cross_panel_pair_count": 12,
+  "text_figure_edge_count": 10,
+  "font_failures": [
+    "F020_G091"
+  ],
+  "relation_failures": 0,
+  "pixel_mask_failures": 0,
+  "low_profile_calibration_failures": 0,
+  "opening_summary": {
+    "expected_file_count": 524,
+    "actual_file_count": 524,
+    "expected_png_count": 488,
+    "opened_png_count": 488,
+    "expected_csv_count": 15,
+    "parsed_csv_count": 15,
+    "expected_json_count": 6,
+    "parsed_json_count": 6,
+    "expected_other_count": 15,
+    "opened_other_count": 15,
+    "png_dimensions": {
+      "after_text_measurement_overlay_300dpi.png": [
+        1980,
+        510
+      ],
+      "calibration/cal_colon_r95_form_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "calibration/cal_colon_r95_form_original_1x.png": [
+        53,
+        56
+      ],
+      "calibration/cal_colon_r95_form_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "calibration/cal_colon_r95_form_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "calibration/cal_dot_r95_page048_mask_only_1x.png": [
+        23,
+        52
+      ],
+      "calibration/cal_dot_r95_page048_original_1x.png": [
+        23,
+        52
+      ],
+      "calibration/cal_dot_r95_page048_target_overlay_1x.png": [
+        23,
+        52
+      ],
+      "calibration/cal_dot_r95_page048_triad_8x_nearest.png": [
+        616,
+        468
+      ],
+      "calibration/colon_form_calibrator_page_native300.png": [
+        2481,
+        3508
+      ],
+      "calibration/r95_page_048_dot_reference_native300.png": [
+        2481,
+        3508
+      ],
+      "contact_sheets/CS001_g001_u5BF9_to_g006_u5408_8x.png": [
+        2816,
+        2028
+      ],
+      "contact_sheets/CS002_g007_u3001_to_g012_u6570_8x.png": [
+        2720,
+        1572
+      ],
+      "contact_sheets/CS003_g013_u5173_to_g018_u5B9A_8x.png": [
+        2816,
+        2028
+      ],
+      "contact_sheets/CS004_g019_u4E49_to_g024_u7B97_8x.png": [
+        2816,
+        2028
+      ],
+      "contact_sheets/CS005_g025_u4E0E_to_g030_u3001_8x.png": [
+        2816,
+        2028
+      ],
+      "contact_sheets/CS006_g031_u91CF_to_g036_u53EF_8x.png": [
+        2816,
+        2028
+      ],
+      "contact_sheets/CS007_g037_u6838_to_g042_u5165_8x.png": [
+        2816,
+        2028
+      ],
+      "contact_sheets/CS008_g043_u3001_to_g048_u636E_8x.png": [
+        2720,
+        1572
+      ],
+      "contact_sheets/CS009_g049_u9006_to_g054_u4EFB_8x.png": [
+        2720,
+        1596
+      ],
+      "contact_sheets/CS010_g055_u52A1_to_g060_u9010_8x.png": [
+        2720,
+        1596
+      ],
+      "contact_sheets/CS011_g061_u9879_to_g066_u56FE_8x.png": [
+        2720,
+        1956
+      ],
+      "contact_sheets/CS012_g067_u0031_to_g072_u8BED_8x.png": [
+        2720,
+        1596
+      ],
+      "contact_sheets/CS013_g073_u8A00_to_g078_u660E_8x.png": [
+        2720,
+        1596
+      ],
+      "contact_sheets/CS014_g079_u5230_to_g084_u7684_8x.png": [
+        2720,
+        1596
+      ],
+      "contact_sheets/CS015_g085_u4F9D_to_g090_u6BCF_8x.png": [
+        2720,
+        1596
+      ],
+      "contact_sheets/CS016_g091_u4E00_to_g096_u8868_8x.png": [
+        2720,
+        1596
+      ],
+      "contact_sheets/CS017_g097_u793A_to_g102_u4F7F_8x.png": [
+        2720,
+        1596
+      ],
+      "contact_sheets/CS018_g103_u7528_to_g108_u3002_8x.png": [
+        2720,
+        1596
+      ],
+      "figure_crop_300dpi.png": [
+        1980,
+        510
+      ],
+      "full_page_200dpi.png": [
+        1654,
+        2339
+      ],
+      "glyphs/g001_u5BF9_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g001_u5BF9_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g001_u5BF9_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g001_u5BF9_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g002_u8C61_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g002_u8C61_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g002_u8C61_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g002_u8C61_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g003_u58F0_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g003_u58F0_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g003_u58F0_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g003_u58F0_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g004_u660E_mask_only_1x.png": [
+        54,
+        74
+      ],
+      "glyphs/g004_u660E_original_1x.png": [
+        54,
+        74
+      ],
+      "glyphs/g004_u660E_target_overlay_1x.png": [
+        54,
+        74
+      ],
+      "glyphs/g004_u660E_triad_8x_nearest.png": [
+        1360,
+        652
+      ],
+      "glyphs/g005_u96C6_mask_only_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g005_u96C6_original_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g005_u96C6_target_overlay_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g005_u96C6_triad_8x_nearest.png": [
+        1312,
+        500
+      ],
+      "glyphs/g006_u5408_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g006_u5408_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g006_u5408_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g006_u5408_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g007_u3001_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g007_u3001_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g007_u3001_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g007_u3001_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g008_u7C7B_mask_only_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g008_u7C7B_original_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g008_u7C7B_target_overlay_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g008_u7C7B_triad_8x_nearest.png": [
+        1312,
+        500
+      ],
+      "glyphs/g009_u578B_mask_only_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g009_u578B_original_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g009_u578B_target_overlay_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g009_u578B_triad_8x_nearest.png": [
+        1312,
+        500
+      ],
+      "glyphs/g010_u4E0E_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g010_u4E0E_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g010_u4E0E_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g010_u4E0E_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g011_u7EF4_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g011_u7EF4_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g011_u7EF4_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g011_u7EF4_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g012_u6570_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g012_u6570_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g012_u6570_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g012_u6570_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g013_u5173_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g013_u5173_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g013_u5173_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g013_u5173_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g014_u7CFB_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g014_u7CFB_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g014_u7CFB_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g014_u7CFB_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g015_u4E0E_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g015_u4E0E_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g015_u4E0E_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g015_u4E0E_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g016_u6620_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g016_u6620_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g016_u6620_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g016_u6620_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g017_u5C04_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g017_u5C04_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g017_u5C04_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g017_u5C04_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g018_u5B9A_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g018_u5B9A_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g018_u5B9A_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g018_u5B9A_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g019_u4E49_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g019_u4E49_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g019_u4E49_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g019_u4E49_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g020_u57DF_mask_only_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g020_u57DF_original_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g020_u57DF_target_overlay_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g020_u57DF_triad_8x_nearest.png": [
+        1312,
+        500
+      ],
+      "glyphs/g021_u503C_mask_only_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g021_u503C_original_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g021_u503C_target_overlay_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g021_u503C_triad_8x_nearest.png": [
+        1312,
+        500
+      ],
+      "glyphs/g022_u57DF_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g022_u57DF_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g022_u57DF_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g022_u57DF_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g023_u8FD0_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g023_u8FD0_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g023_u8FD0_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g023_u8FD0_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g024_u7B97_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g024_u7B97_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g024_u7B97_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g024_u7B97_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g025_u4E0E_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g025_u4E0E_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g025_u4E0E_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g025_u4E0E_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g026_u903B_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g026_u903B_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g026_u903B_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g026_u903B_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g027_u8F91_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g027_u8F91_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g027_u8F91_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g027_u8F91_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g028_u590D_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g028_u590D_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g028_u590D_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g028_u590D_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g029_u5408_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g029_u5408_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g029_u5408_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g029_u5408_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g030_u3001_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g030_u3001_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g030_u3001_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g030_u3001_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g031_u91CF_mask_only_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g031_u91CF_original_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g031_u91CF_target_overlay_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g031_u91CF_triad_8x_nearest.png": [
+        1312,
+        500
+      ],
+      "glyphs/g032_u8BCD_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g032_u8BCD_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g032_u8BCD_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g032_u8BCD_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g033_u4E0E_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g033_u4E0E_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g033_u4E0E_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g033_u4E0E_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g034_u7EA6_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g034_u7EA6_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g034_u7EA6_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g034_u7EA6_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g035_u675F_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g035_u675F_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g035_u675F_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g035_u675F_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g036_u53EF_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g036_u53EF_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g036_u53EF_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g036_u53EF_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g037_u6838_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g037_u6838_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g037_u6838_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g037_u6838_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g038_u9A8C_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g038_u9A8C_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g038_u9A8C_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g038_u9A8C_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g039_u4EFB_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g039_u4EFB_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g039_u4EFB_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g039_u4EFB_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g040_u52A1_mask_only_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g040_u52A1_original_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g040_u52A1_target_overlay_1x.png": [
+        55,
+        74
+      ],
+      "glyphs/g040_u52A1_triad_8x_nearest.png": [
+        1384,
+        652
+      ],
+      "glyphs/g041_u8F93_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g041_u8F93_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g041_u8F93_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g041_u8F93_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g042_u5165_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g042_u5165_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g042_u5165_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g042_u5165_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g043_u3001_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g043_u3001_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g043_u3001_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g043_u3001_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g044_u8F93_mask_only_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g044_u8F93_original_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g044_u8F93_target_overlay_1x.png": [
+        52,
+        55
+      ],
+      "glyphs/g044_u8F93_triad_8x_nearest.png": [
+        1312,
+        500
+      ],
+      "glyphs/g045_u51FA_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g045_u51FA_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g045_u51FA_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g045_u51FA_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g046_u4E0E_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g046_u4E0E_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g046_u4E0E_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g046_u4E0E_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g047_u5224_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g047_u5224_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g047_u5224_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g047_u5224_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g048_u636E_mask_only_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g048_u636E_original_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g048_u636E_target_overlay_1x.png": [
+        53,
+        55
+      ],
+      "glyphs/g048_u636E_triad_8x_nearest.png": [
+        1336,
+        500
+      ],
+      "glyphs/g049_u9006_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g049_u9006_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g049_u9006_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g049_u9006_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g050_u5411_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g050_u5411_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g050_u5411_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g050_u5411_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g051_u6838_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g051_u6838_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g051_u6838_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g051_u6838_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g052_u5BF9_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g052_u5BF9_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g052_u5BF9_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g052_u5BF9_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g053_uFF1A_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g053_uFF1A_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g053_uFF1A_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g053_uFF1A_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g054_u4EFB_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g054_u4EFB_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g054_u4EFB_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g054_u4EFB_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g055_u52A1_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g055_u52A1_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g055_u52A1_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g055_u52A1_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g056_u6240_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g056_u6240_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g056_u6240_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g056_u6240_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g057_u7528_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g057_u7528_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g057_u7528_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g057_u7528_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g058_u5B9A_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g058_u5B9A_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g058_u5B9A_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g058_u5B9A_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g059_u4E49_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g059_u4E49_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g059_u4E49_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g059_u4E49_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g060_u9010_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g060_u9010_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g060_u9010_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g060_u9010_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g061_u9879_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g061_u9879_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g061_u9879_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g061_u9879_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g062_u8FD4_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g062_u8FD4_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g062_u8FD4_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g062_u8FD4_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g063_u56DE_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g063_u56DE_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g063_u56DE_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g063_u56DE_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g064_u68C0_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g064_u68C0_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g064_u68C0_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g064_u68C0_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g065_u67E5_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g065_u67E5_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g065_u67E5_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g065_u67E5_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g066_u56FE_mask_only_1x.png": [
+        52,
+        71
+      ],
+      "glyphs/g066_u56FE_original_1x.png": [
+        52,
+        71
+      ],
+      "glyphs/g066_u56FE_target_overlay_1x.png": [
+        52,
+        71
+      ],
+      "glyphs/g066_u56FE_triad_8x_nearest.png": [
+        1312,
+        628
+      ],
+      "glyphs/g067_u0031_mask_only_1x.png": [
+        32,
+        52
+      ],
+      "glyphs/g067_u0031_original_1x.png": [
+        32,
+        52
+      ],
+      "glyphs/g067_u0031_target_overlay_1x.png": [
+        32,
+        52
+      ],
+      "glyphs/g067_u0031_triad_8x_nearest.png": [
+        832,
+        476
+      ],
+      "glyphs/g068_u002E_mask_only_1x.png": [
+        22,
+        52
+      ],
+      "glyphs/g068_u002E_original_1x.png": [
+        22,
+        52
+      ],
+      "glyphs/g068_u002E_target_overlay_1x.png": [
+        22,
+        52
+      ],
+      "glyphs/g068_u002E_triad_8x_nearest.png": [
+        592,
+        476
+      ],
+      "glyphs/g069_u0031_mask_only_1x.png": [
+        32,
+        52
+      ],
+      "glyphs/g069_u0031_original_1x.png": [
+        32,
+        52
+      ],
+      "glyphs/g069_u0031_target_overlay_1x.png": [
+        32,
+        52
+      ],
+      "glyphs/g069_u0031_triad_8x_nearest.png": [
+        832,
+        476
+      ],
+      "glyphs/g070_u6570_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g070_u6570_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g070_u6570_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g070_u6570_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g071_u5B66_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g071_u5B66_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g071_u5B66_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g071_u5B66_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g072_u8BED_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g072_u8BED_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g072_u8BED_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g072_u8BED_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g073_u8A00_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g073_u8A00_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g073_u8A00_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g073_u8A00_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g074_u4ECE_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g074_u4ECE_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g074_u4ECE_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g074_u4ECE_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g075_u5BF9_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g075_u5BF9_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g075_u5BF9_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g075_u5BF9_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g076_u8C61_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g076_u8C61_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g076_u8C61_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g076_u8C61_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g077_u58F0_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g077_u58F0_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g077_u58F0_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g077_u58F0_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g078_u660E_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g078_u660E_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g078_u660E_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g078_u660E_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g079_u5230_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g079_u5230_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g079_u5230_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g079_u5230_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g080_u4EFB_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g080_u4EFB_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g080_u4EFB_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g080_u4EFB_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g081_u52A1_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g081_u52A1_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g081_u52A1_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g081_u52A1_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g082_u9648_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g082_u9648_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g082_u9648_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g082_u9648_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g083_u8FF0_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g083_u8FF0_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g083_u8FF0_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g083_u8FF0_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g084_u7684_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g084_u7684_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g084_u7684_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g084_u7684_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g085_u4F9D_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g085_u4F9D_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g085_u4F9D_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g085_u4F9D_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g086_u8D56_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g086_u8D56_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g086_u8D56_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g086_u8D56_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g087_u5173_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g087_u5173_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g087_u5173_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g087_u5173_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g088_u7CFB_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g088_u7CFB_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g088_u7CFB_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g088_u7CFB_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g089_u3002_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g089_u3002_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g089_u3002_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g089_u3002_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g090_u6BCF_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g090_u6BCF_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g090_u6BCF_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g090_u6BCF_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g091_u4E00_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g091_u4E00_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g091_u4E00_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g091_u4E00_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g092_u6761_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g092_u6761_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g092_u6761_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g092_u6761_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g093_u7BAD_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g093_u7BAD_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g093_u7BAD_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g093_u7BAD_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g094_u5934_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g094_u5934_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g094_u5934_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g094_u5934_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g095_u90FD_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g095_u90FD_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g095_u90FD_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g095_u90FD_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g096_u8868_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g096_u8868_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g096_u8868_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g096_u8868_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g097_u793A_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g097_u793A_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g097_u793A_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g097_u793A_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g098_u53F3_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g098_u53F3_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g098_u53F3_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g098_u53F3_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g099_u4FA7_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g099_u4FA7_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g099_u4FA7_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g099_u4FA7_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g100_u5185_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g100_u5185_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g100_u5185_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g100_u5185_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g101_u5BB9_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g101_u5BB9_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g101_u5BB9_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g101_u5BB9_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g102_u4F7F_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g102_u4F7F_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g102_u4F7F_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g102_u4F7F_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g103_u7528_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g103_u7528_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g103_u7528_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g103_u7528_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g104_u5DE6_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g104_u5DE6_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g104_u5DE6_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g104_u5DE6_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g105_u4FA7_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g105_u4FA7_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g105_u4FA7_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g105_u4FA7_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g106_u5B9A_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g106_u5B9A_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g106_u5B9A_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g106_u5B9A_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "glyphs/g107_u4E49_mask_only_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g107_u4E49_original_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g107_u4E49_target_overlay_1x.png": [
+        53,
+        56
+      ],
+      "glyphs/g107_u4E49_triad_8x_nearest.png": [
+        1336,
+        508
+      ],
+      "glyphs/g108_u3002_mask_only_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g108_u3002_original_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g108_u3002_target_overlay_1x.png": [
+        52,
+        56
+      ],
+      "glyphs/g108_u3002_triad_8x_nearest.png": [
+        1312,
+        508
+      ],
+      "grayscale_300dpi.png": [
+        1980,
+        510
+      ],
+      "occlusion/g_return_arrow_final_visible_mask_1x.png": [
+        731,
+        66
+      ],
+      "occlusion/g_return_arrow_pre_occlusion_mask_1x.png": [
+        731,
+        66
+      ],
+      "occlusion/g_return_arrow_x_opaque_ground_intersection_1x.png": [
+        731,
+        66
+      ],
+      "occlusion/g_return_label_white_opaque_ground_vector_coverage_1x.png": [
+        715,
+        50
+      ],
+      "occlusion/return_label_ground_paint_order_overlay_1x.png": [
+        731,
+        66
+      ],
+      "occlusion/return_label_ground_paint_order_overlay_8x_nearest.png": [
+        5848,
+        528
+      ],
+      "raw/r95_page_017_200dpi.png": [
+        1654,
+        2339
+      ],
+      "raw/r95_page_017_native300.png": [
+        2481,
+        3508
+      ],
+      "relations/graphic_masks/g_arrow01_head_final_visible_mask_1x.png": [
+        21,
+        17
+      ],
+      "relations/graphic_masks/g_arrow01_shaft_final_visible_mask_1x.png": [
+        31,
+        9
+      ],
+      "relations/graphic_masks/g_arrow02_head_final_visible_mask_1x.png": [
+        21,
+        17
+      ],
+      "relations/graphic_masks/g_arrow02_shaft_final_visible_mask_1x.png": [
+        31,
+        9
+      ],
+      "relations/graphic_masks/g_arrow03_head_final_visible_mask_1x.png": [
+        21,
+        17
+      ],
+      "relations/graphic_masks/g_arrow03_shaft_final_visible_mask_1x.png": [
+        31,
+        9
+      ],
+      "relations/graphic_masks/g_inline_arrow_head_final_visible_mask_1x.png": [
+        18,
+        14
+      ],
+      "relations/graphic_masks/g_inline_arrow_shaft_final_visible_mask_1x.png": [
+        56,
+        9
+      ],
+      "relations/graphic_masks/g_node01_border_final_visible_mask_1x.png": [
+        378,
+        165
+      ],
+      "relations/graphic_masks/g_node02_border_final_visible_mask_1x.png": [
+        378,
+        165
+      ],
+      "relations/graphic_masks/g_node03_border_final_visible_mask_1x.png": [
+        379,
+        165
+      ],
+      "relations/graphic_masks/g_node04_border_final_visible_mask_1x.png": [
+        378,
+        165
+      ],
+      "relations/graphic_masks/g_return_arrow_head_final_visible_mask_1x.png": [
+        19,
+        24
+      ],
+      "relations/graphic_masks/g_return_arrow_shaft_final_visible_mask_1x.png": [
+        1347,
+        97
+      ],
+      "standalone_300dpi.png": [
+        1980,
+        510
+      ],
+      "views/figure_crop_300dpi.png": [
+        1980,
+        510
+      ]
+    },
+    "csv_rows": {
+      "after_font_audit.csv": 108,
+      "after_font_audit_precalibration.csv": 108,
+      "after_overlap_report.csv": 208,
+      "after_pixel_measurements.csv": 108,
+      "calibration/low_profile_punctuation_calibration.csv": 7,
+      "glyph_id_filename_manifest.csv": 108,
+      "ledger/de_actual_baselines.csv": 10,
+      "ledger/glyph_manual_review_ledger.csv": 108,
+      "ledger/semantic_parent_manifest.csv": 10,
+      "ledger/visual_harmony_ledger.csv": 64,
+      "occlusion/occlusion_ledger.csv": 1,
+      "relations/graphic_manifest.csv": 14,
+      "relations/text_figure_edge_relations.csv": 10,
+      "relations/text_graphic_relations.csv": 197,
+      "sa1_findings.csv": 1
+    },
+    "expected_files": [
+      "R95_AUTHORITY_AND_SCOPE.json",
+      "ROLE_AND_WRITE_SCOPE.md",
+      "after_font_audit.csv",
+      "after_font_audit_precalibration.csv",
+      "after_overlap_report.csv",
+      "after_pixel_measurements.csv",
+      "after_text_measurement_overlay_300dpi.png",
+      "after_visual_acceptance.md",
+      "calibration/CALIBRATION_METHOD.md",
+      "calibration/cal_colon_r95_form_mask_only_1x.png",
+      "calibration/cal_colon_r95_form_original_1x.png",
+      "calibration/cal_colon_r95_form_target_overlay_1x.png",
+      "calibration/cal_colon_r95_form_triad_8x_nearest.png",
+      "calibration/cal_dot_r95_page048_mask_only_1x.png",
+      "calibration/cal_dot_r95_page048_original_1x.png",
+      "calibration/cal_dot_r95_page048_target_overlay_1x.png",
+      "calibration/cal_dot_r95_page048_triad_8x_nearest.png",
+      "calibration/colon_form_calibrator_page_native300.png",
+      "calibration/colon_r95_form_rerender_calibrator.pdf",
+      "calibration/colon_same_font_same_pt.log",
+      "calibration/colon_same_font_same_pt.tex",
+      "calibration/extracted_r95_notoserifsc_extralight.ttf",
+      "calibration/low_profile_punctuation_calibration.csv",
+      "calibration/low_profile_punctuation_calibration.json",
+      "calibration/r95_page_048_dot_reference_native300.png",
+      "contact_sheets/CS001_g001_u5BF9_to_g006_u5408_8x.png",
+      "contact_sheets/CS002_g007_u3001_to_g012_u6570_8x.png",
+      "contact_sheets/CS003_g013_u5173_to_g018_u5B9A_8x.png",
+      "contact_sheets/CS004_g019_u4E49_to_g024_u7B97_8x.png",
+      "contact_sheets/CS005_g025_u4E0E_to_g030_u3001_8x.png",
+      "contact_sheets/CS006_g031_u91CF_to_g036_u53EF_8x.png",
+      "contact_sheets/CS007_g037_u6838_to_g042_u5165_8x.png",
+      "contact_sheets/CS008_g043_u3001_to_g048_u636E_8x.png",
+      "contact_sheets/CS009_g049_u9006_to_g054_u4EFB_8x.png",
+      "contact_sheets/CS010_g055_u52A1_to_g060_u9010_8x.png",
+      "contact_sheets/CS011_g061_u9879_to_g066_u56FE_8x.png",
+      "contact_sheets/CS012_g067_u0031_to_g072_u8BED_8x.png",
+      "contact_sheets/CS013_g073_u8A00_to_g078_u660E_8x.png",
+      "contact_sheets/CS014_g079_u5230_to_g084_u7684_8x.png",
+      "contact_sheets/CS015_g085_u4F9D_to_g090_u6BCF_8x.png",
+      "contact_sheets/CS016_g091_u4E00_to_g096_u8868_8x.png",
+      "contact_sheets/CS017_g097_u793A_to_g102_u4F7F_8x.png",
+      "contact_sheets/CS018_g103_u7528_to_g108_u3002_8x.png",
+      "figure_crop_300dpi.png",
+      "final_table_summary.json",
+      "full_page_200dpi.png",
+      "generation_counts.json",
+      "glyph_id_filename_manifest.csv",
+      "glyphs/g001_u5BF9_mask_only_1x.png",
+      "glyphs/g001_u5BF9_original_1x.png",
+      "glyphs/g001_u5BF9_target_overlay_1x.png",
+      "glyphs/g001_u5BF9_triad_8x_nearest.png",
+      "glyphs/g002_u8C61_mask_only_1x.png",
+      "glyphs/g002_u8C61_original_1x.png",
+      "glyphs/g002_u8C61_target_overlay_1x.png",
+      "glyphs/g002_u8C61_triad_8x_nearest.png",
+      "glyphs/g003_u58F0_mask_only_1x.png",
+      "glyphs/g003_u58F0_original_1x.png",
+      "glyphs/g003_u58F0_target_overlay_1x.png",
+      "glyphs/g003_u58F0_triad_8x_nearest.png",
+      "glyphs/g004_u660E_mask_only_1x.png",
+      "glyphs/g004_u660E_original_1x.png",
+      "glyphs/g004_u660E_target_overlay_1x.png",
+      "glyphs/g004_u660E_triad_8x_nearest.png",
+      "glyphs/g005_u96C6_mask_only_1x.png",
+      "glyphs/g005_u96C6_original_1x.png",
+      "glyphs/g005_u96C6_target_overlay_1x.png",
+      "glyphs/g005_u96C6_triad_8x_nearest.png",
+      "glyphs/g006_u5408_mask_only_1x.png",
+      "glyphs/g006_u5408_original_1x.png",
+      "glyphs/g006_u5408_target_overlay_1x.png",
+      "glyphs/g006_u5408_triad_8x_nearest.png",
+      "glyphs/g007_u3001_mask_only_1x.png",
+      "glyphs/g007_u3001_original_1x.png",
+      "glyphs/g007_u3001_target_overlay_1x.png",
+      "glyphs/g007_u3001_triad_8x_nearest.png",
+      "glyphs/g008_u7C7B_mask_only_1x.png",
+      "glyphs/g008_u7C7B_original_1x.png",
+      "glyphs/g008_u7C7B_target_overlay_1x.png",
+      "glyphs/g008_u7C7B_triad_8x_nearest.png",
+      "glyphs/g009_u578B_mask_only_1x.png",
+      "glyphs/g009_u578B_original_1x.png",
+      "glyphs/g009_u578B_target_overlay_1x.png",
+      "glyphs/g009_u578B_triad_8x_nearest.png",
+      "glyphs/g010_u4E0E_mask_only_1x.png",
+      "glyphs/g010_u4E0E_original_1x.png",
+      "glyphs/g010_u4E0E_target_overlay_1x.png",
+      "glyphs/g010_u4E0E_triad_8x_nearest.png",
+      "glyphs/g011_u7EF4_mask_only_1x.png",
+      "glyphs/g011_u7EF4_original_1x.png",
+      "glyphs/g011_u7EF4_target_overlay_1x.png",
+      "glyphs/g011_u7EF4_triad_8x_nearest.png",
+      "glyphs/g012_u6570_mask_only_1x.png",
+      "glyphs/g012_u6570_original_1x.png",
+      "glyphs/g012_u6570_target_overlay_1x.png",
+      "glyphs/g012_u6570_triad_8x_nearest.png",
+      "glyphs/g013_u5173_mask_only_1x.png",
+      "glyphs/g013_u5173_original_1x.png",
+      "glyphs/g013_u5173_target_overlay_1x.png",
+      "glyphs/g013_u5173_triad_8x_nearest.png",
+      "glyphs/g014_u7CFB_mask_only_1x.png",
+      "glyphs/g014_u7CFB_original_1x.png",
+      "glyphs/g014_u7CFB_target_overlay_1x.png",
+      "glyphs/g014_u7CFB_triad_8x_nearest.png",
+      "glyphs/g015_u4E0E_mask_only_1x.png",
+      "glyphs/g015_u4E0E_original_1x.png",
+      "glyphs/g015_u4E0E_target_overlay_1x.png",
+      "glyphs/g015_u4E0E_triad_8x_nearest.png",
+      "glyphs/g016_u6620_mask_only_1x.png",
+      "glyphs/g016_u6620_original_1x.png",
+      "glyphs/g016_u6620_target_overlay_1x.png",
+      "glyphs/g016_u6620_triad_8x_nearest.png",
+      "glyphs/g017_u5C04_mask_only_1x.png",
+      "glyphs/g017_u5C04_original_1x.png",
+      "glyphs/g017_u5C04_target_overlay_1x.png",
+      "glyphs/g017_u5C04_triad_8x_nearest.png",
+      "glyphs/g018_u5B9A_mask_only_1x.png",
+      "glyphs/g018_u5B9A_original_1x.png",
+      "glyphs/g018_u5B9A_target_overlay_1x.png",
+      "glyphs/g018_u5B9A_triad_8x_nearest.png",
+      "glyphs/g019_u4E49_mask_only_1x.png",
+      "glyphs/g019_u4E49_original_1x.png",
+      "glyphs/g019_u4E49_target_overlay_1x.png",
+      "glyphs/g019_u4E49_triad_8x_nearest.png",
+      "glyphs/g020_u57DF_mask_only_1x.png",
+      "glyphs/g020_u57DF_original_1x.png",
+      "glyphs/g020_u57DF_target_overlay_1x.png",
+      "glyphs/g020_u57DF_triad_8x_nearest.png",
+      "glyphs/g021_u503C_mask_only_1x.png",
+      "glyphs/g021_u503C_original_1x.png",
+      "glyphs/g021_u503C_target_overlay_1x.png",
+      "glyphs/g021_u503C_triad_8x_nearest.png",
+      "glyphs/g022_u57DF_mask_only_1x.png",
+      "glyphs/g022_u57DF_original_1x.png",
+      "glyphs/g022_u57DF_target_overlay_1x.png",
+      "glyphs/g022_u57DF_triad_8x_nearest.png",
+      "glyphs/g023_u8FD0_mask_only_1x.png",
+      "glyphs/g023_u8FD0_original_1x.png",
+      "glyphs/g023_u8FD0_target_overlay_1x.png",
+      "glyphs/g023_u8FD0_triad_8x_nearest.png",
+      "glyphs/g024_u7B97_mask_only_1x.png",
+      "glyphs/g024_u7B97_original_1x.png",
+      "glyphs/g024_u7B97_target_overlay_1x.png",
+      "glyphs/g024_u7B97_triad_8x_nearest.png",
+      "glyphs/g025_u4E0E_mask_only_1x.png",
+      "glyphs/g025_u4E0E_original_1x.png",
+      "glyphs/g025_u4E0E_target_overlay_1x.png",
+      "glyphs/g025_u4E0E_triad_8x_nearest.png",
+      "glyphs/g026_u903B_mask_only_1x.png",
+      "glyphs/g026_u903B_original_1x.png",
+      "glyphs/g026_u903B_target_overlay_1x.png",
+      "glyphs/g026_u903B_triad_8x_nearest.png",
+      "glyphs/g027_u8F91_mask_only_1x.png",
+      "glyphs/g027_u8F91_original_1x.png",
+      "glyphs/g027_u8F91_target_overlay_1x.png",
+      "glyphs/g027_u8F91_triad_8x_nearest.png",
+      "glyphs/g028_u590D_mask_only_1x.png",
+      "glyphs/g028_u590D_original_1x.png",
+      "glyphs/g028_u590D_target_overlay_1x.png",
+      "glyphs/g028_u590D_triad_8x_nearest.png",
+      "glyphs/g029_u5408_mask_only_1x.png",
+      "glyphs/g029_u5408_original_1x.png",
+      "glyphs/g029_u5408_target_overlay_1x.png",
+      "glyphs/g029_u5408_triad_8x_nearest.png",
+      "glyphs/g030_u3001_mask_only_1x.png",
+      "glyphs/g030_u3001_original_1x.png",
+      "glyphs/g030_u3001_target_overlay_1x.png",
+      "glyphs/g030_u3001_triad_8x_nearest.png",
+      "glyphs/g031_u91CF_mask_only_1x.png",
+      "glyphs/g031_u91CF_original_1x.png",
+      "glyphs/g031_u91CF_target_overlay_1x.png",
+      "glyphs/g031_u91CF_triad_8x_nearest.png",
+      "glyphs/g032_u8BCD_mask_only_1x.png",
+      "glyphs/g032_u8BCD_original_1x.png",
+      "glyphs/g032_u8BCD_target_overlay_1x.png",
+      "glyphs/g032_u8BCD_triad_8x_nearest.png",
+      "glyphs/g033_u4E0E_mask_only_1x.png",
+      "glyphs/g033_u4E0E_original_1x.png",
+      "glyphs/g033_u4E0E_target_overlay_1x.png",
+      "glyphs/g033_u4E0E_triad_8x_nearest.png",
+      "glyphs/g034_u7EA6_mask_only_1x.png",
+      "glyphs/g034_u7EA6_original_1x.png",
+      "glyphs/g034_u7EA6_target_overlay_1x.png",
+      "glyphs/g034_u7EA6_triad_8x_nearest.png",
+      "glyphs/g035_u675F_mask_only_1x.png",
+      "glyphs/g035_u675F_original_1x.png",
+      "glyphs/g035_u675F_target_overlay_1x.png",
+      "glyphs/g035_u675F_triad_8x_nearest.png",
+      "glyphs/g036_u53EF_mask_only_1x.png",
+      "glyphs/g036_u53EF_original_1x.png",
+      "glyphs/g036_u53EF_target_overlay_1x.png",
+      "glyphs/g036_u53EF_triad_8x_nearest.png",
+      "glyphs/g037_u6838_mask_only_1x.png",
+      "glyphs/g037_u6838_original_1x.png",
+      "glyphs/g037_u6838_target_overlay_1x.png",
+      "glyphs/g037_u6838_triad_8x_nearest.png",
+      "glyphs/g038_u9A8C_mask_only_1x.png",
+      "glyphs/g038_u9A8C_original_1x.png",
+      "glyphs/g038_u9A8C_target_overlay_1x.png",
+      "glyphs/g038_u9A8C_triad_8x_nearest.png",
+      "glyphs/g039_u4EFB_mask_only_1x.png",
+      "glyphs/g039_u4EFB_original_1x.png",
+      "glyphs/g039_u4EFB_target_overlay_1x.png",
+      "glyphs/g039_u4EFB_triad_8x_nearest.png",
+      "glyphs/g040_u52A1_mask_only_1x.png",
+      "glyphs/g040_u52A1_original_1x.png",
+      "glyphs/g040_u52A1_target_overlay_1x.png",
+      "glyphs/g040_u52A1_triad_8x_nearest.png",
+      "glyphs/g041_u8F93_mask_only_1x.png",
+      "glyphs/g041_u8F93_original_1x.png",
+      "glyphs/g041_u8F93_target_overlay_1x.png",
+      "glyphs/g041_u8F93_triad_8x_nearest.png",
+      "glyphs/g042_u5165_mask_only_1x.png",
+      "glyphs/g042_u5165_original_1x.png",
+      "glyphs/g042_u5165_target_overlay_1x.png",
+      "glyphs/g042_u5165_triad_8x_nearest.png",
+      "glyphs/g043_u3001_mask_only_1x.png",
+      "glyphs/g043_u3001_original_1x.png",
+      "glyphs/g043_u3001_target_overlay_1x.png",
+      "glyphs/g043_u3001_triad_8x_nearest.png",
+      "glyphs/g044_u8F93_mask_only_1x.png",
+      "glyphs/g044_u8F93_original_1x.png",
+      "glyphs/g044_u8F93_target_overlay_1x.png",
+      "glyphs/g044_u8F93_triad_8x_nearest.png",
+      "glyphs/g045_u51FA_mask_only_1x.png",
+      "glyphs/g045_u51FA_original_1x.png",
+      "glyphs/g045_u51FA_target_overlay_1x.png",
+      "glyphs/g045_u51FA_triad_8x_nearest.png",
+      "glyphs/g046_u4E0E_mask_only_1x.png",
+      "glyphs/g046_u4E0E_original_1x.png",
+      "glyphs/g046_u4E0E_target_overlay_1x.png",
+      "glyphs/g046_u4E0E_triad_8x_nearest.png",
+      "glyphs/g047_u5224_mask_only_1x.png",
+      "glyphs/g047_u5224_original_1x.png",
+      "glyphs/g047_u5224_target_overlay_1x.png",
+      "glyphs/g047_u5224_triad_8x_nearest.png",
+      "glyphs/g048_u636E_mask_only_1x.png",
+      "glyphs/g048_u636E_original_1x.png",
+      "glyphs/g048_u636E_target_overlay_1x.png",
+      "glyphs/g048_u636E_triad_8x_nearest.png",
+      "glyphs/g049_u9006_mask_only_1x.png",
+      "glyphs/g049_u9006_original_1x.png",
+      "glyphs/g049_u9006_target_overlay_1x.png",
+      "glyphs/g049_u9006_triad_8x_nearest.png",
+      "glyphs/g050_u5411_mask_only_1x.png",
+      "glyphs/g050_u5411_original_1x.png",
+      "glyphs/g050_u5411_target_overlay_1x.png",
+      "glyphs/g050_u5411_triad_8x_nearest.png",
+      "glyphs/g051_u6838_mask_only_1x.png",
+      "glyphs/g051_u6838_original_1x.png",
+      "glyphs/g051_u6838_target_overlay_1x.png",
+      "glyphs/g051_u6838_triad_8x_nearest.png",
+      "glyphs/g052_u5BF9_mask_only_1x.png",
+      "glyphs/g052_u5BF9_original_1x.png",
+      "glyphs/g052_u5BF9_target_overlay_1x.png",
+      "glyphs/g052_u5BF9_triad_8x_nearest.png",
+      "glyphs/g053_uFF1A_mask_only_1x.png",
+      "glyphs/g053_uFF1A_original_1x.png",
+      "glyphs/g053_uFF1A_target_overlay_1x.png",
+      "glyphs/g053_uFF1A_triad_8x_nearest.png",
+      "glyphs/g054_u4EFB_mask_only_1x.png",
+      "glyphs/g054_u4EFB_original_1x.png",
+      "glyphs/g054_u4EFB_target_overlay_1x.png",
+      "glyphs/g054_u4EFB_triad_8x_nearest.png",
+      "glyphs/g055_u52A1_mask_only_1x.png",
+      "glyphs/g055_u52A1_original_1x.png",
+      "glyphs/g055_u52A1_target_overlay_1x.png",
+      "glyphs/g055_u52A1_triad_8x_nearest.png",
+      "glyphs/g056_u6240_mask_only_1x.png",
+      "glyphs/g056_u6240_original_1x.png",
+      "glyphs/g056_u6240_target_overlay_1x.png",
+      "glyphs/g056_u6240_triad_8x_nearest.png",
+      "glyphs/g057_u7528_mask_only_1x.png",
+      "glyphs/g057_u7528_original_1x.png",
+      "glyphs/g057_u7528_target_overlay_1x.png",
+      "glyphs/g057_u7528_triad_8x_nearest.png",
+      "glyphs/g058_u5B9A_mask_only_1x.png",
+      "glyphs/g058_u5B9A_original_1x.png",
+      "glyphs/g058_u5B9A_target_overlay_1x.png",
+      "glyphs/g058_u5B9A_triad_8x_nearest.png",
+      "glyphs/g059_u4E49_mask_only_1x.png",
+      "glyphs/g059_u4E49_original_1x.png",
+      "glyphs/g059_u4E49_target_overlay_1x.png",
+      "glyphs/g059_u4E49_triad_8x_nearest.png",
+      "glyphs/g060_u9010_mask_only_1x.png",
+      "glyphs/g060_u9010_original_1x.png",
+      "glyphs/g060_u9010_target_overlay_1x.png",
+      "glyphs/g060_u9010_triad_8x_nearest.png",
+      "glyphs/g061_u9879_mask_only_1x.png",
+      "glyphs/g061_u9879_original_1x.png",
+      "glyphs/g061_u9879_target_overlay_1x.png",
+      "glyphs/g061_u9879_triad_8x_nearest.png",
+      "glyphs/g062_u8FD4_mask_only_1x.png",
+      "glyphs/g062_u8FD4_original_1x.png",
+      "glyphs/g062_u8FD4_target_overlay_1x.png",
+      "glyphs/g062_u8FD4_triad_8x_nearest.png",
+      "glyphs/g063_u56DE_mask_only_1x.png",
+      "glyphs/g063_u56DE_original_1x.png",
+      "glyphs/g063_u56DE_target_overlay_1x.png",
+      "glyphs/g063_u56DE_triad_8x_nearest.png",
+      "glyphs/g064_u68C0_mask_only_1x.png",
+      "glyphs/g064_u68C0_original_1x.png",
+      "glyphs/g064_u68C0_target_overlay_1x.png",
+      "glyphs/g064_u68C0_triad_8x_nearest.png",
+      "glyphs/g065_u67E5_mask_only_1x.png",
+      "glyphs/g065_u67E5_original_1x.png",
+      "glyphs/g065_u67E5_target_overlay_1x.png",
+      "glyphs/g065_u67E5_triad_8x_nearest.png",
+      "glyphs/g066_u56FE_mask_only_1x.png",
+      "glyphs/g066_u56FE_original_1x.png",
+      "glyphs/g066_u56FE_target_overlay_1x.png",
+      "glyphs/g066_u56FE_triad_8x_nearest.png",
+      "glyphs/g067_u0031_mask_only_1x.png",
+      "glyphs/g067_u0031_original_1x.png",
+      "glyphs/g067_u0031_target_overlay_1x.png",
+      "glyphs/g067_u0031_triad_8x_nearest.png",
+      "glyphs/g068_u002E_mask_only_1x.png",
+      "glyphs/g068_u002E_original_1x.png",
+      "glyphs/g068_u002E_target_overlay_1x.png",
+      "glyphs/g068_u002E_triad_8x_nearest.png",
+      "glyphs/g069_u0031_mask_only_1x.png",
+      "glyphs/g069_u0031_original_1x.png",
+      "glyphs/g069_u0031_target_overlay_1x.png",
+      "glyphs/g069_u0031_triad_8x_nearest.png",
+      "glyphs/g070_u6570_mask_only_1x.png",
+      "glyphs/g070_u6570_original_1x.png",
+      "glyphs/g070_u6570_target_overlay_1x.png",
+      "glyphs/g070_u6570_triad_8x_nearest.png",
+      "glyphs/g071_u5B66_mask_only_1x.png",
+      "glyphs/g071_u5B66_original_1x.png",
+      "glyphs/g071_u5B66_target_overlay_1x.png",
+      "glyphs/g071_u5B66_triad_8x_nearest.png",
+      "glyphs/g072_u8BED_mask_only_1x.png",
+      "glyphs/g072_u8BED_original_1x.png",
+      "glyphs/g072_u8BED_target_overlay_1x.png",
+      "glyphs/g072_u8BED_triad_8x_nearest.png",
+      "glyphs/g073_u8A00_mask_only_1x.png",
+      "glyphs/g073_u8A00_original_1x.png",
+      "glyphs/g073_u8A00_target_overlay_1x.png",
+      "glyphs/g073_u8A00_triad_8x_nearest.png",
+      "glyphs/g074_u4ECE_mask_only_1x.png",
+      "glyphs/g074_u4ECE_original_1x.png",
+      "glyphs/g074_u4ECE_target_overlay_1x.png",
+      "glyphs/g074_u4ECE_triad_8x_nearest.png",
+      "glyphs/g075_u5BF9_mask_only_1x.png",
+      "glyphs/g075_u5BF9_original_1x.png",
+      "glyphs/g075_u5BF9_target_overlay_1x.png",
+      "glyphs/g075_u5BF9_triad_8x_nearest.png",
+      "glyphs/g076_u8C61_mask_only_1x.png",
+      "glyphs/g076_u8C61_original_1x.png",
+      "glyphs/g076_u8C61_target_overlay_1x.png",
+      "glyphs/g076_u8C61_triad_8x_nearest.png",
+      "glyphs/g077_u58F0_mask_only_1x.png",
+      "glyphs/g077_u58F0_original_1x.png",
+      "glyphs/g077_u58F0_target_overlay_1x.png",
+      "glyphs/g077_u58F0_triad_8x_nearest.png",
+      "glyphs/g078_u660E_mask_only_1x.png",
+      "glyphs/g078_u660E_original_1x.png",
+      "glyphs/g078_u660E_target_overlay_1x.png",
+      "glyphs/g078_u660E_triad_8x_nearest.png",
+      "glyphs/g079_u5230_mask_only_1x.png",
+      "glyphs/g079_u5230_original_1x.png",
+      "glyphs/g079_u5230_target_overlay_1x.png",
+      "glyphs/g079_u5230_triad_8x_nearest.png",
+      "glyphs/g080_u4EFB_mask_only_1x.png",
+      "glyphs/g080_u4EFB_original_1x.png",
+      "glyphs/g080_u4EFB_target_overlay_1x.png",
+      "glyphs/g080_u4EFB_triad_8x_nearest.png",
+      "glyphs/g081_u52A1_mask_only_1x.png",
+      "glyphs/g081_u52A1_original_1x.png",
+      "glyphs/g081_u52A1_target_overlay_1x.png",
+      "glyphs/g081_u52A1_triad_8x_nearest.png",
+      "glyphs/g082_u9648_mask_only_1x.png",
+      "glyphs/g082_u9648_original_1x.png",
+      "glyphs/g082_u9648_target_overlay_1x.png",
+      "glyphs/g082_u9648_triad_8x_nearest.png",
+      "glyphs/g083_u8FF0_mask_only_1x.png",
+      "glyphs/g083_u8FF0_original_1x.png",
+      "glyphs/g083_u8FF0_target_overlay_1x.png",
+      "glyphs/g083_u8FF0_triad_8x_nearest.png",
+      "glyphs/g084_u7684_mask_only_1x.png",
+      "glyphs/g084_u7684_original_1x.png",
+      "glyphs/g084_u7684_target_overlay_1x.png",
+      "glyphs/g084_u7684_triad_8x_nearest.png",
+      "glyphs/g085_u4F9D_mask_only_1x.png",
+      "glyphs/g085_u4F9D_original_1x.png",
+      "glyphs/g085_u4F9D_target_overlay_1x.png",
+      "glyphs/g085_u4F9D_triad_8x_nearest.png",
+      "glyphs/g086_u8D56_mask_only_1x.png",
+      "glyphs/g086_u8D56_original_1x.png",
+      "glyphs/g086_u8D56_target_overlay_1x.png",
+      "glyphs/g086_u8D56_triad_8x_nearest.png",
+      "glyphs/g087_u5173_mask_only_1x.png",
+      "glyphs/g087_u5173_original_1x.png",
+      "glyphs/g087_u5173_target_overlay_1x.png",
+      "glyphs/g087_u5173_triad_8x_nearest.png",
+      "glyphs/g088_u7CFB_mask_only_1x.png",
+      "glyphs/g088_u7CFB_original_1x.png",
+      "glyphs/g088_u7CFB_target_overlay_1x.png",
+      "glyphs/g088_u7CFB_triad_8x_nearest.png",
+      "glyphs/g089_u3002_mask_only_1x.png",
+      "glyphs/g089_u3002_original_1x.png",
+      "glyphs/g089_u3002_target_overlay_1x.png",
+      "glyphs/g089_u3002_triad_8x_nearest.png",
+      "glyphs/g090_u6BCF_mask_only_1x.png",
+      "glyphs/g090_u6BCF_original_1x.png",
+      "glyphs/g090_u6BCF_target_overlay_1x.png",
+      "glyphs/g090_u6BCF_triad_8x_nearest.png",
+      "glyphs/g091_u4E00_mask_only_1x.png",
+      "glyphs/g091_u4E00_original_1x.png",
+      "glyphs/g091_u4E00_target_overlay_1x.png",
+      "glyphs/g091_u4E00_triad_8x_nearest.png",
+      "glyphs/g092_u6761_mask_only_1x.png",
+      "glyphs/g092_u6761_original_1x.png",
+      "glyphs/g092_u6761_target_overlay_1x.png",
+      "glyphs/g092_u6761_triad_8x_nearest.png",
+      "glyphs/g093_u7BAD_mask_only_1x.png",
+      "glyphs/g093_u7BAD_original_1x.png",
+      "glyphs/g093_u7BAD_target_overlay_1x.png",
+      "glyphs/g093_u7BAD_triad_8x_nearest.png",
+      "glyphs/g094_u5934_mask_only_1x.png",
+      "glyphs/g094_u5934_original_1x.png",
+      "glyphs/g094_u5934_target_overlay_1x.png",
+      "glyphs/g094_u5934_triad_8x_nearest.png",
+      "glyphs/g095_u90FD_mask_only_1x.png",
+      "glyphs/g095_u90FD_original_1x.png",
+      "glyphs/g095_u90FD_target_overlay_1x.png",
+      "glyphs/g095_u90FD_triad_8x_nearest.png",
+      "glyphs/g096_u8868_mask_only_1x.png",
+      "glyphs/g096_u8868_original_1x.png",
+      "glyphs/g096_u8868_target_overlay_1x.png",
+      "glyphs/g096_u8868_triad_8x_nearest.png",
+      "glyphs/g097_u793A_mask_only_1x.png",
+      "glyphs/g097_u793A_original_1x.png",
+      "glyphs/g097_u793A_target_overlay_1x.png",
+      "glyphs/g097_u793A_triad_8x_nearest.png",
+      "glyphs/g098_u53F3_mask_only_1x.png",
+      "glyphs/g098_u53F3_original_1x.png",
+      "glyphs/g098_u53F3_target_overlay_1x.png",
+      "glyphs/g098_u53F3_triad_8x_nearest.png",
+      "glyphs/g099_u4FA7_mask_only_1x.png",
+      "glyphs/g099_u4FA7_original_1x.png",
+      "glyphs/g099_u4FA7_target_overlay_1x.png",
+      "glyphs/g099_u4FA7_triad_8x_nearest.png",
+      "glyphs/g100_u5185_mask_only_1x.png",
+      "glyphs/g100_u5185_original_1x.png",
+      "glyphs/g100_u5185_target_overlay_1x.png",
+      "glyphs/g100_u5185_triad_8x_nearest.png",
+      "glyphs/g101_u5BB9_mask_only_1x.png",
+      "glyphs/g101_u5BB9_original_1x.png",
+      "glyphs/g101_u5BB9_target_overlay_1x.png",
+      "glyphs/g101_u5BB9_triad_8x_nearest.png",
+      "glyphs/g102_u4F7F_mask_only_1x.png",
+      "glyphs/g102_u4F7F_original_1x.png",
+      "glyphs/g102_u4F7F_target_overlay_1x.png",
+      "glyphs/g102_u4F7F_triad_8x_nearest.png",
+      "glyphs/g103_u7528_mask_only_1x.png",
+      "glyphs/g103_u7528_original_1x.png",
+      "glyphs/g103_u7528_target_overlay_1x.png",
+      "glyphs/g103_u7528_triad_8x_nearest.png",
+      "glyphs/g104_u5DE6_mask_only_1x.png",
+      "glyphs/g104_u5DE6_original_1x.png",
+      "glyphs/g104_u5DE6_target_overlay_1x.png",
+      "glyphs/g104_u5DE6_triad_8x_nearest.png",
+      "glyphs/g105_u4FA7_mask_only_1x.png",
+      "glyphs/g105_u4FA7_original_1x.png",
+      "glyphs/g105_u4FA7_target_overlay_1x.png",
+      "glyphs/g105_u4FA7_triad_8x_nearest.png",
+      "glyphs/g106_u5B9A_mask_only_1x.png",
+      "glyphs/g106_u5B9A_original_1x.png",
+      "glyphs/g106_u5B9A_target_overlay_1x.png",
+      "glyphs/g106_u5B9A_triad_8x_nearest.png",
+      "glyphs/g107_u4E49_mask_only_1x.png",
+      "glyphs/g107_u4E49_original_1x.png",
+      "glyphs/g107_u4E49_target_overlay_1x.png",
+      "glyphs/g107_u4E49_triad_8x_nearest.png",
+      "glyphs/g108_u3002_mask_only_1x.png",
+      "glyphs/g108_u3002_original_1x.png",
+      "glyphs/g108_u3002_target_overlay_1x.png",
+      "glyphs/g108_u3002_triad_8x_nearest.png",
+      "grayscale_300dpi.png",
+      "ledger/de_actual_baselines.csv",
+      "ledger/glyph_manual_review_ledger.csv",
+      "ledger/semantic_parent_manifest.csv",
+      "ledger/visual_harmony_ledger.csv",
+      "occlusion/PAINT_ORDER_AND_OCCLUSION_SCOPE.md",
+      "occlusion/g_return_arrow_final_visible_mask_1x.png",
+      "occlusion/g_return_arrow_pre_occlusion_mask_1x.png",
+      "occlusion/g_return_arrow_x_opaque_ground_intersection_1x.png",
+      "occlusion/g_return_label_white_opaque_ground_vector_coverage_1x.png",
+      "occlusion/occlusion_ledger.csv",
+      "occlusion/return_label_ground_paint_order_overlay_1x.png",
+      "occlusion/return_label_ground_paint_order_overlay_8x_nearest.png",
+      "raw/generator_stdout.txt",
+      "raw/r95_page_017_200dpi.png",
+      "raw/r95_page_017_native300.png",
+      "relations/graphic_manifest.csv",
+      "relations/graphic_masks/g_arrow01_head_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_arrow01_shaft_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_arrow02_head_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_arrow02_shaft_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_arrow03_head_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_arrow03_shaft_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_inline_arrow_head_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_inline_arrow_shaft_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_node01_border_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_node02_border_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_node03_border_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_node04_border_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_return_arrow_head_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_return_arrow_shaft_final_visible_mask_1x.png",
+      "relations/text_figure_edge_relations.csv",
+      "relations/text_graphic_relations.csv",
+      "sa1_findings.csv",
+      "scripts/build_final_tables.py",
+      "scripts/calibrate_low_profile_punctuation.py",
+      "scripts/generate_fig_p020_r111.py",
+      "scripts/verify_and_seal_terminal.py",
+      "standalone_300dpi.png",
+      "terminal/MACHINE_INTEGRITY.json",
+      "terminal/SA1_FINAL_VERDICT.md",
+      "terminal/TERMINAL_MANIFEST.json",
+      "terminal/WRITE_STOPPED.md",
+      "views/figure_crop_300dpi.png"
+    ],
+    "actual_files": [
+      "R95_AUTHORITY_AND_SCOPE.json",
+      "ROLE_AND_WRITE_SCOPE.md",
+      "after_font_audit.csv",
+      "after_font_audit_precalibration.csv",
+      "after_overlap_report.csv",
+      "after_pixel_measurements.csv",
+      "after_text_measurement_overlay_300dpi.png",
+      "after_visual_acceptance.md",
+      "calibration/CALIBRATION_METHOD.md",
+      "calibration/cal_colon_r95_form_mask_only_1x.png",
+      "calibration/cal_colon_r95_form_original_1x.png",
+      "calibration/cal_colon_r95_form_target_overlay_1x.png",
+      "calibration/cal_colon_r95_form_triad_8x_nearest.png",
+      "calibration/cal_dot_r95_page048_mask_only_1x.png",
+      "calibration/cal_dot_r95_page048_original_1x.png",
+      "calibration/cal_dot_r95_page048_target_overlay_1x.png",
+      "calibration/cal_dot_r95_page048_triad_8x_nearest.png",
+      "calibration/colon_form_calibrator_page_native300.png",
+      "calibration/colon_r95_form_rerender_calibrator.pdf",
+      "calibration/colon_same_font_same_pt.log",
+      "calibration/colon_same_font_same_pt.tex",
+      "calibration/extracted_r95_notoserifsc_extralight.ttf",
+      "calibration/low_profile_punctuation_calibration.csv",
+      "calibration/low_profile_punctuation_calibration.json",
+      "calibration/r95_page_048_dot_reference_native300.png",
+      "contact_sheets/CS001_g001_u5BF9_to_g006_u5408_8x.png",
+      "contact_sheets/CS002_g007_u3001_to_g012_u6570_8x.png",
+      "contact_sheets/CS003_g013_u5173_to_g018_u5B9A_8x.png",
+      "contact_sheets/CS004_g019_u4E49_to_g024_u7B97_8x.png",
+      "contact_sheets/CS005_g025_u4E0E_to_g030_u3001_8x.png",
+      "contact_sheets/CS006_g031_u91CF_to_g036_u53EF_8x.png",
+      "contact_sheets/CS007_g037_u6838_to_g042_u5165_8x.png",
+      "contact_sheets/CS008_g043_u3001_to_g048_u636E_8x.png",
+      "contact_sheets/CS009_g049_u9006_to_g054_u4EFB_8x.png",
+      "contact_sheets/CS010_g055_u52A1_to_g060_u9010_8x.png",
+      "contact_sheets/CS011_g061_u9879_to_g066_u56FE_8x.png",
+      "contact_sheets/CS012_g067_u0031_to_g072_u8BED_8x.png",
+      "contact_sheets/CS013_g073_u8A00_to_g078_u660E_8x.png",
+      "contact_sheets/CS014_g079_u5230_to_g084_u7684_8x.png",
+      "contact_sheets/CS015_g085_u4F9D_to_g090_u6BCF_8x.png",
+      "contact_sheets/CS016_g091_u4E00_to_g096_u8868_8x.png",
+      "contact_sheets/CS017_g097_u793A_to_g102_u4F7F_8x.png",
+      "contact_sheets/CS018_g103_u7528_to_g108_u3002_8x.png",
+      "figure_crop_300dpi.png",
+      "final_table_summary.json",
+      "full_page_200dpi.png",
+      "generation_counts.json",
+      "glyph_id_filename_manifest.csv",
+      "glyphs/g001_u5BF9_mask_only_1x.png",
+      "glyphs/g001_u5BF9_original_1x.png",
+      "glyphs/g001_u5BF9_target_overlay_1x.png",
+      "glyphs/g001_u5BF9_triad_8x_nearest.png",
+      "glyphs/g002_u8C61_mask_only_1x.png",
+      "glyphs/g002_u8C61_original_1x.png",
+      "glyphs/g002_u8C61_target_overlay_1x.png",
+      "glyphs/g002_u8C61_triad_8x_nearest.png",
+      "glyphs/g003_u58F0_mask_only_1x.png",
+      "glyphs/g003_u58F0_original_1x.png",
+      "glyphs/g003_u58F0_target_overlay_1x.png",
+      "glyphs/g003_u58F0_triad_8x_nearest.png",
+      "glyphs/g004_u660E_mask_only_1x.png",
+      "glyphs/g004_u660E_original_1x.png",
+      "glyphs/g004_u660E_target_overlay_1x.png",
+      "glyphs/g004_u660E_triad_8x_nearest.png",
+      "glyphs/g005_u96C6_mask_only_1x.png",
+      "glyphs/g005_u96C6_original_1x.png",
+      "glyphs/g005_u96C6_target_overlay_1x.png",
+      "glyphs/g005_u96C6_triad_8x_nearest.png",
+      "glyphs/g006_u5408_mask_only_1x.png",
+      "glyphs/g006_u5408_original_1x.png",
+      "glyphs/g006_u5408_target_overlay_1x.png",
+      "glyphs/g006_u5408_triad_8x_nearest.png",
+      "glyphs/g007_u3001_mask_only_1x.png",
+      "glyphs/g007_u3001_original_1x.png",
+      "glyphs/g007_u3001_target_overlay_1x.png",
+      "glyphs/g007_u3001_triad_8x_nearest.png",
+      "glyphs/g008_u7C7B_mask_only_1x.png",
+      "glyphs/g008_u7C7B_original_1x.png",
+      "glyphs/g008_u7C7B_target_overlay_1x.png",
+      "glyphs/g008_u7C7B_triad_8x_nearest.png",
+      "glyphs/g009_u578B_mask_only_1x.png",
+      "glyphs/g009_u578B_original_1x.png",
+      "glyphs/g009_u578B_target_overlay_1x.png",
+      "glyphs/g009_u578B_triad_8x_nearest.png",
+      "glyphs/g010_u4E0E_mask_only_1x.png",
+      "glyphs/g010_u4E0E_original_1x.png",
+      "glyphs/g010_u4E0E_target_overlay_1x.png",
+      "glyphs/g010_u4E0E_triad_8x_nearest.png",
+      "glyphs/g011_u7EF4_mask_only_1x.png",
+      "glyphs/g011_u7EF4_original_1x.png",
+      "glyphs/g011_u7EF4_target_overlay_1x.png",
+      "glyphs/g011_u7EF4_triad_8x_nearest.png",
+      "glyphs/g012_u6570_mask_only_1x.png",
+      "glyphs/g012_u6570_original_1x.png",
+      "glyphs/g012_u6570_target_overlay_1x.png",
+      "glyphs/g012_u6570_triad_8x_nearest.png",
+      "glyphs/g013_u5173_mask_only_1x.png",
+      "glyphs/g013_u5173_original_1x.png",
+      "glyphs/g013_u5173_target_overlay_1x.png",
+      "glyphs/g013_u5173_triad_8x_nearest.png",
+      "glyphs/g014_u7CFB_mask_only_1x.png",
+      "glyphs/g014_u7CFB_original_1x.png",
+      "glyphs/g014_u7CFB_target_overlay_1x.png",
+      "glyphs/g014_u7CFB_triad_8x_nearest.png",
+      "glyphs/g015_u4E0E_mask_only_1x.png",
+      "glyphs/g015_u4E0E_original_1x.png",
+      "glyphs/g015_u4E0E_target_overlay_1x.png",
+      "glyphs/g015_u4E0E_triad_8x_nearest.png",
+      "glyphs/g016_u6620_mask_only_1x.png",
+      "glyphs/g016_u6620_original_1x.png",
+      "glyphs/g016_u6620_target_overlay_1x.png",
+      "glyphs/g016_u6620_triad_8x_nearest.png",
+      "glyphs/g017_u5C04_mask_only_1x.png",
+      "glyphs/g017_u5C04_original_1x.png",
+      "glyphs/g017_u5C04_target_overlay_1x.png",
+      "glyphs/g017_u5C04_triad_8x_nearest.png",
+      "glyphs/g018_u5B9A_mask_only_1x.png",
+      "glyphs/g018_u5B9A_original_1x.png",
+      "glyphs/g018_u5B9A_target_overlay_1x.png",
+      "glyphs/g018_u5B9A_triad_8x_nearest.png",
+      "glyphs/g019_u4E49_mask_only_1x.png",
+      "glyphs/g019_u4E49_original_1x.png",
+      "glyphs/g019_u4E49_target_overlay_1x.png",
+      "glyphs/g019_u4E49_triad_8x_nearest.png",
+      "glyphs/g020_u57DF_mask_only_1x.png",
+      "glyphs/g020_u57DF_original_1x.png",
+      "glyphs/g020_u57DF_target_overlay_1x.png",
+      "glyphs/g020_u57DF_triad_8x_nearest.png",
+      "glyphs/g021_u503C_mask_only_1x.png",
+      "glyphs/g021_u503C_original_1x.png",
+      "glyphs/g021_u503C_target_overlay_1x.png",
+      "glyphs/g021_u503C_triad_8x_nearest.png",
+      "glyphs/g022_u57DF_mask_only_1x.png",
+      "glyphs/g022_u57DF_original_1x.png",
+      "glyphs/g022_u57DF_target_overlay_1x.png",
+      "glyphs/g022_u57DF_triad_8x_nearest.png",
+      "glyphs/g023_u8FD0_mask_only_1x.png",
+      "glyphs/g023_u8FD0_original_1x.png",
+      "glyphs/g023_u8FD0_target_overlay_1x.png",
+      "glyphs/g023_u8FD0_triad_8x_nearest.png",
+      "glyphs/g024_u7B97_mask_only_1x.png",
+      "glyphs/g024_u7B97_original_1x.png",
+      "glyphs/g024_u7B97_target_overlay_1x.png",
+      "glyphs/g024_u7B97_triad_8x_nearest.png",
+      "glyphs/g025_u4E0E_mask_only_1x.png",
+      "glyphs/g025_u4E0E_original_1x.png",
+      "glyphs/g025_u4E0E_target_overlay_1x.png",
+      "glyphs/g025_u4E0E_triad_8x_nearest.png",
+      "glyphs/g026_u903B_mask_only_1x.png",
+      "glyphs/g026_u903B_original_1x.png",
+      "glyphs/g026_u903B_target_overlay_1x.png",
+      "glyphs/g026_u903B_triad_8x_nearest.png",
+      "glyphs/g027_u8F91_mask_only_1x.png",
+      "glyphs/g027_u8F91_original_1x.png",
+      "glyphs/g027_u8F91_target_overlay_1x.png",
+      "glyphs/g027_u8F91_triad_8x_nearest.png",
+      "glyphs/g028_u590D_mask_only_1x.png",
+      "glyphs/g028_u590D_original_1x.png",
+      "glyphs/g028_u590D_target_overlay_1x.png",
+      "glyphs/g028_u590D_triad_8x_nearest.png",
+      "glyphs/g029_u5408_mask_only_1x.png",
+      "glyphs/g029_u5408_original_1x.png",
+      "glyphs/g029_u5408_target_overlay_1x.png",
+      "glyphs/g029_u5408_triad_8x_nearest.png",
+      "glyphs/g030_u3001_mask_only_1x.png",
+      "glyphs/g030_u3001_original_1x.png",
+      "glyphs/g030_u3001_target_overlay_1x.png",
+      "glyphs/g030_u3001_triad_8x_nearest.png",
+      "glyphs/g031_u91CF_mask_only_1x.png",
+      "glyphs/g031_u91CF_original_1x.png",
+      "glyphs/g031_u91CF_target_overlay_1x.png",
+      "glyphs/g031_u91CF_triad_8x_nearest.png",
+      "glyphs/g032_u8BCD_mask_only_1x.png",
+      "glyphs/g032_u8BCD_original_1x.png",
+      "glyphs/g032_u8BCD_target_overlay_1x.png",
+      "glyphs/g032_u8BCD_triad_8x_nearest.png",
+      "glyphs/g033_u4E0E_mask_only_1x.png",
+      "glyphs/g033_u4E0E_original_1x.png",
+      "glyphs/g033_u4E0E_target_overlay_1x.png",
+      "glyphs/g033_u4E0E_triad_8x_nearest.png",
+      "glyphs/g034_u7EA6_mask_only_1x.png",
+      "glyphs/g034_u7EA6_original_1x.png",
+      "glyphs/g034_u7EA6_target_overlay_1x.png",
+      "glyphs/g034_u7EA6_triad_8x_nearest.png",
+      "glyphs/g035_u675F_mask_only_1x.png",
+      "glyphs/g035_u675F_original_1x.png",
+      "glyphs/g035_u675F_target_overlay_1x.png",
+      "glyphs/g035_u675F_triad_8x_nearest.png",
+      "glyphs/g036_u53EF_mask_only_1x.png",
+      "glyphs/g036_u53EF_original_1x.png",
+      "glyphs/g036_u53EF_target_overlay_1x.png",
+      "glyphs/g036_u53EF_triad_8x_nearest.png",
+      "glyphs/g037_u6838_mask_only_1x.png",
+      "glyphs/g037_u6838_original_1x.png",
+      "glyphs/g037_u6838_target_overlay_1x.png",
+      "glyphs/g037_u6838_triad_8x_nearest.png",
+      "glyphs/g038_u9A8C_mask_only_1x.png",
+      "glyphs/g038_u9A8C_original_1x.png",
+      "glyphs/g038_u9A8C_target_overlay_1x.png",
+      "glyphs/g038_u9A8C_triad_8x_nearest.png",
+      "glyphs/g039_u4EFB_mask_only_1x.png",
+      "glyphs/g039_u4EFB_original_1x.png",
+      "glyphs/g039_u4EFB_target_overlay_1x.png",
+      "glyphs/g039_u4EFB_triad_8x_nearest.png",
+      "glyphs/g040_u52A1_mask_only_1x.png",
+      "glyphs/g040_u52A1_original_1x.png",
+      "glyphs/g040_u52A1_target_overlay_1x.png",
+      "glyphs/g040_u52A1_triad_8x_nearest.png",
+      "glyphs/g041_u8F93_mask_only_1x.png",
+      "glyphs/g041_u8F93_original_1x.png",
+      "glyphs/g041_u8F93_target_overlay_1x.png",
+      "glyphs/g041_u8F93_triad_8x_nearest.png",
+      "glyphs/g042_u5165_mask_only_1x.png",
+      "glyphs/g042_u5165_original_1x.png",
+      "glyphs/g042_u5165_target_overlay_1x.png",
+      "glyphs/g042_u5165_triad_8x_nearest.png",
+      "glyphs/g043_u3001_mask_only_1x.png",
+      "glyphs/g043_u3001_original_1x.png",
+      "glyphs/g043_u3001_target_overlay_1x.png",
+      "glyphs/g043_u3001_triad_8x_nearest.png",
+      "glyphs/g044_u8F93_mask_only_1x.png",
+      "glyphs/g044_u8F93_original_1x.png",
+      "glyphs/g044_u8F93_target_overlay_1x.png",
+      "glyphs/g044_u8F93_triad_8x_nearest.png",
+      "glyphs/g045_u51FA_mask_only_1x.png",
+      "glyphs/g045_u51FA_original_1x.png",
+      "glyphs/g045_u51FA_target_overlay_1x.png",
+      "glyphs/g045_u51FA_triad_8x_nearest.png",
+      "glyphs/g046_u4E0E_mask_only_1x.png",
+      "glyphs/g046_u4E0E_original_1x.png",
+      "glyphs/g046_u4E0E_target_overlay_1x.png",
+      "glyphs/g046_u4E0E_triad_8x_nearest.png",
+      "glyphs/g047_u5224_mask_only_1x.png",
+      "glyphs/g047_u5224_original_1x.png",
+      "glyphs/g047_u5224_target_overlay_1x.png",
+      "glyphs/g047_u5224_triad_8x_nearest.png",
+      "glyphs/g048_u636E_mask_only_1x.png",
+      "glyphs/g048_u636E_original_1x.png",
+      "glyphs/g048_u636E_target_overlay_1x.png",
+      "glyphs/g048_u636E_triad_8x_nearest.png",
+      "glyphs/g049_u9006_mask_only_1x.png",
+      "glyphs/g049_u9006_original_1x.png",
+      "glyphs/g049_u9006_target_overlay_1x.png",
+      "glyphs/g049_u9006_triad_8x_nearest.png",
+      "glyphs/g050_u5411_mask_only_1x.png",
+      "glyphs/g050_u5411_original_1x.png",
+      "glyphs/g050_u5411_target_overlay_1x.png",
+      "glyphs/g050_u5411_triad_8x_nearest.png",
+      "glyphs/g051_u6838_mask_only_1x.png",
+      "glyphs/g051_u6838_original_1x.png",
+      "glyphs/g051_u6838_target_overlay_1x.png",
+      "glyphs/g051_u6838_triad_8x_nearest.png",
+      "glyphs/g052_u5BF9_mask_only_1x.png",
+      "glyphs/g052_u5BF9_original_1x.png",
+      "glyphs/g052_u5BF9_target_overlay_1x.png",
+      "glyphs/g052_u5BF9_triad_8x_nearest.png",
+      "glyphs/g053_uFF1A_mask_only_1x.png",
+      "glyphs/g053_uFF1A_original_1x.png",
+      "glyphs/g053_uFF1A_target_overlay_1x.png",
+      "glyphs/g053_uFF1A_triad_8x_nearest.png",
+      "glyphs/g054_u4EFB_mask_only_1x.png",
+      "glyphs/g054_u4EFB_original_1x.png",
+      "glyphs/g054_u4EFB_target_overlay_1x.png",
+      "glyphs/g054_u4EFB_triad_8x_nearest.png",
+      "glyphs/g055_u52A1_mask_only_1x.png",
+      "glyphs/g055_u52A1_original_1x.png",
+      "glyphs/g055_u52A1_target_overlay_1x.png",
+      "glyphs/g055_u52A1_triad_8x_nearest.png",
+      "glyphs/g056_u6240_mask_only_1x.png",
+      "glyphs/g056_u6240_original_1x.png",
+      "glyphs/g056_u6240_target_overlay_1x.png",
+      "glyphs/g056_u6240_triad_8x_nearest.png",
+      "glyphs/g057_u7528_mask_only_1x.png",
+      "glyphs/g057_u7528_original_1x.png",
+      "glyphs/g057_u7528_target_overlay_1x.png",
+      "glyphs/g057_u7528_triad_8x_nearest.png",
+      "glyphs/g058_u5B9A_mask_only_1x.png",
+      "glyphs/g058_u5B9A_original_1x.png",
+      "glyphs/g058_u5B9A_target_overlay_1x.png",
+      "glyphs/g058_u5B9A_triad_8x_nearest.png",
+      "glyphs/g059_u4E49_mask_only_1x.png",
+      "glyphs/g059_u4E49_original_1x.png",
+      "glyphs/g059_u4E49_target_overlay_1x.png",
+      "glyphs/g059_u4E49_triad_8x_nearest.png",
+      "glyphs/g060_u9010_mask_only_1x.png",
+      "glyphs/g060_u9010_original_1x.png",
+      "glyphs/g060_u9010_target_overlay_1x.png",
+      "glyphs/g060_u9010_triad_8x_nearest.png",
+      "glyphs/g061_u9879_mask_only_1x.png",
+      "glyphs/g061_u9879_original_1x.png",
+      "glyphs/g061_u9879_target_overlay_1x.png",
+      "glyphs/g061_u9879_triad_8x_nearest.png",
+      "glyphs/g062_u8FD4_mask_only_1x.png",
+      "glyphs/g062_u8FD4_original_1x.png",
+      "glyphs/g062_u8FD4_target_overlay_1x.png",
+      "glyphs/g062_u8FD4_triad_8x_nearest.png",
+      "glyphs/g063_u56DE_mask_only_1x.png",
+      "glyphs/g063_u56DE_original_1x.png",
+      "glyphs/g063_u56DE_target_overlay_1x.png",
+      "glyphs/g063_u56DE_triad_8x_nearest.png",
+      "glyphs/g064_u68C0_mask_only_1x.png",
+      "glyphs/g064_u68C0_original_1x.png",
+      "glyphs/g064_u68C0_target_overlay_1x.png",
+      "glyphs/g064_u68C0_triad_8x_nearest.png",
+      "glyphs/g065_u67E5_mask_only_1x.png",
+      "glyphs/g065_u67E5_original_1x.png",
+      "glyphs/g065_u67E5_target_overlay_1x.png",
+      "glyphs/g065_u67E5_triad_8x_nearest.png",
+      "glyphs/g066_u56FE_mask_only_1x.png",
+      "glyphs/g066_u56FE_original_1x.png",
+      "glyphs/g066_u56FE_target_overlay_1x.png",
+      "glyphs/g066_u56FE_triad_8x_nearest.png",
+      "glyphs/g067_u0031_mask_only_1x.png",
+      "glyphs/g067_u0031_original_1x.png",
+      "glyphs/g067_u0031_target_overlay_1x.png",
+      "glyphs/g067_u0031_triad_8x_nearest.png",
+      "glyphs/g068_u002E_mask_only_1x.png",
+      "glyphs/g068_u002E_original_1x.png",
+      "glyphs/g068_u002E_target_overlay_1x.png",
+      "glyphs/g068_u002E_triad_8x_nearest.png",
+      "glyphs/g069_u0031_mask_only_1x.png",
+      "glyphs/g069_u0031_original_1x.png",
+      "glyphs/g069_u0031_target_overlay_1x.png",
+      "glyphs/g069_u0031_triad_8x_nearest.png",
+      "glyphs/g070_u6570_mask_only_1x.png",
+      "glyphs/g070_u6570_original_1x.png",
+      "glyphs/g070_u6570_target_overlay_1x.png",
+      "glyphs/g070_u6570_triad_8x_nearest.png",
+      "glyphs/g071_u5B66_mask_only_1x.png",
+      "glyphs/g071_u5B66_original_1x.png",
+      "glyphs/g071_u5B66_target_overlay_1x.png",
+      "glyphs/g071_u5B66_triad_8x_nearest.png",
+      "glyphs/g072_u8BED_mask_only_1x.png",
+      "glyphs/g072_u8BED_original_1x.png",
+      "glyphs/g072_u8BED_target_overlay_1x.png",
+      "glyphs/g072_u8BED_triad_8x_nearest.png",
+      "glyphs/g073_u8A00_mask_only_1x.png",
+      "glyphs/g073_u8A00_original_1x.png",
+      "glyphs/g073_u8A00_target_overlay_1x.png",
+      "glyphs/g073_u8A00_triad_8x_nearest.png",
+      "glyphs/g074_u4ECE_mask_only_1x.png",
+      "glyphs/g074_u4ECE_original_1x.png",
+      "glyphs/g074_u4ECE_target_overlay_1x.png",
+      "glyphs/g074_u4ECE_triad_8x_nearest.png",
+      "glyphs/g075_u5BF9_mask_only_1x.png",
+      "glyphs/g075_u5BF9_original_1x.png",
+      "glyphs/g075_u5BF9_target_overlay_1x.png",
+      "glyphs/g075_u5BF9_triad_8x_nearest.png",
+      "glyphs/g076_u8C61_mask_only_1x.png",
+      "glyphs/g076_u8C61_original_1x.png",
+      "glyphs/g076_u8C61_target_overlay_1x.png",
+      "glyphs/g076_u8C61_triad_8x_nearest.png",
+      "glyphs/g077_u58F0_mask_only_1x.png",
+      "glyphs/g077_u58F0_original_1x.png",
+      "glyphs/g077_u58F0_target_overlay_1x.png",
+      "glyphs/g077_u58F0_triad_8x_nearest.png",
+      "glyphs/g078_u660E_mask_only_1x.png",
+      "glyphs/g078_u660E_original_1x.png",
+      "glyphs/g078_u660E_target_overlay_1x.png",
+      "glyphs/g078_u660E_triad_8x_nearest.png",
+      "glyphs/g079_u5230_mask_only_1x.png",
+      "glyphs/g079_u5230_original_1x.png",
+      "glyphs/g079_u5230_target_overlay_1x.png",
+      "glyphs/g079_u5230_triad_8x_nearest.png",
+      "glyphs/g080_u4EFB_mask_only_1x.png",
+      "glyphs/g080_u4EFB_original_1x.png",
+      "glyphs/g080_u4EFB_target_overlay_1x.png",
+      "glyphs/g080_u4EFB_triad_8x_nearest.png",
+      "glyphs/g081_u52A1_mask_only_1x.png",
+      "glyphs/g081_u52A1_original_1x.png",
+      "glyphs/g081_u52A1_target_overlay_1x.png",
+      "glyphs/g081_u52A1_triad_8x_nearest.png",
+      "glyphs/g082_u9648_mask_only_1x.png",
+      "glyphs/g082_u9648_original_1x.png",
+      "glyphs/g082_u9648_target_overlay_1x.png",
+      "glyphs/g082_u9648_triad_8x_nearest.png",
+      "glyphs/g083_u8FF0_mask_only_1x.png",
+      "glyphs/g083_u8FF0_original_1x.png",
+      "glyphs/g083_u8FF0_target_overlay_1x.png",
+      "glyphs/g083_u8FF0_triad_8x_nearest.png",
+      "glyphs/g084_u7684_mask_only_1x.png",
+      "glyphs/g084_u7684_original_1x.png",
+      "glyphs/g084_u7684_target_overlay_1x.png",
+      "glyphs/g084_u7684_triad_8x_nearest.png",
+      "glyphs/g085_u4F9D_mask_only_1x.png",
+      "glyphs/g085_u4F9D_original_1x.png",
+      "glyphs/g085_u4F9D_target_overlay_1x.png",
+      "glyphs/g085_u4F9D_triad_8x_nearest.png",
+      "glyphs/g086_u8D56_mask_only_1x.png",
+      "glyphs/g086_u8D56_original_1x.png",
+      "glyphs/g086_u8D56_target_overlay_1x.png",
+      "glyphs/g086_u8D56_triad_8x_nearest.png",
+      "glyphs/g087_u5173_mask_only_1x.png",
+      "glyphs/g087_u5173_original_1x.png",
+      "glyphs/g087_u5173_target_overlay_1x.png",
+      "glyphs/g087_u5173_triad_8x_nearest.png",
+      "glyphs/g088_u7CFB_mask_only_1x.png",
+      "glyphs/g088_u7CFB_original_1x.png",
+      "glyphs/g088_u7CFB_target_overlay_1x.png",
+      "glyphs/g088_u7CFB_triad_8x_nearest.png",
+      "glyphs/g089_u3002_mask_only_1x.png",
+      "glyphs/g089_u3002_original_1x.png",
+      "glyphs/g089_u3002_target_overlay_1x.png",
+      "glyphs/g089_u3002_triad_8x_nearest.png",
+      "glyphs/g090_u6BCF_mask_only_1x.png",
+      "glyphs/g090_u6BCF_original_1x.png",
+      "glyphs/g090_u6BCF_target_overlay_1x.png",
+      "glyphs/g090_u6BCF_triad_8x_nearest.png",
+      "glyphs/g091_u4E00_mask_only_1x.png",
+      "glyphs/g091_u4E00_original_1x.png",
+      "glyphs/g091_u4E00_target_overlay_1x.png",
+      "glyphs/g091_u4E00_triad_8x_nearest.png",
+      "glyphs/g092_u6761_mask_only_1x.png",
+      "glyphs/g092_u6761_original_1x.png",
+      "glyphs/g092_u6761_target_overlay_1x.png",
+      "glyphs/g092_u6761_triad_8x_nearest.png",
+      "glyphs/g093_u7BAD_mask_only_1x.png",
+      "glyphs/g093_u7BAD_original_1x.png",
+      "glyphs/g093_u7BAD_target_overlay_1x.png",
+      "glyphs/g093_u7BAD_triad_8x_nearest.png",
+      "glyphs/g094_u5934_mask_only_1x.png",
+      "glyphs/g094_u5934_original_1x.png",
+      "glyphs/g094_u5934_target_overlay_1x.png",
+      "glyphs/g094_u5934_triad_8x_nearest.png",
+      "glyphs/g095_u90FD_mask_only_1x.png",
+      "glyphs/g095_u90FD_original_1x.png",
+      "glyphs/g095_u90FD_target_overlay_1x.png",
+      "glyphs/g095_u90FD_triad_8x_nearest.png",
+      "glyphs/g096_u8868_mask_only_1x.png",
+      "glyphs/g096_u8868_original_1x.png",
+      "glyphs/g096_u8868_target_overlay_1x.png",
+      "glyphs/g096_u8868_triad_8x_nearest.png",
+      "glyphs/g097_u793A_mask_only_1x.png",
+      "glyphs/g097_u793A_original_1x.png",
+      "glyphs/g097_u793A_target_overlay_1x.png",
+      "glyphs/g097_u793A_triad_8x_nearest.png",
+      "glyphs/g098_u53F3_mask_only_1x.png",
+      "glyphs/g098_u53F3_original_1x.png",
+      "glyphs/g098_u53F3_target_overlay_1x.png",
+      "glyphs/g098_u53F3_triad_8x_nearest.png",
+      "glyphs/g099_u4FA7_mask_only_1x.png",
+      "glyphs/g099_u4FA7_original_1x.png",
+      "glyphs/g099_u4FA7_target_overlay_1x.png",
+      "glyphs/g099_u4FA7_triad_8x_nearest.png",
+      "glyphs/g100_u5185_mask_only_1x.png",
+      "glyphs/g100_u5185_original_1x.png",
+      "glyphs/g100_u5185_target_overlay_1x.png",
+      "glyphs/g100_u5185_triad_8x_nearest.png",
+      "glyphs/g101_u5BB9_mask_only_1x.png",
+      "glyphs/g101_u5BB9_original_1x.png",
+      "glyphs/g101_u5BB9_target_overlay_1x.png",
+      "glyphs/g101_u5BB9_triad_8x_nearest.png",
+      "glyphs/g102_u4F7F_mask_only_1x.png",
+      "glyphs/g102_u4F7F_original_1x.png",
+      "glyphs/g102_u4F7F_target_overlay_1x.png",
+      "glyphs/g102_u4F7F_triad_8x_nearest.png",
+      "glyphs/g103_u7528_mask_only_1x.png",
+      "glyphs/g103_u7528_original_1x.png",
+      "glyphs/g103_u7528_target_overlay_1x.png",
+      "glyphs/g103_u7528_triad_8x_nearest.png",
+      "glyphs/g104_u5DE6_mask_only_1x.png",
+      "glyphs/g104_u5DE6_original_1x.png",
+      "glyphs/g104_u5DE6_target_overlay_1x.png",
+      "glyphs/g104_u5DE6_triad_8x_nearest.png",
+      "glyphs/g105_u4FA7_mask_only_1x.png",
+      "glyphs/g105_u4FA7_original_1x.png",
+      "glyphs/g105_u4FA7_target_overlay_1x.png",
+      "glyphs/g105_u4FA7_triad_8x_nearest.png",
+      "glyphs/g106_u5B9A_mask_only_1x.png",
+      "glyphs/g106_u5B9A_original_1x.png",
+      "glyphs/g106_u5B9A_target_overlay_1x.png",
+      "glyphs/g106_u5B9A_triad_8x_nearest.png",
+      "glyphs/g107_u4E49_mask_only_1x.png",
+      "glyphs/g107_u4E49_original_1x.png",
+      "glyphs/g107_u4E49_target_overlay_1x.png",
+      "glyphs/g107_u4E49_triad_8x_nearest.png",
+      "glyphs/g108_u3002_mask_only_1x.png",
+      "glyphs/g108_u3002_original_1x.png",
+      "glyphs/g108_u3002_target_overlay_1x.png",
+      "glyphs/g108_u3002_triad_8x_nearest.png",
+      "grayscale_300dpi.png",
+      "ledger/de_actual_baselines.csv",
+      "ledger/glyph_manual_review_ledger.csv",
+      "ledger/semantic_parent_manifest.csv",
+      "ledger/visual_harmony_ledger.csv",
+      "occlusion/PAINT_ORDER_AND_OCCLUSION_SCOPE.md",
+      "occlusion/g_return_arrow_final_visible_mask_1x.png",
+      "occlusion/g_return_arrow_pre_occlusion_mask_1x.png",
+      "occlusion/g_return_arrow_x_opaque_ground_intersection_1x.png",
+      "occlusion/g_return_label_white_opaque_ground_vector_coverage_1x.png",
+      "occlusion/occlusion_ledger.csv",
+      "occlusion/return_label_ground_paint_order_overlay_1x.png",
+      "occlusion/return_label_ground_paint_order_overlay_8x_nearest.png",
+      "raw/generator_stdout.txt",
+      "raw/r95_page_017_200dpi.png",
+      "raw/r95_page_017_native300.png",
+      "relations/graphic_manifest.csv",
+      "relations/graphic_masks/g_arrow01_head_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_arrow01_shaft_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_arrow02_head_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_arrow02_shaft_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_arrow03_head_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_arrow03_shaft_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_inline_arrow_head_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_inline_arrow_shaft_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_node01_border_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_node02_border_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_node03_border_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_node04_border_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_return_arrow_head_final_visible_mask_1x.png",
+      "relations/graphic_masks/g_return_arrow_shaft_final_visible_mask_1x.png",
+      "relations/text_figure_edge_relations.csv",
+      "relations/text_graphic_relations.csv",
+      "sa1_findings.csv",
+      "scripts/build_final_tables.py",
+      "scripts/calibrate_low_profile_punctuation.py",
+      "scripts/generate_fig_p020_r111.py",
+      "scripts/verify_and_seal_terminal.py",
+      "standalone_300dpi.png",
+      "terminal/MACHINE_INTEGRITY.json",
+      "terminal/SA1_FINAL_VERDICT.md",
+      "terminal/TERMINAL_MANIFEST.json",
+      "terminal/WRITE_STOPPED.md",
+      "views/figure_crop_300dpi.png"
+    ]
+  }
+}

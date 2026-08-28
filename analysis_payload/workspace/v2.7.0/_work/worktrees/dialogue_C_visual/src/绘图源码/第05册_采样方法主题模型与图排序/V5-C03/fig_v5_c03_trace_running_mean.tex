@@ -1,0 +1,58 @@
+% v2.3.1 figure UID: FIG-P608-01
+% v2.7.0 SA2 repair: retained-sample means recomputed from the fixed trace;
+% direct panel/segment labels and print-safe type/stroke hierarchy.
+\tikzset{slfig-FIG-P608-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+% Keep the two compact relation signs independently legible at the native
+% 300 dpi audit scale.  The two t glyphs retain natural math script style.
+\newcommand{\slfigTraceTallEq}{%
+  \mathrel{\vcenter{\offinterlineskip
+    \hbox{\rule{5.5pt}{.85pt}}\vskip3.9pt
+    \hbox{\rule{5.5pt}{.85pt}}}}}
+\newcommand{\slfigTraceScriptT}{%
+  \scriptstyle t}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P608-01]
+\begin{groupplot}[group style={group size=1 by 2,vertical sep=11.0mm},
+  width=11.4cm,height=3.55cm,xmin=1,xmax=20,xtick={1,5,10,15,20},
+  axis lines=left,clip=false,scaled ticks=false,
+  axis line style={line width=.65pt},tick style={line width=.55pt},
+  tick label style={font=\fontsize{9.6pt}{11.6pt}\selectfont},
+  label style={font=\fontsize{10.8pt}{13.0pt}\selectfont},
+  ylabel style={rotate=-90,anchor=east,at={(axis description cs:-0.12,0.5)}},
+  title style={font=\fontsize{10.8pt}{13.0pt}\selectfont,
+    at={(axis description cs:0.5,1.035)},anchor=south}]
+\nextgroupplot[ymin=1.4,ymax=4.05,ytick={2,3,4},ylabel={$X_{\slfigTraceScriptT}$},
+  xticklabels={},title={轨迹 $X_t$}]
+  \path[fill=SLSoftGray,pattern=north east lines,pattern color=SLRuleGray]
+    (axis cs:1,1.4) rectangle (axis cs:5.5,4.05);
+  \addplot[draw=SLBlue,line width=1.0pt,mark=*,mark size=1.7pt] coordinates
+    {(1,3.8)(2,3.4)(3,3.0)(4,2.7)(5,2.4)(6,1.9)(7,2.2)(8,1.7)(9,2.1)(10,2.0)
+     (11,2.3)(12,1.8)(13,2.1)(14,1.9)(15,2.2)(16,2.0)(17,1.8)(18,2.1)(19,2.0)(20,1.9)};
+  \draw[draw=SLGold,line width=.85pt,densely dashed]
+    (axis cs:5.5,1.4)--(axis cs:5.5,4.05);
+  % Keep the warm-up annotation outside the patterned region.  A label
+  % background is not used as an occlusion exemption for hatch/text clearance.
+  \node[anchor=north west,font=\fontsize{9.6pt}{11.6pt}\selectfont,text=SLGray,
+    align=center]
+    at (axis cs:5.7,3.95) {预热段\\$t\slfigTraceTallEq 1,\ldots,5$};
+  \node[anchor=north,font=\fontsize{9.6pt}{11.6pt}\selectfont,text=SLGray]
+    at (axis cs:12.8,3.88) {保留样本 $t\slfigTraceTallEq 6,\ldots,20$};
+\nextgroupplot[ymin=1.75,ymax=2.20,ytick={1.8,1.9,2.0,2.1},
+  xlabel={$t$},ylabel={$\overline X_{6:\slfigTraceScriptT}$},
+  title={保留样本运行均值 $\overline X_{6:t}$}]
+  \path[fill=SLSoftGray,pattern=north east lines,pattern color=SLRuleGray]
+    (axis cs:1,1.75) rectangle (axis cs:5.5,2.20);
+  \addplot[draw=SLBlue,line width=1.0pt,mark=square*,mark size=1.7pt] coordinates
+    {(6,1.9000)(7,2.0500)(8,1.9333)(9,1.9750)(10,1.9800)(11,2.0333)(12,2.0000)
+     (13,2.0125)(14,2.0000)(15,2.0200)(16,2.0182)(17,2.0000)(18,2.0077)(19,2.0071)(20,2.0000)};
+  \draw[draw=SLGold,line width=.85pt,densely dashed]
+    (axis cs:5.5,1.75)--(axis cs:5.5,2.20);
+  \draw[draw=SLTeal,line width=.80pt,dash dot] (axis cs:5.5,2)--(axis cs:20,2);
+  \node[anchor=south east,font=\fontsize{9.6pt}{11.6pt}\selectfont,text=SLTeal]
+    at (axis cs:19.6,2.135) {目标值 $2$};
+\end{groupplot}
+\end{tikzpicture}
+\caption{舍弃前5步后，保留样本运行均值在目标值2附近波动；本图仅作诊断，不构成收敛证明}\label{fig:V5-C03-trace-running-mean}
+\end{figure}

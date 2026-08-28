@@ -1,0 +1,29 @@
+peer_id,element_id,role,peer_class,manual_decision,manual_note
+PEER01,O-T07,ANNOTATION,CJK,PASS,acceptance-heading CJK height is internally uniform across its twenty-one characters
+PEER02,O-T07,ANNOTATION,LATIN_GREEK_LOWER,PASS,heading pi profile is proportionate to the surrounding annotation line
+PEER03,O-T03,EDGE_LABEL,CJK,PASS,proposal label matches the ordinary edge-label CJK scale
+PEER04,O-T06,EDGE_LABEL,CJK,PASS,calculation label remains the same visual height as its peer labels
+PEER05,O-T09,EDGE_LABEL,CJK,PASS,decision label aligns with the established edge-label size family
+PEER06,O-T11,EDGE_LABEL,CJK,PASS,accept label is neither enlarged nor compressed relative to branch labels
+PEER07,O-T12,EDGE_LABEL,CJK,PASS,reject label retains peer-consistent stroke height on the dashed branch
+PEER08,O-T17,EDGE_LABEL,CJK,PASS,self-loop label uses the same CJK height despite its longer phrase
+PEER09,O-T08,FORMULA_BLOCK,CJK,PASS,formula-block Chinese connector glyphs share a coherent forty-pixel profile
+PEER10,O-T08,FORMULA_BLOCK,LATIN_GREEK_LOWER,PASS,lowercase and Greek formula glyphs form a consistent math-text band
+PEER11,O-T08,FORMULA_BLOCK,LATIN_UPPER_DIGIT,PASS,upper-case variables and digit one have consistent formula prominence
+PEER12,O-T08,FORMULA_BLOCK,MATH_OPERATOR,PASS,parentheses braces and relation bar maintain coherent operator sizing
+PEER13,O-T02,NODE_FORMULA,CJK,PASS,current-state CJK formula text matches the node-formula peer group
+PEER14,O-T05,NODE_FORMULA,CJK,PASS,candidate-state CJK formula text is level with other node formulas
+PEER15,O-T14,NODE_FORMULA,CJK,PASS,accepted update connector 取 retains the node-formula reference height
+PEER16,O-T16,NODE_FORMULA,CJK,PASS,rejected update 保持 stays within the node-formula CJK scale
+PEER17,O-T02,NODE_FORMULA,LATIN_UPPER_DIGIT,PASS,current X is visually commensurate with peer node variables
+PEER18,O-T05,NODE_FORMULA,LATIN_UPPER_DIGIT,PASS,candidate Y matches the upper-variable height used in state nodes
+PEER19,O-T14,NODE_FORMULA,LATIN_UPPER_DIGIT,PASS,accepted-update variables preserve the established node-math scale
+PEER20,O-T16,NODE_FORMULA,LATIN_UPPER_DIGIT,PASS,rejected-update variables remain peer-consistent on both sides
+PEER21,O-T01,NODE_TEXT,CJK,PASS,current-state title shares the common node-title height
+PEER22,O-T04,NODE_TEXT,CJK,PASS,proposal instruction maintains the node-text CJK median
+PEER23,O-T10,NODE_TEXT,CJK,PASS,decision sentence uses the same CJK body height inside the larger diamond
+PEER24,O-T13,NODE_TEXT,CJK,PASS,accepted title is consistent with the other node headings
+PEER25,O-T15,NODE_TEXT,CJK,PASS,rejected title matches the accepted and current node-title family
+PEER26,O-T10,NODE_TEXT,LATIN_GREEK_LOWER,PASS,decision alpha has appropriate lowercase-math height within node text
+PEER27,O-T10,NODE_TEXT,LATIN_UPPER_DIGIT,PASS,decision variables and digits remain balanced within the sentence
+PEER28,O-T10,NODE_TEXT,MATH_OPERATOR,PASS,brackets inequality parentheses and question mark are mutually proportionate

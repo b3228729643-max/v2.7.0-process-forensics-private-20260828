@@ -1,0 +1,1107 @@
+% STAGE13-CHAPTER: V5-C04
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V5-C04-CH01}; CH-02=\label{struct:V5-C04-CH02}; CH-03=\label{struct:V5-C04-CH03}; CH-04=\label{struct:V5-C04-CH04}; CH-05=\label{struct:V5-C04-CH05}; CH-06=\label{struct:V5-C04-CH06}; CH-07=\label{struct:V5-C04-CH07}; CH-08=\label{struct:V5-C04-CH08}; CH-09=\label{struct:V5-C04-CH09}; CH-10=\label{struct:V5-C04-CH10}; CH-11=\label{struct:V5-C04-CH11}; CH-12=\label{struct:V5-C04-CH12}; CH-13=\label{struct:V5-C04-CH13}; CH-14=\label{struct:V5-C04-CH14}; CH-15=\label{struct:V5-C04-CH15}; CH-16=\label{struct:V5-C04-CH16}; CH-17=\label{struct:V5-C04-CH17}; CH-18=\label{struct:V5-C04-CH18}; CH-19=\label{struct:V5-C04-CH19}; CH-20=\label{struct:V5-C04-CH20}; CH-21=\label{struct:V5-C04-CH21}; CH-22=\label{struct:V5-C04-CH22}; CH-23=\label{struct:V5-C04-CH23}; CH-24=\label{struct:V5-C04-CH24}; CH-25=\label{struct:V5-C04-CH25}; CH-26=\label{struct:V5-C04-CH26}; CH-27=\label{struct:V5-C04-CH27}; CH-28=\label{struct:V5-C04-CH28}; CH-29=\label{struct:V5-C04-CH29}; CH-30=\label{struct:V5-C04-CH30}; CH-31=\label{struct:V5-C04-CH31}; CH-32=\label{struct:V5-C04-CH32}; CH-33=\label{struct:V5-C04-CH33}; CH-34=\label{struct:V5-C04-CH34}; CH-35=\label{struct:V5-C04-CH35}; CH-36=\label{struct:V5-C04-CH36}; CH-37=\label{struct:V5-C04-CH37}
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1.1-EXERCISE-LAYOUT: grouped; kept=12; source_group=1; supplement=11
+% DERIVATION-CHECK: step-1; step-2; step-3
+% FORMAL-RESULT-CHECK: results=4; proofs=4
+% ALGORITHM-CHECK: algorithms=1; deterministic-contracts=1
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C04-dependency-graph -> SLM-19-05-003,SLM-19-05-004,PRE-SA-008,SLM-19-05-005,SLM-19-03-007,SLM-19-05-006
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C04-conditional-slice -> SLM-19-05-003,SLM-19-05-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C04-coordinate-sweep -> PRE-SA-008,SLM-19-05-005,SLM-19-03-007
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C04-gibbs-axis-path -> SLM-19-05-004,SLM-19-05-005
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C04-gibbs-vs-mh -> PRE-SA-008,SLM-19-05-005
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C04-bivariate-normal-conditionals -> SLM-19-05-004,SLM-19-03-007
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C04-bayes-markov-blanket -> SLM-19-05-006
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C04-mixing-rho-comparison -> PRE-SA-008,SLM-19-05-006
+
+\chapter{Gibbs 抽样}\label{chap:V5-C04}
+\index{Gibbs抽样}
+\index{吉布斯抽样|see{Gibbs抽样}}
+
+% KNOWLEDGE-PLAN: KN-V5-C33-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：Gibbs 抽样。}Gibbs 抽样章地图把“联合目标$\to$满条件概率核$\to$坐标更新$\to$扫描链与诊断”作为主线；请为其中首条箭头补出必要条件，并检查终点仍落在本章声明的输出域。\par
+
+\SLChapterOpening{联合目标$\to$满条件概率核$\to$坐标更新$\to$扫描链与诊断}
+{怎样从联合分布构造可测的满条件版本，并证明逐坐标更新保持目标？}
+{读完可处理零边缘集合、证明坐标核可逆，并区分系统扫描的平稳性与可逆性。}
+{联合/边缘/条件分布、可测核、MH细致平衡，以及有限链与Harris条件。}
+{先复习\GlobalChapterRef{32}{5}{3}的MH零流与一般状态收敛层次，再进入满条件核。}
+\phantomsection\label{struct:V5-C04-CH01}
+% KNOWLEDGE-PLAN: KN-V5-C33-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}Gibbs 抽样的首个可检验目标是“从联合分布严格定义满条件分布，说明归一化分母、支持集和“正比于”记号的合法边界”；请从联合分布严格定义满条件分布，说明归一化分母、支持集和“正比于”记号的合法边界并写出中间结果，再按“中间结果逐项包含首目标“从联合分布严格定义满条件分布，说明归一化分母、支持集和“正比于”记号的合法边界”声明的对象、条件与结论”验收。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 从联合分布严格定义满条件分布，说明归一化分母、支持集和“正比于”记号的合法边界；
+  \item 把单坐标Gibbs更新写成马尔可夫核，证明它关于目标分布可逆并保持目标分布；
+  \item 区分系统扫描与随机扫描，证明二者的平稳性，并说明系统扫描一般不再可逆；
+  \item 从\MetropolisHastings{}接受比推导“精确满条件提议必接受”，同时处理零边缘质量与不精确条件抽样器；
+  \item 手工执行二元正态Gibbs更新，推导相关系数对混合速度和有效样本量的影响；
+  \item 按完整数学步骤实现逐变量抽样，检查中途停止、不可约性、数值异常与复杂度，不虚构随机运行结果。
+\end{itemize}
+}
+
+\phantomsection\label{struct:V5-C04-CH02}
+% KNOWLEDGE-PLAN: KN-V5-C33-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}Gibbs 抽样的最短先修明确要求“本章直接使用所引章节的目标分布、马尔可夫核、细致平衡、\MetropolisHastings{}零流分支和样本诊断”；请把首项“本章直接使用所引章节的目标分布、马尔可夫核、细致平衡、\MetropolisHastings{}零流分支和样本诊断”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章直接使用所引章节的目标分布、马尔可夫核、细致平衡、\MetropolisHastings{}零流分支和样本诊断”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章直接使用\GlobalChapterRef{32}{5}{3}的目标分布、马尔可夫核、细致平衡、\MetropolisHastings{}零流分支和样本诊断；还使用第1册概率基础中的联合、边缘、条件分布与条件独立。读者应能把联合密度积分成边缘密度，并能判断一个条件密度是否归一化。涉及连续变量时统一相对于乘积支配测度$\mu=\mu_1\otimes\cdots\otimes\mu_d$书写；有限状态情形把积分替换为求和。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V5-C04-CH03}
+% KNOWLEDGE-PLAN: KN-V5-C33-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}Gibbs 抽样先修自检固定核验“给定联合密度$\pi(x_1,x_2)$，能否计算边缘$\pi_2(x_2)$并写出$\pi(x_1\mid x_2)$”；请给定联合密度$\pi(x_1,x_2)$，实际计算边缘$\pi_2(x_2)$并写出$\pi(x_1\mid x_2)$并写出中间结果，再按“$\pi(x_1\mid x_2)$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 给定联合密度$\pi(x_1,x_2)$，能否计算边缘$\pi_2(x_2)$并写出$\pi(x_1\mid x_2)$？
+  \item 能否解释条件密度只在分母为正的条件值上由比值唯一确定？
+  \item 若两个核$K_1,K_2$分别保持$\pi$，能否逐步写出$\pi K_1K_2=\pi$？
+  \item 能否区分“核保持$\pi$”“链不可约”和“时间平均收敛”三种结论？
+  \item 能否把二次型$x_1^2-2\rho x_1x_2+x_2^2$对$x_1$配方？
+\end{enumerate}
+第1--2项不足时回看条件概率；第3--4项不足时回看第5册第1章；第5项是二元正态满条件分布的直接前置。
+\end{precheckbox}
+
+\phantomsection\label{struct:V5-C04-CH04}
+% KNOWLEDGE-PLAN: KN-V5-C33-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}Gibbs 抽样依赖路线从“所引章节的MH可逆性、零流分支与一般状态收敛条件 $\to$ 本章的坐标Gibbs核”进入“联合目标$\pi(x_1,\ldots,x_d)$ $\to$ 每个坐标的满条件分布$\pi_j(\cdot\mid x_{-j})$ $\to$ 单坐标Gibbs核$K_j$ $\to$ 系统扫描乘积核或随机扫描混合核 $\to$ 平稳性与可达性检查 $\to$ 燃烧期后的相关样本与Monte Carlo诊断”；请写出箭头成立所需的定义域条件，并核对前者输出能作为后者输入。\par
+
+\begin{dependencybox}
+\GlobalChapterRef{32}{5}{3}的MH可逆性、零流分支与一般状态收敛条件 $\to$ 本章的坐标Gibbs核；
+联合目标$\pi(x_1,\ldots,x_d)$
+$\to$ 每个坐标的满条件分布$\pi_j(\cdot\mid x_{-j})$
+$\to$ 单坐标Gibbs核$K_j$
+$\to$ 系统扫描乘积核或随机扫描混合核
+$\to$ 平稳性与可达性检查
+$\to$ 燃烧期后的相关样本与Monte Carlo诊断；
+概率图的局部分解
+$\to$ Markov毯
+$\to$ 只保留与当前变量相连的因子
+$\to$ 可计算的局部满条件分布。
+\end{dependencybox}
+图\ref{fig:V5-C04-dependency-graph}概括从联合目标与局部因子到Monte Carlo诊断的六节点学习与计算主链。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_dependency_graph.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先看给定其余坐标$x_{-j}$后，满条件$\pi_j(\cdot\mid x_{-j})$如何只重抽$x_j$；再看单坐标核$K_j$怎样组成系统或随机扫描核并产生相关样本；最终用MCSE、ESS与轨迹诊断评估统计误差和混合效率。主链箭头只表示学习与计算依赖，不是概率图的生成时间方向；目标保持仍不自动推出不可约、收敛或快速混合。\par
+
+\phantomsection\label{struct:V5-C04-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V5-C04
+\index[symbols]{minus-mathcalx-minus-eq-minus-prod-minus-j-eq-1-d-minus-mathcalx-minus-j--s3c215bdb8e6a@$\mathcal X=\prod_{j=1}^d\mathcal X_j$：$d$个坐标或变量块的联合取值空间}
+\index[symbols]{x-eq-x-1-minus-ldots-minus-x-d--s770e2781e4df@$x=(x_1,\ldots,x_d)$：一个完整链状态}
+\index[symbols]{x-minus-j--s903ceb3775f8@$x_{-j}$：删除第$j$个坐标后的其余状态}
+\index[symbols]{minus-pi-minus-x--s1e8c624b4f84@$\pi(x)$：Gibbs链的目标联合分布}
+\index[symbols]{minus-pi-minus-minus-j-x-minus-j--sa33d569adf10@$\pi_{-j}(x_{-j})$：对$x_j$积分或求和得到的边缘}
+\index[symbols]{minus-pi-minus-j-t-minus-midx-minus-minus-j--s94920e9bb480@$\pi_j(t\mid x_{-j})$：给定其余坐标时第$j$个坐标的满条件分布}
+\index[symbols]{k-j--s1f845f3055a9@$K_j$：只重抽第$j$个坐标的Gibbs更新}
+\index[symbols]{k-minus-mathrm-minus-sys--s04fed11466e2@$K_{\mathrm{sys}}$：一轮系统扫描$K_1K_2\cdots K_d$}
+\index[symbols]{k-minus-mathrm-minus-rs--sef27a9d15e32@$K_{\mathrm{rs}}$：固定权重随机扫描$\sum_jw_jK_j$}
+\index[symbols]{w-j--s4cf8c79f5476@$w_j$：随机扫描选择坐标$j$的概率}
+\index[symbols]{m-n-t--sc166d5a6b8b1@$m,n,T$：燃烧轮数、保留轮数及$T=m+n$}
+\index[symbols]{minus-rho-minus--sc248889be4d7@$\rho$：标准二元正态的相关系数}
+\index[symbols]{minus-varepsilon-minus-jt--s255b930e6b90@$\varepsilon_{jt}$：二元正态Gibbs第$t$轮第$j$步的创新}
+% STAGE19-SYMBOL-INDEX-END: V5-C04
+\begin{symboltablebox}
+\small
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 类型、维数或范围 & 含义\\ \midrule
+$\mathcal X=\prod_{j=1}^d\mathcal X_j$ & 乘积状态空间 & $d$个坐标或变量块的联合取值空间\\
+$x=(x_1,\ldots,x_d)$ & $\mathcal X$中元素 & 一个完整链状态\\
+$x_{-j}$ & $\prod_{\ell\ne j}\mathcal X_\ell$中元素 & 删除第$j$个坐标后的其余状态\\
+$\pi(x)$ & 概率密度或质量函数 & Gibbs链的目标联合分布\\
+$\pi_{-j}(x_{-j})$ & 非负边缘密度 & 对$x_j$积分或求和得到的边缘\\
+$\pi_j(t\mid x_{-j})$ & 条件密度 & 给定其余坐标时第$j$个坐标的满条件分布\\
+$K_j$ & 马尔可夫核 & 只重抽第$j$个坐标的Gibbs更新\\
+$K_{\mathrm{sys}}$ & 马尔可夫核 & 一轮系统扫描$K_1K_2\cdots K_d$\\
+$K_{\mathrm{rs}}$ & 马尔可夫核 & 固定权重随机扫描$\sum_jw_jK_j$\\
+$w_j$ & 正数且$\sum_jw_j=1$ & 随机扫描选择坐标$j$的概率\\
+$m,n,T$ & 非负整数 & 燃烧轮数、保留轮数及$T=m+n$\\
+$\rho$ & $(-1,1)$ & 标准二元正态的相关系数\\
+$\varepsilon_{jt}$ & 标准正态随机量 & 二元正态Gibbs第$t$轮第$j$步的创新\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V5-C33-FORMULA-001 L1
+\paragraph{读前自检：Gibbs抽样的满条件分解。}Gibbs满条件由联合密度固定其余坐标后归一化得到；请对二元$\pi(x_1,x_2)$写出$\pi_1(x_1\mid x_2)$，核对系统扫描第二步必须使用刚更新的$x_1$而非旧值。\par
+
+\SLReviewSection{完整条件分布}{sec:V5-C04-S01}
+\knowledgeanchor{SLM-19-05-003}{Gibbs抽样的满条件分解}
+\knowledgeanchor{SLM-19-05-004}{满条件分布的逐坐标更新原理}
+\phantomsection\label{struct:V5-C04-CH06}
+设目标联合密度$\pi(x_1,\ldots,x_d)$可以计算，但从整个$d$维目标直接抽样困难。若固定$x_{-j}$后的一维或低维条件分布容易抽样，就可以依次重抽各坐标，把高维问题拆成一系列局部问题。图\ref{fig:V5-C04-conditional-slice}具体采用零均值、单位方差、相关系数$\rho=3/5$的二元正态，并固定$a=1$、$b=4/5$；阅读任务是先看联合密度上的水平与竖直切片，再核对边缘分母$m_2(b)=\phi(4/5)$与$m_1(a)=\phi(1)$（$\phi$为标准正态密度），最后得到归一化的满条件密度。切片不是任意截面，必须在该条件值的边缘密度为正时归一化。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_conditional_slice.tex}
+
+\noindent\textbf{读图顺序。}先看左图固定$x_2=b=4/5$的水平切片与固定$x_1=a=1$的竖直切片；再看两条无交叉箭头如何分别用$m_2(b)=\phi(4/5)$与$m_1(a)=\phi(1)$归一化原始联合截面；得到$\mathcal N(12/25,16/25)$与$\mathcal N(3/5,16/25)$两条全实线积分为$1$的满条件密度。本高斯例两个分母均为正；一般情形分母为$0$时须采用预先指定的可测正则条件版本，且该版本仅在边缘几乎处处意义下唯一。\par
+\FloatBarrier
+
+\SLReadTranslation{“联合分布难以一次抽样”翻译成两个可执行问题：固定$x_2$后能否抽$x_1\mid x_2$，固定新$x_1$后能否抽$x_2\mid x_1$。Gibbs每次只解决其中一个问题。}
+\SLMethodTrigger{看到联合目标的各个满条件分布容易抽样，就按“固定其余坐标、抽一个坐标、立即写回”的顺序构造一轮扫描。}
+
+\begin{example}[先会执行：二元正态的一轮Gibbs]\label{exm:V5-C04-bridge-bvn}
+设$(X_1,X_2)$为零均值、单位方差、相关系数$\rho\in(-1,1)$的二元正态，且
+\[
+X_1\mid X_2=x_2\sim\mathcal N(\rho x_2,1-\rho^2),
+\qquad
+X_2\mid X_1=x_1\sim\mathcal N(\rho x_1,1-\rho^2).
+\]
+从$x^{(0)}=(0,0)$出发，取固定标准正态创新$\varepsilon_1=1,\varepsilon_2=0$。执行一轮系统扫描Gibbs更新，求$x^{(1)}$，并说明第二步应使用旧值还是同轮新值。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C04-bridge-bvn}
+\begin{solution}
+\SLReadTranslation{题目要求完成“先会执行：二元正态的一轮Gibbs”：先写清目标分布、提议或满条件与支持，再构造转移/估计量并核验不变性或归一化。}
+\SolGiven 目标分布、提议核或满条件在题面支持上有定义；所有条件分母和归一化常数为正，状态空间与随机变量取值域保持一致。
+\SLMethodTrigger{先声明目标分布、提议/满条件与支持，再逐步构造转移或估计量并核验归一化。}
+\SolDerive
+\SolGiven 条件$\rho\in(-1,1)$保证$1-\rho^2>0$，两个满条件分布的标准差均为$\sqrt{1-\rho^2}$。
+
+\SolPlan 系统扫描按坐标顺序抽样并立即写回，因此第二个坐标必须读取本轮刚得到的$x_1^{(1)}$。
+
+\SolDerive 第一步使用旧的$x_2^{(0)}=0$：
+\[
+x_1^{(1)}=\sqrt{1-\rho^2},
+\]
+第二步立即使用该新值以及$\varepsilon_2=0$：
+\[
+x_2^{(1)}
+=\rho x_1^{(1)}+\sqrt{1-\rho^2}\,\varepsilon_2
+=\rho\sqrt{1-\rho^2}.
+\]
+
+\SolCheck 当$\rho=0$时结果为$(1,0)$，与两个独立标准正态坐标的条件更新一致；每一步的条件方差均为正。
+
+\SolAnswer 一轮后的状态为
+\[
+x^{(1)}=\bigl(\sqrt{1-\rho^2},\,\rho\sqrt{1-\rho^2}\bigr).
+\]
+若第二步仍用$x_1^{(0)}$，得到的是并行更新，而不是本章定义的系统扫描。
+\SolCheck 核对概率非负、归一化和条件分母为正；若是采样核，再检查目标分布不变性或支持连通性。
+\end{solution}
+
+\phantomsection\label{struct:V5-C04-CH07}
+% KNOWLEDGE-PLAN: KN-V5-C33-DEFINITION-001 L1
+\paragraph{读前自检：满条件分布。}满条件$\pi_j(t\mid x_{-j})$只在边缘归一化常数正且有限时由比值定义；请对$t$积分核对为1，并在零分母分支采用预先指定的条件核版本。\par
+
+\begin{definition}[满条件分布]\label{def:V5-C04-full-conditional}
+以下给出进阶严格版本。设$\mathcal X=\prod_{\ell=1}^d\mathcal X_\ell$，每个$(\mathcal X_\ell,\mathcal B_\ell)$都是非空标准Borel空间，$\mu_\ell$是$\sigma$有限测度，$\mu=\bigotimes_{\ell=1}^d\mu_\ell$，而$\pi$是关于$\mu$联合可测的概率密度。对固定$j$定义
+\begin{equation}\label{eq:V5-C04-marginal-minus-j}
+\pi_{-j}(x_{-j})
+=\int_{\mathcal X_j}\pi(x_{-j},s)\,\mu_j(\mathrm ds).
+\end{equation}
+由Tonelli定理，$\pi_{-j}$可测；令$D_j=\{x_{-j}:0<\pi_{-j}(x_{-j})<\infty\}$。当$x_{-j}\in D_j$时，第$j$个坐标的满条件密度为
+\begin{equation}\label{eq:V5-C04-full-conditional}
+\pi_j(t\mid x_{-j})
+=\frac{\pi(x_{-j},t)}{\pi_{-j}(x_{-j})},
+\qquad t\in\mathcal X_j.
+\end{equation}
+它在$\mu_j$意义下积分为$1$。固定一个锚点$x_j^\circ\in\mathcal X_j$，并在所有条件值上定义概率核
+\begin{equation}\label{eq:V5-C04-full-conditional-kernel}
+\Pi_j(B\mid x_{-j})=
+\begin{cases}
+\displaystyle\frac{\int_B\pi(x_{-j},t)\,\mu_j(\mathrm dt)}{\pi_{-j}(x_{-j})},&x_{-j}\in D_j,\\[1.0em]
+\delta_{x_j^\circ}(B),&x_{-j}\notin D_j,
+\end{cases}
+\qquad B\in\mathcal B_j.
+\end{equation}
+联合可测性与Tonelli定理保证$x_{-j}\mapsto\Pi_j(B\mid x_{-j})$可测，所以$\Pi_j$是正则条件分布的一个可测版本。集合$D_j^c$的$\pi_{-j}$质量为$0$；在该集合上换用任何概率核都不改变联合分解或目标保持性，且绝不能把式\eqref{eq:V5-C04-full-conditional}解释成$0/0$。
+\end{definition}
+\index{满条件分布}
+
+\phantomsection\label{struct:V5-C04-CH08}
+\textbf{模型组成与合法性。}一个可执行的Gibbs模型至少包含
+\[
+\bigl(\mathcal X,\mu,\pi,x^{(0)},\{\mathcal C_j\}_{j=1}^d,\mathcal R\bigr),
+\]
+其中$\pi$是可归一化的目标概率密度，$x^{(0)}$位于其支持内，$\mathcal C_j$表示从式\eqref{eq:V5-C04-full-conditional}精确抽样的步骤，$\mathcal R$提供彼此独立的随机数。只知道未归一化联合核$\widetilde\pi$并不妨碍推导满条件，因为与$t$无关的共同常数会在归一化时消去；但仍必须确认联合目标可归一化，并能对每个实际遇到的$x_{-j}$构造合法条件抽样器。
+
+\phantomsection\label{struct:V5-C04-CH09}
+\textbf{学习策略。}Gibbs抽样不是通过最小化损失得到一个点，而是构造保持整个目标分布的链。设计时依次检查：目标联合分布是否可归一化；满条件分布是否相容于同一个联合目标；单坐标移动是否能连接目标支持；更新顺序是否固定且明确；条件抽样是否精确；最后才比较分块方式、相关性和单轮成本。把条件众数代替条件随机抽样会得到坐标上升类算法，不再是Gibbs抽样。
+
+\phantomsection\label{struct:V5-C04-CH10}
+\textbf{学习算法。}在系统扫描中，第$t$轮从$x^{(t-1)}$开始，先抽$x_1^{(t)}$，再抽$x_2^{(t)}$；第$j$步使用本轮已经更新的$x_1^{(t)},\ldots,x_{j-1}^{(t)}$与尚未更新的$x_{j+1}^{(t-1)},\ldots,x_d^{(t-1)}$。图\ref{fig:V5-C04-coordinate-sweep}明确区分“轮内状态”和“轮末样本”。算法\ref{alg:V5-C04-systematic-gibbs}及其前置说明另行区分完整轮次与中途停止状态。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_coordinate_sweep.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先按上方编号与箭头确认$j=1,\ldots,d$的固定次序；再看$x^{[j]}$左侧坐标已写入同轮新值、右侧坐标仍保留上一轮旧值，因而后续更新会读取此前的新值；最终只把$x^{[d]}=x^{(t)}$记作本轮样本，不把中间状态当作一轮输出。\par
+
+% KNOWLEDGE-PLAN: KN-V5-C33-BOUNDARY-002 L1
+\paragraph{读前自检：Gibbs抽样的满条件提议。}Gibbs坐标提议$K_j$从满条件更新$x_j$并保持$x_{-j}$不变；请写出$K_j(x,dy)=\Pi_j(dy_j\mid x_{-j})\delta_{x_{-j}}(dy_{-j})$，核对它是归一化核。\par
+% KNOWLEDGE-PLAN: KN-V5-C33-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：系统扫描Gibbs算法。}系统扫描Gibbs以合法初态、各坐标满条件抽样器和扫描预算为输入；请按$j=1,\ldots,d$依次用最新坐标状态更新一整轮，轮末原子提交，并在预算用尽时返回轨迹与诊断。\par
+% KNOWLEDGE-PLAN: KN-V5-C33-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：Gibbs坐标核的目标保持。}单坐标Gibbs核$K_j$只改变第$j$坐标；请把联合密度分解为边缘乘满条件，交换$x_j,y_j$核对双向测度不变，从而$\pi K_j=\pi$。\par
+
+\SLTeachSection{逐变量Gibbs抽样}{sec:V5-C04-S02}
+\knowledgeanchor{PRE-SA-008}{Gibbs抽样的满条件提议}
+\knowledgeanchor{SLM-19-05-005}{系统扫描Gibbs算法}
+\knowledgeanchor{SLM-19-03-007}{Gibbs坐标核的目标保持}
+\phantomsection\label{struct:V5-C04-CH11}
+% CORE-DERIVATION-PLAN: KN-V5-C33-DERIVATION-001
+\SLKnowledgeBridge{用边缘--条件分解证明精确满条件更新保持联合目标分布。}{联合目标 $\pi$、除第 $j$ 坐标外的状态 $x_{-j}$ 与满条件核 $\Pi_j(x_{-j},dx_j)$。}{采用可测的满条件版本；零边缘质量集合上使用预先选定版本，不使用密度比。}{先写分解 $\pi(dx)=\pi_{-j}(dx_{-j})\Pi_j(x_{-j},dx_j)$。}
+
+\begin{derivationgoalbox}
+从联合目标$\pi$构造只更新坐标$j$的核，证明它保持目标分布，并说明精确满条件提议为什么无需\MetropolisHastings{}拒绝步骤。
+\end{derivationgoalbox}
+
+\begin{derivationprepbox}
+使用定义\ref{def:V5-C04-full-conditional}构造的可测概率核$\Pi_j$、联合密度的边缘--条件分解和单坐标仅改变$x_j$这一事实。集合$D_j^c$具有零边缘质量，其上只使用预先选定的版本，不使用密度比。
+\end{derivationprepbox}
+由式\eqref{eq:V5-C04-full-conditional}，对$t$变化时与$t$无关的因子可以并入归一化常数，因此
+\begin{equation}\label{eq:V5-C04-conditional-proportional}
+\pi_j(t\mid x_{-j})\propto\pi(x_{-j},t),
+\end{equation}
+但右侧必须在$\mathcal X_j$上具有有限正积分。
+
+\textbf{步骤1：定义局部核。}定义单坐标更新核
+\begin{equation}\label{eq:V5-C04-coordinate-kernel}
+K_j(x,\mathrm dy)
+=\Pi_j(\mathrm dy_j\mid x_{-j})
+\,\delta_{x_{-j}}(\mathrm dy_{-j}).
+\end{equation}
+因为$\Pi_j$是概率核，而$x\mapsto\delta_{x_{-j}}(B_{-j})$可测，式\eqref{eq:V5-C04-coordinate-kernel}先在可测矩形上满足核的可测性，再由单调类定理推广到乘积$\sigma$代数；故$K_j$确实是马尔可夫核。
+\textbf{步骤2：分解联合目标。}若$y_{-j}=x_{-j}$，把联合密度分解为
+\[
+\pi(x)=\pi_{-j}(x_{-j})\pi_j(x_j\mid x_{-j}).
+\]
+\textbf{步骤3：比较双向流。}正向平稳流中与坐标$j$有关的部分为
+\begin{equation}\label{eq:V5-C04-coordinate-flow}
+\pi_{-j}(x_{-j})
+\pi_j(x_j\mid x_{-j})
+\pi_j(y_j\mid x_{-j}),
+\end{equation}
+交换$x_j,y_j$后式\eqref{eq:V5-C04-coordinate-flow}不变，所以单坐标核满足细致平衡。
+
+\phantomsection\label{struct:V5-C04-CH12}
+\begin{theorem}[单坐标Gibbs核的可逆性]\label{thm:V5-C04-coordinate-reversible}
+在定义\ref{def:V5-C04-full-conditional}的标准Borel与$\sigma$有限条件下，用式\eqref{eq:V5-C04-full-conditional-kernel}的可测正则条件版本构造式\eqref{eq:V5-C04-coordinate-kernel}。则$K_j$关于$\pi$可逆，因而$\pi K_j=\pi$；在$D_j^c$上更换版本不改变该结论。
+\end{theorem}
+
+\phantomsection\label{struct:V5-C04-CH13}
+% KNOWLEDGE-PLAN: KN-V5-C33-PROOF-001 L1
+\paragraph{读前自检：证明：单坐标Gibbs核的可逆性。}单坐标Gibbs联合测度只在$x_{-j}=y_{-j}$上有质量，且含$\Pi_j(\mathrm dx_j\mid x_{-j})\Pi_j(\mathrm dy_j\mid x_{-j})$；请交换$x_j,y_j$核对测度不变，再积分一侧得到$\pi K_j=\pi$。\par
+
+\begin{proof}
+记$\mu_{-j}=\bigotimes_{\ell\ne j}\mu_\ell$。在$D_j$上有$\pi(\boldsymbol x)\mu(\mathrm d\boldsymbol x)=\pi_{-j}(x_{-j})\mu_{-j}(\mathrm dx_{-j})\Pi_j(\mathrm dx_j\mid x_{-j})$。在$D_j^c$上，外层边缘测度为$0$，所以任意版本贡献的联合质量都为$0$。因此在$\mathcal X\times\mathcal X$上，联合测度可写为
+\[
+\pi(\mathrm dx)K_j(x,\mathrm dy)
+=\pi_{-j}(x_{-j})\mu_{-j}(\mathrm dx_{-j})
+\Pi_j(\mathrm dx_j\mid x_{-j})
+\Pi_j(\mathrm dy_j\mid x_{-j})
+\delta_{x_{-j}}(\mathrm dy_{-j}).
+\]
+该测度只在$x_{-j}=y_{-j}$上有质量，并且两个条件概率因子的乘积在交换$x_j,y_j$后不变。因此
+\[
+\pi(\mathrm dx)K_j(x,\mathrm dy)
+=\pi(\mathrm dy)K_j(y,\mathrm dx),
+\]
+即满足细致平衡。对$x$积分便得到$\pi K_j=\pi$。这也明确说明了零边缘版本为何不会进入任何正质量的双向流。
+\end{proof}
+
+\begin{proposition}[系统扫描与随机扫描]\label{prop:V5-C04-scan-invariance}
+若每个$K_j$保持$\pi$，则系统扫描核
+\[
+K_{\mathrm{sys}}=K_1K_2\cdots K_d
+\]
+保持$\pi$。若$w_j>0$、$\sum_jw_j=1$且权重不依赖当前状态，则随机扫描核
+\[
+K_{\mathrm{rs}}=\sum_{j=1}^d w_jK_j
+\]
+关于$\pi$可逆。系统扫描核一般只保证平稳，不保证可逆。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C33-PROOF-002 L1
+\paragraph{读前自检：证明：系统扫描与随机扫描。}系统扫描与随机扫描要求先确认“当这些核不交换时，正序与反序不同，不能由各分量可逆推出乘积可逆”；请随后把$\pi K_{\mathrm{sys}}$用到的关键定义展开并完成下一步变形，用乘以常数$w_j$再求和仍然对称，所以$K_{\mathrm{rs}}$可逆验收。\par
+
+\begin{proof}
+逐个使用$\pi K_j=\pi$得到
+\[
+\pi K_{\mathrm{sys}}
+=(((\pi K_1)K_2)\cdots)K_d=\pi.
+\]
+对随机扫描，定理\ref{thm:V5-C04-coordinate-reversible}给出每个$K_j$的对称双向流；乘以常数$w_j$再求和仍然对称，所以$K_{\mathrm{rs}}$可逆。系统扫描的伴随核按反序排列为$K_d\cdots K_1$；当这些核不交换时，正序与反序不同，不能由各分量可逆推出乘积可逆。
+\end{proof}
+
+\begin{theorem}[有限全支持情形的遍历性]\label{thm:V5-C04-finite-positive}
+设$\mathcal X=\prod_{j=1}^d\mathcal X_j$为有限乘积空间，且$\pi(x)>0$对每个$x\in\mathcal X$成立。则一轮系统扫描核$K_{\mathrm{sys}}$的每个矩阵元素都严格为正。因此该轮末链不可约、非周期，$\pi$是唯一平稳分布，并且从任意初值出发的边缘分布收敛到$\pi$。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C33-PROOF-003 L1
+\paragraph{读前自检：证明：有限全支持情形的遍历性。}有限全支持Gibbs从$x$依次把前$j$个坐标改成$y$；请把一轮转移写成$\prod_{j=1}^d\pi_j(y_j\mid x_{-j}^{[j-1]})$，核对其严格为正，并令$y=x$验证不可约且周期为1。\par
+
+\begin{proof}
+任取$x,y\in\mathcal X$。令中间状态$x^{[j]}$的前$j$个坐标等于$y$，其余坐标等于$x$。从$x^{[j-1]}$更新第$j$个坐标到$y_j$的概率是相应满条件概率。全支持假设使联合质量与边缘质量都严格为正，所以每个满条件概率严格为正。于是
+\[
+K_{\mathrm{sys}}(x,y)
+=\prod_{j=1}^d
+\pi_j\!\left(y_j\mid x^{[j-1]}_{-j}\right)>0.
+\]
+故任意状态一步轮末转移即可到达任意状态，核不可约；取$y=x$又有$K_{\mathrm{sys}}(x,x)>0$，所以周期为$1$。有限状态马尔可夫链定理随后给出唯一平稳分布与边缘收敛，而命题\ref{prop:V5-C04-scan-invariance}已确认该平稳分布就是$\pi$。
+\end{proof}
+
+\begin{warningbox}
+\textbf{定理边界与反例。}定理\ref{thm:V5-C04-finite-positive}的全支持条件很强。若目标支持受约束，单坐标移动可能无法连接不同部分。例如$\{(0,0),(1,1)\}$上的均匀分布具有合法但退化的满条件分布；从任一点更新单个坐标都不能离开原状态，Gibbs核等于恒等核。增加迭代轮数不能修复这种可约性。
+\end{warningbox}
+
+\SLTeachSection{与\MetropolisHastings{}的关系}{sec:V5-C04-S03}
+\phantomsection\label{struct:V5-C04-CH14}
+\textbf{几何解释。}在二维连续状态空间中，更新$x_1$时$x_2$固定，所以轨迹沿水平方向移动；随后更新$x_2$时$x_1$固定，轨迹沿竖直方向移动。图\ref{fig:V5-C04-gibbs-axis-path}把这种折线路径叠加在目标等密度线上。沿坐标轴移动不表示目标分布轴对齐；当等密度椭圆非常狭长且倾斜时，许多短的横纵步才能沿长轴前进。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_gibbs_axis_path.tex}
+
+\phantomsection\label{struct:V5-C04-CH15}
+\textbf{概率解释。}更新坐标$j$时，算法保留$x_{-j}$，并用其正确条件分布中的新抽样替换旧$x_j$。给定$x_{-j}$后，新旧坐标是同一条件分布的两个取值，式\eqref{eq:V5-C04-coordinate-flow}因此天然对称。若把满条件分布作为单坐标\mbox{\MetropolisHastings{}}提议，则在正流分支上
+\begin{align}
+R(x,y)
+&=\frac{\pi(y)\pi_j(x_j\mid y_{-j})}
+        {\pi(x)\pi_j(y_j\mid x_{-j})}\\
+&=\frac{\pi_{-j}(x_{-j})\pi_j(y_j\mid x_{-j})
+          \pi_j(x_j\mid x_{-j})}
+        {\pi_{-j}(x_{-j})\pi_j(x_j\mid x_{-j})
+          \pi_j(y_j\mid x_{-j})}=1,
+\end{align}
+因为$y_{-j}=x_{-j}$。所以精确满条件提议必接受。图\ref{fig:V5-C04-gibbs-vs-mh}同时说明：若只近似满条件或改用其他提议，接受率不再自动等于$1$，此时必须恢复\MetropolisHastings{}校正。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_gibbs_vs_mh.tex}
+
+\phantomsection\label{struct:V5-C04-CH16}
+\textbf{优化解释及不适用边界。}标准Gibbs抽样没有要逐轮单调下降的目标函数，因此“优化收敛率”“局部最优点”和“每步改进损失”不适用于本算法。若把条件抽样改成条件众数，会得到迭代条件众数或坐标上升方法；其输出是点估计，不能替代后验样本。这里唯一可作设计优化的是分块、参数化与实现成本，而不是把随机状态更新解释成确定性下降。
+
+\phantomsection\label{struct:V5-C04-CH17}
+\textbf{图形辅助。}图\ref{fig:V5-C04-coordinate-sweep}强调轮内新旧坐标的混合使用；图\ref{fig:V5-C04-gibbs-axis-path}强调坐标方向路径；图\ref{fig:V5-C04-gibbs-vs-mh}强调精确条件提议与一般提议的接受规则。三图分别服务于更新顺序、几何混合与算法边界，不能互相替代。
+
+\phantomsection\label{struct:V5-C04-CH18}
+\begin{proposition}[二元正态Gibbs的边缘递推]\label{prop:V5-C04-bivariate-normal}
+设
+\[
+(X_1,X_2)^\mathsf T\sim
+N\!\left(0,
+\begin{pmatrix}1&\rho\\ \rho&1\end{pmatrix}\right),
+\qquad |\rho|<1.
+\]
+按$x_1$后$x_2$的顺序系统扫描，并令$\sigma=\sqrt{1-\rho^2}$。则
+\begin{align}
+X_1^{(t)}&=\rho X_2^{(t-1)}+\sigma\varepsilon_{1t},\\
+X_2^{(t)}&=\rho X_1^{(t)}+\sigma\varepsilon_{2t}
+=\rho^2X_2^{(t-1)}+\xi_t,
+\end{align}
+其中$\varepsilon_{1t},\varepsilon_{2t}$独立同分布于$N(0,1)$，$\xi_t$独立于过去且$\operatorname{Var}(\xi_t)=1-\rho^4$。在平稳状态下，$X_2$的滞后$k$自相关为$\rho^{2k}$，从而
+\[
+\tau_{\mathrm{int}}=\frac{1+\rho^2}{1-\rho^2},
+\qquad
+\frac{N_{\mathrm{eff}}}{N}=\frac{1-\rho^2}{1+\rho^2}.
+\]
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C33-PROOF-004 L1
+\paragraph{读前自检：证明：二元正态Gibbs的边缘递推。}二元正态Gibbs按$x_1$后$x_2$扫描且$|\rho|<1$；请把两条满条件更新代入，得到$X_2^{(t)}=\rho^2X_2^{(t-1)}+\xi_t$，再算$\operatorname{Var}(\xi_t)=1-\rho^4$并核对滞后相关为$\rho^{2k}$。\par
+
+\begin{proof}
+联合密度指数中的二次型满足
+\[
+x_1^2-2\rho x_1x_2+x_2^2
+=(x_1-\rho x_2)^2+(1-\rho^2)x_2^2.
+\]
+固定$x_2$后，与$x_1$有关的部分给出
+$X_1\mid X_2=x_2\sim N(\rho x_2,1-\rho^2)$；交换坐标得到
+$X_2\mid X_1=x_1\sim N(\rho x_1,1-\rho^2)$。代入两步更新便得到边缘递推，其中
+\[
+\xi_t=\sigma(\rho\varepsilon_{1t}+\varepsilon_{2t}),
+\qquad
+\operatorname{Var}(\xi_t)
+=(1-\rho^2)(1+\rho^2)=1-\rho^4.
+\]
+这是系数为$\rho^2$的平稳AR(1)递推，所以$\operatorname{Corr}(X_2^{(t)},X_2^{(t+k)})=\rho^{2k}$。对几何级数求和得到
+$1+2\sum_{k\ge1}\rho^{2k}=(1+\rho^2)/(1-\rho^2)$，再按ESS定义取倒数比例。
+\end{proof}
+
+图\ref{fig:V5-C04-bivariate-normal-conditionals}显示两个正态满条件切片。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_bivariate_normal_conditionals.tex}
+% v2.6 layout: former forced clear removed; natural pagination.
+图\ref{fig:V5-C04-mixing-rho-comparison}使用上述解析自相关而非伪造轨迹，比较不同$|\rho|$下的混合速度。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_mixing_rho_comparison.tex}
+\FloatBarrier
+读图时应先看左面板中轮末自相关$\rho^{2k}$随滞后$k$的衰减，再看右面板中渐近有效样本比例$(1-\rho^2)/(1+\rho^2)$随$|\rho|$的下降；当$|\rho|\to1^-$时，前者衰减趋于停滞而后者趋于$0$，这只是从合法区域$|\rho|<1$内逼近边界的极限，并不表示可以取退化相关系数$|\rho|=1$。
+
+\Needspace{6\baselineskip}
+\begin{example}[两轮确定性更新测试]\label{exm:V5-C04-two-sweeps}
+取$\rho=1/2$、$\sigma=\sqrt3/2$、初值$x^{(0)}=(2,-1)$。把两轮标准正态输入固定为
+\[
+(\varepsilon_{11},\varepsilon_{21})=(0,1),
+\qquad
+(\varepsilon_{12},\varepsilon_{22})=(-1,0).
+\]
+按“先$X_1$后$X_2$”的系统扫描顺序复算两轮轮末状态，并说明该确定性测试能验证什么。
+\end{example}
+
+\Needspace{4\baselineskip}
+\SLExampleSolutionHeading{exm:V5-C04-two-sweeps}
+\begin{solution}
+\SLReadTranslation{给定创新量把两轮随机更新固定成可逐步复算的确定性测试；每轮必须先得到新$x_1^{(t)}$，再用它计算同轮$x_2^{(t)}$。}
+\SolGiven $\rho=1/2$、$\sigma=\sqrt3/2$、初值和四个创新量均已固定；本题只核验顺序更新公式，不用两轮数值判断随机链收敛。
+\SLMethodTrigger{逐轮执行$x_1^{(t)}=\rho x_2^{(t-1)}+\sigma\varepsilon_{1t}$，立即把新$x_1^{(t)}$代入$x_2^{(t)}=\rho x_1^{(t)}+\sigma\varepsilon_{2t}$。}
+\SolPlan 保留每轮两个中间值，完成两轮后把结果代回两条残差恒等式，专门检查第二坐标没有误用旧$x_1$。
+\SolDerive
+\textbf{第一轮。}得到
+\[
+\begin{aligned}
+x_1^{(1)}&=\rho x_2^{(0)}+\sigma\varepsilon_{11}
+=-\frac12,\\
+x_2^{(1)}&=\rho x_1^{(1)}+\sigma\varepsilon_{21}
+=-\frac14+\frac{\sqrt3}{2}.
+\end{aligned}
+\]
+\textbf{第二轮。}得到
+\[
+\begin{aligned}
+x_1^{(2)}&=\rho x_2^{(1)}+\sigma\varepsilon_{12}
+=-\frac18-\frac{\sqrt3}{4},\\
+x_2^{(2)}&=\rho x_1^{(2)}+\sigma\varepsilon_{22}
+=-\frac1{16}-\frac{\sqrt3}{8}.
+\end{aligned}
+\]
+\SolCheck 四个更新分别满足$x_1^{(t)}-\rho x_2^{(t-1)}=\sigma\varepsilon_{1t}$与$x_2^{(t)}-\rho x_1^{(t)}=\sigma\varepsilon_{2t}$；第二式确实使用同轮新$x_1^{(t)}$，因此可检出误用旧值的并行更新。
+\SolAnswer 两轮轮末状态分别为$(-1/2,-1/4+\sqrt3/2)$与$(-1/8-\sqrt3/4,-1/16-\sqrt3/8)$。该确定性测试只验证更新次序与代数，不证明随机链已经收敛。
+\end{solution}
+
+% KNOWLEDGE-PLAN: KN-V5-C33-CONCEPT-001 L1
+\paragraph{读前自检：抽样计算。}Gibbs一轮依次调用$d$个满条件抽样器；若第$j$个求值与抽样成本为$C_j,U_j$，请求和得到$T$轮时间$O(T\sum_j(C_j+U_j))$，并核对状态空间为$O(d)$。\par
+
+\SLAdvancedSection{收敛、抽样计算与练习}{sec:V5-C04-S04}
+\knowledgeanchor{SLM-19-05-006}{抽样计算}
+
+概率图模型常把目标写成局部因子的乘积。以观测$y$、超参数$\alpha$、模型参数$\theta$和隐变量$z$为例，
+\begin{equation}\label{eq:V5-C04-bayes-factorization}
+\pi(\alpha,\theta,z\mid y)
+\propto p(z,y\mid\theta)p(\theta\mid\alpha)p(\alpha).
+\end{equation}
+因此更新某个变量时，只需保留含该变量的因子。例如
+\begin{align}
+\pi(\alpha_i\mid\alpha_{-i},\theta,z,y)
+&\propto p(\theta\mid\alpha)p(\alpha),\\
+\pi(\theta_j\mid\theta_{-j},\alpha,z,y)
+&\propto p(z,y\mid\theta)p(\theta\mid\alpha),\\
+\pi(z_k\mid z_{-k},\alpha,\theta,y)
+&\propto p(z,y\mid\theta).
+\end{align}
+图\ref{fig:V5-C04-bayes-markov-blanket}把这条“只看Markov毯”的消因子规则画成概率图；未写入当前条件核的每个因子都必须确实与当前变量无关。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_bayes_markov_blanket.tex}
+% v2.6 layout: former forced clear removed; natural pagination.
+
+\phantomsection\label{struct:V5-C04-CH19}
+\textbf{伪代码。}算法\ref{alg:V5-C04-systematic-gibbs}把一次完整系统扫描定义为依次完成$d$个坐标更新。它保存轮末轨迹；若还保存轮内状态，必须使用独立下标，不把一次坐标更新误记成一整轮。
+
+\phantomsection\label{struct:V5-C04-CH20}
+\textbf{输入与输出。}输入为可归一化的目标、维数$d$、合法初值$x^{(0)}$、$d$个精确满条件抽样方法、彼此独立的随机数、燃烧轮数$m$、保留轮数$n$和可选函数$f$。输出包括完整轮末轨迹、逐坐标抽样记录、保留样本和可选样本均值；若某坐标更新失败，另行说明失败位置与本轮已经更新的中间状态。
+
+\phantomsection\label{struct:V5-C04-CH21}
+\textbf{参数含义。}$T=m+n$是完整扫描轮数；一轮含$d$次坐标抽样。$m$只决定哪些轮末状态不进入估计，不能证明链已收敛；$n=0$时允许只测试更新步骤，但均值、MCSE和ESS未定义。分块Gibbs把一个“坐标”替换为变量块，所有定义相应使用块满条件分布。
+
+\phantomsection\label{struct:V5-C04-CH22}
+\textbf{初始化。}开始前验证$\pi$可归一化、$x^{(0)}$位于目标支持、每个条件抽样器与式\eqref{eq:V5-C04-full-conditional}一致、随机源类型正确以及$m,n,d$合法。不能从支持外启动后期待退化条件分布自动把状态修回支持。
+
+\phantomsection\label{struct:V5-C04-CH23}
+\textbf{参数更新。}第$t$轮第$j$步使用当前轮内状态的$x_{-j}$调用$\mathcal C_j$，验证返回值属于$\mathcal X_j$且新完整状态位于目标支持，再立即覆盖$x_j$。后续坐标必须看到此前已更新的值。若某步失败，记录位置$(t,j)$；本轮中间状态不计作轮末样本。
+
+\phantomsection\label{struct:V5-C04-CH24}
+\textbf{停止条件。}正常分支恰好完成$T$轮；$T=0$时不调用随机数，返回只含初值的轨迹和空保留集。若条件分布未定义、抽样结果不是有限实数、样本越界、新状态离开支持或$f$不是有限实数，则立即停止。主轨迹只保留此前完成的轮末状态，失败轮的中间状态另行说明。
+
+\phantomsection\label{struct:V5-C04-CH25}
+\textbf{正确性与收敛条件。}定理\ref{thm:V5-C04-coordinate-reversible}与命题\ref{prop:V5-C04-scan-invariance}只证明目标保持。有限全支持时，定理\ref{thm:V5-C04-finite-positive}进一步给出时间平均；非周期性另用于固定时刻边缘收敛。一般受约束或连续状态必须按定义\ref{def:V5-C03-harris-conditions}和命题\ref{prop:V5-C03-general-convergence}分别核验正常Harris返、非周期性以及CLT/批均值所需的额外矩与混合条件。图\ref{fig:V5-C04-mixing-rho-comparison}说明即使这些结论成立，$|\rho|$接近$1$时统计效率仍可很低。
+
+\phantomsection\label{struct:V5-C04-CH26}
+\textbf{时间复杂度。}设第$j$个满条件抽样与支持验证的实际成本为$C_j$，一次坐标就地更新成本为$U_j$。完成$T=m+n$轮的时间为
+\[
+O\!\left(T\sum_{j=1}^d(C_j+U_j)\right).
+\]
+若每次轮末复制$d$维状态，还需$O(Td)$复制成本。概率图实现中$C_j$应按Markov毯因子求值计入，不能无条件写成$O(1)$。
+
+\phantomsection\label{struct:V5-C04-CH27}
+\textbf{空间复杂度。}只保留当前状态需要$O(d)$空间；保存$n$个轮末样本需要$O(nd)$；保存全部$T$轮及每次坐标更新可达$O(Td^2)$个标量。流式计算均值可把统计量附加空间降为$O(1)$或$O(\dim f)$，但用于诊断的轨迹不能在未记录替代信息时丢弃。
+
+\phantomsection\label{struct:V5-C04-CH28}
+\textbf{适用条件。}Gibbs抽样适合联合目标难以直接抽样、各满条件分布可精确且高效抽样、支持可由所选坐标或分块更新连通的模型。共轭层次模型、离散潜变量模型和稀疏概率图常满足这一结构。若只能近似抽满条件，应明确改用Metropolis-within-Gibbs、slice-within-Gibbs或其他带正确性证明的内核。
+
+\pagebreak[4]
+\phantomsection\label{struct:V5-C04-CH29}
+\textbf{局限性。}强相关会使轴向路径混合缓慢；确定性约束会令单坐标条件分布退化；不当参数化可造成近不可约行为；高维全扫描成本可能很大；系统扫描缺少一般可逆性。分块、重参数化和随机扫描可能改善效率，但每次修改都必须重新核验目标保持与可达性。
+
+\phantomsection\label{struct:V5-C04-CH30}
+\textbf{常见错误。}不得把本轮尚未更新的坐标误写成新值；不得在条件归一化常数发散时继续抽样；不得把条件众数当条件随机样本；不得因“接受率为1”便跳过支持检查；不得把一次坐标更新与一次完整扫描混用时间下标；不得删除重复状态、只看单链轨迹或用固定燃烧期代替收敛条件。
+
+\phantomsection\label{struct:V5-C04-CH31}
+\textbf{易混淆概念对比。}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.60}
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 对比 & Gibbs抽样 & 相关但不同的方法\\ \midrule
+精确满条件与MH & 条件提议在正流分支接受率为1 & 其他提议需计算接受率并可能拒绝\\
+系统扫描与随机扫描 & 固定顺序乘积核保持$\pi$，一般不再可逆 & 固定权重混合核可逆，但每步只更新一个坐标\\
+条件抽样与条件众数 & 产生保持完整分布的随机链 & 条件众数更新是点优化，不给后验样本\\
+单坐标与分块 & 单步便宜但可能强相关 & 分块成本较高，可能沿相关方向移动更远\\
+正确性与效率 & 平稳性、可达性和返性决定正确性 & ESS、MCSE与运行时间描述给定正确内核的效率\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\textbf{循环变量与更新顺序。}外层循环变量为完整扫描轮$t=1,\ldots,T$，内层循环变量为坐标$j=1,\ldots,d$；每次抽样成功后立即覆盖$x_j$，因此第$j+1$步读取本轮最新状态。
+
+\textbf{判断条件。}每个坐标步核验条件分布是否定义、抽样值是否有限且属于坐标空间、新完整状态是否落在目标支持；可选函数$f$另行核验有限性。
+
+\textbf{返回结果、异常与退化。}正常分支给出完整轮末轨迹和保留样本；中途停止时给出此前完整轮、$(t,j)$位置及本轮中间状态。$T=0$不调用随机数，$n=0$不构造样本均值。
+
+\textbf{正确性依据。}定理\ref{thm:V5-C04-coordinate-reversible}保证每个坐标核保持$\pi$，命题\ref{prop:V5-C04-scan-invariance}保证其系统乘积仍保持$\pi$。
+
+\textbf{不收敛或不适用情形。}目标不可归一化、满条件不相容或不可精确抽样、单坐标支持可约，或一般状态链不满足定义\ref{def:V5-C03-harris-conditions}中的正常Harris返条件时，本算法不能给出所需遍历均值保证；增加燃烧轮数不能修复这些问题。即便时间平均成立，固定时刻边缘收敛仍需非周期性，MCSE与批均值仍需命题\ref{prop:V5-C03-general-convergence}第3项的额外条件。
+
+\textbf{复杂度假设。}复杂度使用本节定义的$C_j,U_j$，并显式计入状态复制；不把满条件归一化、因子求值、随机采样或支持验证无条件视为常数时间。
+
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C04-systematic-gibbs | 训练时间复杂度=本算法从给定目标分布抽样，不拟合训练参数; 预测时间复杂度=本算法不单独执行预测，成本按每轮满条件抽样报告
+\begingroup
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V5-C33-ALGORITHM_IDEA-003 L2
+
+% KNOWLEDGE-PLAN: KN-V5-C33-ALGORITHM_IDEA-004 L2
+\begin{keypointbox}[title={带部分扫描诊断的系统Gibbs抽样：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={可归一化目标、$d$个精确满条件抽样接口、合法初值、独立随机源、燃烧/保留扫描数$m,n$及可选$f$},
+  output={最后合法轮末轨迹、只读部分扫描状态、保留样本、完整扫描$t_{\rm done}$、成功坐标抽样$c_{\rm done}$、随机调用$q_{\rm done}$、状态与最终诊断},
+  preconditions={$d\ge1,m,n\in\mathbb N_0$；目标与满条件相容；初值在支持内；各条件抽样接口/坐标空间与随机源契约合法},
+  initialization={$T=m+n,x=x^{(0)}$，$t_{\rm done}=c_{\rm done}=q_{\rm done}=0$，轮末轨迹只含初值},
+  loop={按固定顺序逐扫描、逐坐标从当前最新工作状态的满条件抽样},
+  update={单坐标样本及新完整状态合法后才原子提交到工作状态；整轮完成后才追加轮末轨迹并增加$t_{\rm done}$},
+  domain={每个工作状态在目标支持；条件样本有限且属于对应坐标空间；轮末轨迹只含完整扫描},
+  failure={接口/初值/预算非法返回$\mathtt{invalid\_input}$；条件随机源失败返回$\mathtt{random\_source\_failure}$；条件归一化、新状态或$f$求值失败返回$\mathtt{numerical\_failure}$，主轨迹回滚到上一完整扫描},
+  stop={完成$T$次扫描、$T=0$或首次坐标失败时停止；固定扫描完成不称收敛},
+  budget={至多$T d$次满条件随机调用及相应支持检查},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$t_{\rm done}$计完整提交扫描，$c_{\rm done}$计成功坐标更新，$q_{\rm done}$计条件随机源调用},
+  diagnostics={失败$(t,j,\mathrm{stage})$、只读部分扫描状态、各坐标工作量、保留段/均值状态和计划/实际扫描},
+  complexity={$\Theta(T\sum_j(C_j+U_j+d))$时间；轮末轨迹$\Theta(Td)$空间，工作状态$\Theta(d)$}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begin{algorithm}[tbp]
+\caption{带部分扫描诊断的系统Gibbs抽样}\label{alg:V5-C04-systematic-gibbs}
+\KwIn{可归一化的目标；$d$个精确满条件抽样方法$\mathcal C_j$；合法$x^{(0)}$；独立随机数；$m,n$；可选$f$}
+\KwOut{最后合法轮末轨迹、部分扫描/保留段；$t_{\rm done},c_{\rm done},q_{\rm done}$；$\mathtt{status}$与最终诊断}
+若$d,m,n$、目标/初值、满条件接口或随机源契约非法，则返回空结果、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+令$T=m+n,x=x^{(0)},t_{\rm done}=c_{\rm done}=q_{\rm done}=0$，轮末轨迹$\mathcal T=(x^{(0)})$；若$T=0$，返回该轨迹、空保留段、$\mathtt{completed}$及零预算诊断\;
+\For{$t\leftarrow1,\ldots,T$}{
+  令$x^{\mathrm{start}}\leftarrow x,x_{\rm work}\leftarrow x$，本轮坐标记录为空\;
+  \For{$j\leftarrow1,\ldots,d$}{
+    使用$x_{{\rm work},-j}$调用$\mathcal C_j$并增加$q_{\rm done}$；调用失败则返回前$t-1$轮、只读$x_{\rm work}$、$\mathtt{random\_source\_failure}$及$(t,j)$诊断\;
+    若条件归一化诊断、$y_j$有限性/坐标域或新完整状态支持检查失败，则返回上一完整轨迹、只读部分状态、$\mathtt{numerical\_failure}$及$(t,j)$诊断\;
+    原子令$x_{{\rm work},j}\leftarrow y_j$，增加$c_{\rm done}$并记录条件上下文/轮内状态\;
+  }
+  原子提交$x\leftarrow x_{\rm work}$并向$\mathcal T$追加；令$t_{\rm done}\leftarrow t$，记录本轮变化\;
+}
+令保留集$\mathcal S\leftarrow(X^{(m+1)},\ldots,X^{(m+n)})$\;
+若给出$f$且$n>0$，核验所有$f(X)$有限并计算均值；失败时保留轨迹/样本并返回$\mathtt{numerical\_failure}$及均值阶段诊断\;
+返回$\mathcal T,\mathcal S$、实际计数、$\mathtt{completed}$及扫描/保留段最终诊断；$n=0$时均值未定义\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\phantomsection\label{struct:V5-C04-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[五分类模型的可复算Gibbs目标]\label{exm:V5-C04-five-category}
+五类概率为
+\[
+p_1=\frac\theta4+\frac18,
+\quad p_2=\frac\theta4,
+\quad p_3=\frac\eta4,
+\quad p_4=\frac\eta4+\frac38,
+\quad p_5=\frac{1-\theta-\eta}{2},
+\]
+参数域为$D=\{(\theta,\eta):\theta>0,\eta>0,\theta+\eta<1\}$，观测计数为$(14,1,1,1,5)$。仅有似然不足以定义后验；本例明确补充$D$上的均匀先验。任务是推导后验核、两个满条件分布的精确有限混合表示，并给出无需随机运行的精确矩基准。
+\end{example}
+
+\phantomsection\label{struct:V5-C04-CH33}
+\Needspace{4\baselineskip}
+\SLExampleSolutionHeading{exm:V5-C04-five-category}
+\begin{solution}
+\SLReadTranslation{用$D$上的均匀先验与多项计数似然定义三角域后验，再把两个满条件写成可直接抽样的有限Beta混合，并给出不依赖随机运行的精确矩基准。}
+\SolGiven 参数域$D$有界，先验在$D$上均匀；观测计数固定，且$\theta,\eta,1-\theta-\eta$在$D$内均为正。
+\SLMethodTrigger{先写后验核；固定一个参数后把另一个缩放到$(0,1)$并作有限多项式展开，从而识别Beta混合；最后用单纯形积分计算矩。}
+\SolPlan 依次得到后验核、$u=\theta/(1-\eta)$的15分量Beta混合、$v=\eta/(1-\theta)$的二分量Beta混合，再用Dirichlet积分恒等式求四个后验矩。
+\SolDerive
+\textbf{后验核。}多项式系数以及$8,4,2$的幂与参数无关，可以并入归一化常数。因此
+\begin{equation}\label{eq:V5-C04-five-posterior}
+\pi(\theta,\eta\mid y)
+\propto
+(1+2\theta)^{14}\theta\eta(3+2\eta)
+(1-\theta-\eta)^5\mathbf 1_D(\theta,\eta).
+\end{equation}
+\textbf{$\theta$满条件。}固定$\eta$并令$s=1-\eta$、$u=\theta/s$。二项展开给出
+\[
+(1+2su)^{14}u(1-u)^5
+=\sum_{r=0}^{14}\binom{14}{r}(2s)^r
+u^{r+1}(1-u)^5.
+\]
+所以$u\mid\eta$是$\operatorname{Beta}(r+2,6)$的15分量混合，分量权重为
+\begin{equation}\label{eq:V5-C04-theta-mixture}
+\omega_r^{(\theta)}(s)
+=\frac{\binom{14}{r}(2s)^r B(r+2,6)}
+{\sum_{\ell=0}^{14}\binom{14}{\ell}(2s)^\ell B(\ell+2,6)},
+\quad r=0,\ldots,14,
+\end{equation}
+抽得$u$后令$\theta=su$。
+
+\textbf{$\eta$满条件。}固定$\theta$并令$s=1-\theta$、$v=\eta/s$，则
+\[
+\eta(3+2\eta)(s-\eta)^5\,\mathrm d\eta
+\propto
+\bigl[3v(1-v)^5+2s v^2(1-v)^5\bigr],\mathrm dv.
+\]
+因此$v\mid\theta$是$\operatorname{Beta}(2,6)$和$\operatorname{Beta}(3,6)$的二分量混合，未归一化权重分别为$3B(2,6)$与$2sB(3,6)$；抽得$v$后令$\eta=sv$。两步都保持$D$，且是精确满条件抽样。
+
+\textbf{确定性矩基准。}定义
+\[
+I_{a,b}=\int_D \theta^a\eta^b
+(1+2\theta)^{14}\theta\eta(3+2\eta)
+(1-\theta-\eta)^5\,\mathrm d\theta\,\mathrm d\eta.
+\]
+计算时先用二项式展开$(1+2\theta)^{14}$，再把$3+2\eta$拆成两项。对$A,B,C>0$，所用的单纯形Dirichlet恒等式为
+\[
+\int_D\theta^{A-1}\eta^{B-1}(1-\theta-\eta)^{C-1}
+\,\mathrm d\theta\,\mathrm d\eta
+=\frac{\Gamma(A)\Gamma(B)\Gamma(C)}{\Gamma(A+B+C)}.
+\]
+对展开式的第$r$项，常数$3$对应
+$(A,B,C)=(r+a+2,b+2,6)$，而$2\eta$对应
+$(A,B,C)=(r+a+2,b+3,6)$。逐项代入即得
+\begin{align}
+I_{a,b}
+=\sum_{r=0}^{14}\binom{14}{r}2^r\Bigg[
+&\frac{3\,\Gamma(r+a+2)\Gamma(b+2)\Gamma(6)}
+{\Gamma(r+a+b+10)}\\
+&+\frac{2\,\Gamma(r+a+2)\Gamma(b+3)\Gamma(6)}
+{\Gamma(r+a+b+11)}\Bigg].
+\end{align}
+于是$E(\theta^a\eta^b\mid y)=I_{a,b}/I_{0,0}$。确定性复算结果为
+\begin{align*}
+E(\theta\mid y)&\approx0.51995509,
+&\operatorname{Var}(\theta\mid y)&\approx0.01776292,\\
+E(\eta\mid y)&\approx0.12316991,
+&\operatorname{Var}(\eta\mid y)&\approx0.00655205.
+\end{align*}
+\SolCheck 后验核在有界域$D$上非负可积；两组混合权重归一化后均和为$1$。$u,v\in(0,1)$分别保证$0<\theta<1-\eta$与$0<\eta<1-\theta$。独立的三角域数值积分复得上述四个矩，并给出$E(\theta+\eta\mid y)\approx0.64312500<1$。
+
+\SolAnswer 令$u=\theta/(1-\eta)$，则$u\mid\eta,y$是15分量$\operatorname{Beta}(r+2,6)$混合，且$\theta=(1-\eta)u$；令$v=\eta/(1-\theta)$，则$v\mid\theta,y$是$\operatorname{Beta}(2,6)$与$\operatorname{Beta}(3,6)$混合，且$\eta=(1-\theta)v$。后验均值约为$0.51995509,0.12316991$，方差约为$0.01776292,0.00655205$。这些数值是确定性积分基准，不是一次随机Gibbs运行的样本结果。
+\end{solution}
+
+\phantomsection\label{struct:V5-C04-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V5-C04-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-19-0008; source_number=19.8
+% SOLUTION-SOURCE: original_book; source_id=EXR-19-0008; source_number=19.8
+\begin{exercise}\label{ex:V5-C04-S04-01}
+五分类概率、参数域和观测计数如例\ref{exm:V5-C04-five-category}。回答：（a）为什么只给似然不能唯一确定“参数均值与方差”；（b）在$D$上均匀先验下推导后验核；（c）推导$\theta\mid\eta,y$与$\eta\mid\theta,y$的精确有限Beta混合抽样法；（d）给出后验均值、方差的可复算确定性基准；（e）写明一次真实Gibbs估计还必须保存哪些证据。不得在没有随机流时虚构样本均值。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S04-01}
+\begin{chapterexercisesolution}{ex:V5-C04-S04-01}
+（a）参数的“均值与方差”必须相对于一个概率分布定义。似然$L(\theta,\eta;y)$只描述给定参数时数据的相对可能性；不同先验会给出不同后验矩。因此原题数据还需先验或其他目标分布约定。
+
+（b）在$D$上取均匀先验后，多项式似然中与参数无关的常数消去，得到
+\[
+\pi(\theta,\eta\mid y)
+\propto(1+2\theta)^{14}\theta\eta(3+2\eta)
+(1-\theta-\eta)^5\mathbf1_D,
+\]
+与式\eqref{eq:V5-C04-five-posterior}一致。
+
+（c）固定$\eta$，令$s=1-\eta$、$u=\theta/s$。展开$(1+2su)^{14}$后，$u$是$\operatorname{Beta}(r+2,6)$、$r=0,\ldots,14$的混合，权重正是式\eqref{eq:V5-C04-theta-mixture}。固定$\theta$，令$s=1-\theta$、$v=\eta/s$，则$v$的核为
+\[
+3v(1-v)^5+2s v^2(1-v)^5,
+\]
+所以两分量分别为$\operatorname{Beta}(2,6)$与$\operatorname{Beta}(3,6)$，未归一化权重为$3B(2,6)$与$2sB(3,6)$。每次抽样后分别令$\theta=su$、$\eta=sv$，状态始终留在$D$。
+
+（d）对例\ref{exm:V5-C04-five-category}中的$I_{a,b}$求比值得
+\[
+E(\theta\mid y)\approx 0.51995509,
+\quad \operatorname{Var}(\theta\mid y)\approx 0.01776292,
+\]
+\[
+E(\eta\mid y)\approx 0.12316991,
+\quad \operatorname{Var}(\eta\mid y)\approx 0.00655205.
+\]
+这些数来自有限Gamma函数和，不依赖随机运行。
+
+（e）真实报告至少说明先验、初值、扫描顺序、混合分量、随机数生成原则、完整轮末轨迹、燃烧与保留规则、MCSE/ESS，以及样本矩对上述精确矩的误差。没有实际运行时只能给出算法步骤与解析基准，不能报告一次虚构的Gibbs估计。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S01-01}
+设$(X_1,X_2)\in\{0,1\}^2$的联合质量依次为
+\[
+\pi(0,0)=\frac1{10},\quad
+\pi(0,1)=\frac2{10},\quad
+\pi(1,0)=\frac3{10},\quad
+\pi(1,1)=\frac4{10}.
+\]
+计算两个坐标的全部满条件概率，并从$(0,0)$出发计算一轮“先$X_1$后$X_2$”系统扫描的四个轮末转移概率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S01-01}
+\begin{chapterexercisesolution}{ex:V5-C04-S01-01}
+固定$X_2=0$时，该列总质量为$(1+3)/10$，所以
+\[
+P(X_1=1\mid X_2=0)=\frac34,
+\quad P(X_1=0\mid X_2=0)=\frac14.
+\]
+固定$X_2=1$得到$P(X_1=1\mid X_2=1)=4/(2+4)=2/3$。按行归一化又有
+\[
+P(X_2=1\mid X_1=0)=\frac23,
+\qquad
+P(X_2=1\mid X_1=1)=\frac47.
+\]
+从$(0,0)$先更新$X_1$。若新$X_1=0$，概率为$1/4$，随后$X_2$取$0,1$的概率为$1/3,2/3$；若新$X_1=1$，概率为$3/4$，随后概率为$3/7,4/7$。因此
+\[
+K_{12}((0,0),\cdot)
+=\left(\frac1{12},\frac16,\frac9{28},\frac37\right)
+\]
+按$(0,0),(0,1),(1,0),(1,1)$排列。四项之和为$1$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S01-02}
+目标密度在三角域$D=\{(x_1,x_2):x_1>0,x_2>0,x_1+x_2<1\}$上为常数$2$，域外为$0$。推导两个满条件密度，说明它们的支持怎样随另一坐标改变，并解释为什么不能在$x_2=1$处套用密度比定义$x_1\mid x_2$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S01-02}
+\begin{chapterexercisesolution}{ex:V5-C04-S01-02}
+对$0<x_2<1$，边缘密度为
+\[
+\pi_2(x_2)=\int_0^{1-x_2}2\,\mathrm dx_1=2(1-x_2).
+\]
+故两个满条件概率核为
+\[
+\pi_1(x_1\mid x_2)
+=\frac{\boldsymbol1_{(0,\,1-x_2)}(x_1)}{1-x_2},
+\qquad
+\pi_2(x_2\mid x_1)
+=\frac{\boldsymbol1_{(0,\,1-x_1)}(x_2)}{1-x_1}.
+\]
+各自积分为$1$，且另一坐标越大，条件支持越短。$x_2=1$时
+\[
+\pi_2(1)=\int_0^0 2\,\mathrm dx_1=0,\qquad
+\frac{\pi(x_1,1)}{\pi_2(1)}=\frac00,
+\]
+该条件事件在目标下为零概率；只能选取正则条件分布的一个版本，不能由密度比唯一指定。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S02-01}
+目标在$\{(0,0),(1,1)\}$上各赋概率$1/2$。写出两个满条件分布和系统Gibbs核，判断平稳性、可逆性、不可约性与唯一平稳分布。给出一种能连接两个状态的合法分块更新。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S02-01}
+\begin{chapterexercisesolution}{ex:V5-C04-S02-01}
+若$X_2=0$，目标支持只允许$X_1=0$；若$X_2=1$，只允许$X_1=1$。因此
+\[
+P(X_1=x_2\mid X_2=x_2)=1,\qquad
+P(X_2=x_1\mid X_1=x_1)=1.
+\]
+任何单坐标更新都保持原状态，在状态顺序$(0,0),(1,1)$下，
+\[
+K_{\rm sys}=I_2,\qquad
+\pi K_{\rm sys}=\pi,\qquad
+\pi_iK_{ij}=\pi_jK_{ji}.
+\]
+所以它关于均匀目标可逆并保持目标，但可约；事实上任意两个状态上的概率分布都平稳，故不唯一。
+
+把两个坐标作为一个块并从联合目标抽样，得到
+\[
+K_{\rm block}
+=\begin{pmatrix}1/2&1/2\\1/2&1/2\end{pmatrix},
+\qquad \pi K_{\rm block}=\pi.
+\]
+该核一步连接两个状态。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S02-02}
+在$\{-1,1\}^3$上令
+\[
+\pi(x)\propto\exp\{\beta(x_1x_2+x_2x_3)\}.
+\]
+推导三个Bernoulli满条件概率。取$\beta=(\log3)/2$、初值$(-1,1,-1)$，按$1,2,3$更新，并用固定均匀数$(0.2,0.9,0.4)$执行一轮；约定$u\le P(X_j=1\mid x_{-j})$时取$1$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S02-02}
+\begin{chapterexercisesolution}{ex:V5-C04-S02-02}
+只保留含当前坐标的指数项。对$s\in\{-1,1\}$，
+\[
+P(X_1=s\mid x_2)
+=\frac{e^{\beta s x_2}}{e^{\beta x_2}+e^{-\beta x_2}},
+\quad
+P(X_3=s\mid x_2)
+=\frac{e^{\beta s x_2}}{e^{\beta x_2}+e^{-\beta x_2}},
+\]
+\[
+P(X_2=s\mid x_1,x_3)
+=\frac{e^{\beta s(x_1+x_3)}}
+{e^{\beta(x_1+x_3)}+e^{-\beta(x_1+x_3)}}.
+\]
+当$\beta=(\log3)/2$且当前$x_2=1$时，$P(X_1=1\mid x_2)=3/4$；$u_1=0.2$给出$x_1=1$。此后$x_1+x_3=0$，故$P(X_2=1\mid x_1,x_3)=1/2$；$u_2=0.9$给出$x_2=-1$。最后$P(X_3=1\mid x_2=-1)=1/4$；$u_3=0.4$给出$x_3=-1$。轮末状态为$(1,-1,-1)$。这是固定输入下的精确执行结果。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S03-01}
+把精确满条件$\pi_j(\cdot\mid x_{-j})$代入单坐标\MetropolisHastings{}接受比，逐项证明正流分支的接受率为$1$。若改用一般提议$q_j(y_j\mid x_j,x_{-j})$，写出正确接受率，并说明反向提议为零时怎样处理。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S03-01}
+\begin{chapterexercisesolution}{ex:V5-C04-S03-01}
+单坐标候选满足$y_{-j}=x_{-j}$。在$\pi(x)>0$、$\pi(y)>0$且正反条件密度为正的分支，
+\[
+\frac{\pi(y)\pi_j(x_j\mid x_{-j})}
+{\pi(x)\pi_j(y_j\mid x_{-j})}=1
+\]
+的约分过程与正文相同，所以$\alpha=1$。候选由精确满条件产生时，目标零质量点的抽样概率为零；零边缘条件值则不能用该比值定义。
+
+一般提议$q_j$下，正确接受率为
+\[
+\alpha(x,y)=\min\!\left\{1,
+\frac{\widetilde\pi(y)
+q_j(x_j\mid y_j,x_{-j})}
+{\widetilde\pi(x)
+q_j(y_j\mid x_j,x_{-j})}\right\}.
+\]
+若正向流为正而反向提议为零，则双向公共流为零，必须确定拒绝；不能用一个人为小正数替代零。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S03-02}
+对命题\ref{prop:V5-C04-bivariate-normal}中的目标取$\rho=0.8$。推导两个满条件分布、$X_2$轮末链的AR系数与创新方差，并计算理论积分自相关时间及渐近ESS比例。解释“每步接受”为什么不等于“样本近似独立”。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S03-02}
+\begin{chapterexercisesolution}{ex:V5-C04-S03-02}
+$\rho=0.8=4/5$时，$1-\rho^2=9/25$，所以
+\[
+X_1\mid X_2=x_2\sim N\!\left(\frac45x_2,\frac9{25}\right),
+\qquad
+X_2\mid X_1=x_1\sim N\!\left(\frac45x_1,\frac9{25}\right).
+\]
+轮末$X_2$的AR系数为$\rho^2=16/25$，创新方差为$1-\rho^4=1-256/625=369/625$。理论积分自相关时间和ESS比例为
+\[
+\tau_{\mathrm{int}}
+=\frac{1+16/25}{1-16/25}=\frac{41}{9}\approx4.5556,
+\qquad
+\frac{N_{\mathrm{eff}}}{N}=\frac9{41}\approx0.2195.
+\]
+每个条件候选都被采用只说明没有MH拒绝；相邻状态仍通过旧坐标传递相关性，因此远非独立。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S03-03}
+在同一二元正态目标下取$\rho=1/2$、$x^{(0)}=(0,0)$，两轮创新依次为$(1,0)$和$(0,-1)$。精确计算两轮轮末状态，并说明这些固定输入能检验什么、不能证明什么。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S03-03}
+\begin{chapterexercisesolution}{ex:V5-C04-S03-03}
+此时$\sigma=\sqrt3/2$。第一轮
+\[
+x_1^{(1)}=\frac12\cdot0+\frac{\sqrt3}{2}\cdot1=\frac{\sqrt3}{2},
+\qquad
+x_2^{(1)}=\frac12x_1^{(1)}+\frac{\sqrt3}{2}\cdot0=\frac{\sqrt3}{4}.
+\]
+第二轮
+\[
+x_1^{(2)}=\frac12x_2^{(1)}=\frac{\sqrt3}{8},
+\qquad
+x_2^{(2)}=\frac12x_1^{(2)}-\frac{\sqrt3}{2}
+=-\frac{7\sqrt3}{16}.
+\]
+这些值可检验更新顺序、旧值/新值使用、均值和标准差系数；两轮固定创新不能证明随机数生成器正确、链收敛或样本矩接近目标矩。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S03-04}
+证明固定权重随机扫描Gibbs核可逆。再使用练习\ref{ex:V5-C04-S01-01}的联合分布，分别计算从$(0,0)$到$(1,1)$的一轮正序扫描$K_1K_2$与反序扫描$K_2K_1$概率，据此说明系统扫描一般不具有可逆性。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S03-04}
+\begin{chapterexercisesolution}{ex:V5-C04-S03-04}
+每个$K_j$关于$\pi$的双向流对称，常数加权和
+$K_{\mathrm{rs}}=\sum_jw_jK_j$仍满足
+\[
+\pi(\mathrm dx)K_{\mathrm{rs}}(x,\mathrm dy)
+=\pi(\mathrm dy)K_{\mathrm{rs}}(y,\mathrm dx),
+\]
+所以固定权重随机扫描可逆。
+
+对练习\ref{ex:V5-C04-S01-01}，正序从$(0,0)$到$(1,1)$的概率为
+\[
+K_1K_2((0,0),(1,1))=\frac34\cdot\frac47=\frac37.
+\]
+反序则为
+\[
+K_2K_1((0,0),(1,1))=\frac23\cdot\frac23=\frac49.
+\]
+两者不等，故$K_1,K_2$不交换。由于$(K_1K_2)^*=K_2K_1$，正序系统扫描不等于自身伴随核，因而在这个例子中不具可逆性；两种顺序仍都保持$\pi$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S04-02}
+设
+\[
+p(\alpha,\theta,z,y)
+=p(\alpha)p(\theta\mid\alpha)
+\prod_{k=1}^N p(z_k\mid\theta)p(y_k\mid z_k,\theta).
+\]
+分别写出$\alpha$、$\theta$和单个$z_k$的满条件分布中必须保留的因子，并解释为什么其他因子可以消去。若$z_k$只在一个因子中出现，说明其Markov毯。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S04-02}
+\begin{chapterexercisesolution}{ex:V5-C04-S04-02}
+条件化时，与当前变量无关的因子并入归一化常数。于是
+\[
+p(\alpha\mid\theta,z,y)
+\propto p(\alpha)p(\theta\mid\alpha),
+\]
+\[
+p(\theta\mid\alpha,z,y)
+\propto p(\theta\mid\alpha)
+\prod_{k=1}^N p(z_k\mid\theta)p(y_k\mid z_k,\theta),
+\]
+而对单个$z_k$，
+\[
+p(z_k\mid z_{-k},\alpha,\theta,y)
+\propto p(z_k\mid\theta)p(y_k\mid z_k,\theta).
+\]
+其他观测与隐变量因子不含$z_k$，所以对$z_k$归一化时消去。$z_k$的Markov毯由它的父变量$\theta$、子变量$y_k$以及$y_k$的其他父变量组成；在给定因子结构中没有额外变量。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S04-03}
+算法\ref{alg:V5-C04-systematic-gibbs}计划执行$T$轮、每轮$d$个坐标，第$t$轮第$j$个坐标失败。回答：主轮末轨迹应含多少个状态，完成轮数是多少，失败轮怎样返回；若每坐标成本上界为$C$且轮末复制成本为$O(d)$，失败前的时间上界和保存全部轮内状态的空间上界分别是什么？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S04-03}
+\begin{chapterexercisesolution}{ex:V5-C04-S04-03}
+停止前已完成$t-1$轮，所以完整轮数为$t-1$；主轮末轨迹还含初值，共$t$个状态。第$t$轮只完成了前$j-1$个坐标更新，当前中间状态必须单列，不能追加为一个轮末样本。
+\[
+N_{\rm round}=t-1,\qquad
+|\mathcal T_{\rm main}|=t,\qquad
+N_{\rm coordinate}=(t-1)d+(j-1).
+\]
+
+失败前最多完成$(t-1)d+(j-1)$次坐标更新，坐标成本上界为
+\[
+O\bigl(((t-1)d+j-1)C\bigr).
+\]
+再计入$t-1$次轮末复制得到$O(((t-1)d+j)C+(t-1)d)$的参数化上界；若把更新成本统一并入$C$，可简写为$O(tdC)$。保存至多$T$轮的全部$d$个轮内$d$维状态需要$O(Td^2)$标量空间；只保存轮末状态则是$O(Td)$。
+\[
+S_{\rm all\ inner}=O(Td^2),\qquad
+S_{\rm endpoints}=O(Td).
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C04-S04-04}
+判断下列说法，并为错误说法给出反例或缺失条件：（a）任意给出的一组满条件分布都对应某个联合分布；（b）Gibbs每步接受，所以一定混合很快；（c）足够长的燃烧期可修复可约链；（d）系统扫描总是可逆；（e）任意依赖当前状态的坐标选择概率都保持目标分布；（f）漂亮的单链轨迹足以证明程序和目标都正确。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C04-S04-04}
+\begin{chapterexercisesolution}{ex:V5-C04-S04-04}
+六个说法都缺条件或错误。
+\[
+\begin{aligned}
+P(X=1\mid Y=0)&=P(X=1\mid Y=1)=\frac12,\\
+P(Y=1\mid X=0)&=\frac14,\qquad
+P(Y=1\mid X=1)=\frac34
+\end{aligned}
+\]
+不能来自同一严格正联合分布：前一行推出$X$与$Y$独立，后一行却要求依赖，给出（a）的具体不相容反例。
+\begin{enumerate}[label=(\alph{enumi}),leftmargin=2.4em]
+  \item 满条件必须彼此相容并对应同一个可归一化联合分布；任意指定的一组条件分布可能不存在共同联合分布。
+  \item 练习\ref{ex:V5-C04-S03-02}中每步都采用新值，但$\rho=0.8$时理论ESS比例约为$0.2195$，所以接受不保证快速混合。
+  \item 练习\ref{ex:V5-C04-S02-01}的核为恒等核；丢弃任意多步后仍停在初值。
+  \item 练习\ref{ex:V5-C04-S03-04}给出$K_1K_2\ne K_2K_1$的具体系统扫描，因此一般不具可逆性。
+  \item 状态依赖选择权重会改变正反更新流；除非另有平衡证明或校正，不能沿用固定权重混合核的证明。
+  \item 单链轨迹只能显示已访问路径。错误目标、共同遗漏的模态或程序与理论同时犯错都可能产生平滑轨迹；还需目标、转移核、独立测试、多个初值和定量诊断证据。
+\end{enumerate}
+\[
+\begin{aligned}
+K=I&\Longrightarrow K^m=I
+  &&(\text{燃烧期不修复可约性}),\\
+(K_1K_2)^*&=K_2K_1\ne K_1K_2
+  &&(\text{系统扫描一般不可逆}).
+\end{aligned}
+\]
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% Reserve the complete closing unit so a lone fifth checklist item cannot spill.
+\Needspace{24\baselineskip}
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V5-C04-CH36}
+\SLChapterFiveSummary{满条件首先是可测概率核；正边缘处由密度比给出，零边缘集合上必须选定版本。}
+{单坐标核的条件概率乘积关于新旧坐标对称，故可逆并保持$\pi$；系统扫描保持$\pi$但通常不可逆。}
+{一轮依固定次序从当前轮内状态抽取各坐标，后一步立即读取前一步新值。}
+{适合满条件可精确抽样且坐标移动连通目标支持的模型；强相关与退化约束会导致慢混合或可约。}
+{\NextChapter{35}{潜在狄利克雷分配}，把本章坐标Gibbs用于主题后验推断。}
+
+\phantomsection\label{struct:V5-C04-CH37}
+\begin{selfcheckbox}
+\small
+\begin{enumerate}[leftmargin=2.2em,itemsep=0.15em,topsep=0.25em,parsep=0pt]
+  \item 能否从联合密度得到式\eqref{eq:V5-C04-full-conditional}并处理零边缘质量，再用对称条件流证明单坐标核可逆、说明系统扫描只自动继承平稳性？
+  \item 能否检查单坐标支持连通性、构造可约Gibbs反例，并完整执行算法\ref{alg:V5-C04-systematic-gibbs}以区分轮末轨迹与部分扫描？
+  \item 能否推导二元正态满条件、AR递推、积分自相关时间与ESS比例，同时从概率图因子识别Markov毯并说明消去项？
+  \item 能否为原书五分类任务补齐先验、推导精确条件混合并用解析矩核验运行？若不能，重做练习\ref{ex:V5-C04-S04-01}。
+  \item 能否拒绝用接受率、燃烧期或单链图替代不可约性和程序正确性证据？若不能，重做练习\ref{ex:V5-C04-S04-04}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

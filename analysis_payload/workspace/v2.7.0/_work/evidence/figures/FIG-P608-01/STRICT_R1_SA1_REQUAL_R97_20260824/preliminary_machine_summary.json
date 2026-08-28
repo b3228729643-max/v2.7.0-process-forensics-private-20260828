@@ -1,0 +1,158 @@
+{
+  "audit_id": "FIG-P608-01 STRICT_R1_SA1_REQUAL_R97_20260824",
+  "counts": {
+    "all_objects": 102,
+    "expected_unordered_pairs": 5151,
+    "glyph_cards": 114,
+    "glyph_contact_sheets": 10,
+    "graphic_objects": 66,
+    "intended_contacts": 93,
+    "low_profile_glyphs": 15,
+    "math_rules": 2,
+    "pair_cards": 110,
+    "pair_contact_sheets": 10,
+    "reported_unordered_pairs": 5151,
+    "text_objects": 36,
+    "unassigned_foreground_pdf_paths": 0,
+    "visible_glyphs": 114
+  },
+  "critical_R002_vs_G001": {
+    "axis_object": "G001",
+    "decision_basis": "unique final-visible raw masks; native 300dpi 1x",
+    "files": {
+      "barX_axis_unique_overlay_1x.png": "critical_barX_vs_upper_axis/barX_axis_unique_overlay_1x.png",
+      "barX_axis_unique_overlay_8x_nearest.png": "critical_barX_vs_upper_axis/barX_axis_unique_overlay_8x_nearest.png",
+      "barX_pre_zorder_raw_mask_1x.png": "critical_barX_vs_upper_axis/barX_pre_zorder_raw_mask_1x.png",
+      "barX_unique_raw_mask_1x.png": "critical_barX_vs_upper_axis/barX_unique_raw_mask_1x.png",
+      "barX_vs_upper_axis_original_1x.png": "critical_barX_vs_upper_axis/barX_vs_upper_axis_original_1x.png",
+      "pre_zorder_A_B_intersection_overlay_1x.png": "critical_barX_vs_upper_axis/pre_zorder_A_B_intersection_overlay_1x.png",
+      "pre_zorder_A_B_intersection_overlay_8x_nearest.png": "critical_barX_vs_upper_axis/pre_zorder_A_B_intersection_overlay_8x_nearest.png",
+      "pre_zorder_shared_intersection_1x.png": "critical_barX_vs_upper_axis/pre_zorder_shared_intersection_1x.png",
+      "upper_axis_pre_zorder_raw_mask_1x.png": "critical_barX_vs_upper_axis/upper_axis_pre_zorder_raw_mask_1x.png",
+      "upper_axis_unique_raw_mask_1x.png": "critical_barX_vs_upper_axis/upper_axis_unique_raw_mask_1x.png"
+    },
+    "final_unique_raw_clearance_px": 0.0,
+    "final_unique_raw_intersection_px": 0,
+    "nearest_axis_pixel_crop_xy": [
+      1201,
+      380
+    ],
+    "nearest_rule_pixel_crop_xy": [
+      1201,
+      381
+    ],
+    "non_whitelisted": true,
+    "pre_zorder_same_colour_geometric_raw_intersection_px": 64,
+    "rule_object": "R002",
+    "vector_geometry_crosscheck": {
+      "axis_centerline_y_pt": 311.0250244140625,
+      "axis_pdf_drawing_index": 8,
+      "axis_stroke_width_pt": 0.647570013999939,
+      "centreline_distance_pt": 0.64501953125,
+      "half_stroke_width_sum_pt": 0.6897850036621094,
+      "overbar_centerline_y_pt": 311.6700439453125,
+      "overbar_pdf_drawing_index": 62,
+      "overbar_stroke_width_pt": 0.7319999933242798,
+      "vector_stroke_penetration_pt": 0.044765472412109375
+    },
+    "verdict": "FAIL"
+  },
+  "hard_gate_counts": {
+    "font_size_fail": 0,
+    "pixel_fail": 4,
+    "purity_fail": 1,
+    "unwhitelisted_pair_fail": 3
+  },
+  "identity": {
+    "aux_label_lines": [
+      "\\newlabel{fig:V5-C03-trace-running-mean}{{32.8}{646}{舍弃前5步后，保留样本运行均值在目标值2附近波动；本图仅作诊断，不构成收敛证明}{figure.caption.2613}{}}",
+      "\\newlabel{fig:V5-C03-trace-running-mean@cref}{{[figure][8][32]32.8}{[1][646][]646}{}{}{}}"
+    ],
+    "candidate_page_text_has_caption": true,
+    "candidate_pages": 813,
+    "candidate_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r97_fullbook\\main_full.pdf",
+    "candidate_pdf_sha256": "062AD81020CB19A5C6688A45C73E00965F5060E0960A69AF820D7DC154DEE814",
+    "caption_exact": "舍弃前5步后，保留样本运行均值在目标值2附近波动；本图仅作诊断，不构成收敛证明",
+    "caption_physical_pages": [
+      659
+    ],
+    "chapter_input_line": 600,
+    "chapter_introduction_line": 599,
+    "declared_figure_source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_trace_running_mean.tex",
+    "equation_32_8_physical_pages_disambiguated": [
+      651
+    ],
+    "figure_number": "32.8",
+    "fls_source_input_lines": [
+      "INPUT d:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/source/v2.7.0/src/build/strict_current_r97_fullbook/../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_trace_running_mean.tex"
+    ],
+    "physical_page": 659,
+    "printed_page": "646",
+    "result": "PASS_IDENTITY_AND_LOCATION",
+    "source_bytes": 2837,
+    "source_caption_line": 46,
+    "source_label_line": 46,
+    "source_sha256": "DA035C1920CB900E54D3658851C1D71D9C6446531EFF50BEE6E089B567835AE4"
+  },
+  "inspection_artifacts": {
+    "glyph_sheets": [
+      "glyph_contact_sheets/glyph_sheet_001.png",
+      "glyph_contact_sheets/glyph_sheet_002.png",
+      "glyph_contact_sheets/glyph_sheet_003.png",
+      "glyph_contact_sheets/glyph_sheet_004.png",
+      "glyph_contact_sheets/glyph_sheet_005.png",
+      "glyph_contact_sheets/glyph_sheet_006.png",
+      "glyph_contact_sheets/glyph_sheet_007.png",
+      "glyph_contact_sheets/glyph_sheet_008.png",
+      "glyph_contact_sheets/glyph_sheet_009.png",
+      "glyph_contact_sheets/glyph_sheet_010.png"
+    ],
+    "math_rule_cards": {
+      "R001": {
+        "four_view_8x": "math_rule_cards/R001_math_rule_four_view_8x_nearest.png",
+        "mask_only_1x": "math_rule_cards/R001_math_rule_mask_only_1x.png",
+        "original_1x": "math_rule_cards/R001_math_rule_original_1x.png",
+        "target_overlay_1x": "math_rule_cards/R001_math_rule_target_overlay_1x.png"
+      },
+      "R002": {
+        "four_view_8x": "math_rule_cards/R002_math_rule_four_view_8x_nearest.png",
+        "mask_only_1x": "math_rule_cards/R002_math_rule_mask_only_1x.png",
+        "original_1x": "math_rule_cards/R002_math_rule_original_1x.png",
+        "target_overlay_1x": "math_rule_cards/R002_math_rule_target_overlay_1x.png"
+      }
+    },
+    "pair_sheets": [
+      "pair_contact_sheets/pair_contact_sheet_001.png",
+      "pair_contact_sheets/pair_contact_sheet_002.png",
+      "pair_contact_sheets/pair_contact_sheet_003.png",
+      "pair_contact_sheets/pair_contact_sheet_004.png",
+      "pair_contact_sheets/pair_contact_sheet_005.png",
+      "pair_contact_sheets/pair_contact_sheet_006.png",
+      "pair_contact_sheets/pair_contact_sheet_007.png",
+      "pair_contact_sheets/pair_contact_sheet_008.png",
+      "pair_contact_sheets/pair_contact_sheet_009.png",
+      "pair_contact_sheets/pair_contact_sheet_010.png"
+    ]
+  },
+  "status": "MEASUREMENTS_RECONCILED_WITH_SIGNED_HUMAN_REVIEW_NO_TERMINAL",
+  "human_reconciliation": {
+    "reviewer": "SA1_R1_20260824",
+    "glyph_rows_signed": 114,
+    "pair_cards_signed": 110,
+    "named_individual_contacts_signed": 93,
+    "math_rule_cards_signed": 2,
+    "final_hard_pair_ids": [
+      "P2311",
+      "P2315",
+      "P3071"
+    ],
+    "individual_target_data_relation_pairs": [
+      "P5003",
+      "P5008",
+      "P5009",
+      "P5011",
+      "P5012"
+    ],
+    "terminal_written": false
+  }
+}

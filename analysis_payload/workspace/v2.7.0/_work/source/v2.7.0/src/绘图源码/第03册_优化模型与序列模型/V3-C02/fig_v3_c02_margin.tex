@@ -1,0 +1,78 @@
+% v2.6.0 figure UID: FIG-P309-01
+% Image-reference reverse redraw: preserve all SVM geometry and reinforce grayscale redundancy.
+\tikzset{
+  slfig-FIG-P309-01/.style={font=\fontsize{9.2}{11}\selectfont,
+    every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P309-01-line-label/.style={
+    slfig direct label,font=\fontsize{9.5}{11.3}\selectfont,
+    fill=none,inner sep=0pt,
+  },
+  slfig-FIG-P309-01-note/.style={
+    font=\fontsize{9.2}{11}\selectfont,text=SLGold!82!black,
+    fill=white,fill opacity=.94,text opacity=1,rounded corners=.6pt,
+    inner xsep=2pt,inner ysep=1.2pt,
+  },
+}
+\pgfplotsset{
+  slfig-FIG-P309-01-axis/.style={
+    axis line style={draw=SLInk!82,line width=.55pt},
+    label style={font=\fontsize{9.5}{11.3}\selectfont},clip=false,
+  },
+  slfig-FIG-P309-01-H/.style={draw=SLBlue,line width=1.02pt},
+  slfig-FIG-P309-01-Hplus/.style={draw=SLBlue!80,line width=.72pt,dash pattern=on 5pt off 2.2pt},
+  slfig-FIG-P309-01-Hminus/.style={draw=SLTeal!90!black,line width=.72pt,dash pattern=on 5pt off 1.8pt on 1pt off 1.8pt},
+}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P309-01]
+\begin{axis}[slfig axis,slfig-FIG-P309-01-axis,
+  width=.76\linewidth,height=.62\linewidth,
+  xmin=-.2,xmax=6.2,ymin=-.5,ymax=5.5,
+  axis equal image,axis lines=middle,
+  xlabel={$x_1$},ylabel={$x_2$},xtick=\empty,ytick=\empty,clip=false,
+]
+  % g(x)=-.7x_1+x_2-.2; H:g=0, H_+:g=1, H_-:g=-1.
+  \addplot[draw=none,fill=SLBlue,fill opacity=.028]
+    coordinates {(-.2,1.06) (-.2,5.5) (6.2,5.5) (6.2,5.34)}\closedcycle;
+  \addplot[draw=none,fill=SLTeal,fill opacity=.028]
+    coordinates {(-.2,-.5) (6.2,-.5) (6.2,4.54) (-.2,.06)}\closedcycle;
+  \addplot[slfig-FIG-P309-01-H,domain=-.2:6.2,samples=2] {.7*x+.2};
+  \addplot[slfig-FIG-P309-01-Hplus,domain=-.2:6.2,samples=2] {.7*x+1.2};
+  \addplot[slfig-FIG-P309-01-Hminus,domain=-.2:6.2,samples=2] {.7*x-.8};
+
+  \addplot[only marks,mark=*,mark size=2.3pt,draw=SLBlue,fill=SLBlue]
+    coordinates {(.8,2.25) (1.5,2.25) (2.4,3.35) (3.7,3.79) (4.4,4.65)};
+  \addplot[only marks,mark=triangle*,mark size=3pt,draw=SLTeal!88!black,fill=white,line width=.8pt]
+    coordinates {(1.2,-.05) (2.2,.74) (3.1,.95) (4.3,2.21) (5.2,2.55)};
+  % Support vectors lie exactly on H_+ or H_-; outer rings distinguish them.
+  \addplot[only marks,mark=o,mark size=4.5pt,draw=SLGold!84!black,line width=.95pt]
+    coordinates {(1.5,2.25) (3.7,3.79) (2.2,.74) (4.3,2.21)};
+
+  \draw[-{Stealth[length=2.2mm,width=1.35mm]},draw=SLGold!82!black,line width=1pt]
+    (axis cs:3,2.3)--(axis cs:2.30,3.30)
+    node[above left,font=\fontsize{9.2}{11}\selectfont,text=SLGold!82!black,
+      fill=none,inner sep=0pt] {$w$};
+  \draw[<->,draw=SLInk,line width=.80pt]
+    (axis cs:3.4698,1.6289)--(axis cs:2.5302,2.9711);
+  \draw[draw=SLInk,line width=.45pt]
+    (axis cs:3.4698,1.6289)--(axis cs:3.70,1.36);
+  \node[font=\fontsize{9.2}{11}\selectfont,anchor=west]
+    at (axis cs:3.82,1.26) {$2/\lVert w\rVert$};
+  \draw[draw=SLBlue!80,line width=.44pt]
+    (axis cs:5.65,5.155)--(axis cs:6.18,5.28);
+  \node[slfig-FIG-P309-01-line-label,text=SLBlue,anchor=west]
+    at (axis cs:6.24,5.30) {$H_+$};
+  \draw[draw=SLBlue,line width=.44pt]
+    (axis cs:5.65,4.155)--(axis cs:6.18,4.22);
+  \node[slfig-FIG-P309-01-line-label,text=SLBlue,anchor=west]
+    at (axis cs:6.24,4.24) {$H$};
+  \draw[draw=SLTeal!88!black,line width=.44pt]
+    (axis cs:5.65,3.155)--(axis cs:6.18,3.22);
+  \node[slfig-FIG-P309-01-line-label,text=SLTeal!88!black,anchor=west]
+    at (axis cs:6.24,3.24) {$H_-$};
+  \node[slfig-FIG-P309-01-note,anchor=west] at (axis cs:.15,4.95)
+    {外圈：支持向量};
+\end{axis}
+\end{tikzpicture}
+\caption{分类超平面、两条间隔边界与几何间隔}\label{fig:V3-C02-margin}
+\end{figure}

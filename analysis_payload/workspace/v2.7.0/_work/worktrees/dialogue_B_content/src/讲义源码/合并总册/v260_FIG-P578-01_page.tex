@@ -1,0 +1,14 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{577}
+\setcounter{chapter}{31}
+\setcounter{figure}{4}
+\pagestyle{headings}
+\chaptermark{蒙特卡罗方法与直接采样}
+\sectionmark{接受--拒绝抽样}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先核对预检与零目标/零预算短路均在随机调用之前；再沿每轮提议确认成功候选才增加$m$、仅接受分支追加样本并增加$a$；最后按“先$a=N$、再$m=B$”判停，并核对随机/数值失败保留合法前缀、包络失败返回$\mathtt{invalid\_input}$及$\mathtt{envelope\_condition\_failure}$诊断。
+\end{document}

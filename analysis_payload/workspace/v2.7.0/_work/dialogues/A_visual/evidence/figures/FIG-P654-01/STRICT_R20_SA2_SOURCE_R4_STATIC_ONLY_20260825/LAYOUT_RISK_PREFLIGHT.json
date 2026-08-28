@@ -1,0 +1,63 @@
+{
+  "status": "STATIC_LAYOUT_RISK_PASS_AWAIT_NEW_RASTER",
+  "uniform_size_factor": 1.0841121495327104,
+  "node_risks": [
+    {
+      "parent": "N_POSTERIOR",
+      "border": "D0004",
+      "current_all_glyph_union_pdf_pt": [
+        293.380981,
+        105.231186,
+        379.664825,
+        133.348495
+      ],
+      "border_bbox_pdf_pt": [
+        281.095001,
+        92.54892,
+        391.955872,
+        143.573151
+      ],
+      "current_union_width_pt": 86.283844,
+      "projected_conservative_all_glyph_width_pt": 93.541363589,
+      "border_width_pt": 110.860871,
+      "projected_centered_horizontal_margin_px": 36.082307,
+      "current_min_glyph_to_own_border_clearance_px": 49.0,
+      "projected_clearance_lower_bound_px": 33.880168,
+      "hard_gate_px": 5,
+      "static_risk_pass": true
+    },
+    {
+      "parent": "N_PREDICTIVE",
+      "border": "D0005",
+      "current_all_glyph_union_pdf_pt": [
+        415.949982,
+        93.819199,
+        512.215576,
+        145.058334
+      ],
+      "border_bbox_pdf_pt": [
+        400.151581,
+        75.540817,
+        528.020569,
+        160.581253
+      ],
+      "current_union_width_pt": 96.265594,
+      "projected_conservative_all_glyph_width_pt": 104.362700037,
+      "border_width_pt": 127.868988,
+      "projected_centered_horizontal_margin_px": 48.971433,
+      "current_min_glyph_to_own_border_clearance_px": 64.0,
+      "projected_clearance_lower_bound_px": 47.131029,
+      "hard_gate_px": 5,
+      "static_risk_pass": true
+    }
+  ],
+  "application_to_lda_clearance_r19_px": [
+    19.0,
+    19.0
+  ],
+  "application_label_or_lda_geometry_changed_in_r4": false,
+  "node_coordinate_changes_in_r4": 0,
+  "relationship_changes_in_r4": 0,
+  "all_static_risk_pass": true,
+  "note": "The projection pessimistically scales every glyph in each node, including labels that R4 does not enlarge. Native geometry and all 6441 pairs still require a new PDF."
+}

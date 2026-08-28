@@ -1,0 +1,7 @@
+view_id,file,reviewer,decision,note
+V01,full_page_200dpi.png,SA1,FAIL_TEXT_CONTEXT,"完整页显示图宽与正文融合正常；但图上方正文明确声称绘制“拒绝自环”，本图没有该对象。"
+V02,full_page_300dpi.png,SA1,FAIL_TEXT_CONTEXT,"原生 300 dpi 整页确认页码、题注和图形无裁切；同一正文—图义冲突仍存在。"
+V03,figure_crop_with_caption_native_300dpi.png,SA1,CLEAR,"图形与题注同屏；题注只陈述 min 流与细致平衡，内容本身准确。"
+V04,figure_only_native_300dpi.png,SA1,CLEAR,"300 dpi 彩色图中节点、箭头、公式和结论框均清楚，未见真实重叠。"
+V05,figure_only_grayscale_native_300dpi.png,SA1,CLEAR,"灰度后仍可用框形、线宽和箭头方向区分角色；金色仅退化为较深灰边，不丢关系。"
+V06,figure_only_direct_2400dpi.png,SA1,CLEAR,"直接 2400 dpi（相对 300 dpi 为 8x）检查确认字形连续、箭头端点分离、无 tofu 或隐藏裁边。"

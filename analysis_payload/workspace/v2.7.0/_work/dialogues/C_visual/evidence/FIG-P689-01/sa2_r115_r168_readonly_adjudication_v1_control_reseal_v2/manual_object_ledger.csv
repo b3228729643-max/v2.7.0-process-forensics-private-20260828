@@ -1,0 +1,32 @@
+OBJECT_ID,POST_OBSERVATION_VERDICT,GLYPH_OR_CODEPOINT,READABILITY_AND_BALANCE,CLIPPING,ILLEGAL_VISIBLE_INK_OVERLAP,GRAYSCALE_OR_GEOMETRY,MANUAL_NOTE,EVIDENCE
+G01,PASS,NA,balanced,CLEAR,CLEAR,stable,left panel border complete with rounded corners,native300+gray+object_overlay
+G02,PASS,NA,balanced,CLEAR,CLEAR,stable,right panel border complete with rounded corners,native300+gray+object_overlay
+G03,PASS,NA,balanced,CLEAR,CLEAR,distinguishable,blue ELBO fill is a semantic background and remains distinct in tone,native300+gray+semantic_overlay+roi01_1x+8x
+G04,PASS,NA,balanced,CLEAR,CLEAR,distinguishable,orange KL fill is a semantic background and remains distinct in tone,native300+gray+semantic_overlay+roi01_1x+8x
+G05,PASS,NA,balanced,CLEAR,CLEAR,stable,evidence outline is complete and does not cross its labels,native300+semantic_overlay+roi01_1x+8x
+G06,PASS,NA,balanced,CLEAR,CLEAR,stable,divider joins the outer border only at intended endpoints and misses both labels,native300+semantic_overlay+roi01_1x+8x
+G07,PASS,NA,balanced,CLEAR,CLEAR,stable,bidirectional length arrow and both arrowheads are complete,native300+gray+roi01_1x+8x
+G08,PASS,NA,balanced,CLEAR,CLEAR,stable,x axis and all tick marks are complete and separated from labels,native300+gray+roi04_1x+8x
+G09,PASS,NA,balanced,CLEAR,CLEAR,stable,y axis and arrowhead are complete; contacts at origin/reference level are intended coordinate geometry,native300+gray+roi02_1x+8x+roi03_1x+8x+roi08_1x+8x
+G10,PASS,NA,dominant data geometry,CLEAR,CLEAR,solid staircase,staircase is nondecreasing at every update and is unobscured,native300+gray+roi03_1x+8x
+G11,PASS,NA,balanced double encoding,CLEAR,CLEAR,circular markers,all seven circular markers remain visible and distinguish the series beyond color,native300+gray+roi02_1x+8x+roi03_1x+8x
+G12,PASS,NA,subordinate reference geometry,CLEAR,CLEAR,dashed reference,unknown upper-bound line is complete and distinguishable from solid marked staircase,native300+gray+roi02_1x+8x
+T01,PASS,Chinese text correct,readable and balanced,CLEAR,CLEAR,readable,left panel title has no missing or wrong glyph,native300+gray+text_overlay
+T02,PASS,"log,p,(,w,)",readable and balanced,CLEAR,CLEAR,readable,evidence-length formula label is complete,native300+gray+roi01_1x+8x
+T03,PASS,"ℒ U+2112; q",readable and balanced,CLEAR,CLEAR,readable,ELBO bar label is complete; background fill is intentional,native300+gray+roi01_1x+8x
+T04,PASS,"K,L and Chinese",readable and balanced,CLEAR,CLEAR,readable,KL gap label is complete; background fill is intentional,native300+gray+roi01_1x+8x
+T05,PASS,"ℒ U+2112; ‖ U+2016; conditional bar",readable and balanced,CLEAR,CLEAR,readable,identity renders as log p(w)=ELBO+KL with correct double norm bar and conditional bar,native300+gray+roi05_1x+8x
+T06,PASS,"≥ U+2265; ≤ U+2264; ℒ U+2112",readable and balanced,CLEAR,CLEAR,readable,nonnegative-KL note and lower-bound direction are correct,native300+gray+roi06_1x+8x
+T07,PASS,Chinese plus ELBO correct,readable and balanced,CLEAR,CLEAR,readable,right panel title is complete and does not meet the y-axis arrowhead,native300+gray+roi02_1x+8x
+T08,PASS,Chinese text correct,readable and balanced,CLEAR,CLEAR,readable,unknown-upper-bound label is below the dashed line with genuine ink clearance,native300+gray+roi02_1x+8x
+T09,PASS,"Chinese plus ／ U+FF0F",readable and balanced,CLEAR,CLEAR,readable,local-point label is separated from the staircase and is semantically precise,native300+gray+roi03_1x+8x
+T10,PASS,digit 0,readable and balanced,CLEAR,CLEAR,readable,tick 0 is complete and separated from axes,native300+gray+roi04_1x+8x
+T11,PASS,digit 1,readable and balanced,CLEAR,CLEAR,readable,tick 1 is complete,native300+gray+roi04_1x+8x
+T12,PASS,digit 2,readable and balanced,CLEAR,CLEAR,readable,tick 2 is complete,native300+gray+roi04_1x+8x
+T13,PASS,digit 3,readable and balanced,CLEAR,CLEAR,readable,tick 3 is complete,native300+gray+roi04_1x+8x
+T14,PASS,digit 4,readable and balanced,CLEAR,CLEAR,readable,tick 4 is complete,native300+gray+roi04_1x+8x
+T15,PASS,digit 5,readable and balanced,CLEAR,CLEAR,readable,tick 5 is complete,native300+gray+roi04_1x+8x
+T16,PASS,digit 6,readable and balanced,CLEAR,CLEAR,readable,tick 6 is complete,native300+gray+roi04_1x+8x
+T17,PASS,Chinese text correct,readable and balanced,CLEAR,CLEAR,readable,x-axis label is centered and separated from tick labels,native300+gray+roi04_1x+8x
+T18,PASS,图 plus 35.5 correct,readable and balanced,CLEAR,CLEAR,readable,caption number is complete and adjacent to but not overlapping caption body,native300+gray+roi07_1x+8x
+T19,PASS,Chinese plus ELBO and KL correct,readable and balanced,CLEAR,CLEAR,readable,three-line caption is complete and states the exact semantic boundary,native300+gray+roi07_1x+8x

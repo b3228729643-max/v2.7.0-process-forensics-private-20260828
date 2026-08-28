@@ -1,0 +1,4 @@
+candidate_id,objects,automatic_or_raw_count_px,scope,manual_classification,canonical_illegal_overlap_px,manual_reason
+MC001,E003-E004,17,INDEPENDENT_TEXT_RUNS,MASK_CONTAMINATION,0,"PDF glyph bboxes overlap by 0.16 pt and duplicate pixels in bbox-derived masks, but native ink rows have six blank rows and separated masks have 0 overlap."
+LC001,G002-G004,2,DECORATIVE_DIVIDER_VS_WARNING_ARROW,LEGAL_STRUCTURAL_CROSSING,0,"The warning branch intentionally crosses the non-semantic divider; no text or relation is obscured."
+LC002,G002-G005,2,DECORATIVE_DIVIDER_VS_WARNING_ARROW,LEGAL_STRUCTURAL_CROSSING,0,"Symmetric intentional crossing; no text or relation is obscured."

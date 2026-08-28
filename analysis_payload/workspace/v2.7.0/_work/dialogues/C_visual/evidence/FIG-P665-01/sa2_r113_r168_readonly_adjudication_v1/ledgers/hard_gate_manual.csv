@@ -1,0 +1,15 @@
+gate_id,r168_hard_gate,native_evidence,manual_disposition
+H01,frozen input identity,"Exact byte counts and SHA-256 values match both whitelisted inputs.",CLEAR
+H02,missing glyph or tofu,"Native figure, text overlay, all five risk ROIs, and page text extraction show zero missing-glyph/tofu instances.",CLEAR
+H03,wrong visible codepoint,"Theta, alpha, eta, psi, Gamma, partial, expectation, inequality, indicator, subscripts, Chinese, and Latin strings match source semantics.",CLEAR
+H04,mathematical correctness,"Independent derivation in mathematics_manual.csv reproduces every displayed identity and the Jensen nonidentity.",CLEAR
+H05,readability,"Every semantic element is readable at native1x; T03 is smaller by legacy numeric policy but remains crisp and unambiguous, so it is advisory only under R168.",CLEAR_WITH_ADVISORY
+H06,visibly serious imbalance,"Two panels have balanced visual weight; titles correspond, left decomposition and right derivative stack are stable, and no minor label dominates the subject.",CLEAR
+H07,true clipping,"Full page, native diagram, native figure, page integration, and risk ROIs show zero clipped semantic ink.",CLEAR
+H08,illegal visible-ink overlap,"All 120 unordered semantic-object pairs were individually inspected; conservative bbox intersections are padding/containment artifacts and native ink remains separate.",CLEAR
+H09,semantic error,"Object meanings, indices, roles, implication direction, and caption agree with current source/context.",CLEAR
+H10,geometric error,"Cards, brace, divider, arrow, frames, and caption occupy coherent non-obstructing geometry.",CLEAR
+H11,grayscale failure,"Blue/result and red/warning roles remain distinguishable by closed frames, tone, position, and inequality semantics in grayscale.",CLEAR
+H12,page-integration failure,"Figure fits the top-page teaching flow and hands off cleanly to the posterior derivation without collision or serious imbalance.",CLEAR
+H13,evidence completeness,"16 objects, 120 unordered pairs, 14 text/glyph elements, 12 geometry checks, required native/grayscale/overlay/page/ROI views, math, and semantics are all represented.",CLEAR
+H14,R168 taxonomy application,"No finding relies solely on legacy font, pixel-height, outline, ratio, taxonomy, or tiny-raster thresholds as a source-return cause.",CLEAR

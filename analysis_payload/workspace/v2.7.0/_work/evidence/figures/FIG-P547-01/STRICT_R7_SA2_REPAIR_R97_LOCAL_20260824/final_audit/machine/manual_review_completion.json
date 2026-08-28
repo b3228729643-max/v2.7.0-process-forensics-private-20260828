@@ -1,0 +1,26 @@
+{
+  "state": "MANUAL_REVIEW_COMPLETE",
+  "reviewer": "SA2_P547",
+  "machine_pre_review_record": "machine_integrity_pre_manual_review.json",
+  "machine_pre_review_record_status": "IMMUTABLE_GENERATOR_PRE_REVIEW_SNAPSHOT",
+  "superseded_by_this_completion_record": true,
+  "signed_ledgers": {
+    "glyphs": {"rows": 193, "pending": 0, "fail": 0},
+    "foreground_graphics": {"rows": 65, "pending": 0, "fail": 0},
+    "math_relations": {"rows": 15, "pending": 0, "fail": 0},
+    "critical_and_intentional_pairs": {"rows": 40, "pending": 0, "fail": 0},
+    "low_profile_calibrations": {"rows": 24, "pending": 0, "fail": 0},
+    "occlusion_reverse_checks": {"rows": 6, "pending": 0, "fail": 0},
+    "named_repair_clearances": {"rows": 6, "pending": 0, "fail": 0},
+    "text_object_font_and_harmony": {"rows": 21, "pending": 0, "fail": 0},
+    "global_and_semantic_views": {"rows": 9, "pending": 0, "fail": 0},
+    "supplemental_lower_label_pairs": {"rows": 2, "pending": 0, "fail": 0}
+  },
+  "opened_contact_sheets": {
+    "glyph_sheets": 17,
+    "graphic_sheets": 7,
+    "math_relation_sheets": 2
+  },
+  "native_review_contract": "Every indexed glyph, graphic and relation sheet was opened; every failure/critical native 1x and nearest-neighbour 8x card was opened; no script-generated bulk PASS was accepted as manual review.",
+  "decision": "PASS"
+}

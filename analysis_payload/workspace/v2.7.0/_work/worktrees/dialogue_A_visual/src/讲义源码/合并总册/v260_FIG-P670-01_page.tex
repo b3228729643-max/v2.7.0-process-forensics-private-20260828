@@ -1,0 +1,20 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{842}
+\setcounter{chapter}{34}
+\setcounter{section}{5}
+\setcounter{figure}{9}
+\setcounter{equation}{23}
+\pagestyle{headings}
+\chaptermark{狄利克雷分布与共轭先验}
+\sectionmark{后验预测与例题}
+\textbf{图形辅助。}下图沿 $\boldsymbol\alpha\to\boldsymbol\alpha+\boldsymbol n\to(\boldsymbol\alpha+\boldsymbol n)/(\alpha_0+N)$ 展示更新与预测。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_posterior_predictive.tex}
+\FloatBarrier
+
+\begin{example}[三分类先验的矩、更新与预测]
+取 $\boldsymbol\alpha=(2,3,5)$、$\boldsymbol n=(4,1,0)$，求先验与后验均值、下一类别预测、后验 MAP，以及未来依次出现类别 $1,2$ 的概率。
+\end{example}
+\end{document}

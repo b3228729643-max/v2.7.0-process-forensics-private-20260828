@@ -1,0 +1,358 @@
+{
+  "status": "PASS",
+  "operation": "P670_REPLACEMENT_V2_EVIDENCE_ONLY_CONTROL_RESEAL_V1",
+  "authorization_token": "MAIN_R434_P670_SINGLE_CONTROL_RESEAL_AUTHORIZED",
+  "invocation_count": 1,
+  "retry_count": 0,
+  "started_utc": "2026-08-27T18:33:53.0457490Z",
+  "finished_utc": "2026-08-27T18:33:54.6062227Z",
+  "duration_seconds": 1.5604737,
+  "handoff_id": "C-FIG-P670-01-R114-SA2-R168-READONLY-ADJUDICATION-FRESH-REPLACEMENT-V2-CONTROL-RESEAL-V1",
+  "uid": "FIG-P670-01",
+  "old_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2",
+  "new_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1",
+  "old_baseline_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\reports\\FIG-P670-01\\control_reseal_v1\\OLD_ROOT_BEFORE.csv",
+  "old_baseline_sha256": "6F8A81A95F3BD2860517559B2013F579F2F4A26E612F372A88915367E5E083C2",
+  "old_root_before_count": 29,
+  "old_root_after_count": 29,
+  "old_root_mismatch": 0,
+  "source_material": 27,
+  "copied_old_controls": 0,
+  "payload": 29,
+  "controls": 3,
+  "ordinary": 32,
+  "payload_manifest_rows": 29,
+  "payload_manifest_sha256": "F8E8583EC992620732130F887D2EDBC63E5D18AEBD0DFBF285F33C1FE54825F9",
+  "files_readonly": 32,
+  "file_count": 32,
+  "directory_count_including_root": 4,
+  "directories_readonly": 4,
+  "write_stopped_lines": 13,
+  "write_stopped_bad_lines": 0,
+  "write_stopped_strict_latest": true,
+  "write_stopped_at_or_after_excluding_marker": 0,
+  "write_stopped_last_write_filetime_utc": 134323292353104832,
+  "max_other_last_write_filetime_utc": 134323292343104832,
+  "strict_margin_ticks": 10000000,
+  "parse_failures": 0,
+  "ads": 0,
+  "cache_pyc": 0,
+  "reparse": 0,
+  "post_marker_root_writes": 0,
+  "final_file_snapshot": [
+    {
+      "relative_path": "analysis\\all_unordered_pairs_frozen.csv",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\analysis\\all_unordered_pairs_frozen.csv",
+      "bytes": 8957,
+      "sha256": "DDEA3D7D6BB4853B856CAB6137436A1DEEAFDDB72FCF206949512965EE43332B",
+      "creation_filetime_utc": 134323277013733653,
+      "last_write_filetime_utc": 134323278682984248,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "analysis\\generate_mechanical_evidence.py",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\analysis\\generate_mechanical_evidence.py",
+      "bytes": 12692,
+      "sha256": "C6EE52FA6D4C2012751608B148674555D93967CC0328EDF4A4716123FF196274",
+      "creation_filetime_utc": 134323276888531409,
+      "last_write_filetime_utc": 134323278580841387,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "analysis\\mechanical_measurement_summary.json",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\analysis\\mechanical_measurement_summary.json",
+      "bytes": 334,
+      "sha256": "C1C977F70697BFEE3EEB94E4BD38583915FC579B8ECC66462557260A508A93B8",
+      "creation_filetime_utc": 134323277013993192,
+      "last_write_filetime_utc": 134323278683186302,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "analysis\\official_r114_layout.txt",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\analysis\\official_r114_layout.txt",
+      "bytes": 2694685,
+      "sha256": "D46F9DD02DD3213E389BEBBAD265EB7DB70F731C46BD159F328FBB82296BF43F",
+      "creation_filetime_utc": 134323273420055076,
+      "last_write_filetime_utc": 134323273456390157,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "analysis\\physical_717_bbox.html",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\analysis\\physical_717_bbox.html",
+      "bytes": 47477,
+      "sha256": "884DD6D8C6BA729CCAB6D9E7019F7E753DF6091A2ECF262D92E1D6BEB32F9189",
+      "creation_filetime_utc": 134323274865731352,
+      "last_write_filetime_utc": 134323274865751576,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "analysis\\physical_717_text.txt",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\analysis\\physical_717_text.txt",
+      "bytes": 4081,
+      "sha256": "517C8DF7EC1AF04487250CEF0B6EEB74C14AEE390C8582B9349445FB24BAA9A1",
+      "creation_filetime_utc": 134323273696326037,
+      "last_write_filetime_utc": 134323273697157749,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "analysis\\raster_object_measurements.csv",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\analysis\\raster_object_measurements.csv",
+      "bytes": 3134,
+      "sha256": "2DC4A14E4D4CE1453C20AEEE12F3230A4DB55300AB23759FA0A1509F94505645",
+      "creation_filetime_utc": 134323277013993192,
+      "last_write_filetime_utc": 134323278683186302,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "analysis\\semantic_object_legend.csv",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\analysis\\semantic_object_legend.csv",
+      "bytes": 636,
+      "sha256": "E082487C07F47ED7F50EE7A985FEFCF803C3C7F46D4041FBD31621F04B64488A",
+      "creation_filetime_utc": 134323277015224700,
+      "last_write_filetime_utc": 134323278684352119,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "analysis\\visible_denominator_frozen.csv",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\analysis\\visible_denominator_frozen.csv",
+      "bytes": 2616,
+      "sha256": "376760B973D4230E69DC623215097061F92968A8A36896D84D77E544F7D25702",
+      "creation_filetime_utc": 134323277013700638,
+      "last_write_filetime_utc": 134323278682960170,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "COPY_IDENTITY.csv",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\COPY_IDENTITY.csv",
+      "bytes": 16613,
+      "sha256": "E0E30C2C4544DE1AF79A09D156DDE56911F8FEC09C81FDD2603FB6F3AB4F8C60",
+      "creation_filetime_utc": 134323292340251670,
+      "last_write_filetime_utc": 134323292340251670,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "COPY_PROVENANCE.json",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\COPY_PROVENANCE.json",
+      "bytes": 2120,
+      "sha256": "6B9E0B0A1990C30F73CB45658C21B338A61F228CF5C005677BB805C6C3B06E98",
+      "creation_filetime_utc": 134323292340740667,
+      "last_write_filetime_utc": 134323292340740667,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "manual_element_ledger.csv",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\manual_element_ledger.csv",
+      "bytes": 4166,
+      "sha256": "B5479A0547A0FA7C9F9B65AAEF80D4F1F0AA447B2D1E28D74A4CE1D44320C3F5",
+      "creation_filetime_utc": 134323279020891440,
+      "last_write_filetime_utc": 134323279020891440,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "manual_pair_adjudication.csv",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\manual_pair_adjudication.csv",
+      "bytes": 13729,
+      "sha256": "3AD1F17E8F791C030460B16DA088A484A324250B6BA5E7537B00FEB02E047310",
+      "creation_filetime_utc": 134323280419067949,
+      "last_write_filetime_utc": 134323280419067949,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "PAYLOAD_MANIFEST.csv",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\PAYLOAD_MANIFEST.csv",
+      "bytes": 10837,
+      "sha256": "F8E8583EC992620732130F887D2EDBC63E5D18AEBD0DFBF285F33C1FE54825F9",
+      "creation_filetime_utc": 134323292341114528,
+      "last_write_filetime_utc": 134323292341124627,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "renders\\figure_34_10_grayscale_native_300dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\renders\\figure_34_10_grayscale_native_300dpi.png",
+      "bytes": 96511,
+      "sha256": "E416516638ED191AB74412424505CF86EADAF95494691EBE5EB34460E365E119",
+      "creation_filetime_utc": 134323277014345262,
+      "last_write_filetime_utc": 134323278683647697,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "renders\\figure_34_10_native_300dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\renders\\figure_34_10_native_300dpi.png",
+      "bytes": 206537,
+      "sha256": "8DA6D3523E40AB324B3FB262272ABAC15231E609F413231FC91A4E3AFBF06092",
+      "creation_filetime_utc": 134323277014024426,
+      "last_write_filetime_utc": 134323278683523827,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "renders\\figure_34_10_semantic_object_overlay_300dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\renders\\figure_34_10_semantic_object_overlay_300dpi.png",
+      "bytes": 211626,
+      "sha256": "F137D98775814EFC3A1FB03F3EBF7FA67481C2664698E56EE3C567F4E075C53E",
+      "creation_filetime_utc": 134323277014888315,
+      "last_write_filetime_utc": 134323278684341835,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "renders\\figure_34_10_text_object_overlay_300dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\renders\\figure_34_10_text_object_overlay_300dpi.png",
+      "bytes": 211520,
+      "sha256": "CE2329D370F352D32DBCFB4EE8BE88241689A598B5B2740FEF7E303CD380994A",
+      "creation_filetime_utc": 134323277014542839,
+      "last_write_filetime_utc": 134323278684010468,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "renders\\physical_717_full_page_200dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\renders\\physical_717_full_page_200dpi.png",
+      "bytes": 462981,
+      "sha256": "2CE45F7EAD86B653E5DBC5F891E7DC189361F0E4FC5EAFC25DB1646BDC47565D",
+      "creation_filetime_utc": 134323273975005132,
+      "last_write_filetime_utc": 134323273979953415,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "renders\\physical_717_full_page_grayscale_native_300dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\renders\\physical_717_full_page_grayscale_native_300dpi.png",
+      "bytes": 706059,
+      "sha256": "A3094A2206FC71A63B2741814221BA89824A02A1DF71C3909FD31470F0A452C4",
+      "creation_filetime_utc": 134323273982144504,
+      "last_write_filetime_utc": 134323273990470420,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "renders\\physical_717_full_page_native_300dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\renders\\physical_717_full_page_native_300dpi.png",
+      "bytes": 737748,
+      "sha256": "304B22CBB4D5116CA934D17C4FC980494577E246E44DF85FF8E9BF5ACA594367",
+      "creation_filetime_utc": 134323273964276633,
+      "last_write_filetime_utc": 134323273973217913,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "roi\\roi_center_arrows_observation_native1x_300dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\roi\\roi_center_arrows_observation_native1x_300dpi.png",
+      "bytes": 28899,
+      "sha256": "1C587B4F4C4DF1405E952D1A6AFD94E2D56E9F462A47DD5301094FD4AC4164EA",
+      "creation_filetime_utc": 134323277015905994,
+      "last_write_filetime_utc": 134323278685053782,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "roi\\roi_center_arrows_observation_nearest_neighbor_8x.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\roi\\roi_center_arrows_observation_nearest_neighbor_8x.png",
+      "bytes": 92178,
+      "sha256": "F6AA6498130FC851CA83DE9EE15B5644764E5073E533CB7B70CD14AFD08D8882",
+      "creation_filetime_utc": 134323277016155092,
+      "last_write_filetime_utc": 134323278686313285,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "roi\\roi_left_formula_probability_native1x_300dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\roi\\roi_left_formula_probability_native1x_300dpi.png",
+      "bytes": 17856,
+      "sha256": "CFF07DD05DD8844EF366C41BAFF2BB2F0560EF317183D8652459D80618F820C1",
+      "creation_filetime_utc": 134323277015224700,
+      "last_write_filetime_utc": 134323278684382318,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "roi\\roi_left_formula_probability_nearest_neighbor_8x.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\roi\\roi_left_formula_probability_nearest_neighbor_8x.png",
+      "bytes": 49693,
+      "sha256": "8C2FFB8D47671D7CD9A2085AF493D431D5BF2E7DAD848BCACFEF0AEBC885F228",
+      "creation_filetime_utc": 134323277015356241,
+      "last_write_filetime_utc": 134323278684982390,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "roi\\roi_right_updated_counts_native1x_300dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\roi\\roi_right_updated_counts_native1x_300dpi.png",
+      "bytes": 39515,
+      "sha256": "C62B39BEDCC9743F2D9444B7DDB36C5CD9222F61C4C8C89716134784F93AC124",
+      "creation_filetime_utc": 134323277017349537,
+      "last_write_filetime_utc": 134323278686408812,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "roi\\roi_right_updated_counts_nearest_neighbor_8x.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\roi\\roi_right_updated_counts_nearest_neighbor_8x.png",
+      "bytes": 119520,
+      "sha256": "67B704FDF2D9964970CE0492BEFA42A341FF1B6B719468D4A2750942AF2DE822",
+      "creation_filetime_utc": 134323277017637518,
+      "last_write_filetime_utc": 134323278687768020,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "roi\\roi_summary_caption_native1x_300dpi.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\roi\\roi_summary_caption_native1x_300dpi.png",
+      "bytes": 113790,
+      "sha256": "D2DC25BE0663CF8A4CF7B0A90C8B549EBA6C0865D1247D0E62092C4BE1604694",
+      "creation_filetime_utc": 134323277018976578,
+      "last_write_filetime_utc": 134323278687939830,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "roi\\roi_summary_caption_nearest_neighbor_8x.png",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\roi\\roi_summary_caption_nearest_neighbor_8x.png",
+      "bytes": 266152,
+      "sha256": "2F5D11F5AEE53A75BD5FD748D6B55466ADD9F749C6141564EE336099668E19D2",
+      "creation_filetime_utc": 134323277019608250,
+      "last_write_filetime_utc": 134323278690930173,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "SA2_R168_READONLY_ADJUDICATION_REPORT.md",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\SA2_R168_READONLY_ADJUDICATION_REPORT.md",
+      "bytes": 6954,
+      "sha256": "4219F590F5E63C6706FE6098102C265B5AF989CC4C5EB6B834C111B0E781A880",
+      "creation_filetime_utc": 134323281182580790,
+      "last_write_filetime_utc": 134323281182611021,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "SEAL_AUDIT.json",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\SEAL_AUDIT.json",
+      "bytes": 1834,
+      "sha256": "38A5A7B7E750CCE0CF7C9CE34294ECBA49EAB6CE80D8F61FCA5C843252891A30",
+      "creation_filetime_utc": 134323292343104832,
+      "last_write_filetime_utc": 134323292343104832,
+      "attributes": "ReadOnly, Archive"
+    },
+    {
+      "relative_path": "WRITE_STOPPED",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\WRITE_STOPPED",
+      "bytes": 882,
+      "sha256": "B544B479D1085D13E176D3C7BA64F9846809D238DA48A0C4A7258DF1A503C82E",
+      "creation_filetime_utc": 134323292344354331,
+      "last_write_filetime_utc": 134323292353104832,
+      "attributes": "ReadOnly, Archive"
+    }
+  ],
+  "final_directory_snapshot": [
+    {
+      "relative_path": ".",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1",
+      "last_write_filetime_utc": 134323292344422580,
+      "attributes": "ReadOnly, Directory"
+    },
+    {
+      "relative_path": "analysis",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\analysis",
+      "last_write_filetime_utc": 134323292335545337,
+      "attributes": "ReadOnly, Directory"
+    },
+    {
+      "relative_path": "renders",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\renders",
+      "last_write_filetime_utc": 134323292337412194,
+      "attributes": "ReadOnly, Directory"
+    },
+    {
+      "relative_path": "roi",
+      "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P670-01\\sa2_r114_r168_readonly_adjudication_fresh_replacement_v2_control_reseal_v1\\roi",
+      "last_write_filetime_utc": 134323292339110434,
+      "attributes": "ReadOnly, Directory"
+    }
+  ]
+}

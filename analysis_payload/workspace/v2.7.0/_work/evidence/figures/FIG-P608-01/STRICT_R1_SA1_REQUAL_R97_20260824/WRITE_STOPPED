@@ -1,0 +1,16 @@
+{
+  "status": "WRITE_STOPPED",
+  "terminal_status": "FAIL_TO_SA2",
+  "written_last": true,
+  "manifest_entry_count": 396,
+  "manifest_sha256": "18F499A0B900814B0E41A99FFFF45E2E07DA0BB2E0647C2EC6E7BFB603DE3EF3",
+  "evidence_manifest_sha256": "A80947A6AA12F4F9015D5ADBC028019BD1CC9C0472101AFA497248C81D24B0EA",
+  "terminal_status_sha256": "88D387ADDBAFA7382FEBB8B1EF4810C9BC27182856D304BCF430B254B6309FE0",
+  "self_referential_exclusions": [
+    "MANIFEST.sha256",
+    "WRITE_STOPPED",
+    "evidence_manifest.json"
+  ],
+  "timestamp_utc": "2026-08-24T08:05:57.282737+00:00",
+  "instruction": "No further writes are permitted in this evidence directory."
+}

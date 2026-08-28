@@ -1,0 +1,20 @@
+{
+  "figure_uid": "FIG-P654-01",
+  "round": "R21",
+  "policy": "USER_FONT_REVIEW_RELAXATION_R168",
+  "stage": "immediately before manifests and WRITE_STOPPED",
+  "ordinary_files_before_audit": 2058,
+  "expected_payload_files": 2059,
+  "expected_control_files": 3,
+  "expected_final_ordinary_files": 2062,
+  "preseal_filesystem": {
+    "ordinary_file_count": 2058,
+    "ads_count": 0,
+    "ads": [],
+    "pyc_count": 0,
+    "cache_dir_count": 0,
+    "colon_filename_count": 0
+  },
+  "hard_gate_result": "PASS",
+  "route": "P654_R21_LEAN_LOCAL_PASS_READY_REQUEST_COMMIT"
+}

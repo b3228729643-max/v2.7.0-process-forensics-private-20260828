@@ -1,0 +1,86 @@
+{
+  "objective": "0.5*x1^2 + x1*x2 + x2^2",
+  "hessian": [
+    [
+      1.0,
+      1.0
+    ],
+    [
+      1.0,
+      2.0
+    ]
+  ],
+  "determinant": 1.0,
+  "eigenvalues": [
+    0.3819660112501051,
+    2.618033988749895
+  ],
+  "positive_definite": true,
+  "steps": [
+    {
+      "q": 0,
+      "x1": -3.2,
+      "x2": 2.2,
+      "updated_coordinate": "initial",
+      "stationarity_residual": null,
+      "objective": 2.920000000000001
+    },
+    {
+      "q": 1,
+      "x1": -3.2,
+      "x2": 1.6,
+      "updated_coordinate": "x2",
+      "stationarity_residual": 0.0,
+      "objective": 2.5600000000000005
+    },
+    {
+      "q": 2,
+      "x1": -1.6,
+      "x2": 1.6,
+      "updated_coordinate": "x1",
+      "stationarity_residual": 0.0,
+      "objective": 1.2800000000000002
+    },
+    {
+      "q": 3,
+      "x1": -1.6,
+      "x2": 0.8,
+      "updated_coordinate": "x2",
+      "stationarity_residual": 0.0,
+      "objective": 0.6400000000000001
+    },
+    {
+      "q": 4,
+      "x1": -0.8,
+      "x2": 0.8,
+      "updated_coordinate": "x1",
+      "stationarity_residual": 0.0,
+      "objective": 0.32000000000000006
+    },
+    {
+      "q": 5,
+      "x1": -0.8,
+      "x2": 0.4,
+      "updated_coordinate": "x2",
+      "stationarity_residual": 0.0,
+      "objective": 0.16000000000000003
+    },
+    {
+      "q": 6,
+      "x1": -0.4,
+      "x2": 0.4,
+      "updated_coordinate": "x1",
+      "stationarity_residual": 0.0,
+      "objective": 0.08000000000000002
+    },
+    {
+      "q": 7,
+      "x1": -0.4,
+      "x2": 0.2,
+      "updated_coordinate": "x2",
+      "stationarity_residual": 0.0,
+      "objective": 0.04000000000000001
+    }
+  ],
+  "strictly_decreasing": true
+}

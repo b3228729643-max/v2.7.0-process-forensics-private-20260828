@@ -1,0 +1,165 @@
+{
+  "pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P126-01\\STRICT_R7_SA2_ABSOLUTE_LEGEND_KEY_PATCH_R115_DIRECT_BUILD_20260828\\build\\v260_FIG-P126-01_standalone.pdf",
+  "pdf_sha256": "8EB275DEB382AD25E26C19F4B9A0EFBE01771317FE7DE475C5F2E330BCD789D6",
+  "page_width_pt": 595.276,
+  "page_height_pt": 841.89,
+  "glyph_count": 25,
+  "line_count": 9,
+  "rect_count": 4,
+  "curve_count": 20,
+  "N": 58,
+  "C": 1653,
+  "candidate_count": 179,
+  "ink_bbox_px": [
+    839,
+    287,
+    1677,
+    991
+  ],
+  "figure_crop_bbox_px": [
+    804,
+    252,
+    1712,
+    1026
+  ],
+  "math_check": {
+    "objective": "0.5*x1^2 + x1*x2 + x2^2",
+    "hessian": [
+      [
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        2.0
+      ]
+    ],
+    "determinant": 1.0,
+    "eigenvalues": [
+      0.3819660112501051,
+      2.618033988749895
+    ],
+    "positive_definite": true,
+    "steps": [
+      {
+        "q": 0,
+        "x1": -3.2,
+        "x2": 2.2,
+        "updated_coordinate": "initial",
+        "stationarity_residual": null,
+        "objective": 2.920000000000001
+      },
+      {
+        "q": 1,
+        "x1": -3.2,
+        "x2": 1.6,
+        "updated_coordinate": "x2",
+        "stationarity_residual": 0.0,
+        "objective": 2.5600000000000005
+      },
+      {
+        "q": 2,
+        "x1": -1.6,
+        "x2": 1.6,
+        "updated_coordinate": "x1",
+        "stationarity_residual": 0.0,
+        "objective": 1.2800000000000002
+      },
+      {
+        "q": 3,
+        "x1": -1.6,
+        "x2": 0.8,
+        "updated_coordinate": "x2",
+        "stationarity_residual": 0.0,
+        "objective": 0.6400000000000001
+      },
+      {
+        "q": 4,
+        "x1": -0.8,
+        "x2": 0.8,
+        "updated_coordinate": "x1",
+        "stationarity_residual": 0.0,
+        "objective": 0.32000000000000006
+      },
+      {
+        "q": 5,
+        "x1": -0.8,
+        "x2": 0.4,
+        "updated_coordinate": "x2",
+        "stationarity_residual": 0.0,
+        "objective": 0.16000000000000003
+      },
+      {
+        "q": 6,
+        "x1": -0.4,
+        "x2": 0.4,
+        "updated_coordinate": "x1",
+        "stationarity_residual": 0.0,
+        "objective": 0.08000000000000002
+      },
+      {
+        "q": 7,
+        "x1": -0.4,
+        "x2": 0.2,
+        "updated_coordinate": "x2",
+        "stationarity_residual": 0.0,
+        "objective": 0.04000000000000001
+      }
+    ],
+    "strictly_decreasing": true
+  },
+  "legend_measurement": {
+    "scale_px_per_pt": 4.167814593566682,
+    "x1_crop_box_px": [
+      1007,
+      930,
+      1128,
+      1004
+    ],
+    "x2_crop_box_px": [
+      1234,
+      930,
+      1355,
+      1004
+    ],
+    "x1_runs": {
+      "width": 121,
+      "height": 74,
+      "band_center": 36,
+      "runs": [
+        [
+          25,
+          96,
+          72
+        ],
+        [
+          114,
+          120,
+          7
+        ]
+      ]
+    },
+    "x2_runs": {
+      "width": 121,
+      "height": 74,
+      "band_center": 36,
+      "runs": [
+        [
+          0,
+          6,
+          7
+        ],
+        [
+          25,
+          96,
+          72
+        ],
+        [
+          113,
+          120,
+          8
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "element_id": "E016",
+  "semantic_text": "虚线 q_L(x)=2/5",
+  "later_opaque_halo": "HALO03",
+  "result": "FAIL_TEXT_OCCLUSION_TEXT_COMPLETENESS",
+  "reason": "Later source node white fill erases the required q_L '=2/5' suffix in the final PDF; no synthetic text pre-mask is permitted.",
+  "raw_final_text_pixels": 2024,
+  "final_text_halo_overlap_pixels": 0,
+  "files": [
+    "raw_final_roi_1x.png",
+    "raw_final_roi_8x_nearest.png",
+    "mask_A_final_visible_text_raw.png",
+    "mask_B_later_opaque_halo_raw.png",
+    "intersection_final_visible_raw.png",
+    "overlay_final_halo_source_bboxes_1x.png",
+    "source_character_bboxes.json",
+    "source_pre_order_evidence.json"
+  ]
+}

@@ -1,0 +1,40 @@
+﻿OBJECT_ID,ROLE,DESCRIPTION,INTERNAL_COMPONENTS,BBOX_X0,BBOX_Y0,BBOX_X1,BBOX_Y1
+O001,TITLE,left state title: time N and pseudo-count vector,text+math,285,345,905,405
+O002,TOKEN_NODE,left category-1 token 1 of 4,digit+circle border/fill,280,405,355,485
+O003,TOKEN_NODE,left category-1 token 2 of 4,digit+circle border/fill,355,405,435,485
+O004,TOKEN_NODE,left category-1 token 3 of 4,digit+circle border/fill,435,405,515,485
+O005,TOKEN_NODE,left category-1 token 4 of 4,digit+circle border/fill,515,405,595,485
+O006,TOKEN_NODE,left category-2 token 1 of 3,digit+circle border/fill,595,405,675,485
+O007,TOKEN_NODE,left category-2 token 2 of 3,digit+circle border/fill,675,405,755,485
+O008,TOKEN_NODE,left category-2 token 3 of 3,digit+circle border/fill,755,405,835,485
+O009,TOKEN_NODE,left category-3 token 1 of 2,digit+circle border/fill,835,405,915,485
+O010,TOKEN_NODE,left category-3 token 2 of 2,digit+circle border/fill,915,405,995,485
+O011,PROPORTION_BAR,left three-segment probability bar,fills+outer border+dividers,310,488,850,545
+O012,RATIO_LABEL,left ratio 4/9,math text,360,490,485,545
+O013,RATIO_LABEL,left ratio 3/9,math text,585,490,705,545
+O014,RATIO_LABEL,left ratio 2/9,math text,755,490,835,545
+O015,FORMULA,one-step posterior predictive formula,math text+fraction rule,315,555,855,655
+O016,ARROW,left-to-observation prediction arrow,shaft+arrowhead,840,480,1105,560
+O017,ARROW_LABEL,prediction label,Chinese text,960,330,1060,405
+O018,OBSERVATION_NODE,observed class j equals 2,text+math+circle border/fill,1060,420,1280,625
+O019,ARROW,observation-to-updated-state arrow,shaft+arrowhead,1260,480,1485,560
+O020,ARROW_LABEL,update-only-class-j label,Chinese text+math,1265,275,1425,420
+O021,TITLE,right state title: time N+1 and vector,text+math,1500,345,2040,405
+O022,TOKEN_NODE,right category-1 token 1 of 4,digit+circle border/fill,1390,405,1470,485
+O023,TOKEN_NODE,right category-1 token 2 of 4,digit+circle border/fill,1470,405,1550,485
+O024,TOKEN_NODE,right category-1 token 3 of 4,digit+circle border/fill,1550,405,1630,485
+O025,TOKEN_NODE,right category-1 token 4 of 4,digit+circle border/fill,1630,405,1710,485
+O026,TOKEN_NODE,right category-2 token 1 of 4,digit+circle border/fill,1710,405,1790,485
+O027,TOKEN_NODE,right category-2 token 2 of 4,digit+circle border/fill,1790,405,1870,485
+O028,TOKEN_NODE,right category-2 token 3 of 4,digit+circle border/fill,1870,405,1950,485
+O029,TOKEN_NODE_NEW,right new category-2 token 4 of 4,digit+hatching+circle border/fill,1950,405,2030,485
+O030,TOKEN_NODE,right category-3 token 1 of 2,digit+circle border/fill,2030,405,2110,485
+O031,TOKEN_NODE,right category-3 token 2 of 2,digit+circle border/fill,2110,405,2190,485
+O032,PROPORTION_BAR_UPDATED,right three-segment probability bar with new-mass hatch,fills+hatching+outer border+dividers,1425,488,2035,545
+O033,RATIO_LABEL,right ratio 4/10 for class 1,math text,1480,490,1625,545
+O034,RATIO_LABEL,right ratio 4/10 for class 2,math text,1715,490,1860,545
+O035,RATIO_LABEL,right ratio 2/10 for class 3,math text,1900,490,2015,545
+O036,UPDATE_FORMULA,class-2 count and total pseudo-count updates,math text,1400,550,2190,655
+O037,TAKEAWAY_BOX,smoothing reinforcement exchangeability and non-iid takeaway,text+rounded border/background,435,655,2035,765
+O038,CAPTION_NUMBER,figure number 34.10,bold text,285,770,500,825
+O039,CAPTION_TEXT,posterior-predictive explanatory caption,Chinese text+math,480,760,2205,950

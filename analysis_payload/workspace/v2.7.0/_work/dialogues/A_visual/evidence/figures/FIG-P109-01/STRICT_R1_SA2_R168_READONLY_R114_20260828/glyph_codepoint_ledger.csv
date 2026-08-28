@@ -1,0 +1,7 @@
+TEXT_ID,OBJECT_ID,SOURCE_SEMANTIC_TEXT,PDF_EXTRACTED_TEXT,PDF_CODEPOINT_SEQUENCE,GLYPH_CODEPOINT_STATUS,POST_OBSERVATION
+T01,O04,x,𝑥,U+1D465,CORRECT,"Italic mathematical x is present, recognizable, and not tofu or substituted."
+T02,O06,y,𝑦,U+1D466,CORRECT,"Italic mathematical y is present, recognizable, and not tofu or substituted."
+T03,O10,"z=lambda*x+(1-lambda)*y","𝑧=𝜆𝑥+(1−𝜆)𝑦","U+1D467 U+003D U+1D706 U+1D465 U+002B U+0028 U+0031 U+2212 U+1D706 U+0029 U+1D466",CORRECT,"All variables, operators, parentheses, and the minus sign match the source formula; no missing glyph."
+T04,O11,"凸可行域 C","凸可行域 𝐶","U+51F8 U+53EF U+884C U+57DF U+0020 U+1D436",CODEPOINT_CORRECT_VISUAL_COLLISION,"The intended four Chinese characters and mathematical italic capital C are correct, but the set boundary crosses the C glyph."
+T05,O13,"x,y in C; lambda in [0,1] implies lambda*x+(1-lambda)*y in C","𝑥,𝑦∈𝐶,𝜆∈[0,1]⟹𝜆𝑥+(1−𝜆)𝑦∈𝐶","U+1D465 U+002C U+1D466 U+2208 U+1D436 U+002C U+1D706 U+2208 U+005B U+0030 U+002C U+0031 U+005D U+27F9 U+1D706 U+1D465 U+002B U+0028 U+0031 U+2212 U+1D706 U+0029 U+1D466 U+2208 U+1D436",CORRECT,"Membership, interval brackets, long implication arrow, variables, and operators are complete and correctly rendered."
+T06,O14,"图 7.1 凸集中任意两点的线段仍位于可行域内","图 7.1 凸集中任意两点的线段仍位于可行域内","U+56FE U+0020 U+0037 U+002E U+0031 U+0020 U+51F8 U+96C6 U+4E2D U+4EFB U+610F U+4E24 U+70B9 U+7684 U+7EBF U+6BB5 U+4ECD U+4F4D U+4E8E U+53EF U+884C U+57DF U+5185",CORRECT,"Figure number and all caption characters are present, ordered correctly, and free of tofu or substitution."

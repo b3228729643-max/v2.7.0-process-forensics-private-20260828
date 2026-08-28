@@ -1,0 +1,8 @@
+# FIG-P580-01 official R96 freeze
+
+- Root built `strict_current_r96_fullbook/main_full.pdf` through the authoritative entry point with `-NoPublish`; the process exited 0 after the required stabilization passes and `latexmk` reported all targets up to date.
+- Independent PDF parsing found 813 pages, one media/crop geometry `595.276 × 841.89 pt`, rotation 0, PDF 1.7, no encryption, and 4,933,724 bytes. All 14 `pdffonts` rows are embedded, subset, and Unicode-enabled.
+- The final log has zero matches in all 19 hard categories recorded in `R96_BUILD_AND_PAGE_FREEZE.json`, including TeX/LaTeX/package/fatal errors, undefined controls/references/citations, multiply-defined or duplicate/unreferenced destinations, overfull/underfull boxes, missing characters, and rerun requests.
+- `FIG-P580-01` independently resolves to physical page 628, printed page 615, figure 31.6. The final recorder contains the current figure source exactly once. Candidate identities are PDF SHA-256 `8EED8765A4856C4C197262DEA06E283790FBA8DA906C70C26FC7BD56F6F7E5E8` and source SHA-256 `F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161`.
+- Root rendered that official page directly at native 300 dpi (`2481 × 3508`) and viewed the full page plus a native `1900 × 1100` color and grayscale figure/caption crop at 1:1. No visible overlap, clipping, anomalous line break, or abrupt font hierarchy was found in this root precheck.
+- This is only `PRECHECK_PASS_TO_FRESH_SA1_NOT_FINAL`. It does not count toward the strict 0/99 total and cannot replace a new independent SA1, isolated SA3, or final root acceptance.

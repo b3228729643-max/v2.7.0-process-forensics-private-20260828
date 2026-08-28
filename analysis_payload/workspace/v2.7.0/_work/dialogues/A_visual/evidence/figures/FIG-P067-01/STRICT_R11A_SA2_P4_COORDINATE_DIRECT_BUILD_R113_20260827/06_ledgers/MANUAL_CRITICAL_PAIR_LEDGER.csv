@@ -1,0 +1,71 @@
+pair_id,a_id,b_id,evidence_sheet,cell,opened_at_utc,reviewer,observed_final_intersection_px,relation_intent,illegal_overlap,decision,note
+P00913,T010,G003,critical_pair_contact_01_8x_nearest.png,1,2026-08-27T12:17:30Z,/root,0,INDEPENDENT_CLEARANCE,FALSE,PASS,p1 base glyph stays 9px from the CDF horizontal axis; no shared ink is visible.
+P00917,T010,G007,critical_pair_contact_01_8x_nearest.png,2,2026-08-27T12:17:30Z,/root,0,OPAQUE_LABEL_BACKGROUND_CLEARANCE,FALSE,PASS,p1 base glyph is separated 7px from the final-visible step after its real white label ground removes 17 pre-occlusion pixels.
+P01002,T011,G003,critical_pair_contact_01_8x_nearest.png,3,2026-08-27T12:17:30Z,/root,0,INDEPENDENT_CLEARANCE,FALSE,PASS,p1 subscript 1 remains 10px above the CDF horizontal axis.
+P03956,T055,G035,critical_pair_contact_01_8x_nearest.png,4,2026-08-27T12:17:30Z,/root,0,OPAQUE_NOTE_BACKGROUND_CLEARANCE,FALSE,PASS,Note glyph 跳 is 12px from the final-visible x=4 PMF guide after the real note background removes 55 pre-occlusion pixels.
+P04357,G001,G003,critical_pair_contact_01_8x_nearest.png,5,2026-08-27T12:17:30Z,/root,89,INTENTIONAL_AXIS_TICK_TOPOLOGY,FALSE,PASS,CDF x-tick path intentionally crosses the horizontal axis at support ticks.
+P04361,G001,G007,critical_pair_contact_01_8x_nearest.png,6,2026-08-27T12:17:30Z,/root,13,INTENTIONAL_STEP_AT_AXIS_OR_TICK,FALSE,PASS,CDF tick path and step path meet at the support baseline as designed.
+P04363,G001,G009,critical_pair_contact_01_8x_nearest.png,7,2026-08-27T12:17:30Z,/root,9,INTENTIONAL_GUIDE_TICK_ATTACHMENT,FALSE,PASS,x=1 guide terminates on its matching CDF tick.
+P04364,G001,G010,critical_pair_contact_01_8x_nearest.png,8,2026-08-27T12:17:30Z,/root,9,INTENTIONAL_GUIDE_TICK_ATTACHMENT,FALSE,PASS,x=2 guide terminates on its matching CDF tick.
+P04365,G001,G011,critical_pair_contact_01_8x_nearest.png,9,2026-08-27T12:17:30Z,/root,9,INTENTIONAL_GUIDE_TICK_ATTACHMENT,FALSE,PASS,x=3 guide terminates on its matching CDF tick.
+P04366,G001,G012,critical_pair_contact_01_8x_nearest.png,10,2026-08-27T12:17:30Z,/root,9,INTENTIONAL_GUIDE_TICK_ATTACHMENT,FALSE,PASS,x=4 guide terminates on its matching CDF tick.
+P04371,G001,G021,critical_pair_contact_01_8x_nearest.png,11,2026-08-27T12:17:30Z,/root,5,INTENTIONAL_OPEN_MARKER_AT_SUPPORT,FALSE,PASS,Open endpoint ring at x=1 intentionally touches its support tick center.
+P04392,G002,G005,critical_pair_contact_01_8x_nearest.png,12,2026-08-27T12:17:30Z,/root,93,INTENTIONAL_AXIS_TICK_TOPOLOGY,FALSE,PASS,CDF y ticks intentionally cross the vertical axis shaft.
+P04393,G002,G006,critical_pair_contact_02_8x_nearest.png,1,2026-08-27T12:17:30Z,/root,22,INTENTIONAL_AXIS_ARROW_ATTACHMENT,FALSE,PASS,Top y tick path meets the CDF y-axis arrowhead at the axis terminus.
+P04423,G003,G004,critical_pair_contact_02_8x_nearest.png,2,2026-08-27T12:17:30Z,/root,21,INTENTIONAL_AXIS_ARROW_ATTACHMENT,FALSE,PASS,CDF horizontal shaft joins its right arrowhead without a break.
+P04424,G003,G005,critical_pair_contact_02_8x_nearest.png,3,2026-08-27T12:17:30Z,/root,9,INTENTIONAL_AXIS_ORIGIN,FALSE,PASS,CDF horizontal and vertical axis shafts share the intended origin.
+P04436,G003,G021,critical_pair_contact_02_8x_nearest.png,4,2026-08-27T12:17:30Z,/root,20,INTENTIONAL_OPEN_ENDPOINT_ON_BASELINE,FALSE,PASS,Open endpoint at x=1 is centered on the zero-level CDF segment.
+P04486,G005,G006,critical_pair_contact_02_8x_nearest.png,5,2026-08-27T12:17:30Z,/root,19,INTENTIONAL_AXIS_ARROW_ATTACHMENT,FALSE,PASS,CDF vertical shaft joins its upward arrowhead continuously.
+P04545,G007,G008,critical_pair_contact_02_8x_nearest.png,6,2026-08-27T12:17:30Z,/root,365,INTENTIONAL_COINCIDENT_TOP_REFERENCE,FALSE,PASS,CDF top plateau at value1 intentionally coincides with the y=1 dashed reference while remaining semantically distinguishable by style.
+P04546,G007,G009,critical_pair_contact_02_8x_nearest.png,7,2026-08-27T12:17:30Z,/root,40,INTENTIONAL_STEP_GUIDE_CROSSING,FALSE,PASS,x=1 vertical guide crosses the CDF step at the jump location.
+P04547,G007,G010,critical_pair_contact_02_8x_nearest.png,8,2026-08-27T12:17:30Z,/root,131,INTENTIONAL_STEP_GUIDE_CROSSING,FALSE,PASS,x=2 vertical guide crosses the CDF step at its second jump.
+P04548,G007,G011,critical_pair_contact_02_8x_nearest.png,9,2026-08-27T12:17:30Z,/root,160,INTENTIONAL_STEP_GUIDE_CROSSING,FALSE,PASS,x=3 vertical guide crosses the CDF step at its third jump.
+P04549,G007,G012,critical_pair_contact_02_8x_nearest.png,10,2026-08-27T12:17:30Z,/root,59,INTENTIONAL_STEP_GUIDE_CROSSING,FALSE,PASS,x=4 vertical guide crosses the CDF step at its fourth jump.
+P04550,G007,G017,critical_pair_contact_02_8x_nearest.png,11,2026-08-27T12:17:30Z,/root,148,INTENTIONAL_FILLED_ENDPOINT_ON_STEP,FALSE,PASS,Filled x=1 endpoint is centered on the post-jump CDF value.
+P04551,G007,G018,critical_pair_contact_02_8x_nearest.png,12,2026-08-27T12:17:30Z,/root,148,INTENTIONAL_FILLED_ENDPOINT_ON_STEP,FALSE,PASS,Filled x=2 endpoint is centered on cumulative 0.45.
+P04552,G007,G019,critical_pair_contact_03_8x_nearest.png,1,2026-08-27T12:17:30Z,/root,148,INTENTIONAL_FILLED_ENDPOINT_ON_STEP,FALSE,PASS,Filled x=3 endpoint is centered on cumulative 0.80.
+P04553,G007,G020,critical_pair_contact_03_8x_nearest.png,2,2026-08-27T12:17:30Z,/root,148,INTENTIONAL_FILLED_ENDPOINT_ON_STEP,FALSE,PASS,Filled x=4 endpoint is centered on cumulative 1.00.
+P04554,G007,G021,critical_pair_contact_03_8x_nearest.png,3,2026-08-27T12:17:30Z,/root,76,INTENTIONAL_OPEN_ENDPOINT_ON_PREJUMP_STEP,FALSE,PASS,Open x=1 endpoint ring is centered on the zero pre-jump segment.
+P04555,G007,G022,critical_pair_contact_03_8x_nearest.png,4,2026-08-27T12:17:30Z,/root,77,INTENTIONAL_OPEN_ENDPOINT_ON_PREJUMP_STEP,FALSE,PASS,Open x=2 endpoint ring is centered on cumulative 0.15.
+P04556,G007,G023,critical_pair_contact_03_8x_nearest.png,5,2026-08-27T12:17:30Z,/root,78,INTENTIONAL_OPEN_ENDPOINT_ON_PREJUMP_STEP,FALSE,PASS,Open x=3 endpoint ring is centered on cumulative 0.45.
+P04557,G007,G024,critical_pair_contact_03_8x_nearest.png,6,2026-08-27T12:17:30Z,/root,76,INTENTIONAL_OPEN_ENDPOINT_ON_PREJUMP_STEP,FALSE,PASS,Open x=4 endpoint ring is centered on cumulative 0.80.
+P04573,G008,G009,critical_pair_contact_03_8x_nearest.png,7,2026-08-27T12:17:30Z,/root,18,INTENTIONAL_REFERENCE_GUIDE_CROSSING,FALSE,PASS,x=1 guide reaches and crosses the dashed y=1 reference.
+P04574,G008,G010,critical_pair_contact_03_8x_nearest.png,8,2026-08-27T12:17:30Z,/root,18,INTENTIONAL_REFERENCE_GUIDE_CROSSING,FALSE,PASS,x=2 guide reaches and crosses the dashed y=1 reference.
+P04575,G008,G011,critical_pair_contact_03_8x_nearest.png,9,2026-08-27T12:17:30Z,/root,15,INTENTIONAL_REFERENCE_GUIDE_CROSSING,FALSE,PASS,x=3 guide reaches and crosses the dashed y=1 reference.
+P04580,G008,G020,critical_pair_contact_03_8x_nearest.png,10,2026-08-27T12:17:30Z,/root,8,INTENTIONAL_TOP_ENDPOINT_ON_REFERENCE,FALSE,PASS,Filled endpoint at x=4 lies on value1 and therefore touches the y=1 reference.
+P04603,G009,G017,critical_pair_contact_03_8x_nearest.png,11,2026-08-27T12:17:30Z,/root,7,INTENTIONAL_GUIDE_FILLED_MARKER,FALSE,PASS,x=1 guide passes through the center of its filled endpoint.
+P04607,G009,G021,critical_pair_contact_03_8x_nearest.png,12,2026-08-27T12:17:30Z,/root,5,INTENTIONAL_GUIDE_OPEN_MARKER,FALSE,PASS,x=1 guide passes through the center of its open endpoint.
+P04629,G010,G018,critical_pair_contact_04_8x_nearest.png,1,2026-08-27T12:17:30Z,/root,10,INTENTIONAL_GUIDE_FILLED_MARKER,FALSE,PASS,x=2 guide passes through the center of its filled endpoint.
+P04633,G010,G022,critical_pair_contact_04_8x_nearest.png,2,2026-08-27T12:17:30Z,/root,23,INTENTIONAL_GUIDE_OPEN_MARKER,FALSE,PASS,x=2 guide passes through the center of its open endpoint.
+P04654,G011,G019,critical_pair_contact_04_8x_nearest.png,3,2026-08-27T12:17:30Z,/root,5,INTENTIONAL_GUIDE_FILLED_MARKER,FALSE,PASS,x=3 guide passes through the center of its filled endpoint.
+P04658,G011,G023,critical_pair_contact_04_8x_nearest.png,4,2026-08-27T12:17:30Z,/root,16,INTENTIONAL_GUIDE_OPEN_MARKER,FALSE,PASS,x=3 guide passes through the center of its open endpoint.
+P04678,G012,G020,critical_pair_contact_04_8x_nearest.png,5,2026-08-27T12:17:30Z,/root,2,INTENTIONAL_GUIDE_FILLED_MARKER,FALSE,PASS,x=4 guide visibly reaches the filled endpoint at value1.
+P04682,G012,G024,critical_pair_contact_04_8x_nearest.png,6,2026-08-27T12:17:30Z,/root,13,INTENTIONAL_GUIDE_OPEN_MARKER,FALSE,PASS,x=4 guide passes through the open endpoint at cumulative 0.80.
+P04847,G025,G027,critical_pair_contact_04_8x_nearest.png,7,2026-08-27T12:17:30Z,/root,40,INTENTIONAL_AXIS_TICK_TOPOLOGY,FALSE,PASS,PMF x-tick path intentionally crosses the horizontal axis at all four supports.
+P04851,G025,G031,critical_pair_contact_04_8x_nearest.png,8,2026-08-27T12:17:30Z,/root,16,INTENTIONAL_MASS_STEM_AT_TICK,FALSE,PASS,PMF ycomb stem at x=1 begins on its support tick.
+P04852,G025,G032,critical_pair_contact_04_8x_nearest.png,9,2026-08-27T12:17:30Z,/root,10,INTENTIONAL_GUIDE_TICK_ATTACHMENT,FALSE,PASS,PMF x=1 dashed guide terminates at its support tick.
+P04853,G025,G033,critical_pair_contact_04_8x_nearest.png,10,2026-08-27T12:17:30Z,/root,10,INTENTIONAL_GUIDE_TICK_ATTACHMENT,FALSE,PASS,PMF x=2 dashed guide terminates at its support tick.
+P04854,G025,G034,critical_pair_contact_04_8x_nearest.png,11,2026-08-27T12:17:30Z,/root,10,INTENTIONAL_GUIDE_TICK_ATTACHMENT,FALSE,PASS,PMF x=3 dashed guide terminates at its support tick.
+P04855,G025,G035,critical_pair_contact_04_8x_nearest.png,12,2026-08-27T12:17:30Z,/root,26,INTENTIONAL_GUIDE_TICK_ATTACHMENT,FALSE,PASS,PMF x=4 dashed guide terminates at its support tick with the note-ground gap preserved above.
+P04860,G026,G027,critical_pair_contact_05_8x_nearest.png,1,2026-08-27T12:17:30Z,/root,7,INTENTIONAL_AXIS_ORIGIN,FALSE,PASS,PMF vertical and horizontal axis structures share the intended origin.
+P04862,G026,G029,critical_pair_contact_05_8x_nearest.png,2,2026-08-27T12:17:30Z,/root,36,INTENTIONAL_AXIS_TICK_TOPOLOGY,FALSE,PASS,PMF y-tick path intentionally crosses its vertical axis shaft.
+P04873,G027,G028,critical_pair_contact_05_8x_nearest.png,3,2026-08-27T12:17:30Z,/root,26,INTENTIONAL_AXIS_ARROW_ATTACHMENT,FALSE,PASS,PMF horizontal shaft joins its right arrowhead continuously.
+P04874,G027,G029,critical_pair_contact_05_8x_nearest.png,4,2026-08-27T12:17:30Z,/root,9,INTENTIONAL_AXIS_ORIGIN,FALSE,PASS,PMF x and y shafts share the intended origin.
+P04876,G027,G031,critical_pair_contact_05_8x_nearest.png,5,2026-08-27T12:17:30Z,/root,5,INTENTIONAL_MASS_STEM_AT_BASELINE,FALSE,PASS,The four PMF mass stems originate on the horizontal axis.
+P04877,G027,G032,critical_pair_contact_05_8x_nearest.png,6,2026-08-27T12:17:30Z,/root,5,INTENTIONAL_GUIDE_BASELINE_ATTACHMENT,FALSE,PASS,x=1 PMF guide begins on the horizontal axis.
+P04878,G027,G033,critical_pair_contact_05_8x_nearest.png,7,2026-08-27T12:17:30Z,/root,3,INTENTIONAL_GUIDE_BASELINE_ATTACHMENT,FALSE,PASS,x=2 PMF guide begins on the horizontal axis.
+P04879,G027,G034,critical_pair_contact_05_8x_nearest.png,8,2026-08-27T12:17:30Z,/root,3,INTENTIONAL_GUIDE_BASELINE_ATTACHMENT,FALSE,PASS,x=3 PMF guide begins on the horizontal axis.
+P04880,G027,G035,critical_pair_contact_05_8x_nearest.png,9,2026-08-27T12:17:30Z,/root,6,INTENTIONAL_GUIDE_BASELINE_ATTACHMENT,FALSE,PASS,x=4 PMF guide begins on the horizontal axis.
+P04896,G029,G030,critical_pair_contact_05_8x_nearest.png,10,2026-08-27T12:17:30Z,/root,23,INTENTIONAL_AXIS_ARROW_ATTACHMENT,FALSE,PASS,PMF vertical shaft joins its upward arrowhead continuously.
+P04915,G031,G032,critical_pair_contact_05_8x_nearest.png,11,2026-08-27T12:17:30Z,/root,78,INTENTIONAL_STEM_GUIDE_ALIGNMENT,FALSE,PASS,PMF mass stem and guide at x=1 intentionally share the same support line.
+P04916,G031,G033,critical_pair_contact_05_8x_nearest.png,12,2026-08-27T12:17:30Z,/root,6,INTENTIONAL_STEM_GUIDE_ALIGNMENT,FALSE,PASS,PMF mass stem and guide at x=2 share the intended vertical support.
+P04917,G031,G034,critical_pair_contact_06_8x_nearest.png,1,2026-08-27T12:17:30Z,/root,7,INTENTIONAL_STEM_GUIDE_ALIGNMENT,FALSE,PASS,PMF mass stem and guide at x=3 share the intended vertical support.
+P04918,G031,G035,critical_pair_contact_06_8x_nearest.png,2,2026-08-27T12:17:30Z,/root,108,INTENTIONAL_STEM_GUIDE_ALIGNMENT,FALSE,PASS,PMF mass stem and final-visible guide at x=4 share the intended vertical support beneath the note.
+P04919,G031,G037,critical_pair_contact_06_8x_nearest.png,3,2026-08-27T12:17:30Z,/root,27,INTENTIONAL_MARKER_ON_MASS_STEM,FALSE,PASS,Filled PMF marker at x=1 is centered on the top of its mass stem.
+P04920,G031,G038,critical_pair_contact_06_8x_nearest.png,4,2026-08-27T12:17:30Z,/root,26,INTENTIONAL_MARKER_ON_MASS_STEM,FALSE,PASS,Filled PMF marker at x=2 is centered on the 0.30 mass stem.
+P04921,G031,G039,critical_pair_contact_06_8x_nearest.png,5,2026-08-27T12:17:30Z,/root,26,INTENTIONAL_MARKER_ON_MASS_STEM,FALSE,PASS,Filled PMF marker at x=3 is centered on the 0.35 mass stem.
+P04922,G031,G040,critical_pair_contact_06_8x_nearest.png,6,2026-08-27T12:17:30Z,/root,27,INTENTIONAL_MARKER_ON_MASS_STEM,FALSE,PASS,Filled PMF marker at x=4 is centered on the 0.20 mass stem.
+P04926,G032,G037,critical_pair_contact_06_8x_nearest.png,7,2026-08-27T12:17:30Z,/root,4,INTENTIONAL_GUIDE_MARKER_ALIGNMENT,FALSE,PASS,x=1 guide reaches its PMF marker center without obscuring the marker boundary.
+P04933,G033,G038,critical_pair_contact_06_8x_nearest.png,8,2026-08-27T12:17:30Z,/root,4,INTENTIONAL_GUIDE_MARKER_ALIGNMENT,FALSE,PASS,x=2 guide reaches the 0.30 marker center as intended.
+P04939,G034,G039,critical_pair_contact_06_8x_nearest.png,9,2026-08-27T12:17:30Z,/root,4,INTENTIONAL_GUIDE_MARKER_ALIGNMENT,FALSE,PASS,x=3 guide reaches the 0.35 marker center as intended.
+P04944,G035,G040,critical_pair_contact_06_8x_nearest.png,10,2026-08-27T12:17:30Z,/root,4,INTENTIONAL_GUIDE_MARKER_ALIGNMENT,FALSE,PASS,x=4 final-visible guide reaches the 0.20 marker center beneath the note background.

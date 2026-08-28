@@ -1,0 +1,69 @@
+% v2.3.1 figure UID: FIG-P210-01
+% v2.6.0 Image-reference reverse redraw: reinforce split/tree hierarchy without changing geometry or topology.
+\newcommand{\SLKdtreeTitleStyle}{\fontsize{10.5pt}{12.6pt}\selectfont\bfseries}
+\tikzset{
+  slfig-FIG-P210-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P210-01-axis/.style={-{Stealth[length=1.9mm,width=1.15mm]},draw=SLInk,line width=.50pt},
+  slfig-FIG-P210-01-root-split/.style={draw=SLBlue,line width=1pt},
+  slfig-FIG-P210-01-y-split/.style={draw=SLTeal,line width=.90pt,dash pattern=on 3.4pt off 2.1pt},
+  slfig-FIG-P210-01-x-split/.style={draw=SLBlue,line width=.78pt},
+  slfig-FIG-P210-01-axis-label/.style={font=\fontsize{9.2pt}{11pt}\selectfont},
+  slfig-FIG-P210-01-split-label/.style={font=\fontsize{8.7pt}{10.4pt}\selectfont,fill=white,fill opacity=.94,text opacity=1,inner sep=.5pt},
+  slfig-FIG-P210-01-point-label/.style={font=\fontsize{8.7pt}{10.4pt}\selectfont,fill=white,fill opacity=.94,text opacity=1,inner sep=.5pt},
+  slfig-FIG-P210-01-note/.style={font=\fontsize{8.7pt}{10.4pt}\selectfont,text=SLGray}
+}
+\forestset{
+  slfig-FIG-P210-01-tree/.style={
+    for tree={draw=SLBlue,fill=SLBlueBG,rounded corners=1.5mm,line width=.78pt,
+      inner xsep=4pt,inner ysep=3pt,
+      edge={draw=SLBlue,line width=.78pt,-{Stealth[length=1.9mm,width=1.2mm]}}}
+  }
+}
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[c]{.47\linewidth}
+\centering
+{\SLKdtreeTitleStyle 样本空间与切分}\par\smallskip
+\begin{tikzpicture}[slfig-FIG-P210-01,x=.46cm,y=.42cm]
+  \draw[slfig-FIG-P210-01-axis] (0,0)--(10.5,0) node[right,slfig-FIG-P210-01-axis-label]{$x$};
+  \draw[slfig-FIG-P210-01-axis] (0,0)--(0,8.2) node[above,slfig-FIG-P210-01-axis-label]{$y$};
+  \draw[slfig-FIG-P210-01-root-split] (7,0)--(7,8)
+    node[above,slfig-FIG-P210-01-split-label,text=SLBlue] {1：$x$};
+  \draw[slfig-FIG-P210-01-y-split] (0,4)--(7,4)
+    node[pos=.18,above,slfig-FIG-P210-01-split-label,text=SLTeal] {2：$y$};
+  \draw[slfig-FIG-P210-01-y-split] (7,6)--(10,6)
+    node[right,slfig-FIG-P210-01-split-label,text=SLTeal] {2：$y$};
+  \draw[slfig-FIG-P210-01-x-split] (5,0)--(5,4)
+    node[pos=.25,right,slfig-FIG-P210-01-split-label,text=SLBlue] {3：$x$};
+  \draw[slfig-FIG-P210-01-x-split] (9,0)--(9,6)
+    node[pos=.55,left,slfig-FIG-P210-01-split-label,text=SLBlue] {3：$x$};
+  \foreach \x/\y/\lab in {2/3/A,4/7/B,5/4/C,7/2/D,8/1/E,9/6/F}{
+    \fill[SLInk] (\x,\y) circle (2.2pt);
+    \node[slfig-FIG-P210-01-point-label,anchor=south west] at (\x+.08,\y+.08) {$\lab(\x,\y)$};
+  }
+  \node[slfig-FIG-P210-01-note,anchor=west] at (.2,-1.0)
+    {实线：$x$ 切分\quad 长虚线：$y$ 切分};
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[c]{.50\linewidth}
+\centering
+{\SLKdtreeTitleStyle 相同切分生成的 kd 树}\par\smallskip
+\begin{forest}
+  slfig tree,
+  slfig-FIG-P210-01-tree,
+  for tree={font=\footnotesize,l sep=8mm,s sep=4.5mm,minimum width=17mm},
+  [{$D(7,2)$\\\textcolor{SLBlue}{\fontsize{9.2pt}{10.8pt}\selectfont 实线 $x$}}
+    [{$C(5,4)$\\\textcolor{SLTeal}{\fontsize{9.2pt}{10.8pt}\selectfont 虚线 $y$}}
+      [{$A(2,3)$}]
+      [{$B(4,7)$}]
+    ]
+    [{$F(9,6)$\\\textcolor{SLTeal}{\fontsize{9.2pt}{10.8pt}\selectfont 虚线 $y$}}
+      [{$E(8,1)$}]
+    ]
+  ]
+\end{forest}
+\par\vspace{1mm}
+{\fontsize{8.7pt}{10.4pt}\selectfont 叶节点次序与左侧空间位置对应}
+\end{minipage}
+\caption{六点示例的一棵平衡kd树。节点同时保存样本与本层切分轴。}\label{fig:V2-C02-kd-tree}
+\end{figure}

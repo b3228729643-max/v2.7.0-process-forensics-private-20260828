@@ -1,0 +1,50 @@
+{
+  "status": "PACKAGE_SEALED_LOCAL_STATUS_UNCHANGED",
+  "terminal_at_utc": "2026-08-24T22:07:41.566063Z",
+  "actual_finalizer_result_relative_path": "FINALIZER_RESULT_R2.json",
+  "actual_finalizer_result_exists": true,
+  "actual_finalizer_result_sha256": "CEC42FA0BEDF33F659FF89B5D8BD8B0092347A07CEAD23899095DA746CD8BE42",
+  "consumer_validator_pre_sha256": "C9AD2D36DA7B87E32F4E63001FC5755DABC275C494A6B9094C1011F9E60344C1",
+  "consumer_validator_terminal_sha256": "C9AD2D36DA7B87E32F4E63001FC5755DABC275C494A6B9094C1011F9E60344C1",
+  "consumer_validator_same_sha": true,
+  "consumer_validator_bytes": 10921,
+  "consumer_status": "PASS",
+  "consumer_errors": 0,
+  "manual_decisions": 203,
+  "manifest_payload_file_count": 973,
+  "manifest_mismatches": [],
+  "terminal_parse": {
+    "observed_at_utc": "2026-08-24T22:07:40.512945Z",
+    "json_file_count": 72,
+    "csv_file_count": 18,
+    "json_errors": [],
+    "csv_errors": [],
+    "json_decode_fallbacks": [
+      {
+        "relative_path": "CURRENT_EXTERNAL_CHILD_STDOUT.json",
+        "raw_bytes_sha256": "FFBF3EB5BB693538C55BD6BCBB68FA6FDA9C8F2A28101B1349BC74BB5AFD0E98",
+        "decode_method": "GBK/CP936 fallback after UTF-8 decode failure"
+      }
+    ],
+    "selected_csv_row_counts": {
+      "machine_reuse/all_unordered_pairs.csv": 6670,
+      "machine_reuse/object_manifest.csv": 116,
+      "MACHINE_REUSE_IDENTITY_LEDGER.csv": 935,
+      "manual/CRITICAL_PAIR_MANUAL_DECISIONS.csv": 50,
+      "manual/GLYPH_MANUAL_DECISIONS.csv": 95,
+      "manual/GRAPHIC_MANUAL_DECISIONS.csv": 21,
+      "manual/SCHEMA_MANUAL_DECISIONS.csv": 37
+    },
+    "status": "PASS"
+  },
+  "terminal_ads": {
+    "observed_at_utc": "2026-08-24T22:07:41.565055Z",
+    "command_exit_code": 0,
+    "stderr": "",
+    "alternate_stream_count": 0,
+    "alternate_streams": [],
+    "status": "PASS"
+  },
+  "local_status": "LOCAL_SA2_PATCH_VERIFIED_AWAIT_R7A_ROOT",
+  "writes_after_write_stopped": 0
+}

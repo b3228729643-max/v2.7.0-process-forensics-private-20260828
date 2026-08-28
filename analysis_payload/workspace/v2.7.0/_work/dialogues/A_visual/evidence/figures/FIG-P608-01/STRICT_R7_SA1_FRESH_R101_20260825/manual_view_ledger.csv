@@ -1,0 +1,5 @@
+﻿DECISION_ID,VIEW,ROLE,NATIVE_DIMENSIONS,REVIEWER,OPENED,LEGIBILITY,CROWDING,PAGE_FUSION,GRAYSCALE,DECISION,NOTE
+MAN-VIEW-001,full_page_200dpi.png,PAGE_INTEGRATION,"(1654, 2339)",SA1-gpt-5.6-sol-xhigh,True,PASS,NONE,PASS,N/A,PASS,"Print page 646 integrates Fig 32.8 naturally between surrounding prose and Fig 32.9; no margin, header, footer or page-flow collision."
+MAN-VIEW-002,figure_crop_300dpi.png,COLOR_FIGURE,"(1854, 955)",SA1-gpt-5.6-sol-xhigh,True,PASS,NONE,N/A,N/A,FAIL,"Both panels and the complete caption are sharp, balanced and uncropped; however the accepted low-profile peer area gate for caption semicolon TXT-098 fails."
+MAN-VIEW-003,standalone_300dpi.png,OFFICIAL_CROP_SURROGATE,"(1854, 955)",SA1-gpt-5.6-sol-xhigh,True,PASS,NONE,N/A,N/A,FAIL,"Official fullbook-crop surrogate is readable at native 1854x955 with intact axes, patterns, curves and caption; hard typography calibration failure remains."
+MAN-VIEW-004,grayscale_300dpi.png,GRAYSCALE,"(1854, 955)",SA1-gpt-5.6-sol-xhigh,True,PASS,NONE,N/A,PASS,FAIL,"Circle versus square markers, hatch, separators and dashed target remain distinguishable; hard TXT-098 peer-area evidence still prevents PASS."

@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 2 册}{统计学习方法讲义 v2.6.0}{基础监督学习方法}
+\begin{document}
+\setcounter{page}{242}
+\setcounter{chapter}{13}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{\kNN{}法}
+\begin{optimizationbox}
+\kNN{}预测先按距离选出 $k$ 个最小者，再在有限类别集合上最小化局部经验风险。距离阶数决定邻域边界，也可能改变近邻次序。
+\end{optimizationbox}
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C02/fig_v2_c02_lp_balls.tex}
+图\ref{fig:V2-C02-lp-balls}把相同半径下的可达集合画在同一坐标系中：$L_1$、$L_2$ 与 $L_\infty$ 的边界形状不同，同一射线与边界的首次交点也不同。
+\end{document}

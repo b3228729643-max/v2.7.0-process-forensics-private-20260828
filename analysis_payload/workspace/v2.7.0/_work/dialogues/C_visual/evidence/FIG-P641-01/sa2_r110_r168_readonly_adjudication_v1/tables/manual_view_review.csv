@@ -1,0 +1,21 @@
+view_id,path,native_dimensions,fullpage_crop_xyxy,reviewer,actually_opened,manual_state,note
+V01,renders/full_page_200dpi.png,1654x2339,full_page,/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Page integration is balanced; figure and caption are readable in page context.
+V02,renders/full_page_300dpi.png,2481x3508,full_page,/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Official page native grid used for all masks and measurements.
+V03,renders/figure_crop_300dpi.png,1910x765,"285;2280;2195;3045",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Complete figure and caption visible with no clipped contour.
+V04,renders/standalone_300dpi.png,1740x625,"420;2290;2160;2915",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Figure body and conditional formula are fully visible and comfortably bounded.
+V05,renders/grayscale_300dpi.png,1910x765,"285;2280;2195;3045",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Dashed blanket cue and graph hierarchy remain distinguishable without color.
+V06,renders/full_page_grayscale_300dpi.png,2481x3508,full_page,/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Grayscale page retains readable caption and figure integration.
+V07,renders/critical_roi_overlay_300dpi.png,1910x765,"285;2280;2195;3045",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,All six broad critical regions are visibly located on the same official render.
+V08,renders/after_text_measurement_overlay_300dpi.png,1970x800,"250;2260;2220;3060",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,All 29 foreground object identifiers and roles are visible on the measurement overlay.
+V09,rois/CR01_blanket_annotation_1x.png,650x115,"1120;2300;1770;2415",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Annotation is complete and readable at native 300 dpi.
+V10,rois/CR01_blanket_annotation_8x_nearest.png,5200x920,"1120;2300;1770;2415",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Nearest-neighbour view shows no missing or wrong glyph.
+V11,rois/CR02_left_chain_and_cancel_arrow_1x.png,830x435,"430;2420;1260;2855",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Cancel annotation and arrow are separate from text and graph except intended target relation.
+V12,rois/CR02_left_chain_and_cancel_arrow_8x_nearest.png,6640x3480,"430;2420;1260;2855",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Arrowhead stops before the factor border and all text contours remain intact.
+V13,rois/CR03_focus_and_active_factors_1x.png,720x310,"1090;2430;1810;2740",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Focus node and adjacent factors are clean and centered.
+V14,rois/CR03_focus_and_active_factors_8x_nearest.png,5760x2480,"1090;2430;1810;2740",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,No label-border collision or illegible contour.
+V15,rois/CR04_right_branch_z_y_1x.png,620x465,"1550;2380;2170;2845",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,z and y branches and dashed surrounds are complete.
+V16,rois/CR04_right_branch_z_y_8x_nearest.png,4960x3720,"1550;2380;2170;2845",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Branch joins are intentional; labels and borders retain clear separation.
+V17,rois/CR05_full_conditional_formula_1x.png,770x135,"920;2780;1690;2915",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Conditional kernel is mathematically legible at native resolution.
+V18,rois/CR05_full_conditional_formula_8x_nearest.png,6160x1080,"920;2780;1690;2915",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,All symbols including proportionality and conditional bars are correct and intact.
+V19,rois/CR06_caption_1x.png,1910x155,"285;2890;2195;3045",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Two-line caption is complete and naturally spaced.
+V20,rois/CR06_caption_8x_nearest.png,15280x1240,"285;2890;2195;3045",/root/sa2_fig_p641_r110_r168_readonly_v1,YES,R168_CLEAR,Caption glyphs and embedded mathematics are sharp and unambiguous.

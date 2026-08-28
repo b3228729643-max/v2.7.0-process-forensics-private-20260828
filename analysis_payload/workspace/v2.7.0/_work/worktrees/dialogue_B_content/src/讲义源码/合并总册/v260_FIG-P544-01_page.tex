@@ -1,0 +1,14 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{692}
+\setcounter{chapter}{30}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{马尔可夫链基础}
+\sectionmark{本章依赖路线}
+\paragraph{依赖路线。}初始分布与转移规则 $\to$ 分布推进 $\to$ 平稳固定点；通信关系、返回时长与平均回返时间 $\to$ 不可约、非周期与正常返；这些结构条件 $\to$ 唯一平稳分布、逐步收敛与时间平均；细致平衡 $\to$ 可逆性 $\to$ 平稳性。
+图\ref{fig:V5-C01-dependency}给出本章概念的依赖次序。箭头表示学习上的前置关系，不表示后一个性质能反向推出前一个性质；特别是，可逆性不能代替不可约性检查。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_dependency_graph.tex}
+\end{document}

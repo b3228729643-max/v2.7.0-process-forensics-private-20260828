@@ -1,0 +1,9 @@
+﻿element_id,role,class,expected,declared_pt_from_source,graphics_scale,effective_pt,bbox_px,h_ink_bbox_px,ink_pixels
+T01,STEP_TITLE,TEXT,1 精确满条件提议,9.2,1.0,9.2,"(74, 66, 396, 101)",35,3016
+F01,CONDITION_FORMULA,FORMULA,q_j=pi(x_j|x_-j),9.2,1.0,9.2,"(94, 113, 374, 158)",45,1777
+T02,STEP_TITLE,TEXT,2 MH 比值逐项抵消,9.2,1.0,9.2,"(552, 40, 907, 75)",35,3131
+F02,RATIO_FORMULA,FORMULA,R=pi(y)pi_j(x_j|x_-j)/(pi(x)pi_j(y_j|x_-j))=1,9.2,1.0,9.2,"(505, 81, 954, 184)",103,5819
+F03,ACCEPT_FORMULA,FORMULA,3 alpha=1,9.2,1.0,9.2,"(1151, 67, 1301, 94)",27,755
+T03,STEP_ACTION,TEXT,直接接受 x_j<-y_j,9.2,1.0,9.2,"(1078, 107, 1374, 154)",47,2322
+T04,EXCEPTION_TEXT,TEXT,近似满条件 / 其他提议 q_j,9.2,1.0,9.2,"(520, 299, 939, 345)",46,3814
+T05,EXCEPTION_TEXT,TEXT,恢复 MH 接受率校正；拒绝时保持 x_j（自环）,9.2,1.0,9.2,"(351, 351, 1106, 398)",47,6281

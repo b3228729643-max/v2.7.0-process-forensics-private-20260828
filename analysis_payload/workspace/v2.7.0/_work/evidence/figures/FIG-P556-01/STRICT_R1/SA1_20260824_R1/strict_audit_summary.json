@@ -1,0 +1,59 @@
+{
+  "audit_id": "FIG-P556-01/STRICT_R1/SA1_20260824_R1",
+  "role": "SA1 independent blind strict review",
+  "input": {
+    "frozen_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r93_fullbook\\main_full.pdf",
+    "page": 601,
+    "figure_source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C01\\fig_v5_c01_stationary_fixed_point.tex",
+    "adjacent_context": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\第05册_采样方法主题模型与图排序\\chapters\\V5-C01.tex:619-629",
+    "style": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\common\\statlearnbook.sty:269-280"
+  },
+  "coverage": {
+    "glyphs": 124,
+    "semantic_text_components": 21,
+    "graphic_components": 25,
+    "text_text_pairs": 210,
+    "text_graphic_pairs": 504,
+    "text_edge_pairs": 21,
+    "arrow_components": 2,
+    "panel_components": 1,
+    "data_curve_components": 4
+  },
+  "hard_gates": {
+    "SOURCE_FONT_PASS": false,
+    "SOURCE_FONT_FAILURE_COUNT": 76,
+    "SOURCE_FONT_FAILURE_COMPONENT_COUNT": 20,
+    "PIXEL_HEIGHT_PASS": false,
+    "PIXEL_HEIGHT_FAILURE_COUNT": 30,
+    "SAME_CLASS_RATIO_PASS": false,
+    "ROLE_RATIO_PASS": false,
+    "OVERLAP_PIXEL_COUNT": 30,
+    "CLIP_PIXEL_COUNT": 0,
+    "MIN_TEXT_TEXT_RAW_CLEARANCE_PX": 28.0,
+    "MIN_TEXT_TEXT_BBOX_CLEARANCE_PX": 14.412,
+    "MIN_TEXT_TEXT_CLEARANCE_PX": 14.412,
+    "MIN_TEXT_LINE_CLEARANCE_PX": 0.0,
+    "MIN_TEXT_NODE_BORDER_CLEARANCE_PX": 6.0,
+    "MIN_TEXT_EDGE_CLEARANCE_PX": 33.0,
+    "CLEARANCE_PASS": false,
+    "CROSS_PANEL_PASS": true,
+    "FONT_VISUAL_HARMONY_PASS": false,
+    "VISUAL_HARMONY_PASS": false,
+    "MATH_SEMANTICS_PASS": true,
+    "PROBABILITY_SEMANTICS_PASS": true,
+    "TEXT_CONSISTENCY_PASS": false,
+    "GRAYSCALE_PASS": true,
+    "PAGE_INTEGRATION_PASS": true,
+    "FINAL_RESULT": "FAIL",
+    "NEXT_ROLE": "SA2",
+    "MACHINE_EVIDENCE_INTEGRITY_PASS": true
+  },
+  "result": "FAIL",
+  "handoff": "SA2",
+  "strict_method": "Native final-PDF 300dpi at 1:1; per-glyph PDF bboxes and 20/255 text raw masks; independent extracted-vector native-grid graphic masks without dilation or composited paint-order sampling; exhaustive registered pairs.",
+  "machine_terminal_check": {
+    "csv": "machine_terminal_check.csv",
+    "json": "machine_terminal_check.json",
+    "integrity_pass": true
+  }
+}

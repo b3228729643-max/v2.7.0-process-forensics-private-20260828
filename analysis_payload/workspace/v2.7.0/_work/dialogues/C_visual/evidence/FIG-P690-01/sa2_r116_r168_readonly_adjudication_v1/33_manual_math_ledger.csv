@@ -1,0 +1,8 @@
+math_id,object_id,expected_claim_or_expression,notation,mathematical_correctness,chapter_consistency,manual_verdict,post_observation_note
+M001,O001,true posterior couples θ_m and z_mn,PASS,PASS,PASS,PASS,The title correctly states posterior coupling between θ_m and z_mn.
+M002,O010,"p(θ_m,z_mn∣w_m,φ)",PASS,PASS,PASS,PASS,"The conditional posterior p(θ_m,z_mn | w_m,φ) is correctly formed for fixed φ and observed document words."
+M003,O012,q(θ_m),PASS,PASS,PASS,PASS,q(θ_m) is the document-topic variational factor.
+M004,O013,q(z_mn),PASS,PASS,PASS,PASS,q(z_mn) is the per-token topic-assignment variational factor.
+M005,O023,q(θ_m)∏_n q(z_mn),PASS,PASS,PASS,PASS,q(θ_m)∏_n q(z_mn) correctly represents the chapter's mean-field factorization over token assignments.
+M006,O026,w_mn and φ enter q(z_mn) responsibility update,PASS,PASS,PASS,PASS,The summary correctly preserves w_mn and fixed φ as inputs to the q(z_mn) responsibility update.
+M007,O028,caption states coupled posterior replaced by two variational-factor families,PASS,PASS,PASS,PASS,The caption correctly distinguishes cutting approximate-posterior dependence from deleting generative-model dependence.

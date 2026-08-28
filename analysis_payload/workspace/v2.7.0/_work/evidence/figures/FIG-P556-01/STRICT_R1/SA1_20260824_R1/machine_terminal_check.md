@@ -1,0 +1,14 @@
+# FIG-P556-01｜机器终检
+
+EVIDENCE_INTEGRITY: PASS
+
+QUALITY_RESULT: FAIL
+
+- MC01_REQUIRED_ARTIFACTS: PASS — 21/21
+- MC02_FULL_PAGE_NATIVE_GRID: PASS — actual=2481x3508px; target=2480.317x3507.875px; axis_relative_error=0.027550%,0.003562%
+- MC03_MASK_LINKS: PASS — 170/170
+- MC04_GLYPH_SCHEMA: PASS — glyphs=124; complete=True
+- MC05_RELATION_SCHEMA: PASS — relations=735; text-bbox=True
+- MC06_CRITICAL_EVIDENCE: PASS — needed=2; manifest=4
+- MC07_COUNT_CROSSCHECK: PASS — overlap=30; clip=0; font_fail=76; pixel_fail=30
+- MC08_FINAL_RESULT: PASS — expected=FAIL; summary=FAIL

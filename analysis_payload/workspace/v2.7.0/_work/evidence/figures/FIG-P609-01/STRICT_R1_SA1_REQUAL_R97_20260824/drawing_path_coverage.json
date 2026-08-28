@@ -1,0 +1,699 @@
+{
+  "background_exclusions": [
+    {
+      "assignment": "EXCLUDED_BACKGROUND_FILL",
+      "bbox_pt": [
+        142.138657,
+        560.061829,
+        252.705688,
+        668.050049
+      ],
+      "drawing_index": 71,
+      "drawing_item": "fill_rect",
+      "foreground": false,
+      "kind": "BACKGROUND_FILL",
+      "object_id": "B001",
+      "role": "PLOT_REGION_FILL",
+      "source_semantics": "SLBlue!5 background behind the left ACF plot; excluded from foreground pair denominator by protocol.",
+      "z_order": 155
+    },
+    {
+      "assignment": "EXCLUDED_BACKGROUND_FILL",
+      "bbox_pt": [
+        308.736023,
+        548.898376,
+        501.494354,
+        676.128052
+      ],
+      "drawing_index": 81,
+      "drawing_item": "white_fill",
+      "foreground": false,
+      "kind": "BACKGROUND_FILL",
+      "object_id": "B002",
+      "role": "NODE_INTERIOR_FILL",
+      "source_semantics": "Opaque white node interior is background, never folded into the border foreground mask.",
+      "z_order": 177
+    }
+  ],
+  "coverage": [
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        665.923645,
+        243.491776,
+        670.176453
+      ],
+      "drawing_index": 65,
+      "drawing_item": "line_0",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G005",
+      "role": "AXIS_TICK",
+      "source_semantics": "x-axis tick k=0",
+      "z_order": 137
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        665.923645,
+        243.491776,
+        670.176453
+      ],
+      "drawing_index": 65,
+      "drawing_item": "line_1",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G006",
+      "role": "AXIS_TICK",
+      "source_semantics": "x-axis tick k=1",
+      "z_order": 137
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        665.923645,
+        243.491776,
+        670.176453
+      ],
+      "drawing_index": 65,
+      "drawing_item": "line_2",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G007",
+      "role": "AXIS_TICK",
+      "source_semantics": "x-axis tick k=2",
+      "z_order": 137
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        665.923645,
+        243.491776,
+        670.176453
+      ],
+      "drawing_index": 65,
+      "drawing_item": "line_3",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G008",
+      "role": "AXIS_TICK",
+      "source_semantics": "x-axis tick k=3",
+      "z_order": 137
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        665.923645,
+        243.491776,
+        670.176453
+      ],
+      "drawing_index": 65,
+      "drawing_item": "line_4",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G009",
+      "role": "AXIS_TICK",
+      "source_semantics": "x-axis tick k=4",
+      "z_order": 137
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        665.923645,
+        243.491776,
+        670.176453
+      ],
+      "drawing_index": 65,
+      "drawing_item": "line_5",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G010",
+      "role": "AXIS_TICK",
+      "source_semantics": "x-axis tick k=5",
+      "z_order": 137
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        665.923645,
+        243.491776,
+        670.176453
+      ],
+      "drawing_index": 65,
+      "drawing_item": "line_6",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G011",
+      "role": "AXIS_TICK",
+      "source_semantics": "x-axis tick k=6",
+      "z_order": 137
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        124.349113,
+        565.204102,
+        128.600891,
+        668.050049
+      ],
+      "drawing_index": 66,
+      "drawing_item": "line_0",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G012",
+      "role": "AXIS_TICK",
+      "source_semantics": "y-axis tick ACF=0",
+      "z_order": 138
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        124.349113,
+        565.204102,
+        128.600891,
+        668.050049
+      ],
+      "drawing_index": 66,
+      "drawing_item": "line_1",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G013",
+      "role": "AXIS_TICK",
+      "source_semantics": "y-axis tick ACF=0.25",
+      "z_order": 138
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        124.349113,
+        565.204102,
+        128.600891,
+        668.050049
+      ],
+      "drawing_index": 66,
+      "drawing_item": "line_2",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G014",
+      "role": "AXIS_TICK",
+      "source_semantics": "y-axis tick ACF=0.5",
+      "z_order": 138
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        124.349113,
+        565.204102,
+        128.600891,
+        668.050049
+      ],
+      "drawing_index": 66,
+      "drawing_item": "line_3",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G015",
+      "role": "AXIS_TICK",
+      "source_semantics": "y-axis tick ACF=0.75",
+      "z_order": 138
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        124.349113,
+        565.204102,
+        128.600891,
+        668.050049
+      ],
+      "drawing_index": 66,
+      "drawing_item": "line_4",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G016",
+      "role": "AXIS_TICK",
+      "source_semantics": "y-axis tick ACF=1",
+      "z_order": 138
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        126.475006,
+        668.050049,
+        288.963318,
+        668.050049
+      ],
+      "drawing_index": 67,
+      "drawing_item": "line_0",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G001",
+      "role": "AXIS",
+      "source_semantics": "x-axis shaft",
+      "z_order": 139
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        287.49881,
+        666.097412,
+        291.404144,
+        670.002686
+      ],
+      "drawing_index": 68,
+      "drawing_item": "polygon",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G002",
+      "role": "AXIS_ARROWHEAD",
+      "source_semantics": "x-axis arrowhead",
+      "z_order": 140
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        126.475006,
+        559.417236,
+        126.475006,
+        668.050049
+      ],
+      "drawing_index": 69,
+      "drawing_item": "line_0",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G003",
+      "role": "AXIS",
+      "source_semantics": "y-axis shaft",
+      "z_order": 141
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        124.522354,
+        556.976379,
+        128.427658,
+        560.881714
+      ],
+      "drawing_index": 70,
+      "drawing_item": "polygon",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G004",
+      "role": "AXIS_ARROWHEAD",
+      "source_semantics": "y-axis arrowhead",
+      "z_order": 142
+    },
+    {
+      "assignment": "EXCLUDED_BACKGROUND_FILL",
+      "bbox_pt": [
+        142.138657,
+        560.061829,
+        252.705688,
+        668.050049
+      ],
+      "drawing_index": 71,
+      "drawing_item": "fill_rect",
+      "foreground": false,
+      "kind": "BACKGROUND_FILL",
+      "object_id": "B001",
+      "role": "PLOT_REGION_FILL",
+      "source_semantics": "SLBlue!5 background behind the left ACF plot; excluded from foreground pair denominator by protocol.",
+      "z_order": 155
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        565.204102,
+        243.491776,
+        668.050049
+      ],
+      "drawing_index": 72,
+      "drawing_item": "line_0",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G017",
+      "role": "DATA_STEM",
+      "source_semantics": "ACF stem k=0, rho=1.00",
+      "z_order": 156
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        565.204102,
+        243.491776,
+        668.050049
+      ],
+      "drawing_index": 72,
+      "drawing_item": "line_1",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G018",
+      "role": "DATA_STEM",
+      "source_semantics": "ACF stem k=1, rho=0.86",
+      "z_order": 156
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        565.204102,
+        243.491776,
+        668.050049
+      ],
+      "drawing_index": 72,
+      "drawing_item": "line_2",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G019",
+      "role": "DATA_STEM",
+      "source_semantics": "ACF stem k=2, rho=0.74",
+      "z_order": 156
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        565.204102,
+        243.491776,
+        668.050049
+      ],
+      "drawing_index": 72,
+      "drawing_item": "line_3",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G020",
+      "role": "DATA_STEM",
+      "source_semantics": "ACF stem k=3, rho=0.64",
+      "z_order": 156
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        565.204102,
+        243.491776,
+        668.050049
+      ],
+      "drawing_index": 72,
+      "drawing_item": "line_4",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G021",
+      "role": "DATA_STEM",
+      "source_semantics": "ACF stem k=4, rho=0.55",
+      "z_order": 156
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        565.204102,
+        243.491776,
+        668.050049
+      ],
+      "drawing_index": 72,
+      "drawing_item": "line_5",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G022",
+      "role": "DATA_STEM",
+      "source_semantics": "ACF stem k=5, rho=0.47",
+      "z_order": 156
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        132.924744,
+        565.204102,
+        243.491776,
+        668.050049
+      ],
+      "drawing_index": 72,
+      "drawing_item": "line_6",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G023",
+      "role": "DATA_STEM",
+      "source_semantics": "ACF stem k=6, rho=0.40",
+      "z_order": 156
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        252.705688,
+        560.061829,
+        252.705688,
+        668.050049
+      ],
+      "drawing_index": 73,
+      "drawing_item": "dashed_line",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G024",
+      "role": "CUTOFF_GUIDE",
+      "source_semantics": "gold dashed cutoff guide at K=6.5",
+      "z_order": 157
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        131.031815,
+        563.311157,
+        134.817657,
+        567.097046
+      ],
+      "drawing_index": 74,
+      "drawing_item": "circle",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G025",
+      "role": "DATA_MARKER",
+      "source_semantics": "filled ACF marker k=0, rho=1.00",
+      "z_order": 160
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        149.459656,
+        577.709595,
+        153.245514,
+        581.495483
+      ],
+      "drawing_index": 75,
+      "drawing_item": "circle",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G026",
+      "role": "DATA_MARKER",
+      "source_semantics": "filled ACF marker k=1, rho=0.86",
+      "z_order": 162
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        167.887497,
+        590.051147,
+        171.67334,
+        593.836975
+      ],
+      "drawing_index": 76,
+      "drawing_item": "circle",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G027",
+      "role": "DATA_MARKER",
+      "source_semantics": "filled ACF marker k=2, rho=0.74",
+      "z_order": 164
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        186.315338,
+        600.335754,
+        190.101181,
+        604.121582
+      ],
+      "drawing_index": 77,
+      "drawing_item": "circle",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G028",
+      "role": "DATA_MARKER",
+      "source_semantics": "filled ACF marker k=3, rho=0.64",
+      "z_order": 166
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        204.743179,
+        609.591858,
+        208.529007,
+        613.377686
+      ],
+      "drawing_index": 78,
+      "drawing_item": "circle",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G029",
+      "role": "DATA_MARKER",
+      "source_semantics": "filled ACF marker k=4, rho=0.55",
+      "z_order": 168
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        223.171021,
+        617.81958,
+        226.956848,
+        621.605347
+      ],
+      "drawing_index": 79,
+      "drawing_item": "circle",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G030",
+      "role": "DATA_MARKER",
+      "source_semantics": "filled ACF marker k=5, rho=0.47",
+      "z_order": 170
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        241.598846,
+        625.018738,
+        245.384689,
+        628.804626
+      ],
+      "drawing_index": 80,
+      "drawing_item": "circle",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G031",
+      "role": "DATA_MARKER",
+      "source_semantics": "filled ACF marker k=6, rho=0.40",
+      "z_order": 172
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        308.736023,
+        548.898376,
+        501.494354,
+        676.128052
+      ],
+      "drawing_index": 81,
+      "drawing_item": "stroke",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G032",
+      "role": "NODE_BORDER",
+      "source_semantics": "rounded ESS explanation node border (white fill separately excluded)",
+      "z_order": 177
+    },
+    {
+      "assignment": "EXCLUDED_BACKGROUND_FILL",
+      "bbox_pt": [
+        308.736023,
+        548.898376,
+        501.494354,
+        676.128052
+      ],
+      "drawing_index": 81,
+      "drawing_item": "white_fill",
+      "foreground": false,
+      "kind": "BACKGROUND_FILL",
+      "object_id": "B002",
+      "role": "NODE_INTERIOR_FILL",
+      "source_semantics": "Opaque white node interior is background, never folded into the border foreground mask.",
+      "z_order": 177
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        405.165009,
+        586.708008,
+        410.569,
+        586.708008
+      ],
+      "drawing_index": 82,
+      "drawing_item": "line_0",
+      "foreground": true,
+      "kind": "GRAPHIC/MATH_RULE",
+      "object_id": "R001",
+      "role": "MATH_RULE",
+      "source_semantics": "fraction rule k/n within finite weighted tau-hat formula (parent T019)",
+      "z_order": 180
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        345.061005,
+        612.873047,
+        363.253998,
+        612.873047
+      ],
+      "drawing_index": 83,
+      "drawing_item": "line_0",
+      "foreground": true,
+      "kind": "GRAPHIC/MATH_RULE",
+      "object_id": "R002",
+      "role": "MATH_RULE",
+      "source_semantics": "fraction rule n/tau-hat within N-eff formula (parent T020)",
+      "z_order": 182
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        294.2388,
+        612.513245,
+        301.598022,
+        612.513245
+      ],
+      "drawing_index": 84,
+      "drawing_item": "line_0",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G033",
+      "role": "CONNECTOR_ARROW",
+      "source_semantics": "connector arrow shaft from ACF panel toward ESS node",
+      "z_order": 184
+    },
+    {
+      "assignment": "MAPPED_FOREGROUND",
+      "bbox_pt": [
+        300.432678,
+        610.970642,
+        304.51355,
+        614.055847
+      ],
+      "drawing_index": 85,
+      "drawing_item": "polygon",
+      "foreground": true,
+      "kind": "GRAPHIC",
+      "object_id": "G034",
+      "role": "CONNECTOR_ARROWHEAD",
+      "source_semantics": "connector arrowhead toward ESS node",
+      "z_order": 185
+    }
+  ],
+  "foreground_drawing_object_count": 36,
+  "foreground_math_rule_count": 2,
+  "out_of_scope_drawings_not_imported": [
+    61,
+    62,
+    63,
+    64
+  ],
+  "rawdict_combining_control_count": 4,
+  "rawdict_glyph_count": 148,
+  "scope": "P609 strict crop only; drawing indices 65--85",
+  "unassigned_foreground_path_count": 0,
+  "visible_glyph_count": 144
+}

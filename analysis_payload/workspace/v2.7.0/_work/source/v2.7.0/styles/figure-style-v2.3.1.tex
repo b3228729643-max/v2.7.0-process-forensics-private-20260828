@@ -1,0 +1,114 @@
+% v2.3.1 shared publication-grade drawing system.
+% Keep repeated palette, stroke, node, axis, pattern and plate definitions here.
+
+\definecolor{SLInk}{HTML}{1F2937}
+\definecolor{SLBlue}{HTML}{1F4E79}
+\definecolor{SLTeal}{HTML}{0F766E}
+\definecolor{SLGold}{HTML}{B7791F}
+\definecolor{SLRed}{HTML}{B23A48}
+\definecolor{SLGray}{HTML}{6B7280}
+\definecolor{SLRule}{HTML}{CBD5E1}
+\definecolor{SLBlueBG}{HTML}{F2F6FA}
+\definecolor{SLTealBG}{HTML}{F1F8F6}
+\definecolor{SLGoldBG}{HTML}{FFF8E8}
+\definecolor{SLRedBG}{HTML}{FFF4F4}
+
+\tikzset{
+  slfig base/.style={line cap=round,line join=round,text=SLInk},
+  every tikzpicture/.append style={slfig base},
+  slfig high/.style={font=\small},
+  slfig primary/.style={draw=SLBlue,line width=.85pt},
+  slfig secondary/.style={draw=SLTeal,line width=.70pt},
+  slfig guide/.style={draw=SLGray!70,line width=.42pt,densely dashed},
+  slfig arrow/.style={-{Stealth[length=2.15mm,width=1.35mm]},draw=SLBlue,line width=.82pt},
+  slfig return/.style={-{Stealth[length=1.9mm,width=1.2mm]},draw=SLGray,line width=.58pt,densely dashed},
+  slfig process/.style={rounded corners=1.7mm,draw=SLBlue,line width=.65pt,
+    fill=SLBlueBG,inner xsep=6pt,inner ysep=4pt,align=center,font=\small},
+  slfig factor/.style={rectangle,draw=SLInk,line width=.65pt,minimum size=4.2mm,inner sep=0pt},
+  slfig latent/.style={circle,draw=SLBlue,line width=.7pt,minimum size=7mm,inner sep=0pt},
+  slfig observed/.style={slfig latent,fill=SLBlue!14},
+  slfig node/.style={slfig process,minimum height=9.5mm},
+  slfig node accent/.style={slfig node,draw=SLTeal,fill=SLTealBG},
+  slfig node gold/.style={slfig node,draw=SLGold,fill=SLGoldBG},
+  slfig node muted/.style={slfig node,draw=SLGray,fill=SLSoftGray},
+  slfig arrow accent/.style={slfig arrow,draw=SLTeal},
+  slfig edge/.style={draw=SLBlue,line width=.85pt},
+  slfig aux/.style={slfig guide},
+  slfig vector/.style={-{Stealth[length=2.25mm,width=1.4mm]},draw=SLBlue,line width=.95pt},
+  slfig note/.style={draw=SLRule,fill=white,rounded corners=1.5mm,
+    align=left,font=\small,inner sep=2.5mm,line width=.55pt},
+  slfig direct label/.style={font=\footnotesize,fill=white,fill opacity=.88,
+    text opacity=1,inner sep=1.2pt},
+  % Optional post-v2.3.1 figure readability styles. Apply locally, never by global resize.
+  slfig key label/.style={font=\fontsize{9pt}{10.8pt}\selectfont,text=SLInk},
+  slfig panel title/.style={font=\small\bfseries,text=SLBlue,align=center},
+  slfig grayscale primary/.style={draw=SLBlue,line width=.88pt,solid},
+  slfig grayscale secondary/.style={draw=SLTeal,line width=.72pt,densely dashed},
+  slfig grayscale warning/.style={draw=SLRed,line width=.72pt,dash dot},
+  slfig compact note/.style={draw=SLRule,fill=white,rounded corners=1.2mm,
+    align=left,font=\footnotesize,inner sep=1.8mm,line width=.48pt},
+  slfig decision/.style={diamond,aspect=2,draw=SLBlue,fill=SLBlueBG,
+    align=center,font=\small,line width=.8pt,inner sep=1.5mm},
+  slfig terminal/.style={slfig node,draw=SLTeal,fill=SLTealBG},
+  slfig terminal warning/.style={slfig node,draw=SLRed,fill=SLRedBG},
+  slfig state/.style={circle,draw=SLBlue,fill=SLBlueBG,
+    minimum size=7.5mm,inner sep=1mm,font=\small,line width=.7pt},
+  slfig parameter/.style={slfig state,rectangle,rounded corners=1.5mm},
+  slfig plate/.style={draw=SLGray,rounded corners=1.7mm,line width=.55pt},
+  slfig tree node/.style={slfig node,minimum width=19mm,text width=17mm},
+  slfig locked/.style={draw=SLRed,fill=SLRedBG,line width=.65pt},
+  slfig pattern blue/.style={pattern={Lines[angle=45,distance=3.2pt,line width=.3pt]},pattern color=SLBlue!55},
+  slfig pattern teal/.style={pattern={Dots[distance=3.2pt,radius=.34pt]},pattern color=SLTeal!60},
+  slfig pattern gold/.style={pattern={Lines[angle=-45,distance=3.2pt,line width=.3pt]},pattern color=SLGold!60}
+}
+
+\pgfplotsset{compat=1.18}
+\pgfplotsset{
+  slfig axis/.style={
+    width=.88\linewidth,
+    height=.48\linewidth,
+    axis line style={draw=SLInk,line width=.52pt},
+    tick style={draw=SLInk,line width=.42pt},
+    tick align=outside,
+    label style={font=\small},
+    tick label style={font=\footnotesize},
+    legend style={font=\footnotesize,draw=none,fill=none,cells={anchor=west}},
+    clip=false,
+    grid=none,
+    every axis plot/.append style={line cap=round,line join=round}
+  },
+  slfig readable axis/.style={
+    tick label style={font=\footnotesize},
+    label style={font=\small},
+    legend style={font=\footnotesize,draw=none,fill=none},
+    clip=false
+  },
+  slfig audit axis/.style={
+    tick label style={font=\footnotesize},
+    label style={font=\small},
+    legend style={font=\footnotesize,draw=none,fill=none},
+    clip=false
+  },
+  slfig direct label/.style={font=\footnotesize,fill=white,fill opacity=.88,text opacity=1,inner sep=1.2pt},
+  slfig main curve/.style={draw=SLBlue,line width=.9pt,no marks},
+  slfig second curve/.style={draw=SLTeal,line width=.75pt,densely dashed,no marks},
+  slfig reference/.style={draw=SLGray!72,line width=.45pt,densely dashed,no marks}
+}
+
+\forestset{
+  slfig tree/.style={
+    for tree={
+      draw=SLBlue,
+      fill=SLBlueBG,
+      rounded corners=1.5mm,
+      line width=.65pt,
+      font=\small,
+      align=center,
+      inner xsep=4pt,
+      inner ysep=3pt,
+      edge={draw=SLBlue,line width=.72pt,-{Stealth[length=1.9mm,width=1.2mm]}},
+      l sep=9mm,
+      s sep=7mm
+    }
+  }
+}

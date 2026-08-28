@@ -1,0 +1,17 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 1 册}{统计学习方法讲义 v2.6.0}{数学基础与统计学习基本理论}
+\begin{document}
+\setcounter{page}{145}
+\setcounter{chapter}{8}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{数值优化基础}
+\begin{geometrybox}
+\textbf{几何解释。}坐标下降沿坐标轴折线靠近等高线中心；当椭圆主轴与坐标轴不对齐时会频繁之字形。预条件或块坐标方法相当于改变允许移动的方向，可缓解轴不匹配。
+\end{geometrybox}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C08/fig_v1_c08_coordinate.tex}
+\cref{fig:V1-C08-coordinate}中的之字形可用来诊断坐标系失配：若椭圆主轴与坐标轴夹角大，单坐标更新会把大量步长消耗在横纵折返上；旋转、缩放或分块变量可减少这种无效往返。
+\paragraph{首次阅读检查：最大熵与改进迭代尺度法的优化基础。}\textbf{第一步。}先完成原文给出的可判定自检。
+\end{document}
+

@@ -1,0 +1,85 @@
+{
+  "schema": "P656_R1_DIRECT_INVOCATION_RESULT_V1",
+  "controller_pid": 22220,
+  "ordinal": 1,
+  "invocation_limit": 1,
+  "invocation_count": 1,
+  "started": true,
+  "child_pid": 25712,
+  "attempted_utc": "2026-08-26T09:42:59.8931289Z",
+  "started_utc": "2026-08-26T09:42:59.9420670Z",
+  "finished_utc": "2026-08-26T09:44:01.9606119Z",
+  "duration_seconds": 62.067,
+  "natural_exit": true,
+  "interrupted": false,
+  "exit_code": 0,
+  "start_exception": null,
+  "start_record_exception": null,
+  "runtime_exception": null,
+  "controller_exception": null,
+  "pdf_identity_exception": null,
+  "output_persistence_exception": null,
+  "source_baseline_sha256": "BC954A32F6FC8811F9557AD9A3147795CB6CB467DEAEF6195A3A0B1D9E855852",
+  "source_prebuild_sha256": "9D404ED0694D575DE89038D3D6485C49AA4C60DCC3238AD8318CADACF810B381",
+  "source_postbuild": {
+    "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C05\\fig_v5_c05_multinomial_counts.tex",
+    "exists": true,
+    "bytes": 2854,
+    "sha256": "9D404ED0694D575DE89038D3D6485C49AA4C60DCC3238AD8318CADACF810B381"
+  },
+  "wrapper_prebuild_sha256": "6092B8A09AC8AF8C0605599CA6C2583530EC2D5DE13F4F6847244015AAC0A3C9",
+  "wrapper_postbuild": {
+    "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\讲义源码\\合并总册\\v260_FIG-P656-01_standalone.tex",
+    "exists": true,
+    "bytes": 399,
+    "sha256": "6092B8A09AC8AF8C0605599CA6C2583530EC2D5DE13F4F6847244015AAC0A3C9"
+  },
+  "stdout": {
+    "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P656-01\\sa2_font_r1_direct_build_v1\\01_build\\lualatex.stdout.txt",
+    "exists": true,
+    "bytes": 28234,
+    "sha256": "A783E6E438605A86B21401975CE1F9A42194905180F6E842D050E94ABCC76310",
+    "identity_recomputed": true
+  },
+  "stderr": {
+    "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P656-01\\sa2_font_r1_direct_build_v1\\01_build\\lualatex.stderr.txt",
+    "exists": true,
+    "bytes": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "identity_recomputed": true
+  },
+  "candidate_pdf": {
+    "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P656-01\\sa2_font_r1_direct_build_v1\\01_build\\v260_FIG-P656-01_standalone.pdf",
+    "count_in_build_directory": 1,
+    "exists": true,
+    "bytes": 35680,
+    "sha256": "1B01C9FFA6E80AEFB79107BFDAE2B7014893BFCAA76654F756DB49AEE7E6C869"
+  },
+  "candidate_log": {
+    "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P656-01\\sa2_font_r1_direct_build_v1\\01_build\\v260_FIG-P656-01_standalone.log",
+    "exists": true,
+    "bytes": 146147,
+    "sha256": "55077F69F20DA6D4A108980B55EBED98F2E221CD34716BB776E4FF5E26ACE2BF"
+  },
+  "post_tex_process_count": 0,
+  "post_tex_processes": [],
+  "retry_count": 0,
+  "second_start_attempted": false,
+  "success_hard_gate": {
+    "invocation_count_is_one": true,
+    "started_true": true,
+    "start_record_exists": true,
+    "natural_exit_true": true,
+    "exit_code_zero": true,
+    "pdf_count_exactly_one": true,
+    "expected_pdf_exists": true,
+    "expected_pdf_bytes_positive": true,
+    "post_tex_process_count_zero": true,
+    "all_exception_fields_empty": true,
+    "stdout_identity_recomputed": true,
+    "stderr_identity_recomputed": true,
+    "source_sha_stable": true,
+    "wrapper_sha_stable": true,
+    "all_pass": true
+  }
+}

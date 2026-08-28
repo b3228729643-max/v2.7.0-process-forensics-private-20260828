@@ -1,0 +1,35 @@
+  1: % v2.3.1 figure UID: FIG-P639-01
+  2: % v2.6.0 redraw: preserve both exact densities while separating every annotation from data.
+  3: \tikzset{
+  4:   slfig-FIG-P639-01/.style={every path/.append style={line cap=round,line join=round}},
+  5:   slfig-FIG-P639-01-label/.style={font=\fontsize{9.2}{11}\selectfont},
+  6:   slfig-FIG-P639-01-note/.style={draw=SLRuleGray,line width=.55pt,rounded corners=2pt,
+  7:     fill=white,inner xsep=6pt,inner ysep=4pt,outer sep=1.2pt,align=center,
+  8:     font=\fontsize{9.2}{11}\selectfont}
+  9: }
+ 10: \pgfplotsset{slfig-FIG-P639-01-axis/.style={
+ 11:   tick label style={font=\fontsize{8.5}{10}\selectfont},
+ 12:   label style={font=\fontsize{9.2}{11}\selectfont},clip=false}}
+ 13: \begin{figure}[htbp]
+ 14: \centering
+ 15: \begin{tikzpicture}[slfig-FIG-P639-01]
+ 16: \begin{axis}[slfig-FIG-P639-01-axis,width=10.5cm,height=5.8cm,xmin=-2,xmax=3,ymin=0,ymax=.56,
+ 17:   axis lines=left,xlabel={$t$},ylabel={密度},xtick={-2,-1,0,1,2,3},ytick={0,.25,.5},
+ 18:   axis line style={line width=.65pt},tick style={line width=.55pt},clip=false]
+ 19:   \addplot[draw=SLBlue,fill=SLBlue!7,line width=1pt,domain=-2:3,samples=321]
+ 20:     {0.498678*exp(-0.78125*(x-.45)^2)} \closedcycle;
+ 21:   \addplot[draw=SLGold,line width=.95pt,densely dashed,domain=-2:3,samples=321]
+ 22:     {0.498678*exp(-0.78125*(x-.60)^2)};
+ 23:   \draw[draw=SLBlue,line width=.55pt,densely dashed] (axis cs:.45,0)--(axis cs:.45,.499);
+ 24:   \draw[draw=SLGold,line width=.55pt,dash dot] (axis cs:.60,0)--(axis cs:.60,.499);
+ 25:   \node[slfig-FIG-P639-01-label,anchor=south east,text=SLBlue] at (axis cs:.27,.556)
+ 26:     {$N(0.45,0.64)$\quad $\mu_1=.45$};
+ 27:   \node[slfig-FIG-P639-01-label,anchor=south west,text=SLGold] at (axis cs:.78,.556)
+ 28:     {$N(0.60,0.64)$\quad $\mu_2=.60$};
+ 29:   \node[slfig-FIG-P639-01-note,anchor=west] at (axis cs:3.14,.28)
+ 30:     {共同方差 $0.64$\\均值随另一坐标改变};
+ 31: \end{axis}
+ 32: \end{tikzpicture}
+ 33: \caption{取$\rho=0.6$、$a=1$、$b=0.75$时，两个满条件分布分别为$N(0.45,0.64)$与$N(0.60,0.64)$；图中曲线按同一组参数直接计算。}
+ 34: \label{fig:V5-C04-bivariate-normal-conditionals}
+ 35: \end{figure}

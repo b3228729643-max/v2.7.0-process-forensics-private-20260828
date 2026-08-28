@@ -1,0 +1,42 @@
+% v2.7.0 figure UID: FIG-P609-01
+% v2.7.0 finite-sample ACF-to-ESS redraw: one weighted rule, two explicit roles, no out-of-window stems.
+\tikzset{slfig-FIG-P609-01/.style={font=\fontsize{9.6pt}{11.8pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{slfig-FIG-P609-01-axis/.style={
+  tick label style={font=\fontsize{9.6pt}{11.8pt}\selectfont},
+  label style={font=\fontsize{9.8pt}{12.0pt}\selectfont},
+  title style={font=\fontsize{10.4pt}{12.6pt}\selectfont,yshift=1mm},
+  axis line style={line width=.7pt},tick style={line width=.6pt},
+  scaled ticks=false,clip=false}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P609-01,every node/.style={font=\fontsize{9.6pt}{11.8pt}\selectfont,align=center}]
+\begin{axis}[slfig-FIG-P609-01-axis,
+  name=acf,width=7.4cm,height=5.5cm,
+  xmin=-.35,xmax=8.6,ymin=0,ymax=1.08,
+  title={\textbf{1. 经验 ACF：预设窗口}},
+  xlabel={滞后 $k$},ylabel={经验 ACF $\widehat\rho_k$},
+  xtick={0,1,2,3,4,5,6},ytick={0,.25,.5,.75,1},axis lines=left,clip=false
+]
+  \path[fill=SLBlue!5] (axis cs:.5,0) rectangle (axis cs:6.5,1.05);
+  \addplot[ycomb,draw=SLBlue,line width=1.0pt,mark=*,mark size=1.9pt] coordinates
+    {(0,1)(1,.86)(2,.74)(3,.64)(4,.55)(5,.47)(6,.40)};
+  \draw[draw=SLGold,line width=.75pt,densely dashed] (axis cs:6.5,0)--(axis cs:6.5,1.05);
+  \node[anchor=north east,font=\fontsize{9.6pt}{11.8pt}\selectfont,text=SLGold]
+    at (axis cs:6.35,1.02) {截断 $K=6$};
+  \node[anchor=center,font=\fontsize{9.6pt}{11.8pt}\selectfont,text=SLTextGray]
+    at (axis cs:7.55,.16) {$\cdots$};
+\end{axis}
+\node[right=6mm of acf.east,draw=SLRuleGray,line width=.65pt,rounded corners=2pt,fill=white,
+  font=\fontsize{9.6pt}{11.8pt}\selectfont,align=left,text width=62mm,inner xsep=3mm,inner ysep=2.6mm] (ess)
+  {{\fontsize{10.4pt}{12.6pt}\selectfont\bfseries 2. 有限样本加权 ESS}\\[5pt]
+   $\displaystyle \widehat\tau_{K,n}=1+2\sum_{k=1}^{K}\!\left(1-\frac{k}{n}\right)\widehat\rho_k$\\[4pt]
+   $\displaystyle \widehat N_{\mathrm{eff}}=\frac{n}{\widehat\tau_{K,n}},\qquad \widehat\tau_{K,n}>0$\\[6pt]
+   \textbf{预设窗口：}$K=6<n$，仅纳入 $1\le k\le K$；\\[2pt]
+   后续滞后未绘出且未纳入；\\[2pt]
+   有限轨迹诊断，不是收敛证明。};
+\draw[->,draw=SLRuleGray,line width=.75pt] ([xshift=1mm]acf.east) -- ([xshift=-1mm]ess.west);
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth,font=normalsize}
+\caption{固定窗口内的正经验自相关增大方差权重，因而使同长度轨迹的有效样本量减小。}\label{fig:V5-C03-autocorrelation-ess}
+\end{figure}

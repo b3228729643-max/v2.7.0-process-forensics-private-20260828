@@ -1,0 +1,111 @@
+% v2.7.0 figure UID: FIG-P684-01
+% Three-lane ancestral sampler; intentionally not a duplicate full plate graph.
+\tikzset{slfig-FIG-P684-01/.style={
+  font=\fontsize{9.6pt}{11.5pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P684-01,>=Stealth,
+  every node/.style={
+    font=\fontsize{9.6pt}{11.5pt}\selectfont,
+    align=center,outer sep=0pt},
+  lane/.style={
+    draw=SLRule,fill=SLBlueBG,rounded corners=3pt,
+    line width=.78pt},
+  lanehead/.style={
+    draw=SLRule,fill=white,rounded corners=2.4pt,
+    line width=.82pt,text width=24mm,minimum height=14mm,
+    inner xsep=1.5mm,inner ysep=1.8mm,
+    font=\fontsize{10.2pt}{12.2pt}\selectfont\bfseries},
+  stepbox/.style={
+    rounded corners=2.4pt,line width=.84pt,
+    inner xsep=2.0mm,inner ysep=2.0mm,minimum height=17mm},
+  hyper/.style={
+    draw=SLAccentOrange,fill=SLWarmGray,dashed,
+    rounded corners=2.4pt,line width=.82pt,
+    text width=23mm,minimum height=14mm,
+    inner xsep=1.5mm,inner ysep=1.8mm},
+  randomvec/.style={
+    stepbox,draw=SLMidBlue,fill=SLSoftTeal,text width=42mm},
+  latentcat/.style={
+    stepbox,ellipse,draw=SLDeepBlue,fill=SLSoftBlue,
+    dash dot,text width=41mm},
+  observed/.style={
+    stepbox,rectangle,draw=SLTextGray,fill=SLWarmGray,
+    double,double distance=.65pt,text width=46mm},
+  variant/.style={
+    draw=SLGold,fill=SLGoldBG,dashed,rounded corners=2.4pt,
+    line width=.80pt,text width=32mm,
+    inner xsep=1.5mm,inner ysep=1.8mm,align=left},
+  prior/.style={
+    -{Stealth[length=2.1mm,width=1.6mm]},
+    draw=SLAccentOrange,dashed,line width=.92pt},
+  main/.style={
+    -{Stealth[length=2.1mm,width=1.6mm]},
+    draw=SLDeepBlue,line width=.96pt},
+  edgelabel/.style={
+    fill=white,rounded corners=1pt,inner sep=1.1pt,
+    font=\fontsize{9.6pt}{11.5pt}\selectfont},
+  alt={对象—关系—结论：图保留全局主题、文档和词位三条泳道及四个生成步骤，而不复制完整 plate 图。固定超参数粗体 beta 和粗体 alpha 分别以暖色虚线框指向完整Bayes中的随机概率向量粗体 varphi_k 和粗体 theta_m；随后 theta_m 指向潜在离散变量 z_mn，z_mn 与 varphi_k 共同指向观测变量 w_mn，varphi_k 到 w_mn 的边标明按 z_mn 取一行。泳道文字说明 k 从 1 到 K、m 从 1 到 M，并且 n 从 1 到 N_m 嵌套在每个 m 内。侧注明确点参数变体中每个 varphi_k 是待估参数且不与完整Bayes混作同一后验。}]
+
+% Three physical swimlanes.
+\path[lane] (-7.65,1.35) rectangle (7.35,3.80);
+\path[lane] (-7.65,-1.15) rectangle (7.35,1.15);
+\path[lane] (-7.65,-4.15) rectangle (7.35,-1.40);
+
+\node[lanehead] at (-6.20,2.58)
+  {全局主题层\\$k=1,\ldots,K$};
+\node[lanehead] at (-6.20,0)
+  {文档层\\$m=1,\ldots,M$};
+\node[lanehead,minimum height=18mm] at (-6.20,-2.78)
+  {词位层\\每个 $m$ 内\\$n=1,\ldots,N_m$};
+
+% Fixed ancestors: warm fill + dashed border + role text.
+\node[hyper] (beta) at (-3.30,2.58)
+  {$\boldsymbol\beta\in\mathbb R_{>0}^{V}$\\
+   \textbf{固定超参数}};
+\node[hyper] (alpha) at (-3.30,0)
+  {$\boldsymbol\alpha\in\mathbb R_{>0}^{K}$\\
+   \textbf{固定超参数}};
+
+% Four steps.  Shape/fill/border and explicit role text remain readable in gray.
+\node[randomvec] (phi) at (.60,2.58)
+  {\textbf{步骤 1：抽取主题--词分布}\\
+   $\boldsymbol\varphi_k\sim\operatorname{Dir}(\boldsymbol\beta)$\\
+   随机概率向量\\$\boldsymbol\varphi_k\in\Delta^{V-1}$};
+\node[randomvec] (theta) at (.60,0)
+  {\textbf{步骤 2：抽取文档主题比例}\\
+   $\boldsymbol\theta_m\sim\operatorname{Dir}(\boldsymbol\alpha)$\\
+   随机概率向量\\$\boldsymbol\theta_m\in\Delta^{K-1}$};
+\node[latentcat] (z) at (-1.45,-2.78)
+  {\textbf{步骤 3：抽取 $z_{mn}$}\\
+   $z_{mn}\sim\operatorname{Cat}(\boldsymbol\theta_m)$\\
+   潜在离散变量；$z_{mn}\in\{1,\ldots,K\}$};
+\node[observed] (w) at (4.05,-2.78)
+  {\textbf{步骤 4：抽取 $w_{mn}$}\\
+   $w_{mn}\sim\operatorname{Cat}(\boldsymbol\varphi_{z_{mn}})$\\
+   观测变量；$w_{mn}\in\{1,\ldots,V\}$};
+
+\node[variant] at (5.25,2.58)
+  {\textbf{点参数变体}\\
+   每个 $\boldsymbol\varphi_k$ 为待估参数；\\
+   无 $\boldsymbol\beta$ 先验；\\
+   非完整Bayes后验。};
+
+% Five explicit ancestral edges.
+\draw[prior] (beta.east) -- (phi.west);
+\draw[prior] (alpha.east) -- (theta.west);
+\draw[main] (theta.south west)
+  .. controls (-.05,-1.05) and (-1.35,-1.35) .. (z.north);
+\draw[main] (z.east) -- (w.west);
+\draw[main] (phi.south east)
+  .. controls (3.60,1.35) and (6.72,.05) ..
+  node[edgelabel,pos=.62,right] {按 $z_{mn}$ 取一行}
+  (w.north east);
+
+\end{tikzpicture}
+\captionsetup{width=.90\linewidth}
+\caption{完整Bayes LDA 的三层祖先采样流程；点参数变体仅在侧注中区分。}
+\label{fig:V5-C06-generative-process}
+\end{figure}

@@ -1,0 +1,30 @@
+ELEMENT_ID,OBSERVED_H_INK_PX,APPLICABLE_THRESHOLD_PX,MANUAL_OBSERVATION,DECISION
+T01,70,22,"Parameter line is a base-size math formula; rho, a, b and three stacked fractions have full strokes. The 70 px line envelope includes natural numerator/denominator scripts, each legible in the formula and ROI views.",PASS
+T02,116,22,"Joint-density line is fully rendered; pi, x subscripts, 5/(8pi), exp, minus, 25/32, q and brackets are distinct. Tall envelope comes from fractions/brackets, not scaling.",PASS
+T03,88,22,"Quadratic-form line preserves both superscript 2 glyphs, 6/5, x1x2 and signs; no character is fused or clipped.",PASS
+T04,51,22,"x1 axis label is clear; the base x and natural subscript 1 are both intact, with the subscript accounting for the taller envelope.",PASS
+T05,45,22,"x2 axis label is clear; the base x and natural subscript 2 are distinct and separated from the y-axis arrowhead.",PASS
+T06,78,22,"Horizontal-slice label x2=b=4/5 has readable base symbols and fraction; it does not touch the slice stroke.",PASS
+T07,35,22,"Vertical-slice label x1=a=1 is a single base-size line with clean subscript and equals signs; source/PDF size is unchanged.",PASS
+T08,38,22,"Point label (a,b) has complete parentheses, comma and italic letters; its leader terminates below-left without touching ink.",PASS
+T09,60,30,"Mixed Chinese/math conclusion has full-height Chinese plus 45-degree and square-root expressions; all radicals and rho signs are intact and the line is not compressed.",PASS
+T10,36,30,"The four Chinese characters 水平截面 exceed the 30 px CJK threshold and retain open internal counters.",PASS
+T11,52,22,"The division and m2(b) normalization line has an intact division sign, natural subscript 2 and parentheses.",PASS
+T12,99,22,"Upper conditional identity renders pi1, conditioning bar, X2=b and the pi(t,b)/m2(b) fraction without crowding or missing scripts.",PASS
+T13,104,22,"Upper N(12/25,16/25) and m2(b)=phi(4/5)≈0.29>0 line has complete fractions, phi, approximation and inequality glyphs.",PASS
+T14,121,22,"Upper integral/peak line has an intact integral sign, real-line subscript, differential, maximum label and 5/(4sqrt(2pi)) radical fraction; natural scripts remain readable at 8x.",PASS
+T15,25,22,"Upper x-axis t has a 25 px ink height, exceeding the 22 px base-math threshold; no clipping at the arrowhead.",PASS
+T16,91,22,"The stacked 12/25 mean label is centered below the upper axis; numerator, bar and denominator are separated. Its guide ends above the label region.",PASS
+T17,37,30,"The four Chinese characters 竖直截面 measure 37 px after excluding the following formula line and exceed the CJK threshold.",PASS
+T18,38,22,"The division and m1(a) normalization line has clean division, subscript and parentheses, with no contact to the routing arrow.",PASS
+T19,113,22,"Lower conditional identity renders pi2, conditioning bar, X1=a and pi(a,t)/m1(a) completely. R09 confirms whitespace to the upper mean fraction.",PASS
+T20,108,22,"Lower N(3/5,16/25) and m1(a)=phi(1)≈0.242>0 line preserves every number and operator with ample spacing.",PASS
+T21,125,22,"Lower integral/peak line has a complete integral, real-line subscript, differential and 5/(4sqrt(2pi)) radical fraction; no baseline clipping.",PASS
+T22,25,22,"Lower x-axis t has a 25 px ink height, matches T15, and remains clear of the arrowhead.",PASS
+T23,78,22,"The stacked 3/5 mean label has distinct numerator, bar and denominator below the lower axis; the guide stops at the baseline.",PASS
+T24,48,30,"First zero-marginal note line is full-height CJK with the digit 0 and colon correctly rendered; no contact with the top border.",PASS
+T25,51,30,"Second note line is full-height CJK, evenly spaced and clear of both side borders.",PASS
+T26,39,30,"Third note line measures 39 px after excluding the bottom border; punctuation and final full stop are complete.",PASS
+T27,58,30,"Bold caption number 图33.2 has complete CJK and digits, exceeds the CJK threshold, and is aligned without clipping.",PASS
+T28,43,30,"First caption-body line is full-height CJK with 16/25 and digit 1 intact; it remains within the page text width.",PASS
+T29,40,30,"Second caption-body line is full-height CJK with semicolon and final punctuation intact; no bottom clipping.",PASS

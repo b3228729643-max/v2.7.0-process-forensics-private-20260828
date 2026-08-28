@@ -1,0 +1,48 @@
+object_id,manual_classification,manual_observation
+O01,ACCEPTED_TITLE,Blue bold title is centered above the scan band and remains dominant without crowding the top labels.
+O02,ACCEPTED_NUMERIC_LABEL,The numeral 1 is intact and vertically aligned with the remaining position labels.
+O03,ACCEPTED_NUMERIC_LABEL,The numeral 2 is intact and establishes the second fixed scan position unambiguously.
+O04,ACCEPTED_ELLIPSIS_LABEL,The left 省略 label reads as an omitted interior run rather than a literal coordinate name.
+O05,ACCEPTED_POSITION_LABEL,前位 sits over the last already-updated representative slot and matches the narrative order.
+O06,ACCEPTED_POSITION_LABEL,当前 is centered over the gold current-coordinate slot and has a unique visual role.
+O07,ACCEPTED_POSITION_LABEL,后位 sits over the first not-yet-updated representative slot and preserves left-to-right logic.
+O08,ACCEPTED_ELLIPSIS_LABEL,The right 省略 label mirrors the earlier omission without suggesting a second update branch.
+O09,ACCEPTED_POSITION_LABEL,末位 is aligned with the final dotted slot and closes the fixed-order sequence.
+O10,ACCEPTED_DIRECTION_ARROW,The single horizontal arrow runs left to right with an intact head and does not cross any label ink.
+O11,ACCEPTED_DIRECTION_TEXT,更新顺序 is placed beyond the arrowhead and clearly names direction rather than a state.
+O12,ACCEPTED_UPDATED_SLOT_BORDER,The first solid blue hatched border encloses its text with ample internal clearance.
+O13,ACCEPTED_UPDATED_SLOT_BORDER,The second solid blue hatched border repeats the updated-state encoding consistently.
+O14,ACCEPTED_UPDATED_SLOT_BORDER,The left middle representative slot uses the same solid blue hatched grammar as coordinates 1 and 2.
+O15,ACCEPTED_UPDATED_SLOT_BORDER,The previous-position tail slot is visibly part of the completed prefix and is not confused with current.
+O16,ACCEPTED_CURRENT_SLOT_BORDER,The gold solid border uniquely marks coordinate j and is balanced against adjacent slots.
+O17,ACCEPTED_OLD_SLOT_BORDER,The first post-current dotted border clearly changes from the completed-prefix encoding.
+O18,ACCEPTED_OLD_SLOT_BORDER,The right middle representative slot retains the dotted old-value grammar.
+O19,ACCEPTED_OLD_SLOT_BORDER,The final dotted slot closes the suffix without clipping or unequal padding.
+O20,ACCEPTED_SLOT_TEXT,坐标1 is centered inside O12 and the numeral baseline remains clean over the hatch.
+O21,ACCEPTED_SLOT_TEXT,坐标2 is centered inside O13 with no hatch line obscuring the numeral.
+O22,ACCEPTED_SLOT_TEXT,中间坐标 in the updated prefix remains readable over the light diagonal pattern.
+O23,ACCEPTED_SLOT_TEXT,前段末位 accurately names the last representative coordinate before j.
+O24,ACCEPTED_SLOT_TEXT,当前坐标 is black on the pale gold fill and remains the focal slot text.
+O25,ACCEPTED_SLOT_TEXT,后段首位 correctly identifies the first untouched coordinate after j.
+O26,ACCEPTED_SLOT_TEXT,The right-side 中间坐标 is legible within the dotted old-value slot.
+O27,ACCEPTED_SLOT_TEXT,末位坐标 remains fully inside the last border with even vertical padding.
+O28,ACCEPTED_PREFIX_LEGEND,本轮新值 is centered under the completed prefix and stays clear of both slot and panel borders.
+O29,ACCEPTED_CURRENT_LEGEND,当前新值 uses the gold accent consistently and remains distinct in grayscale by position.
+O30,ACCEPTED_SUFFIX_LEGEND,前轮旧值 is centered under the dotted suffix and is not attached to the current slot.
+O31,ACCEPTED_SUBSTEP_PANEL,The upper rounded card encloses the mixed-state explanation without touching its text or the lower card.
+O32,ACCEPTED_FORMULA,The x^[j] glyph group has the intended bracketed superscript j with no missing or substituted character.
+O33,ACCEPTED_STATE_LABEL,当前子步状态 sits on the same line as x^[j] and states the object type directly.
+O34,ACCEPTED_RANGE_LABEL,起始至当前坐标 spans the updated prefix and has 8 px minimum ink-to-panel clearance.
+O35,ACCEPTED_VALUE_LABEL,The panel-level 本轮新值 aligns with O34 and is visually separated from the formula above.
+O36,ACCEPTED_RANGE_LABEL,后续至末位坐标 spans the untouched suffix and stays distinct from the left range.
+O37,ACCEPTED_VALUE_LABEL,The panel-level 前轮旧值 aligns with O36 and keeps the old-value role explicit.
+O38,ACCEPTED_ROUND_END_PANEL,The lower rounded card is separated from O31 and contains the equality/record chain with generous margins.
+O39,ACCEPTED_FORMULA,The x^[d] formula is complete and correctly denotes the state after the last coordinate substep.
+O40,ACCEPTED_FORMULA,The x^(t) formula has a clear parenthesized superscript t and is not conflated with bracket notation.
+O41,ACCEPTED_SAMPLE_LABEL,轮末样本 is aligned with the right arrow and states what is actually retained.
+O42,ACCEPTED_EQUIVALENCE_ARROW,The bidirectional arrow is explicitly qualified by 状态相同 and does not imply an update direction.
+O43,ACCEPTED_EQUIVALENCE_TEXT,状态相同 correctly limits the relation between x^[d] and x^(t) to identity of state.
+O44,ACCEPTED_RECORD_ARROW,The one-way arrow from x^(t) to 轮末样本 correctly represents the recording action.
+O45,ACCEPTED_RECORD_TEXT,仅此记录 prevents intermediate x^[j] states from being misread as round outputs.
+O46,ACCEPTED_CAPTION_LABEL,图33.3 is bold, complete, and separated from the caption prose at native scale.
+O47,ACCEPTED_CAPTION_TEXT,The two-line caption is complete, readable, and restates new-prefix/old-suffix and round-end semantics without contradiction.

@@ -1,0 +1,17 @@
+{
+  "manifest_scope": "all ordinary root files except the two manifests, this closure, SEAL_AUDIT.json, and WRITE_STOPPED",
+  "payload_entry_count": 502,
+  "payload_total_bytes": 18569879,
+  "payload_manifest_csv_sha256": "7C318BC5FF7BDA4F4FA80DB4786176AB0B3B3A5EC7D7CE69176EE01F28040CE0",
+  "payload_manifest_json_sha256": "A1D16A222E080DE8E6AFA41F46C2EFCADBBD7A2AE73E3C99E989D186D871C7CF",
+  "payload_path_unique": true,
+  "payload_hash_unique_count": 417,
+  "expected_control_files_before_marker": [
+    "payload_manifest.csv",
+    "payload_manifest.json",
+    "manifest_identity_closure.json",
+    "SEAL_AUDIT.json"
+  ],
+  "expected_ordinary_files_before_marker": 506,
+  "expected_ordinary_files_after_marker": 507
+}

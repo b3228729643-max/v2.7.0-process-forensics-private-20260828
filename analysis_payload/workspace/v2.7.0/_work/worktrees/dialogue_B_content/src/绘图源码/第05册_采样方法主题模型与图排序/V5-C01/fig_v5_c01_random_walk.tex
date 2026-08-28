@@ -1,0 +1,71 @@
+% v2.3.1 figure UID: FIG-P558-01
+% Proposed post-v2.3.1 polish for FIG-P558-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P558-01/.style={every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{slfig-FIG-P558-01-axis/.style={
+  tick label style={font=\fontsize{8.6pt}{10pt}\selectfont},
+  label style={font=\fontsize{9.2pt}{11pt}\selectfont},clip=false}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P558-01,>=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11pt}\selectfont},
+  state/.style={circle,draw=SLBlue,fill=SLBlue!7,minimum size=8mm,line width=.82pt,
+    font=\fontsize{9.4pt}{11.2pt}\selectfont},
+  edge/.style={-{Stealth[length=1.7mm]},draw=SLTeal,line width=.90pt},
+  loop/.style={-{Stealth[length=1.7mm]},draw=SLGold,line width=.80pt},
+  lab/.style={font=\fontsize{8.8pt}{10.4pt}\selectfont,fill=white,inner sep=1pt},
+]
+  \begin{scope}[shift={(-3.65,1.35)}]
+    \node[font=\fontsize{10.4pt}{12.4pt}\selectfont\bfseries,text=SLBlue] at (0,1.58) {简单游走};
+    \node[state] (a1) at (-1.75,0) {$1$};
+    \node[state] (a2) at (0,0) {$2$};
+    \node[state] (a3) at (1.75,0) {$3$};
+    \draw[edge] (a1) to[bend left=18] node[lab,above] {$1$} (a2);
+    \draw[edge] (a2) to[bend left=18] node[lab,below] {$1/2$} (a1);
+    \draw[edge] (a2) to[bend left=18] node[lab,above] {$1/2$} (a3);
+    \draw[edge] (a3) to[bend left=18] node[lab,below] {$1$} (a2);
+  \end{scope}
+  \begin{scope}[shift={(3.65,1.35)}]
+    \node[font=\fontsize{10.4pt}{12.4pt}\selectfont\bfseries,text=SLTeal] at (0,1.58) {惰性游走};
+    \node[state] (b1) at (-1.75,0) {$1$};
+    \node[state] (b2) at (0,0) {$2$};
+    \node[state] (b3) at (1.75,0) {$3$};
+    \draw[edge] (b1) to[bend left=18] node[lab,above] {$1/2$} (b2);
+    \draw[edge] (b2) to[bend left=18] node[lab,below] {$1/4$} (b1);
+    \draw[edge] (b2) to[bend left=18] node[lab,above] {$1/4$} (b3);
+    \draw[edge] (b3) to[bend left=18] node[lab,below] {$1/2$} (b2);
+    \draw[loop] (b1) to[loop left,min distance=9mm] node[lab,left] {$1/2$} (b1);
+    \draw[loop] (b2) to[loop above,min distance=7mm] node[lab,right] {$1/2$} (b2);
+    \draw[loop] (b3) to[loop right,min distance=9mm] node[lab,right] {$1/2$} (b3);
+  \end{scope}
+
+  \begin{axis}[slfig-FIG-P558-01-axis,
+    at={(-6.05cm,-.35cm)},anchor=north west,width=5.1cm,height=2.15cm,
+    xmin=0,xmax=8,ymin=.18,ymax=.82,axis lines=left,
+    xtick={0,2,4,6,8},ytick={.25,.5,.75},
+    tick label style={font=\fontsize{8.6pt}{10pt}\selectfont},label style={font=\fontsize{9.2pt}{11pt}\selectfont},
+    xlabel={$t$},ylabel={$P(X_t=2)$},clip=false]
+    \addplot[draw=SLBlue,line width=.90pt,mark=*,mark size=1.35pt]
+      coordinates {(0,.75)(1,.25)(2,.75)(3,.25)(4,.75)(5,.25)(6,.75)(7,.25)(8,.75)};
+    \addplot[draw=SLGray,line width=.52pt,densely dashed] coordinates {(0,.5)(8,.5)};
+    \node[anchor=south,yshift=.7mm,fill=white,inner sep=.8pt,
+      font=\fontsize{8.8pt}{10.4pt}\selectfont,text=SLBlue] at (axis cs:4,.80) {奇偶振荡};
+  \end{axis}
+  \begin{axis}[slfig-FIG-P558-01-axis,
+    at={(1.25cm,-.35cm)},anchor=north west,width=5.1cm,height=2.15cm,
+    xmin=0,xmax=8,ymin=.18,ymax=.82,axis lines=left,
+    xtick={0,2,4,6,8},ytick={.25,.5,.75},
+    tick label style={font=\fontsize{8.6pt}{10pt}\selectfont},label style={font=\fontsize{9.2pt}{11pt}\selectfont},
+    xlabel={$t$},ylabel={$P(X_t=2)$},clip=false]
+    \addplot[draw=SLTeal,line width=.90pt,mark=*,mark size=1.35pt]
+      coordinates {(0,.75)(1,.375)(2,.5625)(3,.46875)(4,.5156)(5,.4922)(6,.5039)(7,.4980)(8,.5010)};
+    \addplot[draw=SLGray,line width=.52pt,densely dashed] coordinates {(0,.5)(8,.5)};
+    \node[anchor=south,yshift=.7mm,fill=white,inner sep=.8pt,
+      font=\fontsize{8.8pt}{10.4pt}\selectfont,text=SLTeal] at (axis cs:4,.80) {阻尼收敛};
+  \end{axis}
+  \node[draw=SLRuleGray,rounded corners=2pt,fill=SLSoftGray,line width=.55pt,
+    minimum width=95mm,minimum height=7mm,align=center,
+    font=\fontsize{9.2pt}{11pt}\selectfont] at (0,-3.15)
+    {共享平稳分布 $\pi=(1/4,1/2,1/4)$；惰性自环把周期从 $2$ 降为 $1$};
+\end{tikzpicture}
+\caption{三节点路径的简单游走与惰性游走：加入自环保持平稳分布并消除周期振荡}\label{fig:V5-C01-random-walk}
+\end{figure}

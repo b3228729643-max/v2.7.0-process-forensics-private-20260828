@@ -1,0 +1,26 @@
+{
+  "uid": "FIG-P580-01",
+  "schema_revision": 111,
+  "result": "SA2_LOCAL_FAIL_DISCOVERY",
+  "graphic_pairs_total": 300,
+  "graphic_pairs_actually_recomputed": 300,
+  "overlapped_pairs": 26,
+  "zero_overlap_zero_clearance_pairs": 24,
+  "critical_packages_generated": 50,
+  "illegal_overlaps": [
+    {
+      "pair_id": "PAIR_GR004_GR025",
+      "overlap_pixel_count": 11,
+      "reason": "Multiple missing-support hatch/region pixels enter the x-axis arrowhead interior; this is not a mere shared domain endpoint."
+    },
+    {
+      "pair_id": "PAIR_GR020_GR024",
+      "overlap_pixel_count": 2,
+      "reason": "The q_R proposal curve crosses the upper edge of the independent p(4) target marker; numerical proximity does not make the collision intentional."
+    }
+  ],
+  "business_source_modified_in_r2b": false,
+  "business_source_sha256": "74a21ea35bdb09d5c01858e027b96aec844233f6850f6e7a8a9da03524466ef0",
+  "next_round": "STRICT_R2C_SA2_GRAPHIC_PAIR_REPAIR_R95_LOCAL_20260824",
+  "candidate_accepted": false
+}

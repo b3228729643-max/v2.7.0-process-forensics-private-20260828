@@ -1,0 +1,98 @@
+{
+  "package": "FIG-P654-01 STRICT_R4 SA2 narrow source patch build failure",
+  "payload_scope": "all ordinary files recursively except MANIFEST.csv, MANIFEST.json, and WRITE_STOPPED",
+  "payload_file_count": 18,
+  "files": [
+    {
+      "RELATIVE_PATH": "00_BEFORE_IDENTITY.md",
+      "BYTES": 1552,
+      "MTIME_NS": 1787598822739163800
+    },
+    {
+      "RELATIVE_PATH": "01_NARROW_PATCH_DECISION.md",
+      "BYTES": 2054,
+      "MTIME_NS": 1787598823140830000
+    },
+    {
+      "RELATIVE_PATH": "02_EXACT_DIFF.md",
+      "BYTES": 878,
+      "MTIME_NS": 1787598922936235600
+    },
+    {
+      "RELATIVE_PATH": "03_STATIC_VALIDATION.md",
+      "BYTES": 895,
+      "MTIME_NS": 1787598923455776300
+    },
+    {
+      "RELATIVE_PATH": "04_BUILD_SLOT_REQUEST.md",
+      "BYTES": 935,
+      "MTIME_NS": 1787598924379861600
+    },
+    {
+      "RELATIVE_PATH": "05_BUILD_ATTEMPT_01.md",
+      "BYTES": 1778,
+      "MTIME_NS": 1787599454857914100
+    },
+    {
+      "RELATIVE_PATH": "06_RETRY_ROOT_CAUSE.md",
+      "BYTES": 1597,
+      "MTIME_NS": 1787599627115872800
+    },
+    {
+      "RELATIVE_PATH": "build/latexmk.stderr.log",
+      "BYTES": 1161,
+      "MTIME_NS": 1787599390493220700
+    },
+    {
+      "RELATIVE_PATH": "build/latexmk.stdout.log",
+      "BYTES": 3876,
+      "MTIME_NS": 1787599390474813700
+    },
+    {
+      "RELATIVE_PATH": "build/v260_FIG-P654-01_standalone.aux",
+      "BYTES": 32,
+      "MTIME_NS": 1787599381000000000
+    },
+    {
+      "RELATIVE_PATH": "build/v260_FIG-P654-01_standalone.fdb_latexmk",
+      "BYTES": 2988,
+      "MTIME_NS": 1787599390473796000
+    },
+    {
+      "RELATIVE_PATH": "build/v260_FIG-P654-01_standalone.fls",
+      "BYTES": 1352,
+      "MTIME_NS": 1787599390383533300
+    },
+    {
+      "RELATIVE_PATH": "build/v260_FIG-P654-01_standalone.log",
+      "BYTES": 2144,
+      "MTIME_NS": 1787599390406353100
+    },
+    {
+      "RELATIVE_PATH": "MODEL_ROUTE.md",
+      "BYTES": 480,
+      "MTIME_NS": 1787598823522904200
+    },
+    {
+      "RELATIVE_PATH": "PACKAGE_STATUS.json",
+      "BYTES": 928,
+      "MTIME_NS": 1787599702930152300
+    },
+    {
+      "RELATIVE_PATH": "RESULT.txt",
+      "BYTES": 38,
+      "MTIME_NS": 1787599702930152300
+    },
+    {
+      "RELATIVE_PATH": "seal_failure_package.py",
+      "BYTES": 8480,
+      "MTIME_NS": 1787599684866829400
+    },
+    {
+      "RELATIVE_PATH": "TERMINAL_CROSSCHECK.txt",
+      "BYTES": 656,
+      "MTIME_NS": 1787599702954381900
+    }
+  ],
+  "result": "BUILD_FAIL_NO_CANDIDATE_CONTINUE_SA2"
+}

@@ -1,0 +1,8 @@
+relation_id,visible_objects,required_meaning,observed_geometry_or_text,source_or_context_alignment,hard_decision
+SEM-01,"x arrow; label x","x is the original vector from O to X","Solid blue arrow O→X with intact arrowhead and label x","Matches x=p+r in the page proof context",PASS
+SEM-02,"p arrow; p=P_Sx∈S; band S","p is the orthogonal projection and lies in S","Solid teal arrow O→P lies along the subspace band and ends at the foot","Matches p∈S and p=P_Sx in V1-C02 lines 112–143",PASS
+SEM-03,"dashed r arrow; r=x-p∈S^perp","r is the residual from P to X and belongs to S perpendicular","Dashed gray arrow P→X; formula is complete with minus, membership, S, and perpendicular superscript","Matches x=p+r and r∈S^perp in theorem/proof",PASS
+SEM-04,"right-angle marker; r; S","r is orthogonal to S at P","Right-angle marker is located at P between projection direction and residual","Matches the orthogonal certificate used to eliminate the cross term",PASS
+SEM-05,"brace; 最短距离","residual norm is the distance from x to S","Brace spans the residual direction; readable 最短距离 label points to it","Matches the best-approximation theorem and equality only at s=p",PASS
+SEM-06,"||x||^2=||p||^2+||r||^2","Pythagorean identity for orthogonal decomposition","Every norm bar, variable, superscript 2, equals and plus is visible","Follows from p perpendicular r and is consistent with the nearby proof",PASS
+SEM-07,"caption; full diagram","projection lies in S; residual lies in S^perp; dashed residual gives shortest distance","Caption is complete and every asserted relation is shown","Exact semantic agreement with current V1-C02 theorem/proof and post-figure sentence",PASS

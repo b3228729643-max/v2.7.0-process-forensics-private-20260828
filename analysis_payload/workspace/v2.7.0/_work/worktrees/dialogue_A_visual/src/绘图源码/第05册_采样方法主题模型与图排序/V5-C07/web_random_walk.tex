@@ -1,0 +1,81 @@
+% v2.7.0 figure UID: FIG-P715-01
+\tikzset{slfig-FIG-P715-01/.style={font=\fontsize{9.5pt}{11.5pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P715-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.5pt}{11.5pt}\selectfont,align=center},
+  panel/.style={draw=SLRuleGray,line width=0.56pt,rounded corners=3pt},
+  title/.style={font=\fontsize{10.4pt}{12.4pt}\selectfont\bfseries,text=SLDeepBlue,inner sep=0pt},
+  page/.style={circle,draw=SLDeepBlue,fill=SLSoftBlue,line width=0.72pt,minimum size=9mm,inner sep=1pt,font=\fontsize{10.2pt}{12.2pt}\selectfont\bfseries},
+  link/.style={->,draw=SLMidBlue,line width=0.72pt},
+  chosen/.style={->,draw=SLAccentOrange,line width=1.10pt},
+  edge note/.style={font=\fontsize{9.5pt}{11.5pt}\selectfont,inner sep=0pt},
+  formula/.style={font=\fontsize{12pt}{14pt}\selectfont,inner sep=0pt},
+  cell/.style={draw=SLRuleGray,line width=0.48pt,minimum width=6.6mm,minimum height=5.8mm,inner sep=0pt,font=\fontsize{10.2pt}{12.2pt}\selectfont},
+  note/.style={font=\fontsize{9.5pt}{11.5pt}\selectfont,text=SLTextGray,inner sep=0pt},
+  focus/.style={draw=SLAccentOrange,line width=1.00pt,inner sep=0pt},
+  >={Stealth[length=2.15mm,width=1.55mm]},
+  alt={对象—关系—结论：按结点顺序(i,j,h)的单位权网页图含i→j、j→i、j→h、h→i，出度为(1,2,1)；邻接矩阵A按来源列存边，M按出度归一且列和为1，P=M的转置且行和为1，两种状态推进由概率向量转置相连。}]
+
+\useasboundingbox (-7.90,-3.80) rectangle (7.90,3.30);
+\draw[panel] (-7.90,-3.75) rectangle (0.35,3.25);
+\draw[panel] (0.65,-3.75) rectangle (7.90,3.25);
+\node[title] at (-3.78,2.91) {网页图、邻接矩阵与列归一};
+\node[title] at (4.28,2.91) {行随机转置桥};
+
+\node[page] (gi) at (-6.60,1.50) {$i$};
+\node[page] (gj) at (-4.10,1.50) {$j$};
+\node[page] (gh) at (-5.35,0.15) {$h$};
+\draw[chosen] (gj) to[bend right=15]
+  node[edge note,above=1.2mm] {$j\to i$} (gi);
+\draw[link] (gi) to[bend right=15]
+  node[edge note,below=1.2mm] {$i\to j$} (gj);
+\draw[link] (gj) -- (gh);
+\draw[link] (gh) -- (gi);
+
+\node[note] at (-1.70,2.33) {四条边权均为 $1$};
+\node[note] at (-1.70,1.68) {矩阵行、列顺序\\均为 $(i,j,h)$};
+\node[formula] at (-1.70,0.92) {$A_{ij}>0\Longleftrightarrow j\to i$};
+\node[formula] at (-1.70,0.09)
+  {$c_j=\sum_r A_{rj}$\\[-1pt]$(c_i,c_j,c_h)=(1,2,1)$};
+
+\node[formula,anchor=east] at (-6.60,-1.50) {$A=$};
+\matrix (ma) [matrix of nodes,nodes={cell},
+  row sep=-\pgflinewidth,column sep=-\pgflinewidth]
+  at (-5.35,-1.50)
+  {$0$&$1$&$1$\\$1$&$0$&$0$\\$0$&$1$&$0$\\};
+\node[focus,fit=(ma-1-2)] {};
+
+\node[formula,anchor=east] at (-2.72,-1.50) {$M=$};
+\matrix (mm) [matrix of nodes,nodes={cell},
+  row sep=-\pgflinewidth,column sep=-\pgflinewidth]
+  at (-1.48,-1.50)
+  {$0$&$1/2$&$1$\\$1$&$0$&$0$\\$0$&$1/2$&$0$\\};
+\node[focus,fit=(mm-1-2)] {};
+\node[formula] at (-5.35,-2.72) {$M_{:j}=A_{:j}/c_j$};
+\node[formula] at (-1.35,-2.90)
+  {$\boldsymbol1^{\mathsf T}M=\boldsymbol1^{\mathsf T}$};
+\node[formula] at (-3.78,-3.30)
+  {$\boldsymbol p^{(t+1)}=M\boldsymbol p^{(t)}$};
+
+\node[note] at (4.28,2.34) {同一结点顺序 $(i,j,h)$};
+\node[formula,anchor=east] at (2.92,1.15) {$P=$};
+\matrix (mp) [matrix of nodes,nodes={cell},
+  row sep=-\pgflinewidth,column sep=-\pgflinewidth]
+  at (4.28,1.15)
+  {$0$&$1$&$0$\\$1/2$&$0$&$1/2$\\$1$&$0$&$0$\\};
+\node[focus,fit=(mp-2-1)] {};
+\node[formula] at (4.28,-0.22) {$P=M^{\mathsf T}$};
+\node[formula] at (4.28,-0.89) {$P_{ji}=M_{ij}$};
+\node[formula] at (4.28,-1.42)
+  {$=\Pr(X_{t+1}=i\mid X_t=j)$};
+\node[formula] at (4.28,-1.96) {$P\boldsymbol1=\boldsymbol1$};
+\node[formula] at (4.28,-2.50) {$\rho_{t+1}=\rho_tP$};
+\node[formula] at (4.28,-3.28)
+  {$\rho_t=(\boldsymbol p^{(t)})^{\mathsf T}$};
+\end{tikzpicture}
+\caption{列随机约定下的网页有向图，并给出与行随机马尔可夫链约定的显式转置桥。}
+\label{fig:V5-C07-web-random-walk}
+\end{figure}

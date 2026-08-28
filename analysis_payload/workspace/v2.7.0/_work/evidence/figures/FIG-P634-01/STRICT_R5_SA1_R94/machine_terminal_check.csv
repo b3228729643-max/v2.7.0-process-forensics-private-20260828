@@ -1,0 +1,26 @@
+﻿CHECK_ID,EXPECTED,ACTUAL,STATUS,DETAIL
+manifest_row_count,452,452,PASS,Re-read complete_object_manifest.csv from disk.
+manifest_unique_object_ids,452,452,PASS,Every registered object has a unique OBJECT_ID.
+manifest_nonempty_masks,0 zero masks,0,PASS,"MASK_PIXEL_COUNT is positive for every literal, semantic, graphic and background object."
+raw_mask_registry_matches_manifest,452 unique non-empty masks,"452 ids; ids=452, coordinate_count=855967, zero_spans=0, manifest_span_mismatches=0",PASS,"Compressed independent raw masks were re-read, not inferred from the manifest alone."
+semantic_plus_pair_graphic_objects,106 + 39 = 145,106 + 39 = 145,PASS,Pair universe is semantic text plus final graphic/background objects only; literal glyphs are component witnesses.
+foreground_graphic_empty_masks,0,0,PASS,Foreground graphics are separately checked even though all objects must already have a non-empty raw mask.
+unordered_pair_count,10440,10440,PASS,Re-read all unordered rows from the all-pairs CSV.
+unordered_pair_unique_coverage,10440,10440,PASS,No duplicate or missing unordered pair is hidden by repeated IDs.
+after_overlap_copy_identity,f93d50af8e1660d290a433ee447ea7a7e2dfaa1564acd1948bcfe3fd844ff12d,f93d50af8e1660d290a433ee447ea7a7e2dfaa1564acd1948bcfe3fd844ff12d,PASS,The after report is an exact on-disk copy of the exhaustive pair ledger.
+pair_relation_classification_complete,0 blank classifications,0,PASS,"Every pair retains relation, method and disposition fields."
+pair_failure_status_count,1,1,PASS,"Terminal disposition permits an audit FAIL, but must not hide its exact bottom-level count."
+overlap_failure_count,0,0,PASS,No independently separated pair has one or more common foreground pixels.
+clearance_failure_count,1,1,PASS,The one true failure is a non-overlap clearance shortfall.
+failed_pair_identity,EL-035-CARD1_STATE-MATH_SCRIPT + G-CARD1-BORDER,EL-035-CARD1_STATE-MATH_SCRIPT + G-CARD1-BORDER,PASS,"Re-read exact pair identity, zero intersection, and 2.162px raw gap."
+literal_glyph_row_count,307,307,PASS,Every literal glyph audit row is present.
+literal_glyph_failure_count,11,11,PASS,All CJK raw-height failures remain visible in the terminal ledger.
+glyph_failure_evidence_packs,11 complete,"dirs=11, incomplete=0, empty_masks=0",PASS,"Each literal failure has raw 1:1, its own mask, 8x nearest inspection and measurements."
+same_class_ratio_failure_count,23,23,PASS,D failures are re-counted from the complete same-class CSV.
+role_ratio_failure_count,3,3,PASS,E failures are re-counted from the complete matching-script role CSV.
+clip_failure_count,0,0,PASS,Physical page/crop edge audit contains no clipped object.
+critical_failed_pair_evidence_packs,35 dirs; 7 core + 2 overlays each,"dirs=35, missing=0, unreadable_images=0, empty_A_or_B=0, bad_json=0",PASS,"All current critical/failed packs have raw, A/B, intersection, 1:1 context, 8x nearest and machine identity; two overlays are also retained."
+four_view_and_overlay_files,5 readable files,5,PASS,"Terminal reopens 200dpi full page, 300dpi crop/standalone/grayscale, and ELEMENT_ID overlay."
+result_consistency,FAIL → SA2,json=FAIL → SA2; after=FAIL → SA2; report=FAIL → SA2,PASS,"This machine-integrity PASS intentionally validates the truthful audit FAIL disposition, rather than recasting it as a passing audit."
+all_gate_values_consistent_across_json_after_report,all derived gates match,mismatches=0; min_gap_recomputed=2.162,PASS,"Every declared gate was independently recomputed from bottom-level CSVs and matches audit_summary.json, after_visual, and formal report ledger."
+audit_summary_counts_match_disk,all count fields match,mismatches=0,PASS,All audit_summary count fields equal freshly re-read disk records.

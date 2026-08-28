@@ -1,0 +1,15 @@
+pair_id,reviewer,opened_original_1x,opened_overlay_1x,opened_overlay_8x,raw_intersection_px,raw_min_clearance_px,design_connection_px,mask_contamination_px,illegal_overlap_px,decision,note
+PAIR-0343,SA1,true,true,true,0,15,0,0,0,R168_HARD_PASS,Right annotation text has 15px real clearance from its card border.
+PAIR-0391,SA1,true,true,true,0,8,0,0,0,R168_HARD_PASS,Right annotation card has 8px real clearance from panel border.
+PAIR-0394,SA1,true,true,true,42,0,42,0,0,R168_HARD_PASS,First system arrow intentionally departs the K_1 node boundary.
+PAIR-0407,SA1,true,true,true,0,0,0,0,0,R168_HARD_PASS,First system arrow intentionally arrives at K_2; raster contours remain distinct.
+PAIR-0408,SA1,true,true,true,38,0,38,0,0,R168_HARD_PASS,Second system arrow intentionally departs the K_2 node boundary.
+PAIR-0421,SA1,true,true,true,0,3,0,0,0,R168_HARD_PASS,Third system arrow intentionally arrives at K_d with 3px raster clearance.
+PAIR-0472,SA1,true,true,true,0,0,0,0,0,R168_HARD_PASS,Left branch intentionally departs the choice diamond.
+PAIR-0473,SA1,true,true,true,0,0,0,0,0,R168_HARD_PASS,Center branch intentionally departs the choice diamond.
+PAIR-0474,SA1,true,true,true,0,0,0,0,0,R168_HARD_PASS,Right branch intentionally departs the choice diamond.
+PAIR-0478,SA1,true,true,true,0,1,0,0,0,R168_HARD_PASS,Left branch intentionally arrives at K_1 with a 1px raster gap.
+PAIR-0483,SA1,true,true,true,3,0,0,3,0,R168_HARD_PASS,Original and source geometry show left branch targets K_1; 3px candidate is mask colour pickup at K_j corner.
+PAIR-0484,SA1,true,true,true,0,2,0,0,0,R168_HARD_PASS,Center branch intentionally arrives at K_j with a 2px raster gap.
+PAIR-0485,SA1,true,true,true,3,0,0,3,0,R168_HARD_PASS,Original and source geometry show right branch targets K_d; 3px candidate is mask colour pickup at K_j corner.
+PAIR-0489,SA1,true,true,true,0,1,0,0,0,R168_HARD_PASS,Right branch intentionally arrives at K_d with a 1px raster gap.

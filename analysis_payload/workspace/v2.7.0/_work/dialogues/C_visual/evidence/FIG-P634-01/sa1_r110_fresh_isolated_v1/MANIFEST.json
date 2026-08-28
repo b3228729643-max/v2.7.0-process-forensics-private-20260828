@@ -1,0 +1,283 @@
+{
+  "schema": "fresh_isolated_sa1_manifest_v1",
+  "handoff_id": "C-FIG-P634-01-R110-SA1-FRESH-ISOLATED-V1",
+  "uid": "FIG-P634-01",
+  "result": "SA1_PASS_READY_FOR_FRESH_ISOLATED_SA3",
+  "root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P634-01\\sa1_r110_fresh_isolated_v1",
+  "generated_at_utc": "2026-08-26T20:21:09.349247+00:00",
+  "payload_file_count": 42,
+  "payload_total_bytes": 2731119,
+  "directories": [
+    "audit",
+    "crops",
+    "overlays",
+    "render",
+    "rois",
+    "scripts",
+    "tables"
+  ],
+  "entries": [
+    {
+      "path": "audit/manual_close_pair_adjudications.csv",
+      "bytes": 7201,
+      "sha256": "2CE1A5C9ED82866F07DB6E5CEFA5DBBF2EFF921F630E3DE27F8F0334558AA53F",
+      "mtime_utc": "2026-08-26T20:14:09.677189+00:00"
+    },
+    {
+      "path": "audit/manual_glyph_adjudications.csv",
+      "bytes": 1956,
+      "sha256": "106AD22A16A8D7155B0B8F629982B007AD8BF9696BAD5E4E6BFA3082DA641432",
+      "mtime_utc": "2026-08-26T20:15:08.519892+00:00"
+    },
+    {
+      "path": "audit/manual_hard_gate_adjudications.csv",
+      "bytes": 4009,
+      "sha256": "2809DC3BA68914E2C6D6E6D62D12D38AA33C0A112713A82536DF5A6705B6D038",
+      "mtime_utc": "2026-08-26T20:16:45.664649+00:00"
+    },
+    {
+      "path": "audit/manual_object_adjudications.csv",
+      "bytes": 5930,
+      "sha256": "566795EAF1A7C81720F94D4EDFCB5F1C79C074DFEFE36902FBE9AF2DB107F82E",
+      "mtime_utc": "2026-08-26T20:13:23.036851+00:00"
+    },
+    {
+      "path": "audit/manual_roi_adjudications.csv",
+      "bytes": 1083,
+      "sha256": "0200A7B38D98822B19C2E0C4978C3AA5804129138CED24654DFE4E05A337CDBF",
+      "mtime_utc": "2026-08-26T20:15:51.720238+00:00"
+    },
+    {
+      "path": "audit/manual_text_adjudications.csv",
+      "bytes": 4529,
+      "sha256": "6C2DDE14C7A940D82B0427A62192CE0D6B360F86AD39DC8322B9FA571B8D1D50",
+      "mtime_utc": "2026-08-26T20:15:08.518765+00:00"
+    },
+    {
+      "path": "audit/manual_view_adjudications.csv",
+      "bytes": 3101,
+      "sha256": "4E0239A765D368266C8C404198D801938EFE8CD55ACE8C926400C7DD457E25CD",
+      "mtime_utc": "2026-08-26T20:15:51.720238+00:00"
+    },
+    {
+      "path": "audit/semantic_and_integration_review.md",
+      "bytes": 2135,
+      "sha256": "A681ECB535BC7DC7A5EF3A7E1EC405F3BD2F8FC463976A1273D19E1E6118D5D7",
+      "mtime_utc": "2026-08-26T20:16:45.664649+00:00"
+    },
+    {
+      "path": "crops/figure_only_300dpi.png",
+      "bytes": 126075,
+      "sha256": "C2D42E234EC2A3A3BDE4442BCDC1E0813C3FBC3AFEFECBEC01F747B7BBB45146",
+      "mtime_utc": "2026-08-26T20:11:36.035272+00:00"
+    },
+    {
+      "path": "crops/figure_only_grayscale_300dpi.png",
+      "bytes": 58919,
+      "sha256": "5478FA13D26F5B50246574FB2AAA806B1490C01AFCA31ED29150997DC2BD9457",
+      "mtime_utc": "2026-08-26T20:11:36.052400+00:00"
+    },
+    {
+      "path": "crops/figure_with_caption_300dpi.png",
+      "bytes": 185260,
+      "sha256": "B35A2148BC6785D5D49BF53341431FC3C1F75913848FC589212DF69513EC89B2",
+      "mtime_utc": "2026-08-26T20:11:35.998686+00:00"
+    },
+    {
+      "path": "crops/figure_with_caption_grayscale_300dpi.png",
+      "bytes": 85923,
+      "sha256": "8D8DAC1130092416759A99637AF5B96DC6897FD90D28F0E715692A781E5BA2A1",
+      "mtime_utc": "2026-08-26T20:11:36.077134+00:00"
+    },
+    {
+      "path": "HANDOFF.json",
+      "bytes": 2845,
+      "sha256": "1CC7D0CAFF270D12DA87E512DAADD7D6F7B62105CB7884EC1062B2D9D3250082",
+      "mtime_utc": "2026-08-26T20:18:37.849020+00:00"
+    },
+    {
+      "path": "overlays/object_overlay_300dpi.png",
+      "bytes": 190583,
+      "sha256": "52450C362298FA7B6357EAB373720A91EE2A192610BDCA5D94EDDAFF3BB3BFD2",
+      "mtime_utc": "2026-08-26T20:11:46.265985+00:00"
+    },
+    {
+      "path": "overlays/semantic_overlay_300dpi.png",
+      "bytes": 186506,
+      "sha256": "F1AF7768E6DE5E77C318D1BB658A4499BC48D42EA562EE82F8484A004E6C9651",
+      "mtime_utc": "2026-08-26T20:11:46.337159+00:00"
+    },
+    {
+      "path": "overlays/text_measurement_overlay_300dpi.png",
+      "bytes": 181765,
+      "sha256": "02556C4C9F6ADA25C25955D4BDEE6FE104F0A51AF12228351E8CD8AF6BACCEB3",
+      "mtime_utc": "2026-08-26T20:11:46.404855+00:00"
+    },
+    {
+      "path": "PRESEAL_VALIDATION.json",
+      "bytes": 604,
+      "sha256": "650DB054EF4BC823ECDFAB94F88FEB3F8203D5650893EB75F22A7C81DC965FEC",
+      "mtime_utc": "2026-08-26T20:19:30.637878+00:00"
+    },
+    {
+      "path": "render/physical_0684_fullpage_300dpi.png",
+      "bytes": 1042950,
+      "sha256": "C3FBBBFE8BE83D0BBA6A775831D38BDAB298255EB9C62C33C35A3A80B1731329",
+      "mtime_utc": "2026-08-26T19:55:32.849454+00:00"
+    },
+    {
+      "path": "render/physical_0684_fullpage_grayscale_300dpi.png",
+      "bytes": 479556,
+      "sha256": "BD8CBA07FAEE683A189862F18CD852CF8F72B1FF739151EDC44BF4B9A1C0FCA7",
+      "mtime_utc": "2026-08-26T20:11:36.186609+00:00"
+    },
+    {
+      "path": "RESULT_PAYLOAD.json",
+      "bytes": 1543,
+      "sha256": "7E905D9C6638E3833CB7CB01A41FD10A970E479A9BB593A7F3DD3AE4CD01F42F",
+      "mtime_utc": "2026-08-26T20:18:37.852791+00:00"
+    },
+    {
+      "path": "rois/ROI01_order_arrow_native1x.png",
+      "bytes": 3301,
+      "sha256": "AF09A6F0D6576E2400231DC1DE5316966B72164E6150FD4E2F3F3FEF8AA34D6D",
+      "mtime_utc": "2026-08-26T20:11:46.409773+00:00"
+    },
+    {
+      "path": "rois/ROI01_order_arrow_nearest8x.png",
+      "bytes": 8207,
+      "sha256": "06EE450FF6625C705AA73B547AA8C482E9FE6926AD0BCAAB2C12BF7CF79321C4",
+      "mtime_utc": "2026-08-26T20:11:46.421938+00:00"
+    },
+    {
+      "path": "rois/ROI02_updated_slots_native1x.png",
+      "bytes": 1769,
+      "sha256": "2377F539A0FB644820BF7A5D0A19CA97577CDD03E93526B3E96008C536631198",
+      "mtime_utc": "2026-08-26T20:11:46.422991+00:00"
+    },
+    {
+      "path": "rois/ROI02_updated_slots_nearest8x.png",
+      "bytes": 5291,
+      "sha256": "B3984B9CE2CA74E55E5052BB0701BAF959D9CBDC168A0BFE475CAECBCC986B77",
+      "mtime_utc": "2026-08-26T20:11:46.430729+00:00"
+    },
+    {
+      "path": "rois/ROI03_current_old_slots_native1x.png",
+      "bytes": 1394,
+      "sha256": "07AF64EC786FFF4E13A2000DF803D00DEC552172C32FC287AC3617BA33B5E77A",
+      "mtime_utc": "2026-08-26T20:11:46.431910+00:00"
+    },
+    {
+      "path": "rois/ROI03_current_old_slots_nearest8x.png",
+      "bytes": 7086,
+      "sha256": "CC75AB38C757824DB75CB437CD955BCEC6F5F7C97AD1BBC12DAE40EBF8FAB225",
+      "mtime_utc": "2026-08-26T20:11:46.442864+00:00"
+    },
+    {
+      "path": "rois/ROI04_substep_card_native1x.png",
+      "bytes": 2701,
+      "sha256": "47EFC4D9A72637D9B01AAEBD75D15F90E834392510B29F0A044D2C65C69E6BC4",
+      "mtime_utc": "2026-08-26T20:11:46.442864+00:00"
+    },
+    {
+      "path": "rois/ROI04_substep_card_nearest8x.png",
+      "bytes": 6237,
+      "sha256": "D1AC9D9D1C7F6E9CF558320E2A465F8CDC9E61F2AEA7F6FEDD372F20469F811E",
+      "mtime_utc": "2026-08-26T20:11:46.453452+00:00"
+    },
+    {
+      "path": "rois/ROI05_round_end_native1x.png",
+      "bytes": 2881,
+      "sha256": "21A9A22ECC67A467C280DE467DD61BD76EFB31A07936F4797878F3AD317CB53C",
+      "mtime_utc": "2026-08-26T20:11:46.453452+00:00"
+    },
+    {
+      "path": "rois/ROI05_round_end_nearest8x.png",
+      "bytes": 8001,
+      "sha256": "528DA057F11ADA73F0C8F538FCD105EE1F961E0D7BFE0CE07255E43004F2C971",
+      "mtime_utc": "2026-08-26T20:11:46.465438+00:00"
+    },
+    {
+      "path": "rois/ROI06_caption_native1x.png",
+      "bytes": 1191,
+      "sha256": "DDA7EF894FFE33F531A8D299016E76BA77046BEE8176E68215114C9D865AEA38",
+      "mtime_utc": "2026-08-26T20:11:46.465438+00:00"
+    },
+    {
+      "path": "rois/ROI06_caption_nearest8x.png",
+      "bytes": 4004,
+      "sha256": "CD227E3EFB1DAA55D217A3DA97C30FCA9FB4CB1B5A5A684D52501844A59ECF58",
+      "mtime_utc": "2026-08-26T20:11:46.471608+00:00"
+    },
+    {
+      "path": "SA1_REPORT.md",
+      "bytes": 4571,
+      "sha256": "0D0632F2F63295A960E900F09ED4B6E3DB358A47A4DF7A4BDE2D7AC597D55B6B",
+      "mtime_utc": "2026-08-26T20:18:37.849020+00:00"
+    },
+    {
+      "path": "SA1_VISUAL_ACCEPTANCE.md",
+      "bytes": 1188,
+      "sha256": "8782E7586A461A6C01A7EBF03458C3D5442D195711B48D44A3A9E896EE79482F",
+      "mtime_utc": "2026-08-26T20:18:53.760640+00:00"
+    },
+    {
+      "path": "scripts/build_machine_evidence.py",
+      "bytes": 23281,
+      "sha256": "8FAB94272D2CF2A8EDC69B90AB1CE4BF8B7BEE2C41A42BEC8FFD3423159D3E21",
+      "mtime_utc": "2026-08-26T20:11:24.744390+00:00"
+    },
+    {
+      "path": "scripts/finalize_readonly_and_marker.py",
+      "bytes": 1502,
+      "sha256": "CC27AD40B8032506827779B8BFA4E6854FDF11C54137F48FCE8FEF5D7D141C62",
+      "mtime_utc": "2026-08-26T20:20:23.502950+00:00"
+    },
+    {
+      "path": "scripts/seal_manifest.py",
+      "bytes": 2311,
+      "sha256": "1777E086299D6CBEF2A9FA1F0FC286EFE5A8FE958C57CB14C3554E52BBB19AE6",
+      "mtime_utc": "2026-08-26T20:20:23.496538+00:00"
+    },
+    {
+      "path": "tables/all_unordered_pairs_machine.csv",
+      "bytes": 60384,
+      "sha256": "9013F3017B0F9D9FA1E42DB88DFA3064643F86EB4BEBCBBF4E5EA6903FB2A016",
+      "mtime_utc": "2026-08-26T20:11:46.161660+00:00"
+    },
+    {
+      "path": "tables/critical_rois_machine.csv",
+      "bytes": 791,
+      "sha256": "57DC344825C8BD8E6CF54B3F32B74DD921815C9D961ABFEE5439454E7FB7424F",
+      "mtime_utc": "2026-08-26T20:11:46.475797+00:00"
+    },
+    {
+      "path": "tables/glyph_tokens_machine.csv",
+      "bytes": 1541,
+      "sha256": "9FF817B62A14EF74D432A30AF9B6CFF87FE21B7CCAA3CFBA963D53E33E2A43CD",
+      "mtime_utc": "2026-08-26T20:11:46.202441+00:00"
+    },
+    {
+      "path": "tables/object_denominator_machine.csv",
+      "bytes": 3755,
+      "sha256": "55493567AA686D313F61FEFA4F6F2AB75C624CE1BD1925959785F2B02B3B70F8",
+      "mtime_utc": "2026-08-26T20:11:36.192844+00:00"
+    },
+    {
+      "path": "tables/text_elements_machine.csv",
+      "bytes": 7259,
+      "sha256": "F255998E6C87D8BCAC45F1740302D1AD7D834142F80D8BD4D9841E3AEBDB1DEE",
+      "mtime_utc": "2026-08-26T20:11:46.196492+00:00"
+    }
+  ],
+  "exclusions": [
+    {
+      "path": "MANIFEST.json",
+      "reason": "manifest self-hash exclusion"
+    },
+    {
+      "path": "WRITE_STOPPED",
+      "reason": "unique marker is created strictly last after manifest completion"
+    }
+  ]
+}

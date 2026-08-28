@@ -1,0 +1,6 @@
+﻿view_id,path,opened,decision,note
+VIEW_FULL_PAGE_200,views/full_page_200dpi.png,True,PASS,"Opened full physical page 704 at 200dpi: dependency graph sits beneath running head and above caption/reading-order paragraph without collision, cropping, orphaning, or disproportionate page weight."
+VIEW_FIGURE_CROP_300,views/figure_crop_300dpi.png,True,PASS,"Opened PDF-native 300dpi integer crop 1939x625: eight nodes and seven relations follow a left-to-right main chain plus three lower explanatory/application branches; borders, arrows and text remain visually separated."
+VIEW_STANDALONE_300,views/standalone_300dpi.png,True,PASS,"Opened standalone PDF-native crop without resizing: ordinary node text, emphasized formulas, dashed application edge and solid explanatory edges retain a coherent visual hierarchy."
+VIEW_GRAYSCALE_300,views/grayscale_300dpi.png,True,PASS,"Opened grayscale native crop: node borders, solid arrows, thin explanatory connectors and dashed application connector remain distinguishable without relying on hue alone."
+VIEW_MEASUREMENT_OVERLAY_300,views/after_text_measurement_overlay_300dpi.png,True,PASS,Opened the full object bbox overlay: all 95 glyph IDs and 21 drawing IDs map inside the intended figure crop; no target is mapped to caption or adjacent body text.

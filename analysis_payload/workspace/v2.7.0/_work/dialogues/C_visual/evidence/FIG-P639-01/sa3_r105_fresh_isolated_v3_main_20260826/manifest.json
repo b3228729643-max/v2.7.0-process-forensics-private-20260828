@@ -1,0 +1,1100 @@
+{
+  "uid": "FIG-P639-01",
+  "handoff_id": "MAIN-R105-P639-SA3-FRESH-ISOLATED-20260826",
+  "verdict": "PASS",
+  "generated_utc": "2026-08-26T01:13:04.927168Z",
+  "entry_count_excluding_manifest_and_wstop": 218,
+  "expected_final_ordinary_file_count": 220,
+  "entries": [
+    {
+      "path": "HANDOFF.md",
+      "bytes": 1107,
+      "sha256": "17B44FFB332CF7BC249E033829E84CA0852242069D87143356002B460D112986"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 2048,
+      "sha256": "BDCF56F938822EB024A7A2A63CAE7E6629EEA83EA4200ED6CA42BE956F153716"
+    },
+    {
+      "path": "RESULT.json",
+      "bytes": 949,
+      "sha256": "DB282A364740FAF72B912F9A2F5048856B05E286CAEF7FD54A51CD22BF6FFEF5"
+    },
+    {
+      "path": "RESULT.txt",
+      "bytes": 198,
+      "sha256": "50EDB050F9469CC432E91B756B0ADCAFC84D3DC906FDC1E2444CFEF458A8F6B4"
+    },
+    {
+      "path": "after_font_audit.csv",
+      "bytes": 1030,
+      "sha256": "C10F5B17EC15DC99ECD6E2AE50336FB973452E86D02008156387BEFEB319CEB5"
+    },
+    {
+      "path": "after_overlap_report.csv",
+      "bytes": 363333,
+      "sha256": "3E247D9BE272437D80634741FDDB10192A6A6C5268D83CE354F1B4E35A1EA0BA"
+    },
+    {
+      "path": "after_pixel_measurements.csv",
+      "bytes": 12659,
+      "sha256": "90F514593804554689F7B9D5A6D7892BFA0F762E2E4803269A31B2BD9644E1A4"
+    },
+    {
+      "path": "after_text_measurement_overlay_300dpi.png",
+      "bytes": 93183,
+      "sha256": "0713D9880FBF3AFF4AFE342DA1F36123DA096DB550D51885C5611B761FD2335F"
+    },
+    {
+      "path": "after_visual_acceptance.md",
+      "bytes": 3255,
+      "sha256": "F9DD5C24BE052DDEC43B073895600B0B810FB2F7C3392D2BF0D48C621D931F24"
+    },
+    {
+      "path": "analyze_fresh_sa3.py",
+      "bytes": 21892,
+      "sha256": "3EDAF5CBFBD1427BB171368AF799CD59B3AF68CAB094E83005836BB5F4EF5EBC"
+    },
+    {
+      "path": "contact_sheets/glyph_contact_sheet_001.png",
+      "bytes": 72580,
+      "sha256": "0AC83FEFDF3E34341405626F4861D17D3FB7DD559BF060CBB2175C49A6D810E4"
+    },
+    {
+      "path": "contact_sheets/glyph_contact_sheet_002.png",
+      "bytes": 73492,
+      "sha256": "B6F1EFFC49260189B74DE1A447151823FCC6A992019852937989101088E643AF"
+    },
+    {
+      "path": "contact_sheets/glyph_contact_sheet_003.png",
+      "bytes": 77742,
+      "sha256": "EFDC74DA05107328ECF56E435396AE037422EB16A5CCFAD3076B378C23C13EBE"
+    },
+    {
+      "path": "contact_sheets/glyph_contact_sheet_004.png",
+      "bytes": 85856,
+      "sha256": "DAF0B6E18848184212EEEE345197044477A4B9DC7506FDAB860600DA82676274"
+    },
+    {
+      "path": "contact_sheets/glyph_contact_sheet_005.png",
+      "bytes": 49065,
+      "sha256": "24676BAF74AF27AD3375066F5233860340AB4E1DD809D73AB620D7B705CC3219"
+    },
+    {
+      "path": "figure_crop_300dpi.png",
+      "bytes": 78516,
+      "sha256": "F6CA316113BBD1A07742B82274F7805407EA73809D26AC29F2A8E1BBA76B844E"
+    },
+    {
+      "path": "full_page_200dpi.png",
+      "bytes": 302058,
+      "sha256": "C728EFAFB860AEDD68710755DD506FF86F818AAE0EB6C5E36A7F9BE90F1A0CCA"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_001_contact.png",
+      "bytes": 3958,
+      "sha256": "AC01D0E4ADC20B1D6C49AE7FBBAC35F2BCB565BB46532CB61E41869858118538"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_002_contact.png",
+      "bytes": 5006,
+      "sha256": "466AB52BC5478B6320BC09AE61C177998E66C99131D5D96DE861BFCF6D193641"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_003_contact.png",
+      "bytes": 4023,
+      "sha256": "2178B8F778E1533E66689CD479087B427F690A97EE98F7EBA07B29223C2212B1"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_004_contact.png",
+      "bytes": 4316,
+      "sha256": "BDCBBAC8B3E2CE1456D0F6D303CE9EF2476F6FE8956AFBCFC8820158452E19C4"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_005_contact.png",
+      "bytes": 5093,
+      "sha256": "F9482C99AACEE6B7B2B033F7F03AD0D409075AAE229B4B830A53F30CCC85F815"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_006_contact.png",
+      "bytes": 4277,
+      "sha256": "B652623975F89F4F55A6150742A4A11EF2D8A6184CFCA3A365A463CB228AD2A5"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_007_contact.png",
+      "bytes": 4995,
+      "sha256": "427627E2D9486BA777CB7D79FDDD2A1B79BBCCC8B0061AE5EB5B6AB979942936"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_008_contact.png",
+      "bytes": 4949,
+      "sha256": "14C1BEEAC233BC8C47C1724CBA85B132354C6C6D37A14F7646E91B1430C5D176"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_009_contact.png",
+      "bytes": 5106,
+      "sha256": "7590FE40EB18D8FEC92742800F158397DB22B840E934329AD08AEC6921954712"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_010_contact.png",
+      "bytes": 5009,
+      "sha256": "AD712793C8992AE48BAED60EAB97A3772AA9C5EA843197D43360D4DDA6FD496C"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_011_contact.png",
+      "bytes": 4154,
+      "sha256": "59E34467824F8A9C109FB0FEFB7CBB76F800BA77FF34D1141A3D75E512204190"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_012_contact.png",
+      "bytes": 5145,
+      "sha256": "39BA7E9FEC91AAF34794BFAAE2E0A4F0E4B25155D10C21386930A54D1E179264"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_013_contact.png",
+      "bytes": 4901,
+      "sha256": "07ADE3FB0C1722A8C994CE2491351005C1F79371B84BC9E2AF99DC9CC7B36650"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_014_contact.png",
+      "bytes": 5046,
+      "sha256": "6C3872A195071A3EE1D93E986630A093EA9A9FCE2A65A27E7157FC1D59F890AD"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_015_contact.png",
+      "bytes": 4273,
+      "sha256": "E0351BF546726EE80A76E63F7CF264469C7F112CD3BEE8A3F4B67FF29AD96DFC"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_016_contact.png",
+      "bytes": 4675,
+      "sha256": "F0B814AC4904AFCC19C32DB210730C291DC90D38DA188778E0E3C9174FAACD78"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_017_contact.png",
+      "bytes": 5738,
+      "sha256": "72901E275B48E4F4088D400039EE7923682ED781010C68899D62CF53519F77FE"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_018_contact.png",
+      "bytes": 4812,
+      "sha256": "9B8F0FF0779B30BCFF1074635F262E7186780F0C80EDB72C4314067298BA2283"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_019_contact.png",
+      "bytes": 5238,
+      "sha256": "4F6C7BED1363B9B677155B290CE4DBD5237D3E6C6A10D34061E83FBBB7314422"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_020_contact.png",
+      "bytes": 4107,
+      "sha256": "884943DB5132FF93B57A0433F102F8A482B9C5E073609851D390C11371BA5E1C"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_021_contact.png",
+      "bytes": 4789,
+      "sha256": "AD71188DCF082A2576CE6AC5F27663A6943EECFE12292CA55FB87F12DCEE036B"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_022_contact.png",
+      "bytes": 4840,
+      "sha256": "E29FF9FC1B4B550F0AAB73DBAEF423090C92DCC6422DD0D826AB6E81EDDABB0F"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_023_contact.png",
+      "bytes": 4772,
+      "sha256": "0629AEAD4FED19DBDDED49980627F5DEF5205CCA2AC39F1E7AA8E560A709A784"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_024_contact.png",
+      "bytes": 5080,
+      "sha256": "E4A1E0B1335980780697319A41A82EFCF26205B9F77A80A0BE02B85EE3191FE0"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_025_contact.png",
+      "bytes": 4291,
+      "sha256": "B0E8EC7D06C186ED852F619647587889487525590B07773D4153DA351F67E154"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_026_contact.png",
+      "bytes": 5222,
+      "sha256": "078A51215914CFAE6BC6980619A6AA6437AC38F2CDB63CCF8C7CC88F6B0083CB"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_027_contact.png",
+      "bytes": 5075,
+      "sha256": "5F3383DDBD907BF9B2F0F54360344BA66AC95A3F8AF43B92019838471454D393"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_028_contact.png",
+      "bytes": 4894,
+      "sha256": "F6B8A8F07F7BB18BD9399BF76D2C031F84ACC98FD7630E5BED458EBC7241395C"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_029_contact.png",
+      "bytes": 4766,
+      "sha256": "A59F3FDB8AD433D6783BD1371B4C5F0FAB7DCFE2A3D8F93E6A731DE79D131FFA"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_030_contact.png",
+      "bytes": 4227,
+      "sha256": "2C80802C0D187BEF576F6940489DEF4BCA72D6069C2592AB901B58BEB95AD352"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_031_contact.png",
+      "bytes": 3819,
+      "sha256": "7F7A7D7162648976961D196A9BA13433808C29891EB83E3564F17E1F8912CB64"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_032_contact.png",
+      "bytes": 4080,
+      "sha256": "BCCF8B6503055A5F412BCDC757909A6DA5F27C2AF3356A6AA8C34B9C10276CF1"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_033_contact.png",
+      "bytes": 4762,
+      "sha256": "35A088D0846A909A9D967DBB103F87250BA55E87AF0840AB5D42549A48996155"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_034_contact.png",
+      "bytes": 4904,
+      "sha256": "FACE8B71143C438D18808065994E1E75504CDCCBA234B9F7C41248B56BCDF577"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_035_contact.png",
+      "bytes": 5894,
+      "sha256": "D1841ACEF7A7D7995E002A3449C4A263DEDED620D060897A2956BCD6868B2765"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_036_contact.png",
+      "bytes": 5004,
+      "sha256": "290BB333A38F8A56F0C16606FBC33AB94E1F5437E188E52ED7C1023D2BCC0515"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_037_contact.png",
+      "bytes": 4992,
+      "sha256": "6A3011FCFE8B23FA6D0137DBE978EA30508E02650D8F2A98BBBCE334CF2D358E"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_038_contact.png",
+      "bytes": 4401,
+      "sha256": "2792984AEFC9C70C4664C1EA2BA57920ABEC5AC9638FFE11A040666CCD60B9D5"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_039_contact.png",
+      "bytes": 5384,
+      "sha256": "782989721221566C601D26D3437B46257F5CE8E36DDDA033A885AF282E3ABB86"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_040_contact.png",
+      "bytes": 5180,
+      "sha256": "EA0FED841D82863E0FA06DBE59C83006E4D890AE85C6B71374565A428C30BC0D"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_041_contact.png",
+      "bytes": 4746,
+      "sha256": "C950AA3AAE64BBFD8D0B56305E4FADDF950CE7E2E04B9CBE522C03540C81A3AB"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_042_contact.png",
+      "bytes": 5046,
+      "sha256": "1CBF8C61CD223D4DD4AE6CE9D669A69ABC6E2CDF6CC7342D188643ED59FF214B"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_043_contact.png",
+      "bytes": 4361,
+      "sha256": "49DADF008D579A978607BD8CA23C562925D8A6919A71DE5D34C0068EF709D989"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_044_contact.png",
+      "bytes": 5286,
+      "sha256": "D9EAF2616EE9F9C8525BA11D40E1A060286A49C33D23854666500449C17E7057"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_045_contact.png",
+      "bytes": 5032,
+      "sha256": "2A36DBCC90F52B6DF5D45B01A2CE15F1FE91AE6CD6B67F4D2E33EC67A9EAE86B"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_046_contact.png",
+      "bytes": 4954,
+      "sha256": "21E5D3BA7B45B713C39DFD4291899E88550490F9343EC31216147A3D34B9D8BF"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_047_contact.png",
+      "bytes": 4926,
+      "sha256": "444585C0EFD6E43892120D5448EA41AD4F781A8BF4EA709B94BF493C07AC7179"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_048_contact.png",
+      "bytes": 5072,
+      "sha256": "931D6871AEEAC5B36ABE6BF9536AF25CD9A432045CCCF0AAFFE72499E70967A5"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_049_contact.png",
+      "bytes": 4006,
+      "sha256": "061A07156D42B463D6F0B131BB926775DD92F4D0E636556721079D2C30E6F126"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_050_contact.png",
+      "bytes": 4152,
+      "sha256": "EEFFB345550775AE5D02FCB1C347E2356ACBBD21B20FB7E5B9F9D66646653A91"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_051_contact.png",
+      "bytes": 5392,
+      "sha256": "BFF015C7B38C46FB3507977C80A0A0D22775041D594496576472D38C390DCF6B"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_052_contact.png",
+      "bytes": 5179,
+      "sha256": "C52AEA1CE98FCCF278A2239F834DC8AD66A33B89F7BC1242457A9075D537680C"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_053_contact.png",
+      "bytes": 5586,
+      "sha256": "7B584C6A761E4F6F98B2694581101CF39EC10C0B1FD2A53DF8488CAB70F23F19"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_054_contact.png",
+      "bytes": 5197,
+      "sha256": "3A86D29C6250FD94B5D155000B5A1AD845A00F64E45A77C0E93D04EEF618F5AC"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_055_contact.png",
+      "bytes": 5993,
+      "sha256": "3D7BE45F3C07BB107DA7EE363B2FCD2A137512F012AA8E99C56D676A942F625F"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_056_contact.png",
+      "bytes": 6147,
+      "sha256": "E26D66C9E2FA0C8800E07B67D2561800DAB5F0A0D2A8C3AE1A6F6C7AC8BC6843"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_057_contact.png",
+      "bytes": 5029,
+      "sha256": "9F07DB8F8DF0A5530D29F2D9F7836540EDC4F902B1EEDA0408C3C7F91BA22D42"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_058_contact.png",
+      "bytes": 5214,
+      "sha256": "E6E248E3D6496D1FB0E5DC7F0DBBFE35DE7AFC55E597B1AB0C992AE20DFBAF67"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_059_contact.png",
+      "bytes": 5460,
+      "sha256": "0BAB08AC933F8CAF0EB0A333426545B267AE316F12B5F5B60A9FC53F2C33F595"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_060_contact.png",
+      "bytes": 4837,
+      "sha256": "66AE2F3EA58762B0CB5E5BEBE4446BDCC7B226A9EF83DCD1864C5C30CBD8A818"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_061_contact.png",
+      "bytes": 6839,
+      "sha256": "ABECB7DB44506792D6C4CEBDB3A21A5B763A2FEC00F23A485D16484DCDC9B9BC"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_062_contact.png",
+      "bytes": 6107,
+      "sha256": "C3CD5CF8A01EC553B2EB99FB9D99DF4BEAFC0DAD2508326C8A6A09DE0AA2C71D"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_063_contact.png",
+      "bytes": 7032,
+      "sha256": "A14B5947E9BEBA3257672705A86350C8BE8C2D426EEFD21E55B7215FE0F66FC0"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_064_contact.png",
+      "bytes": 5822,
+      "sha256": "BE6DC628E74BE34CFD1F6A9062DCDBE5889181804F0355E6BF792C00EA48F7C9"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_065_contact.png",
+      "bytes": 4245,
+      "sha256": "61CB0AA6D30E6619E24683A0D98514246C71D5DF14498E5646AF89DF39E9D2DD"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_066_contact.png",
+      "bytes": 6511,
+      "sha256": "9243BB2AD78DFC6487608EE6237F90ED741AA5D4E0D2CC6FE50BE6228B833A4D"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_067_contact.png",
+      "bytes": 6743,
+      "sha256": "8D9166ECA724327463C020B35F392792AEA7B6BE6B79FA2A191077DF5BDDE9AD"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_068_contact.png",
+      "bytes": 7289,
+      "sha256": "B5169C95C895594E56B52DB303D2E6EB0630C05AA11A3D1DEC0246C99E33D6E5"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_069_contact.png",
+      "bytes": 7001,
+      "sha256": "412C45995ED676966CC6667270F8A7A66C5AA067B92F3B83B6D2C800CE8C2F40"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_070_contact.png",
+      "bytes": 4694,
+      "sha256": "96441BAF2F2557F91E48558082DD4C497B41A6A74680A255F9632AD0741A071E"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_071_contact.png",
+      "bytes": 7041,
+      "sha256": "FC076564734B867F1BD05B11BEBD4B28E445183EFF19BEC3EF8F7A5B36978552"
+    },
+    {
+      "path": "glyph_contacts/GLYPH_072_contact.png",
+      "bytes": 6559,
+      "sha256": "256B5B3C6F0E0F5554995E9AF7280B56B6F7FC740451225694FF432E822B007C"
+    },
+    {
+      "path": "grayscale_300dpi.png",
+      "bytes": 74703,
+      "sha256": "90AD4AD386C4ADBB0810D7B2C8B922CD8A03EF8EE728A8477978BD870F0784E1"
+    },
+    {
+      "path": "machine_final_check.json",
+      "bytes": 2351,
+      "sha256": "A0B8656015A0628878C606C77850B7F18EAFE324CF959C227C03377C597D4927"
+    },
+    {
+      "path": "machine_summary.json",
+      "bytes": 1089,
+      "sha256": "87CA0E4B341B8C0A86A394E8B3C10A8634097743A6A04FDB57CB70A3470C2EB6"
+    },
+    {
+      "path": "manual_glyph_contact_review.csv",
+      "bytes": 9956,
+      "sha256": "C8CD0EBA38993BB8A9FA1ED714A9BDE288C55ADF7A208155E0FDF5B2B79F1ADC"
+    },
+    {
+      "path": "manual_pair_roi_review.csv",
+      "bytes": 972,
+      "sha256": "EA45D69CF190B7D44787391250336EE6E428CA50134222B95AA55E9DD644EB0A"
+    },
+    {
+      "path": "manual_visual_review.md",
+      "bytes": 2907,
+      "sha256": "F3F8C6C08C41A060BF3238CCBA84DAEAF8A707326F3E9DACDDC5318AA056BB76"
+    },
+    {
+      "path": "math_rule_and_drawing_ledger.csv",
+      "bytes": 1227,
+      "sha256": "1415A6365C7DC0E8906EC88448250782EA04B23B144875C089AB9486522BC074"
+    },
+    {
+      "path": "object_denominator_freeze.md",
+      "bytes": 1356,
+      "sha256": "04CC810B66BA208E0140969A0108E3CD1B2458D2617F3536485B3D023D4C7D61"
+    },
+    {
+      "path": "object_manifest.csv",
+      "bytes": 22045,
+      "sha256": "620228AF2EEB87328B74688F21A8744AC9690E4FEAC4CEEDE8A330F17EEFD32D"
+    },
+    {
+      "path": "object_manifest.json",
+      "bytes": 78351,
+      "sha256": "53325DFA1363F468B102DFF67D45F7FE075E2224E6C1CBBB11C6F817C8372C0F"
+    },
+    {
+      "path": "object_masks/GFX_BLUE_CURVE.png",
+      "bytes": 5707,
+      "sha256": "ED0C3B40D324A93723A77BEF34245BD9B443D5A90723858BF1CD2ED68A2C1B7C"
+    },
+    {
+      "path": "object_masks/GFX_BLUE_GUIDE.png",
+      "bytes": 3112,
+      "sha256": "708389836D60DD231AEAF132AB7AB79404CBA3DFB8741B7EA62E6D6EF7E0CE13"
+    },
+    {
+      "path": "object_masks/GFX_GOLD_CURVE.png",
+      "bytes": 5240,
+      "sha256": "668936EB9B3F15A116BA14A694FA6A7B895C6887F5AD3AC367E1BDBEAA717BCA"
+    },
+    {
+      "path": "object_masks/GFX_GOLD_GUIDE.png",
+      "bytes": 2979,
+      "sha256": "3B048C2C5AAD8D040B76F1984C0F6A71B3F0A3E52E042EBFBB1C4793F6825695"
+    },
+    {
+      "path": "object_masks/GFX_NOTE_BORDER.png",
+      "bytes": 2887,
+      "sha256": "846D3659FFC5FA6077277D5D516B0034244A7584A29B720ED3F3CB401077ECAD"
+    },
+    {
+      "path": "object_masks/GFX_TICKS.png",
+      "bytes": 2871,
+      "sha256": "4D072B862DEFCF33B7D57B4A4B90CDE6A28F2C30243F8027B1C267CB01038A70"
+    },
+    {
+      "path": "object_masks/GFX_X_AXIS.png",
+      "bytes": 2840,
+      "sha256": "710E52D1A6CE8F2253412C4F6C6A9F94B0F7651F8DDE942250BF19D6CE23A84B"
+    },
+    {
+      "path": "object_masks/GFX_Y_AXIS.png",
+      "bytes": 2867,
+      "sha256": "E8720EEF48005DAB839EE52B9D931EA31AD21A2A885C633235B30277C2157F73"
+    },
+    {
+      "path": "object_masks/GLYPH_001.png",
+      "bytes": 2800,
+      "sha256": "5E85723128B06AA316C7BAB26E8AA08E7F981AFE4F32B38B6ED0C4EDC1D79A10"
+    },
+    {
+      "path": "object_masks/GLYPH_002.png",
+      "bytes": 2900,
+      "sha256": "F46D4980D9506AC738799B3C53307AE7CA53A0D7ED8C28254750FF43024054FF"
+    },
+    {
+      "path": "object_masks/GLYPH_003.png",
+      "bytes": 2802,
+      "sha256": "81E4BB86E141ED6AE5C5735499A4AF001F6F6E0A206D50754B60A93B0D758ED0"
+    },
+    {
+      "path": "object_masks/GLYPH_004.png",
+      "bytes": 2827,
+      "sha256": "681CB6E7859AE116559AE9399A0A7A41AD93404563E839947245EC6F58B62705"
+    },
+    {
+      "path": "object_masks/GLYPH_005.png",
+      "bytes": 2901,
+      "sha256": "648D49363E443C4A57F1D80817E692929467C47354435AF3833664497AF268B5"
+    },
+    {
+      "path": "object_masks/GLYPH_006.png",
+      "bytes": 2840,
+      "sha256": "71D91A90CF2C3B9CBB41238CCA867C5233069325D7DABA6BFE1F73A12437952D"
+    },
+    {
+      "path": "object_masks/GLYPH_007.png",
+      "bytes": 2889,
+      "sha256": "CDEAE1D13DEF25E3777B002F261CD1DAF5DA7202CAEC895E6F754E68E761315D"
+    },
+    {
+      "path": "object_masks/GLYPH_008.png",
+      "bytes": 2907,
+      "sha256": "7C5F6F341271EC8F3A1426538699C5139D8070458F75A590E523C1C230289A0E"
+    },
+    {
+      "path": "object_masks/GLYPH_009.png",
+      "bytes": 2881,
+      "sha256": "453161A4F2E679715BC73C2ECD617A09B1E2C92466B542E5C225AA51FDF6D56C"
+    },
+    {
+      "path": "object_masks/GLYPH_010.png",
+      "bytes": 2877,
+      "sha256": "F4B176EB4EB1C90D5204BC3D43B7D254362DCB2EFFD1C477801357DCBDF27890"
+    },
+    {
+      "path": "object_masks/GLYPH_011.png",
+      "bytes": 2813,
+      "sha256": "42025704A899C6EABAC696CD115D30E881A058FD7AF1CEC13413F314DED46D33"
+    },
+    {
+      "path": "object_masks/GLYPH_012.png",
+      "bytes": 2877,
+      "sha256": "55DF0FF72D6EF3BB1B4B2D02091A0FB56627D5E99481258CDEE41F2185BCA743"
+    },
+    {
+      "path": "object_masks/GLYPH_013.png",
+      "bytes": 2879,
+      "sha256": "4AE67CB35BBEB03CD8C3F94692CFB7FAA120188945FBB87967997470B837AF4A"
+    },
+    {
+      "path": "object_masks/GLYPH_014.png",
+      "bytes": 2875,
+      "sha256": "1D728BFA5A4CF3792C159565B4037FAA074382D996ED6678B585198C17B04D6A"
+    },
+    {
+      "path": "object_masks/GLYPH_015.png",
+      "bytes": 2808,
+      "sha256": "A5C821F44421F7F232FA3B649F26EC319369B9051429C9141EEDD71B0A8B30B3"
+    },
+    {
+      "path": "object_masks/GLYPH_016.png",
+      "bytes": 2879,
+      "sha256": "9E50AB1B732D31BB4B312D13B7DDD646CABFFA2844BAE0A6D75ABC019C02D352"
+    },
+    {
+      "path": "object_masks/GLYPH_017.png",
+      "bytes": 2927,
+      "sha256": "3A1497326074D24922FFC7C29579E94DC9CED9792FE66D77E937AFC30EBD0BF5"
+    },
+    {
+      "path": "object_masks/GLYPH_018.png",
+      "bytes": 2862,
+      "sha256": "E3662C1CA73415E07959E6C5D241DAF1DC0AC318A2E67F57723283A91D6F398E"
+    },
+    {
+      "path": "object_masks/GLYPH_019.png",
+      "bytes": 2909,
+      "sha256": "1BDDAEB3B2E8D3801094FC02307A7EAEDBCDD7D93CF336AAD4E7E949DA7CD1A6"
+    },
+    {
+      "path": "object_masks/GLYPH_020.png",
+      "bytes": 2821,
+      "sha256": "59401ADDB047DA8541BD7EB6B69457A83999793C8048E9CBC805971AF55FEEFE"
+    },
+    {
+      "path": "object_masks/GLYPH_021.png",
+      "bytes": 2867,
+      "sha256": "8E53A68E37BDC76DAF22A2842D89D4D20AD6C642ADBBCEBE4A5FC0A56E651817"
+    },
+    {
+      "path": "object_masks/GLYPH_022.png",
+      "bytes": 2888,
+      "sha256": "2A5D44D17E99C83E76F15FFC1D55899331407FAF9E8BBCC4268830AA1005F666"
+    },
+    {
+      "path": "object_masks/GLYPH_023.png",
+      "bytes": 2841,
+      "sha256": "EAF67460F09001BE2D12F670A9D8A094FF3AED634D64BAF50F0A8C78F3754F8C"
+    },
+    {
+      "path": "object_masks/GLYPH_024.png",
+      "bytes": 2898,
+      "sha256": "30FC9BCA6AC059383C95C4DF9FB47057800CBD308FDDC5765911A41AB913AC38"
+    },
+    {
+      "path": "object_masks/GLYPH_025.png",
+      "bytes": 2815,
+      "sha256": "62CB05508C178A8370F74E174992D7A7F04732AE1CB87D1B7588CEF9F0834651"
+    },
+    {
+      "path": "object_masks/GLYPH_026.png",
+      "bytes": 2900,
+      "sha256": "CDC2104AD903256954606A333EEC68C624E90BD146A8FBDCF4C54B9A0762AF46"
+    },
+    {
+      "path": "object_masks/GLYPH_027.png",
+      "bytes": 2861,
+      "sha256": "A59DF9D2556C4D6A018D8992221F2E1944A5E992FFAD207F79DEAA91072F1092"
+    },
+    {
+      "path": "object_masks/GLYPH_028.png",
+      "bytes": 2868,
+      "sha256": "F122D4E0974613B5D9D78AF50F502101E90C454541C497FBFD6A4B1571238D64"
+    },
+    {
+      "path": "object_masks/GLYPH_029.png",
+      "bytes": 2899,
+      "sha256": "A01E7A1A585CC2081593457A59612409B82C64AF32810F4C732C519EF0E8B3CD"
+    },
+    {
+      "path": "object_masks/GLYPH_030.png",
+      "bytes": 2823,
+      "sha256": "D5E17AF73091C21D645EABFC165A98FB1667A7490841C58FFF6B11C198571E45"
+    },
+    {
+      "path": "object_masks/GLYPH_031.png",
+      "bytes": 2816,
+      "sha256": "62044A145350BB729BBCAF9DACF56FCD179C3F9D39046773ADB9B3401408BC99"
+    },
+    {
+      "path": "object_masks/GLYPH_032.png",
+      "bytes": 2821,
+      "sha256": "D7E4532C7FFA8BF53F0616BEB36BF307EB52FA55A363CF2259D032ACA10252B8"
+    },
+    {
+      "path": "object_masks/GLYPH_033.png",
+      "bytes": 2868,
+      "sha256": "6059A8D2CDCC286428081D20A850A605E2D6C070F3AF67A629035354051A3A5C"
+    },
+    {
+      "path": "object_masks/GLYPH_034.png",
+      "bytes": 2884,
+      "sha256": "4EF4B5C9EA1723A5CE3362FCE2276454C931534D03AE8FFFB474BA1DBB8E321B"
+    },
+    {
+      "path": "object_masks/GLYPH_035.png",
+      "bytes": 2926,
+      "sha256": "BDD2B47BEA8455599F91DF17A4C70A50037AA63135FD5B1E1221898784DC52E1"
+    },
+    {
+      "path": "object_masks/GLYPH_036.png",
+      "bytes": 2869,
+      "sha256": "FC1313BE69AE023E4027087E94432796A5B3C4EF6E89979B7A91DB7247D20357"
+    },
+    {
+      "path": "object_masks/GLYPH_037.png",
+      "bytes": 2903,
+      "sha256": "B2204F5223083BAEAAB42CD610AD77E5DB50A2594DF3AF99E02323D9C6E50C70"
+    },
+    {
+      "path": "object_masks/GLYPH_038.png",
+      "bytes": 2821,
+      "sha256": "52839AE6684DF425776C86733B63042CEAB6A3009C0C49A86F8D6F8DFAB0AA85"
+    },
+    {
+      "path": "object_masks/GLYPH_039.png",
+      "bytes": 2906,
+      "sha256": "B0A9D7EE173514117366CCE811A5FB5CF6F375442C1A733ADE5116A0C2E74D1B"
+    },
+    {
+      "path": "object_masks/GLYPH_040.png",
+      "bytes": 2894,
+      "sha256": "91979B851AB1666F483FB332BAD1521E34A9E9497154ECED0BD0A2057AD0B8F1"
+    },
+    {
+      "path": "object_masks/GLYPH_041.png",
+      "bytes": 2832,
+      "sha256": "4F78DB328CED075B6E2B46823BC8DAB51F49D580BB81DEE705BBDB4464AF52C8"
+    },
+    {
+      "path": "object_masks/GLYPH_042.png",
+      "bytes": 2898,
+      "sha256": "1AA2C8F0A7BE0D9C41C764DFCAE2C5595E87E07BEB057F525255FCC0AFFABDAE"
+    },
+    {
+      "path": "object_masks/GLYPH_043.png",
+      "bytes": 2819,
+      "sha256": "E3B19B0059E4E5715B4C6E9DD1C4F786834FD3666A569540D018A4DCA7334CE5"
+    },
+    {
+      "path": "object_masks/GLYPH_044.png",
+      "bytes": 2899,
+      "sha256": "FAA1A1ADB9B59CC543B4C31C13218FDB6549CBA68DF80386505DD215C3761765"
+    },
+    {
+      "path": "object_masks/GLYPH_045.png",
+      "bytes": 2860,
+      "sha256": "55ED56C47B5C8A44360B87E9A5CAE226B15680703CAA50A0F9FEC87EAA166FBD"
+    },
+    {
+      "path": "object_masks/GLYPH_046.png",
+      "bytes": 2867,
+      "sha256": "432198B2B900AA71786A0B2C691FB428BA7EADFA8819DC56316BD72726FEED47"
+    },
+    {
+      "path": "object_masks/GLYPH_047.png",
+      "bytes": 2916,
+      "sha256": "3CD98EEA746853909AC47E2F596C1A72BF89C5DD689005C2D2F18FF49E714FC9"
+    },
+    {
+      "path": "object_masks/GLYPH_048.png",
+      "bytes": 2881,
+      "sha256": "CC13E7D938095D2D568ABCBB1C4B4277A221789C4A75050DEC4B6887A2A0487B"
+    },
+    {
+      "path": "object_masks/GLYPH_049.png",
+      "bytes": 2816,
+      "sha256": "5C55A4FEC9524A28C55452A7B0010E028D7C34433E9C2694FF9CF0693EE04FCB"
+    },
+    {
+      "path": "object_masks/GLYPH_050.png",
+      "bytes": 2818,
+      "sha256": "E929F4131717057C8DB7563085C3C0DE1FB43268B187525F4C502946D50B89EC"
+    },
+    {
+      "path": "object_masks/GLYPH_051.png",
+      "bytes": 2889,
+      "sha256": "3FB917C3D754A0EFF1B756036A0742254B7506BB9DC85FD1D052CB9FFE896AB6"
+    },
+    {
+      "path": "object_masks/GLYPH_052.png",
+      "bytes": 2897,
+      "sha256": "7821D09F5BB862264D0C9FB21A4A1B625EBDBEF889514C15D13DDEAEEA72EF95"
+    },
+    {
+      "path": "object_masks/GLYPH_053.png",
+      "bytes": 2938,
+      "sha256": "A121A5D8884C1F8B2D62A498CDCFB0165C050C9D7F3E22D322B9953FBC3D8E13"
+    },
+    {
+      "path": "object_masks/GLYPH_054.png",
+      "bytes": 2896,
+      "sha256": "70EB976C4CA9EA65EFB350DB2905E12F6F8D5996242CBE4CB385552D53DE2BE1"
+    },
+    {
+      "path": "object_masks/GLYPH_055.png",
+      "bytes": 2926,
+      "sha256": "B19C08B36AE9EE5FF61A8B9851D16158EA77AC16CF310A5866E3B41BFFE5A359"
+    },
+    {
+      "path": "object_masks/GLYPH_056.png",
+      "bytes": 2966,
+      "sha256": "DAEE13DEB20CB1565288B9D7554E926D8616812955336FD4AFC2CAFD848FDAC0"
+    },
+    {
+      "path": "object_masks/GLYPH_057.png",
+      "bytes": 2899,
+      "sha256": "F9314250E0977B63C6D87D506E07E8F984F234EA2450B351C5BC57E9DCBD8C43"
+    },
+    {
+      "path": "object_masks/GLYPH_058.png",
+      "bytes": 2814,
+      "sha256": "B7B709BEF08B1996D44A1DB5C085CABC069B7163AAB65533E4293CF4EEDD972B"
+    },
+    {
+      "path": "object_masks/GLYPH_059.png",
+      "bytes": 2877,
+      "sha256": "954E2218F2B516485E5D645CDB4E06239DF6E6DC6A39EB91A4D30337C35CC7F1"
+    },
+    {
+      "path": "object_masks/GLYPH_060.png",
+      "bytes": 2849,
+      "sha256": "328C61E6BD7F903420709A7717E88DC26F13C62E04A0E442894AB937BD72F9A0"
+    },
+    {
+      "path": "object_masks/GLYPH_061.png",
+      "bytes": 3003,
+      "sha256": "338AB4E55FB0BDDF581E05A4C56497E4DD69B546C7102FB67CF3948FF40A9037"
+    },
+    {
+      "path": "object_masks/GLYPH_062.png",
+      "bytes": 2941,
+      "sha256": "759FC5406BE7251B06B9E396D5DBE11BA1E54420749447B460DB5E2F08EB04AE"
+    },
+    {
+      "path": "object_masks/GLYPH_063.png",
+      "bytes": 3029,
+      "sha256": "1C280DD781EDB8162E18FBB65D2D6392947420F48FA9EE4D824F680B6CF2B01B"
+    },
+    {
+      "path": "object_masks/GLYPH_064.png",
+      "bytes": 2909,
+      "sha256": "D3158BCD4B86F39CFAD86D34A43E6F1125D1C18F91D58B7C71D81760BAAA3FA6"
+    },
+    {
+      "path": "object_masks/GLYPH_065.png",
+      "bytes": 2818,
+      "sha256": "F9B20C27619863F81EA6967165B503139799502E569DEF26561C3F5D05523F59"
+    },
+    {
+      "path": "object_masks/GLYPH_066.png",
+      "bytes": 2971,
+      "sha256": "7FCFD87471589E10B31E4EEDDA2286225BE45845518542E78A9890A644FB10E1"
+    },
+    {
+      "path": "object_masks/GLYPH_067.png",
+      "bytes": 2972,
+      "sha256": "6193F3A268ACACFBE7FA8AEA78D4A03E6F657E4BA4F3A54E143C147020BB646C"
+    },
+    {
+      "path": "object_masks/GLYPH_068.png",
+      "bytes": 3021,
+      "sha256": "43C1C8C409EBB4901FBAB7A093150D49BBF858383A38CEE9DE6A1807284AC48C"
+    },
+    {
+      "path": "object_masks/GLYPH_069.png",
+      "bytes": 3006,
+      "sha256": "C8EB3DD20842D1EEE532543A4A2EEAE786AD3647F9F9F2DC6D10BB74E168A9B5"
+    },
+    {
+      "path": "object_masks/GLYPH_070.png",
+      "bytes": 2866,
+      "sha256": "3F66D60245882A7A9C3EF8083C805AF532547C43186861CBC74EE579AA157BD8"
+    },
+    {
+      "path": "object_masks/GLYPH_071.png",
+      "bytes": 3008,
+      "sha256": "78FCB2FCB3EFD3079985C5155F91E77CF5DC7169EFD335FBA1F0CE93D00EF2F8"
+    },
+    {
+      "path": "object_masks/GLYPH_072.png",
+      "bytes": 2978,
+      "sha256": "8E33F9CB57D4FF5ACABFECB6D6BA18ED4BFC2E8513AA979A7000D2532E6C9F92"
+    },
+    {
+      "path": "pair_roi/PAIR_3140_intersection_1x.png",
+      "bytes": 1666,
+      "sha256": "4BA97DBC88DBF56EED6BA0DD159F1B13B7C772AF551B0C449930CA3AD295D5F7"
+    },
+    {
+      "path": "pair_roi/PAIR_3140_mask_a_1x.png",
+      "bytes": 1700,
+      "sha256": "F0BE7362E8F1794E4880D9BF9BFAF959BFC9311728AD8C8B025708D083BEC373"
+    },
+    {
+      "path": "pair_roi/PAIR_3140_mask_b_1x.png",
+      "bytes": 1715,
+      "sha256": "FA3248394466AF0F35C0AA1397C3BDFDF734BF2A5C581AE418EBFC29D5BF5BF1"
+    },
+    {
+      "path": "pair_roi/PAIR_3140_original_1x.png",
+      "bytes": 33266,
+      "sha256": "8B6884DE65AD455482BD22B853F39011EC66512C74BD652FB67B71B3A5598627"
+    },
+    {
+      "path": "pair_roi/PAIR_3140_overlay_1x.png",
+      "bytes": 33103,
+      "sha256": "7BCCBC15749C0034E9141DF58EF809EB25C684D518E6362E69495E121A761F10"
+    },
+    {
+      "path": "pair_roi/PAIR_3140_overlay_8x_nearest.png",
+      "bytes": 174825,
+      "sha256": "706BB56E122995CC8A5A71DDF9A62AF29426DED2E5CAA16FED3765E7310BB0A7"
+    },
+    {
+      "path": "pair_roi/PAIR_3141_intersection_1x.png",
+      "bytes": 1518,
+      "sha256": "5560486383D3DF20B566BCDDAF9FCA21819DDC66E22DED95828EA849F97702A3"
+    },
+    {
+      "path": "pair_roi/PAIR_3141_mask_a_1x.png",
+      "bytes": 1547,
+      "sha256": "39AB1C9826285FF4C10BE0DA95219988E953972EF0F0D1C3733FD32ED43ACC22"
+    },
+    {
+      "path": "pair_roi/PAIR_3141_mask_b_1x.png",
+      "bytes": 4362,
+      "sha256": "D71984A30F4BBA8F7AF8FE9A1EC15428BA39A02AB3F4566C7D3AA7DB44A6C6F5"
+    },
+    {
+      "path": "pair_roi/PAIR_3141_original_1x.png",
+      "bytes": 32604,
+      "sha256": "D8D9972B434DBC8528225AAEEDDC9C206C712B31EA3EAF433E068183F0ECAAD5"
+    },
+    {
+      "path": "pair_roi/PAIR_3141_overlay_1x.png",
+      "bytes": 31542,
+      "sha256": "04236C3F0D39D7793F03A87AB2391E854279C69E9ACDEEE880DAE02323059CB0"
+    },
+    {
+      "path": "pair_roi/PAIR_3141_overlay_8x_nearest.png",
+      "bytes": 161084,
+      "sha256": "A3584631744B0C54941E40596FE0E21EEEDB2997B29E28E76635AFC979D174BD"
+    },
+    {
+      "path": "pair_roi/PAIR_3146_intersection_1x.png",
+      "bytes": 1656,
+      "sha256": "2897F1BCB49CFB1096FDEE5CA57C791663B675DC6B6D7C808A80A2C5E0061161"
+    },
+    {
+      "path": "pair_roi/PAIR_3146_mask_a_1x.png",
+      "bytes": 1702,
+      "sha256": "B8D2E8E3774F7A6BF3B9CBB4394EB706FC31E7C7D3BC9468F55483033AB79436"
+    },
+    {
+      "path": "pair_roi/PAIR_3146_mask_b_1x.png",
+      "bytes": 4530,
+      "sha256": "16ECF80A54D625D325D813B13A2A118983AB82141D58BF8B6DE570EBF65DDE6E"
+    },
+    {
+      "path": "pair_roi/PAIR_3146_original_1x.png",
+      "bytes": 33281,
+      "sha256": "B79400B6AF235A2DAD319D24EDE3626B096586D6E0FBAD64FD1DFF66CE4397DB"
+    },
+    {
+      "path": "pair_roi/PAIR_3146_overlay_1x.png",
+      "bytes": 32032,
+      "sha256": "170B47867C819268B7941B4862889A6506D244929CC22C69EDD8E793B1A37168"
+    },
+    {
+      "path": "pair_roi/PAIR_3146_overlay_8x_nearest.png",
+      "bytes": 172408,
+      "sha256": "1D76A14496D7D77215F3505B55E0133022FB23A774101E382D09492D7C7D5B9D"
+    },
+    {
+      "path": "pair_roi/PAIR_3152_intersection_1x.png",
+      "bytes": 1504,
+      "sha256": "D4B0130DEC01C55778321847208139A92B457F20B61701B5F73CCCD0FEA3E9D8"
+    },
+    {
+      "path": "pair_roi/PAIR_3152_mask_a_1x.png",
+      "bytes": 4348,
+      "sha256": "57DEAB83DD3808C45910BC58A5CCE6EAC311ED1CB9BE912CD8A932304C41D8FC"
+    },
+    {
+      "path": "pair_roi/PAIR_3152_mask_b_1x.png",
+      "bytes": 1750,
+      "sha256": "0D4075473E64C71DCB130D513690CA1E88645F8E88CD6946BA510627D5C69DEB"
+    },
+    {
+      "path": "pair_roi/PAIR_3152_original_1x.png",
+      "bytes": 32565,
+      "sha256": "F2FB394760EF205728F17A788D1855BE5565D44040254C50579E6427B9D24AF2"
+    },
+    {
+      "path": "pair_roi/PAIR_3152_overlay_1x.png",
+      "bytes": 31522,
+      "sha256": "9750808F667A6DE67DE4655992DB8946CBC8CE2F8AA7E596126BFD9F8116C9DB"
+    },
+    {
+      "path": "pair_roi/PAIR_3152_overlay_8x_nearest.png",
+      "bytes": 160662,
+      "sha256": "4CE91EFB9A19908C558B7148ADFC27D6279B7E6BB27AF360487F314F049FE900"
+    },
+    {
+      "path": "pair_roi/PAIR_3156_intersection_1x.png",
+      "bytes": 1486,
+      "sha256": "F9B1C3D666FE527B1ECC90368FC5F1B992AC6F4DB41A130A9E3B2E8520DDD6B4"
+    },
+    {
+      "path": "pair_roi/PAIR_3156_mask_a_1x.png",
+      "bytes": 3993,
+      "sha256": "7392650F32DD12FD928C9032B12B9C1DE137F29496D6FFE3BADE05A13C00D5CE"
+    },
+    {
+      "path": "pair_roi/PAIR_3156_mask_b_1x.png",
+      "bytes": 1578,
+      "sha256": "F115A8A70FE650DA8B96BD5C09FAD3832BD52F53F60788BFDA6A2EEFC3EA30A6"
+    },
+    {
+      "path": "pair_roi/PAIR_3156_original_1x.png",
+      "bytes": 32454,
+      "sha256": "1D7CF05687F5A50BA41CBE8F24F439A1CAA3A812C08214637752E23E2ECE91C5"
+    },
+    {
+      "path": "pair_roi/PAIR_3156_overlay_1x.png",
+      "bytes": 30835,
+      "sha256": "903CD650305CA7B1F8E3673FC474EE38E810C6CAB584F545006332B5D87164A8"
+    },
+    {
+      "path": "pair_roi/PAIR_3156_overlay_8x_nearest.png",
+      "bytes": 159727,
+      "sha256": "BEBA767D654F0510782254571D00C75A688F6B92DE9844EA852666504C099C9D"
+    },
+    {
+      "path": "r168_final_adjudication.json",
+      "bytes": 703,
+      "sha256": "7A60AB0A664342E181365EB5DD0FA33FACC966D9CC7B7E4018F421E10B0E3BCA"
+    },
+    {
+      "path": "renderer_metadata.json",
+      "bytes": 909,
+      "sha256": "27A61B04092F5DF3D9974D02FE266DAE5BDD26F02AC7E1DF0142C5D95664C7AE"
+    },
+    {
+      "path": "role_ratio_audit.csv",
+      "bytes": 1737,
+      "sha256": "B1F67E0B3A3D741F69017175069D33032343BC950B252A177BAC8DA6DFA572BE"
+    },
+    {
+      "path": "seal_manifest.py",
+      "bytes": 2168,
+      "sha256": "5D4B90DED8A6A1C3386835EC10ACA82A41E48CBAFE317DBDB5C629427706C7DD"
+    },
+    {
+      "path": "standalone_300dpi.png",
+      "bytes": 124544,
+      "sha256": "DC5E09A8AD17821FA394B5A33797694EAFA34FE6230594ABCDD2E842C159C30C"
+    },
+    {
+      "path": "validate_evidence.py",
+      "bytes": 7028,
+      "sha256": "1F47EF03910EBF68F08F2515D8A889246566A8C3AC740F7CAA39D937E4D719B8"
+    },
+    {
+      "path": "views/full_page_200dpi.png",
+      "bytes": 302058,
+      "sha256": "C728EFAFB860AEDD68710755DD506FF86F818AAE0EB6C5E36A7F9BE90F1A0CCA"
+    },
+    {
+      "path": "views/full_page_300dpi.png",
+      "bytes": 486460,
+      "sha256": "38A356802E49F1616C2DFE3015EDF7279D793809DE99A2940764D29B8AF54346"
+    },
+    {
+      "path": "views/full_page_grayscale_300dpi.png",
+      "bytes": 463816,
+      "sha256": "0574F3680809223DB14A39BEAF57B8F6EBBEA1A16F29C814D1ED020E75164EF8"
+    }
+  ]
+}

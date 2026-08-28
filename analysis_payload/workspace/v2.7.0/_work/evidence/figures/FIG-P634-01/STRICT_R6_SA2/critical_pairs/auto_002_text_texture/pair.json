@@ -1,0 +1,31 @@
+{
+  "object_a": "EL-014-NODE_2-MATH_DIGIT",
+  "object_b": "G-NODE-2-FINAL-TEXTURE",
+  "relation": "TEXT_TEXTURE",
+  "raw_1x_source": "renders/local_page_300dpi.png",
+  "raw_roi_page_px": [
+    731,
+    1350,
+    780,
+    1406
+  ],
+  "measurement": {
+    "PAIR_ID": "PAIR-001235",
+    "OBJECT_A": "EL-014-NODE_2-MATH_DIGIT",
+    "OBJECT_B": "G-NODE-2-FINAL-TEXTURE",
+    "CATEGORY_A": "TEXT_ELEMENT",
+    "CATEGORY_B": "GRAPHIC",
+    "RELATION": "TEXT_TEXTURE",
+    "THRESHOLD_PX": "3.0",
+    "METHOD": "exact separated 1:1 raw masks + local EDT",
+    "OVERLAP_PIXELS": 0,
+    "MIN_RAW_INK_GAP_PX": "6.000",
+    "A_NEAREST_X": 755,
+    "A_NEAREST_Y": 1374,
+    "B_NEAREST_X": 755,
+    "B_NEAREST_Y": 1381,
+    "STATUS": "PASS",
+    "REASON": "text/formula ink to final-visible hatch pixels"
+  },
+  "8x_policy": "nearest-neighbour human review only; never geometry input"
+}

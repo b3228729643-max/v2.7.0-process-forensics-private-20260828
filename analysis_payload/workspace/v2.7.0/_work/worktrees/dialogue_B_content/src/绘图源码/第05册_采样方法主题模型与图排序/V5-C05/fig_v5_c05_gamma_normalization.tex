@@ -1,0 +1,47 @@
+% v2.3.1 figure UID: FIG-P662-01
+% v2.6.0 reverse redraw for FIG-P662-01: separate badges, fan-in endpoints, and auxiliary evidence paths.
+\tikzset{slfig-FIG-P662-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P662-01,slfig high,>=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center,inner xsep=2.3mm,inner ysep=1.2mm},
+  input/.style={draw=SLTeal,fill=SLTealBG,rounded corners=2pt,minimum width=22mm,minimum height=8.5mm,line width=.65pt},
+  calc/.style={draw=SLBlue,fill=white,rounded corners=2pt,minimum width=26mm,minimum height=11mm,line width=.7pt},
+  resultbox/.style={draw=SLBlue,fill=SLBlueBG,rounded corners=2pt,minimum width=29mm,minimum height=11mm,line width=.7pt},
+  badge/.style={circle,fill=SLBlue,text=white,minimum size=5.6mm,font=\bfseries\fontsize{8.5pt}{9.6pt}\selectfont,inner sep=0pt},
+  note/.style={font=\fontsize{8.5pt}{10.2pt}\selectfont,text=SLGray,inner sep=0pt},
+  main/.style={-{Stealth[length=2.1mm,width=1.5mm]},draw=SLBlue,line width=.82pt},
+  aux/.style={draw=SLGray,line width=.55pt,densely dashed},
+  alt={对象—关系—结论：独立且具有共同率参数的Gamma变量除以其总和后得到Dirichlet随机向量；总量与归一化比例相互独立，二维情形退化为Beta分布，这一构造同时给出可复现的Dirichlet抽样方法}]
+\node[input] (y1) at (-5.25,1.35) {$Y_1\sim\mathrm{Gamma}(\alpha_1,\lambda)$};
+\node[input] (y2) at (-5.25,.35) {$Y_2\sim\mathrm{Gamma}(\alpha_2,\lambda)$};
+\node[font=\large,inner sep=0pt] at (-5.25,-.30) {$\vdots$};
+\node[input] (yk) at (-5.25,-1.08) {$Y_K\sim\mathrm{Gamma}(\alpha_K,\lambda)$};
+\node[badge] at (-5.25,2.28) {1};
+\node[note] at (-5.25,-1.88) {相互独立、共同率参数 $\lambda$};
+
+\node[calc] (sum) at (-1.75,.25) {总量\\$S=\sum_{k=1}^{K}Y_k$};
+\node[badge] at (-1.75,1.42) {2};
+\node[circle,draw=SLGold,fill=SLGoldBG,minimum size=10mm,line width=.7pt,inner sep=1mm] (div) at (.95,.25) {$\div S$};
+\node[resultbox] (theta) at (3.31,.25) {比例\\$\Theta_k=Y_k/S$};
+\node[badge] at (.95,1.42) {3};
+\node[resultbox,minimum width=30mm] (dir) at (6.70,.25) {$\Theta\sim\mathrm{Dir}(\alpha)$\\$\sum_k\Theta_k=1$};
+\draw[draw=SLTeal,line width=.6pt] (6.25,1.08)--(7.15,1.08)--(6.70,1.86)--cycle;
+\fill[SLBlue] (6.70,1.37) circle (1.8pt);
+\node[note,text=SLGray!90!black] at (7.72,1.47) {单纯形点};
+
+\node[draw=SLRule,fill=white,rounded corners=2pt,minimum width=49mm,minimum height=10mm,line width=.55pt] (indep) at (1.65,-1.58)
+  {$S\perp\!\!\!\perp\Theta,\quad S\sim\mathrm{Gamma}(\alpha_0,\lambda)$};
+\node[draw=SLGold,fill=SLGoldBG,rounded corners=2pt,minimum width=38mm,minimum height=10mm,line width=.6pt,align=left] at (6.45,-1.58)
+  {$K=2$ 特例：\\$\Theta_1\sim\mathrm{Beta}(\alpha_1,\alpha_2)$};
+
+\foreach \v/\dy in {y1/3mm,y2/0mm,yk/-3mm}{\draw[main] (\v.east)--([yshift=\dy]sum.west);}
+\draw[main] (sum)--(div); \draw[main] (div)--(theta); \draw[main] (theta)--(dir);
+\draw[aux] (sum.south)--++(0,-4.5mm)-|([xshift=-14mm]indep.north);
+\draw[aux] (theta.south)--++(0,-5.5mm)-|([xshift=14mm]indep.north);
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{独立且具有共同率参数的Gamma变量除以其总和后得到Dirichlet随机向量；总量与归一化比例相互独立，二维情形退化为Beta分布，这一构造同时给出可复现的Dirichlet抽样方法}
+\label{fig:V5-C05-gamma-normalization}
+\end{figure}

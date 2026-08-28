@@ -1,0 +1,38 @@
+object_id	viewport	min_ink_margin_px	clip_pixel_count	manual_decision	reviewer_note
+TXT_AXIS_X1	STANDALONE_300DPI	36	0	PASS	The x1 title sits fully inside the right edge; its italic x and subscript remain complete.
+TXT_AXIS_X2	STANDALONE_300DPI	43	0	PASS	The x2 title has clear top clearance and no projected glyph pixel reaches the viewport.
+TXT_UPDATE_X1	STANDALONE_300DPI	136	0	PASS	更新x1 is comfortably inset from all boundaries and fully readable.
+TXT_UPDATE_X2	STANDALONE_300DPI	190	0	PASS	更新x2 is well separated from the lower and side crop edges.
+TXT_STEP_0	STANDALONE_300DPI	105	0	PASS	State label 0 has more than one hundred pixels of nearest-edge clearance.
+TXT_STEP_1	STANDALONE_300DPI	386	0	PASS	State label 1 is centrally placed with no clipping risk.
+TXT_STEP_2	STANDALONE_300DPI	345	0	PASS	State label 2 is fully enclosed by standalone whitespace.
+TXT_STEP_3	STANDALONE_300DPI	415	0	PASS	State label 3 remains far from every crop boundary.
+TXT_STEP_4	STANDALONE_300DPI	426	0	PASS	State label 4 has ample top, side, and bottom clearance.
+TXT_STEP_5	STANDALONE_300DPI	317	0	PASS	State label 5 is fully visible with large nearest-edge margin.
+TXT_STEP_6	STANDALONE_300DPI	282	0	PASS	State label 6 is complete and not clipped near the terminal state.
+TXT_LONG_AXIS	STANDALONE_300DPI	290	0	PASS	Rotated 长轴 remains entirely within the viewport despite its projected extent.
+TXT_SHORT_AXIS	STANDALONE_300DPI	319	0	PASS	短轴 has complete glyph boxes and broad crop clearance.
+TXT_INFO_NODE	STANDALONE_300DPI	27	0	PASS	The information text is closest at the bottom but retains every final punctuation pixel.
+TXT_CAPTION_LABEL	FIGURE_CROP_300DPI	20	0	PASS	图33.4 is complete with 20px nearest-edge clearance in the figure-plus-caption crop.
+TXT_CAPTION_BODY	FIGURE_CROP_300DPI	18	0	PASS	Both caption lines fit; the first and last glyphs keep positive side/bottom margins.
+GR_AXIS_X	STANDALONE_300DPI	33	0	PASS	The horizontal axis shaft and arrowhead are fully retained, with 33px nearest ink clearance.
+GR_AXIS_Y	STANDALONE_300DPI	93	0	PASS	The vertical axis arrow is wholly contained and has substantial top clearance.
+GR_CONTOUR_OUTER	STANDALONE_300DPI	190	0	PASS	The complete outer ellipse perimeter remains inside the standalone crop.
+GR_CONTOUR_MIDDLE	STANDALONE_300DPI	281	0	PASS	The middle contour is closed and distant from viewport edges.
+GR_CONTOUR_INNER	STANDALONE_300DPI	382	0	PASS	The inner contour is fully enclosed with no boundary contact.
+GR_MOVE_01	STANDALONE_300DPI	133	0	PASS	The initial horizontal move and arrowhead remain complete at both ends.
+GR_MOVE_12	STANDALONE_300DPI	335	0	PASS	The first vertical update segment is fully inside the crop.
+GR_MOVE_23	STANDALONE_300DPI	405	0	PASS	The middle horizontal update has generous edge clearance.
+GR_MOVE_34	STANDALONE_300DPI	384	0	PASS	The second vertical update is complete from marker to marker.
+GR_MOVE_45	STANDALONE_300DPI	351	0	PASS	The later horizontal update and rightward arrowhead are not cropped.
+GR_MOVE_56	STANDALONE_300DPI	278	0	PASS	The final vertical update remains fully visible near the upper-right target region.
+GR_MARKER_0	STANDALONE_300DPI	124	0	PASS	Marker 0 is a complete circle with positive margin on all sides.
+GR_MARKER_1	STANDALONE_300DPI	326	0	PASS	Marker 1 is centrally contained and fully filled.
+GR_MARKER_2	STANDALONE_300DPI	396	0	PASS	Marker 2 remains far from all crop boundaries.
+GR_MARKER_3	STANDALONE_300DPI	515	0	PASS	Marker 3 has the largest balanced clearance and no clip pixels.
+GR_MARKER_4	STANDALONE_300DPI	371	0	PASS	Marker 4 is fully enclosed around the upper trajectory turn.
+GR_MARKER_5	STANDALONE_300DPI	338	0	PASS	Marker 5 is complete with substantial right-side clearance.
+GR_MARKER_6	STANDALONE_300DPI	264	0	PASS	Terminal marker 6 is fully inside the viewport and not cropped above.
+GR_LONG_AXIS	STANDALONE_300DPI	280	0	PASS	The complete diagonal long-axis guide and arrowhead remain inside the crop.
+GR_SHORT_AXIS	STANDALONE_300DPI	420	0	PASS	The short-axis guide is entirely contained around the target center.
+GR_INFO_BORDER	STANDALONE_300DPI	9	0	PASS	The node border is the closest object to the bottom edge but stays visibly complete with a 9px ink margin.

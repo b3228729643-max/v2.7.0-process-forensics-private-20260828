@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "source_invariants": {
+    "node_count_8": true,
+    "source_relation_count_7": true,
+    "posterior_formula_present": true,
+    "predictive_fraction_present": true,
+    "caption_unchanged": true,
+    "application_label_present": true,
+    "all_visible_parent_strings_exact": true,
+    "math_rule_separate_path": true
+  },
+  "rendered_parent_text": {
+    "TRIAL_LABEL": "类别计数𝑛",
+    "GAMMA_LABEL": "Gamma与Beta规范因子",
+    "FAMILIES_LABEL": "多项分布与狄利克雷先验",
+    "POSTERIOR_TITLE": "共轭狄利克雷后验",
+    "POSTERIOR_FORMULA": "参数𝛼+𝑛",
+    "PREDICTIVE_TITLE": "后验预测概率新增观测取指定类别",
+    "PREDICTIVE_FORMULA": "𝛼𝑖+𝑛𝑖𝛼0+𝑁",
+    "SIMPLEX_LABEL": "单纯形几何",
+    "MOM_LABEL": "均值与浓度及对数矩",
+    "LDA_LABEL": "后续主题模型伪计数与平滑",
+    "APPLICATION_EDGE_LABEL": "应用"
+  },
+  "source_graph_semantics": "8 nodes / 7 source relations; category count and Gamma/Beta factors feed the multinomial/Dirichlet prior, then alpha+n posterior, posterior-predictive fraction, interpretation branches, and downstream application.",
+  "formula_semantics": {
+    "posterior": "alpha+n",
+    "predictive": "(alpha_i+n_i)/(alpha_0+N)",
+    "fraction_rule_object": "P006 / PDF seqno 19 / rawdict-external MATH_RULE"
+  },
+  "direction_and_endpoint_manual_review": "PASS"
+}

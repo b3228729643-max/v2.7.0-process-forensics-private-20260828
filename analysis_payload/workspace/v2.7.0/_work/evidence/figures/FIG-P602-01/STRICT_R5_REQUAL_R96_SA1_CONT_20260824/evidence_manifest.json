@@ -1,0 +1,119 @@
+{
+  "task_id": "FIG-P602-01",
+  "review_role": "SA1 independent R5 continuation",
+  "terminal_status": "FAIL_TO_SA2",
+  "canonical_evidence_directory": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P602-01\\STRICT_R5_REQUAL_R96_SA1_CONT_20260824",
+  "frozen_official_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r96_fullbook\\main_full.pdf",
+  "frozen_official_pdf_sha256": "8EED8765A4856C4C197262DEA06E283790FBA8DA906C70C26FC7BD56F6F7E5E8",
+  "frozen_figure_source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+  "frozen_figure_source_sha256": "18B88F4BC48A21D3FD1A246AC5B6909DEEB19900A3D0721C65F9A44369444084",
+  "physical_page": 651,
+  "printed_page": 638,
+  "figure_number": "32.5",
+  "native_render": {
+    "dpi": 300,
+    "page_pixels": [
+      2481,
+      3508
+    ],
+    "crop_pixels": [
+      1980,
+      1584
+    ],
+    "crop_rect": [
+      250,
+      1416,
+      2230,
+      3000
+    ]
+  },
+  "glyph_review": {
+    "glyph_count": 175,
+    "ledger_rows": 175,
+    "manual_pending": 0,
+    "native_original_1x": 175,
+    "native_target_overlay_1x": 175,
+    "contact_sheets_8x": 20,
+    "pass_count": 152,
+    "fail_count": 23,
+    "hard_floor_fail_count": 10,
+    "mask_purity_fail_count": 15
+  },
+  "low_profile_calibration": {
+    "contexts": 6,
+    "pass": 6,
+    "fail": 0
+  },
+  "overlap": {
+    "foreground_objects": 35,
+    "unordered_pairs": 595,
+    "status_counts": {
+      "PASS_NO_OVERLAP": 578,
+      "INTENTIONAL_CONTACT": 12,
+      "SAME_PARENT_LAYOUT": 5
+    },
+    "nonwhitelisted_overlap_count": 0,
+    "intentional_contacts": 12
+  },
+  "occlusion": {
+    "opaque_label_backgrounds": 6,
+    "pass": 6,
+    "true_occlusions": 0,
+    "h06_reverse_render": "PASS_NO_TRUE_OCCLUSION"
+  },
+  "independent_review": {
+    "math_semantics": "PASS",
+    "source_size_D": "PASS",
+    "coordination_E": "PASS",
+    "page_crop_grayscale": "PASS"
+  },
+  "cleanup_exception": {
+    "record": "reports/CLEANUP_EXCEPTION.md",
+    "separate_from_figure_verdict": true
+  },
+  "blocking_gates": [
+    {
+      "gate": "native final-PDF glyph floors and raw mask ownership",
+      "hard_floor_count": 10,
+      "mask_purity_count": 15,
+      "union_failed_glyph_count": 23,
+      "glyph_ids": [
+        "GLYPH-007",
+        "GLYPH-014",
+        "GLYPH-021",
+        "GLYPH-028",
+        "GLYPH-029",
+        "GLYPH-044",
+        "GLYPH-051",
+        "GLYPH-052",
+        "GLYPH-053",
+        "GLYPH-054",
+        "GLYPH-057",
+        "GLYPH-058",
+        "GLYPH-062",
+        "GLYPH-063",
+        "GLYPH-064",
+        "GLYPH-077",
+        "GLYPH-104",
+        "GLYPH-118",
+        "GLYPH-120",
+        "GLYPH-121",
+        "GLYPH-145",
+        "GLYPH-146",
+        "GLYPH-160"
+      ]
+    }
+  ],
+  "artifact_inventory": {
+    "path": "artifact_inventory.csv",
+    "record_count": 837
+  },
+  "scripts": {
+    "evidence_generator_sha256": "6E2BF15D6EF6040DEAA74650ACE06D9D4F9FD4BF5D014A2CD0211582C0552433",
+    "low_profile_calibration_sha256": "9095850E4DF0F90637C21A2EFBA7A1444E35A1929054EB787300C435755155EA",
+    "occlusion_inverse_sha256": "DDBAB8AC85C519BCD849519B65F71D31E72EBDAFB0FD979677079552DB9629D8",
+    "native_evidence_finalizer_sha256": "E679A59B9D89B3379B6B7354E7489B2CA90CC9F435307EAED1788095106A7993",
+    "final_crosscheck_sha256": "34273F107554F8E9458A74D86723429833C6335106BE87A754AE7C2D6C06FD05"
+  },
+  "legacy_draft_notice": "evidence_manifest_draft.json and reports/machine_gate_draft.md are chronological drafts superseded by this final manifest and terminal status."
+}

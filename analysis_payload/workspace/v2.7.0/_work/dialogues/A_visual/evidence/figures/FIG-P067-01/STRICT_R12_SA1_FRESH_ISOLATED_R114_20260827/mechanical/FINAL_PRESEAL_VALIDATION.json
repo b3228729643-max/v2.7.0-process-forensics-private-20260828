@@ -1,0 +1,49 @@
+{
+  "checks": {
+    "pdf_bytes": true,
+    "pdf_sha256": true,
+    "source_bytes": true,
+    "source_sha256": true,
+    "object_count": true,
+    "unordered_pair_count": true,
+    "manual_object_count": true,
+    "manual_pair_count": true,
+    "manual_pixel_element_count": true,
+    "manual_pair_candidate_total": true,
+    "manual_true_overlap_zero": true,
+    "manual_unresolved_zero": true,
+    "manual_crosscheck_pass": true,
+    "acceptance_tokens_complete": true,
+    "math_sum_recorded": true,
+    "right_continuity_recorded": true,
+    "image_sizes_exact": true,
+    "nearest_detail_tile_count": true,
+    "write_stopped_absent_preseal": true,
+    "seal_manifest_absent_preseal": true
+  },
+  "all_checks_pass": true,
+  "observed_image_sizes": {
+    "page_069_200dpi.png": [
+      1654,
+      2339
+    ],
+    "page_069_300dpi.png": [
+      2481,
+      3508
+    ],
+    "figure_native1x_300dpi.png": [
+      1640,
+      670
+    ],
+    "figure_nearest8x.png": [
+      13120,
+      5360
+    ],
+    "figure_grayscale_300dpi.png": [
+      1640,
+      670
+    ]
+  },
+  "nearest_detail_tile_count": 12,
+  "manual_fields_generated_or_overwritten": false
+}

@@ -1,0 +1,11 @@
+VIEW_ID,path_or_scope,native_dimensions,manual_reviewer,font_harmony,crowding_or_clipping,grayscale_or_page_integration,manual_decision,manual_note
+V01,full_page_200dpi.png,1654x2339,SA3_R105_FRESH_ISOLATED,true,none,page integration balanced,PASS,Opened at native evidence resolution; figure and caption sit naturally between surrounding text and adjacent Figure 32.9.
+V02,figure_crop_300dpi.png,1854x950,SA3_R105_FRESH_ISOLATED,true,none,color hierarchy clear,PASS,Opened; both panels caption and all labels are readable without clipping.
+V03,standalone_300dpi.png,1480x867,SA3_R105_FRESH_ISOLATED,true,none,color hierarchy clear,PASS,Opened; titles labels ticks annotations rules curves markers and axes are coherent.
+V04,grayscale_300dpi.png,1854x950,SA3_R105_FRESH_ISOLATED,true,none,grayscale distinctions preserved,PASS,Opened; hatching divider target reference and series remain distinguishable.
+V05,after_text_measurement_overlay_300dpi.png,1480x867,SA3_R105_FRESH_ISOLATED,true,none,all 68 glyph IDs and 6 rule IDs mapped,PASS,Opened; overlay boxes correspond to visible contours and no reader object is omitted.
+V06,glyph_contacts/contact_sheet_01.png through contact_sheet_12.png,12 sheets with complete 1x and 8x cells,SA3_R105_FRESH_ISOLATED,true,none,all glyph masks pure,PASS,Opened every sheet; reviewed every one of 68 rows rather than applying a global batch decision.
+V07,math_rule_contact_sheet.png,1300x1560,SA3_R105_FRESH_ISOLATED,true,none,all path masks pure,PASS,Opened; four equals bars and two overlines are complete and semantically placed.
+V08,counterevidence_native1x_sheet.png,555x1297,SA3_R105_FRESH_ISOLATED,true,none,native critical relations clear,PASS,Opened; warm-up divider retained annotation panel gap target label y-label and xlabel relations are visibly safe.
+V09,counterevidence_8x_nearest_sheet.png,4440x10376,SA3_R105_FRESH_ISOLATED,true,none,nearest-neighbor pixels confirm gaps,PASS,Opened; no interpolated measurement was taken from this navigation view.
+V10,current read-only source,fig_v5_c03_trace_running_mean.tex,SA3_R105_FRESH_ISOLATED,true,clip=false and no text scaling,semantics agree with page,PASS,All source typography overrides formulas coordinates and caption were inspected.

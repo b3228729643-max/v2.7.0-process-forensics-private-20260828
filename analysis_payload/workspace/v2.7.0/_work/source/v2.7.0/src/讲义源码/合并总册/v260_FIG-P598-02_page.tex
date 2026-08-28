@@ -1,0 +1,17 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{759}
+\setcounter{chapter}{32}
+\setcounter{figure}{1}
+\pagestyle{headings}
+\chaptermark{马尔可夫链蒙特卡罗法}
+\sectionmark{MCMC 基本思想}
+估计式中的 $m$ 不是证明链已经收敛的参数；丢弃前 $m$ 步只能减弱某些初值影响，不能修复可约、周期、错误目标或错误转移核。
+
+图\ref{fig:V5-C03-markov-chain-path}区分状态轨迹、提议与拒绝后重复的状态；图\ref{fig:V5-C03-mcmc-pipeline}显示从目标到估计量的完整链路。重复状态是MH核的组成部分，不应在保存轨迹时删除。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_markov_chain_path.tex}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mcmc_pipeline.tex}
+\end{document}
+

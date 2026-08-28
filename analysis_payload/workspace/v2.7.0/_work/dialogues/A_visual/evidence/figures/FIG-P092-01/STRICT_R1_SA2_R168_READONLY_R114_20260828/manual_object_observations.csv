@@ -1,0 +1,22 @@
+OBJECT_ID,MANUAL_REVIEWER,POST_OBSERVATION_VIEW_SET,OBSERVATION,HARD_DEFECT,DISPOSITION
+G01,SA2-R168,"full-page; native300; grayscale; overlay","x-axis baseline, three tick marks, and arrowhead are continuous, balanced, and fully visible",false,CLEAR
+G02,SA2-R168,"full-page; native300; grayscale; overlay","y-axis baseline, two tick marks, and arrowhead are continuous, balanced, and fully visible",false,CLEAR
+G03,SA2-R168,"native300; grayscale; overlay; three critical ROIs","entropy curve is smooth, strictly concave by appearance, symmetric about p=1/2, and reaches the displayed endpoint and maximum markers",false,CLEAR
+G04,SA2-R168,"native300; grayscale; overlay; peak native1x/nearest8x","vertical dashed guide is placed at p=1/2, terminates at the maximum, remains subordinate to the data curve, and is not clipped",false,CLEAR
+G05,SA2-R168,"native300; grayscale; overlay; peak native1x/nearest8x","horizontal dashed guide is placed at H=1, terminates at the maximum, remains subordinate to the data curve, and is not clipped",false,CLEAR
+G06,SA2-R168,"native300; overlay; left native1x/nearest8x","left endpoint marker is centered at (0,0), fully rendered, and intentionally contacts the curve and x-axis without obscuring text",false,CLEAR
+G07,SA2-R168,"native300; overlay; peak native1x/nearest8x","maximum marker is centered at (1/2,1), fully rendered, and intentionally joins curve and guides without obscuring the maximum annotation",false,CLEAR
+G08,SA2-R168,"native300; overlay; right native1x/nearest8x","right endpoint marker is centered at (1,0), fully rendered, and intentionally contacts the curve and x-axis without obscuring text",false,CLEAR
+T01,SA2-R168,"native300; grayscale; overlay","x tick 0 is the expected codepoint, readable, aligned to the left endpoint, and clear of axis ink",false,CLEAR
+T02,SA2-R168,"native300; grayscale; overlay","x tick 1/2 is a correctly stacked fraction, readable, centered below the maximum, and clear of the x-axis and p label",false,CLEAR
+T03,SA2-R168,"native300; grayscale; overlay","x tick 1 is the expected codepoint, readable, aligned to the right endpoint, and clear of axis ink",false,CLEAR
+T04,SA2-R168,"native300; grayscale; overlay","y tick 0 is the expected codepoint, readable, aligned to the baseline, and clear of y-axis ink",false,CLEAR
+T05,SA2-R168,"native300; grayscale; overlay","y tick 1 is the expected codepoint, readable, aligned to the horizontal guide, and clear of y-axis ink",false,CLEAR
+T06,SA2-R168,"native300; grayscale; overlay","x-axis label p uses the correct italic mathematical codepoint, is readable, and is centered beneath the 1/2 tick without contact",false,CLEAR
+T07,SA2-R168,"native300; grayscale; overlay","y-axis label H_2(p) is correctly oriented and legible; in this figure it denotes base-2 binary entropy, consistent with the plotted formula and bit annotation",false,CLEAR
+T08,SA2-R168,"native300; grayscale; overlay; peak native1x/nearest8x","maximum annotation states exactly 1 bit, has no missing/tofu glyph, remains visually clear of marker/curve/guides, and does not dominate the plot",false,CLEAR
+T09,SA2-R168,"native300; grayscale; overlay; left native1x/nearest8x","left 确定性 annotation is fully readable; its pale opaque background prevents the nearby curve from entering the glyph ink",false,CLEAR
+T10,SA2-R168,"native300; grayscale; overlay; right native1x/nearest8x","right 确定性 annotation is fully readable; its pale opaque background prevents the nearby curve from entering the glyph ink",false,CLEAR
+T11,SA2-R168,"native300; grayscale; overlay","symmetry annotation H_2(p)=H_2(1-p) uses the expected symbols, is mathematically correct, and is well separated from the guide and curve",false,CLEAR
+T12,SA2-R168,"full-page; native300; grayscale; overlay","caption label 图 6.1 is complete, correctly numbered, readable, and separated from plot ink",false,CLEAR
+T13,SA2-R168,"full-page; native300; grayscale; overlay","caption states the maximum and endpoint behavior accurately, contains no missing/tofu/wrong-codepoint text, and fits on one balanced line",false,CLEAR

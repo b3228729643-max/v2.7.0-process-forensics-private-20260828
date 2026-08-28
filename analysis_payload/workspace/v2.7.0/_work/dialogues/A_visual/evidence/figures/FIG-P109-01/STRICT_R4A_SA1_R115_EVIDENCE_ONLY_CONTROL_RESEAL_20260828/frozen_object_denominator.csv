@@ -1,0 +1,16 @@
+OBJECT_ID,PANEL_ID,KIND,ROLE,DESCRIPTION,BBOX_300DPI
+O01,P1,GEOMETRY,CONVEX_REGION,convex feasible region C: fill plus boundary,650 1520 1870 2205
+O02,P1,GEOMETRY,CHORD,complete line segment from x to y,880 1735 1665 2045
+O03,P1,MARKER,ENDPOINT_X,dark endpoint marker at x,875 1990 900 2020
+O04,P1,MARKER,ENDPOINT_Y,dark endpoint marker at y,1635 1720 1665 1750
+O05,P1,MARKER,INTERIOR_025,teal convex-combination marker lambda=0.25,1065 1930 1095 1960
+O06,P1,MARKER,INTERIOR_050,teal convex-combination marker lambda=0.50,1255 1850 1285 1880
+O07,P1,MARKER,INTERIOR_075,teal convex-combination marker lambda=0.75,1450 1770 1480 1800
+O08,P1,TEXT,ENDPOINT_LABEL,math label x,820 2020 865 2095
+O09,P1,TEXT,ENDPOINT_LABEL,math label y,1670 1640 1745 1720
+O10,P1,FORMULA,CONVEX_COMBINATION_LABEL,"z=lambda*x+(1-lambda)*y, including white backing",930 1765 1285 1855
+O11,P1,TEXT_FORMULA,REGION_LABEL,"convex feasible region C, including white backing",1550 1580 1785 1695
+O12,P1,NODE_BORDER,CONCLUSION_BORDER,rounded border enclosing the defining implication,845 2190 1695 2310
+O13,P1,FORMULA,CONCLUSION_TEXT,"x,y in C and lambda in [0,1] implies convex combination in C",870 2210 1660 2290
+O14,P1,TEXT,CAPTION_NUMBER,Figure 7.1 caption number,825 2285 955 2380
+O15,P1,TEXT,CAPTION_TEXT,convex-set caption conclusion,960 2290 1720 2380

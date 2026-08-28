@@ -1,0 +1,21 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{733}
+\setcounter{chapter}{31}
+\setcounter{figure}{2}
+\pagestyle{headings}
+\chaptermark{蒙特卡罗方法与直接采样}
+\sectionmark{逆变换抽样}
+对 $0<u<1$ 定义广义逆
+\[
+  Q(u)=\inf\{x:F(x)\ge u\}.
+\]
+若 $U\sim\mathrm U(0,1)$，则 $Q(U)$ 的分布函数为 $F$。图\ref{fig:V5-C02-generalized-inverse}把严格递增与离散跳跃放在同一“首次达到”规则下；即使 $F$ 有平坦段，普通代数逆可能不存在或不唯一，广义逆仍有定义。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_generalized_inverse.tex}
+\begin{comparisonbox}
+\textbf{理论事件与有限精度端点政策。}概率论中的端点事件概率为零；有限精度实现则必须预先规定开区间输出、有限重抽预算或显式失败政策，不能事后静默裁剪。
+\end{comparisonbox}
+\end{document}
+

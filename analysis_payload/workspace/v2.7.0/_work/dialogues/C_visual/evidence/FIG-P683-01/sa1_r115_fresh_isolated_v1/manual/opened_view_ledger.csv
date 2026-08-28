@@ -1,0 +1,18 @@
+view_id,relative_path,actual_post_observation_use
+V01,views/full_page_200dpi.png,Opened at original detail; verified page integration figure-caption-body spacing header footer and absence of page clipping
+V02,views/full_page_300dpi.png,Opened at original detail; verified sharp current R115 page and located figure 35.2 on physical 732 printed 719
+V03,views/figure_caption_native_300dpi.png,Opened at original detail; verified the complete native diagram plus all three caption lines
+V04,views/figure_caption_grayscale_300dpi.png,Opened at original detail; verified observed fill latent outlines arrows plates labels and caption remain distinguishable
+V05,views/semantic_class_overlay_300dpi.png,Opened at original detail; verified semantic-class coverage of all 24 denominator objects
+V06,views/object_id_overlay_300dpi.png,Opened at original detail; verified unique object IDs and complete reader-visible denominator placement
+V07,views/text_measurement_overlay_300dpi.png,Opened at original detail; verified 32 extracted spans cover every text-bearing object and caption
+V08,views/roi_nested_plates_labels_native1x_300dpi.png,Opened at original detail; checked N-in-M nesting node placement labels and arrow geometry
+V09,views/roi_nested_plates_labels_nearest8x.png,Opened at original detail; checked native-pixel boundary crossings endpoint contacts glyph edges and dash continuity
+V10,views/roi_nodes_horizontal_arrows_native1x_300dpi.png,Opened at original detail; checked alpha-theta-z-w sequence and boundary-stopping arrowheads
+V11,views/roi_nodes_horizontal_arrows_nearest8x.png,Opened at original detail; checked alpha and all math codepoints plus arrowheads without text incursion
+V12,views/roi_phi_diagonal_arrow_native1x_300dpi.png,Opened at original detail; checked beta-phi and phi-w dependencies and K/M/N scope crossings
+V13,views/roi_phi_diagonal_arrow_nearest8x.png,Opened at original detail; checked phi glyph subscript edge-node contacts and intentional dashed-border crossings
+V14,views/roi_legend_native1x_300dpi.png,Opened at original detail; checked marker-label alignment and mixed Chinese/Latin legend text
+V15,views/roi_legend_nearest8x.png,Opened at original detail; checked no tofu wrong codepoint clipping or row collision
+V16,views/roi_caption_native1x_300dpi.png,Opened at original detail; checked complete caption wording line breaks and separation
+V17,views/roi_caption_nearest8x.png,Opened at original detail; checked caption glyph rendering including Bayes LDA Dirichlet and Chinese punctuation

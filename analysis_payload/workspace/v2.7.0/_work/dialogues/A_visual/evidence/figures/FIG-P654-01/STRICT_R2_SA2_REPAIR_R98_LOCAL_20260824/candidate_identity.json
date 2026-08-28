@@ -1,0 +1,75 @@
+{
+  "figure_uid": "FIG-P654-01",
+  "handoff_id": "A-R130-P654-SA2-REPAIR-V2-20260824",
+  "route_boundary": "LOCAL_SA2_PASS_AWAIT_OFFICIAL_CANDIDATE_AND_FRESH_SA1",
+  "frozen_utc": "2026-08-24T15:40:34.112558+00:00",
+  "official_r98_frozen_identity": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r98_fullbook\\main_full.pdf",
+    "sha256": "52FA2EF0769553C8B6FD4B8D3CBA5BE671FA0F3190591A596FB8B6512C108A41",
+    "expected_sha256": "52FA2EF0769553C8B6FD4B8D3CBA5BE671FA0F3190591A596FB8B6512C108A41",
+    "identity_match": true,
+    "bytes": 4934249,
+    "pages": 813,
+    "pdf_target_physical_page": 702,
+    "pdf_target_printed_label": "689",
+    "page_size_pt": [
+      595.2760009765625,
+      841.8900146484375
+    ],
+    "source_normalized_sha256": "01EA85F46A9567D7ED6CF88C92346F9BE317FAFDDCF1F7791C07B2A3ED3858EB",
+    "sealed_sa1_terminal_commit_reference": "7f65bd75ce94aee876aa25735e92214bb5ebe004",
+    "note": "Read-only official R98 baseline identity; it does not contain the SA2 source repair."
+  },
+  "local_sa2_candidate_identity": {
+    "scope": "local page/standalone wrappers on the frozen R98 source baseline; not an official full-book candidate",
+    "worktree": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_A_visual",
+    "branch": "v2.7.0/dialogue-a-visual",
+    "base_head": "e933f09e757d406954edd09f8ce0a326248c7da9",
+    "source_relative_path": "src/绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dependency_graph.tex",
+    "source_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C05\\fig_v5_c05_dependency_graph.tex",
+    "source_normalized_sha256": "8041DAF98B04D763958DA9C83AF3472FA346D003F0FDCEF13A42FE1AA046B5F8",
+    "base_source_normalized_sha256": "01EA85F46A9567D7ED6CF88C92346F9BE317FAFDDCF1F7791C07B2A3ED3858EB",
+    "source_diff_sha256": "FA6FA8505A45C1C35061B7E582D396A0083CF39E00F87489A74AF95763F34497",
+    "source_diff_numstat": {
+      "insertions": 21,
+      "deletions": 23,
+      "files": 1
+    },
+    "only_unstaged_business_source": [
+      "src/绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dependency_graph.tex"
+    ],
+    "staged_paths": [],
+    "untracked_paths": [],
+    "commit_deferred_to_root_after_write_stopped": true,
+    "page_wrapper": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R2_SA2_REPAIR_R98_LOCAL_20260824\\build\\page\\v260_FIG-P654-01_page.pdf",
+      "sha256": "AAE9D6338AEAA19283AB3D98EEABA1B8692ADE8F10A0E72DF51A59E5C194F763",
+      "bytes": 63722,
+      "pages": 1,
+      "printed_label": "685",
+      "page_size_pt": [
+        595.2760009765625,
+        841.8900146484375
+      ],
+      "drawing_objects": 21
+    },
+    "standalone_wrapper": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R2_SA2_REPAIR_R98_LOCAL_20260824\\build\\standalone\\v260_FIG-P654-01_standalone.pdf",
+      "sha256": "0DBCAC072E9F89C34BBA8C5A2F4B2BC786E11743314510678EDBBB0E50242024",
+      "bytes": 43376,
+      "pages": 1,
+      "page_size_pt": [
+        595.2760009765625,
+        841.8900146484375
+      ],
+      "drawing_objects": 21
+    }
+  },
+  "final_source_change_summary": [
+    "Base labels raised from 9.6 pt to 10.1 pt; formula text set to 11.6 pt, giving 11.6/10.1=1.148514851485 <= 1.18.",
+    "Posterior and predictive nodes were restated with semantically equivalent, compact visible wording while retaining alpha+n and the posterior-predictive fraction.",
+    "Node sizes and lower interpretation/application branches were re-spaced to preserve legibility and page occupancy.",
+    "Posterior and downstream geometry were shifted 0.15 cm right to remove the real families-to-posterior arrowhead/source-border collision without adding a false whitelist.",
+    "No public macro, font, chapter, index, build entry, central state, mainline source, Dialogue B, or FINAL_ROOT file was modified."
+  ]
+}

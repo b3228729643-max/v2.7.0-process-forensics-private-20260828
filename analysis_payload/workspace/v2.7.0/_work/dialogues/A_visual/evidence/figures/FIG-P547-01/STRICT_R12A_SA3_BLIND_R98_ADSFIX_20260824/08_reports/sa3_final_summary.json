@@ -1,0 +1,110 @@
+{
+  "figure_id": "FIG-P547-01",
+  "handoff_id": "A-R130-P547-SA3-RESUME-20260824",
+  "owner_dialogue": "DIALOGUE_A_VISUAL",
+  "reviewer": "SA3_gpt-5.6-sol_xhigh",
+  "audit_type": "independent isolated second blind review",
+  "result": "SA3_INDEPENDENT_PASS_RESEALED_NOT_FINAL",
+  "scope_status": "A_LOCAL_SA3_RESEALED_NOT_FINAL_BOOK_ACCEPTANCE",
+  "source_sha256": "DF3D4415EDC56D02E056CAE0F3E38830DF28E781BC67ECDFB69863C5038F1600",
+  "official_r98_pdf_sha256": "52FA2EF0769553C8B6FD4B8D3CBA5BE671FA0F3190591A596FB8B6512C108A41",
+  "denominators": {
+    "text_parents": 23,
+    "vector_parents": 34,
+    "objects": 57,
+    "object_pairs": 1596,
+    "glyphs": 193,
+    "path_records": 71,
+    "path_pairs": 2485,
+    "commands": 143,
+    "within_record_command_pairs": 186
+  },
+  "machine_failures": {
+    "glyph": 0,
+    "object_pair": 0,
+    "role_ratio": 0,
+    "unassigned_component_pixels": 0,
+    "clip_boundary_pixels": 0
+  },
+  "manual_adjudication": {
+    "native_1x_8x_opened": true,
+    "multi_owner_components": 4,
+    "different_semantic_path_contacts": 9,
+    "path_contact_decision": "DESIGN_CONNECTION_CONFIRMED",
+    "g139": {
+      "candidate_component": 174,
+      "pre_owner_pixels": {
+        "G140": 401,
+        "G139": 1
+      },
+      "rule": "dominant component >=20:1",
+      "final_owner": {
+        "G140": 402
+      },
+      "glyph_height_px": 28,
+      "glyph_area_px": 53,
+      "missing_stroke_px": 0,
+      "foreign_pixel_px": 0,
+      "decision": "PASS"
+    },
+    "stretchy_delimiters": {
+      "glyphs": [
+        "G035",
+        "G048",
+        "G120",
+        "G133"
+      ],
+      "g120_reclaimed_from": {
+        "G114": 20,
+        "G115": 8
+      },
+      "decision": "PASS_COMPLETE_VISIBLE_CONTOUR"
+    }
+  },
+  "clearance_minimum_px": {
+    "TEXT_TEXT": 5.0,
+    "TEXT_NODE_BORDER": 9.0,
+    "VECTOR_VECTOR": 0.0,
+    "TEXT_VECTOR": 3.0
+  },
+  "sheet_counts_opened": {
+    "glyph_1x": 10,
+    "glyph_8x": 17,
+    "object_1x": 5,
+    "object_8x": 15,
+    "path_1x": 6,
+    "path_8x": 18,
+    "command_1x": 9,
+    "command_8x": 24,
+    "object_pair_critical_1x": 3,
+    "object_pair_critical_8x": 5,
+    "path_pair_critical_1x": 2,
+    "path_pair_critical_8x": 3
+  },
+  "canonical_fields": {
+    "SOURCE_FONT_PASS": true,
+    "PIXEL_HEIGHT_PASS": true,
+    "SAME_CLASS_RATIO_PASS": true,
+    "ROLE_RATIO_PASS": true,
+    "FONT_VISUAL_HARMONY_PASS": true,
+    "MATH_SEMANTICS_PASS": true,
+    "TEXT_CONSISTENCY_PASS": true,
+    "GRAYSCALE_PASS": true,
+    "PAGE_INTEGRATION_PASS": true,
+    "OVERLAP_PIXEL_COUNT": 0,
+    "CLIP_BOUNDARY_PIXEL_COUNT": 0,
+    "PIXEL_ADJUDICATION_STATUS": "MASK_OWNERSHIP_CONTAMINATION_CORRECTED"
+  },
+  "reseal": {
+    "operation": "MECHANICAL_ADS_RESEAL_ONLY_NO_SEMANTIC_REAUDIT",
+    "source_package_untouched": true,
+    "removed_named_stream_count_from_target_only": 2,
+    "removed_named_stream_bytes": 495125,
+    "recursive_non_default_stream_count": 0,
+    "preserved_evidence_file_count": 1856,
+    "preserved_evidence_bytes": 137288966,
+    "preserved_evidence_tree_sha256": "4be1180bfed14b94b761c39c13615a3ac21986f8f7b4ea3ed48aa078c30cb224",
+    "preserved_evidence_mismatch_count": 0
+  },
+  "unresolved": []
+}

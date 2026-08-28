@@ -1,0 +1,19 @@
+view_id,file,reviewer,actual_open,scope,manual_finding,decision
+V001,page_0684_native300dpi.png,SA3,true,full physical page 684,"Figure is proportionate to the text block, caption sits directly below, surrounding paragraphs flow normally, and printed page 671/header/footer are intact.",PASS
+V002,page_0684_full_page_200dpi.png,SA3,true,protocol full-page comparison,"At the secondary whole-page scale the figure remains readable and balanced; no abnormal whitespace or float displacement appears.",PASS
+V003,figure_caption_complete_native300dpi.png,SA3,true,complete figure plus caption,"All figure geometry and both caption lines are present in one crop, with no edge loss and a clear figure-to-caption transition.",PASS
+V004,figure_crop_native300dpi.png,SA3,true,figure-only native crop,"The three semantic bands read top-to-bottom and left-to-right; all arrows, cards, nodes, labels, and scripts are crisp.",PASS
+V005,figure_crop_grayscale_native300dpi.png,SA3,true,grayscale figure,"Updated/current/old classes remain distinguishable through hatch/solid/dotted outlines and wording, not color alone.",PASS
+V006,object_overlay_native300dpi.png,SA3,true,46-object denominator overlay,"Every frozen object ID maps to a visible semantic object; caption continuation is separately boxed as O046, avoiding a false caption-number overlap.",PASS
+V007,semantic_overlay_native300dpi.png,SA3,true,class overlay,"TEXT, FORMULA, LINE_ARROW, NODE_BORDER, and PANEL_BORDER classes cover the visible figure without an unclassified semantic object.",PASS
+V008,text_overlay_native300dpi.png,SA3,true,text/formula overlay,"All 30 text objects and 3 formula objects are boxed; no box indicates clipping, merging, or missing visible text.",PASS
+V009,roi01_update_order_arrow_native1x.png,SA3,true,native critical ROI,"Native pixels show clear digits, CJK order labels, a continuous shaft, and a clean arrowhead.",PASS
+V010,roi01_update_order_arrow_nearest8x.png,SA3,true,nearest-neighbour order ROI,"8x pixels confirm no arrow-to-text contact and no broken strokes in 更新顺序.",PASS
+V011,roi02_updated_current_old_slots_native1x.png,SA3,true,native critical ROI,"Native view confirms slot classes and centered labels with visible internal gutters.",PASS
+V012,roi02_updated_current_old_slots_nearest8x.png,SA3,true,nearest-neighbour slot ROI,"8x pixels show closed borders, discrete dotted marks, hatch gaps, and intact label strokes.",PASS
+V013,roi03_substep_state_formula_native1x.png,SA3,true,native critical ROI,"The mixed within-round state is immediately understandable at native scale.",PASS
+V014,roi03_substep_state_formula_nearest8x.png,SA3,true,nearest-neighbour substep ROI,"8x view confirms U+1D465 plus square-bracketed j and a clean separation between the two descriptions.",PASS
+V015,roi04_round_state_equivalence_record_native1x.png,SA3,true,native critical ROI,"Equality and recording are separate actions and all labels are readable without zoom.",PASS
+V016,roi04_round_state_equivalence_record_nearest8x.png,SA3,true,nearest-neighbour round ROI,"8x view confirms both equivalence arrowheads, the record arrowhead, square brackets around d, and parentheses around t.",PASS
+V017,roi05_caption_codepoints_native1x.png,SA3,true,native critical ROI,"Caption wording and line wrap are readable at the final rendering scale.",PASS
+V018,roi05_caption_codepoints_nearest8x.png,SA3,true,nearest-neighbour caption ROI,"8x pixels confirm the caption number, fullwidth punctuation, final ideographic full stop, and absence of tofu.",PASS

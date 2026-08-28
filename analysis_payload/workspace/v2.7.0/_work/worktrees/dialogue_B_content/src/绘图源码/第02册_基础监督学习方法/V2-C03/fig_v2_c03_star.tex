@@ -1,0 +1,37 @@
+% v2.3.1 figure UID: FIG-P222-01
+% v2.6.0 Image-reference reverse redraw: clarify the class-to-feature path without changing topology.
+\tikzset{
+  slfig-FIG-P222-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P222-01-var/.style={circle,draw=SLBlue,line width=.82pt,minimum size=7.5mm,inner sep=0pt,fill=white},
+  slfig-FIG-P222-01-class/.style={slfig-FIG-P222-01-var,fill=SLBlueBG,line width=.98pt},
+  slfig-FIG-P222-01-arrow/.style={-{Stealth[length=2.0mm,width=1.25mm]},draw=SLBlue,line width=.92pt},
+  slfig-FIG-P222-01-category/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,text=SLBlue},
+  slfig-FIG-P222-01-region/.style={draw=SLTeal,fill=SLTealBG,line width=.66pt},
+  slfig-FIG-P222-01-region-label/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,text=SLTeal},
+  slfig-FIG-P222-01-formula/.style={slfig note,font=\fontsize{9.2pt}{11.0pt}\selectfont,
+    align=center,rounded corners=1.4mm,inner xsep=2.5mm,inner ysep=1.6mm,line width=.60pt}
+}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P222-01]
+  \node[slfig-FIG-P222-01-class] (y) at (0,2.25) {$Y$};
+  \node[slfig-FIG-P222-01-category,above=2mm of y] {类别变量};
+  \node[slfig-FIG-P222-01-var] (x1) at (-3.50,0) {$X_1$};
+  \node[slfig-FIG-P222-01-var] (x2) at (-1.75,0) {$X_2$};
+  \node at (0,0) {$\cdots$};
+  \node[slfig-FIG-P222-01-var] (xm) at (1.75,0) {$X_{d-1}$};
+  \node[slfig-FIG-P222-01-var] (xd) at (3.50,0) {$X_d$};
+  \draw[slfig-FIG-P222-01-arrow] (y)--(x1);
+  \draw[slfig-FIG-P222-01-arrow] (y)--(x2);
+  \draw[slfig-FIG-P222-01-arrow] (y)--(xm);
+  \draw[slfig-FIG-P222-01-arrow] (y)--(xd);
+  \begin{scope}[on background layer]
+  \node[slfig-FIG-P222-01-region,rounded corners=2mm,fit=(x1)(x2)(xm)(xd),
+        inner xsep=5mm,inner ysep=7mm] {};
+  \end{scope}
+  \node[slfig-FIG-P222-01-region-label] at (0,-.58) {给定 $Y$ 后相互独立};
+  \node[slfig-FIG-P222-01-formula,anchor=north] at (0,-1.28)
+    {$X_i\perp X_j\mid Y\quad(i\ne j)$};
+\end{tikzpicture}
+\caption{朴素贝叶斯的条件依赖结构：给定$Y$后，各特征节点相互独立}\label{fig:V2-C03-star}
+\end{figure}

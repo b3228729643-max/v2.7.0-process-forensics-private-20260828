@@ -1,0 +1,47 @@
+{
+  "handoff_id": "A-R111-P033-SA1-FRESH-ISOLATED-20260827",
+  "canonical_task": "/root/p033_r111_fresh_sa1",
+  "model_effort": "gpt-5.6-sol/xhigh",
+  "fork_turns": "none",
+  "assigned_scope": "Fresh isolated read-only SA1 for FIG-P033-01 against official R111, with new evidence written only to the assigned new root.",
+  "completed": [
+    "Verified the official R111 PDF and current P033 source identities exactly.",
+    "Independently located Figure 2.1 at physical page 29 / printed page 16.",
+    "Froze N=99 atomic visible objects and enumerated all 4,851 unordered pairs.",
+    "Generated official 300 dpi, native1x, nearest-neighbor 8x, overlay, ROI, and grayscale evidence.",
+    "Actually opened both final sheets, all seven individual nearest8x ROIs, the full page, crop, overlay, and grayscale view before manual ledgers.",
+    "Authored object-specific manual decisions for 81/81 queued pairs and closed 4,851/4,851 total pairs.",
+    "Verified geometry, mathematical meaning, text/caption consistency, grayscale, page integration, and R168 hard failures."
+  ],
+  "files_changed": {
+    "business_source_main_pdf_git_central_state": [],
+    "role_evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P033-01\\STRICT_R5_SA1_FRESH_ISOLATED_R111_20260827",
+    "external_report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P033-01_R111_SA1_FRESH_ISOLATED_REPORT_20260827.md",
+    "external_handoff": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\handoff\\A_visual\\FIG-P033-01_R111_SA1_FRESH_ISOLATED_HANDOFF_20260827.json"
+  },
+  "decisions": {
+    "result": "PASS",
+    "route": "SA1_PASS_READY_FOR_FRESH_ISOLATED_SA3",
+    "claims_excluded": ["A_LOCAL_PASS", "FINAL_PASS", "SA3_COMPLETE"],
+    "canonical_illegal_overlap_pixels": 0,
+    "clipping_pixels": 0,
+    "unresolved_pairs": 0,
+    "r168_advisory": "9.2 pt / 9.4 pt local source declarations are advisory only because the actually opened native/8x evidence is readable and balanced."
+  },
+  "unresolved": [],
+  "validation": {
+    "pdf_sha256": "DAB1062500E39DD2C34C6B4A9FF51CAC2BE0A4C84B2F45F5FB8E645C4BC012D6",
+    "source_sha256": "D3C1D38ECB8468EC3294F7D18BD886316829F14690A516000189CE853A07BC05",
+    "atomic_denominator_sha256": "958FAA823187F184598E8FC62B0D621EF30C70C5C5856B4FAF80D30AC63F2419",
+    "all_pairs_sha256": "A15A2122D129EABBF0F922A5ECAC4CAA096D2535782C2A6CBBBC33DE9B094369",
+    "manual_pair_ledger_sha256": "2785FB306E52999AD1DDA17A50B3BECB594A7CD4AB55244C4EC182739404A249",
+    "final_hard_gate_sha256": "DAC696D17078B9FAA4642A361D81B5F21D2BEB78CB50D5DAE4F4AD8CC1B17449",
+    "frozen_N": 99,
+    "frozen_C": 4851,
+    "manual_rows": 81,
+    "manual_pair_id_set_exact": true,
+    "hard_failures": 0
+  },
+  "seal_sentinel": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P033-01\\STRICT_R5_SA1_FRESH_ISOLATED_R111_20260827\\seal\\WRITE_STOPPED.md",
+  "next_action": "Start a new fresh isolated SA3 instance only if the coordinator authorizes it; do not reuse this SA1 instance or its conclusions as SA3's independent judgment."
+}

@@ -1,0 +1,32 @@
+{
+  "source_backend": "PDF rawdict text plus TikZ/PDF page drawings",
+  "svg_use_order": "N/A: frozen candidate contains no SVG component/use pipeline for this figure",
+  "manual_contact_sheets_reviewed": true,
+  "mapping_records": 236,
+  "mapping_pass_records": 234,
+  "mapping_pending_records": 0,
+  "mapping_unknown_records": 0,
+  "mapping_known_failure_records": 2,
+  "contact_sheet_count": 15,
+  "known_text_halo_occlusion": [
+    {
+      "ELEMENT_ID": "E016",
+      "SEMANTIC_TEXT": "虚线 q_L(x)=2/5",
+      "SOURCE_ORDER_EVIDENCE": "fig_v5_c02_is_support.tex:q_L node precedes boundary node; PDF draw20 is later opaque white fill",
+      "LATER_OPAQUE_HALO": "HALO03",
+      "HIDDEN_OR_PARTIALLY_HIDDEN_GLYPHS": "G0095:=;G0096:2;G0106:5",
+      "FINAL_VISIBLE_MASK": "masks/text_elements/E016_raw.png",
+      "PRE_TEXT_STATUS": "SOURCE_NODE_RAWDICT_AND_PAINT_ORDER_RETAINED_NO_SYNTHETIC_PRE_RASTER",
+      "STATUS": "FAIL_TEXT_OCCLUSION_TEXT_COMPLETENESS_REQUIRED_SUFFIX",
+      "EVIDENCE_PACKAGE": "text_occlusion_evidence/E016"
+    }
+  ],
+  "fully_occluded_source_slots_excluded_from_final_inventory": [
+    "G0095",
+    "G0096"
+  ],
+  "retained_partial_final_visible_fragments": [
+    "G0106",
+    "S002"
+  ]
+}

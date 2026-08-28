@@ -1,0 +1,326 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V5-C03",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 10,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-P596-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_dependency_graph.tex",
+      "source_file": "fig_v5_c03_dependency_graph.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C03-dependency",
+      "caption": "细致平衡只验证平稳性；遍历平均和分布收敛还需相应链结构条件。",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读图时应先沿MH构造与平稳证书分支核对细致平衡只推出πK=π，再沿链结构分支区分遍历时间平均与边缘分布收敛的附加条件，最后沿诊断分支说明相关性通常存在但不是任意核的必然性质。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+        "target_label": "fig:V5-C03-dependency",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-00-001",
+        "PRE-SA-006",
+        "SLM-19-03-003",
+        "SLM-19-05-002",
+        "SLM-19-04-003",
+        "PRE-SA-007",
+        "SLM-19-03-006"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+        "对象—关系—结论：目标分布π和提议q经接受率α构造MH转移核K；K的细致平衡证书π(dx)K(x,dy)=π(dy)K(y,dx)只推出πK=π，即π平稳。遍历时间平均还须另行核验有限状态不可约或一般状态正Harris常返；边缘分布收敛还须在相应结构条件上加非周期性。K通常形成相关轨迹，但独立核K(x,dy)=π(dy)是反例，相关性应以轨迹、自相关、MCSE和ESS诊断。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C03-01",
+      "canonical_uid": "FIG-P596-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-V5-C03-02",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_markov_chain_path.tex",
+      "source_file": "fig_v5_c03_markov_chain_path.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C03-markov-chain-path",
+      "caption": "马尔可夫链在转移核 $K$ 下产生相关样本路径；箭头 $x\\to y$ 表示 $K(x,\\mathrm{d}y)$ 在 $y$ 附近有正质量，自环表示链可能保持在当前状态",
+      "semantic_type": "state_or_network_diagram",
+      "teaching_objective": "读图时应回答：“马尔可夫链在转移核 $K$ 下产生相关样本路径；箭头 $x\\to y$ 表示 $K(x,\\mathrm{d}y)$ 在 $y$ 附近有正质量，自环表示链可能保持在当前状态”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+        "target_label": "fig:V5-C03-markov-chain-path",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-03-003"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C03-02"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：马尔可夫链在转移核 K 下产生相关样本路径；箭头 x到 y 表示 K(x,dy) 在 y 附近有正质量，自环表示链可能保持在当前状态"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-03",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mcmc_pipeline.tex",
+      "source_file": "fig_v5_c03_mcmc_pipeline.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C03-mcmc-pipeline",
+      "caption": "MCMC工作流按箭头依次完成三步：由目标分布$\\pi$构造以$\\pi$为平稳分布的转移核，运行链并舍弃预热段，再以保留样本的遍历平均估计$\\mathbb E_\\pi[h(X)]$。",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "读图时应回答：“MCMC从目标分布 $\\pi$ 出发设计以 $\\pi$ 为平稳分布的转移核，运行链并舍弃预热段，再用保留样本的遍历平均估计 $\\pi$ 下期望”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+        "target_label": "fig:V5-C03-mcmc-pipeline",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-03-004",
+        "SLM-19-03-005",
+        "SLM-19-03-006",
+        "PRE-SA-006"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：MCMC工作流按箭头依次完成三步：由目标分布π构造以π为平稳分布的转移核，运行链并舍弃预热段，再以保留样本的遍历平均估计 E下标π[h(X)]。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-04",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mh_balance_flux.tex",
+      "source_file": "fig_v5_c03_mh_balance_flux.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C03-mh-balance-flux",
+      "caption": "MH接受机制把两个方向的已接受概率流同时截为两者较小值，从而满足细致平衡；该条件足以推出 $\\pi$ 平稳，但不是平稳性的必要条件",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "读图时应回答：“MH接受机制把两个方向的已接受概率流同时截为两者较小值，从而满足细致平衡；该条件足以推出 $\\pi$ 平稳，但不是平稳性的必要条件”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+        "target_label": "fig:V5-C03-mh-balance-flux",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-05-002",
+        "SLM-19-06-002",
+        "SLM-19-04-004"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：MH接受机制把两个方向的已接受概率流同时截为两者较小值，从而满足细致平衡；该条件足以推出 π 平稳，但不是平稳性的必要条件"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-05",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mh_accept_reject.tex",
+      "source_file": "fig_v5_c03_mh_accept_reject.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C03-mh-accept-reject",
+      "caption": "Metropolis--Hastings 一步更新：提议、接受与拒绝自环。",
+      "semantic_type": "state_or_network_diagram",
+      "teaching_objective": "读图时应按单向流程说明：从 $X_t=x$ 按 $q(x,\\cdot)$ 提出 $Y=y$；在 $g(x,y)>0$ 时计算 MH 接受率并以 $U\\le\\alpha(x,y)$ 判定；接受到 $y$，拒绝则记录 $X_{t+1}=x$ 并形成自环。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+        "target_label": "fig:V5-C03-mh-accept-reject",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-04-003",
+        "SLM-19-04-004",
+        "SLM-19-02-008"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：当前状态经提议核产生候选；正向流为正时计算 MH 接受率并用均匀随机量判定；接受提交候选，拒绝记录旧状态并形成自环"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-06",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_acceptance_function.tex",
+      "source_file": "fig_v5_c03_acceptance_function.tex",
+      "source_kind": "pgfplots",
+      "label": "fig:V5-C03-acceptance-function",
+      "caption": "MH接受概率是比值 $r$ 的截断函数 $\\alpha=\\min\\{1,r\\}$，其中 $r=\\pi(y)q(y,x)/[\\pi(x)q(x,y)]$；独立提议时可写为 $r=w(y)/w(x)$",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读图时应回答：“MH接受概率是比值 $r$ 的截断函数 $\\alpha=\\min\\{1,r\\}$，其中 $r=\\pi(y)q(y,x)/[\\pi(x)q(x,y)]$；独立提议时可写为 $r=w(y)/w(x)$”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+        "target_label": "fig:V5-C03-acceptance-function",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-007",
+        "SLM-19-04-003",
+        "SLM-19-06-002"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C03-06"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：MH接受概率是比值 r 的截断函数 α=最小值(1,r)，其中 r=π(y)q(y,x)/[π(x)q(x,y)]；独立提议时可写为 r=w(y)/w(x)"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-07",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_rejection_sampling_comparison.tex",
+      "source_file": "fig_v5_c03_rejection_sampling_comparison.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C03-rejection-vs-mh",
+      "caption": "接受--拒绝抽样拒绝候选后不输出该候选；MH拒绝候选后把当前状态再次记入链，因此输出通常相关而非独立",
+      "semantic_type": "comparison_or_synthesis_map",
+      "teaching_objective": "读图时应回答：“接受--拒绝抽样拒绝候选后不输出该候选；MH拒绝候选后把当前状态再次记入链，因此输出通常相关而非独立”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+        "target_label": "fig:V5-C03-rejection-vs-mh",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-04-003",
+        "SLM-19-03-005",
+        "PRE-SA-007"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：接受—拒绝抽样拒绝候选后不输出该候选；MH拒绝候选后把当前状态再次记入链，因此输出通常相关而非独立"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-08",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_componentwise_sweep.tex",
+      "source_file": "fig_v5_c03_componentwise_sweep.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C03-componentwise-sweep",
+      "caption": "分量MH的系统扫描与随机扫描。固定顺序的核复合通常不保证可逆；可逆坐标核的固定权重随机混合仍保持可逆。",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "读图时应回答：“分量MH在一次扫描中依次更新坐标；第 $j$ 步使用已更新的前 $j-1$ 个分量与尚未更新的后续分量，并仍需执行相应接受--拒绝检验”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+        "target_label": "fig:V5-C03-componentwise-sweep",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-04-006"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：分量MH的系统扫描与随机扫描。固定顺序的核复合通常不保证可逆；可逆坐标核的固定权重随机混合仍保持可逆。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-09",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_trace_running_mean.tex",
+      "source_file": "fig_v5_c03_trace_running_mean.tex",
+      "source_kind": "pgfplots",
+      "label": "fig:V5-C03-trace-running-mean",
+      "caption": "舍弃前5步后，保留样本运行均值在目标值2附近波动；本图仅作诊断，不构成收敛证明",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读图时应先区分上面板的预热段与保留样本，再按下方面板复算保留样本运行均值，最终核对它在目标值2附近波动且在t=20时等于2.0000。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+        "target_label": "fig:V5-C03-trace-running-mean",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-03-005",
+        "SLM-19-03-006"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C03-09"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：上面板给出固定轨迹并以阴影区分前5步预热段和后15步保留样本；下面板从t=6起绘制保留样本运行均值并以点划线标出目标值2；运行均值最终到达2.0000。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-10",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_autocorrelation_ess.tex",
+      "source_file": "fig_v5_c03_autocorrelation_ess.tex",
+      "source_kind": "pgfplots",
+      "label": "fig:V5-C03-autocorrelation-ess",
+      "caption": "固定窗口内的正经验自相关增大方差权重，因而使同长度轨迹的有效样本量减小。",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读者看完图32.9后，应能先读出$k=1,\\ldots,6$窗口内的正经验自相关，再按有限样本权重$(1-k/n)$形成$\\widehat\\tau_{6,n}$，最终说明正相关增大方差权重并减小同长度轨迹的$\\widehat N_{\\mathrm{eff}}$；同时核对$K=6<n$、正分母和诊断边界。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+        "target_label": "fig:V5-C03-autocorrelation-ess",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-03-006",
+        "PRE-SA-006"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C03-10"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：左侧七根stem给出k=0到6的固定经验ACF，截断虚线和省略号说明只纳入1到6阶；箭头指向右侧有限样本加权ESS公式卡，表明窗口内正相关增大方差权重并减小有效样本量，有限轨迹诊断不是收敛证明。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

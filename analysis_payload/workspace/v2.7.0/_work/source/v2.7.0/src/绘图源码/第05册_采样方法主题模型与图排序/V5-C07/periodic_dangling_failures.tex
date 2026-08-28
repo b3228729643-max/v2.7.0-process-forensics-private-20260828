@@ -1,0 +1,95 @@
+% v2.7.0 figure UID: FIG-P716-01
+\tikzset{slfig-FIG-P716-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P716-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=center},
+  panel/.style={draw=SLRuleGray,line width=0.72pt,rounded corners=3pt,
+    minimum width=76mm,minimum height=90mm,inner sep=0pt},
+  title left/.style={font=\fontsize{10.2pt}{12.2pt}\selectfont\bfseries,
+    text=SLAccentOrange,inner sep=0pt},
+  title right/.style={font=\fontsize{10.2pt}{12.2pt}\selectfont\bfseries,
+    text=SLDeepBlue,inner sep=0pt},
+  page/.style={circle,draw=SLDeepBlue,fill=SLSoftBlue,line width=0.82pt,
+    minimum size=10mm,inner sep=1pt},
+  dangling/.style={rectangle,rounded corners=2pt,draw=SLAccentOrange,
+    fill=white,line width=1.0pt,minimum width=12mm,minimum height=10mm,inner sep=1pt},
+  link/.style={->,draw=SLMidBlue,line width=0.94pt},
+  transition label/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,inner sep=0pt},
+  cell/.style={draw=SLRuleGray,line width=0.58pt,minimum size=6.4mm,inner sep=0pt},
+  state one/.style={draw=SLDeepBlue,solid,fill=SLSoftBlue,line width=0.76pt,
+    rounded corners=2pt,minimum width=13mm,minimum height=11mm,inner sep=1pt},
+  state two/.style={draw=SLAccentOrange,dashed,fill=white,line width=0.82pt,
+    rectangle,minimum width=13mm,minimum height=11mm,inner sep=1pt},
+  sequence/.style={->,draw=SLTextGray,densely dotted,line width=0.74pt},
+  fact/.style={draw=SLDeepBlue,solid,fill=SLSoftBlue,line width=0.76pt,
+    rounded corners=2pt,text width=66mm,minimum height=9mm,
+    inner xsep=1.6mm,inner ysep=1.2mm},
+  warning/.style={draw=SLAccentOrange,dashed,fill=white,line width=0.82pt,
+    rounded corners=2pt,text width=66mm,minimum height=12mm,
+    inner xsep=1.6mm,inner ysep=1.2mm},
+  repair/.style={draw=SLDeepBlue,dash pattern=on 4.5pt off 2pt on 1pt off 2pt,
+    fill=SLWarmGray,line width=0.78pt,rounded corners=2pt,text width=66mm,
+    inner xsep=1.6mm,inner ysep=1.2mm},
+  >={Stealth[length=2.15mm,width=1.55mm]},
+  alt={对象—关系—结论：左面板保持A与B双向确定转移的二周期拓扑，列随机矩阵为零一交换矩阵；从第一基向量出发，时刻零、二回到第一基向量，时刻一落在第二基向量。该链存在唯一平稳分布二分之一乘全一向量，但从此初值的逐步序列不收敛，修复方向只概括为阻尼或惰性。右面板保持C指向零出度D的拓扑，矩阵第二列和为零且作用于第二基向量得到零向量，所以它不是列随机概率核并会把质量一直接丢到零。一般PageRank必须先用概率向量v回填悬挂列形成列随机S，再构造阻尼矩阵G。颜色之外，圆形与矩形、实线与虚线及点划线共同编码状态和结论。}]
+
+\node[panel] at (-4.05,0) {};
+\node[title left] at (-4.05,4.00) {故障一：周期$2$振荡};
+\node[page] (a) at (-5.55,2.85) {A};
+\node[page] (b) at (-2.55,2.85) {B};
+\draw[link] (a) to[bend left=17] node[transition label,above=1.6mm] {$1$} (b);
+\draw[link] (b) to[bend left=17] node[transition label,below=1.8mm] {$1$} (a);
+\node at (-4.05,1.65)
+  {$M_{\mathrm p}=\begin{bmatrix}0&1\\1&0\end{bmatrix}$，
+   $\boldsymbol r^{(0)}=\boldsymbol e_1$};
+
+\node[state one] (s0) at (-5.65,0.45) {$t=0$\\$\boldsymbol e_1$};
+\node[state two] (s1) at (-4.05,0.45) {$t=1$\\$\boldsymbol e_2$};
+\node[state one] (s2) at (-2.45,0.45) {$t=2$\\$\boldsymbol e_1$};
+\draw[sequence] (s0) -- (s1);
+\draw[sequence] (s1) -- (s2);
+
+\node[fact] at (-4.05,-0.80)
+  {\textbf{平稳分布：存在且唯一}\quad
+   $\boldsymbol r_\star=(\tfrac12,\tfrac12)^{\mathsf T}$};
+\node[warning] at (-4.05,-2.10)
+  {\textbf{从该初值逐步收敛：无}\\
+   $M_{\mathrm p}^{2q}\boldsymbol e_1=\boldsymbol e_1$，
+   $M_{\mathrm p}^{2q+1}\boldsymbol e_1=\boldsymbol e_2$};
+\node[repair,minimum height=10mm] at (-4.05,-3.55)
+  {\textbf{修复方向（概括）：}阻尼／惰性};
+
+\node[panel] at (4.05,0) {};
+\node[title right] at (4.05,4.00) {故障二：悬挂零列};
+\node[page] (c) at (2.65,2.85) {C};
+\node[dangling] (d) at (5.45,2.85) {D};
+\draw[link] (c) -- node[transition label,above=1.6mm] {$1$} (d);
+\node[text=SLAccentOrange,inner sep=0pt] at (6.90,2.85) {零出度};
+\node[inner sep=0pt] at (2.55,1.25) {$M_{\mathrm d}=$};
+\matrix (md) [matrix of nodes,nodes={cell},row sep=-\pgflinewidth,column sep=-\pgflinewidth]
+  at (4.05,1.25) {$0$&$0$\\$1$&$0$\\};
+\node[draw=SLAccentOrange,dashed,line width=0.86pt,
+  fit=(md-1-2)(md-2-2),inner sep=0pt] {};
+\node[align=left,text=SLTextGray,inner sep=0pt] at (6.15,1.25)
+  {第$2$列和$=0$};
+
+\node[fact,fill=white] at (4.05,-0.10)
+  {$M_{\mathrm d}\boldsymbol e_2=\boldsymbol0$，\quad
+   $\boldsymbol1^{\mathsf T}M_{\mathrm d}=(1,0)\ne\boldsymbol1^{\mathsf T}$};
+\node[warning] at (4.05,-1.45)
+  {\textbf{不是列随机概率核，并丢失质量}\\
+   $\boldsymbol r^{(0)}=\boldsymbol e_2\Rightarrow
+   \boldsymbol r^{(1)}=\boldsymbol0$，总质量$1\to0$};
+\node[repair,minimum height=19mm] at (4.05,-3.25)
+  {\textbf{顺序不可交换：}\\
+   先用$\boldsymbol v$回填悬挂列：
+   $S=M_{\mathrm d}+\boldsymbol v\boldsymbol e_2^{\mathsf T}$（列随机）；\\
+   再阻尼：$G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$，$0\le d<1$。};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{基本PageRank的两类结构性故障：周期$2$链可有唯一平稳分布却从给定初值振荡；悬挂零列不是列随机核并会丢失质量，须先回填再阻尼。}
+\label{fig:V5-C07-periodic-dangling}
+\end{figure}

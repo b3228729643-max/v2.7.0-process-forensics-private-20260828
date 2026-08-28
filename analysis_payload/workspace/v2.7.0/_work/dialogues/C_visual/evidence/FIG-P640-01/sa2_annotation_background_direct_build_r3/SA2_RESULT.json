@@ -1,0 +1,54 @@
+{
+  "handoff_id": "C-FIG-P640-01-SA2-ANNOTATION-BACKGROUND-DIRECT-BUILD-R3",
+  "figure_uid": "FIG-P640-01",
+  "result": "PASS",
+  "disposition": "LOCAL_SA2_PASS_READY_FOR_MAIN",
+  "candidate_pdf": {
+    "bytes": 40389,
+    "sha256": "E2AE5C0DACA6C9D07B43D61D00E9FA5580E63417DE15871D8DC6BA3842F9F2D2",
+    "pages": 1
+  },
+  "build": {
+    "pid": 1664,
+    "invocation_count": 1,
+    "retry_count": 0,
+    "natural_exit": true,
+    "exit_code": 0,
+    "success_hard_gate": true,
+    "post_tex_process_count": 0
+  },
+  "denominators": {
+    "objects": 40,
+    "unordered_pairs": 780,
+    "glyphs_total_including_spaces": 160,
+    "glyphs_nonspace": 145,
+    "critical_pairs": 76,
+    "clip_objects": 40,
+    "pdf_drawings": 20
+  },
+  "manual_denominators": {
+    "objects": 40,
+    "critical_pairs": 76,
+    "glyph_groups": 7,
+    "views": 12,
+    "hard_gates": 15
+  },
+  "target_regressions": {
+    "PAIR_0688_curve_to_limit_note": {
+      "decision": "PASS",
+      "final_visible_glyph_intersection": 0,
+      "observation": "Native 1x and nearest-neighbor 8x show the curve left-below the first N with clean white separation."
+    },
+    "PAIR_0779_marker_to_tick": {
+      "decision": "PASS",
+      "shared_foreground_pixels": 0,
+      "foreground_distance_px": 4,
+      "orthogonal_blank_gap_px": 3
+    }
+  },
+  "machine_failures": 0,
+  "manual_failures": 0,
+  "r168_hard_font_failures": 0,
+  "clip_failures": 0,
+  "unresolved": []
+}

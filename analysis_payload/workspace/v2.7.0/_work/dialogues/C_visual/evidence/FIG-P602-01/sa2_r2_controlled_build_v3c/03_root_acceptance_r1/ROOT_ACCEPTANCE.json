@@ -1,0 +1,333 @@
+{
+  "uid": "FIG-P602-01",
+  "acceptance_round": "SA2_R2_V3C_NATIVE_ROOT_ACCEPTANCE_R1",
+  "generated_utc": "2026-08-25T07:42:27.312739+00:00",
+  "acceptance_status": "ROOT_ACCEPTED_STRICT_FAIL_G032_H06",
+  "evidence_outcome": "STRICT_FAIL_G032_H06",
+  "source_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v3c\\02_native_evidence_r1",
+  "source_root_ordinary_files": 900,
+  "source_manifest_rows": 898,
+  "source_payload_control_self_seal": [
+    882,
+    16,
+    1,
+    1
+  ],
+  "source_manifest_sha256": "F26B3535E001550815A6616883FD3B9261F1D1B99A240AA956456047195D4F68",
+  "source_marker_sha256": "085F65EFA1167C07446ACA9E3AB18C0B813B45BD5AB02DBD0F300168E772F68D",
+  "source_handoff_sha256": "5D839DF81D93F3FE589F826D7BF8D56AD916D6C1326C3CDA94E4E6D4E05F91EB",
+  "source_recordset_sha256": "9DD45215B3ACF6DBD9AFD761004E827868C2BE04C19BE1861AEDC2A3C2923A85",
+  "failure_count": 0,
+  "failure_names": [],
+  "manual_counts": {
+    "objects": {
+      "rows": 30,
+      "unique": 30,
+      "expected": 30
+    },
+    "glyphs": {
+      "rows": 154,
+      "unique": 154,
+      "expected": 154
+    },
+    "pairs": {
+      "rows": 435,
+      "unique": 435,
+      "expected": 435
+    },
+    "critical_pairs": {
+      "rows": 16,
+      "unique": 16,
+      "expected": 16
+    },
+    "peers": {
+      "rows": 28,
+      "unique": 28,
+      "expected": 28
+    },
+    "roles": {
+      "rows": 3,
+      "unique": 3,
+      "expected": 3
+    },
+    "clips": {
+      "rows": 30,
+      "unique": 30,
+      "expected": 30
+    },
+    "views": {
+      "rows": 4,
+      "unique": 4,
+      "expected": 4
+    },
+    "hard_gates": {
+      "rows": 12,
+      "unique": 12,
+      "expected": 12
+    }
+  },
+  "checks": [
+    {
+      "name": "source_manifest_model",
+      "pass": true,
+      "detail": {
+        "ordinary_files": 900,
+        "manifest_rows": 898,
+        "unique_manifest_paths": 898,
+        "unlisted": [
+          "09_manifest/evidence_file_manifest.csv",
+          "WRITE_STOPPED.json"
+        ]
+      }
+    },
+    {
+      "name": "source_category_counts",
+      "pass": true,
+      "detail": {
+        "PAYLOAD": 882,
+        "CONTROL": 16
+      }
+    },
+    {
+      "name": "listed_files_present",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "listed_bytes_exact",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "listed_sha256_exact",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "listed_ntfs_mtime_ns_exact",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "source_manifest_sha",
+      "pass": true,
+      "detail": {
+        "computed": "F26B3535E001550815A6616883FD3B9261F1D1B99A240AA956456047195D4F68",
+        "marker": "F26B3535E001550815A6616883FD3B9261F1D1B99A240AA956456047195D4F68"
+      }
+    },
+    {
+      "name": "source_recordset_sha",
+      "pass": true,
+      "detail": {
+        "computed": "9DD45215B3ACF6DBD9AFD761004E827868C2BE04C19BE1861AEDC2A3C2923A85",
+        "marker": "9DD45215B3ACF6DBD9AFD761004E827868C2BE04C19BE1861AEDC2A3C2923A85"
+      }
+    },
+    {
+      "name": "source_marker_strictly_latest",
+      "pass": true,
+      "detail": {
+        "marker_mtime_ns": 1787643560935613300,
+        "other_latest_mtime_ns": 1787643560831488000
+      }
+    },
+    {
+      "name": "source_all_files_readonly",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "source_csv_parse",
+      "pass": true,
+      "detail": {
+        "count": 20,
+        "failures": []
+      }
+    },
+    {
+      "name": "source_json_parse",
+      "pass": true,
+      "detail": {
+        "count": 7,
+        "failures": []
+      }
+    },
+    {
+      "name": "source_png_open",
+      "pass": true,
+      "detail": {
+        "count": 864,
+        "failures": []
+      }
+    },
+    {
+      "name": "source_no_python_cache",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "source_no_ads",
+      "pass": true,
+      "detail": {
+        "exit_code": 0,
+        "streams": [],
+        "stderr": ""
+      }
+    },
+    {
+      "name": "manual_objects_count",
+      "pass": true,
+      "detail": {
+        "rows": 30,
+        "unique": 30,
+        "expected": 30
+      }
+    },
+    {
+      "name": "manual_glyphs_count",
+      "pass": true,
+      "detail": {
+        "rows": 154,
+        "unique": 154,
+        "expected": 154
+      }
+    },
+    {
+      "name": "manual_pairs_count",
+      "pass": true,
+      "detail": {
+        "rows": 435,
+        "unique": 435,
+        "expected": 435
+      }
+    },
+    {
+      "name": "manual_critical_pairs_count",
+      "pass": true,
+      "detail": {
+        "rows": 16,
+        "unique": 16,
+        "expected": 16
+      }
+    },
+    {
+      "name": "manual_peers_count",
+      "pass": true,
+      "detail": {
+        "rows": 28,
+        "unique": 28,
+        "expected": 28
+      }
+    },
+    {
+      "name": "manual_roles_count",
+      "pass": true,
+      "detail": {
+        "rows": 3,
+        "unique": 3,
+        "expected": 3
+      }
+    },
+    {
+      "name": "manual_clips_count",
+      "pass": true,
+      "detail": {
+        "rows": 30,
+        "unique": 30,
+        "expected": 30
+      }
+    },
+    {
+      "name": "manual_views_count",
+      "pass": true,
+      "detail": {
+        "rows": 4,
+        "unique": 4,
+        "expected": 4
+      }
+    },
+    {
+      "name": "manual_hard_gates_count",
+      "pass": true,
+      "detail": {
+        "rows": 12,
+        "unique": 12,
+        "expected": 12
+      }
+    },
+    {
+      "name": "manual_pair_endpoint_identity",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "manual_pair_observations_explicit_unique",
+      "pass": true,
+      "detail": {
+        "rows": 435,
+        "nonblank": 435,
+        "unique": 435
+      }
+    },
+    {
+      "name": "manual_glyph_visual_failures_zero",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "strict_glyph_failure_exact",
+      "pass": true,
+      "detail": {
+        "manual": [
+          "G032"
+        ],
+        "machine": [
+          "G032"
+        ]
+      }
+    },
+    {
+      "name": "strict_hard_gate_failure_exact",
+      "pass": true,
+      "detail": [
+        "H06"
+      ]
+    },
+    {
+      "name": "candidate_pdf_external_identity",
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v3c\\01_build\\v260_FIG-P602-01_standalone.pdf",
+        "exists": true
+      }
+    },
+    {
+      "name": "source_external_identity",
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+        "exists": true
+      }
+    },
+    {
+      "name": "tex_processes_zero",
+      "pass": true,
+      "detail": {
+        "exit_code": 0,
+        "count": 0,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "source_marker_semantics",
+      "pass": true,
+      "detail": {
+        "seal_status": "WRITE_STOPPED",
+        "final_evidence_outcome": "STRICT_FAIL_G032_H06",
+        "local_pass_claimed": false,
+        "tex_invocations": 0
+      }
+    }
+  ]
+}

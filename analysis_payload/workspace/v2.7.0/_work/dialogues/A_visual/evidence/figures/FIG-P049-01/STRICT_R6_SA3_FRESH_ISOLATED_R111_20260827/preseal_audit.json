@@ -1,0 +1,69 @@
+{
+  "audit_kind": "preseal payload consistency",
+  "uid": "FIG-P049-01",
+  "audit_checks": {
+    "pdf_identity_exact": true,
+    "tex_identity_exact": true,
+    "machine_gate_clear": true,
+    "denominator_n_152": true,
+    "glyph_count_135": true,
+    "path_count_17": true,
+    "background_exclusion_count_11": true,
+    "all_pairs_c_11476": true,
+    "all_pairs_exact_no_omission": true,
+    "manual_glyph_ids_exact": true,
+    "manual_path_ids_exact": true,
+    "manual_candidate_ids_exact": true,
+    "manual_glyph_decisions_complete": true,
+    "manual_path_decisions_complete": true,
+    "manual_relation_decisions_complete": true,
+    "manual_summary_counts_exact": true,
+    "manual_authority_boundary_respected": true,
+    "machine_builder_has_no_manual_fields": true,
+    "resolved_controls_empty": true,
+    "image_dimensions_exact": true,
+    "nearest8x_glyph_sheet_count_4": true,
+    "nearest8x_relation_sheet_count_5": true,
+    "native_crop_alias_byte_identical": true
+  },
+  "audit_state": "CLEAR",
+  "counts": {
+    "N": 152,
+    "C": 11476,
+    "glyphs": 135,
+    "paths": 17,
+    "background_exclusions": 11,
+    "manual_relation_candidates": 122
+  },
+  "image_dimensions": {
+    "page_048_native300dpi.png": [
+      2481,
+      3508
+    ],
+    "figure_crop_native300dpi.png": [
+      1543,
+      792
+    ],
+    "figure_crop_native1x.png": [
+      1543,
+      792
+    ],
+    "atomic_overlay_native1x.png": [
+      1543,
+      792
+    ],
+    "atomic_overlay_nearest8x.png": [
+      12344,
+      6336
+    ],
+    "glyph_sheet_native1x.png": [
+      1320,
+      984
+    ],
+    "figure_crop_grayscale_native300dpi.png": [
+      1543,
+      792
+    ]
+  },
+  "write_behavior": "This validator reads manual ledgers but never creates, edits, fills, or overwrites any manual reviewer/observed/decision/note field."
+}

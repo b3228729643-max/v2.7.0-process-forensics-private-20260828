@@ -1,0 +1,30 @@
+{
+  "official_pdf": "v2.7.0/_work/source/v2.7.0/src/build/strict_current_r91_fullbook/main_full.pdf",
+  "official_pdf_physical_page": 240,
+  "printed_page": 227,
+  "render": {
+    "tool": "pdftoppm",
+    "dpi": 300,
+    "resize_after_render": false,
+    "image_px": [
+      2481,
+      3508
+    ]
+  },
+  "figure_crop_px": {
+    "x0": 550,
+    "y0": 1400,
+    "x1": 2000,
+    "y1": 2150
+  },
+  "coordinate_map": "x_px=floor_or_ceil(x_pdf_pt*300/72); y_px=floor_or_ceil(y_pdf_pt*300/72)",
+  "masks": {
+    "TEXT_FORMULA": "per-element local-background foreground; abs(channel-background)>=20",
+    "LINE_ARROW": "source blue near RGB(31,78,121), segment bands, text and node-border removed",
+    "NODE_BORDER": "source blue near RGB(31,78,121), five known node annuli, text removed",
+    "PANEL_BORDER": "largest connected teal foreground component after region-label removal",
+    "FORMULA_BOX_BORDER": "near RGB(203,213,225) in formula box zone, text removed",
+    "MARKER": "none in source",
+    "DATA_CURVE": "none in source"
+  }
+}

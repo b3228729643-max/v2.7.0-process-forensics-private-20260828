@@ -1,0 +1,6518 @@
+{
+  "scope": "complete visible foreground denominator inside BODY_PT; caption excluded from object denominator and reviewed separately",
+  "body_pt": [
+    150.0,
+    320.0,
+    465.0,
+    484.0
+  ],
+  "body_full_native_px": [
+    625,
+    1333,
+    1938,
+    2017
+  ],
+  "figure_with_caption_pt": [
+    65.0,
+    320.0,
+    540.0,
+    515.0
+  ],
+  "figure_with_caption_full_native_px": [
+    270,
+    1333,
+    2250,
+    2146
+  ],
+  "text_glyph_count": 78,
+  "source_graphic_semantic_object_count": 28,
+  "visible_graphic_semantic_object_count": 27,
+  "hidden_source_graphics_excluded_from_visible_denominator": [
+    {
+      "object_id": "G016",
+      "safe_filename": "G016.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "STEM_2",
+      "role": "DATA_STEM",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 18,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        287.47519,
+        445.41987,
+        289.25302999999997,
+        448.82491999999996
+      ],
+      "bbox_full_native_px": [
+        1197,
+        1855,
+        1206,
+        1871
+      ],
+      "bbox_crop_native_px": [
+        572,
+        522,
+        581,
+        538
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 288.36411,
+          "top": 446.30879,
+          "x1": 288.36411,
+          "bottom": 447.936,
+          "width": 0.0,
+          "height": 1.627209999999991,
+          "linewidth": 0.57784,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.13725,
+            0.15686
+          ],
+          "dash": null,
+          "pts": [
+            [
+              288.36411,
+              447.936
+            ],
+            [
+              288.36411,
+              446.30879
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                288.36411,
+                447.936
+              ]
+            ],
+            [
+              "l",
+              [
+                288.36411,
+                446.30879
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G026"
+      ],
+      "visible_denominator": false,
+      "denominator_exclusion_reason": "The ycomb stem at y=.01 is fully occluded by its final square marker on official R109 native pixels; it has zero final-visible pixels and is retained only in the source-primitive ledger."
+    }
+  ],
+  "object_count_N": 105,
+  "unordered_pair_count_C": 5460,
+  "objects": [
+    {
+      "object_id": "T001",
+      "safe_filename": "T001.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "1",
+      "unicode": "U+0031",
+      "semantic_parent": "T_XTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        218.16,
+        452.73304337999997,
+        222.84493245,
+        462.19755338
+      ],
+      "bbox_full_native_px": [
+        909,
+        1886,
+        929,
+        1926
+      ],
+      "bbox_crop_native_px": [
+        284,
+        553,
+        304,
+        593
+      ],
+      "svg_use": {
+        "href": "#glyph9-1",
+        "x": "217.894987",
+        "y": "459.842691"
+      }
+    },
+    {
+      "object_id": "T002",
+      "safe_filename": "T002.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "2",
+      "unicode": "U+0032",
+      "semantic_parent": "T_XTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        286.021,
+        452.78004337999994,
+        290.70593245000003,
+        462.24455337999996
+      ],
+      "bbox_full_native_px": [
+        1191,
+        1886,
+        1212,
+        1927
+      ],
+      "bbox_crop_native_px": [
+        566,
+        553,
+        587,
+        594
+      ],
+      "svg_use": {
+        "href": "#glyph9-2",
+        "x": "285.673552",
+        "y": "459.889634"
+      }
+    },
+    {
+      "object_id": "T003",
+      "safe_filename": "T003.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "3",
+      "unicode": "U+0033",
+      "semantic_parent": "T_XTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        353.882,
+        452.78004337999994,
+        358.56693245,
+        462.24455337999996
+      ],
+      "bbox_full_native_px": [
+        1474,
+        1886,
+        1495,
+        1927
+      ],
+      "bbox_crop_native_px": [
+        849,
+        553,
+        870,
+        594
+      ],
+      "svg_use": {
+        "href": "#glyph9-3",
+        "x": "353.452116",
+        "y": "459.889634"
+      }
+    },
+    {
+      "object_id": "T004",
+      "safe_filename": "T004.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "4",
+      "unicode": "U+0034",
+      "semantic_parent": "T_XTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        421.742,
+        452.79004337999993,
+        426.42693245000004,
+        462.25455337999995
+      ],
+      "bbox_full_native_px": [
+        1757,
+        1886,
+        1777,
+        1927
+      ],
+      "bbox_crop_native_px": [
+        1132,
+        553,
+        1152,
+        594
+      ],
+      "svg_use": {
+        "href": "#glyph9-4",
+        "x": "421.229683",
+        "y": "459.899622"
+      }
+    },
+    {
+      "object_id": "T005",
+      "safe_filename": "T005.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "0",
+      "unicode": "U+0030",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        189.498,
+        443.71004337999995,
+        194.18293244999998,
+        453.17455337999996
+      ],
+      "bbox_full_native_px": [
+        789,
+        1848,
+        810,
+        1889
+      ],
+      "bbox_crop_native_px": [
+        164,
+        515,
+        185,
+        556
+      ],
+      "svg_use": {
+        "href": "#glyph9-5",
+        "x": "189.267804",
+        "y": "450.830652"
+      }
+    },
+    {
+      "object_id": "T006",
+      "safe_filename": "T006.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "0",
+      "unicode": "U+0030",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        182.494,
+        427.43804337999995,
+        187.17893245,
+        436.90255338
+      ],
+      "bbox_full_native_px": [
+        760,
+        1780,
+        780,
+        1821
+      ],
+      "bbox_crop_native_px": [
+        135,
+        447,
+        155,
+        488
+      ],
+      "svg_use": {
+        "href": "#glyph9-5",
+        "x": "182.272313",
+        "y": "434.578418"
+      }
+    },
+    {
+      "object_id": "T007",
+      "safe_filename": "T007.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        187.17893245,
+        427.43804337999995,
+        189.49773739999998,
+        436.90255338
+      ],
+      "bbox_full_native_px": [
+        779,
+        1780,
+        790,
+        1821
+      ],
+      "bbox_crop_native_px": [
+        154,
+        447,
+        165,
+        488
+      ],
+      "svg_use": {
+        "href": "#glyph9-6",
+        "x": "186.951554",
+        "y": "434.578418"
+      }
+    },
+    {
+      "object_id": "T008",
+      "safe_filename": "T008.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "1",
+      "unicode": "U+0031",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        189.4977374,
+        427.43804337999995,
+        194.18266985,
+        436.90255338
+      ],
+      "bbox_full_native_px": [
+        789,
+        1780,
+        810,
+        1821
+      ],
+      "bbox_crop_native_px": [
+        164,
+        447,
+        185,
+        488
+      ],
+      "svg_use": {
+        "href": "#glyph9-1",
+        "x": "189.267542",
+        "y": "434.578418"
+      }
+    },
+    {
+      "object_id": "T009",
+      "safe_filename": "T009.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "0",
+      "unicode": "U+0030",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        182.494,
+        411.17604337999995,
+        187.17893245,
+        420.64055338
+      ],
+      "bbox_full_native_px": [
+        760,
+        1713,
+        780,
+        1753
+      ],
+      "bbox_crop_native_px": [
+        135,
+        380,
+        155,
+        420
+      ],
+      "svg_use": {
+        "href": "#glyph9-5",
+        "x": "182.272313",
+        "y": "418.336173"
+      }
+    },
+    {
+      "object_id": "T010",
+      "safe_filename": "T010.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        187.17893245,
+        411.17604337999995,
+        189.49773739999998,
+        420.64055338
+      ],
+      "bbox_full_native_px": [
+        779,
+        1713,
+        790,
+        1753
+      ],
+      "bbox_crop_native_px": [
+        154,
+        380,
+        165,
+        420
+      ],
+      "svg_use": {
+        "href": "#glyph9-6",
+        "x": "186.951554",
+        "y": "418.336173"
+      }
+    },
+    {
+      "object_id": "T011",
+      "safe_filename": "T011.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "2",
+      "unicode": "U+0032",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        189.4977374,
+        411.17604337999995,
+        194.18266985,
+        420.64055338
+      ],
+      "bbox_full_native_px": [
+        789,
+        1713,
+        810,
+        1753
+      ],
+      "bbox_crop_native_px": [
+        164,
+        380,
+        185,
+        420
+      ],
+      "svg_use": {
+        "href": "#glyph9-2",
+        "x": "189.267542",
+        "y": "418.336173"
+      }
+    },
+    {
+      "object_id": "T012",
+      "safe_filename": "T012.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "0",
+      "unicode": "U+0030",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        182.494,
+        394.89404337999997,
+        187.17893245,
+        404.35855338
+      ],
+      "bbox_full_native_px": [
+        760,
+        1645,
+        780,
+        1685
+      ],
+      "bbox_crop_native_px": [
+        135,
+        312,
+        155,
+        352
+      ],
+      "svg_use": {
+        "href": "#glyph9-5",
+        "x": "182.272313",
+        "y": "402.073952"
+      }
+    },
+    {
+      "object_id": "T013",
+      "safe_filename": "T013.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        187.17893245,
+        394.89404337999997,
+        189.49773739999998,
+        404.35855338
+      ],
+      "bbox_full_native_px": [
+        779,
+        1645,
+        790,
+        1685
+      ],
+      "bbox_crop_native_px": [
+        154,
+        312,
+        165,
+        352
+      ],
+      "svg_use": {
+        "href": "#glyph9-6",
+        "x": "186.951554",
+        "y": "402.073952"
+      }
+    },
+    {
+      "object_id": "T014",
+      "safe_filename": "T014.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "3",
+      "unicode": "U+0033",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        189.4977374,
+        394.89404337999997,
+        194.18266985,
+        404.35855338
+      ],
+      "bbox_full_native_px": [
+        789,
+        1645,
+        810,
+        1685
+      ],
+      "bbox_crop_native_px": [
+        164,
+        312,
+        185,
+        352
+      ],
+      "svg_use": {
+        "href": "#glyph9-3",
+        "x": "189.267542",
+        "y": "402.073952"
+      }
+    },
+    {
+      "object_id": "T015",
+      "safe_filename": "T015.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "0",
+      "unicode": "U+0030",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        182.494,
+        378.63604337999993,
+        187.17893245,
+        388.10055337999995
+      ],
+      "bbox_full_native_px": [
+        760,
+        1577,
+        780,
+        1618
+      ],
+      "bbox_crop_native_px": [
+        135,
+        244,
+        155,
+        285
+      ],
+      "svg_use": {
+        "href": "#glyph9-5",
+        "x": "182.272313",
+        "y": "385.835701"
+      }
+    },
+    {
+      "object_id": "T016",
+      "safe_filename": "T016.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        187.17893245,
+        378.63604337999993,
+        189.49773739999998,
+        388.10055337999995
+      ],
+      "bbox_full_native_px": [
+        779,
+        1577,
+        790,
+        1618
+      ],
+      "bbox_crop_native_px": [
+        154,
+        244,
+        165,
+        285
+      ],
+      "svg_use": {
+        "href": "#glyph9-6",
+        "x": "186.951554",
+        "y": "385.835701"
+      }
+    },
+    {
+      "object_id": "T017",
+      "safe_filename": "T017.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "4",
+      "unicode": "U+0034",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        189.4977374,
+        378.63604337999993,
+        194.18266985,
+        388.10055337999995
+      ],
+      "bbox_full_native_px": [
+        789,
+        1577,
+        810,
+        1618
+      ],
+      "bbox_crop_native_px": [
+        164,
+        244,
+        185,
+        285
+      ],
+      "svg_use": {
+        "href": "#glyph9-4",
+        "x": "189.267542",
+        "y": "385.835701"
+      }
+    },
+    {
+      "object_id": "T018",
+      "safe_filename": "T018.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "0",
+      "unicode": "U+0030",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        182.494,
+        362.34104338,
+        187.17893245,
+        371.80555338
+      ],
+      "bbox_full_native_px": [
+        760,
+        1509,
+        780,
+        1550
+      ],
+      "bbox_crop_native_px": [
+        135,
+        176,
+        155,
+        217
+      ],
+      "svg_use": {
+        "href": "#glyph9-5",
+        "x": "182.272313",
+        "y": "369.560496"
+      }
+    },
+    {
+      "object_id": "T019",
+      "safe_filename": "T019.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        187.17893245,
+        362.34104338,
+        189.49773739999998,
+        371.80555338
+      ],
+      "bbox_full_native_px": [
+        779,
+        1509,
+        790,
+        1550
+      ],
+      "bbox_crop_native_px": [
+        154,
+        176,
+        165,
+        217
+      ],
+      "svg_use": {
+        "href": "#glyph9-6",
+        "x": "186.951554",
+        "y": "369.560496"
+      }
+    },
+    {
+      "object_id": "T020",
+      "safe_filename": "T020.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "5",
+      "unicode": "U+0035",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        189.4977374,
+        362.34104338,
+        194.18266985,
+        371.80555338
+      ],
+      "bbox_full_native_px": [
+        789,
+        1509,
+        810,
+        1550
+      ],
+      "bbox_crop_native_px": [
+        164,
+        176,
+        185,
+        217
+      ],
+      "svg_use": {
+        "href": "#glyph9-7",
+        "x": "189.267542",
+        "y": "369.560496"
+      }
+    },
+    {
+      "object_id": "T021",
+      "safe_filename": "T021.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "0",
+      "unicode": "U+0030",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        182.494,
+        346.09204337999995,
+        187.17893245,
+        355.55655337999997
+      ],
+      "bbox_full_native_px": [
+        760,
+        1442,
+        780,
+        1482
+      ],
+      "bbox_crop_native_px": [
+        135,
+        109,
+        155,
+        149
+      ],
+      "svg_use": {
+        "href": "#glyph9-5",
+        "x": "182.272313",
+        "y": "353.331235"
+      }
+    },
+    {
+      "object_id": "T022",
+      "safe_filename": "T022.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        187.17893245,
+        346.09204337999995,
+        189.49773739999998,
+        355.55655337999997
+      ],
+      "bbox_full_native_px": [
+        779,
+        1442,
+        790,
+        1482
+      ],
+      "bbox_crop_native_px": [
+        154,
+        109,
+        165,
+        149
+      ],
+      "svg_use": {
+        "href": "#glyph9-6",
+        "x": "186.951554",
+        "y": "353.331235"
+      }
+    },
+    {
+      "object_id": "T023",
+      "safe_filename": "T023.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "6",
+      "unicode": "U+0036",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        189.4977374,
+        346.09204337999995,
+        194.18266985,
+        355.55655337999997
+      ],
+      "bbox_full_native_px": [
+        789,
+        1442,
+        810,
+        1482
+      ],
+      "bbox_crop_native_px": [
+        164,
+        109,
+        185,
+        149
+      ],
+      "svg_use": {
+        "href": "#glyph9-8",
+        "x": "189.267542",
+        "y": "353.331235"
+      }
+    },
+    {
+      "object_id": "T024",
+      "safe_filename": "T024.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "0",
+      "unicode": "U+0030",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464509999999962,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        182.494,
+        329.80604338,
+        187.17893245,
+        339.27055337999997
+      ],
+      "bbox_full_native_px": [
+        760,
+        1374,
+        780,
+        1414
+      ],
+      "bbox_crop_native_px": [
+        135,
+        41,
+        155,
+        81
+      ],
+      "svg_use": {
+        "href": "#glyph9-5",
+        "x": "182.272313",
+        "y": "337.065018"
+      }
+    },
+    {
+      "object_id": "T025",
+      "safe_filename": "T025.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464509999999962,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        187.17893245,
+        329.80604338,
+        189.49773739999998,
+        339.27055337999997
+      ],
+      "bbox_full_native_px": [
+        779,
+        1374,
+        790,
+        1414
+      ],
+      "bbox_crop_native_px": [
+        154,
+        41,
+        165,
+        81
+      ],
+      "svg_use": {
+        "href": "#glyph9-6",
+        "x": "186.951554",
+        "y": "337.065018"
+      }
+    },
+    {
+      "object_id": "T026",
+      "safe_filename": "T026.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "7",
+      "unicode": "U+0037",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464509999999962,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        189.4977374,
+        329.80604338,
+        194.18266985,
+        339.27055337999997
+      ],
+      "bbox_full_native_px": [
+        789,
+        1374,
+        810,
+        1414
+      ],
+      "bbox_crop_native_px": [
+        164,
+        41,
+        185,
+        81
+      ],
+      "svg_use": {
+        "href": "#glyph9-9",
+        "x": "189.267542",
+        "y": "337.065018"
+      }
+    },
+    {
+      "object_id": "T027",
+      "safe_filename": "T027.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "ℎ",
+      "unicode": "U+210E",
+      "semantic_parent": "T_HFUNC",
+      "role": "FORMULA_ANNOTATION",
+      "script_class": "LATIN_LOWER_OR_GREEK",
+      "threshold_px_protocol": 17,
+      "source_line": 27,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.41962,
+        0.44707,
+        0.50195
+      ],
+      "bbox_pt": [
+        383.403,
+        333.49304337999996,
+        388.78830619,
+        342.95755338
+      ],
+      "bbox_full_native_px": [
+        1597,
+        1389,
+        1620,
+        1429
+      ],
+      "bbox_crop_native_px": [
+        972,
+        56,
+        995,
+        96
+      ],
+      "svg_use": {
+        "href": "#glyph9-10",
+        "x": "382.937255",
+        "y": "340.74754"
+      }
+    },
+    {
+      "object_id": "T028",
+      "safe_filename": "T028.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "(",
+      "unicode": "U+0028",
+      "semantic_parent": "T_HFUNC",
+      "role": "FORMULA_ANNOTATION",
+      "script_class": "FULL_HEIGHT_SYMBOL",
+      "threshold_px_protocol": 24,
+      "source_line": 27,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.41962,
+        0.44707,
+        0.50195
+      ],
+      "bbox_pt": [
+        388.88295129,
+        333.49304337999996,
+        392.26178136,
+        342.95755338
+      ],
+      "bbox_full_native_px": [
+        1620,
+        1389,
+        1635,
+        1429
+      ],
+      "bbox_crop_native_px": [
+        995,
+        56,
+        1010,
+        96
+      ],
+      "svg_use": {
+        "href": "#glyph9-11",
+        "x": "388.41055",
+        "y": "340.74754"
+      }
+    },
+    {
+      "object_id": "T029",
+      "safe_filename": "T029.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "𝑈",
+      "unicode": "U+1D448",
+      "semantic_parent": "T_HFUNC",
+      "role": "FORMULA_ANNOTATION",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 27,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.41962,
+        0.44707,
+        0.50195
+      ],
+      "bbox_pt": [
+        392.26178136000004,
+        333.49304337999996,
+        399.18033817,
+        342.95755338
+      ],
+      "bbox_full_native_px": [
+        1634,
+        1389,
+        1664,
+        1429
+      ],
+      "bbox_crop_native_px": [
+        1009,
+        56,
+        1039,
+        96
+      ],
+      "svg_use": {
+        "href": "#glyph9-12",
+        "x": "391.785275",
+        "y": "340.74754"
+      }
+    },
+    {
+      "object_id": "T030",
+      "safe_filename": "T030.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "𝑖",
+      "unicode": "U+1D456",
+      "semantic_parent": "T_HFUNC",
+      "role": "FORMULA_ANNOTATION",
+      "script_class": "NATURAL_SCRIPT",
+      "threshold_px_protocol": 15,
+      "source_line": 27,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "CJKYZT+STIXTwoMath-Regular",
+      "pdf_size_pt": 6.625119999999981,
+      "pdf_non_stroking_color": [
+        0.41962,
+        0.44707,
+        0.50195
+      ],
+      "bbox_pt": [
+        400.278,
+        337.64465856,
+        402.68954368000004,
+        344.26977855999996
+      ],
+      "bbox_full_native_px": [
+        1667,
+        1406,
+        1678,
+        1435
+      ],
+      "bbox_crop_native_px": [
+        1042,
+        73,
+        1053,
+        102
+      ],
+      "svg_use": {
+        "href": "#glyph10-1",
+        "x": "399.791756",
+        "y": "342.733125"
+      }
+    },
+    {
+      "object_id": "T031",
+      "safe_filename": "T031.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ")",
+      "unicode": "U+0029",
+      "semantic_parent": "T_HFUNC",
+      "role": "FORMULA_ANNOTATION",
+      "script_class": "FULL_HEIGHT_SYMBOL",
+      "threshold_px_protocol": 24,
+      "source_line": 27,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.41962,
+        0.44707,
+        0.50195
+      ],
+      "bbox_pt": [
+        403.267,
+        333.49304337999996,
+        406.64583007,
+        342.95755338
+      ],
+      "bbox_full_native_px": [
+        1680,
+        1389,
+        1695,
+        1429
+      ],
+      "bbox_crop_native_px": [
+        1055,
+        56,
+        1070,
+        96
+      ],
+      "svg_use": {
+        "href": "#glyph9-13",
+        "x": "402.777125",
+        "y": "340.74754"
+      }
+    },
+    {
+      "object_id": "T032",
+      "safe_filename": "T032.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "=",
+      "unicode": "U+003D",
+      "semantic_parent": "T_HFUNC",
+      "role": "FORMULA_ANNOTATION",
+      "script_class": "MATH_OPERATOR_OR_SYMBOL",
+      "threshold_px_protocol": 22,
+      "source_line": 27,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.41962,
+        0.44707,
+        0.50195
+      ],
+      "bbox_pt": [
+        409.26749934,
+        333.49304337999996,
+        416.08194654,
+        342.95755338
+      ],
+      "bbox_full_native_px": [
+        1705,
+        1389,
+        1734,
+        1429
+      ],
+      "bbox_crop_native_px": [
+        1080,
+        56,
+        1109,
+        96
+      ],
+      "svg_use": {
+        "href": "#glyph9-14",
+        "x": "408.770335",
+        "y": "340.74754"
+      }
+    },
+    {
+      "object_id": "T033",
+      "safe_filename": "T033.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "𝑈",
+      "unicode": "U+1D448",
+      "semantic_parent": "T_HFUNC",
+      "role": "FORMULA_ANNOTATION",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 27,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.41962,
+        0.44707,
+        0.50195
+      ],
+      "bbox_pt": [
+        418.71308032,
+        333.49304337999996,
+        425.63163713,
+        342.95755338
+      ],
+      "bbox_full_native_px": [
+        1744,
+        1389,
+        1774,
+        1429
+      ],
+      "bbox_crop_native_px": [
+        1119,
+        56,
+        1149,
+        96
+      ],
+      "svg_use": {
+        "href": "#glyph9-12",
+        "x": "418.204442",
+        "y": "340.74754"
+      }
+    },
+    {
+      "object_id": "T034",
+      "safe_filename": "T034.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "2",
+      "unicode": "U+0032",
+      "semantic_parent": "T_HFUNC",
+      "role": "FORMULA_ANNOTATION",
+      "script_class": "NATURAL_SCRIPT",
+      "threshold_px_protocol": 15,
+      "source_line": 27,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "CJKYZT+STIXTwoMath-Regular",
+      "pdf_size_pt": 6.625119999999981,
+      "pdf_non_stroking_color": [
+        0.41962,
+        0.44707,
+        0.50195
+      ],
+      "bbox_pt": [
+        426.347,
+        332.06065856,
+        430.05044208,
+        338.68577855999996
+      ],
+      "bbox_full_native_px": [
+        1776,
+        1383,
+        1792,
+        1412
+      ],
+      "bbox_crop_native_px": [
+        1151,
+        50,
+        1167,
+        79
+      ],
+      "svg_use": {
+        "href": "#glyph10-2",
+        "x": "425.829089",
+        "y": "337.155908"
+      }
+    },
+    {
+      "object_id": "T035",
+      "safe_filename": "T035.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "𝑖",
+      "unicode": "U+1D456",
+      "semantic_parent": "T_HFUNC",
+      "role": "FORMULA_ANNOTATION",
+      "script_class": "NATURAL_SCRIPT",
+      "threshold_px_protocol": 15,
+      "source_line": 27,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "CJKYZT+STIXTwoMath-Regular",
+      "pdf_size_pt": 6.625119999999981,
+      "pdf_non_stroking_color": [
+        0.41962,
+        0.44707,
+        0.50195
+      ],
+      "bbox_pt": [
+        425.145,
+        338.56865855999996,
+        427.55654368,
+        345.19377855999994
+      ],
+      "bbox_full_native_px": [
+        1771,
+        1410,
+        1782,
+        1439
+      ],
+      "bbox_crop_native_px": [
+        1146,
+        77,
+        1157,
+        106
+      ],
+      "svg_use": {
+        "href": "#glyph10-1",
+        "x": "424.628549",
+        "y": "343.656002"
+      }
+    },
+    {
+      "object_id": "T036",
+      "safe_filename": "T036.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "↓",
+      "unicode": "U+2193",
+      "semantic_parent": "T_DOWN_FIRST",
+      "role": "TREND_ANNOTATION",
+      "script_class": "MATH_OPERATOR_OR_SYMBOL",
+      "threshold_px_protocol": 22,
+      "source_line": 29,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.30588,
+        0.47452
+      ],
+      "bbox_pt": [
+        244.774,
+        344.8720433799999,
+        249.72393873000001,
+        354.33655337999994
+      ],
+      "bbox_full_native_px": [
+        1019,
+        1436,
+        1041,
+        1477
+      ],
+      "bbox_crop_native_px": [
+        394,
+        103,
+        416,
+        144
+      ],
+      "svg_use": {
+        "href": "#glyph9-15",
+        "x": "244.476657",
+        "y": "352.112717"
+      }
+    },
+    {
+      "object_id": "T037",
+      "safe_filename": "T037.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "下",
+      "unicode": "U+4E0B",
+      "semantic_parent": "T_DOWN_FIRST",
+      "role": "TREND_ANNOTATION",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 29,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.30588,
+        0.47452
+      ],
+      "bbox_pt": [
+        251.949,
+        345.18437220999994,
+        261.41351000000003,
+        354.64888220999995
+      ],
+      "bbox_full_native_px": [
+        1049,
+        1438,
+        1090,
+        1478
+      ],
+      "bbox_crop_native_px": [
+        424,
+        105,
+        465,
+        145
+      ],
+      "svg_use": {
+        "href": "#glyph11-1",
+        "x": "251.642941",
+        "y": "352.112717"
+      }
+    },
+    {
+      "object_id": "T038",
+      "safe_filename": "T038.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "降",
+      "unicode": "U+964D",
+      "semantic_parent": "T_DOWN_FIRST",
+      "role": "TREND_ANNOTATION",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 29,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.30588,
+        0.47452
+      ],
+      "bbox_pt": [
+        261.41351000000003,
+        345.18437220999994,
+        270.87802000000005,
+        354.64888220999995
+      ],
+      "bbox_full_native_px": [
+        1089,
+        1438,
+        1129,
+        1478
+      ],
+      "bbox_crop_native_px": [
+        464,
+        105,
+        504,
+        145
+      ],
+      "svg_use": {
+        "href": "#glyph11-2",
+        "x": "261.095954",
+        "y": "352.112717"
+      }
+    },
+    {
+      "object_id": "T039",
+      "safe_filename": "T039.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "↑",
+      "unicode": "U+2191",
+      "semantic_parent": "T_UP",
+      "role": "TREND_ANNOTATION",
+      "script_class": "MATH_OPERATOR_OR_SYMBOL",
+      "threshold_px_protocol": 22,
+      "source_line": 31,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.30588,
+        0.47452
+      ],
+      "bbox_pt": [
+        305.849,
+        362.7710433799999,
+        310.79893873,
+        372.23555337999994
+      ],
+      "bbox_full_native_px": [
+        1274,
+        1511,
+        1295,
+        1551
+      ],
+      "bbox_crop_native_px": [
+        649,
+        178,
+        670,
+        218
+      ],
+      "svg_use": {
+        "href": "#glyph9-16",
+        "x": "305.477465",
+        "y": "369.989974"
+      }
+    },
+    {
+      "object_id": "T040",
+      "safe_filename": "T040.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "上",
+      "unicode": "U+4E0A",
+      "semantic_parent": "T_UP",
+      "role": "TREND_ANNOTATION",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 31,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.30588,
+        0.47452
+      ],
+      "bbox_pt": [
+        313.023,
+        363.08337220999994,
+        322.48751000000004,
+        372.54788220999995
+      ],
+      "bbox_full_native_px": [
+        1304,
+        1512,
+        1344,
+        1553
+      ],
+      "bbox_crop_native_px": [
+        679,
+        179,
+        719,
+        220
+      ],
+      "svg_use": {
+        "href": "#glyph11-3",
+        "x": "312.642751",
+        "y": "369.989974"
+      }
+    },
+    {
+      "object_id": "T041",
+      "safe_filename": "T041.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "升",
+      "unicode": "U+5347",
+      "semantic_parent": "T_UP",
+      "role": "TREND_ANNOTATION",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 31,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.30588,
+        0.47452
+      ],
+      "bbox_pt": [
+        322.48751000000004,
+        363.08337220999994,
+        331.95202000000006,
+        372.54788220999995
+      ],
+      "bbox_full_native_px": [
+        1343,
+        1512,
+        1384,
+        1553
+      ],
+      "bbox_crop_native_px": [
+        718,
+        179,
+        759,
+        220
+      ],
+      "svg_use": {
+        "href": "#glyph11-4",
+        "x": "322.095763",
+        "y": "369.989974"
+      }
+    },
+    {
+      "object_id": "T042",
+      "safe_filename": "T042.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "↓",
+      "unicode": "U+2193",
+      "semantic_parent": "T_DOWN_AGAIN",
+      "role": "TREND_ANNOTATION",
+      "script_class": "MATH_OPERATOR_OR_SYMBOL",
+      "threshold_px_protocol": 22,
+      "source_line": 33,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.30588,
+        0.47452
+      ],
+      "bbox_pt": [
+        377.799,
+        364.39904337999997,
+        382.74893872999996,
+        373.86355338
+      ],
+      "bbox_full_native_px": [
+        1574,
+        1518,
+        1595,
+        1558
+      ],
+      "bbox_crop_native_px": [
+        949,
+        185,
+        970,
+        225
+      ],
+      "svg_use": {
+        "href": "#glyph9-15",
+        "x": "377.340063",
+        "y": "371.615996"
+      }
+    },
+    {
+      "object_id": "T043",
+      "safe_filename": "T043.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "再",
+      "unicode": "U+518D",
+      "semantic_parent": "T_DOWN_AGAIN",
+      "role": "TREND_ANNOTATION",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 33,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.30588,
+        0.47452
+      ],
+      "bbox_pt": [
+        384.974,
+        364.71137221,
+        394.43851,
+        374.17588221
+      ],
+      "bbox_full_native_px": [
+        1604,
+        1519,
+        1644,
+        1560
+      ],
+      "bbox_crop_native_px": [
+        979,
+        186,
+        1019,
+        227
+      ],
+      "svg_use": {
+        "href": "#glyph11-5",
+        "x": "384.506347",
+        "y": "371.615996"
+      }
+    },
+    {
+      "object_id": "T044",
+      "safe_filename": "T044.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "下",
+      "unicode": "U+4E0B",
+      "semantic_parent": "T_DOWN_AGAIN",
+      "role": "TREND_ANNOTATION",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 33,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.30588,
+        0.47452
+      ],
+      "bbox_pt": [
+        394.43851,
+        364.71137221,
+        403.90302,
+        374.17588221
+      ],
+      "bbox_full_native_px": [
+        1643,
+        1519,
+        1683,
+        1560
+      ],
+      "bbox_crop_native_px": [
+        1018,
+        186,
+        1058,
+        227
+      ],
+      "svg_use": {
+        "href": "#glyph11-1",
+        "x": "393.95936",
+        "y": "371.615996"
+      }
+    },
+    {
+      "object_id": "T045",
+      "safe_filename": "T045.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "降",
+      "unicode": "U+964D",
+      "semantic_parent": "T_DOWN_AGAIN",
+      "role": "TREND_ANNOTATION",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 33,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.30588,
+        0.47452
+      ],
+      "bbox_pt": [
+        403.90301999999997,
+        364.71137221,
+        413.36753,
+        374.17588221
+      ],
+      "bbox_full_native_px": [
+        1682,
+        1519,
+        1723,
+        1560
+      ],
+      "bbox_crop_native_px": [
+        1057,
+        186,
+        1098,
+        227
+      ],
+      "svg_use": {
+        "href": "#glyph11-2",
+        "x": "403.412373",
+        "y": "371.615996"
+      }
+    },
+    {
+      "object_id": "T046",
+      "safe_filename": "T046.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "真",
+      "unicode": "U+771F",
+      "semantic_parent": "T_TRUTH",
+      "role": "REFERENCE_ANNOTATION",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 35,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.05882,
+        0.46275,
+        0.43137
+      ],
+      "bbox_pt": [
+        239.267,
+        404.76637221,
+        248.73151,
+        414.23088221
+      ],
+      "bbox_full_native_px": [
+        996,
+        1686,
+        1037,
+        1726
+      ],
+      "bbox_crop_native_px": [
+        371,
+        353,
+        412,
+        393
+      ],
+      "svg_use": {
+        "href": "#glyph11-6",
+        "x": "238.976347",
+        "y": "411.622339"
+      }
+    },
+    {
+      "object_id": "T047",
+      "safe_filename": "T047.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "值",
+      "unicode": "U+503C",
+      "semantic_parent": "T_TRUTH",
+      "role": "REFERENCE_ANNOTATION",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 35,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.05882,
+        0.46275,
+        0.43137
+      ],
+      "bbox_pt": [
+        248.73151,
+        404.76637221,
+        258.19602,
+        414.23088221
+      ],
+      "bbox_full_native_px": [
+        1036,
+        1686,
+        1076,
+        1726
+      ],
+      "bbox_crop_native_px": [
+        411,
+        353,
+        451,
+        393
+      ],
+      "svg_use": {
+        "href": "#glyph11-7",
+        "x": "248.42936",
+        "y": "411.622339"
+      }
+    },
+    {
+      "object_id": "T048",
+      "safe_filename": "T048.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "1",
+      "unicode": "U+0031",
+      "semantic_parent": "T_TRUTH",
+      "role": "REFERENCE_ANNOTATION",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 35,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.05882,
+        0.46275,
+        0.43137
+      ],
+      "bbox_pt": [
+        260.42,
+        404.45404338,
+        265.10493245000004,
+        413.91855338
+      ],
+      "bbox_full_native_px": [
+        1085,
+        1685,
+        1105,
+        1725
+      ],
+      "bbox_crop_native_px": [
+        460,
+        352,
+        480,
+        392
+      ],
+      "svg_use": {
+        "href": "#glyph9-1",
+        "x": "260.103651",
+        "y": "411.622339"
+      }
+    },
+    {
+      "object_id": "T049",
+      "safe_filename": "T049.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "/",
+      "unicode": "U+002F",
+      "semantic_parent": "T_TRUTH",
+      "role": "REFERENCE_ANNOTATION",
+      "script_class": "MATH_OPERATOR_OR_SYMBOL",
+      "threshold_px_protocol": 22,
+      "source_line": 35,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.05882,
+        0.46275,
+        0.43137
+      ],
+      "bbox_pt": [
+        265.10493245000004,
+        404.45404338,
+        268.75823331000004,
+        413.91855338
+      ],
+      "bbox_full_native_px": [
+        1104,
+        1685,
+        1120,
+        1725
+      ],
+      "bbox_crop_native_px": [
+        479,
+        352,
+        495,
+        392
+      ],
+      "svg_use": {
+        "href": "#glyph9-17",
+        "x": "264.782892",
+        "y": "411.622339"
+      }
+    },
+    {
+      "object_id": "T050",
+      "safe_filename": "T050.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "3",
+      "unicode": "U+0033",
+      "semantic_parent": "T_TRUTH",
+      "role": "REFERENCE_ANNOTATION",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 35,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.05882,
+        0.46275,
+        0.43137
+      ],
+      "bbox_pt": [
+        268.75823331000004,
+        404.45404338,
+        273.44316576000006,
+        413.91855338
+      ],
+      "bbox_full_native_px": [
+        1119,
+        1685,
+        1140,
+        1725
+      ],
+      "bbox_crop_native_px": [
+        494,
+        352,
+        515,
+        392
+      ],
+      "svg_use": {
+        "href": "#glyph9-3",
+        "x": "268.431755",
+        "y": "411.622339"
+      }
+    },
+    {
+      "object_id": "T051",
+      "safe_filename": "T051.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_VALUE_1",
+      "role": "VALUE_LABEL",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 37,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        229.767,
+        336.32904338,
+        232.08580494999998,
+        345.79355338
+      ],
+      "bbox_full_native_px": [
+        957,
+        1401,
+        968,
+        1441
+      ],
+      "bbox_crop_native_px": [
+        332,
+        68,
+        343,
+        108
+      ],
+      "svg_use": {
+        "href": "#glyph12-1",
+        "x": "229.487887",
+        "y": "343.580094"
+      }
+    },
+    {
+      "object_id": "T052",
+      "safe_filename": "T052.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "6",
+      "unicode": "U+0036",
+      "semantic_parent": "T_VALUE_1",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 37,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        232.08580494999998,
+        336.32904338,
+        236.77073739999997,
+        345.79355338
+      ],
+      "bbox_full_native_px": [
+        967,
+        1401,
+        987,
+        1441
+      ],
+      "bbox_crop_native_px": [
+        342,
+        68,
+        362,
+        108
+      ],
+      "svg_use": {
+        "href": "#glyph12-2",
+        "x": "231.803875",
+        "y": "343.580094"
+      }
+    },
+    {
+      "object_id": "T053",
+      "safe_filename": "T053.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "4",
+      "unicode": "U+0034",
+      "semantic_parent": "T_VALUE_1",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 37,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        236.7707374,
+        336.32904338,
+        241.45566985,
+        345.79355338
+      ],
+      "bbox_full_native_px": [
+        986,
+        1401,
+        1007,
+        1441
+      ],
+      "bbox_crop_native_px": [
+        361,
+        68,
+        382,
+        108
+      ],
+      "svg_use": {
+        "href": "#glyph12-3",
+        "x": "236.483117",
+        "y": "343.580094"
+      }
+    },
+    {
+      "object_id": "T054",
+      "safe_filename": "T054.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "0",
+      "unicode": "U+0030",
+      "semantic_parent": "T_VALUE_1",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 37,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        241.45566985,
+        336.32904338,
+        246.14060229999998,
+        345.79355338
+      ],
+      "bbox_full_native_px": [
+        1006,
+        1401,
+        1026,
+        1441
+      ],
+      "bbox_crop_native_px": [
+        381,
+        68,
+        401,
+        108
+      ],
+      "svg_use": {
+        "href": "#glyph12-4",
+        "x": "241.162358",
+        "y": "343.580094"
+      }
+    },
+    {
+      "object_id": "T055",
+      "safe_filename": "T055.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_VALUE_2",
+      "role": "VALUE_LABEL",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 39,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        298.985,
+        402.21704337999995,
+        301.30380495,
+        411.68155337999997
+      ],
+      "bbox_full_native_px": [
+        1245,
+        1675,
+        1256,
+        1716
+      ],
+      "bbox_crop_native_px": [
+        620,
+        342,
+        631,
+        383
+      ],
+      "svg_use": {
+        "href": "#glyph12-1",
+        "x": "298.621803",
+        "y": "409.388056"
+      }
+    },
+    {
+      "object_id": "T056",
+      "safe_filename": "T056.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "3",
+      "unicode": "U+0033",
+      "semantic_parent": "T_VALUE_2",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 39,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        301.30380495,
+        402.21704337999995,
+        305.98873740000005,
+        411.68155337999997
+      ],
+      "bbox_full_native_px": [
+        1255,
+        1675,
+        1275,
+        1716
+      ],
+      "bbox_crop_native_px": [
+        630,
+        342,
+        650,
+        383
+      ],
+      "svg_use": {
+        "href": "#glyph12-5",
+        "x": "300.937792",
+        "y": "409.388056"
+      }
+    },
+    {
+      "object_id": "T057",
+      "safe_filename": "T057.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "2",
+      "unicode": "U+0032",
+      "semantic_parent": "T_VALUE_2",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 39,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        305.9887374,
+        402.21704337999995,
+        310.67366985,
+        411.68155337999997
+      ],
+      "bbox_full_native_px": [
+        1274,
+        1675,
+        1295,
+        1716
+      ],
+      "bbox_crop_native_px": [
+        649,
+        342,
+        670,
+        383
+      ],
+      "svg_use": {
+        "href": "#glyph12-6",
+        "x": "305.617033",
+        "y": "409.388056"
+      }
+    },
+    {
+      "object_id": "T058",
+      "safe_filename": "T058.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "5",
+      "unicode": "U+0035",
+      "semantic_parent": "T_VALUE_2",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 39,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        310.67366985,
+        402.21704337999995,
+        315.35860230000003,
+        411.68155337999997
+      ],
+      "bbox_full_native_px": [
+        1294,
+        1675,
+        1314,
+        1716
+      ],
+      "bbox_crop_native_px": [
+        669,
+        342,
+        689,
+        383
+      ],
+      "svg_use": {
+        "href": "#glyph12-7",
+        "x": "310.296274",
+        "y": "409.388056"
+      }
+    },
+    {
+      "object_id": "T059",
+      "safe_filename": "T059.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_VALUE_3",
+      "role": "VALUE_LABEL",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 41,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        366.845,
+        372.12804337999995,
+        369.16380495000004,
+        381.59255337999997
+      ],
+      "bbox_full_native_px": [
+        1528,
+        1550,
+        1539,
+        1590
+      ],
+      "bbox_crop_native_px": [
+        903,
+        217,
+        914,
+        257
+      ],
+      "svg_use": {
+        "href": "#glyph12-1",
+        "x": "366.399369",
+        "y": "379.335607"
+      }
+    },
+    {
+      "object_id": "T060",
+      "safe_filename": "T060.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "3",
+      "unicode": "U+0033",
+      "semantic_parent": "T_VALUE_3",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 41,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        369.16380495000004,
+        372.12804337999995,
+        373.84873740000006,
+        381.59255337999997
+      ],
+      "bbox_full_native_px": [
+        1538,
+        1550,
+        1558,
+        1590
+      ],
+      "bbox_crop_native_px": [
+        913,
+        217,
+        933,
+        257
+      ],
+      "svg_use": {
+        "href": "#glyph12-5",
+        "x": "368.715358",
+        "y": "379.335607"
+      }
+    },
+    {
+      "object_id": "T061",
+      "safe_filename": "T061.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "8",
+      "unicode": "U+0038",
+      "semantic_parent": "T_VALUE_3",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 41,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        373.8487374,
+        372.12804337999995,
+        378.53366985,
+        381.59255337999997
+      ],
+      "bbox_full_native_px": [
+        1557,
+        1550,
+        1578,
+        1590
+      ],
+      "bbox_crop_native_px": [
+        932,
+        217,
+        953,
+        257
+      ],
+      "svg_use": {
+        "href": "#glyph12-8",
+        "x": "373.394599",
+        "y": "379.335607"
+      }
+    },
+    {
+      "object_id": "T062",
+      "safe_filename": "T062.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "0",
+      "unicode": "U+0030",
+      "semantic_parent": "T_VALUE_3",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 41,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        378.53366985,
+        372.12804337999995,
+        383.21860230000004,
+        381.59255337999997
+      ],
+      "bbox_full_native_px": [
+        1577,
+        1550,
+        1597,
+        1590
+      ],
+      "bbox_crop_native_px": [
+        952,
+        217,
+        972,
+        257
+      ],
+      "svg_use": {
+        "href": "#glyph12-4",
+        "x": "378.07384",
+        "y": "379.335607"
+      }
+    },
+    {
+      "object_id": "T063",
+      "safe_filename": "T063.png",
+      "object_type": "TEXT_GLYPH",
+      "char": ".",
+      "unicode": "U+002E",
+      "semantic_parent": "T_VALUE_4",
+      "role": "VALUE_LABEL",
+      "script_class": "LOW_PROFILE_PUNCTUATION",
+      "threshold_px_protocol": null,
+      "source_line": 43,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        415.898,
+        405.90604337999997,
+        418.21680495000004,
+        415.37055338
+      ],
+      "bbox_full_native_px": [
+        1732,
+        1691,
+        1743,
+        1731
+      ],
+      "bbox_crop_native_px": [
+        1107,
+        358,
+        1118,
+        398
+      ],
+      "svg_use": {
+        "href": "#glyph12-1",
+        "x": "415.392782",
+        "y": "413.072575"
+      }
+    },
+    {
+      "object_id": "T064",
+      "safe_filename": "T064.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "3",
+      "unicode": "U+0033",
+      "semantic_parent": "T_VALUE_4",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 43,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        418.21680495000004,
+        405.90604337999997,
+        422.90173740000006,
+        415.37055338
+      ],
+      "bbox_full_native_px": [
+        1742,
+        1691,
+        1763,
+        1731
+      ],
+      "bbox_crop_native_px": [
+        1117,
+        358,
+        1138,
+        398
+      ],
+      "svg_use": {
+        "href": "#glyph12-5",
+        "x": "417.70877",
+        "y": "413.072575"
+      }
+    },
+    {
+      "object_id": "T065",
+      "safe_filename": "T065.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "2",
+      "unicode": "U+0032",
+      "semantic_parent": "T_VALUE_4",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 43,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        422.9017374,
+        405.90604337999997,
+        427.58666985,
+        415.37055338
+      ],
+      "bbox_full_native_px": [
+        1762,
+        1691,
+        1782,
+        1731
+      ],
+      "bbox_crop_native_px": [
+        1137,
+        358,
+        1157,
+        398
+      ],
+      "svg_use": {
+        "href": "#glyph12-6",
+        "x": "422.388011",
+        "y": "413.072575"
+      }
+    },
+    {
+      "object_id": "T066",
+      "safe_filename": "T066.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "5",
+      "unicode": "U+0035",
+      "semantic_parent": "T_VALUE_4",
+      "role": "VALUE_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 43,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.464510000000018,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        427.58666985,
+        405.90604337999997,
+        432.27160230000004,
+        415.37055338
+      ],
+      "bbox_full_native_px": [
+        1781,
+        1691,
+        1802,
+        1731
+      ],
+      "bbox_crop_native_px": [
+        1156,
+        358,
+        1177,
+        398
+      ],
+      "svg_use": {
+        "href": "#glyph12-7",
+        "x": "427.067252",
+        "y": "413.072575"
+      }
+    },
+    {
+      "object_id": "T067",
+      "safe_filename": "T067.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "样",
+      "unicode": "U+6837",
+      "semantic_parent": "T_XLABEL",
+      "role": "AXIS_LABEL",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 14,
+      "declared_pt": 9.6,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.6,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        277.342,
+        469.03074194,
+        286.90614,
+        478.59488194
+      ],
+      "bbox_full_native_px": [
+        1155,
+        1954,
+        1196,
+        1995
+      ],
+      "bbox_crop_native_px": [
+        530,
+        621,
+        571,
+        662
+      ],
+      "svg_use": {
+        "href": "#glyph13-1",
+        "x": "277.005095",
+        "y": "475.881184"
+      }
+    },
+    {
+      "object_id": "T068",
+      "safe_filename": "T068.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "本",
+      "unicode": "U+672C",
+      "semantic_parent": "T_XLABEL",
+      "role": "AXIS_LABEL",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 14,
+      "declared_pt": 9.6,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.6,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        286.90614,
+        469.03074194,
+        296.47028,
+        478.59488194
+      ],
+      "bbox_full_native_px": [
+        1195,
+        1954,
+        1236,
+        1995
+      ],
+      "bbox_crop_native_px": [
+        570,
+        621,
+        611,
+        662
+      ],
+      "svg_use": {
+        "href": "#glyph13-2",
+        "x": "286.557616",
+        "y": "475.881184"
+      }
+    },
+    {
+      "object_id": "T069",
+      "safe_filename": "T069.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "编",
+      "unicode": "U+7F16",
+      "semantic_parent": "T_XLABEL",
+      "role": "AXIS_LABEL",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 14,
+      "declared_pt": 9.6,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.6,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        296.47028,
+        469.03074194,
+        306.03442,
+        478.59488194
+      ],
+      "bbox_full_native_px": [
+        1235,
+        1954,
+        1276,
+        1995
+      ],
+      "bbox_crop_native_px": [
+        610,
+        621,
+        651,
+        662
+      ],
+      "svg_use": {
+        "href": "#glyph13-3",
+        "x": "296.110138",
+        "y": "475.881184"
+      }
+    },
+    {
+      "object_id": "T070",
+      "safe_filename": "T070.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "号",
+      "unicode": "U+53F7",
+      "semantic_parent": "T_XLABEL",
+      "role": "AXIS_LABEL",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 14,
+      "declared_pt": 9.6,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.6,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        306.03441999999995,
+        469.03074194,
+        315.59855999999996,
+        478.59488194
+      ],
+      "bbox_full_native_px": [
+        1275,
+        1954,
+        1315,
+        1995
+      ],
+      "bbox_crop_native_px": [
+        650,
+        621,
+        690,
+        662
+      ],
+      "svg_use": {
+        "href": "#glyph13-4",
+        "x": "305.66266",
+        "y": "475.881184"
+      }
+    },
+    {
+      "object_id": "T071",
+      "safe_filename": "T071.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "𝑖",
+      "unicode": "U+1D456",
+      "semantic_parent": "T_XLABEL",
+      "role": "AXIS_LABEL",
+      "script_class": "LATIN_LOWER_OR_GREEK",
+      "threshold_px_protocol": 17,
+      "source_line": 14,
+      "declared_pt": 9.6,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.6,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        317.846,
+        468.71512531999997,
+        320.46657436,
+        478.27926532
+      ],
+      "bbox_full_native_px": [
+        1324,
+        1952,
+        1336,
+        1993
+      ],
+      "bbox_crop_native_px": [
+        699,
+        619,
+        711,
+        660
+      ],
+      "svg_use": {
+        "href": "#glyph14-1",
+        "x": "317.459892",
+        "y": "475.881184"
+      }
+    },
+    {
+      "object_id": "T072",
+      "safe_filename": "T072.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "/",
+      "unicode": "U+002F",
+      "semantic_parent": "T_XLABEL",
+      "role": "AXIS_LABEL",
+      "script_class": "MATH_OPERATOR_OR_SYMBOL",
+      "threshold_px_protocol": 22,
+      "source_line": 14,
+      "declared_pt": 9.6,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.6,
+      "pdf_fontname": "DZQCKZ+STIXTwoText-Regular",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        322.906,
+        468.71512531999997,
+        326.60732218,
+        478.27926532
+      ],
+      "bbox_full_native_px": [
+        1345,
+        1952,
+        1361,
+        1993
+      ],
+      "bbox_crop_native_px": [
+        720,
+        619,
+        736,
+        660
+      ],
+      "svg_use": {
+        "href": "#glyph15-1",
+        "x": "322.513745",
+        "y": "475.881184"
+      }
+    },
+    {
+      "object_id": "T073",
+      "safe_filename": "T073.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "样",
+      "unicode": "U+6837",
+      "semantic_parent": "T_XLABEL",
+      "role": "AXIS_LABEL",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 14,
+      "declared_pt": 9.6,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.6,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        328.855,
+        469.03074194,
+        338.41914,
+        478.59488194
+      ],
+      "bbox_full_native_px": [
+        1370,
+        1954,
+        1411,
+        1995
+      ],
+      "bbox_crop_native_px": [
+        745,
+        621,
+        786,
+        662
+      ],
+      "svg_use": {
+        "href": "#glyph13-1",
+        "x": "328.455518",
+        "y": "475.881184"
+      }
+    },
+    {
+      "object_id": "T074",
+      "safe_filename": "T074.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "本",
+      "unicode": "U+672C",
+      "semantic_parent": "T_XLABEL",
+      "role": "AXIS_LABEL",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 14,
+      "declared_pt": 9.6,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.6,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        338.41914,
+        469.03074194,
+        347.98328000000004,
+        478.59488194
+      ],
+      "bbox_full_native_px": [
+        1410,
+        1954,
+        1450,
+        1995
+      ],
+      "bbox_crop_native_px": [
+        785,
+        621,
+        825,
+        662
+      ],
+      "svg_use": {
+        "href": "#glyph13-2",
+        "x": "338.00804",
+        "y": "475.881184"
+      }
+    },
+    {
+      "object_id": "T075",
+      "safe_filename": "T075.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "数",
+      "unicode": "U+6570",
+      "semantic_parent": "T_XLABEL",
+      "role": "AXIS_LABEL",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 14,
+      "declared_pt": 9.6,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.6,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        347.98328000000004,
+        469.03074194,
+        357.54742000000005,
+        478.59488194
+      ],
+      "bbox_full_native_px": [
+        1449,
+        1954,
+        1490,
+        1995
+      ],
+      "bbox_crop_native_px": [
+        824,
+        621,
+        865,
+        662
+      ],
+      "svg_use": {
+        "href": "#glyph13-5",
+        "x": "347.560562",
+        "y": "475.881184"
+      }
+    },
+    {
+      "object_id": "T076",
+      "safe_filename": "T076.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "𝑁",
+      "unicode": "U+1D441",
+      "semantic_parent": "T_XLABEL",
+      "role": "AXIS_LABEL",
+      "script_class": "LATIN_UPPER_OR_DIGIT",
+      "threshold_px_protocol": 24,
+      "source_line": 14,
+      "declared_pt": 9.6,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.6,
+      "pdf_fontname": "VZHKFD+STIXTwoMath-Regular",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        359.795,
+        468.71512531999997,
+        366.62379596,
+        478.27926532
+      ],
+      "bbox_full_native_px": [
+        1499,
+        1952,
+        1528,
+        1993
+      ],
+      "bbox_crop_native_px": [
+        874,
+        619,
+        903,
+        660
+      ],
+      "svg_use": {
+        "href": "#glyph14-2",
+        "x": "359.357934",
+        "y": "475.881184"
+      }
+    },
+    {
+      "object_id": "T077",
+      "safe_filename": "T077.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "数",
+      "unicode": "U+6570",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        166.90374193999997,
+        390.98386,
+        176.46788193999998,
+        400.548
+      ],
+      "bbox_full_native_px": [
+        695,
+        1629,
+        736,
+        1669
+      ],
+      "bbox_crop_native_px": [
+        70,
+        296,
+        111,
+        336
+      ],
+      "svg_use": {
+        "href": "#glyph16-1",
+        "x": "173.664782",
+        "y": "400.517844"
+      }
+    },
+    {
+      "object_id": "T078",
+      "safe_filename": "T078.png",
+      "object_type": "TEXT_GLYPH",
+      "char": "值",
+      "unicode": "U+503C",
+      "semantic_parent": "T_YTICKS",
+      "role": "AXIS_TICK",
+      "script_class": "CJK_FULL",
+      "threshold_px_protocol": 30,
+      "source_line": 15,
+      "declared_pt": 9.5,
+      "graphics_scale": 1.0,
+      "effective_pt": 9.5,
+      "pdf_fontname": "MEQDEE+NotoSerifSC-ExtraLight",
+      "pdf_size_pt": 9.564140000000009,
+      "pdf_non_stroking_color": [
+        0.12158,
+        0.13725,
+        0.15686
+      ],
+      "bbox_pt": [
+        166.90374193999997,
+        381.41972,
+        176.46788193999998,
+        390.98386
+      ],
+      "bbox_full_native_px": [
+        695,
+        1589,
+        736,
+        1630
+      ],
+      "bbox_crop_native_px": [
+        70,
+        256,
+        111,
+        297
+      ],
+      "svg_use": {
+        "href": "#glyph16-2",
+        "x": "173.664782",
+        "y": "390.965323"
+      }
+    },
+    {
+      "object_id": "G001",
+      "safe_filename": "G001.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "X_AXIS_WITH_ARROWHEAD",
+      "role": "AXIS_LINE",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 6,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        199.220215,
+        445.119335,
+        445.369645,
+        450.752665
+      ],
+      "bbox_full_native_px": [
+        830,
+        1854,
+        1856,
+        1879
+      ],
+      "bbox_crop_native_px": [
+        205,
+        521,
+        1231,
+        546
+      ],
+      "primitive_count": 2,
+      "primitives": [
+        {
+          "x0": 200.144,
+          "top": 447.936,
+          "x1": 442.07975999999996,
+          "bottom": 447.936,
+          "width": 241.93575999999996,
+          "height": 0.0,
+          "linewidth": 0.64757,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.13725,
+            0.15686
+          ],
+          "dash": null,
+          "pts": [
+            [
+              200.144,
+              447.936
+            ],
+            [
+              442.07975999999996,
+              447.936
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                200.144,
+                447.936
+              ]
+            ],
+            [
+              "l",
+              [
+                442.07975999999996,
+                447.936
+              ]
+            ]
+          ],
+          "evenodd": false
+        },
+        {
+          "x0": 440.66009999999994,
+          "top": 446.04312,
+          "x1": 444.44586,
+          "bottom": 449.82887999999997,
+          "width": 3.785760000000039,
+          "height": 3.785759999999982,
+          "linewidth": 0.64757,
+          "stroke": false,
+          "fill": true,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "dash": null,
+          "pts": [
+            [
+              444.44586,
+              447.936
+            ],
+            [
+              440.66009999999994,
+              446.04312
+            ],
+            [
+              442.07975999999996,
+              447.936
+            ],
+            [
+              440.66009999999994,
+              449.82887999999997
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                444.44586,
+                447.936
+              ]
+            ],
+            [
+              "l",
+              [
+                440.66009999999994,
+                446.04312
+              ]
+            ],
+            [
+              "l",
+              [
+                442.07975999999996,
+                447.936
+              ]
+            ],
+            [
+              "l",
+              [
+                440.66009999999994,
+                449.82887999999997
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G002",
+      "safe_filename": "G002.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "Y_AXIS_WITH_ARROWHEAD",
+      "role": "AXIS_LINE",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 6,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        197.327335,
+        333.10685499999994,
+        202.960665,
+        448.859785
+      ],
+      "bbox_full_native_px": [
+        822,
+        1387,
+        846,
+        1871
+      ],
+      "bbox_crop_native_px": [
+        197,
+        54,
+        221,
+        538
+      ],
+      "primitive_count": 2,
+      "primitives": [
+        {
+          "x0": 200.144,
+          "top": 336.39673999999997,
+          "x1": 200.144,
+          "bottom": 447.936,
+          "width": 0.0,
+          "height": 111.53926000000001,
+          "linewidth": 0.64757,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.13725,
+            0.15686
+          ],
+          "dash": null,
+          "pts": [
+            [
+              200.144,
+              447.936
+            ],
+            [
+              200.144,
+              336.39673999999997
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                200.144,
+                447.936
+              ]
+            ],
+            [
+              "l",
+              [
+                200.144,
+                336.39673999999997
+              ]
+            ]
+          ],
+          "evenodd": false
+        },
+        {
+          "x0": 198.25112000000001,
+          "top": 334.03063999999995,
+          "x1": 202.03688,
+          "bottom": 337.8164,
+          "width": 3.785759999999982,
+          "height": 3.785760000000039,
+          "linewidth": 0.64757,
+          "stroke": false,
+          "fill": true,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "dash": null,
+          "pts": [
+            [
+              200.144,
+              334.03063999999995
+            ],
+            [
+              198.25112000000001,
+              337.8164
+            ],
+            [
+              200.144,
+              336.39673999999997
+            ],
+            [
+              202.03688,
+              337.8164
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                200.144,
+                334.03063999999995
+              ]
+            ],
+            [
+              "l",
+              [
+                198.25112000000001,
+                337.8164
+              ]
+            ],
+            [
+              "l",
+              [
+                200.144,
+                336.39673999999997
+              ]
+            ],
+            [
+              "l",
+              [
+                202.03688,
+                337.8164
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G003",
+      "safe_filename": "G003.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "X_TICK_1",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        219.62850000000003,
+        444.93613999999997,
+        221.37644,
+        450.93586
+      ],
+      "bbox_full_native_px": [
+        915,
+        1853,
+        923,
+        1879
+      ],
+      "bbox_crop_native_px": [
+        290,
+        520,
+        298,
+        546
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 220.50247000000002,
+          "top": 445.81010999999995,
+          "x1": 220.50247000000002,
+          "bottom": 450.06189,
+          "width": 0.0,
+          "height": 4.251780000000053,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              220.50247000000002,
+              450.06189
+            ],
+            [
+              220.50247000000002,
+              445.81010999999995
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                220.50247000000002,
+                450.06189
+              ]
+            ],
+            [
+              "l",
+              [
+                220.50247000000002,
+                445.81010999999995
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G001"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G004",
+      "safe_filename": "G004.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "X_TICK_2",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        287.49014,
+        444.93613999999997,
+        289.23807999999997,
+        450.93586
+      ],
+      "bbox_full_native_px": [
+        1197,
+        1853,
+        1206,
+        1879
+      ],
+      "bbox_crop_native_px": [
+        572,
+        520,
+        581,
+        546
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 288.36411,
+          "top": 445.81010999999995,
+          "x1": 288.36411,
+          "bottom": 450.06189,
+          "width": 0.0,
+          "height": 4.251780000000053,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              288.36411,
+              450.06189
+            ],
+            [
+              288.36411,
+              445.81010999999995
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                288.36411,
+                450.06189
+              ]
+            ],
+            [
+              "l",
+              [
+                288.36411,
+                445.81010999999995
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G001"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G005",
+      "safe_filename": "G005.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "X_TICK_3",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        355.35177,
+        444.93613999999997,
+        357.09970999999996,
+        450.93586
+      ],
+      "bbox_full_native_px": [
+        1480,
+        1853,
+        1488,
+        1879
+      ],
+      "bbox_crop_native_px": [
+        855,
+        520,
+        863,
+        546
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 356.22574,
+          "top": 445.81010999999995,
+          "x1": 356.22574,
+          "bottom": 450.06189,
+          "width": 0.0,
+          "height": 4.251780000000053,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              356.22574,
+              450.06189
+            ],
+            [
+              356.22574,
+              445.81010999999995
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                356.22574,
+                450.06189
+              ]
+            ],
+            [
+              "l",
+              [
+                356.22574,
+                445.81010999999995
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G001"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G006",
+      "safe_filename": "G006.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "X_TICK_4",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        423.2134,
+        444.93613999999997,
+        424.96133999999995,
+        450.93586
+      ],
+      "bbox_full_native_px": [
+        1763,
+        1853,
+        1771,
+        1879
+      ],
+      "bbox_crop_native_px": [
+        1138,
+        520,
+        1146,
+        546
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 424.08736999999996,
+          "top": 445.81010999999995,
+          "x1": 424.08736999999996,
+          "bottom": 450.06189,
+          "width": 0.0,
+          "height": 4.251780000000053,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              424.08736999999996,
+              450.06189
+            ],
+            [
+              424.08736999999996,
+              445.81010999999995
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                424.08736999999996,
+                450.06189
+              ]
+            ],
+            [
+              "l",
+              [
+                424.08736999999996,
+                445.81010999999995
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G001"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G007",
+      "safe_filename": "G007.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "Y_TICK_0",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        197.14398,
+        447.06203,
+        203.14402,
+        448.80996999999996
+      ],
+      "bbox_full_native_px": [
+        821,
+        1862,
+        847,
+        1871
+      ],
+      "bbox_crop_native_px": [
+        196,
+        529,
+        222,
+        538
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 198.01795,
+          "top": 447.936,
+          "x1": 202.27005,
+          "bottom": 447.936,
+          "width": 4.2520999999999844,
+          "height": 0.0,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              198.01795,
+              447.936
+            ],
+            [
+              202.27005,
+              447.936
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                198.01795,
+                447.936
+              ]
+            ],
+            [
+              "l",
+              [
+                202.27005,
+                447.936
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G002"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G008",
+      "safe_filename": "G008.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "Y_TICK_1",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        197.14398,
+        430.78983999999997,
+        203.14402,
+        432.53777999999994
+      ],
+      "bbox_full_native_px": [
+        821,
+        1794,
+        847,
+        1803
+      ],
+      "bbox_crop_native_px": [
+        196,
+        461,
+        222,
+        470
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 198.01795,
+          "top": 431.66380999999996,
+          "x1": 202.27005,
+          "bottom": 431.66380999999996,
+          "width": 4.2520999999999844,
+          "height": 0.0,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              198.01795,
+              431.66380999999996
+            ],
+            [
+              202.27005,
+              431.66380999999996
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                198.01795,
+                431.66380999999996
+              ]
+            ],
+            [
+              "l",
+              [
+                202.27005,
+                431.66380999999996
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G002"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G009",
+      "safe_filename": "G009.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "Y_TICK_2",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        197.14398,
+        414.51764,
+        203.14402,
+        416.26557999999994
+      ],
+      "bbox_full_native_px": [
+        821,
+        1727,
+        847,
+        1735
+      ],
+      "bbox_crop_native_px": [
+        196,
+        394,
+        222,
+        402
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 198.01795,
+          "top": 415.39160999999996,
+          "x1": 202.27005,
+          "bottom": 415.39160999999996,
+          "width": 4.2520999999999844,
+          "height": 0.0,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              198.01795,
+              415.39160999999996
+            ],
+            [
+              202.27005,
+              415.39160999999996
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                198.01795,
+                415.39160999999996
+              ]
+            ],
+            [
+              "l",
+              [
+                202.27005,
+                415.39160999999996
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G002"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G010",
+      "safe_filename": "G010.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "Y_TICK_3",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        197.14398,
+        398.24544,
+        203.14402,
+        399.99337999999995
+      ],
+      "bbox_full_native_px": [
+        821,
+        1659,
+        847,
+        1667
+      ],
+      "bbox_crop_native_px": [
+        196,
+        326,
+        222,
+        334
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 198.01795,
+          "top": 399.11940999999996,
+          "x1": 202.27005,
+          "bottom": 399.11940999999996,
+          "width": 4.2520999999999844,
+          "height": 0.0,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              198.01795,
+              399.11940999999996
+            ],
+            [
+              202.27005,
+              399.11940999999996
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                198.01795,
+                399.11940999999996
+              ]
+            ],
+            [
+              "l",
+              [
+                202.27005,
+                399.11940999999996
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G002"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G011",
+      "safe_filename": "G011.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "Y_TICK_4",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        197.14398,
+        381.97325,
+        203.14402,
+        383.72119
+      ],
+      "bbox_full_native_px": [
+        821,
+        1591,
+        847,
+        1599
+      ],
+      "bbox_crop_native_px": [
+        196,
+        258,
+        222,
+        266
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 198.01795,
+          "top": 382.84722,
+          "x1": 202.27005,
+          "bottom": 382.84722,
+          "width": 4.2520999999999844,
+          "height": 0.0,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              198.01795,
+              382.84722
+            ],
+            [
+              202.27005,
+              382.84722
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                198.01795,
+                382.84722
+              ]
+            ],
+            [
+              "l",
+              [
+                202.27005,
+                382.84722
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G002"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G012",
+      "safe_filename": "G012.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "Y_TICK_5",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        197.14398,
+        365.70105,
+        203.14402,
+        367.44899
+      ],
+      "bbox_full_native_px": [
+        821,
+        1523,
+        847,
+        1532
+      ],
+      "bbox_crop_native_px": [
+        196,
+        190,
+        222,
+        199
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 198.01795,
+          "top": 366.57502,
+          "x1": 202.27005,
+          "bottom": 366.57502,
+          "width": 4.2520999999999844,
+          "height": 0.0,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              198.01795,
+              366.57502
+            ],
+            [
+              202.27005,
+              366.57502
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                198.01795,
+                366.57502
+              ]
+            ],
+            [
+              "l",
+              [
+                202.27005,
+                366.57502
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G002"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G013",
+      "safe_filename": "G013.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "Y_TICK_6",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        197.14398,
+        349.42885,
+        203.14402,
+        351.17679
+      ],
+      "bbox_full_native_px": [
+        821,
+        1455,
+        847,
+        1464
+      ],
+      "bbox_crop_native_px": [
+        196,
+        122,
+        222,
+        131
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 198.01795,
+          "top": 350.30282,
+          "x1": 202.27005,
+          "bottom": 350.30282,
+          "width": 4.2520999999999844,
+          "height": 0.0,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              198.01795,
+              350.30282
+            ],
+            [
+              202.27005,
+              350.30282
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                198.01795,
+                350.30282
+              ]
+            ],
+            [
+              "l",
+              [
+                202.27005,
+                350.30282
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G002"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G014",
+      "safe_filename": "G014.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "Y_TICK_7",
+      "role": "TICK_MARK",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 7,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        197.14398,
+        333.15665,
+        203.14402,
+        334.90459
+      ],
+      "bbox_full_native_px": [
+        821,
+        1388,
+        847,
+        1396
+      ],
+      "bbox_crop_native_px": [
+        196,
+        55,
+        222,
+        63
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 198.01795,
+          "top": 334.03062,
+          "x1": 202.27005,
+          "bottom": 334.03062,
+          "width": 4.2520999999999844,
+          "height": 0.0,
+          "linewidth": 0.54794,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": 0.5,
+          "dash": null,
+          "pts": [
+            [
+              198.01795,
+              334.03062
+            ],
+            [
+              202.27005,
+              334.03062
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                198.01795,
+                334.03062
+              ]
+            ],
+            [
+              "l",
+              [
+                202.27005,
+                334.03062
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G002"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G015",
+      "safe_filename": "G015.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "STEM_1",
+      "role": "DATA_STEM",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 18,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        219.61355,
+        342.90502,
+        221.39139000000003,
+        448.82491999999996
+      ],
+      "bbox_full_native_px": [
+        915,
+        1428,
+        923,
+        1871
+      ],
+      "bbox_crop_native_px": [
+        290,
+        95,
+        298,
+        538
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 220.50247000000002,
+          "top": 343.79393999999996,
+          "x1": 220.50247000000002,
+          "bottom": 447.936,
+          "width": 0.0,
+          "height": 104.14206000000001,
+          "linewidth": 0.57784,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.13725,
+            0.15686
+          ],
+          "dash": null,
+          "pts": [
+            [
+              220.50247000000002,
+              447.936
+            ],
+            [
+              220.50247000000002,
+              343.79393999999996
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                220.50247000000002,
+                447.936
+              ]
+            ],
+            [
+              "l",
+              [
+                220.50247000000002,
+                343.79393999999996
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G025"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G017",
+      "safe_filename": "G017.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "STEM_3",
+      "role": "DATA_STEM",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 18,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        355.33682,
+        367.31332,
+        357.11465999999996,
+        448.82491999999996
+      ],
+      "bbox_full_native_px": [
+        1480,
+        1530,
+        1488,
+        1871
+      ],
+      "bbox_crop_native_px": [
+        855,
+        197,
+        863,
+        538
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 356.22574,
+          "top": 368.20223999999996,
+          "x1": 356.22574,
+          "bottom": 447.936,
+          "width": 0.0,
+          "height": 79.73376000000002,
+          "linewidth": 0.57784,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.13725,
+            0.15686
+          ],
+          "dash": null,
+          "pts": [
+            [
+              356.22574,
+              447.936
+            ],
+            [
+              356.22574,
+              368.20223999999996
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                356.22574,
+                447.936
+              ]
+            ],
+            [
+              "l",
+              [
+                356.22574,
+                368.20223999999996
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G027"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G018",
+      "safe_filename": "G018.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "STEM_4",
+      "role": "DATA_STEM",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 18,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        423.19845,
+        421.01158,
+        424.97628999999995,
+        448.82491999999996
+      ],
+      "bbox_full_native_px": [
+        1763,
+        1754,
+        1771,
+        1871
+      ],
+      "bbox_crop_native_px": [
+        1138,
+        421,
+        1146,
+        538
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 424.08736999999996,
+          "top": 421.90049999999997,
+          "x1": 424.08736999999996,
+          "bottom": 447.936,
+          "width": 0.0,
+          "height": 26.035500000000013,
+          "linewidth": 0.57784,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.13725,
+            0.15686
+          ],
+          "dash": null,
+          "pts": [
+            [
+              424.08736999999996,
+              447.936
+            ],
+            [
+              424.08736999999996,
+              421.90049999999997
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                424.08736999999996,
+                447.936
+              ]
+            ],
+            [
+              "l",
+              [
+                424.08736999999996,
+                421.90049999999997
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G028"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G019",
+      "safe_filename": "G019.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "TRUE_MEAN_DASHED",
+      "role": "REFERENCE_LINE",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 24,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        199.19530500000002,
+        392.746735,
+        445.39372499999996,
+        394.644125
+      ],
+      "bbox_full_native_px": [
+        829,
+        1636,
+        1856,
+        1645
+      ],
+      "bbox_crop_native_px": [
+        204,
+        303,
+        1231,
+        312
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 200.144,
+          "top": 393.69543,
+          "x1": 444.44503,
+          "bottom": 393.69543,
+          "width": 244.30102999999997,
+          "height": 0.0,
+          "linewidth": 0.69739,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.05882,
+            0.46275,
+            0.43137
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.13725,
+            0.15686
+          ],
+          "dash": [
+            [
+              2.98883,
+              1.99255
+            ],
+            0.0
+          ],
+          "pts": [
+            [
+              200.144,
+              393.69543
+            ],
+            [
+              444.44503,
+              393.69543
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                200.144,
+                393.69543
+              ]
+            ],
+            [
+              "l",
+              [
+                444.44503,
+                393.69543
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G020",
+      "safe_filename": "G020.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "RUNNING_MEAN_CURVE",
+      "role": "DATA_CURVE",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 21,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        219.414235,
+        342.705825,
+        425.174765,
+        396.139565
+      ],
+      "bbox_full_native_px": [
+        914,
+        1427,
+        1772,
+        1651
+      ],
+      "bbox_crop_native_px": [
+        289,
+        94,
+        1147,
+        318
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 220.5024,
+          "top": 343.79399,
+          "x1": 424.0866,
+          "bottom": 395.0514,
+          "width": 203.58419999999998,
+          "height": 51.25740999999999,
+          "linewidth": 0.97633,
+          "stroke": true,
+          "fill": false,
+          "stroking_color": [
+            0.12158,
+            0.30588,
+            0.47452
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.13725,
+            0.15686
+          ],
+          "dash": null,
+          "pts": [
+            [
+              220.5024,
+              343.79399
+            ],
+            [
+              288.3638,
+              395.0514
+            ],
+            [
+              356.2252,
+              386.10168
+            ],
+            [
+              424.0866,
+              395.0514
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                220.5024,
+                343.79399
+              ]
+            ],
+            [
+              "l",
+              [
+                288.3638,
+                395.0514
+              ]
+            ],
+            [
+              "l",
+              [
+                356.2252,
+                386.10168
+              ]
+            ],
+            [
+              "l",
+              [
+                424.0866,
+                395.0514
+              ]
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G021",
+        "G022",
+        "G023",
+        "G024"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G021",
+      "safe_filename": "G021.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "RUNNING_MEAN_MARKER_1",
+      "role": "DATA_MARKER",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 21,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        217.58607,
+        340.87764999999996,
+        223.41875000000002,
+        346.71033
+      ],
+      "bbox_full_native_px": [
+        906,
+        1420,
+        931,
+        1445
+      ],
+      "bbox_crop_native_px": [
+        281,
+        87,
+        306,
+        112
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 218.36042,
+          "top": 341.652,
+          "x1": 222.64440000000002,
+          "bottom": 345.93598,
+          "width": 4.283980000000014,
+          "height": 4.2839799999999855,
+          "linewidth": 0.3487,
+          "stroke": true,
+          "fill": true,
+          "stroking_color": [
+            0.08511,
+            0.21411,
+            0.33217
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.30588,
+            0.47452
+          ],
+          "dash": null,
+          "pts": [
+            [
+              222.64440000000002,
+              343.79399
+            ],
+            [
+              220.5024,
+              341.652
+            ],
+            [
+              218.36042,
+              343.79399
+            ],
+            [
+              220.5024,
+              345.93598
+            ],
+            [
+              222.64440000000002,
+              343.79399
+            ],
+            [
+              222.64440000000002,
+              343.79399
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                222.64440000000002,
+                343.79399
+              ]
+            ],
+            [
+              "c",
+              [
+                222.64440000000002,
+                342.61098999999996
+              ],
+              [
+                221.68541,
+                341.652
+              ],
+              [
+                220.5024,
+                341.652
+              ]
+            ],
+            [
+              "c",
+              [
+                219.3194,
+                341.652
+              ],
+              [
+                218.36042,
+                342.61098999999996
+              ],
+              [
+                218.36042,
+                343.79399
+              ]
+            ],
+            [
+              "c",
+              [
+                218.36042,
+                344.97699
+              ],
+              [
+                219.3194,
+                345.93598
+              ],
+              [
+                220.5024,
+                345.93598
+              ]
+            ],
+            [
+              "c",
+              [
+                221.68541,
+                345.93598
+              ],
+              [
+                222.64440000000002,
+                344.97699
+              ],
+              [
+                222.64440000000002,
+                343.79399
+              ]
+            ],
+            [
+              "h"
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G020"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G022",
+      "safe_filename": "G022.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "RUNNING_MEAN_MARKER_2",
+      "role": "DATA_MARKER",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 21,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        285.44746999999995,
+        392.13505,
+        291.28015000000005,
+        397.96774
+      ],
+      "bbox_full_native_px": [
+        1189,
+        1633,
+        1214,
+        1659
+      ],
+      "bbox_crop_native_px": [
+        564,
+        300,
+        589,
+        326
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 286.22182,
+          "top": 392.9094,
+          "x1": 290.5058,
+          "bottom": 397.19338999999997,
+          "width": 4.283980000000042,
+          "height": 4.28398999999996,
+          "linewidth": 0.3487,
+          "stroke": true,
+          "fill": true,
+          "stroking_color": [
+            0.08511,
+            0.21411,
+            0.33217
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.30588,
+            0.47452
+          ],
+          "dash": null,
+          "pts": [
+            [
+              290.5058,
+              395.0514
+            ],
+            [
+              288.3638,
+              392.9094
+            ],
+            [
+              286.22182,
+              395.0514
+            ],
+            [
+              288.3638,
+              397.19338999999997
+            ],
+            [
+              290.5058,
+              395.0514
+            ],
+            [
+              290.5058,
+              395.0514
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                290.5058,
+                395.0514
+              ]
+            ],
+            [
+              "c",
+              [
+                290.5058,
+                393.86839
+              ],
+              [
+                289.54682,
+                392.9094
+              ],
+              [
+                288.3638,
+                392.9094
+              ]
+            ],
+            [
+              "c",
+              [
+                287.1808,
+                392.9094
+              ],
+              [
+                286.22182,
+                393.86839
+              ],
+              [
+                286.22182,
+                395.0514
+              ]
+            ],
+            [
+              "c",
+              [
+                286.22182,
+                396.2344
+              ],
+              [
+                287.1808,
+                397.19338999999997
+              ],
+              [
+                288.3638,
+                397.19338999999997
+              ]
+            ],
+            [
+              "c",
+              [
+                289.54682,
+                397.19338999999997
+              ],
+              [
+                290.5058,
+                396.2344
+              ],
+              [
+                290.5058,
+                395.0514
+              ]
+            ],
+            [
+              "h"
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G020"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G023",
+      "safe_filename": "G023.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "RUNNING_MEAN_MARKER_3",
+      "role": "DATA_MARKER",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 21,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        353.30886999999996,
+        383.18534999999997,
+        359.14155000000005,
+        389.01803
+      ],
+      "bbox_full_native_px": [
+        1472,
+        1596,
+        1497,
+        1621
+      ],
+      "bbox_crop_native_px": [
+        847,
+        263,
+        872,
+        288
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 354.08322,
+          "top": 383.9597,
+          "x1": 358.3672,
+          "bottom": 388.24368,
+          "width": 4.283980000000042,
+          "height": 4.2839799999999855,
+          "linewidth": 0.3487,
+          "stroke": true,
+          "fill": true,
+          "stroking_color": [
+            0.08511,
+            0.21411,
+            0.33217
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.30588,
+            0.47452
+          ],
+          "dash": null,
+          "pts": [
+            [
+              358.3672,
+              386.10168
+            ],
+            [
+              356.2252,
+              383.9597
+            ],
+            [
+              354.08322,
+              386.10168
+            ],
+            [
+              356.2252,
+              388.24368
+            ],
+            [
+              358.3672,
+              386.10168
+            ],
+            [
+              358.3672,
+              386.10168
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                358.3672,
+                386.10168
+              ]
+            ],
+            [
+              "c",
+              [
+                358.3672,
+                384.91868
+              ],
+              [
+                357.40822000000003,
+                383.9597
+              ],
+              [
+                356.2252,
+                383.9597
+              ]
+            ],
+            [
+              "c",
+              [
+                355.04221,
+                383.9597
+              ],
+              [
+                354.08322,
+                384.91868
+              ],
+              [
+                354.08322,
+                386.10168
+              ]
+            ],
+            [
+              "c",
+              [
+                354.08322,
+                387.2847
+              ],
+              [
+                355.04221,
+                388.24368
+              ],
+              [
+                356.2252,
+                388.24368
+              ]
+            ],
+            [
+              "c",
+              [
+                357.40822000000003,
+                388.24368
+              ],
+              [
+                358.3672,
+                387.2847
+              ],
+              [
+                358.3672,
+                386.10168
+              ]
+            ],
+            [
+              "h"
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G020"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G024",
+      "safe_filename": "G024.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "RUNNING_MEAN_MARKER_4",
+      "role": "DATA_MARKER",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 21,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        421.17026,
+        392.13505,
+        427.00295000000006,
+        397.96774
+      ],
+      "bbox_full_native_px": [
+        1754,
+        1633,
+        1780,
+        1659
+      ],
+      "bbox_crop_native_px": [
+        1129,
+        300,
+        1155,
+        326
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 421.94461,
+          "top": 392.9094,
+          "x1": 426.22860000000003,
+          "bottom": 397.19338999999997,
+          "width": 4.283990000000017,
+          "height": 4.28398999999996,
+          "linewidth": 0.3487,
+          "stroke": true,
+          "fill": true,
+          "stroking_color": [
+            0.08511,
+            0.21411,
+            0.33217
+          ],
+          "non_stroking_color": [
+            0.12158,
+            0.30588,
+            0.47452
+          ],
+          "dash": null,
+          "pts": [
+            [
+              426.22860000000003,
+              395.0514
+            ],
+            [
+              424.0866,
+              392.9094
+            ],
+            [
+              421.94461,
+              395.0514
+            ],
+            [
+              424.0866,
+              397.19338999999997
+            ],
+            [
+              426.22860000000003,
+              395.0514
+            ],
+            [
+              426.22860000000003,
+              395.0514
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                426.22860000000003,
+                395.0514
+              ]
+            ],
+            [
+              "c",
+              [
+                426.22860000000003,
+                393.86839
+              ],
+              [
+                425.26961,
+                392.9094
+              ],
+              [
+                424.0866,
+                392.9094
+              ]
+            ],
+            [
+              "c",
+              [
+                422.9036,
+                392.9094
+              ],
+              [
+                421.94461,
+                393.86839
+              ],
+              [
+                421.94461,
+                395.0514
+              ]
+            ],
+            [
+              "c",
+              [
+                421.94461,
+                396.2344
+              ],
+              [
+                422.9036,
+                397.19338999999997
+              ],
+              [
+                424.0866,
+                397.19338999999997
+              ]
+            ],
+            [
+              "c",
+              [
+                425.26961,
+                397.19338999999997
+              ],
+              [
+                426.22860000000003,
+                396.2344
+              ],
+              [
+                426.22860000000003,
+                395.0514
+              ]
+            ],
+            [
+              "h"
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G020"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G025",
+      "safe_filename": "G025.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "SQUARED_VALUE_MARKER_1",
+      "role": "DATA_MARKER",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 18,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        217.38688000000002,
+        340.67833999999993,
+        223.61809,
+        346.90955
+      ],
+      "bbox_full_native_px": [
+        905,
+        1419,
+        932,
+        1446
+      ],
+      "bbox_crop_native_px": [
+        280,
+        86,
+        307,
+        113
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 218.16123000000002,
+          "top": 341.45268999999996,
+          "x1": 222.84374,
+          "bottom": 346.1352,
+          "width": 4.682509999999979,
+          "height": 4.682510000000036,
+          "linewidth": 0.3487,
+          "stroke": true,
+          "fill": true,
+          "stroking_color": [
+            0.3357,
+            0.35765,
+            0.40157
+          ],
+          "non_stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "dash": null,
+          "pts": [
+            [
+              218.16123000000002,
+              346.1352
+            ],
+            [
+              222.84374,
+              346.1352
+            ],
+            [
+              222.84374,
+              341.45268999999996
+            ],
+            [
+              218.16123000000002,
+              341.45268999999996
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                218.16123000000002,
+                346.1352
+              ]
+            ],
+            [
+              "l",
+              [
+                222.84374,
+                346.1352
+              ]
+            ],
+            [
+              "l",
+              [
+                222.84374,
+                341.45268999999996
+              ]
+            ],
+            [
+              "l",
+              [
+                218.16123000000002,
+                341.45268999999996
+              ]
+            ],
+            [
+              "h"
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G015"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G026",
+      "safe_filename": "G026.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "SQUARED_VALUE_MARKER_2",
+      "role": "DATA_MARKER",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 18,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        285.24851,
+        443.1931799999999,
+        291.47972000000004,
+        449.42439
+      ],
+      "bbox_full_native_px": [
+        1188,
+        1846,
+        1215,
+        1873
+      ],
+      "bbox_crop_native_px": [
+        563,
+        513,
+        590,
+        540
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 286.02286000000004,
+          "top": 443.96752999999995,
+          "x1": 290.70537,
+          "bottom": 448.65004,
+          "width": 4.682509999999979,
+          "height": 4.682510000000036,
+          "linewidth": 0.3487,
+          "stroke": true,
+          "fill": true,
+          "stroking_color": [
+            0.3357,
+            0.35765,
+            0.40157
+          ],
+          "non_stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "dash": null,
+          "pts": [
+            [
+              286.02286000000004,
+              448.65004
+            ],
+            [
+              290.70537,
+              448.65004
+            ],
+            [
+              290.70537,
+              443.96752999999995
+            ],
+            [
+              286.02286000000004,
+              443.96752999999995
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                286.02286000000004,
+                448.65004
+              ]
+            ],
+            [
+              "l",
+              [
+                290.70537,
+                448.65004
+              ]
+            ],
+            [
+              "l",
+              [
+                290.70537,
+                443.96752999999995
+              ]
+            ],
+            [
+              "l",
+              [
+                286.02286000000004,
+                443.96752999999995
+              ]
+            ],
+            [
+              "h"
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G016"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G027",
+      "safe_filename": "G027.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "SQUARED_VALUE_MARKER_3",
+      "role": "DATA_MARKER",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 18,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        353.11015,
+        365.08664,
+        359.34136,
+        371.31785
+      ],
+      "bbox_full_native_px": [
+        1471,
+        1521,
+        1498,
+        1548
+      ],
+      "bbox_crop_native_px": [
+        846,
+        188,
+        873,
+        215
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 353.8845,
+          "top": 365.86099,
+          "x1": 358.56701,
+          "bottom": 370.5435,
+          "width": 4.682509999999979,
+          "height": 4.682509999999979,
+          "linewidth": 0.3487,
+          "stroke": true,
+          "fill": true,
+          "stroking_color": [
+            0.3357,
+            0.35765,
+            0.40157
+          ],
+          "non_stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "dash": null,
+          "pts": [
+            [
+              353.8845,
+              370.5435
+            ],
+            [
+              358.56701,
+              370.5435
+            ],
+            [
+              358.56701,
+              365.86099
+            ],
+            [
+              353.8845,
+              365.86099
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                353.8845,
+                370.5435
+              ]
+            ],
+            [
+              "l",
+              [
+                358.56701,
+                370.5435
+              ]
+            ],
+            [
+              "l",
+              [
+                358.56701,
+                365.86099
+              ]
+            ],
+            [
+              "l",
+              [
+                353.8845,
+                365.86099
+              ]
+            ],
+            [
+              "h"
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G017"
+      ],
+      "visible_denominator": true
+    },
+    {
+      "object_id": "G028",
+      "safe_filename": "G028.png",
+      "object_type": "GRAPHIC",
+      "char": "",
+      "semantic_parent": "SQUARED_VALUE_MARKER_4",
+      "role": "DATA_MARKER",
+      "script_class": "N/A",
+      "threshold_px_protocol": null,
+      "source_line": 18,
+      "declared_pt": null,
+      "graphics_scale": 1.0,
+      "effective_pt": null,
+      "bbox_pt": [
+        420.97177999999997,
+        418.78489999999994,
+        427.20299,
+        425.01611
+      ],
+      "bbox_full_native_px": [
+        1754,
+        1744,
+        1781,
+        1771
+      ],
+      "bbox_crop_native_px": [
+        1129,
+        411,
+        1156,
+        438
+      ],
+      "primitive_count": 1,
+      "primitives": [
+        {
+          "x0": 421.74613,
+          "top": 419.55924999999996,
+          "x1": 426.42864,
+          "bottom": 424.24176,
+          "width": 4.682509999999979,
+          "height": 4.682510000000036,
+          "linewidth": 0.3487,
+          "stroke": true,
+          "fill": true,
+          "stroking_color": [
+            0.3357,
+            0.35765,
+            0.40157
+          ],
+          "non_stroking_color": [
+            0.41962,
+            0.44707,
+            0.50195
+          ],
+          "dash": null,
+          "pts": [
+            [
+              421.74613,
+              424.24176
+            ],
+            [
+              426.42864,
+              424.24176
+            ],
+            [
+              426.42864,
+              419.55924999999996
+            ],
+            [
+              421.74613,
+              419.55924999999996
+            ]
+          ],
+          "path": [
+            [
+              "m",
+              [
+                421.74613,
+                424.24176
+              ]
+            ],
+            [
+              "l",
+              [
+                426.42864,
+                424.24176
+              ]
+            ],
+            [
+              "l",
+              [
+                426.42864,
+                419.55924999999996
+              ]
+            ],
+            [
+              "l",
+              [
+                421.74613,
+                419.55924999999996
+              ]
+            ],
+            [
+              "h"
+            ]
+          ],
+          "evenodd": false
+        }
+      ],
+      "design_connections": [
+        "G018"
+      ],
+      "visible_denominator": true
+    }
+  ]
+}

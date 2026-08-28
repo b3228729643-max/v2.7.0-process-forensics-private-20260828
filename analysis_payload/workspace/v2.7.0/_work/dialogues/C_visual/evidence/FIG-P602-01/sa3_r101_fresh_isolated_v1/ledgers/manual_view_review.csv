@@ -1,0 +1,5 @@
+view_id,manual_decision,viewed_evidence,view_specific_reason
+VIEW01,PASS,render/full_page_200dpi.png,"physical page 651 shows printed page 638, figure 32.5, surrounding prose and page furniture; figure placement is balanced and nothing is cut by the page."
+VIEW02,PASS,render/figure_crop_300dpi.png,"native 300 dpi crop [300,1430,2135,2995] includes the entire flowchart and full caption with no resize; all branches and loop remain readable."
+VIEW03,PASS,render/standalone_300dpi.png,"native 300 dpi crop [300,1430,2135,2910] contains the complete diagram body and self-loop label while intentionally excluding the caption; outer strokes remain inside the crop."
+VIEW04,PASS,render/grayscale_300dpi.png,"direct grayscale 300 dpi crop retains hierarchy through solid/dash-dot arrows and single/double borders; no meaning depends on color alone."

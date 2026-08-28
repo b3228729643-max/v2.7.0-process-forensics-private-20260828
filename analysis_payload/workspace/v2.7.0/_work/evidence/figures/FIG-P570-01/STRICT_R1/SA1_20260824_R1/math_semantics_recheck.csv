@@ -1,0 +1,5 @@
+﻿CHECK_ID,OBSERVED,PASS_FAIL
+TEACHING_DEPENDENCY,"inputs expectation/integral, IID and LLN all point to Monte Carlo estimate; diagram deliberately denotes teaching dependency rather than a runtime algorithm",PASS
+METHOD_DISTINCTION,inverse transform and accept-reject are direct-sampling routes; importance sampling retains proposal samples and changes contribution weights; figure body L76 and caption agree,PASS
+DIAGNOSTIC_SCOPE,"error/support diagnostics apply across methods; weighted ESS reduces to ordinary sample-count diagnostic for unweighted direct samples, so common outlet is not a false probability claim",PASS
+ARROW_DIRECTION,all arrows point prerequisite -> core -> three parallel methods -> common diagnostic outlet; source footnote explicitly rejects temporal/serial interpretation of border/icon coding,PASS

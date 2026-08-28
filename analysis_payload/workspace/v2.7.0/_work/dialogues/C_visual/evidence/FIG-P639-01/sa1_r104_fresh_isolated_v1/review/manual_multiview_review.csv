@@ -1,0 +1,15 @@
+review_id,view_id,reviewer_type,human_certification,manual_decision,manual_observation,evidence
+VIEWR-001,full_page_native_300dpi,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Physical page 689 / printed 676 is continuous, balanced, and free of page-level clipping or illegal overlap.",render/full_page_native_300dpi.png
+VIEWR-002,figure_crop_native_300dpi,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Figure 33.6 plus caption is complete; curves, labels, note, and caption form a coherent unit.",render/figure_crop_native_300dpi.png
+VIEWR-003,standalone_equivalent_native_300dpi,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Plot-only equivalent retains all in-plot semantics with no crop loss; smallest image-edge clearance is 9 px at t.",render/standalone_equivalent_native_300dpi.png
+VIEWR-004,figure_grayscale_native_300dpi,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Solid versus dashed curves and dashed versus dash-dot mean markers remain distinguishable in grayscale.",render/figure_grayscale_native_300dpi.png
+VIEWR-005,standalone_equivalent_grayscale_native_300dpi,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Standalone grayscale preserves hierarchy and annotation readability.",render/standalone_equivalent_grayscale_native_300dpi.png
+VIEWR-006,actual_object_overlay_native_300dpi,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"All 32 actual object boxes map to the intended visible objects; no unboxed reader text remains.",render/actual_object_overlay_native_300dpi.png
+VIEWR-007,text_object_contact_sheet_8x,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"All 20 text-object crops were inspected; characters, scripts, subscripts, punctuation, and roles are intact.",render/text_object_contact_sheet_8x.png
+VIEWR-008,glyph_contact_sheet_8x_01,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Glyph IDs covering distributions, means, and early tick labels are correct and legible.",render/glyph_contact_sheet_8x_01.png
+VIEWR-009,glyph_contact_sheet_8x_02,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Glyph IDs covering ticks, axes, note, and caption start contain no tofu or wrong codepoint.",render/glyph_contact_sheet_8x_02.png
+VIEWR-010,glyph_contact_sheet_8x_03,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Caption glyph middle segment is complete and semantically correct.",render/glyph_contact_sheet_8x_03.png
+VIEWR-011,glyph_contact_sheet_8x_04,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Caption glyph tail segment is complete; punctuation and final Chinese line are intact.",render/glyph_contact_sheet_8x_04.png
+VIEWR-012,critical_pair_contact_sheet_8x_01,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Near text pairs and first structural contacts were inspected individually; no illegal contact is present.",render/critical_pair_contact_sheet_8x_01.png
+VIEWR-013,critical_pair_contact_sheet_8x_02,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Axis/tick/fill structural contacts are geometrically intended and do not obscure semantics.",render/critical_pair_contact_sheet_8x_02.png
+VIEWR-014,critical_pair_contact_sheet_8x_03,AI_SA1_VISUAL_REVIEW,false,VIEW_CLEAR,"Curve/axis/mean-line intersections are intended data geometry; no text is involved.",render/critical_pair_contact_sheet_8x_03.png

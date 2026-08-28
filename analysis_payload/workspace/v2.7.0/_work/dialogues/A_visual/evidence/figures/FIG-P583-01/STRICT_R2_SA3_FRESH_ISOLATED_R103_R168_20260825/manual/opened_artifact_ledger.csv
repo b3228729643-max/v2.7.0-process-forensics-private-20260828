@@ -1,0 +1,35 @@
+artifact_id,reviewer,artifact,inspection_scale,opened,decision,note
+OPEN001,SA3-gpt-5.6-sol-xhigh,views/full_page_200dpi.png,whole-page context at original raster,TRUE,PASS,lower-resolution page context opened; target float identifiable and page integration balanced
+OPEN002,SA3-gpt-5.6-sol-xhigh,views/full_page_300dpi.png,native 300 dpi at original raster,TRUE,PASS,native page opened; target float and surrounding body readable with no visible integration defect
+OPEN003,SA3-gpt-5.6-sol-xhigh,views/figure_crop_300dpi.png,native 300 dpi at original raster,TRUE,PASS,complete figure and caption crop opened; no real crop or clipping
+OPEN004,SA3-gpt-5.6-sol-xhigh,views/standalone_300dpi.png,native 300 dpi at original raster,TRUE,PASS,plot interior opened; axes curve ticks triangle and labels coherent
+OPEN005,SA3-gpt-5.6-sol-xhigh,views/grayscale_300dpi.png,native 300 dpi grayscale at original raster,TRUE,PASS,all chart content remains distinguishable and readable in grayscale
+OPEN006,SA3-gpt-5.6-sol-xhigh,overlays/after_text_measurement_overlay_300dpi.png,native 300 dpi overlay at original raster,TRUE,PASS,text boxes and measured extents align with visible glyphs
+OPEN007,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_01.png,1x original plus 8x mask detail,TRUE,PASS,T0001-T0008 individually inspected
+OPEN008,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_02.png,1x original plus 8x mask detail,TRUE,PASS,T0009-T0016 individually inspected
+OPEN009,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_03.png,1x original plus 8x mask detail,TRUE,PASS,T0017-T0024 individually inspected
+OPEN010,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_04.png,1x original plus 8x mask detail,TRUE,PASS,T0025-T0032 individually inspected
+OPEN011,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_05.png,1x original plus 8x mask detail,TRUE,PASS,T0033-T0040 individually inspected including natural superscript start
+OPEN012,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_06.png,1x original plus 8x mask detail,TRUE,PASS,T0041-T0048 individually inspected including triangle note glyphs
+OPEN013,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_07.png,1x original plus 8x mask detail,TRUE,PASS,T0049-T0056 individually inspected
+OPEN014,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_08.png,1x original plus 8x mask detail,TRUE,PASS,T0057-T0064 individually inspected
+OPEN015,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_09.png,1x original plus 8x mask detail,TRUE,PASS,T0065-T0072 individually inspected including rotated RMSE
+OPEN016,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_10.png,1x original plus 8x mask detail,TRUE,PASS,T0073-T0080 individually inspected including caption punctuation
+OPEN017,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_11.png,1x original plus 8x mask detail,TRUE,PASS,T0081-T0088 individually inspected
+OPEN018,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_12.png,1x original plus 8x mask detail,TRUE,PASS,T0089-T0096 individually inspected
+OPEN019,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_13.png,1x original plus 8x mask detail,TRUE,PASS,T0097-T0104 individually inspected including fullwidth semicolon
+OPEN020,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_14.png,1x original plus 8x mask detail,TRUE,PASS,T0105-T0112 individually inspected
+OPEN021,SA3-gpt-5.6-sol-xhigh,glyphs/glyph_contact_15.png,1x original plus 8x mask detail,TRUE,PASS,T0113-T0119 individually inspected
+OPEN022,SA3-gpt-5.6-sol-xhigh,overlays/graphic_contact_01.png,1x original plus 8x mask detail,TRUE,PASS,G_CURVE through G_XTICK_6 individually inspected
+OPEN023,SA3-gpt-5.6-sol-xhigh,overlays/graphic_contact_02.png,1x original plus 8x mask detail,TRUE,PASS,G_YTICK_1 through G_TRI_V individually inspected
+OPEN024,SA3-gpt-5.6-sol-xhigh,overlays/graphic_contact_03.png,1x original plus 8x mask detail,TRUE,PASS,G_TRI_H through G_CONDITION_BORDER individually inspected
+OPEN025,SA3-gpt-5.6-sol-xhigh,pairs/all_unordered_pairs_matrix.png,complete 142-object pair matrix,TRUE,PASS,all 10011 unordered pairs represented with no hard-fail cell
+OPEN026,SA3-gpt-5.6-sol-xhigh,pairs/semantic_relationship_matrix.png,complete semantic matrix,TRUE,PASS,declared relationship structure matches visible chart system
+OPEN027,SA3-gpt-5.6-sol-xhigh,critical/CRIT_01_curve_yaxis_endpoint.png,native plus enlarged overlay,TRUE,PASS,curve endpoint and y-axis top connection is intentional and aligned
+OPEN028,SA3-gpt-5.6-sol-xhigh,critical/CRIT_02_curve_triangle_alignment.png,native plus enlarged overlay,TRUE,PASS,triangle diagonal follows rate curve and leg geometry is correct
+OPEN029,SA3-gpt-5.6-sol-xhigh,critical/CRIT_03_triangle_note_clearance.png,native plus enlarged overlay,TRUE,PASS,triangle annotations remain visibly clear of graphic legs
+OPEN030,SA3-gpt-5.6-sol-xhigh,critical/CRIT_04_rate_formula_curve.png,native plus enlarged overlay,TRUE,PASS,rate formula is readable and clear of curve
+OPEN031,SA3-gpt-5.6-sol-xhigh,critical/CRIT_05_condition_text_border.png,native plus enlarged overlay,TRUE,PASS,condition text has real clearance inside rounded border
+OPEN032,SA3-gpt-5.6-sol-xhigh,critical/REL_06_axes_ticks_labels.png,native plus enlarged overlay,TRUE,PASS,axes arrows ticks and labels form a coherent coordinate system
+OPEN033,SA3-gpt-5.6-sol-xhigh,critical/REL_07_crop_caption.png,native plus enlarged overlay,TRUE,PASS,complete figure and caption are present within crop
+OPEN034,SA3-gpt-5.6-sol-xhigh,critical/REL_08_semantic_system.png,native plus enlarged overlay,TRUE,PASS,rate curve triangle condition and caption semantics agree

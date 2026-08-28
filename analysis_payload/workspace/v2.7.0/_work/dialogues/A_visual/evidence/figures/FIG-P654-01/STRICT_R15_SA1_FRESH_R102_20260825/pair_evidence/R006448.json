@@ -1,0 +1,32 @@
+{
+  "relation_id": "R006448",
+  "object_a": "G0095",
+  "object_b": "D026_BORDER_NODE_LDA",
+  "kind_a": "GLYPH",
+  "kind_b": "GRAPHIC",
+  "parent_a": "EDGE_APPLICATION_LABEL",
+  "parent_b": "NODE_LDA",
+  "role_a": "ANNOTATION",
+  "role_b": "NODE_BORDER",
+  "gate_type": "TEXT_FORMULA_TO_GRAPHIC",
+  "gate_px": 3,
+  "raw_overlap_pixel_count": 0,
+  "raw_mask_clearance_px": 5.0,
+  "text_text_vector_bbox_clearance_px": "N/A",
+  "ownership_or_whitelist_reason": "independent text/formula ink to line, arrow, marker or border",
+  "machine_decision": "PASS",
+  "critical_relation": true,
+  "evidence_1x": "pair_evidence/R006448__1x.png",
+  "evidence_8x": "pair_evidence/R006448__8x_nearest.png",
+  "raw": "pair_evidence/R006448__raw.png",
+  "mask_a": "pair_evidence/R006448__mask_a.png",
+  "mask_b": "pair_evidence/R006448__mask_b.png",
+  "intersection": "pair_evidence/R006448__intersection.png",
+  "overlay": "pair_evidence/R006448__overlay.png",
+  "roi_full_page_px": [
+    1744,
+    670,
+    2063,
+    874
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V5-C08",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 8,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V5-C08-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C08/dependency_graph.tex",
+      "source_file": "dependency_graph.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C08-dependency",
+      "caption": "无监督学习方法总结的知识依赖：任务与数据结构共同约束表示、推断和模型选择",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读图时应回答：“无监督学习方法总结的知识依赖：任务与数据结构共同约束表示、推断和模型选择”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+        "target_label": "fig:V5-C08-dependency",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-22-00-001",
+        "SLM-22-01-001"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：无监督学习方法总结的知识依赖：任务与数据结构共同约束表示、推断和模型选择"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C08-02",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C08/method_family_relationships.tex",
+      "source_file": "method_family_relationships.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C08-method-map",
+      "caption": "方法族—计算引擎教学映射：实线为本讲义代表性主路线，虚线为特定模型/方案的条件性复用；这些边均非必要或充分关系，共享引擎也不使方法等价。",
+      "semantic_type": "comparison_or_synthesis_map",
+      "teaching_objective": "先沿四条近似竖直实线读取本讲义的代表性主路线，再沿话题分析到SVD和EM的两条短虚线识别LSA、PLSA等特定方案中的条件性复用；说明线型不编码强弱、任一边都非必要或充分关系，且共享引擎不使方法等价。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+        "target_label": "fig:V5-C08-method-map",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-22-01-002",
+        "SLM-22-01-003"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：上层依次是降维、话题分析、聚类和图分析四个方法族，下层与之对齐的是SVD、后验推断、EM和幂法四个计算引擎。四条竖直实线只表示本讲义选取的代表性主路线；话题分析到SVD和EM的两条短虚线分别以LSA和PLSA为例，表示特定模型或求解方案中的条件性复用。线型只区分关系类别，不编码强弱；实线与虚线都不是方法族和引擎之间的必要或充分关系，共享某个引擎也不使方法等价。方法族用圆角蓝底框，引擎用直角灰底框，主路线用实线、条件性复用用虚线，并由文字图例重复编码。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C08-02",
+      "canonical_uid": "FIG-P736-01"
+    },
+    {
+      "figure_id": "FIG-V5-C08-03",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C08/task_representation_inference_cube.tex",
+      "source_file": "task_representation_inference_cube.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C08-three-axis",
+      "caption": "任务—表示—推断三轴定位投影：五行是限定条件下的代表示例；低秩表示按准则、潜变量表示按推断形成分叉，说明三轴并非唯一绑定，也不能替代包含观测、任务、表示、准则、算法、评价和预算的完整七项规格。",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "先按任务、表示、推断读取五个带条件的代表示例，再核对同一低秩表示到平方损失/计数似然、同一潜变量表示到VI/Gibbs的两处分叉，最后把候选补回观测、任务、表示、准则、算法、评价和预算七项规格。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+        "target_label": "fig:V5-C08-three-axis",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-22-01-001",
+        "SLM-22-01-002"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：主体按代表方法、任务T、表示R、推断I四列列出五个带适用条件的定位示例；每行以不同线型、端点标记、方法名和文字条件重复编码。下方第一张分叉卡把同一低秩表示R连到平方损失与计数似然两个训练准则J，第二张分叉卡把同一潜变量表示R连到VI与Gibbs两种推断I。顶端边界卡说明粗粒度三轴只供快速定位、不能唯一确定方法，完整可核验规格仍由观测空间、任务、表示、准则、算法、评价和预算七项组成，因此三轴投影不能替代七项规格。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C08-03",
+      "canonical_uid": "FIG-P737-01"
+    },
+    {
+      "figure_id": "FIG-V5-C08-04",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C08/matrix_probability_bridge.tex",
+      "source_file": "matrix_probability_bridge.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C08-matrix-probability",
+      "caption": "矩阵分解与概率模型的桥接：X约等于WH只是共同外形；损失、约束和概率口径决定语义，下层以W、h_n到x_n给出条件高斯分支。",
+      "semantic_type": "probabilistic_graphical_model",
+      "teaching_objective": "先辨认X约等于WH的共同低秩外形，再比较LSA、NMF与概率因子模型的损失、约束和概率口径，说明虚线只表示概率建模分支，最后沿下层W、h_n到x_n核对条件高斯方向与完整Bayes边界。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+        "target_label": "fig:V5-C08-matrix-probability",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-22-02-001"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：上层以X约等于WH为共同低秩外形，实线连接LSA与NMF的代数分解语义，虚线连接概率因子模型并明确表示共同乘积外形下的概率建模分支，而不是关系强弱；三个方法框再用损失、约束、归一化、似然与先验标签区分。下层只在条件高斯解释中由全局因子W和第n个文档系数h_n分别以有向生成边指向观测文档x_n，即W、h_n到x_n。条件高斯分支不等于给全部因子配置先验的完整贝叶斯模型；共同乘积也不使LSA、NMF与概率模型具有相同统计语义。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C08-04",
+      "canonical_uid": "FIG-P740-01"
+    },
+    {
+      "figure_id": "FIG-P745-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C08/fig_v5_c08_validation_protocols.tex",
+      "source_file": "fig_v5_c08_validation_protocols.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C08-validation",
+      "caption": "两种并列的无泄漏评价协议：协议A在开发集内选择并冻结候选后只开封测试集一次；协议B（嵌套交叉验证）在每个外层折内重做内层选择，再汇总外层损失。被X阻断的有向回箭头表示任何评估结果回调选择或停止规则都属于泄漏。",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "先读取协议A的开发集选择、冻结候选、完整开发集重训和锁定测试一次评价，再读取协议B在每个外层折内重做内层选择、外层评价和C_out损失汇总，最后沿两条有向虚线回路确认X阻断的评估结果回调。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+        "target_label": "fig:V5-C08-validation",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-22-00-001"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：左泳道协议A从开发数据D经C_in折候选拟合、开发证据选择和完整D重训，到锁定测试T一次评价；右泳道协议B（嵌套交叉验证）对每个外层折c在D_-c内重做C_in折选择和重训，只用D_c评价并汇总C_out个损失。合法数据流为实线前向箭头；从两类评价返回选择的虚线有向路径在X处断开，表示任何用测试或外层评价结果回调候选、超参数或停止规则均为泄漏。虚线或双线框、线型、箭头、X和文字共同编码；协议B不是算法37.1的隐藏外循环。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C08-05",
+      "canonical_uid": "FIG-P745-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-P748-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C08/evaluation_dashboard.tex",
+      "source_file": "evaluation_dashboard.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C08-evaluation",
+      "caption": "五个互补评价维度须联合报告：拟合、预登记任务效用、稳定性、可解释性与计算代价各保留方向、单位及不确定性或资源口径；微图仅提示概念形态，不是可复算结果，也不合成无依据总分。",
+      "semantic_type": "comparison_or_synthesis_map",
+      "teaching_objective": "先逐卡核对拟合、预登记任务效用、稳定性、可解释性和计算代价的方向与单位，再读取SE、95%CI、IQR、CI及时间/内存微图所表示的不确定性、分布或资源口径，最后联合报告五类证据且不合成无依据总分。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+        "target_label": "fig:V5-C08-evaluation",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-22-00-001"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：五个等宽评价卡并列呈现互补证据。拟合卡报告holdout loss向下、单位nats及均值加减SE；任务效用卡报告预登记任务效用向上、单位百分比及估计加减95%CI；稳定性卡报告ARI向上、无量纲且可为负，并报告中位数加IQR；可解释性卡报告盲评一致率向上、单位百分比及比例加减CI；计算代价卡报告时间秒和内存GB均向下，并用多次运行IQR描述波动。每卡底部的点、区间、分布或资源条只提示概念形态，不是可复算数值结果；卡片位置、边框、点线形状、纹理与文字共同编码。结论条要求联合报告指标、不确定性、分布和资源，不制造无依据的单一总分。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C08-06",
+      "canonical_uid": "FIG-P748-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-P750-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C08/method_selection_decision_map.tex",
+      "source_file": "method_selection_decision_map.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C08-selection-map",
+      "caption": "方法选择地图：首要任务先按输出语义与必要约束形成聚类、降维、话题或图排序候选族，再由验证协议、计算预算和失败模式筛选后锁定选择。唯一虚线只允许验证阶段回修候选族；最终测试与报告不回流。",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "先按输出语义和必要约束形成聚类、降维、话题或图排序候选族，再以验证协议、计算预算和失败模式筛选，最后锁定选择并确认唯一虚线只允许验证阶段回修候选族、最终测试与报告不回流。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+        "target_label": "fig:V5-C08-selection-map",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-22-01-003",
+        "SLM-22-01-004"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：首要任务沿实线前向箭头进入输出语义与必要约束问题节点，再分别形成聚类、降维、话题、图排序四个候选族；四族各自沿实线进入包含验证协议、计算预算和失败模式的筛选门，随后锁定选择并只进行最终测试与报告。十条主路径均为清晰前向实线箭头；唯一虚线反馈从验证阶段返回四族候选池，只用于回修候选。双线终止徽记和文字明确最终测试或报告绝不回流。对象形状、实线/虚线、箭头方向、候选池边界与文字共同编码；结论是先按输出语义和约束成族，再经验证筛选后锁定，测试结果不参与回修。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C08-07",
+      "canonical_uid": "FIG-P750-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-P756-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C08/full_course_synthesis_map.tex",
+      "source_file": "full_course_synthesis_map.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C08-course-map",
+      "caption": "全书统计学习闭环分为两层：（a）问题定义、建模、计算、证据与边界构成五站主闭环，边界暴露或证据失败时返回问题定义；（b）监督与无监督任务都进入包含线性代数、优化、概率、推断的共享可复用计算引擎池，再共同进入隔离验证并单向到达无回流的可复现报告。",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "先读取问题定义、建模、计算、证据、边界五站闭环及失败返回，再确认监督与无监督任务共同复用线性代数、优化、概率、推断四类引擎，最后核对隔离验证后的结论只单向进入可复现报告且报告无回流。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+        "target_label": "fig:V5-C08-course-map",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-22-00-001",
+        "SLM-22-01-001",
+        "SLM-22-02-001"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：上层由问题定义、建模、计算、证据、边界五个站点组成前向主链；当边界暴露或证据失败时，橙色虚线反馈箭头从边界返回问题定义，形成主闭环。下层保留监督任务路线和无监督任务路线，两路分别以实线和虚线进入同一个共享可复用计算引擎池；池内同时列出线性代数、优化、概率、推断四类引擎，并明确两类任务都按具体问题调用这些引擎，而非各自排他占有。共享引擎池随后单向进入隔离验证，再经唯一单向出口进入双线框可复现报告；报告没有回流。节点形状、引擎池结构、实线/虚线、箭头方向、双线终点和文字共同编码；结论是任务路线共享计算引擎，只有隔离验证后的结论才能进入无回流报告。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C08-08",
+      "canonical_uid": "FIG-P756-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    }
+  ]
+}

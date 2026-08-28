@@ -1,0 +1,14 @@
+﻿CHECK_ID,EXPECTED,ACTUAL,PASS_FAIL,DETAIL
+BASE_CONSISTENCY,True,True,PASS,pre-terminal inventory/pair/report check
+OBJECT_UNIQUE_ID_COUNT,18,18,PASS,text manifest IDs
+NONEMPTY_GLYPH_RAW_MASKS,143,143,PASS,all non-whitespace glyph independent raw masks
+RELATION_PAIR_COUNT,423,423,PASS,"C(text,2)+text×independent-vector"
+OVERLAP_FAIL_PAIR_COUNT,0,0,PASS,pair CSV vs metrics
+CLEARANCE_FAIL_PAIR_COUNT,0,0,PASS,pair CSV vs metrics
+PIXEL_GLYPH_FAIL_COUNT,24,24,PASS,glyph-only rows
+SAME_CLASS_FAIL_COUNT,2,2,PASS,D actual raw H_ink CSV
+ROLE_RATIO_FAIL_COUNT,3,3,PASS,E comparable-script CSV
+CRITICAL_PAIR_PACKAGE_COUNT,0,0,PASS,all failed/critical pairs
+CRITICAL_PAIR_8_ARTIFACTS,all failed/critical pairs × 8,complete,PASS,raw/A/B/intersection/overlay/1:1/8x/manifest
+CRITICAL_GLYPH_ARTIFACTS,24,24,PASS,every glyph failure has raw/mask/8x/manifest
+FINAL_RESULT,FAIL → SA2,FAIL → SA2,PASS,report outcome matches hard-gate matrix

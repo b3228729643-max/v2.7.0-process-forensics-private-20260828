@@ -1,0 +1,179 @@
+# FIG-P602-01 fresh SA1 glyph ledger
+
+Notation: h×w/A is native 300-dpi ink height × width / ink area. Every row was inspected in its contact sheet; clean means zero missing stroke, final foreign-vector and foreign-glyph pixels.
+
+- G001 当/T01 — PASS — 35×31/A324; 35≥30; clean, complete CJK strokes.
+- G002 前/T01 — PASS — 35×37/A443; 35≥30; clean.
+- G003 状/T01 — PASS — 35×37/A373; 35≥30; clean.
+- G004 态/T01 — PASS — 34×37/A369; 34≥30; clean.
+- G005 𝑋/T01 — PASS — 27×27/A265; 27≥24; clean.
+- G006 𝑡/T01 — PASS — 20×9/A90; 20≥15; clean script t.
+- G007 =/T01 — PASS — 12×25/A173; clean; two bars and exact peer match.
+- G008 𝑥/T01 — PASS — 20×21/A170; 20≥17; clean.
+- G009 按/T02 — PASS — 35×38/A426; 35≥30; clean.
+- G010 𝑞/T02 — PASS — 28×19/A241; 28≥17; bowl/descender intact.
+- G011 (/T02 — PASS — 38×12/A140; 38≥22; full delimiter.
+- G012 𝑥/T02 — PASS — 20×21/A169; 20≥17; clean.
+- G013 ,/T02 — PASS — 11×7/A45; clean; exact four-peer match.
+- G014 ⋅/T02 — PASS — 5×6/A25; clean; centered dot complete.
+- G015 )/T02 — PASS — 38×12/A140; 38≥22; full delimiter.
+- G016 提/T02 — PASS — 35×38/A483; 35≥30; clean.
+- G017 出/T02 — PASS — 35×33/A317; 35≥30; clean.
+- G018 候/T02 — PASS — 35×37/A477; 35≥30; clean.
+- G019 选/T02 — PASS — 35×37/A445; 35≥30; clean.
+- G020 𝑌/T02 — PASS — 27×23/A212; 27≥24; clean.
+- G021 =/T02 — PASS — 12×25/A173; exact four-peer match.
+- G022 𝑦/T02 — PASS — 29×21/A184; 29≥17; descender intact.
+- G023 计/T03 — PASS — 35×37/A272; 35≥30; clean.
+- G024 算/T03 — PASS — 35×37/A496; 35≥30; clean.
+- G025 接/T03 — PASS — 35×38/A477; 35≥30; clean.
+- G026 受/T03 — PASS — 35×37/A426; 35≥30; clean.
+- G027 率/T03 — PASS — 35×36/A421; 35≥30; clean.
+- G028 （/T03 — PASS — 36×12/A113; 36≥22; clean.
+- G029 𝑔/T03 — PASS — 28×19/A258; 28≥17; bowl/descender complete.
+- G030 (/T03 — PASS — 38×14/A146; 38≥22; clean.
+- G031 𝑥/T03 — PASS — 20×21/A169; 20≥17; clean.
+- G032 ,/T03 — PASS — 11×7/A45; exact four-peer match.
+- G033 𝑦/T03 — PASS — 29×20/A181; 29≥17; clean.
+- G034 )/T03 — PASS — 37×12/A141; 37≥22; clean.
+- G035 >/T03 — PASS — 23×24/A151; both diagonals complete.
+- G036 0/T03 — PASS — 27×18/A237; 27≥24; closed counter.
+- G037 ）/T03 — PASS — 36×12/A114; 36≥22; clean.
+- G038 𝛼/T04 — PASS — 24×25/A277; 24≥17; clean.
+- G039 (/T04 — PASS — 43×14/A185; 43≥22; clean.
+- G040 𝑥/T04 — PASS — 24×25/A226; 24≥17; clean.
+- G041 ,/T04 — PASS — 12×7/A57; exact 11.2-pt peer match.
+- G042 𝑦/T04 — PASS — 34×24/A238; 34≥17; clean.
+- G043 )/T04 — PASS — 43×13/A177; 43≥22; clean.
+- G044 =/T04 — PASS — 14×29/A230; complete 11.2-pt bars.
+- G045 m/T04 — PASS — 23×38/A423; 23≥17; both arches.
+- G046 i/T04 — PASS — 32×11/A162; 32≥17; stem/dot.
+- G047 n/T04 — PASS — 23×25/A283; 23≥17; clean.
+- G048 {/T04 — PASS — 47×11/A238; 47≥22; full brace.
+- G049 1/T04 — PASS — 30×17/A191; 30≥24; clean.
+- G050 ,/T04 — PASS — 12×7/A56; peer ratios 1.0/0.982456.
+- G051 ˜/T04 — PASS — 34×13/A175; tilde/base-pi assignment isolated.
+- G052 𝜋/T04 — PASS — 33×15/A177; 33≥17; clean.
+- G053 (/T04 — PASS — 44×17/A190; 44≥22; clean.
+- G054 𝑦/T04 — PASS — 34×23/A239; 34≥17; clean.
+- G055 )/T04 — PASS — 43×14/A182; 43≥22; clean.
+- G056 𝑞/T04 — PASS — 34×22/A321; 34≥17; clean.
+- G057 (/T04 — PASS — 44×16/A194; 44≥22; clean.
+- G058 𝑦/T04 — PASS — 34×22/A229; 34≥17; clean.
+- G059 ,/T04 — PASS — 12×7/A57; exact four-peer match.
+- G060 𝑥/T04 — PASS — 24×25/A226; 24≥17; clean.
+- G061 )/T04 — PASS — 43×14/A182; 43≥22; clean.
+- G062 ˜/T04 — PASS — 34×13/A175; complete tilde.
+- G063 𝜋/T04 — PASS — 33×15/A177; 33≥17; clean.
+- G064 (/T04 — PASS — 43×15/A183; 43≥22; clean.
+- G065 𝑥/T04 — PASS — 24×25/A226; 24≥17; clean.
+- G066 )/T04 — PASS — 43×14/A182; 43≥22; clean.
+- G067 𝑞/T04 — PASS — 34×22/A321; 34≥17; clean.
+- G068 (/T04 — PASS — 43×14/A185; 43≥22; clean.
+- G069 𝑥/T04 — PASS — 24×24/A220; 24≥17; clean.
+- G070 ,/T04 — PASS — 12×7/A57; exact four-peer match.
+- G071 𝑦/T04 — PASS — 34×24/A244; 34≥17; clean.
+- G072 )/T04 — PASS — 43×14/A182; 43≥22; clean.
+- G073 }/T04 — PASS — 47×10/A236; 47≥22; full closing brace.
+- G074 抽/T05 — PASS — 35×37/A443; 35≥30; clean.
+- G075 取/T05 — PASS — 35×38/A425; 35≥30; clean.
+- G076 𝑈/T05 — PASS — 28×26/A268; 28≥24; clean.
+- G077 ∼/T05 — PASS — 9×24/A101; full wave matches source.
+- G078 U/T05 — PASS — 28×30/A287; 28≥24; clean.
+- G079 (/T05 — PASS — 38×12/A140; 38≥22; clean.
+- G080 0/T05 — PASS — 27×19/A231; 27≥24; clean.
+- G081 ,/T05 — PASS — 11×7/A45; exact four-peer match.
+- G082 1/T05 — PASS — 26×14/A137; 26≥24; clean.
+- G083 )/T05 — PASS — 38×12/A141; 38≥22; clean.
+- G084 并/T05 — PASS — 35×37/A329; 35≥30; clean.
+- G085 判/T05 — PASS — 35×36/A432; 35≥30; clean.
+- G086 定/T05 — PASS — 35×38/A366; 35≥30; clean.
+- G087 𝑈/T05 — PASS — 28×26/A273; 28≥24; clean.
+- G088 ≤/T05 — PASS — 30×24/A240; diagonals/lower bar complete.
+- G089 𝛼/T05 — PASS — 20×21/A214; 20≥17; clean.
+- G090 (/T05 — PASS — 38×14/A141; 38≥22; clean.
+- G091 𝑥/T05 — PASS — 20×21/A170; 20≥17; clean.
+- G092 ,/T05 — PASS — 11×7/A45; exact four-peer match.
+- G093 𝑦/T05 — PASS — 29×21/A184; 29≥17; clean.
+- G094 )/T05 — PASS — 38×12/A142; 38≥22; clean.
+- G095 ？/T05 — PASS — 32×18/A125; hook/dot present.
+- G096 接/T06 — PASS — 35×37/A505; 35≥30; clean.
+- G097 受/T06 — PASS — 35×37/A427; 35≥30; clean.
+- G098 候/T06 — PASS — 35×37/A486; 35≥30; clean.
+- G099 选/T06 — PASS — 35×37/A441; 35≥30; clean.
+- G100 𝑋/T06 — PASS — 27×27/A265; 27≥24; clean.
+- G101 𝑡/T06 — PASS — 20×9/A90; 20≥15; clean.
+- G102 +/T06 — PASS — 19×19/A105; exact two-peer match.
+- G103 1/T06 — PASS — 20×11/A102; 20≥15; clean script digit.
+- G104 =/T06 — PASS — 12×25/A173; exact four-peer match.
+- G105 𝑦/T06 — PASS — 29×21/A180; 29≥17; descender intact.
+- G106 拒/T07 — PASS — 35×38/A420; 35≥30; clean.
+- G107 绝/T07 — PASS — 34×38/A493; 34≥30; clean.
+- G108 并/T07 — PASS — 35×36/A312; 35≥30; clean.
+- G109 记/T07 — PASS — 34×37/A346; 34≥30; clean.
+- G110 录/T07 — PASS — 35×37/A400; 35≥30; clean.
+- G111 旧/T07 — PASS — 35×32/A361; 35≥30; clean.
+- G112 状/T07 — PASS — 35×37/A373; 35≥30; clean.
+- G113 态/T07 — PASS — 34×37/A369; 34≥30; clean.
+- G114 𝑋/T07 — PASS — 27×27/A265; 27≥24; clean.
+- G115 𝑡/T07 — PASS — 20×9/A91; 20≥15; clean.
+- G116 +/T07 — PASS — 19×19/A105; exact two-peer match.
+- G117 1/T07 — PASS — 20×12/A102; 20≥15; clean.
+- G118 =/T07 — PASS — 12×25/A173; exact four-peer match.
+- G119 𝑥/T07 — PASS — 20×21/A170; 20≥17; clean.
+- G120 提/T08 — PASS — 36×37/A509; 36≥30; 41 raw edge pixels removed, final clean and complete.
+- G121 议/T08 — PASS — 36×38/A297; 36≥30; 40 raw edge pixels removed, final clean and complete.
+- G122 计/T09 — PASS — 35×37/A272; 35≥30; clean.
+- G123 算/T09 — PASS — 35×37/A496; 35≥30; clean.
+- G124 判/T10 — PASS — 36×36/A440; 36≥30; clean.
+- G125 定/T10 — PASS — 36×37/A387; 36≥30; clean.
+- G126 接/T11 — PASS — 35×38/A478; 35≥30; clean.
+- G127 受/T11 — PASS — 35×37/A428; 35≥30; clean.
+- G128 拒/T12 — PASS — 36×38/A414; 36≥30; clean.
+- G129 绝/T12 — PASS — 35×38/A499; 35≥30; clean.
+- G130 自/T13 — PASS — 35×26/A303; 35≥30; clean.
+- G131 环/T13 — PASS — 35×36/A380; 35≥30; clean.
+- G132 ：/T13 — PASS — 21×5/A39; both dots present.
+- G133 保/T13 — PASS — 35×38/A455; 35≥30; clean.
+- G134 留/T13 — PASS — 35×33/A480; 35≥30; clean.
+- G135 𝑥/T13 — PASS — 20×21/A170; 20≥17; clean.
+- G136 图/T14 — PASS — 38×36/A1105; 38≥30; bold marker complete.
+- G137 3/T14 — PASS — 28×18/A264; 28≥24; clean.
+- G138 2/T14 — PASS — 27×19/A274; 27≥24; clean.
+- G139 ./T14 — PASS — 7×7/A41; complete bold decimal point.
+- G140 5/T14 — PASS — 28×19/A295; 28≥24; clean.
+- G141 M/T14 — PASS — 28×35/A455; 28≥24; clean.
+- G142 e/T14 — PASS — 22×17/A181; 22≥17; clean.
+- G143 t/T14 — PASS — 27×12/A140; 27≥17; clean.
+- G144 r/T14 — PASS — 21×15/A146; 21≥17; clean.
+- G145 o/T14 — PASS — 22×19/A198; 22≥17; clean.
+- G146 p/T14 — PASS — 31×21/A277; 31≥17; descender complete.
+- G147 o/T14 — PASS — 22×19/A198; 22≥17; clean.
+- G148 l/T14 — PASS — 30×10/A138; 30≥17; clean.
+- G149 i/T14 — PASS — 28×10/A126; 28≥17; dot present.
+- G150 s/T14 — PASS — 22×14/A177; 22≥17; clean.
+- G151 –/T14 — PASS — 3×19/A57; continuous en dash.
+- G152 H/T14 — PASS — 28×30/A358; 28≥24; clean.
+- G153 a/T14 — PASS — 22×19/A199; 22≥17; clean.
+- G154 s/T14 — PASS — 22×15/A174; 22≥17; clean.
+- G155 t/T14 — PASS — 27×11/A138; 27≥17; clean.
+- G156 i/T14 — PASS — 28×12/A141; 28≥17; dot present.
+- G157 n/T14 — PASS — 20×23/A230; 20≥17; clean.
+- G158 g/T14 — PASS — 31×19/A308; 31≥17; descender complete.
+- G159 s/T14 — PASS — 22×16/A179; 22≥17; clean.
+- G160 一/T14 — PASS — 5×38/A87; complete single stroke in 一步.
+- G161 步/T14 — PASS — 38×38/A343; 38≥30; clean.
+- G162 更/T14 — PASS — 38×39/A481; 38≥30; clean.
+- G163 新/T14 — PASS — 37×39/A505; 37≥30; clean.
+- G164 ：/T14 — PASS — 22×5/A42; both dots complete.
+- G165 提/T14 — PASS — 37×39/A544; 37≥30; clean.
+- G166 议/T14 — PASS — 37×39/A332; 37≥30; clean.
+- G167 、/T14 — PASS — 10×11/A43; descending comma stroke complete.
+- G168 接/T14 — PASS — 38×39/A544; 38≥30; clean.
+- G169 受/T14 — PASS — 37×38/A453; 37≥30; clean.
+- G170 与/T14 — PASS — 37×37/A320; 37≥30; clean.
+- G171 拒/T14 — PASS — 37×39/A412; 37≥30; clean.
+- G172 绝/T14 — PASS — 36×39/A505; 36≥30; clean.
+- G173 自/T14 — PASS — 37×27/A372; 37≥30; clean.
+- G174 环/T14 — PASS — 37×38/A401; 37≥30; clean.
+- G175 。/T14 — PASS — 13×13/A74; complete hollow full stop.

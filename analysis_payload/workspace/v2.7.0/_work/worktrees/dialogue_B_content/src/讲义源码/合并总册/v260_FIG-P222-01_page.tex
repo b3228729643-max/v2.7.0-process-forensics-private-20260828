@@ -1,0 +1,22 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 2 册}{统计学习方法讲义 v2.6.0}{基础监督学习方法}
+\begin{document}
+\setcounter{page}{264}
+\setcounter{chapter}{14}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{朴素贝叶斯法}
+\begin{definition}[朴素贝叶斯条件独立模型]
+若对每个类别$c_k$和输入$x=(x^{(1)},\ldots,x^{(n)})$有
+\[
+P(X=x\mid Y=c_k)=\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}\mid Y=c_k),
+\]
+则称特征在给定类别后条件独立。
+\end{definition}
+\textbf{模型。}条件独立模型把完整类条件组合表降为随特征数近似线性增长的一维条件表。
+
+\textbf{学习策略。}即使条件独立不完全成立，只要各类别得分的相对次序仍正确，分类器仍可能有效。
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C03/fig_v2_c03_star.tex}
+图\ref{fig:V2-C03-star}中从$Y$指向各特征的箭头表示类条件分布$P(X^{(j)}\mid Y)$；特征之间没有边，对应给定$Y$后的乘积分解。
+\end{document}

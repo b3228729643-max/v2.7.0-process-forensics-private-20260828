@@ -1,0 +1,11 @@
+check_id,reviewer,opened_at_utc,evidence_or_input,decision,hard_defect,note
+M01,Codex-root,2026-08-28T01:06:37Z,current source lines19-27|figure_crop_native300dpi.png,PASS,false,Hessian [[1 1] [1 2]] has determinant1 and positive eigenvalues 0.381966 and 2.618034
+M02,Codex-root,2026-08-28T01:06:37Z,current source lines19-27|figure_crop_native300dpi.png,PASS,false,all four levels use the same quadratic expression and form one rotated non-axis-aligned contour family
+M03,Codex-root,2026-08-28T01:06:37Z,current source q0-q1|logical_object_overlay_native300dpi.png,PASS,false,q0 to q1 fixes x1=-3.2 and sets x2=1.6 satisfying x1+2x2=0
+M04,Codex-root,2026-08-28T01:06:37Z,current source q1-q2|logical_object_overlay_native300dpi.png,PASS,false,q1 to q2 fixes x2=1.6 and sets x1=-1.6 satisfying x1+x2=0
+M05,Codex-root,2026-08-28T01:06:37Z,current source q2-q7|logical_object_overlay_native300dpi.png,PASS,false,remaining updates alternate vertical and horizontal exact coordinate minimizers through q7
+M06,Codex-root,2026-08-28T01:06:37Z,current source q0-q7|MATH_SEMANTIC_MACHINE.json,PASS,false,objective values 2.92 2.56 1.28 .64 .32 .16 .08 .04 strictly decrease
+M07,Codex-root,2026-08-28T01:06:37Z,current source xstar|candidate_pair_contact_sheet_part04.png,PASS,false,x star marks the true minimizer at the origin while q7 remains a distinct approximating iterate
+M08,Codex-root,2026-08-28T01:06:37Z,current V1-C08 lines338-353|current source caption,PASS,false,axis-aligned zigzag behavior and rotated contour geometry agree with the chapter coordinate-descent explanation
+M09,Codex-root,2026-08-28T01:06:37Z,current source alt and caption|full_page_native300dpi.png,PASS,false,source alt and caption state one-coordinate substeps and axis-aligned approach without changing meaning
+M10,Codex-root,2026-08-28T01:06:37Z,current source lines63-66|critical_legend_solid_vs_dash_nearest8x.png|LEGEND_GRAYSCALE_PIXEL_RUN_AUDIT.json,FAIL,true,source assigns solid x1 and dashed x2 roles but rendered grayscale legend exposes two continuous solid swatches

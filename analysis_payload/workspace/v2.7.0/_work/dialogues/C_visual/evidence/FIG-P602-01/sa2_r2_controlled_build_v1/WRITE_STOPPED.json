@@ -1,0 +1,34 @@
+{
+  "uid": "FIG-P602-01",
+  "candidate": "SA2-R2-controlled-build-v1",
+  "result": "BUILD_FAIL_NO_CANDIDATE",
+  "write_stopped": true,
+  "tex_enabled": false,
+  "slot_state": "P602_BUILD_SLOT_RELEASED",
+  "direct_lualatex_invocation_count": 1,
+  "direct_lualatex_exit_code": 1,
+  "automatic_retry_count": 0,
+  "latexmk_invocation_count": 0,
+  "pdf_candidate_exists": false,
+  "post_exit_tex_process_count": 0,
+  "inputs": {
+    "source_sha256": "2b15b4beea7a922fee24259678dbae2a54915955915e6714a350122a6251e349",
+    "wrapper_sha256": "afe3464aea950331908cd3c56dd0392a6d5010138c4ee9341b78f7fd3e9f7279"
+  },
+  "manifest": {
+    "path": "evidence_manifest.csv",
+    "bytes": 1311,
+    "sha256": "d2a06213efcfb1be556939907628d43197c830117f0251a9bc7984739eeef69e",
+    "mtime_utc_100ns": "2026-08-25T05:30:17.8151598Z",
+    "listed_rows": 7,
+    "coverage": "all ordinary files except evidence_manifest.csv and WRITE_STOPPED.json",
+    "unlisted_exact": [
+      "evidence_manifest.csv",
+      "WRITE_STOPPED.json"
+    ],
+    "final_ordinary_file_count": 9
+  },
+  "fatal_error": "luaotfload FATAL ERROR: system : no writeable cache path, quiting",
+  "seal_policy": "WRITE_STOPPED.json is the final file; all subsequent verification is read-only; no repair or retry is authorized",
+  "created_utc": "2026-08-25T05:30:26.6682306Z"
+}

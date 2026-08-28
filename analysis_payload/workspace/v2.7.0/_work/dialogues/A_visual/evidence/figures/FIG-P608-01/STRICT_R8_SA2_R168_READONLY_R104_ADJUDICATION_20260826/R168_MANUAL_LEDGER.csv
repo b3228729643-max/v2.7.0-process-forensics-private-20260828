@@ -1,0 +1,9 @@
+REVIEW_ID,EVIDENCE,ACTUALLY_OPENED,HARD_GATE,DECISION,OBJECT_SPECIFIC_NOTE
+V001,full_page_200dpi.png,true,PAGE_INTEGRATION,PASS,"物理页661的图32.8与上下正文、图32.9及页边界协调；无裁切、遮挡或突兀字号。"
+V002,figure_crop_300dpi.png,true,R168_VISIBLE_HARD_DEFECTS,PASS,"两面板、标题、轴标签、注释、点线、题注均完整可读；无tofu、错码、缺笔、明显失衡、真实裁切或非法重叠。"
+V003,standalone_300dpi.png,true,GEOMETRY_AND_SEMANTICS,PASS,"轨迹、运行均值、预热纹理、分界虚线和目标线连续且归属清楚；t=1,...,5与t=6,...,20语义正确。"
+V004,grayscale_300dpi.png,true,GRAYSCALE,PASS,"灰度下两条数据曲线、目标虚线、纹理、标记与全部文字仍可辨，层级没有明显失衡。"
+V005,critical_annotation_roi_300dpi.png,true,CODEPOINT_AND_MATH_SEMANTICS,PASS,"两处可见关系号均呈清楚等号；t、1/5/6/20、逗号和省略号完整，未与曲线、纹理或分界线非法接触。"
+V006,critical_annotation_roi_8x_nearest.png,true,READABILITY_AND_CLIP,PASS,"nearest-neighbour放大确认关系号双横画、数字、逗号与省略点无缺损、无外来像素遮挡，关键注释未裁切。"
+V007,SOURCE_STATIC_AUDIT.md,true,SOURCE_SEMANTICS,PASS,"mathrel等号机制与自然脚本t保持数学语义；当前单源无需修改。"
+A001,ROOT_INVENTORY_ACCEPTANCE.md,true,OLD_PIXEL_RATIO,ADVISORY,"旧唯一失败H=28/28且area=56/61=0.9180327868852459，仅比旧0.92阈值低0.001967；R168明确禁止其单独触发硬FAIL或返源。"

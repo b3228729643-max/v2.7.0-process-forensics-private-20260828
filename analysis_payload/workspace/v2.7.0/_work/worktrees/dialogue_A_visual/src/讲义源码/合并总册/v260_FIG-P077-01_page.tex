@@ -1,0 +1,21 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 1 册}{统计学习方法讲义 v2.6.0}{数学基础与统计学习基本理论}
+\begin{document}
+\setcounter{page}{79}
+\setcounter{chapter}{5}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{常用分布与统计推断}
+\begin{lemma}[标准化]
+若$X\sim\mathcal N(\mu,\sigma^2)$，则$Z=(X-\mu)/\sigma\sim\mathcal N(0,1)$。
+\end{lemma}
+\paragraph{首次阅读检查：证明：标准化。}\textbf{第一步。}先写证明目标与合法条件，标出第一个可执行数学动作。
+\begin{proof}
+使用变量代换$x=\mu+\sigma z$，雅可比绝对值为$\sigma$。把原密度与雅可比相乘后，$\sigma$与归一化常数中的$1/\sigma$抵消，指数项化为$-z^2/2$，因此得到标准高斯密度。
+\end{proof}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C05/fig_v1_c05_gaussian.tex}
+比较\cref{fig:V1-C05-gaussian}中的曲线时要同时检查位置、尺度和面积：改变$\mu$只平移中心，改变$\sigma$会展宽并降低峰值；若只横向拉伸而不调整$1/(\sqrt{2\pi}\sigma)$，所得曲线便不再是概率密度。
+\SLReviewSection{Gamma与狄利克雷分布}{sec:v260-fig077-context}
+\end{document}
+

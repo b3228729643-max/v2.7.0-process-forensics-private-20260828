@@ -1,0 +1,11 @@
+ELEMENT_ID,EXPECTED,OBSERVED,MANUAL_VERDICT,EVIDENCE
+T02,log p(w),log p(w),PASS,roi01 native1x and nearest8x
+T03,ℒ(q)：证据下界,ℒ(q)：证据下界,PASS,roi01 native1x and nearest8x
+T05,"log p(w)=ℒ(q)+KL(q(h)‖p(h∣w))","log p(w)=ℒ(q)+KL(q(h)‖p(h∣w))",PASS,roi05 native1x and nearest8x plus PDF bbox codepoints
+T06,"KL≥0; ℒ(q)≤log p(w)","KL≥0; ℒ(q)≤log p(w)",PASS,roi06 native1x and nearest8x
+T07,坐标更新下的 ELBO 非降阶梯,坐标更新下的 ELBO 非降阶梯,PASS,roi02 native1x and nearest8x
+T08,未知全局上限,未知全局上限,PASS,roi02 native1x and nearest8x
+T09,坐标稳定／局部驻点,坐标稳定／局部驻点,PASS,roi03 native1x and nearest8x
+T18,图 35.5,图 35.5,PASS,roi07 native1x and nearest8x
+T19,full current caption,full current caption with ELBO and KL intact,PASS,roi07 native1x and nearest8x
+PAGE_QED,proof-ending hollow square,proof-ending hollow square,PASS,full_page_200dpi and full_page_300dpi; not tofu

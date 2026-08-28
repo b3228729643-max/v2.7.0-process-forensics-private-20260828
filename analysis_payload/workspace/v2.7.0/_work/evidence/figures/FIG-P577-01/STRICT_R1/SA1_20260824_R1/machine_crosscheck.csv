@@ -1,0 +1,24 @@
+﻿CHECK,PASS,OBSERVED,EXPECTED,DETAIL
+inventory_unique_ids,PASS,193,193,object_manifest IDs are unique
+inventory_raw_masks_present,PASS,[],[],every inventory object has its raw-mask file
+inventory_raw_masks_nonempty,PASS,[],[],every non-background inventory object has pixels
+visible_primitive_count,PASS,158,158,source-occluded y=0.4 is intentionally not final-visible
+semantic_font_element_count,PASS,"font=22,parents=22",22,semantic font rows and parent object set agree
+pixel_primitive_count,PASS,158,158,after_pixel covers every final-visible primitive
+glyph_trace_count,PASS,342,342,glyph table count agrees with terminal
+glyph_unique_ids,PASS,342,342,glyph IDs are unique
+glyph_parent_membership,PASS,[],[],every glyph belongs to a visible primitive
+glyph_raw_masks_present,PASS,[],[],all glyph raw-mask paths resolve
+pixel_height_separate_count,PASS,67,67,D/E are not included in the pixel-height count
+D_separate_count,PASS,152,152,D remains a same-role/same-script diagnostic
+E_separate_count,PASS,3,3,"E has explicit BASE or N/A, never cross-script"
+E_na_base_consistency,PASS,[],[],N/A E rows carry no invented BASE
+pair_relation_row_count,PASS,actual=495,495,all unordered text-text and text-graphic relations are present
+pair_relation_unique_ids,PASS,495,495,relation IDs are unique
+pair_relation_object_refs,PASS,[],[],relations refer only to semantic text or non-background graphics
+pair_fail_count,PASS,3,3,pair failure count agrees with terminal
+critical_package_list,PASS,"['TG304', 'TG317', 'TG457']","['TG304', 'TG317', 'TG457']",terminal and CSV point to same critical/failing pairs
+critical_pair_packages_complete,PASS,[],[],raw/A/B/intersection/overlay/1:1/8x and focus set exist
+glyph_failure_list,PASS,67,67,failure IDs agree exactly
+glyph_failure_packages_complete,PASS,[],[],all failed glyphs have raw/1:1/8x packages
+opaque_halo_triplets_complete,PASS,[],[],real pre-vector/halo-raw/final-visible triplets exist

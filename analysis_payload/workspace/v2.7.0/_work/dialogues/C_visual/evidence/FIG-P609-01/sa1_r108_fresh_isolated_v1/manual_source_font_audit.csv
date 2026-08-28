@@ -1,0 +1,10 @@
+element_group,object_ids,declared_pt,graphics_scale,effective_pt,pdf_span_pt,h_ink_px_manual_class_check,manual_result,manual_note
+panel_titles,"T01;T18",10.4,1.000,10.4,10.361,"CJK 41; Latin upper 30; digits 29",PASS,"Both panels use the same title declaration and measured heights."
+axis_labels,"T02;T03",9.8,1.000,9.8,9.763,"CJK 35-36; Latin upper 29; math base 30-37; derived subscript 22",PASS,"Rotated y label measured in its cross-text direction."
+axis_ticks,"T04-T15",9.6,1.000,9.6,9.564,"digits 26-27",PASS,"x and y ticks each vary only 26-27 px."
+cutoff_callout,T16,9.6,1.000,9.6,9.564,"CJK 34; math base 28",PASS,"Separate PLOT_CALLOUT role; nearest8x is clean."
+continuation_indicator,T17,9.6,1.000,9.6,9.564,"punctuation-only auxiliary",PASS,"Not used as a full-height text proxy."
+formula_blocks,"T19;T20",9.6,1.000,9.6,"base 9.564; derived scripts 6.695","base math >=27 except lowercase n=20 against 17 px x-height threshold; scripts 21-26",PASS,"All sub/superscripts derive naturally from a 9.6 pt base."
+panel_notes,"T21-T23",9.6,1.000,9.6,9.564,"CJK 36-40; math base 28-33",PASS,"T21 is a rule label; T22-T23 ordinary-note ratios are 0.947 and 1.053 about their 38 px median."
+caption,"T24;T25",normalsize,1.000,">=9.5",10.799-10.909,"CJK 41-45; digits 31",PASS,"Caption has no downstream graphic scaling."
+

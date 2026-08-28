@@ -1,0 +1,83 @@
+{
+  "candidate": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r95_fullbook\\main_full.pdf",
+  "physical_page": 170,
+  "dpi": 300,
+  "native_grid": [
+    2481,
+    3508
+  ],
+  "method": "copied candidate page/resources with curve-specific PDF content stream replay",
+  "objects": [
+    {
+      "OBJECT_ID": "O-G001",
+      "REPLAY_PDF": "object_replay/O-G001_training_curve_pre.pdf",
+      "NATIVE_RENDER": "object_replay/O-G001_training_curve_pre_native_300dpi.png",
+      "BASELINE_RENDER": "object_replay/background_only_native_300dpi.png",
+      "MASK": "object_replay/O-G001_independent_pre_raw_mask.png",
+      "THRESHOLD": "max per-channel local-background delta >=20/255",
+      "INK_PX": 10934,
+      "BBOX": [
+        403,
+        414,
+        2214,
+        1084
+      ]
+    },
+    {
+      "OBJECT_ID": "O-G002",
+      "REPLAY_PDF": "object_replay/O-G002_validation_curve_pre.pdf",
+      "NATIVE_RENDER": "object_replay/O-G002_validation_curve_pre_native_300dpi.png",
+      "BASELINE_RENDER": "object_replay/background_only_native_300dpi.png",
+      "MASK": "object_replay/O-G002_independent_pre_raw_mask.png",
+      "THRESHOLD": "max per-channel local-background delta >=20/255",
+      "INK_PX": 9498,
+      "BBOX": [
+        403,
+        359,
+        2214,
+        959
+      ]
+    }
+  ],
+  "final_visible_objects": [
+    {
+      "OBJECT_ID": "O-G001",
+      "FINAL_VISIBLE_MASK": "object_replay/O-G001_final_visible_contribution_mask.png",
+      "REMOVAL_COMPARATOR": "object_replay/O-G002_validation_curve_pre_native_300dpi.png",
+      "INK_PX": 10874,
+      "BBOX": [
+        403,
+        414,
+        2214,
+        1084
+      ]
+    },
+    {
+      "OBJECT_ID": "O-G002",
+      "FINAL_VISIBLE_MASK": "object_replay/O-G002_final_visible_contribution_mask.png",
+      "REMOVAL_COMPARATOR": "object_replay/O-G001_training_curve_pre_native_300dpi.png",
+      "INK_PX": 9463,
+      "BBOX": [
+        403,
+        359,
+        2214,
+        959
+      ]
+    }
+  ],
+  "independent_pre_overlap_px": 132,
+  "independent_pre_intersection_bbox": [
+    999,
+    876,
+    1139,
+    929
+  ],
+  "final_visible_overlap_px": 37,
+  "final_visible_intersection_bbox": [
+    999,
+    876,
+    1139,
+    929
+  ],
+  "draw_order": "O-G001 blue curve is emitted before O-G002 teal curve"
+}

@@ -1,0 +1,1513 @@
+% STAGE13-CHAPTER: V5-C03
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V5-C03-CH01}; CH-02=\label{struct:V5-C03-CH02}; CH-03=\label{struct:V5-C03-CH03}; CH-04=\label{struct:V5-C03-CH04}; CH-05=\label{struct:V5-C03-CH05}; CH-06=\label{struct:V5-C03-CH06}; CH-07=\label{struct:V5-C03-CH07}; CH-08=\label{struct:V5-C03-CH08}; CH-09=\label{struct:V5-C03-CH09}; CH-10=\label{struct:V5-C03-CH10}; CH-11=\label{struct:V5-C03-CH11}; CH-12=\label{struct:V5-C03-CH12}; CH-13=\label{struct:V5-C03-CH13}; CH-14=\label{struct:V5-C03-CH14}; CH-15=\label{struct:V5-C03-CH15}; CH-16=\label{struct:V5-C03-CH16}; CH-17=\label{struct:V5-C03-CH17}; CH-18=\label{struct:V5-C03-CH18}; CH-19=\label{struct:V5-C03-CH19}; CH-20=\label{struct:V5-C03-CH20}; CH-21=\label{struct:V5-C03-CH21}; CH-22=\label{struct:V5-C03-CH22}; CH-23=\label{struct:V5-C03-CH23}; CH-24=\label{struct:V5-C03-CH24}; CH-25=\label{struct:V5-C03-CH25}; CH-26=\label{struct:V5-C03-CH26}; CH-27=\label{struct:V5-C03-CH27}; CH-28=\label{struct:V5-C03-CH28}; CH-29=\label{struct:V5-C03-CH29}; CH-30=\label{struct:V5-C03-CH30}; CH-31=\label{struct:V5-C03-CH31}; CH-32=\label{struct:V5-C03-CH32}; CH-33=\label{struct:V5-C03-CH33}; CH-34=\label{struct:V5-C03-CH34}; CH-35=\label{struct:V5-C03-CH35}; CH-36=\label{struct:V5-C03-CH36}; CH-37=\label{struct:V5-C03-CH37}
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1.1-EXERCISE-LAYOUT: grouped; kept=14; source_group=2; supplement=12
+% DERIVATION-CHECK: step-1; step-2; step-3
+% FORMAL-RESULT-CHECK: results=6; proofs=6
+% ALGORITHM-CHECK: algorithms=3; deterministic-contracts=3
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C03-dependency -> SLM-19-00-001,PRE-SA-006,SLM-19-03-003,SLM-19-05-002,SLM-19-04-003,PRE-SA-007,SLM-19-03-006
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C03-markov-chain-path -> SLM-19-03-003
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C03-mcmc-pipeline -> SLM-19-03-004,SLM-19-03-005,SLM-19-03-006,PRE-SA-006
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C03-mh-balance-flux -> SLM-19-05-002,SLM-19-06-002,SLM-19-04-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C03-mh-accept-reject -> SLM-19-04-003,SLM-19-04-004,SLM-19-02-008
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C03-acceptance-function -> PRE-SA-007,SLM-19-04-003,SLM-19-06-002
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C03-rejection-vs-mh -> SLM-19-04-003,SLM-19-03-005,PRE-SA-007
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C03-componentwise-sweep -> SLM-19-04-006
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C03-trace-running-mean -> SLM-19-03-005,SLM-19-03-006
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C03-autocorrelation-ess -> SLM-19-03-006,PRE-SA-006
+% ERRATA-GOVERNANCE: ERR-19-001 verified_correction; ERR-19-002 verified_correction; ERR-19-005 verified_correction
+
+\chapter{马尔可夫链蒙特卡罗法}\label{chap:V5-C03}
+\index{马尔可夫链蒙特卡罗法}
+\index{MCMC|see{马尔可夫链蒙特卡罗法}}
+
+% KNOWLEDGE-PLAN: KN-V5-C32-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：马尔可夫链蒙特卡罗法。}马尔可夫链蒙特卡罗法章地图把“目标密度$\to$提议流$\to$MH核$\to$遍历均值与诊断”作为主线；请为其中首条箭头补出必要条件，并检查终点仍落在本章声明的输出域。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}马尔可夫链蒙特卡罗法学习目标固定核验“把“从难抽样目标分布计算期望”转化为“构造以该分布为平稳分布的马尔可夫核””；请实际完成“把“从难抽样目标分布计算期望”转化为“构造以该分布为平稳分布的马尔可夫核””，并用“中间结果逐项包含首目标“把“从难抽样目标分布计算期望”转化为“构造以该分布为平稳分布的马尔可夫核””声明的对象、条件与结论”判定通过或失败。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}给定马尔可夫核$K$和候选分布$\pi$；请对任意可测集$A$计算$(\pi K)(A)=\int \pi(\mathrm dx)K(x,A)$，核对其是否等于$\pi(A)$，并说明该等式表示平稳性，不要把细致平衡误当成必要条件。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}马尔可夫链蒙特卡罗法依赖路线从“所引章节的平稳/遍历层次与所引章节的独立蒙特卡罗 $\to$ 相关轨迹估计”进入“未归一化目标$\widetilde\pi$与提议$q$ $\to$ 双向流、接受概率与拒绝自环 $\to$ 保持$\pi$的MH核”；请写出箭头成立所需的定义域条件，并核对前者输出能作为后者输入。\par
+
+\begin{SLCompactOpeningSection}
+\SLChapterOpening{目标密度$\to$提议流$\to$MH核$\to$遍历均值与诊断}
+{怎样构造保持目标分布的马尔可夫核，并准确说明各类长期结论所需条件？}
+{读完可处理零流、证明MH可逆性，并分开有限链与一般状态空间的收敛层次。}
+{马尔可夫链、独立蒙特卡罗、条件概率、测度积分、对数与方差展开。}
+{先复习\GlobalChapterRef{30}{5}{1}的长期行为和\GlobalChapterRef{31}{5}{2}的支持覆盖；连续状态还需熟悉可测核。}
+\phantomsection\label{struct:V5-C03-CH01}
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 把“从难抽样目标分布计算期望”转化为“构造以该分布为平稳分布的马尔可夫核”，并区分平稳性、唯一性与遍历性；
+  \item 从双向概率流推导\MetropolisHastings{}接受概率与细致平衡，处理零流和拒绝自环，并说明正确性所需的可达与收敛条件；
+  \item 手工执行一般与单分量\MetropolisHastings{}算法，用轨迹、自相关、批均值标准误和有效样本量诊断计算质量；
+  \item 以精确后验矩为基准核验随机计算，不虚构随机样本、接受率或数值输出。
+\end{itemize}
+}
+
+\phantomsection\label{struct:V5-C03-CH02}
+\begin{prerequisitebox}
+本章直接使用\GlobalChapterRef{30}{5}{1}的平稳、可逆与遍历层次，以及\GlobalChapterRef{31}{5}{2}的蒙特卡罗均值、未归一化密度和接受--拒绝抽样。还需条件概率、测度积分、对数与方差；有限状态可把$\int$读成求和，连续状态统一相对于支配测度$\mu$书写。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V5-C03-CH03}
+\begin{precheckbox}
+下列各项中，$K$为马尔可夫核，$\pi$为候选平稳分布，$I_2$为二阶单位矩阵，$a,b\ge0$。
+\begin{enumerate}[leftmargin=2.2em]
+  \item 给定核$K$与分布$\pi$，能否逐项核验$\pi K=\pi$，并说明这只意味着平稳？
+  \item 能否为恒等转移矩阵$I_2$写出全部平稳分布，并据此区分可逆、不可约与唯一平稳分布？
+  \item 能否把$E_\pi f$写成样本平均，并说明独立样本方差公式不能直接用于相关轨迹？
+  \item 能否证明$\min\{a,b\}$的交换对称性，并判断非负函数何时能归一化为概率密度？
+\end{enumerate}
+第1--2项不足时复习\GlobalChapterRef{30}{5}{1}，第3项不足时复习\GlobalChapterRef{31}{5}{2}；第4项直接支撑MH流量证明与目标合法性检查。
+\end{precheckbox}
+
+\phantomsection\label{struct:V5-C03-CH04}
+\begin{dependencybox}
+目标$\pi$与提议$q$
+$\to$ 接受率与MH核$K$
+$\to$ 细致平衡证书
+$\to \pi K=\pi$；另行核验有限状态不可约或一般状态正Harris常返
+$\to$ 遍历时间平均；在相应结构条件上再加非周期性
+$\to$ 边缘分布收敛。核$K$通常形成相关轨迹，但独立核是反例；相关性
+$\to$ 轨迹、自相关、MCSE和ESS诊断。
+\end{dependencybox}
+图\ref{fig:V5-C03-dependency}要求分支阅读：先沿“MH构造$\to K\to$细致平衡证书”核对
+$\pi(\mathrm dx)K(x,\mathrm dy)=\pi(\mathrm dy)K(y,\mathrm dx)$只推出$\pi K=\pi$；
+再分别沿链结构分支判断遍历时间平均与边缘分布收敛所需的附加条件，并沿诊断分支检查轨迹相关性。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_dependency_graph.tex}
+\FloatBarrier
+\paragraph{读图检查：平稳证书与收敛作用域。}只沿细致平衡分支能得到$\pi K=\pi$，不能得到不可约或遍历；
+时间平均须另行核验有限状态不可约或一般状态正Harris常返，边缘分布收敛还须在相应结构条件上核验非周期性。
+图中的“通常相关轨迹”只是诊断动机；独立核$K(x,\mathrm dy)=\pi(\mathrm dy)$说明相关性不是任意转移核的必然结论。\par
+\end{SLCompactOpeningSection}
+
+\phantomsection\label{struct:V5-C03-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V5-C03
+\index[symbols]{minus-mathcalx-minus-minus-mathcalb-minus--s1b6c4341f343@$(\mathcal X,\mathcal B)$：马尔可夫链状态空间}
+\index[symbols]{minus-pi-minus--s69d5219ccfa3@$\pi$：目标分布；满足$\int\pi\,\mathrm d\mu=1$}
+\index[symbols]{minus-widetilde-minus-minus-pi-minus--s0d3247a5e162@$\widetilde\pi$：未归一化目标，$\widetilde\pi=Z\pi$，$0<Z<\infty$}
+\index[symbols]{k-x-minus-mathrmdy-minus--s9a5828127668@$K(x,\mathrm dy)$：从当前状态$x$到下一状态的转移规则}
+\index[symbols]{q-x-y--s3a7e028a9f2e@$q(x,y)$：给定$x$时提议$y$的条件密度，$\int q(x,y)\mu(\mathrm dy)=1$}
+\index[symbols]{g-x-y--s60ef88950378@$g(x,y)$：有向提议流$\widetilde\pi(x)q(x,y)$}
+\index[symbols]{minus-alpha-minus-x-y--s8caed8dc210c@$\alpha(x,y)$：从$x$到提议$y$的接受概率}
+\index[symbols]{r-x--s6f187e002d4b@$r(x)$：拒绝提议后留在$x$的自环质量}
+\index[symbols]{x-t--s6e70d079a693@$X_t$：第$t$次转移后的链状态}
+\index[symbols]{m-n--sd4006791b790@$m,n$：燃烧期转移数与保留状态数}
+\index[symbols]{y-t-eq-f-x-t--s580882540e19@$Y_t=f(X_t)$：目标函数沿轨迹的取值}
+\index[symbols]{minus-gamma-minus-k-minus-rho-minus-k--s07ffa6e6d5b2@$\gamma_k,\rho_k$：平稳轨迹的滞后$k$自协方差与自相关}
+\index[symbols]{minus-tau-minus-minus-mathrm-minus-int--s93feb50b172f@$\tau_{\mathrm{int}}$：积分自相关时间；ESS仅在其严格为正时定义}
+\index[symbols]{n-minus-mathrm-minus-eff--se27a8e724de1@$N_{\mathrm{eff}}$：相对独立样本方差的有效样本量}
+% STAGE19-SYMBOL-INDEX-END: V5-C03
+\begin{symboltablebox}
+\small
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 类型、维数或范围 & 含义\\ \midrule
+$(\mathcal X,\mathcal B)$ & 可测空间 & 马尔可夫链状态空间\\
+$\pi$ & 概率测度或密度 & 目标分布；满足$\int\pi\,\mathrm d\mu=1$\\
+$\widetilde\pi$ & $[0,\infty)$值函数 & 未归一化目标，$\widetilde\pi=Z\pi$，$0<Z<\infty$\\
+$K(x,\mathrm dy)$ & 马尔可夫核 & 从当前状态$x$到下一状态的转移规则\\
+$q(x,y)$ & 非负密度 & 给定$x$时提议$y$的条件密度，$\int q(x,y)\mu(\mathrm dy)=1$\\
+$g(x,y)$ & 非负函数 & 有向提议流$\widetilde\pi(x)q(x,y)$\\
+$\alpha(x,y)$ & $[0,1]$ & 从$x$到提议$y$的接受概率\\
+$r(x)$ & $[0,1]$ & 拒绝提议后留在$x$的自环质量\\
+$X_t$ & $\mathcal X$值随机变量 & 第$t$次转移后的链状态\\
+$m,n$ & 非负整数 & 燃烧期转移数与保留状态数\\
+$Y_t=f(X_t)$ & 实随机变量 & 目标函数沿轨迹的取值\\
+$\gamma_k,\rho_k$ & 实数 & 平稳轨迹的滞后$k$自协方差与自相关\\
+$\tau_{\mathrm{int}}$ & 非负实数（存在时） & 积分自相关时间；ESS仅在其严格为正时定义\\
+$N_{\mathrm{eff}}$ & 正实数（可定义时） & 相对独立样本方差的有效样本量\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V5-C32-FORMULA-001 L1
+\paragraph{读前自检：马尔可夫链蒙特卡罗目标期望。}MCMC用相关轨迹$X_t$估计$I=E_\pi f$；请在舍弃$m$步后计算$\widehat I_{m,n}=n^{-1}\sum_{t=m+1}^{m+n}f(X_t)$，核对输出仍是标量均值。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：MCMC基本思想。}MCMC基本思想是构造以$\pi$为平稳分布且可达目标支持的核$K$；请先核对$\pi K=\pi$，再检查不可约/回返条件，说明只证平稳不足以保证时间平均正确。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-FORMULA-002 L1
+\paragraph{读前自检：以平稳链估计目标期望。}若链从平稳分布启动，则每个$X_t$边缘都服从$\pi$但样本相关；请展开轨迹均值的期望，核对仍为$E_\pi f$，而方差需包含自协方差项。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：MCMC的目标保持与可达性。}MCMC正确性需同时检查目标保持与可达性；请用恒等核$K(x,\cdot)=\delta_x$作反例，核对它保持任意$\pi$却不能从初值访问其他状态。\par
+
+\SLReviewSection{MCMC基本思想}{sec:V5-C03-S01}
+\knowledgeanchor{SLM-19-00-001}{马尔可夫链蒙特卡罗目标期望}
+\knowledgeanchor{PRE-SA-006}{MCMC基本思想}
+\knowledgeanchor{SLM-19-03-003}{以平稳链估计目标期望}
+\knowledgeanchor{SLM-19-03-004}{MCMC的目标保持与可达性}
+\knowledgeanchor{SLM-19-03-005}{MCMC的提议—接受—留驻步骤}
+\phantomsection\label{struct:V5-C03-CH06}
+设目标是计算
+\begin{equation}\label{eq:V5-C03-target-expectation}
+I=E_\pi[f(X)]=\int_{\mathcal X}f(x)\pi(x)\,\mu(\mathrm dx),
+\end{equation}
+但不能直接产生独立的$\pi$样本。MCMC不把相关状态误称为独立样本，而是设计一个转移核$K$，使$\pi$保持不变，再以同一条链的时间平均
+\begin{equation}\label{eq:V5-C03-ergodic-average}
+\widehat I_{m,n}
+=\frac1n\sum_{t=m+1}^{m+n}f(X_t),\qquad n\ge1,
+\end{equation}
+估计式\eqref{eq:V5-C03-target-expectation}。式中$m$不是证明链已经收敛的参数；丢弃前$m$步只能减弱某些初值影响，不能修复可约、周期、错误目标或错误转移核。
+
+图\ref{fig:V5-C03-markov-chain-path}区分状态轨迹、提议与拒绝后重复的状态；图\ref{fig:V5-C03-mcmc-pipeline}显示从目标到估计量的完整链路。重复状态是MH核的组成部分，不应在保存轨迹时删除。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_markov_chain_path.tex}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mcmc_pipeline.tex}
+\index{遍历均值}
+\index{燃烧期}
+
+\phantomsection\label{struct:V5-C03-CH07}
+\begin{definition}[MCMC构造]
+给定目标概率分布$\pi$和函数$f$，若马尔可夫核$K$满足$\pi K=\pi$，并且链的结构条件足以保证式\eqref{eq:V5-C03-ergodic-average}收敛到$E_\pi f$，则“按$K$产生轨迹并计算时间平均”的方法称为以$\pi$为目标的马尔可夫链蒙特卡罗法。
+\end{definition}
+定义包含两个层次：$\pi K=\pi$是目标保持条件；从给定初值出发的可达性、回返与遍历条件负责把时间平均连接到目标期望。只验证第一层不足以宣称估计一致。
+
+\phantomsection\label{struct:V5-C03-CH08}
+\textbf{模型组成与合法性。}本章的数学对象是五元组
+\[
+\bigl((\mathcal X,\mathcal B),\mu,\widetilde\pi,q,\nu_0\bigr).
+\]
+要求$(\mathcal X,\mathcal B)$是标准Borel空间，$\mu$是$\sigma$有限测度；$\widetilde\pi$可测且$0<Z=\int\widetilde\pi\,\mathrm d\mu<\infty$，从而$\pi=\widetilde\pi/Z$是概率密度；$q:\mathcal X\times\mathcal X\to[0,\infty)$关于$\mathcal B\otimes\mathcal B$联合可测，且对每个合法$x$都有$\int q(x,y)\mu(\mathrm dy)=1$；初始分布$\nu_0$落在$S=\{x:0<\widetilde\pi(x)<\infty\}$内。联合可测性保证$x\mapsto\int_Bq(x,y)\mu(\mathrm dy)$对每个$B\in\mathcal B$可测，故$q$确实诱导提议马尔可夫核。若$\widetilde\pi$不可归一化，未知常数$Z$无法成为“会在比值中消去”的许可证，因为此时目标概率分布根本不存在。
+
+\begin{warningbox}
+\textbf{先保留数学主线。}细致平衡只推出平稳，不推出不可约、唯一平稳或遍历；另外，MH目标核必须存在有限正归一化常数。两个最小反例分别是恒等核$K=I_2$和不可积的非负目标核。来源页码与核验过程统一移到章末“核验记录”，不插入算法推导。
+\end{warningbox}
+% ERRATA-RECORD: 审查报告/原书疑似勘误与人工核对/练习19.5_可逆性与不可约性命题核对.md
+% ERRATA-RECORD: 审查报告/原书疑似勘误与人工核对/例19.9_联合核可归一性核对.md
+
+\phantomsection\label{struct:V5-C03-CH09}
+\textbf{学习策略。}MCMC在统计学习中的策略不是直接最小化一个经验风险，而是把后验期望、预测积分或隐变量期望写成式\eqref{eq:V5-C03-target-expectation}，再同时满足四项设计目标：
+\begin{enumerate}[leftmargin=2.2em]
+  \item 目标保持：$\pi K=\pi$；
+  \item 可达性：目标支持内的重要区域属于同一可通信部分；
+  \item 可计算性：只使用$\widetilde\pi$的点值、提议抽样和提议密度比；
+  \item 统计效率：在正确性不受损的前提下降低相关性与计算成本。
+\end{enumerate}
+第1项是代数条件，第2项是图或测度结构条件，第3项是可计算条件，第4项才涉及调参。高接受率、漂亮轨迹或小的经验MCSE都不能替代前3项。
+
+\phantomsection\label{struct:V5-C03-CH10}
+\textbf{学习算法。}基本流程为：选取合法初值$x_0$；在第$t$步根据$q(x_{t-1},\cdot)$产生提议$y_t$；用双向目标--提议流计算接受概率；接受时令$x_t=y_t$，拒绝时令$x_t=x_{t-1}$；固定执行$m+n$次转移；最后保存完整状态与接受标志，按式\eqref{eq:V5-C03-ergodic-average}计算估计，并另行报告诊断。算法\ref{alg:V5-C03-general-mh}在后文给出数学主体，异常与停止条件由紧邻算法的实现说明单列。
+
+% KNOWLEDGE-PLAN: KN-V5-C32-CONCEPT-001 L1
+\paragraph{读前自检：细致平衡方程。}从细致平衡方程的条件“$\pi(x)k(x,y)=\pi(y)k(y,x) \quad\text{对}\ \mu\otimes\mu\ \text{几乎处处成立}.$”出发，请把$\pi(x)k(x,y)$展开一次并检查其类型或边界；所得量应符合第二步，对$x$积分。\par
+
+\SLTeachSection{平稳分布与细致平衡}{sec:V5-C03-S02}
+\knowledgeanchor{SLM-19-05-002}{细致平衡方程}
+\phantomsection\label{struct:V5-C03-CH11}
+% KNOWLEDGE-PLAN: KN-V5-C32-DEFINITION-002 L1
+\paragraph{读前自检：细致平衡。}设$\pi$为概率密度，马尔可夫核$K$有密度$k$，且$\pi(x)k(x,y)=\pi(y)k(y,x)$对$\mu\otimes\mu$几乎处处成立。请对$x$积分，核对总流入为$\pi(y)$，故$\pi K=\pi$。\par
+
+\begin{definition}[细致平衡]
+若对任意可测集合$A,B\in\mathcal B$都有
+\begin{equation}\label{eq:V5-C03-general-detailed-balance}
+\int_A\pi(\mathrm dx)K(x,B)
+=\int_B\pi(\mathrm dy)K(y,A),
+\end{equation}
+则称$K$关于$\pi$满足细致平衡，或称平稳链关于$\pi$可逆。若$K$有密度$k(x,y)$，条件化为
+\begin{equation}\label{eq:V5-C03-density-detailed-balance}
+\pi(x)k(x,y)=\pi(y)k(y,x)
+\quad\text{对}\ \mu\otimes\mu\ \text{几乎处处成立}.
+\end{equation}
+\end{definition}
+\index{细致平衡}
+\index{可逆马尔可夫链}
+
+从局部流到平稳分布的推导分三步。第一步，式\eqref{eq:V5-C03-density-detailed-balance}把$x\to y$的平稳概率流与$y\to x$的反向流配对。第二步，对$x$积分，
+\[
+\int\pi(x)k(x,y)\,\mu(\mathrm dx)
+=\int\pi(y)k(y,x)\,\mu(\mathrm dx).
+\]
+第三步使用$\int k(y,x)\mu(\mathrm dx)=1$，右端成为$\pi(y)$，于是总流入等于目标质量。图\ref{fig:V5-C03-mh-balance-flux}把成对流与拒绝自环分开绘制。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mh_balance_flux.tex}
+
+\phantomsection\label{struct:V5-C03-CH12}
+\begin{proposition}[细致平衡推出平稳]\label{prop:V5-C03-db-stationary}
+若概率测度$\pi$与马尔可夫核$K$满足式\eqref{eq:V5-C03-general-detailed-balance}，则$\pi K=\pi$。
+\end{proposition}
+
+\phantomsection\label{struct:V5-C03-CH13}
+% KNOWLEDGE-PLAN: KN-V5-C32-PROOF-001 L1
+\paragraph{读前自检：证明：细致平衡推出平稳。}细致平衡推出平稳以“在该等式中取$A=\mathcal X$”为约束；请对$(\pi K)(B)$做一次条件化或边缘化，并确认证明没有使用不可约性或非周期性，所以结论也不能附带唯一平稳分布、边缘收敛或时间平均收敛。\par
+
+\begin{proof}
+在式\eqref{eq:V5-C03-general-detailed-balance}中取$A=\mathcal X$。因为$K(y,\mathcal X)=1$，
+\[
+(\pi K)(B)
+=\int_{\mathcal X}\pi(\mathrm dx)K(x,B)
+=\int_B\pi(\mathrm dy)K(y,\mathcal X)
+=\pi(B)
+\]
+对任意$B\in\mathcal B$成立。因此$\pi K=\pi$。证明没有使用不可约性或非周期性，所以结论也不能附带唯一平稳分布、边缘收敛或时间平均收敛。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V5-C32-CONCEPT-002 L1
+\paragraph{读前自检：Metropolis-Hastings接受率。}Metropolis--Hastings接受率比较双向流$h(x,y)=\widetilde\pi(x)q(x,y)$与$h(y,x)$；请计算$\alpha(x,y)=\min\{1,h(y,x)/h(x,y)\}$，并在正向流为0时按声明分支拒绝，并核对接受概率在$[0,1]$且零流不被伪正则化。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-CONCEPT-003 L1
+\paragraph{读前自检：双向目标—提议流。}MH双向目标--提议流为$h(x,y)=\widetilde\pi(x)q(x,y)$；请交换$x,y$并取两者最小值，核对接受后的正反移动质量相等。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-CONCEPT-004 L1
+\paragraph{读前自检：Metropolis-Hastings转移核。}MH核由接受移动$q(x,y)\alpha(x,y)$与补足总质量的拒绝自环组成；请对下一状态积分，核对移动质量加自环质量等于1。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-CONCEPT-005 L1
+\paragraph{读前自检：Metropolis-Hastings核可逆性。}令$g(x,y)$和$g(y,x)$为正反提议流。请分两者大小代入接受率，核对双向接受质量均为较小流。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-CONCEPT-006 L1
+% CORE-DERIVATION-PLAN: KN-V5-C32-DERIVATION-001
+\SLKnowledgeBridge{在成对细致平衡约束下选择最大的合法接受流。}{正向提议流 $a=g(x,y)$、反向提议流 $b=g(y,x)$ 与接受概率 $\alpha_{xy},\alpha_{yx}\in[0,1]$。}{已接受流需满足 $a\alpha_{xy}=b\alpha_{yx}$；零流情形必须单独约定。}{先令共同接受流为 $h$，由概率上界得到 $0\le h\le\min(a,b)$。}
+
+\paragraph{读前自检：Metropolis-Hastings拒绝自环。}MH拒绝时必须保留当前状态形成自环；请计算$r(x)=1-\int q(x,y)\alpha(x,y)\,dy$，核对$r(x)\ge0$且加入$r(x)\delta_x$后转移核归一。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：单分量Metropolis-Hastings算法。}单分量MH以当前$d$维状态、坐标提议核和扫描预算为输入；请只替换一个坐标形成候选，按完整目标与正反提议比接受或自环，完成一轮扫描后提交，并在预算结束时返回轨迹。\par
+
+\SLTeachSection{\MetropolisHastings{}算法}{sec:V5-C03-S03}
+\knowledgeanchor{SLM-19-04-003}{Metropolis-Hastings接受率@\MetropolisHastings{} 接受率}
+\knowledgeanchor{SLM-19-04-004}{双向目标—提议流}
+\knowledgeanchor{SLM-19-04-005}{Metropolis-Hastings转移核@\MetropolisHastings{} 转移核}
+\knowledgeanchor{SLM-19-06-002}{Metropolis-Hastings核可逆性@\MetropolisHastings{} 核可逆性}
+\knowledgeanchor{SLM-19-02-008}{Metropolis-Hastings拒绝自环@\MetropolisHastings{} 拒绝自环}
+\knowledgeanchor{SLM-19-04-006}{单分量Metropolis-Hastings算法@单分量\MetropolisHastings{} 算法}
+
+定义从状态$x$提议$y$的正向目标--提议流为
+\begin{equation}\label{eq:V5-C03-directed-flow}
+g(x,y)=\widetilde\pi(x)q(x,y).
+\end{equation}
+为避免在$g(x,y)=g(y,x)=0$时产生$0/0$，先定义接受后的无向公共流
+\begin{equation}\label{eq:V5-C03-common-flow}
+h(x,y)=\min\{g(x,y),g(y,x)\}.
+\end{equation}
+再在实际有正向提议流时定义
+\begin{equation}\label{eq:V5-C03-mh-alpha}
+\alpha(x,y)=
+\begin{cases}
+h(x,y)/g(x,y)
+=\min\!\left\{1,
+\dfrac{\widetilde\pi(y)q(y,x)}
+{\widetilde\pi(x)q(x,y)}\right\},&g(x,y)>0,\\[1.1em]
+0,&g(x,y)=0.
+\end{cases}
+\end{equation}
+第二个分支的取值不会改变从$x$实际产生的提议分布；算法仍需核验抽样器返回的候选与$q$求值器一致。若$\widetilde\pi(y)=0$或$q(y,x)=0$，则$h(x,y)=0$并拒绝，不把零分子改成一个很小的正数。
+
+由于$\widetilde\pi$与$q$联合可测，$g,h,\alpha$均可测；因$0\le q\alpha\le q$，下式中的积分是$[0,1]$值可测函数。拒绝概率和完整MH核分别为
+\begin{equation}\label{eq:V5-C03-rejection-mass}
+r(x)=1-\int q(x,y)\alpha(x,y)\,\mu(\mathrm dy),
+\end{equation}
+\begin{equation}\label{eq:V5-C03-mh-kernel}
+K(x,\mathrm dy)
+=q(x,y)\alpha(x,y)\mu(\mathrm dy)
++r(x)\delta_x(\mathrm dy).
+\end{equation}
+第一项已经包括离散情形下被接受的自提议；第二项专门记录所有拒绝造成的自环。删除重复状态会改变核和时间尺度。图\ref{fig:V5-C03-mh-accept-reject}展示提议、接受、拒绝与留驻的关系。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mh_accept_reject.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序：}先看从当前状态 $X_t=x$ 按 $q(x,\cdot)$ 提出候选 $Y=y$；再看在 $g(x,y)>0$ 时计算 $\alpha(x,y)$，抽取 $U\sim\mathrm U(0,1)$ 并比较 $U\le\alpha(x,y)$；最终接受时令 $X_{t+1}=y$，拒绝时仍记录一次旧状态 $X_{t+1}=x$，形成自环。
+
+\begin{theorem}[MH核的可逆性]\label{thm:V5-C03-mh-reversible}
+若$(\mathcal X,\mathcal B)$为标准Borel空间，$\mu$为$\sigma$有限测度，$0<Z=\int\widetilde\pi\,\mathrm d\mu<\infty$，且$q$是上述联合可测的合法提议密度，则式\eqref{eq:V5-C03-mh-alpha}--\eqref{eq:V5-C03-mh-kernel}定义一个马尔可夫核$K$。该核关于$\pi=\widetilde\pi/Z$满足细致平衡，因而$\pi$是$K$的平稳分布。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C32-PROOF-002 L1
+\paragraph{读前自检：证明：MH核的可逆性。}MH接受流满足$\widetilde\pi(x)q(x,y)\alpha(x,y)=h(x,y)=h(y,x)$；请除以共同归一化常数并对$A\times B$积分，核对接受移动部分双向流相等，再验证拒绝自环项也满足详细平衡。\par
+
+\begin{proof}
+由式\eqref{eq:V5-C03-common-flow}--\eqref{eq:V5-C03-mh-alpha}，对$\mu\otimes\mu$几乎处处的$(x,y)$，
+\[
+\widetilde\pi(x)q(x,y)\alpha(x,y)
+=h(x,y)
+=h(y,x)
+=\widetilde\pi(y)q(y,x)\alpha(y,x).
+\]
+除以共同的正归一化常数$Z$，接受移动部分的双向流相等。对任意$A,B\in\mathcal B$，接受部分满足
+\[
+\int_A\!\int_B\pi(x)q(x,y)\alpha(x,y)
+\,\mu(\mathrm dy)\mu(\mathrm dx)
+=\int_B\!\int_A\pi(y)q(y,x)\alpha(y,x)
+\,\mu(\mathrm dx)\mu(\mathrm dy).
+\]
+拒绝自环部分在两侧都等于
+\[
+\int_{A\cap B}\pi(x)r(x)\,\mu(\mathrm dx),
+\]
+所以完整核满足式\eqref{eq:V5-C03-general-detailed-balance}。命题\ref{prop:V5-C03-db-stationary}再给出$\pi K=\pi$。此证明只建立可逆与平稳，没有建立不可约、唯一或遍历。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V5-C32-CONCEPT-007 L1
+\paragraph{读前自检：接受率的成对流推导。}成对接受流令$a=g(x,y),b=g(y,x)$且$0\le\alpha_{xy},\alpha_{yx}\le1$；请由$c=a\alpha_{xy}=b\alpha_{yx}\le\min\{a,b\}$构造取等的双向接受率，并核对$a=0$或$b=0$时不计算$0/0$。\par
+
+\SLTeachSection{接受率推导}{sec:V5-C03-S04}
+\knowledgeanchor{PRE-SA-007}{接受率的成对流推导}
+\begin{derivationgoalbox}
+从细致平衡的成对流约束出发，推导在固定提议核下逐对最大的合法接受流，并由此得到包含零流边界的\MetropolisHastings{}接受概率。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+固定$x,y$，记正向与反向提议流为$a=g(x,y)$和$b=g(y,x)$。接受概率必须属于$[0,1]$；若要求已接受流满足细致平衡，则$a\alpha_{xy}=b\alpha_{yx}$。
+\end{derivationprepbox}
+\textbf{推导第1步：给出共同流的上界。}
+令$c=a\alpha_{xy}=b\alpha_{yx}$。由$0\leq\alpha_{xy},\alpha_{yx}\leq1$，同时有$c\leq a$与$c\leq b$，因而$c\leq\min\{a,b\}$。
+
+\textbf{推导第2步：构造达到上界的双向接受概率。}
+当$a,b>0$时取$\alpha_{xy}=\min\{a,b\}/a$及$\alpha_{yx}=\min\{a,b\}/b$；若某一方向流为零，则共同流只能为零，并把由正流指向零反向流的移动确定拒绝。该构造在所有边界情形均不需要计算$0/0$。
+
+\textbf{推导第3步：还原MH接受核。}
+在$a>0$的分支，正向接受概率化为$\alpha(x,y)=\min\{1,b/a\}$；代回$a=\widetilde\pi(x)q(x,y)$与$b=\widetilde\pi(y)q(y,x)$即得式\eqref{eq:V5-C03-mh-alpha}。未接受的剩余质量必须并入$x$处拒绝自环，才能得到总质量为$1$的马尔可夫核。
+
+% KNOWLEDGE-PLAN: KN-V5-C32-PROPOSITION-002 L1
+\paragraph{读前自检：成对约束下的最大接受流。}成对约束下的最大接受流要求先确认“$0\le\alpha_{xy},\alpha_{yx}\le1, \qquad a\alpha_{xy}=b\alpha_{yx}$”；请随后把$0\le\alpha_{xy},\alpha_{yx}\le1, \qquad a\alpha_{xy}$移到同一边并核对符号，用该等式达到该上界验收。\par
+
+\begin{proposition}[成对约束下的最大接受流]\label{prop:V5-C03-maximal-flow}
+固定一对状态$x,y$并记$a=g(x,y)$、$b=g(y,x)$。在所有满足
+\[
+0\le\alpha_{xy},\alpha_{yx}\le1,
+\qquad a\alpha_{xy}=b\alpha_{yx}
+\]
+的接受规则中，共同流$a\alpha_{xy}=b\alpha_{yx}$的最大值为$\min\{a,b\}$；式\eqref{eq:V5-C03-mh-alpha}达到该上界。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C32-PROOF-003 L1
+\paragraph{读前自检：证明：成对约束下的最大接受流。}从成对约束下的最大接受流的条件“若$a>0$，取$\alpha_{xy}=\min\{a,b\}/a$”出发，请把$\alpha_{xy}=\min\{a,b\}/a$用到的关键定义展开并完成下一步变形；所得量应符合变形没有增加前提且得到证明所述结论。\par
+
+\begin{proof}
+设共同流为$c$。由$\alpha_{xy}\le1$得$c=a\alpha_{xy}\le a$；由$\alpha_{yx}\le1$得$c=b\alpha_{yx}\le b$，故$c\le\min\{a,b\}$。若$a>0$，取$\alpha_{xy}=\min\{a,b\}/a$；若$a=0$，取$\alpha_{xy}=0$。对反向作同样定义，便有两侧共同流都等于$\min\{a,b\}$，且接受概率位于$[0,1]$。因此该上界可以达到。将$a,b$换回式\eqref{eq:V5-C03-directed-flow}即得MH接受率。
+\end{proof}
+图\ref{fig:V5-C03-acceptance-function}同时画出比值小于与大于$1$的两段；“截到$1$”来自概率上界，而不是数值补丁。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_acceptance_function.tex}
+
+\paragraph{常见特例。}
+若$q(x,y)=q(y,x)$，提议项消去，
+\[
+\alpha(x,y)=\min\{1,\widetilde\pi(y)/\widetilde\pi(x)\}.
+\]
+若$q(x,y)=q(y)$与当前状态无关，则
+\[
+\alpha(x,y)=\min\!\left\{1,
+\frac{\widetilde\pi(y)q(x)}
+{\widetilde\pi(x)q(y)}\right\}.
+\]
+对数实现使用
+\[
+\Delta=\log\widetilde\pi(y)-\log\widetilde\pi(x)
++\log q(y,x)-\log q(x,y),
+\qquad \log\alpha=\min\{0,\Delta\},
+\]
+但只有各正密度项可取对数；零分子必须进入确定拒绝分支。
+
+\paragraph{单分量MH。}
+写$x=(x_j,x_{-j})$，在保持$x_{-j}$不变时从$q_j(x_j,y_j\mid x_{-j})$提议$y_j$。令$y=(y_j,x_{-j})$，则
+\begin{equation}\label{eq:V5-C03-component-alpha}
+\alpha_j(x,y)
+=\min\!\left\{1,
+\frac{\widetilde\pi(y_j,x_{-j})
+q_j(y_j,x_j\mid x_{-j})}
+{\widetilde\pi(x_j,x_{-j})
+q_j(x_j,y_j\mid x_{-j})}\right\}
+\end{equation}
+在分母正时成立，零流仍按式\eqref{eq:V5-C03-common-flow}处理。
+
+\begin{theorem}[连续单坐标MH的独立不变性证明]\label{thm:V5-C03-coordinate-kernel}
+设$\mathcal X=\prod_{r=1}^d\mathcal X_r$，支配测度为$\mu=\bigotimes_r\mu_r$，目标有密度$\pi(x)$。第$j$坐标提议$q_j(x_j,y_j\mid x_{-j})$关于$\mu_j(\mathrm dy_j)$归一化且联合可测。用式\eqref{eq:V5-C03-component-alpha}及零流分支构造的单坐标核$K_j$关于$\pi$可逆，因而保持$\pi$。该结论不要求$K_j(x,\mathrm dy)$关于全维$\mu(\mathrm dy)$有密度。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C32-PROOF-004 L2
+\begin{keypointbox}[title={证明：连续单坐标MH的独立不变性证明：证明阅读检查}]
+\textbf{动手检查。}待证结论与所需条件分别是什么？请在最小维度或最小样本上写出第一处关键变形，并指出少一个条件时证明会在哪一步中断。\par
+\textbf{1.} 先写清对象类型、目标结论与符号作用域。\par
+\textbf{2.} 逐项核对定义域、维数、支持集、量词与交换运算所需条件。\par
+\textbf{3.} 写出第一处可执行的数学动作，不用“显然”跳过入口。\par
+\textbf{4.} 沿现有编号完成中间关系，并单独核对归一化、边界或等号条件。\par
+\textbf{5.} 回到待证结论，再说明它与后续公式、算法、图或例题的连接。
+\end{keypointbox}
+\paragraph{继续核对。}完成上面的最小任务后，再对照主体逐项核对定义域、更新式或关键变形、停止条件以及返回值；阅读检查不代替正文中的数学论证。
+
+\begin{proof}
+单坐标提议的全维写法是
+\[
+Q_j(x,\mathrm dy)=q_j(x_j,y_j\mid x_{-j})\,
+\mu_j(\mathrm dy_j)\,\delta_{x_{-j}}(\mathrm dy_{-j}),
+\]
+它集中在$y_{-j}=x_{-j}$的低维集合上，通常对全维Lebesgue测度奇异，故不能套用“存在$q(x,y)$全维密度”的证明。改在三元组
+$(x_{-j},x_j,y_j)$上取支配测度
+\[
+\mu_{-j}:=\bigotimes_{r\ne j}\mu_r,\qquad
+\lambda_j=\mu_{-j}(\mathrm dx_{-j})\mu_j(\mathrm dx_j)\mu_j(\mathrm dy_j).
+\]
+正向未接受流对$\lambda_j$的密度为
+\[
+g_j(x_{-j},x_j,y_j)=
+\pi(x_j,x_{-j})q_j(x_j,y_j\mid x_{-j}),
+\]
+反向流只是交换$x_j,y_j$。接受后的非对角流密度为
+\[
+g_j(x_{-j},x_j,y_j)\alpha_j(x,y)
+=\min\{g_j(x_{-j},x_j,y_j),g_j(x_{-j},y_j,x_j)\},
+\]
+在交换$x_j,y_j$时不变；零正向流按约定不计算比值。拒绝概率产生的对角自环显然双向相同。因此整个pair measure在交换前后状态时对称，即$\pi(\mathrm dx)K_j(x,\mathrm dy)=\pi(\mathrm dy)K_j(y,\mathrm dx)$，从而$\pi K_j=\pi$。
+\end{proof}
+
+\begin{proposition}[单分量核的保持性与扫描方式]\label{prop:V5-C03-component-scan}
+若每个坐标MH核$K_j$关于共同目标$\pi$可逆，则每个$K_j$保持$\pi$。任意固定顺序的系统扫描复合核$K_1K_2\cdots K_d$保持$\pi$，但一般不关于$\pi$可逆；固定权重$w_j>0$、$\sum_jw_j=1$的随机扫描混合核$\sum_jw_jK_j$关于$\pi$可逆。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C32-PROOF-005 L1
+\paragraph{读前自检：证明：单分量核的保持性与扫描方式。}单分量核的保持性与扫描方式依赖“除非这些核满足额外交换关系，正序复合与逆序复合不相等”；请据此把$\pi K_1K_2\cdots K_d$用到的关键定义展开并完成下一步变形，并直接核对变形没有增加前提且得到证明所述结论。\par
+
+\begin{proof}
+每个$K_j$可逆，由命题\ref{prop:V5-C03-db-stationary}得到$\pi K_j=\pi$。逐次代入可得
+\[
+\pi K_1K_2\cdots K_d
+=(\cdots((\pi K_1)K_2)\cdots)K_d
+=\pi,
+\]
+所以系统扫描保持$\pi$。其伴随核的顺序为$K_d\cdots K_2K_1$；除非这些核满足额外交换关系，正序复合与逆序复合不相等，因此不能从各分量可逆推出复合核可逆。对随机扫描，任意$A,B$上的双向流是各$K_j$双向流的加权和，每一项交换$A,B$后不变，故混合核仍满足细致平衡。
+\end{proof}
+图\ref{fig:V5-C03-componentwise-sweep}区分“一个坐标更新”与“完成一轮扫描”，并标出系统扫描和随机扫描在可逆性上的差异。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_componentwise_sweep.tex}
+
+% KNOWLEDGE-PLAN: KN-V5-C32-CONCEPT-008 L1
+\paragraph{读前自检：马尔可夫链蒙特卡罗法与统计学习。}有限状态MH若目标全支持且核不可约、正常返，则遍历均值成立；请取$f=\mathbf1_{\{j\}}$，核对访问频率趋于$\pi(j)$，再由有限求和推广到一般$f$。\par
+
+\SLAdvancedSection{收敛与样本诊断}{sec:V5-C03-S05}
+\knowledgeanchor{SLM-19-03-006}{马尔可夫链蒙特卡罗法与统计学习}
+\begin{theorem}[有限状态MH的正确性条件]\label{thm:V5-C03-finite-correctness}
+设$\mathcal X$有限，$\pi(x)>0$对每个$x\in\mathcal X$成立，$K$为以$\pi$为目标的MH核。
+\begin{enumerate}[leftmargin=2.2em]
+  \item $\pi$是$K$的平稳分布。
+  \item 若$K$不可约，则$\pi$是唯一平稳分布，且对任意$f:\mathcal X\to\mathbb R$及任意初值，
+  \[
+  \frac1n\sum_{t=1}^nf(X_t)\longrightarrow E_\pi f
+  \quad\text{几乎必然}.
+  \]
+  \item 若$K$还非周期，则对任意初始分布$\nu_0$都有$\nu_0K^t\to\pi$。
+\end{enumerate}
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C32-PROOF-006 L1
+\paragraph{读前自检：证明：有限状态MH的正确性条件。}有限状态MH已知不可约且以$\pi$可逆；请把$f(X_t)$展开为$\sum_x f(x)\boldsymbol1_{\{X_t=x\}}$并交换有限求和与时间极限，核对时间平均只需不可约，而$\nu_0K^t\to\pi$还需非周期性。\par
+
+\begin{proof}
+第1项由定理\ref{thm:V5-C03-mh-reversible}得到。定理\ref{thm:V5-C01-finite-stationary}在同一行随机与平稳约定下给出：有限不可约链的平稳分布唯一且各状态正常返。再由定理\ref{thm:V5-C01-ergodic}的式\eqref{eq:V5-C01-time-average}，把$f$写成有限和
+\[
+f(X_t)=\sum_{x\in\mathcal X}f(x)\boldsymbol1_{\{X_t=x\}},
+\]
+对每个状态的访问频率使用该遍历定理，再交换有限求和与极限，得到第2项。若再加非周期性，定理\ref{thm:V5-C01-ergodic}的式\eqref{eq:V5-C01-step-convergence}给出$K^t(x,\cdot)\to\pi$；按初始分布$\nu_0$作有限加权和即得$\nu_0K^t\to\pi$。非周期性没有用于时间平均结论，因此不能把第2项与第3项合并成一个无条件断言。
+\end{proof}
+
+定理中的时间平均也覆盖任意固定燃烧期$m$。事实上，若
+$S_N=N^{-1}\sum_{t=1}^Nf(X_t)\to I$，则
+\[
+\frac1n\sum_{t=m+1}^{m+n}f(X_t)
+=\frac{m+n}{n}S_{m+n}
+-\frac1n\sum_{t=1}^mf(X_t)
+\longrightarrow I,
+\]
+因为$m$固定，第二项的分子只含有限项。若$X_0\sim\pi$，则每个$X_t\sim\pi$，并且
+\[
+E_\pi(\widehat I_{m,n})
+=\frac1n\sum_{t=m+1}^{m+n}E_\pi f(X_t)
+=E_\pi f.
+\]
+若从固定$x$启动，
+\[
+E_x(\widehat I_{m,n})
+=\frac1n\sum_{t=m+1}^{m+n}K^tf(x),
+\]
+有限$n$时一般不等于$E_\pi f$。所以固定燃烧期不保证有限样本无偏；它只在已有收敛条件下影响初值偏差的大小。
+
+% KNOWLEDGE-PLAN: KN-V5-C32-DEFINITION-003 L1
+\paragraph{读前自检：一般状态空间的可达与回返条件。}一般状态空间的$\psi$-不可约性要求每个$\psi(A)>0$的集合都能从任意初态以正概率到达；请给定一个集合$A$检查$P_x(\tau_A<\infty)>0$，并与概率为1的回返条件区分。\par
+
+\begin{definition}[一般状态空间的可达与回返条件]\label{def:V5-C03-harris-conditions}
+给定非零$\sigma$有限测度$\psi$，若每个满足$\psi(A)>0$的可测集$A$都满足$P_x(\tau_A<\infty)>0$（对所有$x$），则称链为$\psi$-不可约；若进一步$P_x(\tau_A<\infty)=1$（对所有$x$），则称其Harris回返。Harris回返链若存在不变概率分布$\pi$，称为正常Harris返。这里的陈述针对集合而不是单点，所以适用于连续状态空间。
+\end{definition}
+
+\begin{proposition}[一般状态空间结论的条件分层]\label{prop:V5-C03-general-convergence}
+设$K$为正常Harris返核且不变概率分布为$\pi$。
+\begin{enumerate}[leftmargin=2.2em]
+  \item 对每个$f\in L^1(\pi)$，时间平均$n^{-1}\sum_{t=1}^nf(X_t)$几乎必然收敛到$E_\pi f$；该结论不要求非周期性。
+  \item 若$K$还非周期，则对该遍历定理覆盖的初始状态有$\lVert K^t(x,\cdot)-\pi\rVert_{\mathrm{TV}}\to0$，从而固定时刻的边缘分布收敛；这不是时间平均结论的同义改写。
+  \item 中心极限定理、有限渐近方差以及批均值估计的一致性都不是前两项的自动推论；它们还需相应矩条件与混合条件，例如几何遍历配合$E_\pi|f|^{2+\delta}<\infty$，并需按所用批均值定理选择批长增长条件。
+\end{enumerate}
+\end{proposition}
+
+\begin{comparisonbox}
+\textbf{三个反例把结论边界分开。}
+两点确定翻转链不可约且具有唯一平稳分布$(1/2,1/2)$，状态访问频率与可积函数时间平均仍正确，但固定时刻分布按奇偶振荡；缺少的是非周期性。恒等核$I_2$可逆且保持任意分布，却可约、平稳分布不唯一，时间平均由初值决定；缺少的是跨类可达性。整数集$\mathbb Z$上的简单对称随机游走不可约且Harris回返，但为零常返，没有不变概率分布；因此不能把“会返回”替换成正常Harris返。最后，即使正常Harris返保证$L^1$大数律，若$f$没有所需二阶矩或链缺少相应混合速率，中心极限定理与批均值误差估计仍可能失效。
+\end{comparisonbox}
+
+因此，连续状态空间中“从任意点到任意点的概率为正”既不必要也通常不可验证。平稳性只说明目标保持；$\psi$-不可约性只说明正$\psi$测度集合可达；正常Harris返才支撑$L^1$时间平均；非周期性另用于总变差或边缘收敛；MCSE与批均值还要额外的矩和混合假设。有限状态定理不能只靠把求和符号改成积分就自动推广。
+
+% KNOWLEDGE-PLAN: KN-V5-C32-PROPOSITION-005 L1
+\paragraph{读前自检：平稳相关均值的有限样本方差。}平稳相关均值的有限样本方差把问题限定在“设链从平稳分布启动，$Y_t=f(X_t)$具有有限方差$\gamma_0>0$”；请把$\gamma_k$展开一次并检查其类型或边界，检查是否得到展开后的量满足定义中的域、维数或符号限制。\par
+
+\begin{proposition}[平稳相关均值的有限样本方差]\label{prop:V5-C03-correlated-variance}
+设链从平稳分布启动，$Y_t=f(X_t)$具有有限方差$\gamma_0>0$，并令
+\[
+\gamma_k=\operatorname{Cov}(Y_t,Y_{t+k}),
+\qquad \rho_k=\gamma_k/\gamma_0.
+\]
+则对$\overline Y_n=n^{-1}\sum_{t=1}^nY_t$，
+\begin{equation}\label{eq:V5-C03-finite-variance}
+\operatorname{Var}(\overline Y_n)
+=\frac{\gamma_0}{n}
+\left[
+1+2\sum_{k=1}^{n-1}
+\left(1-\frac{k}{n}\right)\rho_k
+\right].
+\end{equation}
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C32-PROOF-007 L1
+\paragraph{读前自检：证明：平稳相关均值的有限样本方差。}在“$\operatorname{Var}(\overline Y_n) =\frac1{n^2}\left[n\gamma_0+ 2\sum_{k=1}^{n-1}(n-k)\gamma_k\right].$”成立时处理平稳相关均值的有限样本方差：请对$\operatorname{Var}(\overline Y_n)$做一次条件化或边缘化，并以所得量与证明紧接着给出的概率关系相同判定结果。\par
+
+\begin{proof}
+直接展开协方差双重和：
+\[
+\operatorname{Var}(\overline Y_n)
+=\frac1{n^2}\sum_{s=1}^n\sum_{t=1}^n
+\operatorname{Cov}(Y_s,Y_t).
+\]
+平稳性使协方差只依赖$|s-t|$。滞后$0$有$n$项；对每个$1\le k\le n-1$，上三角和下三角各有$n-k$对相距$k$的时刻。因此
+\[
+\operatorname{Var}(\overline Y_n)
+=\frac1{n^2}\left[n\gamma_0+
+2\sum_{k=1}^{n-1}(n-k)\gamma_k\right].
+\]
+提出$\gamma_0/n$并使用$\rho_k=\gamma_k/\gamma_0$，得到式\eqref{eq:V5-C03-finite-variance}。
+\end{proof}
+
+若$\sum_{k\ge1}|\rho_k|<\infty$，定义
+\begin{equation}\label{eq:V5-C03-iact}
+\tau_{\mathrm{int}}
+=1+2\sum_{k=1}^{\infty}\rho_k,
+\qquad
+\sigma_{\mathrm{as}}^2=\gamma_0\tau_{\mathrm{int}}.
+\end{equation}
+在另有适当的马尔可夫链中心极限定理条件时，
+$\sqrt n(\overline Y_n-E_\pi f)$渐近服从方差$\sigma_{\mathrm{as}}^2$的正态分布。有限样本的方差等效有效样本量为
+\begin{equation}\label{eq:V5-C03-finite-ess}
+N_{\mathrm{eff},n}
+=\frac{n}{
+1+2\sum_{k=1}^{n-1}(1-k/n)\rho_k},
+\end{equation}
+前提是分母正且使用真实自相关。用截断经验自相关替换它只能得到诊断估计；负相关时ESS可以大于$n$，因此不应机械裁剪到$n$。
+
+批均值提供另一条渐近方差估计路径。令$n=ab$，把轨迹分成$a\ge2$个连续批、每批长度$b\ge1$，批均值为$\overline Y^{(j)}$，则
+\begin{equation}\label{eq:V5-C03-batch-means}
+\widehat\sigma_{\mathrm{BM}}^2
+=\frac{b}{a-1}\sum_{j=1}^{a}
+\bigl(\overline Y^{(j)}-\overline Y_n\bigr)^2,
+\quad
+\widehat{\mathrm{MCSE}}_{\mathrm{BM}}
+=\sqrt{\widehat\sigma_{\mathrm{BM}}^2/n},
+\quad
+\widehat N_{\mathrm{eff,BM}}
+=n\,s_Y^2/\widehat\sigma_{\mathrm{BM}}^2,
+\end{equation}
+最后一个比值只在分子、分母有限且分母正时定义。批均值一致性要求随总长度增长时$a,b$都增长且满足相应混合与矩条件；一条有限轨迹不能单独证明这些条件。
+
+图\ref{fig:V5-C03-trace-running-mean}展示固定诊断示意轨迹与保留样本运行均值。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_trace_running_mean.tex}
+\FloatBarrier
+读图时，先看上面板如何把$t=1,\ldots,5$标为预热段；再看下面板只从$t=6$起递推$\overline X_{6:t}$；最终比较其与目标值2，并核对15个保留样本在$t=20$时给出$\overline X_{6:20}=2.0000$。
+图\ref{fig:V5-C03-autocorrelation-ess}把经验ACF与同一预设窗口下的有限样本加权ESS并列为一个诊断单元。
+% v2.6 layout: former forced clear removed; natural pagination.
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_autocorrelation_ess.tex}
+\FloatBarrier
+读图时，先看左面板在 $k=1,\ldots,6$ 的预设窗口内保留了哪些正经验自相关；再看右面板如何用有限样本权重形成 $\widehat\tau_{6,n}$；最终得到正相关增大方差权重、并使同长度轨迹的 $\widehat N_{\mathrm{eff}}$ 减小。
+
+% KNOWLEDGE-PLAN: KN-V5-C32-BOUNDARY-002 L1
+\paragraph{读前自检：常见错误与误用边界：收敛与样本诊断。}收敛与样本诊断所用的明确前提是“边界框首项禁止抽稀只取子序列，不制造独立性”；完成把固定错误“抽稀只取子序列，不制造独立性”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法后，核对改写后的运算或判断有定义，且不再触发“抽稀只取子序列，不制造独立性”。\par
+
+\begin{warningbox}
+燃烧期不把可约链变成不可约链；抽稀只取子序列，不制造独立性；接受率既不是平稳性证明，也不是收敛证明；单条轨迹看似稳定可能只是困在一个模态。应同时保存多条不同初值链、未抽稀轨迹、运行均值、自相关、批均值MCSE与异常状态，并把这些量称为诊断而不是定理结论。
+\end{warningbox}
+
+\phantomsection\label{struct:V5-C03-CH14}
+\textbf{几何解释。}把$\widetilde\pi$的高密度区看成状态空间中的山脊。提议核决定一步可走的方向与尺度，接受规则校正地形高低与提议的不对称。步长过小会在局部缓慢爬行；步长过大会频繁撞到低密度区而留在原地。几何直觉用于调参，但目标保持仍由双向流证明。
+
+\phantomsection\label{struct:V5-C03-CH15}
+\textbf{概率解释。}MH先生成有向提议流$g(x,y)$，再把每对反向流削减到共同值$\min\{g(x,y),g(y,x)\}$。多出的正向流变成拒绝自环，因此总概率仍为$1$。正是“接受移动加拒绝留驻”的完整核保持目标分布。
+
+\phantomsection\label{struct:V5-C03-CH16}
+\textbf{优化解释。}命题\ref{prop:V5-C03-maximal-flow}说明，在逐对满足细致平衡且接受概率不超过$1$的限制下，MH选择最大的共同流。这是局部接受流最大化，不等于全局最小化自相关或MCSE。改变提议$q$会同时改变移动距离、接受概率和计算成本；只最大化接受率通常把步长推向过小。
+
+\phantomsection\label{struct:V5-C03-CH17}
+图\ref{fig:V5-C03-mh-accept-reject}把目标、提议、接受流和拒绝自环组合成完整核。图\ref{fig:V5-C03-rejection-vs-mh}对比接受--拒绝抽样与MH：前者拒绝后重新独立提议且只输出接受值，后者拒绝后把当前状态复制到下一时刻，输出是一条相关马尔可夫链。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_rejection_sampling_comparison.tex}
+
+\phantomsection\label{struct:V5-C03-CH18}
+\Needspace{6\baselineskip}
+\begin{example}[单向提议造成的支持连通缺口]\label{exm:V5-C03-asymmetric-proposal}
+在三点空间上令目标分布为$\pi=(1/3,1/3,1/3)$，提议矩阵为定向三环
+\[
+Q=\begin{pmatrix}
+0&1&0\\
+0&0&1\\
+1&0&0
+\end{pmatrix}.
+\]
+计算MH接受率与所得核，并解释为什么“提议图从每点都有出边”仍不足以保证可用的MH链。
+\end{example}
+
+\Needspace{4\baselineskip}
+\SLExampleSolutionHeading{exm:V5-C03-asymmetric-proposal}
+\begin{solution}
+\SLReadTranslation{题目要求完成“单向提议造成的支持连通缺口”：先写清目标分布、提议或满条件与支持，再构造转移/估计量并核验不变性或归一化。}
+\SolGiven 目标分布、提议核或满条件在题面支持上有定义；所有条件分母和归一化常数为正，状态空间与随机变量取值域保持一致。
+\SLMethodTrigger{先声明目标分布、提议/满条件与支持，再逐步构造转移或估计量并核验归一化。}
+\SolDerive
+\textbf{计算。}状态支持集是$S=\{1,2,3\}$，且每行提议概率之和为$1$。从$1$只能提议$2$，但反向$q_{21}=0$，故
+\[
+\alpha(1,2)=0.
+\]
+同理$q_{32}=q_{13}=0$分别使$\alpha(2,3)=\alpha(3,1)=0$，因而所有提议都被拒绝，所得核是$K=I_3$。
+
+\textbf{独立核验。}虽然$\pi K=\pi$，但从点质量$\delta_1$出发有$\delta_1K^t=\delta_1$对所有$t$成立，不会趋近$\pi$；这直接证实平稳性没有带来不可约性。
+
+\textbf{结论。}任意分布（包括$\pi$）都平稳，但链完全可约。问题不在目标支持缺点，而在提议的每条有向边都缺少反向流；后文例\ref{exm:V5-C03-three-state-kernel}保留双向非对称提议，完成接受率与完整核的另一种审计。
+\end{solution}
+
+\phantomsection\label{struct:V5-C03-CH19}
+本模块给出三个可独立执行的过程：一般MH、单分量MH和轨迹诊断。随机数序列给定后，算法的控制路径完全确定；若中途停止，只使用此前完成的整次转移，不能把部分轨迹当成完整结果。
+
+\phantomsection\label{struct:V5-C03-CH20}
+\textbf{输入与输出。}一般MH输入可归一化的未归一化目标$\widetilde\pi$（满足$0<\int\widetilde\pi\,\mathrm d\mu<\infty$）、提议抽样器与双向密度求值器、合法初值$x_0$、相互独立的$(0,1)$均匀数、燃烧期$m$、保留数$n$及可选函数$f$。输出完整状态轨迹、提议、接受判定、保留样本，以及在$n>0$且$f$合法时的均值。
+
+\phantomsection\label{struct:V5-C03-CH21}
+\textbf{参数含义。}$T=m+n$是固定转移预算；$m$只决定哪些状态不进入均值，$n$决定保留状态数。提议尺度属于$q$的一部分。若采用单分量算法，还需维数$d$、每坐标提议$q_j$与扫描规则。诊断算法另需滞后上限$L$和满足$n=ab$的批数$a$、批长$b$。
+
+\phantomsection\label{struct:V5-C03-CH22}
+\textbf{初始化。}先确认目标可归一化，检查$0<\widetilde\pi(x_0)<\infty$和整数参数；令当前状态$x\leftarrow x_0$，轨迹以$x_0$开头，接受计数为$0$。不得从目标支持外启动后再靠一次非法比值“跳回”支持。
+
+\phantomsection\label{struct:V5-C03-CH23}
+\textbf{更新顺序。}每轮先由$q(x,\cdot)$提议$y$，再独立取$u\in(0,1)$；核对前向提议密度为有限正数。若$\widetilde\pi(y)=0$或$q(y,x)=0$，确定拒绝；否则计算对数比$\Delta$并比较$\log u$与$\min\{0,\Delta\}$。接受或拒绝后都必须追加新的链状态。
+
+\phantomsection\label{struct:V5-C03-CH24}
+\textbf{停止条件。}正常分支恰好执行$T$次转移。$T=0$时不调用任何随机数，返回只含$x_0$的轨迹和空保留集。遇到不是有限实数的目标或提议求值、负密度、正反提议求值不一致、非法均匀数或函数值异常时立即停止，只保留此前完成的整次转移。
+
+\phantomsection\label{struct:V5-C03-CH25}
+\textbf{正确性与收敛条件。}定理\ref{thm:V5-C03-mh-reversible}保证合法MH核保持$\pi$；定理\ref{thm:V5-C03-finite-correctness}说明有限状态下还需不可约性，边缘逐步收敛还需非周期性。一般状态空间必须按定义\ref{def:V5-C03-harris-conditions}与命题\ref{prop:V5-C03-general-convergence}分别核验正常Harris返、非周期性以及MCSE所需的额外矩与混合条件。算法完成只表示预算执行完毕，不表示这些数学条件已经由数据诊断证明。
+
+\textbf{不收敛或不适用情形。}目标不可归一化、提议诱导的链无法经多步到达目标支持中的各个正质量区域（因而可约），或连续状态链不满足所需Harris返性时，增加燃烧期与样本数都不能补救正确性；轨迹诊断算法也不适用于非有限输入或批数不足的序列。
+
+\textbf{复杂度假设。}下述界把一次目标求值、正反提议密度求值与随机数调用的实际成本显式记入$C_{\mathrm{MH}}$或$C_j$，并假设一次状态复制为$O(d)$；不把目标密度、提议器或坐标更新无条件视为常数时间。
+
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C03-general-mh | 训练时间复杂度=本算法从给定目标抽样，不拟合训练参数; 预测时间复杂度=本算法不单独执行预测，成本按每次提议和目标求值报告
+\begingroup
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V5-C32-ALGORITHM_IDEA-005 L2
+
+% KNOWLEDGE-PLAN: KN-V5-C32-ALGORITHM_IDEA-006 L2
+\begin{keypointbox}[title={带零流分支和完整状态轨迹的一般MH：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={可归一化目标核、提议抽样/双向密度接口、合法初值、独立均匀源、燃烧期$m$、保留数$n$及可选$f$},
+  output={最后合法完整轨迹/提议/接受表、保留段、完成转移$t_{\rm done}$、提议调用$p_{\rm done}$、均匀调用$u_{\rm done}$、状态与最终诊断},
+  preconditions={$m,n\in\mathbb N_0$；目标可归一化且$0<\widetilde\pi(x_0)<\infty$；提议抽样与密度接口一致；随机源独立},
+  initialization={$X_0=x_0$，$t_{\rm done}=p_{\rm done}=u_{\rm done}=0$，提议/接受表为空},
+  loop={执行固定$T=m+n$次转移，每轮先提议和取均匀数，再按零流或对数接受比形成候选状态},
+  update={$Y,U$、双向密度、目标值和接受判定全部合法后，才原子追加提议/判定/新状态并增加$t_{\rm done}$},
+  domain={当前状态始终位于正目标支持；前向提议密度有限正；零反向流或零候选目标只产生确定拒绝},
+  failure={接口、初值或整数参数非法返回$\mathtt{invalid\_input}$；提议/均匀源失败返回$\mathtt{random\_source\_failure}$；目标/密度/接受比或$f$求值失败返回$\mathtt{numerical\_failure}$并保留最后完整转移},
+  stop={恰好完成$T$次转移、$T=0$或首次失败时停止；固定预算完成不称收敛},
+  budget={至多$T=m+n$次提议与均匀源调用及相应目标/双向密度求值},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$t_{\rm done}$计原子提交转移，$p_{\rm done}$和$u_{\rm done}$分别计实际随机源调用},
+  diagnostics={失败$(t,\mathrm{stage})$、零流分支、接受数/率、目标与提议值、计划/实际转移及可选均值状态},
+  complexity={$\Theta((m+n)(C_{\rm MH}+d))$时间；完整轨迹空间$\Theta((m+n)d)$}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begin{algorithm}[tbp]
+\caption{带零流分支和完整状态轨迹的一般MH}\label{alg:V5-C03-general-mh}
+\KwIn{已核验$0<\int\widetilde\pi\,d\mu<\infty$的目标核；提议密度$q$及一致抽样器；$x_0$；独立均匀源；$m,n\in\mathbb N_0$；可选$f$}
+\KwOut{最后合法轨迹、提议/接受表与保留段；$t_{\rm done},p_{\rm done},u_{\rm done}$；$\mathtt{status}$与最终诊断}
+核验目标证书、$m,n,x_0$及提议/随机接口；失败则返回空结果、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+令$T=m+n,X_0=x_0,t_{\rm done}=p_{\rm done}=u_{\rm done}=0$，提议/接受表为空；若$T=0$，返回$(X_0)$、空保留段、$\mathtt{completed}$及零预算诊断\;
+\While{$t_{\rm done}<T$}{
+  令$t=t_{\rm done}+1$；从$q(X_{t-1},\cdot)$抽取临时$Y$并增加$p_{\rm done}$；调用失败或样本非法时，返回完整前缀、$\mathtt{random\_source\_failure}$及提议阶段诊断\;
+  独立抽取$U$并增加$u_{\rm done}$；调用失败、非有限或$U\notin(0,1)$时，返回前缀、$\mathtt{random\_source\_failure}$及均匀阶段诊断\;
+  计算$q_{xy},q_{yx},\widetilde\pi(Y)$；求值失败、非有限、$q_{xy}\le0,q_{yx}<0$或目标为负时，返回前缀、$\mathtt{numerical\_failure}$及密度阶段诊断\;
+  \uIf{$\widetilde\pi(Y)=0$或$q_{yx}=0$}{令$A_t\leftarrow\mathrm{false}$\;}
+  \Else{计算$\Delta_t$；非有限则返回前缀、$\mathtt{numerical\_failure}$及接受比诊断；令$A_t=[\log U\le\min\{0,\Delta_t\}]$\;}
+  令候选$X^+=Y$或$X_{t-1}$；原子追加$Y,A_t,X^+$并令$t_{\rm done}\leftarrow t$\;
+}
+令保留段为$X_{m+1:m+n}$；若$n>0$且给出$f$，则新鲜求值，任一失败时保留轨迹并返回$\mathtt{numerical\_failure}$及均值阶段诊断\;
+返回全部最后合法结果、实际计数、$\mathtt{completed}$及接受率/零流/保留段最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\paragraph{单分量MH。}
+\textbf{更新规则。}输入$d$维初值、共同目标、坐标提议$q_j$、每轮坐标顺序、总扫描数$m+n$和随机数。一次扫描依次产生$d$个候选状态；每个候选只替换当前坐标，并立即成为下一坐标更新的当前状态。系统扫描输出每轮末状态；若保存每次坐标更新，时间下标与燃烧期必须相应改为坐标更新数，不能混用。若第$j$个坐标更新失败，只保留此前完成的整轮；本轮中间状态另行说明，不计作轮末样本。
+
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C03-component-mh | 训练时间复杂度=算法对给定目标作坐标抽样，不含模型训练; 预测时间复杂度=算法不单独执行预测，报告每轮坐标提议成本
+\begingroup
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V5-C32-ALGORITHM_IDEA-007 L2
+
+% KNOWLEDGE-PLAN: KN-V5-C32-ALGORITHM_IDEA-008 L2
+\begin{keypointbox}[title={固定顺序的单分量MH扫描：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={目标核、$d$维合法初值、固定顺序坐标提议/抽样器、独立均匀源及完整扫描数$T$},
+  output={最后合法轮末轨迹、失败轮的只读中间状态、完整扫描数$s_{\rm done}$、成功坐标步$c_{\rm done}$、接受数$a_{\rm done}$、状态与最终诊断},
+  preconditions={$d\ge1,T\in\mathbb N_0$；初值在正目标支持；各$q_j$抽样/双向密度接口和固定扫描顺序合法},
+  initialization={$x=x^{(0)}$，$s_{\rm done}=c_{\rm done}=a_{\rm done}=0$，轮末轨迹只含初值},
+  loop={每轮在临时工作状态上依次处理$j=1,\ldots,d$，后坐标读取本轮最新临时状态},
+  update={单坐标提议、密度、均匀数与接受比合法后才原子提交到工作状态；整轮完成后才原子追加轮末状态},
+  domain={工作状态始终在目标支持；正向流有限正；零目标/零反向流确定拒绝；接受概率位于$[0,1]$},
+  failure={接口/初值/预算非法返回$\mathtt{invalid\_input}$；提议或均匀源失败返回$\mathtt{random\_source\_failure}$；目标/密度/接受比异常返回$\mathtt{numerical\_failure}$，主轨迹回滚到上一完整扫描},
+  stop={完成$T$次扫描、$T=0$或首次坐标失败时停止；完成固定扫描不称收敛},
+  budget={至多$Td$次坐标提议和$Td$次均匀源调用},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$s_{\rm done}$计完整提交扫描，$c_{\rm done}$计成功处理坐标步，$a_{\rm done}$计实际接受坐标步},
+  diagnostics={失败$(s,j,\mathrm{stage})$、只读部分扫描状态、各坐标接受数、零流分支和计划/实际工作量},
+  complexity={$\Theta(T\sum_jC_j)$时间；轮末轨迹$\Theta(Td)$空间，临时状态$\Theta(d)$}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begin{algorithm}[tbp]
+\caption{固定顺序的单分量MH扫描}\label{alg:V5-C03-component-mh}
+\KwIn{目标核$\widetilde\pi$；$x^{(0)}\in\mathbb R^d$；合法坐标提议$q_j$；独立均匀数；扫描数$T=m+n$}
+\KwOut{最后合法轮末轨迹与部分扫描诊断；$s_{\rm done},c_{\rm done},a_{\rm done}$；$\mathtt{status}$及最终诊断}
+若$d,T$、目标/初值、坐标提议或随机接口非法，则返回空结果、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+$x\leftarrow x^{(0)},s_{\rm done}=c_{\rm done}=a_{\rm done}=0$，轮末轨迹只含$x^{(0)}$；若$T=0$，返回该轨迹、$\mathtt{completed}$及零预算诊断\;
+\For{$s\leftarrow1,\ldots,T$}{
+  复制轮初状态为临时$x_{\rm work}$\;
+  \For{$j\leftarrow1,\ldots,d$}{
+    从$q_j(x_{{\rm work},j},\cdot\mid x_{{\rm work},-j})$抽取$y_j$；随机源失败或样本非法时，返回上一轮末轨迹、当前只读$x_{\rm work}$、$\mathtt{random\_source\_failure}$及$(s,j)$诊断\;
+    令$y=(y_j,x_{{\rm work},-j})$并计算零流接受概率；目标/密度/比率非有限或越界时，返回上一轮末轨迹、只读$x_{\rm work}$、$\mathtt{numerical\_failure}$及$(s,j)$诊断\;
+    抽取独立$u$；随机源失败或$u\notin(0,1)$时，返回上一轮末轨迹、只读$x_{\rm work}$、$\mathtt{random\_source\_failure}$及均匀阶段诊断\;
+    若$u\le\alpha_j$，则原子令$x_{\rm work}\leftarrow y$并增加$a_{\rm done}$；无论接受与否增加$c_{\rm done}$\;
+  }
+  原子提交$x\leftarrow x_{\rm work}$并追加$x^{(s)}$；令$s_{\rm done}\leftarrow s$\;
+}
+返回$x^{(0:T)}$、实际计数、$\mathtt{completed}$及逐坐标接受/零流最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\paragraph{自相关与批均值诊断。}
+\textbf{输入与输出。}输入一条已保留的标量轨迹$y_1,\ldots,y_n$、滞后上限$L$、批数$a$、批长$b$及可选接受判定。要求$n\ge2$、$0\le L<n$、$a\ge2$、$b\ge1$且$n=ab$。输出样本均值、样本方差、经验自相关、有限样本加权截断ESS、批均值MCSE与ESS；这些量不构成收敛证明。
+
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C03-trace-diagnostics | 训练时间复杂度=诊断已生成轨迹，不训练模型; 预测时间复杂度=诊断不执行预测，成本按轨迹长度、滞后数和批数报告
+\begingroup
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V5-C32-ALGORITHM_IDEA-009 L1
+\paragraph{读前自检：有限样本权重与批均值并列的轨迹诊断：执行契约。}有限样本权重与批均值并列的轨迹诊断输入“有限非恒定标量轨迹$y_{1:n}$、滞后上限$L$、批数$a$与批长$b$”，条件“$n\ge2,0\le L<n,a\ge2,b\ge1,n=ab$且全部轨迹值有限非恒定”；请执行“全部统计一致性通过后才提交完整诊断输出”，以“全部有限扫描完成或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V5-C32-ALGORITHM_IDEA-010 L1
+\paragraph{读前自检：有限样本权重与批均值并列的轨迹诊断。}有限样本权重与批均值并列的轨迹诊断输入“有限非恒定标量轨迹$y_{1:n}$、滞后上限$L$、批数$a$与批长$b$”，条件“$n\ge2,0\le L<n,a\ge2,b\ge1,n=ab$且全部轨迹值有限非恒定”；请做一轮“全部统计一致性通过后才提交完整诊断输出”，以“全部有限扫描完成或首次失败时停止”核对停止证书。\par
+
+\begin{AlgorithmContract}{
+  input={有限非恒定标量轨迹$y_{1:n}$、滞后上限$L$、批数$a$与批长$b$},
+  output={最后合法基础统计、ACF/加权ESS、批均值MCSE/ESS、已检轨迹数$y_{\rm done}$、滞后数$k_{\rm done}$、批数$b_{\rm done}$、状态与最终诊断},
+  preconditions={$n\ge2,0\le L<n,a\ge2,b\ge1,n=ab$且全部轨迹值有限非恒定},
+  initialization={$y_{\rm done}=k_{\rm done}=b_{\rm done}=0$，累计量和临时输出清空},
+  loop={先有限扫描轨迹与$L+1$个滞后，再有限扫描$a$个连续批},
+  update={每个滞后或批统计有限后才原子写入临时表；全部统计一致性通过后才提交完整诊断输出},
+  domain={样本方差与$\widehat\gamma_0$有限正；ACF、批方差、MCSE及两个ESS均有限且定义域合法},
+  failure={长度/批划分/恒定或非有限输入返回$\mathtt{invalid\_input}$；累计、归一化、截断时间或批方差非有限/不在定义域返回$\mathtt{numerical\_failure}$并保留最后合法基础统计},
+  stop={全部有限扫描完成或首次失败时停止},
+  budget={恰好至多$n$次输入检查、$L+1$个滞后累计和$a$个批均值累计；无渐近迭代预算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$y_{\rm done}$计已验证轨迹值，$k_{\rm done}$计已提交滞后统计，$b_{\rm done}$计已提交批均值},
+  diagnostics={输入/失败位置、样本方差、有限样本权重、$\widehat\tau_L$、两种ESS、批划分及“非收敛证明”声明},
+  complexity={$\Theta(nL+n)$时间、$\Theta(L+a)$额外输出空间}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begin{algorithm}[tbp]
+\caption{有限样本权重与批均值并列的轨迹诊断}\label{alg:V5-C03-trace-diagnostics}
+\KwIn{非恒定的有限实数轨迹$y_{1:n}$；$0\le L<n$；$a\ge2,b\ge1$且$n=ab$}
+\KwOut{最后合法统计；$y_{\rm done},k_{\rm done},b_{\rm done}$；$\mathtt{status}$与最终诊断}
+置$y_{\rm done}=k_{\rm done}=b_{\rm done}=0$；若$n,L,a,b$或批划分非法，则返回空统计、$\mathtt{invalid\_input}$及字段诊断\;
+逐项核验$y_t$有限并增加$y_{\rm done}$；若非有限或轨迹恒定，则返回已验证前缀信息、$\mathtt{invalid\_input}$及位置/方差诊断\;
+计算$\bar y\leftarrow n^{-1}\sum_ty_t$与$s_Y^2\leftarrow(n-1)^{-1}\sum_t(y_t-\bar y)^2$\;
+若均值或方差非有限或方差非正，则返回最后合法输入诊断、$\mathtt{numerical\_failure}$及基础统计阶段诊断\;
+\For{$k\leftarrow0,\ldots,L$}{
+  令$\widehat\gamma_k\leftarrow(n-k)^{-1}\sum_{t=1}^{n-k}(y_t-\bar y)(y_{t+k}-\bar y)$，
+  $\widehat\rho_k\leftarrow\widehat\gamma_k/\widehat\gamma_0$；若非有限则返回基础统计与已提交ACF、$\mathtt{numerical\_failure}$及滞后$k$诊断；否则原子追加并增加$k_{\rm done}$\;
+}
+令$\widehat\tau_L\leftarrow1+2\sum_{k=1}^L(1-k/n)\widehat\rho_k$\;
+若$\widehat\tau_L\le0$或非有限，则返回基础统计/ACF、$\mathtt{numerical\_failure}$及截断时间诊断；否则令$\widehat{\mathrm{ESS}}_L=n/\widehat\tau_L$\;
+\For{$j\leftarrow1,\ldots,a$}{
+  计算第$j$个连续批均值；若非有限则返回已有统计、$\mathtt{numerical\_failure}$及批$j$诊断；否则原子追加并增加$b_{\rm done}$\;
+}
+令$\widehat\sigma_{\mathrm{BM}}^2\leftarrow b(a-1)^{-1}\sum_j(\bar y^{(j)}-\bar y)^2$\;
+$\widehat{\mathrm{MCSE}}_{\mathrm{BM}}\leftarrow\sqrt{\widehat\sigma_{\mathrm{BM}}^2/n}$并形成批均值ESS；若结果非有限或定义域失败，则返回前述统计、$\mathtt{numerical\_failure}$及批聚合诊断\;
+原子提交完整诊断输出，返回实际计数、$\mathtt{completed}$及“有限轨迹诊断不是收敛证明”最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\FloatBarrier
+\SLRobustImplementationStrip{核心流程保留丢弃预热、估计均值／自协方差、计算ESS和批均值误差、并列报告；权重与退化诊断属于稳健实现细节}
+\endgroup
+
+\phantomsection\label{struct:V5-C03-CH26}
+% KNOWLEDGE-PLAN: KN-V5-C32-BOUNDARY-003 L1
+\paragraph{读前自检：复杂度分析：自相关与批均值诊断。}长度$T$的MCMC轨迹每步提议成本为$C_{\rm MH}$时，生成成本为$\Theta(TC_{\rm MH})$；请再加滞后$L$的自相关诊断成本$\Theta(TL)$，核对只在线计数与保存完整轨迹的空间分别不同。\par
+
+\begin{complexitybox}
+\textbf{时间复杂度。}设一次提议抽样、目标求值、双向提议密度求值的成本合计为$C_{\mathrm{MH}}$，状态复制成本为$O(d)$。一般MH执行$T=m+n$步的时间为$\Theta(T(C_{\mathrm{MH}}+d))$。单分量算法若第$j$个坐标更新成本为$C_j$，则$T$轮成本为$\Theta(T\sum_{j=1}^dC_j)$。直接计算$L$个经验自相关需$\Theta(nL)$，批均值与样本方差需$\Theta(n)$；这些界不把目标密度求值无条件视为常数。
+
+\phantomsection\label{struct:V5-C03-CH27}
+\textbf{空间复杂度。}只保留当前状态与在线接受计数时，一般MH工作空间为$\Theta(d)$；返回完整轨迹需$\Theta((m+n)d)$输出空间。单分量算法若保存轮内状态，额外输出可达$\Theta((m+n)d^2)$，通常只保存轮末状态和$d$个接受判定。诊断算法保存输入轨迹与$L+1$个自相关为$\Theta(n+L)$，批均值另需$\Theta(a)$。
+\end{complexitybox}
+
+\phantomsection\label{struct:V5-C03-CH28}
+\begin{applicabilitybox}
+\textbf{适用条件。}MH适用于能计算未归一化目标点值、能从提议核抽样并能计算正反提议密度的问题。目标必须可归一化，初值必须在正目标支持内，所得核还需在目标支持上具备足够可达性。单分量MH适合全维提议难设计、而条件坐标提议容易构造的高维问题。
+
+\phantomsection\label{struct:V5-C03-CH29}
+\textbf{局限性。}高维、多峰、强相关或狭窄支持会导致慢混合；密度比只使用局部点值，不能自动发现未访问模态。固定预算不能保证预定误差，有限轨迹也不能验证所有渐近条件。系统扫描虽保持目标，一般不再可逆；若目标本身不可归一化，任何调参都不能修复。
+
+\phantomsection\label{struct:V5-C03-CH30}
+\textbf{常见错误。}包括遗漏$q(y,x)/q(x,y)$；在$0/0$处硬算比值；删除拒绝产生的重复状态；把高接受率当作高ESS；用燃烧期修复可约性；把抽稀后样本称为独立；只画单链轨迹便宣布收敛；把细致平衡扩张为唯一性；对不可归一化核运行MCMC；以及报告未实际运行得到的随机样本或数值。
+
+\phantomsection\label{struct:V5-C03-CH31}
+\textbf{易混淆概念对比。}平稳性是$\pi K=\pi$，可逆性是更强的双向流条件；不可约性负责连接支持，非周期性负责消除边缘分布振荡。接受--拒绝抽样只输出接受候选并可产生iid样本，MH拒绝时保留当前状态并产生相关链。燃烧期丢弃前缀，抽稀选择子序列，二者都不同于证明收敛。MCSE量化给定诊断模型下的均值不确定性，ESS把相关方差换算成iid尺度，二者都不是核正确性的证明。
+\end{applicabilitybox}
+
+\SLDirectSection{例题、马尔可夫链计算与练习}{sec:V5-C03-S06}
+\phantomsection\label{struct:V5-C03-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[由非对称提议构造完整MH核]\label{exm:V5-C03-three-state-kernel}
+在状态空间$\{1,2,3\}$上，目标分布和提议矩阵为
+\[
+\pi=\left(\frac12,\frac13,\frac16\right),
+\qquad
+Q=\begin{pmatrix}
+1/2&1/2&0\\
+1/4&1/2&1/4\\
+0&1/2&1/2
+\end{pmatrix}.
+\]
+任务如下：逐条计算非对角接受率，写出包含拒绝自环的MH矩阵$K$；用双向流核验$\pi$平稳；判断不可约性与非周期性；最后从$x_0=1$出发，把固定测试输入
+\[
+(y_1,u_1)=(2,0.2),\qquad (y_2,u_2)=(3,0.8)
+\]
+送入算法，给出两次转移后的状态。这里的两个数是确定性测试输入，不声称来自一次真实随机运行。
+\end{example}
+
+\phantomsection\label{struct:V5-C03-CH33}
+\Needspace{4\baselineskip}
+\SLExampleSolutionHeading{exm:V5-C03-three-state-kernel}
+\begin{solution}
+\SLReadTranslation{题目要求完成“由非对称提议构造完整MH核”：先写清目标分布、提议或满条件与支持，再构造转移/估计量并核验不变性或归一化。}
+\SolGiven 目标分布、提议核或满条件在题面支持上有定义；所有条件分母和归一化常数为正，状态空间与随机变量取值域保持一致。
+\SLMethodTrigger{先声明目标分布、提议/满条件与支持，再逐步构造转移或估计量并核验归一化。}
+\SolPlan 先完成“由非对称提议构造完整MH核”所需的中间量，再做一次题型相关核验，最后回收题目各问。
+\SolDerive
+\textbf{接受率。}对边$1\leftrightarrow2$，
+\[
+\alpha_{12}
+=\min\left\{1,\frac{(1/3)(1/4)}{(1/2)(1/2)}\right\}
+=\frac13,
+\qquad
+\alpha_{21}=1.
+\]
+对边$2\leftrightarrow3$，
+\[
+\alpha_{23}
+=\min\left\{1,\frac{(1/6)(1/2)}{(1/3)(1/4)}\right\}=1,
+\qquad
+\alpha_{32}=1.
+\]
+$q_{13}=q_{31}=0$，这对边不产生提议流。\textbf{完整核。}非对角转移概率是$q_{ij}\alpha_{ij}$，对角元由行和为$1$补足，因此
+\[
+K=\begin{pmatrix}
+5/6&1/6&0\\
+1/4&1/2&1/4\\
+0&1/2&1/2
+\end{pmatrix}.
+\]
+\textbf{平稳性与结构。}两个非零无向边上的流分别满足
+\[
+\pi_1K_{12}=\frac12\cdot\frac16=\frac1{12}
+=\frac13\cdot\frac14=\pi_2K_{21},
+\]
+\[
+\pi_2K_{23}=\frac13\cdot\frac14=\frac1{12}
+=\frac16\cdot\frac12=\pi_3K_{32}.
+\]
+对角流与自身相等，故细致平衡成立；按命题\ref{prop:V5-C03-db-stationary}，$\pi K=\pi$。图$1-2-3$连通，所以$K$不可约；三个状态都有正自环，因此周期为$1$。有限状态定理\ref{thm:V5-C03-finite-correctness}遂给出唯一平稳分布、时间平均收敛与边缘分布收敛。
+
+\textbf{确定性分支测试。}第1步从$1$提议$2$，因为$u_1=0.2\le1/3$而接受，得到$x_1=2$；第2步从$2$提议$3$，接受概率为$1$，故$u_2=0.8$仍导致接受，得到$x_2=3$。
+
+\textbf{独立核验。}除逐边流量检查外，直接相乘也有
+\[
+\pi K=\left(\frac12,\frac13,\frac16\right),
+\qquad K\boldsymbol1=\boldsymbol1,
+\]
+分别复核平稳性与随机矩阵约束。
+
+\textbf{结论。}该核不可约、非周期并以$\pi$为唯一平稳分布；固定输入得到$x_1=2,x_2=3$。这些输入只核验分支逻辑，没有提供接受率或Monte Carlo误差的统计估计。
+\SLStuckHint{先只写出对象、合法条件和第一轮/第一步中间量；若这些量无法定义，再返回相应定义。}
+\end{solution}
+
+\phantomsection\label{struct:V5-C03-CH34}
+\index{Metropolis-Hastings算法@\MetropolisHastings{} 算法}
+\index{接受概率}
+\index{拒绝自环}
+\index{单分量Metropolis-Hastings算法@单分量\MetropolisHastings{} 算法}
+\index{系统扫描}
+\index{随机扫描}
+\index{自相关}
+\index{积分自相关时间}
+\index{有效样本量}
+\index{批均值}
+\index{Monte Carlo标准误}
+\index{抽稀}
+
+% KNOWLEDGE-PLAN: KN-V5-C32-COMPARISON-002 L1
+\paragraph{读前自检：易混淆概念对比：例题、马尔可夫链计算与练习。}章末核验记录固定两条边界证据：请对$K=I_2$与任意严格正分布$\pi$核对细致平衡与状态不连通，判定“可逆链一定不可约”为假；再检查$\exp[-(x_1-1)^2(x_2-1)^2/2]$在$\mathbb R^2$上的积分，核对积分发散使其不能归一化为概率密度。\par
+
+\begin{comparisonbox}
+\textbf{章末核验记录（不参与算法主线）。}核对对象为《统计学习方法（第2版）》2019年5月第2版、2019年6月第2次印刷，ISBN 978-7-302-51727-6。原书练习19.5（PDF第405页、印刷页第382页）要求证明“可逆链一定不可约”；反例$K=I_2$与任意严格正$\pi$满足细致平衡，但状态互不连通。原书例19.9（PDF第396页、印刷页第373页）的核
+$\exp[-(x_1-1)^2(x_2-1)^2/2]$在$\mathbb R^2$上积分发散，不能归一化为概率密度。两项只作为“平稳不推出可达性”和“未归一化目标仍须可归一”的边界证据；它们是内部数学核验，不冒充出版社官方勘误。
+\end{comparisonbox}
+
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V5-C03-CH35}
+本章共14道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-19-0006; source_number=19.6
+% SOLUTION-SOURCE: original_book; source_id=EXR-19-0006; source_number=19.6
+\begin{exercise}\label{ex:V5-C03-S03-01}
+从一般\MetropolisHastings{}算法推导单分量\MetropolisHastings{}算法。要求写出坐标提议核、正反提议流、接受概率和一轮系统扫描，并说明系统扫描保持目标分布但一般不再可逆。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S03-01}
+\begin{chapterexercisesolution}{ex:V5-C03-S03-01}
+设每个坐标空间$(\mathcal X_j,\mathcal B_j)$为标准Borel空间，$\mu_j$为$\sigma$有限测度，并要求$q_j(x_j,y_j\mid x_{-j})$关于$(x,y_j)$联合可测、非负，且对每个$x$满足$\int q_j(x_j,y_j\mid x_{-j})\mu_j(\mathrm dy_j)=1$。于是对任意可测矩形$B=B_j\times B_{-j}$，$x\mapsto Q_j(x,B)$可测；由单调类定理推广到所有乘积$\sigma$代数中的$B$，故下式确实定义马尔可夫核：
+写$x=(x_j,x_{-j})$，单次只改第$j$个分量。坐标提议核可写为
+\[
+Q_j(x,\mathrm dy)
+=q_j(x_j,y_j\mid x_{-j})\mu_j(\mathrm dy_j)
+\delta_{x_{-j}}(\mathrm dy_{-j}).
+\]
+若$y=(y_j,x_{-j})$，正向和反向未归一化流分别是
+\[
+g_j(x,y)=\widetilde\pi(x_j,x_{-j})
+q_j(x_j,y_j\mid x_{-j}),
+\]
+\[
+g_j(y,x)=\widetilde\pi(y_j,x_{-j})
+q_j(y_j,x_j\mid x_{-j}).
+\]
+取公共流$\min\{g_j(x,y),g_j(y,x)\}$并除以正向流，得到
+\[
+\alpha_j(x,y)
+=\min\!\left\{1,
+\frac{\widetilde\pi(y_j,x_{-j})
+q_j(y_j,x_j\mid x_{-j})}
+{\widetilde\pi(x_j,x_{-j})
+q_j(x_j,y_j\mid x_{-j})}\right\},
+\]
+这正是式\eqref{eq:V5-C03-component-alpha}。分母为零时不计算比值，而按零流分支处理。该坐标核的接受流对称，拒绝质量形成自环，故关于$\pi$可逆并保持$\pi$。
+
+一轮系统扫描从当前状态开始，按$j=1,\ldots,d$依次提议、判定并立即更新；后一个坐标看到的是前一个坐标更新后的状态。若轮核记为$K_{\mathrm{sys}}=K_1\cdots K_d$，则
+\[
+\pi K_{\mathrm{sys}}
+=((\pi K_1)K_2\cdots)K_d=\pi.
+\]
+但伴随核的顺序是$K_d\cdots K_1$；这些核不交换时，正反顺序不同，系统扫描一般不再可逆。随机扫描$\sum_jw_jK_j$是可逆核的凸组合，因而自动继承可逆性。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-19-0007; source_number=19.7
+% SOLUTION-SOURCE: original_book; source_id=EXR-19-0007; source_number=19.7
+\begin{exercise}\label{ex:V5-C03-S06-01}
+伯努利试验中，先验为$\theta\sim\operatorname{Beta}(1,1)$，观测$n=10$次试验中有$k=4$次结果为$1$。用\MetropolisHastings{}算法估计后验分布的均值和方差。先推导后验，再给出固定预算、合法初值、提议、随机数、接受规则、输出与停止情形；不虚构随机样本。以精确后验均值和方差作为任何实际运行必须比较的基准。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S06-01}
+\begin{chapterexercisesolution}{ex:V5-C03-S06-01}
+先验密度在$(0,1)$上为$\theta^{1-1}(1-\theta)^{1-1}/B(1,1)$。观测$10$次、其中成功$4$次时，完整二项似然为
+\[
+L(\theta)=\binom{10}{4}\theta^4(1-\theta)^6.
+\]
+Bayes公式的分子为$B(1,1)^{-1}\binom{10}{4}\theta^4(1-\theta)^6$；其中$\binom{10}{4}/B(1,1)$与$\theta$无关，归一化时从分子、分母同时约去。因此后验为
+\[
+\theta\mid y\sim\operatorname{Beta}(1+4,1+10-4)
+=\operatorname{Beta}(5,7).
+\]
+精确基准为
+\begin{equation}\label{eq:V5-C03-beta-benchmark}
+E(\theta\mid y)=\frac5{12},
+\qquad
+\operatorname{Var}(\theta\mid y)
+=\frac{5\cdot7}{(5+7)^2(5+7+1)}
+=\frac{35}{1872}\approx0.0186966.
+\end{equation}
+
+给出一个可复算而不伪造输出的过程。输入$m,n\in\mathbb N_0$、初值$\theta_0\in(0,1)$、独立提议$Y_t\sim\mathrm U(0,1)$和独立判定数$U_t\sim\mathrm U(0,1)$。使用
+\[
+\widetilde\pi(\theta)=\theta^4(1-\theta)^6\boldsymbol1_{(0,1)}(\theta),
+\qquad q(x,y)=\boldsymbol1_{(0,1)}(y).
+\]
+提议对称，所以
+\[
+\alpha(x,y)
+=\min\left\{1,
+\frac{y^4(1-y)^6}{x^4(1-x)^6}\right\}.
+\]
+固定执行$T=m+n$步；若$U_t\le\alpha(X_{t-1},Y_t)$则接受，否则复制$X_{t-1}$；保留$X_{m+1},\ldots,X_{m+n}$。当$n\ge1$时返回
+\[
+\widehat\mu=\frac1n\sum_{t=m+1}^{m+n}X_t,
+\qquad
+\widehat v=\frac1n\sum_{t=m+1}^{m+n}(X_t-\widehat\mu)^2.
+\]
+$\widehat v$是后验方差的遍历均值估计，并不因分母为$n$或$n-1$而自动成为相关样本下的有限样本无偏估计。实际运行还必须返回随机源记录或可复现标识、完整轨迹、接受标志、MCSE和ESS，并把$\widehat\mu,\widehat v$与式\eqref{eq:V5-C03-beta-benchmark}比较。$m=n=0$时不调用随机源且两项估计均未定义；非法端点、非有限密度或不完整预算必须显式失败。题目没有提供一次实际随机流，因此本解析不编造一组估计值。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S02-01}
+给定两状态核
+\[
+K=\begin{pmatrix}1-a&a\\ b&1-b\end{pmatrix},
+\qquad 0<a,b\le1.
+\]
+求平稳分布，核验细致平衡，并分别给出不可约、非周期、唯一平稳分布和边缘收敛所需的条件。特别讨论$a=b=1$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S02-01}
+\begin{chapterexercisesolution}{ex:V5-C03-S02-01}
+设$\pi=(\pi_1,\pi_2)$。细致平衡只需检查非对角边：
+\[
+\pi_1a=\pi_2b,\qquad \pi_1+\pi_2=1.
+\]
+解得
+\[
+\pi=\left(\frac{b}{a+b},\frac{a}{a+b}\right).
+\]
+代回可得$\pi_1K_{12}=\pi_2K_{21}=ab/(a+b)$，故$\pi$平稳。因为$a,b>0$，两个状态双向可达，链不可约，所以该平稳分布唯一。若$a<1$或$b<1$，至少一个状态有正自环；不可约性使两状态具有共同周期，于是周期为$1$，边缘分布从任意初值收敛到$\pi$。
+
+当$a=b=1$时，$K$每步确定翻转，仍不可约且唯一平稳分布为$(1/2,1/2)$，但周期为$2$。从确定状态启动的边缘分布在两个点质量之间振荡，不逐步收敛；访问频率仍各趋于$1/2$，所以时间平均结论不需要非周期性。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S03-03}
+目标分布在$\{1,2,3\}$上严格为正，提议核为确定性有向环
+\[
+q(1,2)=q(2,3)=q(3,1)=1.
+\]
+逐边计算MH接受概率，写出最终MH核。解释为什么提议链本身不可约并不能保证MH核不可约，以及反向提议支持为何是算法成立的必要条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S03-03}
+\begin{chapterexercisesolution}{ex:V5-C03-S03-03}
+对提议边$1\to2$，反向密度$q(2,1)=0$，而$\pi_1,\pi_2$都为正，所以
+\[
+g(1,2)>0,\qquad g(2,1)=0,\qquad \alpha(1,2)=0.
+\]
+对提议边$2\to3$，有$q(3,2)=0$，故$g(3,2)=0$并且$\alpha(2,3)=0$；对提议边$3\to1$，有$q(1,3)=0$，故$g(1,3)=0$并且$\alpha(3,1)=0$。因此三条非对角移动都被拒绝，最终核为
+\[
+K=I_3.
+\]
+原提议核沿有向环能在有限步到达任意状态，因而作为提议链不可约；MH校正却要求每条被接受边具有正反双向流。所有反向边缺失后，接受流为零，MH核退化为三个孤立自环。正确的设计检查应针对$q(x,y)>0$与$q(y,x)>0$共同形成的无向支持图及接受后的$K$，不能只检查提议链的有向可达性。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S04-01}
+固定一对状态，令$a=g(x,y)>0$、$b=g(y,x)>0$。除MH接受率外，考虑Barker规则
+\[
+\alpha_{\mathrm B}(x,y)=\frac{b}{a+b}.
+\]
+证明它满足双向流平衡，求共同接受流，并与MH的$\min\{a,b\}$比较。说明“MH逐对最大化接受流”为什么不等于“MH对任意提议都给出最小MCSE”。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S04-01}
+\begin{chapterexercisesolution}{ex:V5-C03-S04-01}
+Barker正向流为
+\[
+a\alpha_{\mathrm B}(x,y)
+=a\frac{b}{a+b}
+=\frac{ab}{a+b}.
+\]
+反向接受率是$a/(a+b)$，所以反向流
+\[
+b\alpha_{\mathrm B}(y,x)
+=b\frac{a}{a+b}
+=\frac{ab}{a+b},
+\]
+双向平衡成立。若$a\le b$，则
+\[
+\frac{ab}{a+b}\le\frac{ab}{b}=a=\min\{a,b\};
+\]
+$b\le a$时对称地得到共同流不超过$b$。对$a,b>0$不等式严格，因为$a+b$严格大于较大的分母项。MH共同流恰为$\min\{a,b\}$，因此在固定$q$与逐对细致平衡约束下更大。
+
+MCSE取决于整个核的谱、移动距离、目标函数$f$和单步计算成本。更换$q$会改变所有这些量；逐对接受流最大只比较固定提议下的一次接受，不提供“任意提议的全局最小MCSE”结论。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S05-01}
+设平稳标量轨迹长度$n=100$，真实自相关满足$\rho_1=0.4$、$\rho_2=0.2$、其余$\rho_k=0$。使用式\eqref{eq:V5-C03-finite-variance}的有限样本权重计算方差膨胀因子和$N_{\mathrm{eff},100}$，再计算无限和对应的$\tau_{\mathrm{int}}$与渐近ESS。解释两个结果不完全相同的原因。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S05-01}
+\begin{chapterexercisesolution}{ex:V5-C03-S05-01}
+有限样本方差膨胀因子为
+\[
+\tau_{100}
+=1+2\left[\left(1-\frac1{100}\right)0.4
++\left(1-\frac2{100}\right)0.2\right]
+=1+2(0.396+0.196)
+=2.184.
+\]
+因此
+\[
+N_{\mathrm{eff},100}=\frac{100}{2.184}\approx45.7875.
+\]
+无限和对应
+\[
+\tau_{\mathrm{int}}=1+2(0.4+0.2)=2.2,
+\qquad
+N_{\mathrm{eff,as}}\approx\frac{100}{2.2}=45.4545.
+\]
+有限样本均值中，相距$k$的有序协方差对只有$2(n-k)$个，所以出现$1-k/n$权重；渐近式让固定$k$下的该权重趋于$1$。这里使用题目给出的真实自相关；实际以经验自相关截断代入还会增加估计误差。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S05-02}
+评价下列说法，并对错误说法给出反例或缺失条件：（a）丢弃足够长的燃烧期可修复可约链；（b）每10步抽稀一次后样本就是独立的；（c）接受率约为$0.25$即可证明收敛；（d）单条轨迹图稳定即可证明访问了全部模态；（e）MCSE很小即可证明目标密度和程序都正确。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S05-02}
+\begin{chapterexercisesolution}{ex:V5-C03-S05-02}
+五个说法都不成立。
+\begin{enumerate}[leftmargin=2.2em,label=(\alph{enumi})]
+  \item 对$K=I_2$，$K^m=I_2$且$P_x(X_m=x)=1$；任意长燃烧期后仍停在初始状态，可约性不会改变。
+  \item 抽稀链的核是$K^{10}$；除非$K^{10}(x,\cdot)=\pi(\cdot)$对所有$x$成立，否则相邻保留值仍依赖前态。
+  \item 令$A_t$为第$t$步的接受标志；经验接受率$\widehat a=T^{-1}\sum_{t=1}^TA_t=0.25$只统计局部判定，不能推出$K^m(x,A)>0$的全局可达性。
+  \item 若链被困在模态$A$，则$P(X_t\in A\mid X_0\in A)=1$仍可产生平稳外观；多初值链只能提供警报，不能形式证明覆盖全部支持。
+  \item $\widehat{\operatorname{MCSE}}=\sqrt{\widehat\sigma^2/n}$估计给定轨迹均值波动，不控制目标写错或困模态造成的偏差$E(\bar f)-E_\pi f$。
+\end{enumerate}
+这些反例分别把状态更新、抽稀核、移动率、条件事件和估计误差拆开，任何单一诊断量都不能替代核的数学条件。
+\[
+\begin{aligned}
+K^m=I_2&\Longrightarrow P_x(X_m=x)=1
+\Longrightarrow \text{燃烧期不修复可约性},\\
+K_{\rm thin}=K^{10}&\not\equiv \boldsymbol1\pi
+\Longrightarrow \text{抽稀后仍可能依赖前态},\\
+\widehat{\operatorname{MCSE}}\text{小}
+&\not\Longrightarrow E(\bar f)=E_\pi f
+\Longrightarrow \text{诊断量不证明目标正确}.
+\end{aligned}
+\]
+尤其$\widehat a=0.25$至多是一次有限轨迹摘要：
+\[
+\widehat a=0.25
+\not\Longrightarrow \forall x,A\ (\pi(A)>0\Rightarrow\exists m:\ K^m(x,A)>0).
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S05-03}
+比较三个两状态核
+\[
+K_1=I_2,\qquad
+K_2=\begin{pmatrix}0&1\\1&0\end{pmatrix},
+\qquad
+K_3=\frac12(I_2+K_2).
+\]
+对每个核判断关于均匀分布的细致平衡、不可约性、周期性、平稳分布唯一性、时间平均和边缘分布收敛。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S05-03}
+\begin{chapterexercisesolution}{ex:V5-C03-S05-03}
+令$u=(1/2,1/2)$。三个矩阵都对称且行随机，因而
+\[
+u_i(K_r)_{ij}=u_j(K_r)_{ji},\qquad uK_r=u,\qquad r=1,2,3.
+\]
+但它们的状态更新与极限不同：
+\[
+\begin{aligned}
+K_1:&\quad X_t=X_0,\quad \rho_t=\rho_0,
+&&\text{可约，平稳分布不唯一};\\
+K_2:&\quad X_t=3-X_{t-1},\quad
+\rho_{2m}=\rho_0,\ \rho_{2m+1}=\rho_0K_2,
+&&\text{不可约，周期 }2;\\
+K_3:&\quad K_3=\begin{pmatrix}1/2&1/2\\1/2&1/2\end{pmatrix},\quad
+\rho_t=u\ (t\ge1),
+&&\text{不可约，周期 }1.
+\end{aligned}
+\]
+$K_1$的时间平均通常只等于$f(X_0)$；$K_2$的访问频率趋于$(1/2,1/2)$，但边缘分布除平稳初值外振荡；$K_3$的时间平均与边缘分布都从任意初值收敛到均匀目标。由此可见唯一性、时间平均和边缘收敛需要分开判断。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S03-04}
+在三点空间的均匀目标下，令
+\[
+K_1=\begin{pmatrix}
+1/2&1/2&0\\1/2&1/2&0\\0&0&1
+\end{pmatrix},
+\qquad
+K_2=\begin{pmatrix}
+1&0&0\\0&1/2&1/2\\0&1/2&1/2
+\end{pmatrix}.
+\]
+证明$K_1,K_2$各自可逆且保持均匀目标，计算系统扫描复合核$K_1K_2$并判断其是否可逆；再证明随机扫描混合$(K_1+K_2)/2$可逆。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S03-04}
+\begin{chapterexercisesolution}{ex:V5-C03-S03-04}
+$K_1,K_2$都对称且双随机，所以关于均匀目标可逆并保持该目标。矩阵相乘得到
+\[
+K_1K_2
+=\begin{pmatrix}
+1/2&1/4&1/4\\
+1/2&1/4&1/4\\
+0&1/2&1/2
+\end{pmatrix}.
+\]
+每列和为$1$，故均匀目标仍平稳；但$(K_1K_2)_{13}=1/4$而$(K_1K_2)_{31}=0$。在均匀目标下，细致平衡等价于矩阵对称，因此该系统扫描复合核不可逆。
+\[
+uK_1K_2=(uK_1)K_2=u,\qquad
+u_1(K_1K_2)_{13}=\frac1{12}\ne0=u_3(K_1K_2)_{31}.
+\]
+
+随机扫描核$\overline K=(K_1+K_2)/2$仍是对称行随机矩阵，所以关于均匀目标可逆。更一般地，可逆核的固定非负权重混合把每条双向平衡等式线性相加，仍满足细致平衡。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S05-04}
+对轨迹
+\[
+(1,1,3,3,5,5,7,7)
+\]
+取$a=4$个连续批、每批$b=2$。计算样本均值、无偏样本方差、批均值、$\widehat\sigma_{\mathrm{BM}}^2$、批均值MCSE和批均值ESS。说明这些数为什么仍不是收敛证明。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S05-04}
+\begin{chapterexercisesolution}{ex:V5-C03-S05-04}
+总均值为
+\[
+\bar y=\frac{1+1+3+3+5+5+7+7}{8}=4.
+\]
+相对均值的平方离差和为
+\[
+2(3^2)+2(1^2)+2(1^2)+2(3^2)=40,
+\]
+故无偏样本方差$s_Y^2=40/7$。四个批均值为$(1,3,5,7)$，其相对$4$的平方离差和为$20$，所以
+\[
+\widehat\sigma_{\mathrm{BM}}^2
+=\frac{b}{a-1}\,20
+=\frac{2}{3}\,20
+=\frac{40}{3}.
+\]
+于是
+\[
+\widehat{\mathrm{MCSE}}_{\mathrm{BM}}
+=\sqrt{\frac{(40/3)}8}
+=\sqrt{\frac53}\approx1.2910,
+\]
+\[
+\widehat N_{\mathrm{eff,BM}}
+=\frac{8(40/7)}{40/3}
+=\frac{24}{7}\approx3.4286.
+\]
+这些量只复算了一个长度为$8$的固定序列；批数与批长都很小，无法验证批均值一致性所需的混合、矩和渐近增长条件，也无法证明这条序列来自正确目标。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement; errata_id=ERR-19-002
+% SOLUTION-SOURCE: lecture_supplement; errata_id=ERR-19-002
+\begin{exercise}\label{ex:V5-C03-S06-02}
+判断
+\[
+\widetilde\pi(x_1,x_2)
+=\exp\!\left[-\frac12(x_1-1)^2(x_2-1)^2\right],
+\qquad (x_1,x_2)\in\mathbb R^2
+\]
+能否归一化为联合密度。先固定$x_2\ne1$对$x_1$积分，再考察$x_2=1$邻域。若不能归一化，说明为何“MH只需要未归一化密度”不能挽救该目标。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S06-02}
+\begin{chapterexercisesolution}{ex:V5-C03-S06-02}
+固定$x_2\ne1$，令$z=(x_1-1)|x_2-1|$，则$\mathrm dx_1=\mathrm dz/|x_2-1|$，所以
+\[
+\int_{-\infty}^{\infty}
+\exp\!\left[-\frac12(x_1-1)^2(x_2-1)^2\right]\mathrm dx_1
+=\frac{\sqrt{2\pi}}{|x_2-1|}.
+\]
+再对$x_2$积分时，任取$\varepsilon>0$，
+\[
+\int_{1-\varepsilon}^{1+\varepsilon}
+\frac{\sqrt{2\pi}}{|x_2-1|}\,\mathrm dx_2
+=\infty.
+\]
+在$x_2=1$这条线上，被积函数甚至恒为$1$而不随$x_1$衰减。由Tonelli定理，非负函数的二重积分为无穷，因此不存在有限正归一化常数，不能定义目标概率分布。
+
+MH比值能消去的是一个已经存在的有限正常数$Z$；这里$Z=\infty$，不存在$\pi=\widetilde\pi/Z$。即便某个数值过程能运行，它也不具有本章定理所要求的可归一化平稳目标，不能被解释为从该“联合密度”抽样。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S06-03}
+分别给出算法\ref{alg:V5-C03-general-mh}在下列输入下的规定输出或状态：$m=n=0$；初值处$\widetilde\pi(x_0)=0$；抽样器返回$y$但求值得$q(x,y)=0$；提议点$\widetilde\pi(y)=0$；反向提议$q(y,x)=0$；均匀源返回$u=1$；以及$n=1$时请求样本方差和ESS。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S06-03}
+\begin{chapterexercisesolution}{ex:V5-C03-S06-03}
+设合法支持$S=\{x:0<\widetilde\pi(x)<\infty\}$，总预算$T=m+n$。算法状态与停止分支可写为
+\[
+\begin{aligned}
+T=0&:\quad X_{0:T}=(x_0),\quad X_{m+1:m+n}=\varnothing;\\
+x_0\notin S&:\quad \text{初始化失败，完成转移数 }0;\\
+q(x,y)=0\text{却抽到 }y&:\quad \text{抽样器/密度不一致，立即停止};\\
+\widetilde\pi(y)q(y,x)=0&:\quad \alpha(x,y)=0,
+\quad X_t=X_{t-1};\\
+u\notin(0,1)&:\quad \text{随机源非法，当前转移不提交}.
+\end{aligned}
+\]
+其中$\widetilde\pi(y)=0$或$q(y,x)=0$是合法零反向流，必须把拒绝后的重复状态追加到轨迹；它们不同于$q(x,y)=0$却被抽到的一致性错误。若$n=1$，仅有
+\[
+\widehat\mu=X_{m+1},\qquad
+s^2=\frac{\sum_{t=m+1}^{m+n}(X_t-\widehat\mu)^2}{n-1}
+\quad\text{未定义},
+\]
+故样本方差、自相关与ESS均标记未定义，不得除零。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S06-04}
+从输出对象、全局包络、拒绝后的行为、样本独立性、归一化常数与不能继续的情形六个方面比较接受--拒绝抽样和MH。说明为什么不能把接受--拒绝法中的接受概率$p(y)/(cq(y))$直接替换成MH接受概率而仍沿用原输出规则。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S06-04}
+\begin{chapterexercisesolution}{ex:V5-C03-S06-04}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 比较项 & 接受--拒绝抽样 & \MetropolisHastings{}\\ \midrule
+输出对象 & 只输出接受候选 & 每轮输出下一链状态，拒绝时重复当前状态\\
+全局条件 & 需要$p(y)\le c q(y)$的有限包络 & 不需要全局包络，但需要合法双向提议流\\
+拒绝后行为 & 丢弃候选并从$q$重新独立提议 & 保留当前状态，形成自环\\
+独立性 & 独立提议下，接受值为iid目标样本 & 一般为相关马尔可夫链\\
+归一化常数 & 接受概率通常使用归一化目标与已知包络 & 目标公共有限正常数在双向比值中消去\\
+不能继续的情形 & 包络越界、达到预设提议上限与提议异常 & 目标不可归一化、支持断裂、双向提议密度不合法或未完成预设转移数\\
+\bottomrule
+\end{tabularx}
+\end{center}
+接受--拒绝的条件输出分布依赖全局包络归一化：
+\[
+P(Y\in\mathrm dy\mid A)
+=\frac{q(y)\,p(y)/(cq(y))}{P(A)}\,\mathrm dy
+=\frac{p(y)/c}{1/c}\,\mathrm dy=p(y)\,\mathrm dy.
+\]
+MH则定义完整状态核
+\[
+K(x,\mathrm dy)=q(x,y)\alpha(x,y)\,\mathrm dy
++\left[1-\int q(x,z)\alpha(x,z)\,\mathrm dz\right]\delta_x(\mathrm dy).
+\]
+若把接受--拒绝概率换成MH接受率却仍丢弃拒绝并只收集接受候选，条件密度变为
+\[
+\widetilde p_x(y)
+=\frac{q(x,y)\alpha(x,y)}
+{\int q(x,z)\alpha(x,z)\,\mathrm dz},
+\]
+它一般依赖当前$x$且不等于$p(y)$；同时MH核中的拒绝自环消失。反过来，把iid接受值按MH轨迹解释也会凭空引入错误依赖。算法必须连同输出规则整体使用。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C03-S05-05}
+计划运行四条不同初值的链。写出一份不依赖具体程序语言的诊断报告清单，至少包括完整未抽稀轨迹、运行均值、接受标志、经验自相关、批均值MCSE、ESS、链间比较和异常状态。逐项说明它能发现什么，以及不能证明什么。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C03-S05-05}
+\begin{chapterexercisesolution}{ex:V5-C03-S05-05}
+一份合格报告至少包含：
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{完整未抽稀轨迹：}可发现长时间停滞、边界粘连和不同模态；不能证明未画出的区域没有问题。
+  \item \textbf{运行均值：}可显示估计是否仍有系统漂移；平台期不能证明平台等于目标期望。
+  \item \textbf{提议与接受标志：}可定位零反向流、连续拒绝和数值异常；某个经验接受率不能证明可达性。
+  \item \textbf{经验自相关：}可量化已访问轨迹的滞后依赖并构造截断ESS；滞后上限和估计噪声会影响结果。
+  \item \textbf{批均值MCSE与ESS：}可把均值波动换算为误差尺度；短批、少批或慢混合会使估计不可靠。
+  \item \textbf{四链比较：}不同初值链分离可暴露多模态和初值敏感；四链重合仍不能形式证明已经覆盖全部目标支持。
+  \item \textbf{异常与停止原因：}记录不是有限实数的求值、零目标、零反向提议、达到预设转移上限和已经完成的转移；没有异常不等于数学条件已经证明。
+\end{enumerate}
+报告中的量必须能由保存的状态递推复算：
+\[
+\begin{aligned}
+X_t&=\begin{cases}Y_t,&U_t\le\alpha_t,\\X_{t-1},&U_t>\alpha_t,\end{cases}\\
+\bar f_t&=\frac1t\sum_{s=1}^tf(X_s),\\
+\widehat a_t&=\frac1t\sum_{s=1}^tA_s,
+\qquad A_s=\boldsymbol1\{U_s\le\alpha_s\},\\
+\widehat{\operatorname{MCSE}}_{\rm BM}
+&=\sqrt{\widehat\sigma_{\rm BM}^2/n},\qquad
+\widehat N_{\rm eff}=n s_f^2/\widehat\sigma_{\rm BM}^2.
+\end{aligned}
+\]
+四链比较还应保留逐链估计而非只保留合并均值：
+\[
+\widehat\mu_c=\frac1n\sum_{t=1}^nf(X_t^{(c)}),\qquad c=1,2,3,4;\qquad
+\max_c\widehat\mu_c-\min_c\widehat\mu_c\text{大}\Longrightarrow\text{链间分离警报}.
+\]
+最后两式仅在相应分母有限且为正时报告。还应列出目标分布的具体定义、提议参数、$m,n$、批划分、随机种子及生成规则，使诊断可复算；停止时报告已完成的整次转移数和原因。结论措辞应是“未发现某类问题”或“出现某类警报”，不能写成“诊断证明收敛”。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V5-C03-CH36}
+\SLChapterFiveSummary{MCMC用保持$\pi$的可测马尔可夫核产生相关轨迹；平稳性、唯一性、时间平均和边缘收敛必须分开。}
+{MH以双向公共流处理零密度并建立可逆性；有限不可约链给时间平均，正常Harris返是一般状态对应条件，非周期性另管边缘收敛。}
+{每步提议、计算含零流分支的接受率、接受或复制当前状态；拒绝自环必须保留。}
+{适用于目标可归一化且提议可计算的后验期望；CLT、MCSE与批均值还需额外矩和混合条件。}
+{\hyperref[chap:V5-C04]{第33章（第5册第4章）}把提议取成精确满条件分布，得到接受率为$1$的Gibbs坐标更新。}
+
+\phantomsection\label{struct:V5-C03-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否从集合细致平衡推出$\pi K=\pi$，用$I_2$反例否定“可逆必不可约”，并区分系统扫描的目标保持性与可逆性？若不能，回看\cref{sec:V5-C03-S02}与命题\ref{prop:V5-C03-component-scan}。
+  \item 能否从双向提议流推出式\eqref{eq:V5-C03-mh-alpha}，处理零流而不算非法比值，并写出含拒绝自环的式\eqref{eq:V5-C03-mh-kernel}？若不能，回看\cref{sec:V5-C03-S03}。
+  \item 能否分别说明不可约、非周期和正常返对唯一性、时间平均及边缘收敛的作用，并由协方差双重和计算ACF-ESS与批均值MCSE？若不能，回看\cref{sec:V5-C03-S05}。
+  \item 能否独立执行算法\ref{alg:V5-C03-general-mh}至算法\ref{alg:V5-C03-trace-diagnostics}，报告空预算、零流、非法随机数和部分前缀，并把轨迹、ACF、ESS和多链比较明确写成“诊断而非证明”？
+  \item 能否推导$\operatorname{Beta}(5,7)$后验及精确矩，拒绝在没有随机流时编造MH估计，并证明不可归一化核不能用“常数消去”？若不能，重做练习\cref{ex:V5-C03-S06-01,ex:V5-C03-S06-02}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

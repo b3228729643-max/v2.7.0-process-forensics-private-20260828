@@ -1,0 +1,96 @@
+object_id	observed_at_utc	view	decision	object_specific_note
+GFX-001	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+figure_crop_8x	PASS	x-axis ticks at samples 1--4 are distinct, aligned, and readable against the baseline.
+GFX-002	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+grayscale	PASS	y-axis tick strokes from 0 to 0.7 remain even and visually separate from tick labels.
+GFX-003	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+figure_crop_8x	PASS	x-axis baseline is continuous and terminates cleanly at its right arrowhead.
+GFX-004	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+figure_crop_8x	PASS	x-axis arrowhead is complete, points right, and is neither clipped nor merged with text.
+GFX-005	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+grayscale	PASS	y-axis baseline is continuous from the origin to the top arrowhead.
+GFX-006	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+figure_crop_8x	PASS	y-axis arrowhead is complete, upward-oriented, and clear of the 0.7 label.
+GFX-007	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+figure_crop_8x	PASS	four gray y-comb stems encode the raw values at x=1,2,3,4 without clipping or label occlusion.
+GFX-008	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+figure_crop_8x	PASS	blue running-mean polyline follows .640,.325,.380,.325 in the correct order and stays fully visible.
+GFX-009	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+grayscale	PASS	teal dashed 1/3 reference remains distinguishable in color and grayscale and spans the plot cleanly.
+GFX-010	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+value_640_roi	PASS	gray square raw marker at sample 1 is complete at .640 and remains distinguishable from the blue coincident mean marker.
+GFX-011	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+figure_crop_8x	PASS	gray square raw marker at sample 2 correctly depicts the near-zero .01 observation; its axis proximity does not obscure the marker or tick.
+GFX-012	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+value_380_roi	PASS	gray square raw marker at sample 3 is complete at .49 and clear of the .380 mean label.
+GFX-013	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+figure_crop_8x	PASS	gray square raw marker at sample 4 is complete at .16 and clear of the .325 mean label.
+GFX-014	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+value_640_roi	PASS	blue circular running-mean marker at sample 1 is intact and visibly nested over the equal raw value .640.
+GFX-015	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+figure_crop_8x	PASS	blue circular running-mean marker at sample 2 is intact at .325 and readable above the truth line.
+GFX-016	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+value_380_roi	PASS	blue circular running-mean marker at sample 3 is intact at .380 despite the crossing raw stem.
+GFX-017	2026-08-26T13:25:49Z	graphic_sheet_001_native1x+figure_crop_8x	PASS	blue circular running-mean marker at sample 4 is intact at .325 and remains distinct from the dashed truth line.
+GLYPH-001	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	x-axis tick digit 1 is complete and centered under the first sample.
+GLYPH-002	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	x-axis tick digit 2 is complete and centered under the second sample.
+GLYPH-003	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	x-axis tick digit 3 is complete and centered under the third sample.
+GLYPH-004	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	x-axis tick digit 4 is complete and centered under the fourth sample.
+GLYPH-005	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis origin digit 0 is complete and does not touch the axis.
+GLYPH-006	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.1 leading zero is fully formed and aligned with its tick.
+GLYPH-007	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.1 decimal point is visible and separated from adjacent digits.
+GLYPH-008	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.1 terminal digit is complete and readable.
+GLYPH-009	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.2 leading zero is complete and correctly aligned.
+GLYPH-010	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.2 decimal point is visible and clean.
+GLYPH-011	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.2 terminal digit is complete and readable.
+GLYPH-012	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.3 leading zero is complete and correctly aligned.
+GLYPH-013	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.3 decimal point is visible and clean.
+GLYPH-014	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.3 terminal digit is complete and readable.
+GLYPH-015	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.4 leading zero is complete and correctly aligned.
+GLYPH-016	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.4 decimal point is visible and clean.
+GLYPH-017	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.4 terminal digit is complete and readable.
+GLYPH-018	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.5 leading zero is complete and correctly aligned.
+GLYPH-019	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.5 decimal point is visible and clean.
+GLYPH-020	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.5 terminal digit is complete and readable.
+GLYPH-021	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.6 leading zero is complete and correctly aligned.
+GLYPH-022	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.6 decimal point is visible and clean.
+GLYPH-023	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.6 terminal digit is complete and readable.
+GLYPH-024	2026-08-26T13:25:49Z	glyph_sheet_001_native1x	PASS	y-axis 0.7 leading zero is complete and correctly aligned.
+GLYPH-025	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	y-axis 0.7 decimal point is visible and clean.
+GLYPH-026	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	y-axis 0.7 terminal digit is complete and clear of the arrowhead.
+GLYPH-027	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	formula italic h is recognizable and correctly begins h(U_i)=U_i^2.
+GLYPH-028	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	formula opening parenthesis is complete and spans the U_i argument.
+GLYPH-029	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	formula first mathematical U is complete and uses the intended italic math glyph.
+GLYPH-030	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	formula first subscript i is legible at its natural script position.
+GLYPH-031	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	formula closing parenthesis is complete and balances the opening parenthesis.
+GLYPH-032	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	formula equality sign has two clean horizontal strokes and correct semantics.
+GLYPH-033	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	formula second mathematical U is complete and readable.
+GLYPH-034	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	formula superscript 2 is complete and clearly attached to U rather than the subscript.
+GLYPH-035	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	formula second subscript i is legible and correctly positioned below U.
+GLYPH-036	2026-08-26T13:25:49Z	glyph_sheet_002_native1x+value_640_roi	PASS	first blue downward arrow is intact and clearly denotes the initial decrease.
+GLYPH-037	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	CJK glyph 下 in the first trend label is complete and readable.
+GLYPH-038	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	CJK glyph 降 in the first trend label is complete and readable.
+GLYPH-039	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	blue upward arrow is intact and clearly denotes the middle increase.
+GLYPH-040	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	CJK glyph 上 in the middle trend label is complete and readable.
+GLYPH-041	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	CJK glyph 升 in the middle trend label is complete and readable.
+GLYPH-042	2026-08-26T13:25:49Z	glyph_sheet_002_native1x+value_380_roi	PASS	second blue downward arrow is intact; its tip has no shared ink with the .380 label below.
+GLYPH-043	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	CJK glyph 再 is complete and preserves the repeated-decrease meaning.
+GLYPH-044	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	CJK glyph 下 in 再下降 is complete and readable.
+GLYPH-045	2026-08-26T13:25:49Z	glyph_sheet_002_native1x	PASS	CJK glyph 降 in 再下降 is complete and readable.
+GLYPH-046	2026-08-26T13:25:49Z	glyph_sheet_002_native1x+truth_roi	PASS	teal CJK glyph 真 is complete and distinguishable in grayscale.
+GLYPH-047	2026-08-26T13:25:49Z	glyph_sheet_002_native1x+truth_roi	PASS	teal CJK glyph 值 is complete and reads together with 真 as 真值.
+GLYPH-048	2026-08-26T13:25:49Z	glyph_sheet_002_native1x+truth_roi	PASS	truth fraction numerator 1 is complete and correctly precedes the slash.
+GLYPH-049	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+truth_roi	PASS	truth fraction slash is complete and visibly separates numerator and denominator.
+GLYPH-050	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+truth_roi	PASS	truth fraction denominator 3 is complete and closes the 1/3 label.
+GLYPH-051	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+value_640_roi	PASS	decimal point of .640 is visible and clear of the sample-1 marker.
+GLYPH-052	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+value_640_roi	PASS	digit 6 in .640 is complete and naturally spaced from the following 4.
+GLYPH-053	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+value_640_roi	PASS	digit 4 in .640 is complete; one-pixel internal spacing is normal text formation, not overlap.
+GLYPH-054	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+value_640_roi	PASS	terminal digit 0 in .640 is complete and clear of the first trend arrow.
+GLYPH-055	2026-08-26T13:25:49Z	glyph_sheet_003_native1x	PASS	decimal point of the sample-2 .325 label is visible beneath the blue marker.
+GLYPH-056	2026-08-26T13:25:49Z	glyph_sheet_003_native1x	PASS	digit 3 in the sample-2 .325 label is complete.
+GLYPH-057	2026-08-26T13:25:49Z	glyph_sheet_003_native1x	PASS	digit 2 in the sample-2 .325 label is complete.
+GLYPH-058	2026-08-26T13:25:49Z	glyph_sheet_003_native1x	PASS	digit 5 in the sample-2 .325 label is complete and ends the label cleanly.
+GLYPH-059	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+value_380_roi	PASS	decimal point of .380 is visible below the second down-arrow tip.
+GLYPH-060	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+value_380_roi	PASS	digit 3 in .380 is complete and separated from the arrow.
+GLYPH-061	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+value_380_roi	PASS	digit 8 in .380 is complete and naturally spaced from the terminal zero.
+GLYPH-062	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+value_380_roi	PASS	terminal zero in .380 is complete; shared ink with the arrow is exactly zero and the label remains plainly readable.
+GLYPH-063	2026-08-26T13:25:49Z	glyph_sheet_003_native1x	PASS	decimal point of the sample-4 .325 label is visible above the raw .16 square.
+GLYPH-064	2026-08-26T13:25:49Z	glyph_sheet_003_native1x	PASS	digit 3 in the sample-4 .325 label is complete.
+GLYPH-065	2026-08-26T13:25:49Z	glyph_sheet_003_native1x	PASS	digit 2 in the sample-4 .325 label is complete.
+GLYPH-066	2026-08-26T13:25:49Z	glyph_sheet_003_native1x	PASS	digit 5 in the sample-4 .325 label is complete and clear of the plot boundary.
+GLYPH-067	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+axis_roi	PASS	x-axis title glyph 样 is complete and begins 样本编号 clearly.
+GLYPH-068	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+axis_roi	PASS	x-axis title glyph 本 is complete and aligned with the surrounding CJK text.
+GLYPH-069	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+axis_roi	PASS	x-axis title glyph 编 is complete and readable.
+GLYPH-070	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+axis_roi	PASS	x-axis title glyph 号 is complete and closes 样本编号.
+GLYPH-071	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+axis_roi	PASS	mathematical i in the x-axis title is intact and semantically denotes sample index.
+GLYPH-072	2026-08-26T13:25:49Z	glyph_sheet_003_native1x+axis_roi	PASS	x-axis title slash is complete and clearly separates index and sample-count phrases.
+GLYPH-073	2026-08-26T13:25:49Z	glyph_sheet_004_native1x+axis_roi	PASS	second x-axis title glyph 样 is complete and begins 样本数.
+GLYPH-074	2026-08-26T13:25:49Z	glyph_sheet_004_native1x+axis_roi	PASS	second x-axis title glyph 本 is complete and aligned.
+GLYPH-075	2026-08-26T13:25:49Z	glyph_sheet_004_native1x+axis_roi	PASS	x-axis title glyph 数 is complete and readable before N.
+GLYPH-076	2026-08-26T13:25:49Z	glyph_sheet_004_native1x+axis_roi	PASS	mathematical N is complete and semantically denotes sample count.
+GLYPH-077	2026-08-26T13:25:49Z	glyph_sheet_004_native1x+grayscale	PASS	rotated y-axis title glyph 数 is complete, upright within the rotated label, and unclipped.
+GLYPH-078	2026-08-26T13:25:49Z	glyph_sheet_004_native1x+grayscale	PASS	rotated y-axis title glyph 值 is complete and closes 数值 without clipping.

@@ -1,0 +1,75 @@
+{
+  "validator_started_utc": "2026-08-24T23:36:17.790779+00:00",
+  "validator_finished_utc": "2026-08-24T23:36:22.008405+00:00",
+  "validator_sha256": "907D41E53BA99B26CF526D53A932629B430B46477FCAFF58E30145AB56FBFA27",
+  "manual_inputs_modified": false,
+  "check_groups": {
+    "validator_lock": {
+      "sha256": "907D41E53BA99B26CF526D53A932629B430B46477FCAFF58E30145AB56FBFA27",
+      "locked_sha256": "907D41E53BA99B26CF526D53A932629B430B46477FCAFF58E30145AB56FBFA27",
+      "run_limit": 1
+    },
+    "build_identity": {
+      "invocations": 1,
+      "exit_code": 0,
+      "latexmk": false,
+      "automatic_retries": 0,
+      "pdf_bytes": 43385,
+      "pdf_sha256": "86712CDD98EC92AF1A2D274D4E4E987E6AE8338064FD4A3339D2761737A87260"
+    },
+    "machine": {
+      "N": 116,
+      "glyphs": 95,
+      "graphics": 21,
+      "C": 6670,
+      "critical": 50,
+      "target_height_px": 22,
+      "target_area_px": 297
+    },
+    "taxonomy": {
+      "mapped": 95,
+      "groups": 10,
+      "group_failures": 0,
+      "source_same_role_groups": 4,
+      "source_hierarchy_groups": 4,
+      "policy_sha256": "DC81B9ADEF783946FB6DC01E469469B51508EF64755B44D0506CB14F970885DE"
+    },
+    "manual": {
+      "rows": {
+        "glyph": 95,
+        "graphic": 21,
+        "critical": 50,
+        "view": 5,
+        "semantic": 3,
+        "taxonomy": 10,
+        "source_same_role": 4,
+        "source_hierarchy": 4
+      },
+      "total_rows": 192,
+      "unique_decision_ids": 192,
+      "exact_duplicate_note_groups": 0,
+      "normalized_duplicate_note_groups": 0,
+      "opened_glyph_sheets": 16,
+      "opened_graphic_1x_8x": 21,
+      "opened_critical_1x_8x": 50,
+      "opened_views": 5
+    },
+    "png_verification": {
+      "png_count": 856,
+      "failures": []
+    },
+    "parse_and_hygiene": {
+      "csv_count_before_consumer_output": 22,
+      "json_count_before_consumer_output": 64,
+      "parse_failures": [],
+      "pyc_files": [],
+      "producer_manual_filename_references": {
+        "audit_r10_machine.py": [],
+        "build_r10_taxonomy.py": []
+      }
+    }
+  },
+  "failure_count": 0,
+  "failures": [],
+  "conclusion": "LOCAL_SA2_PATCH_VERIFIED_AWAIT_R10_ROOT"
+}

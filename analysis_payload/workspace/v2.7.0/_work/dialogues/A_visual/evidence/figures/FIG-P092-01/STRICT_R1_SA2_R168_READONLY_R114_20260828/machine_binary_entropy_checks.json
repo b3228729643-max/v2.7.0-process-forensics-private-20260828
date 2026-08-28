@@ -1,0 +1,28 @@
+{
+  "formula": "-(p*ln(p)+(1-p)*ln(1-p))/ln(2)",
+  "endpoint_values": {
+    "H2(0)": 0.0,
+    "H2(1)": 0.0
+  },
+  "center_value": {
+    "H2(0.5)": 1.0
+  },
+  "first_derivative_at_center": 0.0,
+  "second_derivative_samples": {
+    "p=0.001": -1444.1391800690324,
+    "p=0.01": -145.726771806966,
+    "p=0.1": -16.02994489876626,
+    "p=0.25": -7.694373551407805,
+    "p=0.5": -5.7707801635558535,
+    "p=0.75": -7.694373551407805,
+    "p=0.9": -16.029944898766264,
+    "p=0.99": -145.7267718069659,
+    "p=0.999": -1444.1391800690312
+  },
+  "maximum_sample_value": 1.0,
+  "maximum_sample_locations": [
+    0.5
+  ],
+  "maximum_symmetry_abs_residual": 5.551115123125783e-17,
+  "source_domain_contract": "curve samples p in [0.001,0.999]; explicit markers supply p=0 and p=1 endpoint values"
+}

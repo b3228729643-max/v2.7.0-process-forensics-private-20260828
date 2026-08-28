@@ -1,0 +1,72 @@
+{
+  "authority_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r95_fullbook\\main_full.pdf",
+  "physical_page": 625,
+  "dpi": 300,
+  "native_page_shape_wh": [
+    2481,
+    3508
+  ],
+  "curve": {
+    "object": "G01_P_CURVE",
+    "paint_seqno": 26,
+    "stroke_width_pt": 1.1456999778747559,
+    "stroke_rgb": [
+      31,
+      78,
+      121
+    ],
+    "pre_occlusion_effective_px": 11609,
+    "final_visible_effective_px": 8042,
+    "covered_by_opaque_ground_px": 3825,
+    "covered_xor_effective_px": 3825,
+    "uncovered_pre_curve_px": 7784,
+    "covered_post_paint_raw_blue_present_px": 100,
+    "covered_post_paint_raw_blue_absent_px": 3725,
+    "semantic_final_definition": "strict R95 source-blue pixels intersected with one-pixel dilation of PRE, excluding all opaque label grounds",
+    "pre_minus_semantic_final_set_px": 4133,
+    "semantic_final_minus_pre_set_px": 566,
+    "pre_count_minus_semantic_final_count": 3567,
+    "pre_outside_ground_raw_blue_px": 7476,
+    "pre_outside_ground_raw_blue_absent_px": 308
+  },
+  "ground_count": 6,
+  "hard_failure_count": 5,
+  "hard_failures": [
+    {
+      "relation": "OCC_P_LEGEND_BLUE_GROUND",
+      "ground": "P_LEGEND_BLUE_GROUND",
+      "covered": 302,
+      "covered_post_paint_raw_blue_absent": 223,
+      "covered_post_paint_raw_blue_present_nonsemantic": 79
+    },
+    {
+      "relation": "OCC_P_MIN_GAP_GROUND",
+      "ground": "P_MIN_GAP_GROUND",
+      "covered": 304,
+      "covered_post_paint_raw_blue_absent": 298,
+      "covered_post_paint_raw_blue_present_nonsemantic": 6
+    },
+    {
+      "relation": "OCC_P_FILL_ANNOTATION_GROUND",
+      "ground": "P_FILL_ANNOTATION_GROUND",
+      "covered": 609,
+      "covered_post_paint_raw_blue_absent": 594,
+      "covered_post_paint_raw_blue_present_nonsemantic": 15
+    },
+    {
+      "relation": "OCC_P_ACCEPT_CARD_GROUND",
+      "ground": "P_ACCEPT_CARD_GROUND",
+      "covered": 1571,
+      "covered_post_paint_raw_blue_absent": 1571,
+      "covered_post_paint_raw_blue_present_nonsemantic": 0
+    },
+    {
+      "relation": "OCC_P_REJECT_CARD_GROUND",
+      "ground": "P_REJECT_CARD_GROUND",
+      "covered": 1039,
+      "covered_post_paint_raw_blue_absent": 1039,
+      "covered_post_paint_raw_blue_present_nonsemantic": 0
+    }
+  ],
+  "decision": "FAIL"
+}

@@ -1,0 +1,116 @@
+object_id,visible_identity,inspection_view,observation,decision
+G001,多,object overlay + grayscale,title character 多 is correct bold readable and free of tofu or clipping,PASS
+G002,个,object overlay + grayscale,title character 个 is correct bold readable and evenly aligned,PASS
+G003,有,object overlay + grayscale,title character 有 is correct bold readable and evenly aligned,PASS
+G004,序,object overlay + grayscale,first 序 in the title is correct distinct and not merged with its neighbor,PASS
+G005,序,object overlay + grayscale,second 序 in the title is correct distinct and not merged with its neighbor,PASS
+G006,列,object overlay + grayscale,title character 列 is correct bold readable and closes the heading cleanly,PASS
+G007,1,sequence panel 1x + overlay,row 1 column 1 is digit 1 centered inside D001,PASS
+G008,1,sequence panel 1x + overlay,row 1 column 2 is digit 1 centered inside D002,PASS
+G009,1,sequence panel 1x + overlay,row 1 column 3 is digit 1 centered inside D003,PASS
+G010,2,sequence panel 1x + overlay,row 1 column 4 is digit 2 centered over the hatched D004 circle,PASS
+G011,3,sequence panel 1x + overlay,row 1 column 5 is digit 3 centered inside D005,PASS
+G012,3,sequence panel 1x + overlay,row 1 column 6 is digit 3 centered inside D006,PASS
+G013,1,sequence panel 1x + overlay,row 2 column 1 is digit 1 centered inside D007,PASS
+G014,3,sequence panel 1x + overlay,row 2 column 2 is digit 3 centered inside D008,PASS
+G015,1,sequence panel 1x + overlay,row 2 column 3 is digit 1 centered inside D009,PASS
+G016,2,sequence panel 1x + overlay,row 2 column 4 is digit 2 centered over the hatched D010 circle,PASS
+G017,1,sequence panel 1x + overlay,row 2 column 5 is digit 1 centered inside D011,PASS
+G018,3,sequence panel 1x + overlay,row 2 column 6 is digit 3 centered inside D012,PASS
+G019,3,sequence panel 1x + overlay,row 3 column 1 is digit 3 centered inside D013,PASS
+G020,1,sequence panel 1x + overlay,row 3 column 2 is digit 1 centered inside D014,PASS
+G021,2,sequence panel 1x + overlay,row 3 column 3 is digit 2 centered over the hatched D015 circle,PASS
+G022,1,sequence panel 1x + overlay,row 3 column 4 is digit 1 centered inside D016,PASS
+G023,3,sequence panel 1x + overlay,row 3 column 5 is digit 3 centered inside D017,PASS
+G024,1,sequence panel 1x + overlay,row 3 column 6 is digit 1 centered inside D018,PASS
+G025,𝑛,count box 1x + overlay,bold vector n is present readable and semantically the count-vector symbol,PASS
+G026,=,count box 1x + overlay,first equality sign is complete and has clear spacing on both sides,PASS
+G027,(,count box 1x + overlay,opening parenthesis around component symbols is complete and correctly placed,PASS
+G028,𝑛,count box 1x + overlay,first component n is correctly italic and readable,PASS
+G029,1,count box 1x + overlay,subscript 1 is attached to G028 without collision or ambiguity,PASS
+G030,comma,count box 1x + overlay,first component separator is visible and correctly positioned,PASS
+G031,𝑛,count box 1x + overlay,second component n is correctly italic and readable,PASS
+G032,2,count box 1x + overlay,subscript 2 is attached to G031 without collision or ambiguity,PASS
+G033,comma,count box 1x + overlay,second component separator is visible and correctly positioned,PASS
+G034,𝑛,count box 1x + overlay,third component n is correctly italic and readable,PASS
+G035,3,count box 1x + overlay,subscript 3 is attached to G034 without collision or ambiguity,PASS
+G036,),count box 1x + overlay,closing parenthesis around component symbols is complete and correctly placed,PASS
+G037,=,count box 1x + overlay,second equality sign is complete and clearly separates symbol and value,PASS
+G038,(,count box 1x + overlay,opening parenthesis of the value tuple is complete,PASS
+G039,3,count box 1x + overlay,first tuple entry 3 is correct and readable,PASS
+G040,comma,count box 1x + overlay,first value separator is visible and correctly positioned,PASS
+G041,1,count box 1x + overlay,second tuple entry 1 is correct and readable,PASS
+G042,comma,count box 1x + overlay,second value separator is visible and correctly positioned,PASS
+G043,2,count box 1x + overlay,third tuple entry 2 is correct and readable,PASS
+G044,),count box 1x + overlay,closing parenthesis of the value tuple is complete,PASS
+G045,同,arrow-label 1x/8x + overlay,同 is fully readable above the arrow with no arrow-stroke collision,PASS
+G046,一,arrow-label 1x/8x + overlay,一 is fully readable and remains visually distinct from the horizontal arrow,PASS
+G047,计,arrow-label 1x/8x + overlay,计 is correctly encoded readable and clear of the box edge,PASS
+G048,数,arrow-label 1x/8x + overlay,数 is correctly encoded readable and clear of the box edge,PASS
+G049,𝑛,constraint 1x + overlay,constraint variable n is present and correctly italic,PASS
+G050,𝑘,constraint 1x + overlay,subscript k is readable and attached to G049 without ambiguity,PASS
+G051,∈,constraint 1x + overlay,set-membership symbol is correct and not mistaken for another relation,PASS
+G052,ℤ,constraint 1x + overlay,integer-set symbol is correctly rendered as double-struck Z,PASS
+G053,≥,constraint 1x + overlay,nonnegative lower-bound relation is the correct greater-or-equal symbol,PASS
+G054,0,constraint 1x + overlay,zero in the nonnegative constraint is readable and correctly subscripted,PASS
+G055,comma,constraint 1x + overlay,constraint separator is present with adequate spacing,PASS
+G056,∑,constraint 1x + overlay,summation sign is complete and correctly sized,PASS
+G057,𝑘,constraint 1x + overlay,summation index k is readable beneath G056,PASS
+G058,𝑛,constraint 1x + overlay,summed count symbol n is correctly italic,PASS
+G059,𝑘,constraint 1x + overlay,subscript k is readable and attached to G058,PASS
+G060,=,constraint 1x + overlay,total-count equality sign is complete and clear,PASS
+G061,𝑁,constraint 1x + overlay,total count N is correctly italic and readable,PASS
+G062,计,constraint-warning 1x/8x + overlay,warning character 计 is correct readable and inside D022,PASS
+G063,数,constraint-warning 1x/8x + overlay,warning character 数 is correct readable and inside D022,PASS
+G064,向,constraint-warning 1x/8x + overlay,first 向 is correct readable and inside D022,PASS
+G065,量,constraint-warning 1x/8x + overlay,first 量 is correct readable and inside D022,PASS
+G066,，,constraint-warning 1x/8x + overlay,Chinese comma is visible and correctly separates the warning clauses,PASS
+G067,不,constraint-warning 1x/8x + overlay,warning character 不 is correct readable and inside D022,PASS
+G068,是,constraint-warning 1x/8x + overlay,warning character 是 is correct readable and inside D022,PASS
+G069,概,constraint-warning 1x/8x + overlay,warning character 概 is correct readable and inside D022,PASS
+G070,率,constraint-warning 1x/8x + overlay,warning character 率 is correct readable and inside D022,PASS
+G071,向,constraint-warning 1x/8x + overlay,second 向 is correct readable and distinct from G064,PASS
+G072,量,constraint-warning 1x/8x + overlay,second 量 is correct readable and distinct from G065,PASS
+G073,产,coefficient box 1x + overlay,coefficient heading character 产 is correct readable and inside D023,PASS
+G074,生,coefficient box 1x + overlay,coefficient heading character 生 is correct readable and inside D023,PASS
+G075,同,coefficient box 1x + overlay,coefficient heading character 同 is correct readable and inside D023,PASS
+G076,一,coefficient box 1x + overlay,coefficient heading character 一 is correct readable and inside D023,PASS
+G077,计,coefficient box 1x + overlay,coefficient heading character 计 is correct readable and inside D023,PASS
+G078,数,coefficient box 1x + overlay,coefficient heading first 数 is correct readable and inside D023,PASS
+G079,的,coefficient box 1x + overlay,coefficient heading character 的 is correct readable and inside D023,PASS
+G080,序,coefficient box 1x + overlay,coefficient heading character 序 is correct readable and inside D023,PASS
+G081,列,coefficient box 1x + overlay,coefficient heading character 列 is correct readable and inside D023,PASS
+G082,数,coefficient box 1x + overlay,coefficient heading final 数 is correct readable and inside D023,PASS
+G083,𝑁,coefficient box 1x + overlay,numerator N is correctly italic and readable,PASS
+G084,!,coefficient box 1x + overlay,numerator factorial mark is present and not clipped,PASS
+G085,/,coefficient box 1x + overlay,division slash is visible and semantically separates numerator and product,PASS
+G086,∏,coefficient box 1x + overlay,product sign is complete correctly sized and not clipped by D023,PASS
+G087,𝑘,coefficient box 1x + overlay,product index k is centered below G086 and readable,PASS
+G088,𝑛,coefficient box 1x + overlay,factor n is correctly italic and readable,PASS
+G089,𝑘,coefficient box 1x + overlay,subscript k is attached to G088 without ambiguity,PASS
+G090,!,coefficient box 1x + overlay,denominator factorial mark is present and not clipped,PASS
+D001,row1 circle1,sequence panel 1x + overlay,blue circle is complete centered around G007 and separated from neighbors,PASS
+D002,row1 circle2,sequence panel 1x + overlay,blue circle is complete centered around G008 and separated from neighbors,PASS
+D003,row1 circle3,sequence panel 1x + overlay,blue circle is complete centered around G009 and separated from neighbors,PASS
+D004,row1 circle4,sequence panel 1x + overlay,teal hatched circle is complete centered around G010 and hatch does not obscure the digit,PASS
+D005,row1 circle5,sequence panel 1x + overlay,gold circle is complete centered around G011 and separated from neighbors,PASS
+D006,row1 circle6,sequence panel 1x + overlay,gold circle is complete centered around G012 and separated from neighbors,PASS
+D007,row2 circle1,sequence panel 1x + overlay,blue circle is complete centered around G013 and separated from neighbors,PASS
+D008,row2 circle2,sequence panel 1x + overlay,gold circle is complete centered around G014 and separated from neighbors,PASS
+D009,row2 circle3,sequence panel 1x + overlay,blue circle is complete centered around G015 and separated from neighbors,PASS
+D010,row2 circle4,sequence panel 1x + overlay,teal hatched circle is complete centered around G016 and hatch does not obscure the digit,PASS
+D011,row2 circle5,sequence panel 1x + overlay,blue circle is complete centered around G017 and separated from neighbors,PASS
+D012,row2 circle6,sequence panel 1x + overlay,gold circle is complete centered around G018 and separated from neighbors,PASS
+D013,row3 circle1,sequence panel 1x + overlay,gold circle is complete centered around G019 and separated from neighbors,PASS
+D014,row3 circle2,sequence panel 1x + overlay,blue circle is complete centered around G020 and separated from neighbors,PASS
+D015,row3 circle3,sequence panel 1x + overlay,teal hatched circle is complete centered around G021 and hatch does not obscure the digit,PASS
+D016,row3 circle4,sequence panel 1x + overlay,blue circle is complete centered around G022 and separated from neighbors,PASS
+D017,row3 circle5,sequence panel 1x + overlay,gold circle is complete centered around G023 and separated from neighbors,PASS
+D018,row3 circle6,sequence panel 1x + overlay,blue circle is complete centered around G024 and separated from neighbors,PASS
+D019,count vector box,count-box 1x + overlay,blue rounded box is complete contains G025-G044 and accepts both intended arrow connections,PASS
+D020,sequence-to-count arrow shaft,arrow-label 1x/8x + critical sheet,shaft is straight clear of G045-G048 and joins D021 as designed,PASS
+D021,sequence-to-count arrow head,arrow-label 1x/8x + critical sheet,arrow head is complete points to D019 and has only the intended D020 join,PASS
+D022,warning box,constraint-warning 1x/8x + critical sheet,red rounded box is complete contains G062-G072 with comfortable padding,PASS
+D023,coefficient box,coefficient-box 1x + critical sheet,gray rounded box is complete contains G073-G090 with no clipping,PASS
+D024,count-to-coefficient arrow shaft,coefficient-box 1x + critical sheet,shaft begins at D019 boundary and runs cleanly toward D025,PASS
+D025,count-to-coefficient arrow head,coefficient-box 1x + critical sheet,arrow head is complete points into D023 and joins only D024,PASS

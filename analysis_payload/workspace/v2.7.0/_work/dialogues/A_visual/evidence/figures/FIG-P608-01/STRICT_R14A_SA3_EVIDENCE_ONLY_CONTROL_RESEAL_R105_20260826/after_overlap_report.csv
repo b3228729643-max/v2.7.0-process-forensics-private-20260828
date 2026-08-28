@@ -1,0 +1,13 @@
+GATE_ID,gate,denominator_or_scope,observed,threshold,manual_reviewer,manual_decision,evidence,manual_note
+O01,OBJECT_DENOMINATOR,128 objects,128,complete,SA3_R105_FRESH_ISOLATED,PASS,object_manifest.csv,68 glyphs plus 60 drawing/path/pattern objects.
+O02,UNORDERED_PAIR_DENOMINATOR,128 choose 2,8128,8128,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv,Every unordered object pair appears exactly once.
+O03,TEXT_INVOLVED_INTERSECTION,all 8128 pairs,0,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv,No text glyph intersects a second glyph line arrow marker border curve hatch or math rule.
+O04,INTENTIONAL_GEOMETRIC_INTERSECTION,all 8128 pairs,71,whitelisted design relations,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv,Only axes-arrowheads axes-ticks axes junctions dividers series-markers reference-data and background-hatch relations intersect.
+O05,ILLEGAL_OVERLAP_PIXEL_COUNT,all relationships,0,0,SA3_R105_FRESH_ISOLATED,PASS,manual_relationship_review.csv,OVERLAP_PIXEL_COUNT=0 for illegal relations.
+O06,CLIP_PIXEL_COUNT,all 128 masks and endpoints,0,0,SA3_R105_FRESH_ISOLATED,PASS,manual_endpoint_clip_review.csv,CLIP_PIXEL_COUNT=0.
+O07,INDEPENDENT_TEXT_TEXT_CLEARANCE,all distinct semantic parents,35.235,4,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv P003587,Closest distinct reader objects are tick 10 and xlabel t.
+O08,TEXT_LINE_ARROW_MARKER_CLEARANCE,all applicable pairs,13.000,3,SA3_R105_FRESH_ISOLATED,PASS,manual_relationship_review.csv,13 px is the minimum tick-text to tick-stroke clearance; other categories are larger.
+O09,TEXT_NODE_BORDER_CLEARANCE,no bordered nodes,NA,5,SA3_R105_FRESH_ISOLATED,NA,source and standalone,Gate not applicable.
+O10,TEXT_IMAGE_EDGE_CLEARANCE,all text glyphs,13.000,6,SA3_R105_FRESH_ISOLATED,PASS,object_manifest.csv,Xlabel t is the nearest reader element to crop edge.
+O11,CROSS_PANEL_CLEARANCE,upper x-axis to lower title,34.000,8,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv P005586,Native masks confirm clear separation.
+O12,EMPTY_MASK_COUNT,128 object masks,0,0,SA3_R105_FRESH_ISOLATED,PASS,machine_crosscheck.json,All glyph drawing rule and hatch masks are nonempty.

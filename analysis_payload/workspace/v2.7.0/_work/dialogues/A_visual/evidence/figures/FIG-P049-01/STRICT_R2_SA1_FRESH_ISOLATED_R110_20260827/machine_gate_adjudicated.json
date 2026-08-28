@@ -1,0 +1,40 @@
+{
+  "HANDOFF_ID": "A-R110-P049-SA1-FRESH-ISOLATED-20260827",
+  "UID": "FIG-P049-01",
+  "adjudicated_at": "2026-08-27T06:00:58+08:00",
+  "supersedes_only": "The raw candidate interpretation in machine_gate_summary.json; all raw counts and files are preserved.",
+  "hard_gates": {
+    "PDF_IDENTITY": true,
+    "SOURCE_IDENTITY": true,
+    "UNIQUE_R110_LOCATOR": true,
+    "VISIBLE_OBJECT_DENOMINATOR_28": true,
+    "ALL_UNORDERED_PAIRS_378": true,
+    "ALL_OBJECT_MASKS_NONEMPTY": true,
+    "NO_MISSING_TOFU_OR_REPLACEMENT_CODEPOINT": true,
+    "DIRECT_300DPI_PIXEL_HEIGHT_THRESHOLDS_AFTER_COLOR_ADJUDICATION": true,
+    "ZERO_ILLEGAL_TEXT_INVOLVING_OVERLAP_AFTER_ADJUDICATION": true,
+    "ZERO_CLIP_PIXELS": true,
+    "CONTOUR_ORDER_AND_P_MEMBERSHIP": true,
+    "GRADIENT_DIRECTION": true,
+    "TANGENT_ORTHOGONALITY": true,
+    "RIGHT_ANGLE_MARKER": true,
+    "GUIDE_1_TARGET_SEMANTICS": false,
+    "GUIDE_1_GUIDE_2_NONCROSSING": false,
+    "GUIDE_2_TARGET_SEMANTICS": true,
+    "GUIDE_3_TARGET_SEMANTICS": true
+  },
+  "overlap_candidate_pixel_count": 10,
+  "mask_contamination_pixel_count": 10,
+  "overlap_pixel_count": 0,
+  "pixel_adjudication_status": "MASK_CONTAMINATION_CONFIRMED",
+  "clip_pixel_count": 0,
+  "min_text_clearance_px_after_adjudication": 7.991,
+  "legacy_9_5pt_source_gate": false,
+  "legacy_9_5pt_status_under_R168": "ADVISORY_ONLY",
+  "hard_gate_pass": false,
+  "failed_hard_gates": [
+    "GUIDE_1_TARGET_SEMANTICS",
+    "GUIDE_1_GUIDE_2_NONCROSSING"
+  ],
+  "route": "SA2"
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "P657_R111_SA2_READONLY_RESEAL_PROVENANCE_V1",
+  "handoff_id": "C-FIG-P657-01-R111-SA2-R168-READONLY-RESEAL-V1",
+  "authorization": "MAIN_R324_P657_READONLY_CONTROL_RESEAL_AUTHORIZED",
+  "controller": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\reports\\P657_R111_READONLY_RESEAL_V1_CONTROLLER.ps1",
+    "bytes": 25143,
+    "sha256": "A105B5833B3488324A7B50B40DEC325EEC93866EC716AED280F15607A7C40C2A"
+  },
+  "invocation_ordinal": 1,
+  "invocation_limit": 1,
+  "retry_count": 0,
+  "old_root_resolved": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_v1",
+  "new_root_resolved": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_reseal_v1",
+  "old_manifest": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_v1\\MANIFEST.json",
+    "bytes": 88258,
+    "sha256": "3112495365D202A410972D758A37D39F1E7A88C63BDAA10F43621B8A70F48700"
+  },
+  "old_write_stopped": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_v1\\WRITE_STOPPED",
+    "bytes": 924,
+    "sha256": "E8B46E8C95771E486834CCBEA5FE09DBEB3BF67FA19CAC630701DA2F024CCD55"
+  },
+  "copied_material_count": 487,
+  "copied_old_controls": {
+    "manifest_json": 0,
+    "write_stopped": 0
+  },
+  "added_payload": [
+    "COPY_IDENTITY.csv",
+    "COPY_PROVENANCE.json"
+  ],
+  "projected_payload_count": 489,
+  "projected_controls": [
+    "PAYLOAD_MANIFEST.json",
+    "SEAL_AUDIT.json",
+    "WRITE_STOPPED"
+  ],
+  "projected_ordinary_count": 492,
+  "business_decision_unchanged": "SA2_NO_SOURCE_CHANGE_READY_FOR_FRESH_SA1",
+  "evidence_only": true
+}

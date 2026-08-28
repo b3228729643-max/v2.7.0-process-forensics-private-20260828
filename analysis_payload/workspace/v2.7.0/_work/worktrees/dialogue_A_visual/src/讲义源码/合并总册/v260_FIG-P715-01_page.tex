@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{743}
+\setcounter{chapter}{36}
+\setcounter{section}{1}
+\setcounter{figure}{1}
+\pagestyle{headings}
+\chaptermark{PageRank算法}
+\sectionmark{网页图与随机游走}
+\textbf{输入与方向。}结点顺序固定为 $(i,j,h)$，四条单位权边为 $i\to j,j\to i,j\to h,h\to i$。邻接权 $A_{ij}>0$ 表示 $j\to i$，并按 $c_j=\sum_rA_{rj}$ 得到 $M_{ij}=A_{ij}/c_j$。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/web_random_walk.tex}
+\FloatBarrier
+\textbf{读图。}先由箭头写 $A$，再按 $c_j$ 得到列随机 $M$，最后核对行随机 $P=M^{\mathsf T}$；网页箭头不反向，改变的只是同一转移权重的行列索引。该静态图不规定迭代停止或收敛判据。
+\end{document}

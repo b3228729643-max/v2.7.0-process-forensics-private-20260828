@@ -1,0 +1,7 @@
+view_id,path,reviewer,opened_at_native_evidence,content_complete,no_clipping,no_illegal_overlap,readable,harmony,decision,note
+V01,full_page_200dpi.png,SA1,true,true,true,true,true,true,PASS,"page 690 shows a balanced two-panel figure and two-line caption integrated above the following prose and example"
+V02,figure_crop_300dpi.png,SA1,true,true,true,true,true,true,PASS,"native figure crop preserves all titles axes ticks curves labels legend and caption with no missing edge content"
+V03,standalone_300dpi.png,SA1,true,true,true,true,true,true,PASS,"figure body reads left-to-right from ACF decay to ESS ratio without obstruction"
+V04,grayscale_300dpi.png,SA1,true,true,true,true,true,true,PASS,"solid dashed and dash-dot ACF encodings remain distinguishable and the ESS curve and annotations stay legible"
+V05,panel_a_300dpi.png,SA1,true,true,true,true,true,true,PASS,"panel A formula labels and three analytic curves are complete; shared k=0 start is mathematically intentional"
+V06,panel_b_300dpi.png,SA1,true,true,true,true,true,true,PASS,"panel B title fraction limit note endpoint label open marker and axes are complete with source-proven white separations"

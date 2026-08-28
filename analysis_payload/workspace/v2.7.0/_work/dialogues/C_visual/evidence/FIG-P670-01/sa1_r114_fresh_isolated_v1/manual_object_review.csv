@@ -1,0 +1,17 @@
+OBJECT_ID,ACTUALLY_OPENED_VIEWS,VISIBLE_CONTENT,SEMANTIC_AND_GEOMETRIC_OBSERVATION,MANUAL_RESULT
+OBJ01,"full200|native300|gray300|overlay","时刻 N：伪计数 alpha+n=(4,3,2)","标题完整无 tofu/错码/裁切；4+3+2=9，与左侧分母一致；层级清楚",OK
+OBJ02,"full200|native300|gray300|overlay|roi1x|roi8x","左侧圆节点：1,1,1,1,2,2,2,3,3","四个1、三个2、两个3均可逐个辨认；圆边与数字有稳定内距；无墨迹碰撞",OK
+OBJ03,"full200|native300|gray300|overlay|roi1x|roi8x","P(Y_(N+1)=k | n)=(alpha_k+n_k)/(alpha_0+N)","公式分子分母、条件竖线及 N+1/k/0 下标均完整可读；与章节后验预测式一致",OK
+OBJ04,"full200|native300|gray300|overlay|roi1x|roi8x","左侧概率条 4/9,3/9,2/9","三段宽度顺序与数值比例一致，合计1；边框、分隔线、数字互不遮挡",OK
+OBJ05,"full200|native300|gray300|overlay","观察 j=2 圆节点","观察对象明确，j=2 居中可读；与前后计数变化一致；文字未触碰圆边",OK
+OBJ06,"full200|native300|gray300|overlay","左向中间的预测箭头及标签预测","箭头从左侧当前预测指向观察节点，方向单一；标签与线、标题、计数行分离",OK
+OBJ07,"full200|native300|gray300|overlay","由观察节点向右的箭头及标签只更新第 j 类","箭头方向向右；标签明确限制为第j类；文字未压箭杆且未遮右侧节点",OK
+OBJ08,"full200|native300|gray300|overlay","时刻 N+1：(4,4,2)","标题完整；仅第二分量由3增为4，总量由9增为10；无错码或裁切",OK
+OBJ09,"full200|native300|gray300|overlay","右侧圆节点：1,1,1,1,2,2,2,2,3,3，其中新增2有斜线纹理","四个1、四个2、两个3均可数；新增第4个2以斜线而非仅颜色编码；数字/边框清楚",OK
+OBJ10,"full200|native300|gray300|overlay","n_2 <- n_2+1, alpha_0+N <- alpha_0+N+1","两项更新完整可读；分子仅n2加1、总量仅加1；数学方向与图中变化一致",OK
+OBJ11,"full200|native300|gray300|overlay","右侧概率条 4/10,4/10,2/10，第二段末部有斜线新增份额","三段合计1；长度4:4:2；斜线1/10位于第二类段内；数字、分隔线互不遮挡",OK
+OBJ12,"full200|native300|gray300|overlay","顺序更新产生平滑与强化；积分掉 theta 后序列可交换，但不是固定参数条件下的 iid 序列","整句一行完整可读；与Dirichlet积分后的Pólya预测语义一致；白底框与正文分层稳定",OK
+OBJ13,"full200|native300|gray300|overlay","图 34.10","图号完整、粗体层级清楚，与本页对象匹配",OK
+OBJ14,"full200|native300|gray300|overlay","题注第1行：积分消去 theta 后，下一类别的后验预测概率等于当前伪计数占总伪计数的比例；观测到类别","无 tofu/错码/裁切；与图内左侧公式、计数条一致；行末自然续行",OK
+OBJ15,"full200|native300|gray300|overlay","题注第2行：j 只增加该类计数，因而实现平滑并产生可顺序更新的强化预测，但这不是固定参数下的独立同分布","j 与后续中文均清楚；对应 n_j 增量和右侧强化；与章节正文语义一致",OK
+OBJ16,"full200|native300|gray300|overlay","题注第3行：序列","续行未孤立到下一页、未裁切；与前行组成完整题注",OK

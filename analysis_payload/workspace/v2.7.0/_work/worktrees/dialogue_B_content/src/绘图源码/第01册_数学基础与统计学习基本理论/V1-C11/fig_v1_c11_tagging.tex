@@ -1,0 +1,76 @@
+% v2.3.1 figure UID: FIG-P172-01
+% Proposed post-v2.3.1 polish for FIG-P172-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P172-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P172-01,
+  paneltitle/.style={font=\bfseries\fontsize{10pt}{12pt}\selectfont,align=center},
+  latent/.style={slfig latent,minimum size=7.5mm,line width=.74pt},
+  observed/.style={slfig observed,minimum size=7.5mm,line width=.74pt,
+    fill=SLBlueBG,pattern={Lines[angle=45,distance=4.4pt,line width=.18pt]},
+    pattern color=SLBlue!14},
+  factor/.style={slfig factor,fill=SLGoldBG,draw=SLGold,line width=.78pt},
+  gen/.style={-{Stealth[length=2.05mm,width=1.25mm]},draw=SLBlue,
+    line width=.94pt,shorten >=.55mm},
+  undirected/.style={draw=SLInk,line width=.78pt},
+  conditionbrace/.style={draw=SLTeal,line width=.64pt},
+  legendlabel/.style={font=\fontsize{9.2pt}{11pt}\selectfont,anchor=west},
+]
+  \begin{scope}[xshift=-5.2cm]
+    \node[paneltitle,text=SLBlue] at (2.4,2.45) {HMM：生成关系};
+    \node[latent] (hy1) at (0,1.25) {$Y_t$};
+    \node[latent] (hy2) at (1.45,1.25) {$Y_{t+1}$};
+    \node at (2.88,1.25) {$\cdots$};
+    \node[latent] (hy3) at (4.35,1.25) {$Y_T$};
+    \node[observed] (hx1) at (0,0) {$X_t$};
+    \node[observed] (hx2) at (1.45,0) {$X_{t+1}$};
+    \node at (2.88,0) {$\cdots$};
+    \node[observed] (hx3) at (4.35,0) {$X_T$};
+    \draw[gen] (hy1)--(hy2);
+    \draw[gen] (hy2)--(2.68,1.25);
+    \draw[gen] (3.08,1.25)--(hy3);
+    \draw[gen] (hy1)--(hx1);
+    \draw[gen] (hy2)--(hx2);
+    \draw[gen] (hy3)--(hx3);
+  \end{scope}
+
+  \begin{scope}[xshift=1.0cm]
+    \node[paneltitle,text=SLTeal] at (2.4,2.45) {线性链 CRF：条件因子};
+    \node[latent] (cy1) at (0,1.25) {$Y_t$};
+    \node[latent] (cy2) at (1.45,1.25) {$Y_{t+1}$};
+    \node at (2.88,1.25) {$\cdots$};
+    \node[latent] (cy3) at (4.35,1.25) {$Y_T$};
+    \node[observed] (cx1) at (0,0) {$X_t$};
+    \node[observed] (cx2) at (1.45,0) {$X_{t+1}$};
+    \node at (2.88,0) {$\cdots$};
+    \node[observed] (cx3) at (4.35,0) {$X_T$};
+    \node[factor] (f12) at (.725,1.25) {};
+    \node[factor] (f23a) at (2.62,1.25) {};
+    \node[factor] (f23b) at (3.14,1.25) {};
+    \node[factor] (g1) at (0,.625) {};
+    \node[factor] (g2) at (1.45,.625) {};
+    \node[factor] (g3) at (4.35,.625) {};
+    \draw[undirected] (cy1)--(f12)--(cy2);
+    \draw[undirected] (cy2)--(f23a);
+    \draw[undirected] (f23b)--(cy3);
+    \draw[undirected] (cy1)--(g1)--(cx1);
+    \draw[undirected] (cy2)--(g2)--(cx2);
+    \draw[undirected] (cy3)--(g3)--(cx3);
+    \draw[decorate,decoration={brace,mirror,amplitude=3pt},conditionbrace]
+      (-.35,-.45)--(4.70,-.45)
+      node[midway,below=2pt,font=\fontsize{9.2pt}{11pt}\selectfont,text=SLTeal,
+        fill=white,inner sep=.4pt] {给定观测 $\boldsymbol x$};
+  \end{scope}
+
+  \node[latent,minimum size=5.8mm] at (-3.95,-1.15) {};
+  \node[legendlabel] at (-3.60,-1.15) {隐变量};
+  \node[observed,minimum size=5.8mm] at (-2.15,-1.15) {};
+  \node[legendlabel] at (-1.80,-1.15) {观测变量};
+  \node[factor,minimum size=3.4mm] at (.15,-1.15) {};
+  \node[legendlabel] at (.42,-1.15) {条件因子（无向）};
+  \draw[gen] (2.60,-1.15)--(3.20,-1.15);
+  \node[legendlabel] at (3.28,-1.15) {生成方向};
+\end{tikzpicture}
+\caption{HMM与线性链CRF都利用相邻标记关系，但箭头只用于HMM的生成方向；CRF中的无向线段表示给定观测后的局部因子。}\label{fig:V1-C11-tagging}
+\end{figure}

@@ -1,0 +1,19 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{729}
+\setcounter{chapter}{31}
+\setcounter{figure}{1}
+\pagestyle{headings}
+\chaptermark{蒙特卡罗方法与直接采样}
+\sectionmark{蒙特卡罗估计}
+若还要使用有限方差误差公式，则必须再有
+\[
+  \int_{\{p>0\}}\frac{h(x)^2}{p(x)}\,\mathrm dx<\infty.
+\]
+所以“选任意密度就能计算任意积分”不是正确命题；密度必须覆盖被积函数的非零区域，且比值必须满足相应可积条件。阅读图\ref{fig:V5-C02-mc-integral}时应具体回答：被积函数非零而 $p=0$ 的区域会在哪一步丢失，以及二阶矩条件为何比一阶积分改写多出一个 $1/p$ 因子。图只表示这两个逻辑接口，不提供随机复算坐标。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_mc_integral.tex}
+\textbf{阅读边界。}四个样本坐标是冻结的说明性点，不声称来自随机种子。
+\end{document}
+

@@ -1,0 +1,102 @@
+{
+  "candidate_pdf": {
+    "bytes": 4940207,
+    "page_pt": [
+      595.276,
+      841.89
+    ],
+    "pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r99_fullbook\\main_full.pdf",
+    "physical_page": 660,
+    "printed_page": 647,
+    "sha256": "E8D76EEF0D120C518FA94A8F339BF6777AD18AA6AF0BCC17DFB46DF6DFC49EC6"
+  },
+  "checks": {
+    "all_foreground_paths_accounted": true,
+    "all_masks_nonempty": true,
+    "all_object_files_exist": true,
+    "all_pairs_pass": true,
+    "calibration_artifacts_exist": true,
+    "candidate_identity_locked": true,
+    "character_mapping_closed": true,
+    "contact_coverage_closed": true,
+    "critical_pair_review_closed": true,
+    "four_required_views_exist": true,
+    "four_view_manual_pass": true,
+    "manual_mask_integrity": true,
+    "manual_object_review_closed": true,
+    "math_rules_accounted": true,
+    "pair_universe_complete": true,
+    "pixel_height_pass": false,
+    "preliminary_machine_counts_recomputed": true,
+    "punctuation_calibrated": true,
+    "rawdict_to_texttrace_closed": true,
+    "role_e_ratio_pass": true,
+    "role_panel_manual_pass": true,
+    "same_class_d_ratio_pass": true,
+    "semantic_consistency_pass": true,
+    "source_font_control_coverage": true,
+    "source_font_pass": true,
+    "source_scale_control_pass": true,
+    "text_crop_edge_clearance": true,
+    "text_measurement_overlay_exists": true,
+    "three_colour_vision_manual_pass": true,
+    "three_colour_vision_views_exist": true,
+    "unique_object_ids": true,
+    "zero_clip": true,
+    "zero_final_overlap": true
+  },
+  "design_failure_ids": [
+    "GLYPH_0025",
+    "GLYPH_0056"
+  ],
+  "four_views": {
+    "colour_vision_simulations": [
+      "colorblind_protanopia_300dpi.png",
+      "colorblind_deuteranopia_300dpi.png",
+      "colorblind_tritanopia_300dpi.png"
+    ],
+    "crop_box_px": [
+      291,
+      916,
+      2250,
+      1876
+    ],
+    "crop_grid": [
+      1959,
+      960
+    ],
+    "figure_crop_300dpi": "figure_crop_300dpi.png",
+    "full_page_200dpi": "full_page_200dpi.png",
+    "grayscale_300dpi": "grayscale_300dpi.png",
+    "page_300dpi_grid": [
+      2481,
+      3508
+    ],
+    "standalone_300dpi": "standalone_300dpi.png"
+  },
+  "handoff_id": "A-R99-P608-SA1-FRESH-20260824",
+  "not_final_book_acceptance": true,
+  "object_universe": {
+    "N": 170,
+    "expected_pairs": 14365,
+    "glyphs": 112,
+    "pairs": 14365,
+    "paths": 58
+  },
+  "required_artifacts": [
+    "after_font_audit.csv",
+    "source_font_coverage.csv",
+    "source_scale_control_scan.csv",
+    "after_pixel_measurements.csv",
+    "after_overlap_report.csv",
+    "after_text_measurement_overlay_300dpi.png",
+    "after_visual_acceptance.md",
+    "manual_review_ledger.csv",
+    "critical_pair_review_ledger.csv",
+    "role_panel_ledger.csv",
+    "MACHINE_TERMINAL_RECALC.json",
+    "RESULT.txt"
+  ],
+  "result": "FAIL_TO_SA2",
+  "scope": "FIG-P608-01 fresh isolated SA1 on official R99 only"
+}

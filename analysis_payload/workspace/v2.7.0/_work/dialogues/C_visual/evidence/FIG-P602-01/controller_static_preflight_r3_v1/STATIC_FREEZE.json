@@ -1,0 +1,154 @@
+{
+  "schema": "P602_R3_CONTROLLER_STATIC_FREEZE_V1",
+  "status": "P602_R3_CONTROLLER_STATIC_READY_REQUEST_BUILD_SLOT",
+  "static_package_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\controller_static_preflight_r3_v1",
+  "accepted_parent_controller_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\controller_static_preflight_v3c",
+  "future_candidate_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1",
+  "future_cache_root": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1",
+  "future_candidate_root_exists_at_freeze": false,
+  "future_cache_root_exists_at_freeze": false,
+  "future_authorization_token": "P602_R3_V1_ONE_DIRECT_LUALATEX_SLOT_GRANTED",
+  "controller_executed": false,
+  "kpsewhich_executed": false,
+  "texlua_executed": false,
+  "tex_processes_started": 0,
+  "controller_identity": {
+    "path": "controller/P602_CONTROLLED_BUILD_R3_V1.ps1",
+    "bytes": 23798,
+    "sha256": "3CE2E75664C904394FCBF20AA176C14FD456ED52892810CB5CC6CA70BE4279ED"
+  },
+  "accepted_v3c_controller_identity": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\controller_static_preflight_v3c\\controller\\P602_CONTROLLED_BUILD_V3C.ps1",
+    "bytes": 23783,
+    "sha256": "6C05D4EAEE2213E6B0A7808328B5EAC5A2B382E67814FD29706E6FB5D8F0EF78"
+  },
+  "authorized_reverse_equivalence": {
+    "reverse_reconstructed_bytes": 23783,
+    "reverse_reconstructed_sha256": "6C05D4EAEE2213E6B0A7808328B5EAC5A2B382E67814FD29706E6FB5D8F0EF78",
+    "byte_exact_match_to_accepted_v3c": true,
+    "authorized_fields_only": [
+      "round_and_record_schemas",
+      "future_authorization_token",
+      "future_candidate_root",
+      "future_ascii_cache_and_output_root",
+      "cache_probe_round_prefix",
+      "expected_source_sha256"
+    ]
+  },
+  "frozen_inputs": [
+    {
+      "label": "source",
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+      "bytes": 2869,
+      "sha256": "6C4E8F156709C0FF384F9E7B7F2BD5D9CB586E24206BF0BCD2E58933ED3DB47D"
+    },
+    {
+      "label": "wrapper",
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\讲义源码\\合并总册\\v260_FIG-P602-01_standalone.tex",
+      "bytes": 397,
+      "sha256": "AFE3464AEA950331908CD3C56DD0392A6D5010138C4EE9341B78F7FD3E9F7279"
+    },
+    {
+      "label": "engine",
+      "path": "D:\\texlive\\2026\\bin\\windows\\lualatex.exe",
+      "bytes": 6656,
+      "sha256": "CC944A1DB010B47FCF5CCB5D1B184CBA208FE7FEA9F18BEC414940E6FD3E24A6"
+    },
+    {
+      "label": "kpsewhich",
+      "path": "D:\\texlive\\2026\\bin\\windows\\kpsewhich.exe",
+      "bytes": 21504,
+      "sha256": "90E5BD3477FB1AF7F9D1F8C858DE31137AAB4DF57B29928BA82B7D00B2DD85DB"
+    }
+  ],
+  "frozen_paths": {
+    "wrapper_working_directory": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\讲义源码\\合并总册",
+    "wrapper_relative_input": "v260_FIG-P602-01_standalone.tex",
+    "candidate_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1\\01_build\\v260_FIG-P602-01_standalone.pdf",
+    "stdout": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1\\01_build\\lualatex.stdout.txt",
+    "stderr": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1\\01_build\\lualatex.stderr.txt",
+    "TEXMFOUTPUT": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1",
+    "TEXMFVAR": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-var",
+    "TEXMFCACHE": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-cache",
+    "TEXMFCONFIG": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-config"
+  },
+  "path_gates": {
+    "wrapper_cwd_preserved": true,
+    "candidate_root_strict_descendant_of_evidence_parent": true,
+    "build_directory_strict_descendant_of_candidate_root": true,
+    "cache_root_strict_descendant_of_ascii_temp_parent": true,
+    "texmfvar_strict_descendant_of_texmfoutput": true,
+    "texmfcache_strict_descendant_of_texmfoutput": true,
+    "texmfconfig_strict_descendant_of_texmfoutput": true,
+    "all_four_child_environment_paths_ascii": true,
+    "openout_any_override_absent": true,
+    "effective_openout_any_must_equal_p_at_future_runtime_gate": true
+  },
+  "controller_lint": {
+    "ast_parse_errors": 0,
+    "syntactic_process_start_sites": 1,
+    "process_start_line": 180,
+    "generic_helper_callsites": 2,
+    "generic_helper_lines": [266, 346],
+    "build_helper_callsites": 1,
+    "build_helper_line": 346,
+    "start_process_cmdlet_sites": 0,
+    "while_loop_sites": 0,
+    "do_loop_sites": 0,
+    "self_recursion_sites": 0,
+    "old_round_token_sites": 0,
+    "stdout_atomic_write_line": 357,
+    "stderr_atomic_write_line": 358,
+    "result_atomic_write_line": 441,
+    "final_build_status_throw_line": 447,
+    "stdout_before_result": true,
+    "stderr_before_result": true,
+    "result_before_final_build_status_throw": true,
+    "retry_count_frozen_zero": true,
+    "second_start_attempted_frozen_false": true
+  },
+  "success_hard_gate_requires": [
+    "invocation_count_equals_1",
+    "started_true",
+    "start_record_exists",
+    "natural_exit_true",
+    "exit_code_equals_0",
+    "exactly_one_expected_pdf_with_positive_bytes_and_sha256",
+    "post_tex_process_count_equals_0",
+    "start_start_record_runtime_controller_pdf_identity_output_persistence_exceptions_all_empty",
+    "stdout_identity_recomputed",
+    "stderr_identity_recomputed"
+  ],
+  "files_before_marker": [
+    {
+      "path": "controller/P602_CONTROLLED_BUILD_R3_V1.ps1",
+      "bytes": 23798,
+      "sha256": "3CE2E75664C904394FCBF20AA176C14FD456ED52892810CB5CC6CA70BE4279ED",
+      "mtime_utc_ticks": 639232413399292829
+    },
+    {
+      "path": "HANDOFF.md",
+      "bytes": 1006,
+      "sha256": "678BC931D8D1028EDA0432075A9E8FE73D9AE654810E34CE3518514A6B17F3C6",
+      "mtime_utc_ticks": 639232413959420948
+    },
+    {
+      "path": "STATIC_DRY_RUN_REPORT.md",
+      "bytes": 4255,
+      "sha256": "41A64252652D76941DBF010B259F8BFE89FF69A1F3533E56629476C351798E54",
+      "mtime_utc_ticks": 639232413962108801
+    },
+    {
+      "path": "R3_STATIC_DELTA.md",
+      "bytes": 1434,
+      "sha256": "B9A2E2FCBEFCF361826E7D1D26D760551C79761D0AD381C41A75031A0A49D36D",
+      "mtime_utc_ticks": 639232413964907455
+    }
+  ],
+  "expected_ordinary_files": 5,
+  "all_five_files_os_readonly_required": true,
+  "freeze_marker_strictly_latest_required": true,
+  "post_attribute_seal_content_writes_allowed": false,
+  "tex_disabled": true,
+  "build_authorized": false
+}

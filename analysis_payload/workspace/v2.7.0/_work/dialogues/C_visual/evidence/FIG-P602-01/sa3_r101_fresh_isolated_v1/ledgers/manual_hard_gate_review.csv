@@ -1,0 +1,13 @@
+gate_id,manual_decision,viewed_evidence,gate_specific_reason
+HARD01,PASS,objects/object_manifest.csv; all 4 object contact sheets,"object denominator closes at 32: 19 text/formula plus 13 graphic/math-rule objects, with no empty mask or missed visible fraction rule."
+HARD02,PASS,glyphs/glyph_machine_measurements.csv; all 15 glyph contact sheets,"glyph denominator closes at 175/175 native-300 dpi masks/cards and every listed glyph was visually reviewed."
+HARD03,FAIL,ledgers/manual_glyph_review.csv; glyph calibration cards,"strict glyph threshold gate fails 17 of 175 IDs; no natural-shape or uncalibrated exception was used."
+HARD04,PASS,pairs/all_pairs_machine.csv; all 20 pair contact sheets,"all unordered object pairs close exactly at C(32,2)=496 with 496 unique IDs and no duplicate or missing pair."
+HARD05,PASS,pairs/all_pairs_machine.csv; pairs/cards/P0001-P0496,"all 496 pair rows have zero illegal-overlap pixels and satisfy their applicable clearance/design-contact rule."
+HARD06,PASS,ledgers/manual_critical_review.csv; 17 critical cards,"all 17 near/contact/text-spacing critical intersections were opened individually and accepted only on their exact topology/metric evidence."
+HARD07,FAIL,ledgers/manual_peer_review.csv,"peer consistency gate fails 6 of 42 element/role/script-class rows: PEER21-24 and PEER38-39."
+HARD08,FAIL,ledgers/manual_role_review.csv,"role consistency gate fails ROLE03 because formula-block/base ratio 1.22449 exceeds 1.18; EDGE_LABEL and ANNOTATION pass."
+HARD09,PASS,ledgers/manual_clip_review.csv; all object cards,"all 32 objects have zero clip pixels and visibly complete endpoints/outlines/glyphs."
+HARD10,PASS,objects/source_font_audit.csv; current figure source,"all visible source text uses declared native sizes (diagram 9.6 pt, formula block 11.2 pt, caption about 9.96264 pt) with graphics scale 1.0 and no resize."
+HARD11,PASS,render/figure_crop_300dpi.png; adjacent target paragraph,"semantic flow matches the local explanation: propose Y, compute alpha, draw U, accept y or reject/repeat x, with self-loop and concise caption."
+HARD12,FAIL,HARD01-HARD11,"aggregate strict figure hard gate fails because HARD03, HARD07 and HARD08 fail, even though object/pair/critical/clip/view/semantic gates pass."

@@ -1,0 +1,41 @@
+% v2.3.1 figure UID: FIG-P598-02
+% Proposed post-v2.3.1 polish for FIG-P598-02: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P598-02/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P598-02,>=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  flow/.style={-{Stealth[length=2.0mm]},draw=SLBlue,line width=.95pt},
+  kernel/.style={-{Stealth[length=1.8mm]},draw=SLBlue,line width=.78pt},
+  card/.style={draw=SLRuleGray,rounded corners=2pt,fill=SLSoftGray,minimum width=38mm,minimum height=43mm,line width=.58pt}]
+  \node[card] (c1) at (-4.7,0) {};
+  \node[card] (c2) at (0,0) {};
+  \node[card] (c3) at (4.7,0) {};
+  \node[font=\fontsize{9.4pt}{11.2pt}\selectfont\bfseries,text=SLBlue] at (-4.7,1.55) {1\quad 构造核};
+  \node[font=\fontsize{9.2pt}{11.0pt}\selectfont] at (-4.7,1.02) {$\pi K=\pi$};
+  \node[circle,draw=SLBlue,minimum size=6mm,inner sep=0pt,line width=.68pt] (p1) at (-5.45,.1) {$x$};
+  \node[circle,draw=SLBlue,minimum size=6mm,inner sep=0pt,line width=.68pt] (p2) at (-3.95,.1) {$y$};
+  \draw[kernel] (p1) to[bend left=18] (p2);
+  \draw[kernel] (p2) to[bend left=18] (p1);
+  \node[font=\fontsize{8.6pt}{10.2pt}\selectfont,text=SLTextGray] at (-4.7,-1.18) {保持目标分布 $\pi$};
+
+  \node[font=\fontsize{9.4pt}{11.2pt}\selectfont\bfseries,text=SLBlue] at (0,1.55) {2\quad 运行链};
+  \draw[draw=SLRuleGray,line width=.50pt] (-1.5,-.25)--(1.5,-.25);
+  \fill[pattern=north east lines,pattern color=SLRuleGray] (-1.5,-.65) rectangle (-.35,.55);
+  \draw[draw=SLBlue,line width=.78pt]
+    plot coordinates {(-1.42,.20)(-1.08,.55)(-.74,-.05)(-.40,.35)(-.06,-.25)(.28,.10)(.62,-.12)(.96,.18)(1.30,-.05)};
+  \draw[draw=SLGold,line width=.65pt,densely dashed] (-.30,-.72)--(-.30,.65);
+  \node[font=\fontsize{8.6pt}{10.2pt}\selectfont,text=SLTextGray] at (-.92,-1.05) {warm-up};
+  \node[font=\fontsize{8.6pt}{10.2pt}\selectfont,text=SLTextGray] at (.72,-1.05) {保留段};
+
+  \node[font=\fontsize{9.4pt}{11.2pt}\selectfont\bfseries,text=SLBlue] at (4.7,1.55) {3\quad 遍历平均};
+  \foreach \x in {3.55,3.95,4.35,4.75,5.15,5.55,5.95}
+    \fill[SLBlue] (\x,.42) circle (1.2pt);
+  \node[font=\fontsize{9.2pt}{11.0pt}\selectfont] at (4.7,-.38)
+    {$\displaystyle \widehat I_{m,n}=\frac1n\sum_{t=m+1}^{m+n}h(X_t)$};
+  \node[font=\fontsize{8.6pt}{10.2pt}\selectfont,text=SLTextGray] at (4.7,-1.18) {只用保留样本};
+  \draw[flow] (c1.east)--(c2.west);
+  \draw[flow] (c2.east)--(c3.west);
+\end{tikzpicture}
+\caption{MCMC工作流按箭头依次完成三步：由目标分布$\pi$构造以$\pi$为平稳分布的转移核，运行链并舍弃预热段，再以保留样本的遍历平均估计$\mathbb E_\pi[h(X)]$。}\label{fig:V5-C03-mcmc-pipeline}
+\end{figure}

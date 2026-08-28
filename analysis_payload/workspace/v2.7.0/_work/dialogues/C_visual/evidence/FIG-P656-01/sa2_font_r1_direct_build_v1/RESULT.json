@@ -1,0 +1,90 @@
+{
+  "schema": "P656_SA2_FONT_DIRECT_BUILD_R1_RESULT_V1",
+  "uid": "FIG-P656-01",
+  "handoff_id": "C-FIG-P656-01-SA2-FONT-DIRECT-BUILD-R1-LOCAL-V1",
+  "result": "LOCAL_SA2_PASS_READY_FOR_MAIN",
+  "central_status_not_changed": true,
+  "source_committed": false,
+  "build": {
+    "controller_pid": 22220,
+    "child_pid": 25712,
+    "invocation_count": 1,
+    "retry_count": 0,
+    "natural_exit": true,
+    "exit_code": 0,
+    "started_utc": "2026-08-26T09:42:59.9420670Z",
+    "finished_utc": "2026-08-26T09:44:01.9606119Z",
+    "duration_seconds": 62.067,
+    "post_tex_process_count": 0,
+    "success_hard_gate": true
+  },
+  "candidate_pdf": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P656-01\\sa2_font_r1_direct_build_v1\\01_build\\v260_FIG-P656-01_standalone.pdf",
+    "pages": 1,
+    "page_size": "A4",
+    "pdf_version": "1.7",
+    "encrypted": false,
+    "bytes": 35680,
+    "sha256": "1B01C9FFA6E80AEFB79107BFDAE2B7014893BFCAA76654F756DB49AEE7E6C869"
+  },
+  "source": {
+    "baseline_sha256": "BC954A32F6FC8811F9557AD9A3147795CB6CB467DEAEF6195A3A0B1D9E855852",
+    "candidate_sha256": "9D404ED0694D575DE89038D3D6485C49AA4C60DCC3238AD8318CADACF810B381",
+    "prebuild_postbuild_same": true,
+    "bytes": 2854,
+    "diff_files": 1,
+    "insertions": 5,
+    "deletions": 5,
+    "git_diff_check": "PASS"
+  },
+  "wrapper": {
+    "bytes": 399,
+    "sha256": "6092B8A09AC8AF8C0605599CA6C2583530EC2D5DE13F4F6847244015AAC0A3C9",
+    "prebuild_postbuild_same": true
+  },
+  "denominators": {
+    "glyphs": 90,
+    "visible_drawings": 25,
+    "objects": 115,
+    "unordered_pairs": 6555,
+    "critical_pairs": 34,
+    "clip_rows": 115,
+    "manual_object_rows": 115,
+    "manual_view_rows": 12,
+    "hard_gate_rows": 15
+  },
+  "machine": {
+    "empty_object_masks": 0,
+    "clip_outside_page": 0,
+    "shared_raster_ink_pairs": 3,
+    "bbox_overlap_no_shared_ink_pairs": 115,
+    "disjoint_bbox_pairs": 6437,
+    "excluded_nonvisible_pattern_clip_records": 3
+  },
+  "manual": {
+    "object_failures": 0,
+    "critical_pair_failures": 0,
+    "view_failures": 0,
+    "hard_gate_failures": 0,
+    "unresolved": []
+  },
+  "r168": {
+    "hard_defect_failures": 0,
+    "font_metadata_or_1_2px_advisories_blocking": 0
+  },
+  "rejected_sa1_identity": {
+    "instance": "/root/sa1_fig_p656_r107_fresh_isolated_v1",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh",
+    "fork_turns": "none",
+    "handoff_id": "C-FIG-P656-01-R107-SA1-FRESH-ISOLATED-V1"
+  },
+  "prohibitions_observed": {
+    "second_tex_invocation": 0,
+    "latexmk": 0,
+    "commit": 0,
+    "fresh_role": 0,
+    "second_uid": 0,
+    "central_state_or_inventory_write": 0
+  }
+}

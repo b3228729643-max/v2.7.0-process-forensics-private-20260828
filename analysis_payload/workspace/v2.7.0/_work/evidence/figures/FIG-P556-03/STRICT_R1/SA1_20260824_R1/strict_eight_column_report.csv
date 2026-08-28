@@ -1,0 +1,21 @@
+﻿CHECK_ID,CATEGORY,EVIDENCE,METRIC,THRESHOLD,OBSERVED,BOOLEAN,STATUS
+R01,INPUT,render_manifest.json,frozen R93 and independent physical locating,official PDF only,"page 602/813, sha256=8e1dc2f8ee0dea220db9445ab28c4cd2daecd232f3a36b98383d97caabc531ed",true,PASS
+R02,RENDER,full_page_200dpi.png,whole page,native 200dpi,Poppler direct,true,PASS
+R03,RENDER,full_page_300dpi_native.png;full_page_300dpi_grid.json,measurement grid,"native 300dpi,1:1,no resize","2481x3508px; scales=4.167815,4.166815",true,PASS
+R04,COVERAGE,glyph_inventory.csv;semantic_component_inventory.csv;graphic_component_inventory.csv,visible objects,complete,"glyph=114, semantic=16, graphic=25",true,PASS
+R05,MASKS,mask_manifest.csv,raw masks,no dilation,masks=155,true,PASS
+R06,SOURCE_FONT,after_font_audit.csv;source_font_role_ratio_audit.csv;source_font_cross_panel_audit.csv,ordinary effective font and repeated-role consistency,>=9.5pt; same role <=1.03 and <=0.25pt; cross panel <=1.05,failed glyphs=84 across 14 semantic components; same-role=True; cross-panel=True; local 9.4/9.2/8.8pt styles,false,FAIL
+R07,PIXEL_HEIGHT,after_pixel_measurements.csv,literal raw H_ink,30/24/17/22/15px,failed glyphs=13,false,FAIL
+R08,SAME_CLASS,same_class_ratio_audit.csv,same panel+role+script actual raw H_ink,"[0.92,1.08]",no exact-glyph grouping,false,FAIL
+R09,ROLE_RATIO,role_ratio_audit.csv,same-script actual raw H_ink medians,no cross-script comparison,N/A recorded where no base exists,false,FAIL
+R10,OVERLAP,after_overlap_report.csv,all raw-mask pairs,0,0,true,PASS
+R11,CLIP,after_overlap_report.csv,clipping,0,0,true,PASS
+R12,CLEARANCE,after_overlap_report.csv,"text/text,text/graphic,node/edge",4/3/5/6px,text raw=35.125; text bbox=20.721; graphic=7.000; edge=19.000,true,PASS
+R13,CROSS_PANEL,cross_panel_ratio_audit.csv,same role+script,<=1.10 or single panel N/A,one panel,true,PASS
+R14,HARMONY,four views;after_font_audit.csv,FONT_VISUAL_HARMONY_PASS,no undersized/protruding text,9.2pt and 8.8pt visibly undersized,false,FAIL
+R15,MATH,math_semantics_recheck.md,detailed balance proof and counterexample,correct,correct,true,PASS
+R16,TEXT,math_semantics_recheck.md;adjacent_source_context.tex,caption/body symbols and probability semantics,consistent,consistent,true,PASS
+R17,GRAYSCALE,grayscale_300dpi.png,distinguishability,stable,shapes/stroke contrast stable,true,PASS
+R18,PAGE,full_page_200dpi.png,page integration,intact,intact; typography independently fails,true,PASS
+R19,FINAL,strict_audit_summary.json,all hard gates,all true,FAIL,false,FAIL
+R20,MACHINE_FINAL,machine_terminal_check.csv/json,evidence integrity,all true,integrity=True; quality=FAIL,true,PASS

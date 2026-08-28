@@ -1,0 +1,86 @@
+% v2.7.0 figure UID: FIG-P717-01
+% Basic/no-dangling inbound balance, with the general-PageRank boundary local.
+\tikzset{slfig-FIG-P717-01/.style={
+  font=\fontsize{9.6pt}{11.5pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P717-01,>=Stealth,
+  every node/.style={
+    font=\fontsize{9.6pt}{11.5pt}\selectfont,align=center},
+  source/.style={
+    circle,draw=SLRuleGray,line width=.74pt,fill=SLSoftGray,
+    minimum size=11mm,inner sep=0pt},
+  target/.style={
+    circle,draw=SLDeepBlue,line width=.96pt,fill=SLDeepBlue,
+    text=white,minimum size=15mm,inner sep=0pt},
+  inbound/.style={
+    -{Stealth[length=2.4mm,width=1.8mm]},
+    draw=SLMidBlue,line width=.96pt},
+  aggregate/.style={
+    -{Stealth[length=2.4mm,width=1.8mm]},
+    draw=SLDeepBlue,line width=1.0pt},
+  contribution/.style={
+    font=\fontsize{9.6pt}{11.5pt}\selectfont,
+    text=SLDeepBlue,fill=white,rounded corners=1pt,
+    inner sep=1.0pt},
+  formula/.style={
+    draw=SLDeepBlue,line width=.82pt,fill=white,
+    rounded corners=3pt,text width=62mm,minimum height=35mm,
+    inner xsep=2.5mm,inner ysep=2.3mm,align=left},
+  boundary/.style={
+    draw=SLTextGray,dashed,line width=.82pt,fill=SLWarmGray,
+    rounded corners=3pt,text width=138mm,
+    inner xsep=2.5mm,inner ysep=2.0mm,align=left},
+  alt={对象—关系—结论：上部严格限定为基本PageRank且无悬挂结点，此处修复符号 S 等于链接矩阵 M。三个来源 j1、j2、j3 以完全相同线宽指向目标 i，每条边只表示第 j 列提供贡献 M 下标 ij 乘 r_j 的上一步值，不编码数值大小；目标再把贡献汇总。公式卡说明非加权时存在 j 到 i 当且仅当 M_ij 等于来源 j 的出度倒数，分母属于来源 j。下部边界卡说明一般PageRank先以 S 等于 M 加 v a 转置修复悬挂列；悬挂列即使没有 j 到 i 也可有 S_ij 等于 v_i 大于零，随后 G 等于 dS 加一减 d 乘 v 乘全一向量转置，所以正元素对应入链不能外推到修复后的 S 或 G。}]
+
+\node[
+  font=\fontsize{10.2pt}{12.2pt}\selectfont\bfseries,
+  text=SLDeepBlue] at (0,3.10)
+  {基本 PageRank 入链贡献（无悬挂；此处 $S=M$）};
+
+% Three source columns feed one target with exactly equal edge widths.
+\node[source] (j1) at (-6.25,1.30) {$j_1$};
+\node[source] (j2) at (-6.25,0) {$j_2$};
+\node[source] (j3) at (-6.25,-1.30) {$j_3$};
+\node[target] (i) at (-2.15,0) {目标 $i$};
+
+\draw[inbound] (j1) to[out=0,in=150]
+  node[contribution,pos=.42,above=2.4mm]
+  {$M_{i j_1}r_{j_1}^{(t)}$} (i);
+\draw[inbound] (j2) --
+  node[contribution,pos=.42,above=2.0mm]
+  {$M_{i j_2}r_{j_2}^{(t)}$} (i);
+\draw[inbound] (j3) to[out=0,in=210]
+  node[contribution,pos=.42,below=2.4mm]
+  {$M_{i j_3}r_{j_3}^{(t)}$} (i);
+
+\node[formula] (formula) at (3.20,0)
+  {\textbf{来源 $j$ 的第 $j$ 列 $\longrightarrow$ 目标 $i$}\\
+   $\displaystyle r_i^{(t+1)}=\sum_j M_{ij}r_j^{(t)}$\\
+   $\displaystyle \hphantom{r_i^{(t+1)}}
+   =\sum_{j:j\to i}M_{ij}r_j^{(t)}$\\
+   基本 PageRank、无悬挂：$S=M$，$M_{ij}=A_{ij}/c_j$。\\
+   非加权时：$M_{ij}=1/\deg^+(j)\iff j\to i$；\\
+   否则 $M_{ij}=0$。分母 $\deg^+(j)$ 属于\textbf{来源 $j$}。\\
+   三条入边等线宽；未给数值，不编码贡献大小。};
+
+\draw[aggregate] (i) -- (formula)
+  node[midway,above=1.8mm,fill=white,inner sep=1pt,
+  text=SLDeepBlue] {汇总};
+
+% The boundary travels with the figure, so the following section title cannot
+% visually extend the basic/no-dangling claim to repaired S or to G.
+\node[boundary] at (0,-4.20)
+  {\textbf{一般 PageRank 边界（不可外推上方“正元素对应入链”）}\\
+   先以 $S=M+\boldsymbol v\boldsymbol a^{\mathsf T}$ 修复悬挂列；若
+   $c_j=0$，即使没有 $j\to i$，也可有 $S_{ij}=v_i>0$。\\
+   随后 $G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$；因此上方入链解释
+   只属于基本无悬挂的 $M(=S)$，不能套到修复后的 $S/G$。};
+
+\end{tikzpicture}
+\captionsetup{width=.92\linewidth}
+\caption{基本 PageRank（无悬挂）的入链贡献及一般 PageRank 的适用边界。}
+\label{fig:V5-C07-inbound-contribution}
+\end{figure}

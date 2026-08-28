@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+% Copy only the audited font-selection commands from statlearnbook.sty.  The
+% full package is intentionally not loaded here: its release-manifest lookup is
+% relative to an official build tree, while every calibration output must stay
+% inside this evidence directory.
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\setmainfont{STIX Two Text}[Scale=1]
+\setCJKmainfont{Noto Serif SC}[Scale=1,BoldFont=Noto Sans SC Bold,ItalicFont=Noto Serif SC,BoldItalicFont=Noto Sans SC Bold]
+\begin{document}
+\pagestyle{empty}
+% Isolated calibration: same TeX font command and effective source size as the
+% matrix-explanation semicolon in FIG-P547-01.  No neighbouring glyph may
+% contribute a connected component to this calibration target.
+\noindent{\fontsize{9.8pt}{11.7pt}\selectfont ；}
+\end{document}

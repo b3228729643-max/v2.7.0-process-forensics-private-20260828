@@ -1,0 +1,12 @@
+element_id,reviewer_instance,expected_visible_text,codepoints_exact,readable_at_native_300dpi,math_or_semantic_meaning_correct,decision,manual_note
+T01_BLANKET_LEGEND,/root/sa3_fig_p641_r110_fresh_isolated_v1,"虚线圈：Markov毯变量𝛼,𝑧,𝑦",YES,YES,YES,PASS,"Legend correctly identifies alpha z and y as the Markov-blanket variables."
+T02_NODE_Z,/root/sa3_fig_p641_r110_fresh_isolated_v1,𝑧,YES,YES,YES,PASS,z node label is present and centered.
+T03_FACTOR_P_ALPHA,/root/sa3_fig_p641_r110_fresh_isolated_v1,𝑝(𝛼),YES,YES,YES,PASS,p(alpha) is present as the eliminated independent factor.
+T04_NODE_ALPHA,/root/sa3_fig_p641_r110_fresh_isolated_v1,𝛼,YES,YES,YES,PASS,alpha node label is present and centered.
+T05_FACTOR_THETA_ALPHA,/root/sa3_fig_p641_r110_fresh_isolated_v1,𝑝(𝜃∣𝛼),YES,YES,YES,PASS,The conditional factor p(theta|alpha) is exact and readable.
+T06_FOCUS_THETA,/root/sa3_fig_p641_r110_fresh_isolated_v1,𝜃,YES,YES,YES,PASS,theta focus label is present with adequate contrast.
+T07_FACTOR_ZY_THETA,/root/sa3_fig_p641_r110_fresh_isolated_v1,"𝑝(𝑧,𝑦∣𝜃)",YES,YES,YES,PASS,"The likelihood factor p(z,y|theta) is exact and readable."
+T08_NODE_Y,/root/sa3_fig_p641_r110_fresh_isolated_v1,𝑦,YES,YES,YES,PASS,y node label is present and centered.
+T09_ELIMINATED_ANNOTATION,/root/sa3_fig_p641_r110_fresh_isolated_v1,𝑝(𝛼)与𝜃无关置于毯变量标记外并消去,YES,YES,YES,PASS,Annotation correctly explains why p(alpha) drops from the theta conditional kernel.
+T10_CONDITIONAL_FORMULA,/root/sa3_fig_p641_r110_fresh_isolated_v1,"𝜋(𝜃∣𝛼,𝑧,𝑦)∝𝑝(𝜃∣𝛼)𝑝(𝑧,𝑦∣𝜃)",YES,YES,YES,PASS,"Formula retains exactly the two factors incident to theta and has correct proportionality semantics."
+T11_CAPTION,/root/sa3_fig_p641_r110_fresh_isolated_v1,"图33.8因子图中更新𝜃只需读取与𝜃相连的两个因子𝑝(𝜃∣𝛼)和𝑝(𝑧,𝑦∣𝜃)；Markov毯变量为𝛼,𝑧,𝑦，而与𝜃无关的因子𝑝(𝛼)可从满条件核中消去",YES,YES,YES,PASS,"Caption is complete and agrees with the factorization and visible graph."

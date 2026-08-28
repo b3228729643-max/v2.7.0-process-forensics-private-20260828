@@ -1,0 +1,59 @@
+% v2.6.0 figure UID: FIG-P637-01
+% Semantic lock: exact contours, coordinates and six Gibbs moves are unchanged.
+\tikzset{
+  slfig-FIG-P637-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}},
+  slfig-P637-axis/.style={draw=SLTextGray,line width=.72pt,->},
+  slfig-P637-outer/.style={draw=SLRuleGray,line width=.72pt},
+  slfig-P637-middle/.style={draw=SLMidBlue,line width=.80pt},
+  slfig-P637-inner/.style={draw=SLDeepBlue,line width=.90pt},
+  slfig-P637-xone/.style={->,draw=SLMidBlue,line width=1.00pt},
+  slfig-P637-xtwo/.style={->,draw=SLDeepBlue,line width=1.00pt},
+  slfig-P637-long/.style={-{Stealth[length=1.8mm]},draw=SLGold,line width=.78pt},
+  slfig-P637-short/.style={-{Stealth[length=1.8mm]},draw=SLGray,line width=.70pt}
+}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}[slfig-FIG-P637-01,>=Stealth,every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont},
+  >={Stealth[length=2.3mm,width=1.6mm]},
+  every node/.append style={inner sep=1.4pt},
+  alt={对象—关系—结论：二维Gibbs轨迹在更新x下标1时水平移动、更新x下标2时竖直移动；折线是固定的教学示意而非伪造随机轨迹，倾斜狭长目标中的短轴向步揭示了强相关导致的慢混合}]
+  \draw[slfig-P637-axis] (-4.3,0) -- (4.5,0) node[right=3pt] {$x_1$};
+  \draw[slfig-P637-axis] (0,-3.4) -- (0,3.6) node[above=3pt] {$x_2$};
+
+  \begin{scope}[rotate=34]
+    \fill[SLSoftBlue,opacity=0.45] (0,0) ellipse (3.45 and 1.35);
+    \draw[slfig-P637-outer] (0,0) ellipse (3.45 and 1.35);
+    \draw[slfig-P637-middle] (0,0) ellipse (2.55 and 0.98);
+    \draw[slfig-P637-inner] (0,0) ellipse (1.55 and 0.58);
+  \end{scope}
+
+  \coordinate (p0) at (-3.45,-1.8);
+  \coordinate (p1) at (-1.15,-1.8);
+  \coordinate (p2) at (-1.15,-0.20);
+  \coordinate (p3) at (0.85,-0.20);
+  \coordinate (p4) at (0.85,1.15);
+  \coordinate (p5) at (2.35,1.15);
+  \coordinate (p6) at (2.35,2.05);
+
+  \draw[slfig-P637-xone] (p0) -- node[pos=.24,below=20pt,text=SLMidBlue] {更新$x_1$} (p1);
+  \draw[slfig-P637-xtwo] (p1) -- node[pos=.02,below=24pt,text=SLDeepBlue] {更新$x_2$} (p2);
+  \draw[slfig-P637-xone] (p2) -- (p3);
+  \draw[slfig-P637-xtwo] (p3) -- (p4);
+  \draw[slfig-P637-xone] (p4) -- (p5);
+  \draw[slfig-P637-xtwo] (p5) -- (p6);
+
+  \foreach \p/\lab/\anchor/\xs/\ys in {p0/$0$/north east/-2pt/-3pt,p1/$1$/south west/5pt/12pt,p2/$2$/north east/-10pt/-3pt,p3/$3$/north west/14pt/-20pt,p4/$4$/north west/17pt/-11pt,p5/$5$/north west/3pt/-3pt,p6/$6$/east/-7pt/-5pt}{
+    \fill[SLDeepBlue] (\p) circle (2.2pt) node[anchor=\anchor,xshift=\xs,yshift=\ys,inner sep=0pt,font=\fontsize{8.8pt}{10.2pt}\selectfont] {\lab};
+  }
+  \draw[slfig-P637-long] (-2.2,-1.25)--(2.15,1.70)
+    node[pos=.30,above=42pt,sloped,text=SLGold] {长轴};
+  \draw[slfig-P637-short] (-.55,.80)--(.55,-.80)
+    node[pos=.86,below right=40pt,text=SLGray] {短轴};
+  \node[draw=SLRuleGray,fill=white,rounded corners=2pt,align=center,
+    line width=.65pt,inner xsep=5pt,inner ysep=4pt,text width=52mm] at (0,-4.05)
+    {固定教学示意：每次只改变一个坐标；轴向短步使沿长轴推进缓慢。};
+\end{tikzpicture}
+\caption{二维Gibbs轨迹在更新$x_1$时水平移动、更新$x_2$时竖直移动；折线是固定的教学示意而非伪造随机轨迹，倾斜狭长目标中的短轴向步揭示了强相关导致的慢混合}
+\label{fig:V5-C04-gibbs-axis-path}
+\end{figure}

@@ -1,0 +1,27 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{832}
+\setcounter{chapter}{34}
+\setcounter{figure}{4}
+\setcounter{equation}{3}
+\pagestyle{headings}
+\chaptermark{狄利克雷分布与共轭先验}
+\sectionmark{狄利克雷分布}
+图\ref{fig:V5-C05-gamma-normalization}把“独立正变量—总量—比例向量”分成三个可检验步骤；共同rate保证归一化比例具有所述Dirichlet参数。
+
+\paragraph{构造面：正变量怎样变成概率向量？}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_gamma_normalization.tex}
+\FloatBarrier
+
+\paragraph{首次阅读检查：均值、方差与协方差。}\textbf{需要解决的阅读阻塞。}短段落内符号密度高，但符号角色未逐一落地。
+
+\begin{proposition}[均值、方差与协方差]
+若$\boldsymbol\Theta\sim\operatorname{Dir}(\boldsymbol\alpha)$，则
+\[
+\mathbb E(\Theta_i)=\frac{\alpha_i}{\alpha_0},\qquad
+\operatorname{Var}(\Theta_i)=\frac{\alpha_i(\alpha_0-\alpha_i)}{\alpha_0^2(\alpha_0+1)}.
+\]
+\end{proposition}
+\end{document}

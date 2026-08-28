@@ -1,0 +1,40 @@
+% v2.3.1 figure UID: FIG-P722-01
+% v2.6.0 reverse redraw for FIG-P722-01: preserve the exact ten-node/ten-edge sparse-power topology while routing feedback through real exterior whitespace.
+\tikzset{slfig-FIG-P722-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P722-01,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center,outer sep=0pt},
+  stepbox/.style={draw=SLMidBlue,fill=SLSoftBlue,rounded corners=2pt,minimum height=12.5mm,text width=29mm,inner xsep=2.0mm,inner ysep=1.4mm},
+  inputbox/.style={stepbox,draw=SLRuleGray,fill=SLSoftGray},
+  check/.style={diamond,draw=SLDeepBlue,fill=white,aspect=2.20,inner sep=1.4pt,text width=20mm},
+  successbox/.style={draw=SLDeepBlue,fill=SLDeepBlue,text=white,rounded corners=2pt,text width=35mm,minimum height=12mm,inner xsep=2.0mm,inner ysep=1.4mm},
+  budgetbox/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,text width=35mm,minimum height=12mm,inner xsep=2.0mm,inner ysep=1.4mm},
+  certbox/.style={draw=SLMidBlue,fill=white,rounded corners=2pt,text width=37mm,minimum height=11.5mm,inner xsep=2.0mm,inner ysep=1.3mm},
+  main/.style={->,draw=SLDeepBlue,line width=.95pt},
+  loop/.style={->,draw=SLRuleGray,line width=.72pt,densely dashed},
+  edgelabel/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,inner sep=0pt},
+  >={Stealth[length=2.2mm,width=1.55mm]},
+  alt={对象—关系—结论：七步稀疏幂法依次检查输入、计算悬挂质量、稀疏乘法、加入阻尼跳转、归一化与非负核对、计算相邻迭代差，再由判定节点分成收敛、继续或预算停止三路；继续回路只返回悬挂质量步骤。}]
+\node[inputbox] (s1) at (-6.00,2.55) {1 输入检查\\维数、$d,v,r^{(0)}$};
+\node[stepbox] (s2) at (-2.00,2.55) {2 悬挂质量\\$m_t=a^{\mathsf T}r^{(t)}$};
+\node[stepbox] (s3) at (2.00,2.55) {3 稀疏乘法\\$q_t=Mr^{(t)}$};
+\node[stepbox] (s4) at (6.00,2.55) {4 阻尼／跳转\\$r^+=d(q_t+m_tv)+(1-d)v$};
+\node[stepbox] (s5) at (6.00,0.15) {5 归一化／非负核对\\$r^+\in\Delta^{n-1}$};
+\node[stepbox] (s6) at (2.00,0.15) {6 相邻差\\$\delta_t=\lVert r^+-r^{(t)}\rVert_1$};
+\node[check] (s7) at (-2.20,0.15) {7 停止条件\\或预算？};
+\node[successbox] (conv) at (-5.00,-2.60) {converged\\输出$r^+$};
+\node[budgetbox] (budget) at (1.20,-2.60) {budget\_stop\\报告$r^+,\delta_t$};
+\node[certbox] (cert) at (-5.00,-4.25) {$\delta_t/(1-d)\le\varepsilon$\\固定点误差证书};
+\draw[main] (s1)--(s2); \draw[main] (s2)--(s3); \draw[main] (s3)--(s4); \draw[main] (s4)--(s5); \draw[main] (s5)--(s6); \draw[main] (s6)--(s7);
+\draw[main] (s7.south west)--(conv.north east) node[edgelabel,pos=.52,left=3.0mm]{收敛};
+\draw[main] (s7.south east)--(budget.north west) node[edgelabel,pos=.52,right=3.0mm]{预算到};
+\draw[main] (conv.south)--(cert.north);
+\draw[loop] (s7.west)--(-8.25,.15)--(-8.25,4.30)--(-2.00,4.30)--(s2.north)
+  node[edgelabel,pos=.40,left=2.0mm]{continue};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{PageRank稀疏幂法依次执行输入检查、悬挂质量回填、稀疏乘法与阻尼更新，并以$\delta_t=\lVert r^{(t+1)}-r^{(t)}\rVert_1\le(1-d)\varepsilon$作为$\ell_1$误差证书；不满足时继续迭代或按预算停止。}
+\label{fig:V5-C07-power-flow}
+\end{figure}

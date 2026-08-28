@@ -1,0 +1,50 @@
+{
+  "handoff_id": "A-R110-P033-SA1-FRESH-ISOLATED-20260827",
+  "uid": "FIG-P033-01",
+  "role": "SA1_FRESH_ISOLATED",
+  "instance": "/root/p033_r110_fresh_sa1",
+  "model_effort": "gpt-5.6-sol/xhigh",
+  "fork_turns": "none",
+  "candidate": {
+    "physical_pdf_page": 29,
+    "printed_page": 16,
+    "figure_number": "2.1",
+    "caption": "向量的正交分解",
+    "visible_denominator": 99,
+    "glyph_count": 85,
+    "drawing_count": 14,
+    "unordered_pair_count": 4851
+  },
+  "machine": {
+    "exit": 0,
+    "hard_relation_count": 1,
+    "hard_relations": ["R2886"],
+    "critical_relation_count": 10,
+    "empty_mask_count": 0,
+    "foreign_or_unassigned_count": 0,
+    "clip_pixel_count": 0
+  },
+  "manual": {
+    "glyph_ids": "85/85",
+    "drawing_ids": "14/14",
+    "critical_relations": "10/10",
+    "views": "4/4",
+    "contact_sheets_opened": "20/20"
+  },
+  "hard_failure": {
+    "relation_id": "R2886",
+    "objects": ["G036", "D002"],
+    "overlap_native_300dpi_pixels": 24,
+    "clearance_pixels": 0,
+    "required_clearance_pixels": 3,
+    "manual_decision": "FAIL_ILLEGAL_OVERLAP",
+    "description": "Top horizontal stroke of 子 in the subspace label intersects the diagonal lower plane boundary."
+  },
+  "r168_advisory": "9.4 pt/9.2 pt and 1--2 px micro-raster differences are advisory only and did not cause this failure.",
+  "selector_correction": "Seven int16-overflow provisional hard hits were withdrawn; bbox contamination was eliminated with exact same-PDF SVG single-use selectors; N=99/C=4851 was fully recomputed before manual review.",
+  "preseal_crosscheck_correction": "First crosscheck exit 1 was withdrawn because its assertions misread the selector-removal field, ignored nested mask directories, and hard-coded the wrong per-relation PNG count. Corrected rerun exit 0 on official identity plus N99/C4851/hard1/critical10/sheets20/manual99+10+4; no candidate evidence, manual ledger, or R2886 decision changed.",
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P033-01\\STRICT_R2_SA1_FRESH_ISOLATED_R110_20260827",
+  "report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P033-01_R110_SA1_FRESH_ISOLATED_REPORT_20260827.md",
+  "decision": "FAIL",
+  "next_action": "Return to SA2; do not dispatch SA3 for this candidate."
+}

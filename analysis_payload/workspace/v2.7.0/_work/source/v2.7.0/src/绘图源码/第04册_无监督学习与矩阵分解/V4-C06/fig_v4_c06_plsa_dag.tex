@@ -1,0 +1,47 @@
+% v2.3.1 figure UID: FIG-P521-01
+% v2.6.0 reverse redraw: clarify the generating chain, node classes, and nested-plate labels.
+\tikzset{slfig-FIG-P521-01/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P521-01,>=Stealth,
+  every node/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,inner sep=1.8pt},
+  rv/.style={circle,draw=SLBlue,line width=1.0pt,minimum size=9.8mm,fill=white},
+  observed/.style={rv,fill=SLBlue!15},
+  param/.style={rectangle,draw=SLTeal,line width=.82pt,rounded corners=2pt,
+    fill=SLTeal!7,minimum width=18mm,minimum height=7.4mm,
+    inner xsep=2.3mm,inner ysep=1.0mm},
+  gen/.style={-{Stealth[length=2.2mm]},line width=1.0pt,draw=SLBlue},
+  paramedge/.style={-{Stealth[length=2.0mm]},line width=.88pt,draw=SLTeal},
+  plate/.style={draw=SLGray,line width=.62pt,rounded corners=2.3pt},
+  platelabel/.style={text=SLTextGray,font=\fontsize{8.8pt}{10.4pt}\selectfont},
+  legend/.style={anchor=west,text=SLTextGray,font=\fontsize{8.8pt}{10.4pt}\selectfont},
+  summary/.style={draw=SLRuleGray,line width=.62pt,rounded corners=2.3pt,
+    fill=SLSoftGray,align=center,minimum width=42mm,minimum height=11mm},
+]
+  \node[param] (theta) at (-2.85,1.75) {$\theta_d=P(z\mid d)$};
+  \node[param] (phi) at (2.70,1.75) {$\phi_z=P(w\mid z)$};
+  \node[observed] (d) at (-3.45,0) {$d$};
+  \node[rv] (z) at (0,0) {$z$};
+  \node[observed] (w) at (3.15,0) {$w$};
+  \draw[gen] (d)--(z);
+  \draw[gen] (z)--(w);
+  \draw[paramedge] (theta)--(z);
+  \draw[paramedge] (phi)--(w);
+
+  % 内层词位 plate 与外层文档 plate。
+  \draw[plate] (-.75,-.75) rectangle (3.88,.76);
+  \node[platelabel,anchor=north] at (2.00,-.80) {$n=1{:}N_d$};
+  \draw[plate] (-4.18,-1.25) rectangle (4.38,2.38);
+  \node[platelabel,anchor=south east] at (4.33,-1.20) {$d=1{:}D$};
+
+  \node[summary] at (0,-2.02)
+    {$d\longrightarrow z\longrightarrow w$\qquad $w\perp d\mid z$};
+  \node[legend] at (4.72,.55)
+    {实心：观测};
+  \node[legend] at (4.72,.05)
+    {空心：潜变量};
+  \node[legend] at (4.72,-.45)
+    {矩形：参数};
+\end{tikzpicture}
+\caption{PLSA生成图：文档决定主题混合，主题决定单词分布；给定主题后单词与文档条件独立}\label{fig:V4-C06-plsa-dag}
+\end{figure}

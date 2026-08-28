@@ -1,0 +1,10 @@
+reviewer,audit_id,scope,observed,hard_rule_under_r168,hard_failure_count,status,note
+SA3,FONT-001,TOFU_OR_MISSING_GLYPH,"150/150 native and 8x glyph cells complete",YES,0,PASS,"No tofu, blank target, or missing visible glyph."
+SA3,FONT-002,WRONG_GLYPH_OR_CODEPOINT,"150/150 CHAR-codepoint-outline mappings agree",YES,0,PASS,"CJK, Latin, digits, punctuation, and math symbols match their intended identities."
+SA3,FONT-003,ACTUAL_UNREADABILITY,"Full page, native figure, native standalone, grayscale, and every glyph sheet reviewed",YES,0,PASS,"All visible text and formula content is readable."
+SA3,FONT-004,CLEARLY_SEVERE_IMBALANCE,"32 peer/role groups reviewed; no visual outlier",YES,0,PASS,"Heterogeneous punctuation/operator ratios are taxonomy effects, not severe rendered imbalance."
+SA3,FONT-005,FONT_VISUAL_HARMONY,"Tick labels, annotations, formula card, caption, and page context reviewed",YES,0,PASS,"Text hierarchy is restrained, coherent with line weights, and neither visually dominant nor too small to read."
+SA3,FONT-006,SOURCE_POINT_SIZE,"Ticks 8.5pt; other figure text 9.2pt; scale 1",NO,0,PASS_WITH_ADVISORY,"These declarations are below the older 9.5pt metadata threshold, but R168 makes the metadata advisory because the actual render is readable, codepoint-correct, and not severely imbalanced."
+SA3,FONT-007,GLYPH_MASK_COMPLETENESS,"150 target overlays and mask-only cells; missing-stroke-px=0 each",YES,0,PASS,"Every visible glyph outline is covered."
+SA3,FONT-008,GLYPH_MASK_PURITY,"150 uniquely owned masks; foreign-pixel-px=0 each",YES,0,PASS,"No neighboring glyph, border, curve, marker, or rule contaminates a glyph mask."
+SA3,FONT-009,PEER_ROLE_BALANCE,"32 groups; 26 ordinary PASS and 6 R168 advisories",NO,0,PASS_WITH_ADVISORY,"PEER-013/019/020/021/025/030 notes explain antialias or semantic-shape variation; none is a hard font defect."

@@ -1,0 +1,7 @@
+roi_id,native1x_opened,nearest8x_opened,manual_focus,manual_observation,manual_decision
+R01_joint_formula,YES,YES,"joint parameter density and quadratic block","All fractions scripts brackets and operators are sharp; the partial neighboring callout at the crop edge is outside the reviewed focus","PASS"
+R02_joint_slice_intersection,YES,YES,"x1 and x2 slices point marker contours and leaders","The only foreground intersections are intended semantic crossings at the conditioned point and slice crossings with contours; labels remain clear","PASS"
+R03_upper_conditional,YES,YES,"upper full conditional formulas mean marker and curve","Mean 12/25 variance 16/25 marginal 0.290 integral one and peak formula are readable and geometrically aligned","PASS"
+R04_lower_conditional,YES,YES,"lower full conditional formulas mean marker and curve","Mean 3/5 variance 16/25 marginal 0.242 integral one and peak formula are readable and geometrically aligned","PASS"
+R05_mapping_junctions,YES,YES,"two routed normalization arrows and their labels","The green and blue paths do not cross; both arrowheads stop before their destination y-axes and neither label is struck","PASS"
+R06_note_and_caption,YES,YES,"zero-denominator note and full caption","Note and caption are complete with clear inter-block whitespace; no missing glyph clipping or overflow is visible","PASS"

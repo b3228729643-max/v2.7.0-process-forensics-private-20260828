@@ -1,0 +1,15 @@
+% Diagnostic-only local wrapper.  The project font is Noto Serif SC; local
+% xdvipdfmx cannot embed its variable-font file.  Static Noto Sans SC retains
+% CJK rendering for syntax/layout checks while the official-page audit remains
+% the reference for original glyph raster metrics.
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/source/v2.7.0/src/讲义源码/common/statlearnbook}
+\setCJKmainfont{Noto Sans SC}[Scale=1,BoldFont=Noto Sans SC Bold,ItalicFont=Noto Sans SC,BoldItalicFont=Noto Sans SC Bold]
+\SLSetBookMetadata{逐图验证}{统计学习方法讲义 v2.7.0}{FIG-P608-01 本地诊断验证}
+\begin{document}
+\pagestyle{empty}
+\begingroup
+\renewcommand{\caption}[1]{}
+\input{D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/source/v2.7.0/src/绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_trace_running_mean.tex}
+\endgroup
+\end{document}

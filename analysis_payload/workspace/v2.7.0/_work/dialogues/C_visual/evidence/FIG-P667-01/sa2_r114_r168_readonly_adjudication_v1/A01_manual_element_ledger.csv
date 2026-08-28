@@ -1,0 +1,23 @@
+object_id,manual_observation,manual_status,r168_treatment
+T01,Row heading 先验核 is complete bold and aligned with the first strip,CLEAR,not-low
+T02,Prior kernel formula and exponent are complete and mathematically legible,CLEAR_READABLE,advisory-low-9.4pt
+T03,先验指数 is distinct from the exponent and underbrace with no visible-ink collision,CLEAR_READABLE,advisory-low-8.5pt
+T04,Row heading 似然核 is complete bold and aligned with the second strip,CLEAR,not-low
+T05,Likelihood kernel formula and count exponent are complete and legible,CLEAR_READABLE,advisory-low-9.4pt
+T06,计数 is distinct from n_i and its underbrace with no visible-ink collision,CLEAR_READABLE,advisory-low-8.5pt
+T07,Row heading 后验核 is complete bold and aligned with the third strip,CLEAR,not-low
+T08,Posterior kernel formula shows alpha_i+n_i-1 without loss or ambiguity,CLEAR_READABLE,advisory-low-9.4pt
+T09,逐分量相加 is distinct from the compound exponent and does not obscure it,CLEAR_READABLE,advisory-low-8.5pt
+T10,Multiplication sign is intentionally emphasized and cleanly separated from both strips,CLEAR_INTENTIONAL_EMPHASIS,intentional-operator
+T11,Brace label 指数逐分量相加 is readable and sits outside the brace with clear separation,CLEAR_READABLE,advisory-low-8.8pt
+T12,Posterior result theta|n ~ Dir(alpha+n) is centered readable and unambiguous,CLEAR_READABLE,advisory-low-9.4pt
+T13,Dirichlet-multinomial marginal formula is complete including factorial and Beta ratios,CLEAR_READABLE,advisory-low-8.8pt
+T14,保留归一化常数 is complete and has 15 empty thresholded-ink pixels to T13,CLEAR_READABLE,advisory-low-8.8pt
+T15,Full caption is complete readable and agrees with the diagram and adjacent prose,CLEAR,not-low
+G01,First rounded strip border encloses its formula without touching text,CLEAR,geometry
+G02,Second rounded strip border encloses its formula without touching text,CLEAR,geometry
+G03,Third rounded strip border encloses its formula and cleanly emits the main arrow,CLEAR,geometry
+G04,Brace groups exactly the prior and likelihood rows and does not touch its label,CLEAR,geometry
+G05,Solid arrow runs from posterior kernel toward the posterior result and avoids text,CLEAR,geometry
+G06,Posterior result border has visibly ample internal text clearance and balanced fill,CLEAR,geometry
+G07,Dashed branch leaves the result node downward and ends above the marginal formula,CLEAR,geometry

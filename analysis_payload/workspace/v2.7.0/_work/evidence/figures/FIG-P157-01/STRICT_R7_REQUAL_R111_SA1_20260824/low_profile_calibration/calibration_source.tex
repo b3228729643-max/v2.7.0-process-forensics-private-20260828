@@ -1,0 +1,26 @@
+% Revision-111 low-profile punctuation calibration for FIG-P157-01.
+% Each page contains exactly one codepoint, with the same font command,
+% colour, and effective emitted size as its candidate glyph.
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\pagestyle{empty}
+\definecolor{CalBlue}{RGB}{31,78,121}
+\definecolor{CalTeal}{RGB}{15,118,110}
+\newcommand{\CalCJK}[2]{%
+  \begin{tikzpicture}[scale=1.1158158468163533,transform shape]
+    \node[font=\fontsize{9.2pt}{10.9pt}\selectfont,text=#1,fill=white,fill opacity=.90,text opacity=1,inner sep=.9pt]{#2};
+  \end{tikzpicture}%
+}
+\newcommand{\CalPage}[1]{\thispagestyle{empty}\null\vfill\begin{center}#1\end{center}\vfill\null\newpage}
+\begin{document}
+% G0005: U+FF1A, NotoSerifSC-ExtraLight, 10.2655pt effective, blue.
+\CalPage{\CalCJK{CalBlue}{：}}
+% G0014: U+FF1A, NotoSerifSC-ExtraLight, 10.2655pt effective, teal.
+\CalPage{\CalCJK{CalTeal}{：}}
+% G0050: U+002E, STIXTwoText-Bold, 9.9626pt effective, caption label.
+\CalPage{{\small\bfseries\textcolor[rgb]{0.12158,0.13725,0.15686}{.}}}
+% G0068: U+FF0C, NotoSerifSC-ExtraLight, 9.9626pt effective, caption.
+\CalPage{{\small\textcolor[rgb]{0.12158,0.13725,0.15686}{，}}}
+% G0080: U+3002, NotoSerifSC-ExtraLight, 9.9626pt effective, caption.
+\CalPage{{\small\textcolor[rgb]{0.12158,0.13725,0.15686}{。}}}
+\end{document}

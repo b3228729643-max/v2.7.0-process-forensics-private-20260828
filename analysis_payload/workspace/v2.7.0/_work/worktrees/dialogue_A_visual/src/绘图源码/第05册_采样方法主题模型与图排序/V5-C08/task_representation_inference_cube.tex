@@ -1,0 +1,118 @@
+% v2.7.0 figure UID: FIG-P737-01
+% Three-axis locating projection with explicit many-to-many branches and the seven-field specification boundary.
+\tikzset{slfig-FIG-P737-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P737-01,
+  every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=center,outer sep=0pt},
+  projectioncard/.style={draw=SLDeepBlue,fill=SLSoftBlue,line width=.82pt,
+    rounded corners=2.2pt,text width=128mm,inner xsep=2.2mm,inner ysep=1.5mm},
+  coltitle/.style={font=\bfseries\fontsize{10.2pt}{12.2pt}\selectfont,
+    text=SLDeepBlue,inner sep=0pt},
+  methodtag/.style={draw=SLDeepBlue,fill=SLSoftBlue,line width=.74pt,
+    rounded corners=2pt,text width=17mm,minimum height=10.5mm,inner xsep=1.2mm,inner ysep=.8mm},
+  axisbox/.style={draw=SLRuleGray,fill=SLSoftGray,line width=.68pt,
+    rounded corners=1.7pt,minimum height=10.5mm,inner xsep=1.2mm,inner ysep=.8mm},
+  rownote/.style={draw=SLRuleGray,fill=white,line width=.68pt,dashed,
+    rounded corners=1.7pt,text width=126mm,inner xsep=2mm,inner ysep=1.1mm},
+  branchcard/.style={draw=SLRuleGray,fill=white,line width=.72pt,
+    rounded corners=2pt,minimum width=63mm,minimum height=32mm,inner sep=0pt},
+  branchhead/.style={font=\bfseries\fontsize{10.2pt}{12.2pt}\selectfont,
+    text=SLDeepBlue,inner sep=0pt},
+  branchsource/.style={draw=SLDeepBlue,fill=SLSoftBlue,line width=.74pt,
+    rounded corners=1.6pt,text width=25mm,minimum height=7.5mm,inner xsep=1mm,inner ysep=.6mm},
+  branchend/.style={draw=SLRuleGray,fill=SLSoftGray,line width=.68pt,
+    rounded corners=1.5pt,text width=24mm,minimum height=8mm,inner xsep=1mm,inner ysep=.6mm},
+  pK/.style={draw=SLDeepBlue,line width=.96pt,solid,
+    -{Circle[open,length=1.65mm]},shorten <=.7mm,shorten >=.6mm},
+  pP/.style={draw=SLMidBlue,line width=.88pt,dashed,
+    -{Triangle[open,length=1.8mm,width=1.75mm]},shorten <=.7mm,shorten >=.6mm},
+  pN/.style={draw=SLTextGray,line width=.88pt,dash dot,
+    -{Square[open,length=1.65mm]},shorten <=.7mm,shorten >=.6mm},
+  pL/.style={draw=SLAccentOrange,line width=.88pt,densely dashed,
+    -{Diamond[open,length=1.8mm]},shorten <=.7mm,shorten >=.6mm},
+  pR/.style={draw=SLMethodPurple,line width=.88pt,loosely dotted,
+    -{Stealth[length=1.85mm,width=1.55mm]},shorten <=.7mm,shorten >=.6mm},
+  branchA/.style={draw=SLDeepBlue,line width=.9pt,solid,
+    -{Circle[open,length=1.65mm]},shorten <=.6mm},
+  branchB/.style={draw=SLAccentOrange,line width=.86pt,dashed,
+    -{Triangle[open,length=1.8mm,width=1.75mm]},shorten <=.6mm},
+  branchC/.style={draw=SLMidBlue,line width=.86pt,dash dot,
+    -{Square[open,length=1.65mm]},shorten <=.6mm},
+  branchD/.style={draw=SLMethodPurple,line width=.86pt,loosely dotted,
+    -{Diamond[open,length=1.8mm]},shorten <=.6mm},
+  alt={对象—关系—结论：主体按代表方法、任务T、表示R、推断I四列列出五个带适用条件的定位示例；每行以不同线型、端点标记、方法名和文字条件重复编码。下方第一张分叉卡把同一低秩表示R连到平方损失与计数似然两个训练准则J，第二张分叉卡把同一潜变量表示R连到VI与Gibbs两种推断I。顶端边界卡说明粗粒度(T,R,I)只供快速定位、不能唯一确定方法，完整可核验规格仍由观测空间、任务、表示、准则、算法、评价和预算七项组成，因此三轴投影不能替代七项规格。}]
+
+\matrix (grid) [matrix of nodes,row sep=3.2mm,column sep=4.4mm,anchor=center] {
+  |[coltitle,text width=17mm]| {代表方法\\（示例）} &
+  |[coltitle,text width=20mm]| {任务 $T$} &
+  |[coltitle,text width=39mm]| {表示 $R$} &
+  |[coltitle,text width=38mm]| {推断 $I$} \\
+  |[methodtag]| {$k$均值} &
+  |[axisbox,text width=20mm]| {聚类} &
+  |[axisbox,text width=39mm]| {硬分配与质心} &
+  |[axisbox,text width=38mm]| {分配—质心交替\\平方距离目标} \\
+  |[methodtag]| {PCA} &
+  |[axisbox,text width=20mm]| {降维} &
+  |[axisbox,text width=39mm]| {中心化数据的\\正交低秩} &
+  |[axisbox,text width=38mm]| {特征分解／SVD} \\
+  |[methodtag]| {NMF} &
+  |[axisbox,text width=20mm]| {非负低秩建模} &
+  |[axisbox,text width=39mm]| {$W,H\geq 0$\\加性低秩表示} &
+  |[axisbox,text width=38mm]| {交替优化\\损失 $J$ 另定} \\
+  |[methodtag]| {LDA} &
+  |[axisbox,text width=20mm]| {话题建模} &
+  |[axisbox,text width=39mm]| {$\boldsymbol\theta,\boldsymbol z,\boldsymbol\varphi$\\潜变量表示} &
+  |[axisbox,text width=38mm]| {VI／Gibbs等\\后验推断} \\
+  |[methodtag]| {PageRank} &
+  |[axisbox,text width=20mm]| {图排序} &
+  |[axisbox,text width=39mm]| {阻尼且悬挂已修复的\\随机核} &
+  |[axisbox,text width=38mm]| {满足收敛条件的\\幂迭代} \\
+};
+
+\node[projectioncard,above=4mm of grid.north] (projection) {
+  {\bfseries\fontsize{10.2pt}{12.2pt}\selectfont 任务—表示—推断三轴定位投影}
+  \quad {\fontsize{12pt}{14pt}\selectfont $(T,R,I)$}\\[-.2mm]
+  粗粒度投影只供快速定位，不能唯一确定方法；\\[-.2mm]
+  完整可核验规格为 {\fontsize{12pt}{14pt}\selectfont
+  $\mathfrak U=(\mathcal X,\mathcal T,\mathcal R,J,\mathcal A,\mathcal E,\mathcal B)$}；三轴不是其替代。
+};
+
+\draw[pK] (grid-2-2.east)--(grid-2-3.west);
+\draw[pK] (grid-2-3.east)--(grid-2-4.west);
+\draw[pP] (grid-3-2.east)--(grid-3-3.west);
+\draw[pP] (grid-3-3.east)--(grid-3-4.west);
+\draw[pN] (grid-4-2.east)--(grid-4-3.west);
+\draw[pN] (grid-4-3.east)--(grid-4-4.west);
+\draw[pL] (grid-5-2.east)--(grid-5-3.west);
+\draw[pL] (grid-5-3.east)--(grid-5-4.west);
+\draw[pR] (grid-6-2.east)--(grid-6-3.west);
+\draw[pR] (grid-6-3.east)--(grid-6-4.west);
+
+\node[rownote,below=3.2mm of grid.south] (rownote) {
+  五行都是限定条件下的代表性投影，并非唯一绑定；\\[-.2mm]
+  线型、端点标记、方法标签与条件文字共同识别路径，不编码数学强弱。
+};
+
+\coordinate (branchanchor) at ([yshift=-4mm]rownote.south);
+\node[branchcard,anchor=north east] (losscard) at ([xshift=-2mm]branchanchor) {};
+\node[branchcard,anchor=north west] (infercard) at ([xshift=2mm]branchanchor) {};
+
+\node[branchhead,anchor=north] at ([yshift=-2mm]losscard.north) {同一低秩表示的准则分叉};
+\node[branchsource] (lowrank) at ([yshift=-13mm]losscard.north) {同一低秩 $R$};
+\node[branchend] (squareloss) at ([xshift=-15mm,yshift=6.2mm]losscard.south) {$J=$平方损失};
+\node[branchend] (countlike) at ([xshift=15mm,yshift=6.2mm]losscard.south) {$J=$计数似然};
+\draw[branchA] (lowrank.south west) to[out=-100,in=90] (squareloss.north);
+\draw[branchB] (lowrank.south east) to[out=-80,in=90] (countlike.north);
+
+\node[branchhead,anchor=north] at ([yshift=-2mm]infercard.north) {同一潜变量表示的推断分叉};
+\node[branchsource] (latent) at ([yshift=-13mm]infercard.north) {同一潜变量 $R$};
+\node[branchend] (vi) at ([xshift=-15mm,yshift=6.2mm]infercard.south) {$I=$VI};
+\node[branchend] (gibbs) at ([xshift=15mm,yshift=6.2mm]infercard.south) {$I=$Gibbs};
+\draw[branchC] (latent.south west) to[out=-100,in=90] (vi.north);
+\draw[branchD] (latent.south east) to[out=-80,in=90] (gibbs.north);
+\end{tikzpicture}
+\caption{任务—表示—推断三轴定位投影：五行是限定条件下的代表示例；低秩表示按准则、潜变量表示按推断形成分叉，说明$(T,R,I)$并非唯一绑定，也不能替代完整规格$\mathfrak U=(\mathcal X,\mathcal T,\mathcal R,J,\mathcal A,\mathcal E,\mathcal B)$。}
+\label{fig:V5-C08-three-axis}
+\end{figure}

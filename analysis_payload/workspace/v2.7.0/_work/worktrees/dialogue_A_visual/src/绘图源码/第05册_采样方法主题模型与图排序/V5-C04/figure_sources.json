@@ -1,0 +1,261 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V5-C04",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 8,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V5-C04-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_dependency_graph.tex",
+      "source_file": "fig_v5_c04_dependency_graph.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C04-dependency-graph",
+      "caption": "满条件把联合目标转为单坐标更新，扫描后得到需以MCSE、ESS与轨迹诊断的相关样本",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读者看完图33.1后，应能先由五条独立箭头辨认联合目标、满条件、单坐标核、扫描核、相关样本和诊断的依赖顺序，再区分主流程与无箭头的正确性/效率约束，最终说明目标保持不自动推出收敛或快速混合。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+        "target_label": "fig:V5-C04-dependency-graph",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-05-003",
+        "SLM-19-05-004",
+        "PRE-SA-008",
+        "SLM-19-05-005",
+        "SLM-19-03-007",
+        "SLM-19-05-006"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "conceptual_dependency_graph_no_frozen_numeric_coordinates"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：联合目标/局部因子沿五条独立有向边依次连接给定其余坐标的满条件、只更新当前坐标的单坐标核、扫描核、相关样本和MCSE/ESS/轨迹诊断；两张无箭头侧卡分别列正确性与效率约束，说明正确内核不等于快速混合。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-P632-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_conditional_slice.tex",
+      "source_file": "fig_v5_c04_conditional_slice.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C04-conditional-slice",
+      "caption": "同一二元正态联合密度的两条截面除以相应边缘密度后，得到方差$16/25$、全实线积分为$1$的满条件密度；零边缘处须使用预先指定的正则条件版本。",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "先识别同一$\\rho=3/5$二元正态联合密度的水平与竖直切片，再分别核对$m_2(4/5)$与$m_1(1)$的归一化，最终得到均值$12/25$与$3/5$、共同方差$16/25$且全实线积分为$1$的两条满条件密度；另说明零边缘处的正则条件版本边界。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+        "target_label": "fig:V5-C04-conditional-slice",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-05-003",
+        "SLM-19-05-004"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-P632-01",
+        "reason": "v2.7.0_same_bivariate_normal_joint_slices_and_normalized_conditionals"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：同一零均值、单位方差、相关系数五分之三的二元正态在左侧形成主轴四十五度的椭圆等高线；水平虚线固定第二坐标为五分之四，竖直点线固定第一坐标为一。两条不交叉箭头分别表示原始联合截面除以边缘密度 m2 等于标准正态密度在五分之四处的值、m1 等于标准正态密度在一处的值，得到均值二十五分之十二与五分之三、方差二十五分之十六、全实线积分为一的两条满条件密度。零边缘分母只用预先指定的可测正则条件版本处理且仅边缘几乎处处唯一，本高斯例两个分母均为正。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      },
+      "legacy_figure_id": "FIG-V5-C04-02",
+      "canonical_uid": "FIG-P632-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-V5-C04-03",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_coordinate_sweep.tex",
+      "source_file": "fig_v5_c04_coordinate_sweep.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C04-coordinate-sweep",
+      "caption": "系统扫描按固定次序立即写回：第$j$步后的左侧坐标为同轮新值，右侧仍为上一轮旧值，只有$x^{[d]}=x^{(t)}$是轮末样本",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "读者看完图33.3后，应能先按编号与箭头确认$j=1,\\ldots,d$的固定扫描顺序，再由$x^{[j]}$辨认左侧同轮新值与右侧上一轮旧值，最终说明只有$x^{[d]}=x^{(t)}$能记作轮末样本。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+        "target_label": "fig:V5-C04-coordinate-sweep",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-008",
+        "SLM-19-05-005",
+        "SLM-19-03-007"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：系统扫描按固定顺序逐坐标立即写回；第j步后的轮内状态左侧为同轮新值，右侧为上一轮旧值，只有完成第d步才把状态记作轮末样本。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C04-04",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_gibbs_axis_path.tex",
+      "source_file": "fig_v5_c04_gibbs_axis_path.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C04-gibbs-axis-path",
+      "caption": "二维Gibbs轨迹在更新$x_1$时水平移动、更新$x_2$时竖直移动；折线是固定的教学示意而非伪造随机轨迹，倾斜狭长目标中的短轴向步揭示了强相关导致的慢混合",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "读图时应回答：“二维Gibbs轨迹在更新$x_1$时水平移动、更新$x_2$时竖直移动；折线是固定的教学示意而非伪造随机轨迹，倾斜狭长目标中的短轴向步揭示了强相关导致的慢混合”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+        "target_label": "fig:V5-C04-gibbs-axis-path",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-05-004",
+        "SLM-19-05-005"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：二维Gibbs轨迹在更新x下标1时水平移动、更新x下标2时竖直移动；折线是固定的教学示意而非伪造随机轨迹，倾斜狭长目标中的短轴向步揭示了强相关导致的慢混合"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C04-05",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_gibbs_vs_mh.tex",
+      "source_file": "fig_v5_c04_gibbs_vs_mh.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C04-gibbs-vs-mh",
+      "caption": "精确满条件分布作为单坐标提议时，正流分支的Metropolis--Hastings比值恒为1，Gibbs更新无需拒绝；若提议只近似满条件或改用其他分布，则必须恢复接受率校正和拒绝自环",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "读图时应回答：“精确满条件分布作为单坐标提议时，正流分支的Metropolis--Hastings比值恒为1，Gibbs更新无需拒绝；若提议只近似满条件或改用其他分布，则必须恢复接受率校正和拒绝自环”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+        "target_label": "fig:V5-C04-gibbs-vs-mh",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-008",
+        "SLM-19-05-005"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：精确满条件分布作为单坐标提议时，正流分支的Metropolis—Hastings比值恒为1，Gibbs更新无需拒绝；若提议只近似满条件或改用其他分布，则必须恢复接受率校正和拒绝自环"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C04-06",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_bivariate_normal_conditionals.tex",
+      "source_file": "fig_v5_c04_bivariate_normal_conditionals.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C04-bivariate-normal-conditionals",
+      "caption": "取$\\rho=0.6$、$a=1$、$b=0.75$时，两个满条件分布分别为$N(0.45,0.64)$与$N(0.60,0.64)$；图中曲线按同一组参数直接计算。",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "读图时应回答：“标准二元正态目标的两个满条件分布仍是一元正态：条件均值分别为$\\rho b$与$\\rho a$，条件方差均为$1-\\rho^2$；这两条可精确抽样的条件律构成逐坐标Gibbs更新”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+        "target_label": "fig:V5-C04-bivariate-normal-conditionals",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-05-004",
+        "SLM-19-03-007"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C04-06"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：取ρ=0.6、a=1、b=0.75时，两个满条件分布分别为N(0.45,0.64)与N(0.60,0.64)；图中曲线按同一组参数直接计算。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C04-07",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_bayes_markov_blanket.tex",
+      "source_file": "fig_v5_c04_bayes_markov_blanket.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C04-bayes-markov-blanket",
+      "caption": "因子图中更新$\\theta$只需读取与$\\theta$相连的两个因子$p(\\theta\\mid\\alpha)$和$p(z,y\\mid\\theta)$；Markov毯变量为$\\alpha,z,y$，而与$\\theta$无关的因子$p(\\alpha)$可从满条件核中消去",
+      "semantic_type": "probabilistic_graphical_model",
+      "teaching_objective": "读图时应回答：“因子图中更新$\\theta$只需读取与$\\theta$相连的两个因子$p(\\theta\\mid\\alpha)$和$p(z,y\\mid\\theta)$；Markov毯变量为$\\alpha,z,y$，而与$\\theta$无关的因子$p(\\alpha)$可从满条件核中消去”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+        "target_label": "fig:V5-C04-bayes-markov-blanket",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-19-05-006"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：因子图中更新θ只需读取与θ相连的两个因子p(θ给定α)和p(z,y给定θ)；Markov毯变量为α,z,y，而与θ无关的因子p(α)可从满条件核中消去"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C04-08",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_mixing_rho_comparison.tex",
+      "source_file": "fig_v5_c04_mixing_rho_comparison.tex",
+      "source_kind": "pgfplots",
+      "label": "fig:V5-C04-mixing-rho-comparison",
+      "caption": "二元正态系统Gibbs的轮末解析自相关为$\\rho^{2k}$，渐近有效样本比例为$(1-\\rho^2)/(1+\\rho^2)$；当$|\\rho|$接近1时相关性衰减缓慢，即使内核正确且接受率为1，固定长度链的统计效率仍会显著下降",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读者应先比较轮末自相关$\\rho^{2k}$随滞后$k$的衰减，再读取渐近有效样本比例$(1-\\rho^2)/(1+\\rho^2)$随$|\\rho|$的下降，并说明$|\\rho|\\to1^-$是从合法区域$|\\rho|<1$内逼近边界的极限。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+        "target_label": "fig:V5-C04-mixing-rho-comparison",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-SA-008",
+        "SLM-19-05-006"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C04-08"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：左面板比较三种绝对相关系数下轮末自相关ρ上标(2k)的衰减；右面板给出渐近有效样本比例，并把绝对相关系数趋近1的零极限与合法区域小于1明确分开"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

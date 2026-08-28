@@ -1,0 +1,8 @@
+RELATION_ID,REVIEWER,DECISION,NOTE
+R01,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"E01 自 B01 向 B02，虚线与“提议”共同表达从当前状态抽候选。"
+R02,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"E02 自候选节点向接受率面板，标签“计算”与动作一致。"
+R03,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"E03 自接受率向判定菱形，方向正好对应先算 alpha 再比较 U。"
+R04,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"E04 左分支到接受节点，实线及 T16 均编码 U<=alpha 的接受事件。"
+R05,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"E05 右分支到拒绝节点，点划线与 T17 没有误指接受结果。"
+R06,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"E06 从 B06 绕回同一拒绝状态，明确保留 X_t 而不是返回新候选。"
+R07,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"M01 上方是 pi_u(Y)q(X_t|Y)，下方是 pi_u(X_t)q(Y|X_t)，逆/正向次序正确。"

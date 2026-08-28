@@ -1,0 +1,22 @@
+pair_id,reviewer,native1x_opened,overlay_8x_nearest_opened,object_a_raw_opened,object_b_raw_opened,intersection_opened,manual_decision,note
+PAIR_08396,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,37 native pixels: node j final-visible border crosses gray glyph 矩; independent colors and pure masks make the collision unambiguous.
+PAIR_11633,R106-SA1,yes,yes,yes,yes,yes,FAIL_CLEARANCE,Right parenthesis to left-panel border has 3 px white gap against 6 px minimum.
+PAIR_12712,R106-SA1,yes,yes,yes,yes,yes,FAIL_CLEARANCE,Independent formula-line glyphs have zero white-pixel gap against 4 px minimum.
+PAIR_14705,R106-SA1,yes,yes,yes,yes,yes,EVIDENCE_FAIL_MASK_CONTAMINATION,Relationship is under threshold but TXT_G0081 has a disconnected 13-pixel foreign component; not used as standalone geometry proof.
+PAIR_14897,R106-SA1,yes,yes,yes,yes,yes,EVIDENCE_FAIL_MASK_CONTAMINATION,Nominal 13-pixel intersection involves contaminated TXT_G0081 mask; recorded as evidence failure rather than relied-on geometry count.
+PAIR_24218,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,60 native pixels: first superscript T in left conservation formula intersects M-matrix bottom cell border.
+PAIR_24754,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,60 native pixels: second superscript T in left conservation formula intersects M-matrix bottom cell border.
+PAIR_26499,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,56 native pixels: first note glyph above P matrix intersects top cell border.
+PAIR_26616,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,97 native pixels: note glyph 结 intersects P-matrix top border.
+PAIR_26732,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,73 native pixels: note glyph 点 intersects first top cell border.
+PAIR_26733,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,61 native pixels: same note glyph 点 intersects second top cell border.
+PAIR_26848,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,90 native pixels: note glyph 顺 intersects second top cell border.
+PAIR_26962,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,68 native pixels: note glyph 序 intersects second top cell border.
+PAIR_26963,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,60 native pixels: note glyph 序 intersects third top cell border.
+PAIR_27076,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,34 native pixels: opening parenthesis in the node-order note intersects third top cell border.
+PAIR_27188,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,25 native pixels: math glyph i in the node-order note intersects third top cell border.
+PAIR_27299,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,25 native pixels: comma in the node-order note intersects third top cell border.
+PAIR_27409,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,40 native pixels: math glyph j in the node-order note intersects third top cell border.
+PAIR_29229,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,20 native pixels: independent P glyphs on consecutive right-panel formula lines intersect.
+PAIR_29412,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,22 native pixels: independent M glyphs on consecutive right-panel formula lines intersect.
+PAIR_29582,R106-SA1,yes,yes,yes,yes,yes,FAIL_ILLEGAL_OVERLAP,60 native pixels: superscript T in P=M^T intersects P-matrix bottom border.

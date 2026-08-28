@@ -1,0 +1,103 @@
+% v2.7.0 figure UID: FIG-P578-01
+% One state machine; no whole-figure scaling; visible text has a 9.6pt source floor.
+% Compact base-math runs use 10.7pt so their native 300 dpi ink clears 22px.
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\tikzset{slfig-FIG-P578-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[H]
+\newcommand{\slfigRejMath}[1]{{\fontsize{10.7pt}{12.4pt}\selectfont\ensuremath{#1}}}
+\newcommand{\slfigRejLift}[1]{\phantom{#1}\llap{\smash{\raisebox{2.2pt}{#1}}}}
+\centering
+\begin{tikzpicture}[slfig-FIG-P578-01,>=Stealth,
+  alt={对象—关系—结论：带预算的接受—拒绝状态机在任何随机调用前验证标量、密度、支持覆盖与全局包络证书，随后初始化空前缀和计数；每个成功候选使提议数加一，只有接受分支原子追加候选并增加接受数，普通拒绝保持前缀和接受数不变；每轮先检查接受数是否达到目标，再检查提议预算，因而同轮同时命中时返回 completed，随机源或数值失败保留最后合法前缀与失败位置，包络失败返回 invalid\_input 和 envelope\_condition\_failure 诊断。},
+  every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=center},
+  contract/.style={draw=SLRuleGray,rounded corners=2pt,fill=SLSoftGray,
+    text width=75mm,minimum height=15mm,inner xsep=5pt,inner ysep=3pt,line width=.72pt},
+  stepbox/.style={draw=SLRuleGray,rounded corners=2pt,fill=SLSoftGray,
+    text width=45mm,minimum height=9mm,inner xsep=4pt,inner ysep=2pt,line width=.72pt},
+  decision/.style={diamond,aspect=3.15,draw=SLBlue,fill=SLBlue!6,
+    text width=35mm,minimum height=10mm,inner xsep=1.6pt,inner ysep=1.2pt,line width=.82pt},
+  success/.style={draw=SLTeal,rounded corners=7pt,fill=SLTeal!9,
+    text width=36mm,minimum height=11mm,inner xsep=3pt,inner ysep=2pt,line width=.88pt},
+  budgetstop/.style={draw=SLGray,ellipse,densely dashed,fill=SLSoftGray,
+    minimum width=37mm,minimum height=14mm,inner xsep=3pt,inner ysep=2pt,line width=.74pt},
+  failure/.style={draw=SLRed,double,double distance=.9pt,fill=SLRedBG,
+    text width=38mm,minimum height=11mm,inner xsep=3pt,inner ysep=3.3pt,line width=.72pt},
+  ordinary/.style={draw=SLGray,densely dashed,rounded corners=2pt,fill=white,
+    text width=34mm,minimum height=10mm,inner xsep=3pt,inner ysep=2pt,line width=.72pt},
+  arr/.style={draw=SLBlue,line width=.84pt,-{Stealth[length=1.9mm]}},
+  returnarr/.style={draw=SLGray,line width=.76pt,-{Stealth[length=1.8mm]}},
+  edgeword/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,fill=white,inner sep=1pt},
+  vedgeword/.style={edgeword,anchor=west,xshift=8mm,inner ysep=.3pt},
+  vedgewordupper/.style={vedgeword,yshift=3.5pt},
+]
+  \node[contract] (precheck) at (0,9.50) {随机调用前完整验证：
+    $N,B\in\mathbb N_0$，$1\le c<\infty$；$p,q$有限非负；
+    $p>0\Rightarrow q>0$；$\rho=p/(cq)$在$q>0$处有限；\\
+    $\operatorname{supp}(p)\subseteq\operatorname{supp}(q)$，且全局$p\le cq$};
+  \node[decision] (valid) at (0,7.78) {全部输入与证书通过？};
+  \node[failure] (badinput) at (6.15,7.23) {$\mathtt{invalid\_input}$\\
+    异常出口；字段/位置\\\slfigRejMath{X_{1:a}=\varnothing,m=a=0}\\
+    $\mathtt{envelope\_condition}$\\[-1pt]
+    $\mathtt{\_failure}$（包络诊断）};
+
+  \node[stepbox] (init) at (0,6.26) {初始化\slfigRejMath{m=a=0}，有\\
+    \slfigRejLift{效样本前缀\slfigRejMath{X_{1:a}=\varnothing}}};
+  \node[decision] (goal) at (0,4.85) {\slfigRejMath{a=N}？};
+  \node[success] (completed) at (6.15,5.00) {$\mathtt{completed}$｜成功出口\\
+    \slfigRejMath{X_{1:N},m,a=N}\\完成（含零目标）};
+  \node[decision] (budgetcheck) at (0,3.15) {\slfigRejMath{m=B}？};
+  \node[budgetstop] (budget) at (5.90,2.45) {$\mathtt{budget\_stop}$\\
+    预算停止\\\slfigRejMath{X_{1:a},m=B,a<N}};
+
+  \node[decision] (proposal) at (0,1.44) {调用\slfigRejMath{Y\sim q}成功？};
+  \node[failure] (proposalfail) at (6.15,.09) {$\mathtt{random\_source\_failure}$\\
+    \slfigRejMath{X_{1:a},m,a}\\位置\slfigRejMath{(m+1,\text{提议源})}};
+  \node[stepbox] (countproposal) at (0,-.08) {候选生成成功：立即令\slfigRejMath{m\leftarrow m+1}};
+  \node[decision] (uniform) at (0,-1.79) {均匀源成功并返回\slfigRejMath{U\sim\mathrm U(0,1)}？};
+  \node[failure] (uniformfail) at (6.15,-2.59) {$\mathtt{random\_source\_failure}$\\
+    \slfigRejMath{X_{1:a},m,a}\\位置\slfigRejMath{(m,\text{均匀源})}};
+
+  \node[stepbox] (evaluate) at (0,-3.59) {求\slfigRejMath{p(Y),q(Y)}与\\
+    \slfigRejLift{\slfigRejMath{\rho=p(Y)/(cq(Y))}}};
+  \node[decision] (numericok) at (0,-5.29) {\slfigRejMath{p(Y),q(Y)}有限非负，\\\slfigRejMath{q(Y)>0}且\slfigRejMath{\rho}有限？};
+  \node[failure] (numericfail) at (6.15,-5.39) {$\mathtt{numerical\_failure}$\\
+    \slfigRejMath{X_{1:a},m,a}\\位置\slfigRejMath{(m,\text{密度/比率})}};
+  \node[decision] (envelopeok) at (0,-7.29) {\slfigRejMath{0\le\rho\le1}？};
+  \node[failure] (envelopefail) at (6.15,-8.19) {$\mathtt{invalid\_input}$\\
+    \slfigRejMath{X_{1:a},m,a}；位置\slfigRejMath{m}\\
+    $\mathtt{envelope\_condition}$\\[-1pt]
+    $\mathtt{\_failure}$（包络诊断）};
+
+  \node[decision] (accept) at (0,-9.02) {\slfigRejMath{U\le\rho}？};
+  \node[stepbox,text width=34mm] (commit) at (-2.65,-10.45) {接受：原子追加\slfigRejMath{Y}，\\\slfigRejMath{a\leftarrow a+1}};
+  \node[ordinary] (reject) at (2.65,-10.45) {普通拒绝：不追加，\\\slfigRejMath{a}与\slfigRejMath{X_{1:a}}不变};
+  \coordinate (merge) at (0,-11.20);
+
+  \draw[arr] (precheck)--(valid);
+  \draw[arr] (valid.east)--node[edgeword,above]{否}(badinput.west);
+  \draw[arr] (valid)--node[vedgewordupper]{是}(init);
+  \draw[arr] (init)--(goal);
+  \draw[arr] (goal.east)--node[edgeword,above]{是：优先}(completed.west);
+  \draw[arr] (goal)--node[vedgeword]{否}(budgetcheck);
+  \draw[arr] (budgetcheck.east)--node[edgeword,above]{是}(budget.west);
+  \draw[arr] (budgetcheck)--node[vedgeword]{否}(proposal);
+  \draw[arr] (proposal.east)--node[edgeword,above]{失败}(proposalfail.west);
+  \draw[arr] (proposal)--node[vedgewordupper]{成功}(countproposal);
+  \draw[arr] (countproposal)--(uniform);
+  \draw[arr] (uniform.east)--node[edgeword,pos=.38,above]{失败}(uniformfail.west);
+  \draw[arr] (uniform)--node[vedgewordupper]{成功}(evaluate);
+  \draw[arr] (evaluate)--(numericok);
+  \draw[arr] (numericok.east)--node[edgeword,above]{否}(numericfail.west);
+  \draw[arr] (numericok)--node[vedgeword]{是}(envelopeok);
+  \draw[arr] (envelopeok.east)--node[edgeword,above]{否}(envelopefail.west);
+  \draw[arr] (envelopeok)--node[vedgeword]{是}(accept);
+  \draw[arr] (accept.south west)--node[edgeword,left]{接受}(commit.north);
+  \draw[arr] (accept.south east)--node[edgeword,right]{拒绝}(reject.north);
+  \draw[returnarr] (commit.south)--(merge);
+  \draw[returnarr] (reject.south)--(merge);
+  \draw[returnarr] (merge)--(-4.75,-11.05)--
+    node[edgeword,pos=.32,right,xshift=2pt]{先\slfigRejMath{a=N}\\再\slfigRejMath{m=B}}(-4.75,4.85)--(goal.west);
+\end{tikzpicture}
+\caption{带预算的接受--拒绝必须区分普通拒绝、收满目标、未收满而预算耗尽，以及包络证书失败。}\label{fig:V5-C02-rejection-flow}
+\end{figure}

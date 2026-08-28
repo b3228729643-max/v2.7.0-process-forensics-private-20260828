@@ -1,0 +1,12 @@
+CHECK_ID,CURRENT_R114_OR_SOURCE_CLAIM,POST_OBSERVATION_CHECK,MANUAL_ADJUDICATION,EVIDENCE
+M01,"shared document--topic--word conditional structure","top node states the common conditional structure and its two-layer mixture/conditional-independence/bag-of-words role",CORRECT,"current source line 16; figure_caption_300dpi"
+M02,"complete Bayes LDA has random theta and phi","left model node explicitly retains both as random variables",CORRECT,"current source line 18; ROI03_left_route_native1x"
+M03,"collapsed Gibbs integrates out theta and phi","left inference node explicitly says integral elimination of both variables",CORRECT,"current source line 21; chapter lines 84-85; ROI03_left_route_native1x"
+M04,"point-parameter LDA variant estimates phi","right model node explicitly distinguishes phi as an estimated parameter",CORRECT,"current source line 19; ROI04_right_route_native1x"
+M05,"mean-field variational EM performs ELBO coordinate ascent","right inference node gives both the method and its coordinate-ascent objective",CORRECT,"current source line 22; chapter lines 86-87; ROI04_right_route_native1x"
+M06,"two branches share a conditional structure but do not have the same posterior","warning states the posterior distinction and forbids comparison only by algorithm name",CORRECT,"current source line 29; ROI05_warning_native1x"
+M07,"arrows are learning dependencies","caption says arrows indicate learning dependence and do not mean identical posteriors",CORRECT,"current caption line 32; chapter line 88; ROI06_caption_native1x"
+M08,"left and right paths remain distinguishable without color","left path is solid and right path dashed/open; distinction persists in grayscale",CORRECT,"figure_caption_grayscale_300dpi; figure_only_300dpi"
+M09,"caption and diagram describe the same two branch mapping","complete Bayes maps only to collapsed Gibbs; point-parameter variant maps only to mean-field VEM",CORRECT,"figure_caption_300dpi; current source lines 18-28"
+M10,"no posterior-equivalence implication is introduced by geometry","branches share only the top prerequisite and remain separated through their model and inference nodes",CORRECT,"semantic_overlay_300dpi; current source/caption"
+

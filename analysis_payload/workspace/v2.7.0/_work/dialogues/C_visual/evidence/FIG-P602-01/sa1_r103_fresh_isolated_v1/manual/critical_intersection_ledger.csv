@@ -1,0 +1,25 @@
+CRITICAL_ID,REVIEWER,DECISION,NOTE,EVIDENCE
+C01,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"T01/T02 与 B01 四边均分离；最紧的第二行到底边仍约 12px。",render/critical_direct8x/critical_contact_direct8x_01.png
+C02,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"候选两行没有触及浅灰圆角框；箭头在框外结束。",render/critical_direct8x/critical_contact_direct8x_01.png
+C03,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"说明行在 B03 顶边下方有约 27px，括号和 pi_u 未顶边。",render/critical_direct1x/critical_contact_direct1x_01.png
+C04,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"公式大括号、分数线与面板底边都留白；M01 不碰上下 glyph。",render/critical_direct8x/critical_contact_direct8x_01.png
+C05,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"两行判定文字位于菱形中央，距四条斜边远大于 5px。",render/critical_direct1x/critical_contact_direct1x_01.png
+C06,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"接受节点内第二行到底框约 9px，箭头头在上边框之外。",render/critical_direct8x/critical_contact_direct8x_01.png
+C07,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"拒绝节点文字与复合双边框均分离；白间隔没有吞掉字形。",render/critical_direct8x/critical_contact_direct8x_02.png
+C08,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"E01 从 B01 下方开始，线身未穿过状态变量。",render/critical_direct8x/critical_contact_direct8x_02.png
+C09,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"提议箭头头停在 B02 上边框前，形成可见小间隙。",render/critical_direct8x/critical_contact_direct8x_02.png
+C10,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"E02 离开候选框下方时没有把边框延长成重叠线。",render/critical_direct8x/critical_contact_direct8x_02.png
+C11,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"计算箭头头与 B03 顶边分开，浅灰头部完整。",render/critical_direct8x/critical_contact_direct8x_02.png
+C12,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"E03 从公式面板底边之后起步，未压住面板蓝线。",render/critical_direct8x/critical_contact_direct8x_02.png
+C13,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"判定箭头落在菱形顶点正上方，箭头尖端与顶点没有穿字。",render/critical_direct8x/critical_contact_direct8x_03.png
+C14,/root/sa1_fig_p602_r103_fresh_isolated,ALLOWED_CONTACT,"E04 在 B04 左下边界按关系契约发出；共享前景是预期端点而非非法碰撞。",machine/pair_pixel_intersections.csv
+C15,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"接受箭头头落在 B05 上边之前，框线与箭头可分别辨认。",render/critical_direct8x/critical_contact_direct8x_03.png
+C16,/root/sa1_fig_p602_r103_fresh_isolated,ALLOWED_CONTACT,"E05 在 B04 右下边界按拒绝分支发出；57px 只属于合法拓扑连接。",machine/pixel_overlap_summary.json
+C17,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"拒绝箭头尖端停在 B06 上边双线前，未与两道边框融合。",render/critical_direct8x/critical_contact_direct8x_03.png
+C18,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"自环两端在拒绝节点下方，左侧回返头部和右侧曲线均未穿框内文字。",render/critical_direct8x/critical_contact_direct8x_03.png
+C19,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"“提议”白底切断竖虚线，文字墨迹与线身保持真实分离。",render/critical_direct8x/critical_contact_direct8x_04.png
+C20,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"“计算”标签前景没有和浅灰箭头共像素；箭头头仍完整可见。",render/critical_direct8x/critical_contact_direct8x_04.png
+C21,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"“判定”标签横跨垂直路径但不透明背景产生实际净空，不存在穿字。",render/critical_direct8x/critical_contact_direct8x_04.png
+C22,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"“接受”位于实线分支上方，斜线从其右下经过且没有前景相交。",render/critical_direct8x/critical_contact_direct8x_04.png
+C23,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"“拒绝”位于点划分支上方，最近 dash 仍与字形分离。",render/critical_direct8x/critical_contact_direct8x_04.png
+C24,/root/sa1_fig_p602_r103_fresh_isolated,CLEAR,"自环说明白底抹去曲线底部邻段，最终原图中文字与曲线为零共像素。",render/critical_direct8x/critical_contact_direct8x_04.png

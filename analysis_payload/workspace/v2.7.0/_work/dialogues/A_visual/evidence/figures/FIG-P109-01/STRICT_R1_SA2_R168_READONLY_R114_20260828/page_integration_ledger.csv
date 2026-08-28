@@ -1,0 +1,7 @@
+INTEGRATION_ID,EVIDENCE,POST_OBSERVATION_STATUS,OBSERVATION
+I01,locator.json,CLEAR,"Current target independently located exactly once on physical page 116 of 817; printed page is 103."
+I02,full_page_200dpi.png,CLEAR_EXCEPT_FIGURE_LOCAL_DEFECT,"At ordinary full-page review the figure is balanced between the preceding geometry box and following explanation; no page clipping or abnormal whitespace."
+I03,full_page_native300dpi.png,CLEAR_EXCEPT_FIGURE_LOCAL_DEFECT,"Native 300 dpi page is sharp and complete; the local domain-label collision remains present."
+I04,figure_caption_native300dpi.png,CLEAR_EXCEPT_O01_O11,"Figure, formal statement, and caption are complete and proportionate; only the domain-label C collision is defective."
+I05,figure_caption_grayscale_native300dpi.png,CLEAR_EXCEPT_O01_O11,"Geometry, markers, text, and frame remain distinguishable in grayscale; the same boundary/C crossing persists."
+I06,"R05_native1x.png; R05_nearest8x.png",CLEAR,"Caption is intact, unclipped, and clearly separated from the statement box and following paragraph."

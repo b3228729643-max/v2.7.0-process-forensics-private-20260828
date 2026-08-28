@@ -1,0 +1,104 @@
+{
+  "schema": "P657_R111_SA2_READONLY_RESEAL_INDEPENDENT_AUDIT_V1",
+  "handoff_id": "C-FIG-P657-01-R111-SA2-R168-READONLY-RESEAL-V1",
+  "audited_utc": "2026-08-27T03:45:20.3779113Z",
+  "auditor": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\reports\\P657_R111_READONLY_RESEAL_V1_EXTERNAL_AUDITOR.ps1",
+    "bytes": 10922,
+    "sha256": "896EAB7F26FB763262D039B499DC0CB8C423752F83A65413A585FD27D38FED15"
+  },
+  "controller": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\reports\\P657_R111_READONLY_RESEAL_V1_CONTROLLER.ps1",
+    "bytes": 25143,
+    "sha256": "A105B5833B3488324A7B50B40DEC325EEC93866EC716AED280F15607A7C40C2A",
+    "invocation": 1,
+    "retry": 0,
+    "exit": 0
+  },
+  "old_root": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_v1",
+    "ordinary_files": 489,
+    "material_identity_mismatch": 0,
+    "control_identity_mismatch": 0,
+    "write_operations": 0
+  },
+  "copy_identity": {
+    "rows": 487,
+    "mismatch": 0,
+    "old_controls_copied": 0
+  },
+  "new_root": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_reseal_v1",
+    "payload": 489,
+    "controls": 3,
+    "ordinary": 492,
+    "directories_including_root": 10
+  },
+  "manifest": {
+    "rows": 489,
+    "duplicate_or_identity_mismatch": 0,
+    "missing": 0,
+    "extra": 0
+  },
+  "readonly": {
+    "files": 492,
+    "total_files": 492,
+    "directories": 10,
+    "total_directories_including_root": 10,
+    "root_readonly": true
+  },
+  "hygiene": {
+    "json_parse_failures": 0,
+    "csv_parse_failures": 0,
+    "ads": 0,
+    "cache_pyc": 0,
+    "reparse": 0
+  },
+  "write_stopped": {
+    "count": 1,
+    "ticks": 639233989871623808,
+    "at_or_after_excluding_marker": 0,
+    "postmarker_writes": 0,
+    "strict_latest": true
+  },
+  "artifact_identities": {
+    "COPY_IDENTITY.csv": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_reseal_v1\\COPY_IDENTITY.csv",
+      "bytes": 293328,
+      "sha256": "727A86EABC1D37CA75EA0DB9AA6ECE94DEF49036AF88B3224169150EEB22D5FA",
+      "last_write_utc_ticks": 639233989851214198,
+      "readonly": true
+    },
+    "COPY_PROVENANCE.json": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_reseal_v1\\COPY_PROVENANCE.json",
+      "bytes": 1972,
+      "sha256": "ED1F5CA997E3206898EF47ACD07F11A997553B72C2114974C5BA59D8AFEDB7A0",
+      "last_write_utc_ticks": 639233989851386650,
+      "readonly": true
+    },
+    "PAYLOAD_MANIFEST.json": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_reseal_v1\\PAYLOAD_MANIFEST.json",
+      "bytes": 119944,
+      "sha256": "EA295729799C4F9C6E25C6881F8CB25A43EBF65D262C92FFF4A66D0DB84ED820",
+      "last_write_utc_ticks": 639233989852325014,
+      "readonly": true
+    },
+    "SEAL_AUDIT.json": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_reseal_v1\\SEAL_AUDIT.json",
+      "bytes": 1677,
+      "sha256": "532ACB3F1DE02F7A3194BB4A95BE1B5A8EE21BDDFD09086172E39E9CE965AABB",
+      "last_write_utc_ticks": 639233989861623841,
+      "readonly": true
+    },
+    "WRITE_STOPPED": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_reseal_v1\\WRITE_STOPPED",
+      "bytes": 2452,
+      "sha256": "2822CC2C9743AC37F9A9D2FDFD3E9D410E20CE27F047CC0D391045AAD38F3612",
+      "last_write_utc_ticks": 639233989871623808,
+      "readonly": true
+    }
+  },
+  "business_decision_unchanged": "SA2_NO_SOURCE_CHANGE_READY_FOR_FRESH_SA1",
+  "tex_or_source_or_git_or_central_writes": 0,
+  "success": true
+}

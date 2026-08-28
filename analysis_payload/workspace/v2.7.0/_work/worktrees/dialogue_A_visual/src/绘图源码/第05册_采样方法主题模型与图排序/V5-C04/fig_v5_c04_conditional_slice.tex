@@ -1,0 +1,160 @@
+% v2.7.0 figure UID: FIG-P632-01
+% One analytic model drives the joint contours, slice denominators and both
+% normalized conditional densities.  No panel-level or whole-figure scaling.
+\begingroup
+\def\slpRhoNum{3}
+\def\slpRhoDen{5}
+\def\slpANum{1}
+\def\slpADen{1}
+\def\slpBNum{4}
+\def\slpBDen{5}
+\pgfmathsetmacro{\slpRho}{\slpRhoNum/\slpRhoDen}
+\pgfmathsetmacro{\slpA}{\slpANum/\slpADen}
+\pgfmathsetmacro{\slpB}{\slpBNum/\slpBDen}
+\pgfmathsetmacro{\slpCondVar}{1-\slpRho*\slpRho}
+\pgfmathsetmacro{\slpCondSd}{sqrt(\slpCondVar)}
+\pgfmathsetmacro{\slpMeanOne}{\slpRho*\slpB}
+\pgfmathsetmacro{\slpMeanTwo}{\slpRho*\slpA}
+\pgfmathsetmacro{\slpCondPeak}{1/(sqrt(2*pi)*\slpCondSd)}
+\pgfmathsetmacro{\slpMarginalTwo}{exp(-\slpB*\slpB/2)/sqrt(2*pi)}
+\pgfmathsetmacro{\slpMarginalOne}{exp(-\slpA*\slpA/2)/sqrt(2*pi)}
+\pgfmathsetmacro{\slpEigLong}{1+\slpRho}
+\pgfmathsetmacro{\slpEigShort}{1-\slpRho}
+\pgfmathtruncatemacro{\slpMeanOneNum}{\slpRhoNum*\slpBNum}
+\pgfmathtruncatemacro{\slpMeanOneDen}{\slpRhoDen*\slpBDen}
+\pgfmathtruncatemacro{\slpMeanTwoNum}{\slpRhoNum*\slpANum}
+\pgfmathtruncatemacro{\slpMeanTwoDen}{\slpRhoDen*\slpADen}
+\pgfmathtruncatemacro{\slpCondVarNum}{\slpRhoDen*\slpRhoDen-\slpRhoNum*\slpRhoNum}
+\pgfmathtruncatemacro{\slpCondVarDen}{\slpRhoDen*\slpRhoDen}
+\pgfmathtruncatemacro{\slpCondSdNum}{sqrt(\slpCondVarNum)}
+\pgfmathtruncatemacro{\slpCondSdDen}{\slpRhoDen}
+\pgfmathtruncatemacro{\slpCrossNum}{2*\slpRhoNum}
+\pgfmathtruncatemacro{\slpJointNormDen}{2*\slpCondSdNum}
+\pgfmathtruncatemacro{\slpJointQuadNum}{\slpRhoDen*\slpRhoDen}
+\pgfmathtruncatemacro{\slpJointQuadDen}{2*\slpCondVarNum}
+\def\slpCOuter{2.25}
+\def\slpCMiddle{1.55}
+\def\slpCInner{0.90}
+\pgfmathsetmacro{\slpLongOuter}{\slpCOuter*sqrt(\slpEigLong)}
+\pgfmathsetmacro{\slpShortOuter}{\slpCOuter*sqrt(\slpEigShort)}
+\pgfmathsetmacro{\slpLongMiddle}{\slpCMiddle*sqrt(\slpEigLong)}
+\pgfmathsetmacro{\slpShortMiddle}{\slpCMiddle*sqrt(\slpEigShort)}
+\pgfmathsetmacro{\slpLongInner}{\slpCInner*sqrt(\slpEigLong)}
+\pgfmathsetmacro{\slpShortInner}{\slpCInner*sqrt(\slpEigShort)}
+
+\tikzset{
+  slfig-FIG-P632-01/.style={every path/.append style={line cap=round,line join=round}},
+  sl632-axis/.style={draw=SLTextGray,line width=0.74pt,->},
+  sl632-contour-outer/.style={draw=SLRuleGray,line width=0.72pt,densely dotted},
+  sl632-contour-mid/.style={draw=SLMidBlue,line width=0.88pt,dashed},
+  sl632-contour-inner/.style={draw=SLDeepBlue,line width=1.02pt},
+  sl632-slice-mid/.style={draw=SLMidBlue,line width=0.78pt,dash pattern=on 5pt off 2pt},
+  sl632-slice-deep/.style={draw=SLDeepBlue,line width=0.82pt,dash pattern=on 1pt off 1.7pt},
+  sl632-density-mid/.style={draw=SLMidBlue,line width=1.12pt},
+  sl632-density-deep/.style={draw=SLDeepBlue,line width=1.12pt,dash pattern=on 5pt off 2pt},
+  sl632-peak-mid/.style={draw=SLMidBlue,line width=0.58pt,dashed},
+  sl632-peak-deep/.style={draw=SLDeepBlue,line width=0.58pt,densely dotted},
+  sl632-map-mid/.style={draw=SLMidBlue,line width=0.92pt,dashed,->},
+  sl632-map-deep/.style={draw=SLDeepBlue,line width=0.92pt,dash pattern=on 1pt off 1.7pt,->}
+}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  slfig-FIG-P632-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont},
+  >={Stealth[length=2.3mm,width=1.6mm]},
+  alt={对象—关系—结论：同一零均值、单位方差、相关系数五分之三的二元正态在左侧形成主轴四十五度的椭圆等高线；水平虚线固定第二坐标为五分之四，竖直点线固定第一坐标为一。两条不交叉箭头分别表示原始联合截面除以边缘密度 m2 等于标准正态密度在五分之四处的值、m1 等于标准正态密度在一处的值，得到均值二十五分之十二与五分之三、方差二十五分之十六、全实线积分为一的两条满条件密度。零边缘分母只用预先指定的可测正则条件版本处理且仅边缘几乎处处唯一，本高斯例两个分母均为正。}]
+  % Joint-density panel: every ellipse is c times the square roots of the
+  % two covariance eigenvalues 1+rho and 1-rho; no aspect ratio is hand-set.
+  \begin{scope}[shift={(0,0)}]
+    \draw[sl632-axis] (-3.05,0) -- (3.08,0)
+      node[below left,xshift=-1pt,yshift=-1pt] {$x_1$};
+    \draw[sl632-axis] (0,-2.55) -- (0,2.15) node[above] {$x_2$};
+    \begin{scope}[rotate=45]
+      \draw[sl632-contour-outer] (0,0) ellipse
+        [x radius=\slpLongOuter cm,y radius=\slpShortOuter cm];
+      \draw[sl632-contour-mid] (0,0) ellipse
+        [x radius=\slpLongMiddle cm,y radius=\slpShortMiddle cm];
+      \draw[sl632-contour-inner] (0,0) ellipse
+        [x radius=\slpLongInner cm,y radius=\slpShortInner cm];
+    \end{scope}
+    \draw[sl632-slice-mid] (-2.72,\slpB) -- (2.92,\slpB)
+      node[pos=0.02,above=3pt] {$x_2=b=\dfrac{\slpBNum}{\slpBDen}$};
+    \draw[sl632-slice-deep] (\slpA,-2.43) -- (\slpA,2.52);
+    \draw[draw=SLDeepBlue,line width=0.58pt]
+      (\slpA,2.52) -- (1.48,2.65);
+    \node[anchor=west,fill=white,inner sep=5pt] at (1.58,2.72)
+      {$x_1=a=\slpANum$};
+    \fill[SLDeepBlue] (\slpA,\slpB) circle (2.2pt);
+    \draw[draw=SLDeepBlue,line width=0.58pt]
+      (\slpA,\slpB) -- (1.42,1.45);
+    \node[fill=white,inner sep=5pt] at (1.72,1.70) {$(a,b)$};
+    \node[align=center] at (0,3.92)
+      {$\rho=\dfrac{\slpRhoNum}{\slpRhoDen},\quad a=\slpANum,\quad b=\dfrac{\slpBNum}{\slpBDen}$\\[-0.5pt]
+       $\displaystyle \pi(x_1,x_2)=\frac{\slpRhoDen}{\slpJointNormDen\pi}
+       \exp\!\left[-\frac{\slpJointQuadNum}{\slpJointQuadDen}q(x_1,x_2)\right]$\\[-0.5pt]
+       $\displaystyle q=x_1^2-\frac{\slpCrossNum}{\slpRhoDen}x_1x_2+x_2^2$};
+    \node[align=center,text=SLDeepBlue] at (0,-2.98)
+      {联合等高线：主轴 $45^\circ$，半轴 $c\sqrt{1+\rho}$ 与 $c\sqrt{1-\rho}$};
+  \end{scope}
+
+  % X1 | X2=b panel.  The coordinate y unit is only an axis unit; text and
+  % line widths are not scaled.
+  \begin{scope}[shift={(7.08,1.20)}]
+    \begin{scope}[y=3.1cm]
+      \draw[sl632-axis] (-2.52,0) -- (2.78,0) node[right] {$t$};
+      \draw[sl632-axis] (-2.42,-0.025) -- (-2.42,0.62);
+      \draw[sl632-density-mid,domain=-2.34:2.66,samples=120,smooth]
+        plot (\x,{\slpCondPeak*exp(-((\x-\slpMeanOne)^2)/(2*\slpCondVar))});
+      \draw[sl632-peak-mid] (\slpMeanOne,0) -- (\slpMeanOne,\slpCondPeak);
+      \node[below=2pt,text=SLMidBlue] at (\slpMeanOne,0)
+        {$\dfrac{\slpMeanOneNum}{\slpMeanOneDen}$};
+    \end{scope}
+    \node[align=center] at (0.55,2.68)
+      {$\displaystyle \pi_1(t\mid X_2=b)=\frac{\pi(t,b)}{m_2(b)}$\\[-0.5pt]
+       $\displaystyle \mathcal N\!\left(\frac{\slpMeanOneNum}{\slpMeanOneDen},
+       \frac{\slpCondVarNum}{\slpCondVarDen}\right),\quad
+       m_2(b)=\phi\!\left(\frac{\slpBNum}{\slpBDen}\right)
+       \approx\pgfmathprintnumber[fixed,precision=3]{\slpMarginalTwo}>0$\\[-0.5pt]
+       $\displaystyle \int_{\mathbb R}\pi_1(t\mid b)\,\mathrm dt=1,\quad
+       \max\pi_1=\frac{\slpCondSdDen}{\slpCondSdNum\sqrt{2\pi}}$};
+  \end{scope}
+
+  % X2 | X1=a panel, derived from the same variance and peak macros.
+  \begin{scope}[shift={(7.08,-3.40)}]
+    \begin{scope}[y=3.1cm]
+      \draw[sl632-axis] (-2.52,0) -- (2.78,0) node[right] {$t$};
+      \draw[sl632-axis] (-2.42,-0.025) -- (-2.42,0.62);
+      \draw[sl632-density-deep,domain=-2.34:2.66,samples=120,smooth]
+        plot (\x,{\slpCondPeak*exp(-((\x-\slpMeanTwo)^2)/(2*\slpCondVar))});
+      \draw[sl632-peak-deep] (\slpMeanTwo,0) -- (\slpMeanTwo,\slpCondPeak);
+      \node[below=2pt,text=SLDeepBlue] at (\slpMeanTwo,0)
+        {$\dfrac{\slpMeanTwoNum}{\slpMeanTwoDen}$};
+    \end{scope}
+    \node[align=center] at (0.55,2.68)
+      {$\displaystyle \pi_2(t\mid X_1=a)=\frac{\pi(a,t)}{m_1(a)}$\\[-0.5pt]
+       $\displaystyle \mathcal N\!\left(\frac{\slpMeanTwoNum}{\slpMeanTwoDen},
+       \frac{\slpCondVarNum}{\slpCondVarDen}\right),\quad
+       m_1(a)=\phi(\slpANum)
+       \approx\pgfmathprintnumber[fixed,precision=3]{\slpMarginalOne}>0$\\[-0.5pt]
+       $\displaystyle \int_{\mathbb R}\pi_2(t\mid a)\,\mathrm dt=1,\quad
+       \max\pi_2=\frac{\slpCondSdDen}{\slpCondSdNum\sqrt{2\pi}}$};
+  \end{scope}
+
+  \draw[sl632-map-mid] (2.92,\slpB) --
+    node[pos=0.48,above=10pt,align=center]{水平截面\\[-1pt]$\div\,m_2(b)$}
+    (3.72,1.20) -- (4.18,1.20);
+  \draw[sl632-map-deep] (\slpA,-2.43) --
+    node[pos=0.78,above=10pt,align=center]{竖直截面\\[-1pt]$\div\,m_1(a)$}
+    (3.35,-2.43) -- (3.90,-3.40) -- (4.18,-3.40);
+
+  \node[draw=SLRed,rounded corners=2pt,fill=SLRedBG,
+    align=center,text width=6.5cm,inner sep=4pt] at (7.08,-5.42)
+    {若边缘分母为 $0$：采用预先指定的可测正则条件版本，且仅在边缘几乎处处意义下唯一；本高斯例的两个分母均为正。};
+\end{tikzpicture}
+\caption{同一二元正态联合密度的两条截面除以相应边缘密度后，得到方差$16/25$、全实线积分为$1$的满条件密度；零边缘处须使用预先指定的正则条件版本。}
+\label{fig:V5-C04-conditional-slice}
+\end{figure}
+\endgroup

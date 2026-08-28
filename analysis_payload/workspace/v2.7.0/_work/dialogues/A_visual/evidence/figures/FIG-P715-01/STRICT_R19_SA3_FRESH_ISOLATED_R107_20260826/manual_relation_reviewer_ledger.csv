@@ -1,0 +1,9 @@
+pair_id,object_a,object_b,relation,observed_distance_px,observed_intersection_px,decision,note
+R27974,G0118,G0129,INDEPENDENT_TEXT_TEXT,9.434,0,PASS,column-slice j and update parenthesis have a visible white gap above the 4px hard threshold
+R05711,G0020,D0004,NODE_TEXT_TO_BORDER,31.6228,0,PASS,node j label is centered with ample clear interior margin above the 5px threshold
+R25125,G0102,D0025,TEXT_FORMULA_TO_GRAPHIC,10.0,0,PASS,M12 denominator 2 is readable and separated from its cell border above the 3px threshold
+R01433,G0005,D0001,TEXT_TO_PANEL_BORDER,19.0,0,PASS,left title 邻 clears the rounded panel border above the 6px threshold
+R44090,D0025,D0033,FOCUS_OVER_CELL,0.0,874,PASS,orange focus rectangle deliberately overlays the M row1 col2 cell frame and preserves the numeric content
+R43475,D0004,D0006,GRAPH_ENDPOINT_CONNECTION,0.0,12,PASS,j-to-i curved shaft deliberately begins at node j boundary with correct outgoing geometry
+R44118,D0027,D0028,MATRIX_SHARED_GRID,0.0,211,PASS,adjacent M row2 cells deliberately share one aligned grid boundary without double-line artifact
+R43551,D0006,D0007,SAME_STRUCTURAL_PARENT,0.0,28,PASS,j-to-i shaft and orange arrowhead deliberately join into one continuous directed edge

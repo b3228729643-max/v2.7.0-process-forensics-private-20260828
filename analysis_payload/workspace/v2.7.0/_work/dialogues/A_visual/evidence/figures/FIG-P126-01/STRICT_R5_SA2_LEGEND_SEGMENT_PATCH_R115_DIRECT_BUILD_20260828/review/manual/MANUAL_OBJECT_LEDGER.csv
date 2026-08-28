@@ -1,0 +1,16 @@
+object_id,opened_at_utc,opened_views,verdict,hard_defect_id,note
+E001,2026-08-28T03:25:48.3989453Z,"PLOT_NATIVE1X;AXIS_LABELS_NEAREST8X",PASS,,x1 axis and label are complete readable and unclipped
+E002,2026-08-28T03:25:48.3989453Z,"PLOT_NATIVE1X;AXIS_LABELS_NEAREST8X",PASS,,x2 axis and label are complete readable and unclipped
+E003,2026-08-28T03:25:48.3989453Z,"PLOT_NATIVE1X;PLOT_GRAY_NATIVE1X",PASS,,outer contour is continuous rotated and page-contained
+E004,2026-08-28T03:25:48.3989453Z,"PLOT_NATIVE1X;PLOT_GRAY_NATIVE1X",PASS,,second contour is continuous rotated and page-contained
+E005,2026-08-28T03:25:48.3989453Z,"PLOT_NATIVE1X;PLOT_GRAY_NATIVE1X",PASS,,third contour is continuous rotated and page-contained
+E006,2026-08-28T03:25:48.3989453Z,"PLOT_NATIVE1X;OPTIMUM_CLUSTER_NEAREST8X",PASS,,inner contour is continuous and preserves optimum context
+E007,2026-08-28T03:25:48.3989453Z,"START_CLUSTER_NEAREST8X;UPDATE_CLUSTER_NEAREST8X",PASS,,three horizontal x1 updates and arrowheads are visible and axis-aligned
+E008,2026-08-28T03:25:48.3989453Z,"START_CLUSTER_NEAREST8X;UPDATE_CLUSTER_NEAREST8X",PASS,,four vertical x2 updates retain visible multi-dash strokes and arrowheads
+E009,2026-08-28T03:25:48.3989453Z,"START_CLUSTER_NEAREST8X;PLOT_NATIVE1X",PASS,,initial marker and x(0) label are complete and readable
+E010,2026-08-28T03:25:48.3989453Z,"START_CLUSTER_NEAREST8X;UPDATE_CLUSTER_NEAREST8X;LABEL6_AXIS_NEAREST8X",PASS,,digits 1 through 7 are complete; label 6 remains readable and the gray contour traverses its counter without destroying the glyph
+E011,2026-08-28T03:25:48.3989453Z,"START_CLUSTER_NEAREST8X;UPDATE_CLUSTER_NEAREST8X",PASS,,four teal square markers are distinct and complete
+E012,2026-08-28T03:25:48.3989453Z,"START_CLUSTER_NEAREST8X;UPDATE_CLUSTER_NEAREST8X",PASS,,three blue round markers are distinct and complete
+E013,2026-08-28T03:25:48.3989453Z,"OPTIMUM_CLUSTER_NEAREST8X;PLOT_GRAY_NATIVE1X",PASS,,star and x-star label remain clear at the true optimum
+E014,2026-08-28T03:25:48.3989453Z,"LEGEND_NATIVE1X;LEGEND_NEAREST8X;LEGEND_GRAY_NEAREST8X",PASS,,x1 legend sample is a continuous solid 73px run and its text is complete
+E015,2026-08-28T03:25:48.3989453Z,"LEGEND_NATIVE1X;LEGEND_NEAREST8X;LEGEND_GRAY_NATIVE1X;LEGEND_GRAY_NEAREST8X",FAIL,HARD-LEGEND-X2-SEGMENTS-COLLAPSE,x2 sample is also one continuous 73px run in color and grayscale instead of four disconnected segments

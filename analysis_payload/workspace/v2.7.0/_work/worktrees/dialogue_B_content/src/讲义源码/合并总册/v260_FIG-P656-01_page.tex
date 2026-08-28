@@ -1,0 +1,22 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{825}
+\setcounter{chapter}{34}
+\setcounter{figure}{1}
+\setcounter{equation}{1}
+\pagestyle{headings}
+\chaptermark{狄利克雷分布与共轭先验}
+\sectionmark{多项分布}
+对一条确定的有序序列$\boldsymbol y=(y_1,\ldots,y_N)$，
+\begin{equation}
+\Pr(\boldsymbol y\mid\boldsymbol\theta)
+=\prod_{t=1}^N\theta_{y_t}
+=\prod_{i=1}^K\theta_i^{n_i}.
+\end{equation}
+式中的组合系数计算同一计数对应的序列数。它与$\boldsymbol\theta$无关，所以在推导后验参数核时可以消去；在计算计数向量的概率或边际证据时不能遗漏。图\ref{fig:V5-C05-multinomial-counts}把“序列压缩为计数”与“计数概率重新乘组合系数”画成两条不同路径。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_multinomial_counts.tex}
+\FloatBarrier
+\textbf{模型。}本章的基本贝叶斯模型以类别集合、参数向量、严格正超参数和观测计数为对象；若只收到计数，必须同时收到$N$或核验$N=\sum_i n_i$。
+\end{document}

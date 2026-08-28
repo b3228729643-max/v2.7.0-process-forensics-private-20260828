@@ -1,0 +1,37 @@
+{
+  "handler_left_count": 1,
+  "handler_right_count": 0,
+  "cdf_coordinate_list_count": 1,
+  "filled_endpoint_plot_count": 1,
+  "open_endpoint_plot_count": 1,
+  "pmf_coordinate_list_count": 1,
+  "expected_right_continuous_intervals": [
+    {
+      "interval": "[.5,1)",
+      "cdf_value": "0",
+      "pmf_cumulative": "0"
+    },
+    {
+      "interval": "[1,2)",
+      "cdf_value": ".15",
+      "pmf_cumulative": ".15"
+    },
+    {
+      "interval": "[2,3)",
+      "cdf_value": ".45",
+      "pmf_cumulative": ".15+.30"
+    },
+    {
+      "interval": "[3,4)",
+      "cdf_value": ".80",
+      "pmf_cumulative": ".15+.30+.35"
+    },
+    {
+      "interval": "[4,4.5]",
+      "cdf_value": "1",
+      "pmf_cumulative": ".15+.30+.35+.20"
+    }
+  ],
+  "source_semantic_contract_pass": true,
+  "manual_fields_generated_or_overwritten": 0
+}

@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{904}
+\setcounter{chapter}{36}
+\setcounter{section}{2}
+\setcounter{figure}{4}
+\pagestyle{headings}
+\chaptermark{\PageRank{}算法}
+\sectionmark{一般 \PageRank{} 与阻尼}
+\textbf{按顺序构造。}先用概率向量 $\boldsymbol v$ 回填原始链接矩阵的悬挂零列得到列随机 $S$，再以阻尼系数 $d$ 混合沿链转移与随机跳转。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/damping_teleportation.tex}
+\FloatBarrier
+\textbf{读图。}两支路只有在悬挂列修复之后才汇合为 $G$；实线对应 $dS$，密虚线对应 $(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$，随后统一更新排名向量。
+\end{document}

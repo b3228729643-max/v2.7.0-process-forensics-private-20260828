@@ -1,0 +1,24 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{855}
+\setcounter{chapter}{35}
+\setcounter{section}{0}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{潜在狄利克雷分配}
+\textbf{依赖路线。}
+第 34 章的 \DirichletMultinomial{}共轭与第 33 章的 Gibbs 坐标更新 $\to$ 本章两条推断路线；
+有限类别与独热编码$\to$文档、主题和单词变量；
+\DirichletMultinomial{}共轭$\to$积分消去$\boldsymbol\theta,\boldsymbol\varphi$
+$\to$折叠 Gibbs；
+KL 散度与 Jensen 不等式$\to$ELBO$\to$平均场坐标更新；
+EM 与 Newton 法$\to$全局主题参数和超参数学习；
+留出预测$\to$困惑度与模型比较。图\ref{fig:V5-C06-dependency-graph}只画这些直接依赖，不把诊断性远缘关系冒充前置课程。\par\medskip
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_dependency_graph.tex}
+\FloatBarrier
+\begin{keypointbox}[title=数据方向桥：LDA 语料仍按列放文档]
+若把词元压缩成计数矩阵，本章采用 $X_{\rm wd}\in\mathbb N_0^{V\times M}$：词表项在行，文档在列。与全书默认行样本表示的关系为 $X_{{\rm doc},{\rm row}}=X_{\rm wd}^{\mathsf T}$。
+\end{keypointbox}
+\end{document}

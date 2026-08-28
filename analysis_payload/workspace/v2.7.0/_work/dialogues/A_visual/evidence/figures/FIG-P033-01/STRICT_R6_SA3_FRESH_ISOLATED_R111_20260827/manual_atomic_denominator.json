@@ -1,0 +1,30 @@
+{
+  "figure_uid": "FIG-P033-01",
+  "status": "SUPERSEDED_PRE_MANUAL_REVIEW",
+  "supersession_reason": "The initial 19-object semantic grouping was corrected before any manual ledger was authored because direct strict atomicity requires individual nonempty glyph atoms and individual painted foreground path atoms. This file is retained only as a transparent pre-manual correction record and is not used for the final denominator or pair count.",
+  "pdf_physical_page": 29,
+  "denominator_scope": "Every reader-visible atomic object belonging to the diagram plus its caption in the official R111 PDF. Invisible white label masks are retained in machine_pdf_objects.json as supporting layers but are not reader-visible denominator atoms.",
+  "count": 19,
+  "unordered_pair_count": 171,
+  "atoms": [
+    {"atom_id": "ATOM-01", "role": "SUBSPACE_FILL", "description": "Pale quadrilateral denoting subspace S", "bbox_pt": [155.413, 542.192, 378.191, 621.520]},
+    {"atom_id": "ATOM-02", "role": "SUBSPACE_UPPER_EDGE", "description": "Upper boundary of the subspace band", "bbox_pt": [155.413, 542.192, 373.258, 601.791]},
+    {"atom_id": "ATOM-03", "role": "SUBSPACE_LOWER_EDGE", "description": "Lower boundary of the subspace band", "bbox_pt": [160.346, 561.922, 378.191, 621.520]},
+    {"atom_id": "ATOM-04", "role": "SUBSPACE_LABEL", "description": "Label 子空间 S", "bbox_pt": [170.759, 624.097, 208.308, 634.767]},
+    {"atom_id": "ATOM-05", "role": "X_VECTOR_SHAFT", "description": "Blue vector shaft from O to X", "bbox_pt": [174.321, 491.123, 282.622, 603.435]},
+    {"atom_id": "ATOM-06", "role": "X_VECTOR_HEAD", "description": "Blue arrowhead at X", "bbox_pt": [281.367, 489.493, 284.194, 492.372]},
+    {"atom_id": "ATOM-07", "role": "X_LABEL", "description": "Bold-math label x", "bbox_pt": [209.600, 528.500, 215.448, 538.463]},
+    {"atom_id": "ATOM-08", "role": "P_VECTOR_SHAFT", "description": "Teal projection-vector shaft from O to P", "bbox_pt": [174.321, 571.488, 302.109, 603.435]},
+    {"atom_id": "ATOM-09", "role": "P_VECTOR_HEAD", "description": "Teal arrowhead at P", "bbox_pt": [301.114, 570.712, 304.306, 572.641]},
+    {"atom_id": "ATOM-10", "role": "P_LABEL", "description": "Formula p = P_S x in S", "bbox_pt": [260.118, 596.216, 313.150, 608.687]},
+    {"atom_id": "ATOM-11", "role": "R_VECTOR_SHAFT", "description": "Dashed residual-vector shaft from P to X", "bbox_pt": [286.138, 491.704, 305.850, 570.553]},
+    {"atom_id": "ATOM-12", "role": "R_VECTOR_HEAD", "description": "Gray arrowhead at X", "bbox_pt": [285.425, 489.611, 287.233, 492.696]},
+    {"atom_id": "ATOM-13", "role": "R_LABEL", "description": "Formula r = x - p in S-perp", "bbox_pt": [304.398, 509.351, 364.615, 519.831]},
+    {"atom_id": "ATOM-14", "role": "RIGHT_ANGLE_MARKER", "description": "Right-angle marker at P", "bbox_pt": [293.819, 560.928, 303.444, 572.959]},
+    {"atom_id": "ATOM-15", "role": "DISTANCE_BRACE", "description": "Brace parallel to residual", "bbox_pt": [292.290, 486.712, 314.106, 568.909]},
+    {"atom_id": "ATOM-16", "role": "DISTANCE_LABEL", "description": "Label 最短距离", "bbox_pt": [315.311, 542.043, 351.973, 551.859]},
+    {"atom_id": "ATOM-17", "role": "NORM_NOTE_BOX", "description": "Rounded outline around norm identity", "bbox_pt": [341.061, 467.337, 428.551, 491.272]},
+    {"atom_id": "ATOM-18", "role": "NORM_IDENTITY", "description": "Formula ||x||^2 = ||p||^2 + ||r||^2", "bbox_pt": [348.146, 471.887, 421.094, 484.461]},
+    {"atom_id": "ATOM-19", "role": "CAPTION", "description": "Figure 2.1 caption", "bbox_pt": [62.360, 639.700, 522.500, 654.120]}
+  ]
+}

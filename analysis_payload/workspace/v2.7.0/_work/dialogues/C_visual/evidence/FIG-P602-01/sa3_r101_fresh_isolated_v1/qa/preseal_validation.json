@@ -1,0 +1,176 @@
+{
+  "uid": "FIG-P602-01",
+  "phase": "preseal",
+  "validation_pass": true,
+  "manual_tables": {
+    "objects": {
+      "rows": 32,
+      "expected": 32,
+      "unique_ids": 32,
+      "decisions": {
+        "PASS": 32,
+        "FAIL": 0
+      },
+      "all_rows_well_formed": true,
+      "pass": true
+    },
+    "glyphs": {
+      "rows": 175,
+      "expected": 175,
+      "unique_ids": 175,
+      "decisions": {
+        "PASS": 158,
+        "FAIL": 17
+      },
+      "all_rows_well_formed": true,
+      "pass": true
+    },
+    "pairs": {
+      "rows": 496,
+      "expected": 496,
+      "unique_ids": 496,
+      "decisions": {
+        "PASS": 496,
+        "FAIL": 0
+      },
+      "all_rows_well_formed": true,
+      "pass": true
+    },
+    "critical": {
+      "rows": 17,
+      "expected": 17,
+      "unique_ids": 17,
+      "decisions": {
+        "PASS": 17,
+        "FAIL": 0
+      },
+      "all_rows_well_formed": true,
+      "pass": true
+    },
+    "peer": {
+      "rows": 42,
+      "expected": 42,
+      "unique_ids": 42,
+      "decisions": {
+        "PASS": 36,
+        "FAIL": 6
+      },
+      "all_rows_well_formed": true,
+      "pass": true
+    },
+    "role": {
+      "rows": 3,
+      "expected": 3,
+      "unique_ids": 3,
+      "decisions": {
+        "PASS": 2,
+        "FAIL": 1
+      },
+      "all_rows_well_formed": true,
+      "pass": true
+    },
+    "clip": {
+      "rows": 32,
+      "expected": 32,
+      "unique_ids": 32,
+      "decisions": {
+        "PASS": 32,
+        "FAIL": 0
+      },
+      "all_rows_well_formed": true,
+      "pass": true
+    },
+    "views": {
+      "rows": 4,
+      "expected": 4,
+      "unique_ids": 4,
+      "decisions": {
+        "PASS": 4,
+        "FAIL": 0
+      },
+      "all_rows_well_formed": true,
+      "pass": true
+    },
+    "hard_gates": {
+      "rows": 12,
+      "expected": 12,
+      "unique_ids": 12,
+      "decisions": {
+        "PASS": 8,
+        "FAIL": 4
+      },
+      "all_rows_well_formed": true,
+      "pass": true
+    }
+  },
+  "id_alignment": {
+    "objects": true,
+    "glyphs": true,
+    "pairs": true,
+    "critical": true,
+    "clip": true
+  },
+  "verdict_alignment": {
+    "glyph_manual_matches_strict_machine": true,
+    "peer_manual_matches_strict_machine": true,
+    "role_manual_matches_strict_machine": true,
+    "all_pair_manual_pass_and_machine_pass": true,
+    "all_clip_manual_pass_and_machine_pass": true
+  },
+  "evidence_paths_exist": {
+    "object_masks_cards": true,
+    "glyph_masks_cards": true,
+    "pair_cards": true,
+    "critical_cards": true
+  },
+  "pair_math": {
+    "object_count": 32,
+    "expected_c_n_2": 496,
+    "actual_pairs": 496,
+    "unique_pairs": 496,
+    "illegal_overlap_sum": 0,
+    "pass": true
+  },
+  "png_count_verified": 981,
+  "png_errors": [],
+  "mandatory_view_dimensions": {
+    "render/full_page_200dpi.png": [
+      1654,
+      2339
+    ],
+    "render/figure_crop_300dpi.png": [
+      1835,
+      1565
+    ],
+    "render/standalone_300dpi.png": [
+      1835,
+      1480
+    ],
+    "render/grayscale_300dpi.png": [
+      1835,
+      1565
+    ]
+  },
+  "mandatory_views_pass": true,
+  "source_identity": {
+    "pdf": {
+      "bytes": 4947496,
+      "sha256": "0870ff226dc383875c4a1b6eabb06aab942317da294d90d2864b3030d46df1a1",
+      "mtime_ns": 1787597833697911500,
+      "matches_frozen": true
+    },
+    "figure_source": {
+      "bytes": 2711,
+      "sha256": "18b88f4bc48a21d3fd1a246ac5b6909deeb19900a3d0721c65f9a44369444084",
+      "mtime_ns": 1787625127884934000,
+      "matches_frozen": true
+    },
+    "chapter_source": {
+      "bytes": 105168,
+      "sha256": "00f3537ae9dd6738f1bab414d587f18870a6b08d64663283c6f9a3f3048e6ba7",
+      "mtime_ns": 1787625128206720800,
+      "matches_frozen": true
+    }
+  },
+  "cache_entries": []
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "P126_R15_STATIC_FORGET_PLOT_PROOF_V1",
+  "handoff_id": "A-R115-P126-SA2-STATIC-FORGET-PLOT-PATCH-20260828",
+  "status": "STATIC_ONLY_NOT_RENDERED_NOT_PASS",
+  "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\绘图源码\\第01册_数学基础与统计学习基本理论\\V1-C08\\fig_v1_c08_coordinate.tex",
+  "before_bytes": 4626,
+  "before_sha256": "6CBAEBE50574E541A04B2FDCC74B432C49AF2590B579C6A85721EDF536912502",
+  "after_bytes": 4686,
+  "after_sha256": "2887758F5CC94987BE750E1EC53B555FB88CE8F71B7260CABBE0A17DDF237405",
+  "reverse_reconstruction_exact": true,
+  "incremental_diff_additions": 5,
+  "incremental_diff_deletions": 5,
+  "ordinary_addplot_count": 5,
+  "ordinary_addplots_with_exactly_one_forget_plot": 5,
+  "ordinary_addplots": [
+    {
+      "line_number": 20,
+      "line": "  \\addplot[domain=0:360,samples=181,draw=SLGray!68,line width=.50pt,no marks,forget plot]",
+      "forget_plot_count": 1
+    },
+    {
+      "line_number": 22,
+      "line": "  \\addplot[domain=0:360,samples=181,draw=SLGray!68,line width=.50pt,no marks,forget plot]",
+      "forget_plot_count": 1
+    },
+    {
+      "line_number": 24,
+      "line": "  \\addplot[domain=0:360,samples=181,draw=SLGray!68,line width=.50pt,no marks,forget plot]",
+      "forget_plot_count": 1
+    },
+    {
+      "line_number": 26,
+      "line": "  \\addplot[domain=0:360,samples=181,draw=SLGray!68,line width=.50pt,no marks,forget plot]",
+      "forget_plot_count": 1
+    },
+    {
+      "line_number": 56,
+      "line": "  \\addplot[only marks,mark=square*,mark size=1.85pt,draw=SLTeal,fill=white,forget plot]",
+      "forget_plot_count": 1
+    }
+  ],
+  "manual_addlegendimage_count": 2,
+  "manual_addlegendimages": [
+    {
+      "line_number": 65,
+      "line": "  \\addlegendimage{draw=SLBlue,line width=1.05pt}"
+    },
+    {
+      "line_number": 72,
+      "line": "  \\addlegendimage{p126 x2 disconnected legend}"
+    }
+  ],
+  "legend_entry_count": 2,
+  "legend_entries": [
+    {
+      "line_number": 66,
+      "line": "  \\addlegendentry{更新 $x_1$}"
+    },
+    {
+      "line_number": 73,
+      "line": "  \\addlegendentry{更新 $x_2$}"
+    }
+  ],
+  "static_legend_spec_conclusion": "all five ordinary plot specs become irrelevant and are excluded from the remembered legend plot-spec list; the two manual addlegendimage specs are therefore the only remembered legend specs and pair in order with the two legend entries",
+  "render_validation_pending": true
+}

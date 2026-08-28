@@ -1,0 +1,21 @@
+﻿CHECK_ID,CATEGORY,EVIDENCE,METRIC,THRESHOLD,OBSERVED,BOOLEAN,STATUS
+R01,INPUT,render_manifest.json,frozen R94 input and independent physical location,official R94 only,"page 617/813, sha256=ca76a41334aca3587b9fe742c3d3b8bcbe598a505e58929c82b478fff4f6a7a3",true,PASS
+R02,RENDER,full_page_200dpi.png,whole page,native 200dpi,Poppler direct,true,PASS
+R03,RENDER,full_page_300dpi_native.png;full_page_300dpi_grid.json,measurement grid,"native 300dpi,1:1,no resize","2481x3508px; scales=4.167815,4.166815",true,PASS
+R04,COVERAGE,object_bbox_role_inventory.csv;object_id_overlay_300dpi.png;glyph_inventory.csv;semantic_component_inventory.csv;graphic_component_inventory.csv;pair_universe.csv,"visible text/vector objects, IDs/bboxes/roles and all unordered foreground pairs",complete,"objects=208 unique IDs; glyph=161, semantic=10, graphic=37, pair-universe=666",true,PASS
+R05,MASKS,mask_manifest.csv;importance_sampling_double_border_masks.json,raw masks / opaque double-border proof,no dilation; final-visible geometry,masks=208,true,PASS
+R06,SOURCE_FONT,after_font_audit.csv;source_font_role_ratio_audit.csv;source_font_cross_panel_audit.csv,ordinary effective font and repeated role sizes,>=9.5pt; same role <=1.03 and <=0.25pt; cross panel <=1.05,failure glyphs=86 across 8 components; same-role=True; cross-panel=True,false,FAIL
+R07,PIXEL_HEIGHT,after_pixel_measurements.csv,literal raw H_ink,30/24/17/22/15px,failed glyphs=10,false,FAIL
+R08,SAME_CLASS,same_class_ratio_audit.csv,same panel+role+same script actual raw H_ink,"[0.92,1.08]",no exact-glyph grouping,false,FAIL
+R09,ROLE_RATIO,role_ratio_audit.csv,same-script role median relative to local BASE,Goal E ranges; N/A only if no comparable script base,see CSV,false,FAIL
+R10,OVERLAP,after_overlap_report.csv,illegal text-front-graphic pairs,0,0,true,PASS
+R11,CLIP,after_overlap_report.csv,text and graphic edge clip,0,0,true,PASS
+R12,CLEARANCE,after_overlap_report.csv;pair_universe.csv,"text/text, text/line-arrow-marker, node border, edge",4/3/5/6px,"text raw=42.105, bbox=21.415; text graphic=0.000; text edge=33.000; graphic edge=30.000; relation-fail=1; pair-fail=1; clearance-fail=1",false,FAIL
+R13,CROSS_PANEL,cross_panel_ratio_audit.csv,same role+same script raw H_ink,<=1.10 or explicit single-panel N/A,one panel,true,PASS
+R14,HARMONY,full_page_200dpi.png;figure_crop_300dpi.png;standalone_300dpi.png;grayscale_300dpi.png,FONT_VISUAL_HARMONY_PASS,no undersized or intrusive roles,9.2pt / 8.6pt reader text violates size gate and is visually small,false,FAIL
+R15,MATH,math_semantics_recheck.md,dependency direction/method distinction/diagnostics,all correct,all correct,true,PASS
+R16,TEXT,math_semantics_recheck.md;adjacent_source_context.tex,caption/body/variable consistency,consistent,consistent,true,PASS
+R17,GRAYSCALE,grayscale_300dpi.png,non-color distinguishability,stable,line style/border/icon differences remain,true,PASS
+R18,PAGE,full_page_200dpi.png,page integration,intact,placement/caption flow intact; typography independently fails,true,PASS
+R19,FINAL,strict_audit_summary.json,all hard gates,all true,FAIL,false,FAIL
+R20,MACHINE_FINAL,machine_terminal_check.csv/json,evidence integrity,all true,integrity=True; quality=FAIL,true,PASS

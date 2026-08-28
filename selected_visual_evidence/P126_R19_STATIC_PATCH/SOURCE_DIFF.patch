@@ -1,0 +1,18 @@
+diff --git a/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C08/fig_v1_c08_coordinate.tex b/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C08/fig_v1_c08_coordinate.tex
+--- a/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C08/fig_v1_c08_coordinate.tex
++++ b/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C08/fig_v1_c08_coordinate.tex
+@@ -41,12 +41,12 @@
+   \draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLTeal,line width=1.05pt,dash pattern=on 1.2pt off 1.2pt] (q4)--(q5);
+   \draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLTeal,line width=1.05pt,dash pattern=on 1.2pt off 1.2pt] (q6)--(q7);
+   \fill[SLInk] (q0) circle (2.2pt);
+-  \node[anchor=south west,font=\fontsize{9.2pt}{10.8pt}\selectfont] at (q0) {$x^{(0)}$};
++  \node[anchor=south west,xshift=4pt,fill=white,fill opacity=1,text opacity=1,inner sep=.8pt,font=\fontsize{9.2pt}{10.8pt}\selectfont] at (q0) {$x^{(0)}$};
+   \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=east,xshift=-4pt] at (q1) {1};
+   \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=south,yshift=3pt] at (q2) {2};
+   \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=east,xshift=-4pt] at (q3) {3};
+   \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=south,yshift=4pt] at (q4) {4};
+-  \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=east,xshift=-2pt] at (q5) {5};
++  \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=east,xshift=-6pt,fill=white,fill opacity=1,text opacity=1,inner sep=.8pt] at (q5) {5};
+   \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,
+     anchor=south,yshift=4pt,
+     fill=white,fill opacity=1,text opacity=1,inner sep=.8pt] at (q6) {6};

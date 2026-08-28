@@ -1,0 +1,24 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{859}
+\setcounter{chapter}{35}
+\setcounter{section}{1}
+\setcounter{figure}{1}
+\pagestyle{headings}
+\chaptermark{潜在狄利克雷分配}
+\sectionmark{LDA 生成过程与概率图}
+板块图中，$N_m$板块嵌在$M$板块内，表示每篇文档的每个词位置都重复生成；
+$K$板块表示主题词向量重复$K$次。图\ref{fig:V5-C06-plate-graph}用统一符号展示这一生成依赖。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_plate_graph.tex}
+\FloatBarrier
+\textbf{学习策略。}已知$\boldsymbol w$后，目标是后验
+\[
+p(\boldsymbol z,\boldsymbol\theta,\boldsymbol\varphi
+\mid\boldsymbol w,\boldsymbol\alpha,\boldsymbol\beta).
+\]
+对$\boldsymbol z$求和并对两组概率向量积分会产生指数规模耦合，通常不能精确计算。
+折叠Gibbs在完整Bayes模型中积分消去共轭概率向量，再对$\boldsymbol z$抽样；
+变分EM在点参数变体中，以可计算的平均场分布近似后验并交替更新局部变分参数与全局点参数。
+\end{document}

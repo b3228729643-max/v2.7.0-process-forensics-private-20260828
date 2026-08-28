@@ -1,0 +1,317 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V5-C05",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 10,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V5-C05-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dependency_graph.tex",
+      "source_file": "fig_v5_c05_dependency_graph.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C05-dependency-graph",
+      "caption": "Dirichlet--多项共轭更新与单步后验预测主链",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读图时应能回答：类别计数与Gamma--Beta归一化怎样汇入多项似然与Dirichlet先验，参数相加怎样得到Dirichlet后验，后验均值怎样给出类别预测；下方解释支线与主题模型应用出口为何不与核心推导等权。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+        "target_label": "fig:V5-C05-dependency-graph",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-01-001",
+        "SLM-20-01-002",
+        "SLM-20-01-003",
+        "SLM-20-02-001",
+        "SLM-E-02-001",
+        "SLM-20-01-004"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：类别计数与Gamma—Beta归一化两条前置线索汇入多项似然和Dirichlet先验，实线有向主链先以参数相加得到共轭后验，再由后验均值得到给定计数与超参数的类别预测概率；无箭头细线连接单纯形几何、均值浓度和对数矩等解释对象，虚线有向边仅把预测连到下游主题模型应用"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-02",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_multinomial_counts.tex",
+      "source_file": "fig_v5_c05_multinomial_counts.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C05-multinomial-counts",
+      "caption": "多项分布把有序的独立类别试验压缩为计数向量；多项系数统计产生同一计数的不同序列数，支持集同时要求非负整数约束和总计数约束，不能把计数向量误当作概率向量",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "读图时应回答：“多项分布把有序的独立类别试验压缩为计数向量；多项系数统计产生同一计数的不同序列数，支持集同时要求非负整数约束和总计数约束，不能把计数向量误当作概率向量”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+        "target_label": "fig:V5-C05-multinomial-counts",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-01-002",
+        "SLM-20-01-003"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C05-02"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：多项分布把有序的独立类别试验压缩为计数向量；多项系数统计产生同一计数的不同序列数，支持集同时要求非负整数约束和总计数约束，不能把计数向量误当作概率向量"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-03",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_distribution_relations.tex",
+      "source_file": "fig_v5_c05_distribution_relations.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C05-distribution-relations",
+      "caption": "六个常用分布之间同时存在特殊情形关系和共轭关系：Beta是二维Dirichlet，二项是二维多项，类别分布是单次多项，Bernoulli同时是单次二项；粗箭头表示共轭先验而不是集合包含",
+      "semantic_type": "comparison_or_synthesis_map",
+      "teaching_objective": "读图时应回答：“六个常用分布之间同时存在特殊情形关系和共轭关系：Beta是二维Dirichlet，二项是二维多项，类别分布是单次多项，Bernoulli同时是单次二项；粗箭头表示共轭先验而不是集合包含”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+        "target_label": "fig:V5-C05-distribution-relations",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-01-003",
+        "SLM-20-02-001",
+        "SLM-20-01-004"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：六个常用分布之间同时存在特殊情形关系和共轭关系：Beta是二维Dirichlet，二项是二维多项，类别分布是单次多项，Bernoulli同时是单次二项；粗箭头表示共轭先验而不是集合包含"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-04",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_gamma_normalization.tex",
+      "source_file": "fig_v5_c05_gamma_normalization.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C05-gamma-normalization",
+      "caption": "独立且具有共同率参数的Gamma变量除以其总和后得到Dirichlet随机向量；总量与归一化比例相互独立，二维情形退化为Beta分布，这一构造同时给出可复现的Dirichlet抽样方法",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "读图时应回答：“独立且具有共同率参数的Gamma变量除以其总和后得到Dirichlet随机向量；总量与归一化比例相互独立，二维情形退化为Beta分布，这一构造同时给出可复现的Dirichlet抽样方法”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+        "target_label": "fig:V5-C05-gamma-normalization",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-02-001",
+        "SLM-E-02-001"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：独立且具有共同率参数的Gamma变量除以其总和后得到Dirichlet随机向量；总量与归一化比例相互独立，二维情形退化为Beta分布，这一构造同时给出可复现的Dirichlet抽样方法"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-05",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_simplex_geometry.tex",
+      "source_file": "fig_v5_c05_simplex_geometry.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C05-simplex-geometry",
+      "caption": "三类别概率向量位于二维单纯形上，三个顶点分别代表一个类别概率为1；内部点的重心坐标就是三个类别概率，因此Dirichlet分布虽写在三维坐标中，实际支撑集只有二维",
+      "semantic_type": "geometric_or_partition_diagram",
+      "teaching_objective": "读图时应回答：“三类别概率向量位于二维单纯形上，三个顶点分别代表一个类别概率为1；内部点的重心坐标就是三个类别概率，因此Dirichlet分布虽写在三维坐标中，实际支撑集只有二维”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+        "target_label": "fig:V5-C05-simplex-geometry",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-01-001",
+        "SLM-20-02-001"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C05-05"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：三类别概率向量位于二维单纯形上，三个顶点分别代表一个类别概率为1；内部点的重心坐标就是三个类别概率，因此Dirichlet分布虽写在三维坐标中，实际支撑集只有二维"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-06",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dirichlet_shape_atlas.tex",
+      "source_file": "fig_v5_c05_dirichlet_shape_atlas.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C05-dirichlet-shape-atlas",
+      "caption": "三元Dirichlet的全部形状分量从大于1跨到等于1再到小于1时，密度由内部集中变为均匀，并在边界发散。",
+      "semantic_type": "quantitative_density_plot",
+      "teaching_objective": "读图后应能用$p(\\boldsymbol\\theta\\mid\\boldsymbol\\alpha)=B(\\boldsymbol\\alpha)^{-1}\\prod_i\\theta_i^{\\alpha_i-1}$判断：全部$\\alpha_i>1$时面上密度趋零，全部$\\alpha_i=1$时为均匀分布，全部$\\alpha_i<1$时面附近发散；并据此说明内点MAP公式的条件不能省略。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+        "target_label": "fig:V5-C05-dirichlet-shape-atlas",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-02-001",
+        "SLM-E-02-001"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C05-06"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：三个同尺度三分类单纯形均由给定Dirichlet密度公式逐网格计算；当全部形状分量为2时深色集中于中心且三面密度趋零，当全部为1时全域同色且密度恒为2，当全部为1/2时深色移向各面和顶点邻域且密度在边界发散。因此形状参数跨过1改变的是密度的边界行为，而不是单纯形本身。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-07",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_concentration_mean.tex",
+      "source_file": "fig_v5_c05_concentration_mean.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C05-concentration-mean",
+      "caption": "固定均值$\\boldsymbol m=(0.5,0.3,0.2)$时，增大总浓度$\\alpha_0$不移动均值，却使方差和负协方差按$1/(\\alpha_0+1)$收缩。",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读图后应能把$\\boldsymbol\\alpha$分解为$\\alpha_0\\boldsymbol m$，在线性$\\alpha_0$轴上复原三组参数，并用$\\operatorname{Var}(\\Theta_i)=m_i(1-m_i)/(\\alpha_0+1)$与$\\operatorname{Cov}(\\Theta_i,\\Theta_j)=-m_im_j/(\\alpha_0+1),\\ i\\ne j$说明同均值椭圆为何收缩；必须区分协方差椭圆与密度或置信域。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+        "target_label": "fig:V5-C05-concentration-mean",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-E-02-001"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V5-C05-07"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：左图用线性总浓度轴列出固定均值m=(0.5,0.3,0.2)下alpha0为3、10、30的三个参数向量；不同点形和线型的箭头直接连到右侧同一单纯形中的对应0.8sigma协方差椭圆。三个椭圆共心于m，随alpha0增大依次收缩，说明总浓度不改变均值而按1/(alpha0+1)缩小方差和负协方差。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-08",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_conjugate_update.tex",
+      "source_file": "fig_v5_c05_conjugate_update.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C05-conjugate-update",
+      "caption": "Dirichlet--多项共轭来自先验核与多项似然核中同一组$\\log\\theta_i$充分统计量：相乘只把指数逐分量相加，因此后验参数是$\\boldsymbol\\alpha+\\boldsymbol n$；保留归一化常数还可得到Dirichlet--多项边缘分布",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "读图时应回答：“Dirichlet--多项共轭来自先验核与多项似然核中同一组$\\log\\theta_i$充分统计量：相乘只把指数逐分量相加，因此后验参数是$\\boldsymbol\\alpha+\\boldsymbol n$；保留归一化常数还可得到Dirichlet--多项边缘分布”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+        "target_label": "fig:V5-C05-conjugate-update",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-01-003",
+        "SLM-20-02-001",
+        "SLM-20-01-004"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：Dirichlet—多项共轭来自先验核与多项似然核中同一组对数θ下标i充分统计量：相乘只把指数逐分量相加，因此后验参数是α+ n；保留归一化常数还可得到Dirichlet—多项边缘分布"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-09",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_posterior_predictive.tex",
+      "source_file": "fig_v5_c05_posterior_predictive.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C05-posterior-predictive",
+      "caption": "积分消去$\\theta$后，下一类别的后验预测概率等于当前伪计数占总伪计数的比例；观测到类别$j$只增加该类计数，因而实现平滑并产生可顺序更新的强化预测，但这不是固定参数下的独立同分布序列",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "读图时应回答：“积分消去$\\theta$后，下一类别的后验预测概率等于当前伪计数占总伪计数的比例；观测到类别$j$只增加该类计数，因而实现平滑并产生可顺序更新的强化预测，但这不是固定参数下的独立同分布序列”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+        "target_label": "fig:V5-C05-posterior-predictive",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-01-004"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：积分消去θ后，下一类别的后验预测概率等于当前伪计数占总伪计数的比例；观测到类别j只增加该类计数，因而实现平滑并产生可顺序更新的强化预测，但这不是固定参数下的独立同分布序列"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-10",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_exponential_family_moments.tex",
+      "source_file": "fig_v5_c05_exponential_family_moments.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C05-exponential-family-moments",
+      "caption": "把Dirichlet分布写成指数族后，充分统计量是$\\log\\theta_k$，对数配分函数对$\\alpha_k$的导数给出$\\mathbb E[\\log\\Theta_k]=\\psi(\\alpha_k)-\\psi(\\alpha_0)$；该对数矩不能用均值取对数替代",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读图时应回答：“把Dirichlet分布写成指数族后，充分统计量是$\\log\\theta_k$，对数配分函数对$\\alpha_k$的导数给出$\\mathbb E[\\log\\Theta_k]=\\psi(\\alpha_k)-\\psi(\\alpha_0)$；该对数矩不能用均值取对数替代”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C05.tex",
+        "target_label": "fig:V5-C05-exponential-family-moments",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-E-02-001"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：把Dirichlet分布写成指数族后，充分统计量是对数θ下标k，对数配分函数对α下标k的导数给出 E[对数Theta下标k]=psi(α下标k)-psi(α下标0)；该对数矩不能用均值取对数替代"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+% v2.6.0 figure UID: FIG-P033-01
+% Image-informed reverse drawing: exact coordinates remain authoritative while
+% label separation and print-safe geometric hierarchy are strengthened.
+\tikzset{slfig-FIG-P033-01/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]\centering\label{schema:V1-C02:CH-17}
+\begin{tikzpicture}[slfig-FIG-P033-01,x=1.45cm,y=1.45cm,font=\fontsize{9.4pt}{11.2pt}\selectfont,
+  alt={对象—关系—结论：向量的正交分解。投影向量属于子空间，残差属于其正交补，虚线残差给出到子空间的最短距离。}]
+  \coordinate (O) at (0,0);
+  \coordinate (P) at (3.2,.8);
+  \coordinate (X) at (2.7,2.8);
+  \path[fill=SLBlueBG]
+    (-.46,.04)--(4.84,1.49)--(4.96,1.01)--(-.34,-.44)--cycle;
+  \draw[draw=SLGray!72,line width=.60pt] (-.46,.04)--(4.84,1.49);
+  \draw[draw=SLGray!72,line width=.60pt] (-.34,-.44)--(4.96,1.01);
+  \node[text=SLGray,anchor=north west] at (-.18,-.39) {子空间 $S$};
+
+  \draw[-{Stealth[length=2.25mm,width=1.45mm]},draw=SLBlue,line width=.98pt]
+    (O)--(X) node[pos=.48,above left=4mm] {$\boldsymbol{x}$};
+  \draw[-{Stealth[length=2.25mm,width=1.45mm]},draw=SLTeal,line width=.98pt]
+    (O)--(P) node[pos=.56,below right=4mm] {$\boldsymbol{p}=P_S\boldsymbol{x}\in S$};
+  \draw[-{Stealth[length=2.0mm,width=1.25mm]},draw=SLGray,line width=.78pt,
+    dash pattern=on 2.4pt off 2.0pt]
+    (P)--(X) node[pos=.68,right=4mm,fill=white,inner sep=.8pt,
+      font=\fontsize{9.2pt}{10.9pt}\selectfont]
+      {$\boldsymbol r=\boldsymbol x-\boldsymbol p\in S^\perp$};
+  \pic[draw=SLGray,line width=.58pt,angle radius=3.5mm] {right angle=O--P--X};
+  \draw[draw=SLGray,line width=.52pt,decorate,
+    decoration={brace,amplitude=3.5pt,mirror}]
+    ($(P)+(0.17,.04)$)--($(X)+(0.17,.04)$)
+    node[pos=.28,right=7pt,fill=white,inner sep=1pt,font=\fontsize{9.2pt}{10.9pt}\selectfont]
+    {最短距离};
+  \node[slfig note,anchor=west,font=\fontsize{9.2pt}{10.9pt}\selectfont]
+    at (4.05,3.02) {$\lVert\boldsymbol x\rVert^2
+      =\lVert\boldsymbol p\rVert^2+\lVert\boldsymbol r\rVert^2$};
+\end{tikzpicture}
+\caption{向量的正交分解。投影向量属于子空间，残差属于其正交补，虚线残差给出到子空间的最短距离。}\label{fig:V1-C02-projection}
+\end{figure}

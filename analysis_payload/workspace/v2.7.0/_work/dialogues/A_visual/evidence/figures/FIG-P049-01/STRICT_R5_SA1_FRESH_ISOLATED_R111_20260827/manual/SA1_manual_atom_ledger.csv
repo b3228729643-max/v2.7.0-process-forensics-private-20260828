@@ -1,0 +1,153 @@
+atom_id,reviewer,observed,decision,note,PASS
+G-001,SA1,"Visible x glyph in y-axis label x_2; correct glyph, intact outline, readable",ACCEPT,"Pairs with G-002 as a normal math subscript construction",TRUE
+G-002,SA1,"Visible subscript 2 in y-axis label x_2; correct digit and readable",ACCEPT,"Legitimate script size under R168",TRUE
+G-003,SA1,"Visible note number 1",ACCEPT,"No missing/tofu/wrong codepoint",TRUE
+G-004,SA1,"Visible period after note number 1",ACCEPT,"Punctuation intact",TRUE
+G-005,SA1,"Visible Chinese glyph 定 in note 1",ACCEPT,"Readable and correct",TRUE
+G-006,SA1,"Visible Chinese glyph 位 in note 1",ACCEPT,"Readable and correct",TRUE
+G-007,SA1,"Visible math P in note 1",ACCEPT,"Readable and consistent with marked point",TRUE
+G-008,SA1,"Visible Chinese glyph 所 in note 1",ACCEPT,"Readable and correct",TRUE
+G-009,SA1,"Visible Chinese glyph 在 in note 1",ACCEPT,"Readable and correct",TRUE
+G-010,SA1,"Visible Chinese glyph 等 in note 1",ACCEPT,"Readable and correct",TRUE
+G-011,SA1,"Visible Chinese glyph 值 in note 1",ACCEPT,"Readable and correct",TRUE
+G-012,SA1,"Visible Chinese glyph 线 in note 1",ACCEPT,"Readable and correct",TRUE
+G-013,SA1,"Visible note number 2",ACCEPT,"No missing/tofu/wrong codepoint",TRUE
+G-014,SA1,"Visible period after note number 2",ACCEPT,"Punctuation intact",TRUE
+G-015,SA1,"Visible Chinese glyph 梯 in note 2",ACCEPT,"Readable and correct",TRUE
+G-016,SA1,"Visible Chinese glyph 度 in note 2",ACCEPT,"Readable and correct",TRUE
+G-017,SA1,"Visible Chinese glyph 指 in note 2",ACCEPT,"Readable and correct",TRUE
+G-018,SA1,"Visible Chinese glyph 向 in note 2",ACCEPT,"Readable and correct",TRUE
+G-019,SA1,"Visible Chinese glyph 函 in note 2",ACCEPT,"Readable and correct",TRUE
+G-020,SA1,"Visible Chinese glyph 数 in note 2",ACCEPT,"Readable and correct",TRUE
+G-021,SA1,"Visible Chinese glyph 增 in note 2",ACCEPT,"Readable and correct",TRUE
+G-022,SA1,"Visible Chinese glyph 大 in note 2",ACCEPT,"Readable and correct",TRUE
+G-023,SA1,"Visible nabla in gradient label",ACCEPT,"Correct gradient operator",TRUE
+G-024,SA1,"Visible italic f in gradient label",ACCEPT,"Correct function symbol",TRUE
+G-025,SA1,"Visible opening parenthesis in gradient label",ACCEPT,"Delimiter intact",TRUE
+G-026,SA1,"Visible P in gradient label",ACCEPT,"Matches point P",TRUE
+G-027,SA1,"Visible closing parenthesis in gradient label",ACCEPT,"Delimiter intact",TRUE
+G-028,SA1,"Visible italic v in tangent-vector label",ACCEPT,"Correct vector base symbol",TRUE
+G-029,SA1,"Visible subscript t in v_tan",ACCEPT,"Legitimate script and readable",TRUE
+G-030,SA1,"Visible subscript a in v_tan",ACCEPT,"Legitimate script and readable",TRUE
+G-031,SA1,"Visible subscript n in v_tan",ACCEPT,"Legitimate script and readable",TRUE
+G-032,SA1,"Visible note number 3",ACCEPT,"No missing/tofu/wrong codepoint",TRUE
+G-033,SA1,"Visible period after note number 3",ACCEPT,"Punctuation intact",TRUE
+G-034,SA1,"Visible nabla in orthogonality equation",ACCEPT,"Correct gradient operator",TRUE
+G-035,SA1,"Visible italic f in orthogonality equation",ACCEPT,"Correct function symbol",TRUE
+G-036,SA1,"Visible opening parenthesis in orthogonality equation",ACCEPT,"Delimiter intact",TRUE
+G-037,SA1,"Visible P in orthogonality equation",ACCEPT,"Matches point P",TRUE
+G-038,SA1,"Visible closing parenthesis in orthogonality equation",ACCEPT,"Delimiter intact",TRUE
+G-039,SA1,"Visible superscript T in orthogonality equation",ACCEPT,"Correct transpose marker; legitimate script",TRUE
+G-040,SA1,"Visible italic v in orthogonality equation",ACCEPT,"Correct tangent-vector symbol",TRUE
+G-041,SA1,"Visible subscript t in v_tan",ACCEPT,"Legitimate script and readable",TRUE
+G-042,SA1,"Visible subscript a in v_tan",ACCEPT,"Legitimate script and readable",TRUE
+G-043,SA1,"Visible subscript n in v_tan",ACCEPT,"Legitimate script and readable",TRUE
+G-044,SA1,"Visible equality sign in orthogonality equation",ACCEPT,"Correct relation glyph",TRUE
+G-045,SA1,"Visible zero in orthogonality equation",ACCEPT,"Correct scalar zero",TRUE
+G-046,SA1,"Visible P in point-coordinate label",ACCEPT,"Correct point symbol",TRUE
+G-047,SA1,"Visible equality sign in point-coordinate label",ACCEPT,"Correct relation glyph",TRUE
+G-048,SA1,"Visible opening parenthesis in coordinate tuple",ACCEPT,"Delimiter intact",TRUE
+G-049,SA1,"Visible digit 2 in coordinate 2.4",ACCEPT,"Correct coordinate",TRUE
+G-050,SA1,"Visible decimal point in coordinate 2.4",ACCEPT,"Punctuation intact",TRUE
+G-051,SA1,"Visible digit 4 in coordinate 2.4",ACCEPT,"Correct coordinate",TRUE
+G-052,SA1,"Visible comma in coordinate tuple",ACCEPT,"Punctuation intact",TRUE
+G-053,SA1,"Visible digit 1 in coordinate 1.08",ACCEPT,"Correct coordinate",TRUE
+G-054,SA1,"Visible decimal point in coordinate 1.08",ACCEPT,"Punctuation intact",TRUE
+G-055,SA1,"Visible digit 0 in coordinate 1.08",ACCEPT,"Correct coordinate",TRUE
+G-056,SA1,"Visible digit 8 in coordinate 1.08",ACCEPT,"Correct coordinate",TRUE
+G-057,SA1,"Visible closing parenthesis in coordinate tuple",ACCEPT,"Delimiter intact",TRUE
+G-058,SA1,"Visible c in inner contour label c_1",ACCEPT,"Correct contour symbol",TRUE
+G-059,SA1,"Visible subscript 1 in contour label c_1",ACCEPT,"Legitimate script and readable",TRUE
+G-060,SA1,"Visible c in middle contour label c_2",ACCEPT,"Correct contour symbol",TRUE
+G-061,SA1,"Visible subscript 2 in contour label c_2",ACCEPT,"Legitimate script and readable",TRUE
+G-062,SA1,"Visible c in outer contour label c_3",ACCEPT,"Correct contour symbol",TRUE
+G-063,SA1,"Visible subscript 3 in contour label c_3",ACCEPT,"Legitimate script and readable",TRUE
+G-064,SA1,"Visible x glyph in x-axis label x_1",ACCEPT,"Correct glyph, intact outline, readable",TRUE
+G-065,SA1,"Visible subscript 1 in x-axis label x_1",ACCEPT,"Legitimate script size under R168",TRUE
+G-066,SA1,"Visible italic f in increase-direction label",ACCEPT,"Correct function symbol",TRUE
+G-067,SA1,"Visible Chinese glyph 增 in increase-direction label",ACCEPT,"Readable and correct",TRUE
+G-068,SA1,"Visible Chinese glyph 大 in increase-direction label",ACCEPT,"Readable and correct",TRUE
+G-069,SA1,"Visible c in lower inequality c_1<c_2<c_3",ACCEPT,"First contour symbol correct",TRUE
+G-070,SA1,"Visible subscript 1 in lower inequality",ACCEPT,"Legitimate script and readable",TRUE
+G-071,SA1,"Visible first less-than sign",ACCEPT,"Correct ordering relation",TRUE
+G-072,SA1,"Visible c in middle term of lower inequality",ACCEPT,"Second contour symbol correct",TRUE
+G-073,SA1,"Visible subscript 2 in lower inequality",ACCEPT,"Legitimate script and readable",TRUE
+G-074,SA1,"Visible second less-than sign",ACCEPT,"Correct ordering relation",TRUE
+G-075,SA1,"Visible c in final term of lower inequality",ACCEPT,"Third contour symbol correct",TRUE
+G-076,SA1,"Visible subscript 3 in lower inequality",ACCEPT,"Legitimate script and readable",TRUE
+G-077,SA1,"Visible italic f in displayed contour function",ACCEPT,"Correct function symbol",TRUE
+G-078,SA1,"Visible opening parenthesis in f(x_1,x_2)",ACCEPT,"Delimiter intact",TRUE
+G-079,SA1,"Visible first x in function arguments",ACCEPT,"Correct variable",TRUE
+G-080,SA1,"Visible subscript 1 in first argument",ACCEPT,"Legitimate script and readable",TRUE
+G-081,SA1,"Visible comma between function arguments",ACCEPT,"Punctuation intact",TRUE
+G-082,SA1,"Visible second x in function arguments",ACCEPT,"Correct variable",TRUE
+G-083,SA1,"Visible subscript 2 in second argument",ACCEPT,"Legitimate script and readable",TRUE
+G-084,SA1,"Visible closing parenthesis in f(x_1,x_2)",ACCEPT,"Delimiter intact",TRUE
+G-085,SA1,"Visible equality sign in displayed function",ACCEPT,"Correct relation glyph",TRUE
+G-086,SA1,"Visible x in first quadratic term",ACCEPT,"Correct variable",TRUE
+G-087,SA1,"Visible superscript 2 in first quadratic term",ACCEPT,"Correct exponent; legitimate script",TRUE
+G-088,SA1,"Visible subscript 1 in first quadratic term",ACCEPT,"Correct coordinate index; legitimate script",TRUE
+G-089,SA1,"Visible division slash before denominator 9",ACCEPT,"Correct operator",TRUE
+G-090,SA1,"Visible denominator digit 9",ACCEPT,"Correct denominator",TRUE
+G-091,SA1,"Visible plus sign between quadratic terms",ACCEPT,"Correct operator",TRUE
+G-092,SA1,"Visible x in second quadratic term",ACCEPT,"Correct variable",TRUE
+G-093,SA1,"Visible superscript 2 in second quadratic term",ACCEPT,"Correct exponent; legitimate script",TRUE
+G-094,SA1,"Visible subscript 2 in second quadratic term",ACCEPT,"Correct coordinate index; legitimate script",TRUE
+G-095,SA1,"Visible division slash before denominator 3.24",ACCEPT,"Correct operator",TRUE
+G-096,SA1,"Visible denominator digit 3",ACCEPT,"Correct denominator",TRUE
+G-097,SA1,"Visible decimal point in denominator 3.24",ACCEPT,"Punctuation intact",TRUE
+G-098,SA1,"Visible denominator digit 2",ACCEPT,"Correct denominator",TRUE
+G-099,SA1,"Visible denominator digit 4",ACCEPT,"Correct denominator",TRUE
+G-100,SA1,"Visible bold Chinese glyph 图 introducing caption",ACCEPT,"Actual glyph visible; not a tofu box",TRUE
+G-101,SA1,"Visible caption figure number digit 3",ACCEPT,"Figure number correct",TRUE
+G-102,SA1,"Visible caption figure-number period",ACCEPT,"Punctuation intact",TRUE
+G-103,SA1,"Visible caption figure number digit 1",ACCEPT,"Figure number correct",TRUE
+G-104,SA1,"Visible caption glyph 梯",ACCEPT,"Readable and correct",TRUE
+G-105,SA1,"Visible caption glyph 度",ACCEPT,"Readable and correct",TRUE
+G-106,SA1,"Visible caption glyph 与",ACCEPT,"Readable and correct",TRUE
+G-107,SA1,"Visible caption glyph 等",ACCEPT,"Readable and correct",TRUE
+G-108,SA1,"Visible caption glyph 值",ACCEPT,"Readable and correct",TRUE
+G-109,SA1,"Visible caption glyph 线",ACCEPT,"Readable and correct",TRUE
+G-110,SA1,"Visible caption full stop after 等值线",ACCEPT,"Punctuation intact",TRUE
+G-111,SA1,"Visible caption glyph 箭",ACCEPT,"Readable and correct",TRUE
+G-112,SA1,"Visible caption glyph 头",ACCEPT,"Readable and correct",TRUE
+G-113,SA1,"Visible caption glyph 在",ACCEPT,"Readable and correct",TRUE
+G-114,SA1,"Visible caption glyph 该",ACCEPT,"Readable and correct",TRUE
+G-115,SA1,"Visible caption glyph 点",ACCEPT,"Readable and correct",TRUE
+G-116,SA1,"Visible caption glyph 垂",ACCEPT,"Readable and correct",TRUE
+G-117,SA1,"Visible caption glyph 直",ACCEPT,"Readable and correct",TRUE
+G-118,SA1,"Visible caption glyph 于",ACCEPT,"Readable and correct",TRUE
+G-119,SA1,"Visible caption glyph 局",ACCEPT,"Readable and correct",TRUE
+G-120,SA1,"Visible caption glyph 部",ACCEPT,"Readable and correct",TRUE
+G-121,SA1,"Visible caption glyph 切",ACCEPT,"Readable and correct",TRUE
+G-122,SA1,"Visible caption glyph 线",ACCEPT,"Readable and correct",TRUE
+G-123,SA1,"Visible caption comma",ACCEPT,"Punctuation intact",TRUE
+G-124,SA1,"Visible caption glyph 并",ACCEPT,"Readable and correct",TRUE
+G-125,SA1,"Visible caption glyph 指",ACCEPT,"Readable and correct",TRUE
+G-126,SA1,"Visible caption glyph 向",ACCEPT,"Readable and correct",TRUE
+G-127,SA1,"Visible caption glyph 函",ACCEPT,"Readable and correct",TRUE
+G-128,SA1,"Visible caption glyph 数",ACCEPT,"Readable and correct",TRUE
+G-129,SA1,"Visible caption glyph 值",ACCEPT,"Readable and correct",TRUE
+G-130,SA1,"Visible caption glyph 增",ACCEPT,"Readable and correct",TRUE
+G-131,SA1,"Visible caption glyph 加",ACCEPT,"Readable and correct",TRUE
+G-132,SA1,"Visible caption glyph 的",ACCEPT,"Readable and correct",TRUE
+G-133,SA1,"Visible caption glyph 方",ACCEPT,"Readable and correct",TRUE
+G-134,SA1,"Visible caption glyph 向",ACCEPT,"Readable and correct",TRUE
+G-135,SA1,"Visible caption final full stop",ACCEPT,"Punctuation intact",TRUE
+P-001,SA1,"Horizontal x-axis shaft is continuous and terminates at its arrowhead",ACCEPT,"Intersections with contours and y-axis are intentional coordinate geometry",TRUE
+P-002,SA1,"Right-pointing x-axis arrowhead is intact",ACCEPT,"No clipping or malformed outline",TRUE
+P-003,SA1,"Vertical y-axis shaft is continuous and visible around the lower formula backing plate",ACCEPT,"Intersections with contours and x-axis are intentional; backing plate prevents line-through-text",TRUE
+P-004,SA1,"Upward y-axis arrowhead is intact",ACCEPT,"No clipping or malformed outline",TRUE
+P-005,SA1,"Inner c_1 contour is a complete dash-dot ellipse",ACCEPT,"Distinct in color and grayscale; label backing prevents line-through-text",TRUE
+P-006,SA1,"Middle c_2 contour is a complete dashed ellipse",ACCEPT,"Distinct in color and grayscale; label backing prevents line-through-text",TRUE
+P-007,SA1,"Outer c_3 contour is a complete solid ellipse through P",ACCEPT,"Correct level-set geometry; intentional contacts at axes and P",TRUE
+P-008,SA1,"Filled point marker at P is intact and centered at the stated coordinate",ACCEPT,"Intentional meeting point for contour, tangent, gradient, and guide relation",TRUE
+P-009,SA1,"Gradient arrow shaft points outward/up-right from P",ACCEPT,"Direction agrees with analytic gradient at P",TRUE
+P-010,SA1,"Gradient arrowhead is intact",ACCEPT,"Direction and visual weight are clear",TRUE
+P-011,SA1,"Dashed tangent line passes through P with negative slope",ACCEPT,"Analytically orthogonal to the gradient; no text collision",TRUE
+P-012,SA1,"Right-angle guide is intact at the tangent-gradient junction",ACCEPT,"Correct orthogonality encoding; not an illegal path overlap",TRUE
+P-013,SA1,"Horizontal function-increase arrow shaft is visible",ACCEPT,"Supporting directional cue is clear",TRUE
+P-014,SA1,"Function-increase arrowhead is intact",ACCEPT,"No clipping or malformed outline",TRUE
+P-015,SA1,"Leader from note 1 reaches the outer contour/P region without crossing note glyph ink",ACCEPT,"White note backing and visible clearance prevent illegal line-through-text",TRUE
+P-016,SA1,"Leader from note 2 reaches the gradient arrow without crossing note glyph ink",ACCEPT,"Endpoint relation is intentional and readable",TRUE
+P-017,SA1,"Leader from note 3 reaches the right-angle/P region without crossing equation glyph ink",ACCEPT,"Endpoint relation is intentional and readable",TRUE

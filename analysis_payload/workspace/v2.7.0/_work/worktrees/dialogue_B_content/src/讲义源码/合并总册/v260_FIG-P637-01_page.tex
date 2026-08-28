@@ -1,0 +1,14 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{804}
+\setcounter{chapter}{33}
+\setcounter{figure}{3}
+\pagestyle{headings}
+\chaptermark{Gibbs 抽样}
+\sectionmark{与 \MetropolisHastings{} 的关系}
+\textbf{几何解释。}在二维连续状态空间中，更新$x_1$时$x_2$固定，所以轨迹沿水平方向移动；随后更新$x_2$时$x_1$固定，轨迹沿竖直方向移动。图\ref{fig:V5-C04-gibbs-axis-path}把这种折线路径叠加在目标等密度线上。沿坐标轴移动不表示目标分布轴对齐；当等密度椭圆非常狭长且倾斜时，许多短的横纵步才能沿长轴前进。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_gibbs_axis_path.tex}
+\textbf{概率解释。}更新坐标$j$时，算法保留$x_{-j}$，并用其正确条件分布中的新抽样替换旧$x_j$。给定$x_{-j}$后，新旧坐标是同一条件分布的两个取值。
+\end{document}

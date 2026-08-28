@@ -1,0 +1,10 @@
+reviewer,scope,declared_or_measured_pt,graphics_scale,effective_pt,legacy_status,r168_hard_status,decision,note
+SA3,slfig-FIG-P605-01,9.2,1.0,9.2,BELOW_LEGACY_9.5,R168_ADVISORY,PASS,全局9.2pt虽低于旧门0.3pt但原生300dpi逐字形实际清晰且无严重失衡
+SA3,tikz_every_node,9.2,1.0,9.2,BELOW_LEGACY_9.5,R168_ADVISORY,PASS,所有普通节点继承9.2pt且不存在额外缩放；实看节点与公式可读
+SA3,left_panel_title,9.8,1.0,9.8,PASS,PASS,PASS,9.8pt粗体形成自然标题层级且未挤压面板
+SA3,right_panel_title,9.8,1.0,9.8,PASS,PASS,PASS,右标题与左标题源级字号相同并视觉均衡
+SA3,caption_pdf_spans,9.8625_to_9.9626,1.0,9.8625_to_9.9626,PASS,PASS,PASS,caption字号不在单图源局部声明但从官方PDF逐字span核得且全句清晰
+SA3,resizebox,none,1.0,N/A,PASS,PASS,PASS,单源未发现resizebox
+SA3,scalebox,none,1.0,N/A,PASS,PASS,PASS,单源未发现scalebox
+SA3,scale_transform_shape,none,1.0,N/A,PASS,PASS,PASS,单源未发现scale选项或transform shape
+SA3,tiny_scriptsize_footnotesize_small_large,none,1.0,N/A,PASS,PASS,PASS,单源未发现人工字号级别覆盖；小字仅为TeX自然上下标

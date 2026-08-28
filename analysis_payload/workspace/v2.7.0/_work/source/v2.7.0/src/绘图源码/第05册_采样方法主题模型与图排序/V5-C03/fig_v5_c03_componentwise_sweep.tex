@@ -1,0 +1,35 @@
+% v2.3.1 figure UID: FIG-P605-01
+% v2.6.0 reverse redraw for FIG-P605-01: aligned semantic rows and collision-free spacing.
+\tikzset{slfig-FIG-P605-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P605-01,>=Stealth,every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  kernel/.style={draw=SLBlue,rounded corners=2pt,fill=white,minimum width=14mm,minimum height=9mm,line width=.72pt},
+  choice/.style={diamond,aspect=2.1,draw=SLGold,fill=SLGold!8,text width=18mm,inner sep=1pt,line width=.78pt},
+  flow/.style={-{Stealth[length=2.0mm]},draw=SLBlue,line width=.95pt},
+  branch/.style={-{Stealth[length=1.8mm]},draw=SLGray,line width=.70pt}]
+  \draw[draw=SLRuleGray,line width=.55pt,rounded corners=3pt,fill=SLSoftGray] (-7.4,-2.80) rectangle (-.55,2.55);
+  \draw[draw=SLRuleGray,line width=.55pt,rounded corners=3pt,fill=SLSoftGray] (.55,-2.80) rectangle (7.4,2.55);
+  \node[font=\fontsize{9.8pt}{11.8pt}\selectfont\bfseries,text=SLBlue] at (-3.98,2.02) {系统扫描：固定复合};
+  \node[kernel] (k1) at (-6.20,.78) {$K_1$};
+  \node[kernel] (k2) at (-4.40,.78) {$K_2$};
+  \node (dots) at (-3.02,.78) {$\cdots$};
+  \node[kernel] (kd) at (-1.55,.78) {$K_d$};
+  \draw[flow] (k1)--(k2); \draw[flow] (k2)--(dots); \draw[flow] (dots)--(kd);
+  \node at (-3.98,-.35) {$K_{\rm sys}=K_1K_2\cdots K_d$};
+  \node[draw=SLGray,line width=.58pt,rounded corners=2pt,fill=white,minimum width=56mm,minimum height=7mm] at (-3.98,-2.05)
+    {固定次序复合：通常不保证可逆};
+
+  \node[font=\fontsize{9.8pt}{11.8pt}\selectfont\bfseries,text=SLBlue] at (3.98,2.02) {随机扫描：先抽坐标};
+  \node[choice] (pick) at (3.98,1.05) {$J\sim\omega$};
+  \node[kernel] (r1) at (1.55,-.30) {$K_1$};
+  \node[kernel] (rj) at (3.98,-.30) {$K_j$};
+  \node[kernel] (rd) at (6.35,-.30) {$K_d$};
+  \draw[branch] (pick)--(r1); \draw[branch] (pick)--(rj); \draw[branch] (pick)--(rd);
+  \node at (3.98,-1.20) {$K_{\rm rand}=\sum_{j=1}^{d}\omega_jK_j$};
+  \node[draw=SLBlue,line width=.72pt,rounded corners=2pt,fill=white,
+    text width=52mm,minimum height=10mm,inner xsep=3mm] at (3.98,-2.20)
+    {若各 $K_j$ 关于 $\pi$ 可逆\\固定权重混合保持可逆};
+\end{tikzpicture}
+\caption{分量MH的系统扫描与随机扫描。固定顺序的核复合通常不保证可逆；可逆坐标核的固定权重随机混合仍保持可逆。}\label{fig:V5-C03-componentwise-sweep}
+\end{figure}

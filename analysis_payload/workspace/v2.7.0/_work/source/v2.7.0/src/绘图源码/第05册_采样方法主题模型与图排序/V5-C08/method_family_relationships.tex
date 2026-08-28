@@ -1,0 +1,52 @@
+% v2.7.0 figure UID: FIG-P736-01
+% Four aligned teaching routes plus two short, model-specific reuse examples.
+\tikzset{slfig-FIG-P736-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P736-01,
+  every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=center,outer sep=0pt},
+  family/.style={draw=SLMidBlue,fill=SLSoftBlue,line width=.78pt,
+    rounded corners=2.5pt,minimum width=27mm,minimum height=11mm,
+    inner xsep=1.8mm,inner ysep=1.2mm},
+  engine/.style={draw=SLRuleGray,fill=SLSoftGray,line width=.74pt,
+    rectangle,minimum width=27mm,minimum height=11mm,
+    inner xsep=1.8mm,inner ysep=1.2mm},
+  rowtitle/.style={font=\bfseries\fontsize{10.2pt}{12.2pt}\selectfont,
+    text=SLDeepBlue,inner sep=0pt},
+  legendbox/.style={draw=SLRuleGray,fill=white,line width=.72pt,
+    rounded corners=2pt,text width=135mm,
+    font=\fontsize{9.6pt}{11.6pt}\selectfont,
+    inner xsep=2mm,inner ysep=1.5mm},
+  routeexample/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,
+    fill=white,text=SLTextGray,inner sep=1pt},
+  mainroute/.style={->,draw=SLDeepBlue,line width=.96pt},
+  optional/.style={->,draw=SLRuleGray,line width=.78pt,densely dashed},
+  >={Stealth[length=2.2mm,width=1.55mm]},
+  alt={对象—关系—结论：上层依次是降维、话题分析、聚类和图分析四个方法族，下层与之对齐的是SVD、后验推断、EM和幂法四个计算引擎。四条竖直实线只表示本讲义选取的代表性主路线；话题分析到SVD和EM的两条短虚线分别以LSA和PLSA为例，表示特定模型或求解方案中的条件性复用。线型只区分关系类别，不编码强弱；实线与虚线都不是方法族和引擎之间的必要或充分关系，共享某个引擎也不使方法等价。方法族用圆角蓝底框，引擎用直角灰底框，主路线用实线、条件性复用用虚线，并由文字图例重复编码。}]
+\node[rowtitle] (familytitle) at (0,3.15) {方法族};
+\matrix (top) [matrix of nodes,column sep=8mm,nodes={family}] at (0,1.65)
+  {\node (dim) {降维}; & \node (topic) {话题分析}; &
+   \node (cluster) {聚类}; & \node (graph) {图分析}; \\};
+\matrix (bottom) [matrix of nodes,column sep=8mm,nodes={engine}] at (0,-1.15)
+  {\node (svd) {SVD}; & \node (posterior) {后验推断}; &
+   \node (em) {EM}; & \node (power) {幂法}; \\};
+\node[rowtitle,text=SLTextGray] (enginetitle) at (0,-2.45) {共享计算引擎};
+\node[legendbox] (legend) at (0,-3.95)
+  {\textbf{实线：}本讲义中的代表性主路线\qquad
+   \textbf{虚线：}特定模型/求解方案中的条件性复用\\
+   线型只分关系类型，不编码强弱；两类边均非必要或充分关系；\\
+   共享引擎不意味着方法等价。};
+\draw[mainroute] (dim)--(svd);
+\draw[mainroute] (topic)--(posterior);
+\draw[mainroute] (cluster)--(em);
+\draw[mainroute] (graph)--(power);
+\draw[optional] (topic.south west)--(svd.north east)
+  node[midway,above=1mm,routeexample] {如LSA};
+\draw[optional] (topic.south east)--(em.north west)
+  node[midway,above=1mm,routeexample] {如PLSA};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{方法族—计算引擎教学映射：实线为本讲义代表性主路线，虚线为特定模型/方案的条件性复用；这些边均非必要或充分关系，共享引擎也不使方法等价。}
+\label{fig:V5-C08-method-map}
+\end{figure}

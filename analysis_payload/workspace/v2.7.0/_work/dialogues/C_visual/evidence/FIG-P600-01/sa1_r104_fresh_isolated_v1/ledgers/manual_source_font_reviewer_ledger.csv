@@ -1,0 +1,9 @@
+SOURCE_ID,SCOPE,DECLARED_OR_MEASURED_PT,ACTUALLY_REVIEWED,NO_SCALE,ACTUAL_READABILITY,SEVERE_IMBALANCE,R168_DECISION,NOTE
+SRC001,slfig global,9.2,true,true,READABLE,false,PASS,"No resizebox/scalebox/transform-shape or accumulated graphics scale; global 9.2pt renders clear at native 300dpi."
+SRC002,state labels,9.2,true,true,READABLE,false,PASS,"x/y are centered and legible inside 9mm circles; different glyph extents are character-shape effects, not role-size imbalance."
+SRC003,a/b proposal formulas,9.2,true,true,READABLE,false,PASS,"Both proposal formulas share identical source size/style; all glyphs and equals relations are clear."
+SRC004,min formula,9.2,true,true,READABLE,false,PASS,"Central min(a,b) remains readable and visually subordinate to directional structure without looking undersized."
+SRC005,top proposal-flow annotation,8.6,true,true,READABLE,false,PASS_WITH_ADVISORY,"Visible CJK ink is 32px except natural low-profile punctuation/一; gray annotation is clear. Sub-9.5pt numeric fact is advisory under R168."
+SRC006,two accepted-flow equations,9.2,true,true,READABLE,false,PASS,"Both key mathematical lines use same source size and align cleanly; no crowding or baseline break."
+SRC007,two-line balance explanation,9.2,true,true,READABLE,false,PASS,"Both explanatory lines render 34px CJK and fit inside border with 14/9px final-visible clearance."
+SRC008,caption class-controlled,PDF measured,true,true,READABLE,false,PASS,"Caption CJK is 35–38px and Latin/digits 27–28px; hierarchy against figure body and page text is natural."

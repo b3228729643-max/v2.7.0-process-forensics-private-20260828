@@ -1,0 +1,10 @@
+﻿peer_id,role_scope,reviewer_type,human_certification,raw_basis,manual_observation,hard_finding,advisory
+PEER-001,PANEL_TITLE_L_vs_R,AI_SA3_VISUAL_REVIEW,false,L=40px element height; R=40px element height,两标题同高并在各自面板顶端同一水平线上,CLEAR,中文全高与拉丁x-height差为脚本自然差异
+PEER-002,NODE_LABEL_L_panel,AI_SA3_VISUAL_REVIEW,false,5 elements; 37–39px; max/min=1.054054,左面板Y1/Y2/Y3节点标签视觉大小一致,CLEAR,2px差来自数字3的像素外形
+PEER-003,NODE_LABEL_R_panel,AI_SA3_VISUAL_REVIEW,false,6 elements; 37–39px; max/min=1.054054,右面板候选与链状态标签使用一致字号和字形,CLEAR,none
+PEER-004,NODE_LABEL_cross_panel,AI_SA3_VISUAL_REVIEW,false,L median=37px; R median=37px,跨面板同角色中位高度相同,CLEAR,none
+PEER-005,ANNOTATION_L_vs_R,AI_SA3_VISUAL_REVIEW,false,L=41px element bbox; R=41px element bbox,两条说明行高一致且灰度权重相同,CLEAR,8.5pt源声明为R168 advisory
+PEER-006,REJECTION_MARK_L_vs_R,AI_SA3_VISUAL_REVIEW,false,L=34px; R=34px,两个乘号同尺寸同颜色且垂直位置对应,CLEAR,none
+PEER-007,TITLE_vs_NODE_ROLE,AI_SA3_VISUAL_REVIEW,false,title=40px; node median=37px,标题略大于节点标签且未压过流程主体,CLEAR,角色比值为字体taxonomy advisory而非硬门
+PEER-008,NOTE_vs_NODE_ROLE,AI_SA3_VISUAL_REVIEW,false,note bbox=41px; node bbox=37–39px,注释虽行bbox略高但字重更轻且视觉优先级低于节点与箭头,CLEAR,混排bbox不等同于单字视觉字号
+PEER-009,REJECTION_vs_MAIN_FLOW,AI_SA3_VISUAL_REVIEW,false,rejection=34px; blue nodes and arrows measured separately,拒绝符醒目但未遮挡主线；右侧主链仍为第一阅读路径,CLEAR,颜色差在灰度下由×形和虚实线补偿

@@ -1,0 +1,12 @@
+view_id,path,manual_reviewer,opened,manual_verdict,manual_observation
+V01,full_page_200dpi.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"Figure scale is balanced on the page; surrounding proof, caption, following paragraph, section heading, equations, lemma, and footer show no collision, clipping, orphaning, or abnormal whitespace."
+V02,official_pdf_native_full_page_300dpi.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"Native 300 dpi full page confirms sharp glyphs, correct page integration, and no tofu or wrong-codepoint boxes in the figure/caption."
+V03,official_pdf_figure_crop_300dpi.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"All curve, axes, ticks, labels, annotations, markers, guides, and caption are complete, readable, and visually balanced."
+V04,official_pdf_figure_crop_grayscale_300dpi.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"Curve/axes/guide/annotation hierarchy remains distinct without relying on hue; light endpoint annotations remain readable."
+V05,object_overlay_300dpi.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"All 13 reader-visible elements map to explicit boxes; no element box indicates clipping and the overlay supports complete denominator coverage."
+V06,critical_peak_and_symmetry_native1x.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"At native 1x the maximum text, peak marker, curve, guide, and symmetry formula remain understandable."
+V07,critical_peak_and_symmetry_nearest8x.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"Nearest-neighbor inspection shows the peak marker and curve are not overwritten by the annotation and the formula does not touch the guide."
+V08,critical_left_endpoint_native1x.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"Left endpoint semantics remain visible at native 1x."
+V09,critical_left_endpoint_nearest8x.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"Nearest-neighbor inspection shows the left marker/curve/axis/text are distinct and not illegally overlapped."
+V10,critical_right_endpoint_native1x.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"Right endpoint semantics remain visible at native 1x."
+V11,critical_right_endpoint_nearest8x.png,A-R114-P092-SA3-FRESH-ISOLATED-20260828,true,PASS,"Nearest-neighbor inspection shows the right marker/curve/axis/text are distinct and the axis arrow remains complete in the official page."

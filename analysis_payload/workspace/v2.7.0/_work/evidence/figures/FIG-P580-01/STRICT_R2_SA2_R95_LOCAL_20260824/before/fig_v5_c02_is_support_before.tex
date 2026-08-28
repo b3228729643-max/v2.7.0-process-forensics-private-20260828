@@ -1,0 +1,99 @@
+% v2.7.0 figure UID: FIG-P580-01
+% Analytic contract on X=[0,5]: p=6x(5-x)/125, q_L=(2/5)1_[0,5/2], q_R=1/5.
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\pgfmathdeclarefunction{slpivtarget}{1}{%
+  \pgfmathparse{6*(#1)*(5-(#1))/125}%
+}
+\def\ISXMin{0}
+\def\ISXMax{5}
+\def\ISXCut{2.5}
+\pgfmathsetmacro{\ISQLHeight}{2/5}
+\pgfmathsetmacro{\ISQRHeight}{1/5}
+\pgfmathsetmacro{\ISPAtOne}{slpivtarget(1)}
+\pgfmathsetmacro{\ISPAtMid}{slpivtarget(2.5)}
+\pgfmathsetmacro{\ISPAtFour}{slpivtarget(4)}
+\pgfmathsetmacro{\ISWAtOne}{\ISPAtOne/\ISQRHeight}
+\pgfmathsetmacro{\ISWAtMid}{\ISPAtMid/\ISQRHeight}
+\pgfmathsetmacro{\ISWAtFour}{\ISPAtFour/\ISQRHeight}
+\tikzset{slfig-FIG-P580-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{slfig-FIG-P580-01-axis/.style={
+  axis lines=left,xmin=0,xmax=5,ymin=0,ymax=.61,
+  xtick={0,1,2.5,4,5},xticklabels={$0$,$1$,$\frac52$,$4$,$5$},
+  ytick={0,.1,.2,.3,.4,.5},
+  tick label style={font=\fontsize{9.6pt}{11.6pt}\selectfont},
+  label style={font=\fontsize{9.6pt}{11.6pt}\selectfont},
+  title style={font=\fontsize{10.2pt}{12.2pt}\selectfont,yshift=1pt},
+  axis line style={draw=SLGray,line width=.72pt},
+  tick style={draw=SLGray,line width=.60pt},
+  xlabel={$x$；共同定义域 $[0,5]$},clip=false}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P580-01,
+  alt={对象：共同定义域[0,5]上的目标密度p(x)=6x(5-x)/125、左提议密度qL(x)等于2/5乘以区间[0,5/2]的示性函数、右提议密度qR(x)=1/5；关系：左图在x=5/2处标出qL的支撑边界，并以纹理显示其后qL=0而p>0的缺失区；右图qR处处为正，曲线上的圆、方、三角点对应x=1、5/2、4，独立比率卡由同一密度公式复算三个真实比率；结论：重要性抽样要求p绝对连续于q，支持缺口不能由增加样本或有限加权恢复，而支持覆盖本身不推出低方差或估计可靠。}]
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=10mm},
+  slfig-FIG-P580-01-axis,width=6.45cm,height=5.9cm]
+\nextgroupplot[title={支持不足：$p\not\ll q_L$},
+  ylabel={密度（单位：$x^{-1}$）}]
+  \addplot[name path=pL,draw=none,domain=\ISXMin:\ISXMax,samples=301]
+    {slpivtarget(x)};
+  \addplot[name path=zeroL,draw=none,domain=\ISXMin:\ISXMax,samples=2]{0};
+  \addplot[pattern=north east lines,pattern color=SLTextGray,draw=none]
+    fill between[of=pL and zeroL,soft clip={domain=2.5:5}];
+  \addplot[draw=SLBlue,line width=1.15pt,domain=\ISXMin:\ISXMax,samples=301]
+    {slpivtarget(x)};
+  \addplot[draw=SLTeal,line width=.95pt,densely dashed,
+    domain=\ISXMin:\ISXCut,samples=2]{\ISQLHeight};
+  \addplot[draw=SLTeal,line width=.95pt,densely dashed,
+    domain=\ISXCut:\ISXMax,samples=2]{0};
+  \addplot[only marks,mark=square*,mark size=2.8pt,draw=SLTeal,fill=SLTeal]
+    coordinates {(\ISXCut,\ISQLHeight)};
+  \addplot[only marks,mark=o,mark size=2.8pt,draw=SLTeal,line width=.90pt]
+    coordinates {(\ISXCut,0)};
+  \draw[draw=SLGray,line width=.80pt,densely dotted]
+    (axis cs:\ISXCut,0)--(axis cs:\ISXCut,.445);
+  \node[anchor=north west,text=SLTeal,fill=white,inner sep=.8pt]
+    at (axis cs:.22,.392) {虚线 $q_L(x)=\frac25$};
+  \node[anchor=south west,text=SLBlue,fill=white,inner sep=.8pt]
+    at (axis cs:.58,.175) {实线 $p(x)$};
+  \node[anchor=north,align=center,text=SLTextGray,fill=white,inner sep=.8pt]
+    at (axis cs:3.25,.442) {点线：支撑边界\\[-.2mm]$x=\frac52$};
+  \node[anchor=south,align=center,fill=white,fill opacity=.88,text opacity=1,
+    inner xsep=1.2mm,inner ysep=.7mm]
+    at (axis cs:3.72,.045) {纹理缺失区：$q_L=0<p$};
+
+\nextgroupplot[title={支持覆盖：$p\ll q_R$}]
+  \addplot[draw=SLBlue,line width=1.15pt,domain=\ISXMin:\ISXMax,samples=301]
+    {slpivtarget(x)};
+  \addplot[draw=SLTeal,line width=.95pt,densely dashed,
+    domain=\ISXMin:\ISXMax,samples=2]{\ISQRHeight};
+  \addplot[only marks,mark=o,mark size=3.0pt,draw=SLBlue,line width=.90pt]
+    coordinates {(1,\ISPAtOne)};
+  \addplot[only marks,mark=square*,mark size=2.8pt,draw=SLBlue,fill=white,
+    line width=.90pt] coordinates {(\ISXCut,\ISPAtMid)};
+  \addplot[only marks,mark=triangle*,mark size=3.2pt,draw=SLBlue,fill=white,
+    line width=.90pt] coordinates {(4,\ISPAtFour)};
+  \node[anchor=north west,text=SLTeal,fill=white,inner sep=.8pt]
+    at (axis cs:.22,.194) {虚线 $q_R(x)=\frac15$};
+  \node[anchor=south west,text=SLBlue,fill=white,inner sep=.8pt]
+    at (axis cs:.38,.278) {实线 $p(x)$};
+  \path[draw=SLGray,rounded corners=1.5pt,fill=white,line width=.55pt]
+    (axis cs:.25,.362) rectangle (axis cs:4.75,.591);
+  \node[anchor=center,align=center,inner sep=0pt]
+    at (axis cs:2.5,.542) {{\bfseries $w=p/q_R$（同一公式）}};
+  \node[anchor=center,align=center,inner sep=0pt]
+    at (axis cs:1.15,.462) {$w(1)$};
+  \node[anchor=center,align=center,inner sep=0pt]
+    at (axis cs:2.50,.462) {$w(\frac52)$};
+  \node[anchor=center,align=center,inner sep=0pt]
+    at (axis cs:3.85,.462) {$w(4)$};
+  \node[anchor=center,align=center,inner sep=0pt]
+    at (axis cs:1.15,.402) {$=\pgfmathprintnumber[fixed,fixed zerofill,precision=2]{\ISWAtOne}$};
+  \node[anchor=center,align=center,inner sep=0pt]
+    at (axis cs:2.50,.402) {$=\pgfmathprintnumber[fixed,fixed zerofill,precision=2]{\ISWAtMid}$};
+  \node[anchor=center,align=center,inner sep=0pt]
+    at (axis cs:3.85,.402) {$=\pgfmathprintnumber[fixed,fixed zerofill,precision=2]{\ISWAtFour}$};
+\end{groupplot}
+\end{tikzpicture}
+\caption{重要性抽样要求 $p\ll q$；$q$ 未覆盖的目标区域不能由增加样本或有限加权恢复。}\label{fig:V5-C02-is-support}
+\end{figure}

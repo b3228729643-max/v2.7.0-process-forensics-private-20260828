@@ -1,0 +1,17 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 3 册}{统计学习方法讲义 v2.6.0}{优化模型与序列模型}
+\begin{document}
+\setcounter{page}{338}
+\setcounter{chapter}{17}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{最大熵模型}
+\begin{probabilitybox}
+熵越大，概率质量越不集中；新增可靠约束后，可行集合缩小，最大熵解才相应偏离均匀分布。
+\end{probabilitybox}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C01/fig_v3_c01_simplex.tex}
+图\ref{fig:V3-C01-simplex}把概率归一化表示为单纯形，把已知统计量表示为线性约束；可行集是两者的交集，最大熵解只在该交集内选取。
+\paragraph{首次阅读检查：最大熵模型的定义。}
+先识别对象类型与定义域，再逐项核对量词、支持集和特殊约定；例子只用于检验，不能替代定义。
+\end{document}

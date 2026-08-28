@@ -1,0 +1,8 @@
+calibration_group,codepoint,evidence,current_h_px,reference_h_px,h_ratio,current_area_px,reference_area_px,area_ratio,mask_complete_pure,decision,manual_note
+CAL_001,U+002C,in_figure_peer_group_9_2pt,12,12,1.0,51_to_53,52_median,1.039216_max_min,YES,PASS,two teal 9.2pt commas are complete and mutually consistent
+CAL_002,U+002C,in_figure_peer_group_9_5pt,10,10,1.0,42,42,1.0,YES,PASS,four 9.5pt math commas are pixel-identical by metrics
+CAL_003,U+002C,in_figure_peer_group_10pt,11,11,1.0,44_to_45,44_median,1.022727_max_min,YES,PASS,three 10pt caption commas are complete and consistent
+CAL_004,U+002E,embedded_font_external_rerender,7,7,1.0,41,42,0.976190,YES,PASS,period matches exact embedded STIXTwoText-Bold glyph-index rerender
+CAL_005,U+FF0C,embedded_font_external_rerender,13,13,1.0,46,46,1.0,YES,PASS,fullwidth comma matches exact embedded NotoSerifSC-ExtraLight glyph-index rerender
+CAL_006,U+FF1A,embedded_font_external_rerender,20,20,1.0,33,32,1.031250,YES,PASS,fullwidth colon matches exact embedded NotoSerifSC-ExtraLight glyph-index rerender
+CAL_007,U+FF1B,embedded_font_external_rerender,28,28,1.0,56,52,1.076923,YES,PASS,fullwidth semicolon remains within the inclusive 0.92-to-1.08 area band

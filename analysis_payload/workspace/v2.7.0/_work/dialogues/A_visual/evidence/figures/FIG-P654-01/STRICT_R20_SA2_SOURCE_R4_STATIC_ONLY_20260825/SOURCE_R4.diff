@@ -1,0 +1,43 @@
+diff --git "a/D:\\Users\\ASUS\\Desktop\\\346\234\272\345\231\250\345\255\246\344\271\240\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R18_SA2_SOURCE_R3_STATIC_ONLY_20260825\\SOURCE_R3_SNAPSHOT.tex" "b/D:\\Users\\ASUS\\Desktop\\\346\234\272\345\231\250\345\255\246\344\271\240\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\\347\273\230\345\233\276\346\272\220\347\240\201\\\347\254\25405\345\206\214_\351\207\207\346\240\267\346\226\271\346\263\225\344\270\273\351\242\230\346\250\241\345\236\213\344\270\216\345\233\276\346\216\222\345\272\217\\V5-C05\\fig_v5_c05_dependency_graph.tex"
+index 8e04bcb..b192684 100644
+--- "a/D:\\Users\\ASUS\\Desktop\\\346\234\272\345\231\250\345\255\246\344\271\240\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R18_SA2_SOURCE_R3_STATIC_ONLY_20260825\\SOURCE_R3_SNAPSHOT.tex"
++++ "b/D:\\Users\\ASUS\\Desktop\\\346\234\272\345\231\250\345\255\246\344\271\240\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\\347\273\230\345\233\276\346\272\220\347\240\201\\\347\254\25405\345\206\214_\351\207\207\346\240\267\346\226\271\346\263\225\344\270\273\351\242\230\346\250\241\345\236\213\344\270\216\345\233\276\346\216\222\345\272\217\\V5-C05\\fig_v5_c05_dependency_graph.tex"
+@@ -3,12 +3,12 @@
+ \tikzset{slfig-FIG-P654-01/.style={font=\fontsize{10.1pt}{12.2pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+ \pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+ \begingroup
+-% One 10.7pt BASE_MATH role: IBM Plex math letters, a Libertinus U+002B
++% One 11.6pt BASE_MATH role: IBM Plex math letters, a Libertinus U+002B
+ % binary operator, and a genuine Mezenets U+004E uppercase N.  No
+ % per-glyph font-size overrides or semantic substitutions.
+-\font\slfigPBaseMath="IBMPlexMath-Regular.otf" at 10.7pt
+-\font\slfigPBinaryMath="LibertinusMath-Regular.otf" at 10.7pt
+-\font\slfigPTotalMath="MezenetsUnicode.otf" at 10.7pt
++\font\slfigPBaseMath="IBMPlexMath-Regular.otf" at 11.6pt
++\font\slfigPBinaryMath="LibertinusMath-Regular.otf" at 11.6pt
++\font\slfigPTotalMath="MezenetsUnicode.otf" at 11.6pt
+ \def\slfigPAlpha{\mathord{\hbox{\slfigPBaseMath\char"1D6FC}}}
+ \def\slfigPCountN{\mathord{\hbox{\slfigPBaseMath\char"1D45B}}}
+ \def\slfigPPlus{\mathbin{\hbox{\slfigPBinaryMath\char"002B}}}
+@@ -30,18 +30,18 @@
+   >={Stealth[length=2.4mm,width=1.7mm]},
+   every node/.append style={line width=0.85pt},
+   alt={对象—关系—结论：类别计数与Gamma—Beta归一化两条前置线索汇入多项似然和Dirichlet先验，实线有向主链先以参数相加得到共轭后验，再由后验均值得到给定计数与超参数的类别预测概率；无箭头细线连接单纯形几何、均值浓度和对数矩等解释对象，虚线有向边仅把预测连到下游主题模型应用}]
+-\node[aux,text width=28mm] (trial) at (-5.499,1.15) {类别计数\\{\fontsize{10.7pt}{12.8pt}\selectfont$\slfigPCountN$}};
++\node[aux,text width=28mm] (trial) at (-5.499,1.15) {类别计数\\{\fontsize{11.6pt}{13.8pt}\selectfont$\slfigPCountN$}};
+ \node[aux,text width=28mm] (gamma) at (-5.499,-1.15) {Gamma 与贝塔\\规范因子};
+ \node[core] (families) at (-1.88,0)
+   {多项分布\\与狄利克雷先验};
+ \node[result] (posterior) at (2.15,0)
+   {共轭狄利克雷后验\\[5pt]
+-   {\fontsize{10.7pt}{12.8pt}\selectfont
++   {\fontsize{11.6pt}{13.8pt}\selectfont
+     $\displaystyle\text{参数 }\slfigPAlpha\slfigPPlus\slfigPCountN$}};
+ \node[result,text width=43mm,minimum height=30mm] (predictive) at (6.65,0)
+   {后验预测概率\\
+    新增观测取指定类别\\[5pt]
+-   {\fontsize{10.7pt}{12.8pt}\selectfont
++   {\fontsize{11.6pt}{13.8pt}\selectfont
+     $\displaystyle\dfrac{\slfigPAlpha_i\slfigPPlus\slfigPCountN_i}{\slfigPAlpha_0\slfigPPlus\slfigPTotalN}$}};
+ \node[aux,text width=23.5mm,inner xsep=2.5pt] (simplex) at (-1.41,-2.12) {单纯形几何};
+ \node[aux,text width=23.5mm,inner xsep=2.5pt] (mom) at (2.0,-2.12) {均值与浓度\\及对数矩};

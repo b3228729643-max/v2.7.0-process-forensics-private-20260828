@@ -1,0 +1,8 @@
+CATEGORY,EXPECTED,ACTUALLY_OPENED,REVIEWER,DECISION,NOTE
+WHOLE_VIEW,5,5,FIG-P630-01-SA1-R97,PASS,Current full-page 200dpi strict crop 300dpi standalone 300dpi grayscale 300dpi and text measurement overlay were opened at original detail
+GLYPH_CONTACT_SHEET,13,13,FIG-P630-01-SA1-R97,PASS,Every sheet01 through sheet13 opened; 102 cells individually inspected and signed in glyph_manual_review.csv
+GLYPH_CONTACT_CELL,102,102,FIG-P630-01-SA1-R97,PASS,Each original overlay and mask-only triple inspected; three H failures retained
+CRITICAL_GLYPH_NATIVE_1X,6,6,FIG-P630-01-SA1-R97,PASS,Current native cards opened for glyph013 glyph022 glyph025 glyph029 glyph064 glyph093
+CRITICAL_GLYPH_8X,6,6,FIG-P630-01-SA1-R97,PASS,Current 8x cards opened for the same six critical glyphs
+GRAPHIC_PATH_CONTACT,21,21,FIG-P630-01-SA1-R97,PASS,Every G001 through G021 original overlay mask-only 8x contact opened and signed
+CRITICAL_PAIR_CARD,19,19,FIG-P630-01-SA1-R97,PASS,Every current pair07299 through pair07499 listed in critical_pair_manual_review.csv opened at original detail

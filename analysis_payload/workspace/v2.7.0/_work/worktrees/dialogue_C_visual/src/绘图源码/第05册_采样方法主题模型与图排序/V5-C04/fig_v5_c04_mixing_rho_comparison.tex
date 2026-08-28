@@ -1,0 +1,54 @@
+% v2.7.0 figure UID: FIG-P640-01
+% v2.7.0 redraw: separate ACF from asymptotic ESS and preserve the |rho|<1 boundary.
+\tikzset{slfig-FIG-P640-01/.style={every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{slfig-FIG-P640-01-axis/.style={
+  tick label style={font=\fontsize{9.6}{11.5}\selectfont},
+  label style={font=\fontsize{9.8}{12}\selectfont},
+  title style={font=\fontsize{9.6}{11.5}\selectfont,align=center},
+  axis line style={draw=SLTextGray,line width=.65pt},
+  tick style={draw=SLTextGray,line width=.55pt},clip=false}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P640-01]
+\begin{axis}[slfig-FIG-P640-01-axis,
+  name=main,width=8.6cm,height=5.7cm,
+  xmin=0,xmax=12,
+  ymin=0,ymax=1.05,
+  xtick={0,2,4,6,8,10,12},
+  ytick={0,0.25,0.5,0.75,1},
+  title={(a) 轮末 ACF：$\rho^{2k}$},
+  xlabel={滞后 $k$},
+  ylabel={$\operatorname{Corr}(X_2^{(t)},X_2^{(t+k)})=\rho^{2k}$},
+  legend style={draw=none,fill=none,font=\fontsize{9.6}{11.5}\selectfont,
+    at={(0.5,-.28)},anchor=north,legend columns=3,/tikz/every even column/.append style={column sep=7pt}},
+  mark size=1.7pt,samples=181,
+  domain=0:12
+]
+\addplot[draw=SLBlue,line width=1pt] {pow(0.9025,x)};
+\addlegendentry{$|\rho|=.95$}
+\addplot[draw=SLTeal,line width=.85pt,densely dashed] {pow(0.49,x)};
+\addlegendentry{$|\rho|=.70$}
+\addplot[draw=SLGray,line width=.8pt,dash dot] {pow(0.04,x)};
+\addlegendentry{$|\rho|=.20$}
+\end{axis}
+\begin{axis}[slfig-FIG-P640-01-axis,
+  at={(main.outer north east)},anchor=outer north west,xshift=9mm,
+  width=4.9cm,height=4.2cm,xmin=0,xmax=.99,ymin=-.06,ymax=1,
+  title={(b) 渐近 ESS 比例：\\[-1pt]$\frac{1-\rho^2}{1+\rho^2}$},
+  xlabel={$|\rho|$},ylabel={$N_{\rm eff}/N$},
+  xtick={0,.5,.99},xticklabels={0,.5,.99},ytick={0,.5,1},
+  axis lines=left,clip=false]
+  \addplot[draw=SLGold,line width=1pt,domain=0:.99,samples=181] {(1-x^2)/(1+x^2)};
+  \addplot[only marks,mark=*,mark size=1.8pt,draw=SLGold,fill=white]
+    coordinates {(.99,0.0100499975)};
+  \node[anchor=south east,xshift=-2pt,yshift=2pt,
+    font=\fontsize{9.6}{11.5}\selectfont,text=SLGold,fill=white,inner sep=1pt]
+    at (axis cs:.99,0.0100499975) {$(.99,\,.010)$};
+  \node[anchor=north east,font=\fontsize{9.6}{11.5}\selectfont,text=SLGold,align=right,fill=white,inner sep=1pt]
+    at (axis description cs:.98,.96) {$|\rho|\to1^-:$\\$N_{\rm eff}/N\to0$};
+\end{axis}
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{二元正态系统Gibbs的轮末解析自相关为$\rho^{2k}$，渐近有效样本比例为$(1-\rho^2)/(1+\rho^2)$；当$|\rho|$接近1时相关性衰减缓慢，即使内核正确且接受率为1，固定长度链的统计效率仍会显著下降}
+\label{fig:V5-C04-mixing-rho-comparison}
+\end{figure}

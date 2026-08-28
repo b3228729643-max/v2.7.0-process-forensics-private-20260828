@@ -1,0 +1,14 @@
+review_id,peer_or_role_set,measured_evidence,hard_r168_decision,advisory,reviewer,note
+PR01,state_labels_0_to_6,ink heights 25 to 26 px and declared 8.8 pt,PASS,8.8pt metadata only,SA3_FRESH_ISOLATED,all seven numerals have a uniform role size and are immediately readable
+PR02,coordinate_titles_x1_x2,base x 21 px and subscripts 19 px in both titles,PASS,micro ratio only,SA3_FRESH_ISOLATED,x1 and x2 use identical math hierarchy with no visible imbalance
+PR03,update_labels_x1_x2,CJK 33 px base x 21 px subscript 19 px for both labels,PASS,micro ratio only,SA3_FRESH_ISOLATED,the two update labels are role peers with matched structure and weight
+PR04,long_short_axis_labels,long-axis CJK 38 px and short-axis CJK 33 px,PASS,raster orientation and character-shape delta advisory,SA3_FRESH_ISOLATED,the rotated 长轴 and horizontal 短轴 labels are both clear and neither is visibly dominant
+PR05,note_CJK_and_punctuation,CJK median 33 px with low profile punctuation measured separately,PASS,taxonomy shape spread advisory,SA3_FRESH_ISOLATED,fullwidth punctuation and the low ideographic period explain height spread without unreadability
+PR06,caption_CJK,CJK median 36 px range 28 to 37 px,PASS,character natural-shape spread advisory,SA3_FRESH_ISOLATED,caption Chinese glyphs read as one consistent text role across both lines
+PR07,caption_Latin_Gibbs,Latin ink heights 22 to 31 px at 9.99 pt,PASS,natural lowercase shape spread advisory,SA3_FRESH_ISOLATED,Gibbs has normal mixed ascender x-height variation and is not size-imbalanced
+PR08,caption_math_x1_x2,base x 21 px subscripts 25 px natural script at resolved sizes,PASS,micro typography advisory,SA3_FRESH_ISOLATED,both coordinate symbols share the same math construction and are semantically clear
+PR09,caption_label_hierarchy,label CJK 35 to 38 px digits 27 to 28 px at about 9.96 pt,PASS,script morphology advisory,SA3_FRESH_ISOLATED,bold 图33.4 label is appropriately stronger than the continuation but not severe
+PR10,figure_text_vs_caption,figure text 8.8 to 9.2 pt and caption about 9.96 pt,PASS,ratio range within R168 advisory treatment,SA3_FRESH_ISOLATED,full-page inspection shows coherent hierarchy and no visibly severe font imbalance
+PR11,foreground_graphic_roles,axes gray contours tiered arrows color-coded markers uniform,PASS,color and weight taxonomy advisory,SA3_FRESH_ISOLATED,each graphic role is internally consistent and distinguishable at native and grayscale views
+PR12,note_border_and_note_text,rounded border minimum 8 px crop clearance with text fully separated,PASS,none,SA3_FRESH_ISOLATED,note border encloses its text with legal whitespace and does not collide with glyph ink
+

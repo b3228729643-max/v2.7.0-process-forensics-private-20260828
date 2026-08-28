@@ -1,0 +1,11 @@
+criterion,elements,observed_native_px,threshold_px,verdict,method
+region-fill to plot edge,upper/lower half-space fills,8.526,>=6,True,source coordinates mapped through native marker-fit affine transform
+separator endpoint to horizontal plot edge,separator at x=±3.2,8.526,>=6,True,same native affine transform
+text-to-separator visible gap,T03 boundary label / separator,1.000,>=3,False,1:1 RGB masks; separator classified by source line transformed onto the raster
+text-to-arrow visible gap,T04 normal label / gold normal arrow,20.000,>=3,True,1:1 RGB masks
+text-to-arrow visible gap,T05 y-axis label / y-axis arrowhead,32.202,>=3,True,1:1 RGB masks
+text-to-arrow visible gap,T06 x-axis label / x-axis arrowhead,27.203,>=3,True,1:1 RGB masks
+text-to-text visible gap,T03 / T06,111.328,>=4,True,"all six text masks, native pixels"
+positive disk same-class pixel ratio,five blue disks,width=1.0000; height=1.0000,"[0.92,1.08]",True,opaque blue connected components
+negative triangle same-class pixel ratio,five teal triangles,width=0.9600; height=0.9545,"[0.92,1.08]",True,opaque teal connected components
+cross-panel / node-border,single panel; labels have no drawn node borders,N/A,N/A,True,source inventory

@@ -1,0 +1,12 @@
+REVIEW_ID,REVIEWER,VIEW_PATH,SCOPE,PT_OR_PIXEL_SUMMARY,R168_STATUS,CROWDING_OR_IMBALANCE,GRAYSCALE_OR_PAGE_FINDING,MANUAL_DECISION,NOTE
+V001,SA3-R107,full_page_200dpi.png,FULL_PAGE_INTEGRATION,"图体横向宽度与正文版心匹配；题注与后继正文层级清晰",R168_APPLIED_NONE_HARD,"无突兀放大、无大空洞、无压邻页对象","位于优化解释之后、正文逆向说明之前，阅读顺序自然",PASS,"实际打开完整物理页17；图1.1不抢过章内解释框或例题"
+V002,SA3-R107,figure_crop_300dpi.png,FIGURE_PLUS_CAPTION,"原生1943×455px；body65 glyph+caption43 glyph完整显示",R168_APPLIED,"题注与图体留白稳定，注释未压虚线","彩色节点、灰色回路和题注均清晰",PASS,"题注“图1.1…”与源句、相邻正文一致，无裁边"
+V003,SA3-R107,standalone_300dpi.png,TIKZ_BODY_ONLY,"原生1943×388px；4节点、主链、内嵌箭头、逆向回路齐全",R168_APPLIED,"四节点等宽等高；主链优先级最高；注释为次级灰色","无颜色依赖造成的方向歧义",PASS,"从对象声明到可核验任务单向阅读，再沿虚线返回核对"
+V004,SA3-R107,grayscale_300dpi.png,GRAYSCALE_PLUS_CAPTION,"原生1943×455px；标题粗体35px、正文中位33px、注释中位33px",R168_APPLIED,"灰度下标题/正文/虚线仍可分层","蓝/青填充失色后边框、箭头、文字仍有足够明度差",PASS,"灰度语义不依赖节点颜色，虚实线区分保留"
+V005,SA3-R107,after_text_measurement_overlay_300dpi.png,OBJECT_MAPPING,"108个红色文字框+14个蓝色前景图形框；题注已纳入",R168_APPLIED,"标签密集仅属于审计叠加，不是读者视图","对象框与最终可见轮廓逐一对应",PASS,"未发现漏字、合并字、边界截断或未归属前景路径"
+R001,SA3-R107,contact_sheets/glyph_contact_manifest.json,NODE_TITLE,"declared10.5pt；CJK H=35px；相对NODE_BODY中位=1.0606",R168_MICRO_ADVISORY,"四节点标题同高同粗，强调自然","粗体标题在彩色与灰度下均稳定",PASS,"同角色19字全部35px，无跨节点漂移"
+R002,SA3-R107,contact_sheets/glyph_contact_manifest.json,NODE_BODY,"declared10.0pt；CJK H=32..34px，中位33px",R168_MICRO_ADVISORY,"四节点正文同一视觉层，内嵌箭头未挤压定义域/值域","细体正文在灰度下仍清楚",PASS,"低轮廓顿号T022/T035/T043非空纯净，按R168不构成硬失败"
+R003,SA3-R107,contact_sheets/glyph_contact_manifest.json,ANNOTATION,"declared10.0pt；CJK H=32..34px，中位33px；冒号22px",R168_MICRO_ADVISORY,"灰色注释权重低于主链但实际可读","与虚线回路保持19px最近净空",PASS,"文字完整、无虚线穿字，返回核对含义清楚"
+R004,SA3-R107,contact_sheets/glyph_contact_manifest.json,CAPTION_LABEL,"nominal10.0pt；图33px；数字1为27px；句点7px",R168_FONT_AND_PUNCT_ADVISORY,"粗体“图1.1”与正文题注层级自然","灰度下编号仍明显但不抢图体",PASS,"句点U+002E完整非空；字体元数据差异不单独触发失败"
+R005,SA3-R107,contact_sheets/glyph_contact_manifest.json,CAPTION_TEXT,"nominal10.0pt；CJK主群32..34px，中位33px",R168_SINGLE_STROKE_AND_MICRO_ADVISORY,"单横画“一”5×38px完整可读；其低H不造成失衡","整句灰度可读、未与图体或页边接触",PASS,"T091按R168 advisory；两个U+3002句号均非空纯净"
+R006,SA3-R107,contact_sheets/graphic_contact_manifest.json,FOREGROUND_GRAPHICS,"14个前景路径mask非空；5组杆首为设计连接",R168_NOT_APPLICABLE,"节点边框、主箭、回路线宽协调","灰度下实线主链与灰色虚线回路可区分",PASS,"2个背景path另行对账，不混入前景N或重叠门"

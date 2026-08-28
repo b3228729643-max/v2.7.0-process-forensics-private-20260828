@@ -1,0 +1,61 @@
+{
+  "schema": "FIG-P634-01_ROOT_R95_FREEZE_v1",
+  "official_pdf": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/source/v2.7.0/src/build/strict_current_r95_fullbook/main_full.pdf",
+  "build": {
+    "command": "powershell -ExecutionPolicy Bypass -File build_v2.7.0.ps1 -OutputDir src\\build\\strict_current_r95_fullbook -NoPublish",
+    "result": "PASS",
+    "exit_code": 0,
+    "bytes": 4934184,
+    "pages": 813,
+    "pdf_version": "1.7",
+    "encrypted": false,
+    "all_pages_a4": true,
+    "unique_media_box_pt": [595.276, 841.89],
+    "unique_crop_box_pt": [595.276, 841.89],
+    "rotation": 0,
+    "embedded_subset_unicode_font_rows": 14,
+    "hard_log_pattern_matches": 0
+  },
+  "hard_log_scan": {
+    "bang": 0,
+    "latex_error": 0,
+    "package_error": 0,
+    "undefined_control": 0,
+    "emergency": 0,
+    "fatal": 0,
+    "lost_float": 0,
+    "undefined_references": 0,
+    "undefined_citations": 0,
+    "multiply_defined": 0,
+    "duplicate_destination": 0,
+    "unreferenced_destination": 0,
+    "overfull": 0,
+    "underfull": 0,
+    "missing_character": 0,
+    "rerun": 0,
+    "no_pages": 0,
+    "runaway": 0,
+    "file_ended_while_scanning": 0
+  },
+  "figure": {
+    "uid": "FIG-P634-01",
+    "number": "33.3",
+    "physical_page": 682,
+    "printed_page": 669,
+    "locator_title": "单轮系统扫描坐标带",
+    "locator_match_on_page": true,
+    "full_page_300dpi_px": [2481, 3508],
+    "full_page_file": "official_R95_physical_682_full_page_300dpi.png",
+    "crop_from_full_page_300dpi_px": [280, 1690, 2235, 2575],
+    "crop_size_px": [1955, 885],
+    "color_crop_file": "official_R95_physical_682_figure_caption_crop_300dpi.png",
+    "grayscale_crop_file": "official_R95_physical_682_figure_caption_crop_300dpi_gray.png"
+  },
+  "root_precheck": {
+    "native_300dpi_color_viewed": true,
+    "native_300dpi_grayscale_viewed": true,
+    "visible_overlap_or_clipping_found": false,
+    "font_hierarchy_visibly_abrupt": false,
+    "verdict": "PRECHECK_PASS_TO_FRESH_SA1_NOT_FINAL"
+  }
+}

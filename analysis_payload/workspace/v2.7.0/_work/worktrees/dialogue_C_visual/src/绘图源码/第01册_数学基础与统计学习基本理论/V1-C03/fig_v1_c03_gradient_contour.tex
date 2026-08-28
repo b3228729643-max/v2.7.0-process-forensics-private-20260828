@@ -1,0 +1,82 @@
+% v2.6.0 figure UID: FIG-P049-01
+% Image-reference reverse redraw: exact contour geometry retained; hierarchy and label clearance refined.
+\tikzset{
+  slfig-FIG-P049-01/.style={every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P049-01-label/.style={
+    font=\fontsize{9.4pt}{11.2pt}\selectfont,
+    fill=white,fill opacity=.94,text opacity=1,inner sep=.8pt
+  },
+  slfig-FIG-P049-01-note/.style={
+    anchor=west,font=\fontsize{9.2pt}{11.2pt}\selectfont,text=SLInk,
+    fill=white,fill opacity=.94,text opacity=1,inner xsep=1pt,inner ysep=.8pt
+  },
+  slfig-FIG-P049-01-guide/.style={
+    draw=SLGray!82,line width=.50pt,dash pattern=on 2.2pt off 1.6pt
+  }
+}
+\pgfplotsset{slfig-FIG-P049-01-axis/.style={
+  tick label style={font=\fontsize{8.8pt}{10.4pt}\selectfont},
+  label style={font=\fontsize{9.4pt}{11.2pt}\selectfont},
+  clip=false
+}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]\centering\label{schema:V1-C03:CH-17}
+\begin{tikzpicture}[slfig-FIG-P049-01,alt={对象—关系—结论：梯度与等值线。箭头在该点垂直于局部切线，并指向函数值增加的方向。}]
+\begin{axis}[slfig-FIG-P049-01-axis,
+  slfig axis,width=.96\linewidth,height=7.2cm,
+  axis lines=middle,axis equal image,clip=false,trig format plots=deg,
+  xmin=-3.8,xmax=6.1,ymin=-2.3,ymax=3.3,
+  xtick=\empty,ytick=\empty,xlabel={$x_1$},ylabel={$x_2$},
+  samples=241
+]
+  \addplot[domain=0:360,draw=SLGray!78,line width=.72pt,
+    dash pattern=on 3.2pt off 1.4pt on .7pt off 1.4pt,no marks]
+    ({1.5*cos(x)},{.9*sin(x)});
+  \addplot[domain=0:360,draw=SLGray!86,line width=.78pt,
+    dash pattern=on 3.5pt off 1.8pt,no marks]
+    ({2.4*cos(x)},{1.44*sin(x)});
+  \addplot[domain=0:360,draw=SLBlue,line width=.95pt,no marks]
+    ({3*cos(x)},{1.8*sin(x)});
+  \node[slfig direct label,slfig-FIG-P049-01-label,anchor=south east]
+    at (axis cs:-1.30,.50) {$c_1$};
+  \node[slfig direct label,slfig-FIG-P049-01-label,anchor=south east]
+    at (axis cs:-2.20,.62) {$c_2$};
+  \node[slfig direct label,slfig-FIG-P049-01-label,anchor=south east]
+    at (axis cs:-3.05,.43) {$c_3$};
+  \node[font=\fontsize{9.2pt}{11.0pt}\selectfont,text=SLInk!82,anchor=north west]
+    at (axis cs:-3.42,-1.82) {$c_1<c_2<c_3$};
+
+  \coordinate (P) at (axis cs:2.4,1.08);
+  \coordinate (G) at (axis cs:3.12,1.98);
+  \coordinate (T) at (axis cs:3.34,.33);
+  \coordinate (Tm) at (axis cs:1.46,1.83);
+  \filldraw[fill=SLBlue,draw=white,line width=.60pt] (P) circle (2.5pt);
+  \node[slfig-FIG-P049-01-label,anchor=north east]
+    at ([xshift=-2.2mm,yshift=-2.0mm]P) {$P=(2.4,1.08)$};
+  \draw[-{Stealth[length=2.35mm,width=1.45mm]},draw=SLBlue,line width=1.05pt]
+    (P)--(G) node[pos=.88,above left=1.8mm,slfig-FIG-P049-01-label] {$\nabla f(P)$};
+  \draw[draw=SLTeal,line width=.80pt,dash pattern=on 3.2pt off 1.8pt] (Tm)--(T)
+    node[pos=.13,above=2.0mm,slfig-FIG-P049-01-label]
+      {$\boldsymbol v_{\rm tan}$};
+  \pic[draw=SLGray,line width=.55pt,angle radius=3.6mm] {right angle=T--P--G};
+  \draw[-{Stealth[length=1.9mm,width=1.15mm]},draw=SLGold,line width=.80pt]
+    (axis cs:3.05,-.38)--(axis cs:3.70,-.38)
+    node[midway,below=1.5pt,fill=white,inner sep=.8pt,
+      font=\fontsize{9.2pt}{11.0pt}\selectfont] {$f$ 增大};
+
+  \node[slfig-FIG-P049-01-note]
+    (s1) at (axis cs:4.12,2.78) {1. 定位 $P$ 所在等值线};
+  \node[slfig-FIG-P049-01-note]
+    (s2) at (axis cs:4.12,2.10) {2. 梯度指向函数增大};
+  \node[slfig-FIG-P049-01-note]
+    (s3) at (axis cs:4.12,1.42) {3. $\nabla f(P)^{\mathsf T}\boldsymbol v_{\rm tan}=0$};
+  \draw[slfig-FIG-P049-01-guide] (s1.west)--(axis cs:3.72,2.66)--(axis cs:2.75,1.36);
+  \draw[slfig-FIG-P049-01-guide] (s2.west)--(axis cs:3.70,2.10)--(G);
+  \draw[slfig-FIG-P049-01-guide] (s3.west)--(axis cs:3.66,1.42)--(axis cs:2.67,1.23);
+  \node[font=\fontsize{9.2pt}{11.0pt}\selectfont,text=SLInk!82,
+    fill=white,fill opacity=.96,text opacity=1,inner xsep=1.3pt,inner ysep=.8pt]
+    at (axis cs:1.15,-2.08) {$f(x_1,x_2)=x_1^2/9+x_2^2/3.24$};
+\end{axis}
+\end{tikzpicture}
+\caption{梯度与等值线。箭头在该点垂直于局部切线，并指向函数值增加的方向。}\label{fig:V1-C03-gradient-contour}
+\end{figure}

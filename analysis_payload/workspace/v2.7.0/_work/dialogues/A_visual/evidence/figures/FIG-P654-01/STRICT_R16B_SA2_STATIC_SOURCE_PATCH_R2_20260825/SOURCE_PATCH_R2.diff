@@ -1,0 +1,14 @@
+--- before/fig_v5_c05_dependency_graph.tex
++++ after/fig_v5_c05_dependency_graph.tex
+@@
+-\node[aux,text width=28mm] (trial) at (-5.499,1.15) {类别计数\\{\fontsize{10.7pt}{12.2pt}\selectfont$\boldsymbol n$}};
+-\node[aux,text width=28mm] (gamma) at (-5.499,-1.15) {Gamma 与 Beta\\规范因子};
++\node[aux,text width=28mm] (trial) at (-5.499,1.15) {类别计数\\{\fontsize{11.6pt}{14pt}\selectfont$\boldsymbol n$}};
++\node[aux,text width=28mm] (gamma) at (-5.499,-1.15) {Gamma 与贝塔\\规范因子};
+@@
+-    $\displaystyle\text{参数 }\boldsymbol\alpha+\boldsymbol n$}};
++    $\displaystyle\text{参数 }\boldsymbol\alpha\mathbin{\hbox{\fontsize{10pt}{12.2pt}\selectfont$+$}}\boldsymbol n$}};
+@@
+-    $\displaystyle\dfrac{\alpha_i+n_i}{\alpha_0+N}$}};
++    $\displaystyle\dfrac{\alpha_i\mathbin{\hbox{\fontsize{10pt}{12.2pt}\selectfont$+$}}n_i}{\alpha_0\mathbin{\hbox{\fontsize{10pt}{12.2pt}\selectfont$+$}}\mathord{\hbox{\fontsize{9.5pt}{11.5pt}\selectfont$N$}}}$}};
+

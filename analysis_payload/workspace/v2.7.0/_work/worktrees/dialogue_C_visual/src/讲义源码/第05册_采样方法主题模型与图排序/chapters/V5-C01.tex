@@ -1,0 +1,1317 @@
+% STAGE13-CHAPTER: V5-C01
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=not_applicable; CH-10=not_applicable; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=not_applicable; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V5-C01-CH01}; CH-02=\label{struct:V5-C01-CH02}; CH-03=\label{struct:V5-C01-CH03}; CH-04=\label{struct:V5-C01-CH04}; CH-05=\label{struct:V5-C01-CH05}; CH-06=\label{struct:V5-C01-CH06}; CH-07=\label{struct:V5-C01-CH07}; CH-08=\label{struct:V5-C01-CH08}; CH-09=\label{struct:V5-C01-CH09}; CH-10=\label{struct:V5-C01-CH10}; CH-11=\label{struct:V5-C01-CH11}; CH-12=\label{struct:V5-C01-CH12}; CH-13=\label{struct:V5-C01-CH13}; CH-14=\label{struct:V5-C01-CH14}; CH-15=\label{struct:V5-C01-CH15}; CH-16=\label{struct:V5-C01-CH16}; CH-17=\label{struct:V5-C01-CH17}; CH-18=\label{struct:V5-C01-CH18}; CH-19=\label{struct:V5-C01-CH19}; CH-20=\label{struct:V5-C01-CH20}; CH-21=\label{struct:V5-C01-CH21}; CH-22=\label{struct:V5-C01-CH22}; CH-23=\label{struct:V5-C01-CH23}; CH-24=\label{struct:V5-C01-CH24}; CH-25=\label{struct:V5-C01-CH25}; CH-26=\label{struct:V5-C01-CH26}; CH-27=\label{struct:V5-C01-CH27}; CH-28=\label{struct:V5-C01-CH28}; CH-29=\label{struct:V5-C01-CH29}; CH-30=\label{struct:V5-C01-CH30}; CH-31=\label{struct:V5-C01-CH31}; CH-32=\label{struct:V5-C01-CH32}; CH-33=\label{struct:V5-C01-CH33}; CH-34=\label{struct:V5-C01-CH34}; CH-35=\label{struct:V5-C01-CH35}; CH-36=\label{struct:V5-C01-CH36}; CH-37=\label{struct:V5-C01-CH37}
+% CHAPTER-SCHEMA-NOT-APPLICABLE-REASON: CH-09=本章研究给定转移核的概率性质，不定义经验风险、似然或参数学习目标; CH-10=本章不估计模型参数，分布推进只是给定转移矩阵上的数值计算而非学习算法; CH-16=平稳分布由固定点或线性方程刻画，本章没有需要虚构的内生优化目标
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1.1-EXERCISE-LAYOUT: grouped; kept=14; source_group=4; supplement=10
+% DERIVATION-CHECK: step-1; step-2; step-3
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C01-dependency -> SLM-19-01-006
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C01-transition-graph -> SLM-19-02-003
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C01-stationary-fixed-point -> SLM-19-02-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C01-chain-properties -> SLM-19-02-006
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C01-return-time -> SLM-19-05-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C01-detailed-balance -> SLM-19-06-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C01-random-walk -> PRE-SQ-007
+% ERRATA-GOVERNANCE: ERR-19-001 verified_correction; ERR-19-003 verified_correction; ERR-19-004 verified_correction; ERR-19-005 verified_correction; ERR-19-006 verified_correction
+
+\chapter{马尔可夫链基础}\label{chap:V5-C01}
+
+\SLChapterOpening{条件概率$\to$转移算子$\to$平稳与遍历$\to$图随机游走}
+{给定一步随机规则，怎样区分“保持不变”“唯一”“时间平均收敛”和“固定时刻收敛”？}
+{读完可写出行随机推进、判断有限链结构，并用反例检验过强的长期结论。}
+{条件概率、矩阵乘法、概率向量、最大公约数与非负级数。}
+{先回看概率向量与全概率公式，再进入状态转移矩阵。}
+\phantomsection\label{struct:V5-C01-CH01}
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 在有限/可数状态主线中用条件概率表述马尔可夫性质，并能用转移核写出一般可测空间版本；
+  \item 从分布推进推导平稳方程，区分平稳分布的存在、唯一、逐步收敛与时间平均收敛；
+  \item 判断有限链的不可约性、周期性、正常返与可逆性，并能构造反例检验错误命题；
+  \item 手工执行有限状态链的分布推进算法，核对概率不变量、停止规则和复杂度；
+  \item 分析无向图随机游走的平稳分布，以及二部图周期性和惰性化的作用。
+\end{itemize}
+}
+
+\phantomsection\label{struct:V5-C01-CH02}
+\begin{prerequisitebox}
+本章使用条件概率、全概率公式、矩阵乘法、概率向量、最大公约数与级数的基本性质。概率分布统一写成行向量。阅读随机游走一节前，应复习第3册隐马尔可夫模型中“矩阵第$i$行表示从状态$i$出发的条件分布”这一约定。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V5-C01-CH03}
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 给定事件$A,B,C$，能否用全概率公式把$P(A\mid C)$按$B$的取值分解？
+  \item 给定概率行向量$\rho=(0.3,0.7)$和矩阵$A$，能否说明$\rho A$的第$j$个分量为何是下一时刻处于$j$的概率？
+  \item 能否计算集合中所有正整数的最大公约数，并解释同时出现连续两个返回时长为何会使周期为$1$？
+  \item 能否说明非负数列若总和有限，则其通项必须趋于$0$？
+\end{enumerate}
+若第1--2项尚不熟悉，应先复习条件概率与矩阵乘法；若第3--4项不能完成，应先复习整除关系与非负级数，因为它们分别用于周期和首次回返的判断。
+\end{precheckbox}
+
+\phantomsection\label{struct:V5-C01-CH04}
+% KNOWLEDGE-PLAN: KN-V5-C30-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}马尔可夫链基础依赖链含“第3册隐马尔可夫模型章的行随机转移约定 $\to$ 本章的有限链统一记号”到“随机过程 $\to$ 马尔可夫性质 $\to$ 转移矩阵或转移核”这一跳；请固定写出前者输出类型与后者输入类型，并核对两者相同或存在正文声明的转换。\par
+
+\begin{dependencybox}
+第3册隐马尔可夫模型章的行随机转移约定 $\to$ 本章的有限链统一记号；
+随机过程 $\to$ 马尔可夫性质 $\to$ 转移矩阵或转移核；
+初始分布与转移规则 $\to$ 分布推进 $\to$ 平稳固定点；
+通信关系、返回时长与平均回返时间 $\to$ 不可约、非周期与正常返；
+这些结构条件 $\to$ 唯一平稳分布、逐步收敛与时间平均；
+细致平衡 $\to$ 可逆性 $\to$ 平稳性；
+图上的局部移动规则 $\to$ 随机游走。
+\end{dependencybox}
+图\ref{fig:V5-C01-dependency}给出本章概念的依赖次序。箭头表示学习上的前置关系，不表示后一个性质能反向推出前一个性质；特别是，可逆性不能代替不可约性检查。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_dependency_graph.tex}
+
+\phantomsection\label{struct:V5-C01-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V5-C01
+\index[symbols]{x-t-t-minus-ge-minus-0--sc324de4c9cbd@$\{X_t\}_{t\ge0}$：随机过程；$X_t$是时刻$t$的状态}
+\index[symbols]{minus-mathcals-minus--s57f38b46e65c@$\mathcal S$：状态空间}
+\index[symbols]{a-eq-a-ij--sb3aa6a9ab38d@$A=(a_{ij})$：$a_{ij}=P(X_{t+1}=j\mid X_t=i)$}
+\index[symbols]{row-rho-t@$\rho_t^{\mathrm{row}}$（正文简称$\rho_t$）：时刻$t$的边缘概率行向量}
+\index[symbols]{k-x-b--sa83e03a7c1ec@$K(x,B)$：从$x$一步进入可测集合$B$的概率}
+\index[symbols]{row-rho-star@$\rho_\star^{\mathrm{row}}$（正文简称$\rho_\star$）：满足$\rho_\star=\rho_\star A$的平稳概率行向量}
+\index[symbols]{minus-tau-minus-i--s68d4643ab1e5@$\tau_i$：首次到达状态$i$的时间}
+\index[symbols]{minus-tau-minus-i-plus--sf1908eef9269@$\tau_i^+$：从$i$出发的首次正回返时间}
+\index[symbols]{d-i--sdb1c27cab5ca@$d(i)$：状态$i$所有可能正回返时长的最大公约数；无正回返时约定为$0$}
+\index[symbols]{g-eq-v-e--s8de84dd5fc2a@$G=(V,E)$：随机游走的状态和允许移动关系}
+% STAGE19-SYMBOL-INDEX-END: V5-C01
+% KNOWLEDGE-PLAN: KN-V5-C30-PREREQUISITE-006 L1
+\paragraph{读前自检：本章符号表。}马尔可夫链基础符号表规定$\{X_t\}_{t\ge0}$、$X_t$的类型或范围；请把$\{X_t\}_{t\ge0}$代入紧随其后的定义关系，逐项核对输入形状、输出形状与取值域。\par
+
+\begin{symboltablebox}
+\small
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 类型、维数或范围 & 读法与作用\\ \midrule
+$\{X_t\}_{t\ge0}$ & 随机变量序列 & 随机过程；$X_t$是时刻$t$的状态\\
+$\mathcal S$ & 主线为有限/可数集；进阶为一般可测空间 & 状态空间\\
+$A=(a_{ij})$ & $n\times n$行随机矩阵 & $a_{ij}=P(X_{t+1}=j\mid X_t=i)$\\
+$\rho_t^{\mathrm{row}}$（简称$\rho_t$） & $1\times n$概率行向量 & 时刻$t$的边缘分布\\
+$K(x,B)$ & $[0,1]$值马尔可夫核 & 从$x$一步进入可测集合$B$的概率\\
+$\rho_\star^{\mathrm{row}}$（简称$\rho_\star$） & $1\times n$概率行向量 & 满足$\rho_\star=\rho_\star A$的平稳分布\\
+$\tau_i$ & $\mathbb N_0\cup\{\infty\}$ & 首次到达状态$i$的时间\\
+$\tau_i^+$ & $\mathbb N_+\cup\{\infty\}$ & 从$i$出发的首次正回返时间\\
+$d(i)$ & $\mathbb N_0$ & 状态$i$所有可能正回返时长的最大公约数；无正回返时约定为$0$\\
+$G=(V,E)$ & 有限图 & 随机游走的状态和允许移动关系\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+本章所有$\rho_t,\rho_\star$都具有“概率行向量”角色；完整角色记号分别是$\rho_t^{\mathrm{row}},\rho_\star^{\mathrm{row}}$。\hyperref[chap:V5-C04]{第33章（第5册第4章）}二元正态例中的无粗体$\rho$则是标量相关系数，二者类型不同且不可代换。
+
+\SLReviewSection{随机过程与马尔可夫性质}{sec:V5-C01-S01}
+\phantomsection\label{struct:V5-C01-CH06}
+许多随机系统都按时间演化：天气、排队长度、网页访问位置和采样器当前状态都可以写成随机变量序列。若每次预测都保存完整历史，条件分布会随时间增长而变得难以表示。马尔可夫建模提出的问题是：在什么条件下，当前状态已经包含预测下一步所需的全部历史信息？
+
+% REPRODUCTION-NODE: SLM-19-00-001
+在马尔可夫链蒙特卡罗法中，$X_t$可理解为采样器当前持有的样本：先设计一条以目标分布为平稳分布的马尔可夫链，再用足够长的样本路径估计目标分布下的期望。后续章节负责构造具体采样器；本章先回答这种做法依赖的平稳性、正常返与遍历条件。\index{马尔可夫链}
+
+% KNOWLEDGE-PLAN: KN-V5-C30-CONCEPT-001 L1
+\paragraph{读前自检：马尔可夫链的随机过程表述。}马尔可夫链随机过程$\{X_t\}_{t\ge0}$定义在$(\Omega,\mathcal F,P)$上并取值于状态空间$\mathcal S$；请写出单个$X_t:\Omega\to\mathcal S$的可测性要求，核对有限状态事件$\{X_t=i\}$属于$\mathcal F$。\par
+% KNOWLEDGE-PLAN: KN-V5-C30-CONCEPT-002 L1
+\paragraph{读前自检：马尔可夫性质与时齐转移。}时齐马尔可夫链要求给定当前$X_t=i$后，$X_{t+1}$与更早历史无关，且$a_{ij}=P(X_{t+1}=j\mid X_t=i)$不依赖$t$；请对$j$求和核对转移矩阵每行和为1。\par
+
+\phantomsection\label{struct:V5-C01-CH07}
+\knowledgeanchor{SLM-19-01-006}{马尔可夫链的随机过程表述}
+\knowledgeanchor{SLM-19-02-001}{马尔可夫性质与时齐转移}
+\begin{definition}[随机过程]
+设$(\Omega,\mathcal F,P)$为概率空间，$\mathcal S$为状态空间。由同一概率空间上的随机变量$X_t:\Omega\to\mathcal S$组成的族$\{X_t\}_{t\ge0}$称为随机过程。一次实验给出的序列$x_0,x_1,\ldots$称为一条样本路径。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V5-C30-CONCEPT-003 L1
+\paragraph{读前自检：马尔可夫性质。}一阶马尔可夫性质在有限或可数状态空间$\mathcal S$上要求历史事件概率为正；请把$P(X_{t+1}=x_{t+1}\mid X_{0:t}=x_{0:t})$约成$P(X_{t+1}=x_{t+1}\mid X_t=x_t)$，再核对连续状态单点概率为零时必须改用转移核。\par
+
+\knowledgeanchor{SLM-19-02-002}{马尔可夫性质}
+% KNOWLEDGE-PLAN: KN-V5-C30-DEFINITION-002 L1
+\paragraph{读前自检：一阶马尔可夫性质：有限/可数状态主线。}有限或可数状态的一阶马尔可夫性质只在条件历史事件概率为正时用比值解释；请写出完整历史条件式并删去$X_{0:t-1}$，核对右端只保留$X_t$。\par
+
+\begin{definition}[一阶马尔可夫性质：有限/可数状态主线]
+本节先限定$\mathcal S$为有限或可数集合。对任意$t\ge0$和概率为正的历史事件$\{X_{0:t}=x_{0:t}\}$，若
+\begin{equation}\label{eq:V5-C01-markov-property}
+P(X_{t+1}=x_{t+1}\mid X_{0:t}=x_{0:t})
+=P(X_{t+1}=x_{t+1}\mid X_t=x_t),
+\end{equation}
+则称该过程具有一阶马尔可夫性质。若右端条件分布不依赖$t$，称为时齐马尔可夫链。
+\end{definition}
+这里的单点条件概率公式依赖“历史事件概率为正”，所以只作为离散/可数主线定义；连续状态下单点通常概率为$0$，必须改用后文的转移核与几乎处处条件分布。这里的“一阶”是条件独立陈述，不表示$X_{t+1}$与更早状态无关；更早状态会先影响$X_t$，再通过$X_t$影响下一步。
+
+% CORE-DERIVATION-PLAN: KN-V5-C30-DERIVATION-001
+\SLKnowledgeBridge{先用概率链式法则，再用 Markov 性删除多余历史。}{初始分布 $\mu$、一步转移概率 $a_{ij}$ 与路径 $(i_0,\ldots,i_T)$。}{路径状态均在状态空间内；涉及的一步条件概率有定义。}{先写完整链式分解 $P(X_0=i_0)\prod_{t=1}^TP(X_t=i_t\mid X_{0:t-1}=i_{0:t-1})$。}
+
+\begin{derivationgoalbox}
+在给定初始分布和一步转移概率后，把一条有限路径的联合概率写成逐步乘积。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+使用概率链式法则，并在每个条件概率中应用式\eqref{eq:V5-C01-markov-property}删除被当前状态屏蔽的更早历史。
+\end{derivationprepbox}
+\textbf{推导第1步：链式展开。}对$x_{0:T}$，
+\[
+P(X_{0:T}=x_{0:T})=P(X_0=x_0)
+\prod_{t=0}^{T-1}P(X_{t+1}=x_{t+1}\mid X_{0:t}=x_{0:t}).
+\]
+\textbf{推导第2步：使用马尔可夫性质。}每个乘积因子只保留当前状态，得到
+\[
+P(X_{0:T}=x_{0:T})=P(X_0=x_0)
+\prod_{t=0}^{T-1}P(X_{t+1}=x_{t+1}\mid X_t=x_t).
+\]
+\textbf{推导第3步：时齐化。}若链时齐，记一步转移概率为$a_{x_tx_{t+1}}$，则
+\begin{equation}\label{eq:V5-C01-path-factorization}
+P(X_{0:T}=x_{0:T})=\rho_0(x_0)\prod_{t=0}^{T-1}a_{x_tx_{t+1}}.
+\end{equation}
+式\eqref{eq:V5-C01-path-factorization}说明初始分布和一步转移规则共同决定有限维联合分布。
+
+\phantomsection\label{struct:V5-C01-CH08}
+本章的模型对象是二元组$(\rho_0,A)$，或连续状态情形下的$(\mu_0,K)$。模型回答“给定当前状态，下一步如何随机产生”；它并不自动回答转移规则如何从数据估计，也不保证长期行为与初始状态无关。
+
+\phantomsection\label{struct:V5-C01-CH09}
+\phantomsection\label{struct:V5-C01-CH10}
+\begin{notapplicablebox}[title=本章范围]
+本章研究给定转移矩阵或转移核的概率性质，不定义经验风险、似然或其他参数学习目标。
+
+本章不估计模型参数。后文的分布推进算法只是对已给定矩阵执行概率计算，不能把它改称参数学习。
+\end{notapplicablebox}
+
+\SLTeachSection{状态转移矩阵}{sec:V5-C01-S02}
+\index{状态转移矩阵}
+\knowledgeanchor{SLM-19-02-003}{离散状态马尔可夫链}
+设有限状态空间为$\mathcal S=\{1,\ldots,n\}$。本讲义统一定义
+\begin{equation}\label{eq:V5-C01-row-transition}
+a_{ij}=P(X_{t+1}=j\mid X_t=i),\qquad
+a_{ij}\ge0,\qquad \sum_{j=1}^n a_{ij}=1.
+\end{equation}
+因此$A=(a_{ij})$是行随机矩阵，矩阵第$i$行是从状态$i$出发的下一状态条件分布。图\ref{fig:V5-C01-transition-graph}把矩阵元素与有向边一一对应；所有从$i$出发的箭头标签之和必须为$1$。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_transition_graph.tex}
+
+\noindent\textbf{读图顺序：}先看两侧相同的物理箭头$i\to j$；再看左侧用$A$的$a_{ij}$记录这条边，经中央$P=A^{\mathsf T}$对应到右侧的$P_{ji}$；最终得到两种等价推进$\rho_{t+1}=\rho_tA$与$\boldsymbol p^{(t+1)}=P\boldsymbol p^{(t)}$，边的方向和概率均未改变。
+
+若$\rho_t=(P(X_t=1),\ldots,P(X_t=n))$，全概率公式给出
+\begin{equation}\label{eq:V5-C01-distribution-update}
+\rho_{t+1}=\rho_tA,
+\qquad
+(\rho_{t+1})_j=\sum_{i=1}^n(\rho_t)_i a_{ij}.
+\end{equation}
+进一步有$\rho_t=\rho_0A^t$，且
+\begin{equation}\label{eq:V5-C01-mstep}
+(A^m)_{ij}=P(X_m=j\mid X_0=i).
+\end{equation}
+
+与\hyperref[chap:V5-C07]{第36章（第5册第7章）}的列随机\PageRank{}约定之间只有一次同时转置：令
+\begin{equation}\label{eq:V5-C01-row-column-bridge}
+P=A^{\mathsf T},\qquad
+\boldsymbol p^{(t)}=\rho_t^{\mathsf T}.
+\end{equation}
+则$\rho_{t+1}=\rho_tA$当且仅当$\boldsymbol p^{(t+1)}=P\boldsymbol p^{(t)}$；同样，$\rho_\star=\rho_\star A$当且仅当$\boldsymbol p_\star=P\boldsymbol p_\star$。因此改变行/列约定时必须同时转置矩阵与概率向量，不能只移动乘号一侧。
+
+% KNOWLEDGE-PLAN: KN-V5-C30-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：状态转移矩阵。}状态转移矩阵采用行向量约定$a_{ij}=P(i\to j)$，故分布按$\rho_{t+1}=\rho_tA$推进；请与列向量推进$\rho_{t+1}=A^{\mathsf T}\rho_t$对照，核对两式只差转置而不能混用。\par
+
+\begin{comparisonbox}
+\textbf{第30章与第36章的转置桥。}\par\smallskip
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 对象 & 本章行随机写法 & 第36章列随机写法\\ \midrule
+转移矩阵 & $A_{ij}=P(i\to j)$，$A\boldsymbol1=\boldsymbol1$ & $P=A^{\mathsf T}$，$\boldsymbol1^{\mathsf T}P=\boldsymbol1^{\mathsf T}$\\
+时刻分布 & $\rho_t\in\mathbb R^{1\times n}$ & $\boldsymbol p^{(t)}=\rho_t^{\mathsf T}\in\mathbb R^{n\times1}$\\
+一步推进 & $\rho_{t+1}=\rho_tA$ & $\boldsymbol p^{(t+1)}=P\boldsymbol p^{(t)}$\\
+平稳方程 & $\rho_\star=\rho_\star A$ & $\boldsymbol p_\star=P\boldsymbol p_\star$\\
+\bottomrule
+\end{tabularx}
+同一有向边及同一数值例只转置表示，不反向边，也不同时使用$A\boldsymbol p_t$或$\rho_tP$。
+\end{comparisonbox}
+
+% CORE-DERIVATION-PLAN: KN-V5-C30-DERIVATION-002
+\SLKnowledgeBridge{在中间时刻按状态分解路径，得到多步转移矩阵乘法。}{时齐 Markov 链、转移矩阵 $A$ 与非负整数 $m,\ell$。}{中间状态集合互斥完备；后 $\ell$ 步转移只依赖中间状态。}{先条件于 $X_m=k$，对所有中间状态 $k$ 应用全概率公式。}
+
+\begin{derivationgoalbox}
+证明$m+\ell$步转移可以分解为先走$m$步、再走$\ell$步的矩阵乘法。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+在中间时刻$m$按状态$k$使用全概率公式；时齐性保证后$\ell$步概率仍由$A^\ell$表示。
+\end{derivationprepbox}
+\textbf{推导第1步：按中间状态分割。}
+\[
+P(X_{m+\ell}=j\mid X_0=i)
+=\sum_{k=1}^nP(X_m=k\mid X_0=i)
+P(X_{m+\ell}=j\mid X_m=k,X_0=i).
+\]
+\textbf{推导第2步：条件独立。}马尔可夫性质使第二个条件概率不再需要$X_0=i$，时齐性又使它等于$(A^\ell)_{kj}$。
+
+\textbf{推导第3步：识别矩阵乘法。}
+\begin{equation}\label{eq:V5-C01-chapman-kolmogorov}
+(A^{m+\ell})_{ij}=\sum_{k=1}^n(A^m)_{ik}(A^\ell)_{kj}.
+\end{equation}
+这也是Chapman--Kolmogorov方程在有限状态空间中的矩阵形式。
+
+\knowledgeanchor{SLM-19-02-005}{连续状态马尔可夫链}
+\paragraph{进阶：一般可测状态空间。}
+连续状态空间不能把所有转移概率列成有限矩阵。对可测空间$(\mathcal S,\mathcal B)$，马尔可夫核$K$满足：固定$x$时$K(x,\cdot)$是概率测度，固定$B$时$K(\cdot,B)$可测。时齐马尔可夫性质的严谨版本是：对每个$B\in\mathcal B$，
+\[
+P(X_{t+1}\in B\mid\sigma(X_0,\ldots,X_t))
+=K(X_t,B)\quad\text{几乎处处}.
+\]
+右侧是给定当前状态的正则条件分布版本；它不要求单点事件$\{X_t=x\}$具有正概率。
+若$X_t$的分布为$\mu_t$，则
+\begin{equation}\label{eq:V5-C01-kernel-update}
+\mu_{t+1}(B)=\int_{\mathcal S}K(x,B)\,\mu_t(\mathrm dx).
+\end{equation}
+若概率测度$\mu$满足
+\[
+\mu(B)=\int_{\mathcal S}K(x,B)\,\mu(\mathrm dx),\qquad B\in\mathcal B,
+\]
+则称$\mu$为该核的平稳测度。有限状态的式\eqref{eq:V5-C01-distribution-update}正是上述积分公式的求和版本。
+
+若$\mathcal S\subseteq\mathbb R^d$且$K$关于Lebesgue测度有转移密度$p(x,y)$，则
+\begin{equation}\label{eq:V5-C01-transition-density}
+K(x,B)=\int_Bp(x,y)\,\mathrm dy,
+\qquad p(x,y)\ge0,
+\qquad\int_{\mathcal S}p(x,y)\,\mathrm dy=1.
+\end{equation}
+这里$p(x,y)$是“已知当前状态为$x$时，下一状态在$y$附近”的条件密度，而不是单点概率。若$\mu_t$有密度$m_t$，则密度推进式为
+\[
+m_{t+1}(y)=\int_{\mathcal S}p(x,y)m_t(x)\,\mathrm dx.
+\]
+相应地，若沿用$\mu(y)$记平稳密度，平稳方程就是
+\begin{equation}\label{eq:V5-C01-stationary-density}
+\mu(y)=\int_{\mathcal S}p(x,y)\mu(x)\,\mathrm dx,
+\qquad \mu(y)\ge0,
+\qquad\int_{\mathcal S}\mu(y)\,\mathrm dy=1.
+\end{equation}
+
+% KNOWLEDGE-PLAN: KN-V5-C30-DEFINITION-003 L1
+\paragraph{读前自检：平稳分布的固定点定义。}平稳分布是非负行向量$\rho$，满足$\sum_i\rho_i=1$与$\rho=\rho A$；请完成一次矩阵乘法并逐分量比较，核对推进前后分布相同且仍归一。\par
+
+\SLTeachSection{平稳分布}{sec:V5-C01-S03}
+\index{平稳分布}
+\phantomsection\label{struct:V5-C01-CH11}
+\knowledgeanchor{SLM-19-02-004}{平稳分布的固定点定义}
+\begin{definition}[平稳分布]
+概率行向量$\rho$若满足
+\begin{equation}\label{eq:V5-C01-stationary}
+\rho=\rho A,\qquad \rho_i\ge0,\qquad\sum_i\rho_i=1,
+\end{equation}
+则称$\rho$为$A$的平稳分布。若$X_0\sim\rho$，式\eqref{eq:V5-C01-distribution-update}保证所有$t$都有$X_t\sim\rho$。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V5-C30-CONCEPT-006 L1
+\paragraph{读前自检：平稳分布的流量解释。}二状态例给出$\rho=(0.4,0.6)$和$A=\begin{psmallmatrix}0.7&0.3\\0.2&0.8\end{psmallmatrix}$；请算$\rho A$，核对流入两状态的质量仍为$0.4,0.6$。\par
+
+\knowledgeanchor{SLM-19-01-007}{平稳分布的流量解释}
+平稳分布描述“边缘分布经过一步不变”，不是“样本路径停在同一个状态”。处于平稳状态时，链仍可在状态之间移动，只是流入每个状态的总概率质量恰好补偿流出的质量。
+
+% CORE-DERIVATION-PLAN: KN-V5-C30-DERIVATION-003
+\SLKnowledgeBridge{保留一个独立平衡方程并同时核对非负性与归一化。}{$A=\begin{psmallmatrix}0.7&0.3\\0.2&0.8\end{psmallmatrix}$ 与候选 $\rho=(r,1-r)$。}{$0\le r\le1$；$A$ 行随机；平稳方程与归一化方程中有一式冗余。}{先用第一分量写 $r=0.7r+0.2(1-r)$。}
+
+\begin{derivationgoalbox}
+求两状态链
+$A=\begin{psmallmatrix}0.7&0.3\\0.2&0.8\end{psmallmatrix}$
+的平稳分布，并核对全部约束。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+令$\rho=(r,1-r)$。平稳方程有一个分量与归一化方程冗余，只需保留一个独立平衡式并检查另一个分量。
+\end{derivationprepbox}
+\textbf{推导第1步：写出第一分量。}
+\[
+r=0.7r+0.2(1-r).
+\]
+\textbf{推导第2步：解线性方程。}$0.5r=0.2$，所以$r=0.4$，候选分布为$\rho=(0.4,0.6)$。
+
+\textbf{推导第3步：回代核验。}
+\[
+(0.4,0.6)
+\begin{pmatrix}0.7&0.3\\0.2&0.8\end{pmatrix}
+=(0.4,0.6),
+\]
+且两个分量非负、和为$1$，故它确为平稳分布。
+
+\phantomsection\label{struct:V5-C01-CH12}
+\begin{theorem}[有限链的平稳分布与唯一性层次]\label{thm:V5-C01-finite-stationary}
+每个有限状态马尔可夫链至少有一个平稳分布。若链不可约，则平稳分布唯一且每个分量严格为正；非周期性不是唯一性的必要条件。
+\end{theorem}
+\begin{keypointbox}[title=先读结论、条件与反例]
+有限且不可约保证唯一平稳分布及时间平均定律；再加非周期性，才保证固定时刻的边缘分布收敛。两状态确定性交替链
+$A=\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}$不可约但周期为$2$：访问频率趋于$(1/2,1/2)$，而$\rho_0A^t$在两个点质量之间振荡。恒等链$A=I_2$则说明缺少不可约性时平稳分布不唯一。采样章节只需先会核对这两组条件和反例；以下完整证明属于进阶证明附录。
+\end{keypointbox}
+\paragraph{进阶证明附录（首次阅读可跳过）。}
+% KNOWLEDGE-PLAN: KN-V5-C30-PROOF-001 L1
+\paragraph{读前自检：证明：有限链的平稳分布与唯一性层次。}有限链先由Cesàro平均$\bar\nu_N=N^{-1}\sum_{t=0}^{N-1}\nu A^t$取收敛子列；请展开$\bar\nu_NA-\bar\nu_N$的望远镜差，核对极限为0，从而得到一个平稳分布。\par
+
+\begin{proof}
+\textbf{存在性。}任取初始概率行向量$\nu$，构造Ces\`aro平均
+\[
+\bar\nu_N=\frac1N\sum_{t=0}^{N-1}\nu A^t.
+\]
+每个$\bar\nu_N$都在有限维概率单纯形中。该单纯形闭且有界，因而存在子列$\bar\nu_{N_k}\to\rho$。另一方面，求和首尾相消给出
+\[
+\bar\nu_NA-\bar\nu_N=\frac{\nu A^N-\nu}{N},
+\qquad
+\left\|\bar\nu_NA-\bar\nu_N\right\|_1\le\frac2N.
+\]
+沿收敛子列令$k\to\infty$，矩阵乘法的连续性给出$\rho A=\rho$；极限仍非负且分量和为$1$，所以$\rho$是平稳分布。这里没有使用不可约性或非周期性。
+
+\textbf{不可约时严格为正。}若某个$\rho_j=0$，则对任意$m\ge1$都有$\rho=\rho A^m$，从而
+\[
+0=\rho_j=\sum_i\rho_i(A^m)_{ij}.
+\]
+至少存在一个$k$使$\rho_k>0$。不可约性保证对目标$j$存在某个$m$使$(A^m)_{kj}>0$，上式右端便至少含有一个严格正项，矛盾。因此每个$\rho_j>0$。
+
+\textbf{不可约时唯一。}设$\pi$和$\rho$都是平稳分布。由上一步二者所有分量均严格为正，故有限集合上的比值有最大值
+\[
+c=\max_i\frac{\pi_i}{\rho_i}.
+\]
+令$h=c\rho-\pi$，则$h\ge0$、$hA=h$，并且在某个状态$k$有$h_k=0$。若存在状态$i$使$h_i>0$，不可约性给出某个$m$满足$(A^m)_{ik}>0$，于是
+\[
+0=h_k=(hA^m)_k=\sum_jh_j(A^m)_{jk}
+\ge h_i(A^m)_{ik}>0,
+\]
+再次矛盾。所以$h=0$，即$\pi=c\rho$；两边分量和都是$1$迫使$c=1$，故$\pi=\rho$。整个唯一性证明仍未使用非周期性。
+\end{proof}
+定理\ref{thm:V5-C01-finite-stationary}把“存在”与“唯一”分开。不可约但周期为$2$的链仍可有唯一平稳分布，却可能从某些初始分布持续振荡。逐步收敛需要在不可约之外再排除周期障碍。
+
+% KNOWLEDGE-PLAN: KN-V5-C30-CONCEPT-008 L1
+\paragraph{读前自检：马尔可夫链的性质。}状态$j$从$i$可达定义为存在$m\ge0$使$(A^m)_{ij}>0$；请在给定小转移图中相乘或枚举一条$m$步正概率路径，核对$i\to j$是否成立。\par
+% KNOWLEDGE-PLAN: KN-V5-C30-BOUNDARY-002 L1
+\paragraph{读前自检：不可约性。}有限链不可约要求任意$i,j$都存在$m\ge0$使$(A^m)_{ij}>0$；请对一个候选转移图逐对检查可达性，并用一个封闭真子集作为不可约性失败证书。\par
+
+\SLTeachSection{不可约、非周期与正常返}{sec:V5-C01-S04}
+\knowledgeanchor{SLM-19-02-006}{马尔可夫链的性质}
+\knowledgeanchor{SLM-19-03-001}{不可约性}
+\index{不可约性}
+若存在$m\ge0$使$(A^m)_{ij}>0$，称$j$从$i$可达，记作$i\to j$。若$i\to j$且$j\to i$，两状态通信。所有状态彼此通信时，链称为不可约。不可约性是状态图的全局连通性质，不能从某个局部概率等式中推断。
+
+% KNOWLEDGE-PLAN: KN-V5-C30-CONCEPT-009 L1
+\paragraph{读前自检：非周期性。}状态$i$的回返时刻集为$\mathcal T_i=\{m\ge1:(A^m)_{ii}>0\}$，周期是其最大公约数；请对一个给定$\mathcal T_i$取gcd，核对gcd为1时该状态非周期。\par
+
+\knowledgeanchor{SLM-19-04-001}{非周期性}
+\index{非周期性}
+% KNOWLEDGE-PLAN: KN-V5-C30-DEFINITION-005 L1
+\paragraph{读前自检：周期。}马尔可夫链状态$i$的周期$d(i)=\gcd\{m\ge1:(A^m)_{ii}>0\}$；请分别用只含偶数回路与同时含相邻长度回路的最小图作对照，核对周期分别大于1与等于1。\par
+
+\begin{definition}[周期]
+状态$i$的正回返时长集合为
+\[
+\mathcal T_i=\{m\ge1:(A^m)_{ii}>0\},
+\]
+其周期定义为$d(i)=\gcd\mathcal T_i$；若$\mathcal T_i=\varnothing$，本讲义约定$d(i)=0$。若$d(i)=1$，称状态$i$非周期。不可约链中所有状态周期相同，因此可以称整条链非周期或周期为$d$。
+\end{definition}
+
+\phantomsection\label{struct:V5-C01-CH13}
+\begin{proposition}[通信状态具有相同周期]\label{prop:V5-C01-common-period}
+若$i$与$j$通信，则$d(i)=d(j)$。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C30-PROOF-002 L1
+\paragraph{读前自检：证明：通信状态具有相同周期。}通信状态同周期命题以$i$与$j$通信为条件；请把正概率回路长度$r+s$和$r+n+s$相减，先推出$d(j)\mid d(i)$，再交换$i,j$核对$d(i)=d(j)$。\par
+
+\begin{proof}
+若$i=j$，等式两边是同一个周期量，结论成立；以下设$i\ne j$。由通信性，可选$r,s\ge1$使$(A^r)_{ji}>0$和$(A^s)_{ij}>0$。于是从$j$出发，先用$r$步到$i$、再用$s$步回$j$的路径有正概率，所以$d(j)$整除$r+s$。对任意$n\in\mathcal T_i$，在两段路径之间插入$i$处的$n$步回路，得到$j$处长度$r+n+s$的正概率回路，因此$d(j)$也整除$r+n+s$。两式相减说明$d(j)$整除每个$n\in\mathcal T_i$，故$d(j)\mid d(i)$。交换$i,j$得到$d(i)\mid d(j)$，所以二者相等。
+\end{proof}
+
+\knowledgeanchor{SLM-19-05-001}{正常返}
+\index{正常返}
+定义首次到达时间和首次正回返时间
+\begin{equation}\label{eq:V5-C01-hitting-times}
+\tau_i=\inf\{t\ge0:X_t=i\},
+\qquad
+\tau_i^+=\inf\{t\ge1:X_t=i\}.
+\end{equation}
+记
+\[
+\mathbb P_i(\,\cdot\,)=P(\,\cdot\mid X_0=i),
+\qquad
+\mathbb E_i[\,\cdot\,]=E[\,\cdot\mid X_0=i].
+\]
+从状态$i$出发，若$\mathbb P_i(\tau_i^+<\infty)=1$，称$i$常返；若进一步
+\begin{equation}\label{eq:V5-C01-positive-recurrent}
+\mathbb E_i[\tau_i^+]<\infty,
+\end{equation}
+称$i$正常返，也称正返。有限不可约链中的每个状态都正常返。
+
+图\ref{fig:V5-C01-return-time}区分首次到达、首次正回返和任意时刻处于$i$这三类事件。正常返由平均首次正回返时间是否有限定义，不由某个单独时刻的首次到达概率是否保持为正来定义。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_return_time.tex}
+
+\begin{warningbox}
+令$p_t=\mathbb P_j(\tau_i=t)$。不同$t$对应互斥的首次到达事件，所以$\sum_{t\ge0}p_t\le1$，从而$p_t\to0$。因此“首次到达时刻概率的极限大于零”不能定义正常返。即使把$p_t$误换成普通$t$步转移概率，二状态交替链也会因奇偶振荡而没有极限。正确判据是式\eqref{eq:V5-C01-positive-recurrent}。
+\end{warningbox}
+
+% KNOWLEDGE-PLAN: KN-V5-C30-CONCEPT-011 L1
+\paragraph{读前自检：有限状态链的唯一平稳分布。}有限不可约链具有唯一严格正平稳分布；请解$\rho=\rho A$与$\sum_i\rho_i=1$，核对所得$\rho_i>0$，并说明固定时刻分布收敛还需非周期性。\par
+% KNOWLEDGE-PLAN: KN-V5-C30-BOUNDARY-004 L1
+\paragraph{读前自检：不可约正常返链。}不可约正常返链的平稳质量满足$\rho_i>0$且平均回返时间为$1/\rho_i$；请对一个状态代入两量，核对有限平均回返与正平稳质量相互对应。\par
+
+\knowledgeanchor{SLM-19-02-007}{有限状态链的唯一平稳分布}
+\knowledgeanchor{SLM-19-03-002}{不可约正常返链}
+条件的作用可整理为：有限不可约性带来唯一平稳分布和正常返；非周期性进一步消除按剩余类振荡的障碍。对可数状态空间，需要把正常返作为独立条件，不能由不可约性自动推出。
+
+% KNOWLEDGE-PLAN: KN-V5-C30-THEOREM-002 L1
+\paragraph{读前自检：遍历定理。}有限不可约链的遍历定理对任意函数$f$给出时间平均收敛到$\sum_i\rho_if(i)$；请取$f=\mathbf1_{\{j\}}$，核对左端成为状态$j$的访问频率、右端为$\rho_j$。\par
+
+\SLAdvancedSection{遍历定理与可逆性}{sec:V5-C01-S05}
+\knowledgeanchor{SLM-19-04-002}{遍历定理}
+\begin{theorem}[有限不可约链的两类长期行为]\label{thm:V5-C01-ergodic}
+设有限状态马尔可夫链不可约，唯一平稳分布为$\rho$。对满足$\sum_i\rho_i|f(i)|<\infty$的函数$f$，时间平均满足
+\begin{equation}\label{eq:V5-C01-time-average}
+\frac1T\sum_{t=0}^{T-1}f(X_t)\longrightarrow
+\sum_i\rho_i f(i)
+\quad\text{以概率1成立}.
+\end{equation}
+若再加非周期性，则对任意$i,j$有
+\begin{equation}\label{eq:V5-C01-step-convergence}
+(A^t)_{ij}\longrightarrow\rho_j,
+\end{equation}
+从而任意初始分布$\rho_0A^t\to\rho$。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C30-PROOF-003 L2
+\begin{keypointbox}[title={证明：有限不可约链的两类长期行为：证明阅读检查}]
+\textbf{动手检查。}待证结论与所需条件分别是什么？请在最小维度或最小样本上写出第一处关键变形，并指出少一个条件时证明会在哪一步中断。\par
+\textbf{1.} 先写清对象类型、目标结论与符号作用域。\par
+\textbf{2.} 逐项核对定义域、维数、支持集、量词与交换运算所需条件。\par
+\textbf{3.} 写出第一处可执行的数学动作，不用“显然”跳过入口。\par
+\textbf{4.} 沿现有编号完成中间关系，并单独核对归一化、边界或等号条件。\par
+\textbf{5.} 回到待证结论，再说明它与后续公式、算法、图或例题的连接。
+\end{keypointbox}
+\paragraph{继续核对。}完成上面的最小任务后，再对照主体逐项核对定义域、更新式或关键变形、停止条件以及返回值；阅读检查不代替正文中的数学论证。
+
+\begin{proof}
+\textbf{第1步：构造有限均值的再生周期。}固定参考状态$o$。由有限性与不可约性，从每个状态$x$都可选一条到达$o$的正概率路径；取整数$L\ge1$不小于这些有限条路径长度的最大值，并把各条路径的边概率乘积取最小值，得到$\eta>0$。在每个长度为$L$的时间块起点重新使用马尔可夫性质，便有
+\[
+\mathbb P_x(\tau_o>kL)\le(1-\eta)^k,
+\qquad k=0,1,\ldots.
+\]
+因此$\mathbb E_x[\tau_o]\le L/\eta<\infty$。从$o$出发，令
+\[
+\sigma_0=0,
+\qquad
+\sigma_r=\inf\{t>\sigma_{r-1}:X_t=o\},
+\qquad
+L_r=\sigma_r-\sigma_{r-1}.
+\]
+从$o$先走一步，再从$X_1$使用上述命中界，可得$\mathbb E_o[L_1]\le1+L/\eta<\infty$。由强马尔可夫性质，各段
+$\{X_{\sigma_{r-1}},\ldots,X_{\sigma_r-1}\}$独立同分布，所以$(L_r)_{r\ge1}$也是独立同分布序列。这个结论只用了不可约性，没有使用非周期性。
+
+\textbf{第2步：由一个周期恢复平稳分布。}记一个周期内访问状态$j$的次数为
+\[
+N_j=\sum_{t=0}^{\sigma_1-1}\mathbf 1_{\{X_t=j\}},
+\qquad
+g_j=\mathbb E_o[N_j],
+\qquad
+m=\mathbb E_o[\sigma_1]=\sum_jg_j.
+\]
+逐分量计算期望转移次数。为处理随机上限，先把和写成$\sum_{t\ge0}\mathbf 1_{\{t<\sigma_1\}}(\cdot)$；再由Tonelli定理与塔式法则使用
+$\mathbb E_o[\mathbf 1_{\{t<\sigma_1\}}\mathbf 1_{\{X_{t+1}=j\}}\mid\mathcal F_t]
+=\mathbf 1_{\{t<\sigma_1\}}a_{X_tj}$，得到
+\[
+\begin{aligned}
+(gA)_j
+&=\mathbb E_o\!\left[\sum_{t=0}^{\sigma_1-1}a_{X_tj}\right]
+=\mathbb E_o\!\left[\sum_{t=0}^{\sigma_1-1}\mathbf 1_{\{X_{t+1}=j\}}\right]\\
+&=\mathbb E_o\!\left[\sum_{t=1}^{\sigma_1}\mathbf 1_{\{X_t=j\}}\right]
+=g_j.
+\end{aligned}
+\]
+最后一个等号成立，是因为周期起点$X_0$与终点$X_{\sigma_1}$都等于$o$，移去起点再添上终点不会改变任何状态的访问计数。因此$g/m$是概率行向量且满足$(g/m)A=g/m$。由定理\ref{thm:V5-C01-finite-stationary}的唯一性，
+\begin{equation}\label{eq:V5-C01-cycle-occupation}
+\rho_j=\frac{g_j}{m}.
+\end{equation}
+
+\textbf{第3步：周期奖励的强大数律。}令第$r$个周期的奖励为
+\[
+R_r=\sum_{t=\sigma_{r-1}}^{\sigma_r-1}f(X_t).
+\]
+有限状态下$f$有界，并且$\mathbb E_o[L_1]<\infty$，所以$R_r$可积。由式\eqref{eq:V5-C01-cycle-occupation}，
+\[
+\mathbb E_o[R_1]=\sum_jf(j)g_j
+=m\sum_j\rho_jf(j).
+\]
+对独立同分布的$(R_r,L_r)$使用强大数律，几乎必然有
+\[
+\frac{\sum_{r=1}^qR_r}{\sum_{r=1}^qL_r}
+\longrightarrow
+\frac{\mathbb E_o[R_1]}{\mathbb E_o[L_1]}
+=\sum_j\rho_jf(j).
+\]
+还需检查未完成周期。可积性给出
+$\sum_{r\ge1}\mathbb P(L_r>\varepsilon r)<\infty$，故由Borel--Cantelli引理，$L_r/r\to0$几乎必然成立。若$Q(T)=\max\{r:\sigma_r\le T\}$，周期长度的强大数律给出$Q(T)/T\to1/m$，从而$Q(T)\to\infty$且
+\[
+\frac{L_{Q(T)+1}}{T}
+=\frac{L_{Q(T)+1}}{Q(T)+1}\frac{Q(T)+1}{T}
+\longrightarrow0.
+\]
+于是末段奖励的绝对值至多为$\lVert f\rVert_\infty L_{Q(T)+1}=o(T)$。从任意状态出发时，前述几何尾界保证首次到达$o$的时间几乎必然有限，有限首段除以$T$也趋于$0$。这就证明了式\eqref{eq:V5-C01-time-average}，全程没有要求非周期性。
+
+\textbf{第4步：非周期性给出共同的正矩阵幂。}现在再假设链非周期。参考状态$o$的正回返时长集合的最大公约数为$1$，所以其中存在有限个$n_1,\ldots,n_q$满足$\gcd(n_1,\ldots,n_q)=1$。把这些回路串接，任意$k_c\in\mathbb N_0$给出的线性组合$\sum_{c=1}^q k_cn_c$仍是$o$的正回返时长。令$a=n_1$；$n_1,\ldots,n_q$在有限群$\mathbb Z/a\mathbb Z$中生成全部剩余类，而有限群中由这些剩余类生成的子幺半群就是它们生成的子群。因此对每个剩余类$b$都能选一个非负组合$u_b$落在该类。取$N_0=\max_bu_b$，则任意$N\ge N_0$都可写成$u_b+ka$，故
+\[
+(A^N)_{oo}>0,
+\qquad N\ge N_0.
+\]
+再为每个$i,j$分别固定正概率路径$i\to o$和$o\to j$，长度记为$r_i,s_j$，允许$o$处长度为$0$。取整数
+\[
+M\ge\max\left\{1,\,N_0+\max_{i,j}(r_i+s_j)\right\},
+\]
+则中间还能插入长度$M-r_i-s_j\ge N_0$的$o$处回路，从而$(A^M)_{ij}>0$对所有$i,j$成立。
+
+\textbf{第5步：Doeblin分解与收缩。}令
+\[
+\delta=\min_{i,j}(A^M)_{ij}>0,
+\qquad
+\alpha=n\delta\in(0,1],
+\qquad
+u=(1/n,\ldots,1/n).
+\]
+若$\alpha=1$，行和为$1$迫使$A^M$的每一行都等于$u$；又因$\rho$平稳，$\rho=\rho A^M=u$，故任意初始分布$\nu$都满足$\nu A^M=u=\rho$，经过一个$M$步块即到达平稳分布。若$0<\alpha<1$，则
+\[
+B=\frac{A^M-\alpha\mathbf 1u}{1-\alpha}
+\]
+仍是行随机矩阵。对任意两个概率行向量$\nu,\xi$，利用$\lVert zB\rVert_1\le\lVert z\rVert_1$得到
+\[
+\lVert\nu A^M-\xi A^M\rVert_1
+\le(1-\alpha)\lVert\nu-\xi\rVert_1.
+\]
+把$t=kM+r$，其中$0\le r<M$，并取$\xi=\rho$，便有
+\[
+\lVert\nu A^t-\rho\rVert_1
+\le(1-\alpha)^k\lVert\nu A^r-\rho\rVert_1
+\le2(1-\alpha)^k\longrightarrow0.
+\]
+于是每个分量都满足式\eqref{eq:V5-C01-step-convergence}，任意初始分布也收敛到$\rho$。
+\end{proof}
+式\eqref{eq:V5-C01-time-average}描述一条长路径上的访问频率，式\eqref{eq:V5-C01-step-convergence}描述固定时刻的边缘分布。周期链可以满足前者而不满足后者。
+
+% KNOWLEDGE-PLAN: KN-V5-C30-CONCEPT-012 L1
+\paragraph{读前自检：范围说明。}可数状态空间中不可约不自动推出正常返；请用整数线上的对称随机游走作对照，核对任意两点互相可达，但不存在可归一化的平稳概率分布。\par
+
+\begin{keypointbox}[title=范围说明]
+可数状态空间中，不可约性不再自动保证正常返。不可约且正常返时，再生周期仍可证明时间平均结论；再加非周期性后，逐步极限可由离散更新定理证明。本定理把正式证明限定在有限状态情形，并在第4--5步明确使用有限性，不能把正矩阵幂与Doeblin常数的论证无条件套到可数链。
+\end{keypointbox}
+
+% KNOWLEDGE-PLAN: KN-V5-C30-CONCEPT-013 L1
+\paragraph{读前自检：可逆马尔可夫链。}可逆链满足细致平衡$\rho_i a_{ij}=\rho_j a_{ji}$；请对$i$求和并用第$j$行和为1，核对$\sum_i\rho_i a_{ij}=\rho_j$，从而细致平衡推出平稳性。\par
+
+\knowledgeanchor{SLM-19-06-001}{可逆马尔可夫链}
+\index{可逆马尔可夫链}
+\begin{definition}[细致平衡与可逆性]
+若概率分布$\rho$满足
+\begin{equation}\label{eq:V5-C01-detailed-balance}
+\rho_i a_{ij}=\rho_j a_{ji},\qquad i,j\in\mathcal S,
+\end{equation}
+则称$A$关于$\rho$满足细致平衡，链关于$\rho$可逆。等式两边都是平稳权重下沿同一条边相反方向的一步概率流。
+\end{definition}
+本讲义只使用式\eqref{eq:V5-C01-detailed-balance}或等价的双向前向条件概率表达，不使用把时间反向条件概率与前向条件概率混为同一个式子的写法。
+
+% CORE-DERIVATION-PLAN: KN-V5-C30-DERIVATION-004
+\SLKnowledgeBridge{逐分量求和，分清该证明与不可约性的关系。}{转移矩阵 $A$ 与分布 $\rho$，满足 $\rho_i a_{ij}=\rho_j a_{ji}$。}{$A$ 每行和为 $1$；细致平衡对所有 $i,j$ 成立。}{先固定目标状态 $j$，写 $(\rho A)_j=\sum_i\rho_i a_{ij}$。}
+
+\begin{derivationgoalbox}
+从细致平衡逐分量证明$\rho$是平稳分布，同时指出证明没有使用不可约性。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+固定目标状态$j$，对所有来源状态$i$求和；再使用$A$第$j$行的和为$1$。
+\end{derivationprepbox}
+\textbf{推导第1步：写出流入量。}
+\[
+(\rho A)_j=\sum_i\rho_i a_{ij}.
+\]
+\textbf{推导第2步：逐边反向。}由细致平衡，
+\[
+\sum_i\rho_i a_{ij}=\sum_i\rho_j a_{ji}
+=\rho_j\sum_i a_{ji}.
+\]
+\textbf{推导第3步：使用行和。}这里$i$遍历的是矩阵第$j$行的目的状态，所以$\sum_i a_{ji}=1$，于是$(\rho A)_j=\rho_j$。对每个$j$成立，故$\rho A=\rho$。
+
+\begin{warningbox}
+细致平衡只保证平稳性。取$A=I_2$和任意严格正概率行向量$\rho=(a,1-a)$，其中$0<a<1$，所有等式$\rho_i a_{ij}=\rho_j a_{ji}$都成立，但两个状态互不可达，链可约，且平稳分布不唯一。再取$f(1)=0,f(2)=1$：从状态$1$出发时路径恒留在$1$，时间平均恒为$0$，而指定分布下的空间平均为$\sum_i\rho_i f(i)=1-a>0$。因此仅有可逆性也不保证无条件时间平均结论、非周期性或从任意初值逐步收敛；不可约性等条件必须另行验证。
+\end{warningbox}
+
+\phantomsection\label{struct:V5-C01-CH14}
+\textbf{几何解释。}所有$n$维概率分布组成概率单纯形，映射$\rho\mapsto\rho A$把该单纯形映回自身。平稳分布是这个仿射映射的固定点。图\ref{fig:V5-C01-stationary-fixed-point}在两状态概率区间上画出$r\mapsto0.2+0.5r$，固定点$r=0.4$对应$\rho=(0.4,0.6)$。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_stationary_fixed_point.tex}
+
+\phantomsection\label{struct:V5-C01-CH15}
+\textbf{概率解释。}不可约性回答“能否在状态之间往返”，周期性回答“回来的时刻是否被某个公因数锁定”，“正常返”回答“平均要等多久才能回来”，平稳性回答“总体概率质量是否保持不变”。四者回答的问题不同，不能用其中一个术语替代另一个。
+
+\phantomsection\label{struct:V5-C01-CH16}
+% KNOWLEDGE-PLAN: KN-V5-C30-BOUNDARY-006 L1
+\paragraph{读前自检：不适用说明：遍历定理与可逆性。}马尔可夫链平稳分布由固定点与概率约束刻画，并无内生损失最小化目标；请把“梯度为零”当作错误判据构造反例，再用$\rho=\rho A$重算并核对归一化。\par
+
+\begin{notapplicablebox}[title=固定点视角]
+本章的平稳分布由固定点方程$\rho=\rho A$和概率约束刻画，没有内生损失函数或待极小化目标。可以用线性方程求解，无需另行构造优化目标。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V5-C01-CH17}
+\textbf{图形辅助。}图\ref{fig:V5-C01-chain-properties}并列展示可约非周期、不可约周期和不可约非周期三种状态图；是否存在自环、图是否连通以及返回路径长度必须分别检查。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_chain_properties.tex}
+
+图\ref{fig:V5-C01-detailed-balance}把相反方向的平稳概率流画在同一条边上，并同时给出$A=I_2$的断开反例。流量对称不等于支撑图连通。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_detailed_balance_counterexample.tex}
+
+\phantomsection\label{struct:V5-C01-CH18}
+\Needspace{6\baselineskip}
+\begin{example}[周期链、惰性化与平稳性的数值辨析]\label{exm:V5-C01-stationary-reversible}
+对周期链
+\[
+C=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+\rho_0=(1,0),
+\]
+计算前两步分布，求平稳分布并核验细致平衡；再比较惰性化矩阵$C_{\rm L}=(I+C)/2$的长期行为。
+\end{example}
+
+\Needspace{4\baselineskip}
+\SLExampleSolutionHeading{exm:V5-C01-stationary-reversible}
+\begin{solution}
+\SLReadTranslation{这条两状态链每步必换状态；需要同时辨清“存在平稳分布”“满足细致平衡”和“从给定初值逐步收敛”并不是同一结论，再看惰性化如何改变周期。}
+\SolGiven 使用概率行向量递推 $\rho_{t+1}=\rho_tC$，$\rho_0=(1,0)$；$C_{\rm L}=(I+C)/2$ 在两个状态都加入正自环。
+\SLMethodTrigger{先算前两步展示奇偶振荡，再解 $\rho=\rho C$ 并检验双向流；最后由回返长度的最大公因数判断周期。}
+\SolPlan 计算 $\rho_1,\rho_2$，求归一化平稳分布并验证细致平衡；再写出 $C_{\rm L}$，核对平稳分布、周期与任意初值的一步结果。
+\SolDerive
+\textbf{计算。}原链的行向量递推为
+\[
+\rho_1=(0,1),\qquad \rho_2=(1,0),
+\]
+所以边缘分布按奇偶时刻振荡。方程$\rho_\star=\rho_\star C$给出唯一平稳分布
+$\rho_\star=(1/2,1/2)$，且
+\[
+ (\rho_\star)_1c_{12}=\tfrac12=(\rho_\star)_2c_{21},
+\]
+故链可逆且不可约，却因所有正回返长度均为偶数而周期为$2$，平稳性并不推出逐步收敛。惰性化后
+$C_{\rm L}=\begin{psmallmatrix}1/2&1/2\\1/2&1/2\end{psmallmatrix}$，同一$\rho_\star$仍平稳，而正自环把周期降为$1$；任意初始分布一步后即等于$\rho_\star$。
+
+\SolCheck 直接相乘有$\rho_\star C=\rho_\star$、
+$\rho_\star C_{\rm L}=\rho_\star$，且$C_{\rm L}^2=C_{\rm L}$；后一恒等式说明任意概率行向量经一步映到$\rho_\star$后保持不变。
+
+\SolAnswer 原链虽有唯一平稳分布 $(1/2,1/2)$ 且可逆，但周期$2$使给定初值的边缘分布振荡；惰性化保留该平稳分布并把周期降为$1$，任意初始分布一步后即到达它。本例专门展示周期障碍，后文例\ref{exm:V5-C01-two-state-audit}再完成非对称转移矩阵的全量审计。
+\end{solution}
+
+\SLDirectSection{随机游走}{sec:V5-C01-S06}
+\knowledgeanchor{PRE-SQ-007}{随机游走}
+\index{随机游走}
+\begin{SLRunningExample}{RUN-GRAPH-04-01}{V5-C01-row-chain}{贯穿例：四节点小图}{把同一加权有向小图行归一化为转移矩阵，分析分布推进与平稳性；第36章（第5册第7章）将转置后的同一数据用于\PageRank{}。}
+取
+\[
+A=\begin{bmatrix}
+0&1/3&1/3&1/3\\1/2&0&0&1/2\\1&0&0&0\\0&1/2&1/2&0
+\end{bmatrix},
+\qquad \rho_0=\tfrac14\boldsymbol1^{\mathsf T}.
+\]
+矩阵$A$逐项非负且每行和为$1$，所以它满足本章有限状态马尔可夫链的模型假设。它的平稳概率行向量是$\rho_\star=(1/3,2/9,2/9,2/9)$。\hyperref[chap:V5-C07]{第36章（第5册第7章）}使用$M=A^{\mathsf T}$和$\boldsymbol r^{(0)}=\rho_0^{\mathsf T}$，数据与边方向不变，只切换行/列表示。下一站见\SLRunningExampleRef{RUN-GRAPH-04-01}{V5-C07-pagerank}{第36章（第5册第7章）的列随机\PageRank{}表示}。
+\end{SLRunningExample}
+设$G=(V,E)$为无向图，顶点$i$的度数为$d_i$。简单随机游走从$i$出发，以相等概率选择一个邻点：
+\begin{equation}\label{eq:V5-C01-graph-walk}
+a_{ij}=\begin{cases}
+1/d_i,&\{i,j\}\in E,\\
+0,&\text{其他情形}.
+\end{cases}
+\end{equation}
+若图连通，链不可约。若图是二部图且没有自环，游走每步在两个顶点部之间交替，周期为$2$。惰性随机游走把矩阵改为$A_{\mathrm L}=\tfrac12(I+A)$，从而给每个状态加入正自环并保持原平稳分布。
+
+% CORE-DERIVATION-PLAN: KN-V5-C30-DERIVATION-005
+\SLKnowledgeBridge{沿每条无向边比较双向概率流，得到与结点度成正比的分布。}{连通无向图、结点度 $d_i$ 与简单随机游走转移概率。}{$D=\sum_i d_i=2|E|>0$；孤立点不存在。}{先取候选 $\rho_i=d_i/D$，并对相邻结点 $i,j$ 计算 $\rho_iP_{ij}$。}
+
+\begin{derivationgoalbox}
+求连通无向图简单随机游走的平稳分布。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+令$D=\sum_{k\in V}d_k=2|E|$，候选分布取$\rho_i=d_i/D$。沿无向边比较两个方向的概率流。
+\end{derivationprepbox}
+\textbf{推导第1步：检查概率约束。}$\rho_i\ge0$且$\sum_i\rho_i=D/D=1$。
+
+\textbf{推导第2步：检查每条边。}若$\{i,j\}\in E$，则
+\[
+\rho_i a_{ij}=\frac{d_i}{D}\frac1{d_i}=\frac1D
+=\frac{d_j}{D}\frac1{d_j}=\rho_j a_{ji};
+\]
+非相邻顶点的两个方向都为$0$。
+
+\textbf{推导第3步：使用细致平衡结论。}候选分布满足式\eqref{eq:V5-C01-detailed-balance}，故
+\begin{equation}\label{eq:V5-C01-degree-stationary}
+\rho_i=\frac{d_i}{\sum_kd_k}
+\end{equation}
+是平稳分布。连通性进一步保证它唯一，但若图为二部图，普通逐步分布仍会按奇偶振荡。
+
+图\ref{fig:V5-C01-random-walk}展示三节点路径上的简单游走及其惰性版本。端点度数为$1$、中点度数为$2$，所以平稳分布为$(1/4,\allowbreak 1/2,\allowbreak 1/4)$；加入自环后该分布不变。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_random_walk.tex}
+
+\phantomsection\label{struct:V5-C01-CH19}
+\phantomsection\label{struct:V5-C01-CH20}
+\textbf{输入与输出。}输入为$n\times n$候选转移矩阵$A$、长度$n$的候选初始分布$\rho_0$、非负整数时域$T$和容差$\varepsilon$，其中$n\ge1$。算法先检查概率约束，再给出最后一个合法分布及其推进轨迹；若检查或更新失败，则停止在此前已经得到的合法分布，并说明原因。
+
+\phantomsection\label{struct:V5-C01-CH21}
+\textbf{参数含义。}$T$控制推进步数，$0<\varepsilon<1$只用于判断浮点求和误差$|s-1|$是否可接受，不用于放宽分量的概率域，也不是统计估计精度。每个分量都必须严格满足$0\le x\le1$；浮点数$-0$按$0$处理。行和、初始和与候选和一律采用补偿求和或具有同等误差控制的稳定求和实现。
+
+\phantomsection\label{struct:V5-C01-CH22}
+\textbf{初始化。}先检查$A$是否为方阵且每个元素有限并位于$[0,1]$。第$i$行原始和$s_i$若满足$|s_i-1|\le\varepsilon$，则显式令$\widehat a_{ij}=a_{ij}/s_i$，记录行号、原始和与缩放因子，再复检分量域和行和；超出容差或复检失败时返回$\bot$。$\rho_0$按同一规则得到$\widehat\rho_0$。这里的规范化只修正已通过容差门的求和舍入误差，绝不裁剪负分量或修补超出概率域的输入。
+
+\phantomsection\label{struct:V5-C01-CH23}
+\textbf{更新顺序与判断条件。}循环变量为$t=0,\ldots,T-1$。每轮先保留当前有效分布，再按行向量顺序用$\widehat A$计算候选$v\leftarrow\rho_t\widehat A$。只有当$v$有限、每个分量严格位于$[0,1]$且原始和$s^+$满足$|s^+-1|\le\varepsilon$时，才令$\rho_{t+1}=v/s^+$并复检；不得写成$\widehat A\rho_t$，也不得把负分量裁成$0$。
+
+\phantomsection\label{struct:V5-C01-CH24}
+\textbf{停止条件。}输入检查不通过时不进行矩阵推进；中途候选或规范化复检失败时，保留上一步合法分布和此前完成的$t$步，失败候选不加入轨迹。正常停止发生在恰好完成$T$次更新后；$T=0$仍检查输入并保留$\widehat\rho_0$。固定时域停止不等于已经达到平稳分布。
+
+\phantomsection\label{struct:V5-C01-CH25}
+\textbf{收敛条件。}算法对有限$T$总能在有限步内结束。若讨论$T\to\infty$的分布极限，则有限链还需不可约且非周期；只有不可约而周期时，算法仍正确计算每一步，但输出序列可能振荡。
+
+\begingroup
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V5-C30-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：有限状态链的分布推进与合法性检查：执行契约。}有限状态链的分布推进与合法性检查输入“状态数$n$、候选行随机矩阵$A$、候选初始行分布$\rho_0$、有限推进步数$T$与求和容差$\varepsilon$”，条件“$n\ge1,T\in\mathbb N_0,0<\varepsilon<1$”；请执行“$\rho^+$通过有限性、$[0,1]$分量域和行和复检后，才原子覆盖$\rho$、追加轨迹并增加$t_{\rm done}$”，以“恰好完成$T$步或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V5-C30-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={有限状态链的分布推进与合法性检查：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={状态数$n$、候选行随机矩阵$A$、候选初始行分布$\rho_0$、有限推进步数$T$与求和容差$\varepsilon$},
+  output={最后合法分布、仅含已提交状态的轨迹、完成推进数$t_{\rm done}$、规范化行数$r_{\rm done}$、状态与最终诊断},
+  preconditions={$n\ge1,T\in\mathbb N_0,0<\varepsilon<1$；$A$与$\rho_0$维数相容有限；稳定求和与行向量约定已登记},
+  initialization={置$t_{\rm done}=r_{\rm done}=0$，逐行验证/规范化$A$，再验证/规范化$\rho_0$并建立单元素轨迹},
+  loop={每步由最后合法行分布计算$v=\rho\widehat A$，检查分量域与和，再形成规范化候选},
+  update={$\rho^+$通过有限性、$[0,1]$分量域和行和复检后，才原子覆盖$\rho$、追加轨迹并增加$t_{\rm done}$},
+  domain={$\widehat A$逐行是概率向量；轨迹中每个$\rho_t$均有限、分量位于$[0,1]$且和为$1$},
+  failure={维数、概率域、原始行和或参数非法返回$\mathtt{invalid\_input}$；已通过输入门后的规范化/推进非有限或复检失败返回$\mathtt{numerical\_failure}$并保留上一合法轨迹},
+  stop={恰好完成$T$步或首次失败时停止；固定时域完成不宣称渐近收敛},
+  budget={恰好至多$T$次分布--矩阵乘法；预处理至多$n$行矩阵规范化和一次初始分布规范化},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$t_{\rm done}$计已原子提交的推进步，$r_{\rm done}$计已通过并提交规范化的矩阵行；失败候选步不计入},
+  diagnostics={失败阶段与行/步/分量、原始和及缩放因子、最终概率不变量、实际/计划步数以及链的可约/周期结构提示},
+  complexity={稠密校验$\Theta(n^2)$且推进$\Theta(Tn^2)$；稀疏形式为$\Theta((T+1)s)$；轨迹空间$\Theta((T+1)n)$}
+}
+\begin{algorithm}[H]
+\caption{有限状态链的分布推进与合法性检查}\label{alg:V5-C01-distribution-propagation}
+\KwIn{整数$n\ge1$；候选矩阵$A\in\mathbb R^{n\times n}$；候选行向量$\rho_0\in\mathbb R^{1\times n}$；$T\in\mathbb N_0$；$0<\varepsilon<1$}
+\KwOut{最后合法分布与轨迹；$t_{\rm done},r_{\rm done}$；$\mathtt{status}$及最终诊断}
+令$t_{\rm done}\leftarrow0,r_{\rm done}\leftarrow0$；检查$n$、维数、有限值、$T$与$\varepsilon$；若不满足则返回$\bot,\varnothing,0,0,\mathtt{invalid\_input}$及字段诊断\;
+\For{$i\leftarrow1,\ldots,n$}{
+  令$s_i\leftarrow\sum_j a_{ij}$；若某$a_{ij}\notin[0,1]$或$|s_i-1|>\varepsilon$，则返回$\bot,\varnothing,0,r_{\rm done},\mathtt{invalid\_input}$及失败$(i,j)$或行和诊断\;
+  在临时行中令$\widehat a_{ij}=a_{ij}/s_i$；若有限性、分量域或行和复检失败，则返回尚未完整的矩阵占位、$\mathtt{numerical\_failure}$及行$i$诊断；否则原子提交该行并令$r_{\rm done}\leftarrow i$\;
+}
+令$s_0\leftarrow\sum_i(\rho_0)_i$；若某$(\rho_0)_i\notin[0,1]$或$|s_0-1|>\varepsilon$，则返回$\bot,\varnothing,0,r_{\rm done},\mathtt{invalid\_input}$及初始分布诊断\;
+令$\widehat\rho_0=\rho_0/s_0$；若复检失败则返回$\bot,\varnothing,0,r_{\rm done},\mathtt{numerical\_failure}$及初始规范化诊断\;
+初始化$\rho\leftarrow\widehat\rho_0$及轨迹$\mathcal R\leftarrow(\widehat\rho_0)$\;
+\While{$t_{\rm done}<T$}{
+  按$v_j\leftarrow\sum_i\rho_i\widehat a_{ij}$依次计算全部$j$分量，令$s^+\leftarrow\sum_jv_j$\;
+  \If{$v$含非有限值、某分量不在$[0,1]$或$|s^+-1|>\varepsilon$}{
+    返回$\rho,\mathcal R,t_{\rm done},r_{\rm done},\mathtt{numerical\_failure}$及候选步$t_{\rm done}+1$诊断；不追加$v$\;
+  }
+  令$\rho^+\leftarrow v/s^+$；若规范化后复检失败，则返回上一合法$\rho,\mathcal R,t_{\rm done},r_{\rm done},\mathtt{numerical\_failure}$及候选规范化诊断\;
+  原子提交$\rho\leftarrow\rho^+$并向$\mathcal R$追加$\rho$；令$t_{\rm done}\leftarrow t_{\rm done}+1$\;
+}
+返回$\rho,\mathcal R,t_{\rm done},r_{\rm done},\mathtt{completed}$及概率不变量与计划/实际步数诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{核心流程核对概率输入、重复计算$\rho_{t+1}=\rho_tA$、保持总质量并按给定$T$停止；容差规范化与失败诊断属于稳健实现细节}
+\endgroup
+
+\textbf{返回结果与正确性依据。}预处理后的$\widehat A$逐行非负且行和为$1$，$\widehat\rho_0$也是真正的概率分布。若$\rho_t$有效，则精确算术下$v=\rho_t\widehat A$非负且
+$\sum_jv_j=\sum_j\sum_i(\rho_t)_i\widehat a_{ij}=\sum_i(\rho_t)_i\sum_j\widehat a_{ij}=1$。实现中只对已通过严格分量域与求和容差检查的$v$除以其原始和，并再次复检，所以归纳地，每个被接受并返回的向量都是真正的概率分布；输入失败时则只返回$\bot$。
+
+\textbf{异常与退化。}异常包括维数不匹配、非有限数、任一分量越出$[0,1]$、总和超出容差和中途数值漂移。特别地，第一行为$(-\varepsilon/2,1+\varepsilon/2)$的矩阵虽然行和等于$1$，仍会在严格分量域检查处返回$\bot$，不会经过裁剪后伪装成概率行。可约链与周期链不是非法输入，但它们使长期解释依赖初始闭类或奇偶时刻，必须在诊断中与数值错误分开。
+
+\textbf{手工核对。}对$A=\begin{psmallmatrix}0.7&0.3\\0.2&0.8\end{psmallmatrix}$、$\rho_0=(1,0)$和$T=2$，各原始和均为$1$，规范化因子均为$1$，两轮依次得到$(0.7,0.3)$与$(0.55,0.45)$，均通过复检。把第一行改成$(-\varepsilon/2,1+\varepsilon/2)$后，算法在任何矩阵乘法之前停止。这两个用例分别覆盖正常路径和“行和正确但含负概率”的拒绝路径。
+
+\textbf{不收敛或不适用情形。}周期链可以永久振荡；可约链可能收敛到依赖初始分布的平稳组合；连续状态核不能由此有限矩阵算法完整表示。达到$T$只表示预算执行完毕，不能据此声称渐近收敛。
+
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C01-distribution-propagation | 训练时间复杂度=转移矩阵作为输入给定，算法没有拟合或参数训练阶段
+
+\phantomsection\label{struct:V5-C01-CH26}
+\phantomsection\label{struct:V5-C01-CH27}
+% KNOWLEDGE-PLAN: KN-V5-C30-BOUNDARY-007 L1
+\paragraph{读前自检：复杂度分析：随机游走。}稀疏$n$状态转移矩阵有$s=\operatorname{nnz}(A)$个非零元；请计算一次行分布推进的$\Theta(s)$时间与$\Theta(n)$工作空间，并核对保存全部$T+1$层时存储增为$\Theta(Tn)$。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}基本标量加乘和比较按$O(1)$计；记$s=\operatorname{nnz}(\widehat A)$为规范化矩阵的非零元数。行随机矩阵每行至少有一个非零元，故$s\ge n$；输出完整轨迹时计入$\widehat\rho_0$在内。
+
+\textbf{训练时间复杂度。}不适用，因为算法不执行参数训练。矩阵合法性检查与规范化在稠密表示下为$\Theta(n^2)$，在稀疏表示下为$\Theta(s+n)$。
+
+\textbf{预测时间复杂度。}这里“预测”指分布推进。含一次输入校验在内，稠密总时间为$\Theta((T+1)n^2)$；稀疏总时间为$\Theta((T+1)(s+n))=\Theta((T+1)s)$。因此$T=0$也不会跳过合法性检查。
+
+\textbf{空间复杂度。}除输出外，当前、候选和下一分布占$\Theta(n)$额外工作空间；若保留包含$\widehat\rho_0$的完整轨迹，输出占$\Theta((T+1)n)$。若计入矩阵，稠密存储为$\Theta(n^2)$，稀疏存储为$\Theta(s)$。
+\end{complexitybox}
+
+\phantomsection\label{struct:V5-C01-CH28}
+\begin{applicabilitybox}
+\textbf{方法适用条件。}算法适用于有限状态、时齐且转移矩阵已知的链，可用于有限时域概率预测、数值例题和长期行为的实验性检查。
+
+\phantomsection\label{struct:V5-C01-CH29}
+\textbf{方法局限性。}它不估计$A$，不替代不可约性和周期性的结构证明，也不能仅凭有限轮数确认渐近收敛。状态数很大时应利用稀疏结构；连续状态时应改用核积分或采样方法。
+
+\phantomsection\label{struct:V5-C01-CH30}
+\textbf{常见错误。}最常见的方向错误是把行概率向量推进写成$A\rho_t$；另一些错误包括把行和检查成列和、裁剪负分量、把超出容差的非法输入静默归一化、把唯一平稳分布误当成逐步收敛，以及把可逆性误当成不可约性。
+
+\phantomsection\label{struct:V5-C01-CH31}
+\textbf{易混淆概念对比。}平稳性是分布固定点，可逆性是逐边流量对称；不可约性是通信结构，非周期性是返回时长结构；正常返是平均回返时间有限，逐步收敛还需要消除周期障碍。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V5-C01-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[一条两状态链的完整审计]\label{exm:V5-C01-two-state-audit}
+给定
+\[
+A=\begin{pmatrix}0.7&0.3\\0.2&0.8\end{pmatrix},\qquad \rho_0=(1,0),
+\]
+要求核对合法性，计算两步分布，求平稳分布，判断不可约、周期与可逆性，并说明逐步收敛条件是否满足。
+\end{example}
+
+\phantomsection\label{struct:V5-C01-CH33}
+\Needspace{4\baselineskip}
+\SLExampleSolutionHeading{exm:V5-C01-two-state-audit}
+\begin{solution}
+\SLReadTranslation{要对给定两状态转移矩阵完成一条闭合审计链：随机矩阵合法性、两步推进、平稳分布、不可约性、周期、可逆性与逐步收敛条件缺一不可。}
+\SolGiven 采用行随机约定 $\rho_{t+1}=\rho_tA$；平稳分布须同时满足 $\rho_\star A=\rho_\star$、$\rho_\star\boldsymbol1=1$ 和非负性。
+\SLMethodTrigger{先验证每行概率和并推进分布，再解平稳方程；两状态链可由双向正边判不可约、正自环判非周期，并用唯一非平凡边检查细致平衡。}
+\SolPlan 核对 $A\boldsymbol1=\boldsymbol1$ 与非负性，计算 $\rho_1,\rho_2$；求 $\rho_\star$，逐项检查结构和细致平衡，最后套用有限链收敛条件。
+\SolDerive
+\textbf{计算。}合法性与两步更新可合并核验为
+\[
+\begin{aligned}
+A\boldsymbol 1&=\boldsymbol 1,\quad A\ge0,\\
+\rho_1&=(1,0)A=(0.7,0.3),\\
+\rho_2&=(0.7,0.3)A=(0.55,0.45).
+\end{aligned}
+\]
+解$\rho_\star=\rho_\star A$及$\rho_\star\boldsymbol1=1$得到$\rho_\star=(0.4,0.6)$，且
+\[
+0.4a_{12}=0.4\times0.3=0.12
+=0.6\times0.2=0.6a_{21}.
+\]
+所以链可逆。$a_{12},a_{21}>0$给出不可约性，正自环给出周期$1$；有限、不可约、非周期三项均满足，故任意初始分布的逐步分布收敛到$\rho_\star$。
+
+\SolCheck 直接代回得到
+$(0.4,0.6)A=(0.4,0.6)$；同时$\rho_1\boldsymbol1=\rho_2\boldsymbol1=1$，排除了分布推进中的行列约定错误。
+
+\SolAnswer 该链合法、不可约、非周期且可逆，唯一平稳分布为$(0.4,0.6)$；有限链条件齐全，因此从任意初始分布逐步收敛到该分布。
+\end{solution}
+
+\phantomsection\label{struct:V5-C01-CH34}
+\begin{warningbox}
+三个索引陷阱需要单独检查。第一，反向条件概率不能在缺少平稳加权时与前向条件概率互换，本章以式\eqref{eq:V5-C01-detailed-balance}为唯一细致平衡口径。第二，细致平衡只推出平稳性；没有不可约性时不推出唯一性或遍历收敛。第三，考虑状态空间$\{1,2,\ldots\}$上的生灭链：状态$1$以概率$p$自环、以概率$q$到状态$2$；状态$i\ge2$以概率$p$向左、以概率$q$向右，其中$p+q=1$且$p>q$。令$r=q/p\in(0,1)$，候选平稳分布应为
+\[
+\rho_i=(1-r)r^{i-1},\qquad i=1,2,\ldots,\quad0<r<1.
+\]
+其归一化、相邻边细致平衡与状态$1$的边界方程依次为
+\[
+\sum_{i=1}^{\infty}(1-r)r^{i-1}=1,
+\]
+\[
+\rho_iq=(1-r)r^{i-1}q
+=(1-r)r^ip=\rho_{i+1}p,
+\qquad i\ge1,
+\]
+\[
+\rho_1p+\rho_2p=(1-r)p(1+r)
+=(1-r)(p+q)=\rho_1.
+\]
+因此该序列既归一化又满足平稳方程。若把指数写成$i$，总质量会变成$r$而不是$1$；若$0<p\le q$，则$r\ge1$，该几何序列无法归一化；若$p=0$，链只向右移动，同样不存在该几何平稳分布。
+\end{warningbox}
+
+\nopagebreak[4]
+
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V5-C01-CH35}
+本章共14道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-19-0002
+% SOLUTION-SOURCE: original_book; source_id=EXR-19-0002
+\begin{exercise}\label{ex:V5-C01-S04-01}
+证明：若一条马尔可夫链不可约，且其中一个状态非周期，则所有状态都非周期。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S04-01}
+\begin{chapterexercisesolution}{ex:V5-C01-S04-01}
+记回返时长集合$R_i=\{n\ge1:(A^n)_{ii}>0\}$，周期$d(i)=\gcd R_i$。不可约性保证可取$r,s\ge1$使$(A^r)_{ji}>0$、$(A^s)_{ij}>0$。于是对任意$n\in R_i$，矩阵乘法给出
+\[
+\begin{aligned}
+(A^{r+s})_{jj}&\ge (A^r)_{ji}(A^s)_{ij}>0,\\
+(A^{r+n+s})_{jj}&\ge (A^r)_{ji}(A^n)_{ii}(A^s)_{ij}>0,\\
+d(j)&\mid(r+s),\quad d(j)\mid(r+n+s)
+\Longrightarrow d(j)\mid n.
+\end{aligned}
+\]
+因此$d(j)$整除$R_i$的每个元素。交换$i,j$后同理，故
+\[
+d(j)\mid d(i),\qquad d(i)\mid d(j)
+\Longrightarrow d(i)=d(j).
+\]
+若某个状态周期为$1$，不可约类中的全部状态周期都为$1$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-19-0003; row_convention=transpose_verified
+% SOLUTION-SOURCE: original_book; source_id=EXR-19-0003
+\begin{exercise}\label{ex:V5-C01-S04-02}
+对行随机矩阵
+\[
+A=\begin{pmatrix}
+1/2&1/2&0&0\\
+1/2&0&1/2&0\\
+0&1/2&0&1/2\\
+0&0&0&1
+\end{pmatrix},
+\]
+验证对应马尔可夫链可约但非周期，并写出通信类和关键返回路径。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S04-02}
+\begin{chapterexercisesolution}{ex:V5-C01-S04-02}
+合法性由$A\ge0$及$A\boldsymbol1=\boldsymbol1$给出。正概率路径满足
+\[
+\begin{aligned}
+1&\leftrightarrow2,\qquad 2\leftrightarrow3,\\
+3&\to4,\qquad 4\to4,\qquad 4\not\to\{1,2,3\},\\
+\mathcal C_1&=\{1,2,3\},\qquad \mathcal C_2=\{4\}.
+\end{aligned}
+\]
+$\mathcal C_2$闭而$\mathcal C_1$非闭，故链可约。周期方面，$(A)_{11}>0$与$(A)_{44}>0$给出$d(1)=d(4)=1$；又因$1,2,3$通信，
+\[
+d(2)=d(3)=d(1)=1,\qquad d(4)=1.
+\]
+所以每个状态均非周期。这说明逐状态非周期性不推出不可约性。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-19-0004; row_convention=transpose_verified
+% SOLUTION-SOURCE: original_book; source_id=EXR-19-0004
+\begin{exercise}\label{ex:V5-C01-S04-03}
+对行随机矩阵
+\[
+A=\begin{pmatrix}
+0&1&0&0\\
+1/2&0&1/2&0\\
+0&1/2&0&1/2\\
+0&0&1&0
+\end{pmatrix},
+\]
+验证对应马尔可夫链不可约但周期为$2$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S04-03}
+\begin{chapterexercisesolution}{ex:V5-C01-S04-03}
+正概率支撑图是双向路径$1\leftrightarrow2\leftrightarrow3\leftrightarrow4$，所以任意$i,j$都有某个$n$使$(A^n)_{ij}>0$，链不可约。令$C_0=\{1,3\}$、$C_1=\{2,4\}$；每步交换二部，故
+\[
+\begin{aligned}
+(A^{2m+1})_{ii}&=0 &&(m\ge0),\\
+(A^2)_{11}&\ge a_{12}a_{21}>0,&
+(A^2)_{22}&\ge a_{21}a_{12}>0,\\
+(A^2)_{33}&\ge a_{34}a_{43}>0,&
+(A^2)_{44}&\ge a_{43}a_{34}>0.
+\end{aligned}
+\]
+因此
+\[
+R_i\subseteq2\mathbb N,\quad 2\in R_i
+\Longrightarrow d(i)=\gcd R_i=2.
+\]
+链不可约但周期为$2$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-19-0005; errata=ERR-19-001
+% SOLUTION-SOURCE: original_book; source_id=EXR-19-0005; errata=ERR-19-001
+\begin{exercise}\label{ex:V5-C01-S05-01}
+判断命题“可逆马尔可夫链一定不可约”是否成立。若不成立，给出最小有限状态反例，并说明还需单独检查什么条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S05-01}
+\begin{chapterexercisesolution}{ex:V5-C01-S05-01}
+命题不成立。最小反例取状态空间$S=\{1,2\}$、$A=I_2$和$\rho=(a,1-a)$，其中$0<a<1$；$\rho$已归一化。对任意$i,j\in S$，
+\[
+\begin{aligned}
+\rho_i a_{ij}&=\rho_i\boldsymbol1\{i=j\}
+=\rho_j\boldsymbol1\{j=i\}=\rho_j a_{ji},\\
+\rho A&=\rho,\qquad
+\{1\},\{2\}\text{均为闭通信类}.
+\end{aligned}
+\]
+所以链关于$\rho$可逆却可约，且所有$(b,1-b)$都是平稳分布。再取$f(1)=0,f(2)=1$并从状态$1$出发，则
+\[
+\frac1T\sum_{t=0}^{T-1}f(X_t)=0
+\quad\text{而}\quad
+E_\rho f=\sum_{i\in S}\rho_i f(i)=1-a>0.
+\]
+要得到唯一平稳分布、时间平均或固定时刻收敛，必须分别核验不可约/正常返及非周期等条件。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C01-S01-01}
+两状态时齐链的矩阵为$A=\begin{psmallmatrix}0.7&0.3\\0.2&0.8\end{psmallmatrix}$，且$X_0=1$。计算路径$(X_0,X_1,X_2)=(1,2,2)$的概率，并写出所用的马尔可夫路径分解。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S01-01}
+\begin{chapterexercisesolution}{ex:V5-C01-S01-01}
+\nopagebreak[4]
+由$X_0=1$可知初始因子为$1$。路径依次使用从$1$到$2$的概率$a_{12}=0.3$和从$2$到$2$的概率$a_{22}=0.8$，因此
+\[
+P(X_0=1,X_1=2,X_2=2)
+=P(X_0=1)a_{12}a_{22}=1\times0.3\times0.8=0.24.
+\]
+这里马尔可夫性质恰用于第二步条件事件：
+\[
+P(X_2=2\mid X_1=2,X_0=1)
+=P(X_2=2\mid X_1=2)=a_{22}=0.8.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C01-S02-01}
+核对$A=\begin{psmallmatrix}0.7&0.3\\0.2&0.8\end{psmallmatrix}$是否为行随机矩阵。由$\rho_0=(1,0)$计算$\rho_1,\rho_2$，并逐步核对分量和。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S02-01}
+\begin{chapterexercisesolution}{ex:V5-C01-S02-01}
+四个元素均非负，两行分别满足$0.7+0.3=1$和$0.2+0.8=1$，所以$A$是行随机矩阵。按行向量方向推进，
+\[
+\rho_1=(1,0)A=(0.7,0.3),
+\]
+两个分量和为$1$。第二步为
+\[
+\rho_2=(0.7,0.3)A
+=(0.7\cdot0.7+0.3\cdot0.2,
+  0.7\cdot0.3+0.3\cdot0.8)
+=(0.55,0.45),
+\]
+分量和仍为$1$。若写成$A\rho_t$，维数方向和条件概率含义都会与本章约定冲突。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C01-S03-01}
+求矩阵$A=\begin{psmallmatrix}0.7&0.3\\0.2&0.8\end{psmallmatrix}$的平稳分布，并验证细致平衡。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S03-01}
+\begin{chapterexercisesolution}{ex:V5-C01-S03-01}
+令$\rho_\star=(r,1-r)$。平稳方程第一分量给出
+\[
+r=0.7r+0.2(1-r),
+\]
+即$0.5r=0.2$，所以$r=0.4$，$\rho_\star=(0.4,0.6)$。回代第二分量有$0.3\times0.4+0.8\times0.6=0.6$。两状态细致平衡只需检查非对角边：
+\[
+(\rho_\star)_1a_{12}=0.4\times0.3=0.12
+=0.6\times0.2=(\rho_\star)_2a_{21}.
+\]
+对角项两侧相同，因此全部细致平衡等式成立，链关于$\rho_\star$可逆。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C01-S03-02}
+设
+$B=\begin{psmallmatrix}1&0&0\\0&0.6&0.4\\0&0.2&0.8\end{psmallmatrix}$。
+求全部平稳分布，并解释为什么答案形成一个连续族。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S03-02}
+\begin{chapterexercisesolution}{ex:V5-C01-S03-02}
+令$\rho=(x,y,z)$。方程$\rho=\rho B$的第一分量恒为$x=x$；第二分量给出
+\[
+y=0.6y+0.2z,
+\]
+所以$z=2y$。结合$x+y+z=1$，取$\alpha=x\in[0,1]$，得到全部平稳分布
+\[
+\rho_\alpha=\left(\alpha,\frac{1-\alpha}{3},
+\frac{2(1-\alpha)}{3}\right),\qquad0\le\alpha\le1.
+\]
+状态$1$构成闭类，状态$2,3$构成另一个闭类。两个闭类各有自己的平稳分布，在它们之间分配任意总质量$\alpha$便形成连续族。可约性允许这种现象，但并非每条可约链都一定有多个平稳分布。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement; errata=ERR-19-003
+% SOLUTION-SOURCE: lecture_supplement; errata=ERR-19-003
+\begin{exercise}\label{ex:V5-C01-S04-04}
+令$p_t=\mathbb P_j(\tau_i=t)$。证明$p_t\to0$，并说明这一结论为什么否定了用“$\lim_{t\to\infty}p_t>0$”定义正常返的做法。写出正常返的标准定义。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S04-04}
+\begin{chapterexercisesolution}{ex:V5-C01-S04-04}
+事件$\{\tau_i=t\}$表示首次到达$i$恰好发生在时刻$t$。一条路径不能在两个不同时刻都首次到达$i$，所以这些事件两两互斥。因此
+\[
+\sum_{t\ge0}p_t
+=\mathbb P_j(\tau_i<\infty)\le1.
+\]
+非负数列若级数有界，则通项趋于$0$，故$p_t\to0$。于是要求$\lim_{t\to\infty}p_t>0$对首次到达分布不可能成立。正常返的标准定义是：从$i$出发的首次正回返时间$\tau_i^+=\inf\{t\ge1:X_t=i\}$满足$\mathbb E_i[\tau_i^+]<\infty$。非周期性是逐步分布收敛的附加结构，不属于该定义。
+\[
+\tau_i^+=\inf\{t\ge1:X_t=i\},\qquad
+i\text{正常返}\Longleftrightarrow \mathbb E_i[\tau_i^+]<\infty.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C01-S05-02}
+设概率分布$\rho$与行随机矩阵$A$满足$\rho_i a_{ij}=\rho_j a_{ji}$。逐分量证明$\rho=\rho A$，并指出证明中没有使用哪些常被误加的条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S05-02}
+\begin{chapterexercisesolution}{ex:V5-C01-S05-02}
+固定目标状态$j$。由矩阵乘法和细致平衡，
+\[
+(\rho A)_j=\sum_i\rho_i a_{ij}
+=\sum_i\rho_j a_{ji}
+=\rho_j\sum_i a_{ji}.
+\]
+最后的$a_{ji}$中$j$固定在第一个指标，$i$遍历第二个指标，因此求和的是矩阵第$j$行。于是
+\[
+\sum_i a_{ji}=1
+\Longrightarrow (\rho A)_j=\rho_j\quad(\forall j)
+\Longrightarrow \rho A=\rho.
+\]
+证明没有使用不可约性或非周期性，它们分别服务于唯一性和逐步收敛等更强结论。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C01-S05-03}
+对交替链$C=\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}$，求平稳分布，判断不可约性、周期和可逆性，再从$\rho_0=(1,0)$计算$\rho_t$。说明“唯一平稳分布”为何不保证逐步收敛。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S05-03}
+\begin{chapterexercisesolution}{ex:V5-C01-S05-03}
+令$\rho=(r,1-r)$。平稳方程、归一化与细致平衡依次给出
+\[
+\begin{aligned}
+\rho C=\rho&\Longleftrightarrow(1-r,r)=(r,1-r)
+\Longleftrightarrow r=\frac12,\\
+\rho_1c_{12}&=\frac12=\rho_2c_{21}.
+\end{aligned}
+\]
+所以唯一平稳分布为$(1/2,1/2)$且链可逆。两状态一步互达，故不可约；回返集合$R_1=R_2=\{2,4,6,\ldots\}$，周期为$2$。从$\rho_0=(1,0)$出发，
+\[
+\rho_t=\rho_0C^t=
+\begin{cases}(1,0),&t\text{为偶数},\\(0,1),&t\text{为奇数},\end{cases}
+\]
+因此逐步分布不收敛。唯一固定点不能消除周期振荡。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C01-S05-04}
+设
+\[
+D=\begin{pmatrix}0.1&0.6&0.3\\0.3&0.1&0.6\\0.6&0.3&0.1\end{pmatrix}.
+\]
+证明均匀分布平稳，并判断链是否不可约、非周期和可逆。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S05-04}
+\begin{chapterexercisesolution}{ex:V5-C01-S05-04}
+矩阵每行和与每列和都为$1$，所以对$u=(1/3,1/3,1/3)$有
+\[
+(uD)_j=\frac13\sum_i d_{ij}=\frac13,
+\]
+均匀分布平稳。矩阵所有元素都严格为正，任意状态一步可达任意其他状态，链不可约；每个对角元为$0.1>0$，所以周期为$1$。但
+\[
+u_1d_{12}=\frac13\times0.6=0.2,
+\qquad
+u_2d_{21}=\frac13\times0.3=0.1,
+\]
+细致平衡失败，链关于其唯一平稳分布不可逆。该例说明平稳性、不可约性和非周期性合在一起仍不推出可逆性。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C01-S06-01}
+在三节点路径$1-2-3$上进行简单随机游走。写出行随机矩阵，求平稳分布，判断周期；再写出$A_{\mathrm L}=(I+A)/2$并说明平稳分布和周期如何变化。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S06-01}
+\begin{chapterexercisesolution}{ex:V5-C01-S06-01}
+\nopagebreak[4]
+三节点路径的度数为$(1,2,1)$，简单随机游走矩阵为
+\[
+A=\begin{pmatrix}0&1&0\\1/2&0&1/2\\0&1&0\end{pmatrix}.
+\]
+由度数公式，平稳分布为$\rho=(1/4,1/2,1/4)$；例如边$1-2$满足$(1/4)\cdot1=(1/2)\cdot(1/2)$。图连通，所以链不可约；二部划分$\{1,3\}$与$\{2\}$使每次移动换部，且存在两步回返，故周期为$2$。
+
+惰性矩阵为
+\[
+A_{\mathrm L}=\frac12(I+A)=
+\begin{pmatrix}1/2&1/2&0\\1/4&1/2&1/4\\0&1/2&1/2\end{pmatrix}.
+\]
+因为$\rho A_{\mathrm L}=\tfrac12\rho+\tfrac12\rho A=\rho$，平稳分布不变。每个状态新增正自环，周期变为$1$，连通性仍保持，所以链从任意初始分布逐步收敛到$\rho$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C01-S06-02}
+对$A=\begin{psmallmatrix}0.7&0.3\\0.2&0.8\end{psmallmatrix}$、$\rho_0=(1,0)$和$T=2$手工执行算法\ref{alg:V5-C01-distribution-propagation}。列出每轮不变量检查，并给出一般$n,T$下稠密与稀疏时间复杂度。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C01-S06-02}
+\begin{chapterexercisesolution}{ex:V5-C01-S06-02}
+输入矩阵两行非负且行和为$1$，$\rho_0$非负且和为$1$，初始化检查通过。第1轮计算
+\[
+\begin{aligned}
+\rho_1&=(1,0)A=(0.7,0.3),&\rho_1\boldsymbol1&=1,\\
+\rho_2&=(0.7,0.3)A=(0.55,0.45),&\rho_2\boldsymbol1&=1,\\
+t&=2=T&\Longrightarrow\quad&\text{按预算停止}.
+\end{aligned}
+\]
+每轮候选都有限、逐分量非负且归一化，故状态不变量保持。按预算停止不声称此时已等于平稳分布。
+
+记$s=\operatorname{nnz}(\widehat A)$且$s\ge n$。含输入校验和规范化的复杂度链为
+\[
+\begin{aligned}
+T_{\rm dense}&=\Theta((T+1)n^2),\\
+T_{\rm sparse}&=\Theta((T+1)(s+n))=\Theta((T+1)s),\\
+S_{\rm work}&=\Theta(n),\qquad S_{\rm trace}=\Theta((T+1)n).
+\end{aligned}
+\]
+矩阵本身分别占$\Theta(n^2)$或$\Theta(s)$空间。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+
+% Reserve the complete closing unit so the final self-check is not orphaned.
+\Needspace{24\baselineskip}
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V5-C01-CH36}
+\SLChapterFiveSummary{行随机矩阵以$\rho_{t+1}=\rho_tA$推进；平稳、不可约、周期与正常返回答不同问题。}
+{细致平衡推出平稳；有限不可约链给出唯一性与时间平均，非周期性另给固定时刻收敛。}
+{分布推进按给定时域反复作行向量乘法，并逐步核验概率质量。}
+{适用于已知有限转移规则与图随机游走；有限步完成本身不是渐近收敛证明。}
+{\NextChapter{31}{蒙特卡罗方法与直接采样}；\GlobalChapterRef{32}{5}{3}再用本章结论分析相关的MCMC轨迹。}
+
+\phantomsection\label{struct:V5-C01-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否从条件概率定义写出马尔可夫性质与路径概率乘积，并在不混用列随机约定的前提下计算$\rho_0A^t$和$(A^t)_{ij}$？若不能，回看\cref{sec:V5-C01-S01,sec:V5-C01-S02}。
+  \item 能否分别说明平稳分布存在、唯一、逐步收敛和时间平均各需哪些条件，并用通信路径、回返时长最大公约数与首次正回返期望判断不可约、周期与正常返？若不能，回看\cref{sec:V5-C01-S03,sec:V5-C01-S04,sec:V5-C01-S05}。
+  \item 能否从细致平衡证明平稳性，并立即给出“可逆不推出不可约”的反例？若不能，重做练习\ref{ex:V5-C01-S05-01}和\ref{ex:V5-C01-S05-02}。
+  \item 能否独立执行算法\ref{alg:V5-C01-distribution-propagation}，报告停止原因、概率不变量和复杂度？若不能，重做练习\ref{ex:V5-C01-S06-02}。
+  \item 能否求无向图随机游走的度数平稳分布，并解释惰性化为何保持该分布？若不能，回看\cref{sec:V5-C01-S06}；五项均可独立作答，并能完成对应算法与诊断，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

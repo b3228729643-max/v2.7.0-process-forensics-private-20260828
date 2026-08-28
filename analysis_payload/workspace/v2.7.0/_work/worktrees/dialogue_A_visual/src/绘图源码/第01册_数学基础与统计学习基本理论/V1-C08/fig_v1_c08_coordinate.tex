@@ -1,0 +1,77 @@
+% v2.3.1 figure UID: FIG-P126-01
+% Proposed post-v2.3.1 polish for FIG-P126-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P126-01/.style={every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{slfig-FIG-P126-01-axis/.style={
+  tick label style={font=\fontsize{8.8pt}{10.2pt}\selectfont},
+  label style={font=\fontsize{9.4pt}{11pt}\selectfont},
+  clip=false}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P126-01,alt={对象—关系—结论：坐标下降的每个子步只改变一个坐标，因此轨迹沿轴向折线逼近最优点。}]
+\begin{axis}[slfig-FIG-P126-01-axis,
+  slfig axis,width=.84\linewidth,height=6.6cm,
+  axis lines=middle,axis equal image,clip=false,
+  xmin=-4.00,xmax=3.90,ymin=-2.80,ymax=2.80,
+  xtick=\empty,ytick=\empty,xlabel={$x_1$},ylabel={$x_2$},
+  legend style={at={(.5,-.08)},anchor=north,legend columns=2,draw=none,
+    font=\fontsize{9.2pt}{10.8pt}\selectfont}
+]
+  \addplot[domain=0:360,samples=181,draw=SLGray!68,line width=.50pt,no marks,forget plot]
+    ({2.70*(cos(x)-sin(x))},{2.70*sin(x)});
+  \addplot[domain=0:360,samples=181,draw=SLGray!68,line width=.50pt,no marks,forget plot]
+    ({2.15*(cos(x)-sin(x))},{2.15*sin(x)});
+  \addplot[domain=0:360,samples=181,draw=SLGray!68,line width=.50pt,no marks,forget plot]
+    ({1.65*(cos(x)-sin(x))},{1.65*sin(x)});
+  \addplot[domain=0:360,samples=181,draw=SLGray!68,line width=.50pt,no marks,forget plot]
+    ({.90*(cos(x)-sin(x))},{.90*sin(x)});
+  \coordinate (q0) at (axis cs:-3.20,2.20);
+  \coordinate (q1) at (axis cs:-3.20,1.60);
+  \coordinate (q2) at (axis cs:-1.60,1.60);
+  \coordinate (q3) at (axis cs:-1.60,.80);
+  \coordinate (q4) at (axis cs:-.80,.80);
+  \coordinate (q5) at (axis cs:-.80,.40);
+  \coordinate (q6) at (axis cs:-.40,.40);
+  \coordinate (q7) at (axis cs:-.40,.20);
+  \draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLBlue,line width=1.05pt] (q1)--(q2);
+  \draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLBlue,line width=1.05pt] (q3)--(q4);
+  \draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLBlue,line width=1.05pt] (q5)--(q6);
+  \draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLTeal,line width=1.05pt,dash pattern=on 1.2pt off 1.2pt] (q0)--(q1);
+  \draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLTeal,line width=1.05pt,dash pattern=on 1.2pt off 1.2pt] (q2)--(q3);
+  \draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLTeal,line width=1.05pt,dash pattern=on 1.2pt off 1.2pt] (q4)--(q5);
+  \draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLTeal,line width=1.05pt,dash pattern=on 1.2pt off 1.2pt] (q6)--(q7);
+  \fill[SLInk] (q0) circle (2.2pt);
+  \node[anchor=south west,xshift=4pt,fill=white,fill opacity=1,text opacity=1,inner sep=.8pt,font=\fontsize{9.2pt}{10.8pt}\selectfont] at (q0) {$x^{(0)}$};
+  \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=east,xshift=-4pt] at (q1) {1};
+  \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=south,yshift=3pt] at (q2) {2};
+  \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=east,xshift=-4pt] at (q3) {3};
+  \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=south,yshift=4pt] at (q4) {4};
+  \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,anchor=east,xshift=-6pt,fill=white,fill opacity=1,text opacity=1,inner sep=.8pt] at (q5) {5};
+  \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,
+    anchor=south,yshift=4pt,
+    fill=white,fill opacity=1,text opacity=1,inner sep=.8pt] at (q6) {6};
+  \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,
+    anchor=east,xshift=-8pt,yshift=-2pt,
+    fill=white,fill opacity=1,text opacity=1,inner sep=.8pt] at (q7) {7};
+  \addplot[only marks,mark=square*,mark size=1.85pt,draw=SLTeal,fill=white,forget plot]
+    coordinates {(-3.20,1.60) (-1.60,.80) (-.80,.40) (-.40,.20)};
+  \fill[SLBlue] (q2) circle (1.9pt);
+  \fill[SLBlue] (q4) circle (1.9pt);
+  \fill[SLBlue] (q6) circle (1.9pt);
+  \node[star,star points=5,star point ratio=2.1,draw=SLGold,fill=SLGoldBG,
+    line width=.8pt,minimum size=5.5mm,inner sep=0pt] at (axis cs:0,0) {};
+  \node[anchor=north west,font=\fontsize{9.2pt}{10.8pt}\selectfont]
+    at (axis cs:.13,-.10) {$x^*$};
+  \addlegendimage{draw=SLBlue,line width=1.05pt}
+  \addlegendentry{更新 $x_1$}
+  \pgfplotsset{p126 x2 disconnected legend/.style={/pgfplots/legend image code/.code={
+    \draw[SLTeal,line width=1.05pt] (0cm,0cm)--(.06cm,0cm);
+    \draw[SLTeal,line width=1.05pt] (.18cm,0cm)--(.24cm,0cm);
+    \draw[SLTeal,line width=1.05pt] (.36cm,0cm)--(.42cm,0cm);
+    \draw[SLTeal,line width=1.05pt] (.54cm,0cm)--(.60cm,0cm);}}}
+  \addlegendimage{p126 x2 disconnected legend}
+  \addlegendentry{更新 $x_2$}
+\end{axis}
+\end{tikzpicture}
+\caption{坐标下降的每个子步只改变一个坐标，因此轨迹沿轴向折线逼近最优点。}\label{fig:V1-C08-coordinate}
+\end{figure}

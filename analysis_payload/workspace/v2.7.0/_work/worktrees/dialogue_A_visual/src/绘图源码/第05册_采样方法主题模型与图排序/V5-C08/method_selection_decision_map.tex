@@ -1,0 +1,47 @@
+% v2.7.0 figure UID: FIG-P750-01
+% Ten explicit forward paths, one validation-to-candidate feedback path, and a terminal no-return boundary.
+\tikzset{slfig-FIG-P750-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P750-01,
+  >=Stealth,every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=center},
+  root/.style={draw=SLDeepBlue,fill=SLDeepBlue,text=white,rounded corners=2pt,text width=16mm,minimum height=14mm,inner xsep=1.2mm,inner ysep=1.5mm,font=\fontsize{10.2pt}{12.2pt}\selectfont\bfseries},
+  question/.style={diamond,draw=SLMidBlue,fill=SLSoftBlue,aspect=1.25,inner sep=2.5pt,text width=18mm},
+  family/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,text width=24mm,minimum height=9mm,inner xsep=1.2mm,inner ysep=1.3mm},
+  familyframe/.style={draw=SLRuleGray,line width=.58pt,rounded corners=3pt,inner xsep=2.4mm,inner ysep=2.2mm},
+  gate/.style={draw=SLMidBlue,fill=white,rounded corners=2pt,text width=34mm,minimum height=14mm,inner xsep=1.2mm,inner ysep=1.5mm},
+  noreturn/.style={draw=SLTextGray,double,double distance=.7pt,rounded corners=2pt,fill=white,text width=34mm,minimum height=10mm,inner xsep=1.2mm,inner ysep=1mm},
+  main/.style={->,draw=SLDeepBlue,line width=.95pt},
+  feedback/.style={->,draw=SLAccentOrange,line width=.78pt,densely dashed},
+  >={Stealth[length=2.2mm,width=1.55mm]},
+  alt={对象—关系—结论：首要任务沿实线前向箭头进入“输出语义与必要约束”问题节点，再分别形成聚类、降维、话题、图排序四个候选族；四族各自沿实线进入包含验证协议、计算预算和失败模式的筛选门，随后锁定选择并只进行最终测试与报告。十条主路径均为清晰前向实线箭头；唯一橙色虚线反馈从验证阶段返回四族候选池，只用于回修候选。双线终止徽记和文字明确最终测试或报告绝不回流。对象形状、实线/虚线、箭头方向、候选池边界与文字共同编码；结论是先按输出语义和约束成族，再经验证筛选后锁定，测试结果不参与回修。}]
+\node[root] (goal) at (-7.00,0) {首要任务};
+\node[question] (sem) at (-4.10,0) {输出语义／\\必要约束？};
+\matrix (families) [matrix of nodes,row sep=5.5mm,nodes={family}] at (-.80,0)
+ {\node (f1) {聚类家族\\硬／软群组};\\
+  \node (f2) {降维家族\\正交／非负};\\
+  \node (f3) {话题家族\\矩阵／概率};\\
+  \node (f4) {图排序家族\\跳转／幂法};\\};
+\begin{scope}[on background layer]
+\node[familyframe,fit=(f1)(f2)(f3)(f4)] (familypool) {};
+\end{scope}
+\node[gate] (validate) at (2.80,0) {验证阶段\\协议／预算／失败模式};
+\node[root,text width=24mm] (final) at (6.40,0) {锁定选择\\最终测试／报告};
+\node[noreturn] (terminal) at (5.00,-2.30) {终止边界\\最终测试／报告不回流};
+\draw[main] (goal)--(sem);
+\draw[main] (sem.east)--(f1.west);
+\draw[main] (sem.east)--(f2.west);
+\draw[main] (sem.east)--(f3.west);
+\draw[main] (sem.east)--(f4.west);
+\draw[main] (f1.east)--([yshift=6mm]validate.west);
+\draw[main] (f2.east)--([yshift=2mm]validate.west);
+\draw[main] (f3.east)--([yshift=-2mm]validate.west);
+\draw[main] (f4.east)--([yshift=-6mm]validate.west);
+\draw[main] (validate)--(final);
+\draw[feedback] (validate.south)--++(0,-2.75)-|(familypool.south)
+  node[pos=.54,below=2.2mm,fill=white,inner sep=.6mm]{仅验证回修候选族};
+\end{tikzpicture}
+\caption{方法选择地图：首要任务先按输出语义与必要约束形成聚类、降维、话题或图排序候选族，再由验证协议、计算预算和失败模式筛选后锁定选择。唯一虚线只允许验证阶段回修候选族；最终测试与报告不回流。}
+\label{fig:V5-C08-selection-map}
+\end{figure}

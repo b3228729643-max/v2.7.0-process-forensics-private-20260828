@@ -1,0 +1,18 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{666}
+\setcounter{chapter}{34}
+\setcounter{section}{5}
+\setcounter{figure}{8}
+\setcounter{equation}{22}
+\pagestyle{headings}
+\chaptermark{狄利克雷分布与共轭先验}
+\sectionmark{后验预测与例题}
+\paragraph{浓度面之二：固定均值时，总浓度怎样改变不确定性？}
+图\ref{fig:V5-C05-concentration-mean}固定 $\boldsymbol m=(0.5,0.3,0.2)$，只改变总浓度 $\alpha_0$。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_concentration_mean.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先沿左侧线性 $\alpha_0$ 轴核对三组 $\boldsymbol\alpha=\alpha_0\boldsymbol m$；再沿同一线型的箭头找到右侧同心的 $0.8\sigma$ 协方差椭圆。三椭圆中心相同而面积比为 $1:4/11:4/31$，故变化来自浓度而非均值。\par
+\end{document}

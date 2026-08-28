@@ -1,0 +1,59 @@
+{
+  "freeze_id": "FIG-P654-01-R15-SA1-TAXONOMY-FREEZE",
+  "frozen_before_pixel_measurement": true,
+  "basis": [
+    "PANEL_ID",
+    "ROLE",
+    "SCRIPT_CLASS",
+    "source-declared semantic parent",
+    "PDF page position only for parent assignment"
+  ],
+  "forbidden_basis": [
+    "measured H_INK_PX",
+    "exact-glyph post-hoc regrouping",
+    "desired PASS outcome"
+  ],
+  "panel": {
+    "id": "P_MAIN",
+    "pdf_rect_pt": [70.0, 60.0, 535.0, 210.0],
+    "base_role": "NODE_BODY"
+  },
+  "parents": [
+    {"id":"N_TRIAL_BODY","rect_pt":[90,73,151,88],"role":"NODE_BODY","node":"NODE_TRIAL"},
+    {"id":"N_TRIAL_FORMULA","rect_pt":[112,86,130,101],"role":"FORMULA_BLOCK","node":"NODE_TRIAL"},
+    {"id":"N_GAMMA_BODY_1","rect_pt":[82,138,160,153],"role":"NODE_BODY","node":"NODE_GAMMA"},
+    {"id":"N_GAMMA_BODY_2","rect_pt":[90,150,151,166],"role":"NODE_BODY","node":"NODE_GAMMA"},
+    {"id":"N_FAMILIES_BODY_1","rect_pt":[194,105,253,121],"role":"NODE_BODY","node":"NODE_FAMILIES"},
+    {"id":"N_FAMILIES_BODY_2","rect_pt":[180,117,267,133],"role":"NODE_BODY","node":"NODE_FAMILIES"},
+    {"id":"N_POSTERIOR_BODY","rect_pt":[289,102,386,118],"role":"NODE_BODY","node":"NODE_POSTERIOR"},
+    {"id":"N_POSTERIOR_FORMULA","rect_pt":[304,118,371,136],"role":"FORMULA_BLOCK","node":"NODE_POSTERIOR"},
+    {"id":"N_PREDICTIVE_BODY_1","rect_pt":[426,89,504,106],"role":"NODE_BODY","node":"NODE_PREDICTIVE"},
+    {"id":"N_PREDICTIVE_BODY_2","rect_pt":[412,102,519,118],"role":"NODE_BODY","node":"NODE_PREDICTIVE"},
+    {"id":"N_PREDICTIVE_FRAC_NUM","rect_pt":[444,115,486,132],"role":"FORMULA_BLOCK","node":"NODE_PREDICTIVE"},
+    {"id":"N_PREDICTIVE_FRAC_DEN","rect_pt":[444,130,486,149],"role":"FORMULA_BLOCK","node":"NODE_PREDICTIVE"},
+    {"id":"N_SIMPLEX_BODY","rect_pt":[205,171,269,187],"role":"NODE_BODY","node":"NODE_SIMPLEX"},
+    {"id":"N_MOM_BODY_1","rect_pt":[302,165,365,181],"role":"NODE_BODY","node":"NODE_MOM"},
+    {"id":"N_MOM_BODY_2","rect_pt":[306,178,361,193],"role":"NODE_BODY","node":"NODE_MOM"},
+    {"id":"N_LDA_BODY_1","rect_pt":[421,178,493,193],"role":"NODE_BODY","node":"NODE_LDA"},
+    {"id":"N_LDA_BODY_2","rect_pt":[421,190,493,205],"role":"NODE_BODY","node":"NODE_LDA"},
+    {"id":"EDGE_APPLICATION_LABEL","rect_pt":[463,160,491,176],"role":"ANNOTATION","node":null}
+  ],
+  "script_class_rules": [
+    {"class":"NATURAL_SCRIPT","rule":"TeX-produced subscript span below 9.5pt inside N_PREDICTIVE_FRAC_NUM or N_PREDICTIVE_FRAC_DEN","hard_min_px":15},
+    {"class":"LOW_PROFILE_PUNCTUATION","rule":"period/comma/colon/semicolon/ellipsis and CJK variants","calibration_ratio":[0.92,1.08]},
+    {"class":"CJK_FULL","rule":"CJK ideograph/fullwidth glyph","hard_min_px":30},
+    {"class":"LATIN_UPPER_DIGIT","rule":"uppercase Latin or non-script digit","hard_min_px":24},
+    {"class":"LATIN_LOWER_GREEK","rule":"lowercase Latin/Greek outside fraction body","hard_min_px":17},
+    {"class":"BASE_MATH","rule":"math operator, bold math variable, and non-script fraction numerator/denominator glyph","hard_min_px":22}
+  ],
+  "role_ratio_rules": {
+    "ANNOTATION": [0.95, 1.10],
+    "FORMULA_BLOCK": [1.00, 1.18],
+    "NODE_BODY": [1.00, 1.00]
+  },
+  "same_group_ratio": [0.92, 1.08],
+  "same_role_median_extreme_ratio_max": 1.08,
+  "cross_panel_role_median_extreme_ratio_max": 1.10,
+  "panels_present": 1,
+  "cross_panel_denominator_expected": 0
+}

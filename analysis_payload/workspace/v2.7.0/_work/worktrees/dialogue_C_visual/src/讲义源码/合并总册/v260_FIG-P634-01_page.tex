@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{666}
+\setcounter{chapter}{33}
+\setcounter{figure}{2}
+\pagestyle{headings}
+\chaptermark{Gibbs 抽样}
+\sectionmark{逐变量 Gibbs 抽样}
+\textbf{学习算法。}在系统扫描中，第$t$轮从$x^{(t-1)}$开始，先抽$x_1^{(t)}$，再抽$x_2^{(t)}$；第$j$步使用本轮已经更新的$x_1^{(t)},\ldots,x_{j-1}^{(t)}$与尚未更新的$x_{j+1}^{(t-1)},\ldots,x_d^{(t-1)}$。图\ref{fig:V5-C04-coordinate-sweep}明确区分“轮内状态”和“轮末样本”。算法及其前置说明另行区分完整轮次与中途停止状态。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_coordinate_sweep.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先按上方编号与箭头确认$j=1,\ldots,d$的固定次序；再看$x^{[j]}$左侧坐标已写入同轮新值、右侧坐标仍保留上一轮旧值，因而后续更新会读取此前的新值；最终只把$x^{[d]}=x^{(t)}$记作本轮样本，不把中间状态当作一轮输出。\par
+\paragraph{轮内状态与轮末样本。}中途停止得到的是部分扫描状态；只有完成第$d$个坐标更新后，$x^{[d]}=x^{(t)}$才能追加到轮末样本序列。
+\end{document}

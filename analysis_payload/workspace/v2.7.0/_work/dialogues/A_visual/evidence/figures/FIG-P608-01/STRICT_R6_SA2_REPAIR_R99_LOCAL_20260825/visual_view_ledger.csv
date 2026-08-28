@@ -1,0 +1,8 @@
+VIEW,PURPOSE,REVIEWER,REVIEWED_AT,OPENED,PASS,NOTE
+full_page_200dpi.png,page integration,SA2_R6_LOCAL,2026-08-25T01:11:27+08:00,True,PASS,"Opened full A4 page; figure, caption, margins, and surrounding white space are integrated without collision or displacement."
+figure_crop_300dpi.png,native colour figure,SA2_R6_LOCAL,2026-08-25T01:11:27+08:00,True,PASS,"Opened native colour crop; both panels, horizontal y labels, ticks, curves, formulas, and caption remain legible and balanced."
+standalone_300dpi.png,direct clipped native standalone render,SA2_R6_LOCAL,2026-08-25T01:11:27+08:00,True,PASS,Opened direct standalone crop; the frozen native bounds retain all figure and caption content with no clipped edge.
+grayscale_300dpi.png,grayscale hierarchy,SA2_R6_LOCAL,2026-08-25T01:11:27+08:00,True,PASS,"Opened grayscale view; sample, running-mean, target, boundary, shading, and text hierarchy remain distinguishable."
+colorblind_protanopia_300dpi.png,protanopia hierarchy,SA2_R6_LOCAL,2026-08-25T01:11:27+08:00,True,PASS,"Opened protanopia simulation; line style, geometry, and luminance keep every encoded role distinguishable."
+colorblind_deuteranopia_300dpi.png,deuteranopia hierarchy,SA2_R6_LOCAL,2026-08-25T01:11:27+08:00,True,PASS,"Opened deuteranopia simulation; line style, geometry, and luminance keep every encoded role distinguishable."
+colorblind_tritanopia_300dpi.png,tritanopia hierarchy,SA2_R6_LOCAL,2026-08-25T01:11:27+08:00,True,PASS,"Opened tritanopia simulation; line style, geometry, and luminance keep every encoded role distinguishable."

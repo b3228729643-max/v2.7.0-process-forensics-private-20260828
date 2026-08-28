@@ -1,0 +1,17 @@
+REL_ID,relationship,measured_min_px,hard_min_px,illegal_overlap_px,manual_reviewer,manual_decision,evidence,manual_note
+R01,INDEPENDENT_TEXT_TEXT,35.235,4,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv P003587,Closest independent reader objects are lower tick 10 and xlabel t; well above gate.
+R02,TEXT_TO_AXIS_LINE,21.000,3,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv P003447,Closest tick glyph to lower x-axis remains separated.
+R03,ARROWHEAD_TO_TEXT,16.117,3,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv P004009,Closest x-axis arrowhead to tick text remains separated.
+R04,TEXT_TO_REFERENCE_LINE,27.000,3,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv P000816 and C01,The warm-up t glyph is the nearest text to the gold divider.
+R05,ANNOTATION_TO_DATA_CURVE,51.000,3,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv and C02,Annotations remain clearly above and away from the blue series.
+R06,TEXT_TO_MARKER,43.777,3,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv,No marker intrudes into any text glyph.
+R07,TICK_TEXT_TO_TICK_STROKE,13.000,3,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv P003445,Tick labels are not touching tick strokes.
+R08,TEXT_TO_HATCH,23.000,3,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv,All labels are outside the patterned foreground.
+R09,MATH_RULE_TO_OWN_FORMULA_GLYPH,6.000,DESIGN_RELATION,0,SA3_R105_FRESH_ISOLATED,PASS,math_rule_contact_sheet.png,Overlines and equals bars are intentional formula components and do not touch glyph ink.
+R10,TEXT_TO_STANDALONE_IMAGE_EDGE,13.000,6,0,SA3_R105_FRESH_ISOLATED,PASS,object_manifest.csv,The xlabel t is the closest reader element to the audit crop edge.
+R11,CROSS_PANEL_READER_CLEARANCE,34.000,8,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv P005586 and C03,Lower title remains clearly separated from the upper x-axis.
+R12,TARGET_LABEL_TO_TARGET_LINE,77.000,3,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv and C04,Teal label is visibly separated from teal target line.
+R13,NODE_TEXT_TO_NODE_BORDER,NA,5,0,SA3_R105_FRESH_ISOLATED,NA,source and standalone,No bordered node exists in this figure.
+R14,LEGEND_TO_DATA_CURVE,NA,3,0,SA3_R105_FRESH_ISOLATED,NA,source and standalone,No legend exists in this figure.
+R15,ALL_8128_UNORDERED_PAIRS,8128,COMPLETE_DENOMINATOR,0,SA3_R105_FRESH_ISOLATED,PASS,all_unordered_pairs.csv,All 128 choose 2 pairs are present; 71 nonzero intersections are intentional line-line line-marker reference-data or hatch-background design relations and none involve text.
+R16,CLIP_GATE,0,0,0,SA3_R105_FRESH_ISOLATED,PASS,object_manifest.csv and four native views,No foreground mask reaches the audit crop boundary; no source panel clipping is visible and clip=false is explicit.

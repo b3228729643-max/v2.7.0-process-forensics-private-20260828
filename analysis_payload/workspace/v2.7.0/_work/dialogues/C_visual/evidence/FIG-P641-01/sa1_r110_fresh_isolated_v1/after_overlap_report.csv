@@ -1,0 +1,8 @@
+scope,pair_count,intersection_pair_count,manual_illegal_overlap_count,manual_intentional_or_internal_count,decision,note
+ALL_UNORDERED_PAIRS,15576,14,0,14,PASS,complete frozen denominator N177 gives C15576
+INTERSECTION_SAME_TEXT_PARENT,1,1,0,1,PASS,one 1px antialias contact inside Markov is legible and nonsemantic
+INTERSECTION_EDGE_ENDPOINT_TO_NODE_BORDER,9,9,0,9,PASS,all are required graph connectivity joins
+INTERSECTION_DESIGNED_BOUNDARY_CROSSING,3,3,0,3,PASS,three graph edges intentionally cross dashed blanket boundaries
+INTERSECTION_ARROW_SHAFT_HEAD_COMPOSITION,1,1,0,1,PASS,shaft and arrowhead intentionally join
+NO_FOREGROUND_INTERSECTION,15562,0,0,0,PASS,every other unordered pair has zero common foreground pixels
+CRITICAL_REVIEW_SUBSET,154,14,0,14,PASS,every relation reviewed at native1x and nearest-neighbor8x

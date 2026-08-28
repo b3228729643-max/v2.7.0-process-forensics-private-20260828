@@ -1,0 +1,116 @@
+{
+  "handoff_id": "A-R107-P715-SA1-FRESH-ISOLATED-20260826",
+  "generated_utc": "2026-08-26T06:46:18.164531+00:00",
+  "scope": "machine crosscheck only; manual reviewer decisions are read but never generated or overwritten",
+  "checks": {
+    "pdf_identity": {
+      "bytes": 4967249,
+      "pages": 817,
+      "sha256": "8811950621E2D64A3C2A8F0F7A52DD0FAC2BDB12018F3EA052C1F58C94EF8DF3",
+      "pass": true
+    },
+    "source_identity": {
+      "bytes": 4057,
+      "sha256": "900C3A8F72A7A6434101FEE9914019150D3D5F655A23FC5BF41EDB853C25EE87",
+      "pass": true
+    },
+    "object_denominator": {
+      "text": 216,
+      "graphics": 43,
+      "N": 259,
+      "unique_ids": 259,
+      "pass": true
+    },
+    "mask_files": {
+      "expected": 259,
+      "ordinary_openable": 259,
+      "open_failures": [],
+      "dimension_failures": [],
+      "empty_mask_rows": [],
+      "clip_rows": [],
+      "tofu_or_decode_rows": [],
+      "pass": true
+    },
+    "safe_filename_map": {
+      "rows": 259,
+      "unique_ids": 259,
+      "unique_safe_filenames": 259,
+      "paths_exist": 259,
+      "pass": true
+    },
+    "all_unordered_pairs": {
+      "rows": 33411,
+      "unique_pair_ids": 33411,
+      "unique_object_pairs": 33411,
+      "expected_pairs": 33411,
+      "missing_pairs": 0,
+      "unexpected_pairs": 0,
+      "critical_pairs": 16,
+      "intersection_pairs": 86,
+      "intersection_classes": {
+        "GRAPHIC_GRAPHIC": 4,
+        "DESIGN_INTERNAL_GRAPHIC": 4,
+        "DESIGN_MATRIX_GRID": 60,
+        "DESIGN_FOCUS_ON_CELL": 18
+      },
+      "illegal_overlap_candidates": 0,
+      "clearance_failure_candidates": 0,
+      "blank_core_fields": 0,
+      "pass": true
+    },
+    "drawing_path_coverage": {
+      "rows": 43,
+      "unique_ids": 43,
+      "unique_drawing_seqno": 43,
+      "math_rule_rows": 0,
+      "pass": true
+    },
+    "manual_ledgers": {
+      "glyph_rows": 216,
+      "graphic_rows": 43,
+      "critical_pair_rows": 16,
+      "four_view_rows": 6,
+      "panel_role_rows": 9,
+      "graphic_connection_rows": 4,
+      "pass": true
+    },
+    "critical_evidence": {
+      "expected_native1x": 16,
+      "expected_8x": 16,
+      "file_failures": [],
+      "native1x_actual": 16,
+      "nearest8x_actual": 16,
+      "pair_sheets_actual": 2,
+      "pass": true
+    },
+    "contact_sheets": {
+      "glyph": 18,
+      "graphic": 4,
+      "critical": 2,
+      "open_failures": [],
+      "pass": true
+    },
+    "canonical_evidence_files": {
+      "files": {
+        "full_page_200dpi.png": true,
+        "figure_crop_300dpi.png": true,
+        "standalone_300dpi.png": true,
+        "grayscale_300dpi.png": true,
+        "after_text_measurement_overlay_300dpi.png": true,
+        "after_font_audit.csv": true,
+        "after_pixel_measurements.csv": true,
+        "after_overlap_report.csv": true
+      },
+      "pass": true
+    },
+    "required_reports": {
+      "missing": [],
+      "pass": true
+    },
+    "result_consistency": {
+      "pass": true
+    }
+  },
+  "machine_crosscheck_pass": true,
+  "machine_crosscheck_failure_count": 0
+}

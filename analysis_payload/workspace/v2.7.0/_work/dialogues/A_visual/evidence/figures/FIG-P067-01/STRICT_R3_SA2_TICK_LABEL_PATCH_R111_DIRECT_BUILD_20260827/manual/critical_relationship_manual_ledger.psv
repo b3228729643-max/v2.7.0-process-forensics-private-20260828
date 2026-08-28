@@ -1,0 +1,18 @@
+relation_id|manual_reviewer|observed_at_utc|native1x_gate|nearest8x_gate|manual_decision|object_specific_note
+REL001|/root|2026-08-27T06:50:08.2201269Z|0.35 and replayed 0.3 word boxes have overlap0 and 1px bbox gap|Nearest8x preserves an 8px bbox gap with no shared ink|PASS_R168_CLEAR|The former 0.35-to-0.3 overprint is gone; both numbers remain distinct and correctly ordered.
+REL002|/root|2026-08-27T06:50:08.2201269Z|Replayed 0.3 and 0.15 word boxes have overlap0 and 1px bbox gap|Nearest8x preserves an 8px bbox gap with no shared ink|PASS_R168_CLEAR|The downward replay did not create a new collision with the lower 0.15 tick label.
+REL003|/root|2026-08-27T06:50:08.2201269Z|Four PMF stems terminate at 0.15 0.30 0.35 0.20|8x marker views show intact filled endpoints|PASS|The lower panel retains every mass and the values sum to one.
+REL004|/root|2026-08-27T06:50:08.2201269Z|CDF plateaus appear at 0.15 0.45 0.80 1.00|8x path and marker sheets preserve each jump|PASS|The upper staircase is monotone and reaches one.
+REL005|/root|2026-08-27T06:50:08.2201269Z|Filled markers occupy post-jump levels and open markers pre-jump levels|8x sheets distinguish filled and open centers|PASS|Open and closed endpoints encode right continuity correctly at all four abscissae.
+REL006|/root|2026-08-27T06:50:08.2201269Z|Upper and lower guides share x positions 1 through 4|8x path sheets retain straight vertical registration|PASS|The two panels align the same support points without horizontal drift.
+REL007|/root|2026-08-27T06:50:08.2201269Z|F_X(t) and p_X(t) labels are complete and outside the axes|8x glyph sheets show no crop or tofu|PASS|Both vertical-axis meanings remain unambiguous.
+REL008|/root|2026-08-27T06:50:08.2201269Z|p1 sits beside the first filled jump marker without ink merge|8x object crops preserve marker-label separation|PASS|The first mass annotation remains owned by the t=1 jump.
+REL009|/root|2026-08-27T06:50:08.2201269Z|p2 remains beside the second jump and clear of guides|8x crop shows intact p and subscript 2|PASS|The second mass annotation is readable and correctly associated.
+REL010|/root|2026-08-27T06:50:08.2201269Z|p3 remains beside the third jump with no marker collision|8x crop shows its subscript clear of the guide|PASS|The third mass annotation retains correct ownership.
+REL011|/root|2026-08-27T06:50:08.2201269Z|p4 remains below the unit plateau and right of the fourth marker|8x crop shows no top-edge clipping|PASS|The fourth mass annotation remains legible at the final jump.
+REL012|/root|2026-08-27T06:50:08.2201269Z|Continuity note stays inside the upper panel without touching the staircase|8x glyph sheets show all eleven CJK and punctuation glyphs|PASS|The note continues to explain the filled post-jump convention.
+REL013|/root|2026-08-27T06:50:08.2201269Z|Lower note 同一t_i：跳高=p_i is clear of the t=4 stem|8x glyph/path views preserve mathematical symbols and subscripts|PASS|The cross-panel PMF-to-CDF relation remains explicit.
+REL014|/root|2026-08-27T06:50:08.2201269Z|Color view distinguishes blue CDF and teal PMF while retaining dark endpoints|Grayscale view preserves stems steps dashed guides and open/filled markers|PASS|No meaning depends solely on color.
+REL015|/root|2026-08-27T06:50:08.2201269Z|All 115 included atoms lie inside the A4 page and figure crop|Full-page and figure views show no edge loss|PASS|The local label replay introduces no page or panel clipping.
+REL016|/root|2026-08-27T06:50:08.2201269Z|Source font declarations include R168-advisory sub-9.5pt values|Native and 8x views remain readable with no severe imbalance|ADVISORY_ONLY|R168 prevents a size-only failure because current glyphs are complete and readable.
+

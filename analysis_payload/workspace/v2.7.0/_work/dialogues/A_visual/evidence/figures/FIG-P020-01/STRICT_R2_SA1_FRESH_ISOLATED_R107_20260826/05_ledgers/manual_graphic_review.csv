@@ -1,0 +1,15 @@
+object_id,seqno,graphic_class,semantic_parent,sheet,cell,original_match,overlay_complete,mask_only_pure,missing_stroke_px,foreign_pixel_px,manual_decision,manual_note
+GFX_NODE_OBJECT_BORDER,14,NODE_BORDER,NODE_OBJECT,graphic_contact_sheet_01.png,1,true,true,true,0,0,PASS,对象节点四边与四个圆角连续；红叠加覆盖蓝色描边且排除内部填充和文字
+GFX_NODE_RELATION_BORDER,17,NODE_BORDER,NODE_RELATION,graphic_contact_sheet_01.png,2,true,true,true,0,0,PASS,关系节点完整圆角边框可见；mask-only仅含最终描边不含青色填充
+GFX_INLINE_ARROW_SHAFT,20,LINE_ARROW,INLINE_DOMAIN_ARROW,graphic_contact_sheet_01.png,3,true,true,true,0,0,PASS,定义域到值域内嵌箭轴连续；8×端部清楚且无文字污染
+GFX_INLINE_ARROW_HEAD,21,ARROWHEAD,INLINE_DOMAIN_ARROW,graphic_contact_sheet_01.png,4,true,true,true,0,0,PASS,内嵌箭头三角轮廓完整且方向向右；mask-only纯净
+GFX_NODE_LOGIC_BORDER,24,NODE_BORDER,NODE_LOGIC,graphic_contact_sheet_02.png,1,true,true,true,0,0,PASS,逻辑节点四边圆角连续；叠加完整且排除节点填充与文字
+GFX_NODE_TASK_BORDER,27,NODE_BORDER,NODE_TASK,graphic_contact_sheet_02.png,2,true,true,true,0,0,PASS,任务节点四边圆角连续；最终可见描边mask完整纯净
+GFX_MAIN_ARROW_1_SHAFT,30,LINE_ARROW,MAIN_ARROW_1,graphic_contact_sheet_02.png,3,true,true,true,0,0,PASS,对象到关系主箭轴水平连续并停在节点边界外；无无关对象污染
+GFX_MAIN_ARROW_1_HEAD,31,ARROWHEAD,MAIN_ARROW_1,graphic_contact_sheet_02.png,4,true,true,true,0,0,PASS,第一主箭头箭首完整向右；8×轮廓无缺角
+GFX_MAIN_ARROW_2_SHAFT,33,LINE_ARROW,MAIN_ARROW_2,graphic_contact_sheet_03.png,1,true,true,true,0,0,PASS,关系到逻辑主箭轴水平连续；mask-only纯净
+GFX_MAIN_ARROW_2_HEAD,34,ARROWHEAD,MAIN_ARROW_2,graphic_contact_sheet_03.png,2,true,true,true,0,0,PASS,第二主箭头箭首完整向右；与轴身组成连续同父对象
+GFX_MAIN_ARROW_3_SHAFT,36,LINE_ARROW,MAIN_ARROW_3,graphic_contact_sheet_03.png,3,true,true,true,0,0,PASS,逻辑到任务主箭轴水平连续；端点未触及节点边框
+GFX_MAIN_ARROW_3_HEAD,37,ARROWHEAD,MAIN_ARROW_3,graphic_contact_sheet_03.png,4,true,true,true,0,0,PASS,第三主箭头箭首完整向右；无缺笔或文字污染
+GFX_FEEDBACK_ROUTE,39,LINE_ARROW,FEEDBACK_ARROW,graphic_contact_sheet_04.png,1,true,true,true,0,0,PASS,反馈路径竖折与长水平虚线完整；每段虚线在8×中清楚且不穿文字
+GFX_FEEDBACK_ARROW_HEAD,40,ARROWHEAD,FEEDBACK_ARROW,graphic_contact_sheet_04.png,2,true,true,true,0,0,PASS,反馈箭首完整向上指回对象节点；与路径连续且无边框碰撞

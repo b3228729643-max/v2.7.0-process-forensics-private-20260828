@@ -1,0 +1,35 @@
+% v2.3.1 figure UID: FIG-P570-01
+% Proposed post-v2.3.1 polish for FIG-P570-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P570-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P570-01,>=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11pt}\selectfont,align=center},
+  input/.style={draw=SLRuleGray,rounded corners=2pt,fill=SLSoftGray,minimum width=30mm,minimum height=8mm,line width=.58pt},
+  core/.style={draw=SLBlue,rounded corners=2pt,fill=SLBlue!7,minimum width=36mm,minimum height=9mm,line width=.90pt,
+    font=\fontsize{9.6pt}{11.5pt}\selectfont},
+  method/.style={draw=SLTeal,rounded corners=2pt,fill=white,
+    minimum width=36mm,minimum height=13mm,inner xsep=1mm,line width=.78pt},
+  dep/.style={-{Stealth[length=1.8mm]},draw=SLBlue,line width=.90pt},
+]
+  \node[input] (exp) at (-3.8,2.2) {期望 / 积分};
+  \node[input] (iid) at (0,2.2) {独立抽样};
+  \node[input] (law) at (3.8,2.2) {大数规律};
+  \node[core] (mc) at (0,.75) {Monte Carlo 估计};
+  \draw[dep] (exp)--(mc); \draw[dep] (iid)--(mc); \draw[dep] (law)--(mc);
+
+  \node[method] (inv) at (-4.0,-.85) {\makebox[32mm][c]{\tikz\draw[SLBlue,line width=.68pt] (0,0)--(.35,.35);\quad 逆变换}};
+  \node[method,densely dashed] (rej) at (0,-.85) {\makebox[32mm][c]{判定 $U\le r$\quad 接受--拒绝}};
+  \node[method,double,double distance=1pt] (is) at (4.0,-.85) {\makebox[32mm][c]{$\vert\!\vert\!\vert$\quad 重要性抽样}};
+  \draw[dep] (mc)--(inv); \draw[dep] (mc)--(rej); \draw[dep] (mc)--(is);
+
+  \node[draw=SLGold,rounded corners=2pt,fill=SLGold!7,
+    minimum width=116mm,minimum height=9mm,line width=.74pt,
+    font=\fontsize{9.2pt}{11pt}\selectfont] (diag) at (0,-2.55)
+    {共同出口：误差 / ESS / 支持覆盖诊断};
+  \draw[dep] (inv)--(diag); \draw[dep] (rej)--(diag); \draw[dep] (is)--(diag);
+  \node[font=\fontsize{8.6pt}{10.2pt}\selectfont,text=SLGray] at (0,-3.20)
+    {三种同尺寸节点表示并列方法；边框/图标只编码方法身份，不表示先后依赖};
+\end{tikzpicture}
+\caption{本章知识依赖：由期望、积分与独立抽样进入蒙特卡罗估计，再分别学习三种直接采样或重加权方法，最后统一进行误差和支持诊断}\label{fig:V5-C02-dependency}
+\end{figure}

@@ -1,0 +1,51 @@
+CHECK_ID,EVIDENCE_FILE,PANEL_ID,ROLE,D_RATIO,E_RATIO,REVIEWER,ACTUALLY_OPENED,FONT_TOO_SMALL,FONT_ABRUPT_OR_OVERSIZED,FONT_VISUAL_HARMONY_PASS,GRAYSCALE_PASS,PAGE_INTEGRATION_PASS,DECISION,NOTE
+VIEW_FULL_PAGE_200DPI,full_page_200dpi.png,GLOBAL,PAGE,N/A,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Opened final 200dpi page; figure integrates with surrounding text
+VIEW_FIGURE_CROP_300DPI,figure_crop_300dpi.png,GLOBAL,FIGURE,N/A,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Opened final native 300dpi crop; all text and marks readable
+VIEW_STANDALONE_300DPI,standalone_300dpi.png,GLOBAL,FIGURE,N/A,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Opened final standalone; semantic decoding is self-contained
+VIEW_GRAYSCALE_300DPI,grayscale_300dpi.png,GLOBAL,GRAYSCALE,N/A,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Opened final grayscale; line styles and hatch remain distinguishable
+VIEW_TEXT_OVERLAY_300DPI,after_text_measurement_overlay_300dpi.png,GLOBAL,OVERLAY,N/A,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Opened final overlay; 32 text objects align with visible text
+ROLE_GLOBAL_CAPTION_CJK_HAN,figure_crop_300dpi.png,GLOBAL,CAPTION,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_GLOBAL_CAPTION_LOWER_OR_GREEK,figure_crop_300dpi.png,GLOBAL,CAPTION,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_GLOBAL_CAPTION_LOW_PROFILE_PUNCTUATION,figure_crop_300dpi.png,GLOBAL,CAPTION,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Independent period raw mask and calibration package also opened
+ROLE_GLOBAL_CAPTION_MATH_OPERATOR,figure_crop_300dpi.png,GLOBAL,CAPTION,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_GLOBAL_CAPTION_UPPER_OR_DIGIT,figure_crop_300dpi.png,GLOBAL,CAPTION,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_ANNOTATION_CJK_HAN,figure_crop_300dpi.png,L,ANNOTATION,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_ANNOTATION_LOWER_OR_GREEK,figure_crop_300dpi.png,L,ANNOTATION,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_ANNOTATION_MATH_OPERATOR,figure_crop_300dpi.png,L,ANNOTATION,1.000000,1.000000,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_ANNOTATION_NATURAL_SCRIPT,figure_crop_300dpi.png,L,ANNOTATION,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_ANNOTATION_PUNCTUATION,figure_crop_300dpi.png,L,ANNOTATION,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_ANNOTATION_UPPER_OR_DIGIT,figure_crop_300dpi.png,L,ANNOTATION,1.000000,1.018868,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_AXIS_TITLE_CJK_HAN,figure_crop_300dpi.png,L,AXIS_TITLE,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_AXIS_TITLE_LOWER_OR_GREEK,figure_crop_300dpi.png,L,AXIS_TITLE,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_AXIS_TITLE_UPPER_OR_DIGIT,figure_crop_300dpi.png,L,AXIS_TITLE,1.000000,1.018868,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_LEGEND_CJK_HAN,figure_crop_300dpi.png,L,LEGEND,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line is a legend by visible decoding function
+ROLE_L_LEGEND_LOWER_OR_GREEK,figure_crop_300dpi.png,L,LEGEND,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line is a legend by visible decoding function
+ROLE_L_LEGEND_NATURAL_SCRIPT,figure_crop_300dpi.png,L,LEGEND,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line is a legend by visible decoding function
+ROLE_L_LEGEND_PUNCTUATION,figure_crop_300dpi.png,L,LEGEND,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line is a legend by visible decoding function
+ROLE_L_LEGEND_UPPER_OR_DIGIT,figure_crop_300dpi.png,L,LEGEND,1.000000,1.018868,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line is a legend by visible decoding function
+ROLE_L_PANEL_TITLE_CJK_HAN,figure_crop_300dpi.png,L,PANEL_TITLE,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_PANEL_TITLE_LOWER_OR_GREEK,figure_crop_300dpi.png,L,PANEL_TITLE,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_PANEL_TITLE_MATH_OPERATOR,figure_crop_300dpi.png,L,PANEL_TITLE,1.000000,1.090909,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,E ratio is within role limit and appearance remains natural
+ROLE_L_PANEL_TITLE_NATURAL_SCRIPT,figure_crop_300dpi.png,L,PANEL_TITLE,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_L_TICK_MATH_OPERATOR,figure_crop_300dpi.png,L,TICK,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Inline slash tick structures are legible and coordinated
+ROLE_L_TICK_UPPER_OR_DIGIT,figure_crop_300dpi.png,L,TICK,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Inline slash tick digits satisfy native pixel gate
+ROLE_R_AXIS_TITLE_CJK_HAN,figure_crop_300dpi.png,R,AXIS_TITLE,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_R_AXIS_TITLE_LOWER_OR_GREEK,figure_crop_300dpi.png,R,AXIS_TITLE,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_R_AXIS_TITLE_UPPER_OR_DIGIT,figure_crop_300dpi.png,R,AXIS_TITLE,1.000000,1.000000,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_R_FORMULA_CJK_HAN,figure_crop_300dpi.png,R,FORMULA,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Card text stays within all four stroke-only borders
+ROLE_R_FORMULA_LOWER_OR_GREEK,figure_crop_300dpi.png,R,FORMULA,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Card text stays within all four stroke-only borders
+ROLE_R_FORMULA_MATH_OPERATOR,figure_crop_300dpi.png,R,FORMULA,1.000000,1.030303,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Card operators are readable and not oversized
+ROLE_R_FORMULA_NATURAL_SCRIPT,figure_crop_300dpi.png,R,FORMULA,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Card scripts are readable and remain natural TeX scripts
+ROLE_R_FORMULA_PUNCTUATION,figure_crop_300dpi.png,R,FORMULA,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Card punctuation is visible and coordinated
+ROLE_R_FORMULA_UPPER_OR_DIGIT,figure_crop_300dpi.png,R,FORMULA,1.000000,1.055556,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Card digits are readable with balanced line spacing
+ROLE_R_LEGEND_CJK_HAN,figure_crop_300dpi.png,R,LEGEND,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line visually decodes solid and dashed lines
+ROLE_R_LEGEND_LOWER_OR_GREEK,figure_crop_300dpi.png,R,LEGEND,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line visually decodes solid and dashed lines
+ROLE_R_LEGEND_MATH_OPERATOR,figure_crop_300dpi.png,R,LEGEND,1.000000,1.000000,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line visually decodes solid and dashed lines
+ROLE_R_LEGEND_NATURAL_SCRIPT,figure_crop_300dpi.png,R,LEGEND,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line visually decodes solid and dashed lines
+ROLE_R_LEGEND_PUNCTUATION,figure_crop_300dpi.png,R,LEGEND,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line visually decodes solid and dashed lines
+ROLE_R_LEGEND_UPPER_OR_DIGIT,figure_crop_300dpi.png,R,LEGEND,1.000000,1.037037,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Axis-below second line visually decodes solid and dashed lines
+ROLE_R_PANEL_TITLE_CJK_HAN,figure_crop_300dpi.png,R,PANEL_TITLE,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_R_PANEL_TITLE_LOWER_OR_GREEK,figure_crop_300dpi.png,R,PANEL_TITLE,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_R_PANEL_TITLE_NATURAL_SCRIPT,figure_crop_300dpi.png,R,PANEL_TITLE,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Cross-checked in final crop grayscale and page
+ROLE_R_TICK_MATH_OPERATOR,figure_crop_300dpi.png,R,TICK,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Inline slash tick structures are legible and coordinated
+ROLE_R_TICK_UPPER_OR_DIGIT,figure_crop_300dpi.png,R,TICK,1.000000,N/A,SA2,YES,NO,NO,PASS,PASS,PASS,PASS,Inline slash tick digits satisfy native pixel gate

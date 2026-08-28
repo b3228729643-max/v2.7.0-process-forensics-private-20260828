@@ -1,0 +1,9 @@
+check_id,reviewer,overlay,hard_gate,observed_relation,decision,note
+CRIT_01,SA3-gpt-5.6-sol-xhigh,critical/CRIT_01_curve_yaxis_endpoint.png,geometry,curve endpoint to axis and top tick,PASS,intentional shared endpoint at N=1 and RMSE=1; no accidental collision
+CRIT_02,SA3-gpt-5.6-sol-xhigh,critical/CRIT_02_curve_triangle_alignment.png,geometry and semantics,triangle diagonal to rate curve,PASS,diagonal is aligned with O(N^-1/2) curve; horizontal leg encodes x4 and vertical leg encodes divide-by-2
+CRIT_03,SA3-gpt-5.6-sol-xhigh,critical/CRIT_03_triangle_note_clearance.png,real overlap,triangle note to graphic legs,PASS,visible clearance remains; machine minimum is 6 native pixels against hard threshold 3
+CRIT_04,SA3-gpt-5.6-sol-xhigh,critical/CRIT_04_rate_formula_curve.png,readability and overlap,O(N^-1/2) label to curve,PASS,formula and natural superscript remain readable and separate from curve
+CRIT_05,SA3-gpt-5.6-sol-xhigh,critical/CRIT_05_condition_text_border.png,real overlap,condition text to rounded border,PASS,visible margin remains; machine minimum is 14 native pixels against hard threshold 5
+REL_06,SA3-gpt-5.6-sol-xhigh,critical/REL_06_axes_ticks_labels.png,relationship correctness,axes ticks labels and arrowheads,PASS,log-scale tick sequences and arrow connections are coherent without clipping
+REL_07,SA3-gpt-5.6-sol-xhigh,critical/REL_07_crop_caption.png,crop and content,figure float to caption,PASS,plot condition box and complete caption remain visible; caption edge minimum is 11 native pixels against threshold 6
+REL_08,SA3-gpt-5.6-sol-xhigh,critical/REL_08_semantic_system.png,semantic correctness,curve triangle condition and caption,PASS,RMSE rate x^-1/2 triangle x4/divide-by-2 iid finite-variance condition and caption caveat agree

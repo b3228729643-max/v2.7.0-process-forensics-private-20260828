@@ -1,0 +1,12 @@
+ROLE_ID,MEMBERS,ACTUALLY_REVIEWED,MEASURED_FACT,R168_DECISION,NOTE
+ROLE001,"T002,T003",true,"same source 9.2pt; glyph median 25 vs 29px",PASS,"a/b formulas are mirror peers; median difference comes from b/y descenders, not a size command or visible imbalance."
+ROLE002,"T004 vs T002/T003",true,"same source 9.2pt; median 23.5 vs 25/29px",PASS,"min formula shares base size; shorter roman letters explain topology difference and remains visually coherent."
+ROLE003,"T005,T006",true,"same source 9.2pt; x=21px,y=29px",PASS,"Single glyph x/y share identical font command; contour-height difference is inherent glyph design."
+ROLE004,"T007,T008",true,"same source 9.2pt; median 22 vs 26px",PASS,"Equation lines are source-identical and visibly balanced; y-heavy second line produces taller median."
+ROLE005,"T009,T010",true,"same source 9.2pt; CJK median 34/34px",PASS,"Two explanation lines match exactly in dominant CJK height and line rhythm."
+ROLE006,"T001 annotation vs formula/body",true,"8.6pt vs 9.2pt; dominant CJK 32px",PASS_WITH_ADVISORY,"Small intentional annotation hierarchy is readable and not severely imbalanced under R168."
+ROLE007,"T011 caption vs figure annotations",true,"caption CJK 35–38px; figure CJK 32–34px",PASS,"Caption is mildly stronger as page-level identification; no dominance or crowding."
+ROLE008,"G001,G003",true,"mirror curves; 5450/5451 final-visible mask px",PASS,"Opposite accepted-flow curves have matched stroke weight and mirrored geometry."
+ROLE009,"G010/G012 and G014/G016",true,"paired connector geometry and weights",PASS,"Left/right connectors are mirrored and use consistent gray stroke hierarchy."
+ROLE010,"G007,G008",true,"3020±1 final-visible mask px",PASS,"Proposal box borders are symmetric and identical in visual role."
+ROLE011,"all arrows/borders against text",true,"no illegal pair intersection; all text-line >=3px and text-border >=5px",PASS,"Line hierarchy is legible without obscuring any glyph."

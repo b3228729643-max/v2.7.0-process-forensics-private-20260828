@@ -1,0 +1,22 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{718}
+\setcounter{chapter}{36}
+\setcounter{section}{4}
+\setcounter{figure}{6}
+\pagestyle{headings}
+\chaptermark{\PageRank{}算法}
+\sectionmark{幂法计算}
+\textbf{小型数值例子。}取三结点图并从均匀分布出发，精确固定点为
+$\boldsymbol r=(25/123,35/123,21/41)^{\mathsf T}$。
+图\ref{fig:V5-C07-rank-trajectory}左侧展示$t=0,\ldots,8$的有限轨迹，
+其中$t=6$只是展示截断、不是停止判定；右侧给出精确固定点的六位小数及排序$3\succ2\succ1$。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/numerical_rank_trajectory.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}核对
+$\lVert G\boldsymbol r^{(6)}-\boldsymbol r^{(6)}\rVert_1
+=4.474947\times10^{-4}>0$，所以$t=6$不是停止判定；再比较精确
+$\boldsymbol r_*=(25/123,35/123,21/41)^{\mathsf T}$与图中六位小数，验证排序$3\succ2\succ1$。
+\end{document}

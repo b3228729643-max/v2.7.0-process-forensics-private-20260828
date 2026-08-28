@@ -1,0 +1,145 @@
+pair_id	manual_reviewer	pair_card_opened	critical_8x_opened	manual_relation	illegal_overlap_px	decision	manual_note
+PAIR_G01_G02	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The two state borders are visibly separate endpoints of the main loop.
+PAIR_G01_G03	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is separated from proposal-a border except through the separately inventoried edge G06.
+PAIR_G01_G04	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border and proposal-b border occupy distinct diagram branches.
+PAIR_G01_G05	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border and minimum border are visibly separated.
+PAIR_G01_G06	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	Seven shared raster pixels are the required G06 edge endpoint on the G01 state border; no illegal intrusion.
+PAIR_G01_G07	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the y-to-b proposal edge.
+PAIR_G01_G08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the a-to-min edge.
+PAIR_G01_G09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the b-to-min edge.
+PAIR_G01_G10	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	Nine shared raster pixels form the intended x endpoint of the upper main-loop edge.
+PAIR_G01_G11	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	The lower return edge approaches the x state with 3px raster clearance at its arrowhead; this is the intended endpoint geometry.
+PAIR_G01_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is vertically separated from the conclusion border.
+PAIR_G02_G03	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border and proposal-a border occupy distinct branches.
+PAIR_G02_G04	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is separated from proposal-b border except through G07.
+PAIR_G02_G05	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border and minimum border are visibly separated.
+PAIR_G02_G06	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the x-to-a edge.
+PAIR_G02_G07	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	Seven shared raster pixels are the required G07 endpoint on the G02 state border.
+PAIR_G02_G08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the a-to-min edge.
+PAIR_G02_G09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the b-to-min edge.
+PAIR_G02_G10	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	The upper main-loop arrow approaches the y border with 3px raster clearance; intended target geometry is intact.
+PAIR_G02_G11	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	Nine shared raster pixels form the intended y endpoint of the lower return edge.
+PAIR_G02_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is vertically separated from the conclusion border.
+PAIR_G03_G04	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a and proposal-b borders are distinct side-by-side nodes.
+PAIR_G03_G05	SA3-FRESH	TRUE	TRUE	CLEAR	0	PASS	Proposal-a and minimum borders have 20px foreground clearance; the connecting edge is independently mapped as G08.
+PAIR_G03_G06	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	Ten shared pixels are the intended G06 arrow termination on the proposal-a border.
+PAIR_G03_G07	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the opposite proposal edge G07.
+PAIR_G03_G08	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	Six shared pixels are the intended G08 departure/termination contact at proposal-a.
+PAIR_G03_G09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the b-to-min edge.
+PAIR_G03_G10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the upper state loop.
+PAIR_G03_G11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the lower state loop.
+PAIR_G03_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is vertically separated from the conclusion border.
+PAIR_G04_G05	SA3-FRESH	TRUE	TRUE	CLEAR	0	PASS	Proposal-b and minimum borders have 20px foreground clearance; G09 supplies the intended connection.
+PAIR_G04_G06	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the opposite x-to-a edge.
+PAIR_G04_G07	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	G07 terminates at the proposal-b border with zero foreground clearance but no shared pixel; intended connection only.
+PAIR_G04_G08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the a-to-min edge.
+PAIR_G04_G09	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	Six shared pixels are the intended G09 contact with the proposal-b border.
+PAIR_G04_G10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the upper state loop.
+PAIR_G04_G11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the lower state loop.
+PAIR_G04_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is vertically separated from the conclusion border.
+PAIR_G05_G06	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of the upstream x-to-a edge.
+PAIR_G05_G07	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of the upstream y-to-b edge.
+PAIR_G05_G08	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	Forty-one shared raster pixels are the intended arrowhead/shaft contact where G08 enters the minimum border.
+PAIR_G05_G09	SA3-FRESH	TRUE	TRUE	DESIGN_CONNECTION	0	PASS	Forty-two shared raster pixels are the intended arrowhead/shaft contact where G09 enters the minimum border.
+PAIR_G05_G10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is separated from the upper main-loop edge.
+PAIR_G05_G11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is separated from the lower main-loop edge.
+PAIR_G05_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is separated from the conclusion border.
+PAIR_G06_G07	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The two state-to-proposal edges lie on distinct left and right branches.
+PAIR_G06_G08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Incoming and outgoing proposal-a edges meet only through G03 and remain separately visible.
+PAIR_G06_G09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of the opposite b-to-min edge.
+PAIR_G06_G10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a branch edge is clear of the upper main loop.
+PAIR_G06_G11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a branch edge is clear of the lower main loop.
+PAIR_G06_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is vertically separated from the conclusion border.
+PAIR_G07_G08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The y-to-b edge is clear of the opposite a-to-min edge.
+PAIR_G07_G09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Incoming and outgoing proposal-b edges meet only through G04 and remain separately visible.
+PAIR_G07_G10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The y-to-b branch edge is clear of the upper main loop.
+PAIR_G07_G11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The y-to-b branch edge is clear of the lower main loop.
+PAIR_G07_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The y-to-b edge is vertically separated from the conclusion border.
+PAIR_G08_G09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The two converging proposal-to-min edges remain visibly distinct until their separate target contacts.
+PAIR_G08_G10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The a-to-min edge is clear of the upper main loop.
+PAIR_G08_G11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The a-to-min edge is clear of the lower main loop.
+PAIR_G08_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The a-to-min edge is clear of the conclusion border.
+PAIR_G09_G10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The b-to-min edge is clear of the upper main loop.
+PAIR_G09_G11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The b-to-min edge is clear of the lower main loop.
+PAIR_G09_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The b-to-min edge is clear of the conclusion border.
+PAIR_G10_G11	SA3-FRESH	TRUE	TRUE	DESIGN_SHARED_ENDPOINTS	0	PASS	Parallel reverse state-loop edges have zero raster clearance at shared endpoint geometry but no foreground overlap; directions remain visually distinct.
+PAIR_G10_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Upper main loop is clearly separated from the conclusion border.
+PAIR_G11_G12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Lower main loop is clearly separated from the conclusion border.
+PAIR_G01_T01	SA3-FRESH	TRUE	TRUE	CONTAINED_LABEL	0	PASS	T01 is centered inside G01 with 35.77px foreground clearance; containment is intentional and non-overlapping.
+PAIR_G01_T02	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the y-state label.
+PAIR_G01_T03	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the proposal-a formula.
+PAIR_G01_T04	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the proposal-b formula.
+PAIR_G01_T05	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the minimum formula.
+PAIR_G01_T06	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the top annotation.
+PAIR_G01_T07	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the forward accepted-flow equation.
+PAIR_G01_T08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the reverse accepted-flow equation.
+PAIR_G01_T09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of conclusion line 1.
+PAIR_G01_T10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of conclusion line 2.
+PAIR_G01_T11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of the figure-number label.
+PAIR_G01_T12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of caption line 1.
+PAIR_G01_T13	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-x border is clear of caption line 2.
+PAIR_G02_T01	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the x-state label.
+PAIR_G02_T02	SA3-FRESH	TRUE	TRUE	CONTAINED_LABEL	0	PASS	T02 is centered inside G02 with 33.132px foreground clearance; containment is intentional and non-overlapping.
+PAIR_G02_T03	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the proposal-a formula.
+PAIR_G02_T04	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the proposal-b formula.
+PAIR_G02_T05	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the minimum formula.
+PAIR_G02_T06	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the top annotation.
+PAIR_G02_T07	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the forward accepted-flow equation.
+PAIR_G02_T08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the reverse accepted-flow equation.
+PAIR_G02_T09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of conclusion line 1.
+PAIR_G02_T10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of conclusion line 2.
+PAIR_G02_T11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of the figure-number label.
+PAIR_G02_T12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of caption line 1.
+PAIR_G02_T13	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	State-y border is clear of caption line 2.
+PAIR_G03_T01	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the x-state label.
+PAIR_G03_T02	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the y-state label.
+PAIR_G03_T03	SA3-FRESH	TRUE	TRUE	CONTAINED_FORMULA	0	PASS	T03 is contained by G03 with 31px foreground clearance; formula never touches the border.
+PAIR_G03_T04	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the proposal-b formula.
+PAIR_G03_T05	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the minimum formula.
+PAIR_G03_T06	SA3-FRESH	TRUE	TRUE	CLEAR	0	PASS	Proposal-a border has 23px clearance from the top annotation; the label is not clipped or attached.
+PAIR_G03_T07	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the forward accepted-flow equation.
+PAIR_G03_T08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the reverse accepted-flow equation.
+PAIR_G03_T09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of conclusion line 1.
+PAIR_G03_T10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of conclusion line 2.
+PAIR_G03_T11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of the caption label.
+PAIR_G03_T12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of caption line 1.
+PAIR_G03_T13	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-a border is clear of caption line 2.
+PAIR_G04_T01	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the x-state label.
+PAIR_G04_T02	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the y-state label.
+PAIR_G04_T03	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the proposal-a formula.
+PAIR_G04_T04	SA3-FRESH	TRUE	TRUE	CONTAINED_FORMULA	0	PASS	T04 is contained by G04 with 31px foreground clearance; formula never touches the border.
+PAIR_G04_T05	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the minimum formula.
+PAIR_G04_T06	SA3-FRESH	TRUE	TRUE	CLEAR	0	PASS	Proposal-b border has 23px clearance from the top annotation; the label remains separate.
+PAIR_G04_T07	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the forward accepted-flow equation.
+PAIR_G04_T08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the reverse accepted-flow equation.
+PAIR_G04_T09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of conclusion line 1.
+PAIR_G04_T10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of conclusion line 2.
+PAIR_G04_T11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of the caption label.
+PAIR_G04_T12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of caption line 1.
+PAIR_G04_T13	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Proposal-b border is clear of caption line 2.
+PAIR_G05_T01	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of the x-state label.
+PAIR_G05_T02	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of the y-state label.
+PAIR_G05_T03	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of the proposal-a formula.
+PAIR_G05_T04	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of the proposal-b formula.
+PAIR_G05_T05	SA3-FRESH	TRUE	TRUE	CONTAINED_FORMULA	0	PASS	T05 is contained by G05 with 38px foreground clearance; text and border are cleanly separated.
+PAIR_G05_T06	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of the top annotation.
+PAIR_G05_T07	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of the forward accepted-flow equation.
+PAIR_G05_T08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of the reverse accepted-flow equation.
+PAIR_G05_T09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of conclusion line 1.
+PAIR_G05_T10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of conclusion line 2.
+PAIR_G05_T11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of the caption label.
+PAIR_G05_T12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of caption line 1.
+PAIR_G05_T13	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	Minimum border is clear of caption line 2.
+PAIR_G06_T01	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of the x glyph inside its source node.
+PAIR_G06_T02	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of the y-state glyph.
+PAIR_G06_T03	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge terminates at G03 without entering the T03 formula.
+PAIR_G06_T04	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of the proposal-b formula.
+PAIR_G06_T05	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of the minimum formula.
+PAIR_G06_T06	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of the top annotation.
+PAIR_G06_T07	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of the forward accepted-flow equation.
+PAIR_G06_T08	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of the reverse accepted-flow equation.
+PAIR_G06_T09	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of conclusion line 1.
+PAIR_G06_T10	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of conclusion line 2.
+PAIR_G06_T11	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of the caption label.
+PAIR_G06_T12	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of caption line 1.
+PAIR_G06_T13	SA3-FRESH	TRUE	N/A	CLEAR	0	PASS	The x-to-a edge is clear of caption line 2.

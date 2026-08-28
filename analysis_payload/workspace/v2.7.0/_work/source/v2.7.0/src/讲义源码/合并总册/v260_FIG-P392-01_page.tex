@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 3 册}{统计学习方法讲义 v2.6.0}{优化模型与序列模型}
+\begin{document}
+\setcounter{page}{496}
+\setcounter{chapter}{22}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{条件随机场}
+\begin{geometrybox}
+线性链 CRF 在给定整段观测 $x$ 后，只保留相邻标签之间的局部因子；边界状态显式封闭链端，无向边不表示生成顺序。
+\end{geometrybox}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C06/fig_v3_c06_chain.tex}
+图\ref{fig:V3-C06-chain}把标签链、相邻势函数和共享已知输入分层表示；虚线只表示因子读取固定输入，不是随机变量之间的生成箭头。
+\textbf{从图结构到动态规划。}链结构给出前向--后向、配分函数及最优标签序列所需的局部递推分解。
+\end{document}

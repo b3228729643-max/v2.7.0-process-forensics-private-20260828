@@ -1,0 +1,20 @@
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LC_ALL = "C.UTF-8",
+	LC_CTYPE = "C",
+	LC_NUMERIC = "C",
+	LC_COLLATE = "C",
+	LC_TIME = (unset),
+	LC_MONETARY = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the system default locale ("Chinese (Simplified)_China.936").
+Latexmk: Using bibtex to make bibliography file(s).
+Latexmk: Sometimes, the -f option can be used to get latexmk
+  to try to force complete processing.
+  But normally, you will need to correct the file(s) that caused the
+  error, and then rerun latexmk.
+  In some cases, it is best to clean out generated files before rerunning
+  latexmk after you've corrected the files.
+D:\texlive\2026\bin\windows\runscript.tlu:933: command failed with exit code 12:
+perl.exe d:\texlive\2026\texmf-dist\scripts\latexmk\latexmk.pl -lualatex -g -interaction=nonstopmode -file-line-error -halt-on-error -outdir=D:\Users\ASUS\Desktop\»úÆ÷Ñ§Ï°\v2.7.0\_work\worktrees\dialogue_A_visual\build\p654_sa2_local_final_20260824 main_full.tex

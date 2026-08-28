@@ -1,0 +1,27 @@
+% Stage 17 final official entry: Volume 5, V5-C01--V5-C08.
+\DocumentMetadata{tagging=on,tagging-setup={math/setup=tex-AF},pdfversion=2.0,pdfstandard=ua-2,lang=zh-CN}
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第5册}{统计学习方法初学者讲义}{采样方法、主题模型与图排序}
+\begin{document}
+\raggedbottom
+\frontmatter
+\SLMakeTitle
+\chapter*{本册导读}\addcontentsline{toc}{chapter}{本册导读}
+本册从随机模拟走向潜在主题与网络排序：先建立马尔可夫链和蒙特卡罗方法，再学习马尔可夫链蒙特卡罗法与Gibbs抽样，继而讨论狄利克雷分布、潜在狄利克雷分配和\PageRank{}。学习时应同时追踪“平稳分布如何支撑采样、共轭结构如何化简后验、图上的随机游走如何形成全局排序”三条主线；各章均配置完整推导、算法伪代码、例题、分层练习和自检。
+\SLPrintSourceNotice
+\SLPrintContents
+\mainmatter
+\index{统计学习方法}
+\input{chapters/V5-C01}
+\input{chapters/V5-C02}
+\input{chapters/V5-C03}
+\input{chapters/V5-C04}
+\input{chapters/V5-C05}
+\input{chapters/V5-C06}
+\input{chapters/V5-C07}
+\input{chapters/V5-C08}
+\backmatter
+\SLPrintReferences
+\printbookindexes
+\end{document}

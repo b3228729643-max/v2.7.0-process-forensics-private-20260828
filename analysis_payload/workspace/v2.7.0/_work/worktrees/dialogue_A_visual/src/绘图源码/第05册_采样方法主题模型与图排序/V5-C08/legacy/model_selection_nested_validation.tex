@@ -1,0 +1,62 @@
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  >={Stealth[length=2.3mm,width=1.6mm]},
+  every node/.style={font=\fontsize{9.5pt}{11.4pt}\selectfont,align=center},
+  split/.style={draw=SLDeepBlue,fill=SLSoftBlue,rounded corners=2pt,
+    text width=28mm,minimum height=11mm},
+  stagebox/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,
+    text width=30mm,minimum height=11mm},
+  locked/.style={draw=SLTextGray,double,dashed,fill=white,rounded corners=2pt,
+    text width=28mm,minimum height=11mm},
+  final/.style={draw=SLDeepBlue,fill=SLDeepBlue,text=white,rounded corners=2pt,
+    text width=30mm,minimum height=11mm},
+  arr/.style={->,line width=0.8pt,draw=SLMidBlue},
+  feedback/.style={->,line width=0.8pt,dashed,draw=SLTextGray},
+  every path/.append style={line width=0.55pt},
+  every node/.append style={line width=0.8pt},
+  alt={对象—关系—结论：无泄漏的嵌套交叉验证：每个外层折只在D下标(-k)内完成内层模型与超参数选择，隔离的D下标k仅产生一次外层分数，最终汇总K个外层分数。}]
+\node[split] (all) at (-5.1,2.55)
+  {1 可用数据$D$\\预先确定切分单位};
+\node[split] (outer) at (-1.7,2.55)
+  {2 外层第$k$折\\$k=1,\ldots,K$};
+\node[split] (outertrain) at (1.9,3.15)
+  {训练部分$D_{-k}$\\允许拟合与选择};
+\node[locked] (outertest) at (5.2,2.05)
+  {锁定评估折$D_k$\\本折全程隔离};
+
+\node[stagebox] (innercv) at (-5.1,0.25)
+  {3 仅在$D_{-k}$内做内层验证\\比较预声明候选$\lambda$};
+\node[stagebox] (choose) at (-1.7,0.25)
+  {4 由内层均值选择$\hat\lambda_k$\\不得读取$D_k$};
+\node[stagebox] (refit) at (1.9,0.25)
+  {5 用$D_{-k}$重拟合\\$\hat f_k=\mathcal A(D_{-k};\hat\lambda_k)$};
+\node[stagebox] (score) at (5.2,0.25)
+  {6 只在$D_k$评价一次\\得到外层分数$s_k$};
+\node[final] (report) at (5.2,-1.65)
+  {汇总$s_1,\ldots,s_K$\\报告均值与不确定性};
+
+\draw[arr] (all) -- (outer);
+\draw[arr] (outer) -- (outertrain);
+\draw[arr] (outer) -- (outertest);
+\draw[arr] (outertrain.west) -- ++(-0.35,0) |- (innercv.north);
+\draw[arr] (innercv) -- (choose);
+\draw[arr] (choose) -- (refit);
+\draw[arr] (refit) -- (score);
+\draw[arr] (outertest) -- (score);
+\draw[arr] (score) -- (report);
+\draw[feedback] (report.south) -- ++(0,-0.55) -|
+  node[below,pos=0.47,fill=white,inner sep=1pt]
+  {换下一外层折；$s_k$不返回内层选择} (outer.south);
+
+\draw[very thick,draw=SLTextGray,dashed] (3.60,-0.65) -- (3.60,3.85);
+\node[text=SLTextGray,fill=white,rotate=90,inner sep=2pt]
+  at (3.60,1.55) {外层信息隔离};
+\node[text=SLTextGray,align=left] at (-3.25,-1.45)
+  {切分单位须与任务一致：文档、样本、边或时间块；\\
+   若另有最终测试集，整个嵌套流程结束前继续锁定。};
+\end{tikzpicture}
+\caption{无泄漏的嵌套交叉验证：每个外层折只在$D_{-k}$内完成内层模型与超参数选择，隔离的$D_k$仅产生一次外层分数，最终汇总$K$个外层分数。}
+% The integrating chapter owns fig:V5-C08-validation; do not define it twice.
+\end{figure}

@@ -1,0 +1,48 @@
+% v2.3.1 figure UID: FIG-P734-01
+% v2.6.0 reverse redraw for FIG-P734-01: preserve the exact 15-node/9-edge dependency topology while moving property labels into genuine whitespace.
+\tikzset{slfig-FIG-P734-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P734-01,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center,outer sep=0pt},
+  input/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,minimum height=11.5mm,text width=43mm,inner xsep=2mm,inner ysep=1.4mm},
+  repr/.style={draw=SLMidBlue,fill=SLSoftBlue,rounded corners=2pt,minimum height=11.5mm,text width=38mm,inner xsep=2mm,inner ysep=1.4mm},
+  infer/.style={draw=SLDeepBlue,fill=white,rounded corners=2pt,minimum height=11.5mm,text width=38mm,inner xsep=2mm,inner ysep=1.4mm},
+  tag/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=1.5pt,font=\fontsize{8.7pt}{10.3pt}\selectfont,inner xsep=1.5mm,inner ysep=.7mm},
+  output/.style={draw=SLDeepBlue,fill=SLDeepBlue,text=white,rounded corners=2pt,minimum height=11.5mm,text width=62mm,inner xsep=2mm,inner ysep=1.4mm},
+  groupframe/.style={draw=SLRuleGray,line width=.58pt,rounded corners=3pt,inner xsep=3mm,inner ysep=1.5mm,label distance=2.8mm},
+  grouplabel/.style={font=\fontsize{8.8pt}{10.4pt}\selectfont,text=SLDeepBlue,inner sep=0pt,xshift=-1.6mm},
+  arr/.style={->,draw=SLMidBlue,line width=.95pt},
+  >={Stealth[length=2.2mm,width=1.55mm]},
+  alt={对象—关系—结论：任务与数据结构作为双输入先在中部汇合，再依次约束表示、推断优化和评价选择；表示与推断旁的短标签明确离散连续、非负正交及概率确定性边界。}]
+\node[input] (task) at (-4.10,2.80) {任务\\聚类／压缩／话题／排序};
+\node[input] (data) at (4.10,2.80) {数据结构\\向量／计数矩阵／有向图};
+\node[circle,draw=SLDeepBlue,fill=SLDeepBlue,text=white,inner sep=1.8pt] (merge) at (0,1.55) {$\cap$};
+\node[repr] (r1) at (-3.65,.20) {几何／矩阵表示};
+\node[repr] (r2) at (3.65,.20) {潜变量／转移表示};
+\node[tag] (tagr1) at (-5.55,-.95) {连续｜正交／非负};
+\node[tag] (tagr2) at (5.55,-.95) {离散｜概率／确定性};
+\node[infer] (i1) at (-3.65,-2.10) {SVD／优化／EM};
+\node[infer] (i2) at (3.65,-2.10) {变分／MCMC／幂法};
+\node[tag] (tagi1) at (-5.15,-3.25) {确定性};
+\node[tag] (tagi2) at (5.15,-3.25) {概率／迭代};
+\node[output] (eval) at (0,-4.22) {评价与模型选择\\留出证据／稳定性／资源约束};
+\begin{scope}[on background layer]
+\node[groupframe,fit=(task)(data),label={[grouplabel]left:任务与数据结构}] (groupinput) {};
+\node[groupframe,fit=(r1)(r2),label={[grouplabel]left:表示}] (grouprepr) {};
+\node[groupframe,fit=(i1)(i2),label={[grouplabel]left:推断／优化}] (groupinfer) {};
+\end{scope}
+\draw[arr] (task.south east)--(merge.north west);
+\draw[arr] (data.south west)--(merge.north east);
+\draw[arr] (merge.south west)--(r1.north);
+\draw[arr] (merge.south east)--(r2.north);
+\draw[arr] (r1.south)--(i1.north);
+\draw[arr] (r1.south east)--(i2.north west);
+\draw[arr] (r2.south)--(i2.north);
+\draw[arr] (i1.south)--(eval.north west);
+\draw[arr] (i2.south)--(eval.north east);
+\end{tikzpicture}
+\caption{无监督学习方法总结的知识依赖：任务与数据结构共同约束表示、推断和模型选择}
+\label{fig:V5-C08-dependency}
+\end{figure}

@@ -1,0 +1,1117 @@
+% STAGE10-CHAPTER: V2-C01
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; rigorous_modeling; mathematical_development; multiple_perspectives; algorithm_engineering; examples_exercises; closure_self_check
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V2-C01-CH01}; CH-02=\label{struct:V2-C01-CH02}; CH-03=\label{struct:V2-C01-CH03}; CH-04=\label{struct:V2-C01-CH04}; CH-05=\label{struct:V2-C01-CH05}; CH-06=\label{struct:V2-C01-CH06}; CH-07=\label{struct:V2-C01-CH07}; CH-08=\label{struct:V2-C01-CH08}; CH-09=\label{struct:V2-C01-CH09}; CH-10=\label{struct:V2-C01-CH10}; CH-11=\label{struct:V2-C01-CH11}; CH-12=\label{struct:V2-C01-CH12}; CH-13=\label{struct:V2-C01-CH13}; CH-14=\label{struct:V2-C01-CH14}; CH-15=\label{struct:V2-C01-CH15}; CH-16=\label{struct:V2-C01-CH16}; CH-17=\label{struct:V2-C01-CH17}; CH-18=\label{struct:V2-C01-CH18}; CH-19=\label{struct:V2-C01-CH19}; CH-20=\label{struct:V2-C01-CH20}; CH-21=\label{struct:V2-C01-CH21}; CH-22=\label{struct:V2-C01-CH22}; CH-23=\label{struct:V2-C01-CH23}; CH-24=\label{struct:V2-C01-CH24}; CH-25=\label{struct:V2-C01-CH25}; CH-26=\label{struct:V2-C01-CH26}; CH-27=\label{struct:V2-C01-CH27}; CH-28=\label{struct:V2-C01-CH28}; CH-29=\label{struct:V2-C01-CH29}; CH-30=\label{struct:V2-C01-CH30}; CH-31=\label{struct:V2-C01-CH31}; CH-32=\label{struct:V2-C01-CH32}; CH-33=\label{struct:V2-C01-CH33}; CH-34=\label{struct:V2-C01-CH34}; CH-35=\label{struct:V2-C01-CH35}; CH-36=\label{struct:V2-C01-CH36}; CH-37=\label{struct:V2-C01-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V2-C01-separator -> SLM-02-01-001
+\chapter{感知机}\label{chap:V2-C01}
+\index{感知机}
+
+\SLChapterOpening{从线性分隔直达原始、对偶感知机与收敛上界}{误分类更新何时能在有限步找到分隔超平面}{能够执行原始与对偶更新并复现Novikoff界}{向量内积、线性可分与基础优化}{若数据不可分或间隔前提缺失，回看模型与收敛性两节}
+
+\phantomsection\label{struct:V2-C01-CH01}
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 从线性可分条件出发，说明感知机的模型、损失函数与误分类更新之间的联系；
+  \item 能够手工执行原始形式和对偶形式，逐步证明线性可分数据上的有限步收敛；
+  \item 能够判断方法的适用条件、复杂度与局限，并用几何图像检查计算结果。
+\end{itemize}}
+
+\phantomsection\label{struct:V2-C01-CH02}
+\begin{prerequisitebox}
+需要掌握向量内积、欧氏范数、超平面、点到超平面的距离、梯度与随机梯度更新。还应理解二分类标签$\{-1,+1\}$、训练集与判别函数；这些内容分别支撑几何分离、损失构造和参数迭代。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V2-C01-CH03}
+% KNOWLEDGE-PLAN: KN-V2-C12-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}感知机先修自检固定核验“给定$w\in\R^d$和$x\in\R^d$，能否说明$w^{\mathsf T}x$是标量并写出其分量和”；请给定$w\in\R^d$和$x\in\R^d$，实际说明$w^{\mathsf T}x$是标量并写出其分量和并写出中间结果，再按“$w\in\R^d$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 给定$w\in\R^d$和$x\in\R^d$，能否说明$w^{\mathsf T}x$是标量并写出其分量和？
+  \item 能否由$w^{\mathsf T}x+b=0$写出点$x_0$到该超平面的距离？
+  \item 能否说明梯度的负方向为何用于减小可微目标函数？
+\end{enumerate}
+若有一项不能完成，请先回看向量内积、范数与多元函数梯度，再进入误分类损失的推导。
+\end{precheckbox}
+
+\phantomsection\label{struct:V2-C01-CH04}
+\begin{dependencybox}
+向量内积与超平面 $\to$ 线性分类模型；标签编码 $\to$ 统一的正确分类条件；点到超平面的距离 $\to$ 误分类损失；随机梯度更新 $\to$ 原始形式；参数的样本线性组合 $\to$ 对偶形式；正间隔 $\to$ 有限次误分类上界。
+\end{dependencybox}
+
+\begin{keypointbox}[title=模型认识卡：感知机]
+\textbf{任务与输入：}线性可分二分类，$x\in\mathbb R^d$、$y\in\{-1,+1\}$。\quad
+\textbf{输出类型：}类别符号与线性得分。\par
+\textbf{模型：}$f(x)=\operatorname{sign}(w^{\mathsf T}x+b)$。\quad
+\textbf{策略：}减少误分类点的带符号间隔损失。\quad
+\textbf{算法：}按固定次序扫描，仅在$y_i(w^{\mathsf T}x_i+b)\le0$时更新。\par
+\textbf{预测：}取线性得分符号。\quad
+\textbf{关键假设与边界：}有限步收敛需要正间隔线性可分；不可分数据上必须另设预算或改用软间隔模型。
+\end{keypointbox}
+
+\phantomsection\label{struct:V2-C01-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V2-C01
+\index[symbols]{t-eq-x-i-y-i-i-eq-1-n--s6aadfd47aa00@$T=\{(x_i,y_i)\}_{i=1}^{N}$：二分类训练集}
+\index[symbols]{w-b--see3e35afa17a@$w,b$：超平面的法向量与截距}
+\index[symbols]{g-x-f-x--s69fe66238e1a@$g(x),f(x)$：判别分数$g(x)=w^{\mathsf T}x+b$与类别$f(x)=\operatorname{sign}g(x)$}
+\index[symbols]{m--s343d2826974a@$M$：本章感知机训练中当前被误分类的样本下标集合}
+\index[symbols]{minus-eta-minus--s09ffdff3103d@$\eta$：本章感知机更新的学习率}
+\index[symbols]{minus-alpha-minus-i--s43d95b99e67b@$\alpha_i$：本章对偶感知机中第$i$个样本触发更新的累计强度}
+\index[symbols]{g--s331cb2ee6fd5@$G$：本章对偶感知机的Gram矩阵，$G_{ij}=x_i^{\mathsf T}x_j$}
+\index[symbols]{minus-widehatx-minus-i-minus-widehatw-minus--sc728a4b21e93@$\widehat x_i,\widehat w$：增广向量$(x_i^{\mathsf T},1)^{\mathsf T}$与$(w^{\mathsf T},b)^{\mathsf T}$}
+% STAGE19-SYMBOL-INDEX-END: V2-C01
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$T=\{(x_i,y_i)\}_{i=1}^{N}$ & $x_i\in\R^d,\ y_i\in\{-1,+1\}$ & 二分类训练集\\
+$w,b$ & $w\in\R^d,\ b\in\R$ & 超平面的法向量与截距\\
+$g(x),f(x)$ & 实数、$\{-1,+1\}$ & 判别分数$g(x)=w^{\mathsf T}x+b$与类别$f(x)=\operatorname{sign}g(x)$\\
+$M$ & $\{1,\ldots,N\}$的子集 & 当前被误分类的样本下标集合\\
+$\eta$ & 正实数 & 学习率\\
+$\alpha_i$ & 非负实数 & 第$i$个样本触发更新的累计强度\\
+$G$ & $\R^{N\times N}$ & Gram矩阵，$G_{ij}=x_i^{\mathsf T}x_j$\\
+$\widehat x_i,\widehat w$ & $\R^{d+1}$ & 增广向量$(x_i^{\mathsf T},1)^{\mathsf T}$与$(w^{\mathsf T},b)^{\mathsf T}$\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V2-C12-CONCEPT-002 L1
+\paragraph{读前自检：感知机。}感知机以$x\in\R^d,y\in\{-1,+1\}$为样本；请计算$y(w^{\mathsf T}x+b)$，核对仅当该带符号分数不大于0时触发参数更新。\par
+
+\SLDirectSection{二分类与线性分离}{sec:V2-C01-S01}
+\phantomsection\label{struct:V2-C01-CH06}
+\knowledgeanchor{SLM-02-00-001}{感知机}
+感知机研究一个基础问题：能否用一张超平面把正类与负类训练样本完全分开？若可以，还要构造一套只在发生误分类时修改参数的学习过程。该方法因此同时包含几何对象、判别规则和迭代算法。
+
+\knowledgeanchor{SLM-02-01-002}{感知机模型}
+对任意$x\in\R^d$，线性分数$g(x)=w^{\mathsf T}x+b$把空间分成$g(x)>0$与$g(x)<0$两个开半空间。约定
+\[
+\operatorname{sign}(z)=
+\begin{cases}
++1,&z\ge 0,\\
+-1,&z<0,
+\end{cases}
+\qquad f(x)=\operatorname{sign}(w^{\mathsf T}x+b).
+\]
+边界上的取值约定会影响$g(x)=0$时的预测，但训练中把$y_i g(x_i)\le0$统一视为需要更新，可以避免边界样本被误当作具有正间隔的正确分类点。
+
+% KNOWLEDGE-PLAN: KN-V2-C12-DEFINITION-001 L1
+\paragraph{读前自检：数据集线性可分性定义。}数据集线性可分性定义中的“存在$w\in\R^d$和$b\in\R$”决定可执行范围；请将$T=\{(x_i,y_i)\}_{i=1}^{N}$左端按定义展开一层，再与右端逐项对齐，结果须满足严格不等式意味着每个训练点都位于边界之外。\par
+
+\knowledgeanchor{SLM-02-02-001}{数据集线性可分性定义}
+\phantomsection\label{struct:V2-C01-CH07}
+% KNOWLEDGE-PLAN: KN-V2-C12-DEFINITION-002 L1
+\paragraph{读前自检：线性可分训练集。}把线性可分训练集放在“存在$w\in\R^d$和$b\in\R$”下考察：独立化简$T=\{(x_i,y_i)\}_{i=1}^{N}$的两端，并检查严格不等式意味着每个训练点都位于边界之外。\par
+
+\begin{definition}[线性可分训练集]\label{def:V2-C01-separable}
+设$T=\{(x_i,y_i)\}_{i=1}^{N}$，其中$x_i\in\R^d$且$y_i\in\{-1,+1\}$。若存在$w\in\R^d$和$b\in\R$，使每个$i$都满足
+\[
+y_i\bigl(w^{\mathsf T}x_i+b\bigr)>0,
+\]
+则称$T$线性可分，并称$w^{\mathsf T}x+b=0$为一个分离超平面。严格不等式意味着每个训练点都位于边界之外。
+\end{definition}
+
+\knowledgeanchor{SLM-02-02-003}{数据集的线性可分性}
+定义中的一个不等式同时覆盖两类：$y_i=+1$时要求$g(x_i)>0$，$y_i=-1$时要求$g(x_i)<0$。若有样本落在超平面上，则乘积为零，尚未形成严格分离。分离超平面通常不唯一；感知机的最终参数会受样本访问顺序、初值和学习率影响。
+
+
+% KNOWLEDGE-PLAN: KN-V2-C12-DEFINITION-003 L1
+\paragraph{读前自检：感知机定义。}感知机把$\mathcal X\subseteq\R^d$映到$\mathcal Y=\{-1,+1\}$；请计算$f(x)=\operatorname{sign}(w^{\mathsf T}x+b)$，核对输出属于二类标签集合。\par
+
+\SLReviewSection{感知机模型}{sec:V2-C01-S02}
+\knowledgeanchor{SLM-02-01-001}{感知机定义}
+\phantomsection\label{struct:V2-C01-CH08}
+% KNOWLEDGE-PLAN: KN-V2-C12-DEFINITION-004 L1
+\paragraph{读前自检：感知机模型。}感知机超平面$w^{\mathsf T}x+b=0$分割输入空间；请分别代入一个正分数和负分数，核对$f(x)$返回$+1$与$-1$，零分数按并列规则处理。\par
+
+\begin{definition}[感知机模型]\label{def:V2-C01-model}
+感知机是从输入空间$\mathcal X\subseteq\R^d$到输出空间$\mathcal Y=\{-1,+1\}$的函数
+\[
+f(x)=\operatorname{sign}(w^{\mathsf T}x+b),
+\]
+其中$w\in\R^d$称为权向量，$b\in\R$称为偏置。模型对应的几何边界是超平面$w^{\mathsf T}x+b=0$，$w$决定法向方向，$b$决定沿该方向的平移。
+\end{definition}
+
+\phantomsection\label{struct:V2-C01-CH14}
+% KNOWLEDGE-PLAN: KN-V2-C12-CONCEPT-005 L1
+\paragraph{读前自检：几何解释：点 x 0 到决策超平面的欧氏距离为 w T x 0 b w 2 带标签的归一化分数……。}点$x_0$到感知机决策超平面的距离为$|w^{\mathsf T}x_0+b|/\lVert w\rVert_2$；请再乘标签得到带符号归一化分数，核对其正负对应正确侧与错误侧。\par
+
+\begin{geometrybox}
+\textbf{几何解释。}
+点$x_0$到决策超平面的欧氏距离为
+\[
+\frac{\abs{w^{\mathsf T}x_0+b}}{\norm{w}_2}.
+\]
+带标签的归一化分数$y_i(w^{\mathsf T}x_i+b)/\norm{w}_2$为正时表示方向正确，其绝对值等于点到超平面的距离；为负时表示样本位于标签所要求半空间的另一侧。
+\end{geometrybox}
+
+\phantomsection\label{struct:V2-C01-CH17}
+% FIGURE-KNOWLEDGE: fig:V2-C01-separator=SLM-02-01-001
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C01/fig_v2_c01_separator.tex}
+图\ref{fig:V2-C01-separator}中的边界方向由$w$控制。把$(w,b)$同乘正数不会改变直线和预测，但会同比放大未归一化分数；因此几何距离需要除以$\norm{w}_2$。
+
+
+% KNOWLEDGE-PLAN: KN-V2-C12-CONCEPT-006 L1
+\paragraph{读前自检：感知机学习策略。}感知机学习策略以“$M(w,b)=\{i:y_i(w^{\mathsf T}x_i+b)\le0\},$”为约束；请把$M(w,b)$展开一次并检查其类型或边界，并确认展开后的量满足定义中的域、维数或符号限制。\par
+
+\SLTeachSection{误分类驱动的学习策略}{sec:V2-C01-S03}
+\knowledgeanchor{SLM-02-02-002}{感知机学习策略}
+\phantomsection\label{struct:V2-C01-CH09}
+感知机不直接最小化误分类个数，因为该目标是离散且不可导的。它先选出当前误分类集合
+\[
+M(w,b)=\{i:y_i(w^{\mathsf T}x_i+b)\le0\},
+\]
+再用这些点到超平面的错误侧距离构造连续的代理损失。
+
+% KNOWLEDGE-PLAN: KN-V2-C12-FORMULA-001 L1
+\paragraph{读前自检：感知机学习策略的损失函数。}感知机在固定误分类集合$M$时使用$L(w,b)=-\sum_{i\in M}y_i(w^{\mathsf T}x_i+b)$；请对单项求梯度，核对负梯度步得到$w\leftarrow w+\eta y_ix_i,b\leftarrow b+\eta y_i$。\par
+
+\knowledgeanchor{SLM-02-02-004}{感知机学习策略的损失函数}
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V2-C01-CH11}
+% CORE-DERIVATION-PLAN: KN-V2-C12-DERIVATION-001
+\SLKnowledgeBridge{区分几何距离与函数间隔，并从误分类代理损失得到更新式。}{样本 $(x_i,y_i)$、参数 $(w,b)$、函数间隔 $y_i(w^{\mathsf T}x_i+b)$ 与当前误分类集合 $M$。}{求一次方向时先固定 $M$；参数更新后必须重新判定误分类集合。}{先定义 $L(w,b)=-\sum_{i\in M}y_i(w^{\mathsf T}x_i+b)$，不要把除以 $\norm w$ 的几何距离直接当作优化目标。}
+
+\begin{derivationgoalbox}
+区分几何距离与函数间隔，直接定义感知机代理损失并推导随机梯度更新。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+固定当前参数$(w,b)$并把误分类集合记作$M$。在求一次更新方向时先把$M$视为不变；当参数更新后，再重新判断哪些样本属于$M$。
+\end{derivationprepbox}
+\textbf{推导第1步：}若$i\in M$，则$y_i(w^{\mathsf T}x_i+b)\le0$，样本到边界的距离可写为
+\[
+\frac{\abs{w^{\mathsf T}x_i+b}}{\norm{w}_2}
+=-\frac{y_i(w^{\mathsf T}x_i+b)}{\norm{w}_2}.
+\]
+最后一个等号利用了$y_i\in\{-1,+1\}$以及误分类时带符号分数非正。
+
+\textbf{推导第2步：}几何距离之和含有随$w$变化的分母$\norm{w}_2$，所以不能把$1/\norm{w}_2$当作常数从该优化目标中删除。感知机方法另行\emph{定义}误分类点负函数间隔之和为代理损失
+\[
+L(w,b)=-\sum_{i\in M}y_i(w^{\mathsf T}x_i+b),\qquad L(w,b)\ge0.
+\]
+当$M=\varnothing$时空和为零，表示全部训练点已具有正确的严格符号。若固定$\norm{w}_2$，该代理损失与几何距离之和只差固定正因子；在未固定范数的通常感知机迭代中，两者是不同目标。
+
+\textbf{推导第3步：}固定$M$后逐分量求导，
+\[
+\nabla_w L=-\sum_{i\in M}y_i x_i,
+\qquad
+\frac{\partial L}{\partial b}=-\sum_{i\in M}y_i.
+\]
+若每次只取一个误分类点$(x_i,y_i)$作随机梯度下降，则
+\[
+w\leftarrow w+\eta y_i x_i,\qquad b\leftarrow b+\eta y_i.
+\]
+更新后该点的带符号分数增加$\eta(\norm{x_i}_2^2+1)$，所以更新确实把它朝正确半空间推动。
+
+\phantomsection\label{struct:V2-C01-CH15}
+\begin{probabilitybox}
+感知机是确定性的判别模型，不输出校准的$p(y\mid x)$。分数$w^{\mathsf T}x+b$的大小不能直接解释为概率；同一分类边界在正比例缩放参数后产生不同分数，却给出相同类别。若应用需要概率，应另行建立概率模型或执行有验证依据的校准。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V2-C01-CH16}
+% KNOWLEDGE-PLAN: KN-V2-C12-CONCEPT-008 L1
+\paragraph{读前自检：优化解释：在固定误分类集合 M 时， L 关于 (w b) 为线性函数，随机更新就是对单个损失项……。}对在固定误分类集合 M 时， L 关于 (w b) 为线性函数，随机更新就是对单个损失项……，条件“在固定误分类集合$M$时，$L$关于$(w,b)$为线性函数，随机更新就是对单个损失项作一步梯度下降”不可省；请对$M$完成一项求导、代入或边界比较，再用集合$M$会随参数改变，因此整体过程是分段线性的在线优化作检查。\par
+
+\begin{optimizationbox}
+\textbf{优化解释。}
+在固定误分类集合$M$时，$L$关于$(w,b)$为线性函数，随机更新就是对单个损失项作一步梯度下降。集合$M$会随参数改变，因此整体过程是分段线性的在线优化；在线性不可分数据上，零损失点可能不存在，算法会在不同误分类点之间持续更新。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V2-C01-CH18}
+\begin{example}[一次误分类更新]\label{exm:V2-C01-update}
+设$w^{(0)}=(0,0)^{\mathsf T},b^{(0)}=0,\eta=1$，抽到$x=(2,-1)^{\mathsf T},y=+1$。求一次感知机更新后的参数与该样本的新带符号分数。
+\end{example}
+\SLExampleSolutionHeading{exm:V2-C01-update}
+\begin{solution}
+\SLReadTranslation{题目要求围绕“一次误分类更新”确定所求对象，依据题面数据完成必要推导并回收明确结论。}
+\SolGiven 保留题面全部已知量，并先核对“一次误分类更新”中每个对象的取值域、维数与成立条件。
+\SLMethodTrigger{围绕“一次误分类更新”先声明对象与条件，再完成必要计算并回收结论。}
+\SolDerive
+更新前的带符号分数和参数更新为
+\[
+\begin{aligned}
+m^{(0)}&=y\bigl((w^{(0)})^{\mathsf T}x+b^{(0)}\bigr)=0\leq0,\\
+w^{(1)}&=w^{(0)}+\eta yx=(2,-1)^{\mathsf T},\\
+b^{(1)}&=b^{(0)}+\eta y=1.
+\end{aligned}
+\]
+更新后的带符号分数为
+\[
+m^{(1)}
+=y\bigl((w^{(1)})^{\mathsf T}x+b^{(1)}\bigr)
+=2^2+(-1)^2+1
+=6>0.
+\]
+本轮状态为
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}c X X X X@{}}
+\toprule
+轮次 & 旧状态 & 候选/更新 & 不变量、目标或残差 & 状态与停止证书\\
+\midrule
+$0$ & $(w^{(0)},b^{(0)})=(0,0)$，$m^{(0)}=0$ & $(w^{(1)},b^{(1)})=((2,-1)^{\mathsf T},1)$ & $m^{(1)}=6>0$ & 本样本更新完成；尚不能据此宣称全训练集收敛\\
+\bottomrule
+\end{tabularx}
+\end{center}
+独立地直接代入更新恒等式，$m^{(1)}=m^{(0)}+\eta\|x\|_2^2+\eta=0+5+1=6$，与复算一致。因此该样本从决策边界进入正类一侧；最终参数为$w^{(1)}=(2,-1)^{\mathsf T},b^{(1)}=1$。
+\end{solution}
+
+
+% KNOWLEDGE-PLAN: KN-V2-C12-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：感知机学习算法。}感知机学习算法输入“非空有限训练集$T$、有限正学习率$\eta$、扫描预算$K$与固定样本次序”，条件“样本同维且坐标有限”；请做一轮“仅当$m_i\le0$时构造并核验$(w^+,b^+)$，再原子提交”，以“完整一轮零更新给出数学停止证书”核对停止证书。\par
+% KNOWLEDGE-PLAN: KN-V2-C12-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：感知机学习算法的原始形式。}感知机学习算法的原始形式输入“非空有限训练集$T$、有限正学习率$\eta$、扫描预算$K$与固定样本次序”，条件“样本同维且坐标有限”；请做一轮“仅当$m_i\le0$时构造并核验$(w^+,b^+)$，再原子提交”，以“完整一轮零更新给出数学停止证书”核对停止证书。\par
+% KNOWLEDGE-PLAN: KN-V2-C12-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：感知机学习算法原始形式。}感知机学习算法原始形式输入“非空有限训练集$T$、有限正学习率$\eta$、扫描预算$K$与固定样本次序”，条件“样本同维且坐标有限”；请做一轮“仅当$m_i\le0$时构造并核验$(w^+,b^+)$，再原子提交”，以“完整一轮零更新给出数学停止证书”核对停止证书。\par
+
+\SLTeachSection{原始形式学习算法}{sec:V2-C01-S04}
+\knowledgeanchor{SLM-02-03-001}{感知机学习算法}
+\knowledgeanchor{SLM-02-03-002}{感知机学习算法的原始形式}
+\knowledgeanchor{SLM-02-01-003}{感知机学习算法原始形式}
+\phantomsection\label{struct:V2-C01-CH10}
+原始形式直接维护$w$和$b$。每轮按既定顺序访问样本，只要发现$y_i(w^{\mathsf T}x_i+b)\le0$就更新；一整轮没有更新时，所有训练样本都已被严格正确分类。
+
+\phantomsection\label{struct:V2-C01-CH19}
+\phantomsection\label{struct:V2-C01-CH20}
+\phantomsection\label{struct:V2-C01-CH21}
+\phantomsection\label{struct:V2-C01-CH22}
+\phantomsection\label{struct:V2-C01-CH23}
+\phantomsection\label{struct:V2-C01-CH24}
+\phantomsection\label{struct:V2-C01-CH25}
+% KNOWLEDGE-PLAN: KN-V2-C12-ALGORITHM_IDEA-004 L2
+\begin{keypointbox}[title={感知机学习算法的原始形式：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={非空有限训练集$T$、有限正学习率$\eta$、扫描预算$K$与固定样本次序},
+  output={最后合法$(w,b)$、完整扫描数、样本检查数、更新数、状态与诊断},
+  preconditions={样本同维且坐标有限；标签属于$\{-1,+1\}$；$\eta>0$且$K\in\mathbb N_0$},
+  initialization={$w=0,b=0$且全部计数为$0$；每轮更新计数在轮首清零},
+  loop={至多执行$K$轮；每轮按固定次序完整访问$N$个样本},
+  update={先由旧参数计算$m_i$；仅当$m_i\le0$时构造并核验$(w^+,b^+)$，再原子提交},
+  domain={$w,x_i\in\mathbb R^d$、$b\in\mathbb R$；分数与候选参数必须为有限实数},
+  failure={输入违规返回$\mathtt{invalid\_input}$；分数或候选非有限返回$\mathtt{numerical\_failure}$并保留旧参数},
+  stop={完整一轮零更新给出数学停止证书；失败或扫描预算耗尽也立即停止},
+  budget={最多$K$个完整扫描轮和$KN$次样本检查},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$\mathtt{epoch}$只在完整扫描后增加；$v$与$\mathtt{update\_count}$分别在检查和提交后增加},
+  diagnostics={停止原因、失败位置、末轮更新数及成功时的最小训练间隔},
+  complexity={最坏$O(KNd)$时间与$O(d)$参数空间；输入存储另计}
+}
+\begin{algorithm}[H]
+\caption{感知机学习算法的原始形式}\label{alg:V2-C01-primal}
+\KwIn{训练集$T=\{(x_i,y_i)\}_{i=1}^{N}$，其中$x_i\in\R^d,y_i\in\{-1,+1\}$}
+\KwOut{最后合法参数$(w,b)$、完整扫描轮数$\mathtt{epoch}$、样本检查数$v$、累计更新数$\mathtt{update\_count}$、$\mathtt{status}$与最终诊断}
+\KwData{学习率$\eta>0$；最大扫描轮数$K\in\mathbb N_0$；固定样本次序}
+$w\leftarrow0$，$b\leftarrow0$，$\mathtt{epoch}\leftarrow0$，$v\leftarrow0$，$\mathtt{update\_count}\leftarrow0$，$u_{\rm epoch}\leftarrow0$\;
+若$T=\varnothing$、样本维数不一致、标签不在$\{-1,+1\}$、特征非有限、$\eta$不是有限正数或$K\notin\mathbb N_0$，则返回当前零初值、计数$0$、$\mathtt{invalid\_input}$及具体字段诊断\;
+\For{$t\leftarrow1$ \KwTo $K$}{
+  置本轮更新计数$u_{\rm epoch}\leftarrow0$\;
+  \For{$i\leftarrow1$ \KwTo $N$}{
+    计算$m_i\leftarrow y_i(w^{\mathsf T}x_i+b)$\;
+    若$m_i$非有限，则返回未改动的最后合法$(w,b)$、$\mathtt{epoch},v,\mathtt{update\_count}$、$\mathtt{numerical\_failure}$，诊断为失败位置$(t,i)$\;
+    $v\leftarrow v+1$\;
+    \If{$m_i\le0$}{
+      先计算候选$w^+\leftarrow w+\eta y_i x_i$、$b^+\leftarrow b+\eta y_i$；若候选含非有限值，则返回未改动的最后合法$(w,b)$、当前计数、$\mathtt{numerical\_failure}$，诊断为失败位置$(t,i)$\;
+      $w\leftarrow w^+$，$b\leftarrow b^+$，$u_{\rm epoch}\leftarrow u_{\rm epoch}+1$，$\mathtt{update\_count}\leftarrow\mathtt{update\_count}+1$\;
+    }
+  }
+  $\mathtt{epoch}\leftarrow t$\;
+  \If{$u_{\rm epoch}=0$}{返回$(w,b),\mathtt{epoch},v,\mathtt{update\_count},\mathtt{converged}$，最终诊断记录“整轮零更新”及最小训练间隔\;}
+}
+返回最后合法$(w,b),\mathtt{epoch},v,\mathtt{update\_count},\mathtt{budget\_stop}$，最终诊断记录“扫描预算耗尽”及末轮更新数$u_{\rm epoch}$\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{工程层只补充有限性检查、扫描预算和失败位置；$\mathtt{epoch}$只在完整扫描结束后增加，$\mathtt{update\_count}$只在参数更新提交后增加。}
+
+算法\ref{alg:V2-C01-primal}的输入、输出和参数均在伪代码中列明。初始化可取零或任意有限向量；更新顺序必须先计算当前带符号分数，再同时修改$w,b$。停止条件是完整扫描一轮且$u=0$；在线性可分和固定正学习率条件下，Novikoff定理保证误分类更新次数有限。达到预算上限属于工程停止，不等同于数学收敛。
+
+\begin{example}[原始形式的手工执行]\label{exm:V2-C01-primal}
+取$(3,3),(4,3)$为正类，$(1,1)$为负类，令$\eta=1,w^{(0)}=0,b^{(0)}=0$并按该顺序循环。求一条收敛的更新轨迹，并验证最终参数严格分离训练集。
+\SLReadTranslation{“一条轨迹”要求按固定扫描次序只记录真正触发的参数更新；“收敛”还必须由下一整轮零更新核验。}
+\SLMethodTrigger{感知机每次只检查带符号分数$y_i(w^{\mathsf T}x_i+b)$；非正时按$w\leftarrow w+y_ix_i,b\leftarrow b+y_i$更新。}
+\end{example}
+\SLExampleSolutionHeading{exm:V2-C01-primal}
+\begin{solution}
+\SLReadTranslation{题目要求完成“原始形式的手工执行”：在同一数据划分、指标口径与资源约束下比较候选并给出选择结论。}
+\SolGiven 候选模型使用同一评价协议；开发、验证与测试信息边界保持隔离，比较指标方向和并列规则预先固定。
+\SLMethodTrigger{先固定比较维度和数据隔离规则，再逐候选计算同口径指标并按预声明规则选择。}
+\SolDerive
+只记录触发更新后的状态，可得
+\[
+\begin{aligned}
+((0,0),0)
+&\xrightarrow{(3,3),+1}((3,3),1)
+\xrightarrow{(1,1),-1}((2,2),0)\\
+&\xrightarrow{(1,1),-1}((1,1),-1)
+\xrightarrow{(1,1),-1}((0,0),-2)\\
+&\xrightarrow{(3,3),+1}((3,3),-1)
+\xrightarrow{(1,1),-1}((2,2),-2)\\
+&\xrightarrow{(1,1),-1}((1,1),-3).
+\end{aligned}
+\]
+对$w=(1,1)^{\mathsf T},b=-3$，三个带符号分数依次为
+\[
+\begin{aligned}
+(+1)\bigl((1,1)(3,3)^{\mathsf T}-3\bigr)&=3,\\
+(+1)\bigl((1,1)(4,3)^{\mathsf T}-3\bigr)&=4,\\
+(-1)\bigl((1,1)(1,1)^{\mathsf T}-3\bigr)&=1.
+\end{aligned}
+\]
+三者均严格为正，最小带符号分数为$1$，故该参数分离训练集。再完整扫描三个样本时不会触发任何更新，这一“整轮零更新”给出全训练集严格正确分类的数学证书；访问次序改变时，所得分离超平面不必唯一。结论是本次固定顺序执行在$\mathtt{update\_count}=7$后，经下一次零更新扫描返回$\mathtt{converged}$；若只是完成一轮扫描而仍有更新，不能返回$\mathtt{completed}$或$\mathtt{converged}$。
+\SLStuckHint{不要按扫描次数编号箭头；只有发生参数更新时才增加$\mathtt{update\_count}$，完整扫完一轮才增加$\mathtt{epoch}$。}
+\SLTransfer{对任意手工感知机题，最后都单独列出全部样本的带符号分数，再用一次零更新全扫描作为停止证书。}
+\SolCheck 将结果代回题面条件，检查数值、符号与所求对象一致。
+\end{solution}
+
+\begin{table}[htbp]
+\centering
+\caption{三点示例按固定顺序扫描时的参数更新}\label{tab:V2-C01-primal-trace}
+\begin{tabularx}{\linewidth}{@{}c X X X@{}}
+\toprule 更新序号 & 旧状态$(w,b)$ & 触发样本 & 新状态$(w,b)$\\ \midrule
+1 & $((0,0)^{\mathsf T},0)$ & $(3,3),+1$ & $((3,3)^{\mathsf T},1)$\\
+2 & $((3,3)^{\mathsf T},1)$ & $(1,1),-1$ & $((2,2)^{\mathsf T},0)$\\
+3 & $((2,2)^{\mathsf T},0)$ & $(1,1),-1$ & $((1,1)^{\mathsf T},-1)$\\
+4 & $((1,1)^{\mathsf T},-1)$ & $(1,1),-1$ & $((0,0)^{\mathsf T},-2)$\\
+5 & $((0,0)^{\mathsf T},-2)$ & $(3,3),+1$ & $((3,3)^{\mathsf T},-1)$\\
+6 & $((3,3)^{\mathsf T},-1)$ & $(1,1),-1$ & $((2,2)^{\mathsf T},-2)$\\
+7 & $((2,2)^{\mathsf T},-2)$ & $(1,1),-1$ & $((1,1)^{\mathsf T},-3)$\\
+\bottomrule
+\end{tabularx}
+\end{table}
+表\ref{tab:V2-C01-primal-trace}只记录实际更新；未触发更新的访问仍属于扫描成本。最后再完整扫描一轮且没有更新，才能按算法的停止条件报告训练集收敛。
+
+
+% KNOWLEDGE-PLAN: KN-V2-C12-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：感知机学习算法的收敛性。}感知机收敛性假设增广样本范数不超过$R$，且存在单位$\widehat w_*$使$y_i\widehat w_*^{\mathsf T}\widehat x_i\ge\gamma>0$；请比较第$k$次误更新后的内积下界与范数上界，并核对得到有限误更新次数。\par
+% KNOWLEDGE-PLAN: KN-V2-C12-THEOREM-001 L1
+\paragraph{读前自检：Novikoff定理。}Novikoff定理在增广样本线性可分、范数界$R$和间隔$\gamma>0$下成立；请把$\widehat w_k^{\mathsf T}\widehat w_*\ge k\eta\gamma$与$\lVert\widehat w_k\rVert^2\le k\eta^2R^2$合并，核对误更新次数至多$(R/\gamma)^2$。\par
+
+\SLAdvancedSection{收敛性证明}{sec:V2-C01-S05}
+\knowledgeanchor{SLM-02-03-003}{感知机学习算法的收敛性}
+\knowledgeanchor{SLM-02-01-004}{Novikoff定理}
+为把偏置纳入内积，定义$\widehat x_i=(x_i^{\mathsf T},1)^{\mathsf T}$与$\widehat w=(w^{\mathsf T},b)^{\mathsf T}$。一次误分类更新统一写成$\widehat w_k=\widehat w_{k-1}+\eta y_i\widehat x_i$。
+
+\phantomsection\label{struct:V2-C01-CH12}
+\begin{theorem}[Novikoff误分类上界]\label{thm:V2-C01-novikoff}
+设增广训练集线性可分，且存在单位向量$\widehat w_\star\in\R^{d+1}$与常数$\gamma>0$，使每个$i$满足
+\[
+y_i\widehat w_\star^{\mathsf T}\widehat x_i\ge\gamma.
+\]
+再设$R=\max_i\norm{\widehat x_i}_2<\infty$。感知机从$\widehat w_0=0$出发，以固定$\eta>0$在带符号分数非正的样本上更新，则误分类更新总次数$k$满足
+\[
+k\le\left(\frac{R}{\gamma}\right)^2.
+\]
+该结论的用途是保证线性可分有限样本上的更新次数有限，而不是保证所得分离超平面唯一。
+\end{theorem}
+
+\phantomsection\label{struct:V2-C01-CH13}
+\begin{proof}
+证明目标是同时控制$\widehat w_k$沿正确方向的增长与自身范数的增长，再用Cauchy--Schwarz不等式消去未知向量。
+
+第$j$次误分类更新使用样本$(\widehat x_{i_j},y_{i_j})$。与$\widehat w_\star$取内积并使用间隔条件，得到
+\[
+\widehat w_j^{\mathsf T}\widehat w_\star
+=\widehat w_{j-1}^{\mathsf T}\widehat w_\star
++\eta y_{i_j}\widehat x_{i_j}^{\mathsf T}\widehat w_\star
+\ge \widehat w_{j-1}^{\mathsf T}\widehat w_\star+\eta\gamma.
+\]
+由$\widehat w_0=0$逐次累加，
+\[
+\widehat w_k^{\mathsf T}\widehat w_\star\ge k\eta\gamma. \tag{1}
+\]
+
+另一方面，更新发生前该样本满足$y_{i_j}\widehat w_{j-1}^{\mathsf T}\widehat x_{i_j}\le0$，因此
+\begin{align*}
+\norm{\widehat w_j}_2^2
+&=\norm{\widehat w_{j-1}+\eta y_{i_j}\widehat x_{i_j}}_2^2\\
+&=\norm{\widehat w_{j-1}}_2^2
++2\eta y_{i_j}\widehat w_{j-1}^{\mathsf T}\widehat x_{i_j}
++\eta^2\norm{\widehat x_{i_j}}_2^2\\
+&\le\norm{\widehat w_{j-1}}_2^2+\eta^2R^2.
+\end{align*}
+再次累加得
+\[
+\norm{\widehat w_k}_2^2\le k\eta^2R^2. \tag{2}
+\]
+由于$\norm{\widehat w_\star}_2=1$，Cauchy--Schwarz不等式与式(1)--(2)给出
+\[
+\begin{aligned}
+k\eta\gamma
+&\le\widehat w_k^{\mathsf T}\widehat w_\star\\
+&\le\norm{\widehat w_k}_2\\
+&\le\sqrt{k}\eta R.
+\end{aligned}
+\]
+当$k>0$时除以$\sqrt{k}\eta\gamma$并平方，得到
+\[
+\sqrt{k}\le \frac{R}{\gamma},
+\qquad
+k\le\left(\frac{R}{\gamma}\right)^2.
+\]
+$k=0$也满足结论。故误分类更新次数有限，定理结论成立。
+\end{proof}
+
+
+% KNOWLEDGE-PLAN: KN-V2-C12-ALGORITHM_IDEA-006 L1
+\paragraph{读前自检：感知机学习算法的对偶形式。}感知机对偶形式从零初值维护$\alpha_i$与$b$；对一个满足$y_i(\sum_j\alpha_jy_jG_{ji}+b)\le0$的样本，请执行$\alpha_i\leftarrow\alpha_i+\eta$、$b\leftarrow b+\eta y_i$，回代核对$w=\sum_j\alpha_jy_jx_j$与原始更新一致。\par
+
+\SLAdvancedSection{对偶形式与Gram矩阵}{sec:V2-C01-S06}
+\knowledgeanchor{SLM-02-03-004}{感知机学习算法的对偶形式}
+从零初值出发，每次更新都向$w$加入$\eta y_i x_i$。若第$i$个样本累计触发的强度为$\alpha_i\ge0$，则
+\[
+\begin{aligned}
+w&=\sum_{i=1}^{N}\alpha_i y_i x_i,\\
+b&=\sum_{i=1}^{N}\alpha_i y_i.
+\end{aligned}
+\]
+这里把固定学习率吸收到$\alpha_i$的增量中；若每次增量为$\eta$，则$\alpha_i$是$\eta$乘以该样本的更新次数。
+
+% KNOWLEDGE-PLAN: KN-V2-C12-ALGORITHM_IDEA-007 L1
+\paragraph{读前自检：感知机学习算法对偶形式。}感知机学习算法对偶形式输入“非空有限训练集$T$、有限正学习率$\eta$、扫描预算$K$、Gram模式与固定样本次序”，条件“样本同维且有限”；请做一轮“误分时构造$\alpha_i^+,b^+,w^+$，核验有限后同步提交”，以“完整一轮零更新给出数学停止证书”核对停止证书。\par
+
+\knowledgeanchor{SLM-02-02-005}{感知机学习算法对偶形式}
+把$w=\sum_j\alpha_jy_jx_j$代入第$i$个样本的判断条件，得到
+\[
+y_i\left(\sum_{j=1}^{N}\alpha_j y_j x_j^{\mathsf T}x_i+b\right)\le0.
+\]
+预先计算$G_{ji}=x_j^{\mathsf T}x_i$后，每次判断只需要访问内积表。误分类时更新$\alpha_i\leftarrow\alpha_i+\eta$与$b\leftarrow b+\eta y_i$；训练结束后再由线性组合恢复$w$。
+
+% KNOWLEDGE-PLAN: KN-V2-C12-ALGORITHM_IDEA-008 L2
+\begin{keypointbox}[title={感知机学习算法的对偶形式：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={非空有限训练集$T$、有限正学习率$\eta$、扫描预算$K$、Gram模式与固定样本次序},
+  output={最后合法$(\alpha,b,w)$、完整扫描数、样本检查数、更新数、状态与诊断},
+  preconditions={样本同维且有限；标签属于$\{-1,+1\}$；$\eta>0$、$K\in\mathbb N_0$且Gram模式已定义},
+  initialization={$\alpha=0,b=0,w=0$且全部计数为$0$；预存模式先在临时表构造Gram矩阵},
+  loop={至多执行$K$轮；每轮按固定次序完整访问$N$个样本},
+  update={由旧状态计算带符号分数；误分时构造$\alpha_i^+,b^+,w^+$，核验有限后同步提交},
+  domain={$\alpha\in\mathbb R^N,w,x_i\in\mathbb R^d,b\in\mathbb R$；所用内积与分数均须有限},
+  failure={输入违规返回$\mathtt{invalid\_input}$；Gram、分数或候选非有限返回$\mathtt{numerical\_failure}$并保留旧状态},
+  stop={完整一轮零更新给出数学停止证书；失败或扫描预算耗尽也停止},
+  budget={最多$K$个完整扫描轮；预存模式额外构造$N\times N$ Gram矩阵},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$\mathtt{epoch}$、$v$与$\mathtt{update\_count}$分别计完整轮、合法检查和已提交更新},
+  diagnostics={停止原因、失败位置、Gram模式、末轮更新数及成功时最小训练间隔},
+  complexity={预存Gram为$O(N^2d+KN^2)$时间与$O(N^2+N+d)$空间；即时模式省去矩阵存储}
+}
+\begin{algorithm}[H]
+\caption{感知机学习算法的对偶形式}\label{alg:V2-C01-dual}
+\KwIn{训练集$T=\{(x_i,y_i)\}_{i=1}^{N}$}
+\KwOut{最后合法的系数$\alpha$、偏置$b$与$w$；$\mathtt{epoch}$、$v$、$\mathtt{update\_count}$、$\mathtt{status}$与最终诊断}
+\KwData{学习率$\eta>0$；最大轮数$K\in\mathbb N_0$；Gram矩阵模式与固定样本次序}
+$\alpha\leftarrow0$，$b\leftarrow0$，$w\leftarrow0$，$\mathtt{epoch}\leftarrow0$，$v\leftarrow0$，$\mathtt{update\_count}\leftarrow0$，$u_{\rm epoch}\leftarrow0$\;
+若训练集为空、维数或标签非法、特征非有限、$\eta$不是有限正数或$K\notin\mathbb N_0$，则返回当前零状态、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+若选择预存模式，则在临时表计算全部$G_{ij}\leftarrow x_i^{\mathsf T}x_j$，核验对称性与有限性后提交；若任一内积非有限或核验失败，则返回未改动的零状态、$\mathtt{numerical\_failure}$，诊断为失败位置$(i,j)$\;
+\For{$t\leftarrow1$ \KwTo $K$}{
+  置$u_{\rm epoch}\leftarrow0$\;
+  \For{$i\leftarrow1$ \KwTo $N$}{
+    令$g_{ji}=G_{ji}$（预存模式）或即时计算$g_{ji}=x_j^{\mathsf T}x_i$，再计算$m_i\leftarrow y_i(\sum_{j=1}^{N}\alpha_jy_jg_{ji}+b)$\;
+    若$m_i$非有限，则返回最后合法$(\alpha,b,w)$、$\mathtt{epoch},v,\mathtt{update\_count}$、$\mathtt{numerical\_failure}$，诊断为失败位置$(t,i)$\;
+    $v\leftarrow v+1$\;
+    \If{$m_i\le0$}{
+      先计算候选$\alpha_i^+\leftarrow\alpha_i+\eta$、$b^+\leftarrow b+\eta y_i$、$w^+\leftarrow w+\eta y_i x_i$；若任一候选非有限，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$诊断\;
+      $\alpha_i\leftarrow\alpha_i^+$，$b\leftarrow b^+$，$w\leftarrow w^+$，$u_{\rm epoch}\leftarrow u_{\rm epoch}+1$，$\mathtt{update\_count}\leftarrow\mathtt{update\_count}+1$\;
+    }
+  }
+  $\mathtt{epoch}\leftarrow t$\;
+  \If{$u_{\rm epoch}=0$}{返回$(\alpha,b,w),\mathtt{epoch},v,\mathtt{update\_count},\mathtt{converged}$，最终诊断记录“整轮零更新”、Gram模式与最小训练间隔\;}
+}
+返回最后合法$(\alpha,b,w),\mathtt{epoch},v,\mathtt{update\_count},\mathtt{budget\_stop}$，最终诊断记录“扫描预算耗尽”、末轮更新数与Gram模式\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{预存与即时Gram模式共享同一数学更新；工程实现只需记录非法内积位置、预算余量和最后合法状态，不改变$\mathtt{epoch}$与$\mathtt{update\_count}$的含义。}
+
+对代表性三点$(3,3),(4,3),(1,1)$，Gram矩阵为
+\[
+G=\begin{pmatrix}18&21&6\\21&25&7\\6&7&2\end{pmatrix}.
+\]
+矩阵必须对称且半正定；若手工计算得到$G_{ij}\ne G_{ji}$，说明内积表存在算术错误。
+
+\phantomsection\label{struct:V2-C01-CH26}
+\phantomsection\label{struct:V2-C01-CH27}
+% KNOWLEDGE-PLAN: KN-V2-C12-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：对偶形式与Gram矩阵。}从对偶形式与Gram矩阵的条件“若显式使用对偶形式”出发，请由$d$的总成本剥离一次迭代或一次样本因子；所得量应符合若即时计算内积可省去Gram矩阵，但会重复承担特征维度上的计算。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界采用稠密$d$维实向量的单位成本算术，并把训练期间实际检查的样本总数记为$Q$；若显式使用对偶形式，则假设Gram矩阵按稠密数组预计算并保存。稀疏特征或即时核计算应分别以非零元数和核求值成本重计。
+设训练样本数为$N$、特征维数为$d$、训练期间累计检查样本数为$Q$，待预测样本数为$M$。
+
+\textbf{训练复杂度：}原始形式每次检查和实际更新均为$O(d)$，总训练时间为$O(Qd)$。对偶形式预计算Gram矩阵需$O(N^2d)$，之后一次样本判断在稠密$\alpha$下需$O(N)$，完整一轮为$O(N^2)$；总时间还要乘以实际扫描轮数。
+
+\textbf{预测复杂度：}恢复原始参数$(w,b)$后，单样本预测计算一个$d$维内积，时间为$O(d)$；$M$个样本批量预测为$O(Md)$。
+
+\textbf{存储复杂度：}原始形式除训练集外只需$O(d)$参数；对偶形式需$O(N)$系数与$O(N^2)$的Gram矩阵。若即时计算内积可省去Gram矩阵，但会重复承担特征维度上的计算。
+\end{complexitybox}
+
+
+\SLAdvancedSection{例题、判别计算与练习}{sec:V2-C01-S07}
+\phantomsection\label{struct:V2-C01-CH28}
+\phantomsection\label{struct:V2-C01-CH29}
+\begin{applicabilitybox}
+\textbf{适用条件：}感知机适合标签为$\{-1,+1\}$、希望得到线性判别边界且训练数据近似线性可分的任务，也可作为在线学习与核方法的入门模型。\textbf{局限性：}不可分或含标签冲突的数据上，基本算法没有零误分类收敛保证；结果不唯一、不输出概率，也不主动选择最大几何间隔，对特征尺度和访问顺序较敏感。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V2-C01-CH30}
+\begin{warningbox}
+典型误用包括：把$y_i(w^{\mathsf T}x_i+b)<0$写成唯一更新条件而漏掉边界点；在距离公式中忘记除以$\norm{w}_2$；梯度下降更新误写为减去$\eta y_ix_i$；对偶形式遗漏标签$y_j$；把学习率吸收到$\alpha$后又重复乘一次；把“有限步停止”推广到不可分数据；把判别分数当作概率。
+\end{warningbox}
+
+\phantomsection\label{struct:V2-C01-CH31}
+% KNOWLEDGE-PLAN: KN-V2-C12-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：例题、判别计算与练习。}例题、判别计算与练习依赖“概念对比：函数间隔$y_i(w^{\mathsf T}x_i+b)$会随参数正比例缩放”；请据此按表格顺序核对例题、判别计算与练习对比表的首个数据行，并直接核对例题、判别计算与练习首行两端的对象、条件与不可互换项逐列一致。\par
+
+\begin{comparisonbox}
+\textbf{概念对比：}函数间隔$y_i(w^{\mathsf T}x_i+b)$会随参数正比例缩放，几何间隔再除以$\norm{w}_2$后具有尺度不变性。原始形式维护$d$维参数，适合特征维度不高或样本数较大；对偶形式维护$N$个系数并复用内积，便于引出核技巧。感知机只寻求某个分离面，最大间隔方法还会在可行分离面中优化间隔。
+\end{comparisonbox}
+
+\phantomsection\label{struct:V2-C01-CH32}
+\begin{example}[线性不可分的异或结构]\label{exm:V2-C01-xor}
+四个点$(0,0),(1,1)$标为$+1$，$(1,0),(0,1)$标为$-1$。这组数据形成异或结构，任何二维直线都不能把两类完全分开。判断不可分不能只靠一次失败的训练轨迹，需要给出几何或代数上的矛盾。
+\end{example}
+
+\phantomsection\label{struct:V2-C01-CH33}
+\SLExampleSolutionHeading{exm:V2-C01-xor}
+\begin{solution}
+\SLReadTranslation{题目要求围绕“线性不可分的异或结构”确定所求对象，依据题面数据完成必要推导并回收明确结论。}
+\SolGiven 保留题面全部已知量，并先核对“线性不可分的异或结构”中每个对象的取值域、维数与成立条件。
+\SLMethodTrigger{先明确待证命题与关键条件，再给出一条闭合逻辑链或一个足以否定命题的反例。}
+\SolDerive
+若存在$w=(w_1,w_2)^{\mathsf T},b$严格分离，则四点分别要求
+\[
+b>0,\quad w_1+w_2+b>0,\quad w_1+b<0,\quad w_2+b<0.
+\]
+后两个不等式相加得到$w_1+w_2+2b<0$，于是$w_1+w_2+b<-b<0$，这与第二个正类条件矛盾。独立地看凸包，两个正类点的中点与两个负类点的中点都等于$(1/2,1/2)$；两类凸包相交，所以不存在严格分离超平面。两条证据一致地说明基本感知机不能以零训练误分类状态收敛；若增加非线性特征$x_1x_2$，样本在扩展空间中的线性可分性会改变。因此本题结论是原二维特征下线性不可分。
+
+\begin{SLRunningExample}{RUN-CLS-2D-01}{V2-C01-perceptron}{贯穿例：四点二维分类数据}{把同一组可手算数据作为线性分类的起点，先检验可分性与感知机的适用前提。}
+后续五章始终复用
+\[
+\begin{array}{c|cccc}
+i&1&2&3&4\\ \hline
+x_i&(-1,-1)&(-1,1)&(1,-1)&(1,1)\\
+y_i&-1&-1&+1&+1
+\end{array}
+\]
+取$w=(1,0)^{\mathsf T},b=0$便有$y_i(w^{\mathsf T}x_i+b)=1$，所以数据确实线性可分，满足感知机收敛结论的关键假设；本章关注误分类驱动的参数更新，并不把这个小样本当作泛化性能证据。下一站见\SLRunningExampleRef{RUN-CLS-2D-01}{V2-C02-knn}{\kNN{}法的局部投票表示}。
+\end{SLRunningExample}
+\SolCheck 将结果代回题面条件，检查数值、符号与所求对象一致。
+\end{solution}
+
+
+\phantomsection\label{struct:V2-C01-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V2-C01-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-2-0001
+% EXERCISE-TYPE: error_diagnosis,geometric_explanation,comprehensive_proof_calculation
+% SOLUTION-SOURCE: original_book; source_id=EXR-2-0001
+\begin{exercise}\label{ex:V2-C01-S07-01}
+用不等式证明题设中的异或四点在原二维特征空间中线性不可分，并指出一次迭代未停止为何不足以构成证明。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S07-01}
+\begin{chapterexercisesolution}{ex:V2-C01-S07-01}
+记$g(x)=w^{\mathsf T}x+b$。若异或四点可被严格分离，则两个正类点$(0,0),(1,1)$与两个负类点$(1,0),(0,1)$必须同时满足
+\[
+\begin{aligned}
+g(0,0)=b&>0, & g(1,1)=w_1+w_2+b&>0,\\
+g(1,0)=w_1+b&<0, & g(0,1)=w_2+b&<0.
+\end{aligned}
+\]
+后两个负类条件给出显式矛盾链
+\[
+\begin{aligned}
+(w_1+b)+(w_2+b)&<0\\
+\Longrightarrow\quad w_1+w_2+2b&<0\\
+\Longrightarrow\quad w_1+w_2+b&<-b<0,
+\end{aligned}
+\]
+这与正类点$(1,1)$所要求的$w_1+w_2+b>0$矛盾，故原二维特征空间中不存在严格分离参数。
+
+一次迭代未停止只说明当前参数存在未严格分类的样本，即
+\[
+\exists i:\ y_i g(x_i)\leq0;
+\]
+线性不可分却要求
+\[
+\forall(w,b),\ \exists i:\ y_i g(x_i)\leq0.
+\]
+前者没有排除其他参数，因而不能单独构成不可分证明。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-2-0003
+% EXERCISE-TYPE: geometric_explanation,comprehensive_proof_calculation
+% SOLUTION-SOURCE: original_book; source_id=EXR-2-0003
+\begin{exercise}\label{ex:V2-C01-S07-02}
+证明有限两类点集线性可分，当且仅当它们的凸包不相交。可使用分离超平面定理，但必须说明两个方向。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S07-02}
+\begin{chapterexercisesolution}{ex:V2-C01-S07-02}
+设非空有限正、负类点集分别为$P,N\subset\mathbb R^d$，并记$g(x)=w^{\mathsf T}x+b$。
+
+先证“线性可分$\Rightarrow$凸包不交”。若
+\[
+g(p)>0\quad(p\in P),
+\qquad
+g(n)<0\quad(n\in N),
+\]
+则对任意凸组合
+\[
+u=\sum_{i=1}^{r}\alpha_i p_i\in\operatorname{conv}(P),
+\qquad
+v=\sum_{j=1}^{s}\beta_j n_j\in\operatorname{conv}(N),
+\]
+其中$\alpha_i,\beta_j\geq0$且$\sum_i\alpha_i=\sum_j\beta_j=1$，有
+\[
+g(u)=\sum_i\alpha_i g(p_i)>0,
+\qquad
+g(v)=\sum_j\beta_j g(n_j)<0.
+\]
+若两凸包相交，则可取$u=v$，从而得到显式矛盾链
+\[
+u=v
+\quad\Longrightarrow\quad
+0<g(u)=g(v)<0.
+\]
+故两凸包不相交。
+
+再证“凸包不交$\Rightarrow$线性可分”。有限点集的凸包是紧凸集；若
+\[
+A=\operatorname{conv}(P),
+\qquad
+B=\operatorname{conv}(N),
+\qquad
+A\cap B=\varnothing,
+\]
+则强分离定理给出$w\neq0$与$\tau\in\mathbb R$，使蕴含链
+\[
+A\cap B=\varnothing
+\quad\Longrightarrow\quad
+\sup_{v\in B}w^{\mathsf T}v
+<\tau
+<\inf_{u\in A}w^{\mathsf T}u.
+\]
+令$b=-\tau$，便有
+\[
+w^{\mathsf T}p+b>0\quad(p\in P),
+\qquad
+w^{\mathsf T}n+b<0\quad(n\in N),
+\]
+所以原两类有限点集被严格线性分离。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: definition_discrimination,error_diagnosis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C01-S01-02}
+设某训练点满足$y_i(w^{\mathsf T}x_i+b)=0$。说明它是否满足线性可分定义，并解释训练时为何仍应触发更新。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S01-02}
+\begin{chapterexercisesolution}{ex:V2-C01-S01-02}
+记该点的带符号分数为
+\[
+m_i=y_i\bigl(w^{\mathsf T}x_i+b\bigr)=0.
+\]
+严格线性可分要求每个训练点满足$m_i>0$，因此
+\[
+m_i=0\quad\Longrightarrow\quad m_i\not>0,
+\]
+该点位于当前决策边界上，尚未满足严格分离定义。
+
+取学习率$\eta>0$并按边界点更新，
+\[
+w^+=w+\eta y_i x_i,
+\qquad
+b^+=b+\eta y_i.
+\]
+该点更新后的带符号分数为
+\[
+\begin{aligned}
+m_i^+
+&=y_i\bigl((w^+)^{\mathsf T}x_i+b^+\bigr)\\
+&=m_i+\eta y_i^2\bigl(\lVert x_i\rVert_2^2+1\bigr)\\
+&=\eta\bigl(\lVert x_i\rVert_2^2+1\bigr)>0.
+\end{aligned}
+\]
+所以把$m_i\leq0$统一作为更新条件，既处理误分类点，也避免算法在零间隔边界状态误报停止。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: derivation_completion,comprehensive_proof_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C01-S01-03}
+证明若$(w,b)$分离训练集，则任意$c>0$时$(cw,cb)$也分离同一训练集；再说明$c<0$为何不保留标签方向。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S01-03}
+\begin{chapterexercisesolution}{ex:V2-C01-S01-03}
+设$(w,b)$严格分离训练集，即
+\[
+m_i=y_i\bigl(w^{\mathsf T}x_i+b\bigr)>0,
+\qquad i=1,\ldots,N.
+\]
+对任意$c>0$，缩放后的带符号分数满足
+\[
+\begin{aligned}
+m_i(c)
+&=y_i\bigl((cw)^{\mathsf T}x_i+cb\bigr)\\
+&=c\,y_i\bigl(w^{\mathsf T}x_i+b\bigr)\\
+&=c\,m_i>0.
+\end{aligned}
+\]
+故$(cw,cb)$仍严格分离同一训练集。若$c<0$，则
+\[
+m_i(c)=c\,m_i<0\qquad(i=1,\ldots,N),
+\]
+标签方向全部反转；若$c=0$，则$m_i(c)=0$，所有点都落在边界上。因而只有正比例缩放保留原标签方向，同时函数间隔会被乘以$c$，不能用未归一化函数间隔比较等价超平面。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: basic_calculation,geometric_explanation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C01-S02-01}
+对$w=(3,4)^{\mathsf T},b=-5,x_0=(1,2)^{\mathsf T}$，计算判别分数、预测类别以及$x_0$到超平面的距离。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S02-01}
+\begin{chapterexercisesolution}{ex:V2-C01-S02-01}
+对象满足$w\in\mathbb R^2$、$b\in\mathbb R$、$x_0\in\mathbb R^2$，且$w\neq0$。判别分数与预测类别为
+\[
+\begin{aligned}
+g(x_0)
+&=w^{\mathsf T}x_0+b\\
+&=3\times1+4\times2-5\\
+&=6,\\
+\widehat y_0&=\operatorname{sign}g(x_0)=+1.
+\end{aligned}
+\]
+法向量范数和点到超平面的距离为
+\[
+\begin{aligned}
+\lVert w\rVert_2&=\sqrt{3^2+4^2}=5,\\
+\operatorname{dist}(x_0,\{x:g(x)=0\})
+&=\frac{|g(x_0)|}{\lVert w\rVert_2}
+=\frac65=1.2.
+\end{aligned}
+\]
+分数的符号决定类别；除以$\lVert w\rVert_2$后的绝对值才是几何距离。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: parameter_update,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C01-S03-01}
+参数$w=(1,-1)^{\mathsf T},b=0$，样本$x=(1,3)^{\mathsf T},y=+1$，学习率$\eta=0.5$。判断是否更新并给出新参数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S03-01}
+\begin{chapterexercisesolution}{ex:V2-C01-S03-01}
+记更新前状态为$(w^{(0)},b^{(0)})=((1,-1)^{\mathsf T},0)$。先计算当前带符号分数：
+\[
+\begin{aligned}
+g^{(0)}(x)
+&=(w^{(0)})^{\mathsf T}x+b^{(0)}\\
+&=1\times1+(-1)\times3=-2,\\
+m^{(0)}&=y\,g^{(0)}(x)=-2\leq0.
+\end{aligned}
+\]
+因此触发一次同步更新，状态链为
+\[
+\begin{aligned}
+w^{(1)}
+&=w^{(0)}+\eta yx\\
+&=(1,-1)^{\mathsf T}+0.5(1,3)^{\mathsf T}\\
+&=(1.5,0.5)^{\mathsf T},\\
+b^{(1)}&=b^{(0)}+\eta y=0.5.
+\end{aligned}
+\]
+代回同一样本核验：
+\[
+m^{(1)}
+=y\bigl((w^{(1)})^{\mathsf T}x+b^{(1)}\bigr)
+=1.5+1.5+0.5
+=3.5>0.
+\]
+故新参数为$w^{(1)}=(1.5,0.5)^{\mathsf T},b^{(1)}=0.5$，该样本已被推向正确一侧。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: probability_explanation,error_diagnosis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C01-S03-03}
+说明为什么不能把$w^{\mathsf T}x+b=0.9$直接解释成“正类概率为$0.9$”，并给出一个缩放反例。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S03-03}
+\begin{chapterexercisesolution}{ex:V2-C01-S03-03}
+感知机只用分数的符号作决策。对任意$c>0$，参数$(w,b)$与$(cw,cb)$满足
+\[
+\begin{aligned}
+g_c(x)&=(cw)^{\mathsf T}x+cb=c\,g(x),\\
+\operatorname{sign}g_c(x)&=\operatorname{sign}g(x),\\
+\{x:g_c(x)=0\}&=\{x:g(x)=0\}.
+\end{aligned}
+\]
+因此它们表示同一分类边界与同一类别预测。取$c=10$并代入题设分数，
+\[
+g(x)=0.9
+\quad\Longrightarrow\quad
+g_c(x)=10\times0.9=9.
+\]
+若把分数直接当作正类概率，同一分类器便会同时给出$0.9$与$9$，而
+\[
+9\notin[0,1],
+\qquad
+P(Y=+1\mid x)+P(Y=-1\mid x)=1
+\]
+也无法由感知机分数自动保证。故$w^{\mathsf T}x+b$只能解释为有方向的判别分数，不能未经概率模型或校准便解释成条件概率。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: manual_algorithm,parameter_update
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C01-S04-01}
+从$w=0,b=0$开始，按$x_1=(2,1),y_1=+1$与$x_2=(-1,-2),y_2=-1$的顺序扫描，$\eta=1$。写出首轮全部更新。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S04-01}
+\begin{chapterexercisesolution}{ex:V2-C01-S04-01}
+令首轮开始状态为
+\[
+(w^{(0)},b^{(0)})=((0,0)^{\mathsf T},0).
+\]
+访问$(x_1,y_1)=((2,1)^{\mathsf T},+1)$时，
+\[
+\begin{aligned}
+m_1^{(0)}
+&=y_1\bigl((w^{(0)})^{\mathsf T}x_1+b^{(0)}\bigr)=0\leq0,\\
+w^{(1)}&=w^{(0)}+\eta y_1x_1=(2,1)^{\mathsf T},\\
+b^{(1)}&=b^{(0)}+\eta y_1=1.
+\end{aligned}
+\]
+随后访问$(x_2,y_2)=((-1,-2)^{\mathsf T},-1)$，
+\[
+\begin{aligned}
+g^{(1)}(x_2)
+&=(2,1)(-1,-2)^{\mathsf T}+1=-3,\\
+m_2^{(1)}&=y_2g^{(1)}(x_2)=(-1)(-3)=3>0,
+\end{aligned}
+\]
+故第二个样本不触发更新。首轮状态链为
+\[
+((0,0)^{\mathsf T},0)
+\xrightarrow{x_1,\,m_1=0}
+((2,1)^{\mathsf T},1)
+\xrightarrow{x_2,\,m_2=3}
+((2,1)^{\mathsf T},1).
+\]
+下一轮复核$m_1=6>0,m_2=3>0$，整轮更新数为$0$，所以算法按停止条件结束。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: error_diagnosis,definition_discrimination
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C01-S04-03}
+构造两个标签相反但特征完全相同的训练样本，并说明原始形式为何不可能以一轮零更新的状态结束。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S04-03}
+\begin{chapterexercisesolution}{ex:V2-C01-S04-03}
+固定任意$x\in\mathbb R^d$，构造两个训练样本
+\[
+(x_+,y_+)=(x,+1),
+\qquad
+(x_-,y_-)=(x,-1).
+\]
+任意参数$(w,b)$对二者产生同一个原始分数$g(x)=w^{\mathsf T}x+b$，而带符号分数为
+\[
+m_+=g(x),
+\qquad
+m_-=-g(x).
+\]
+严格分类要求$m_+>0$且$m_->0$，即同时要求
+\[
+g(x)>0
+\qquad\text{与}\qquad
+g(x)<0,
+\]
+这是矛盾。等价地，对所有$g(x)\in\mathbb R$都有
+\[
+\min\{m_+,m_-\}
+=\min\{g(x),-g(x)\}
+=-|g(x)|\leq0.
+\]
+因此每次完整扫描这两个样本时至少有一个样本触发更新，不可能出现一整轮更新数为零；算法只能由预设迭代上限等非收敛停止规则终止。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: basic_calculation,definition_discrimination
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C01-S05-01}
+若$R=5,\gamma=0.5$，计算定理给出的误分类次数上界。该上界是否等于实际更新次数？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S05-01}
+\begin{chapterexercisesolution}{ex:V2-C01-S05-01}
+在定理的线性可分、正间隔与有限半径条件下，误分类更新次数$k\in\mathbb Z_{\geq0}$满足
+\[
+k\leq\left(\frac{R}{\gamma}\right)^2.
+\]
+代入$R=5$与$\gamma=0.5$，
+\[
+\begin{aligned}
+k
+&\leq\left(\frac{5}{0.5}\right)^2\\
+&=10^2\\
+&=100.
+\end{aligned}
+\]
+所以可得集合界
+\[
+k\in\{0,1,\ldots,100\},
+\]
+而不是等式$k=100$。实际更新次数还取决于样本访问顺序、初值以及数据可实现的间隔；该定理给出最坏情形有限上界，不给出精确步数。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: derivation_completion,error_diagnosis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C01-S05-02}
+补全范数递推中交叉项为何非正，并指出若在正确分类样本上也更新，证明的哪一步会失效。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S05-02}
+\begin{chapterexercisesolution}{ex:V2-C01-S05-02}
+第$j$次更新使用样本$(\widehat x_i,y_i)$，其中$\eta>0$、$\lVert\widehat x_i\rVert_2\leq R$，且触发条件为
+\[
+y_i\widehat w_{j-1}^{\mathsf T}\widehat x_i\leq0.
+\]
+由更新式$\widehat w_j=\widehat w_{j-1}+\eta y_i\widehat x_i$展开范数，得到
+\[
+\begin{aligned}
+\lVert\widehat w_j\rVert_2^2
+&=\lVert\widehat w_{j-1}\rVert_2^2
++2\eta y_i\widehat w_{j-1}^{\mathsf T}\widehat x_i
++\eta^2y_i^2\lVert\widehat x_i\rVert_2^2\\
+&\leq\lVert\widehat w_{j-1}\rVert_2^2
++\eta^2R^2,
+\end{aligned}
+\]
+其中使用了$y_i^2=1$以及
+\[
+2\eta y_i\widehat w_{j-1}^{\mathsf T}\widehat x_i\leq0.
+\]
+从$\widehat w_0=0$递推便有
+\[
+\lVert\widehat w_k\rVert_2^2\leq k\eta^2R^2.
+\]
+若在正确分类样本上也更新，则可能出现
+\[
+y_i\widehat w_{j-1}^{\mathsf T}\widehat x_i>0,
+\]
+交叉项不能删去，上述单步上界及其后的范数递推同时失效。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: method_comparison,complexity_analysis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C01-S06-03}
+比较$N=1000,d=5$与$N=50,d=10000$两种场景下存储完整Gram矩阵的代价，并说明何时原始形式更合适。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C01-S06-03}
+\begin{chapterexercisesolution}{ex:V2-C01-S06-03}
+比较训练集之外的主要状态：原始形式保存$w\in\mathbb R^d$与$b\in\mathbb R$，对偶形式保存$\alpha\in\mathbb R^N$、$b\in\mathbb R$与$G\in\mathbb R^{N\times N}$，故
+\[
+S_{\mathrm{primal}}=O(d+1)=O(d),
+\qquad
+S_{\mathrm{dual}}=O(N+1+N^2)=O(N^2).
+\]
+两种场景的Gram矩阵条目数分别为
+\[
+\begin{array}{c|c|c|c}
+(N,d) & N^2 & d & \text{若每项8字节的Gram存储量}\\ \hline
+(1000,5) & 10^6 & 5 & 8\times10^6\text{字节}\\
+(50,10000) & 2500 & 10000 & 2\times10^4\text{字节}
+\end{array}
+\]
+而显式预计算稠密Gram矩阵的算术量为$O(N^2d)$，代入后得到
+\[
+\begin{aligned}
+(1000,5):&\quad N^2d=5\times10^6,\\
+(50,10000):&\quad N^2d=2.5\times10^7.
+\end{aligned}
+\]
+因此第一种场景中$N^2\gg d$，原始形式在模型状态存储上明显更合适；第二种场景中Gram矩阵比$d$维权向量小，但预计算高维内积更昂贵，只有在$N$较小且内积会被反复复用或需核化时，对偶形式才可能占优。概括地说，
+\[
+d\ll N^2\ \Longrightarrow\ \text{优先考虑原始形式},
+\qquad
+N^2\ll d\ \text{且内积可复用}\ \Longrightarrow\ \text{对偶形式可考虑}.
+\]
+因此选择表示形式时应同时比较模型状态规模与内积复用收益，而不能只看单个维度大小。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V2-C12-CONCEPT-009 L1
+\paragraph{读前自检：本章结论与下一步。}感知机章末由“线性判别函数、误分类集合与Gram矩阵”落到“仅在误分类点更新，并记录停止原因与并列规则”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V2-C01-CH36}
+\SLChapterFiveSummary{线性判别函数、误分类集合与Gram矩阵}{利用正间隔控制权重增长和投影下界}{仅在误分类点更新，并记录停止原因与并列规则}{线性可分二分类与在线更新基线}{进入\kNN{}法，对比参数化边界与局部记忆}
+
+\phantomsection\label{struct:V2-C01-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否用$y_i(w^{\mathsf T}x_i+b)>0$同时解释正、负两类的严格正确分类？若不能，回看第\ref{sec:V2-C01-S01}节。
+  \item 能否从点到超平面的距离逐步推导误分类损失与更新？若不能，回看第\ref{sec:V2-C01-S03}节。
+  \item 能否不跳步地复现Novikoff证明中的方向增长、范数增长和Cauchy--Schwarz三环节？若不能，回看第\ref{sec:V2-C01-S05}节。
+  \item 能否根据$N,d$比较原始形式与对偶形式的时间和空间代价，并识别不可分数据下迭代不能得到零训练误差的情形？若不能，回看第\ref{sec:V2-C01-S06}--\ref{sec:V2-C01-S07}节。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

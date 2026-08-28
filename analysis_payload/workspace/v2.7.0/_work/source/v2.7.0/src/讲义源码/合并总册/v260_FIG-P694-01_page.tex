@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{691}
+\setcounter{chapter}{35}
+\setcounter{section}{4}
+\setcounter{figure}{6}
+\pagestyle{headings}
+\chaptermark{潜在狄利克雷分配}
+\sectionmark{超参数、实现与评估}
+\textbf{图形辅助。}图\ref{fig:V5-C06-variational-updates}区分局部 $\mathrm{LocalOK}_m$ 门与全语料提交门；局部预算或失败不进入 C/M 步。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_variational_updates.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}沿 (a) 核对仅 $\mathtt{completed}/\mathtt{converged}$ 形成 $\mathrm{LocalOK}_m$；沿 (b) 核对全部 $\mathrm{LocalOK}_m$ 到齐后才执行 $C\to\varphi\to$ 受保护 Newton，且只有 $\mathtt{feasible}$ 的 $\mathtt{budget\_stop}$ 以未收敛候选进入 $\mathcal S_{\rm acc}$，其余状态止于记录。\par
+\end{document}

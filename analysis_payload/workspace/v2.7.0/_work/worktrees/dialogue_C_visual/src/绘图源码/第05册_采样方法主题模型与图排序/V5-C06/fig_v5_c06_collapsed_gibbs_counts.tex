@@ -1,0 +1,64 @@
+% v2.6.0 figure UID: FIG-P687-01
+% Iteration 03: widen the badge-2-to-document-card whitespace corridor.
+\tikzset{slfig-FIG-P687-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P687-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11pt}\selectfont,align=center,outer sep=0pt},
+  action/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,
+    minimum height=12mm,text width=36mm,inner xsep=3mm,inner ysep=2mm},
+  evidence/.style={draw=SLMidBlue,fill=SLSoftBlue,rounded corners=2pt,
+    minimum height=16mm,text width=44mm,inner xsep=3mm,inner ysep=2mm},
+  conditional/.style={draw=SLDeepBlue,fill=white,rounded corners=2pt,
+    minimum height=17mm,text width=61mm,inner xsep=3mm,inner ysep=2mm},
+  badge/.style={circle,fill=SLDeepBlue,text=white,minimum size=6.4mm,inner sep=0pt,
+    font=\fontsize{9.0pt}{10.6pt}\selectfont\bfseries},
+  branch/.style={-{Stealth[length=2.1mm,width=1.55mm]},draw=SLMidBlue,line width=.78pt},
+  loop/.style={-{Stealth[length=2.2mm,width=1.6mm]},draw=SLDeepBlue,line width=.95pt},
+  alt={对象—关系—结论：折叠Gibbs更新构成五步闭环：先移除当前词位，再分别读取带负i上标的文档主题计数和主题词计数，两支证据相乘归一化得到满条件，最后抽样并恢复计数后进入下一词位。}]
+
+\node[action] (remove) at (0,3.00)
+  {移除当前词位$i$\\从两张计数表各减一};
+\node[badge] at (-2.78,3.50) {1};
+
+\node[evidence] (doc) at (-3.75,1.05)
+  {读取文档--主题计数\\
+   $\displaystyle n_{mk}^{-i}+\alpha_k$\\[-1pt]
+   $\displaystyle n_{m\cdot}^{-i}+\alpha_0$};
+\node[badge] at (-6.75,1.48) {2};
+\node[evidence] (word) at (3.75,1.05)
+  {读取主题--单词计数\\
+   $\displaystyle n_{kv}^{-i}+\beta_v$\\[-1pt]
+   $\displaystyle n_{k\cdot}^{-i}+\beta_0$};
+\node[badge] at (0.68,1.48) {3};
+
+\node[conditional] (full) at (0,-1.00)
+  {相乘并对$k$归一化\\[-1pt]
+   $\displaystyle p(z_i=k\mid-)
+   \propto
+   \frac{n_{mk}^{-i}+\alpha_k}{n_{m\cdot}^{-i}+\alpha_0}
+   \frac{n_{kv}^{-i}+\beta_v}{n_{k\cdot}^{-i}+\beta_0}$};
+\node[badge] at (-4.05,-0.53) {4};
+
+\node[action,draw=SLDeepBlue,fill=SLSoftBlue,text width=41mm] (sample) at (0,-2.85)
+  {抽样$k^*$并恢复计数\\把词位$i$加回两张表};
+\node[badge] at (-3.03,-2.43) {5};
+
+\draw[branch] (remove.south west) -- (doc.north);
+\draw[branch] (remove.south east) -- (word.north);
+\draw[branch] (doc.south) -- (full.north west);
+\draw[branch] (word.south) -- (full.north east);
+\draw[loop] (full.south) -- (sample.north);
+\draw[loop] (sample.east) -- (6.65,-2.85) --
+  node[midway,right=2.4mm,text width=20mm,align=left,font=\fontsize{8.8pt}{10.5pt}\selectfont,text=SLTextGray]
+    {下一词位：\\重新从“移除”开始}
+  (6.65,3.00) -- (remove.east);
+
+\node[font=\fontsize{9.0pt}{10.6pt}\selectfont,text=SLTextGray] at (0,-3.90)
+  {上标$-i$始终保留到抽样完成，防止当前词位对自身重复计数。};
+\end{tikzpicture}
+\caption{折叠Gibbs更新先临时移除当前词位，再把文档--主题偏好与主题--单词证据相乘形成满条件分布，最后抽取新主题并恢复计数；上标负$i$防止当前词位对自身产生重复计数}
+\label{fig:V5-C06-collapsed-gibbs-counts}
+\end{figure}

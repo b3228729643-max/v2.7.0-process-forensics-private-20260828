@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{769}
+\setcounter{chapter}{32}
+\setcounter{figure}{6}
+\pagestyle{headings}
+\chaptermark{马尔可夫链蒙特卡罗法}
+\sectionmark{收敛与样本诊断}
+每个坐标更新核 $K_j$ 都保持目标分布 $\pi$，但核的复合与混合具有不同的可逆性。图\ref{fig:V5-C03-componentwise-sweep}区分“一个坐标更新”与“完成一轮扫描”，并标出系统扫描和随机扫描在可逆性上的差异。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_componentwise_sweep.tex}
+\begin{theorem}[有限状态 MH 的正确性条件]
+设状态空间有限且 $\pi(x)>0$。若 MH 核不可约且非周期，则 $\pi$ 是唯一平稳分布，并且链从任意初始分布收敛到 $\pi$。
+\end{theorem}
+\end{document}

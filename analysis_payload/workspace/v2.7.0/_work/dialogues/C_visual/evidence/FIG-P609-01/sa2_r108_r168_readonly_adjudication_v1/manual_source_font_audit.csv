@@ -1,0 +1,11 @@
+ELEMENT_ID,ROLE,SOURCE_LINE,DECLARED_PT,GRAPHICS_SCALE,EFFECTIVE_PT,PDF_BASE_SPAN_PT,GENERAL_VISIBLE,MANUAL_OBSERVATION,HARD_RESULT
+F01,TikZ default and ordinary nodes,3;13,9.6,1.000,9.6,9.564,true,"The source establishes 9.6 pt for the picture and every ordinary node; no text-bearing scale, transform shape, resizebox, or scalebox occurs.",PASS
+F02,axis tick labels,6,9.6,1.000,9.6,9.564,true,"All x ticks 0 through 6 and y ticks 0 through 1 use the explicit 9.6 pt tick style and render at the same base span size.",PASS
+F03,axis labels,7;18,9.8,1.000,9.8,9.763,true,"Both 滞后 k and 经验 ACF rho-hat_k use the same 9.8 pt label role; the vertical rotation changes orientation only.",PASS
+F04,left-panel title,8;17,10.4,1.000,10.4,10.361,true,"The numbered ACF title uses 10.4 pt and is visibly subordinate to neither the data nor the ESS title.",PASS
+F05,K=6 annotation,25-26,9.6,1.000,9.6,9.564,true,"The truncation label is explicitly 9.6 pt and remains clear against the pale window fill.",PASS
+F06,omitted-lag ellipsis,27-28,9.6,1.000,9.6,9.564,true,"The ellipsis is an ordinary 9.6 pt math node and is visibly distinct from a plotted stem.",PASS
+F07,ESS body text and equations,31;33-37,9.6,1.000,9.6,9.564,true,"The ESS formulas, positivity condition, preset-window line, omission line, and diagnostic disclaimer inherit the explicit 9.6 pt body size.",PASS
+F08,right-panel title,32,10.4,1.000,10.4,10.361,true,"The numbered ESS title is explicitly 10.4 pt, matching the left title role rather than enlarging the panel disproportionately.",PASS
+F09,formula natural scripts,33-34,derived,1.000,derived,6.695,false,"K,n,k=1 and eff are natural TeX script descendants of a 9.6 pt formula base; the native and 8x views show them intact and readable, so they are not general-visible text below the source gate.",NATURAL_SCRIPT_EXCEPTION
+F10,caption,40-41,normalsize,1.000,normalsize,10.909,true,"The caption requests normalsize with no figure scaling; the final PDF span is 10.909 pt and the full sentence is cleanly readable.",PASS

@@ -1,0 +1,120 @@
+{
+  "RESULT": "FAIL",
+  "MACHINE_EVIDENCE_INTEGRITY_PASS": true,
+  "counts": {
+    "native_width": 2481,
+    "native_height": 3508,
+    "page_width_pt": 595.2760009765625,
+    "page_height_pt": 841.8900146484375,
+    "object_count": 53,
+    "semantic_text_element_count": 31,
+    "semantic_font_failed_element_count": 28,
+    "glyph_trace_count": 151,
+    "pixel_height_failed_glyph_count": 26,
+    "all_glyph_gate_failed_count": 141,
+    "same_class_failed_group_count": 10,
+    "role_ratio_failed_row_count": 16,
+    "glyph_cross_mask_duplicate_pixels": 0,
+    "pair_count": 1378,
+    "critical_pair_count": 4,
+    "illegal_overlap_pixels": 0,
+    "overlap_fail_pair_count": 0,
+    "clearance_fail_pair_count": 4,
+    "intentional_graphic_intersection_pair_count": 24,
+    "clip_pixels": 0,
+    "min_text_clearance": 0.0,
+    "min_text_raw_ink_clearance": 6.708,
+    "min_text_text_pdf_bbox_clearance": 0.0,
+    "min_edge_clearance": 49.0,
+    "text_node_border_objects": 0
+  },
+  "flags": {
+    "SOURCE_FONT_PASS": false,
+    "PIXEL_HEIGHT_PASS": false,
+    "SAME_CLASS_RATIO_PASS": false,
+    "ROLE_RATIO_PASS": false,
+    "FONT_VISUAL_HARMONY_PASS": false,
+    "VISUAL_HARMONY_PASS": false,
+    "MATH_SEMANTICS_PASS": true,
+    "TEXT_CONSISTENCY_PASS": true,
+    "GRAYSCALE_PASS": true,
+    "PAGE_INTEGRATION_PASS": true,
+    "RESULT": "FAIL"
+  },
+  "checks": [
+    {
+      "CHECK": "required_artifacts_exist",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "17/17"
+    },
+    {
+      "CHECK": "unique_nonempty_object_masks",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "objects=53, semantic_text=31"
+    },
+    {
+      "CHECK": "semantic_font_elements_unique",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "semantic_font_elements=31, failed=28"
+    },
+    {
+      "CHECK": "glyph_masks_nonempty_and_unique",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "glyph_trace=151, pixel_height_failed=26, all_gate_failed=141"
+    },
+    {
+      "CHECK": "glyph_raw_masks_mutually_exclusive",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "duplicate_pixels=0"
+    },
+    {
+      "CHECK": "all_unordered_pairs_covered",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "actual=1378, expected=1378"
+    },
+    {
+      "CHECK": "all_failed_or_critical_pair_evidence",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "critical=4"
+    },
+    {
+      "CHECK": "pixel_height_failure_glyph_evidence",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "pixel_height_failed=26, missing=0"
+    },
+    {
+      "CHECK": "all_gate_failure_glyph_evidence",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "all_gate_failed=141, missing=0"
+    },
+    {
+      "CHECK": "no_empty_graphic_mask",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "graphics=22"
+    },
+    {
+      "CHECK": "csv_json_md_counts_consistent",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "semantic_font=31, glyph_trace=151, result=FAIL"
+    },
+    {
+      "CHECK": "final_result_consistent_with_underlying_fails",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "result=FAIL"
+    },
+    {
+      "CHECK": "node_border_relation_explicit_na",
+      "PASS_FAIL": "PASS",
+      "DETAIL": "no NODE_BORDER source object; N/A explicitly reported"
+    }
+  ],
+  "critical_pair_ids": [
+    "PAIR_0171",
+    "PAIR_0406",
+    "PAIR_0533",
+    "PAIR_0977"
+  ],
+  "semantic_font_failed_element_count": 28,
+  "pixel_height_failed_glyph_count": 26,
+  "all_glyph_gate_failed_count": 141
+}

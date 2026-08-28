@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 3 册}{统计学习方法讲义 v2.6.0}{优化模型与序列模型}
+\begin{document}
+\setcounter{page}{467}
+\setcounter{chapter}{21}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{隐马尔可夫模型}
+\begin{geometrybox}
+同一状态格可支持三种递推：前向算法对进入同一结点的路径求和，后向算法对离开同一结点的路径求和，Viterbi 则取最大值并保存获胜前驱。
+\end{geometrybox}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C05/fig_v3_c05_lattice.tex}
+图\ref{fig:V3-C05-lattice}中的浅灰边给出共同底格；彩色重点边只改变聚合读法，不改变状态、时间列或观测结构。
+\textbf{递推与回溯。}前向、后向保留总概率，Viterbi 保留最大值及其前驱，因此后者需要回溯信息。
+\end{document}

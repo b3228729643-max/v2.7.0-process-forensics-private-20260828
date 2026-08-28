@@ -1,0 +1,57 @@
+{
+  "figure_id": "FIG-P577-01",
+  "result": "FAIL",
+  "authority_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r95_fullbook\\main_full.pdf",
+  "authority_pdf_sha256": "24CC8BE127D00435CC544E4E9142D45272675DA0D9967C89ADAC294D08910496",
+  "physical_page": 625,
+  "printed_page": 612,
+  "r94_identity_bridge_only": {
+    "full_page": {
+      "changed_pixels": 0,
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "figure_crop": {
+      "changed_pixels": 0,
+      "changed_channels": 0,
+      "max_delta": 0
+    }
+  },
+  "evidence_integrity_result": "PASS",
+  "figure_hard_gates_result": "FAIL",
+  "glyph_count": 345,
+  "nonspace_final_visible_glyph_count": 345,
+  "manual_ledger_rows": 345,
+  "unique_mask_files": 345,
+  "all_pairs_expected": 59340,
+  "all_pairs_actual": 59340,
+  "illegal_text_text_pairs": 0,
+  "required_relations": {
+    "TG304": "PASS",
+    "TG317": "PASS",
+    "TG457": "FAIL"
+  },
+  "clip_pixel_count": 0,
+  "terminal_target_missing_pixels": 0,
+  "terminal_target_foreign_pixels": 0,
+  "terminal_failures": [
+    "TG457",
+    "OCC_P_LEGEND_BLUE_GROUND",
+    "OCC_P_MIN_GAP_GROUND",
+    "OCC_P_FILL_ANNOTATION_GROUND",
+    "OCC_P_ACCEPT_CARD_GROUND",
+    "OCC_P_REJECT_CARD_GROUND"
+  ],
+  "opaque_ground_covered_pre_curve_px": 3825,
+  "initial_projection_superseded": {
+    "foreign_pixels": 430,
+    "text_graphic_rows": 392,
+    "overlap_pixels": 17690
+  },
+  "pre_stop_integrity_report": "STRICT_R1_FINAL/EVIDENCE_INTEGRITY_PRE_STOP.json",
+  "terminal_manifest": "STRICT_R1_FINAL/TERMINAL_MANIFEST.json",
+  "machine_evidence_integrity_pass": true,
+  "machine_figure_hard_gates_pass": false,
+  "machine_terminal_status": "COMPLETE_FAIL",
+  "machine_terminal_pass": false
+}

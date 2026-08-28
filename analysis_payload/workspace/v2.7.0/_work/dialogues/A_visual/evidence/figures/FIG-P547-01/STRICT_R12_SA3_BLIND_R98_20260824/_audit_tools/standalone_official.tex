@@ -1,0 +1,31 @@
+\documentclass[UTF8,fontset=none]{ctexart}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength{\PreviewBorder}{8pt}
+
+% Official project chain reproduced without Fandol.  The candidate PDF embeds
+% NotoSerifSC-ExtraLight / NotoSansSC and STIX Two Text / STIX Two Math.
+\setmainfont{STIX Two Text}
+\setsansfont{Noto Sans SC}
+\setmathfont{STIX Two Math}
+\setCJKmainfont{Noto Serif SC}[
+  UprightFeatures={RawFeature={axis={wght=200}}},
+  BoldFont={Noto Sans SC Bold}
+]
+
+\definecolor{SLInk}{RGB}{31,41,55}
+\definecolor{SLBlue}{RGB}{31,78,121}
+\definecolor{SLTeal}{RGB}{15,118,110}
+\definecolor{SLGold}{RGB}{183,121,31}
+\definecolor{SLRuleGray}{RGB}{184,192,200}
+\definecolor{SLSoftGray}{RGB}{246,247,248}
+\color{SLInk}
+
+\begin{document}
+\input{01_source/fig_v5_c01_transition_graph_source_snapshot.tex}
+\end{document}

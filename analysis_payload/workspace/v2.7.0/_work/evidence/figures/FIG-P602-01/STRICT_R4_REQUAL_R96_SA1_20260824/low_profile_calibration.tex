@@ -1,0 +1,24 @@
+% Independent calibration specimens.  Each page has one target glyph only.
+% The compilation cwd is src/讲义源码/common so statlearnbook and its release
+% manifest resolve exactly as in the source project; outputs are isolated here.
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{statlearnbook}
+\pagestyle{empty}
+\begin{document}
+\vspace*{240pt}\noindent{\fontsize{9.6pt}{11.6pt}\selectfont $,$}\newpage
+\vspace*{240pt}\noindent{\fontsize{11.2pt}{13.6pt}\selectfont $,$}\newpage
+\vspace*{240pt}\noindent{\fontsize{9.6pt}{11.6pt}\selectfont ？}\newpage
+\vspace*{240pt}\noindent{\fontsize{9.6pt}{11.6pt}\selectfont ：}\newpage
+\vspace*{240pt}\noindent{\small\bfseries .}\newpage
+\vspace*{240pt}\noindent{\small{\fontspec{STIX Two Text}–}}\newpage
+\vspace*{240pt}\noindent{\small 一}\newpage
+\vspace*{240pt}\noindent{\small ：}\newpage
+\vspace*{240pt}\noindent{\small 、}\newpage
+\vspace*{240pt}\noindent{\small 。}\newpage
+% Context-matched caption specimen for CJK punctuation shaping/phase.
+\vspace*{180pt}
+\begin{figure}[H]
+\centering\rule{0pt}{10pt}
+\caption{Metropolis--Hastings 一步更新：提议、接受与拒绝自环。}
+\end{figure}
+\end{document}

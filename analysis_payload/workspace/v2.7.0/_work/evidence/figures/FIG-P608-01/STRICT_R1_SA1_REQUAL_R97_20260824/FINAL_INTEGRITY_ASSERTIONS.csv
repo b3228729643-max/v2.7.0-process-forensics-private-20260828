@@ -1,0 +1,15 @@
+gate,criterion,observed,status,evidence
+identity_candidate,candidate SHA256/pages,062AD81020CB19A5C6688A45C73E00965F5060E0960A69AF820D7DC154DEE814; 813 pages,PASS,identity_and_location.json
+identity_source,declared source SHA256,DA035C1920CB900E54D3658851C1D71D9C6446531EFF50BEE6E089B567835AE4,PASS,identity_and_location.json
+scope,P608-only crop / physical/printed page,P659 / p646 / Figure 32.8; P609 excluded,PASS,identity_and_location.json
+inventory,all visible objects,36 text + 66 graphics = 102; includes R001/R002,PASS,object_inventory.csv; drawing_path_coverage.csv
+drawing_paths,unassigned visible PDF foreground paths,0,PASS,drawing_path_crosscheck.json
+pairs,all unordered pairs,5151 / 5151 = 102C2,PASS,after_overlap_report.csv
+manual_glyph,glyph card review,"114/114, 10 sheets",CLOSED_WITH_5_FAILS,manual_glyph_review.csv
+low_profile,low-profile calibration,"15 targets; H/area ratio [0.92,1.08]",PASS,low_profile_calibration.csv
+math_rules,drawing[61]/drawing[62] rule inventory,R001 isolated; R002 relationship hard-fails,CLOSED_WITH_R002_FAIL,math_rule_ledger.csv
+manual_pair,contact/critical card review,"110/110, 10 sheets; 93 named individual intents",CLOSED_WITH_3_FAILS,manual_pair_review.csv; manual_intended_contact_review.csv
+target_relations,five near-target data relations,P5003/P5008/P5009/P5011/P5012 individually source-proved,INTENTIONAL_DATA_RELATION,intentional_data_relation_review.csv
+critical_R002_G001,R002 rule / upper axis,pre-zorder shared=64px; final unique overlap=0px; clearance=0px<8,FAIL,critical_barX_vs_upper_axis.json
+visual_D_E,normal>=9.5pt and hierarchy/coordination,normal labels pass numeric gate; cross-panel title/axis relation fails,FAIL,font_visual_harmony_ledger.csv; manual_visual_review.csv
+cleanup,referenced assets after self-generated stale cleanup,225 planned targets; survivors=0; missing current references=0; stale=0,PASS,CLEANUP_STALE_SELF_GENERATED.md; CLEANUP_PREDELETE_RESOLVE_PATH.csv

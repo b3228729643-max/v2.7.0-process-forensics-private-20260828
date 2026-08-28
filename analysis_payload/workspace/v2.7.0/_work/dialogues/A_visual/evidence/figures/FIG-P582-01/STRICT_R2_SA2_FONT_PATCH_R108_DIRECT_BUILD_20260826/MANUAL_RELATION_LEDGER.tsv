@@ -1,0 +1,34 @@
+pair_id	observed_at_utc	view	decision	hard_failure	pair_specific_note
+PAIR-00002	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	x-axis tick strokes intentionally cross the x-axis baseline at the four sample coordinates.
+PAIR-00032	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	raw y-comb stems intentionally originate at the x-axis tick locations and preserve sample alignment.
+PAIR-00076	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	the raw sample-2 square at y=.01 legitimately meets the local x tick because the encoded value is near zero; marker and tick remain distinguishable.
+PAIR-00095	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	y-axis tick strokes intentionally cross the y-axis baseline at each labeled level.
+PAIR-00097	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	the y-axis tick set and y-axis shaft share only their designed tick junctions.
+PAIR-00098	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	the top y tick meets the y-axis arrowhead base as part of the continuous axis construction.
+PAIR-00188	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	x-axis shaft and right arrowhead join continuously with the arrow orientation unambiguous.
+PAIR-00189	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	x-axis and y-axis meet only at the origin as required by axis geometry.
+PAIR-00217	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	raw comb stems start on the x-axis at their four exact x coordinates.
+PAIR-00261	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	the sample-2 near-zero raw marker is close to the axis by data semantics, not accidental label intrusion.
+PAIR-00371	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	y-axis shaft and upward arrowhead form one continuous directed axis.
+PAIR-00400	2026-08-26T13:25:49Z	critical_relations_001_native1x	PASS_INTENDED	false	the horizontal truth reference intentionally crosses the y-axis at one-third.
+PAIR-02513	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	raw y-comb stems cross the running-mean polyline only at data-bearing sample coordinates; both encodings stay identifiable.
+PAIR-02514	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	raw stems intersect the one-third reference according to their numeric heights, with no text involved.
+PAIR-02555	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	the sample-1 raw square is attached to its own raw comb stem.
+PAIR-02556	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	the sample-2 raw square is attached to its own near-zero comb stem.
+PAIR-02557	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	the sample-3 raw square is attached to its own .49 comb stem.
+PAIR-02558	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	the sample-4 raw square is attached to its own .16 comb stem.
+PAIR-02559	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	the sample-1 blue mean marker shares the raw stem endpoint because raw and mean both equal .640 there.
+PAIR-02561	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	the sample-3 raw stem crosses the blue .380 marker while continuing to raw .49, accurately showing both series.
+PAIR-02575	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	the running-mean polyline crosses the dashed one-third truth reference as the sequence oscillates around the limit.
+PAIR-02616	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	the blue polyline joins its sample-1 circular marker at the marker center.
+PAIR-02620	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	raw and running-mean sample-1 markers intentionally coincide because both first values are .640.
+PAIR-02621	2026-08-26T13:25:49Z	critical_relations_002_native1x	PASS_INTENDED	false	the blue polyline joins its sample-2 circular marker cleanly at .325.
+PAIR-02622	2026-08-26T13:25:49Z	critical_relations_003_native1x	PASS_INTENDED	false	the blue polyline joins its sample-3 circular marker cleanly at .380.
+PAIR-02623	2026-08-26T13:25:49Z	critical_relations_003_native1x	PASS_INTENDED	false	the blue polyline joins its sample-4 circular marker cleanly at .325.
+PAIR-02681	2026-08-26T13:25:49Z	critical_relations_003_native1x	PASS_INTENDED	false	the dashed truth line passes through the vicinity of the sample-2 .325 marker without hiding its circular boundary.
+PAIR-02683	2026-08-26T13:25:49Z	critical_relations_003_native1x	PASS_INTENDED	false	the dashed truth line passes through the vicinity of the sample-4 .325 marker while both remain visually separable.
+PAIR-03495	2026-08-26T13:25:49Z	critical_relations_003_native1x+value_380_8x	PASS_R168_ADVISORY	false	the second down-arrow tip and terminal 0 of .380 have zero shared pixels; the near adjacency is visible only at pixel magnification and does not impair reading.
+PAIR-03871	2026-08-26T13:25:49Z	critical_relations_003_native1x+value_640_8x	PASS_TEXT_INTERNAL	false	digits 6 and 4 in .640 have one white pixel between masks at 300 dpi, a normal within-number spacing with no shared ink.
+PAIR-03905	2026-08-26T13:25:49Z	critical_relations_003_native1x+value_640_8x	PASS_TEXT_INTERNAL	false	digits 4 and 0 in .640 have one white pixel between masks at 300 dpi, preserving a plainly legible numeric label.
+PAIR-04141	2026-08-26T13:25:49Z	critical_relations_003_native1x+value_380_8x	PASS_TEXT_INTERNAL	false	digits 8 and 0 in .380 have 2.162278 px white clearance and no shared ink; the number reads unambiguously.
+PAIR-04279	2026-08-26T13:25:49Z	critical_relations_003_native1x+value_640_8x	PASS_INTENDED	false	raw square and running-mean circle coincide at sample 1 because both data series equal .640; distinct fill/border shapes retain both meanings.

@@ -1,0 +1,18 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 2 册}{统计学习方法讲义 v2.6.0}{基础监督学习方法}
+\begin{document}
+\setcounter{page}{288}
+\setcounter{chapter}{15}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{决策树}
+\begin{optimizationbox}
+每个结点执行有限候选集合上的局部最优化。局部最优切分不保证整棵树的全局最优，因此还需停止规则和剪枝控制模型复杂度。
+\end{optimizationbox}
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C04/fig_v2_c04_tree_partition.tex}
+图\ref{fig:V2-C04-tree-partition}左侧的每条根到叶路径都对应右侧一个互斥区域；叶结点输出只在该区域内生效。
+\begin{example}[八样本二叉划分的信息增益]
+父结点有8个样本，正负类各4个。特征$A$把样本分成两个容量均为4的子集，求特征$A$的信息增益。
+\end{example}
+\end{document}

@@ -1,0 +1,22 @@
+view_id,file,actual_opened,manual_decision,manual_note
+V001,object_contact_sheet.png,YES,PASS,All 60 current reader-visible objects were inspected; only C020 has a hard defect and it is recorded in the object ledger.
+V002,candidate_relations_part01.png,YES,PASS,Candidate pairs 1--20 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V003,candidate_relations_part02.png,YES,PASS,Candidate pairs 21--40 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V004,candidate_relations_part03.png,YES,PASS,Candidate pairs 41--60 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V005,candidate_relations_part04.png,YES,PASS,Candidate pairs 61--80 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V006,candidate_relations_part05.png,YES,PASS,Candidate pairs 81--100 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V007,candidate_relations_part06.png,YES,PASS,Candidate pairs 101--120 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V008,candidate_relations_part07.png,YES,PASS,Candidate pairs 121--140 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V009,candidate_relations_part08.png,YES,PASS,Candidate pairs 141--160 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V010,candidate_relations_part09.png,YES,PASS,Candidate pairs 161--180 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V011,candidate_relations_part10.png,YES,PASS,Candidate pairs 181--200 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V012,candidate_relations_part11.png,YES,PASS,Candidate pairs 201--211 were inspected after final denominator freeze; no illegal visible-ink overlap.
+V013,legend_roi_native1x.png,YES,FAIL,The x2 legend key is one continuous 73-pixel run with zero internal blank runs.
+V014,legend_roi_nearest8x.png,YES,FAIL,Nearest-neighbour enlargement confirms the x2 legend key is continuous rather than three separated marks.
+V015,label6_roi_native1x.png,YES,PASS,Digit 6 is readable and separated from q6 marker arrow contour digit4 and labels5/7.
+V016,label6_roi_nearest8x.png,YES,PASS,Nearest-neighbour enlargement confirms digit6 has a 7-pixel blank gap to other visible ink.
+V017,label7_roi_nearest8x.png,YES,PASS,Digit7 remains readable with an 8-pixel blank gap and no marker or arrow occlusion.
+V018,figure_crop_300_native1x.png,YES,FAIL,Whole figure is readable and geometrically coherent but the x2 legend swatch remains visually continuous.
+V019,figure_crop_300_grayscale.png,YES,FAIL,Grayscale view preserves the same continuous x2 swatch and therefore fails role differentiation.
+V020,object_overlay_figure_300.png,YES,PASS,Current object denominator and bounding geometry cover the complete figure and legend without clipping.
+V021,full_page_300.png,YES,FAIL,Page integration and caption placement pass but the visible x2 legend hard defect remains.

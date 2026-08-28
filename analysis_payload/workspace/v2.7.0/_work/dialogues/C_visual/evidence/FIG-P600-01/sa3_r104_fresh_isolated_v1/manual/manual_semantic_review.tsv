@@ -1,0 +1,15 @@
+semantic_id	manual_reviewer	claim_checked	body_caption_consistent	decision	manual_note
+SEM-T01	SA3-FRESH	State x is a Markov-chain state	TRUE	PASS	T01 is mathematical x and occupies the left state node.
+SEM-T02	SA3-FRESH	State y is the reverse state	TRUE	PASS	T02 is mathematical y and occupies the right state node.
+SEM-T03	SA3-FRESH	Forward proposal flux is a=π(x)q(x,y)	TRUE	PASS	T03 preserves π(x), q(x,y), and multiplication order.
+SEM-T04	SA3-FRESH	Reverse proposal flux is b=π(y)q(y,x)	TRUE	PASS	T04 preserves π(y), q(y,x), and reversed arguments.
+SEM-T05	SA3-FRESH	Accepted common flux is min(a,b)	TRUE	PASS	T05 visually receives both proposal branches and states the correct minimum.
+SEM-T06	SA3-FRESH	Proposal flows are generally unequal	TRUE	PASS	T06 is consistent with distinct a and b formulas and the surrounding explanation.
+SEM-T07	SA3-FRESH	Forward accepted flux equals min(a,b)	TRUE	PASS	T07 contains the correct π(x)q(x,y)α(x,y) expression and equality.
+SEM-T08	SA3-FRESH	Reverse accepted flux equals min(a,b)	TRUE	PASS	T08 contains the correct π(y)q(y,x)α(y,x) expression and equality.
+SEM-T09	SA3-FRESH	Equal accepted flows imply detailed balance	TRUE	PASS	T09 conclusion matches the diagram and caption causal relation.
+SEM-T10	SA3-FRESH	Detailed balance suffices for π stationarity but is not necessary	TRUE	PASS	T10 states the correct logical strength and matches the caption.
+SEM-T11	SA3-FRESH	Figure number is 32.4	TRUE	PASS	T11 agrees with the page caption and local chapter numbering.
+SEM-T12	SA3-FRESH	MH truncates both accepted directions to the smaller value	TRUE	PASS	T12 exactly summarizes the min(a,b) construction shown above.
+SEM-T13	SA3-FRESH	π stationarity sufficiency does not mean necessity	TRUE	PASS	T13 completes T12 without changing the mathematical claim.
+

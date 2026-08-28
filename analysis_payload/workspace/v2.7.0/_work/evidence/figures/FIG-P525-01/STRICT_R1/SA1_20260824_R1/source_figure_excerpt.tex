@@ -1,0 +1,57 @@
+001: % v2.6.0 figure UID: FIG-P525-01
+002: \tikzset{
+003:   slfig-FIG-P525-01/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,
+004:     every path/.append style={line cap=round,line join=round}},
+005:   slfig-FIG-P525-01-outer/.style={draw=SLTextGray,line width=.92pt},
+006:   slfig-FIG-P525-01-hull/.style={draw=SLTeal,line width=.86pt},
+007:   slfig-FIG-P525-01-spoke/.style={draw=SLGray,densely dashed,line width=.54pt},
+008:   slfig-FIG-P525-01-weight/.style={fill=none,inner sep=0pt},
+009:   slfig-FIG-P525-01-doclabel/.style={anchor=west,text=SLGold,fill=white,
+010:     fill opacity=.92,text opacity=1,inner xsep=1pt,inner ysep=.5pt},
+011:   slfig-FIG-P525-01-formula/.style={draw=SLRuleGray,rounded corners=2pt,
+012:     fill=SLSoftGray,line width=.62pt,align=center,inner ysep=2.2pt},
+013:   slfig-FIG-P525-01-legend/.style={anchor=west,text=SLTextGray,
+014:     font=\fontsize{8.8pt}{10.4pt}\selectfont}
+015: }
+016: \begin{figure}[H]
+017: \centering
+018: \begin{tikzpicture}[slfig-FIG-P525-01,x=1cm,y=1cm]
+019:   % 显式重心变换：(p_1,p_2,p_3) ->
+020:   % (x,y)=(6(p_2+p_3/2), 6(sqrt(3)/2)p_3)。
+021:   \newcommand{\barypoint}[4]{%
+022:     \coordinate (#1) at ({6*(#3+0.5*#4)},{6*0.8660254*#4});}
+023:   \coordinate (Wone) at (0,0);
+024:   \coordinate (Wtwo) at (6,0);
+025:   \coordinate (Wthree) at (3,{3*sqrt(3)});
+026:   \barypoint{T1}{.78}{.12}{.10}
+027:   \barypoint{T2}{.10}{.78}{.12}
+028:   \barypoint{T3}{.12}{.13}{.75}
+029:   \barypoint{Doc}{.309}{.4195}{.2715}
+030: 
+031:   \fill[SLTeal,opacity=.085] (T1)--(T2)--(T3)--cycle;
+032:   \draw[slfig-FIG-P525-01-outer] (Wone)--(Wtwo)--(Wthree)--cycle;
+033:   \node[below left] at (Wone) {$w_1$};
+034:   \node[below right] at (Wtwo) {$w_2$};
+035:   \node[above] at (Wthree) {$w_3$};
+036:   \draw[slfig-FIG-P525-01-hull] (T1)--(T2)--(T3)--cycle;
+037: 
+038:   \foreach \p/\lab/\pos in {T1/$\phi_{:1}$/left,T2/$\phi_{:2}$/right,T3/$\phi_{:3}$/above right}{
+039:     \fill[SLBlue] (\p) circle (2.6pt) node[\pos,text=SLBlue] {\lab};
+040:   }
+041:   \draw[slfig-FIG-P525-01-spoke] (Doc)--(T1);
+042:   \draw[slfig-FIG-P525-01-spoke] (Doc)--(T2);
+043:   \draw[slfig-FIG-P525-01-spoke] (Doc)--(T3);
+044:   \node[slfig-FIG-P525-01-weight] at (2.05,1.28) {$\theta_{1j}$};
+045:   \node[slfig-FIG-P525-01-weight] at (3.65,.95) {$\theta_{2j}$};
+046:   \node[slfig-FIG-P525-01-weight] at (2.55,2.05) {$\theta_{3j}$};
+047:   \node[diamond,draw=SLGold,fill=SLGold!18,minimum size=6mm,
+048:     inner sep=0pt,line width=.9pt] (dj) at (Doc) {};
+049:   \node[slfig-FIG-P525-01-formula,
+050:     minimum width=58mm,minimum height=8mm] at (8.0,2.55)
+051:     {$P(w\mid d_j)=\sum_{k=1}^{3}\theta_{kj}\phi_{:k}$\\
+052:      $\theta_{kj}\ge0,\ \sum_k\theta_{kj}=1$};
+053:   \node[slfig-FIG-P525-01-legend] at (6.95,1.25)
+054:     {圆：主题点\quad 菱形：文档分布 $P(w\mid d_j)$};
+055: \end{tikzpicture}
+056: \caption{三个单词维度中的主题单纯形：文档分布是主题点按$\theta_{:j}$形成的凸组合}\label{fig:V4-C06-simplex}
+057: \end{figure}

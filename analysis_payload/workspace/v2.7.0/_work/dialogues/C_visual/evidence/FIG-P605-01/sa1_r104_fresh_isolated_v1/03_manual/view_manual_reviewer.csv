@@ -1,0 +1,5 @@
+view_id,file,reviewer,actual_opened,tofu_or_wrong_glyph,actual_unreadable,severe_size_imbalance,true_clipping,illegal_overlap,geometry_or_relation_error,math_or_content_error,decision,note
+VIEW-001,01_render/full_page_200dpi.png,SA1,true,false,false,false,false,false,false,false,R168_HARD_PASS,Full-page integration is balanced; figure caption and surrounding page remain readable.
+VIEW-002,01_render/figure_crop_300dpi.png,SA1,true,false,false,false,false,false,false,false,R168_HARD_PASS,Figure plus caption is clean with exterior margins and no crop contact.
+VIEW-003,01_render/standalone_300dpi.png,SA1,true,false,false,false,false,false,false,false,R168_HARD_PASS,Standalone panels show intact nodes arrows formulas and annotations.
+VIEW-004,01_render/grayscale_300dpi.png,SA1,true,false,false,false,false,false,false,false,R168_HARD_PASS,Grayscale maintains panel structure arrow routing text and note-card distinction.

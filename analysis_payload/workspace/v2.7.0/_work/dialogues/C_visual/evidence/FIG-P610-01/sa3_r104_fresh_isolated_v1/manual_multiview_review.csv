@@ -1,0 +1,14 @@
+﻿view_id,file,reviewer_type,human_certification,actual_viewed,visual_observation,hard_finding,advisory
+VIEW-001,full_page_native_300dpi.png,AI_SA3_VISUAL_REVIEW,false,true,物理页662页眉649与图32.10同页；图、题注及后续例题连续，无裁切或异常留白,CLEAR,none
+VIEW-002,full_page_200dpi.png,AI_SA3_VISUAL_REVIEW,false,true,整页缩览下图宽与正文栏协调，图注没有挤压邻接例题,CLEAR,none
+VIEW-003,figure_crop_with_caption_native_300dpi.png,AI_SA3_VISUAL_REVIEW,false,true,两面板、中央分隔、题注完整；题注第二行自然续排且语义连续,CLEAR,none
+VIEW-004,standalone_equivalent_native_300dpi.png,AI_SA3_VISUAL_REVIEW,false,true,原位无二次缩放裁图中全部标题、节点、箭头、拒绝符和注释清楚,CLEAR,none
+VIEW-005,standalone_equivalent_grayscale_300dpi.png,AI_SA3_VISUAL_REVIEW,false,true,灰度下浅灰候选圈、深色输出圈、红色拒绝符转灰后仍由形状和线型区分,CLEAR,颜色层级变灰但结构编码充分
+VIEW-006,object_measurement_overlay_native_300dpi.png,AI_SA3_VISUAL_REVIEW,false,true,38个实际对象框均落在对应可见语义对象上且无漏对象,CLEAR,overlay标签自身仅为证据标注不参与正文裁决
+VIEW-007,glyph_measurement_overlay_native_300dpi.png,AI_SA3_VISUAL_REVIEW,false,true,77个非空glyph框覆盖标题、节点公式、乘号和两条注释,CLEAR,overlay文字拥挤仅是量测标注层
+VIEW-008,critical_reject_connector_1x_native_300dpi.png,AI_SA3_VISUAL_REVIEW,false,true,右侧Y2拒绝路径在原生1x下清楚显示上虚线、乘号、下虚线和双圈,CLEAR,none
+VIEW-009,critical_reject_connector_8x_nearest.png,AI_SA3_VISUAL_REVIEW,false,true,最近关键区8x最近邻视图确认红乘号与灰虚线无共享前景像素,CLEAR,虚线到双圈3px白隙按R168为advisory
+VIEW-010,critical_state_arrows_1x_native_300dpi.png,AI_SA3_VISUAL_REVIEW,false,true,两个水平实线箭头在1x下均可见箭头头部并停止于节点外,CLEAR,none
+VIEW-011,critical_state_arrows_8x_nearest.png,AI_SA3_VISUAL_REVIEW,false,true,8x视图确认箭杆和箭头不穿双圈或Y1/Y3字墨,CLEAR,1–2px栅格抗锯齿差不作硬FAIL
+VIEW-012,right_note_glyphs_1x_native_300dpi.png,AI_SA3_VISUAL_REVIEW,false,true,右注释原生1x逐字可读且末尾Y1不触面板边框,CLEAR,源声明8.5pt仅为字体metadata advisory
+VIEW-013,right_note_glyphs_8x_nearest.png,AI_SA3_VISUAL_REVIEW,false,true,右注释8x视图未见tofu、错码、断笔或数学上下标丢失,CLEAR,汉字“一”的单横画低bbox为字形固有

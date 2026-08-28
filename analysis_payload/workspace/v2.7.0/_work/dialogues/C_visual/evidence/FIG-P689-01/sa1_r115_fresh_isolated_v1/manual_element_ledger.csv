@@ -1,0 +1,23 @@
+ELEMENT_ID,OBSERVED_TEXT,RAW_H_INK_PX,SOURCE_PT_CONTEXT,GLYPH_CODEPOINT_VERDICT,READABILITY_VERDICT,BALANCE_VERDICT,CLIP_PIXEL_COUNT,TRUE_VISIBLE_INK_OVERLAP_PIXEL_COUNT,MANUAL_STATUS,POST_OBSERVATION_NOTE
+E01,证据的长度分解,43,bold node rendered 10.95pt,PASS,PASS,PASS,0,0,PASS,Native and 8x views show complete bold Han glyphs; heading is centered and clear of the panel top.
+E02,log p(w),39,9.2pt inherited,PASS,PASS,PASS,0,0,PASS,Italic p and w plus parentheses are intact; label is centered above the total-length arrow.
+E03,L(q)：证据下界,40,9.2pt inherited,PASS,PASS,PASS,0,0,PASS,Script L and q plus Chinese colon/text render correctly; no contact with bar borders or divider.
+E04,KL 间隙,34,9.2pt inherited,PASS,PASS,PASS,0,0,PASS,Latin KL and Han text are complete and remain balanced inside the orange segment.
+E05,log p(w)=L(q)+KL(q(h)||p(h|w)),39,9.2pt inherited,PASS,PASS,PASS,0,0,PASS,All operators parentheses variables double norm bar and conditioning bar are visually distinct and mathematically ordered.
+E06,KL>=0，故 L(q)<=log p(w)；变分族受限,40,9.2pt inherited,PASS,PASS,PASS,0,0,PASS,Greater-than-or-equal and less-than-or-equal glyphs are correct; first note line is readable with no border contact.
+E07,时，间隙可保持为正。,38,9.2pt inherited,PASS,PASS,PASS,0,0,PASS,Second note line is complete; the 5 px vector-line gap to E06 remains visibly open at native and 8x.
+E08,坐标更新下的 ELBO 非降阶梯,43,bold node rendered 10.95pt,PASS,PASS,PASS,0,0,PASS,Mixed Han and ELBO title has no tofu or baseline break and matches the left title's visual weight.
+E09,未知全局上限,33,explicit 9.0pt advisory,PASS,PASS,PASS,0,0,PASS,Actual rendering is clearly legible in color and grayscale; the 9.0pt declaration alone is advisory under R168.
+E10,坐标稳定／局部驻点,34,explicit 9.0pt advisory,PASS,PASS,PASS,0,0,PASS,Fullwidth slash U+FF0F and all Han glyphs are correct; annotation remains clear of the staircase.
+E11,坐标更新轮次,33,explicit 9.0pt advisory,PASS,PASS,PASS,0,0,PASS,Axis label is centered and legible at page scale; no tick or panel-border contact.
+E12,0,27,footnotesize rendered 9.31pt,PASS,PASS,PASS,0,0,PASS,Digit 0 is distinct from letter O and clear of the y-axis/tick.
+E13,1,26,footnotesize rendered 9.31pt,PASS,PASS,PASS,0,0,PASS,Digit 1 is sharp and horizontally isolated.
+E14,2,26,footnotesize rendered 9.31pt,PASS,PASS,PASS,0,0,PASS,Digit 2 is sharp and horizontally isolated.
+E15,3,27,footnotesize rendered 9.31pt,PASS,PASS,PASS,0,0,PASS,Digit 3 is sharp and horizontally isolated.
+E16,4,26,footnotesize rendered 9.31pt,PASS,PASS,PASS,0,0,PASS,Digit 4 is sharp and horizontally isolated.
+E17,5,27,footnotesize rendered 9.31pt,PASS,PASS,PASS,0,0,PASS,Digit 5 is sharp and horizontally isolated.
+E18,6,27,footnotesize rendered 9.31pt,PASS,PASS,PASS,0,0,PASS,Digit 6 is sharp and horizontally isolated.
+E19,图 35.5,38,caption label rendered 10.0pt,PASS,PASS,PASS,0,0,PASS,Caption label is complete and separated from E20 horizontally and from the panel border vertically.
+E20,caption line 1,38,caption rendered 10.0pt,PASS,PASS,PASS,0,0,PASS,Han text plus ELBO and KL are complete; line remains inside caption width with no truncation.
+E21,caption line 2,42,caption rendered 10.0pt,PASS,PASS,PASS,0,0,PASS,Long second line is complete and evenly set; no collision with adjacent caption lines.
+E22,caption line 3,37,caption rendered 10.0pt,PASS,PASS,PASS,0,0,PASS,Final phrase is intact and visually closes the caption without clipping.

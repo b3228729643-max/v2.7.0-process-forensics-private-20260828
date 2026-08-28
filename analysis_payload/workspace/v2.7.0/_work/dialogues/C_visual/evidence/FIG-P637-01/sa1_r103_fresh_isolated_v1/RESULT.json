@@ -1,0 +1,93 @@
+{
+  "handoff_id": "C-FIG-P637-01-R103-SA1-FRESH-ISOLATED-V1",
+  "instance": "/root/sa1_fig_p637_r103_fresh_isolated",
+  "review_role": "SA1_FRESH_ISOLATED",
+  "figure_uid": "FIG-P637-01",
+  "candidate": {
+    "pdf_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r103_fullbook\\main_full.pdf",
+    "bytes": 4967184,
+    "sha256": "9379A489E0C2A57A7DA670C98029BB27B3F1A385BF8E4C3BD14FE9B606AA0F23",
+    "page_count": 817,
+    "located_physical_page_1_based": 687,
+    "printed_page": "674",
+    "locator_match_count": 1
+  },
+  "execution_boundary": {
+    "tex_execution": "DISABLED",
+    "source_writer": "NONE",
+    "business_source_writes": 0,
+    "prior_conclusions_read": 0,
+    "child_agents": 0
+  },
+  "denominators": {
+    "raw_pdf_drawings_on_page": 39,
+    "raw_pdf_drawings_mapped_to_figure": 31,
+    "raw_pdf_drawings_excluded_outside_figure": 8,
+    "mapped_background_fill_exclusions": 2,
+    "independent_text_objects": 16,
+    "independent_graphic_objects": 21,
+    "independent_objects_total": 37,
+    "unordered_pairs_expected": 666,
+    "unordered_pairs_actual": 666,
+    "visible_glyphs": 131,
+    "whitespace_exclusions": 3,
+    "clip_rows": 37,
+    "glyph_manual_rows": 131,
+    "critical_pair_manual_rows": 42,
+    "clip_manual_rows": 37,
+    "view_manual_rows": 46
+  },
+  "pair_results": {
+    "text_text_pairs": 120,
+    "text_graphic_pairs": 336,
+    "graphic_graphic_pairs": 210,
+    "zero_intersection_pairs": 624,
+    "machine_flagged_nonzero_pairs": 42,
+    "manually_reviewed_nonzero_pairs": 42,
+    "designed_intersection_pairs": 42,
+    "raw_designed_intersection_pixels": 1731,
+    "illegal_overlap_pairs": 0,
+    "illegal_overlap_pixels": 0,
+    "minimum_text_relation_clearance_px": 10.198
+  },
+  "mask_and_clip_results": {
+    "glyph_masks_nonempty": 131,
+    "glyph_missing_stroke_pixels": 0,
+    "glyph_foreign_ink_pixels": 0,
+    "mask_contamination_count": 0,
+    "clip_pixel_count": 0,
+    "minimum_assigned_viewport_ink_margin_px": 9,
+    "math_rule_path_count": 0
+  },
+  "hard_gates": {
+    "source_font_pass_under_r168": true,
+    "pixel_height_pass_under_r168": true,
+    "same_class_ratio_pass_under_r168": true,
+    "role_ratio_pass_under_r168": true,
+    "tofu_missing_glyph_pass": true,
+    "wrong_glyph_codepoint_pass": true,
+    "math_semantics_pass": true,
+    "actual_readability_pass": true,
+    "obvious_severe_font_imbalance_pass": true,
+    "geometry_pass": true,
+    "relationship_semantics_pass": true,
+    "object_content_pass": true,
+    "real_clipping_pass": true,
+    "illegal_overlap_pass": true,
+    "mask_contamination_pass": true,
+    "grayscale_pass": true,
+    "page_integration_pass": true,
+    "render_path_pass": true
+  },
+  "pixel_status": "CLEAR",
+  "failure_ids": [],
+  "advisories": [
+    "The source's explicit 9.2pt figure text and 8.8pt state numerals are below a legacy absolute numeric preference but remain fully readable and visually balanced; R168 makes that numeric difference advisory.",
+    "Caption PDF metadata near 9.96-9.99pt versus figure metadata near 9.165pt is a small role/metadata scale difference; native review shows no severe imbalance.",
+    "The caption spans two lines and is information-dense but is fully contained and readable."
+  ],
+  "result": "PASS",
+  "c_local_pass_declared": false,
+  "global_pass_declared": false,
+  "next_action": "REQUEST_FRESH_ISOLATED_SA3"
+}

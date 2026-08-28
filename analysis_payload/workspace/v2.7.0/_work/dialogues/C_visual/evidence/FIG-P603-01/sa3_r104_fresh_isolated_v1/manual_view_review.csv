@@ -1,0 +1,6 @@
+reviewer,view_id,path,scale,viewed,decision,note
+SA3,VIEW-FULL-PAGE,full_page_200dpi.png,200dpi,YES,PASS,"Physical page 655 was inspected in full: figure, surrounding prose, printed page 642, and caption are balanced and uncropped."
+SA3,VIEW-FIGURE,figure_crop_300dpi.png,native300dpi,YES,PASS,"Figure plus caption is sharp and readable; no illegal overlap, wrong glyph, tofu, or edge loss is visible."
+SA3,VIEW-STANDALONE,standalone_300dpi.png,native300dpi,YES,PASS,"Standalone graphic preserves all axes, ticks, labels, curve segments, breakpoint, and formula card without clipping."
+SA3,VIEW-GRAYSCALE,standalone_grayscale_300dpi.png,native300dpi,YES,PASS,"Grayscale rendering keeps the curve, guide, marker, annotations, and formulas distinguishable."
+SA3,VIEW-OVERLAY,standalone_object_overlay_300dpi.png,native300dpi,YES,PASS,"Object overlay accounts for all 150 glyphs and 15 graphical objects; no visible foreground element is unmapped."

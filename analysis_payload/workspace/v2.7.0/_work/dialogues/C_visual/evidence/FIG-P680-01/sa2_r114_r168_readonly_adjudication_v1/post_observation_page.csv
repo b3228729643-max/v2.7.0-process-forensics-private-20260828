@@ -1,0 +1,21 @@
+VIEW_ID,EXACT_ARTIFACT,ACTUALLY_OPENED,POST_OBSERVATION,MANUAL_ADJUDICATION
+V01,views/full_page_200dpi.png,yes,"physical page 729 integrates figure 35.1 between dependency text and the following data-direction box; no isolated caption or severe page imbalance",CLEAR
+V02,views/native_page_300dpi.png,yes,"native full page confirms the figure/caption is complete and unclipped",CLEAR
+V03,views/figure_only_300dpi.png,yes,"all five containers, warning container, four arrows, labels, and node text are complete",CLEAR
+V04,views/figure_caption_300dpi.png,yes,"figure and complete two-line caption are readable and mutually consistent",CLEAR
+V05,views/figure_caption_grayscale_300dpi.png,yes,"solid-versus-dashed branch coding and hierarchy persist without color",CLEAR
+V06,overlays/object_overlay_300dpi.png,yes,"all 25 frozen IDs are represented; text boxes remain inside intended geometry",CLEAR
+V07,overlays/semantic_overlay_300dpi.png,yes,"node and arrow roles are separated; intended connector contacts are visible",CLEAR
+V08,rois/ROI01_shared_left_branch_native1x.png,yes,"solid teal branch is clean and does not contact text",CLEAR
+V09,rois/ROI01_shared_left_branch_nearest8x.png,yes,"arrow/node-border attachment is intentional and free of text collision",CLEAR
+V10,rois/ROI02_shared_right_branch_native1x.png,yes,"dashed gold branch is clean and does not contact text",CLEAR
+V11,rois/ROI02_shared_right_branch_nearest8x.png,yes,"open/dashed branch and node-border attachment remain distinct",CLEAR
+V12,rois/ROI03_left_route_native1x.png,yes,"complete-Bayes and Gibbs path is readable; vertical arrow does not enter text",CLEAR
+V13,rois/ROI03_left_route_nearest8x.png,yes,"theta/phi and Latin glyphs are complete; borders/arrows are unbroken",CLEAR
+V14,rois/ROI04_right_route_native1x.png,yes,"point-parameter and variational-EM path is readable; dashed arrow does not enter text",CLEAR
+V15,rois/ROI04_right_route_nearest8x.png,yes,"phi/ELBO/EM glyphs are complete; borders/arrows are unbroken",CLEAR
+V16,rois/ROI05_warning_native1x.png,yes,"warning remains readable and centered",CLEAR
+V17,rois/ROI05_warning_nearest8x.png,yes,"no tofu, clipping, or border contact in the warning",CLEAR
+V18,rois/ROI06_caption_native1x.png,yes,"caption label and both caption lines are complete",CLEAR
+V19,rois/ROI06_caption_nearest8x.png,yes,"caption codepoints and punctuation are complete; no clipping",CLEAR
+

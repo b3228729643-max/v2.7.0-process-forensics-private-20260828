@@ -1,0 +1,25 @@
+﻿scope_type,scope_id,opened,decision,note
+VIEW,full_page_200dpi,YES,PASS_PAGE_INTEGRATION,"local wrapper printed label 685; figure, caption, reading-order paragraph and surrounding whitespace integrate cleanly; no source clipping/overflow"
+VIEW,figure_crop_300dpi,YES,PASS_LAYOUT_TYPOGRAPHY,"expanded final crop; all eight nodes, seven relations, labels and formulas are complete and readable"
+VIEW,standalone_300dpi,YES,PASS_STANDALONE,same local vector crop; compiled wrapper consistency separately passes for 95 glyphs and 21 drawings modulo translation
+VIEW,grayscale_300dpi,YES,PASS_GRAYSCALE,"node hierarchy, arrow directions, dashed application edge and formula rule remain distinguishable without color"
+VIEW,after_text_measurement_overlay_300dpi,YES,PASS_TEXT_MAPPING,all G0001-G0095 bboxes align with their rendered characters; no missing or foreign text
+PANEL,trial,YES,PASS,category-count node and n formula clean
+PANEL,gamma,YES,PASS,Gamma/Beta normalization-factor wording complete; no low-profile 一 glyph
+PANEL,families,YES,PASS,multinomial and Dirichlet-prior wording balanced in core node
+PANEL,posterior,YES,PASS,posterior title and alpha+n formula have 7px parent-bbox clearance or more
+PANEL,predictive,YES,PASS,"title and predictive fraction are centered, complete and separated"
+PANEL,simplex,YES,PASS,interpretation node and connector are clear
+PANEL,mom,YES,PASS,mean/concentration/log-moment node and connector are clear
+PANEL,lda,YES,PASS,downstream topic-model application node is complete inside the final crop
+PANEL,application_edge,YES,PASS,"dashed arrow, arrowhead and 应用 label are distinct and correctly directed"
+ROLE,NODE_LABEL,YES,PASS,10.1pt labels pass all native pixel and D gates
+ROLE,FORMULA_BLOCK,YES,PASS,11.6pt formulas pass pixel/D/E and source ratio; visual harmony passes
+ROLE,EDGE_LABEL,YES,PASS,10.1pt application label is legible and separated
+ROLE,GRAPHIC,YES,PASS,"all 21 path masks, including the fraction rule, pass 1x/8x purity/completeness"
+SCRIPT,BASE_MATH_OPERATOR,YES,PASS,all glyphs in this script class pass the independent native-300dpi threshold; no reference pending
+SCRIPT,BASE_MATH_SYMBOL,YES,PASS,all glyphs in this script class pass the independent native-300dpi threshold; no reference pending
+SCRIPT,CJK_FULL,YES,PASS,all glyphs in this script class pass the independent native-300dpi threshold; no reference pending
+SCRIPT,LATIN_GREEK_XHEIGHT,YES,PASS,all glyphs in this script class pass the independent native-300dpi threshold; no reference pending
+SCRIPT,LATIN_UPPER_DIGIT,YES,PASS,all glyphs in this script class pass the independent native-300dpi threshold; no reference pending
+SCRIPT,NATURAL_SCRIPT,YES,PASS,all glyphs in this script class pass the independent native-300dpi threshold; no reference pending

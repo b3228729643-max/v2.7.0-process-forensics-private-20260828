@@ -1,0 +1,39 @@
+object_id,kind,role,source_name,source_lines,expected_visible_semantics,scope
+O001,graphic,axis,x-axis,14-16,horizontal coordinate axis x_1,target figure including generated caption
+O002,graphic,axis,y-axis,14-16,vertical coordinate axis x_2,target figure including generated caption
+O003,graphic,contour,outer contour,20-21,level-set contour scale 2.70,target figure including generated caption
+O004,graphic,contour,middle-outer contour,22-23,level-set contour scale 2.15,target figure including generated caption
+O005,graphic,contour,middle-inner contour,24-25,level-set contour scale 1.65,target figure including generated caption
+O006,graphic,contour,inner contour,26-27,level-set contour scale 0.90,target figure including generated caption
+O007,graphic,update-arrow-x2,step 1 arrow q0->q1,39,dashed teal vertical update,target figure including generated caption
+O008,graphic,update-arrow-x1,step 2 arrow q1->q2,36,solid blue horizontal update,target figure including generated caption
+O009,graphic,update-arrow-x2,step 3 arrow q2->q3,40,dashed teal vertical update,target figure including generated caption
+O010,graphic,update-arrow-x1,step 4 arrow q3->q4,37,solid blue horizontal update,target figure including generated caption
+O011,graphic,update-arrow-x2,step 5 arrow q4->q5,41,dashed teal vertical update,target figure including generated caption
+O012,graphic,update-arrow-x1,step 6 arrow q5->q6,38,solid blue horizontal update,target figure including generated caption
+O013,graphic,update-arrow-x2,step 7 arrow q6->q7,42,dashed teal vertical update,target figure including generated caption
+O014,graphic,marker-initial,initial point q0,43,black filled circular marker,target figure including generated caption
+O015,text,point-label,initial label,44,x^(0),target figure including generated caption
+O016,text,step-label,step label 1,45,1,target figure including generated caption
+O017,text,step-label,step label 2,46,2,target figure including generated caption
+O018,text,step-label,step label 3,47,3,target figure including generated caption
+O019,text,step-label,step label 4,48,4,target figure including generated caption
+O020,text,step-label,step label 5,49,5,target figure including generated caption
+O021,text,step-label,step label 6,50-52,6,target figure including generated caption
+O022,text,step-label,step label 7,53-55,7,target figure including generated caption
+O023,graphic,marker-x2,square marker q1,56-57,teal outlined square,target figure including generated caption
+O024,graphic,marker-x2,square marker q3,56-57,teal outlined square,target figure including generated caption
+O025,graphic,marker-x2,square marker q5,56-57,teal outlined square,target figure including generated caption
+O026,graphic,marker-x2,square marker q7,56-57,teal outlined square,target figure including generated caption
+O027,graphic,marker-x1,circle marker q2,58,blue filled circle,target figure including generated caption
+O028,graphic,marker-x1,circle marker q4,59,blue filled circle,target figure including generated caption
+O029,graphic,marker-x1,circle marker q6,60,blue filled circle,target figure including generated caption
+O030,graphic,marker-optimum,optimum star,61-62,gold five-point star at origin,target figure including generated caption
+O031,text,point-label,optimum label,63-64,x*,target figure including generated caption
+O032,text,axis-label,x1 axis label,16,x_1,target figure including generated caption
+O033,text,axis-label,x2 axis label,16,x_2,target figure including generated caption
+O034,graphic,legend-key,legend x1 sample,65,solid blue line sample,target figure including generated caption
+O035,text,legend-label,legend x1 text,66,更新 x_1,target figure including generated caption
+O036,graphic,legend-key,legend x2 sample,67-72,disconnected teal line sample,target figure including generated caption
+O037,text,legend-label,legend x2 text,73,更新 x_2,target figure including generated caption
+O038,text,caption,numbered figure caption,76,坐标下降的每个子步只改变一个坐标，因此轨迹沿轴向折线逼近最优点。,target figure including generated caption

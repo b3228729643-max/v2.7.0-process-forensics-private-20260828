@@ -1,0 +1,55 @@
+{
+  "canonical_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r94_fullbook\\main_full.pdf",
+  "physical_page": 623,
+  "printed_page": 610,
+  "page_pt": {
+    "width": 595.2760009765625,
+    "height": 841.8900146484375
+  },
+  "native_300dpi": {
+    "file": "full_page_300dpi.png",
+    "width": 2481,
+    "height": 3508,
+    "dpi": 300,
+    "direct_render_command": "pdftoppm -f 623 -l 623 -r 300 -png -singlefile <PDF> full_page_300dpi"
+  },
+  "native_200dpi": {
+    "file": "full_page_200dpi.png",
+    "width": 1654,
+    "height": 2339,
+    "dpi": 200,
+    "direct_render_command": "pdftoppm -f 623 -l 623 -r 200 -png -singlefile <PDF> full_page_200dpi"
+  },
+  "figure_crop_300dpi": {
+    "file": "figure_crop_300dpi.png",
+    "source": "full_page_300dpi.png",
+    "integer_rect_xyxy_exclusive": [
+      208,
+      250,
+      2271,
+      1159
+    ],
+    "resized": false
+  },
+  "standalone_300dpi": {
+    "file": "standalone_300dpi.png",
+    "source": "full_page_300dpi.png",
+    "integer_rect_xyxy_exclusive": [
+      375,
+      250,
+      2105,
+      1013
+    ],
+    "resized": false
+  },
+  "grayscale": {
+    "file": "grayscale_300dpi.png",
+    "source": "figure_crop_300dpi.png",
+    "resized": false
+  },
+  "eight_x_rule": "All 8x files use nearest-neighbour only for human pixel inspection; all counts use native 1:1 300dpi coordinates.",
+  "source_paths": {
+    "figure_source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C02\\fig_v5_c02_generalized_inverse.tex",
+    "context_source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\第05册_采样方法主题模型与图排序\\chapters\\V5-C02.tex"
+  }
+}

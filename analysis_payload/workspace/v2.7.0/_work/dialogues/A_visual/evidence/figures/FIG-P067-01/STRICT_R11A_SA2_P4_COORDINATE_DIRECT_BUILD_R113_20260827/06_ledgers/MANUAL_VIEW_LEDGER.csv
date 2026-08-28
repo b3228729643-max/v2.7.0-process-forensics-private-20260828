@@ -1,0 +1,35 @@
+view_id,evidence_path,opened_at_utc,reviewer,decision,note
+V001,views/standalone_300dpi.png,2026-08-27T12:17:30Z,/root,PASS,Complete standalone page is balanced and readable with both panels fully visible.
+V002,02_render/figure_crop_300dpi.png,2026-08-27T12:17:30Z,/root,PASS,Native figure crop shows intact CDF and PMF panels with no clipping or illegal overlap.
+V003,02_render/grayscale_300dpi.png,2026-08-27T12:17:30Z,/root,PASS,Grayscale view preserves curve guide marker and label distinctions.
+V004,02_render/after_text_measurement_overlay_300dpi.png,2026-08-27T12:17:30Z,/root,PASS,All 65 visible glyph boxes align with their displayed characters and no caption is present in the standalone denominator.
+V005,02_render/after_graphic_overlay_300dpi.png,2026-08-27T12:17:30Z,/root,PASS,All 35 final-visible drawing paths map to axes curves guides endpoints and markers without unassigned foreground.
+V006,04_contacts/glyph_contact_sheet_01_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native glyph cells T001 through T012 were opened and each original overlay and mask triplet matched.
+V007,04_contacts/glyph_contact_sheet_01_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Nearest8x cells T001 through T012 confirmed low punctuation and p1/p2 formula strokes.
+V008,04_contacts/glyph_contact_sheet_02_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native glyph cells T013 through T024 were opened including p3 p4 and the first annotation characters.
+V009,04_contacts/glyph_contact_sheet_02_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Nearest8x cells T013 through T024 showed complete p4 and CJK masks without foreign ink.
+V010,04_contacts/glyph_contact_sheet_03_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native glyph cells T025 through T036 covered the rest of the CDF annotation y label and support ticks.
+V011,04_contacts/glyph_contact_sheet_03_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Nearest8x cells T025 through T036 confirmed rotated formula glyphs and tick digits.
+V012,04_contacts/glyph_contact_sheet_04_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native glyph cells T037 through T048 covered x=4 and PMF numeric labels including both 0.35 and replayed 0.3.
+V013,04_contacts/glyph_contact_sheet_04_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Nearest8x cells T037 through T048 showed complete decimal dots and clear adjacent tick labels.
+V014,04_contacts/glyph_contact_sheet_05_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native glyph cells T049 through T060 covered the PMF note equality probability symbols and t label.
+V015,04_contacts/glyph_contact_sheet_05_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Nearest8x cells T049 through T060 confirmed CJK 一 remains continuous and all formula masks are pure.
+V016,04_contacts/glyph_contact_sheet_06_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native glyph cells T061 through T065 covered the rotated PMF y-axis formula.
+V017,04_contacts/glyph_contact_sheet_06_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Nearest8x cells T061 through T065 confirmed complete p_X(t) contours.
+V018,04_contacts/graphic_contact_sheet_01_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native graph cells G001 through G008 covered CDF axes step curve and top reference.
+V019,04_contacts/graphic_contact_sheet_01_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Representative nearest8x details for G001 through G008 showed intact strokes and arrowheads.
+V020,04_contacts/graphic_contact_sheet_02_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native graph cells G009 through G020 covered four CDF guides and four filled endpoints.
+V021,04_contacts/graphic_contact_sheet_02_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Representative nearest8x details for G009 through G020 confirmed intentional guide-marker joins.
+V022,04_contacts/graphic_contact_sheet_03_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native graph cells G021 through G028 covered open endpoints and PMF horizontal axis components.
+V023,04_contacts/graphic_contact_sheet_03_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Representative nearest8x details for G021 through G028 showed unbroken open rings and axis joins.
+V024,04_contacts/graphic_contact_sheet_04_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native graph cells G029 through G037 covered PMF y axis stems guides and first marker.
+V025,04_contacts/graphic_contact_sheet_04_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Representative nearest8x details for G029 through G037 confirmed dashed guide visibility and stem alignment.
+V026,04_contacts/graphic_contact_sheet_05_1x.png,2026-08-27T12:17:30Z,/root,PASS,Native graph cells G038 through G040 covered the remaining three PMF markers.
+V027,04_contacts/graphic_contact_sheet_05_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Representative nearest8x details for G038 through G040 showed complete marker disks.
+V028,05_pairs/critical_pair_contact_01_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Critical cells 1 through 12 showed four independent text clearances and expected CDF axis topology.
+V029,05_pairs/critical_pair_contact_02_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Critical cells 13 through 24 showed intended arrow shaft step guide and filled endpoint joins.
+V030,05_pairs/critical_pair_contact_03_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Critical cells 25 through 36 showed expected open endpoint and guide crossings without independent-object collisions.
+V031,05_pairs/critical_pair_contact_04_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Critical cells 37 through 48 closed remaining CDF topology and initial PMF axis-tick joins.
+V032,05_pairs/critical_pair_contact_05_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Critical cells 49 through 60 showed PMF axis guide stem and arrow connections as intended.
+V033,05_pairs/critical_pair_contact_06_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Critical cells 61 through 70 showed PMF stem-marker and guide-marker alignment with no foreign overlap.
+V034,05_pairs/p4_target_relations/p4_target_relation_contact_8x_nearest.png,2026-08-27T12:17:30Z,/root,PASS,Six dedicated p4 relations show zero shared pixels and 15 16 22 24 25 and 45px clearances.

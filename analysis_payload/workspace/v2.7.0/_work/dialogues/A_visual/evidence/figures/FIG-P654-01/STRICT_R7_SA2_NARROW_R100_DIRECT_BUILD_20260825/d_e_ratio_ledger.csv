@@ -1,0 +1,9 @@
+﻿CHECK_ID,NUMERATOR,DENOMINATOR,RATIO,ALLOWED,STATUS,NOTE
+D_SOURCE_SAME_ROLE_NODE_LABEL,10.1,10.1,1.0,max/min<=1.03; abs diff<=0.25pt,PASS,all ordinary node labels and application annotation use the declared 10.1pt base
+D_SOURCE_SAME_ROLE_FORMULA_BLOCK,11.6,11.6,1.0,max/min<=1.03; abs diff<=0.25pt,PASS,posterior and predictive emphasized formula blocks share 11.6pt
+D_CJK_SEMANTIC_ELEMENT_MEDIAN_EXTREMES,35.0,34.5,1.014493,<=1.08,PASS,"semantic label medians, not individual glyph-shape heights"
+E_FORMULA_BLOCK_TO_BASE,11.6,10.1,1.148515,"[1.00,1.18]",PASS,source effective-point hierarchy
+E_APPLICATION_ANNOTATION_TO_BASE,10.1,10.1,1.0,"[0.95,1.10]",PASS,application annotation uses base label size
+E_TRIAL_INLINE_FORMULA_TO_BASE,10.7,10.1,1.059406,"[1.00,1.18]",PASS,the sole local mathematical-n override remains within the formula-to-base hierarchy
+D_CROSS_PANEL_ROLE,N/A,N/A,N/A,<=1.10,N_A_SINGLE_PANEL,the audited figure has one panel
+LOW_PROFILE_CALIBRATION,0,0,N/A,"[0.92,1.08] when applicable",N_A_ZERO_OBJECTS,no low-profile punctuation objects occur in the standalone figure

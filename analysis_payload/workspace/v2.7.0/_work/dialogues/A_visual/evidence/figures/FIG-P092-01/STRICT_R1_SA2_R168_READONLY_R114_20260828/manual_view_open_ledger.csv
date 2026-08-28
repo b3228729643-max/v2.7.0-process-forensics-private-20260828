@@ -1,0 +1,12 @@
+VIEW_ID,FILE,PIXEL_PROVENANCE,OPENED_BY,POST_OPEN_OBSERVATION
+V01,full_page_200dpi.png,"direct PDF raster at 200 dpi; no post-resize",SA2-R168,"located the figure in page context and checked preceding proof, caption, following paragraph, and section transition"
+V02,full_page_native_300dpi.png,"direct PDF raster at 300 dpi; no post-resize",SA2-R168,"confirmed complete page integration, glyph presence, and stable full-page visual weight"
+V03,figure_crop_native_300dpi.png,"direct clipped PDF raster at 300 dpi; no post-resize",SA2-R168,"read every tick, label, annotation, formula, and caption; checked curve, guides, markers, axes, and margins"
+V04,figure_crop_grayscale_300dpi.png,"mode-L conversion of V03; no resize",SA2-R168,"confirmed the curve remains primary and guides/annotations remain distinguishable without color"
+V05,text_and_graphics_measurement_overlay_300dpi.png,"V03 with registered 21-object boxes and IDs; no resize",SA2-R168,"verified complete denominator coverage and used it to review the exhaustive unordered-pair universe"
+V06,critical_peak_label_marker_guides_native1x.png,"native pixel crop from V03; no resize",SA2-R168,"checked maximum annotation against curve, maximum marker, and both guides"
+V07,critical_peak_label_marker_guides_nearest8x.png,"nearest-neighbor 8x of V06",SA2-R168,"confirmed no annotation glyph ink is touched or obscured by marker, curve, or guides"
+V08,critical_left_endpoint_label_curve_native1x.png,"native pixel crop from V03; no resize",SA2-R168,"checked left 确定性 annotation against curve, endpoint marker, x-axis, and tick region"
+V09,critical_left_endpoint_label_curve_nearest8x.png,"nearest-neighbor 8x of V08",SA2-R168,"confirmed pale background shields glyph ink and no illegal visible-ink overlap exists"
+V10,critical_right_endpoint_label_curve_native1x.png,"native pixel crop from V03; no resize",SA2-R168,"checked right 确定性 annotation against curve, endpoint marker, x-axis, arrowhead, and tick region"
+V11,critical_right_endpoint_label_curve_nearest8x.png,"nearest-neighbor 8x of V10",SA2-R168,"confirmed pale background shields glyph ink and no illegal visible-ink overlap exists"

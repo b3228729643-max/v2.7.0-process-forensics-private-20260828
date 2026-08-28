@@ -1,0 +1,81 @@
+{
+  "figure_id": "FIG-P634-01",
+  "reviewer": "isolated SA1 strict R5/R94",
+  "official_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r94_fullbook\\main_full.pdf",
+  "official_pdf_page_count": 813,
+  "required_page_count": 813,
+  "page_size_pt": [
+    595.276,
+    841.89
+  ],
+  "a4_required": [
+    595.276,
+    841.89
+  ],
+  "physical_page_selection": {
+    "method": "combined final-PDF text anchor search",
+    "anchors": [
+      "图 33.3",
+      "一轮系统扫描的坐标带",
+      "同轮新值"
+    ],
+    "selected_physical_page": 682,
+    "uniqueness": "combined anchor set unique at physical page 682",
+    "status": "PASS"
+  },
+  "whole_page_direct_renders": {
+    "300dpi": {
+      "file": "renders/official_page_682_300dpi.png",
+      "pixels": [
+        2481,
+        3508
+      ],
+      "expected": [
+        2481,
+        3508
+      ],
+      "status": "PASS"
+    },
+    "200dpi": {
+      "file": "renders/official_page_682_200dpi.png",
+      "pixels": [
+        1654,
+        2339
+      ],
+      "expected": [
+        1654,
+        2339
+      ],
+      "status": "PASS"
+    }
+  },
+  "pixel_slice_provenance": {
+    "source": "renders/official_page_682_300dpi.png",
+    "figure_crop_box_page_px": [
+      270,
+      1675,
+      2230,
+      2592
+    ],
+    "standalone_crop_box_page_px": [
+      270,
+      1687,
+      2230,
+      2426
+    ],
+    "files": [
+      "crops/figure_crop_300dpi.png",
+      "crops/standalone_300dpi.png",
+      "crops/grayscale_300dpi.png",
+      "crops/figure_pixel_slice_8x_nearest.png"
+    ]
+  },
+  "source_read_only": [
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C04\\fig_v5_c04_coordinate_sweep.tex",
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\common\\statlearnbook.sty",
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\第05册_采样方法主题模型与图排序\\main.tex",
+    "D:\\texlive\\2026\\texmf-dist\\tex\\latex\\base\\size11.clo"
+  ],
+  "no_rebuild_or_source_modification_claimed": true,
+  "page_status": "PASS"
+}

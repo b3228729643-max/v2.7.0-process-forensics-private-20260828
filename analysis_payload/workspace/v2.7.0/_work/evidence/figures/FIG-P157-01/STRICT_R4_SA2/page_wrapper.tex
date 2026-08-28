@@ -1,0 +1,19 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{局部页面验证}{统计学习方法讲义 v2.7.0}{FIG-P157-01 SA2 STRICT-R4 页面候选}
+\begin{document}
+\pagestyle{empty}
+\setcounter{chapter}{10}
+\setcounter{figure}{0}
+\noindent\textbf{过拟合、正则化与模型选择}\par
+\smallskip
+过拟合是模型把训练样本中的偶然波动也当作可推广规律，表现为训练误差继续降低而样本外误差反而上升。模型选择的目标不是找到训练误差最小的候选，而是找到预期样本外风险较小的学习流程。
+
+正则化通过改变拟合目标控制复杂度，交叉验证通过重复样本外评估选择复杂度。前者进入训练准则，后者进入选择准则；实践中常由交叉验证选择正则化强度。
+
+\begingroup
+\tikzset{every picture/.append style={scale=1.12}}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C10/fig_v1_c10_complexity.tex}
+\endgroup
+在\cref{fig:V1-C10-complexity}上选择容量时只使用验证曲线和预先约定的规则；训练误差持续下降并不构成增大容量的证据。灰度阅读时按线型和标记识别：实线表示训练误差，虚线表示验证误差，金色实心点和竖向参考线共同标出按预先约定规则选中的复杂度。候选锁定后还需在未参与选择的数据上报告一次最终误差。
+\end{document}

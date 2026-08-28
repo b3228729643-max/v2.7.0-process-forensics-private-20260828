@@ -1,0 +1,100 @@
+{
+  "T01": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "STATE_NODE",
+    "source_line": "17",
+    "pt": 9.6,
+    "text": "当前状态 X_t=x"
+  },
+  "T02": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "PROPOSAL_NODE",
+    "source_line": "18",
+    "pt": 9.6,
+    "text": "按 q(x,·) 提出候选 Y=y"
+  },
+  "T03": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "RATIO_NODE_LABEL",
+    "source_line": "19",
+    "pt": 9.6,
+    "text": "计算接受率（g(x,y)>0）"
+  },
+  "T04": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "FORMULA_BLOCK",
+    "source_line": "20-22",
+    "pt": 11.2,
+    "text": "alpha(x,y)=min{1, pi~(y)q(y,x)/pi~(x)q(x,y)}"
+  },
+  "T05": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "DECISION_NODE",
+    "source_line": "23",
+    "pt": 9.6,
+    "text": "抽取 U~U(0,1) 并判定 U<=alpha(x,y)?"
+  },
+  "T06": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "OUTCOME_NODE",
+    "source_line": "24",
+    "pt": 9.6,
+    "text": "接受候选 X_(t+1)=y"
+  },
+  "T07": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "OUTCOME_NODE",
+    "source_line": "25",
+    "pt": 9.6,
+    "text": "拒绝并记录旧状态 X_(t+1)=x"
+  },
+  "T08": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "EDGE_LABEL",
+    "source_line": "27",
+    "pt": 9.6,
+    "text": "提议"
+  },
+  "T09": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "EDGE_LABEL",
+    "source_line": "28",
+    "pt": 9.6,
+    "text": "计算"
+  },
+  "T10": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "EDGE_LABEL",
+    "source_line": "29",
+    "pt": 9.6,
+    "text": "判定"
+  },
+  "T11": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "BRANCH_LABEL",
+    "source_line": "30",
+    "pt": 9.6,
+    "text": "接受"
+  },
+  "T12": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "BRANCH_LABEL",
+    "source_line": "31",
+    "pt": 9.6,
+    "text": "拒绝"
+  },
+  "T13": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "EDGE_LABEL",
+    "source_line": "32-33",
+    "pt": 9.6,
+    "text": "自环：保留 x"
+  },
+  "T14": {
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "role": "CAPTION",
+    "source_line": "35",
+    "pt": 10.0,
+    "text": "图32.5 Metropolis-Hastings 一步更新：提议、接受与拒绝自环。"
+  }
+}

@@ -1,0 +1,5 @@
+VIEW,PATH,NATIVE_GRID,OPENED,PASS,FINDING
+full_page_200dpi,full_page_200dpi.png,1654x2339,true,true,figure is integrated cleanly on printed page 750; no abnormal page break or excess whitespace
+figure_crop_300dpi,figure_crop_300dpi.png,1950x960,true,false,"reading direction and semantic bridge are coherent, but visible note/formula-to-border collisions make the strict visual/geometry view FAIL"
+standalone_300dpi,standalone_300dpi.png,1938x875,true,false,"official R99 vector-clipped standalone is complete and unclipped, but the same visible collision ROIs make the strict visual/geometry view FAIL"
+grayscale_300dpi,grayscale_300dpi.png,1950x960,true,true,arrow emphasis remains distinguishable by line weight/position; hierarchy does not rely only on color

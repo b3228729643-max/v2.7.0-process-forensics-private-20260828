@@ -1,0 +1,47 @@
+{
+  "image": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P126-01\\STRICT_R3A_SA2_COORDINATE_QUADRATIC_PATCH_R115_DIRECT_BUILD_20260828\\evidence\\critical_legend_solid_vs_dash_nearest8x.png",
+  "image_size": [
+    3984,
+    848
+  ],
+  "samples": {
+    "solid": {
+      "x_window": [
+        100,
+        850
+      ],
+      "best_y": 367,
+      "dark_pixel_count": 584,
+      "dark_runs": [
+        [
+          124,
+          707,
+          584
+        ]
+      ],
+      "long_run_count": 1
+    },
+    "dash": {
+      "x_window": [
+        2050,
+        2800
+      ],
+      "best_y": 367,
+      "dark_pixel_count": 582,
+      "dark_runs": [
+        [
+          0,
+          565,
+          566
+        ],
+        [
+          694,
+          709,
+          16
+        ]
+      ],
+      "long_run_count": 1
+    }
+  },
+  "objective_finding": "Both legend swatches contain one long continuous horizontal dark run at their maximum-density center row; the x2 swatch does not show the requested multi-dash separation in this rendered grayscale ROI."
+}

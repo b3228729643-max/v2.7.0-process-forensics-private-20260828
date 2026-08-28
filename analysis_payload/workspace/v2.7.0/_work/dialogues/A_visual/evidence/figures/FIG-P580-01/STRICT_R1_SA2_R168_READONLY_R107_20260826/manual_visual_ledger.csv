@@ -1,0 +1,9 @@
+review_id,opened_at_utc,artifact,decision,object_specific_note
+MV-001,2026-08-26T10:10:00Z,full_page_200dpi.png,PASS,"Physical page 630 independently shows figure 31.6 in the V5-C02 flow; the complete two-panel figure and caption sit inside the page with no clipping or collision."
+MV-002,2026-08-26T10:10:05Z,figure_crop_300dpi.png,PASS,"Both panels, axes, parabolic p curves, q_L and q_R guides, markers, support hatching, formula card, labels, and caption are legible and spatially separate."
+MV-003,2026-08-26T10:10:10Z,standalone_300dpi.png,PASS,"The isolated figure body retains four clear conceptual regions: insufficient support, support coverage, left explanatory geometry, and the right ratio card; no border or object is cut."
+MV-004,2026-08-26T10:10:15Z,grayscale_300dpi.png,PASS,"Solid p curves, dashed q curves, dotted boundary, hatch region, hollow markers, and filled q_L marker remain distinguishable without relying on color."
+MV-005,2026-08-26T10:10:20Z,left_notll_title_8x_nearest.png,PASS,"The slashed relation in p not-much-less-than q_L is visibly complete: the U+0338 overlay crosses the relation as intended, U+226A has two distinct chevrons, and the q_L subscript is readable."
+MV-006,2026-08-26T10:10:25Z,caption_ll_8x_nearest.png,PASS,"The caption relation p much-less-than q shows an intact U+226A with two distinct chevrons; adjacent italic p and q are not clipped or merged."
+MV-007,2026-08-26T10:10:30Z,ratio_card_8x_nearest.png,PASS,"The right card visibly gives w(1), w(5/2), w(4) and the aligned values 24/25, 3/2, 24/25; all fraction rules and parentheses are complete."
+MV-008,2026-08-26T10:10:35Z,left_support_native1x.png,PASS,"At native scale the q_L endpoint at 5/2, the open baseline marker, dotted support boundary, positive p curve to the right, and hatched unsupported region remain visibly distinct and confirm the support failure."

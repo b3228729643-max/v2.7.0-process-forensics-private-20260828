@@ -1,0 +1,92 @@
+﻿ELEMENT_ID,PANEL_ID,ROLE,SOURCE_FILE,SOURCE_LINE,TEXT_SAMPLE,DECLARED_PT,GRAPHICS_SCALE,EFFECTIVE_PT,BASE_FORMULA_PT,NATURAL_SCRIPT,SAME_PANEL_PT_MAX_MIN,SAME_PANEL_PT_ABS_DIFF,CROSS_PANEL_PT_MAX_MIN,ROLE_RATIO,SOURCE_FONT_PASS,REASON
+E01-PRECHECK-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,33-36,随机调用前完整验证；有限非负；在…处有限；且全局,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E01-PRECHECK-MATH,J,INLINE_MATH,fig_v5_c02_rejection_flow.tex,34-36,"N,B in N0; 1<=c<inf; p,q; p>0=>q>0; rho=p/(cq); supp; p<=cq",9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E01-PRECHECK-SUPP,J,INLINE_ROMAN,fig_v5_c02_rejection_flow.tex,36,supp,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E01-PRECHECK-SCRIPT,J,INLINE_SCRIPT,fig_v5_c02_rejection_flow.tex,34,N subscript 0,9.6000,1.0000,6.6949,9.6000,TRUE,1.0000,0.0000,1.0000,1.0038,PASS,base formula >=9.5pt; natural TeX script
+E02-VALID-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,37,全部输入与证书通过？,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E03-BADINPUT-CODE1,J,STATE_CODE,fig_v5_c02_rejection_flow.tex,38,invalid_input,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E03-BADINPUT-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,39-41,异常出口；字段/位置；包络诊断,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E03-BADINPUT-SLASH,J,INLINE_SYMBOL,fig_v5_c02_rejection_flow.tex,39,/,9.6000,1.0000,9.6593,9.6000,FALSE,1.0000,0.0000,1.0000,1.0100,PASS,effective font and same-role source ratios pass
+E03-BADINPUT-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,39,"X_{1:a}=empty,m=a=0",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E03-BADINPUT-SCRIPT,J,NODE_SCRIPT,fig_v5_c02_rejection_flow.tex,39,1:a,10.7000,1.0000,7.4620,10.7000,TRUE,1.0000,0.0000,1.0000,1.1188,PASS,base formula >=9.5pt; natural TeX script
+E03-BADINPUT-CODE2,J,STATE_CODE,fig_v5_c02_rejection_flow.tex,40-41,envelope_condition_failure,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E04-INIT-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,43,初始化，有效样本前缀,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E04-INIT-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,43,m=a=0; X_{1:a}=empty,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E04-INIT-SCRIPT,J,NODE_SCRIPT,fig_v5_c02_rejection_flow.tex,43,1:a,10.7000,1.0000,7.4620,10.7000,TRUE,1.0000,0.0000,1.0000,1.1188,PASS,base formula >=9.5pt; natural TeX script
+E05-GOAL-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,44,a=N,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E05-GOAL-CJK,J,NODE_PUNCT,fig_v5_c02_rejection_flow.tex,44,？,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E06-COMPLETED-CODE,J,STATE_CODE,fig_v5_c02_rejection_flow.tex,45,completed,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E06-COMPLETED-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,45-46,成功出口；完成（含零目标）,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E06-COMPLETED-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,46,"X_{1:N},m,a=N",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E06-COMPLETED-SCRIPT,J,NODE_SCRIPT,fig_v5_c02_rejection_flow.tex,46,1:N,10.7000,1.0000,7.4620,10.7000,TRUE,1.0000,0.0000,1.0000,1.1188,PASS,base formula >=9.5pt; natural TeX script
+E07-BUDGETCHECK-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,47,m=B,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E07-BUDGETCHECK-CJK,J,NODE_PUNCT,fig_v5_c02_rejection_flow.tex,47,？,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E08-BUDGET-CODE,J,STATE_CODE,fig_v5_c02_rejection_flow.tex,48,budget_stop,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E08-BUDGET-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,49,预算停止,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E08-BUDGET-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,49,"X_{1:a},m=B,a<N",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E08-BUDGET-SCRIPT,J,NODE_SCRIPT,fig_v5_c02_rejection_flow.tex,49,1:a,10.7000,1.0000,7.4620,10.7000,TRUE,1.0000,0.0000,1.0000,1.1188,PASS,base formula >=9.5pt; natural TeX script
+E09-PROPOSAL-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,51,调用；成功？,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E09-PROPOSAL-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,51,Y~q,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E10-PROPOSALFAIL-CODE,J,STATE_CODE,fig_v5_c02_rejection_flow.tex,52,random_source_failure,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E10-PROPOSALFAIL-MATH-X,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,53,"lowercase in X_{1:a},m,a; (m+1,...)",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E10-PROPOSALFAIL-MATH-N,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,53,"cap/digit in X_{1:a},m,a; (m+1,...)",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E10-PROPOSALFAIL-SCRIPT,J,NODE_SCRIPT,fig_v5_c02_rejection_flow.tex,53,1:a,10.7000,1.0000,7.4620,10.7000,TRUE,1.0000,0.0000,1.0000,1.1188,PASS,base formula >=9.5pt; natural TeX script
+E10-PROPOSALFAIL-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,53,位置,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E10-PROPOSALFAIL-CJKMATH,J,FORMULA_TEXT_CJK,fig_v5_c02_rejection_flow.tex,53,提议源,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E11-COUNT-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,54,候选生成成功：立即令,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E11-COUNT-MATH-X,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,54,lowercase in m<-m+1,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E11-COUNT-MATH-N,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,54,digit in m<-m+1,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E12-UNIFORM-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,55,均匀源成功并返回；？,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E12-UNIFORM-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,55,"U~U(0,1)",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E13-UNIFORMFAIL-CODE,J,STATE_CODE,fig_v5_c02_rejection_flow.tex,56,random_source_failure,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E13-UNIFORMFAIL-MATH-X,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,57,"lowercase in X_{1:a},m,a; (m,...)",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E13-UNIFORMFAIL-MATH-N,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,57,"cap/digit in X_{1:a},m,a; (m,...)",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E13-UNIFORMFAIL-SCRIPT,J,NODE_SCRIPT,fig_v5_c02_rejection_flow.tex,57,1:a,10.7000,1.0000,7.4620,10.7000,TRUE,1.0000,0.0000,1.0000,1.1188,PASS,base formula >=9.5pt; natural TeX script
+E13-UNIFORMFAIL-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,57,位置,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E13-UNIFORMFAIL-CJKMATH,J,FORMULA_TEXT_CJK,fig_v5_c02_rejection_flow.tex,57,均匀源,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E14-EVALUATE-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,59,求；与,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E14-EVALUATE-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,59,"p(Y),q(Y); rho=p(Y)/(cq(Y))",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E15-NUMERICOK-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,60,有限非负；且；有限？,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E15-NUMERICOK-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,60,"p(Y),q(Y); q(Y)>0; rho",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E16-NUMFAIL-CODE,J,STATE_CODE,fig_v5_c02_rejection_flow.tex,61,numerical_failure,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E16-NUMFAIL-MATH-X,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,62,"lowercase in X_{1:a},m,a; (m, density/ratio)",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E16-NUMFAIL-MATH-N,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,62,"cap/digit in X_{1:a},m,a; (m, density/ratio)",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E16-NUMFAIL-SCRIPT,J,NODE_SCRIPT,fig_v5_c02_rejection_flow.tex,62,1:a,10.7000,1.0000,7.4620,10.7000,TRUE,1.0000,0.0000,1.0000,1.1188,PASS,base formula >=9.5pt; natural TeX script
+E16-NUMFAIL-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,62,位置,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E16-NUMFAIL-CJKMATH,J,FORMULA_TEXT_CJK,fig_v5_c02_rejection_flow.tex,62,密度/比率,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E17-ENVELOPEOK-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,63,0<=rho<=1,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E17-ENVELOPEOK-CJK,J,NODE_PUNCT,fig_v5_c02_rejection_flow.tex,63,？,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E18-ENVFAIL-CODE1,J,STATE_CODE,fig_v5_c02_rejection_flow.tex,64,invalid_input,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E18-ENVFAIL-MATH-X,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,65,"lowercase in X_{1:a},m,a; m",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E18-ENVFAIL-MATH-N,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,65,"cap/digit in X_{1:a},m,a; m",10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E18-ENVFAIL-SCRIPT,J,NODE_SCRIPT,fig_v5_c02_rejection_flow.tex,65,1:a,10.7000,1.0000,7.4620,10.7000,TRUE,1.0000,0.0000,1.0000,1.1188,PASS,base formula >=9.5pt; natural TeX script
+E18-ENVFAIL-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,65-67,；位置；（包络诊断）,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E18-ENVFAIL-CODE2,J,STATE_CODE,fig_v5_c02_rejection_flow.tex,66-67,envelope_condition_failure,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E19-ACCEPT-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,69,U<=rho,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E19-ACCEPT-CJK,J,NODE_PUNCT,fig_v5_c02_rejection_flow.tex,69,？,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E20-COMMIT-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,70,接受：原子追加；,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E20-COMMIT-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,70,Y; a<-a+1,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E21-REJECT-CJK,J,NODE_CJK,fig_v5_c02_rejection_flow.tex,71,普通拒绝：不追加；与；不变,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E21-REJECT-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,71,a; X_{1:a},10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E21-REJECT-SCRIPT,J,NODE_SCRIPT,fig_v5_c02_rejection_flow.tex,71,1:a,10.7000,1.0000,7.4620,10.7000,TRUE,1.0000,0.0000,1.0000,1.1188,PASS,base formula >=9.5pt; natural TeX script
+E22-LABEL-VALID-NO,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,75,否,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E23-LABEL-VALID-YES,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,76,是,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E24-LABEL-GOAL-YES,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,78,是：优先,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E25-LABEL-GOAL-NO,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,79,否,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E26-LABEL-BUDGET-YES,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,80,是,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E27-LABEL-BUDGET-NO,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,81,否,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E28-LABEL-PROPOSAL-FAIL,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,82,失败,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E29-LABEL-PROPOSAL-SUCC,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,83,成功,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E30-LABEL-UNIFORM-FAIL,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,85,失败,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E31-LABEL-UNIFORM-SUCC,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,86,成功,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E32-LABEL-NUMERIC-NO,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,88,否,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E33-LABEL-NUMERIC-YES,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,89,是,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E34-LABEL-ENVELOPE-NO,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,90,否,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E35-LABEL-ENVELOPE-YES,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,91,是,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E36-LABEL-ACCEPT,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,92,接受,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E37-LABEL-REJECT,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,93,拒绝,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E38-LOOP-CJK,J,EDGE_LABEL,fig_v5_c02_rejection_flow.tex,97,先；再,9.6000,1.0000,9.5641,9.6000,FALSE,1.0000,0.0000,1.0000,1.0000,PASS,effective font and same-role source ratios pass
+E38-LOOP-MATH,J,NODE_MATH,fig_v5_c02_rejection_flow.tex,97,a=N; m=B,10.7000,1.0000,10.6600,10.7000,FALSE,1.0000,0.0000,1.0000,1.1146,PASS,effective font and same-role source ratios pass
+E39-CAPTION-LABEL,C,CAPTION_LABEL,fig_v5_c02_rejection_flow.tex,99,图,10.0000,1.0000,9.9626,10.0000,FALSE,1.0000,0.0000,1.0000,1.0417,PASS,effective font and same-role source ratios pass
+E39-CAPTION-NUM,C,CAPTION_NUM,fig_v5_c02_rejection_flow.tex,99,31.5,10.0000,1.0000,9.9626,10.0000,FALSE,1.0000,0.0000,1.0000,1.0417,PASS,effective font and same-role source ratios pass
+E39-CAPTION-BODY,C,CAPTION,fig_v5_c02_rejection_flow.tex,99,带预算的接受—拒绝必须区分普通拒绝、收满目标、未收满而预算耗尽，以及包络证书失败。,10.0000,1.0000,9.9626,10.0000,FALSE,1.0000,0.0000,1.0000,1.0417,PASS,effective font and same-role source ratios pass

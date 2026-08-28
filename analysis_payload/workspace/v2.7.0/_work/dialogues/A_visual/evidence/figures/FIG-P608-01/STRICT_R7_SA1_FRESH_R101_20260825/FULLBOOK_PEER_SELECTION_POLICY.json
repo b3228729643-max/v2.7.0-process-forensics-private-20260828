@@ -1,0 +1,21 @@
+{
+  "policy_id": "LP-PEER-R101-EXACTMETA-V1",
+  "frozen_before_fullbook_scan": true,
+  "candidate_scope": "all 814 physical pages of the sole official frozen R101 PDF",
+  "metadata_requirements": [
+    "same Unicode codepoint",
+    "same PDF font name (therefore same encoded weight in this candidate)",
+    "same RGB colour",
+    "absolute PDF effective span-size difference <= 0.25 pt",
+    "not the audited target glyph itself"
+  ],
+  "deterministic_rank": [
+    "same physical page first",
+    "on the same page: absolute rawdict sequence distance, then lower sequence",
+    "otherwise: lowest physical page, then block/line/span/char order"
+  ],
+  "selection_count": 1,
+  "metric_independence": "H_INK, area, mask cleanliness and pass/fail are not used to rank or replace the selected peer",
+  "post_selection_gate": "selected peer must have a nonempty complete pure >=20/255 native mask; H_INK and area ratios must both be in [0.92,1.08]; otherwise FAIL with no fallback candidate",
+  "prohibited_substitution": "no different codepoint, font, weight, colour, or out-of-tolerance size; no TeX"
+}

@@ -1,0 +1,35 @@
+{
+  "CHECK_ID": "FIG-P552-01_STRICT_R1_SA1_FINAL_CONSISTENCY",
+  "CHECK_STATUS": "PASS",
+  "FIGURE_RESULT": "FAIL",
+  "CANONICAL_RENDER_METHOD": "Frozen final-PDF full physical page rasterized directly at native 300 dpi; figure crop is a pixel slice from that fixed grid; no resize.",
+  "DIRECT_CLIP_STATUS": "SUPERSEDED — direct-clip 187/189 values are not valid final metrics or conclusions.",
+  "REQUIRED_ARTIFACT_MISSING": [],
+  "METRICS": {
+    "OVERLAP_PIXEL_COUNT": 221,
+    "OVERLAP_FAIL_PAIR_COUNT": 4,
+    "PAIR_CLEARANCE_FAILURE_COUNT": 4,
+    "SAME_CLASS_RATIO_PASS": false,
+    "CLIP_PIXEL_COUNT": 0
+  },
+  "UNIQUE_PAIR_COUNTING_RULE": "Each unique unordered text-text or text-graphic pair is counted once from its separated non-dilated raw masks; no duplicate row, underlay, or paint-order count.",
+  "FAIL_PAIR_OVERLAP_PIXELS": [22, 55, 33, 111],
+  "ARITHMETIC": "22 + 55 + 33 + 111 = 221",
+  "CSV_CROSSCHECK": {
+    "FAIL_PAIR_ROWS": 4,
+    "FAIL_PAIR_PIXELS": [22, 55, 33, 111],
+    "FAIL_PAIR_PIXEL_SUM": 221
+  },
+  "CRITICAL_PAIR_EVIDENCE": {
+    "INDEX_ROWS": 31,
+    "RAW_8X_NN_MISSING": [],
+    "OVERLAY_8X_NN_MISSING": [],
+    "OVERLAP_8X_NN_MISSING": []
+  },
+  "EFFECTIVE_STALE_CONCLUSION_SCAN": {
+    "PATTERNS": ["OVERLAP_PIXEL_COUNT: 187", "OVERLAP_PIXEL_COUNT: 189", "SAME_CLASS_RATIO_PASS: true"],
+    "MATCHES": [],
+    "STATUS": "PASS"
+  },
+  "MACHINE_CHECK_RESULT": "PASS"
+}

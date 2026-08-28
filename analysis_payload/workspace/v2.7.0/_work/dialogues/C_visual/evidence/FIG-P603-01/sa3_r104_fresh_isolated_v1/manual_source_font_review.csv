@@ -1,0 +1,7 @@
+reviewer,source_lines,role,declared_pt,effective_pt,render_viewed,r168_hard_issue,decision,note
+SA3,3,figure default,9.2,9.2,YES,NO,ADVISORY_ONLY,"Declared point size is metadata under R168; rendered figure text is actually readable and balanced."
+SA3,5,tick labels,8.5,8.5,YES,NO,ADVISORY_ONLY,"Tick labels are smaller by design but clearly legible at native 300 dpi; no severe imbalance."
+SA3,6,axis labels,9.2,9.2,YES,NO,PASS,"Both axis labels render with correct mathematical codepoints and adequate size."
+SA3,10,TikZ nodes,9.2,9.2,YES,NO,PASS,"Annotations and kink label are visually coherent with the graph and not crowded."
+SA3,27-30,formula card,9.2,9.2,YES,NO,PASS,"Formula glyphs, fraction rules, delimiters, and Chinese lead-in remain fully readable."
+SA3,all,graphics transforms,N/A,N/A,YES,NO,PASS,"Source inspection found no resizebox, scalebox, or transform-shape reduction; graphics scale is 1."

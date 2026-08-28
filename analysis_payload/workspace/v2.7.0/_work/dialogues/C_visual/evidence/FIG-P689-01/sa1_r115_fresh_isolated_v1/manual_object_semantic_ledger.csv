@@ -1,0 +1,12 @@
+OBJECT_ID,OBJECT,CLIP_PIXEL_COUNT,TRUE_COLLISION_PIXEL_COUNT,GRAYSCALE_STATUS,SEMANTIC_STATUS,MANUAL_STATUS,POST_OBSERVATION_REASON
+O01,left rounded panel border,0,0,PASS,PASS,PASS,Border is continuous and fully visible; all left content remains inside it.
+O02,right rounded panel border,0,0,PASS,PASS,PASS,Border is continuous and fully visible; shifted axis and all right content remain inside it.
+O03,total-evidence bidirectional arrow,0,0,PASS,PASS,PASS,Two arrowheads and shaft are intact and encode the full log-evidence length.
+O04,ELBO plus KL segmented bar,0,0,PASS,PASS,PASS,Outline and partition are intact; geometry preserves sum-of-lengths semantics even without color.
+O05,identity formula block,0,0,PASS,PASS,PASS,Formula is complete and does not collide with other objects.
+O06,KL nonnegativity explanatory block,0,0,PASS,PASS,PASS,Two lines are complete and visually subordinate to the main decomposition.
+O07,right axes ticks and xlabel,0,0,PASS,PASS,PASS,Axis arrowheads ticks and labels are complete; no y-axis numeric claim is implied.
+O08,unknown-global-upper-bound dashed line,0,0,PASS,PASS,PASS,Dashed line remains distinguishable in grayscale and is explicitly labeled unknown.
+O09,nondecreasing staircase with circular marks,0,0,PASS,PASS,PASS,Solid step line and point marks remain distinct from the dashed upper line in grayscale.
+O10,coordinate-stable/local-stationary annotation,0,0,PASS,PASS,PASS,Annotation is in open plot space and limits rather than exaggerates the convergence claim.
+O11,three-line caption,0,0,PASS,PASS,PASS,Caption is fully visible and matches figure variables line types and limits.

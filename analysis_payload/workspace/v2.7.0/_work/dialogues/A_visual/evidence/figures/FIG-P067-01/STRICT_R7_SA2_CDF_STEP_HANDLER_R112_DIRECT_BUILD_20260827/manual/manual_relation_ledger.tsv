@@ -1,0 +1,17 @@
+relation_id	evidence_views	observed_at_utc	decision	relation_specific_note
+REL001	cdf_panel_native1x_300dpi.png|cdf_panel_nearest8x.png	2026-08-27T09:12:26Z	PASS	CDF remains exactly 0 on [.5,1); the first horizontal segment does not rise early.
+REL002	cdf_panel_native1x_300dpi.png|cdf_panel_nearest8x.png	2026-08-27T09:12:27Z	PASS	CDF is 0.15 on [1,2), matching the first PMF mass and the filled point at t=1.
+REL003	cdf_panel_native1x_300dpi.png|cdf_panel_nearest8x.png	2026-08-27T09:12:28Z	PASS	CDF is 0.45 on [2,3), equal to 0.15+0.30 and anchored by the filled point at t=2.
+REL004	cdf_panel_native1x_300dpi.png|cdf_panel_nearest8x.png	2026-08-27T09:12:29Z	PASS	CDF is 0.80 on [3,4), equal to 0.15+0.30+0.35 and visibly level.
+REL005	cdf_panel_native1x_300dpi.png|cdf_panel_nearest8x.png	2026-08-27T09:12:30Z	PASS	CDF reaches 1 at t=4 and stays at 1 through the visible right interval.
+REL006	cdf_panel_native1x_300dpi.png|cdf_panel_nearest8x.png	2026-08-27T09:12:31Z	PASS	At t=1 the open point is at 0 and the filled point is at 0.15, encoding right continuity.
+REL007	cdf_panel_native1x_300dpi.png|cdf_panel_nearest8x.png	2026-08-27T09:12:32Z	PASS	At t=2 the open point is at 0.15 and the filled point is at 0.45 without ambiguity.
+REL008	cdf_panel_native1x_300dpi.png|cdf_panel_nearest8x.png	2026-08-27T09:12:33Z	PASS	At t=3 the open point is at 0.45 and the filled point is at 0.80.
+REL009	cdf_panel_native1x_300dpi.png|cdf_panel_nearest8x.png	2026-08-27T09:12:34Z	PASS	At t=4 the open point is at 0.80 and the filled point is at 1.00.
+REL010	pmf_panel_native1x_300dpi.png|pmf_panel_nearest8x.png	2026-08-27T09:12:35Z	PASS	The four PMF masses are 0.15,0.30,0.35,0.20 at supports 1,2,3,4 and sum to 1.
+REL011	critical_y_ticks_native1x_300dpi.png|critical_y_ticks_nearest8x.png	2026-08-27T09:12:36Z	PASS	Labels 0.35 and 0.3 share no foreground pixels and retain a visible native separation; 1px is advisory under R168.
+REL012	critical_y_ticks_native1x_300dpi.png|critical_y_ticks_nearest8x.png	2026-08-27T09:12:37Z	PASS	Labels 0.3 and 0.15 share no foreground pixels and remain separately readable at native and 8x.
+REL013	figure_native1x_300dpi.png|atomic_bbox_overlay_300dpi.png	2026-08-27T09:12:38Z	PASS	All four vertical guides align the CDF jumps and PMF support locations without illegal ink collision.
+REL014	figure_grayscale_300dpi.png|standalone_300dpi.png	2026-08-27T09:12:39Z	PASS	CDF and PMF remain distinguishable in grayscale and retain correct panel order and axis meanings.
+REL015	standalone_300dpi.png|figure_native1x_300dpi.png	2026-08-27T09:12:40Z	PASS	Standalone page integration has no figure clipping, caption collision, tofu, or unreadable label.
+REL016	cdf_panel_nearest8x.png|pmf_panel_nearest8x.png	2026-08-27T09:12:41Z	PASS	Each CDF jump height equals the corresponding PMF mass and the final cumulative value is one.

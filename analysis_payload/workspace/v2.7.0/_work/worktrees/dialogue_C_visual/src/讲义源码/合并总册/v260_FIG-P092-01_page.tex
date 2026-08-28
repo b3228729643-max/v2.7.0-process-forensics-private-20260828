@@ -1,0 +1,26 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 1 册}{统计学习方法讲义 v2.6.0}{数学基础与统计学习基本理论}
+\begin{document}
+\setcounter{page}{98}
+\setcounter{chapter}{6}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{信息论基础}
+\begin{theorem}[有限均匀分布最大熵]
+若$X$有$K$个可能值，则 $0\le H(X)\le\log K$；上界当且仅当分布均匀时取得。
+\end{theorem}
+\paragraph{核验路线。}先写证明目标与合法条件，标出第一个可执行数学动作；下方严格证明保留全部技术细节。
+\begin{proof}
+记正概率支持为$S=\{x:p(x)>0\}$。由$\log$的凹性与Jensen不等式，
+\[
+H(P)=\sum_{x\in S}p(x)\log\frac1{p(x)}
+\le\log\!\left(\sum_{x\in S}p(x)\frac1{p(x)}\right)
+=\log|S|\le\log K.
+\]
+上界等号当且仅当$P$在全部$K$点上均匀；每个$-p(x)\log p(x)$非负，故$H(P)\ge0$。
+\end{proof}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C06/fig_v1_c06_binary_entropy.tex}
+对称性给出$H_{\mathrm b}(p)=H_{\mathrm b}(1-p)$；二阶导数为负说明\cref{fig:V1-C06-binary-entropy}中的曲线严格凹，驻点$p=1/2$因此是唯一最大点。
+\SLReviewSection{条件熵与联合熵}{sec:v260-fig092-context}
+\end{document}

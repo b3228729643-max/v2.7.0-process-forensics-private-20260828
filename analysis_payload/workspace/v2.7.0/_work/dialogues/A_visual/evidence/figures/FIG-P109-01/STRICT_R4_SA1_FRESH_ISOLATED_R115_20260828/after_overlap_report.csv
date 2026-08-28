@@ -1,0 +1,106 @@
+PAIR_ID,OBJECT_A,OBJECT_B,MANUAL_RESULT,ILLEGAL_VISIBLE_INK_OVERLAP_PX,CLIP_PX,RELATION_CODE,EVIDENCE_ID,REVIEWER_NOTE
+P001,O01,O02,CLEAR,0,0,LEGAL_CONTAINMENT,ROI06,chord is wholly inside the visible convex region and does not cross its boundary
+P002,O01,O03,CLEAR,0,0,LEGAL_CONTAINMENT,ROI01|ROI06,x endpoint marker is inside the region with no boundary contact
+P003,O01,O04,CLEAR,0,0,LEGAL_CONTAINMENT,ROI02|ROI06,y endpoint marker is inside the region with no boundary contact
+P004,O01,O05,CLEAR,0,0,LEGAL_CONTAINMENT,ROI06,first interior marker is inside the region
+P005,O01,O06,CLEAR,0,0,LEGAL_CONTAINMENT,ROI06,middle interior marker is inside the region
+P006,O01,O07,CLEAR,0,0,LEGAL_CONTAINMENT,ROI06,third interior marker is inside the region
+P007,O01,O08,CLEAR,0,0,LEGAL_CONTAINMENT,ROI01|ROI06,x label is inside the region and clear of the boundary
+P008,O01,O09,CLEAR,0,0,LEGAL_CONTAINMENT,ROI02|ROI06,y label is inside the region and clear of the boundary
+P009,O01,O10,CLEAR,0,0,CLEAR_BY_OPAQUE_BACKING,ROI03|ROI06,z formula backing separates its ink from region graphics
+P010,O01,O11,CLEAR,0,0,CLEAR_BY_OPAQUE_BACKING,ROI02|ROI06,region label uses an opaque backing; visible label ink and boundary ink do not intersect
+P011,O01,O12,CLEAR,0,0,SEPARATE,ROI04|ROI06,region boundary and conclusion border have a visible gap
+P012,O01,O13,CLEAR,0,0,SEPARATE,ROI04|ROI06,region boundary and conclusion formula have a visible gap
+P013,O01,O14,CLEAR,0,0,SEPARATE,ROI05|ROI06,region and caption number are vertically separated
+P014,O01,O15,CLEAR,0,0,SEPARATE,ROI05|ROI06,region and caption text are vertically separated
+P015,O02,O03,CLEAR,0,0,LEGAL_INTENDED_CONTACT,ROI01|ROI06,chord terminates at x marker by design; no illegal semantic overlap
+P016,O02,O04,CLEAR,0,0,LEGAL_INTENDED_CONTACT,ROI02|ROI06,chord terminates at y marker by design; no illegal semantic overlap
+P017,O02,O05,CLEAR,0,0,LEGAL_INTENDED_CONTACT,ROI06,marker at lambda 0.25 is intentionally centered on chord
+P018,O02,O06,CLEAR,0,0,LEGAL_INTENDED_CONTACT,ROI06,marker at lambda 0.50 is intentionally centered on chord
+P019,O02,O07,CLEAR,0,0,LEGAL_INTENDED_CONTACT,ROI03|ROI06,marker at lambda 0.75 is intentionally centered on chord
+P020,O02,O08,CLEAR,0,0,SEPARATE,ROI01|ROI06,x label is below-left of chord with clear whitespace
+P021,O02,O09,CLEAR,0,0,SEPARATE,ROI02|ROI06,y label is above-right of chord with clear whitespace
+P022,O02,O10,CLEAR,0,0,CLEAR_BY_OPAQUE_BACKING,ROI03,z formula ink is separated from chord by whitespace and its white backing
+P023,O02,O11,CLEAR,0,0,SEPARATE,ROI02|ROI06,chord and region label are spatially distinct
+P024,O02,O12,CLEAR,0,0,SEPARATE,ROI04|ROI06,chord and conclusion border are spatially distinct
+P025,O02,O13,CLEAR,0,0,SEPARATE,ROI04|ROI06,chord and conclusion formula are spatially distinct
+P026,O02,O14,CLEAR,0,0,SEPARATE,ROI05|ROI06,chord and caption number are spatially distinct
+P027,O02,O15,CLEAR,0,0,SEPARATE,ROI05|ROI06,chord and caption text are spatially distinct
+P028,O03,O04,CLEAR,0,0,SEPARATE,ROI06,endpoint markers are distinct
+P029,O03,O05,CLEAR,0,0,SEPARATE,ROI06,x marker and first interior marker are distinct
+P030,O03,O06,CLEAR,0,0,SEPARATE,ROI06,x marker and middle interior marker are distinct
+P031,O03,O07,CLEAR,0,0,SEPARATE,ROI06,x marker and third interior marker are distinct
+P032,O03,O08,CLEAR,0,0,SEPARATE,ROI01,x marker and x label have clear whitespace
+P033,O03,O09,CLEAR,0,0,SEPARATE,ROI01|ROI02,x marker and y label are far apart
+P034,O03,O10,CLEAR,0,0,SEPARATE,ROI01|ROI03,x marker and z formula are distinct
+P035,O03,O11,CLEAR,0,0,SEPARATE,ROI01|ROI02,x marker and region label are far apart
+P036,O03,O12,CLEAR,0,0,SEPARATE,ROI01|ROI04,x marker and conclusion border are distinct
+P037,O03,O13,CLEAR,0,0,SEPARATE,ROI01|ROI04,x marker and conclusion formula are distinct
+P038,O03,O14,CLEAR,0,0,SEPARATE,ROI01|ROI05,x marker and caption number are distinct
+P039,O03,O15,CLEAR,0,0,SEPARATE,ROI01|ROI05,x marker and caption text are distinct
+P040,O04,O05,CLEAR,0,0,SEPARATE,ROI06,y marker and first interior marker are distinct
+P041,O04,O06,CLEAR,0,0,SEPARATE,ROI06,y marker and middle interior marker are distinct
+P042,O04,O07,CLEAR,0,0,SEPARATE,ROI02|ROI06,y marker and third interior marker are distinct
+P043,O04,O08,CLEAR,0,0,SEPARATE,ROI01|ROI02,endpoint y marker and x label are far apart
+P044,O04,O09,CLEAR,0,0,SEPARATE,ROI02,y marker and y label have clear whitespace
+P045,O04,O10,CLEAR,0,0,SEPARATE,ROI02|ROI03,y marker and z formula are distinct
+P046,O04,O11,CLEAR,0,0,SEPARATE,ROI02,y marker and region label are distinct
+P047,O04,O12,CLEAR,0,0,SEPARATE,ROI02|ROI04,y marker and conclusion border are distinct
+P048,O04,O13,CLEAR,0,0,SEPARATE,ROI02|ROI04,y marker and conclusion formula are distinct
+P049,O04,O14,CLEAR,0,0,SEPARATE,ROI02|ROI05,y marker and caption number are distinct
+P050,O04,O15,CLEAR,0,0,SEPARATE,ROI02|ROI05,y marker and caption text are distinct
+P051,O05,O06,CLEAR,0,0,SEPARATE,ROI06,first and middle interior markers are distinct
+P052,O05,O07,CLEAR,0,0,SEPARATE,ROI06,first and third interior markers are distinct
+P053,O05,O08,CLEAR,0,0,SEPARATE,ROI01|ROI06,first interior marker and x label are distinct
+P054,O05,O09,CLEAR,0,0,SEPARATE,ROI02|ROI06,first interior marker and y label are far apart
+P055,O05,O10,CLEAR,0,0,SEPARATE,ROI03|ROI06,first interior marker and z formula are distinct
+P056,O05,O11,CLEAR,0,0,SEPARATE,ROI02|ROI06,first interior marker and region label are far apart
+P057,O05,O12,CLEAR,0,0,SEPARATE,ROI04|ROI06,first interior marker and conclusion border are distinct
+P058,O05,O13,CLEAR,0,0,SEPARATE,ROI04|ROI06,first interior marker and conclusion formula are distinct
+P059,O05,O14,CLEAR,0,0,SEPARATE,ROI05|ROI06,first interior marker and caption number are distinct
+P060,O05,O15,CLEAR,0,0,SEPARATE,ROI05|ROI06,first interior marker and caption text are distinct
+P061,O06,O07,CLEAR,0,0,SEPARATE,ROI06,middle and third interior markers are distinct
+P062,O06,O08,CLEAR,0,0,SEPARATE,ROI01|ROI06,middle interior marker and x label are distinct
+P063,O06,O09,CLEAR,0,0,SEPARATE,ROI02|ROI06,middle interior marker and y label are distinct
+P064,O06,O10,CLEAR,0,0,SEPARATE,ROI03|ROI06,middle marker is below-right of z formula with clear whitespace
+P065,O06,O11,CLEAR,0,0,SEPARATE,ROI02|ROI06,middle marker and region label are distinct
+P066,O06,O12,CLEAR,0,0,SEPARATE,ROI04|ROI06,middle marker and conclusion border are distinct
+P067,O06,O13,CLEAR,0,0,SEPARATE,ROI04|ROI06,middle marker and conclusion formula are distinct
+P068,O06,O14,CLEAR,0,0,SEPARATE,ROI05|ROI06,middle marker and caption number are distinct
+P069,O06,O15,CLEAR,0,0,SEPARATE,ROI05|ROI06,middle marker and caption text are distinct
+P070,O07,O08,CLEAR,0,0,SEPARATE,ROI01|ROI06,third interior marker and x label are far apart
+P071,O07,O09,CLEAR,0,0,SEPARATE,ROI02|ROI06,third interior marker and y label are distinct
+P072,O07,O10,CLEAR,0,0,SEPARATE,ROI03|ROI06,third marker and z formula are distinct
+P073,O07,O11,CLEAR,0,0,SEPARATE,ROI02|ROI06,third marker and region label are distinct
+P074,O07,O12,CLEAR,0,0,SEPARATE,ROI04|ROI06,third marker and conclusion border are distinct
+P075,O07,O13,CLEAR,0,0,SEPARATE,ROI04|ROI06,third marker and conclusion formula are distinct
+P076,O07,O14,CLEAR,0,0,SEPARATE,ROI05|ROI06,third marker and caption number are distinct
+P077,O07,O15,CLEAR,0,0,SEPARATE,ROI05|ROI06,third marker and caption text are distinct
+P078,O08,O09,CLEAR,0,0,SEPARATE,ROI01|ROI02,x and y labels are distinct and unambiguous
+P079,O08,O10,CLEAR,0,0,SEPARATE,ROI01|ROI03,x label and z formula are distinct
+P080,O08,O11,CLEAR,0,0,SEPARATE,ROI01|ROI02,x label and region label are far apart
+P081,O08,O12,CLEAR,0,0,SEPARATE,ROI01|ROI04,x label and conclusion border are distinct
+P082,O08,O13,CLEAR,0,0,SEPARATE,ROI01|ROI04,x label and conclusion formula are distinct
+P083,O08,O14,CLEAR,0,0,SEPARATE,ROI01|ROI05,x label and caption number are distinct
+P084,O08,O15,CLEAR,0,0,SEPARATE,ROI01|ROI05,x label and caption text are distinct
+P085,O09,O10,CLEAR,0,0,SEPARATE,ROI02|ROI03,y label and z formula are distinct
+P086,O09,O11,CLEAR,0,0,SEPARATE,ROI02,region label and y label remain separate at native1x and nearest8x
+P087,O09,O12,CLEAR,0,0,SEPARATE,ROI02|ROI04,y label and conclusion border are distinct
+P088,O09,O13,CLEAR,0,0,SEPARATE,ROI02|ROI04,y label and conclusion formula are distinct
+P089,O09,O14,CLEAR,0,0,SEPARATE,ROI02|ROI05,y label and caption number are distinct
+P090,O09,O15,CLEAR,0,0,SEPARATE,ROI02|ROI05,y label and caption text are distinct
+P091,O10,O11,CLEAR,0,0,SEPARATE,ROI02|ROI03,z formula and region label are distinct
+P092,O10,O12,CLEAR,0,0,SEPARATE,ROI03|ROI04,z formula and conclusion border are distinct
+P093,O10,O13,CLEAR,0,0,SEPARATE,ROI03|ROI04,z formula and conclusion formula are distinct
+P094,O10,O14,CLEAR,0,0,SEPARATE,ROI03|ROI05,z formula and caption number are distinct
+P095,O10,O15,CLEAR,0,0,SEPARATE,ROI03|ROI05,z formula and caption text are distinct
+P096,O11,O12,CLEAR,0,0,SEPARATE,ROI02|ROI04,region label and conclusion border are distinct
+P097,O11,O13,CLEAR,0,0,SEPARATE,ROI02|ROI04,region label and conclusion formula are distinct
+P098,O11,O14,CLEAR,0,0,SEPARATE,ROI02|ROI05,region label and caption number are distinct
+P099,O11,O15,CLEAR,0,0,SEPARATE,ROI02|ROI05,region label and caption text are distinct
+P100,O12,O13,CLEAR,0,0,LEGAL_CONTAINMENT,ROI04,formula sits inside rounded note border with visible inset and no ink contact
+P101,O12,O14,CLEAR,0,0,SEPARATE,ROI04|ROI05,note border and caption number have a clear vertical gap
+P102,O12,O15,CLEAR,0,0,SEPARATE,ROI04|ROI05,note border and caption text have a clear vertical gap
+P103,O13,O14,CLEAR,0,0,SEPARATE,ROI04|ROI05,conclusion formula and caption number have a clear vertical gap
+P104,O13,O15,CLEAR,0,0,SEPARATE,ROI04|ROI05,conclusion formula and caption text have a clear vertical gap
+P105,O14,O15,CLEAR,0,0,SEPARATE,ROI05,caption number and caption text are horizontally separated and baseline aligned

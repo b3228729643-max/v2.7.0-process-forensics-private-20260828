@@ -1,0 +1,33 @@
+object_id,manual_decision,viewed_evidence,object_specific_reason
+O-G01,PASS,objects/cards/O_G01.png; object_contact_sheet_01,current-state rounded border is a distinct visible NODE_BORDER; its 4962-pixel mask follows only the blue stroke and remains 23 px from the crop edge.
+O-G02,PASS,objects/cards/O_G02.png; object_contact_sheet_01,proposal rounded border is independently visible; its 3715-pixel mask excludes the internal proposal text and the incoming/outgoing arrows.
+O-G03,PASS,objects/cards/O_G03.png; object_contact_sheet_01,acceptance-ratio container is one closed NODE_BORDER; the 13553-pixel mask follows the large box without absorbing its formula or arrowheads.
+O-G04,PASS,objects/cards/O_G04.png; object_contact_sheet_01,the visible horizontal fraction bar is independently counted as MATH_RULE; the 868-pixel mask contains the rule only.
+O-G05,PASS,objects/cards/O_G05.png; object_contact_sheet_01,the four-sided decision diamond is a single NODE_BORDER; the 9150-pixel mask excludes the decision text and branch arrows.
+O-G06,PASS,objects/cards/O_G06.png; object_contact_sheet_01,the accepted-state rounded border is a distinct NODE_BORDER; its 5130-pixel mask is clean at the accept-arrow join.
+O-G07,PASS,objects/cards/O_G07.png; object_contact_sheet_01,the final visible rejected-state double outline is treated as one semantic NODE_BORDER; both parallel strokes are present in the 9336-pixel mask.
+O-G08,PASS,objects/cards/O_G08.png; object_contact_sheet_01,the short downward proposal connector and arrowhead form one LINE_ARROW; the 239-pixel mask excludes both adjacent borders.
+O-G09,PASS,objects/cards/O_G09.png; object_contact_sheet_02,the downward calculation connector and arrowhead form one LINE_ARROW; the 296-pixel mask is isolated between proposal and ratio nodes.
+O-G10,PASS,objects/cards/O_G10.png; object_contact_sheet_02,the ratio-to-decision connector and arrowhead form one LINE_ARROW; the 262-pixel mask excludes the ratio border and diamond.
+O-G11,PASS,objects/cards/O_G11.png; object_contact_sheet_02,the solid left accept branch is a single LINE_ARROW including its arrowhead; the 1455-pixel mask does not include the accept label or node border.
+O-G12,PASS,objects/cards/O_G12.png; object_contact_sheet_02,the dash-dot right reject branch is a single LINE_ARROW; its 1129-pixel mask preserves the patterned stroke and excludes label/borders.
+O-G13,PASS,objects/cards/O_G13.png; object_contact_sheet_02,the dash-dot rejection self-loop is one LINE_ARROW including its returning arrowhead; the 3565-pixel mask excludes the loop label and rejected border.
+O-T01,PASS,objects/cards/O_T01.png; object_contact_sheet_02,the four-glyph current-state title is independently readable and its 1483-pixel mask contains only title ink.
+O-T02,PASS,objects/cards/O_T02.png; object_contact_sheet_02,the current-state formula X_t=x is a separate FORMULA object; its 698-pixel mask excludes title and border.
+O-T03,PASS,objects/cards/O_T03.png; object_contact_sheet_02,the incoming proposal edge label is a separate two-glyph TEXT object; the 781-pixel mask is clear of the arrow and proposal border.
+O-T04,PASS,objects/cards/O_T04.png; object_contact_sheet_03,"the proposal instruction text with q(x,·) is one coherent TEXT_FORMULA line; its 2862-pixel mask excludes the formula line beneath."
+O-T05,PASS,objects/cards/O_T05.png; object_contact_sheet_03,the proposal assignment Y=y is a separate FORMULA object; the 575-pixel mask is isolated from O-T04.
+O-T06,PASS,objects/cards/O_T06.png; object_contact_sheet_03,the calculation connector label is its own two-glyph TEXT object; the 752-pixel mask excludes the neighboring arrow shaft.
+O-T07,PASS,objects/cards/O_T07.png; object_contact_sheet_03,"the ratio heading including the g(x,y)>0 condition is one TEXT_FORMULA object; its 3577-pixel mask does not absorb the formula block."
+O-T08,PASS,objects/cards/O_T08.png; object_contact_sheet_03,the displayed acceptance-ratio expression is one FORMULA object; its 7295-pixel mask preserves braces and symbols while excluding the independently counted fraction rule.
+O-T09,PASS,objects/cards/O_T09.png; object_contact_sheet_03,the decision connector label is a separate two-glyph TEXT object; its 805-pixel mask excludes the connector arrow.
+O-T10,PASS,objects/cards/O_T10.png; object_contact_sheet_03,the two-line random-draw/decision instruction is one coherent TEXT_FORMULA object; its 4832-pixel mask excludes the diamond.
+O-T11,PASS,objects/cards/O_T11.png; object_contact_sheet_03,the left branch label is an independent two-glyph TEXT object; the 882-pixel mask is clear of the solid accept arrow.
+O-T12,PASS,objects/cards/O_T12.png; object_contact_sheet_04,the right branch label is an independent two-glyph TEXT object; the 899-pixel mask is clear of the dash-dot reject arrow.
+O-T13,PASS,objects/cards/O_T13.png; object_contact_sheet_04,the accepted-node title is a separate four-glyph TEXT object; its 1808-pixel mask excludes formula and border.
+O-T14,PASS,objects/cards/O_T14.png; object_contact_sheet_04,the accepted-state update X_{t+1}=y is a separate FORMULA object; the 920-pixel mask is isolated from its title.
+O-T15,PASS,objects/cards/O_T15.png; object_contact_sheet_04,the rejected-node title is a separate eight-glyph TEXT object; its 2998-pixel mask excludes formula and double border.
+O-T16,PASS,objects/cards/O_T16.png; object_contact_sheet_04,the rejected-state update X_{t+1}=x is a separate FORMULA object; its 905-pixel mask is isolated from title and frame.
+O-T17,PASS,objects/cards/O_T17.png; object_contact_sheet_04,the self-loop label “自环：保留 x” is an independent TEXT_FORMULA object; its 1795-pixel mask is separate from the loop stroke.
+O-T18,PASS,objects/cards/O_T18.png; object_contact_sheet_04,the caption label “图 32.5” is an independent TEXT object; its 1852-pixel mask is complete and remains 33 px from the crop edge.
+O-T19,PASS,objects/cards/O_T19.png; object_contact_sheet_04,the caption sentence is a distinct TEXT object; its 9066-pixel mask covers the whole sentence without absorbing the figure label.

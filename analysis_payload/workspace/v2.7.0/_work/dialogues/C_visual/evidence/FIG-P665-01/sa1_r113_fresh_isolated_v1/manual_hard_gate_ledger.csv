@@ -1,0 +1,11 @@
+gate_id,r168_hard_gate,manual_evidence,manual_decision
+HG01,native_missing_glyph_tofu_wrong_codepoint,"T01-T16 inspected in native subject, text overlay, full page, and risk ROIs; no missing glyph, tofu, or wrong codepoint appears.",CLEAR
+HG02,mathematics_error,"M01-M08 independently recomputed from the normalized Dirichlet density and log multivariate-Beta function.",CLEAR
+HG03,unreadability,"Every text/glyph element is readable at native1x; the smallest declared item T09 has 33 px measured native ink height and intact strokes.",CLEAR
+HG04,visibly_serious_imbalance,"Left decomposition and right derivative stack have matched titles, stable panel weight, and a clean gutter in native and grayscale views.",CLEAR
+HG05,true_clipping,"Full page, subject, standalone, and four risk ROIs show no cut stroke, arrowhead, border, formula, or caption ink.",CLEAR
+HG06,illegal_visible_ink_overlap,"All 91 unordered semantic-object pairs were reviewed; near relations P014/P077/P082/P086/P091 show distinct native ink and all others are visibly separated.",CLEAR
+HG07,semantic_or_geometric_error,"Object, geometry, mathematics, caption, and reading-order ledgers agree with the current V5-C05 context.",CLEAR
+AD01,advisory_numeric_typography,"T09 is declared 8.5pt and common body nodes 9.2pt, below an older numeric typography threshold; under active R168 this is advisory and native readability is not impaired.",ADVISORY_ONLY
+AD02,advisory_near_clearance,"Derivative-to-result and warning-to-caption bboxes are close, but native ink is distinct, nothing is clipped, and the reading path is not obstructed.",ADVISORY_ONLY
+AD03,advisory_taxonomy_style,"The base-measure label is English while neighboring labels are Chinese; the conventional term is clear and causes no semantic or readability defect.",ADVISORY_ONLY

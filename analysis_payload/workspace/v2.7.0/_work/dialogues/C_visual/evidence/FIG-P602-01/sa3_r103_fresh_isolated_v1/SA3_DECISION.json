@@ -1,0 +1,22 @@
+{
+  "kind": "SA3_MANUAL_DECISION",
+  "handoff_id": "C-FIG-P602-01-R103-SA3-FRESH-ISOLATED-V1",
+  "recordset_id": "FIG-P602-01-R103-SA3-FRESH-ISOLATED-V1-RECORDSET-01",
+  "figure_id": "FIG-P602-01",
+  "candidate": "R103",
+  "physical_page": 653,
+  "printed_page": 640,
+  "figure_number": "32.5",
+  "decision": "PASS",
+  "workflow_state": "C_LOCAL_PASS_ONLY",
+  "failed_ids": [],
+  "advisory_ids": [
+    "P0467",
+    "P0478",
+    "P0488"
+  ],
+  "requires_source_writer": false,
+  "requires_tex": false,
+  "central_state_updated": false,
+  "next_action": "AWAIT_ROOT_ACCEPTANCE_OF_SEALED_LOCAL_RECORDSET"
+}

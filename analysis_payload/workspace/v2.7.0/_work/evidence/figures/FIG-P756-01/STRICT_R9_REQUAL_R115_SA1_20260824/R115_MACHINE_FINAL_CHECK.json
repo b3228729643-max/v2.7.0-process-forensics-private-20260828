@@ -1,0 +1,62 @@
+{
+  "figure_id": "FIG-P756-01",
+  "official_candidate_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r95_fullbook\\main_full.pdf",
+  "source_page": {
+    "physical": 801,
+    "printed": 788,
+    "native_grid": "2481x3508 at 300dpi"
+  },
+  "inventory": {
+    "inventory_objects_including_halo_background": 56,
+    "foreground_objects": 55,
+    "glyphs": 378
+  },
+  "pair_gate": {
+    "all_unordered_pairs": 1485,
+    "mandatory_relationships": 1107,
+    "failures": [
+      {
+        "pair_id": "P1408",
+        "objects": [
+          "O-G016",
+          "O-G017"
+        ],
+        "overlap_px": 792,
+        "clearance_px": 0
+      }
+    ]
+  },
+  "human_review": {
+    "glyph_contact_views": 143,
+    "relation_packages": 24,
+    "calibration_groups": 10
+  },
+  "low_profile_calibration": {
+    "groups": 10,
+    "targets": 20,
+    "invalid_targets": 0,
+    "method": "official embedded-font raw-CID v2 replay"
+  },
+  "pixel_gate": {
+    "pass": 375,
+    "fail": 3,
+    "failure_glyphs": [
+      "G0208",
+      "G0212",
+      "G0222"
+    ]
+  },
+  "clip_gate": "PASS",
+  "D_E_gate": "PASS",
+  "terminal_reports": [
+    "EVIDENCE_INTEGRITY.md",
+    "FIGURE_HARD_GATES.md",
+    "FINAL_AUDIT_REPORT.md"
+  ],
+  "evidence_integrity": "PASS",
+  "figure_hard_gates": "FAIL_TO_SA2",
+  "hard_failures": [
+    "P1408 independent route geometry overlap",
+    "G0208/G0212/G0222 non-low-profile CJK pixel height 29<30"
+  ]
+}

@@ -1,0 +1,18 @@
+﻿PAIR_ID,OBJECT_A_TYPE,OBJECT_B_TYPE,ELEMENT_A,ELEMENT_B,OVERLAP_PIXEL_COUNT,MIN_CLEARANCE_PX,REQUIRED_MIN_CLEARANCE_PX,PASS_FAIL,MASK_OR_REVIEW_METHOD,NOTES
+PAIR-Q1-TEXT-MARKER,TEXT,MARKER,LABEL_Q1_Q+LABEL_Q1_SUB1,MARKER_Q1,0,2.2,3,FAIL,"SVG semantic glyph/circle masks at raw 300dpi, intersected with C1 raw foreground",source lines 52/39
+PAIR-Q2-TEXT-MARKER,TEXT,MARKER,LABEL_Q2_Q+LABEL_Q2_SUB2,MARKER_Q2,0,0.0,3,FAIL,"SVG semantic glyph/circle masks at raw 300dpi, intersected with C1 raw foreground",source lines 53/39
+PAIR-TICK_Y_NEG1_DIGIT-DATA_CURVE,TEXT,DATA_CURVE,TICK_Y_NEG1_DIGIT,L1/L2/Linf boundary,21,0,3,FAIL,official SVG tick glyph semantic mask ∩ C1 raw hue mask (blue/teal/gold boundary); curves are painted after ticks,source line 10; rendered order verified in official SVG
+PAIR-TICK_Y_NEG1_MINUS-DATA_CURVE,TEXT,DATA_CURVE,TICK_Y_NEG1_MINUS,L1/L2/Linf boundary,0,3,3,PASS,official SVG tick glyph semantic mask ∩ C1 raw hue mask (blue/teal/gold boundary); curves are painted after ticks,source line 10; rendered order verified in official SVG
+PAIR-TICK_X_POS1-DATA_CURVE,TEXT,DATA_CURVE,TICK_X_POS1,L1/L2/Linf boundary,82,0,3,FAIL,official SVG tick glyph semantic mask ∩ C1 raw hue mask (blue/teal/gold boundary); curves are painted after ticks,source line 10; rendered order verified in official SVG
+PAIR-TICK_X_NEG1_DIGIT-DATA_CURVE,TEXT,DATA_CURVE,TICK_X_NEG1_DIGIT,L1/L2/Linf boundary,0,3,3,PASS,official SVG tick glyph semantic mask ∩ C1 raw hue mask (blue/teal/gold boundary); curves are painted after ticks,source line 10; rendered order verified in official SVG
+PAIR-TICK_X_NEG1_MINUS-DATA_CURVE,TEXT,DATA_CURVE,TICK_X_NEG1_MINUS,L1/L2/Linf boundary,9,0,3,FAIL,official SVG tick glyph semantic mask ∩ C1 raw hue mask (blue/teal/gold boundary); curves are painted after ticks,source line 10; rendered order verified in official SVG
+PAIR-TICK_Y_POS1-DATA_CURVE,TEXT,DATA_CURVE,TICK_Y_POS1,L1/L2/Linf boundary,22,0,3,FAIL,official SVG tick glyph semantic mask ∩ C1 raw hue mask (blue/teal/gold boundary); curves are painted after ticks,source line 10; rendered order verified in official SVG
+PAIR-TEXT-TEXT-NEAREST,TEXT,TEXT,TICK_X_NEG1_MINUS,TICK_X_NEG1_DIGIT,0,6.0,4,PASS,official vector bbox→300dpi; natural q/caption scripts excluded as same semantic label,nearest independent text pair
+PAIR-TEXT-LINE_ARROW,TEXT,LINE_ARROW,all labels,axes+two query rays,0,3,3,PASS,1:1 raw ROI audit: roi_p2_axis_label_1to1_300dpi.png; roi_ticks_curves_1to1_300dpi.png,no text/line crossing observed
+PAIR-TEXT-DATA_CURVE,TEXT,DATA_CURVE,curve labels+annotation,L1/L2/Linf curves,0,3,3,PASS,1:1 raw ROI audit: roi_p2_axis_label_1to1_300dpi.png; roi_pinf_tick_1to1_300dpi.png,label backgrounds separate curves
+PAIR-ANNOTATION-DATA_CURVE,ANNOTATION,DATA_CURVE,ANNOTATION_LINE1+2,L1/L2/Linf curves,0,90,3,PASS,official vector bbox→300dpi and raw crop,right-side note is separated
+PAIR-TEXT-NODE_BORDER,TEXT,NODE_BORDER,all labels,N/A,0,N/A,5,N/A,no nodes in figure,category absent
+PAIR-TEXT-PANEL_BORDER,TEXT,PANEL_BORDER,all labels,N/A,0,N/A,5,N/A,one unbordered panel; no panel border,category absent
+PAIR-LEGEND-DATA_CURVE,LEGEND,DATA_CURVE,N/A,L1/L2/Linf curves,0,N/A,3,N/A,no legend box; direct labels used,category absent
+PAIR-ARROWHEAD-TEXT,ARROWHEAD,TEXT,axis arrowheads,nearest axis titles,0,26,3,PASS,1:1 raw ROI audit: roi_p2_axis_label_1to1_300dpi.png,nearest observed axis-title pair
+CLIP-CHECK,ALL_FOREGROUND,IMAGE_EDGE,all figure objects,raw figure crop edge,0,14,6,PASS,raw 300dpi C1 edge scan plus official SVG extents,CLIP_PIXEL_COUNT=0

@@ -1,0 +1,17 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 1 册}{统计学习方法讲义 v2.6.0}{数学基础与统计学习基本理论}
+\begin{document}
+\setcounter{page}{184}
+\setcounter{chapter}{10}
+\pagestyle{headings}
+\chaptermark{模型评估、选择与泛化}
+\section*{交叉验证}
+简单留出法把数据分为训练、验证与测试三部分；\kFold{}交叉验证把用于开发的数据划为$K$个互不相交折，每轮用一个折验证、其余折训练，最后平均验证损失；当$K=N$时称留一交叉验证。分类问题通常使用分层划分维持类别比例，分组或时间相关数据则必须按组或时间切分，不能假设样本可任意打乱。
+
+学习算法不仅包含单次模型拟合，还包含预处理、特征选择、超参数搜索和决策阈值选择。所有从数据估计的步骤都必须放入训练折内部，否则验证折的信息会提前进入模型。
+
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C10/UFIG-P158-01.tex}
+
+\paragraph{首次阅读检查：无泄漏的模型选择。}先按输入与状态、初始化、一次更新、保持量或目标、停止条件与输出证书读取原文。任何由数据估计的变换都只能在当前训练折内拟合；测试集只在候选锁定后使用一次。
+\end{document}

@@ -1,0 +1,106 @@
+{
+  "physical_page": 349,
+  "printed_page": 336,
+  "figure": "19.1",
+  "image_shape": [
+    3508,
+    2481
+  ],
+  "scale": 4.166666666666667,
+  "figure_crop_px": [
+    458,
+    1158,
+    1959,
+    1867
+  ],
+  "elements": 43,
+  "text_objects": 12,
+  "graphic_objects": 15,
+  "illegal_overlap_unique_pixels": 0,
+  "critical_text_pair": {
+    "pair": "O10/O11",
+    "foreground_distance": 6.0,
+    "bbox_distance": 0.0,
+    "nearest": [
+      [
+        1514,
+        1583
+      ],
+      [
+        1514,
+        1589
+      ]
+    ]
+  },
+  "tightest_text_graphic": {
+    "PAIR_ID": "TG-O09-G10_NODE_FM",
+    "OBJECT_A": "O09",
+    "CLASS_A": "TEXT",
+    "OBJECT_B": "G10_NODE_FM",
+    "CLASS_B": "NODE_BORDER",
+    "RELATION": "TEXT_OWN_NODE_BORDER",
+    "OVERLAP_PIXEL_COUNT": 0,
+    "MIN_FOREGROUND_CLEARANCE_PX": 11.0,
+    "BBOX_CLEARANCE_PX": "",
+    "REQUIRED_CLEARANCE_PX": 5.0,
+    "PASS_FAIL": "PASS",
+    "NEAREST_A_X": 1613,
+    "NEAREST_A_Y": 1767,
+    "NEAREST_B_X": 1613,
+    "NEAREST_B_Y": 1778,
+    "METHOD": "Poppler 300dpi text mask vs independently rasterized PDF semantic vector mask; Euclidean EDT",
+    "ROI": "roi_O09_vs_G10_NODE_FM_raw_1to1_300dpi.png; roi_O09_vs_G10_NODE_FM_overlay_1to1_300dpi.png"
+  },
+  "cross_panel_ratios": [
+    {
+      "ROLE": "CHANNEL_HEADING",
+      "SCRIPT_CLASS": "CJK",
+      "PANEL_MEDIANS": {
+        "TOP": 39.0,
+        "BOTTOM": 39.0
+      },
+      "MAX_MIN_RATIO": 1.0,
+      "PASS": true
+    },
+    {
+      "ROLE": "NODE_LABEL",
+      "SCRIPT_CLASS": "CJK",
+      "PANEL_MEDIANS": {
+        "TOP": 36.5,
+        "BOTTOM": 36.5
+      },
+      "MAX_MIN_RATIO": 1.0,
+      "PASS": true
+    },
+    {
+      "ROLE": "NODE_LABEL",
+      "SCRIPT_CLASS": "CAPS_DIGITS",
+      "PANEL_MEDIANS": {
+        "TOP": 37.0,
+        "BOTTOM": 33.0
+      },
+      "MAX_MIN_RATIO": 1.121212121212121,
+      "PASS": false
+    },
+    {
+      "ROLE": "NODE_LABEL",
+      "SCRIPT_CLASS": "NATURAL_SCRIPT",
+      "PANEL_MEDIANS": {
+        "TOP": 24.5,
+        "BOTTOM": 21.0
+      },
+      "MAX_MIN_RATIO": 1.1666666666666667,
+      "PASS": false
+    },
+    {
+      "ROLE": "NODE_LABEL",
+      "SCRIPT_CLASS": "LOWER_GREEK",
+      "PANEL_MEDIANS": {
+        "TOP": 21.0,
+        "BOTTOM": 21.0
+      },
+      "MAX_MIN_RATIO": 1.0,
+      "PASS": true
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+review_id,pair_id,reviewer_type,human_certification,manual_decision,manual_observation,evidence
+CPR-001,PAIR-0185,AI_SA1_VISUAL_REVIEW,false,CLEAR,"T07 x-tick 0 and G01 tick stroke have 16 px native ink clearance; no contact or ambiguity.",pairs/PAIR-0185_critical_8x.png
+CPR-002,PAIR-0209,AI_SA1_VISUAL_REVIEW,false,CLEAR,"T08 x-tick 1 and G01 tick stroke have 16 px native ink clearance; no contact.",pairs/PAIR-0209_critical_8x.png
+CPR-003,PAIR-0232,AI_SA1_VISUAL_REVIEW,false,CLEAR,"T09 x-tick 2 and G01 tick stroke have 16 px native ink clearance; no contact.",pairs/PAIR-0232_critical_8x.png
+CPR-004,PAIR-0254,AI_SA1_VISUAL_REVIEW,false,CLEAR,"T10 x-tick 3 and G01 tick stroke have 16 px native ink clearance; no contact.",pairs/PAIR-0254_critical_8x.png
+CPR-005,PAIR-0257,AI_SA1_VISUAL_REVIEW,false,CLEAR,"T10 x-tick 3 and G04 x-arrowhead have 16 px native ink clearance; numeral remains unambiguous.",pairs/PAIR-0257_critical_8x.png
+CPR-006,PAIR-0361,AI_SA1_VISUAL_REVIEW,false,CLEAR,"T16/T17 annotation lines have 12 px native ink clearance, exceeding the 4 px text-text floor.",pairs/PAIR-0361_critical_8x.png
+CPR-007,PAIR-0406,AI_SA1_VISUAL_REVIEW,false,CLEAR,"T19/T20 caption lines have 14 px native ink clearance, exceeding the 4 px text-text floor.",pairs/PAIR-0406_critical_8x.png
+CPR-008,PAIR-0431,AI_SA1_VISUAL_REVIEW,false,ALLOWED_STRUCTURAL_CONTACT,"G01/G02 share 6 pixels at the origin tick junction; this is the intended orthogonal tick-system meeting, not an illegal collision.",pairs/PAIR-0431_critical_8x.png
+CPR-009,PAIR-0432,AI_SA1_VISUAL_REVIEW,false,ALLOWED_STRUCTURAL_CONTACT,"G01 x ticks meet G03 x-axis at 8 shared pixels as required for tick marks.",pairs/PAIR-0432_critical_8x.png
+CPR-010,PAIR-0433,AI_SA1_VISUAL_REVIEW,false,ALLOWED_STRUCTURAL_CONTACT,"G01 terminal x tick meets G04 arrowhead over 9 pixels at x=3; direction remains clear.",pairs/PAIR-0433_critical_8x.png
+CPR-011,PAIR-0434,AI_SA1_VISUAL_REVIEW,false,ALLOWED_STRUCTURAL_CONTACT,"G01/G05 share 2 pixels at the axes origin; this is the intended origin junction.",pairs/PAIR-0434_critical_8x.png
+CPR-012,PAIR-0436,AI_SA1_VISUAL_REVIEW,false,ALLOWED_DATA_AXIS_CONTACT,"G01/G07 share 2 pixels only where the near-zero blue density meets endpoint/tick geometry; no text or semantic occlusion.",pairs/PAIR-0436_critical_8x.png
+CPR-013,PAIR-0437,AI_SA1_VISUAL_REVIEW,false,ALLOWED_FILL_BASELINE_CONTACT,"G01/G08 share 1 raster pixel at the filled-area baseline; the pale fill is a background region and the tick remains visible.",pairs/PAIR-0437_critical_8x.png
+CPR-014,PAIR-0438,AI_SA1_VISUAL_REVIEW,false,ALLOWED_DATA_AXIS_CONTACT,"G01/G09 share 4 pixels at the near-zero gold density endpoint/tick geometry; no ambiguity results.",pairs/PAIR-0438_critical_8x.png
+CPR-015,PAIR-0442,AI_SA1_VISUAL_REVIEW,false,ALLOWED_STRUCTURAL_CONTACT,"G02/G03 share 2 pixels at the origin where the y tick system meets the x-axis.",pairs/PAIR-0442_critical_8x.png
+CPR-016,PAIR-0444,AI_SA1_VISUAL_REVIEW,false,ALLOWED_STRUCTURAL_CONTACT,"G02 y ticks meet G05 y-axis over 10 pixels as required for tick marks.",pairs/PAIR-0444_critical_8x.png
+CPR-017,PAIR-0445,AI_SA1_VISUAL_REVIEW,false,CLEAR_RELATION,"G02 top tick and G06 y-arrowhead belong to one axis but have 34.015 px native separation; neither is clipped.",pairs/PAIR-0445_critical_8x.png
+CPR-018,PAIR-0446,AI_SA1_VISUAL_REVIEW,false,ALLOWED_DATA_AXIS_CONTACT,"G02/G07 share 2 pixels at the blue density's near-zero left endpoint; the tick/curve roles remain distinct.",pairs/PAIR-0446_critical_8x.png
+CPR-019,PAIR-0447,AI_SA1_VISUAL_REVIEW,false,ALLOWED_FILL_BASELINE_CONTACT,"G02/G08 share 1 raster pixel at the pale filled-region boundary; no foreground information is hidden.",pairs/PAIR-0447_critical_8x.png
+CPR-020,PAIR-0448,AI_SA1_VISUAL_REVIEW,false,ALLOWED_DATA_AXIS_CONTACT,"G02/G09 share 2 pixels at the gold curve's near-zero left endpoint; no illegal overlap.",pairs/PAIR-0448_critical_8x.png
+CPR-021,PAIR-0452,AI_SA1_VISUAL_REVIEW,false,ALLOWED_STRUCTURAL_CONTACT,"G03 x-axis and G04 arrowhead share 70 pixels by construction, forming a single continuous axis.",pairs/PAIR-0452_critical_8x.png
+CPR-022,PAIR-0453,AI_SA1_VISUAL_REVIEW,false,ALLOWED_STRUCTURAL_CONTACT,"G03/G05 share 32 pixels at the axes origin; this is the intended coordinate-frame junction.",pairs/PAIR-0453_critical_8x.png
+CPR-023,PAIR-0455,AI_SA1_VISUAL_REVIEW,false,ALLOWED_FILL_BASELINE_CONTACT,"G03/G07 share 136 pixels from the filled-density closed-cycle baseline and near-zero tails; this conventional region closure does not alter the density curve meaning.",pairs/PAIR-0455_critical_8x.png
+CPR-024,PAIR-0457,AI_SA1_VISUAL_REVIEW,false,ALLOWED_DATA_AXIS_CONTACT,"G03/G09 share 79 pixels along anti-aliased near-zero gold tails; the dashed density remains distinguishable from the axis.",pairs/PAIR-0457_critical_8x.png
+CPR-025,PAIR-0458,AI_SA1_VISUAL_REVIEW,false,ALLOWED_MEAN_BASELINE_CONTACT,"G03/G10 share 26 pixels where the blue mean reference intentionally starts at y=0.",pairs/PAIR-0458_critical_8x.png
+CPR-026,PAIR-0459,AI_SA1_VISUAL_REVIEW,false,ALLOWED_MEAN_BASELINE_CONTACT,"G03/G11 share 12 pixels where the gold mean reference intentionally starts at y=0.",pairs/PAIR-0459_critical_8x.png
+CPR-027,PAIR-0463,AI_SA1_VISUAL_REVIEW,false,ALLOWED_ENDPOINT_CONTACT,"G04/G07 share 116 pixels at the x=3 near-zero tail/filled-boundary endpoint; the arrowhead still has a clear silhouette.",pairs/PAIR-0463_critical_8x.png
+CPR-028,PAIR-0465,AI_SA1_VISUAL_REVIEW,false,ALLOWED_ENDPOINT_CONTACT,"G04/G09 share 63 pixels at the x=3 near-zero gold tail; dash pattern and arrow direction remain readable.",pairs/PAIR-0465_critical_8x.png
+CPR-029,PAIR-0469,AI_SA1_VISUAL_REVIEW,false,ALLOWED_STRUCTURAL_CONTACT,"G05 y-axis and G06 arrowhead share 61 pixels by construction, forming one continuous y-axis.",pairs/PAIR-0469_critical_8x.png
+CPR-030,PAIR-0470,AI_SA1_VISUAL_REVIEW,false,ALLOWED_ENDPOINT_CONTACT,"G05/G07 share 25 pixels at the x=-2 near-zero blue endpoint/origin side; no text is involved.",pairs/PAIR-0470_critical_8x.png
+CPR-031,PAIR-0472,AI_SA1_VISUAL_REVIEW,false,ALLOWED_ENDPOINT_CONTACT,"G05/G09 share 25 pixels at the x=-2 near-zero gold endpoint/origin side; no text is involved.",pairs/PAIR-0472_critical_8x.png
+CPR-032,PAIR-0483,AI_SA1_VISUAL_REVIEW,false,ALLOWED_DATA_INTERSECTION,"G07/G09 share 88 pixels at the single mathematical crossing of two density curves; solid/dashed encoding keeps both identities explicit.",pairs/PAIR-0483_critical_8x.png
+CPR-033,PAIR-0484,AI_SA1_VISUAL_REVIEW,false,ALLOWED_MEAN_PEAK_CONTACT,"G07/G10 share 30 pixels because the blue mean line intentionally reaches the blue curve maximum at x=.45.",pairs/PAIR-0484_critical_8x.png
+CPR-034,PAIR-0485,AI_SA1_VISUAL_REVIEW,false,ALLOWED_DATA_REFERENCE_INTERSECTION,"G07/G11 share 2 pixels where the gold mean reference crosses the blue density; both are data geometry and remain distinguishable.",pairs/PAIR-0485_critical_8x.png
+CPR-035,PAIR-0491,AI_SA1_VISUAL_REVIEW,false,ALLOWED_DATA_REFERENCE_INTERSECTION,"G09/G10 share 8 pixels where the blue mean reference crosses the gold density; both encodings remain clear.",pairs/PAIR-0491_critical_8x.png
+CPR-036,PAIR-0492,AI_SA1_VISUAL_REVIEW,false,ALLOWED_MEAN_PEAK_CONTACT,"G09/G11 share 21 pixels because the gold mean line intentionally reaches the gold curve maximum at x=.60.",pairs/PAIR-0492_critical_8x.png

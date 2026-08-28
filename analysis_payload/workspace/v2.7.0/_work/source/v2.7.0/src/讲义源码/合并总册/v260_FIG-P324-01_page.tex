@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 3 册}{统计学习方法讲义 v2.6.0}{优化模型与序列模型}
+\begin{document}
+\setcounter{page}{393}
+\setcounter{chapter}{19}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{提升方法}
+\begin{geometrybox}
+AdaBoost 的样本权重决定下一轮弱分类器关注哪些样本，而分类器权重决定该弱分类器进入加法模型时的贡献；两类权重属于不同计算支路。
+\end{geometrybox}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C03/fig_v3_c03_adaboost_loop.tex}
+图\ref{fig:V3-C03-adaboost-loop}将样本分布更新与加法模型更新分开表示：误差同时驱动新分布和分类器权重，但只有弱分类器及其系数进入集成模型。
+\textbf{从 AdaBoost 到前向分步加法。}该双通道结构解释了提升方法如何逐轮重加权样本并累积弱分类器。
+\end{document}

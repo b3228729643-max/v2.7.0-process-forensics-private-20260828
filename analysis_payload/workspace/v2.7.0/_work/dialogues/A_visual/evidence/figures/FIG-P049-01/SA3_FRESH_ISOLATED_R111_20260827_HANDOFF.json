@@ -1,0 +1,41 @@
+{
+  "handoff_id": "A-R111-P049-SA3-FRESH-ISOLATED-20260827",
+  "assigned_scope": "Fresh isolated SA3 review of FIG-P049-01 against the exact R111 PDF and single current P049 TeX source, with only necessary V1-C03 context.",
+  "completed": [
+    "proved the evidence root absent by File.Exists, Directory.Exists, and Test-Path before creation",
+    "verified exact PDF and TeX byte/SHA identities",
+    "independently located the figure on PDF page 48 / printed page 35",
+    "froze the direct-strict visible denominator at N=152: 135 nonempty glyphs and 17 foreground path atoms",
+    "explicitly excluded only 11 opaque white background knockout rectangles",
+    "enumerated every unordered pair exactly once at C=11476",
+    "opened native300dpi, native1x, all nearest8x glyph sheets, all nearest8x relation sheets, grayscale, and full-page views",
+    "authored genuine post-observation manual ledgers for all 135 glyph IDs, 17 path IDs, and all 122 machine relation-candidate pair IDs",
+    "verified Guide1, all contours, gradient/tangent/right-angle geometry, note leaders, caption/page integration, grayscale, and mathematical semantics",
+    "completed a CLEAR preseal consistency audit"
+  ],
+  "files_changed": {
+    "source_files": [],
+    "pdf_files": [],
+    "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P049-01\\STRICT_R6_SA3_FRESH_ISOLATED_R111_20260827",
+    "external_report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P049-01\\SA3_FRESH_ISOLATED_R111_20260827_REPORT.md",
+    "external_handoff": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P049-01\\SA3_FRESH_ISOLATED_R111_20260827_HANDOFF.json"
+  },
+  "decisions": [
+    "SA3_RESULT=PASS",
+    "R168 micro-font and raster differences are advisory here because no defined hard failure is present",
+    "R11423, R11425, and R11442 are intentional semantic contacts at P, not illegal collisions",
+    "request central coordinator evaluation for A_LOCAL_PASS; SA3 does not grant it"
+  ],
+  "unresolved": [],
+  "validation": {
+    "N": 152,
+    "C": 11476,
+    "glyph_manual_rows": 135,
+    "path_manual_rows": 17,
+    "relation_candidate_manual_rows": 122,
+    "true_illegal_overlap_count": 0,
+    "clip_count": 0,
+    "preseal_audit_state": "CLEAR"
+  },
+  "next_action": "Central coordinator should verify the sealed root and root-external auditor result, then decide whether to record A_LOCAL_PASS. If rejected, route this UID to SA2 without treating this handoff as source-edit authorization."
+}

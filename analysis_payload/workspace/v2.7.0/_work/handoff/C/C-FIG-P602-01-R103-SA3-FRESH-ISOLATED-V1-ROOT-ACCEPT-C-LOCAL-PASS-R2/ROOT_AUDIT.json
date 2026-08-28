@@ -1,0 +1,99 @@
+{
+  "handoff_id": "C-FIG-P602-01-R103-SA3-FRESH-ISOLATED-V1",
+  "root_disposition": "ROOT_ACCEPT_C_LOCAL_PASS_AWAIT_MAIN_CENTRAL_ACCEPTANCE",
+  "root_auditor": "/root",
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa3_r103_fresh_isolated_v1",
+  "identity": {
+    "pdf_bytes": 4967184,
+    "pdf_sha256": "9379A489E0C2A57A7DA670C98029BB27B3F1A385BF8E4C3BD14FE9B606AA0F23",
+    "source_bytes": 2869,
+    "source_sha256": "6C4E8F156709C0FF384F9E7B7F2BD5D9CB586E24206BF0BCD2E58933ED3DB47D",
+    "physical_page": 653,
+    "printed_page": 640,
+    "figure_number": "32.5",
+    "integration_head": "f5971bdca5f25628d077594cdd8fd35dc9b895f5",
+    "integration_dirty": 0,
+    "tex_processes": 0
+  },
+  "control": {
+    "actual_files": 755,
+    "manifest_rows": 753,
+    "only_unlisted": [
+      "MANIFEST.json",
+      "WRITE_STOPPED"
+    ],
+    "manifest_duplicates": 0,
+    "manifest_missing": 0,
+    "bytes_mismatch": 0,
+    "sha256_mismatch": 0,
+    "mtime_iso_mismatch": 0,
+    "ntfs_filetime_100ns_mismatch": 0,
+    "readonly_fail": 0,
+    "ads": 0,
+    "json_parse_fail": 0,
+    "csv_tsv_parse_fail": 0,
+    "png_parse_fail": 0,
+    "cache_or_pyc": 0,
+    "marker_strict_latest": true,
+    "marker_delta_filetime_100ns": 645084,
+    "evidence_manifest_sha256": "384B1A3282D91B19AB56D97B5E2D661F55DB67F30C000DC4D5A91BB3280FF9D1",
+    "evidence_marker_sha256": "C2FA0B3C896D03922586EE8FF9C24C370B752542716859065F7B064D8B2E800E"
+  },
+  "denominators": {
+    "foreground_objects": 33,
+    "text_objects": 20,
+    "glyphs": 194,
+    "unordered_pairs": 528,
+    "critical_pairs": 37,
+    "clip": 33,
+    "primitives": 28,
+    "role": 20,
+    "peer": 20,
+    "primary_views": 7,
+    "actual_render_files": 717,
+    "semantics": 10,
+    "hard_gates": 19,
+    "manual_judgments": 909,
+    "render_path_closure_rows": 264,
+    "manual_total": 1173
+  },
+  "closure": {
+    "object_mismatch": 0,
+    "glyph_mismatch": 0,
+    "pair_order_mismatch": 0,
+    "pair_set_mismatch": 0,
+    "critical_mismatch": 0,
+    "clip_mismatch": 0,
+    "primitive_mismatch": 0,
+    "role_mismatch": 0,
+    "render_set_mismatch": 0,
+    "coverage_link_missing": 0,
+    "blank_notes": 0,
+    "duplicate_note_groups": 0,
+    "suspicious_template_notes": 0,
+    "non_pass_decisions": 0,
+    "hard_failure_ids": 0
+  },
+  "content": {
+    "decision": "PASS",
+    "workflow_state": "C_LOCAL_PASS_ONLY",
+    "failed_ids": [],
+    "advisory_ids": [
+      "P0467",
+      "P0478",
+      "P0488"
+    ],
+    "illegal_overlap": 0,
+    "true_clip": 0,
+    "source_writer_needed": false,
+    "tex_needed": false,
+    "central_state_updated": false
+  },
+  "key_files": {
+    "recordset_identity_sha256": "B7737F1C69B7F6164DE78A5A63A0A7785B9FFC10497178033A6357EB862867DA",
+    "decision_sha256": "F52A6F1BB613139539706CE9D7C95E3A3403203FD31170AF78C8160F47D58EB5",
+    "review_sha256": "DB6492FE1FFE7D26B730EA2B0D3FDCB655DB402A861FA0F675833B3F8D9F512B",
+    "validator_sha256": "8B761ED3011A206D811C2BE7E7AF069D5A85FEBB8DE6C23E17FF7524B1023327"
+  },
+  "next_action": "MAIN_ACCEPT_C_LOCAL_PASS_AND_PERFORM_ANY_CENTRAL_STATE_UPDATE_AS_SINGLE_WRITER"
+}

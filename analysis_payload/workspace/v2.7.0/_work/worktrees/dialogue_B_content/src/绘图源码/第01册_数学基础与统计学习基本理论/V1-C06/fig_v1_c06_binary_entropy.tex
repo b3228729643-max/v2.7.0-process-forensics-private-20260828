@@ -1,0 +1,43 @@
+% v2.3.1 figure UID: FIG-P092-01
+% Proposed post-v2.3.1 polish for FIG-P092-01: protect key-label size and stroke hierarchy.
+\tikzset{
+  slfig-FIG-P092-01/.style={every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P092-01-guide/.style={draw=SLGray!76,line width=.52pt,
+    dash pattern=on 3pt off 2pt},
+  slfig-FIG-P092-01-label/.style={font=\fontsize{9.2pt}{11.2pt}\selectfont,
+    fill=white,fill opacity=.92,text opacity=1,inner sep=1.2pt}
+}
+\pgfplotsset{slfig-FIG-P092-01-axis/.style={
+  tick label style={font=\fontsize{8.8pt}{10.6pt}\selectfont},
+  label style={font=\fontsize{9.4pt}{11.4pt}\selectfont},clip=false}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P092-01,alt={对象—关系—结论：二元熵在p=1/2处达到1比特，在确定分布两端趋于0}]
+\begin{axis}[slfig-FIG-P092-01-axis,
+  slfig axis,width=.78\linewidth,height=5.8cm,
+  axis lines=left,xlabel={$p$},ylabel={$H_2(p)$},
+  xmin=-.04,xmax=1.04,ymin=-.04,ymax=1.15,
+  xtick={0,.5,1},xticklabels={$0$,$\tfrac12$,$1$},
+  ytick={0,1},yticklabels={$0$,$1$},
+  domain=.001:.999,samples=321,clip=false
+]
+  \addplot[draw=SLBlue,line width=1.05pt,no marks]
+    {-(x*ln(x)+(1-x)*ln(1-x))/ln(2)};
+  \addplot[only marks,mark=*,mark size=2.15pt,draw=SLBlue,fill=SLBlue]
+    coordinates {(0,0) (.5,1) (1,0)};
+  \draw[slfig-FIG-P092-01-guide] (axis cs:.5,0)--(axis cs:.5,1);
+  \draw[slfig-FIG-P092-01-guide] (axis cs:0,1)--(axis cs:.5,1);
+  \node[slfig-FIG-P092-01-label,anchor=south]
+    at (axis cs:.5,1.025) {最大不确定性：$1$ 比特};
+  \node[slfig-FIG-P092-01-label,anchor=base west,text=SLGray!90]
+    at (axis cs:.02,.055) {确定性};
+  \node[slfig-FIG-P092-01-label,anchor=base east,text=SLGray!90]
+    at (axis cs:.98,.055) {确定性};
+  \node[slfig direct label,slfig-FIG-P092-01-label,fill=none,anchor=center]
+    at (axis cs:.65,.45)
+    {$H_2(p)=H_2(1-p)$};
+\end{axis}
+\end{tikzpicture}
+\caption{二元熵在$p=1/2$处达到1比特，在确定分布两端趋于0}\label{fig:V1-C06-binary-entropy}
+\end{figure}

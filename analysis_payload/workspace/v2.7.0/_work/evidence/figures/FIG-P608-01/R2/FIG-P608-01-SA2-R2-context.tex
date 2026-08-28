@@ -1,0 +1,17 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{FIG-P608-01 SA2 局部上下文验证}
+\begin{document}
+\setcounter{page}{772}
+\setcounter{chapter}{32}
+\setcounter{figure}{7}
+\pagestyle{headings}
+\chaptermark{马尔可夫链蒙特卡罗法}
+\sectionmark{收敛与样本诊断}
+最后一个比值只在分子、分母有限且分母正时定义。批均值一致性要求随总长度增长时 $a,b$ 都增长且满足相应混合与矩条件；一条有限轨迹不能单独证明这些条件。
+
+图\ref{fig:V5-C03-trace-running-mean}展示固定诊断示意轨迹与保留样本运行均值。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_trace_running_mean.tex}
+\FloatBarrier
+读图时，先看上面板如何把$t=1,\ldots,5$标为预热段；再看下面板只从$t=6$起递推$\overline X_{6:t}$；最终比较其与目标值2，并核对15个保留样本在$t=20$时给出$\overline X_{6:20}=2.0000$。
+\end{document}

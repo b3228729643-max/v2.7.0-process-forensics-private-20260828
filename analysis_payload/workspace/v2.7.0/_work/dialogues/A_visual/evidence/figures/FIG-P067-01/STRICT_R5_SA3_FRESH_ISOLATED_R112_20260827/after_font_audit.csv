@@ -1,0 +1,8 @@
+audit_id,scope,declared_or_extracted_pt,observed_native_ink,reviewer,r168_status,hard_failure,note
+FONT-01,upper tick labels,8.8 source / 8.5679 extracted,24px median axis text,SA3-R112-FRESH,ADVISORY,false,Below legacy 9.5pt threshold but fully readable and balanced under R168.
+FONT-02,lower tick labels,8.6 source / 8.5679 extracted,24px median axis text,SA3-R112-FRESH,ADVISORY,false,Below legacy 9.5pt threshold but fully readable and balanced under R168.
+FONT-03,axis labels,9.4 source / 9.3649 extracted,25px t title; math axis labels readable,SA3-R112-FRESH,ADVISORY,false,No actual unreadability or imbalance.
+FONT-04,mass labels and annotations,9.2 source / 9.1656 extracted,CJK median near 37px; math base near 29px,SA3-R112-FRESH,ADVISORY,false,No tofu wrong code missing strokes or visual imbalance.
+FONT-05,natural subscripts,derived 6.4159 extracted,19-20px for digit subscripts,SA3-R112-FRESH,ADVISORY,false,Legitimate natural subscripts remain readable.
+FONT-06,caption,9.9626 extracted,37px median CJK,SA3-R112-FRESH,PASS,false,Caption hierarchy and page fusion are natural.
+FONT-07,global harmony,8.6-9.4pt figure base; 9.9626pt caption,all opened views,SA3-R112-FRESH,PASS,false,FONT_VISUAL_HARMONY_PASS=true under R168.

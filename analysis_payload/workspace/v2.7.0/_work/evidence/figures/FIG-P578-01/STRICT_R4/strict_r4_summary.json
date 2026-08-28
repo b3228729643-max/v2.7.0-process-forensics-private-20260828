@@ -1,0 +1,333 @@
+{
+  "candidate": "FIG-P578-01-SA2-STRICT-R4",
+  "result": "FIXED",
+  "rendering": {
+    "dpi": 300,
+    "resampled": false,
+    "page_png": "candidate_page_300dpi.png",
+    "standalone_png": "candidate_standalone_300dpi.png",
+    "page_edge_clearance_px": 171,
+    "baseline_page_edge_clearance_px": 171
+  },
+  "source_static": {
+    "state_node_count": 21,
+    "branch_label_count": 16,
+    "declared_font_occurrences": {
+      "9.6pt": 3,
+      "10.7pt": 1
+    },
+    "whole_figure_scale_commands": 0
+  },
+  "vector_regression": {
+    "baseline_drawing_count": 89,
+    "after_drawing_count": 89,
+    "all_drawing_geometry_and_styles_identical": true
+  },
+  "raster_regression": {
+    "baseline_image_size": [
+      2481,
+      3508
+    ],
+    "after_image_size": [
+      2481,
+      3508
+    ],
+    "changed_pixel_count": 12197,
+    "changed_pixel_bbox_px": [
+      853,
+      767,
+      1266,
+      1983
+    ],
+    "allowed_target_boxes_px": {
+      "INIT": [
+        844,
+        754,
+        1276,
+        831
+      ],
+      "EVALUATE": [
+        874,
+        1919,
+        1246,
+        1994
+      ]
+    },
+    "changed_pixels_outside_target_boxes": 0
+  },
+  "target_pixel_height_regression": [
+    {
+      "ELEMENT_ID": "E04-INIT-CJK-R4",
+      "SELECTED_GLYPH_HEIGHTS_PX": "36;35;35;36;35;35;36;35;34",
+      "MEDIAN_H_INK_PX": "35.0",
+      "REQUIRED_MEDIAN_PX": 30,
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "ELEMENT_ID": "E04-INIT-MATH-R4",
+      "SELECTED_GLYPH_HEIGHTS_PX": "21;21;28;29;29",
+      "MEDIAN_H_INK_PX": "28.0",
+      "REQUIRED_MEDIAN_PX": 22,
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "ELEMENT_ID": "E04-INIT-SCRIPT-R4",
+      "SELECTED_GLYPH_HEIGHTS_PX": "20;16",
+      "MEDIAN_H_INK_PX": "18.0",
+      "REQUIRED_MEDIAN_PX": 15,
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "ELEMENT_ID": "E14-EVALUATE-CJK-R4",
+      "SELECTED_GLYPH_HEIGHTS_PX": "35;36",
+      "MEDIAN_H_INK_PX": "35.5",
+      "REQUIRED_MEDIAN_PX": 30,
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "ELEMENT_ID": "E14-EVALUATE-MATH-R4",
+      "SELECTED_GLYPH_HEIGHTS_PX": "30;29;30;29;30;30;29;21;30;29",
+      "MEDIAN_H_INK_PX": "29.5",
+      "REQUIRED_MEDIAN_PX": 22,
+      "PASS_FAIL": "PASS"
+    }
+  ],
+  "before": {
+    "image_size": [
+      2481,
+      3508
+    ],
+    "page_size_pt": [
+      595.2760009765625,
+      841.8900146484375
+    ],
+    "drawing_count": 90,
+    "span_count": 249,
+    "nodes": {
+      "INIT": {
+        "node_vector_rect_pt": [
+          186.882553,
+          168.792496,
+          322.413452,
+          198.907837
+        ],
+        "text_ink_bbox_px": [
+          844,
+          713,
+          1278,
+          819
+        ],
+        "line_ink_bboxes_px": [
+          [
+            844,
+            713,
+            1278,
+            752
+          ],
+          [
+            854,
+            777,
+            1265,
+            819
+          ]
+        ],
+        "visible_font_sizes_pt": [
+          7.462,
+          9.5641,
+          10.66
+        ]
+      },
+      "EVALUATE": {
+        "node_vector_rect_pt": [
+          186.882553,
+          448.007202,
+          322.413452,
+          478.124664
+        ],
+        "text_ink_bbox_px": [
+          886,
+          1877,
+          1235,
+          1982
+        ],
+        "line_ink_bboxes_px": [
+          [
+            910,
+            1877,
+            1209,
+            1918
+          ],
+          [
+            886,
+            1942,
+            1235,
+            1982
+          ]
+        ],
+        "visible_font_sizes_pt": [
+          9.5641,
+          10.66
+        ]
+      }
+    }
+  },
+  "after": {
+    "image_size": [
+      2481,
+      3508
+    ],
+    "page_size_pt": [
+      595.2760009765625,
+      841.8900146484375
+    ],
+    "drawing_count": 89,
+    "span_count": 228,
+    "nodes": {
+      "INIT": {
+        "node_vector_rect_pt": [
+          186.882553,
+          168.792496,
+          322.413452,
+          198.907837
+        ],
+        "text_ink_bbox_px": [
+          844,
+          713,
+          1278,
+          809
+        ],
+        "line_ink_bboxes_px": [
+          [
+            844,
+            713,
+            1278,
+            752
+          ],
+          [
+            872,
+            768,
+            1248,
+            809
+          ]
+        ],
+        "visible_font_sizes_pt": [
+          7.462,
+          9.5641,
+          10.66
+        ]
+      },
+      "EVALUATE": {
+        "node_vector_rect_pt": [
+          186.882553,
+          448.007202,
+          322.413452,
+          478.124664
+        ],
+        "text_ink_bbox_px": [
+          900,
+          1877,
+          1221,
+          1972
+        ],
+        "line_ink_bboxes_px": [
+          [
+            910,
+            1877,
+            1209,
+            1918
+          ],
+          [
+            900,
+            1932,
+            1221,
+            1972
+          ]
+        ],
+        "visible_font_sizes_pt": [
+          9.5641,
+          10.66
+        ]
+      }
+    }
+  },
+  "after_standalone": {
+    "image_size": [
+      2481,
+      3508
+    ],
+    "page_size_pt": [
+      595.2760009765625,
+      841.8900146484375
+    ],
+    "drawing_count": 89,
+    "span_count": 196,
+    "nodes": {
+      "INIT": {
+        "node_vector_rect_pt": [
+          185.600555,
+          168.792496,
+          321.131439,
+          198.907837
+        ],
+        "text_ink_bbox_px": [
+          838,
+          713,
+          1272,
+          809
+        ],
+        "line_ink_bboxes_px": [
+          [
+            838,
+            713,
+            1272,
+            752
+          ],
+          [
+            866,
+            768,
+            1242,
+            809
+          ]
+        ],
+        "visible_font_sizes_pt": [
+          7.462,
+          9.5641,
+          10.66
+        ]
+      },
+      "EVALUATE": {
+        "node_vector_rect_pt": [
+          185.600555,
+          448.007202,
+          321.131439,
+          478.124664
+        ],
+        "text_ink_bbox_px": [
+          894,
+          1877,
+          1215,
+          1972
+        ],
+        "line_ink_bboxes_px": [
+          [
+            905,
+            1877,
+            1203,
+            1918
+          ],
+          [
+            894,
+            1932,
+            1215,
+            1972
+          ]
+        ],
+        "visible_font_sizes_pt": [
+          9.5641,
+          10.66
+        ]
+      }
+    }
+  },
+  "after_failures": []
+}

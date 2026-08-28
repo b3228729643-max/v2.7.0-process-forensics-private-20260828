@@ -1,0 +1,75 @@
+{
+  "handoff_id": "A-R107-P580-SA2-R168-READONLY-20260826",
+  "uid": "FIG-P580-01",
+  "role": "SA2_R168_READONLY_ADJUDICATION",
+  "candidate": {
+    "round": "R107",
+    "pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r107_fullbook\\main_full.pdf",
+    "pages": 817,
+    "bytes": 4967249,
+    "sha256": "8811950621E2D64A3C2A8F0F7A52DD0FAC2BDB12018F3EA052C1F58C94EF8DF3",
+    "physical_page": 630,
+    "printed_page": 617,
+    "figure_number": "31.6"
+  },
+  "source": {
+    "relative_path": "src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_is_support.tex",
+    "sha256": "F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161",
+    "changed": false,
+    "visible_font_sizes_pt": [9.6, 10.2],
+    "minimum_visible_font_size_pt": 9.6,
+    "minimum_required_pt": 9.5,
+    "resizebox_count": 0,
+    "scalebox_count": 0,
+    "transform_shape_count": 0
+  },
+  "rendered_views": {
+    "full_page_200dpi": [1654, 2339],
+    "figure_crop_300dpi": [2063, 1014],
+    "standalone_300dpi": [2063, 868],
+    "grayscale_300dpi": [2063, 1014],
+    "left_notll_title_native1x": [197, 101],
+    "caption_ll_native1x": [139, 101],
+    "ratio_card_native1x": [772, 263]
+  },
+  "codepoint_checks": {
+    "left_title_combining_long_solidus_overlay_U_0338": {
+      "count_in_figure": 1,
+      "font": "STIXTwoMath",
+      "size_pt": 10.16189,
+      "visible_complete": true
+    },
+    "much_less_than_U_226A": {
+      "present_in_left_title": true,
+      "present_in_caption": true,
+      "visible_complete": true
+    },
+    "replacement_character_U_FFFD_count": 0,
+    "tofu_count": 0
+  },
+  "mathematical_checks": {
+    "integral_p_0_to_5": 1.0,
+    "integral_q_L_0_to_2_5": 1.0,
+    "integral_q_R_0_to_5": 1.0,
+    "support_p_absolutely_continuous_wrt_q_L": false,
+    "support_p_absolutely_continuous_wrt_q_R": true,
+    "weight_at_1": "24/25",
+    "weight_at_5_over_2": "3/2",
+    "weight_at_4": "24/25",
+    "matches_current_body_and_caption": true
+  },
+  "hard_gates": {
+    "missing_glyph_or_tofu": 0,
+    "wrong_codepoint_or_math_semantics": 0,
+    "unreadable_or_obvious_size_imbalance": 0,
+    "true_clip": 0,
+    "illegal_overlap": 0,
+    "geometry_or_relationship_error": 0,
+    "normalization_or_ratio_error": 0
+  },
+  "r168_advisory_only": [
+    "minor native-pixel contour and mask differences are not hard failures"
+  ],
+  "tex_invocations": 0,
+  "decision": "P580_SA2_NO_SOURCE_CHANGE_READY_FOR_FRESH_SA1"
+}

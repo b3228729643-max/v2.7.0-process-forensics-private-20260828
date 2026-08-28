@@ -1,0 +1,8 @@
+font_occurrence_id	manual_reviewer	source_location	declared_pt	native_render_readable	tofu_or_missing	wrong_glyph_or_codepoint	serious_visual_imbalance	decision	manual_note
+FONT-SRC-01	SA3-FRESH	state-node style	9.2	TRUE	FALSE	FALSE	FALSE	PASS	The 𝑥/𝑦 state labels are small but unmistakable and visually balanced inside their circles.
+FONT-SRC-02	SA3-FRESH	formula-node style	9.2	TRUE	FALSE	FALSE	FALSE	PASS	Proposal and min formulas are legible at native 300dpi; no symbol merges or disappears.
+FONT-SRC-03	SA3-FRESH	flow-equation node	9.2	TRUE	FALSE	FALSE	FALSE	PASS	Both accepted-flow equations remain readable and mutually balanced across the full width.
+FONT-SRC-04	SA3-FRESH	conclusion node	9.2	TRUE	FALSE	FALSE	FALSE	PASS	Two conclusion lines are clear and proportionate within the conclusion box.
+FONT-SRC-05	SA3-FRESH	caption text inherited context	9.2	TRUE	FALSE	FALSE	FALSE	PASS	Caption glyphs render larger than diagram formulas and are fully readable on the page.
+FONT-SRC-06	SA3-FRESH	top annotation explicit font	8.6	TRUE	FALSE	FALSE	FALSE	PASS	Annotation is visibly readable with normal CJK contours; the small numeric value is advisory under R168, not a font hard failure.
+FONT-SRC-07	SA3-FRESH	arrow/edge labels and math symbols	9.2	TRUE	FALSE	FALSE	FALSE	PASS	Arrows, equality signs, delimiters, π, α, q, and variables have correct glyph forms and visual weight.

@@ -1,0 +1,18 @@
+glyph_id,object_id,expected,codepoint_or_math_identity,render_completeness,readability,clipping,manual_verdict,post_observation_note
+G001,O001,"θ_m,z_mn",PASS,PASS,PASS,PASS,PASS,θ_m and z_mn in the title render as the intended Greek/math glyphs with readable subscripts.
+G002,O002,θ_m,PASS,PASS,PASS,PASS,PASS,"θ_m is complete and centered; no tofu, substitution, or boundary contact."
+G003,O003,z_mn,PASS,PASS,PASS,PASS,PASS,z_mn is complete and centered; the two-letter subscript is readable.
+G004,O004,w_mn,PASS,PASS,PASS,PASS,PASS,w_mn is complete in white-on-blue with readable subscript.
+G005,O005,φ,PASS,PASS,PASS,PASS,PASS,"bold varphi renders as φ, followed by the correct fixed-parameter text."
+G006,O010,"p(θ_m,z_mn∣w_m,φ)",PASS,PASS,PASS,PASS,PASS,"p, θ_m, z_mn, conditional bar, w_m, and φ all render in the intended order."
+G007,O012,q(θ_m),PASS,PASS,PASS,PASS,PASS,"q(θ_m) has intact q, parentheses, theta, and subscript."
+G008,O013,q(z_mn),PASS,PASS,PASS,PASS,PASS,"q(z_mn) has intact q, parentheses, z, and two-letter subscript."
+G009,O014,w_mn,PASS,PASS,PASS,PASS,PASS,right w_mn is complete and readable in white-on-blue.
+G010,O015,φ,PASS,PASS,PASS,PASS,PASS,right bold varphi renders correctly with the fixed label.
+G011,O023,q(θ_m)∏_nq(z_mn),PASS,PASS,PASS,PASS,PASS,q(θ_m)∏_n q(z_mn) includes the product glyph and its n subscript with no loss.
+G012,O026,w_mn,PASS,PASS,PASS,PASS,PASS,summary w_mn is intact and visibly emphasized.
+G013,O026,φ,PASS,PASS,PASS,PASS,PASS,summary bold varphi is intact and visibly emphasized.
+G014,O026,q(z_mn),PASS,PASS,PASS,PASS,PASS,summary q(z_mn) is intact with balanced parentheses and readable subscript.
+G015,O028,φ,PASS,PASS,PASS,PASS,PASS,caption bold varphi is the intended symbol and is not replaced or missing.
+G016,O028,θ_m,PASS,PASS,PASS,PASS,PASS,caption bold theta with m subscript is intact and distinguishable from scalar z.
+G017,O028,z_mn,PASS,PASS,PASS,PASS,PASS,caption z_mn is intact with the intended scalar glyph and two-letter subscript.

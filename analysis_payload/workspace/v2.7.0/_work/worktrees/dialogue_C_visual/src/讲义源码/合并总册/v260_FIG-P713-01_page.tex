@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{896}
+\setcounter{chapter}{36}
+\setcounter{section}{0}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{\PageRank{}算法}
+\sectionmark{随机游走、平稳分布与幂法}
+\textbf{知识依赖。}随机游走给出网页间转移的概率模型，平稳分布定义长期访问比例，幂法则把固定点方程转化为可执行的数值迭代；三者并列支撑 \PageRank{} 图排序。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/dependency_graph.tex}
+\FloatBarrier
+\textbf{方向桥。}下面分别固定转移矩阵的列随机约束、平稳分布方程及残差诊断，再把阻尼与随机跳转引入统一的 \PageRank{} 算法框架。
+\end{document}

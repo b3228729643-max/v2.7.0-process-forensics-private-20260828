@@ -1,0 +1,121 @@
+{
+  "generated_utc": "2026-08-27T14:24:21.762944+00:00",
+  "root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P067-01\\STRICT_R13_SA3_FRESH_ISOLATED_R114_20260827",
+  "required_files": {
+    "EVIDENCE_INDEX.md": true,
+    "00_control/build_mechanical_evidence.py": true,
+    "00_control/input_identity.json": true,
+    "00_control/mechanical_summary.json": true,
+    "00_control/visible_object_denominator_mechanical.csv": true,
+    "00_control/all_unordered_pairs_mechanical.csv": true,
+    "01_locator/fullbook_layout.txt": true,
+    "01_locator/physical_page_derived_bbox.xhtml": true,
+    "01_locator/locator_record.md": true,
+    "01_locator/text_bbox_mechanical.csv": true,
+    "02_page/page_300dpi.png": true,
+    "02_page/full_page_200dpi.png": true,
+    "03_figure/figure_native1x_300dpi.png": true,
+    "03_figure/figure_nearest8x.png": true,
+    "03_figure/figure_grayscale_300dpi.png": true,
+    "03_figure/text_bbox_overlay_300dpi.png": true,
+    "04_critical/critical_contact_sheet_native1x.png": true,
+    "04_critical/roi01_upper_note_axis_native1x.png": true,
+    "04_critical/roi02_jump_markers_labels_native1x.png": true,
+    "04_critical/roi03_lower_pmf_annotation_native1x.png": true,
+    "05_manual/manual_visible_object_ledger.csv": true,
+    "05_manual/manual_pair_adjudication.md": true,
+    "05_manual/manual_math_geometry_caption_page_ledger.md": true,
+    "05_manual/manual_r168_visual_acceptance.md": true
+  },
+  "image_dimensions": {
+    "02_page/page_300dpi.png": [
+      2481,
+      3508,
+      "RGB"
+    ],
+    "02_page/full_page_200dpi.png": [
+      1654,
+      2339,
+      "RGB"
+    ],
+    "03_figure/figure_native1x_300dpi.png": [
+      1646,
+      584,
+      "RGB"
+    ],
+    "03_figure/figure_nearest8x.png": [
+      13168,
+      4672,
+      "RGB"
+    ],
+    "03_figure/figure_grayscale_300dpi.png": [
+      1646,
+      584,
+      "L"
+    ],
+    "03_figure/text_bbox_overlay_300dpi.png": [
+      1646,
+      584,
+      "RGB"
+    ],
+    "04_critical/critical_contact_sheet_native1x.png": [
+      1632,
+      990,
+      "RGB"
+    ],
+    "04_critical/roi01_upper_note_axis_native1x.png": [
+      742,
+      279,
+      "RGB"
+    ],
+    "04_critical/roi02_jump_markers_labels_native1x.png": [
+      1221,
+      279,
+      "RGB"
+    ],
+    "04_critical/roi03_lower_pmf_annotation_native1x.png": [
+      1596,
+      300,
+      "RGB"
+    ]
+  },
+  "counts": {
+    "denominator": 63,
+    "text_formula": 21,
+    "graphic": 42,
+    "unordered_pairs": 1953,
+    "manual_object_rows": 63,
+    "manual_legal_pair_ids": 68
+  },
+  "checks": {
+    "required_files_all_exist": true,
+    "pdf_bytes_match": true,
+    "pdf_sha256_match": true,
+    "source_bytes_match": true,
+    "source_sha256_match": true,
+    "denominator_count_63": true,
+    "denominator_ids_unique": true,
+    "text_formula_count_21": true,
+    "graphic_count_42": true,
+    "pair_count_1953": true,
+    "pair_ids_unique": true,
+    "pair_keys_unique": true,
+    "pair_self_count_zero": true,
+    "pair_refs_complete": true,
+    "manual_rows_63": true,
+    "manual_ids_unique": true,
+    "manual_ids_exactly_match_denominator": true,
+    "manual_reviewer_exact": true,
+    "manual_decisions_all_pass": true,
+    "manual_legal_pair_ids_68_unique": true,
+    "manual_legal_pair_ids_in_universe": true,
+    "resolved_return_code_present": true,
+    "native_300_dimensions_correct": true,
+    "nearest8x_dimensions_exact": true,
+    "grayscale_dimensions_correct": true,
+    "page_300_dimensions_correct": true,
+    "page_200_dimensions_correct": true
+  },
+  "all_checks_pass": true,
+  "manual_fields_generated_or_overwritten": false
+}

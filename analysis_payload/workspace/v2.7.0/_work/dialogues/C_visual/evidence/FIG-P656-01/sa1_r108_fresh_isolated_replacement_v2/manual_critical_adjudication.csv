@@ -1,0 +1,13 @@
+CRITICAL_ID,SCOPE,INDEPENDENT_RECOMPUTATION_OR_OBSERVATION,CONCLUSION
+C01,sequence row 1,"(1;1;1;2;3;3) has counts (#1;#2;#3)=(3;1;2)",CORRECT
+C02,sequence row 2,"(1;3;1;2;1;3) has counts (#1;#2;#3)=(3;1;2)",CORRECT
+C03,sequence row 3,"(3;1;2;1;3;1) has counts (#1;#2;#3)=(3;1;2)",CORRECT
+C04,count vector,"the displayed n=(n1;n2;n3)=(3;1;2) agrees with all three rows",CORRECT
+C05,support constraints,"all counts are nonnegative integers and 3+1+2=6=N",CORRECT
+C06,multinomial coefficient,"N!/product_k n_k! = 6!/(3!*1!*2!) = 60 distinct ordered sequences",CORRECT
+C07,warning,"a count vector sums to N and is not itself a probability vector",CORRECT
+C08,arrow semantics,"left arrow compresses ordered sequences to a common count; right arrow maps that count to its multiplicity",CORRECT
+C09,caption/context,"R108 prose immediately above says Fig.34.2 separates sequence compression from restoring the combination coefficient; caption and source match",CORRECT
+C10,grayscale encoding,"categories remain distinguishable by pale fill; hatch; and different circle outline tone; every digit remains readable",CORRECT
+C11,font/glyph integrity,"page fonts are embedded; subset; Unicode-mapped; 90 visible glyphs show no tofu or wrong glyph; ten natural scripts measure 19-23px",CORRECT
+C12,geometry and clipping,"1128 pairs close by documented geometry families; mask intersections 0; minimum protocol clearance values 6/9/16/22.472px; no object reaches a page or crop boundary",CORRECT

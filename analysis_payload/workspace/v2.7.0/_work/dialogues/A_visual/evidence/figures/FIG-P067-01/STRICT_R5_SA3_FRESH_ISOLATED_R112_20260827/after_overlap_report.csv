@@ -1,0 +1,7 @@
+row_id,pair_scope,count,machine_raw_intersections,reviewer,final_visible_illegal_overlap,decision,note
+PAIR-CLASS-01,DESIGN_INTERNAL_SAME_PARENT,790,7,SA3-R112-FRESH,0,PASS,Natural adjacent glyph contacts are internal typography; no stroke loss or occlusion in opened sheets.
+PAIR-CLASS-02,TEXT_GLYPH--TEXT_GLYPH independent,3675,0,SA3-R112-FRESH,0,PASS,No independent text-text raw-mask intersection.
+PAIR-CLASS-03,TEXT_GLYPH--GRAPHIC_PATH,3325,2,SA3-R112-FRESH,0,PASS,TXT-021/GFX-009 crosses adjacent whitespace; TXT-055/GFX-031 is removed by the real opaque note background in the final view.
+PAIR-CLASS-04,GRAPHIC_PATH--GRAPHIC_PATH,595,61,SA3-R112-FRESH,0,PASS,Intersections are intentional axis-tick-arrowhead-guide-curve-marker construction contacts.
+PAIR-TOTAL,ALL_UNORDERED_PAIRS,8385,70,SA3-R112-FRESH,0,PASS,Class counts sum to 8385; machine candidate set measured 249 pairs and complete frozen CSV retains every pair.
+SEMANTIC-EXCEPTION,GFX-007 versus endpoint markers and PMF relation,1,N/A,SA3-R112-FRESH,N/A,FAIL,This is not an illegal-overlap failure; it is a hard semantic/geometric failure of the CDF path placement.

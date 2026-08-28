@@ -1,0 +1,18 @@
+view_id,path,opened_after_generation,manual_verdict,manual_note
+V001,render/full_page_300.png,YES,PASS,A4 page is unrotated unclipped and figure placement is balanced
+V002,render/grayscale_300.png,YES,FAIL,x1 and x2 legend samples are visually indistinguishable continuous strokes
+V003,render/figure_native300.png,YES,FAIL,whole figure reveals unreadable label 7 and crossed label 6
+V004,render/object_overlay_native300.png,YES,PASS,all 58 final atomic object IDs are represented
+V005,render/legend_x1_nearest8x.png,YES,PASS,x1 legend has one continuous 73px run
+V006,render/legend_x2_nearest8x.png,YES,FAIL,x2 legend has one continuous 73px run and zero internal gap
+V007,render/glyph_contact_sheet_nearest.png,YES,FAIL,G010 and G011 hard relations are visible; remaining glyphs are complete
+V008,render/R03_q0_x0_color_nearest8x.png,YES,PASS,initial point and x superscript zero are clear of contour ink
+V009,render/R04_labels_1_2_color_nearest8x.png,YES,PASS,labels 1 and 2 remain readable and clear
+V010,render/R05_labels_3_4_color_nearest8x.png,YES,PASS,labels 3 and 4 remain readable and clear
+V011,render/R06_labels_5_6_7_color_native1x.png,YES,FAIL,label 6 is crossed and label 7 is not reader-visible as a complete numeral
+V012,render/R06_labels_5_6_7_color_nearest8x.png,YES,FAIL,nearest8x confirms the two label defects are genuine ink relations
+V013,render/R07_star_xstar_axes_color_nearest8x.png,YES,PASS,optimum star x-star and axes are semantically aligned and readable
+V014,render/R08_axis_labels_color_nearest8x.png,YES,FAIL,axis-level view confirms vertical axis crosses label 6
+V015,render/H01_label6_axis_contour_color_overlay_nearest8x.png,YES,FAIL,G010-L002 and G010-C005 are confirmed genuine overlaps
+V016,render/H02_label7_arrow_marker_color_overlay_nearest8x.png,YES,FAIL,G011-C008 and G011-C016 are confirmed genuine occlusions
+V017,render/H03_legend_compare_gray_nearest8x.png,YES,FAIL,both legend roles render as continuous gray strokes

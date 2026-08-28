@@ -1,0 +1,73 @@
+{
+  "handoff_id": "A-R100-P654-SA1-FRESH-20260825",
+  "model_route": "SA1=gpt-5.6-sol/xhigh",
+  "reviewer": "fresh isolated SA1",
+  "review_date": "2026-08-25",
+  "glyph_contact_sheets_opened": [
+    "glyph_sheet_001_8x_nearest.png",
+    "glyph_sheet_002_8x_nearest.png",
+    "glyph_sheet_003_8x_nearest.png",
+    "glyph_sheet_004_8x_nearest.png",
+    "glyph_sheet_005_8x_nearest.png",
+    "glyph_sheet_006_8x_nearest.png",
+    "glyph_sheet_007_8x_nearest.png",
+    "glyph_sheet_008_8x_nearest.png",
+    "glyph_sheet_009_8x_nearest.png",
+    "glyph_sheet_010_8x_nearest.png",
+    "glyph_sheet_011_8x_nearest.png",
+    "glyph_sheet_012_8x_nearest.png",
+    "glyph_sheet_013_8x_nearest.png",
+    "glyph_sheet_014_8x_nearest.png",
+    "glyph_sheet_015_8x_nearest.png",
+    "glyph_sheet_016_8x_nearest.png"
+  ],
+  "glyph_scope_decision": {
+    "scope": "all 95 rows represented on the listed sheets",
+    "original_match": true,
+    "overlay_complete": true,
+    "mask_only_pure": true,
+    "default_decision": "PASS",
+    "exception": {
+      "element_id": "FRM_TRIAL_005",
+      "decision": "FAIL_PIXEL_HEIGHT_ONLY",
+      "note": "final-visible mask is complete and pure with no ownership loss; H_INK=21px is below the applicable 22px floor"
+    }
+  },
+  "graphic_scope_decision": {
+    "scope": "all 21 foreground drawing/path rows and their individual native1x/nearest8x triples",
+    "original_match": true,
+    "overlay_complete": true,
+    "mask_only_pure": true,
+    "default_decision": "PASS"
+  },
+  "critical_pair_scope_decision": {
+    "scope": "all 50 rows in critical_pair_manual_review.csv",
+    "opened_original_1x": true,
+    "opened_raw_a_b": true,
+    "opened_intersection": true,
+    "opened_8x_nearest": true,
+    "design_composition_decision": "PASS_DESIGN_COMPOSITION",
+    "clear_decision": "PASS_CLEARANCE",
+    "note": "Every current bundle was opened; magenta contact appears only for declared typography, formula-rule, arrow, or intended endpoint composition. No independent raw collision is visible."
+  },
+  "views": {
+    "full_page_200dpi.png": "PASS_PAGE_INTEGRATION",
+    "figure_crop_300dpi.png": "PASS_VISUAL_HARMONY",
+    "standalone_300dpi.png": "PASS_VISUAL_HARMONY",
+    "grayscale_300dpi.png": "PASS_GRAYSCALE",
+    "after_text_measurement_overlay_300dpi.png": "PASS_OBJECT_COVERAGE"
+  },
+  "semantic_review": {
+    "math_semantics_pass": true,
+    "text_consistency_pass": true,
+    "reading_order_pass": true,
+    "note": "Counts n and Gamma/Beta normalizers feed the multinomial/Dirichlet family, posterior alpha+n, predictive (alpha_i+n_i)/(alpha_0+N), interpretive branches, and the downstream topic-model application; wording agrees with the adjacent current body."
+  },
+  "visual_review": {
+    "font_visual_harmony_pass": true,
+    "grayscale_pass": true,
+    "page_integration_pass": true,
+    "overall_visual_note": "The left-to-right backbone, lower interpretive branches, dashed application outlet, hierarchy, line weights, and grayscale separation are clear. This does not override the pixel-height failure."
+  },
+  "final_route_if_no_other_failure": "FAIL_TO_SA2"
+}

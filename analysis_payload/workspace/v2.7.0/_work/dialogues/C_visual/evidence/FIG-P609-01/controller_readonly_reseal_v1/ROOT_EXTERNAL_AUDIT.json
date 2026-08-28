@@ -1,0 +1,62 @@
+{
+  "schema": "P609-root-external-readonly-audit-v1",
+  "audited_utc": "2026-08-26T13:30:50.5385629Z",
+  "controller": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P609-01\\controller_readonly_reseal_v1\\P609_READONLY_RESEAL_V1.ps1",
+    "bytes": 26870,
+    "sha256": "43DC948D086F05BA703FF3170F1778DFE124C51D794D7214BB237D41FF050FD6",
+    "mtime_utc_ticks": 639233477427228004,
+    "mtime_filetime_utc": 134322245427228004
+  },
+  "authorization": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P609-01\\controller_readonly_reseal_v1\\AUTHORIZATION.json",
+    "bytes": 1384,
+    "sha256": "9936D449E670A935029014B5FF811F051503DDA24E10B6E10D8230A8BABB50FA",
+    "mtime_utc_ticks": 639233477932683617,
+    "mtime_filetime_utc": 134322245932683617
+  },
+  "invocation": {
+    "ordinal": 1,
+    "limit": 1,
+    "retry_count": 0
+  },
+  "audit": {
+    "root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P609-01\\sa2_r108_r168_readonly_adjudication_reseal_v1",
+    "ordinary_count": 34,
+    "payload_count": 31,
+    "control_count": 3,
+    "manifest_rows": 31,
+    "manifest_duplicate_path_count": 0,
+    "manifest_missing_count": 0,
+    "manifest_extra_count": 0,
+    "manifest_identity_mismatch_count": 0,
+    "copy_identity_rows": 29,
+    "copy_identity_mismatch_count": 0,
+    "old_controls_copied_count": 0,
+    "readonly_file_count": 34,
+    "writable_file_count": 0,
+    "directory_count_including_root": 1,
+    "readonly_directory_count": 1,
+    "writable_directory_count": 0,
+    "root_readonly": true,
+    "ads_count": 0,
+    "cache_pyc_count": 0,
+    "reparse_count": 0,
+    "marker_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P609-01\\sa2_r108_r168_readonly_adjudication_reseal_v1\\WRITE_STOPPED",
+    "marker_mtime_utc_ticks": 639233478511485938,
+    "marker_unique_latest": true,
+    "files_at_or_after_marker_excluding_marker": 0,
+    "post_marker_write_count": 0,
+    "json_parse_failure_count": 0,
+    "csv_parse_failure_count": 0,
+    "manifest_sha256": "EE220EF5C0AB482CAF098A921E37DFC9A774D1DDA1F20293E99F6C30B17D253C",
+    "seal_sha256": "F79793A29E03AB67341F53A6114108580971DC28262078DA1590EFC43BEAC3B2",
+    "write_stopped_sha256": "2F122EF2EE715176BDFC1B3C9A6E805290371854026D7952506F2C3F217B9559"
+  },
+  "equations": {
+    "material_plus_added_equals_payload": "29+2=31",
+    "payload_plus_controls_equals_ordinary": "31+3=34",
+    "readonly_files": "34/34"
+  },
+  "status": "PASS"
+}

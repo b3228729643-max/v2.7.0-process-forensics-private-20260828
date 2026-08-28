@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf2xml SYSTEM "pdf2xml.dtd">
+
+<pdf2xml producer="poppler-25.02.0" version="25.02.0">
+<page number="152" position="absolute" top="0" left="0" height="1262" width="892">
+	<fontspec id="0" size="15" family="UAMIPL+NotoSerifSC-ExtraLight" color="#4d5358"/>
+	<fontspec id="1" size="15" family="DZQCKZ+STIXTwoText" color="#4d5358"/>
+	<fontspec id="2" size="16" family="YMVIRA+NotoSansSC" color="#1f4e79"/>
+	<fontspec id="3" size="16" family="YMVIRA+NotoSansSC" color="#000000"/>
+	<fontspec id="4" size="16" family="UAMIPL+NotoSerifSC-ExtraLight" color="#000000"/>
+	<fontspec id="5" size="16" family="VZHKFD+STIXTwoMath" color="#000000"/>
+	<fontspec id="6" size="16" family="DZQCKZ+STIXTwoText" color="#000000"/>
+	<fontspec id="7" size="13" family="ZHZWZV+STIXTwoMath" color="#000000"/>
+	<fontspec id="8" size="14" family="YMVIRA+NotoSansSC" color="#1f4e79"/>
+	<fontspec id="9" size="14" family="YMVIRA+NotoSansSC" color="#0e766e"/>
+	<fontspec id="10" size="14" family="UAMIPL+NotoSerifSC-ExtraLight" color="#1f2227"/>
+	<fontspec id="11" size="14" family="ZHZWZV+STIXTwoMath" color="#1f2227"/>
+	<fontspec id="12" size="10" family="DZQCKZ+STIXTwoText" color="#1f2227"/>
+	<fontspec id="13" size="13" family="UAMIPL+NotoSerifSC-ExtraLight" color="#1f2837"/>
+	<fontspec id="14" size="15" family="YMVIRA+NotoSansSC" color="#1f2227"/>
+	<fontspec id="15" size="15" family="NJLVMG+STIXTwoText" color="#1f2227"/>
+	<fontspec id="16" size="15" family="UAMIPL+NotoSerifSC-ExtraLight" color="#1f2227"/>
+	<fontspec id="17" size="16" family="UAMIPL+NotoSerifSC-ExtraLight" color="#1f2227"/>
+	<fontspec id="18" size="16" family="UAMIPL+NotoSerifSC-ExtraLight" color="#1f4e79"/>
+	<fontspec id="19" size="16" family="DZQCKZ+STIXTwoText" color="#1f4e79"/>
+	<fontspec id="20" size="16" family="NJLVMG+STIXTwoText" color="#000000"/>
+	<fontspec id="21" size="16" family="YMVIRA+NotoSansSC" color="#1f2227"/>
+	<fontspec id="22" size="16" family="NJLVMG+STIXTwoText" color="#1f4e79"/>
+	<fontspec id="23" size="15" family="UAMIPL+NotoSerifSC-ExtraLight" color="#1f4e79"/>
+<text top="55" left="111" width="15" height="16" font="0">第</text>
+<text top="56" left="129" width="7" height="15" font="1">1</text>
+<text top="55" left="140" width="239" height="16" font="0">册 · 数学基础与统计学习基本理论</text>
+<text top="56" left="777" width="22" height="15" font="1">139</text>
+<text top="104" left="127" width="65" height="22" font="2"><b>优化解释</b></text>
+<text top="138" left="127" width="82" height="22" font="3"><b>优化解释。</b></text>
+<text top="142" left="209" width="295" height="18" font="4">当策略取经验风险最小化时，学习被写成</text>
+<text top="139" left="511" width="9" height="16" font="5">ˆ</text>
+<text top="142" left="508" width="26" height="16" font="5">𝑓 ∈</text>
+<text top="142" left="539" width="53" height="16" font="6">arg min</text>
+<text top="149" left="591" width="30" height="13" font="7">𝑓∈ℱ</text>
+<text top="139" left="627" width="9" height="16" font="5">ˆ</text>
+<text top="142" left="626" width="10" height="16" font="5">𝑅</text>
+<text top="148" left="636" width="9" height="13" font="7">𝑇</text>
+<text top="142" left="647" width="21" height="16" font="5">(𝑓)</text>
+<text top="142" left="669" width="115" height="18" font="4">。假设空间给出</text>
+<text top="169" left="127" width="656" height="18" font="4">可行域，风险给出目标函数，算法近似或精确求解该问题。若目标有多个极小点，还必须声</text>
+<text top="196" left="127" width="245" height="18" font="4">明并列处理规则，输出才可复现。</text>
+<text top="331" left="311" width="55" height="18" font="8"><b>训练阶段</b></text>
+<text top="513" left="311" width="55" height="18" font="9"><b>使用阶段</b></text>
+<text top="357" left="189" width="68" height="15" font="10">训 练 数 据</text>
+<text top="379" left="182" width="82" height="15" font="10">与 任 务 反 馈</text>
+<text top="357" left="335" width="65" height="15" font="10">学 习 算 法</text>
+<text top="358" left="405" width="12" height="14" font="11">𝒜</text>
+<text top="379" left="337" width="11" height="14" font="11">ℱ</text>
+<text top="379" left="353" width="49" height="15" font="10">与 策 略</text>
+<text top="379" left="407" width="9" height="14" font="11">𝐿</text>
+<text top="414" left="484" width="94" height="15" font="10">共 享 模 型 枢 纽</text>
+<text top="432" left="530" width="8" height="14" font="11">ˆ</text>
+<text top="436" left="527" width="9" height="14" font="11">𝑓</text>
+<text top="357" left="652" width="68" height="15" font="10">开 发 评 价</text>
+<text top="379" left="629" width="115" height="15" font="10">误差或结构稳定性</text>
+<text top="471" left="197" width="53" height="15" font="10">新 输 入</text>
+<text top="494" left="210" width="9" height="14" font="11">𝑥</text>
+<text top="500" left="219" width="17" height="10" font="12">new</text>
+<text top="472" left="646" width="82" height="15" font="10">预 测 或 结 构</text>
+<text top="494" left="646" width="82" height="15" font="10">可 报 告 结 果</text>
+<text top="303" left="192" width="154" height="14" font="13">监督：验证误差与标签反馈</text>
+<text top="282" left="355" width="141" height="14" font="13">无监督：结构稳定性反馈</text>
+<text top="541" left="160" width="15" height="20" font="14"><b>图</b></text>
+<text top="545" left="178" width="19" height="15" font="15"><b>9.1</b></text>
+<text top="545" left="212" width="538" height="16" font="16">统计学习从数据到模型再到新数据处理的基本闭环。反馈的形式由学习类型决定。</text>
+<text top="605" left="143" width="16" height="18" font="17"><a href="official_page_152.html#152">沿</a></text>
+<text top="605" left="160" width="16" height="18" font="18"><a href="official_page_152.html#152">图</a></text>
+<text top="606" left="181" width="21" height="16" font="19"><a href="official_page_152.html#152">9.1</a></text>
+<text top="605" left="206" width="594" height="18" font="17">审计实验时，应逐条标出哪些数据参与拟合、候选比较和最终评价；一旦测试反馈</text>
+<text top="632" left="111" width="556" height="18" font="17">回流到策略或算法，测试集就已变成开发数据，不能再作为一次性泛化证据。</text>
+<text top="665" left="127" width="34" height="22" font="3"><b>例题</b></text>
+<text top="670" left="168" width="21" height="16" font="20"><b>9.1</b></text>
+<text top="670" left="197" width="6" height="16" font="6">(</text>
+<text top="669" left="202" width="223" height="18" font="4">两个候选分类规则的经验比较</text>
+<text top="670" left="425" width="6" height="16" font="6">)</text>
+<text top="670" left="431" width="5" height="16" font="20"><b>.</b></text>
+<text top="669" left="446" width="16" height="18" font="4">设</text>
+<text top="670" left="469" width="87" height="16" font="5">𝒳 = {𝑎, 𝑏}</text>
+<text top="669" left="556" width="16" height="18" font="4">、</text>
+<text top="670" left="572" width="83" height="16" font="5">𝒴 = {0, 1}</text>
+<text top="669" left="656" width="84" height="18" font="4">，训练集为</text>
+<text top="670" left="747" width="36" height="16" font="5">𝑇 =</text>
+<text top="697" left="125" width="172" height="16" font="5">{(𝑎, 0), (𝑎, 0), (𝑏, 1), (𝑏, 0)}</text>
+<text top="696" left="297" width="116" height="18" font="4">。假设空间只含</text>
+<text top="697" left="418" width="9" height="16" font="5">𝑓</text>
+<text top="703" left="427" width="8" height="13" font="7">0</text>
+<text top="697" left="436" width="55" height="16" font="5">(𝑥) ≡ 0</text>
+<text top="696" left="495" width="16" height="18" font="4">与</text>
+<text top="697" left="517" width="9" height="16" font="5">𝑓</text>
+<text top="703" left="526" width="7" height="13" font="7">1</text>
+<text top="697" left="534" width="71" height="16" font="5">(𝑎) = 0, 𝑓</text>
+<text top="703" left="605" width="7" height="13" font="7">1</text>
+<text top="697" left="612" width="54" height="16" font="5">(𝑏) = 1</text>
+<text top="696" left="667" width="66" height="18" font="4">，策略取</text>
+<text top="697" left="737" width="8" height="16" font="5">0</text>
+<text top="697" left="745" width="8" height="16" font="6">–</text>
+<text top="697" left="754" width="8" height="16" font="5">1</text>
+<text top="696" left="767" width="16" height="18" font="4">经</text>
+<text top="724" left="127" width="311" height="18" font="4">验风险。求两个风险并按“风险相同则优先</text>
+<text top="724" left="442" width="9" height="16" font="5">𝑓</text>
+<text top="730" left="451" width="8" height="13" font="7">0</text>
+<text top="724" left="460" width="115" height="18" font="4">”的规则选模。</text>
+<text top="754" left="111" width="33" height="22" font="21"><b>例题</b></text>
+<text top="758" left="147" width="21" height="16" font="22"><a href="official_page_152.html#152"><b>9.1</b></a></text>
+<text top="754" left="172" width="33" height="22" font="21"><b>解答</b></text>
+<text top="802" left="127" width="65" height="22" font="3"><b>读题翻译</b></text>
+<text top="806" left="209" width="575" height="18" font="4">题目要求完成“两个候选分类规则的经验比较”：在同一数据划分、指标口径与资</text>
+<text top="833" left="127" width="262" height="18" font="4">源约束下比较候选并给出选择结论。</text>
+<text top="860" left="127" width="115" height="22" font="3"><b>已知与合法条件</b></text>
+<text top="865" left="258" width="525" height="18" font="4">候选模型使用同一评价协议；开发、验证与测试信息边界保持隔离，比较</text>
+<text top="892" left="127" width="229" height="18" font="4">指标方向和并列规则预先固定。</text>
+<text top="919" left="127" width="148" height="22" font="3"><b>为什么想到这个方法</b></text>
+<text top="923" left="291" width="492" height="18" font="4">先固定比较维度和数据隔离规则，再逐候选计算同口径指标并按预声</text>
+<text top="950" left="127" width="98" height="18" font="4">明规则选择。</text>
+<text top="978" left="127" width="33" height="22" font="3"><b>推导</b></text>
+<text top="982" left="160" width="7" height="16" font="20"><b>/</b></text>
+<text top="978" left="167" width="33" height="22" font="3"><b>计算</b></text>
+<text top="982" left="216" width="83" height="18" font="4">固定训练集</text>
+<text top="982" left="304" width="58" height="16" font="5">𝑇 = ((𝑥</text>
+<text top="988" left="361" width="4" height="13" font="7">𝑖</text>
+<text top="982" left="367" width="15" height="16" font="5">, 𝑦</text>
+<text top="988" left="383" width="4" height="13" font="7">𝑖</text>
+<text top="982" left="388" width="12" height="16" font="5">))</text>
+<text top="978" left="400" width="8" height="13" font="7">4</text>
+<text top="990" left="400" width="22" height="13" font="7">𝑖=1</text>
+<text top="982" left="422" width="66" height="18" font="4">，候选集</text>
+<text top="982" left="493" width="53" height="16" font="5">ℱ = {𝑓</text>
+<text top="988" left="547" width="8" height="13" font="7">0</text>
+<text top="982" left="555" width="16" height="16" font="5">, 𝑓</text>
+<text top="988" left="572" width="7" height="13" font="7">1</text>
+<text top="982" left="579" width="5" height="16" font="5">}</text>
+<text top="982" left="584" width="199" height="18" font="4">，经验风险仅在该训练集上</text>
+<text top="1009" left="127" width="49" height="18" font="4">计算：</text>
+<text top="1039" left="340" width="9" height="16" font="5">ˆ</text>
+<text top="1042" left="339" width="10" height="16" font="5">𝑅</text>
+<text top="1047" left="349" width="9" height="13" font="7">𝑇</text>
+<text top="1042" left="360" width="46" height="16" font="5">(𝑓) ∶=</text>
+<text top="1031" left="413" width="8" height="16" font="5">1</text>
+<text top="1052" left="413" width="8" height="16" font="5">4</text>
+<text top="1024" left="433" width="8" height="13" font="7">4</text>
+<text top="1042" left="427" width="18" height="16" font="5">∑</text>
+<text top="1062" left="425" width="22" height="13" font="7">𝑖=1</text>
+<text top="1042" left="450" width="8" height="16" font="20"><b>1</b></text>
+<text top="1042" left="458" width="30" height="16" font="5">{𝑓(𝑥</text>
+<text top="1048" left="488" width="4" height="13" font="7">𝑖</text>
+<text top="1042" left="494" width="35" height="16" font="5">) ≠ 𝑦</text>
+<text top="1048" left="530" width="4" height="13" font="7">𝑖</text>
+<text top="1042" left="535" width="9" height="16" font="5">},</text>
+<text top="1087" left="248" width="6" height="16" font="5">(</text>
+<text top="1087" left="254" width="8" height="16" font="20"><b>1</b></text>
+<text top="1087" left="262" width="15" height="16" font="5">{𝑓</text>
+<text top="1093" left="277" width="8" height="13" font="7">0</text>
+<text top="1087" left="286" width="15" height="16" font="5">(𝑥</text>
+<text top="1093" left="301" width="4" height="13" font="7">𝑖</text>
+<text top="1087" left="306" width="35" height="16" font="5">) ≠ 𝑦</text>
+<text top="1093" left="342" width="4" height="13" font="7">𝑖</text>
+<text top="1087" left="348" width="12" height="17" font="5">})</text>
+<text top="1079" left="359" width="8" height="13" font="7">4</text>
+<text top="1098" left="359" width="22" height="13" font="7">𝑖=1</text>
+<text top="1087" left="386" width="85" height="16" font="5">= (0, 0, 1, 0),</text>
+<text top="1084" left="561" width="9" height="16" font="5">ˆ</text>
+<text top="1087" left="559" width="10" height="16" font="5">𝑅</text>
+<text top="1093" left="570" width="9" height="13" font="7">𝑇</text>
+<text top="1087" left="581" width="15" height="16" font="5">(𝑓</text>
+<text top="1093" left="596" width="8" height="13" font="7">0</text>
+<text top="1087" left="605" width="22" height="16" font="5">) =</text>
+<text top="1077" left="633" width="8" height="16" font="5">1</text>
+<text top="1098" left="633" width="8" height="16" font="5">4</text>
+<text top="1087" left="643" width="4" height="16" font="5">,</text>
+<text top="1125" left="249" width="6" height="16" font="5">(</text>
+<text top="1125" left="255" width="8" height="16" font="20"><b>1</b></text>
+<text top="1125" left="263" width="15" height="16" font="5">{𝑓</text>
+<text top="1130" left="278" width="7" height="13" font="7">1</text>
+<text top="1125" left="286" width="15" height="16" font="5">(𝑥</text>
+<text top="1130" left="301" width="4" height="13" font="7">𝑖</text>
+<text top="1125" left="306" width="35" height="16" font="5">) ≠ 𝑦</text>
+<text top="1130" left="342" width="4" height="13" font="7">𝑖</text>
+<text top="1125" left="348" width="12" height="17" font="5">})</text>
+<text top="1117" left="359" width="8" height="13" font="7">4</text>
+<text top="1135" left="359" width="22" height="13" font="7">𝑖=1</text>
+<text top="1125" left="386" width="85" height="16" font="5">= (0, 0, 0, 1),</text>
+<text top="1122" left="562" width="9" height="16" font="5">ˆ</text>
+<text top="1125" left="560" width="10" height="16" font="5">𝑅</text>
+<text top="1130" left="571" width="9" height="13" font="7">𝑇</text>
+<text top="1125" left="581" width="15" height="16" font="5">(𝑓</text>
+<text top="1130" left="597" width="7" height="13" font="7">1</text>
+<text top="1125" left="605" width="22" height="16" font="5">) =</text>
+<text top="1114" left="633" width="8" height="16" font="5">1</text>
+<text top="1135" left="633" width="8" height="16" font="5">4</text>
+<text top="1125" left="643" width="4" height="16" font="5">.</text>
+<text top="1200" left="354" width="30" height="16" font="23"><a href="official_page_152.html#2">目录</a></text>
+<text top="1200" left="395" width="5" height="16" font="0">·</text>
+<text top="1200" left="411" width="30" height="16" font="23"><a href="official_page_152.html#148">本章</a></text>
+<text top="1200" left="453" width="5" height="16" font="0">·</text>
+<text top="1200" left="469" width="30" height="16" font="23"><a href="official_page_152.html#158">练习</a></text>
+<text top="1200" left="510" width="5" height="16" font="0">·</text>
+<text top="1200" left="526" width="30" height="16" font="23"><a href="official_page_152.html#158">解析</a></text>
+</page>
+<outline>
+<item page="2">合订本导读</item>
+<item page="9">符号索引</item>
+<item page="13">阅读图例与使用说明</item>
+<item page="14">第1册：数学基础与统计学习基本理论</item>
+<outline>
+<item page="15">第1章  数学语言、符号约定与学习路线</item>
+<outline>
+<item page="18">1.1 学习路线与使用说明</item>
+<item page="19">1.2 集合、映射与函数</item>
+<item page="19">1.3 标量、向量与矩阵记号</item>
+<item page="19">1.4 求和、连乘与指示函数</item>
+<item page="19">1.5 参数、变量、样本、特征与标签</item>
+<item page="19">1.6 数学逻辑与前置自检</item>
+</outline>
+<item page="27">第2章  线性代数基础</item>
+<outline>
+<item page="32">2.1 向量、矩阵与分量运算</item>
+<item page="33">2.2 内积、范数、距离与夹角</item>
+<item page="33">2.3 线性组合、相关性、基与维数</item>
+<item page="34">2.4 秩、线性方程组与基本子空间</item>
+<item page="34">2.5 正交与投影</item>
+<item page="36">2.6 特征值、对称矩阵、正定性与二次型</item>
+<item page="36">2.7 谱分解、奇异值预备与幂法</item>
+</outline>
+<item page="45">第3章  多元微积分与矩阵微分</item>
+<outline>
+<item page="51">3.1 多元函数与偏导数</item>
+<item page="51">3.2 梯度与方向导数</item>
+<item page="52">3.3 Hessian矩阵、泰勒展开与极值</item>
+<item page="53">3.4 多元链式法则</item>
+<item page="53">3.5 标量对向量求导</item>
+<item page="53">3.6 矩阵微分的分量解释与常用公式</item>
+</outline>
+<item page="61">第4章  概率论基础</item>
+<outline>
+<item page="61">4.1 样本空间、事件与概率</item>
+<item page="62">4.2 条件概率、全概率与贝叶斯公式</item>
+<item page="64">4.3 期望、方差、协方差与大数定律</item>
+<item page="68">4.4 随机变量与概率分布</item>
+<item page="69">4.5 联合、边缘与条件分布</item>
+<item page="69">4.6 独立与条件独立</item>
+</outline>
+<item page="77">第5章  常用分布与统计推断</item>
+<outline>
+<item page="78">5.1 伯努利、二项与多项分布</item>
+<item page="78">5.2 高斯分布与多元高斯分布</item>
+<item page="79">5.3 Gamma与狄利克雷分布</item>
+<item page="80">5.4 总体、样本、参数与统计量</item>
+<item page="80">5.5 似然、对数似然与极大似然</item>
+<item page="82">5.6 先验、后验、共轭与最大后验</item>
+<item page="84">5.7 边缘似然、隐变量与指数族</item>
+</outline>
+<item page="94">第6章  信息论基础</item>
+<outline>
+<item page="95">6.1 信息量与熵</item>
+<item page="96">6.2 条件熵与联合熵</item>
+<item page="98">6.3 KL散度与交叉熵</item>
+<item page="100">6.4 互信息</item>
+<item page="101">6.5 信息增益与信息增益比</item>
+<item page="102">6.6 基尼指数</item>
+</outline>
+<item page="111">第7章  凸优化与拉格朗日对偶</item>
+<outline>
+<item page="111">7.1 优化问题、目标函数与约束</item>
+<item page="112">7.2 可行域与局部/全局最优</item>
+<item page="113">7.3 凸集与凸函数</item>
+<item page="113">7.4 KKT条件与互补松弛</item>
+<item page="116">7.5 一阶与二阶凸性条件</item>
+<item page="117">7.6 Jensen不等式</item>
+<item page="118">7.7 拉格朗日乘子与拉格朗日函数</item>
+<item page="118">7.8 原问题、对偶函数与对偶问题</item>
+<item page="119">7.9 弱对偶、强对偶与Slater条件</item>
+</outline>
+<item page="130">第8章  数值优化方法</item>
+<outline>
+<item page="130">8.1 梯度下降与步长</item>
+<item page="131">8.2 线搜索、停止条件与收敛判据</item>
+<item page="134">8.3 拟牛顿法、DFP与BFGS</item>
+<item page="136">8.4 坐标下降</item>
+<item page="137">8.5 专项算法章节边界：改进迭代尺度法预告</item>
+<item page="141">8.6 牛顿法</item>
+</outline>
+<item page="148">第9章  统计学习的基本框架</item>
+<outline>
+<item page="155">9.1 统计学习与机器学习</item>
+<item page="156">9.2 监督学习、无监督学习与强化学习</item>
+<item page="156">9.3 输入、特征与输出空间</item>
+<item page="157">9.4 假设空间与概率模型</item>
+<item page="158">9.5 模型、策略与算法</item>
+</outline>
+<item page="164">第10章  模型评估、选择与泛化</item>
+<outline>
+<item page="165">10.1 损失函数与风险函数</item>
+<item page="166">10.2 经验风险与期望风险</item>
+<item page="167">10.3 训练误差与测试误差</item>
+<item page="168">10.4 过拟合、正则化与模型选择</item>
+<item page="171">10.5 交叉验证</item>
+<item page="173">10.6 泛化能力与泛化界</item>
+<item page="175">10.7 生成方法与判别方法</item>
+</outline>
+<item page="183">第11章  监督学习任务与应用</item>
+<outline>
+<item page="184">11.1 分类问题</item>
+<item page="186">11.2 标注问题</item>
+<item page="187">11.3 回归问题</item>
+<item page="188">11.4 监督学习应用与方法选择</item>
+</outline>
+</outline>
+<item page="197">第2册：基础监督学习方法</item>
+<outline>
+<item page="198">第12章  感知机</item>
+<outline>
+<item page="199">12.1 二分类与线性分离</item>
+<item page="199">12.2 感知机模型</item>
+<item page="201">12.3 误分类驱动的学习策略</item>
+<item page="203">12.4 原始形式学习算法</item>
+<item page="206">12.5 收敛性证明</item>
+<item page="207">12.6 对偶形式与Gram矩阵</item>
+<item page="209">12.7 例题、判别计算与练习</item>
+</outline>
+<item page="218">第13章  k近邻法</item>
+<outline>
+<item page="219">13.1 距离度量、k值与分类决策</item>
+<item page="223">13.2 k近邻模型与三要素</item>
+<item page="224">13.3 多类分类与回归扩展</item>
+<item page="225">13.4 kd树的构造</item>
+<item page="227">13.5 kd树的搜索</item>
+<item page="229">13.6 例题、复杂度与练习</item>
+</outline>
+<item page="238">第14章  朴素贝叶斯法</item>
+<outline>
+<item page="239">14.1 生成式分类与条件独立</item>
+<item page="240">14.2 朴素贝叶斯学习与分类</item>
+<item page="242">14.3 极大似然参数估计</item>
+<item page="243">14.4 贝叶斯估计与平滑</item>
+<item page="244">14.5 参数估计、例题与练习</item>
+</outline>
+<item page="255">第15章  决策树</item>
+<outline>
+<item page="256">15.1 树模型与条件概率分布</item>
+<item page="257">15.2 特征选择问题</item>
+<item page="258">15.3 熵、信息增益与信息增益比</item>
+<item page="262">15.4 ID3与C4.5生成算法</item>
+<item page="265">15.5 决策树剪枝</item>
+<item page="266">15.6 CART分类与回归树</item>
+<item page="271">15.7 例题、树模型计算与练习</item>
+</outline>
+<item page="280">第16章  逻辑斯谛回归</item>
+<outline>
+<item page="281">16.1 二项逻辑斯谛模型</item>
+<item page="283">16.2 几率、对数几率与概率解释</item>
+<item page="285">16.3 极大似然与梯度推导</item>
+<item page="289">16.4 多项逻辑斯谛回归</item>
+<item page="290">16.5 数值优化、例题与练习</item>
+</outline>
+</outline>
+<item page="298">第3册：优化模型与序列模型</item>
+<outline>
+<item page="299">第17章  最大熵模型</item>
+<outline>
+<item page="300">17.1 最大熵原理</item>
+<item page="302">17.2 对偶目标与参数估计</item>
+<item page="304">17.3 最大熵模型的定义</item>
+<item page="304">17.4 约束与指数族形式</item>
+<item page="307">17.5 改进的迭代尺度法</item>
+<item page="310">17.6 例题、优化计算与练习</item>
+</outline>
+<item page="321">第18章  支持向量机</item>
+<outline>
+<item page="322">18.1 线性可分支持向量机</item>
+<item page="323">18.2 超平面、函数间隔与几何间隔</item>
+<item page="324">18.3 硬间隔最大化与原始问题</item>
+<item page="326">18.4 拉格朗日对偶、KKT与支持向量</item>
+<item page="328">18.5 线性支持向量机与软间隔</item>
+<item page="329">18.6 松弛变量与合页损失</item>
+<item page="330">18.7 核技巧与正定核</item>
+<item page="332">18.8 非线性支持向量机</item>
+<item page="333">18.9 序列最小最优化算法</item>
+<item page="337">18.10 证明、例题与练习</item>
+</outline>
+<item page="347">第19章  提升方法</item>
+<outline>
+<item page="348">19.1 弱学习与强学习</item>
+<item page="349">19.2 AdaBoost算法</item>
+<item page="352">19.3 训练误差与泛化解释</item>
+<item page="353">19.4 加法模型与前向分步算法</item>
+<item page="355">19.5 提升树</item>
+<item page="357">19.6 梯度提升</item>
+<item page="360">19.7 例题、迭代计算与练习</item>
+</outline>
+<item page="370">第20章  EM算法及其推广</item>
+<outline>
+<item page="371">20.1 隐变量、不完全数据与边缘似然</item>
+<item page="372">20.2 Jensen不等式与下界构造</item>
+<item page="375">20.3 E步与M步</item>
+<item page="377">20.4 单调性与收敛性质</item>
+<item page="378">20.5 高斯混合模型</item>
+<item page="381">20.6 EM算法推广与GEM</item>
+<item page="387">20.7 例题、EM计算与练习</item>
+</outline>
+<item page="397">第21章  隐马尔可夫模型</item>
+<outline>
+<item page="398">21.1 马尔可夫性质与概率图结构</item>
+<item page="400">21.2 HMM定义与三个基本问题</item>
+<item page="402">21.3 前向与后向算法</item>
+<item page="408">21.4 Baum–Welch学习算法</item>
+<item page="411">21.5 Viterbi预测算法</item>
+<item page="413">21.6 条件独立、复杂度与实现</item>
+<item page="414">21.7 例题与练习</item>
+</outline>
+<item page="423">第22章  条件随机场</item>
+<outline>
+<item page="424">22.1 概率图、因子与势函数</item>
+<item page="428">22.2 线性链条件随机场</item>
+<item page="431">22.3 改进迭代尺度与拟牛顿学习</item>
+<item page="433">22.4 条件随机场的概率计算</item>
+<item page="435">22.5 Viterbi预测</item>
+<item page="436">22.6 序列标注例题与练习</item>
+</outline>
+<item page="445">第23章  监督学习方法总结</item>
+<outline>
+<item page="446">23.1 监督学习方法的共同框架</item>
+<item page="448">23.2 生成方法与判别方法比较</item>
+<item page="449">23.3 概率模型与非概率模型</item>
+<item page="449">23.4 线性模型、核方法与集成方法</item>
+<item page="450">23.5 模型选择与适用条件</item>
+<item page="451">23.6 综合自检与学习路线</item>
+</outline>
+</outline>
+<item page="460">第4册：无监督学习与矩阵分解</item>
+<outline>
+<item page="461">第24章  无监督学习概论</item>
+<outline>
+<item page="462">24.1 无监督学习问题</item>
+<item page="463">24.2 基本方法与任务分类</item>
+<item page="464">24.3 生成式与表示学习视角</item>
+<item page="467">24.4 评价、选择与应用</item>
+</outline>
+<item page="476">第25章  聚类方法</item>
+<outline>
+<item page="477">25.1 聚类问题与相似度</item>
+<item page="478">25.2 距离与相似度度量</item>
+<item page="481">25.3 层次聚类</item>
+<item page="482">25.4 k均值模型与目标函数</item>
+<item page="485">25.5 k均值算法与收敛</item>
+<item page="490">25.6 例题、聚类计算与练习</item>
+</outline>
+<item page="496">第26章  奇异值分解</item>
+<outline>
+<item page="497">26.1 SVD定义与存在性</item>
+<item page="500">26.2 奇异值和左右奇异向量</item>
+<item page="501">26.3 紧致与截断SVD</item>
+<item page="503">26.4 SVD的计算</item>
+<item page="505">26.5 低秩矩阵近似</item>
+<item page="509">26.6 代数推导与几何解释</item>
+<item page="509">26.7 例题与练习</item>
+</outline>
+<item page="520">第27章  主成分分析</item>
+<outline>
+<item page="521">27.1 总体主成分</item>
+<item page="523">27.2 协方差矩阵与方差最大化</item>
+<item page="526">27.3 样本主成分</item>
+<item page="528">27.4 重构误差最小化</item>
+<item page="529">27.5 PCA与SVD的联系</item>
+<item page="530">27.6 主成分算法、例题与练习</item>
+</outline>
+<item page="541">第28章  潜在语义分析与非负矩阵分解</item>
+<outline>
+<item page="542">28.1 文档–单词矩阵与潜在语义</item>
+<item page="544">28.2 LSA模型</item>
+<item page="544">28.3 截断SVD模型、坐标与最优性</item>
+<item page="546">28.4 非负矩阵分解模型</item>
+<item page="551">28.5 数值实现：截断SVD与平方损失NMF</item>
+<item page="555">28.6 例题、矩阵分解计算与练习</item>
+</outline>
+<item page="563">第29章  概率潜在语义分析</item>
+<outline>
+<item page="564">29.1 潜在主题与混合表示</item>
+<item page="567">29.2 PLSA生成过程与模型</item>
+<item page="568">29.3 似然函数与隐变量</item>
+<item page="569">29.4 EM参数估计</item>
+<item page="575">29.5 与LSA、NMF及LDA的联系</item>
+<item page="577">29.6 例题、参数估计与练习</item>
+</outline>
+</outline>
+<item page="587">第5册：采样方法、主题模型与图排序</item>
+<outline>
+<item page="588">第30章  马尔可夫链基础</item>
+<outline>
+<item page="589">30.1 随机过程与马尔可夫性质</item>
+<item page="591">30.2 状态转移矩阵</item>
+<item page="593">30.3 平稳分布</item>
+<item page="595">30.4 不可约、非周期与正常返</item>
+<item page="597">30.5 遍历定理与可逆性</item>
+<item page="603">30.6 随机游走</item>
+</outline>
+<item page="616">第31章  蒙特卡罗方法与直接采样</item>
+<outline>
+<item page="617">31.1 蒙特卡罗估计</item>
+<item page="622">31.2 逆变换抽样</item>
+<item page="623">31.3 接受—拒绝抽样</item>
+<item page="627">31.4 重要性抽样</item>
+<item page="629">31.5 估计误差与诊断</item>
+</outline>
+<item page="645">第32章  马尔可夫链蒙特卡罗法</item>
+<outline>
+<item page="647">32.1 MCMC基本思想</item>
+<item page="649">32.2 平稳分布与细致平衡</item>
+<item page="650">32.3 Metropolis-Hastings算法</item>
+<item page="652">32.4 接受率推导</item>
+<item page="656">32.5 收敛与样本诊断</item>
+<item page="665">32.6 例题、马尔可夫链计算与练习</item>
+</outline>
+<item page="677">第33章  Gibbs 抽样</item>
+<outline>
+<item page="679">33.1 完整条件分布</item>
+<item page="683">33.2 逐变量Gibbs抽样</item>
+<item page="685">33.3 与Metropolis-Hastings的关系</item>
+<item page="689">33.4 收敛、抽样计算与练习</item>
+</outline>
+<item page="701">第34章  狄利克雷分布与共轭先验</item>
+<outline>
+<item page="702">34.1 多项分布</item>
+<item page="704">34.2 Gamma函数与Beta分布</item>
+<item page="706">34.3 狄利克雷分布</item>
+<item page="709">34.4 一般矩、条件分布与期望对数</item>
+<item page="710">34.5 Dirichlet-多项共轭</item>
+<item page="713">34.6 后验预测与例题</item>
+</outline>
+<item page="726">第35章  潜在狄利克雷分配</item>
+<outline>
+<item page="728">35.1 文档—主题—单词关系</item>
+<item page="729">35.2 LDA生成过程与概率图</item>
+<item page="734">35.3 折叠Gibbs推断</item>
+<item page="736">35.4 变分EM推断</item>
+<item page="741">35.5 超参数、实现与评估</item>
+<item page="749">35.6 例题与练习</item>
+</outline>
+<item page="759">第36章  PageRank 算法</item>
+<outline>
+<item page="761">36.1 网页图与随机游走</item>
+<item page="763">36.2 基本PageRank</item>
+<item page="766">36.3 一般PageRank与阻尼</item>
+<item page="767">36.4 平稳分布与主特征向量</item>
+<item page="770">36.5 幂法计算</item>
+<item page="774">36.6 例题、排序计算与练习</item>
+</outline>
+<item page="783">第37章  无监督学习方法总结</item>
+<outline>
+<item page="785">37.1 聚类、降维、主题模型与采样的联系</item>
+<item page="788">37.2 矩阵分解与概率模型比较</item>
+<item page="793">37.3 模型选择与评价</item>
+<item page="795">37.4 方法选择地图</item>
+<item page="799">37.5 全书综合自检</item>
+</outline>
+<item page="808">主题索引</item>
+</outline>
+</outline>
+</pdf2xml>

@@ -1,0 +1,8 @@
+review_id,observed_utc,artifact,decision,object_specific_note
+MV-001,2026-08-26T12:57:00Z,full_page_200dpi.png,PASS,"Physical page 632 contains figure 31.7 in the intended page flow; the complete plot and caption are legible and neither adjacent figure nor body text intrudes."
+MV-002,2026-08-26T12:57:05Z,figure_crop_300dpi.png,PASS,"Axes, four gray stems, four blue running-mean markers, blue polyline, dashed one-third truth line, labels, formula and caption are complete with no true clipping or illegal overlap."
+MV-003,2026-08-26T12:57:10Z,standalone_300dpi.png,PASS,"The standalone graph preserves the four sample indices, eight y ticks, four raw-value markers, four running-mean points and all directional annotations as distinct visible objects."
+MV-004,2026-08-26T12:57:15Z,figure_grayscale_300dpi.png,PASS,"Solid running mean, gray stems, square raw values, circular means and dashed truth reference remain distinguishable without color."
+MV-005,2026-08-26T12:57:20Z,first_value_arrow_8x_nearest.png,PASS,"The .640 value and first down-arrow label are clearly separated; classified native ink has zero shared pixels and approximately 18.5858 white pixels clearance."
+MV-006,2026-08-26T12:57:25Z,third_value_arrow_8x_nearest.png,PASS,"The .380 value and second down-arrow remain separately readable; classified native ink has zero shared pixels and approximately 3.5858 white pixels clearance."
+MV-007,2026-08-26T12:57:30Z,all_values_arrows_8x_nearest.png,PASS,"All four numeric running means and all three directional annotations are visible with their intended point associations and no current hard collision."

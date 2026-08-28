@@ -1,0 +1,70 @@
+OBJECT_ID,OBSERVED_EVIDENCE,READABILITY_OR_VISIBILITY,SEMANTIC_OR_GEOMETRIC_CHECK,CLIP_STATUS,MANUAL_DECISION,POST_OBSERVATION_NOTE
+T01,figure_native1x_300dpi.png + figure_grayscale_300dpi.png,CLEAR,CDF ordinate label names F_X(t) and is vertically oriented,NONE,ACCEPT,All glyphs and subscript X are present with no tofu or wrong codepoint
+T02,figure_native1x_300dpi.png,CLEAR,Top-panel zero tick aligns with the baseline,NONE,ACCEPT,Digit is distinct and separated from the axis
+T03,figure_native1x_300dpi.png,CLEAR,Tick 0.45 aligns with the second cumulative plateau,NONE,ACCEPT,Decimal point and both digits are present
+T04,figure_native1x_300dpi.png,CLEAR,Tick 0.8 aligns with the third cumulative plateau,NONE,ACCEPT,Decimal point is readable at native resolution
+T05,figure_native1x_300dpi.png,CLEAR,Terminal tick 1 aligns with the endpoint and reference line,NONE,ACCEPT,The endpoint value is visually unambiguous
+T06,figure_native1x_300dpi.png + figure_grayscale_300dpi.png,CLEAR,Annotation correctly states right continuity through filled post-jump markers,NONE,ACCEPT,Full Chinese sentence is present and does not obstruct a jump
+T07,nearest8x_cdf_t1.png,CLEAR,p_1 identifies the first jump mass,NONE,ACCEPT,Subscript 1 is intact and the white backplate separates text from the plateau
+T08,nearest8x_cdf_t2.png,CLEAR,p_2 identifies the second jump mass,NONE,ACCEPT,Subscript 2 is intact and the label does not cover either endpoint marker
+T09,nearest8x_cdf_t3.png,CLEAR,p_3 identifies the third jump mass,NONE,ACCEPT,Subscript 3 is intact and the backplate leaves the jump geometry readable
+T10,nearest8x_cdf_t4.png,CLEAR,p_4 identifies the fourth jump mass,NONE,ACCEPT,Subscript 4 is intact and the final plateau remains visible
+T11,figure_native1x_300dpi.png + figure_grayscale_300dpi.png,CLEAR,PMF ordinate label names p_X(t) and is vertically oriented,NONE,ACCEPT,All math glyphs and the subscript are present
+T12,figure_native1x_300dpi.png,CLEAR,Bottom-panel zero tick aligns with the baseline,NONE,ACCEPT,Digit is distinct from the ordinate
+T13,figure_native1x_300dpi.png,CLEAR,Tick 0.15 matches the first PMF mass,NONE,ACCEPT,Decimal and digits are complete
+T14,figure_native1x_300dpi.png,CLEAR,Supplementary 0.3 label matches the second PMF mass,NONE,ACCEPT,Manual placement is readable and not confused with 0.35
+T15,figure_native1x_300dpi.png,CLEAR,Tick 0.35 matches the third PMF mass,NONE,ACCEPT,Decimal and digits are complete
+T16,figure_native1x_300dpi.png,CLEAR,x tick 1 aligns across PMF and CDF guides,NONE,ACCEPT,Digit is centered below the first stem
+T17,figure_native1x_300dpi.png,CLEAR,x tick 2 aligns across PMF and CDF guides,NONE,ACCEPT,Digit is centered below the second stem
+T18,figure_native1x_300dpi.png,CLEAR,x tick 3 aligns across PMF and CDF guides,NONE,ACCEPT,Digit is centered below the third stem
+T19,figure_native1x_300dpi.png,CLEAR,x tick 4 aligns across PMF and CDF guides,NONE,ACCEPT,Digit is centered below the fourth stem
+T20,figure_native1x_300dpi.png,CLEAR,Abscissa label t applies to the shared support,NONE,ACCEPT,Math italic t is complete and centered
+T21,nearest8x_pmf_note_left.png + nearest8x_pmf_note_right.png,CLEAR,Annotation states that each CDF jump height equals the aligned PMF mass,NONE,ACCEPT,Chinese text equation and both subscripts are complete; backplate separates the nearby t=4 guide
+T22,nearest8x_caption_left.png + page_069_200dpi.png,CLEAR,Caption number is 图 4.1,NONE,ACCEPT,Chinese glyph and number are intact with expected emphasis
+T23,figure_native1x_300dpi.png + nearest8x_caption_right.png + page_069_200dpi.png,CLEAR,Caption describes a discrete CDF whose jumps equal point masses,NONE,ACCEPT,The full sentence is readable and agrees with both panels
+G01,figure_native1x_300dpi.png,VISIBLE,CDF abscissa is horizontal with a right arrow,NONE,ACCEPT,Axis body and arrowhead are continuous and unobstructed
+G02,figure_native1x_300dpi.png,VISIBLE,CDF ordinate is vertical with an upward arrow,NONE,ACCEPT,Axis body and arrowhead are complete
+G03,nearest8x_cdf_t1.png,VISIBLE,CDF tick at t=1 is aligned to the first jump,NONE,ACCEPT,Tick crosses the axis only as the intended axis attachment
+G04,nearest8x_cdf_t2.png,VISIBLE,CDF tick at t=2 is aligned to the second jump,NONE,ACCEPT,Tick crosses the axis only as the intended axis attachment
+G05,nearest8x_cdf_t3.png,VISIBLE,CDF tick at t=3 is aligned to the third jump,NONE,ACCEPT,Tick crosses the axis only as the intended axis attachment
+G06,nearest8x_cdf_t4.png,VISIBLE,CDF tick at t=4 is aligned to the fourth jump,NONE,ACCEPT,Tick crosses the axis only as the intended axis attachment
+G07,figure_native1x_300dpi.png,VISIBLE,CDF zero tick is attached to the ordinate,NONE,ACCEPT,Short tick is complete
+G08,figure_native1x_300dpi.png,VISIBLE,CDF 0.45 tick is attached to the ordinate,NONE,ACCEPT,Short tick is complete
+G09,figure_native1x_300dpi.png,VISIBLE,CDF 0.8 tick is attached to the ordinate,NONE,ACCEPT,Short tick is complete
+G10,figure_native1x_300dpi.png,VISIBLE,CDF 1 tick is attached to the ordinate,NONE,ACCEPT,Short tick is complete and aligned to the dashed reference
+G11,figure_native1x_300dpi.png + figure_grayscale_300dpi.png,VISIBLE,CDF is monotone with cumulative levels 0 0.15 0.45 0.80 and 1,NONE,ACCEPT,All four vertical jumps and five horizontal segments are visually continuous outside intentional label backplates
+G12,nearest8x_cdf_t1.png,VISIBLE,Filled t=1 marker records post-jump value 0.15,NONE,ACCEPT,Filled disk is distinct from the open pre-jump marker
+G13,nearest8x_cdf_t2.png,VISIBLE,Filled t=2 marker records post-jump value 0.45,NONE,ACCEPT,Filled disk is distinct from the open pre-jump marker
+G14,nearest8x_cdf_t3.png,VISIBLE,Filled t=3 marker records post-jump value 0.80,NONE,ACCEPT,Filled disk is distinct from the open pre-jump marker
+G15,nearest8x_cdf_t4.png,VISIBLE,Filled t=4 marker records post-jump value 1,NONE,ACCEPT,Filled disk remains visible over the endpoint reference
+G16,nearest8x_cdf_t1.png,VISIBLE,Open t=1 marker records left limit 0,NONE,ACCEPT,White center and blue rim are intact
+G17,nearest8x_cdf_t2.png,VISIBLE,Open t=2 marker records left limit 0.15,NONE,ACCEPT,White center and blue rim are intact
+G18,nearest8x_cdf_t3.png,VISIBLE,Open t=3 marker records left limit 0.45,NONE,ACCEPT,White center and blue rim are intact
+G19,nearest8x_cdf_t4.png,VISIBLE,Open t=4 marker records left limit 0.80,NONE,ACCEPT,White center and blue rim are intact
+G20,figure_native1x_300dpi.png + figure_grayscale_300dpi.png,VISIBLE,Dashed reference line marks terminal CDF level 1,NONE,ACCEPT,Dashes remain distinguishable in grayscale
+G21,nearest8x_cdf_t1.png,VISIBLE,Vertical guide aligns t=1 across the CDF endpoint pair,NONE,ACCEPT,Guide is dashed and remains subordinate to data marks
+G22,nearest8x_cdf_t2.png,VISIBLE,Vertical guide aligns t=2 across the CDF endpoint pair,NONE,ACCEPT,Guide is dashed and remains subordinate to data marks
+G23,nearest8x_cdf_t3.png,VISIBLE,Vertical guide aligns t=3 across the CDF endpoint pair,NONE,ACCEPT,Guide is dashed and remains subordinate to data marks
+G24,nearest8x_cdf_t4.png,VISIBLE,Vertical guide aligns t=4 across the CDF endpoint pair,NONE,ACCEPT,Guide is dashed and remains subordinate to data marks
+G25,figure_native1x_300dpi.png,VISIBLE,PMF abscissa is horizontal with a right arrow,NONE,ACCEPT,Axis body and arrowhead are continuous and unobstructed
+G26,figure_native1x_300dpi.png,VISIBLE,PMF ordinate is vertical with an upward arrow,NONE,ACCEPT,Axis body and arrowhead are complete
+G27,figure_native1x_300dpi.png,VISIBLE,PMF tick at t=1 aligns with the first stem,NONE,ACCEPT,Tick is complete at the intended axis junction
+G28,figure_native1x_300dpi.png,VISIBLE,PMF tick at t=2 aligns with the second stem,NONE,ACCEPT,Tick is complete at the intended axis junction
+G29,nearest8x_pmf_t3.png,VISIBLE,PMF tick at t=3 aligns with the third stem,NONE,ACCEPT,Tick is complete at the intended axis junction
+G30,figure_native1x_300dpi.png,VISIBLE,PMF tick at t=4 aligns with the fourth stem,NONE,ACCEPT,Tick is complete at the intended axis junction
+G31,figure_native1x_300dpi.png,VISIBLE,PMF zero tick is attached to the ordinate,NONE,ACCEPT,Short tick is complete
+G32,figure_native1x_300dpi.png,VISIBLE,PMF 0.15 tick is attached to the ordinate,NONE,ACCEPT,Short tick is complete
+G33,figure_native1x_300dpi.png,VISIBLE,PMF 0.3 tick is attached to the ordinate,NONE,ACCEPT,Short tick is complete
+G34,figure_native1x_300dpi.png,VISIBLE,PMF 0.35 tick is attached to the ordinate,NONE,ACCEPT,Short tick is complete
+G35,figure_native1x_300dpi.png,VISIBLE,First PMF stem has height 0.15,NONE,ACCEPT,Stem reaches its marker and baseline without clipping
+G36,figure_native1x_300dpi.png,VISIBLE,Second PMF stem has height 0.30,NONE,ACCEPT,Stem reaches its marker and baseline without clipping
+G37,nearest8x_pmf_t3.png,VISIBLE,Third PMF stem has height 0.35,NONE,ACCEPT,Stem reaches its marker and baseline without clipping
+G38,figure_native1x_300dpi.png,VISIBLE,Fourth PMF stem has height 0.20,NONE,ACCEPT,Stem reaches its marker and baseline without clipping
+G39,figure_native1x_300dpi.png,VISIBLE,First PMF marker encodes mass 0.15,NONE,ACCEPT,Dark fill and teal rim are visible in color and grayscale
+G40,figure_native1x_300dpi.png,VISIBLE,Second PMF marker encodes mass 0.30,NONE,ACCEPT,Dark fill and teal rim are visible in color and grayscale
+G41,nearest8x_pmf_t3.png,VISIBLE,Third PMF marker encodes mass 0.35,NONE,ACCEPT,Dark fill and teal rim are intact
+G42,figure_native1x_300dpi.png,VISIBLE,Fourth PMF marker encodes mass 0.20,NONE,ACCEPT,Dark fill and teal rim are visible in color and grayscale
+G43,figure_native1x_300dpi.png,VISIBLE,PMF guide at t=1 aligns the first mass with the upper panel,NONE,ACCEPT,Dashed guide remains visible beside the overprinted stem
+G44,figure_native1x_300dpi.png,VISIBLE,PMF guide at t=2 aligns the second mass with the upper panel,NONE,ACCEPT,Dashed guide remains visible beside the overprinted stem
+G45,nearest8x_pmf_t3.png,VISIBLE,PMF guide at t=3 aligns the third mass with the upper panel,NONE,ACCEPT,Dashed guide remains visible beside the overprinted stem
+G46,nearest8x_pmf_note_left.png + nearest8x_pmf_note_right.png,VISIBLE,PMF guide at t=4 aligns the fourth mass with the upper panel,NONE,ACCEPT,Annotation backplate masks only a noncritical guide segment and the guide is visible above and below

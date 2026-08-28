@@ -1,0 +1,694 @@
+% STAGE09-CHAPTER: V1-C11
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V1-C11-CH01}; CH-02=\label{struct:V1-C11-CH02}; CH-03=\label{struct:V1-C11-CH03}; CH-04=\label{struct:V1-C11-CH04}; CH-05=\label{struct:V1-C11-CH05}; CH-06=\label{struct:V1-C11-CH06}; CH-07=\label{struct:V1-C11-CH07}; CH-08=\label{struct:V1-C11-CH08}; CH-09=\label{struct:V1-C11-CH09}; CH-10=\label{struct:V1-C11-CH10}; CH-11=\label{struct:V1-C11-CH11}; CH-12=\label{struct:V1-C11-CH12}; CH-13=\label{struct:V1-C11-CH13}; CH-14=\label{struct:V1-C11-CH14}; CH-15=\label{struct:V1-C11-CH15}; CH-16=\label{struct:V1-C11-CH16}; CH-17=\label{struct:V1-C11-CH17}; CH-18=\label{struct:V1-C11-CH18}; CH-19=\label{struct:V1-C11-CH19}; CH-20=\label{struct:V1-C11-CH20}; CH-21=\label{struct:V1-C11-CH21}; CH-22=\label{struct:V1-C11-CH22}; CH-23=\label{struct:V1-C11-CH23}; CH-24=\label{struct:V1-C11-CH24}; CH-25=\label{struct:V1-C11-CH25}; CH-26=\label{struct:V1-C11-CH26}; CH-27=\label{struct:V1-C11-CH27}; CH-28=\label{struct:V1-C11-CH28}; CH-29=\label{struct:V1-C11-CH29}; CH-30=\label{struct:V1-C11-CH30}; CH-31=\label{struct:V1-C11-CH31}; CH-32=\label{struct:V1-C11-CH32}; CH-33=\label{struct:V1-C11-CH33}; CH-34=\label{struct:V1-C11-CH34}; CH-35=\label{struct:V1-C11-CH35}; CH-36=\label{struct:V1-C11-CH36}; CH-37=\label{struct:V1-C11-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V1-C11-tagging -> SLM-01-08-003
+\chapter{监督学习任务与应用}\label{chap:V1-C11}
+\SLChapterOpening{从输出结构直达分类、标注、回归与部署规范}{任务结构怎样决定损失、解码和评价指标}{能够冻结预测时点、标签、特征、损失、指标与划分}{\cref{chap:V1-C09,chap:V1-C10}的三要素与评估协议}{任务边界或指标不一致时返回相应任务小节重新定义}
+\index{监督学习任务与应用}
+
+
+\phantomsection\label{struct:V1-C11-CH01}
+% KNOWLEDGE-PLAN: KN-V1-C11-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}监督学习任务与应用学习目标固定核验“从输入空间、输出空间和数据单位出发，严格区分分类、标注与回归任务”；请实际完成“从输入空间、输出空间和数据单位出发，严格区分分类、标注与回归任务”，并用“中间结果逐项包含首目标“从输入空间、输出空间和数据单位出发，严格区分分类、标注与回归任务”声明的对象、条件与结论”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 从输入空间、输出空间和数据单位出发，严格区分分类、标注与回归任务；
+  \item 能够由条件风险推导Bayes分类决策，正确计算准确率、精确率、召回率、$F_1$值及回归误差；
+  \item 能够把真实问题写成可训练、可验证的监督学习任务，并识别类别不均衡、序列依赖和数据泄漏。
+\end{itemize}}
+
+\phantomsection\label{struct:V1-C11-CH02}
+\begin{prerequisitebox}
+需要掌握随机变量、条件概率、期望、损失函数、经验风险与交叉验证；还要会区分样本、特征、标签和数据集划分。分类的输出是有限集合元素，回归的输出通常属于实数空间，标注的一个样本则包含相互关联的多个位置。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V1-C11-CH03}
+% KNOWLEDGE-PLAN: KN-V1-C11-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}监督学习任务与应用先修自检固定核验“给定应用描述，能否先写出一个样本的输入$x$和输出$y$，再选择模型”；请给定应用描述，实际先写出一个样本的输入$x$和输出$y$，再选择模型并写出中间结果，再按“中间结果直接回答首项“给定应用描述，能否先写出一个样本的输入$x$和输出$y$，再选择模型”并给出通过或失败”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 给定应用描述，能否先写出一个样本的输入$x$和输出$y$，再选择模型？
+  \item 能否解释条件概率$p(y\mid x)$与决策函数$f(x)$的区别？
+  \item 能否说明训练集上的高准确率为什么不能替代独立测试集评估？
+\end{enumerate}
+若有一项不能完成，依次回看第一章的样本与标签、第九章的假设空间和第十章的风险与模型选择。
+\end{precheckbox}
+
+\phantomsection\label{struct:V1-C11-CH04}
+\begin{dependencybox}
+输出空间类型 $\to$ 任务类型；条件分布与损失 $\to$ Bayes决策；
+独立样本 $\to$ 分类或回归经验风险；序列结构 $\to$ 标注的联合解码；
+业务代价 $\to$ 评价指标；数据生成过程 $\to$ 划分方案与方法选择。
+\end{dependencybox}
+
+\phantomsection\label{struct:V1-C11-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V1-C11
+\index[symbols]{minus-mathcalx-minus-minus-mathcaly-minus--s096552d9aa85@$\mathcal X,\mathcal Y$：输入空间与输出空间}
+\index[symbols]{t-eq-x-i-y-i-i-eq-1-n--seb7931a3542e@$T=\{(x_i,y_i)\}_{i=1}^N$：含$N$个标注样本的训练数据}
+\index[symbols]{f-minus-haty-minus--s7212a9fce004@$f,\hat y$：预测函数与$\hat y=f(x)$}
+\index[symbols]{p-y-minus-midx-minus--s77d85d435756@$p(y\mid x)$：给定输入时输出的条件概率}
+\index[symbols]{minus-mathrm-minus-tp-minus-mathrm-minus-fp-minus-mathrm-minus-fn-minus---s4b3e135efb91@$\mathrm{TP},\mathrm{FP},\mathrm{FN},\mathrm{TN}$：二分类混淆矩阵四项计数}
+\index[symbols]{x-1-u003a-n-y-1-u003a-n--sdbe3db9a02d7@$X_{1:n},Y_{1:n}$：长度$n$的观测序列与标记序列}
+\index[symbols]{l-r--s657fe29f3e7e@$L,R$：损失与条件风险}
+% STAGE19-SYMBOL-INDEX-END: V1-C11
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值 & 含义\\ \midrule
+$\mathcal X,\mathcal Y$ & 集合 & 输入空间与输出空间\\
+$T=\{(x_i,y_i)\}_{i=1}^N$ & 样本集 & 含$N$个标注样本的训练数据\\
+$f,\hat y$ & 映射、输出 & 预测函数与$\hat y=f(x)$\\
+$p(y\mid x)$ & $[0,1]$ & 给定输入时输出的条件概率\\
+$\mathrm{TP},\mathrm{FP},\mathrm{FN},\mathrm{TN}$ & 非负整数 & 二分类混淆矩阵四项计数\\
+$X_{1:n},Y_{1:n}$ & 序列 & 长度$n$的观测序列与标记序列\\
+$L,R$ & 非负函数 & 损失与条件风险\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V1-C11-CONCEPT-001 L1
+\paragraph{读前自检：监督学习应用。}把监督学习应用放在“监督学习应用的第一步不是挑选算法，而是确定一个样本、可用信息、预测时点和允许输出”下考察：把“监督学习应用的第一步不是挑选算法，而是确定一个样本、可用信息、预测时点和允许输出”中的已声明对象依次标成输入、输出与判据，并检查每个对象只承担正文声明的接口角色，且判据能给出通过或失败。\par
+
+\SLDirectSection{分类问题}{sec:V1-C11-S01}
+\phantomsection\label{struct:V1-C11-CH06}
+\knowledgeanchor{SLM-01-08-001}{监督学习应用}
+监督学习应用的第一步不是挑选算法，而是确定一个样本、可用信息、预测时点和允许输出。只有这些对象固定后，数据划分与评价才有明确含义。
+
+% KNOWLEDGE-PLAN: KN-V1-C11-CONCEPT-002 L1
+\paragraph{读前自检：分类问题。}分类问题在$0$--$1$损失下的条件风险为$R(a\mid x)=1-p(a\mid x)$；请比较两个候选类别的后验概率，核对最大后验类别恰使条件风险最小。\par
+
+\knowledgeanchor{SLM-01-08-002}{分类问题}
+\phantomsection\label{struct:V1-C11-CH07}
+\begin{definition}[分类任务]
+若输出空间$\mathcal Y=\{1,\ldots,C\}$为有限类别集合，则从训练集学习$f:\mathcal X\to\mathcal Y$或条件分布$p(y\mid x)$并预测新输入类别的任务称为分类。$C=2$时为二分类，$C>2$时为多分类。
+\end{definition}
+这里定义的是每个样本只取一个标签的普通分类。多标签任务的输出应另写为有限幂集$2^{\{1,\ldots,C\}}$或等价指示向量$\{0,1\}^C$；序列、树等结构化输出具有单独的输出空间和依赖关系，不把它们混入上述有限单标签定义。
+
+本章统一采用“真实值在前、预测或动作在后”的损失记号$L(y,a)$；平方损失、绝对损失与后文风险式都遵守这一顺序。
+
+\phantomsection\label{struct:V1-C11-CH08}
+\textbf{模型。}概率分类器给出$p(y\mid x)$，决策函数再按损失把概率转换成类别。若使用0--1损失，预测为条件概率最大的类别；若不同错误代价不同，最优阈值会随代价改变。
+
+\phantomsection\label{struct:V1-C11-CH09}
+\textbf{学习策略。}训练阶段最小化经验损失或正则化风险；评估阶段必须使用未参与拟合和调参的数据。类别严重不均衡时，准确率会掩盖少数类错误，应同时报告精确率、召回率和$F_1$值。
+
+二分类把关注类称为正类。四项计数给出
+\[
+P=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FP}},\qquad
+R=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FN}},\qquad
+F_1=\frac{2PR}{P+R}
+=\frac{2\mathrm{TP}}{2\mathrm{TP}+\mathrm{FP}+\mathrm{FN}}.
+\]
+分母为零时必须预先规定评价约定，不能临时忽略样本。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V1-C11-CH11}
+% CORE-DERIVATION-PLAN: KN-V1-C11-DERIVATION-001
+\SLKnowledgeBridge{从条件风险统一推出代价敏感规则与 $0$--$1$ 损失特例。}{有限类别集合、动作 $a$、真实类别 $y$、损失 $L(y,a)$ 与后验概率 $p(y\mid x)$。}{$L(y,a)\ge0$ 且给定 $x$ 时后验分布已归一化。}{先对每个候选动作写条件风险 $R(a\mid x)=\sum_yL(y,a)p(y\mid x)$。}
+
+\begin{derivationgoalbox}
+从条件风险推导任意有限类别、任意代价矩阵下的Bayes分类规则，并得到0--1损失的最大后验规则。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+设动作$a\in\mathcal Y$，真实类别为$y$，损失$L(y,a)\ge0$；给定$x$时$p(y\mid x)$已知。
+\end{derivationprepbox}
+\textbf{推导第1步：}固定输入$x$和候选动作$a$，对未知真实类别取条件期望，
+\[
+R(a\mid x)=\sum_{y\in\mathcal Y}L(y,a)p(y\mid x).
+\]
+
+\textbf{推导第2步：}对每个输入分别选择条件风险最小的动作，
+\[
+f^*(x)\in\arg\min_{a\in\mathcal Y}R(a\mid x).
+\]
+对$x$再取期望不会改变逐点最小化，因此该规则使总体风险达到最小。
+
+\textbf{推导第3步：}0--1损失满足$L(y,a)=\mathbf 1(y\ne a)$，于是
+$R(a\mid x)=1-p(a\mid x)$，故
+\[
+f^*(x)\in\arg\max_{a\in\mathcal Y}p(a\mid x).
+\]
+并列最大值需要固定且可复现的决胜规则。
+
+\phantomsection\label{struct:V1-C11-CH12}
+\begin{theorem}[Bayes分类器的风险最优性]
+在有限输出空间且条件分布已知时，逐点选择条件风险最小动作的分类器在全部可测决策函数中具有最小期望风险。
+\end{theorem}
+
+\phantomsection\label{struct:V1-C11-CH13}
+% KNOWLEDGE-PLAN: KN-V1-C11-PROOF-001 L1
+\paragraph{读前自检：证明：Bayes分类器的风险最优性。}Bayes分类器$f^*$在每个$x$处最小化条件风险；请对任意决策函数$g$写出$R(f^*(x)\mid x)\le R(g(x)\mid x)$，再按输入边缘分布积分，核对总体风险不等式及并列最小时的取等情形。\par
+
+\begin{proof}
+任取另一决策函数$g$。对每个$x$，Bayes动作的定义给出
+$R(f^*(x)\mid x)\le R(g(x)\mid x)$。以输入边缘分布对两边积分，得到
+$\mathbb E_XR(f^*(X)\mid X)\le\mathbb E_XR(g(X)\mid X)$。左、右两边分别是$f^*$和$g$的总体期望损失，因此结论成立。等号允许在条件风险并列最小处出现。
+\end{proof}
+
+\phantomsection\label{struct:V1-C11-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}分类器把特征空间划分为若干决策区域；决策边界是相邻动作条件风险相等的点集。改变误判代价会移动边界，即使概率模型本身不变。
+\end{geometrybox}
+
+\phantomsection\label{struct:V1-C11-CH15}
+\begin{probabilitybox}
+条件概率描述不确定性，最终类别是概率与损失共同作用的决策。把$p(y\mid x)=0.6$直接称为“60\%正确”还需要概率校准假设；准确率只评价硬决策，不能单独检验概率质量。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V1-C11-CH18}
+\phantomsection\label{struct:V1-C11-CH32}
+\phantomsection\label{struct:V1-C11-CH33}
+\begin{example}[混淆矩阵的四项分类指标]\label{exm:V1-C11-binary-metrics}
+某二分类测试集有$\mathrm{TP}=36,\mathrm{FP}=9,\mathrm{FN}=4,\mathrm{TN}=51$。计算准确率、精确率、召回率和$F_1$。
+\end{example}
+\SLExampleSolutionHeading{exm:V1-C11-binary-metrics}
+\begin{solution}
+\SLReadTranslation{四个计数分别记录真阳性、假阳性、假阴性和真阴性；题目要在同一“正类”约定下计算四个分类指标，而不是把混淆矩阵作矩阵乘法。}
+\SolGiven 固定题设正类，四格计数均非负；总样本数由四格相加得到，且精确率、召回率的分母在本题中均严格为正。
+\SLMethodTrigger{先由四格恢复总样本数，再分别写出准确率、精确率、召回率的计数分母；最后用计数式和调和平均式两种方式复算$F_1$。}
+\SolPlan 逐项代入四个计数，检查分母与取值范围，并用四格总和及$F_1$的等价公式作独立核验。
+\SolDerive
+以题设正类为正类，且各指标分母均严格为正。总样本数与四项指标为
+\[
+\begin{aligned}
+N&=\mathrm{TP}+\mathrm{FP}+\mathrm{FN}+\mathrm{TN}=100,\\
+\mathrm{Acc}
+  &=\frac{\mathrm{TP}+\mathrm{TN}}{N}
+    =\frac{36+51}{100}=0.87,\\
+\mathrm{Precision}
+  &=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FP}}
+    =\frac{36}{45}=0.8,\\
+\mathrm{Recall}
+  &=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FN}}
+    =\frac{36}{40}=0.9,\\
+F_1
+  &=\frac{2\mathrm{TP}}{2\mathrm{TP}+\mathrm{FP}+\mathrm{FN}}
+    =\frac{72}{85}\approx0.847.
+\end{aligned}
+\]
+独立地用调和平均式核验
+\[
+\frac{2\times0.8\times0.9}{0.8+0.9}
+=\frac{72}{85}\approx0.847,
+\]
+与计数式一致。
+\SolCheck 四格之和$36+9+4+51=100$恢复总样本数；三个分母$100,45,40$均为正，且四个指标都落在$[0,1]$内。
+\SolAnswer 准确率、精确率、召回率和$F_1$依次为$0.87,0.80,0.90,72/85\approx0.847$；较高召回率对应较少漏报，$\mathrm{FP}=9$仍表明存在误报。
+\end{solution}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C11-CONCEPT-005 L1
+\paragraph{读前自检：标注问题。}标注问题给定观测序列$X_{1:n}$并输出同长度标签$Y_{1:n}$；请写出$\widehat Y_{1:n}\in\arg\max_{y_{1:n}}p(y_{1:n}\mid X_{1:n})$，再核对改变单个$y_t$会同时影响本地项与相邻转移项。\par
+
+\SLReviewSection{标注问题}{sec:V1-C11-S02}
+\knowledgeanchor{SLM-01-08-003}{标注问题}
+\begin{definition}[序列标注]
+给定观测序列$X_{1:n}=(X_1,\ldots,X_n)$，预测同长度或按任务规则对齐的标记序列$Y_{1:n}=(Y_1,\ldots,Y_n)$，称为标注。模型需要处理输出位置之间的结构依赖，而非把每个位置机械地视为独立分类。
+\end{definition}
+
+概率模型可表示$p(Y_{1:n}\mid X_{1:n})$，解码规则为
+\[
+\widehat Y_{1:n}\in
+\arg\max_{y_{1:n}\in\mathcal Y^n}p(y_{1:n}\mid X_{1:n}).
+\]
+若标记集大小为$K$，未经结构分解的候选序列有$K^n$个；动态规划之所以重要，是因为局部因子可复用重叠子问题。
+
+\phantomsection\label{struct:V1-C11-CH17}
+\begin{center}
+\begin{minipage}[t]{0.47\linewidth}
+\begin{keypointbox}[title=HMM任务卡]
+\textbf{输入：}观测序列$X_{1:n}$。\par
+\textbf{输出：}最可能的隐状态路径$Y_{1:n}$。\par
+\textbf{箭头语义：}状态生成下一状态与当前观测，属于生成式联合模型。
+\end{keypointbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\linewidth}
+\begin{keypointbox}[title=CRF任务卡]
+\textbf{输入：}完整观测序列$x_{1:n}$。\par
+\textbf{输出：}条件得分最高的标记路径$y_{1:n}$。\par
+\textbf{因子语义：}局部因子在给定观测下连接相邻标记，不表示由标记生成观测。
+\end{keypointbox}
+\end{minipage}
+\end{center}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C11/fig_v1_c11_tagging.tex}
+由\cref{fig:V1-C11-tagging}可见，改变一个$y_t$会同时影响本地观测项和相邻转移项；逐位置取最大值因此可能拼出全局低分序列，解码必须保留跨位置的动态规划状态。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C11-CONCEPT-008 L1
+\paragraph{读前自检：回归问题。}监督学习任务与应用中的回归问题以“若输出$Y$取连续数值，通常$\mathcal Y\subseteq\mathbb R^q$”为约束；请独立化简$\mathbb E[(Y-a)^2\mid X=x]$的两端，并确认“指出一段配送轨迹中每个时刻所处状态”以状态序列为输出，是标注。\par
+
+\SLTeachSection{回归问题}{sec:V1-C11-S03}
+\knowledgeanchor{SLM-01-08-004}{回归问题}
+\begin{definition}[回归任务]
+若输出$Y$取连续数值，通常$\mathcal Y\subseteq\mathbb R^q$，从训练数据学习$f:\mathcal X\to\mathcal Y$并预测数值的任务称为回归。$q=1$为一元输出回归，$q>1$为多输出回归；“线性/非线性”描述模型形式，不由输入维数决定。
+\end{definition}
+
+平方损失和绝对损失分别为
+\[
+L_2(y,\hat y)=(y-\hat y)^2,\qquad
+L_1(y,\hat y)=|y-\hat y|.
+\]
+% DERIVATION-ID: V1-C11-regression-bayes-actions
+% CORE-DERIVATION-PLAN: KN-V1-C11-DERIVATION-002
+\SLKnowledgeBridge{分别证明条件均值和条件中位数为何是最优点预测。}{固定输入 $x$，标量条件分布 $Y\mid X=x$ 与候选预测 $a\in\R$。}{平方损失需条件二阶矩有限；绝对损失需条件一阶矩有限，并用条件分布函数处理非唯一中位数。}{平方损失先围绕 $\mu(x)=\mathbb E[Y\mid X=x]$ 展开平方；绝对损失则考察左右导数或次梯度。}
+
+\begin{derivationgoalbox}
+对固定输入$x$，分别求平方损失和绝对损失下使条件风险最小的预测值。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+以下推导明确限于标量回归$q=1$。条件分布记为$Y\mid X=x$；平方损失情形假设条件二阶矩有限，令$\mu(x)=\mathbb E[Y\mid X=x]$；绝对损失情形令条件分布函数为$F_x(a)=P(Y\le a\mid X=x)$。
+\end{derivationprepbox}
+\textbf{推导第1步：平方损失中心化。}对任意常数预测$a$，
+\[
+\mathbb E[(Y-a)^2\mid X=x]
+=\operatorname{Var}(Y\mid X=x)+(\mu(x)-a)^2,
+\]
+因为交叉项含$\mathbb E[Y-\mu(x)\mid X=x]=0$。第二项在且仅在$a=\mu(x)$时最小。
+
+\textbf{推导第2步：绝对损失使用次梯度。}函数$R_1(a)=\mathbb E[|Y-a|\mid X=x]$为凸函数，其次梯度区间为
+\[
+\partial R_1(a)=\bigl[2F_x(a^-)-1,\;2F_x(a)-1\bigr].
+\]
+最优性条件$0\in\partial R_1(a)$等价于$F_x(a^-)\le1/2\le F_x(a)$，这正是条件中位数的定义。
+
+\textbf{推导第3步：比较结论。}平方损失的条件Bayes预测是条件均值，绝对损失的条件Bayes预测是任一条件中位数。两者不同说明选择损失等于声明哪类误差更昂贵，而不是只更换一个计算公式。
+
+对$q>1$，结论取决于损失的具体定义。平方欧氏损失$\norm{Y-a}_2^2$的Bayes动作是条件均值向量$\mathbb E[Y\mid X=x]$；逐坐标绝对损失$\sum_{j=1}^q|Y_j-a_j|$的Bayes动作由各坐标条件中位数组成；欧氏距离损失$\norm{Y-a}_2$的Bayes动作则是条件几何中位数。这三者不能用标量“中位数”一句话混写。
+
+\phantomsection\label{struct:V1-C11-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}经验平方损失对线性参数是凸二次函数，正规方程或迭代法可求全局最优；绝对损失在零点不可微但仍凸，对异常值的增长速度较慢。加入正则项是在拟合误差与参数复杂度之间取舍。
+\end{optimizationbox}
+
+
+\SLAdvancedSection{监督学习应用与方法选择}{sec:V1-C11-S04}
+本节把前三节的定义组合成可执行规范。对每个应用依次写出：预测时点、一个样本、输入空间、输出空间、允许使用的特征、损失、评价指标、数据划分单位与部署后的分布变化。
+
+同一业务目标可能对应不同任务。例如“预计订单是否延迟”以有限类别为输出，是分类；“预计延迟多少小时”以连续时间为输出，是回归；“指出一段配送轨迹中每个时刻所处状态”以状态序列为输出，是标注。三者可以共享原始记录，却不能共享未经说明的标签、损失和指标。方法选择还应服从部署约束：离线批处理可容许较高延迟，在线决策需要明确单次预测预算；高代价领域应保留概率或置信信息，并把人工复核作为允许动作之一。评价集要模拟实际预测方向，例如用过去预测未来，而不是把未来记录随机混入训练数据。
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l l l X@{}}
+\toprule
+任务 & 单个输出 & 典型损失 & 评价关注\\ \midrule
+分类 & 有限类别 & 对数损失、0--1损失 & 错误类型、阈值与概率质量\\
+标注 & 标记序列 & 序列负对数似然 & 位置、片段与整序列一致性\\
+回归 & 连续数值 & 平方或绝对损失 & 误差尺度、尾部与分群残差\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\phantomsection\label{struct:V1-C11-CH10}
+\phantomsection\label{struct:V1-C11-CH19}
+\phantomsection\label{struct:V1-C11-CH20}
+\phantomsection\label{struct:V1-C11-CH21}
+\phantomsection\label{struct:V1-C11-CH22}
+\phantomsection\label{struct:V1-C11-CH23}
+\phantomsection\label{struct:V1-C11-CH24}
+\phantomsection\label{struct:V1-C11-CH25}
+\begin{keypointbox}[title=章末项目检查表（核心流程，不作为数学算法）]
+\begin{enumerate}[leftmargin=2.2em,itemsep=1pt]
+  \item 写清应用决策与错误代价；\item 冻结预测时点；
+  \item 冻结样本单位及时间或群组边界；\item 声明$\mathcal X$与$\mathcal Y$；
+  \item 列出预测时不可用的信息；\item 预先确定损失与评价指标；
+  \item 预先确定阈值、并列规则和部署门槛；\item 冻结互斥划分规则；
+  \item 把预处理和特征选择放入训练折；\item 只用训练数据拟合候选；
+  \item 只用验证数据比较候选；\item 预登记训练、数值与随机源失败政策；
+  \item 给搜索设定有限预算；\item 记录每个合法候选；
+  \item 按冻结规则更新当前最优；\item 只有预登记证书满足时才早停；
+  \item 无合法候选时停止并报告；\item 选择结束后一次性冻结任务、处理、模型和阈值；
+  \item 冻结前不得读取测试集；\item 冻结后只读取测试集一次；
+  \item 报告总体与预设分群指标；\item 测试结果不得回流到搜索；
+  \item 归档规范、预算、失败记录、测试结果与部署判定。
+\end{enumerate}
+\end{keypointbox}
+
+\textbf{稳健实现细节契约。}以下保留失败分支、预算和状态语义，项目执行时查阅；它不是本章需要手算的数学算法。
+% KNOWLEDGE-PLAN: KN-V1-C11-ALGORITHM_IDEA-001 L2
+\begin{keypointbox}[title={算法执行契约：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={应用目标、带时间/群组信息的原始样本、候选任务定义、训练/验证搜索预算$K$、容差、损失、指标与部署门槛},
+  output={冻结任务规范、最后合法开发记录与模型、一次独立测试结果、实际搜索/拟合/测试读取计数、状态与最终诊断},
+  preconditions={预测时点、样本单位、可用信息、划分规则、损失/指标/阈值、并列/失败规则与$K\in\mathbb N_0$均在开发前冻结},
+  initialization={先形成任务规范和互斥训练/验证/测试索引，置$k_{\rm done}=f_{\rm done}=r_{\rm test}=0$并令冻结标志为假},
+  loop={只在训练集拟合候选并只在验证集形成选择指标，按预定顺序和早停证书推进有限搜索},
+  update={候选训练与验证均合法后才原子追加开发记录并更新当前最优；选定后原子冻结任务、处理、模型与阈值},
+  domain={测试集在冻结前不可读；冻结后恰读取一次且任何测试结果都不得回流到搜索、阈值或特征},
+  failure={任务定义、信息边界或规则非法返回$\mathtt{invalid\_input}$；划分随机源失败返回$\mathtt{random\_source\_failure}$；训练/验证/测试非有限或无合法候选返回$\mathtt{numerical\_failure}$并保留最后合法开发状态},
+  stop={验证早停证书、搜索预算耗尽、首次失败或一次测试与部署判定完成时停止且不回流},
+  budget={至多$K$次候选训练--验证原子提交和恰至多一次测试集读取},
+  status={$\mathtt{completed}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$k_{\rm done}$计实际提交搜索轮，$f_{\rm done}$计实际拟合调用，$r_{\rm test}\in\{0,1\}$计测试集读取},
+  diagnostics={信息边界、划分摘要、验证轨迹、早停或预算原因、冻结清单、测试分群指标、部署门槛和失败阶段},
+  complexity={开发成本至多$K(C_{\rm fit}+C_{\rm val})$，最终测试$O(N_{\rm test}C_{\rm pred})$，记录空间按实际候选数累计}
+}
+\begin{keypointbox}[title=稳健实现说明：六阶段评估闭环（不编号为数学算法）]
+\begin{enumerate}[leftmargin=2.2em,itemsep=1pt]
+  \item \textbf{定义：}冻结预测时点、样本单位、$\mathcal X,\mathcal Y$、损失、指标和禁止信息；
+  \item \textbf{划分：}按时间或群组边界生成互斥训练、验证与测试索引；
+  \item \textbf{开发：}只在训练集拟合，只在验证集选择，并原子记录每个合法候选；
+  \item \textbf{冻结：}按预登记证书或预算停止后，冻结处理、模型、阈值与并列规则；
+  \item \textbf{测试：}冻结后恰读取测试集一次，报告总体与预设分群指标；
+  \item \textbf{归档：}保存最后合法状态、实际计数、失败阶段、预算余量与部署判定，测试结果不得回流。
+\end{enumerate}
+\end{keypointbox}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{核心流程使用上方章末项目检查表；六阶段闭环是项目实现附录，不占用数学算法编号，完整失败分支和状态语义仍由C1--C14契约保存}
+
+该流程的参数包括误判代价、阈值、验证规则和资源预算；初始化决定可用信息边界；更新规则只依赖训练与验证数据；停止条件在搜索前固定。这里的“收敛”表示模型选择过程按预设规则终止，不等同于某个优化器的参数收敛。
+
+\phantomsection\label{struct:V1-C11-CH26}
+\phantomsection\label{struct:V1-C11-CH27}
+% KNOWLEDGE-PLAN: KN-V1-C11-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：监督学习应用与方法选择。}先锁定监督学习应用与方法选择的条件“训练复杂度：若每个候选的拟合成本为$C_{\rm fit}$、验证成本为$C_{\rm val}$”：由$C_{\rm fit},C_{\rm val},C_{\rm pred}$的总成本剥离一次迭代或一次样本因子，所得结果应满足保存全部预测为$O(N)$，序列回溯指针通常为$O(nK)$，模型参数另计。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界假设候选数、数据划分和停止预算预先固定，$C_{\rm fit},C_{\rm val},C_{\rm pred}$分别包含单个候选的完整训练、验证和预测成本；分类指标可流式累计。链式解码界假设$K$个标记间转移稠密，稀疏转移时应按实际边数重计。
+设候选数为$M$、评估样本数为$N$、类别数为$C$。\textbf{训练复杂度：}若每个候选的拟合成本为$C_{\rm fit}$、验证成本为$C_{\rm val}$，一次有限搜索为$O(M(C_{\rm fit}+C_{\rm val}))$；分类混淆计数与回归误差汇总为$O(N)$。\textbf{预测复杂度：}选定模型后，普通单样本预测为其自身的$C_{\rm pred}$；具有$K$种标记、长度$n$的链式序列动态规划解码为$O(nK^2)$。\textbf{存储复杂度：}指标累计需$O(C^2)$混淆计数或常数级回归汇总；保存全部预测为$O(N)$，序列回溯指针通常为$O(nK)$，模型参数另计。
+\end{complexitybox}
+
+\phantomsection\label{struct:V1-C11-CH28}
+\phantomsection\label{struct:V1-C11-CH29}
+\begin{applicabilitybox}
+\textbf{适用条件：}分类适合有限互斥或多标签输出，标注适合输出内部有位置或结构依赖，回归适合连续数值输出。\textbf{局限性：}监督学习依赖标签质量与训练—部署分布的一致性；类别不均衡、标签延迟、群组相关、概念漂移和未观测混杂都会使随机划分的离线成绩过于乐观。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V1-C11-CH30}
+% KNOWLEDGE-PLAN: KN-V1-C11-BOUNDARY-003 L1
+\paragraph{读前自检：常见错误与误用边界：监督学习应用与方法选择。}对监督学习应用与方法选择，条件“边界框首项禁止把数值编码的类别当作连续回归目标”不可省；请把固定错误“把数值编码的类别当作连续回归目标”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，再用改写后的运算或判断有定义，且不再触发“把数值编码的类别当作连续回归目标”作检查。\par
+
+\begin{warningbox}
+典型误用包括：把数值编码的类别当作连续回归目标；按行随机拆分同一用户或同一序列造成泄漏；在测试集上反复选择阈值；类别不均衡时只报准确率；把逐位置准确率当作整序列准确率；只报均方误差而不检查分群偏差和残差尺度；使用预测时点以后才产生的特征。
+\end{warningbox}
+
+\phantomsection\label{struct:V1-C11-CH31}
+% KNOWLEDGE-PLAN: KN-V1-C11-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：监督学习应用与方法选择。}监督学习应用与方法选择把问题限定在“概念对比：分类预测有限类别，回归预测连续数值，标注预测结构化标记序列”；请按表格顺序核对监督学习应用与方法选择对比表的首个数据行，检查是否得到监督学习应用与方法选择首行两端的对象、条件与不可互换项逐列一致。\par
+
+\begin{comparisonbox}
+\textbf{概念对比：}分类预测有限类别，回归预测连续数值，标注预测结构化标记序列。概率模型给出不确定性，决策规则结合损失产生动作。精确率控制预测正类的可信度，召回率控制真实正类的覆盖率；$F_1$是二者的调和平均，但不含真负类。训练误差用于拟合，验证指标用于选择，测试指标只用于最终估计。
+\end{comparisonbox}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V1-C11-CH34}
+\phantomsection\label{struct:V1-C11-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S01-01}
+测试集的$\mathrm{TP}=24,\mathrm{FP}=6,\mathrm{FN}=8,\mathrm{TN}=62$。计算准确率、精确率、召回率和$F_1$。
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S01-01}
+\begin{chapterexercisesolution}{ex:V1-C11-S01-01}
+以题设正类为正类；这里$N=100$且精确率、召回率的分母均为正。于是
+\[
+\begin{aligned}
+\mathrm{Acc}
+  &=\frac{24+62}{24+6+8+62}=0.86,\\
+\mathrm{Precision}
+  &=\frac{24}{24+6}=0.8,\\
+\mathrm{Recall}
+  &=\frac{24}{24+8}=0.75,\\
+F_1
+  &=\frac{2\mathrm{TP}}{2\mathrm{TP}+\mathrm{FP}+\mathrm{FN}}
+    =\frac{48}{62}=\frac{24}{31}\approx0.774.
+\end{aligned}
+\]
+一般若$\mathrm{TP}+\mathrm{FP}=0$，精确率按该比值定义将是未定义，必须另行声明评价库采用的约定。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S01-02}
+某输入的三类后验概率为$(0.2,0.5,0.3)$。在0--1损失下给出Bayes预测和最小条件风险。
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S01-02}
+\begin{chapterexercisesolution}{ex:V1-C11-S01-02}
+标签与动作域均为$\mathcal Y=\mathcal A=\{1,2,3\}$，且
+$L(y,a)=\mathbf1\{y\ne a\}$。因此
+\[
+\begin{aligned}
+\rho(a\mid x)
+  &=\sum_{y\in\mathcal Y}L(y,a)P(y\mid x)
+    =1-P(Y=a\mid x),\\
+\bigl(\rho(1\mid x),\rho(2\mid x),\rho(3\mid x)\bigr)
+  &=(0.8,0.5,0.7),\\
+\arg\min_{a\in\mathcal A}\rho(a\mid x)&=\{2\},&
+\min_{a\in\mathcal A}\rho(a\mid x)&=0.5.
+\end{aligned}
+\]
+故Bayes预测为第$2$类，最小条件风险为$0.5$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S01-03}
+若漏诊正类的代价为5，误报正类的代价为1，正确分类代价为0，推导预测正类的概率阈值。
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S01-03}
+\begin{chapterexercisesolution}{ex:V1-C11-S01-03}
+记$p=P(Y=1\mid x)\in[0,1]$，动作$1$表示预测正类。两动作的条件风险为
+\[
+\begin{aligned}
+\rho(1\mid x)&=1\cdot P(Y=0\mid x)=1-p,\\
+\rho(0\mid x)&=5\cdot P(Y=1\mid x)=5p,\\
+\rho(1\mid x)\le\rho(0\mid x)
+  &\Longleftrightarrow 1-p\le5p\\
+  &\Longleftrightarrow p\ge\frac16.
+\end{aligned}
+\]
+若规定风险并列时预测正类，则阈值规则为$p\ge1/6$；若并列时预测负类，不等号应改为严格大于。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S02-01}
+标记集有4种标记，长度为6。若不利用任何结构，候选标记序列有多少个？逐位置独立选择为何可能不合法？
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S02-01}
+\begin{chapterexercisesolution}{ex:V1-C11-S02-01}
+设标记集$\mathcal Y$满足$|\mathcal Y|=4$，序列长度$n=6$。未经约束的输出域为
+\[
+\begin{aligned}
+\mathcal Y^6
+  &=\{(y_1,\ldots,y_6):y_t\in\mathcal Y\},\\
+|\mathcal Y^6|&=|\mathcal Y|^6=4^6=4096.
+\end{aligned}
+\]
+若任务有合法转移集合$\mathcal E\subseteq\mathcal Y\times\mathcal Y$，真正可行域是
+\[
+\begin{aligned}
+\mathcal Y_{\rm legal}^{6}
+  :=\{y_{1:6}\in\mathcal Y^6:
+      (y_{t-1},y_t)\in\mathcal E,\ 2\le t\le6\}
+  \subseteq\mathcal Y^6.
+\end{aligned}
+\]
+逐位置独立最大化未检查$\mathcal E$，因而可能输出不合法序列。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S02-02}
+两个长度均为5的序列中，模型分别标对5个和4个位置。计算逐位置准确率与整序列准确率。
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S02-02}
+\begin{chapterexercisesolution}{ex:V1-C11-S02-02}
+两条序列的长度均为$5$，位置正确数分别为$5$与$4$。故
+\[
+\begin{aligned}
+\mathrm{Acc}_{\rm token}
+  &=\frac{5+4}{5+5}=\frac9{10}=0.9,\\
+\mathbf1\{\widehat y^{(1)}_{1:5}=y^{(1)}_{1:5}\}&=1,\\
+\mathbf1\{\widehat y^{(2)}_{1:5}=y^{(2)}_{1:5}\}&=0,\\
+\mathrm{Acc}_{\rm seq}
+  &=\frac{1+0}{2}=\frac12=0.5.
+\end{aligned}
+\]
+逐位置准确率衡量十个局部判断；整序列准确率要求一条序列的全部位置同时正确。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S02-03}
+长度2、标记集$\{A,B\}$的四个序列未归一化分数分别为$AA:3,AB:5,BA:4,BB:2$。给出最大分数解码及其归一化概率。
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S02-03}
+\begin{chapterexercisesolution}{ex:V1-C11-S02-03}
+候选域为$\mathcal Y^2=\{AA,AB,BA,BB\}$。把题给非负分数解释为未归一化权重，则
+\[
+\begin{aligned}
+\widehat y
+  &\in\arg\max_{y\in\mathcal Y^2}s(y)=\{AB\},\\
+Z&=\sum_{y\in\mathcal Y^2}s(y)=3+5+4+2=14>0,\\
+P(AB\mid X)&=\frac{s(AB)}{Z}=\frac5{14},\\
+\sum_{y\in\mathcal Y^2}P(y\mid X)&=1.
+\end{aligned}
+\]
+若题给的是对数分数$\ell(y)$，归一化应改为
+$P(y\mid X)=e^{\ell(y)}/\sum_{y'}e^{\ell(y')}$，不能直接除以分数和。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S03-01}
+证明常数预测$a$在平方损失下的总体风险由$a=\mathbb E[Y]$最小化。
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S03-01}
+\begin{chapterexercisesolution}{ex:V1-C11-S03-01}
+设$Y$为实值随机变量且$\mathbb E[Y^2]<\infty$，于是
+$\mu=\mathbb E[Y]$与$\operatorname{Var}(Y)$均有限。对任意$a\in\mathbb R$，
+\[
+\begin{aligned}
+R(a)
+  &=\mathbb E[(Y-a)^2]\\
+  &=\mathbb E[(Y-\mu+\mu-a)^2]\\
+  &=\mathbb E[(Y-\mu)^2]
+    +2(\mu-a)\mathbb E[Y-\mu]+(\mu-a)^2\\
+  &=\operatorname{Var}(Y)+(\mu-a)^2.
+\end{aligned}
+\]
+因此$R(a)\ge\operatorname{Var}(Y)$，且等号当且仅当$a=\mu$；故唯一最小点是$a=\mathbb E[Y]$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S03-02}
+真实值为$(1,2,6)$，预测为$(2,2,3)$。计算均方误差与平均绝对误差。
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S03-02}
+\begin{chapterexercisesolution}{ex:V1-C11-S03-02}
+固定残差约定为$e_i=\widehat y_i-y_i$。由
+$y=(1,2,6)$、$\widehat y=(2,2,3)$，
+\[
+\begin{aligned}
+e&=\widehat y-y=(1,0,-3),\\
+\mathrm{MSE}
+  &=\frac13\sum_{i=1}^{3}e_i^2
+    =\frac{1+0+9}{3}=\frac{10}{3},\\
+\mathrm{MAE}
+  &=\frac13\sum_{i=1}^{3}|e_i|
+    =\frac{1+0+3}{3}=\frac43.
+\end{aligned}
+\]
+第三个残差的绝对值为$3$，平方后贡献$9$，故均方误差对大残差更敏感。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S03-03}
+输入$x\in\mathbb R^{20}$、输出$y\in\mathbb R$。说明这是“一元回归”还是“多元回归”，并区分“多输出回归”。
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S03-03}
+\begin{chapterexercisesolution}{ex:V1-C11-S03-03}
+题设预测映射的定义域与目标域为
+\[
+\begin{aligned}
+f:\mathbb R^{20}&\longrightarrow\mathbb R,\\
+x=(x^{(1)},\ldots,x^{(20)})^{\mathsf T}
+  &\longmapsto \widehat y.
+\end{aligned}
+\]
+所以按输入维数它是多元回归，按输出维数它是单输出回归。多输出回归则具有
+\[
+\begin{aligned}
+g:\mathbb R^{20}&\longrightarrow\mathbb R^q,
+&q&>1.
+\end{aligned}
+\]
+使用“一元/多元”术语时应明确是在计输入变量还是输出分量。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S04-01}
+“预测每位患者未来30天是否再入院”应建模为哪类任务？写出一个样本的输入、输出和避免泄漏的划分方式。
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S04-01}
+\begin{chapterexercisesolution}{ex:V1-C11-S04-01}
+以一次出院事件$(u,t)$为一个样本，其中$u$为患者、$t$为出院时点。任务是二分类：
+\[
+\begin{aligned}
+x_{u,t}&=\phi(\text{截至时点 }t\text{ 可获得的病历})\in\mathcal X,\\
+y_{u,t}&=\mathbf1\{\text{患者 }u\text{ 在 }(t,t+30\text{日}]\text{ 再入院}\}
+  \in\{0,1\},\\
+f:\mathcal X&\to\{0,1\}.
+\end{aligned}
+\]
+为同时阻断患者重复与未来信息泄漏，应采用患者分组并按时间向前的划分，例如
+\[
+\begin{aligned}
+\{u:(u,t)\in D_{\rm tr}\}\cap
+\{u:(u,t)\in D_{\rm te}\}&=\varnothing,\\
+\max t_{\rm tr}&<\min t_{\rm te}.
+\end{aligned}
+\]
+任何在$t$之后产生的诊疗记录都不得进入$x_{u,t}$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S04-02}
+垃圾邮件仅占1\%，一个总预测“非垃圾”的模型准确率是多少？为什么该指标不足，应补充什么？
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S04-02}
+\begin{chapterexercisesolution}{ex:V1-C11-S04-02}
+以垃圾邮件为正类，设测试集$N>0$且正类恰占$1\%$。总预测负类时
+\[
+\begin{aligned}
+\mathrm{TP}&=0,&\mathrm{FP}&=0,\\
+\mathrm{FN}&=0.01N,&\mathrm{TN}&=0.99N,\\
+\mathrm{Acc}
+  &=\frac{\mathrm{TN}}{N}=0.99,\\
+\mathrm{Recall}
+  &=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FN}}=0,\\
+\mathrm{Precision}
+  &=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FP}}=\frac00
+    \quad\text{（未定义）}.
+\end{aligned}
+\]
+由计数式$F_1=2\mathrm{TP}/(2\mathrm{TP}+\mathrm{FP}+\mathrm{FN})$可按常用约定报告$F_1=0$；若软件从未定义的精确率计算，则结果可能为未定义，必须声明采用的零分母约定。还应报告混淆矩阵、召回率、精确率及与任务代价一致的指标。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C11-S04-03}
+某团队在测试集上比较20个模型并选择最高分者，再把该最高分作为最终泛化成绩。指出偏差来源并给出修正流程。
+\end{exercise}
+\phantomsection\label{sol:V1-C11-S04-03}
+\begin{chapterexercisesolution}{ex:V1-C11-S04-03}
+把二十个测试成绩取最大值等价于让测试集参与选择：
+\[
+\begin{aligned}
+m^\star_{\rm leak}
+  &\in\arg\max_{1\le m\le20}
+    \widehat{\mathrm{Score}}_{\rm te}(\widehat f_m),\\
+D&=D_{\rm tr}\,\dot\cup\,D_{\rm val}\,\dot\cup\,D_{\rm te},\\
+\widehat f_m&=\mathcal A_m(D_{\rm tr}),\\
+m^\star&\in\arg\max_{1\le m\le20}
+  \widehat{\mathrm{Score}}_{\rm val}(\widehat f_m),\\
+\text{最终成绩}
+  &=\widehat{\mathrm{Score}}_{\rm te}(\widehat f_{m^\star}).
+\end{aligned}
+\]
+选择规则和阈值冻结后，$D_{\rm te}$只使用一次；若原测试集已反复查看，应另取独立测试数据，或采用内层选择、外层评估的嵌套交叉验证。
+\end{chapterexercisesolution}
+
+\end{SLChapterExercisePairSection}
+
+\phantomsection\label{struct:V1-C11-CH36}
+% KNOWLEDGE-PLAN: KN-V1-C11-CONCEPT-012 L1
+\paragraph{读前自检：本章结论与下一步。}监督学习任务与应用章末由“分类标签、结构化序列与连续响应”落到“冻结样本、预测时点、特征、损失、指标与划分后训练评估”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\SLChapterFiveSummary{分类标签、结构化序列与连续响应}{条件风险导出分类决策，动态规划组合局部结构，损失决定回归目标}{冻结样本、预测时点、特征、损失、指标与划分后训练评估}{把业务问题映射为可验证的监督学习任务}{进入第2册具体方法，并用本章任务规范检查适配性}
+
+\phantomsection\label{struct:V1-C11-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否由输出空间和数据单位区分分类、标注与回归？
+  \item 能否从条件风险三步推导Bayes分类规则，并按代价改变阈值？
+  \item 能否计算并解释准确率、精确率、召回率、$F_1$、均方误差和整序列准确率？
+  \item 能否为一个真实应用冻结预测时点、样本、特征边界、划分、指标和退出规则？未通过时依次回看\cref{sec:V1-C11-S01,sec:V1-C11-S02,sec:V1-C11-S03,sec:V1-C11-S04}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

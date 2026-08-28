@@ -1,0 +1,18 @@
+{
+  "target_relation": "G0001 子 versus D0003 lower plane boundary",
+  "render": "render_r4_300dpi.png",
+  "dpi": 300,
+  "sample_x_half_open": [753, 795],
+  "sample_y_half_open": [840, 1010],
+  "dark_threshold_gray_lt": 210,
+  "detected_dark_row_runs": [
+    {"role": "upper_plane_boundary", "first_row": 840, "last_row": 853},
+    {"role": "lower_plane_boundary", "first_row": 902, "last_row": 915},
+    {"role": "G0001_glyph_ink", "first_row": 937, "last_row": 972}
+  ],
+  "lower_boundary_to_glyph_empty_rows": 21,
+  "upper_boundary_to_glyph_empty_rows": 83,
+  "pdf_bbox_clearance_px_conservative": 9.0,
+  "shared_ink_pixels": 0,
+  "hard_gate": "PASS"
+}

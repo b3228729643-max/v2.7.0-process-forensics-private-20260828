@@ -1,0 +1,56 @@
+{
+  "figure_id": "FIG-P547-01",
+  "handoff_id": "A-R130-P547-SA3-RESUME-20260824",
+  "reviewer": "SA3_gpt-5.6-sol_xhigh",
+  "result": "SA3_INDEPENDENT_PASS_RESEALED_NOT_FINAL",
+  "operation": "MECHANICAL_ADS_RESEAL_ONLY_NO_SEMANTIC_REAUDIT",
+  "source_package": "STRICT_R12_SA3_BLIND_R98_20260824",
+  "target_package": "STRICT_R12A_SA3_BLIND_R98_ADSFIX_20260824",
+  "ads": {
+    "copied_streams": [
+      {
+        "relative_path": "_tmp/texmf-cache/luatexja/extra_notoserifsc-extralight",
+        "stream": "1.lua.gz",
+        "bytes": 72949,
+        "removed_from_target_only": true
+      },
+      {
+        "relative_path": "_tmp/texmf-cache/luatexja/extra_notoserifsc-extralight",
+        "stream": "1.luc",
+        "bytes": 422176,
+        "removed_from_target_only": true
+      }
+    ],
+    "preterminal_recursive_file_scan_count": 1861,
+    "non_default_stream_count": 0,
+    "non_default_stream_bytes": 0
+  },
+  "ordinary_copy_reconciliation": {
+    "source_file_count": 1862,
+    "source_bytes": 137637490,
+    "source_tree_sha256": "42bc2f4cf1833800335ad58d07f637b50038707cfc92570276cdd48374ccd256",
+    "reconstructed_pre_reseal_file_count": 1862,
+    "reconstructed_pre_reseal_bytes": 137637490,
+    "reconstructed_pre_reseal_tree_sha256": "42bc2f4cf1833800335ad58d07f637b50038707cfc92570276cdd48374ccd256",
+    "shared_content_mismatch_count": 0,
+    "preserved_evidence_file_count": 1856,
+    "preserved_evidence_bytes": 137288966,
+    "preserved_evidence_tree_sha256": "4be1180bfed14b94b761c39c13615a3ac21986f8f7b4ea3ed48aa078c30cb224",
+    "preserved_evidence_mismatch_count": 0
+  },
+  "semantic_denominators_reused_without_reaudit": {
+    "text_parents": 23,
+    "vector_parents": 34,
+    "objects": 57,
+    "object_pairs": 1596,
+    "glyphs": 193,
+    "path_records": 71,
+    "path_pairs": 2485,
+    "commands": 143,
+    "within_record_command_pairs": 186
+  },
+  "assertions": "ALL_MECHANICAL_CHECKS_PASS",
+  "unresolved": [],
+  "terminal_order": 1,
+  "next": "reports_then_manifest_then_WRITE_STOPPED"
+}

@@ -1,0 +1,935 @@
+% STAGE08-CHAPTER: V1-C02
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{schema:V1-C02:CH-01}; CH-02=\label{schema:V1-C02:CH-02}; CH-03=\label{schema:V1-C02:CH-03}; CH-04=\label{schema:V1-C02:CH-04}; CH-05=\label{schema:V1-C02:CH-05}; CH-06=\label{schema:V1-C02:CH-06}; CH-07=\label{schema:V1-C02:CH-07}; CH-08=\label{schema:V1-C02:CH-08}; CH-09=\label{schema:V1-C02:CH-09}; CH-10=\label{schema:V1-C02:CH-10}; CH-11=\label{schema:V1-C02:CH-11}; CH-12=\label{schema:V1-C02:CH-12}; CH-13=\label{schema:V1-C02:CH-13}; CH-14=\label{schema:V1-C02:CH-14}; CH-15=\label{schema:V1-C02:CH-15}; CH-16=\label{schema:V1-C02:CH-16}; CH-17=\label{schema:V1-C02:CH-17}; CH-18=\label{schema:V1-C02:CH-18}; CH-19=\label{schema:V1-C02:CH-19}; CH-20=\label{schema:V1-C02:CH-20}; CH-21=\label{schema:V1-C02:CH-21}; CH-22=\label{schema:V1-C02:CH-22}; CH-23=\label{schema:V1-C02:CH-23}; CH-24=\label{schema:V1-C02:CH-24}; CH-25=\label{schema:V1-C02:CH-25}; CH-26=\label{schema:V1-C02:CH-26}; CH-27=\label{schema:V1-C02:CH-27}; CH-28=\label{schema:V1-C02:CH-28}; CH-29=\label{schema:V1-C02:CH-29}; CH-30=\label{schema:V1-C02:CH-30}; CH-31=\label{schema:V1-C02:CH-31}; CH-32=\label{schema:V1-C02:CH-32}; CH-33=\label{schema:V1-C02:CH-33}; CH-34=\label{schema:V1-C02:CH-34}; CH-35=\label{schema:V1-C02:CH-35}; CH-36=\label{schema:V1-C02:CH-36}; CH-37=\label{schema:V1-C02:CH-37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V1-C02-projection -> PRE-LA-014
+\chapter{线性代数基础}\label{chap:V1-C02}
+\SLChapterOpening{从分量运算直达子空间、投影与谱结构}{矩阵运算如何对应线性映射及其保留和丢失的方向}{能够核对维数、求投影并解释正定性与奇异值}{\cref{sec:V1-C01-S03}中的向量矩阵记号}{矩阵乘法或二次型诊断未通过时返回相应复习节}
+\index{线性代数基础}
+
+
+\chaptergoals{\label{schema:V1-C02:CH-01}
+\begin{itemize}[leftmargin=2em]
+  \item 能用分量形式核对向量、矩阵、内积、投影和矩阵乘法；
+  \item 能联系秩、零空间、行空间、列空间及其正交补，并完成投影定理的证明；
+  \item 能判断对称矩阵的正定性，解释谱分解与奇异值，并手工执行幂法。
+\end{itemize}}
+
+\begin{prerequisitebox}\label{schema:V1-C02:CH-02}
+需要掌握集合、映射、列向量约定、求和记号和实数方程，相关内容见\cref{chap:V1-C01}。本章所有向量都取实数分量；复数矩阵所需的共轭转置不在本章范围内。
+\end{prerequisitebox}
+\begin{precheckbox}\label{schema:V1-C02:CH-03}\normalfont\unboldmath\mathversion{normal}
+先判断三类乘积的类型：一个矩阵乘维数相容的列向量；一个列向量的转置乘自身；一个列向量乘其转置。若不能分别回答“与矩阵行数相同的列向量、标量、阶数与列向量维数相同的方阵”，应回看\cref{sec:V1-C01-S03}。
+\end{precheckbox}
+\begin{dependencybox}\label{schema:V1-C02:CH-04}
+\[
+\text{分量运算}\to\text{内积与范数}\to\text{线性组合与基}\to
+\text{秩和基本子空间}\to\text{正交投影}\to\text{谱与奇异值}.
+\]
+每一箭头表示后者在定义或证明中使用前者；幂法还使用向量归一化和特征向量定义。
+\end{dependencybox}
+% STAGE19-SYMBOL-INDEX-BEGIN: V1-C02
+\index[symbols]{minus-boldsymbol-minus-x-minus-boldsymbol-minus-y-minus-in-minus-minus-r--sf814b65a39d2@$\boldsymbol{x},\boldsymbol{y}\in\R^n$：$n$个有序分量}
+\index[symbols]{a-minus-in-minus-minus-r-minus-m-minus-timesn-minus--se63af8cc2285@$A\in\R^{m\times n}$：从$\R^n$到$\R^m$的线性映射表示}
+\index[symbols]{minus-inner-minus-minus-boldsymbol-minus-x-minus-boldsymbol-minus-y--sd06f956c4167@$\inner{\boldsymbol{x},\boldsymbol{y}}$：$\boldsymbol{x}^{\mathsf T}\boldsymbol{y}$}
+\index[symbols]{minus-norm-minus-minus-boldsymbol-minus-x-2--sce58b814e3ec@$\norm{\boldsymbol{x}}_2$：欧氏范数}
+\index[symbols]{minus-rank-minus-a--s7809949727b9@$\rank(A)$：行空间与列空间的共同维数}
+\index[symbols]{n-a--s62e825243e02@$N(A)$：$A\boldsymbol{x}=\boldsymbol0$的全部解}
+\index[symbols]{r-a--sf77c8330dd02@$R(A)$：$A$的列空间，也就是$A$的值域}
+\index[symbols]{minus-lambda-minus-minus-boldsymbol-minus-q--s614596b62733@$\lambda,\boldsymbol{q}$：特征值与对应特征向量}
+% STAGE19-SYMBOL-INDEX-END: V1-C02
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-006 L1
+\paragraph{读前自检：本章符号表。}线性代数符号表规定$A\in\R^{m\times n}$把$\R^n$映到$\R^m$，且$N(A)\subseteq\R^n$、$R(A)\subseteq\R^m$；请逐项核对$A\boldsymbol{x}$、$\rank(A)$的类型与维数是否闭合。\par
+
+\begin{symboltablebox}\label{schema:V1-C02:CH-05}
+\begin{tabularx}{\linewidth}{@{}>{$}l<{$} X X@{}}
+\toprule
+\text{符号} & 类型 & 含义\\
+\midrule
+\boldsymbol{x},\boldsymbol{y}\in\R^n & 列向量 & $n$个有序分量\\
+A\in\R^{m\times n} & 矩阵 & 从$\R^n$到$\R^m$的线性映射表示\\
+\inner{\boldsymbol{x},\boldsymbol{y}} & 标量 & $\boldsymbol{x}^{\mathsf T}\boldsymbol{y}$\\
+\norm{\boldsymbol{x}}_2 & 非负标量 & 欧氏范数\\
+\rank(A) & 整数 & 行空间与列空间的共同维数\\
+N(A) & $\R^n$的子空间 & $A\boldsymbol{x}=\boldsymbol0$的全部解\\
+R(A) & $\R^m$的子空间 & $A$的列空间，也就是$A$的值域\\
+\lambda,\boldsymbol{q} & 标量、非零向量 & 特征值与对应特征向量\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\subsection*{问题提出}\label{schema:V1-C02:CH-06}
+数据表、线性预测、最小二乘、协方差和降维都依赖矩阵。核心问题不是记住运算表，而是判断：线性映射保留了哪些方向，丢失了哪些方向；一个向量如何分解为子空间内分量和正交残差；迭代为何会突出主特征方向。
+
+\begin{definition}[线性映射]\label{def:V1-C02-linear-map}\label{schema:V1-C02:CH-07}
+设$T:\R^n\to\R^m$。若对任意$\boldsymbol{x},\boldsymbol{y}\in\R^n$和$a,b\in\R$都有
+$T(a\boldsymbol{x}+b\boldsymbol{y})=aT(\boldsymbol{x})+bT(\boldsymbol{y})$，则称$T$为线性映射。给定标准基后，存在唯一$A\in\R^{m\times n}$使$T(\boldsymbol{x})=A\boldsymbol{x}$。
+\end{definition}
+
+\subsection*{模型、策略与算法}
+\phantomsection\label{schema:V1-C02:CH-08}
+本章把矩阵$A$视为线性模型：输入$\boldsymbol{x}\in\R^n$，输出$A\boldsymbol{x}\in\R^m$；列空间描述可达到的输出，零空间描述映射为零的输入。
+
+\phantomsection\label{schema:V1-C02:CH-09}
+学习策略是先按分量核对运算，再用子空间解释结构，最后用正交性或谱性质寻找最简表示。对近似问题，选择使欧氏残差最小的投影；对实对称矩阵，Rayleigh商最大化给出最大代数特征值的方向。只有协方差等半正定矩阵中，这一方向才同时是最大方差方向。
+
+\phantomsection\label{schema:V1-C02:CH-10}
+本章学习算法采用归一化幂法：反复施加矩阵并归一化，使初始向量中占优的特征方向相对放大。算法的完整输入、更新与终止规则见算法\ref{alg:V1-C02-power}。
+
+\subsection*{核心推导：一维正交投影系数}
+% CORE-DERIVATION-PLAN: KN-V1-C02-DERIVATION-001
+\SLKnowledgeBridge{把“到直线最近”化为一个标量二次函数的极小化。}{$\boldsymbol{x},\boldsymbol{u}\in\R^n$ 与候选投影点 $a\boldsymbol{u}$。}{$\boldsymbol{u}\neq\boldsymbol0$，故 $\boldsymbol{u}^{\mathsf T}\boldsymbol{u}>0$；$a\in\R$。}{先展开 $g(a)=\norm{\boldsymbol{x}-a\boldsymbol{u}}_2^2$，再对标量 $a$ 求导。}
+
+\begin{derivationgoalbox}\label{schema:V1-C02:CH-11}
+给定非零$\boldsymbol{u}\in\R^n$和$\boldsymbol{x}\in\R^n$，求$\boldsymbol{x}$在$\operatorname{span}(\boldsymbol{u})$上的最近点$a\boldsymbol{u}$，并得到系数$a$。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+目标函数为$g(a)=\norm{\boldsymbol{x}-a\boldsymbol{u}}_2^2$，定义域为$a\in\R$。因为$\boldsymbol{u}\ne\boldsymbol0$，有$\boldsymbol{u}^{\mathsf T}\boldsymbol{u}>0$。
+\end{derivationprepbox}
+% DERIVATION-CHECK: step-1; step-2; step-3
+\textbf{推导第1步：展开平方。} 使用内积的双线性与对称性，
+\[
+g(a)=\boldsymbol{x}^{\mathsf T}\boldsymbol{x}-2a\boldsymbol{u}^{\mathsf T}\boldsymbol{x}
++a^2\boldsymbol{u}^{\mathsf T}\boldsymbol{u}.
+\]
+每一项都是标量，维数相容。
+
+\textbf{推导第2步：求驻点。} 对标量$a$求导，
+\[
+g'(a)=-2\boldsymbol{u}^{\mathsf T}\boldsymbol{x}
++2a\boldsymbol{u}^{\mathsf T}\boldsymbol{u}.
+\]
+令$g'(a)=0$的依据是最小点位于无约束实数域内部且$g$可微。
+
+\textbf{推导第3步：验证最小性。} 解得
+\[
+a^{\star}=\frac{\boldsymbol{u}^{\mathsf T}\boldsymbol{x}}
+{\boldsymbol{u}^{\mathsf T}\boldsymbol{u}},\qquad
+g''(a)=2\boldsymbol{u}^{\mathsf T}\boldsymbol{u}>0.
+\]
+二阶导数为正，所以$a^{\star}\boldsymbol{u}$是唯一最近点；残差与$\boldsymbol{u}$的内积为零。
+
+\begin{theorem}[子空间正交投影的最佳逼近]\label{thm:V1-C02-best-projection}\label{schema:V1-C02:CH-12}
+设$S$是$\R^n$的子空间，$\boldsymbol{x}=\boldsymbol{p}+\boldsymbol{r}$，其中$\boldsymbol{p}\in S$且$\boldsymbol{r}\in S^{\perp}$。则对任意$\boldsymbol{s}\in S$，
+$\norm{\boldsymbol{x}-\boldsymbol{p}}_2\le\norm{\boldsymbol{x}-\boldsymbol{s}}_2$，等号成立当且仅当$\boldsymbol{s}=\boldsymbol{p}$。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V1-C02-PROOF-001 L1
+\paragraph{读前自检：证明：子空间正交投影的最佳逼近。}子空间最佳逼近证明给出$\boldsymbol{x}=\boldsymbol p+\boldsymbol r$，其中$\boldsymbol p,\boldsymbol s\in S$且$\boldsymbol r\in S^\perp$；请展开$\lVert\boldsymbol{x}-\boldsymbol s\rVert_2^2$，消去交叉项并核对等号仅在$\boldsymbol s=\boldsymbol p$时成立。\par
+
+\begin{proof}\label{schema:V1-C02:CH-13}
+证明目标是比较任意候选$\boldsymbol{s}$与$\boldsymbol{p}$的误差。由分解条件，
+$\boldsymbol{x}-\boldsymbol{s}=\boldsymbol{r}+(\boldsymbol{p}-\boldsymbol{s})$。因为$\boldsymbol{p}-\boldsymbol{s}\in S$且$\boldsymbol{r}\in S^{\perp}$，两项内积为零。展开平方范数得到
+\[
+\norm{\boldsymbol{x}-\boldsymbol{s}}_2^2
+=\norm{\boldsymbol{r}}_2^2+\norm{\boldsymbol{p}-\boldsymbol{s}}_2^2
+\ge \norm{\boldsymbol{r}}_2^2
+=\norm{\boldsymbol{x}-\boldsymbol{p}}_2^2.
+\]
+平方根在非负实数上保持次序。等号成立恰要求$\norm{\boldsymbol{p}-\boldsymbol{s}}_2^2=0$，也就是$\boldsymbol{s}=\boldsymbol{p}$，结论成立。
+\end{proof}
+
+\begin{geometrybox}\label{schema:V1-C02:CH-14}
+\textbf{几何解释。} 投影把向量分成子空间内分量与垂直残差；特征向量是在线性变换下方向不变的轴，特征值给出该轴上的伸缩。秩是输出空间中独立方向的个数。
+\end{geometrybox}
+\begin{probabilitybox}\label{schema:V1-C02:CH-15}
+随机向量中心化后的二阶矩形成协方差矩阵。任意方向$\boldsymbol{q}$上的方差写成二次型$\boldsymbol{q}^{\mathsf T}\Sigma\boldsymbol{q}$，所以最大方差方向与对称矩阵的主特征向量相连。
+\end{probabilitybox}
+\begin{optimizationbox}\label{schema:V1-C02:CH-16}
+\textbf{优化解释。} 最小二乘是在列空间中寻找离观测向量最近的点；正规方程表达残差与列空间正交。对实对称矩阵，Rayleigh商最大化得到最大代数特征值的单位特征向量；它与“最大模特征值”不是同一概念。
+\end{optimizationbox}
+
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C02/fig_v1_c02_projection.tex}
+由\cref{fig:V1-C02-projection}中的正交证书，对任意$\boldsymbol s\in S$都有
+$\|\boldsymbol x-\boldsymbol s\|_2^2=\|(I-P_S)\boldsymbol x\|_2^2+\|P_S\boldsymbol x-\boldsymbol s\|_2^2$；第二项只在$\boldsymbol s=P_S\boldsymbol x$时为零，这就给出最短距离而非仅凭图形判断。
+
+\begin{example}[二维投影与残差]\label{exm:V1-C02-projection}\label{schema:V1-C02:CH-18}\label{schema:V1-C02:CH-32}
+令$\boldsymbol{x}=(3,1)^{\mathsf T}$，$\boldsymbol{u}=(1,1)^{\mathsf T}$。求$\boldsymbol{x}$到$\operatorname{span}(\boldsymbol{u})$的投影与距离。
+\end{example}
+\phantomsection\label{schema:V1-C02:CH-33}
+\SLExampleSolutionHeading{exm:V1-C02-projection}
+\begin{solution}
+\SLReadTranslation{把$\boldsymbol x$正交投影到$\boldsymbol u$张成的直线上，求投影点、残差及点到直线的欧氏距离。}
+\SolGiven $\boldsymbol x,\boldsymbol u\in\R^2$且$\boldsymbol u\ne\boldsymbol0$，故$\boldsymbol u^{\mathsf T}\boldsymbol u>0$，投影系数有定义。
+\SLMethodTrigger{用一维子空间的正交投影公式求系数和投影，再由残差范数求距离；以正交性和勾股恒等式核验。}
+\SolPlan 计算$a=(\boldsymbol u^{\mathsf T}\boldsymbol x)/(\boldsymbol u^{\mathsf T}\boldsymbol u)$，令$\boldsymbol p=a\boldsymbol u$、$\boldsymbol r=\boldsymbol x-\boldsymbol p$，最后求$\|\boldsymbol r\|_2$。
+\SolDerive
+对象与条件为$\boldsymbol{x},\boldsymbol{u}\in\R^2$且$\boldsymbol{u}\ne\boldsymbol0$，因此投影系数的分母严格为正。逐步计算
+\[
+\begin{aligned}
+\boldsymbol{u}^{\mathsf T}\boldsymbol{x}&=1\cdot3+1\cdot1=4,
+&\boldsymbol{u}^{\mathsf T}\boldsymbol{u}&=1^2+1^2=2,\\
+a^\star&=\frac{\boldsymbol{u}^{\mathsf T}\boldsymbol{x}}
+{\boldsymbol{u}^{\mathsf T}\boldsymbol{u}}=2,
+&\boldsymbol{p}&=a^\star\boldsymbol{u}=(2,2)^{\mathsf T},\\
+\boldsymbol{r}&=\boldsymbol{x}-\boldsymbol{p}=(1,-1)^{\mathsf T},
+&\boldsymbol{u}^{\mathsf T}\boldsymbol{r}&=1-1=0,\\
+\operatorname{dist}(\boldsymbol{x},\operatorname{span}(\boldsymbol{u}))
+&=\norm{\boldsymbol r}_2=\sqrt{1^2+(-1)^2}=\sqrt2.
+\end{aligned}
+\]
+\SolCheck $\boldsymbol u^{\mathsf T}\boldsymbol r=0$说明残差与子空间正交；另有$\norm{\boldsymbol x}_2^2=10=8+2=\norm{\boldsymbol p}_2^2+\norm{\boldsymbol r}_2^2$，两项证书一致。
+
+\SolAnswer 投影系数$a=2$，投影$\boldsymbol p=(2,2)^{\mathsf T}$，残差$\boldsymbol r=(1,-1)^{\mathsf T}$，距离为$\sqrt2$。
+\end{solution}
+
+\subsection*{主特征方向的严格伪代码}
+\phantomsection\label{schema:V1-C02:CH-19}
+\phantomsection\label{schema:V1-C02:CH-20}
+输入为方阵$A\in\R^{n\times n}$与非零初始向量，输出为最大模特征值及其单位特征向量的近似与残差；若最大模特征值为负，它不等于Rayleigh商最大值。方向收敛还要求最大模特征值唯一且初始向量在该特征方向上的分量非零。
+\phantomsection\label{schema:V1-C02:CH-21}
+参数$T$是最大迭代次数，$\varepsilon>0$是残差容差；符号$q_t$表示第$t$次单位向量。
+\phantomsection\label{schema:V1-C02:CH-22}
+初始化使用$q_0=v_0/\norm{v_0}_2$，要求$v_0\ne0$。
+\phantomsection\label{schema:V1-C02:CH-23}
+更新依次计算$z_t=Aq_{t-1}$、$q_t=z_t/\norm{z_t}_2$和$\lambda_t=q_t^{\mathsf T}Aq_t$。
+\phantomsection\label{schema:V1-C02:CH-24}
+停止条件为特征残差$\norm{Aq_t-\lambda_tq_t}_2\le\varepsilon$或$t=T$。
+\phantomsection\label{schema:V1-C02:CH-25}
+本章只在实对称矩阵上给出无条件数遗漏的速率结论。设
+$A=A^{\mathsf T}$有标准正交特征向量$q_1,\ldots,q_n$，特征值按
+$|\lambda_1|>|\lambda_2|\ge\cdots\ge|\lambda_n|$排列，并写
+$q_0=\sum_i c_iq_i$且$c_1\ne0$。若迭代未遇到$Aq_{t-1}=0$，则归一化不改变方向，并且
+\[
+\tan\angle\!\bigl(q_t,\operatorname{span}(q_1)\bigr)
+=\frac{\bigl(\sum_{i=2}^n c_i^2|\lambda_i/\lambda_1|^{2t}\bigr)^{1/2}}{|c_1|}
+\le \frac{\bigl(\sum_{i=2}^n c_i^2\bigr)^{1/2}}{|c_1|}
+\left|\frac{\lambda_2}{\lambda_1}\right|^t.
+\]
+一般可对角化但非正规矩阵还会出现特征向量基的条件数，复特征值与Jordan块也需另行处理，不能直接套用上述常数为一的方向界。
+
+% KNOWLEDGE-PLAN: KN-V1-C02-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：归一化幂法：执行契约。}归一化幂法以方阵$A$、非零$v_0$、$\varepsilon>0$和$T\in\mathbb N_0$为输入；请从合法$\widehat q$计算$z=A\widehat q$、$q^+=z/\lVert z\rVert_2$、$\lambda^+$与$r^+$，只在候选均有限时提交，并核对$r^+\le\varepsilon$触发$\mathtt{converged}$，否则到$T$轮触发$\mathtt{budget\_stop}$。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={归一化幂法：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={方阵$A$、非零初始向量$v_0$、残差容差$\varepsilon$与非负轮预算$T$},
+  output={最后合法特征对近似$(\widehat\lambda,\widehat q)$、残差$\widehat r$、实际提交轮数$t_{\rm done}$、矩阵向量乘法数$m_{\rm done}$、状态与最终诊断},
+  preconditions={$A\in\mathbb R^{n\times n}$且元素有限，$v_0$有限非零，$\varepsilon>0$，$T\in\mathbb N_0$},
+  initialization={归一化$v_0$得到$\widehat q$，计算初始Rayleigh商和残差，置$t_{\rm done}=0$并记录实际乘法数},
+  loop={在$t_{\rm done}<T$且初始或当前残差未达标时，形成下一单位方向、Rayleigh商和残差候选},
+  update={候选范数、商与残差全部有限后才原子提交$(\widehat\lambda,\widehat q,\widehat r)$并增加$t_{\rm done}$},
+  domain={每次归一化分母严格为正；单位向量、Rayleigh商与特征残差均为有限实数},
+  failure={输入非法返回$\mathtt{invalid\_input}$；零归一化分母或非有限乘法/残差返回$\mathtt{numerical\_failure}$并保留上一合法特征对},
+  stop={残差不超过$\varepsilon$、轮预算耗尽或首次失败时停止},
+  budget={至多原子提交$T$轮；初始化和每轮各按实际发生的矩阵向量乘法计数},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$t_{\rm done}$为实际提交轮数，$m_{\rm done}$为实际矩阵向量乘法数，失败轮不计入前者},
+  diagnostics={最终残差、向量范数、Rayleigh商、预算余量以及首个失败轮与计算阶段},
+  complexity={稠密情形$O(m_{\rm done}n^2)$时间，稀疏情形$O(m_{\rm done}\operatorname{nnz}(A))$时间，额外空间$O(n)$}
+}
+\begin{algorithm}[H]
+\caption{归一化幂法}\label{alg:V1-C02-power}
+\KwIn{$A\in\R^{n\times n}$，$v_0\ne0$，$\varepsilon>0$，$T\in\mathbb N_0$}
+\KwOut{最后合法$(\widehat\lambda,\widehat q,\widehat r)$；$t_{\rm done},m_{\rm done}$；$\mathtt{status}$与诊断}
+若维数、有限性、$v_0\ne0$、容差或预算非法，返回空结果、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+置$\widehat q\leftarrow v_0/\|v_0\|_2,t_{\rm done}\leftarrow0,m_{\rm done}\leftarrow0$；计算$y\leftarrow A\widehat q$并增加$m_{\rm done}$\;
+若$y$非有限，则返回$\widehat q$、$\mathtt{numerical\_failure}$及初始化乘法诊断；否则置$\widehat\lambda\leftarrow\widehat q^{\mathsf T}y,\widehat r\leftarrow\|y-\widehat\lambda\widehat q\|_2$\;
+若$\widehat\lambda$或$\widehat r$非有限，返回最后合法方向、$\mathtt{numerical\_failure}$及初始残差诊断；若$\widehat r\le\varepsilon$，返回当前结果、$\mathtt{converged}$及零轮残差证书\;
+\While{$t_{\rm done}<T$}{
+  计算$z\leftarrow A\widehat q$并增加$m_{\rm done}$；若$z$非有限或$\|z\|_2=0$，返回上一合法结果、$\mathtt{numerical\_failure}$及失败轮诊断\;
+  形成$q^+\leftarrow z/\|z\|_2$，计算$y^+\leftarrow Aq^+$并增加$m_{\rm done}$，再形成$\lambda^+=(q^+)^{\mathsf T}y^+$与$r^+=\|y^+-\lambda^+q^+\|_2$\;
+  若候选任一量非有限，则返回上一合法结果、$\mathtt{numerical\_failure}$及候选阶段诊断\;
+  原子提交$(\widehat q,\widehat\lambda,\widehat r)\leftarrow(q^+,\lambda^+,r^+)$并增加$t_{\rm done}$\;
+  若$\widehat r\le\varepsilon$，返回最后合法结果、$\mathtt{converged}$及残差证书\;
+}
+返回最后合法结果、$\mathtt{budget\_stop}$及“预算耗尽、残差未达标”最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{首次阅读只跟踪“乘矩阵—归一化—算Rayleigh商—查残差”；实现时再核对零范数、非有限值、预算和最后合法状态}
+
+% KNOWLEDGE-PLAN: KN-V1-C02-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：主特征方向的严格伪代码。}主特征方向的严格伪代码所用的明确前提是“稠密矩阵按全部$n^2$个元素访问，稀疏矩阵允许按非零元顺序完成矩阵向量乘法，并把实际迭代轮数记为$T$”；完成由$n^2$的总成本剥离一次迭代或一次样本因子后，核对幂法输出特征对，不定义对新样本的预测函数。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界采用单位成本实数运算；稠密矩阵按全部$n^2$个元素访问，稀疏矩阵允许按非零元顺序完成矩阵向量乘法，并把实际迭代轮数记为$T$。构造或读取输入矩阵的外部成本不并入幂法本身。
+\phantomsection\label{schema:V1-C02:CH-26}
+\textbf{训练复杂度。}这里的“训练”指求解主特征对。对$n\times n$矩阵，稠密矩阵向量乘法每轮为$O(n^2)$，故$T$轮为$O(Tn^2)$；稀疏情形为$O(T\operatorname{nnz}(A))$。
+\phantomsection\label{schema:V1-C02:CH-27}
+\textbf{预测复杂度。}幂法输出特征对，不定义对新样本的预测函数。\textbf{存储复杂度。}除输入矩阵外只保存若干$n$维向量，额外空间为$O(n)$；计入矩阵后稠密情形为$O(n^2)$，稀疏情形为$O(\operatorname{nnz}(A)+n)$。
+\end{complexitybox}
+\begin{applicabilitybox}\label{schema:V1-C02:CH-28}
+\textbf{适用条件。}幂法适合矩阵向量乘法便宜且只需要模最大的特征方向的任务，对大规模稀疏矩阵尤其有用。\par
+\phantomsection\label{schema:V1-C02:CH-29}
+\textbf{方法局限。}主特征值模相同会导致方向不唯一，谱间隙小时收敛缓慢，初始向量与主方向正交时也无法恢复该方向。
+\end{applicabilitybox}
+% KNOWLEDGE-PLAN: KN-V1-C02-BOUNDARY-003 L1
+\paragraph{读前自检：常见错误与误用边界：主特征方向的严格伪代码。}围绕主特征方向的严格伪代码，先采用条件“边界框首项禁止把$AB$与$BA$互换”，再把固定错误“把$AB$与$BA$互换”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法；最后验证改写后的运算或判断有定义，且不再触发“把$AB$与$BA$互换”。\par
+
+\begin{warningbox}\label{schema:V1-C02:CH-30}
+典型误用有把$AB$与$BA$互换、把$\boldsymbol{x}^{\mathsf T}\boldsymbol{y}$当作向量、认为秩等于非零元素个数、把$A$的零空间放入$\R^m$、忽视特征向量必须非零，以及将半正定误写为所有二次型严格为正。
+\end{warningbox}
+\begin{comparisonbox}\label{schema:V1-C02:CH-31}
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+概念 & 定义核心 & 区别\\
+\midrule
+行空间与列空间 & 分别由行、列张成 & 所在空间通常为$\R^n$与$\R^m$\\
+零空间与左零空间 & $N(A)$、$N(A^{\mathsf T})$ & 维数分别为$n-r$与$m-r$\\
+特征分解与奇异值分解 & 特征分解要求方阵可对角化；实对称方阵总可正交对角化；SVD对任意实矩阵存在 & 奇异值非负且来自$A^{\mathsf T}A$\\
+正定与半正定 & 二次型对非零向量严格正或非负 & 半正定允许零方向\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-007 L1
+\paragraph{读前自检：向量及其分量。}向量及其分量中的“向量$\boldsymbol{x}=(x_1,\ldots,x_n)^{\mathsf T}$属于$\R^n$”决定可执行范围；请标出$\boldsymbol{x}$两侧的形状并完成一次乘法或正交检查，结果须满足乘法内侧维数相等且结果落入声明空间。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-008 L1
+\paragraph{读前自检：矩阵及其分量。}把矩阵及其分量放在“相等矩阵必须维数相同且对应分量相等”下考察：标出$A=(A_{ij})\in\R^{m\times n}$两侧的形状并完成一次乘法或正交检查，并检查乘法内侧维数相等且结果落入声明空间。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-009 L1
+\paragraph{读前自检：矩阵乘法的分量形式。}矩阵乘法的分量形式要求先确认“若$A\in\R^{m\times n}$、$B\in\R^{n\times p}$”；请随后标出$(AB)_{ij}=\sum_{k=1}^{n}A_{ik}B_{kj}$两侧的形状并完成一次乘法或正交检查，用$AB\in\R^{m\times p}$且$(AB)_{ij}=\sum_{k=1}^{n}A_{ik}B_{kj}$验收。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-004 L1
+\paragraph{读前自检：行列式。}对$A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$，请按二阶行列式定义计算$\det(A)=ad-bc$，并核对$\det(A)\ne0$恰好对应$A$可逆。\par
+
+\SLDirectSection{向量、矩阵与分量运算}{sec:V1-C02-S01}
+\knowledgeanchor{PRE-LA-001}{向量及其分量}
+向量$\boldsymbol{x}=(x_1,\ldots,x_n)^{\mathsf T}$属于$\R^n$，加法和标量乘法逐分量进行。
+\knowledgeanchor{PRE-LA-002}{矩阵及其分量}
+矩阵$A=(A_{ij})\in\R^{m\times n}$有$m$个行向量和$n$个列向量；相等矩阵必须维数相同且对应分量相等。
+\knowledgeanchor{PRE-LA-003}{矩阵乘法的分量形式}
+若$A\in\R^{m\times n}$、$B\in\R^{n\times p}$，则$AB\in\R^{m\times p}$且$(AB)_{ij}=\sum_{k=1}^{n}A_{ik}B_{kj}$。
+\knowledgeanchor{PRE-LA-015}{行列式}
+方阵$A$的行列式$\det(A)$是有符号体积缩放因子；$\det(A)\ne0$等价于$A$可逆。二阶情形$\det\begin{bmatrix}a&b\\c&d\end{bmatrix}=ad-bc$。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-005 L1
+\paragraph{读前自检：距离与度量。}距离与度量依赖“由范数诱导的距离$d(\boldsymbol{x},\boldsymbol{y})=\norm{\boldsymbol{x}-\boldsymbol{y}}$满足非负、同一性、对称和三角不等式”；请据此把$d(\boldsymbol{x},\boldsymbol{y})$展开一次并检查其类型或边界，并直接核对展开后的量满足定义中的域、维数或符号限制。\par
+
+\SLReviewSection{内积、范数、距离与夹角}{sec:V1-C02-S02}
+\knowledgeanchor{PRE-LA-004}{向量内积}
+$\inner{\boldsymbol{x},\boldsymbol{y}}=\sum_i x_i y_i$是标量，满足对称性、双线性和正定性
+\[
+\inner{\boldsymbol{x},\boldsymbol{x}}\ge0,
+\qquad
+\inner{\boldsymbol{x},\boldsymbol{x}}=0
+\Longleftrightarrow \boldsymbol{x}=\boldsymbol0.
+\]
+最后一个“当且仅当”把内积与仅半正定的双线性型区分开；也正因为它，$\norm{\boldsymbol{x}}_2=\sqrt{\inner{\boldsymbol{x},\boldsymbol{x}}}$满足$\norm{\boldsymbol{x}}_2=0\Leftrightarrow\boldsymbol{x}=\boldsymbol0$。
+\knowledgeanchor{PRE-LA-005}{向量范数}
+范数满足非负性、齐次性和三角不等式；常用$\norm{x}_1=\sum_i|x_i|$、$\norm{x}_2=(\sum_i x_i^2)^{1/2}$和$\norm{x}_{\infty}=\max_i|x_i|$。
+\knowledgeanchor{PRE-LA-006}{距离与度量}
+由范数诱导的距离$d(\boldsymbol{x},\boldsymbol{y})=\norm{\boldsymbol{x}-\boldsymbol{y}}$满足非负、同一性、对称和三角不等式。
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-012 L1
+\paragraph{读前自检：向量夹角。}线性代数基础中的向量夹角以“非零向量夹角$\theta\in[0,\pi]$由$\cos\theta=\boldsymbol{x}^{\mathsf T}\boldsymbol{y}/(\norm{x}_2\norm{y}_2)$定义”为约束；请标出$\cos\theta$两侧的形状并完成一次乘法或正交检查，并确认乘法内侧维数相等且结果落入声明空间。\par
+
+\knowledgeanchor{PRE-LA-007}{向量夹角}
+非零向量夹角$\theta\in[0,\pi]$由$\cos\theta=\boldsymbol{x}^{\mathsf T}\boldsymbol{y}/(\norm{x}_2\norm{y}_2)$定义。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-006 L1
+\paragraph{读前自检：线性组合与张成。}先锁定线性组合与张成的条件“$a_1\boldsymbol{v}_1+\cdots+a_k\boldsymbol{v}_k$是向量组的线性组合”：把$a_1\boldsymbol{v}_1+\cdots+a_k\boldsymbol{v}_k$展开一次并检查其类型或边界，所得结果应满足展开后的量满足定义中的域、维数或符号限制。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-007 L1
+\paragraph{读前自检：线性相关与线性无关。}对线性相关与线性无关，条件“若$\sum_i a_i\boldsymbol{v}_i=0$只有全零系数解”不可省；请将$\sum_i a_i\boldsymbol{v}_i=0$左端按正文定义展开一层，再逐项对齐右端，再用存在非全零解时线性相关作检查。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：基、坐标与维数。}基、坐标与维数把问题限定在“向量在给定基下的坐标唯一，基向量个数是空间维数”；请把“向量在给定基下的坐标唯一，基向量个数是空间维数”中的已声明对象代回基、坐标与维数的定义，检查是否得到对象、条件与结论逐项闭合，且每项都可直接判为成立或失败。\par
+
+\SLTeachSection{线性组合、相关性、基与维数}{sec:V1-C02-S03}
+\knowledgeanchor{PRE-LA-008}{线性组合与张成}
+$a_1\boldsymbol{v}_1+\cdots+a_k\boldsymbol{v}_k$是向量组的线性组合，所有线性组合构成其张成空间。
+\knowledgeanchor{PRE-LA-009}{线性相关与线性无关}
+若$\sum_i a_i\boldsymbol{v}_i=0$只有全零系数解，则向量组线性无关；存在非全零解时线性相关。
+\knowledgeanchor{PRE-LA-010}{基、坐标与维数}
+子空间的一组基既线性无关又张成该空间；向量在给定基下的坐标唯一，基向量个数是空间维数。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-013 L1
+\paragraph{读前自检：矩阵的秩。}给定$A\in\R^{m\times n}$且$\rank(A)=r$；请核对$r=\dim R(A)=\dim R(A^{\mathsf T})\le\min(m,n)$，再用$r=n$验证满列秩时$N(A)=\{0\}$。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-008 L1
+\paragraph{读前自检：线性方程组与解空间。}线性方程组与解空间所用的明确前提是“$A\boldsymbol{x}=\boldsymbol{b}$有解当且仅当$\boldsymbol{b}\in R(A)$”；完成标出$A\boldsymbol{x}=\boldsymbol{b}$两侧的形状并完成一次乘法或正交检查后，核对若$\boldsymbol{x}_p$是一组特解，则全部解为$\boldsymbol{x}_p+N(A)$。\par
+
+\SLTeachSection{秩、线性方程组与基本子空间}{sec:V1-C02-S04}
+\knowledgeanchor{PRE-LA-011}{矩阵的秩}
+矩阵的秩$r$是列空间维数，也等于行空间维数。秩不超过$\min(m,n)$，满列秩意味着零空间只有零向量。
+\knowledgeanchor{PRE-LA-012}{线性方程组与解空间}
+$A\boldsymbol{x}=\boldsymbol{b}$有解当且仅当$\boldsymbol{b}\in R(A)$；若$\boldsymbol{x}_p$是一组特解，则全部解为$\boldsymbol{x}_p+N(A)$。
+\knowledgeanchor{PRE-LA-024}{超平面及其法向量表示}
+非零$\boldsymbol{w}\in\R^n$与$b\in\R$定义超平面$H=\{\boldsymbol{x}:\boldsymbol{w}^{\mathsf T}\boldsymbol{x}+b=0\}$，$\boldsymbol{w}$是法向量。
+
+对$A\in\R^{m\times n}$，四个基本子空间分别是$R(A)\subseteq\R^m$、$R(A^{\mathsf T})\subseteq\R^n$、$N(A)\subseteq\R^n$和$N(A^{\mathsf T})\subseteq\R^m$。秩—零度关系为$\rank(A)+\dim N(A)=n$，转置后还有$\rank(A)+\dim N(A^{\mathsf T})=m$。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-009 L1
+\paragraph{读前自检：正交与标准正交组。}标准正交组要求$\langle\boldsymbol v_i,\boldsymbol v_j\rangle=0\ (i\ne j)$且$\lVert\boldsymbol v_i\rVert_2=1$；请写出其Gram矩阵，逐项核对对角元为1、非对角元为0，从而得到单位矩阵。\par
+
+\SLTeachSection{正交与投影}{sec:V1-C02-S05}
+\knowledgeanchor{PRE-LA-013}{正交与标准正交组}
+向量内积为零称为正交；一组两两正交且范数为$1$的向量称标准正交组。
+
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-015 L1
+\paragraph{读前自检：矩阵的基本子空间。}对$A\in\R^{m\times n}$，请把四个基本子空间固定归位：$R(A^{\mathsf T}),N(A)\subseteq\R^n$，$R(A),N(A^{\mathsf T})\subseteq\R^m$；逐项核对定义域与输出域。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-016 L1
+\paragraph{读前自检：向量空间的子空间。}把向量空间的子空间放在“非空集合$S\subseteq V$若对向量加法和实数乘法封闭”下考察：用$S\subseteq V$做一次维数或封闭性核对，并检查封闭性保证任意有限线性组合仍在$S$中。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-017 L1
+\paragraph{读前自检：向量空间的基和维数。}设$B=(v_1,\ldots,v_r)$是向量空间$V$的线性无关生成组；请把任意$v\in V$唯一写成$\sum_{i=1}^r a_iv_i$，并核对$\dim V=r$。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-018 L1
+\paragraph{读前自检：矩阵的行空间和列空间。}从矩阵的行空间和列空间的条件“$R(A^{\mathsf T})$由$A$的行向量张成”出发，请标出$R(A^{\mathsf T})$两侧的形状并完成一次乘法或正交检查；所得量应符合乘法内侧维数相等且结果落入声明空间。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-019 L1
+\paragraph{读前自检：矩阵的零空间。}矩阵的零空间依赖“$N(A)=\{\boldsymbol{x}\in\R^n:A\boldsymbol{x}=\boldsymbol0\}$”；请据此标出$N(A)$两侧的形状并完成一次乘法或正交检查，并直接核对乘法内侧维数相等且结果落入声明空间。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-THEOREM-002 L1
+\paragraph{读前自检：秩--零度定理。}秩--零度定理针对$A\in\R^{m\times n}$；请取$N(A)$的一组基扩充为$\R^n$的基，比较经$A$映射后保留下来的基向量数，核对$\rank(A)+\dim N(A)=n$。\par
+
+\knowledgeanchor{SLM-D-00-001}{矩阵的基本子空间}
+矩阵结构由行空间、列空间、零空间与左零空间共同描述。
+\knowledgeanchor{SLM-D-01-001}{向量空间的子空间}
+非空集合$S\subseteq V$若对向量加法和实数乘法封闭，则为$V$的子空间；封闭性保证任意有限线性组合仍在$S$中。
+\knowledgeanchor{SLM-D-02-001}{向量空间的基和维数}
+基是线性无关的生成组，基中向量数定义空间维数。
+\knowledgeanchor{SLM-D-03-001}{矩阵的行空间和列空间}
+$R(A^{\mathsf T})$由$A$的行向量张成，$R(A)$由$A$的列向量张成，二者维数同为$\rank(A)$。
+\knowledgeanchor{SLM-D-04-001}{矩阵的零空间}
+\[
+N(A)=\{\boldsymbol{x}\in\R^n:A\boldsymbol{x}=\boldsymbol0\}
+\]
+是$\R^n$的子空间，其维数称零度。
+\knowledgeanchor{SLM-D-00-002}{秩--零度定理}
+对$A\in\R^{m\times n}$，$\rank(A)+\dim N(A)=n$；这等于主元变量数与自由变量数之和。
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-010 L1
+\paragraph{读前自检：子空间的正交补。}先锁定子空间的正交补的条件“$S^{\perp}=\{\boldsymbol{x}:\boldsymbol{x}^{\mathsf T}\boldsymbol{s}=0,\ \forall\boldsymbol{s}\in S\}$也是子空间”：用$S^{\perp}$做一次维数或封闭性核对，所得结果应满足所得维数与定义域、值域的空间一致。\par
+
+\knowledgeanchor{SLM-D-05-001}{子空间的正交补}
+$S^{\perp}=\{\boldsymbol{x}:\boldsymbol{x}^{\mathsf T}\boldsymbol{s}=0,\ \forall\boldsymbol{s}\in S\}$也是子空间。
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-020 L1
+\paragraph{读前自检：矩阵的基本子空间。}对$A\in\R^{m\times n}$，请核对定义域中的$R(A^{\mathsf T})\perp N(A)$与输出域中的$R(A)\perp N(A^{\mathsf T})$，再用两条秩--零度等式验证两对正交补维数闭合。\par
+
+\knowledgeanchor{SLM-D-06-001}{矩阵的基本子空间}
+四个空间成两对正交补：定义域中是行空间与零空间，输出空间中是列空间与左零空间。
+% KNOWLEDGE-PLAN: KN-V1-C02-THEOREM-003 L1
+\paragraph{读前自检：定理D 1。}定理D.1断言$N(A)=R(A^{\mathsf T})^{\perp}$且$N(A^{\mathsf T})=R(A)^{\perp}$；请把“$\boldsymbol{x}$与$A$的每一行正交”改写成$A\boldsymbol{x}=0$，再对$A^{\mathsf T}$重复同一步，并核对$N(A)=R(A^{\mathsf T})^\perp$及其转置版本同时成立。\par
+
+\knowledgeanchor{SLM-D-01-002}{定理D.1}
+具体关系为
+\[
+N(A)=R(A^{\mathsf T})^{\perp},\qquad
+N(A^{\mathsf T})=R(A)^{\perp}.
+\]
+证明第一式时，$\boldsymbol{x}$与$A$每一行正交等价于$A\boldsymbol{x}=0$；第二式对$A^{\mathsf T}$应用同一论证。
+
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-011 L1
+\paragraph{读前自检：正交投影。}在“若$Q$的列标准正交”成立时处理线性代数基础中的正交投影：请独立化简$P=QQ^{\mathsf T}$的两端，并以到$R(Q)$的投影矩阵为$P=QQ^{\mathsf T}$判定结果。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-012 L1
+\paragraph{读前自检：点到超平面的距离。}点$\boldsymbol x_0$到超平面$\boldsymbol w^{\mathsf T}\boldsymbol x+b=0$的距离要求$\boldsymbol w\ne0$；请把$\boldsymbol x_0$沿单位法向量投影，核对距离为$|\boldsymbol w^{\mathsf T}\boldsymbol x_0+b|/\lVert\boldsymbol w\rVert_2$。\par
+
+\knowledgeanchor{PRE-LA-014}{正交投影}
+若$Q$的列标准正交，则到$R(Q)$的投影矩阵为$P=QQ^{\mathsf T}$，满足$P^{\mathsf T}=P$和$P^2=P$。
+\knowledgeanchor{PRE-LA-025}{点到超平面的距离}
+点$\boldsymbol{x}_0$到$\boldsymbol{w}^{\mathsf T}\boldsymbol{x}+b=0$的距离为$|\boldsymbol{w}^{\mathsf T}\boldsymbol{x}_0+b|/\norm{\boldsymbol{w}}_2$，前提是$\boldsymbol{w}\ne0$。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-021 L1
+\paragraph{读前自检：特征值与特征向量。}围绕特征值与特征向量，先采用条件“若$A\boldsymbol{q}=\lambda\boldsymbol{q}$且$\boldsymbol{q}\ne0$”，再标出$A\boldsymbol{q}=\lambda\boldsymbol{q}$两侧的形状并完成一次乘法或正交检查；最后验证$\lambda$是特征值、$\boldsymbol{q}$是特征向量。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-022 L1
+\paragraph{读前自检：对称矩阵。}线性代数基础中的对称矩阵中的“实矩阵满足$A=A^{\mathsf T}$称对称矩阵”决定可执行范围；请标出$A=A^{\mathsf T}$两侧的形状并完成一次乘法或正交检查，结果须满足其特征值为实数，不同特征值的特征向量正交。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-023 L1
+\paragraph{读前自检：正定矩阵与半正定矩阵。}把正定矩阵与半正定矩阵放在“对称矩阵$A$若对所有非零$\boldsymbol{x}$有$\boldsymbol{x}^{\mathsf T}A\boldsymbol{x}>0$则正定”下考察：标出$\boldsymbol{x}^{\mathsf T}A\boldsymbol{x}>0$两侧的形状并完成一次乘法或正交检查，并检查若对所有$\boldsymbol{x}$非负则半正定。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-013 L1
+\paragraph{读前自检：二次型。}线性代数基础中的二次型要求先确认“$q(\boldsymbol{x})=\boldsymbol{x}^{\mathsf T}A\boldsymbol{x}$是二次型”；请随后把$q(\boldsymbol{x})$展开一次并检查其类型或边界，用展开后的量满足定义中的域、维数或符号限制验收。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-PREREQUISITE-024 L1
+\paragraph{读前自检：矩阵的迹。}从线性代数基础中的矩阵的迹的条件“$\tr(A)=\sum_iA_{ii}$”出发，请标出$\tr(A)=\sum_iA_{ii}$两侧的形状并完成一次乘法或正交检查；所得量应符合乘法内侧维数相等且结果落入声明空间。\par
+
+\SLAdvancedSection{特征值、对称矩阵、正定性与二次型}{sec:V1-C02-S06}
+\knowledgeanchor{PRE-LA-016}{特征值与特征向量}
+若$A\boldsymbol{q}=\lambda\boldsymbol{q}$且$\boldsymbol{q}\ne0$，则$\lambda$是特征值、$\boldsymbol{q}$是特征向量。
+\knowledgeanchor{PRE-LA-017}{对称矩阵}
+实矩阵满足$A=A^{\mathsf T}$称对称矩阵；其特征值为实数，不同特征值的特征向量正交。
+\knowledgeanchor{PRE-LA-018}{正定矩阵与半正定矩阵}
+对称矩阵$A$若对所有非零$\boldsymbol{x}$有$\boldsymbol{x}^{\mathsf T}A\boldsymbol{x}>0$则正定；若对所有$\boldsymbol{x}$非负则半正定。
+\knowledgeanchor{PRE-LA-019}{二次型}
+$q(\boldsymbol{x})=\boldsymbol{x}^{\mathsf T}A\boldsymbol{x}$是二次型，只有$A$的对称部分$(A+A^{\mathsf T})/2$影响其值。
+\knowledgeanchor{PRE-LA-020}{矩阵的迹}
+$\tr(A)=\sum_iA_{ii}$；对维数相容矩阵有$\tr(AB)=\tr(BA)$，并且迹等于特征值按代数重数之和。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C02-FORMULA-001 L1
+\paragraph{读前自检：对称矩阵的谱分解。}对称矩阵的谱分解依赖“实对称矩阵可写为$A=Q\Lambda Q^{\mathsf T}$”；请据此标出$A=Q\Lambda Q^{\mathsf T}$两侧的形状并完成一次乘法或正交检查，并直接核对乘法内侧维数相等且结果落入声明空间。\par
+% KNOWLEDGE-PLAN: KN-V1-C02-FORMULA-002 L1
+\paragraph{读前自检：奇异值与奇异值分解的预备知识。}奇异值与奇异值分解的预备知识以“任意$A\in\R^{m\times n}$的$A^{\mathsf T}A$半正定”为约束；请沿$A\in\R^{m\times n}$标出输入域、输出域和一次运算结果的形状，并确认左右奇异向量分别位于输入空间与输出空间。\par
+
+\SLAdvancedSection{谱分解、奇异值预备与幂法}{sec:V1-C02-S07}
+\knowledgeanchor{PRE-LA-021}{对称矩阵的谱分解}
+实对称矩阵可写为$A=Q\Lambda Q^{\mathsf T}$，其中$Q$正交，$\Lambda$为实对角矩阵；二次型因此分解为各特征方向坐标平方的加权和。
+\knowledgeanchor{PRE-LA-022}{奇异值与奇异值分解的预备知识}
+任意$A\in\R^{m\times n}$的$A^{\mathsf T}A$半正定，其非负特征值平方根称奇异值。左右奇异向量分别位于输入空间与输出空间。
+\knowledgeanchor{PRE-LA-023}{幂法与最大模特征方向}
+幂法利用$A^tq_0=\sum_i c_i\lambda_i^tq_i$中最大模特征值的幂次占优，通过每轮归一化避免数值尺度失控。唯一最大模特征值与非零初始分量是方向收敛的关键条件。
+
+
+\begin{chapterexercisebox}
+\phantomsection\label{schema:V1-C02:CH-34}
+\phantomsection\label{schema:V1-C02:CH-35}
+本章共22道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[矩阵乘法]\label{ex:V1-C02-S01-01}
+计算$\begin{bmatrix}1&2\\0&1\end{bmatrix}\begin{bmatrix}3\\4\end{bmatrix}$。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S01-01}
+\begin{chapterexercisesolution}{ex:V1-C02-S01-01}
+对象为$A\in\R^{2\times2}$与$\boldsymbol v\in\R^{2\times1}$；内侧维数相等，故$A\boldsymbol v\in\R^{2\times1}$。按行复算
+\[
+\begin{aligned}
+A\boldsymbol v
+&=\begin{bmatrix}1&2\\0&1\end{bmatrix}
+  \begin{bmatrix}3\\4\end{bmatrix}\\
+&=\begin{bmatrix}1\cdot3+2\cdot4\\0\cdot3+1\cdot4\end{bmatrix}
+=\begin{bmatrix}11\\4\end{bmatrix}.
+\end{aligned}
+\]
+因此矩阵—向量乘积为$(11,4)^{\mathsf T}$，其维数也与$A\boldsymbol v\in\R^2$一致。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[乘法次序]\label{ex:V1-C02-S01-02}
+给出两个二阶矩阵，使$AB\ne BA$，并完成计算。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S01-02}
+\begin{chapterexercisesolution}{ex:V1-C02-S01-02}
+取$A,B\in\R^{2\times2}$如下；两个方向的乘积都有定义，但复合次序不同：
+\[
+\begin{aligned}
+A&=\begin{bmatrix}1&1\\0&1\end{bmatrix},
+&B&=\begin{bmatrix}1&0\\1&1\end{bmatrix},\\
+AB&=\begin{bmatrix}1\cdot1+1\cdot1&1\cdot0+1\cdot1\\
+0\cdot1+1\cdot1&0\cdot0+1\cdot1\end{bmatrix}
+=\begin{bmatrix}2&1\\1&1\end{bmatrix},\\
+BA&=\begin{bmatrix}1&1\\1&2\end{bmatrix},
+&AB-BA&=\begin{bmatrix}1&0\\0&-1\end{bmatrix}\ne0.
+\end{aligned}
+\]
+因此该例直接说明一般矩阵乘法不满足交换律。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[行列式与可逆性]\label{ex:V1-C02-S01-03}
+判断$A=\begin{bmatrix}2&4\\1&2\end{bmatrix}$是否可逆。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S01-03}
+\begin{chapterexercisesolution}{ex:V1-C02-S01-03}
+对象是方阵$A\in\R^{2\times2}$；可逆性的判据为$\det(A)\ne0$。本题有
+\[
+\begin{aligned}
+\det(A)&=2\cdot2-4\cdot1=0,\\
+A\begin{bmatrix}-2\\1\end{bmatrix}
+&=\begin{bmatrix}-4+4\\-2+2\end{bmatrix}
+=\begin{bmatrix}0\\0\end{bmatrix},
+\qquad \begin{bmatrix}-2\\1\end{bmatrix}\ne\boldsymbol0.
+\end{aligned}
+\]
+因此$N(A)$非平凡，等价地两列线性相关，故$A$不可逆。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[三种范数]\label{ex:V1-C02-S02-01}
+对$\boldsymbol{x}=(-1,2,-2)^{\mathsf T}$计算$\ell_1$、$\ell_2$和$\ell_{\infty}$范数。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S02-01}
+\begin{chapterexercisesolution}{ex:V1-C02-S02-01}
+对象为$\boldsymbol{x}=(-1,2,-2)^{\mathsf T}\in\R^3$。三种范数按各自定义计算为
+\[
+\begin{aligned}
+\norm{\boldsymbol{x}}_1
+&=|-1|+|2|+|-2|=1+2+2=5,\\
+\norm{\boldsymbol{x}}_2
+&=\sqrt{(-1)^2+2^2+(-2)^2}=\sqrt9=3,\\
+\norm{\boldsymbol{x}}_\infty
+&=\max\{|-1|,|2|,|-2|\}=2.
+\end{aligned}
+\]
+所以三种范数依次为$5,3,2$，并满足$\norm{\boldsymbol x}_\infty\le\norm{\boldsymbol x}_2\le\norm{\boldsymbol x}_1$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[距离]\label{ex:V1-C02-S02-02}
+求$(1,2)^{\mathsf T}$与$(4,-2)^{\mathsf T}$的欧氏距离。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S02-02}
+\begin{chapterexercisesolution}{ex:V1-C02-S02-02}
+两点$\boldsymbol{x},\boldsymbol{y}\in\R^2$使用同一欧氏坐标系，距离定义为差向量的二范数：
+\[
+\begin{aligned}
+\boldsymbol{x}-\boldsymbol{y}
+&=\begin{bmatrix}1\\2\end{bmatrix}-\begin{bmatrix}4\\-2\end{bmatrix}
+=\begin{bmatrix}-3\\4\end{bmatrix},\\
+d(\boldsymbol{x},\boldsymbol{y})
+&=\norm{\boldsymbol{x}-\boldsymbol{y}}_2
+=\sqrt{(-3)^2+4^2}=\sqrt{25}=5.
+\end{aligned}
+\]
+交换两点只使差向量变号，范数不变。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[夹角与正交]\label{ex:V1-C02-S02-03}
+判断$(1,2)^{\mathsf T}$与$(2,-1)^{\mathsf T}$是否正交，并给出夹角。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S02-03}
+\begin{chapterexercisesolution}{ex:V1-C02-S02-03}
+令$\boldsymbol{x}=(1,2)^{\mathsf T}$、$\boldsymbol{y}=(2,-1)^{\mathsf T}$；二者非零，故夹角公式的分母为正。于是
+\[
+\begin{aligned}
+\boldsymbol{x}^{\mathsf T}\boldsymbol{y}
+&=1\cdot2+2\cdot(-1)=0,\\
+\cos\theta
+&=\frac{\boldsymbol{x}^{\mathsf T}\boldsymbol{y}}
+{\norm{\boldsymbol{x}}_2\norm{\boldsymbol{y}}_2}=0,\\
+\theta&=\frac{\pi}{2}\in[0,\pi].
+\end{aligned}
+\]
+故两向量正交。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[张成判断]\label{ex:V1-C02-S03-01}
+判断$(3,1)^{\mathsf T}$是否属于$\operatorname{span}\{(1,1)^{\mathsf T},(1,-1)^{\mathsf T}\}$。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S03-01}
+\begin{chapterexercisesolution}{ex:V1-C02-S03-01}
+对象均在$\R^2$中。属于张成空间等价于存在$a,b\in\R$满足线性方程：
+\[
+\begin{aligned}
+a\begin{bmatrix}1\\1\end{bmatrix}
++b\begin{bmatrix}1\\-1\end{bmatrix}
+=\begin{bmatrix}3\\1\end{bmatrix}
+&\Longleftrightarrow
+\begin{cases}a+b=3,\\a-b=1,\end{cases}\\
+2a=4&\Longrightarrow a=2,
+\qquad b=3-a=1,\\
+2\begin{bmatrix}1\\1\end{bmatrix}
++\begin{bmatrix}1\\-1\end{bmatrix}
+&=\begin{bmatrix}3\\1\end{bmatrix}.
+\end{aligned}
+\]
+存在所需系数，故结论为属于；生成向量无关又保证表示唯一。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[线性相关]\label{ex:V1-C02-S03-02}
+判断$(1,0,1)^{\mathsf T}$、$(0,1,1)^{\mathsf T}$、$(1,1,2)^{\mathsf T}$是否线性无关。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S03-02}
+\begin{chapterexercisesolution}{ex:V1-C02-S03-02}
+记三个给定向量为$\boldsymbol v_1,\boldsymbol v_2,\boldsymbol v_3\in\R^3$。线性相关只需构造一组非全零系数：
+\[
+\begin{aligned}
+\boldsymbol v_1+\boldsymbol v_2
+&=\begin{bmatrix}1\\0\\1\end{bmatrix}
++\begin{bmatrix}0\\1\\1\end{bmatrix}
+=\begin{bmatrix}1\\1\\2\end{bmatrix}=\boldsymbol v_3,\\
+1\boldsymbol v_1+1\boldsymbol v_2-1\boldsymbol v_3
+&=\boldsymbol0,
+\qquad (1,1,-1)\ne(0,0,0).
+\end{aligned}
+\]
+因此该向量组线性相关。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[换基坐标]\label{ex:V1-C02-S03-03}
+在基$\mathcal B=((1,1)^{\mathsf T},(1,-1)^{\mathsf T})$下求$(4,2)^{\mathsf T}$的坐标。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S03-03}
+\begin{chapterexercisesolution}{ex:V1-C02-S03-03}
+基矩阵$B=[\boldsymbol b_1\ \boldsymbol b_2]\in\R^{2\times2}$满足$\det(B)=-2\ne0$，故坐标存在且唯一。求解
+\[
+\begin{aligned}
+\begin{bmatrix}1&1\\1&-1\end{bmatrix}
+\begin{bmatrix}a\\b\end{bmatrix}
+=\begin{bmatrix}4\\2\end{bmatrix}
+&\Longleftrightarrow
+\begin{cases}a+b=4,\\a-b=2,\end{cases}\\
+a&=3,\qquad b=1,\\
+[(4,2)^{\mathsf T}]_{\mathcal B}
+&=\begin{bmatrix}3\\1\end{bmatrix}.
+\end{aligned}
+\]
+因此$(4,2)^{\mathsf T}=3(1,1)^{\mathsf T}+(1,-1)^{\mathsf T}$，坐标为$(3,1)^{\mathsf T}$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[方程组全部解]\label{ex:V1-C02-S04-01}
+求$x_1+x_2=2$的全部实数解，并写成特解加零空间。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S04-01}
+\begin{chapterexercisesolution}{ex:V1-C02-S04-01}
+令$A=[1\ 1]\in\R^{1\times2}$、$\boldsymbol{x}\in\R^2$。取特解$\boldsymbol{x}_p=(2,0)^{\mathsf T}$，齐次解与全部解依次为
+\[
+\begin{aligned}
+A\boldsymbol{x}=0
+&\Longleftrightarrow x_1=-x_2,\\
+N(A)&=\left\{t\begin{bmatrix}-1\\1\end{bmatrix}:t\in\R\right\},\\
+\{\boldsymbol{x}:A\boldsymbol{x}=2\}
+&=\left\{\begin{bmatrix}2\\0\end{bmatrix}
++t\begin{bmatrix}-1\\1\end{bmatrix}:t\in\R\right\},\\
+A\left(\begin{bmatrix}2\\0\end{bmatrix}
++t\begin{bmatrix}-1\\1\end{bmatrix}\right)&=2-t+t=2.
+\end{aligned}
+\]
+因此齐次解空间是一条过原点的直线，非齐次解集是它经过$(2,0)^{\mathsf T}$的平移。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[秩与零度]\label{ex:V1-C02-S04-02}
+已知$A\in\R^{4\times6}$且$\rank(A)=3$，求$N(A)$和$N(A^{\mathsf T})$的维数。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S04-02}
+\begin{chapterexercisesolution}{ex:V1-C02-S04-02}
+对象为$A:\R^6\to\R^4$，而$A^{\mathsf T}:\R^4\to\R^6$；两者秩均为$3$。分别在各自定义域应用秩—零度定理：
+\[
+\begin{aligned}
+\dim N(A)&=6-\rank(A)=6-3=3,
+&N(A)&\subseteq\R^6,\\
+\dim N(A^{\mathsf T})
+&=4-\rank(A^{\mathsf T})=4-3=1,
+&N(A^{\mathsf T})&\subseteq\R^4.
+\end{aligned}
+\]
+所以两个零空间的维数分别为$3$与$1$，其所属环境空间也已对应核对。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[超平面]\label{ex:V1-C02-S04-03}
+写出经过点$(1,0)^{\mathsf T}$、法向量为$(2,-1)^{\mathsf T}$的直线方程。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S04-03}
+\begin{chapterexercisesolution}{ex:V1-C02-S04-03}
+令$\boldsymbol{x}_0=(1,0)^{\mathsf T}\in\R^2$，非零法向量$\boldsymbol w=(2,-1)^{\mathsf T}$。所求仿射超平面为
+\[
+\begin{aligned}
+H&=\{\boldsymbol{x}\in\R^2:
+\boldsymbol w^{\mathsf T}(\boldsymbol{x}-\boldsymbol{x}_0)=0\}\\
+&=\{(x_1,x_2)^{\mathsf T}:2(x_1-1)-(x_2-0)=0\}\\
+&=\{(x_1,x_2)^{\mathsf T}:2x_1-x_2-2=0\}.
+\end{aligned}
+\]
+代入$\boldsymbol{x}_0$所得左端为零，故经过指定点。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[基本子空间]\label{ex:V1-C02-S05-01}
+对$A=\begin{bmatrix}1&1\\2&2\end{bmatrix}$求列空间与零空间的一组基。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S05-01}
+\begin{chapterexercisesolution}{ex:V1-C02-S05-01}
+对象为$A:\R^2\to\R^2$。第二列与第一列相同且非零，因此
+\[
+\begin{aligned}
+R(A)&=\operatorname{span}\left\{\begin{bmatrix}1\\2\end{bmatrix}\right\},\\
+A\begin{bmatrix}x_1\\x_2\end{bmatrix}=\boldsymbol0
+&\Longleftrightarrow x_1+x_2=0
+\Longleftrightarrow
+\begin{bmatrix}x_1\\x_2\end{bmatrix}
+=t\begin{bmatrix}-1\\1\end{bmatrix},\\
+N(A)&=\operatorname{span}\left\{\begin{bmatrix}-1\\1\end{bmatrix}\right\},
+\qquad \rank(A)+\dim N(A)=1+1=2.
+\end{aligned}
+\]
+因此$R(A)$与$N(A)$均为一维，且秩—零度恒等式得到验证。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[投影矩阵]\label{ex:V1-C02-S05-02}
+设$\boldsymbol{q}=(1,0)^{\mathsf T}$，求到其张成空间的投影矩阵，并投影$(2,3)^{\mathsf T}$。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S05-02}
+\begin{chapterexercisesolution}{ex:V1-C02-S05-02}
+给定$\boldsymbol q=(1,0)^{\mathsf T}\in\R^2$且$\boldsymbol q^{\mathsf T}\boldsymbol q=1$，故一维投影矩阵无需额外归一化：
+\[
+\begin{aligned}
+P&=\boldsymbol q\boldsymbol q^{\mathsf T}
+=\begin{bmatrix}1&0\\0&0\end{bmatrix}\in\R^{2\times2},\\
+P\begin{bmatrix}2\\3\end{bmatrix}
+&=\begin{bmatrix}2\\0\end{bmatrix},
+&\boldsymbol r&=\begin{bmatrix}2\\3\end{bmatrix}
+-\begin{bmatrix}2\\0\end{bmatrix}=\begin{bmatrix}0\\3\end{bmatrix},\\
+\boldsymbol q^{\mathsf T}\boldsymbol r&=0,
+&P^2&=P.
+\end{aligned}
+\]
+因此$P$确为到$x$轴的正交投影，向量$(2,3)^{\mathsf T}$的投影为$(2,0)^{\mathsf T}$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[点到直线距离]\label{ex:V1-C02-S05-03}
+求点$(0,0)^{\mathsf T}$到直线$3x_1+4x_2-10=0$的距离。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S05-03}
+\begin{chapterexercisesolution}{ex:V1-C02-S05-03}
+直线法向量$\boldsymbol w=(3,4)^{\mathsf T}\ne0$，故点到超平面的距离公式分母非零。对$\boldsymbol x_0=(0,0)^{\mathsf T}$，
+\[
+\begin{aligned}
+\norm{\boldsymbol w}_2&=\sqrt{3^2+4^2}=5,\\
+|\boldsymbol w^{\mathsf T}\boldsymbol x_0-10|
+&=|3\cdot0+4\cdot0-10|=10,\\
+\operatorname{dist}(\boldsymbol x_0,H)&=\frac{10}{5}=2\ge0.
+\end{aligned}
+\]
+所以原点到该直线的距离为$2$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[特征对]\label{ex:V1-C02-S06-01}
+验证$(1,1)^{\mathsf T}$是$A=\begin{bmatrix}2&1\\1&2\end{bmatrix}$的特征向量并求特征值。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S06-01}
+\begin{chapterexercisesolution}{ex:V1-C02-S06-01}
+对象为$A\in\R^{2\times2}$和非零候选$\boldsymbol q=(1,1)^{\mathsf T}$。按特征对定义核对
+\[
+\begin{aligned}
+A\boldsymbol q
+&=\begin{bmatrix}2&1\\1&2\end{bmatrix}
+\begin{bmatrix}1\\1\end{bmatrix}
+=\begin{bmatrix}3\\3\end{bmatrix}\\
+&=3\begin{bmatrix}1\\1\end{bmatrix}=3\boldsymbol q.
+\end{aligned}
+\]
+因此$\boldsymbol q$是特征向量，对应特征值$\lambda=3$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[正定判断]\label{ex:V1-C02-S06-02}
+判断$A=\operatorname{diag}(2,0)$是正定还是半正定。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S06-02}
+\begin{chapterexercisesolution}{ex:V1-C02-S06-02}
+矩阵$A=\operatorname{diag}(2,0)$实对称。对任意$\boldsymbol x=(x_1,x_2)^{\mathsf T}\in\R^2$，
+\[
+\begin{aligned}
+\boldsymbol x^{\mathsf T}A\boldsymbol x
+&=\begin{bmatrix}x_1&x_2\end{bmatrix}
+\begin{bmatrix}2x_1\\0\end{bmatrix}=2x_1^2\ge0,\\
+\boldsymbol e_2^{\mathsf T}A\boldsymbol e_2
+&=0,\qquad \boldsymbol e_2=(0,1)^{\mathsf T}\ne\boldsymbol0.
+\end{aligned}
+\]
+故$A$半正定，但因存在非零零方向而不正定。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[迹与特征值]\label{ex:V1-C02-S06-03}
+已知二阶矩阵特征值为$5$和$-1$，求其迹，并判断它能否为正定对称矩阵。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S06-03}
+\begin{chapterexercisesolution}{ex:V1-C02-S06-03}
+对象是实二阶矩阵，给定特征值按代数重数为$\lambda_1=5$、$\lambda_2=-1$。于是
+\[
+\begin{aligned}
+\tr(A)&=\lambda_1+\lambda_2=5-1=4,\\
+A=A^{\mathsf T},\ A\succ0
+&\Longrightarrow \lambda_1>0\ \text{且}\ \lambda_2>0,\\
+\lambda_2=-1<0&\Longrightarrow A\text{不可能是正定对称矩阵}.
+\end{aligned}
+\]
+迹为正只约束特征值之和，不能排除负特征值。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[谱重构]\label{ex:V1-C02-S07-01}
+设$Q=I_2$、$\Lambda=\operatorname{diag}(3,1)$，写出$Q\Lambda Q^{\mathsf T}$并解释两个主轴。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S07-01}
+\begin{chapterexercisesolution}{ex:V1-C02-S07-01}
+对象为$Q=I_2\in\R^{2\times2}$与$\Lambda=\operatorname{diag}(3,1)$。谱重构及主轴作用为
+\[
+\begin{aligned}
+Q\Lambda Q^{\mathsf T}
+&=I_2\begin{bmatrix}3&0\\0&1\end{bmatrix}I_2
+=\begin{bmatrix}3&0\\0&1\end{bmatrix},\\
+A\boldsymbol e_1&=3\boldsymbol e_1,
+&A\boldsymbol e_2&=1\boldsymbol e_2.
+\end{aligned}
+\]
+故两条主轴就是标准坐标轴，第一轴伸缩三倍，第二轴保持不变。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[奇异值]\label{ex:V1-C02-S07-02}
+求$A=\operatorname{diag}(4,2)$的奇异值。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S07-02}
+\begin{chapterexercisesolution}{ex:V1-C02-S07-02}
+对象为$A=\operatorname{diag}(4,2)\in\R^{2\times2}$；奇异值是$A^{\mathsf T}A$特征值的非负平方根：
+\[
+\begin{aligned}
+A^{\mathsf T}A
+&=\begin{bmatrix}4&0\\0&2\end{bmatrix}^{\mathsf T}
+\begin{bmatrix}4&0\\0&2\end{bmatrix}
+=\begin{bmatrix}16&0\\0&4\end{bmatrix},\\
+\lambda(A^{\mathsf T}A)&\in\{16,4\},\\
+(\sigma_1,\sigma_2)&=(\sqrt{16},\sqrt4)=(4,2).
+\end{aligned}
+\]
+因此按非增次序排列的奇异值为$4$和$2$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[幂法一步]\label{ex:V1-C02-S07-03}
+对$A=\operatorname{diag}(3,1)$和$q_0=(1,1)^{\mathsf T}/\sqrt2$执行一次归一化幂法。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-S07-03}
+\begin{chapterexercisesolution}{ex:V1-C02-S07-03}
+输入满足$A\in\R^{2\times2}$、$\norm{q_0}_2=1$，且$z_1=Aq_0\ne0$，所以本轮归一化合法。一次完整更新为
+\[
+\begin{aligned}
+z_1&=Aq_0
+=\frac1{\sqrt2}\begin{bmatrix}3&0\\0&1\end{bmatrix}
+\begin{bmatrix}1\\1\end{bmatrix}
+=\frac1{\sqrt2}\begin{bmatrix}3\\1\end{bmatrix},\\
+\norm{z_1}_2&=\sqrt{\frac{9+1}{2}}=\sqrt5,
+&q_1&=\frac{z_1}{\norm{z_1}_2}=\frac1{\sqrt{10}}\begin{bmatrix}3\\1\end{bmatrix},\\
+\lambda_1&=q_1^{\mathsf T}Aq_1=\frac{27+1}{10}=\frac{14}{5},
+&\norm{Aq_1-\lambda_1q_1}_2&=\frac35.
+\end{aligned}
+\]
+方向系数比由$1:1$变为$3:1$，主特征方向的相对权重增大。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[章末综合]\label{ex:V1-C02-CH-01}
+综合题：设$A=\begin{bmatrix}1&1\\1&1\\0&0\end{bmatrix}$。求秩、零空间一组基、列空间一组基，并验证$N(A)=R(A^{\mathsf T})^{\perp}$。
+\end{exercise}
+\phantomsection\label{sol:V1-C02-CH-01}
+\begin{chapterexercisesolution}{ex:V1-C02-CH-01}
+对象为$A:\R^2\to\R^3$。两列相同且非零，故依次得到
+\[
+\begin{aligned}
+\rank(A)&=1,\\
+R(A)&=\operatorname{span}\left\{\begin{bmatrix}1\\1\\0\end{bmatrix}\right\}\subseteq\R^3,\\
+A\begin{bmatrix}x_1\\x_2\end{bmatrix}=\boldsymbol0
+&\Longleftrightarrow x_1+x_2=0,\\
+N(A)&=\operatorname{span}\left\{\begin{bmatrix}-1\\1\end{bmatrix}\right\}\subseteq\R^2,\\
+R(A^{\mathsf T})
+&=\operatorname{span}\left\{\begin{bmatrix}1\\1\end{bmatrix}\right\},\\
+R(A^{\mathsf T})^\perp
+&=\left\{\begin{bmatrix}z_1\\z_2\end{bmatrix}:z_1+z_2=0\right\}\\
+&=\operatorname{span}\left\{\begin{bmatrix}-1\\1\end{bmatrix}\right\}=N(A).
+\end{aligned}
+\]
+因此$N(A)=R(A^{\mathsf T})^\perp$在本例中成立，同时$\rank(A)=1$与各空间维数相符。
+\end{chapterexercisesolution}
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V1-C02-CONCEPT-014 L1
+\paragraph{读前自检：本章结论与下一步。}线性代数基础章末由“向量、矩阵、子空间与谱”落到“先验维数检查、再求解或迭代并记录停止条件”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{schema:V1-C02:CH-36}
+\SLChapterFiveSummary{向量、矩阵、子空间与谱}{由分量运算推出投影、正定性和谱分解}{先验维数检查、再求解或迭代并记录停止条件}{线性模型、二次优化与降维的代数准备}{进入\cref{chap:V1-C03}并保留列向量约定}
+\begin{selfcheckbox}\label{schema:V1-C02:CH-37}
+\begin{enumerate}[leftmargin=2em]
+  \item 我能按分量写出矩阵乘法并核对维数；未通过时回看\cref{sec:V1-C02-S01}。
+  \item 我能区分范数、距离、内积和夹角；未通过时回看\cref{sec:V1-C02-S02}。
+  \item 我能由方程组求秩、基和四个基本子空间；未通过时回看\cref{sec:V1-C02-S03,sec:V1-C02-S04,sec:V1-C02-S05}。
+  \item 我能判断正定性并解释谱分解、奇异值与幂法条件；未通过时回看\cref{sec:V1-C02-S06,sec:V1-C02-S07}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

@@ -1,0 +1,5 @@
+source_line,reviewer,scope,declared_pt,graphics_scale,effective_pt,actual_readable,severe_size_imbalance,decision,note
+3,SA1,global slfig style,9.2,1.0000,9.2,true,false,R168_HARD_PASS,9.2pt is below legacy 9.5pt guidance but R168 makes this advisory because the actual render is readable and balanced.
+6,SA1,local node override,9.2,1.0000,9.2,true,false,R168_HARD_PASS,Node text uses the same readable 9.2pt setting without scaling.
+13,SA1,left panel heading,9.8,1.0000,9.8,true,false,R168_HARD_PASS,Left heading is readable and not disproportionately sized.
+23,SA1,right panel heading,9.8,1.0000,9.8,true,false,R168_HARD_PASS,Right heading is readable and matches the left heading.

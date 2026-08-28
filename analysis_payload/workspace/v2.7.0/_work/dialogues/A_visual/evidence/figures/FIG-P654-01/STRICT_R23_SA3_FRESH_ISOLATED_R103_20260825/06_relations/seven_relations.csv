@@ -1,0 +1,8 @@
+﻿relation_id,source,target,edge_type,drawing_indices,graphic_object_ids,expected_graphic_count,nonempty_graphic_count,machine_structure_status
+R1,trial,families,directed_solid,10;11,GRAPHIC-EDGE-R1-LINE;GRAPHIC-EDGE-R1-ARROWHEAD,2,2,COMPLETE
+R2,gamma,families,directed_solid,12;13,GRAPHIC-EDGE-R2-LINE;GRAPHIC-EDGE-R2-ARROWHEAD,2,2,COMPLETE
+R3,families,posterior,directed_solid,14;15,GRAPHIC-EDGE-R3-LINE;GRAPHIC-EDGE-R3-ARROWHEAD,2,2,COMPLETE
+R4,posterior,predictive,directed_solid,16;17,GRAPHIC-EDGE-R4-LINE;GRAPHIC-EDGE-R4-ARROWHEAD,2,2,COMPLETE
+R5,families,simplex,undirected_thin,18,GRAPHIC-EDGE-R5-LINE,1,1,COMPLETE
+R6,posterior,mom,undirected_thin,19,GRAPHIC-EDGE-R6-LINE,1,1,COMPLETE
+R7,predictive,lda,directed_dashed,20;21,GRAPHIC-EDGE-R7-LINE;GRAPHIC-EDGE-R7-ARROWHEAD,2,2,COMPLETE

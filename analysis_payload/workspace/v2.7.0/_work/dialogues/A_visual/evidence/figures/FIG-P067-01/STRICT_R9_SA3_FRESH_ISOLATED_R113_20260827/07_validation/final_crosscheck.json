@@ -1,0 +1,281 @@
+{
+  "crosscheck_ok": true,
+  "errors": [],
+  "status_under_review": "SA3_FAIL_RETURN_TO_SA2",
+  "hard_fail_pair_ids": [
+    "P01916",
+    "P01917"
+  ],
+  "checks": {
+    "root_exists": {
+      "ok": true,
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P067-01\\STRICT_R9_SA3_FRESH_ISOLATED_R113_20260827"
+    },
+    "pdf_identity": {
+      "ok": true,
+      "detail": {
+        "bytes": 4967121,
+        "sha256": "6B48D215721463EA2A9B94EFA54200F8D767B609E47714A70D9B441328F2BB9D"
+      }
+    },
+    "source_identity": {
+      "ok": true,
+      "detail": {
+        "bytes": 4014,
+        "sha256": "2881377AEEF78E8C7BD7502AD8A303E19AAC395F1936475BDC6D569195900920"
+      }
+    },
+    "candidate_identity": {
+      "ok": true,
+      "detail": {
+        "uid": "FIG-P067-01",
+        "role": "SA3_FRESH_ISOLATED",
+        "agent_identity": "/root/p067_r113_fresh_sa3",
+        "handoff_id": "A-R113-P067-SA3-FRESH-ISOLATED-20260827",
+        "official_round": "R113",
+        "pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r113_fullbook\\main_full.pdf",
+        "pdf_bytes": 4967121,
+        "pdf_sha256": "6B48D215721463EA2A9B94EFA54200F8D767B609E47714A70D9B441328F2BB9D",
+        "expected_pdf_sha256": "6B48D215721463EA2A9B94EFA54200F8D767B609E47714A70D9B441328F2BB9D",
+        "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第01册_数学基础与统计学习基本理论\\V1-C04\\fig_v1_c04_cdf.tex",
+        "source_bytes": 4014,
+        "source_sha256": "2881377AEEF78E8C7BD7502AD8A303E19AAC395F1936475BDC6D569195900920",
+        "expected_source_sha256": "2881377AEEF78E8C7BD7502AD8A303E19AAC395F1936475BDC6D569195900920",
+        "physical_page": 69,
+        "printed_page": 56,
+        "figure_number": "4.1",
+        "caption": "离散随机变量的分布函数：跳跃高度等于对应点的概率质量",
+        "page_size_pt": [
+          595.2760009765625,
+          841.8900146484375
+        ],
+        "page_300dpi_native_px": [
+          2481,
+          3508
+        ],
+        "figure_crop_300dpi_px": [
+          375,
+          250,
+          2042,
+          921
+        ],
+        "standalone_crop_300dpi_px": [
+          416,
+          270,
+          2021,
+          834
+        ]
+      }
+    },
+    "object_denominator": {
+      "ok": true,
+      "detail": {
+        "glyphs": 95,
+        "graphics": 35,
+        "objects": 130,
+        "occluders": 5
+      }
+    },
+    "id_safe_map": {
+      "ok": true,
+      "detail": 130
+    },
+    "mask_counts": {
+      "ok": true,
+      "detail": {
+        "glyph_masks": 95,
+        "graphic_masks": 35
+      }
+    },
+    "masks_openable": {
+      "ok": true,
+      "detail": 130
+    },
+    "all_pairs_exact": {
+      "ok": true,
+      "detail": {
+        "rows": 8385,
+        "unique": 8385,
+        "expected": 8385
+      }
+    },
+    "pair_class_counts": {
+      "ok": true,
+      "detail": {
+        "TEXT_TEXT_INDEPENDENT": 3882,
+        "TEXT_GRAPHIC": 3325,
+        "TEXT_TEXT_SAME_PARENT": 583,
+        "GRAPHIC_GRAPHIC_TOPOLOGY": 595
+      }
+    },
+    "critical_manifest": {
+      "ok": true,
+      "detail": {
+        "rows": 71,
+        "unique": 71
+      }
+    },
+    "critical_graphic_coverage": {
+      "ok": true,
+      "detail": 35
+    },
+    "critical_pair_assets": {
+      "ok": true,
+      "detail": 71
+    },
+    "manual_object_ledger": {
+      "ok": true,
+      "detail": 130
+    },
+    "manual_pair_ledger": {
+      "ok": true,
+      "detail": {
+        "rows": 71,
+        "unique": 71
+      }
+    },
+    "hard_fail_pairs": {
+      "ok": true,
+      "detail": [
+        "P01916",
+        "P01917"
+      ]
+    },
+    "manual_machine_pair_metrics_match": {
+      "ok": true,
+      "detail": 71
+    },
+    "manual_view_ledger": {
+      "ok": true,
+      "detail": 10
+    },
+    "manual_typography_ledger": {
+      "ok": true,
+      "detail": 18
+    },
+    "manual_math_ledger": {
+      "ok": true,
+      "detail": 12
+    },
+    "math_machine": {
+      "ok": true,
+      "detail": {
+        "pmf_support": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "pmf_values": [
+          0.15,
+          0.3,
+          0.35,
+          0.2
+        ],
+        "pmf_sum": 1.0,
+        "cdf_values_at_support": [
+          0.15,
+          0.45,
+          0.8,
+          1.0
+        ],
+        "cdf_jump_differences": [
+          0.15,
+          0.3,
+          0.35,
+          0.2
+        ],
+        "pmf_nonnegative": true,
+        "cdf_nondecreasing": true,
+        "cdf_terminal_value": 1.0,
+        "right_continuity_geometry": {
+          "filled_points": [
+            [
+              1,
+              0.15
+            ],
+            [
+              2,
+              0.45
+            ],
+            [
+              3,
+              0.8
+            ],
+            [
+              4,
+              1.0
+            ]
+          ],
+          "open_points": [
+            [
+              1,
+              0.0
+            ],
+            [
+              2,
+              0.15
+            ],
+            [
+              3,
+              0.45
+            ],
+            [
+              4,
+              0.8
+            ]
+          ]
+        },
+        "source_math_rule_tokens": {
+          "overline": 0,
+          "underline": 0,
+          "hat": 0,
+          "vec": 0,
+          "frac": 0,
+          "sqrt": 0
+        },
+        "visible_math_rule_object_count": 0
+      }
+    },
+    "required_pngs": {
+      "ok": true,
+      "detail": 30
+    },
+    "machine_headers_no_manual_fields:03_objects/glyph_manifest.csv": {
+      "ok": true,
+      "detail": []
+    },
+    "machine_headers_no_manual_fields:03_objects/graphic_manifest.csv": {
+      "ok": true,
+      "detail": []
+    },
+    "machine_headers_no_manual_fields:05_pairs/critical_pair_manifest.csv": {
+      "ok": true,
+      "detail": []
+    },
+    "machine_headers_no_manual_fields:06_ledgers/after_font_audit.csv": {
+      "ok": true,
+      "detail": []
+    },
+    "machine_headers_no_manual_fields:06_ledgers/after_pixel_measurements.csv": {
+      "ok": true,
+      "detail": []
+    },
+    "machine_headers_no_manual_fields:06_ledgers/after_overlap_report.csv": {
+      "ok": true,
+      "detail": []
+    },
+    "coverage_record": {
+      "ok": true,
+      "detail": "manual_pair_coverage.md"
+    },
+    "correction_history": {
+      "ok": true,
+      "detail": "PRE_MANUAL_CORRECTION_HISTORY.md"
+    },
+    "result_status": {
+      "ok": true,
+      "detail": "SA3_FAIL_RETURN_TO_SA2"
+    }
+  }
+}

@@ -1,0 +1,196 @@
+% v2.7.0 figure UID: FIG-P668-01
+% Deterministic analytic Dirichlet densities on an N=24 barycentric mesh.
+\begingroup
+\tikzset{slfig-FIG-P668-01/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P668-01,slfig high,>=Stealth,
+  every node/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont,align=center},
+  alt={对象—关系—结论：三个同尺度三分类单纯形均由给定Dirichlet密度公式逐网格计算；当全部形状分量为2时深色集中于中心且三面密度趋零，当全部为1时全域同色且密度恒为2，当全部为1/2时深色移向各面和顶点邻域且密度在边界发散。因此形状参数跨过1改变的是密度的边界行为，而不是单纯形本身。}]
+\def\SLPN{24}
+\def\SLPL{3.6}
+\def\SLPH{3.117691454}
+\def\SLPellmin{-1.224073476033}
+\def\SLPellmax{2.777394473238}
+
+% #1 selects Dir(2,2,2), Dir(1,1,1), or Dir(1/2,1/2,1/2).
+% #2--#4 are a strictly interior barycentric sample point.
+\newcommand{\SLPSetDensity}[4]{%
+  \ifcase#1\relax
+    \pgfmathsetmacro{\SLPdensity}{120*(#2)*(#3)*(#4)}%
+  \or
+    \pgfmathsetmacro{\SLPdensity}{2}%
+  \or
+    \pgfmathsetmacro{\SLPdensity}{1/(2*pi*sqrt((#2)*(#3)*(#4)))}%
+  \fi
+  \pgfmathsetmacro{\SLPell}{ln(\SLPdensity)}%
+  \pgfmathsetmacro{\SLPfraction}{max(0,min(.999999,(\SLPell-\SLPellmin)/(\SLPellmax-\SLPellmin)))}%
+  \pgfmathtruncatemacro{\SLPband}{floor(6*\SLPfraction)}%
+  \ifcase\SLPband\relax
+    \def\SLPshade{12}%
+  \or\def\SLPshade{27}%
+  \or\def\SLPshade{42}%
+  \or\def\SLPshade{57}%
+  \or\def\SLPshade{72}%
+  \or\def\SLPshade{87}%
+  \fi}
+
+% Fixed shared log-density thresholds receive redundant line-style encoding.
+\newcommand{\SLPSetContourStyle}[1]{%
+  \ifcase#1\relax
+    \def\SLPdash{densely dotted}%
+  \or\def\SLPdash{densely dotted}%
+  \or\def\SLPdash{dotted}%
+  \or\def\SLPdash{densely dashed}%
+  \or\def\SLPdash{dash dot}%
+  \or\def\SLPdash{solid}%
+  \fi}
+
+\newcommand{\SLPFillPanel}[1]{%
+  % Upward cells: centroid ((i+1/3)/N,(j+1/3)/N) is strictly interior.
+  \foreach \SLPi in {0,...,23}{%
+    \pgfmathtruncatemacro{\SLPjmax}{23-\SLPi}%
+    \foreach \SLPj in {0,...,\SLPjmax}{%
+      \SLPSetDensity{#1}
+        {1-(\SLPi+.333333333333)/\SLPN-(\SLPj+.333333333333)/\SLPN}
+        {(\SLPi+.333333333333)/\SLPN}{(\SLPj+.333333333333)/\SLPN}%
+      \path[fill=SLBlue!\SLPshade!white,draw=SLBlue!\SLPshade!white,line width=.04pt]
+        ({\SLPL*(\SLPi/\SLPN)+.5*\SLPL*(\SLPj/\SLPN)},{\SLPH*(\SLPj/\SLPN)})--
+        ({\SLPL*((\SLPi+1)/\SLPN)+.5*\SLPL*(\SLPj/\SLPN)},{\SLPH*(\SLPj/\SLPN)})--
+        ({\SLPL*(\SLPi/\SLPN)+.5*\SLPL*((\SLPj+1)/\SLPN)},{\SLPH*((\SLPj+1)/\SLPN)})--cycle;
+    }%
+  }%
+  % Downward cells: centroid ((i+2/3)/N,(j+2/3)/N) is strictly interior.
+  \foreach \SLPi in {0,...,22}{%
+    \pgfmathtruncatemacro{\SLPjmax}{22-\SLPi}%
+    \foreach \SLPj in {0,...,\SLPjmax}{%
+      \SLPSetDensity{#1}
+        {1-(\SLPi+.666666666667)/\SLPN-(\SLPj+.666666666667)/\SLPN}
+        {(\SLPi+.666666666667)/\SLPN}{(\SLPj+.666666666667)/\SLPN}%
+      \path[fill=SLBlue!\SLPshade!white,draw=SLBlue!\SLPshade!white,line width=.04pt]
+        ({\SLPL*((\SLPi+1)/\SLPN)+.5*\SLPL*(\SLPj/\SLPN)},{\SLPH*(\SLPj/\SLPN)})--
+        ({\SLPL*(\SLPi/\SLPN)+.5*\SLPL*((\SLPj+1)/\SLPN)},{\SLPH*((\SLPj+1)/\SLPN)})--
+        ({\SLPL*((\SLPi+1)/\SLPN)+.5*\SLPL*((\SLPj+1)/\SLPN)},{\SLPH*((\SLPj+1)/\SLPN)})--cycle;
+    }%
+  }%
+  % Draw only boundaries between formula-derived fixed bands, not hand-drawn contours.
+  \foreach \SLPi in {0,...,23}{%
+    \pgfmathtruncatemacro{\SLPjmax}{23-\SLPi}%
+    \foreach \SLPj in {0,...,\SLPjmax}{%
+      \pgfmathtruncatemacro{\SLPsum}{\SLPi+\SLPj}%
+      \SLPSetDensity{#1}
+        {1-(\SLPi+.333333333333)/\SLPN-(\SLPj+.333333333333)/\SLPN}
+        {(\SLPi+.333333333333)/\SLPN}{(\SLPj+.333333333333)/\SLPN}%
+      \edef\SLPbandA{\SLPband}%
+      \ifnum\SLPsum<23\relax
+        \SLPSetDensity{#1}
+          {1-(\SLPi+.666666666667)/\SLPN-(\SLPj+.666666666667)/\SLPN}
+          {(\SLPi+.666666666667)/\SLPN}{(\SLPj+.666666666667)/\SLPN}%
+        \edef\SLPbandB{\SLPband}%
+        \ifnum\SLPbandA=\SLPbandB\relax\else
+          \pgfmathtruncatemacro{\SLPthreshold}{max(\SLPbandA,\SLPbandB)}%
+          \SLPSetContourStyle{\SLPthreshold}%
+          \draw[draw=SLRule,line width=.23pt,\SLPdash]
+            ({\SLPL*((\SLPi+1)/\SLPN)+.5*\SLPL*(\SLPj/\SLPN)},{\SLPH*(\SLPj/\SLPN)})--
+            ({\SLPL*(\SLPi/\SLPN)+.5*\SLPL*((\SLPj+1)/\SLPN)},{\SLPH*((\SLPj+1)/\SLPN)});
+        \fi
+      \fi
+      \ifnum\SLPj>0\relax
+        \SLPSetDensity{#1}
+          {1-(\SLPi+.666666666667)/\SLPN-(\SLPj-.333333333333)/\SLPN}
+          {(\SLPi+.666666666667)/\SLPN}{(\SLPj-.333333333333)/\SLPN}%
+        \edef\SLPbandB{\SLPband}%
+        \ifnum\SLPbandA=\SLPbandB\relax\else
+          \pgfmathtruncatemacro{\SLPthreshold}{max(\SLPbandA,\SLPbandB)}%
+          \SLPSetContourStyle{\SLPthreshold}%
+          \draw[draw=SLRule,line width=.23pt,\SLPdash]
+            ({\SLPL*(\SLPi/\SLPN)+.5*\SLPL*(\SLPj/\SLPN)},{\SLPH*(\SLPj/\SLPN)})--
+            ({\SLPL*((\SLPi+1)/\SLPN)+.5*\SLPL*(\SLPj/\SLPN)},{\SLPH*(\SLPj/\SLPN)});
+        \fi
+      \fi
+      \ifnum\SLPi>0\relax
+        \SLPSetDensity{#1}
+          {1-(\SLPi-.333333333333)/\SLPN-(\SLPj+.666666666667)/\SLPN}
+          {(\SLPi-.333333333333)/\SLPN}{(\SLPj+.666666666667)/\SLPN}%
+        \edef\SLPbandB{\SLPband}%
+        \ifnum\SLPbandA=\SLPbandB\relax\else
+          \pgfmathtruncatemacro{\SLPthreshold}{max(\SLPbandA,\SLPbandB)}%
+          \SLPSetContourStyle{\SLPthreshold}%
+          \draw[draw=SLRule,line width=.23pt,\SLPdash]
+            ({\SLPL*(\SLPi/\SLPN)+.5*\SLPL*(\SLPj/\SLPN)},{\SLPH*(\SLPj/\SLPN)})--
+            ({\SLPL*(\SLPi/\SLPN)+.5*\SLPL*((\SLPj+1)/\SLPN)},{\SLPH*((\SLPj+1)/\SLPN)});
+        \fi
+      \fi
+    }%
+  }}
+
+\newcommand{\SLPPanel}[4]{%
+  \begin{scope}[shift={(#2,0)}]
+    \SLPFillPanel{#1}
+    \draw[draw=SLRule,line width=.78pt] (0,0)--(\SLPL,0)--(.5*\SLPL,\SLPH)--cycle;
+    \node[font=\fontsize{10.1pt}{12.1pt}\selectfont\bfseries,text=SLBlue]
+      at (.5*\SLPL,3.58) {#3};
+    \node[fill=white,fill opacity=.90,text opacity=1,rounded corners=1pt,
+      inner xsep=2pt,inner ysep=1pt] at (.5*\SLPL,-.47) {#4};
+    \node[anchor=south west,inner sep=1.5pt] at (0,0) {$(1,0,0)$};
+    \node[anchor=south east,inner sep=1.5pt] at (\SLPL,0) {$(0,1,0)$};
+    \node[anchor=north,inner sep=1.5pt] at (.5*\SLPL,\SLPH) {$(0,0,1)$};
+    \ifcase#1\relax
+      \draw[draw=SLRule,line width=.72pt] (.5*\SLPL,1.039230485) circle (2.8pt);
+      \draw[draw=SLRule,line width=.72pt] ({.5*\SLPL-.07},1.039230485)--({.5*\SLPL+.07},1.039230485);
+      \draw[draw=SLRule,line width=.72pt] (.5*\SLPL,.969230485)--(.5*\SLPL,1.109230485);
+      \node[fill=white,rounded corners=1pt,inner sep=1.5pt] (SLPmode)
+        at (.5*\SLPL,1.70) {唯一内点众数};
+      \draw[-{Stealth[length=1.5mm]},draw=SLRule,line width=.52pt]
+        (SLPmode.south) -- (.5*\SLPL,1.12);
+      \node[fill=white,inner sep=1pt] at (.5*\SLPL,.14) {$p\to0$};
+      \node[fill=white,inner sep=1pt,rotate=60] at (.53,1.06) {$p\to0$};
+      \node[fill=white,inner sep=1pt,rotate=-60] at (3.07,1.06) {$p\to0$};
+    \or
+      \node[fill=white,rounded corners=1pt,inner sep=2pt,
+        font=\fontsize{10.1pt}{12.1pt}\selectfont\bfseries] at (.5*\SLPL,1.30)
+        {$p\equiv2$（全域均匀）};
+    \or
+      \node[fill=white,inner sep=1pt] at (.5*\SLPL,.14) {$p\to\infty$};
+      \node[fill=white,inner sep=1pt,rotate=60] at (.53,1.06) {$p\to\infty$};
+      \node[fill=white,inner sep=1pt,rotate=-60] at (3.07,1.06) {$p\to\infty$};
+      \node[fill=white,rounded corners=1pt,inner sep=1.5pt] (SLPvertex) at (.5*\SLPL,2.12)
+        {顶点邻域最强};
+      \draw[-{Stealth[length=1.7mm]},draw=SLRule,line width=.55pt]
+        (SLPvertex.north) -- ({.5*\SLPL-.20},2.76);
+    \fi
+  \end{scope}}
+
+\SLPPanel{0}{0}{\textbf{(a)} 全部 $\alpha_i>1$\\$\alpha=(2,2,2)$}
+  {$p=120\theta_1\theta_2\theta_3$}
+\SLPPanel{1}{4.10}{\textbf{(b)} 全部 $\alpha_i=1$\\$\alpha=(1,1,1)$}
+  {$p=2$}
+\SLPPanel{2}{8.20}{\textbf{(c)} 全部 $\alpha_i<1$\\$\alpha=(1/2,1/2,1/2)$}
+  {$p=(2\pi)^{-1}(\theta_1\theta_2\theta_3)^{-1/2}$}
+
+\node[draw=SLRule,fill=white,rounded corners=2pt,text width=126mm,
+  inner xsep=2.5mm,inner ysep=1.3mm] at (5.90,-1.08)
+  {$\alpha_i>0,\quad \boldsymbol\theta\in\Delta_2^{\circ},\quad
+    p(\boldsymbol\theta\mid\boldsymbol\alpha)=B(\boldsymbol\alpha)^{-1}
+    \prod_{i=1}^3\theta_i^{\alpha_i-1}$；三组均值均为 $(1/3,1/3,1/3)$。};
+
+\node[anchor=east] at (2.18,-1.79) {$\ell=\log p$};
+\foreach \SLPk/\SLPshade in {0/12,1/27,2/42,3/57,4/72,5/87}{%
+  \path[fill=SLBlue!\SLPshade!white]
+    ({2.28+.68*\SLPk},-1.98) rectangle ({2.96+.68*\SLPk},-1.62);}
+\draw[draw=SLRule,line width=.48pt] (2.28,-1.98) rectangle (6.36,-1.62);
+\node[anchor=north] at (2.28,-2.00) {$-1.224$};
+\node[anchor=north] at (6.36,-2.00) {$2.777$};
+\node[anchor=west,align=left] at (6.62,-1.80)
+  {共同色阶；五条色带边界为共同固定阈值\\
+   $N=24$，每个小三角只在严格内点重心求值};
+\node[anchor=north] at (5.90,-2.35)
+  {$\varepsilon=0.01$ 只定义显示端点；真实边界仅按 $0/2/\infty$ 的解析极限标注。};
+\end{tikzpicture}
+\captionsetup{width=.96\linewidth}
+\caption{三元Dirichlet的全部形状分量从大于1跨到等于1再到小于1时，密度由内部集中变为均匀，并在边界发散。}
+\label{fig:V5-C05-dirichlet-shape-atlas}
+\end{figure}
+\endgroup

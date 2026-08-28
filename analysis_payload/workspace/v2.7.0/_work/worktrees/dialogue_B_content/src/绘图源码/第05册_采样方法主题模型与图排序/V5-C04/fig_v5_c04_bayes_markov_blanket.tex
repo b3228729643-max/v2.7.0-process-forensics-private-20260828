@@ -1,0 +1,52 @@
+% v2.6.0 figure UID: FIG-P641-01
+% Image-guided reverse redraw: preserve exact factor-graph topology and isolate all annotations from paths.
+\tikzset{slfig-FIG-P641-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P641-01,
+  >=Stealth,
+  var/.style={circle,draw=SLRuleGray,fill=white,minimum size=12mm,font=\fontsize{9.5pt}{11.4pt}\selectfont},
+  blanket/.style={circle,draw=SLMidBlue,fill=SLSoftBlue,minimum size=12mm,font=\fontsize{9.5pt}{11.4pt}\selectfont},
+  focus/.style={circle,draw=SLDeepBlue,fill=SLDeepBlue,text=white,
+    minimum size=13mm,font=\fontsize{9.5pt}{11.4pt}\selectfont\bfseries},
+  fac/.style={rectangle,draw=SLRuleGray,fill=SLSoftGray,minimum size=6mm,
+    inner xsep=4pt,inner ysep=2.5pt,font=\fontsize{9.5pt}{11.4pt}\selectfont},
+  activefac/.style={rectangle,draw=SLMidBlue,fill=SLSoftBlue,minimum size=7mm,
+    inner xsep=4pt,inner ysep=2.5pt,font=\fontsize{9.5pt}{11.4pt}\selectfont},
+  edge/.style={draw=SLGray,line width=.65pt},
+  activeedge/.style={draw=SLBlue,line width=.95pt},
+  scale=1.100,
+  >={Stealth[length=2.3mm,width=1.6mm]},
+  every path/.append style={line cap=round,line join=round},
+  every node/.append style={line width=0.8pt},
+  alt={对象—关系—结论：因子图中更新θ只需读取与θ相连的两个因子p(θ给定α)和p(z,y给定θ)；Markov毯变量为α,z,y，而与θ无关的因子p(α)可从满条件核中消去}]
+\node[fac] (fa) at (-5.0,0) {$p(\alpha)$};
+\node[blanket] (alpha) at (-3.5,0) {$\alpha$};
+\node[activefac] (ft) at (-1.8,0) {$p(\theta\mid\alpha)$};
+\node[focus] (theta) at (0,0) {$\theta$};
+\node[activefac] (fzy) at (2.0,0) {$p(z,y\mid\theta)$};
+\node[blanket] (z) at (4.0,1.05) {$z$};
+\node[blanket] (y) at (4.0,-1.05) {$y$};
+
+\draw[edge] (fa)--(alpha);
+\draw[activeedge] (alpha)--(ft)--(theta)--(fzy)--(z);
+\draw[activeedge] (fzy)--(y);
+
+\foreach \v in {alpha,z,y}{
+  \node[draw=SLTeal,line width=.70pt,dash pattern=on 2.2pt off 1.6pt,
+    rounded corners=7pt,fit=(\v),inner sep=3pt] {};
+}
+\node[font=\fontsize{9.2pt}{11.0pt}\selectfont,text=SLTeal] at (1.0,1.80)
+ {虚线圈：Markov 毯变量 $\alpha,z,y$};
+\node[align=left,font=\fontsize{9.5pt}{11.4pt}\selectfont] at (0,-2.15)
+ {$\displaystyle \pi(\theta\mid\alpha,z,y)\propto
+ p(\theta\mid\alpha)\,p(z,y\mid\theta)$};
+\node[align=center,font=\fontsize{9.5pt}{11.4pt}\selectfont,text=SLTextGray] at (-4.65,-1.48)
+ {$p(\alpha)$与$\theta$无关\\置于毯变量标记外并消去};
+\draw[line width=0.8pt,->,draw=SLTextGray] (-4.75,-.95) -- (fa.south);
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{因子图中更新$\theta$只需读取与$\theta$相连的两个因子$p(\theta\mid\alpha)$和$p(z,y\mid\theta)$；Markov毯变量为$\alpha,z,y$，而与$\theta$无关的因子$p(\alpha)$可从满条件核中消去}
+\label{fig:V5-C04-bayes-markov-blanket}
+\end{figure}

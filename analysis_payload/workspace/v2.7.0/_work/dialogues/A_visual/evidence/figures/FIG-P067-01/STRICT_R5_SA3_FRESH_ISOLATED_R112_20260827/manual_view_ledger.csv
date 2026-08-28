@@ -1,0 +1,7 @@
+view_id,path,opened_by,opened_native_or_original,readability,tofu_or_wrong_code,real_clip,obvious_imbalance,grayscale,page_fusion,semantic_geometry,decision,note
+VIEW-01,views/full_page_200dpi.png,SA3-R112-FRESH,true,true,false,false,false,N/A,true,FAIL,FAIL,Target is naturally integrated on printed page 56; upper step path contradicts the intended CDF.
+VIEW-02,views/full_page_300dpi.png,SA3-R112-FRESH,true,true,false,false,false,N/A,true,FAIL,FAIL,Native page confirms the same left-shifted step geometry.
+VIEW-03,views/figure_crop_300dpi.png,SA3-R112-FRESH,true,true,false,false,false,N/A,N/A,FAIL,FAIL,Closed/open markers are clear but the connecting path takes the post-jump height before each support point.
+VIEW-04,views/standalone_300dpi.png,SA3-R112-FRESH,true,true,false,false,false,N/A,N/A,FAIL,FAIL,PMF is correct; CDF connecting path is semantically inconsistent.
+VIEW-05,views/grayscale_300dpi.png,SA3-R112-FRESH,true,true,false,false,false,true,N/A,FAIL,FAIL,All objects remain readable in grayscale; the semantic defect remains obvious.
+VIEW-06,views/after_text_measurement_overlay_300dpi.png,SA3-R112-FRESH,true,true,false,false,false,N/A,N/A,FAIL,FAIL,All 130 IDs are navigable; overlay is dense but complete and is not used as a presentation view.

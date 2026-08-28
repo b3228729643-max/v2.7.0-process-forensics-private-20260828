@@ -1,0 +1,33 @@
+object_id,manual_decision,viewed_evidence,clip_specific_reason
+O-G01,PASS,objects/cards/O_G01.png,current border has 0 edge-touch pixels and nearest crop edge distance 23 px; both rounded corners are intact.
+O-G02,PASS,objects/cards/O_G02.png,proposal border has 0 clip pixels and 205 px edge distance; its full perimeter is visible.
+O-G03,PASS,objects/cards/O_G03.png,ratio border has 0 clip pixels and remains 102 px inside the crop; no side is truncated.
+O-G04,PASS,objects/cards/O_G04.png,fraction rule has 0 clip pixels and 537 px edge clearance; both endpoints are present.
+O-G05,PASS,objects/cards/O_G05.png,decision diamond has 0 clip pixels and 296 px crop clearance; all four vertices are retained.
+O-G06,PASS,objects/cards/O_G06.png,accepted border has 0 clip pixels and nearest edge distance 19 px; the low left/right rounded corners remain complete.
+O-G07,PASS,objects/cards/O_G07.png,rejected double border has 0 clip pixels and 320 px edge distance; both outlines are fully present.
+O-G08,PASS,objects/cards/O_G08.png,proposal arrow has 0 clip pixels and 155 px edge distance; shaft and arrowhead are complete.
+O-G09,PASS,objects/cards/O_G09.png,calculation arrow has 0 clip pixels and 337 px clearance; no endpoint is lost.
+O-G10,PASS,objects/cards/O_G10.png,decision arrow has 0 clip pixels and 616 px edge distance; its arrowhead is intact.
+O-G11,PASS,objects/cards/O_G11.png,accept branch has 0 clip pixels and 272 px clearance; the oblique arrow reaches its visible endpoint.
+O-G12,PASS,objects/cards/O_G12.png,reject branch has 0 clip pixels and 564 px clearance; the dash-dot pattern and head are retained.
+O-G13,PASS,objects/cards/O_G13.png,self-loop arrow has 0 clip pixels and 180 px edge distance; the entire loop and return head are visible.
+O-T01,PASS,objects/cards/O_T01.png,current title has 0 clipped ink pixels and 48 px edge distance; all four glyphs are complete.
+O-T02,PASS,objects/cards/O_T02.png,current formula has 0 clipped pixels and 100 px clearance; subscript and x remain intact.
+O-T03,PASS,objects/cards/O_T03.png,proposal edge label has 0 clipped pixels and 166 px edge distance; both glyphs are complete.
+O-T04,PASS,objects/cards/O_T04.png,proposal instruction has 0 clipped pixels and 231 px clearance; line endpoints are visible.
+O-T05,PASS,objects/cards/O_T05.png,proposal formula has 0 clipped pixels and 283 px edge distance; Y and y are complete.
+O-T06,PASS,objects/cards/O_T06.png,calculation label has 0 clipped pixels and 354 px clearance; neither glyph touches the crop.
+O-T07,PASS,objects/cards/O_T07.png,ratio heading has 0 clipped pixels and 430 px edge distance; the closing condition mark is retained.
+O-T08,PASS,objects/cards/O_T08.png,acceptance formula has 0 clipped pixels and 478 px clearance; both braces and denominator endpoints are present.
+O-T09,PASS,objects/cards/O_T09.png,decision label has 0 clipped pixels and 628 px edge distance; both characters are intact.
+O-T10,PASS,objects/cards/O_T10.png,decision instruction has 0 clipped pixels and 572 px clearance; the two lines and final question mark are complete.
+O-T11,PASS,objects/cards/O_T11.png,accept label has 0 clipped pixels and 290 px edge distance; both glyphs are preserved.
+O-T12,PASS,objects/cards/O_T12.png,reject label has 0 clipped pixels and 594 px clearance; no character stroke is cut.
+O-T13,PASS,objects/cards/O_T13.png,accepted title has 0 clipped pixels and 191 px edge distance; all four glyphs are complete.
+O-T14,PASS,objects/cards/O_T14.png,accepted update formula has 0 clipped pixels and 193 px clearance; subscript and terminal y are intact.
+O-T15,PASS,objects/cards/O_T15.png,rejected title has 0 clipped pixels and 415 px edge distance; all eight glyphs are visible.
+O-T16,PASS,objects/cards/O_T16.png,rejected update formula has 0 clipped pixels and 454 px clearance; subscript and terminal x are intact.
+O-T17,PASS,objects/cards/O_T17.png,self-loop label has 0 clipped pixels and 104 px edge distance; punctuation and terminal x are complete.
+O-T18,PASS,objects/cards/O_T18.png,caption label has 0 clipped pixels and 33 px edge distance; 图 and 32.5 are fully retained.
+O-T19,PASS,objects/cards/O_T19.png,caption text has 0 clipped pixels and 27 px edge distance; the whole sentence including final punctuation is present.

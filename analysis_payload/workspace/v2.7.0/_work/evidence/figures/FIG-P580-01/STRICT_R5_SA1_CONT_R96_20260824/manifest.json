@@ -1,0 +1,75 @@
+{
+  "figure_id": "FIG-P580-01",
+  "review": "STRICT_R5_SA1_CONT_R96_20260824",
+  "terminal_state": "PASS_TO_SA3",
+  "decision_date": "2026-08-24",
+  "canonical_work_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work",
+  "authority": {
+    "pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r96_fullbook\\main_full.pdf",
+    "pdf_sha256": "8EED8765A4856C4C197262DEA06E283790FBA8DA906C70C26FC7BD56F6F7E5E8",
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C02\\fig_v5_c02_is_support.tex",
+    "source_sha256": "F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161",
+    "physical_page": 628,
+    "printed_page": 615,
+    "figure": "31.6"
+  },
+  "manual_closure": {
+    "glyph_tri_view": {
+      "passed": 235,
+      "total": 235,
+      "contact_sheets": {
+        "passed": 30,
+        "total": 30
+      }
+    },
+    "low_profile_controls": {
+      "passed": 8,
+      "total": 8,
+      "glyph": "G0199"
+    },
+    "critical_relations": {
+      "passed": 212,
+      "total": 212,
+      "classes": {
+        "TT": 152,
+        "TG": 1,
+        "GG": 59
+      },
+      "direct_8x_non_tt": 60
+    },
+    "four_view_math_font_coordination": "PASS"
+  },
+  "pair_universe": {
+    "foreground_objects": 260,
+    "all_unordered_pairs": 33670,
+    "gg_pairs": 300,
+    "illegal_overlap_pairs": 0,
+    "illegal_overlap_pixels": 0,
+    "clip_pixels": 0,
+    "clearance_failure_pairs": 0,
+    "raw_overlap_candidate_classification": {
+      "same_parent": 0,
+      "named_source_intent": 48,
+      "mask_artifact": 0,
+      "true_illegal": 0
+    },
+    "separate_same_parent_allocations": 4,
+    "independent_min_clearance_px": {
+      "TT": 11.1803,
+      "TG": 11.1803
+    }
+  },
+  "font_role": {
+    "all_235_rows_pass": true,
+    "final_role_ratio_failures": [],
+    "title_to_base_effective_ratio": 1.0625,
+    "required_cjk_title_base_interval": [
+      1.05,
+      1.2
+    ]
+  },
+  "excluded_non_decisional_legacy_color_projection_assertions": 32,
+  "preterminal_integrity": "reports/preterminal_integrity_check.json",
+  "terminal_report": "reports/SA1_FINAL_DECISION.md",
+  "stop_marker": "WRITE_STOPPED"
+}

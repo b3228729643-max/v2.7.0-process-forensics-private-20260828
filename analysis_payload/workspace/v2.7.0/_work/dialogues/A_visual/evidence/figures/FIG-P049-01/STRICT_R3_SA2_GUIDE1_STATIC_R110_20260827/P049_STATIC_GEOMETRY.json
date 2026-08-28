@@ -1,0 +1,83 @@
+{
+  "HANDOFF_ID": "A-R110-P049-SA2-GUIDE1-STATIC-R3-20260827",
+  "UID": "FIG-P049-01",
+  "candidate": "R110",
+  "status": "STATIC_ONLY_NOT_RENDERED_NOT_PASS",
+  "source_before_sha256": "F9D4040ABB708F8043C619FB8C59B9CCCFDB2938E1BBD54B03B1E5D940F2999C",
+  "source_after_sha256": "27BF53A0673A2D57308A836827CC8F0463BE725A11D6826E6BB94CAA91A9BB7E",
+  "guide1": {
+    "start": [4.12, 2.78],
+    "bend": [1.20, 2.45],
+    "endpoint": [0.84, 1.728],
+    "bend_count_before": 1,
+    "bend_count_after": 1,
+    "endpoint_exact_fraction": {
+      "x": "21/25",
+      "y": "216/125"
+    },
+    "c3_equation": "x^2/9+y^2/3.24=1",
+    "endpoint_c3_terms": {
+      "x_term": "49/625",
+      "y_term": "576/625",
+      "sum": "625/625"
+    },
+    "endpoint_c3_exact": true
+  },
+  "contour_intersections": {
+    "segment_1_f_start": 4.271353086419753,
+    "segment_1_f_end": 2.0126234567901236,
+    "segment_1_c3_roots_in_closed_segment": 0,
+    "segment_2_f_start": 2.0126234567901236,
+    "segment_2_f_end": 1.0,
+    "segment_2_c3_roots_t": [1.0, 5.776842624220867],
+    "segment_2_c3_roots_in_closed_segment": 1,
+    "only_contour_contact": "intentional final endpoint on c3",
+    "c1_c2_contact_count": 0
+  },
+  "native_300dpi_axis_scale_px_per_unit": 118.50755,
+  "minimum_centerline_clearance": {
+    "guide2_axis_units": 0.6285331388550869,
+    "guide2_px": 74.48592237952614,
+    "guide3_axis_units": 1.299739832454315,
+    "guide3_px": 154.02898318157136,
+    "gradient_axis_units": 0.682640756114404,
+    "gradient_px": 80.89808353726553,
+    "tangent_axis_units": 0.5093372996889627,
+    "tangent_px": 60.36031550975473,
+    "right_angle_cluster_axis_units": 1.37736214375526,
+    "right_angle_cluster_px": 163.22781311918365,
+    "x_axis_axis_units": 1.728,
+    "x_axis_px": 204.7810464,
+    "y_axis_axis_units": 0.84,
+    "y_axis_px": 99.546342
+  },
+  "minimum_projected_text_bbox_clearance_300dpi_px": {
+    "gradient_label": 19.827932684242658,
+    "tangent_label": 33.3757714857425,
+    "point_P_label": 103.56341876666662,
+    "note_2": 64.70878769606183,
+    "note_3": 128.94175269305896,
+    "caption": 493.6941604333333,
+    "note_1": "intentional connection at s1.west; path immediately leaves to the left"
+  },
+  "page_and_layout": {
+    "axis_ymax": 3.3,
+    "guide1_max_y": 2.78,
+    "top_margin_axis_units": 0.52,
+    "top_margin_px": 61.623926,
+    "caption_intersection": false,
+    "page_intersection": false
+  },
+  "intersection_counts": {
+    "guide2": 0,
+    "guide3": 0,
+    "gradient": 0,
+    "tangent": 0,
+    "right_angle_cluster": 0,
+    "axes": 0,
+    "unrelated_contours": 0,
+    "note_text_excluding_intentional_s1_anchor": 0,
+    "labels": 0,
+    "caption": 0
+  }
+}

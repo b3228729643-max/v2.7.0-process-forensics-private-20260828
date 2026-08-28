@@ -1,0 +1,21 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{636}
+\setcounter{chapter}{32}
+\setcounter{figure}{4}
+\pagestyle{headings}
+\chaptermark{马尔可夫链蒙特卡罗法}
+\sectionmark{接受率推导}
+\MetropolisHastings{} 算法从当前状态 $x$ 按提议分布 $q(x,\cdot)$ 产生候选 $y$。令
+$g(x,y)=\widetilde\pi(x)q(x,y)$；当 $g(x,y)>0$ 时，以
+\begin{equation}
+\alpha(x,y)=\min\!\left\{1,
+\frac{\widetilde\pi(y)q(y,x)}{\widetilde\pi(x)q(x,y)}\right\}
+\end{equation}
+决定是否接受。若 $U\sim\mathrm U(0,1)$ 且 $U\leq\alpha(x,y)$，则链转移到 $y$；否则仍记录一次旧状态 $x$。图\ref{fig:V5-C03-mh-accept-reject}展示提议、接受、拒绝与留驻的关系。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mh_accept_reject.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序：}先看从当前状态 $X_t=x$ 按 $q(x,\cdot)$ 提出候选 $Y=y$；再看在 $g(x,y)>0$ 时计算 $\alpha(x,y)$，抽取 $U\sim\mathrm U(0,1)$ 并比较 $U\le\alpha(x,y)$；最终接受时令 $X_{t+1}=y$，拒绝时仍记录一次旧状态 $X_{t+1}=x$，形成自环。
+\end{document}

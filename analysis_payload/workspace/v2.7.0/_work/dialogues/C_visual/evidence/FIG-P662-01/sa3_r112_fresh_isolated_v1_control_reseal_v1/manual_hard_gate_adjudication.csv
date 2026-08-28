@@ -1,0 +1,9 @@
+HARD_GATE_ID,R168_HARD_DEFECT,OBSERVED_COUNT,MANUAL_DECISION,EVIDENCE_BASIS
+H01,missing_glyph_or_tofu,0,CLEAR,"T01--T31 native text/glyph overlay plus six text/simplex native/NN8x ROI views."
+H02,wrong_codepoint,0,CLEAR,"Every displayed Latin/Chinese/Greek/math glyph matches current source and caption."
+H03,unreadability,0,CLEAR,"Native figure, normal full-page 200 dpi, grayscale, and targeted ROIs remain readable."
+H04,visibly_obvious_imbalance,0,CLEAR,"Main route, auxiliary result, special case, notes, badges, and caption have stable hierarchy."
+H05,true_clipping,0,CLEAR,"All object, text, arrowhead, border, marker, simplex, and caption extents are complete."
+H06,illegal_visible_ink_overlap,0,CLEAR,"P001--P325 manually adjudicated; 196 machine candidates are fully classified as mask/structural contamination."
+H07,semantic_or_geometric_error,0,CLEAR,"Independent change-of-variables derivation and reading-order review confirm every displayed relation."
+H08,unresolved_candidate,0,CLEAR,"All three nonzero candidate pairs have explicit native-pixel classifications."

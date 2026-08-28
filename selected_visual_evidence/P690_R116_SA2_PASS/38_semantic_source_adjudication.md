@@ -1,0 +1,5 @@
+# Fresh SA2 semantic adjudication
+
+The current chapter fixes the topic-word parameter `\boldsymbol\varphi`, defines the single-document mean-field family `q(\boldsymbol\theta_m,\boldsymbol z_m)=Dir(\boldsymbol\theta_m)\prod_n Cat(z_{mn})`, and states that the approximation deliberately cuts posterior dependence between `\boldsymbol\theta_m` and each `z_{mn}`. The current figure preserves those roles: the left panel shows the coupled posterior; the right panel uses separate `q(\theta_m)` and `q(z_{mn})` factors with a visible cut; observed `w_{mn}` and fixed `\boldsymbol\varphi` continue to point to the assignment responsibility factor. The source caption, rendered caption on physical page 740 / printed page 727, and surrounding chapter paragraph therefore agree.
+
+R168 adjudication applies: the declared 9.2 pt body font is advisory by itself. The opened native72, 200 dpi, 300 dpi, grayscale, overlay, and native1x/NN8x evidence shows actual readability and no obvious imbalance, so it does not create a hard failure.

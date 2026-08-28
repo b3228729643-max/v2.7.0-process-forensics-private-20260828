@@ -1,0 +1,50 @@
+{
+  "uid": "FIG-P640-01",
+  "handoff_id": "C-FIG-P640-01-R106-SA1-FRESH-ISOLATED-V1",
+  "agent": "/root/sa1_fig_p640_r106_fresh_isolated",
+  "decision": "PASS",
+  "seal_version": 1,
+  "validation_result": "PASS",
+  "validation_check_count": 70,
+  "validation_failed_count": 0,
+  "manifest": {
+    "file": "MANIFEST.sha256.csv",
+    "sha256": "BA99AB2FA640C377DBE73E55EF8CC7FF218A824BE6C41EA94FC6E16C0CDB611B",
+    "covered_pre_manifest_files": 454,
+    "covered_payload_files": 446,
+    "covered_control_files": 6,
+    "covered_self_files": 2,
+    "verification_failures": 0
+  },
+  "final_ordinary_file_counts_after_write_stopped": {
+    "payload": 446,
+    "control": 9,
+    "self": 2,
+    "total": 457
+  },
+  "manual_denominators": {
+    "glyph": "242/242",
+    "object": "94/94",
+    "critical_relation": "71/71",
+    "role_peer": "49/49",
+    "view": 27,
+    "hard_gate": 20
+  },
+  "machine_denominators": {
+    "text_objects": 74,
+    "drawing_objects": 20,
+    "math_rule_objects": 1,
+    "objects": 94,
+    "unordered_pairs": 4371,
+    "glyphs": 242,
+    "critical_relations": 71
+  },
+  "control_checks": {
+    "alternate_data_stream_count": 0,
+    "cache_or_pyc_file_count": 0,
+    "cache_directory_count": 0,
+    "reparse_point_count": 0
+  },
+  "last_write_contract": "WRITE_STOPPED is created after this record and is strictly the last filesystem write in this evidence root; all subsequent checks are read-only",
+  "next_action": "Assign a different fresh isolated SA3 reviewer"
+}

@@ -1,0 +1,1050 @@
+\NeedsTeXFormat{LaTeX2e}
+\InputIfFileExists{../../../manifests/release_version.tex}{}{%
+  \PackageError{statlearnbook}{Missing manifests/release_version.tex}{Restore the single authoritative release-version file.}%
+}
+\ProvidesPackage{statlearnbook}[2026/08/17 \SLReleaseVersion\ beginner-oriented full edition for the five-volume statistical learning textbook]
+
+\RequirePackage{iftex}
+\ifLuaTeX
+  \newcommand{\SLPrimaryEngine}{LuaLaTeX}%
+\else\ifXeTeX
+  \newcommand{\SLPrimaryEngine}{XeLaTeX}%
+\else
+  \PackageError{statlearnbook}{This project requires LuaLaTeX or XeLaTeX}{Use latexmk -lualatex (preferred) or latexmk -xelatex.}%
+\fi\fi
+
+% Fonts and page geometry ----------------------------------------------------
+\RequirePackage{fontspec}
+\ifXeTeX\RequirePackage{xeCJK}\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\IfFontExistsTF{STIX Two Text}
+  {\setmainfont{STIX Two Text}[Scale=1]}
+  {\IfFontExistsTF{Libertinus Serif}
+    {\setmainfont{Libertinus Serif}[Scale=1]}
+    {\setmainfont{TeX Gyre Termes}[Scale=1]}}
+% Do not inherit Scale=MatchLowercase here: unicode-math reuses the sans face
+% for \mathsf, and the extra 0.86 scaling made transpose markers fall below
+% the PDF character-level floor even when the surrounding math ladder passed.
+\IfFontExistsTF{TeX Gyre Heros}
+  {\setsansfont{TeX Gyre Heros}[Scale=1]}
+  {\IfFontExistsTF{Libertinus Sans}
+    {\setsansfont{Libertinus Sans}[Scale=1]}
+    {\setsansfont{Latin Modern Sans}[Scale=1]}}
+\newcommand{\SLUseFandolCJK}{%
+  \setCJKmainfont{FandolSong-Regular}[Scale=1,BoldFont=FandolHei-Bold,ItalicFont=FandolKai-Regular,BoldItalicFont=FandolHei-Bold]
+  \setCJKsansfont{FandolHei-Regular}[Scale=1,BoldFont=FandolHei-Bold,ItalicFont=FandolHei-Regular,BoldItalicFont=FandolHei-Bold]
+  \newCJKfontfamily\SLTitleCJK{FandolHei-Regular}[Scale=1,BoldFont=FandolHei-Bold,ItalicFont=FandolHei-Regular,BoldItalicFont=FandolHei-Bold]
+}
+\newcommand{\SLUseNotoCJK}{%
+  \setCJKmainfont{Noto Serif SC}[Scale=1,BoldFont=Noto Sans SC Bold,ItalicFont=Noto Serif SC,BoldItalicFont=Noto Sans SC Bold]
+  \setCJKsansfont{Noto Sans SC}[Scale=1,BoldFont=Noto Sans SC Bold,ItalicFont=Noto Sans SC,BoldItalicFont=Noto Sans SC Bold]
+  \newCJKfontfamily\SLTitleCJK{Noto Sans SC}[Scale=1,BoldFont=Noto Sans SC Bold,ItalicFont=Noto Sans SC,BoldItalicFont=Noto Sans SC Bold]
+}
+\newcommand{\SLUseSourceHanCJK}{%
+  \setCJKmainfont{Source Han Serif SC}[Scale=1,BoldFont=Source Han Sans SC,ItalicFont=Source Han Serif SC,BoldItalicFont=Source Han Sans SC]
+  \setCJKsansfont{Source Han Sans SC}[Scale=1,BoldFont=Source Han Sans SC,ItalicFont=Source Han Sans SC,BoldItalicFont=Source Han Sans SC]
+  \newCJKfontfamily\SLTitleCJK{Source Han Sans SC}[Scale=1,BoldFont=Source Han Sans SC,ItalicFont=Source Han Sans SC,BoldItalicFont=Source Han Sans SC]
+}
+\newcommand{\SLUseSourceHanOrFandolCJK}{%
+  \IfFontExistsTF{Source Han Serif SC}{%
+    \IfFontExistsTF{Source Han Sans SC}{\SLUseSourceHanCJK}{\SLUseFandolCJK}%
+  }{\SLUseFandolCJK}%
+}
+\newcommand{\SLUseNotoOrFallbackCJK}{%
+  \IfFontExistsTF{Noto Serif SC}{%
+    \IfFontExistsTF{Noto Sans SC}{%
+      \IfFontExistsTF{Noto Sans SC Bold}{\SLUseNotoCJK}{\SLUseSourceHanOrFandolCJK}%
+    }{\SLUseSourceHanOrFandolCJK}%
+  }{\SLUseSourceHanOrFandolCJK}%
+}
+\SLUseNotoOrFallbackCJK
+% Keep audited English data tokens and technical names intact.  A word listed
+% without discretionary points is never split by English hyphenation.
+\hyphenation{produce Factorization Machine Ranking Hessian PageRank softmax Dirichlet Metropolis Hastings Baum Welch}
+
+\RequirePackage{amsmath}
+\RequirePackage{mathtools}
+\RequirePackage{unicode-math}
+\IfFontExistsTF{STIX Two Math}
+  {\setmathfont{STIX Two Math}[Scale=1]}
+  {\IfFontExistsTF{Libertinus Math}
+    {\setmathfont{Libertinus Math}[Scale=1]}
+    {\setmathfont{TeX Gyre Termes Math}[Scale=1]}}
+% TeX Gyre Termes Math has no bold face.  Supply a compatible TeX Live
+% bold math font so \boldsymbol uses a real embedded face instead of NFSS
+% shape substitution.
+\setmathfont{XITSMath-Bold.otf}[Scale=1,version=bold]
+
+\RequirePackage[a4paper,inner=26mm,outer=22mm,top=24mm,bottom=24mm,headheight=15pt,headsep=7mm,footskip=12mm]{geometry}
+\RequirePackage{microtype}
+\RequirePackage{setspace}
+\RequirePackage{needspace}
+\RequirePackage{placeins}
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+% Electronic reading favours natural float placement over section-end flushes.
+% Keep conservative per-page limits so compactness never turns into crowding.
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\renewcommand{\topfraction}{.92}
+\renewcommand{\bottomfraction}{.75}
+\renewcommand{\textfraction}{.08}
+\renewcommand{\floatpagefraction}{.82}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{7pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+% Build modes are selected by a tiny wrapper before this package is loaded.
+% The default remains the complete edition, so the historical main.tex entry
+% keeps its stable behaviour.
+\providecommand{\SLBuildMode}{full}
+\newif\ifSLStudentEdition
+\newif\ifSLFullEdition
+\ifdefstring{\SLBuildMode}{student}{%
+  \SLStudentEditiontrue\SLFullEditionfalse
+}{%
+  \ifdefstring{\SLBuildMode}{full}{%
+    \SLStudentEditionfalse\SLFullEditiontrue
+  }{%
+    \PackageError{statlearnbook}{Unknown build mode '\SLBuildMode'}{Use student or full.}%
+  }%
+}
+\newcommand{\SLIfStudentTF}[2]{\ifSLStudentEdition#1\else#2\fi}
+\newcommand{\SLIfFullTF}[2]{\ifSLFullEdition#1\else#2\fi}
+\newcommand{\SLBuildEditionLabel}{\SLIfStudentTF{学生主线版}{完整解析版}}
+\newcommand{\SLReleasePDFName}{统计学习方法初学者讲义_合并总册\SLReleaseVersion_完整解析版.pdf}
+% Canonical mixed-language terms.  Keeping the dash and mathematical k in
+% one public interface prevents chapter titles, prose and indexes from
+% drifting between Unicode dashes, TeX dashes and upright/italic k variants.
+\DeclareRobustCommand{\DirichletMultinomial}{\texorpdfstring{Dirichlet--多项}{Dirichlet-多项}}
+\DeclareRobustCommand{\MetropolisHastings}{\texorpdfstring{Metropolis--Hastings}{Metropolis-Hastings}}
+\DeclareRobustCommand{\PageRank}{PageRank}
+\DeclareRobustCommand{\kNN}{\texorpdfstring{$k$近邻}{k近邻}}
+\DeclareRobustCommand{\kMeans}{\texorpdfstring{$k$均值}{k均值}}
+\DeclareRobustCommand{\kFold}{\texorpdfstring{$k$折}{k折}}
+% R08 layout tokens: named here and consumed by the public interfaces below.
+\newcommand{\SLBodyLineStretch}{1.33}
+\newcommand{\SLTOCFontSize}{10pt}
+\newcommand{\SLTOCLeading}{12pt}
+\newcommand{\SLLayoutPageToken}{A4; inner 26mm; outer 22mm; top/bottom 24mm}
+\newcommand{\SLLayoutHeadingToken}{chapter 23pt; section 16pt; subsection 13.5pt; subsubsection 11pt}
+\newcommand{\SLLayoutCardToken}{horizontal padding 8pt; vertical padding 5pt; border 0--0.5pt}
+\newcommand{\SLLayoutTableToken}{small; array stretch 1.15; column padding 5pt}
+\newcommand{\SLLayoutCaptionToken}{small; line stretch 1.12; bold label; quad separator; skip 5pt}
+\setstretch{\SLBodyLineStretch}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.08\baselineskip}
+\emergencystretch=2em
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% Restrained visual system --------------------------------------------------
+\RequirePackage{xcolor}
+\definecolor{SLBodyText}{HTML}{1F2328}
+\definecolor{SLDeepBlue}{HTML}{1F4E79}
+\definecolor{SLMidBlue}{HTML}{2F7D6D}
+\definecolor{SLDefinitionBlue}{HTML}{5B8DB8}
+\definecolor{SLMethodPurple}{HTML}{6D5A8D}
+\definecolor{SLExampleBlue}{HTML}{4F6F8F}
+\definecolor{SLSelfCheckTeal}{HTML}{0F766E}
+\definecolor{SLAnswerGray}{HTML}{6B7280}
+\definecolor{SLSummaryGold}{HTML}{B7791F}
+\definecolor{SLWarningRed}{HTML}{B23A48}
+\definecolor{SLAccentOrange}{HTML}{B7791F}
+\colorlet{SLVolumeOne}{SLDeepBlue}
+\colorlet{SLVolumeTwo}{SLMidBlue}
+\colorlet{SLVolumeThree}{SLMethodPurple}
+\colorlet{SLVolumeFour}{SLDefinitionBlue}
+\colorlet{SLVolumeFive}{SLSummaryGold}
+\definecolor{SLSoftBlue}{HTML}{F2F6FA}
+\colorlet{SLVeryLightBlue}{SLSoftBlue}
+\definecolor{SLSoftGray}{HTML}{F6F7F8}
+\definecolor{SLSoftTeal}{HTML}{F1F8F6}
+\definecolor{SLRuleGray}{HTML}{B8C0C8}
+\definecolor{SLTextGray}{HTML}{4D5358}
+\definecolor{SLWarmGray}{HTML}{F5F2EE}
+\color{SLBodyText}
+
+\ctexset{
+  chapter={
+    format=\SLTitleCJK\fontsize{23pt}{27pt}\selectfont\color{SLDeepBlue},
+    name={第,章},
+    number=\arabic{chapter},
+    beforeskip=0pt,
+    afterskip=1.7ex,
+    pagestyle=fancy
+  },
+  section={format=\SLTitleCJK\fontsize{16pt}{19pt}\selectfont\color{SLDeepBlue},beforeskip=1.4ex,afterskip=0.55ex},
+  subsection={format=\SLTitleCJK\fontsize{13.5pt}{16.5pt}\selectfont\color{SLMidBlue},beforeskip=1.0ex,afterskip=0.4ex},
+  subsubsection={format=\SLTitleCJK\fontsize{11pt}{13.5pt}\selectfont\color{SLTextGray},beforeskip=1.2ex,afterskip=0.4ex}
+}
+\setcounter{secnumdepth}{3}
+% Chapter is level 0 and section is level 1 in book classes.  The printed
+% contents therefore stops at the requested second visual level, while PDF
+% bookmarks retain the full section hierarchy below.
+\setcounter{tocdepth}{1}
+
+\RequirePackage{fancyhdr}
+\newcommand{\SLNavLink}[2]{%
+  \hyperlink{#1}{\rule[-2.5mm]{0pt}{7mm}\kern1.5mm #2\kern1.5mm}%
+}
+\newcommand{\SLPageNavigation}{%
+  \SLNavLink{SL:toc}{目录}%
+  \ifnum\value{chapter}>0\relax
+    ·\SLNavLink{SL:chapter:\thechapter}{本章}%
+    ·\SLNavLink{SL:exercises:\thechapter}{练习}%
+    ·\SLNavLink{SL:answers:\thechapter}{解析}%
+  \fi
+}
+\newif\ifSLPrintMode
+\SLPrintModefalse
+\newcommand{\SLClearForMajorDivision}{%
+  \ifSLPrintMode\cleardoublepage\else\clearpage\fi
+}
+% The standard book-class \mainmatter always calls \cleardoublepage.  Keep
+% recto starts in print mode, but do not manufacture a header/footer-only page
+% in the electronic open-any edition.
+\newcommand{\SLBeginMainMatter}{%
+  \ifSLPrintMode
+    \mainmatter
+  \else
+    \clearpage
+    \@mainmattertrue
+    \pagenumbering{arabic}%
+  \fi
+}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\color{SLTextGray}\thepage\quad\leftmark}
+\fancyhead[RO]{\small\color{SLTextGray}\rightmark\quad\thepage}
+\fancyhead[LO,RE]{\small\color{SLTextGray}\SLBookShortTitle}
+\fancyfoot[C]{\ifSLPrintMode\small\color{SLTextGray}\thepage\else\small\color{SLTextGray}\SLPageNavigation\fi}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\ifSLPrintMode\small\color{SLTextGray}\thepage\else\small\color{SLTextGray}\thepage\quad\SLPageNavigation\fi}
+  \renewcommand{\headrulewidth}{0pt}
+}
+\renewcommand{\chaptermark}[1]{\markboth{第\thechapter 章\quad #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
+
+% Core mathematics, tables, figures, algorithms ----------------------------
+\RequirePackage{amsthm}
+\RequirePackage{chngcntr}
+\RequirePackage{graphicx}
+\graphicspath{{../../绘图源码/}{../figures/}{figures/}}
+\RequirePackage{booktabs}
+\RequirePackage{longtable}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage{multirow}
+\RequirePackage{float}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{enumitem}
+\setlist{topsep=3pt,itemsep=1.5pt,parsep=0pt,partopsep=0pt}
+\setlist[enumerate,1]{leftmargin=3em}
+% Set these directly after amsmath and the document class have initialized
+% their display parameters.  A second early AtBeginDocument hook changes the
+% execution order of cleveref's language initialization on TeX Live 2026.
+\setlength{\abovedisplayskip}{8pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{8pt plus 2pt minus 2pt}
+\setlength{\abovedisplayshortskip}{4pt plus 2pt}
+\setlength{\belowdisplayshortskip}{5pt plus 2pt minus 1pt}
+\RequirePackage{algorithm2e}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,matrix,shapes.geometric,
+  shapes.misc,shapes.symbols,shapes.multipart,backgrounds,decorations.pathreplacing,
+  decorations.markings,angles,quotes,patterns,patterns.meta,intersections}
+\RequirePackage{pgfplots}
+\usepgfplotslibrary{groupplots,fillbetween,statistics}
+\RequirePackage{forest}
+\pgfplotsset{
+  compat=1.18,
+  every axis/.append style={
+    label style={font=\small},
+    tick label style={font=\small},
+    legend style={font=\small},
+    axis line style={line width=.8pt},
+    tick style={line width=.7pt}
+  },
+  every axis plot/.append style={line width=1pt}
+}
+\tikzset{
+  every node/.append style={font=\small},
+  main/.style={line width=1pt},
+  helper/.style={line width=.6pt,dashed},
+  >=Stealth
+}
+\InputIfFileExists{../../../styles/figure-style-v2.3.1.tex}{}{%
+  \PackageError{statlearnbook}{Missing styles/figure-style-v2.3.1.tex}{%
+    Restore the v2.3.1 shared drawing style at the project styles directory.}%
+}
+
+% A 10/7/5pt default math ladder makes nested subscripts and superscripts
+% fall below the project's absolute 6pt PDF floor.  Preserve the normal text
+% and display sizes while raising the script ladders used by the 11pt document
+% class.  XeTeX's extracted PDF sizes are about 0.954 of the nominal math
+% sizes, so a nominal 9pt ladder is required to clear the measured 8.5pt
+% figure/algorithm gate.  Ordinary 10.95pt body math uses an 8pt deep-script
+% floor, which clears the measured 7.5pt body gate without inflating prose.
+\DeclareMathSizes{8.5}{9}{9}{9}
+\DeclareMathSizes{9}{9.3}{9.3}{9.3}
+\DeclareMathSizes{10}{10}{9}{9}
+\DeclareMathSizes{10.95}{10.95}{9}{9}
+% Wide TikZ figures are composed at 12pt before a bounded \resizebox; keep
+% both math script levels large enough that rendered labels stay >=8.5pt.
+\DeclareMathSizes{12}{12}{11.5}{11.5}
+
+\numberwithin{equation}{chapter}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+\counterwithin{algocf}{chapter}
+\captionsetup{font={small,stretch=1.12},labelfont=bf,labelsep=quad,skip=5pt}
+\captionsetup[figure]{name=图}
+\captionsetup[table]{name=表}
+\SetAlgorithmName{算法}{算法}{算法目录}
+\SetAlgoCaptionSeparator{：}
+\SetKwInput{KwIn}{输入}
+\SetKwInput{KwOut}{输出}
+\SetKwInput{KwData}{数据}
+\SetKwInput{KwResult}{结果}
+\SetKw{KwTo}{至}
+\SetKw{KwReturn}{返回}
+\SetKwFor{For}{对}{执行}{结束}
+\SetKwFor{ForEach}{对每个}{依次执行}{结束}
+\SetKwFor{While}{当}{执行}{结束}
+\SetKwIF{If}{ElseIf}{Else}{若}{则}{否则若}{否则}{结束}
+\DontPrintSemicolon
+\LinesNumbered
+% algorithm2e defaults to line numbers two relative sizes below the body,
+% which produced 5--6pt PDF text on dense algorithms.  Keep the numbers at
+% the algorithm body size so they remain legible in print and text audits.
+\SetAlgoNlRelativeSize{0}
+% relsize rounds an arbitrary 9.25pt algorithm font back to the nearest 9pt
+% size even at relative level zero.  Pin line numbers to the same absolute
+% rung as the algorithm body so PDF extraction also clears the 9pt floor.
+\renewcommand{\NlSty}[1]{\textnormal{\fontsize{9.25pt}{11.25pt}\selectfont\bfseries #1}}
+\RestyleAlgo{ruled}
+% Enforce the v1.9.0 absolute algorithm floor independently of local dense
+% pages.  Captions and line numbers remain at or above the same readable rung.
+\SetAlFnt{\fontsize{9.25pt}{11.25pt}\selectfont}
+\SetAlCapFnt{\fontsize{9.25pt}{11.25pt}\selectfont\bfseries}
+\SetAlCapNameFnt{\fontsize{9.25pt}{11.25pt}\selectfont\bfseries}
+% Machine-readable return states shared by every executable algorithm.
+\newcommand{\SLStatus}[1]{\texttt{#1}}
+\newcommand{\SLStatusCompleted}{\SLStatus{completed}}
+\newcommand{\SLStatusConverged}{\SLStatus{converged}}
+\newcommand{\SLStatusBudgetStop}{\SLStatus{budget\_stop}}
+\newcommand{\SLStatusNumericalFailure}{\SLStatus{numerical\_failure}}
+\newcommand{\SLStatusInvalidInput}{\SLStatus{invalid\_input}}
+\newcommand{\SLStatusLineSearchFailed}{\SLStatus{line\_search\_failed}}
+\newcommand{\SLStatusRandomSourceFailure}{\SLStatus{random\_source\_failure}}
+\newcommand{\SLAlgorithmPreconditions}[1]{\par\noindent\textbf{前置条件：}#1\par}
+\newcommand{\SLAlgorithmCertificate}[1]{\par\noindent\textbf{停止证书：}#1\par}
+\newcommand{\SLRobustImplementationStrip}[1]{%
+  \par\smallskip\noindent
+  \begin{minipage}{\linewidth}\fontsize{9.25pt}{11.25pt}\selectfont
+  \textcolor{SLAnswerGray}{\textbf{算法实现说明：}#1\quad
+  \hyperlink{SL:algorithm-contract}{完整 C1--C14 契约}}
+  \end{minipage}\par\smallskip
+}
+\newcommand{\SLStudentTallAlgorithmFont}{\ifSLStudentEdition\footnotesize\fi}
+\newcommand{\SLAlgorithmCaptionContract}[1]{%
+  % algorithm2e appends \endgraf inside the layout argument.  Letting that
+  % paragraph break occur inside a LuaTeX link leaves the backend in vertical
+  % mode before \pdfextension endlink.  Suppress it while the link is open,
+  % then restore the required paragraph boundary after closing the link.
+  \begingroup\let\endgraf\relax
+    \leavevmode\hyperlink{SL:algorithm-contract}{#1}%
+  \endgroup\endgraf
+}
+
+% Source-level mandatory contract for every numbered algorithm.  The actual
+% reader-facing input/output/pseudocode and adjacent complexity prose remain
+% in the chapter; this environment validates that all fourteen operational
+% fields were considered without duplicating a long checklist in the PDF.
+\newcommand{\SLAlgorithmContractReset}{%
+  \def\SLACInput{}\def\SLACOutput{}\def\SLACPreconditions{}%
+  \def\SLACInitialization{}\def\SLACLoop{}\def\SLACUpdate{}%
+  \def\SLACDomain{}\def\SLACFailure{}\def\SLACStop{}%
+  \def\SLACBudget{}\def\SLACStatus{}\def\SLACIterations{}%
+  \def\SLACDiagnostics{}\def\SLACComplexity{}%
+}
+\pgfkeys{
+  /SLAlgorithmContract/.is family,
+  /SLAlgorithmContract,
+  input/.store in=\SLACInput,
+  output/.store in=\SLACOutput,
+  preconditions/.store in=\SLACPreconditions,
+  initialization/.store in=\SLACInitialization,
+  loop/.store in=\SLACLoop,
+  update/.store in=\SLACUpdate,
+  domain/.store in=\SLACDomain,
+  failure/.store in=\SLACFailure,
+  stop/.store in=\SLACStop,
+  budget/.store in=\SLACBudget,
+  status/.store in=\SLACStatus,
+  iterations/.store in=\SLACIterations,
+  diagnostics/.store in=\SLACDiagnostics,
+  complexity/.store in=\SLACComplexity,
+  .unknown/.code={\PackageError{statlearnbook}{Unknown AlgorithmContract field '\pgfkeyscurrentname'}{Use exactly the fourteen v1.9.0 contract fields.}}
+}
+\newcommand{\SLAlgorithmContractRequire}[2]{%
+  \ifdefempty{#2}{\PackageError{statlearnbook}{Empty required field: AlgorithmContract/#1}{Supply a specific value or an explicit not-applicable rationale.}}{}%
+}
+\newcommand{\SLAlgorithmContractRequireAll}{%
+  \SLAlgorithmContractRequire{input}{\SLACInput}%
+  \SLAlgorithmContractRequire{output}{\SLACOutput}%
+  \SLAlgorithmContractRequire{preconditions}{\SLACPreconditions}%
+  \SLAlgorithmContractRequire{initialization}{\SLACInitialization}%
+  \SLAlgorithmContractRequire{loop}{\SLACLoop}%
+  \SLAlgorithmContractRequire{update}{\SLACUpdate}%
+  \SLAlgorithmContractRequire{domain}{\SLACDomain}%
+  \SLAlgorithmContractRequire{failure}{\SLACFailure}%
+  \SLAlgorithmContractRequire{stop}{\SLACStop}%
+  \SLAlgorithmContractRequire{budget}{\SLACBudget}%
+  \SLAlgorithmContractRequire{status}{\SLACStatus}%
+  \SLAlgorithmContractRequire{iterations}{\SLACIterations}%
+  \SLAlgorithmContractRequire{diagnostics}{\SLACDiagnostics}%
+  \SLAlgorithmContractRequire{complexity}{\SLACComplexity}%
+}
+\NewDocumentEnvironment{AlgorithmContract}{m}{%
+  \begingroup
+  \SLAlgorithmContractReset
+  \pgfkeys{/SLAlgorithmContract/.cd,#1}%
+  \SLAlgorithmContractRequireAll
+}{%
+  \endgroup
+}
+\SetAlgoCaptionLayout{SLAlgorithmCaptionContract}
+
+% Theorem-like environments with a shared restrained treatment --------------
+\theoremstyle{definition}
+\newtheorem{definition}{定义}[chapter]
+\newtheorem{example}{例题}[chapter]
+\newtheorem{exercise}{练习}[chapter]
+\newif\ifSLFirstExampleAnchorPending
+\SLFirstExampleAnchorPendingtrue
+\AtBeginEnvironment{example}{%
+  \ifSLFirstExampleAnchorPending
+    \phantomsection\hypertarget{SL:examples:\thechapter}{}%
+    \global\SLFirstExampleAnchorPendingfalse
+  \fi
+}
+\newtheoremstyle{slplain}%
+  {5pt}{5pt}{\normalfont}{}% body spacing and upright body font
+  {\bfseries}{}{0.5em}{}
+\theoremstyle{slplain}
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{lemma}{引理}[chapter]
+\newtheorem{corollary}{推论}[chapter]
+\newtheorem{proposition}{命题}[chapter]
+\theoremstyle{remark}
+\newtheorem{remark}{说明}[chapter]
+
+\RequirePackage[most]{tcolorbox}
+\newlength{\ExampleBeforeSkip}
+\newlength{\ExampleToSolutionSkip}
+\newlength{\SolutionAfterSkip}
+\setlength{\ExampleBeforeSkip}{6pt}
+\setlength{\ExampleToSolutionSkip}{3pt}
+\setlength{\SolutionAfterSkip}{8pt}
+\AtBeginEnvironment{proof}{\normalfont}
+\renewcommand{\proofname}{\normalfont\bfseries 证明}
+\tcolorboxenvironment{definition}{enhanced,breakable,colback=SLSoftBlue,colframe=SLDefinitionBlue,boxrule=0pt,borderline west={1.2pt}{0pt}{SLDefinitionBlue},left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=6pt,after skip=6pt}
+\tcolorboxenvironment{theorem}{enhanced,breakable,colback=SLSoftGray,colframe=SLDeepBlue,boxrule=0pt,borderline west={1.2pt}{0pt}{SLDeepBlue},left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=6pt,after skip=6pt}
+\tcolorboxenvironment{lemma}{enhanced,breakable,colback=SLSoftGray,colframe=SLDeepBlue,boxrule=0pt,borderline west={1pt}{0pt}{SLDeepBlue},left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=6pt,after skip=6pt}
+\tcolorboxenvironment{corollary}{enhanced,breakable,colback=SLSoftGray,colframe=SLDeepBlue,boxrule=0pt,borderline west={1pt}{0pt}{SLDeepBlue},left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=6pt,after skip=6pt}
+\tcolorboxenvironment{proposition}{enhanced,breakable,colback=SLSoftGray,colframe=SLDeepBlue,boxrule=0pt,borderline west={1pt}{0pt}{SLDeepBlue},left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=6pt,after skip=6pt}
+\tcolorboxenvironment{example}{enhanced,breakable,colback=white,colframe=SLRuleGray,boxrule=0pt,borderline west={1.2pt}{0pt}{SLExampleBlue},left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=\ExampleBeforeSkip,after skip=\ExampleToSolutionSkip}
+\tcolorboxenvironment{exercise}{enhanced,breakable,colback=white,colframe=SLDeepBlue,boxrule=0pt,borderline west={1.2pt}{0pt}{SLDeepBlue},left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=5pt,after skip=3pt}
+
+% The chapter source supplies the explicit, same-numbered answer heading.
+% Ordinary worked answers are not proofs.  Every answer therefore starts with
+% the same compact four-stage reading guide; the final stage may be omitted for
+% a short exercise, while the domain/dimension checkpoint remains visible.
+\newcommand{\SLSolutionStageGuide}{%
+  \begingroup\footnotesize\color{SLTextGray}%
+  \textbf{对象与条件}\enspace\textcolor{SLRuleGray}{$\blacktriangleright$}\enspace
+  \textbf{推导}\enspace\textcolor{SLRuleGray}{$\blacktriangleright$}\enspace
+  \textbf{结果核验（定义域/维数）}\enspace\textcolor{SLRuleGray}{$\blacktriangleright$}\enspace
+  \textbf{解释（简单题可省）}%
+  \endgroup
+}
+\newcommand{\SolGiven}{\par\smallskip\noindent\textbf{已知与合法条件}\quad}
+\newcommand{\SolPlan}{\par\smallskip\noindent\textbf{方法选择}\quad}
+\newcommand{\SolDerive}{\par\smallskip\noindent\textbf{推导/计算}\quad}
+\newcommand{\SolCheck}{\par\smallskip\noindent\textbf{独立核验}\quad}
+\newcommand{\SolBoundary}{\par\smallskip\noindent\textbf{边界与易错点}\quad}
+\newcommand{\SolAnswer}{\par\smallskip\noindent\textbf{结论}\quad}
+% Optional type-specific checks for examples; existing solutions need not use all.
+\newcommand{\SolDimensionCheck}[1]{%
+  \par\smallskip\noindent\textbf{维数核验}\quad #1}
+\newcommand{\SolNormalizationCheck}[1]{%
+  \par\smallskip\noindent\textbf{归一化核验}\quad #1}
+\newcommand{\SolFeasibilityCheck}[1]{%
+  \par\smallskip\noindent\textbf{可行性核验}\quad #1}
+\newcommand{\SLMethodTrigger}[1]{\par\smallskip\noindent\textbf{为什么想到这个方法}\quad #1}
+\newcommand{\SLReadTranslation}[1]{\par\smallskip\noindent\textbf{读题翻译}\quad #1}
+\newcommand{\SLStuckHint}[1]{\par\smallskip\noindent\textbf{卡住时先看}\quad #1}
+\newcommand{\SLTransfer}[1]{\par\smallskip\noindent\textbf{方法迁移}\quad #1}
+% Do not print one generic arrow strip before all 553 solutions.  The
+% question-type macros above let worked examples expose only the stages that
+% genuinely support their reasoning; short exercise answers stay compact.
+\newtcolorbox{solution}{%
+  enhanced,breakable,
+  colback=SLSoftTeal,colframe=SLSelfCheckTeal,
+  boxrule=0pt,borderline west={0.8pt}{0pt}{SLSelfCheckTeal},
+  left=8pt,right=8pt,top=5pt,bottom=6pt,
+  before skip=2pt,after skip=\SolutionAfterSkip,
+  overlay middle and last={%
+    \node[anchor=south east,font=\footnotesize\bfseries,text=SLSelfCheckTeal]
+      at ([xshift=-6pt,yshift=2pt]frame.north east){解答（续）};%
+  }
+}
+% Stable same-number heading for worked examples.  The explicit paragraph
+% boundary prevents the heading from running into the problem statement, and
+% Needspace keeps it with the opening mathematical block across page breaks.
+\newcommand{\SLExampleSolutionHeading}[1]{%
+  % A page-height probe inside a split tcolorbox can force a false break.
+  % The hard no-break after this one-line heading keeps it with its first block.
+  \par\needspace{4\baselineskip}
+  \noindent\textbf{例题~\ref{#1}~解答}\par\nobreak\smallskip
+}
+\newenvironment{analysisnote}{\par\medskip\noindent\textbf{思路分析}\quad}{\par\medskip}
+% Stage-17 chapter-local closing treatment.  It keeps summaries and self-checks
+% readable while preventing a few trailing checklist lines from occupying an
+% otherwise empty chapter-final page.
+\newenvironment{SLCompactClosure}%
+  {\begingroup\small\setstretch{1.10}\setlength{\parskip}{0.08\baselineskip}}%
+  {\endgroup}
+\newenvironment{SLCompactOpeningSection}%
+  {\begingroup\small\setstretch{1.10}\setlength{\parskip}{0.08\baselineskip}}%
+  {\endgroup}
+\newenvironment{SLCompactAnswerSection}%
+  {\begingroup\small\setstretch{1.14}\setlength{\parskip}{0.08\baselineskip}}%
+  {\endgroup}
+\newenvironment{SLTableLayout}%
+  {\begingroup\small\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{5pt}}%
+  {\endgroup}
+
+% The four legacy chapter-opening boxes are captured and rendered once as a
+% single map.  All 37 chapter sources use the same verified order, so this
+% preserves their detailed text while removing the repeated grey/blue stack.
+\newif\ifSLChapterMapPending
+\SLChapterMapPendingfalse
+\newcommand{\SLChapterRoute}{}
+\newcommand{\SLChapterQuestion}{}
+\newcommand{\SLChapterOutcomes}{}
+\newcommand{\SLChapterPrerequisites}{}
+\newcommand{\SLChapterReturnPath}{}
+\newcommand{\SLChapterGoalsDetail}{}
+\newcommand{\SLChapterPrerequisiteDetail}{}
+\newcommand{\SLChapterPrecheckDetail}{}
+\newcommand{\SLChapterDependencyDetail}{}
+\NewDocumentEnvironment{prerequisitebox}{+b}{%
+  \global\long\def\SLChapterPrerequisiteDetail{#1}%
+}{}
+\NewDocumentEnvironment{precheckbox}{+b}{%
+  % Retain the source text for auditability.  The visible five-field map uses
+  % its explicit completion/return field instead of a sixth repeated box.
+  \global\long\def\SLChapterPrecheckDetail{#1}%
+}{}
+\NewDocumentEnvironment{dependencybox}{+b}{%
+  \global\long\def\SLChapterDependencyDetail{#1}%
+  \SLRenderChapterMap
+}{}
+\newtcolorbox{keypointbox}[1][]{enhanced,breakable,colback=SLSoftBlue,colbacktitle=SLRuleGray,colframe=SLMidBlue,boxrule=0pt,borderline west={1.2pt}{0pt}{SLMidBlue},title=关键结论,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt,#1}
+\newtcolorbox{geometrybox}{enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1pt}{0pt}{SLRuleGray},title=几何理解,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{probabilitybox}{enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1pt}{0pt}{SLRuleGray},title=概率解释,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{optimizationbox}{enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1pt}{0pt}{SLRuleGray},title=优化解释,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{warningbox}{enhanced,breakable,colback=SLWarmGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1.2pt}{0pt}{SLWarningRed},title=常见错误,fonttitle=\bfseries,coltitle=SLWarningRed,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{pitfallbox}{enhanced,breakable,colback=SLWarmGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1.2pt}{0pt}{SLWarningRed},title=常见错误,fonttitle=\bfseries,coltitle=SLWarningRed,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{limitationbox}{enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1pt}{0pt}{SLTextGray},title=适用条件与局限,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{notationbox}{enhanced,breakable,colback=white,colframe=SLRuleGray,boxrule=0.45pt,title=记号,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{implementationbox}{enhanced,breakable,colback=SLSoftBlue,colframe=SLMidBlue,boxrule=0pt,borderline west={1pt}{0pt}{SLMidBlue},title=实现提示,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{correctionbox}{enhanced,breakable,colback=SLWarmGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1.2pt}{0pt}{SLMidBlue},title=勘误与核验,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{selfcheckbox}[1][]{enhanced,breakable,colback=white,colframe=SLSelfCheckTeal,boxrule=0.5pt,title=本章自检,fonttitle=\bfseries,coltitle=SLSelfCheckTeal,left=8pt,right=8pt,top=5pt,bottom=5pt,#1}
+\newtcolorbox{symboltablebox}{enhanced,breakable,colback=white,colframe=SLRuleGray,boxrule=0.5pt,title=本章符号表,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{chaptersummarybox}[1][]{enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1pt}{0pt}{SLSummaryGold},title=本章总结,fonttitle=\bfseries,coltitle=SLSummaryGold,left=8pt,right=8pt,top=5pt,bottom=5pt,#1}
+\newtcolorbox{chapterexercisebox}{enhanced,breakable,colback=SLSoftBlue,colframe=SLDeepBlue,boxrule=0pt,borderline west={1.4pt}{0pt}{SLDeepBlue},title=章末练习与逐题解析,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt,before upper={\phantomsection\hypertarget{SL:exercises:\thechapter}{}\hypertarget{SL:answers:\thechapter}{}}}
+\newenvironment{SLChapterExercisePairSection}%
+  {\begingroup\normalsize\setstretch{1.10}\setlength{\parskip}{0.06\baselineskip}}%
+  {\endgroup}
+\newtcolorbox{chapterexercisesolution}[1]{%
+  enhanced,breakable,
+  colback=white,colbacktitle=SLSoftTeal,colframe=SLSelfCheckTeal,
+  boxrule=0pt,borderline west={1.2pt}{0pt}{SLSelfCheckTeal},
+  title={练习~\ref{#1}~解析},
+  title after break={练习~\ref{#1}~解析（续）},
+  fonttitle=\bfseries,coltitle=SLSelfCheckTeal,
+  left=8pt,right=8pt,top=5pt,bottom=6pt,
+  before skip=2pt,after skip=8pt
+}
+\ifSLStudentEdition
+  \NewDocumentEnvironment{chapteranswerbox}{+b}{%
+    \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=SLRuleGray,
+      boxrule=0pt,borderline west={1.2pt}{0pt}{SLMidBlue},
+      title=完整解析入口,fonttitle=\bfseries,coltitle=SLDeepBlue,
+      left=8pt,right=8pt,top=5pt,bottom=5pt,
+      before upper={\phantomsection\hypertarget{SL:answers:\thechapter}{}}]
+      本版保留题目、解题提示与正文中的关键步骤；逐题完整推导位于
+      \href{run:\SLReleasePDFName}{完整解析版}。
+      建议先独立作答并记录残差、边界与失败分支，再对照解析。
+    \end{tcolorbox}%
+  }{}
+\else
+  \newtcolorbox{chapteranswerbox}{enhanced,breakable,colback=white,colframe=SLRuleGray,boxrule=0pt,borderline west={1.2pt}{0pt}{SLMidBlue},title=章末练习完整解析,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt,before upper={\phantomsection\hypertarget{SL:answers:\thechapter}{}}}
+\fi
+\newtcolorbox{complexitybox}{enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1pt}{0pt}{SLRuleGray},title=复杂度分析,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{comparisonbox}{enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1pt}{0pt}{SLRuleGray},title=易混淆概念对比,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{applicabilitybox}{enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1pt}{0pt}{SLRuleGray},title=适用条件与局限性,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{derivationgoalbox}{enhanced,breakable,colback=white,colframe=SLRuleGray,boxrule=0.5pt,title=推导目标,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{derivationprepbox}{enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1pt}{0pt}{SLRuleGray},title=推导准备,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt}
+\newtcolorbox{notapplicablebox}[1][]{enhanced,breakable,colback=SLWarmGray,colframe=SLRuleGray,boxrule=0pt,borderline west={1.2pt}{0pt}{SLTextGray},title=说明,fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt,#1}
+
+% R08 reader-facing structure ------------------------------------------------
+% These interfaces deliberately require chapter-specific arguments.  Empty
+% defaults would recreate the template-compliance problem they are meant to
+% remove.
+\newcommand{\SLRequireText}[2]{%
+  \ifblank{#2}{\PackageError{statlearnbook}{Empty required field: #1}{Supply chapter-specific reader text.}}{}%
+}
+\newcommand{\SLChapterOpening}[5]{%
+  \SLRequireText{route}{#1}\SLRequireText{question}{#2}%
+  \SLRequireText{outcomes}{#3}\SLRequireText{prerequisites}{#4}%
+  \SLRequireText{return-path}{#5}%
+  \phantomsection\hypertarget{SL:chapter:\thechapter}{}%
+  \global\SLFirstExampleAnchorPendingtrue
+  \global\SLChapterMapPendingtrue
+  \global\long\def\SLChapterRoute{#1}%
+  \global\long\def\SLChapterQuestion{#2}%
+  \global\long\def\SLChapterOutcomes{#3}%
+  \global\long\def\SLChapterPrerequisites{#4}%
+  \global\long\def\SLChapterReturnPath{#5}%
+  \global\let\SLChapterGoalsDetail\@empty
+  \global\let\SLChapterPrerequisiteDetail\@empty
+  \global\let\SLChapterPrecheckDetail\@empty
+  \global\let\SLChapterDependencyDetail\@empty
+}
+\newcommand{\SLRenderChapterMap}{%
+  \ifSLChapterMapPending
+  \begin{tcolorbox}[
+    enhanced,breakable,colback=white,colframe=SLRuleGray,boxrule=0.45pt,
+    title=本章地图,fonttitle=\bfseries,coltitle=SLDeepBlue,
+    left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=6pt,after skip=8pt]
+    \small\setstretch{1.16}\setlength{\parskip}{0.10\baselineskip}%
+    \textbf{核心问题：}\SLChapterQuestion\par
+    \textbf{可检验学习目标：}%
+      \ifdefempty{\SLChapterGoalsDetail}{\SLChapterOutcomes}{\SLChapterGoalsDetail}\par
+    \textbf{最短先修：}%
+      \ifdefempty{\SLChapterPrerequisiteDetail}{\SLChapterPrerequisites}{\SLChapterPrerequisiteDetail}\par
+    \textbf{依赖路线：}%
+      \ifdefempty{\SLChapterDependencyDetail}{\SLChapterRoute}{\SLChapterDependencyDetail}\par
+    \textbf{完成标准与返回：}\SLChapterReturnPath
+  \end{tcolorbox}%
+  \global\SLChapterMapPendingfalse
+  \else
+    \PackageError{statlearnbook}{Chapter map rendered without a pending opening}{Call \string\SLChapterOpening before the legacy chapter-opening fields.}%
+  \fi
+}
+
+\newcommand{\SLLevelSection}[3]{%
+  \SLRequireText{section-level}{#1}\SLRequireText{section-title}{#2}\SLRequireText{section-label}{#3}%
+  \ifboolexpr{
+    test {\ifstrequal{#1}{直接应用}} or
+    test {\ifstrequal{#1}{基础回顾}} or
+    test {\ifstrequal{#1}{核心内容}} or
+    test {\ifstrequal{#1}{扩展讨论}}
+  }{}{\PackageError{statlearnbook}{Unknown section level '#1'}{Use 直接应用、基础回顾、核心内容 or 扩展讨论.}}%
+  % Keep the prerequisite level as source-only metadata.  Reader-facing
+  % headings, running heads, bookmarks and index-derived titles expose only
+  % the pedagogical section title.
+  \section{#2}\label{#3}%
+}
+\newcommand{\SLDirectSection}[2]{\SLLevelSection{直接应用}{#1}{#2}}
+\newcommand{\SLReviewSection}[2]{\SLLevelSection{基础回顾}{#1}{#2}}
+\newcommand{\SLTeachSection}[2]{\SLLevelSection{核心内容}{#1}{#2}}
+\newcommand{\SLAdvancedSection}[2]{\SLLevelSection{扩展讨论}{#1}{#2}}
+
+\newcommand{\SLNoIndependentAlgorithm}[1]{%
+  \SLRequireText{natural-process}{#1}#1%
+}
+\newcommand{\SLChapterFiveSummary}[5]{%
+  \SLRequireText{summary-core-object}{#1}\SLRequireText{summary-derivation}{#2}%
+  \SLRequireText{summary-algorithm}{#3}\SLRequireText{summary-when-to-use}{#4}%
+  \SLRequireText{summary-next-step}{#5}%
+  \begin{chaptersummarybox}[title=本章结论与下一步]
+    \textbf{核心结论：}#1\par
+    \textbf{关键依据：}#2\par
+    \textbf{可执行自检：}#3\par
+    \textbf{适用边界：}#4\par
+    \textbf{下一步：}#5
+  \end{chaptersummarybox}%
+}
+
+\newcommand{\SLRegisterRunningOccurrence}[2]{%
+  \ifcsdef{SLRunOccurrence@#1@#2}{%
+    \PackageError{statlearnbook}{Duplicate running-example occurrence '#1/#2'}{Use one globally unique occurrence-id for each series stop.}%
+  }{\csdef{SLRunOccurrence@#1@#2}{registered}}%
+}
+\NewDocumentEnvironment{SLRunningExample}{mmmm}{%
+  \SLRequireText{running-series-id}{#1}\SLRequireText{running-occurrence-id}{#2}%
+  \SLRequireText{running-title}{#3}\SLRequireText{running-role}{#4}%
+  \SLRegisterRunningOccurrence{#1}{#2}%
+  \Needspace{6\baselineskip}% keep the heading and a meaningful first block together
+  \begin{tcolorbox}[
+    enhanced,breakable,colback=white,colframe=SLRuleGray,boxrule=0pt,
+    borderline west={1.2pt}{0pt}{SLMidBlue},title={#3},fonttitle=\bfseries,
+    coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt]
+  \phantomsection\label{run:#1:#2}\textbf{本章角色：}#4\par
+}{\end{tcolorbox}}
+\newcommand{\SLRunningExampleRef}[3]{%
+  \SLRequireText{running-series-id}{#1}\SLRequireText{running-occurrence-id}{#2}%
+  \SLRequireText{running-link-text}{#3}%
+  % A merged-book build resolves every stop as a hyperlink.  A stand-alone
+  % volume deliberately falls back to readable text when the target lives in
+  % another volume, avoiding a false or undefined PDF destination.
+  \ifcsundef{r@run:#1:#2}{\textcolor{SLMidBlue}{#3}}{\hyperref[run:#1:#2]{#3}}%
+}
+
+% Exercise provenance and chapter-end answer headings.  These commands make
+% the required two source classes explicit without exposing source-book pages.
+\newcommand{\SLSourceBookExercises}{\par\medskip\noindent\textbf{【原书练习整理】}\par\smallskip}
+\newcommand{\SLLectureSupplementExercises}{\par\medskip\noindent\smallskip}
+\newcommand{\SLExerciseSolutionHeading}[1]{\par\Needspace{4\baselineskip}\noindent\textbf{练习~\ref{#1}解析}\par\smallskip}
+\newcommand{\SLNotApplicableItem}[2]{%
+  \par\noindent\textbf{#1}\par
+  \noindent #2\par
+}
+
+% Hyperlinks, bookmarks, references and indexes -----------------------------
+\RequirePackage{hyperref}
+\hypersetup{
+  unicode=true,
+  colorlinks=true,
+  linkcolor=SLDeepBlue,
+  citecolor=SLDeepBlue,
+  urlcolor=SLMidBlue,
+  bookmarksopen=true,
+  bookmarksnumbered=true,
+  bookmarksdepth=3,
+  pdflang={zh-CN},
+  pdfstartview=FitH
+}
+\RequirePackage{bookmark}
+\RequirePackage[nameinlink,noabbrev]{cleveref}
+\crefname{chapter}{章}{章}
+\crefname{section}{节}{节}
+\crefname{equation}{式}{式}
+\crefname{figure}{图}{图}
+\crefname{table}{表}{表}
+\crefname{algorithm}{算法}{算法}
+\crefname{algocf}{算法}{算法}
+\crefname{definition}{定义}{定义}
+\crefname{theorem}{定理}{定理}
+\crefname{lemma}{引理}{引理}
+\crefname{corollary}{推论}{推论}
+\crefname{proposition}{命题}{命题}
+\crefname{example}{例题}{例题}
+\crefname{exercise}{练习}{练习}
+\AtBeginDocument{%
+  \renewcommand{\crefpairconjunction}{、}%
+  \renewcommand{\crefmiddleconjunction}{、}%
+  \renewcommand{\creflastconjunction}{和}%
+  \renewcommand{\crefrangeconjunction}{—}%
+  \renewcommand{\crefpairgroupconjunction}{和}%
+  \renewcommand{\crefmiddlegroupconjunction}{、}%
+  \renewcommand{\creflastgroupconjunction}{和}%
+}
+
+\RequirePackage[noautomatic]{imakeidx}
+\makeindex[program=makeindex,title=主题索引,intoc]
+\makeindex[name=symbols,program=makeindex,title=符号索引,intoc]
+\indexsetup{noclearpage}
+\newcommand{\termindex}[1]{#1\index{#1}}
+\newcommand{\symindex}[2]{#1\index[symbols]{#2@#1}}
+\newcommand{\SLCoreFigureWidth}{0.82\textwidth}
+\newcommand{\knowledgeanchor}[2]{\hypertarget{kp:#1}{}\label{kp:#1}\index{#2}}
+\newcommand{\sourceanchor}[2]{\hypertarget{source:#1:#2}{}}
+% Reader-facing references use the global continuous chapter number.  Volume
+% and local numbers remain as compatibility arguments so existing sources and
+% the registry can still validate the five-volume structure without repeating
+% two numbering systems in prose.
+\newcommand{\chaprefdual}[4]{\hyperref[#1]{第#2章}}
+
+% v1.9.0 canonical chapter-navigation interface.  The registry is the single
+% source of truth for converting the merged chapter number into volume/local
+% numbering.  A merged build produces a live link; a stand-alone volume keeps
+% the same reader-facing text when the target chapter is outside that volume.
+\newcommand{\SLDeclareGlobalChapter}[3]{%
+  \csdef{SLGlobalChapterVolume@#1}{#2}%
+  \csdef{SLGlobalChapterLocal@#1}{#3}%
+}
+\SLDeclareGlobalChapter{1}{1}{1}
+\SLDeclareGlobalChapter{2}{1}{2}
+\SLDeclareGlobalChapter{3}{1}{3}
+\SLDeclareGlobalChapter{4}{1}{4}
+\SLDeclareGlobalChapter{5}{1}{5}
+\SLDeclareGlobalChapter{6}{1}{6}
+\SLDeclareGlobalChapter{7}{1}{7}
+\SLDeclareGlobalChapter{8}{1}{8}
+\SLDeclareGlobalChapter{9}{1}{9}
+\SLDeclareGlobalChapter{10}{1}{10}
+\SLDeclareGlobalChapter{11}{1}{11}
+\SLDeclareGlobalChapter{12}{2}{1}
+\SLDeclareGlobalChapter{13}{2}{2}
+\SLDeclareGlobalChapter{14}{2}{3}
+\SLDeclareGlobalChapter{15}{2}{4}
+\SLDeclareGlobalChapter{16}{2}{5}
+\SLDeclareGlobalChapter{17}{3}{1}
+\SLDeclareGlobalChapter{18}{3}{2}
+\SLDeclareGlobalChapter{19}{3}{3}
+\SLDeclareGlobalChapter{20}{3}{4}
+\SLDeclareGlobalChapter{21}{3}{5}
+\SLDeclareGlobalChapter{22}{3}{6}
+\SLDeclareGlobalChapter{23}{3}{7}
+\SLDeclareGlobalChapter{24}{4}{1}
+\SLDeclareGlobalChapter{25}{4}{2}
+\SLDeclareGlobalChapter{26}{4}{3}
+\SLDeclareGlobalChapter{27}{4}{4}
+\SLDeclareGlobalChapter{28}{4}{5}
+\SLDeclareGlobalChapter{29}{4}{6}
+\SLDeclareGlobalChapter{30}{5}{1}
+\SLDeclareGlobalChapter{31}{5}{2}
+\SLDeclareGlobalChapter{32}{5}{3}
+\SLDeclareGlobalChapter{33}{5}{4}
+\SLDeclareGlobalChapter{34}{5}{5}
+\SLDeclareGlobalChapter{35}{5}{6}
+\SLDeclareGlobalChapter{36}{5}{7}
+\SLDeclareGlobalChapter{37}{5}{8}
+\newcommand{\SLChapterLabel}[2]{chap:V#1-C\ifnum#2<10 0\fi#2}
+\newcommand{\SLChapterReferenceText}[3]{第#1章}
+\newcommand{\GlobalChapterRef}[3]{%
+  \begingroup
+  \edef\SLTargetChapterLabel{\SLChapterLabel{#2}{#3}}%
+  \ifcsundef{r@\SLTargetChapterLabel}
+    {\textcolor{SLMidBlue}{\SLChapterReferenceText{#1}{#2}{#3}}}%
+    {\hyperref[\SLTargetChapterLabel]{\SLChapterReferenceText{#1}{#2}{#3}}}%
+  \endgroup
+}
+\newcommand{\NextChapter}[2]{%
+  \SLRequireText{next-chapter-title}{#2}%
+  \ifcsundef{SLGlobalChapterVolume@#1}
+    {\PackageError{statlearnbook}{Unknown global chapter '#1'}{Register it with \string\SLDeclareGlobalChapter.}}%
+    {进入\GlobalChapterRef{#1}{\csuse{SLGlobalChapterVolume@#1}}{\csuse{SLGlobalChapterLocal@#1}}：#2}%
+}
+
+% Semantic chapter-tail titles.  The text commands work in box-title keys;
+% the heading commands expose the same canonical wording in ordinary prose.
+\newcommand{\SLMethodLimitationsTitle}{方法局限}
+\newcommand{\SLDegeneracyTitle}{异常与退化}
+\newcommand{\SLCommonErrorsTitle}{常见错误}
+\newcommand{\SLComplexityAssumptionsTitle}{复杂度假设与实现口径}
+\newcommand{\SLMethodLimitationsHeading}{\paragraph{\SLMethodLimitationsTitle}}
+\newcommand{\SLDegeneracyHeading}{\paragraph{\SLDegeneracyTitle}}
+\newcommand{\SLCommonErrorsHeading}{\paragraph{\SLCommonErrorsTitle}}
+\newcommand{\SLComplexityAssumptionsHeading}{\paragraph{\SLComplexityAssumptionsTitle}}
+\newcommand{\SLSourceNote}[5]{%
+  \begin{correctionbox}
+  \textbf{版次与页码：}#1，第#2页。\par
+  \textbf{原式或原命题：}#3\par
+  \textbf{本讲义处理：}#4\par
+  \textbf{复算或参考证据：}#5
+  \end{correctionbox}%
+}
+
+% Reusable semantic commands ------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\KL}{\operatorname{KL}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\softmax}{\operatorname{softmax}}
+\newcommand{\ind}{\mathbb{I}}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\inner}{\langle}{\rangle}
+
+\newcommand{\SLBookShortTitle}{统计学习方法初学者讲义}
+\newcommand{\SLBookVolume}{第?册}
+\newcommand{\SLBookTitle}{统计学习方法初学者讲义}
+\newcommand{\SLBookSubtitle}{模板}
+\newcommand{\SLReleaseDate}{2026年8月}
+\newcommand{\SLSetBookMetadata}[3]{%
+  \renewcommand{\SLBookVolume}{#1}%
+  \renewcommand{\SLBookTitle}{#2}%
+  \renewcommand{\SLBookSubtitle}{#3}%
+  \renewcommand{\SLBookShortTitle}{#1\enspace·\enspace#3}%
+  \hypersetup{pdftitle={#2——#3（\SLReleaseVersion\enspace\SLBuildEditionLabel）},pdfauthor={},pdfsubject={统计学习方法初学者讲义 \SLReleaseVersion\enspace\SLBuildEditionLabel},pdfkeywords={统计学习方法, \SLReleaseVersion}}
+}
+\newcommand{\SLMakeTitle}{%
+  \begin{titlepage}
+    \centering
+    \vspace*{0.08\textheight}
+    \input{../../绘图源码/前置页/UFIG-P001-01.tex}\par
+    \vspace{0.09\textheight}
+    {\SLTitleCJK\Huge\color{SLDeepBlue}\SLBookTitle\par}
+    \vspace{1.5em}
+    \colorbox{SLDeepBlue}{\makebox[0.72\textwidth][c]{%
+      \strut\SLTitleCJK\Large\color{white}\SLBookVolume}}\par
+    \vspace{1.1em}
+    {\SLTitleCJK\Large\SLBookSubtitle\par}
+    \vspace{1.4em}
+    {\large\color{SLTextGray}\SLReleaseVersion\enspace·\enspace\SLBuildEditionLabel\par}
+    \vspace{0.45em}
+    {\small\color{SLTextGray}\SLReleaseDate\par}
+    \vfill
+    {\large 面向第一次系统学习统计学习方法的读者\par}
+    \vspace{2em}
+    {\small 基于知识依赖重新组织，保留原书知识覆盖并展开必要推导\par}
+    \vspace*{0.08\textheight}
+  \end{titlepage}
+}
+
+\newcommand{\chaptergoals}[1]{%
+  \global\long\def\SLChapterGoalsDetail{#1}%
+}
+\newcommand{\SLPrintAlgorithmContractGuide}{%
+  \phantomsection\hypertarget{SL:algorithm-contract}{}%
+  \begin{tcolorbox}[
+    enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,
+    borderline west={1pt}{0pt}{SLMidBlue},title=算法阅读与执行契约 C1--C14,
+    fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt]
+  每个算法标题都是可点击的契约入口；它与算法框中的专用输入、输出和正文复杂度段共同构成完整接口：
+  C1 输入，C2 输出，C3 前置条件，C4 初始化，C5 循环变量，C6 更新次序，
+  C7 有限性与定义域检查，C8 失败分支，C9 数学停止证书，C10 预算上限，
+  C11 返回状态，C12 实际完成轮数，C13 最终诊断，C14 复杂度假设。
+  变量必须先初始化后使用并按行更新；非有限、越域、零分母或线搜索失败不得冒充成功。
+  只有正文给出的残差、KKT、固定点、有限穷举或相对于冻结候选类的证书满足时才返回
+  \SLStatusConverged；有限闭式计算、扫描、排序或动态规划按定义结束时返回\SLStatusCompleted。
+  参数或目标变化阈值达到但没有数学证书时返回\SLStatusNumericalFailure，并在诊断中写明“数值平台”；
+  验证耐心、连续无更新保护轮数或其他显式预算耗尽时返回\SLStatusBudgetStop，并在诊断中区分预算种类。
+  输入、数值、线搜索和随机源失败分别返回\SLStatusInvalidInput、\SLStatusNumericalFailure、
+  \SLStatusLineSearchFailed 和\SLStatusRandomSourceFailure。无可行路径属于有限动态规划的完成结果，
+  无正弱边只有在候选类已冻结且边缘已完整核验时才构成相对证书；两者的具体结果都写入诊断，不新增状态枚举。
+  输出还须携带实际轮数和最终诊断；时间、空间口径以相邻复杂度段声明的数据表示、单步成本和多启动／多链／搜索次数为准。
+  \medskip
+
+  \textbf{统一返回状态字典（首次出现的中英映射）}\par\smallskip
+  \begin{tabularx}{\linewidth}{@{}l l X@{}}
+    \toprule
+    状态码 & 中文释义 & 触发口径 \\
+    \midrule
+    \SLStatusConverged & 收敛 & 残差、KKT、固定点、单调性或有限穷举证书达到正文阈值。\\
+    \SLStatusCompleted & 有限过程完成 & 有限闭式计算、扫描或排序按定义完成。\\
+    \SLStatusBudgetStop & 预算停止 & 迭代、时间、评估、验证耐心或连续无更新保护预算耗尽，尚无收敛证书。\\
+    \SLStatusInvalidInput & 输入非法 & 维数、定义域、归一化或必要前置条件不成立。\\
+    \SLStatusNumericalFailure & 数值失败 & 溢出、非有限值、分解失败，或达到数值平台但没有数学停止证书；具体原因写入诊断。\\
+    \SLStatusLineSearchFailed & 线搜索失败 & 合法试探步中没有找到满足接受条件的步长。\\
+    \SLStatusRandomSourceFailure & 随机源失败 & 所需随机数流不可用或不满足算法声明。\\
+    \bottomrule
+  \end{tabularx}
+  \end{tcolorbox}%
+}
+\newcommand{\SLPrintContents}{%
+  \phantomsection\hypertarget{SL:toc}{}%
+  \begingroup
+  \setstretch{1}%
+  \fontsize{\SLTOCFontSize}{\SLTOCLeading}\selectfont
+  \setlength{\parskip}{0pt}%
+  \tableofcontents
+  \endgroup
+  \SLClearForMajorDivision
+}
+\newcommand{\SLPrintAlgorithmContractAppendix}{\SLPrintAlgorithmContractGuide}
+\newcommand{\SLPrintSourceNotice}{%
+  \begin{tcolorbox}[
+    enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,
+    borderline west={1pt}{0pt}{SLMidBlue},title=编写与来源说明,
+    fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt]
+  本讲义以李航《统计学习方法（第2版）》的经典主题和知识范围为主要参照，面向初学者重新组织叙述、推导、例题与练习，并为所需的数学基础和扩展主题补充经核验的延伸阅读。文中“原书练习整理”表示题目主题源自该书练习并经过重新表述；其余教学衔接题由本讲义独立设计。勘误和扩展内容由本讲义独立负责，不表示原作者或出版社参与编写或认可本讲义。
+  \end{tcolorbox}%
+}
+\newcommand{\SLPrintFoundationRoutes}{%
+  \InputIfFileExists{../common/foundation_routes.tex}{}%
+    {\PackageError{statlearnbook}{Missing foundation_routes.tex}{Restore the verified R08 route file.}}%
+}
+\newcommand{\SLPrintSymbolIndex}{%
+  \clearpage
+  \begingroup
+    \setstretch{1}% realize the declared 9pt/11pt index leading exactly
+    \fontsize{9pt}{11pt}\selectfont
+    \setlength{\columnsep}{24pt}
+    \indexprologue[\medskip]{%
+      \phantomsection\hypertarget{SL:symbol-index}{}%
+      \begingroup\normalsize
+      \begin{tcolorbox}[enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,
+        boxrule=0pt,borderline west={1pt}{0pt}{SLDefinitionBlue},title=如何使用符号索引,
+        fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt]
+      符号索引按符号定位定义与主要用法；同一符号在不同章节含义不同时，
+      先按页码回到相应章节核对作用域。电子阅读时可点击页码跳转，并用
+      \hyperlink{SL:toc}{目录}返回学习主线。
+      \end{tcolorbox}%
+      \endgroup
+    }%
+    \printindex[symbols]
+  \endgroup
+  \SLClearForMajorDivision
+}
+\newcommand{\SLPrintTopicIndex}{%
+  \clearpage
+  \begingroup
+    \setstretch{1}% keep both index families at the same readable 9pt/11pt leading
+    \fontsize{9pt}{11pt}\selectfont
+    \setlength{\columnsep}{24pt}
+    \indexprologue[\medskip]{%
+      \phantomsection\hypertarget{SL:index}{}%
+      \begingroup\normalsize
+      \begin{tcolorbox}[enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,
+        boxrule=0pt,borderline west={1pt}{0pt}{SLMidBlue},title=如何使用主题索引,
+        fonttitle=\bfseries,coltitle=SLDeepBlue,left=8pt,right=8pt,top=5pt,bottom=5pt]
+      主题索引优先列规范名称；缩写和近义名通过“见”或“另见”指向主条目。
+      电子阅读时可点击页码跳转，并用\hyperlink{SL:toc}{目录}返回学习主线。
+      \end{tcolorbox}%
+      \endgroup
+    }%
+    \printindex
+  \endgroup
+}
+% Compatibility entry: the legacy end-of-book call now prints only the topic
+% index.  The merged/volume mains must call \SLPrintSymbolIndex immediately
+% after \SLPrintContents.
+\newcommand{\printbookindexes}{\SLPrintTopicIndex}
+\newcommand{\SLPrintReferences}{%
+  \chapter*{延伸阅读}%
+  \addcontentsline{toc}{chapter}{延伸阅读}%
+  本页按“书目信息—在本讲义中的用途”列出实际采用的主要资料。条目只说明知识来源与延伸阅读，不表示逐字转载或授权关系。
+  \InputIfFileExists{../common/references-body.tex}{}%
+    {\PackageError{statlearnbook}{Missing references-body.tex}{Restore the verified R08 bibliography body.}}%
+}
+
+% PRO-V2.5.0-KNOWLEDGE-BRIDGE-BEGIN
+% Use only where the first mathematical action is genuinely easy to miss;
+% in particular, do not wrap closed L0 objects mechanically.
+\NewDocumentCommand{\SLKnowledgeBridge}{m m m m}{%
+  \begin{tcolorbox}[
+    enhanced,breakable,
+    colback=SLSoftGray,colframe=SLRuleGray,
+    boxrule=0pt,borderline west={1.2pt}{0pt}{SLDefinitionBlue},
+    left=8pt,right=8pt,top=5pt,bottom=5pt,
+    before skip=0.45\baselineskip,after skip=0.55\baselineskip]
+  \textbf{\color{SLDeepBlue}阅读目标：}#1\par
+  \textbf{对象：}#2\par
+  \textbf{合法条件：}#3\par
+  \textbf{第一步：}#4
+  \end{tcolorbox}%
+}
+% PRO-V2.5.0-KNOWLEDGE-BRIDGE-END
+
+\endinput

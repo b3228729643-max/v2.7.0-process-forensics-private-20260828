@@ -1,0 +1,14 @@
+audit_id,panel,role,script_or_class,count,median_h_px,min_h_px,max_h_px,max_min_ratio,allowed_ratio,decision,note
+RATIO_001,one panel,X_TICK_LABEL,LATIN_DIGIT,7,26,25,26,1.0400,1.08,PASS,minus operators audited separately
+RATIO_002,one panel,X_TICK_LABEL,BASE_MATH_OPERATOR_MINUS,2,4,4,4,1.0000,1.08,PASS_RATIO_ONLY,both still fail the absolute 22 px operator gate
+RATIO_003,one panel,Y_TICK_LABEL,LATIN_DIGIT,5,26,25,26,1.0400,1.08,PASS,decimal points audited through identical-peer calibration
+RATIO_004,one panel,TOP_FORMULA_LABEL,MATH_LETTER,4,28.5,28,29,1.0357,1.08,PASS,N and mu are comparable base math-letter contours
+RATIO_005,one panel,TOP_FORMULA_LABEL,LATIN_DIGIT,16,26.5,26,27,1.0385,1.08,PASS,base digits only
+RATIO_006,one panel,TOP_FORMULA_LABEL,NATURAL_SCRIPT,2,19,19,19,1.0000,1.08,PASS_RATIO_ONLY,parent formulas remain below 9.5 pt
+RATIO_007,one panel,TOP_FORMULA_LABEL,BASE_MATH_OPERATOR_EQUALS,2,13,13,13,1.0000,1.08,PASS_RATIO_ONLY,both fail the absolute 22 px operator gate
+RATIO_008,one panel,TOP_FORMULA_LABEL,LOW_PROFILE_COMMA,2,12,12,12,1.0000,1.08,ADVISORY_R168,each color-specific group lacks a same-color peer calibration; not a current hard fail
+RATIO_009,one panel,NOTE_TEXT,CJK_ALL,13,33,4,34,8.5000,1.08,ADVISORY_R168,low-stroke CJK U+4E00 produces the ratio; current R168 treats it as advisory
+RATIO_010,one panel,NOTE_TEXT,LATIN_DIGIT,3,27,26,27,1.0385,1.08,PASS,note digits
+RATIO_011,one panel,X_AXIS_TITLE,MATH_LETTER,1,26,26,26,1.0000,1.08,N/A_SINGLETON,no within-role ratio denominator beyond itself
+RATIO_012,one panel,Y_AXIS_TITLE,CJK,2,35,34,36,1.0588,1.08,PASS,both vertical title glyphs are readable
+RATIO_013,cross-panel,all roles,all scripts,0,N/A,N/A,N/A,N/A,1.10,N/A,single-panel figure

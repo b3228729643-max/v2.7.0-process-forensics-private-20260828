@@ -1,0 +1,93 @@
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LC_ALL = "C.UTF-8",
+	LC_CTYPE = "C",
+	LC_NUMERIC = "C",
+	LC_COLLATE = "C",
+	LC_TIME = (unset),
+	LC_MONETARY = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the system default locale ("Chinese (Simplified)_China.936").
+Initial Win CP for (console input, console output, system): (CP936, CP65001, CP936)
+I changed them all to CP936
+Rc files read:
+  NONE
+Latexmk: This is Latexmk, John Collins, 15 June 2025. Version 4.87.
+Latexmk: making output directory '$stand'
+No existing .aux file, so I'll make a simple one, and require run of *latex.
+Latexmk: applying rule 'lualatex'...
+Rule 'lualatex':  Reasons for rerun
+Category 'other':
+  Rerun of 'lualatex' forced or previously required:
+    Reason or flag: 'Initial setup'
+
+------------
+Run number 1 of rule 'lualatex'
+------------
+------------
+Running 'lualatex  -interaction=nonstopmode -halt-on-error -file-line-error -recorder -output-directory="$stand"  "v260_FIG-P580-01_standalone.tex"'
+------------
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
+ restricted system commands enabled.
+(./v260_FIG-P580-01_standalone.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+
+
+luaotfload | load : FATAL ERROR
+luaotfload | load :   × Failed to load "fontloader" module "basics-gen".
+luaotfload | load :   × Error message:
+luaotfload | load :     × "...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:301: system : no writeable cache path, quiting".
+
+stack traceback:
+	...ive/2026/texmf-dist/tex/luatex/luaotfload/luaotfload.lua:200: in local 'load_fontloader_module'
+	...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:303: in upvalue 'init_main'
+	...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:590: in function 'luaotfload-init.lua'
+	...ive/2026/texmf-dist/tex/luatex/luaotfload/luaotfload.lua:322: in field 'main'
+	[\directlua]:1: in main chunk
+
+...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:301: system : no wr
+iteable cache path, quiting
+stack traceback:
+	[C]: in function 'error'
+	...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:301: in function '
+os.exit'
+	...ive/2026/texmf-dist/tex/luatex/luaotfload/luaotfload.lua:203: in local 'loa
+d_fontloader_module'
+	...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:303: in upvalue 'i
+nit_main'
+	...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:590: in function '
+luaotfload-init.lua'
+	...ive/2026/texmf-dist/tex/luatex/luaotfload/luaotfload.lua:322: in field 'mai
+n'
+	[\directlua]:1: in main chunk.
+<everyjob> ...string \\encodingdefault{OT1}')end }
+                                                  \let \f@encoding \encoding...
+
+l.1 
+    \documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+ 275 words of node memory still in use:
+   1 hlist, 1 dir, 39 glue_spec nodes
+   avail lists: 2:12,3:3,4:1
+./v260_FIG-P580-01_standalone.tex:1:  ==> Fatal error occurred, no output PDF f
+ile produced!
+Transcript written on v260_FIG-P580-01_standalone.log.
+Latexmk: Getting log file '$stand/v260_FIG-P580-01_standalone.log'
+Latexmk: Examining '$stand/v260_FIG-P580-01_standalone.fls'
+Latexmk: Examining '$stand/v260_FIG-P580-01_standalone.log'
+Latexmk: Using bibtex to make bibliography file(s).
+Latexmk: Errors, so I did not complete making targets
+Collected error summary (may duplicate other messages):
+  lualatex: Command for 'lualatex' gave return code 1
+      Refer to '$stand/v260_FIG-P580-01_standalone.log' and/or above output for details
+
+Latexmk: Sometimes, the -f option can be used to get latexmk
+  to try to force complete processing.
+  But normally, you will need to correct the file(s) that caused the
+  error, and then rerun latexmk.
+  In some cases, it is best to clean out generated files before rerunning
+  latexmk after you've corrected the files.
+Reverting Windows console CPs to (in,out) = (936,65001)
+D:\texlive\2026\bin\windows\runscript.tlu:933: command failed with exit code 12:
+perl.exe d:\texlive\2026\texmf-dist\scripts\latexmk\latexmk.pl -lualatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=$stand v260_FIG-P580-01_standalone.tex

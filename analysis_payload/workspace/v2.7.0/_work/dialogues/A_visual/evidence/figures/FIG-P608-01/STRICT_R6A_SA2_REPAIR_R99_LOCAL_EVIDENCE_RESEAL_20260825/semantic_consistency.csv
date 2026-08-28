@@ -1,0 +1,5 @@
+CHECK,EVIDENCE,PASS
+warmup range,"source labels t=1,...,5 and vertical boundary at 5.5",True
+retained range,"source labels t=6,...,20; lower series begins at t=6",True
+running mean values,recomputed 15 means; max rounded error=0.0000,True
+diagnostic wording,caption and adjacent body state that the figure is diagnostic and not a convergence proof,True

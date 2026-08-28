@@ -1,0 +1,12 @@
+check_id,metric,value,unit,scope
+Q01,correct_exact_codepoint_query_count,2,occurrences,Dir(U+1D6FC+U+1D45B) on physical page 714
+Q02,u_fffd_occurrences,0,occurrences,figure plus caption
+Q03,u_0000_occurrences,0,occurrences,figure plus caption
+Q04,bbox_candidate_pair_count,10,pairs,all 231 unordered pairs
+Q05,bbox_candidate_pair_summed_foreground,21454,pair-summed samples,not unique and not canonical overlap
+Q06,bbox_candidate_unique_union_foreground,14708,unique samples,bbox-scope duplicated assignments
+Q07,canonical_true_illegal_overlap,0,pixels,manual native-pixel adjudication
+Q08,T13_T14_nearest_euclidean_ink_distance,16,pixels,gray less than 200
+Q09,T13_T14_empty_pixel_gap,15,pixels,gray less than 200
+Q10,crop_edge_foreground,0,pixels,gray less than 200
+Q11,minimum_object_to_crop_margin,24.417,pixels,all 22 objects

@@ -1,0 +1,206 @@
+{
+  "figure_id": "FIG-P634-01",
+  "revision": "R5/R94 terminal re-read revision103",
+  "machine_terminal_integrity": "PASS",
+  "audit_result": "FAIL → SA2",
+  "recomputed_counts": {
+    "manifest_rows": 452,
+    "manifest_unique_ids": 452,
+    "registry_mask_ids": 452,
+    "registry_zero_spans": 0,
+    "semantic_objects": 106,
+    "pair_graphic_objects": 39,
+    "pair_objects": 145,
+    "unordered_pairs": 10440,
+    "status_fail_pairs": 1,
+    "overlap_fail_pairs": 0,
+    "clearance_fail_pairs": 1,
+    "glyph_failures": 11,
+    "glyph_failure_dirs": 11,
+    "critical_failed_pack_dirs": 35,
+    "D_failures": 23,
+    "E_failures": 3,
+    "clip_failures": 0,
+    "empty_foreground_graphics": 0,
+    "minimum_text_clearance_px_recomputed": 2.162
+  },
+  "checks": [
+    {
+      "CHECK_ID": "manifest_row_count",
+      "EXPECTED": "452",
+      "ACTUAL": "452",
+      "STATUS": "PASS",
+      "DETAIL": "Re-read complete_object_manifest.csv from disk."
+    },
+    {
+      "CHECK_ID": "manifest_unique_object_ids",
+      "EXPECTED": "452",
+      "ACTUAL": "452",
+      "STATUS": "PASS",
+      "DETAIL": "Every registered object has a unique OBJECT_ID."
+    },
+    {
+      "CHECK_ID": "manifest_nonempty_masks",
+      "EXPECTED": "0 zero masks",
+      "ACTUAL": "0",
+      "STATUS": "PASS",
+      "DETAIL": "MASK_PIXEL_COUNT is positive for every literal, semantic, graphic and background object."
+    },
+    {
+      "CHECK_ID": "raw_mask_registry_matches_manifest",
+      "EXPECTED": "452 unique non-empty masks",
+      "ACTUAL": "452 ids; ids=452, coordinate_count=855967, zero_spans=0, manifest_span_mismatches=0",
+      "STATUS": "PASS",
+      "DETAIL": "Compressed independent raw masks were re-read, not inferred from the manifest alone."
+    },
+    {
+      "CHECK_ID": "semantic_plus_pair_graphic_objects",
+      "EXPECTED": "106 + 39 = 145",
+      "ACTUAL": "106 + 39 = 145",
+      "STATUS": "PASS",
+      "DETAIL": "Pair universe is semantic text plus final graphic/background objects only; literal glyphs are component witnesses."
+    },
+    {
+      "CHECK_ID": "foreground_graphic_empty_masks",
+      "EXPECTED": "0",
+      "ACTUAL": "0",
+      "STATUS": "PASS",
+      "DETAIL": "Foreground graphics are separately checked even though all objects must already have a non-empty raw mask."
+    },
+    {
+      "CHECK_ID": "unordered_pair_count",
+      "EXPECTED": "10440",
+      "ACTUAL": "10440",
+      "STATUS": "PASS",
+      "DETAIL": "Re-read all unordered rows from the all-pairs CSV."
+    },
+    {
+      "CHECK_ID": "unordered_pair_unique_coverage",
+      "EXPECTED": "10440",
+      "ACTUAL": "10440",
+      "STATUS": "PASS",
+      "DETAIL": "No duplicate or missing unordered pair is hidden by repeated IDs."
+    },
+    {
+      "CHECK_ID": "after_overlap_copy_identity",
+      "EXPECTED": "f93d50af8e1660d290a433ee447ea7a7e2dfaa1564acd1948bcfe3fd844ff12d",
+      "ACTUAL": "f93d50af8e1660d290a433ee447ea7a7e2dfaa1564acd1948bcfe3fd844ff12d",
+      "STATUS": "PASS",
+      "DETAIL": "The after report is an exact on-disk copy of the exhaustive pair ledger."
+    },
+    {
+      "CHECK_ID": "pair_relation_classification_complete",
+      "EXPECTED": "0 blank classifications",
+      "ACTUAL": "0",
+      "STATUS": "PASS",
+      "DETAIL": "Every pair retains relation, method and disposition fields."
+    },
+    {
+      "CHECK_ID": "pair_failure_status_count",
+      "EXPECTED": "1",
+      "ACTUAL": "1",
+      "STATUS": "PASS",
+      "DETAIL": "Terminal disposition permits an audit FAIL, but must not hide its exact bottom-level count."
+    },
+    {
+      "CHECK_ID": "overlap_failure_count",
+      "EXPECTED": "0",
+      "ACTUAL": "0",
+      "STATUS": "PASS",
+      "DETAIL": "No independently separated pair has one or more common foreground pixels."
+    },
+    {
+      "CHECK_ID": "clearance_failure_count",
+      "EXPECTED": "1",
+      "ACTUAL": "1",
+      "STATUS": "PASS",
+      "DETAIL": "The one true failure is a non-overlap clearance shortfall."
+    },
+    {
+      "CHECK_ID": "failed_pair_identity",
+      "EXPECTED": "EL-035-CARD1_STATE-MATH_SCRIPT + G-CARD1-BORDER",
+      "ACTUAL": "EL-035-CARD1_STATE-MATH_SCRIPT + G-CARD1-BORDER",
+      "STATUS": "PASS",
+      "DETAIL": "Re-read exact pair identity, zero intersection, and 2.162px raw gap."
+    },
+    {
+      "CHECK_ID": "literal_glyph_row_count",
+      "EXPECTED": "307",
+      "ACTUAL": "307",
+      "STATUS": "PASS",
+      "DETAIL": "Every literal glyph audit row is present."
+    },
+    {
+      "CHECK_ID": "literal_glyph_failure_count",
+      "EXPECTED": "11",
+      "ACTUAL": "11",
+      "STATUS": "PASS",
+      "DETAIL": "All CJK raw-height failures remain visible in the terminal ledger."
+    },
+    {
+      "CHECK_ID": "glyph_failure_evidence_packs",
+      "EXPECTED": "11 complete",
+      "ACTUAL": "dirs=11, incomplete=0, empty_masks=0",
+      "STATUS": "PASS",
+      "DETAIL": "Each literal failure has raw 1:1, its own mask, 8x nearest inspection and measurements."
+    },
+    {
+      "CHECK_ID": "same_class_ratio_failure_count",
+      "EXPECTED": "23",
+      "ACTUAL": "23",
+      "STATUS": "PASS",
+      "DETAIL": "D failures are re-counted from the complete same-class CSV."
+    },
+    {
+      "CHECK_ID": "role_ratio_failure_count",
+      "EXPECTED": "3",
+      "ACTUAL": "3",
+      "STATUS": "PASS",
+      "DETAIL": "E failures are re-counted from the complete matching-script role CSV."
+    },
+    {
+      "CHECK_ID": "clip_failure_count",
+      "EXPECTED": "0",
+      "ACTUAL": "0",
+      "STATUS": "PASS",
+      "DETAIL": "Physical page/crop edge audit contains no clipped object."
+    },
+    {
+      "CHECK_ID": "critical_failed_pair_evidence_packs",
+      "EXPECTED": "35 dirs; 7 core + 2 overlays each",
+      "ACTUAL": "dirs=35, missing=0, unreadable_images=0, empty_A_or_B=0, bad_json=0",
+      "STATUS": "PASS",
+      "DETAIL": "All current critical/failed packs have raw, A/B, intersection, 1:1 context, 8x nearest and machine identity; two overlays are also retained."
+    },
+    {
+      "CHECK_ID": "four_view_and_overlay_files",
+      "EXPECTED": "5 readable files",
+      "ACTUAL": "5",
+      "STATUS": "PASS",
+      "DETAIL": "Terminal reopens 200dpi full page, 300dpi crop/standalone/grayscale, and ELEMENT_ID overlay."
+    },
+    {
+      "CHECK_ID": "result_consistency",
+      "EXPECTED": "FAIL → SA2",
+      "ACTUAL": "json=FAIL → SA2; after=FAIL → SA2; report=FAIL → SA2",
+      "STATUS": "PASS",
+      "DETAIL": "This machine-integrity PASS intentionally validates the truthful audit FAIL disposition, rather than recasting it as a passing audit."
+    },
+    {
+      "CHECK_ID": "all_gate_values_consistent_across_json_after_report",
+      "EXPECTED": "all derived gates match",
+      "ACTUAL": "mismatches=0; min_gap_recomputed=2.162",
+      "STATUS": "PASS",
+      "DETAIL": "Every declared gate was independently recomputed from bottom-level CSVs and matches audit_summary.json, after_visual, and formal report ledger."
+    },
+    {
+      "CHECK_ID": "audit_summary_counts_match_disk",
+      "EXPECTED": "all count fields match",
+      "ACTUAL": "mismatches=0",
+      "STATUS": "PASS",
+      "DETAIL": "All audit_summary count fields equal freshly re-read disk records."
+    }
+  ],
+  "failed_checks": [],
+  "scope": "disk re-read only: emitted evidence; no PDF/source rebuild and no source modification"
+}

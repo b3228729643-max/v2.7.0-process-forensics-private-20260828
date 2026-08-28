@@ -1,0 +1,394 @@
+{
+  "input": {
+    "official_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r90_fullbook\\main_full.pdf",
+    "physical_page": 17,
+    "render_command_300dpi": "pdftoppm -f 17 -l 17 -singlefile -r 300 -png main_full.pdf SA1_full_page_300dpi",
+    "render_command_200dpi": "pdftoppm -f 17 -l 17 -singlefile -r 200 -png main_full.pdf SA1_full_page_200dpi",
+    "page_300dpi_size": [
+      2481,
+      3508
+    ],
+    "resized": false,
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第01册_数学基础与统计学习基本理论\\V1-C01\\fig_v1_c01_language_flow.tex"
+  },
+  "crops": [
+    {
+      "file": "SA1_figure_crop_300dpi.png",
+      "crop_xyxy": [
+        236,
+        1205,
+        2197,
+        1684
+      ],
+      "size_px": [
+        1961,
+        479
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_figure_1to1_300dpi.png",
+      "crop_xyxy": [
+        236,
+        1205,
+        2197,
+        1615
+      ],
+      "size_px": [
+        1961,
+        410
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_standalone_300dpi.png",
+      "crop_xyxy": [
+        236,
+        1205,
+        2197,
+        1615
+      ],
+      "size_px": [
+        1961,
+        410
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_roi_relation_inline_arrow_300dpi_1to1.png",
+      "crop_xyxy": [
+        890,
+        1328,
+        1235,
+        1423
+      ],
+      "size_px": [
+        345,
+        95
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_roi_main_arrows_300dpi_1to1.png",
+      "crop_xyxy": [
+        790,
+        1310,
+        1765,
+        1375
+      ],
+      "size_px": [
+        975,
+        65
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_roi_node_object_300dpi_1to1.png",
+      "crop_xyxy": [
+        420,
+        1245,
+        815,
+        1445
+      ],
+      "size_px": [
+        395,
+        200
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_roi_node_relation_300dpi_1to1.png",
+      "crop_xyxy": [
+        865,
+        1245,
+        1260,
+        1445
+      ],
+      "size_px": [
+        395,
+        200
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_roi_node_logic_300dpi_1to1.png",
+      "crop_xyxy": [
+        1310,
+        1245,
+        1705,
+        1445
+      ],
+      "size_px": [
+        395,
+        200
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_roi_node_task_300dpi_1to1.png",
+      "crop_xyxy": [
+        1755,
+        1245,
+        2150,
+        1445
+      ],
+      "size_px": [
+        395,
+        200
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_roi_audit_return_300dpi_1to1.png",
+      "crop_xyxy": [
+        245,
+        1425,
+        1985,
+        1605
+      ],
+      "size_px": [
+        1740,
+        180
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_roi_caption_300dpi_1to1.png",
+      "crop_xyxy": [
+        315,
+        1580,
+        2140,
+        1685
+      ],
+      "size_px": [
+        1825,
+        105
+      ],
+      "dpi": 300,
+      "resize": false
+    },
+    {
+      "file": "SA1_grayscale_300dpi.png",
+      "crop_xyxy": [
+        236,
+        1205,
+        2197,
+        1684
+      ],
+      "size_px": [
+        1961,
+        479
+      ],
+      "dpi": 300,
+      "resize": false,
+      "conversion": "RGB->L only"
+    }
+  ],
+  "logical_graph_bbox_px": [
+    260,
+    1229,
+    2173,
+    1591
+  ],
+  "logical_figure_with_caption_bbox_px": [
+    260,
+    1229,
+    2173,
+    1660
+  ],
+  "counts": {
+    "text_elements": 13,
+    "graphic_foreground_elements_including_heads": 14,
+    "background_elements": 6,
+    "pair_checks": 273
+  },
+  "source_effective_pt_groups": {
+    "ANNOTATION": {
+      "min_pt": 10.0,
+      "max_pt": 10.0,
+      "max_min_ratio": 1.0,
+      "absolute_difference_pt": 0.0,
+      "pass_1p03_and_0p25": true
+    },
+    "CAPTION_TEXT": {
+      "min_pt": 10.0,
+      "max_pt": 10.0,
+      "max_min_ratio": 1.0,
+      "absolute_difference_pt": 0.0,
+      "pass_1p03_and_0p25": true
+    },
+    "CAPTION_NUMBER": {
+      "min_pt": 10.0,
+      "max_pt": 10.0,
+      "max_min_ratio": 1.0,
+      "absolute_difference_pt": 0.0,
+      "pass_1p03_and_0p25": true
+    },
+    "CAPTION_LABEL": {
+      "min_pt": 10.0,
+      "max_pt": 10.0,
+      "max_min_ratio": 1.0,
+      "absolute_difference_pt": 0.0,
+      "pass_1p03_and_0p25": true
+    },
+    "NODE_TITLE": {
+      "min_pt": 10.5,
+      "max_pt": 10.5,
+      "max_min_ratio": 1.0,
+      "absolute_difference_pt": 0.0,
+      "pass_1p03_and_0p25": true
+    },
+    "NODE_BODY": {
+      "min_pt": 10.0,
+      "max_pt": 10.0,
+      "max_min_ratio": 1.0,
+      "absolute_difference_pt": 0.0,
+      "pass_1p03_and_0p25": true
+    },
+    "NODE_TITLE_TO_NODE_BODY": {
+      "ratio": 1.05,
+      "pass_absolute_1p25": true
+    }
+  },
+  "pixel_height": {
+    "T_OBJ_TITLE": 41,
+    "T_OBJ_BODY": 38,
+    "T_REL_TITLE": 41,
+    "T_REL_DOMAIN": 38,
+    "T_REL_RANGE": 38,
+    "T_LOGIC_TITLE": 42,
+    "T_LOGIC_BODY": 38,
+    "T_TASK_TITLE": 42,
+    "T_TASK_BODY": 39,
+    "T_AUDIT": 38,
+    "T_CAP_LABEL": 38,
+    "T_CAP_NUM": 28,
+    "T_CAP_TEXT": 39
+  },
+  "group_medians_px": {
+    "NODE_TITLE|CJK_FULL": 41.5,
+    "NODE_BODY|CJK_FULL": 38.0,
+    "ANNOTATION|CJK_FULL": 38.0,
+    "CAPTION_LABEL|CJK_FULL": 38.0,
+    "CAPTION_NUMBER|DIGIT": 28.0,
+    "CAPTION_TEXT|CJK_FULL": 39.0
+  },
+  "base_role": "NODE_BODY|CJK_FULL",
+  "base_median_px": 38.0,
+  "overlap_pixel_count_max_for_any_illegal_pair": 0,
+  "clip_pixel_count": 0,
+  "all_foreground_image_edge_min_px": 29,
+  "clearance_minima_px": {
+    "TEXT_TEXT_BBOX": 9.0,
+    "CROSS_PANEL_TEXT": 8.0,
+    "TEXT_LINE_ARROW_OR_HEAD": 12.928,
+    "TEXT_NODE_BORDER": 15.0,
+    "TEXT_IMAGE_EDGE": 29.0
+  },
+  "high_risk_pairs": {
+    "T_REL_DOMAIN__G_REL_INLINE_ARROW": {
+      "PAIR_ID": "TG-043",
+      "A_ID": "T_REL_DOMAIN",
+      "A_CLASS": "TEXT",
+      "B_ID": "G_REL_INLINE_ARROW",
+      "B_CLASS": "LINE_ARROW",
+      "CHECK_TYPE": "TEXT-LINE_ARROW",
+      "REQUIRED_CLEARANCE_PX": 3,
+      "OVERLAP_PIXEL_COUNT": 0,
+      "MIN_CLEARANCE_PX": "12.928",
+      "A_CLOSEST_XY": "1042,1386",
+      "B_CLOSEST_XY": "1055,1381",
+      "PASS_FAIL": "PASS",
+      "NOTES": "independent semantic masks; white backgrounds are excluded and never counted as protection"
+    },
+    "T_REL_RANGE__G_REL_INLINE_ARROW": {
+      "PAIR_ID": "TG-057",
+      "A_ID": "T_REL_RANGE",
+      "A_CLASS": "TEXT",
+      "B_ID": "G_REL_INLINE_ARROW",
+      "B_CLASS": "LINE_ARROW",
+      "CHECK_TYPE": "TEXT-LINE_ARROW",
+      "REQUIRED_CLEARANCE_PX": 3,
+      "OVERLAP_PIXEL_COUNT": 0,
+      "MIN_CLEARANCE_PX": "13.318",
+      "A_CLOSEST_XY": "1128,1378",
+      "B_CLOSEST_XY": "1114,1381",
+      "PASS_FAIL": "PASS",
+      "NOTES": "independent semantic masks; white backgrounds are excluded and never counted as protection"
+    },
+    "T_REL_DOMAIN__G_REL_INLINE_HEAD": {
+      "PAIR_ID": "TG-044",
+      "A_ID": "T_REL_DOMAIN",
+      "A_CLASS": "TEXT",
+      "B_ID": "G_REL_INLINE_HEAD",
+      "B_CLASS": "ARROWHEAD",
+      "CHECK_TYPE": "ARROWHEAD-TEXT",
+      "REQUIRED_CLEARANCE_PX": 3,
+      "OVERLAP_PIXEL_COUNT": 0,
+      "MIN_CLEARANCE_PX": "54.000",
+      "A_CLOSEST_XY": "1042,1387",
+      "B_CLOSEST_XY": "1097,1387",
+      "PASS_FAIL": "PASS",
+      "NOTES": "independent semantic masks; white backgrounds are excluded and never counted as protection"
+    },
+    "T_REL_RANGE__G_REL_INLINE_HEAD": {
+      "PAIR_ID": "TG-058",
+      "A_ID": "T_REL_RANGE",
+      "A_CLASS": "TEXT",
+      "B_ID": "G_REL_INLINE_HEAD",
+      "B_CLASS": "ARROWHEAD",
+      "CHECK_TYPE": "ARROWHEAD-TEXT",
+      "REQUIRED_CLEARANCE_PX": 3,
+      "OVERLAP_PIXEL_COUNT": 0,
+      "MIN_CLEARANCE_PX": "13.318",
+      "A_CLOSEST_XY": "1128,1378",
+      "B_CLOSEST_XY": "1114,1381",
+      "PASS_FAIL": "PASS",
+      "NOTES": "independent semantic masks; white backgrounds are excluded and never counted as protection"
+    },
+    "T_AUDIT__G_AUDIT_ARROW": {
+      "PAIR_ID": "TG-135",
+      "A_ID": "T_AUDIT",
+      "A_CLASS": "TEXT",
+      "B_ID": "G_AUDIT_ARROW",
+      "B_CLASS": "LINE_ARROW",
+      "CHECK_TYPE": "TEXT-LINE_ARROW",
+      "REQUIRED_CLEARANCE_PX": 3,
+      "OVERLAP_PIXEL_COUNT": 0,
+      "MIN_CLEARANCE_PX": "13.000",
+      "A_CLOSEST_XY": "656,1543",
+      "B_CLOSEST_XY": "656,1529",
+      "PASS_FAIL": "PASS",
+      "NOTES": "independent semantic masks; white backgrounds are excluded and never counted as protection"
+    }
+  },
+  "pair_failures": [],
+  "pixel_or_font_failures": [],
+  "inline_arrow_geometry": {
+    "source_type": "TikZ draw path (not a font glyph)",
+    "source_lines": "16-20",
+    "declared_path_length_mm": 4.9,
+    "declared_head_length_mm": 1.55,
+    "declared_head_width_mm": 1.05,
+    "declared_stroke_pt": 0.72,
+    "measured_ink_bbox_px": [
+      1055,
+      1375,
+      1115,
+      1389
+    ],
+    "measured_ink_width_px": 60,
+    "measured_ink_height_px": 14
+  },
+  "overall_numeric_pass": true
+}

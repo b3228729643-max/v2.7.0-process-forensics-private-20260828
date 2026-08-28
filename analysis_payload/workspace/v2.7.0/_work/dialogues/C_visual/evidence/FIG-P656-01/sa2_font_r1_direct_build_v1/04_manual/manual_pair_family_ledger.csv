@@ -1,0 +1,5 @@
+family_id,pair_coverage,machine_denominator,manual_basis,manual_observation,decision
+FAMILY01,PAIR_6555;PAIR_6541;PAIR_6539,3,three critical-sheet tiles plus 1x and 8x connector ROIs,all three shared-ink pairs are the intended box/shaft/head joins and no unrelated visible objects share ink,PASS
+FAMILY02,critical ranks 4-34,31,all 31 critical-sheet containment tiles,each zero-shared pair is text or formula legally contained by its own box with visible padding,PASS
+FAMILY03,remaining BBOX_OVERLAP_NO_SHARED_RASTER_INK rows,84,full object-ID overlay plus color and grayscale figure crops,remaining bbox contacts are typographic subscript/neighbor geometry or container membership and have zero shared visible ink,PASS
+FAMILY04,all DISJOINT_BBOX rows,6437,complete unordered_pair_machine_ledger plus full-page and crop overlay,disjoint bounding boxes cannot form visible ink collisions and all remain inside the page,PASS

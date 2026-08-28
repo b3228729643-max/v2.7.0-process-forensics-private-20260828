@@ -1,0 +1,34 @@
+% v2.6.0 figure UID: FIG-P713-01
+\tikzset{slfig-FIG-P713-01/.style={font=\fontsize{9.2pt}{11.2pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P713-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.4pt}{11.3pt}\selectfont,align=center},
+  vertex/.style={draw=SLMidBlue,fill=SLSoftBlue,line width=0.74pt,rounded corners=3pt,minimum height=16mm,text width=32mm,inner xsep=2mm,inner ysep=1.7mm},
+  center/.style={draw=SLDeepBlue,fill=SLDeepBlue,line width=0.82pt,text=white,rounded corners=3pt,minimum height=16.5mm,text width=36mm,inner xsep=2.1mm,inner ysep=1.8mm,font=\fontsize{10pt}{12.2pt}\selectfont\bfseries},
+  support/.style={->,draw=SLDeepBlue,line width=0.88pt},
+  edge note/.style={font=\fontsize{9.2pt}{11.2pt}\selectfont,text=SLDeepBlue,inner sep=0pt},
+  >={Stealth[length=2.45mm,width=1.75mm]},
+  alt={对象—关系—结论：随机游走提供模型，平稳分布给出排名目标，幂法提供求解器；三者以等权关系共同指向中心PageRank图排序概念，不构成虚假的先后链。}]
+
+\node[vertex] (walk) at (-4.4,2.53)
+  {随机游走\\[-1pt]
+   $\circ\!\to\!\circ\!\rightleftarrows\!\circ$\\列随机转移矩阵};
+\node[vertex] (stationary) at (4.4,2.53)
+  {平稳分布\\[-1pt]
+   $\boldsymbol p=(.2,.5,.3)^{\mathsf T}$\\$\boldsymbol p=M\boldsymbol p$};
+\node[vertex] (power) at (0,-2.63)
+  {幂法迭代\\[-1pt]
+   $\boldsymbol p^{(t)}\to\boldsymbol p^{(t+1)}$\\残差与收敛诊断};
+\node[center] (rank) at (0,0.05)
+  {PageRank\\网页图排序};
+
+\draw[support] (walk) -- node[edge note,pos=.46,above right=2.2mm]{模型} (rank);
+\draw[support] (stationary) -- node[edge note,pos=.46,above left=2.2mm]{目标} (rank);
+\draw[support] (power) -- node[edge note,pos=.50,right=3mm]{求解器} (rank);
+\end{tikzpicture}
+\caption{PageRank的知识依赖：随机游走、平稳分布与幂法共同支撑图排序}
+\label{fig:V5-C07-dependency}
+\end{figure}

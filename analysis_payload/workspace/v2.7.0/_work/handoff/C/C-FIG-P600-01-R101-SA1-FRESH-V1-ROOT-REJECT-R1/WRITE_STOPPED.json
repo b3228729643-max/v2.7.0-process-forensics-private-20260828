@@ -1,0 +1,26 @@
+{
+  "schema": "C_P600_R101_SA1_ROOT_REJECT_HANDOFF_SEAL_V1",
+  "status": "P600_R101_SA1_ROOT_REJECT_CONTROL_ONLY_REQUEST_RESEAL",
+  "write_stopped": true,
+  "sealed_utc": "2026-08-25T09:29:38.262519Z",
+  "ordinary_files_expected": 5,
+  "manifest_rows": 3,
+  "unique_unlisted": [
+    "evidence_file_manifest.csv",
+    "WRITE_STOPPED.json"
+  ],
+  "canonical_recordset_sha256": "BA4752A19C59515AE7F79F12D2B246C3D70DB28E7BBDEA61F3F8C3B1E8A6C93A",
+  "manifest_bytes": 432,
+  "manifest_sha256": "389E09A0140DD9DCB08604F15E5DF17212DD971325ED1B75A7F0615A50E40CC3",
+  "root_audit_sha256": "C911B7FE94A95EFF69F8428F4714E40E4C84374CE79EACA4462EA760DC1D37B4",
+  "handoff_sha256": "31758F02B61386B5C4A555C26AF59A29E79ED3186E3940924122B01BEE176B26",
+  "old_root_snapshot_sha256": "9AA00CB50BDD4729401B3EE65AE9BEA79CE27E538950B1C9F42F5DF29F82DB46",
+  "content_result": "STRICT_FAIL_S07",
+  "root_control_result": "REJECT",
+  "old_root_modified": false,
+  "tex_invoked": false,
+  "source_modified": false,
+  "central_state_written": false,
+  "central_inventory_written": false,
+  "post_seal_writes_expected": 0
+}

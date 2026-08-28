@@ -1,0 +1,14 @@
+measurement_id,scope,count,minimum_px,median_px,maximum_px,hard_gate,manual_adjudication,note
+PX_TEXT_OBJECTS,all_visible_text_glyphs,162,7,NA,39,glyph_presence_and_readability,PASS,7px minimum is the caption period and is expected low-profile punctuation
+PX_GRAPHIC_OBJECTS,all_visible_graphic_paths,15,NA,NA,NA,complete_mask_and_geometry,PASS,all 15 masks are pure and all paths are complete
+PX_NODE_LABEL,NODE_LABEL,22,10,29,37,R168_actual_readability,PASS,minimum is a legitimate comma and all symbols are readable
+PX_ANN_BLANKET,ANNOTATION_9_2PT,18,12,23.5,32,R168_actual_readability,PASS,minimum is a comma and the Chinese and Latin annotation is visually balanced
+PX_ANN_IRRELEVANT,ANNOTATION_9_5PT,19,20,32,37,R168_actual_readability,PASS,two-line text is readable with no severe imbalance
+PX_FORMULA,FORMULA_BLOCK,25,10,28,37,R168_actual_readability,PASS,minimum is a legitimate comma and formula meaning is clear
+PX_CAPTION_LABEL,CAPTION_LABEL,5,7,28,37,R168_actual_readability,PASS,minimum is the period in 33.8 and digits remain clear
+PX_CAPTION_TEXT,CAPTION,73,11,34,39,R168_actual_readability,PASS,minimum is a comma and full caption is clear
+PX_INDEPENDENT_TEXT,independent_text_text_pairs,NA,33.0151,NA,NA,minimum_clearance_at_least_4px,PASS,nearest independent caption-label/body glyphs remain well separated
+PX_TEXT_NODE_BORDER,text_to_node_border_pairs,NA,15,NA,NA,minimum_clearance_at_least_5px,PASS,node labels have ample ink-to-border clearance
+PX_TEXT_LINE,text_to_line_pairs,NA,20,NA,NA,minimum_clearance_at_least_3px,PASS,no line intrudes into text or formula ink
+PX_FIGURE_CROP,complete_figure_and_caption_crop,177,23,NA,NA,minimum_foreground_margin_at_least_6px,PASS,no true crop clipping
+PX_STANDALONE_CROP,derivable_figure_body_crop,99,21,NA,NA,minimum_foreground_margin_at_least_6px,PASS,no true crop clipping

@@ -1,0 +1,14 @@
+VIEW_ID,FILE,DECISION,OBSERVED_BEFORE_LEDGER_WRITE,VIEW_SPECIFIC_NOTE,RECORDED_AT_UTC
+V001,figure_native300dpi.png,PASS,true,"Full colour standalone figure is readable; all three notes, leaders, axes, contours, formula, P cluster and red vector cues are present.",2026-08-26T22:52:33.5112244Z
+V002,figure_grayscale300dpi.png,PASS,true,"Grayscale rendering preserves the contour hierarchy, red-vector distinction by geometry, guide relations and all text legibility.",2026-08-26T22:52:33.5112244Z
+V003,rois/guide1_full_native1x.png,PASS,true,"Native 1x ROI shows the revised Guide1 route without a Guide2 crossing or text collision.",2026-08-26T22:52:33.5112244Z
+V004,rois/guide1_full_native8x.png,PASS,true,"Nearest-neighbour 8x ROI confirms separated ink along the complete Guide1 route.",2026-08-26T22:52:33.5112244Z
+V005,rois/guide1_c3_endpoint_native1x.png,PASS,true,"Native endpoint ROI shows a single intentional Guide1 contact on the c3 stroke.",2026-08-26T22:52:33.5112244Z
+V006,rois/guide1_c3_endpoint_native8x.png,PASS,true,"Nearest 8x endpoint ROI confirms contact is localized and does not cross through c3.",2026-08-26T22:52:33.5112244Z
+V007,rois/guide12_regression_native1x.png,PASS,true,"Native regression ROI shows Guide1 and Guide2 as two disjoint leaders.",2026-08-26T22:52:33.5112244Z
+V008,rois/guide12_regression_native8x.png,PASS,true,"Nearest 8x regression ROI confirms zero shared visible ink for the former crossing.",2026-08-26T22:52:33.5112244Z
+V009,rois/gradient_tangent_right_angle_native1x.png,PASS,true,"Native P-cluster ROI retains a readable gradient, tangent and right-angle construction.",2026-08-26T22:52:33.5112244Z
+V010,rois/gradient_tangent_right_angle_native8x.png,PASS,true,"Nearest 8x P-cluster ROI confirms the orthogonality cue and labels are intact.",2026-08-26T22:52:33.5112244Z
+V011,rois/c2_outer_candidate_native1x.png,PASS,true,"Native mask-alert ROI shows a continuous white gap between c2 text ink and c3.",2026-08-26T22:52:33.5112244Z
+V012,rois/c2_outer_candidate_native8x.png,PASS,true,"Nearest 8x mask-alert ROI confirms the raw four pixels are colour-mask contamination rather than visible overlap.",2026-08-26T22:52:33.5112244Z
+V013,sheets/object_contact_sheet.png,PASS,true,"Object sheet covers all 27 final semantic objects; each object is nonempty, attributable and readable.",2026-08-26T22:52:33.5112244Z

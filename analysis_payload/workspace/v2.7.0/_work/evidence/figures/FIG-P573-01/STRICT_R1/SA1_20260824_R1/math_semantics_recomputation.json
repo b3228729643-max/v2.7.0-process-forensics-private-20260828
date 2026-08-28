@@ -1,0 +1,23 @@
+{
+  "displayed_sample_mean": 0.8567,
+  "displayed_true_integral": 0.8556,
+  "domain": "[0,1]",
+  "formula_check": "For U_i iid Uniform(0,1), E[h(U)] = integral_0^1 h(u)du and muhat_N=N^{-1}sum h(U_i).",
+  "h(u)": "exp(-u^2/2)",
+  "h_values": [
+    0.9950124791926823,
+    0.9231163463866358,
+    0.7827045382418681,
+    0.7261490370736908
+  ],
+  "integral_simpson": 0.8556243918921458,
+  "pass": true,
+  "sample_mean": 0.8567456002237193,
+  "sample_u": [
+    0.1,
+    0.4,
+    0.7,
+    0.8
+  ],
+  "uniform_density": 1.0
+}

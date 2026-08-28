@@ -1,0 +1,11 @@
+semantic_id	visual_statement	source_or_context_support	math_or_relation_check	decision	reviewer	note
+S01	当前状态，状态变量 X_t	source node cur; adjacent reading-order context	state variable at time t is the chain input	PASS	SA3_FRESH_ISOLATED	首节点明确给出当前状态 X_t，和相邻正文“先看当前状态”一致。
+S02	按提议核抽取候选，候选变量 Y	source node cand; adjacent reading-order context	Y is drawn from q(X_t,·)	PASS	SA3_FRESH_ISOLATED	候选节点将 Y 表述为按提议核抽取，方向由 X_t 流向 Y 正确。
+S03	计算接受率，未规范化目标记为 π_u 且正向流为正	source node ratio header	condition scopes the displayed positive-flow ratio	PASS	SA3_FRESH_ISOLATED	说明头明确限制未规范化目标及正向流为正，没有把零流分支误写进比率式。
+S04	α_t(Y)=min{1, π_u(Y)q(X_t|Y)/(π_u(X_t)q(Y|X_t))}	source local formula 11.2pt	MH target-times-reverse over current-times-forward ratio	PASS	SA3_FRESH_ISOLATED	分子为候选目标乘反向提议，分母为当前目标乘正向提议；上下位置和条件变量均正确。
+S05	抽取区间[0,1]的均匀变量 U	source decision node first line	U is uniform on [0,1]	PASS	SA3_FRESH_ISOLATED	判定节点先抽 U，区间端点和均匀性均与 MH 接受抽签一致。
+S06	判定 U≤α_t(Y)?	source decision node second line	accept on U no greater than acceptance probability	PASS	SA3_FRESH_ISOLATED	≤ 方向正确，等号归入接受侧不会改变连续分布下语义，也没有误成反向比较。
+S07	接受候选，X_{t+1}取Y	source accept node; adjacent reading-order context	accepted state becomes proposal	PASS	SA3_FRESH_ISOLATED	左分支标“接受”并赋值 X_{t+1}=Y，箭头指向接受节点，关系一致。
+S08	拒绝并记录旧状态，X_{t+1}保持X_t	source reject node; adjacent reading-order context	rejected state stays at current value	PASS	SA3_FRESH_ISOLATED	右分支标“拒绝”并保持 X_t，拒绝节点中的赋值和正文读图顺序一致。
+S09	拒绝后保持旧状态的自环	source self-loop edge and label; preceding context	self-loop records rejection mass	PASS	SA3_FRESH_ISOLATED	自环从拒绝节点绕回自身，箭头回指该节点，正确表达拒绝留驻而非返回候选。
+S10	图注：Metropolis--Hastings 单次更新中的提议判定及拒绝自环	source caption	caption matches proposal/decision/rejection content	PASS	SA3_FRESH_ISOLATED	图注覆盖主图的提议、判定与拒绝自环三项核心语义，未夸大或遗漏可见关系。

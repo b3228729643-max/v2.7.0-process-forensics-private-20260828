@@ -1,0 +1,13 @@
+SEMANTIC_ID,OBJECT,ACTUALLY_REVIEWED,DECISION,NOTE
+SEM001,T002_A_FORMULA,true,PASS,"a=π(x)q(x,y) correctly represents forward target–proposal flow."
+SEM002,T003_B_FORMULA,true,PASS,"b=π(y)q(y,x) correctly represents reverse target–proposal flow."
+SEM003,T004_MIN_FORMULA,true,PASS,"min(a,b) is the accepted common flow under the MH acceptance rule."
+SEM004,"G001–G004,T005,T006",true,PASS,"Two opposite directed mainflow arrows connect x and y and visually encode equal accepted flows."
+SEM005,T007_ACCEPTED_FLOW_X_TO_Y,true,PASS,"π(x)q(x,y)α(x,y)=min(a,b) is mathematically correct."
+SEM006,T008_ACCEPTED_FLOW_Y_TO_X,true,PASS,"π(y)q(y,x)α(y,x)=min(a,b) is the correct reverse counterpart."
+SEM007,T009_BALANCE_EXPLANATION_LINE1,true,PASS,"Equal-width/equal-value accepted flows imply detailed balance as stated."
+SEM008,T010_BALANCE_EXPLANATION_LINE2,true,PASS,"Detailed balance is sufficient for π stationarity and not necessary; statement is correct."
+SEM009,T011_CAPTION,true,PASS,"Caption accurately summarizes clipping both accepted flows to the smaller value and the sufficiency/non-necessity distinction."
+SEM010,"V5-C03.tex lines 217–228",true,PASS,"Adjacent正文 derives detailed balance→stationarity, introduces this figure as proposal versus clipped accepted flow, then states Proposition 32.1; figure is semantically consistent."
+SEM011,all codepoints,true,PASS,"No wrong glyph/codepoint: arrows point correctly; =, ⇒, π, α, x/y/a/b/q all match intended math semantics."
+SEM012,math-rule inventory,true,PASS,"No overline, fraction bar, radical rule, accent or cancellation path exists in source/PDF figure; math-rule denominator is legitimately 0."

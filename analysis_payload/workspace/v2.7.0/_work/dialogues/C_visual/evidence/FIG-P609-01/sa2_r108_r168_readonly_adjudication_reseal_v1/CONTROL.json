@@ -1,0 +1,21 @@
+{
+  "schema": "FIG-P609-01-evidence-control-v1",
+  "handoff_id": "C-FIG-P609-01-R108-SA2-R168-READONLY-ADJUDICATION-V1",
+  "root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P609-01\\sa2_r108_r168_readonly_adjudication_v1",
+  "manifest": "evidence_manifest.json",
+  "seal": "SEAL.json",
+  "write_stop": "WRITE_STOPPED",
+  "manifest_exclusions": [
+    "evidence_manifest.json",
+    "SEAL.json",
+    "WRITE_STOPPED"
+  ],
+  "exclusion_reasons": {
+    "evidence_manifest.json": "self exclusion",
+    "SEAL.json": "control record created after the payload manifest",
+    "WRITE_STOPPED": "strictly last write marker"
+  },
+  "post_marker_writes_allowed": 0,
+  "source_write_roots": [],
+  "evidence_write_root_count": 1
+}

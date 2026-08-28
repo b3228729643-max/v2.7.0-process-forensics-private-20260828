@@ -1,0 +1,5 @@
+view_id,file,reviewer,observed_at_utc,opened,legible,clipping,illegal_overlap,decision,note
+V001,02_renders/full_page_200dpi.png,SA3_FRESH_ISOLATED,2026-08-26T15:48:00Z,TRUE,TRUE,0,1,FAIL_LOCAL_COLLISION,physical page 632 printed 619; page integration otherwise sound
+V002,02_renders/figure_crop_300dpi.png,SA3_FRESH_ISOLATED,2026-08-26T15:48:00Z,TRUE,TRUE,0,1,FAIL_LOCAL_COLLISION,figure clear overall; arrow tip touches final 0 of .380
+V003,02_renders/standalone_300dpi.png,SA3_FRESH_ISOLATED,2026-08-26T15:48:00Z,TRUE,TRUE,0,1,FAIL_LOCAL_COLLISION,balanced and readable except one true text-text collision
+V004,02_renders/grayscale_300dpi.png,SA3_FRESH_ISOLATED,2026-08-26T15:48:00Z,TRUE,TRUE,0,1,FAIL_LOCAL_COLLISION,grayscale meaning preserved; collision remains visible

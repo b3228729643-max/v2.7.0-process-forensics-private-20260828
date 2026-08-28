@@ -1,0 +1,22 @@
+{
+  "schema": "P126_R9_LOCAL_SA2_RESULT_V1",
+  "handoff_id": "A-R115-P126-SA2-DIRECT-BUILD-R9-20260828",
+  "uid": "FIG-P126-01",
+  "verdict": "LOCAL_SA2_FAIL_RETURN_TO_MAIN_SOURCE_SCOPE",
+  "hard_failure_count": 2,
+  "hard_failures": [
+    "HARD-LEGEND-X2-CONTINUOUS",
+    "HARD-LABEL6-Q4-MARKER-CONTACT"
+  ],
+  "resolved_regression": "label7 separation passes with 8 px blank gap",
+  "N": 60,
+  "C": 1770,
+  "machine_candidates": 218,
+  "manual_objects": 60,
+  "manual_pairs": 1770,
+  "manual_views": 23,
+  "pdf_sha256": "CE80FD14D39FE32269BF8535B0381006338AD14D9490292FB5B07230AFDA5573",
+  "source_sha256": "85FA5D73BD816149EE77968512C708C58CEE1AB90D59EDEBBDA550F232EE0D81",
+  "build_slot_released": true,
+  "additional_tex_invocations_after_release": 0
+}

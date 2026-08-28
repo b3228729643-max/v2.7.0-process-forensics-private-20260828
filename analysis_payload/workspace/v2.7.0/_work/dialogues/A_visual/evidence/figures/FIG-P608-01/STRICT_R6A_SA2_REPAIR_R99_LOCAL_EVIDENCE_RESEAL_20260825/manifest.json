@@ -1,0 +1,116 @@
+{
+  "accepted_final_ledgers": [
+    "after_font_audit.csv",
+    "after_overlap_report.csv",
+    "after_pixel_measurements.csv",
+    "character_mapping.csv",
+    "clip_crop_final.csv",
+    "contact_sheet_ledger.csv",
+    "critical_pair_review_ledger.csv",
+    "drawing_path_inventory.csv",
+    "manual_review_ledger.csv",
+    "math_rule_ledger.csv",
+    "object_ledger.csv",
+    "punctuation_calibration.csv",
+    "reused_evidence_integrity.csv",
+    "role_panel_ledger.csv",
+    "semantic_consistency.csv",
+    "source_font_coverage.csv",
+    "source_scale_control_scan.csv",
+    "strict_low_profile_adjudication.csv",
+    "visual_view_ledger.csv",
+    "peer_calibration/peer_comparison_final_ownership.csv",
+    "accepted_payload_inventory.csv"
+  ],
+  "checks": {
+    "all_evidence_references_exist": true,
+    "all_pairs_pass": true,
+    "crop_clearance_pass": true,
+    "excluded_draft_artifacts_absent": true,
+    "explicit_critical_pair_decisions_exact": true,
+    "explicit_object_decisions_exact": true,
+    "explicit_role_decisions_exact": true,
+    "explicit_view_decisions_exact": true,
+    "final_ledgers_closed": true,
+    "font_and_source_scale_pass": true,
+    "handoff_and_route_exact": true,
+    "local_pdf_identity_exact": true,
+    "no_global_or_automatic_review_decision": true,
+    "nondefault_stream_count_zero": true,
+    "object_universe_complete": true,
+    "official_peer_identity_exact": true,
+    "official_peer_ownership_clean": true,
+    "official_peer_selection_before_metrics": true,
+    "ordinary_files_only": true,
+    "origin_r6_read_only_identity": true,
+    "package_text_sentinel_scan_clean": true,
+    "pair_universe_complete": true,
+    "reused_evidence_byte_identical": true,
+    "semantic_consistency_pass": true,
+    "source_scope_exact": true,
+    "strict_low_profile_complete": true,
+    "strict_low_profile_zero_failures": true,
+    "zero_clip": true,
+    "zero_final_illegal_overlap": true
+  },
+  "expected_final_ordinary_file_count": 842,
+  "explicit_decisions": {
+    "critical_pairs": 13,
+    "objects": 170,
+    "roles": 9,
+    "source": "explicit_review_decisions.json",
+    "views": 7
+  },
+  "fresh_isolated_sa1_required": true,
+  "handoff_id": "A-R99-P608-SA2-NARROW-R6A-EVIDENCE-RESEAL-20260825",
+  "identities": {
+    "baseline_head": "e392bd8e5f37dfd49f071f7251c281d46bb68ffd",
+    "local_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P608-01\\STRICT_R6A_SA2_REPAIR_R99_LOCAL_EVIDENCE_RESEAL_20260825\\local_build_direct_r6\\local_wrapper_r6_worktree.pdf",
+    "local_pdf_bytes": 42989,
+    "local_pdf_sha256": "638A722CC86D848E6B0FDEB69F08BB6DDBD3F0AD33E262AB36690C2943FD03BB",
+    "official_r99_sha256": "E8D76EEF0D120C518FA94A8F339BF6777AD18AA6AF0BCC17DFB46DF6DFC49EC6",
+    "source": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_trace_running_mean.tex",
+    "source_diff": {
+      "deletions": 0,
+      "exact_insertion": "  ylabel style={rotate=-90,anchor=east,at={(axis description cs:-0.12,0.5)}},",
+      "insertions": 1
+    },
+    "source_sha256": "78C30F4A934F63E0EF1BBACF400A24F22477D38589F99503AE468F7024A35C05"
+  },
+  "inventory_scope": {
+    "excluded_self": "accepted_payload_inventory.csv",
+    "excluded_terminal_files": [
+      "MACHINE_TERMINAL_RECALC.json",
+      "manifest.json",
+      "after_visual_acceptance.md",
+      "RESULT.txt",
+      "HANDOFF_REPORT.json",
+      "WRITE_STOPPED"
+    ],
+    "row_count": 835,
+    "scope": "Every accepted payload file existing before inventory creation; excludes this inventory file and the six terminal/seal metadata files."
+  },
+  "not_root_acceptance": true,
+  "object_universe": {
+    "N": 170,
+    "expected_pairs": 14365,
+    "glyphs": 112,
+    "pairs": 14365,
+    "paths": 58
+  },
+  "official_candidate_required": true,
+  "origin_handoff_id": "A-R99-P608-SA2-NARROW-20260825",
+  "result": "LOCAL_SA2_PASS_AWAIT_OFFICIAL_CANDIDATE_AND_FRESH_SA1",
+  "route": "SA2=gpt-5.6-sol/max",
+  "scope": "FIG-P608-01 local direct-r6 evidence and explicit per-ID review reseal only",
+  "strict_low_profile": {
+    "accepted_peer": "official R99 physical page 652 figure 32.5 U+002E",
+    "failure_ids": [],
+    "ledger": "strict_low_profile_adjudication.csv",
+    "rows": 15,
+    "target_ratios": {
+      "GLYPH_0072_AREA": 1.0,
+      "GLYPH_0072_H": 1.0
+    }
+  }
+}

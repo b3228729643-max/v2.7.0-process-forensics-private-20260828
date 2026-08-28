@@ -1,0 +1,47 @@
+{
+  "handoff_id": "A-R111-P033-SA1-FRESH-ISOLATED-20260827",
+  "uid": "FIG-P033-01",
+  "candidate": "R111",
+  "status": "SA1_CONTENT_PASS_READY_FOR_FRESH_ISOLATED_SA3",
+  "content_direction": {
+    "N": 99,
+    "C": 4851,
+    "machine_disposed_pairs": 4770,
+    "actually_opened_manual_pairs": 81,
+    "unresolved_pairs": 0,
+    "canonical_illegal_overlap_pixels": 0,
+    "clipping_pixels": 0,
+    "r168_hard_failures": 0
+  },
+  "rejected_r5_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P033-01\\STRICT_R5_SA1_FRESH_ISOLATED_R111_20260827",
+  "accepted_reseal_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P033-01\\STRICT_R5A_SA1_R111_EVIDENCE_ONLY_CONTROL_RESEAL_20260827",
+  "reseal": {
+    "source_material": 43,
+    "copy_identity_rows": 43,
+    "copy_identity_mismatch": 0,
+    "old_controls_copied": 0,
+    "payload": 45,
+    "controls": 3,
+    "ordinary": 48,
+    "manifest_filesystem_mismatch": 0,
+    "readonly_files": "48/48",
+    "readonly_directories": "7/7",
+    "parse_ads_cache_pyc_reparse_failures": 0,
+    "placeholder_or_corrupted_boolean_failures": 0,
+    "write_stopped_margin_ticks": 626430,
+    "postmarker_files": 0,
+    "controller_invocation_count": 1,
+    "retry_count": 0
+  },
+  "hashes": {
+    "payload_manifest_sha256": "052055BE08EA5F1E13877D4580256C2E4E2AA80FC2EA5F58859D4F5583FD531A",
+    "seal_audit_sha256": "AC6BF877DAE5CB6FE30DF9BC72A09F74DF24135E816104E06D02E6F9CF0F75FB",
+    "write_stopped_sha256": "25F8E15210FCC9E6D7175AEB6B12EB08AF921E6A08B0A183D6690DD38FA13940"
+  },
+  "prohibited_claims": [
+    "A_LOCAL_PASS",
+    "FINAL_PASS",
+    "SA3_COMPLETE"
+  ],
+  "next_action": "Main may accept SA1 content PASS and authorize a different completely fresh isolated SA3. A must not start SA3 without that authorization."
+}

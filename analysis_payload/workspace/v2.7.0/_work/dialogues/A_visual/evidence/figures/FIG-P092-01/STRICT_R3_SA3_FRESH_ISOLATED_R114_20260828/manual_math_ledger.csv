@@ -1,0 +1,7 @@
+math_id,manual_reviewer,claim,independent_check,manual_verdict,manual_note
+M01,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"binary entropy formula","H_2(p)=-[p ln p+(1-p)ln(1-p)]/ln 2",PASS,"Source plot expression is exactly the base-2 binary entropy formula on 0<p<1."
+M02,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"endpoint values","lim p->0+ H_2(p)=lim p->1- H_2(p)=0 using x ln x->0",PASS,"Explicit endpoint markers at (0,0) and (1,0) correctly complete the open-domain sampled curve."
+M03,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"maximum location/value","H_2(1/2)=1 and H_2'(p)=log_2((1-p)/p), so H_2'(1/2)=0",PASS,"Peak marker and guides correctly identify p=1/2 and H_2=1 bit."
+M04,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"strict concavity","H_2''(p)=-1/[ln 2*p*(1-p)]<0 for 0<p<1",PASS,"Concavity makes the stationary point the unique global maximum."
+M05,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"symmetry","substitution p->1-p leaves the two summands exchanged",PASS,"Formula annotation H_2(p)=H_2(1-p) and symmetric geometry are correct."
+M06,A-R114-P092-SA3-FRESH-ISOLATED-20260828,"numeric sample","p in {0.001,0.01,0.1,0.25,0.5,0.75,0.9,0.99,0.999}; paired residuals recorded in math_samples_mechanical.csv",PASS,"Samples are nonnegative, peak at 1, and match reflected probabilities to floating-point zero in the recorded calculation."

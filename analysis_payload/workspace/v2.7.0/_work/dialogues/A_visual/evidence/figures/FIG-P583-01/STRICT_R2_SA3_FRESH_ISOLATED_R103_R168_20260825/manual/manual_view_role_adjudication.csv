@@ -1,0 +1,12 @@
+check_id,reviewer,artifact_or_scope,inspection_mode,observed,decision,note
+VIEW_01,SA3-gpt-5.6-sol-xhigh,views/full_page_300dpi.png,native 300 dpi,TRUE,PASS,page integration balanced; float position and surrounding text show no collision or crop
+VIEW_02,SA3-gpt-5.6-sol-xhigh,views/full_page_200dpi.png,whole-page context,TRUE,PASS,target figure remains identifiable and balanced at lower resolution
+VIEW_03,SA3-gpt-5.6-sol-xhigh,views/figure_crop_300dpi.png,native 300 dpi,TRUE,PASS,complete figure caption and outer whitespace visible
+VIEW_04,SA3-gpt-5.6-sol-xhigh,views/standalone_300dpi.png,native 300 dpi,TRUE,PASS,all plot objects remain sharp and readable
+VIEW_05,SA3-gpt-5.6-sol-xhigh,views/grayscale_300dpi.png,native grayscale,TRUE,PASS,curve axes condition box and annotations remain distinguishable
+VIEW_06,SA3-gpt-5.6-sol-xhigh,overlays/after_text_measurement_overlay_300dpi.png,native measurement overlay,TRUE,PASS,measured glyph boxes agree with visible text and show no clipping
+FONT_01,SA3-gpt-5.6-sol-xhigh,all 119 visible glyphs,R168 hard font gates,TRUE,PASS,no missing or tofu glyph no wrong codepoint or math semantics no unreadable glyph and no real clipping or overlap
+FONT_02,SA3-gpt-5.6-sol-xhigh,complete figure,R168 visual harmony,TRUE,PASS,FONT_VISUAL_HARMONY_PASS; no obvious severe visible imbalance at native page crop standalone or grayscale scale
+ROLE_01,SA3-gpt-5.6-sol-xhigh,axes ticks labels formula annotations and condition,role and script observation,TRUE,PASS,body tick label annotation axis and mathematical script roles are visibly distinguishable and semantically correct
+SEM_01,SA3-gpt-5.6-sol-xhigh,rate geometry and caption,semantic observation,TRUE,PASS,O(N^-1/2) curve x4/divide-by-2 triangle iid finite-variance condition and caption caveat are mutually consistent
+CROP_01,SA3-gpt-5.6-sol-xhigh,figure crop and visible denominator,real crop and clipping observation,TRUE,PASS,all 142 visible objects are present; caption edge minimum 11 native pixels exceeds threshold 6

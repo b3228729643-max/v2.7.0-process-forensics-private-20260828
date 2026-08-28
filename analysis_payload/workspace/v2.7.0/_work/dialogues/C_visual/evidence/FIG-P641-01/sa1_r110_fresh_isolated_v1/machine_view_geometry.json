@@ -1,0 +1,51 @@
+{
+  "figure_crop_300dpi.png": {
+    "source": "full_page_native300dpi.png",
+    "crop_pt": [
+      71.0,
+      553.0,
+      513.0,
+      730.0
+    ],
+    "crop_px_in_full_page": [
+      295,
+      2304,
+      2138,
+      3042
+    ],
+    "native_dimensions_px": [
+      1843,
+      738
+    ],
+    "resize_performed": false
+  },
+  "standalone_300dpi.png": {
+    "source": "full_page_native300dpi.png",
+    "crop_pt": [
+      117.0,
+      553.0,
+      470.0,
+      696.0
+    ],
+    "crop_px_in_full_page": [
+      487,
+      2304,
+      1959,
+      2900
+    ],
+    "native_dimensions_px": [
+      1472,
+      596
+    ],
+    "resize_performed": false
+  },
+  "grayscale_300dpi.png": {
+    "source": "figure_crop_300dpi.png",
+    "native_dimensions_px": [
+      1843,
+      738
+    ],
+    "resize_performed": false,
+    "conversion": "Pillow RGB-to-L grayscale only; geometry unchanged"
+  }
+}

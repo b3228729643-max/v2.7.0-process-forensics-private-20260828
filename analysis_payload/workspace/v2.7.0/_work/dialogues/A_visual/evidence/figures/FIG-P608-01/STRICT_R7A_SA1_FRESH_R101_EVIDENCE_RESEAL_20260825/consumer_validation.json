@@ -1,0 +1,38 @@
+{
+  "validator": "consumer-only; does not create or alter manual decision rows",
+  "handoff_id": "A-R101-P608-SA1-FRESH-R7A-EVIDENCE-RESEAL-20260825",
+  "route": "SA1=gpt-5.6-sol/xhigh",
+  "status": "PASS",
+  "checks": {
+    "source_pdf_identity": "PASS",
+    "reuse_identity": {
+      "entries": 1893,
+      "status": "PASS"
+    },
+    "denominator": {
+      "N": 172,
+      "glyph": 112,
+      "graphic": 60,
+      "math_rule": 6,
+      "pattern": 2,
+      "C": 14706
+    },
+    "manual_ledgers": {
+      "object": 172,
+      "critical": 102,
+      "preliminary": 64,
+      "peer": 13,
+      "role": 35,
+      "view": 4,
+      "hard": 1,
+      "total": 391
+    },
+    "accepted_failure_consistency": {
+      "hard_failure_count": 1,
+      "hard_failure_id": "HARD-LOWPROFILE-TXT-098",
+      "target": "TXT-098"
+    }
+  },
+  "failure_count": 0,
+  "failures": []
+}

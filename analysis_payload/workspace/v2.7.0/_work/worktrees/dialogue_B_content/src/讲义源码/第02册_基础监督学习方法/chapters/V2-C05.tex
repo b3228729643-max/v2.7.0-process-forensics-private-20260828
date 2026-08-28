@@ -1,0 +1,884 @@
+% STAGE10-CHAPTER: V2-C05
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; rigorous_modeling; mathematical_development; multiple_perspectives; algorithm_engineering; examples_exercises; closure_self_check
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V2-C05-CH01}; CH-02=\label{struct:V2-C05-CH02}; CH-03=\label{struct:V2-C05-CH03}; CH-04=\label{struct:V2-C05-CH04}; CH-05=\label{struct:V2-C05-CH05}; CH-06=\label{struct:V2-C05-CH06}; CH-07=\label{struct:V2-C05-CH07}; CH-08=\label{struct:V2-C05-CH08}; CH-09=\label{struct:V2-C05-CH09}; CH-10=\label{struct:V2-C05-CH10}; CH-11=\label{struct:V2-C05-CH11}; CH-12=\label{struct:V2-C05-CH12}; CH-13=\label{struct:V2-C05-CH13}; CH-14=\label{struct:V2-C05-CH14}; CH-15=\label{struct:V2-C05-CH15}; CH-16=\label{struct:V2-C05-CH16}; CH-17=\label{struct:V2-C05-CH17}; CH-18=\label{struct:V2-C05-CH18}; CH-19=\label{struct:V2-C05-CH19}; CH-20=\label{struct:V2-C05-CH20}; CH-21=\label{struct:V2-C05-CH21}; CH-22=\label{struct:V2-C05-CH22}; CH-23=\label{struct:V2-C05-CH23}; CH-24=\label{struct:V2-C05-CH24}; CH-25=\label{struct:V2-C05-CH25}; CH-26=\label{struct:V2-C05-CH26}; CH-27=\label{struct:V2-C05-CH27}; CH-28=\label{struct:V2-C05-CH28}; CH-29=\label{struct:V2-C05-CH29}; CH-30=\label{struct:V2-C05-CH30}; CH-31=\label{struct:V2-C05-CH31}; CH-32=\label{struct:V2-C05-CH32}; CH-33=\label{struct:V2-C05-CH33}; CH-34=\label{struct:V2-C05-CH34}; CH-35=\label{struct:V2-C05-CH35}; CH-36=\label{struct:V2-C05-CH36}; CH-37=\label{struct:V2-C05-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V2-C05-sigmoid -> SLM-06-01-001
+\chapter{逻辑斯谛回归}\label{chap:V2-C05}
+\index{逻辑斯谛回归}
+\index{对数几率}
+\index{极大似然}
+\index{多项逻辑斯谛回归}
+
+% KNOWLEDGE-PLAN: KN-V2-C16-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：逻辑斯谛回归。}逻辑斯谛回归章地图以“从线性得分直达概率模型、交叉熵与阻尼Newton法”组织内容；请把路线拆成起点、关键工具和终点，并核对三者的输入输出类型能依次衔接。\par
+
+\SLChapterOpening{从线性得分直达概率模型、交叉熵与阻尼Newton法}{怎样得到可优化、可校准且数值稳定的分类概率}{能够推导梯度与Hessian并实现二项和多项模型}{线性代数、条件似然、凸优化与基础数值计算}{若完全分离、溢出或阈值代价不清，回看优化实现与评估部分}
+
+\phantomsection\label{struct:V2-C05-CH01}
+% KNOWLEDGE-PLAN: KN-V2-C16-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}逻辑斯谛回归目标中的“从逻辑斯谛分布出发，建立二项逻辑斯谛回归的条件概率模型”必须可复核；请从逻辑斯谛分布出发，建立二项逻辑斯谛回归的条件概率模型，所得结果仅在“中间结果逐项包含首目标“从逻辑斯谛分布出发，建立二项逻辑斯谛回归的条件概率模型”声明的对象、条件与结论”时通过。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 从逻辑斯谛分布出发，建立二项逻辑斯谛回归的条件概率模型，并能在几率、对数几率和概率三种表示之间转换；
+  \item 从伯努利似然逐步推导负对数似然、梯度和Hessian矩阵，说明目标函数的凸性以及正则化的作用；
+  \item 掌握带回溯线搜索的阻尼Newton方法，明确输入输出、参数、初始化、更新、停止与收敛条件，并分析时间和空间复杂度；
+  \item 把二项模型推广到多项逻辑斯谛回归，理解基准类参数化、softmax参数化及其可识别性差异；
+  \item 能够识别完全分离、数值溢出、数据泄漏、阈值误用和概率失准等常见问题，并给出可检验的处理方案。
+\end{itemize}}
+
+\phantomsection\label{struct:V2-C05-CH02}
+% KNOWLEDGE-PLAN: KN-V2-C16-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}逻辑斯谛回归的最短先修明确要求“本章需要线性函数、指数函数与对数函数、伯努利分布、条件概率、独立同分布抽样、极大似然估计、向量微分、正定与半正定矩阵、凸函数以及Newton方法”；请把首项“本章需要线性函数、指数函数与对数函数、伯努利分布、条件概率、独立同分布抽样、极大似然估计、向量微分、正定与半正定矩阵、凸函数以及Newton方法”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章需要线性函数、指数函数与对数函数、伯努利分布、条件概率、独立同分布抽样、极大似然估计、向量微分、正定与半正定矩阵、凸函数以及Newton方法”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章需要线性函数、指数函数与对数函数、伯努利分布、条件概率、独立同分布抽样、极大似然估计、向量微分、正定与半正定矩阵、凸函数以及Newton方法。默认样本写为$T=\{(x_i,y_i)\}_{i=1}^{N}$，其中$x_i\in\mathbb R^d$，二分类标签$y_i\in\{0,1\}$。若把截距并入参数，则在$x_i$末尾补1，并相应扩充权重向量。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V2-C05-CH03}
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否把$p/(1-p)$解释为事件发生的几率，并从$p/(1-p)=e^z$解出$p$？
+  \item 能否写出伯努利样本的似然$\prod_i p_i^{y_i}(1-p_i)^{1-y_i}$并取对数？
+  \item 能否验证$u^THu\geq0$与矩阵$H$半正定之间的关系？
+  \item 能否说明特征标准化必须只用训练折估计均值和尺度？
+\end{enumerate}
+若第1项或第2项不能独立完成，应先复习几率、对数与极大似然；若第3项不熟悉，应先复习二次型与凸优化；若第4项不确定，应先复习训练集、验证集和测试集的职责边界。
+\end{precheckbox}
+
+\phantomsection\label{struct:V2-C05-CH04}
+% KNOWLEDGE-PLAN: KN-V2-C16-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}逻辑斯谛回归把“逻辑斯谛分布 $\to$ S形概率映射”接到“线性预测量 $\to$ 对数几率线性模型 $\to$ 线性决策边界”；请用$\to$补全这一步的等式或判据，再检查两端维数、支持或对象类型。\par
+
+\begin{dependencybox}
+逻辑斯谛分布 $\to$ S形概率映射；
+线性预测量 $\to$ 对数几率线性模型 $\to$ 线性决策边界；
+伯努利条件分布 $\to$ 极大似然 $\to$ 交叉熵目标；
+梯度与Hessian $\to$ 凸优化 $\to$ 阻尼Newton迭代；
+二项归一化 $\to$ 多项归一化 $\to$ softmax与最大熵解释。
+\end{dependencybox}
+
+% KNOWLEDGE-PLAN: KN-V2-C16-CONCEPT-001 L1
+\paragraph{读前自检：模型认识卡：逻辑斯谛回归。}逻辑斯谛回归模型卡给定$x\in\mathbb R^d,w\in\mathbb R^d,b\in\mathbb R$；请计算$z=w^{\mathsf T}x+b$与$\sigma(z)$，核对输出在$(0,1)$并按冻结阈值转为类别。\par
+
+\begin{keypointbox}[title=模型认识卡：逻辑斯谛回归]
+\textbf{任务与输入：}二类或多类分类，$x\in\mathbb R^d$。\quad
+\textbf{输出类型：}条件概率与阈值决策。\par
+\textbf{模型：}二类用$\sigma(w^{\mathsf T}x+b)$，多类用softmax。\quad
+\textbf{策略：}最小化条件负对数似然与可选正则项。\quad
+\textbf{算法：}梯度法或带线搜索的阻尼Newton法。\par
+\textbf{预测：}报告概率，并按预先选择的阈值或最大概率决策。\quad
+\textbf{关键假设与边界：}对数几率在给定表示上线性；完全分离、病态曲率与失准概率需单独诊断。
+\end{keypointbox}
+
+\phantomsection\label{struct:V2-C05-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V2-C05
+\index[symbols]{x-x-i--s3d45f44e91d4@$x,x_i$：输入特征向量与第$i$个样本的输入}
+\index[symbols]{y-i--sc8c344c0c60c@$y_i$：本章逻辑斯谛模型中的二分类或多分类标签}
+\index[symbols]{w-b--s3fa741e4973e@$w,b$：权重向量与截距}
+\index[symbols]{z-eq-w-tx-plus-b--sc6721a382116@$z=w^Tx+b$：二项模型的线性预测量}
+\index[symbols]{minus-sigma-minus-z--sa3ad0b6a7878@$\sigma(z)$：逻辑斯谛函数$1/(1+e^{-z})$}
+\index[symbols]{p-i--s6f7817eb8684@$p_i$：$P(Y=1\mid x_i)$的简记}
+\index[symbols]{x--se9e68c9223b2@$X$：以样本向量为行的设计矩阵}
+\index[symbols]{d--s806bbcf8c799@$D$：本章Newton推导中对角元为$p_i(1-p_i)$的权重矩阵}
+\index[symbols]{minus-lambda-minus--se28250287f4d@$\lambda$：$L_2$正则化强度}
+\index[symbols]{k--s241f92c0c296@$K$：本章多项逻辑斯谛模型的类别数}
+% STAGE19-SYMBOL-INDEX-END: V2-C05
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$x,x_i$ & $\mathbb R^d$ & 输入特征向量与第$i$个样本的输入\\
+$y_i$ & $\{0,1\}$或$\{1,\ldots,K\}$ & 二分类或多分类标签\\
+$w,b$ & $\mathbb R^d,\mathbb R$ & 权重向量与截距\\
+$z=w^Tx+b$ & $\mathbb R$ & 二项模型的线性预测量\\
+$\sigma(z)$ & $(0,1)$ & 逻辑斯谛函数$1/(1+e^{-z})$\\
+$p_i$ & $(0,1)$ & $P(Y=1\mid x_i)$的简记\\
+$X$ & $\mathbb R^{N\times d}$ & 以样本向量为行的设计矩阵\\
+$D$ & $\mathbb R^{N\times N}$ & 对角元为$p_i(1-p_i)$的权重矩阵\\
+$\lambda$ & $[0,\infty)$ & $L_2$正则化强度\\
+$K$ & 正整数且$K\geq2$ & 多分类的类别数\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{二项逻辑斯谛模型}{sec:V2-C05-S01}
+\phantomsection\label{struct:V2-C05-CH06}
+分类器既要给出类别，也常要给出可用于排序、阈值决策和风险控制的条件概率。线性函数$w^Tx+b$可以取任意实数，不能本身充当概率；逻辑斯谛函数把整个实数轴单调映射到$(0,1)$，从而把线性结构和概率输出连接起来。
+
+% KNOWLEDGE-PLAN: KN-V2-C16-FORMULA-001 L1
+\paragraph{读前自检：逻辑斯谛回归与最大熵模型。}把逻辑斯谛回归与最大熵模型放在“逻辑斯谛回归是条件概率模型”下考察：在共同支持上代入$P(Y\mid X)$并合并一项，并检查最大熵模型同样得到指数族条件分布，本章后文将从对数配分函数说明两者的联系。\par
+
+\knowledgeanchor{SLM-06-00-001}{逻辑斯谛回归与最大熵模型}
+逻辑斯谛回归是条件概率模型。它不为$X$单独建立分布，而是直接描述$P(Y\mid X)$；学习时以条件似然为准则。二项模型使用一个线性预测量，多项模型使用一组线性预测量。最大熵模型同样得到指数族条件分布，本章后文将从对数配分函数说明两者的联系。
+
+% KNOWLEDGE-PLAN: KN-V2-C16-CONCEPT-002 L1
+\paragraph{读前自检：逻辑斯谛回归模型。}逻辑斯谛回归模型要求先确认“模型名称中的“回归”指对条件概率或对数几率建模，最终任务仍可为分类”；请随后把“模型名称中的“回归”指对条件概率或对数几率建模，最终任务仍可为分类”中的已声明对象依次标成输入、输出与判据，用每个对象只承担正文声明的接口角色，且判据能给出通过或失败验收。\par
+
+\knowledgeanchor{SLM-06-01-002}{逻辑斯谛回归模型}
+逻辑斯谛回归把输入的线性组合送入S形函数。其参数控制决策面的方向、位置以及概率随法向距离变化的速度。模型名称中的“回归”指对条件概率或对数几率建模，最终任务仍可为分类。
+
+% KNOWLEDGE-PLAN: KN-V2-C16-CONCEPT-003 L1
+\paragraph{读前自检：逻辑斯谛分布。}逻辑斯谛分布满足$F(u)=1/[1+e^{-(u-\mu)/\gamma}]$且$\gamma>0$；请对$u$求导得到密度$f(u)$，再核对$f(u)\ge0$且从$-\infty$到$+\infty$积分为1。\par
+
+\knowledgeanchor{SLM-06-01-003}{逻辑斯谛分布}
+\phantomsection\label{struct:V2-C05-CH07}
+\begin{definition}[逻辑斯谛分布]\label{def:V2-C05-logistic-distribution}
+设连续随机变量$U$的分布函数和密度函数分别为
+\[
+F(u)=\frac{1}{1+\exp[-(u-\mu)/\gamma]},\qquad
+f(u)=\frac{\exp[-(u-\mu)/\gamma]}
+{\gamma\{1+\exp[-(u-\mu)/\gamma]\}^{2}},
+\]
+其中$\mu\in\mathbb R$是位置参数，$\gamma>0$是尺度参数，则称$U$服从逻辑斯谛分布。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V2-C16-FORMULA-002 L1
+\paragraph{读前自检：逻辑斯谛分布的分布函数与密度函数。}逻辑斯谛分布的分布函数与密度函数依赖“分布函数关于$u=\mu$中心对称地过渡：$F(\mu)=1/2$”；请据此把$F(\mu+t)=1-F(\mu-t)$在其支持上求和或积分一次，并直接核对$\gamma$越大，概率质量分布得越宽。\par
+
+\knowledgeanchor{SLM-06-01-001}{逻辑斯谛分布的分布函数与密度函数}
+分布函数关于$u=\mu$中心对称地过渡：$F(\mu)=1/2$，且$F(\mu+t)=1-F(\mu-t)$。密度也关于$\mu$对称，在$\mu$处取得峰值$1/(4\gamma)$。$\gamma$越小，过渡越陡；$\gamma$越大，概率质量分布得越宽。
+
+% KNOWLEDGE-PLAN: KN-V2-C16-CONCEPT-004 L1
+\paragraph{读前自检：二项逻辑斯谛回归模型。}二项逻辑斯谛回归模型以“对$x\in\mathbb R^d$和$Y\in\{0,1\}$”为约束；请独立化简$\frac{P(Y=1\mid x)}{P(Y=0\mid x)}$的两端，并确认恰有$b=\log[\tau/(1-\tau)]$时，等式在全空间成立，不能称作通常意义的分界超平面。\par
+% KNOWLEDGE-PLAN: KN-V2-C16-BOUNDARY-001 L1
+\paragraph{读前自检：二项逻辑斯谛回归的条件概率分布。}二项逻辑斯谛模型满足$P(Y=1\mid x)=\sigma(w^{\mathsf T}x+b)$；请计算优势比$P(1\mid x)/P(0\mid x)=e^{w^{\mathsf T}x+b}$，核对两类概率和为1且$w\ne0$时阈值边界为超平面。\par
+
+\knowledgeanchor{SLM-06-01-004}{二项逻辑斯谛回归模型}
+\knowledgeanchor{SLM-06-02-001}{二项逻辑斯谛回归的条件概率分布}
+% KNOWLEDGE-PLAN: KN-V2-C16-DEFINITION-002 L1
+\paragraph{读前自检：二项逻辑斯谛回归。}对二项逻辑斯谛回归，条件“对$x\in\mathbb R^d$和$Y\in\{0,1\}$”不可省；请将$P(Y=1\mid x)$左端按正文定义展开一层，再逐项对齐右端，再用两端运算均有定义、类型一致且化为同一结果作检查。\par
+
+\begin{definition}[二项逻辑斯谛回归]\label{def:V2-C05-binary-logistic}
+对$x\in\mathbb R^d$和$Y\in\{0,1\}$，二项逻辑斯谛回归规定
+\[
+P(Y=1\mid x)=\frac{\exp(w^Tx+b)}{1+\exp(w^Tx+b)},\qquad
+P(Y=0\mid x)=\frac{1}{1+\exp(w^Tx+b)}.
+\]
+若令$\widetilde x=(x^T,1)^T$、$\widetilde w=(w^T,b)^T$，则两式可统一写成
+\[
+P(Y=1\mid x)=\frac{\exp(\widetilde w^T\widetilde x)}
+{1+\exp(\widetilde w^T\widetilde x)},\qquad
+P(Y=0\mid x)=\frac{1}{1+\exp(\widetilde w^T\widetilde x)}.
+\]
+\end{definition}
+
+\phantomsection\label{struct:V2-C05-CH08}
+\textbf{模型。}记$z=w^Tx+b$和$\sigma(z)=1/(1+e^{-z})$，则$P(Y=1\mid x)=\sigma(z)$，$P(Y=0\mid x)=1-\sigma(z)$。给定阈值$\tau\in(0,1)$，分类规则为$\widehat y=\mathbf 1\{\sigma(z)\geq\tau\}$。当$\tau=1/2$时，分界面为$w^Tx+b=0$；改变阈值只沿法向平移分界面，不改变其方向。
+
+\phantomsection\label{struct:V2-C05-CH09}
+\textbf{学习策略。}独立样本的条件似然是各样本真实标签概率的乘积。最大化条件似然等价于最小化二元交叉熵；$L_2$惩罚可控制被惩罚方向的参数规模并缓解共线性。只有当惩罚覆盖全部分离方向时，它才保证完全分离数据具有有限解；若截距不惩罚、数据只含单类，或仍存在未惩罚分离方向，则参数仍可能沿该方向发散。训练目标与最终决策代价并非同一概念：模型先估计概率，部署时再依据误判代价选择阈值。
+
+
+\SLReviewSection{几率、对数几率与概率解释}{sec:V2-C05-S02}
+对事件$Y=1$，若$p=P(Y=1\mid x)$，则几率定义为$p/(1-p)$。二项逻辑斯谛模型满足
+\[
+\frac{P(Y=1\mid x)}{P(Y=0\mid x)}=\exp(w^Tx+b),
+\qquad
+\log\frac{P(Y=1\mid x)}{1-P(Y=1\mid x)}=w^Tx+b.
+\]
+左侧称为\textbf{对数几率}或\emph{logit}。因此，逻辑斯谛回归并非假设概率对$x$线性，而是假设对数几率对$x$线性。若第$j$个特征增加一个单位且其他特征不变，几率乘以$e^{w_j}$；这一解释依赖特征单位，标准化前后不能机械比较系数大小。
+
+\phantomsection\label{struct:V2-C05-CH12}
+\begin{theorem}[概率映射与线性分界]\label{thm:V2-C05-sigmoid}
+逻辑斯谛函数$\sigma(z)=1/(1+e^{-z})$严格递增，且$\sigma(-z)=1-\sigma(z)$。对任意阈值$\tau\in(0,1)$，条件$\sigma(w^Tx+b)\geq\tau$等价于
+\[
+w^Tx+b\geq\log\frac{\tau}{1-\tau}.
+\]
+若$w\ne0$，因而二项逻辑斯谛回归在原特征空间中的阈值分界是一个余维为$1$的超平面。若$w=0$，分类器为常值：严格不等式对应的决策区域只能是全空间或空集；恰有$b=\log[\tau/(1-\tau)]$时，等式在全空间成立，不能称作通常意义的分界超平面。
+\end{theorem}
+
+\phantomsection\label{struct:V2-C05-CH13}
+% KNOWLEDGE-PLAN: KN-V2-C16-PROOF-001 L1
+\paragraph{读前自检：证明：概率映射与线性分界。}逻辑斯谛函数$\sigma(z)=1/(1+e^{-z})$；请直接变形核对$\sigma(-z)=1-\sigma(z)$，再求导得到$\sigma'(z)=\sigma(z)[1-\sigma(z)]$。\par
+
+\begin{proof}
+求导得$\sigma'(z)=\sigma(z)[1-\sigma(z)]$。对有限$z$有$0<\sigma(z)<1$，故导数为正，函数严格递增。又有
+\[
+\sigma(-z)=\frac{1}{1+e^z}=1-\frac{e^z}{1+e^z}=1-\sigma(z).
+\]
+由$\sigma(z)=\tau$解得$e^z=\tau/(1-\tau)$，取对数得到$z=\log[\tau/(1-\tau)]$。严格单调性保持不等号方向。代入$z=w^Tx+b$后，$w\ne0$时得到半空间及其边界超平面；$w=0$时则直接得到上述常值分类器的三种退化情形。
+\end{proof}
+
+\phantomsection\label{struct:V2-C05-CH14}
+% KNOWLEDGE-PLAN: KN-V2-C16-CONCEPT-005 L1
+\paragraph{读前自检：几何解释：当 w 0 时，向量 w 是等概率超平面的法向量。}逻辑斯谛等概率面由$w^{\mathsf T}x+b$固定；请令预测概率为$1/2$解出$w^{\mathsf T}x+b=0$，核对$w\ne0$时它是法向量为$w$的超平面。\par
+
+\begin{geometrybox}
+\textbf{几何解释。}当$w\neq0$时，向量$w$是等概率超平面的法向量。点$x$到$1/2$分界面的有符号距离为$(w^Tx+b)/\lVert w\rVert_2$。概率并不与距离线性变化，而是先把距离乘以$\lVert w\rVert_2$，再经S形函数压缩。扩大$w,b$的共同尺度会使过渡带变窄，却不改变$1/2$分界面。
+\end{geometrybox}
+
+\phantomsection\label{struct:V2-C05-CH15}
+\begin{probabilitybox}
+对数几率每增加$\Delta$，几率乘以$e^{\Delta}$；概率的增量还取决于当前$p$，因为$dp/dz=p(1-p)$。同样的线性预测量变化在$p\approx1/2$附近影响较大，在$p$接近0或1时影响较小。模型输出只有在抽样机制、特征分布和标签定义与训练阶段相容，并经过独立数据校准检查后，才适合按频率意义解释。
+
+\textbf{优化解释。}参数学习等价于最小化伯努利负对数似然；其Hessian为半正定矩阵，因此目标函数是凸函数。梯度法从一阶方向降低目标，Newton法利用局部曲率缩放更新；正则化则在数据拟合与参数规模之间加入可控权衡。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V2-C05-CH17}
+% FIGURE-KNOWLEDGE: fig:V2-C05-sigmoid=SLM-06-01-004
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C05/fig_v2_c05_sigmoid.tex}
+图\ref{fig:V2-C05-sigmoid}显示$z=0$时概率为$1/2$，且$\sigma(-z)=1-\sigma(z)$。线性预测量的符号决定概率位于$1/2$哪一侧，而绝对值增大只会使概率逐渐逼近0或1，不会越出概率区间。
+
+
+% KNOWLEDGE-PLAN: KN-V2-C16-CONCEPT-007 L1
+\paragraph{读前自检：模型参数估计。}令$p_i=\sigma(w^{\mathsf T}x_i+b)$；请把独立样本似然写成$L(w,b)=\prod_i p_i^{y_i}(1-p_i)^{1-y_i}$并取对数，核对最大化$\ell(w,b)$等价于最小化伯努利负对数似然。\par
+
+\SLTeachSection{极大似然与梯度推导}{sec:V2-C05-S03}
+\knowledgeanchor{SLM-06-01-005}{模型参数估计}
+令$p_i=\sigma(w^Tx_i+b)$。独立样本的条件似然与对数似然分别为
+\[
+L(w,b)=\prod_{i=1}^{N}p_i^{y_i}(1-p_i)^{1-y_i},
+\qquad
+\ell(w,b)=\sum_{i=1}^{N}\{y_i\log p_i+(1-y_i)\log(1-p_i)\}.
+\]
+最大化$\ell$等价于最小化负对数似然。以下把截距并入增广参数，仍用$w$和$x_i$表示增广后的量，并令$z_i=w^Tx_i$。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V2-C05-CH11}
+% CORE-DERIVATION-PLAN: KN-V2-C16-DERIVATION-001
+\SLKnowledgeBridge{把伯努利似然化为可稳定计算的凸目标，并得到一阶与 Newton 更新所需量。}{设计矩阵 $X$、参数 $w$、标签向量 $y$、概率 $p_i=\sigma(x_i^{\mathsf T}w)$。}{$y_i\in\{0,1\}$；所有样本线性预测有限；$W=\operatorname{diag}(p_i(1-p_i))\succeq0$。}{先改写 $\ell(w)=\sum_i[\log(1+e^{x_i^{\mathsf T}w})-y_ix_i^{\mathsf T}w]$。}
+
+\begin{derivationgoalbox}
+从伯努利负对数似然推导梯度与Hessian矩阵，进而确定一阶优化和Newton更新所需的全部量。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+使用$\sigma'(z)=\sigma(z)[1-\sigma(z)]$以及$\log\sigma(z)=z-\log(1+e^z)$、$\log[1-\sigma(z)]=-\log(1+e^z)$。记$p=(p_1,\ldots,p_N)^T$、$y=(y_1,\ldots,y_N)^T$。
+\end{derivationprepbox}
+
+\textbf{推导第1步：整理单样本损失。}
+第$i$个样本的负对数似然为
+\[
+j_i(w)=-y_i\log p_i-(1-y_i)\log(1-p_i)
+=\log(1+e^{z_i})-y_i z_i.
+\]
+因此未正则化目标为$J_0(w)=\sum_{i=1}^{N}j_i(w)$。
+
+\textbf{推导第2步：求梯度。}
+由于$d\log(1+e^z)/dz=\sigma(z)$且$\nabla_wz_i=x_i$，有
+\[
+\nabla j_i(w)=(p_i-y_i)x_i,
+\qquad
+\nabla J_0(w)=\sum_{i=1}^{N}(p_i-y_i)x_i=X^T(p-y).
+\]
+
+\textbf{推导第3步：求Hessian矩阵。}
+再求一次导数，并记$D=\operatorname{diag}\{p_i(1-p_i)\}$，得到
+\[
+\nabla^2J_0(w)=\sum_{i=1}^{N}p_i(1-p_i)x_ix_i^T=X^TDX.
+\]
+若使用$L_2$正则化$J_\lambda(w)=J_0(w)+\lambda\lVert w\rVert_2^2/2$，并且截距不参与惩罚，则应把单位阵替换为截距位置为0的对角惩罚矩阵$R$：
+\[
+\nabla J_\lambda=X^T(p-y)+\lambda Rw,
+\qquad
+\nabla^2J_\lambda=X^TDX+\lambda R.
+\]
+
+\begin{theorem}[负对数似然的凸性]\label{thm:V2-C05-convexity}
+二项逻辑斯谛回归的负对数似然$J_0$关于$w$是凸函数。若对所有非零向量$v$都有某个样本满足$x_i^Tv\neq0$且其$p_i\in(0,1)$，则Hessian正定，$J_0$严格凸；加入覆盖相应方向的正定二次惩罚也可得到严格凸性。
+\end{theorem}
+
+% KNOWLEDGE-PLAN: KN-V2-C16-PROOF-002 L1
+\paragraph{读前自检：证明：负对数似然的凸性。}围绕负对数似然的凸性，先采用条件“若$v\neq0$时至少一个非零平方项具有正权重”，再对$v^T\nabla^2J_0(w)v$做一次条件化或边缘化；最后验证任取$v\in\mathbb R^d$。\par
+
+\begin{proof}
+任取$v\in\mathbb R^d$，由Hessian的求和表示有
+\[
+v^T\nabla^2J_0(w)v
+=\sum_{i=1}^{N}p_i(1-p_i)(x_i^Tv)^2\geq0.
+\]
+所以Hessian半正定，$J_0$为凸函数。若$v\neq0$时至少一个非零平方项具有正权重，则二次型严格为正，Hessian正定。加入二次惩罚后，二次型再增加$\lambda v^TRv$；当数据项与惩罚项的零空间只有零向量时，和矩阵正定。严格凸性保证至多一个有限极小点，但完全分离时未惩罚似然可能只在参数趋于无穷时逼近下确界，不能把凸性误解为有限最优解必然存在。
+\end{proof}
+
+\begin{theorem}[$L_2$正则化下有限解的充分条件]\label{thm:V2-C05-regularized-existence}
+令$\widetilde y_i=2y_i-1$，$\lambda>0$且$R\succeq0$。若每个非零未惩罚方向$v\in\ker R$都不是弱分离方向，即总存在某个$i$使$\widetilde y_i x_i^Tv<0$，则$J_\lambda$在有限参数处达到最小值。特别地，$R\succ0$是充分条件；若只把截距留在$\ker R$中，则还需训练数据两类均非空。若存在非零$v\in\ker R$使$\widetilde y_i x_i^Tv\geq0$对全部$i$成立且至少一处严格，则正则项不惩罚该分离方向，有限极小点不由“加入$L_2$”自动保证。
+\end{theorem}
+
+% KNOWLEDGE-PLAN: KN-V2-C16-PROOF-003 L1
+\paragraph{读前自检：证明：L 2 正则化下有限解的充分条件。}L 2 正则化下有限解的充分条件中的“沿$\ker R$中的任一非零方向，非弱分离条件保证至少一个样本的逻辑损失沿该方向线性增大”决定可执行范围；请把$\operatorname{range}(R)$用到的关键定义展开并完成下一步变形，结果须满足若存在未惩罚弱分离方向，则沿该方向正则项不变而似然项不增加。\par
+
+\begin{proof}
+在$\operatorname{range}(R)$上，二次项随参数范数增长而增长。沿$\ker R$中的任一非零方向，非弱分离条件保证至少一个样本的逻辑损失沿该方向线性增大；对相反方向应用同一条件，两个无界方向都被排除。因此$J_\lambda$的下水平集有界；连续函数在闭有界下水平集上达到最小值。若存在未惩罚弱分离方向，则沿该方向正则项不变而似然项不增加，严格分离样本的损失还趋于0，故不能由正则项推出有限达到性。截距是唯一未惩罚坐标时，两类均非空恰好排除截距单独把全部样本同向分离。
+\end{proof}
+
+条件最大熵模型可写成
+\[
+P_w(y\mid x)=\frac{\exp\{w^Tf(x,y)\}}{Z_w(x)},
+\qquad Z_w(x)=\sum_{y'}\exp\{w^Tf(x,y')\}.
+\]
+其条件对数似然是经验特征项$\sum_iw^Tf(x_i,y_i)$减去对数配分项$\sum_i\log Z_w(x_i)$。最大熵约束问题的对偶目标具有同一结构，故条件最大熵的对偶求解与指数族条件模型的极大似然估计相合。二项逻辑斯谛回归是选择相应二值特征表示后的特例；这一联系不改变本节梯度推导所采用的条件似然对象。
+
+\phantomsection\label{struct:V2-C05-CH16}
+% KNOWLEDGE-PLAN: KN-V2-C16-CONCEPT-008 L1
+\paragraph{读前自检：优化解释：优化性质。 梯度是一阶矩条件的偏差，最优点满足 X T(p-y) Rw 0。}带二次正则的逻辑斯谛目标满足$\nabla J(w)=X^{\mathsf T}(p-y)+Rw$；请核对$X^{\mathsf T}(p-y)$与$Rw$同维，并在最优点令其和为零。\par
+
+\begin{optimizationbox}
+\textbf{优化性质。}梯度是一阶矩条件的偏差，最优点满足$X^T(p-y)+\lambda Rw=0$。Hessian中的$p_i(1-p_i)$给出样本的局部曲率权重：概率接近$1/2$的样本权重较大，饱和样本权重较小。纯Newton步在曲率良好且接近最优点时收敛快；远离最优点、矩阵病态或数据近分离时，应配合正则化、阻尼和回溯线搜索。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V2-C05-CH10}
+\phantomsection\label{struct:V2-C05-CH19}
+\textbf{算法伪代码。}下述迭代不显式构造$D$以外的大型中间张量，并用线性方程求解Newton方向，避免计算矩阵逆。
+
+\phantomsection\label{struct:V2-C05-CH20}
+\textbf{输入输出。}输入为设计矩阵、标签、正则化设置与数值容差；输出为参数、目标函数值与梯度范数。
+
+\phantomsection\label{struct:V2-C05-CH21}
+\textbf{参数。}最大迭代次数$T_{\max}$、梯度容差$\varepsilon_g$、步长容差$\varepsilon_w$、Armijo常数$c\in(0,1)$、回缩率$\rho\in(0,1)$、正则化强度$\lambda\geq0$、最小、初始与最大阻尼$0<\delta_{\min}\leq\delta_0\leq\delta_{\max}<\infty$、阻尼放大因子$\gamma_\delta>1$及回溯上限$L_{\max}$。
+
+\phantomsection\label{struct:V2-C05-CH22}
+\textbf{初始化。}通常取$w^{(0)}=0$；若类别极不平衡，可在中心化特征下把截距初始化为样本正类率的logit，并将其裁剪到有限区间。
+
+% KNOWLEDGE-PLAN: KN-V2-C16-ALGORITHM_IDEA-001 L2
+\begin{keypointbox}[title={带回溯线搜索的阻尼Newton逻辑斯谛回归：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={设计矩阵$X$、二元标签$y$、半正定惩罚矩阵$R$、正则强度、初值与数值参数},
+  output={最后合法$w,J_\lambda(w),g$、外层/方向/回溯计数、状态与诊断},
+  preconditions={样本非空且维数相容；标签为$0/1$；输入有限；容差、阻尼、Armijo参数和预算均合法},
+  initialization={$w=w^{(0)},\delta=\delta_0$，计数为$0$；在初值新鲜计算目标和梯度},
+  loop={在外层预算内构造阻尼Newton方向，并在有限回溯预算内寻找满足Armijo条件的候选},
+  update={方向与候选都先在临时状态核验；仅当$w^+,J^+,g^+$有限且充分下降时原子提交},
+  domain={$w,g\in\mathbb R^d$；$J_\lambda$有限；$H+\delta I$可解且方向满足$g^{\mathsf T}d>0$},
+  failure={输入违规返回$\mathtt{invalid\_input}$；非有限量、方向失败或无证书停滞返回$\mathtt{numerical\_failure}$；回溯失败返回$\mathtt{line\_search\_failed}$},
+  stop={梯度无穷范数达标才返回数学收敛；失败、回溯失败或外层预算耗尽也停止},
+  budget={至多$T_{\max}$次已提交外层更新，每次至多$L_{\max}+1$个回溯候选及有限阻尼尝试},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{line\_search\_failed}$},
+  iterations={$t_{\rm done}$只计已提交更新；$s_{\rm done}$计方向求解；$\ell_{\rm done}$计回溯试算},
+  diagnostics={梯度证书、相对步长、阻尼、失败阶段、末次方向导数、回溯值与预算余量},
+  complexity={稠密实现每轮约$O(Nd^2+d^3)$时间与$O(Nd+d^2)$空间}
+}
+\begin{algorithm}[H]
+\caption{带回溯线搜索的阻尼Newton逻辑斯谛回归}\label{alg:V2-C05-newton}
+\KwIn{设计矩阵$X\in\mathbb R^{N\times d}$，标签$y\in\{0,1\}^{N}$，惩罚矩阵$R$，初值$w^{(0)}$}
+\KwOut{最后合法$w,J_\lambda(w),g$、$t_{\rm done},s_{\rm done},\ell_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{$\lambda\ge0$；$\varepsilon_g,\varepsilon_w>0$；$T_{\max},L_{\max}\in\mathbb N_0$；$\delta_{\min}\le\delta_0\le\delta_{\max}$；$\gamma_\delta>1$；$0<\rho,c<1$}
+$w\leftarrow w^{(0)}$，$\delta\leftarrow\delta_0$，$t_{\rm done}\leftarrow0$，$s_{\rm done}\leftarrow0$，$\ell_{\rm done}\leftarrow0$，诊断为空\;
+若样本为空、维数不匹配、标签越界、$R$非对称半正定、初值非有限，或预算、容差、阻尼、回溯参数不合法，则返回当前初值与计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+在最后合法$w$计算$J\leftarrow J_\lambda(w)$与$g\leftarrow\nabla J_\lambda(w)$；若二者非有限则返回$w,t_{\rm done}=0$、$\mathtt{numerical\_failure}$及初始化阶段诊断\;
+若$\lVert g\rVert_\infty\le\varepsilon_g$，则返回最后合法初值与$\mathtt{converged}$，最终诊断记录“零步梯度证书”\;
+\While{$t_{\rm done}<T_{\max}$}{
+  \If{$\lVert g\rVert_\infty\leq\varepsilon_g$}{返回$w,J,g,t_{\rm done},s_{\rm done},\ell_{\rm done},\mathtt{converged}$，最终诊断记录梯度证书\;}
+  以当前$w$稳定计算$D,H$；若任一项非有限，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为曲率阶段$t_{\rm done}$\;
+  从当前$\delta$开始求解$(H+\delta I)d=g$，每次尝试令$s_{\rm done}\leftarrow s_{\rm done}+1$；分解失败、方向非有限或$g^{\mathsf T}d\le0$时放大阻尼\;
+  若$\delta>\delta_{\max}$仍无有限下降方向，则返回最后合法$w,J,g,t_{\rm done},s_{\rm done},\ell_{\rm done},\mathtt{numerical\_failure}$，诊断记录方向阶段与末次阻尼\;
+  $\alpha\leftarrow1$，$\mathrm{accepted}\leftarrow\mathrm{false}$\;
+  \For{$\ell\leftarrow0$ \KwTo $L_{\max}$}{
+    在临时状态计算$w^+\leftarrow w-\alpha d$、$J^+\leftarrow J_\lambda(w^+)$并令$\ell_{\rm done}\leftarrow\ell_{\rm done}+1$\;
+    \If{$w^+,J^+$有限且$J^+\le J-c\alpha g^{\mathsf T}d$}{计算$g^+\leftarrow\nabla J_\lambda(w^+)$；若$g^+$非有限则返回最后合法旧状态与$\mathtt{numerical\_failure}$，诊断为候选梯度$(t_{\rm done},\ell)$；否则置$\mathrm{accepted}\leftarrow\mathrm{true}$并终止回溯\;}
+    保持主状态不变并令$\alpha\leftarrow\rho\alpha$\;
+  }
+  \If{$\neg\mathrm{accepted}$}{返回最后合法$w,J,g,t_{\rm done},s_{\rm done},\ell_{\rm done},\mathtt{line\_search\_failed}$，诊断记录外层轮与全部试算值\;}
+  计算相对步长$q_w\leftarrow\lVert w^+-w\rVert_2/(1+\lVert w\rVert_2)$；原子提交$(w,J,g)\leftarrow(w^+,J^+,g^+)$，$t_{\rm done}\leftarrow t_{\rm done}+1$，$\delta\leftarrow\max\{\delta_{\min},\delta/\gamma_\delta\}$\;
+  \If{$q_w\le\varepsilon_w$且$\lVert g\rVert_\infty>\varepsilon_g$}{返回最后合法状态与$\mathtt{numerical\_failure}$，最终诊断记录具体原因为“数值停滞但无一阶证书”、相对步长与梯度范数\;}
+}
+返回最后合法$w,J,g,t_{\rm done},s_{\rm done},\ell_{\rm done},\mathtt{budget\_stop}$，最终诊断记录外层预算耗尽与末次梯度范数\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{仅梯度证书允许返回$\mathtt{converged}$；小步长而梯度未达标返回$\mathtt{numerical\_failure}$并在诊断中记录“数值停滞”，只有实际耗尽$T_{\max}$才返回$\mathtt{budget\_stop}$。候选点在有限性与Armijo门禁后原子提交，线搜索失败保留专用状态。}
+
+\phantomsection\label{struct:V2-C05-CH23}
+\textbf{更新规则。}线性方程$(H+\delta I)d=g$给出下降方向，实际更新为$w\leftarrow w-\alpha d$。阻尼改善病态矩阵的可解性，回溯线搜索保证每个被接受的步长满足充分下降条件。
+
+\phantomsection\label{struct:V2-C05-CH24}
+\textbf{停止条件。}梯度无穷范数控制一阶最优性，参数相对变化控制迭代停滞，迭代上限提供保护。计算结果应同时给出最终目标值、梯度范数和迭代次数；仅因达到上限而退出不能表述为已经收敛。
+
+\phantomsection\label{struct:V2-C05-CH25}
+\textbf{收敛说明。}全局结论需分层陈述。若目标存在有限极小点、初始下水平集有界、梯度在该集合上Lipschitz连续、阻尼方向保持一致下降角且Armijo回溯总能接受正步长，则目标单调不增，$\liminf_t\|\nabla J_\lambda(w^{(t)})\|=0$，每个有限聚点都是一阶驻点；凸性再把有限驻点提升为全局极小点。若最优点邻域内Hessian Lipschitz连续且正定、阻尼最终降为0并接受全Newton步，才有局部二次收敛。预算耗尽、参数停滞或线搜索失败都不是上述收敛证书。若完全分离且$\lambda=0$，或$\lambda>0$但存在定理\ref{thm:V2-C05-regularized-existence}排除不了的未惩罚分离方向，有限极小点可能不存在，此时必须先改变问题设定，而不是仅增加迭代次数。
+
+\phantomsection\label{struct:V2-C05-CH26}
+\phantomsection\label{struct:V2-C05-CH27}
+% KNOWLEDGE-PLAN: KN-V2-C16-BOUNDARY-002 L1
+\paragraph{读前自检：复杂度分析：极大似然与梯度推导。}极大似然与梯度推导要求先确认“设样本数为$N$、特征维数为$d$、类别数为$K$、实际迭代次数为$T$”；请随后由$T$的总成本剥离一次迭代或一次样本因子，用显式形成$X^{\mathsf T}DX$为$O(Nd^2)$验收。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界把实际接受的Newton或一阶更新数记为$T$，设计矩阵稠密时显式形成$d\times d$ Hessian并用稠密直接法求解；回溯线搜索的重复目标计算按实际次数另计。稀疏或Hessian向量积实现以$\operatorname{nnz}(X)$和内层迭代次数参数化。
+设样本数为$N$、特征维数为$d$、类别数为$K$、实际迭代次数为$T$，稀疏设计矩阵非零元素数为$\operatorname{nnz}(X)$。
+
+\textbf{训练复杂度。}一次梯度计算为$O(Nd)$；显式形成$X^{\mathsf T}DX$为$O(Nd^2)$，稠密线性方程求解为$O(d^3)$，所以二项模型$T$次Newton迭代的总时间为$O\!\left(T(Nd^2+d^3)\right)$，另加回溯线搜索实际进行的目标计算。使用一阶或Hessian向量积方法时，主要一次操作可按$O(\operatorname{nnz}(X))$计。
+
+\textbf{预测复杂度。}二项模型单样本计算线性得分和sigmoid为$O(d)$；$K$类softmax模型为$O(Kd)$，批量预测再乘以样本数。
+
+\textbf{存储复杂度。}保存稠密$X$、Hessian及工作向量需要$O(Nd+d^2)$空间；流式累积梯度与Hessian时可降为$O(d^2)$，稀疏数据按$O(\operatorname{nnz}(X))$存储。$K$类模型的参数矩阵需要$O(Kd)$空间。
+\end{complexitybox}
+
+
+\SLAdvancedSection{多项逻辑斯谛回归}{sec:V2-C05-S04}
+\knowledgeanchor{SLM-06-01-006}{多项逻辑斯谛回归}
+对$K$个互斥类别，选第$K$类为基准类，并为前$K-1$类设置参数$w_1,\ldots,w_{K-1}$。把截距并入$x$后，条件概率为
+\[
+P(Y=k\mid x)=\frac{\exp(w_k^Tx)}
+{1+\sum_{r=1}^{K-1}\exp(w_r^Tx)},
+\quad k=1,\ldots,K-1,
+\]
+\[
+P(Y=K\mid x)=\frac{1}
+{1+\sum_{r=1}^{K-1}\exp(w_r^Tx)}.
+\]
+每个非基准类相对基准类的对数几率为
+\[
+\log\frac{P(Y=k\mid x)}{P(Y=K\mid x)}=w_k^Tx.
+\]
+这些概率均为正且和为1。基准类参数化固定了一个参照系，不表示第$K$类更重要；改变基准类只会改变参数表达，不会改变能够表示的条件概率族。
+
+对称softmax形式为
+\[
+P(Y=k\mid x)=\frac{\exp(a_k)}{\sum_{r=1}^{K}\exp(a_r)},
+\qquad a_k=w_k^Tx+b_k.
+\]
+若对所有$a_k$加同一常数，概率不变，因此参数存在共同平移的不可识别性。计算时令$m=\max_r a_r$并使用$\exp(a_k-m)/\sum_r\exp(a_r-m)$，既保持概率不变，又避免大正数指数溢出。多项负对数似然是多类交叉熵，其对第$k$类线性预测量的单样本导数为$p_k-\mathbf1\{y=k\}$。
+
+离散分布的熵为
+\[
+H(P)=-\sum_xP(x)\log P(x).
+\]
+在给定经验特征期望约束时最大化条件熵，拉格朗日乘子进入指数项，归一化约束产生对数配分函数，因而得到与softmax相同的指数归一化结构。这里的“最大熵”是在约束集合内选择最不额外偏置的分布，不是要求每个输入上的类别概率都均匀。
+
+
+\SLAdvancedSection{数值优化、例题与练习}{sec:V2-C05-S05}
+稳定实现应围绕目标函数而不是仅围绕分类准确率设计。对很大的正$z$，可用$\sigma(z)=1/(1+e^{-z})$；对很小的负$z$，可用$\sigma(z)=e^z/(1+e^z)$，从而避免计算$e^{-z}$时溢出。单样本软加函数采用
+\[
+\operatorname{softplus}(z)=\max(0,z)+\log(1+e^{-|z|}),
+\]
+再以$\operatorname{softplus}(z)-yz$计算损失。特征缩放、缺失值填补、类别编码和阈值选择都必须纳入训练流程，并在每个训练折内重新估计。
+
+\phantomsection\label{struct:V2-C05-CH18}
+\phantomsection\label{struct:V2-C05-CH32}
+\begin{example}[一次概率预测与阈值决策]\label{exm:V2-C05-decision}
+某二项模型在两个标准化特征上的参数为$w=(0.8,-1.2)^T$、$b=-0.4$。对$x=(1.5,-0.5)^T$，分别在阈值$0.5$和$0.85$下作出决策，并解释两种结果为何可以不同。
+
+\phantomsection\label{struct:V2-C05-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V2-C05-decision}
+\begin{solution}
+\SLReadTranslation{模型只产生一次概率$p$；题目要求把同一个$p$分别与$0.5$和$0.85$比较，并解释阈值变化为何能改变最终标签。}
+\SolGiven $w=(0.8,-1.2)^{\mathsf T}$、$x=(1.5,-0.5)^{\mathsf T}$同属$\mathbb R^2$，$b=-0.4$；概率映射为$\sigma(z)=1/(1+e^{-z})$，决策规则明确取$\widehat y_\tau=\mathbf1\{p\geq\tau\}$。
+\SLMethodTrigger{先由内积得到线性预测量，再经严格单调的sigmoid得到概率；两个阈值只改变概率到行动的映射，不会重新计算模型概率。}
+\SolPlan 计算一次$z=w^{\mathsf T}x+b$和$p=\sigma(z)$，再分别与两阈值比较；最后在logit尺度复核两次不等式。
+\SolDerive
+线性预测量与预测概率为
+\[
+\begin{aligned}
+z&=w^{\mathsf T}x+b
+=0.8\times1.5+(-1.2)\times(-0.5)-0.4
+=1.4,\\
+p&=\sigma(z)=\frac{1}{1+e^{-1.4}}\approx0.8022.
+\end{aligned}
+\]
+用$\widehat y_\tau=\mathbf1\{p\geq\tau\}$作阈值决策，则
+\[
+\widehat y_{0.5}=\mathbf1\{0.8022\geq0.5\}=1,
+\qquad
+\widehat y_{0.85}=\mathbf1\{0.8022\geq0.85\}=0.
+\]
+\SolCheck 在logit尺度，$\operatorname{logit}(0.5)=0<1.4$，而$\operatorname{logit}(0.85)=\log(17/3)\approx1.735>1.4$，与概率尺度的两次判定一致；且$0<p<1$、$p+(1-p)=1$。
+\SolAnswer $p=\sigma(1.4)\approx0.802184$；阈值$0.5$时预测$1$，阈值$0.85$时预测$0$。两种结果不同是因为决策阈值改变，模型给出的概率并未改变。
+\end{solution}
+
+\phantomsection\label{struct:V2-C05-CH28}
+% KNOWLEDGE-PLAN: KN-V2-C16-BOUNDARY-003 L1
+\paragraph{读前自检：适用条件与局限：数值优化、例题与练习。}逻辑斯谛回归要求训练划分尊重样本的分组或时间依赖；请把同一主体或未来时点同时落入训练与验证作为固定违例，指出泄漏位置，再核对按主体分组或按时间前后划分后该泄漏消失。\par
+
+\begin{applicabilitybox}
+\textbf{适用条件。}逻辑斯谛回归适合需要概率排序、可解释方向效应和快速基线模型的二分类或多分类任务。关键条件是：样本依赖结构已被抽样或建模过程妥善处理；标签定义一致；训练与部署分布差异可控；对数几率能由所选特征的线性组合及必要的变换、交互项近似；样本量足以支撑参数数目；验证数据代表实际决策场景。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V2-C05-CH29}
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+原始特征上的模型只能产生线性分界，复杂边界需要基函数、交互项或其他模型；异常值和高杠杆点可能显著影响系数；高度相关特征使单个系数不稳定；类别完全分离使无惩罚极大似然参数发散；稀有事件和分布漂移会损害概率校准；系数关联不等于因果效应，遗漏变量和选择偏差不能由优化精度修复。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V2-C05-CH30}
+% KNOWLEDGE-PLAN: KN-V2-C16-BOUNDARY-005 L1
+\paragraph{读前自检：常见错误与误用边界：数值优化、例题与练习。}数值优化、例题与练习依赖“边界框首项禁止把$0.5$当作固定最优阈值”；请据此把固定错误“把$0.5$当作固定最优阈值”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，并直接核对改写后的运算或判断有定义，且不再触发“把$0.5$当作固定最优阈值”。\par
+
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 先在全数据上标准化再交叉验证，导致验证折信息泄漏；正确做法是在每个训练折拟合预处理器。
+  \item 对大幅度$z$直接计算$e^z$或$\log(1+e^z)$，导致溢出；应使用分支sigmoid和softplus恒等式。
+  \item 把$0.5$当作固定最优阈值；阈值应由误判代价、类别先验和资源约束确定。
+  \item 只报告准确率而忽略对数损失、区分度和校准；概率模型应同时检查排序与校准。
+  \item 在完全分离时继续增加迭代次数；应诊断分离、加入正则化或合并过稀类别。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V2-C05-CH31}
+\begin{comparisonbox}
+\textbf{概念对比。}
+\par\medskip
+\small
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 方法 & 建模对象 & 主要优势 & 主要风险\\ \midrule
+逻辑斯谛回归 & $P(Y\mid X)$及对数几率 & 凸目标、概率输出、系数方向可解释 & 线性logit假设、分离与校准漂移\\
+朴素贝叶斯 & $P(Y)$与$P(X\mid Y)$ & 小样本训练快、离散计数自然 & 条件独立偏差、概率常需再校准\\
+线性回归作分类 & $E(Y\mid X)$的平方损失近似 & 计算简单、闭式分析方便 & 输出可越出$[0,1]$，损失与伯努利分布不匹配\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+\begin{SLRunningExample}{RUN-CLS-2D-01}{V2-C05-logistic}{贯穿例：四点二维分类数据}{用同一线性可分数据说明概率边界，同时显式处理完全分离造成的有限极大似然缺失。}
+对这四点取$p(Y=+1\mid x)=\sigma(w_1x^{(1)}+b)$。样本关于原点和标签对称，加入$\lambda\lVert w\rVert_2^2/2$（$\lambda>0$）后可取$b=0$且最优$w_1>0$，从而在$x^{(1)}=0$处得到$0.5$决策边界。若不加正则，沿$w_1\to+\infty$似然不断改善却没有有限最大点；因此本例适合说明分类边界，但不能把无正则的有限参数估计当作既成结论。上一站见\SLRunningExampleRef{RUN-CLS-2D-01}{V2-C04-decision-tree}{决策树的轴对齐划分表示}；下一站见\SLRunningExampleRef{RUN-CLS-2D-01}{V3-C02-svm}{支持向量机的最大间隔表示}。
+\end{SLRunningExample}
+
+
+\phantomsection\label{struct:V2-C05-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V2-C05-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-6-0002
+% EXERCISE-TYPE: manual_algorithm,parameter_update
+% SOLUTION-SOURCE: original_book; source_id=EXR-6-0002
+\begin{exercise}\label{ex:V2-C05-S03-01}
+写出二项逻辑斯谛回归模型学习的梯度下降算法。须明确目标函数、输入输出、初始化、梯度、更新顺序、停止条件，以及非有限数值或达到迭代上限时的返回状态。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S03-01}
+\begin{chapterexercisesolution}{ex:V2-C05-S03-01}
+采用增广设计矩阵$X\in\mathbb R^{N\times d}$、标签$y\in\{0,1\}^{N}$和参数$w\in\mathbb R^d$。令$\lambda\geq0$，并取
+\[
+R\in\mathbb R^{d\times d},
+\qquad R=R^{\mathsf T}\succeq0.
+\]
+若$w$含截距坐标，则令$R$对应的截距行、列为零，使截距不受惩罚。目标函数为
+\[
+J_\lambda(w)=\sum_{i=1}^{N}\left[\log(1+e^{x_i^{\mathsf T}w})-y_ix_i^{\mathsf T}w\right]+\frac{\lambda}{2}w^{\mathsf T}Rw.
+\]
+由$R=R^{\mathsf T}$可得
+\[
+\nabla\!\left(\frac12w^{\mathsf T}Rw\right)
+=\frac12(R+R^{\mathsf T})w
+=Rw.
+\]
+输入$X,y,\lambda,R$、初值$w^{(0)}$、步长规则、容差$\varepsilon>0$和最大迭代次数$T$；输出参数、目标值及梯度范数。第$t$轮用同一个$w^{(t)}$依次计算
+\[
+\begin{aligned}
+p_i^{(t)}&=\sigma\!\left(x_i^{\mathsf T}w^{(t)}\right),\\
+g^{(t)}&=X^{\mathsf T}(p^{(t)}-y)+\lambda Rw^{(t)},\\
+w^{(t+1)}&=w^{(t)}-\eta_tg^{(t)},\qquad \eta_t>0.
+\end{aligned}
+\]
+若$\lVert g^{(t)}\rVert_\infty\le\varepsilon$，则停止并输出当前参数；否则用固定步长或回溯线搜索确定$\eta_t$后更新。若目标、梯度或新参数不是有限实数，则停止并保留最后一个有定义的迭代点；若达到$T$次仍未满足容差，则输出当前参数与梯度范数，并明确“达到最大迭代次数”，不得声称收敛。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: probability_explanation,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S01-02}
+二项模型在三个样本上的线性预测量分别为$-\log3,0,\log3$。求各样本属于类别1的条件概率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S01-02}
+\begin{chapterexercisesolution}{ex:V2-C05-S01-02}
+使用$\sigma(z)=e^z/(1+e^z)$，逐项代入：
+\[
+\begin{aligned}
+\sigma(-\log3)
+&=\frac{e^{-\log3}}{1+e^{-\log3}}
+=\frac{1/3}{1+1/3}=\frac14,\\
+\sigma(0)&=\frac{1}{1+1}=\frac12,\\
+\sigma(\log3)
+&=\frac{e^{\log3}}{1+e^{\log3}}
+=\frac3{1+3}=\frac34.
+\end{aligned}
+\]
+由于
+\[
+\sigma'(z)=\sigma(z)\{1-\sigma(z)\}>0,
+\]
+三个概率保持线性预测量的次序；导数在两端趋近0，体现饱和。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: basic_calculation,definition_discrimination
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S01-03}
+给定$w=(2,-1)^T$、$b=-0.5$和$x=(1,3)^T$，写出增广向量并求$P(Y=1\mid x)$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S01-03}
+\begin{chapterexercisesolution}{ex:V2-C05-S01-03}
+增广向量为$\widetilde x=(1,3,1)^T$，增广权重为$\widetilde w=(2,-1,-0.5)^T$。内积为$2-3-0.5=-1.5$，所以
+\[
+P(Y=1\mid x)=\frac{1}{1+e^{1.5}}\approx0.1824.
+\]
+若阈值为$1/2$，预测类别0；截距必须与末尾的常数1配对，不能在增广后再次另加一次。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: probability_explanation,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S02-01}
+某样本的正类概率为$0.8$。求几率和对数几率；若一个特征增加一单位使对数几率增加$\log2$，新几率与新概率各是多少？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S02-01}
+\begin{chapterexercisesolution}{ex:V2-C05-S02-01}
+初始概率$p_0=0.8$对应几率与对数几率
+\[
+q_0=\frac{p_0}{1-p_0}=\frac{0.8}{0.2}=4,
+\qquad
+\operatorname{logit}(p_0)=\log4.
+\]
+对数几率增加$\log2$后，
+\[
+\log q_1=\log4+\log2=\log8
+\Longrightarrow
+q_1=8.
+\]
+再变回概率：
+\[
+p_1=\frac{q_1}{1+q_1}=\frac89\approx0.8889.
+\]
+故对数几率的加法对应几率的乘法，并不对应概率的等量增加。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: derivation_completion,probability_explanation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S02-02}
+证明$\sigma(z)[1-\sigma(z)]\leq1/4$，并说明其对概率敏感度的含义。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S02-02}
+\begin{chapterexercisesolution}{ex:V2-C05-S02-02}
+令$p=\sigma(z)\in(0,1)$。配方得
+\[
+p(1-p)=\frac14-\left(p-\frac12\right)^2\leq\frac14,
+\]
+等号仅在$p=1/2$即$z=0$时成立。由于$\sigma'(z)=p(1-p)$，概率对线性预测量的局部敏感度不超过$1/4$，并在分界面处最大；远离分界面时导数趋近0。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: geometric_explanation,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S02-03}
+给定$w=(3,4)^T$、$b=-5$。求$1/2$概率分界线，并计算点$x=(1,1)^T$到该分界线的有符号距离及其正类概率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S02-03}
+\begin{chapterexercisesolution}{ex:V2-C05-S02-03}
+分界线、法向量及其范数为
+\[
+3x_1+4x_2-5=0,
+\qquad
+w=(3,4)^{\mathsf T},
+\qquad
+\lVert w\rVert_2=5.
+\]
+对$x=(1,1)^{\mathsf T}$，
+\[
+z=w^{\mathsf T}x-5=3+4-5=2,
+\qquad
+d_{\rm signed}=\frac{z}{\lVert w\rVert_2}=\frac25=0.4.
+\]
+正类概率为
+\[
+P(Y=1\mid x)=\sigma(2)=\frac1{1+e^{-2}}\approx0.8808.
+\]
+有符号距离为正，故该点位于预测正类一侧。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: error_diagnosis,method_comparison
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S03-02}
+设某方向$v$满足$Xv=0$。说明未正则化目标沿$w+tv$为何保持不变，并给出使该方向具有正曲率的一种处理方法。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S03-02}
+\begin{chapterexercisesolution}{ex:V2-C05-S03-02}
+设$v\neq0$且$Xv=0$。对任意$t\in\mathbb R$，
+\[
+X(w+tv)=Xw+tXv=Xw.
+\]
+因此线性预测量、概率与未正则化负对数似然均不变：
+\[
+p(w+tv)=p(w),
+\qquad
+J_0(w+tv)=J_0(w).
+\]
+Hessian在该方向的曲率为
+\[
+v^{\mathsf T}X^{\mathsf T}DXv
+=(Xv)^{\mathsf T}D(Xv)=0.
+\]
+加入$\lambda\lVert w\rVert_2^2/2$且$\lambda>0$后，
+\[
+v^{\mathsf T}(X^{\mathsf T}DX+\lambda I)v
+=\lambda\lVert v\rVert_2^2>0,
+\]
+平坦方向被消除；另一办法是删除线性相关特征，使设计矩阵恢复所需秩。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: parameter_update,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S03-03}
+某次迭代有$g^Td=6$，目标值为20，取$c=0.1$。若候选点在$\alpha=1$和$\alpha=1/2$时的目标值分别为$19.7$和$19.65$，哪一个步长首先满足算法中的Armijo条件？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S03-03}
+\begin{chapterexercisesolution}{ex:V2-C05-S03-03}
+Armijo充分下降条件为
+\[
+J(w-\alpha d)\leq J(w)-c\alpha g^{\mathsf T}d,
+\qquad c=0.1,\quad g^{\mathsf T}d=6.
+\]
+当$\alpha=1$时，
+\[
+J(w)-c\alpha g^{\mathsf T}d
+=20-0.1\times1\times6
+=19.4,
+\qquad
+19.7>19.4,
+\]
+故不接受。回缩到$\alpha=1/2$时，
+\[
+20-0.1\times\frac12\times6=19.7,
+\qquad
+J\!\left(w-\frac12d\right)=19.65\leq19.7.
+\]
+因此首先接受$\alpha=1/2$。只要求目标下降而不要求充分下降，可能接受过小而低效的改进。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: probability_explanation,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S04-01}
+三分类基准类模型的两个非基准类得分为$\log2$和$\log3$。求三个类别的条件概率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S04-01}
+\begin{chapterexercisesolution}{ex:V2-C05-S04-01}
+两个非基准类指数得分为$2,3$，基准类线性得分固定为0，故其指数得分为$e^0=1$。归一化常数为
+\[
+Z=2+3+1=6.
+\]
+三类概率为
+\[
+(p_1,p_2,p_0)
+=\left(\frac2Z,\frac3Z,\frac1Z\right)
+=\left(\frac13,\frac12,\frac16\right),
+\qquad
+p_1+p_2+p_0=1.
+\]
+基准类仍参与归一化；固定为0的是其线性得分，不是其概率。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: derivation_completion,error_diagnosis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S04-02}
+证明softmax对得分的共同平移不变，并说明为何减去最大得分能够改善数值稳定性。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S04-02}
+\begin{chapterexercisesolution}{ex:V2-C05-S04-02}
+对任意常数$c$，
+\[
+\frac{e^{a_k+c}}{\sum_re^{a_r+c}}
+=\frac{e^ce^{a_k}}{e^c\sum_re^{a_r}}
+=\frac{e^{a_k}}{\sum_re^{a_r}}.
+\]
+取$c=-\max_ra_r$后，所有新得分不大于0，最大指数为1，其余指数位于$(0,1]$，从而避免对很大的正数取指数。极小项仍可能下溢为0，但它们对分母的相对贡献也极小；需要对数概率时应使用log-sum-exp形式。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: probability_explanation,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S05-02}
+假阳性代价为5，假阴性代价为20，正确决策代价为0。设$p=P(Y=1\mid x)$，求选择正类的最小概率阈值。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S05-02}
+\begin{chapterexercisesolution}{ex:V2-C05-S05-02}
+预测正类的条件风险为$5(1-p)$，预测负类的条件风险为$20p$。选择正类当且仅当
+\[
+5(1-p)\leq20p,
+\]
+整理得$5\leq25p$，即$p\geq0.2$。假阴性代价较高使阈值低于$0.5$。这里假设给出的$p$已经针对部署先验校准；若先验变化，应先校正概率或重新估计风险。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: error_diagnosis,method_comparison
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C05-S05-03}
+在五个预测概率均约为$0.8$的样本中长期只有约一半为正类。指出问题，并给出一种评估和一种修正途径。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C05-S05-03}
+\begin{chapterexercisesolution}{ex:V2-C05-S05-03}
+对这五个样本形成的概率分箱$B$，平均预测与经验正类率约为
+\[
+\overline p_B=\frac1{|B|}\sum_{i\in B}p_i\approx0.8,
+\qquad
+\overline y_B=\frac1{|B|}\sum_{i\in B}y_i\approx0.5.
+\]
+若该差异在足够大的独立样本上稳定存在，则校准偏差为
+\[
+\overline p_B-\overline y_B\approx0.3>0,
+\]
+说明模型在该区间过度自信。可用可靠性图检查各分箱的$(\overline p_B,\overline y_B)$，并报告
+\[
+\operatorname{Brier}=\frac1N\sum_{i=1}^{N}(p_i-y_i)^2
+\]
+或对数损失。修正时只在独立校准集上拟合映射$g:[0,1]\to[0,1]$，如Platt缩放或保序回归（isotonic regression），并输出$g(p)$；若根因是分布漂移，还需重加权或重新训练。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V2-C16-CONCEPT-010 L1
+\paragraph{读前自检：本章结论与下一步。}逻辑斯谛回归章末由“线性得分、条件概率、交叉熵与softmax”落到“阻尼、线搜索和正则化共同控制步长、曲率与参数规模”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V2-C05-CH36}
+\SLChapterFiveSummary{线性得分、条件概率、交叉熵与softmax}{由伯努利似然推得梯度、Hessian与凸性}{阻尼、线搜索和正则化共同控制步长、曲率与参数规模}{需要概率输出、阈值决策和校准评估的分类任务}{继续学习最大熵等模型，理解多项逻辑斯谛的指数族视角}
+
+\phantomsection\label{struct:V2-C05-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{概念：}能否不看正文写出逻辑斯谛分布、二项条件概率和logit关系，并解释系数的几率比含义？未通过则回看第1、2节。
+  \item \textbf{推导：}能否从伯努利似然依次得到交叉熵、梯度$X^T(p-y)$和Hessian$X^TDX$，并用二次型证明凸性？未通过则回看第3节的三步推导。
+  \item \textbf{算法：}能否完整叙述阻尼Newton方法的输入输出、参数、初始化、更新、停止与收敛条件，并给出一次迭代的时间和空间复杂度？未通过则回看算法与复杂度框。
+  \item \textbf{扩展：}能否写出基准类多项模型，说明\mbox{softmax}共同平移不变性及最大熵联系？未通过则回看第4节。
+  \item \textbf{应用：}能否针对完全分离、指数溢出、数据泄漏、阈值选择和概率失准分别提出诊断与处理？未通过则回看第5节；五项均能独立作答，并能完成每节至少两道练习，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

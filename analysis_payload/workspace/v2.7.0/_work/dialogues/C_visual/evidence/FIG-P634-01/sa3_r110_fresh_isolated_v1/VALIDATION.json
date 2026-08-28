@@ -1,0 +1,41 @@
+{
+  "validation_stage": "pre_manifest_pre_wstop",
+  "identity_ok": true,
+  "path_containment_ok": true,
+  "json_parse_ok": true,
+  "csv_parse_ok": true,
+  "object_count": 46,
+  "object_unique_count": 46,
+  "all_unordered_pair_count": 1035,
+  "all_pair_formula_ok": true,
+  "all_pair_combination_coverage_ok": true,
+  "text_span_count": 47,
+  "manual_object_count": 46,
+  "manual_relevant_close_pair_count": 38,
+  "manual_text_count": 47,
+  "manual_roi_count": 5,
+  "manual_view_count": 18,
+  "machine_manual_field_separation_ok": true,
+  "ads_count": 0,
+  "cache_count": 0,
+  "pyc_count": 0,
+  "reparse_count": 0,
+  "wstop_absent_before_seal": true,
+  "outcome": "SA3_PASS_AWAIT_MAIN_C_LOCAL_PASS_ACCEPTANCE",
+  "csv_row_counts": {
+    "data/all_unordered_pairs_machine.csv": 1035,
+    "data/objects_machine.csv": 46,
+    "data/text_spans_machine.csv": 47,
+    "review/object_review_manual.csv": 46,
+    "review/relevant_close_pairs_manual.csv": 38,
+    "review/roi_review_manual.csv": 5,
+    "review/role_ratio_audit_manual.csv": 8,
+    "review/source_font_audit_manual.csv": 14,
+    "review/text_glyph_review_manual.csv": 47,
+    "review/view_review_manual.csv": 18
+  },
+  "json_files_parsed": [
+    "HANDOFF.json",
+    "data/identity_and_localization.json"
+  ]
+}

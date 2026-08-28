@@ -1,0 +1,5 @@
+calibration_id,reviewer,glyph_a,glyph_b,height_a_px,height_b_px,area_a_px,area_b_px,area_ratio_min_over_max,decision,note
+CAL-001,SA1,GLY-001-005,GLY-008-005,27,27,82,82,1.000,R168_HARD_PASS,Panel-title colons have identical native-render height and area.
+CAL-002,SA1,GLY-004-001,GLY-006-010,5,5,64,62,0.969,R168_HARD_PASS,Ellipsis roles have equal height and near-identical area; all three dots are present in each.
+CAL-003,SA1,GLY-015-020,GLY-015-056,11,11,26,28,0.929,R168_HARD_PASS,Caption full stops have equal height and area ratio within legacy 0.92 to 1.08.
+CAL-004,SA1,GLY-007-007,NONE,24,NA,48,NA,NA,R168_HARD_PASS,Annotation colon has no same-font-size duplicate in this candidate; the actual glyph is intact and readable under R168.

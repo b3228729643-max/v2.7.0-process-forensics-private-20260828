@@ -1,0 +1,18 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{665}
+\setcounter{chapter}{34}
+\setcounter{section}{5}
+\setcounter{figure}{7}
+\setcounter{equation}{22}
+\pagestyle{headings}
+\chaptermark{狄利克雷分布与共轭先验}
+\sectionmark{后验预测与例题}
+\paragraph{浓度面之一：形状参数跨过一时，密度怎样改变？}
+图\ref{fig:V5-C05-dirichlet-shape-atlas}在同一三分类单纯形上比较全部形状分量大于、等于和小于 $1$ 时的真实密度边界行为。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dirichlet_shape_atlas.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先比较三图共同的单纯形坐标；再看 $(2,2,2)$ 在三条面上趋零、$(1,1,1)$ 保持常数、$(1/2,1/2,1/2)$ 在三条面附近发散。由此可知，内点 MAP 公式不能跨过 $\alpha_i\le1$ 继续使用。\par
+\end{document}

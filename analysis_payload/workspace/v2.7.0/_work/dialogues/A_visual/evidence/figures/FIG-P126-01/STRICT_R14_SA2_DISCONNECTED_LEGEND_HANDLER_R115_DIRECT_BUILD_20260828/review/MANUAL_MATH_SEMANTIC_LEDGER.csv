@@ -1,0 +1,11 @@
+﻿CHECK_ID,SUBJECT,FACT,MANUAL_DECISION,MANUAL_NOTE
+M001,quadratic,"f(x1,x2)=0.5*x1^2+x1*x2+x2^2",PASS,four contours are levels of one rotated quadratic
+M002,hessian,"[[1,1],[1,2]]",PASS,determinant=1 and eigenvalues=(3+-sqrt(5))/2 are positive
+M003,q0_to_q1,x1 fixed; x1+2*x2=0,PASS,-3.2+2*1.6=0
+M004,q1_to_q2,x2 fixed; x1+x2=0,PASS,-1.6+1.6=0
+M005,q2_to_q3,x1 fixed; x1+2*x2=0,PASS,-1.6+2*0.8=0
+M006,q3_to_q4,x2 fixed; x1+x2=0,PASS,-0.8+0.8=0
+M007,q4_to_q5_to_q6_to_q7,alternating coordinate minima,PASS,each updated-coordinate derivative is zero
+M008,objective_values,2.92>2.56>1.28>0.64>0.32>0.16>0.08>0.04,PASS,strictly decreasing sequence
+M009,optimum,x*=0,PASS,positive definite quadratic has unique optimum at origin
+M010,legend_semantics,x1 solid; x2 disconnected/dashed role,FAIL,x2 legend renders as one continuous 73px run and fails its role encoding

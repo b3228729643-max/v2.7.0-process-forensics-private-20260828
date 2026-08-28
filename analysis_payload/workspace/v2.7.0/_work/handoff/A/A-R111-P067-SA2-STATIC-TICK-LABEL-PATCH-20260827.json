@@ -1,0 +1,41 @@
+{
+  "HANDOFF_ID": "A-R111-P067-SA2-STATIC-TICK-LABEL-PATCH-20260827",
+  "assigned_scope": "One-file static-only presentation repair for the adjacent lower-PMF 0.30 and 0.35 y-tick labels in FIG-P067-01.",
+  "completed": "Suppressed only the automatic 0.30 label and replayed the same visible 0.3 text at the same 0.30 tick with a local -4.5pt y offset; froze exact identities, diff, static clearance projection, regression boundary, and a sealed static root.",
+  "files_changed": [
+    "src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C04/fig_v1_c04_cdf.tex"
+  ],
+  "decisions": {
+    "status": "STATIC_ONLY_NOT_RENDERED_NOT_PASS",
+    "next_route": "P067_SOURCE_STATIC_READY_REQUEST_BUILD_SLOT",
+    "mechanism": "Keep all four y ticks; suppress the automatic label at 0.30 and replay identical visible text 0.3 at axis cs:.45,.30 with the existing font and yshift=-4.5pt.",
+    "projected_native_clearance_px_to_0_35": 2.0,
+    "projected_native_clearance_px_to_0_15": 2.5
+  },
+  "unresolved": "A single controlled standalone/direct LuaLaTeX build is required to measure actual ink clearance and full regression; no PASS is claimed.",
+  "validation": {
+    "before_bytes": 3866,
+    "before_sha256": "03372740AB8015EFFB7BC6CFBBDC669A1E8FBF52246291491B1B0C506513B864",
+    "after_bytes": 4015,
+    "after_sha256": "C570597B72EEA4610380359A84EA078B24C810EC89039215BC9B42AB0F8AFFA0",
+    "changed_file_count": 1,
+    "numstat": "3 insertions, 1 deletion",
+    "git_diff_check_exit": 0,
+    "staged_file_count": 0,
+    "sealed_payload_count": 5,
+    "sealed_ordinary_file_count": 7,
+    "sealed_readonly_files": "7/7",
+    "sealed_readonly_directories": "1/1",
+    "manifest_identity_mismatch_count": 0,
+    "write_stopped_margin_ticks": "589462304",
+    "nonmarker_at_or_after_count": 0,
+    "postmarker_root_write_count": 0,
+    "ads_cache_pyc_reparse_parse_error_count": 0
+  },
+  "next_action": "Main should independently review the static diff and, if accepted, grant exactly one controlled standalone/direct build slot for a new PDF and from-zero native1x/nearest8x regression.",
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P067-01\\STRICT_R2_SA2_STATIC_TICK_LABEL_PATCH_R111_20260827",
+  "report_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P067-01_A-R111-P067-SA2-STATIC-TICK-LABEL-PATCH-20260827_REPORT.md",
+  "report_sha256": "3CB0CF223B0DEE7D961D8A77BEAB2793C6F8F45A07D2D0C2E48CE6AB954729CA",
+  "root_external_audit_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P067-01_A-R111-P067-SA2-STATIC-TICK-LABEL-PATCH-20260827_ROOT_EXTERNAL_AUDIT.json",
+  "root_external_audit_sha256": "80DB79AE15397D1EAF1AA8F52DCB3F30176E46FFB1CA4F7A0846EAFE13666813"
+}

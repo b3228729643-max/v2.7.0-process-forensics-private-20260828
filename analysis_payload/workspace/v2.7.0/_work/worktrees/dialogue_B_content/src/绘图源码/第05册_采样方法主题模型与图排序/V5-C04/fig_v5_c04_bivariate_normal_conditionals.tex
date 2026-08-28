@@ -1,0 +1,35 @@
+% v2.3.1 figure UID: FIG-P639-01
+% v2.6.0 redraw: preserve both exact densities while separating every annotation from data.
+\tikzset{
+  slfig-FIG-P639-01/.style={every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P639-01-label/.style={font=\fontsize{9.2}{11}\selectfont},
+  slfig-FIG-P639-01-note/.style={draw=SLRuleGray,line width=.55pt,rounded corners=2pt,
+    fill=white,inner xsep=6pt,inner ysep=4pt,outer sep=1.2pt,align=center,
+    font=\fontsize{9.2}{11}\selectfont}
+}
+\pgfplotsset{slfig-FIG-P639-01-axis/.style={
+  tick label style={font=\fontsize{8.5}{10}\selectfont},
+  label style={font=\fontsize{9.2}{11}\selectfont},clip=false}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P639-01]
+\begin{axis}[slfig-FIG-P639-01-axis,width=10.5cm,height=5.8cm,xmin=-2,xmax=3,ymin=0,ymax=.56,
+  axis lines=left,xlabel={$t$},ylabel={密度},xtick={-2,-1,0,1,2,3},ytick={0,.25,.5},
+  axis line style={line width=.65pt},tick style={line width=.55pt},clip=false]
+  \addplot[draw=SLBlue,fill=SLBlue!7,line width=1pt,domain=-2:3,samples=321]
+    {0.498678*exp(-0.78125*(x-.45)^2)} \closedcycle;
+  \addplot[draw=SLGold,line width=.95pt,densely dashed,domain=-2:3,samples=321]
+    {0.498678*exp(-0.78125*(x-.60)^2)};
+  \draw[draw=SLBlue,line width=.55pt,densely dashed] (axis cs:.45,0)--(axis cs:.45,.499);
+  \draw[draw=SLGold,line width=.55pt,dash dot] (axis cs:.60,0)--(axis cs:.60,.499);
+  \node[slfig-FIG-P639-01-label,anchor=south east,text=SLBlue] at (axis cs:.27,.556)
+    {$N(0.45,0.64)$\quad $\mu_1=.45$};
+  \node[slfig-FIG-P639-01-label,anchor=south west,text=SLGold] at (axis cs:.78,.556)
+    {$N(0.60,0.64)$\quad $\mu_2=.60$};
+  \node[slfig-FIG-P639-01-note,anchor=west] at (axis cs:3.14,.28)
+    {共同方差 $0.64$\\均值随另一坐标改变};
+\end{axis}
+\end{tikzpicture}
+\caption{取$\rho=0.6$、$a=1$、$b=0.75$时，两个满条件分布分别为$N(0.45,0.64)$与$N(0.60,0.64)$；图中曲线按同一组参数直接计算。}
+\label{fig:V5-C04-bivariate-normal-conditionals}
+\end{figure}

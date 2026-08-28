@@ -1,0 +1,11 @@
+check_id,scope,views_or_sources_observed,manual_derivation_or_observation,manual_verdict
+M01,FORMULA,"source lines 25-26; V03; V06; V07","The plotted expression is -(p ln p + (1-p) ln(1-p))/ln 2, exactly the binary entropy in bits for 0<p<1.",PASS
+M02,ENDPOINTS,"source lines 27-28 and 42; V03; V06; V07; chapter lines 810-815","With 0 log 0=0 by continuous extension, H_2(0)=H_2(1)=0; both endpoint markers and the caption agree.",PASS
+M03,EXTREMUM,"source lines 27-32; V03; V06; V07; chapter line 129","H_2'(p)=log_2((1-p)/p) vanishes only at p=1/2, H_2''(p)=-1/(ln 2 p(1-p))<0, and H_2(1/2)=1; the unique maximum marker and annotation are correct.",PASS
+M04,SYMMETRY,"source lines 37-39; V03; V06; V07; chapter line 129","Substitution p -> 1-p swaps the two summands, so H_2(p)=H_2(1-p); the curve and formula are symmetric about p=1/2.",PASS
+M05,AXES_AND_RANGE,"source lines 17-23; V03; V05","The horizontal variable is p on [0,1], the vertical quantity is H_2(p), and the visible range 0 to 1 plus headroom matches the plotted mathematics.",PASS
+S01,ANNOTATIONS,"source lines 31-39; V03-V07","Maximum uncertainty at the fair Bernoulli distribution and certainty at both degenerate distributions are semantically correct and geometrically tied to the corresponding regions.",PASS
+S02,CAPTION,"source line 42; V01-V04","The caption is a single correct reading conclusion and matches the plotted endpoints and maximum without adding a conflicting method claim.",PASS
+S03,CHAPTER_INTEGRATION,"V01; V02; current V1-C06 lines 128-129","The adjacent prose states symmetry, strict concavity, and the unique stationary maximum; it agrees with the figure. H_b in prose and H_2 in the bit-valued plot are compatible notations.",PASS
+S04,CODEPOINTS,"PDF text extraction on physical page 96; V01-V07","Chinese annotations/caption, p, H, subscript 2, minus sign, equality, digits, and the stacked fraction all render as the intended glyphs; no missing or wrong codepoint is present.",PASS
+S05,R168_HARD_GATE,"V01-V07; source; chapter context","No current-PDF missing/tofu/wrong-codepoint or math error, actual unreadability/obvious imbalance, true clipping, illegal visible-ink overlap, or semantic/geometric error is present. Older numeric font/pixel/ratio thresholds were treated only as advisory.",PASS

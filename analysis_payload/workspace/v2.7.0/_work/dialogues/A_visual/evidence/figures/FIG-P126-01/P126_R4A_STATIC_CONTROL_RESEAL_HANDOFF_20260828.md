@@ -1,0 +1,20 @@
+# P126 R4A immutable static handoff
+
+`P126_R4A_SEALED_STATIC_ONLY_NOT_RENDERED_NOT_PASS_READY_FOR_MAIN_REVIEW`
+
+- HANDOFF_ID: `A-R115-P126-SA2-STATIC-LEGEND-SEGMENT-PATCH-CONTROL-RESEAL-V1-20260828`
+- Operation: `P126_R115_R4_STATIC_EVIDENCE_ONLY_CONTROL_RESEAL_V1`
+- Source: 4356 bytes / SHA-256 `3185834A7D4DEAC1595C244DA626FF52B5308E733AFD851E8FF508037C51ED75`
+- Root: `STRICT_R4A_SA2_STATIC_LEGEND_SEGMENT_PATCH_CONTROL_RESEAL_R115_20260828`
+- Copy/payload/control/ordinary: `6/8/3/11`
+- ReadOnly files/directories including root: `11/1`
+- Manifest SHA-256: `32957D4D10042FA89142E53FBAB94982D041CE867C012368C41B4CBFE09C8182`
+- Marker SHA-256: `E2B2E49D652CCB03AE1D3D840C757447F50FCDD7A19BF1C3E8168DC4EC6F92EF`
+- Marker lines/keys: `24/24`; strict-latest margin `2999744123` ticks; at-or-after0; postmarker writes0.
+- Source snapshot before/after: `FDB5614855EBD1DA2808A9A12DB9010D5263E1D522CFC177C8B07E6C391AAF05` / same.
+- Destination snapshot: `400547E7BC13AE496508DD6AB72B6726C4B8639B205D3A89CDF6E44227382E6F`.
+- Controller/auditor invocation/retry/exit: `1/0/0` and `1/0/0`; auditor `errors=[]`, `hard_gate=true`.
+- Full report: `P126_R4A_STATIC_CONTROL_RESEAL_REPORT_20260828.md`, 3154 bytes / SHA-256 `AA4918D74965F2255D756266E5529D565050478005288B485FCBA40B757303AD`.
+- TeX/build/commit/fresh role/second UID/central action: `0/0/0/0/0/0`.
+
+P126 remains SA2. This handoff requests only Main's independent acceptance of the sealed static/control root; it does not request or authorize a build.

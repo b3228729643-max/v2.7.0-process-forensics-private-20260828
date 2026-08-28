@@ -1,0 +1,27 @@
+% v2.6.0 figure UID: FIG-P638-01
+% Semantic lock: four nodes, four draw paths, formulas and directions unchanged.
+\tikzset{
+  slfig-FIG-P638-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}},
+  slfig-P638-eq/.style={minimum width=36mm,minimum height=13mm,inner xsep=1.5mm,inner ysep=1.6mm,outer sep=1.4pt,fill=white},
+  slfig-P638-flow/.style={-{Stealth[length=2.0mm]},draw=SLBlue,line width=.95pt},
+  slfig-P638-separator/.style={draw=SLRuleGray,line width=.50pt},
+  slfig-P638-warn/.style={-{Stealth[length=1.8mm]},draw=SLRed,line width=.72pt,densely dashed},
+  slfig-P638-exception/.style={draw=SLRed,rounded corners=2pt,fill=SLRedBG,line width=.72pt,minimum width=78mm,minimum height=13mm,inner xsep=5pt,inner ysep=4pt,outer sep=.8pt}
+}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P638-01,>=Stealth,every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center}]
+  \node[slfig-P638-eq] (q) at (-4.2,0) {{\color{SLBlue}\bfseries 1}\quad 精确满条件提议\\$q_j=\pi(x_j\mid x_{-j})$};
+  \node[slfig-P638-eq] (r) at (0,0) {{\color{SLBlue}\bfseries 2}\quad MH 比值逐项抵消\\$R=\dfrac{\pi(y)\pi_j(x_j\mid x_{-j})}{\pi(x)\pi_j(y_j\mid x_{-j})}=1$};
+  \node[slfig-P638-eq] (a) at (4.2,0) {{\color{SLBlue}\bfseries 3}\quad $\alpha=1$\\直接接受 $x_j\leftarrow y_j$};
+  \draw[slfig-P638-flow] (q)--(r)--(a);
+  \draw[slfig-P638-separator] (-6.1,-.85)--(6.1,-.85);
+  \node[slfig-P638-exception] (w) at (0,-2.0)
+    {近似满条件 / 其他提议 $q_j$\\恢复 MH 接受率校正；拒绝时保持 $x_j$（自环）};
+  \draw[slfig-P638-warn] (q.south)--(w.north west);
+  \draw[slfig-P638-warn] (a.south)--(w.north east);
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{精确满条件分布作为单坐标提议时，正流分支的Metropolis--Hastings比值恒为1，Gibbs更新无需拒绝；若提议只近似满条件或改用其他分布，则必须恢复接受率校正和拒绝自环}
+\label{fig:V5-C04-gibbs-vs-mh}
+\end{figure}

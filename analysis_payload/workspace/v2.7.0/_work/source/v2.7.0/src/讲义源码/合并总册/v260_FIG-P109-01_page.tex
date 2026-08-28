@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 1 册}{统计学习方法讲义 v2.6.0}{数学基础与统计学习基本理论}
+\begin{document}
+\setcounter{page}{120}
+\setcounter{chapter}{7}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{凸优化与拉格朗日对偶}
+\begin{geometrybox}
+\textbf{几何解释。}凸集内任意两点之间的整条线段都留在集合中；凸函数图像位于任意弦的下方。对凸问题，沿最优点与任意候选点连续移动不会先上升后下降，因此局部谷底不能隐藏另一个更低谷底。
+\end{geometrybox}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C07/fig_v1_c07_convex_set.tex}
+用\cref{fig:V1-C07-convex-set}检验候选集合时，不能只找一条留在集合内的线段；定义要求任意$x_1,x_2$和任意$t\in[0,1]$都成立。要否定凸性，只需给出一对端点及一个落到集合外的凸组合。
+\paragraph{首次阅读检查：凸函数的一阶条件。}\textbf{第一步。}先完成原文给出的可判定自检。
+\end{document}

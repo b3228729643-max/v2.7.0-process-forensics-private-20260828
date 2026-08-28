@@ -1,0 +1,14 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 4 册}{统计学习方法讲义 v2.6.0}{无监督学习与矩阵分解}
+\begin{document}
+\setcounter{page}{564}
+\setcounter{chapter}{25}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{聚类方法}
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C02/fig_v4_c02_dendrogram.tex}
+\Cref{fig:V4-C02-dendrogram}对应层次聚类知识点：在所示高度切割得到$\{x_1,x_2\}$、$\{x_3\}$和$\{x_4,x_5\}$三个类；改变切割高度只合并或拆分嵌套分支，不改变已经记录的合并顺序。
+\SLAdvancedSection{\kMeans{}算法与收敛}{sec:V4-C02-S05}
+\textbf{学习算法。}\kMeans{}交替执行最近中心分配和类内均值更新，并在每次循环保留目标轨迹、空类修复记录与停止原因。
+\end{document}

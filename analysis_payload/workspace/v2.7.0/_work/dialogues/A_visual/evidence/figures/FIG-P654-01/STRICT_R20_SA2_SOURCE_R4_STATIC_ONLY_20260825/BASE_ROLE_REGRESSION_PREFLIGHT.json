@@ -1,0 +1,96 @@
+{
+  "status": "STATIC_BASE_ROLE_REGRESSION_PASS_AWAIT_NEW_RASTER",
+  "role": "PANEL_MAIN|FORMULA_BLOCK|BASE_MATH",
+  "uniform_source_point_size": 11.6,
+  "source_max_min_ratio": 1.0,
+  "source_span_pt": 0.0,
+  "glyphs": {
+    "italic_n": {
+      "font": "IBMPlexMath-Regular.otf",
+      "codepoint": "U+1D45B",
+      "glyph_name": "uni1D45B",
+      "bounds_font_units": [
+        66,
+        -12,
+        584,
+        528
+      ],
+      "height_units": 540,
+      "units_per_em": 1000,
+      "point_size": 11.6,
+      "continuous_height_at_300dpi_px": 26.1,
+      "conservative_integer_envelope_px": [
+        26,
+        27
+      ]
+    },
+    "italic_alpha": {
+      "font": "IBMPlexMath-Regular.otf",
+      "codepoint": "U+1D6FC",
+      "glyph_name": "uni1D6FC",
+      "bounds_font_units": [
+        67,
+        -12,
+        608,
+        528
+      ],
+      "height_units": 540,
+      "units_per_em": 1000,
+      "point_size": 11.6,
+      "continuous_height_at_300dpi_px": 26.1,
+      "conservative_integer_envelope_px": [
+        26,
+        27
+      ]
+    },
+    "binary_plus": {
+      "font": "LibertinusMath-Regular.otf",
+      "codepoint": "U+002B",
+      "glyph_name": "plus",
+      "bounds_font_units": [
+        50.0,
+        -14.0,
+        598.0,
+        534.0
+      ],
+      "height_units": 548.0,
+      "units_per_em": 1000,
+      "point_size": 11.6,
+      "continuous_height_at_300dpi_px": 26.486666667,
+      "conservative_integer_envelope_px": [
+        26,
+        27
+      ]
+    },
+    "uppercase_total_N": {
+      "font": "MezenetsUnicode.otf",
+      "codepoint": "U+004E",
+      "glyph_name": "N",
+      "bounds_font_units": [
+        21,
+        -13,
+        533,
+        524
+      ],
+      "height_units": 537,
+      "units_per_em": 1000,
+      "point_size": 11.6,
+      "continuous_height_at_300dpi_px": 25.955,
+      "conservative_integer_envelope_px": [
+        25,
+        26
+      ]
+    }
+  },
+  "median_height_units": 540.0,
+  "ratios_to_frozen_role_median": {
+    "italic_n": 1.0,
+    "italic_alpha": 1.0,
+    "binary_plus": 1.014814814815,
+    "uppercase_total_N": 0.994444444444
+  },
+  "all_contour_ratios_pass": true,
+  "minimum_conservative_integer_height_px": 25,
+  "all_conservative_integer_heights_pass_22px": true,
+  "note": "Codepoints and font faces are unchanged from R19; only the complete source role changes uniformly from 10.7pt to 11.6pt. Native R20 remeasurement remains mandatory."
+}

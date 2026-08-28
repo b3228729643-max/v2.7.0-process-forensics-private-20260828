@@ -1,0 +1,31 @@
+﻿PANEL_ID,ROLE,SCRIPT_CLASS,BASE_ROLE,BASE_MEDIAN_PX,ROLE_MEDIAN_PX,ROLE_RATIO,EXPECTED_RANGE,E_SCOPE,E_PASS,REASON
+L,AXIS_TITLE,CJK_HAN,TICK,N/A,36.250,N/A,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+L,AXIS_TITLE,LOWER_OR_GREEK,TICK,N/A,20.000,N/A,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+L,AXIS_TITLE,UPPER_OR_DIGIT,TICK,26.750,27.000,1.009346,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,true,PASS
+L,ANNOTATION,CJK_HAN,TICK,N/A,38.000,N/A,"[0.95,1.10]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+L,ANNOTATION,LOWER_OR_GREEK,TICK,N/A,27.000,N/A,"[0.95,1.10]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+L,ANNOTATION,NATURAL_SCRIPT,TICK,20.000,29.000,1.450000,"[0.95,1.10]",same_panel+same_script+eligible_TICK_BASE_only,false,"outside_[0.95,1.10]"
+L,ANNOTATION,PUNCTUATION,TICK,22.000,39.000,1.772727,"[0.95,1.10]",same_panel+same_script+eligible_TICK_BASE_only,false,"outside_[0.95,1.10]"
+L,ANNOTATION,UPPER_OR_DIGIT,TICK,26.750,28.000,1.046729,"[0.95,1.10]",same_panel+same_script+eligible_TICK_BASE_only,true,PASS
+L,FORMULA,N/A,TICK,N/A,N/A,N/A,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No all-C-pass sample for this role/script; excluded from E.
+L,PANEL_TITLE,CJK_HAN,TICK,N/A,38.500,N/A,"[1.05,1.20]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+L,PANEL_TITLE,LOWER_OR_GREEK,TICK,N/A,32.000,N/A,"[1.05,1.20]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+L,PANEL_TITLE,MATH_OPERATOR,TICK,N/A,36.000,N/A,"[1.05,1.20]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+L,PANEL_TITLE,NATURAL_SCRIPT,TICK,20.000,22.000,1.100000,"[1.05,1.20]",same_panel+same_script+eligible_TICK_BASE_only,true,PASS
+R,AXIS_TITLE,CJK_HAN,TICK,N/A,36.000,N/A,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+R,AXIS_TITLE,LOWER_OR_GREEK,TICK,N/A,20.000,N/A,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+R,AXIS_TITLE,UPPER_OR_DIGIT,TICK,27.000,27.000,1.000000,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,true,PASS
+R,ANNOTATION,CJK_HAN,TICK,N/A,38.250,N/A,"[0.95,1.10]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+R,ANNOTATION,LOWER_OR_GREEK,TICK,N/A,24.000,N/A,"[0.95,1.10]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+R,ANNOTATION,NATURAL_SCRIPT,TICK,20.000,26.000,1.300000,"[0.95,1.10]",same_panel+same_script+eligible_TICK_BASE_only,false,"outside_[0.95,1.10]"
+R,ANNOTATION,PUNCTUATION,TICK,28.000,39.000,1.392857,"[0.95,1.10]",same_panel+same_script+eligible_TICK_BASE_only,false,"outside_[0.95,1.10]"
+R,ANNOTATION,UPPER_OR_DIGIT,TICK,27.000,30.000,1.111111,"[0.95,1.10]",same_panel+same_script+eligible_TICK_BASE_only,false,"outside_[0.95,1.10]"
+R,FORMULA,FULLWIDTH,TICK,N/A,40.000,N/A,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+R,FORMULA,LOWER_OR_GREEK,TICK,N/A,25.500,N/A,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+R,FORMULA,NATURAL_SCRIPT,TICK,20.000,25.500,1.275000,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,false,"outside_[1.00,1.18]"
+R,FORMULA,PUNCTUATION,TICK,28.000,30.500,1.089286,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,true,PASS
+R,FORMULA,UPPER_OR_DIGIT,TICK,27.000,28.000,1.037037,"[1.00,1.18]",same_panel+same_script+eligible_TICK_BASE_only,true,PASS
+R,PANEL_TITLE,CJK_HAN,TICK,N/A,38.500,N/A,"[1.05,1.20]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+R,PANEL_TITLE,LOWER_OR_GREEK,TICK,N/A,31.000,N/A,"[1.05,1.20]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+R,PANEL_TITLE,MATH_OPERATOR,TICK,N/A,24.000,N/A,"[1.05,1.20]",same_panel+same_script+eligible_TICK_BASE_only,N/A,No eligible same-script TICK BASE; explicit N/A.
+R,PANEL_TITLE,NATURAL_SCRIPT,TICK,20.000,22.000,1.100000,"[1.05,1.20]",same_panel+same_script+eligible_TICK_BASE_only,true,PASS

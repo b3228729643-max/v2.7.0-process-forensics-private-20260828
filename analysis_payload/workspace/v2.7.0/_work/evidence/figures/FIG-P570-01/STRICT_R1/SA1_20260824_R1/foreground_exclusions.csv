@@ -1,0 +1,11 @@
+﻿ELEMENT_ID,KIND,RAW_MASK_FILE,EXCLUSION_REASON,QUALITY_GEOMETRY
+GRAPHIC_INPUT_EXPECTATION_FILL,FILL_BACKGROUND,masks/graphics/GRAPHIC_INPUT_EXPECTATION_FILL.png,input expectation/integral opaque node fill excluded by Goal F,not an independent foreground collision target
+GRAPHIC_INPUT_IID_FILL,FILL_BACKGROUND,masks/graphics/GRAPHIC_INPUT_IID_FILL.png,input IID opaque node fill excluded by Goal F,not an independent foreground collision target
+GRAPHIC_INPUT_LLN_FILL,FILL_BACKGROUND,masks/graphics/GRAPHIC_INPUT_LLN_FILL.png,input LLN opaque node fill excluded by Goal F,not an independent foreground collision target
+GRAPHIC_CORE_FILL,FILL_BACKGROUND,masks/graphics/GRAPHIC_CORE_FILL.png,core Monte Carlo opaque node fill excluded by Goal F,not an independent foreground collision target
+GRAPHIC_METHOD_INVERSE_FILL,FILL_BACKGROUND,masks/graphics/GRAPHIC_METHOD_INVERSE_FILL.png,inverse-transform method opaque node fill excluded by Goal F,not an independent foreground collision target
+GRAPHIC_METHOD_REJECTION_FILL,FILL_BACKGROUND,masks/graphics/GRAPHIC_METHOD_REJECTION_FILL.png,accept-reject method opaque node fill excluded by Goal F,not an independent foreground collision target
+GRAPHIC_METHOD_IS_FILL,FILL_BACKGROUND,masks/graphics/GRAPHIC_METHOD_IS_FILL.png,importance-sampling node white fill excluded by Goal F,not an independent foreground collision target
+GRAPHIC_METHOD_IS_BORDER_PREOCCLUSION,PRE_OCCLUSION_BORDER,masks/graphics/GRAPHIC_METHOD_IS_BORDER_PREOCCLUSION.png,double-border teal stroke before real opaque white gap,not an independent foreground collision target
+GRAPHIC_METHOD_IS_WHITE_GAP_HALO,HALO_BACKGROUND,masks/graphics/GRAPHIC_METHOD_IS_WHITE_GAP_HALO.png,real opaque white double-border gap; excluded as background,not an independent foreground collision target
+GRAPHIC_DIAGNOSTIC_FILL,FILL_BACKGROUND,masks/graphics/GRAPHIC_DIAGNOSTIC_FILL.png,common diagnostic outlet opaque node fill excluded by Goal F,not an independent foreground collision target

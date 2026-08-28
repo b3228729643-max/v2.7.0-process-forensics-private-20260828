@@ -1,0 +1,26 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{FIG-P654-01 SA2-R2 局部页验证}
+\begin{document}
+\setcounter{page}{684}
+\setcounter{chapter}{34}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{狄利克雷分布与共轭先验}
+\sectionmark{章首依赖路线}
+\SLChapterOpening{类别计数$\to$Gamma/Beta恒等式$\to$Dirichlet分布$\to$共轭预测}
+{怎样在单纯形上归一化先验，并从完整似然推导后验、证据与预测？}
+{读完可证明Gamma归一化构造、计算Dirichlet矩，并完成共轭闭式更新。}
+{概率质量函数、变量变换Jacobian、Bayes公式、Gamma/Beta积分与协方差。}
+{先复习计数向量与有序序列的区别，再进入多项分布。}
+\begin{dependencybox}
+有序类别观测$\to$类别计数$\to$多项似然；
+Gamma函数$\to$Beta函数与多元Beta函数$\to$单纯形上的狄利克雷密度；
+独立Gamma变量$\to$归一化比例$\to$狄利克雷抽样与矩；
+Dirichlet先验$+$多项计数$\to$参数逐分量相加$\to$闭式后验、边际证据与后验预测。
+\end{dependencybox}
+图\ref{fig:V5-C05-dependency-graph}给出本章共轭更新、预测结论与解释支线的学习顺序；后续主题模型只是应用出口，不是本章的学习前置。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dependency_graph.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先看左侧“类别计数”和“Gamma/Beta归一化”怎样汇入多项似然与Dirichlet先验；再看中央实线主链如何把参数逐分量相加为$\operatorname{Dir}(\boldsymbol\alpha+\boldsymbol n)$，并读出$\Pr(Y_{N+1}=i\mid\boldsymbol n,\boldsymbol\alpha)=(\alpha_i+n_i)/(\alpha_0+N)$；最终区分下方无箭头的参数解释支线与虚线的主题模型应用出口。\par
+\end{document}

@@ -1,0 +1,47 @@
+view_id	path	native_or_exact_scale	opened	decision	reviewer_note
+VIEW_FULL_200	render/full_page_200dpi.png	200dpi native	true	PASS	Full page is balanced: figure, caption, following paragraph, headers, and footer remain within the page with no orphaned or clipped content.
+VIEW_FULL_300	render/full_page_300dpi.png	300dpi native	true	PASS	Native 300dpi page render confirms the independently located figure region and preserves all page-level relationships.
+VIEW_FIGURE_300	render/figure_crop_300dpi.png	300dpi native	true	PASS	Figure plus caption is complete; all trajectory labels, axes, contours, node text, and both caption lines are readable.
+VIEW_STANDALONE_300	render/standalone_300dpi.png	300dpi native	true	PASS	Standalone plot crop includes the complete axes, ellipse, update path, state markers, guide arrows, and information node without caption leakage.
+VIEW_GRAYSCALE_300	render/grayscale_300dpi.png	300dpi native grayscale	true	PASS	Grayscale preserves topology through line orientation, weight, marker shapes, and arrowheads; no relationship depends only on hue.
+VIEW_OBJECT_OVERLAY	render/object_measurement_overlay_300dpi.png	300dpi annotated	true	PASS	All 37 included objects are visibly mapped, and pale ellipse fill plus white node interior are correctly excluded as backgrounds.
+VIEW_GLYPH_S01	contact_sheets/glyph/glyph_sheet_01.png	exact 8x nearest cells 1-12	true	PASS	GLY_001 through GLY_012 show complete x1/x2 axis and update glyphs; no mask contamination or tofu.
+VIEW_GLYPH_S02	contact_sheets/glyph/glyph_sheet_02.png	exact 8x nearest cells 1-12	true	PASS	GLY_013 through GLY_024 cover state numerals, axis labels, and initial info glyph; every original/overlay/mask triplet matches.
+VIEW_GLYPH_S03	contact_sheets/glyph/glyph_sheet_03.png	exact 8x nearest cells 1-12	true	PASS	GLY_025 through GLY_036 preserve the information-node phrase through 一, including naturally short punctuation and stroke forms.
+VIEW_GLYPH_S04	contact_sheets/glyph/glyph_sheet_04.png	exact 8x nearest cells 1-12	true	PASS	GLY_037 through GLY_048 remain individually legible and free of border or neighbor ink.
+VIEW_GLYPH_S05	contact_sheets/glyph/glyph_sheet_05.png	exact 8x nearest cells 1-12	true	PASS	GLY_049 through GLY_060 complete the node and begin the caption; label/body assignment is correct after the line-aware split.
+VIEW_GLYPH_S06	contact_sheets/glyph/glyph_sheet_06.png	exact 8x nearest cells 1-12	true	PASS	GLY_061 through GLY_072 preserve Gibbs, Chinese caption text, italic x, and subscript 1 with clean masks.
+VIEW_GLYPH_S07	contact_sheets/glyph/glyph_sheet_07.png	exact 8x nearest cells 1-12	true	PASS	GLY_073 through GLY_084 render the horizontal/vertical movement phrase without missing strokes or wrong codepoints.
+VIEW_GLYPH_S08	contact_sheets/glyph/glyph_sheet_08.png	exact 8x nearest cells 1-12	true	PASS	GLY_085 through GLY_096 keep caption punctuation and the fixed-teaching wording complete and readable.
+VIEW_GLYPH_S09	contact_sheets/glyph/glyph_sheet_09.png	exact 8x nearest cells 1-12	true	PASS	GLY_097 through GLY_108 include the line-break transition; no start-of-line glyph is clipped and masks remain pure.
+VIEW_GLYPH_S10	contact_sheets/glyph/glyph_sheet_10.png	exact 8x nearest cells 1-12	true	PASS	GLY_109 through GLY_120 preserve the slanted-target and short-axis explanation with complete dense CJK strokes.
+VIEW_GLYPH_S11	contact_sheets/glyph/glyph_sheet_11.png	exact 8x nearest cells 1-11	true	PASS	GLY_121 through GLY_131 close the caption cleanly; the final 合 is complete and has right-side breathing room.
+VIEW_GRAPHIC_01	contact_sheets/graphic/graphic_01_GR_AXIS_X.png	1x native triptych	true	PASS	Horizontal coordinate axis mask is complete from shaft to arrowhead and contains no plot text.
+VIEW_GRAPHIC_02	contact_sheets/graphic/graphic_02_GR_AXIS_Y.png	1x native triptych	true	PASS	Vertical coordinate axis mask includes its full arrow and has no clipping at the standalone boundary.
+VIEW_GRAPHIC_03	contact_sheets/graphic/graphic_03_GR_CONTOUR_OUTER.png	1x native triptych	true	PASS	Outer ellipse contour is continuous across its full perimeter; pale interior fill is excluded.
+VIEW_GRAPHIC_04	contact_sheets/graphic/graphic_04_GR_CONTOUR_MIDDLE.png	1x native triptych	true	PASS	Middle contour mask follows the closed ellipse with no path breaks or trajectory ink.
+VIEW_GRAPHIC_05	contact_sheets/graphic/graphic_05_GR_CONTOUR_INNER.png	1x native triptych	true	PASS	Inner contour remains a complete closed curve even where sampled moves and markers cross it.
+VIEW_GRAPHIC_06	contact_sheets/graphic/graphic_06_GR_MOVE_01.png	1x native triptych	true	PASS	Move 0-to-1 has a complete horizontal shaft and terminal arrowhead connected to both state markers.
+VIEW_GRAPHIC_07	contact_sheets/graphic/graphic_07_GR_MOVE_12.png	1x native triptych	true	PASS	Move 1-to-2 is a complete upward segment with readable direction and no missing arrowhead pixels.
+VIEW_GRAPHIC_08	contact_sheets/graphic/graphic_08_GR_MOVE_23.png	1x native triptych	true	PASS	Move 2-to-3 is fully horizontal and its endpoint arrow remains distinct from contours and guides.
+VIEW_GRAPHIC_09	contact_sheets/graphic/graphic_09_GR_MOVE_34.png	1x native triptych	true	PASS	Move 3-to-4 is a complete vertical update; both shaft and upper arrowhead are captured.
+VIEW_GRAPHIC_10	contact_sheets/graphic/graphic_10_GR_MOVE_45.png	1x native triptych	true	PASS	Move 4-to-5 has an intact rightward arrow and clean endpoint connection at marker 5.
+VIEW_GRAPHIC_11	contact_sheets/graphic/graphic_11_GR_MOVE_56.png	1x native triptych	true	PASS	Move 5-to-6 is complete from lower state to upper state with an unambiguous upward arrowhead.
+VIEW_GRAPHIC_12	contact_sheets/graphic/graphic_12_GR_MARKER_0.png	1x native triptych	true	PASS	Marker 0 is a complete filled circle and contains only its intended dark-blue ink.
+VIEW_GRAPHIC_13	contact_sheets/graphic/graphic_13_GR_MARKER_1.png	1x native triptych	true	PASS	Marker 1 is fully filled and correctly anchors the first horizontal-to-vertical turn.
+VIEW_GRAPHIC_14	contact_sheets/graphic/graphic_14_GR_MARKER_2.png	1x native triptych	true	PASS	Marker 2 remains a complete state dot while intentionally touching the inner contour.
+VIEW_GRAPHIC_15	contact_sheets/graphic/graphic_15_GR_MARKER_3.png	1x native triptych	true	PASS	Marker 3 is complete and visibly defines the next right-angle trajectory corner.
+VIEW_GRAPHIC_16	contact_sheets/graphic/graphic_16_GR_MARKER_4.png	1x native triptych	true	PASS	Marker 4 is a complete filled circle at the top of the vertical move and start of the next horizontal move.
+VIEW_GRAPHIC_17	contact_sheets/graphic/graphic_17_GR_MARKER_5.png	1x native triptych	true	PASS	Marker 5 is fully captured at the rightward endpoint with no arrow mask leakage.
+VIEW_GRAPHIC_18	contact_sheets/graphic/graphic_18_GR_MARKER_6.png	1x native triptych	true	PASS	Marker 6 is a complete terminal state dot and remains inside the standalone viewport.
+VIEW_GRAPHIC_19	contact_sheets/graphic/graphic_19_GR_LONG_AXIS.png	1x native triptych	true	PASS	Long-axis guide has a continuous diagonal shaft and arrowhead, with annotation text excluded.
+VIEW_GRAPHIC_20	contact_sheets/graphic/graphic_20_GR_SHORT_AXIS.png	1x native triptych	true	PASS	Short-axis guide is complete, crosses the target center correctly, and contains no contour mask.
+VIEW_GRAPHIC_21	contact_sheets/graphic/graphic_21_GR_INFO_BORDER.png	1x native triptych	true	PASS	Information-node rounded border is closed and intact; white interior and node text are separately accounted for.
+VIEW_STAND_Q1_8X	render/standalone_q1_8x_nearest.png	exact 8x nearest	true	PASS	Upper-left standalone quadrant shows complete origin-facing contours, state region, and guide segments with no hidden crop.
+VIEW_STAND_Q2_8X	render/standalone_q2_8x_nearest.png	exact 8x nearest	true	PASS	Upper-right standalone quadrant confirms final sampled states, axis arrowheads, and ellipse boundary remain intact.
+VIEW_STAND_Q3_8X	render/standalone_q3_8x_nearest.png	exact 8x nearest	true	PASS	Lower-left standalone quadrant preserves early trajectory moves, labels, and lower contour margin at pixel level.
+VIEW_STAND_Q4_8X	render/standalone_q4_8x_nearest.png	exact 8x nearest	true	PASS	Lower-right standalone quadrant shows the guide annotations and information node without clipping or glyph contamination.
+VIEW_FIG_Q1_8X	render/figure_crop_q1_8x_nearest.png	exact 8x nearest	true	PASS	Upper-left figure quadrant confirms plot integration and all high-magnification strokes are raster-complete.
+VIEW_FIG_Q2_8X	render/figure_crop_q2_8x_nearest.png	exact 8x nearest	true	PASS	Upper-right figure quadrant confirms axis endpoints and terminal trajectory geometry within the crop.
+VIEW_FIG_Q3_8X	render/figure_crop_q3_8x_nearest.png	exact 8x nearest	true	PASS	Lower-left figure quadrant confirms plot bottom and first caption-line start are present and separated.
+VIEW_FIG_Q4_8X	render/figure_crop_q4_8x_nearest.png	exact 8x nearest	true	PASS	Lower-right figure quadrant confirms both caption lines terminate within bounds and all bottom content is complete.

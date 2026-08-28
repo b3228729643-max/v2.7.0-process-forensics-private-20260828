@@ -1,0 +1,11 @@
+comparison_id,reviewer,source_mapping_checked,pixel_peers_checked,hierarchy_checked,decision,note
+PR01,SA1,true,true,true,PASS,"panel-A numeric ticks share one 9.6pt source role; 26-27px digit variation is ordinary glyph raster shape"
+PR02,SA1,true,true,true,PASS,"panel-B numeric ticks share one 9.6pt source role; decimal punctuation was not misused as a digit-height peer"
+PR03,SA1,true,true,true,PASS,"digit medians are exactly 27px in both panels and no panel has a scale mismatch"
+PR04,SA1,true,true,true,PASS,"all three legend formulas have identical structure and 28px element medians with consistent spacing"
+PR05,SA1,true,true,true,PASS,"both panels use 9.8pt axis-label style; different formula shapes do not create a severe visual imbalance"
+PR06,SA1,true,true,true,PASS,"Chinese title glyph medians are 36px in both panels"
+PR07,SA1,true,true,true,PASS,"ACF and ESS uppercase title glyph medians differ by only 1px and remain visually matched under R168"
+PR08,SA1,true,true,true,PASS,"orange annotation and endpoint label use the same declared 9.6pt and comparable digits remain within 1px"
+PR09,SA1,true,true,true,PASS,"numerator and denominator shared glyphs 1 rho 2 match exactly; minus and plus contour heights are character-specific"
+PR10,SA1,true,true,true,PASS,"9.96pt caption is slightly above the 9.6pt chart base without overpowering the figure or page"

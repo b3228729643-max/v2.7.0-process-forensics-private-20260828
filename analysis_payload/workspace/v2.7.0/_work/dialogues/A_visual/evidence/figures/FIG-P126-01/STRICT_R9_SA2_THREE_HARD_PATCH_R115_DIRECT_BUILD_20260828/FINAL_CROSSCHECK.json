@@ -1,0 +1,41 @@
+{
+  "schema": "P126_R9_FINAL_CROSSCHECK_V1",
+  "denominator": {
+    "N": 60,
+    "glyph": 25,
+    "line": 9,
+    "protective_background": 2,
+    "square_marker": 4,
+    "curve": 20
+  },
+  "all_pairs": {
+    "expected": 1770,
+    "actual": 1770,
+    "unique_pair_ids": 1770,
+    "unique_unordered_tuples": 1770,
+    "self_pairs": 0,
+    "bad_references": 0
+  },
+  "machine_candidates": 218,
+  "manual": {
+    "objects": 60,
+    "pairs": 1770,
+    "views_opened": 23,
+    "glyph_codepoints": 25,
+    "math_semantic": 9,
+    "hard_gate_rows": 5
+  },
+  "manual_pair_failures": 1,
+  "hard_failure_count": 2,
+  "clip_count": 0,
+  "missing_tofu_wrong_codepoint_count": 0,
+  "source": {
+    "bytes": 4361,
+    "sha256": "85FA5D73BD816149EE77968512C708C58CEE1AB90D59EDEBBDA550F232EE0D81"
+  },
+  "pdf": {
+    "bytes": 34051,
+    "sha256": "CE80FD14D39FE32269BF8535B0381006338AD14D9490292FB5B07230AFDA5573"
+  },
+  "verdict": "LOCAL_SA2_FAIL_RETURN_TO_MAIN_SOURCE_SCOPE"
+}

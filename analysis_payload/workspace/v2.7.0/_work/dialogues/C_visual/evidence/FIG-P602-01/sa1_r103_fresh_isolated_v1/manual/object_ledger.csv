@@ -1,0 +1,33 @@
+OBJECT_ID,REVIEWER,DECISION,NOTE,EVIDENCE
+T01,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"“当前状态”四字在顶层节点内水平居中，四个 glyph 均完整，未靠近上边框。",render/figure_crop_native300dpi_color.png|render/object_masks/T01_foreground_mask.png
+T02,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"“状态变量 X_t”第二行与标题分层明确，数学斜体 X 和合法派生下标 t 可辨。",render/glyph_direct8x/glyph_contact_direct8x_01.png|render/object_masks/T02_foreground_mask.png
+T03,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"候选步骤写成“按提议核抽取候选”，动作、核与对象齐全，灰底上对比稳定。",render/figure_only_native300dpi_grayscale.png|render/object_masks/T03_foreground_mask.png
+T04,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"“候选变量 Y”与上行共同说明提议输出，Y 字形未与节点下边界接近。",render/critical_direct8x/critical_contact_direct8x_01.png|render/object_masks/T04_foreground_mask.png
+T05,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"接受率说明明确限定未规范化目标 pi_u 且正向流为正；括号、下标与中文全部可读。",render/foreground_mask_contact_sheet_01.png|machine/source_and_minimal_context_excerpt.txt
+T06,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"核心接受率保留 min{1, reverse/forward}；分子分母、条件方向、左右大括号和下标位置均正确。",render/critical_direct1x/critical_contact_direct1x_01.png|render/object_masks/T06_foreground_mask.png
+T07,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"决策第一行完整给出 [0 到 1] 的均匀变量 U，区间端点与变量没有缺字。",render/glyph_direct1x/glyph_contact_direct1x_04.png|render/object_masks/T07_foreground_mask.png
+T08,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"第二行 U<=alpha_t(Y)? 关系符与问号清楚，判定方向与 MH 接受事件一致。",render/glyph_direct8x/glyph_contact_direct8x_05.png|render/object_masks/T08_foreground_mask.png
+T09,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"左结果标题“接受候选”位于节点首行，未被入射箭头或边框触碰。",render/critical_direct8x/critical_contact_direct8x_01.png|render/object_masks/T09_foreground_mask.png
+T10,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"接受结果 X_{t+1} 取 Y 清楚表达状态更新，下标与加号逐字可辨。",render/glyph_direct8x/glyph_contact_direct8x_05.png|render/object_masks/T10_foreground_mask.png
+T11,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"右结果“拒绝并记录旧状态”完整说明保留样本记录而非丢弃，双边框内留白充分。",render/critical_direct1x/critical_contact_direct1x_02.png|render/object_masks/T11_foreground_mask.png
+T12,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"拒绝结果 X_{t+1} 保持 X_t 与自环语义一致，两个 X 的时间指标没有互换。",render/glyph_direct1x/glyph_contact_direct1x_06.png|render/object_masks/T12_foreground_mask.png
+T13,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"“提议”标签置于第一条虚线箭头右侧；白底切断箭线后文字前景仍独立清楚。",render/critical_direct8x/critical_contact_direct8x_04.png|render/object_masks/T13_foreground_mask.png
+T14,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"“计算”标签跟随候选到接受率面板的浅灰箭头，阅读顺序没有反转。",render/critical_direct8x/critical_contact_direct8x_04.png|render/object_masks/T14_foreground_mask.png
+T15,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"“判定”位于接受率面板与菱形之间，箭头头部停在菱形顶点前。",render/critical_direct8x/critical_contact_direct8x_04.png|render/object_masks/T15_foreground_mask.png
+T16,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"左分支“接受”标签在实线之上，字的墨迹不落入斜线或箭头头部。",render/critical_direct8x/critical_contact_direct8x_04.png|render/object_masks/T16_foreground_mask.png
+T17,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"右分支“拒绝”标签与点划线分离，灰度下仍可凭线型识别拒绝分支。",render/figure_only_native300dpi_grayscale.png|render/object_masks/T17_foreground_mask.png
+T18,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"“拒绝后保持旧状态”位于自环下方的白底区域，曲线被背景安全让开且无穿字。",render/critical_direct8x/critical_contact_direct8x_04.png|render/object_masks/T18_foreground_mask.png
+T19,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"题注图号 32.5、英文专名和中文结论完整；单句准确概括提议判定与拒绝自环。",render/figure_crop_native300dpi_grayscale.png|render/object_masks/T19_foreground_mask.png
+B01,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"当前状态圆角蓝框闭合，四角平滑，顶部未被裁切且内部两行净空足够。",render/critical_direct8x/critical_contact_direct8x_01.png|render/object_masks/B01_foreground_mask.png
+B02,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"候选节点浅灰边框和灰底共同区分提议对象，边框无断线或文本碰撞。",render/foreground_mask_contact_sheet_03.png|render/object_masks/B02_foreground_mask.png
+B03,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"接受率长面板边框完整包住说明与公式，左右端留白对称，底边未压住分母。",render/critical_direct1x/critical_contact_direct1x_01.png|render/object_masks/B03_foreground_mask.png
+B04,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"决策菱形四边在四个顶点闭合；文字居中，左右分支只在预期边界处发出。",render/critical_direct8x/critical_contact_direct8x_03.png|render/object_masks/B04_foreground_mask.png
+B05,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"接受结果圆角框的入射箭头在边框前形成清晰箭头，框内公式未触底。",render/critical_direct8x/critical_contact_direct8x_03.png|render/object_masks/B05_foreground_mask.png
+B06,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"拒绝结果复合双边框两道蓝线由白色分隔，强调留驻状态但未造成严重视觉失衡。",render/critical_direct8x/critical_contact_direct8x_02.png|render/object_masks/B06_foreground_mask.png
+E01,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"虚线提议箭头从当前状态向候选节点，箭头朝下且端点均未穿入文字。",render/critical_direct1x/critical_contact_direct1x_02.png|render/object_masks/E01_foreground_mask.png
+E02,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"浅灰计算箭头连接候选与接受率面板，线身被标签白底让开，箭头方向正确。",render/critical_direct8x/critical_contact_direct8x_02.png|render/object_masks/E02_foreground_mask.png
+E03,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"判定箭头从公式面板指向菱形顶点，头部与边界之间没有遮盖正文。",render/critical_direct8x/critical_contact_direct8x_02.png|render/object_masks/E03_foreground_mask.png
+E04,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"接受实线在菱形左下边界发出并指向接受节点；与 B04 的 58 像素为允许的拓扑端点接触。",machine/pair_pixel_intersections.csv|render/object_masks/E04_foreground_mask.png
+E05,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"拒绝点划线从菱形右下边界发出并指向拒绝节点；与 B04 的 57 像素仅属允许端点。",machine/pair_pixel_intersections.csv|render/object_masks/E05_foreground_mask.png
+E06,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"点划自环从拒绝节点下方绕回，箭头回指节点左下侧，曲线、标签与页面边缘均有余量。",render/critical_direct8x/critical_contact_direct8x_03.png|render/object_masks/E06_foreground_mask.png
+M01,/root/sa1_fig_p602_r103_fresh_isolated,PASS,"独立分数线水平连续，正确分隔 reverse-flow 分子与 forward-flow 分母，不接触上下字形。",render/foreground_mask_contact_sheet_04.png|render/object_masks/M01_foreground_mask.png

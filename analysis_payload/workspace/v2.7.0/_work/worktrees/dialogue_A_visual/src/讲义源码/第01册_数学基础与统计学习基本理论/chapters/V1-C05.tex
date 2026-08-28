@@ -1,0 +1,889 @@
+% STAGE08-CHAPTER: V1-C05
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V1-C05-CH01}; CH-02=\label{struct:V1-C05-CH02}; CH-03=\label{struct:V1-C05-CH03}; CH-04=\label{struct:V1-C05-CH04}; CH-05=\label{struct:V1-C05-CH05}; CH-06=\label{struct:V1-C05-CH06}; CH-07=\label{struct:V1-C05-CH07}; CH-08=\label{struct:V1-C05-CH08}; CH-09=\label{struct:V1-C05-CH09}; CH-10=\label{struct:V1-C05-CH10}; CH-11=\label{struct:V1-C05-CH11}; CH-12=\label{struct:V1-C05-CH12}; CH-13=\label{struct:V1-C05-CH13}; CH-14=\label{struct:V1-C05-CH14}; CH-15=\label{struct:V1-C05-CH15}; CH-16=\label{struct:V1-C05-CH16}; CH-17=\label{struct:V1-C05-CH17}; CH-18=\label{struct:V1-C05-CH18}; CH-19=\label{struct:V1-C05-CH19}; CH-20=\label{struct:V1-C05-CH20}; CH-21=\label{struct:V1-C05-CH21}; CH-22=\label{struct:V1-C05-CH22}; CH-23=\label{struct:V1-C05-CH23}; CH-24=\label{struct:V1-C05-CH24}; CH-25=\label{struct:V1-C05-CH25}; CH-26=\label{struct:V1-C05-CH26}; CH-27=\label{struct:V1-C05-CH27}; CH-28=\label{struct:V1-C05-CH28}; CH-29=\label{struct:V1-C05-CH29}; CH-30=\label{struct:V1-C05-CH30}; CH-31=\label{struct:V1-C05-CH31}; CH-32=\label{struct:V1-C05-CH32}; CH-33=\label{struct:V1-C05-CH33}; CH-34=\label{struct:V1-C05-CH34}; CH-35=\label{struct:V1-C05-CH35}; CH-36=\label{struct:V1-C05-CH36}; CH-37=\label{struct:V1-C05-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V1-C05-gaussian -> PRE-PR-019
+\chapter{常用分布与统计推断}\label{chap:V1-C05}
+\SLChapterOpening{从常用分布直达似然、后验与指数族}{样本怎样通过概率模型约束未知参数}{能够处理支持边界、共轭更新和配分函数导数}{\cref{chap:V1-C04}的概率、条件分布与矩}{支持或参数化不清楚时返回分布定义与似然节}
+\index{统计推断}
+
+
+\phantomsection\label{struct:V1-C05-CH01}
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 掌握离散计数分布、高斯分布、Gamma分布与狄利克雷分布的参数和支持集；
+  \item 从抽样模型完整推导极大似然、最大后验与共轭更新，不混淆概率和似然；
+  \item 能够处理边缘似然、隐变量与指数族表示，并判断估计方法的适用条件。
+\end{itemize}}
+
+\phantomsection\label{struct:V1-C05-CH02}
+\begin{prerequisitebox}
+本章依赖第四章的条件概率、期望、方差与独立同分布抽样，还使用求和、积分、对数、偏导数和正定矩阵。多元高斯的二次型可回看第二章。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V1-C05-CH03}
+% KNOWLEDGE-PLAN: KN-V1-C05-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}常用分布与统计推断先修自检固定核验“能否说明概率质量函数对随机结果归一化，而似然函数把观测固定后比较参数”；请说明概率质量函数对随机结果归一化，而似然函数把观测固定后比较参数并写出中间结果，再按“中间结果直接回答首项“能否说明概率质量函数对随机结果归一化，而似然函数把观测固定后比较参数”并给出通过或失败”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否说明概率质量函数对随机结果归一化，而似然函数把观测固定后比较参数？不能则回看\GlobalChapterRef{4}{1}{4}的\cref{sec:V1-C04-S04}，并预习本章\cref{sec:V1-C05-S05}。
+  \item 能否计算 $\sum_i\log p(x_i\mid\theta)$ 对参数的导数？不能则回看\GlobalChapterRef{3}{1}{3}的\cref{sec:V1-C03-S02,sec:V1-C03-S04,sec:V1-C03-S05,sec:V1-C03-S06}。
+  \item 能否判断协方差矩阵为何必须对称半正定？不能则回看\GlobalChapterRef{2}{1}{2}的\cref{sec:V1-C02-S06}或\GlobalChapterRef{4}{1}{4}的\cref{sec:V1-C04-S03}。
+\end{enumerate}
+\end{precheckbox}
+
+\phantomsection\label{struct:V1-C05-CH04}
+\begin{dependencybox}
+概率公理 $\to$ 常用分布 $\to$ 独立抽样 $\to$ 似然与极大似然；
+先验 $+$ 似然 $\to$ 后验与MAP $\to$ 共轭更新；
+联合模型 $\to$ 边缘似然 $\to$ 隐变量推断与指数族统一表示。
+\end{dependencybox}
+
+\phantomsection\label{struct:V1-C05-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V1-C05
+\index[symbols]{minus-theta-minus-minus-theta-minus--sb707ad2907cc@$\theta,\Theta$：未知但固定的模型参数及其可行集合}
+\index[symbols]{x-1-u003a-n--s7e30735647f5@$x_{1:n}$：$x_1,\ldots,x_n$ 的简写}
+\index[symbols]{l-minus-theta-minus-minus-ell-minus-minus-theta-minus--s3f5b2fa475df@$L(\theta),\ell(\theta)$：似然与对数似然}
+\index[symbols]{minus-mu-minus-minus-sigma-minus-2-minus-sigma-minus--s7f033a7082f1@$\mu,\sigma^2,\Sigma$：均值、方差和协方差}
+\index[symbols]{minus-alpha-minus-minus-boldsymbol-minus-minus-alpha-minus--s10e0ba694086@$\alpha,\boldsymbol\alpha,\alpha_0$：标量形状参数、Dirichlet参数向量及总浓度}
+% STAGE19-SYMBOL-INDEX-END: V1-C05
+% KNOWLEDGE-PLAN: KN-V1-C05-PREREQUISITE-006 L1
+\paragraph{读前自检：本章符号表。}常用分布与统计推断符号表规定$\theta,\Theta$、$x_{1:n}$的类型或范围；请把$\theta,\Theta$代入紧随其后的定义关系，逐项核对输入形状、输出形状与取值域。\par
+
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值空间 & 含义\\ \midrule
+$\theta,\Theta$ & 参数、参数空间 & 未知但固定的模型参数及其可行集合\\
+$x_{1:n}$ & 观测样本 & $x_1,\ldots,x_n$ 的简写\\
+$L(\theta),\ell(\theta)$ & 非负函数、实函数 & 似然与对数似然\\
+$\mu,\sigma^2,\Sigma$ & 实数、正数、对称半正定矩阵 & 均值、方差和协方差；高斯密度式另要求$\Sigma\succ0$\\
+$\mathbf N,\mathbf n$ & $\mathbb Z_{\geq0}^K$中的随机向量、实现值 & $K$类计数向量及其一次实现\\
+$n$ & 正整数 & 多项分布的总试验数，满足$\sum_{k=1}^K n_k=n$\\
+$\alpha$；$\boldsymbol\alpha$；$\alpha_0$ & 正数；$\R_{>0}^K$；正数 & 标量形状参数；Dirichlet参数向量；总浓度$\alpha_0=\sum_k\alpha_k$\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V1-C05-CONCEPT-001 L1
+\paragraph{读前自检：伯努利分布。}把伯努利分布放在“$X\in\{0,1\}$ 且 $P(X=x)=p^x(1-p)^{1-x}$”下考察：把$P(X=x)=p^x(1-p)^{1-x}$在其支持上求和或积分一次，并检查其期望为 $p$，方差为 $p(1-p)$。\par
+
+\SLDirectSection{伯努利、二项与多项分布}{sec:V1-C05-S01}
+\phantomsection\label{struct:V1-C05-CH06}
+\knowledgeanchor{PRE-PR-016}{伯努利分布}
+\begin{definition}[伯努利分布]\label{struct:V1-C05-CH07}
+$X\in\{0,1\}$ 且 $P(X=x)=p^x(1-p)^{1-x}$，其中 $0\le p\le1$。其期望为 $p$，方差为 $p(1-p)$。
+\end{definition}
+\knowledgeanchor{PRE-PR-017}{二项分布}
+若 $X_1,\ldots,X_n$ 独立且同服从 $\operatorname{Bernoulli}(p)$，成功次数 $S=\sum_iX_i$ 的质量函数为
+\[
+P(S=k)=\binom nk p^k(1-p)^{n-k},\quad k=0,\ldots,n.
+\]
+\knowledgeanchor{PRE-PR-018}{多项分布}
+把每次试验推广到$K$个类别，记随机计数向量与其实现值分别为
+$\mathbf N=(N_1,\ldots,N_K)$和$\mathbf n=(n_1,\ldots,n_K)$；标量$n$专指总试验数，
+故$\sum_{k=1}^K N_k=n$且可行实现满足$\sum_{k=1}^K n_k=n$。此时
+\[
+P(\mathbf N=\mathbf n)=\frac{n!}{\prod_{k=1}^K n_k!}
+\prod_{k=1}^{K}p_k^{n_k},\qquad
+p_k\geq0,\quad\sum_{k=1}^Kp_k=1.
+\]
+
+\phantomsection\label{struct:V1-C05-CH12}
+\begin{theorem}[二项分布的均值与方差]
+若 $S\sim\operatorname{Binomial}(n,p)$，则 $\mathbb ES=np$，$\operatorname{Var}(S)=np(1-p)$。
+\end{theorem}
+\phantomsection\label{struct:V1-C05-CH15}
+% KNOWLEDGE-PLAN: KN-V1-C05-PROOF-001 L1
+\paragraph{读前自检：证明：二项分布的均值与方差。}二项分布的均值与方差要求先确认“$\sum_i p(1-p)=np(1-p)$”；请随后执行$\sum_i p(1-p)=np(1-p)$中最内层的一次求和、积分或期望，用独立性使协方差项为零，故和的方差为 $\sum_i p(1-p)=np(1-p)$验收。\par
+% KNOWLEDGE-PLAN: KN-V1-C05-CONCEPT-004 L1
+\paragraph{读前自检：一元高斯分布。}已知$\sigma^2>0$。请说明高斯密度为何非负，并核对其在$\mathbb R$上的积分为$1$。\par
+
+\begin{proof}
+把 $S$ 写成独立伯努利变量之和。期望线性性给出 $\sum_i p=np$；独立性使协方差项为零，故和的方差为 $\sum_i p(1-p)=np(1-p)$。
+\end{proof}
+\SLReviewSection{高斯分布与多元高斯分布}{sec:V1-C05-S02}
+\knowledgeanchor{PRE-PR-019}{一元高斯分布}
+一元高斯密度为
+\[
+f(x\mid\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\!\left[-\frac{(x-\mu)^2}{2\sigma^2}\right],\qquad \sigma^2>0.
+\]
+\knowledgeanchor{PRE-PR-033}{多元高斯分布}
+对$x\in\mathbb R^d$，当$\Sigma\succ0$时，多元高斯是非退化分布，并具有相对于
+$d$维Lebesgue测度的密度
+\[
+f(x)=\frac{\exp[-\tfrac12(x-\mu)^{\mathsf T}\Sigma^{-1}(x-\mu)]}
+{(2\pi)^{d/2}|\Sigma|^{1/2}}.
+\]
+二次型给出马氏距离，行列式控制等密度椭球的体积尺度。
+
+\begin{keypointbox}[title=扩展讨论：非退化密度与退化高斯测度]
+若只要求$\Sigma\succeq0$，仍可通过$X=\mu+LZ$、$LL^{\mathsf T}=\Sigma$定义高斯测度；
+当$\operatorname{rank}(\Sigma)<d$时，它集中在低维仿射子空间
+$\mu+\operatorname{col}(L)$上，相对于$d$维Lebesgue测度没有密度，因而不能把
+$|\Sigma|=0$或不存在的$\Sigma^{-1}$代入上式。
+
+一个秩亏二维反例是：令$Z\sim\mathcal N(0,1)$并取$X=(Z,Z)^{\mathsf T}$，则
+\[
+\Sigma=\begin{bmatrix}1&1\\1&1\end{bmatrix}\succeq0,
+\qquad \operatorname{rank}(\Sigma)=1.
+\]
+这是一个退化二维高斯向量，其全部质量集中在直线$x_1=x_2$上；它是高斯测度，
+却不是可由上述二维密度公式表示的非退化高斯密度。
+\end{keypointbox}
+
+\begin{lemma}[标准化]
+若 $X\sim\mathcal N(\mu,\sigma^2)$，则 $Z=(X-\mu)/\sigma\sim\mathcal N(0,1)$。
+\end{lemma}
+% KNOWLEDGE-PLAN: KN-V1-C05-PROOF-002 L1
+\paragraph{读前自检：证明：标准化。}常用分布与统计推断中的标准化依赖“把原密度与雅可比相乘后，$\sigma$ 与归一化常数中的 $1/\sigma$ 抵消”；请据此把$x=\mu+\sigma z$用到的关键定义展开并完成下一步变形，并直接核对得到标准高斯密度。\par
+
+\begin{proof}
+使用变量代换 $x=\mu+\sigma z$，雅可比绝对值为 $\sigma$。把原密度与雅可比相乘后，$\sigma$ 与归一化常数中的 $1/\sigma$ 抵消，指数项化为 $-z^2/2$，因此得到标准高斯密度。
+\end{proof}
+
+\phantomsection\label{struct:V1-C05-CH19}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C05/fig_v1_c05_gaussian.tex}
+比较\cref{fig:V1-C05-gaussian}中的曲线时要同时检查位置、尺度和面积：改变$\mu$只平移中心，改变$\sigma$会展宽并降低峰值；若只横向拉伸而不调整$1/(\sqrt{2\pi}\sigma)$，所得曲线便不再是概率密度。
+
+
+\SLReviewSection{Gamma与狄利克雷分布}{sec:V1-C05-S03}
+\knowledgeanchor{PRE-PR-031}{Gamma函数与Gamma分布}
+Gamma函数定义为 $\Gamma(a)=\int_0^\infty t^{a-1}e^{-t}\,\mathrm dt$（$a>0$），分部积分给出 $\Gamma(a+1)=a\Gamma(a)$。采用形状--速率参数化时，
+\[
+f(x\mid a,b)=\frac{b^a}{\Gamma(a)}x^{a-1}e^{-bx},\quad x>0,
+\]
+其均值为 $a/b$，方差为 $a/b^2$。狄利克雷分布定义在概率单纯形上，后续作为多项分布的共轭先验。
+
+\phantomsection\label{struct:V1-C05-CH13}
+% KNOWLEDGE-PLAN: KN-V1-C05-LEMMA-002 L1
+\paragraph{读前自检：Gamma递推。}Gamma递推以“特别地，正整数 $n$ 满足 $\Gamma(n)=(n-1)!$”为约束；请独立化简$\Gamma(a+1)=a\Gamma(a)$的两端，并确认两端运算均有定义、类型一致且化为同一结果。\par
+
+\begin{lemma}[Gamma递推]
+对 $a>0$，$\Gamma(a+1)=a\Gamma(a)$；特别地，正整数 $n$ 满足 $\Gamma(n)=(n-1)!$。
+\end{lemma}
+\begin{proof}
+对 $\int_0^\infty t^ae^{-t}\,\mathrm dt$ 分部积分，取 $u=t^a$、$\mathrm dv=e^{-t}\mathrm dt$。边界项在零与无穷处均为零，剩余积分为 $a\int_0^\infty t^{a-1}e^{-t}\,\mathrm dt$。再从 $\Gamma(1)=1$ 递推到整数即可。
+\end{proof}
+
+
+\SLTeachSection{总体、样本、参数与统计量}{sec:V1-C05-S04}
+\knowledgeanchor{PRE-PR-020}{总体、样本、参数与统计量}
+总体分布 $P_\theta$ 是数据生成机制，$\theta$ 是描述该机制的未知参数；样本 $X_{1:n}$ 是从总体抽取的随机变量组，观察后得到固定数值 $x_{1:n}$。统计量 $T(X_{1:n})$ 只能依赖样本，不能依赖未知参数。估计量是用于估计参数的统计量，其抽样分布描述重复抽样时的波动。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C05-FORMULA-001 L1
+\paragraph{读前自检：似然函数。}似然函数在观测$x_{1:n}$固定后把$\theta$视为变量；请在条件独立假设下写出$L(\theta;x_{1:n})=\prod_{i=1}^n p(x_i\mid\theta)$，并核对它无需对$\theta$积分为1但必须尊重参数域。\par
+% KNOWLEDGE-PLAN: KN-V1-C05-FORMULA-002 L1
+\paragraph{读前自检：对数似然。}对常用分布与统计推断中的对数似然，条件“严格单调的对数把乘积化为和：$\ell(\theta)=\sum_i\log p(x_i\mid\theta)$”不可省；请把观测对应因子代入$\ell(\theta)=\sum_i\log p(x_i\mid\theta)$并合并一次，再用所得目标保留参数定义域且无需对参数归一化作检查。\par
+
+\SLTeachSection{似然、对数似然与极大似然}{sec:V1-C05-S05}
+\knowledgeanchor{PRE-PR-021}{似然函数}
+给定观测 $x_{1:n}$ 后，$L(\theta;x)=p(x_{1:n}\mid\theta)$ 被视为参数 $\theta$ 的函数。独立抽样时它是单点概率或密度的乘积。
+\knowledgeanchor{PRE-PR-022}{对数似然}
+严格单调的对数把乘积化为和：$\ell(\theta)=\sum_i\log p(x_i\mid\theta)$，且不改变最大点。
+\knowledgeanchor{PRE-PR-023}{极大似然估计}
+\[
+\hat\theta_{\mathrm{MLE}}\in\arg\max_{\theta\in\Theta}\ell(\theta).
+\]
+
+\phantomsection\label{struct:V1-C05-CH08}
+\textbf{模型。}伯努利抽样模型假定给定$p$后样本条件独立，数据只通过成功次数进入似然。
+\phantomsection\label{struct:V1-C05-CH09}
+\textbf{学习策略。}选择使已观测数据密度最大的可行参数，并用边界、二阶条件或凸性核实该驻点是否为全局最大点。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V1-C05-CH11}
+% CORE-DERIVATION-PLAN: KN-V1-C05-DERIVATION-001
+\SLKnowledgeBridge{同时处理内部驻点与全为 $0$、全为 $1$ 的边界样本。}{独立样本 $x_i\in\{0,1\}$、成功次数 $s=\sum_i x_i$ 与参数 $\theta\in[0,1]$。}{参数空间是闭区间；当 $s=0$ 或 $s=n$ 时不能只依赖内部一阶条件。}{先写对数似然 $\ell(\theta)=s\log\theta+(n-s)\log(1-\theta)$。}
+
+\begin{derivationgoalbox}
+推导伯努利参数的极大似然估计，并说明边界样本的处理。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+数据 $x_i\in\{0,1\}$ 独立同分布，令 $s=\sum_ix_i$，参数空间为闭区间 $[0,1]$。
+\end{derivationprepbox}
+\textbf{推导第1步：}写出 $L(p)=p^s(1-p)^{n-s}$，在 $0<p<1$ 上有 $\ell(p)=s\log p+(n-s)\log(1-p)$。
+
+\textbf{推导第2步：}求导得到 $\ell'(p)=s/p-(n-s)/(1-p)$，令其为零并通分，得到 $s(1-p)=(n-s)p$。
+
+\textbf{推导第3步：}解得 $\hat p=s/n=\bar x$。当 $0<s<n$ 时二阶导数为负；当 $s=0$ 或 $s=n$ 时，比较闭区间边界分别得到0或1，仍与 $s/n$ 一致。
+
+\phantomsection\label{struct:V1-C05-CH14}
+% KNOWLEDGE-PLAN: KN-V1-C05-COROLLARY-001 L1
+\paragraph{读前自检：Corollary：伯努利样本中，样本均值同时是成功概率 p 的极大似然估计与无偏估计。}伯努利样本令$s=\sum_i x_i$；请对$\ell(p)=s\log p+(n-s)\log(1-p)$求导并解驻点，核对$\widehat p=s/n=\bar x$且$\mathbb E[\bar X]=p$。\par
+
+\begin{corollary}
+伯努利样本中，样本均值同时是成功概率$p$的极大似然估计与无偏估计。
+\end{corollary}
+
+\phantomsection\label{struct:V1-C05-CH20}
+\begin{example}[十次伯努利试验的极大似然]\label{exm:V1-C05-binomial-mle}
+观察到10次试验中7次成功。求伯努利成功概率的MLE，并比较候选参数$0.5$与$0.7$的对数似然。
+\end{example}
+\SLExampleSolutionHeading{exm:V1-C05-binomial-mle}
+\begin{solution}
+\SLReadTranslation{题目要求完成“十次伯努利试验的极大似然”：依据题面概率模型求出目标量，并解释条件化、归一化或边缘化。}
+\SolGiven 题面概率、权重或密度均处于合法范围；条件分母/归一化常数应为正，支持集与随机变量取值域保持一致。
+\SLMethodTrigger{先写支持集、条件分母或归一化常数，再代入概率公式并做概率和/边缘核验。}
+\SolDerive
+参数域为$p\in[0,1]$，成功数$s=7$满足$0<s<n=10$，故极大点位于内部。省略与$p$无关的组合常数，
+\[
+\begin{aligned}
+\ell(p)&=7\log p+3\log(1-p),\\
+\ell'(p)&=\frac7p-\frac3{1-p}=0
+\Longleftrightarrow 7(1-p)=3p
+\Longleftrightarrow \widehat p=0.7,\\
+\ell''(p)&=-\frac7{p^2}-\frac3{(1-p)^2}<0,\\
+\ell(0.7)-\ell(0.5)
+&=7\log\frac{0.7}{0.5}+3\log\frac{0.3}{0.5}>0.
+\end{aligned}
+\]
+严格凹性说明驻点至多一个；又因成功与失败次数都为正，边界$p=0,1$的似然均为0，而$p=0.7$的似然为正。这个边界比较独立排除了端点。因此$\widehat p=0.7=7/10$是唯一MLE，并且其似然严格高于候选值$0.5$。
+\SolCheck 核对概率非负、归一化和条件分母为正；若是采样核，再检查目标分布不变性或支持连通性。
+\end{solution}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C05-FORMULA-004 L1
+\paragraph{读前自检：先验、似然与后验。}在“贝叶斯公式写成 $p(\theta\mid x)\propto p(x\mid\theta)p(\theta)$”成立时处理先验、似然与后验：请把观测对应因子代入$p(\theta\mid x)\propto p(x\mid\theta)p(\theta)$并合并一次，并以先验表达观测数据之前的不确定性，后验同时吸收先验与样本信息判定结果。\par
+% KNOWLEDGE-PLAN: KN-V1-C05-FORMULA-005 L1
+\paragraph{读前自检：最大后验估计。}最大后验估计在先验$p(\theta)>0$的参数域上最大化$\log p(x\mid\theta)+\log p(\theta)$；请对一个候选代入两项，核对均匀先验时排序退化为极大似然。\par
+% KNOWLEDGE-PLAN: KN-V1-C05-FORMULA-006 L1
+\paragraph{读前自检：共轭先验。}围绕常用分布与统计推断中的共轭先验，先采用条件“若先验与后验属于同一分布族”，再把“若先验与后验属于同一分布族”中的已声明对象代回常用分布与统计推断中的共轭先验的定义；最后验证共轭性使更新只需改变有限维超参数。\par
+
+\SLTeachSection{先验、后验、共轭与最大后验}{sec:V1-C05-S06}
+\knowledgeanchor{PRE-PR-024}{先验、似然与后验}
+贝叶斯公式写成 $p(\theta\mid x)\propto p(x\mid\theta)p(\theta)$。先验表达观测数据之前的不确定性，后验同时吸收先验与样本信息。
+\knowledgeanchor{PRE-PR-025}{最大后验估计}
+$\hat\theta_{\mathrm{MAP}}\in\arg\max_\theta\{\log p(x\mid\theta)+\log p(\theta)\}$，可视为带先验正则项的优化。
+\knowledgeanchor{PRE-PR-030}{共轭先验}
+若先验与后验属于同一分布族，则称先验对该似然共轭。共轭性使更新只需改变有限维超参数。
+\knowledgeanchor{PRE-PR-032}{狄利克雷分布}
+令
+\[
+\Delta_{K-1}^{\circ}
+=\{\boldsymbol p\in(0,1)^K:\textstyle\sum_{k=1}^Kp_k=1\},
+\qquad \alpha_k>0,
+\qquad \alpha_0=\sum_{k=1}^K\alpha_k.
+\]
+相对于坐标$(p_1,\ldots,p_{K-1})$上的$(K-1)$维Lebesgue参考测度，狄利克雷分布在单纯形相对内部的密度为
+\[
+f(\boldsymbol p\mid\boldsymbol\alpha)
+=\frac{\Gamma(\alpha_0)}{\prod_{k=1}^K\Gamma(\alpha_k)}
+\prod_{k=1}^Kp_k^{\alpha_k-1},
+\qquad
+p_K=1-\sum_{k=1}^{K-1}p_k.
+\]
+它不是相对于$\mathbb R^K$中$K$维Lebesgue测度的密度。靠近面$p_k=0$时，$\alpha_k<1$、$=1$、$>1$分别对应密度沿该坐标趋于无穷、保持有限非零因子、趋于零；边界本身的参考测度为零，密度极限不等于边界上的点概率。该分布是多项分布参数的共轭先验，完整构造见\cref{chap:V5-C05}。
+
+\phantomsection\label{struct:V1-C05-CH10}
+\phantomsection\label{struct:V1-C05-CH21}
+\phantomsection\label{struct:V1-C05-CH22}
+\phantomsection\label{struct:V1-C05-CH23}
+\phantomsection\label{struct:V1-C05-CH24}
+\phantomsection\label{struct:V1-C05-CH25}
+\phantomsection\label{struct:V1-C05-CH26}
+\phantomsection\label{struct:V1-C05-CH27}
+\begin{geometrybox}
+\textbf{几何解释。}指数族的自然参数位于凸参数域，对数配分函数的Hessian半正定；因此自然参数到期望参数的映射由凸函数梯度给出。高斯等密度面则是马氏距离相同的椭球。
+\end{geometrybox}
+\phantomsection\label{struct:V1-C05-CH17}
+\begin{probabilitybox}
+边缘似然把每个参数值对数据的解释能力按先验加权，自动体现“拟合好但只在狭小参数区域有效”的模型会受到体积惩罚。隐变量模型则先描述完整数据，再对未观察部分求和。
+\end{probabilitybox}
+\phantomsection\label{struct:V1-C05-CH18}
+\begin{optimizationbox}
+\textbf{优化解释。}MLE优化数据项，MAP在其上加对数先验；隐变量似然的对数套求和造成变量耦合，后续EM算法通过下界与交替优化处理。共轭模型把函数优化简化为超参数加法更新。
+\end{optimizationbox}
+
+
+\phantomsection\label{struct:V1-C05-CH28}
+\phantomsection\label{struct:V1-C05-CH29}
+% KNOWLEDGE-PLAN: KN-V1-C05-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：先验、后验、共轭与最大后验。}先验、后验、共轭与最大后验中的“类别标签若以整数索引给出”决定可执行范围；请由$K$的总成本剥离一次迭代或一次样本因子，结果须满足预测复杂度：输出一个$K$类后验预测分布需$O(K)$。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}类别标签若以整数索引给出，则一次计数更新为单位成本；若以$K$维稠密向量给出，则必须读取全部$K$个分量。高斯界假设使用稠密完整协方差并采用Cholesky分解；稀疏、对角或低秩协方差应按相应数据结构重新计数。
+设$n$为样本数、$K$为类别数、$d$为连续变量维数。\textbf{训练复杂度：}\DirichletMultinomial{}更新在类别标签稀疏表示下累计计数为$O(n+K)$，若每条样本以$K$维稠密向量给出则为$O(nK)$；完整协方差高斯的Cholesky分解为$O(d^3)$。\textbf{预测复杂度：}输出一个$K$类后验预测分布需$O(K)$；已分解的高斯对一个样本计算密度通常需$O(d^2)$。\textbf{存储复杂度：}类别计数与参数为$O(K)$，完整协方差及其分解为$O(d^2)$。应复用分解而不是反复求逆。
+\end{complexitybox}
+
+\phantomsection\label{struct:V1-C05-CH30}
+\phantomsection\label{struct:V1-C05-CH31}
+\begin{applicabilitybox}
+\textbf{适用条件：}MLE适合抽样模型可信且样本量足以识别参数的情形；MAP适合存在可辩护先验或正则化需求的情形；共轭更新适合需要快速顺序推断的标准模型。\textbf{局限性：}高斯对重尾和离群点敏感，MAP忽略后验宽度，边缘似然依赖先验尺度，隐变量模型还可能存在不可辨识与多个局部最优。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V1-C05-CH32}
+\begin{warningbox}
+典型误用包括：把似然当作关于参数的归一化概率；忘记参数决定支持集；混用Gamma的速率与尺度参数化；把协方差矩阵的行列式写成负数或零却仍使用密度公式；只解一阶方程而不检查边界与最大性；把MAP点估计当作完整贝叶斯预测。
+\end{warningbox}
+
+\phantomsection\label{struct:V1-C05-CH33}
+\begin{comparisonbox}
+\textbf{概念对比：}概率固定参数后衡量可能数据，似然固定数据后比较参数；MLE只使用似然，MAP再加入先验众数偏好，后验均值则平均全部参数不确定性。边缘似然积分掉参数，剖面似然最大化掉干扰参数，两种消元方式不同。参数是总体机制的未知量，统计量是样本的已知函数。
+\end{comparisonbox}
+
+% KNOWLEDGE-PLAN: KN-V1-C05-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：狄利克雷--多项分布的顺序共轭更新：执行契约。}狄利克雷--多项分布的顺序共轭更新输入“类别数$K$、严格正Dirichlet先验$\boldsymbol\alpha$与有限类别观测流$y_{1:n}$”，条件“$K\ge1$，$n\in\mathbb N_0$，$\alpha_k>0$且有限，每个$y_i\in\{1,\ldots,K\}$”；请执行“每次有限正参数加一后原子提交$\widehat\alpha$”，以“恰好处理$n$个观测并归一化$K$项，或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V1-C05-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={狄利克雷--多项分布的顺序共轭更新：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={类别数$K$、严格正Dirichlet先验$\boldsymbol\alpha$与有限类别观测流$y_{1:n}$},
+  output={最后合法后验参数$\widehat{\boldsymbol\alpha}$、后验均值$\widehat{\boldsymbol p}$、实际观测/归一化计数、状态与最终诊断},
+  preconditions={$K\ge1$，$n\in\mathbb N_0$，$\alpha_k>0$且有限，每个$y_i\in\{1,\ldots,K\}$},
+  initialization={复制$\widehat\alpha\leftarrow\alpha$，置$i_{\rm done}=p_{\rm done}=0$并保持均值候选未提交},
+  loop={按输入次序逐观测形成单个分量加一候选，全部处理后扫描$K$个分量形成归一化均值},
+  update={每次有限正参数加一后原子提交$\widehat\alpha$；完整均值候选核验后整体提交},
+  domain={后验参数始终严格正且有限，归一化总量严格正，后验均值位于概率单纯形},
+  failure={维数、先验、预算或类别编码非法返回$\mathtt{invalid\_input}$；参数加法、求和或归一化非有限返回$\mathtt{numerical\_failure}$并保留最后合法后验参数},
+  stop={恰好处理$n$个观测并归一化$K$项，或首次失败时停止},
+  budget={至多$n$次计数提交与$K$次归一化，确定工作上限$n+K$},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$i_{\rm done}$计实际提交观测数，$p_{\rm done}$计实际形成均值分量数},
+  diagnostics={最终总浓度、概率和误差、零观测标志、失败观测/类别下标和阶段},
+  complexity={索引类别输入为$O(n+K)$时间、$O(K)$空间；稠密独热输入需$O(nK)$读取时间}
+}
+\begin{algorithm}[H]
+\caption{狄利克雷--多项分布的顺序共轭更新}\label{alg:V1-C05-dirichlet}
+\KwIn{先验参数向量$\boldsymbol\alpha=(\alpha_1,\ldots,\alpha_K)^{\mathsf T}\in\R_{>0}^K$；类别观测流 $y_1,\ldots,y_n$}
+\KwOut{最后合法$\widehat{\boldsymbol\alpha},\widehat{\boldsymbol p}$；$i_{\rm done},p_{\rm done}$；$\mathtt{status}$与诊断}
+若$K,n$、维数、先验有限正性或任一类别编码非法，返回空结果、计数$0$、$\mathtt{invalid\_input}$及位置诊断\;
+初始化$\widehat{\boldsymbol\alpha}\leftarrow\boldsymbol\alpha,i_{\rm done}\leftarrow0,p_{\rm done}\leftarrow0$\;
+\For{$i\leftarrow1$ \KwTo $n$}{
+  复制$\boldsymbol\alpha^+\leftarrow\widehat{\boldsymbol\alpha}$并令$\alpha^+_{y_i}\leftarrow\alpha^+_{y_i}+1$；若非有限则返回$\widehat{\boldsymbol\alpha}$、$\mathtt{numerical\_failure}$及$i$诊断\;
+  原子提交$\widehat{\boldsymbol\alpha}\leftarrow\boldsymbol\alpha^+$并增加$i_{\rm done}$\;
+}
+计算$\widehat\alpha_0\leftarrow\sum_k\widehat\alpha_k$；若$\widehat\alpha_0$非有限或不正，返回$\widehat{\boldsymbol\alpha}$、$\mathtt{numerical\_failure}$及总浓度诊断\;
+\For{$k\leftarrow1$ \KwTo $K$}{形成$p_k^+\leftarrow\widehat\alpha_k/\widehat\alpha_0$；若非有限则返回$\widehat{\boldsymbol\alpha}$、$\mathtt{numerical\_failure}$及$k$诊断；否则增加$p_{\rm done}$\;}
+若$p^+$非负性或和为$1$核验失败，返回最后合法$\widehat\alpha$、$\mathtt{numerical\_failure}$及概率和诊断\;
+原子提交$\widehat{\boldsymbol p}\leftarrow\boldsymbol p^+$；返回完整结果、$\mathtt{completed}$及总浓度/零观测最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{首次阅读只跟踪$\widehat{\boldsymbol\alpha}=\boldsymbol\alpha+\boldsymbol n$与按$\widehat\alpha_0$归一化；实现时再检查类别编码、有限性和状态}
+
+\textbf{终止与定义域说明。}顺序共轭更新对每个观测恰执行一次计数加法，$n$有限时必在有限步终止；它不是数值迭代，因此无需渐近收敛判据。参数非正或类别编码越界时，相应概率模型未定义，必须停止而不能继续归一化。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C05-FORMULA-007 L1
+\paragraph{读前自检：边缘似然。}常用分布与统计推断中的边缘似然要求先确认“边缘似然又称模型证据：$p(x)=\int p(x\mid\theta)p(\theta)\,\mathrm d\theta$”；请随后把观测对应因子代入$p(x)$并合并一次，用它平均参数不确定性，而不是把参数替换为一个点估计验收。\par
+% KNOWLEDGE-PLAN: KN-V1-C05-CONCEPT-012 L1
+\paragraph{读前自检：隐变量与不完全数据。}联合模型$p(x,z\mid\theta)$中$z$未观测；请对$z$求和得到$p(x\mid\theta)=\sum_zp(x,z\mid\theta)$，再核对观测对数似然为$\log\sum_zp(x,z\mid\theta)$而不是$\sum_z\log p(x,z\mid\theta)$。\par
+% KNOWLEDGE-PLAN: KN-V1-C05-CONCEPT-013 L1
+\paragraph{读前自检：指数族分布。}指数族分布依赖“并假设存在$\eta$的开邻域$N$及可积函数$g_1,g_2$”；请据此把$\frac{\partial^2A}{\partial\eta_i\partial\eta_j}$在其支持上求和或积分一次，并直接核对对期望的第$i$个分量关于$\eta_j$求导。\par
+
+\SLAdvancedSection{边缘似然、隐变量与指数族}{sec:V1-C05-S07}
+\knowledgeanchor{PRE-PR-028}{边缘似然}
+边缘似然又称模型证据：$p(x)=\int p(x\mid\theta)p(\theta)\,\mathrm d\theta$。它平均参数不确定性，而不是把参数替换为一个点估计。
+\knowledgeanchor{PRE-PR-029}{隐变量与不完全数据}
+若联合模型为 $p(x,z\mid\theta)$ 而 $z$ 未观测，则观测似然是 $p(x\mid\theta)=\sum_zp(x,z\mid\theta)$ 或相应积分。隐变量的边缘化常使对数似然出现“对数套求和”。
+\knowledgeanchor{PRE-PR-034}{指数族分布}
+指数族统一写作
+\[
+p(x\mid\eta)=h(x)\exp\{\eta^{\mathsf T}T(x)-A(\eta)\},
+\]
+其中 $T(x)$ 是充分统计量，$A(\eta)$ 是对数配分函数。
+
+% DERIVATION-ID: V1-C05-log-partition-derivatives
+% CORE-DERIVATION-PLAN: KN-V1-C05-DERIVATION-002
+\SLKnowledgeBridge{由对数配分函数导数得到充分统计量的均值、协方差与凸性。}{$A(\boldsymbol\eta)=\log Z(\boldsymbol\eta)$、充分统计量 $T(X)$ 与自然参数 $\boldsymbol\eta$。}{$\boldsymbol\eta\in\operatorname{int}\mathcal H$；支配条件允许两次交换求导与积分。}{先对 $Z(\boldsymbol\eta)=\int h(x)e^{\boldsymbol\eta^{\mathsf T}T(x)}\,dx$ 逐分量求导。}
+
+\begin{derivationgoalbox}
+推导$\nabla A(\eta)$与$\nabla^2A(\eta)$，解释自然参数、期望参数和凸性之间的关系。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+设自然参数空间$\mathcal H=\{\eta:Z(\eta)<\infty\}$，取$\eta\in\operatorname{int}\mathcal H$，$A(\eta)=\log Z(\eta)$。并假设存在$\eta$的开邻域$N$及可积函数$g_1,g_2$，使所有$\xi\in N$与几乎处处的$x$满足$|T_j(x)|h(x)e^{\xi^{\mathsf T}T(x)}\le g_1(x)$、$|T_i(x)T_j(x)|h(x)e^{\xi^{\mathsf T}T(x)}\le g_2(x)$。这些支配条件允许两次交换求导与积分；边界参数须另行处理。
+\end{derivationprepbox}
+\textbf{推导第1步：对归一化常数求导。}第$j$个分量满足
+\[
+\frac{\partial Z}{\partial\eta_j}
+=\int T_j(x)h(x)e^{\eta^{\mathsf T}T(x)}\,\mathrm dx.
+\]
+
+\textbf{推导第2步：识别期望。}由$A=\log Z$和$p_\eta(x)=h(x)e^{\eta^{\mathsf T}T(x)}/Z(\eta)$，
+\[
+\frac{\partial A}{\partial\eta_j}
+=\frac{1}{Z}\frac{\partial Z}{\partial\eta_j}
+=\mathbb E_\eta[T_j(X)],
+\qquad
+\nabla A(\eta)=\mathbb E_\eta[T(X)].
+\]
+
+\textbf{推导第3步：再求导并中心化。}对期望的第$i$个分量关于$\eta_j$求导，商法则给出
+\[
+\frac{\partial^2A}{\partial\eta_i\partial\eta_j}
+=\mathbb E_\eta[T_iT_j]-\mathbb E_\eta[T_i]\mathbb E_\eta[T_j].
+\]
+因此$\nabla^2A(\eta)=\operatorname{Cov}_\eta[T(X)]\succeq0$；协方差矩阵半正定说明$A$为凸函数。
+
+\phantomsection\label{struct:V1-C05-CH16}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V1-C05-CH34}
+\phantomsection\label{struct:V1-C05-CH35}
+本章共21道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S01-01}
+某分类器对单个独立样本预测正确的概率为0.8。测试10个样本时，恰好正确8个及至少正确1个的概率各是多少？
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S01-01}
+\begin{chapterexercisesolution}{ex:V1-C05-S01-01}
+令$S$为10个独立样本中的正确数，则$S\sim\operatorname{Binomial}(10,0.8)$，支持集为$\{0,\ldots,10\}$，所有概率均有限。于是
+\[
+\begin{aligned}
+P(S=8)
+&=\binom{10}{8}(0.8)^8(0.2)^2
+=0.301989888,\\
+P(S\ge1)
+&=1-P(S=0)
+=1-(0.2)^{10}
+=0.9999998976.
+\end{aligned}
+\]
+第二式使用支持集中的唯一补事件$S=0$，避免逐项累加。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S01-02}
+证明多项分布中 $E[N_k]=np_k$，并求 $\operatorname{Cov}(N_j,N_k)$（$j\ne k$）。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S01-02}
+\begin{chapterexercisesolution}{ex:V1-C05-S01-02}
+设$n\in\mathbb N$，类别概率$p_k\ge0$且$\sum_kp_k=1$。令$I_{ik}=\mathbf1\{Z_i=k\}$，则$I_{ik}$有界，所需期望均存在，且
+\[
+\begin{aligned}
+N_k&=\sum_{i=1}^n I_{ik},
+&\mathbb E[N_k]&=\sum_{i=1}^n\mathbb E[I_{ik}]=np_k,\\
+\operatorname{Cov}(I_{ij},I_{ik})
+&=\mathbb E[I_{ij}I_{ik}]-p_jp_k
+=-p_jp_k,\qquad j\ne k,\\
+\operatorname{Cov}(N_j,N_k)
+&=\sum_{i=1}^n\operatorname{Cov}(I_{ij},I_{ik})
+=-np_jp_k.
+\end{aligned}
+\]
+最后一步使用不同试验间独立，使跨试验协方差为零。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S01-03}
+若 $S\sim\operatorname{Binomial}(n,p)$，用指示变量证明 $E[S(S-1)]=n(n-1)p^2$。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S01-03}
+\begin{chapterexercisesolution}{ex:V1-C05-S01-03}
+令$X_i\overset{\mathrm{iid}}{\sim}\operatorname{Bernoulli}(p)$、$0\le p\le1$，且$S=\sum_{i=1}^nX_i$。因变量有界，二阶矩存在。利用$X_i^2=X_i$，
+\[
+\begin{aligned}
+S(S-1)
+&=\left(\sum_iX_i\right)^2-\sum_iX_i\\
+&=\sum_i(X_i^2-X_i)+\sum_{i\ne j}X_iX_j
+=\sum_{i\ne j}X_iX_j,\\
+\mathbb E[S(S-1)]
+&=\sum_{i\ne j}\mathbb E[X_i]\mathbb E[X_j]
+=n(n-1)p^2.
+\end{aligned}
+\]
+因此二项变量的二阶阶乘矩为$n(n-1)p^2$，边界$p=0,1$也包含在内。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S02-01}
+若 $X\sim\mathcal N(2,9)$，求 $Y=3X-1$ 的分布，并把 $P(X\le5)$ 写成标准高斯分布函数 $\Phi$。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S02-01}
+\begin{chapterexercisesolution}{ex:V1-C05-S02-01}
+$X\sim\mathcal N(2,9)$的支持集为$\mathbb R$且二阶矩有限。对$Y=3X-1$，
+\[
+\begin{aligned}
+\mathbb E[Y]&=3\mathbb E[X]-1=3\cdot2-1=5,\\
+\operatorname{Var}(Y)&=3^2\operatorname{Var}(X)=9\cdot9=81,\\
+Y&\sim\mathcal N(5,81),\\
+P(X\le5)
+&=P\left(\frac{X-2}{3}\le\frac{5-2}{3}\right)=\Phi(1).
+\end{aligned}
+\]
+所以$Y\sim\mathcal N(5,81)$，且$P(X\le5)=\Phi(1)$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S02-02}
+设 $X\sim\mathcal N(\mu,\Sigma)$，求标量 $a^{\mathsf T}X+b$ 的均值与方差。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S02-02}
+\begin{chapterexercisesolution}{ex:V1-C05-S02-02}
+声明$X\in\mathbb R^d$、$\mu,a\in\mathbb R^d$、$\Sigma\in\mathbb R^{d\times d}$对称半正定、$b\in\mathbb R$。高斯二阶矩存在，故
+\[
+\begin{aligned}
+\mathbb E[a^{\mathsf T}X+b]&=a^{\mathsf T}\mu+b,\\
+\operatorname{Var}(a^{\mathsf T}X+b)
+&=\mathbb E\!\left[a^{\mathsf T}(X-\mu)(X-\mu)^{\mathsf T}a\right]\\
+&=a^{\mathsf T}\Sigma a\ge0,\\
+a^{\mathsf T}X+b
+&\sim\mathcal N(a^{\mathsf T}\mu+b,\ a^{\mathsf T}\Sigma a).
+\end{aligned}
+\]
+若$a^{\mathsf T}\Sigma a=0$，最后一项表示退化在其均值处的点质量。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S02-03}
+二维高斯协方差为 $\Sigma=\begin{psmallmatrix}4&2\\2&9\end{psmallmatrix}$。求两分量相关系数，并检验矩阵正定。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S02-03}
+\begin{chapterexercisesolution}{ex:V1-C05-S02-03}
+协方差矩阵$\Sigma\in\mathbb R^{2\times2}$对称，边缘方差$4,9$均为正，因此相关系数有定义。计算
+\[
+\begin{aligned}
+\sigma_1&=\sqrt4=2,\qquad \sigma_2=\sqrt9=3,\\
+\rho_{12}&=\frac{\Sigma_{12}}{\sigma_1\sigma_2}
+=\frac2{2\cdot3}=\frac13,\\
+\Delta_1&=4>0,\qquad
+\Delta_2=\det(\Sigma)=4\cdot9-2^2=32>0.
+\end{aligned}
+\]
+由Sylvester判据$\Sigma\succ0$，故该协方差合法且非退化。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S03-01}
+用Gamma递推计算 $\Gamma(5)$，并说明它与 $5!$ 的区别。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S03-01}
+\begin{chapterexercisesolution}{ex:V1-C05-S03-01}
+Gamma函数在$a>0$时由正半轴上的有限积分定义，并满足$\Gamma(a+1)=a\Gamma(a)$、$\Gamma(1)=1$。因此
+\[
+\begin{aligned}
+\Gamma(5)
+&=4\Gamma(4)=4\cdot3\Gamma(3)
+=4\cdot3\cdot2\Gamma(2)\\
+&=4\cdot3\cdot2\cdot1\Gamma(1)=4!=24,\\
+5!&=5\cdot4!=120.
+\end{aligned}
+\]
+整数$n\ge1$时$\Gamma(n)=(n-1)!$，故同一自变量下不能直接写成$n!$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S03-02}
+若 $X\sim\operatorname{Gamma}(a,b)$ 采用形状--速率参数化，求 $Y=cX$（$c>0$）的Gamma参数。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S03-02}
+\begin{chapterexercisesolution}{ex:V1-C05-S03-02}
+采用形状—速率参数化，要求$a,b,c>0$；$X$与$Y=cX$的支持集均为$(0,\infty)$。对$y>0$作变量代换$x=y/c$，
+\[
+\begin{aligned}
+f_Y(y)
+&=f_X(y/c)\left|\frac{\mathrm d(y/c)}{\mathrm dy}\right|\\
+&=\frac{b^a}{\Gamma(a)}\left(\frac yc\right)^{a-1}
+e^{-by/c}\frac1c\\
+&=\frac{(b/c)^a}{\Gamma(a)}y^{a-1}e^{-(b/c)y}.
+\end{aligned}
+\]
+故$Y\sim\operatorname{Gamma}(a,b/c)$，并有$\mathbb E[Y]=c(a/b)=a/(b/c)$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S03-03}
+设 $p=(p_1,p_2,p_3)$ 服从参数 $(2,3,5)$ 的狄利克雷分布，求各分量期望，并解释它们为何相加为1。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S03-03}
+\begin{chapterexercisesolution}{ex:V1-C05-S03-03}
+参数$(2,3,5)$均为正，支持集是概率单纯形
+$\Delta_2=\{p_k\ge0:\sum_{k=1}^3p_k=1\}$，分量有界因而期望有限。令$\alpha_0=2+3+5=10$，则
+\[
+\begin{aligned}
+\mathbb E[p_1]&=\frac2{10}=0.2,\qquad
+\mathbb E[p_2]=\frac3{10}=0.3,\\
+\mathbb E[p_3]&=\frac5{10}=0.5,\\
+\sum_{k=1}^3\mathbb E[p_k]
+&=\mathbb E\!\left[\sum_{k=1}^3p_k\right]
+=\mathbb E[1]=1.
+\end{aligned}
+\]
+因此三个分量的期望为$(0.2,0.3,0.5)$，并保持单纯形上的和为$1$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S04-01}
+判断 $\bar X$、$\sum_i(X_i-\mu)^2$、$\max_iX_i$ 中哪些在未知 $\mu$ 时是统计量。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S04-01}
+\begin{chapterexercisesolution}{ex:V1-C05-S04-01}
+统计量必须是仅依赖样本$X_{1:n}$、不含未知参数的可测函数。按该判据，
+\[
+\begin{aligned}
+T_1(X_{1:n})&=\bar X=\frac1n\sum_{i=1}^nX_i
+&&\text{是统计量},\\
+T_2(X_{1:n};\mu)&=\sum_{i=1}^n(X_i-\mu)^2
+&&\text{在未知$\mu$时不是统计量},\\
+T_3(X_{1:n})&=\max_{1\le i\le n}X_i
+&&\text{是统计量}.
+\end{aligned}
+\]
+若将$\mu$换为样本函数$\bar X$，则$\sum_i(X_i-\bar X)^2$重新成为统计量。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S04-02}
+设 $X_1,\ldots,X_n$ 独立同分布，均值为$\mu$、方差为$\sigma^2$。证明 $\bar X$ 无偏并给出标准误。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S04-02}
+\begin{chapterexercisesolution}{ex:V1-C05-S04-02}
+设$n\ge1$，$X_i$独立同分布且$\mathbb E[X_i]=\mu$、$\operatorname{Var}(X_i)=\sigma^2<\infty$，故样本均值的一、二阶矩存在。于是
+\[
+\begin{aligned}
+\mathbb E[\bar X]
+&=\frac1n\sum_{i=1}^n\mathbb E[X_i]
+=\frac{n\mu}{n}=\mu,\\
+\operatorname{Var}(\bar X)
+&=\frac1{n^2}\sum_{i=1}^n\operatorname{Var}(X_i)
+=\frac{\sigma^2}{n},\\
+\operatorname{SE}(\bar X)
+&=\sqrt{\operatorname{Var}(\bar X)}
+=\frac{\sigma}{\sqrt n}.
+\end{aligned}
+\]
+第一式证明无偏，独立性只在第二式消去交叉协方差时使用。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S04-03}
+解释为什么观测到数据后样本值是固定的，但频率学派仍把估计量称为随机变量。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S04-03}
+\begin{chapterexercisesolution}{ex:V1-C05-S04-03}
+对象分为抽样前的随机样本$X_{1:n}$与观测后的实现$x_{1:n}$。同一估计规则$T$在两层分别写成
+\[
+\begin{aligned}
+\widehat\theta&=T(X_{1:n})
+&&\text{是随机变量},\\
+\widehat\theta_{\mathrm{obs}}&=T(x_{1:n})
+&&\text{是固定数值},\\
+\operatorname{Bias}_\theta(T)
+&=\mathbb E_\theta[T(X_{1:n})]-\theta,\qquad
+\operatorname{Var}_\theta(T)=\mathbb E_\theta[(T-\mathbb E_\theta T)^2].
+\end{aligned}
+\]
+只要相应期望存在，偏差和方差描述重复抽样分布，而不表示已经记录的数据仍在变化。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S05-01}
+独立高斯样本方差 $\sigma^2$ 已知，推导均值 $\mu$ 的极大似然估计。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S05-01}
+\begin{chapterexercisesolution}{ex:V1-C05-S05-01}
+设$n\ge1$、$x_i\in\mathbb R$、已知$\sigma^2>0$，参数域为$\mu\in\mathbb R$；高斯密度在全支持上严格为正。忽略与$\mu$无关的常数，
+\[
+\begin{aligned}
+\ell(\mu)
+&=-\frac1{2\sigma^2}\sum_{i=1}^n(x_i-\mu)^2+C,\\
+\ell'(\mu)
+&=\frac1{\sigma^2}\sum_{i=1}^n(x_i-\mu)=0
+\Longleftrightarrow \widehat\mu=\bar x,\\
+\ell''(\mu)&=-\frac n{\sigma^2}<0.
+\end{aligned}
+\]
+对数似然严格凹且参数域无边界，故$\widehat\mu=\bar x$是唯一全局MLE。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S05-02}
+说明对数似然为何比原似然更适合数值计算，并指出它何时不能定义。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S05-02}
+\begin{chapterexercisesolution}{ex:V1-C05-S05-02}
+对独立样本定义$L(\theta)=\prod_{i=1}^np_\theta(x_i)$及正似然域$\Theta_+=\{\theta:L(\theta)>0\}$。在$\Theta_+$上，
+\[
+\begin{aligned}
+\ell(\theta)
+&=\log L(\theta)
+=\sum_{i=1}^n\log p_\theta(x_i),\\
+\arg\max_{\theta\in\Theta_+}L(\theta)
+&=\arg\max_{\theta\in\Theta_+}\ell(\theta),\\
+L(\theta)=0
+&\Longrightarrow \log L(\theta)\text{在普通实数中无定义},
+\quad \ell(\theta):=-\infty\text{按扩展实数约定}.
+\end{aligned}
+\]
+求和避免大量小数连乘下溢；零概率边界表示观测在该模型下不可能，不能用数值常数随意改写。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S05-03}
+均匀分布 $X_i\sim\operatorname{Unif}(0,\theta)$，$\theta>0$。求MLE并解释为何不能只令普通导数为零。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S05-03}
+\begin{chapterexercisesolution}{ex:V1-C05-S05-03}
+参数域为$\Theta=(0,\infty)$，单样本支持为$[0,\theta]$。令$x_{(1)}=\min_i x_i$、$x_{(n)}=\max_i x_i$，完整似然为
+\[
+\begin{aligned}
+L(\theta;x_{1:n})
+&=\theta^{-n}\mathbf1\{x_{(1)}\ge0\}
+\mathbf1\{\theta\ge x_{(n)}\},\qquad \theta>0.
+\end{aligned}
+\]
+若样本与模型相容且$x_{(n)}>0$，可行参数集为$[x_{(n)},\infty)$，并且
+\[
+\begin{aligned}
+\frac{\mathrm d}{\mathrm d\theta}\theta^{-n}
+&=-n\theta^{-n-1}<0,\qquad \theta\ge x_{(n)},\\
+L(\theta)\text{严格递减}
+&\Longrightarrow \widehat\theta=x_{(n)}.
+\end{aligned}
+\]
+若$x_{(1)}<0$，则$L\equiv0$，原始似然的$\arg\max$退化为整个$\Theta$而对数似然处处为$-\infty$；若所有$x_i=0$，则$L(\theta)=\theta^{-n}\to\infty$当$\theta\downarrow0$，只有上确界而无MLE。参数改变支持集，因此内部驻点法不适用。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S06-01}
+伯努利参数先验为 $\operatorname{Beta}(2,3)$，观察8次成功、2次失败。求后验参数与后验均值。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S06-01}
+\begin{chapterexercisesolution}{ex:V1-C05-S06-01}
+参数$p$的支持为$(0,1)$，先验$\operatorname{Beta}(2,3)$正规且10次观测含8次成功、2次失败。后验核为
+\[
+\begin{aligned}
+\pi(p\mid x)
+&\propto p^{2-1}(1-p)^{3-1}\,p^8(1-p)^2\\
+&=p^{10-1}(1-p)^{5-1},\\
+p\mid x&\sim\operatorname{Beta}(10,5),\\
+\mathbb E[p\mid x]&=\frac{10}{10+5}=\frac23.
+\end{aligned}
+\]
+后验形状参数均为正，故归一化常数与均值都有限。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S06-02}
+对上题求MAP，并说明形状参数不大于1时为何要检查边界。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S06-02}
+\begin{chapterexercisesolution}{ex:V1-C05-S06-02}
+后验为$\operatorname{Beta}(a,b)$且本题$(a,b)=(10,5)$，两者均大于1，故密度在$(0,1)$有限且边界趋零。内部对数密度满足
+\[
+\begin{aligned}
+\ell(p)&=(a-1)\log p+(b-1)\log(1-p)+C,\\
+\ell'(p)&=\frac{a-1}{p}-\frac{b-1}{1-p}=0,\\
+p_{\mathrm{MAP}}
+&=\frac{a-1}{a+b-2}
+=\frac9{13},\\
+\ell''(p)&=-\frac{a-1}{p^2}-\frac{b-1}{(1-p)^2}<0.
+\end{aligned}
+\]
+若$a\le1$或$b\le1$，端点可能取到最大、出现平台或使密度发散，内部公式不再给出全局MAP，必须按支持边界另行比较。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S06-03}
+三类先验为Dirichlet$(1,1,1)$，观测计数为 $(4,2,0)$。求后验与后验预测概率。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S06-03}
+\begin{chapterexercisesolution}{ex:V1-C05-S06-03}
+类别概率$\boldsymbol p$位于三类单纯形，先验参数均为正，计数为$\boldsymbol n=(4,2,0)$且样本数$n=6$。共轭更新为
+\[
+\begin{aligned}
+\boldsymbol\alpha'&=(1,1,1)+(4,2,0)=(5,3,1),\\
+\boldsymbol p\mid x&\sim\operatorname{Dirichlet}(5,3,1),\\
+P(X_{\mathrm{new}}=k\mid x)
+&=\mathbb E[p_k\mid x]
+=\frac{\alpha_k'}{\sum_j\alpha_j'},\\
+\boldsymbol P_{\mathrm{pred}}
+&=\left(\frac59,\frac39,\frac19\right).
+\end{aligned}
+\]
+三个预测概率非负且和为1；第三类因正先验伪计数而未被赋零概率。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S07-01}
+模型有两个参数值，先验各为 $1/2$，数据似然分别为0.1和0.4。求边缘似然与两个参数的后验概率。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S07-01}
+\begin{chapterexercisesolution}{ex:V1-C05-S07-01}
+参数支持集为$\{\theta_1,\theta_2\}$，先验质量各为$1/2$；两个似然有限且证据概率将严格为正。由全概率与Bayes公式，
+\[
+\begin{aligned}
+p(x)&=\sum_{j=1}^2p(x\mid\theta_j)\pi_j
+=0.5(0.1)+0.5(0.4)=0.25,\\
+P(\theta_1\mid x)&=\frac{0.05}{0.25}=0.2,\\
+P(\theta_2\mid x)&=\frac{0.20}{0.25}=0.8,\\
+P(\theta_1\mid x)+P(\theta_2\mid x)&=1.
+\end{aligned}
+\]
+所以后验分布为$(0.2,0.8)$，归一化检查通过。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S07-02}
+混合模型 $p(x)=\sum_{k=1}^K\pi_kp(x\mid z=k)$ 中，写出给定$x$后隐类别的后验责任度。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S07-02}
+\begin{chapterexercisesolution}{ex:V1-C05-S07-02}
+类别支持为$\{1,\ldots,K\}$，权重$\pi_k\ge0$且$\sum_k\pi_k=1$。对给定$x$定义有限证据
+$Z(x)=\sum_{j=1}^K\pi_jp(x\mid z=j)$；仅当$0<Z(x)<\infty$时责任度有定义：
+\[
+\begin{aligned}
+\gamma_k(x)
+&=P(z=k\mid x)
+=\frac{\pi_kp(x\mid z=k)}{Z(x)},\\
+\gamma_k(x)&\ge0,\qquad
+\sum_{k=1}^K\gamma_k(x)
+=\frac{Z(x)}{Z(x)}=1,\\
+\gamma_k(x)&=\mathbb E[\mathbf1\{z=k\}\mid x].
+\end{aligned}
+\]
+若$Z(x)=0$，观测落在混合分布支持之外，后验责任度未定义。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C05-S07-03}
+证明指数族中 $\nabla^2A(\eta)=\operatorname{Cov}_\eta[T(X)]$，并说明 $A$ 的凸性。
+\end{exercise}
+\phantomsection\label{sol:V1-C05-S07-03}
+\begin{chapterexercisesolution}{ex:V1-C05-S07-03}
+设自然参数$\eta$位于开凸集$\mathcal H$，配分积分$Z(\eta)=\int h(x)e^{\eta^{\mathsf T}T(x)}\,\mathrm dx$有限且正，并存在可积支配函数允许对$\eta$作两次积分号下求导；同时$\mathbb E_\eta\|T(X)\|_2^2<\infty$。令$A(\eta)=\log Z(\eta)$，则
+\[
+\begin{aligned}
+\nabla A(\eta)
+&=\frac{\int T(x)h(x)e^{\eta^{\mathsf T}T(x)}\,\mathrm dx}{Z(\eta)}
+=\mathbb E_\eta[T(X)],\\
+\nabla^2A(\eta)
+&=\mathbb E_\eta[T(X)T(X)^{\mathsf T}]
+-\mathbb E_\eta[T(X)]\mathbb E_\eta[T(X)]^{\mathsf T}\\
+&=\operatorname{Cov}_\eta[T(X)].
+\end{aligned}
+\]
+对任意$v$，$v^{\mathsf T}\nabla^2A(\eta)v=\operatorname{Var}_\eta(v^{\mathsf T}T(X))\ge0$，故$A$在$\mathcal H$上凸。若缺少换导与二阶矩条件，上述形式推导不能直接作为证明。
+\end{chapterexercisesolution}
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V1-C05-CONCEPT-014 L1
+\paragraph{读前自检：本章结论与下一步。}常用分布与统计推断章末由“常用分布、参数、统计量与充分统计量”落到“先核对支持边界与换导条件，再求驻点并比较边界”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V1-C05-CH36}
+\SLChapterFiveSummary{常用分布、参数、统计量与充分统计量}{似然/MAP优化、共轭更新及配分函数求导}{先核对支持边界与换导条件，再求驻点并比较边界}{参数估计、隐变量建模和概率预测}{进入\cref{chap:V1-C06}，用KL与交叉熵比较分布}
+
+\phantomsection\label{struct:V1-C05-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否在写密度前先声明支持集与参数化，并检查归一化？
+  \item 能否从独立抽样模型逐步写出似然、对数似然、一阶条件及边界检查？
+  \item 能否说明共轭先验的超参数如何随充分统计量更新？
+  \item 能否区分边缘似然、后验、MAP与后验预测各自积分或优化的对象？未通过时依次回看\cref{sec:V1-C05-S01,sec:V1-C05-S02,sec:V1-C05-S03,sec:V1-C05-S05,sec:V1-C05-S06,sec:V1-C05-S07}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

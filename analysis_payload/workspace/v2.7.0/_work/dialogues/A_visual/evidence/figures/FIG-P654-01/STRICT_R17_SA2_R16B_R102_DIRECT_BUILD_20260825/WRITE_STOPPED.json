@@ -1,0 +1,56 @@
+{
+  "round": "STRICT_R17_SA2_R16B_R102_DIRECT_BUILD_20260825",
+  "status": "WRITE_STOPPED",
+  "payload_file_count": 2051,
+  "manifest_control_file_count": 2,
+  "write_stopped_control_file_count": 1,
+  "control_file_count": 3,
+  "ordinary_file_total": 2054,
+  "payload_extensions": {
+    ".aux": 1,
+    ".csv": 13,
+    ".fls": 1,
+    ".gz": 24,
+    ".idx": 2,
+    ".json": 296,
+    ".log": 3,
+    ".lua": 21,
+    ".luc": 44,
+    ".md": 1,
+    ".pdf": 1,
+    ".png": 1639,
+    ".ps1": 1,
+    ".py": 4
+  },
+  "control_extensions": {
+    ".csv": 1,
+    ".json": 2
+  },
+  "ordinary_extensions": {
+    ".aux": 1,
+    ".csv": 14,
+    ".fls": 1,
+    ".gz": 24,
+    ".idx": 2,
+    ".json": 298,
+    ".log": 3,
+    ".lua": 21,
+    ".luc": 44,
+    ".md": 1,
+    ".pdf": 1,
+    ".png": 1639,
+    ".ps1": 1,
+    ".py": 4
+  },
+  "manifest_exclusions": [
+    "MANIFEST.csv",
+    "MANIFEST.json",
+    "WRITE_STOPPED.json"
+  ],
+  "manifest_csv_bytes": 341809,
+  "manifest_csv_sha256": "93E0A4165E6608E75DAA6230E949FE722C52F50C23053C071B5278FAABA288F3",
+  "manifest_json_bytes": 596074,
+  "manifest_json_sha256": "4FC7E4754C4F50C6C9286720DEC77C9B2F8460D11EE2B7F848D8646155CCD021",
+  "final_verdict": "LOCAL_SA2_FAIL_NEEDS_SOURCE_R3",
+  "sealed_at_utc": "2026-08-25T06:56:08.588139Z"
+}

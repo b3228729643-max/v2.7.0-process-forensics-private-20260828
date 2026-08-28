@@ -1,0 +1,61 @@
+{
+  "uid": "FIG-P582-01",
+  "round": "STRICT_R2_SA2_FONT_PATCH_R108_DIRECT_BUILD_20260826",
+  "validated_at_utc": "2026-08-26T13:29:47.656129+00:00",
+  "N": 95,
+  "C": 4465,
+  "critical_relations": 33,
+  "manual_object_rows": 95,
+  "manual_relation_rows": 33,
+  "manual_view_semantic_rows": 15,
+  "hard_failures": 0,
+  "checks": {
+    "object_count_95": true,
+    "glyph_count_78": true,
+    "graphic_count_17": true,
+    "object_ids_unique": true,
+    "manual_object_count_95": true,
+    "manual_object_ids_exact": true,
+    "manual_object_ids_unique": true,
+    "manual_object_notes_nonblank": true,
+    "manual_object_decisions_all_pass": true,
+    "pair_count_4465": true,
+    "pair_count_formula": true,
+    "pair_ids_unique": true,
+    "critical_pair_count_33": true,
+    "manual_relation_count_33": true,
+    "manual_relation_ids_exact": true,
+    "manual_relation_ids_unique": true,
+    "manual_relation_notes_nonblank": true,
+    "manual_relation_hard_failure_zero": true,
+    "manual_view_rows_15": true,
+    "manual_view_notes_nonblank": true,
+    "manual_view_decisions_all_pass": true,
+    "machine_empty_masks_zero": true,
+    "machine_page_edge_clip_zero": true,
+    "machine_manual_fields_generated_zero": true,
+    "source_semantic_hard_pass": true,
+    "manual_time_integrity_all_pass": true,
+    "png_parse_failures_zero": true
+  },
+  "time_integrity": {
+    "MANUAL_OBJECT_LEDGER.tsv": {
+      "max_observed_at_utc": "2026-08-26T13:25:49+00:00",
+      "file_mtime_utc": "2026-08-26T13:27:44.693310+00:00",
+      "mtime_not_before_observation": true
+    },
+    "MANUAL_RELATION_LEDGER.tsv": {
+      "max_observed_at_utc": "2026-08-26T13:25:49+00:00",
+      "file_mtime_utc": "2026-08-26T13:28:25.966974+00:00",
+      "mtime_not_before_observation": true
+    },
+    "MANUAL_VIEW_SEMANTIC_LEDGER.tsv": {
+      "max_observed_at_utc": "2026-08-26T13:25:49+00:00",
+      "file_mtime_utc": "2026-08-26T13:28:47.854577+00:00",
+      "mtime_not_before_observation": true
+    }
+  },
+  "png_parse_failures": [],
+  "machine_result_sha256": "60D6996A471A2CDED2D787DB522843EB3AFEE98BF13597863AB2AEDF89626718",
+  "status": "LOCAL_SA2_PASS_READY_TO_SEAL"
+}

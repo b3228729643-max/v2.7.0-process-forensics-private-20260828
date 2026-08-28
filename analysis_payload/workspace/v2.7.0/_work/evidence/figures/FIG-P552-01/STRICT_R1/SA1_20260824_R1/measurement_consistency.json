@@ -1,0 +1,33 @@
+{
+  "TASK_ID": "FIG-P552-01",
+  "CANONICAL_MEASUREMENT_GRID": "frozen final PDF full physical page directly rasterized at 300dpi; figure/standalone views are pixel slices from that grid; no resize",
+  "NONCANONICAL_DIRECT_CLIP_STATUS": "SUPERSEDED — direct clip origin may alter antialias phase; not used for any final metric or report",
+  "MASK_RULE": "unexpanded raw text foreground and independently reconstructed PDF vector masks; no dilation; each pair occurs once",
+  "UNIQUE_PAIR_COUNTING_RULE": "sum OVERLAP_PIXEL_COUNT once for each unique unordered text-text or unique text-graphic PAIR_ID; no duplicate row or paint-order count",
+  "OVERLAP_PIXEL_COUNT_UNIQUE_SUM": 221,
+  "OVERLAP_FAIL_PAIR_COUNT_UNIQUE": 4,
+  "UNIQUE_FAILURE_PAIRS": [
+    {
+      "PAIR_ID": "TOP_INTERVAL__TOP_INTERVAL_ARROW",
+      "OVERLAP_PIXEL_COUNT": 22,
+      "RAW_CLEARANCE_PX": 0.0
+    },
+    {
+      "PAIR_ID": "BOTTOM_NOTE__BOTTOM_NODE_BORDER_1",
+      "OVERLAP_PIXEL_COUNT": 55,
+      "RAW_CLEARANCE_PX": 0.0
+    },
+    {
+      "PAIR_ID": "BOTTOM_INTERVAL__BOTTOM_INTERVAL_ARROW",
+      "OVERLAP_PIXEL_COUNT": 33,
+      "RAW_CLEARANCE_PX": 0.0
+    },
+    {
+      "PAIR_ID": "BOTTOM_NOTE__BOTTOM_INTERVAL_ARROW",
+      "OVERLAP_PIXEL_COUNT": 111,
+      "RAW_CLEARANCE_PX": 0.0
+    }
+  ],
+  "ARITHMETIC": "22 + 55 + 33 + 111 = 221",
+  "CLIP_PIXEL_COUNT": 0
+}

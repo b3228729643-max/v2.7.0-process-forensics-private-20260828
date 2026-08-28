@@ -1,0 +1,7 @@
+CHECK_ID,ELEMENT_ID,REVIEWER_ID,SOURCE_READING,R115_READING,DECISION,REVIEWER_NOTE
+TXT01,T01,A-R115-P109-SA3-FRESH-ISOLATED-20260828,x,x,PASS,"Endpoint variable agrees exactly; mathematical italic extraction is the expected PDF encoding of TeX math x."
+TXT02,T02,A-R115-P109-SA3-FRESH-ISOLATED-20260828,y,y,PASS,"Endpoint variable agrees exactly; mathematical italic extraction is the expected PDF encoding of TeX math y."
+TXT03,T03,A-R115-P109-SA3-FRESH-ISOLATED-20260828,"z=lambda x+(1-lambda)y","z=lambda x+(1-lambda)y",PASS,"Operators, parentheses, coefficient order, and variables agree exactly."
+TXT04,T04,A-R115-P109-SA3-FRESH-ISOLATED-20260828,"凸可行域 C","凸可行域 C",PASS,"Chinese label and set symbol agree exactly."
+TXT05,T05,A-R115-P109-SA3-FRESH-ISOLATED-20260828,"x,y in C; lambda in [0,1] implies lambda x+(1-lambda)y in C","x,y in C; lambda in [0,1] implies lambda x+(1-lambda)y in C",PASS,"Membership, interval, implication, and convex-combination expression agree exactly."
+TXT06,T06,A-R115-P109-SA3-FRESH-ISOLATED-20260828,"凸集中任意两点的线段仍位于可行域内","图7.1 凸集中任意两点的线段仍位于可行域内",PASS,"The auto-generated figure number is correct and the caption body agrees exactly with the current source."

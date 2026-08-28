@@ -1,0 +1,27 @@
+﻿element_id,panel_id,role,description,source_lines,declared_pt,graphics_scale,effective_pt,source_font_metadata
+S001,LEFT,panel_title,1. 经验 ACF：预设窗口,17,10.4,1.0,10.4,explicit fontsize; caption compiled normalsize
+S002,LEFT,axis_label,经验 ACF rhohat_k,18,9.8,1.0,9.8,explicit fontsize; caption compiled normalsize
+S003,LEFT,tick_label,y tick 1,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S004,LEFT,tick_label,y tick 0.75,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S005,LEFT,tick_label,y tick 0.5,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S006,LEFT,tick_label,y tick 0.25,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S007,LEFT,tick_label,y tick 0,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S008,LEFT,tick_label,x tick 0,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S009,LEFT,tick_label,x tick 1,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S010,LEFT,tick_label,x tick 2,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S011,LEFT,tick_label,x tick 3,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S012,LEFT,tick_label,x tick 4,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S013,LEFT,tick_label,x tick 5,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S014,LEFT,tick_label,x tick 6,19,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S015,LEFT,axis_label,滞后 k,18,9.8,1.0,9.8,explicit fontsize; caption compiled normalsize
+S016,LEFT,annotation,截断 K=6,25-26,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S017,LEFT,continuation_mark,ellipsis after the preset window,27-28,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S018,RIGHT,panel_title,2. 有限样本加权 ESS,32,10.4,1.0,10.4,explicit fontsize; caption compiled normalsize
+S019,RIGHT,formula,"tauhat_K,n weighted-window formula",33,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S020,RIGHT,formula,"Nhat_eff = n/tauhat_K,n",34,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S021,RIGHT,formula,"tauhat_K,n > 0",34,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S022,RIGHT,explanatory_text,preset K=6<n; include only 1<=k<=K,35,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S023,RIGHT,explanatory_text,later lags not shown or included,36,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S024,RIGHT,explanatory_text,"finite-trajectory diagnostic, not convergence proof",37,9.6,1.0,9.6,explicit fontsize; caption compiled normalsize
+S025,CAPTION,caption_label,图 32.9,40-41,10.90909,1.0,10.90909,explicit fontsize; caption compiled normalsize
+S026,CAPTION,caption_text,fixed-window positive autocorrelation increases variance weight and reduces ESS,40-41,10.90909,1.0,10.90909,explicit fontsize; caption compiled normalsize

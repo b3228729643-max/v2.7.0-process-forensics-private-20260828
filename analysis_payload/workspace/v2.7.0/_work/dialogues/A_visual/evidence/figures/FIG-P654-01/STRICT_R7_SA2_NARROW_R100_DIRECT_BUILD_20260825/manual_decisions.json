@@ -1,0 +1,73 @@
+{
+  "handoff_id": "A-R7-P654-SA2-NARROW-DIRECT-20260825",
+  "model_route": "SA2=gpt-5.6-sol/max",
+  "reviewer": "P654 narrow source writer SA2",
+  "review_date": "2026-08-25",
+  "glyph_contact_sheets_opened": [
+    "glyph_sheet_001_8x_nearest.png",
+    "glyph_sheet_002_8x_nearest.png",
+    "glyph_sheet_003_8x_nearest.png",
+    "glyph_sheet_004_8x_nearest.png",
+    "glyph_sheet_005_8x_nearest.png",
+    "glyph_sheet_006_8x_nearest.png",
+    "glyph_sheet_007_8x_nearest.png",
+    "glyph_sheet_008_8x_nearest.png",
+    "glyph_sheet_009_8x_nearest.png",
+    "glyph_sheet_010_8x_nearest.png",
+    "glyph_sheet_011_8x_nearest.png",
+    "glyph_sheet_012_8x_nearest.png",
+    "glyph_sheet_013_8x_nearest.png",
+    "glyph_sheet_014_8x_nearest.png",
+    "glyph_sheet_015_8x_nearest.png",
+    "glyph_sheet_016_8x_nearest.png"
+  ],
+  "glyph_scope_decision": {
+    "scope": "all 95 rows represented on the listed current R7 native1x/nearest8x sheets",
+    "original_match": true,
+    "overlay_complete": true,
+    "mask_only_pure": true,
+    "default_decision": "PASS",
+    "target_confirmation": {
+      "element_id": "FRM_TRIAL_005",
+      "decision": "PASS",
+      "note": "current R7 mask is visibly complete and pure; native H_INK=22px meets the 22px floor; pre=final=297px and ownership loss is zero"
+    }
+  },
+  "graphic_scope_decision": {
+    "scope": "all 21 foreground drawing/path rows and their individual current native1x/nearest8x triples",
+    "original_match": true,
+    "overlay_complete": true,
+    "mask_only_pure": true,
+    "default_decision": "PASS"
+  },
+  "critical_pair_scope_decision": {
+    "scope": "all 50 current rows in critical_pair_manual_review.csv",
+    "opened_original_1x": true,
+    "opened_raw_a_b": true,
+    "opened_intersection": true,
+    "opened_8x_nearest": true,
+    "design_composition_decision": "PASS_DESIGN_COMPOSITION",
+    "clear_decision": "PASS_CLEARANCE",
+    "note": "Every current R7 bundle was opened in both native1x and nearest8x form. Magenta contact appears only for declared typography, formula-rule, arrow, or intended endpoint composition; no independent raw collision is visible."
+  },
+  "views": {
+    "full_page_200dpi.png": "PASS_PAGE_INTEGRATION",
+    "figure_crop_300dpi.png": "PASS_VISUAL_HARMONY",
+    "standalone_300dpi.png": "PASS_VISUAL_HARMONY",
+    "grayscale_300dpi.png": "PASS_GRAYSCALE",
+    "after_text_measurement_overlay_300dpi.png": "PASS_OBJECT_COVERAGE"
+  },
+  "semantic_review": {
+    "math_semantics_pass": true,
+    "text_consistency_pass": true,
+    "reading_order_pass": true,
+    "note": "The local 10.7pt command changes only the rendering of mathematical n; the count meaning, bold-math identity, dependency arrows, posterior alpha+n, predictive fraction, and downstream reading order are unchanged."
+  },
+  "visual_review": {
+    "font_visual_harmony_pass": true,
+    "grayscale_pass": true,
+    "page_integration_pass": true,
+    "overall_visual_note": "The trial n is now legible at the hard floor without looking enlarged or shifting the node, edge, or reading hierarchy. The left-to-right backbone, lower branches, line weights, grayscale separation, and page integration remain balanced."
+  },
+  "local_sa2_result_if_terminal_checks_pass": "LOCAL_SA2_PATCH_VERIFIED_REQUEST_FRESH_SA1"
+}

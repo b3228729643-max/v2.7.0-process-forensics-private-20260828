@@ -1,0 +1,32 @@
+diff --git a/src/绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_multinomial_counts.tex b/src/绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_multinomial_counts.tex
+--- a/src/绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_multinomial_counts.tex
++++ b/src/绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_multinomial_counts.tex
+@@ -1,12 +1,12 @@
+ % v2.6.0 figure UID: FIG-P656-01
+ % Image-guided reverse redraw: preserve all three sequences, counts, formulas and the two-arrow flow.
+-\tikzset{slfig-FIG-P656-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
++\tikzset{slfig-FIG-P656-01/.style={font=\fontsize{9.5pt}{11.4pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+ \pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+ \begin{figure}[htbp]
+ \centering
+ \begin{tikzpicture}[slfig-FIG-P656-01,
+   >=Stealth,
+-  every node/.style={font=\fontsize{9.4pt}{11.3pt}\selectfont,align=center},
++  every node/.style={font=\fontsize{9.5pt}{11.4pt}\selectfont,align=center},
+   c1/.style={circle,draw=SLBlue,fill=SLBlue!9,minimum size=6mm,inner sep=0pt,line width=.78pt},
+   c2/.style={circle,draw=SLTeal,fill=white,pattern=north east lines,pattern color=SLTeal,
+     minimum size=6mm,inner sep=0pt,line width=.82pt},
+@@ -28,10 +28,10 @@
+   \node[countbox] (count) at (1.65,.35)
+     {$\boldsymbol n=(n_1,n_2,n_3)=(3,1,2)$};
+   \draw[flow] (-1.68,.35)--node[pos=.35,above=4.8pt,inner sep=0pt,
+-    font=\fontsize{8.8pt}{10.5pt}\selectfont,text=SLTextGray] {同一计数} (count.west);
+-  \node[font=\fontsize{9.2pt}{11.0pt}\selectfont] at (1.65,-.90)
++    font=\fontsize{9.5pt}{11.4pt}\selectfont,text=SLTextGray] {同一计数} (count.west);
++  \node[font=\fontsize{9.5pt}{11.4pt}\selectfont] at (1.65,-.90)
+     {$n_k\in\mathbb Z_{\ge0},\quad\sum_k n_k=N$};
+-  \node[warning,font=\fontsize{9.2pt}{11.0pt}\selectfont] at (1.65,-1.58)
++  \node[warning,font=\fontsize{9.5pt}{11.4pt}\selectfont] at (1.65,-1.58)
+     {计数向量，不是概率向量};
+   \node[coefficient] (coef) at (6.15,.35)
+     {产生同一计数的序列数\\$\displaystyle {N!}/{\prod_k n_k!}$};

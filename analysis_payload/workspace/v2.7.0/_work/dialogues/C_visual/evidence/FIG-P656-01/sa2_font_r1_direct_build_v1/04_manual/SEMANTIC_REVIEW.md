@@ -1,0 +1,11 @@
+# FIG-P656-01 R1 semantic and visual adjudication
+
+Reviewer context: C root performed this post-build local SA2 review after opening the new 300 dpi full page, color crop, grayscale crop, object-ID overlay, 34-pair contact sheet, and five risk families at 1x with arrow-label and warning regions also at 8x. No previous P656 visual conclusion or manual ledger was migrated.
+
+The three visible ordered sequences are `111233`, `131213`, and `312131`. Each independently contains three category-1 outcomes, one category-2 outcome, and two category-3 outcomes, so the arrow to `n=(n_1,n_2,n_3)=(3,1,2)` is semantically correct. The lower relation states `n_k in Z_{>=0}` and `sum_k n_k=N`; the warning correctly says that a count vector is not a probability vector. The second arrow leads to the multiplicity formula `N!/prod_k n_k!`, matching the heading that it counts ordered sequences producing the same count vector.
+
+The source-font patch changes only five general visible fontsize/leading declarations to `9.5pt/11.4pt`. The new render shows no new crowding: sequence digits remain centered, `同一计数` clears both the arrow and count box, the count-vector formula retains inner padding, the support constraint clears the warning box, and the coefficient heading/formula remain inside their box. The PDF extractor reports 9.4645 PDF big points for a 9.5 TeX-point declaration because TeX points and PDF big points use different physical units; the authoritative source declaration is 9.5pt and the rendered text is visibly readable.
+
+Independent SVG glyph masks and drawing masks identify exactly three shared-raster pairs: the first arrow shaft/head, the count-box/outgoing-shaft endpoint, and the second arrow shaft/head. All are intended structural joins. No unrelated object pair shares raster ink. The complete manual object ledger covers all 115 IDs; the critical ledger covers the 34 highest-risk pairs, and the pair-family ledger closes the remaining all-pair routes without converting typography metadata or 1–2 px antialias differences into hard failures under R168.
+
+Local conclusion: `LOCAL_SA2_PASS_READY_FOR_MAIN`. This is not an official full-book SA1/SA3 or central local-pass decision. The source remains uncommitted and no second TeX invocation is authorized or needed.

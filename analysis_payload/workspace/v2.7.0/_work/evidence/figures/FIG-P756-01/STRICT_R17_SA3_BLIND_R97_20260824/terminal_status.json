@@ -1,0 +1,26 @@
+{
+  "figure_id": "FIG-P756-01",
+  "audit": "STRICT_R17_SA3_BLIND_R97_20260824",
+  "terminal_status": "FAIL_TO_SA2",
+  "terminal_reason": {
+    "glyph_id": "GLY0215",
+    "codepoint": "U+FF1A",
+    "sheet": "glyph_contact_sheet_11.png",
+    "cell": 13,
+    "target_h_ink_px": 10,
+    "target_ink_area_px": 34,
+    "reference_h_ink_median_px": 10,
+    "reference_ink_area_median_px": 37,
+    "h_ratio_exact": "10/10 = 1.0",
+    "area_ratio_exact": "34/37 = 0.918918918918...",
+    "allowed_inclusive_interval": "[0.92, 1.08]",
+    "reason": "area ratio is strictly below lower bound; no rounding or visual exception"
+  },
+  "independent_candidate": {
+    "sha256": "062AD81020CB19A5C6688A45C73E00965F5060E0960A69AF820D7DC154DEE814",
+    "physical_pages": 813,
+    "figure_physical_page": 801,
+    "figure_printed_page": 788
+  },
+  "source_sha256": "00213AE30379E4337830B1C4957BE4CB7B1E99BE88144E2D7D262998E1B6CAAA"
+}

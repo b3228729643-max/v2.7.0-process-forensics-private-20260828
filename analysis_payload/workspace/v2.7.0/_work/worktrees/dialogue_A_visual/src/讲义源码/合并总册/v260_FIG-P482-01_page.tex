@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 4 册}{统计学习方法讲义 v2.6.0}{无监督学习与矩阵分解}
+\begin{document}
+\setcounter{page}{615}
+\setcounter{chapter}{27}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{主成分分析}
+\SLTeachSection{协方差矩阵与方差最大化}{sec:V4-C04-S02}
+\begin{geometrybox}
+\textbf{几何解释。}协方差椭球的主轴就是 $\Sigma$ 的特征向量，半轴长度与 $\sqrt{\lambda_i}$ 成正比。PCA 把坐标轴旋转到椭球主轴，再保留最长的主轴。
+\end{geometrybox}
+如\cref{fig:V4-C04-ellipse}所示，二维PCA保留协方差椭圆的最长主轴，并把与该轴正交的剩余变化计入重构误差。
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C04/fig_v4_c04_ellipse.tex}
+\end{document}

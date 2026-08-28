@@ -1,0 +1,10 @@
+﻿check_id,subject,verdict,note
+M001,quadratic_form,PASS,"Contours are concentric levels of f(x1,x2)=0.5*(x1^2+2*x1*x2+2*x2^2)."
+M002,positive_definite,PASS,"Hessian [[1,1],[1,2]] has determinant 1 and positive eigenvalues 0.381966 and 2.618034."
+M003,q0_q1,PASS,Vertical update holds x1 fixed and sets partial derivative in x2 to zero.
+M004,q1_q2,PASS,Horizontal update holds x2 fixed and sets partial derivative in x1 to zero.
+M005,q2_q7,PASS,Remaining updates alternate vertical/horizontal exact coordinate minimizers through q7.
+M006,objective_descent,PASS,"Objective sequence 2.92,2.56,1.28,.64,.32,.16,.08,.04 is strictly decreasing."
+M007,optimum,PASS,"Star x* is at the true optimum (0,0); q7 is visibly an approximation, not relabeled as optimum."
+M008,caption_semantics,PASS,Caption states that each substep changes one coordinate and the axis-aligned path approaches the optimum; current geometry agrees.
+M009,page_integration,PASS,Full-page views show no page-level crop or surrounding-content collision.

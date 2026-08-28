@@ -1,0 +1,39 @@
+% v2.7.0 figure UID: FIG-P630-01
+% R2: six-node dependency chain; every segment is an independent directed edge.
+\tikzset{slfig-FIG-P630-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P630-01,>=Stealth,every node/.style={align=center},
+  core/.style={draw=SLBlue,rounded corners=2.2pt,fill=SLBlue!6,
+    minimum width=31mm,minimum height=13mm,inner xsep=1.5mm,inner ysep=1.2mm,
+    font=\fontsize{9.6pt}{11.8pt}\selectfont,line width=.72pt},
+  side/.style={draw=SLRuleGray,rounded corners=2.2pt,fill=SLSoftGray,
+    text width=22.5mm,minimum height=16mm,inner xsep=1.5mm,inner ysep=1.0mm,
+    font=\fontsize{9.6pt}{11.6pt}\selectfont,line width=.55pt},
+  boundary/.style={draw=SLGold,rounded corners=2.2pt,fill=SLGold!8,
+    minimum width=76mm,minimum height=9mm,inner xsep=2mm,inner ysep=1mm,
+    font=\fontsize{10.0pt}{12.0pt}\selectfont\bfseries,line width=.72pt},
+  flow/.style={draw=SLBlue,line width=.95pt,-{Stealth[length=2.0mm,width=1.35mm]}},
+  leader/.style={draw=SLGray,line width=.50pt}]
+  \node[core] (joint) at (-3.80,.95) {联合目标 / 局部因子};
+  \node[core] (cond) at (0,.95) {给定 $x_{-j}$ 的满条件\\$\pi_j(\cdot\mid x_{-j})$};
+  \node[core] (coord) at (3.80,.95) {单坐标核 $K_j$\\只更新 $x_j$};
+  \node[core] (scan) at (3.80,-.95) {扫描核\\系统 / 随机};
+  \node[core] (sample) at (0,-.95) {相关样本};
+  \node[core] (diag) at (-3.80,-.95) {诊断\\MCSE / ESS / 轨迹};
+  \draw[flow] (joint.east)--(cond.west);
+  \draw[flow] (cond.east)--(coord.west);
+  \draw[flow] (coord.south)--(scan.north);
+  \draw[flow] (scan.west)--(sample.east);
+  \draw[flow] (sample.west)--(diag.east);
+  \node[side] (correct) at (-6.40,2.85) {正确性条件\\目标保持\\支持可达\\遍历性};
+  \node[side] (mix) at (6.40,-2.70) {混合效率\\自相关长度\\有效样本量};
+  \draw[leader] (correct.south east)--(joint.north west);
+  \draw[leader] (mix.north west)--(scan.south east);
+  \node[boundary] at (0,-3.10)
+    {正确内核 $\ne$ 快速混合};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{满条件把联合目标转为单坐标更新，扫描后得到需以MCSE、ESS与轨迹诊断的相关样本}
+\label{fig:V5-C04-dependency-graph}
+\end{figure}

@@ -1,0 +1,18 @@
+review_id,view_or_role,evidence,actual_opened,readable_complete,balanced,clipped,illegal_overlap,semantic_error,decision,manual_note
+VIEW_01,full_page_200dpi,full_page_200dpi.png,YES,YES,YES,NO,NO,NO,PASS,figure is integrated cleanly with surrounding page and caption
+VIEW_02,full_page_native300dpi,full_page_native300dpi.png,YES,YES,YES,NO,NO,NO,PASS,native full page confirms current PDF geometry and typography
+VIEW_03,figure_plus_caption_crop,figure_crop_300dpi.png,YES,YES,YES,NO,NO,NO,PASS,complete figure and caption visible with 23px minimum foreground margin
+VIEW_04,standalone_figure_body,standalone_300dpi.png,YES,YES,YES,NO,NO,NO,PASS,body-only crop is native and has 21px minimum foreground margin
+VIEW_05,grayscale,grayscale_300dpi.png,YES,YES,YES,NO,NO,NO,PASS,hierarchy and blanket emphasis remain distinguishable
+VIEW_06,semantic_overlay,semantic_object_overlay_300dpi.png,YES,YES,YES,NO,NO,NO,PASS,all text and graphic objects align with current PDF
+VIEW_07,text_measurement_overlay,after_text_measurement_overlay_300dpi.png,YES,YES,YES,NO,NO,NO,PASS,all measured glyph boxes align with visible ink
+ROLE_01,factor_and_variable_nodes,glyph and graphic contact sheets,YES,YES,YES,NO,NO,NO,PASS,seven nodes use coherent shape and color coding
+ROLE_02,active_edges,graphic sheet and critical sheets 14-16,YES,YES,YES,NO,NO,NO,PASS,topology is continuous and intended endpoint joins are clean
+ROLE_03,Markov_blanket_dashes,graphic sheet and critical sheets 14-16,YES,YES,YES,NO,NO,NO,PASS,dashed boundaries are complete and distinct from graph edges
+ROLE_04,9_2pt_annotation,glyph sheets 03-04 and native views,YES,YES,YES,NO,NO,NO,PASS,actual text is readable and not severely imbalanced under R168
+ROLE_05,conditional_formula,glyph sheets 05-07 and native views,YES,YES,YES,NO,NO,NO,PASS,formula operators variables and delimiters are unambiguous
+ROLE_06,irrelevance_annotation,glyph sheets 07-09 and native views,YES,YES,YES,NO,NO,NO,PASS,p(alpha) explanation and pointer are clear
+ROLE_07,caption,glyph sheets 09-17 and native views,YES,YES,YES,NO,NO,NO,PASS,caption wraps cleanly and matches figure meaning
+SCRIPT_01,Han_glyphs,all relevant glyph sheets,YES,YES,YES,NO,NO,NO,PASS,no missing stroke tofu or wrong codepoint
+SCRIPT_02,Latin_and_Greek,all relevant glyph sheets,YES,YES,YES,NO,NO,NO,PASS,no missing stroke tofu or wrong codepoint
+SCRIPT_03,math_operators_and_delimiters,all relevant glyph sheets,YES,YES,YES,NO,NO,NO,PASS,conditioning bars proportional sign parentheses and punctuation are correct

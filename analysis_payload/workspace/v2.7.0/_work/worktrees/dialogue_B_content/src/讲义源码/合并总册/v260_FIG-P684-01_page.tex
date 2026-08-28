@@ -1,0 +1,23 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{681}
+\setcounter{chapter}{35}
+\setcounter{section}{1}
+\setcounter{figure}{2}
+\pagestyle{headings}
+\chaptermark{潜在狄利克雷分配}
+\sectionmark{LDA 生成过程与概率图}
+\textbf{生成算法。}图\ref{fig:V5-C06-generative-process}以三条泳道展示完整Bayes LDA 的四步祖先采样；
+$n=1,\ldots,N_m$嵌套在每个$m$内，侧注只用于区分点参数变体。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_generative_process.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}沿
+$\boldsymbol\beta\to\boldsymbol\varphi_k$、
+$\boldsymbol\alpha\to\boldsymbol\theta_m$、
+$\boldsymbol\theta_m\to z_{mn}$、
+$z_{mn}\to w_{mn}$与$\boldsymbol\varphi_k\to w_{mn}$，核对主题词先验、
+文档主题先验、主题指派和发词四类因子；再区分完整Bayes中随机的
+$\boldsymbol\varphi_k$与点参数变体中的待估参数，二者不是同一后验。
+\end{document}

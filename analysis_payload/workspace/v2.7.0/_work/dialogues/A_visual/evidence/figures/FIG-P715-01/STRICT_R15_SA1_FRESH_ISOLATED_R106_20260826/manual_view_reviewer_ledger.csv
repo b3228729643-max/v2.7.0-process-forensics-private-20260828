@@ -1,0 +1,5 @@
+view,reviewer,opened_native,legibility,glyph_semantics,geometry_visibility,grayscale_or_integration,decision,note
+full_page_200dpi.png,R106-SA1,yes,readable,correct,defects visible in page context,page integration coherent overall,FAIL,Figure placement and caption are coherent but internal collisions remain hard failures.
+figure_crop_300dpi.png,R106-SA1,yes,readable,correct,collisions visible,caption and float context coherent,FAIL,Caption and figure identity match physical page 765; no tofu or clipping.
+standalone_300dpi.png,R106-SA1,yes,readable,correct,collisions visible,color hierarchy coherent,FAIL,Guarded crop has no edge clipping; node-note and note-matrix collisions are visible.
+grayscale_300dpi.png,R106-SA1,yes,readable,correct,collisions visible,grayscale differentiation remains readable,FAIL,Grayscale does not cure the geometry failures; all content remains decipherable.

@@ -1,0 +1,11 @@
+element_id,role,peer_group,reviewer,decision,note
+O02,STATE_LABEL,PG_STATE,SA1,CLEAR,"左状态变量 x；与 O04 同一字号和数学字体，视觉权重一致。"
+O04,STATE_LABEL,PG_STATE,SA1,CLEAR,"右状态变量 y；下伸部使墨迹高于 x，但非字号漂移。"
+O06,PROPOSAL_FORMULA,PG_PROPOSAL,SA1,CLEAR,"正向提议质量公式；与 O08 采用同样 9.2pt 基准和框内位置。"
+O08,PROPOSAL_FORMULA,PG_PROPOSAL,SA1,CLEAR,"反向提议质量公式；宽度差来自字符形状，不是缩放。"
+O10,CLIP_FORMULA,PG_CLIP_SINGLE,SA1,CLEAR,"min 汇合公式为单例角色；视觉大小与相邻提议公式协调。"
+O11,FLOW_HEADING,PG_HEADING_SINGLE,SA1,CLEAR_ADVISORY,"标题为灰色辅助角色；略小但在完整页和灰度图中仍实际可读且未压过主体。"
+O18,ACCEPTED_EQUATION,PG_ACCEPTED_EQ,SA1,CLEAR,"正向接受等式与 O19 同字号、同结构、同起止宽度。"
+O19,ACCEPTED_EQUATION,PG_ACCEPTED_EQ,SA1,CLEAR,"反向接受等式与 O18 对称，未出现明显字号或行距失衡。"
+O21,CONCLUSION_TEXT,PG_CONCLUSION,SA1,CLEAR,"结论首行中文及双箭头均完整；承担主结论第一层。"
+O22,CONCLUSION_TEXT,PG_CONCLUSION,SA1,CLEAR,"结论次行含 π；与首行同基准字号，混排并未造成实际不可读。"

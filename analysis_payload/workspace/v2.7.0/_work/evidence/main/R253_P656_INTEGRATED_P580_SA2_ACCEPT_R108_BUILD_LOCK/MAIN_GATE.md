@@ -1,0 +1,9 @@
+# R253 P656集成、P580 SA2接受与R108构建锁
+
+- P656 C commit：`211bd3959e93379766184e8a07354c81df8536d4`；严格单文件5+/5-。
+- P656 main commit：`e33a3b7490ba39304181c25f775221e63a35b6a4`；parent=`9fad2af933911092f4a494d66fd607cdb94264cc`；source SHA=`9D404ED0694D575DE89038D3D6485C49AA4C60DCC3238AD8318CADACF810B381`。
+- P580 SA2：`P580_SA2_NO_SOURCE_CHANGE_READY_FOR_FRESH_SA1`；R107 physical630/Fig31.6；source SHA=`F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161`。
+- P580 seal：payload15、ordinary18、双manifest/FS path/bytes/SHA 0差、18/18只读、ADS0、WSTOP最后；主线代表视觉无反证。
+- 构建锁：`R108_BUILD_LOCK_ACTIVE`；唯一允许主链=`build_v2.7.0.ps1 -Engine lualatex -OutputDir src\build\strict_current_r108_fullbook -NoPublish`。
+- A/C不得启动、终止或管理TeX；R108冻结前P656/P580不启fresh角色。
+- inventory：`31 SA1 / 51 SA2 / 0 SA3 / 17 A_LOCAL_PASS`；严格最终0/99。

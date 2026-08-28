@@ -1,0 +1,11 @@
+semantic_check_id,scope,observed_semantics,views_opened,manual_result,manual_notes
+S001,coordinate descent,each substep changes exactly one coordinate,full/native,PASS,"visible vertical/horizontal alternation supports claim"
+S002,update order,"steps 1 3 5 7 change x2; steps 2 4 6 change x1",native1x+nearest8x,PASS,"matches source and legend"
+S003,encoding,solid blue means x1 and dashed teal means x2,native+gray+legend ROI,PASS,"shape/stroke encoding does not rely on color alone"
+S004,iteration,x^(0) is initial point and 1-7 give path order,native1x+nearest8x,PASS,"sequence is complete"
+S005,optimum,x* is at centered origin marked by star,native1x+nearest8x,PASS,"matches contour center"
+S006,convergence,trajectory moves progressively toward x*,native+gray,PASS,"step magnitudes decrease"
+S007,contours,nested rotated ellipses show coordinate misalignment,native+gray,PASS,"consistent with adjacent explanation"
+S008,caption consistency,caption exactly describes visible trajectory,full+caption ROIs,PASS,"no textual contradiction"
+S009,body consistency,zigzag supports coordinate-mismatch diagnosis,full page,PASS,"adjacent prose and figure agree"
+S010,reading order,"initial point -> labels 1-7 -> x* -> legend",full/native,PASS,"single coherent reading path"

@@ -1,0 +1,66 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from PIL import Image
+
+
+ROOT = Path(__file__).resolve().parents[1]
+RENDERED = ROOT / "rendered"
+PAGE_300 = RENDERED / "page_069_300dpi.png"
+
+# Pixel coordinates are on the direct 300 dpi Poppler render.  They enclose
+# both panels and the complete caption, with whitespace retained around ink.
+CROP_BOX = (400, 260, 2040, 930)
+DETAIL_TILES = {
+    "nearest8x_cdf_note_t1_left.png": (215, 25, 455, 180),
+    "nearest8x_cdf_note_t1_right.png": (420, 25, 660, 180),
+    "nearest8x_cdf_t1.png": (315, 115, 535, 300),
+    "nearest8x_cdf_t2.png": (650, 75, 870, 260),
+    "nearest8x_cdf_t3.png": (985, 15, 1205, 205),
+    "nearest8x_cdf_t4.png": (1320, 0, 1540, 190),
+    "nearest8x_pmf_t3.png": (980, 275, 1200, 460),
+    "nearest8x_pmf_note_left.png": (1175, 270, 1415, 450),
+    "nearest8x_pmf_note_right.png": (1380, 270, 1620, 450),
+    "nearest8x_pmf_note_guide_focus.png": (1375, 270, 1445, 430),
+    "nearest8x_caption_left.png": (100, 500, 340, 670),
+    "nearest8x_caption_right.png": (820, 500, 1060, 670),
+}
+
+
+def main() -> None:
+    with Image.open(PAGE_300) as page:
+        page.load()
+        crop = page.crop(CROP_BOX)
+        crop.save(RENDERED / "figure_native1x_300dpi.png")
+        crop.resize(
+            (crop.width * 8, crop.height * 8),
+            resample=Image.Resampling.NEAREST,
+        ).save(RENDERED / "figure_nearest8x.png")
+        crop.convert("L").save(RENDERED / "figure_grayscale_300dpi.png")
+        for name, box in DETAIL_TILES.items():
+            tile = crop.crop(box)
+            tile.resize(
+                (tile.width * 8, tile.height * 8),
+                resample=Image.Resampling.NEAREST,
+            ).save(RENDERED / name)
+
+    metadata = {
+        "source_render": PAGE_300.name,
+        "source_dpi": 300,
+        "crop_box_px": list(CROP_BOX),
+        "native_size_px": [CROP_BOX[2] - CROP_BOX[0], CROP_BOX[3] - CROP_BOX[1]],
+        "nearest_scale": 8,
+        "interpolation": "nearest",
+        "grayscale_mode": "Pillow L",
+        "nearest8x_detail_tiles": DETAIL_TILES,
+    }
+    (ROOT / "mechanical" / "visual_evidence_metadata.json").write_text(
+        json.dumps(metadata, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,45 @@
+% v2.3.1 figure UID: FIG-P600-01
+% Proposed post-v2.3.1 polish for FIG-P600-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P600-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P600-01,>=Stealth,
+  state/.style={circle,draw=SLBlue,fill=white,minimum size=9mm,line width=.78pt,
+    font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  proposal/.style={draw=SLRuleGray,rounded corners=2pt,fill=SLSoftGray,
+    minimum width=35mm,minimum height=9mm,line width=.58pt,
+    font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  clipbox/.style={draw=SLGold,rounded corners=2pt,fill=SLGold!8,
+    minimum width=32mm,minimum height=10mm,line width=.78pt,
+    font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  thinflow/.style={-{Stealth[length=1.9mm]},draw=SLGray,line width=.70pt},
+  mainflow/.style={-{Stealth[length=2.1mm]},draw=SLBlue,line width=1.00pt}]
+  \node[state] (x) at (-5.2,0) {$x$};
+  \node[state] (y) at (5.2,0) {$y$};
+  \node[proposal] (a) at (-2.4,2.15)
+    {$a=\pi(x)q(x,y)$};
+  \node[proposal] (b) at (2.4,2.15)
+    {$b=\pi(y)q(y,x)$};
+  \node[clipbox] (m) at (0,1.00)
+    {$\min(a,b)$};
+  \node[font=\fontsize{8.6pt}{10.2pt}\selectfont,text=SLGray!85!black,align=center] at (0,2.95)
+    {提议流：两方向一般不等};
+  \draw[thinflow] (x.north east)--(a.west);
+  \draw[thinflow] (y.north west)--(b.east);
+  \draw[thinflow] (a.south east)--(m.north west);
+  \draw[thinflow] (b.south west)--(m.north east);
+  \begin{pgfonlayer}{background}
+    \draw[mainflow] (x) to[bend right=4] (y);
+    \draw[mainflow] (y) to[bend right=4] (x);
+  \end{pgfonlayer}
+  \node[font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center,
+    inner xsep=3pt,inner ysep=1.5pt] at (0,-1.10)
+    {$x\to y:\ \pi(x)q(x,y)\alpha(x,y)=\min(a,b)$\\
+     $y\to x:\ \pi(y)q(y,x)\alpha(y,x)=\min(a,b)$};
+  \node[draw=SLRuleGray,rounded corners=2pt,fill=white,line width=.58pt,
+    font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center,
+    inner xsep=5pt,inner ysep=3.2pt] at (0,-2.25)
+    {接受后双向流等宽、等值 $\Rightarrow$ 细致平衡\\充分推出 $\pi$ 平稳，但非必要条件};
+\end{tikzpicture}
+\caption{MH接受机制把两个方向的已接受概率流同时截为两者较小值，从而满足细致平衡；该条件足以推出 $\pi$ 平稳，但不是平稳性的必要条件}\label{fig:V5-C03-mh-balance-flux}
+\end{figure}

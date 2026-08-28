@@ -1,0 +1,1222 @@
+% STAGE10-CHAPTER: V2-C04
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; rigorous_modeling; mathematical_development; multiple_perspectives; algorithm_engineering; examples_exercises; closure_self_check
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V2-C04-CH01}; CH-02=\label{struct:V2-C04-CH02}; CH-03=\label{struct:V2-C04-CH03}; CH-04=\label{struct:V2-C04-CH04}; CH-05=\label{struct:V2-C04-CH05}; CH-06=\label{struct:V2-C04-CH06}; CH-07=\label{struct:V2-C04-CH07}; CH-08=\label{struct:V2-C04-CH08}; CH-09=\label{struct:V2-C04-CH09}; CH-10=\label{struct:V2-C04-CH10}; CH-11=\label{struct:V2-C04-CH11}; CH-12=\label{struct:V2-C04-CH12}; CH-13=\label{struct:V2-C04-CH13}; CH-14=\label{struct:V2-C04-CH14}; CH-15=\label{struct:V2-C04-CH15}; CH-16=\label{struct:V2-C04-CH16}; CH-17=\label{struct:V2-C04-CH17}; CH-18=\label{struct:V2-C04-CH18}; CH-19=\label{struct:V2-C04-CH19}; CH-20=\label{struct:V2-C04-CH20}; CH-21=\label{struct:V2-C04-CH21}; CH-22=\label{struct:V2-C04-CH22}; CH-23=\label{struct:V2-C04-CH23}; CH-24=\label{struct:V2-C04-CH24}; CH-25=\label{struct:V2-C04-CH25}; CH-26=\label{struct:V2-C04-CH26}; CH-27=\label{struct:V2-C04-CH27}; CH-28=\label{struct:V2-C04-CH28}; CH-29=\label{struct:V2-C04-CH29}; CH-30=\label{struct:V2-C04-CH30}; CH-31=\label{struct:V2-C04-CH31}; CH-32=\label{struct:V2-C04-CH32}; CH-33=\label{struct:V2-C04-CH33}; CH-34=\label{struct:V2-C04-CH34}; CH-35=\label{struct:V2-C04-CH35}; CH-36=\label{struct:V2-C04-CH36}; CH-37=\label{struct:V2-C04-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V2-C04-tree-partition -> SLM-05-01-003
+\chapter{决策树}\label{chap:V2-C04}
+\index{决策树}
+\index{信息增益}
+\index{CART}
+
+\SLChapterOpening{从递归划分直达信息准则、CART与代价复杂度剪枝}{怎样在拟合能力与树结构复杂度之间取得可验证的平衡}{能够计算划分准则、生成树并解释剪枝序列}{条件概率、熵、平方误差与递归算法}{若权重、停止条件或验证流程不清，回看特征选择与剪枝两节}
+
+\phantomsection\label{struct:V2-C04-CH01}
+% KNOWLEDGE-PLAN: KN-V2-C15-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}决策树学习目标固定核验“能把分类树解释为互斥完备的if--then规则集合，以及特征空间划分上的条件概率分布”；请实际完成“把分类树解释为互斥完备的if--then规则集合，以及特征空间划分上的条件概率分布”，并用“中间结果逐项包含首目标“能把分类树解释为互斥完备的if--then规则集合，以及特征空间划分上的条件概率分布”声明的对象、条件与结论”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能把分类树解释为互斥完备的if--then规则集合，以及特征空间划分上的条件概率分布；
+  \item 能从经验熵与经验条件熵逐步计算信息增益和信息增益比，并说明ID3与C4.5的选择差异；
+  \item 能写出决策树生成、熵惩罚剪枝、CART分类与回归生成以及最弱环节剪枝的严格伪代码；
+  \item 能证明平方误差叶结点的最优输出是样本均值，分析树算法的复杂度、适用条件、局限和常见错误；
+  \item 能用训练集生成候选树、用独立验证信息选择子树，并完整复现本章例题与练习计算。
+\end{itemize}}
+
+\phantomsection\label{struct:V2-C04-CH02}
+\begin{prerequisitebox}
+本章直接使用条件概率、经验分布、对数、熵、期望与平方误差；还需要理解训练误差和验证误差的角色、过拟合与正则化、分类和回归任务。阅读前应能计算离散概率分布，能按特征取值把样本集合分组，并能区分模型、学习策略与实现算法。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V2-C04-CH03}
+% KNOWLEDGE-PLAN: KN-V2-C15-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}决策树先修自检固定核验“对概率向量$(1/2,1/4,1/4)$，能否计算以2为底的熵并解释其单位”；请对概率向量$(1/2,1/4,1/4)$，实际计算以2为底的熵并解释其单位并写出中间结果，再按“$(1/2,1/4,1/4)$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 对概率向量$(1/2,1/4,1/4)$，能否计算以2为底的熵并解释其单位？
+  \item 给定两个互不相交子集，能否按子集容量计算一个指标的加权平均？
+  \item 能否说明训练集、验证集分别用于生成树和选择子树的原因？
+  \item 能否把$\sum_i(y_i-c)^2$展开为关于常数$c$的二次函数？
+\end{enumerate}
+若任一问题不能独立完成，应先回看条件概率、信息论基础、模型选择与回归损失。
+\end{precheckbox}
+
+\phantomsection\label{struct:V2-C04-CH04}
+% KNOWLEDGE-PLAN: KN-V2-C15-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}决策树依赖路线从“条件概率与特征空间划分 $\to$ 树模型”进入“经验熵与条件熵 $\to$ 信息增益和信息增益比 $\to$ ID3与C4.5”；请写出箭头成立所需的定义域条件，并核对前者输出能作为后者输入。\par
+
+\begin{dependencybox}
+条件概率与特征空间划分 $\to$ 树模型；
+经验熵与条件熵 $\to$ 信息增益和信息增益比 $\to$ ID3与C4.5；
+经验损失与复杂度惩罚 $\to$ 决策树剪枝；
+平方误差与基尼指数 $\to$ CART回归树和分类树；
+代价复杂度函数 $\to$ 最弱环节剪枝序列 $\to$ 验证集选择最优子树。
+\end{dependencybox}
+
+\begin{keypointbox}[title=模型认识卡：决策树]
+\textbf{任务与输入：}表格型分类或回归，$x\in\mathcal X$。\quad
+\textbf{输出类型：}类别、概率向量或实值。\par
+\textbf{模型：}互斥完备叶区域上的分段常数规则。\quad
+\textbf{策略：}局部降低不纯度或平方误差，并以剪枝控制复杂度。\quad
+\textbf{算法：}递归生成候选树，再构造嵌套剪枝序列并验证选择。\par
+\textbf{预测：}沿唯一根到叶路径读取叶输出。\quad
+\textbf{关键假设与边界：}每个内部结点须有完备分支或默认路由；高基数特征、缺失值与小叶会放大过拟合。
+\end{keypointbox}
+
+\phantomsection\label{struct:V2-C04-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V2-C04
+\index[symbols]{d-eq-x-i-y-i-i-eq-1-n--s85697b78ad43@$D=\{(x_i,y_i)\}_{i=1}^{N}$：当前结点上的训练数据集}
+\index[symbols]{minus-mathcala-minus--scf77eb3c5e7b@$\mathcal A$：当前仍可用于划分的特征}
+\index[symbols]{c-k--sea5fb8aa8f19@$C_k$：属于第$k$类的样本集合}
+\index[symbols]{d-i--sbc7d74439ebe@$D_i$：特征$A$取第$i$个值时的样本集合}
+\index[symbols]{h-d-h-d-minus-mida-minus--s4d20074d14b7@$H(D),H(D\mid A)$：经验熵与按特征$A$分组的经验条件熵}
+\index[symbols]{g-d-a-g-r-d-a--sad2d06b285c7@$g(D,A),g_R(D,A)$：信息增益与信息增益比}
+\index[symbols]{t-u007c-t-u007c--s9e9d417c92f2@$T,\lvert T\rvert$：决策树及其叶结点数}
+\index[symbols]{r-m-c-m--s93cf7c362fa3@$R_m,c_m$：回归树的第$m$个区域与区域输出}
+\index[symbols]{minus-operatorname-minus-gini-d-a--sa609a2f76231@$\operatorname{Gini}(D,A)$：经特征测试后子集不纯度的加权值}
+\index[symbols]{c-minus-alpha-minus-t--sc854b0c5e55a@$C_\alpha(T)$：拟合损失与叶结点复杂度惩罚之和}
+% STAGE19-SYMBOL-INDEX-END: V2-C04
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$D=\{(x_i,y_i)\}_{i=1}^{N}$ & $N$个样本 & 当前结点上的训练数据集\\
+$\mathcal A$ & 有限特征集合 & 当前仍可用于划分的特征\\
+$C_k$ & $D$的子集 & 属于第$k$类的样本集合\\
+$D_i$ & $D$的子集 & 特征$A$取第$i$个值时的样本集合\\
+$H(D),H(D\mid A)$ & 非负实数 & 经验熵与按特征$A$分组的经验条件熵\\
+$g(D,A),g_R(D,A)$ & 非负实数 & 信息增益与信息增益比\\
+$T,|T|$ & 树、正整数 & 决策树及其叶结点数\\
+$R_m,c_m$ & 区域、实数 & 回归树的第$m$个区域与区域输出\\
+$\operatorname{Gini}(D,A)$ & $[0,1)$ & 经特征测试后子集不纯度的加权值\\
+$C_\alpha(T)$ & 非负实数 & 拟合损失与叶结点复杂度惩罚之和\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{树模型与条件概率分布}{sec:V2-C04-S01}
+\phantomsection\label{struct:V2-C04-CH06}
+决策树要解决的问题是：如何把一组带标记样本组织为可解释、可计算、可推广的递归决策规则。树的生成追求局部划分纯度，树的剪枝控制整体复杂度；两者共同决定最终模型，而不是把训练样本分得越细越好。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：决策树。}围绕决策树中的决策树，先采用条件“决策树既可用于分类，也可用于回归”，再构造一个满足条件的最小结点状态并执行一次分支或停止判断；最后验证从根到叶的一条路径是一连串特征测试，预测过程只需沿一条路径向下访问。\par
+
+\knowledgeanchor{SLM-05-00-001}{决策树}
+决策树既可用于分类，也可用于回归。分类树的叶结点给出类别或类别分布，回归树的叶结点给出实值；从根到叶的一条路径是一连串特征测试，预测过程只需沿一条路径向下访问。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：决策树模型与学习。}决策树模型与学习中的“树模型规定结点、边和叶输出”决定可执行范围；请构造一个满足条件的最小结点状态并执行一次分支或停止判断，结果须满足生成阶段递归建立局部结构，剪枝阶段比较整棵子树与把它收缩为单叶的代价，因此前者是局部扩张，后者是全局简化。\par
+
+\knowledgeanchor{SLM-05-01-002}{决策树模型与学习}
+树模型规定结点、边和叶输出；学习过程包括特征选择、树生成和树剪枝。生成阶段递归建立局部结构，剪枝阶段比较整棵子树与把它收缩为单叶的代价，因此前者是局部扩张，后者是全局简化。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：决策树模型。}把决策树模型放在“从根结点到任一叶结点的路径定义一个特征条件的合取”下考察：构造一个满足条件的最小结点状态并执行一次分支或停止判断，并检查结点输出与分支条件相符且没有遗漏停止情形。\par
+
+\knowledgeanchor{SLM-05-01-003}{决策树模型}
+\phantomsection\label{struct:V2-C04-CH07}
+\begin{definition}[分类决策树]
+分类决策树是由有向边连接的树形分类模型。内部结点对应一个特征或属性测试，出边对应测试结果，叶结点对应一个类别或类别概率分布。从根结点到任一叶结点的路径定义一个特征条件的合取。
+\end{definition}
+
+\knowledgeanchor{SLM-05-01-001}{分类决策树的结构定义}
+\phantomsection\label{struct:V2-C04-CH08}
+\textbf{模型。}设叶结点对应的区域为$R_1,\ldots,R_M$，它们互不相交且并为特征空间$\mathcal X$。分类树可写为
+\[
+f(x)=\sum_{m=1}^{M}c_m\mathbf 1\{x\in R_m\},
+\]
+其中$c_m$是区域$R_m$的类别标记。若保留叶内类别频率，则模型还给出分段常数的条件概率估计
+\[
+\widehat P(Y=k\mid X=x)=\frac{N_{mk}}{N_m},\qquad x\in R_m,
+\]
+$N_m$为叶$m$的样本数，$N_{mk}$为其中第$k$类样本数。
+
+\knowledgeanchor{SLM-05-01-004}{决策树与if--then规则}
+从根到叶$m$的路径若依次满足条件$B_{m1},\ldots,B_{mq_m}$，就对应规则
+\[
+\text{if }B_{m1}\land\cdots\land B_{mq_m}\text{ then }Y=c_m.
+\]
+要使同一棵确定性树的叶路径互斥且覆盖整个输入空间，每个内部结点必须满足下列二者之一：出边穷尽测试的全部可能结果；或除显式出边外，再登记唯一默认分支。未见类别、缺失值和数值越界都按训练前冻结的默认规则路由（例如走训练权重最大的子结点）；禁止同时命中多个分支。于是任意输入在每个内部结点都有且只有一个后继，最终恰好到达一个叶结点。规则的前件是路径上的全部测试，遗漏其中任一条件都会扩大覆盖区域并改变模型。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-BOUNDARY-001 L1
+\paragraph{读前自检：决策树与条件概率分布。}决策树与条件概率分布要求先确认“树也可看成定义在特征空间划分上的条件概率分布”；请随后把决策树与条件概率分布在其支持上求和或积分一次，用每个叶区域内的经验条件分布通常集中于一个类别，分类输出取叶内概率最大的类别验收。\par
+
+\knowledgeanchor{SLM-05-01-005}{决策树与条件概率分布}
+树也可看成定义在特征空间划分上的条件概率分布。每个叶区域内的经验条件分布通常集中于一个类别，分类输出取叶内概率最大的类别。叶内样本很少时，频率估计方差较大，宜设置最小叶容量、剪枝或平滑，而不能把纯叶频率机械理解为确定概率。
+
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：决策树学习。}从决策树学习的条件“每一步只在当前结点比较候选特征与切分，随后对子结点重复处理，再通过剪枝修正局部贪心导致的过度复杂”出发，请构造一个满足条件的最小结点状态并执行一次分支或停止判断；所得量应符合结点输出与分支条件相符且没有遗漏停止情形。\par
+
+\SLReviewSection{特征选择问题}{sec:V2-C04-S02}
+\knowledgeanchor{SLM-05-01-006}{决策树学习}
+在所有可能树中直接寻找经验损失和复杂度都最优的树通常不可行，实际方法采用启发式递归划分。每一步只在当前结点比较候选特征与切分，随后对子结点重复处理，再通过剪枝修正局部贪心导致的过度复杂。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-CONCEPT-002 L1
+\paragraph{读前自检：特征选择。}决策树中的特征选择依赖“特征选择不是挑选与标签边际相关性最大的变量，而是选择在当前样本子集上最能降低类别不确定性的划分”；请据此把“特征选择不是挑选与标签边际相关性最大的变量，而是选择在当前样本子集上最能降低类别不确定性的划分”中的已声明对象依次标成输入、输出与判据，并直接核对树的最终选择还要结合验证误差或带复杂度惩罚的整体目标。\par
+
+\knowledgeanchor{SLM-05-02-001}{特征选择}
+\phantomsection\label{struct:V2-C04-CH09}
+\textbf{学习策略。}特征选择不是挑选与标签边际相关性最大的变量，而是选择在当前样本子集上最能降低类别不确定性的划分。信息增益、信息增益比和基尼指数都是局部代理目标；树的最终选择还要结合验证误差或带复杂度惩罚的整体目标。
+
+\knowledgeanchor{SLM-05-02-002}{特征选择问题}
+\phantomsection\label{struct:V2-C04-CH10}
+\textbf{学习算法。}在当前数据$D$上，对每个候选特征枚举允许的切分，计算切分后各子集不纯度的加权平均，选择使不纯度下降最多的候选。若结点已足够纯、候选特征为空、改进不超过阈值或子结点过小，则停止扩张并输出叶结点。
+
+一个有分类能力的特征会让子集的类别分布比父结点更集中。类别取值很多的离散特征可能把样本切成许多极小子集，在训练数据上获得很高纯度却缺乏推广能力；这正是信息增益比和剪枝要处理的问题。
+
+
+\SLTeachSection{熵、信息增益与信息增益比}{sec:V2-C04-S03}
+\knowledgeanchor{SLM-05-02-003}{信息增益}
+设$D$为非空有限样本集，类别数$K<\infty$，其中第$k$类样本集合为$C_k$。因此下列经验熵都是有限实数：
+\[
+H(D)=-\sum_{k=1}^{K}\frac{|C_k|}{|D|}\log_2\frac{|C_k|}{|D|},
+\]
+并约定零概率项贡献为零。特征$A$有$n$个取值并产生子集$D_1,\ldots,D_n$时，经验条件熵为
+\[
+H(D\mid A)=\sum_{i=1}^{n}\frac{|D_i|}{|D|}H(D_i).
+\]
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-006 L1
+\paragraph{读前自检：信息增益的算法。}信息增益计算把当前结点$D$按$A$分成$D_i$；请计算$H(D\mid A)=\sum_i |D_i|H(D_i)/|D|$，核对各权重和为1，并验证小子集不会与大子集等权。\par
+
+\knowledgeanchor{SLM-05-01-007}{信息增益的算法}
+计算信息增益时，先统计父结点类别计数，再按$A$的取值建立子集类别计数；由这些计数分别求$H(D)$和$H(D\mid A)$，最后相减。每个子集的容量权重$|D_i|/|D|$必须保留，否则一个很小但很纯的子集会被赋予与大子集相同影响。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-DEFINITION-003 L1
+\paragraph{读前自检：信息增益的定义。}先锁定信息增益的定义的条件“$g(D,A)=H(D)-H(D\mid A).$”：检查$g(D,A)=H(D)-H(D\mid A).$中每项的类型后完成等式变形，所得结果应满足两端运算均有定义、类型一致且化为同一结果。\par
+
+\knowledgeanchor{SLM-05-02-004}{信息增益的定义}
+信息增益为
+\[
+g(D,A)=H(D)-H(D\mid A).
+\]
+它度量得知特征$A$后类别不确定性的经验减少量，也等于经验联合分布下类别与特征的互信息。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-CONCEPT-005 L1
+\paragraph{读前自检：信息增益比。}对信息增益比，条件“$H_A(D)=-\sum_{i=1}^{n}\frac{|D_i|}{|D|}\log_2\frac{|D_i|}{|D|},$”不可省；请把$H_A(D)$展开一次并检查其类型或边界，再用展开后的量满足定义中的域、维数或符号限制作检查。\par
+
+\knowledgeanchor{SLM-05-02-006}{信息增益比}
+信息增益偏向取值较多的特征。令特征取值本身的经验熵为
+\[
+H_A(D)=-\sum_{i=1}^{n}\frac{|D_i|}{|D|}\log_2\frac{|D_i|}{|D|},
+\]
+在$H_A(D)>0$时，用$H_A(D)$对增益归一化。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-DEFINITION-004 L1
+\paragraph{读前自检：信息增益比的定义。}信息增益比定义为$g_R(D,A)=g(D,A)/H_A(D)$；请先计算分裂信息$H_A(D)$，核对$H_A(D)=0$时必须移除候选$A$而不能执行除零。\par
+
+\knowledgeanchor{SLM-05-03-001}{信息增益比的定义}
+信息增益比定义为
+\[
+g_R(D,A)=\frac{g(D,A)}{H_A(D)}.
+\]
+若$A$在当前结点只有一个取值，则$H_A(D)=0$且不能提供切分，应把它从候选中移除，而不是执行除零。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V2-C04-CH11}
+% CORE-DERIVATION-PLAN: KN-V2-C15-DERIVATION-001
+\SLKnowledgeBridge{从类别计数和特征分组计数看清每个熵权重的样本来源。}{当前结点样本集 $D$、类别 $C_k$、特征分组 $D_i$ 与交叉计数 $D_{ik}=D_i\cap C_k$。}{$D_i$ 构成 $D$ 的划分；所有概率均由当前结点经验频率估计。}{先用 $|D\cap C_k|/|D|$ 写父结点熵，再用 $|D_i|/|D|$ 加权各子结点熵。}
+
+\begin{derivationgoalbox}
+从类别计数和特征分组计数出发，分三步推出信息增益的可计算表达式，并明确每个权重来自哪一部分样本。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+记$D_{ik}=D_i\cap C_k$，则$|D_i|=\sum_k|D_{ik}|$且$|D|=\sum_i|D_i|$。所有概率都用当前结点上的经验频率估计。
+\end{derivationprepbox}
+\textbf{推导第1步：}父结点中第$k$类的经验概率是$|C_k|/|D|$，代入熵定义得到$H(D)$。
+
+\textbf{推导第2步：}在条件$A=a_i$下，第$k$类的经验概率为$|D_{ik}|/|D_i|$，所以
+\[
+H(D_i)=-\sum_{k=1}^{K}\frac{|D_{ik}|}{|D_i|}\log_2\frac{|D_{ik}|}{|D_i|}.
+\]
+按事件$A=a_i$的经验概率$|D_i|/|D|$加权，得到$H(D\mid A)$。
+
+\textbf{推导第3步：}用观察$A$之前的不确定性减去观察后的平均不确定性：
+\[
+g(D,A)=-\sum_{k=1}^{K}\frac{|C_k|}{|D|}\log_2\frac{|C_k|}{|D|}
++\sum_{i=1}^{n}\frac{|D_i|}{|D|}
+ \sum_{k=1}^{K}\frac{|D_{ik}|}{|D_i|}\log_2\frac{|D_{ik}|}{|D_i|}.
+\]
+该式只依赖有限计数，可在每个候选特征上重复计算。
+
+\phantomsection\label{struct:V2-C04-CH12}
+\begin{theorem}[经验信息增益的非负性]\label{thm:V2-C04-gain-nonnegative}
+对当前结点上的任意离散特征$A$与类别$Y$，有$g(D,A)\ge0$。等号成立当且仅当经验联合分布中$A$与$Y$独立，即每个非空特征取值组的类别比例都与父结点相同。
+\end{theorem}
+
+\phantomsection\label{struct:V2-C04-CH13}
+% KNOWLEDGE-PLAN: KN-V2-C15-PROOF-001 L1
+\paragraph{读前自检：证明：经验信息增益的非负性。}在“等号要求每个正概率项满足$r_{ik}/p_{ik}=1$，即$p_{ik}=p_iq_k$”成立时处理经验信息增益的非负性：请把$\sum_{i,k}p_{ik}\ln\frac{p_{ik}}{r_{ik}} \ge\sum_{i,k}(p_{ik}-r_{ik})$用到的关键定义展开并完成下一步变形，并以对自然对数使用$-\ln u\ge1-u$，并取$u=r_{ik}/p_{ik}$判定结果。\par
+
+\begin{proof}
+令$p_{ik}=|D_{ik}|/|D|$、$p_i=|D_i|/|D|$、$q_k=|C_k|/|D|$。把熵差展开并合并同类项可写成
+\[
+g(D,A)=\sum_{i,k:p_{ik}>0}p_{ik}\log_2\frac{p_{ik}}{p_iq_k}.
+\]
+令$r_{ik}=p_iq_k$。对自然对数使用$-\ln u\ge1-u$，并取$u=r_{ik}/p_{ik}$，得到
+\[
+\sum_{i,k}p_{ik}\ln\frac{p_{ik}}{r_{ik}}
+\ge\sum_{i,k}(p_{ik}-r_{ik})=1-1=0.
+\]
+换底只乘以正数$1/\ln2$，所以$g(D,A)\ge0$。等号要求每个正概率项满足$r_{ik}/p_{ik}=1$，即$p_{ik}=p_iq_k$；这正是经验独立性。反过来，若经验独立，则每个对数比为零，信息增益也为零。
+\end{proof}
+
+\phantomsection\label{struct:V2-C04-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}一次轴对齐测试把当前矩形或离散单元切成若干子区域；递归测试把特征空间细化为叶区域。树越深，划分边界越曲折，能表示的局部模式越多，同时每个区域可用于估计条件概率的样本通常越少。
+\end{geometrybox}
+
+\phantomsection\label{struct:V2-C04-CH15}
+\begin{probabilitybox}
+$H(D)$是当前叶区域内类别随机变量的经验不确定性，$H(D\mid A)$是观察特征取值后的剩余不确定性。信息增益是二者之差；信息增益比再除以特征取值的不确定性，以抑制仅靠大量取值记忆样本的候选。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V2-C04-CH16}
+% KNOWLEDGE-PLAN: KN-V2-C15-CONCEPT-008 L1
+\paragraph{读前自检：优化解释：每个结点执行有限候选集合上的局部最优化：ID3最大化信息增益。}决策树结点在有限候选切分中比较ID3信息增益或CART不纯度下降；请对一个候选按子集容量加权计算切分后不纯度，核对只有目标改善最大的候选被选中。\par
+
+\begin{optimizationbox}
+\textbf{优化解释。}每个结点执行有限候选集合上的局部最优化：ID3最大化信息增益；经典C4.5先保留信息增益不低于候选平均值的切分，再在该子集中最大化信息增益比；CART最小化加权平方误差或加权基尼指数。若跳过C4.5的第一层筛选，只能称为“直接最大化增益比的教学简化版”。局部最优切分不保证整棵树的全局最优，因此还需停止规则和剪枝控制模型复杂度。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V2-C04-CH17}
+% FIGURE-KNOWLEDGE: fig:V2-C04-tree-partition=SLM-05-01-003
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C04/fig_v2_c04_tree_partition.tex}
+图\ref{fig:V2-C04-tree-partition}左侧的每条根到叶路径都对应右侧一个互斥区域；叶结点输出只在该区域内生效。全部叶区域的并集覆盖输入空间时，树模型才对每个输入给出唯一预测。
+
+\phantomsection\label{struct:V2-C04-CH18}
+\begin{example}[八样本二叉划分的信息增益]\label{exm:V2-C04-information-gain}
+父结点有8个样本，正负类各4个。特征$A$把样本分成两个容量均为4的子集，其正负计数分别为$(3,1)$和$(1,3)$。求特征$A$的信息增益。
+\end{example}
+\SLExampleSolutionHeading{exm:V2-C04-information-gain}
+\begin{solution}
+\SLReadTranslation{要计算特征$A$带来的信息增益：先求划分前的类别熵，再求两个容量相同子集的加权条件熵，二者作差。}
+\SolGiven 父结点共有八个样本，正负类各四个；两个子集容量均为四，类别计数分别为$(3,1)$与$(1,3)$。本题统一使用以$2$为底的对数，结果单位为bit。
+\SLMethodTrigger{信息增益定义为$g(D,A)=H(D)-H(D\mid A)$；条件熵必须按子集容量$|D_v|/|D|$加权，而不是对熵值再作无依据缩放。}
+\SolPlan 依次计算父熵、两个子熵与权重和，再得到条件熵和熵差；最后用四格经验联合分布计算互信息作独立核验。
+\SolDerive
+父结点熵为
+\[
+H(D)=-\frac12\log_2\frac12-\frac12\log_2\frac12=1.
+\]
+两个子集的熵相同：
+\[
+H(D_1)=H(D_2)
+=-\frac34\log_2\frac34-\frac14\log_2\frac14
+=2-\frac34\log_2 3\approx0.811278.
+\]
+容量权重之和为$4/8+4/8=1$，所以
+\[
+\begin{aligned}
+H(D\mid A)
+&=\frac48H(D_1)+\frac48H(D_2)\\
+&=2-\frac34\log_2 3,\\
+g(D,A)&=\frac34\log_2 3-1\approx0.188722.
+\end{aligned}
+\]
+\SolCheck 直接由$2\times2$经验联合表核验：四格概率为$3/8,1/8,1/8,3/8$，类别与特征边缘都为$1/2$，故
+\[
+I(Y;A)=2\cdot\frac38\log_2\frac{3/8}{1/4}
++2\cdot\frac18\log_2\frac{1/8}{1/4}
+\approx0.188722,
+\]
+与熵差一致，且$0\leq g(D,A)\leq H(D)=1$。
+\SolAnswer 特征$A$的信息增益为$g(D,A)=\frac34\log_2 3-1\approx0.188722$ bit。
+\end{solution}
+
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-007 L1
+\paragraph{读前自检：ID3算法。}ID3在当前结点计算全部候选特征的信息增益并按冻结并列规则取最大者；请核对最大增益低于停止阈值时叶化，否则按该特征各取值建立分支，且流程不包含后剪枝。\par
+
+\SLTeachSection{ID3与C4.5生成算法}{sec:V2-C04-S04}
+\knowledgeanchor{SLM-05-02-005}{ID3算法}
+ID3在每个结点选择信息增益最大的特征，按该特征的不同取值建立多个分支。它只负责生成树，不包含后剪枝；若阈值过小且特征较多，容易形成对训练数据过细的划分。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-008 L1
+\paragraph{读前自检：决策树的生成。}决策树的生成中的“生成过程从根结点开始，把当前结点的数据和可用特征视为一个状态”决定可执行范围；请构造一个满足条件的最小结点状态并执行一次分支或停止判断，结果须满足否则选择划分、建立子结点，并把新的数据子集与删去已用离散特征后的候选集合传给子结点。\par
+
+\knowledgeanchor{SLM-05-03-002}{决策树的生成}
+生成过程从根结点开始，把当前结点的数据和可用特征视为一个状态。若状态满足叶条件就赋予多数类；否则选择划分、建立子结点，并把新的数据子集与删去已用离散特征后的候选集合传给子结点。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-CONCEPT-009 L1
+\paragraph{读前自检：ID3的递归过程。}对ID3当前结点依次检查固定停止顺序：样本已纯、候选特征为空、最佳信息增益低于阈值；请分别写出叶标签，核对后两种情形均采用当前数据多数类。\par
+
+\knowledgeanchor{SLM-05-03-003}{ID3的递归过程}
+若当前数据全部属于同一类，叶标签就是该类；若特征集合为空，叶标签取当前数据中的多数类；若最佳信息增益低于阈值，停止继续划分，同样用多数类作为叶标签。这三类停止条件分别对应纯度、表示资源和最小改进。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-009 L1
+\paragraph{读前自检：C4 5生成算法。}C4.5生成算法在当前结点的有限候选集$\mathcal C_t$上，先保留$g(D_t,A)\ge |\mathcal C_t|^{-1}\sum_{B\in\mathcal C_t}g(D_t,B)$且$H_A(D_t)>0$的候选形成$\mathcal C_t^+$；请对一个给定候选$A$计算这两个量，判定它是否进入$\mathcal C_t^+$，再只在$\mathcal C_t^+$中比较信息增益比。\par
+
+\knowledgeanchor{SLM-05-03-005}{C4.5生成算法}
+C4.5的递归框架与ID3相同，但经典选择规则不是在全部候选上直接最大化信息增益比。设当前结点的合法切分候选为有限集$\mathcal C_t$，先计算
+\[
+\overline g_t=\frac{1}{|\mathcal C_t|}\sum_{c\in\mathcal C_t}g(D_t,c),
+\qquad
+\mathcal C_t^+=\{c\in\mathcal C_t:g(D_t,c)\geq\overline g_t\},
+\]
+再在$\mathcal C_t^+$中选取信息增益比最大的候选；分母为零的候选不进入$\mathcal C_t^+$。这样先保证原始信息增益不低，再比较归一化比值，避免一个增益与切分熵都很小的候选仅凭不稳定比值胜出。若实现使用另一个预先固定的增益阈值，必须明确标为变体并记录阈值。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-010 L1
+\paragraph{读前自检：C4 5的算法步骤。}C4.5对离散特征采用多叉分支、对连续特征枚举阈值形成二分测试；请核对训练后保存分支规则、叶标签、默认路径与缺失值约定，并验证预测阶段不从测试数据重估这些规则。\par
+
+\knowledgeanchor{SLM-05-03-004}{C4.5的算法步骤}
+ID3与C4.5对离散特征可采用多叉分支；连续特征通常需要先枚举阈值形成二分测试。训练阶段必须保存分支规则、叶标签、默认路径和缺失值处理约定，预测时不能重新从测试数据估计这些规则。
+
+\phantomsection\label{struct:V2-C04-CH19}
+\phantomsection\label{struct:V2-C04-CH20}
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-011 L1
+\paragraph{读前自检：ID3/C4 5统一递归生成流程：执行契约。}ID3/C4.5统一递归流程以非空训练集$D$、候选特征与准则$q$为输入；请处理一个队首结点：满足纯度、容量、深度或改进停止条件时叶化，否则核验指标和严格分割后原子提交切分与子任务，并在队列$Q$为空时停止。\par
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-012 L2
+\begin{keypointbox}[title={ID3/C4.5统一递归生成流程：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={训练集$D$、候选特征及类型、ID3/C4.5准则$q$与停止参数},
+  output={最后合法部分或完整树$T$、实际处理结点数$v$、状态与诊断},
+  preconditions={$D\ne\varnothing$；类别与特征类型合法；阈值、容量、深度、并列和缺失规则有效},
+  initialization={$T=\varnothing,Q=\varnothing,v=0$；验证后建立含待处理根的部分树},
+  loop={从$Q$逐个处理结点状态$(D_t,\mathcal A_t,h_t)$直至任务耗尽},
+  update={叶化或经有限指标和分割不变量核验后原子提交切分、子节点与任务},
+  domain={熵、信息增益和增益比必须有限；子集互斥、覆盖父集且沿分支严格缩小},
+  failure={输入契约失败返回$\mathtt{invalid\_input}$；指标或划分不变量失败返回$\mathtt{numerical\_failure}$并保留旧部分树},
+  stop={$Q$为空或首次失败时停止；纯度、特征、容量、改进和深度条件只把当前结点叶化},
+  budget={$h_{\max}$限制结构深度；有限样本和候选保证有限结点处理，无额外运行轮数预算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$v$只在一个结点成功叶化或切分提交后增加},
+  diagnostics={失败结点和候选；成功时记录叶数、最大深度、候选数与并列次数},
+  complexity={按结点枚举有限候选；总成本由结点样本量、特征数和阈值候选数之和决定}
+}
+\begin{algorithm}[H]
+\caption{ID3/C4.5统一递归生成流程}\label{alg:V2-C04-id3-c45}
+\KwIn{{\normalfont 训练集$D$；可用特征集$\mathcal A$及类型$\operatorname{type}(A)\in\{\mathrm{discrete},\mathrm{continuous}\}$；准则$q\in\{\mathrm{gain},\mathrm{ratio}\}$}}
+\KwOut{{\normalfont 最后合法的部分或完整决策树$T$、实际处理结点数$v$、$\mathtt{status}$与最终诊断}}
+\KwData{{\normalfont 改进阈值$\varepsilon\ge0$；最小叶容量$n_{\min}\ge1$；深度上限$h_{\max}\in\mathbb N$；预先固定的并列与缺失值规则}}
+$T\leftarrow\varnothing$，$Q\leftarrow\varnothing$，$v\leftarrow0$，诊断初始化为空\;
+若$D=\varnothing$、任务类别集合为空、样本或特征类型非法、$q$不合法、阈值参数越界、并列或缺失值规则未固定，则返回空树、$v=0$、$\mathtt{invalid\_input}$及字段诊断\;
+初始化根结点，令其状态为$(D,\mathcal A,0)$，建立$Q\leftarrow\{\mathrm{root}\}$，此时$T$是含一个待处理根的最后合法部分树\;
+\While{{\normalfont $Q$中存在未处理结点}}{
+  取出结点$t$及其状态$(D_t,\mathcal A_t,h_t)$
+  \If{{\normalfont $D_t$同类，或$\mathcal A_t=\varnothing$，或$|D_t|<2n_{\min}$，或$h_t=h_{\max}$}}{
+    将$t$置为叶结点，以$D_t$的多数类和类别频率作为输出；令$v\leftarrow v+1$并继续下一结点
+  }
+  对每个$A\in\mathcal A_t$枚举合法切分：离散特征枚举预定分组，连续特征枚举当前$D_t$上的有限阈值
+  \If{{\normalfont 候选集为空}}{将$t$置为多数类叶结点；令$v\leftarrow v+1$并继续下一结点}
+  为每个合法切分$c$计算$g(D_t,c)$；若$q=\mathrm{ratio}$，再计算切分熵非零时的$g_R(D_t,c)$
+  若任一熵、信息增益或增益比求值失败或非有限，则返回未改动的最后合法$T,v,\mathtt{numerical\_failure}$及结点、候选诊断\;
+  若$q=\mathrm{gain}$，在全部合法候选中最大化$g$；若$q=\mathrm{ratio}$，先保留$g\geq\overline g_t$者，再在其中最大化$g_R$
+  选择切分$c^*=(A^*,s^*)$，并按预定规则处理并列
+  \If{{\normalfont $c^*$的原始信息增益不超过$\varepsilon$}}{
+    将$t$置为多数类叶结点；令$v\leftarrow v+1$并继续下一结点
+  }
+  在临时状态按$c^*$建立至少两个候选子集$D_{t1},\ldots,D_{tr}$
+  若$\operatorname{type}(A^*)=\mathrm{discrete}$且按一次性多叉规则使用，令$\mathcal A_{ti}\leftarrow\mathcal A_t\setminus\{A^*\}$
+  若$\operatorname{type}(A^*)=\mathrm{continuous}$，令$\mathcal A_{ti}\leftarrow\mathcal A_t$并只在结点$t$记录阈值$s^*$
+  核验子集互斥、并集为$D_t$且沿每个分支严格缩小；失败则返回未改动的$T,v,\mathtt{numerical\_failure}$及划分不变量诊断\;
+  提交切分，对每个子结点写入状态$(D_{ti},\mathcal A_{ti},h_t+1)$并加入$Q$，令$v\leftarrow v+1$
+}
+返回完整$T,v,\mathtt{completed}$，最终诊断记录叶数、最大深度、数值候选数与并列处理次数\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+\noindent\textbf{停止与终止性。}当$Q$为空时停止，返回有限树$T$。每次有效切分都把当前样本集分成非空真子集，所以沿任一路径样本数严格减少；同时深度显式受$h_{\max}$限制，且当前样本上的连续阈值候选有限。因此路径长度至多$\min\{h_{\max},|D|-1\}$，即使连续特征在后继结点复用，流程也有限终止。
+
+\phantomsection\label{struct:V2-C04-CH21}
+\textbf{参数含义。}$q$决定使用信息增益还是信息增益比；$\varepsilon$控制必须达到的最小局部改进；$n_{\min}$限制叶结点容量。阈值越宽松，树通常越大，但生成阶段的树大小不能代替验证集上的模型选择。
+
+\phantomsection\label{struct:V2-C04-CH22}
+\textbf{初始化方法。}根结点接收全部训练样本和全部候选特征；多数类、并列处理、未见取值与缺失值规则应在训练前固定。连续特征候选阈值只能由当前训练子集产生。
+
+\phantomsection\label{struct:V2-C04-CH23}
+\textbf{参数更新规则。}每次扩张后，子结点的数据改为对应非空真子集；对一次性离散特征，从路径的候选集合删除已使用特征；连续特征保留在候选集合中，当前阈值只属于当前结点。结点输出的类别频率由该结点训练样本重新计算。
+
+\phantomsection\label{struct:V2-C04-CH24}
+\textbf{停止条件。}同类、无可用特征、容量不足、最佳改进不超过阈值或达到预定深度时停止。停止后叶标签取当前结点多数类，而不是全局多数类。
+
+\phantomsection\label{struct:V2-C04-CH25}
+\textbf{收敛与终止性。}该流程不是连续参数迭代的极限收敛；它依靠有限状态严格终止。每次有效扩张至少把一个结点变为内部结点，并使任一子路径上的样本数严格减少；深度还受$h_{\max}$限制。离散特征删除只是额外的有限性保证，不是连续特征情形的终止依据。
+
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-013 L1
+\paragraph{读前自检：决策树剪枝。}决策树剪枝以“完全生长的树往往把训练样本的偶然波动编码为细小分支”为约束；请构造一个满足条件的最小结点状态并执行一次分支或停止判断，并确认剪枝从已生成的树中收缩子树或删除叶结点，使父结点成为新叶，以较小的训练拟合损失增加换取明显的复杂度下降。\par
+
+\SLAdvancedSection{决策树剪枝}{sec:V2-C04-S05}
+\knowledgeanchor{SLM-05-04-001}{决策树剪枝}
+完全生长的树往往把训练样本的偶然波动编码为细小分支。剪枝从已生成的树中收缩子树或删除叶结点，使父结点成为新叶，以较小的训练拟合损失增加换取明显的复杂度下降。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-014 L1
+\paragraph{读前自检：树的剪枝算法。}树的剪枝算法输入“生成完成的有限树$T$、守恒结点计数与有限复杂度参数$\alpha$”，条件“$T$非空无环”；请做一轮“仅在候选树计数和代价核验成功后提交局部收缩并增加$p$”，以“$Q$为空或首次失败时停止”核对停止证书。\par
+
+\knowledgeanchor{SLM-05-04-002}{树的剪枝算法}
+对分类树$T$，设叶结点$t$有$N_t$个样本，其中第$k$类有$N_{tk}$个，叶经验熵为
+\[
+H_t(T)=-\sum_{k=1}^{K}\frac{N_{tk}}{N_t}\log\frac{N_{tk}}{N_t}.
+\]
+定义训练拟合项和代价复杂度目标
+\[
+C(T)=\sum_{t=1}^{|T|}N_tH_t(T),\qquad
+C_\alpha(T)=C(T)+\alpha|T|,\quad \alpha\ge0.
+\]
+$\alpha$越大，减少一个叶所节省的复杂度代价越重要；$\alpha=0$时只比较训练拟合。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-015 L2
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-016 L2
+\begin{keypointbox}[title={给定 的自底向上熵剪枝：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={生成完成的有限树$T$、守恒结点计数与有限复杂度参数$\alpha$},
+  output={最后合法剪枝树$T_\alpha$、实际比较数$v$、剪枝数$p$、状态与诊断},
+  preconditions={$T$非空无环；计数非负整数且父子守恒；$\alpha\ge0$有限},
+  initialization={$T'=T,Q=\varnothing,v=p=0$；验证后把内部结点按非增深度放入$Q$},
+  loop={每次从有限工作表$Q$取一个内部结点，比较其当前保留贡献与收缩贡献},
+  update={仅在候选树计数和代价核验成功后提交局部收缩并增加$p$},
+  domain={经验熵与$C_\alpha$贡献必须为有限实数；树计数不变量始终保持},
+  failure={非法树、计数或$\alpha$返回$\mathtt{invalid\_input}$；代价或候选树核验失败返回$\mathtt{numerical\_failure}$并保留旧$T'$},
+  stop={$Q$为空或首次失败时停止；局部无改进仅保留该结点并继续},
+  budget={每个原树内部结点至多比较一次，共至多$|I(T)|$次；无需外加迭代预算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$v$记录实际局部代价比较；$p$记录成功提交的收缩},
+  diagnostics={失败结点和代价值；成功时记录最终$C_\alpha$、叶数与无改进证书},
+  complexity={朴素重算可达$O(V^2)$；缓存后序统计可降低每次局部比较成本}
+}
+\begin{algorithm}[H]
+\caption{给定$\alpha$的自底向上熵剪枝}\label{alg:V2-C04-entropy-prune}
+\KwIn{生成完成的树$T$；各结点训练样本计数；复杂度参数$\alpha\ge0$}
+\KwOut{$C_\alpha$不再因局部收缩而下降的最后合法子树$T_\alpha$、实际比较数$v$、实际剪枝数$p$、$\mathtt{status}$与最终诊断}
+初始化当前树$T'\leftarrow T$、工作表$Q\leftarrow\varnothing$、$v\leftarrow0$、$p\leftarrow0$，诊断为空\;
+若$T$为空、$\alpha$非有限或$\alpha<0$，或结点计数缺失、为负、非整数或前后不守恒，则返回未改动的$T'$、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+把原树内部结点按深度非增、固定并列次序放入$Q$\;
+\While{$Q\ne\varnothing$}{
+  从$Q$取出下一内部结点$t$\;
+  在临时变量中计算保留以$t$为根子树和收缩为多数类单叶时的局部$C_\alpha$贡献\;
+  若任一熵、代价或差值求值失败或非有限，则返回未改动的最后合法$T',v,p,\mathtt{numerical\_failure}$及失败结点诊断\;
+  $v\leftarrow v+1$\;
+  \If{收缩后的贡献不大于保留贡献}{在候选树中删除$t$的后代并把$t$置为叶；核验计数与代价后提交$T'$，令$p\leftarrow p+1$；核验失败则返回原$T'$与$\mathtt{numerical\_failure}$诊断}
+}
+返回$T_\alpha\leftarrow T',v,p,\mathtt{completed}$，最终诊断记录最终$C_\alpha$、叶数和“无可改进局部收缩”\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+剪枝比较只需计算被收缩子树与新叶的局部目标差，因为树外部分在两个候选中完全相同。验证集仍应用于选择$\alpha$或候选子树；训练目标较小并不保证样本外误差较小。
+
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-017 L1
+\paragraph{读前自检：CART算法。}CART先生成充分生长树，再按代价复杂度构造由大到小的嵌套子树序列；请用独立验证损失比较该序列，核对最终树来自序列且测试集未参与选择。\par
+
+\SLAdvancedSection{CART分类与回归树}{sec:V2-C04-S06}
+\knowledgeanchor{SLM-05-05-001}{CART算法}
+CART统一处理分类和回归，并约束每个内部结点执行二叉切分。生成阶段尽量生长较大的树，剪枝阶段构造嵌套子树序列，再用独立验证信息选择最终子树。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-CONCEPT-010 L1
+\paragraph{读前自检：CART生成。}CART回归树在候选切分$(j,s)$下形成$R_1,R_2$；请先把各区响应均值代入$c_1,c_2$，再计算两区平方残差和，核对使该和最小的$(j,s)$才被提交。\par
+
+\knowledgeanchor{SLM-05-05-002}{CART生成}
+回归树使用平方误差最小化选择切分变量$j$与切分点$s$：
+\[
+R_1(j,s)=\{x:x^{(j)}\le s\},\qquad
+R_2(j,s)=\{x:x^{(j)}>s\},
+\]
+\[
+\min_{j,s}\left[
+\min_{c_1}\sum_{x_i\in R_1(j,s)}(y_i-c_1)^2+
+\min_{c_2}\sum_{x_i\in R_2(j,s)}(y_i-c_2)^2
+\right].
+\]
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-018 L1
+\paragraph{读前自检：最小二乘回归树生成算法。}最小二乘回归树最终得到区域$R_1,\ldots,R_M$；请计算每区均值$\widehat c_m=N_m^{-1}\sum_{x_i\in R_m}y_i$并写出$f(x)=\sum_{m=1}^M\widehat c_m\mathbf1\{x\in R_m\}$，核对每个$x$只落入一个区域。\par
+
+\knowledgeanchor{SLM-05-05-003}{最小二乘回归树生成算法}
+选定切分后，对两个子区域继续递归划分。最终区域为$R_1,\ldots,R_M$时，回归树写为
+\[
+f(x)=\sum_{m=1}^{M}\widehat c_m\mathbf1\{x\in R_m\},\qquad
+\widehat c_m=\frac1{N_m}\sum_{x_i\in R_m}y_i.
+\]
+
+% KNOWLEDGE-PLAN: KN-V2-C15-THEOREM-002 L1
+\paragraph{读前自检：平方误差叶结点的最优常数。}给定非空叶区域响应$y_1,\ldots,y_m$，请对$Q(c)=\sum_{i=1}^m(y_i-c)^2$求导，核对唯一驻点$c=\bar y=m^{-1}\sum_i y_i$且二阶导数为$2m>0$。\par
+
+\begin{theorem}[平方误差叶结点的最优常数]\label{thm:V2-C04-leaf-mean}
+给定非空叶区域$R$及其中响应$y_1,\ldots,y_m$，函数$Q(c)=\sum_{i=1}^{m}(y_i-c)^2$的唯一最小点为样本均值$\bar y=m^{-1}\sum_i y_i$。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V2-C15-PROOF-002 L1
+\paragraph{读前自检：证明：平方误差叶结点的最优常数。}围绕平方误差叶结点的最优常数，先采用条件“对任意$c$，写$y_i-c=(y_i-\bar y)+(\bar y-c)$”，再把$Q(c)$用到的关键定义展开并完成下一步变形；最后验证因此$\bar y$取得唯一最小值。\par
+
+\begin{proof}
+对任意$c$，写$y_i-c=(y_i-\bar y)+(\bar y-c)$。展开平方和得
+\[
+Q(c)=\sum_i(y_i-\bar y)^2+2(\bar y-c)\sum_i(y_i-\bar y)+m(\bar y-c)^2.
+\]
+由均值定义，$\sum_i(y_i-\bar y)=0$，所以中间项为零。第一项与$c$无关，第三项非负且仅在$c=\bar y$时为零。因此$\bar y$取得唯一最小值。
+\end{proof}
+
+\knowledgeanchor{SLM-05-04-003}{基尼指数}
+分类问题中，类别概率为$p_1,\ldots,p_K$时，基尼指数为
+\[
+\operatorname{Gini}(p)=\sum_{k=1}^{K}p_k(1-p_k)=1-\sum_{k=1}^{K}p_k^2.
+\]
+样本集合$D$的经验基尼指数为$1-\sum_k(|C_k|/|D|)^2$。若测试把$D$分成$D_1,D_2$，则切分后的加权基尼指数为
+\[
+\operatorname{Gini}(D,A)=\frac{|D_1|}{|D|}\operatorname{Gini}(D_1)
++\frac{|D_2|}{|D|}\operatorname{Gini}(D_2).
+\]
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-019 L1
+\paragraph{读前自检：CART生成算法。}CART生成算法中的“分类CART枚举特征与二值切分，选择加权基尼指数最小的候选”决定可执行范围；请把“分类CART枚举特征与二值切分，选择加权基尼指数最小的候选”中的已声明对象代回CART生成算法的定义，结果须满足两者使用同一递归骨架，但叶输出和局部损失不同，不能把基尼指数用于连续响应回归。\par
+
+\knowledgeanchor{SLM-05-06-001}{CART生成算法}
+分类CART枚举特征与二值切分，选择加权基尼指数最小的候选；回归CART选择子区域平方误差和最小的候选。两者使用同一递归骨架，但叶输出和局部损失不同，不能把基尼指数用于连续响应回归。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-020 L1
+\paragraph{读前自检：CART生成与候选树构造：执行契约。}CART生成与候选树构造输入“有限训练集$D$、分类或回归任务类型$r$与CART停止参数”，条件“$D\ne\varnothing$”；请执行“有限损失与严格二分不变量核验后才提交左右子结点并增加$v$”，以“$Q$为空或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-021 L1
+\paragraph{读前自检：CART生成与候选树构造。}CART生成与候选树构造输入“有限训练集$D$、分类或回归任务类型$r$与CART停止参数”，条件“$D\ne\varnothing$”；请做一轮“有限损失与严格二分不变量核验后才提交左右子结点并增加$v$”，以“$Q$为空或首次失败时停止”核对停止证书。\par
+
+\begin{AlgorithmContract}{
+  input={有限训练集$D$、分类或回归任务类型$r$与CART停止参数},
+  output={最后合法部分或充分生长树$T_0$、结点统计、处理结点数$v$、状态与诊断},
+  preconditions={$D\ne\varnothing$；任务类型合法；样本和响应有限；容量、下降、深度、并列和缺失规则有效},
+  initialization={$T_0=\varnothing,Q=\varnothing,v=0$；验证后建立含待处理根的部分树},
+  loop={从$Q$逐个结点枚举满足容量约束的二叉切分直至任务耗尽},
+  update={有限损失与严格二分不变量核验后才提交左右子结点并增加$v$},
+  domain={分类基尼或回归平方误差必须有限；左右子集非空、互斥、覆盖且严格缩小},
+  failure={输入契约失败返回$\mathtt{invalid\_input}$；损失、下降或划分核验失败返回$\mathtt{numerical\_failure}$并保留旧树},
+  stop={$Q$为空或首次失败时停止；无改进、无候选或达到深度时把当前结点叶化},
+  budget={$h_{\max}$是结构深度上限；有限样本和候选保证有限完成，无额外运行预算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$v$只在一个结点成功叶化或二分提交后增加},
+  diagnostics={失败结点和切分；成功时记录叶数、最大深度、候选数与最终训练损失},
+  complexity={预排序平衡树常为$O(dN\log N)$；退化树最坏$O(dN^2)$}
+}
+\begin{algorithm}[H]
+\caption{CART生成与候选树构造}\label{alg:V2-C04-cart-grow}
+\KwIn{训练集$D$；任务类型$r\in\{\mathrm{classification},\mathrm{regression}\}$}
+\KwOut{最后合法的部分或充分生长二叉树$T_0$、结点统计、实际处理结点数$v$、$\mathtt{status}$与最终诊断}
+\KwData{最小叶容量$n_{\min}$；最小损失下降$\eta$；最大深度$h_{\max}$；固定并列与缺失值规则}
+$T_0\leftarrow\varnothing$，$Q\leftarrow\varnothing$，$v\leftarrow0$，诊断初始化为空\;
+若$D=\varnothing$、任务类型$r$不合法、样本/响应非有限，容量、下降、深度参数越界，或并列/缺失值规则未固定，则返回空树、$v=0,\mathtt{invalid\_input}$及字段诊断\;
+初始化根结点状态为$D$，$Q\leftarrow\{\mathrm{root}\}$，把含待处理根的$T_0$作为最后合法部分树\;
+\While{$Q$非空}{
+  取出结点$t$\;
+  \If{$t$达到$h_{\max}$或所含样本少于$2n_{\min}$}{写入分类多数类/频率或回归均值；令$v\leftarrow v+1$并继续下一结点}
+  枚举所有满足两侧容量约束的$(j,s)$
+  \If{无合法切分}{写入分类多数类/频率或回归均值；令$v\leftarrow v+1$并继续下一结点}
+  分类时计算加权基尼指数，回归时计算两侧最小平方误差和
+  若任一候选损失、叶统计或下降量求值失败或非有限，则返回未改动的最后合法$T_0,v,\mathtt{numerical\_failure}$及结点、候选诊断\;
+  选择目标最小的$(j^*,s^*)$，并计算相对父结点的损失下降
+  \If{下降不超过$\eta$}{
+    分类叶输出多数类和频率；回归叶输出响应均值；令$v\leftarrow v+1$并继续下一结点
+  }
+  在临时状态按$(j^*,s^*)$建立左右非空真子集；若容量、互斥、覆盖或严格缩小不变量失败，则返回未改动的$T_0,v,\mathtt{numerical\_failure}$及划分诊断\;
+  提交左右子结点，写入统计并加入$Q$，令$v\leftarrow v+1$
+}
+返回有限树$T_0,v,\mathtt{completed}$，最终诊断记录叶数、最大深度、候选求值数和最终训练损失\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+% KNOWLEDGE-PLAN: KN-V2-C15-CONCEPT-012 L1
+\paragraph{读前自检：CART剪枝。}CART剪枝对内部结点$t$比较单叶损失$C(t)$与子树损失$C(T_t)$；请由两者代价取等推得$g(t)=[C(t)-C(T_t)]/(|T_t|-1)$，并核对分子两项采用同一损失口径。\par
+
+\knowledgeanchor{SLM-05-05-004}{CART剪枝}
+CART从充分生长树$T_0$出发，经典代价复杂度剪枝使用
+\[
+C_\alpha(T)=C(T)+\alpha|T|
+\]
+评价子树。经典分类CART的$C(T)$取叶内重代入误分类风险，回归CART取叶内平方误差；用叶内Gini和代替分类误分类风险是常见的教学或工程简化变体，必须在实现中单独标明，并始终用同一损失计算$C(t)$与$C(T_t)$。随着$\alpha$增大，最优子树从大到小变化。
+
+对内部结点$t$，记以$t$为根的子树为$T_t$。把$T_t$收缩为单叶$t$时，两者代价相等的临界参数满足
+\[
+C(t)+\alpha=C(T_t)+\alpha|T_t|,
+\]
+所以
+\[
+g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}.
+\]
+当前树中$g(t)$最小的内部结点最先成为“最弱环节”；同时剪去所有达到最小值的结点，可生成嵌套子树序列。
+
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-022 L1
+\paragraph{读前自检：CART最弱环节剪枝算法。}CART最弱环节剪枝算法输入“有限充分生长树$T_0$、一致口径的结点与子树训练损失、独立验证集和固定并列规则”，条件“$T_0$非空有限且无环”；请做一轮“在临时表核验分母和损失，生成严格更小的候选树后才提交$T$并加入$\mathcal S$”，以“树收缩为根叶后完成序列，再以验证损失选树”核对停止证书。\par
+
+\knowledgeanchor{SLM-05-07-001}{CART最弱环节剪枝算法}
+% KNOWLEDGE-PLAN: KN-V2-C15-ALGORITHM_IDEA-023 L1
+\paragraph{读前自检：CART最弱环节剪枝。}CART最弱环节剪枝输入“有限充分生长树$T_0$、一致口径的结点与子树训练损失、独立验证集和固定并列规则”，条件“$T_0$非空有限且无环”；请做一轮“在临时表核验分母和损失，生成严格更小的候选树后才提交$T$并加入$\mathcal S$”，以“树收缩为根叶后完成序列，再以验证损失选树”核对停止证书。\par
+
+\begin{keypointbox}[title={CART最弱环节剪枝：五步阅读}]
+\textbf{输入。}写出充分生长树、统一口径的训练损失、独立验证集与并列规则。\par
+\textbf{初始化。}从$T=T_0$、$\mathcal S=\{T_0\}$和零计数开始。\par
+\textbf{核心更新。}计算所有内部结点的$g(t)$，同时剪去最小者，并只提交严格变小的候选树。\par
+\textbf{数学停止。}树收缩为根叶时序列构造有限终止；这不是连续参数收敛。\par
+\textbf{输出。}返回嵌套序列、验证选中的$T^*$、实际计数、中心状态和诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限充分生长树$T_0$、一致口径的结点与子树训练损失、独立验证集和固定并列规则},
+  output={最后合法嵌套子树序列$\mathcal S$、验证选择$T^*$、剪枝轮数、评价数、状态与诊断},
+  preconditions={$T_0$非空有限且无环；叶计数合法；训练与验证损失有限并使用同一任务口径},
+  initialization={$T=T_0,\mathcal S=\{T_0\},k=0,v=0,T^*=\bot$且诊断为空},
+  loop={当前树不只含根叶时，自底向上计算全部内部结点的$g(t)$并同时剪去最小者},
+  update={在临时表核验分母和损失，生成严格更小的候选树后才提交$T$并加入$\mathcal S$},
+  domain={$|T_t|\ge2$的内部子树才计算$g(t)$；损失、$g(t)$与验证分数均须为有限实数},
+  failure={树、损失或验证输入违规返回$\mathtt{invalid\_input}$；计算或严格减小不变量失败返回$\mathtt{numerical\_failure}$},
+  stop={树收缩为根叶后完成序列，再以验证损失选树；任何失败立即保留最后合法序列并停止},
+  budget={有限树每轮至少删除一个内部结点，因而剪枝轮数不超过$|T_0|-1$；不以外部轮数冒充收敛},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$k$只在候选树严格缩小并提交后增加；$v$计合法完成的$g(t)$评价},
+  diagnostics={失败结点或树序号、候选数、每轮最小$g(t)$、并列剪枝数、所选索引与验证损失},
+  complexity={缓存子树统计并逐轮全表扫描为$O(V^2)$时间与$O(V)$空间，$V=|T_0|$}
+}
+\begin{algorithm}[H]
+\caption{CART最弱环节剪枝}\label{alg:V2-C04-cart-prune}
+\KwIn{充分生长树$T_0$及每个结点、子树的训练损失；独立验证集与固定并列规则}
+\KwOut{最后合法嵌套序列$\mathcal S=(T_0,\ldots,T_k)$、验证选择$T^*$、实际剪枝轮数$k$、实际$g(t)$评价数$v$、$\mathtt{status}$与最终诊断}
+$k\leftarrow0$，$v\leftarrow0$，当前树$T\leftarrow\varnothing$，候选序列$\mathcal S\leftarrow\varnothing$，$T^*\leftarrow\bot$，诊断初始化为空\;
+若$T_0$为空、损失缺失或非有限、叶计数不合法、树结构含环或验证集/并列规则不可用，则返回空序列、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+$T\leftarrow T_0$，$\mathcal S\leftarrow\{T_0\}$；若$T$只含根叶，则令$T^*\leftarrow T_0$并返回$\mathcal S,T^*,k=0,v=0,\mathtt{completed}$及“无需剪枝”诊断\;
+\While{$T$不只含根叶}{
+  自底向上在临时表计算每个内部结点$t$的$g(t)=[C(t)-C(T_t)]/(|T_t|-1)$，每次合法计算令$v\leftarrow v+1$\;
+  若分母非正、任一$g(t)$求值失败或非有限，则返回最后合法$\mathcal S$、未定义$T^*$、$k,v,\mathtt{numerical\_failure}$及失败结点诊断\;
+  令$\alpha_k\leftarrow\min_t g(t)$；在候选树中同时把所有满足$g(t)=\alpha_k$的最弱子树收缩为叶并更新输出\;
+  若候选树未严格减少结点、损失或统计不合法，则返回未改动的$T,\mathcal S,k,v,\mathtt{numerical\_failure}$及剪枝不变量诊断\;
+  提交候选树为$T$\;
+  令$k\leftarrow k+1$，把更新后的树记为$T_k$并加入$\mathcal S$
+}
+在独立验证集上评价$\mathcal S$中的每棵树；若任一验证损失非有限，则返回完整候选序列、未定义$T^*$、$k,v,\mathtt{numerical\_failure}$及树序号诊断\;
+按预定并列规则选择$T^*$，返回$\mathcal S,T^*,k,v,\mathtt{completed}$，最终诊断记录候选数、所选树索引与验证损失\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{工程层只需核验树无环、损失有限、每轮结点数严格减少，并记录验证并列规则；同一轮必须同时剪去全部最小$g(t)$子树，才能得到可复现的嵌套序列。}
+
+\textbf{有限步终止。}生成、局部剪枝与最弱环节剪枝都在有限样本、有限特征和有限树结点上执行，每次生成使可用特征或深度预算减少，每次剪枝使结点数严格减少，因此有限终止；它们不是连续参数迭代。输入不满足条件、损失不是有限实数或验证集不可用时，算法停止并说明原因。
+
+\phantomsection\label{struct:V2-C04-CH26}
+\phantomsection\label{struct:V2-C04-CH27}
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界假设$d$个特征可逐结点顺序访问；“重新排序”与“预排序”分别按文中两种实现计，结点统计可缓存并原位更新。平衡树界需要树高为对数量级，链式退化树使用最坏界；复制数据而非保存索引会额外增加内存。
+设样本数为$N$、特征数为$d$、最终树结点数为$|T|$、树高为$h$，待预测样本数为$M$。
+
+\textbf{训练复杂度。}若每个数值特征在结点内重新排序，含$m$个样本的结点扫描成本为$O(dm\log m)$；预排序并维护计数可把一次扫描降至$O(dm)$。平衡树的总扫描量常为$O(dN\log N)$，高度接近$N$时最坏可达$O(dN^2)$。
+
+令充分生长树有$V=|T_0|$个结点。最弱环节剪枝若每一阶段都遍历全部内部结点，并为每个候选重新遍历其整棵子树以计算$C(T_t)$与$|T_t|$，至多$O(V)$个阶段给出朴素上界$O(V^3)$时间、$O(V)$额外空间；若先以后序遍历缓存每个结点的叶数和子树损失，但每阶段仍全表扫描，则时间降为$O(V^2)$。进一步维护父指针、缓存统计和以$g(t)$为键的可更新优先队列时，初始化为$O(V)$，每次剪枝只更新受影响祖先；总时间可写成$O(Vh\log V)$、额外空间$O(V)$，其中$h$为树高。平衡树时该界为$O(V\log^2V)$，退化链仍可能达到$O(V^2\log V)$；这些增量界都依赖缓存与堆实现，不能无条件称为近线性。
+
+\textbf{预测复杂度。}单个输入沿一条根到叶路径执行至多$h$次特征判断，时间为$O(h)$；$M$个输入为$O(Mh)$。平衡树常有$h=O(\log |T|)$，退化链式树则有$h=O(|T|)$。
+
+\textbf{存储复杂度。}保存数据与特征通常需要$O(Nd)$空间，树结构和结点统计需要$O(|T|)$空间；深度优先遍历额外栈空间为$O(h)$。若为每个结点复制完整样本矩阵，内存会远高于$O(Nd+|T|+h)$这一存储界，实践中应保存样本索引或原位分区。
+\end{complexitybox}
+
+
+\SLAdvancedSection{例题、树模型计算与练习}{sec:V2-C04-S07}
+以下例题把前六节的模型与算法串联为统一流程，用于比较树的生成、剪枝、预测与评价步骤。
+
+\phantomsection\label{replay:V2-C04-S07-SLM-05-02-005}
+\textbf{ID3复现。}在每个训练子集计算信息增益，按最大值生成多叉树，并把阈值、并列规则与叶容量一并记录。
+
+\phantomsection\label{replay:V2-C04-S07-SLM-05-03-004}
+\textbf{C4.5复现。}保持相同递归骨架，把局部准则换为信息增益比，并排除取值熵为零或原始增益不足的候选。
+
+\phantomsection\label{replay:V2-C04-S07-SLM-05-04-002}
+\textbf{熵剪枝复现。}对固定$\alpha$自底向上比较子树和单叶的$C_\alpha$，直到没有局部收缩能降低目标。
+
+\phantomsection\label{replay:V2-C04-S07-SLM-05-05-003}
+\textbf{最小二乘树复现。}每个连续特征扫描候选阈值，选择左右区域平方误差和最小的切分，叶输出取区域响应均值。
+
+\phantomsection\label{replay:V2-C04-S07-SLM-05-06-001}
+\textbf{CART生成复现。}分类任务最小化加权基尼指数，回归任务最小化平方误差；两者都生成二叉树并保存结点统计。
+
+\phantomsection\label{replay:V2-C04-S07-SLM-05-07-001}
+\textbf{CART剪枝复现。}由$g(t)$最小的内部结点逐轮产生嵌套子树，再用独立验证数据选择最终模型，测试数据只用于一次最终评估。
+
+\phantomsection\label{struct:V2-C04-CH28}
+\phantomsection\label{struct:V2-C04-CH29}
+\begin{applicabilitybox}
+\textbf{适用条件。}决策树适合同时含离散与连续特征、需要规则解释、特征交互明显或不宜假设线性边界的任务；CART还能统一处理分类和回归。数据应覆盖将要部署的主要分支，叶容量要足以估计输出。
+
+\textbf{方法局限。}贪心生成不保证全局最优；小数据扰动可能改变上层切分；轴对齐树表示斜边界时可能需要很多叶；未经校准的叶频率在小叶上不稳定；高基数特征、缺失值和类别不平衡都需要专门处理。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V2-C04-CH30}
+% KNOWLEDGE-PLAN: KN-V2-C15-BOUNDARY-004 L1
+\paragraph{读前自检：常见错误与误用边界：例题、树模型计算与练习。}决策树计算若漏掉子集容量权重，会把很小的纯叶与大叶等量对待；请用$H(D\mid A)=\sum_v |D_v|H(D_v)/|D|$重算一次，核对各权重非负且和为1。\par
+
+\begin{warningbox}
+典型误用包括：条件熵不按子集容量加权；把信息增益与信息增益比混为同一量；对$H_A(D)=0$执行除法；把ID3误写成基尼准则；把CART分类树写成多叉树；回归叶不取均值；用测试集选择深度或子树；只报告训练纯度；剪枝时删除单个叶而破坏完备路径；在最弱环节公式中把分母写成$|T_t|$而漏掉减1。
+\end{warningbox}
+
+\phantomsection\label{struct:V2-C04-CH31}
+% KNOWLEDGE-PLAN: KN-V2-C15-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：例题、树模型计算与练习。}对例题、树模型计算与练习，条件“对比表首个数据行是“局部准则｜信息增益最大｜先筛选不低于平均增益，再令增益比最大｜分类基尼最小；回归平方误差最小””不可省；请按列复述“局部准则｜信息增益最大｜先筛选不低于平均增益，再令增益比最大｜分类基尼最小；回归平方误差最小”中的对象、假设与结论，再用各列均对应首行对象“局部准则”，且未与表中下一行互换作检查。\par
+
+\begin{comparisonbox}
+\par\medskip
+\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{1.65cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\toprule 维度 & ID3 & C4.5 & CART\\ \midrule
+局部准则 & 信息增益最大 & 先筛选不低于平均增益，再令增益比最大 & 分类基尼最小；回归平方误差最小\\
+典型分支 & 离散特征多叉 & 离散多叉并可扩展连续阈值 & 始终二叉\\
+任务 & 主要用于分类 & 主要用于分类 & 分类与回归\\
+复杂度控制 & 需另加停止或剪枝 & 需另加停止或剪枝 & 最弱环节剪枝与验证选择\\
+高基数偏好 & 较明显 & 由取值熵归一化缓和 & 受二值切分和验证控制\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+\phantomsection\label{struct:V2-C04-CH32}
+\begin{example}[信息增益与基尼一致选择纯划分]\label{exm:V2-C04-split-choice}
+某二分类根结点有8个样本，正负类各4个。候选特征$A$产生两个等大子集，类别计数为$(3,1)$与$(1,3)$；候选特征$B$产生两个等大纯子集，类别计数为$(4,0)$与$(0,4)$。分别按信息增益和加权基尼指数选择根特征。
+
+\phantomsection\label{struct:V2-C04-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V2-C04-split-choice}
+\begin{solution}
+\SLReadTranslation{要分别按“信息增益最大”和“划分后加权基尼最小”比较候选$A,B$，并判断两种准则是否选择同一根特征。}
+\SolGiven 父结点正负各$4$；两个候选都产生容量为$4,4$的子集，故子结点权重均为$1/2$；$A$的计数为$(3,1),(1,3)$，$B$的两个子结点均纯。
+\SLMethodTrigger{同一划分的熵和基尼都按子结点样本比例加权；纯结点的两种不纯度都为零。}
+\SolPlan 计算父熵；分别求$A,B$的条件熵和信息增益；再求两者的加权基尼，并按各自方向选择。
+\SolDerive
+父结点熵及两个候选的条件熵为
+\[
+\begin{aligned}
+H(D)&=1,\\
+H(D\mid A)
+&=\frac12H\!\left(\frac34,\frac14\right)
+ +\frac12H\!\left(\frac14,\frac34\right)
+\approx0.811,\\
+H(D\mid B)&=0.
+\end{aligned}
+\]
+因此
+\[
+g(D,A)\approx1-0.811=0.189,
+\qquad
+g(D,B)=1-0=1,
+\]
+信息增益选择$B$。基尼指标方面，
+\[
+\begin{aligned}
+\operatorname{Gini}(D)&=1-\left(\frac12\right)^2-\left(\frac12\right)^2=\frac12,\\
+\operatorname{Gini}(D\mid A)
+&=\frac12\left[1-\left(\frac34\right)^2-\left(\frac14\right)^2\right]
+ +\frac12\left[1-\left(\frac14\right)^2-\left(\frac34\right)^2\right]\\
+&=0.375,\\
+\operatorname{Gini}(D\mid B)&=0.
+\end{aligned}
+\]
+\SolCheck 两个子结点权重之和为$1$。候选$B$使熵和基尼同时达到非负不纯度的下界$0$，所以其信息增益达到父熵$1$，无需依赖近似值即可确认最优。
+\SolAnswer 信息增益选择$B$（增益$1>0.188722$），加权基尼也选择$B$（$0<0.375$）；切分后两个子结点均纯净。
+\end{solution}
+
+\begin{SLRunningExample}{RUN-CLS-2D-01}{V2-C04-decision-tree}{贯穿例：四点二维分类数据}{用同一训练集检验一次轴对齐划分怎样得到纯叶结点。}
+四个样本的第一坐标恰好决定标签，因此根结点按$x^{(1)}<0$划分后，两侧分别只含$-1$类与$+1$类。父结点的经验熵为$1$、基尼指数为$1/2$，两个子结点的熵和基尼指数均为$0$；信息增益为$1$，加权基尼下降为$1/2$。该结论依赖本例存在轴对齐纯划分，不能外推为任意线性可分数据都能由单层树表示。上一站见\SLRunningExampleRef{RUN-CLS-2D-01}{V2-C03-naive-bayes}{朴素贝叶斯的生成式表示}；下一站见\SLRunningExampleRef{RUN-CLS-2D-01}{V2-C05-logistic}{逻辑斯谛回归的概率表示}。
+\end{SLRunningExample}
+
+
+\phantomsection\label{struct:V2-C04-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V2-C04-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-5-0002
+% EXERCISE-TYPE: manual_algorithm,basic_calculation,comprehensive_proof_calculation
+% SOLUTION-SOURCE: original_book; source_id=EXR-5-0002
+\begin{exercise}\label{ex:V2-C04-S06-01}
+给定训练数据
+\[
+(x_i)_{i=1}^{10}=(1,2,3,4,5,6,7,8,9,10),
+\]
+\[
+(y_i)_{i=1}^{10}=(4.50,4.75,4.91,5.34,5.80,7.05,7.90,8.23,8.70,9.00).
+\]
+使用平方误差准则生成二叉回归树的根结点：枚举相邻样本之间的切分点，确定最优第一次切分、两侧叶输出及切分后的平方误差，并说明继续递归时必须补充什么停止规则。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S06-01}
+\begin{chapterexercisesolution}{ex:V2-C04-S06-01}
+候选切分点与每个候选的叶输出、平方误差定义为
+\[
+\begin{aligned}
+s_j&=\frac{x_j+x_{j+1}}2=j+\frac12,\qquad j=1,\ldots,9,\\
+c_L(s_j)&=\frac1j\sum_{i=1}^{j}y_i,\qquad
+c_R(s_j)=\frac1{10-j}\sum_{i=j+1}^{10}y_i,\\
+Q(s_j)&=\sum_{i=1}^{j}\bigl(y_i-c_L(s_j)\bigr)^2
++\sum_{i=j+1}^{10}\bigl(y_i-c_R(s_j)\bigr)^2.
+\end{aligned}
+\]
+逐候选计算得到
+\[
+\begin{array}{c|ccccccccc}
+s_j&1.5&2.5&3.5&4.5&5.5&6.5&7.5&8.5&9.5\\ \hline
+Q(s_j)&22.6480&17.7022&12.1935&7.3787&3.3587&5.0740&10.0525&15.1778&21.3280
+\end{array}
+\]
+最小值在$j=5$取得，且
+\[
+c_L(5.5)=\frac{25.30}{5}=5.060,
+\qquad
+c_R(5.5)=\frac{40.88}{5}=8.176.
+\]
+因此根结点的一次切分模型为
+\[
+\widehat f(x)=5.060\,\mathbf1\{x\le5.5\}+8.176\,\mathbf1\{x>5.5\},
+\qquad Q(5.5)\approx3.3587.
+\]
+后续对子区域重复枚举；必须同时规定最小叶容量、最小损失下降或最大深度，否则分裂到单样本叶可使训练误差为0，却通常具有较高方差。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: definition_discrimination,manual_algorithm
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S01-01}
+一棵二分类树先判断$A=1$，若成立预测正类；否则再判断$B=1$，成立预测正类，不成立预测负类。写出三条互斥完备规则。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S01-01}
+\begin{chapterexercisesolution}{ex:V2-C04-S01-01}
+三条叶规则对应集合
+\[
+\begin{aligned}
+R_1&=\{x:A(x)=1\},&\widehat y(x)&=+1,\\
+R_2&=\{x:A(x)\neq1,\ B(x)=1\},&\widehat y(x)&=+1,\\
+R_3&=\{x:A(x)\neq1,\ B(x)\neq1\},&\widehat y(x)&=-1.
+\end{aligned}
+\]
+它们满足
+\[
+R_i\cap R_j=\varnothing\quad(i\neq j),
+\qquad
+R_1\cup R_2\cup R_3=\mathcal X.
+\]
+第二、三条必须保留祖先条件$A\neq1$，否则会与第一条重叠。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: geometric_explanation,error_diagnosis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S01-03}
+解释为何叶区域构成划分时，条件概率模型可以逐叶定义；若两条路径覆盖同一输入，会出现什么问题？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S01-03}
+\begin{chapterexercisesolution}{ex:V2-C04-S01-03}
+设叶区域为$\{R_m\}_{m=1}^{M}$。树的标准语义要求
+\[
+\bigcup_{m=1}^{M}R_m=\mathcal X,
+\qquad
+R_m\cap R_{m'}=\varnothing\quad(m\neq m').
+\]
+于是每个$x$有唯一指标$m(x)$，条件概率可逐叶定义为
+\[
+P(Y=c\mid X=x)=p_{m(x),c},
+\qquad
+\sum_c p_{m,c}=1.
+\]
+若存在$x\in R_m\cap R_{m'}$且$m\neq m'$，则同一输入可能同时得到$p_{m,\cdot}$与$p_{m',\cdot}$，映射不再单值。额外优先级或混合权重会定义另一种模型，而不是原树语义。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: error_diagnosis,method_comparison
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S02-01}
+某特征是每个训练样本唯一的编号。说明它为何可能取得极高信息增益，并说明为何不应据此认为它具有预测价值。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S02-01}
+\begin{chapterexercisesolution}{ex:V2-C04-S02-01}
+若编号特征$A$在$N$个训练样本上取$N$个不同值，则每个子集$D_v$只有一个样本：
+\[
+|D_v|=1
+\Longrightarrow
+H(D_v)=0.
+\]
+因此
+\[
+H(D\mid A)=\sum_v\frac{|D_v|}{N}H(D_v)=0,
+\qquad
+g(D,A)=H(D).
+\]
+该最大增益来自逐样本记忆。对未见编号$v_{\rm new}\notin\{v_i\}_{i=1}^{N}$，训练数据没有可复用的叶统计，故高训练增益不蕴含预测价值。应限制高基数特征、使用增益比，并以独立验证和剪枝检验泛化。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: error_diagnosis,method_comparison
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S02-03}
+为什么在树生成前用全部数据筛选特征，再做交叉验证，会使验证误差偏乐观？给出正确流程。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S02-03}
+\begin{chapterexercisesolution}{ex:V2-C04-S02-03}
+设第$r$折训练、验证索引分别为$I_r^{\rm tr},I_r^{\rm val}$。无泄漏要求特征集合仅由训练折确定：
+\[
+\begin{aligned}
+\mathcal F_r
+  &=\operatorname{Select}\!\left(X_{I_r^{\rm tr}},y_{I_r^{\rm tr}}\right),\\
+\operatorname{Inputs}(\mathcal F_r)
+  &=\left\{X_{I_r^{\rm tr}},y_{I_r^{\rm tr}}\right\},\\
+y_{I_r^{\rm val}}
+  &\notin\operatorname{Inputs}(\mathcal F_r).
+\end{aligned}
+\]
+随后
+\[
+f_r=\operatorname{FitTree}\!\left(X_{I_r^{\rm tr},\mathcal F_r},y_{I_r^{\rm tr}}\right),
+\qquad
+L_r=L\!\left(f_r;X_{I_r^{\rm val},\mathcal F_r},y_{I_r^{\rm val}}\right).
+\]
+若先用全部数据选择$\mathcal F$，则$y_{I_r^{\rm val}}\to\mathcal F\to f_r$，验证标签已影响模型，误差会偏乐观。超参数锁定后，才在全部开发数据上重做同一流程。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: basic_calculation,probability_explanation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S03-01}
+某结点类别计数为$(6,2)$。求以2为底的经验熵，并说明若8个样本全属同一类时熵为何变化。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S03-01}
+\begin{chapterexercisesolution}{ex:V2-C04-S03-01}
+经验类别概率为
+\[
+(p_1,p_2)=\left(\frac68,\frac28\right)=\left(\frac34,\frac14\right).
+\]
+因此
+\[
+H(D)
+=-\frac34\log_2\frac34-\frac14\log_2\frac14
+\approx0.811\ \text{比特}.
+\]
+若8个样本全属一类，则概率向量为$(1,0)$。约定$0\log_20=0$后，
+\[
+H(D)=-1\log_21-0\log_20=0.
+\]
+前者仍有类别不确定性，后者在训练样本上已经纯净。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: basic_calculation,parameter_update
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S03-02}
+父结点熵为1。特征$A$产生容量2和6的两个子结点，熵分别为0和$0.8$。求条件熵和信息增益。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S03-02}
+\begin{chapterexercisesolution}{ex:V2-C04-S03-02}
+条件熵按子集容量加权：
+\[
+H(D\mid A)
+=\frac28\times0+\frac68\times0.8
+=0.6.
+\]
+故信息增益为
+\[
+g(D,A)=H(D)-H(D\mid A)=1-0.6=0.4.
+\]
+若误用普通平均，则
+\[
+\frac{0+0.8}{2}=0.4,
+\qquad
+1-0.4=0.6,
+\]
+会忽略两个子集容量不同这一事实。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: method_comparison,definition_discrimination
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S04-01}
+说明ID3与C4.5在递归框架、划分准则和高基数特征偏好上的共同点与差异。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S04-01}
+\begin{chapterexercisesolution}{ex:V2-C04-S04-01}
+两者共享递归框架
+\[
+(D_t,\mathcal A_t)
+\xrightarrow{\text{选择 }(A^*,s^*)}
+\{(D_{t,v},\mathcal A_{t,v}')\}_v,
+\]
+其中一次性离散特征取$\mathcal A_{t,v}'=\mathcal A_t\setminus\{A^*\}$，连续特征取$\mathcal A_{t,v}'=\mathcal A_t$并只把阈值$s^*$记在当前结点；并在结点纯净、候选耗尽、样本或深度预算耗尽、改进不足时停止。划分准则分别为
+\[
+A^*_{\rm ID3}=\arg\max_{A\in\mathcal A_t}g(D_t,A),
+\]
+以及
+\[
+A^*_{\rm C4.5}=\arg\max_{A\in\mathcal C_t^+}
+\frac{g(D_t,A)}{H_A(D_t)},
+\qquad
+H_A(D_t)=-\sum_v\frac{|D_{t,v}|}{|D_t|}\log\frac{|D_{t,v}|}{|D_t|},
+\]
+其中$\mathcal C_t^+=\{A:g(D_t,A)\geq |\mathcal C_t|^{-1}\sum_{B\in\mathcal C_t}g(D_t,B),\ H_A(D_t)>0\}$。ID3更偏好高基数特征；经典C4.5先做原始增益筛选，再用取值熵归一化以缓和该偏好。二者仍是局部贪心方法，都需复杂度控制和独立验证。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: manual_algorithm,error_diagnosis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S04-02}
+当前结点非纯，候选特征集合为空。算法应输出什么？为何不能任意选择祖先结点的某个特征再次多叉划分？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S04-02}
+\begin{chapterexercisesolution}{ex:V2-C04-S04-02}
+当前结点$t$满足$\mathcal A_t=\varnothing$且样本非纯时，应输出叶结点
+\[
+\widehat y_t=\arg\max_c N_{t,c},
+\qquad
+\widehat P(Y=c\mid t)=\frac{N_{t,c}}{|D_t|},
+\]
+平局按预先固定规则处理。若祖先已按离散特征$A$的取值$v$进入当前结点，则
+\[
+x\in D_t\Longrightarrow A(x)=v.
+\]
+再次按同一$A$多叉划分只会产生一个非空分支$D_t$和若干空分支，递归规模不减，可能无限重复。连续特征若允许复用，必须提供新的阈值候选与显式停止规则。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: parameter_update,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S05-01}
+某子树有3个叶，拟合项为10；收缩为一个叶后拟合项为12。求保留与收缩目标相等时的$\alpha$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S05-01}
+\begin{chapterexercisesolution}{ex:V2-C04-S05-01}
+保留与收缩后的局部代价复杂度目标分别为
+\[
+C_\alpha(T_t)=10+3\alpha,
+\qquad
+C_\alpha(t)=12+\alpha.
+\]
+令二者相等：
+\[
+10+3\alpha=12+\alpha
+\Longleftrightarrow
+2\alpha=2
+\Longleftrightarrow
+\alpha=1.
+\]
+差值为
+\[
+C_\alpha(T_t)-C_\alpha(t)=2(\alpha-1),
+\]
+故$\alpha<1$时保留子树，$\alpha>1$时收缩；等号时按预定并列规则处理。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: manual_algorithm,error_diagnosis,method_comparison
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S07-03}
+设计一个无数据泄漏的树深度选择流程，明确训练、验证和测试数据分别参与哪些步骤。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S07-03}
+\begin{chapterexercisesolution}{ex:V2-C04-S07-03}
+先在查看测试集之前固定非空有限候选深度集
+\[
+\varnothing\neq\mathcal D=\{d_1,\ldots,d_m\}\subset\mathbb N_0,
+\]
+并取整数$K$使$2\leq K\leq |D_{\rm dev}|$，各训练折与验证折均非空。再作一次互斥划分
+\[
+D=D_{\rm dev}\mathbin{\dot\cup}D_{\rm test},
+\qquad
+D_{\rm dev}=D_r^{\rm tr}\mathbin{\dot\cup}D_r^{\rm val}\quad(r=1,\ldots,K).
+\]
+对每个深度$d\in\mathcal D$和每一折$r$，全部预处理、阈值统计、树生成与剪枝只在训练折拟合：
+\[
+f_{r,d}=\operatorname{PipelineFit}(D_r^{\rm tr};d),
+\qquad
+L_{r,d}=L(f_{r,d};D_r^{\rm val}).
+\]
+选择
+\[
+d^*=\min\underset{d\in\mathcal D}{\arg\min}\,
+\frac1K\sum_{r=1}^{K}L_{r,d},
+\qquad
+f^*=\operatorname{PipelineFit}(D_{\rm dev};d^*).
+\]
+这里对并列最优深度固定选取最浅者；候选集有限且非空，故$d^*$存在且由该规则唯一确定。最后只计算一次$L(f^*;D_{\rm test})$。测试结果不得反向修改$d^*$或训练流程。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: basic_calculation,parameter_update
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C04-S06-03}
+某内部结点收缩成叶的损失为18，其子树损失为12并有4个叶。计算$g(t)$，解释该数值在剪枝中的含义。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C04-S06-03}
+\begin{chapterexercisesolution}{ex:V2-C04-S06-03}
+最弱环节指标为
+\[
+g(t)
+=\frac{R(t)-R(T_t)}{|T_t|-1}
+=\frac{18-12}{4-1}
+=2.
+\]
+子树比单叶多$4-1=3$个叶，并减少$18-12=6$单位训练损失，因此每增加一个叶平均换来2单位损失下降。验证等价点：
+\[
+R(T_t)+2|T_t|=12+2\times4=20,
+\qquad
+R(t)+2=18+2=20.
+\]
+故复杂度参数$\alpha=2$时保留与收缩代价相同；当前树中$g(t)$最小的结点最先成为最弱环节。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V2-C04-CH36}
+\SLChapterFiveSummary{树结构、叶区域、划分准则与子树序列}{由条件熵、平方误差和基尼指数得到局部划分目标}{递归生成候选树，再用代价复杂度与独立验证选择子树}{可解释的非线性分类、回归与规则提取}{进入逻辑斯谛回归，对比树式分段与平滑概率边界}
+
+\phantomsection\label{struct:V2-C04-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否把任一根到叶路径写成互斥完备规则，并给出叶内条件概率估计？
+  \item 能否从类别计数计算$H(D)$、$H(D\mid A)$、$g(D,A)$与$g_R(D,A)$，同时处理零概率和零分母？
+  \item 能否写出ID3/C4.5的输入、参数、初始化、更新、停止及有限终止理由，并估算平衡树与极端深树的时间、空间成本？
+  \item 能否证明回归叶均值最优，并分别写出CART回归和分类的局部准则？
+  \item 能否由代价相等条件推出$g(t)$，说明验证集如何从嵌套子树序列中选择模型，并指出至少三类数据泄漏或剪枝错误及其回滚检查？若未通过，应依次回看第\ref{sec:V2-C04-S01}--\ref{sec:V2-C04-S03}节的模型与准则、第\ref{sec:V2-C04-S04}--\ref{sec:V2-C04-S05}节的生成与剪枝，以及第\ref{sec:V2-C04-S06}--\ref{sec:V2-C04-S07}节的CART与综合流程。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

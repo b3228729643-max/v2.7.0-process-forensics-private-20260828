@@ -1,0 +1,7 @@
+roi_id,native1x_opened,nearest8x_opened,manual_true_collision,manual_clipping,manual_finding
+ROI01_order_arrow,true,true,false,false,"Arrowhead pixels are complete; 更新顺序 begins after white separation, so direction and label remain distinct."
+ROI02_updated_slots,true,true,false,false,"Numeral 1, white halo, hatch strokes, and blue bottom border are individually resolved; neither text nor border shares foreground pixels."
+ROI03_current_old_slots,true,true,false,false,"Gold solid current border and gray dotted old border remain separated by a visible white channel; no merging or crop loss occurs."
+ROI04_substep_card,true,true,false,false,"The lower blue 新值 glyphs remain 9 px above the rounded card border; the 8x view shows intact antialiasing and no touch."
+ROI05_round_end,true,true,false,false,"x^(t), incoming arrowhead, and outgoing record shaft remain discrete; the formula-to-arrow clearance is 16 px."
+ROI06_caption,true,true,false,false,"The full-width semicolon is the intended U+FF1B shape, readable at native scale and not a tofu or ASCII replacement."

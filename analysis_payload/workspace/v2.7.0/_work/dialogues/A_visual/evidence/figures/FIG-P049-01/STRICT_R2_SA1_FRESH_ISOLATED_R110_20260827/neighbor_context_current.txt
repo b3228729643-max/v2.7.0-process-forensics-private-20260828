@@ -1,0 +1,17 @@
+131: % KNOWLEDGE-PLAN: KN-V1-C03-CONCEPT-001 L1
+132: \paragraph{读前自检：几何解释：梯度垂直于等值线并指向局部上升最快方向。}梯度几何解释以单位方向$\boldsymbol u$为对象；请由方向导数$D_{\boldsymbol u}f=\nabla f^{\mathsf T}\boldsymbol u$应用Cauchy--Schwarz，核对最大值$\lVert\nabla f\rVert_2$在$\boldsymbol u$与梯度同向时取得。\par
+133: 
+134: \begin{geometrybox}\label{schema:V1-C03:CH-14}
+135: \textbf{几何解释。} 梯度垂直于等值线并指向局部上升最快方向。对$\boldsymbol u\in\mathbb R^d$，Hessian作为线性映射先给出向量$H\boldsymbol u\in\mathbb R^d$；标量$\boldsymbol u^{\mathsf T}H\boldsymbol u\in\mathbb R$才是沿$\boldsymbol u$的二阶方向导数（局部曲率）。正定Hessian对应每个非零方向上的曲率都为正。
+136: \end{geometrybox}
+137: \begin{probabilitybox}\label{schema:V1-C03:CH-15}
+138: 当随机输入在均值附近有小扰动$\boldsymbol\delta$时，一阶近似$f(\boldsymbol\mu+\boldsymbol\delta)\approx f(\boldsymbol\mu)+\nabla f(\boldsymbol\mu)^{\mathsf T}\boldsymbol\delta$把输出不确定性转化为梯度加权的输入扰动；该解释要求扰动足够小并且函数在均值附近可微。
+139: \end{probabilitybox}
+140: \begin{optimizationbox}\label{schema:V1-C03:CH-16}
+141: \textbf{优化解释。} 负梯度最小化一阶模型；Hessian半正定是内部局部极小点的必要二阶条件。若Hessian正定且邻域内连续，则驻点为严格局部极小点。
+142: \end{optimizationbox}
+143: 
+144: \input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C03/fig_v1_c03_gradient_contour.tex}
+145: 在\cref{fig:V1-C03-gradient-contour}中，等值线切向量$\boldsymbol v_{\mathrm{tan}}$满足
+146: $\nabla f^{\mathsf T}\boldsymbol v_{\mathrm{tan}}=0$；梯度非零时，最速上升单位方向另记为
+147: $\boldsymbol u_{\max}=\nabla f/\lVert\nabla f\rVert_2$。两者正交，不能复用同一符号。

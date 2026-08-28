@@ -1,0 +1,7 @@
+view_id,evidence_file,actual_scope,decision,note
+V001,full_page_200dpi.png,page integration,PASS,"Physical page 17 is complete; the figure is naturally placed between the surrounding explanation and the following paragraph, with no crop or crowding."
+V002,figure_crop_300dpi.png,figure plus caption,PASS,"All four nodes, three forward arrows, the dashed reverse route, annotation and full caption are clear and mutually separated."
+V003,standalone_300dpi.png,figure body,PASS,"Node borders, labels, inline domain-to-codomain arrow, forward arrows and reverse audit route are intact and readable."
+V004,grayscale_300dpi.png,grayscale hierarchy,PASS,"Titles, supporting text, borders and arrows retain a clear hierarchy without disappearing strokes or severe imbalance."
+V005,caption_one_roi_native1x.png,caption context,PASS,"The U+4E00 glyph in 每一条 is visibly present in context and is not clipped, replaced or merged with a neighboring glyph."
+V006,caption_one_exact_mask_8x_nearest.png,exact U+4E00 contour,PASS,"The low horizontal contour is complete, continuous and clean; its small native height is an R168 advisory metric rather than a real readability defect."

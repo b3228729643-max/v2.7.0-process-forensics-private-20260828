@@ -1,0 +1,16 @@
+gate_id,reviewer,decision,evidence,observation
+H01_OBJECT_DENOMINATOR,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/machine_object_inventory.csv,Forty unique semantic objects comprise thirty text and ten vector objects with current backgrounds assigned to their text parents.
+H02_PAIR_DENOMINATOR,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/machine_pair_inventory.csv,All C(40 2)=780 unordered object pairs appear exactly once.
+H03_GLYPH_DENOMINATOR,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/machine_glyph_inventory.csv,The current PDF contains 160 glyph records including spaces and 145 nonspace glyphs.
+H04_CRITICAL_DENOMINATOR,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/machine_critical_pair_inventory.csv,Seventy-six bbox-intersection or <=8pt-gap pairs are enumerated and manually adjudicated.
+H05_CLIP_DENOMINATOR,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/machine_clip_inventory.csv,All forty objects have positive page-edge distances and no page or panel clipping is visible.
+H06_CURVE_NOTE_GEOMETRY,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/pair_0688_native_8x.png,The visible ESS curve does not enter the first N or any other glyph of the limit note.
+H07_MARKER_TICK_GEOMETRY,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/pair_0779_native_clearance.json,The .99 marker and tick masks share zero pixels with 4px foreground distance and 3px blank gap.
+H08_MATH_SEMANTICS,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/figure_crop_native_300dpi.png,ACF rho powers ESS fraction limit statement and coordinate annotation retain the intended formulas.
+H09_OBJECT_CONTENT,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/manual_object_review.csv,Every current tick label title formula curve legend axis note and marker has a distinct complete review.
+H10_RELATIONSHIP_GEOMETRY,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/manual_critical_pair_review.csv,All close and intersecting bboxes are either valid plot contacts or visibly separated foregrounds.
+H11_VIEW_COVERAGE,C_ROOT_MANUAL_R3,PASS,MANUAL_VIEW_REVIEW.csv,Native grayscale normal-scale panels 1x 8x overlays and contact sheets cover the current candidate.
+H12_R168_FONT_GATE,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/manual_glyph_group_review.csv,No tofu wrong glyph or codepoint unreadability severe size imbalance clipping or illegal text overlap is present.
+H13_SOURCE_SCOPE,C_ROOT_MANUAL_R3,PASS,SOURCE_WRAPPER_ENGINE_IDENTITY.json,The build used the single accepted P640 source at SHA A1CB852A and unchanged standalone wrapper.
+H14_BUILD_IDENTITY,C_ROOT_MANUAL_R3,PASS,DIRECT_INVOCATION_RESULT.json,One direct invocation exited naturally at code zero with one nonempty PDF and no post-TeX processes.
+H15_REGRESSION_STATUS,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/machine_regression_summary.json,Target curve-note and preserved marker-tick regressions pass with no new hard-gate failure.

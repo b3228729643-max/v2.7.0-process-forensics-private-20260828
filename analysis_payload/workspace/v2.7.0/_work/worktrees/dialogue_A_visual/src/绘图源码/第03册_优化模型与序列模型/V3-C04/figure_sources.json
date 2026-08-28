@@ -1,0 +1,40 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V3-C04",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 1,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V3-C04-01",
+      "source_path": "绘图源码/第03册_优化模型与序列模型/V3-C04/fig_v3_c04_bound.tex",
+      "source_file": "fig_v3_c04_bound.tex",
+      "source_kind": "tikz",
+      "label": "fig:V3-C04-bound",
+      "caption": "可复算的相切下界：$B(\\theta,2)=\\ell(\\theta)-0.16(\\theta-2)^2\\le\\ell(\\theta)$，并在$\\theta=2$处函数值与导数同时相等。两条曲线按图中给定的显式函数精确绘制，而非未标比例的定性示意。",
+      "semantic_type": "quantitative_plot",
+      "teaching_objective": "读图时应回答：“EM以当前后验构造相切下界，再提高该下界；示意曲线仅表达关系，不代表特定模型”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第03册_优化模型与序列模型/chapters/V3-C04.tex",
+        "target_label": "fig:V3-C04-bound",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-09-01-005"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "manifest": "绘图源码/figure_numeric_manifest_v16.json",
+        "figure_id": "FIG-V3-C04-01"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：可复算的相切下界：B(θ,2)=ℓ(θ)-0.16(θ-2)上标2≤ℓ(θ)，并在θ=2处函数值与导数同时相等。两条曲线按图中给定的显式函数精确绘制，而非未标比例的定性示意。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

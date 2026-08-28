@@ -1,0 +1,40 @@
+{
+  "uid": "FIG-P602-01",
+  "candidate": "SA2-R2-controlled-build-v1",
+  "authorization": "MAIN_CONFIRMED_B_P08_BUILD_LOCK_RELEASED / P602_SA2_BUILD_SLOT_GRANTED",
+  "prebuild_utc": "2026-08-25T05:27:30.2229764Z",
+  "active_tex_processes": [],
+  "active_tex_process_count": 0,
+  "invocation_policy": {
+    "engine": "direct LuaLaTeX",
+    "maximum_invocations": 1,
+    "automatic_retry": false,
+    "latexmk_forbidden": true,
+    "fullbook_build_forbidden": true
+  },
+  "command": {
+    "executable": "D:\\texlive\\2026\\bin\\windows\\lualatex.exe",
+    "executable_sha256": "cc944a1db010b47fcf5cc5b1d184cba208fe7fea9f18bec414940e6fd3e24a6",
+    "working_directory": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\讲义源码\\合并总册",
+    "arguments": [
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-file-line-error",
+      "-recorder",
+      "-output-directory=D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v1\\01_build",
+      "v260_FIG-P602-01_standalone.tex"
+    ]
+  },
+  "isolated_environment": {
+    "TEXMFVAR": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v1\\texmfvar",
+    "TEXMFCACHE": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v1\\texmfcache",
+    "TEXMFCONFIG": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v1\\texmfconfig"
+  },
+  "inputs": {
+    "source_sha256": "2b15b4beea7a922fee24259678dbae2a54915955915e6714a350122a6251e349",
+    "source_bytes": 2869,
+    "wrapper_sha256": "afe3464aea950331908cd3c56dd0392a6d5010138c4ee9341b78f7fd3e9f7279",
+    "wrapper_bytes": 397
+  },
+  "build_directory_initial_file_count": 0
+}

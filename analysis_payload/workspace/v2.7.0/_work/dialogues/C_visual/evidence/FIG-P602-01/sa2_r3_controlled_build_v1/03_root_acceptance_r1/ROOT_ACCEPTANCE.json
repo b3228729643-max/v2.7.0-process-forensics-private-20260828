@@ -1,0 +1,252 @@
+{
+  "audit_id": "C-FIG-P602-01-SA2-R3-V1-ROOT-ACCEPTANCE-R1",
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1\\02_native_evidence_r1",
+  "audit_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1\\03_root_acceptance_r1",
+  "evidence_root_read_only": true,
+  "outcome": "PASS",
+  "failures": [],
+  "checks": {
+    "manifest_model": {
+      "pass": true,
+      "detail": {
+        "ordinary": 896,
+        "rows": 894,
+        "unique_unlisted": [
+          "09_manifest/evidence_file_manifest.csv",
+          "identity/WRITE_STOPPED.json"
+        ],
+        "missing": [],
+        "duplicate_paths": []
+      }
+    },
+    "manifest_file_identities": {
+      "pass": true,
+      "detail": {
+        "checked": 894,
+        "mismatches": []
+      }
+    },
+    "recordset_and_manifest_identity": {
+      "pass": true,
+      "detail": {
+        "recordset_sha256": "100A570015E6F749624465C59464E4E14EEE00432A97E026BA56B457DFD697C3",
+        "marker_recordset_sha256": "100A570015E6F749624465C59464E4E14EEE00432A97E026BA56B457DFD697C3",
+        "manifest_sha256": "517A70CB6C3A15253133348C6EEB5214BFFB0FD038480A1FBFBED01B04809D05",
+        "marker_manifest_sha256": "517A70CB6C3A15253133348C6EEB5214BFFB0FD038480A1FBFBED01B04809D05",
+        "manifest_bytes": 133710
+      }
+    },
+    "write_stopped_strict_last": {
+      "pass": true,
+      "detail": {
+        "marker_mtime_ns": 1787646502999536100,
+        "latest_other_mtime_ns": 1787646502893356700,
+        "delta_ns": 106179400,
+        "write_stopped": true
+      }
+    },
+    "all_files_readonly": {
+      "pass": true,
+      "detail": {
+        "checked": 896,
+        "failures": []
+      }
+    },
+    "parse_and_open": {
+      "pass": true,
+      "detail": {
+        "csv_checked": 19,
+        "csv_failures": [],
+        "json_checked": 7,
+        "json_failures": [],
+        "png_checked": 864,
+        "png_failures": []
+      }
+    },
+    "hygiene": {
+      "pass": true,
+      "detail": {
+        "ads": [],
+        "ads_probe_errors": [],
+        "cache_files": []
+      }
+    },
+    "embedded_root_validation": {
+      "pass": true,
+      "detail": {
+        "outcome": "PASS",
+        "failures": [],
+        "sha256": "04D0AF98D3DD4A311ED2D6E1A7B3BF00CFEA3D3969588CA9A686953A35602AA1"
+      }
+    },
+    "machine_denominators": {
+      "pass": true,
+      "detail": {
+        "objects": 30,
+        "glyphs": 154,
+        "pairs": 435,
+        "critical": 16,
+        "peer": 28,
+        "role": 3,
+        "clip": 30,
+        "view": 4
+      }
+    },
+    "pair_closure_and_machine_pass": {
+      "pass": true,
+      "detail": {
+        "expected": 435,
+        "actual": 435,
+        "machine_failures": []
+      }
+    },
+    "manual_ledgers": {
+      "pass": true,
+      "detail": {
+        "objects": {
+          "rows": 30,
+          "unique_ids": 30,
+          "notes_unique_nonblank": true,
+          "decisions_pass": true
+        },
+        "glyphs": {
+          "rows": 154,
+          "unique_ids": 154,
+          "notes_unique_nonblank": true,
+          "decisions_pass": true
+        },
+        "pairs": {
+          "rows": 435,
+          "unique_ids": 435,
+          "notes_unique_nonblank": true,
+          "decisions_pass": true
+        },
+        "critical": {
+          "rows": 16,
+          "unique_ids": 16,
+          "notes_unique_nonblank": true,
+          "decisions_pass": true
+        },
+        "peer": {
+          "rows": 28,
+          "unique_ids": 28,
+          "notes_unique_nonblank": true,
+          "decisions_pass": true
+        },
+        "role": {
+          "rows": 3,
+          "unique_ids": 3,
+          "notes_unique_nonblank": true,
+          "decisions_pass": true
+        },
+        "clip": {
+          "rows": 30,
+          "unique_ids": 30,
+          "notes_unique_nonblank": true,
+          "decisions_pass": true
+        },
+        "view": {
+          "rows": 4,
+          "unique_ids": 4,
+          "notes_unique_nonblank": true,
+          "decisions_pass": true
+        },
+        "hard": {
+          "rows": 12,
+          "unique_ids": 12,
+          "notes_unique_nonblank": true,
+          "decisions_pass": true
+        }
+      }
+    },
+    "manual_pair_endpoint_alignment": {
+      "pass": true,
+      "detail": {
+        "aligned": true,
+        "rows": 435
+      }
+    },
+    "g032_strict_closure": {
+      "pass": true,
+      "detail": {
+        "machine": {
+          "glyph_id": "G032",
+          "parent_object_id": "O-T07",
+          "char": "范",
+          "unicode": "U+8303",
+          "font": "NotoSerifSC-ExtraLight",
+          "pdf_glyph_pt": "9.564140319824219",
+          "seqno": "8",
+          "trace_index": "5",
+          "char_index": "8",
+          "pdf_bbox": "[236.93116760253906, 166.08094787597656, 246.49530029296875, 175.6450958251953]",
+          "ink_bbox_px": "[658, 440, 695, 474]",
+          "ink_width_px": "37",
+          "ink_height_px": "34",
+          "ink_pixel_count": "405",
+          "script_class": "CJK_FULL",
+          "threshold_px": "30",
+          "empty_mask": "False",
+          "machine_threshold_pass": "True",
+          "mask_path": "glyphs/masks_1x/G032.png",
+          "card_path": "glyphs/cards/G032.png"
+        },
+        "manual": {
+          "glyph_id": "G032",
+          "parent_object_id": "O-T07",
+          "char": "范",
+          "manual_visual_decision": "PASS",
+          "hard_gate_decision": "PASS",
+          "manual_note": "范 has an intact grass crown and lower component with 37x34 hard-gate ink"
+        }
+      }
+    },
+    "external_identities": {
+      "pass": true,
+      "detail": {
+        "pdf_bytes": 41653,
+        "pdf_sha256": "68188DAAAF9B3C4233D5A032C3D8BE20A73B51D5E6058D0E1C12FDE6471093E7",
+        "source_bytes": 2869,
+        "source_sha256": "6C4E8F156709C0FF384F9E7B7F2BD5D9CB586E24206BF0BCD2E58933ED3DB47D"
+      }
+    },
+    "source_r3_phrase": {
+      "pass": true,
+      "detail": {
+        "fresh_phrase_count": 1,
+        "old_phrase_count": 0,
+        "suggested_phrase_count": 0,
+        "u4e00_count": 0
+      }
+    },
+    "worktree_scope": {
+      "pass": true,
+      "detail": {
+        "head": "eea4060c5229168e2b973bbaea81cf391e7a9dfd",
+        "branch": "v2.7.0/dialogue-c-visual",
+        "changed_names": [
+          "src/绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mh_accept_reject.tex"
+        ]
+      }
+    },
+    "terminal_tex_processes": {
+      "pass": true,
+      "detail": {
+        "exit_code": 0,
+        "processes": []
+      }
+    },
+    "evidence_zero_write_during_audit": {
+      "pass": true,
+      "detail": {
+        "pre_recordset_sha256": "E4C86F24E49EE5CF89C1CEC09D5E37ED188563083F61B83F5DEC729CEACFE72F",
+        "post_recordset_sha256": "E4C86F24E49EE5CF89C1CEC09D5E37ED188563083F61B83F5DEC729CEACFE72F",
+        "records": 896
+      }
+    }
+  },
+  "accepted_status": "C_LOCAL_PASS_CANDIDATE_PENDING_MAIN_ACCEPTANCE",
+  "central_inventory_written": false,
+  "commit_created": false,
+  "global_pass_claimed": false
+}

@@ -1,0 +1,35 @@
+{
+  "a": "EL-017-NODE_3-CJK_FULL",
+  "b": "G-NODE-3-FINAL-TEXTURE",
+  "relation": "TEXT_TEXTURE",
+  "record": {
+    "PAIR_ID": "PAIR-002296",
+    "OBJECT_A": "EL-017-NODE_3-CJK_FULL",
+    "OBJECT_B": "G-NODE-3-FINAL-TEXTURE",
+    "CATEGORY_A": "TEXT_ELEMENT",
+    "CATEGORY_B": "GRAPHIC",
+    "RELATION": "TEXT_TEXTURE",
+    "THRESHOLD_PX": "3.0",
+    "METHOD": "exact_separated_raw_masks_local_EDT",
+    "OVERLAP_PIXELS": 0,
+    "MIN_RAW_INK_GAP_PX": "8.055",
+    "A_NEAREST_X": 911,
+    "A_NEAREST_Y": 1984,
+    "B_NEAREST_X": 910,
+    "B_NEAREST_Y": 1975,
+    "STATUS": "PASS",
+    "REASON": "text/formula ink to final-visible hatch pixels"
+  },
+  "raw_roi_page_px": [
+    844,
+    1958,
+    1021,
+    2091
+  ],
+  "mask_color": {
+    "A": "red",
+    "B": "blue",
+    "intersection": "yellow"
+  },
+  "geometry": "all foreground mask pixels are sampled from official_page_682_300dpi.png at 1:1; 8x is nearest-only review"
+}

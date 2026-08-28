@@ -1,0 +1,217 @@
+id	char	role	reviewer	sheet	cell	original_match	overlay_complete	mask_only_pure	missing_stroke_px	foreign_pixel_px	decision	note
+T0001	网	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	1	TRUE	TRUE	TRUE	0	0	PASS	Title 网 has complete enclosing and internal strokes; isolated mask.
+T0002	页	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	2	TRUE	TRUE	TRUE	0	0	PASS	Title 页 matches original and retains every visible stroke.
+T0003	图	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	3	TRUE	TRUE	TRUE	0	0	PASS	Title 图 outer box and inner component are complete.
+T0004	、	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	4	TRUE	TRUE	TRUE	0	0	PASS	Title ideographic comma is fully captured without neighbour pixels.
+T0005	邻	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	5	TRUE	TRUE	TRUE	0	0	PASS	Title 邻 components are complete and visually faithful.
+T0006	接	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	6	TRUE	TRUE	TRUE	0	0	PASS	Title 接 has complete left and right components; mask is pure.
+T0007	矩	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	7	TRUE	TRUE	TRUE	0	0	PASS	Title 矩 preserves all visible components and spacing.
+T0008	阵	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	8	TRUE	TRUE	TRUE	0	0	PASS	Title 阵 is complete; no border or adjacent glyph contamination.
+T0009	与	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	9	TRUE	TRUE	TRUE	0	0	PASS	Title 与 visible strokes align in original and overlay.
+T0010	列	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	10	TRUE	TRUE	TRUE	0	0	PASS	Title 列 is complete on both components and isolated.
+T0011	归	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	11	TRUE	TRUE	TRUE	0	0	PASS	Title 归 retains the full visible outline without foreign ink.
+T0012	一	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_001.png	12	TRUE	TRUE	TRUE	0	0	PASS	Title 一 horizontal stroke is complete and mask-only is pure.
+T0013	行	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	1	TRUE	TRUE	TRUE	0	0	PASS	Right title 行 is complete and distinct from the next title glyph.
+T0014	随	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	2	TRUE	TRUE	TRUE	0	0	PASS	Right title 随 retains all visible components.
+T0015	机	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	3	TRUE	TRUE	TRUE	0	0	PASS	Right title 机 is faithfully isolated with no missing stroke.
+T0016	转	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	4	TRUE	TRUE	TRUE	0	0	PASS	Right title 转 is complete in original overlay and mask-only views.
+T0017	置	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	5	TRUE	TRUE	TRUE	0	0	PASS	Right title 置 has complete top and lower structure.
+T0018	桥	TITLE	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	6	TRUE	TRUE	TRUE	0	0	PASS	Right title 桥 is complete and free of neighbour pixels.
+T0019	𝑖	NODE_LABEL	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	7	TRUE	TRUE	TRUE	0	0	PASS	Node label i includes dot and stem; no circle-border contamination.
+T0020	𝑗	NODE_LABEL	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	8	TRUE	TRUE	TRUE	0	0	PASS	Node label j includes dot and descender; isolated from node border.
+T0021	ℎ	NODE_LABEL	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	9	TRUE	TRUE	TRUE	0	0	PASS	Node label h is complete and remains readable inside its node.
+T0022	𝑗	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	10	TRUE	TRUE	TRUE	0	0	PASS	Note j includes complete dot and descender with pure mask.
+T0023	→	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	11	TRUE	TRUE	TRUE	0	0	PASS	Note arrow has full shaft and head and no adjacent letter ink.
+T0024	𝑖	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_002.png	12	TRUE	TRUE	TRUE	0	0	PASS	Note i includes dot and stem and matches the source context.
+T0025	𝑖	EDGE_NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	1	TRUE	TRUE	TRUE	0	0	PASS	Edge-note i has complete dot and stem; mask excludes graph linework.
+T0026	→	EDGE_NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	2	TRUE	TRUE	TRUE	0	0	PASS	Edge-note arrow is complete and isolated from the graph arrows.
+T0027	𝑗	EDGE_NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	3	TRUE	TRUE	TRUE	0	0	PASS	Edge-note j includes dot and descender with no foreign pixels.
+T0028	四	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	4	TRUE	TRUE	TRUE	0	0	PASS	Note 四 has complete box and interior strokes.
+T0029	条	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	5	TRUE	TRUE	TRUE	0	0	PASS	Note 条 is complete and separated from surrounding note glyphs.
+T0030	边	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	6	TRUE	TRUE	TRUE	0	0	PASS	Note 边 contains all visible components; mask-only is pure.
+T0031	权	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	7	TRUE	TRUE	TRUE	0	0	PASS	Note 权 preserves both components without stroke loss.
+T0032	均	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	8	TRUE	TRUE	TRUE	0	0	PASS	Note 均 is complete and uncontaminated.
+T0033	为	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	9	TRUE	TRUE	TRUE	0	0	PASS	Note 为 matches the original visible outline.
+T0034	1	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	10	TRUE	TRUE	TRUE	0	0	PASS	Weight value 1 retains its serifed outline and is isolated.
+T0035	矩	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	11	TRUE	TRUE	TRUE	0	0	PASS	Note 矩 shows all visible components in the target mask.
+T0036	阵	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_003.png	12	TRUE	TRUE	TRUE	0	0	PASS	Note 阵 is complete and free of neighbouring text.
+T0037	行	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	1	TRUE	TRUE	TRUE	0	0	PASS	Order note 行 is complete with pure isolated mask.
+T0038	、	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	2	TRUE	TRUE	TRUE	0	0	PASS	Order note punctuation 、 is wholly captured.
+T0039	列	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	3	TRUE	TRUE	TRUE	0	0	PASS	Order note 列 retains both components and clear separation.
+T0040	顺	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	4	TRUE	TRUE	TRUE	0	0	PASS	Order note 顺 is complete in all three views.
+T0041	序	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	5	TRUE	TRUE	TRUE	0	0	PASS	Order note 序 has no missing or foreign strokes.
+T0042	均	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	6	TRUE	TRUE	TRUE	0	0	PASS	Order note 均 is complete and isolated.
+T0043	为	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	7	TRUE	TRUE	TRUE	0	0	PASS	Order note 为 matches the original visible ink.
+T0044	(	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	8	TRUE	TRUE	TRUE	0	0	PASS	Opening parenthesis is complete; adjacent i pixels are excluded.
+T0045	𝑖	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	9	TRUE	TRUE	TRUE	0	0	PASS	Tuple i contains dot and stem with pure mask-only view.
+T0046	,	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	10	TRUE	TRUE	TRUE	0	0	PASS	First tuple comma is complete and isolated.
+T0047	𝑗	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	11	TRUE	TRUE	TRUE	0	0	PASS	Tuple j includes dot and descender without comma contamination.
+T0048	,	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_004.png	12	TRUE	TRUE	TRUE	0	0	PASS	Second tuple comma matches the original and is pure.
+T0049	ℎ	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	1	TRUE	TRUE	TRUE	0	0	PASS	Tuple h is complete and isolated from closing parenthesis.
+T0050	)	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	2	TRUE	TRUE	TRUE	0	0	PASS	Closing tuple parenthesis is complete with no h pixels.
+T0051	𝐴	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	3	TRUE	TRUE	TRUE	0	0	PASS	Adjacency symbol A has complete mathematical outline.
+T0052	𝑖	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	4	TRUE	TRUE	TRUE	0	0	PASS	Subscript i is complete including dot and stem.
+T0053	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	5	TRUE	TRUE	TRUE	0	0	PASS	Subscript j has complete dot and descender.
+T0054	>	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	6	TRUE	TRUE	TRUE	0	0	PASS	Greater-than sign is complete and separated from zero.
+T0055	0	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	7	TRUE	TRUE	TRUE	0	0	PASS	Formula zero is a closed complete outline.
+T0056	⟺	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	8	TRUE	TRUE	TRUE	0	0	PASS	Equivalence arrow retains both heads and central strokes.
+T0057	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	9	TRUE	TRUE	TRUE	0	0	PASS	Formula j is complete and isolated.
+T0058	→	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	10	TRUE	TRUE	TRUE	0	0	PASS	Formula arrow has full shaft and head.
+T0059	𝑖	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	11	TRUE	TRUE	TRUE	0	0	PASS	Formula i contains both dot and stem.
+T0060	𝑐	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_005.png	12	TRUE	TRUE	TRUE	0	0	PASS	Degree-vector symbol c is complete and pure.
+T0061	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	1	TRUE	TRUE	TRUE	0	0	PASS	Subscript j is complete with dot and descender.
+T0062	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	2	TRUE	TRUE	TRUE	0	0	PASS	Equals sign contains two complete isolated bars.
+T0063	∑	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	3	TRUE	TRUE	TRUE	0	0	PASS	Summation sign has complete upper lower and diagonal strokes.
+T0064	𝑟	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	4	TRUE	TRUE	TRUE	0	0	PASS	Summation index r is complete and uncontaminated.
+T0065	𝐴	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	5	TRUE	TRUE	TRUE	0	0	PASS	Matrix symbol A is complete and matches original context.
+T0066	𝑟	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	6	TRUE	TRUE	TRUE	0	0	PASS	First matrix subscript r is wholly isolated.
+T0067	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	7	TRUE	TRUE	TRUE	0	0	PASS	Second matrix subscript j retains dot and descender.
+T0068	(	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	8	TRUE	TRUE	TRUE	0	0	PASS	Opening parenthesis for vector c is complete.
+T0069	𝑐	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	9	TRUE	TRUE	TRUE	0	0	PASS	First c component has full curve and pure mask.
+T0070	𝑖	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	10	TRUE	TRUE	TRUE	0	0	PASS	First component subscript i includes dot and stem.
+T0071	,	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	11	TRUE	TRUE	TRUE	0	0	PASS	First vector comma is complete and isolated.
+T0072	𝑐	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_006.png	12	TRUE	TRUE	TRUE	0	0	PASS	Second c component is complete and free of comma pixels.
+T0073	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	1	TRUE	TRUE	TRUE	0	0	PASS	Second component subscript j is complete.
+T0074	,	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	2	TRUE	TRUE	TRUE	0	0	PASS	Second vector comma is fully captured and pure.
+T0075	𝑐	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	3	TRUE	TRUE	TRUE	0	0	PASS	Third c component retains its complete curve.
+T0076	ℎ	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	4	TRUE	TRUE	TRUE	0	0	PASS	Third component subscript h is complete and isolated.
+T0077	)	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	5	TRUE	TRUE	TRUE	0	0	PASS	Closing vector parenthesis is complete and has no line-one ink.
+T0078	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	6	TRUE	TRUE	TRUE	0	0	PASS	Vector equals sign has two intact bars.
+T0079	(	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	7	TRUE	TRUE	TRUE	0	0	PASS	Opening numeric-tuple parenthesis is complete.
+T0080	1	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	8	TRUE	TRUE	TRUE	0	0	PASS	First tuple value 1 is complete and crisp.
+T0081	,	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	9	TRUE	TRUE	TRUE	0	0	PASS	Numeric tuple first comma is isolated.
+T0082	2	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	10	TRUE	TRUE	TRUE	0	0	PASS	Tuple value 2 has complete curve and baseline.
+T0083	,	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	11	TRUE	TRUE	TRUE	0	0	PASS	Numeric tuple second comma is complete.
+T0084	1	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_007.png	12	TRUE	TRUE	TRUE	0	0	PASS	Final tuple value 1 is complete and isolated.
+T0085	)	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	1	TRUE	TRUE	TRUE	0	0	PASS	Closing numeric-tuple parenthesis is complete.
+T0086	𝐴	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	2	TRUE	TRUE	TRUE	0	0	PASS	Adjacency-matrix label A is complete and readable.
+T0087	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	3	TRUE	TRUE	TRUE	0	0	PASS	Adjacency-matrix equals sign has two intact bars.
+T0088	0	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	4	TRUE	TRUE	TRUE	0	0	PASS	A matrix r1c1 zero is closed and clear of cell border.
+T0089	1	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	5	TRUE	TRUE	TRUE	0	0	PASS	A matrix r1c2 one is complete and centered.
+T0090	1	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	6	TRUE	TRUE	TRUE	0	0	PASS	A matrix r1c3 one is complete and isolated.
+T0091	1	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	7	TRUE	TRUE	TRUE	0	0	PASS	A matrix r2c1 one retains full serifed shape.
+T0092	0	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	8	TRUE	TRUE	TRUE	0	0	PASS	A matrix r2c2 zero is complete and pure.
+T0093	0	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	9	TRUE	TRUE	TRUE	0	0	PASS	A matrix r2c3 zero is complete and separated.
+T0094	0	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	10	TRUE	TRUE	TRUE	0	0	PASS	A matrix r3c1 zero retains closed outline.
+T0095	1	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	11	TRUE	TRUE	TRUE	0	0	PASS	A matrix r3c2 one is complete and readable.
+T0096	0	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_008.png	12	TRUE	TRUE	TRUE	0	0	PASS	A matrix r3c3 zero is complete with no border pixels.
+T0097	𝑀	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	1	TRUE	TRUE	TRUE	0	0	PASS	Transition-matrix label M is complete and isolated.
+T0098	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	2	TRUE	TRUE	TRUE	0	0	PASS	Transition-matrix equals sign has two complete bars.
+T0099	0	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	3	TRUE	TRUE	TRUE	0	0	PASS	M matrix r1c1 zero is closed and clear of border.
+T0100	1	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	4	TRUE	TRUE	TRUE	0	0	PASS	M matrix r1c2 numerator one is complete.
+T0101	/	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	5	TRUE	TRUE	TRUE	0	0	PASS	M matrix r1c2 slash is fully isolated.
+T0102	2	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	6	TRUE	TRUE	TRUE	0	0	PASS	M matrix r1c2 denominator two is complete.
+T0103	1	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	7	TRUE	TRUE	TRUE	0	0	PASS	M matrix r1c3 one is complete and pure.
+T0104	1	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	8	TRUE	TRUE	TRUE	0	0	PASS	M matrix r2c1 one is complete and centered.
+T0105	0	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	9	TRUE	TRUE	TRUE	0	0	PASS	M matrix r2c2 zero is a complete closed glyph.
+T0106	0	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	10	TRUE	TRUE	TRUE	0	0	PASS	M matrix r2c3 zero is complete and isolated.
+T0107	0	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	11	TRUE	TRUE	TRUE	0	0	PASS	M matrix r3c1 zero is complete with no border ink.
+T0108	1	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_009.png	12	TRUE	TRUE	TRUE	0	0	PASS	M matrix r3c2 numerator one is complete.
+T0109	/	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	1	TRUE	TRUE	TRUE	0	0	PASS	M matrix r3c2 slash is complete and pure.
+T0110	2	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	2	TRUE	TRUE	TRUE	0	0	PASS	M matrix r3c2 denominator two is complete.
+T0111	0	MATRIX_ENTRY	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	3	TRUE	TRUE	TRUE	0	0	PASS	M matrix r3c3 zero is complete and clear of border.
+T0112	𝑀	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	4	TRUE	TRUE	TRUE	0	0	PASS	Column-normalized M symbol is complete.
+T0113	∶	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	5	TRUE	TRUE	TRUE	0	0	PASS	First colon operator retains both dots only.
+T0114	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	6	TRUE	TRUE	TRUE	0	0	PASS	Column index j includes dot and descender.
+T0115	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	7	TRUE	TRUE	TRUE	0	0	PASS	Normalization equals sign is complete.
+T0116	𝐴	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	8	TRUE	TRUE	TRUE	0	0	PASS	Adjacency symbol A is complete and isolated.
+T0117	∶	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	9	TRUE	TRUE	TRUE	0	0	PASS	Second colon operator contains its two isolated dots.
+T0118	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	10	TRUE	TRUE	TRUE	0	0	PASS	Adjacency column index j is complete.
+T0119	/	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	11	TRUE	TRUE	TRUE	0	0	PASS	Normalization slash has a complete diagonal stroke.
+T0120	𝑐	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_010.png	12	TRUE	TRUE	TRUE	0	0	PASS	Degree symbol c is complete and pure.
+T0121	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	1	TRUE	TRUE	TRUE	0	0	PASS	Degree subscript j includes complete dot and descender.
+T0122	1	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	2	TRUE	TRUE	TRUE	0	0	PASS	Left one-vector symbol is complete and readable.
+T0123	T	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	3	TRUE	TRUE	TRUE	0	0	PASS	First transpose superscript T has complete cap and stem.
+T0124	𝑀	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	4	TRUE	TRUE	TRUE	0	0	PASS	M in the stochastic identity is complete.
+T0125	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	5	TRUE	TRUE	TRUE	0	0	PASS	Identity equals sign contains two full bars.
+T0126	1	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	6	TRUE	TRUE	TRUE	0	0	PASS	Right one-vector symbol is complete and isolated.
+T0127	T	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	7	TRUE	TRUE	TRUE	0	0	PASS	Second transpose superscript T is complete.
+T0128	𝑝	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	8	TRUE	TRUE	TRUE	0	0	PASS	Probability vector p has full bowl and descender.
+T0129	(	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	9	TRUE	TRUE	TRUE	0	0	PASS	Opening time parenthesis is complete and pure.
+T0130	𝑡	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	10	TRUE	TRUE	TRUE	0	0	PASS	Time index t is complete and isolated.
+T0131	+	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	11	TRUE	TRUE	TRUE	0	0	PASS	Plus sign has complete crossing strokes.
+T0132	1	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_011.png	12	TRUE	TRUE	TRUE	0	0	PASS	Time increment one is complete and readable.
+T0133	)	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	1	TRUE	TRUE	TRUE	0	0	PASS	Closing time parenthesis is complete and isolated.
+T0134	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	2	TRUE	TRUE	TRUE	0	0	PASS	Update equals sign contains two full bars.
+T0135	𝑀	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	3	TRUE	TRUE	TRUE	0	0	PASS	Update matrix M is complete and legible.
+T0136	𝑝	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	4	TRUE	TRUE	TRUE	0	0	PASS	Current probability p is complete and isolated.
+T0137	(	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	5	TRUE	TRUE	TRUE	0	0	PASS	Opening current-time parenthesis is complete.
+T0138	𝑡	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	6	TRUE	TRUE	TRUE	0	0	PASS	Current time t retains its full visible stroke.
+T0139	)	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	7	TRUE	TRUE	TRUE	0	0	PASS	Closing current-time parenthesis is complete.
+T0140	同	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	8	TRUE	TRUE	TRUE	0	0	PASS	Right-panel note 同 is complete and pure.
+T0141	一	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	9	TRUE	TRUE	TRUE	0	0	PASS	Right-panel note 一 has a complete horizontal stroke.
+T0142	结	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	10	TRUE	TRUE	TRUE	0	0	PASS	Right-panel note 结 retains all components.
+T0143	点	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	11	TRUE	TRUE	TRUE	0	0	PASS	Right-panel note 点 is complete including lower dots.
+T0144	顺	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_012.png	12	TRUE	TRUE	TRUE	0	0	PASS	Right-panel note 顺 is complete and isolated.
+T0145	序	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	1	TRUE	TRUE	TRUE	0	0	PASS	Right-panel note 序 has all visible strokes.
+T0146	(	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	2	TRUE	TRUE	TRUE	0	0	PASS	Opening node-order parenthesis is complete.
+T0147	𝑖	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	3	TRUE	TRUE	TRUE	0	0	PASS	Node-order i includes dot and stem.
+T0148	,	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	4	TRUE	TRUE	TRUE	0	0	PASS	Node-order first comma is complete and pure.
+T0149	𝑗	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	5	TRUE	TRUE	TRUE	0	0	PASS	Node-order j includes dot and descender.
+T0150	,	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	6	TRUE	TRUE	TRUE	0	0	PASS	Node-order second comma is complete and isolated.
+T0151	ℎ	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	7	TRUE	TRUE	TRUE	0	0	PASS	Node-order h is complete and readable.
+T0152	)	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	8	TRUE	TRUE	TRUE	0	0	PASS	Closing node-order parenthesis is complete.
+T0153	𝑃	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	9	TRUE	TRUE	TRUE	0	0	PASS	Transition-matrix label P is complete and pure.
+T0154	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	10	TRUE	TRUE	TRUE	0	0	PASS	P-matrix equals sign has two intact bars.
+T0155	0	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	11	TRUE	TRUE	TRUE	0	0	PASS	P matrix r1c1 zero is closed and complete.
+T0156	1	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_013.png	12	TRUE	TRUE	TRUE	0	0	PASS	P matrix r1c2 one is complete and centered.
+T0157	0	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	1	TRUE	TRUE	TRUE	0	0	PASS	P matrix r1c3 zero is complete and pure.
+T0158	1	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	2	TRUE	TRUE	TRUE	0	0	PASS	P matrix r2c1 numerator one is complete.
+T0159	/	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	3	TRUE	TRUE	TRUE	0	0	PASS	P matrix r2c1 slash is complete and isolated.
+T0160	2	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	4	TRUE	TRUE	TRUE	0	0	PASS	P matrix r2c1 denominator two is complete.
+T0161	0	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	5	TRUE	TRUE	TRUE	0	0	PASS	P matrix r2c2 zero has a complete closed outline.
+T0162	1	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	6	TRUE	TRUE	TRUE	0	0	PASS	P matrix r2c3 numeral one is complete.
+T0163	/	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	7	TRUE	TRUE	TRUE	0	0	PASS	P matrix r2c3 slash is complete and pure.
+T0164	2	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	8	TRUE	TRUE	TRUE	0	0	PASS	P matrix r2c3 denominator two is complete.
+T0165	1	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	9	TRUE	TRUE	TRUE	0	0	PASS	P matrix r3c1 one is complete and centered.
+T0166	0	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	10	TRUE	TRUE	TRUE	0	0	PASS	P matrix r3c2 zero is complete and isolated.
+T0167	0	NOTE	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	11	TRUE	TRUE	TRUE	0	0	PASS	P matrix r3c3 zero is complete with no cell-border ink.
+T0168	𝑃	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_014.png	12	TRUE	TRUE	TRUE	0	0	PASS	P in transpose bridge is complete and legible.
+T0169	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	1	TRUE	TRUE	TRUE	0	0	PASS	Transpose-bridge equals sign contains two full bars.
+T0170	𝑀	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	2	TRUE	TRUE	TRUE	0	0	PASS	M in transpose bridge is complete and pure.
+T0171	T	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	3	TRUE	TRUE	TRUE	0	0	PASS	Transpose superscript T is complete and separate from M.
+T0172	𝑃	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	4	TRUE	TRUE	TRUE	0	0	PASS	Indexed P symbol is complete and readable.
+T0173	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	5	TRUE	TRUE	TRUE	0	0	PASS	P row index j includes dot and descender.
+T0174	𝑖	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	6	TRUE	TRUE	TRUE	0	0	PASS	P column index i includes dot and stem.
+T0175	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	7	TRUE	TRUE	TRUE	0	0	PASS	Indexed equality sign has two complete bars.
+T0176	𝑀	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	8	TRUE	TRUE	TRUE	0	0	PASS	Indexed M symbol is complete and pure.
+T0177	𝑖	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	9	TRUE	TRUE	TRUE	0	0	PASS	M row index i includes its complete dot and stem.
+T0178	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	10	TRUE	TRUE	TRUE	0	0	PASS	M column index j includes full dot and descender.
+T0179	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	11	TRUE	TRUE	TRUE	0	0	PASS	Probability equality sign retains both bars.
+T0180	P	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_015.png	12	TRUE	TRUE	TRUE	0	0	PASS	Probability operator P has full bowl and stem.
+T0181	r	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	1	TRUE	TRUE	TRUE	0	0	PASS	Operator subscript r is complete and isolated.
+T0182	(	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	2	TRUE	TRUE	TRUE	0	0	PASS	Conditional-probability opening parenthesis is complete; context marks excluded.
+T0183	𝑋	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	3	TRUE	TRUE	TRUE	0	0	PASS	Random-variable X is complete and legible.
+T0184	𝑡	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	4	TRUE	TRUE	TRUE	0	0	PASS	First time index t has a complete visible stroke.
+T0185	+	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	5	TRUE	TRUE	TRUE	0	0	PASS	Time plus sign has complete horizontal and vertical strokes.
+T0186	1	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	6	TRUE	TRUE	TRUE	0	0	PASS	Time increment one is complete and isolated.
+T0187	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	7	TRUE	TRUE	TRUE	0	0	PASS	Conditioning equality sign has two full bars.
+T0188	𝑖	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	8	TRUE	TRUE	TRUE	0	0	PASS	Destination-state i includes dot and stem.
+T0189	∣	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	9	TRUE	TRUE	TRUE	0	0	PASS	Conditional bar is complete and isolated from neighbours.
+T0190	𝑋	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	10	TRUE	TRUE	TRUE	0	0	PASS	Second random-variable X has all diagonal strokes.
+T0191	𝑡	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	11	TRUE	TRUE	TRUE	0	0	PASS	Second time index t is complete and pure.
+T0192	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_016.png	12	TRUE	TRUE	TRUE	0	0	PASS	Source-state equality sign contains two complete bars.
+T0193	𝑗	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	1	TRUE	TRUE	TRUE	0	0	PASS	Source-state j includes complete dot and descender.
+T0194	)	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	2	TRUE	TRUE	TRUE	0	0	PASS	Conditional-probability closing parenthesis is complete.
+T0195	𝑃	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	3	TRUE	TRUE	TRUE	0	0	PASS	Transition symbol P is complete and readable.
+T0196	1	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	4	TRUE	TRUE	TRUE	0	0	PASS	First one-vector symbol is complete and isolated.
+T0197	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	5	TRUE	TRUE	TRUE	0	0	PASS	Row-stochastic equality sign has two full bars.
+T0198	1	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	6	TRUE	TRUE	TRUE	0	0	PASS	Second one-vector symbol is complete and pure.
+T0199	𝜌	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	7	TRUE	TRUE	TRUE	0	0	PASS	Distribution rho has a complete bowl and descender.
+T0200	𝑡	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	8	TRUE	TRUE	TRUE	0	0	PASS	Distribution time index t is complete.
+T0201	+	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	9	TRUE	TRUE	TRUE	0	0	PASS	Distribution plus sign contains both full strokes.
+T0202	1	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	10	TRUE	TRUE	TRUE	0	0	PASS	Distribution increment one is complete.
+T0203	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	11	TRUE	TRUE	TRUE	0	0	PASS	Distribution update equals sign retains two bars.
+T0204	𝜌	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_017.png	12	TRUE	TRUE	TRUE	0	0	PASS	Current distribution rho is complete and isolated.
+T0205	𝑡	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	1	TRUE	TRUE	TRUE	0	0	PASS	Current distribution time index t is complete.
+T0206	𝑃	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	2	TRUE	TRUE	TRUE	0	0	PASS	Transition matrix P in update is complete.
+T0207	𝜌	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	3	TRUE	TRUE	TRUE	0	0	PASS	Row-vector rho has full curve and descender.
+T0208	𝑡	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	4	TRUE	TRUE	TRUE	0	0	PASS	Row-vector time index t is complete.
+T0209	=	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	5	TRUE	TRUE	TRUE	0	0	PASS	Transpose identity equals sign has two complete bars.
+T0210	(	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	6	TRUE	TRUE	TRUE	0	0	PASS	Opening parenthesis around p is complete and isolated.
+T0211	𝑝	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	7	TRUE	TRUE	TRUE	0	0	PASS	Column-vector p has complete bowl and descender.
+T0212	(	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	8	TRUE	TRUE	TRUE	0	0	PASS	Opening time parenthesis after p is complete.
+T0213	𝑡	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	9	TRUE	TRUE	TRUE	0	0	PASS	Final time index t is complete and pure.
+T0214	)	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	10	TRUE	TRUE	TRUE	0	0	PASS	Inner closing parenthesis is complete and isolated.
+T0215	)	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	11	TRUE	TRUE	TRUE	0	0	PASS	Outer closing parenthesis is complete and separated.
+T0216	T	FORMULA	gpt-5.6-sol/xhigh	glyph_contact_sheet_018.png	12	TRUE	TRUE	TRUE	0	0	PASS	Final transpose superscript T is complete and readable.

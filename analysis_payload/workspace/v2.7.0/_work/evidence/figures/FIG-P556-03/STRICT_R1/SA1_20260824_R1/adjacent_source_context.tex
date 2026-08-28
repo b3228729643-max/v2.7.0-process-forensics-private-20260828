@@ -1,0 +1,49 @@
+0586: \paragraph{读前自检：可逆马尔可夫链。}可逆链满足细致平衡$\rho_i a_{ij}=\rho_j a_{ji}$；请对$i$求和并用第$j$行和为1，核对$\sum_i\rho_i a_{ij}=\rho_j$，从而细致平衡推出平稳性。\par
+0587: 
+0588: \knowledgeanchor{SLM-19-06-001}{可逆马尔可夫链}
+0589: \index{可逆马尔可夫链}
+0590: \begin{definition}[细致平衡与可逆性]
+0591: 若概率分布$\rho$满足
+0592: \begin{equation}\label{eq:V5-C01-detailed-balance}
+0593: \rho_i a_{ij}=\rho_j a_{ji},\qquad i,j\in\mathcal S,
+0594: \end{equation}
+0595: 则称$A$关于$\rho$满足细致平衡，链关于$\rho$可逆。等式两边都是平稳权重下沿同一条边相反方向的一步概率流。
+0596: \end{definition}
+0597: 本讲义只使用式\eqref{eq:V5-C01-detailed-balance}或等价的双向前向条件概率表达，不使用把时间反向条件概率与前向条件概率混为同一个式子的写法。
+0598: 
+0599: % CORE-DERIVATION-PLAN: KN-V5-C30-DERIVATION-004
+0600: \SLKnowledgeBridge{逐分量求和，分清该证明与不可约性的关系。}{转移矩阵 $A$ 与分布 $\rho$，满足 $\rho_i a_{ij}=\rho_j a_{ji}$。}{$A$ 每行和为 $1$；细致平衡对所有 $i,j$ 成立。}{先固定目标状态 $j$，写 $(\rho A)_j=\sum_i\rho_i a_{ij}$。}
+0601: 
+0602: \begin{derivationgoalbox}
+0603: 从细致平衡逐分量证明$\rho$是平稳分布，同时指出证明没有使用不可约性。
+0604: \end{derivationgoalbox}
+0605: \begin{derivationprepbox}
+0606: 固定目标状态$j$，对所有来源状态$i$求和；再使用$A$第$j$行的和为$1$。
+0607: \end{derivationprepbox}
+0608: \textbf{推导第1步：写出流入量。}
+0609: \[
+0610: (\rho A)_j=\sum_i\rho_i a_{ij}.
+0611: \]
+0612: \textbf{推导第2步：逐边反向。}由细致平衡，
+0613: \[
+0614: \sum_i\rho_i a_{ij}=\sum_i\rho_j a_{ji}
+0615: =\rho_j\sum_i a_{ji}.
+0616: \]
+0617: \textbf{推导第3步：使用行和。}这里$i$遍历的是矩阵第$j$行的目的状态，所以$\sum_i a_{ji}=1$，于是$(\rho A)_j=\rho_j$。对每个$j$成立，故$\rho A=\rho$。
+0618: 
+0619: \begin{warningbox}
+0620: 细致平衡只保证平稳性。取$A=I_2$和任意严格正概率行向量$\rho=(a,1-a)$，其中$0<a<1$，所有等式$\rho_i a_{ij}=\rho_j a_{ji}$都成立，但两个状态互不可达，链可约，且平稳分布不唯一。再取$f(1)=0,f(2)=1$：从状态$1$出发时路径恒留在$1$，时间平均恒为$0$，而指定分布下的空间平均为$\sum_i\rho_i f(i)=1-a>0$。因此仅有可逆性也不保证无条件时间平均结论、非周期性或从任意初值逐步收敛；不可约性等条件必须另行验证。
+0638: \phantomsection\label{struct:V5-C01-CH17}
+0639: \textbf{图形辅助。}图\ref{fig:V5-C01-chain-properties}并列展示可约非周期、不可约周期和不可约非周期三种状态图；是否存在自环、图是否连通以及返回路径长度必须分别检查。
+0640: \input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_chain_properties.tex}
+0641: 
+0642: 图\ref{fig:V5-C01-detailed-balance}把相反方向的平稳概率流画在同一条边上，并同时给出$A=I_2$的断开反例。流量对称不等于支撑图连通。
+0643: \input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_detailed_balance_counterexample.tex}
+0644: 
+1024: 命题不成立。最小反例取状态空间$S=\{1,2\}$、$A=I_2$和$\rho=(a,1-a)$，其中$0<a<1$；$\rho$已归一化。对任意$i,j\in S$，
+1025: \[
+1026: \begin{aligned}
+1027: \rho_i a_{ij}&=\rho_i\boldsymbol1\{i=j\}
+1028: =\rho_j\boldsymbol1\{j=i\}=\rho_j a_{ji},\\
+1029: \rho A&=\rho,\qquad
+1030: \{1\},\{2\}\text{均为闭通信类}.

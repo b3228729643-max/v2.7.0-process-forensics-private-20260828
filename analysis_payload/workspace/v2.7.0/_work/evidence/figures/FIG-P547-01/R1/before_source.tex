@@ -1,0 +1,50 @@
+% v2.3.1 figure UID: FIG-P547-01
+% v2.6.0 reverse redraw for FIG-P547-01: symmetric panels, explicit type, and redundant edge hierarchy.
+\tikzset{slfig-FIG-P547-01/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P547-01,>=Stealth,
+  state/.style={circle,draw=SLBlue,fill=SLBlue!9,minimum size=8.6mm,line width=.86pt,font=\fontsize{9.4pt}{11.2pt}\selectfont},
+  edge/.style={-{Stealth[length=1.95mm]},draw=SLTeal,line width=.86pt},
+  focus/.style={-{Stealth[length=2.15mm]},draw=SLGold,line width=1.08pt},
+  lab/.style={font=\fontsize{8.8pt}{10.4pt}\selectfont,fill=white,inner sep=1.2pt},
+  title/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont\bfseries},
+  matrix/.style={align=center,font=\fontsize{9.2pt}{11.0pt}\selectfont},
+  bridge/.style={draw=SLRuleGray,rounded corners=2pt,fill=SLSoftGray,align=center,
+    minimum width=28mm,minimum height=11mm,line width=.68pt,inner sep=2.2pt,
+    font=\fontsize{9.2pt}{11.0pt}\selectfont},
+  bridge arrow/.style={-{Stealth[length=2.05mm]},draw=SLGold,line width=.88pt},
+]
+  \begin{scope}[shift={(-4.15,1.05)}]
+    \node[title] at (0,1.35) {行随机：$P_{ij}=P(i\to j)$};
+    \node[state] (l1) at (-1.25,0) {$1$};
+    \node[state] (l2) at (1.25,0) {$2$};
+    \draw[edge] (l1) to[loop left,min distance=11mm] node[lab,left] {$0.7$} (l1);
+    \draw[edge] (l2) to[loop right,min distance=11mm] node[lab,right] {$0.8$} (l2);
+    \draw[focus] (l1) to[bend left=20] node[lab,above] {$P^{\rm row}_{12}=0.3$} (l2);
+    \draw[edge] (l2) to[bend left=20] node[lab,below] {$P^{\rm row}_{21}=0.2$} (l1);
+    \node[matrix] at (0,-1.55)
+      {$P_{\rm row}=\begin{bmatrix}.7&\color{SLGold}.3\\.2&.8\end{bmatrix}$\\
+       每行出边和为 $1$};
+  \end{scope}
+
+  \node[bridge] at (0,0)
+    {$P_{\rm col}=P_{\rm row}^{\mathsf T}$\\同一边：$12\leftrightarrow21$};
+  \draw[bridge arrow] (-1.45,.25)--(-.85,.25);
+  \draw[bridge arrow] (.85,.25)--(1.45,.25);
+
+  \begin{scope}[shift={(4.15,1.05)}]
+    \node[title] at (0,1.35) {列随机 / PageRank：$P_{ji}=P(i\to j)$};
+    \node[state] (r1) at (-1.25,0) {$1$};
+    \node[state] (r2) at (1.25,0) {$2$};
+    \draw[edge] (r1) to[loop left,min distance=11mm] node[lab,left] {$0.7$} (r1);
+    \draw[edge] (r2) to[loop right,min distance=11mm] node[lab,right] {$0.8$} (r2);
+    \draw[focus] (r1) to[bend left=20] node[lab,above] {$P^{\rm col}_{21}=0.3$} (r2);
+    \draw[edge] (r2) to[bend left=20] node[lab,below] {$P^{\rm col}_{12}=0.2$} (r1);
+    \node[matrix] at (0,-1.55)
+      {$P_{\rm col}=\begin{bmatrix}.7&.2\\\color{SLGold}.3&.8\end{bmatrix}$\\
+       每列出边和为 $1$};
+  \end{scope}
+\end{tikzpicture}
+\caption{行随机约定下的两状态转移图，并给出到列随机PageRank约定的显式转置桥。}\label{fig:V5-C01-transition-graph}
+\end{figure}

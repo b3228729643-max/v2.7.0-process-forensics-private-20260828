@@ -1,0 +1,24 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{714}
+\setcounter{chapter}{36}
+\setcounter{section}{1}
+\setcounter{figure}{2}
+\pagestyle{headings}
+\chaptermark{PageRank算法}
+\sectionmark{基本 PageRank}
+不可约但周期为$2$的链仍可有唯一平稳分布，却可能在两个状态间振荡；
+可约链则可能有多个闭类和多个平稳分布。图\ref{fig:V5-C07-periodic-dangling}
+在本章列向量、列随机约定下并列展示周期振荡与悬挂零列两类故障及其不同修复顺序。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/periodic_dangling_failures.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}左栏先核对
+$M_{\mathrm p}\boldsymbol e_1=\boldsymbol e_2$、
+$M_{\mathrm p}\boldsymbol e_2=\boldsymbol e_1$，再区分“唯一平稳分布
+$(1/2,1/2)^{\mathsf T}$存在”与“从$\boldsymbol e_1$逐步收敛”（后者不成立）；
+右栏核对$M_{\mathrm d}$第$2$列和为$0$且
+$M_{\mathrm d}\boldsymbol e_2=\boldsymbol0$，故它不是列随机概率核并丢失质量，
+最后复述一般\PageRank{}必须先以$\boldsymbol v$回填悬挂列得到$S$，再由$S$构造阻尼$G$。
+\end{document}

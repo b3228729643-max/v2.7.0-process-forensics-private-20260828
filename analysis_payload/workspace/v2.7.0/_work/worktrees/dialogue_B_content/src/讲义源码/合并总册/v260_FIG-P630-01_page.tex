@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{662}
+\setcounter{chapter}{33}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{Gibbs 抽样}
+\sectionmark{本章地图与依赖路线}
+\noindent 图\ref{fig:V5-C04-dependency-graph}概括从联合目标与局部因子到 Monte Carlo 诊断的六节点学习与计算主链。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_dependency_graph.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先看给定其余坐标$x_{-j}$后，满条件$\pi_j(\cdot\mid x_{-j})$如何只重抽$x_j$；再看单坐标核$K_j$怎样组成系统或随机扫描核并产生相关样本；最终用MCSE、ESS与轨迹诊断评估统计误差和混合效率。主链箭头只表示学习与计算依赖，不是概率图的生成时间方向；目标保持仍不自动推出不可约、收敛或快速混合。\par
+\end{document}

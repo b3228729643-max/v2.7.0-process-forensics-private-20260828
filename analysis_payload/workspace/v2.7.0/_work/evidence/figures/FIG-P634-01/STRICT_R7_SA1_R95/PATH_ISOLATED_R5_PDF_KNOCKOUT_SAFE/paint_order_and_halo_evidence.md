@@ -1,0 +1,3 @@
+# FIG-P634-01 paint order and real halo evidence
+
+Source lines 28--35 draw four patterned completed cards first, then draw four `sl634-halo` nodes with `fill=white, draw=none` over their text areas. The final PDF drawing order is recovered as drawings 2--9. For each completed card, `masks/paint_order/` retains three native-coordinate masks: pre-occlusion card support, the true opaque halo rectangle, and pre minus halo (final-visible background support). The quality relations use only the separate final-visible border/pattern raw masks in `masks/graphics/`; no dilation, white page box, or fabricated halo is used to erase a collision.

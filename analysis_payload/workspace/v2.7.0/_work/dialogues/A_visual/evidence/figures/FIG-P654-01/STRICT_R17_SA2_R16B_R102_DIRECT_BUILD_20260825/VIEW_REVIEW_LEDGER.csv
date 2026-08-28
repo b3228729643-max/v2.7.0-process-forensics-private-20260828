@@ -1,0 +1,6 @@
+﻿VIEW,ACTUALLY_OPENED,LAYOUT_COMPLETE,READABLE,FONT_VISUAL_HARMONY_PASS,HARD_GATE_PASS,DECISION,REVIEWER,NOTE
+views/full_page_200dpi.png,True,True,True,True,False,FAIL,codex-root-r17-visual,"Opened at full-page scale; the standalone graph is complete, centered in its wrapper page region, and no clipping or missing node is visible."
+views/figure_crop_300dpi.png,True,True,True,True,False,FAIL,codex-root-r17-visual,"Opened at native figure scale; nine nodes, all semantic arrows/relations, translated 贝塔 label, literal N, and three mathematical plus glyphs are readable."
+views/standalone_300dpi.png,True,True,True,True,False,FAIL,codex-root-r17-visual,Opened at native 300dpi; overall hierarchy and line routing remain coherent with no visual crowding introduced by R16B.
+views/grayscale_300dpi.png,True,True,True,True,False,FAIL,codex-root-r17-visual,"Opened in grayscale; text, formulas, arrows, borders, and line hierarchy remain distinguishable."
+views/after_text_measurement_overlay_300dpi.png,True,True,True,True,False,FAIL,codex-root-r17-visual,Opened with all 93 glyph and 21 drawing IDs; masks are complete. G0040/G0059/G0064/G0065 are visibly intact but fail the frozen numeric D/E gate; G0092/G0093 have 0px native clearance to D0009.

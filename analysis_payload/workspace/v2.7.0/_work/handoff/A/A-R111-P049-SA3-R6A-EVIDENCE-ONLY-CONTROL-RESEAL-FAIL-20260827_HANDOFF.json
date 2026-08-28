@@ -1,0 +1,44 @@
+{
+  "handoff_id": "A-R111-P049-SA3-R6A-EVIDENCE-ONLY-CONTROL-RESEAL-FAIL-20260827",
+  "figure_uid": "FIG-P049-01",
+  "assigned_scope": "One-time PowerShell 7 evidence-only control reseal from the unsealed R6 material root into the new R6A sibling root.",
+  "completed": [
+    "validated the corrected R6 canonical identity as 34 files, 4333519 bytes, 4071 canonical bytes, SHA256 B77ADA737922FFA781C84AC7101F707E70C79C60EF33BA031729E8324D2830A9",
+    "froze controller and auditor identities with AST errors 0",
+    "consumed exactly one controller invocation with retry count 0",
+    "copied all 34 material files and created only COPY_IDENTITY.csv and COPY_PROVENANCE.json before the first error",
+    "stopped immediately on the first controller error",
+    "independently verified all 34 source-to-destination path, bytes, SHA256, and NTFS ticks identities with mismatch count 0"
+  ],
+  "files_changed": {
+    "original_r6_root": "none",
+    "failed_r6a_root": "36 writable payload-stage files; no controls and no marker",
+    "pdf_source_git_central_tex": "none",
+    "root_external_report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\A-R111-P049-SA3-R6A-EVIDENCE-ONLY-CONTROL-RESEAL-FAIL-20260827_REPORT.md"
+  },
+  "decisions": [
+    "R6A_CONTROL_RESEAL_FAILED_NO_RETRY",
+    "R6A is not sealed and cannot support A_LOCAL_PASS",
+    "preserve the earlier SA3 content direction only as historical content evidence",
+    "do not modify or retry the failed R6A root"
+  ],
+  "validation": {
+    "controller_invocations": 1,
+    "controller_retries": 0,
+    "controller_exit": 1,
+    "first_error": "The property Count cannot be found on this object.",
+    "target_ordinary_files": 36,
+    "target_bytes": 4340097,
+    "copy_identity_rows": 34,
+    "copy_identity_mismatches": 0,
+    "payload_manifest_present": false,
+    "seal_audit_present": false,
+    "write_stopped_present": false,
+    "writable_files": 36,
+    "writable_directories": 1
+  },
+  "unresolved": [
+    "A new sibling reseal requires a new explicit Main authorization."
+  ],
+  "next_action": "Main reviews the immutable failure package and decides whether to authorize a new sibling evidence-only control reseal."
+}

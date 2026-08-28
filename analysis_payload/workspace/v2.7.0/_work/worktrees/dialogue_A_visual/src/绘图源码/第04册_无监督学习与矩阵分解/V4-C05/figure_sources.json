@@ -1,0 +1,39 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V4-C05",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 1,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V4-C05-01",
+      "source_path": "绘图源码/第04册_无监督学习与矩阵分解/V4-C05/fig_v4_c05_two_geometries.tex",
+      "source_file": "fig_v4_c05_two_geometries.tex",
+      "source_kind": "tikz",
+      "label": "fig:V4-C05-two-geometries",
+      "caption": "LSA的正交子空间表示与NMF的非负锥表示：二者维数相同，坐标约束和最优性不同",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "读图时应回答：“LSA的正交子空间表示与NMF的非负锥表示：二者维数相同，坐标约束和最优性不同”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第04册_无监督学习与矩阵分解/chapters/V4-C05.tex",
+        "target_label": "fig:V4-C05-two-geometries",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-17-01-003"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：LSA的正交子空间表示与NMF的非负锥表示：二者维数相同，坐标约束和最优性不同"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

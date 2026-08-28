@@ -1,0 +1,9 @@
+﻿CHECK_ID,CATEGORY,OBJECT_A,OBJECT_B,OBJECT_A_SOURCE_LINE,OBJECT_B_SOURCE_LINE,OBJECT_A_BBOX_PX,OBJECT_B_BBOX_PX,OVERLAP_PIXEL_COUNT,CLIP_PIXEL_COUNT,MIN_CLEARANCE_PX,THRESHOLD_PX,PASS_FAIL,METHOD
+O01,TEXT_TEXT,E32,E42,see after_pixel_measurements.csv,see after_pixel_measurements.csv,see after_pixel_measurements.csv,see after_pixel_measurements.csv,0,0,35.00,4,PASS,all distinct semantic text groups
+O02,TEXT_LINE_ARROW_MARKER,all_text,G06-G15,multiple,"7-12,19,22-25,36-42,54-65",see per-pair rows,see per-pair rows,12,0,0.00,3,FAIL,visible text masks vs vector line/arrow/border semantic masks
+O03,NODE_TEXT_BORDER,tree node/leaf text,G01-G05,34-42,"16-19,34-42",see after_pixel_measurements.csv,see after_element_inventory.csv,0,0,7.00,5,PASS,node-border semantic mask only
+O04,TEXT_PAGE_EDGE,all_text,official_page_edge,multiple,N/A,see after_pixel_measurements.csv,"0,0,2481,3508",0,0,330.00,6,PASS,"original official page edge, not an evidence-crop edge"
+O05,CROSS_PANEL_TEXT,left_panel_text,right_panel_text,30-48,52-68,see after_pixel_measurements.csv,see after_pixel_measurements.csv,0,0,276.00,8,PASS,left/right independent reader elements
+O06,CLIP,all_semantic_objects,official_page_bounds,multiple,N/A,see inventories,"0,0,2481,3508",0,0,330.00,0,PASS,no object reaches the official PDF page edge
+O07,TEXT_LINE_ARROW_MARKER,E07,G07,38,"7,37","736,1058,775,1097","681,1018,749,1115",10,0,0.00,3,FAIL,native 300dpi glyph-colour semantic mask vs individual vector semantic mask; inspect paired 1:1 ROI
+O08,TEXT_LINE_ARROW_MARKER,E15,G09,42,"19,42","873,1253,912,1292","818,1214,886,1310",2,0,0.00,3,FAIL,native 300dpi glyph-colour semantic mask vs individual vector semantic mask; inspect paired 1:1 ROI

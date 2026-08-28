@@ -1,0 +1,79 @@
+{
+  "handoff_id": "A-R112-P067-SA2-DIRECT-BUILD-R7-20260827",
+  "checked_at_utc": "2026-08-27T09:15:32Z",
+  "input_identity": {
+    "source_bytes": 4014,
+    "source_sha256": "2881377AEEF78E8C7BD7502AD8A303E19AAC395F1936475BDC6D569195900920",
+    "wrapper_bytes": 388,
+    "wrapper_sha256": "ADDF75D1C82DAB9AB4D5A76E6B241DA1CEB7AED9C2E536106ECFD7710B2D14BF",
+    "pdf_bytes": 34211,
+    "pdf_sha256": "73FBE000AC977A7E270D4834A0F9B81AC24C851BAE72B38503ACCAEBC844E108"
+  },
+  "build": {
+    "controller_exit": 0,
+    "child_exit": 0,
+    "natural": true,
+    "interrupted": false,
+    "typeset_invocation_count": 1,
+    "retry_count": 0,
+    "latexmk_count": 0,
+    "version_probe_count": 0,
+    "terminal_tex_process_count": 0
+  },
+  "denominator": {
+    "N": 115,
+    "glyph_atoms": 65,
+    "path_atoms": 50,
+    "background_exclusions": 5,
+    "all_unordered_pairs_expected": 6555,
+    "all_unordered_pairs_rows": 6555,
+    "duplicate_pairs": 0,
+    "self_pairs": 0
+  },
+  "machine_gates": {
+    "clip_count": 0,
+    "empty_foreground_atom_count": 0,
+    "target_tick_relation_hard_overlap_count": 0,
+    "machine_hard_failure_count": 0,
+    "manual_fields_generated_or_overwritten_by_machine": 0
+  },
+  "manual_gates": {
+    "object_rows": 115,
+    "object_unique_ids": 115,
+    "object_nonpass": 0,
+    "object_blank_notes": 0,
+    "relation_rows": 16,
+    "relation_unique_ids": 16,
+    "relation_nonpass": 0,
+    "view_rows": 16,
+    "view_unique_ids": 16,
+    "post_observation_only": true
+  },
+  "semantic_contract": {
+    "handler": "const plot mark left",
+    "intervals": [
+      "[.5,1):0",
+      "[1,2):.15",
+      "[2,3):.45",
+      "[3,4):.80",
+      "[4,4.5]:1"
+    ],
+    "pmf_values": [0.15, 0.30, 0.35, 0.20],
+    "pmf_sum": 1.0,
+    "open_filled_endpoint_pairs": 4,
+    "right_continuity_pass": true
+  },
+  "r168": {
+    "real_hard_failure_count": 0,
+    "advisory": "The 0.35-to-0.3 and 0.3-to-0.15 label gaps are one native 300-dpi pixel (eight nearest-neighbour pixels) with zero shared foreground."
+  },
+  "git_scope": {
+    "modified_files": 1,
+    "insertions": 1,
+    "deletions": 1,
+    "index_empty": true,
+    "diff_check_pass": true,
+    "only_change": "const plot mark right -> const plot mark left"
+  },
+  "terminal_status": "PASS_READY_FOR_SINGLE_SEAL"
+}

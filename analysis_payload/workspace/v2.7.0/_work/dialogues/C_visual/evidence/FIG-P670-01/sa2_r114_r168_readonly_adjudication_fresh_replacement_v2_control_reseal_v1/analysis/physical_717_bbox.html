@@ -1,0 +1,735 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>统计学习方法初学者讲义——数学基础、监督学习、序列模型、无监督学习与采样方法（v2.7.0 完整解析版）</title>
+<meta name="Subject" content="统计学习方法初学者讲义 v2.7.0 完整解析版"/>
+<meta name="Keywords" content="统计学习方法, v2.7.0"/>
+<meta name="Author" content=""/>
+<meta name="Creator" content="LaTeX with hyperref"/>
+<meta name="Producer" content="LuaTeX-1.24.0"/>
+<meta name="CreationDate" content="2026-08-27T20:55:48+08"/>
+<meta name="ModDate" content="2026-08-27T20:55:48+08"/>
+</head>
+<body>
+<doc>
+  <page width="595.276000" height="841.890000">
+    <flow>
+      <block xMin="62.113000" yMin="36.632888" xMax="121.639640" yMax="47.302875">
+        <line xMin="62.113000" yMin="36.632888" xMax="121.639640" yMax="47.302875">
+          <word xMin="62.113000" yMin="37.011468" xMax="76.907520" yMax="46.974108">704</word>
+          <word xMin="86.870000" yMin="36.632888" xMax="96.832640" yMax="47.302875">第</word>
+          <word xMin="99.324000" yMin="37.011468" xMax="109.187014" yMax="46.974108">34</word>
+          <word xMin="111.677000" yMin="36.632888" xMax="121.639640" yMax="47.302875">章</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="131.602280" yMin="36.632888" xMax="241.191320" yMax="47.302875">
+        <line xMin="131.602280" yMin="36.632888" xMax="241.191320" yMax="47.302875">
+          <word xMin="131.602280" yMin="36.632888" xMax="241.191320" yMax="47.302875">狄利克雷分布与共轭先验</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="92.033000" yMin="105.591790" xMax="96.569987" yMax="114.757420">
+        <line xMin="92.033000" yMin="105.591790" xMax="96.569987" yMax="114.757420">
+          <word xMin="92.033000" yMin="105.591790" xMax="96.569987" yMax="114.757420">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="110.458000" yMin="105.591790" xMax="114.994987" yMax="114.757420">
+        <line xMin="110.458000" yMin="105.591790" xMax="114.994987" yMax="114.757420">
+          <word xMin="110.458000" yMin="105.591790" xMax="114.994987" yMax="114.757420">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="128.883000" yMin="105.591790" xMax="133.419987" yMax="114.757420">
+        <line xMin="128.883000" yMin="105.591790" xMax="133.419987" yMax="114.757420">
+          <word xMin="128.883000" yMin="105.591790" xMax="133.419987" yMax="114.757420">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="97.354000" yMin="124.122618" xMax="111.090494" yMax="133.088998">
+        <line xMin="97.354000" yMin="124.122618" xMax="111.090494" yMax="133.088998">
+          <word xMin="97.354000" yMin="124.122618" xMax="111.090494" yMax="133.088998">4/9</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="148.725000" yMin="105.614790" xMax="153.261987" yMax="114.780420">
+        <line xMin="148.725000" yMin="105.614790" xMax="153.261987" yMax="114.780420">
+          <word xMin="148.725000" yMin="105.614790" xMax="153.261987" yMax="114.780420">2</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="167.150000" yMin="105.614790" xMax="171.686987" yMax="114.780420">
+        <line xMin="167.150000" yMin="105.614790" xMax="171.686987" yMax="114.780420">
+          <word xMin="167.150000" yMin="105.614790" xMax="171.686987" yMax="114.780420">2</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="205.418000" yMin="105.555790" xMax="209.954987" yMax="114.721420">
+        <line xMin="205.418000" yMin="105.555790" xMax="209.954987" yMax="114.721420">
+          <word xMin="205.418000" yMin="105.555790" xMax="209.954987" yMax="114.721420">3</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="185.576000" yMin="105.614790" xMax="190.112987" yMax="114.780420">
+        <line xMin="185.576000" yMin="105.614790" xMax="190.112987" yMax="114.780420">
+          <word xMin="185.576000" yMin="105.614790" xMax="190.112987" yMax="114.780420">2</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="306.889000" yMin="72.369296" xMax="333.190390" yMax="92.219892">
+        <line xMin="306.889000" yMin="72.369296" xMax="333.190390" yMax="81.758892">
+          <word xMin="306.889000" yMin="72.369296" xMax="333.190390" yMax="81.758892">只更新</word>
+        </line>
+        <line xMin="306.964000" yMin="82.830296" xMax="333.116130" yMax="92.219892">
+          <word xMin="306.964000" yMin="82.830296" xMax="315.731130" yMax="92.219892">第</word>
+          <word xMin="317.791000" yMin="83.163447" xMax="321.850181" yMax="91.930577">𝑗</word>
+          <word xMin="324.349000" yMin="82.830296" xMax="333.116130" yMax="92.219892">类</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="233.111000" yMin="83.759296" xMax="250.645260" yMax="93.148892">
+        <line xMin="233.111000" yMin="83.759296" xMax="250.645260" yMax="93.148892">
+          <word xMin="233.111000" yMin="83.759296" xMax="250.645260" yMax="93.148892">预测</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="67.737000" yMin="84.086468" xMax="203.066535" yMax="98.223856">
+        <line xMin="67.737000" yMin="84.086468" xMax="203.066535" yMax="98.223856">
+          <word xMin="67.737000" yMin="84.086468" xMax="87.263780" yMax="98.223856">时刻</word>
+          <word xMin="89.558000" yMin="87.972297" xMax="136.216560" yMax="97.735687">𝑁：伪计数</word>
+          <word xMin="138.511000" yMin="87.972297" xMax="144.222583" yMax="97.735687">𝛼</word>
+          <word xMin="146.390056" yMin="87.972297" xMax="153.419697" yMax="97.735687">+</word>
+          <word xMin="155.587169" yMin="87.972297" xMax="161.103484" yMax="97.735687">𝑛</word>
+          <word xMin="163.817707" yMin="87.972297" xMax="170.847348" yMax="97.735687">=</word>
+          <word xMin="173.561570" yMin="87.972297" xMax="184.272009" yMax="97.735687">(4,</word>
+          <word xMin="185.892732" yMin="87.972297" xMax="193.117640" yMax="97.735687">3,</word>
+          <word xMin="194.748126" yMin="87.972297" xMax="203.066535" yMax="97.735687">2)</word>
+        </line>
+      </block>
+      <block xMin="73.608000" yMin="105.591790" xMax="78.144987" yMax="114.757420">
+        <line xMin="73.608000" yMin="105.591790" xMax="78.144987" yMax="114.757420">
+          <word xMin="73.608000" yMin="105.591790" xMax="78.144987" yMax="114.757420">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="342.297000" yMin="36.632888" xMax="521.575240" yMax="47.302875">
+        <line xMin="342.297000" yMin="36.632888" xMax="521.575240" yMax="47.302875">
+          <word xMin="342.297000" yMin="36.632888" xMax="352.259640" yMax="47.302875">第</word>
+          <word xMin="354.750000" yMin="37.011468" xMax="359.681507" yMax="46.974108">5</word>
+          <word xMin="362.173000" yMin="36.632888" xMax="372.135640" yMax="47.302875">册</word>
+          <word xMin="380.484332" yMin="36.632888" xMax="383.702265" yMax="47.302875">·</word>
+          <word xMin="392.060920" yMin="36.632888" xMax="521.575240" yMax="47.302875">采样方法、主题模型与图排序</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="223.843000" yMin="105.555790" xMax="228.379987" yMax="114.721420">
+        <line xMin="223.843000" yMin="105.555790" xMax="228.379987" yMax="114.721420">
+          <word xMin="223.843000" yMin="105.555790" xMax="228.379987" yMax="114.721420">3</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="365.079000" yMin="84.086468" xMax="449.975965" yMax="98.223856">
+        <line xMin="365.079000" yMin="84.086468" xMax="449.975965" yMax="98.223856">
+          <word xMin="365.079000" yMin="84.086468" xMax="384.605780" yMax="98.223856">时刻</word>
+          <word xMin="386.901000" yMin="87.972297" xMax="393.872060" yMax="97.735687">𝑁</word>
+          <word xMin="396.674153" yMin="87.972297" xMax="403.703794" yMax="97.735687">+</word>
+          <word xMin="405.871267" yMin="87.972297" xMax="431.181439" yMax="97.735687">1：(4,</word>
+          <word xMin="432.802162" yMin="87.972297" xMax="440.027070" yMax="97.735687">4,</word>
+          <word xMin="441.657556" yMin="87.972297" xMax="449.975965" yMax="97.735687">2)</word>
+        </line>
+      </block>
+      <block xMin="340.064000" yMin="105.591790" xMax="344.600987" yMax="114.757420">
+        <line xMin="340.064000" yMin="105.591790" xMax="344.600987" yMax="114.757420">
+          <word xMin="340.064000" yMin="105.591790" xMax="344.600987" yMax="114.757420">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="358.489000" yMin="105.591790" xMax="363.025987" yMax="114.757420">
+        <line xMin="358.489000" yMin="105.591790" xMax="363.025987" yMax="114.757420">
+          <word xMin="358.489000" yMin="105.591790" xMax="363.025987" yMax="114.757420">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="266.299000" yMin="117.974496" xMax="287.966549" yMax="138.447420">
+        <line xMin="267.970000" yMin="117.974496" xMax="286.301260" yMax="127.790886">
+          <word xMin="267.970000" yMin="117.974496" xMax="286.301260" yMax="127.790886">观察</word>
+        </line>
+        <line xMin="266.299000" yMin="129.281790" xMax="287.966549" yMax="138.447420">
+          <word xMin="266.299000" yMin="129.281790" xMax="287.966549" yMax="138.447420">𝑗=2</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="147.140000" yMin="124.122618" xMax="160.517839" yMax="133.088998">
+        <line xMin="147.140000" yMin="124.122618" xMax="160.517839" yMax="133.088998">
+          <word xMin="147.140000" yMin="124.122618" xMax="160.517839" yMax="133.088998">3/9</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="82.010000" yMin="124.122618" xMax="195.950839" yMax="158.415984">
+        <line xMin="182.573000" yMin="124.122618" xMax="195.950839" yMax="133.088998">
+          <word xMin="182.573000" yMin="124.122618" xMax="195.950839" yMax="133.088998">2/9</word>
+        </line>
+        <line xMin="162.988000" yMin="136.034790" xMax="195.738803" yMax="146.470984">
+          <word xMin="162.988000" yMin="136.034790" xMax="169.348947" yMax="145.200420">𝛼</word>
+          <word xMin="169.349000" yMin="140.055084" xMax="173.788803" yMax="146.470984">𝑘</word>
+          <word xMin="176.192000" yMin="136.034790" xMax="183.267866" yMax="145.200420">+</word>
+          <word xMin="185.302636" yMin="136.034790" xMax="191.296958" yMax="145.200420">𝑛</word>
+          <word xMin="191.299000" yMin="140.055084" xMax="195.738803" yMax="146.470984">𝑘</word>
+        </line>
+        <line xMin="82.010000" yMin="142.113790" xMax="159.245051" yMax="152.549984">
+          <word xMin="82.010000" yMin="142.113790" xMax="98.948084" yMax="151.279420">𝑃(𝑌</word>
+          <word xMin="98.948000" yMin="146.134084" xMax="114.051029" yMax="152.549984">𝑁+1</word>
+          <word xMin="116.964000" yMin="142.113790" xMax="124.039866" yMax="151.279420">=</word>
+          <word xMin="126.578746" yMin="142.113790" xMax="132.215608" yMax="151.279420">𝑘</word>
+          <word xMin="134.763653" yMin="142.113790" xMax="137.256705" yMax="151.279420">∣</word>
+          <word xMin="139.804750" yMin="142.113790" xMax="149.621140" yMax="151.279420">𝑛)</word>
+          <word xMin="152.169185" yMin="142.113790" xMax="159.245051" yMax="151.279420">=</word>
+        </line>
+        <line xMin="164.448000" yMin="147.979790" xMax="194.047250" yMax="158.415984">
+          <word xMin="164.448000" yMin="147.979790" xMax="170.808947" yMax="157.145420">𝛼</word>
+          <word xMin="170.809000" yMin="152.000084" xMax="174.697035" yMax="158.415984">0</word>
+          <word xMin="177.100000" yMin="147.979790" xMax="184.175866" yMax="157.145420">+</word>
+          <word xMin="186.210636" yMin="147.979790" xMax="194.047250" yMax="157.145420">𝑁</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="376.914000" yMin="105.591790" xMax="381.450987" yMax="114.757420">
+        <line xMin="376.914000" yMin="105.591790" xMax="381.450987" yMax="114.757420">
+          <word xMin="376.914000" yMin="105.591790" xMax="381.450987" yMax="114.757420">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="395.339000" yMin="105.591790" xMax="399.875987" yMax="114.757420">
+        <line xMin="395.339000" yMin="105.591790" xMax="399.875987" yMax="114.757420">
+          <word xMin="395.339000" yMin="105.591790" xMax="399.875987" yMax="114.757420">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="415.182000" yMin="105.614790" xMax="419.718987" yMax="114.780420">
+        <line xMin="415.182000" yMin="105.614790" xMax="419.718987" yMax="114.780420">
+          <word xMin="415.182000" yMin="105.614790" xMax="419.718987" yMax="114.780420">2</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="372.706000" yMin="124.122618" xMax="391.329171" yMax="133.088998">
+        <line xMin="372.706000" yMin="124.122618" xMax="391.329171" yMax="133.088998">
+          <word xMin="372.706000" yMin="124.122618" xMax="391.329171" yMax="133.088998">4/10</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="433.607000" yMin="105.614790" xMax="438.143987" yMax="114.780420">
+        <line xMin="433.607000" yMin="105.614790" xMax="438.143987" yMax="114.780420">
+          <word xMin="433.607000" yMin="105.614790" xMax="438.143987" yMax="114.780420">2</word>
+        </line>
+      </block>
+      <block xMin="423.729000" yMin="124.122618" xMax="442.352171" yMax="133.088998">
+        <line xMin="423.729000" yMin="124.122618" xMax="442.352171" yMax="133.088998">
+          <word xMin="423.729000" yMin="124.122618" xMax="442.352171" yMax="133.088998">4/10</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="344.796000" yMin="139.740790" xMax="397.410146" yMax="150.176984">
+        <line xMin="344.796000" yMin="139.740790" xMax="397.410146" yMax="150.176984">
+          <word xMin="344.796000" yMin="139.740790" xMax="350.790322" yMax="148.906420">𝑛</word>
+          <word xMin="350.790000" yMin="143.761084" xMax="354.376488" yMax="150.176984">2</word>
+          <word xMin="357.289000" yMin="139.740790" xMax="366.491293" yMax="148.906420">←</word>
+          <word xMin="369.030172" yMin="139.740790" xMax="375.024494" yMax="148.906420">𝑛</word>
+          <word xMin="375.032000" yMin="143.761084" xMax="378.618488" yMax="150.176984">2</word>
+          <word xMin="381.022000" yMin="139.740790" xMax="388.097866" yMax="148.906420">+</word>
+          <word xMin="390.132636" yMin="139.740790" xMax="397.410146" yMax="148.906420">1,</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="452.032000" yMin="105.614790" xMax="456.568987" yMax="114.780420">
+        <line xMin="452.032000" yMin="105.614790" xMax="456.568987" yMax="114.780420">
+          <word xMin="452.032000" yMin="105.614790" xMax="456.568987" yMax="114.780420">2</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="470.457000" yMin="105.614790" xMax="474.993987" yMax="114.780420">
+        <line xMin="470.457000" yMin="105.614790" xMax="474.993987" yMax="114.780420">
+          <word xMin="470.457000" yMin="105.614790" xMax="474.993987" yMax="114.780420">2</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="490.300000" yMin="105.555790" xMax="494.836987" yMax="114.721420">
+        <line xMin="490.300000" yMin="105.555790" xMax="494.836987" yMax="114.721420">
+          <word xMin="490.300000" yMin="105.555790" xMax="494.836987" yMax="114.721420">3</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="508.725000" yMin="105.555790" xMax="513.261987" yMax="114.721420">
+        <line xMin="508.725000" yMin="105.555790" xMax="513.261987" yMax="114.721420">
+          <word xMin="508.725000" yMin="105.555790" xMax="513.261987" yMax="114.721420">3</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="462.177000" yMin="124.122618" xMax="480.441516" yMax="133.088998">
+        <line xMin="462.177000" yMin="124.122618" xMax="480.441516" yMax="133.088998">
+          <word xMin="462.177000" yMin="124.122618" xMax="480.441516" yMax="133.088998">2/10</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="408.097271" yMin="139.740790" xMax="498.602728" yMax="150.176984">
+        <line xMin="408.097271" yMin="139.740790" xMax="498.602728" yMax="150.176984">
+          <word xMin="408.097271" yMin="139.740790" xMax="414.458218" yMax="148.906420">𝛼</word>
+          <word xMin="414.466000" yMin="143.761084" xMax="418.354035" yMax="150.176984">0</word>
+          <word xMin="420.758000" yMin="139.740790" xMax="427.833866" yMax="148.906420">+</word>
+          <word xMin="429.868636" yMin="139.740790" xMax="437.705250" yMax="148.906420">𝑁</word>
+          <word xMin="440.849061" yMin="139.740790" xMax="450.051353" yMax="148.906420">←</word>
+          <word xMin="452.590233" yMin="139.740790" xMax="458.951180" yMax="148.906420">𝛼</word>
+          <word xMin="458.958000" yMin="143.761084" xMax="462.846035" yMax="150.176984">0</word>
+          <word xMin="465.249000" yMin="139.740790" xMax="472.324866" yMax="148.906420">+</word>
+          <word xMin="474.359636" yMin="139.740790" xMax="482.196250" yMax="148.906420">𝑁</word>
+          <word xMin="484.826786" yMin="139.740790" xMax="491.902652" yMax="148.906420">+</word>
+          <word xMin="493.937422" yMin="139.740790" xMax="498.602728" yMax="148.906420">1</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="119.813000" yMin="166.176496" xMax="478.725890" yMax="175.992886">
+        <line xMin="119.813000" yMin="166.176496" xMax="478.725890" yMax="175.992886">
+          <word xMin="119.813000" yMin="166.176496" xMax="253.310401" yMax="175.992886">顺序更新产生平滑与强化；积分掉</word>
+          <word xMin="256.363000" yMin="166.524790" xMax="261.761556" yMax="175.690420">𝜃</word>
+          <word xMin="265.000000" yMin="166.176496" xMax="435.159921" yMax="175.992886">后序列可交换，但它不是固定参数条件下的</word>
+          <word xMin="438.213000" yMin="166.524790" xMax="448.174390" yMax="175.690420">iid</word>
+          <word xMin="451.229000" yMin="166.176496" xMax="478.725890" yMax="175.992886">序列。</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="76.138000" yMin="181.857338" xMax="507.806318" yMax="222.893875">
+        <line xMin="76.138000" yMin="181.857338" xMax="507.806318" yMax="196.283240">
+          <word xMin="76.138000" yMin="181.857338" xMax="86.100640" yMax="196.283240">图</word>
+          <word xMin="88.346000" yMin="185.822468" xMax="110.372202" yMax="195.785108">34.10</word>
+          <word xMin="120.335000" yMin="185.443888" xMax="160.185560" yMax="196.113875">积分消去</word>
+          <word xMin="162.554000" yMin="185.822468" xMax="167.674797" yMax="195.785108">𝜃</word>
+          <word xMin="170.292000" yMin="185.443888" xMax="507.806318" yMax="196.113875">后，下一类别的后验预测概率等于当前伪计数占总伪计数的比例；观测到类别</word>
+        </line>
+        <line xMin="76.138000" yMin="198.833888" xMax="507.800185" yMax="209.503875">
+          <word xMin="76.138000" yMin="199.212468" xMax="80.431898" yMax="209.175108">𝑗</word>
+          <word xMin="82.784000" yMin="198.833888" xMax="507.800185" yMax="209.503875">只增加该类计数，因而实现平滑并产生可顺序更新的强化预测，但这不是固定参数下的独立同分布</word>
+        </line>
+        <line xMin="76.138000" yMin="212.223888" xMax="96.063280" yMax="222.893875">
+          <word xMin="76.138000" yMin="212.223888" xMax="96.063280" yMax="222.893875">序列</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="73.167000" yMin="244.147456" xMax="287.526090" yMax="259.943818">
+        <line xMin="73.167000" yMin="244.147456" xMax="287.526090" yMax="259.943818">
+          <word xMin="73.167000" yMin="244.147456" xMax="94.985180" yMax="259.943818">例题</word>
+          <word xMin="97.549000" yMin="248.489273" xMax="116.759907" yMax="259.398363">34.1</word>
+          <word xMin="119.323000" yMin="248.489273" xMax="271.635909" yMax="259.398363">(三分类先验的矩、更新与预测).</word>
+          <word xMin="276.617000" yMin="248.074728" xMax="287.526090" yMax="259.758363">取</word>
+        </line>
+      </block>
+      <block xMin="223.921000" yMin="281.085273" xMax="280.722269" yMax="292.125273">
+        <line xMin="223.921000" yMin="281.085273" xMax="280.722269" yMax="292.125273">
+          <word xMin="223.921000" yMin="281.216183" xMax="230.728272" yMax="292.125273">𝛼</word>
+          <word xMin="234.195000" yMin="281.085273" xMax="242.049545" yMax="291.994363">=</word>
+          <word xMin="245.071363" yMin="281.085273" xMax="257.038634" yMax="291.994363">(2,</word>
+          <word xMin="258.860452" yMin="281.085273" xMax="266.933179" yMax="291.994363">3,</word>
+          <word xMin="268.754997" yMin="281.085273" xMax="280.722269" yMax="291.994363">5),</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="304.359000" yMin="281.085273" xMax="360.015269" yMax="292.125273">
+        <line xMin="304.359000" yMin="281.085273" xMax="360.015269" yMax="292.125273">
+          <word xMin="304.359000" yMin="281.216183" xMax="310.457181" yMax="292.125273">𝑛</word>
+          <word xMin="313.488000" yMin="281.085273" xMax="321.342545" yMax="291.994363">=</word>
+          <word xMin="324.364363" yMin="281.085273" xMax="336.331634" yMax="291.994363">(4,</word>
+          <word xMin="338.153452" yMin="281.085273" xMax="346.226179" yMax="291.994363">1,</word>
+          <word xMin="348.047997" yMin="281.085273" xMax="360.015269" yMax="291.994363">0).</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="73.167000" yMin="313.266728" xMax="510.769630" yMax="324.950363">
+        <line xMin="73.167000" yMin="313.266728" xMax="510.769630" yMax="324.950363">
+          <word xMin="73.167000" yMin="313.266728" xMax="268.450620" yMax="324.950363">求先验与后验均值、下一类别预测、后验</word>
+          <word xMin="271.074000" yMin="313.681273" xMax="413.867445" yMax="324.590363">MAP，以及未来依次出现类别</word>
+          <word xMin="416.487000" yMin="313.681273" xMax="424.559727" yMax="324.590363">1,</word>
+          <word xMin="426.370636" yMin="313.681273" xMax="431.770635" yMax="324.590363">2</word>
+          <word xMin="434.406000" yMin="313.266728" xMax="510.769630" yMax="324.950363">与不计顺序各出</word>
+        </line>
+      </block>
+      <block xMin="73.167000" yMin="331.286728" xMax="149.530630" yMax="342.970363">
+        <line xMin="73.167000" yMin="331.286728" xMax="149.530630" yMax="342.970363">
+          <word xMin="73.167000" yMin="331.286728" xMax="149.530630" yMax="342.970363">现一次的概率。</word>
+        </line>
+      </block>
+      <block xMin="62.362000" yMin="349.073456" xMax="130.337180" yMax="364.869818">
+        <line xMin="62.362000" yMin="349.073456" xMax="130.337180" yMax="364.869818">
+          <word xMin="62.362000" yMin="349.073456" xMax="84.180180" yMax="364.869818">例题</word>
+          <word xMin="86.744000" yMin="353.415273" xMax="105.954907" yMax="364.324363">34.1</word>
+          <word xMin="108.519000" yMin="349.073456" xMax="130.337180" yMax="364.869818">解答</word>
+        </line>
+      </block>
+      <block xMin="73.167000" yMin="379.371456" xMax="510.773428" yMax="395.167818">
+        <line xMin="73.167000" yMin="379.371456" xMax="510.773428" yMax="395.167818">
+          <word xMin="73.167000" yMin="379.371456" xMax="116.803360" yMax="395.167818">读题翻译</word>
+          <word xMin="127.712000" yMin="383.298728" xMax="149.530180" yMax="394.982363">先用</word>
+          <word xMin="152.194000" yMin="383.713273" xMax="192.445269" yMax="394.622363">Dirichlet</word>
+          <word xMin="195.108000" yMin="383.298728" xMax="510.773428" yMax="394.982363">矩公式读取先验中心，再把计数加到参数得到后验；随后分别计算</word>
+        </line>
+      </block>
+      <block xMin="73.167000" yMin="401.318728" xMax="492.424610" yMax="413.002363">
+        <line xMin="73.167000" yMin="401.318728" xMax="492.424610" yMax="413.002363">
+          <word xMin="73.167000" yMin="401.318728" xMax="149.530630" yMax="413.002363">后验均值、内点</word>
+          <word xMin="152.258000" yMin="401.733273" xMax="492.424610" yMax="412.642363">MAP、下一类预测，以及“指定顺序”和“无序计数”两种未来事件。</word>
+        </line>
+      </block>
+      <block xMin="73.167000" yMin="418.401456" xMax="149.836085" yMax="434.197818">
+        <line xMin="73.167000" yMin="418.401456" xMax="149.836085" yMax="434.197818">
+          <word xMin="73.167000" yMin="418.401456" xMax="149.836085" yMax="434.197818">已知与合法条件</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="160.746000" yMin="422.743273" xMax="510.762904" yMax="433.783272">
+        <line xMin="160.746000" yMin="422.743273" xMax="510.762904" yMax="433.783272">
+          <word xMin="160.746000" yMin="422.874182" xMax="167.553272" yMax="433.783272">𝛼</word>
+          <word xMin="171.537000" yMin="422.743273" xMax="179.391545" yMax="433.652363">=</word>
+          <word xMin="182.936999" yMin="422.743273" xMax="194.904271" yMax="433.652363">(2,</word>
+          <word xMin="196.715180" yMin="422.743273" xMax="204.787906" yMax="433.652363">3,</word>
+          <word xMin="206.609724" yMin="422.743273" xMax="232.918181" yMax="433.652363">5)、𝑛</word>
+          <word xMin="236.466000" yMin="422.743273" xMax="244.320545" yMax="433.652363">=</word>
+          <word xMin="247.865999" yMin="422.743273" xMax="259.833271" yMax="433.652363">(4,</word>
+          <word xMin="261.644180" yMin="422.743273" xMax="269.716906" yMax="433.652363">1,</word>
+          <word xMin="271.538724" yMin="422.743273" xMax="368.417175" yMax="433.652363">0)，故先验总浓度为</word>
+          <word xMin="371.316000" yMin="422.743273" xMax="436.814177" yMax="433.652363">10、样本数为</word>
+          <word xMin="439.712000" yMin="422.743273" xMax="510.762904" yMax="433.652363">5；更新后参数</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="73.167000" yMin="440.348728" xMax="263.279450" yMax="452.032363">
+        <line xMin="73.167000" yMin="440.348728" xMax="263.279450" yMax="452.032363">
+          <word xMin="73.167000" yMin="440.348728" xMax="138.621540" yMax="452.032363">各分量都大于</word>
+          <word xMin="141.349000" yMin="440.763273" xMax="179.476270" yMax="451.672363">1，内点</word>
+          <word xMin="182.203000" yMin="440.763273" xMax="206.006634" yMax="451.672363">MAP</word>
+          <word xMin="208.734000" yMin="440.348728" xMax="263.279450" yMax="452.032363">公式适用。</word>
+        </line>
+      </block>
+      <block xMin="73.167000" yMin="457.430456" xMax="171.665174" yMax="473.226818">
+        <line xMin="73.167000" yMin="457.430456" xMax="171.665174" yMax="473.226818">
+          <word xMin="73.167000" yMin="457.430456" xMax="171.665174" yMax="473.226818">为什么想到这个方法</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="182.582000" yMin="459.325618" xMax="510.766720" yMax="473.041363">
+        <line xMin="182.582000" yMin="459.325618" xMax="510.766720" yMax="473.041363">
+          <word xMin="182.582000" yMin="461.357728" xMax="204.432907" yMax="473.041363">遇到</word>
+          <word xMin="207.303000" yMin="461.772273" xMax="254.482632" yMax="472.681363">Dirichlet–</word>
+          <word xMin="257.345000" yMin="461.357728" xMax="355.810446" yMax="473.041363">多项共轭模型，先做</word>
+          <word xMin="358.673000" yMin="461.903182" xMax="365.480272" yMax="472.812272">𝛼</word>
+          <word xMin="365.917000" yMin="459.325618" xMax="381.706795" yMax="468.291998">post</word>
+          <word xMin="385.584000" yMin="461.772273" xMax="393.438545" yMax="472.681363">=</word>
+          <word xMin="396.880000" yMin="461.903182" xMax="403.687272" yMax="472.812272">𝛼</word>
+          <word xMin="406.713000" yMin="461.772273" xMax="414.567545" yMax="472.681363">+</word>
+          <word xMin="417.156000" yMin="461.903182" xMax="510.766720" yMax="472.812272">𝑛；均值与单步预测</word>
+        </line>
+      </block>
+      <block xMin="199.974000" yMin="475.155618" xMax="215.763795" yMax="484.121998">
+        <line xMin="199.974000" yMin="475.155618" xMax="215.763795" yMax="484.121998">
+          <word xMin="199.974000" yMin="475.155618" xMax="215.763795" yMax="484.121998">post</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="73.167000" yMin="479.378728" xMax="202.897040" yMax="494.177998">
+        <line xMin="73.167000" yMin="479.378728" xMax="202.897040" yMax="494.177998">
+          <word xMin="73.167000" yMin="479.378728" xMax="162.424634" yMax="491.062363">除以总浓度，MAP</word>
+          <word xMin="165.152000" yMin="479.378728" xMax="186.970180" yMax="491.062363">则用</word>
+          <word xMin="189.698000" yMin="479.793273" xMax="199.974363" yMax="490.702363">(𝛼</word>
+          <word xMin="199.974000" yMin="485.211618" xMax="202.897040" yMax="494.177998">𝑖</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="252.685000" yMin="475.155618" xMax="268.474795" yMax="484.121998">
+        <line xMin="252.685000" yMin="475.155618" xMax="268.474795" yMax="484.121998">
+          <word xMin="252.685000" yMin="475.155618" xMax="268.474795" yMax="484.121998">post</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="218.625000" yMin="479.793273" xMax="257.885500" yMax="493.728998">
+        <line xMin="218.625000" yMin="479.793273" xMax="257.885500" yMax="493.728998">
+          <word xMin="218.625000" yMin="479.793273" xMax="226.479545" yMax="490.702363">−</word>
+          <word xMin="228.901363" yMin="479.793273" xMax="252.683179" yMax="490.702363">1)/(𝛼</word>
+          <word xMin="252.685000" yMin="484.762618" xMax="257.885500" yMax="493.728998">0</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="271.335000" yMin="479.793273" xMax="304.272090" yMax="490.702363">
+        <line xMin="271.335000" yMin="479.793273" xMax="304.272090" yMax="490.702363">
+          <word xMin="271.335000" yMin="479.793273" xMax="279.189545" yMax="490.702363">−</word>
+          <word xMin="281.611363" yMin="479.793273" xMax="304.272090" yMax="490.702363">𝐾)。</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="73.167000" yMin="496.460456" xMax="510.770990" yMax="512.256818">
+        <line xMin="73.167000" yMin="496.460456" xMax="510.770990" yMax="512.256818">
+          <word xMin="73.167000" yMin="496.460456" xMax="116.803360" yMax="512.256818">方法选择</word>
+          <word xMin="127.712000" yMin="500.387728" xMax="305.194990" yMax="512.071363">依次求先验/后验总浓度与均值、后验</word>
+          <word xMin="307.702000" yMin="500.802273" xMax="362.557270" yMax="511.711363">MAP，再按</word>
+          <word xMin="365.064000" yMin="500.802273" xMax="389.471343" yMax="511.711363">Pólya</word>
+          <word xMin="391.971000" yMin="500.387728" xMax="510.770990" yMax="512.071363">预测逐步更新分母；无序</word>
+        </line>
+      </block>
+      <block xMin="73.167000" yMin="518.408728" xMax="193.166990" yMax="530.092363">
+        <line xMin="73.167000" yMin="518.408728" xMax="193.166990" yMax="530.092363">
+          <word xMin="73.167000" yMin="518.408728" xMax="193.166990" yMax="530.092363">事件最后乘相应排列数。</word>
+        </line>
+      </block>
+      <block xMin="73.167000" yMin="535.490456" xMax="121.319180" yMax="551.286818">
+        <line xMin="73.167000" yMin="535.490456" xMax="121.319180" yMax="551.286818">
+          <word xMin="73.167000" yMin="535.490456" xMax="121.319180" yMax="551.286818">推导/计算</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="132.229000" yMin="539.417728" xMax="230.410810" yMax="551.101363">
+        <line xMin="132.229000" yMin="539.417728" xMax="230.410810" yMax="551.101363">
+          <word xMin="132.229000" yMin="539.417728" xMax="230.410810" yMax="551.101363">先验与后验更新链为</word>
+        </line>
+      </block>
+      <block xMin="139.377000" yMin="572.428273" xMax="234.301357" yMax="585.165998">
+        <line xMin="139.377000" yMin="572.428273" xMax="234.301357" yMax="585.165998">
+          <word xMin="139.377000" yMin="572.428273" xMax="145.758818" yMax="583.337363">𝛼</word>
+          <word xMin="145.758000" yMin="576.199618" xMax="150.958500" yMax="585.165998">0</word>
+          <word xMin="154.425000" yMin="572.428273" xMax="162.279545" yMax="583.337363">=</word>
+          <word xMin="165.301363" yMin="572.428273" xMax="170.701362" yMax="583.337363">2</word>
+          <word xMin="173.134089" yMin="572.428273" xMax="180.988634" yMax="583.337363">+</word>
+          <word xMin="183.410452" yMin="572.428273" xMax="188.810452" yMax="583.337363">3</word>
+          <word xMin="191.232270" yMin="572.428273" xMax="199.086814" yMax="583.337363">+</word>
+          <word xMin="201.508632" yMin="572.428273" xMax="206.908632" yMax="583.337363">5</word>
+          <word xMin="209.941359" yMin="572.428273" xMax="217.795904" yMax="583.337363">=</word>
+          <word xMin="220.828631" yMin="572.428273" xMax="234.301357" yMax="583.337363">10,</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="73.167000" yMin="604.608728" xMax="94.985180" yMax="616.292363">
+        <line xMin="73.167000" yMin="604.608728" xMax="94.985180" yMax="616.292363">
+          <word xMin="73.167000" yMin="604.608728" xMax="94.985180" yMax="616.292363">因此</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="257.940000" yMin="569.980618" xMax="370.927269" yMax="583.468272">
+        <line xMin="257.940000" yMin="569.980618" xMax="370.927269" yMax="583.468272">
+          <word xMin="257.940000" yMin="572.559182" xMax="264.747272" yMax="583.468272">𝛼</word>
+          <word xMin="265.184000" yMin="569.980618" xMax="280.973795" yMax="578.946998">post</word>
+          <word xMin="284.440000" yMin="572.428273" xMax="292.294545" yMax="583.337363">=</word>
+          <word xMin="295.325000" yMin="572.559182" xMax="302.132272" yMax="583.468272">𝛼</word>
+          <word xMin="304.993000" yMin="572.428273" xMax="312.847545" yMax="583.337363">+</word>
+          <word xMin="315.272000" yMin="572.559182" xMax="321.370181" yMax="583.468272">𝑛</word>
+          <word xMin="324.400000" yMin="572.428273" xMax="332.254545" yMax="583.337363">=</word>
+          <word xMin="335.276363" yMin="572.428273" xMax="347.243634" yMax="583.337363">(6,</word>
+          <word xMin="349.065452" yMin="572.428273" xMax="357.138179" yMax="583.337363">4,</word>
+          <word xMin="358.959997" yMin="572.428273" xMax="370.927269" yMax="583.337363">5),</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="183.754000" yMin="616.062273" xMax="272.587727" yMax="640.935363">
+        <line xMin="226.628000" yMin="616.062273" xMax="261.992000" yMax="626.971363">
+          <word xMin="226.628000" yMin="616.062273" xMax="232.028000" yMax="626.971363">1</word>
+          <word xMin="241.610000" yMin="616.062273" xMax="247.010000" yMax="626.971363">3</word>
+          <word xMin="256.592000" yMin="616.062273" xMax="261.992000" yMax="626.971363">1</word>
+        </line>
+        <line xMin="183.754000" yMin="623.044273" xMax="272.587727" yMax="634.084363">
+          <word xMin="183.754000" yMin="623.044273" xMax="206.608545" yMax="633.953363">𝔼(Θ)</word>
+          <word xMin="209.630363" yMin="623.044273" xMax="217.484908" yMax="633.953363">=</word>
+          <word xMin="220.523000" yMin="623.175273" xMax="225.432090" yMax="634.084363">(</word>
+          <word xMin="233.224000" yMin="623.044273" xMax="235.896727" yMax="633.953363">,</word>
+          <word xMin="250.905000" yMin="623.044273" xMax="253.577727" yMax="633.953363">,</word>
+          <word xMin="263.187000" yMin="623.175273" xMax="268.096091" yMax="634.084363">)</word>
+          <word xMin="269.915000" yMin="623.044273" xMax="272.587727" yMax="633.953363">,</word>
+        </line>
+        <line xMin="226.628000" yMin="630.026273" xMax="261.992000" yMax="640.935363">
+          <word xMin="226.628000" yMin="630.026273" xMax="232.028000" yMax="640.935363">5</word>
+          <word xMin="238.910000" yMin="630.026273" xMax="249.709999" yMax="640.935363">10</word>
+          <word xMin="256.592000" yMin="630.026273" xMax="261.992000" yMax="640.935363">2</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="296.216816" yMin="616.062273" xMax="400.182727" yMax="640.935363">
+        <line xMin="354.224000" yMin="616.062273" xMax="389.588000" yMax="626.971363">
+          <word xMin="354.224000" yMin="616.062273" xMax="359.624000" yMax="626.971363">2</word>
+          <word xMin="369.206000" yMin="616.062273" xMax="374.606000" yMax="626.971363">4</word>
+          <word xMin="384.188000" yMin="616.062273" xMax="389.588000" yMax="626.971363">1</word>
+        </line>
+        <line xMin="296.216816" yMin="623.044273" xMax="400.182727" yMax="634.084363">
+          <word xMin="296.216816" yMin="623.044273" xMax="315.183272" yMax="633.953363">𝔼(Θ</word>
+          <word xMin="318.214000" yMin="623.044273" xMax="321.181272" yMax="633.953363">∣</word>
+          <word xMin="324.211000" yMin="623.175182" xMax="334.204545" yMax="634.084272">𝑛)</word>
+          <word xMin="337.226363" yMin="623.044273" xMax="345.080908" yMax="633.953363">=</word>
+          <word xMin="348.119000" yMin="623.175273" xMax="353.028091" yMax="634.084363">(</word>
+          <word xMin="360.819000" yMin="623.044273" xMax="363.491727" yMax="633.953363">,</word>
+          <word xMin="378.501000" yMin="623.044273" xMax="381.173727" yMax="633.953363">,</word>
+          <word xMin="390.783000" yMin="623.175273" xMax="395.692090" yMax="634.084363">)</word>
+          <word xMin="397.510000" yMin="623.044273" xMax="400.182727" yMax="633.953363">.</word>
+        </line>
+        <line xMin="354.224000" yMin="630.026273" xMax="389.588000" yMax="640.935363">
+          <word xMin="354.224000" yMin="630.026273" xMax="359.624000" yMax="640.935363">5</word>
+          <word xMin="366.506000" yMin="630.026273" xMax="377.305999" yMax="640.935363">15</word>
+          <word xMin="384.188000" yMin="630.026273" xMax="389.588000" yMax="640.935363">3</word>
+        </line>
+      </block>
+      <block xMin="289.549000" yMin="647.184618" xMax="305.338795" yMax="656.150998">
+        <line xMin="289.549000" yMin="647.184618" xMax="305.338795" yMax="656.150998">
+          <word xMin="289.549000" yMin="647.184618" xMax="305.338795" yMax="656.150998">post</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="73.167000" yMin="651.407728" xMax="292.472040" yMax="666.206998">
+        <line xMin="73.167000" yMin="651.407728" xMax="292.472040" yMax="666.206998">
+          <word xMin="73.167000" yMin="651.407728" xMax="280.439710" yMax="663.091363">后一向量也是下一次观测的预测概率。所有</word>
+          <word xMin="283.167000" yMin="651.822273" xMax="289.548818" yMax="662.731363">𝛼</word>
+          <word xMin="289.549000" yMin="657.240618" xMax="292.472040" yMax="666.206998">𝑖</word>
+        </line>
+      </block>
+      <block xMin="265.937000" yMin="684.549273" xMax="270.846090" yMax="695.458363">
+        <line xMin="265.937000" yMin="684.549273" xMax="270.846090" yMax="695.458363">
+          <word xMin="265.937000" yMin="684.549273" xMax="270.846090" yMax="695.458363">(</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="400.947000" yMin="567.790618" xMax="416.736795" yMax="576.756998">
+        <line xMin="400.947000" yMin="567.790618" xMax="416.736795" yMax="576.756998">
+          <word xMin="400.947000" yMin="567.790618" xMax="416.736795" yMax="576.756998">post</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="394.556358" yMin="572.428273" xMax="406.147500" yMax="586.363998">
+        <line xMin="394.556358" yMin="572.428273" xMax="406.147500" yMax="586.363998">
+          <word xMin="394.556358" yMin="572.428273" xMax="400.938175" yMax="583.337363">𝛼</word>
+          <word xMin="400.947000" yMin="577.397618" xMax="406.147500" yMax="586.363998">0</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="308.805000" yMin="651.407728" xMax="419.802090" yMax="663.091363">
+        <line xMin="308.805000" yMin="651.407728" xMax="419.802090" yMax="663.091363">
+          <word xMin="308.805000" yMin="651.822273" xMax="316.659545" yMax="662.731363">&gt;</word>
+          <word xMin="319.681363" yMin="651.822273" xMax="379.635450" yMax="662.731363">1，所以后验</word>
+          <word xMin="382.363000" yMin="651.822273" xMax="406.166634" yMax="662.731363">MAP</word>
+          <word xMin="408.893000" yMin="651.407728" xMax="419.802090" yMax="663.091363">为</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="272.041000" yMin="677.436273" xMax="318.000727" yMax="702.309363">
+        <line xMin="274.741000" yMin="677.436273" xMax="307.405000" yMax="688.345363">
+          <word xMin="274.741000" yMin="677.436273" xMax="280.141000" yMax="688.345363">5</word>
+          <word xMin="289.723000" yMin="677.436273" xMax="295.123000" yMax="688.345363">1</word>
+          <word xMin="302.005000" yMin="677.436273" xMax="307.405000" yMax="688.345363">1</word>
+        </line>
+        <line xMin="284.037000" yMin="684.418273" xMax="318.000727" yMax="695.458363">
+          <word xMin="284.037000" yMin="684.418273" xMax="286.709727" yMax="695.327363">,</word>
+          <word xMin="296.319000" yMin="684.418273" xMax="298.991727" yMax="695.327363">,</word>
+          <word xMin="308.600000" yMin="684.418273" xMax="318.000727" yMax="695.458363">).</word>
+        </line>
+        <line xMin="272.041000" yMin="691.400273" xMax="307.405000" yMax="702.309363">
+          <word xMin="272.041000" yMin="691.400273" xMax="282.840999" yMax="702.309363">12</word>
+          <word xMin="289.723000" yMin="691.400273" xMax="295.123000" yMax="702.309363">4</word>
+          <word xMin="302.005000" yMin="691.400273" xMax="307.405000" yMax="702.309363">3</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="73.167000" yMin="716.599728" xMax="255.785360" yMax="728.283363">
+        <line xMin="73.167000" yMin="716.599728" xMax="255.785360" yMax="728.283363">
+          <word xMin="73.167000" yMin="716.599728" xMax="160.439720" yMax="728.283363">未来依次出现类别</word>
+          <word xMin="163.167000" yMin="717.014273" xMax="201.294270" yMax="727.923363">1、类别</word>
+          <word xMin="204.021000" yMin="717.014273" xMax="209.421000" yMax="727.923363">2</word>
+          <word xMin="212.149000" yMin="716.599728" xMax="255.785360" yMax="728.283363">的概率是</word>
+        </line>
+      </block>
+      <block xMin="265.084000" yMin="742.628273" xMax="320.048727" yMax="767.500363">
+        <line xMin="267.784000" yMin="742.628273" xMax="286.375000" yMax="753.537363">
+          <word xMin="267.784000" yMin="742.628273" xMax="273.184000" yMax="753.537363">6</word>
+          <word xMin="280.975000" yMin="742.628273" xMax="286.375000" yMax="753.537363">4</word>
+        </line>
+        <line xMin="308.081000" yMin="742.628273" xMax="313.481000" yMax="753.537363">
+          <word xMin="308.081000" yMin="742.628273" xMax="313.481000" yMax="753.537363">1</word>
+        </line>
+        <line xMin="293.300000" yMin="749.610273" xMax="320.048727" yMax="760.519363">
+          <word xMin="293.300000" yMin="749.610273" xMax="301.154545" yMax="760.519363">=</word>
+          <word xMin="317.376000" yMin="749.610273" xMax="320.048727" yMax="760.519363">;</word>
+        </line>
+        <line xMin="265.084000" yMin="756.591273" xMax="316.180999" yMax="767.500363">
+          <word xMin="265.084000" yMin="756.591273" xMax="275.883999" yMax="767.500363">15</word>
+          <word xMin="278.275000" yMin="756.591273" xMax="289.074999" yMax="767.500363">16</word>
+          <word xMin="305.381000" yMin="756.591273" xMax="316.180999" yMax="767.500363">10</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="224.418000" yMin="799.903888" xMax="359.519280" yMax="810.573875">
+        <line xMin="224.418000" yMin="799.903888" xMax="359.519280" yMax="810.573875">
+          <word xMin="224.418000" yMin="799.903888" xMax="244.343280" yMax="810.573875">目录</word>
+          <word xMin="251.968000" yMin="799.903888" xMax="255.185933" yMax="810.573875">·</word>
+          <word xMin="262.810000" yMin="799.903888" xMax="282.735280" yMax="810.573875">本章</word>
+          <word xMin="290.360000" yMin="799.903888" xMax="293.577933" yMax="810.573875">·</word>
+          <word xMin="301.202000" yMin="799.903888" xMax="321.127280" yMax="810.573875">练习</word>
+          <word xMin="328.751000" yMin="799.903888" xMax="331.968933" yMax="810.573875">·</word>
+          <word xMin="339.594000" yMin="799.903888" xMax="359.519280" yMax="810.573875">解析</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="420.203000" yMin="572.428273" xMax="444.552089" yMax="583.337363">
+        <line xMin="420.203000" yMin="572.428273" xMax="444.552089" yMax="583.337363">
+          <word xMin="420.203000" yMin="572.428273" xMax="428.057545" yMax="583.337363">=</word>
+          <word xMin="431.079363" yMin="572.428273" xMax="444.552089" yMax="583.337363">15.</word>
+        </line>
+      </block>
+    </flow>
+  </page>
+</doc>
+</body>
+</html>

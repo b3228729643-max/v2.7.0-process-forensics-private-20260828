@@ -1,0 +1,45 @@
+{
+  "handoff_id": "C-FIG-P640-01-R106-SA1-FRESH-ISOLATED-V1",
+  "phase": "immediately_before_manifest_and_seal",
+  "validation": {
+    "result": "PASS",
+    "checks": 70,
+    "failed_checks": 0
+  },
+  "ordinary_files_before_this_control_record": 453,
+  "ordinary_png_files": 427,
+  "directories": 5,
+  "alternate_data_stream_count": 0,
+  "cache_or_pyc_file_count": 0,
+  "cache_directory_count": 0,
+  "reparse_point_count": 0,
+  "expected_final_file_classification": {
+    "payload": {
+      "count": 446,
+      "definition": "All audit images masks ROI contacts machine inventories schema aliases manual ledgers source audit and visual acceptance record not listed as control or self"
+    },
+    "control": {
+      "count": 9,
+      "files": [
+        "resolved_identity.json",
+        "machine_summary.json",
+        "validation.json",
+        "RESULT.json",
+        "SA1_FRESH_HANDOFF.md",
+        "CONTROL_CHECKS.json",
+        "MANIFEST.sha256.csv",
+        "SEAL.json",
+        "WRITE_STOPPED"
+      ]
+    },
+    "self": {
+      "count": 2,
+      "files": [
+        "generate_evidence.py",
+        "validate_evidence.py"
+      ]
+    },
+    "total": 457,
+    "equation": "446 payload + 9 control + 2 self = 457 ordinary files after WRITE_STOPPED"
+  }
+}

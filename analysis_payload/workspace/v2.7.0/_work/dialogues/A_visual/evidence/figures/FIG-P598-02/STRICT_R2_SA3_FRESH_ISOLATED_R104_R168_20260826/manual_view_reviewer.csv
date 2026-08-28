@@ -1,0 +1,9 @@
+view_id,file,reviewer,opened_native_or_context,readability,visual_balance,gray_or_color_behavior,page_integration,decision,note
+VIEW01,renders/full_page_200dpi.png,SA3-FRESH-ISOLATED,true,true,true,true,true,PASS,Lower-resolution whole-page context shows a compact top-of-page figure with clean transition to caption and body.
+VIEW02,renders/full_page_300dpi.png,SA3-FRESH-ISOLATED,true,true,true,true,true,PASS,Native 300 dpi whole page shows no clipping overlap tofu or severe imbalance.
+VIEW03,crop/figure_crop_300dpi.png,SA3-FRESH-ISOLATED,true,true,true,true,true,PASS,Three cards arrows and two-line caption are sharp ordered and semantically legible.
+VIEW04,crop/standalone_300dpi.png,SA3-FRESH-ISOLATED,true,true,true,true,N/A,PASS,Figure-only crop preserves all three cards and both flow arrows with balanced spacing.
+VIEW05,crop/grayscale_300dpi.png,SA3-FRESH-ISOLATED,true,true,true,true,true,PASS,All headings notes curves hatch divider dots formula and caption remain distinguishable in grayscale.
+VIEW06,overlays/all_objects_overlay_300dpi.png,SA3-FRESH-ISOLATED,true,true,true,N/A,N/A,PASS,All glyph and graphic bboxes are mapped inside the evidence crop.
+VIEW07,matrices/all_pairs_overlap_status_matrix.png,SA3-FRESH-ISOLATED,true,true,N/A,N/A,N/A,PASS,Matrix opened; no red intersection or orange clearance-failure cell is present.
+VIEW08,matrices/all_pairs_object_kind_matrix.png,SA3-FRESH-ISOLATED,true,true,N/A,N/A,N/A,PASS,Matrix opened; glyph and all graphic categories occupy the expected denominator blocks.

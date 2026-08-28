@@ -1,0 +1,72 @@
+{
+  "schema": "FIG-P580-01_ROOT_R96_FREEZE_v1",
+  "frozen_at": "2026-08-24T11:52:18.7268300+08:00",
+  "official_pdf": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/source/v2.7.0/src/build/strict_current_r96_fullbook/main_full.pdf",
+  "source": {
+    "path": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/source/v2.7.0/src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_is_support.tex",
+    "bytes": 5580,
+    "sha256": "F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161",
+    "fls_input_hits": 1
+  },
+  "build": {
+    "command": "powershell -ExecutionPolicy Bypass -File build_v2.7.0.ps1 -OutputDir src\\build\\strict_current_r96_fullbook -NoPublish",
+    "result": "PASS",
+    "exit_code": 0,
+    "bytes": 4933724,
+    "sha256": "8EED8765A4856C4C197262DEA06E283790FBA8DA906C70C26FC7BD56F6F7E5E8",
+    "pages": 813,
+    "pdf_version": "1.7",
+    "encrypted": false,
+    "all_pages_a4": true,
+    "unique_media_box_pt": [595.276, 841.89],
+    "unique_crop_box_pt": [595.276, 841.89],
+    "rotation": 0,
+    "embedded_subset_unicode_font_rows": 14,
+    "noncompliant_font_rows": 0,
+    "hard_log_pattern_matches": 0
+  },
+  "hard_log_scan": {
+    "bang": 0,
+    "latex_error": 0,
+    "package_error": 0,
+    "undefined_control": 0,
+    "emergency": 0,
+    "fatal": 0,
+    "lost_float": 0,
+    "undefined_references": 0,
+    "undefined_citations": 0,
+    "multiply_defined": 0,
+    "duplicate_destination": 0,
+    "unreferenced_destination": 0,
+    "overfull": 0,
+    "underfull": 0,
+    "missing_character": 0,
+    "rerun": 0,
+    "no_pages": 0,
+    "runaway": 0,
+    "file_ended_while_scanning": 0
+  },
+  "figure": {
+    "uid": "FIG-P580-01",
+    "number": "31.6",
+    "physical_page": 628,
+    "printed_page": 615,
+    "locator_title": "重要性抽样要求 p≪q，其中 q 未覆盖的目标区域不能由增加样本或有限加权恢复",
+    "aux_label_match": true,
+    "pdf_text_locator_match": true,
+    "full_page_300dpi_px": [2481, 3508],
+    "full_page_file": "official_R96_physical_628_full_page_300dpi.png",
+    "crop_from_full_page_300dpi_px": [300, 1000, 2200, 2100],
+    "crop_size_px": [1900, 1100],
+    "color_crop_file": "official_R96_physical_628_figure_caption_crop_300dpi.png",
+    "grayscale_crop_file": "official_R96_physical_628_figure_caption_crop_300dpi_gray.png"
+  },
+  "root_precheck": {
+    "native_300dpi_full_page_viewed": true,
+    "native_300dpi_color_crop_viewed_1_to_1": true,
+    "native_300dpi_grayscale_crop_viewed_1_to_1": true,
+    "visible_overlap_or_clipping_found": false,
+    "font_hierarchy_visibly_abrupt": false,
+    "verdict": "PRECHECK_PASS_TO_FRESH_SA1_NOT_FINAL"
+  }
+}

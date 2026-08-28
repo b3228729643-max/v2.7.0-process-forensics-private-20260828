@@ -1,0 +1,53 @@
+{
+  "schema": "FIG-P547-01_R7A_ADDENDUM_EVIDENCE_MANIFEST_V1",
+  "terminal": "LOCAL_PASS_TO_ROOT_BUILD",
+  "final_official_pass": false,
+  "generated_utc": "2026-08-24T09:43:21.5072822Z",
+  "package_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P547-01\\STRICT_R7A_SA2_SEAL_LONGPATH_ADDENDUM_R97_20260824",
+  "payload_entry_count": 6,
+  "expected_final_actual_file_count": 9,
+  "closure_equation": "6 payload + 1 evidence_manifest + 1 MANIFEST + 1 WRITE_STOPPED = 9 actual",
+  "entries": [
+    {
+      "path": "ADDENDUM_REPORT.md",
+      "bytes": 3881,
+      "sha256": "E38E63F952B14155843D2D256FB6E6C743DC0D1A78B4D038B3616406AA5833EE",
+      "classification": "ACTIVE_ADDENDUM_EVIDENCE"
+    },
+    {
+      "path": "ADDENDUM_TERMINAL.md",
+      "bytes": 1146,
+      "sha256": "A3D8CECAF220770B528A580D42917D345C7E50C1ABFC1AE74013F4DE8DCBEC09",
+      "classification": "ACTIVE_ADDENDUM_EVIDENCE"
+    },
+    {
+      "path": "enumerate_r7_longpath_gap.ps1",
+      "bytes": 18335,
+      "sha256": "C2D2897D44270C14990690E43199BBCBFEB5F88640BDE202E8BC09BB72865C1F",
+      "classification": "ACTIVE_ADDENDUM_EVIDENCE"
+    },
+    {
+      "path": "R7_LONGPATH_RECONCILIATION.json",
+      "bytes": 3002,
+      "sha256": "854B0F3F4DA16A13540CBCD571BA96FC526E492A12A1F2F4211CEE00E6F2295F",
+      "classification": "ACTIVE_ADDENDUM_EVIDENCE"
+    },
+    {
+      "path": "R7_OMITTED_LONGPATH_60.csv",
+      "bytes": 26495,
+      "sha256": "F97492F050C3903167F9F989A32AF4EB9218A925FAE0F98F94A7923584644E92",
+      "classification": "ACTIVE_ADDENDUM_EVIDENCE"
+    },
+    {
+      "path": "seal_r7a_addendum.ps1",
+      "bytes": 9136,
+      "sha256": "4A16E1BDC04FBDAB5270C6555B03298CEE5C1A3F0589D5CB99C436445601BD1B",
+      "classification": "ACTIVE_ADDENDUM_EVIDENCE"
+    }
+  ],
+  "seal_exclusions": {
+    "evidence_manifest_json": "self",
+    "manifest_sha256": "written after evidence manifest and cannot hash itself",
+    "write_stopped_md": "future final write"
+  }
+}

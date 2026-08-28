@@ -1,0 +1,28 @@
+{
+  "schema": "P126_R7_FINAL_CROSSCHECK_V1",
+  "handoff_id": "A-R115-P126-SA2-DIRECT-BUILD-R7-20260828",
+  "pdf_bytes": 33952,
+  "pdf_sha256": "8EB275DEB382AD25E26C19F4B9A0EFBE01771317FE7DE475C5F2E330BCD789D6",
+  "N": 58,
+  "C": 1653,
+  "denominator_partition": {"glyph": 25, "line": 9, "rect": 4, "curve": 20},
+  "machine_pair_rows": 1653,
+  "machine_candidate_rows": 179,
+  "manual_object_rows": 58,
+  "manual_pair_class_coverage": 1653,
+  "manual_view_rows": 17,
+  "manual_math_semantic_rows": 10,
+  "hard_defects": [
+    "HARD-LEGEND-X2-CONTINUOUS",
+    "HARD-LABEL6-AXIS-CONTOUR-OVERLAP",
+    "HARD-LABEL7-MARKER-ARROW-OCCLUSION"
+  ],
+  "hard_defect_count": 3,
+  "clip_failure_count": 0,
+  "missing_or_tofu_count": 0,
+  "unresolved_reference_count": 0,
+  "math_objective_check": "PASS",
+  "caption_semantic_check": "PASS",
+  "legend_gray_role_check": "FAIL",
+  "result": "LOCAL_SA2_FAIL_RETURN_TO_MAIN_SOURCE_SCOPE"
+}

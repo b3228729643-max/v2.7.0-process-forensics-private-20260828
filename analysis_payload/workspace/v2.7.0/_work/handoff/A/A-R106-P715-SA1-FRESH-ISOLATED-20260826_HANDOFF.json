@@ -1,0 +1,60 @@
+{
+  "handoff_id": "A-R106-P715-SA1-FRESH-ISOLATED-20260826",
+  "assigned_scope": "Single fresh isolated read-only R106 SA1 review for FIG-P715-01",
+  "completed": true,
+  "files_changed": [
+    "Created and sealed the dedicated evidence root only",
+    "Created this root-external formal report and immutable self-contained handoff",
+    "No source, official PDF, build, main, state, history, or central status file was modified"
+  ],
+  "decision": "FAIL",
+  "decisions": {
+    "route": "SA2",
+    "a_local_pass_claimed": false,
+    "sa3_authorized": false,
+    "primary_hard_failure": "PAIR_08396: 37 native-pixel illegal intersection between node j border and glyph 矩",
+    "confirmed_illegal_overlap_pixel_sum_excluding_contaminated_comma_pairs": 888,
+    "clip_pixel_count": 0,
+    "r168_advisory_not_failure_basis": true
+  },
+  "unresolved": [
+    "TXT_G0081 comma raw mask has a disconnected 13-pixel foreign component; its two candidate relations are evidence failures and were not used as standalone geometry proof"
+  ],
+  "validation": {
+    "official_pdf_sha256": "0FA4A5A0B35D2566D71B5472B49E9B4A8A60CBAE76B3FA744B92783AFC6BC31A",
+    "physical_page": 765,
+    "printed_page": 752,
+    "glyph_count": 216,
+    "drawing_path_count": 43,
+    "object_count": 259,
+    "unordered_pair_count": 33411,
+    "ordinary_file_count": 507,
+    "payload_manifest_entries": 502,
+    "manifest_missing_count": 0,
+    "manifest_bad_hash_count": 0,
+    "all_ordinary_files_readonly": true,
+    "write_stopped_count": 1,
+    "marker_strictly_newest": true,
+    "post_marker_root_writes": 0,
+    "nondefault_ads_count": 0,
+    "cache_directory_count": 0,
+    "pyc_file_count": 0,
+    "overall": true
+  },
+  "next_action": "SA2 source repair, new official build, then a new fresh isolated SA1; do not start SA3 from R106",
+  "paths": {
+    "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P715-01\\STRICT_R15_SA1_FRESH_ISOLATED_R106_20260826",
+    "result": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P715-01\\STRICT_R15_SA1_FRESH_ISOLATED_R106_20260826\\RESULT.json",
+    "visual_report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P715-01\\STRICT_R15_SA1_FRESH_ISOLATED_R106_20260826\\after_visual_acceptance.md",
+    "formal_report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\handoff\\A\\A-R106-P715-SA1-FRESH-ISOLATED-20260826_REPORT.md",
+    "handoff": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\handoff\\A\\A-R106-P715-SA1-FRESH-ISOLATED-20260826_HANDOFF.json"
+  },
+  "hashes": {
+    "result_sha256": "FCA33739A8D0820B4D7F6340CB3643F5E2775C38EFF2D9D007A5D82F5264B91F",
+    "visual_report_sha256": "8F4B989AB746F461CEFC8043455A6AF68EE98CE66829129F3A9C3B74E9623D7B",
+    "payload_manifest_csv_sha256": "7C318BC5FF7BDA4F4FA80DB4786176AB0B3B3A5EC7D7CE69176EE01F28040CE0",
+    "manifest_identity_closure_sha256": "A572F23B1D377B308973F0ADF7783947EC48A0068DD056CEFAD2ED1C48117BD4",
+    "seal_audit_sha256": "680833C218A1171337918E5F61F9C31860144D8ADC7ABC7D04B29D8582C91CAB",
+    "write_stopped_sha256": "07F947B518FD01B03C6E8EE2FD38FC5FE16421770C5F91BC6F961C62948BF700"
+  }
+}

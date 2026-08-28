@@ -1,0 +1,48 @@
+{
+  "pair_id": "PAIR_GR017_GR019",
+  "object_a": "GR017",
+  "object_b": "GR019",
+  "critical_kind": "ZERO_CLEARANCE_NO_OVERLAP",
+  "native_grid": [
+    2481,
+    3508
+  ],
+  "measurement_dpi": 300,
+  "resize_after_render": false,
+  "roi_full_page_px": [
+    1413,
+    1190,
+    1440,
+    1218
+  ],
+  "overlap_pixel_count": 0,
+  "minimum_pixel_center_distance_px": 1.0,
+  "clearance_formula": "max(minimum pixel-centre distance - 1, 0)",
+  "clearance_px": 0.0,
+  "closest_a_full_page_yx": [
+    1202,
+    1426
+  ],
+  "closest_b_full_page_yx": [
+    1202,
+    1427
+  ],
+  "interaction_point_or_contact_pair_count": 3,
+  "mask_a_source": "input_graphic_masks/GR017_raw.png",
+  "mask_b_source": "input_graphic_masks/GR019_raw.png",
+  "file_hashes": {
+    "raw_roi_1x.png": "cf3c1cdb87e14735dc18de6d09fa8f2230e497ac72482cc36d7f4cfbf361ea53",
+    "mask_A_1x.png": "bc3bb901f7f87c4b2bcb6a0dcb9dc1b8063b8f033596684c7c53bdfdfc01df21",
+    "mask_B_1x.png": "aba8fbc2c27887af004283d65f68bfae77dd302d515cca121de407093695b0e3",
+    "intersection_1x.png": "76305296b72fa0b785602a689800e3357053fd840dda579f5933494757e939cd",
+    "overlay_1x.png": "07fafd86ac94968a8f235b4f3814ea9322dbd42713fe47755519d938aaab7963",
+    "raw_roi_8x_nearest.png": "826b178c25af27de62ade97ae2dc306c2563085bafc2e34dfae868563f15ead6",
+    "mask_A_8x_nearest.png": "5b1907bd07e35f652c30c972afb8b1ad3267a95da8d43d4fb9050107e4ba9df1",
+    "mask_B_8x_nearest.png": "a3b99cd4b592f0158a16d1f8cdb5274acb8ca75d9726ee6bc14321998be757d1",
+    "intersection_8x_nearest.png": "f0e46237f1519ece5ecacbb2bd1e0d3fd6f14222db478b705646db8d9a1f9c01",
+    "overlay_8x_nearest.png": "8f741670be464da3fd1a172a569ea096a656821d9ed88f69bf1b384d523639da",
+    "review_1x_sheet.png": "f5317845aa34cfcb5069e3b965b06b1f16ede9560f600345c4e0e478c97d83be",
+    "review_8x_nearest_sheet.png": "786924f16b732ccd953430576c4d8c75da24e0d1eb2efc1e9bb30c88abd34062"
+  },
+  "manual_review_required": true
+}

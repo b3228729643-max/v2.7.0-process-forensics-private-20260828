@@ -1,0 +1,52 @@
+{
+  "audit_identity": "R111_SA1_REQUAL_CURRENT_IDENTITY_20260824",
+  "timestamp": "2026-08-24T10:56:40+08:00",
+  "official_input": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/source/v2.7.0/src/build/strict_current_r95_fullbook/main_full.pdf",
+  "figure_id": "FIG-P632-01",
+  "evidence_integrity": {
+    "result": "FAIL",
+    "codes": [
+      "RESULT_CONSISTENCY_FAIL",
+      "SEMANTIC_PARENT_MAPPING_FAIL",
+      "ROLE_RATIO_PENDING"
+    ],
+    "detail": {
+      "legacy_relation_result_fail_count": 37,
+      "physical_relation_clearance_fail_count": 36,
+      "r0046": "legacy FAIL is inconsistent with overlap=0 and clearance=16>=8; semantic-parent corrected result is physical PASS",
+      "semantic_parent_mapping_fail_glyphs": [
+        "F632_G204",
+        "F632_G205",
+        "F632_G206",
+        "F632_G207",
+        "F632_G208",
+        "F632_G209"
+      ],
+      "role_ratio_raw_state": "ACTUAL_BASELINE_PENDING for 413 of 413 rows"
+    }
+  },
+  "figure_hard_gates": {
+    "result": "FAIL",
+    "strict_native_pixel_glyph_fail_count": 30,
+    "font_pt_fail_count": 0,
+    "d_fail_count": 13,
+    "e_cross_panel_fail_count": 12,
+    "role_ratio_recomputed_fail_count": 0,
+    "physical_clearance_fail_count": 36,
+    "overlap_fail_count": 0,
+    "edge_fail_count": 0,
+    "graphic_mask_fail_count": 0,
+    "occlusion_fail_count": 0,
+    "math_semantics_result": "PASS",
+    "four_view_result": "PASS",
+    "font_visual_harmony": {
+      "aggregate": "FAIL",
+      "size": "FAIL",
+      "weight": "PASS",
+      "color": "PASS"
+    }
+  },
+  "final_result": "FAIL_TO_SA2",
+  "final_table_summary_usage": "NOT_USED_AS_AUTHORITY; recomputed from bottom-level CSV and current identity ledger.",
+  "separation_statement": "EVIDENCE_INTEGRITY and FIGURE_HARD_GATES are independently reported. R0046 is not counted among the 36 physical clearance failures."
+}

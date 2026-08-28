@@ -1,0 +1,48 @@
+0364: \SLTeachSection{重要性抽样}{sec:V5-C02-S04}
+0365: \knowledgeanchor{PRE-SA-005}{重要性抽样}
+0366: \index{重要性抽样}
+0367: 以下$p,q$仍表示关于同一支配测度$\nu$的密度。设目标量为$I=E_p[h(X)]$，但只能从$q$抽样。要求$p\ll q$，并在$q>0$处定义$w(x)=p(x)/q(x)$。若$Y_i\stackrel{\mathrm{iid}}{\sim}q$，普通重要性估计为
+0368: \begin{equation}\label{eq:V5-C02-ordinary-is}
+0369: \widehat I_N^{\mathrm{IS}}=\frac1N\sum_{i=1}^Nw(Y_i)h(Y_i).
+0370: \end{equation}
+0371: 这不是“从$p$抽样后不加权”，而是从$q$抽样后用密度比改变量的贡献。
+0372: 
+0373: 若只能计算未归一化密度$\widetilde p=Zp$且归一化常数$Z>0$未知，令$\widetilde w=\widetilde p/q$，自归一化估计为
+0374: \begin{equation}\label{eq:V5-C02-snis}
+0375: \widehat I_N^{\mathrm{SNIS}}
+0376: =\frac{\sum_{i=1}^N\widetilde w(Y_i)h(Y_i)}
+0377: {\sum_{i=1}^N\widetilde w(Y_i)}.
+0378: \end{equation}
+0379: 分母必须为有限正数。自归一化形式消去了未知$Z$，但有限样本下一般有偏；不能把普通重要性抽样的无偏性移植给它。
+0380: 
+0381: \begin{theorem}[普通与自归一化重要性抽样]\label{thm:V5-C02-is-properties}
+0382: 若$p\ll q$且$E_q|w(Y)h(Y)|<\infty$，则式\eqref{eq:V5-C02-ordinary-is}无偏并几乎必然收敛到$I$。若再有$E_q[(w(Y)h(Y))^2]<\infty$，其方差为$\operatorname{Var}_q(wh)/N$。对式\eqref{eq:V5-C02-snis}，若$E_q|\widetilde w h|<\infty$且$E_q\widetilde w=Z\in(0,\infty)$，则以概率$1$存在随机整数$N_0$，使所有$N\ge N_0$时分母有限且为正；从此式\eqref{eq:V5-C02-snis}有定义，并几乎必然收敛到$I$。
+0383: \end{theorem}
+0384: % KNOWLEDGE-PLAN: KN-V5-C31-PROOF-005 L1
+0385: \paragraph{读前自检：证明：普通与自归一化重要性抽样。}普通重要性抽样要求$p h$由$q$覆盖，自归一化形式还要求权重均值极限$Z>0$；请分别写出两个样本平均并取比值，核对分母最终大于$Z/2$后比值可定义。\par
+0386: 
+0387: \begin{proof}
+0388: 支持覆盖使
+0389: \[
+0390: E_q[w(Y)h(Y)]
+0391: =\int_{\{q>0\}}q(y)w(y)h(y)\,\mathrm d\nu(y)
+0392: =\int_{\{q>0\}}p(y)h(y)\,\mathrm d\nu(y)
+0393: =\int p(y)h(y)\,\mathrm d\nu(y)=I,
+0394: \]
+0395: 其中最后一个等号使用$p\ll q$。
+0396: 期望线性性给出普通估计无偏；强大数定律给出其几乎必然一致性。二阶矩有限时，把随机变量$wh$代入定理\ref{thm:V5-C02-iid-mc}的方差结论，得到$\operatorname{Var}_q(wh)/N$。
+0397: 
+0398: 对自归一化估计，强大数定律分别给出
+0399: \[
+0400: \frac1N\sum_i\widetilde w(Y_i)h(Y_i)\to
+0401: \int\widetilde p(y)h(y)\,\mathrm d\nu(y)=ZI,
+0402: \quad
+0403: \frac1N\sum_i\widetilde w(Y_i)\to Z
+0404: \]
+0405: 几乎必然成立。因为$Z>0$，在该概率为$1$的收敛事件上，存在$N_0$使$N\ge N_0$时分母平均值大于$Z/2$且有限。除法在$(ZI,Z)$处连续，连续映射定理遂给出从$N_0$起有定义的比值收敛到$I$。有限样本分母仍可能恰为$0$，此时式\eqref{eq:V5-C02-snis}不定义；这不影响上述几乎必然的最终正性与收敛结论。证明完成。
+0406: \end{proof}
+0407: 
+0408: 图\ref{fig:V5-C02-is-support}固定共同定义域$\mathcal X=[0,5]$，并取$p(x)=6x(5-x)/125$、$q_L(x)=(2/5)\mathbf 1_{[0,5/2]}(x)$、$q_R(x)=1/5$。支持覆盖是普通形式和自归一化形式共同的先决条件。观察任务：先找出左图$q_L$于$x=5/2$后的支持缺口，再在右图用$w=p/q_R$复算$x=1,5/2,4$处的真实密度比；最后只判断$p\ll q$是否成立，不据此断言方差低或估计可靠。
+0409: \input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_is_support.tex}
+0410: \FloatBarrier
+0411: \noindent\textbf{读图检查（仅针对图\ref{fig:V5-C02-is-support}）。}先看左图的点线支撑边界、空心端点、$q_L=0$基线与$p>0$纹理区，确认增加样本或有限加权都不能恢复该缺失目标区域；再看右图$q_R=1/5>0$的全域覆盖，并由同一公式核对$w(1)=0.96$、$w(5/2)=1.50$、$w(4)=0.96$。结论只到$p\ll q_R$这一支持条件，不得从支持覆盖推成低方差或估计可靠性。

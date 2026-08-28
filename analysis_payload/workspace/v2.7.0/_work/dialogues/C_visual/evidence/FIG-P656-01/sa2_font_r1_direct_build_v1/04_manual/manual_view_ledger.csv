@@ -1,0 +1,13 @@
+view_id,path,actual_observation,decision
+VIEW01,02_render/fullpage_native300.png,A4 standalone page shows the entire figure intact with generous page margins and no foreign page content,PASS
+VIEW02,05_views/figure_crop_native300_color.png,color view preserves three category colors teal hatching blue arrows red warning and gray coefficient box consistently,PASS
+VIEW03,05_views/figure_crop_native300_grayscale.png,all sequence digits arrows formulas boxes and warning text remain distinguishable in grayscale,PASS
+VIEW04,05_views/object_id_overlay_native300.png,all 90 glyph IDs and 25 drawing IDs map to visible intended objects with no omitted visible component,PASS
+VIEW05,05_views/critical_pairs_contact_sheet_native300.png,34 ranked risk pairs show only intended connector joins and legal text-in-container relations,PASS
+VIEW06,05_views/risk_sequence_panel_1x.png,three six-item sequences are complete evenly spaced and visually count to three ones one two and two threes each,PASS
+VIEW07,05_views/risk_arrow_label_1x.png,同一计数 is readable and separated from the arrow and count-box boundary,PASS
+VIEW08,05_views/risk_arrow_label_8x.png,pixel enlargement confirms no label glyph touches the arrow or box and the arrow head is complete,PASS
+VIEW09,05_views/risk_count_box_1x.png,count vector formula is centered with clear inner padding and the constraint line remains separated below,PASS
+VIEW10,05_views/risk_constraint_warning_1x.png,integer/sum constraint and warning are both readable with a clear vertical gap,PASS
+VIEW11,05_views/risk_constraint_warning_8x.png,pixel enlargement confirms warning glyphs do not touch the red border and no tofu or broken codepoint exists,PASS
+VIEW12,05_views/risk_coefficient_box_1x.png,heading and N!/product formula are fully visible and centered with no clipping,PASS

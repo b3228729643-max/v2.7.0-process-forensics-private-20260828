@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 4 册}{统计学习方法讲义 v2.6.0}{无监督学习与矩阵分解}
+\begin{document}
+\setcounter{page}{672}
+\setcounter{chapter}{29}
+\setcounter{figure}{1}
+\pagestyle{headings}
+\chaptermark{概率潜在语义分析}
+\sectionmark{EM 参数估计}
+\begin{geometrybox}
+\textbf{几何解释。}每个$\phi_{:k}$是$(M-1)$维单词单纯形中的主题点。文档分布$P(w\mid d_j)=\Phi\theta_{:j}$是这些主题点的凸组合，因此全部训练文档都落在由主题点张成的凸包中。
+\end{geometrybox}
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C06/fig_v4_c06_simplex.tex}
+图\ref{fig:V4-C06-simplex}把外层三角形表示为单词单纯形，把蓝色三角形表示为主题凸包。文档点的位置由$\theta_{:j}$决定；不同参数可以给出相同文档点，说明潜在表示不必唯一。
+\end{document}

@@ -1,0 +1,16 @@
+gate_id,gate,denominator,evidence,observation,decision
+H01,source visible-font gate,6 fontsize declarations,static identity plus current source,minimum declared general visible size is 9.5pt and no declaration is below 9.5pt,PASS
+H02,glyph codepoint and readability,90 glyphs,glyph machine ledger plus manual object ledger,no tofu wrong codepoint mathematical substitution unreadability or severe size imbalance,PASS
+H03,visible drawing completeness,25 drawings,drawing machine ledger plus object overlay,all circles boxes shafts and heads are present nonempty and mapped,PASS
+H04,all-object denominator,115 objects,object machine ledger,90 glyphs plus 25 visible drawings equals 115 and every mask is nonempty,PASS
+H05,all unordered pairs,6555 pairs,unordered pair machine ledger,C(115 2)=6555 with no missing or duplicate unordered pair,PASS
+H06,illegal visible overlap,3 shared plus 115 bbox-only risk pairs,critical and pair-family ledgers,three shared pairs are legal connector joins and all bbox-only pairs have zero shared ink,PASS
+H07,clip and page bounds,115 objects,clip machine ledger,zero object bbox extends beyond the A4 page and zero object mask is empty,PASS
+H08,sequence content,18 sequence glyphs,sequence panel 1x,each of the three sequences has counts n1=3 n2=1 n3=2,PASS
+H09,count-vector semantics,20 glyph formula,count-box 1x,n=(n1 n2 n3)=(3 1 2) is complete and correctly linked from the sequences,PASS
+H10,support semantics,13 glyph formula,constraint-warning views,nk is a nonnegative integer and sum_k nk=N is complete and correct,PASS
+H11,multinomial coefficient semantics,18 heading/formula glyphs,coefficient-box 1x,N! divided by product_k nk! is complete and correctly described as sequence multiplicity,PASS
+H12,warning semantics,11 glyphs,constraint-warning 1x/8x,计数向量不是概率向量 is explicit correct and unobscured,PASS
+H13,color and grayscale robustness,2 principal crops,color and grayscale crops,relationships and text remain legible in both views,PASS
+H14,PDF and log integrity,1 PDF and 1 log,control RESULT pdfinfo pdffonts and log scan,one-page A4 PDF 1.7 unencrypted all fonts embedded and hard log patterns zero,PASS
+H15,TeX process terminal state,4 process names,RESULT plus post-review process scan,latexmk lualatex luatex and luahbtex are all absent and no retry occurred,PASS

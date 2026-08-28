@@ -1,0 +1,23 @@
+% v2.4.0 Stage E optional example-macro smoke test.
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{例题公共宏}{统计学习方法讲义 v2.4.0}{阶段 E 编译验证}
+\begin{document}
+\pagestyle{empty}
+\typeout{SLEXAMPLE-MACRO-HARNESS-BEGIN}
+\SLReadTranslation{把题面对象转换成矩阵、概率或约束关系。}
+\SLMethodTrigger{先识别目标类型，再选择相应公式。}
+\SolDimensionCheck{矩阵内侧维数一致，结果形状与目标一致。}
+\SolNormalizationCheck{所有概率非负且总和为 $1$。}
+\SolFeasibilityCheck{候选解满足题目给定约束。}
+\begin{solution}
+\newcount\SLTestLine
+\SLTestLine=1
+\loop
+  \noindent 跨页解答占位行 \the\SLTestLine：续页标记必须位于解答框上缘外侧，不得遮挡本行正文。\par
+  \advance\SLTestLine by 1
+\ifnum\SLTestLine<46
+\repeat
+\end{solution}
+\typeout{SLEXAMPLE-MACRO-HARNESS-END}
+\end{document}

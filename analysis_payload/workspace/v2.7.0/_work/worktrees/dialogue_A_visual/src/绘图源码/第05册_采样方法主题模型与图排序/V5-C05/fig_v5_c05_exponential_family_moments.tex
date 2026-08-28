@@ -1,0 +1,35 @@
+% v2.3.1 figure UID: FIG-P665-01
+% v2.6.0 reverse redraw for FIG-P665-01: separate the panel gutter and the right-side derivation stack.
+\tikzset{slfig-FIG-P665-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P665-01,slfig high,>=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center,inner xsep=2.2mm,inner ysep=1.2mm},
+  title/.style={font=\bfseries\fontsize{10.2pt}{12.0pt}\selectfont,text=SLBlue,inner sep=0pt},
+  term/.style={fill=SLBlueBG,rounded corners=2pt,minimum width=35mm,minimum height=9mm},
+  result/.style={draw=SLBlue,fill=white,rounded corners=2pt,minimum width=51mm,minimum height=11mm,line width=.72pt},
+  alt={对象—关系—结论：把Dirichlet分布写成指数族后，充分统计量是对数θ下标k，对数配分函数对α下标k的导数给出 E[对数Theta下标k]=psi(α下标k)-psi(α下标0)；该对数矩不能用均值取对数替代}]
+\node[title] at (-4.45,2.45) {左：Dirichlet 密度的指数族拆分};
+\node (density) at (-4.45,1.62) {$p(\theta\mid\alpha)=h(\theta)\,
+  \exp\!\left\{\sum_k\eta_kT_k(\theta)-A(\alpha)\right\}$};
+\node[term] (base) at (-6.40,-.23) {base measure\\$h(\theta)=\mathbf 1_{\Delta^{K-1}}(\theta)$};
+\node[term] (nat) at (-2.50,-.23) {自然参数\\$\eta_k=\alpha_k-1$};
+\node[term] (stat) at (-4.45,-1.62) {充分统计量\\$T_k(\theta)=\log\theta_k$};
+\draw[decorate,decoration={brace,amplitude=4pt},draw=SLGray,line width=.55pt]
+  (-8.10,1.16)--(-.85,1.16) node[midway,below=6pt,font=\fontsize{8.5pt}{10.2pt}\selectfont,inner sep=0pt]{三项与对数配分函数共同确定密度};
+
+\draw[SLRule,line width=.62pt] (0,2.68)--(0,-2.58);
+\node[title] at (4.45,2.45) {右：对数配分函数给出对数矩};
+\node at (4.45,1.62) {$A(\alpha)=\sum_k\log\Gamma(\alpha_k)-\log\Gamma(\alpha_0)$};
+\node[font=\fontsize{16pt}{17pt}\selectfont,text=SLGray,inner sep=0pt] at (4.45,1.02) {$\Downarrow$};
+\node[inner sep=0pt] at (4.45,.30) {$\displaystyle \frac{\partial A}{\partial\alpha_k}$};
+\node[result] (elog) at (4.45,-.68)
+  {$\mathbb E[\log\Theta_k]=\psi(\alpha_k)-\psi(\alpha_0)$};
+\node[draw=SLRed,fill=SLRedBG,rounded corners=2pt,text=SLRed,minimum width=55mm,minimum height=10mm,line width=.68pt] at (4.45,-2.16)
+  {$\mathbb E[\log\Theta_k]\ne\log\mathbb E[\Theta_k]$};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{把Dirichlet分布写成指数族后，充分统计量是$\log\theta_k$，对数配分函数对$\alpha_k$的导数给出$\mathbb E[\log\Theta_k]=\psi(\alpha_k)-\psi(\alpha_0)$；该对数矩不能用均值取对数替代}
+\label{fig:V5-C05-exponential-family-moments}
+\end{figure}

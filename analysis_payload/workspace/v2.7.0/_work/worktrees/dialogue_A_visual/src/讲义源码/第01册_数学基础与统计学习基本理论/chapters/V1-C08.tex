@@ -1,0 +1,942 @@
+% STAGE08-CHAPTER: V1-C08
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V1-C08-CH01}; CH-02=\label{struct:V1-C08-CH02}; CH-03=\label{struct:V1-C08-CH03}; CH-04=\label{struct:V1-C08-CH04}; CH-05=\label{struct:V1-C08-CH05}; CH-06=\label{struct:V1-C08-CH06}; CH-07=\label{struct:V1-C08-CH07}; CH-08=\label{struct:V1-C08-CH08}; CH-09=\label{struct:V1-C08-CH09}; CH-10=\label{struct:V1-C08-CH10}; CH-11=\label{struct:V1-C08-CH11}; CH-12=\label{struct:V1-C08-CH12}; CH-13=\label{struct:V1-C08-CH13}; CH-14=\label{struct:V1-C08-CH14}; CH-15=\label{struct:V1-C08-CH15}; CH-16=\label{struct:V1-C08-CH16}; CH-17=\label{struct:V1-C08-CH17}; CH-18=\label{struct:V1-C08-CH18}; CH-19=\label{struct:V1-C08-CH19}; CH-20=\label{struct:V1-C08-CH20}; CH-21=\label{struct:V1-C08-CH21}; CH-22=\label{struct:V1-C08-CH22}; CH-23=\label{struct:V1-C08-CH23}; CH-24=\label{struct:V1-C08-CH24}; CH-25=\label{struct:V1-C08-CH25}; CH-26=\label{struct:V1-C08-CH26}; CH-27=\label{struct:V1-C08-CH27}; CH-28=\label{struct:V1-C08-CH28}; CH-29=\label{struct:V1-C08-CH29}; CH-30=\label{struct:V1-C08-CH30}; CH-31=\label{struct:V1-C08-CH31}; CH-32=\label{struct:V1-C08-CH32}; CH-33=\label{struct:V1-C08-CH33}; CH-34=\label{struct:V1-C08-CH34}; CH-35=\label{struct:V1-C08-CH35}; CH-36=\label{struct:V1-C08-CH36}; CH-37=\label{struct:V1-C08-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V1-C08-coordinate -> PRE-OP-025
+% KNOWLEDGE-PLAN: KN-V1-C08-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：数值优化方法。}数值优化方法章地图把“从下降方向直达线搜索、Newton与拟Newton方法”作为主线；请为其中首条箭头补出必要条件，并检查终点仍落在本章声明的输出域。\par
+
+\chapter{数值优化方法}\label{chap:V1-C08}
+\SLChapterOpening{从下降方向直达线搜索、Newton与拟Newton方法}{怎样在有限计算中稳定逼近驻点并区分各种终止原因}{能够推导下降界、保护曲率并写出可复现停止准则}{\cref{chap:V1-C03,chap:V1-C07}的微分、Taylor模型与凸性}{方向不下降或线搜索无可行步时返回相应前提而非宣称收敛}
+\index{数值优化}
+
+
+\phantomsection\label{struct:V1-C08-CH01}
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能够从局部模型推导梯度下降、牛顿法及拟牛顿方向，明确步长与下降条件；
+  \item 掌握Armijo回溯、停止判据、DFP/BFGS更新与坐标下降的完整伪代码；
+  \item 能够比较收敛速度、单步成本、存储成本和适用条件，并为改进迭代尺度法准备凸优化基础。
+\end{itemize}}
+
+\phantomsection\label{struct:V1-C08-CH02}
+\begin{prerequisitebox}
+需要梯度、Hessian、Taylor展开、正定矩阵、范数、凸性、强凸性和线性方程组求解。实现中只应解 $Hp=-g$，不应显式形成 $H^{-1}$。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V1-C08-CH03}
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否解释为什么 $-\nabla f(x)$ 是一阶最陡下降方向？
+  \item 能否判断对称矩阵正定并说明 $p^{\mathsf T}Hp>0$ 的意义？
+  \item 能否区分“目标变化小”“步长小”和“梯度小”三种停止信号？
+\end{enumerate}
+未通过时回看第三章梯度/Hessian和第七章凸性条件。
+\end{precheckbox}
+
+\phantomsection\label{struct:V1-C08-CH04}
+\begin{dependencybox}
+梯度 $\to$ 下降方向 $\to$ 步长搜索 $\to$ 梯度下降；
+二阶Taylor模型 $\to$ 牛顿方向 $\to$ 拟牛顿割线条件 $\to$ DFP/BFGS；
+可分结构 $\to$ 坐标下降；指数族凸目标 $\to$ 改进迭代尺度更新。
+\end{dependencybox}
+
+\phantomsection\label{struct:V1-C08-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V1-C08
+\index[symbols]{x-k-g-k-h-k--sf56b594d6d10@$x_k,g_k,H_k$：第$k$次迭代点、梯度与Hessian}
+\index[symbols]{p-k-minus-alpha-minus-k--sf93c37a7343e@$p_k,\alpha_k$：搜索方向与步长}
+\index[symbols]{s-k-y-k--s7618095a45e0@$s_k,y_k$：$x_{k+1}-x_k$与$g_{k+1}-g_k$}
+\index[symbols]{b-k-g-k--s422f0199a3ad@$B_k,G_k$：Hessian与逆Hessian近似}
+\index[symbols]{minus-varepsilon-minus-c-minus-rho-minus--se0ffc7e26e5e@$\varepsilon,c,\rho$：容差、充分下降常数与步长缩减因子}
+% STAGE19-SYMBOL-INDEX-END: V1-C08
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值 & 含义\\ \midrule
+$x_k,g_k,H_k$ & 向量、向量、矩阵 & 第$k$次迭代点、梯度与Hessian\\
+$p_k,\alpha_k$ & 向量、正数 & 搜索方向与步长\\
+$s_k,y_k$ & 向量 & $x_{k+1}-x_k$与$g_{k+1}-g_k$\\
+$B_k,G_k$ & 正定矩阵 & Hessian与逆Hessian近似\\
+$\varepsilon$ & 正数 & 停止容差\\
+$c$ & $(0,1)$ & Armijo充分下降常数\\
+$\rho$ & $(0,1)$ & 回溯步长缩减因子，拒绝后令$\alpha\leftarrow\rho\alpha$\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V1-C08-FORMULA-001 L1
+\paragraph{读前自检：梯度下降与步长。}梯度下降与步长依赖“在可微函数的当前点$x$，若向量$p$满足 $\nabla f(x)^{\mathsf T}p<0$”；请据此对$x$完成一项求导、代入或边界比较，并直接核对由Cauchy--Schwarz不等式，它在 $d=-g_k/\|g_k\|$ 处最小。\par
+
+\SLDirectSection{梯度下降与步长}{sec:V1-C08-S01}
+\phantomsection\label{struct:V1-C08-CH06}
+\knowledgeanchor{PRE-OP-022}{梯度下降与步长}
+\begin{definition}[下降方向]\label{struct:V1-C08-CH07}
+在可微函数的当前点$x$，若向量$p$满足 $\nabla f(x)^{\mathsf T}p<0$，则称$p$为该点的下降方向。由方向导数定义，存在足够小的正步长使$f(x+\alpha p)<f(x)$。
+\end{definition}
+在点$x_k$处，单位方向$d$的一阶变化率为 $\nabla f(x_k)^{\mathsf T}d$。由Cauchy--Schwarz不等式，它在 $d=-g_k/\|g_k\|$ 处最小，因此负梯度是欧氏范数下的最陡下降方向。基本更新为
+\[
+x_{k+1}=x_k-\alpha_k g_k,
+\]
+其中步长过大可能越过低谷并发散，过小则使进展缓慢。
+
+\phantomsection\label{struct:V1-C08-CH12}
+\begin{theorem}[光滑函数的下降引理]
+若梯度$L$-Lipschitz，则
+\[
+f(y)\le f(x)+\nabla f(x)^{\mathsf T}(y-x)+\frac L2\|y-x\|^2.
+\]
+取 $y=x-\alpha\nabla f(x)$ 且 $0<\alpha<2/L$，只要梯度非零就有目标下降。
+\end{theorem}
+\phantomsection\label{struct:V1-C08-CH15}
+% KNOWLEDGE-PLAN: KN-V1-C08-PROOF-001 L1
+\paragraph{读前自检：证明：光滑函数的下降引理。}光滑函数的下降引理以“再取$d=-\alpha\nabla f(x)$”为约束；请把$f(x-\alpha\nabla f(x))-f(x) \le-\alpha(1-L\alpha/2)\|\nabla f(x)\|^2.$用到的关键定义展开并完成下一步变形，并确认目标下降。\par
+
+\begin{proof}
+记$d=y-x$并令$\phi(t)=f(x+td)$。微积分基本定理给出
+\[
+f(y)-f(x)=\int_0^1\nabla f(x+td)^{\mathsf T}d\,\mathrm dt.
+\]
+减去$\nabla f(x)^{\mathsf T}d$后，由Cauchy--Schwarz与梯度的$L$-Lipschitz性，
+\[
+\begin{aligned}
+f(y)-f(x)-\nabla f(x)^{\mathsf T}d
+&=\int_0^1[\nabla f(x+td)-\nabla f(x)]^{\mathsf T}d\,\mathrm dt\\
+&\le\int_0^1\|\nabla f(x+td)-\nabla f(x)\|\,\|d\|\,\mathrm dt\\
+&\le\int_0^1Lt\|d\|^2\,\mathrm dt=\frac L2\|d\|^2.
+\end{aligned}
+\]
+这就是所需二次上界。再取$d=-\alpha\nabla f(x)$，得到
+\[
+f(x-\alpha\nabla f(x))-f(x)
+\le-\alpha(1-L\alpha/2)\|\nabla f(x)\|^2.
+\]
+当$0<\alpha<2/L$且梯度非零时，右端严格为负，故目标下降。
+\end{proof}
+\SLReviewSection{线搜索、停止条件与收敛判据}{sec:V1-C08-S02}
+\knowledgeanchor{PRE-OP-026}{线搜索}
+给定下降方向$p_k$，精确线搜索最小化 $\phi(\alpha)=f(x_k+\alpha p_k)$；实际常用回溯Armijo条件
+\[
+f(x_k+\alpha p_k)\le f(x_k)+c\alpha g_k^{\mathsf T}p_k,
+\quad 0<c<1.
+\]
+它要求实际下降至少达到线性预测的一定比例。这里$c$只控制充分下降；另取$0<\rho<1$作为回溯缩减因子，每次拒绝候选步长后令$\alpha\leftarrow\rho\alpha$，两者不可混用。
+% KNOWLEDGE-PLAN: KN-V1-C08-FORMULA-002 L1
+\paragraph{读前自检：梯度下降法。}梯度下降从初值$x_0$按负梯度方向更新；请写出$x_{t+1}=x_t-\eta_t\nabla f(x_t)$，核对每一步状态仍与$x_t$同维，并说明梯度范数达到停止容差时结束。\par
+
+\knowledgeanchor{SLM-A-00-001}{梯度下降法}
+% KNOWLEDGE-PLAN: KN-V1-C08-FORMULA-003 L1
+\paragraph{读前自检：梯度下降法。}梯度下降法的状态是当前点$x_t$及目标/梯度诊断；请对给定步长$\eta_t$完成一轮$x_t\mapsto x_{t+1}$，比较更新前后目标值，并按既定容差判断提交或继续，并核对候选按既定门槛提交或继续。\par
+
+\knowledgeanchor{SLM-A-00-002}{梯度下降法}
+% KNOWLEDGE-PLAN: KN-V1-C08-FORMULA-004 L1
+\paragraph{读前自检：梯度下降法。}梯度下降轨迹同时依赖初值、变量尺度与步长策略；请把同一$\nabla f(x_t)$分别代入两个正步长做一次更新，对照位移范数并核对停止量也须在同一尺度下比较。\par
+
+\knowledgeanchor{SLM-A-01-001}{梯度下降法}
+梯度下降从初始点开始，反复选择负梯度方向与步长，直到满足停止条件。初始点、尺度和步长策略共同决定迭代轨迹。
+\knowledgeanchor{PRE-OP-027}{迭代算法的停止条件与收敛判据}
+常用判据包括 $\|g_k\|\le\varepsilon_g$、$\|x_{k+1}-x_k\|\le\varepsilon_x(1+\|x_k\|)$、$|f_{k+1}-f_k|\le\varepsilon_f(1+|f_k|)$ 与最大迭代次数。单一“变化小”也可能由步长失败造成，宜联合使用。
+
+\phantomsection\label{struct:V1-C08-CH08}
+\textbf{模型。}每轮以局部一阶模型预测下降，线搜索用真实目标值校验模型是否可信。
+\phantomsection\label{struct:V1-C08-CH09}
+\textbf{学习策略。}方向负责“往哪里走”，线搜索负责“走多远”；相对容差与最大迭代次数共同避免尺度依赖和无休止计算。
+
+\phantomsection\label{struct:V1-C08-CH10}
+\phantomsection\label{struct:V1-C08-CH21}
+\phantomsection\label{struct:V1-C08-CH22}
+\phantomsection\label{struct:V1-C08-CH23}
+\phantomsection\label{struct:V1-C08-CH24}
+\phantomsection\label{struct:V1-C08-CH25}
+\phantomsection\label{struct:V1-C08-CH26}
+\phantomsection\label{struct:V1-C08-CH27}
+% CORE-DERIVATION-PLAN: KN-V1-C08-DERIVATION-001
+\SLKnowledgeBridge{由二阶局部模型得到牛顿方程，并判断该方向何时下降。}{当前梯度 $g_k$、Hessian $H_k$ 与步长方向 $p$。}{$H_k$ 对称正定，因此可逆且二次模型严格凸。}{先对 $m_k(p)=f(x_k)+g_k^{\mathsf T}p+\tfrac12p^{\mathsf T}H_kp$ 关于 $p$ 求梯度并令零。}
+
+\begin{derivationgoalbox}
+由二阶Taylor模型推导牛顿方向，并证明正定Hessian下它是下降方向。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+在当前点计算$g_k,H_k$，假设$H_k$对称正定，从而线性方程组有唯一解。
+\end{derivationprepbox}
+\textbf{推导第1步：}对局部模型关于$p$求梯度，得到 $\nabla_pm_k(p)=g_k+H_kp$。
+
+\textbf{推导第2步：}令模型梯度为零，解线性系统 $H_kp_k=-g_k$。正定性保证这是模型的唯一极小点。
+
+\textbf{推导第3步：}若$g_k\ne0$，则 $g_k^{\mathsf T}p_k=-p_k^{\mathsf T}H_kp_k<0$，所以$p_k$是原目标的一阶下降方向；再用线搜索控制局部模型在远离最优点时的误差。
+
+\phantomsection\label{struct:V1-C08-CH14}
+% KNOWLEDGE-PLAN: KN-V1-C08-COROLLARY-001 L1
+\paragraph{读前自检：二次函数的一步收敛。}正定二次函数$f(x)=\tfrac12x^{\mathsf T}Hx-b^{\mathsf T}x$满足$\nabla f=Hx-b$；请代入Newton步$-H^{-1}\nabla f(x)$，核对新点恰为$H^{-1}b$且梯度为零。\par
+
+\begin{corollary}[二次函数的一步收敛]
+对正定二次函数 $f(x)=\tfrac12x^{\mathsf T}Hx-b^{\mathsf T}x+c$，精确牛顿法从任意初始点一步到达唯一最优点$H^{-1}b$。
+\end{corollary}
+% KNOWLEDGE-PLAN: KN-V1-C08-PROOF-002 L1
+\paragraph{读前自检：证明：二次函数的一步收敛。}二次函数的一步收敛所用的明确前提是“梯度为$Hx-b$，Hessian恒为$H$”；完成把$p=H^{-1}b-x$用到的关键定义展开并完成下一步变形后，核对牛顿更新解 $Hp=-(Hx-b)$，所以$p=H^{-1}b-x$，全步后$x+p=H^{-1}b$。\par
+
+\begin{proof}
+梯度为$Hx-b$，Hessian恒为$H$。牛顿更新解 $Hp=-(Hx-b)$，所以$p=H^{-1}b-x$，全步后$x+p=H^{-1}b$。正定性保证该驻点是唯一全局最优点。
+\end{proof}
+
+\phantomsection\label{struct:V1-C08-CH20}
+\begin{example}[正定二次函数的一步Newton更新]\label{exm:V1-C08-newton-quadratic}
+对$f(x_1,x_2)=2x_1^2+x_2^2-2x_1-4x_2$，从$(0,0)$执行一个全步牛顿更新。
+\end{example}
+\SLExampleSolutionHeading{exm:V1-C08-newton-quadratic}
+\begin{solution}
+\SLReadTranslation{题目要求完成“正定二次函数的一步Newton更新”：写出目标与可行域，求候选解并判定其最优性质。}
+\SolGiven 目标函数和约束均在题面给定定义域内；候选解必须同时满足可行性、一阶条件以及必要的二阶/边界检查。
+\SLMethodTrigger{先写目标、可行域和必要条件，再求候选点并检查二阶/边界条件。}
+\SolDerive
+目标域为$\mathbb R^2$，Hessian正定，故牛顿方程有唯一解且全步适用：
+\[
+\begin{aligned}
+g(x)&=\begin{bmatrix}4x_1-2\\2x_2-4\end{bmatrix},
+&H&=\begin{bmatrix}4&0\\0&2\end{bmatrix}\succ0,\\
+H p_0&=-g(0,0)=\begin{bmatrix}2\\4\end{bmatrix},
+&p_0&=\begin{bmatrix}1/2\\2\end{bmatrix},\\
+x_1&=x_0+p_0=\begin{bmatrix}1/2\\2\end{bmatrix},
+&g(x_1)&=\boldsymbol0.
+\end{aligned}
+\]
+本轮状态可复算为
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}c X X X X@{}}
+\toprule
+轮次 & 旧状态 & 候选/更新 & 不变量、目标或残差 & 状态与停止证书\\
+\midrule
+$0$ & $x_0=(0,0)^{\mathsf T}$ & $Hp_0=-g(x_0)$，$x_1=x_0+p_0=(1/2,2)^{\mathsf T}$ & $H\succ0$且$\|g(x_1)\|_2=0$ & $\mathtt{completed}$；一阶最优性成立\\
+\bottomrule
+\end{tabularx}
+\end{center}
+独立地配方得到$f(x)=2(x_1-1/2)^2+(x_2-2)^2-9/2$，其唯一极小点也为$(1/2,2)^{\mathsf T}$。因此一次全步Newton更新已到达唯一全局极小点，最小值为$-9/2$。
+\end{solution}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C08-CONCEPT-001 L1
+\paragraph{读前自检：拟牛顿法。}拟牛顿法用正定$G_k$近似逆Hessian；请核对方向$p_k=-G_k\nabla f(x_k)$与梯度内积为负，从而在非驻点处给出下降方向。\par
+% KNOWLEDGE-PLAN: KN-V1-C08-CONCEPT-002 L1
+\paragraph{读前自检：牛顿法和拟牛顿法。}Newton法解$\nabla^2f(x_k)p_k=-\nabla f(x_k)$，拟Newton法改用$B_kp_k=-\nabla f(x_k)$；请比较两次方向方程，核对状态同维但曲率矩阵来源不同。\par
+% KNOWLEDGE-PLAN: KN-V1-C08-CONCEPT-003 L1
+\paragraph{读前自检：牛顿法。}牛顿法以$x_k$为状态；请解$\nabla^2f(x_k)p_k=-\nabla f(x_k)$、形成$x_{k+1}=x_k+p_k$，再以梯度范数核对停止。\par
+% KNOWLEDGE-PLAN: KN-V1-C08-CONCEPT-004 L1
+\paragraph{读前自检：牛顿法。}全步Newton候选为$x_k-[\nabla^2f(x_k)]^{-1}\nabla f(x_k)$；请检查Hessian可逆性和方向下降性，若任一失败则说明为何必须阻尼或线搜索。\par
+% KNOWLEDGE-PLAN: KN-V1-C08-CONCEPT-005 L1
+\paragraph{读前自检：拟牛顿法的思路。}拟牛顿更新由$s_k=x_{k+1}-x_k$与$y_k$构造；请把候选矩阵代入$B_{k+1}s_k=y_k$，核对$s_k^{\mathsf T}y_k>0$保护正定性。\par
+% KNOWLEDGE-PLAN: KN-V1-C08-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：DFP（Davidon-Fletcher-Powell）算法。}DFP逆Hessian更新以$s_k^{\mathsf T}y_k>0$为条件；请将更新式右乘$y_k$，核对抵消项后得到$G_{k+1}y_k=s_k$。\par
+% KNOWLEDGE-PLAN: KN-V1-C08-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：DFP算法。}DFP算法维护正定$G_k$；请对非零$v$展开$v^{\mathsf T}G_{k+1}v$，核对更新保持正定并满足割线条件。\par
+% KNOWLEDGE-PLAN: KN-V1-C08-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：BFGS（Broyden-Fletcher-Goldfarb-Shanno）算法。}BFGS更新使用$s_k$和$y_k$修正曲率近似；请把$B_{k+1}$乘$s_k$，核对$B_{k+1}s_k=y_k$，并检查曲率条件下正定性保持。\par
+% KNOWLEDGE-PLAN: KN-V1-C08-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：BFGS算法。}逆BFGS令$\rho_k=(y_k^{\mathsf T}s_k)^{-1}$；请把逆更新式右乘$y_k$并展开，核对结果等于$s_k$。\par
+
+\SLTeachSection{拟牛顿法、DFP与BFGS}{sec:V1-C08-S04}
+\knowledgeanchor{PRE-OP-024}{拟牛顿法}
+\knowledgeanchor{SLM-B-00-001}{牛顿法和拟牛顿法}
+拟牛顿法用正定矩阵$B_k$近似Hessian，或用$G_k=B_k^{-1}$近似逆Hessian，避免每轮显式计算二阶导数。
+\knowledgeanchor{SLM-B-01-001}{牛顿法}
+\knowledgeanchor{SLM-B-01-002}{牛顿法}
+牛顿法的二阶模型与线性系统仍是拟牛顿更新的目标参照。
+\knowledgeanchor{SLM-B-02-001}{拟牛顿法的思路}
+\knowledgeanchor{SLM-B-03-001}{DFP（Davidon-Fletcher-Powell）算法}
+\knowledgeanchor{SLM-B-02-002}{DFP算法}
+\knowledgeanchor{SLM-B-04-001}{BFGS（Broyden-Fletcher-Goldfarb-Shanno）算法}
+\knowledgeanchor{SLM-B-03-002}{BFGS算法}
+% DERIVATION-ID: V1-C08-dfp-bfgs-secant
+% CORE-DERIVATION-PLAN: KN-V1-C08-DERIVATION-002
+\SLKnowledgeBridge{验证两种逆 Hessian 更新都重现最新位移--梯度差关系。}{$s_k=x_{k+1}-x_k$、$y_k=g_{k+1}-g_k$ 与对称正定矩阵 $G_k$。}{曲率条件 $s_k^{\mathsf T}y_k>0$，故相关分母非零。}{先把局部线性关系 $y_k\approx H_{k+1}s_k$ 改写为逆形式的割线条件 $G_{k+1}y_k=s_k$。}
+
+\begin{derivationgoalbox}
+从观测到的位移$s_k$与梯度差$y_k$建立割线条件，验证DFP和逆BFGS更新都满足$G_{k+1}y_k=s_k$，并说明正曲率条件的作用。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+令$s_k=x_{k+1}-x_k$、$y_k=g_{k+1}-g_k$，$G_k\in\mathbb R^{d\times d}$对称正定；假设$s_k^{\mathsf T}y_k>0$，并记$\gamma_k=(s_k^{\mathsf T}y_k)^{-1}$。
+\end{derivationprepbox}
+\textbf{推导第1步：由梯度变化得到割线条件。}微积分基本定理给出
+\[
+y_k=\int_0^1\nabla^2f(x_k+t s_k)s_k\,\mathrm dt.
+\]
+用$B_{k+1}$近似线段上的平均Hessian，就要求$B_{k+1}s_k=y_k$；对逆矩阵近似$G_{k+1}$，对应条件为$G_{k+1}y_k=s_k$。
+
+\textbf{推导第2步：验证DFP更新。}取
+\[
+G_{k+1}^{\mathrm{DFP}}=G_k+\frac{s_ks_k^{\mathsf T}}{s_k^{\mathsf T}y_k}
+-\frac{G_ky_ky_k^{\mathsf T}G_k}{y_k^{\mathsf T}G_ky_k}.
+\]
+右乘$y_k$后，第二项等于$s_k$，第三项等于$-G_ky_k$，恰与第一项$G_ky_k$抵消，所以$G_{k+1}^{\mathrm{DFP}}y_k=s_k$。
+
+% KNOWLEDGE-PLAN: KN-V1-C08-ALGORITHM_IDEA-006 L1
+\paragraph{读前自检：Broyden类算法。}Broyden类在满足割线条件的秩二更新之间插值；请取族参数的两个端点，核对分别恢复DFP与BFGS且都满足同一$s_k,y_k$关系。\par
+
+\textbf{推导第3步：验证逆BFGS并核对正定性。}令$V_k=I-\gamma_ks_ky_k^{\mathsf T}$，则
+\[
+G_{k+1}^{\mathrm{BFGS}}=V_kG_kV_k^{\mathsf T}+\gamma_ks_ks_k^{\mathsf T}.
+\]
+因为$V_k^{\mathsf T}y_k=0$且$\gamma_ks_k^{\mathsf T}y_k=1$，右乘$y_k$得到$s_k$。又因$G_k\succ0$且$\gamma_k>0$，任意非零向量$z$满足
+\[
+z^{\mathsf T}G_{k+1}^{\mathrm{BFGS}}z
+=(V_k^{\mathsf T}z)^{\mathsf T}G_k(V_k^{\mathsf T}z)
++\gamma_k(s_k^{\mathsf T}z)^2>0,
+\]
+两个非负项不可能同时为零：若$s_k^{\mathsf T}z=0$且$V_k^{\mathsf T}z=0$，由$V_k^{\mathsf T}z=z-\gamma_ky_k(s_k^{\mathsf T}z)$可得$z=0$，与假设矛盾。因此更新保持正定；若$s_k^{\mathsf T}y_k\le0$，该结论失效，算法必须阻尼或跳过更新。
+\knowledgeanchor{SLM-B-05-001}{Broyden类算法}
+DFP与BFGS可置于满足割线条件的秩二更新族中；不同成员在数值稳定性与近似度量上取舍不同。
+
+% KNOWLEDGE-PLAN: KN-V1-C08-ALGORITHM_IDEA-007 L1
+\paragraph{读前自检：带曲率保护的逆BFGS方法：执行契约。}带曲率保护的逆BFGS方法输入“光滑目标$f$与梯度、有限初值$x_0$、容差、外层预算$K$及冻结的Wolfe线搜索参数/预算”，条件“$K\in\mathbb N_0$、容差为正，线搜索参数合法，$f,\nabla f$接口维数一致且初值在定义域内”；请执行“步长、候选点/梯度和受保护逆Hessian全部通过有限性与正定门禁后才原子提交，并增加$k_{\rm done}$”，以“梯度/联合步长证书、外层预算耗尽、线搜索失败或数值失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V1-C08-ALGORITHM_IDEA-008 L2
+\begin{keypointbox}[title={带曲率保护的逆BFGS方法：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={光滑目标$f$与梯度、有限初值$x_0$、容差、外层预算$K$及冻结的Wolfe线搜索参数/预算},
+  output={最后合法$(\widehat x,\widehat G,\widehat f,\widehat g)$、实际提交轮数$k_{\rm done}$、线搜索试探数$j_{\rm done}$、梯度求值数$g_{\rm done}$、状态与最终诊断},
+  preconditions={$K\in\mathbb N_0$、容差为正，线搜索参数合法，$f,\nabla f$接口维数一致且初值在定义域内},
+  initialization={置$\widehat x=x_0,\widehat G=I,k_{\rm done}=j_{\rm done}=0$，计算有限初始目标和梯度并记实际求值},
+  loop={每轮由上一合法状态形成下降方向，在线搜索预算内试探Wolfe步，再形成梯度与曲率候选},
+  update={步长、候选点/梯度和受保护逆Hessian全部通过有限性与正定门禁后才原子提交，并增加$k_{\rm done}$},
+  domain={$\widehat G$保持对称正定；已提交目标和梯度有限；曲率不正时只执行预登记阻尼或跳过规则},
+  failure={输入或参数非法返回$\mathtt{invalid\_input}$；目标、梯度、方向或曲率更新非有限返回$\mathtt{numerical\_failure}$；Wolfe预算内无合格步返回$\mathtt{line\_search\_failed}$，均保留上一合法状态},
+  stop={梯度/联合步长证书、外层预算耗尽、线搜索失败或数值失败时停止},
+  budget={至多$K$个原子BFGS轮，每轮线搜索候选上限由输入规则给定并逐次计数},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{line\_search\_failed}$},
+  iterations={$k_{\rm done}$计实际提交轮，$j_{\rm done}$计实际线搜索试探，$g_{\rm done}$计实际梯度求值},
+  diagnostics={最终梯度范数、相对步长/目标变化、曲率$s^\mathsf Ty$、阻尼或跳过次数、失败轮/阶段及预算余量},
+  complexity={稠密逆BFGS每提交轮$O(d^2)$时间和$O(d^2)$空间，另加实际目标/梯度及线搜索求值成本}
+}
+\begin{algorithm}[H]
+\caption{带曲率保护的逆BFGS方法}\label{alg:V1-C08-bfgs}
+\KwIn{目标$f$、梯度、初始点$x_0$}
+\KwOut{最后合法$(\widehat x,\widehat G,\widehat f,\widehat g)$；$k_{\rm done},j_{\rm done},g_{\rm done}$；$\mathtt{status}$与诊断}
+\KwData{梯度/相对变化容差$\varepsilon$；外层预算$K$；冻结的Wolfe参数、曲率保护规则与每轮线搜索预算}
+若维数、容差、预算或线搜索参数非法，返回空结果、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+置$\widehat x\leftarrow x_0,\widehat G\leftarrow I,k_{\rm done}\leftarrow0,j_{\rm done}\leftarrow0$；计算$\widehat f=f(x_0),\widehat g=\nabla f(x_0)$并置$g_{\rm done}=1$\;
+若初始量非有限，返回初值占位、$\mathtt{numerical\_failure}$及初始化诊断；若$\|\widehat g\|\le\varepsilon$，返回$\mathtt{converged}$及零轮梯度证书\;
+\While{$k_{\rm done}<K$}{
+  形成$p\leftarrow-\widehat G\widehat g$；若非有限或非下降，返回上一合法状态、$\mathtt{numerical\_failure}$及方向诊断\;
+  按冻结Wolfe规则逐候选试探并增加$j_{\rm done}$；若预算内无有限合格步，返回上一合法状态、$\mathtt{line\_search\_failed}$及试探诊断\;
+  形成$x^+,f^+,g^+$并增加$g_{\rm done}$；若任一非有限，返回上一合法状态、$\mathtt{numerical\_failure}$及候选求值诊断\;
+  令$s=x^+-\widehat x,y=g^+-\widehat g$；按预登记规则形成受阻尼的$G^+$或在曲率不足时令$G^+=\widehat G$\;
+  若$G^+$非有限、非对称或非正定，返回上一合法状态、$\mathtt{numerical\_failure}$及曲率阶段诊断\;
+  原子提交$(\widehat x,\widehat f,\widehat g,\widehat G)\leftarrow(x^+,f^+,g^+,G^+)$并增加$k_{\rm done}$\;
+  若梯度范数与预登记相对变化证书满足，返回最后合法状态、$\mathtt{converged}$及联合证书诊断\;
+}
+返回最后合法状态、$\mathtt{budget\_stop}$及“外层预算耗尽、证书未满足”最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{首次阅读只跟踪搜索方向、步长、$s_k,y_k$与曲率条件；实现时再处理曲率保护、线搜索失败和最后合法状态}
+
+\begin{theorem}[BFGS结论的适用层次]
+设$f$在初始水平集上连续可微且下有界，梯度Lipschitz连续；若每步方向均为下降方向、线搜索接受满足Wolfe条件的步长，并且$G_k$的特征值一致地夹在两个正数之间，则Zoutendijk论证给出$\norm{\nabla f(x_k)}_2\to0$。这只是一般光滑目标的一阶驻点结论。若进一步$f$为$\mu$-强凸函数，则
+$\norm{x_k-x^*}_2\le\norm{\nabla f(x_k)}_2/\mu\to0$，从而得到从该水平集到唯一极小点的全局迭代结论。若再假设$f$在极小点邻域二阶连续可微、Hessian Lipschitz连续，且标准BFGS更新满足Dennis--Mor\'e条件并最终接受单位步，则还可得到局部超线性收敛。若Wolfe线搜索失败、曲率条件不能通过阻尼恢复，或仅因预算耗尽停止，上述结论均不能宣称成立。
+\end{theorem}
+
+
+\SLAdvancedSection{坐标下降}{sec:V1-C08-S05}
+\knowledgeanchor{PRE-OP-025}{坐标下降}
+坐标下降每次只优化一个坐标或一个块：
+\[
+x_j\leftarrow\arg\min_z f(x_1,\ldots,x_{j-1},z,x_{j+1},\ldots,x_d).
+\]
+循环、随机或贪心选坐标均可。若每个子问题易解且目标具有可分正则项，单步成本低；高度相关特征会减慢逐坐标推进。
+
+\phantomsection\label{struct:V1-C08-CH16}
+\begin{geometrybox}
+\textbf{几何解释。}坐标下降沿坐标轴折线靠近等高线中心；当椭圆主轴与坐标轴不对齐时会频繁之字形。预条件或块坐标方法相当于改变允许移动的方向，可缓解轴不匹配。
+\end{geometrybox}
+
+\phantomsection\label{struct:V1-C08-CH19}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C08/fig_v1_c08_coordinate.tex}
+\cref{fig:V1-C08-coordinate}中的之字形可用来诊断坐标系失配：若椭圆主轴与坐标轴夹角大，单坐标更新会把大量步长消耗在横纵折返上；旋转、缩放或分块变量可减少这种无效往返。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C08-FORMULA-005 L1
+\paragraph{读前自检：最大熵与改进迭代尺度法的优化基础。}在条件最大熵模型中，设$Z_w(x)$有限。请对负对数似然求$w_i$偏导，核对结果为模型特征期望减经验特征期望。\par
+
+\SLAdvancedSection{专项算法章节边界：改进迭代尺度法预告}{sec:V1-C08-S06}
+IIS的完整推导、算法与状态语义属于\cref{chap:V3-C01}；本节仅作为最大熵优化的依赖预告，第一次阅读可直接跳到本章总结。
+\knowledgeanchor{PRE-OP-028}{最大熵与改进迭代尺度法的优化基础}
+条件最大熵模型可写为
+\[
+p_w(y\mid x)=\frac{\exp(w^{\mathsf T}f(x,y))}{Z_w(x)},\qquad
+Z_w(x)=\sum_y\exp(w^{\mathsf T}f(x,y)).
+\]
+% DERIVATION-ID: V1-C08-maxent-gradient-hessian
+% CORE-DERIVATION-PLAN: KN-V1-C08-DERIVATION-003
+\SLKnowledgeBridge{识别“模型特征期望减经验特征期望”的梯度结构及凸性来源。}{参数 $w\in\R^d$、特征向量 $f(x,y)$、经验分布 $\widetilde p$ 与配分函数 $Z_w(x)$。}{输出集合有限，$Z_w(x)>0$，特征二阶矩有限。}{先把负条件对数似然写成“$\log Z_w(x)$ 项减去观测特征线性项”。}
+
+\begin{derivationgoalbox}
+推导条件最大熵负对数似然的梯度与Hessian，说明特征期望匹配和目标凸性的来源。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+输出集合有限，$Z_w(x)>0$；经验分布记为$\widetilde p(x,y)$，特征向量$f(x,y)\in\mathbb R^d$二阶矩有限，因此有限求和可逐项求导。
+\end{derivationprepbox}
+\textbf{推导第1步：写出目标。}忽略与$w$无关的常数，平均负条件对数似然为
+\[
+J(w)=\sum_{x,y}\widetilde p(x,y)
+\bigl[\log Z_w(x)-w^{\mathsf T}f(x,y)\bigr].
+\]
+
+\textbf{推导第2步：对参数分量求导。}由链式法则，
+\[
+\frac{\partial\log Z_w(x)}{\partial w_i}
+=\sum_{y'}p_w(y'\mid x)f_i(x,y').
+\]
+代回并对经验分布加权，得到“模型特征期望减经验特征期望”的梯度；梯度为零正是两种期望匹配。
+
+\textbf{推导第3步：再求导。}固定$x$时，$\log Z_w(x)$的Hessian是$f(x,Y)$在$p_w(\cdot\mid x)$下的协方差矩阵；对经验$x$加权后仍半正定。因此$\nabla^2J(w)\succeq0$，目标为凸函数。改进迭代尺度法利用特征非负性及总特征量构造可分辅助函数，为每个参数求一维增量后同时更新坐标。
+
+\phantomsection\label{struct:V1-C08-CH17}
+\begin{probabilitybox}
+最大熵模型在满足经验特征约束的分布中选择不额外引入结构的分布；归一化因子确保每个$x$下类别概率之和为1。参数更新的目标是让模型特征期望逐步匹配经验期望。
+\end{probabilitybox}
+\phantomsection\label{struct:V1-C08-CH18}
+\begin{optimizationbox}
+\textbf{优化解释。}对数配分函数凸，使负对数似然成为凸目标。迭代尺度法的辅助函数提供单调改进，而牛顿、BFGS或坐标法则直接利用梯度与曲率；选择方法时需权衡特征稀疏性、维数和线搜索成本。
+\end{optimizationbox}
+
+\begin{keypointbox}[title=IIS专项接口预告（不在本章重复算法）]
+本章只保留四个优化依赖：对数配分函数的凸性、经验期望与模型期望之差、可分辅助函数以及同时坐标更新。IIS的非负特征约定、一维增量方程、完整伪代码、失败分支和状态语义统一由\cref{chap:V3-C01}承载；后章是唯一专项定义源。
+\end{keypointbox}
+
+
+\phantomsection\label{struct:V1-C08-CH13}
+\begin{lemma}[正定近似给出下降方向]
+若$G_k$对称正定且$g_k\ne0$，则 $p_k=-G_kg_k$ 是下降方向。
+\end{lemma}
+% KNOWLEDGE-PLAN: KN-V1-C08-PROOF-003 L1
+\paragraph{读前自检：证明：正定近似给出下降方向。}围绕正定近似给出下降方向，先采用条件“正定性使右侧严格小于零”，再把$g_k^{\mathsf T}p_k$用到的关键定义展开并完成下一步变形；最后验证方向满足一阶下降判据。\par
+
+\begin{proof}
+$g_k^{\mathsf T}p_k=-g_k^{\mathsf T}G_kg_k$。正定性使右侧严格小于零，因此方向满足一阶下降判据。该结论解释了DFP/BFGS更新为何必须保护正定性。
+\end{proof}
+
+\phantomsection\label{struct:V1-C08-CH28}
+\phantomsection\label{struct:V1-C08-CH29}
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界把实际接受的外层更新数记为$T$，把一次目标和梯度求值成本记为$C_f,C_g$；稠密Hessian或逆Hessian近似按完整$d\times d$矩阵存取。回溯线搜索的重复求值、稀疏线性代数和预条件成本必须按实际实现另行累计，不能隐藏在一次迭代中。
+设$d$为参数维数、$T$为迭代数、$m$为L-BFGS保留的校正对，$C_f,C_g$为一次目标与梯度求值成本。\textbf{训练复杂度：}梯度下降为$O(T(C_f+C_g))$；稠密牛顿每轮分解为$O(d^3)$，BFGS为$O(d^2)$，L-BFGS为$O(md)$；IIS每轮还需按样本、类别和非零特征重新归一化并求特征期望。\textbf{预测复杂度：}优化器本身不定义预测映射；拟合后模型的单样本预测成本由该模型而不是梯度、BFGS或IIS更新规则决定。\textbf{存储复杂度：}梯度下降为$O(d)$，稠密牛顿与BFGS为$O(d^2)$，L-BFGS为$O(md)$，IIS还需保存参数、特征统计与当前归一化量。
+\end{complexitybox}
+
+\phantomsection\label{struct:V1-C08-CH30}
+\phantomsection\label{struct:V1-C08-CH31}
+\begin{applicabilitybox}
+\textbf{适用条件：}梯度法适合大规模一阶可微问题；牛顿法适合中等维、Hessian可得且局部正定的高精度求解；L-BFGS适合大维光滑目标；坐标下降适合可分正则与廉价一维子问题；IIS适合特定最大熵特征结构。\textbf{局限性：}病态尺度会拖慢一阶法，非正定Hessian会破坏牛顿下降性，拟牛顿受噪声梯度影响，坐标法受强耦合影响，IIS的一维方程与归一化可能昂贵。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V1-C08-CH32}
+% KNOWLEDGE-PLAN: KN-V1-C08-BOUNDARY-004 L1
+\paragraph{读前自检：常见错误与误用边界：专项算法章节边界：改进迭代尺度法预告。}专项算法章节边界：改进迭代尺度法预告中的“边界框首项禁止把梯度方向而非负梯度当下降方向”决定可执行范围；请把固定错误“把梯度方向而非负梯度当下降方向”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，结果须满足改写后的运算或判断有定义，且不再触发“把梯度方向而非负梯度当下降方向”。\par
+
+\begin{warningbox}
+典型误用包括：把梯度方向而非负梯度当下降方向；固定大步长却不检查下降；只因目标变化小就宣布收敛；显式求Hessian逆；Hessian不正定时仍取全牛顿步；在 $s^{\mathsf T}y\le0$ 时无保护地执行BFGS；把DFP与BFGS的Hessian形式和逆Hessian形式混写。
+\end{warningbox}
+
+\phantomsection\label{struct:V1-C08-CH33}
+\begin{comparisonbox}
+\textbf{概念对比：}梯度下降使用一阶局部模型，牛顿使用真实二阶曲率，拟牛顿从梯度差学习曲率；线搜索选择步长，信赖域限制模型可信范围。DFP与BFGS都满足割线条件但采用不同秩二修正。循环坐标法顺序更新，IIS由可分辅助函数产生同时更新。收敛阶描述局部误差速度，单步时间决定实际总成本，两者需一起比较。
+\end{comparisonbox}
+
+% KNOWLEDGE-PLAN: KN-V1-C08-ALGORITHM_IDEA-010 L1
+\paragraph{读前自检：带Armijo回溯的梯度下降：执行契约。}带Armijo回溯的梯度下降输入“可微目标$f$与梯度、有限初值$x_0$、Armijo参数、最小步长、回溯预算$J$、外层预算$K$与停止容差”，条件“$\alpha_0,\alpha_{\min},\varepsilon>0$，步长缩减因子$0<\rho<1$，充分下降常数$0<c<1$，$J,K\in\mathbb N_0$，函数接口维数一致”；请执行“候选点、目标和新梯度全部有限后才原子提交，并增加$k_{\rm done}$”，以“梯度或联合相对变化证书、外层预算耗尽、线搜索失败或数值失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V1-C08-ALGORITHM_IDEA-011 L2
+\begin{keypointbox}[title={带Armijo回溯的梯度下降：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={可微目标$f$与梯度、有限初值$x_0$、Armijo参数、最小步长、回溯预算$J$、外层预算$K$与停止容差},
+  output={最后合法$(\widehat x,\widehat f,\widehat g)$、实际提交轮数$k_{\rm done}$、回溯试探数$j_{\rm done}$、函数/梯度求值计数、状态与最终诊断},
+  preconditions={$\alpha_0,\alpha_{\min},\varepsilon>0$，步长缩减因子$0<\rho<1$，充分下降常数$0<c<1$，$J,K\in\mathbb N_0$，函数接口维数一致},
+  initialization={计算并保存初始有限目标/梯度，置$k_{\rm done}=j_{\rm done}=0$及实际求值计数},
+  loop={每轮沿负梯度，在至多$J+1$个候选中回溯寻找有限且满足Armijo的步长},
+  update={候选点、目标和新梯度全部有限后才原子提交，并增加$k_{\rm done}$},
+  domain={已提交点位于$f$定义域，目标和梯度有限；只接受正步长和下降方向},
+  failure={输入或参数非法返回$\mathtt{invalid\_input}$；已接受候选的梯度或更新非有限返回$\mathtt{numerical\_failure}$；回溯预算内无合格步返回$\mathtt{line\_search\_failed}$，均保留上一合法点},
+  stop={梯度或联合相对变化证书、外层预算耗尽、线搜索失败或数值失败时停止},
+  budget={至多$K$个原子下降轮；每轮至多$J+1$次目标试探并受$\alpha_{\min}$保护},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{line\_search\_failed}$},
+  iterations={$k_{\rm done}$计实际提交轮，$j_{\rm done}$计实际回溯试探，$f_{\rm done},g_{\rm done}$计实际函数与梯度求值},
+  diagnostics={最终梯度范数、相对步长/目标变化、接受步长、Armijo余量、失败轮/阶段与预算余量},
+  complexity={时间按$f_{\rm done}$次目标与$g_{\rm done}$次梯度求值累计，另需$O(d)$工作空间}
+}
+\begin{algorithm}[H]
+\caption{带Armijo回溯的梯度下降}\label{alg:V1-C08-gradient}
+\KwIn{可微目标$f$与梯度；初始点$x_0$}
+\KwOut{最后合法$(\widehat x,\widehat f,\widehat g)$；$k_{\rm done},j_{\rm done},f_{\rm done},g_{\rm done}$；$\mathtt{status}$与诊断}
+\KwData{$\alpha_0>0$，步长缩减因子$0<\rho<1$，充分下降常数$0<c<1$，$\alpha_{\min}>0$；容差$\varepsilon$；外层/回溯预算$K,J\in\mathbb N_0$}
+若维数、初值、容差、步长或预算参数非法，返回空结果、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算$\widehat f\leftarrow f(x_0),\widehat g\leftarrow\nabla f(x_0)$并置$\widehat x\leftarrow x_0,k_{\rm done}=j_{\rm done}=0,f_{\rm done}=g_{\rm done}=1$\;
+若初始量非有限，返回初值占位、$\mathtt{numerical\_failure}$及初始化诊断；若$\|\widehat g\|\le\varepsilon$，返回$\mathtt{converged}$及零轮梯度证书\;
+\While{$k_{\rm done}<K$}{
+  置$p\leftarrow-\widehat g,\alpha\leftarrow\alpha_0$并清除接受标志\;
+  \For{本轮回溯候选$j\leftarrow0$ \KwTo $J$}{形成$x^+=\widehat x+\alpha p$并试算$f^+=f(x^+)$，增加$j_{\rm done},f_{\rm done}$；若有限且满足Armijo则记录候选并退出回溯，否则令$\alpha\leftarrow\rho\alpha$\;}
+  若没有合格步或$\alpha<\alpha_{\min}$，返回上一合法状态、$\mathtt{line\_search\_failed}$及回溯诊断\;
+  计算$g^+=\nabla f(x^+)$并增加$g_{\rm done}$；若非有限，返回上一合法状态、$\mathtt{numerical\_failure}$及梯度诊断\;
+  原子提交$(\widehat x,\widehat f,\widehat g)\leftarrow(x^+,f^+,g^+)$并增加$k_{\rm done}$\;
+  若梯度或联合相对变化证书满足，返回最后合法状态、$\mathtt{converged}$及证书诊断\;
+}
+返回最后合法状态、$\mathtt{budget\_stop}$及“外层预算耗尽、证书未满足”最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{首次阅读只跟踪下降方向、Armijo判据、$\alpha\leftarrow\rho\alpha$与梯度停止；实现时再处理回溯预算、最小步长和失败状态}
+
+\begin{theorem}[Armijo梯度法的一阶收敛条件]
+设$f$在迭代所在水平集上有$L$-Lipschitz梯度且下有界；方向满足
+$g_k^{\mathsf T}p_k\le-m\norm{g_k}_2^2$与$\norm{p_k}_2\le M\norm{g_k}_2$，其中$m,M>0$；取$0<c<1$、$0<\rho<1$、$\alpha_0>0$，并假设回溯在每个有限迭代都接受步长且接受步长有统一下界$\alpha_k\ge\underline\alpha>0$。若不以预算、最小步长或数值失败提前截断，则
+\[
+\sum_{k=0}^{\infty}\norm{g_k}_2^2
+\le\frac{f(x_0)-\inf f}{c m\underline\alpha}<\infty,
+\qquad \norm{g_k}_2\to0.
+\]
+算法返回\texttt{budget\_stop}、\texttt{line\_search\_failed}或\texttt{numerical\_failure}时，只报告停止原因，不援引本定理宣称收敛。
+\end{theorem}
+
+
+\SLTeachSection{牛顿法}{sec:V1-C08-S03}
+\knowledgeanchor{PRE-OP-023}{牛顿法}
+牛顿法在$x_k$处用二阶Taylor模型
+\[
+m_k(p)=f(x_k)+g_k^{\mathsf T}p+\tfrac12p^{\mathsf T}H_kp
+\]
+近似目标。若$H_k$正定，模型唯一极小方向满足 $H_kp_k=-g_k$，再以 $x_{k+1}=x_k+\alpha_kp_k$ 更新；靠近非退化最优点时常取全步$\alpha_k=1$。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V1-C08-CH11}
+\begin{example}[病态二次函数的三种尺度处理]\label{exm:V1-C08-preconditioning}
+比较病态二次函数$f(x)=\tfrac12x^{\mathsf T}\operatorname{diag}(1,100)x$上的固定步长梯度法、Newton法与BFGS的尺度处理。
+\end{example}
+\SLExampleSolutionHeading{exm:V1-C08-preconditioning}
+\begin{solution}
+\SLReadTranslation{题目要求完成“病态二次函数的三种尺度处理”：写出目标与可行域，求候选解并判定其最优性质。}
+\SolGiven 目标函数和约束均在题面给定定义域内；候选解必须同时满足可行性、一阶条件以及必要的二阶/边界检查。
+\SLMethodTrigger{先写目标、可行域和必要条件，再求候选点并检查二阶/边界条件。}
+\SolPlan 先完成“病态二次函数的三种尺度处理”所需的中间量，再做一次题型相关核验，最后回收题目各问。
+\SolDerive
+目标域为$\mathbb R^2$，Hessian$H=\operatorname{diag}(1,100)\succ0$且条件数为100。三类方法的关键关系为
+\[
+\begin{aligned}
+x_{k+1}^{\mathrm{GD}}&=(I-\alpha H)x_k,
+&0<\alpha<\frac{2}{\lambda_{\max}(H)}=0.02,\\
+p_k^{\mathrm{Newton}}&=-H^{-1}Hx_k=-x_k,
+&x_{k+1}&=0\quad\text{（全步）},\\
+B_{k+1}s_k&=y_k=Hs_k
+&&\text{（BFGS逐步学习曲率尺度）}.
+\end{aligned}
+\]
+三种状态更新的可复核摘要为
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule
+方法 & 候选/更新 & 残差或不变量 & 停止含义\\
+\midrule
+固定步长GD & $(I-\alpha H)x_k$ & 谱因子为$1-\alpha$与$1-100\alpha$ & 两因子绝对值均小于1才收敛\\
+Newton & $x_{k+1}=x_k-H^{-1}Hx_k=0$ & 新梯度为0 & 全步一次完成\\
+BFGS & 由$(s_k,y_k)$更新曲率近似 & 保持割线方程$B_{k+1}s_k=y_k$ & 近似梯度或步长证书满足时停止\\
+\bottomrule
+\end{tabularx}
+\end{center}
+例如取$\alpha=0.01$和$x_0=(1,1)^{\mathsf T}$，GD只得到$x_1=(0.99,0)^{\mathsf T}$，而Newton直接得到$0$；这一数值复算独立显示了病态尺度造成的慢方向。结论是梯度法受最大曲率限制，Newton直接按$H^{-1}$缩放，BFGS则由观测割线逐步近似该度量。
+\end{solution}
+
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V1-C08-CH34}
+\phantomsection\label{struct:V1-C08-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S01-01}
+对 $f(x)=\tfrac12ax^2$（$a>0$），写出固定步长梯度下降递推，并给出收敛步长范围。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S01-01}
+\begin{chapterexercisesolution}{ex:V1-C08-S01-01}
+目标$f:\mathbb R\to\mathbb R$满足$a>0$，固定步长$\alpha\ge0$。梯度下降递推及所有初值收敛条件为
+\[
+\begin{aligned}
+f'(x)&=ax,\qquad x^\star=0,\\
+x_{k+1}&=x_k-\alpha ax_k=(1-\alpha a)x_k,\\
+x_k&=(1-\alpha a)^kx_0,\\
+x_k\to0\ \forall x_0
+&\Longleftrightarrow |1-\alpha a|<1
+\Longleftrightarrow 0<\alpha<\frac2a.
+\end{aligned}
+\]
+$x_0=0$对任意步长保持不变，但不能用该退化初值推断一般收敛域；$\alpha=1/a$时一步到达最优点。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S01-02}
+证明在非零梯度处，$-g$是下降方向，并说明任意正倍数是否仍为下降方向。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S01-02}
+\begin{chapterexercisesolution}{ex:V1-C08-S01-02}
+设$f$在定义域内部点$x$可微，$g=\nabla f(x)\ne0$。方向$p$的一阶下降判据为$g^{\mathsf T}p<0$，因此
+\[
+\begin{aligned}
+p&=-g
+&\Longrightarrow\quad g^{\mathsf T}p&=-\|g\|_2^2<0,\\
+p_c&=-c g,\quad c>0
+&\Longrightarrow\quad g^{\mathsf T}p_c&=-c\|g\|_2^2<0,\\
+f(x+t p_c)&=f(x)+t\,g^{\mathsf T}p_c+o(t)
+& &<f(x)\quad\text{对充分小的 }t>0.
+\end{aligned}
+\]
+故任意正倍数仍是下降方向；$c<0$时变为上升方向，$g=0$时一阶判据不能给出严格下降。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S01-03}
+对 $f(x_1,x_2)=x_1^2+10x_2^2$，从$(1,1)$做一步步长0.05的梯度下降。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S01-03}
+\begin{chapterexercisesolution}{ex:V1-C08-S01-03}
+目标域为$\mathbb R^2$，初值$x_0=(1,1)^{\mathsf T}$，步长$\alpha=0.05$。一步更新可复算为
+\[
+\begin{aligned}
+\nabla f(x)&=\begin{bmatrix}2x_1\\20x_2\end{bmatrix},
+&\nabla f(x_0)&=\begin{bmatrix}2\\20\end{bmatrix},\\
+x_1&=x_0-\alpha\nabla f(x_0)
+=\begin{bmatrix}1\\1\end{bmatrix}
+-0.05\begin{bmatrix}2\\20\end{bmatrix}
+=\begin{bmatrix}0.9\\0\end{bmatrix},\\
+f(x_0)&=11,
+&f(x_1)&=0.9^2=0.81<11.
+\end{aligned}
+\]
+因此一步梯度下降得到$x_1=(0.9,0)^{\mathsf T}$，并把目标值从$11$降至$0.81$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S02-01}
+若 $g^{\mathsf T}p=-4$、$f(x)=10$、$c=0.1$、$\alpha=0.5$，Armijo允许的新目标上界是多少？
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S02-01}
+\begin{chapterexercisesolution}{ex:V1-C08-S02-01}
+Armijo条件要求$c\in(0,1)$、$\alpha>0$及下降方向$g^{\mathsf T}p<0$。代入题设数值，
+\[
+\begin{aligned}
+f(x+\alpha p)
+&\le f(x)+c\alpha g^{\mathsf T}p\\
+&=10+(0.1)(0.5)(-4)\\
+&=10-0.2=9.8.
+\end{aligned}
+\]
+因此候选目标不超过$9.8$才接受；若$g^{\mathsf T}p\ge0$，应先修正方向而不是继续回溯。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S02-02}
+说明只用 $|f_{k+1}-f_k|$ 很小作为停止条件可能出现的两种误判。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S02-02}
+\begin{chapterexercisesolution}{ex:V1-C08-S02-02}
+令$\Delta f_k=|f(x_{k+1})-f(x_k)|$。仅检查$\Delta f_k\le\varepsilon_f$不能区分以下状态：
+\[
+\begin{aligned}
+\alpha_k\downarrow0,\ \|\nabla f(x_k)\|_2\not\to0
+&\Longrightarrow \Delta f_k\approx
+\alpha_k|\nabla f(x_k)^{\mathsf T}p_k|\to0,\\
+f\mapsto c f
+&\Longrightarrow \Delta f_k\mapsto c\,\Delta f_k,
+\end{aligned}
+\]
+前者把失败的小步长误判为收敛，后者使固定绝对阈值依赖目标尺度。应联合检查相对目标变化、相对步长、梯度范数，并单独报告最大迭代或最小步长退出。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S02-03}
+设$a>0$。对一维二次函数 $f(x)=\tfrac12ax^2-bx$，在线搜索域$\alpha\ge0$上求负梯度方向的精确步长。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S02-03}
+\begin{chapterexercisesolution}{ex:V1-C08-S02-03}
+目标$f:\mathbb R\to\mathbb R$满足$a>0$，线搜索域为$\alpha\ge0$，当前梯度$g=ax-b$且方向$p=-g$。沿线目标满足
+\[
+\begin{aligned}
+\phi(\alpha)&=f(x-\alpha g),\\
+\phi'(\alpha)&=-g[a(x-\alpha g)-b]
+=-g^2(1-a\alpha),\\
+\phi''(\alpha)&=a g^2\ge0.
+\end{aligned}
+\]
+若$g\ne0$，则唯一精确步长和更新为
+\[
+\alpha^\star=\frac1a>0,\qquad
+x-\alpha^\star g=\frac ba.
+\]
+若$g=0$，当前点已最优且所有$\alpha$产生同一点，算法通常取$\alpha=0$停止。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S03-01}
+对 $f(x)=x^4-3x^2+2$ 写出一维牛顿更新，并说明在哪些点公式无定义。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S03-01}
+\begin{chapterexercisesolution}{ex:V1-C08-S03-01}
+目标定义在$\mathbb R$上，但牛顿映射只在二阶导数非零处定义：
+\[
+\begin{aligned}
+f'(x)&=4x^3-6x,\qquad
+f''(x)=12x^2-6,\\
+x_{k+1}
+&=x_k-\frac{4x_k^3-6x_k}{12x_k^2-6},\\
+12x_k^2-6=0
+&\Longleftrightarrow x_k=\pm\frac1{\sqrt2}.
+\end{aligned}
+\]
+在这两点分母为零；当$f''(x_k)<0$时，牛顿方向也未必是下降方向，需线搜索或正定修正。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S03-02}
+解释为什么数值实现应解 $H_kp=-g_k$ 而不是先计算 $H_k^{-1}$。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S03-02}
+\begin{chapterexercisesolution}{ex:V1-C08-S03-02}
+给定$H_k\in\mathbb R^{d\times d}$与$g_k\in\mathbb R^d$，目标只是得到满足线性系统的$p_k$，不是矩阵逆本身：
+\[
+\begin{aligned}
+H_kp_k&=-g_k,\\
+H_k=R^{\mathsf T}R
+&\Longrightarrow
+R^{\mathsf T}z=-g_k,\quad Rp_k=z,\\
+\widehat p_k&=-\operatorname{solve}(H_k,g_k)
+\quad\text{而非}\quad -\widehat{H_k^{-1}}g_k.
+\end{aligned}
+\]
+分解求解能保留稀疏或对称结构并检测奇异、病态或非正定情况；显式逆通常更耗存储且放大舍入误差。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S03-03}
+证明正定Hessian下牛顿减量 $\lambda^2=g^{\mathsf T}H^{-1}g$ 非负，并写成方向$p$的形式。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S03-03}
+\begin{chapterexercisesolution}{ex:V1-C08-S03-03}
+设$H=H^{\mathsf T}\succ0$、$g\in\mathbb R^d$，则$H^{-1}\succ0$且牛顿方向$p=-H^{-1}g$唯一。于是
+\[
+\begin{aligned}
+\lambda^2&=g^{\mathsf T}H^{-1}g\ge0,\\
+Hp&=-g
+\Longrightarrow -g^{\mathsf T}p&=p^{\mathsf T}Hp,\\
+\lambda^2&=-g^{\mathsf T}p=p^{\mathsf T}Hp\ge0.
+\end{aligned}
+\]
+等号当且仅当$g=0$，此时$p=0$；正定性是非负性与唯一性的关键。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S04-01}
+证明割线条件 $B_{k+1}s_k=y_k$ 可由梯度差的一阶积分近似解释。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S04-01}
+\begin{chapterexercisesolution}{ex:V1-C08-S04-01}
+设$f$在线段$\{x_k+t s_k:0\le t\le1\}$的邻域二次连续可微，$s_k=x_{k+1}-x_k$、$y_k=\nabla f(x_{k+1})-\nabla f(x_k)$。则
+\[
+\begin{aligned}
+y_k
+&=\int_0^1\frac{\mathrm d}{\mathrm dt}
+\nabla f(x_k+t s_k)\,\mathrm dt\\
+&=\left[\int_0^1\nabla^2f(x_k+t s_k)\,\mathrm dt\right]s_k\\
+&\approx B_{k+1}s_k.
+\end{aligned}
+\]
+因此用单个矩阵近似线段平均Hessian时，自然要求割线条件$B_{k+1}s_k=y_k$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S04-02}
+说明 $s^{\mathsf T}y>0$ 对保持逆BFGS正定性的作用。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S04-02}
+\begin{chapterexercisesolution}{ex:V1-C08-S04-02}
+设$G_k\succ0$、$s^{\mathsf T}y>0$，令$\gamma=(s^{\mathsf T}y)^{-1}>0$及$V=I-\gamma s y^{\mathsf T}$。逆BFGS更新满足
+\[
+\begin{aligned}
+G_{k+1}&=VG_kV^{\mathsf T}+\gamma ss^{\mathsf T},\\
+z^{\mathsf T}G_{k+1}z
+&=(V^{\mathsf T}z)^{\mathsf T}G_k(V^{\mathsf T}z)
++\gamma(s^{\mathsf T}z)^2\ge0.
+\end{aligned}
+\]
+若二次型为零，则$s^{\mathsf T}z=0$且$V^{\mathsf T}z=z=0$，与$z\ne0$矛盾，故$G_{k+1}\succ0$。若$s^{\mathsf T}y\le0$，$\gamma$不再为正且证明失效，需阻尼、Wolfe线搜索或跳过更新。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S04-03}
+比较稠密牛顿法与稠密BFGS每轮所需的二阶信息、时间和空间。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S04-03}
+\begin{chapterexercisesolution}{ex:V1-C08-S04-03}
+设参数维数$d$，矩阵稠密且实数运算单位成本。每轮的主要需求为
+\[
+\begin{array}{c|c|c|c}
+\text{方法}&\text{二阶信息}&\text{主要时间}&\text{主要存储}\\ \hline
+\text{Newton}&\nabla^2f\text{或其作用}&O(d^3)\text{分解}&O(d^2)\\
+\text{BFGS}&\text{仅函数与梯度}&O(d^2)\text{秩二更新}&O(d^2)\\
+\text{L-BFGS}&m\text{组}(s,y)&O(md)&O(md)
+\end{array}
+\]
+这些界不含具体函数与梯度求值成本；稀疏或结构化线性求解可显著改变Newton时间。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S05-01}
+对 $f(x,y)=(x-1)^2+2(y+2)^2$，从$(0,0)$依次精确优化$x$坐标和$y$坐标。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S05-01}
+\begin{chapterexercisesolution}{ex:V1-C08-S05-01}
+目标域为$\mathbb R^2$且Hessian$\operatorname{diag}(2,4)\succ0$。从$(x^{(0)},y^{(0)})=(0,0)$依次精确求解两个无约束一维子问题：
+\[
+\begin{aligned}
+x^{(1)}
+&=\arg\min_{x\in\mathbb R}(x-1)^2+2(0+2)^2=1,\\
+y^{(1)}
+&=\arg\min_{y\in\mathbb R}(1-1)^2+2(y+2)^2=-2,\\
+(x^{(1)},y^{(1)})&=(1,-2),\qquad f(1,-2)=0.
+\end{aligned}
+\]
+严格凸性保证这也是唯一全局极小点。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S05-02}
+对 $f(x,y)=x^2+2\rho xy+y^2$（$|\rho|<1$），写出精确循环坐标更新。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S05-02}
+\begin{chapterexercisesolution}{ex:V1-C08-S05-02}
+$|\rho|<1$使Hessian$2\begin{bmatrix}1&\rho\\\rho&1\end{bmatrix}\succ0$，目标在$\mathbb R^2$上有唯一极小点。第$k$轮循环更新为
+\[
+\begin{aligned}
+\frac{\partial f}{\partial x}=2x+2\rho y^{(k)}=0
+&\Longrightarrow x^{(k+1)}=-\rho y^{(k)},\\
+\frac{\partial f}{\partial y}=2y+2\rho x^{(k+1)}=0
+&\Longrightarrow y^{(k+1)}=-\rho x^{(k+1)}
+=\rho^2y^{(k)}.
+\end{aligned}
+\]
+因此$y^{(k)}=\rho^{2k}y^{(0)}\to0$，随后$x^{(k)}\to0$；$|\rho|$接近1时收敛因子接近1。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S05-03}
+说明带 $\ell_1$ 正则的平方损失为何适合坐标下降，并指出一维子问题的典型解形状。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S05-03}
+\begin{chapterexercisesolution}{ex:V1-C08-S05-03}
+固定其余坐标后，典型一维子问题可写为$a>0$、$\lambda\ge0$下
+\[
+\begin{aligned}
+\min_{\beta\in\mathbb R}\quad
+q(\beta)&=\frac a2(\beta-z)^2+\lambda|\beta|,\\
+0&\in a(\beta-z)+\lambda\,\partial|\beta|,\\
+\beta^\star&=S_{\lambda/a}(z)
+=\operatorname{sgn}(z)\bigl(|z|-\lambda/a\bigr)_+.
+\end{aligned}
+\]
+平方损失给出严格凸二次项，$\ell_1$惩罚按坐标可分；软阈值在$|z|\le\lambda/a$时产生精确零。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S06-01}
+推导最大熵负对数似然对参数$w_i$的梯度形式。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S06-01}
+\begin{chapterexercisesolution}{ex:V1-C08-S06-01}
+设训练集$T=\{(x_n,y_n)\}_{n=1}^N$固定、标签集$\mathcal Y$有限，且
+$p_w(y\mid x)=e^{w^{\mathsf T}f(x,y)}/Z_w(x)$。平均负对数似然为
+\[
+\begin{aligned}
+\mathcal L(w)
+&=\frac1N\sum_{n=1}^N
+\left[\log Z_w(x_n)-w^{\mathsf T}f(x_n,y_n)\right],\\
+\frac{\partial\mathcal L}{\partial w_i}
+&=\frac1N\sum_{n=1}^N
+\left[\sum_{y'\in\mathcal Y}p_w(y'\mid x_n)f_i(x_n,y')
+-f_i(x_n,y_n)\right].
+\end{aligned}
+\]
+只要有限求和中的特征值有限，梯度存在；驻点表示模型条件特征期望与经验特征平均匹配。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S06-02}
+说明最大熵目标Hessian为何半正定，并指出参数不可识别时会发生什么。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S06-02}
+\begin{chapterexercisesolution}{ex:V1-C08-S06-02}
+在有限标签集和有限特征下，对固定训练输入$x_n$，令随机标签$Y\sim p_w(\cdot\mid x_n)$。则
+\[
+\begin{aligned}
+\nabla^2\mathcal L(w)
+&=\frac1N\sum_{n=1}^N
+\operatorname{Cov}_{p_w(\cdot\mid x_n)}[f(x_n,Y)],\\
+v^{\mathsf T}\nabla^2\mathcal L(w)v
+&=\frac1N\sum_{n=1}^N
+\operatorname{Var}_{p_w(\cdot\mid x_n)}
+\!\left(v^{\mathsf T}f(x_n,Y)\right)\ge0.
+\end{aligned}
+\]
+故目标凸。若存在$v\ne0$使每个$x_n$上$v^{\mathsf T}f(x_n,y)$对所有$y$为同一常数，则上述方差全为零，参数不可识别且极小参数可能不唯一。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C08-S06-03}
+比较IIS同时更新与普通循环坐标下降在更新耦合和单调性依据上的差别。
+\end{exercise}
+\phantomsection\label{sol:V1-C08-S06-03}
+\begin{chapterexercisesolution}{ex:V1-C08-S06-03}
+令目标为$\mathcal L(w)$，旧参数为$w^{(k)}$。两类更新的依赖结构可形式化为
+\[
+\begin{aligned}
+\text{循环坐标：}\quad
+w_i^{(k,i)}
+&\in\arg\min_u
+\mathcal L(w_1^{(k,i)},\ldots,u,\ldots),\\
+\mathcal L\bigl(w^{(k,i)}\bigr)
+&\le \mathcal L\bigl(w^{(k,i-1)}\bigr),\\[2pt]
+\text{IIS：}\quad
+\Delta_i^{(k)}
+&\in\arg\min_\Delta Q_i(\Delta\mid w^{(k)}),\qquad
+w^{(k+1)}&=w^{(k)}+\Delta^{(k)},\\
+\mathcal L(w^{(k)}+\Delta)-\mathcal L(w^{(k)})
+&\le Q(\Delta\mid w^{(k)}),\qquad Q(0\mid w^{(k)})=0,\\
+Q(\Delta^{(k)}\mid w^{(k)})&\le0
+\Longrightarrow
+\mathcal L(w^{(k+1)})\le\mathcal L(w^{(k)}).
+\end{aligned}
+\]
+前者使用最新坐标并顺序耦合；IIS在旧模型下求各增量后同时更新，单调性依赖有效辅助上界及其适用条件。
+\end{chapterexercisesolution}
+
+\end{SLChapterExercisePairSection}
+
+\phantomsection\label{struct:V1-C08-CH36}
+% KNOWLEDGE-PLAN: KN-V1-C08-CONCEPT-011 L1
+\paragraph{读前自检：本章结论与下一步。}数值优化方法章末由“梯度、Hessian、搜索方向、步长与曲率近似”落到“每轮计算方向、线搜索、更新并记录唯一终止原因”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\SLChapterFiveSummary{梯度、Hessian、搜索方向、步长与曲率近似}{下降引理控制梯度步，Taylor模型导出Newton步，割线条件更新BFGS}{每轮计算方向、线搜索、更新并记录唯一终止原因}{按维数、稀疏性、曲率与精度选择优化器}{\NextChapter{9}{统计学习的基本框架}；自\GlobalChapterRef{12}{2}{1}起进入具体模型}
+
+\phantomsection\label{struct:V1-C08-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否由方向导数和下降引理分别说明方向与步长为何合理？
+  \item 能否从二阶Taylor模型逐步推出牛顿方程并说明正定性用途？
+  \item 能否写出$s_k,y_k$、割线条件和逆BFGS更新，并先检查曲率？
+  \item 能否根据维数、稀疏性、导数和精度要求选择梯度、牛顿、L-BFGS、坐标法或IIS？未通过时依次回看\cref{sec:V1-C08-S01,sec:V1-C08-S02,sec:V1-C08-S03,sec:V1-C08-S04,sec:V1-C08-S05,sec:V1-C08-S06}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

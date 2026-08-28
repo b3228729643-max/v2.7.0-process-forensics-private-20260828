@@ -1,0 +1,23 @@
+check_id,source_or_render_fact,independent_recalculation_or_observation,decision,note
+S01,Upper trace has t=1 through 20,All 20 source coordinates are represented in order,PASS,Markers and connecting path match the source sequence.
+S02,Warm-up partition ends between t=5 and t=6,Gold boundary is at x=5.5 and annotations say t=1 through 5 and t=6 through 20,PASS,Partition semantics are correct.
+S03,Retained values t=6 through 20 count,15 retained values,PASS,Count is 20-6+1=15.
+S04,t=6 running mean source 1.9000,Independent mean of first retained value is 1.9000,PASS,Exact.
+S05,t=7 running mean source 2.0500,Independent mean is 2.0500,PASS,Exact.
+S06,t=8 running mean source 1.9333,Independent mean rounded to four decimals is 1.9333,PASS,Exact to displayed precision.
+S07,t=9 running mean source 1.9750,Independent mean is 1.9750,PASS,Exact.
+S08,t=10 running mean source 1.9800,Independent mean is 1.9800,PASS,Exact.
+S09,t=11 running mean source 2.0333,Independent mean rounded to four decimals is 2.0333,PASS,Exact to displayed precision.
+S10,t=12 running mean source 2.0000,Independent mean is 2.0000,PASS,Exact.
+S11,t=13 running mean source 2.0125,Independent mean is 2.0125,PASS,Exact.
+S12,t=14 running mean source 2.0000,Independent mean is 2.0000,PASS,Exact.
+S13,t=15 running mean source 2.0200,Independent mean is 2.0200,PASS,Exact.
+S14,t=16 running mean source 2.0182,Independent mean rounded to four decimals is 2.0182,PASS,Exact to displayed precision.
+S15,t=17 running mean source 2.0000,Independent mean is 2.0000,PASS,Exact.
+S16,t=18 running mean source 2.0077,Independent mean rounded to four decimals is 2.0077,PASS,Exact to displayed precision.
+S17,t=19 running mean source 2.0071,Independent mean rounded to four decimals is 2.0071,PASS,Exact to displayed precision.
+S18,t=20 running mean source 2.0000,Independent mean of all 15 retained values is 2.0000,PASS,Exact.
+S19,Lower reference is target value 2,Teal horizontal line and label both identify 2,PASS,Graph and annotation agree.
+S20,Caption states diagnostic not convergence proof,Rendered caption preserves that limitation,PASS,No semantic overclaim.
+S21,Two equalities are constructed as path rules,Each opened two-rule aggregate is visually an unambiguous equals operator,PASS,No missing or wrong operator semantics.
+S22,Two retained-mean symbols require overlines,Both overline paths are present centered and attached to the intended X,PASS,Formula semantics correct.

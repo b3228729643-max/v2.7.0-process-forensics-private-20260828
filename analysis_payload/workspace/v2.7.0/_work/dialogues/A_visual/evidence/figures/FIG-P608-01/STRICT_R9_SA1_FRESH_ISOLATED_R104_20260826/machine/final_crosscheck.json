@@ -1,0 +1,47 @@
+{
+  "crosscheck_status": "PASS",
+  "object_denominator": 89,
+  "text_glyph_denominator": 68,
+  "graphic_object_denominator": 21,
+  "drawing_record_denominator": 58,
+  "all_unordered_pair_denominator": 3916,
+  "ordinary_mask_png_count": 89,
+  "glyph_manual_rows": 68,
+  "math_rule_manual_rows": 6,
+  "relation_roi_manual_rows": 23,
+  "view_manual_rows": 5,
+  "panel_role_script_manual_rows": 23,
+  "manual_decision_counts": {
+    "glyph": {
+      "PASS": 68
+    },
+    "math_rule": {
+      "PASS": 6
+    },
+    "relation_roi": {
+      "PASS": 23
+    },
+    "view": {
+      "PASS": 5
+    },
+    "panel_role_script": {
+      "PASS": 23
+    }
+  },
+  "nonwhitelisted_overlap_pixel_count": 0,
+  "clip_pixel_count": 0,
+  "minimum_clearance_px_by_relation": {
+    "BACKGROUND_RELATION": 23.0,
+    "CROSS_PANEL_TEXT": 154.0,
+    "INDEPENDENT_TEXT_TEXT": 20.0,
+    "TEXT_OR_FORMULA_TO_GRAPHIC": 13.0
+  },
+  "minimum_text_to_standalone_edge_px": 20,
+  "data_semantics": "PASS",
+  "font_source_hard_gate": "PASS",
+  "manual_visual_ledgers": "PASS",
+  "advisory_only": [
+    "R168: PDF-reported sizes 9.564/10.760 versus source 9.6/10.8 are subpixel transform metadata differences only",
+    "R168: mixed glyph-shape height ratios for low-profile punctuation and natural scripts were not treated as same-contour failures; same-codepoint calibration is exact"
+  ]
+}

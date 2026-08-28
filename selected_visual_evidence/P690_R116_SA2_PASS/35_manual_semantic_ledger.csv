@@ -1,0 +1,11 @@
+semantic_id,gate,manual_verdict,post_observation_note
+S001,θ_m role,PASS,θ_m is represented as latent in the true posterior and as q(θ_m) in the variational family.
+S002,z_mn role,PASS,z_mn is represented as latent in the true posterior and as q(z_mn) in the variational family.
+S003,w_mn role,PASS,w_mn is consistently filled/observed and provides input to z or q(z).
+S004,φ role,PASS,φ is consistently labeled fixed and provides likelihood information to z or q(z).
+S005,true posterior dependence,PASS,The left undirected edge correctly communicates posterior coupling.
+S006,mean-field independence,PASS,The right geometric cut correctly communicates removal of direct approximate-posterior dependence.
+S007,observed input retained,PASS,The right w_mn→q(z_mn) arrow correctly shows the observation still affects responsibilities.
+S008,fixed likelihood parameter retained,PASS,The right φ→q(z_mn) arrow correctly shows fixed word parameters still affect responsibilities.
+S009,factorization semantics,PASS,q(θ_m)∏_nq(z_mn) agrees with equation (35.9) and the per-token factor family.
+S010,caption/source/chapter agreement,PASS,"Source caption, rendered caption, preceding chapter paragraph, and equation (35.9) agree without role or direction conflict."

@@ -1,0 +1,5897 @@
+{
+  "policy": {
+    "policy_id": "LP-PEER-R101-EXACTMETA-V1",
+    "frozen_before_fullbook_scan": true,
+    "candidate_scope": "all 814 physical pages of the sole official frozen R101 PDF",
+    "metadata_requirements": [
+      "same Unicode codepoint",
+      "same PDF font name (therefore same encoded weight in this candidate)",
+      "same RGB colour",
+      "absolute PDF effective span-size difference <= 0.25 pt",
+      "not the audited target glyph itself"
+    ],
+    "deterministic_rank": [
+      "same physical page first",
+      "on the same page: absolute rawdict sequence distance, then lower sequence",
+      "otherwise: lowest physical page, then block/line/span/char order"
+    ],
+    "selection_count": 1,
+    "metric_independence": "H_INK, area, mask cleanliness and pass/fail are not used to rank or replace the selected peer",
+    "post_selection_gate": "selected peer must have a nonempty complete pure >=20/255 native mask; H_INK and area ratios must both be in [0.92,1.08]; otherwise FAIL with no fallback candidate",
+    "prohibited_substitution": "no different codepoint, font, weight, colour, or out-of-tolerance size; no TeX"
+  },
+  "targets": {
+    "TXT-072": [
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 17,
+        "RAWDICT_SEQUENCE": 251,
+        "BLOCK": 16,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 1,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          97.49250793457031,
+          361.8504333496094,
+          100.24219512939453,
+          371.81304931640625
+        ],
+        "RANK": [
+          1,
+          17,
+          251,
+          16,
+          0,
+          1,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 1,
+        "SELECTED": true
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 29,
+        "RAWDICT_SEQUENCE": 557,
+        "BLOCK": 26,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 1,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          79.35588073730469,
+          638.3084716796875,
+          82.05057525634766,
+          648.2711181640625
+        ],
+        "RANK": [
+          1,
+          29,
+          557,
+          26,
+          0,
+          1,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 2,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 48,
+        "RAWDICT_SEQUENCE": 137,
+        "BLOCK": 13,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 1,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          143.70050048828125,
+          235.44850158691406,
+          146.4501953125,
+          245.41114807128906
+        ],
+        "RANK": [
+          1,
+          48,
+          137,
+          13,
+          0,
+          1,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 3,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 69,
+        "RAWDICT_SEQUENCE": 97,
+        "BLOCK": 14,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 1,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          162.24949645996094,
+          206.25746154785156,
+          164.9991912841797,
+          216.22010803222656
+        ],
+        "RANK": [
+          1,
+          69,
+          97,
+          14,
+          0,
+          1,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 4,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 79,
+        "RAWDICT_SEQUENCE": 579,
+        "BLOCK": 25,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 1,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          158.5384979248047,
+          596.5414428710938,
+          161.28819274902344,
+          606.5040893554688
+        ],
+        "RANK": [
+          1,
+          79,
+          579,
+          25,
+          0,
+          1,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 5,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 96,
+        "RAWDICT_SEQUENCE": 197,
+        "BLOCK": 10,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 1,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          181.1125030517578,
+          340.9934997558594,
+          183.86219787597656,
+          350.95611572265625
+        ],
+        "RANK": [
+          1,
+          96,
+          197,
+          10,
+          0,
+          1,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 6,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 116,
+        "RAWDICT_SEQUENCE": 433,
+        "BLOCK": 20,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 1,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          218.4105682373047,
+          555.7174682617188,
+          221.16026306152344,
+          565.6801147460938
+        ],
+        "RANK": [
+          1,
+          116,
+          433,
+          20,
+          0,
+          1,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 7,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 137,
+        "RAWDICT_SEQUENCE": 58,
+        "BLOCK": 9,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 1,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          132.3625030517578,
+          247.26148986816406,
+          135.11219787597656,
+          257.22412109375
+        ],
+        "RANK": [
+          1,
+          137,
+          58,
+          9,
+          0,
+          1,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 8,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 152,
+        "RAWDICT_SEQUENCE": 218,
+        "BLOCK": 21,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 1,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          123.7755126953125,
+          363.38348388671875,
+          126.52519989013672,
+          373.3460998535156
+        ],
+        "RANK": [
+          1,
+          152,
+          218,
+          21,
+          0,
+          1,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 9,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 170,
+        "RAWDICT_SEQUENCE": 86,
+        "BLOCK": 8,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          161.11000061035156,
+          352.35150146484375,
+          163.8596954345703,
+          362.3141174316406
+        ],
+        "RANK": [
+          1,
+          170,
+          86,
+          8,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 10,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 187,
+        "RAWDICT_SEQUENCE": 306,
+        "BLOCK": 20,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.25975799560547,
+          364.27142333984375,
+          86.95445251464844,
+          374.2340393066406
+        ],
+        "RANK": [
+          1,
+          187,
+          306,
+          20,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 11,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 200,
+        "RAWDICT_SEQUENCE": 430,
+        "BLOCK": 21,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          146.16598510742188,
+          655.6044921875,
+          148.91567993164062,
+          665.567138671875
+        ],
+        "RANK": [
+          1,
+          200,
+          430,
+          21,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 12,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 206,
+        "RAWDICT_SEQUENCE": 28,
+        "BLOCK": 1,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          220.88600158691406,
+          69.81246185302734,
+          223.6356964111328,
+          79.77510070800781
+        ],
+        "RANK": [
+          1,
+          206,
+          28,
+          1,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 13,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 223,
+        "RAWDICT_SEQUENCE": 77,
+        "BLOCK": 12,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          146.61500549316406,
+          315.1885070800781,
+          149.3647003173828,
+          325.151123046875
+        ],
+        "RANK": [
+          1,
+          223,
+          77,
+          12,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 14,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 224,
+        "RAWDICT_SEQUENCE": 77,
+        "BLOCK": 3,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          240.81100463867188,
+          112.08846282958984,
+          243.56069946289062,
+          122.05110168457031
+        ],
+        "RANK": [
+          1,
+          224,
+          77,
+          3,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 15,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 228,
+        "RAWDICT_SEQUENCE": 674,
+        "BLOCK": 42,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          168.30300903320312,
+          636.3834838867188,
+          171.05270385742188,
+          646.3461303710938
+        ],
+        "RANK": [
+          1,
+          228,
+          674,
+          42,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 16,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 241,
+        "RAWDICT_SEQUENCE": 441,
+        "BLOCK": 20,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          158.6529998779297,
+          500.13848876953125,
+          161.40269470214844,
+          510.1011047363281
+        ],
+        "RANK": [
+          1,
+          241,
+          441,
+          20,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 17,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 262,
+        "RAWDICT_SEQUENCE": 205,
+        "BLOCK": 18,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          166.09201049804688,
+          359.1235046386719,
+          168.84170532226562,
+          369.08612060546875
+        ],
+        "RANK": [
+          1,
+          262,
+          205,
+          18,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 18,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 285,
+        "RAWDICT_SEQUENCE": 755,
+        "BLOCK": 32,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          132.35400390625,
+          717.5164794921875,
+          135.10369873046875,
+          727.4791259765625
+        ],
+        "RANK": [
+          1,
+          285,
+          755,
+          32,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 19,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 304,
+        "RAWDICT_SEQUENCE": 471,
+        "BLOCK": 23,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          141.17506408691406,
+          637.8894653320312,
+          143.9247589111328,
+          647.8521118164062
+        ],
+        "RANK": [
+          1,
+          304,
+          471,
+          23,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 20,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 335,
+        "RAWDICT_SEQUENCE": 201,
+        "BLOCK": 14,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          209.54800415039062,
+          467.34649658203125,
+          212.29769897460938,
+          477.3091125488281
+        ],
+        "RANK": [
+          1,
+          335,
+          201,
+          14,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 21,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 350,
+        "RAWDICT_SEQUENCE": 513,
+        "BLOCK": 30,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          95.49475860595703,
+          453.6934814453125,
+          98.189453125,
+          463.6560974121094
+        ],
+        "RANK": [
+          1,
+          350,
+          513,
+          30,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 22,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 376,
+        "RAWDICT_SEQUENCE": 198,
+        "BLOCK": 12,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          109.9272689819336,
+          415.46649169921875,
+          112.73194885253906,
+          425.4291076660156
+        ],
+        "RANK": [
+          1,
+          376,
+          198,
+          12,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 23,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 406,
+        "RAWDICT_SEQUENCE": 593,
+        "BLOCK": 56,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          131.2570037841797,
+          537.9154663085938,
+          134.00669860839844,
+          547.8781127929688
+        ],
+        "RANK": [
+          1,
+          406,
+          593,
+          56,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 24,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 429,
+        "RAWDICT_SEQUENCE": 159,
+        "BLOCK": 12,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          172.60101318359375,
+          212.39149475097656,
+          175.3507080078125,
+          222.35414123535156
+        ],
+        "RANK": [
+          1,
+          429,
+          159,
+          12,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 25,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 450,
+        "RAWDICT_SEQUENCE": 838,
+        "BLOCK": 31,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          156.12901306152344,
+          762.25048828125,
+          158.8787078857422,
+          772.213134765625
+        ],
+        "RANK": [
+          1,
+          450,
+          838,
+          31,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 26,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 467,
+        "RAWDICT_SEQUENCE": 676,
+        "BLOCK": 34,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.79327392578125,
+          748.8604736328125,
+          87.59795379638672,
+          758.8231201171875
+        ],
+        "RANK": [
+          1,
+          467,
+          676,
+          34,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 27,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 486,
+        "RAWDICT_SEQUENCE": 167,
+        "BLOCK": 13,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          116.27801513671875,
+          342.5144958496094,
+          119.02770233154297,
+          352.47711181640625
+        ],
+        "RANK": [
+          1,
+          486,
+          167,
+          13,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 28,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 510,
+        "RAWDICT_SEQUENCE": 77,
+        "BLOCK": 3,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          190.18099975585938,
+          172.58045959472656,
+          192.93069458007812,
+          182.54310607910156
+        ],
+        "RANK": [
+          1,
+          510,
+          77,
+          3,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 29,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 526,
+        "RAWDICT_SEQUENCE": 312,
+        "BLOCK": 18,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          245.7830810546875,
+          515.614501953125,
+          248.53277587890625,
+          525.5771484375
+        ],
+        "RANK": [
+          1,
+          526,
+          312,
+          18,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 30,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 550,
+        "RAWDICT_SEQUENCE": 728,
+        "BLOCK": 32,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          117.46400451660156,
+          608.8134765625,
+          120.21369171142578,
+          618.776123046875
+        ],
+        "RANK": [
+          1,
+          550,
+          728,
+          32,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 31,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 567,
+        "RAWDICT_SEQUENCE": 376,
+        "BLOCK": 16,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          101.92100524902344,
+          440.8544921875,
+          104.67069244384766,
+          450.8171081542969
+        ],
+        "RANK": [
+          1,
+          567,
+          376,
+          16,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 32,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 571,
+        "RAWDICT_SEQUENCE": 573,
+        "BLOCK": 25,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          139.8520050048828,
+          611.1304931640625,
+          142.60169982910156,
+          621.0931396484375
+        ],
+        "RANK": [
+          1,
+          571,
+          573,
+          25,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 33,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 588,
+        "RAWDICT_SEQUENCE": 849,
+        "BLOCK": 25,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          96.67027282714844,
+          653.6434326171875,
+          99.4749526977539,
+          663.6060791015625
+        ],
+        "RANK": [
+          1,
+          588,
+          849,
+          25,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 34,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 591,
+        "RAWDICT_SEQUENCE": 442,
+        "BLOCK": 26,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          121.20901489257812,
+          429.50347900390625,
+          123.95870208740234,
+          439.4660949707031
+        ],
+        "RANK": [
+          1,
+          591,
+          442,
+          26,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 35,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 596,
+        "RAWDICT_SEQUENCE": 916,
+        "BLOCK": 64,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          96.21327209472656,
+          748.8605346679688,
+          99.01795196533203,
+          758.8231811523438
+        ],
+        "RANK": [
+          1,
+          596,
+          916,
+          64,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 36,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 601,
+        "RAWDICT_SEQUENCE": 568,
+        "BLOCK": 33,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          107.75801086425781,
+          587.1934814453125,
+          110.50769805908203,
+          597.1561279296875
+        ],
+        "RANK": [
+          1,
+          601,
+          568,
+          33,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 37,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 602,
+        "RAWDICT_SEQUENCE": 298,
+        "BLOCK": 21,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          106.31600952148438,
+          357.9964904785156,
+          109.0656967163086,
+          367.9591064453125
+        ],
+        "RANK": [
+          1,
+          602,
+          298,
+          21,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 38,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 602,
+        "RAWDICT_SEQUENCE": 496,
+        "BLOCK": 31,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          215.90501403808594,
+          596.2244873046875,
+          218.6547088623047,
+          606.1871337890625
+        ],
+        "RANK": [
+          1,
+          602,
+          496,
+          31,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 39,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 605,
+        "RAWDICT_SEQUENCE": 175,
+        "BLOCK": 20,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          129.8560028076172,
+          266.1524963378906,
+          132.60569763183594,
+          276.1151123046875
+        ],
+        "RANK": [
+          1,
+          605,
+          175,
+          20,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 40,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 617,
+        "RAWDICT_SEQUENCE": 384,
+        "BLOCK": 10,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.79527282714844,
+          361.5115051269531,
+          87.5999526977539,
+          371.47412109375
+        ],
+        "RANK": [
+          1,
+          617,
+          384,
+          10,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 41,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 620,
+        "RAWDICT_SEQUENCE": 129,
+        "BLOCK": 15,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          96.13227081298828,
+          270.9974670410156,
+          98.93695068359375,
+          280.9600830078125
+        ],
+        "RANK": [
+          1,
+          620,
+          129,
+          15,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 42,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 623,
+        "RAWDICT_SEQUENCE": 136,
+        "BLOCK": 19,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.14575958251953,
+          244.88246154785156,
+          86.8404541015625,
+          254.84510803222656
+        ],
+        "RANK": [
+          1,
+          623,
+          136,
+          19,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 43,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 625,
+        "RAWDICT_SEQUENCE": 379,
+        "BLOCK": 35,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          99.75801086425781,
+          430.3454895019531,
+          102.50769805908203,
+          440.30810546875
+        ],
+        "RANK": [
+          1,
+          625,
+          379,
+          35,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 44,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 626,
+        "RAWDICT_SEQUENCE": 668,
+        "BLOCK": 54,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          101.33401489257812,
+          687.0554809570312,
+          104.08370208740234,
+          697.0181274414062
+        ],
+        "RANK": [
+          1,
+          626,
+          668,
+          54,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 45,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 628,
+        "RAWDICT_SEQUENCE": 580,
+        "BLOCK": 28,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          127.00100708007812,
+          468.34649658203125,
+          129.75070190429688,
+          478.3091125488281
+        ],
+        "RANK": [
+          1,
+          628,
+          580,
+          28,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 46,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 630,
+        "RAWDICT_SEQUENCE": 622,
+        "BLOCK": 34,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          95.50375366210938,
+          487.4524841308594,
+          98.19844818115234,
+          497.41510009765625
+        ],
+        "RANK": [
+          1,
+          630,
+          622,
+          34,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 47,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 630,
+        "RAWDICT_SEQUENCE": 767,
+        "BLOCK": 49,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          95.57075500488281,
+          684.7704467773438,
+          98.26544952392578,
+          694.7330932617188
+        ],
+        "RANK": [
+          1,
+          630,
+          767,
+          49,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 48,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 631,
+        "RAWDICT_SEQUENCE": 112,
+        "BLOCK": 13,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          85.87026977539062,
+          225.04347229003906,
+          88.6749496459961,
+          235.00611877441406
+        ],
+        "RANK": [
+          1,
+          631,
+          112,
+          13,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 49,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 646,
+        "RAWDICT_SEQUENCE": 358,
+        "BLOCK": 24,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          156.12901306152344,
+          328.2254943847656,
+          158.8787078857422,
+          338.1881103515625
+        ],
+        "RANK": [
+          1,
+          646,
+          358,
+          24,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 50,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 647,
+        "RAWDICT_SEQUENCE": 649,
+        "BLOCK": 38,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.30575561523438,
+          634.3594970703125,
+          87.00045013427734,
+          644.3221435546875
+        ],
+        "RANK": [
+          1,
+          647,
+          649,
+          38,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 51,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 648,
+        "RAWDICT_SEQUENCE": 102,
+        "BLOCK": 15,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          95.4467544555664,
+          197.26148986816406,
+          98.14144897460938,
+          207.22413635253906
+        ],
+        "RANK": [
+          1,
+          648,
+          102,
+          15,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 52,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 649,
+        "RAWDICT_SEQUENCE": 709,
+        "BLOCK": 27,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.83627319335938,
+          632.678466796875,
+          87.64095306396484,
+          642.64111328125
+        ],
+        "RANK": [
+          1,
+          649,
+          709,
+          27,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 53,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 651,
+        "RAWDICT_SEQUENCE": 635,
+        "BLOCK": 33,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          169.6020050048828,
+          702.3174438476562,
+          172.35169982910156,
+          712.2800903320312
+        ],
+        "RANK": [
+          1,
+          651,
+          635,
+          33,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 54,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 653,
+        "RAWDICT_SEQUENCE": 833,
+        "BLOCK": 32,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.82027435302734,
+          663.2574462890625,
+          87.62495422363281,
+          673.2200927734375
+        ],
+        "RANK": [
+          1,
+          653,
+          833,
+          32,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 55,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 656,
+        "RAWDICT_SEQUENCE": 135,
+        "BLOCK": 11,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          95.66775512695312,
+          226.99549865722656,
+          98.3624496459961,
+          236.95814514160156
+        ],
+        "RANK": [
+          1,
+          656,
+          135,
+          11,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 56,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 660,
+        "RAWDICT_SEQUENCE": 851,
+        "BLOCK": 30,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          95.53975677490234,
+          629.50244140625,
+          98.23445129394531,
+          639.465087890625
+        ],
+        "RANK": [
+          1,
+          660,
+          851,
+          30,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 57,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 678,
+        "RAWDICT_SEQUENCE": 630,
+        "BLOCK": 15,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          112.14901733398438,
+          542.8614501953125,
+          114.8987045288086,
+          552.8240966796875
+        ],
+        "RANK": [
+          1,
+          678,
+          630,
+          15,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 58,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 680,
+        "RAWDICT_SEQUENCE": 429,
+        "BLOCK": 38,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          95.3997573852539,
+          395.7355041503906,
+          98.09445190429688,
+          405.6981201171875
+        ],
+        "RANK": [
+          1,
+          680,
+          429,
+          38,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 59,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 682,
+        "RAWDICT_SEQUENCE": 800,
+        "BLOCK": 37,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          110.11827087402344,
+          586.0084838867188,
+          112.9229507446289,
+          595.9711303710938
+        ],
+        "RANK": [
+          1,
+          682,
+          800,
+          37,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 60,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 686,
+        "RAWDICT_SEQUENCE": 105,
+        "BLOCK": 14,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.992483139038086,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.02984333038330078,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          95.92719268798828,
+          318.8164978027344,
+          98.6933822631836,
+          328.77911376953125
+        ],
+        "RANK": [
+          1,
+          686,
+          105,
+          14,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 61,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 686,
+        "RAWDICT_SEQUENCE": 300,
+        "BLOCK": 22,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          109.38275909423828,
+          468.4224853515625,
+          112.07745361328125,
+          478.3851013183594
+        ],
+        "RANK": [
+          1,
+          686,
+          300,
+          22,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 62,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 687,
+        "RAWDICT_SEQUENCE": 700,
+        "BLOCK": 28,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.80326843261719,
+          606.867431640625,
+          87.60794830322266,
+          616.830078125
+        ],
+        "RANK": [
+          1,
+          687,
+          700,
+          28,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 63,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 688,
+        "RAWDICT_SEQUENCE": 212,
+        "BLOCK": 21,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.997447967529297,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.03480815887451172,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          109.71205139160156,
+          266.1385192871094,
+          112.48098754882812,
+          276.10113525390625
+        ],
+        "RANK": [
+          1,
+          688,
+          212,
+          21,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 64,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 689,
+        "RAWDICT_SEQUENCE": 762,
+        "BLOCK": 37,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          99.17626953125,
+          700.8624267578125,
+          101.98094940185547,
+          710.8250732421875
+        ],
+        "RANK": [
+          1,
+          689,
+          762,
+          37,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 65,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 702,
+        "RAWDICT_SEQUENCE": 132,
+        "BLOCK": 13,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          208.48300170898438,
+          214.53846740722656,
+          211.23269653320312,
+          224.50111389160156
+        ],
+        "RANK": [
+          1,
+          702,
+          132,
+          13,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 66,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 703,
+        "RAWDICT_SEQUENCE": 696,
+        "BLOCK": 41,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          98.76627349853516,
+          686.074462890625,
+          101.57095336914062,
+          696.037109375
+        ],
+        "RANK": [
+          1,
+          703,
+          696,
+          41,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 67,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 704,
+        "RAWDICT_SEQUENCE": 536,
+        "BLOCK": 27,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          109.8802719116211,
+          431.760498046875,
+          112.68495178222656,
+          441.7231140136719
+        ],
+        "RANK": [
+          1,
+          704,
+          536,
+          27,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 68,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 707,
+        "RAWDICT_SEQUENCE": 244,
+        "BLOCK": 12,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          85.04227447509766,
+          309.9604797363281,
+          87.84695434570312,
+          319.923095703125
+        ],
+        "RANK": [
+          1,
+          707,
+          244,
+          12,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 69,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 708,
+        "RAWDICT_SEQUENCE": 439,
+        "BLOCK": 28,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          109.84426879882812,
+          399.3865051269531,
+          112.6489486694336,
+          409.34912109375
+        ],
+        "RANK": [
+          1,
+          708,
+          439,
+          28,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 70,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 711,
+        "RAWDICT_SEQUENCE": 259,
+        "BLOCK": 12,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          99.74626922607422,
+          226.8114776611328,
+          102.55094909667969,
+          236.7741241455078
+        ],
+        "RANK": [
+          1,
+          711,
+          259,
+          12,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 71,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 712,
+        "RAWDICT_SEQUENCE": 336,
+        "BLOCK": 29,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.967619895935059,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0049800872802734375,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          109.65387725830078,
+          576.9544677734375,
+          112.40631866455078,
+          586.9171142578125
+        ],
+        "RANK": [
+          1,
+          712,
+          336,
+          29,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 72,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 713,
+        "RAWDICT_SEQUENCE": 819,
+        "BLOCK": 47,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          93.31275939941406,
+          627.156494140625,
+          96.00745391845703,
+          637.119140625
+        ],
+        "RANK": [
+          1,
+          713,
+          819,
+          47,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 73,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 714,
+        "RAWDICT_SEQUENCE": 480,
+        "BLOCK": 20,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          104.59175872802734,
+          274.1184997558594,
+          107.28645324707031,
+          284.08111572265625
+        ],
+        "RANK": [
+          1,
+          714,
+          480,
+          20,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 74,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 715,
+        "RAWDICT_SEQUENCE": 229,
+        "BLOCK": 12,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          98.01175689697266,
+          185.8224639892578,
+          100.70645141601562,
+          195.7851104736328
+        ],
+        "RANK": [
+          1,
+          715,
+          229,
+          12,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 75,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 727,
+        "RAWDICT_SEQUENCE": 312,
+        "BLOCK": 11,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          97.92875671386719,
+          308.3614196777344,
+          100.62345123291016,
+          318.32403564453125
+        ],
+        "RANK": [
+          1,
+          727,
+          312,
+          11,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 76,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 730,
+        "RAWDICT_SEQUENCE": 247,
+        "BLOCK": 18,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          109.15875244140625,
+          372.41949462890625,
+          111.85344696044922,
+          382.3821105957031
+        ],
+        "RANK": [
+          1,
+          730,
+          247,
+          18,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 77,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 731,
+        "RAWDICT_SEQUENCE": 490,
+        "BLOCK": 32,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          144.1529998779297,
+          470.3924865722656,
+          146.90269470214844,
+          480.3551025390625
+        ],
+        "RANK": [
+          1,
+          731,
+          490,
+          32,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 78,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 735,
+        "RAWDICT_SEQUENCE": 694,
+        "BLOCK": 43,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.76427459716797,
+          614.7594604492188,
+          87.56895446777344,
+          624.7221069335938
+        ],
+        "RANK": [
+          1,
+          735,
+          694,
+          43,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 79,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 737,
+        "RAWDICT_SEQUENCE": 533,
+        "BLOCK": 21,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          99.60027313232422,
+          487.6994934082031,
+          102.40495300292969,
+          497.662109375
+        ],
+        "RANK": [
+          1,
+          737,
+          533,
+          21,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 80,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 738,
+        "RAWDICT_SEQUENCE": 177,
+        "BLOCK": 13,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          95.66675567626953,
+          280.6894836425781,
+          98.3614501953125,
+          290.652099609375
+        ],
+        "RANK": [
+          1,
+          738,
+          177,
+          13,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 81,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 742,
+        "RAWDICT_SEQUENCE": 1803,
+        "BLOCK": 88,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.972597122192383,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.009957313537597656,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          102.7767333984375,
+          684.0614624023438,
+          105.53192138671875,
+          694.0241088867188
+        ],
+        "RANK": [
+          1,
+          742,
+          1803,
+          88,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 82,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 743,
+        "RAWDICT_SEQUENCE": 907,
+        "BLOCK": 34,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          98.03475952148438,
+          570.282470703125,
+          100.72945404052734,
+          580.2451171875
+        ],
+        "RANK": [
+          1,
+          743,
+          907,
+          34,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 83,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 760,
+        "RAWDICT_SEQUENCE": 432,
+        "BLOCK": 12,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          158.69900512695312,
+          395.6625061035156,
+          161.44869995117188,
+          405.6251220703125
+        ],
+        "RANK": [
+          1,
+          760,
+          432,
+          12,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 84,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 762,
+        "RAWDICT_SEQUENCE": 280,
+        "BLOCK": 25,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          136.20401000976562,
+          276.0544738769531,
+          138.95370483398438,
+          286.01708984375
+        ],
+        "RANK": [
+          1,
+          762,
+          280,
+          25,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 85,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 764,
+        "RAWDICT_SEQUENCE": 452,
+        "BLOCK": 32,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          109.3007583618164,
+          385.27850341796875,
+          111.99545288085938,
+          395.2411193847656
+        ],
+        "RANK": [
+          1,
+          764,
+          452,
+          32,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 86,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 765,
+        "RAWDICT_SEQUENCE": 793,
+        "BLOCK": 34,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          143.9290008544922,
+          624.71142578125,
+          146.67869567871094,
+          634.674072265625
+        ],
+        "RANK": [
+          1,
+          765,
+          793,
+          34,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 87,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 767,
+        "RAWDICT_SEQUENCE": 176,
+        "BLOCK": 17,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          166.04100036621094,
+          185.52748107910156,
+          168.7906951904297,
+          195.49012756347656
+        ],
+        "RANK": [
+          1,
+          767,
+          176,
+          17,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 88,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 768,
+        "RAWDICT_SEQUENCE": 169,
+        "BLOCK": 8,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          182.3610076904297,
+          237.6304473876953,
+          185.11070251464844,
+          247.5930938720703
+        ],
+        "RANK": [
+          1,
+          768,
+          169,
+          8,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 89,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 769,
+        "RAWDICT_SEQUENCE": 555,
+        "BLOCK": 45,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.28375244140625,
+          428.8894958496094,
+          86.97844696044922,
+          438.85211181640625
+        ],
+        "RANK": [
+          1,
+          769,
+          555,
+          45,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 90,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 770,
+        "RAWDICT_SEQUENCE": 588,
+        "BLOCK": 41,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          110.22127532958984,
+          675.6914672851562,
+          113.02595520019531,
+          685.6541137695312
+        ],
+        "RANK": [
+          1,
+          770,
+          588,
+          41,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 91,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 784,
+        "RAWDICT_SEQUENCE": 184,
+        "BLOCK": 16,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          126.2310562133789,
+          351.4954833984375,
+          128.98074340820312,
+          361.4580993652344
+        ],
+        "RANK": [
+          1,
+          784,
+          184,
+          16,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 92,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 786,
+        "RAWDICT_SEQUENCE": 158,
+        "BLOCK": 9,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          109.41922760009766,
+          305.8974914550781,
+          112.11392211914062,
+          315.860107421875
+        ],
+        "RANK": [
+          1,
+          786,
+          158,
+          9,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 93,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 787,
+        "RAWDICT_SEQUENCE": 401,
+        "BLOCK": 34,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.77694702148438,
+          549.12646484375,
+          87.58162689208984,
+          559.089111328125
+        ],
+        "RANK": [
+          1,
+          787,
+          401,
+          34,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 94,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 789,
+        "RAWDICT_SEQUENCE": 606,
+        "BLOCK": 31,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          97.84122467041016,
+          565.4234619140625,
+          100.53591918945312,
+          575.3861083984375
+        ],
+        "RANK": [
+          1,
+          789,
+          606,
+          31,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 95,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 793,
+        "RAWDICT_SEQUENCE": 706,
+        "BLOCK": 42,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 9.862509727478027,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.10013008117675781,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.30622863769531,
+          586.9134521484375,
+          87.00092315673828,
+          596.8760986328125
+        ],
+        "RANK": [
+          1,
+          793,
+          706,
+          42,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 96,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 795,
+        "RAWDICT_SEQUENCE": 618,
+        "BLOCK": 18,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.77894592285156,
+          509.6365051269531,
+          87.58362579345703,
+          519.59912109375
+        ],
+        "RANK": [
+          1,
+          795,
+          618,
+          18,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 97,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 796,
+        "RAWDICT_SEQUENCE": 184,
+        "BLOCK": 14,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          96.11994934082031,
+          317.6274719238281,
+          98.92462921142578,
+          327.590087890625
+        ],
+        "RANK": [
+          1,
+          796,
+          184,
+          14,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 98,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-072",
+        "PHYSICAL_PAGE_1BASED": 801,
+        "RAWDICT_SEQUENCE": 718,
+        "BLOCK": 43,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 2,
+        "CHAR": ".",
+        "FONT": "STIXTwoText-Bold",
+        "PDF_SPAN_SIZE_PT": 10.061773300170898,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.09913349151611328,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          84.79695129394531,
+          671.5574951171875,
+          87.60163116455078,
+          681.5201416015625
+        ],
+        "RANK": [
+          1,
+          801,
+          718,
+          43,
+          0,
+          1,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 99,
+        "SELECTED": false
+      }
+    ],
+    "TXT-098": [
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 187,
+        "RAWDICT_SEQUENCE": 345,
+        "BLOCK": 20,
+        "LINE": 1,
+        "SPAN": 5,
+        "CHAR_INDEX": 6,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          431.18524169921875,
+          363.892822265625,
+          441.14788818359375,
+          374.5628356933594
+        ],
+        "RANK": [
+          1,
+          187,
+          345,
+          20,
+          1,
+          5,
+          6
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 1,
+        "SELECTED": true
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 304,
+        "RAWDICT_SEQUENCE": 489,
+        "BLOCK": 23,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 16,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          318.2213134765625,
+          637.5109252929688,
+          328.1839599609375,
+          648.180908203125
+        ],
+        "RANK": [
+          1,
+          304,
+          489,
+          23,
+          1,
+          0,
+          16
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 2,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 350,
+        "RAWDICT_SEQUENCE": 563,
+        "BLOCK": 30,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 1,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          83.66363525390625,
+          466.7038879394531,
+          93.62627410888672,
+          477.3739013671875
+        ],
+        "RANK": [
+          1,
+          350,
+          563,
+          30,
+          2,
+          0,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 3,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 486,
+        "RAWDICT_SEQUENCE": 180,
+        "BLOCK": 13,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 11,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          243.5111083984375,
+          342.1358947753906,
+          253.4737548828125,
+          352.805908203125
+        ],
+        "RANK": [
+          1,
+          486,
+          180,
+          13,
+          1,
+          0,
+          11
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 4,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 567,
+        "RAWDICT_SEQUENCE": 404,
+        "BLOCK": 16,
+        "LINE": 1,
+        "SPAN": 1,
+        "CHAR_INDEX": 22,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          354.7435607910156,
+          440.47589111328125,
+          364.7062072753906,
+          451.1459045410156
+        ],
+        "RANK": [
+          1,
+          567,
+          404,
+          16,
+          1,
+          1,
+          22
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 5,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 588,
+        "RAWDICT_SEQUENCE": 892,
+        "BLOCK": 25,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 41,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          527.9277954101562,
+          653.264892578125,
+          537.8904418945312,
+          663.9348754882812
+        ],
+        "RANK": [
+          1,
+          588,
+          892,
+          25,
+          1,
+          0,
+          41
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 6,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 591,
+        "RAWDICT_SEQUENCE": 340,
+        "BLOCK": 17,
+        "LINE": 0,
+        "SPAN": 2,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.763389587402344,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.1992502212524414,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          159.6300048828125,
+          408.8873291015625,
+          169.39340209960938,
+          419.3439025878906
+        ],
+        "RANK": [
+          1,
+          591,
+          340,
+          17,
+          0,
+          2,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 7,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 591,
+        "RAWDICT_SEQUENCE": 427,
+        "BLOCK": 25,
+        "LINE": 0,
+        "SPAN": 2,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.763389587402344,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.1992502212524414,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          399.86199951171875,
+          410.0703125,
+          409.6253967285156,
+          420.5268859863281
+        ],
+        "RANK": [
+          1,
+          591,
+          427,
+          25,
+          0,
+          2,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 8,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 620,
+        "RAWDICT_SEQUENCE": 153,
+        "BLOCK": 15,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 22,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          333.416015625,
+          270.6188659667969,
+          343.378662109375,
+          281.28887939453125
+        ],
+        "RANK": [
+          1,
+          620,
+          153,
+          15,
+          1,
+          0,
+          22
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 9,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 623,
+        "RAWDICT_SEQUENCE": 162,
+        "BLOCK": 19,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 24,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          339.56390380859375,
+          244.50389099121094,
+          349.52655029296875,
+          255.1738739013672
+        ],
+        "RANK": [
+          1,
+          623,
+          162,
+          19,
+          1,
+          0,
+          24
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 10,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 625,
+        "RAWDICT_SEQUENCE": 310,
+        "BLOCK": 27,
+        "LINE": 0,
+        "SPAN": 0,
+        "CHAR_INDEX": 8,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          456.9291687011719,
+          229.73191833496094,
+          466.8918151855469,
+          240.4019012451172
+        ],
+        "RANK": [
+          1,
+          625,
+          310,
+          27,
+          0,
+          0,
+          8
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 11,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 625,
+        "RAWDICT_SEQUENCE": 395,
+        "BLOCK": 35,
+        "LINE": 1,
+        "SPAN": 2,
+        "CHAR_INDEX": 6,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          242.32855224609375,
+          429.9668884277344,
+          252.29119873046875,
+          440.63690185546875
+        ],
+        "RANK": [
+          1,
+          625,
+          395,
+          35,
+          1,
+          2,
+          6
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 12,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 630,
+        "RAWDICT_SEQUENCE": 658,
+        "BLOCK": 35,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 5,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          315.86822509765625,
+          487.0738830566406,
+          325.83087158203125,
+          497.743896484375
+        ],
+        "RANK": [
+          1,
+          630,
+          658,
+          35,
+          0,
+          1,
+          5
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 13,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 630,
+        "RAWDICT_SEQUENCE": 798,
+        "BLOCK": 49,
+        "LINE": 1,
+        "SPAN": 2,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          266.2850036621094,
+          684.3919067382812,
+          276.2476501464844,
+          695.0618896484375
+        ],
+        "RANK": [
+          1,
+          630,
+          798,
+          49,
+          1,
+          2,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 14,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 631,
+        "RAWDICT_SEQUENCE": 135,
+        "BLOCK": 13,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 21,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          317.9645080566406,
+          224.66490173339844,
+          327.9271545410156,
+          235.3348846435547
+        ],
+        "RANK": [
+          1,
+          631,
+          135,
+          13,
+          1,
+          0,
+          21
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 15,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 646,
+        "RAWDICT_SEQUENCE": 92,
+        "BLOCK": 1,
+        "LINE": 1,
+        "SPAN": 4,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          131.08700561523438,
+          84.17088317871094,
+          141.04965209960938,
+          94.84086608886719
+        ],
+        "RANK": [
+          1,
+          646,
+          92,
+          1,
+          1,
+          4,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 16,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 646,
+        "RAWDICT_SEQUENCE": 370,
+        "BLOCK": 24,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 10,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          273.3994445800781,
+          327.8468933105469,
+          283.3620910644531,
+          338.51690673828125
+        ],
+        "RANK": [
+          1,
+          646,
+          370,
+          24,
+          1,
+          0,
+          10
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 17,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 646,
+        "RAWDICT_SEQUENCE": 433,
+        "BLOCK": 25,
+        "LINE": 0,
+        "SPAN": 3,
+        "CHAR_INDEX": 11,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          504.21356201171875,
+          372.3258972167969,
+          514.1762084960938,
+          382.99591064453125
+        ],
+        "RANK": [
+          1,
+          646,
+          433,
+          25,
+          0,
+          3,
+          11
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 18,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 646,
+        "RAWDICT_SEQUENCE": 506,
+        "BLOCK": 25,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 20,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          269.2178955078125,
+          398.62689208984375,
+          279.1805419921875,
+          409.2969055175781
+        ],
+        "RANK": [
+          1,
+          646,
+          506,
+          25,
+          2,
+          0,
+          20
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 19,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 647,
+        "RAWDICT_SEQUENCE": 670,
+        "BLOCK": 38,
+        "LINE": 1,
+        "SPAN": 2,
+        "CHAR_INDEX": 9,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          292.9258117675781,
+          633.98095703125,
+          302.8884582519531,
+          644.6509399414062
+        ],
+        "RANK": [
+          1,
+          647,
+          670,
+          38,
+          1,
+          2,
+          9
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 20,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 649,
+        "RAWDICT_SEQUENCE": 748,
+        "BLOCK": 27,
+        "LINE": 1,
+        "SPAN": 1,
+        "CHAR_INDEX": 35,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          461.7060852050781,
+          632.2999267578125,
+          471.6687316894531,
+          642.9699096679688
+        ],
+        "RANK": [
+          1,
+          649,
+          748,
+          27,
+          1,
+          1,
+          35
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 21,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 653,
+        "RAWDICT_SEQUENCE": 894,
+        "BLOCK": 32,
+        "LINE": 1,
+        "SPAN": 12,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          461.7200012207031,
+          662.87890625,
+          471.6826477050781,
+          673.5488891601562
+        ],
+        "RANK": [
+          1,
+          653,
+          894,
+          32,
+          1,
+          12,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 22,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 656,
+        "RAWDICT_SEQUENCE": 168,
+        "BLOCK": 11,
+        "LINE": 1,
+        "SPAN": 2,
+        "CHAR_INDEX": 27,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          413.3828430175781,
+          226.61692810058594,
+          423.3454895019531,
+          237.2869110107422
+        ],
+        "RANK": [
+          1,
+          656,
+          168,
+          11,
+          1,
+          2,
+          27
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 23,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 660,
+        "RAWDICT_SEQUENCE": 873,
+        "BLOCK": 30,
+        "LINE": 1,
+        "SPAN": 2,
+        "CHAR_INDEX": 16,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          296.7566833496094,
+          629.1239013671875,
+          306.7193298339844,
+          639.7938842773438
+        ],
+        "RANK": [
+          1,
+          660,
+          873,
+          30,
+          1,
+          2,
+          16
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 24,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 680,
+        "RAWDICT_SEQUENCE": 480,
+        "BLOCK": 38,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 3,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          103.58891296386719,
+          408.74688720703125,
+          113.55155181884766,
+          419.4169006347656
+        ],
+        "RANK": [
+          1,
+          680,
+          480,
+          38,
+          2,
+          0,
+          3
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 25,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 682,
+        "RAWDICT_SEQUENCE": 815,
+        "BLOCK": 37,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 13,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          258.4166259765625,
+          585.6299438476562,
+          268.3792724609375,
+          596.2999267578125
+        ],
+        "RANK": [
+          1,
+          682,
+          815,
+          37,
+          1,
+          0,
+          13
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 26,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 682,
+        "RAWDICT_SEQUENCE": 838,
+        "BLOCK": 37,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 36,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          489.17156982421875,
+          585.6299438476562,
+          499.13421630859375,
+          596.2999267578125
+        ],
+        "RANK": [
+          1,
+          682,
+          838,
+          37,
+          1,
+          0,
+          36
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 27,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 686,
+        "RAWDICT_SEQUENCE": 139,
+        "BLOCK": 14,
+        "LINE": 1,
+        "SPAN": 8,
+        "CHAR_INDEX": 6,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          373.5092468261719,
+          318.4378967285156,
+          383.4718933105469,
+          329.10791015625
+        ],
+        "RANK": [
+          1,
+          686,
+          139,
+          14,
+          1,
+          8,
+          6
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 28,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 686,
+        "RAWDICT_SEQUENCE": 361,
+        "BLOCK": 22,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 5,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          137.29019165039062,
+          481.43389892578125,
+          147.25283813476562,
+          492.1039123535156
+        ],
+        "RANK": [
+          1,
+          686,
+          361,
+          22,
+          2,
+          0,
+          5
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 29,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 687,
+        "RAWDICT_SEQUENCE": 763,
+        "BLOCK": 28,
+        "LINE": 1,
+        "SPAN": 10,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          471.7130126953125,
+          606.4888916015625,
+          481.6756591796875,
+          617.1588745117188
+        ],
+        "RANK": [
+          1,
+          687,
+          763,
+          28,
+          1,
+          10,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 30,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 688,
+        "RAWDICT_SEQUENCE": 264,
+        "BLOCK": 21,
+        "LINE": 1,
+        "SPAN": 11,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          499.21600341796875,
+          265.7599182128906,
+          509.17864990234375,
+          276.429931640625
+        ],
+        "RANK": [
+          1,
+          688,
+          264,
+          21,
+          1,
+          11,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 31,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 689,
+        "RAWDICT_SEQUENCE": 801,
+        "BLOCK": 37,
+        "LINE": 1,
+        "SPAN": 9,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          421.16400146484375,
+          700.48388671875,
+          431.12664794921875,
+          711.1538696289062
+        ],
+        "RANK": [
+          1,
+          689,
+          801,
+          37,
+          1,
+          9,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 32,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 703,
+        "RAWDICT_SEQUENCE": 719,
+        "BLOCK": 41,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 21,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          327.30377197265625,
+          685.6959228515625,
+          337.26641845703125,
+          696.3659057617188
+        ],
+        "RANK": [
+          1,
+          703,
+          719,
+          41,
+          1,
+          0,
+          21
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 33,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 704,
+        "RAWDICT_SEQUENCE": 615,
+        "BLOCK": 27,
+        "LINE": 2,
+        "SPAN": 2,
+        "CHAR_INDEX": 8,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          328.801513671875,
+          444.7718811035156,
+          338.76416015625,
+          455.44189453125
+        ],
+        "RANK": [
+          1,
+          704,
+          615,
+          27,
+          2,
+          2,
+          8
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 34,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 707,
+        "RAWDICT_SEQUENCE": 278,
+        "BLOCK": 12,
+        "LINE": 1,
+        "SPAN": 2,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          421.4129943847656,
+          309.5818786621094,
+          431.3756408691406,
+          320.25189208984375
+        ],
+        "RANK": [
+          1,
+          707,
+          278,
+          12,
+          1,
+          2,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 35,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 708,
+        "RAWDICT_SEQUENCE": 482,
+        "BLOCK": 28,
+        "LINE": 1,
+        "SPAN": 4,
+        "CHAR_INDEX": 5,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          459.35260009765625,
+          399.0079040527344,
+          469.31524658203125,
+          409.67791748046875
+        ],
+        "RANK": [
+          1,
+          708,
+          482,
+          28,
+          1,
+          4,
+          5
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 36,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 711,
+        "RAWDICT_SEQUENCE": 332,
+        "BLOCK": 12,
+        "LINE": 2,
+        "SPAN": 9,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          191.08299255371094,
+          239.8229217529297,
+          201.04563903808594,
+          250.49290466308594
+        ],
+        "RANK": [
+          1,
+          711,
+          332,
+          12,
+          2,
+          9,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 37,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 712,
+        "RAWDICT_SEQUENCE": 403,
+        "BLOCK": 29,
+        "LINE": 2,
+        "SPAN": 4,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          233.3040008544922,
+          589.9659423828125,
+          243.2666473388672,
+          600.6359252929688
+        ],
+        "RANK": [
+          1,
+          712,
+          403,
+          29,
+          2,
+          4,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 38,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 715,
+        "RAWDICT_SEQUENCE": 265,
+        "BLOCK": 12,
+        "LINE": 1,
+        "SPAN": 2,
+        "CHAR_INDEX": 28,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          448.63836669921875,
+          185.4438934326172,
+          458.60101318359375,
+          196.11387634277344
+        ],
+        "RANK": [
+          1,
+          715,
+          265,
+          12,
+          1,
+          2,
+          28
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 39,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 727,
+        "RAWDICT_SEQUENCE": 386,
+        "BLOCK": 11,
+        "LINE": 2,
+        "SPAN": 4,
+        "CHAR_INDEX": 3,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          280.51129150390625,
+          321.3718566894531,
+          290.47393798828125,
+          332.0418701171875
+        ],
+        "RANK": [
+          1,
+          727,
+          386,
+          11,
+          2,
+          4,
+          3
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 40,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 730,
+        "RAWDICT_SEQUENCE": 331,
+        "BLOCK": 18,
+        "LINE": 2,
+        "SPAN": 2,
+        "CHAR_INDEX": 9,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          399.5921630859375,
+          385.4299011230469,
+          409.5548095703125,
+          396.09991455078125
+        ],
+        "RANK": [
+          1,
+          730,
+          331,
+          18,
+          2,
+          2,
+          9
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 41,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 731,
+        "RAWDICT_SEQUENCE": 513,
+        "BLOCK": 32,
+        "LINE": 1,
+        "SPAN": 2,
+        "CHAR_INDEX": 10,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          322.47381591796875,
+          470.0138854980469,
+          332.43646240234375,
+          480.68389892578125
+        ],
+        "RANK": [
+          1,
+          731,
+          513,
+          32,
+          1,
+          2,
+          10
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 42,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 735,
+        "RAWDICT_SEQUENCE": 757,
+        "BLOCK": 43,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 14,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          201.83900451660156,
+          627.7698974609375,
+          211.80165100097656,
+          638.4398803710938
+        ],
+        "RANK": [
+          1,
+          735,
+          757,
+          43,
+          2,
+          0,
+          14
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 43,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 737,
+        "RAWDICT_SEQUENCE": 566,
+        "BLOCK": 21,
+        "LINE": 1,
+        "SPAN": 6,
+        "CHAR_INDEX": 4,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          405.7450866699219,
+          487.3208923339844,
+          415.7077331542969,
+          497.99090576171875
+        ],
+        "RANK": [
+          1,
+          737,
+          566,
+          21,
+          1,
+          6,
+          4
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 44,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 738,
+        "RAWDICT_SEQUENCE": 222,
+        "BLOCK": 13,
+        "LINE": 1,
+        "SPAN": 10,
+        "CHAR_INDEX": 10,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          527.9324340820312,
+          280.3108825683594,
+          537.8950805664062,
+          290.98089599609375
+        ],
+        "RANK": [
+          1,
+          738,
+          222,
+          13,
+          1,
+          10,
+          10
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 45,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 742,
+        "RAWDICT_SEQUENCE": 1873,
+        "BLOCK": 88,
+        "LINE": 2,
+        "SPAN": 3,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          188.0449981689453,
+          697.0729370117188,
+          198.0076446533203,
+          707.742919921875
+        ],
+        "RANK": [
+          1,
+          742,
+          1873,
+          88,
+          2,
+          3,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 46,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 764,
+        "RAWDICT_SEQUENCE": 495,
+        "BLOCK": 32,
+        "LINE": 1,
+        "SPAN": 4,
+        "CHAR_INDEX": 18,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          480.2179870605469,
+          384.89990234375,
+          490.1806335449219,
+          395.5699157714844
+        ],
+        "RANK": [
+          1,
+          764,
+          495,
+          32,
+          1,
+          4,
+          18
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 47,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 769,
+        "RAWDICT_SEQUENCE": 604,
+        "BLOCK": 45,
+        "LINE": 1,
+        "SPAN": 3,
+        "CHAR_INDEX": 12,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          491.9951171875,
+          428.5108947753906,
+          501.957763671875,
+          439.180908203125
+        ],
+        "RANK": [
+          1,
+          769,
+          604,
+          45,
+          1,
+          3,
+          12
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 48,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 770,
+        "RAWDICT_SEQUENCE": 667,
+        "BLOCK": 41,
+        "LINE": 2,
+        "SPAN": 12,
+        "CHAR_INDEX": 5,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          279.06158447265625,
+          688.7029418945312,
+          289.02423095703125,
+          699.3729248046875
+        ],
+        "RANK": [
+          1,
+          770,
+          667,
+          41,
+          2,
+          12,
+          5
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 49,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 786,
+        "RAWDICT_SEQUENCE": 202,
+        "BLOCK": 9,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 2,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          107.40227508544922,
+          318.9089050292969,
+          117.36491394042969,
+          329.57891845703125
+        ],
+        "RANK": [
+          1,
+          786,
+          202,
+          9,
+          2,
+          0,
+          2
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 50,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 787,
+        "RAWDICT_SEQUENCE": 431,
+        "BLOCK": 34,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 28,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          381.926513671875,
+          548.7479248046875,
+          391.88916015625,
+          559.4179077148438
+        ],
+        "RANK": [
+          1,
+          787,
+          431,
+          34,
+          1,
+          0,
+          28
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 51,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 788,
+        "RAWDICT_SEQUENCE": 1217,
+        "BLOCK": 26,
+        "LINE": 5,
+        "SPAN": 4,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          287.510986328125,
+          741.491943359375,
+          297.4736328125,
+          752.1619262695312
+        ],
+        "RANK": [
+          1,
+          788,
+          1217,
+          26,
+          5,
+          4,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 52,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 789,
+        "RAWDICT_SEQUENCE": 98,
+        "BLOCK": 2,
+        "LINE": 3,
+        "SPAN": 9,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          328.57598876953125,
+          104.14488220214844,
+          338.53863525390625,
+          114.81486511230469
+        ],
+        "RANK": [
+          1,
+          789,
+          98,
+          2,
+          3,
+          9,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 53,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 789,
+        "RAWDICT_SEQUENCE": 188,
+        "BLOCK": 6,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 1,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          242.92564392089844,
+          147.4288787841797,
+          252.88829040527344,
+          158.09886169433594
+        ],
+        "RANK": [
+          1,
+          789,
+          188,
+          6,
+          1,
+          0,
+          1
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 54,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 789,
+        "RAWDICT_SEQUENCE": 215,
+        "BLOCK": 7,
+        "LINE": 0,
+        "SPAN": 4,
+        "CHAR_INDEX": 0,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          458.6610107421875,
+          132.8589324951172,
+          468.6236572265625,
+          143.52891540527344
+        ],
+        "RANK": [
+          1,
+          789,
+          215,
+          7,
+          0,
+          4,
+          0
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 55,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 789,
+        "RAWDICT_SEQUENCE": 631,
+        "BLOCK": 31,
+        "LINE": 1,
+        "SPAN": 2,
+        "CHAR_INDEX": 6,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          343.1568908691406,
+          565.044921875,
+          353.1195373535156,
+          575.7149047851562
+        ],
+        "RANK": [
+          1,
+          789,
+          631,
+          31,
+          1,
+          2,
+          6
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 56,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 793,
+        "RAWDICT_SEQUENCE": 750,
+        "BLOCK": 42,
+        "LINE": 1,
+        "SPAN": 4,
+        "CHAR_INDEX": 17,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          491.7331237792969,
+          586.534912109375,
+          501.6957702636719,
+          597.2048950195312
+        ],
+        "RANK": [
+          1,
+          793,
+          750,
+          42,
+          1,
+          4,
+          17
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 57,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 794,
+        "RAWDICT_SEQUENCE": 903,
+        "BLOCK": 31,
+        "LINE": 1,
+        "SPAN": 0,
+        "CHAR_INDEX": 9,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          446.2489013671875,
+          631.2609252929688,
+          456.2115478515625,
+          641.930908203125
+        ],
+        "RANK": [
+          1,
+          794,
+          903,
+          31,
+          1,
+          0,
+          9
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 58,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 794,
+        "RAWDICT_SEQUENCE": 947,
+        "BLOCK": 33,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 9,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          446.2540588378906,
+          663.0609130859375,
+          456.2167053222656,
+          673.7308959960938
+        ],
+        "RANK": [
+          1,
+          794,
+          947,
+          33,
+          2,
+          0,
+          9
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 59,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 794,
+        "RAWDICT_SEQUENCE": 987,
+        "BLOCK": 35,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 10,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          456.21624755859375,
+          694.8619384765625,
+          466.17889404296875,
+          705.5319213867188
+        ],
+        "RANK": [
+          1,
+          794,
+          987,
+          35,
+          2,
+          0,
+          10
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 60,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 795,
+        "RAWDICT_SEQUENCE": 676,
+        "BLOCK": 18,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 14,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          201.83900451660156,
+          522.6469116210938,
+          211.80165100097656,
+          533.31689453125
+        ],
+        "RANK": [
+          1,
+          795,
+          676,
+          18,
+          2,
+          0,
+          14
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 61,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 796,
+        "RAWDICT_SEQUENCE": 266,
+        "BLOCK": 14,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 38,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          453.07855224609375,
+          330.6388854980469,
+          463.04119873046875,
+          341.30889892578125
+        ],
+        "RANK": [
+          1,
+          796,
+          266,
+          14,
+          2,
+          0,
+          38
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 62,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 796,
+        "RAWDICT_SEQUENCE": 522,
+        "BLOCK": 25,
+        "LINE": 0,
+        "SPAN": 1,
+        "CHAR_INDEX": 5,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          487.9375915527344,
+          529.0999145507812,
+          497.9002380371094,
+          539.7698974609375
+        ],
+        "RANK": [
+          1,
+          796,
+          522,
+          25,
+          0,
+          1,
+          5
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 63,
+        "SELECTED": false
+      },
+      {
+        "TARGET_ID": "TXT-098",
+        "PHYSICAL_PAGE_1BASED": 801,
+        "RAWDICT_SEQUENCE": 776,
+        "BLOCK": 43,
+        "LINE": 2,
+        "SPAN": 0,
+        "CHAR_INDEX": 13,
+        "CHAR": "；",
+        "FONT": "NotoSerifSC-ExtraLight",
+        "PDF_SPAN_SIZE_PT": 9.962639808654785,
+        "TARGET_SIZE_PT": 9.962639808654785,
+        "SIZE_DELTA_PT": 0.0,
+        "COLOR_RGB": [
+          31,
+          35,
+          40
+        ],
+        "PDF_BBOX_PT": [
+          192.0756378173828,
+          684.5689086914062,
+          202.0382843017578,
+          695.2388916015625
+        ],
+        "RANK": [
+          1,
+          801,
+          776,
+          43,
+          2,
+          0,
+          13
+        ],
+        "DETERMINISTIC_RANK_NUMBER": 64,
+        "SELECTED": false
+      }
+    ]
+  }
+}

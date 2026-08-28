@@ -1,0 +1,83 @@
+{
+  "package": "FIG-P654-01 STRICT_R5 SA2 writable-cache retry build failure",
+  "payload_scope": "all ordinary files recursively except MANIFEST.csv, MANIFEST.json, and WRITE_STOPPED",
+  "payload_file_count": 15,
+  "files": [
+    {
+      "RELATIVE_PATH": "00_RETRY_AUTHORITY_AND_IDENTITY.md",
+      "BYTES": 973,
+      "MTIME_NS": 1787601180964459500
+    },
+    {
+      "RELATIVE_PATH": "01_RETRY_INVOCATION.md",
+      "BYTES": 1147,
+      "MTIME_NS": 1787601282429854100
+    },
+    {
+      "RELATIVE_PATH": "02_FAILURE_AND_GATE_STATUS.md",
+      "BYTES": 1493,
+      "MTIME_NS": 1787601283155035800
+    },
+    {
+      "RELATIVE_PATH": "03_R4_R5_READ_ONLY_COMPARISON.md",
+      "BYTES": 2906,
+      "MTIME_NS": 1787601283953038100
+    },
+    {
+      "RELATIVE_PATH": "build/latexmk.stderr.log",
+      "BYTES": 1169,
+      "MTIME_NS": 1787601014732913700
+    },
+    {
+      "RELATIVE_PATH": "build/latexmk.stdout.log",
+      "BYTES": 3916,
+      "MTIME_NS": 1787601014721082800
+    },
+    {
+      "RELATIVE_PATH": "build/v260_FIG-P654-01_standalone.aux",
+      "BYTES": 32,
+      "MTIME_NS": 1787601005000000000
+    },
+    {
+      "RELATIVE_PATH": "build/v260_FIG-P654-01_standalone.fdb_latexmk",
+      "BYTES": 3028,
+      "MTIME_NS": 1787601014720082300
+    },
+    {
+      "RELATIVE_PATH": "build/v260_FIG-P654-01_standalone.fls",
+      "BYTES": 1360,
+      "MTIME_NS": 1787601014557822700
+    },
+    {
+      "RELATIVE_PATH": "build/v260_FIG-P654-01_standalone.log",
+      "BYTES": 2144,
+      "MTIME_NS": 1787601014581458600
+    },
+    {
+      "RELATIVE_PATH": "MODEL_ROUTE.md",
+      "BYTES": 367,
+      "MTIME_NS": 1787601182985048600
+    },
+    {
+      "RELATIVE_PATH": "PACKAGE_STATUS.json",
+      "BYTES": 1991,
+      "MTIME_NS": 1787601316536523800
+    },
+    {
+      "RELATIVE_PATH": "RESULT.txt",
+      "BYTES": 38,
+      "MTIME_NS": 1787601316536523800
+    },
+    {
+      "RELATIVE_PATH": "seal_r5_failure_package.py",
+      "BYTES": 9703,
+      "MTIME_NS": 1787601284589058000
+    },
+    {
+      "RELATIVE_PATH": "TERMINAL_CROSSCHECK.txt",
+      "BYTES": 1123,
+      "MTIME_NS": 1787601316568578800
+    }
+  ],
+  "result": "BUILD_FAIL_NO_CANDIDATE_CONTINUE_SA2"
+}

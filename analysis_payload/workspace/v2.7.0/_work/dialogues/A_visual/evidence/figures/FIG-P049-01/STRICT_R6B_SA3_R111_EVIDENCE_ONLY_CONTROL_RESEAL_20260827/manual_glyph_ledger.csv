@@ -1,0 +1,136 @@
+object_id,manual_observed_glyph,manual_role,manual_codepoint_ok,manual_legibility,manual_tofu,manual_clip,manual_obvious_imbalance,manual_decision,manual_note
+G001,𝑐,contour_c1_label,yes,clear,no,no,no,ACCEPT,内层等值线标签的斜体 c 轮廓完整
+G002,1,contour_c1_label,yes,clear,no,no,no,ACCEPT,c1 下标 1 清楚且与基符号相连属正常排版
+G003,𝑐,contour_c2_label,yes,clear,no,no,no,ACCEPT,中层等值线标签 c 可辨且未被外轮廓墨迹穿字
+G004,2,contour_c2_label,yes,clear,no,no,no,ACCEPT,c2 下标 2 完整并保持足够识别度
+G005,𝑐,contour_c3_label,yes,clear,no,no,no,ACCEPT,外层等值线标签 c 字形完整
+G006,3,contour_c3_label,yes,clear,no,no,no,ACCEPT,c3 下标 3 无缺笔或裁切
+G007,𝑐,contour_order,yes,clear,no,no,no,ACCEPT,层级关系首个 c 清晰
+G008,1,contour_order,yes,clear,no,no,no,ACCEPT,层级关系首个下标 1 可读
+G009,<,contour_order,yes,clear,no,no,no,ACCEPT,首个小于号方向正确且间隔自然
+G010,𝑐,contour_order,yes,clear,no,no,no,ACCEPT,层级关系中间 c 清晰
+G011,2,contour_order,yes,clear,no,no,no,ACCEPT,层级关系中间下标 2 可读
+G012,<,contour_order,yes,clear,no,no,no,ACCEPT,第二个小于号方向正确
+G013,𝑐,contour_order,yes,clear,no,no,no,ACCEPT,层级关系末尾 c 清晰
+G014,3,contour_order,yes,clear,no,no,no,ACCEPT,层级关系末尾下标 3 可读
+G015,𝑃,point_label,yes,clear,no,no,no,ACCEPT,点名 P 字形完整且与坐标标签整体平衡
+G016,=,point_label,yes,clear,no,no,no,ACCEPT,等号双横清楚
+G017,(,point_label,yes,clear,no,no,no,ACCEPT,左圆括号完整并包络坐标起点
+G018,2,point_label,yes,clear,no,no,no,ACCEPT,横坐标整数位 2 清楚
+G019,.,point_label,yes,clear,no,no,no,ACCEPT,横坐标小数点虽小但原生与 8x 均可确认
+G020,4,point_label,yes,clear,no,no,no,ACCEPT,横坐标小数位 4 清楚
+G021,",",point_label,yes,clear,no,no,no,ACCEPT,坐标分隔逗号位置正确且未丢失
+G022,1,point_label,yes,clear,no,no,no,ACCEPT,纵坐标整数位 1 清楚
+G023,.,point_label,yes,clear,no,no,no,ACCEPT,纵坐标小数点原生可见
+G024,0,point_label,yes,clear,no,no,no,ACCEPT,纵坐标十分位 0 闭环完整
+G025,8,point_label,yes,clear,no,no,no,ACCEPT,纵坐标百分位 8 双环完整
+G026,),point_label,yes,clear,no,no,no,ACCEPT,右圆括号完整并闭合坐标串
+G027,∇,gradient_label,yes,clear,no,no,no,ACCEPT,梯度算子三角形方向正确且无填黑
+G028,𝑓,gradient_label,yes,clear,no,no,no,ACCEPT,梯度标签函数符号 f 清楚
+G029,(,gradient_label,yes,clear,no,no,no,ACCEPT,梯度标签左括号完整
+G030,𝑃,gradient_label,yes,clear,no,no,no,ACCEPT,梯度标签中的 P 与点标签一致
+G031,),gradient_label,yes,clear,no,no,no,ACCEPT,梯度标签右括号完整
+G032,𝑣,tangent_label,yes,clear,no,no,no,ACCEPT,切向量基字符 v 粗斜体可辨
+G033,t,tangent_label,yes,clear,no,no,no,ACCEPT,tan 下标 t 虽属微字号但实际清楚
+G034,a,tangent_label,yes,clear,no,no,no,ACCEPT,tan 下标 a 开口与竖画可辨
+G035,n,tangent_label,yes,clear,no,no,no,ACCEPT,tan 下标 n 拱形完整
+G036,𝑓,increase_label,yes,clear,no,no,no,ACCEPT,增大方向说明中的 f 斜体清楚
+G037,增,increase_label,yes,clear,no,no,no,ACCEPT,汉字“增”笔画无粘连
+G038,大,increase_label,yes,clear,no,no,no,ACCEPT,汉字“大”三笔完整
+G039,1,note_1,yes,clear,no,no,no,ACCEPT,第一步编号 1 清楚
+G040,.,note_1,yes,clear,no,no,no,ACCEPT,第一步编号句点可见
+G041,定,note_1,yes,clear,no,no,no,ACCEPT,说明字“定”结构完整
+G042,位,note_1,yes,clear,no,no,no,ACCEPT,说明字“位”左右部件清楚
+G043,𝑃,note_1,yes,clear,no,no,no,ACCEPT,第一步中的 P 与目标点一致
+G044,所,note_1,yes,clear,no,no,no,ACCEPT,说明字“所”无缺笔
+G045,在,note_1,yes,clear,no,no,no,ACCEPT,说明字“在”结构清楚
+G046,等,note_1,yes,clear,no,no,no,ACCEPT,说明字“等”上下结构完整
+G047,值,note_1,yes,clear,no,no,no,ACCEPT,说明字“值”右侧框线清楚
+G048,线,note_1,yes,clear,no,no,no,ACCEPT,说明字“线”末笔未裁切
+G049,2,note_2,yes,clear,no,no,no,ACCEPT,第二步编号 2 清楚
+G050,.,note_2,yes,clear,no,no,no,ACCEPT,第二步编号句点可见
+G051,梯,note_2,yes,clear,no,no,no,ACCEPT,说明字“梯”木旁与弟部清楚
+G052,度,note_2,yes,clear,no,no,no,ACCEPT,说明字“度”笔画分离
+G053,指,note_2,yes,clear,no,no,no,ACCEPT,说明字“指”左右结构完整
+G054,向,note_2,yes,clear,no,no,no,ACCEPT,说明字“向”内口清楚
+G055,函,note_2,yes,clear,no,no,no,ACCEPT,说明字“函”外框与内部结构可辨
+G056,数,note_2,yes,clear,no,no,no,ACCEPT,说明字“数”左右部件清楚
+G057,增,note_2,yes,clear,no,no,no,ACCEPT,第二步“增”与图下增大标签一致
+G058,大,note_2,yes,clear,no,no,no,ACCEPT,第二步末字“大”完整
+G059,3,note_3,yes,clear,no,no,no,ACCEPT,第三步编号 3 清楚
+G060,.,note_3,yes,clear,no,no,no,ACCEPT,第三步编号句点可见
+G061,∇,note_3,yes,clear,no,no,no,ACCEPT,正交公式梯度算子方向正确
+G062,𝑓,note_3,yes,clear,no,no,no,ACCEPT,正交公式函数符号 f 清楚
+G063,(,note_3,yes,clear,no,no,no,ACCEPT,正交公式左括号完整
+G064,𝑃,note_3,yes,clear,no,no,no,ACCEPT,正交公式中的 P 清楚
+G065,),note_3,yes,clear,no,no,no,ACCEPT,正交公式右括号完整
+G066,T,note_3,yes,clear,no,no,no,ACCEPT,转置上标 T 位置正确且可辨
+G067,𝑣,note_3,yes,clear,no,no,no,ACCEPT,切向量基字符 v 清楚
+G068,t,note_3,yes,clear,no,no,no,ACCEPT,tan 下标 t 可读
+G069,a,note_3,yes,clear,no,no,no,ACCEPT,tan 下标 a 可读
+G070,n,note_3,yes,clear,no,no,no,ACCEPT,tan 下标 n 可读
+G071,=,note_3,yes,clear,no,no,no,ACCEPT,正交式等号双横清楚
+G072,0,note_3,yes,clear,no,no,no,ACCEPT,正交式右端零闭环清楚
+G073,𝑓,function_formula,yes,clear,no,no,no,ACCEPT,函数定义首字符 f 清楚
+G074,(,function_formula,yes,clear,no,no,no,ACCEPT,函数自变量左括号完整
+G075,𝑥,function_formula,yes,clear,no,no,no,ACCEPT,首个自变量 x 斜体完整
+G076,1,function_formula,yes,clear,no,no,no,ACCEPT,x1 下标 1 清楚
+G077,",",function_formula,yes,clear,no,no,no,ACCEPT,自变量分隔逗号可见且未与纵轴粘连
+G078,𝑥,function_formula,yes,clear,no,no,no,ACCEPT,第二个自变量 x 斜体完整
+G079,2,function_formula,yes,clear,no,no,no,ACCEPT,x2 下标 2 清楚
+G080,),function_formula,yes,clear,no,no,no,ACCEPT,函数自变量右括号完整
+G081,=,function_formula,yes,clear,no,no,no,ACCEPT,函数定义等号清楚
+G082,𝑥,function_formula,yes,clear,no,no,no,ACCEPT,第一平方项基字符 x 清楚
+G083,2,function_formula,yes,clear,no,no,no,ACCEPT,第一平方项上标 2 位置正确
+G084,1,function_formula,yes,clear,no,no,no,ACCEPT,第一平方项下标 1 位置正确
+G085,/,function_formula,yes,clear,no,no,no,ACCEPT,除号斜线未与相邻字符粘连
+G086,9,function_formula,yes,clear,no,no,no,ACCEPT,第一分母 9 环形完整
+G087,+,function_formula,yes,clear,no,no,no,ACCEPT,加号横竖清楚
+G088,𝑥,function_formula,yes,clear,no,no,no,ACCEPT,第二平方项基字符 x 清楚
+G089,2,function_formula,yes,clear,no,no,no,ACCEPT,第二平方项上标 2 位置正确
+G090,2,function_formula,yes,clear,no,no,no,ACCEPT,第二平方项下标 2 位置正确
+G091,/,function_formula,yes,clear,no,no,no,ACCEPT,第二除号斜线完整
+G092,3,function_formula,yes,clear,no,no,no,ACCEPT,分母整数位 3 清楚
+G093,.,function_formula,yes,clear,no,no,no,ACCEPT,分母小数点原生可见
+G094,2,function_formula,yes,clear,no,no,no,ACCEPT,分母十分位 2 清楚
+G095,4,function_formula,yes,clear,no,no,no,ACCEPT,分母百分位 4 清楚
+G096,𝑥,axis_x1,yes,clear,no,no,no,ACCEPT,横轴标签 x 字形完整
+G097,1,axis_x1,yes,clear,no,no,no,ACCEPT,横轴下标 1 清楚且未碰箭头
+G098,𝑥,axis_x2,yes,clear,no,no,no,ACCEPT,纵轴标签 x 字形完整
+G099,2,axis_x2,yes,clear,no,no,no,ACCEPT,纵轴下标 2 清楚且未碰箭头
+G100,图,caption,yes,clear,no,no,no,ACCEPT,题注粗体“图”完整
+G101,3,caption,yes,clear,no,no,no,ACCEPT,题注编号章号 3 清楚
+G102,.,caption,yes,clear,no,no,no,ACCEPT,题注编号小数点可见
+G103,1,caption,yes,clear,no,no,no,ACCEPT,题注编号图号 1 清楚
+G104,梯,caption,yes,clear,no,no,no,ACCEPT,题注“梯”笔画清楚
+G105,度,caption,yes,clear,no,no,no,ACCEPT,题注“度”无粘连
+G106,与,caption,yes,clear,no,no,no,ACCEPT,题注连接字“与”完整
+G107,等,caption,yes,clear,no,no,no,ACCEPT,题注“等”上下结构清楚
+G108,值,caption,yes,clear,no,no,no,ACCEPT,题注“值”部件清楚
+G109,线,caption,yes,clear,no,no,no,ACCEPT,题注首句末“线”完整
+G110,。,caption,yes,clear,no,no,no,ACCEPT,题注首句句号为正确全角码点
+G111,箭,caption,yes,clear,no,no,no,ACCEPT,题注“箭”竹头与下部清楚
+G112,头,caption,yes,clear,no,no,no,ACCEPT,题注“头”完整
+G113,在,caption,yes,clear,no,no,no,ACCEPT,题注“在”结构清楚
+G114,该,caption,yes,clear,no,no,no,ACCEPT,题注“该”左右部件清楚
+G115,点,caption,yes,clear,no,no,no,ACCEPT,题注“点”四点底完整
+G116,垂,caption,yes,clear,no,no,no,ACCEPT,题注“垂”横画分明
+G117,直,caption,yes,clear,no,no,no,ACCEPT,题注“直”内部横画清楚
+G118,于,caption,yes,clear,no,no,no,ACCEPT,题注“于”完整
+G119,局,caption,yes,clear,no,no,no,ACCEPT,题注“局”外框未裁切
+G120,部,caption,yes,clear,no,no,no,ACCEPT,题注“部”左右结构完整
+G121,切,caption,yes,clear,no,no,no,ACCEPT,题注“切”左右部件清楚
+G122,线,caption,yes,clear,no,no,no,ACCEPT,题注“切线”的“线”完整
+G123,，,caption,yes,clear,no,no,no,ACCEPT,题注逗号为正确全角码点且可见
+G124,并,caption,yes,clear,no,no,no,ACCEPT,题注“并”横竖清楚
+G125,指,caption,yes,clear,no,no,no,ACCEPT,题注“指”左右结构完整
+G126,向,caption,yes,clear,no,no,no,ACCEPT,题注“向”内口清楚
+G127,函,caption,yes,clear,no,no,no,ACCEPT,题注“函”外框完整
+G128,数,caption,yes,clear,no,no,no,ACCEPT,题注“数”左右部件清楚
+G129,值,caption,yes,clear,no,no,no,ACCEPT,题注“值”清楚
+G130,增,caption,yes,clear,no,no,no,ACCEPT,题注“增”笔画分离
+G131,加,caption,yes,clear,no,no,no,ACCEPT,题注“加”左右部件清楚
+G132,的,caption,yes,clear,no,no,no,ACCEPT,题注“的”结构完整
+G133,方,caption,yes,clear,no,no,no,ACCEPT,题注“方”完整
+G134,向,caption,yes,clear,no,no,no,ACCEPT,题注末词“向”清楚
+G135,。,caption,yes,clear,no,no,no,ACCEPT,题注终止句号为正确全角码点

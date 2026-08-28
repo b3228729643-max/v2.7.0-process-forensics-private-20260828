@@ -1,0 +1,68 @@
+{
+  "schema": "P602_CONTROLLER_STATIC_FREEZE_V3B_V1",
+  "status": "P602_CONTROLLER_STATIC_PREFLIGHT_V3B_READY_FOR_MAIN_REVIEW",
+  "old_v3_status": "STATIC_REJECT_UNCHANGED_HISTORY",
+  "static_package_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\controller_static_preflight_v3b",
+  "future_candidate_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v3b",
+  "future_cache_root": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_v3b",
+  "future_candidate_root_exists_at_freeze": false,
+  "future_cache_root_exists_at_freeze": false,
+  "controller_executed": false,
+  "kpsewhich_executed": false,
+  "texlua_executed": false,
+  "tex_engine_processes_started": 0,
+  "controller_lint": {
+    "powershell_ast_parse_errors": 0,
+    "syntactic_process_start_sites": 1,
+    "build_helper_callsites": 1,
+    "kpse_helper_callsites": 1,
+    "start_process_cmdlet_sites": 0,
+    "while_loop_sites": 0,
+    "do_loop_sites": 0,
+    "self_recursion_sites": 0,
+    "result_write_is_in_finally": true,
+    "post_tex_process_scan_precedes_result_write": true
+  },
+  "runtime_evidence_model": {
+    "preclaim_gate": "cache-root/PREBUILD_KPSE_GATE.json before candidate root",
+    "candidate_gate_copy": "future-root/00_control/PREBUILD_KPSE_GATE.json before claim",
+    "claim": "future-root/00_control/INVOCATION_CLAIM.json",
+    "start": "future-root/00_control/DIRECT_INVOCATION_START.json immediately after successful Process.Start",
+    "result": "future-root/00_control/DIRECT_INVOCATION_RESULT.json in finally before every post-start throw or return"
+  },
+  "files_before_marker": [
+    {
+      "path": "controller/P602_CONTROLLED_BUILD_V3B.ps1",
+      "bytes": 18943,
+      "sha256": "E31A2509B5C26099E8A3A8E580DCAF3F0D4F67E5C8FF55B86DC910C4C8EC79F9",
+      "mtime_utc_ticks": 639232357402141250
+    },
+    {
+      "path": "HANDOFF.md",
+      "bytes": 1075,
+      "sha256": "CD2AF3B172810C1004DB23177AF2DF6F1D0FDBE603524B604DFDD407BCCD4CAF",
+      "mtime_utc_ticks": 639232356286683652
+    },
+    {
+      "path": "STATIC_DRY_RUN_REPORT.md",
+      "bytes": 5800,
+      "sha256": "D02783DDEB1B24CBFCA02C338ACEC78409FE76C0F6B0B3B4159B8D3AF913C2F8",
+      "mtime_utc_ticks": 639232356280088781
+    },
+    {
+      "path": "V3_STATIC_REJECT_CORRECTION.md",
+      "bytes": 1802,
+      "sha256": "9343B06B2F921D45A63458A0BFA94123E104886B6FA65ED86644AD39FE7AD461",
+      "mtime_utc_ticks": 639232356283375616
+    }
+  ],
+  "frozen_source_sha256": "2B15B4BEEA7A922FEE24259678DBAE2A54915955915E6714A350122A6251E349",
+  "frozen_wrapper_sha256": "AFE3464AEA950331908CD3C56DD0392A6D5010138C4EE9341B78F7FD3E9F7279",
+  "frozen_engine_sha256": "CC944A1DB010B47FCF5CCB5D1B184CBA208FE7FEA9F18BEC414940E6FD3E24A6",
+  "frozen_kpsewhich_sha256": "90E5BD3477FB1AF7F9D1F8C858DE31137AAB4DF57B29928BA82B7D00B2DD85DB",
+  "expected_ordinary_files_after_freeze": 5,
+  "all_five_files_os_readonly_required": true,
+  "freeze_marker_strictly_latest_required": true,
+  "post_attribute_seal_content_writes_allowed": false,
+  "third_build_authorized": false
+}

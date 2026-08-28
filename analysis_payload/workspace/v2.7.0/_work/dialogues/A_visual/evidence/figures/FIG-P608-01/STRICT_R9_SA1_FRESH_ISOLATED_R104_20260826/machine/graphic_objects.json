@@ -1,0 +1,788 @@
+[
+  {
+    "element_id": "G001",
+    "safe_filename": "G001_TOP_X_TICKS",
+    "char": "",
+    "kind": "AXIS_TICK",
+    "name": "TOP_X_TICKS",
+    "panel": "TOP",
+    "role": "AXIS_TICK",
+    "parent_id": "P_TOP_AXIS",
+    "drawing_indices": [
+      6
+    ],
+    "drawing_seqnos": [
+      16
+    ],
+    "bbox_px": [
+      741,
+      1276,
+      1908,
+      1301
+    ],
+    "tight_bbox_px": [
+      743,
+      1280,
+      1906,
+      1298
+    ],
+    "mask_origin_px": [
+      741,
+      1276
+    ],
+    "mask_path": "masks/G001_TOP_X_TICKS_mask.png",
+    "mask_pixels": 182
+  },
+  {
+    "element_id": "G002",
+    "safe_filename": "G002_TOP_Y_TICKS",
+    "char": "",
+    "kind": "AXIS_TICK",
+    "name": "TOP_Y_TICKS",
+    "panel": "TOP",
+    "role": "AXIS_TICK",
+    "parent_id": "P_TOP_AXIS",
+    "drawing_indices": [
+      7
+    ],
+    "drawing_seqnos": [
+      17
+    ],
+    "bbox_px": [
+      732,
+      1057,
+      757,
+      1239
+    ],
+    "tight_bbox_px": [
+      736,
+      1057,
+      755,
+      1239
+    ],
+    "mask_origin_px": [
+      732,
+      1057
+    ],
+    "mask_path": "masks/G002_TOP_Y_TICKS_mask.png",
+    "mask_pixels": 135
+  },
+  {
+    "element_id": "G003",
+    "safe_filename": "G003_TOP_X_AXIS",
+    "char": "",
+    "kind": "AXIS_LINE",
+    "name": "TOP_X_AXIS",
+    "panel": "TOP",
+    "role": "AXIS_LINE",
+    "parent_id": "P_TOP_AXIS",
+    "drawing_indices": [
+      8,
+      9
+    ],
+    "drawing_seqnos": [
+      18,
+      19
+    ],
+    "bbox_px": [
+      741,
+      1277,
+      1908,
+      1300
+    ],
+    "tight_bbox_px": [
+      745,
+      1278,
+      1906,
+      1299
+    ],
+    "mask_origin_px": [
+      741,
+      1277
+    ],
+    "mask_path": "masks/G003_TOP_X_AXIS_mask.png",
+    "mask_pixels": 3675
+  },
+  {
+    "element_id": "G004",
+    "safe_filename": "G004_TOP_Y_AXIS",
+    "char": "",
+    "kind": "AXIS_LINE",
+    "name": "TOP_Y_AXIS",
+    "panel": "TOP",
+    "role": "AXIS_LINE",
+    "parent_id": "P_TOP_AXIS",
+    "drawing_indices": [
+      10,
+      11
+    ],
+    "drawing_seqnos": [
+      20,
+      21
+    ],
+    "bbox_px": [
+      733,
+      1053,
+      756,
+      1292
+    ],
+    "tight_bbox_px": [
+      734,
+      1056,
+      756,
+      1290
+    ],
+    "mask_origin_px": [
+      733,
+      1053
+    ],
+    "mask_path": "masks/G004_TOP_Y_AXIS_mask.png",
+    "mask_pixels": 945
+  },
+  {
+    "element_id": "G005",
+    "safe_filename": "G005_TOP_TRACE_CURVE_AND_MARKERS",
+    "char": "",
+    "kind": "DATA_CURVE",
+    "name": "TOP_TRACE_CURVE_AND_MARKERS",
+    "panel": "TOP",
+    "role": "DATA_CURVE",
+    "parent_id": "P_TOP_DATA",
+    "drawing_indices": [
+      13,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "drawing_seqnos": [
+      26,
+      36,
+      38,
+      40,
+      42,
+      44,
+      46,
+      48,
+      50,
+      52,
+      54,
+      56,
+      58,
+      60,
+      62,
+      64,
+      66,
+      68,
+      70,
+      72,
+      74
+    ],
+    "bbox_px": [
+      734,
+      1067,
+      1915,
+      1273
+    ],
+    "tight_bbox_px": [
+      735,
+      1067,
+      1914,
+      1272
+    ],
+    "mask_origin_px": [
+      734,
+      1067
+    ],
+    "mask_path": "masks/G005_TOP_TRACE_CURVE_AND_MARKERS_mask.png",
+    "mask_pixels": 10352
+  },
+  {
+    "element_id": "G006",
+    "safe_filename": "G006_TOP_WARMUP_BOUNDARY",
+    "char": "",
+    "kind": "REFERENCE_LINE",
+    "name": "TOP_WARMUP_BOUNDARY",
+    "panel": "TOP",
+    "role": "REFERENCE_LINE",
+    "parent_id": "P_WARMUP_BOUNDARY",
+    "drawing_indices": [
+      14
+    ],
+    "drawing_seqnos": [
+      27
+    ],
+    "bbox_px": [
+      1016,
+      1053,
+      1023,
+      1292
+    ],
+    "tight_bbox_px": [
+      1018,
+      1056,
+      1021,
+      1290
+    ],
+    "mask_origin_px": [
+      1016,
+      1053
+    ],
+    "mask_path": "masks/G006_TOP_WARMUP_BOUNDARY_mask.png",
+    "mask_pixels": 521
+  },
+  {
+    "element_id": "G007",
+    "safe_filename": "G007_WARMUP_EQUALS_BAR_UPPER",
+    "char": "",
+    "kind": "MATH_RULE",
+    "name": "WARMUP_EQUALS_BAR_UPPER",
+    "panel": "TOP",
+    "role": "MATH_RULE",
+    "parent_id": "P_WARMUP_FORMULA",
+    "drawing_indices": [
+      15
+    ],
+    "drawing_seqnos": [
+      29
+    ],
+    "bbox_px": [
+      1069,
+      1140,
+      1099,
+      1147
+    ],
+    "tight_bbox_px": [
+      1073,
+      1142,
+      1096,
+      1146
+    ],
+    "mask_origin_px": [
+      1069,
+      1140
+    ],
+    "mask_path": "masks/G007_WARMUP_EQUALS_BAR_UPPER_mask.png",
+    "mask_pixels": 92
+  },
+  {
+    "element_id": "G008",
+    "safe_filename": "G008_WARMUP_EQUALS_BAR_LOWER",
+    "char": "",
+    "kind": "MATH_RULE",
+    "name": "WARMUP_EQUALS_BAR_LOWER",
+    "panel": "TOP",
+    "role": "MATH_RULE",
+    "parent_id": "P_WARMUP_FORMULA",
+    "drawing_indices": [
+      16
+    ],
+    "drawing_seqnos": [
+      30
+    ],
+    "bbox_px": [
+      1069,
+      1160,
+      1099,
+      1167
+    ],
+    "tight_bbox_px": [
+      1073,
+      1162,
+      1096,
+      1165
+    ],
+    "mask_origin_px": [
+      1069,
+      1160
+    ],
+    "mask_path": "masks/G008_WARMUP_EQUALS_BAR_LOWER_mask.png",
+    "mask_pixels": 69
+  },
+  {
+    "element_id": "G009",
+    "safe_filename": "G009_RETAIN_EQUALS_BAR_UPPER",
+    "char": "",
+    "kind": "MATH_RULE",
+    "name": "RETAIN_EQUALS_BAR_UPPER",
+    "panel": "TOP",
+    "role": "MATH_RULE",
+    "parent_id": "P_RETAIN_ANNOTATION",
+    "drawing_indices": [
+      17
+    ],
+    "drawing_seqnos": [
+      33
+    ],
+    "bbox_px": [
+      1474,
+      1098,
+      1504,
+      1105
+    ],
+    "tight_bbox_px": [
+      1478,
+      1100,
+      1501,
+      1104
+    ],
+    "mask_origin_px": [
+      1474,
+      1098
+    ],
+    "mask_path": "masks/G009_RETAIN_EQUALS_BAR_UPPER_mask.png",
+    "mask_pixels": 92
+  },
+  {
+    "element_id": "G010",
+    "safe_filename": "G010_RETAIN_EQUALS_BAR_LOWER",
+    "char": "",
+    "kind": "MATH_RULE",
+    "name": "RETAIN_EQUALS_BAR_LOWER",
+    "panel": "TOP",
+    "role": "MATH_RULE",
+    "parent_id": "P_RETAIN_ANNOTATION",
+    "drawing_indices": [
+      18
+    ],
+    "drawing_seqnos": [
+      34
+    ],
+    "bbox_px": [
+      1474,
+      1118,
+      1504,
+      1125
+    ],
+    "tight_bbox_px": [
+      1478,
+      1120,
+      1501,
+      1123
+    ],
+    "mask_origin_px": [
+      1474,
+      1118
+    ],
+    "mask_path": "masks/G010_RETAIN_EQUALS_BAR_LOWER_mask.png",
+    "mask_pixels": 69
+  },
+  {
+    "element_id": "G011",
+    "safe_filename": "G011_BOTTOM_X_TICKS",
+    "char": "",
+    "kind": "AXIS_TICK",
+    "name": "BOTTOM_X_TICKS",
+    "panel": "BOTTOM",
+    "role": "AXIS_TICK",
+    "parent_id": "P_BOTTOM_AXIS",
+    "drawing_indices": [
+      39
+    ],
+    "drawing_seqnos": [
+      78
+    ],
+    "bbox_px": [
+      741,
+      1639,
+      1908,
+      1663
+    ],
+    "tight_bbox_px": [
+      743,
+      1642,
+      1906,
+      1661
+    ],
+    "mask_origin_px": [
+      741,
+      1639
+    ],
+    "mask_path": "masks/G011_BOTTOM_X_TICKS_mask.png",
+    "mask_pixels": 195
+  },
+  {
+    "element_id": "G012",
+    "safe_filename": "G012_BOTTOM_Y_TICKS",
+    "char": "",
+    "kind": "AXIS_TICK",
+    "name": "BOTTOM_Y_TICKS",
+    "panel": "BOTTOM",
+    "role": "AXIS_TICK",
+    "parent_id": "P_BOTTOM_AXIS",
+    "drawing_indices": [
+      40
+    ],
+    "drawing_seqnos": [
+      79
+    ],
+    "bbox_px": [
+      732,
+      1467,
+      757,
+      1629
+    ],
+    "tight_bbox_px": [
+      736,
+      1467,
+      755,
+      1629
+    ],
+    "mask_origin_px": [
+      732,
+      1467
+    ],
+    "mask_path": "masks/G012_BOTTOM_Y_TICKS_mask.png",
+    "mask_pixels": 193
+  },
+  {
+    "element_id": "G013",
+    "safe_filename": "G013_BOTTOM_X_AXIS",
+    "char": "",
+    "kind": "AXIS_LINE",
+    "name": "BOTTOM_X_AXIS",
+    "panel": "BOTTOM",
+    "role": "AXIS_LINE",
+    "parent_id": "P_BOTTOM_AXIS",
+    "drawing_indices": [
+      41,
+      42
+    ],
+    "drawing_seqnos": [
+      80,
+      81
+    ],
+    "bbox_px": [
+      741,
+      1640,
+      1908,
+      1662
+    ],
+    "tight_bbox_px": [
+      745,
+      1641,
+      1906,
+      1661
+    ],
+    "mask_origin_px": [
+      741,
+      1640
+    ],
+    "mask_path": "masks/G013_BOTTOM_X_AXIS_mask.png",
+    "mask_pixels": 2599
+  },
+  {
+    "element_id": "G014",
+    "safe_filename": "G014_BOTTOM_Y_AXIS",
+    "char": "",
+    "kind": "AXIS_LINE",
+    "name": "BOTTOM_Y_AXIS",
+    "panel": "BOTTOM",
+    "role": "AXIS_LINE",
+    "parent_id": "P_BOTTOM_AXIS",
+    "drawing_indices": [
+      43,
+      44
+    ],
+    "drawing_seqnos": [
+      82,
+      83
+    ],
+    "bbox_px": [
+      733,
+      1415,
+      756,
+      1654
+    ],
+    "tight_bbox_px": [
+      737,
+      1418,
+      756,
+      1652
+    ],
+    "mask_origin_px": [
+      733,
+      1415
+    ],
+    "mask_path": "masks/G014_BOTTOM_Y_AXIS_mask.png",
+    "mask_pixels": 942
+  },
+  {
+    "element_id": "G015",
+    "safe_filename": "G015_BOTTOM_RUNNING_MEAN_CURVE_AND_MARKERS",
+    "char": "",
+    "kind": "DATA_CURVE",
+    "name": "BOTTOM_RUNNING_MEAN_CURVE_AND_MARKERS",
+    "panel": "BOTTOM",
+    "role": "DATA_CURVE",
+    "parent_id": "P_BOTTOM_DATA",
+    "drawing_indices": [
+      46,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63
+    ],
+    "drawing_seqnos": [
+      94,
+      98,
+      100,
+      102,
+      104,
+      106,
+      108,
+      110,
+      112,
+      114,
+      116,
+      118,
+      120,
+      122,
+      124,
+      126
+    ],
+    "bbox_px": [
+      1039,
+      1485,
+      1915,
+      1584
+    ],
+    "tight_bbox_px": [
+      1041,
+      1487,
+      1914,
+      1583
+    ],
+    "mask_origin_px": [
+      1039,
+      1485
+    ],
+    "mask_path": "masks/G015_BOTTOM_RUNNING_MEAN_CURVE_AND_MARKERS_mask.png",
+    "mask_pixels": 8049
+  },
+  {
+    "element_id": "G016",
+    "safe_filename": "G016_BOTTOM_WARMUP_BOUNDARY",
+    "char": "",
+    "kind": "REFERENCE_LINE",
+    "name": "BOTTOM_WARMUP_BOUNDARY",
+    "panel": "BOTTOM",
+    "role": "REFERENCE_LINE",
+    "parent_id": "P_WARMUP_BOUNDARY",
+    "drawing_indices": [
+      47
+    ],
+    "drawing_seqnos": [
+      95
+    ],
+    "bbox_px": [
+      1016,
+      1415,
+      1023,
+      1654
+    ],
+    "tight_bbox_px": [
+      1018,
+      1418,
+      1021,
+      1652
+    ],
+    "mask_origin_px": [
+      1016,
+      1415
+    ],
+    "mask_path": "masks/G016_BOTTOM_WARMUP_BOUNDARY_mask.png",
+    "mask_pixels": 509
+  },
+  {
+    "element_id": "G017",
+    "safe_filename": "G017_BOTTOM_TARGET_LINE",
+    "char": "",
+    "kind": "REFERENCE_LINE",
+    "name": "BOTTOM_TARGET_LINE",
+    "panel": "BOTTOM",
+    "role": "REFERENCE_LINE",
+    "parent_id": "P_TARGET_LINE",
+    "drawing_indices": [
+      48
+    ],
+    "drawing_seqnos": [
+      96
+    ],
+    "bbox_px": [
+      1016,
+      1518,
+      1908,
+      1525
+    ],
+    "tight_bbox_px": [
+      1019,
+      1519,
+      1895,
+      1525
+    ],
+    "mask_origin_px": [
+      1016,
+      1518
+    ],
+    "mask_path": "masks/G017_BOTTOM_TARGET_LINE_mask.png",
+    "mask_pixels": 1569
+  },
+  {
+    "element_id": "G018",
+    "safe_filename": "G018_BOTTOM_YLABEL_OVERLINE",
+    "char": "",
+    "kind": "MATH_RULE",
+    "name": "BOTTOM_YLABEL_OVERLINE",
+    "panel": "BOTTOM",
+    "role": "MATH_RULE",
+    "parent_id": "P_BOTTOM_YLABEL",
+    "drawing_indices": [
+      64
+    ],
+    "drawing_seqnos": [
+      129
+    ],
+    "bbox_px": [
+      505,
+      1509,
+      545,
+      1516
+    ],
+    "tight_bbox_px": [
+      509,
+      1511,
+      541,
+      1514
+    ],
+    "mask_origin_px": [
+      505,
+      1509
+    ],
+    "mask_path": "masks/G018_BOTTOM_YLABEL_OVERLINE_mask.png",
+    "mask_pixels": 96
+  },
+  {
+    "element_id": "G019",
+    "safe_filename": "G019_BOTTOM_TITLE_OVERLINE",
+    "char": "",
+    "kind": "MATH_RULE",
+    "name": "BOTTOM_TITLE_OVERLINE",
+    "panel": "BOTTOM",
+    "role": "MATH_RULE",
+    "parent_id": "P_BOTTOM_TITLE",
+    "drawing_indices": [
+      65
+    ],
+    "drawing_seqnos": [
+      132
+    ],
+    "bbox_px": [
+      1465,
+      1317,
+      1504,
+      1324
+    ],
+    "tight_bbox_px": [
+      1469,
+      1319,
+      1501,
+      1322
+    ],
+    "mask_origin_px": [
+      1465,
+      1317
+    ],
+    "mask_path": "masks/G019_BOTTOM_TITLE_OVERLINE_mask.png",
+    "mask_pixels": 96
+  },
+  {
+    "element_id": "G020",
+    "safe_filename": "G020_TOP_HATCH_BACKGROUND",
+    "char": "",
+    "kind": "BACKGROUND_TEXTURE",
+    "name": "TOP_HATCH_BACKGROUND",
+    "panel": "TOP",
+    "role": "BACKGROUND_TEXTURE",
+    "parent_id": "P_TOP_HATCH",
+    "drawing_indices": [],
+    "drawing_seqnos": [],
+    "source_only_path": true,
+    "bbox_px": [
+      743,
+      1055,
+      1021,
+      1290
+    ],
+    "tight_bbox_px": [
+      743,
+      1056,
+      1020,
+      1290
+    ],
+    "mask_origin_px": [
+      743,
+      1055
+    ],
+    "mask_path": "masks/G020_TOP_HATCH_BACKGROUND_mask.png",
+    "mask_pixels": 14091
+  },
+  {
+    "element_id": "G021",
+    "safe_filename": "G021_BOTTOM_HATCH_BACKGROUND",
+    "char": "",
+    "kind": "BACKGROUND_TEXTURE",
+    "name": "BOTTOM_HATCH_BACKGROUND",
+    "panel": "BOTTOM",
+    "role": "BACKGROUND_TEXTURE",
+    "parent_id": "P_BOTTOM_HATCH",
+    "drawing_indices": [],
+    "drawing_seqnos": [],
+    "source_only_path": true,
+    "bbox_px": [
+      743,
+      1417,
+      1021,
+      1652
+    ],
+    "tight_bbox_px": [
+      743,
+      1418,
+      1020,
+      1652
+    ],
+    "mask_origin_px": [
+      743,
+      1417
+    ],
+    "mask_path": "masks/G021_BOTTOM_HATCH_BACKGROUND_mask.png",
+    "mask_pixels": 14674
+  }
+]

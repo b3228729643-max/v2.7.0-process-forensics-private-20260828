@@ -1,0 +1,89 @@
+{
+  "status": "STATIC_COMPLETE_SUBSCRIPT_ROLE_PASS_AWAIT_NEW_RASTER",
+  "frozen_key": "PANEL_MAIN|FORMULA_SUBSCRIPT|SUBSCRIPT_MATH",
+  "complete_semantic_denominator": [
+    "two genuine mathematical italic i subscripts",
+    "one genuine digit 0 subscript"
+  ],
+  "base_formula_source_point_size": 11.6,
+  "natural_tex_script_pdf_point_size_reference": 8.08963,
+  "per_glyph_fontsize_override_count": 0,
+  "exact_glyph_taxonomy_split_count": 0,
+  "font_outline_metrics": {
+    "italic_i": {
+      "font": "STIXTwoMath-Regular.otf",
+      "codepoint": "U+1D456",
+      "glyph_name": "u1D456",
+      "bounds_font_units": [
+        52,
+        -9,
+        255,
+        665
+      ],
+      "height_units": 674,
+      "units_per_em": 1000,
+      "point_size": 8.08963,
+      "continuous_height_at_300dpi_px": 22.718377583,
+      "conservative_integer_envelope_px": [
+        22,
+        23
+      ]
+    },
+    "digit_zero": {
+      "font": "STIXTwoMath-Regular.otf",
+      "codepoint": "U+0030",
+      "glyph_name": "zero",
+      "bounds_font_units": [
+        27,
+        -11,
+        468,
+        642
+      ],
+      "height_units": 653,
+      "units_per_em": 1000,
+      "point_size": 8.08963,
+      "continuous_height_at_300dpi_px": 22.010534958,
+      "conservative_integer_envelope_px": [
+        22,
+        23
+      ]
+    }
+  },
+  "zero_to_i_outline_height_ratio": 0.96884272997,
+  "outline_ratio_gate": [
+    0.92,
+    1.08
+  ],
+  "same_project_same_base_size_native_reference": [
+    {
+      "element_id": "G0058",
+      "char": "𝑖",
+      "pdf_font_size_pt": 8.08963,
+      "h_ink_px": 26,
+      "group_median_h_px": 26.0,
+      "ratio": 1.0,
+      "decision": "PASS"
+    },
+    {
+      "element_id": "G0061",
+      "char": "𝑖",
+      "pdf_font_size_pt": 8.08963,
+      "h_ink_px": 26,
+      "group_median_h_px": 26.0,
+      "ratio": 1.0,
+      "decision": "PASS"
+    },
+    {
+      "element_id": "G0063",
+      "char": "0",
+      "pdf_font_size_pt": 8.08963,
+      "h_ink_px": 24,
+      "group_median_h_px": 26.0,
+      "ratio": 0.923076923077,
+      "decision": "PASS"
+    }
+  ],
+  "same_project_native_reference_ratio_zero_to_median": 0.9230769230769231,
+  "same_project_native_reference_pass": true,
+  "note": "This historical same-engine reference supports the static mechanism but is not migrated as the R20 verdict; the next PDF must rebuild all three current IDs and the full denominator."
+}

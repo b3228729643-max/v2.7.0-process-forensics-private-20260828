@@ -1,0 +1,32 @@
+﻿优先级,类别,位置,问题,证据/数量,修复动作
+P0,版本与发布,"common/statlearnbook.sty:2,112,596,890,905",文件名与目录声称v2.6.0，但包信息、版本宏、PDF元数据与内部链接仍为v2.5.0,PDF封面和元数据均显示v2.5.0,统一修改\SLReleaseVersion、ProvidesPackage、内部链接名与构建清单后重新编译
+P0,读者文案,全书37章,内部审计文案“需要解决的阅读阻塞/第一步/核验路线”泄漏到正式讲义，反复中断主线,共935处,全部转为真正的自检问题或删除；内部问题描述保留在审校台账，不进入读者版PDF
+P0,源码结构,static_source_audit.py,静态源码审计未通过,已知22项：7个算法缺少契约、多个算法使用非标准状态、1个重复标签、算法总数阈值不足,按全局问题台账逐项修复，再运行静态审计与编译
+P1,视觉字号,PDF页级审计,部分图、算法与综合页文字过小,19页低于6pt；132页低于8.5pt；54幅图所在页检测到低于8.5pt字符,扩大图宽/拆图，禁止整体缩放导致字号下降，图内源级字号至少9.5pt
+P1,例题文案,例题11.1、12.2、24.1、29.1、33.2,批量模板与题型语义不匹配,5道明确错配；例题24.1还有重复结论,替换为逐题专属“题意整理—方法触发—推导—核验—结论”
+P1,LaTeX字面错误,V1-C01.tex:523,数学环境中出现字面字符串qquad,PDF中显示为qquad,改为\qquad并复查其他未转义命令
+P1,练习解析,V4-C04-S05-02,一处练习解析低于80个可见字符,553题中1题（来自源码自带审计）,补充已知条件、方法选择、必要计算和结论核验
+P2,版面利用,PDF页371、388、399,页面内容偏低，留白较多,3页,检查Needspace、强制分页和不可拆盒子设置
+P2,章首版式,PDF页737、788、823、849,章首地图/先修/符号表高度过大,4页,压缩章首卡片，将非首读内容后移
+P2,PDF可访问性,PDF元数据/结构,PDF未标记(tagged)、未线性优化,PDF结构检查,在最终发布阶段加入标签/书签可访问性复核与线性化优化
+P1,标签,合并总册/v240_p2_batch06.tex:8,标签alg:V5-C08-selection-protocol与V5-C08.tex重复,duplicate_label,删除旧批次残留或改唯一标签
+P1,算法契约,V2-C01.tex:320,alg:V2-C01-primal未被唯一AlgorithmContract包围,algorithm_missing_contract,补齐输入、输出、合法条件、停止与状态契约
+P1,算法契约,V2-C01.tex:519,alg:V2-C01-dual未被唯一AlgorithmContract包围,algorithm_missing_contract,补齐输入、输出、合法条件、停止与状态契约
+P1,算法契约,V2-C02.tex:528,alg:V2-C02-kd-search未被唯一AlgorithmContract包围,algorithm_missing_contract,补齐输入、输出、合法条件、停止与状态契约
+P1,算法契约,V2-C04.tex:742,alg:V2-C04-cart-prune未被唯一AlgorithmContract包围,algorithm_missing_contract,补齐输入、输出、合法条件、停止与状态契约
+P1,算法契约,V2-C05.tex:381,alg:V2-C05-newton未被唯一AlgorithmContract包围,algorithm_missing_contract,补齐输入、输出、合法条件、停止与状态契约
+P1,算法契约,V3-C01.tex:377,alg:V3-C01-bfgs未被唯一AlgorithmContract包围,algorithm_missing_contract,补齐输入、输出、合法条件、停止与状态契约
+P1,算法契约,V3-C02.tex:756,alg:V3-C02-smo未被唯一AlgorithmContract包围,algorithm_missing_contract,补齐输入、输出、合法条件、停止与状态契约
+P1,算法状态,V3-C03.tex:222,"使用非统一状态名：AdaBoost: no_weak_edge, stagnated",contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V3-C03.tex:534,"使用非统一状态名：回归提升树: numerical_stop, stagnated",contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V3-C03.tex:667,"使用非统一状态名：梯度提升: numerical_stop, stagnated",contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V3-C04.tex:349,使用非统一状态名：EM: numerical_stop,contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V3-C04.tex:563,使用非统一状态名：GMM: numerical_stop,contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V3-C04.tex:774,使用非统一状态名：GEM-f: numerical_stop,contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V3-C04.tex:844,使用非统一状态名：GEM-q: numerical_stop,contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V3-C04.tex:921,使用非统一状态名：GEM-block: numerical_stop,contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V3-C05.tex:808,使用非统一状态名：Baum-Welch: numerical_stop,contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V3-C05.tex:934,使用非统一状态名：Viterbi: no_feasible_path,contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V4-C06.tex:510,使用非统一状态名：PLSA-EM: numerical_stop,contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V4-C06.tex:577,使用非统一状态名：PLSA折入: numerical_stop,contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段
+P1,算法状态,V5-C07.tex:708,使用非统一状态名：PageRank幂法: numerical_stop,contract_status_invalid,映射到统一状态枚举，并把诊断原因另设字段

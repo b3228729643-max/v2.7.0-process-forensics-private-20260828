@@ -1,0 +1,51 @@
+{
+  "schema": "FIG-P580-01_ROOT_SA3_REJECTION_v1",
+  "figure_uid": "FIG-P580-01",
+  "candidate_pdf_sha256": "8EED8765A4856C4C197262DEA06E283790FBA8DA906C70C26FC7BD56F6F7E5E8",
+  "source_sha256": "F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161",
+  "sa3_package": "STRICT_R7_SA3_BLIND_R96_20260824",
+  "sa3_claimed_verdict": "PASS_TO_ROOT",
+  "root_verdict": "REJECT_SA3_PASS__FAIL_TO_SA2_NOT_CLOSED",
+  "package_integrity": {
+    "files": 1170,
+    "png_files": 1131,
+    "csv_files": 9,
+    "empty_files": 0,
+    "ads": 0,
+    "files_newer_than_write_stopped": 0,
+    "write_stopped_is_last_write": true,
+    "full_file_hash_manifest_present": false
+  },
+  "hard_failures": {
+    "visible_glyph_denominator": {
+      "expected": 235,
+      "sa3_reported": 234,
+      "omitted_unicode": "U+0338",
+      "omitted_pdf_bbox_pt": [263.38486, 270.76367, 263.38486, 280.92554],
+      "u226a_mask_contains_u0338_overlay": true,
+      "unique_mask_mapping_pass": false
+    },
+    "manual_ledger": {
+      "required_per_glyph_rows": 235,
+      "compliant_rows": 0,
+      "bulk_pass_assignment_found": true,
+      "pass": false
+    },
+    "pair_universe": {
+      "sa1_objects": 260,
+      "sa1_pairs": 33670,
+      "sa1_tt": 27495,
+      "sa1_tg": 5875,
+      "sa1_gg": 300,
+      "sa3_objects": 45,
+      "sa3_pairs": 990,
+      "sa3_tt": 435,
+      "sa3_tg": 450,
+      "sa3_gg": 105,
+      "lossless_mapping_present": false,
+      "pass": false
+    }
+  },
+  "next_role": "SA2",
+  "strict_final_count_after_root_audit": "0/99"
+}

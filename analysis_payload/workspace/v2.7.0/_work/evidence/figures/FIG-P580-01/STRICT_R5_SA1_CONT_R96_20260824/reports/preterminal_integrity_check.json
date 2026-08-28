@@ -1,0 +1,141 @@
+{
+  "figure_id": "FIG-P580-01",
+  "stage": "PRETERMINAL_INTEGRITY_CHECK",
+  "all_pass": true,
+  "source_sha256": "F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161",
+  "pdf_sha256": "8EED8765A4856C4C197262DEA06E283790FBA8DA906C70C26FC7BD56F6F7E5E8",
+  "records": [
+    {
+      "gate": "FROZEN_SOURCE_SHA256",
+      "pass": true,
+      "detail": {
+        "actual": "F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161",
+        "expected": "F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161"
+      }
+    },
+    {
+      "gate": "AUTHORITY_PDF_PRESENT",
+      "pass": true,
+      "detail": {
+        "pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r96_fullbook\\main_full.pdf",
+        "sha256": "8EED8765A4856C4C197262DEA06E283790FBA8DA906C70C26FC7BD56F6F7E5E8"
+      }
+    },
+    {
+      "gate": "FLS_AND_SCOPE_RECORD",
+      "pass": true,
+      "detail": "identity record preserves FLS, page, and source identity"
+    },
+    {
+      "gate": "FONT_AUDIT_235_ALL_PASS",
+      "pass": true,
+      "detail": {
+        "rows": 235
+      }
+    },
+    {
+      "gate": "GLYPH_ENUMERATION_235_UNIQUE",
+      "pass": true,
+      "detail": {
+        "map_rows": 235,
+        "unique_ids": 235
+      }
+    },
+    {
+      "gate": "MANUAL_GLYPH_TRI_VIEW_235_OF_235",
+      "pass": true,
+      "detail": {
+        "ledger_rows": 235
+      }
+    },
+    {
+      "gate": "CONTACT_SHEET_COVERAGE_30",
+      "pass": true,
+      "detail": {
+        "sheets": 30
+      }
+    },
+    {
+      "gate": "NATIVE_MASKS_235_PLUS_25_NONEMPTY",
+      "pass": true,
+      "detail": {
+        "glyph_masks": 235,
+        "vector_masks": 25,
+        "nonempty": 260
+      }
+    },
+    {
+      "gate": "ALL_UNORDERED_PAIRS_INCLUDING_GG",
+      "pass": true,
+      "detail": {
+        "objects": 260,
+        "pairs": 33670,
+        "gg_pairs": 300
+      }
+    },
+    {
+      "gate": "RAW_OVERLAP_CLASSIFICATION_48_NAMED_GG",
+      "pass": true,
+      "detail": {
+        "raw_overlap_rows": 48,
+        "same_parent": 0,
+        "non_GG": 0,
+        "unlisted": 0
+      }
+    },
+    {
+      "gate": "MANUAL_CRITICAL_RELATIONS_212_OF_212",
+      "pass": true,
+      "detail": {
+        "rows": 212,
+        "classes": {
+          "TT": 152,
+          "TG": 1,
+          "GG": 59
+        },
+        "modes": {
+          "COMPONENT_100PCT_TRI_VIEW": 152,
+          "DIRECT_8X_OVERLAY": 60
+        }
+      }
+    },
+    {
+      "gate": "SAME_PARENT_ALLOCATION_RECORD",
+      "pass": true,
+      "detail": {
+        "allocations": 4
+      }
+    },
+    {
+      "gate": "LOW_PROFILE_MANUAL_CALIBRATION",
+      "pass": true,
+      "detail": "G0199 manual calibration record present"
+    },
+    {
+      "gate": "FOUR_VIEW_MATH_COORDINATION_MANUAL",
+      "pass": true,
+      "detail": "four-view/manual-semantic closure present"
+    },
+    {
+      "gate": "MACHINE_NATIVE_GATE_SUMMARY",
+      "pass": true,
+      "detail": {
+        "object_count": 260,
+        "pair_count": 33670,
+        "gg_pair_count": 300,
+        "critical_pair_count": 212,
+        "illegal_overlap_pair_count": 0,
+        "illegal_overlap_pixel_count": 0,
+        "intentional_overlap_pair_count": 48,
+        "intentional_overlap_pixel_count": 2471,
+        "clearance_failure_pair_count": 0,
+        "empty_mask_pair_count": 0
+      }
+    },
+    {
+      "gate": "NO_PREMATURE_WRITE_STOPPED",
+      "pass": true,
+      "detail": "terminal stop marker absent before terminal decision"
+    }
+  ]
+}

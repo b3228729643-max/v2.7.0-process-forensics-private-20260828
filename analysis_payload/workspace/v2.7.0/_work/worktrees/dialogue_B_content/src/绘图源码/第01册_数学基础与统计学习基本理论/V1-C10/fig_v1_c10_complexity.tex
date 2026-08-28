@@ -1,0 +1,62 @@
+% v2.3.1 figure UID: FIG-P157-01
+% Proposed post-v2.3.1 polish for FIG-P157-01: protect key-label size and stroke hierarchy.
+\tikzset{
+  slfig-FIG-P157-01/.style={every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P157-01-direct/.style={slfig direct label,
+    font=\fontsize{9.2pt}{10.9pt}\selectfont,
+    fill=white,fill opacity=.90,text opacity=1,inner sep=.9pt},
+  slfig-FIG-P157-01-key/.style={font=\fontsize{9.2pt}{10.9pt}\selectfont,
+    fill=white,fill opacity=.90,text opacity=1,inner sep=.8pt},
+  slfig-FIG-P157-01-region/.style={font=\fontsize{8.8pt}{10.4pt}\selectfont}
+}
+\pgfplotsset{slfig-FIG-P157-01-axis/.style={
+  tick label style={font=\fontsize{8.6pt}{10.2pt}\selectfont},
+  label style={font=\fontsize{9.4pt}{11.1pt}\selectfont},
+  xlabel style={at={(axis description cs:.5,-.18)},anchor=north},
+  clip=false}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P157-01]
+\begin{axis}[slfig-FIG-P157-01-axis,
+  slfig axis,
+  width=.85\linewidth,height=.47\linewidth,
+  xmin=0,xmax=10,ymin=0,ymax=4.35,
+  axis lines=left,
+  xlabel={模型复杂度},ylabel={预测误差},
+  xtick=\empty,ytick=\empty,
+  axis on top,
+  clip=false,
+]
+  \path[fill=SLBlue!3] (axis cs:0,0) rectangle (axis cs:3.65,4.35);
+  \path[fill=SLGold!5] (axis cs:3.65,0) rectangle (axis cs:6.70,4.35);
+  \path[fill=SLRed!3] (axis cs:6.70,0) rectangle (axis cs:10,4.35);
+  \addplot[draw=SLBlue,line width=1.00pt,domain=0:10,samples=241]
+    {0.36+3.35*exp(-0.34*x)};
+  \addplot[draw=SLTeal,line width=1.05pt,dash pattern=on 4pt off 2.4pt,
+    domain=0:10,samples=241]
+    {1.08+0.105*(x-5.25)^2};
+  \addplot[slfig reference,line width=.70pt,dash pattern=on 3pt off 2pt]
+    coordinates {(5.25,0) (5.25,1.08)};
+  \addplot[only marks,mark=*,mark size=2.4pt,draw=SLGold,fill=SLGold]
+    coordinates {(5.25,1.08)};
+  \draw[draw=SLBlue,line width=.48pt]
+    (axis cs:7.15,.655)--(axis cs:7.35,.90);
+  \node[slfig-FIG-P157-01-direct,fill=none,text=SLBlue,anchor=west]
+    at (axis cs:7.43,1.02)
+    {训练误差：单调下降};
+  \node[slfig-FIG-P157-01-direct,text=SLTeal,anchor=west] at (axis cs:3.9,2.2)
+    {验证误差：先降后升};
+  \node[slfig-FIG-P157-01-key,text=SLGold,anchor=south] at (axis cs:5.25,1.18)
+    {最低验证误差};
+  \node[slfig-FIG-P157-01-key,anchor=north] at (axis cs:5.25,-.07)
+    {选择复杂度};
+  \node[slfig-FIG-P157-01-region,text=SLGray,anchor=north]
+    at (axis cs:1.82,-.44) {欠拟合};
+  \node[slfig-FIG-P157-01-region,text=SLGold,anchor=north]
+    at (axis cs:5.18,-.44) {合适};
+  \node[slfig-FIG-P157-01-region,text=SLRed,anchor=north]
+    at (axis cs:8.35,-.44) {过拟合};
+\end{axis}
+\end{tikzpicture}
+\caption{模型复杂度增加时训练误差通常下降，而验证误差可能先降后升。}\label{fig:V1-C10-complexity}
+\end{figure}

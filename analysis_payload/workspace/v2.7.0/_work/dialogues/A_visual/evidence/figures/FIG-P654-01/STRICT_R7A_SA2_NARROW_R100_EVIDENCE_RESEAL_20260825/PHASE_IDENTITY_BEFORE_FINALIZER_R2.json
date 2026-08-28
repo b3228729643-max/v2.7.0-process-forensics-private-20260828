@@ -1,0 +1,30 @@
+{
+  "phase": "BEFORE_PACKAGE_FINALIZER_R2_EXECUTION",
+  "attempt_1_preserved": {
+    "relative_path": "PARSE_CHECK.json",
+    "bytes": 4861,
+    "mtime_utc": "2026-08-24T22:05:38.3058577Z",
+    "sha256": "209DA56FB4A98D4F43BE300162DE40A7207F1CCEC600DF1E04B7E69C221583E7",
+    "failure": "CURRENT_EXTERNAL_CHILD_STDOUT.json is valid CP936/GBK JSON bytes but not UTF-8"
+  },
+  "finalizer_r2": {
+    "relative_path": "tools/package_finalizer.py",
+    "bytes": 10315,
+    "mtime_utc": "2026-08-24T22:06:49.5621920Z",
+    "sha256": "F20FCACEA4C52FBFC5CBDB04ACC7E11CAC8376AD749EB0953E7655E031ECDB54",
+    "only_behavioral_change": "For JSON only, try UTF-8-SIG first; on UnicodeDecodeError use GBK/CP936 and record relative path, raw-byte SHA-256, and decoding method. R2 seal metadata uses distinct names."
+  },
+  "unchanged_consumer_validator": {
+    "bytes": 10921,
+    "sha256": "C9AD2D36DA7B87E32F4E63001FC5755DABC275C494A6B9094C1011F9E60344C1"
+  },
+  "unchanged_consumer_result": {
+    "bytes": 10450,
+    "sha256": "7EE826FE14A1DE553407BD310B8C341A5D4A6E35518425C972650CBE3945131B"
+  },
+  "unchanged_explicit_result": {
+    "bytes": 1291,
+    "sha256": "2941F44675B9367D9AFD23FEC1A534352285E2DEE2382F29169EAF66090D6BD6"
+  },
+  "manual_ledgers_modified_since_consumer": false
+}

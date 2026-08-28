@@ -1,0 +1,14 @@
+CHECK_ID,OBJECT,COMPUTATION,ACTUAL,EXPECTED,TOLERANCE,PASS_FAIL
+M01,H center line,"g(x)=-0.7*x1+x2-0.2 on x2=0.7*x1+0.2",0,0,1e-12,PASS
+M02,H plus line,"g(x) on x2=0.7*x1+1.2",1,1,1e-12,PASS
+M03,H minus line,"g(x) on x2=0.7*x1-0.8",-1,-1,1e-12,PASS
+M04,positive support vector (1.5;2.25),g(x),1.0000000000000002,1,1e-12,PASS
+M05,positive support vector (3.7;3.79),g(x),1.0000000000000002,1,1e-12,PASS
+M06,negative support vector (2.2;0.74),g(x),-1,-1,1e-12,PASS
+M07,negative support vector (4.3;2.21),g(x),-0.9999999999999998,-1,1e-12,PASS
+M08,remaining positive samples,"min g(x)",1.37,">1",0,PASS
+M09,remaining negative samples,"max g(x)",-1.09,"<-1",0,PASS
+M10,margin-arrow lower endpoint,"g(3.4698;1.6289)",-0.99996,-1,0.0001,PASS
+M11,margin-arrow upper endpoint,"g(2.5302;2.9711)",0.99996,1,0.0001,PASS
+M12,margin-arrow length,"distance between endpoints",1.6383983032,"2/sqrt(0.7^2+1)=1.6384638410",0.0001,PASS
+M13,w arrow direction,"endpoint difference",(-0.7;1.0),"normal vector (-0.7;1.0)",0,PASS

@@ -1,0 +1,11 @@
+panel,role,script,reviewer,sheets_opened,effective_pt_summary,ink_height_summary,d_e_status,crowding_or_harmony,decision,note
+LEFT,PANEL_TITLE,CJK,R106-SA1,glyph_contact_01,10.4 pt,mostly 38-43 px with visually clear 6 px 一,advisory under R168,natural hierarchy,PASS_ROLE,No semantic or readability defect.
+RIGHT,PANEL_TITLE,CJK,R106-SA1,glyph_contact_02,10.4 pt,38-43 px,within role expectation,natural hierarchy,PASS_ROLE,Matches left title weight and scale.
+LEFT,NODE_LABEL,MATH_LOWER,R106-SA1,glyph_contact_02,10.2 pt,30-39 px,within role expectation,natural hierarchy,PASS_ROLE,Node labels legible and balanced.
+LEFT,EDGE_NOTE,MATH,R106-SA1,glyph_contact_02-03,9.5 pt,arrows 16 px with adjacent letters 28-36 px,advisory under R168,natural hierarchy,PASS_ROLE,Arrows are visibly clear; not a hard failure.
+LEFT,NOTE,CJK_AND_MATH,R106-SA1,glyph_contact_03-05,9.5 pt,CJK 34-35 px and math 10-37 px,low-profile marks advisory,text is readable but placement collides,FAIL_GEOMETRY_ROLE,Font itself is readable; the note placement intersects node/panel structures.
+LEFT,FORMULA,MATH,R106-SA1,glyph_contact_05-12,12 pt base with natural TeX scripts,14-51 px,small relations advisory,too-tight vertical relations,FAIL_GEOMETRY_ROLE,Formula semantics correct but independent rows and matrix border collide.
+LEFT,MATRIX_CELL,MATH,R106-SA1,glyph_contact_08-10,10.2 pt,27-34 px,within role expectation,natural glyph scale,PASS_ROLE,Cell contents are readable and centered.
+RIGHT,NOTE,CJK_AND_MATH,R106-SA1,glyph_contact_12-13,9.5 pt,CJK 34 px and math 10-37 px,low-profile marks advisory,too close to matrix,FAIL_GEOMETRY_ROLE,Node-order note intersects P-matrix top borders.
+RIGHT,FORMULA,MATH,R106-SA1,glyph_contact_13-18,12 pt base with natural TeX scripts,14-48 px,small relations advisory,too-tight consecutive rows,FAIL_GEOMETRY_ROLE,P and M glyphs intersect across independent formula rows; superscript T intersects matrix.
+RIGHT,MATRIX_CELL,MATH,R106-SA1,glyph_contact_13-14,10.2 pt,27-34 px,within role expectation,natural glyph scale,PASS_ROLE,Cell contents are readable and centered.

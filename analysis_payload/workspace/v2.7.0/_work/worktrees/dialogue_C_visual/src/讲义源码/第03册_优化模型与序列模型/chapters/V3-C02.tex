@@ -1,0 +1,1314 @@
+% STAGE11-CHAPTER: V3-C02
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V3-C02-CH01}; CH-02=\label{struct:V3-C02-CH02}; CH-03=\label{struct:V3-C02-CH03}; CH-04=\label{struct:V3-C02-CH04}; CH-05=\label{struct:V3-C02-CH05}; CH-06=\label{struct:V3-C02-CH06}; CH-07=\label{struct:V3-C02-CH07}; CH-08=\label{struct:V3-C02-CH08}; CH-09=\label{struct:V3-C02-CH09}; CH-10=\label{struct:V3-C02-CH10}; CH-11=\label{struct:V3-C02-CH11}; CH-12=\label{struct:V3-C02-CH12}; CH-13=\label{struct:V3-C02-CH13}; CH-14=\label{struct:V3-C02-CH14}; CH-15=\label{struct:V3-C02-CH15}; CH-16=\label{struct:V3-C02-CH16}; CH-17=\label{struct:V3-C02-CH17}; CH-18=\label{struct:V3-C02-CH18}; CH-19=\label{struct:V3-C02-CH19}; CH-20=\label{struct:V3-C02-CH20}; CH-21=\label{struct:V3-C02-CH21}; CH-22=\label{struct:V3-C02-CH22}; CH-23=\label{struct:V3-C02-CH23}; CH-24=\label{struct:V3-C02-CH24}; CH-25=\label{struct:V3-C02-CH25}; CH-26=\label{struct:V3-C02-CH26}; CH-27=\label{struct:V3-C02-CH27}; CH-28=\label{struct:V3-C02-CH28}; CH-29=\label{struct:V3-C02-CH29}; CH-30=\label{struct:V3-C02-CH30}; CH-31=\label{struct:V3-C02-CH31}; CH-32=\label{struct:V3-C02-CH32}; CH-33=\label{struct:V3-C02-CH33}; CH-34=\label{struct:V3-C02-CH34}; CH-35=\label{struct:V3-C02-CH35}; CH-36=\label{struct:V3-C02-CH36}; CH-37=\label{struct:V3-C02-CH37}
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=18; source_group=none; supplement=18
+
+\chapter{支持向量机}\label{chap:V3-C02}
+\index{支持向量机}
+\index{间隔最大化}
+\index{核函数}
+\index{序列最小最优化}
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：支持向量机。}支持向量机章地图把“从几何间隔直达原始--对偶、核方法与SMO”作为主线；请为其中首条箭头补出必要条件，并检查终点仍落在本章声明的输出域。\par
+
+\SLChapterOpening{从几何间隔直达原始--对偶、核方法与SMO}{怎样把分类间隔写成有唯一分离超平面的凸优化问题}{能推导硬/软间隔对偶、KKT、核判据与SMO更新}{向量投影、凸二次规划、Lagrange对偶与正定矩阵}{间隔尺度不清时回到\cref{sec:V3-C02-S02,sec:V3-C02-S03}；对偶或核条件失败时回看\cref{sec:V3-C02-S04,sec:V3-C02-S07}}
+\phantomsection\label{struct:V3-C02-CH01}
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}支持向量机的首个可检验目标是“从超平面距离出发区分函数间隔与几何间隔，并把最大几何间隔转化为硬间隔凸二次规划”；请从超平面距离出发区分函数间隔与几何间隔，并把最大几何间隔转化为硬间隔凸二次规划并写出中间结果，再按“中间结果逐项包含首目标“从超平面距离出发区分函数间隔与几何间隔，并把最大几何间隔转化为硬间隔凸二次规划”声明的对象、条件与结论”验收。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 从超平面距离出发区分函数间隔与几何间隔，并把最大几何间隔转化为硬间隔凸二次规划；
+  \item 完整推导原始问题、拉格朗日对偶、强对偶与KKT条件，解释支持向量为何决定分类器；
+  \item 从线性不可分数据推导松弛变量、软间隔对偶、合页损失及不同支持向量的KKT分段状态；
+  \item 掌握核技巧、正定核充要条件、常用核和非线性支持向量机，能够检查Gram矩阵半正定性；
+  \item 掌握SMO两变量解析更新、变量选择、阈值更新、停止条件、复杂度、适用范围和数值退化处理。
+\end{itemize}}
+
+\phantomsection\label{struct:V3-C02-CH02}
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}支持向量机的最短先修明确要求“本章需要向量内积与范数、超平面、点到超平面的距离、凸集与凸函数、凸二次规划、拉格朗日函数、弱对偶与强对偶、Slater条件、KKT条件、正定和半正定矩阵”；请把首项“本章需要向量内积与范数、超平面、点到超平面的距离、凸集与凸函数、凸二次规划、拉格朗日函数、弱对偶与强对偶、Slater条件、KKT条件、正定和半正定矩阵”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章需要向量内积与范数、超平面、点到超平面的距离、凸集与凸函数、凸二次规划、拉格朗日函数、弱对偶与强对偶、Slater条件、KKT条件、正定和半正定矩阵”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章需要向量内积与范数、超平面、点到超平面的距离、凸集与凸函数、凸二次规划、拉格朗日函数、弱对偶与强对偶、Slater条件、KKT条件、正定和半正定矩阵。训练集记为$T=\{(x_i,y_i)\}_{i=1}^{N}$，其中$x_i\in\mathbb R^d$为列向量，$y_i\in\{-1,+1\}$。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V3-C02-CH03}
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}支持向量机先修自检固定核验“能否写出点$x$到超平面$w^Tx+b=0$的距离$|w^Tx+b|/\lVert w\rVert_2$”；请写出点$x$到超平面$w^Tx+b=0$的距离$|w^Tx+b|/\lVert w\rVert_2$并写出中间结果，再按“$w^Tx+b=0$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否写出点$x$到超平面$w^Tx+b=0$的距离$|w^Tx+b|/\lVert w\rVert_2$？
+  \item 能否解释把$(w,b)$同时乘正数为何不改变超平面，却改变函数值？
+  \item 能否为约束$g_i(z)\leq0$写出非负乘子，并列出KKT四类条件？
+  \item 能否用$v^TKv\geq0$判断对称矩阵$K$半正定？
+\end{enumerate}
+若第1、2项未通过，应复习内积与超平面；若第3项未通过，应复习约束优化；若第4项未通过，应复习二次型与谱分解。
+\end{precheckbox}
+
+\phantomsection\label{struct:V3-C02-CH04}
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}支持向量机依赖路线从“内积与超平面 $\to$ 点到平面的距离 $\to$ 几何间隔”进入“间隔最大化 $\to$ 硬间隔原始问题 $\to$ 拉格朗日对偶与KKT”；请写出箭头成立所需的定义域条件，并核对前者输出能作为后者输入。\par
+
+\begin{dependencybox}
+内积与超平面 $\to$ 点到平面的距离 $\to$ 几何间隔；
+间隔最大化 $\to$ 硬间隔原始问题 $\to$ 拉格朗日对偶与KKT；
+允许约束违背 $\to$ 松弛变量 $\to$ 软间隔与合页损失；
+特征映射 $\to$ 内积替换 $\to$ 正定核 $\to$ 非线性支持向量机；
+软间隔对偶 $\to$ 两变量子问题 $\to$ SMO。
+\end{dependencybox}
+
+\begin{keypointbox}[title=模型认识卡：支持向量机]
+\textbf{任务与输入：}二分类，$x\in\mathbb R^d$、$y\in\{-1,+1\}$。\quad
+\textbf{输出类型：}带间隔得分与类别。\par
+\textbf{模型：}线性超平面或支持向量核展开。\quad
+\textbf{策略：}最小化参数范数与合页违约代价。\quad
+\textbf{算法：}原始/对偶凸二次规划，核对偶可用SMO。\par
+\textbf{预测：}取$\sum_i\alpha_i y_iK(x_i,x)+b$的符号。\quad
+\textbf{关键假设与边界：}核的Gram矩阵须半正定；硬间隔要求线性可分，软间隔仍需验证$C$与核参数。
+\end{keypointbox}
+
+\phantomsection\label{struct:V3-C02-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V3-C02
+\index[symbols]{w-b--s7708e44ddd1f@$w,b$：超平面法向量与截距}
+\index[symbols]{g-x--s1e90bb13bc7d@$g(x)$：判别得分$w^Tx+b$或其核展开}
+\index[symbols]{minus-widehat-minus-minus-gamma-minus-i--s3f76b9981b55@$\widehat\gamma_i$：样本函数间隔$y_i(w^Tx_i+b)$}
+\index[symbols]{minus-gamma-minus-i--s7375ba4d2937@$\gamma_i$：样本几何间隔$\widehat\gamma_i/\lVert w\rVert_2$}
+\index[symbols]{minus-alpha-minus-i--sde1cf45a2de8@$\alpha_i$：本章SVM约束的对偶变量；硬间隔时上界为$+\infty$}
+\index[symbols]{minus-xi-minus-i--se6bfb227a2c9@$\xi_i$：第$i$个样本的松弛变量}
+\index[symbols]{c--s4d904fcbb7b6@$C$：软间隔违约惩罚系数}
+\index[symbols]{k-x-z--sc5463f95d740@$K(x,z)$：核函数，等于特征空间内积}
+\index[symbols]{e-i--s3f755b09a2f4@$E_i$：SMO误差$g(x_i)-y_i$}
+\index[symbols]{minus-eta-minus--s3d84f3e0c6ea@$\eta$：本章SMO二变量子问题的曲率$K_{11}+K_{22}-2K_{12}$，不是学习率}
+% STAGE19-SYMBOL-INDEX-END: V3-C02
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$w,b$ & $\mathbb R^d,\mathbb R$ & 超平面法向量与截距\\
+$g(x)$ & $\mathbb R$ & 判别得分$w^Tx+b$或其核展开\\
+$\widehat\gamma_i$ & $\mathbb R$ & 样本函数间隔$y_i(w^Tx_i+b)$\\
+$\gamma_i$ & $\mathbb R$ & 样本几何间隔$\widehat\gamma_i/\lVert w\rVert_2$\\
+$\alpha_i$ & $[0,C]$ & 对偶变量；硬间隔时上界为$+\infty$\\
+$\xi_i$ & $[0,\infty)$ & 第$i$个样本的松弛变量\\
+$C$ & $(0,\infty)$ & 软间隔违约惩罚系数\\
+$K(x,z)$ & $\mathbb R$ & 核函数，等于特征空间内积\\
+$E_i$ & $\mathbb R$ & SMO误差$g(x_i)-y_i$\\
+$\eta$ & $[0,\infty)$ & SMO曲率$K_{11}+K_{22}-2K_{12}$\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-007 L1
+\paragraph{读前自检：支持向量机。}支持向量机把问题限定在“支持向量机在特征空间中学习分离超平面”；请标出$f(x)=\operatorname{sign}g(x)$两侧的形状并完成一次乘法或正交检查，检查是否得到线性、软间隔和核化三种形式共享这条主线。\par
+
+\SLDirectSection{线性可分支持向量机}{sec:V3-C02-S01}
+\phantomsection\label{struct:V3-C02-CH06}
+\knowledgeanchor{SLM-07-00-001}{支持向量机}
+支持向量机在特征空间中学习分离超平面。模型是$g(x)=w^Tx+b$及$f(x)=\operatorname{sign}g(x)$；策略是最大化离训练样本最近的间隔；算法是求解凸二次规划或其对偶。线性、软间隔和核化三种形式共享这条主线。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-008 L1
+\paragraph{读前自检：线性可分支持向量机与硬间隔最大化。}在“若存在$(w,b)$使所有样本满足$y_i(w^Tx_i+b)>0$，训练集线性可分”成立时处理线性可分支持向量机与硬间隔最大化：请标出$y_i(w^Tx_i+b)>0$两侧的形状并完成一次乘法或正交检查，并以可分超平面通常不唯一，硬间隔最大化在规范化后选择离最近样本最远的超平面判定结果。\par
+
+\knowledgeanchor{SLM-07-01-002}{线性可分支持向量机与硬间隔最大化}
+若存在$(w,b)$使所有样本满足$y_i(w^Tx_i+b)>0$，训练集线性可分。可分超平面通常不唯一，硬间隔最大化在规范化后选择离最近样本最远的超平面。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-009 L1
+\paragraph{读前自检：线性可分支持向量机。}线性可分支持向量机所用的明确前提是“对线性可分训练集，通过硬间隔最大化求得$(w^\star,b^\star)$后”；完成标出$w^{\star T}x+b^\star$两侧的形状并完成一次乘法或正交检查后，核对它把“拟合训练标签”和“选择更稳健的分界”合并为一个约束优化问题。\par
+
+\knowledgeanchor{SLM-07-01-003}{线性可分支持向量机}
+\phantomsection\label{struct:V3-C02-CH07}
+% CORE-DERIVATION-PLAN: KN-V3-C18-DERIVATION-001
+\SLKnowledgeBridge{利用分类超平面的正尺度不变性固定函数间隔。}{线性可分样本、$w\neq0$、函数间隔 $y_i(w^{\mathsf T}x_i+b)$ 与几何间隔。}{$(w,b)$ 可同乘任意正数而不改变分类边界；最小函数间隔为正。}{先把 $(w,b)$ 统一缩放，使最小函数间隔恰为 $1$。}
+
+\begin{definition}[线性可分支持向量机]\label{def:V3-C02-hard-svm}
+对线性可分训练集，通过硬间隔最大化求得$(w^\star,b^\star)$后，
+\[
+w^{\star T}x+b^\star=0,\qquad
+f(x)=\operatorname{sign}(w^{\star T}x+b^\star)
+\]
+分别称为最大间隔分离超平面与线性可分支持向量机。
+\end{definition}
+
+\phantomsection\label{struct:V3-C02-CH08}
+\textbf{模型。}法向量$w$决定超平面方向，$b$决定位置；得分符号给出类别，得分绝对值只有除以$\lVert w\rVert_2$后才具有距离单位。
+
+\phantomsection\label{struct:V3-C02-CH09}
+\textbf{学习策略。}在能正确分类全部训练样本的超平面中，最大化最小几何间隔。它把“拟合训练标签”和“选择更稳健的分界”合并为一个约束优化问题。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-010 L1
+\paragraph{读前自检：函数间隔和几何间隔。}样本$(x_i,y_i)$关于$(w,b)$的函数间隔为$\widehat\gamma_i=y_i(w^{\mathsf T}x_i+b)$；请计算全部样本的$\widehat\gamma_i$并取最小值，核对训练集函数间隔为$\widehat\gamma=\min_i\widehat\gamma_i$。\par
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-011 L1
+\paragraph{读前自检：函数间隔。}SVM样本函数间隔为$\widehat\gamma_i=y_i(w^{\mathsf T}x_i+b)$，训练集间隔取最小值；请计算两个样本的带符号分数并取$\min_i$，核对共同缩放$(w,b)$会同比缩放函数间隔。\par
+
+\SLReviewSection{超平面、函数间隔与几何间隔}{sec:V3-C02-S02}
+\knowledgeanchor{SLM-07-01-004}{函数间隔和几何间隔}
+\knowledgeanchor{SLM-07-02-001}{函数间隔}
+\begin{definition}[函数间隔]\label{def:V3-C02-functional-margin}
+样本$(x_i,y_i)$关于超平面$(w,b)$的函数间隔为
+\[
+\widehat\gamma_i=y_i(w^Tx_i+b),
+\]
+训练集的函数间隔为$\widehat\gamma=\min_i\widehat\gamma_i$。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C18-CONCEPT-002 L1
+\paragraph{读前自检：几何间隔。}把支持向量机中的几何间隔放在“当$w\neq0$时”下考察：把$\gamma_i$展开一次并检查其类型或边界，并检查展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-07-03-001}{几何间隔}
+\begin{definition}[几何间隔]\label{def:V3-C02-geometric-margin}
+当$w\neq0$时，样本和训练集的几何间隔分别为
+\[
+\gamma_i=\frac{y_i(w^Tx_i+b)}{\lVert w\rVert_2},
+\qquad
+\gamma=\min_i\gamma_i.
+\]
+正确分类时$\gamma_i$等于样本到超平面的距离。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C18-CONCEPT-003 L1
+\paragraph{读前自检：间隔最大化。}硬间隔最大化允许同时缩放$(w,b)$；请把最小函数间隔规范为1，核对最大化几何间隔$1/\lVert w\rVert_2$等价于最小化$\lVert w\rVert_2^2/2$。\par
+% KNOWLEDGE-PLAN: KN-V3-C18-DEFINITION-004 L1
+\paragraph{读前自检：线性可分支持向量机的规范定义。}线性可分SVM的规范原问题为$\min_{w,b}\lVert w\rVert_2^2/2$且$y_i(w^{\mathsf T}x_i+b)\ge1$；请检查一次共同正缩放，核对规范约束消除了尺度自由度。\par
+
+\SLTeachSection{硬间隔最大化与原始问题}{sec:V3-C02-S03}
+\knowledgeanchor{SLM-07-01-005}{间隔最大化}
+\knowledgeanchor{SLM-07-01-001}{线性可分支持向量机的规范定义}
+利用参数尺度自由度，可令训练集最小函数间隔等于1。最大化几何间隔$1/\lVert w\rVert_2$等价于最小化$\lVert w\rVert_2^2/2$。
+
+\phantomsection\label{struct:V3-C02-CH11}
+\begin{derivationgoalbox}
+把最大几何间隔问题转换为标准的硬间隔凸二次规划，并说明每一次等价变换的尺度条件。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+训练集线性可分且$w\neq0$。几何间隔为$\widehat\gamma/\lVert w\rVert_2$；$(w,b)$可同乘任意正数，所以可以固定$\widehat\gamma=1$。
+\end{derivationprepbox}
+
+\textbf{推导第1步：写出几何间隔问题。}
+\[
+\max_{w,b,\gamma}\ \gamma
+\quad\text{s.t.}\quad
+\frac{y_i(w^Tx_i+b)}{\lVert w\rVert_2}\geq\gamma,\ i=1,\ldots,N.
+\]
+\textbf{推导第2步：引入函数间隔。}
+令$\widehat\gamma=\gamma\lVert w\rVert_2$，目标改写为最大化$\widehat\gamma/\lVert w\rVert_2$，约束为$y_i(w^Tx_i+b)\geq\widehat\gamma$。尺度自由度允许固定$\widehat\gamma=1$。
+
+\textbf{推导第3步：改写单调等价目标。}
+在$\widehat\gamma=1$下，最大化$1/\lVert w\rVert_2$等价于最小化$\lVert w\rVert_2$，再等价于最小化光滑目标$\lVert w\rVert_2^2/2$，得到
+\[
+\min_{w,b}\frac12\lVert w\rVert_2^2
+\quad\text{s.t.}\quad y_i(w^Tx_i+b)\geq1,\ i=1,\ldots,N.
+\]
+
+% KNOWLEDGE-PLAN: KN-V3-C18-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：线性可分支持向量机学习算法——最大间隔法。}线性可分支持向量机学习算法——最大间隔法依赖“该问题的目标凸、约束仿射，是凸二次规划”；请据此标出$(w^\star,b^\star)$两侧的形状并完成一次乘法或正交检查，并直接核对求得最优$(w^\star,b^\star)$后返回超平面与符号分类函数。\par
+
+\knowledgeanchor{SLM-07-01-006}{线性可分支持向量机学习算法——最大间隔法}
+该问题的目标凸、约束仿射，是凸二次规划。求得最优$(w^\star,b^\star)$后返回超平面与符号分类函数。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-CONCEPT-004 L1
+\paragraph{读前自检：最大间隔分离超平面的存在唯一性。}最大间隔分离超平面的存在唯一性以“若训练集中两类样本均非空且线性可分”为约束；请把$w^\star$展开一次并检查其类型或边界，并确认最优法向量$w^\star$唯一，最大间隔分离超平面也唯一。\par
+
+\knowledgeanchor{SLM-07-01-007}{最大间隔分离超平面的存在唯一性}
+\phantomsection\label{struct:V3-C02-CH12}
+\begin{theorem}[最大间隔超平面的存在唯一性]\label{thm:V3-C02-hard-unique}
+若训练集中两类样本均非空且线性可分，则硬间隔问题存在最优解；最优法向量$w^\star$唯一，最大间隔分离超平面也唯一。
+\end{theorem}
+
+\phantomsection\label{struct:V3-C02-CH13}
+% KNOWLEDGE-PLAN: KN-V3-C18-PROOF-001 L1
+\paragraph{读前自检：证明：最大间隔超平面的存在唯一性。}先锁定最大间隔超平面的存在唯一性的条件“按最小函数间隔的倒数作正比例缩放，便得到满足规范约束的可行点”：把$L:$用到的关键定义展开并完成下一步变形，所得结果应满足因此最大间隔分离超平面唯一。\par
+
+\begin{proof}
+线性可分性给出严格分离的$(\widetilde w,\widetilde b)$；按最小函数间隔的倒数作正比例缩放，便得到满足规范约束的可行点。取一个目标有界的最小化序列$(w_n,b_n)$。由$\|w_n\|^2/2$有界可知$w_n$有界。任选正类样本$x_+$和负类样本$x_-$，可行性分别给出
+\[
+b_n\geq 1-w_n^Tx_+,
+\qquad
+b_n\leq -1-w_n^Tx_-.
+\]
+右端随有界的$w_n$保持有界，故$b_n$也有界。于是$(w_n,b_n)$存在收敛子列；仿射不等式定义的可行集闭，极限仍可行且由目标连续性达到下确界，因此最优解存在。
+
+若有两个不同最优法向量$w_1,w_2$，取相应$b_1,b_2$，二者的平均仍可行；平方范数严格凸给出
+\[
+\left\|\frac{w_1+w_2}{2}\right\|^2
+<\frac{\lVert w_1\rVert^2+\lVert w_2\rVert^2}{2},
+\]
+与二者最优矛盾，故最优法向量只能是同一个$w^\star$。固定它以后，全部规范约束等价于
+\[
+L:=\max_{i:y_i=1}(1-w^{\star T}x_i)\leq b
+\leq U:=\min_{i:y_i=-1}(-1-w^{\star T}x_i).
+\]
+若$L<U$，取$b_0=(L+U)/2$和$\delta=(U-L)/2>0$，则所有样本都满足
+$y_i(w^{\star T}x_i+b_0)\geq1+\delta$。把$(w^\star,b_0)$同乘$(1+\delta)^{-1}$仍满足规范约束，却把目标严格降为$\|w^\star\|^2/[2(1+\delta)^2]$，与最优性矛盾。故$L=U$且$b^\star=L=U$唯一；因此最大间隔分离超平面唯一。
+\end{proof}
+
+% CORE-DERIVATION-PLAN: KN-V3-C18-DERIVATION-003
+\SLKnowledgeBridge{从松弛变量的驻点条件推出 $0\le\alpha_i\le C$。}{松弛变量 $\xi_i$、间隔乘子 $\alpha_i\ge0$ 与非负约束乘子 $\mu_i\ge0$。}{原目标含 $C\sum_i\xi_i$；约束写为 $1-\xi_i-y_i(w^{\mathsf T}x_i+b)\le0$ 和 $-\xi_i\le0$。}{先对拉格朗日函数关于 $\xi_i$ 求偏导，得到 $C-\alpha_i-\mu_i=0$。}
+
+\begin{SLRunningExample}{RUN-CLS-2D-01}{V3-C02-svm}{贯穿例：四点二维分类数据}{把同一线性可分训练集写成硬间隔约束，并核对最大间隔解与本章存在唯一性假设。}
+\SLReadTranslation{题目不是要任选一条可分直线，而是要在规范约束$y_i(w^{\mathsf T}x_i+b)\ge1$下证明候选达到最小范数。}
+\SLMethodTrigger{成对选择横坐标相反、纵坐标相同的正负样本，相加约束可以直接消去$b$和$w_2$，给出$\lVert w\rVert_2$的下界。}
+精确沿用四个样本及其标签：
+\[
+\begin{array}{c|cccc}
+i&1&2&3&4\\ \hline
+\boldsymbol{x}^{(i)}&(-1,-1)&(-1,1)&(1,-1)&(1,1)\\
+y_i&-1&-1&+1&+1
+\end{array}
+\]
+取$w=(1,0)^{\mathsf T},b=0$时，四个规范化函数间隔都等于
+$y_i(w^{\mathsf T}\boldsymbol{x}^{(i)}+b)=1$，故该点满足硬间隔约束。任一可行解在第二坐标$x_2=-1$的正、负样本上分别满足
+$w_1-w_2+b\geq1$与$w_1+w_2-b\geq1$，相加得$w_1\geq1$，所以$\lVert w\rVert_2\geq1$；上述候选达到下界，因而就是硬间隔最优解。其几何间隔为
+$\min_i y_i(w^{\mathsf T}\boldsymbol{x}^{(i)}+b)/\lVert w\rVert_2=1$。两类均非空且该解严格分隔数据，完全符合本章线性可分假设；这只是训练几何的核对，不把四点结论外推到一般数据。上一站见\SLRunningExampleRef{RUN-CLS-2D-01}{V2-C05-logistic}{逻辑斯谛回归的概率边界表示}。
+\SLStuckHint{先只写两条同一纵坐标上的异类约束；它们相加后立刻得到$w_1\ge1$。}
+\SLTransfer{一般硬间隔题也可先由少量“相对”的异类样本推出范数下界，再核验某个候选同时可行并达到该下界。}
+\end{SLRunningExample}
+
+
+% KNOWLEDGE-PLAN: KN-V3-C18-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：学习的对偶算法。}对学习的对偶算法，条件“从硬间隔原始问题推导只含对偶变量的凸二次规划，并指出每个约束如何产生对偶可行条件”不可省；请把$L(w,b,\alpha)$展开一次并检查其类型或边界，再用展开后的量满足定义中的域、维数或符号限制作检查。\par
+
+\SLTeachSection{拉格朗日对偶、KKT与支持向量}{sec:V3-C02-S04}
+\knowledgeanchor{SLM-07-01-008}{学习的对偶算法}
+% CORE-DERIVATION-PLAN: KN-V3-C18-DERIVATION-002
+\SLKnowledgeBridge{消去 $w,b$，得到只含对偶变量的凸二次规划。}{线性可分训练集、原变量 $(w,b)$ 与约束乘子 $\alpha_i\ge0$。}{存在严格可行点，Slater 条件成立；原约束为 $1-y_i(w^{\mathsf T}x_i+b)\le0$。}{先构造拉格朗日函数，并令其对 $w$、$b$ 的导数为零。}
+
+\begin{derivationgoalbox}
+从硬间隔原始问题推导只含对偶变量的凸二次规划，并指出每个约束如何产生对偶可行条件。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+原问题为最小化$\lVert w\rVert^2/2$，约束写成$1-y_i(w^Tx_i+b)\leq0$；训练集线性可分，所以存在严格可行点，Slater条件保证强对偶。每个不等式乘子$\alpha_i\geq0$。
+\end{derivationprepbox}
+\textbf{推导第1步：构造Lagrange函数。}对约束引入$\alpha_i\geq0$：
+\[
+L(w,b,\alpha)=\frac12\lVert w\rVert^2
++\sum_i\alpha_i\{1-y_i(w^Tx_i+b)\}.
+\]
+\textbf{推导第2步：消去原始变量。}分别对$w,b$求导并令其为零，得到
+\[
+w=\sum_i\alpha_i y_i x_i,\qquad \sum_i\alpha_i y_i=0.
+\]
+\textbf{推导第3步：代回并整理。}把$w$展开代入$L$，二次项与交叉线性项合并，得到等价的对偶最小化
+\[
+\min_\alpha\ \frac12\sum_{i,j}\alpha_i\alpha_jy_iy_jx_i^Tx_j-\sum_i\alpha_i,
+\quad
+\text{s.t. }\sum_i\alpha_iy_i=0,\ \alpha_i\geq0.
+\]
+
+\phantomsection\label{struct:V3-C02-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}线性可分时存在严格可行点，凸问题满足强对偶；原始最优值与对偶最优值相等。对偶变量衡量放松某个间隔约束对最优值的边际影响，只有活动或关键约束具有正权重。
+\end{optimizationbox}
+
+% KNOWLEDGE-PLAN: KN-V3-C18-CONCEPT-006 L1
+\paragraph{读前自检：由对偶解恢复硬间隔原始解。}由对偶解恢复硬间隔原始解把问题限定在“设$\alpha^\star$是对偶最优解，取任意$\alpha_j^\star>0$”；请把$w^\star$展开一次并检查其类型或边界，检查是否得到展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-07-02-002}{由对偶解恢复硬间隔原始解}
+\phantomsection\label{struct:V3-C02-CH15}
+\begin{theorem}[由硬间隔对偶解恢复分类器]\label{thm:V3-C02-dual-recovery}
+设$\alpha^\star$是对偶最优解，取任意$\alpha_j^\star>0$，则
+\[
+w^\star=\sum_i\alpha_i^\star y_ix_i,\qquad
+b^\star=y_j-\sum_i\alpha_i^\star y_i x_i^Tx_j.
+\]
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V3-C18-PROOF-002 L1
+\paragraph{读前自检：证明：由硬间隔对偶解恢复分类器。}在“强对偶使KKT条件成立”成立时处理由硬间隔对偶解恢复分类器：请把$\alpha_j^\star[y_j(w^{\star T}x_j+b^\star)-1]$用到的关键定义展开并完成下一步变形，并以利用$y_j^2=1$解出$b^\star$并代入$w^\star$展开，便得到结论判定结果。\par
+
+\begin{proof}
+强对偶使KKT条件成立。驻点条件给出$w^\star$展开式；互补松弛
+$\alpha_j^\star[y_j(w^{\star T}x_j+b^\star)-1]=0$与$\alpha_j^\star>0$共同给出
+$y_j(w^{\star T}x_j+b^\star)=1$。利用$y_j^2=1$解出$b^\star$并代入$w^\star$展开，便得到结论。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V3-C18-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：线性可分支持向量机学习算法。}线性可分SVM的对偶解$\alpha^\star$只通过样本内积进入目标；请恢复$w^\star=\sum_i\alpha_i^\star y_i x_i$和由支持向量确定的$b^\star$，再核对$f(x)=\operatorname{sign}(\sum_i\alpha_i^\star y_i x_i^{\mathsf T}x+b^\star)$。\par
+
+\knowledgeanchor{SLM-07-02-003}{线性可分支持向量机学习算法}
+对偶解只通过内积依赖输入。计算$\alpha^\star$，恢复$w^\star,b^\star$，再构造
+\[
+f(x)=\operatorname{sign}\left(\sum_i\alpha_i^\star y_i x_i^Tx+b^\star\right).
+\]
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-012 L1
+\paragraph{读前自检：支持向量。}围绕支持向量机中的支持向量，先采用条件“硬间隔对偶最优解中满足$\alpha_i^\star>0$的样本$x_i$称为支持向量”，再标出$y_i(w^{\star T}x_i+b^\star)=1$两侧的形状并完成一次乘法或正交检查；最后验证它满足$y_i(w^{\star T}x_i+b^\star)=1$，位于两条间隔边界之一。\par
+
+\knowledgeanchor{SLM-07-04-001}{支持向量}
+\begin{definition}[硬间隔支持向量]\label{def:V3-C02-support-vector}
+硬间隔对偶最优解中满足$\alpha_i^\star>0$的样本$x_i$称为支持向量。它满足$y_i(w^{\star T}x_i+b^\star)=1$，位于两条间隔边界之一。
+\end{definition}
+
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-013 L1
+\paragraph{读前自检：线性支持向量机与软间隔最大化。}线性支持向量机与软间隔最大化中的“线性不可分时，为每个样本引入$\xi_i\geq0$”决定可执行范围；请标出$y_i(w^Tx_i+b)\geq1-\xi_i$两侧的形状并完成一次乘法或正交检查，结果须满足乘法内侧维数相等且结果落入声明空间。\par
+
+\SLTeachSection{线性支持向量机与软间隔}{sec:V3-C02-S05}
+\knowledgeanchor{SLM-07-02-004}{线性支持向量机与软间隔最大化}
+线性不可分时，为每个样本引入$\xi_i\geq0$，允许
+$y_i(w^Tx_i+b)\geq1-\xi_i$，并为违约支付$C\xi_i$。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-014 L1
+\paragraph{读前自检：线性支持向量机。}把线性支持向量机放在“给定$C>0$”下考察：标出$\min_{w,b,\xi}\frac12\lVert w\rVert^2+C\sum_i\xi_i$两侧的形状并完成一次乘法或正交检查，并检查乘法内侧维数相等且结果落入声明空间。\par
+% KNOWLEDGE-PLAN: KN-V3-C18-DEFINITION-006 L1
+\paragraph{读前自检：线性支持向量机的定义。}线性SVM在$C>0$下最小化$\frac12\lVert w\rVert^2+C\sum_i\xi_i$，约束为$y_i(w^{\mathsf T}x_i+b)\ge1-\xi_i$、$\xi_i\ge0$；请代入一个候选$(w,b,\xi)$逐项检查可行性，再写出其符号决策函数。\par
+
+\knowledgeanchor{SLM-07-02-005}{线性支持向量机}
+\knowledgeanchor{SLM-07-05-001}{线性支持向量机的定义}
+\begin{definition}[线性支持向量机]\label{def:V3-C02-soft-svm}
+给定$C>0$，软间隔原始问题为
+\[
+\min_{w,b,\xi}\frac12\lVert w\rVert^2+C\sum_i\xi_i
+\quad\text{s.t.}\quad
+y_i(w^Tx_i+b)\geq1-\xi_i,\quad \xi_i\geq0.
+\]
+其最优超平面和符号决策函数称为线性支持向量机。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C18-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：软间隔学习的对偶算法。}从软间隔学习的对偶算法的条件“推导软间隔对偶中的盒约束$0\leq\alpha_i\leq C$”出发，请代入正文给出的取等边界检验$1-\xi_i-y_i(w^Tx_i+b)\leq0$；所得量应符合不等号方向、边界取等和定义域彼此相容。\par
+
+\knowledgeanchor{SLM-07-02-006}{软间隔学习的对偶算法}
+\begin{derivationgoalbox}
+推导软间隔对偶中的盒约束$0\leq\alpha_i\leq C$，并说明它来自松弛变量的非负约束而不是额外假设。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+把约束写成$1-\xi_i-y_i(w^Tx_i+b)\leq0$和$-\xi_i\leq0$，分别引入$\alpha_i,\mu_i\geq0$；原目标含$C\sum_i\xi_i$。
+\end{derivationprepbox}
+\textbf{推导第1步：对$w,b$取驻点。}得到与硬间隔相同的$w=\sum_i\alpha_i y_ix_i$和$\sum_i\alpha_i y_i=0$。\par
+\textbf{推导第2步：对$\xi_i$取驻点。}由$\partial L/\partial\xi_i=0$有$C-\alpha_i-\mu_i=0$；结合$\alpha_i,\mu_i\geq0$得到$0\leq\alpha_i\leq C$。\par
+\textbf{推导第3步：消去$w,b,\xi,\mu$。}代回并整理得到
+\[
+\min_\alpha\frac12\sum_{i,j}\alpha_i\alpha_jy_iy_jx_i^Tx_j-\sum_i\alpha_i,
+\quad
+\sum_i\alpha_i y_i=0,\quad0\leq\alpha_i\leq C.
+\]
+
+% KNOWLEDGE-PLAN: KN-V3-C18-CONCEPT-007 L1
+\paragraph{读前自检：由软间隔对偶解恢复原始解。}由软间隔对偶解恢复原始解依赖“若存在$0<\alpha_j^\star<C$”；请据此把$w^\star$展开一次并检查其类型或边界，并直接核对展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-07-03-002}{由软间隔对偶解恢复原始解}
+若存在$0<\alpha_j^\star<C$，则
+\[
+w^\star=\sum_i\alpha_i^\star y_ix_i,\qquad
+b^\star=y_j-\sum_i\alpha_i^\star y_ix_i^Tx_j.
+\]
+实践中可对多个自由支持向量所得$b$取平均以减小数值误差。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：线性支持向量机学习算法。}线性支持向量机学习算法以“学习流程是选择$C$、求解带盒约束的对偶问题、由自由支持向量求$b$，最后构造线性判别函数”为约束；请标出$\lVert w\rVert$两侧的形状并完成一次乘法或正交检查，并确认$C$大时更重视违约损失，$C$小时更重视较小的$\lVert w\rVert$。\par
+
+\knowledgeanchor{SLM-07-03-003}{线性支持向量机学习算法}
+学习流程是选择$C$、求解带盒约束的对偶问题、由自由支持向量求$b$，最后构造线性判别函数。$C$大时更重视违约损失，$C$小时更重视较小的$\lVert w\rVert$。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-015 L1
+\paragraph{读前自检：软间隔支持向量。}先锁定软间隔支持向量的条件“$\xi_i\in(0,1)$”：标出$\xi_i\in(0,1)$两侧的形状并完成一次乘法或正交检查，所得结果应满足因此不能把$\alpha_i=C$无条件等同于误分类样本。\par
+
+\knowledgeanchor{SLM-07-02-007}{软间隔支持向量}
+软间隔KKT条件给出三种核心状态：
+\[
+\begin{cases}
+\alpha_i=0 &\Rightarrow y_ig(x_i)\geq1,\\
+0<\alpha_i<C &\Rightarrow y_ig(x_i)=1,\ \xi_i=0,\\
+\alpha_i=C &\Rightarrow y_ig(x_i)\leq1,\ \xi_i=1-y_ig(x_i)\geq0.
+\end{cases}
+\]
+最后一类中，$\xi_i=0$表示样本恰在间隔边界但对偶变量饱和，这在退化或非唯一解中可能发生；$\xi_i\in(0,1)$、$=1$、$>1$依次表示“正确但侵入间隔”“位于分类面”“被误分类”。因此不能把$\alpha_i=C$无条件等同于误分类样本。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C18-FORMULA-001 L1
+\paragraph{读前自检：合页损失函数。}对合页损失函数，条件“对给定$w,b$”不可省；请对$[z]_+=\max(0,z)$完成一项求导、代入或边界比较，再用结果的形状、符号和取等条件与定义一致作检查。\par
+
+\SLTeachSection{松弛变量与合页损失}{sec:V3-C02-S06}
+\knowledgeanchor{SLM-07-02-008}{合页损失函数}
+定义$[z]_+=\max(0,z)$。对给定$w,b$，使约束成立的最小松弛量为
+\[
+\xi_i=[1-y_i(w^Tx_i+b)]_+,
+\]
+这就是单样本合页损失。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-016 L1
+\paragraph{读前自检：线性支持向量机原始最优化问题。}线性支持向量机原始最优化问题把问题限定在“$\min_{w,b}\ \sum_{i=1}^{N}[1-y_i(w^Tx_i+b)]_+ +\lambda\lVert w\rVert^2,\qquad \lambda=\frac{1}{2C}.$”；请标出$\min_{w,b}\ \sum_{i=1}^{N}[1-y_i(w^Tx_i+b)]_+ +\lambda\lVert w\rVert^2,$两侧的形状并完成一次乘法或正交检查，检查是否得到乘法内侧维数相等且结果落入声明空间。\par
+
+\knowledgeanchor{SLM-07-04-002}{线性支持向量机原始最优化问题}
+% KNOWLEDGE-PLAN: KN-V3-C18-THEOREM-003 L1
+\paragraph{读前自检：软间隔原始问题与合页损失等价。}固定$C>0$并令$\lambda=1/(2C)$。请消去各松弛变量$\xi_i$，核对其贡献变为合页损失$[1-y_ig(x_i)]_+$。\par
+
+\begin{theorem}[软间隔原始问题与合页损失等价]\label{thm:V3-C02-hinge-equivalence}
+软间隔问题等价于无显式松弛变量的优化
+\[
+\min_{w,b}\ \sum_{i=1}^{N}[1-y_i(w^Tx_i+b)]_+
++\lambda\lVert w\rVert^2,\qquad \lambda=\frac{1}{2C}.
+\]
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V3-C18-PROOF-003 L1
+\paragraph{读前自检：证明：软间隔原始问题与合页损失等价。}固定$w,b$后，第$i$个松弛量满足$\xi_i\ge0$且$\xi_i\ge1-y_ig(x_i)$；请最小化$C\xi_i$，核对$\xi_i=[1-y_ig(x_i)]_+$，代回后得到合页损失与正则项。\par
+
+\begin{proof}
+固定$w,b$后，第$i$个松弛量必须同时满足$\xi_i\geq0$和$\xi_i\geq1-y_ig(x_i)$。由于目标中$C\xi_i$随$\xi_i$严格增加，最优值是两下界的最大值$[1-y_ig(x_i)]_+$。代回原目标并整体除以$C>0$，得到合页损失之和加$(1/(2C))\lVert w\rVert^2$。正数缩放不改变最优解，因此两问题等价。
+\end{proof}
+
+合页损失在$y g(x)\geq1$时为0，在$y g(x)<1$时线性增加。它不仅惩罚误分类，也惩罚正确但间隔不足的样本，是0--1损失的凸上界。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C18-FORMULA-002 L1
+\paragraph{读前自检：非线性支持向量机与核函数。}围绕非线性支持向量机与核函数，先采用条件“非线性问题可先由$\phi:\mathcal X\to\mathcal H$映射到特征空间”，再标出$\langle\phi(x),\phi(z)\rangle$两侧的形状并完成一次乘法或正交检查；最后验证对偶只需要$\langle\phi(x),\phi(z)\rangle$。\par
+
+\SLAdvancedSection{核技巧与正定核}{sec:V3-C02-S07}
+\knowledgeanchor{SLM-07-03-004}{非线性支持向量机与核函数}
+非线性问题可先由$\phi:\mathcal X\to\mathcal H$映射到特征空间，再在$\mathcal H$中学习线性超平面。对偶只需要$\langle\phi(x),\phi(z)\rangle$。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-CONCEPT-008 L1
+\paragraph{读前自检：核技巧。}支持向量机中的核技巧中的“核技巧以$K(x,z)$直接计算特征空间内积，无需显式构造$\phi(x)$”决定可执行范围；请把$\phi(x)$展开一次并检查其类型或边界，结果须满足高维或无限维特征因此可以通过有限次核值计算进入优化。\par
+
+\knowledgeanchor{SLM-07-03-005}{核技巧}
+核技巧以$K(x,z)$直接计算特征空间内积，无需显式构造$\phi(x)$。高维或无限维特征因此可以通过有限次核值计算进入优化。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-DEFINITION-008 L1
+\paragraph{读前自检：核函数的定义。}把核函数的定义放在“存在希尔伯特空间$\mathcal H$及映射$\phi:\mathcal X\to\mathcal H$”下考察：把$K(x,z)$展开一次并检查其类型或边界，并检查称$K$为$\mathcal X$上的核函数。\par
+
+\knowledgeanchor{SLM-07-06-001}{核函数的定义}
+\begin{definition}[核函数]\label{def:V3-C02-kernel}
+若存在希尔伯特空间$\mathcal H$及映射$\phi:\mathcal X\to\mathcal H$，使
+\[
+K(x,z)=\langle\phi(x),\phi(z)\rangle_{\mathcal H},
+\]
+则称$K$为$\mathcal X$上的核函数。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C18-CONCEPT-009 L1
+\paragraph{读前自检：正定核。}支持向量机中的正定核要求先确认“对称函数$K:\mathcal X\times\mathcal X\to\mathbb R$是正定核”；请随后检查$G=[K(x_i,x_j)]_{m\times m}$中每项的类型后完成等式变形，用两端运算均有定义、类型一致且化为同一结果验收。\par
+% KNOWLEDGE-PLAN: KN-V3-C18-BOUNDARY-001 L1
+\paragraph{读前自检：正定核的充要条件。}从正定核的充要条件的条件“对称函数$K:\mathcal X\times\mathcal X\to\mathbb R$是正定核”出发，请将$G=[K(x_i,x_j)]_{m\times m}$左端按正文定义展开一层，再逐项对齐右端；所得量应符合两端运算均有定义、类型一致且化为同一结果。\par
+
+\knowledgeanchor{SLM-07-03-006}{正定核}
+\knowledgeanchor{SLM-07-05-002}{正定核的充要条件}
+\begin{theorem}[正定核的Gram矩阵判据]\label{thm:V3-C02-kernel-psd}
+对称函数$K:\mathcal X\times\mathcal X\to\mathbb R$是正定核，当且仅当对任意有限点$x_1,\ldots,x_m$，Gram矩阵$G=[K(x_i,x_j)]_{m\times m}$均半正定。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V3-C18-PROOF-004 L1
+\paragraph{读前自检：证明：正定核的Gram矩阵判据。}正定核的Gram矩阵判据依赖“若$K$来自特征映射”；请据此把$c^TGc$按证明中的分解展开一层，并直接核对因此存在所需特征映射。\par
+
+\begin{proof}
+若$K$来自特征映射，则对任意$c\in\mathbb R^m$，
+\[
+c^TGc=\sum_{i,j}c_ic_j\langle\phi(x_i),\phi(x_j)\rangle
+=\left\|\sum_ic_i\phi(x_i)\right\|_{\mathcal H}^2\geq0.
+\]
+反方向在有限线性组合空间上令$\phi(x)=K(\cdot,x)$，并以核的双线性组合定义内积。Gram半正定保证该内积非负；商去零范数元素并完备化得到希尔伯特空间，且$\langle\phi(x),\phi(z)\rangle=K(x,z)$。因此存在所需特征映射。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V3-C18-FORMULA-003 L1
+\paragraph{读前自检：常用核函数。}常用核函数以“核参数和$C$必须在严格隔离的验证流程中联合选择”为约束；请把$K_{\mathrm{rbf}}(x,z)$展开一次并检查其类型或边界，并确认展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-07-03-007}{常用核函数}
+常用核包括
+\[
+K_{\mathrm{poly}}(x,z)=(x^Tz+c)^p,\quad c\geq0,\ p\in\mathbb N,
+\]
+\[
+K_{\mathrm{rbf}}(x,z)=\exp\!\left(-\frac{\lVert x-z\rVert^2}{2\sigma^2}\right),\quad\sigma>0.
+\]
+多项式核控制交互阶数；高斯核的$\sigma$控制相似度衰减尺度。核参数和$C$必须在严格隔离的验证流程中联合选择。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-DEFINITION-010 L1
+\paragraph{读前自检：正定核的等价定义。}先锁定正定核的等价定义的条件“核必须对称且对任意有限样本产生半正定矩阵”：把“核必须对称且对任意有限样本产生半正定矩阵”中的已声明对象代回正定核的等价定义的定义，所得结果应满足只在某一个训练集上数值半正定不足以证明函数对所有输入都是合法核。\par
+
+\knowledgeanchor{SLM-07-07-001}{正定核的等价定义}
+Gram矩阵判据本身也可作为正定核的等价定义。核必须对称且对任意有限样本产生半正定矩阵；只在某一个训练集上数值半正定不足以证明函数对所有输入都是合法核。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C18-PREREQUISITE-017 L1
+\paragraph{读前自检：非线性支持向量分类机。}对非线性支持向量分类机，条件“非线性学习先选择正定核及惩罚参数，再在核矩阵上求解软间隔对偶，最后以支持向量核展开完成预测”不可省；请标出非线性支持向量分类机两侧的形状并完成一次乘法或正交检查，再用定义中的每个约束都将在这一流程中保留作检查。\par
+% KNOWLEDGE-PLAN: KN-V3-C18-ALGORITHM_IDEA-006 L1
+\paragraph{读前自检：非线性支持向量机学习算法。}非线性支持向量机学习算法把问题限定在“非线性学习先选择正定核及惩罚参数，再在核矩阵上求解软间隔对偶，最后以支持向量核展开完成预测”；请标出非线性支持向量机学习算法两侧的形状并完成一次乘法或正交检查，检查是否得到定义中的每个约束都将在这一流程中保留。\par
+
+\SLAdvancedSection{非线性支持向量机}{sec:V3-C02-S08}
+\knowledgeanchor{SLM-07-03-008}{非线性支持向量分类机}
+\knowledgeanchor{SLM-07-04-003}{非线性支持向量机学习算法}
+非线性学习先选择正定核及惩罚参数，再在核矩阵上求解软间隔对偶，最后以支持向量核展开完成预测；定义中的每个约束都将在这一流程中保留。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-DEFINITION-011 L1
+\paragraph{读前自检：非线性支持向量机的定义。}在“选择正定核$K$和$C>0$”成立时处理非线性支持向量机的定义：请标出$f(x)$两侧的形状并完成一次乘法或正交检查，并以预测时计算这些支持向量与新点的核值判定结果。\par
+
+\knowledgeanchor{SLM-07-08-001}{非线性支持向量机的定义}
+% KNOWLEDGE-PLAN: KN-V3-C18-DEFINITION-012 L1
+\paragraph{读前自检：非线性支持向量机。}非线性支持向量机所用的明确前提是“选择正定核$K$和$C>0$”；完成标出$f(x)$两侧的形状并完成一次乘法或正交检查后，核对乘法内侧维数相等且结果落入声明空间。\par
+
+\begin{definition}[非线性支持向量机]\label{def:V3-C02-nonlinear-svm}
+选择正定核$K$和$C>0$，求解
+\[
+\min_\alpha\frac12\sum_{i,j}\alpha_i\alpha_jy_iy_jK(x_i,x_j)-\sum_i\alpha_i,
+\quad
+\sum_i\alpha_i y_i=0,\quad0\leq\alpha_i\leq C.
+\]
+所得分类器为
+\[
+f(x)=\operatorname{sign}\left(\sum_i\alpha_i^\star y_iK(x_i,x)+b^\star\right).
+\]
+\end{definition}
+
+算法选择合法核与超参数，求解核对偶问题；从$0<\alpha_j^\star<C$的样本计算
+\[
+b^\star=y_j-\sum_i\alpha_i^\star y_iK(x_i,x_j),
+\]
+并只保存正$\alpha_i^\star$对应的支持向量。预测时计算这些支持向量与新点的核值。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C18-ALGORITHM_IDEA-007 L1
+\paragraph{读前自检：序列最小最优化算法。}围绕序列最小最优化算法，先采用条件“SMO每次选择两个对偶变量，固定其余变量”，再将$\sum_i\alpha_iy_i=0$左端按正文定义展开一层，再逐项对齐右端；最后验证等式$\sum_i\alpha_iy_i=0$使两个变量中只有一个自由度，子问题可解析求解。\par
+
+\SLAdvancedSection{序列最小最优化算法}{sec:V3-C02-S09}
+\knowledgeanchor{SLM-07-04-004}{序列最小最优化算法}
+SMO每次选择两个对偶变量，固定其余变量。等式$\sum_i\alpha_iy_i=0$使两个变量中只有一个自由度，子问题可解析求解。
+
+\knowledgeanchor{SLM-07-04-005}{两个变量二次规划的求解方法}
+设选择$\alpha_1,\alpha_2$。若$y_1\neq y_2$，
+\[
+L=\max(0,\alpha_2^{\rm old}-\alpha_1^{\rm old}),\quad
+H=\min(C,C+\alpha_2^{\rm old}-\alpha_1^{\rm old});
+\]
+若$y_1=y_2$，
+\[
+L=\max(0,\alpha_1^{\rm old}+\alpha_2^{\rm old}-C),\quad
+H=\min(C,\alpha_1^{\rm old}+\alpha_2^{\rm old}).
+\]
+令$E_i=g(x_i)-y_i$与$\eta=K_{11}+K_{22}-2K_{12}$。
+
+\knowledgeanchor{SLM-07-06-002}{SMO两变量未剪辑解}
+\[
+\alpha_2^{\rm unc}
+=\alpha_2^{\rm old}+\frac{y_2(E_1-E_2)}{\eta},
+\quad
+\alpha_2^{\rm new}=\operatorname{clip}(\alpha_2^{\rm unc},L,H),
+\]
+\[
+\alpha_1^{\rm new}
+=\alpha_1^{\rm old}+y_1y_2(\alpha_2^{\rm old}-\alpha_2^{\rm new}).
+\]
+若$\eta$接近0，应比较区间端点的子目标而不是除以小数。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-CONCEPT-012 L1
+\paragraph{读前自检：SMO变量的选择方法。}SMO变量的选择方法中的“若该启发式无改进，再遍历非边界样本和全部样本”决定可执行范围；请代入正文给出的取等边界检验$0<\alpha_i<C$，结果须满足不等号方向、边界取等和定义域彼此相容。\par
+
+\knowledgeanchor{SLM-07-04-006}{SMO变量的选择方法}
+第一个变量选择违反KKT最严重的样本，优先扫描$0<\alpha_i<C$者；第二个变量优先使$|E_1-E_2|$大，以获得较大的候选步。若该启发式无改进，再遍历非边界样本和全部样本。
+
+% KNOWLEDGE-PLAN: KN-V3-C18-ALGORITHM_IDEA-008 L1
+\paragraph{读前自检：SMO算法。}SMO以二分类训练集、半正定核$K$、$C$、KKT/步长容差和扫描预算为输入；请为一对$(i,j)$形成$\alpha_i^+,\alpha_j^+,b^+,E^+$，核对盒约束、等式约束、有限性与目标门后再提交，并以KKT残差判停。\par
+% KNOWLEDGE-PLAN: KN-V3-C18-ALGORITHM_IDEA-009 L1
+\paragraph{读前自检：SMO算法的完整流程。}SMO完整流程从$\alpha=0,b=0,E_i=-y_i$开始；请按固定规则扫描一个违反KKT的$i$并求解一个两变量子问题，核对只有候选门通过才增加更新计数，且KKT/盒/等式残差同时达标才返回$\mathtt{converged}$。\par
+
+\knowledgeanchor{SLM-07-04-007}{SMO算法}
+\knowledgeanchor{SLM-07-05-003}{SMO算法的完整流程}
+\phantomsection\label{struct:V3-C02-CH10}
+\begingroup
+\setstretch{1.40}
+\phantomsection\label{struct:V3-C02-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}两条间隔边界$w^Tx+b=\pm1$平行于分类面$w^Tx+b=0$，它们之间的距离为$2/\lVert w\rVert_2$。落在边界上的训练点最靠近分类面，改变远离边界的点通常不改变最优超平面。KKT条件保证$\alpha_i>0$的硬间隔样本必在边界；反向命题在退化或非唯一对偶解中不成立，某个边界点也可能取$\alpha_i=0$。
+\end{geometrybox}
+
+\phantomsection\label{struct:V3-C02-CH17}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C02/fig_v3_c02_margin.tex}
+% FIGURE-KNOWLEDGE-MAP: fig:V3-C02-margin -> SLM-07-01-002
+图\ref{fig:V3-C02-margin}中的两条虚线满足$w^Tx+b=\pm1$，其法向量均为$w$；沿单位法向量测得的两边界距离为$2/\lVert w\rVert_2$，支持向量位于至少一条间隔边界上。
+
+
+\textbf{从KKT推导到SMO更新。}以上原始--对偶与KKT推导给出SMO的目标、可行域和停止证书；下面把这些条件落实为可执行的两变量更新。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V3-C02-CH19}
+\phantomsection\label{struct:V3-C02-CH20}
+\textbf{输入输出。}输入训练集、核、$C$、KKT容差、步长容差和迭代预算；输出$\alpha,b$、支持向量集合、目标值与KKT残差。
+
+\phantomsection\label{struct:V3-C02-CH21}
+\textbf{参数。}KKT容差$\varepsilon_{\rm KKT}$、最小变量变化$\varepsilon_\alpha$、最大无更新扫描次数$R_{\max}$和最大外层轮数$T_{\max}$。
+
+\phantomsection\label{struct:V3-C02-CH22}
+\textbf{初始化。}取$\alpha=0,b=0$，于是$E_i=-y_i$；建立核缓存和误差缓存。初值满足盒约束与等式约束。
+
+\phantomsection\label{struct:V3-C02-CH23}
+\textbf{阈值更新。}令$\Delta\alpha_i=\alpha_i^{\rm new}-\alpha_i^{\rm old}$、$\Delta\alpha_j$类似，则
+\[
+b_i=b^{\rm old}-E_i-y_iK_{ii}\Delta\alpha_i-y_jK_{ji}\Delta\alpha_j,
+\]
+\[
+b_j=b^{\rm old}-E_j-y_iK_{ij}\Delta\alpha_i-y_jK_{jj}\Delta\alpha_j.
+\]
+
+\phantomsection\label{struct:V3-C02-CH24}
+\textbf{停止条件。}在容差内满足等式、盒约束和分段KKT条件，并且一次完整扫描没有可接受更新；同时使用最大轮数和连续无更新扫描数作为保护。
+\endgroup
+
+\SetArgSty{textnormal}
+% v2.6 layout: former forced clear removed; natural pagination.
+% KNOWLEDGE-PLAN: KN-V3-C18-ALGORITHM_IDEA-010 L2
+\begin{keypointbox}[title={序列最小最优化（SMO）：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={非空二分类训练集、半正定核$K$、盒约束$C$、KKT/步长容差、扫描预算与固定变量对规则},
+  output={最后合法$\alpha,b,E$、支持向量、KKT残差、扫描/更新/子问题计数、状态与诊断},
+  preconditions={样本同维有限且标签为$\{-1,+1\}$；$C$与容差有限正；预算和变量选择规则合法},
+  initialization={$\alpha=0,b=0,E_i=-y_i$且计数为$0$；构造并核验Gram矩阵和初始可行/KKT残差},
+  loop={按固定次序扫描违反KKT的$i$，为每个$i$按确定规则枚举$j$并求解两变量子问题},
+  update={候选$\alpha_i^+,\alpha_j^+,b^+,E^+$通过盒、等式、有限性和目标门禁后原子提交},
+  domain={$0\le\alpha_i\le C$、$\sum_i\alpha_i y_i=0$；Gram矩阵在容差内对称半正定且残差有限},
+  failure={输入违规返回$\mathtt{invalid\_input}$；核、子目标、候选或残差非有限返回$\mathtt{numerical\_failure}$并保留旧状态},
+  stop={KKT、盒和等式残差同时达标才返回数学收敛；连续无更新或总扫描上限作为预算停止},
+  budget={最多$T_{\max}$个完整扫描；连续无更新保护上限为$R_{\max}$},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$s_{\rm done}$计完整扫描，$u_{\rm done}$计已提交两变量更新，$p_{\rm done}$计已求值子问题},
+  diagnostics={KKT/盒/等式残差、连续无更新数、候选拒绝原因、失败变量对、核条件数与有效秩},
+  complexity={预计算Gram为$O(N^2d)$；朴素扫描最坏每轮$O(N^2)$时间并使用$O(N^2)$核缓存}
+}
+\begin{algorithm}[H]
+\caption{序列最小最优化（SMO）}\label{alg:V3-C02-smo}
+\KwIn{$T=\{(x_i,y_i)\}_{i=1}^N$，核$K$，盒约束$C$}
+\KwOut{最后合法$\alpha,b,E$、支持向量、$R_{\rm KKT}$、$s_{\rm done},u_{\rm done},p_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{$\varepsilon_{\rm KKT},\varepsilon_\alpha>0$；$T_{\max}\in\mathbb N_0$；$R_{\max}\in\mathbb N_+$；固定变量对与并列规则}
+$\alpha\leftarrow0$，$b\leftarrow0$，$E_i\leftarrow-y_i$，$s_{\rm done}\leftarrow0$，$u_{\rm done}\leftarrow0$，$p_{\rm done}\leftarrow0$，$r_{\rm idle}\leftarrow0$，诊断为空\;
+若训练集为空、维数或标签非法、$C$或容差非有限正数、预算或变量选择规则不合法，则返回零初值、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算并核验Gram矩阵有限、对称且在容差内半正定；失败则返回最后合法零状态、$\mathtt{numerical\_failure}$及核构造位置$(i,j)$诊断\;
+新鲜计算初值的$R_{\rm KKT}$及盒、等式残差；若非有限则返回最后合法零状态、$\mathtt{numerical\_failure}$及初始KKT诊断；若证书满足容差则返回零状态与$\mathtt{converged}$，最终诊断记录“零扫描KKT证书”\;
+\While{$s_{\rm done}<T_{\max}$}{
+  新鲜计算$R_{\rm KKT}$及盒、等式残差；若任一残差非有限，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为扫描前核验$s_{\rm done}$\;
+  \If{$R_{\rm KKT}\le\varepsilon_{\rm KKT}$且可行性残差满足容差}{返回最后合法状态与$\mathtt{converged}$，最终诊断记录KKT、盒及等式证书\;}
+  $u_{\rm scan}\leftarrow0$\;
+  \For{按固定次序取得每个违反KKT的$i$}{
+    \For{按最大$|E_i-E_j|$及稳定回退次序枚举$j\ne i$}{
+      令$p_{\rm done}\leftarrow p_{\rm done}+1$，由旧状态计算$[L,H]$；若$L=H$则拒绝并继续下一$j$\;
+      计算$\eta=K_{ii}+K_{jj}-2K_{ij}$；若相关核值或子目标非有限，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为子问题$(s_{\rm done},i,j)$\;
+      若$\eta$大于曲率容差则剪辑无约束解，否则比较$L,H$处有限子目标；变化小于$\varepsilon_\alpha$时拒绝并继续下一$j$\;
+      在临时状态由等式约束形成$\alpha_i^+,\alpha_j^+$，计算$b_i,b_j$、候选$b^+$与全部$E^+$\;
+      若候选非有限、违反盒/等式约束或对偶目标上升超出容差，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为候选核验$(s_{\rm done},i,j)$\;
+      原子提交$(\alpha_i,\alpha_j,b,E)\leftarrow(\alpha_i^+,\alpha_j^+,b^+,E^+)$，令$u_{\rm done}\leftarrow u_{\rm done}+1$、$u_{\rm scan}\leftarrow u_{\rm scan}+1$，并终止当前$i$的$j$枚举\;
+    }
+  }
+  完整扫描结束后令$s_{\rm done}\leftarrow s_{\rm done}+1$；若$u_{\rm scan}=0$则$r_{\rm idle}\leftarrow r_{\rm idle}+1$，否则$r_{\rm idle}\leftarrow0$\;
+  新鲜计算$R_{\rm KKT}$；若非有限则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为扫描后核验$s_{\rm done}$\;
+  \If{$R_{\rm KKT}\le\varepsilon_{\rm KKT}$且可行性残差满足容差}{返回最后合法状态与$\mathtt{converged}$，最终诊断记录实际扫描与更新数\;}
+  \If{$r_{\rm idle}=R_{\max}$}{返回最后合法$\alpha,b,E,R_{\rm KKT},s_{\rm done},u_{\rm done},p_{\rm done},\mathtt{budget\_stop}$，最终诊断把具体原因记为“连续无更新保护预算耗尽”，并记录未达标KKT残差与候选拒绝原因\;}
+}
+返回最后合法$\alpha,b,E,R_{\rm KKT},s_{\rm done},u_{\rm done},p_{\rm done},\mathtt{budget\_stop}$，最终诊断记录扫描预算耗尽\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{返回$\mathtt{converged}$必须同时给出KKT、盒约束与等式残差证书；连续无更新但证书未达标与实际扫描上限都返回$\mathtt{budget\_stop}$，具体停止原因留在诊断字段。每次两变量、阈值与误差缓存必须原子提交。}
+
+\phantomsection\label{struct:V3-C02-CH25}
+\textbf{收敛说明。}每次接受的两变量更新不增加凸对偶目标并保持可行性。核矩阵半正定且变量选择持续访问违反KKT的坐标对时，精确坐标更新的极限点满足全局最优KKT条件；若使用固定正容差，实际停止只保证盒约束、等式约束与KKT残差落在给定容差内，即返回近似最优解。只有在容差趋于0并排除预算提前停止时，才能把极限表述为对偶全局最优集合。退化核可能使参数解不唯一；此时必须报告Gram矩阵条件数、有效秩与所用PSD修复。修复会改变优化目标，未经这些诊断不能笼统宣称决策函数稳定。
+
+
+\SLDirectSection{证明、例题与练习}{sec:V3-C02-S10}
+\phantomsection\label{struct:V3-C02-CH18}
+\phantomsection\label{struct:V3-C02-CH32}
+\begin{example}[一维软间隔状态判定]\label{exm:V3-C02-kkt-state}
+某训练后模型对四个样本给出的$y_ig(x_i)$依次为$1.4,1,0.3,-0.2$。在满足KKT的前提下，判断各样本可能的$\alpha_i$与松弛状态。
+
+\phantomsection\label{struct:V3-C02-CH33}
+\end{example}
+{\let\needspace\Needspace\setlength{\smallskipamount}{3pt}\SLExampleSolutionHeading{exm:V3-C02-kkt-state}}
+\begin{solution}
+\SLReadTranslation{给定每个样本的带符号间隔$m_i=y_i g(x_i)$，要用软间隔KKT条件判断最小松弛量和对应对偶变量所处的边界状态。}
+\SolGiven $C>0$，标准软间隔约束为$m_i\ge1-\xi_i$、$\xi_i\ge0$、$0\le\alpha_i\le C$；若模型含不正则化偏置$b$，还需满足$\sum_i\alpha_i y_i=0$。
+\SLMethodTrigger{先取使惩罚最小的$\xi_i=\max\{0,1-m_i\}$，再用$\alpha_i(m_i-1+\xi_i)=0$与$(C-\alpha_i)\xi_i=0$逐点分类。}
+\SolPlan 由四个$m_i$计算$\xi_i$；按间隔外、间隔上、间隔内和误分类四种状态应用互补条件；最后回代约束余量并说明联合KKT限制。
+\SolDerive
+间隔值为$m_i=y_i g(x_i)$，即$(m_1,m_2,m_3,m_4)=(1.4,1,0.3,-0.2)$；对应的最小可行松弛量由$\xi_i=\max\{0,1-m_i\}$给出：
+\[
+\begin{aligned}
+\xi_i&=\max\{0,1-m_i\},\\
+(\xi_1,\xi_2,\xi_3,\xi_4)&=(0,0,0.7,1.2).
+\end{aligned}
+\]
+互补条件给出
+\[
+\alpha_i\bigl(m_i-1+\xi_i\bigr)=0,
+\qquad (C-\alpha_i)\xi_i=0,
+\qquad 0\leq\alpha_i\leq C.
+\]
+因此逐点有
+\[
+\begin{array}{c|c|c|c|l}
+i&m_i&\xi_i&\alpha_i&\text{逐点状态与证书}\\ \hline
+1&1.4&0&0&\text{间隔外，}\alpha_1(m_1-1)=0\\
+2&1&0&[0,C]&\text{间隔上；典型支持向量满足 }0<\alpha_2<C\\
+3&0.3&0.7&C&\text{间隔内，}(C-\alpha_3)\xi_3=0\\
+4&-0.2&1.2&C&\text{误分类，}(C-\alpha_4)\xi_4=0
+\end{array}
+\]
+若模型含不受正则化的偏置$b$，全体对偶变量还必须共同满足偏置驻点条件
+\[
+\sum_i\alpha_i y_i=0,
+\]
+故不能脱离其他样本和标签单独指定$\alpha_2$的唯一数值。
+\SolCheck 回代得$m_i-1+\xi_i=(0.4,0,0,0)$，均非负；第1点互补条件强制$\alpha_1=0$，第3、4点因$\xi_i>0$强制$\alpha_i=C$。完整联合取值还须满足偏置驻点条件。
+\SolAnswer 最小松弛量为$(\xi_1,\xi_2,\xi_3,\xi_4)=(0,0,0.7,1.2)$；逐点状态为$\alpha_1=0$、$\alpha_2\in[0,C]$、$\alpha_3=\alpha_4=C$，其中$\alpha_2$不能由给定间隔单独唯一确定。
+\end{solution}
+
+\phantomsection\label{struct:V3-C02-CH26}
+\phantomsection\label{struct:V3-C02-CH27}
+\begin{complexitybox}
+\textbf{训练时间复杂度。}对$d$维稠密输入，构造线性或需$O(d)$运算的核Gram矩阵为$O(N^2d)$时间、$O(N^2)$存储；一般记为$O(N^2C_K(d))$。对称性检查为$O(N^2)$，完整特征值或Cholesky型PSD/分解核验最坏为$O(N^3)$；若修复并重新分解，仍须单独计入该立方项。缓存充分时一次SMO更新的误差刷新约为$O(N)$；若接受$T$次两变量更新，总刷新主项为$O(TN)$。$T$依数据、变量选择与容差而变，不能用固定小常数承诺。\\
+\textbf{预测时间复杂度。}设支持向量数为$N_s$，对一个新点需计算$N_s$次核函数并累加，若单次核计算代价为$C_K(d)$，则为$O(N_sC_K(d))$；线性模型预先合并$w$后为$O(d)$。\\
+\textbf{存储与空间复杂度。}完整核矩阵需$O(N^2)$空间，受限缓存可降至$O(NB)$；对偶变量和误差缓存为$O(N)$，部署模型保存支持向量约为$O(N_sd)$。\textbf{复杂度假设：}采用稠密核缓存；稀疏输入时应以非零特征数替代$d$。
+
+\textbf{正确性依据。}SMO每次只优化两个对偶变量，并用等式约束消去其中一个变量，因此剪辑区间内的更新同时保持盒约束和$\sum_i\alpha_i y_i=0$；阈值由新的KKT边界条件恢复。只有所有变量在给定容差内满足KKT时才报告近似最优，否则返回退化、停滞或达到迭代上限但未满足KKT的状态。
+
+\textbf{异常、退化与不收敛情形。}若训练集为空、只含一个类别、核值非有限、核矩阵明显非半正定、可行区间$L>H$或所有候选对长期无法降低KKT残差，应停止并报告输入或求解失败。最大轮数、无更新扫描上限或正容差触发的是近似/预算停止；只有KKT残差、盒约束和等式约束均满足登记容差时才记录收敛。
+\end{complexitybox}
+
+\phantomsection\label{struct:V3-C02-CH28}
+\begin{applicabilitybox}
+\textbf{适用条件。}SVM适合中小样本、高维稀疏特征、类别边界可由线性或合适核近似且需要稳健间隔分类的任务。训练前应缩放连续特征，按代价处理类别不平衡，并用嵌套或严格隔离的验证过程选择$C$与核参数。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V3-C02-CH29}
+% KNOWLEDGE-PLAN: KN-V3-C18-BOUNDARY-004 L1
+\paragraph{读前自检：不适用说明：证明、例题与练习。}核SVM对$N$个样本需保存$N\times N$ Gram矩阵；请计算其$O(N^2)$存储并与给定内存预算比较，核对预算不足时应改用线性、低秩或近似核方案，而不能继续声明该核训练流程适用。\par
+
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+核矩阵带来二次存储与较高训练成本；预测随支持向量数增长；核与尺度选择敏感；原始得分不是概率；严重重叠类别、标签噪声和分布漂移会削弱间隔含义。多分类还需一对一、一对其余或结构化扩展。
+\end{notapplicablebox}
+
+% KNOWLEDGE-PLAN: KN-V3-C18-CONCEPT-014 L1
+\paragraph{读前自检：概率解释：标准支持向量机优化间隔而非条件似然，因此 g(x) 及 signg(x) 没有内生的概……。}标准SVM输出间隔分数$g(x)$及$\operatorname{sign}g(x)$，并不内生给出$P(Y=1\mid x)$；请把同一正分数分别作为分类得分与未经校准的概率候选，核对后者缺少归一化/校准依据。\par
+
+\begin{probabilitybox}
+标准支持向量机优化间隔而非条件似然，因此$g(x)$及$\operatorname{sign}g(x)$没有内生的概率解释。若应用必须输出概率，可在独立校准集上拟合$P(Y=1\mid g)=\{1+\exp(Ag+B)\}^{-1}$；参数$A,B$属于后处理模型，既不能被视为SVM原始目标的一部分，也不应使用训练集预测直接校准而忽略过拟合。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V3-C02-CH30}
+% KNOWLEDGE-PLAN: KN-V3-C18-BOUNDARY-005 L1
+\paragraph{读前自检：常见错误与误用边界：证明、例题与练习。}证明、例题与练习以“边界框首项禁止混淆函数间隔与几何间隔，忽略除以$\lVert w\rVert$”为约束；请把固定错误“混淆函数间隔与几何间隔，忽略除以$\lVert w\rVert$”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，并确认改写后的运算或判断有定义，且不再触发“混淆函数间隔与几何间隔，忽略除以$\lVert w\rVert$”。\par
+
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 混淆函数间隔与几何间隔，忽略除以$\lVert w\rVert$；
+  \item 对约束$1-y_ig_i\leq0$使用负乘子，导致对偶符号与KKT全错；
+  \item 忘记软间隔对偶上界$\alpha_i\leq C$；
+  \item 未验证核的半正定性，或在全数据上调参造成验证泄漏；
+  \item SMO更新一个变量却不联动另一个变量，破坏等式约束。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V3-C02-CH31}
+\begin{comparisonbox}
+\textbf{概念对比。}\par\smallskip
+\small
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 方法 & 训练目标 & 边界与输出 & 主要代价\\ \midrule
+感知机 & 误分类点线性损失 & 线性边界、无概率 & 依赖可分性与更新顺序\\
+逻辑斯谛回归 & 对数损失加正则 & 线性logit、条件概率 & 对异常点和分离敏感\\
+线性SVM & 合页损失加范数 & 最大间隔线性得分 & 需校准才能给概率\\
+核SVM & 核空间合页损失 & 非线性边界 & 核矩阵与支持向量成本\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+
+\phantomsection\label{struct:V3-C02-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V3-C02-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S01-01}
+给定$w=(2,-1)^T,b=-3$和$x=(3,1)^T$，求得分、预测标签与到超平面的距离。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S01-01}
+\begin{chapterexercisesolution}{ex:V3-C02-S01-01}
+这里$w,x\in\mathbb R^2$、$b\in\mathbb R$且$w\neq0$。判别分数与标签为
+\[
+\begin{aligned}
+g(x)&=w^{\mathsf T}x+b
+=2\times3+(-1)\times1-3=2,\\
+\widehat y&=\operatorname{sign}g(x)=+1.
+\end{aligned}
+\]
+法向量范数与点到超平面的距离为
+\[
+\lVert w\rVert_2=\sqrt{2^2+(-1)^2}=\sqrt5,
+\qquad
+\operatorname{dist}(x,\{z:g(z)=0\})
+=\frac{|g(x)|}{\lVert w\rVert_2}=\frac2{\sqrt5}.
+\]
+得分随参数尺度变化，除以法向量范数后才得到几何距离。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S01-02}
+证明把$(w,b)$替换为$(cw,cb)$，其中$c>0$，不会改变分类超平面与预测标签。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S01-02}
+\begin{chapterexercisesolution}{ex:V3-C02-S01-02}
+设$w\neq0$且$c>0$。超平面的零点集合满足
+\[
+\{x:(cw)^{\mathsf T}x+cb=0\}
+=\{x:c(w^{\mathsf T}x+b)=0\}
+=\{x:w^{\mathsf T}x+b=0\}.
+\]
+预测标签也保持不变：
+\[
+\operatorname{sign}\!\left((cw)^{\mathsf T}x+cb\right)
+=\operatorname{sign}\!\left(cg(x)\right)
+=\operatorname{sign}g(x).
+\]
+对带标签样本，函数间隔乘以$c$，而几何间隔满足
+\[
+\frac{y_i c g(x_i)}{\lVert cw\rVert_2}
+=\frac{c\,y_i g(x_i)}{c\lVert w\rVert_2}
+=\frac{y_i g(x_i)}{\lVert w\rVert_2}.
+\]
+$c=0$会使法向量失效，$c<0$会反转预测符号，所以二者不在结论内。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S02-01}
+某样本满足$y_i(w^Tx_i+b)=3$且$\lVert w\rVert_2=5$。求函数间隔和几何间隔。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S02-01}
+\begin{chapterexercisesolution}{ex:V3-C02-S02-01}
+单样本函数间隔按定义为
+\[
+\widehat\gamma_i=y_i(w^{\mathsf T}x_i+b)=3.
+\]
+因为$\lVert w\rVert_2=5>0$，几何间隔为
+\[
+\gamma_i=\frac{\widehat\gamma_i}{\lVert w\rVert_2}
+=\frac35=0.6.
+\]
+尺度核验为
+\[
+(\widehat\gamma_i,\lVert w\rVert_2)=(3,5)
+\mapsto(6,10)
+\Longrightarrow \gamma_i=\frac35=\frac6{10}.
+\]
+因此函数间隔为$3$、几何间隔为$3/5$，且后者对参数的同比例缩放保持不变。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S02-02}
+证明两条平面$w^Tx+b=1$与$w^Tx+b=-1$之间的距离为$2/\lVert w\rVert_2$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S02-02}
+\begin{chapterexercisesolution}{ex:V3-C02-S02-02}
+设$w\in\mathbb R^d\setminus\{0\}$，并取$x_+$满足$w^{\mathsf T}x_++b=1$。沿单位法向量反向移动$t\geq0$：
+\[
+x_-=x_+-t\frac{w}{\lVert w\rVert_2}.
+\]
+要求$x_-$落在另一平面上，得到
+\[
+\begin{aligned}
+w^{\mathsf T}x_-+b
+&=w^{\mathsf T}x_++b-t\lVert w\rVert_2\\
+&=1-t\lVert w\rVert_2=-1\\
+&\Longrightarrow t=\frac2{\lVert w\rVert_2}.
+\end{aligned}
+\]
+平行平面的最短连线沿公法线，故两平面距离就是$2/\lVert w\rVert_2$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S03-01}
+一维样本$x_1=2,y_1=+1$与$x_2=0,y_2=-1$。求硬间隔最优$w,b$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S03-01}
+\begin{chapterexercisesolution}{ex:V3-C02-S03-01}
+一维硬间隔原始问题为
+\[
+\min_{w,b\in\mathbb R}\frac12w^2,
+\qquad
+2w+b\geq1,
+\qquad
+-b\geq1.
+\]
+第二个约束给$b\leq-1$，代入第一个约束得到下界链
+\[
+2w\geq1-b\geq2
+\Longrightarrow w\geq1
+\Longrightarrow \frac12w^2\geq\frac12.
+\]
+取$w=1$时，可行性要求
+\[
+2+b\geq1,\quad b\leq-1
+\Longrightarrow b=-1.
+\]
+故唯一最优参数为$(w^\star,b^\star)=(1,-1)$，分类点$x=1$，两条间隔边界为$x=0,2$，总宽度$2/|w^\star|=2$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S03-02}
+为什么硬间隔原始目标不惩罚$b$？这是否意味着$b$可以任意取值？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S03-02}
+\begin{chapterexercisesolution}{ex:V3-C02-S03-02}
+规范化后间隔宽度为$2/\lVert w\rVert_2$，所以原始目标只需最小化$\lVert w\rVert_2^2/2$。但对固定$w$，全部约束仍把$b$限制在
+\[
+L(w):=\max_{i:y_i=+1}(1-w^{\mathsf T}x_i)
+\leq b\leq
+U(w):=\min_{i:y_i=-1}(-1-w^{\mathsf T}x_i).
+\]
+若两类均非空且最优时$L(w^\star)<U(w^\star)$，取中点$b_0$及$\delta=(U-L)/2>0$，则
+\[
+y_i\bigl((w^\star)^{\mathsf T}x_i+b_0\bigr)\geq1+\delta
+\quad\Longrightarrow\quad
+\left(\frac{w^\star}{1+\delta},\frac{b_0}{1+\delta}\right)
+\ \text{仍可行}.
+\]
+新法向量范数严格更小，与最优性矛盾；故最优时$L=U=b^\star$。不惩罚$b$表示平移不直接进入目标，并不表示$b$没有约束或可任意取值。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S04-01}
+从拉格朗日函数求$\nabla_wL$与$\partial L/\partial b$，写出两个驻点条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S04-01}
+\begin{chapterexercisesolution}{ex:V3-C02-S04-01}
+对$w\in\mathbb R^d$、$b\in\mathbb R$及$\alpha_i\geq0$，拉格朗日函数为
+\[
+L(w,b,\alpha)=\frac12\lVert w\rVert_2^2
++\sum_{i=1}^{N}\alpha_i\left[1-y_i(w^{\mathsf T}x_i+b)\right].
+\]
+两个驻点条件逐项为
+\[
+\begin{aligned}
+\nabla_wL
+&=w-\sum_{i=1}^{N}\alpha_i y_i x_i=0,\\
+\frac{\partial L}{\partial b}
+&=-\sum_{i=1}^{N}\alpha_i y_i=0.
+\end{aligned}
+\]
+因此
+\[
+w=\sum_{i=1}^{N}\alpha_i y_i x_i,
+\qquad
+\sum_{i=1}^{N}\alpha_i y_i=0.
+\]
+因此驻点条件给出$w$的支持向量展开，并要求带标签乘子的总和为零。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S04-02}
+某硬间隔样本满足$\alpha_i^\star=0$。它是否必须位于间隔边界？说明KKT能推出的结论。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S04-02}
+\begin{chapterexercisesolution}{ex:V3-C02-S04-02}
+令原始约束余量为
+\[
+r_i=y_i g(x_i)-1\geq0.
+\]
+KKT互补松弛条件是
+\[
+\alpha_i^\star r_i=0,
+\qquad
+\alpha_i^\star\geq0,\quad r_i\geq0.
+\]
+当$\alpha_i^\star=0$时，逻辑链只能给出
+\[
+0\cdot r_i=0\ \text{对任意 }r_i\geq0\text{均成立}
+\Longrightarrow y_i g(x_i)\geq1,
+\]
+不能推出$r_i=0$。该点既可能位于间隔边界，也可能严格在间隔外；它在$w^\star=\sum_j\alpha_j^\star y_jx_j$中的贡献为零。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S05-01}
+某样本$y_ig(x_i)=0.4$。求最小可行松弛变量并判断其状态。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S05-01}
+\begin{chapterexercisesolution}{ex:V3-C02-S05-01}
+软间隔可行域要求
+\[
+y_i g(x_i)\geq1-\xi_i,
+\qquad
+\xi_i\geq0.
+\]
+代入$m_i=y_ig(x_i)=0.4$，得到
+\[
+\xi_i\geq1-m_i=0.6
+\quad\Longrightarrow\quad
+\xi_i^{\min}=\max\{0,1-m_i\}=0.6.
+\]
+由于$C>0$时目标对$\xi_i$单调增加，最优取最小可行值。状态链为
+\[
+0<m_i<1
+\Longleftrightarrow
+0<\xi_i^{\min}<1,
+\]
+故样本分类正确但位于分类面与间隔边界之间。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S05-02}
+由$C-\alpha_i-\mu_i=0$和$\mu_i\geq0$证明$\alpha_i\leq C$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S05-02}
+\begin{chapterexercisesolution}{ex:V3-C02-S05-02}
+对松弛变量$\xi_i\geq0$引入乘子$\mu_i\geq0$，驻点条件为
+\[
+\frac{\partial L}{\partial\xi_i}=C-\alpha_i-\mu_i=0.
+\]
+因此
+\[
+\alpha_i=C-\mu_i
+\leq C
+\qquad(\mu_i\geq0).
+\]
+再结合间隔约束的对偶可行性$\alpha_i\geq0$，得到
+\[
+0\leq\alpha_i\leq C.
+\]
+该盒约束来自消去非负乘子$\mu_i$，不是额外添加的假设。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S06-01}
+分别计算$yg=1.4,0.6,-0.2$时的合页损失。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S06-01}
+\begin{chapterexercisesolution}{ex:V3-C02-S06-01}
+对带符号分数$m=yg\in\mathbb R$，合页损失为$\ell(m)=[1-m]_+$。逐项代入得到
+\[
+\begin{array}{c|c|c}
+m&[1-m]_+&\text{状态}\\ \hline
+1.4&[{-0.4}]_+=0&\text{间隔外}\\
+0.6&[0.4]_+=0.4&\text{正确但侵入间隔}\\
+-0.2&[1.2]_+=1.2&\text{误分类}
+\end{array}
+\]
+因此损失向量为
+\[
+(\ell(1.4),\ell(0.6),\ell(-0.2))=(0,0.4,1.2).
+\]
+所以三个样本的合页损失依次为$0$、$0.4$和$1.2$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S06-02}
+证明0--1误分类指示$\mathbf1\{yg\leq0\}$不超过合页损失。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S06-02}
+\begin{chapterexercisesolution}{ex:V3-C02-S06-02}
+令$z=yg\in\mathbb R$。若$z>0$，则
+\[
+\mathbf1\{z\leq0\}=0\leq[1-z]_+.
+\]
+若$z\leq0$，则
+\[
+z\leq0
+\Longrightarrow 1-z\geq1
+\Longrightarrow [1-z]_+=1-z\geq1
+=\mathbf1\{z\leq0\}.
+\]
+两种分支覆盖$\mathbb R$，所以
+\[
+\mathbf1\{yg\leq0\}\leq[1-yg]_+
+\qquad\text{对所有 }yg\in\mathbb R\text{成立}.
+\]
+因此合页损失逐点上界分类错误指示函数。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S07-01}
+证明线性核$K(x,z)=x^Tz$是正定核。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S07-01}
+\begin{chapterexercisesolution}{ex:V3-C02-S07-01}
+对$x,z\in\mathbb R^d$，取特征映射$\phi(x)=x$，则
+\[
+K(x,z)=x^{\mathsf T}z
+=\langle\phi(x),\phi(z)\rangle_{\mathbb R^d},
+\]
+且$K(x,z)=K(z,x)$。对任意有限点集$x_1,\ldots,x_N$和系数$c\in\mathbb R^N$，有
+\[
+\begin{aligned}
+\sum_{i,j=1}^{N}c_ic_jK(x_i,x_j)
+&=\sum_{i,j=1}^{N}c_ic_jx_i^{\mathsf T}x_j\\
+&=\left\lVert\sum_{i=1}^{N}c_ix_i\right\rVert_2^2\\
+&\geq0.
+\end{aligned}
+\]
+因此所有Gram矩阵均半正定，线性核是合法正定核。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S07-02}
+给定两点的Gram矩阵$\begin{pmatrix}1&2\\2&1\end{pmatrix}$，判断它能否来自合法核。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S07-02}
+\begin{chapterexercisesolution}{ex:V3-C02-S07-02}
+给定对称矩阵
+\[
+G=\begin{pmatrix}1&2\\2&1\end{pmatrix},
+\qquad
+\det(G-\lambda I)=(1-\lambda)^2-4.
+\]
+特征值链为
+\[
+(1-\lambda)^2=4
+\Longrightarrow \lambda\in\{3,-1\}.
+\]
+也可取$c=(1,-1)^{\mathsf T}$直接得到
+\[
+c^{\mathsf T}Gc=-2<0.
+\]
+合法实值内积核要求任意有限Gram矩阵半正定；该矩阵含负特征值，故不能来自合法核。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S08-01}
+两个支持向量的$(\alpha_i y_i)$分别为$0.6$与$-0.4$，对新点的核值为$0.8$与$0.3$，$b=-0.1$。求得分和标签。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S08-01}
+\begin{chapterexercisesolution}{ex:V3-C02-S08-01}
+核决策函数为
+\[
+g(x)=\sum_{i\in\mathrm{SV}}(\alpha_i y_i)K(x_i,x)+b.
+\]
+代入两个支持向量的量，得到
+\[
+\begin{aligned}
+g(x)
+&=0.6\times0.8+(-0.4)\times0.3-0.1\\
+&=0.48-0.12-0.10\\
+&=0.26>0.
+\end{aligned}
+\]
+所以$\widehat y=\operatorname{sign}g(x)=+1$；标签符号已经包含在$\alpha_i y_i$中，不能丢弃。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S08-02}
+为什么训练后可以丢弃$\alpha_i^\star=0$的样本而不改变预测？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S08-02}
+\begin{chapterexercisesolution}{ex:V3-C02-S08-02}
+训练完成后的固定预测函数为
+\[
+g(x)=\sum_{i=1}^{N}\alpha_i^\star y_iK(x_i,x)+b^\star.
+\]
+若$\alpha_j^\star=0$，则对任意新输入$x$都有
+\[
+\alpha_j^\star y_jK(x_j,x)=0,
+\qquad
+g(x)=\sum_{i:\alpha_i^\star>0}\alpha_i^\star y_iK(x_i,x)+b^\star.
+\]
+因此删除该样本的推理项不会改变得分或标签，只减少存储与核计算；这不等于从训练集删除它后重新训练仍得到同一模型。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S09-01}
+$y_1\neq y_2$，$\alpha_1^{old}=0.3,\alpha_2^{old}=0.6,C=1$。求$L,H$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S09-01}
+\begin{chapterexercisesolution}{ex:V3-C02-S09-01}
+当$y_1\neq y_2$时，SMO对$\alpha_2$的可行区间为
+\[
+L=\max(0,\alpha_2^{\mathrm{old}}-\alpha_1^{\mathrm{old}}),
+\qquad
+H=\min(C,C+\alpha_2^{\mathrm{old}}-\alpha_1^{\mathrm{old}}).
+\]
+代入数据得到
+\[
+\begin{aligned}
+L&=\max(0,0.6-0.3)=0.3,\\
+H&=\min(1,1+0.6-0.3)=1.
+\end{aligned}
+\]
+故
+\[
+\alpha_2^{\mathrm{new}}\in[0.3,1],
+\]
+随后由$y_1\alpha_1+y_2\alpha_2$的不变量恢复$\alpha_1^{\mathrm{new}}$，同时保持盒约束与全局等式约束。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C02-S10-01}
+为什么特征缩放会同时影响线性SVM的正则化几何和高斯核的距离？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C02-S10-01}
+\begin{chapterexercisesolution}{ex:V3-C02-S10-01}
+设可逆对角缩放为$x'=Ax$。为了保持同一线性得分，需要
+\[
+w'^{\mathsf T}x'=w^{\mathsf T}x
+\Longrightarrow w'=A^{-\mathsf T}w.
+\]
+但正则项变为
+\[
+\lVert w'\rVert_2^2
+=w^{\mathsf T}A^{-1}A^{-\mathsf T}w,
+\]
+所以不同坐标的缩放改变了线性SVM的惩罚几何。对高斯核，缩放后
+\[
+K_A(x,z)=\exp\!\left(-\frac{\lVert A(x-z)\rVert_2^2}{2\sigma^2}\right),
+\]
+也改变样本距离与核值。故缩放参数必须只在训练折估计，并原样应用到验证或测试折；否则既改变模型几何，也造成信息泄漏。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V3-C18-CONCEPT-015 L1
+\paragraph{读前自检：本章结论与下一步。}支持向量机章末由“分离超平面、几何间隔、支持向量与核Gram矩阵”落到“SMO保持等式与盒约束，每次精确更新两个对偶变量并以KKT残差停止”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\setstretch{1.32}
+\phantomsection\label{struct:V3-C02-CH36}
+\SLChapterFiveSummary{分离超平面、几何间隔、支持向量与核Gram矩阵}{规范化间隔得到凸二次规划，再由驻点与KKT导出对偶、支持向量和软间隔盒约束}{SMO保持等式与盒约束，每次精确更新两个对偶变量并以KKT残差停止}{需要稳健二分类边界、可解释支持样本或核化非线性分界时}{进入提升方法；若几何、对偶或核自检失败，返回本章对应主节}
+
+\phantomsection\label{struct:V3-C02-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{几何：}能否从点到超平面距离推导函数间隔、几何间隔和$2/\lVert w\rVert$？未通过则回看第1、2节。
+  \item \textbf{优化：}能否从硬间隔原始问题逐行得到对偶，并完整列出KKT条件？未通过则回看第3、4节。
+  \item \textbf{软间隔：}能否推导盒约束、合页损失等价和三类支持向量状态？未通过则回看第5、6节。
+  \item \textbf{核方法：}能否证明Gram矩阵判据并写出核SVM决策函数？未通过则回看第7、8节。
+  \item \textbf{算法：}能否计算SMO的$L,H,\eta$、两变量和$b$更新，并说明停止与退化处理？未通过则回看第9节；五项均可独立完成，并能通过第10节的模型验收题，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

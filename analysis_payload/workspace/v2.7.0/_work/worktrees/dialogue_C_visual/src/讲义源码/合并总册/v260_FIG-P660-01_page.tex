@@ -1,0 +1,21 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{830}
+\setcounter{chapter}{34}
+\setcounter{figure}{3}
+\setcounter{equation}{3}
+\pagestyle{headings}
+\chaptermark{狄利克雷分布与共轭先验}
+\sectionmark{狄利克雷分布}
+图\ref{fig:V5-C05-simplex-geometry}说明三分类概率向量虽然写成三个分量，却只有两个自由度。
+
+\paragraph{几何面：概率向量住在哪里？}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_simplex_geometry.tex}
+\FloatBarrier
+
+\begin{theorem}[Gamma归一化构造]
+设$G_i$彼此独立且$G_i\sim\operatorname{Gamma}(\alpha_i,b)$。令$S=\sum_iG_i$、$\Theta_i=G_i/S$，则$\boldsymbol\Theta\sim\operatorname{Dir}(\boldsymbol\alpha)$，并且$\boldsymbol\Theta$与$S$独立。
+\end{theorem}
+\end{document}

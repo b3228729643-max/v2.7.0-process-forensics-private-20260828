@@ -1,0 +1,208 @@
+{
+  "machine_validation_pass": true,
+  "check_count": 28,
+  "failed_checks": [],
+  "checks": {
+    "object_count_unique": {
+      "pass": true,
+      "detail": {
+        "count": 23,
+        "unique": 23
+      }
+    },
+    "object_masks_nonempty": {
+      "pass": true,
+      "detail": {
+        "empty": 0
+      }
+    },
+    "object_mask_files": {
+      "pass": true,
+      "detail": {
+        "expected": 23
+      }
+    },
+    "all_pairs_coverage": {
+      "pass": true,
+      "detail": {
+        "actual": 253,
+        "expected": 253
+      }
+    },
+    "machine_pair_fail_zero": {
+      "pass": true,
+      "detail": {
+        "fail_count": 0
+      }
+    },
+    "manual_pair_coverage": {
+      "pass": true,
+      "detail": {
+        "actual": 253,
+        "expected": 253
+      }
+    },
+    "manual_pair_fail_zero": {
+      "pass": true,
+      "detail": {
+        "nonpass": []
+      }
+    },
+    "critical_coverage_assets": {
+      "pass": true,
+      "detail": {
+        "machine": 15,
+        "manual": 15
+      }
+    },
+    "critical_manual_complete": {
+      "pass": true,
+      "detail": {
+        "rows": 15
+      }
+    },
+    "glyph_count_unique_nonempty": {
+      "pass": true,
+      "detail": {
+        "count": 197,
+        "unique": 197
+      }
+    },
+    "glyph_assets": {
+      "pass": true,
+      "detail": {
+        "glyph_masks": 197,
+        "glyph_8x": 197,
+        "sheets": 17
+      }
+    },
+    "manual_glyph_coverage": {
+      "pass": true,
+      "detail": {
+        "actual": 197,
+        "expected": 197
+      }
+    },
+    "manual_glyph_complete": {
+      "pass": true,
+      "detail": {
+        "rows": 197
+      }
+    },
+    "legacy_advisory_counts": {
+      "pass": true,
+      "detail": {
+        "legacy_fail": 30,
+        "punct_calibration": 16
+      }
+    },
+    "drawing_coverage": {
+      "pass": true,
+      "detail": {
+        "machine": 18,
+        "manual": 18,
+        "math_rules": 0
+      }
+    },
+    "drawing_manual_pass": {
+      "pass": true,
+      "detail": {
+        "rows": 18
+      }
+    },
+    "clip_coverage_zero": {
+      "pass": true,
+      "detail": {
+        "machine": 23,
+        "manual": 23
+      }
+    },
+    "view_role_coverage": {
+      "pass": true,
+      "detail": {
+        "rows": 32
+      }
+    },
+    "r168_font_hard_gate": {
+      "pass": true,
+      "detail": {
+        "rows": 8
+      }
+    },
+    "math_content_semantics": {
+      "pass": true,
+      "detail": {
+        "rows": 12
+      }
+    },
+    "native_view_dimensions": {
+      "pass": true,
+      "detail": {
+        "full_page_300dpi.png": [
+          2481,
+          3508
+        ],
+        "full_page_200dpi.png": [
+          1654,
+          2339
+        ],
+        "figure_crop_300dpi.png": [
+          2000,
+          888
+        ],
+        "standalone_300dpi.png": [
+          1435,
+          740
+        ],
+        "grayscale_300dpi.png": [
+          2000,
+          888
+        ],
+        "machine_native_full_page_300dpi.png": [
+          2481,
+          3508
+        ]
+      }
+    },
+    "required_FINAL_REPORT.md": {
+      "pass": true,
+      "detail": {
+        "bytes": 6931
+      }
+    },
+    "required_SA3_CARD.md": {
+      "pass": true,
+      "detail": {
+        "bytes": 991
+      }
+    },
+    "required_SA3_CARD.json": {
+      "pass": true,
+      "detail": {
+        "bytes": 682
+      }
+    },
+    "required_RESULT.txt": {
+      "pass": true,
+      "detail": {
+        "bytes": 469
+      }
+    },
+    "required_after_text_measurement_overlay_300dpi.png": {
+      "pass": true,
+      "detail": {
+        "bytes": 195850
+      }
+    },
+    "portable_names_no_colon": {
+      "pass": true,
+      "detail": []
+    },
+    "cache_pyc_zero": {
+      "pass": true,
+      "detail": []
+    }
+  },
+  "manual_files_modified_by_validator": 0,
+  "manual_decisions_generated_by_validator": 0
+}

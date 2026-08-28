@@ -1,0 +1,13 @@
+semantic_parent,visible_text_or_object,opened_evidence,missing_tofu_wrong_codepoint,actually_readable_balanced,clipping,illegal_overlap,geometry_semantics,status,notes
+TXT_SUBSPACE,子空间𝑆,ROI-06 nearest8x + native1x crop,PASS,PASS,0,0,PASS,PASS,Complete subspace label; no foreground crossing.
+TXT_X,𝑥,ROI-06 nearest8x + native1x crop,PASS,PASS,0,0,PASS,PASS,Complete and offset from blue shaft.
+TXT_PROJECTION,𝑝=𝑃𝑆𝑥∈𝑆,ROI-05 nearest8x + native1x crop,PASS,PASS,0,0,PASS,PASS,Projection identity and membership are complete; subscript S is intact.
+TXT_RESIDUAL,𝑟=𝑥−𝑝∈𝑆⟂,ROI-03 nearest8x + native1x crop,PASS,PASS,0,0,PASS,PASS,Residual identity and orthogonal-complement symbol are complete.
+TXT_DISTANCE,最短距离,ROI-04 nearest8x + native1x crop,PASS,PASS,0,0,PASS,PASS,Opaque support keeps boundary away from glyph ink.
+TXT_PYTHAGORAS,‖𝑥‖2=‖𝑝‖2+‖𝑟‖2,ROI-01 nearest8x + native1x crop,PASS,PASS,0,0,PASS,PASS,Equation complete and clear inside note border.
+CAPTION_NUMBER,图2.1,ROI-07 nearest8x + full-page 300dpi,PASS,PASS,0,0,PASS,PASS,Number complete and correctly associated with figure.
+CAPTION_TEXT,向量的正交分解。投影向量属于子空间，残差属于其正交补，虚线残差给出到子空间的最短距离。,ROI-07 nearest8x + full-page 300dpi,PASS,PASS,0,0,PASS,PASS,Full sentence present and consistent with source/context.
+X_P_R_PATHS,x/p/r arrows and endpoints,ROI-02/05/06 nearest8x + grayscale crop,NOT_APPLICABLE,PASS,0,0,PASS,PASS,Shared O/P/X contacts are intended decomposition topology.
+ORTHOGONALITY_MARKER,right-angle marker at P,ROI-04/05 nearest8x + native1x crop,NOT_APPLICABLE,PASS,0,0,PASS,PASS,Correctly certifies p perpendicular to r.
+DISTANCE_BRACE,distance brace P-to-X,ROI-03/04/05 nearest8x + grayscale crop,NOT_APPLICABLE,PASS,0,0,PASS,PASS,Distinct from residual and label; supports shortest-distance reading.
+SUBSPACE_BAND,filled S band and two boundaries,ROI-04/05/06 nearest8x + grayscale crop,NOT_APPLICABLE,PASS,0,0,PASS,PASS,Support fill is retained in N but excluded from illegal-foreground counts; boundaries are complete.

@@ -1,0 +1,73 @@
+% v2.3.1 figure UID: FIG-P242-01
+% v2.6.0 Image-reference reverse redraw: align tree paths with their axis-aligned regions.
+\newcommand{\SLTreePartitionTitleStyle}{\fontsize{10.5pt}{12.6pt}\selectfont\bfseries}
+\tikzset{
+  slfig-FIG-P242-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,
+    every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P242-01-gold-edge/.style={draw=SLGold!82!black,line width=1.02pt,-{Stealth[length=1.9mm,width=1.2mm]}},
+  slfig-FIG-P242-01-branch/.style={font=\fontsize{9.2pt}{11pt}\selectfont},
+  slfig-FIG-P242-01-gold-branch/.style={slfig-FIG-P242-01-branch,text=SLGold!82!black},
+  slfig-FIG-P242-01-x-split/.style={draw=SLBlue,line width=.82pt},
+  slfig-FIG-P242-01-y-split/.style={draw=SLTeal,line width=.78pt,dash pattern=on 3.2pt off 2.0pt},
+  slfig-FIG-P242-01-highlight/.style={draw=SLGold!82!black,line width=1.02pt},
+  slfig-FIG-P242-01-region-label/.style={font=\fontsize{9.5pt}{11.4pt}\selectfont\bfseries}
+}
+\forestset{
+  slfig-FIG-P242-01-tree/.style={
+    for tree={font=\fontsize{9.2pt}{11pt}\selectfont,draw=SLBlue,fill=SLBlueBG,
+      rounded corners=1.5mm,line width=.80pt,inner xsep=4pt,inner ysep=3pt,
+      edge={draw=SLBlue,line width=.82pt,-{Stealth[length=1.9mm,width=1.2mm]}}}
+  }
+}
+\pgfplotsset{slfig-FIG-P242-01-axis/.style={
+  axis line style={draw=SLInk,line width=.55pt},tick style={draw=SLInk,line width=.52pt},
+  tick label style={font=\fontsize{8.7pt}{10.4pt}\selectfont},
+  label style={font=\fontsize{9.5pt}{11.4pt}\selectfont},clip=false}}
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{.48\linewidth}
+\centering
+{\SLTreePartitionTitleStyle 决策树：条件与分支值}\par\smallskip
+\begin{forest}
+  slfig tree,
+  slfig-FIG-P242-01-tree,
+  for tree={font=\footnotesize,l sep=9mm,s sep=6mm,minimum width=17mm},
+  [{$x_1\le2.4$}
+    [{$R_1$},edge label={node[midway,left,slfig-FIG-P242-01-branch]{是}},slfig pattern blue]
+    [{$x_2\le1.6$},edge={slfig-FIG-P242-01-gold-edge},
+      edge label={node[midway,right,slfig-FIG-P242-01-gold-branch]{否}}
+      [{$R_2$},slfig pattern gold,
+        edge={slfig-FIG-P242-01-gold-edge},
+        edge label={node[midway,left,slfig-FIG-P242-01-gold-branch]{是}}]
+      [{$R_3$},slfig pattern teal,edge label={node[midway,right,slfig-FIG-P242-01-branch]{否}}]
+    ]
+  ]
+\end{forest}
+\par\smallskip
+{\centering\fontsize{9.2pt}{11pt}\selectfont
+\textcolor{SLGold!82!black}{金色路径：}$x_1>2.4$ 且 $x_2\le1.6$\par}
+\end{minipage}\hfill
+\begin{minipage}[c]{.48\linewidth}
+\centering
+{\SLTreePartitionTitleStyle 特征空间：同一轴对齐分裂}\par\smallskip
+\begin{tikzpicture}[slfig-FIG-P242-01]
+\begin{axis}[slfig axis,slfig-FIG-P242-01-axis,
+  width=\linewidth,height=.84\linewidth,
+  xmin=0,xmax=4,ymin=0,ymax=3,axis equal image,
+  axis lines=box,xlabel={$x_1$},ylabel={$x_2$},
+  xtick={2.4},ytick={1.6},clip=false,
+]
+  \path[fill=SLBlue!6,slfig pattern blue] (axis cs:0,0) rectangle (axis cs:2.4,3);
+  \path[fill=SLGold!8,slfig pattern gold] (axis cs:2.4,0) rectangle (axis cs:4,1.6);
+  \path[fill=SLTeal!6,slfig pattern teal] (axis cs:2.4,1.6) rectangle (axis cs:4,3);
+  \addplot[slfig-FIG-P242-01-x-split] coordinates {(2.4,0) (2.4,3)};
+  \addplot[slfig-FIG-P242-01-y-split] coordinates {(2.4,1.6) (4,1.6)};
+  \draw[slfig-FIG-P242-01-highlight] (axis cs:2.4,0) rectangle (axis cs:4,1.6);
+  \node[slfig-FIG-P242-01-region-label,text=SLBlue] at (axis cs:1.2,1.5) {$R_1$};
+  \node[slfig-FIG-P242-01-region-label,text=SLGold!82!black] at (axis cs:3.2,.8) {$R_2$};
+  \node[slfig-FIG-P242-01-region-label,text=SLTeal] at (axis cs:3.2,2.3) {$R_3$};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{决策树中的每条根到叶路径对应特征空间中的一个轴对齐区域。}\label{fig:V2-C04-tree-partition}
+\end{figure}

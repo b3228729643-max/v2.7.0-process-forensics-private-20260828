@@ -1,0 +1,21 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{715}
+\setcounter{chapter}{36}
+\setcounter{section}{1}
+\setcounter{figure}{3}
+\pagestyle{headings}
+\chaptermark{PageRank算法}
+\sectionmark{基本 PageRank}
+图\ref{fig:V5-C07-inbound-contribution}在“基本 PageRank、无悬挂且此处$S=M$”的作用域内，把来源列的分摊与目标行的累加画成连续因果链，并在图内同时封住一般 PageRank 的符号边界。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/inbound_contribution.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}沿每个来源$j$到目标$i$核对
+$M_{ij}r_j^{(t)}$来自第$j$列，非加权时分母$\deg^+(j)$属于来源$j$；
+再复述边界：上方只适用于基本无悬挂的$M(=S)$，一般 PageRank 先用
+$S=M+\boldsymbol v\boldsymbol a^{\mathsf T}$修复悬挂列，再构造
+$G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$，故修复后的$S/G$正元素
+不必对应原图中的入链。
+\end{document}

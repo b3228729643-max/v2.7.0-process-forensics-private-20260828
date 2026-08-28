@@ -1,0 +1,17 @@
+pair_id,object_a,object_b,manual_decision,manual_note
+P0007,O-G01,O-G08,PASS,proposal-arrow tail contacts the current-state border at the intended centered exit only
+P0035,O-G02,O-G08,PASS,proposal arrowhead meets the proposal-frame top edge without entering its text
+P0036,O-G02,O-G09,PASS,calculation-arrow tail begins at the proposal-frame bottom with no side overlap
+P0063,O-G03,O-G09,PASS,calculation arrowhead terminates on the ratio-frame top edge at the designed anchor
+P0064,O-G03,O-G10,PASS,decision-arrow tail leaves the ratio-frame bottom at one centered contact
+P0101,O-G04,O-T08,PASS,fraction rule belongs to the acceptance formula and maintains visible clearance from glyph ink
+P0115,O-G05,O-G10,PASS,decision arrowhead reaches only the upper diamond vertex and does not obscure the label
+P0116,O-G05,O-G11,PASS,solid accept branch departs the left diamond edge at the intended junction
+P0117,O-G05,O-G12,PASS,dash-dot reject branch departs the right diamond edge with an intact first dash
+P0140,O-G06,O-G11,PASS,accept arrowhead lands on the accepted-frame top border without penetrating the title
+P0164,O-G07,O-G12,PASS,reject arrowhead meets the outer rejected-frame border while both outlines stay visible
+P0165,O-G07,O-G13,PASS,self-loop endpoints attach to the lower corners of the rejected frame as designed
+P0300,O-T01,O-T02,PASS,current title and variable line are vertically separated and share no glyph ink
+P0345,O-T04,O-T05,PASS,proposal instruction and candidate-variable line keep a clear interline gap
+P0426,O-T13,O-T14,PASS,accepted title and update line remain distinct with readable mathematical subscripts
+P0433,O-T15,O-T16,PASS,rejected title and update line keep clean spacing inside the double frame

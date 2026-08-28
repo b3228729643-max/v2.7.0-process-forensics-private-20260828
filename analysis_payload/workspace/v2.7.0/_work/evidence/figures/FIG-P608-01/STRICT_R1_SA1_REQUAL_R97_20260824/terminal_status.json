@@ -1,0 +1,88 @@
+{
+  "audit_id": "FIG-P608-01 STRICT_R1_SA1_REQUAL_R97_20260824",
+  "reviewer": "SA1_R1_20260824",
+  "terminal_status": "FAIL_TO_SA2",
+  "terminal_reason": "hard pixel/purity and non-whitelisted cross-panel clearance gates fail; frozen candidate/source were not modified",
+  "candidate": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r97_fullbook\\main_full.pdf",
+    "sha256": "062AD81020CB19A5C6688A45C73E00965F5060E0960A69AF820D7DC154DEE814",
+    "pages": 813
+  },
+  "source": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_trace_running_mean.tex",
+    "sha256": "DA035C1920CB900E54D3658851C1D71D9C6446531EFF50BEE6E089B567835AE4"
+  },
+  "identity": {
+    "figure": "32.8",
+    "physical_page": 659,
+    "printed_page": 646,
+    "p609_excluded": true
+  },
+  "counts": {
+    "objects": 102,
+    "text_objects": 36,
+    "graphic_objects": 66,
+    "math_rules": 2,
+    "glyphs": 114,
+    "pairs_expected": 5151,
+    "pairs_reported": 5151,
+    "pair_cards_manual": 110,
+    "named_individual_contacts": 93,
+    "low_profile_glyphs": 15
+  },
+  "hard_gates": {
+    "glyph_fail_ids": [
+      "G008",
+      "G019",
+      "G027",
+      "G058",
+      "G063"
+    ],
+    "pair_fail_ids": [
+      "P2311",
+      "P2315",
+      "P3071"
+    ],
+    "pixel_fail": 4,
+    "purity_fail": 1,
+    "unwhitelisted_pair_fail": 3,
+    "normal_font_size_fail": 0
+  },
+  "critical_R002_G001": {
+    "pre_zorder_shared_px": 64,
+    "final_unique_overlap_px": 0,
+    "final_unique_clearance_px": 0,
+    "required_clearance_px": 8,
+    "verdict": "FAIL"
+  },
+  "intentional_data_relation_pair_ids": [
+    "P5003",
+    "P5008",
+    "P5009",
+    "P5011",
+    "P5012"
+  ],
+  "drawing_path_coverage": {
+    "in_scope_paths": 46,
+    "unassigned_foreground_paths": 0
+  },
+  "visual_D_E": {
+    "normal_effective_pt_gate": "PASS",
+    "global_harmony": "FAIL",
+    "reason": "lower title R002 overbar reaches upper x-axis G001"
+  },
+  "package_pre_manifest_check": {
+    "checked_at": "2026-08-24T16:03:46.1353323+08:00",
+    "root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P608-01\\STRICT_R1_SA1_REQUAL_R97_20260824",
+    "regular_file_count": 390,
+    "zero_byte_file_count": 0,
+    "zero_byte_files": [],
+    "ads_enumeration_error_count": 0,
+    "ads_enumeration_errors": [],
+    "nondefault_ads_count": 0,
+    "nondefault_ads": [],
+    "status": "PASS_ZERO_EMPTY_ADS"
+  },
+  "cleanup": "PASS: 225 explicit stale self-generated targets removed; referenced assets all remain",
+  "next_action": "SA2 must repair frozen-source defects before any requalification; this SA1 package is evidence-only."
+}

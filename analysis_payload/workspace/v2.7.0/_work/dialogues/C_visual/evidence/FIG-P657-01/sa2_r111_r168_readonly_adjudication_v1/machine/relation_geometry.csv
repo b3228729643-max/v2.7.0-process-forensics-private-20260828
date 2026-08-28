@@ -1,0 +1,10 @@
+﻿relation_id,relation_type,source,target,label,shaft,head,direction,meaning
+REL01,CONJUGACY,NODE_DIRICHLET,NODE_MULTINOMIAL,,GFX007,GFX008,down,Dirichlet is a conjugate prior family for the multinomial likelihood family
+REL02,CONJUGACY,NODE_BETA,NODE_BINOMIAL,,GFX009,GFX010,down,Beta is a conjugate prior family for the binomial likelihood family
+REL03,SPECIAL_CASE,NODE_DIRICHLET,NODE_BETA,特殊情形 / K=2,GFX011,GFX012,right,The K=2 Dirichlet parameterization is the Beta family
+REL04,SPECIAL_CASE,NODE_MULTINOMIAL,NODE_BINOMIAL,特殊情形 / K=2,GFX013,GFX014,right,The K=2 multinomial count model is the binomial family
+REL05,SPECIAL_CASE,NODE_MULTINOMIAL,NODE_CATEGORICAL,N=1,GFX015,GFX016,down,A categorical observation is a one-trial multinomial model
+REL06,SPECIAL_CASE,NODE_BINOMIAL,NODE_BERNOULLI,N=1,GFX017,GFX018,down,A Bernoulli observation is a one-trial binomial model
+REL07,SPECIAL_CASE,NODE_CATEGORICAL,NODE_BERNOULLI,K=2,GFX019,GFX020,right,A K=2 categorical observation is Bernoulli
+LEG01,LEGEND_SAMPLE,LEGEND_CONJUGACY,LEGEND_CONJUGACY_LABEL,共轭,GFX021,GFX022,right,"Thick filled arrow key denotes conjugacy, not set inclusion"
+LEG02,LEGEND_SAMPLE,LEGEND_SPECIAL,LEGEND_SPECIAL_LABEL,特殊情形,GFX023,GFX024,right,Thin open arrow key denotes special-case relation

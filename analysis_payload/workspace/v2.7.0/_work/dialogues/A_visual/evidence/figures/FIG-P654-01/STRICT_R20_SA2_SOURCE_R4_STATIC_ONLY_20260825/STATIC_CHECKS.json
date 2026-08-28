@@ -1,0 +1,68 @@
+{
+  "status": "P654_SOURCE_R4_STATIC_READY_REQUEST_BUILD_SLOT",
+  "before_r4_sha256": "CDAD08C2FDD21B4DA1C1F67431B6743C703CA6629C5F6E346C671FC48C01DB0D",
+  "after_r4_sha256": "2EF1663B13A7982ACD5835217D0BB317FBF44146B08BE19F439430A2B42FABE7",
+  "after_r4_bytes": 3830,
+  "modified_business_source_count": 1,
+  "exact_changed_line_count": 7,
+  "exact_changed_lines": [
+    {
+      "line": 6,
+      "before": "% One 10.7pt BASE_MATH role: IBM Plex math letters, a Libertinus U+002B",
+      "after": "% One 11.6pt BASE_MATH role: IBM Plex math letters, a Libertinus U+002B"
+    },
+    {
+      "line": 9,
+      "before": "\\font\\slfigPBaseMath=\"IBMPlexMath-Regular.otf\" at 10.7pt",
+      "after": "\\font\\slfigPBaseMath=\"IBMPlexMath-Regular.otf\" at 11.6pt"
+    },
+    {
+      "line": 10,
+      "before": "\\font\\slfigPBinaryMath=\"LibertinusMath-Regular.otf\" at 10.7pt",
+      "after": "\\font\\slfigPBinaryMath=\"LibertinusMath-Regular.otf\" at 11.6pt"
+    },
+    {
+      "line": 11,
+      "before": "\\font\\slfigPTotalMath=\"MezenetsUnicode.otf\" at 10.7pt",
+      "after": "\\font\\slfigPTotalMath=\"MezenetsUnicode.otf\" at 11.6pt"
+    },
+    {
+      "line": 33,
+      "before": "\\node[aux,text width=28mm] (trial) at (-5.499,1.15) {类别计数\\\\{\\fontsize{10.7pt}{12.8pt}\\selectfont$\\slfigPCountN$}};",
+      "after": "\\node[aux,text width=28mm] (trial) at (-5.499,1.15) {类别计数\\\\{\\fontsize{11.6pt}{13.8pt}\\selectfont$\\slfigPCountN$}};"
+    },
+    {
+      "line": 39,
+      "before": "   {\\fontsize{10.7pt}{12.8pt}\\selectfont",
+      "after": "   {\\fontsize{11.6pt}{13.8pt}\\selectfont"
+    },
+    {
+      "line": 44,
+      "before": "   {\\fontsize{10.7pt}{12.8pt}\\selectfont",
+      "after": "   {\\fontsize{11.6pt}{13.8pt}\\selectfont"
+    }
+  ],
+  "git_diff_check_pass": true,
+  "direct_font_at_11_6_count": 3,
+  "wrapper_fontsize_11_6_13_8_count": 3,
+  "legacy_direct_font_at_10_7_count": 0,
+  "legacy_wrapper_fontsize_10_7_count": 0,
+  "math_plus_u002b_definition_count": 1,
+  "uppercase_total_N_u004e_definition_count": 1,
+  "target_n_u1d45b_definition_count": 1,
+  "alpha_u1d6fc_definition_count": 1,
+  "small_cap_u0274_count": 0,
+  "undefined_n0_count": 0,
+  "text_plus_count": 0,
+  "resizebox_count": 0,
+  "scalebox_count": 0,
+  "transform_shape_count": 0,
+  "lda_coordinate_retained_count": 1,
+  "seven_relation_count": 7,
+  "tex_invocations": 0,
+  "commit_created": false,
+  "fresh_role_started": false,
+  "manual_fields_created": 0,
+  "hard_check_mismatches": {},
+  "hard_check_pass": true
+}

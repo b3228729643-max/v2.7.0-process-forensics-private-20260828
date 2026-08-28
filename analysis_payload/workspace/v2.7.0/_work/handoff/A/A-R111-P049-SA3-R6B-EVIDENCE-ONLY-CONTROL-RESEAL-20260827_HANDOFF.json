@@ -1,0 +1,60 @@
+{
+  "handoff_id": "A-R111-P049-SA3-R6B-EVIDENCE-ONLY-CONTROL-RESEAL-20260827",
+  "figure_uid": "FIG-P049-01",
+  "assigned_scope": "Exactly one evidence-only control reseal from the original R6 material root to a new R6B sibling root; no business evidence rerun.",
+  "completed": [
+    "disclosed and permanently excluded the failed R6A root as a source",
+    "created fresh R6B controller and independent auditor with new identities and empty-safe Count handling",
+    "passed PowerShell 7.6.4 AST, StrictMode empty-filter count0, and unsafe pipeline Count lint gates",
+    "executed exactly one controller invocation with exit0 and retry0",
+    "copied exactly 34 original R6 material files with path, bytes, SHA256, and NTFS ticks mismatch0",
+    "created exactly two new payload files and exactly three controls",
+    "sealed the root with WRITE_STOPPED as the sole final root-content move",
+    "completed one independent root-external read-only audit with all required gates passing"
+  ],
+  "files_changed": {
+    "original_r6_root": "none",
+    "failed_r6a_root": "none",
+    "new_r6b_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P049-01\\STRICT_R6B_SA3_R111_EVIDENCE_ONLY_CONTROL_RESEAL_20260827",
+    "business_pdf_source_git_central": "none",
+    "root_external_report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\A-R111-P049-SA3-R6B-EVIDENCE-ONLY-CONTROL-RESEAL-20260827_REPORT.md"
+  },
+  "decisions": [
+    "ROOT_ACCEPT_R6B_EVIDENCE_ONLY_CONTROL_RESEAL",
+    "preserve the fresh SA3 content direction without rerun",
+    "request Main A_LOCAL_PASS review only",
+    "do not self-accept or start another UID or role"
+  ],
+  "validation": {
+    "controller_bytes": 15314,
+    "controller_sha256": "FBB208CB4F79549A33F964CAC01BABF27B42271AA098A16994F65EAB6C37C61A",
+    "auditor_bytes": 15409,
+    "auditor_sha256": "CBFADE96450D7C42ACDF962FBDB8A5C31F71C27A309B6DE7476BFDAD94936AB0",
+    "controller_invocations": 1,
+    "controller_retries": 0,
+    "controller_exit": 0,
+    "auditor_exit": 0,
+    "source_material_count": 34,
+    "source_material_bytes": 4333519,
+    "source_canonical_byte_length": 4071,
+    "source_set_sha256": "B77ADA737922FFA781C84AC7101F707E70C79C60EF33BA031729E8324D2830A9",
+    "copy_identity_rows": 34,
+    "copy_identity_mismatches": 0,
+    "payload_count": 36,
+    "control_count": 3,
+    "ordinary_count": 39,
+    "manifest_rows": 36,
+    "manifest_identity_mismatches": 0,
+    "writable_files": 0,
+    "writable_directories": 0,
+    "marker_margin_ticks": 10310932,
+    "files_at_or_after_marker_excluding_marker": 0,
+    "postmarker_content_or_attribute_writes": 0,
+    "parse_ads_cache_pyc_reparse_failures": 0,
+    "pdf_source_git_tex_unchanged": true
+  },
+  "unresolved": [
+    "Main must independently review the R6B sealed root before recording A_LOCAL_PASS."
+  ],
+  "next_action": "Main independently validates R6B and decides whether to record FIG-P049-01 as A_LOCAL_PASS."
+}

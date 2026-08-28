@@ -1,0 +1,88 @@
+{
+  "package": "FIG-P654-01 STRICT_R6 SA2 direct-controller preflight",
+  "payload_scope": "all ordinary files recursively except MANIFEST.csv, MANIFEST.json, and WRITE_STOPPED",
+  "payload_file_count": 16,
+  "files": [
+    {
+      "RELATIVE_PATH": "00_PARENT_LAUNCH_ENCODING_NOTE.md",
+      "BYTES": 875,
+      "MTIME_NS": 1787601749206752400
+    },
+    {
+      "RELATIVE_PATH": "01_DIRECT_PREFLIGHT_PASS.md",
+      "BYTES": 2107,
+      "MTIME_NS": 1787602402327874900
+    },
+    {
+      "RELATIVE_PATH": "02_SOURCE_WRAPPER_GIT_PREFLIGHT.md",
+      "BYTES": 1208,
+      "MTIME_NS": 1787602403186233500
+    },
+    {
+      "RELATIVE_PATH": "03_DIRECT_LUALATEX_DECISION.md",
+      "BYTES": 1978,
+      "MTIME_NS": 1787602403628353000
+    },
+    {
+      "RELATIVE_PATH": "child_env_kpse_probe.ps1",
+      "BYTES": 4540,
+      "MTIME_NS": 1787601923947128000
+    },
+    {
+      "RELATIVE_PATH": "CHILD_PREFLIGHT.json",
+      "BYTES": 7291,
+      "MTIME_NS": 1787601772598031000
+    },
+    {
+      "RELATIVE_PATH": "CHILD_PREFLIGHT_ATTEMPT2.json",
+      "BYTES": 7481,
+      "MTIME_NS": 1787601995961691800
+    },
+    {
+      "RELATIVE_PATH": "MODEL_ROUTE.md",
+      "BYTES": 495,
+      "MTIME_NS": 1787602404133469500
+    },
+    {
+      "RELATIVE_PATH": "PACKAGE_STATUS.json",
+      "BYTES": 1586,
+      "MTIME_NS": 1787602444474403800
+    },
+    {
+      "RELATIVE_PATH": "PARENT_PREFLIGHT_RESULT.json",
+      "BYTES": 6415,
+      "MTIME_NS": 1787601772664372400
+    },
+    {
+      "RELATIVE_PATH": "PARENT_PREFLIGHT_RESULT_ATTEMPT2.json",
+      "BYTES": 7080,
+      "MTIME_NS": 1787601996325463200
+    },
+    {
+      "RELATIVE_PATH": "RESULT.txt",
+      "BYTES": 43,
+      "MTIME_NS": 1787602444479848900
+    },
+    {
+      "RELATIVE_PATH": "run_direct_parent_preflight.ps1",
+      "BYTES": 3994,
+      "MTIME_NS": 1787601957243489700
+    },
+    {
+      "RELATIVE_PATH": "seal_r6_preflight.py",
+      "BYTES": 11698,
+      "MTIME_NS": 1787602404749769500
+    },
+    {
+      "RELATIVE_PATH": "TERMINAL_CROSSCHECK.txt",
+      "BYTES": 872,
+      "MTIME_NS": 1787602444507857200
+    },
+    {
+      "RELATIVE_PATH": "texcache/P654_R6_CHILD_WRITE_PROBE.txt",
+      "BYTES": 42,
+      "MTIME_NS": 1787601994969047900
+    }
+  ],
+  "result": "DIRECT_PREFLIGHT_PASS_AWAITING_BUILD_SLOT"
+}

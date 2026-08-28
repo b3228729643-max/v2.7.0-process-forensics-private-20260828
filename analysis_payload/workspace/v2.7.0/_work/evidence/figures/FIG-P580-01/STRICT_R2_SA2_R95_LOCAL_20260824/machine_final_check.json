@@ -1,0 +1,731 @@
+{
+  "uid": "FIG-P580-01",
+  "schema_revision": 111,
+  "result": "SA2_LOCAL_PASS_AWAIT_ROOT_R96",
+  "issues": [],
+  "checks": {
+    "json_parse::core_audit_summary.json": {
+      "status": "PASS",
+      "detail": "object parsed"
+    },
+    "json_parse::render_manifest.json": {
+      "status": "PASS",
+      "detail": "object parsed"
+    },
+    "json_parse::math_and_body_consistency.json": {
+      "status": "PASS",
+      "detail": "object parsed"
+    },
+    "json_parse::source_text_anchor.json": {
+      "status": "PASS",
+      "detail": "object parsed"
+    },
+    "json_parse::text_only_replay_probe.json": {
+      "status": "PASS",
+      "detail": "object parsed"
+    },
+    "json_parse::glyph_ownership_report.json": {
+      "status": "PASS",
+      "detail": "object parsed"
+    },
+    "csv_parse::after_font_audit.csv": {
+      "status": "PASS",
+      "detail": "rows=32"
+    },
+    "csv_parse::after_pixel_measurements.csv": {
+      "status": "PASS",
+      "detail": "rows=252"
+    },
+    "csv_parse::all_unordered_pairs.csv": {
+      "status": "PASS",
+      "detail": "rows=1596"
+    },
+    "csv_parse::required_relations.csv": {
+      "status": "PASS",
+      "detail": "rows=445"
+    },
+    "csv_parse::after_overlap_report.csv": {
+      "status": "PASS",
+      "detail": "rows=2041"
+    },
+    "csv_parse::after_D_same_class.csv": {
+      "status": "PASS",
+      "detail": "rows=79"
+    },
+    "csv_parse::after_E_role_ratios.csv": {
+      "status": "PASS",
+      "detail": "rows=38"
+    },
+    "csv_parse::object_inventory.csv": {
+      "status": "PASS",
+      "detail": "rows=57"
+    },
+    "csv_parse::mask_manifest.csv": {
+      "status": "PASS",
+      "detail": "rows=313"
+    },
+    "csv_parse::glyph_contact_manifest.csv": {
+      "status": "PASS",
+      "detail": "rows=234"
+    },
+    "csv_parse::manual_glyph_contact_ledger.csv": {
+      "status": "PASS",
+      "detail": "rows=234"
+    },
+    "csv_parse::manual_visual_harmony_ledger.csv": {
+      "status": "PASS",
+      "detail": "rows=50"
+    },
+    "csv_parse::opaque_label_graphic_coverage.csv": {
+      "status": "PASS",
+      "detail": "rows=25"
+    },
+    "csv_parse::translucent_label_graphic_coverage.csv": {
+      "status": "PASS",
+      "detail": "rows=0"
+    },
+    "csv_parse::clip_and_edge_clearance.csv": {
+      "status": "PASS",
+      "detail": "rows=32"
+    },
+    "csv_parse::text_completeness_ledger.csv": {
+      "status": "PASS",
+      "detail": "rows=8"
+    },
+    "csv_parse::role_assignment_ledger.csv": {
+      "status": "PASS",
+      "detail": "rows=32"
+    },
+    "csv_parse::low_profile_punctuation_calibration.csv": {
+      "status": "PASS",
+      "detail": "rows=1"
+    },
+    "core_exact_counts": {
+      "status": "PASS",
+      "detail": {
+        "uid": "FIG-P580-01",
+        "strict_schema_revision": 111,
+        "glyph_count": 234,
+        "necessary_substring_count": 18,
+        "text_element_count": 32,
+        "graphic_count": 25,
+        "semantic_object_count": 57,
+        "expected_unordered_pair_count": 1596,
+        "actual_unordered_pair_count": 1596,
+        "required_relation_count": 445,
+        "critical_relation_package_count": 0,
+        "pixel_failure_count": 0,
+        "low_profile_punctuation_count": 1,
+        "low_profile_calibration_failure_count": 0,
+        "font_failure_count": 0,
+        "D_failure_count": 0,
+        "E_failure_count": 0,
+        "pair_failure_count": 0,
+        "required_relation_failure_count": 0,
+        "clip_failure_count": 0,
+        "opaque_label_ground_count": 1,
+        "opaque_graphic_coverage_failure_count": 0,
+        "translucent_label_ground_count": 0,
+        "translucent_graphic_coverage_failure_count": 0,
+        "source_unassigned_text_pixels": 0,
+        "source_duplicate_text_pixels": 0,
+        "glyph_missing_stroke_total": 0,
+        "glyph_foreign_pixel_total": 0,
+        "contact_sheet_count": 15,
+        "contact_manifest_count": 234,
+        "visual_template_count": 50
+      }
+    },
+    "core_boolean_gates": {
+      "status": "PASS",
+      "detail": {
+        "text_completeness_pass": true,
+        "math_body_consistency_pass": true,
+        "anchor_checks_pass": true,
+        "text_replay_exact": true
+      }
+    },
+    "core_empty_mask_ids": {
+      "status": "PASS",
+      "detail": []
+    },
+    "font_rows": {
+      "status": "PASS",
+      "detail": "rows=32 min_effective_pt=9.60"
+    },
+    "pixel_rows": {
+      "status": "PASS",
+      "detail": "rows=252 unique=252"
+    },
+    "object_inventory": {
+      "status": "PASS",
+      "detail": "rows=57 text=32 graphic=25"
+    },
+    "unordered_pair_formula": {
+      "status": "PASS",
+      "detail": "expected=1596 actual=1596 unique=1596"
+    },
+    "all_pair_results": {
+      "status": "PASS",
+      "detail": "failures=0"
+    },
+    "required_relations": {
+      "status": "PASS",
+      "detail": "rows=445 failures=0"
+    },
+    "overlap_report_union": {
+      "status": "PASS",
+      "detail": "rows=2041 union=2041"
+    },
+    "D_gate": {
+      "status": "PASS",
+      "detail": "rows=79 failures=0"
+    },
+    "E_gate": {
+      "status": "PASS",
+      "detail": {
+        "rows": 38,
+        "assessed": 10,
+        "assessed_failures": 0,
+        "justified_NA": 28,
+        "NA_reason_counts": {
+          "no same-panel same-script tick base": 26,
+          "no eligible all-C-pass sample for role": 2
+        }
+      }
+    },
+    "opaque_coverage": {
+      "status": "PASS",
+      "detail": {
+        "rows": 25,
+        "zero_overlap_graphics": 24,
+        "same_node_border_fill_stroke_overlap": [
+          {
+            "HALO_ID": "HALO01",
+            "GRAPHIC_ID": "GR021",
+            "GRAPHIC_ROLE": "NODE_BORDER",
+            "OVERLAP_PIXEL_COUNT": "2943",
+            "PASS_FAIL": "PASS",
+            "PRE_MASK": "masks/pre_occlusion/GR021_pre_occlusion.png",
+            "HALO_MASK": "masks/opaque_halos/HALO01_weight_card_opaque_fill.png",
+            "FINAL_VISIBLE_MASK": "masks/graphics/GR021_raw.png",
+            "REASON": "associated card border; intentional same-node fill/stroke"
+          }
+        ],
+        "failures": 0
+      }
+    },
+    "translucent_coverage": {
+      "status": "PASS",
+      "detail": "rows=0"
+    },
+    "clip_gate": {
+      "status": "PASS",
+      "detail": "rows=32"
+    },
+    "text_completeness": {
+      "status": "PASS",
+      "detail": "rows=8"
+    },
+    "role_assignment": {
+      "status": "PASS",
+      "detail": {
+        "E004": "ANNOTATION",
+        "E028": "AXIS_TITLE",
+        "E029": "AXIS_TITLE",
+        "E030": "LEGEND",
+        "E031": "LEGEND"
+      }
+    },
+    "rev111_low_profile_punctuation": {
+      "status": "PASS",
+      "detail": {
+        "MEASURE_ID": "G0198",
+        "PARENT_ELEMENT_ID": "E032",
+        "PANEL_ID": "GLOBAL",
+        "ROLE": "CAPTION",
+        "TEXT_SAMPLE": ".",
+        "UNICODE": "U+002E",
+        "EFFECTIVE_PT": "10.00",
+        "PDF_FONT_PT": "9.963",
+        "H_INK_PX": "7",
+        "FINAL_PIXELS": "41",
+        "THRESHOLD_RULE": "REV111_LOW_PROFILE_CALIBRATION",
+        "CALIBRATION_REFERENCE": "low_profile_punctuation/reference_measurement.json",
+        "CALIBRATION_FONT_MATCH": "true",
+        "CALIBRATION_SIZE_DELTA_PT": "0.000000",
+        "CALIBRATION_COLOUR_MATCH": "true",
+        "CALIBRATION_H_INK_PX": "7",
+        "CALIBRATION_INK_AREA_PX": "41",
+        "H_RATIO_TO_CALIBRATION": "1.000000",
+        "AREA_RATIO_TO_CALIBRATION": "1.000000",
+        "SAME_ROLE_CROSS_PANEL_RATIO": "1.000000_SINGLE_GLOBAL_INSTANCE",
+        "CALIBRATION_PASS": "true",
+        "LOW_PROFILE_EVIDENCE": "low_profile_punctuation/G0198",
+        "PASS_FAIL": "PASS",
+        "REASON": "PASS_REV111_LOW_PROFILE_CALIBRATION"
+      }
+    },
+    "low_profile_evidence_package": {
+      "status": "PASS",
+      "detail": "expected=13 actual=13"
+    },
+    "manual_glyph_ledger": {
+      "status": "PASS",
+      "detail": "manifest=234 manual=234 unique=234"
+    },
+    "contact_sheet_set": {
+      "status": "PASS",
+      "detail": "count=15"
+    },
+    "manual_visual_ledger": {
+      "status": "PASS",
+      "detail": "rows=50 unique=50"
+    },
+    "mask_manifest_logical_rows": {
+      "status": "PASS",
+      "detail": {
+        "rows": 313,
+        "unique_ids": 313,
+        "unique_raw_paths": 313,
+        "kind_counts": {
+          "TEXT": 32,
+          "GRAPHIC": 25,
+          "GLYPH": 234,
+          "TEXT_SUBSTRING": 18,
+          "NODE_BORDER_EDGE": 4
+        }
+      }
+    },
+    "mask_physical_file_formula": {
+      "status": "PASS",
+      "detail": {
+        "logical_raw": 313,
+        "glyph_source_shape_derivatives": 234,
+        "graphic_pre_occlusion_derivatives": 25,
+        "global_current_derivatives": 2,
+        "declared_deprecated_auxiliary": 6,
+        "formula": "313 + 234 + 25 + 2 + 6 = 580",
+        "actual_files": 580,
+        "missing": [],
+        "unexpected": []
+      }
+    },
+    "deprecated_mask_auxiliary_isolation": {
+      "status": "PASS",
+      "detail": {
+        "paths": [
+          "masks/glyphs/S_FRACTION_01_raw.png",
+          "masks/glyphs/S_FRACTION_02_raw.png",
+          "masks/glyphs/S_FRACTION_03_raw.png",
+          "masks/glyphs/VBAR01_raw.png",
+          "masks/glyphs/VBAR02_raw.png",
+          "masks/glyphs/VBAR03_raw.png"
+        ],
+        "status": "six pre-final fraction/vbar composites retained as explicitly nonauthoritative; none is a manifest row or current measurement input"
+      }
+    },
+    "ownership_pollution": {
+      "status": "PASS",
+      "detail": {
+        "source_text_pixels_in_scope": 66307,
+        "source_unassigned_text_pixels": 0,
+        "source_duplicate_text_pixels": 0,
+        "rule": "BT/ET replay candidate, rawdict/texttrace ROI, nearest unpadded rawdict character box owns shared replay pixel"
+      }
+    },
+    "render_identity": {
+      "status": "PASS",
+      "detail": {
+        "candidate_page_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P580-01\\STRICT_R2_SA2_R95_LOCAL_20260824\\build\\page\\v260_FIG-P580-01_page.pdf",
+        "candidate_standalone_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P580-01\\STRICT_R2_SA2_R95_LOCAL_20260824\\build\\standalone\\v260_FIG-P580-01_standalone.pdf",
+        "physical_page": 1,
+        "page_size_pt": [
+          595.276,
+          841.89
+        ],
+        "full_page_300dpi_grid": [
+          2481,
+          3508
+        ],
+        "full_page_200dpi_grid": [
+          1654,
+          2339
+        ],
+        "standalone_300dpi_grid": [
+          2481,
+          3508
+        ],
+        "measurement_dpi": 300,
+        "figure_crop_full_page_px": [
+          250,
+          583,
+          2230,
+          1525
+        ],
+        "resize_after_render": false,
+        "measurement_basis": "page wrapper direct Poppler 300dpi; integer crop only",
+        "build_logs": [
+          "build/page/v260_FIG-P580-01_page.log",
+          "build/standalone/v260_FIG-P580-01_standalone.log"
+        ],
+        "build_exit_codes": {
+          "page": 0,
+          "standalone": 0
+        }
+      }
+    },
+    "math_body_consistency": {
+      "status": "PASS",
+      "detail": {
+        "checks": {
+          "w1_24_over_25": true,
+          "wmid_3_over_2": true,
+          "w4_24_over_25": true,
+          "left_support_gap": true,
+          "right_support_full": true,
+          "no_accept_reject_semantics": true,
+          "body_consistency": true
+        },
+        "result": "PASS"
+      }
+    },
+    "source_anchor": {
+      "status": "PASS",
+      "detail": {
+        "checks": {
+          "figure_uid": true,
+          "left_title": true,
+          "right_title": true,
+          "left_hatch_decode": true,
+          "right_line_decode": true,
+          "caption": true,
+          "no_resize_or_scale_y": true,
+          "general_font_9_6": true
+        },
+        "result": "PASS"
+      }
+    },
+    "text_replay": {
+      "status": "PASS",
+      "detail": {
+        "source_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P580-01\\STRICT_R2_SA2_R95_LOCAL_20260824\\build\\page\\v260_FIG-P580-01_page.pdf",
+        "output_pdf": "page_text_only_replay.pdf",
+        "character_count": 617,
+        "character_stream_exact": true,
+        "texttrace_count": 578,
+        "text_trace_visual_properties_exact": true,
+        "parser": {
+          "text_blocks": 31,
+          "dropped_operators": {
+            "S": 18,
+            "f": 5,
+            "B": 7,
+            "n": 2
+          },
+          "preserved_clipping_paths": 0,
+          "unclosed_path_buffer_entries": 0
+        }
+      }
+    },
+    "required_view_openability": {
+      "status": "PASS",
+      "detail": {
+        "full_page_200dpi.png": [
+          1654,
+          2339
+        ],
+        "full_page_300dpi.png": [
+          2481,
+          3508
+        ],
+        "figure_crop_300dpi.png": [
+          1980,
+          942
+        ],
+        "standalone_300dpi.png": [
+          2481,
+          3508
+        ],
+        "grayscale_300dpi.png": [
+          1980,
+          942
+        ],
+        "after_text_measurement_overlay_300dpi.png": [
+          2481,
+          3508
+        ]
+      }
+    },
+    "manual_markdown_closure": {
+      "status": "PASS",
+      "detail": "required visual statements present"
+    },
+    "build_markdown_closure": {
+      "status": "PASS",
+      "detail": "commands and exit codes recorded"
+    },
+    "stale_evidence_declaration": {
+      "status": "PASS",
+      "detail": "stale packages, six deprecated masks, and exact cleaned auxiliary residue declared"
+    },
+    "external_input_exists::fig_v5_c02_is_support.tex": {
+      "status": "PASS",
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C02\\fig_v5_c02_is_support.tex"
+    },
+    "external_input_exists::v260_FIG-P580-01_page.tex": {
+      "status": "PASS",
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\合并总册\\v260_FIG-P580-01_page.tex"
+    },
+    "external_input_exists::v260_FIG-P580-01_standalone.tex": {
+      "status": "PASS",
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\合并总册\\v260_FIG-P580-01_standalone.tex"
+    },
+    "external_input_exists::STRICT_FIGURE_EVIDENCE_SCHEMA.md": {
+      "status": "PASS",
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\audits\\STRICT-GOAL-20260823\\STRICT_FIGURE_EVIDENCE_SCHEMA.md"
+    },
+    "external_input_exists::GPT_Pro_统计学习方法讲义_v2.7.0_Codex_Goal主提示词.md": {
+      "status": "PASS",
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\GPT_Pro_统计学习方法讲义_v2.7.0_Codex_Goal主提示词.md"
+    },
+    "final_build_uses_source": {
+      "status": "PASS",
+      "detail": {
+        "fls_mentions_source": true,
+        "pdf_after_source": true,
+        "page_bytes": 69542,
+        "standalone_bytes": 40522
+      }
+    },
+    "current_round_auxiliary_residue_cleanup": {
+      "status": "PASS",
+      "detail": {
+        "removed_before_counts": {
+          "files": 8,
+          "bytes": 11205
+        },
+        "post_cleanup": [
+          {
+            "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\合并总册\\$page",
+            "resolved": null,
+            "files": 0,
+            "bytes": 0,
+            "extensions": []
+          },
+          {
+            "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\合并总册\\$stand",
+            "resolved": null,
+            "files": 0,
+            "bytes": 0,
+            "extensions": []
+          }
+        ]
+      }
+    },
+    "ordinary_zero_byte_files": {
+      "status": "PASS",
+      "detail": {
+        "ordinary_zero": [],
+        "known_nonordinary_empty_latex_placeholders": [
+          "build/calibration/calibration_low_profile_punctuation.idx",
+          "build/calibration/calibration_low_profile_punctuation.ind",
+          "build/calibration/symbols.idx",
+          "build/calibration/symbols.ind",
+          "build/page/symbols.idx",
+          "build/page/symbols.ind",
+          "build/page/v260_FIG-P580-01_page.idx",
+          "build/page/v260_FIG-P580-01_page.ind",
+          "build/standalone/symbols.idx",
+          "build/standalone/symbols.ind",
+          "build/standalone/v260_FIG-P580-01_standalone.idx",
+          "build/standalone/v260_FIG-P580-01_standalone.ind"
+        ]
+      }
+    },
+    "all_png_openable": {
+      "status": "PASS",
+      "detail": {
+        "png_count": 1227,
+        "failures": []
+      }
+    },
+    "safe_portable_filenames": {
+      "status": "PASS",
+      "detail": "checked=1456"
+    },
+    "preterminal_input_manifest": {
+      "status": "PASS",
+      "detail": {
+        "entries": 1461,
+        "local_input_entries": 1456,
+        "external_inputs": 5,
+        "missing_required": [],
+        "unlisted_local_inputs": [],
+        "unexpected_local_entries": [],
+        "excluded_dynamic_products": [
+          "WRITE_STOPPED.md",
+          "final_file_integrity.csv",
+          "machine_final_check.json",
+          "machine_final_check.md",
+          "machine_terminal_input_file_manifest.csv"
+        ]
+      }
+    }
+  },
+  "metrics": {
+    "minimum_effective_pt": 9.6,
+    "glyphs": 234,
+    "necessary_substrings": 18,
+    "pixel_measurements": 252,
+    "text_elements": 32,
+    "graphics": 25,
+    "objects": 57,
+    "unordered_pairs": 1596,
+    "required_relations": 445,
+    "minimum_assessed_pair_clearance_px": 10.045361,
+    "minimum_text_text_clearance_px": 14.033296,
+    "card_relations": {
+      "CARD_GLYPH_TO_BORDER_EDGE": {
+        "count": 176,
+        "minimum_relation": "REQ_CARD_G0118_TO_CARD_TOP",
+        "minimum_clearance_px": 22.0,
+        "required_clearance_px": 5.0
+      },
+      "CARD_GLYPH_TO_Y_AXIS": {
+        "count": 44,
+        "minimum_relation": "REQ_CARD_G0114_TO_GR017",
+        "minimum_clearance_px": 70.0,
+        "required_clearance_px": 3.0
+      },
+      "CARD_GLYPH_TO_Y_TICK_TEXT": {
+        "count": 220,
+        "minimum_relation": "REQ_CARD_G0114_TO_E007",
+        "minimum_clearance_px": 89.0,
+        "required_clearance_px": 4.0
+      }
+    },
+    "height_by_script_class": {
+      "CJK_HAN": {
+        "count": 93,
+        "minimum_h_ink_px": 33,
+        "maximum_threshold_px": 30,
+        "failures": 0
+      },
+      "LOWER_OR_GREEK": {
+        "count": 30,
+        "minimum_h_ink_px": 20,
+        "maximum_threshold_px": 17,
+        "failures": 0
+      },
+      "LOW_PROFILE_PUNCTUATION": {
+        "count": 1,
+        "minimum_h_ink_px": 7,
+        "maximum_threshold_px": 0,
+        "failures": 0
+      },
+      "MATH_BASE": {
+        "count": 17,
+        "minimum_h_ink_px": 33,
+        "maximum_threshold_px": 22,
+        "failures": 0
+      },
+      "MATH_OPERATOR": {
+        "count": 21,
+        "minimum_h_ink_px": 24,
+        "maximum_threshold_px": 22,
+        "failures": 0
+      },
+      "NATURAL_SCRIPT": {
+        "count": 6,
+        "minimum_h_ink_px": 21,
+        "maximum_threshold_px": 15,
+        "failures": 0
+      },
+      "PUNCTUATION": {
+        "count": 24,
+        "minimum_h_ink_px": 37,
+        "maximum_threshold_px": 22,
+        "failures": 0
+      },
+      "UPPER_OR_DIGIT": {
+        "count": 60,
+        "minimum_h_ink_px": 26,
+        "maximum_threshold_px": 24,
+        "failures": 0
+      }
+    },
+    "D_rows": 79,
+    "D_failures": 0,
+    "E_rows": 38,
+    "E_assessed": 10,
+    "E_justified_NA": 28,
+    "E_failures": 0,
+    "opaque_label_grounds": 1,
+    "opaque_coverage_relations": 25,
+    "translucent_label_grounds": 0,
+    "clip_rows": 32,
+    "contact_sheets": 15,
+    "manual_glyph_rows": 234,
+    "manual_visual_rows": 50,
+    "png_files_opened_by_machine": 1227,
+    "known_nonordinary_empty_latex_placeholders": 12,
+    "ordinary_zero_byte_files": 0,
+    "preterminal_input_manifest_entries": 1461
+  },
+  "freeze_hashes": {
+    "business_source_sha256": "74a21ea35bdb09d5c01858e027b96aec844233f6850f6e7a8a9da03524466ef0",
+    "page_pdf_sha256": "81273bfd2784cc6b1c7f06ba19bd891e80c049c49011cddf82a50a7e8f35af05",
+    "standalone_pdf_sha256": "37dd8457043cd8738111923bd8dcf67d506517ba0596d2ff5c863ddaaa51973c",
+    "figure_crop_sha256": "af2c3a98c74872678f9148084e46ebb5e7011029e69d434d0214bb65ab71b7e0"
+  },
+  "cleaned_current_round_auxiliary_residue": {
+    "before": {
+      "files": 8,
+      "bytes": 11205
+    },
+    "after": [
+      {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\合并总册\\$page",
+        "resolved": null,
+        "files": 0,
+        "bytes": 0,
+        "extensions": []
+      },
+      {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\合并总册\\$stand",
+        "resolved": null,
+        "files": 0,
+        "bytes": 0,
+        "extensions": []
+      }
+    ]
+  },
+  "nonauthoritative_stale_evidence": {
+    "critical_relations": {
+      "files": 616,
+      "bytes": 9684761
+    },
+    "pixel_failures": {
+      "files": 49,
+      "bytes": 42126
+    },
+    "deprecated_fraction_vbar_masks": {
+      "files": 6,
+      "bytes": 1366
+    },
+    "included_in_preterminal_manifest_as_nonauthoritative": true
+  },
+  "preterminal_input_manifest": {
+    "file": "machine_terminal_input_file_manifest.csv",
+    "entries": 1461,
+    "excluded_dynamic_products": [
+      "WRITE_STOPPED.md",
+      "final_file_integrity.csv",
+      "machine_final_check.json",
+      "machine_final_check.md",
+      "machine_terminal_input_file_manifest.csv"
+    ],
+    "self_reference_rule": "Only the manifest itself, final integrity output, two dynamic terminal outputs, and future stop marker are excluded."
+  }
+}

@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{579}
+\setcounter{chapter}{31}
+\setcounter{figure}{5}
+\pagestyle{headings}
+\chaptermark{蒙特卡罗方法与直接采样}
+\sectionmark{重要性抽样}
+图\ref{fig:V5-C02-is-support}固定共同定义域$\mathcal X=[0,5]$，并取$p(x)=6x(5-x)/125$、$q_L(x)=(2/5)\mathbf 1_{[0,5/2]}(x)$、$q_R(x)=1/5$。支持覆盖是普通形式和自归一化形式共同的先决条件。观察任务：先找出左图$q_L$于$x=5/2$后的支持缺口，再在右图用$w=p/q_R$复算$x=1,5/2,4$处的真实密度比；最后只判断$p\ll q$是否成立，不据此断言方差低或估计可靠。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_is_support.tex}
+\FloatBarrier
+\noindent\textbf{读图检查（仅针对图\ref{fig:V5-C02-is-support}）。}先看左图的点线支撑边界、空心端点、$q_L=0$基线与$p>0$纹理区，确认增加样本或有限加权都不能恢复该缺失目标区域；再看右图$q_R=1/5>0$的全域覆盖，并由同一公式核对$w(1)=0.96$、$w(5/2)=1.50$、$w(4)=0.96$。结论只到$p\ll q_R$这一支持条件，不得从支持覆盖推成低方差或估计可靠性。
+\end{document}

@@ -1,0 +1,10 @@
+view_id,reviewer_type,human_certification,manual_decision,manual_note
+FULL_PAGE_NATIVE,AI_SA3_VISUAL_REVIEW,false,HARD_PASS,"Direct 300 dpi full page 2481x3508: page label 675, section 33.3, body equations, figure 33.5, caption, following explanation, and proposition remain continuous with no collision, crop, or abnormal whitespace."
+FULL_PAGE_CONTEXT,AI_SA3_VISUAL_REVIEW,false,HARD_PASS,"Direct 200 dpi context view independently confirms normal page integration and a stable visual hierarchy around the figure."
+FIGURE_CROP_NATIVE,AI_SA3_VISUAL_REVIEW,false,HARD_PASS,"Direct 300 dpi figure-plus-caption crop 1847x564 contains the complete diagram and both caption lines with no clipped glyph or border."
+STANDALONE_EQUIVALENT_NATIVE,AI_SA3_VISUAL_REVIEW,false,HARD_PASS,"Direct 300 dpi diagram-only PDF clip 1459x434 is not resized; all four semantic nodes, four source draw paths, separators, arrowheads, and text are present."
+GRAYSCALE_NATIVE,AI_SA3_VISUAL_REVIEW,false,HARD_PASS,"Native-resolution grayscale conversion preserves numbered sequence, solid flow connector/arrow, dashed exception arrows, pale exception panel, and formula legibility without relying only on color."
+OBJECT_1X,AI_SA3_VISUAL_REVIEW,false,HARD_PASS,"All 14 actual semantic foreground objects were inspected at native pixels; no object has missing ink, clipping, or illegal merger."
+OBJECT_8X,AI_SA3_VISUAL_REVIEW,false,HARD_PASS,"Nearest-neighbor 8x diagnostic reveals intact antialias edges and confirms that apparent 1px graphic proximities are not shared native foreground pixels."
+GLYPH_1X,AI_SA3_VISUAL_REVIEW,false,HARD_PASS,"All 107 extracted non-space glyph IDs were checked in native pixel crops against the codepoint inventory; no tofu, replacement glyph, or empty glyph exists."
+GLYPH_8X,AI_SA3_VISUAL_REVIEW,false,HARD_PASS,"All 107 glyph IDs were rechecked in 8x nearest-neighbor zoom for stroke identity, math-script placement, punctuation, and arrow direction; details are recorded per ID in manual_glyph_review.csv."

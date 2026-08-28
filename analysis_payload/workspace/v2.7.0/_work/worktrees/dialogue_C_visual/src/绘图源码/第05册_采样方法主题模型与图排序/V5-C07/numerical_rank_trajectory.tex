@@ -1,0 +1,57 @@
+% v2.7.0 figure UID: FIG-P721-01
+% v2.7.0: exact six-decimal trajectory, non-stopping t=6 display cut,
+%          and separately computed exact fixed point/ranking.
+\tikzset{slfig-FIG-P721-01/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P721-01,
+  every node/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont},
+  every pin/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont},
+  alt={对象—关系—结论：左面板给出从均匀初值独立复算的 t=0 到 8 三个排名分量有限迭代轨迹；t=6 的橙色竖线只是展示截断，图内非零固定点残差明确排除停止判定。右面板与有限轨迹分开，给出精确固定点 r 星的六位小数和排名 3 大于 2 大于 1；三条轨迹同时用颜色、线型和点型编码。}]
+\begin{scope}[shift={(-6.8,-2.25)}]
+\begin{groupplot}[
+  group style={group size=2 by 1,horizontal sep=20mm},
+  width=58mm,height=47mm,scale only axis,
+  axis line style={draw=SLTextGray,line width=.65pt},
+  tick style={draw=SLRuleGray,line width=.52pt},
+  title style={font=\fontsize{10.2pt}{12.2pt}\selectfont},
+  label style={font=\fontsize{9.6pt}{11.5pt}\selectfont},
+  tick label style={font=\fontsize{9.6pt}{11.5pt}\selectfont}]
+\nextgroupplot[title={迭代轨迹},xlabel={$t$},ylabel={$r_i^{(t)}$},
+  xmin=0,xmax=8,ymin=.10,ymax=.56,xtick={0,...,8},ytick={.2,.3,.4,.5},
+  ymajorgrids=true,xmajorgrids=false,grid style={draw=SLRuleGray,dotted,line width=.46pt},clip=false]
+\addplot[draw=SLDeepBlue,line width=.94pt,mark=*,mark size=1.55pt,mark options={solid,fill=SLDeepBlue}] coordinates {(0,.333333)(1,.155556)(2,.214815)(3,.202173)(4,.202594)(5,.203718)(6,.203074)(7,.203297)(8,.203247)};
+\addplot[draw=SLMidBlue,line width=.92pt,dashed,mark=square*,mark size=1.50pt,mark options={solid,fill=SLMidBlue}] coordinates {(0,.333333)(1,.288889)(2,.277037)(3,.288099)(4,.283463)(5,.284756)(6,.284561)(7,.284527)(8,.284566)};
+\addplot[draw=SLTextGray,line width=.90pt,dash dot,mark=triangle*,mark size=1.75pt,mark options={solid,fill=SLTextGray}] coordinates {(0,.333333)(1,.555556)(2,.508148)(3,.509728)(4,.513942)(5,.511526)(6,.512365)(7,.512176)(8,.512187)};
+\draw[draw=SLAccentOrange,dashed,line width=.74pt] (axis cs:6,.10)--(axis cs:6,.56);
+\node[anchor=west,text=SLAccentOrange,align=left,fill=white,
+  fill opacity=.94,text opacity=1,rounded corners=1pt,inner sep=1.1pt]
+  at (axis cs:6.12,.410) {展示截断 $t=6$\\（非停止判定）};
+\node[anchor=south east,text=SLAccentOrange,align=right,fill=white,
+  fill opacity=.94,text opacity=1,rounded corners=1pt,inner sep=1.1pt]
+  at (axis cs:5.82,.108)
+  {$\lVert G\boldsymbol r^{(6)}-\boldsymbol r^{(6)}\rVert_1$\\
+   $=4.474947\!\times\!10^{-4}>0$};
+\node[inner sep=0pt,pin={[pin distance=5.2mm,pin edge={draw=SLDeepBlue,line width=.42pt},text=SLDeepBlue]150:{网页1}}] at (axis cs:5,.2037) {};
+\node[inner sep=0pt,pin={[pin distance=5.2mm,pin edge={draw=SLMidBlue,line width=.42pt},text=SLMidBlue]120:{网页2}}] at (axis cs:5,.2848) {};
+\node[inner sep=0pt,pin={[pin distance=5.2mm,pin edge={draw=SLTextGray,line width=.42pt},text=SLTextGray]240:{网页3}}] at (axis cs:5,.5115) {};
+\nextgroupplot[title={精确固定点与排名},xlabel={$r_i^*$},xbar,xmin=0,xmax=.58,
+  symbolic y coords={网页1,网页2,网页3},ytick={网页1,网页2,网页3},enlarge y limits=.23,
+  bar width=4mm,bar shift=0pt,grid=none,clip=false]
+\addplot[fill=SLDeepBlue,fill opacity=.75,draw=SLDeepBlue,postaction={pattern=north east lines,pattern color=white}] coordinates {(.203252,网页1)};
+\addplot[fill=SLMidBlue,fill opacity=.75,draw=SLMidBlue,postaction={pattern=dots,pattern color=white}] coordinates {(.284553,网页2)};
+\addplot[fill=SLTextGray,fill opacity=.75,draw=SLTextGray] coordinates {(.512195,网页3)};
+\node[anchor=west,inner sep=0pt] at (axis cs:.235,网页1) {0.203252（第3）};
+\node[anchor=west,inner sep=0pt] at (axis cs:.318,网页2) {0.284553（第2）};
+\node[anchor=center,text=SLTextGray,inner sep=0pt,
+  font=\fontsize{9.6pt}{11.5pt}\selectfont\bfseries,yshift=-5.2mm]
+  at (axis cs:.40,网页3) {0.512195（第1）};
+\end{groupplot}
+\node at (6.8,-1.20) {实线/圆：网页1\quad 虚线/方：网页2\quad 点划线/三角：网页3};
+\end{scope}
+\end{tikzpicture}
+\caption{PageRank 的有限迭代轨迹与精确固定点（显示六位小数）：
+$t=6$ 仅为展示截断且残差非零；固定点排序为 $3\succ2\succ1$。}
+\label{fig:V5-C07-rank-trajectory}
+\end{figure}

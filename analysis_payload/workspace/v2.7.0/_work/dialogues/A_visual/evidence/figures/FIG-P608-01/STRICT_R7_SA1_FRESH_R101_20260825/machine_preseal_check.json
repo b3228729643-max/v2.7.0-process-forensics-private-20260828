@@ -1,0 +1,246 @@
+{
+  "handoff_id": "A-R101-P608-SA1-FRESH-20260825",
+  "decision": "PASS",
+  "quality_outcome": "FAIL_TO_SA2",
+  "check_count": 39,
+  "checks": [
+    {
+      "check_id": "IDENTITY",
+      "decision": "PASS",
+      "note": "R101 identity/page mapping exact"
+    },
+    {
+      "check_id": "ROUTE",
+      "decision": "PASS",
+      "note": "handoff and route exact"
+    },
+    {
+      "check_id": "OUTCOME",
+      "decision": "PASS",
+      "note": "one hard failure and FAIL_TO_SA2"
+    },
+    {
+      "check_id": "GLYPH_CONSERVATION",
+      "decision": "PASS",
+      "note": "837=120+717; 120=112+8; 778=112+666"
+    },
+    {
+      "check_id": "DRAWING_CONSERVATION",
+      "decision": "PASS",
+      "note": "89 get_drawings partitioned; two mutually exclusive visible patterns"
+    },
+    {
+      "check_id": "OBJECT_DENOMINATOR",
+      "decision": "PASS",
+      "note": "N=172 unique; classes={'GLYPH': 112, 'GRAPHIC': 60}"
+    },
+    {
+      "check_id": "GRAPHIC_PARTITION",
+      "decision": "PASS",
+      "note": "58 explicit graphics + 2 pattern objects"
+    },
+    {
+      "check_id": "CAPTION_CLOSURE",
+      "decision": "PASS",
+      "note": "44 caption glyphs TXT-069..TXT-112"
+    },
+    {
+      "check_id": "SAFE_FILENAME_MAP",
+      "decision": "PASS",
+      "note": "bijective 172-row ID/filename map"
+    },
+    {
+      "check_id": "PAIR_COVERAGE",
+      "decision": "PASS",
+      "note": "all 14,706 unordered pairs exactly once"
+    },
+    {
+      "check_id": "PAIR_DECISIONS",
+      "decision": "PASS",
+      "note": "pair decisions={'CLEAR': 14176, 'INTENDED_DESIGN_RELATION': 487, 'INTENDED_DESIGN_OVERLAP': 43}"
+    },
+    {
+      "check_id": "PAIR_FINAL_INTERSECTIONS",
+      "decision": "PASS",
+      "note": "all ownership-resolved intersections are zero"
+    },
+    {
+      "check_id": "CRITICAL_PAIR_COUNT",
+      "decision": "PASS",
+      "note": "102 unique critical relations"
+    },
+    {
+      "check_id": "CRITICAL_PACKETS",
+      "decision": "PASS",
+      "note": "102 complete six-image packets"
+    },
+    {
+      "check_id": "MASK_SETS",
+      "decision": "PASS",
+      "note": "four 172-object mask sets; dimensions exact: {'pre_native': 172, 'pre_8x_nearest': 172, 'final_native': 172, 'final_8x_nearest': 172}"
+    },
+    {
+      "check_id": "MASK_NONEMPTY",
+      "decision": "PASS",
+      "note": "all raw and final masks nonempty"
+    },
+    {
+      "check_id": "CLIP_AND_EDGE",
+      "decision": "PASS",
+      "note": "clip=0, minimum text edge clearance=32px"
+    },
+    {
+      "check_id": "CONTACT_COVERAGE",
+      "decision": "PASS",
+      "note": "10 glyph sheets + 3 graphic sheets cover inventory"
+    },
+    {
+      "check_id": "LEDGER_MANUAL_OBJECT_LEDGER",
+      "decision": "PASS",
+      "note": "172 unique, nonblank decisions"
+    },
+    {
+      "check_id": "LEDGER_MANUAL_CRITICAL_PAIR_LEDGER",
+      "decision": "PASS",
+      "note": "102 unique, nonblank decisions"
+    },
+    {
+      "check_id": "LEDGER_MANUAL_PRELIMINARY_LEDGER",
+      "decision": "PASS",
+      "note": "64 unique, nonblank decisions"
+    },
+    {
+      "check_id": "LEDGER_MANUAL_LOW_PROFILE_PEER_LEDGER",
+      "decision": "PASS",
+      "note": "13 unique, nonblank decisions"
+    },
+    {
+      "check_id": "LEDGER_MANUAL_ROLE_LEDGER",
+      "decision": "PASS",
+      "note": "35 unique, nonblank decisions"
+    },
+    {
+      "check_id": "LEDGER_MANUAL_VIEW_LEDGER",
+      "decision": "PASS",
+      "note": "4 unique, nonblank decisions"
+    },
+    {
+      "check_id": "LEDGER_MANUAL_HARD_FAILURE_LEDGER",
+      "decision": "PASS",
+      "note": "1 unique, nonblank decisions"
+    },
+    {
+      "check_id": "OBJECT_LEDGER_CLOSURE",
+      "decision": "PASS",
+      "note": "manual object ledger covers denominator"
+    },
+    {
+      "check_id": "PAIR_LEDGER_CLOSURE",
+      "decision": "PASS",
+      "note": "manual critical ledger covers critical set"
+    },
+    {
+      "check_id": "PRELIMINARY_REPLAY",
+      "decision": "PASS",
+      "note": "frozen replay script identity and exact 64-row output"
+    },
+    {
+      "check_id": "PRELIMINARY_DISPOSITION",
+      "decision": "PASS",
+      "note": "preliminary disposition={'RESOLVED': 63, 'REMAINS': 1}"
+    },
+    {
+      "check_id": "PRELIMINARY_ASSETS",
+      "decision": "PASS",
+      "note": "488 per-item before/after evidence images retained"
+    },
+    {
+      "check_id": "TICK15_CONSERVATION",
+      "decision": "PASS",
+      "note": "x-tick 15 conserved as two chars/two glyphs"
+    },
+    {
+      "check_id": "FULLBOOK_PEER_CANDIDATES",
+      "decision": "PASS",
+      "note": "complete exact-metadata sets: TXT-072=99, TXT-098=64"
+    },
+    {
+      "check_id": "FULLBOOK_PEER_SELECTION",
+      "decision": "PASS",
+      "note": "policy-selected peers exact"
+    },
+    {
+      "check_id": "FULLBOOK_PEER_RESULTS",
+      "decision": "PASS",
+      "note": "TXT-072 passes; TXT-098 area ratio 56/72 fails"
+    },
+    {
+      "check_id": "HARD_FAILURE_CLOSURE",
+      "decision": "PASS",
+      "note": "only PEER-TXT-098 remains hard"
+    },
+    {
+      "check_id": "MATH_ASSEMBLIES",
+      "decision": "PASS",
+      "note": "two equals assemblies meet 22px hard floor"
+    },
+    {
+      "check_id": "CROSS_PANEL_TEXT_CLEARANCE",
+      "decision": "PASS",
+      "note": "exact minimum=153.000000px >= 8px"
+    },
+    {
+      "check_id": "REPORT_CONSISTENCY",
+      "decision": "PASS",
+      "note": "result and review consistently reject SA1 pass"
+    },
+    {
+      "check_id": "PARSE_AND_IMAGE_DECODE",
+      "decision": "PASS",
+      "note": "parsed/decoded={'json': 16, 'csv': 22, 'markdown_or_text': 14, 'png': 1870}"
+    }
+  ],
+  "N": 172,
+  "C_expected": 14706,
+  "C_covered": 14706,
+  "classification": {
+    "glyph": 112,
+    "explicit_pdf_drawing": 58,
+    "hatch_pattern": 2
+  },
+  "critical_pair_count": 102,
+  "manual_ledger_counts": {
+    "manual_object_ledger.csv": 172,
+    "manual_critical_pair_ledger.csv": 102,
+    "manual_preliminary_ledger.csv": 64,
+    "manual_low_profile_peer_ledger.csv": 13,
+    "manual_role_ledger.csv": 35,
+    "manual_view_ledger.csv": 4,
+    "manual_hard_failure_ledger.csv": 1
+  },
+  "preliminary": {
+    "exact_replay_rows": 64,
+    "resolved": 63,
+    "remains_hard_fail": 1
+  },
+  "cross_panel_text_clearance_px": 153.0,
+  "hard_failure": {
+    "FAIL_ID": "PEER-TXT-098",
+    "TYPE": "FULLBOOK_LOW_PROFILE_RATIO",
+    "VALUE": [
+      1.0,
+      0.7777777777777778
+    ],
+    "THRESHOLD": [
+      0.92,
+      1.08
+    ]
+  },
+  "parse_counts": {
+    "json": 16,
+    "csv": 22,
+    "markdown_or_text": 14,
+    "png": 1870
+  },
+  "preseal_cleanup": []
+}

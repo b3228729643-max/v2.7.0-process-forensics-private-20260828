@@ -1,0 +1,1269 @@
+% STAGE12-CHAPTER: V4-C06
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V4-C06-CH01}; CH-02=\label{struct:V4-C06-CH02}; CH-03=\label{struct:V4-C06-CH03}; CH-04=\label{struct:V4-C06-CH04}; CH-05=\label{struct:V4-C06-CH05}; CH-06=\label{struct:V4-C06-CH06}; CH-07=\label{struct:V4-C06-CH07}; CH-08=\label{struct:V4-C06-CH08}; CH-09=\label{struct:V4-C06-CH09}; CH-10=\label{struct:V4-C06-CH10}; CH-11=\label{struct:V4-C06-CH11}; CH-12=\label{struct:V4-C06-CH12}; CH-13=\label{struct:V4-C06-CH13}; CH-14=\label{struct:V4-C06-CH14}; CH-15=\label{struct:V4-C06-CH15}; CH-16=\label{struct:V4-C06-CH16}; CH-17=\label{struct:V4-C06-CH17}; CH-18=\label{struct:V4-C06-CH18}; CH-19=\label{struct:V4-C06-CH19}; CH-20=\label{struct:V4-C06-CH20}; CH-21=\label{struct:V4-C06-CH21}; CH-22=\label{struct:V4-C06-CH22}; CH-23=\label{struct:V4-C06-CH23}; CH-24=\label{struct:V4-C06-CH24}; CH-25=\label{struct:V4-C06-CH25}; CH-26=\label{struct:V4-C06-CH26}; CH-27=\label{struct:V4-C06-CH27}; CH-28=\label{struct:V4-C06-CH28}; CH-29=\label{struct:V4-C06-CH29}; CH-30=\label{struct:V4-C06-CH30}; CH-31=\label{struct:V4-C06-CH31}; CH-32=\label{struct:V4-C06-CH32}; CH-33=\label{struct:V4-C06-CH33}; CH-34=\label{struct:V4-C06-CH34}; CH-35=\label{struct:V4-C06-CH35}; CH-36=\label{struct:V4-C06-CH36}; CH-37=\label{struct:V4-C06-CH37}
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=18; source_group=3; supplement=15
+% FIGURE-KNOWLEDGE-MAP: fig:V4-C06-plsa-dag -> SLM-18-01-003
+% FIGURE-KNOWLEDGE-MAP: fig:V4-C06-simplex -> SLM-18-01-005
+
+\chapter{概率潜在语义分析}\label{chap:V4-C06}
+\index{概率潜在语义分析}
+\index{概率潜在语义索引}
+\index{潜在主题}
+\index{EM算法}
+\index{单纯形}
+
+% KNOWLEDGE-PLAN: KN-V4-C29-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：概率潜在语义分析。}概率潜在语义分析章地图以“从共现计数直达PLSA生成模型、EM与新文档折入”组织内容；请把路线拆成起点、关键工具和终点，并核对三者的输入输出类型能依次衔接。\par
+
+\SLChapterOpening{从共现计数直达PLSA生成模型、EM与新文档折入}{怎样用主题单纯形解释单词--文档共现并估计概率因子}{能推导两种参数化、责任度、两组M步、单调性与复杂度}{条件概率、EM、单纯形约束、稀疏计数与矩阵分解}{正计数位置概率为零时返回\cref{sec:V4-C06-S03}；M步分母或新文档处理不清时回看\cref{sec:V4-C06-S04,sec:V4-C06-S05}}
+\phantomsection\label{struct:V4-C06-CH01}
+% KNOWLEDGE-PLAN: KN-V4-C29-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}概率潜在语义分析目标中的“能从单词--文档共现计数建立PLSA生成模型与共现模型，并写清全部条件独立和归一化约束”必须可复核；请从单词--文档共现计数建立PLSA生成模型与共现模型，并写清全部条件独立和归一化约束，所得结果仅在“中间结果逐项包含首目标“能从单词--文档共现计数建立PLSA生成模型与共现模型，并写清全部条件独立和归一化约束”声明的对象、条件与结论”时通过。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能从单词--文档共现计数建立PLSA生成模型与共现模型，并写清全部条件独立和归一化约束；
+  \item 能从观测对数似然逐行构造隐主题后验、辅助函数和两组M步更新，核对每个分母；
+  \item 能证明两种模型参数化的等价性与EM似然单调不降性质，同时说明其成立条件和退化边界；
+  \item 能用单纯形、概率矩阵分解和图模型三种视角解释主题、文档与单词之间的关系；
+  \item 能完整执行含初始化、异常处理、双重停止准则和诊断输出的PLSA训练与新文档折入流程；
+  \item 能比较PLSA、LSA与NMF的目标、约束和泛化方式，并估算训练、预测及存储复杂度。
+\end{itemize}}
+
+\phantomsection\label{struct:V4-C06-CH02}
+% KNOWLEDGE-PLAN: KN-V4-C29-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}概率潜在语义分析的最短先修明确要求“本章需要离散条件概率、全概率公式、Bayes公式、多项分布、极大似然、Jensen不等式、Lagrange乘子、EM算法、矩阵乘法、奇异值分解与非负矩阵分解”；请把首项“本章需要离散条件概率、全概率公式、Bayes公式、多项分布、极大似然、Jensen不等式、Lagrange乘子、EM算法、矩阵乘法、奇异值分解与非负矩阵分解”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章需要离散条件概率、全概率公式、Bayes公式、多项分布、极大似然、Jensen不等式、Lagrange乘子、EM算法、矩阵乘法、奇异值分解与非负矩阵分解”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章需要离散条件概率、全概率公式、Bayes公式、多项分布、极大似然、Jensen不等式、Lagrange乘子、EM算法、矩阵乘法、奇异值分解与非负矩阵分解。应能区分“每个观测对有一个未观测主题”与“整篇文档只有一个主题”，并熟悉概率向量的非负与归一化约束。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V4-C06-CH03}
+% KNOWLEDGE-PLAN: KN-V4-C29-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}概率潜在语义分析先修自检固定核验“给定联合分布，能否用Bayes公式计算$P(Z=z_k\mid W=w_i,D=d_j)$”；请给定联合分布，实际用Bayes公式计算$P(Z=z_k\mid W=w_i,D=d_j)$并写出中间结果，再按“$P(Z=z_k\mid W=w_i,D=d_j)$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 给定联合分布，能否用Bayes公式计算$P(Z=z_k\mid W=w_i,D=d_j)$？
+  \item 能否说明概率向量位于单纯形中，并写出列随机矩阵的归一化条件？
+  \item 能否用Lagrange乘子求解$\max_{p_i\ge0,\,\sum_i p_i=1}\sum_i a_i\log p_i$？
+  \item 能否说明Jensen下界在什么权重选择下与原对数和相等？
+\end{enumerate}
+若第1项不熟悉，应先复习全概率与Bayes公式；若第2项不能判断维数，应复习概率单纯形；若第3、4项不能独立完成，应先复习约束极值与EM下界。
+\end{precheckbox}
+
+\phantomsection\label{struct:V4-C06-CH04}
+% KNOWLEDGE-PLAN: KN-V4-C29-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}概率潜在语义分析依赖链含“单词--文档共现计数 $\to$ 潜在主题混合 $\to$ PLSA生成模型”到“条件独立 $\to$ 联合概率分解 $\to$ 生成模型与共现模型等价”这一跳；请固定写出前者输出类型与后者输入类型，并核对两者相同或存在正文声明的转换。\par
+
+\begin{dependencybox}
+单词--文档共现计数 $\to$ 潜在主题混合 $\to$ PLSA生成模型；
+条件独立 $\to$ 联合概率分解 $\to$ 生成模型与共现模型等价；
+观测对数似然 $\to$ 主题后验 $\to$ EM辅助函数；
+单纯形约束 $\to$ Lagrange乘子 $\to$ 两组规范化M步；
+概率矩阵分解 $\to$ LSA与NMF对比 $\to$ 适用边界与新文档折入。
+\end{dependencybox}
+
+\begin{keypointbox}[title=数据方向桥：PLSA的词--文档计数]
+本章计数矩阵$N=[n_{ij}]\in\mathbb N_0^{M\times N}$把词放在行、文档放在列；第$j$列的和是文档$d_j$的词元数。按全书默认行样本表示同一语料时，
+\[
+X_{{\rm doc},{\rm row}}=N^{\mathsf T}
+\in\mathbb N_0^{N\times M}.
+\]
+例如$M=1000,N=200$时，PLSA公式使用$1000\times200$，行样本接口使用$200\times1000$。两者的计数总和相同，但行、列归一化的概率含义不能互换。
+\end{keypointbox}
+
+\phantomsection\label{struct:V4-C06-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V4-C06
+\index[symbols]{m-n-k--s7b8fc3d8d1ea@$M,N,K$：单词数、文档数与预设主题数}
+\index[symbols]{w-d-z--s8d7317c64abe@$W,D,Z$：$W=\{w_i\}_{i=1}^M$、$D=\{d_j\}_{j=1}^N$、$Z=\{z_k\}_{k=1}^K$}
+\index[symbols]{w-d-z--s92cf6ff2ef23@$w,d,z$：取值分别位于$W,D,Z$；$z$为隐变量}
+\index[symbols]{n-ij--s634fd90e7aed@$n_{ij}$：$n_{ij}=n(w_i,d_j)$，单词--文档对的共现次数}
+\index[symbols]{minus-mathbfn-minus-minus-rmcnt-minus--s1216fad08f74@$\mathbf N_{\rm cnt}$：$[\mathbf N_{\rm cnt}]_{ij}=n_{ij}$，稀疏单词--文档计数矩阵}
+\index[symbols]{c-j-c--sdda15a09d186@$c_j,C$：$c_j=n(d_j)=\sum_i n_{ij}$，$C=\sum_jc_j$为总词元数}
+\index[symbols]{minus-pi-minus-j--sab079ebbaff6@$\pi_j$：$\pi_j=P(d_j)$，本文取经验值$c_j/C$}
+\index[symbols]{minus-phi-minus-ik--scb27e20fba1a@$\phi_{ik}$：$\phi_{ik}=P(w_i\mid z_k)$，主题$k$的单词分布}
+\index[symbols]{minus-theta-minus-kj--sfdab65e608e9@$\theta_{kj}$：$\theta_{kj}=P(z_k\mid d_j)$，文档$j$的主题混合}
+\index[symbols]{minus-gamma-minus-ijk--sfacc8e08a964@$\gamma_{ijk}$：$\gamma_{ijk}=P(z_k\mid w_i,d_j)$，E步责任度}
+\index[symbols]{minus-rho-minus-k-minus-psi-minus-jk--s604466b3a8c9@$\rho_k,\psi_{jk}$：共现参数$P(z_k)$与$P(d_j\mid z_k)$}
+\index[symbols]{minus-phi-minus-minus-theta-minus--s4c9de905cd6a@$\Phi,\Theta$：分别以$\phi_{ik}$和$\theta_{kj}$为元素的列随机矩阵}
+\index[symbols]{x-u0027--sfdadfedac8b1@$X'$：$X'_{ij}=P(w_i,d_j)$的联合概率矩阵}
+\index[symbols]{minus-ell-minus-q-u0027--s4a9f4a198199@$\ell,Q'$：观测对数似然与去除常数后的EM辅助函数}
+\index[symbols]{r-t-t-u002a--s83df5714de29@$R,T,T_*$：非零共现对数、训练迭代数与新文档折入迭代数}
+% STAGE19-SYMBOL-INDEX-END: V4-C06
+\begin{symboltablebox}
+\small
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 类型、维数或范围 & 读法与作用\\ \midrule
+$M,N,K$ & $\mathbb N_+$ & 单词数、文档数与预设主题数\\
+$W,D,Z$ & 有限集合 & $W=\{w_i\}_{i=1}^M$、$D=\{d_j\}_{j=1}^N$、$Z=\{z_k\}_{k=1}^K$\\
+$w,d,z$ & 离散随机变量 & 取值分别位于$W,D,Z$；$z$为隐变量\\
+$n_{ij}$ & $\mathbb N_0$ & $n_{ij}=n(w_i,d_j)$，单词--文档对的共现次数\\
+$\mathbf N_{\rm cnt}$ & $\mathbb N_0^{M\times N}$ & $[\mathbf N_{\rm cnt}]_{ij}=n_{ij}$，稀疏单词--文档计数矩阵\\
+$c_j,C$ & $\mathbb N_0,\mathbb N_+$ & $c_j=n(d_j)=\sum_i n_{ij}$，$C=\sum_jc_j$为总词元数\\
+$\pi_j$ & $[0,1]$ & $\pi_j=P(d_j)$，本文取经验值$c_j/C$\\
+$\phi_{ik}$ & $[0,1]$ & $\phi_{ik}=P(w_i\mid z_k)$，主题$k$的单词分布\\
+$\theta_{kj}$ & $[0,1]$ & $\theta_{kj}=P(z_k\mid d_j)$，文档$j$的主题混合\\
+$\gamma_{ijk}$ & $[0,1]$ & $\gamma_{ijk}=P(z_k\mid w_i,d_j)$，E步责任度\\
+$\rho_k,\psi_{jk}$ & $[0,1]$ & 共现参数$P(z_k)$与$P(d_j\mid z_k)$\\
+$\Phi,\Theta$ & $\mathbb R_+^{M\times K},\mathbb R_+^{K\times N}$ & 分别以$\phi_{ik}$和$\theta_{kj}$为元素的列随机矩阵\\
+$X'$ & $\mathbb R_+^{M\times N}$ & $X'_{ij}=P(w_i,d_j)$的联合概率矩阵\\
+$\ell,Q'$ & $\mathbb R\cup\{-\infty\}$ & 观测对数似然与去除常数后的EM辅助函数\\
+$R,T,T_*$ & $\mathbb N_0$ & 非零共现对数、训练迭代数与新文档折入迭代数\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{潜在主题与混合表示}{sec:V4-C06-S01}
+\phantomsection\label{struct:V4-C06-CH06}
+词项频率矩阵把文档表示为高维计数列，却没有显式回答“哪些词因共同语义而一起出现”。若直接为每个$(w_i,d_j)$配置独立概率，需要$MN-1$个自由度；PLSA引入$K$个潜在主题，把每篇文档表示成主题分布，再把每个主题表示成单词分布。当$K\ll\min(M,N)$时，这一结构同时提供压缩、软聚类和概率解释。
+
+\knowledgeanchor{PRE-TM-002}{潜在主题、混合分布与文档表示}
+一篇文档不必只属于一个主题。向量$\theta_{:j}=(\theta_{1j},\ldots,\theta_{Kj})^{\mathsf T}$位于$(K-1)$维概率单纯形中，表示文档$d_j$对各主题的混合权重；向量$\phi_{:k}$位于$(M-1)$维单词单纯形中，表示主题$z_k$的词概率。两层混合给出
+\[
+P(w_i\mid d_j)=\sum_{k=1}^K\phi_{ik}\theta_{kj}.
+\]
+该式的左侧是文档在词单纯形中的点，右侧是$K$个主题点的凸组合。
+
+% KNOWLEDGE-PLAN: KN-V4-C29-CONCEPT-003 L1
+\paragraph{读前自检：概率潜在语义分析。}PLSA的观测为单词$w$与文档指标$d$，隐变量为主题$z$；请写出$P(w_i\mid d_j)=\sum_k\phi_{ik}\theta_{kj}$，逐列核对$\Phi,\Theta$非负归一并得到词概率分布。\par
+
+\knowledgeanchor{SLM-18-00-001}{概率潜在语义分析}
+概率潜在语义分析（probabilistic latent semantic analysis，本文统一简称PLSA；PLSI仅作为历史检索别名）是面向共现数据的无监督潜变量模型。观测变量是单词$w$与文档指标$d$，隐变量是主题$z$。它直接最大化训练文档共现数据的似然，不为文档之外的协变量建模，也不给新文档预先规定主题先验。
+
+% KNOWLEDGE-PLAN: KN-V4-C29-CONCEPT-004 L1
+\paragraph{读前自检：概率潜在语义分析模型。}PLSA生成模型要求$\pi$、每列$\phi_{:k}$和每列$\theta_{:j}$归一；请对$P(w_i,d_j,z_k)=\pi_j\theta_{kj}\phi_{ik}$依次对$i,k,j$求和，核对总质量为1。\par
+
+\phantomsection\label{struct:V4-C06-CH07}
+\knowledgeanchor{SLM-18-01-001}{概率潜在语义分析模型}
+% KNOWLEDGE-PLAN: KN-V4-C29-DEFINITION-001 L1
+\paragraph{读前自检：PLSA生成模型。}PLSA生成一篇固定文档$d_j$的词元时先取$z\sim\theta_{:j}$再取$w\sim\phi_{:z}$；请边缘化$z$得到$P(w_i\mid d_j)$，核对对$i$求和为1且同一文档可混合多个主题。\par
+
+\begin{definition}[PLSA生成模型]\label{def:V4-C06-generative}
+设$\pi=(\pi_1,\ldots,\pi_N)$是文档分布，$\Phi=[\phi_{ik}]$和$\Theta=[\theta_{kj}]$满足
+\[
+\pi_j\ge0,\quad\sum_j\pi_j=1;\qquad
+\phi_{ik}\ge0,\quad\sum_i\phi_{ik}=1;\qquad
+\theta_{kj}\ge0,\quad\sum_k\theta_{kj}=1.
+\]
+生成一个单词--文档观测对时，先取$d\sim P(d)$，再取$z\sim P(z\mid d)$，最后取$w\sim P(w\mid z)$。给定$z$后，$w$与$d$条件独立，因而
+\[
+P(w_i,d_j,z_k)=\pi_j\theta_{kj}\phi_{ik},\qquad
+P(w_i,d_j)=\pi_j\sum_{k=1}^K\phi_{ik}\theta_{kj}.
+\]
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V4-C29-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：潜在主题与混合表示。}潜在主题与混合表示依赖“联合词元视角：一次观测是$(W,D)\in\{w_1,\ldots,w_M\}\times\{d_1,\ldots,d_N\}$”；请据此按表格顺序核对潜在主题与混合表示对比表的首个数据行，并直接核对潜在主题与混合表示首行两端的对象、条件与不可互换项逐列一致。\par
+
+\begin{comparisonbox}
+\textbf{两个样本空间，不可混写。}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{联合词元视角：}一次观测是$(W,D)\in\{w_1,\ldots,w_M\}\times\{d_1,\ldots,d_N\}$，在整个语料的$C$个词元上归一化。此时
+  \[
+  P(D=d_j)=\pi_j=\frac{c_j}{C},\qquad
+  P(W=w_i,D=d_j)=\pi_j\sum_k\phi_{ik}\theta_{kj},
+  \]
+  且归一化对象是所有$(i,j)$：$\sum_{i,j}P(w_i,d_j)=1$。
+  \item \textbf{给定文档视角：}先把$d_j$视为固定条件，样本空间只剩该文档的词元位置或词类型。此时
+  \[
+  P(W=w_i\mid D=d_j)=\sum_k\phi_{ik}\theta_{kj},
+  \qquad \sum_iP(w_i\mid d_j)=1,
+  \]
+  公式中不再抽样$D$，也不需要把$\pi_j$乘入条件似然。两种视角由
+  $P(w_i,d_j)=\pi_jP(w_i\mid d_j)$连接；$\pi_j=c_j/C$只属于联合视角。
+\end{enumerate}
+\end{comparisonbox}
+
+\knowledgeanchor{SLM-18-01-002}{PLSA的基本思想}
+主题不是预先给定的词表标签，而是通过共现模式估计的概率分布。若两个词在相近文档中反复出现，似然会倾向于把它们放入相同或相邻的主题分布；若一篇文档同时包含多组词，其$\theta_{:j}$会分配给多个主题。主题编号可以整体置换，所以编号本身没有语义。
+
+\phantomsection\label{struct:V4-C06-CH08}
+\textbf{模型。}在计数表示下，数据为$\mathbf N_{\rm cnt}=[n_{ij}]_{M\times N}$。把每个词元看作一次独立抽取时，参数相关的似然为
+\[
+P(\mathbf N_{\rm cnt}\mid\pi,\Phi,\Theta)\propto
+\prod_{i=1}^M\prod_{j=1}^N
+\left[\pi_j\sum_{k=1}^K\phi_{ik}\theta_{kj}\right]^{n_{ij}}.
+\]
+若把$\mathbf N_{\rm cnt}$解释为无序多项计数，完整似然还含多项系数；该系数不依赖参数，不改变极大似然解。
+
+\phantomsection\label{struct:V4-C06-CH09}
+\textbf{学习策略。}通常固定$\pi_j=c_j/C$，以EM估计$\Phi$和$\Theta$。主题数$K$、初始化、停止容差与空主题处理规则都属于训练配置。由于目标非凸，应使用多组可复现初值，按训练外的验证准则或预先约定的模型选择准则比较结果，而不能把一次局部解当作唯一主题结构。
+
+\begin{SLRunningExample}{RUN-DOC-TERM-01}{V4-C06-plsa}{贯穿例：文档—词项矩阵小例}{把同一非负整数计数表归一化为经验条件分布或联合分布，再用PLSA主题混合逼近。}
+词项为行、文档为列，精确沿用
+\[
+\boldsymbol X=\begin{bmatrix}2&0&1\\1&2&0\\0&1&3\end{bmatrix}.
+\]
+文档词元数为$(N_1,N_2,N_3)=(3,3,4)$，总计数为$10$。因此每列都非空，可定义经验条件分布
+\[
+\widehat p(w_i\mid d_j)=\frac{X_{ij}}{N_j},
+\]
+也可定义经验联合分布$\widehat p(w_i,d_j)=X_{ij}/10$。本章用
+$\sum_k p(w_i\mid z_k)p(z_k\mid d_j)$拟合前者，或用等价共现参数化拟合后者；非负整数计数、正列和与正总量满足似然和归一化的定义域，正计数位置还需由模型提供正概率通路。上一站见\SLRunningExampleRef{RUN-DOC-TERM-01}{V4-C05-nmf}{NMF对同一计数的非负分解}；下一站见\SLRunningExampleRef{RUN-DOC-TERM-01}{V5-C06-lda}{LDA为同一计数加入Dirichlet随机层}。
+\end{SLRunningExample}
+
+% KNOWLEDGE-PLAN: KN-V4-C29-CONCEPT-006 L1
+\paragraph{读前自检：PLSA生成模型。}PLSA联合生成视角还先按$\pi_j=c_j/C$抽取文档；请把它乘入$P(w_i\mid d_j)$得到$P(w_i,d_j)$，核对对所有$(i,j)$求和为1，并与固定文档的条件视角区分。\par
+
+\SLReviewSection{PLSA生成过程与模型}{sec:V4-C06-S02}
+\knowledgeanchor{SLM-18-01-003}{PLSA生成模型}
+对长度为$L_j$的文档$d_j$，固定文档指标后重复$L_j$次“主题--单词”抽取。文档长度不必相等；$\pi_j=c_j/C$只是把整个语料中的词元归属到文档的经验比例。每个词元拥有自己的隐主题，因此同一文档能够呈现多个主题。
+
+% FIGURE-KNOWLEDGE: fig:V4-C06-plsa-dag=SLM-18-01-003,SLM-18-01-004
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C06/fig_v4_c06_plsa_dag.tex}
+图\ref{fig:V4-C06-plsa-dag}中的箭头对应联合分解$P(d)P(z\mid d)P(w\mid z)$。外层文档选择与内层词元重复共同产生单词--文档共现计数。
+
+\knowledgeanchor{SLM-18-01-004}{PLSA共现模型}
+另一种参数化先取$z\sim\rho$，再在给定$z$时独立抽取$w\sim\phi_{:z}$和$d\sim\psi_{:z}$：
+\[
+P(w_i,d_j)=\sum_{k=1}^K\rho_k\phi_{ik}\psi_{jk},\qquad
+P(w_i,d_j\mid z_k)=\phi_{ik}\psi_{jk}.
+\]
+其中$\rho_k=P(z_k)$，$\psi_{jk}=P(d_j\mid z_k)$。它强调联合共现矩阵的对称分解；生成参数化则强调“给定文档生成主题和单词”的非对称过程。
+
+\begin{theorem}[生成模型与共现模型的等价性]\label{thm:V4-C06-equivalence}
+当$\pi_j>0$时，生成参数$\pi_j,\theta_{kj},\phi_{ik}$与共现参数$\rho_k,\psi_{jk},\phi_{ik}$表示同一个$P(w_i,d_j)$。允许零质量主题时，零质量主题上的条件分布不可识别，但不影响联合分布。
+\end{theorem}
+
+% KNOWLEDGE-PLAN: KN-V4-C29-PROOF-001 L1
+\paragraph{读前自检：证明：生成模型与共现模型的等价性。}先锁定生成模型与共现模型的等价性的条件“从生成参数出发”：把$\rho_k$用到的关键定义展开并完成下一步变形，所得结果应满足对$\pi_j>0$定义 $\theta_{kj}=\rho_k\psi_{jk}/\pi_j$。\par
+
+\begin{proof}
+从生成参数出发，定义
+\[
+\rho_k=\sum_{j=1}^N\pi_j\theta_{kj},\qquad
+\psi_{jk}=\frac{\pi_j\theta_{kj}}{\rho_k}\quad(\rho_k>0).
+\]
+归一化给出$\sum_k\rho_k=1$与$\sum_j\psi_{jk}=1$，并且
+\[
+\sum_k\rho_k\phi_{ik}\psi_{jk}
+=\sum_k\phi_{ik}\pi_j\theta_{kj}
+=\pi_j\sum_k\phi_{ik}\theta_{kj}.
+\]
+若$\rho_k=0$，该主题对联合分布的贡献为零，$\psi_{:k}$可任取概率向量。
+
+反向从共现参数出发，令$\pi_j=\sum_k\rho_k\psi_{jk}$。对$\pi_j>0$定义
+$\theta_{kj}=\rho_k\psi_{jk}/\pi_j$，则$\sum_k\theta_{kj}=1$，代回生成模型得到同一联合分布。若$\pi_j=0$，该文档从联合分布中不可观测，其主题混合无法由数据识别。两种参数化由此在正质量部分等价。
+\end{proof}
+
+\SLTeachSection{似然函数与隐变量}{sec:V4-C06-S03}
+\knowledgeanchor{SLM-18-01-005}{PLSA模型性质}
+固定经验文档概率$\pi_j$后，参数相关的观测对数似然写为
+\[
+\ell(\Phi,\Theta)
+=\sum_{i=1}^M\sum_{j=1}^N n_{ij}
+\log\!\left(\sum_{k=1}^K\phi_{ik}\theta_{kj}\right).
+\]
+和式内部混合了未观测主题，无法把$\Phi$与$\Theta$分开优化。为每个非零共现对引入责任度
+\[
+\gamma_{ijk}=P(z_k\mid w_i,d_j)
+=\frac{\phi_{ik}\theta_{kj}}
+{\sum_{h=1}^K\phi_{ih}\theta_{hj}},
+\]
+其分母是模型给文档$d_j$中单词$w_i$的概率。严格正初始化使第一次E步分母为正；后续每轮仍须在所有$n_{ij}>0$的位置核对该分母，因为边界更新或结构性零可能使正性条件失效。
+
+完整数据可以理解为每个词元还附有主题标记。对这些标记取条件期望，并删除固定$\pi_j$项，得到
+\[
+Q'(\Phi,\Theta\mid\Phi^{(t)},\Theta^{(t)})
+=\sum_{i,j}n_{ij}\sum_{k=1}^K\gamma_{ijk}^{(t)}
+\bigl(\log\phi_{ik}+\log\theta_{kj}\bigr).
+\]
+这时$\Phi$与$\Theta$在求和中分离，M步可在各自单纯形上求约束极大值。
+
+\phantomsection\label{struct:V4-C06-CH10}
+\textbf{学习算法概览。}EM交替执行：E步以当前参数计算$\gamma_{ijk}$；M步把责任度加权计数分别按主题和文档归一化。一次E步不会改变参数，一次M步不会重新计算旧责任度，更新顺序不能交换或混用两个迭代时刻。
+
+% KNOWLEDGE-PLAN: KN-V4-C29-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：PLSA算法。}PLSA的E步对每个$n_{ij}>0$计算$\gamma_{ijk}=\phi_{ik}\theta_{kj}/\sum_h\phi_{ih}\theta_{hj}$；请对$k$求和核对为1，再把责任度加权词计数按主题归一得到新$\phi_{:k}$。\par
+% KNOWLEDGE-PLAN: KN-V4-C29-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：PLSA参数估计的EM算法。}PLSA参数估计的M步用$b_{kj}=\sum_i n_{ij}\gamma_{ijk}$更新$\theta_{kj}=b_{kj}/c_j$；请对$k$求和，核对$c_j>0$时列归一，而$c_j=0$时该文档混合不可由训练似然识别。\par
+
+\SLTeachSection{EM参数估计}{sec:V4-C06-S04}
+\knowledgeanchor{SLM-18-02-001}{PLSA算法}
+\knowledgeanchor{SLM-18-01-006}{PLSA参数估计的EM算法}
+
+\phantomsection\label{struct:V4-C06-CH11}
+% CORE-DERIVATION-PLAN: KN-V4-C29-DERIVATION-001
+\SLKnowledgeBridge{用主题责任度拆开对数和，再在两组概率单纯形上归一化期望计数。}{共现计数 $n_{ij}$、主题责任度 $\gamma_{ijk}$、主题--词分布 $\Phi$ 与文档--主题分布 $\Theta$。}{只对 $n_{ij}>0$ 的共现对计算；其模型概率为正；每列参数位于相应概率单纯形。}{先对 $\log\sum_k\phi_{ik}\theta_{kj}$ 引入当前责任度并应用 Jensen 不等式。}
+
+\begin{derivationgoalbox}
+从观测对数似然出发，构造可分离的EM下界，并在两组概率单纯形约束下推出责任度、主题--词分布和文档--主题分布的闭式更新。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+记旧参数为$(\Phi^{(t)},\Theta^{(t)})$。只对$n_{ij}>0$的共现对计算责任度。假设这些共现对的模型概率均为正，并约定$0\log0=0$。定义期望主题计数
+\[
+a_{ik}=\sum_j n_{ij}\gamma_{ijk}^{(t)},\qquad
+b_{kj}=\sum_i n_{ij}\gamma_{ijk}^{(t)},\qquad
+A_k=\sum_i a_{ik}.
+\]
+\end{derivationprepbox}
+% DERIVATION-CHECK: step-1; step-2; step-3
+\textbf{推导第1步：由Bayes公式完成E步。}给定$(w_i,d_j)$，文档概率$\pi_j$在分子、分母中相消：
+\[
+\begin{aligned}
+\gamma_{ijk}^{(t)}
+&=\frac{P(w_i,d_j,z_k\mid\Phi^{(t)},\Theta^{(t)})}
+{P(w_i,d_j\mid\Phi^{(t)},\Theta^{(t)})}\\
+&=\frac{\pi_j\phi_{ik}^{(t)}\theta_{kj}^{(t)}}
+{\pi_j\sum_{h=1}^K\phi_{ih}^{(t)}\theta_{hj}^{(t)}}\\
+&=\frac{\phi_{ik}^{(t)}\theta_{kj}^{(t)}}
+{\sum_{h=1}^K\phi_{ih}^{(t)}\theta_{hj}^{(t)}}.
+\end{aligned}
+\]
+因此$\gamma_{ijk}^{(t)}\ge0$且$\sum_k\gamma_{ijk}^{(t)}=1$。
+
+\textbf{推导第2步：在主题--词单纯形上更新$\Phi$。}固定$\Theta$后，对每个主题$k$求
+\[
+\max_{\phi_{:k}}\sum_i a_{ik}\log\phi_{ik}
+\quad\text{s.t.}\quad \sum_i\phi_{ik}=1,\ \phi_{ik}\ge0.
+\]
+Lagrange函数为$\mathcal L_k=\sum_i a_{ik}\log\phi_{ik}+\tau_k(1-\sum_i\phi_{ik})$。对正质量坐标求导，
+\[
+\frac{a_{ik}}{\phi_{ik}}-\tau_k=0
+\quad\Longrightarrow\quad
+\phi_{ik}=\frac{a_{ik}}{\tau_k}.
+\]
+对$i$求和并用归一化约束得到$\tau_k=A_k$，从而
+\[
+\boxed{\displaystyle
+\phi_{ik}^{(t+1)}=
+\frac{\sum_{j=1}^N n_{ij}\gamma_{ijk}^{(t)}}
+{\sum_{m=1}^M\sum_{j=1}^N n_{mj}\gamma_{mjk}^{(t)}}}.
+\]
+当$A_k=0$时，该主题没有期望计数，公式无定义，必须按预先规则删去或重新初始化该主题。
+
+\textbf{推导第3步：在文档--主题单纯形上更新$\Theta$。}对每个文档$j$求
+\[
+\max_{\theta_{:j}}\sum_k b_{kj}\log\theta_{kj}
+\quad\text{s.t.}\quad \sum_k\theta_{kj}=1,\ \theta_{kj}\ge0.
+\]
+同一约束极值计算给出$\theta_{kj}=b_{kj}/\sum_hb_{hj}$。利用$\sum_h\gamma_{ijh}^{(t)}=1$，
+\[
+\sum_hb_{hj}=\sum_i n_{ij}\sum_h\gamma_{ijh}^{(t)}
+=\sum_i n_{ij}=c_j,
+\]
+故
+\[
+\boxed{\displaystyle
+\theta_{kj}^{(t+1)}=
+\frac{\sum_{i=1}^M n_{ij}\gamma_{ijk}^{(t)}}{c_j}}.
+\]
+当$c_j=0$时，训练数据不含该文档的词元，$\theta_{:j}$不可估计，应移除该空文档或明确指定外部先验。
+
+以上两个M步公式的适用域必须分开：$A_k>0$时主题列由期望计数唯一归一化，$A_k=0$时该主题列不被$Q'$识别；$c_j>0$时文档列由词元责任度唯一归一化，$c_j=0$时该文档列不被训练似然识别。删除、重置或加Dirichlet伪计数是不同的外部建模选择，不能伪装成同一条无条件闭式更新。
+
+\phantomsection\label{struct:V4-C06-CH12}
+\begin{proposition}[EM似然单调性]\label{prop:V4-C06-em-monotone}
+若E步分母为正，M步精确极大化$Q'$且各更新保持概率约束，则每轮PLSA EM满足
+$\ell(\Phi^{(t+1)},\Theta^{(t+1)})\ge
+\ell(\Phi^{(t)},\Theta^{(t)})$。该性质不保证到达全局最大值。
+\end{proposition}
+\phantomsection\label{struct:V4-C06-CH13}
+% KNOWLEDGE-PLAN: KN-V4-C29-PROOF-002 L1
+\paragraph{读前自检：证明：EM似然单调性。}PLSA的EM单调性要求E步分母为正、M步精确提高$Q'$且概率约束保持；请在旧后验正支撑上写出Jensen下界，核对旧参数处取等、新参数提高$Q'$后观测似然不降。\par
+
+\begin{proof}
+对每个$n_{ij}>0$，令$I_{ij}^{(t)}=\{k:\gamma_{ijk}^{(t)}>0\}$；零责任度项按$0\log0=0$解释，不写成除以零的比值。在旧后验的正支撑上应用Jensen不等式：
+\[
+\log\sum_k\phi_{ik}\theta_{kj}
+\ge\log\sum_{k\in I_{ij}^{(t)}}\phi_{ik}\theta_{kj}
+=\log\sum_{k\in I_{ij}^{(t)}}\gamma_{ijk}^{(t)}
+\frac{\phi_{ik}\theta_{kj}}{\gamma_{ijk}^{(t)}}
+\ge\sum_{k\in I_{ij}^{(t)}}\gamma_{ijk}^{(t)}
+\log\frac{\phi_{ik}\theta_{kj}}{\gamma_{ijk}^{(t)}}.
+\]
+旧后验使该下界在旧参数处取等号。M步提高其中与参数有关的$Q'$，熵项
+$-\sum_{i,j,k}n_{ij}\gamma_{ijk}^{(t)}\log\gamma_{ijk}^{(t)}$保持不变，所以新参数处的观测似然不低于旧参数处。若M步只近似求解，则必须另行检查下界或观测似然是否提高。
+\end{proof}
+
+\phantomsection\label{struct:V4-C06-CH14}
+% KNOWLEDGE-PLAN: KN-V4-C29-CONCEPT-009 L1
+\paragraph{读前自检：几何解释：每个 k 是 (M-1) 维单词单纯形中的主题点。}PLSA数值例给出$\theta_{:j}=(0.6,0.4)^{\mathsf T}$及词概率$(0.2,0.7)$；请算$P(w_i\mid d_j)=0.4$和两主题后验，核对责任度为$(0.3,0.7)$且和为1。\par
+
+\begin{geometrybox}
+\textbf{几何解释。}每个$\phi_{:k}$是$(M-1)$维单词单纯形中的主题点。文档分布$P(w\mid d_j)=\Phi\theta_{:j}$是这些主题点的凸组合，因此全部训练文档都落在由主题点张成的凸包中。$K=1$时凸包退化为一点；$K=2$时为线段；主题点线性相关或重复时，有效维数低于$K-1$。
+\end{geometrybox}
+
+\phantomsection\label{struct:V4-C06-CH15}
+\begin{probabilitybox}
+责任度$\gamma_{ijk}$不是“单词$w_i$永远属于主题$k$”的概率，而是给定单词与文档后的局部后验。同一个词在不同文档中可由不同主题解释。$\Phi$刻画主题的词分布，$\Theta$刻画训练文档的主题分布，二者必须与后验责任度分开。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V4-C06-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}固定经验$\pi_j$时，PLSA等价于在列随机约束下最小化经验条件分布与$\Phi\Theta$之间的加权KL散度。目标对$\Phi$和$\Theta$分别具有较好结构，但对二者联合非凸；主题置换、重复主题和边界零概率都会造成非唯一解。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V4-C06-CH17}
+% FIGURE-KNOWLEDGE: fig:V4-C06-simplex=SLM-18-01-005
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C06/fig_v4_c06_simplex.tex}
+图\ref{fig:V4-C06-simplex}把外层三角形表示为单词单纯形，把蓝色三角形表示为主题凸包。文档点的位置由$\theta_{:j}$决定；不同参数可以给出相同文档点，说明潜在表示不必唯一。
+
+\phantomsection\label{struct:V4-C06-CH18}
+\textbf{小型数值例子。}设某文档只有两个主题，$\theta_{:j}=(0.6,0.4)^{\mathsf T}$；某单词在两主题下的概率为$0.2$与$0.7$。则
+$P(w_i\mid d_j)=0.2\times0.6+0.7\times0.4=0.4$。若观察到该词，后验责任度为
+\[
+P(z_1\mid w_i,d_j)=\frac{0.2\times0.6}{0.4}=0.3,
+\qquad
+P(z_2\mid w_i,d_j)=0.7.
+\]
+先验主题权重为$(0.6,0.4)$，观察到更偏向第二主题的词后，后验转为$(0.3,0.7)$。
+
+\phantomsection\label{struct:V4-C06-CH19}
+\phantomsection\label{struct:V4-C06-CH20}
+\textbf{算法所需量与计算结果。}计算需要稀疏共现计数$\mathbf N_{\rm cnt}=[n_{ij}]$、主题数$K$、最大迭代数、似然与参数容差、正初始化规则和退化处理规则。完成后得到$\widehat\Phi,\widehat\Theta$、经验$\widehat\pi$、似然轨迹、迭代次数、停止原因与数值诊断。
+
+\phantomsection\label{struct:V4-C06-CH21}
+\textbf{参数含义。}$K$控制主题容量；$T_{\max}$限制计算预算；$\varepsilon_\ell$控制相对似然增量；$\varepsilon_p$控制参数最大变化；$\varepsilon_0$只用于标记正概率过小所带来的浮点风险，而不能把数学上仍为正的概率改判为“无定义”。多个初值的数量和随机种子也必须记录。
+
+\phantomsection\label{struct:V4-C06-CH22}
+\textbf{初始化。}令$\Phi^{(0)}$与$\Theta^{(0)}$各列严格为正并归一化。可以使用固定种子的正随机初值或带小正扰动的启发式初值。若两主题列完全相同，EM可能保持对称而不能分离主题；若初值含结构性零，部分词--主题通路可能永久关闭。
+
+\phantomsection\label{struct:V4-C06-CH23}
+\textbf{更新顺序与判断条件。}每轮先用同一组旧参数计算全部责任度，再累加期望计数，随后同时生成新$\Phi$和新$\Theta$。不得在E步扫描中把刚更新的一列混入其余责任度。每轮判断E步分母、主题质量、概率归一化、似然变化和参数变化。
+
+\phantomsection\label{struct:V4-C06-CH24}
+\textbf{停止条件。}在完成至少一轮更新后，同时满足
+\[
+\delta_\ell^{(t)}=
+\frac{|\ell^{(t+1)}-\ell^{(t)}|}{1+|\ell^{(t)}|}
+\le\varepsilon_\ell,
+\qquad
+\delta_p^{(t)}=\max\{\|\Phi^{(t+1)}-\Phi^{(t)}\|_\infty,
+\|\Theta^{(t+1)}-\Theta^{(t)}\|_\infty\}\le\varepsilon_p
+\]
+时停止。这个阈值事件只记为$\mathtt{numerical\_failure}$，因为它没有给出参数到某个极限点的数学证书；达到$T_{\max}$而上述准则仍未满足时，返回最后有效结果与$\mathtt{budget\_stop}$。
+
+\phantomsection\label{struct:V4-C06-CH25}
+\textbf{数学性质与实现停止的区别。}在每个观测对的模型概率为正、M步精确求解且数值计算保持归一化时，观测似然单调不降并受上界约束，所以似然值序列在理论上收敛。参数序列仍可能在等价主题、平坦方向或边界附近不唯一；因此有限精度下的双阈值只触发$\mathtt{numerical\_failure}$。实现必须另外报告逐轮似然是否满足
+$\ell^{(t+1)}\ge\ell^{(t)}-\varepsilon_{\rm mono}$，不能把“小变化”改名为数学收敛。
+
+\begingroup
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V4-C29-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：稀疏共现计数上的PLSA EM训练：执行契约。}稀疏共现计数上的PLSA EM训练输入“稀疏非负词--文档计数、维数$M,N,K$、严格正列随机初值、轮预算$T_{\max}$、双停止容差与数值容差”，条件“维数为正、计数有限非负且总量正，初值严格正并逐列归一，$T_{\max}\in\mathbb N_0$且容差合法”；请执行“责任度、主题质量、列归一、似然有限性和单调门禁全部通过后才原子提交整轮，并增加$t_{\rm done}$”，以“似然相对变化与参数变化双证书、轮预算耗尽或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V4-C29-ALGORITHM_IDEA-004 L2
+\begin{keypointbox}[title={稀疏共现计数上的PLSA EM训练：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={稀疏非负词--文档计数、维数$M,N,K$、严格正列随机初值、轮预算$T_{\max}$、双停止容差与数值容差},
+  output={最后合法$\widehat\Phi,\widehat\Theta,\widehat\pi,\widehat\ell$、实际提交轮/非零项/主题计数、状态与最终诊断},
+  preconditions={维数为正、计数有限非负且总量正，初值严格正并逐列归一，$T_{\max}\in\mathbb N_0$且容差合法},
+  initialization={聚合文档计数、移除空文档，计算$\widehat\pi$和log-sum-exp初始似然，置$t_{\rm done}=z_{\rm done}=k_{\rm done}=0$},
+  loop={每轮以同一旧参数在临时表完成稀疏E步，再由完整期望计数同时形成两组M步参数与新似然},
+  update={责任度、主题质量、列归一、似然有限性和单调门禁全部通过后才原子提交整轮，并增加$t_{\rm done}$},
+  domain={每个正计数对的模型概率严格正；责任度、主题--词和主题--文档列均为有限概率向量},
+  failure={维数、计数、初值、预算或容差非法返回$\mathtt{invalid\_input}$；零模型支撑、空主题、log-sum-exp/归一化非有限或似然异常下降返回$\mathtt{numerical\_failure}$并保留上一合法参数},
+  stop={似然相对变化与参数变化双证书、轮预算耗尽或首次失败时停止},
+  budget={至多$T_{\max}$个原子EM轮；每轮遍历$R_+$个非零计数并处理$K$个主题},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$},
+  iterations={$t_{\rm done}$计实际提交轮，$z_{\rm done}$累计有限非零责任度项，$k_{\rm done}$累计合法主题更新},
+  diagnostics={最终似然、双停止量、最小模型概率/主题质量、列和误差、失败$(t,i,j,k)$与阶段及预算余量},
+  complexity={每轮$O(R_+K)$时间；期望计数和参数占$O(MK+NK)$空间，稀疏输入占$O(R_+)$}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begin{algorithm}[tbp]
+\caption{稀疏共现计数上的PLSA EM训练}\label{alg:V4-C06-plsa-em}
+\KwIn{$n_{ij}\ge0$的非零项列表；$M,N,K$；$T_{\max}$；$\varepsilon_\ell,\varepsilon_p,\varepsilon_0$；严格正的列随机初值}
+\KwOut{最后合法参数与似然；$t_{\rm done},z_{\rm done},k_{\rm done}$；$\mathtt{status}$与诊断}
+核验维数、计数、初值、预算和容差；失败则返回空结果、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算$c_j=\sum_i n_{ij},C=\sum_jc_j$；若$C=0$，返回空结果、$\mathtt{invalid\_input}$及零观测诊断\;
+保留$c_j>0$的文档并形成$\widehat\pi_j=c_j/C$；置$t_{\rm done}=z_{\rm done}=k_{\rm done}=0$\;
+复制$(\widehat\Phi,\widehat\Theta)$为严格正初值，以log-sum-exp计算$\widehat\ell$\;
+若任一正计数对零支撑或初始量非有限，返回初值占位、$\mathtt{numerical\_failure}$及初始化支撑诊断\;
+\While{$t_{\rm done}<T_{\max}$}{
+  清零临时期望计数$a^+,b^+$\;
+  \ForEach{$n_{ij}>0$}{以$\widehat\Phi,\widehat\Theta$和log-sum-exp形成完整$\gamma^+_{ijk}$；若零支撑或非有限，返回上一合法参数、$\mathtt{numerical\_failure}$及$(t_{\rm done}+1,i,j)$诊断；否则累加临时计数并增加$z_{\rm done}$\;}
+  \For{$k\leftarrow1$ \KwTo $K$}{形成$A_k^+=\sum_i a_{ik}^+$；若不正或非有限，返回上一合法参数、$\mathtt{numerical\_failure}$及空主题诊断；否则形成$\Phi_k^+$并增加$k_{\rm done}$\;}
+  由$b^+,c$同时形成$\Theta^+$，并以log-sum-exp形成$\ell^+,\delta_\ell^+,\delta_p^+$\;
+  若候选非有限、不归一或$\ell^+<\widehat\ell$且下降超过舍入容差，返回上一合法参数、$\mathtt{numerical\_failure}$及M步/似然诊断\;
+  原子提交$(\widehat\Phi,\widehat\Theta,\widehat\ell)\leftarrow(\Phi^+,\Theta^+,\ell^+)$并增加$t_{\rm done}$\;
+  若$\delta_\ell^+\le\varepsilon_\ell$且$\delta_p^+\le\varepsilon_p$，返回最后合法参数、$\mathtt{numerical\_failure}$及双阈值/似然单调性诊断\;
+}
+返回最后合法参数、实际计数、$\mathtt{budget\_stop}$及“轮预算耗尽、双证书未满足”最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\FloatBarrier
+\SLRobustImplementationStrip{核心四步是E步责任度、M步主题／文档分布、整轮似然核对和停止；稀疏计数、空主题与失败状态属于稳健实现细节}
+\endgroup
+
+% KNOWLEDGE-PLAN: KN-V4-C29-ALGORITHM_IDEA-005 L2
+
+% KNOWLEDGE-PLAN: KN-V4-C29-ALGORITHM_IDEA-006 L2
+\begin{keypointbox}[title={固定主题--词分布的新文档折入：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={固定列随机主题--词矩阵、训练词表、新文档、冻结OOV策略、严格正主题初值、轮预算与双容差},
+  output={最后合法$\widehat\theta_*,\widehat\ell_*$、完成轮数$t_{\rm done}$、处理非零词数$z_{\rm done}$、状态、OOV与最终诊断},
+  preconditions={$\widehat\Phi$有限非负且各列归一；词表与行索引一致；初值严格正归一；预算非负，容差与OOV策略合法},
+  initialization={映射并聚合文档计数，置$t_{\rm done}=z_{\rm done}=0$；复制$\widehat\theta_*=\theta_*^{(0)}$并以log-sum-exp计算初始似然},
+  loop={每轮在临时累计量中遍历非零词，计算责任度充分统计，再形成主题比例与似然候选},
+  update={$\theta_*^+,\ell_*^+$、归一化和单调性诊断全部通过后才原子提交，并增加$t_{\rm done}$},
+  domain={$\theta_*$位于单纯形；对每个正计数词模型概率为有限正数；似然与责任度有限},
+  failure={词表/OOV策略、空过滤结果或接口非法返回$\mathtt{invalid\_input}$；零模型支撑、非有限log-sum-exp、归一化或似然下降返回$\mathtt{numerical\_failure}$并保留上一合法折入状态},
+  stop={似然相对变化与参数变化双证书、$T_*$轮预算耗尽或首次失败时停止},
+  budget={至多$T_*$个原子提交轮；每轮恰遍历一次文档的$R_*$个非零词并处理$K$个主题},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$},
+  iterations={$t_{\rm done}$计实际提交EM轮，$z_{\rm done}$累计计成功处理的非零词项，失败词的位置另行报告},
+  diagnostics={OOV表、过滤后词数、最终似然/相对变化、参数变化、最小模型概率、失败$(t,i)$与阶段及预算余量},
+  complexity={每轮$O(R_*K)$时间和$O(K)$累计空间，稀疏文档计数另占$O(R_*)$}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begin{algorithm}[tbp]
+\caption{固定主题--词分布的新文档折入}\label{alg:V4-C06-plsa-foldin}
+\KwIn{$\widehat\Phi$、训练词表、新文档计数、OOV策略、$T_*,\varepsilon_\ell,\varepsilon_p,\varepsilon_0$、严格正$\theta_*^{(0)}$}
+\KwOut{最后合法$\widehat\theta_*,\widehat\ell_*$；$t_{\rm done},z_{\rm done}$；$\mathtt{status}$、OOV与诊断}
+若词表/矩阵维数、预算、容差、初值或OOV策略非法，则返回初值占位、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+映射词元并记录OOV；仅按冻结的“忽略OOV”策略丢弃，否则返回$\mathtt{invalid\_input}$；若过滤后$C_*=0$，返回$\mathtt{invalid\_input}$及空文档诊断\;
+置$\widehat\theta_*\leftarrow\theta_*^{(0)},t_{\rm done}\leftarrow0,z_{\rm done}\leftarrow0$，以log-sum-exp计算$\widehat\ell_*$；若有正计数词的模型概率为零或结果非有限，则返回$\mathtt{numerical\_failure}$及初始化支撑诊断\;
+\While{$t_{\rm done}<T_*$}{
+  清零临时$u_k$；对每个$n_{i*}>0$用当前$\widehat\theta_*$计算$a_k=\log\widehat\phi_{ik}+\log\widehat\theta_{k*}$与$L_i=\operatorname{LSE}_k(a_k)$\;
+  若所有$a_k=-\infty$，或稳定实现后$L_i$仍非有限/低于登记阈值，则返回上一合法状态、$\mathtt{numerical\_failure}$及失败$(t_{\rm done}+1,i)$诊断；成功处理一项即增加$z_{\rm done}$并累计$u_k$\;
+  形成$\theta_*^+=u/C_*$并计算$\ell_*^+$、相对似然变化及$\|\theta_*^+-\widehat\theta_*\|_\infty$\;
+  若候选非有限、未归一或似然显著下降，则拒绝整轮并返回上一合法状态、$\mathtt{numerical\_failure}$及候选验收诊断\;
+  原子提交$(\widehat\theta_*,\widehat\ell_*)\leftarrow(\theta_*^+,\ell_*^+)$并令$t_{\rm done}\leftarrow t_{\rm done}+1$\;
+  若似然和参数双容差同时满足，则返回最后合法状态、$\mathtt{numerical\_failure}$及OOV/双阈值/单调性诊断\;
+}
+返回最后合法状态、实际计数、$\mathtt{budget\_stop}$及OOV与“预算耗尽”诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+折入算法最大化固定$\widehat\Phi$下的独立目标
+\[
+\ell_*(\theta_*)=\sum_{i:n_{i*}>0}n_{i*}
+\log\!\left(\sum_{k=1}^K\widehat\phi_{ik}\theta_{k*}\right),
+\qquad \theta_*\in\Delta_{K-1},
+\]
+不修改训练主题，也不借用某篇训练文档的$\theta$。其每轮时间为$O(R_*K)$、工作空间为$O(K)$（另计稀疏计数）。
+
+\textbf{返回结果与正确性依据。}算法返回的每个$\phi_{:k}$和$\theta_{:j}$都应非负且和为1。E步是当前参数下的精确条件分布，M步分别极大化两个单纯形上的$Q'$；命题\ref{prop:V4-C06-em-monotone}给出似然单调性的正确性依据。还应复算$\Phi\Theta$、似然和列和，而不能只检查迭代次数。
+
+\textbf{异常与退化。}主要异常包括空语料、空文档、E步零分母、空主题、非有限对数似然和归一化漂移。伪代码在零分母或空主题处立即拒绝当前轮并终止当前启动，因此不会继续执行无定义的除法。删除主题或用正扰动重置必须由外层启动器完成：重新确定$K$及矩阵维数，重新初始化$\Phi,\Theta$，并从新的$\ell^{(0)}$开始；这不是原EM轨迹中的一次普通更新。把极小概率统一截断并重归一化也会改变原目标，必须记录阈值。
+
+\textbf{不收敛或不适用情形。}似然持续振荡或明显下降通常表示更新时刻混用、分母下溢或M步没有精确完成。即使似然收敛，多个初值也可能到达不同局部解。极短文档、主题数接近文档数、需要自然处理新文档或要求贝叶斯不确定性时，PLSA通常不是首选。
+
+\phantomsection\label{struct:V4-C06-CH26}
+\phantomsection\label{struct:V4-C06-CH27}
+% KNOWLEDGE-PLAN: KN-V4-C29-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：EM参数估计。}EM参数估计中的“计数以稀疏非零项存储，责任度可边计算边累加，且$K\ll\min(M,N)$”决定可执行范围；请由$R=|\{(i,j):n_{ij}>0\}|$的总成本剥离一次迭代或一次样本因子，结果须满足流式累加可避免该项，但输出参数本身仍需$O((M+N)K)$。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}令$R=|\{(i,j):n_{ij}>0\}|$，训练迭代数为$T$；计数以稀疏非零项存储，责任度可边计算边累加，且$K\ll\min(M,N)$。若逐词元扫描而不聚合计数，应把$R$替换为总词元数$C$。
+
+\textbf{训练时间复杂度。}每个非零共现对计算$K$个责任度并累加两组计数，一轮为$O(RK)$；$T$轮为$O(TRK)$，另有每轮$O((M+N)K)$的归一化与参数检查。
+
+\textbf{预测时间复杂度。}PLSA没有直接的新文档参数。固定$\widehat\Phi$后，对含$R_*$个非零词的新文档以$T_*$轮一文档EM折入，时间为$O(T_*R_*K)$；已训练文档的一个词概率需$O(K)$，完整稠密词分布需$O(MK)$。
+
+\textbf{空间复杂度。}稀疏计数、模型输出和累计量分别需$O(R)$、$O(MK+NK)$与$O(MK+NK)$。若显式保存全部责任度，额外需要$O(RK)$；流式累加可避免该项，但输出参数本身仍需$O((M+N)K)$。
+\end{complexitybox}
+
+\SLAdvancedSection{与LSA、NMF及LDA的联系}{sec:V4-C06-S05}
+把$X'=[P(w_i,d_j)]$写成矩阵，可得共现参数化
+\[
+X'=U'\Sigma'V'^{\mathsf T},\quad
+U'=[P(w_i\mid z_k)]_{M\times K},\quad
+\Sigma'=\operatorname{diag}(P(z_1),\ldots,P(z_K)),\quad
+V'=[P(d_j\mid z_k)]_{N\times K}.
+\]
+$U'$与$V'$非负并按列归一化，$\Sigma'$非负；它们通常不正交。该分解在形式上连接了PLSA、LSA与NMF，但三者的目标和约束不同。
+
+% KNOWLEDGE-PLAN: KN-V4-C29-COMPARISON-002 L1
+\paragraph{读前自检：易混淆概念对比：与LSA、NMF及LDA的联系。}把与LSA、NMF及LDA的联系放在“对比表首个数据行是“LSA｜对$X\in\mathbb R^{M\times N}$（词为行、训练文档为列）作截断SVD｜$U_k\in\mathbb R^{M\times K}$是词空间基；$V_k\in\mathbb R^{N\times K}$是训练文档系数方向｜新文档$x_*\in\mathbb R^M$编码为$U_k^Tx_*$；训练文档坐标为$\Sigma_kV_k^T$””下考察：按列复述“LSA｜对$X\in\mathbb R^{M\times N}$（词为行、训练文档为列）作截断SVD｜$U_k\in\mathbb R^{M\times K}$是词空间基；$V_k\in\mathbb R^{N\times K}$是训练文档系数方向｜新文档$x_*\in\mathbb R^M$编码为$U_k^Tx_*$；训练文档坐标为$\Sigma_kV_k^T$”中的对象、假设与结论，并检查各列均对应首行对象“LSA”，且未与表中下一行互换。\par
+
+\begin{comparisonbox}
+\small
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 方法 & 分解与目标 & 约束与解释 & 新文档处理\\ \midrule
+LSA & 对$X\in\mathbb R^{M\times N}$（词为行、训练文档为列）作截断SVD & $U_k\in\mathbb R^{M\times K}$是词空间基；$V_k\in\mathbb R^{N\times K}$是训练文档系数方向 & 新文档$x_*\in\mathbb R^M$编码为$U_k^Tx_*$；训练文档坐标为$\Sigma_kV_k^T$\\
+PLSA & 最大化单词--文档共现似然，等价于加权KL型拟合 & 因子非负且归一化；主题、文档混合有概率语义 & 固定主题--词分布后另做折入估计\\
+NMF & 以Frobenius、KL或其他散度拟合$X\approx WH$ & $W,H\ge0$，尺度通常不唯一；是否归一化取决于定义 & 固定$W$后解非负系数问题\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+PLSA的参数量约为$K(M-1)+N(K-1)$，另有固定或可估的文档分布；它随训练文档数$N$线性增长。LSA的正交约束带来谱排序和最佳低秩平方误差保证，但不提供离散生成概率。NMF与PLSA都使用非负因子；只有在特定归一化和散度目标下，二者的优化形式才可对应，不能只因矩阵形状相同便认定算法相同。
+
+LDA与PLSA也不能共用同一套参数更新。LDA在文档层引入$\theta_{:j}\sim\operatorname{Dir}(\alpha)$，通常还对主题--词列引入Dirichlet先验；观测词元后需要计算或近似后验，而不是把每篇文档的$\theta_{:j}$都当作互不相关的极大似然参数。因而PLSA上面的责任度归一化来自固定参数的Bayes公式，LDA中的相应量还包含先验与后验期望；只有明确推断方法及超参数后，才能写出LDA的变分、Gibbs或其他更新。
+
+\phantomsection\label{struct:V4-C06-CH28}
+% KNOWLEDGE-PLAN: KN-V4-C29-BOUNDARY-002 L1
+\paragraph{读前自检：适用条件与局限：与LSA、NMF及LDA的联系。}PLSA要求非负词--文档计数、主题概率归一且主题数小于词汇与文档规模；请逐项核对这三条条件，并用留出文档似然而非训练似然选择主题数。\par
+
+\begin{applicabilitybox}
+\textbf{适用条件。}PLSA适合具有可靠非负共现计数、希望获得软主题和概率词分布、且训练文档集合相对固定的探索性文本建模。聚合计数应足以表达任务结构，主题数应明显小于词汇与文档规模，并通过训练外准则选择。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V4-C06-CH29}
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+PLSA为每篇训练文档配置独立$\theta_{:j}$，没有文档层先验，参数量随$N$增长；新文档必须折入；极大似然容易过拟合稀有共现；主题标签不可识别且局部最优依赖初始化；词袋假设忽略词序与上下文；预设$K$不能由模型自动确定。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V4-C06-CH30}
+% KNOWLEDGE-PLAN: KN-V4-C29-BOUNDARY-004 L1
+\paragraph{读前自检：常见错误与误用边界：与LSA、NMF及LDA的联系。}从与LSA、NMF及LDA的联系的条件“边界框首项禁止将$\Phi$按行归一化”出发，请把固定错误“将$\Phi$按行归一化”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法；所得量应符合改写后的运算或判断有定义，且不再触发“将$\Phi$按行归一化”。\par
+
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 把$P(z\mid d)$与$P(d\mid z)$混用，却没有乘以$P(d)$和除以$P(z)$；
+  \item 在E步分母漏掉对全部主题求和，或用新旧参数混合计算责任度；
+  \item 将$\Phi$按行归一化、将$\Theta$按文档以外的轴归一化；
+  \item 把共现次数$n_{ij}$漏出E、M步累计量，使高频与低频观测获得相同权重；
+  \item 只用似然增量停止，却不检查参数变化、空主题、列和与非有限数值；
+  \item 把训练文档的$\theta_{:j}$直接分配给新文档，造成索引错位和数据泄漏。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V4-C06-CH31}
+% KNOWLEDGE-PLAN: KN-V4-C29-COMPARISON-003 L1
+\paragraph{读前自检：易混淆概念对比：与LSA、NMF及LDA的联系。}与LSA、NMF及LDA的联系依赖“对比表首个数据行是“$P(z\mid d)$与$P(z\mid w,d)$｜文档的主题混合，是模型参数｜观察具体词后的主题后验，是E步量””；请据此按列复述“$P(z\mid d)$与$P(z\mid w,d)$｜文档的主题混合，是模型参数｜观察具体词后的主题后验，是E步量”中的对象、假设与结论，并直接核对各列均对应首行对象“$P(z\mid d)$与$P(z\mid w,d)$”，且未与表中下一行互换。\par
+
+\begin{comparisonbox}
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 概念对 & 第一项 & 第二项\\ \midrule
+$P(z\mid d)$与$P(z\mid w,d)$ & 文档的主题混合，是模型参数 & 观察具体词后的主题后验，是E步量\\
+$P(w\mid z)$与$P(w\mid d)$ & 单个主题的词分布 & 多主题按$P(z\mid d)$混合后的文档词分布\\
+生成模型与共现模型 & $d\to z\to w$，参数含$P(z\mid d)$ & $z$共同指向$w,d$，参数含$P(d\mid z)$\\
+似然收敛与参数收敛 & 目标值增量很小 & 两组概率矩阵本身稳定；前者不推出后者唯一\\
+主题编号与主题语义 & 编号可整体置换 & 语义来自高概率词和文档使用模式\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+\SLDirectSection{例题、参数估计与练习}{sec:V4-C06-S06}
+\phantomsection\label{struct:V4-C06-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[一次完整E步与M步]\label{exm:V4-C06-one-em}
+设$M=N=K=2$，计数矩阵为
+$[n_{ij}]=\begin{psmallmatrix}3&1\\1&3\end{psmallmatrix}$。初值取
+\[
+\Phi^{(0)}=\begin{bmatrix}0.8&0.2\\0.2&0.8\end{bmatrix},\qquad
+\Theta^{(0)}=\begin{bmatrix}0.75&0.25\\0.25&0.75\end{bmatrix}.
+\]
+计算一轮E步责任度和M步参数。
+
+\phantomsection\label{struct:V4-C06-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V4-C06-one-em}
+\begin{solution}
+\SLReadTranslation{题目要求完成“一次完整E步与M步”：依据题面矩阵/向量求出目标量，并核对每一步乘法与最终结果的维数。}
+\SolGiven 题面矩阵、向量与参数均按既定列向量约定；首次运算前写出各对象维数并确认内侧维数相等。
+\SLMethodTrigger{先标注每个矩阵/向量维数，再按分解、乘法或投影公式计算并做形状核验。}
+\SolPlan 先完成“一次完整E步与M步”所需的中间量，再做一次题型相关核验，最后回收题目各问。
+\SolDerive
+\textbf{E步。}四个共现位置的第一主题责任度依次为
+\[
+\gamma_{111}=\frac{0.8\times0.75}{0.8\times0.75+0.2\times0.25}=\frac{12}{13},
+\quad
+\gamma_{121}=\frac{0.8\times0.25}{0.8\times0.25+0.2\times0.75}=\frac47,
+\]
+\[
+\gamma_{211}=\frac{0.2\times0.75}{0.2\times0.75+0.8\times0.25}=\frac37,
+\quad
+\gamma_{221}=\frac{0.2\times0.25}{0.2\times0.25+0.8\times0.75}=\frac1{13},
+\]
+第二主题责任度均为$1-\gamma_{ij1}$。
+
+\textbf{M步。}第一主题对两个词的期望计数为
+\[
+a_{11}=3\frac{12}{13}+1\frac47=\frac{304}{91},\qquad
+a_{21}=1\frac37+3\frac1{13}=\frac{60}{91},
+\]
+故$\phi_{11}^{(1)}=304/364=76/91$、$\phi_{21}^{(1)}=15/91$。由对称性，第二主题列为$(15/91,76/91)^{\mathsf T}$。每篇文档词数$c_1=c_2=4$，于是
+\[
+\theta_{11}^{(1)}=\frac{3(12/13)+1(3/7)}4=\frac{291}{364},
+\qquad
+\theta_{12}^{(1)}=\frac{1(4/7)+3(1/13)}4=\frac{73}{364},
+\]
+其余元素由列和为1得到。
+
+\textbf{独立核验。}每个共现位置都有
+$\gamma_{ij1}+\gamma_{ij2}=1$；更新后
+$76/91+15/91=1$且$291/364+73/364=1$，因此$\Phi^{(1)}$和
+$\Theta^{(1)}$的每一列均为概率向量。
+
+\textbf{结论。}新矩阵保持非负、列归一化，并加强了“第一词--第一文档”和“第二词--第二文档”的对应结构。
+\end{solution}
+
+\phantomsection\label{struct:V4-C06-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V4-C06-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-18-0001
+% EXERCISE-TYPE: comprehensive_proof,model_equivalence,boundary_analysis
+% SOLUTION-SOURCE: original_book; source_id=EXR-18-0001
+\begin{exercise}\label{ex:V4-C06-S02-01}
+证明PLSA生成模型与共现模型等价。要求同时给出两个方向的参数转换，并说明零质量主题或零质量文档为何使部分条件分布不可识别。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S02-01}
+\begin{chapterexercisesolution}{ex:V4-C06-S02-01}
+从生成参数出发，令
+\[
+\rho_k=\sum_j\pi_j\theta_{kj},\qquad
+\psi_{jk}=\frac{\pi_j\theta_{kj}}{\rho_k}\quad(\rho_k>0).
+\]
+则$\sum_k\rho_k=1$、$\sum_j\psi_{jk}=1$，并且
+\[
+\sum_k\rho_k\phi_{ik}\psi_{jk}
+=\pi_j\sum_k\phi_{ik}\theta_{kj}=P(w_i,d_j).
+\]
+反向令$\pi_j=\sum_k\rho_k\psi_{jk}$，并在$\pi_j>0$时取
+$\theta_{kj}=\rho_k\psi_{jk}/\pi_j$，即可恢复生成参数化。若$\rho_k=0$，主题$k$不贡献任何联合概率，$P(d\mid z_k)$无法由数据确定；若$\pi_j=0$，文档$j$从不出现，$P(z\mid d_j)$无法识别。这些条件分布的不唯一不会改变可观测联合分布。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-18-0002
+% EXERCISE-TYPE: important_derivation,em_algorithm,constrained_optimization
+% SOLUTION-SOURCE: original_book; source_id=EXR-18-0002
+\begin{exercise}\label{ex:V4-C06-S04-01}
+对共现模型
+$P(w_i,d_j)=\sum_k\rho_k\phi_{ik}\psi_{jk}$
+推导EM算法，其中$\rho_k=P(z_k)$、$\phi_{ik}=P(w_i\mid z_k)$、$\psi_{jk}=P(d_j\mid z_k)$。写出E步、三组M步及全部归一化分母。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S04-01}
+\begin{chapterexercisesolution}{ex:V4-C06-S04-01}
+定义共现模型责任度
+\[
+r_{ijk}^{(t)}
+=P(z_k\mid w_i,d_j)
+=\frac{\rho_k^{(t)}\phi_{ik}^{(t)}\psi_{jk}^{(t)}}
+{\sum_{h=1}^K\rho_h^{(t)}\phi_{ih}^{(t)}\psi_{jh}^{(t)}}.
+\]
+删除与参数无关的项后，辅助函数为
+\[
+Q=\sum_{i,j,k}n_{ij}r_{ijk}^{(t)}
+\bigl(\log\rho_k+\log\phi_{ik}+\log\psi_{jk}\bigr).
+\]
+记$A_k=\sum_{i,j}n_{ij}r_{ijk}^{(t)}$，总词元数为$C=\sum_{i,j}n_{ij}$。分别在$\sum_k\rho_k=1$、$\sum_i\phi_{ik}=1$、$\sum_j\psi_{jk}=1$约束下作Lagrange极大化，得到
+\[
+\rho_k^{(t+1)}=\frac{A_k}{C},\qquad
+\phi_{ik}^{(t+1)}=
+\frac{\sum_jn_{ij}r_{ijk}^{(t)}}{A_k},\qquad
+\psi_{jk}^{(t+1)}=
+\frac{\sum_in_{ij}r_{ijk}^{(t)}}{A_k}.
+\]
+三组更新分别按主题总量、主题总量和主题总量归一化；对$k$求和第一式为1，对$i$或$j$求和后两式也各为1。若$A_k=0$，该主题无期望计数，后两式无定义，应按预设规则删除或重新启动，而不是除以零。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-18-0003
+% EXERCISE-TYPE: data_analysis,manual_algorithm,interpretation
+% SOLUTION-SOURCE: original_book; source_id=EXR-18-0003
+\begin{exercise}\label{ex:V4-C06-S06-01}
+对下列单词--标题共现数据进行PLSA分析。取$K=2$，给出可复现的正初始化、多初值比较与停止规则，报告两个主题的高概率词、各标题的主题倾向，并检查似然单调性与概率归一化。
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+ & T1 & T2 & T3 & T4 & T5 & T6 & T7 & T8 & T9\\ \midrule
+book & 0&0&1&1&0&0&0&0&0\\
+dads & 0&0&0&0&0&1&0&0&1\\
+dummies & 0&1&0&0&0&0&0&1&0\\
+estate & 0&0&0&0&0&0&1&0&1\\
+guide & 1&0&0&0&0&1&0&0&0\\
+investing & 1&1&1&1&1&1&1&1&1\\
+market & 1&0&1&0&0&0&0&0&0\\
+real & 0&0&0&0&0&0&1&0&1\\
+rich & 0&0&0&0&0&2&0&0&1\\
+stock & 1&0&1&0&0&0&0&1&0\\
+value & 0&0&0&1&1&0&0&0&0\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S06-01}
+\begin{chapterexercisesolution}{ex:V4-C06-S06-01}
+该表有11个单词、9个标题、31个词元。以下使用条件目标
+\[
+\ell(\Phi,\Theta)
+=\sum_{i,j}n_{ij}\log(\Phi\Theta)_{ij},
+\qquad
+(\Phi\Theta)_{ij}=\sum_{k=1}^{K}\phi_{ik}\theta_{kj}.
+\]
+取$T_{\max}=10000$、$\varepsilon_\ell=10^{-8}$、$\varepsilon_p=10^{-6}$，并要求每次启动满足
+\[
+\phi_{ik}\ge0,
+\quad \sum_i\phi_{ik}=1,
+\qquad
+\theta_{kj}\ge0,
+\quad \sum_k\theta_{kj}=1.
+\]
+第一组采用题面导向的指定初值：令$\epsilon=10^{-3}$，两组种子词分别为
+\[
+\begin{aligned}
+S_1&=\{\text{book},\text{investing},\text{market},\text{stock},\text{value}\},\\
+S_2&=\{\text{dads},\text{dummies},\text{estate},\text{guide},\text{investing},\text{real},\text{rich}\}.
+\end{aligned}
+\]
+集合内给未归一化权重$1+\epsilon$，其余给$\epsilon$后按列归一化。$T1,T3,T4,T5$的主题1权重取$0.9$，$T2,T6,T7,T9$取$0.1$，$T8$取$0.5$，主题2取补数。其余九组分别以种子$0,1,\ldots,8$从$U(0,1)$独立生成$11\times2$与$2\times9$矩阵，每个元素再加$10^{-3}$并按列归一化；各次启动使用互不混用的伪随机流。十次启动结果为
+
+% NUMERIC-RESULT-OBJECT: R07-NUM-V4-C06-START-LIKELIHOODS
+% NUMERIC-RESULT-OBJECT: R07-NUM-V4-C06-PHI-TABLE
+\begin{center}
+\small
+\begin{tabular}{@{}l r@{.}l r@{}}
+\toprule 启动 & \multicolumn{2}{c}{终止$\ell$} & 轮数\\ \midrule
+指定初值 & $-56$&$580927540$ & 29\\
+种子0 & $-56$&$580927900$ & 52\\
+种子1 & $-59$&$877417462$ & 73\\
+种子2 & $-59$&$652105266$ & 55\\
+种子3 & $-59$&$308111089$ & 59\\
+种子4 & $\mathbf{-55}$&$\mathbf{028905786}$ & 25\\
+种子5 & $-60$&$175354448$ & 62\\
+种子6 & $-56$&$580927761$ & 37\\
+种子7 & $-55$&$028905839$ & 45\\
+种子8 & $-59$&$736227209$ & 42\\ \bottomrule
+\end{tabular}
+\end{center}
+
+按终止似然选择种子4，并交换主题列使第一列记为金融主题$F$、第二列记为地产主题$R$。
+
+\noindent 所得$\widehat\Phi$如下表所示：
+\begin{center}
+\small
+\begin{tabular}{@{}l r@{.}l r@{.}l@{}}
+\toprule 词 & \multicolumn{2}{c}{$P(w\mid F)$} & \multicolumn{2}{c}{$P(w\mid R)$}\\ \midrule
+book&0&11111112&0&00000000\\ dads&0&00000000&0&15384614\\ dummies&0&11111112&0&00000000\\
+estate&0&00000000&0&15384614\\ guide&0&05555553&0&07692312\\ investing&0&33333334&0&23076923\\
+market&0&11111112&0&00000000\\ real&0&00000000&0&15384614\\ rich&0&00000000&0&23076922\\
+stock&0&16666667&0&00000000\\ value&0&11111112&0&00000000\\ \bottomrule
+\end{tabular}
+\end{center}
+相应的金融主题权重$\widehat\theta_{Fj}$按$T1$至$T9$依次约为
+$(0.99999979,1,1,1,1,0,0.00000002,1,0)$，地产主题权重为其补数。指定初值则在29轮得到$\ell=-56.580927540$，并把$T8$估为$(0.518195,0.481805)$；它更接近预设语义分组，却不是十次启动中的最高似然解。种子4的解把dummies以及$T2,T8$放到金融侧，正好揭示“似然更高”与“人工期望语义”可能不同，不能用预期主题词替代实际训练报告。
+
+十条轨迹的最小逐轮似然增量均大于$3.8\times10^{-7}$，最大列和误差不超过$2.22\times10^{-16}$，全部概率非负。比较主题稳定性时先用最优匹配消除列置换；报告时同时保留初始化、轨迹、终值、停止原因和语义差异。由于目标非凸，以上结果不表示存在与初始化无关的唯一矩阵。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: parameter_count,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S01-01}
+固定经验文档分布$\pi$时，求PLSA中$\Phi,\Theta$的自由参数个数。对$M=1000,N=200,K=10$计算数值，并与直接为每篇文档估计一个$M$维词分布比较。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S01-01}
+\begin{chapterexercisesolution}{ex:V4-C06-S01-01}
+$\Phi$的每个主题列有$M-1$个自由度，共$K(M-1)$；$\Theta$的每个文档列有$K-1$个自由度，共$N(K-1)$。代入数值得
+\[
+10(1000-1)+200(10-1)=9990+1800=11790.
+\]
+若直接为每篇文档估计一个$M$维词分布，则
+\[
+d_{\mathrm{direct}}=N(M-1)=200\times999=199800,
+\]
+\[
+d_{\mathrm{PLSA}}=11790<d_{\mathrm{direct}}.
+\]
+PLSA以共享主题减少参数，但文档混合部分$N(K-1)$仍随$N$线性增长。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: mixture_calculation,probability_explanation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S01-02}
+两主题的某词概率分别为$0.1,0.6$，某文档主题混合为$(0.7,0.3)^{\mathsf T}$。求该词在文档中的概率；观察到该词后，求两个主题的后验责任度。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S01-02}
+\begin{chapterexercisesolution}{ex:V4-C06-S01-02}
+文档中的词概率为
+$0.1\times0.7+0.6\times0.3=0.25$。Bayes公式给出
+\[
+P(z_1\mid w,d)=\frac{0.1\times0.7}{0.25}=0.28,
+\qquad
+P(z_2\mid w,d)=\frac{0.6\times0.3}{0.25}=0.72.
+\]
+两个后验非负且和为1。虽然主题2先验权重只有$0.3$，该词在主题2下概率更高，观察该词后主题2责任度上升到$0.72$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: definition_discrimination,error_diagnosis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S01-03}
+指出$w,d,z$中哪些是观测变量、哪些是隐变量，并解释为何“每个文档只抽取一次主题”不等于本章PLSA模型。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S01-03}
+\begin{chapterexercisesolution}{ex:V4-C06-S01-03}
+$w$与$d$出现在共现表中，是观测变量；$z$没有被记录，是隐变量。标准PLSA对文档$j$中的每个词元位置$t$分别生成
+\[
+z_{jt}\sim P(z\mid d_j),
+\qquad
+w_{jt}\sim P(w\mid z_{jt}),
+\]
+因此同一文档内可以有$z_{jt}\ne z_{js}$。若整篇文档只抽一次主题，则变成
+\[
+z_j\sim P(z\mid d_j),
+\qquad
+w_{jt}\sim P(w\mid z_j)\quad(\forall t),
+\]
+所有词元共享$z_j$，联合分布和E步后验都会改变，那是另一种混合文档模型。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: graphical_model,probability_proof
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S02-02}
+从有向关系$d\to z\to w$推出$P(w,d,z)$与$P(w,d)$，再验证所得联合分布对$(w,d)$求和为1。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S02-02}
+\begin{chapterexercisesolution}{ex:V4-C06-S02-02}
+有向分解为
+$P(w_i,d_j,z_k)=P(d_j)P(z_k\mid d_j)P(w_i\mid z_k)=\pi_j\theta_{kj}\phi_{ik}$。
+对隐主题求和得到
+$P(w_i,d_j)=\pi_j\sum_k\theta_{kj}\phi_{ik}$。再对全部观测值求和，
+\[
+\sum_{i,j}P(w_i,d_j)
+=\sum_j\pi_j\sum_k\theta_{kj}\sum_i\phi_{ik}
+=\sum_j\pi_j=1.
+\]
+最后两步分别使用$\Phi,\Theta$的列归一化和文档分布的归一化。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: bayes_conversion,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S02-03}
+已知$\pi=(0.4,0.6)$，且
+$\Theta=\begin{psmallmatrix}0.75&1/3\\0.25&2/3\end{psmallmatrix}$。
+计算共现参数$\rho_k=P(z_k)$和$\psi_{jk}=P(d_j\mid z_k)$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S02-03}
+\begin{chapterexercisesolution}{ex:V4-C06-S02-03}
+主题边缘概率为
+\[
+\rho_1=0.4\times0.75+0.6\times\frac13=0.5,
+\qquad
+\rho_2=0.4\times0.25+0.6\times\frac23=0.5.
+\]
+由Bayes转换，第一主题下的文档分布为$(0.4\times0.75/0.5,\,0.6\times(1/3)/0.5)=(0.6,0.4)$；第二主题下为$(0.2,0.8)$。两列均非负且和为1，代回$\rho_k\psi_{jk}=\pi_j\theta_{kj}$可逐项核对。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: likelihood_calculation,numerical_check
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S03-01}
+令$n_{11}=n_{22}=2$、其余计数为0，并取
+$\Phi=\Theta=\begin{psmallmatrix}0.8&0.2\\0.2&0.8\end{psmallmatrix}$。
+计算去除固定文档概率后的观测对数似然。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S03-01}
+\begin{chapterexercisesolution}{ex:V4-C06-S03-01}
+两个正计数位置的混合概率分别为
+\[
+p_{11}=0.8\times0.8+0.2\times0.2=0.68,
+\qquad
+p_{22}=0.2\times0.2+0.8\times0.8=0.68.
+\]
+只有这两个位置计数非零，所以
+\[
+\ell=2\log0.68+2\log0.68=4\log0.68\approx-1.5426.
+\]
+这里已经去掉固定$\pi_j$项；若计算完整联合似然，还要加$\sum_jc_j\log\pi_j$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: posterior_calculation,definition_discrimination
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S03-02}
+某文档的主题混合为$(0.6,0.4)$，某词在两主题下概率为$(0.2,0.7)$。计算观察该词后的责任度，并比较先验与后验的变化。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S03-02}
+\begin{chapterexercisesolution}{ex:V4-C06-S03-02}
+分母为$0.2\times0.6+0.7\times0.4=0.4$，所以
+\[
+\gamma_1=\frac{0.12}{0.4}=0.3,
+\qquad
+\gamma_2=\frac{0.28}{0.4}=0.7.
+\]
+先验主题权重从$(0.6,0.4)$变为后验$(0.3,0.7)$。变化来自该词在第二主题下的似然$0.7$高于第一主题的$0.2$；后验并非只由文档混合决定。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: boundary_analysis,error_diagnosis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S03-03}
+若对一个$n_{ij}>0$的共现对有$\sum_k\phi_{ik}\theta_{kj}=0$，说明似然和E步分别发生什么，并给出不改变问题定义的预防方式。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S03-03}
+\begin{chapterexercisesolution}{ex:V4-C06-S03-03}
+若$n_{ij}>0$但模型概率
+\[
+p_{ij}=\sum_k\phi_{ik}\theta_{kj}=0,
+\]
+则
+\[
+n_{ij}\log p_{ij}=n_{ij}\log0=-\infty,
+\qquad
+\ell(\Phi,\Theta)=-\infty.
+\]
+同时E步责任度的分母$p_{ij}$为0，后验没有定义。初始化应让活动坐标严格为正；若有结构性零，则每个$n_{ij}>0$的位置必须满足
+\[
+\exists k:\ \phi_{ik}\theta_{kj}>0,
+\]
+不能把无定义的$0/0$事后改成任意分布。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: monotonicity_proof,important_derivation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S04-02}
+用Jensen不等式证明：在E步取旧参数后验、M步精确提高辅助函数时，PLSA观测对数似然单调不降。指出该结论不包含哪一种最优性保证。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S04-02}
+\begin{chapterexercisesolution}{ex:V4-C06-S04-02}
+令旧后验为$\gamma_{ijk}^{(t)}$。对每个正计数位置，
+\[
+\log\sum_k\phi_{ik}\theta_{kj}
+=\log\sum_k\gamma_{ijk}^{(t)}
+\frac{\phi_{ik}\theta_{kj}}{\gamma_{ijk}^{(t)}}
+\ge\sum_k\gamma_{ijk}^{(t)}
+\log\frac{\phi_{ik}\theta_{kj}}{\gamma_{ijk}^{(t)}}.
+\]
+旧后验使下界在旧参数处相等；M步提高右侧中依赖参数的$Q'$，后验熵项不变，因此新参数的左侧总和不低于旧值。结论只保证似然值单调不降，不保证参数唯一、全局最优或不同初始化得到相同主题。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: parameter_update,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S04-03}
+只有一个非空文档，两个词计数为$(3,1)$。两词对主题1的责任度分别为$0.8,0.25$。完成一次M步，求两列$\Phi$和该文档的$\theta$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S04-03}
+\begin{chapterexercisesolution}{ex:V4-C06-S04-03}
+主题1的两个期望词计数为$3\times0.8=2.4$与$1\times0.25=0.25$，总量$2.65=53/20$，故
+$\phi_{:1}=(48/53,5/53)^{\mathsf T}$。主题2责任度为$0.2,0.75$，期望计数为$0.6,0.75$，故
+$\phi_{:2}=(4/9,5/9)^{\mathsf T}$。文档总词数为4，所以
+\[
+\theta_{:1}=\left(\frac{2.65}{4},\frac{1.35}{4}\right)^{\mathsf T}
+=\left(\frac{53}{80},\frac{27}{80}\right)^{\mathsf T}.
+\]
+两列$\Phi$和文档主题向量都非负且各自和为1。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: method_comparison,definition_discrimination
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S05-01}
+分别判断下列性质主要属于LSA、PLSA还是一般NMF：因子正交且可为负；因子是归一化概率；目标可任取Frobenius或KL型散度；训练文档各有独立主题参数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S05-01}
+\begin{chapterexercisesolution}{ex:V4-C06-S05-01}
+三类模型的核心约束分别是
+\[
+\text{LSA: }X_k=U_k\Sigma_kV_k^{\mathsf T},
+\quad U_k^{\mathsf T}U_k=V_k^{\mathsf T}V_k=I_k,
+\]
+\[
+\text{NMF: }X\approx WH,
+\quad W\ge0, H\ge0,
+\]
+\[
+\text{PLSA: }P(w_i\mid d_j)=\sum_k\phi_{ik}\theta_{kj},
+\quad \sum_i\phi_{ik}=1,
+\quad \sum_k\theta_{kj}=1.
+\]
+故“因子正交且可为负”属于LSA，“归一化概率”和“每个训练文档有独立$\theta_{:j}$”属于PLSA；NMF可选Frobenius或KL型散度，但非负性本身不产生概率语义。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: fold_in_algorithm,complexity
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S05-02}
+给定已训练的$\widehat\Phi$和一篇含$R_*$个非零词的新文档，写出只估计$\theta_*$的折入EM，并给出$T_*$轮的时间复杂度。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S05-02}
+\begin{chapterexercisesolution}{ex:V4-C06-S05-02}
+固定$\widehat\Phi$并以正概率向量初始化$\theta_*^{(0)}$。第$t$轮对每个新文档非零词计算
+\[
+\gamma_{ik}^{(t)}=
+\frac{\widehat\phi_{ik}\theta_k^{(t)}}
+{\sum_h\widehat\phi_{ih}\theta_h^{(t)}},
+\qquad
+\theta_k^{(t+1)}=
+\frac{\sum_i n_i\gamma_{ik}^{(t)}}{\sum_i n_i}.
+\]
+用似然增量和参数变化共同停止，$\widehat\Phi$始终不更新。每轮扫描$R_*$个非零词并处理$K$个主题，$T_*$轮时间为$O(T_*R_*K)$，额外工作空间可为$O(K)$或$O(R_*K)$，取决于是否保存责任度。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: storage_complexity,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S05-03}
+设$M=10000,N=2000,K=20,R=50000$。比较显式保存全部非零对责任度与流式累加时的主要标量存储量，不计索引开销。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S05-03}
+\begin{chapterexercisesolution}{ex:V4-C06-S05-03}
+全部非零对责任度需要
+\[
+M_{\gamma}=RK=50000\times20=1000000
+\]
+个标量。模型参数与稀疏计数分别为
+\[
+M_{\mathrm{param}}=MK+NK=(10000+2000)\times20=240000,
+\qquad
+M_X=R=50000.
+\]
+流式累加再保存一份同尺寸累计量时，
+\[
+M_{\mathrm{stream}}=50000+240000+240000=530000,
+\]
+\[
+M_{\mathrm{explicit}}=M_{\mathrm{stream}}+M_\gamma=1530000.
+\]
+双缓冲只改变常数倍；渐近差别是显式方案含$O(RK)$责任度表。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: experiment_design,error_diagnosis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S06-02}
+设计一个多初值PLSA实验的验收记录，至少覆盖数据、初始化、停止、似然、概率约束、主题稳定性和模型选择边界。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S06-02}
+\begin{chapterexercisesolution}{ex:V4-C06-S06-02}
+比较不同启动时，先固定数据$D$、主题数$K$和预处理，并为每个种子$s$记录轨迹
+\[
+\mathcal R_s=
+\{s,\Phi_s^{(0)},\Theta_s^{(0)},\ell_s^{(t)},
+\Delta\ell_s^{(t)},T_s,\text{stop}_s\}.
+\]
+每轮必须核验
+\[
+\Phi_s^{(t)}\ge0,
+\quad \Theta_s^{(t)}\ge0,
+\quad \max_k\left|\sum_i\phi_{ik}^{(t)}-1\right|\le\varepsilon_p,
+\]
+\[
+\max_j\left|\sum_k\theta_{kj}^{(t)}-1\right|\le\varepsilon_p,
+\qquad
+\ell_s^{(t+1)}\ge\ell_s^{(t)}-\varepsilon_{\mathrm{num}}.
+\]
+启动间先做最优主题匹配再比较稳定性。$K$和停止参数只能由训练内准则或独立验证信息选择，测试集不得参与。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: implementation_audit,error_diagnosis
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V4-C06-S06-03}
+某实现输出的$\Phi$每行和为1、$\Theta$每行和为1，且似然偶尔下降。指出至少三处应检查的问题，并写出正确的不变量。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C06-S06-03}
+\begin{chapterexercisesolution}{ex:V4-C06-S06-03}
+正确的概率约束是按列归一化：
+\[
+\phi_{ik}\ge0,
+\qquad
+\sum_i\phi_{ik}=1\quad(\forall k),
+\]
+\[
+\theta_{kj}\ge0,
+\qquad
+\sum_k\theta_{kj}=1\quad(\forall j).
+\]
+E步还应满足
+\[
+\gamma_{ijk}\ge0,
+\qquad
+\sum_k\gamma_{ijk}=1,
+\]
+而精确EM应满足
+\[
+\ell^{(t+1)}\ge\ell^{(t)}-\varepsilon_{\mathrm{num}}.
+\]
+若似然下降，应检查E步是否混用新旧参数、是否漏乘$n_{ij}$、是否出现零分母或下溢，以及M步是否使用完整期望计数。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V4-C29-CONCEPT-012 L1
+\paragraph{读前自检：本章结论与下一步。}概率潜在语义分析章末由“文档主题分布、主题词分布、共现计数与责任度”落到“稀疏扫描正计数对，先算旧责任度再分别按主题总量和文档词数归一化，以似然和参数双容差停止”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V4-C06-CH36}
+\SLChapterFiveSummary{文档主题分布、主题词分布、共现计数与责任度}{Bayes公式连接生成/共现参数化；Jensen下界和单纯形Lagrange条件导出EM更新与似然单调性}{稀疏扫描正计数对，先算旧责任度再分别按主题总量和文档词数归一化，以似然和参数双容差停止}{训练文档集合相对固定、需要非负概率主题和软文档表示时}{进入采样与LDA；PLSA新文档须折入，LDA还必须声明Dirichlet先验与后验推断方法}
+
+\phantomsection\label{struct:V4-C06-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{定义与等价：}能否写出$P(w,d,z)$及全部概率约束，区分$P(z\mid d)$与$P(z\mid w,d)$，并双向转换生成模型与共现模型、处理零概率事件？未通过则回看第1、2节。
+  \item \textbf{推导与证明：}能否从Bayes责任度逐行推出两条M步公式，写出Jensen下界、等号条件和似然单调结论，并说明它不保证全局最优？未通过则回看第3、4节。
+  \item \textbf{算法：}能否完整说明输入、初始化、更新顺序、异常、停止、返回、收敛条件和三类复杂度？未通过则回看第4节算法框。
+  \item \textbf{比较：}能否从目标、约束、符号和新文档处理区分LSA、PLSA与NMF？未通过则回看第5节。
+  \item \textbf{实践：}能否对多初值结果消除主题置换后比较稳定性，并独立完成18道练习？未通过则回看第6节；五项均可独立作答，且能用列和、似然轨迹、零分母与参数变化检查一次训练，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

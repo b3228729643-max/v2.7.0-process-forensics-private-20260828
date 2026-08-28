@@ -1,0 +1,13 @@
+\end{equation}
+最后一个比值只在分子、分母有限且分母正时定义。批均值一致性要求随总长度增长时$a,b$都增长且满足相应混合与矩条件；一条有限轨迹不能单独证明这些条件。
+
+图\ref{fig:V5-C03-trace-running-mean}展示固定诊断示意轨迹与保留样本运行均值。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_trace_running_mean.tex}
+\FloatBarrier
+读图时，先看上面板如何把$t=1,\ldots,5$标为预热段；再看下面板只从$t=6$起递推$\overline X_{6:t}$；最终比较其与目标值2，并核对15个保留样本在$t=20$时给出$\overline X_{6:20}=2.0000$。
+图\ref{fig:V5-C03-autocorrelation-ess}把经验ACF与同一预设窗口下的有限样本加权ESS并列为一个诊断单元。
+% v2.6 layout: former forced clear removed; natural pagination.
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_autocorrelation_ess.tex}
+\FloatBarrier
+读图时，先看左面板在 $k=1,\ldots,6$ 的预设窗口内保留了哪些正经验自相关；再看右面板如何用有限样本权重形成 $\widehat\tau_{6,n}$；最终得到正相关增大方差权重、并使同长度轨迹的 $\widehat N_{\mathrm{eff}}$ 减小。
+

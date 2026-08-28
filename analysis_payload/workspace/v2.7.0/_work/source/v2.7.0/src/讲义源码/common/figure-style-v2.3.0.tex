@@ -1,0 +1,41 @@
+% Shared v2.3.0 drawing vocabulary.  Names are deliberately prefixed so
+% chapter-local TikZ styles remain backward compatible.
+\tikzset{
+  every tikzpicture/.append style={line cap=round,line join=round},
+  slfig high/.style={font=\small},
+  slfig node/.style={
+    draw=SLMidBlue,fill=SLSoftGray,rounded corners=2pt,
+    minimum height=9.5mm,inner xsep=3mm,inner ysep=1.8mm,
+    align=center,font=\small,line width=.9pt
+  },
+  slfig node accent/.style={slfig node,draw=SLDeepBlue,fill=SLPaleBlue},
+  slfig node muted/.style={slfig node,draw=SLGray,fill=SLSoftGray},
+  slfig arrow/.style={-{Latex[length=2.4mm,width=1.55mm]},draw=SLDeepBlue,line width=.9pt},
+  slfig arrow accent/.style={slfig arrow,draw=SLMidBlue},
+  slfig edge/.style={draw=SLDeepBlue,line width=.9pt},
+  slfig aux/.style={draw=SLGray,line width=.65pt,dashed},
+  slfig vector/.style={-{Latex[length=2.4mm,width=1.55mm]},draw=SLDeepBlue,line width=1pt},
+  slfig note/.style={draw=SLGray,fill=white,rounded corners=1.5pt,
+    align=left,font=\small,inner sep=2.5mm,line width=.7pt},
+  slfig decision/.style={diamond,aspect=2,draw=SLMidBlue,fill=SLPaleBlue,
+    align=center,font=\small,line width=.9pt,inner sep=1.5mm},
+  slfig terminal/.style={slfig node,draw=SLVolumeFive,fill=SLVolumeFive!10},
+  slfig state/.style={circle,draw=SLMidBlue,fill=SLPaleBlue,
+    minimum size=8.5mm,inner sep=1mm,font=\small,line width=.9pt},
+  slfig observed/.style={slfig state,fill=SLDeepBlue!12},
+  slfig latent/.style={slfig state,fill=white},
+  slfig parameter/.style={slfig state,rectangle,rounded corners=1.5pt},
+  slfig plate/.style={draw=SLGray,rounded corners=2pt,line width=.7pt},
+  slfig tree node/.style={slfig node,minimum width=19mm,text width=17mm}
+}
+
+\pgfplotsset{
+  slfig axis/.style={
+    axis line style={draw=SLDeepBlue,line width=.8pt},
+    tick style={draw=SLDeepBlue,line width=.7pt},
+    label style={font=\small},
+    tick label style={font=\small},
+    legend style={font=\small,draw=none,fill=none},
+    every axis plot/.append style={line width=1pt}
+  }
+}

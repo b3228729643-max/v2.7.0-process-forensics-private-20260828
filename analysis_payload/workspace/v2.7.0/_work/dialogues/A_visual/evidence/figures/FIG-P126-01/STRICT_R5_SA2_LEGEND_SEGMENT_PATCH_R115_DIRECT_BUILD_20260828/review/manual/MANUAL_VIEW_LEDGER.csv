@@ -1,0 +1,19 @@
+view_id,opened_at_utc,path,purpose,verdict,note
+VW001,2026-08-28T03:25:48.3989453Z,review/render/full_page_200dpi.png,page integration,PASS,one-page standalone is centered and unclipped
+VW002,2026-08-28T03:25:48.3989453Z,review/render/full_page_300dpi.png,native page integration,PASS,plot and legend remain within page
+VW003,2026-08-28T03:25:48.3989453Z,review/render/full_page_300dpi_gray.png,grayscale page integration,FAIL,legend x1 and x2 samples are visually identical solid lines
+VW004,2026-08-28T03:25:48.3989453Z,review/roi/FIGURE_NATIVE300.png,figure-level native review,FAIL,all plot geometry passes but legend distinction fails
+VW005,2026-08-28T03:25:48.3989453Z,review/roi/FIGURE_GRAY_NATIVE300.png,figure-level grayscale review,FAIL,x2 legend sample remains solid
+VW006,2026-08-28T03:25:48.3989453Z,review/roi/RAW_OBJECT_OVERLAY.png,raw denominator closure,PASS,58 raw primitives are covered by the semantic partition
+VW007,2026-08-28T03:25:48.3989453Z,review/roi/PLOT_NATIVE1X.png,plot geometry,PASS,contours trajectory markers labels and axes are coherent
+VW008,2026-08-28T03:25:48.3989453Z,review/roi/PLOT_GRAY_NATIVE1X.png,plot grayscale,PASS,actual horizontal and vertical trajectories remain distinguishable
+VW009,2026-08-28T03:25:48.3989453Z,review/roi/START_CLUSTER_NEAREST8X.png,start and steps1-2,PASS,marker label arrows and contour context are readable
+VW010,2026-08-28T03:25:48.3989453Z,review/roi/UPDATE_CLUSTER_NEAREST8X.png,steps2-7,PASS,alternating path geometry and labels remain readable
+VW011,2026-08-28T03:25:48.3989453Z,review/roi/OPTIMUM_CLUSTER_NEAREST8X.png,optimum cluster,PASS,star and x-star annotation remain clear
+VW012,2026-08-28T03:25:48.3989453Z,review/roi/AXIS_LABELS_NEAREST8X.png,axis labels,PASS,x1 and x2 codepoints are complete and unclipped
+VW013,2026-08-28T03:25:48.3989453Z,review/roi/LABEL6_AXIS_NATIVE1X.png,label6 regression,PASS,numeral remains readable in final native raster
+VW014,2026-08-28T03:25:48.3989453Z,review/roi/LABEL6_AXIS_NEAREST8X.png,label6 regression,PASS,gray contour traverses counter without destroying numeral stroke identity
+VW015,2026-08-28T03:25:48.3989453Z,review/roi/LEGEND_NATIVE1X.png,legend native,FAIL,x2 sample is continuous
+VW016,2026-08-28T03:25:48.3989453Z,review/roi/LEGEND_NEAREST8X.png,legend nearest8x,FAIL,x2 sample is continuous 73px with no designed gaps
+VW017,2026-08-28T03:25:48.3989453Z,review/roi/LEGEND_GRAY_NATIVE1X.png,legend grayscale native,FAIL,x1 and x2 samples are identical solid roles
+VW018,2026-08-28T03:25:48.3989453Z,review/roi/LEGEND_GRAY_NEAREST8X.png,legend grayscale nearest8x,FAIL,x2 sample has one continuous run and zero intersegment blanks

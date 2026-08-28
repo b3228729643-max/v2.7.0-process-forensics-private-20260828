@@ -1,0 +1,11 @@
+reviewer,check_id,relation_scope,pair_count_or_pixels,minimum_clearance_px,manual_result,illegal_overlap_pixels,status,note
+SA3,OV-001,ALL_UNORDERED_PAIRS,13530,N/A,COMPLETE_C_N_2,0,PASS,"Every unordered pair of 165 objects appears exactly once."
+SA3,OV-002,RAW_GRAPHIC_GRAPHIC_CANDIDATE_PAIRS,17,0.0,INTENTIONAL_TOPOLOGY,0,PASS,"All raw contacts were opened at native 1x and nearest-neighbor 8x."
+SA3,OV-003,RAW_GRAPHIC_GRAPHIC_CANDIDATE_PIXELS,259,0.0,INTENTIONAL_TOPOLOGY,0,PASS,"Pixels belong to axis/tick, shaft/arrowhead, curve/origin, guide/axis, or threshold connections."
+SA3,OV-004,TEXT_TEXT,6 measured eligible pairs,28.1548,CLEAR_NO_INTERSECTION,0,PASS,"Closest independent text pair is GLYPH-057 versus GLYPH-065."
+SA3,OV-005,TEXT_GRAPHIC,54 measured eligible pairs,16.0,CLEAR_NO_INTERSECTION,0,PASS,"Closest text/line cases are x tick labels against x tick marks."
+SA3,OV-006,TEXT_NODE_BORDER,37 measured eligible pairs,26.0,CLEAR_NO_INTERSECTION,0,PASS,"Formula-card border uses final-visible stroke only; white fill is excluded."
+SA3,OV-007,GLYPH_GLYPH_RAW_INTERSECTION,0 pairs,N/A,CLEAR_NO_INTERSECTION,0,PASS,"No two isolated glyph masks share a foreground pixel."
+SA3,OV-008,GLYPH_GRAPHIC_RAW_INTERSECTION,0 pairs,N/A,CLEAR_NO_INTERSECTION,0,PASS,"No glyph contacts a curve, arrow, guide, marker, border, or math rule."
+SA3,OV-009,MASK_CONTAMINATION,0 pixels,N/A,CLEAR,0,PASS,"All per-glyph manual foreign-pixel counts are zero."
+SA3,OV-010,CANONICAL_RESULT,OVERLAP_PIXEL_COUNT=0,N/A,CLEAR,0,PASS,"Machine candidate pixels are retained in evidence but none is an illegal reader-level collision."

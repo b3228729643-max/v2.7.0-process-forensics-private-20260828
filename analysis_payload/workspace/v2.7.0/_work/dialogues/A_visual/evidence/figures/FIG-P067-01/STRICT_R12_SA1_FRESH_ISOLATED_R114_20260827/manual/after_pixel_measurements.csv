@@ -1,0 +1,24 @@
+ELEMENT_ID,PANEL_ID,ROLE,SOURCE_LINE,DECLARED_PT,GRAPHICS_SCALE,EFFECTIVE_PT,TEXT_SAMPLE,SCRIPT_CLASS,BBOX_X0_PX,BBOX_Y0_PX,BBOX_X1_PX,BBOX_Y1_PX,H_INK_PX,CLASS_MEDIAN_PX,RATIO_TO_CLASS_MEDIAN,ROLE_RATIO_TO_PANEL_BASE,MANUAL_DECISION,REASON
+T01,CDF,AXIS_LABEL,33-35,9.4,1.000,9.4,F_X(t),ROTATED_MATH,449,363,494,453,37,37.5,0.987,1.068,ACCEPT_R168,37 is the cross-axis glyph ink height; the 89-pixel mechanical value is the full rotated line extent
+T02,CDF,TICK_LABEL,33-35,8.8,1.000,8.8,0,DIGIT,568,499,590,536,26,26,1.000,1.000,ACCEPT_R168,Native digit ink is complete
+T03,CDF,TICK_LABEL,33-35,8.8,1.000,8.8,0.45,DIGIT,518,407,590,444,26,26,1.000,1.000,ACCEPT_R168,Native decimal label is complete
+T04,CDF,TICK_LABEL,33-35,8.8,1.000,8.8,0.8,DIGIT,538,335,590,373,26,26,1.000,1.000,ACCEPT_R168,Native decimal label is complete
+T05,CDF,TICK_LABEL,33-35,8.8,1.000,8.8,1,DIGIT,570,295,590,332,25,26,0.962,1.000,ACCEPT_R168,One-pixel raster difference is advisory and the digit is clear
+T06,CDF,ANNOTATION,59-60,9.2,1.000,9.2,右连续：实心点取跳后值,CJK,662,347,1083,386,39,39,1.000,1.045,ACCEPT_R168,All CJK glyphs are readable and the nearby guide has 9-pixel ink clearance
+T07,CDF,MASS_LABEL,51-52,9.2,1.000,9.2,p_1,MATH_WITH_SCRIPT,831,472,870,517,29,29,1.000,1.045,ACCEPT_R168,Base p and subscript 1 are clear in nearest8x evidence
+T08,CDF,MASS_LABEL,53-54,9.2,1.000,9.2,p_2,MATH_WITH_SCRIPT,1161,430,1200,474,29,29,1.000,1.045,ACCEPT_R168,Base p and subscript 2 are clear in nearest8x evidence
+T09,CDF,MASS_LABEL,55-56,9.2,1.000,9.2,p_3,MATH_WITH_SCRIPT,1498,363,1538,408,29,29,1.000,1.045,ACCEPT_R168,Base p and subscript 3 are clear in nearest8x evidence
+T10,CDF,MASS_LABEL,57-58,9.2,1.000,9.2,p_4,MATH_WITH_SCRIPT,1842,317,1883,362,29,29,1.000,1.045,ACCEPT_R168,Base p and subscript 4 are clear in nearest8x evidence
+T11,PMF,AXIS_LABEL,69-71,9.4,1.000,9.4,p_X(t),ROTATED_MATH,458,587,503,681,38,37.5,1.013,1.093,ACCEPT_R168,38 is the cross-axis glyph ink height; the 89-pixel mechanical value is the full rotated line extent
+T12,PMF,TICK_LABEL,68-71,8.6,1.000,8.6,0,DIGIT,571,696,590,732,24,24,1.000,1.000,ACCEPT_R168,Native digit ink is complete
+T13,PMF,TICK_LABEL,68-71,8.6,1.000,8.6,0.15,DIGIT,527,639,590,675,24,24,1.000,1.000,ACCEPT_R168,Native decimal label is complete
+T14,PMF,TICK_LABEL,76-77,8.6,1.000,8.6,0.3,DIGIT,540,601,590,638,25,24,1.042,1.000,ACCEPT_R168,Manual placement preserves the same visual role
+T15,PMF,TICK_LABEL,68-71,8.6,1.000,8.6,0.35,DIGIT,527,563,590,600,24,24,1.000,1.000,ACCEPT_R168,Native decimal label is complete
+T16,PMF,TICK_LABEL,68-71,8.6,1.000,8.6,1,DIGIT,790,733,809,770,24,24,1.000,1.000,ACCEPT_R168,Native digit ink is complete
+T17,PMF,TICK_LABEL,68-71,8.6,1.000,8.6,2,DIGIT,1127,733,1147,770,24,24,1.000,1.000,ACCEPT_R168,Native digit ink is complete
+T18,PMF,TICK_LABEL,68-71,8.6,1.000,8.6,3,DIGIT,1464,733,1484,770,25,24,1.042,1.000,ACCEPT_R168,One-pixel raster difference is advisory and the digit is clear
+T19,PMF,TICK_LABEL,68-71,8.6,1.000,8.6,4,DIGIT,1801,733,1822,770,24,24,1.000,1.000,ACCEPT_R168,Native digit ink is complete
+T20,PMF,AXIS_LABEL,69-71,9.4,1.000,9.4,t,MATH,1298,786,1312,826,25,25,1.000,1.093,ACCEPT_R168,Math italic t is complete and centered
+T21,PMF,ANNOTATION,82-83,9.2,1.000,9.2,同一 t_i：跳高 = p_i,CJK_MATH_MIXED,1647,572,1957,617,45,45,1.000,1.070,ACCEPT_R168,All glyphs are readable; the one-pixel guide near-miss is separately recorded as a micro-clearance advisory
+T22,CAPTION,CAPTION_NUMBER,86,9.963,1.000,9.963,图 4.1,CJK_DIGIT,604,859,709,904,36,36,1.000,1.000,ACCEPT_R168,Nominal size is taken from the PDF text bbox because the local figure source delegates caption styling
+T23,CAPTION,CAPTION_TEXT,86,9.963,1.000,9.963,离散随机变量的分布函数：跳跃高度等于对应点的概率质量,CJK,749,860,1830,903,35,35,1.000,1.000,ACCEPT_R168,Nominal size is taken from the PDF text bbox and all CJK glyphs are present

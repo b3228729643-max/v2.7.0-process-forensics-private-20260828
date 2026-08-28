@@ -1,0 +1,6 @@
+view_id,asset,mode,reviewer,status,note
+V001,full_page_200dpi.png,200dpi_full_page,SA1_R1_20260824,FAIL_GLOBAL_D_E,"Opened final full page. Figure 32.8 is limited to its caption/frame, no P609 pixels included. Overall page remains readable, but the lower panel title visibly crowds the upper x-axis."
+V002,figure_crop_300dpi.png,native_300dpi_1x,SA1_R1_20260824,FAIL_R002_G001,Opened final native figure crop. The lower title overbar and upper x-axis meet at the panel boundary; no visual separation is present.
+V003,standalone_300dpi.png,native_300dpi_standalone,SA1_R1_20260824,FAIL_R002_G001,"Opened final standalone crop. Normal label hierarchy is otherwise consistent, but the title/axis collision breaks cross-panel coordination."
+V004,grayscale_300dpi.png,native_300dpi_grayscale,SA1_R1_20260824,FAIL_R002_G001,Opened final grayscale crop. Trace/target distinction remains usable; the zero-clearance title/axis conflict remains visible and is not repaired by grayscale.
+V005,figure_crop_300dpi_8x_nearest.png,native_300dpi_8x_nearest,SA1_R1_20260824,FAIL_R002_G001,Opened final 8x nearest crop. Pixel blocks confirm the lower title overbar is not separated from the upper x-axis under the applicable 8px text-graphic clearance gate.

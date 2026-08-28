@@ -1,0 +1,56 @@
+{
+  "object_count": 259,
+  "unordered_pairs": 33411,
+  "protocol_relation_summaries": [
+    {
+      "relation_category": "TEXT_TEXT",
+      "pair_count": 22330,
+      "protocol_min_px": 4,
+      "observed_min_white_gap_px": 0.0,
+      "under_threshold_pair_count": 5,
+      "raw_intersection_pair_count": 3,
+      "raw_intersection_pixel_sum": 55
+    },
+    {
+      "relation_category": "TEXT_FORMULA_LINE_ARROW",
+      "pair_count": 1728,
+      "protocol_min_px": 3,
+      "observed_min_white_gap_px": 13.0,
+      "under_threshold_pair_count": 0,
+      "raw_intersection_pair_count": 0,
+      "raw_intersection_pixel_sum": 0
+    },
+    {
+      "relation_category": "TEXT_FORMULA_NODE_BORDER",
+      "pair_count": 648,
+      "protocol_min_px": 5,
+      "observed_min_white_gap_px": 0.0,
+      "under_threshold_pair_count": 1,
+      "raw_intersection_pair_count": 1,
+      "raw_intersection_pixel_sum": 37
+    },
+    {
+      "relation_category": "TEXT_FORMULA_PANEL_BORDER",
+      "pair_count": 432,
+      "protocol_min_px": 6,
+      "observed_min_white_gap_px": 3.0,
+      "under_threshold_pair_count": 1,
+      "raw_intersection_pair_count": 0,
+      "raw_intersection_pixel_sum": 0
+    },
+    {
+      "relation_category": "TEXT_FORMULA_CELL_BORDER",
+      "pair_count": 6480,
+      "protocol_min_px": 5,
+      "observed_min_white_gap_px": 0.0,
+      "under_threshold_pair_count": 14,
+      "raw_intersection_pair_count": 14,
+      "raw_intersection_pixel_sum": 809
+    }
+  ],
+  "object_bbox_outside_standalone_count": 0,
+  "object_bbox_outside_standalone_ids": [],
+  "manual_candidate_pair_count": 21,
+  "raw_intersection_pixels_in_protocol_text_relations": 901,
+  "r168_policy": "micro font/pixel ratios, taxonomy, 1-2px raster differences, and visually clear low-profile/small glyphs are advisory and not standalone failure grounds"
+}

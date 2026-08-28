@@ -1,0 +1,32 @@
+{
+  "status": "PREBUILD_FROZEN",
+  "authority": "P654_R16B_DIRECT_BUILD_SLOT_GRANTED_ONCE",
+  "created_at_utc": "2026-08-25T06:00:04.6670708Z",
+  "execution_host": "D:/PowerShell7/pwsh.exe -NoProfile",
+  "controller": {
+    "relative_path": "run_direct_lualatex_once.ps1",
+    "bytes": 4370,
+    "sha256": "90E41A8B9047579FBF36C1C9F9EE5EBCD042B70739146BFD2B312229E67466B8",
+    "byte_identical_to_successful_r10": true
+  },
+  "source": {
+    "bytes": 3334,
+    "sha256": "0A7CAAA49978AA6193BA4DC4CB90845981599DFC161F5A8BD6B9143A1EA4C2EB"
+  },
+  "wrapper": {
+    "bytes": 397,
+    "sha256": "FE44F2E6005D884A6916A11C6EBCB89CF40BD523A64D8F8C6BC8124DBABC0CA1"
+  },
+  "engine": {
+    "path": "D:/texlive/2026/bin/windows/lualatex.exe",
+    "bytes": 6656,
+    "sha256": "CC944A1DB010B47FCF5CCB5D1B184CBA208FE7FEA9F18BEC414940E6FD3E24A6",
+    "mtime_utc": "2026-07-16T03:38:24.8253330Z"
+  },
+  "tex_process_count_before": 0,
+  "cache_policy": "TEXMFVAR=TEXMFCACHE=TEXMFCONFIG=R17/texcache",
+  "invocation_limit": 1,
+  "latexmk_forbidden": true,
+  "automatic_retry_forbidden": true,
+  "fullbook_forbidden": true
+}

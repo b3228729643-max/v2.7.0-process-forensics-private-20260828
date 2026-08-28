@@ -1,0 +1,20 @@
+{
+  "source_only_substring_id": "S002",
+  "parent_element_id": "E016",
+  "source_descriptor": "isolated CHAR source paths + VBAR02 source-pre vector path",
+  "source_composite_pixels": 551,
+  "final_visible_pixels": 0,
+  "source_pre_halo_overlap_pixels": 551,
+  "source_pre_minus_final_pixels": 551,
+  "result": "FAIL_TEXT_OCCLUSION_TEXT_COMPLETENESS_SOURCE_ONLY_SUBSTRING",
+  "files": [
+    "raw_final_roi_1x.png",
+    "raw_final_roi_8x_nearest.png",
+    "mask_A_source_pre_composite_raw.png",
+    "mask_B_later_opaque_halo_raw.png",
+    "mask_C_final_visible_composite_raw.png",
+    "intersection_pre_halo_raw.png",
+    "pre_minus_final_raw.png",
+    "overlay_pre_halo_final_1x.png"
+  ]
+}

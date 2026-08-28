@@ -1,0 +1,103 @@
+{
+  "schema": "P602_ASCII_CACHE_DIRECT_RETRY_PREBUILD_V1",
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v2",
+  "gate_started_utc": "2026-08-25T05:45:46.1271405Z",
+  "gate_finished_utc": "2026-08-25T05:45:46.3656774Z",
+  "worktree": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual",
+    "branch": "v2.7.0/dialogue-c-visual",
+    "head": "eea4060c5229168e2b973bbaea81cf391e7a9dfd",
+    "status_short": [
+      "M src/绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_mh_accept_reject.tex"
+    ]
+  },
+  "source": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "bytes": 2869,
+    "sha256": "2B15B4BEEA7A922FEE24259678DBAE2A54915955915E6714A350122A6251E349",
+    "required_sha256_match": true
+  },
+  "wrapper": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\讲义源码\\合并总册\\v260_FIG-P602-01_standalone.tex",
+    "bytes": 397,
+    "sha256": "AFE3464AEA950331908CD3C56DD0392A6D5010138C4EE9341B78F7FD3E9F7279"
+  },
+  "engine": {
+    "path": "D:\\texlive\\2026\\bin\\windows\\lualatex.exe",
+    "sha256": "CC944A1DB010B47FCF5CCB5D1B184CBA208FE7FEA9F18BEC414940E6FD3E24A6",
+    "active_latexmk_lualatex_luatex_luahbtex_processes": 0,
+    "invocation_limit": 1,
+    "invocations_before_build": 0
+  },
+  "probe_results": [
+    {
+      "name": "TEXMFVAR",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_preflight\\texmf-var",
+      "write_read_pass": true,
+      "delete_pass": true,
+      "pass": true
+    },
+    {
+      "name": "TEXMFCACHE",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_preflight\\texmf-cache",
+      "write_read_pass": true,
+      "delete_pass": true,
+      "pass": true
+    },
+    {
+      "name": "TEXMFCONFIG",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_preflight\\texmf-config",
+      "write_read_pass": true,
+      "delete_pass": true,
+      "pass": true
+    }
+  ],
+  "kpsewhich": {
+    "path": "D:\\texlive\\2026\\bin\\windows\\kpsewhich.exe",
+    "same_child_environment": true,
+    "results": [
+      {
+        "name": "TEXMFVAR",
+        "resolved": "C:/Users/ASUS/AppData/Local/Temp/codex_v270_p602_texcache_preflight/texmf-var",
+        "exit_code": 0,
+        "non_ascii_count": 0,
+        "exact_after_slash_normalization": true,
+        "pass": true
+      },
+      {
+        "name": "TEXMFCACHE",
+        "resolved": "C:/Users/ASUS/AppData/Local/Temp/codex_v270_p602_texcache_preflight/texmf-cache",
+        "exit_code": 0,
+        "non_ascii_count": 0,
+        "exact_after_slash_normalization": true,
+        "pass": true
+      },
+      {
+        "name": "TEXMFCONFIG",
+        "resolved": "C:/Users/ASUS/AppData/Local/Temp/codex_v270_p602_texcache_preflight/texmf-config",
+        "exit_code": 0,
+        "non_ascii_count": 0,
+        "exact_after_slash_normalization": true,
+        "pass": true
+      }
+    ]
+  },
+  "planned_invocation": {
+    "working_directory": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\讲义源码\\合并总册",
+    "output_directory": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v2\\01_build",
+    "arguments": [
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-file-line-error",
+      "-recorder",
+      "-output-directory=D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v2\\01_build",
+      "v260_FIG-P602-01_standalone.tex"
+    ]
+  },
+  "all_probe_pass": true,
+  "all_resolution_pass": true,
+  "gate_pass": true,
+  "authorization": "P602_ASCII_CACHE_DIRECT_RETRY_SLOT_GRANTED",
+  "no_latexmk": true,
+  "no_automatic_retry": true
+}

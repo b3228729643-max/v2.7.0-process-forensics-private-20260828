@@ -1,0 +1,16 @@
+gate_id,reviewer,decision,evidence,observation
+H01_OBJECT_DENOMINATOR,C_ROOT_MANUAL,PASS,02_nontex_evidence/machine_object_inventory.csv,40 unique objects comprise 30 text objects followed by 10 vector objects.
+H02_PAIR_DENOMINATOR,C_ROOT_MANUAL,PASS,02_nontex_evidence/machine_pair_inventory.csv,All C(40 2)=780 unordered object pairs are enumerated once.
+H03_CRITICAL_COVERAGE,C_ROOT_MANUAL,PASS,02_nontex_evidence/manual_critical_pair_review.csv,All 76 bbox-intersection or gap-at-most-8pt candidates received an explicit per-ID manual decision.
+H04_CLIP,C_ROOT_MANUAL,PASS,02_nontex_evidence/machine_clip_inventory.csv,All 40 objects have positive page-edge distance; minimum is 71.781509pt.
+H05_GLYPH_R168,C_ROOT_MANUAL,PASS,02_nontex_evidence/manual_glyph_group_review.csv,160 glyphs including 145 nonspaces show no tofu wrong codepoint wrong mathematics unreadability severe imbalance or clipping.
+H06_LEFT_PANEL_SEMANTICS,C_ROOT_MANUAL,PASS,02_nontex_evidence/figure_crop_native_300dpi.png,The three ACF curves share value one at lag zero and decay at rates consistent with .95 .70 and .20.
+H07_RIGHT_PANEL_SEMANTICS,C_ROOT_MANUAL,PASS,02_nontex_evidence/right_panel_native_300dpi.png,The ESS ratio curve and labels retain the true point (.99 .010) and the limit behavior as absolute rho tends to one from below.
+H08_HORIZONTAL_AXIS_CLEARANCE,C_ROOT_MANUAL,PASS,02_nontex_evidence/pair_0779_native_8x.png,Moving ymin to -.04 places the horizontal axis and arrow below the open marker.
+H09_P099_TICK_MARKER_CLEARANCE,C_ROOT_MANUAL,FAIL,02_nontex_evidence/pair_0779_overlay_8x.png,The vertical .99 x tick still penetrates the marker lower ring; independent masks overlap by 6 pixels at native 300dpi.
+H10_CURVE_MARKER_RELATION,C_ROOT_MANUAL,PASS,02_nontex_evidence/manual_critical_pair_review.csv,PAIR_0780 is an intended endpoint connection from the efficiency curve to the true-point marker.
+H11_COLOR_AND_GRAYSCALE,C_ROOT_MANUAL,PASS,02_nontex_evidence/figure_crop_grayscale_300dpi.png,Curves text axes and endpoint remain distinguishable in both color and grayscale views.
+H12_STANDALONE_PAGE_INTEGRATION,C_ROOT_MANUAL,PASS,02_nontex_evidence/standalone_native_300dpi.png,The one-page standalone candidate is complete with no clipping collision outside H09 or broken content; no full-book rebuild was authorized.
+H13_SOURCE_AND_WRAPPER_IDENTITY,C_ROOT_MANUAL,PASS,SOURCE_WRAPPER_ENGINE_IDENTITY.json,Source and wrapper hashes match the frozen build identities.
+H14_SINGLE_INVOCATION_CONTROL,C_ROOT_MANUAL,PASS,DIRECT_INVOCATION_RESULT.json,Invocation count1 retry0 natural exit0 and post-TeX process count0 are recorded.
+H15_LOCAL_ROUTE,C_ROOT_MANUAL,FAIL,MANUAL_HARD_GATE_REVIEW.csv,One unchanged hard geometry failure in H09 requires return to SA2 and forbids a local pass claim.

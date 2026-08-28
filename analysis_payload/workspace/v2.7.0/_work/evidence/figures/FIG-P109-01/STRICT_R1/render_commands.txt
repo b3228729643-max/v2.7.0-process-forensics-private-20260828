@@ -1,0 +1,55 @@
+AUTHORITATIVE_INPUT
+PDF=D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\build\strict_current_r90_fullbook\main_full.pdf
+PHYSICAL_PAGE=116 (1-based)
+PAGE_COUNT=813
+PAGE_SIZE_PT=595.2760009765625 x 841.8900146484375
+
+PAGE_EXTRACTION
+D:\texlive\2026\bin\windows\pdfseparate.exe -f 116 -l 116 <PDF> official_page_%d.pdf
+OUTPUT=official_page_116.pdf
+
+DIRECT_RENDER_200DPI
+D:\texlive\2026\bin\windows\pdftoppm.exe -f 116 -l 116 -singlefile -r 200 -png <PDF> full_page_200dpi
+OUTPUT=full_page_200dpi.png
+PIXELS=1654 x 2339
+
+DIRECT_RENDER_300DPI
+D:\texlive\2026\bin\windows\pdftoppm.exe -f 116 -l 116 -singlefile -r 300 -png <PDF> full_page_300dpi
+OUTPUT=full_page_300dpi.png
+PIXELS=2481 x 3508
+POST_RENDER_RESIZE=NONE
+
+FIGURE_CROP_FROM_NATIVE_300DPI
+SOURCE=full_page_300dpi.png
+CROP_BOX=(left=620, top=1200, right=1905, bottom=2055)
+OUTPUT=figure_crop_300dpi.png
+PIXELS=1285 x 855
+POST_CROP_RESIZE=NONE
+
+STANDALONE_BUILD_AND_RENDER
+WRAPPER=D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\讲义源码\合并总册\v260_FIG-P109-01_standalone.tex
+SOURCE_INPUT=D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第01册_数学基础与统计学习基本理论\V1-C07\fig_v1_c07_convex_set.tex
+D:\texlive\2026\bin\windows\latexmk.exe -lualatex -g -interaction=nonstopmode -halt-on-error -file-line-error -outdir=<STRICT_R1> v260_FIG-P109-01_standalone.tex
+D:\texlive\2026\bin\windows\pdftoppm.exe -f 1 -l 1 -singlefile -r 300 -png v260_FIG-P109-01_standalone.pdf standalone_300dpi
+FULL_OUTPUT=standalone_300dpi.png, 2481 x 3508
+CROP_BOX=(left=620, top=200, right=1905, bottom=1055)
+CROP_OUTPUT=standalone_figure_crop_300dpi.png, 1285 x 855
+POST_RENDER_RESIZE=NONE
+
+GRAYSCALE
+SOURCE=figure_crop_300dpi.png
+OPERATION=Pillow ImageOps.grayscale; dimensions unchanged
+OUTPUT=grayscale_300dpi.png, 1285 x 855
+
+NATIVE_1_TO_1_ROIS (all direct crops, no resize)
+roi_endpoint_x_300dpi_1to1.png=(760,1590,980,1815), 220 x 225
+roi_endpoint_y_region_300dpi_1to1.png=(1510,1230,1810,1485), 300 x 255
+roi_formula_segment_300dpi_1to1.png=(900,1400,1380,1650), 480 x 250
+roi_note_300dpi_1to1.png=(820,1840,1710,2010), 890 x 170
+roi_figure_caption_clearance_300dpi_1to1.png=(800,1880,1740,2070), 940 x 190
+roi_region_boundary_overlap_overlay_300dpi_1to1.png=(1510,1230,1810,1485), 300 x 255
+
+MEASUREMENT_SCRIPT
+python strict_audit_p109.py
+Pixel coordinate convention: full_page_300dpi.png top-left origin; boxes are [x0,y0,x1,y1).
+Foreground threshold: per-element local quantized background; max RGB delta >=20/255; neutral text is separated from blue/teal geometry; vector paths are rebuilt independently from PDF drawing objects.

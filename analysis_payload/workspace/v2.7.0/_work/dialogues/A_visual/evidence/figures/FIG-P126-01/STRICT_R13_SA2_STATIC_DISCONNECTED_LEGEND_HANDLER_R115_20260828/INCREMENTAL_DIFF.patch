@@ -1,0 +1,11 @@
+--- authorized-before/fig_v1_c08_coordinate.tex
++++ static-after/fig_v1_c08_coordinate.tex
+@@
+-  \addlegendimage{only marks,mark=-,mark repeat=1,mark phase=1,
+-    mark size=1.8pt,mark options={draw=SLTeal,line width=1.05pt}}
++  \pgfplotsset{p126 x2 disconnected legend/.style={/pgfplots/legend image code/.code={
++    \draw[SLTeal,line width=1.05pt] (0cm,0cm)--(.06cm,0cm);
++    \draw[SLTeal,line width=1.05pt] (.18cm,0cm)--(.24cm,0cm);
++    \draw[SLTeal,line width=1.05pt] (.36cm,0cm)--(.42cm,0cm);
++    \draw[SLTeal,line width=1.05pt] (.54cm,0cm)--(.60cm,0cm);}}}
++  \addlegendimage{p126 x2 disconnected legend}

@@ -1,0 +1,39 @@
+% v2.6.0 figure UID: FIG-P020-01
+% Image-informed reverse drawing: preserve the dependency graph while making
+% the main chain, audit return, text hierarchy, and endpoint clearance explicit.
+\tikzset{slfig-FIG-P020-01/.style={font=\fontsize{10.0pt}{12.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]\centering\label{schema:V1-C01:CH-17}
+\begin{tikzpicture}[slfig-FIG-P020-01,
+  node distance=6.2mm,
+  stage/.style={rounded corners=1.7mm,draw=SLBlue,line width=.90pt,
+    text width=29mm,minimum height=13.2mm,align=center,inner xsep=3.2pt,inner ysep=3pt,
+    font=\fontsize{10.5pt}{12.6pt}\selectfont,text=SLInk},
+  alt={对象—关系—结论：数学语言从对象声明到任务陈述的依赖关系。每一条箭头都表示右侧内容使用左侧定义。}
+]
+  \node[stage,fill=SLBlueBG] (object) {{\bfseries 对象声明}\\[-.6pt]{\fontsize{10.0pt}{12.0pt}\selectfont 集合、类型与维数}};
+  \node[stage,fill=SLTealBG,right=of object] (relation) {{\bfseries 关系与映射}\\[-.6pt]{\fontsize{10.0pt}{12.0pt}\selectfont 定义域%
+    \tikz[baseline=-.55ex]{
+      \path[use as bounding box] (0,-.75mm) rectangle (7mm,.75mm);
+      \draw[-{Stealth[length=1.55mm,width=1.05mm]},draw=SLInk,line width=.72pt]
+        (1.05mm,0)--(5.95mm,0);
+    }%
+    值域}};
+  \node[stage,fill=SLBlueBG,right=of relation] (logic) {{\bfseries 运算与逻辑}\\[-.6pt]{\fontsize{10.0pt}{12.0pt}\selectfont 复合、量词与约束}};
+  \node[stage,fill=SLTealBG,right=of logic] (task) {{\bfseries 可核验任务}\\[-.6pt]{\fontsize{10.0pt}{12.0pt}\selectfont 输入、输出与判据}};
+  \begin{scope}[on background layer]
+    \node[fit=(object)(task),rounded corners=2.4mm,fill=SLBlue!3,draw=none,
+      inner xsep=2.6mm,inner ysep=2.8mm] {};
+  \end{scope}
+  \foreach \a/\b in {object/relation,relation/logic,logic/task}
+    \draw[-{Stealth[length=2.25mm,width=1.45mm]},draw=SLBlue,line width=.98pt,
+      shorten <=1.5mm,shorten >=1.5mm]
+      (\a.east)--(\b.west);
+  \draw[-{Stealth[length=2.0mm,width=1.25mm]},draw=SLGray,line width=.58pt,
+      dash pattern=on 2.4pt off 2.0pt,shorten <=1.5mm,shorten >=1.5mm]
+    (task.south)--++(0,-9mm)-| node[pos=.50,below=2.0pt,fill=white,inner sep=1pt,
+      font=\fontsize{10.0pt}{12.0pt}\selectfont,text=SLGray] {逆向核对：任务所用定义逐项返回检查}
+    (object.south);
+\end{tikzpicture}
+\caption{数学语言从对象声明到任务陈述的依赖关系。每一条箭头都表示右侧内容使用左侧定义。}\label{fig:V1-C01-language-flow}
+\end{figure}

@@ -1,0 +1,86 @@
+{
+  "status": "MACHINE_SEMANTIC_CHECK_COMPLETE_MANUAL_REQUIRED",
+  "quadratic": "0.5*(x1^2+2*x1*x2+2*x2^2)",
+  "hessian": [
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "determinant": 1,
+  "eigenvalues": [
+    0.3819660112501051,
+    2.618033988749895
+  ],
+  "positive_definite": true,
+  "principal_axes_axis_aligned": false,
+  "contour_parameterization": "x1=r(cos(t)-sin(t));x2=r*sin(t)",
+  "coordinate_updates": [
+    {
+      "from": "q0",
+      "to": "q1",
+      "updated": "x2",
+      "stationarity_residual": 0.0
+    },
+    {
+      "from": "q1",
+      "to": "q2",
+      "updated": "x1",
+      "stationarity_residual": 0.0
+    },
+    {
+      "from": "q2",
+      "to": "q3",
+      "updated": "x2",
+      "stationarity_residual": 0.0
+    },
+    {
+      "from": "q3",
+      "to": "q4",
+      "updated": "x1",
+      "stationarity_residual": 0.0
+    },
+    {
+      "from": "q4",
+      "to": "q5",
+      "updated": "x2",
+      "stationarity_residual": 0.0
+    },
+    {
+      "from": "q5",
+      "to": "q6",
+      "updated": "x1",
+      "stationarity_residual": 0.0
+    },
+    {
+      "from": "q6",
+      "to": "q7",
+      "updated": "x2",
+      "stationarity_residual": 0.0
+    }
+  ],
+  "objective_values": [
+    2.92,
+    2.56,
+    1.28,
+    0.64,
+    0.32,
+    0.16,
+    0.08,
+    0.04
+  ],
+  "strictly_decreasing": true,
+  "true_optimum": [
+    0.0,
+    0.0
+  ],
+  "final_iterate": [
+    -0.4,
+    0.2
+  ],
+  "final_iterate_is_approximation": true
+}

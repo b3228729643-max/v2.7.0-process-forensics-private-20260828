@@ -1,0 +1,31 @@
+{
+  "uid": "FIG-P608-01",
+  "role": "SA2_R168_READONLY_ADJUDICATION",
+  "candidate": "R104",
+  "physical_page": 661,
+  "old_accepted_route": "ROOT_ACCEPT_R7A_FAIL_TO_SA2",
+  "old_only_failure": {
+    "id": "HARD-LOWPROFILE-TXT-098",
+    "target_h_px": 28,
+    "peer_h_px": 28,
+    "target_area_px": 56,
+    "peer_area_px": 61,
+    "height_ratio": 1.0,
+    "area_ratio": 0.9180327868852459,
+    "old_threshold": 0.92,
+    "r168_disposition": "ADVISORY_ONLY"
+  },
+  "r168_hard_failures": {
+    "missing_or_tofu": 0,
+    "wrong_codepoint_or_math_semantics": 0,
+    "actually_unreadable": 0,
+    "obvious_visible_imbalance": 0,
+    "real_clipping": 0,
+    "illegal_overlap": 0
+  },
+  "source_change_required": false,
+  "tex_started": false,
+  "source_modified": false,
+  "commit_created": false,
+  "decision": "P608_R168_SA2_NO_SOURCE_CHANGE_READY_FOR_FRESH_SA1"
+}

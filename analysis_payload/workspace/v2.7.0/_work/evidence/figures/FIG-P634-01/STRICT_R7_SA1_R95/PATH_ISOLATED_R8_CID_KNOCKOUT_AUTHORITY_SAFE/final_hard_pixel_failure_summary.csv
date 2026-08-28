@@ -1,0 +1,10 @@
+ELEMENT_ID,PARENT_ID,ROLE,SCRIPT_CLASS,TEXT_SAMPLE,H_INK_PX,PIXEL_THRESHOLD_PX,PASS_FAIL,REASON
+T030:G01,P_FORMULA_J,FORMULA_BASE,BASE_MATH,𝑥,21,22,FAIL,H_INK=21 < 22 or raw mask empty; SVG character-shape mapping=PASS; official-CID/final-visible closure=PASS
+T037:G01,P_FORMULA_D,FORMULA_BASE,BASE_MATH,𝑥,21,22,FAIL,H_INK=21 < 22 or raw mask empty; SVG character-shape mapping=PASS; official-CID/final-visible closure=PASS
+T039:G01,P_FORMULA_T,FORMULA_BASE,BASE_MATH,𝑥,21,22,FAIL,H_INK=21 < 22 or raw mask empty; SVG character-shape mapping=PASS; official-CID/final-visible closure=PASS
+T045:G03,P_CAPTION,CAPTION_NUMBER,SEMANTIC_PUNCTUATION,.,7,22,FAIL,H_INK=7 < 22 or raw mask empty; SVG character-shape mapping=PASS; official-CID/final-visible closure=PASS
+T046:G14,P_CAPTION,CAPTION_TEXT,CJK_FULLWIDTH,；,16,30,FAIL,H_INK=16 < 30 or raw mask empty; SVG character-shape mapping=PASS; official-CID/final-visible closure=PASS
+T046:G28,P_CAPTION,CAPTION_TEXT,CJK_FULLWIDTH,，,13,30,FAIL,H_INK=13 < 30 or raw mask empty; SVG character-shape mapping=PASS; official-CID/final-visible closure=PASS
+T046:G37,P_CAPTION,CAPTION_TEXT,CJK_FULLWIDTH,；,16,30,FAIL,H_INK=16 < 30 or raw mask empty; SVG character-shape mapping=PASS; official-CID/final-visible closure=PASS
+T047:G06,P_CAPTION,CAPTION_TEXT,CJK_FULLWIDTH,，,13,30,FAIL,H_INK=13 < 30 or raw mask empty; SVG character-shape mapping=PASS; official-CID/final-visible closure=PASS
+T047:G28,P_CAPTION,CAPTION_TEXT,CJK_FULLWIDTH,。,13,30,FAIL,H_INK=13 < 30 or raw mask empty; SVG character-shape mapping=PASS; official-CID/final-visible closure=PASS

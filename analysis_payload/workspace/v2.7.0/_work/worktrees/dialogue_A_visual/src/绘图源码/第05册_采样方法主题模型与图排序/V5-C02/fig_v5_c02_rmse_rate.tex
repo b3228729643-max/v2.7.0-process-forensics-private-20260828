@@ -1,0 +1,30 @@
+% v2.3.1 figure UID: FIG-P583-01
+% Proposed post-v2.3.1 polish for FIG-P583-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P583-01/.style={font=\fontsize{9.2pt}{11pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P583-01]
+\begin{loglogaxis}[width=10.2cm,height=5.7cm,xmin=1,xmax=1024,ymin=.025,ymax=1.2,
+  axis lines=left,xlabel={样本量 $N$},ylabel={RMSE},
+  xtick={1,4,16,64,256,1024},ytick={.03125,.0625,.125,.25,.5,1},
+  xticklabels={$1$,$4$,$16$,$64$,$256$,$1024$},
+  yticklabels={$1/32$,$1/16$,$1/8$,$1/4$,$1/2$,$1$},
+  axis line style={line width=.65pt},tick style={line width=.55pt},
+  tick label style={font=\fontsize{8.6pt}{10.3pt}\selectfont},
+  label style={font=\fontsize{9.6pt}{11.5pt}\selectfont},clip=false]
+  \addplot[draw=SLBlue,line width=.98pt,domain=1:1024,samples=301]{x^(-.5)};
+  \node[anchor=south west,font=\fontsize{9.6pt}{11.5pt}\selectfont,text=SLBlue]
+    at (axis cs:120,.10) {$O(N^{-1/2})$};
+  \draw[draw=SLGold!92!black,line width=.62pt] (axis cs:16,.25)--(axis cs:64,.25)--(axis cs:64,.125)--cycle;
+  \node[font=\fontsize{9.2pt}{11pt}\selectfont,text=SLGold!88!black,align=center,
+    yshift=2pt,fill=white,fill opacity=.94,text opacity=1,
+    inner xsep=1.2pt,inner ysep=.6pt]
+    at (axis cs:32,.34) {样本量 $\times4$\\误差约 $\div2$};
+  \node[draw=SLRuleGray!85!black,line width=.55pt,rounded corners=2pt,fill=white,
+    align=center,font=\fontsize{9.2pt}{11pt}\selectfont,inner xsep=4pt,inner ysep=3pt]
+    at (axis cs:9,.055) {理论速率条件\\iid 且方差有限};
+\end{loglogaxis}
+\end{tikzpicture}
+\caption{独立同分布且方差有限时的理论均方根误差速率；相关样本或无限方差情形不能直接沿用这条直线}\label{fig:V5-C02-rmse-rate}
+\end{figure}

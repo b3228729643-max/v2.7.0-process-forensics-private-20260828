@@ -1,0 +1,6 @@
+﻿hard_id,status,objects,measurement,note
+HARD-LEGEND-X2-CONTINUOUS,FAIL,C020,73px occupied run; 0 internal blank runs,"Native1x and NN8x color/grayscale evidence show x2 legend sample as one continuous line, indistinguishable in topology from x1."
+HARD-LABEL6-Q4-MARKER-CONTACT,FAIL,P00541:T010-C016,center-distance=1px; blank-gap=0px; bbox-overlap=8.938406pt^2,"Moved digit 6 visibly contacts the blue q4 marker; this is illegal visible-ink contact, not an R168 font advisory."
+REGRESSION-LABEL7-SEPARATION,PASS,T015-R004/C017,center-distance=9px; blank-gap=8px,Digit 7 is clearly separated from q7 marker and arrow in native1x and NN8x evidence.
+CLIP-GATE,PASS,ALL,clip_count=0,No reader-visible object is clipped.
+GLYPH-CODEPOINT-GATE,PASS,T001-T025,missing/tofu/wrong-codepoint=0,All 25 glyph objects are complete and readable.

@@ -1,0 +1,918 @@
+{
+  "schema": "P126_R14_PAYLOAD_MANIFEST_V1",
+  "handoff_id": "A-R115-P126-SA2-DIRECT-BUILD-R14-20260828",
+  "status": "LOCAL_SA2_FAIL_RETURN_TO_MAIN_SOURCE_SCOPE",
+  "payload_count": 130,
+  "rows": [
+    {
+      "relative_path": "build/symbols.idx",
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "creation_time_utc_ticks": 639235013046923128,
+      "last_write_time_utc_ticks": 639235013046923128
+    },
+    {
+      "relative_path": "build/v260_FIG-P126-01_standalone.aux",
+      "bytes": 471,
+      "sha256": "68C8340EE864083B88FCD4ACEF6E37E66BEEC9DE3541E73B910D31E7CAD72DCF",
+      "creation_time_utc_ticks": 639235013047542884,
+      "last_write_time_utc_ticks": 639235013058139303
+    },
+    {
+      "relative_path": "build/v260_FIG-P126-01_standalone.idx",
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "creation_time_utc_ticks": 639235013046906328,
+      "last_write_time_utc_ticks": 639235013046906328
+    },
+    {
+      "relative_path": "build/v260_FIG-P126-01_standalone.log",
+      "bytes": 149633,
+      "sha256": "130F2DF72A971B7E8B6F4FBEFD8E67CF26106AB6B2C726AC46C9E4A86AEC4CE3",
+      "creation_time_utc_ticks": 639235012467963066,
+      "last_write_time_utc_ticks": 639235013117473641
+    },
+    {
+      "relative_path": "build/v260_FIG-P126-01_standalone.pdf",
+      "bytes": 34054,
+      "sha256": "204CC34980BF059DFFA4016314C1FBFEFC94A0066C01FF7E77A4A26946B65F3D",
+      "creation_time_utc_ticks": 639235013041158242,
+      "last_write_time_utc_ticks": 639235013117473641
+    },
+    {
+      "relative_path": "controller_stderr.txt",
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "creation_time_utc_ticks": 639235012461049397,
+      "last_write_time_utc_ticks": 639235012461049397
+    },
+    {
+      "relative_path": "controller_stdout.txt",
+      "bytes": 28429,
+      "sha256": "D74F65DE2D951D93DC85388D68F6F3264DA9FDA0E4EF065F50123A225BE79B6D",
+      "creation_time_utc_ticks": 639235012461049397,
+      "last_write_time_utc_ticks": 639235013117473641
+    },
+    {
+      "relative_path": "review/CRITICAL_CLEARANCE_MEASUREMENTS.csv",
+      "bytes": 230,
+      "sha256": "5EFD3204A3C0ECAD4FA561992CAC260D14AE35892017A48D041FFF0B69203896",
+      "creation_time_utc_ticks": 639235020433646754,
+      "last_write_time_utc_ticks": 639235020433646754
+    },
+    {
+      "relative_path": "review/CRITICAL_CLEARANCE_MEASUREMENTS.json",
+      "bytes": 481,
+      "sha256": "F9F17DE1E431C75259D9898BA9B2E64CDCB6401690FA18DAEBC17BDC5A1F62FD",
+      "creation_time_utc_ticks": 639235020433646754,
+      "last_write_time_utc_ticks": 639235020433646754
+    },
+    {
+      "relative_path": "review/figure_grayscale.png",
+      "bytes": 32800,
+      "sha256": "632E56CB41261ADE8EAD2D4AB1AC05B5CBA84F54E56C376FB7A637A28DEA04FE",
+      "creation_time_utc_ticks": 639235013894159324,
+      "last_write_time_utc_ticks": 639235013894197187
+    },
+    {
+      "relative_path": "review/figure_native1x.png",
+      "bytes": 62354,
+      "sha256": "03D2FB60551F7A1E174A1805E690CDC19381BD4DB6A9AD76E52CEC0FB6959FB8",
+      "creation_time_utc_ticks": 639235013893012562,
+      "last_write_time_utc_ticks": 639235013893105297
+    },
+    {
+      "relative_path": "review/FINAL_CROSSCHECK.json",
+      "bytes": 857,
+      "sha256": "74F28219627B3B44A9098F935E8B668F06FDBEF11AB8973BF6B0496F3D62C3E1",
+      "creation_time_utc_ticks": 639235023683991162,
+      "last_write_time_utc_ticks": 639235023683991162
+    },
+    {
+      "relative_path": "review/FINAL_HANDOFF.md",
+      "bytes": 600,
+      "sha256": "29A2EC484D7FB41AA50A9100C035344D01E44A33D0B1BCF1CC737985D3775EC9",
+      "creation_time_utc_ticks": 639235024391350936,
+      "last_write_time_utc_ticks": 639235024391350936
+    },
+    {
+      "relative_path": "review/FINAL_REVIEW_REPORT.md",
+      "bytes": 2015,
+      "sha256": "2FECEA8E262FB91445EE3A5EC76290130F03349EC2FA23C9DD93D1D81BF8389A",
+      "creation_time_utc_ticks": 639235024388432324,
+      "last_write_time_utc_ticks": 639235024388432324
+    },
+    {
+      "relative_path": "review/full_grayscale.png",
+      "bytes": 50126,
+      "sha256": "420FDF0358D889146508948F05F6A7C7F493FA12ADD2FB3D540020299078BE3C",
+      "creation_time_utc_ticks": 639235013893953096,
+      "last_write_time_utc_ticks": 639235013894137351
+    },
+    {
+      "relative_path": "review/full_native300.png",
+      "bytes": 109204,
+      "sha256": "6ED94573499FB7A3C11FC64A4AAB05A2C3A1C89C3B7BB4DC4D2828921E9C2124",
+      "creation_time_utc_ticks": 639235013585496868,
+      "last_write_time_utc_ticks": 639235013588076442
+    },
+    {
+      "relative_path": "review/label67_native1x.png",
+      "bytes": 12436,
+      "sha256": "B9911921BAAA9CF1820499EC14BDBF5307FD0E9406720E4F6F65DE0509C109FB",
+      "creation_time_utc_ticks": 639235013893154951,
+      "last_write_time_utc_ticks": 639235013893171106
+    },
+    {
+      "relative_path": "review/label67_nearest8x.png",
+      "bytes": 41193,
+      "sha256": "38299FAF00ECC25FD56C9F394F7F4EF4DE7256D5CBF926389D406C13C7D524C5",
+      "creation_time_utc_ticks": 639235013893660097,
+      "last_write_time_utc_ticks": 639235013893866729
+    },
+    {
+      "relative_path": "review/legend_native1x.png",
+      "bytes": 5691,
+      "sha256": "7CC6ABA81737696E87F4E06CB202FC6724164943FC695B7021A6D84B07D070BA",
+      "creation_time_utc_ticks": 639235013893105297,
+      "last_write_time_utc_ticks": 639235013893154951
+    },
+    {
+      "relative_path": "review/legend_nearest8x.png",
+      "bytes": 35167,
+      "sha256": "F5C3F10B3F630813495EE0AFC9144A707B38DD06E40722B955FF351BD6997EA7",
+      "creation_time_utc_ticks": 639235013893240635,
+      "last_write_time_utc_ticks": 639235013893619077
+    },
+    {
+      "relative_path": "review/legend_x2_grayscale.png",
+      "bytes": 263,
+      "sha256": "AD0569403DF40ABBD64C757980AE3F440BF0C5E9EF315FD56CA44A1B983B924F",
+      "creation_time_utc_ticks": 639235019167700055,
+      "last_write_time_utc_ticks": 639235020425223415
+    },
+    {
+      "relative_path": "review/legend_x2_native1x.png",
+      "bytes": 500,
+      "sha256": "F4A67C814AD2C9F7D7DE8DC9D283BD881F4DCEAB0C11BE04EE4289569FB3E5CD",
+      "creation_time_utc_ticks": 639235019167672640,
+      "last_write_time_utc_ticks": 639235020425223415
+    },
+    {
+      "relative_path": "review/LEGEND_X2_NATIVE300_RUN_ANALYSIS.json",
+      "bytes": 829,
+      "sha256": "AAA88426E76FE1EE84211F5245E6307F8920D164ADC440EF596014DB76C9444D",
+      "creation_time_utc_ticks": 639235019167723833,
+      "last_write_time_utc_ticks": 639235020425223415
+    },
+    {
+      "relative_path": "review/LEGEND_X2_NATIVE300_RUNS.csv",
+      "bytes": 72,
+      "sha256": "7FFE10D9C787C65F1A188553D536433434E1947AE7CCA5629E4BF8FE2576417F",
+      "creation_time_utc_ticks": 639235019167733830,
+      "last_write_time_utc_ticks": 639235020425286216
+    },
+    {
+      "relative_path": "review/legend_x2_nearest8x.png",
+      "bytes": 2197,
+      "sha256": "8F0FAF8C7CE0E813C8F87D769AB16716EE741323E1981EEB56806B9803E2823F",
+      "creation_time_utc_ticks": 639235019167672640,
+      "last_write_time_utc_ticks": 639235020425223415
+    },
+    {
+      "relative_path": "review/legend_x2_run_overlay_native1x.png",
+      "bytes": 5101,
+      "sha256": "645951A80A08819E2DFF84E71E8427B94DC8FD9E25949B3C45577130F8841FA9",
+      "creation_time_utc_ticks": 639235019167823655,
+      "last_write_time_utc_ticks": 639235020433780096
+    },
+    {
+      "relative_path": "review/legend_x2_run_overlay_nearest8x.png",
+      "bytes": 19099,
+      "sha256": "7E5C15A3C0A0195F5838671F7A7D5694EB2CF5464C2AA973BA2373417F0CB92B",
+      "creation_time_utc_ticks": 639235019167932247,
+      "last_write_time_utc_ticks": 639235020433961986
+    },
+    {
+      "relative_path": "review/MACHINE_DENOMINATOR_SUMMARY.json",
+      "bytes": 263,
+      "sha256": "87C8BB98568706E5423019A06D0D1BD9247FD7BABF89797C4DC1B4ADBBB3C53F",
+      "creation_time_utc_ticks": 639235019168138902,
+      "last_write_time_utc_ticks": 639235020434010212
+    },
+    {
+      "relative_path": "review/MACHINE_OBJECT_DENOMINATOR.csv",
+      "bytes": 5324,
+      "sha256": "F31E4CC7705A6A205939CEA65788209A3D614AFAA51F9D3C54102D764828AC29",
+      "creation_time_utc_ticks": 639235019168081962,
+      "last_write_time_utc_ticks": 639235020434010212
+    },
+    {
+      "relative_path": "review/MACHINE_PAIR_SKELETON.csv",
+      "bytes": 31889,
+      "sha256": "C5853666185EA62686F89A885ABBD39F318E82C75DEE643EC01C3D2D2796BDA4",
+      "creation_time_utc_ticks": 639235019168102020,
+      "last_write_time_utc_ticks": 639235020434010212
+    },
+    {
+      "relative_path": "review/MACHINE_REVIEW_CONTACT_SHEET.png",
+      "bytes": 216192,
+      "sha256": "7706666DA2F39AECCC833C298DEB0D8AD5DA9ACE59DBC0FB78D7AC8D02E5C398",
+      "creation_time_utc_ticks": 639235019168475876,
+      "last_write_time_utc_ticks": 639235020434495174
+    },
+    {
+      "relative_path": "review/MANUAL_GLYPH_CODEPOINT_LEDGER.csv",
+      "bytes": 2674,
+      "sha256": "7C6A91BBD52B5F984C20B09EDBD3B6C40B6C621D85A97E43182047C41E372332",
+      "creation_time_utc_ticks": 639235023683960937,
+      "last_write_time_utc_ticks": 639235023683964365
+    },
+    {
+      "relative_path": "review/MANUAL_HARD_GATE_LEDGER.csv",
+      "bytes": 468,
+      "sha256": "B7EFC9A48C1AC1788A3D5D855FF6C1DC5599C3600882E293E4B75DC61ECFD275",
+      "creation_time_utc_ticks": 639235023683991162,
+      "last_write_time_utc_ticks": 639235023683991162
+    },
+    {
+      "relative_path": "review/MANUAL_MATH_SEMANTIC_LEDGER.csv",
+      "bytes": 875,
+      "sha256": "83BE49F3A24D2917008A0661F34AB4DD85905543D908445270308145C5F4DD71",
+      "creation_time_utc_ticks": 639235023683964365,
+      "last_write_time_utc_ticks": 639235023683991162
+    },
+    {
+      "relative_path": "review/MANUAL_OBJECT_LEDGER.csv",
+      "bytes": 11180,
+      "sha256": "36F41D416E2B64284CC6B3FCDACE3AF1F8F16885FBDE887F223D180BF65845E2",
+      "creation_time_utc_ticks": 639235023683856555,
+      "last_write_time_utc_ticks": 639235023683856555
+    },
+    {
+      "relative_path": "review/MANUAL_PAIR_LEDGER.csv",
+      "bytes": 352609,
+      "sha256": "7DAB13BB2D9EF647FCA11C3C4D55D70C117C1C8EDA4BBAC871EB8BB1259EF3E5",
+      "creation_time_utc_ticks": 639235023683886522,
+      "last_write_time_utc_ticks": 639235023683940856
+    },
+    {
+      "relative_path": "review/MANUAL_REVIEW_ATTESTATION.md",
+      "bytes": 1652,
+      "sha256": "B3A24AB3A7631575D6205A03F5ECAFE105B7F90C68B3C3177AA0762364D617ED",
+      "creation_time_utc_ticks": 639235023566636688,
+      "last_write_time_utc_ticks": 639235023566636688
+    },
+    {
+      "relative_path": "review/MANUAL_VIEW_LEDGER.csv",
+      "bytes": 2177,
+      "sha256": "1E4702BF62C99BE0C0C0482201E0A30EE489A9E95B5893500EACFA28A778692A",
+      "creation_time_utc_ticks": 639235023683940856,
+      "last_write_time_utc_ticks": 639235023683940856
+    },
+    {
+      "relative_path": "review/prepare_machine_evidence.py",
+      "bytes": 12614,
+      "sha256": "8A08B77845F99B0272433BB092BF8D16B45722357F84DD4908372CB09ABE67B9",
+      "creation_time_utc_ticks": 639235019068027560,
+      "last_write_time_utc_ticks": 639235020292224664
+    },
+    {
+      "relative_path": "review/text_bbox.html",
+      "bytes": 5664,
+      "sha256": "5360831895166C654D7AAB12070301082F71F815B320A2C23DC3BC2136010AEE",
+      "creation_time_utc_ticks": 639235017390431535,
+      "last_write_time_utc_ticks": 639235017321531982
+    },
+    {
+      "relative_path": "review/write_post_observation_ledgers.py",
+      "bytes": 9458,
+      "sha256": "0C8A89F4EC7F2F288B0BD91D401F475674A382AD757369B509C7EC6932E7AD60",
+      "creation_time_utc_ticks": 639235023563639010,
+      "last_write_time_utc_ticks": 639235023563639010
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman10-bold.lua",
+      "bytes": 211481,
+      "sha256": "75104086EB826332C5F40BF18C6A0E9704704696709CCD885EFDD8A666DBDD1A",
+      "creation_time_utc_ticks": 639235012817015362,
+      "last_write_time_utc_ticks": 639235012817183646
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman10-bold.luc",
+      "bytes": 128402,
+      "sha256": "BF67DC77CE7115BF2253AAA1F2370F128B563562BB4E4217D4D5C7B33C691D57",
+      "creation_time_utc_ticks": 639235012817283970,
+      "last_write_time_utc_ticks": 639235012817294564
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman10-regular.lua",
+      "bytes": 211876,
+      "sha256": "26BD3C6834BE2DB3522BEB2C6BC3C8303B534AF6110034176B686C50F1B6C197",
+      "creation_time_utc_ticks": 639235012800946827,
+      "last_write_time_utc_ticks": 639235012801047084
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman10-regular.luc",
+      "bytes": 127319,
+      "sha256": "499EF5D0B814DE1F07B602A0DBD2CDC5559C804EBED5C90AE7461B8E85805E32",
+      "creation_time_utc_ticks": 639235012801177748,
+      "last_write_time_utc_ticks": 639235012801224130
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman9-regular.lua",
+      "bytes": 211852,
+      "sha256": "77EB5F833EC4F55910FA45084490AF7B67FE2B1A683BEF0F086764F031A386F1",
+      "creation_time_utc_ticks": 639235012827531584,
+      "last_write_time_utc_ticks": 639235012827711500
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/lmroman9-regular.luc",
+      "bytes": 127952,
+      "sha256": "809B2F3516589A0D98BD832475433EFF279047FE2AD3ECC66AB2ADA644173B69",
+      "creation_time_utc_ticks": 639235012827774000,
+      "last_write_time_utc_ticks": 639235012827774000
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/noto-sans-sc-bold-truetype-.lua",
+      "bytes": 4678340,
+      "sha256": "A25E56B3A3B82007EA2DABE303161E82B3C20A8E8D800D28E2CFF06287423D27",
+      "creation_time_utc_ticks": 639235012972144023,
+      "last_write_time_utc_ticks": 639235012975413408
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/noto-sans-sc-bold-truetype-.luc",
+      "bytes": 2604675,
+      "sha256": "3C4FCE1E89CEC115A95574F30104AF9117BD7B1976688A096519A85563ABDF3B",
+      "creation_time_utc_ticks": 639235012975594874,
+      "last_write_time_utc_ticks": 639235012976079618
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/noto-sans-sc-truetype-.lua",
+      "bytes": 4672039,
+      "sha256": "76A2A834C6AD06A4B9CFB7A496DB9AB74B18F6044CBC78637EBD1298623BBBC2",
+      "creation_time_utc_ticks": 639235012944329491,
+      "last_write_time_utc_ticks": 639235012947636344
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/noto-sans-sc-truetype-.luc",
+      "bytes": 2595769,
+      "sha256": "C4D2E7D342157D8AE430F9FC9997BF0FE0111A79BDDAEA3509F894E89EF55836",
+      "creation_time_utc_ticks": 639235012947729769,
+      "last_write_time_utc_ticks": 639235012948261642
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/notoserifsc-vf.lua",
+      "bytes": 4876661,
+      "sha256": "E255B50644FC3BC59EBD0148900AE132FC67AF7502E859CC9FFB57C73FB80273",
+      "creation_time_utc_ticks": 639235012913366447,
+      "last_write_time_utc_ticks": 639235012916986724
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/notoserifsc-vf.luc",
+      "bytes": 2713935,
+      "sha256": "8BA373F5E88E41C0997AF288FE382519F14F8649719465C5B15B02966E293F45",
+      "creation_time_utc_ticks": 639235012917148297,
+      "last_write_time_utc_ticks": 639235012917650966
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simhei.lua",
+      "bytes": 3301441,
+      "sha256": "AB374BC8F837DCB953C1486FB104BD3DBF86007A534C00DA6C6AA0CF1467DE6D",
+      "creation_time_utc_ticks": 639235012842625153,
+      "last_write_time_utc_ticks": 639235012845015163
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simhei.luc",
+      "bytes": 1763210,
+      "sha256": "ACD07DE06899DDD07D9EAB7EB297F9F6D8EBBBE54E37B2AB33FF765C7ED37A40",
+      "creation_time_utc_ticks": 639235012845142791,
+      "last_write_time_utc_ticks": 639235012845526250
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simkai.lua",
+      "bytes": 3530495,
+      "sha256": "C7C578FEFB417E8DCAFB2EA28321753A49A6AF298392DD62D379934B0FE41717",
+      "creation_time_utc_ticks": 639235012837288718,
+      "last_write_time_utc_ticks": 639235012839840764
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simkai.luc",
+      "bytes": 2057650,
+      "sha256": "113CC858A2D8D1AE3AC7812F747173B80C7F97868EBABB6D4E0581F25539137D",
+      "creation_time_utc_ticks": 639235012840014254,
+      "last_write_time_utc_ticks": 639235012840395013
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simsun-1.lua",
+      "bytes": 4393136,
+      "sha256": "12EF4749E2B79EF7AB6F96F60945FB4E2A724E7FE1F7D5B9A0A82B7A1F3DFA9F",
+      "creation_time_utc_ticks": 639235012829477920,
+      "last_write_time_utc_ticks": 639235012832441197
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/simsun-1.luc",
+      "bytes": 1996857,
+      "sha256": "68DE28E98D442FC7437B93CF0EEBEA15409FE7A15345379B144140DDC587ECA7",
+      "creation_time_utc_ticks": 639235012832640133,
+      "last_write_time_utc_ticks": 639235012833056792
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwomath-regular.lua",
+      "bytes": 1595090,
+      "sha256": "56788039DAF56BA28AE330383B6463BFA8AD075069B8A725C33C35C2142FA117",
+      "creation_time_utc_ticks": 639235012989236293,
+      "last_write_time_utc_ticks": 639235012990513965
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwomath-regular.luc",
+      "bytes": 926180,
+      "sha256": "4608BBFCCCF95830B3718901BAE80564D1DB8F3070CF9313A43450DDE8D1921D",
+      "creation_time_utc_ticks": 639235012990626395,
+      "last_write_time_utc_ticks": 639235012990835447
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-bold.lua",
+      "bytes": 1040340,
+      "sha256": "ED8A5EC27B422520B3BE4BAA9F502F32A3CE32DD420AB01C171536595283A418",
+      "creation_time_utc_ticks": 639235012869433975,
+      "last_write_time_utc_ticks": 639235012870152510
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-bold.luc",
+      "bytes": 610426,
+      "sha256": "EB64584E3BA978778C8D10911D5D3CFBFE542A2F58B104B0C15A0CFA6270B7FC",
+      "creation_time_utc_ticks": 639235012870267297,
+      "last_write_time_utc_ticks": 639235012870392371
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-bolditalic.lua",
+      "bytes": 1085532,
+      "sha256": "FA6A761CFC5EAB870B7A9D29DB59F543EEA661657745F8EB95B503C1FED8784D",
+      "creation_time_utc_ticks": 639235012862482051,
+      "last_write_time_utc_ticks": 639235012863210266
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-bolditalic.luc",
+      "bytes": 622765,
+      "sha256": "49CEB56BA530383DBCFC4DEFA157336CE570E838B58D2AFCABDC9F2521BAF124",
+      "creation_time_utc_ticks": 639235012863318601,
+      "last_write_time_utc_ticks": 639235012863456629
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-italic.lua",
+      "bytes": 1086958,
+      "sha256": "1FB4BBA4775FBB8C0C54D50098EC65810BFDCA18D8C159FBB40C9150EB16AF7B",
+      "creation_time_utc_ticks": 639235012876501229,
+      "last_write_time_utc_ticks": 639235012877290455
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-italic.luc",
+      "bytes": 641063,
+      "sha256": "5D8090EF521E858A5F93F06A3D885A0B009E7855466EFF1427C61ED374170927",
+      "creation_time_utc_ticks": 639235012877379664,
+      "last_write_time_utc_ticks": 639235012877469223
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-regular.lua",
+      "bytes": 1041173,
+      "sha256": "7BDE37AD8B7676A83AD8B1009658E2DBBFD25F8208C8A69B69CCE035D95A2059",
+      "creation_time_utc_ticks": 639235012855153366,
+      "last_write_time_utc_ticks": 639235012855837066
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/stixtwotext-regular.luc",
+      "bytes": 628656,
+      "sha256": "C5F8D85C70904844F66721988DD2CC28D2FBF513CD674CA910E45D4817187A62",
+      "creation_time_utc_ticks": 639235012855958863,
+      "last_write_time_utc_ticks": 639235012856125059
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-bold.lua",
+      "bytes": 366441,
+      "sha256": "527A6778212F7E4EAAEF55AEABE324EAA28B1C5CC8B0C2D4A9C1954D8221E011",
+      "creation_time_utc_ticks": 639235012882191705,
+      "last_write_time_utc_ticks": 639235012882449367
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-bold.luc",
+      "bytes": 212902,
+      "sha256": "C4E584D6D34BE6F12B1DFC3B1C24F64BC75FA349D86C3C4B732F7CC0250BE3F6",
+      "creation_time_utc_ticks": 639235012882555192,
+      "last_write_time_utc_ticks": 639235012882611200
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-bolditalic.lua",
+      "bytes": 369380,
+      "sha256": "D2AD0826D556E9B768CB83EEEB4566AA3036C7B415553E4F821EA12D76EBD83B",
+      "creation_time_utc_ticks": 639235012881228912,
+      "last_write_time_utc_ticks": 639235012881469715
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-bolditalic.luc",
+      "bytes": 213994,
+      "sha256": "50ED91A2CBFA6AA80A67603DBF9FFCD596576F11D734A35D37A1E80544A93B00",
+      "creation_time_utc_ticks": 639235012881585256,
+      "last_write_time_utc_ticks": 639235012881591894
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-italic.lua",
+      "bytes": 378368,
+      "sha256": "1DAD07D62216EF0A582B67366B0FDF1B8A356135644658DFFA1AD0A95F108FC3",
+      "creation_time_utc_ticks": 639235012883163391,
+      "last_write_time_utc_ticks": 639235012883398849
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-italic.luc",
+      "bytes": 217283,
+      "sha256": "B734374BF0FEDED9C8368C7AE04BDE15642C96697DACC8B326815F147386845D",
+      "creation_time_utc_ticks": 639235012883533945,
+      "last_write_time_utc_ticks": 639235012883574645
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-regular.lua",
+      "bytes": 370511,
+      "sha256": "83CBCC7C0C9DC3CF7DC173632CE38F967759A10F0EA1EA730914E39441732EB7",
+      "creation_time_utc_ticks": 639235012879144051,
+      "last_write_time_utc_ticks": 639235012879772320
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/texgyreheros-regular.luc",
+      "bytes": 213467,
+      "sha256": "F8A31740CAE1E90980FF808B1A7465E7928C07B60BF4100E3AA8EB2105196482",
+      "creation_time_utc_ticks": 639235012879893876,
+      "last_write_time_utc_ticks": 639235012880014167
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/xitsmath-bold.lua",
+      "bytes": 515860,
+      "sha256": "BF1916F959C64A389D24AD40A3121175E4E4E8FE396524DF8FF8A9460611194B",
+      "creation_time_utc_ticks": 639235012997705832,
+      "last_write_time_utc_ticks": 639235012998079148
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/otl/xitsmath-bold.luc",
+      "bytes": 291895,
+      "sha256": "827E1E29EDA6658E79479332D45A08F9C39D4D0647E5D37E3ECF01C8D4B9DFF6",
+      "creation_time_utc_ticks": 639235012998311769,
+      "last_write_time_utc_ticks": 639235012998387222
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/streams/notoserifscvfttf-1.lua",
+      "bytes": 27947636,
+      "sha256": "A38762BB2E949115BC252577DB7B1E7E06C9ECB6CB960F2FBAAE26DCC00B2B8F",
+      "creation_time_utc_ticks": 639235013105735509,
+      "last_write_time_utc_ticks": 639235013113983852
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/fonts/streams/notoserifscvfttf-1.luc",
+      "bytes": 14788270,
+      "sha256": "DBB84911A356413180420A133726B4BE5E086343C2FBCC722C9CE4F6C4120660",
+      "creation_time_utc_ticks": 639235013114867277,
+      "last_write_time_utc_ticks": 639235013116957605
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/names/luaotfload-lookup-cache.lua",
+      "bytes": 14411,
+      "sha256": "8EED69F327D69D208ABC8EF15AE3A4F7766D9891C7073FAEA1ED8329B90D1B4B",
+      "creation_time_utc_ticks": 639235012800504435,
+      "last_write_time_utc_ticks": 639235013056380119
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/names/luaotfload-lookup-cache.luc",
+      "bytes": 9565,
+      "sha256": "FF0D81147E50BB3D03DCBBC55029FB174A9D009BFA1C6DA6875733219CFCF358",
+      "creation_time_utc_ticks": 639235012800504435,
+      "last_write_time_utc_ticks": 639235013056380119
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/names/luaotfload-names.lua.gz",
+      "bytes": 233878,
+      "sha256": "946AEB8FA2779116D77C774196737D737184A12F01B322FDFAF01581A7B2E59E",
+      "creation_time_utc_ticks": 639235012795922137,
+      "last_write_time_utc_ticks": 639235012798891588
+    },
+    {
+      "relative_path": "texcache/luatex-cache/generic/names/luaotfload-names.luc.gz",
+      "bytes": 343189,
+      "sha256": "E70039D7A8C5B4CE3DA55CAC86146EA799CD8320F090BCBC04F2F1E41A1F2097",
+      "creation_time_utc_ticks": 639235012795922137,
+      "last_write_time_utc_ticks": 639235012800377978
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_kaiti.lua.gz",
+      "bytes": 61873,
+      "sha256": "D78C9E8C0903A14BD0D154C31EBB1D43BC24DFDE4CD426BD56AD27B29066FB0C",
+      "creation_time_utc_ticks": 639235012840986795,
+      "last_write_time_utc_ticks": 639235012841050004
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_kaiti.luc",
+      "bytes": 379033,
+      "sha256": "BE4202315550D58B8160CC51A73EAA622837ABC69C073751C43C71E23CC02584",
+      "creation_time_utc_ticks": 639235012841119394,
+      "last_write_time_utc_ticks": 639235012841119394
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman10-bold.lua.gz",
+      "bytes": 3574,
+      "sha256": "713D9E5D38704D1E664068C1911EAEA059A70F51D18179724EBBD3118A0E0ED9",
+      "creation_time_utc_ticks": 639235012817349939,
+      "last_write_time_utc_ticks": 639235012817373019
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman10-bold.luc",
+      "bytes": 17367,
+      "sha256": "7981BE3514451D4FEC3C5A9C5B91C11100926D2DFEF4DAE16B22D99D676852AB",
+      "creation_time_utc_ticks": 639235012817373019,
+      "last_write_time_utc_ticks": 639235012817373019
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman10-regular.lua.gz",
+      "bytes": 3574,
+      "sha256": "713D9E5D38704D1E664068C1911EAEA059A70F51D18179724EBBD3118A0E0ED9",
+      "creation_time_utc_ticks": 639235012811952827,
+      "last_write_time_utc_ticks": 639235012811952827
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman10-regular.luc",
+      "bytes": 17367,
+      "sha256": "7981BE3514451D4FEC3C5A9C5B91C11100926D2DFEF4DAE16B22D99D676852AB",
+      "creation_time_utc_ticks": 639235012811952827,
+      "last_write_time_utc_ticks": 639235012811952827
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman9-regular.lua.gz",
+      "bytes": 3574,
+      "sha256": "0616881EB3FAA4F81B301320510E85DC2E58FDA8AE8561BB53DFA0B7F03185AA",
+      "creation_time_utc_ticks": 639235012827854869,
+      "last_write_time_utc_ticks": 639235012827874929
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_lmroman9-regular.luc",
+      "bytes": 17367,
+      "sha256": "7981BE3514451D4FEC3C5A9C5B91C11100926D2DFEF4DAE16B22D99D676852AB",
+      "creation_time_utc_ticks": 639235012827874929,
+      "last_write_time_utc_ticks": 639235012827874929
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notosanssc-bold.lua.gz",
+      "bytes": 72054,
+      "sha256": "5AEAA06C76F5FC05C4E75723F6FEAB71F5F0A90B365E79526EA9001EC62B6272",
+      "creation_time_utc_ticks": 639235012976755759,
+      "last_write_time_utc_ticks": 639235012976934005
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notosanssc-bold.luc",
+      "bytes": 419047,
+      "sha256": "ABC6D4CDEDEB4D1E9094F174168EF4BB3ACE268985EA117B273A7C498B55F000",
+      "creation_time_utc_ticks": 639235012976978716,
+      "last_write_time_utc_ticks": 639235012976989160
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notosanssc-regular.lua.gz",
+      "bytes": 72028,
+      "sha256": "475FF0508C4C0F184960DC192FFE617E4538906440750FA43745E14F828F68F5",
+      "creation_time_utc_ticks": 639235012948918295,
+      "last_write_time_utc_ticks": 639235012949080410
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notosanssc-regular.luc",
+      "bytes": 418981,
+      "sha256": "4AC074656A14348480265877B297906BE5F7E9FD2853A6AC0CC9AAE50C3FCE7B",
+      "creation_time_utc_ticks": 639235012949117469,
+      "last_write_time_utc_ticks": 639235012949117469
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notoserifsc-extralight.lua.gz",
+      "bytes": 73050,
+      "sha256": "9B7B333494410430A128F2AD657422B6D619DA096EBA596A7BDE6162B20695FB",
+      "creation_time_utc_ticks": 639235012918347876,
+      "last_write_time_utc_ticks": 639235012918500065
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_notoserifsc-extralight.luc",
+      "bytes": 422494,
+      "sha256": "FBD44C9515E9E02A6B10BA530B7A29F1DC11C8CACC5C4360598E7ED776733FC4",
+      "creation_time_utc_ticks": 639235012918582433,
+      "last_write_time_utc_ticks": 639235012918582433
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_simhei.lua.gz",
+      "bytes": 61889,
+      "sha256": "F09871396B655BF92B13D86890DBD3B2E0F795EBDC2A87506400B87A00018530",
+      "creation_time_utc_ticks": 639235012846191038,
+      "last_write_time_utc_ticks": 639235012846312148
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_simhei.luc",
+      "bytes": 379050,
+      "sha256": "EF32CD5DA009CE0D57C53B547537C62946BF56E9FBC8BD58DB724030C75AE218",
+      "creation_time_utc_ticks": 639235012846328071,
+      "last_write_time_utc_ticks": 639235012846353132
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_simsun.lua.gz",
+      "bytes": 132439,
+      "sha256": "DF6558CB859BA7858666E75FD79E2D4BD59F1342D99A8E7C052619ED563CAFFC",
+      "creation_time_utc_ticks": 639235012835025285,
+      "last_write_time_utc_ticks": 639235012835287987
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_simsun.luc",
+      "bytes": 733306,
+      "sha256": "4A3BDC4E65F75FA1915B127D70819150FBA22C7CB236F9317EA151DD7ADD1067",
+      "creation_time_utc_ticks": 639235012835447184,
+      "last_write_time_utc_ticks": 639235012835447184
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwomath-regular.lua.gz",
+      "bytes": 26045,
+      "sha256": "825441E7739F5F70E39DE17F494C9C58DA8172D474C43002954B30A1810B2C80",
+      "creation_time_utc_ticks": 639235012991110139,
+      "last_write_time_utc_ticks": 639235012991236562
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwomath-regular.luc",
+      "bytes": 128126,
+      "sha256": "1F4EE4A76B29AAC86821C60F236F0F0FF4B2F2F8FCD88CC2E6EA3D2E3EB3F75E",
+      "creation_time_utc_ticks": 639235012991267859,
+      "last_write_time_utc_ticks": 639235012991267859
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-bold.lua.gz",
+      "bytes": 8620,
+      "sha256": "2A174B5DC65BF73C8C6F764832816D9693BBEB1D3E1C34CDA517D04A09C5D6DA",
+      "creation_time_utc_ticks": 639235012870557600,
+      "last_write_time_utc_ticks": 639235012870607366
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-bold.luc",
+      "bytes": 42808,
+      "sha256": "FCAD87067B08CC5C850D74FEFB82DA64611A3B63990C3534097E030954166D49",
+      "creation_time_utc_ticks": 639235012870616371,
+      "last_write_time_utc_ticks": 639235012870616371
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-bolditalic.lua.gz",
+      "bytes": 8662,
+      "sha256": "5EEF2BADAFD1CF2FF4D0192442969F71F7019F9D245CACF4122E6499B2EB7B95",
+      "creation_time_utc_ticks": 639235012863544629,
+      "last_write_time_utc_ticks": 639235012863564694
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-bolditalic.luc",
+      "bytes": 43029,
+      "sha256": "55227549CBFB186DBEBE6F34D60972121BE897C9947A21153AB72304A1FD2CBC",
+      "creation_time_utc_ticks": 639235012863573789,
+      "last_write_time_utc_ticks": 639235012863573789
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-italic.lua.gz",
+      "bytes": 8662,
+      "sha256": "E3FC6CFA6B6AE194B47CB9222D6A41989B0E9FFEACBF9DF9EA797C5C51D760EF",
+      "creation_time_utc_ticks": 639235012877597846,
+      "last_write_time_utc_ticks": 639235012877597846
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-italic.luc",
+      "bytes": 43029,
+      "sha256": "55227549CBFB186DBEBE6F34D60972121BE897C9947A21153AB72304A1FD2CBC",
+      "creation_time_utc_ticks": 639235012877597846,
+      "last_write_time_utc_ticks": 639235012877597846
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-regular.lua.gz",
+      "bytes": 8620,
+      "sha256": "CC5F6EA1C452EFDB538F5D1FD63A5DC765900616A1F0853D8A6ED983D74CDCE4",
+      "creation_time_utc_ticks": 639235012856203000,
+      "last_write_time_utc_ticks": 639235012856203000
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_stixtwotext-regular.luc",
+      "bytes": 42808,
+      "sha256": "FCAD87067B08CC5C850D74FEFB82DA64611A3B63990C3534097E030954166D49",
+      "creation_time_utc_ticks": 639235012856203000,
+      "last_write_time_utc_ticks": 639235012856203000
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-bold.lua.gz",
+      "bytes": 4296,
+      "sha256": "091408CB4D3BDB498A0DCED2317A8A971C2E21D9F7D0348741AFC44DACD8C841",
+      "creation_time_utc_ticks": 639235012882623146,
+      "last_write_time_utc_ticks": 639235012882623146
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-bold.luc",
+      "bytes": 21380,
+      "sha256": "97E3B525595192A05AEE3BB57DE0442A8BA91B15D323E3EE0D54E2A997AF5D14",
+      "creation_time_utc_ticks": 639235012882676980,
+      "last_write_time_utc_ticks": 639235012882676980
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-bolditalic.lua.gz",
+      "bytes": 4296,
+      "sha256": "091408CB4D3BDB498A0DCED2317A8A971C2E21D9F7D0348741AFC44DACD8C841",
+      "creation_time_utc_ticks": 639235012881689729,
+      "last_write_time_utc_ticks": 639235012881732575
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-bolditalic.luc",
+      "bytes": 21380,
+      "sha256": "97E3B525595192A05AEE3BB57DE0442A8BA91B15D323E3EE0D54E2A997AF5D14",
+      "creation_time_utc_ticks": 639235012881732575,
+      "last_write_time_utc_ticks": 639235012881732575
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-italic.lua.gz",
+      "bytes": 4296,
+      "sha256": "091408CB4D3BDB498A0DCED2317A8A971C2E21D9F7D0348741AFC44DACD8C841",
+      "creation_time_utc_ticks": 639235012883593408,
+      "last_write_time_utc_ticks": 639235012883646144
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-italic.luc",
+      "bytes": 21380,
+      "sha256": "97E3B525595192A05AEE3BB57DE0442A8BA91B15D323E3EE0D54E2A997AF5D14",
+      "creation_time_utc_ticks": 639235012883652924,
+      "last_write_time_utc_ticks": 639235012883652924
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-regular.lua.gz",
+      "bytes": 4296,
+      "sha256": "091408CB4D3BDB498A0DCED2317A8A971C2E21D9F7D0348741AFC44DACD8C841",
+      "creation_time_utc_ticks": 639235012880137530,
+      "last_write_time_utc_ticks": 639235012880137530
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_texgyreheros-regular.luc",
+      "bytes": 21380,
+      "sha256": "97E3B525595192A05AEE3BB57DE0442A8BA91B15D323E3EE0D54E2A997AF5D14",
+      "creation_time_utc_ticks": 639235012880137530,
+      "last_write_time_utc_ticks": 639235012880137530
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_xitsmath-bold.lua.gz",
+      "bytes": 11578,
+      "sha256": "E32AD4C244627C65B1FE31F103677804A37876E0F884B38F2BC1603BB34D984E",
+      "creation_time_utc_ticks": 639235012998503487,
+      "last_write_time_utc_ticks": 639235012998503487
+    },
+    {
+      "relative_path": "texcache/luatexja/extra_xitsmath-bold.luc",
+      "bytes": 58217,
+      "sha256": "99FBF557C691F7C883C82B5331E7B90E2FC972E725B77829777F563C44A15CE3",
+      "creation_time_utc_ticks": 639235012998503487,
+      "last_write_time_utc_ticks": 639235012998503487
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-cid-auto-adobe-gb1.lua.gz",
+      "bytes": 395605,
+      "sha256": "E22F2C07504559AFE739740FF619700000142698AE45ECCB530851D37B7FC331",
+      "creation_time_utc_ticks": 639235012822926239,
+      "last_write_time_utc_ticks": 639235012825343598
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-cid-auto-adobe-gb1.luc",
+      "bytes": 1829283,
+      "sha256": "97A836A64EBE9CA0C5A5394AD4614CC36943C521FE01F7262F16BB82BF89B548",
+      "creation_time_utc_ticks": 639235012825654140,
+      "last_write_time_utc_ticks": 639235012825714189
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-cid-auto-adobe-japan1.lua.gz",
+      "bytes": 334445,
+      "sha256": "D2EFBAD0A8E6D0DD9D2D7D0F1E933322BCD2CC6E3E5B27E4BC99856A72E346CF",
+      "creation_time_utc_ticks": 639235012808090395,
+      "last_write_time_utc_ticks": 639235012810580987
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-cid-auto-adobe-japan1.luc",
+      "bytes": 1643763,
+      "sha256": "DDF3E0C84CA292B0B8CDB96CE43939BE1C98CC2282FC14FCB045661B80530CD7",
+      "creation_time_utc_ticks": 639235012810892879,
+      "last_write_time_utc_ticks": 639235012810919853
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-jisx0208.luc",
+      "bytes": 93919,
+      "sha256": "AEB22C44E475E5FDE3C85213A1AF8B49CFF04F0FD9876EFBE6C86F5096CE4543",
+      "creation_time_utc_ticks": 639235012814987112,
+      "last_write_time_utc_ticks": 639235012814987112
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-kinsoku_default.lua.gz",
+      "bytes": 2454,
+      "sha256": "21E9DBCC2DA9771F2951F3CD6E184083A35FDFA7DC998BB97EA6612366234B82",
+      "creation_time_utc_ticks": 639235012814682817,
+      "last_write_time_utc_ticks": 639235012814745344
+    },
+    {
+      "relative_path": "texcache/luatexja/ltj-kinsoku_default.luc",
+      "bytes": 17654,
+      "sha256": "DFBBE58844675F2C9FB6A433CCA01B40D870BA964D2926EDFC63D1211CD1E7BB",
+      "creation_time_utc_ticks": 639235012814745344,
+      "last_write_time_utc_ticks": 639235012814745344
+    }
+  ]
+}

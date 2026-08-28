@@ -1,0 +1,7 @@
+# Revision 150 root review
+
+- Fixed identities remain Goal `4FB8A2...3F1A`, main HEAD `eea4060c5229168e2b973bbaea81cf391e7a9dfd`, official R101 814 pages/4,947,496 bytes/SHA `0870FF...F1A1`, inventory `43/55/0/1`, strict final `0/99`.
+- P654 R14E was correctly stopped at validator before preseal. The formal rejection report is 3,378 bytes/SHA `C04AC7C87054AFC8A352F0DF513B0D629B8D2BA8D3BD1022883BC78658117D79`; failed-root counts are ordinary1058 and preseal/manifests/WSTOP/controls all zero. R14F is static-only and must add an AST-wide case-insensitive parameter/local collision gate plus exact-draft helper execution.
+- P07 fresh isolated SA3 was fully read and accepted. Main independently confirmed parent `bc713ff1...`, exactly four changed files, 71 insertions/82 deletions, staged zero, diff-check PASS and TeX NONE. One atomic commit/handoff is granted; P08 remains frozen.
+- P602 reseal handoff SHA is `27CD4094FF7893A9170C32FB82F7611D8F4ABA57F92A1C92A48706230970DBA7`. Main independently verified 494 files, 493 manifest rows, 490/2/1 payload/control/seal, unique manifest self-exclusion, zero target/source bytes/SHA/100ns-mtime mismatches, canonical recordset `23AD73AA27BF8AC57DD3A7B57EF2BF307923D1C52A15446275AB6D9B1443AC39`, parse/ADS/cache zero and strict final marker. Fresh isolated SA3 is authorized but may only start in a free concurrency slot.
+- No TeX or main-source mutation occurred. This checkpoint changes no central count and declares no final completion.

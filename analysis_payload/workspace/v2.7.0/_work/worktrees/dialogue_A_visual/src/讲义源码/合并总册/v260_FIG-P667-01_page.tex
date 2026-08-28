@@ -1,0 +1,28 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{838}
+\setcounter{chapter}{34}
+\setcounter{section}{4}
+\setcounter{figure}{6}
+\setcounter{equation}{20}
+\setcounter{proposition}{4}
+\pagestyle{headings}
+\chaptermark{狄利克雷分布与共轭先验}
+\sectionmark{Dirichlet--多项共轭}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_conjugate_update.tex}
+\FloatBarrier
+
+\paragraph{共轭面：数据怎样改写参数？}
+
+\paragraph{首次阅读检查：后验预测。}\textbf{需要解决的阅读阻塞。}短段落内符号密度高，但符号角色未逐一落地。
+
+\begin{proposition}[后验预测]
+在共轭定理的条件下，新观测的后验预测概率为
+\[
+\Pr(Y_{N+1}=i\mid\boldsymbol n,\boldsymbol\alpha)
+=\frac{\alpha_i+n_i}{\alpha_0+N}.
+\]
+\end{proposition}
+\end{document}

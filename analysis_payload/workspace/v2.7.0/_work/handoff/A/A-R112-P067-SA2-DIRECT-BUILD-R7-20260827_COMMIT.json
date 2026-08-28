@@ -1,0 +1,33 @@
+{
+  "handoff_id": "A-R112-P067-SA2-DIRECT-BUILD-R7-20260827-COMMIT",
+  "uid": "FIG-P067-01",
+  "status": "ATOMIC_COMMIT_READY_FOR_MAIN_INTEGRATION",
+  "branch": "v2.7.0/dialogue-a-visual",
+  "commit": "3c371f2448c86686ef5fc198237a395f9c4668e1",
+  "parent": "ab199fc685753015c3aa4d930ea1217e80aedf63",
+  "subject": "fix(fig-p067): align CDF steps with right-continuous values",
+  "name_only": [
+    "src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C04/fig_v1_c04_cdf.tex"
+  ],
+  "numstat": {
+    "insertions": 1,
+    "deletions": 1
+  },
+  "exact_change": "const plot mark right -> const plot mark left",
+  "source": {
+    "bytes": 4014,
+    "sha256": "2881377AEEF78E8C7BD7502AD8A303E19AAC395F1936475BDC6D569195900920"
+  },
+  "postcommit": {
+    "worktree_clean": true,
+    "index_clean": true,
+    "tex_process_count": 0,
+    "second_commit_count": 0,
+    "push_performed": false,
+    "fresh_role_started": false,
+    "second_uid_started": false,
+    "central_state_written": false
+  },
+  "sealed_evidence_handoff": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/handoff/A/A-R112-P067-SA2-DIRECT-BUILD-R7-20260827.json",
+  "request": "Main integrate commit 3c371f2448c86686ef5fc198237a395f9c4668e1 and freeze the next official candidate before fresh-role routing."
+}

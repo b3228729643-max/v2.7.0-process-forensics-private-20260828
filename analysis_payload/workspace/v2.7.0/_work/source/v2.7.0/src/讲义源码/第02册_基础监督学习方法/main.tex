@@ -1,0 +1,26 @@
+% Stage 17 final official entry: Volume 2, V2-C01--V2-C05.
+% Match the merged-book compatibility policy: the installed experimental
+% tagged-PDF block layer rejects enumitem keys used by the chapter map.
+% Standard PDF metadata remains supplied by \SLSetBookMetadata/hyperref.
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第2册}{统计学习方法初学者讲义}{基础监督学习方法}
+\begin{document}
+\raggedbottom
+\frontmatter
+\SLMakeTitle
+\chapter*{本册导读}\addcontentsline{toc}{chapter}{本册导读}
+本册依次讲解感知机、\kNN{}法、朴素贝叶斯法、决策树与逻辑斯谛回归。各章沿用统一的学习目标、前置检查、完整推导、算法伪代码、例题、练习与自检结构；建议按章节顺序学习，并在比较模型假设、学习策略和计算代价后再进入后续进阶监督学习方法。
+\SLPrintSourceNotice
+\SLPrintContents
+\mainmatter
+\index{统计学习方法}
+\input{chapters/V2-C01}
+\input{chapters/V2-C02}
+\input{chapters/V2-C03}
+\input{chapters/V2-C04}
+\input{chapters/V2-C05}
+\backmatter
+\SLPrintReferences
+\printbookindexes
+\end{document}

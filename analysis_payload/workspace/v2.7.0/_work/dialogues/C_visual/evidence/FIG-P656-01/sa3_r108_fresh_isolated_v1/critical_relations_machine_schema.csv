@@ -1,0 +1,30 @@
+﻿relation_id,relation,object_a,object_b,expected
+CR01,sequence_r1c1_label_inside_circle,O03,O02,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR02,sequence_r1c2_label_inside_circle,O05,O04,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR03,sequence_r1c3_label_inside_circle,O07,O06,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR04,sequence_r1c4_label_inside_circle,O09,O08,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR05,sequence_r1c5_label_inside_circle,O11,O10,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR06,sequence_r1c6_label_inside_circle,O13,O12,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR07,sequence_r2c1_label_inside_circle,O15,O14,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR08,sequence_r2c2_label_inside_circle,O17,O16,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR09,sequence_r2c3_label_inside_circle,O19,O18,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR10,sequence_r2c4_label_inside_circle,O21,O20,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR11,sequence_r2c5_label_inside_circle,O23,O22,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR12,sequence_r2c6_label_inside_circle,O25,O24,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR13,sequence_r3c1_label_inside_circle,O27,O26,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR14,sequence_r3c2_label_inside_circle,O29,O28,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR15,sequence_r3c3_label_inside_circle,O31,O30,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR16,sequence_r3c4_label_inside_circle,O33,O32,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR17,sequence_r3c5_label_inside_circle,O35,O34,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR18,sequence_r3c6_label_inside_circle,O37,O36,"label centered inside its category circle; boundary is legal container, no ink-border collision"
+CR19,left_flow_to_count_box,O38,O40,source path terminates at count.west; rendered arrowhead may preserve a small anti-alias/tip gap but direction must be unambiguous
+CR20,left_flow_label_clearance,O39,O38,label above arrow with >=3 px ink-to-line clearance
+CR21,count_formula_inside_count_box,O41,O40,legal containment with >=5 px ink-to-border clearance
+CR22,count_formula_to_support_formula,O41,O42,separate stacked formulas with no overlap and readable vertical clearance
+CR23,support_formula_to_warning_box,O42,O43,separate with no overlap; warning is visually subordinate
+CR24,warning_text_inside_warning_box,O44,O43,legal containment with >=5 px ink-to-border clearance
+CR25,right_flow_from_count_box,O45,O40,source path begins at count.east; rendered tail must read as attached
+CR26,right_flow_to_coefficient_box,O45,O46,source path terminates at coef.west; rendered arrowhead direction must be unambiguous
+CR27,coefficient_label_inside_box,O47,O46,legal containment with >=5 px ink-to-border clearance
+CR28,coefficient_formula_inside_box,O48,O46,legal containment with >=5 px ink-to-border clearance
+CR29,caption_number_to_caption_text,O49,O50,"same caption baseline/continuation, no glyph collision"

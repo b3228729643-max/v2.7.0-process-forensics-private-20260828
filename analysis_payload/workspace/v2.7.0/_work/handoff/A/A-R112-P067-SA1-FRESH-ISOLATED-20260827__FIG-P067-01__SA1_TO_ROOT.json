@@ -1,0 +1,40 @@
+{
+  "handoff_id": "A-R112-P067-SA1-FRESH-ISOLATED-20260827",
+  "assigned_scope": "Fresh isolated SA1 review of FIG-P067-01 only against the locked R112 official PDF and current single P067 TeX source.",
+  "completed": true,
+  "files_changed": [
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P067-01\\STRICT_R4_SA1_FRESH_ISOLATED_R112_20260827",
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\A-R112-P067-SA1-FRESH-ISOLATED-20260827__FIG-P067-01__SA1_REPORT.md",
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\handoff\\A\\A-R112-P067-SA1-FRESH-ISOLATED-20260827__FIG-P067-01__SA1_TO_ROOT.json"
+  ],
+  "decisions": {
+    "final_decision": "PASS_R168",
+    "a_local_pass_counted": false,
+    "physical_page_1based": 69,
+    "visible_object_count": 150,
+    "unordered_pair_count": 11175,
+    "machine_candidate_count": 6,
+    "manual_actual_hard_count": 0,
+    "actual_illegal_overlap_pixel_count": 0,
+    "actual_clip_pixel_count": 0,
+    "font_visual_harmony_pass": true,
+    "semantic_pass": true,
+    "caption_and_page_fusion_pass": true
+  },
+  "unresolved": [
+    "R168 advisory only: nine source font declarations are below the older 9.5 pt numeric line.",
+    "R168 advisory only: six retained bbox/paint-order mask-purity rows are false, while raw native evidence proves no reader-visible defect."
+  ],
+  "validation": {
+    "official_pdf_bytes": 4967100,
+    "official_pdf_sha256": "D4B4DDF5F127D107FB66BF2805F4637D39CDB861F7CBB47BB2CDBB72E4E28FA2",
+    "source_tex_bytes": 4015,
+    "source_tex_sha256": "C570597B72EEA4610380359A84EA078B24C810EC89039215BC9B42AB0F8AFFA0",
+    "manual_object_ledger": "150/150",
+    "unordered_pairs": "11175/11175",
+    "manual_critical_pairs": "12/12",
+    "glyph_contact_sheets_opened": "8/8",
+    "machine_crosscheck": "PASS"
+  },
+  "next_action": "Main line should dispatch a different fresh isolated SA3 against the same locked R112 candidate; do not count this SA1 outcome as A_LOCAL_PASS and do not update central state from this handoff alone."
+}

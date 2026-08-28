@@ -1,0 +1,81 @@
+{
+  "validation_scope": "preseal",
+  "checks": {
+    "root_exact": true,
+    "pdf_sha256": "DAB1062500E39DD2C34C6B4A9FF51CAC2BE0A4C84B2F45F5FB8E645C4BC012D6",
+    "pdf_sha_match": true,
+    "source_sha256": "D3C1D38ECB8468EC3294F7D18BD886316829F14690A516000189CE853A07BC05",
+    "source_sha_match": true,
+    "chapter_sha256": "9B3107C9DFDB40F4CD9960F6C7965FEBFE0A9B917D5785C9D75A7D373F2CF5D4",
+    "pdf_pages": 817,
+    "pdf_817_pages": true,
+    "pdf_a4": true,
+    "glyph_count": 85,
+    "path_count": 11,
+    "atom_count": 96,
+    "atom_ids_unique": true,
+    "strict_counts_match": true,
+    "pair_rows": 4560,
+    "pair_id_unique": true,
+    "pair_set_complete": true,
+    "machine_manual_fields_blank": true,
+    "manual_atom_rows": 96,
+    "manual_atom_ids_exact": true,
+    "manual_atom_pass_rows": 96,
+    "near_pair_count": 131,
+    "manual_pair_rows": 131,
+    "manual_pair_ids_exact": true,
+    "manual_pair_pass_rows": 131,
+    "bbox_separated_pair_count": 4429,
+    "glyph_metric_rows": 85,
+    "glyph_page_clipped_rows": 0,
+    "glyph_machine_manual_fields_blank": true,
+    "image_dimensions": {
+      "R111_p029_full_native300dpi.png": [
+        2481,
+        3508
+      ],
+      "R111_p029_FIG-P033-01_native300dpi.png": [
+        1334,
+        757
+      ],
+      "R111_p029_FIG-P033-01_native1x.png": [
+        1334,
+        757
+      ],
+      "R111_p029_FIG-P033-01_grayscale_native1x.png": [
+        1334,
+        757
+      ],
+      "R111_p029_FIG-P033-01_nearest_neighbor8x.png": [
+        10672,
+        6056
+      ],
+      "R111_p029_FIG-P033-01_with_caption_native300dpi.png": [
+        2022,
+        838
+      ]
+    },
+    "image_dimensions_match": true,
+    "placeholder_hits": [],
+    "placeholder_free_controls": true,
+    "resolved_controls": {
+      "MISSING_TOFU_WRONG_CODEPOINT_PASS=true": true,
+      "READABILITY_BALANCE_PASS=true": true,
+      "OVERLAP_PIXEL_COUNT=0": true,
+      "CLIP_PIXEL_COUNT=0": true,
+      "PIXEL_ADJUDICATION_STATUS=CLEAR": true,
+      "MATH_SEMANTICS_PASS=true": true,
+      "GEOMETRY_PASS=true": true,
+      "TEXT_CONSISTENCY_PASS=true": true,
+      "GRAYSCALE_PASS=true": true,
+      "PAGE_INTEGRATION_PASS=true": true,
+      "SA3_RESULT=PASS": true
+    },
+    "resolved_controls_all": true,
+    "scratch_locate_absent": true
+  },
+  "boolean_failures": [],
+  "numeric_failures": {},
+  "pass": true
+}

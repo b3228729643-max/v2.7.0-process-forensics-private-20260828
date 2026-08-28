@@ -1,0 +1,25 @@
+metric,value,requirement,status,evidence
+PDF_NATIVE_GRID_PX,2481x3508,300dpi direct render,PASS,IDENTITY.json
+FIGURE_CROP_NATIVE_PX,1934x771,300dpi no resize,PASS,figure_crop_300dpi.png
+STANDALONE_NATIVE_PX,1526x638,300dpi no resize,PASS,standalone_300dpi.png
+OBJECT_COUNT,165,all visible foreground plus mapped exclusions,PASS,machine_object_inventory.csv
+GLYPH_COUNT,150,100 percent mapped and manually reviewed,PASS,manual_glyph_review.csv
+GRAPHIC_OBJECT_COUNT,15,all visible drawing/path roles mapped,PASS,manual_graphic_review.csv
+MATH_RULE_COUNT,2,each visible fraction rule mapped,PASS,manual_math_rule_review.csv
+UNORDERED_PAIR_COUNT,13530,C(165,2)=13530,PASS,machine_all_pairs.csv
+CRITICAL_PAIR_COUNT,53,each native1x and 8x reviewed,PASS,manual_pair_review.csv
+GLYPH_EMPTY_MASK_COUNT,0,must be 0,PASS,machine_summary.json
+FOREGROUND_GRAPHIC_EMPTY_MASK_COUNT,0,must be 0,PASS,machine_summary.json
+MASK_CONTAMINATION_PIXEL_COUNT,0,must be 0,PASS,manual_glyph_review.csv
+MISSING_GLYPH_STROKE_PIXEL_COUNT,0,must be 0,PASS,manual_glyph_review.csv
+RAW_OVERLAP_PAIR_COUNT,17,machine candidates require adjudication,PASS,manual_pair_review.csv
+RAW_OVERLAP_CANDIDATE_PIXEL_COUNT,259,machine count retained before semantic adjudication,PASS,manual_pair_review.csv
+OVERLAP_PIXEL_COUNT,0,illegal overlap must be 0,PASS,after_overlap_report.csv
+CLIP_PIXEL_COUNT,0,real clipping must be 0,PASS,manual_clip_boundary_review.csv
+MIN_TEXT_TEXT_CLEARANCE_PX,28.1548,at least 4px,PASS,PAIR-07652
+MIN_TEXT_GRAPHIC_CLEARANCE_PX,16.0,at least 3px,PASS,PAIR-00150|PAIR-00313|PAIR-00475|PAIR-00636
+MIN_TEXT_NODE_BORDER_CLEARANCE_PX,26.0,at least 5px,PASS,PAIR-05652|PAIR-05901|PAIR-06146|PAIR-06624|PAIR-09062|PAIR-09249
+MIN_FIGURE_CROP_TEXT_EDGE_CLEARANCE_PX,10,at least 6px,PASS,machine_clip_inventory.csv
+MIN_STANDALONE_TEXT_EDGE_CLEARANCE_PX,18,at least 6px,PASS,machine_clip_inventory.csv
+MIN_FIGURE_CROP_ANY_OBJECT_MARGIN_PX,10,nonnegative containment,PASS,machine_clip_inventory.csv
+MIN_STANDALONE_ANY_ELIGIBLE_OBJECT_MARGIN_PX,4,nonnegative containment and visually complete,PASS,machine_clip_inventory.csv

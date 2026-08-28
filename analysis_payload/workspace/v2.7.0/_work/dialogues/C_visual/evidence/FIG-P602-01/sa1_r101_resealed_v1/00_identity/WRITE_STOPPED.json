@@ -1,0 +1,56 @@
+{
+  "schema": "FIG-P602-01-WRITE_STOPPED-reseal-v1",
+  "figure_uid": "FIG-P602-01",
+  "scope_row": "B52",
+  "branch_denominator": 46,
+  "sealed_root_resolved": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa1_r101_resealed_v1",
+  "source_root_resolved": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa1_r101_initial",
+  "old_root_policy": "permanently read-only",
+  "old_control_status": "REJECTED_AND_EXCLUDED",
+  "excluded_old_controls": [
+    "00_identity/WRITE_STOPPED.json",
+    "09_manifest/evidence_file_manifest.csv"
+  ],
+  "payload_count": 490,
+  "control_count": 2,
+  "seal_count": 1,
+  "manifest_self_count": 1,
+  "manifest_entry_count": 493,
+  "expected_total_ordinary_files": 494,
+  "coverage_model": "manifest lists every payload/control file and the predeclared final seal; the manifest alone is excluded as self and is identified by the external immutable root handoff",
+  "payload_control_recordset_sha256": "23AD73AA27BF8AC57DD3A7B57EF2BF307923D1C52A15446275AB6D9B1443AC39",
+  "manifest_path": "09_manifest/evidence_file_manifest.csv",
+  "manual_ledgers": {
+    "state": "ADJUDICATED_PASS",
+    "result": "PASS",
+    "object": "26/26",
+    "glyph": "175/175",
+    "pair": "325/325",
+    "critical": "8/8",
+    "peer": "27/27",
+    "role": "50/50",
+    "clipping": "26/26",
+    "needs_source_writer": "no",
+    "needs_tex_slot": "no"
+  },
+  "r101_identity": {
+    "pdf_sha256": "0870FF226DC383875C4A1B6EABB06AAB942317DA294D90D2864B3030D46DF1A1",
+    "pdf_page": 651,
+    "printed_page": 638,
+    "native_page_png_sha256": "8E0DCE21A10BFCAAA5A5BE40627110E262459C0BE586626C9AF4EC8CAEC03C71"
+  },
+  "source_sha256": "18B88F4BC48A21D3FD1A246AC5B6909DEEB19900A3D0721C65F9A44369444084",
+  "worktree": {
+    "branch": "v2.7.0/dialogue-c-visual",
+    "head": "eea4060c5229168e2b973bbaea81cf391e7a9dfd",
+    "clean": true
+  },
+  "write_stopped": true,
+  "strictly_last_file_write": true,
+  "seal_mtime_ns": 1787629360000000000,
+  "seal_mtime_utc": "2026-08-25T03:42:40.000000000Z",
+  "acceptance_state": "SEALED_PENDING_MAINLINE_ACCEPTANCE",
+  "sa3_authorized": false,
+  "source_writer": "none",
+  "tex_slot": "disabled"
+}

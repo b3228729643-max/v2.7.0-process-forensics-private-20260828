@@ -1,0 +1,23 @@
+{
+  "seal_count": 1,
+  "dual_manifests": [
+    "MANIFEST_SHA256.json",
+    "MANIFEST_SHA256.csv"
+  ],
+  "common_payload_exclusions": [
+    "MANIFEST_SHA256.json",
+    "MANIFEST_SHA256.csv",
+    "WRITE_STOPPED"
+  ],
+  "manifest_fields": [
+    "path",
+    "bytes",
+    "sha256"
+  ],
+  "all_ordinary_files_read_only_after_seal": true,
+  "write_stopped_is_absolute_final_root_content_write": true,
+  "post_seal_root_content_writes_required": 0,
+  "ads_nondefault_streams_required": 0,
+  "cache_pyc_required": 0,
+  "reparse_points_required": 0
+}

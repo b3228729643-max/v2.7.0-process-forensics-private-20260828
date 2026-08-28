@@ -1,0 +1,39 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V2-C03",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 1,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V2-C03-01",
+      "source_path": "绘图源码/第02册_基础监督学习方法/V2-C03/fig_v2_c03_star.tex",
+      "source_file": "fig_v2_c03_star.tex",
+      "source_kind": "tikz",
+      "label": "fig:V2-C03-star",
+      "caption": "朴素贝叶斯的条件依赖结构：给定$Y$后，各特征节点相互独立",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读图时应回答：“朴素贝叶斯的条件依赖结构：给定$Y$后，各特征节点相互独立”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第02册_基础监督学习方法/chapters/V2-C03.tex",
+        "target_label": "fig:V2-C03-star",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-04-01-001"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：朴素贝叶斯的条件依赖结构：给定Y后，各特征节点相互独立"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

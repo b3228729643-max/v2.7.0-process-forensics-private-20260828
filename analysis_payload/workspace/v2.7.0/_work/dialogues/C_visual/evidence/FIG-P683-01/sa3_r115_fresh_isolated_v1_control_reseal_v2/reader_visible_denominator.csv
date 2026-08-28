@@ -1,0 +1,32 @@
+﻿ELEMENT_ID,CATEGORY,ROLE,TEXT_OR_OBJECT,SOURCE_FILE,SOURCE_LINE,BBOX_X0_PT,BBOX_Y0_PT,BBOX_X1_PT,BBOX_Y1_PT
+T01,FORMULA,hyperparameter,α,fig_v5_c06_plate_graph.tex,25,93.606,228.610,99.201,238.174
+T02,FORMULA,latent_node_label,θ_m,fig_v5_c06_plate_graph.tex,26,172.417,228.771,184.417,239.660
+T03,FORMULA,latent_node_label,z_mn,fig_v5_c06_plate_graph.tex,27,238.160,227.575,254.738,238.465
+T04,FORMULA,observed_node_label,w_mn,fig_v5_c06_plate_graph.tex,28,302.089,227.633,321.202,238.522
+T05,FORMULA,hyperparameter,β,fig_v5_c06_plate_graph.tex,29,93.630,323.743,98.890,333.307
+T06,FORMULA,latent_node_label,φ_k,fig_v5_c06_plate_graph.tex,30,241.110,322.633,251.788,333.522
+T07,TEXT,plate_label,N_m 个词位,fig_v5_c06_plate_graph.tex,43,288.202,194.901,332.799,205.685
+T08,TEXT,plate_label,M 篇文档,fig_v5_c06_plate_graph.tex,44,312.717,284.443,352.120,294.260
+T09,TEXT,plate_label,K 个主题,fig_v5_c06_plate_graph.tex,45,234.004,357.224,271.546,367.041
+T10,TEXT,legend_label,观测变量,fig_v5_c06_plate_graph.tex,47,442.430,238.329,479.092,248.145
+T11,TEXT,legend_label,潜变量,fig_v5_c06_plate_graph.tex,49,442.430,265.258,469.927,275.074
+T12,FORMULA,legend_hyperparameter,"α,β",fig_v5_c06_plate_graph.tex,50,412.013,291.144,426.799,300.708
+T13,TEXT,legend_label,超参数（plate 外）,fig_v5_c06_plate_graph.tex,51,442.430,291.729,518.587,301.545
+T14,TEXT,caption_number,图35.2,fig_v5_c06_plate_graph.tex,55,87.477,368.454,116.686,382.880
+T15,TEXT,caption_line,完整Bayes LDA盘式图把超参数、潜变量和观测变量分开：每篇文档共享一个主题比例，每,fig_v5_c06_plate_graph.tex,55,126.648,372.041,519.142,382.711
+T16,TEXT,caption_line,个词位拥有一个主题指派，所有文档共享带Dirichlet先验的主题词分布；盘框标明重复次数，箭头,fig_v5_c06_plate_graph.tex,55,87.477,385.430,519.144,396.100
+T17,TEXT,caption_line,只表示条件依赖方向,fig_v5_c06_plate_graph.tex,55,87.477,398.820,177.141,409.490
+O01,NODE_BORDER,latent_node,theta node,fig_v5_c06_plate_graph.tex,26,166.985,222.052,190.229,245.297
+O02,NODE_BORDER,latent_node,z node,fig_v5_c06_plate_graph.tex,27,235.018,222.052,258.262,245.297
+O03,NODE_BORDER,observed_node,w node,fig_v5_c06_plate_graph.tex,28,300.215,222.052,323.459,245.297
+O04,NODE_BORDER,latent_node,phi node,fig_v5_c06_plate_graph.tex,30,235.018,317.014,258.262,340.259
+O05,PANEL_BORDER,N_m plate,inner word-position plate,fig_v5_c06_plate_graph.tex,32,221.580,209.156,336.922,258.193
+O06,PANEL_BORDER,M plate,outer document plate,fig_v5_c06_plate_graph.tex,33,151.846,189.552,351.991,277.797
+O07,PANEL_BORDER,K plate,topic plate,fig_v5_c06_plate_graph.tex,34,221.863,306.694,271.417,350.579
+O08,MARKER,legend_observed_marker,observed marker,fig_v5_c06_plate_graph.tex,46,410.484,233.108,428.626,251.250
+O09,MARKER,legend_latent_marker,latent marker,fig_v5_c06_plate_graph.tex,48,410.484,260.037,428.626,278.179
+A01,LINE_ARROW,alpha_to_theta,α→θ_m,fig_v5_c06_plate_graph.tex,36,100.395,232.599,165.179,234.750
+A02,LINE_ARROW,theta_to_z,θ_m→z_mn,fig_v5_c06_plate_graph.tex,37,190.628,232.599,233.212,234.750
+A03,LINE_ARROW,z_to_w,z_mn→w_mn,fig_v5_c06_plate_graph.tex,38,258.660,232.599,298.384,234.750
+A04,LINE_ARROW,beta_to_phi,β→φ_k,fig_v5_c06_plate_graph.tex,39,100.371,327.561,233.212,329.712
+A05,LINE_ARROW,phi_to_w,φ_k→w_mn,fig_v5_c06_plate_graph.tex,40,253.443,244.764,304.224,318.727

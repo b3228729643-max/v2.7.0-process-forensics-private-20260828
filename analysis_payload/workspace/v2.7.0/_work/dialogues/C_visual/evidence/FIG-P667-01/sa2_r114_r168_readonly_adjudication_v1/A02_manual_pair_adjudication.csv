@@ -1,0 +1,15 @@
+machine_pair_id,left_id,right_id,candidate_basis,manual_classification,manual_observation
+P022,T02,T03,bbox-scope intersection,MASK_CONTAMINATION,Compound formula bbox includes its underbrace-label area; native and 8x views show distinct ink with no collision
+P035,T02,G01,bbox containment,MASK_CONTAMINATION,Formula is intentionally inside the first strip; minimum bbox-to-border clearance exceeds 30 px
+P054,T03,G01,bbox containment,MASK_CONTAMINATION,Label is intentionally inside the first strip and is visibly far from its border
+P079,T05,T06,bbox-scope intersection,MASK_CONTAMINATION,Compound formula bbox includes its underbrace-label area; native and 8x views show distinct ink with no collision
+P090,T05,G02,bbox containment,MASK_CONTAMINATION,Formula is intentionally inside the second strip; minimum bbox-to-border clearance exceeds 32 px
+P106,T06,G02,bbox containment,MASK_CONTAMINATION,Label is intentionally inside the second strip and is visibly far from its border
+P127,T08,T09,bbox-scope intersection,MASK_CONTAMINATION,Compound formula bbox includes its underbrace-label area; native and 8x views show distinct ink with no collision
+P136,T08,G03,bbox containment,MASK_CONTAMINATION,Formula is intentionally inside the third strip; minimum bbox-to-border clearance exceeds 28 px
+P149,T09,G03,bbox containment,MASK_CONTAMINATION,Label is intentionally inside the third strip and is visibly far from its border
+P185,T12,G06,bbox containment,MASK_CONTAMINATION,Result formula is intentionally inside its node; minimum bbox-to-border clearance exceeds 39 px
+P187,T13,T14,near-clearance check,CLEAR_NO_COLLISION,Exact gray<200 ink-to-ink calculation found 15 empty pixels at the nearest aligned points
+P223,G03,G05,intentional connector attachment,CLEAR_INTENDED_CONTACT,Main arrow originates at the posterior strip boundary and does not cross reader text
+P229,G05,G06,intentional connector attachment,CLEAR_INTENDED_CONTACT,Main arrow terminates at the result node boundary and does not cross reader text
+P231,G06,G07,intentional connector attachment,CLEAR_INTENDED_CONTACT,Dashed branch originates at the result node boundary and stays clear of reader text

@@ -1,0 +1,19 @@
+\documentclass[UTF8,fontset=none]{ctexart}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage{tikz}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength{\PreviewBorder}{8pt}
+\setmainfont{STIX Two Text}
+\setmathfont{STIX Two Math}
+\setCJKmainfont{Noto Serif SC}[
+  UprightFeatures={RawFeature={axis={wght=200}}},
+  BoldFont={Noto Sans SC Bold}
+]
+\begin{document}
+\begin{tikzpicture}\node[inner sep=0pt,font=\fontsize{9.963pt}{11.956pt}\selectfont]{，};\end{tikzpicture}
+\begin{tikzpicture}\node[inner sep=0pt,font=\fontsize{9.963pt}{11.956pt}\selectfont]{。};\end{tikzpicture}
+\begin{tikzpicture}\node[inner sep=0pt,font=\fontsize{11.557pt}{13.868pt}\selectfont]{：};\end{tikzpicture}
+\begin{tikzpicture}\node[inner sep=0pt,font=\bfseries\fontsize{9.963pt}{11.956pt}\selectfont]{30.2};\end{tikzpicture}
+\end{document}

@@ -1,0 +1,41 @@
+{
+  "handoff_id": "A-R100-P654-SA1-FRESH-20260825",
+  "model_route": "SA1=gpt-5.6-sol/xhigh",
+  "glyph_rows": 95,
+  "glyph_visual_complete_pure_rows": 95,
+  "glyph_manual_failures": [
+    "FRM_TRIAL_005"
+  ],
+  "graphic_rows": 21,
+  "graphic_manual_failures": [],
+  "critical_pair_rows": 50,
+  "critical_pair_manual_failures": [],
+  "views_opened": [
+    "full_page_200dpi.png",
+    "figure_crop_300dpi.png",
+    "standalone_300dpi.png",
+    "grayscale_300dpi.png",
+    "after_text_measurement_overlay_300dpi.png"
+  ],
+  "semantic_rows": [
+    {
+      "CHECK": "MATH_SEMANTICS",
+      "REVIEWER": "SA1=gpt-5.6-sol/xhigh",
+      "PASS": "TRUE",
+      "NOTE": "Counts n and Gamma/Beta normalizers feed the multinomial/Dirichlet family, posterior alpha+n, predictive (alpha_i+n_i)/(alpha_0+N), interpretive branches, and the downstream topic-model application; wording agrees with the adjacent current body."
+    },
+    {
+      "CHECK": "TEXT_CONSISTENCY",
+      "REVIEWER": "SA1=gpt-5.6-sol/xhigh",
+      "PASS": "TRUE",
+      "NOTE": "Counts n and Gamma/Beta normalizers feed the multinomial/Dirichlet family, posterior alpha+n, predictive (alpha_i+n_i)/(alpha_0+N), interpretive branches, and the downstream topic-model application; wording agrees with the adjacent current body."
+    },
+    {
+      "CHECK": "READING_ORDER",
+      "REVIEWER": "SA1=gpt-5.6-sol/xhigh",
+      "PASS": "TRUE",
+      "NOTE": "Counts n and Gamma/Beta normalizers feed the multinomial/Dirichlet family, posterior alpha+n, predictive (alpha_i+n_i)/(alpha_0+N), interpretive branches, and the downstream topic-model application; wording agrees with the adjacent current body."
+    }
+  ],
+  "manual_result": "FAIL_TO_SA2"
+}

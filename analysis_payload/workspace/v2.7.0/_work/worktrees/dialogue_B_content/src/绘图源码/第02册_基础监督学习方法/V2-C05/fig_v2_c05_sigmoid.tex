@@ -1,0 +1,61 @@
+% v2.6.0 figure UID: FIG-P262-01
+% Image-reference reverse redraw: preserve the semantic geometry and clarify the visual hierarchy.
+\tikzset{
+  slfig-FIG-P262-01/.style={
+    every path/.append style={line cap=round,line join=round},
+    font=\fontsize{9.2}{11}\selectfont,
+  },
+  slfig-FIG-P262-01-direct/.style={
+    slfig direct label,font=\fontsize{9.2}{11}\selectfont,inner sep=1.1pt,
+  },
+  slfig-FIG-P262-01-note/.style={
+    slfig note,font=\fontsize{9.2}{11}\selectfont,inner xsep=3.2pt,inner ysep=2.2pt,
+  },
+}
+\pgfplotsset{
+  slfig-FIG-P262-01-axis/.style={
+    axis line style={draw=SLInk!82,line width=.52pt},
+    tick style={draw=SLInk!76,line width=.44pt},
+    tick label style={font=\fontsize{8.7}{10.2}\selectfont},
+    label style={font=\fontsize{9.5}{11.2}\selectfont},
+    clip=false,
+  },
+  slfig-FIG-P262-01-curve/.style={draw=SLBlue,line width=1.02pt},
+  slfig-FIG-P262-01-reference/.style={draw=SLInk!38,line width=.52pt,dash pattern=on 4.2pt off 2.5pt},
+  slfig-FIG-P262-01-tangent/.style={draw=SLGold!82!black,line width=.78pt},
+  slfig-FIG-P262-01-guide/.style={draw=SLInk!48,line width=.52pt,dash pattern=on 2.2pt off 1.8pt},
+}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P262-01]
+\begin{axis}[slfig axis,slfig-FIG-P262-01-axis,
+  width=.82\linewidth,height=.50\linewidth,
+  xmin=-6.25,xmax=6.25,ymin=-.08,ymax=1.08,
+  axis lines=middle,xlabel={$z$},ylabel={$\sigma(z)$},
+  xtick={-2,0,2},xticklabels={$-a$,0,$a$},
+  ytick={0,.5,1},yticklabels={0,$\tfrac12$,1},
+  clip=false,
+]
+  \addplot[slfig-FIG-P262-01-curve,domain=-6:6,samples=301]
+    {1/(1+exp(-x))};
+  \addplot[slfig-FIG-P262-01-reference] coordinates {(-6,0) (6,0)};
+  \addplot[slfig-FIG-P262-01-reference] coordinates {(-6,1) (6,1)};
+  \addplot[slfig-FIG-P262-01-tangent,domain=-1.55:1.55,samples=2]
+    {.5+.25*x};
+  \addplot[slfig-FIG-P262-01-guide] coordinates {(-2,0) (-2,{1/(1+exp(2))})};
+  \addplot[slfig-FIG-P262-01-guide] coordinates {(2,0) (2,{1/(1+exp(-2))})};
+  \addplot[only marks,mark=*,mark size=2.2pt,draw=SLTeal,fill=SLTeal]
+    coordinates {(-2,{1/(1+exp(2))}) (2,{1/(1+exp(-2))})};
+  \addplot[only marks,mark=*,mark size=2.3pt,draw=SLGold!82!black,fill=SLGold]
+    coordinates {(0,.5)};
+  \node[slfig-FIG-P262-01-direct,text=SLBlue,anchor=west] at (axis cs:2.65,.82) {概率映射};
+  \draw[draw=SLGold!82!black,line width=.46pt]
+    (axis cs:.55,.6375)--(axis cs:.82,.50);
+  \node[font=\fontsize{9.2}{11}\selectfont,text=SLGold!82!black,anchor=west]
+    at (axis cs:.95,.40) {中心斜率 $\sigma'(0)=\tfrac14$};
+  \node[slfig-FIG-P262-01-note,anchor=east] at (axis cs:-2.55,.72)
+    {$\sigma(-a)=1-\sigma(a)$};
+\end{axis}
+\end{tikzpicture}
+\caption{逻辑斯谛函数把线性预测量映射为概率，并满足关于$(0,1/2)$的中心对称性}\label{fig:V2-C05-sigmoid}
+\end{figure}

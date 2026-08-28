@@ -1,0 +1,5 @@
+DECISION_ID,SEMANTIC_ROLE,ELEMENT_COUNT,REVIEWER,OPENED_SOURCE,DECISION,NOTE
+R10-SOURCE-001,NODE_BASE,78,P654_R10_SA2_MANUAL,"source lines3,9,22-38; all node glyph sheets",PASS,"Every ordinary node glyph inherits 10.1pt; min=max=10.1pt, ratio1.0 and delta0.0pt, so the 78-node-base denominator is source-uniform."
+R10-SOURCE-002,FORMULA_BLOCK,14,P654_R10_SA2_MANUAL,"source lines27-34; formula glyph sheets006,008,011,012",PASS,"Both displayed formulas explicitly use 11.6pt and all 14 formula-block glyphs share that base size, including natural scripts derived by TeX."
+R10-SOURCE-003,TRIAL_INLINE_FORMULA,1,P654_R10_SA2_MANUAL,"source line22; glyph sheet001 cell1",PASS,"The sole trial inline n is explicitly 10.7pt; this local role is distinct from 10.1pt node text and remains above the 9.5pt floor."
+R10-SOURCE-004,ANNOTATION,2,P654_R10_SA2_MANUAL,"source lines46-47; glyph sheet016 cells4-5",PASS,"Both characters of 应用 are emitted by one 10.1pt edge-label node, giving exact same-role size equality without hidden scale or transform."

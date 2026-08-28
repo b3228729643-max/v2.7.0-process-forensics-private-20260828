@@ -1,0 +1,11 @@
+OBJECT_ID,REVIEWER_TYPE,HUMAN_CERTIFICATION,OBJECT_ROLE,MANUAL_NATIVE_OBSERVATION,RELATION_OR_GEOMETRY_CHECK,HARD_DECISION
+O01,AI_SA3_VISUAL_REVIEW,false,AXIS_X,"Horizontal axis is continuous from -2 through 3 and ends in a complete right arrowhead.","Tick ordering is monotone; endpoint labels and arrowhead do not touch or clip.",PASS
+O02,AI_SA3_VISUAL_REVIEW,false,AXIS_Y,"Vertical density axis is continuous and ends in a complete upward arrowhead.","0, 0.25, and 0.5 positions are ordered and their tick text remains left of the line.",PASS
+O03,AI_SA3_VISUAL_REVIEW,false,X_TICKS,"All six x tick marks are visible at the declared coordinates.","Nearest tick-label clearance is 16 px; none crosses a glyph.",PASS
+O04,AI_SA3_VISUAL_REVIEW,false,Y_TICKS,"All three y tick marks are visible and aligned with their values.","Nearest y-label/tick clearance is 18 px; no text/line contact.",PASS
+O05,AI_SA3_VISUAL_REVIEW,false,DATA_CURVE_BLUE,"Blue solid density with pale fill is smooth and peaks at the blue mean guide.","Source formula uses 0.498678 exp[-0.78125(t-.45)^2], the correct N(.45,.64) density.",PASS
+O06,AI_SA3_VISUAL_REVIEW,false,DATA_CURVE_GOLD,"Gold dashed density is smooth, shifted right of the blue curve, and stays visible in grayscale.","Source formula uses 0.498678 exp[-0.78125(t-.60)^2], the correct N(.60,.64) density.",PASS
+O07,AI_SA3_VISUAL_REVIEW,false,MEAN_LINE_BLUE,"Blue dashed mean guide stands at x=.45 and reaches the blue peak without entering its label.","Guide position equals rho*b=.6*.75=.45.",PASS
+O08,AI_SA3_VISUAL_REVIEW,false,MEAN_LINE_GOLD,"Gold dash-dot mean guide stands to the right at x=.60 and reaches the gold peak.","Guide position equals rho*a=.6*1=.60.",PASS
+O09,AI_SA3_VISUAL_REVIEW,false,NOTE_BORDER,"Rounded note border is complete on all sides and remains outside the data curves.","Both enclosed note lines have 19 px foreground-to-border clearance; no clipping or illegal contact.",PASS
+

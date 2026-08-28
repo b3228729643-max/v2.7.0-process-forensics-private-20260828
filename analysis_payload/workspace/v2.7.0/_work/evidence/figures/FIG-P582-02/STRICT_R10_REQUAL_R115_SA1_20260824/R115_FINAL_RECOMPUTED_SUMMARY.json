@@ -1,0 +1,64 @@
+{
+  "uid": "FIG-P582-02",
+  "round": "STRICT_R10_REQUAL_R115_SA1_20260824",
+  "reviewer": "R115_SA1_requalification_current_identity",
+  "official_pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r95_fullbook\\main_full.pdf",
+  "physical_pdf_page": 630,
+  "printed_page": 617,
+  "source_read_only": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C02\\fig_v5_c02_weight_ess.tex",
+  "result": "FAIL_TO_SA2",
+  "evidence_integrity": "FAIL",
+  "figure_hard_gates": "FAIL",
+  "counts": {
+    "visible_glyphs": 149,
+    "font_pt_fail": 67,
+    "strict_raw_d_fail": 3,
+    "strict_raw_e_fail": 0,
+    "low_profile_calibration_closure_fail": 21,
+    "all_unordered_relations": 125,
+    "relation_fail": 0,
+    "overlap_nonzero_relations": 0,
+    "minimum_relation_clearance_px": 12.0,
+    "edge_relations": 10,
+    "edge_fail": 0,
+    "minimum_edge_clearance_px": 32.0,
+    "occlusion_cases": 3,
+    "occlusion_fail": 0,
+    "required_critical_packages": 9,
+    "extra_opened_package": "R0085",
+    "raw_glyph_pngs_machine_opened": 596,
+    "critical_package_pngs_machine_opened": 60
+  },
+  "physical_raw_height_failures": [
+    {
+      "id": "F582_G011",
+      "char": "=",
+      "parent": "P03_CARD_ESS_FORMULA",
+      "h_ink_px": "12",
+      "threshold_px": "22"
+    },
+    {
+      "id": "F582_G012",
+      "char": "≈",
+      "parent": "P03_CARD_ESS_FORMULA",
+      "h_ink_px": "18",
+      "threshold_px": "22"
+    },
+    {
+      "id": "F582_G084",
+      "char": "一",
+      "parent": "P10_CAPTION",
+      "h_ink_px": "9",
+      "threshold_px": "30"
+    }
+  ],
+  "integrity_failure_codes": [
+    "LOW_PROFILE_CALIBRATION_CLOSURE_FAIL"
+  ],
+  "physical_failure_codes": [
+    "FONT_EFFECTIVE_PT_LT_9_5",
+    "STRICT_RAW_HEIGHT_FAIL",
+    "FONT_VISUAL_HARMONY_SIZE_FAIL"
+  ],
+  "manual_input": "ledger/R115_SA1_MANUAL_JUDGMENT_INPUT.json"
+}

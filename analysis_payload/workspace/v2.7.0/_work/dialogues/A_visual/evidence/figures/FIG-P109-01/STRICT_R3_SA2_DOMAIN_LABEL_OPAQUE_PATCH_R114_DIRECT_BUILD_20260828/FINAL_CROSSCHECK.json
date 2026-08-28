@@ -1,0 +1,87 @@
+{
+  "schema": "P109_R3_FINAL_CROSSCHECK_V1",
+  "handoff_id": "A-R114-P109-SA2-DIRECT-BUILD-R3-20260828",
+  "result": "LOCAL_SA2_PASS_READY_FOR_MAIN_REVIEW_AND_ATOMIC_COMMIT_AUTH",
+  "source": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\绘图源码\\第01册_数学基础与统计学习基本理论\\V1-C07\\fig_v1_c07_convex_set.tex",
+    "bytes": 1922,
+    "sha256": "887326D54E8DD97AA6D580EFA7CCD21FA371A94CACD36EB7029E80FC4D2D9355",
+    "baseline_sha256": "E8B3303A3893491A69815F407423C68BC17663CC017DC3AB49953235E615FD98",
+    "diff_files": 1,
+    "diff_insertions": 1,
+    "diff_deletions": 1,
+    "diff_check": "PASS"
+  },
+  "pdf": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P109-01\\STRICT_R3_SA2_DOMAIN_LABEL_OPAQUE_PATCH_R114_DIRECT_BUILD_20260828\\build\\v260_FIG-P109-01_standalone.pdf",
+    "bytes": 26500,
+    "sha256": "C615152183FCB524F2B4FBDFB4A69D43C134DCDE20F989BF0050C2D2776A199D",
+    "page_count": 1,
+    "page_size": "A4",
+    "pdf_version": "1.7",
+    "encrypted": false
+  },
+  "denominator": {
+    "drawing_objects": 10,
+    "text_objects": 5,
+    "object_count": 15,
+    "unordered_pair_count": 105,
+    "expected_unordered_pair_count": 105,
+    "glyph_codepoint_rows": 52
+  },
+  "manual": {
+    "object_rows": 15,
+    "pair_rows": 105,
+    "view_rows": 20,
+    "math_semantic_rows": 8,
+    "glyph_codepoint_rows": 52,
+    "blank_notes": 0,
+    "non_pass_rows": 0
+  },
+  "critical_fix": {
+    "pair_id": "P013",
+    "objects": ["O001", "O014"],
+    "description": "convex-set boundary versus domain-label text",
+    "shared_ink_pixels": 0,
+    "minimum_ink_distance_px": 9.0,
+    "protective_background_object": "O009",
+    "decision": "PASS"
+  },
+  "regression": {
+    "machine_hard_failure_count": 0,
+    "manual_hard_failure_count": 0,
+    "missing_or_tofu_count": 0,
+    "wrong_codepoint_or_math_semantic_count": 0,
+    "unreadable_or_severely_imbalanced_count": 0,
+    "true_clip_count": 0,
+    "illegal_ink_overlap_count": 0,
+    "semantic_or_geometric_error_count": 0,
+    "boundary_perceptually_continuous_around_authorized_occlusion": true,
+    "grayscale_pass": true,
+    "page_integration_pass": true
+  },
+  "caption_scope": {
+    "rendered_in_exact_standalone_wrapper": false,
+    "reason": "The frozen standalone wrapper intentionally redefines caption to empty.",
+    "source_caption_unchanged": true
+  },
+  "build": {
+    "controller_invocation_count": 1,
+    "typeset_invocation_count": 1,
+    "retry_count": 0,
+    "latexmk_count": 0,
+    "version_probe_count": 0,
+    "exit_code": 0,
+    "natural": true,
+    "interrupted": false,
+    "terminal_tex_counts": {
+      "latexmk": 0,
+      "lualatex": 0,
+      "luatex": 0,
+      "luahbtex": 0
+    }
+  },
+  "hard_failure_count": 0,
+  "commit_created": false,
+  "fresh_role_started": false
+}

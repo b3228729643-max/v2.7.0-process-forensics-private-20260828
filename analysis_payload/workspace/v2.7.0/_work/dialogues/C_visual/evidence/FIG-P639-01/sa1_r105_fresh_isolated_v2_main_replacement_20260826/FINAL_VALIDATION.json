@@ -1,0 +1,63 @@
+{
+  "uid": "FIG-P639-01",
+  "handoff_id": "MAIN-R105-P639-SA1-FRESH-ISOLATED-REPLACEMENT-20260826",
+  "verdict": "FAIL_TO_SA2",
+  "candidate_identity": {
+    "physical_page_1based": 689,
+    "pages": 817,
+    "bytes": 4967209,
+    "sha256": "F86E89047BA09FEA72FD8F79BF524A04DA367BFF3057806A879106A1032626A1"
+  },
+  "object_gate": {
+    "glyphs": 147,
+    "visible_graphics": 10,
+    "visible_objects": 157,
+    "empty_masks": 0,
+    "manual_glyph_rows": 147,
+    "manual_glyph_nonpass": 0,
+    "status": "PASS"
+  },
+  "all_pair_gate": {
+    "expected": 12246,
+    "actual": 12246,
+    "independent_illegal_overlap_pairs": 0,
+    "clearance_failure_pairs": 1,
+    "status": "FAIL"
+  },
+  "sole_failure": {
+    "pair_id": "R00008",
+    "a_id": "G001",
+    "b_id": "G009",
+    "rule": "TEXT_TEXT_BBOX",
+    "intersection_px": 0,
+    "raw_mask_clearance_px": 28.0689,
+    "pdf_bbox_clearance_px": 0.0,
+    "required_px": 4.0,
+    "manual_roi_opened": true
+  },
+  "crop_gate": {"clip_failure_count": 0, "status": "PASS"},
+  "r168_gate": {
+    "font_micro_pixel_and_ratio": "ADVISORY_ONLY",
+    "missing_tofu_wrong_glyph_codepoint": "PASS",
+    "math_semantics": "PASS",
+    "unreadable_or_gross_visible_imbalance": "PASS",
+    "illegal_overlap": "PASS",
+    "grayscale": "PASS",
+    "page_fusion": "PASS",
+    "strict_geometry": "FAIL"
+  },
+  "manual_gate": {
+    "contact_sheets_opened": 13,
+    "view_ledger_rows": 20,
+    "critical_relation_manual_rows": 1,
+    "status": "PASS"
+  },
+  "portable_path_gate": {
+    "ordinary_included_masks": 157,
+    "retained_pre_occlusion_mask": "D_X_AXIS_OCCLUDED.png",
+    "ads_count_preseal": 0,
+    "cache_directory_count_preseal": 0,
+    "status": "PASS"
+  },
+  "final_status": "FAIL_TO_SA2"
+}

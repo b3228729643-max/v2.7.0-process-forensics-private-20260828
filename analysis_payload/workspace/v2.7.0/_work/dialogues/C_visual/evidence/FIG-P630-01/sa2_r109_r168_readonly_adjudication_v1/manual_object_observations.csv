@@ -1,0 +1,37 @@
+﻿object_id,manual_disposition,manual_observation,hard_defect_found
+T01,CLEAR,"Joint-target/local-factor label is fully readable, centered, and semantically exact.",false
+T02,CLEAR,"Conditional premise is readable; x_{-j} uses the correct U+2212 minus in an automatic TeX script and shows no tofu or wrong codepoint at native 1x or nearest 8x.",false
+T03,CLEAR,"Full-conditional formula is readable; U+22C5 is present as the intended centered dot and the conditioning bar and subscripts are unambiguous at native 1x and nearest 8x.",false
+T04,CLEAR,"Single-coordinate-kernel label and K_j are readable and centered.",false
+T05,CLEAR,"Only-update-x_j label is readable and correctly expresses the coordinate update.",false
+T06,CLEAR,"Scan-kernel label is readable and centered.",false
+T07,CLEAR,"System/random scan alternatives are readable and balanced.",false
+T08,CLEAR,"Correlated-sample label is readable and centered.",false
+T09,CLEAR,"Diagnostics heading is readable and centered.",false
+T10,CLEAR,"MCSE / ESS / trajectory line is readable, correctly spelled, and clear of the border and incoming arrow.",false
+T11,CLEAR,"Correctness-conditions heading is readable and clear of the side-box border.",false
+T12,CLEAR,"Target-invariance line is readable and evenly spaced.",false
+T13,CLEAR,"Support-reachability line is readable and evenly spaced.",false
+T14,CLEAR_TIGHT,"Ergodicity line is readable; the opened native and nearest-8x ROI shows 5.792 px vector-bbox inner clearance to B07 and no ink/border contact.",false
+T15,CLEAR,"Mixing-efficiency heading is readable and clear of the side-box border.",false
+T16,CLEAR,"Autocorrelation-length line is readable and evenly spaced.",false
+T17,CLEAR,"Effective-sample-size line is readable and clear of the bottom border.",false
+T18,CLEAR,"Correct-kernel-not-fast-mixing statement is the intended emphasis; U+2260 is present, correct, and clear at native 1x and nearest 8x.",false
+T19,CLEAR,"Figure label 33.1 is fully visible, readable, and correctly numbered.",false
+T20,CLEAR,"Caption is a single readable line, semantically consistent with the chain, and fully inside the page.",false
+B01,CLEAR,"Joint node border is complete, rounded, and free of text contact or clipping.",false
+B02,CLEAR,"Conditional node border is complete and clear of both text lines.",false
+B03,CLEAR,"Coordinate-kernel node border is complete and clear of both text lines.",false
+B04,CLEAR,"Scan-kernel node border is complete and clear of both text lines.",false
+B05,CLEAR,"Correlated-sample node border is complete and clear of its label.",false
+B06,CLEAR,"Diagnostics node border is complete and clear of both text lines.",false
+B07,CLEAR,"Correctness side-box border is complete; T14 is close but visibly separate and not clipped.",false
+B08,CLEAR,"Mixing-efficiency side-box border is complete and fully inside the PDF page.",false
+B09,CLEAR,"Boundary statement box is complete, visually subordinate to the main chain, and clear of T18 and the caption.",false
+A01,CLEAR,"Directed edge joint -> conditional has one clear right-facing arrowhead and crosses no text.",false
+A02,CLEAR,"Directed edge conditional -> coordinate kernel has one clear right-facing arrowhead and crosses no text.",false
+A03,CLEAR,"Directed edge coordinate kernel -> scan kernel has one clear downward arrowhead and crosses no text.",false
+A04,CLEAR,"Directed edge scan kernel -> correlated sample has one clear left-facing arrowhead and crosses no text.",false
+A05,CLEAR,"Directed edge correlated sample -> diagnostics has one clear left-facing arrowhead and crosses no text.",false
+L01,CLEAR,"Correctness leader is non-directional, joins the intended corners, and crosses no label.",false
+L02,CLEAR,"Mixing-efficiency leader is non-directional, joins the intended corners, and crosses no label.",false

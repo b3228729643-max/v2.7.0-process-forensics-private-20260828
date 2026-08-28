@@ -1,0 +1,41 @@
+{
+  "a": "EL-018-NODE_3-CJK_FULL",
+  "b": "G-NODE-3-BORDER",
+  "relation": "TEXT_BORDER",
+  "record": {
+    "PAIR_ID": "PAIR-002407",
+    "OBJECT_A": "EL-018-NODE_3-CJK_FULL",
+    "OBJECT_B": "G-NODE-3-BORDER",
+    "CATEGORY_A": "TEXT_ELEMENT",
+    "CATEGORY_B": "GRAPHIC",
+    "RELATION": "TEXT_BORDER",
+    "THRESHOLD_PX": "5.0",
+    "METHOD": "exact_separated_raw_masks_local_EDT",
+    "OVERLAP_PIXELS": 0,
+    "MIN_RAW_INK_GAP_PX": "10.045",
+    "A_NEAREST_X": 956,
+    "A_NEAREST_Y": 2065,
+    "B_NEAREST_X": 957,
+    "B_NEAREST_Y": 2076,
+    "STATUS": "PASS",
+    "REASON": "final-visible text/formula ink to final-visible border stroke"
+  },
+  "raw_roi_page_px": [
+    932,
+    2041,
+    982,
+    2101
+  ],
+  "context_roi_page_px": [
+    838,
+    1953,
+    1026,
+    2097
+  ],
+  "mask_color": {
+    "A": "red",
+    "B": "blue",
+    "intersection": "yellow"
+  },
+  "geometry": "all foreground mask pixels are sampled from official_page_682_300dpi.png at 1:1; 8x is nearest-only review"
+}

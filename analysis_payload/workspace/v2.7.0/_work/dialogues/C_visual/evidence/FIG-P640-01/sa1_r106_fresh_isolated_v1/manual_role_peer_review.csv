@@ -1,0 +1,50 @@
+review_id,reviewer,scope,object_count_or_peer_ids,views_opened,numeric_observation,r168_hard_scope_judgment,decision,note
+RM001,SA1-FRESH,CAPTION-CJK,63,figure+grayscale,H28-38 ratio1.3571,No unreadable or severely imbalanced CJK glyph,PASS,Low-stroke 二 is naturally shorter while caption CJK remains visually uniform
+RM002,SA1-FRESH,CAPTION-DIGITS,11,figure+contacts,H25-29 ratio1.1600,No severe digit imbalance,PASS,Bold figure number and regular formula digits explain the advisory spread
+RM003,SA1-FRESH,CAPTION-LATIN-LOWER,9,figure+contacts,H22-31 ratio1.4091,No unreadability or wrong glyph,PASS,Latin x-height and italic math shapes differ naturally without visual disruption
+RM004,SA1-FRESH,CAPTION-PUNCTUATION,5,figure+contacts,H7-28 ratio4.0000,No missing punctuation,PASS,Decimal point commas and fullwidth semicolon are unlike low-profile shapes and all are complete
+RM005,SA1-FRESH,CAPTION-OPERATORS,9,figure+contacts,H4-40 ratio10.0000,No operator is unreadable or semantically wrong,PASS,Thin minus and tall bars or parentheses make taxonomy ratio advisory under R168
+RM006,SA1-FRESH,LEFT-AXIS-TITLE-CJK,2,figure+contacts,H34 median34,No imbalance,PASS,滞 and 后 have identical ink height and harmonious weight
+RM007,SA1-FRESH,LEFT-AXIS-TITLE-k,1,figure+contacts,H30,Readable base variable,PASS,Italic k is proportionate to adjacent CJK title
+RM008,SA1-FRESH,LEFT-YTITLE-CAPITAL,1,figure+contacts,H24,Readable Corr capital,PASS,Capital C remains clear in rotated formula
+RM009,SA1-FRESH,LEFT-YTITLE-LOWER,6,figure+contacts,H15-27 ratio1.8000,No actual unreadability,PASS,Italic X rho and x-height r belong to different glyph silhouettes within one formula
+RM010,SA1-FRESH,LEFT-YTITLE-PUNCT,1,figure+contacts,H6,Comma complete,PASS,The rotated comma retains its dot and tail
+RM011,SA1-FRESH,LEFT-YTITLE-OPERATORS,3,figure+contacts,H12-25 ratio2.0833,No semantic ambiguity,PASS,Parentheses and equals have naturally different ink heights
+RM012,SA1-FRESH,LEFT-YTITLE-SCRIPTS,12,figure+contacts,H9-19 ratio2.1111,Natural scripts readable and correctly attached,PASS,All scripts are legible at native view despite glyph-dependent height spread
+RM013,SA1-FRESH,LEFT-LEGEND-DIGITS,6,standalone+contacts,H27-28 ratio1.0370,No imbalance,PASS,Legend digits are uniform across .95 .70 and .20
+RM014,SA1-FRESH,LEFT-LEGEND-RHO,3,standalone+contacts,H29 ratio1.0000,No imbalance,PASS,All three rho glyphs match exactly in visible height
+RM015,SA1-FRESH,LEFT-LEGEND-DOTS,3,standalone+contacts,H6 ratio1.0000,No missing punctuation,PASS,All three decimal points match exactly
+RM016,SA1-FRESH,LEFT-LEGEND-DELIMITERS,9,standalone+contacts,H12-40 ratio3.3333,No unreadable operator,PASS,Tall absolute bars and thin equals signs are semantically distinct shapes not true peer-height failures
+RM017,SA1-FRESH,LEFT-PANEL-TITLE-CJK,2,standalone+contacts,H34 ratio1.0000,No imbalance,PASS,轮末 glyph heights match exactly
+RM018,SA1-FRESH,LEFT-PANEL-TITLE-CAPS,3,standalone+contacts,H27-28 ratio1.0370,No imbalance,PASS,ACF letters are visually even
+RM019,SA1-FRESH,LEFT-PANEL-TITLE-LOWER,2,standalone+contacts,H21-29 ratio1.3810,No severe imbalance,PASS,Panel a and math rho have different glyph silhouettes yet coherent title scale
+RM020,SA1-FRESH,LEFT-PANEL-TITLE-COLON,1,standalone+contacts,H31,Both dots visible,PASS,Fullwidth colon is complete and balanced
+RM021,SA1-FRESH,LEFT-PANEL-TITLE-PARENS,2,standalone+contacts,H37 ratio1.0000,No imbalance,PASS,Panel-marker parentheses match exactly
+RM022,SA1-FRESH,LEFT-PANEL-TITLE-SCRIPTS,2,standalone+contacts,H20-22 ratio1.1000,No severe imbalance,PASS,Superscript 2 and k are both readable and naturally differ by glyph
+RM023,SA1-FRESH,LEFT-TICKS-DIGITS,19,standalone+contacts,H26-27 ratio1.0385,No imbalance,PASS,All left-panel tick digits are uniform
+RM024,SA1-FRESH,LEFT-TICKS-DOTS,3,standalone+contacts,H6 ratio1.0000,No missing punctuation,PASS,All left y-tick decimal points match
+RM025,SA1-FRESH,RIGHT-AXIS-TITLE-LOWER,3,right-panel+contacts,H29-30 ratio1.0345,No imbalance,PASS,Rho and both N bases are uniform at role scale
+RM026,SA1-FRESH,RIGHT-AXIS-TITLE-DELIMITERS,3,right-panel+contacts,H17-38 ratio2.2353,No unreadability,PASS,Slash and absolute-value bars differ by shape rather than applied font size
+RM027,SA1-FRESH,RIGHT-AXIS-TITLE-SCRIPTS,3,right-panel+contacts,H9-13 ratio1.4444,All eff glyphs readable,PASS,Subscript e and f silhouettes account for advisory variation
+RM028,SA1-FRESH,RIGHT-LIMIT-DIGITS,2,right-panel+contacts,H26-27 ratio1.0385,No imbalance,PASS,Limit targets 1 and 0 have matched scale
+RM029,SA1-FRESH,RIGHT-LIMIT-BASE-LETTERS,3,right-panel+contacts,H28-29 ratio1.0357,No imbalance,PASS,Rho and two N bases are visually uniform
+RM030,SA1-FRESH,RIGHT-LIMIT-OPERATORS,6,right-panel+contacts,H16-38 ratio2.3750,No missing or unreadable operator,PASS,Bars arrows colon and slash retain distinct complete forms
+RM031,SA1-FRESH,RIGHT-LIMIT-SCRIPTS,4,right-panel+contacts,H3-20 ratio6.6667,Natural raised minus and eff remain unambiguous,PASS,Thin raised minus is a three-pixel rule but clearly visible under R168
+RM032,SA1-FRESH,RIGHT-PANEL-TITLE-CJK,4,right-panel+contacts,H33-34 ratio1.0303,No imbalance,PASS,渐近比例 CJK is visually uniform
+RM033,SA1-FRESH,RIGHT-PANEL-TITLE-CAPS,3,right-panel+contacts,H27-37 ratio1.3704,No severe imbalance,PASS,E and S have different native silhouette height but the ESS word reads evenly
+RM034,SA1-FRESH,RIGHT-PANEL-TITLE-b,1,right-panel+contacts,H30,Readable panel letter,PASS,Panel b is proportionate to its parentheses
+RM035,SA1-FRESH,RIGHT-PANEL-TITLE-COLON,1,right-panel+contacts,H21,Both dots visible,PASS,Right title fullwidth colon is complete
+RM036,SA1-FRESH,RIGHT-TITLE-FRACTION-BODY,6,right-panel+contacts,H16-24 ratio1.5000,All numerator denominator symbols readable,PASS,Digits operators and rho have naturally different silhouettes in the small title fraction
+RM037,SA1-FRESH,RIGHT-PANEL-TITLE-PARENS,2,right-panel+contacts,H37 ratio1.0000,No imbalance,PASS,Panel-b parentheses match exactly
+RM038,SA1-FRESH,RIGHT-TITLE-EXPONENTS,2,right-panel+contacts,H14 ratio1.0000,No imbalance,PASS,Both rho-squared exponents match exactly
+RM039,SA1-FRESH,POINT-NOTE-DIGITS,5,right-panel+contacts,H26-27 ratio1.0385,No imbalance,PASS,Point-label digits are uniform
+RM040,SA1-FRESH,POINT-NOTE-PUNCT,3,right-panel+contacts,H6-10 ratio1.6667,No punctuation missing,PASS,Decimal points match while comma is taller by its descending tail
+RM041,SA1-FRESH,POINT-NOTE-PARENS,2,right-panel+contacts,H38 ratio1.0000,No imbalance,PASS,Gold point-label parentheses match exactly
+RM042,SA1-FRESH,RIGHT-TICKS-DIGITS,8,right-panel+contacts,H26-27 ratio1.0385,No imbalance,PASS,Right-panel tick digits are uniform
+RM043,SA1-FRESH,RIGHT-TICKS-DOTS,3,right-panel+contacts,H6 ratio1.0000,No missing punctuation,PASS,Right-panel decimal points match exactly
+PR001,SA1-FRESH,CROSS-PANEL-TICK-DIGITS,G001-G022 vs G082-G092,standalone+right-panel,H26-27 both panels,No cross-panel size imbalance,PASS,Tick digits have the same native range in both panels
+PR002,SA1-FRESH,CROSS-PANEL-PANEL-MARKERS,G049-G051 vs G127-G129,standalone+right-panel,Parentheses H37 both panels,No cross-panel marker imbalance,PASS,Panel markers (a) and (b) are matched in size and weight
+PR003,SA1-FRESH,CROSS-PANEL-TITLES,T022-T027 vs T047-T054,figure+grayscale,Source 9.6pt both; right fraction naturally smaller,No obvious severe title imbalance,PASS,Panel titles align at the same top band and neither dominates
+PR004,SA1-FRESH,CROSS-PANEL-AXIS-TITLES,T013-T021 vs T043-T046,figure+grayscale,Source label 9.8pt both,No obvious severe axis-title imbalance,PASS,Axis titles share coherent scale despite different formula complexity
+PR005,SA1-FRESH,ANNOTATION-TO-BASE,T037-T042 vs right ticks,figure+right-panel,Source annotation 9.6pt vs tick 9.6pt,No annotation is unreadable or overpowering,PASS,Gold annotations are prominent by color rather than excessive size
+PR006,SA1-FRESH,LEGEND-TO-BASE,T028-T030 vs left ticks,standalone+grayscale,Source legend 9.6pt vs tick 9.6pt,No legend imbalance,PASS,Legend text reads at the same base scale as tick labels

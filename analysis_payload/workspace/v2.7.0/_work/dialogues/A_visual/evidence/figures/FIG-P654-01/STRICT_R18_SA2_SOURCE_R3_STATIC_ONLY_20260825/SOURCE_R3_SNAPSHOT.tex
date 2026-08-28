@@ -1,0 +1,64 @@
+% v2.7.0 figure UID: FIG-P654-01
+% Image-guided reverse redraw: preserve the 8-node/7-path dependency graph and separate all lower-row labels.
+\tikzset{slfig-FIG-P654-01/.style={font=\fontsize{10.1pt}{12.2pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begingroup
+% One 10.7pt BASE_MATH role: IBM Plex math letters, a Libertinus U+002B
+% binary operator, and a genuine Mezenets U+004E uppercase N.  No
+% per-glyph font-size overrides or semantic substitutions.
+\font\slfigPBaseMath="IBMPlexMath-Regular.otf" at 10.7pt
+\font\slfigPBinaryMath="LibertinusMath-Regular.otf" at 10.7pt
+\font\slfigPTotalMath="MezenetsUnicode.otf" at 10.7pt
+\def\slfigPAlpha{\mathord{\hbox{\slfigPBaseMath\char"1D6FC}}}
+\def\slfigPCountN{\mathord{\hbox{\slfigPBaseMath\char"1D45B}}}
+\def\slfigPPlus{\mathbin{\hbox{\slfigPBinaryMath\char"002B}}}
+\def\slfigPTotalN{\mathord{\hbox{\slfigPTotalMath\char"004E}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P654-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{10.1pt}{12.2pt}\selectfont,align=center},
+  core/.style={draw=SLMidBlue,fill=SLSoftBlue,rounded corners=2pt,
+    minimum height=13mm,text width=31mm,inner xsep=4pt,inner ysep=3.8pt},
+  aux/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,
+    minimum height=12mm,text width=31mm,inner xsep=4pt,inner ysep=3.8pt},
+  result/.style={draw=SLDeepBlue,fill=white,rounded corners=2pt,
+    minimum height=18mm,text width=37mm,inner xsep=3pt,inner ysep=4pt},
+  arr/.style={->,draw=SLMidBlue,line width=.95pt},
+  interp/.style={draw=SLGray,line width=.62pt},
+  application/.style={->,draw=SLGray,line width=.70pt,dash pattern=on 2.2pt off 1.5pt},
+  >={Stealth[length=2.4mm,width=1.7mm]},
+  every node/.append style={line width=0.85pt},
+  alt={对象—关系—结论：类别计数与Gamma—Beta归一化两条前置线索汇入多项似然和Dirichlet先验，实线有向主链先以参数相加得到共轭后验，再由后验均值得到给定计数与超参数的类别预测概率；无箭头细线连接单纯形几何、均值浓度和对数矩等解释对象，虚线有向边仅把预测连到下游主题模型应用}]
+\node[aux,text width=28mm] (trial) at (-5.499,1.15) {类别计数\\{\fontsize{10.7pt}{12.8pt}\selectfont$\slfigPCountN$}};
+\node[aux,text width=28mm] (gamma) at (-5.499,-1.15) {Gamma 与贝塔\\规范因子};
+\node[core] (families) at (-1.88,0)
+  {多项分布\\与狄利克雷先验};
+\node[result] (posterior) at (2.15,0)
+  {共轭狄利克雷后验\\[5pt]
+   {\fontsize{10.7pt}{12.8pt}\selectfont
+    $\displaystyle\text{参数 }\slfigPAlpha\slfigPPlus\slfigPCountN$}};
+\node[result,text width=43mm,minimum height=30mm] (predictive) at (6.65,0)
+  {后验预测概率\\
+   新增观测取指定类别\\[5pt]
+   {\fontsize{10.7pt}{12.8pt}\selectfont
+    $\displaystyle\dfrac{\slfigPAlpha_i\slfigPPlus\slfigPCountN_i}{\slfigPAlpha_0\slfigPPlus\slfigPTotalN}$}};
+\node[aux,text width=23.5mm,inner xsep=2.5pt] (simplex) at (-1.41,-2.12) {单纯形几何};
+\node[aux,text width=23.5mm,inner xsep=2.5pt] (mom) at (2.0,-2.12) {均值与浓度\\及对数矩};
+\node[aux,text width=23.5mm,inner xsep=2.5pt] (lda) at (6.35,-2.75)
+  {后续主题模型\\伪计数与平滑};
+
+\draw[arr] (trial) -- (families);
+\draw[arr] (gamma) -- (families);
+\draw[arr] (families) -- (posterior);
+\draw[arr] (posterior) -- (predictive);
+\draw[interp] (families)--(simplex);
+\draw[interp] (posterior)--(mom);
+\draw[application] (predictive)--node[pos=.50,right=7pt,inner sep=0pt,
+  font=\fontsize{10.1pt}{12.2pt}\selectfont,text=SLTextGray]{应用}(lda);
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{Dirichlet--多项共轭更新与单步后验预测主链}
+\label{fig:V5-C05-dependency-graph}
+\end{figure}
+\endgroup

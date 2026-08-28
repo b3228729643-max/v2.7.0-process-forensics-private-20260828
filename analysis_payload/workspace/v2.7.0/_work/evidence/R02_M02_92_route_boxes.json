@@ -1,0 +1,656 @@
+{
+  "mode": "apply",
+  "mapped_boxes": 92,
+  "source_files": 33,
+  "category_counts": {
+    "algorithm": 88,
+    "proof": 4
+  },
+  "result": "APPLIED",
+  "mapping": [
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C02.tex",
+      "original_line": 200,
+      "title": "归一化幂法",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C04.tex",
+      "original_line": 279,
+      "title": "有限假设空间上的贝叶斯更新",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C05.tex",
+      "original_line": 330,
+      "title": "狄利克雷--多项分布的顺序共轭更新",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C06.tex",
+      "original_line": 359,
+      "title": "离散特征的信息增益与增益比评估：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C06.tex",
+      "original_line": 371,
+      "title": "离散特征的信息增益与增益比评估",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C07.tex",
+      "original_line": 394,
+      "title": "候选原--对偶解的KKT残差检验：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C07.tex",
+      "original_line": 406,
+      "title": "候选原--对偶解的KKT残差检验",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C08.tex",
+      "original_line": 289,
+      "title": "带曲率保护的逆BFGS方法",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C08.tex",
+      "original_line": 453,
+      "title": "带Armijo回溯的梯度下降",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C09.tex",
+      "original_line": 217,
+      "title": "有限假设空间的经验风险选择：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C09.tex",
+      "original_line": 229,
+      "title": "有限假设空间的经验风险选择",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C10.tex",
+      "original_line": 303,
+      "title": "无泄漏的 模型选择",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C11.tex",
+      "original_line": 326,
+      "title": "算法执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C01.tex",
+      "original_line": 282,
+      "title": "感知机学习算法的原始形式",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C01.tex",
+      "original_line": 473,
+      "title": "感知机学习算法的对偶形式",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C02.tex",
+      "original_line": 476,
+      "title": "kd树的精确 搜索",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C03.tex",
+      "original_line": 325,
+      "title": "带对称平滑的离散朴素贝叶斯训练与分类",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C04.tex",
+      "original_line": 371,
+      "title": "ID3/C4 5统一递归生成流程",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C04.tex",
+      "original_line": 472,
+      "title": "给定 的自底向上熵剪枝：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C04.tex",
+      "original_line": 484,
+      "title": "给定 的自底向上熵剪枝",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C05.tex",
+      "original_line": 333,
+      "title": "带回溯线搜索的阻尼Newton逻辑斯谛回归",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C01.tex",
+      "original_line": 335,
+      "title": "条件最大熵模型的BFGS学习",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C01.tex",
+      "original_line": 458,
+      "title": "改进的迭代尺度法（IIS）：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C01.tex",
+      "original_line": 470,
+      "title": "改进的迭代尺度法（IIS）",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C02.tex",
+      "original_line": 648,
+      "title": "序列最小最优化（SMO）",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 166,
+      "title": "二类AdaBoost训练：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 178,
+      "title": "二类AdaBoost训练",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 452,
+      "title": "平方损失回归提升树：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 464,
+      "title": "平方损失回归提升树",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 533,
+      "title": "一般损失梯度提升的候选生成",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 581,
+      "title": "一般损失下的梯度提升树：验收与提交：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 593,
+      "title": "一般损失下的梯度提升树：验收与提交",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 281,
+      "title": "EM算法：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 293,
+      "title": "EM算法",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 485,
+      "title": "受约束高斯混合模型的多启动EM",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 662,
+      "title": "基于 F 函数的交替极大化：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 674,
+      "title": "基于 F 函数的交替极大化",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 730,
+      "title": "以 Q 上升为门禁的GEM：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 742,
+      "title": "以 Q 上升为门禁的GEM",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 805,
+      "title": "逐参数块条件极大化的GEM：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 817,
+      "title": "逐参数块条件极大化的GEM",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 213,
+      "title": "HMM观测序列生成：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 225,
+      "title": "HMM观测序列生成",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 498,
+      "title": "缩放前向算法：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 510,
+      "title": "缩放前向算法",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 702,
+      "title": "区分ML与MAP目标的Baum--Welch学习：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 714,
+      "title": "区分ML与MAP目标的Baum--Welch学习",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 820,
+      "title": "对数域Viterbi算法：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 832,
+      "title": "对数域Viterbi算法",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C06.tex",
+      "original_line": 474,
+      "title": "线性链CRF的BFGS学习：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C06.tex",
+      "original_line": 486,
+      "title": "线性链CRF的BFGS学习",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C01.tex",
+      "original_line": 300,
+      "title": "无监督模型的重复验证与选择：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "original_line": 252,
+      "title": "聚合层次聚类：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "original_line": 449,
+      "title": "带空类保护的单启动：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "original_line": 503,
+      "title": "的逐空类修复子程序",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "original_line": 551,
+      "title": "多启动 的记录与选择：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "original_line": 563,
+      "title": "多启动 的记录与选择",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C03.tex",
+      "original_line": 437,
+      "title": "截断SVD的双边子空间迭代：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C03.tex",
+      "original_line": 449,
+      "title": "截断SVD的双边子空间迭代",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C03.tex",
+      "original_line": 603,
+      "title": "证明：Eckart--Young--Mirsky低秩最优性",
+      "category": "proof",
+      "reader_question": "待证结论与所需条件分别是什么？请在最小维度或最小样本上写出第一处关键变形，并指出少一个条件时证明会在哪一步中断。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C04.tex",
+      "original_line": 257,
+      "title": "证明：前 q 维最大保留方差",
+      "category": "proof",
+      "reader_question": "待证结论与所需条件分别是什么？请在最小维度或最小样本上写出第一处关键变形，并指出少一个条件时证明会在哪一步中断。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C04.tex",
+      "original_line": 489,
+      "title": "中心化样本的主成分分析",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C05.tex",
+      "original_line": 548,
+      "title": "基于截断SVD的潜在语义分析：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C05.tex",
+      "original_line": 560,
+      "title": "基于截断SVD的潜在语义分析",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C05.tex",
+      "original_line": 610,
+      "title": "平方损失NMF的顺序乘法更新",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C06.tex",
+      "original_line": 449,
+      "title": "稀疏共现计数上的PLSA EM训练",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C06.tex",
+      "original_line": 504,
+      "title": "固定主题--词分布的新文档折入：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C06.tex",
+      "original_line": 516,
+      "title": "固定主题--词分布的新文档折入",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C01.tex",
+      "original_line": 461,
+      "title": "证明：有限不可约链的两类长期行为",
+      "category": "proof",
+      "reader_question": "待证结论与所需条件分别是什么？请在最小维度或最小样本上写出第一处关键变形，并指出少一个条件时证明会在哪一步中断。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C01.tex",
+      "original_line": 754,
+      "title": "有限状态链的分布推进与合法性检查",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "original_line": 531,
+      "title": "独立蒙特卡罗均值与Welford在线诊断：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "original_line": 543,
+      "title": "独立蒙特卡罗均值与Welford在线诊断",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "original_line": 667,
+      "title": "接受—拒绝抽样的数学主体",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "original_line": 734,
+      "title": "对数缩放的普通或自归一化重要性估计：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "original_line": 746,
+      "title": "对数缩放的普通或自归一化重要性估计",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "original_line": 398,
+      "title": "证明：连续单坐标MH的独立不变性证明",
+      "category": "proof",
+      "reader_question": "待证结论与所需条件分别是什么？请在最小维度或最小样本上写出第一处关键变形，并指出少一个条件时证明会在哪一步中断。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "original_line": 679,
+      "title": "带零流分支和完整状态轨迹的一般MH：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "original_line": 691,
+      "title": "带零流分支和完整状态轨迹的一般MH",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "original_line": 747,
+      "title": "固定顺序的单分量MH扫描：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "original_line": 759,
+      "title": "固定顺序的单分量MH扫描",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+      "original_line": 552,
+      "title": "带部分扫描诊断的系统Gibbs抽样：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+      "original_line": 564,
+      "title": "带部分扫描诊断的系统Gibbs抽样",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "original_line": 876,
+      "title": "LDA折叠Gibbs抽样：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "original_line": 888,
+      "title": "LDA折叠Gibbs抽样",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "original_line": 938,
+      "title": "算法执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "original_line": 971,
+      "title": "算法执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "original_line": 1006,
+      "title": "点参数LDA变分EM（多启动）",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C07.tex",
+      "original_line": 606,
+      "title": "基本 的稀疏幂迭代：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C07.tex",
+      "original_line": 618,
+      "title": "基本 的稀疏幂迭代",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C07.tex",
+      "original_line": 669,
+      "title": "带悬挂修复的一般 稀疏幂法",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+      "original_line": 619,
+      "title": "协议A：开发集选择与一次锁定测试：执行契约",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+      "original_line": 631,
+      "title": "协议A：开发集选择与一次锁定测试",
+      "category": "algorithm",
+      "reader_question": "输入、输出、可变状态和适用条件分别是什么？请选一个最小合法输入手算一轮更新，并说明停止条件或异常退出何时触发。"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{讲义源码/common/statlearnbook}
+\begin{document}
+\setcounter{chapter}{31}
+\chapter{导航宏冒烟测试}\label{chap:V5-C03}
+
+已注册且存在于当前构建的目标：\GlobalChapterRef{32}{5}{3}。
+
+已注册但不在当前构建中的目标：\GlobalChapterRef{4}{1}{4}。
+
+依赖表生成的下一章：\NextChapter{35}{潜在狄利克雷分配}。
+
+\SLMethodLimitationsHeading 这是方法适用边界，不是常见错误。
+\SLDegeneracyHeading 这是异常与退化条件。
+\SLCommonErrorsHeading 这是常见错误。
+\SLComplexityAssumptionsHeading 这是复杂度假设与实现口径。
+
+\begin{AlgorithmContract}{
+  input={有限输入},
+  output={有限输出},
+  preconditions={输入满足定义域},
+  initialization={初始化计数器},
+  loop={有限扫描},
+  update={每步一次主要状态更新},
+  domain={逐步检查有限性},
+  failure={非法输入返回 invalid_input},
+  stop={扫描结束},
+  budget={由输入规模决定的有限工作量，无人为迭代上限},
+  status={completed 或 invalid_input},
+  iterations={记录访问元素数},
+  diagnostics={返回最后合法诊断},
+  complexity={时间线性、空间常数}
+}
+契约环境只做编译期校验，不重复渲染字段。
+\end{AlgorithmContract}
+\end{document}

@@ -1,0 +1,77 @@
+{
+  "pmf_support": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "pmf_values": [
+    0.15,
+    0.3,
+    0.35,
+    0.2
+  ],
+  "pmf_sum": 1.0,
+  "cdf_values_at_support": [
+    0.15,
+    0.45,
+    0.8,
+    1.0
+  ],
+  "cdf_jump_differences": [
+    0.15,
+    0.3,
+    0.35,
+    0.2
+  ],
+  "pmf_nonnegative": true,
+  "cdf_nondecreasing": true,
+  "cdf_terminal_value": 1.0,
+  "right_continuity_geometry": {
+    "filled_points": [
+      [
+        1,
+        0.15
+      ],
+      [
+        2,
+        0.45
+      ],
+      [
+        3,
+        0.8
+      ],
+      [
+        4,
+        1.0
+      ]
+    ],
+    "open_points": [
+      [
+        1,
+        0.0
+      ],
+      [
+        2,
+        0.15
+      ],
+      [
+        3,
+        0.45
+      ],
+      [
+        4,
+        0.8
+      ]
+    ]
+  },
+  "source_math_rule_tokens": {
+    "overline": 0,
+    "underline": 0,
+    "hat": 0,
+    "vec": 0,
+    "frac": 0,
+    "sqrt": 0
+  },
+  "visible_math_rule_object_count": 0
+}

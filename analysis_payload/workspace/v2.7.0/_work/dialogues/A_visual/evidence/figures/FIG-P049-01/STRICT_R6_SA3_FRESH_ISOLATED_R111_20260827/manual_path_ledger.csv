@@ -1,0 +1,18 @@
+object_id,manual_observed_atom,manual_geometry_integrity,manual_clipping,manual_illegal_overlap,manual_decision,manual_note
+P001,axis_x_shaft,intact,no,no,ACCEPT,水平轴线连续穿过原点并以低视觉权重承载坐标框架
+P002,axis_x_arrowhead,intact,no,no,ACCEPT,横轴箭头尖端完整且与轴线方向一致
+P003,axis_y_shaft,intact,no,no,ACCEPT,纵轴线连续并与横轴正交
+P004,axis_y_arrowhead,intact,no,no,ACCEPT,纵轴箭头尖端完整且朝正方向
+P005,contour_c1,intact,no,no,ACCEPT,内层点划椭圆闭合且对应最低函数值层
+P006,contour_c2,intact,no,no,ACCEPT,中层虚线椭圆闭合并与内外层保持同心相似
+P007,contour_c3,intact,no,no,ACCEPT,外层蓝色实线椭圆闭合并经过点 P
+P008,point_marker,intact,no,no,ACCEPT,蓝色点标记中心落在外层等值线上并连接梯度与切线
+P009,gradient_arrow_shaft,intact,no,no,ACCEPT,梯度箭身从 P 出发且方向与解析梯度平行
+P010,gradient_arrowhead,intact,no,no,ACCEPT,梯度箭头尖端完整并朝函数增大方向
+P011,tangent_line,intact,no,no,ACCEPT,青色虚切线通过 P 且与梯度近似严格正交
+P012,right_angle_marker,intact,no,no,ACCEPT,灰色直角折线置于梯度和切线之间且没有遮字
+P013,increase_arrow_shaft,intact,no,no,ACCEPT,金色水平箭身独立指示 f 增大方向
+P014,increase_arrowhead,intact,no,no,ACCEPT,金色箭头尖端完整并向右
+P015,guide_1,intact,no,no,ACCEPT,第一条灰色虚引线从说明 1 指到 P 所在外层等值线
+P016,guide_2,intact,no,no,ACCEPT,第二条灰色虚引线从说明 2 指到梯度箭头端部
+P017,guide_3,intact,no,no,ACCEPT,第三条灰色虚引线从说明 3 指向直角关系区域

@@ -1,0 +1,82 @@
+{
+  "uid": "FIG-P049-01",
+  "handoff_id": "A-R111-P049-SA3-FRESH-ISOLATED-20260827",
+  "pdf_page_number": 48,
+  "printed_page_number": 35,
+  "pdf_identity": {
+    "bytes": 4967076,
+    "sha256": "DAB1062500E39DD2C34C6B4A9FF51CAC2BE0A4C84B2F45F5FB8E645C4BC012D6",
+    "expected_match": true
+  },
+  "tex_identity": {
+    "bytes": 4189,
+    "sha256": "27BF53A0673A2D57308A836827CC8F0463BE725A11D6826E6BB94CAA91A9BB7E",
+    "expected_match": true
+  },
+  "crop_points": [
+    115.0,
+    60.0,
+    485.0,
+    250.0
+  ],
+  "crop_pixels": [
+    479,
+    250,
+    2022,
+    1042
+  ],
+  "crop_dimensions_pixels": [
+    1543,
+    792
+  ],
+  "visible_bbox_points": [
+    126.465,
+    68.2883,
+    480.1485,
+    245.9092
+  ],
+  "machine_glyph_count": 135,
+  "machine_foreground_path_count": 17,
+  "machine_background_exclusion_count": 11,
+  "machine_atomic_denominator_N": 152,
+  "machine_expected_unordered_pair_count_C": 11476,
+  "machine_enumerated_unordered_pair_count": 11476,
+  "machine_unique_pair_count": 11476,
+  "machine_relation_candidate_count": 122,
+  "machine_clipped_object_ids": [],
+  "machine_zero_ink_glyph_ids": [],
+  "machine_missing_or_tofu_glyph_ids": [],
+  "machine_text_group_mismatches": {},
+  "machine_unclassified_glyph_ids": [],
+  "machine_unclassified_path_ids": [],
+  "machine_semantic_numeric_checks": {
+    "contour_levels": {
+      "c1": 0.25,
+      "c2": 0.64,
+      "c3": 1.0
+    },
+    "point_P_f": 1.0,
+    "guide_1_endpoint_f": 0.9999999999999999,
+    "analytic_gradient_at_P": [
+      0.5333333333333333,
+      0.6666666666666666
+    ],
+    "drawn_gradient_vector": [
+      0.7200000000000002,
+      0.8999999999999999
+    ],
+    "gradient_parallel_cross": -1.6653345369377348e-16,
+    "gradient_tangent_dot": 0.002666666666666595,
+    "drawn_right_angle_dot": 0.0018000000000002458,
+    "guide_2_endpoint_equals_G": true,
+    "guide_3_endpoint": [
+      2.67,
+      1.23
+    ]
+  },
+  "r168_advisories": [
+    "Source label style declares 9.4 pt, note/increase/formula styles 9.2 pt, and axis tick style 8.8 pt; no ticks are rendered. Under R168 these micro font differences are advisory and require direct readability review.",
+    "Raster ink-height variation is advisory under R168 unless it creates actual unreadability, missing/tofu/wrong codepoint, clipping, illegal overlap, or obvious visible imbalance."
+  ],
+  "machine_hard_gate_state": "CLEAR"
+}

@@ -1,0 +1,99 @@
+{
+  "handoff_id": "C-FIG-P641-01-R110-SA1-FRESH-ISOLATED-V1",
+  "uid": "FIG-P641-01",
+  "physical_page_1_based": 691,
+  "printed_page": 678,
+  "page_pt": [
+    595.276,
+    841.89
+  ],
+  "native300dpi_grid_px": [
+    2480,
+    3508
+  ],
+  "figure_crop_px_in_full_page": [
+    295,
+    2304,
+    2138,
+    3042
+  ],
+  "standalone_crop_px_in_full_page": [
+    487,
+    2304,
+    1959,
+    2900
+  ],
+  "visible_text_glyph_count": 162,
+  "visible_graphic_foreground_count": 15,
+  "visible_object_denominator": 177,
+  "unordered_pair_denominator": 15576,
+  "expected_pair_denominator_formula": 15576,
+  "critical_relation_count": 154,
+  "text_parent_ids": [
+    "ANN_BLANKET",
+    "ANN_IRRELEVANT",
+    "CAPTION_LABEL",
+    "CAPTION_TEXT",
+    "FORMULA_CONDITIONAL",
+    "NODE_ALPHA",
+    "NODE_FA",
+    "NODE_FT",
+    "NODE_FZY",
+    "NODE_THETA",
+    "NODE_Y",
+    "NODE_Z"
+  ],
+  "graphic_ids": [
+    "G_NODE_FA_BORDER",
+    "G_NODE_ALPHA_BORDER",
+    "G_NODE_FT_BORDER",
+    "G_NODE_THETA_BORDER",
+    "G_NODE_FZY_BORDER",
+    "G_NODE_Z_BORDER",
+    "G_NODE_Y_BORDER",
+    "G_EDGE_FA_ALPHA",
+    "G_EDGE_ACTIVE_CHAIN",
+    "G_EDGE_FZY_Y",
+    "G_BLANKET_ALPHA_DASH",
+    "G_BLANKET_Z_DASH",
+    "G_BLANKET_Y_DASH",
+    "G_ANN_ARROW_SHAFT",
+    "G_ANN_ARROWHEAD"
+  ],
+  "math_rule_object_count": 0,
+  "math_rule_reason": "Current figure formulas contain no overline/underline, radical bar, fraction rule, cancel stroke, hat/vector path, or other formula rule; all visible math symbols are PDF text glyphs.",
+  "glyph_contact_sheets": [
+    "glyph_contact_sheet_01.png",
+    "glyph_contact_sheet_02.png",
+    "glyph_contact_sheet_03.png",
+    "glyph_contact_sheet_04.png",
+    "glyph_contact_sheet_05.png",
+    "glyph_contact_sheet_06.png",
+    "glyph_contact_sheet_07.png",
+    "glyph_contact_sheet_08.png",
+    "glyph_contact_sheet_09.png",
+    "glyph_contact_sheet_10.png",
+    "glyph_contact_sheet_11.png",
+    "glyph_contact_sheet_12.png",
+    "glyph_contact_sheet_13.png",
+    "glyph_contact_sheet_14.png",
+    "glyph_contact_sheet_15.png",
+    "glyph_contact_sheet_16.png",
+    "glyph_contact_sheet_17.png"
+  ],
+  "graphic_contact_sheets": [
+    "graphic_contact_sheet_01.png"
+  ],
+  "manual_decisions_generated_by_machine": false,
+  "hard_gate_specification": {
+    "R168": "Raster/font-outline/taxonomy or explicit 9.2pt threshold differences alone are advisory. Hard failure requires current-PDF missing/tofu/wrong glyph or math meaning, actual unreadability or visibly severe imbalance, true clipping, illegal overlap, or semantic/geometric error.",
+    "overlap": "independent semantic foreground illegal intersection >=1 native px",
+    "clip": "true final-visible foreground clipping >=1 native px",
+    "required_views": [
+      "full_page_200dpi.png",
+      "figure_crop_300dpi.png",
+      "standalone_300dpi.png",
+      "grayscale_300dpi.png"
+    ]
+  }
+}

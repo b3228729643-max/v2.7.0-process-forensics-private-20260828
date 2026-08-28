@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{740}
+\setcounter{chapter}{31}
+\setcounter{figure}{8}
+\pagestyle{headings}
+\chaptermark{蒙特卡罗方法与直接采样}
+\sectionmark{估计误差与诊断}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rmse_rate.tex}
+\begin{example}[稀有事件下的重要性抽样高方差]
+在状态空间 $\{0,1\}$ 上，目标分布为 $p=(0.99,0.01)$，提议分布为 $q=(0.9999,0.0001)$，且 $h(0)=0,h(1)=100$。求 $I=E_p h$、普通重要性贡献的方差，并解释为什么少量样本可能给出误导性诊断。
+\end{example}
+\textbf{提示。}经验 ESS 只能描述已经观察到的权重集中度，不能发现尚未命中的稀有高贡献区域。
+\end{document}

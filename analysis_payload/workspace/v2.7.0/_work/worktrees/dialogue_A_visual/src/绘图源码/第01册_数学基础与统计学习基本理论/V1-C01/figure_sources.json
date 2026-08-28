@@ -1,0 +1,39 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V1-C01",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 1,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V1-C01-01",
+      "source_path": "绘图源码/第01册_数学基础与统计学习基本理论/V1-C01/fig_v1_c01_language_flow.tex",
+      "source_file": "fig_v1_c01_language_flow.tex",
+      "source_kind": "tikz",
+      "label": "fig:V1-C01-language-flow",
+      "caption": "数学语言从对象声明到任务陈述的依赖关系。每一条箭头都表示右侧内容使用左侧定义。",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读图时应回答：“数学语言从对象声明到任务陈述的依赖关系。每一条箭头都表示右侧内容使用左侧定义。”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第01册_数学基础与统计学习基本理论/chapters/V1-C01.tex",
+        "target_label": "fig:V1-C01-language-flow",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-BM-002"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：数学语言从对象声明到任务陈述的依赖关系。每一条箭头都表示右侧内容使用左侧定义。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

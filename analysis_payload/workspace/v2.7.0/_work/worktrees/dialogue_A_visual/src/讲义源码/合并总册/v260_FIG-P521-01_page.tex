@@ -1,0 +1,14 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 4 册}{统计学习方法讲义 v2.6.0}{无监督学习与矩阵分解}
+\begin{document}
+\setcounter{page}{667}
+\setcounter{chapter}{29}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{概率潜在语义分析}
+\sectionmark{PLSA 生成过程与模型}
+对长度为$L_j$的文档$d_j$，固定文档指标后重复$L_j$次“主题--单词”抽取。文档长度不必相等；$\pi_j=c_j/C$只是把整个语料中的词元归属到文档的经验比例。每个词元拥有自己的隐主题，因此同一文档能够呈现多个主题。
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C06/fig_v4_c06_plsa_dag.tex}
+图\ref{fig:V4-C06-plsa-dag}中的箭头对应联合分解$P(d)P(z\mid d)P(w\mid z)$。外层文档选择与内层词元重复共同产生单词--文档共现计数。
+\end{document}

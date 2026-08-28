@@ -1,0 +1,35 @@
+pair_id,manual_classification,manual_basis
+P0459,EXPECTED_CONTAINMENT_CLEAR,O20 is intentionally inside O12; native pixels show 32 empty pixels from text ink to the blue border.
+P0494,EXPECTED_CONTAINMENT_CLEAR,O21 is intentionally inside O13; its numeral and label retain 33 empty pixels to the border.
+P0501,PROXIMITY_CLEAR,O28 sits below O13 with 15 empty foreground pixels and no shared ink.
+P0528,EXPECTED_CONTAINMENT_CLEAR,O22 is the centered text of O14; the light hatch does not obscure its 33-pixel border clearance.
+P0534,PROXIMITY_CLEAR,O28 extends under the completed group but remains 15 empty pixels from O14.
+P0561,EXPECTED_CONTAINMENT_CLEAR,O23 is contained by O15 with 32 empty pixels to the solid updated-state border.
+P0593,EXPECTED_CONTAINMENT_CLEAR,O24 is centered in the gold O16 slot and keeps 32 empty pixels to its perimeter.
+P0598,PROXIMITY_CLEAR,O29 is aligned below the current slot yet retains 15 empty pixels to O16.
+P0624,EXPECTED_CONTAINMENT_CLEAR,O25 is contained by dotted O17 with 33 empty pixels from its ink to the border.
+P0654,EXPECTED_CONTAINMENT_CLEAR,O26 is contained by dotted O18 with 32 empty pixels from ink to perimeter.
+P0658,PROXIMITY_CLEAR,O30 sits below the suffix group and remains 15 empty pixels from O18.
+P0683,EXPECTED_CONTAINMENT_CLEAR,O27 is centered in O19 with 33 empty pixels to the dotted perimeter.
+P0894,FONT_BBOX_ARTIFACT_CLEAR,O28's vector line box reaches O31 but native ink stops 9 empty pixels above the panel border.
+P0912,FONT_BBOX_ARTIFACT_CLEAR,O29's vector line box reaches O31 while the colored glyph ink remains 9 empty pixels away.
+P0929,FONT_BBOX_ARTIFACT_CLEAR,O30's vector line box reaches O31 but the rendered old-value text has a 9-pixel gap.
+P0946,EXPECTED_CONTAINMENT_CLEAR,O32 belongs inside O31 and has 16 empty pixels to the nearest panel-border ink.
+P0947,EXPECTED_CONTAINMENT_CLEAR,O33 belongs inside O31 and has 26 empty pixels to the nearest panel-border ink.
+P0948,EXPECTED_CONTAINMENT_CLEAR,O34 belongs inside O31 and preserves the measured minimum 8-pixel text-to-panel clearance.
+P0949,EXPECTED_CONTAINMENT_CLEAR,O35 belongs inside O31 and also retains 8 empty pixels to the lower border.
+P0950,EXPECTED_CONTAINMENT_CLEAR,O36 belongs inside O31 and retains 8 empty pixels to the lower border.
+P0951,EXPECTED_CONTAINMENT_CLEAR,O37 belongs inside O31 and retains 8 empty pixels to the lower border.
+P0964,VERTICAL_TEXT_SEPARATION_CLEAR,O32 and O35 have 18 empty pixels between formula ink and the lower value label.
+P0978,VERTICAL_TEXT_SEPARATION_CLEAR,O33 and O35 have 18 empty pixels and distinct baselines.
+P0979,VERTICAL_TEXT_SEPARATION_CLEAR,O33 and O36 have 16 empty pixels and do not visually merge.
+P1037,EXPECTED_CONTAINMENT_CLEAR,O39 belongs inside O38 and has 23 empty pixels to the panel border.
+P1038,EXPECTED_CONTAINMENT_CLEAR,O40 belongs inside O38 and has 24 empty pixels to the panel border.
+P1039,EXPECTED_CONTAINMENT_CLEAR,O41 belongs inside O38 and has 28 empty pixels to the panel border.
+P1040,EXPECTED_CONTAINMENT_CLEAR,O42 belongs inside O38 and remains 37 empty pixels from the perimeter.
+P1041,EXPECTED_CONTAINMENT_CLEAR,O43 belongs inside O38 and has 11 empty pixels to the top border.
+P1042,EXPECTED_CONTAINMENT_CLEAR,O44 belongs inside O38 and remains 39 empty pixels from the perimeter.
+P1043,EXPECTED_CONTAINMENT_CLEAR,O45 belongs inside O38 and has 11 empty pixels to the top border.
+P1048,FORMULA_ARROW_CLEAR,O39 and O42 have no shared foreground and retain 17 empty pixels before the arrow shaft/head.
+P1057,FORMULA_ARROW_CLEAR,O40 and O44 have no shared foreground and retain 14 empty pixels before the record arrow.
+P1081,MULTILINE_ENVELOPE_ARTIFACT_CLEAR,O47's rectangular envelope overlaps O46 geometrically, but the two explicit caption-line components leave 19 empty foreground pixels and share zero pixels.

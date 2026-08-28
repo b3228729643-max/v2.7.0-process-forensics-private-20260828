@@ -1,0 +1,211 @@
+pair_id,object_a,object_b,views_observed,manual_contact_class,illegal_visible_ink_overlap,manual_observation,manual_verdict
+P001,O01,O02,"V03,V05-V07",INTENDED_STRUCTURAL_CONTACT,NONE,"Axis strokes meet at their designed corner; no text is involved.",PASS
+P002,O01,O03,"V03,V05-V07",SEPARATE,NONE,"Curve remains above the x-axis over the plotted domain.",PASS
+P003,O01,O04,"V03,V05-V07",INTENDED_REGISTRATION,NONE,"Left endpoint marker registers with its x tick; this is a deliberate data-axis contact.",PASS
+P004,O01,O05,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is vertically separated from the x-axis.",PASS
+P005,O01,O06,"V03,V05-V07",INTENDED_REGISTRATION,NONE,"Right endpoint marker registers with its x tick; this is a deliberate data-axis contact.",PASS
+P006,O01,O07,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide is above the x-axis.",PASS
+P007,O01,O08,"V03,V05-V07",SEPARATE,NONE,"Vertical guide stops visibly before the x-axis/tick ink.",PASS
+P008,O01,O09,"V03,V05",SEPARATE,NONE,"Tick label 0 is below and clear of the axis ink.",PASS
+P009,O01,O10,"V03,V05",SEPARATE,NONE,"Stacked 1/2 tick label is below and clear of the axis ink.",PASS
+P010,O01,O11,"V03,V05",SEPARATE,NONE,"Tick label 1 is below and clear of the axis ink.",PASS
+P011,O01,O12,"V03,V05",SEPARATE,NONE,"y tick label 0 is left of and clear of the axis corner.",PASS
+P012,O01,O13,"V03,V05",SEPARATE,NONE,"Upper y tick is remote from the x-axis.",PASS
+P013,O01,O14,"V03,V05",SEPARATE,NONE,"x-axis label p is centered below with clear whitespace.",PASS
+P014,O01,O15,"V03,V05",SEPARATE,NONE,"Rotated y-axis label is remote from the x-axis.",PASS
+P015,O01,O16,"V03,V05-V07",SEPARATE,NONE,"Maximum annotation is remote from the x-axis.",PASS
+P016,O01,O17,"V03,V05-V07",SEPARATE,NONE,"Left certainty text is above the x-axis with visible clearance.",PASS
+P017,O01,O18,"V03,V05-V07",SEPARATE,NONE,"Right certainty text is above the x-axis with visible clearance.",PASS
+P018,O01,O19,"V03,V05-V07",SEPARATE,NONE,"Symmetry formula is well above the x-axis.",PASS
+P019,O01,O20,"V03,V05",SEPARATE,NONE,"Caption label is below the plot with clear whitespace.",PASS
+P020,O01,O21,"V03,V05",SEPARATE,NONE,"Caption text is below the plot with clear whitespace.",PASS
+P021,O02,O03,"V03,V05-V07",SEPARATE,NONE,"Curve begins to the right of the y-axis and does not share ink with it.",PASS
+P022,O02,O04,"V03,V05-V07",SEPARATE,NONE,"Left endpoint marker is to the right of the y-axis.",PASS
+P023,O02,O05,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is remote from the y-axis.",PASS
+P024,O02,O06,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from the y-axis.",PASS
+P025,O02,O07,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide starts to the right of the y-axis.",PASS
+P026,O02,O08,"V03,V05-V07",SEPARATE,NONE,"Vertical guide is remote from the y-axis.",PASS
+P027,O02,O09,"V03,V05",SEPARATE,NONE,"x tick 0 is below-right of the y-axis with no shared ink.",PASS
+P028,O02,O10,"V03,V05",SEPARATE,NONE,"Center tick label is remote from the y-axis.",PASS
+P029,O02,O11,"V03,V05",SEPARATE,NONE,"Right tick label is remote from the y-axis.",PASS
+P030,O02,O12,"V03,V05",SEPARATE,NONE,"Lower y tick label is left of the y-axis with clear whitespace.",PASS
+P031,O02,O13,"V03,V05",SEPARATE,NONE,"Upper y tick label is left of the y-axis with clear whitespace.",PASS
+P032,O02,O14,"V03,V05",SEPARATE,NONE,"x-axis label is remote from the y-axis.",PASS
+P033,O02,O15,"V03,V05",SEPARATE,NONE,"Rotated axis label is left of and clear of the y-axis.",PASS
+P034,O02,O16,"V03,V05-V07",SEPARATE,NONE,"Maximum annotation is remote from the y-axis.",PASS
+P035,O02,O17,"V03,V05-V07",SEPARATE,NONE,"Left certainty label is right of the y-axis with clear whitespace.",PASS
+P036,O02,O18,"V03,V05-V07",SEPARATE,NONE,"Right certainty label is remote from the y-axis.",PASS
+P037,O02,O19,"V03,V05-V07",SEPARATE,NONE,"Symmetry formula is remote from the y-axis.",PASS
+P038,O02,O20,"V03,V05",SEPARATE,NONE,"Caption label is below and clear of the y-axis.",PASS
+P039,O02,O21,"V03,V05",SEPARATE,NONE,"Caption text is below and clear of the y-axis.",PASS
+P040,O03,O04,"V03,V05-V07",INTENDED_DATA_CONTACT,NONE,"Curve terminates at the left endpoint marker by design.",PASS
+P041,O03,O05,"V03,V05-V07",INTENDED_DATA_CONTACT,NONE,"Curve passes through the maximum marker by design.",PASS
+P042,O03,O06,"V03,V05-V07",INTENDED_DATA_CONTACT,NONE,"Curve terminates at the right endpoint marker by design.",PASS
+P043,O03,O07,"V03,V05-V07",INTENDED_REFERENCE_CONTACT,NONE,"Curve and horizontal guide meet only at the maximum reference point.",PASS
+P044,O03,O08,"V03,V05-V07",INTENDED_REFERENCE_CONTACT,NONE,"Curve and vertical guide meet only at the maximum reference point.",PASS
+P045,O03,O09,"V03,V05-V07",SEPARATE,NONE,"Curve is above the left x tick text.",PASS
+P046,O03,O10,"V03,V05-V07",SEPARATE,NONE,"Curve is above the center x tick text.",PASS
+P047,O03,O11,"V03,V05-V07",SEPARATE,NONE,"Curve is above the right x tick text.",PASS
+P048,O03,O12,"V03,V05-V07",SEPARATE,NONE,"Curve is right of the lower y tick text.",PASS
+P049,O03,O13,"V03,V05-V07",SEPARATE,NONE,"Curve is right of the upper y tick text.",PASS
+P050,O03,O14,"V03,V05-V07",SEPARATE,NONE,"Curve is above the x-axis label.",PASS
+P051,O03,O15,"V03,V05-V07",SEPARATE,NONE,"Curve is right of the y-axis label.",PASS
+P052,O03,O16,"V03,V05-V07",SEPARATE,NONE,"Maximum annotation ink is visibly above the curve/marker region.",PASS
+P053,O03,O17,"V03,V05-V07",BACKGROUND_SEPARATED,NONE,"White annotation backing prevents curve ink from entering the left certainty glyphs; meaning remains unobscured.",PASS
+P054,O03,O18,"V03,V05-V07",BACKGROUND_SEPARATED,NONE,"White annotation backing prevents curve ink from entering the right certainty glyphs; meaning remains unobscured.",PASS
+P055,O03,O19,"V03,V05-V07",SEPARATE,NONE,"Symmetry formula sits inside the arch with clear whitespace from the curve.",PASS
+P056,O03,O20,"V03,V05",SEPARATE,NONE,"Curve is within the plot and remote from the caption label.",PASS
+P057,O03,O21,"V03,V05",SEPARATE,NONE,"Curve is within the plot and remote from caption text.",PASS
+P058,O04,O05,"V03,V05-V07",SEPARATE,NONE,"Endpoint and maximum markers are distinct and widely separated.",PASS
+P059,O04,O06,"V03,V05-V07",SEPARATE,NONE,"The two endpoint markers are distinct and widely separated.",PASS
+P060,O04,O07,"V03,V05-V07",SEPARATE,NONE,"Left endpoint marker is far below the horizontal guide.",PASS
+P061,O04,O08,"V03,V05-V07",SEPARATE,NONE,"Left endpoint marker is remote from the center guide.",PASS
+P062,O04,O09,"V03,V05-V07",SEPARATE,NONE,"Left endpoint marker is above the x tick label with clear whitespace.",PASS
+P063,O04,O10,"V03,V05-V07",SEPARATE,NONE,"Left marker is remote from the center tick label.",PASS
+P064,O04,O11,"V03,V05-V07",SEPARATE,NONE,"Left marker is remote from the right tick label.",PASS
+P065,O04,O12,"V03,V05-V07",SEPARATE,NONE,"Left marker is right of the y tick 0 text with clear whitespace.",PASS
+P066,O04,O13,"V03,V05-V07",SEPARATE,NONE,"Left marker is remote from y tick 1 text.",PASS
+P067,O04,O14,"V03,V05-V07",SEPARATE,NONE,"Left marker is remote from the x-axis label.",PASS
+P068,O04,O15,"V03,V05-V07",SEPARATE,NONE,"Left marker is remote from the y-axis label.",PASS
+P069,O04,O16,"V03,V05-V07",SEPARATE,NONE,"Left marker is remote from the maximum annotation.",PASS
+P070,O04,O17,"V03,V05-V07",SEPARATE,NONE,"Left marker and left certainty text have clear horizontal whitespace.",PASS
+P071,O04,O18,"V03,V05-V07",SEPARATE,NONE,"Left marker is remote from the right certainty text.",PASS
+P072,O04,O19,"V03,V05-V07",SEPARATE,NONE,"Left marker is remote from the symmetry formula.",PASS
+P073,O04,O20,"V03,V05",SEPARATE,NONE,"Left marker is above and remote from the caption label.",PASS
+P074,O04,O21,"V03,V05",SEPARATE,NONE,"Left marker is above and remote from caption text.",PASS
+P075,O05,O06,"V03,V05-V07",SEPARATE,NONE,"Maximum and right endpoint markers are distinct and widely separated.",PASS
+P076,O05,O07,"V03,V05-V07",INTENDED_REFERENCE_CONTACT,NONE,"Maximum marker lies on the horizontal guide by design.",PASS
+P077,O05,O08,"V03,V05-V07",INTENDED_REFERENCE_CONTACT,NONE,"Maximum marker lies on the vertical guide by design.",PASS
+P078,O05,O09,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is remote from the left x tick label.",PASS
+P079,O05,O10,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is vertically separated from the center tick label.",PASS
+P080,O05,O11,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is remote from the right x tick label.",PASS
+P081,O05,O12,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is remote from y tick 0 text.",PASS
+P082,O05,O13,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is horizontally remote from y tick 1 text.",PASS
+P083,O05,O14,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is vertically remote from the x-axis label.",PASS
+P084,O05,O15,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is remote from the y-axis label.",PASS
+P085,O05,O16,"V03,V05-V07",CLOSE_BUT_SEPARATE,NONE,"Nearest8x shows annotation glyph ink ending above the maximum marker with no shared visible ink.",PASS
+P086,O05,O17,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is remote from left certainty text.",PASS
+P087,O05,O18,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is remote from right certainty text.",PASS
+P088,O05,O19,"V03,V05-V07",SEPARATE,NONE,"Maximum marker is above-left of the formula with clear whitespace.",PASS
+P089,O05,O20,"V03,V05",SEPARATE,NONE,"Maximum marker is remote from caption label.",PASS
+P090,O05,O21,"V03,V05",SEPARATE,NONE,"Maximum marker is remote from caption text.",PASS
+P091,O06,O07,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is far below the horizontal guide.",PASS
+P092,O06,O08,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from the center guide.",PASS
+P093,O06,O09,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from the left tick label.",PASS
+P094,O06,O10,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from the center tick label.",PASS
+P095,O06,O11,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is above the x tick 1 label with clear whitespace.",PASS
+P096,O06,O12,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from y tick 0 text.",PASS
+P097,O06,O13,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from y tick 1 text.",PASS
+P098,O06,O14,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from the x-axis label.",PASS
+P099,O06,O15,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from the y-axis label.",PASS
+P100,O06,O16,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from the maximum annotation.",PASS
+P101,O06,O17,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from left certainty text.",PASS
+P102,O06,O18,"V03,V05-V07",SEPARATE,NONE,"Right marker and right certainty text have clear horizontal whitespace.",PASS
+P103,O06,O19,"V03,V05-V07",SEPARATE,NONE,"Right endpoint marker is remote from the symmetry formula.",PASS
+P104,O06,O20,"V03,V05",SEPARATE,NONE,"Right endpoint marker is remote from caption label.",PASS
+P105,O06,O21,"V03,V05",SEPARATE,NONE,"Right endpoint marker is remote from caption text.",PASS
+P106,O07,O08,"V03,V05-V07",INTENDED_REFERENCE_CONTACT,NONE,"Dashed guides meet at the maximum reference point by design.",PASS
+P107,O07,O09,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide is remote from left x tick text.",PASS
+P108,O07,O10,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide is remote from center x tick text.",PASS
+P109,O07,O11,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide is remote from right x tick text.",PASS
+P110,O07,O12,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide is remote from y tick 0 text.",PASS
+P111,O07,O13,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide starts to the right of y tick 1 text.",PASS
+P112,O07,O14,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide is remote from the x-axis label.",PASS
+P113,O07,O15,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide is remote from the y-axis label.",PASS
+P114,O07,O16,"V03,V05-V07",CLOSE_BUT_SEPARATE,NONE,"Nearest8x shows a clean gap between dashed guide ink and annotation glyph ink.",PASS
+P115,O07,O17,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide is well above left certainty text.",PASS
+P116,O07,O18,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide is remote from right certainty text.",PASS
+P117,O07,O19,"V03,V05-V07",SEPARATE,NONE,"Horizontal guide is above-left of the formula with clear whitespace.",PASS
+P118,O07,O20,"V03,V05",SEPARATE,NONE,"Horizontal guide is remote from caption label.",PASS
+P119,O07,O21,"V03,V05",SEPARATE,NONE,"Horizontal guide is remote from caption text.",PASS
+P120,O08,O09,"V03,V05-V07",SEPARATE,NONE,"Vertical guide is remote from left x tick text.",PASS
+P121,O08,O10,"V03,V05-V07",SEPARATE,NONE,"Vertical guide stops above the center tick label with clear whitespace.",PASS
+P122,O08,O11,"V03,V05-V07",SEPARATE,NONE,"Vertical guide is remote from right x tick text.",PASS
+P123,O08,O12,"V03,V05-V07",SEPARATE,NONE,"Vertical guide is remote from y tick 0 text.",PASS
+P124,O08,O13,"V03,V05-V07",SEPARATE,NONE,"Vertical guide is remote from y tick 1 text.",PASS
+P125,O08,O14,"V03,V05-V07",SEPARATE,NONE,"Vertical guide is above the x-axis label with clear whitespace.",PASS
+P126,O08,O15,"V03,V05-V07",SEPARATE,NONE,"Vertical guide is remote from the y-axis label.",PASS
+P127,O08,O16,"V03,V05-V07",SEPARATE,NONE,"Vertical guide begins below the maximum annotation glyphs.",PASS
+P128,O08,O17,"V03,V05-V07",SEPARATE,NONE,"Vertical guide is remote from left certainty text.",PASS
+P129,O08,O18,"V03,V05-V07",SEPARATE,NONE,"Vertical guide is remote from right certainty text.",PASS
+P130,O08,O19,"V03,V05-V07",CLOSE_BUT_SEPARATE,NONE,"Nearest8x shows clear lateral whitespace between the guide and formula glyphs.",PASS
+P131,O08,O20,"V03,V05",SEPARATE,NONE,"Vertical guide is remote from caption label.",PASS
+P132,O08,O21,"V03,V05",SEPARATE,NONE,"Vertical guide is remote from caption text.",PASS
+P133,O09,O10,"V03,V05",SEPARATE,NONE,"Left and center x tick labels are distinct.",PASS
+P134,O09,O11,"V03,V05",SEPARATE,NONE,"Left and right x tick labels are distinct.",PASS
+P135,O09,O12,"V03,V05",SEPARATE,NONE,"x tick 0 and y tick 0 are distinct labels on different sides of the axis corner.",PASS
+P136,O09,O13,"V03,V05",SEPARATE,NONE,"Left x tick and upper y tick are distinct.",PASS
+P137,O09,O14,"V03,V05",SEPARATE,NONE,"Left tick and x-axis label are distinct.",PASS
+P138,O09,O15,"V03,V05",SEPARATE,NONE,"Left tick and y-axis label are distinct.",PASS
+P139,O09,O16,"V03,V05-V07",SEPARATE,NONE,"Left tick is remote from the maximum annotation.",PASS
+P140,O09,O17,"V03,V05-V07",SEPARATE,NONE,"Left tick is below the certainty annotation with clear whitespace.",PASS
+P141,O09,O18,"V03,V05-V07",SEPARATE,NONE,"Left tick is remote from right certainty text.",PASS
+P142,O09,O19,"V03,V05-V07",SEPARATE,NONE,"Left tick is remote from the symmetry formula.",PASS
+P143,O09,O20,"V03,V05",SEPARATE,NONE,"Left tick is above and separate from caption label.",PASS
+P144,O09,O21,"V03,V05",SEPARATE,NONE,"Left tick is above and separate from caption text.",PASS
+P145,O10,O11,"V03,V05",SEPARATE,NONE,"Center and right x tick labels are distinct.",PASS
+P146,O10,O12,"V03,V05",SEPARATE,NONE,"Center x tick and lower y tick are distinct.",PASS
+P147,O10,O13,"V03,V05",SEPARATE,NONE,"Center x tick and upper y tick are distinct.",PASS
+P148,O10,O14,"V03,V05",SEPARATE,NONE,"Stacked center tick and p label have clear vertical separation.",PASS
+P149,O10,O15,"V03,V05",SEPARATE,NONE,"Center tick and y-axis label are distinct.",PASS
+P150,O10,O16,"V03,V05-V07",SEPARATE,NONE,"Center tick is remote from maximum annotation.",PASS
+P151,O10,O17,"V03,V05-V07",SEPARATE,NONE,"Center tick is remote from left certainty text.",PASS
+P152,O10,O18,"V03,V05-V07",SEPARATE,NONE,"Center tick is remote from right certainty text.",PASS
+P153,O10,O19,"V03,V05-V07",SEPARATE,NONE,"Center tick is below and separate from the formula.",PASS
+P154,O10,O20,"V03,V05",SEPARATE,NONE,"Center tick is above and separate from caption label.",PASS
+P155,O10,O21,"V03,V05",SEPARATE,NONE,"Center tick is above and separate from caption text.",PASS
+P156,O11,O12,"V03,V05",SEPARATE,NONE,"Right x tick and lower y tick are distinct.",PASS
+P157,O11,O13,"V03,V05",SEPARATE,NONE,"Right x tick and upper y tick are distinct.",PASS
+P158,O11,O14,"V03,V05",SEPARATE,NONE,"Right tick and x-axis label are distinct.",PASS
+P159,O11,O15,"V03,V05",SEPARATE,NONE,"Right tick and y-axis label are distinct.",PASS
+P160,O11,O16,"V03,V05-V07",SEPARATE,NONE,"Right tick is remote from maximum annotation.",PASS
+P161,O11,O17,"V03,V05-V07",SEPARATE,NONE,"Right tick is remote from left certainty text.",PASS
+P162,O11,O18,"V03,V05-V07",SEPARATE,NONE,"Right tick is below the certainty annotation with clear whitespace.",PASS
+P163,O11,O19,"V03,V05-V07",SEPARATE,NONE,"Right tick is remote from the symmetry formula.",PASS
+P164,O11,O20,"V03,V05",SEPARATE,NONE,"Right tick is separate from caption label.",PASS
+P165,O11,O21,"V03,V05",SEPARATE,NONE,"Right tick is above and separate from caption text.",PASS
+P166,O12,O13,"V03,V05",SEPARATE,NONE,"The two y tick labels are distinct.",PASS
+P167,O12,O14,"V03,V05",SEPARATE,NONE,"Lower y tick and x-axis label are distinct.",PASS
+P168,O12,O15,"V03,V05",SEPARATE,NONE,"Lower y tick and rotated y-axis label are distinct.",PASS
+P169,O12,O16,"V03,V05-V07",SEPARATE,NONE,"Lower y tick is remote from maximum annotation.",PASS
+P170,O12,O17,"V03,V05-V07",SEPARATE,NONE,"Lower y tick is left of certainty text with clear whitespace.",PASS
+P171,O12,O18,"V03,V05-V07",SEPARATE,NONE,"Lower y tick is remote from right certainty text.",PASS
+P172,O12,O19,"V03,V05-V07",SEPARATE,NONE,"Lower y tick is remote from symmetry formula.",PASS
+P173,O12,O20,"V03,V05",SEPARATE,NONE,"Lower y tick is separate from caption label.",PASS
+P174,O12,O21,"V03,V05",SEPARATE,NONE,"Lower y tick is separate from caption text.",PASS
+P175,O13,O14,"V03,V05",SEPARATE,NONE,"Upper y tick and x-axis label are distinct.",PASS
+P176,O13,O15,"V03,V05",SEPARATE,NONE,"Upper y tick and rotated y-axis label are distinct.",PASS
+P177,O13,O16,"V03,V05-V07",SEPARATE,NONE,"Upper y tick is remote from maximum annotation.",PASS
+P178,O13,O17,"V03,V05-V07",SEPARATE,NONE,"Upper y tick is remote from left certainty text.",PASS
+P179,O13,O18,"V03,V05-V07",SEPARATE,NONE,"Upper y tick is remote from right certainty text.",PASS
+P180,O13,O19,"V03,V05-V07",SEPARATE,NONE,"Upper y tick is remote from symmetry formula.",PASS
+P181,O13,O20,"V03,V05",SEPARATE,NONE,"Upper y tick is remote from caption label.",PASS
+P182,O13,O21,"V03,V05",SEPARATE,NONE,"Upper y tick is remote from caption text.",PASS
+P183,O14,O15,"V03,V05",SEPARATE,NONE,"Axis labels p and H_2(p) are distinct and noncompeting.",PASS
+P184,O14,O16,"V03,V05-V07",SEPARATE,NONE,"x-axis label is remote from maximum annotation.",PASS
+P185,O14,O17,"V03,V05-V07",SEPARATE,NONE,"x-axis label is remote from left certainty text.",PASS
+P186,O14,O18,"V03,V05-V07",SEPARATE,NONE,"x-axis label is remote from right certainty text.",PASS
+P187,O14,O19,"V03,V05-V07",SEPARATE,NONE,"x-axis label is below and separate from symmetry formula.",PASS
+P188,O14,O20,"V03,V05",SEPARATE,NONE,"x-axis label is above and separate from caption label.",PASS
+P189,O14,O21,"V03,V05",SEPARATE,NONE,"x-axis label is above and separate from caption text.",PASS
+P190,O15,O16,"V03,V05-V07",SEPARATE,NONE,"y-axis label is remote from maximum annotation.",PASS
+P191,O15,O17,"V03,V05-V07",SEPARATE,NONE,"y-axis label is left of certainty text with clear whitespace.",PASS
+P192,O15,O18,"V03,V05-V07",SEPARATE,NONE,"y-axis label is remote from right certainty text.",PASS
+P193,O15,O19,"V03,V05-V07",SEPARATE,NONE,"y-axis label is remote from symmetry formula.",PASS
+P194,O15,O20,"V03,V05",SEPARATE,NONE,"y-axis label is separate from caption label.",PASS
+P195,O15,O21,"V03,V05",SEPARATE,NONE,"y-axis label is separate from caption text.",PASS
+P196,O16,O17,"V03,V05-V07",SEPARATE,NONE,"Maximum and left-certainty annotations are distinct.",PASS
+P197,O16,O18,"V03,V05-V07",SEPARATE,NONE,"Maximum and right-certainty annotations are distinct.",PASS
+P198,O16,O19,"V03,V05-V07",SEPARATE,NONE,"Maximum annotation is above and separate from symmetry formula.",PASS
+P199,O16,O20,"V03,V05",SEPARATE,NONE,"Maximum annotation is remote from caption label.",PASS
+P200,O16,O21,"V03,V05",SEPARATE,NONE,"Maximum annotation is remote from caption text.",PASS
+P201,O17,O18,"V03,V05-V07",SEPARATE,NONE,"Left and right certainty labels are distinct and symmetrically placed.",PASS
+P202,O17,O19,"V03,V05-V07",SEPARATE,NONE,"Left certainty label is remote from symmetry formula.",PASS
+P203,O17,O20,"V03,V05",SEPARATE,NONE,"Left certainty label is remote from caption label.",PASS
+P204,O17,O21,"V03,V05",SEPARATE,NONE,"Left certainty label is remote from caption text.",PASS
+P205,O18,O19,"V03,V05-V07",SEPARATE,NONE,"Right certainty label is below-right of the formula with clear whitespace.",PASS
+P206,O18,O20,"V03,V05",SEPARATE,NONE,"Right certainty label is remote from caption label.",PASS
+P207,O18,O21,"V03,V05",SEPARATE,NONE,"Right certainty label is remote from caption text.",PASS
+P208,O19,O20,"V03,V05-V07",SEPARATE,NONE,"Symmetry formula is within the plot and remote from caption label.",PASS
+P209,O19,O21,"V03,V05-V07",SEPARATE,NONE,"Symmetry formula is within the plot and remote from caption text.",PASS
+P210,O20,O21,"V03,V05",SEPARATE,NONE,"Caption label and caption sentence are aligned with clear whitespace and no shared glyph ink.",PASS

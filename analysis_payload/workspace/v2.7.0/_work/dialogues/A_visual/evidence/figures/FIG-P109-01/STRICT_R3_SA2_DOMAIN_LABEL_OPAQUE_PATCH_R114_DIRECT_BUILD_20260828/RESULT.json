@@ -1,0 +1,70 @@
+{
+  "schema": "P109_R3_DIRECT_BUILD_RESULT_V1",
+  "handoff_id": "A-R114-P109-SA2-DIRECT-BUILD-R3-20260828",
+  "controller_pid": 25108,
+  "child_pid": 11468,
+  "start_utc": "2026-08-27T20:24:21.4925290Z",
+  "end_utc": "2026-08-27T20:26:32.5335687Z",
+  "duration_ms": 131041.04,
+  "exit_code": 0,
+  "natural": true,
+  "interrupted": false,
+  "controller_invocation_count": 1,
+  "typeset_invocation_count": 1,
+  "retry_count": 0,
+  "latexmk_count": 0,
+  "version_probe_count": 0,
+  "pdf_count": 1,
+  "pdf": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P109-01\\STRICT_R3_SA2_DOMAIN_LABEL_OPAQUE_PATCH_R114_DIRECT_BUILD_20260828\\build\\v260_FIG-P109-01_standalone.pdf",
+    "bytes": 26500,
+    "sha256": "C615152183FCB524F2B4FBDFB4A69D43C134DCDE20F989BF0050C2D2776A199D"
+  },
+  "expected_pdf_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P109-01\\STRICT_R3_SA2_DOMAIN_LABEL_OPAQUE_PATCH_R114_DIRECT_BUILD_20260828\\build\\v260_FIG-P109-01_standalone.pdf",
+  "source_before": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\绘图源码\\第01册_数学基础与统计学习基本理论\\V1-C07\\fig_v1_c07_convex_set.tex",
+    "bytes": 1922,
+    "sha256": "887326D54E8DD97AA6D580EFA7CCD21FA371A94CACD36EB7029E80FC4D2D9355"
+  },
+  "source_after": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\绘图源码\\第01册_数学基础与统计学习基本理论\\V1-C07\\fig_v1_c07_convex_set.tex",
+    "bytes": 1922,
+    "sha256": "887326D54E8DD97AA6D580EFA7CCD21FA371A94CACD36EB7029E80FC4D2D9355"
+  },
+  "wrapper_before": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\讲义源码\\合并总册\\v260_FIG-P109-01_standalone.tex",
+    "bytes": 394,
+    "sha256": "F2594687F563AB4A11FC5D0E08F913BD53ADFEA9CF97498DB686E5C11E8B30C7"
+  },
+  "wrapper_after": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\讲义源码\\合并总册\\v260_FIG-P109-01_standalone.tex",
+    "bytes": 394,
+    "sha256": "F2594687F563AB4A11FC5D0E08F913BD53ADFEA9CF97498DB686E5C11E8B30C7"
+  },
+  "controller_before": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P109-01\\P109_R3_DIRECT_BUILD_CONTROLLER_20260828.ps1",
+    "bytes": 6298,
+    "sha256": "F09825675D5728607FCCE30B30B5A0A2CA1F3EE308683B8B7093523B1DCAA4E8"
+  },
+  "controller_after": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P109-01\\P109_R3_DIRECT_BUILD_CONTROLLER_20260828.ps1",
+    "bytes": 6298,
+    "sha256": "F09825675D5728607FCCE30B30B5A0A2CA1F3EE308683B8B7093523B1DCAA4E8"
+  },
+  "engine_before": {
+    "path": "D:\\texlive\\2026\\bin\\windows\\lualatex.exe",
+    "bytes": 6656,
+    "sha256": "CC944A1DB010B47FCF5CCB5D1B184CBA208FE7FEA9F18BEC414940E6FD3E24A6"
+  },
+  "engine_after": {
+    "path": "D:\\texlive\\2026\\bin\\windows\\lualatex.exe",
+    "bytes": 6656,
+    "sha256": "CC944A1DB010B47FCF5CCB5D1B184CBA208FE7FEA9F18BEC414940E6FD3E24A6"
+  },
+  "terminal_tex_counts": {
+    "latexmk": 0,
+    "lualatex": 0,
+    "luatex": 0,
+    "luahbtex": 0
+  }
+}

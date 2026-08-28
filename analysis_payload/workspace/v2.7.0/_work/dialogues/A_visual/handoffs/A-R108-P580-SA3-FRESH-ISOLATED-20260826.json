@@ -1,0 +1,61 @@
+{
+  "handoff_id": "A-R108-P580-SA3-FRESH-ISOLATED-20260826",
+  "assigned_scope": "Sole fresh isolated SA3 from-zero review of FIG-P580-01 on official R108, with strict visible-object/pair closure, native/8x hard gates, semantic recomputation, manual observation ledgers, one seal, and root-external audit.",
+  "completed": [
+    "Independently located Figure 31.6 on physical page 630 / printed page 617 in the official 817-page R108 PDF.",
+    "Froze N=219 visible foreground objects and all C(219,2)=23871 unordered pairs.",
+    "Completed native 1x/8x glyph, graphic, relation, clipping, readability, balance, grayscale, page-integration, critical-codepoint, and semantic/numerical review.",
+    "Actually opened five required views, 25 glyph sheets, five graphic sheets, 23 final relation sheets, and the corrected card-border contact.",
+    "Authored 194 glyph, 25 graphic, and 114 critical-relation manual rows after observation.",
+    "Completed one successful seal and a root-external read-only closure audit."
+  ],
+  "files_changed": {
+    "new_evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P580-01\\STRICT_R3_SA3_FRESH_ISOLATED_R108_20260826",
+    "root_file_count": 658,
+    "formal_report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P580-01_R108_SA3_FRESH_ISOLATED_20260826.md",
+    "formal_handoff": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\handoffs\\A-R108-P580-SA3-FRESH-ISOLATED-20260826.json",
+    "source_edits": 0,
+    "git_writes": 0,
+    "central_state_writes": 0
+  },
+  "decisions": {
+    "manual_sa3_decision": "A_LOCAL_PASS",
+    "actual_hard_failure_count": 0,
+    "font_visual_harmony_pass": true,
+    "semantic_numerical_pass": true,
+    "r168_direction": "Raw detections resolve to taxonomy/support-mask/intentional-topology/tiny-contour advisories; no missing/tofu/wrong-codepoint, unreadability, imbalance, clipping, illegal overlap, or geometry/semantic error."
+  },
+  "unresolved": [],
+  "validation": {
+    "official_pdf_bytes": 4967161,
+    "official_pdf_sha256": "C2EC93425486A57DE4C6670E16FC7DA729649A183230C28E8A0652467D3B5B78",
+    "official_pdf_pages": 817,
+    "source_bytes": 5580,
+    "source_sha256": "F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161",
+    "object_denominator": 219,
+    "unordered_pair_denominator": 23871,
+    "manual_glyph_rows": 194,
+    "manual_graphic_rows": 25,
+    "manual_critical_relation_rows": 114,
+    "root_files": 658,
+    "payload_manifest_rows": 655,
+    "payload_manifest_missing_extra_bad_sha": 0,
+    "filesystem_manifest_rows": 656,
+    "filesystem_manifest_missing_extra_bad_sha": 0,
+    "all_root_files_readonly": true,
+    "ads": 0,
+    "cache_pyc": 0,
+    "reparse": 0,
+    "write_stopped_unique": 1,
+    "write_stopped_strictly_latest": true,
+    "files_at_or_after_write_stopped": 0,
+    "write_stopped_utc": "2026-08-26T12:36:38.404331Z",
+    "write_stopped_filetime": 134322213984043311,
+    "max_other_filetime": 134322213963806464,
+    "payload_manifest_sha256": "5AA12A81A4C7A4B296905D7D41FE890D01336EA24E318AF7C3BC30810275FCB2",
+    "filesystem_manifest_sha256": "1D2D99FC3D3E6BA79DFC90A9BE75303631C09599B83D33822669FBAF3BF1C9EB",
+    "write_stopped_sha256": "0C1A21A6EF905679882A9649EC5E98739C46E147EB230BA3D1E3FFD287F5CD6A",
+    "external_seal_audit": "PASS"
+  },
+  "next_action": "Return to main for A_LOCAL_PASS acceptance only. Do not start another role from this handoff."
+}

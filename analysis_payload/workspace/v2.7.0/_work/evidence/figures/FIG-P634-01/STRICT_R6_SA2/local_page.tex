@@ -1,0 +1,26 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{FIG-P634-01 SA2 局部整页验证}
+\begin{document}
+\setcounter{page}{669}
+\setcounter{chapter}{33}
+\setcounter{figure}{2}
+\pagestyle{headings}
+\chaptermark{Gibbs 抽样}
+\sectionmark{逐变量 Gibbs 抽样}
+
+\textbf{模型组成与合法性。}一个可执行的 Gibbs 模型至少包含
+\[
+\bigl(\mathcal X,\mu,\pi,x^{(0)},\{\mathcal C_j\}_{j=1}^d,\mathcal R\bigr),
+\]
+其中 $\pi$ 是可归一化的目标概率密度，$x^{(0)}$ 位于其支持内，$\mathcal C_j$ 表示精确满条件抽样步骤，$\mathcal R$ 提供彼此独立的随机数。
+
+\textbf{学习策略。}Gibbs 抽样构造保持整个目标分布的链。设计时先检查目标与满条件的合法性、单坐标移动的可达性和固定更新顺序，再比较分块方式、相关性和单轮成本。
+
+\textbf{学习算法。}在系统扫描中，第 $t$ 轮从 $x^{(t-1)}$ 开始，先抽 $x_1^{(t)}$，再抽 $x_2^{(t)}$；第 $j$ 步使用本轮已经更新的 $x_1^{(t)},\ldots,x_{j-1}^{(t)}$ 与尚未更新的 $x_{j+1}^{(t-1)},\ldots,x_d^{(t-1)}$。图\ref{fig:V5-C04-coordinate-sweep}明确区分子步状态和轮末样本。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_coordinate_sweep.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先沿上方箭头确认固定次序；再看当前子步状态的前段已写入本轮新值、后段仍保留前轮旧值；最终只把末位更新完成后的状态记作轮末样本，不把中间状态当作单轮输出。\par
+
+\paragraph{子步状态与轮末样本。}中途停止得到的是部分扫描状态；只有完成末位坐标更新后，$x^{[d]}=x^{(t)}$ 才能追加到轮末样本序列。
+\end{document}

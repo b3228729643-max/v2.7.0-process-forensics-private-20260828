@@ -1,0 +1,71 @@
+view_id,reviewer,view_path,inspection_scale,result,observation
+VIEW001,SA1_FRESH_gpt-5.6-sol_xhigh,full_page_200dpi.png,whole-page,PASS,Physical page 649 context inspected; figure is integrated cleanly with surrounding body and caption.
+VIEW002,SA1_FRESH_gpt-5.6-sol_xhigh,renders/page649_300dpi.png,native-300dpi,PASS,Native page inspected; no visible page-edge or neighboring-content collision.
+VIEW003,SA1_FRESH_gpt-5.6-sol_xhigh,figure_crop_300dpi.png,native-300dpi-and-zoom,PASS,Complete figure plus caption inspected; no clipping overlap or semantic omission.
+VIEW004,SA1_FRESH_gpt-5.6-sol_xhigh,grayscale_300dpi.png,native-300dpi-and-zoom,PASS,Grayscale figure remains readable with clear hierarchy and continuous strokes.
+VIEW005,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_01.png,native-and-8x,PASS,G0001-G0012 originals overlays and masks inspected individually; complete and pure.
+VIEW006,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_02.png,native-and-8x,PASS,G0013-G0024 originals overlays and masks inspected individually; complete and pure.
+VIEW007,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_03.png,native-and-8x,PASS,G0025-G0036 originals overlays and masks inspected individually; complete and pure.
+VIEW008,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_04.png,native-and-8x,PASS,G0037-G0048 originals overlays and masks inspected individually; complete and pure.
+VIEW009,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_05.png,native-and-8x,PASS,G0049-G0060 originals overlays and masks inspected individually; complete and pure.
+VIEW010,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_06.png,native-and-8x,PASS,G0061-G0072 originals overlays and masks inspected individually; complete and pure.
+VIEW011,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_07.png,native-and-8x,PASS,G0073-G0084 originals overlays and masks inspected individually; CJK single-stroke 一 and punctuation are complete.
+VIEW012,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_08.png,native-and-8x,PASS,G0085-G0096 originals overlays and masks inspected individually; complete and pure.
+VIEW013,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_09.png,native-and-8x,PASS,G0097-G0108 originals overlays and masks inspected individually; punctuation is complete.
+VIEW014,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_10.png,native-and-8x,PASS,G0109-G0120 originals overlays and masks inspected individually; punctuation is complete.
+VIEW015,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_11.png,native-and-8x,PASS,G0121-G0132 originals overlays and masks inspected individually; caption glyphs and punctuation are complete.
+VIEW016,SA1_FRESH_gpt-5.6-sol_xhigh,contact_glyph/glyph_contact_12.png,native-and-8x,PASS,G0133-G0142 originals overlays and masks inspected individually; complete and pure.
+VIEW017,SA1_FRESH_gpt-5.6-sol_xhigh,contact_graphic/graphic_contact_01.png,native-and-8x,PASS,V0001-V0004 originals overlays and masks inspected individually; complete and pure.
+VIEW018,SA1_FRESH_gpt-5.6-sol_xhigh,contact_graphic/graphic_contact_02.png,native-and-8x,PASS,V0005-V0008 originals overlays and masks inspected individually; complete and pure.
+VIEW019,SA1_FRESH_gpt-5.6-sol_xhigh,contact_graphic/graphic_contact_03.png,native-and-8x,PASS,V0009-V0012 originals overlays and masks inspected individually; complete and pure.
+VIEW020,SA1_FRESH_gpt-5.6-sol_xhigh,contact_graphic/graphic_contact_04.png,native-and-8x,PASS,V0013-V0016 originals overlays and masks inspected individually; complete and pure.
+VIEW021,SA1_FRESH_gpt-5.6-sol_xhigh,contact_graphic/graphic_contact_05.png,native-and-8x,PASS,V0017-V0020 originals overlays and masks inspected individually; complete and pure.
+VIEW022,SA1_FRESH_gpt-5.6-sol_xhigh,contact_graphic/graphic_contact_06.png,native-and-8x,PASS,V0021-V0022 originals overlays and masks inspected individually; complete and pure.
+VIEW023,SA1_FRESH_gpt-5.6-sol_xhigh,occlusion_contact_sheet.png,native-and-8x,PASS,OCC001-OCC004 original pre-support white-separator and final-border panels inspected; all four double borders are clean.
+VIEW024,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C001_state_t0_to_border.png,8x,PASS,State a to t0 border clearance inspected; no collision.
+VIEW025,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C002_state_t1_to_border.png,8x,PASS,State b to t1 double border clearance inspected; no collision.
+VIEW026,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C003_state_t2_to_border.png,8x,PASS,State b to t2 double border clearance inspected; no collision.
+VIEW027,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C004_state_t3_to_border.png,8x,PASS,State c to t3 double border clearance inspected; no collision.
+VIEW028,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C005_state_t4_to_border.png,8x,PASS,State c to t4 double border clearance inspected; no collision.
+VIEW029,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C006_state_t5_to_border.png,8x,PASS,State b to t5 border clearance inspected; no collision.
+VIEW030,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C007_state_tT_to_border.png,8x,PASS,State a to tT border clearance inspected; no collision.
+VIEW031,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C008_time_t1_to_repeat_arc.png,8x,PASS,t1 label and repeat arc inspected; clean separation.
+VIEW032,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C009_time_t2_to_repeat_arc.png,8x,PASS,t2 label and repeat arc inspected; clean separation.
+VIEW033,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C010_repeat_annotation_to_arc.png,8x,PASS,Repeat annotation and arc inspected; clean separation.
+VIEW034,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C011_keep_b_to_transition.png,8x,PASS,Keep-b annotation and transition inspected; clean separation.
+VIEW035,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C012_kernel_formula_to_transition.png,8x,PASS,Kernel formula and transition inspected; clean separation.
+VIEW036,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C013_kernel_formula_to_arrowhead.png,8x,PASS,Kernel formula and arrowhead inspected; clean separation.
+VIEW037,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C014_keep_c_to_transition.png,8x,PASS,Keep-c annotation and transition inspected; clean separation.
+VIEW038,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C015_bottom_note_to_axis.png,8x,PASS,Bottom note and time axis inspected; clean separation.
+VIEW039,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C016_axis_title_to_axis.png,8x,PASS,Axis title and axis inspected; clean separation.
+VIEW040,SA1_FRESH_gpt-5.6-sol_xhigh,critical/C017_axis_title_to_axis_arrowhead.png,8x,PASS,Axis title and axis arrowhead inspected; clean separation.
+VIEW041,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R001_P13136_V0001_V0002.png,8x,PASS,Intended axis line-arrowhead join observed; no illegal overlap.
+VIEW042,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R002_P13183_V0003_V0010.png,8x,PASS,Intended t0 node-line join observed; no illegal overlap.
+VIEW043,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R003_P13202_V0004_V0011.png,8x,PASS,Intended t1 arrow-target join observed; no illegal overlap.
+VIEW044,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R004_P13203_V0004_V0012.png,8x,PASS,Intended t1 node-line join observed; no illegal overlap.
+VIEW045,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R005_P13213_V0004_V0022.png,8x,PASS,Intended relation-arc to t1 node join observed; no illegal overlap.
+VIEW046,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R006_P13222_V0005_V0014.png,8x,PASS,Intended t2 node-line join observed; no illegal overlap.
+VIEW047,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R007_P13230_V0005_V0022.png,8x,PASS,Intended relation-arc to t2 node join observed; no illegal overlap.
+VIEW048,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R008_P13239_V0006_V0015.png,8x,PASS,Intended t3 arrow-target join observed; no illegal overlap.
+VIEW049,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R009_P13240_V0006_V0016.png,8x,PASS,Intended t3 node-line join observed; no illegal overlap.
+VIEW050,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R010_P13257_V0007_V0018.png,8x,PASS,Intended t4 node-line join observed; no illegal overlap.
+VIEW051,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R011_P13273_V0008_V0020.png,8x,PASS,Intended t5 node-line join observed; no illegal overlap.
+VIEW052,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R012_P13289_V0010_V0011.png,8x,PASS,Intended first transition line-arrowhead join observed; no illegal overlap.
+VIEW053,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R013_P13312_V0012_V0013.png,8x,PASS,Intended second transition line-arrowhead join observed; no illegal overlap.
+VIEW054,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R014_P13331_V0014_V0015.png,8x,PASS,Intended third transition line-arrowhead join observed; no illegal overlap.
+VIEW055,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R015_P13346_V0016_V0017.png,8x,PASS,Intended fourth transition line-arrowhead join observed; no illegal overlap.
+VIEW056,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R016_P13357_V0018_V0019.png,8x,PASS,Intended fifth transition line-arrowhead join observed; no illegal overlap.
+VIEW057,SA1_FRESH_gpt-5.6-sol_xhigh,relationship/R017_P13364_V0020_V0021.png,8x,PASS,Intended sixth transition line-arrowhead join observed; no illegal overlap.
+VIEW058,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E01_0_1_arrow_to_target.png,native-and-8x,PASS,0->1 endpoint inspected; arrow visibly reaches t1.
+VIEW059,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E02_1_2_arrow_to_target.png,native-and-8x,PASS,1->2 endpoint inspected; arrow visibly reaches t2.
+VIEW060,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E03_2_3_arrow_to_target.png,native-and-8x,PASS,2->3 endpoint inspected; arrow visibly reaches t3.
+VIEW061,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E04_3_4_arrow_to_target.png,native-and-8x,PASS,3->4 endpoint inspected; arrow visibly reaches t4.
+VIEW062,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E05_4_5_arrow_to_target.png,native-and-8x,PASS,4->5 endpoint inspected; antialias bridge makes arrival visibly continuous.
+VIEW063,SA1_FRESH_gpt-5.6-sol_xhigh,connection_detail/E06_5_T_arrow_to_target.png,native-and-8x,PASS,5->T endpoint inspected; antialias bridge makes arrival visibly continuous.
+VIEW064,SA1_FRESH_gpt-5.6-sol_xhigh,after_text_measurement_overlay_300dpi.png,native-300dpi,PASS,All text bounds and IDs inspected; complete coverage without wrong targeting.
+VIEW065,SA1_FRESH_gpt-5.6-sol_xhigh,all_objects_overlay_300dpi.png,native-300dpi,PASS,Complete visible denominator overlay inspected; glyph and graphic targets align with figure.
+VIEW066,SA1_FRESH_gpt-5.6-sol_xhigh,pair_clearance_matrix.png,matrix-full,PASS,All-pairs clearance matrix inspected; no unexpected near-pair cluster.
+VIEW067,SA1_FRESH_gpt-5.6-sol_xhigh,role_relationship_matrix.png,matrix-full,PASS,Role-level relationship matrix inspected; raw contacts are confined to structural joins.
+VIEW068,SA1_FRESH_gpt-5.6-sol_xhigh,semantic_checks_overlay_300dpi.png,native-and-8x,PASS,Semantic node sequence time labels formula repeat markers and axis inspected; all correct.
+VIEW069,SA1_FRESH_gpt-5.6-sol_xhigh,connection_continuity_overlay_300dpi.png,native-and-8x,PASS,All six transitions inspected end to end; line-arrow-node continuity is visually intact.
+VIEW070,SA1_FRESH_gpt-5.6-sol_xhigh,connection_relationship_matrix.png,matrix-full,PASS,Connection matrix inspected; all line-head-target relationships match six directed transitions.

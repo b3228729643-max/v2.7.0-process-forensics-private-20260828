@@ -1,0 +1,29 @@
+PRIMITIVE_ID,REVIEWER,DECISION,NOTE,PARENT_OR_EXCLUSION
+D00,/root/sa1_fig_p602_r103_fresh_isolated,EXCLUDED_JUSTIFIED,"y=48.364 的页眉横线明显位于目标图之前，不属于 FIG-P602-01 前景。",outside_figure
+D01,/root/sa1_fig_p602_r103_fresh_isolated,EXCLUDED_JUSTIFIED,"y=108.308 的式(32.7)分数线处于上方正文公式，未进入图 32.5。",outside_figure
+D02,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"圆角节点的有色 stroke 归入 B01；同一路径的白 fill 只是内部背景。",B01
+D03,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"候选节点浅灰 stroke 归入 B02；浅填充只承托文字，不列前景对象。",B02
+D04,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"接受率面板蓝色 stroke 归入 B03，淡蓝 fill 逐项排除为背景支持。",B03
+D05,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"唯一独立数学横线是核心比值的分数 rule，单列 M01。",M01
+D06,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"菱形四段 stroke 是 B04 的可见前景；内部白填充不是语义前景。",B04
+D07,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"接受节点圆角 stroke 完整归入 B05，白色内区按背景处理。",B05
+D08,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"粗蓝路径构成拒绝节点复合双边框的可见两侧，归入 B06。",B06
+D09,/root/sa1_fig_p602_r103_fresh_isolated,EXCLUDED_JUSTIFIED,"覆盖粗蓝 stroke 中央的白色细线仅制造双线间隔，本身不是读者前景。",B06_support
+D10,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"第一条垂直虚线 shaft 与同一源 draw 的箭头头部共同组成 E01。",E01
+D11,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"提议箭头头部不另拆语义对象，因其与 D10 是一个源路径的方向组件。",E01
+D12,/root/sa1_fig_p602_r103_fresh_isolated,EXCLUDED_JUSTIFIED,"“提议”后的白色矩形只遮断线身以保证净空，文字前景已在 T13。",T13_background
+D13,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"候选到公式面板的浅灰 shaft 归入 E02。",E02
+D14,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"浅灰计算箭头头与 D13 共用源路径，合并为单一有向关系。",E02
+D15,/root/sa1_fig_p602_r103_fresh_isolated,EXCLUDED_JUSTIFIED,"“计算”标签的白底没有读者语义，只用于让线。",T14_background
+D16,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"公式面板到菱形的垂直 shaft 是 E03 的线身。",E03
+D17,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"判定箭头头部与 D16 同属一次 draw，作为 E03 方向端统一审查。",E03
+D18,/root/sa1_fig_p602_r103_fresh_isolated,EXCLUDED_JUSTIFIED,"“判定”后方白块只是局部不透明背景，文字 T15 已独立入账。",T15_background
+D19,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"左斜实线 shaft 归入接受关系 E04。",E04
+D20,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"左分支箭头头部与 D19 共同给出到 B05 的方向，不重复建对象。",E04
+D21,/root/sa1_fig_p602_r103_fresh_isolated,EXCLUDED_JUSTIFIED,"接受标签白底仅提供可读净空，T16 承担全部文字语义。",T16_background
+D22,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"右斜点划 shaft 归入拒绝关系 E05。",E05
+D23,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"右分支箭头头部与 D22 是同一语义边的方向组成。",E05
+D24,/root/sa1_fig_p602_r103_fresh_isolated,EXCLUDED_JUSTIFIED,"拒绝标签白底只切断点划线，不作为独立前景计数。",T17_background
+D25,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"闭合回返曲线主体归入 E06，编码拒绝留驻。",E06
+D26,/root/sa1_fig_p602_r103_fresh_isolated,INCLUDED,"自环箭头头与 D25 共属源行32--33的一条曲线，合并审查方向。",E06
+D27,/root/sa1_fig_p602_r103_fresh_isolated,EXCLUDED_JUSTIFIED,"自环说明的白底覆盖曲线底段但不承载语义，前景文字在 T18。",T18_background

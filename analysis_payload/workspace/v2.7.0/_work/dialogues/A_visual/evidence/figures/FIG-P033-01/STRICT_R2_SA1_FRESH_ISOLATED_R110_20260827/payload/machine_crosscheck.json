@@ -1,0 +1,39 @@
+{
+  "handoff_id": "A-R110-P033-SA1-FRESH-ISOLATED-20260827",
+  "crosscheck_pass": true,
+  "crosscheck_failures": [],
+  "official_pdf_identity_pass": true,
+  "source_identity_pass": true,
+  "visible_denominator": 99,
+  "glyph_manual_count": 85,
+  "drawing_manual_count": 14,
+  "critical_manual_count": 10,
+  "manual_view_count": 4,
+  "unordered_pair_count": 4851,
+  "machine_hard_relation_count": 1,
+  "machine_hard_relations": [
+    "R2886"
+  ],
+  "critical_relation_count": 10,
+  "contact_sheet_count": 20,
+  "empty_mask_count": 0,
+  "foreign_or_unassigned_object_count": 0,
+  "foreign_pixels_removed_by_exact_selector_total": 258,
+  "clip_pixel_count_total": 0,
+  "r168_advisory_not_hard": true,
+  "manual_fields_generated_by_script": false,
+  "preseal_crosscheck_history": [
+    {
+      "exit": 1,
+      "status": "WITHDRAWN_CROSSCHECK_ASSERTIONS",
+      "causes": [
+        "Misread foreign_pixel_px_removed_by_vector_selector as residual foreign pixels; it records pixels successfully removed.",
+        "Looked only at masks directory top level although final masks are organized in glyph and drawing subdirectories.",
+        "Hard-coded ten PNGs per relation although each ROI stores six native artifacts and the corresponding contact sheet supplies the combined 8x panels."
+      ],
+      "candidate_machine_result_changed": false,
+      "manual_ledgers_changed": false
+    }
+  ],
+  "final_decision": "FAIL"
+}

@@ -1,0 +1,51 @@
+{
+  "HANDOFF_ID": "A-R111-P033-SA3-FRESH-ISOLATED-20260827",
+  "canonical_task": "/root/p033_r111_fresh_sa3",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "xhigh",
+  "fork_turns": "none",
+  "assigned_scope": "Independent read-only R111 SA3 adjudication for FIG-P033-01 only",
+  "completed": [
+    "Pinned PDF and source identities verified",
+    "Target independently located at official physical page 29",
+    "Native300dpi, native1x, grayscale, atomic overlay, and nearest-neighbor8x evidence generated and actually opened",
+    "Strict atomic denominator corrected before manual adjudication to 85 glyph atoms plus 11 foreground painted-path atoms",
+    "All 4560 unordered pairs enumerated",
+    "96 per-atom manual rows and 131 per-candidate-pair manual rows authored after visual inspection",
+    "R168 hard gates, mathematics, semantics, geometry, grayscale, and page integration adjudicated"
+  ],
+  "files_changed": {
+    "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P033-01\\STRICT_R6_SA3_FRESH_ISOLATED_R111_20260827",
+    "source_or_pdf_changed": false,
+    "git_or_central_state_changed": false
+  },
+  "decisions": {
+    "SA3_RESULT": "PASS",
+    "MISSING_TOFU_WRONG_CODEPOINT_PASS": true,
+    "READABILITY_BALANCE_PASS": true,
+    "OVERLAP_PIXEL_COUNT": 0,
+    "CLIP_PIXEL_COUNT": 0,
+    "PIXEL_ADJUDICATION_STATUS": "CLEAR",
+    "MATH_SEMANTICS_PASS": true,
+    "GEOMETRY_PASS": true,
+    "TEXT_CONSISTENCY_PASS": true,
+    "GRAYSCALE_PASS": true,
+    "PAGE_INTEGRATION_PASS": true,
+    "FONT_RASTER_OUTLINE_ADVISORY_ONLY": true
+  },
+  "unresolved": [],
+  "validation": {
+    "pdf_sha256": "DAB1062500E39DD2C34C6B4A9FF51CAC2BE0A4C84B2F45F5FB8E645C4BC012D6",
+    "source_sha256": "D3C1D38ECB8468EC3294F7D18BD886316829F14690A516000189CE853A07BC05",
+    "pdf_pages": 817,
+    "pdf_page_size": "A4",
+    "strict_atom_count": 96,
+    "unordered_pair_count": 4560,
+    "manual_atom_rows": 96,
+    "manual_candidate_pair_rows": 131,
+    "bbox_separated_pair_rows": 4429,
+    "preseal_validation": "PASS"
+  },
+  "next_action": "Report isolated SA3 PASS to /root for possible central A_LOCAL_PASS acceptance; do not claim central, local, or final PASS and do not start another UID or role.",
+  "seal_binding": "The evidence-root WRITE_STOPPED marker binds this exact handoff path and SHA-256. This handoff must not be rewritten after sealing."
+}

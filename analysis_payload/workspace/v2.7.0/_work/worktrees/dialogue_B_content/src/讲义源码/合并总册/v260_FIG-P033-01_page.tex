@@ -1,0 +1,19 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 1 册}{统计学习方法讲义 v2.6.0}{数学基础与统计学习基本理论}
+\begin{document}
+\setcounter{page}{18}
+\setcounter{chapter}{2}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{线性代数基础}
+\begin{optimizationbox}
+\textbf{优化解释。} 最小二乘是在列空间中寻找离观测向量最近的点；正规方程表达残差与列空间正交。对实对称矩阵，Rayleigh 商最大化得到最大代数特征值的单位特征向量；它与“最大模特征值”不是同一概念。
+\end{optimizationbox}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C02/fig_v1_c02_projection.tex}
+由\cref{fig:V1-C02-projection}中的正交证书，对任意$\boldsymbol s\in S$都有
+$\|\boldsymbol x-\boldsymbol s\|_2^2=\|(I-P_S)\boldsymbol x\|_2^2+\|P_S\boldsymbol x-\boldsymbol s\|_2^2$；第二项只在$\boldsymbol s=P_S\boldsymbol x$时为零，这就给出最短距离而非仅凭图形判断。
+\begin{example}[二维投影与残差]
+令$\boldsymbol{x}=(3,1)^{\mathsf T}$，$\boldsymbol{u}=(1,1)^{\mathsf T}$。求$\boldsymbol{x}$到$\operatorname{span}(\boldsymbol{u})$的投影与距离。
+\end{example}
+\end{document}

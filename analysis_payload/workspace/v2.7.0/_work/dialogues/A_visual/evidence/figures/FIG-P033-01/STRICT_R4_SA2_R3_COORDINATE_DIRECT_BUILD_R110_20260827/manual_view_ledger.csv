@@ -1,0 +1,7 @@
+view_id,path,decision,observed_at,note
+V01,render_r4_300dpi.png,PASS,2026-08-27T04:52:03.0659997+08:00,"Opened the full standalone A4 render; the figure is centered, complete, and free of page-edge clipping."
+V02,rois/figure_crop_native300dpi.png,PASS,2026-08-27T04:52:03.0659997+08:00,"Opened the native color crop; all objects and seven core geometric relations remain clear."
+V03,rois/figure_crop_grayscale_native300dpi.png,PASS,2026-08-27T04:52:03.0659997+08:00,"Opened the grayscale crop; line hierarchy, arrow identities, labels, and plane boundaries remain distinguishable."
+V04,sheets/glyph_contact_sheet.png,PASS,2026-08-27T04:52:03.0659997+08:00,"Opened all 38 glyph cells; no tofu, wrong codepoint, unreadable mark, or true clipping was observed."
+V05,sheets/drawing_contact_sheet.png,PASS,2026-08-27T04:52:03.0659997+08:00,"Opened all 14 drawing cells; every path has an identifiable semantic role and intact geometry."
+V06,rois/target_G0001_D0003_native1x.png|rois/target_G0001_D0003_overlay8x.png,PASS,2026-08-27T04:52:03.0659997+08:00,"Opened target native and 8x views; 子 and the lower boundary have no shared ink and retain a visible white gap."

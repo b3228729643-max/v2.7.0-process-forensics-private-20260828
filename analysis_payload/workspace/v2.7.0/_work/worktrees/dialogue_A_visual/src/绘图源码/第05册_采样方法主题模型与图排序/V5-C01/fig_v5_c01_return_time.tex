@@ -1,0 +1,48 @@
+% v2.3.1 figure UID: FIG-P552-01
+% v2.6.0 reverse redraw for FIG-P552-01: shared timeline grid and explicit readable hierarchy.
+\tikzset{slfig-FIG-P552-01/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P552-01,x=1.18cm,y=1cm,>=Stealth,
+  event/.style={circle,draw=SLGray,fill=SLBlue!5,minimum size=6mm,line width=.68pt,
+    font=\fontsize{9.2pt}{11.0pt}\selectfont},
+  hit/.style={event,draw=SLGold,fill=SLGold!14,line width=.92pt},
+  timeline/.style={-{Stealth[length=1.9mm]},draw=SLTextGray,line width=.78pt},
+  interval/.style={-{Stealth[length=2.1mm]},draw=SLGold,line width=1pt},
+  interval label/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,fill=white,inner sep=1.1pt},
+  tick label/.style={font=\fontsize{8.6pt}{10.1pt}\selectfont},
+  tick mark/.style={draw=SLTextGray,line width=.5pt},
+  title/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont\bfseries},
+  note/.style={font=\fontsize{8.8pt}{10.4pt}\selectfont,fill=white,inner sep=1.1pt},
+  conclusion/.style={draw=SLRuleGray,rounded corners=2pt,fill=white,align=center,
+    minimum width=30mm,minimum height=12mm,line width=.68pt,inner sep=2.2pt,
+    font=\fontsize{9.2pt}{11.0pt}\selectfont},
+]
+  \node[anchor=east,title,text=SLBlue] at (-.35,1.25) {首次到达 $\tau_i$};
+  \draw[timeline] (0,1.25)--(7.45,1.25) node[right] {$t$};
+  \foreach \t/\s in {0/j,1/k,2/k,3/i,4/k,5/i,6/k,7/k}{
+    \draw[tick mark] (\t,1.33)--(\t,1.17);
+    \node[below=2mm,tick label] at (\t,1.17) {$\t$};
+    \node[event] at (\t,1.78) {$\s$};
+  }
+  \node[hit] at (3,1.78) {$i$};
+  \draw[interval] (0,2.30)--(3,2.30)
+    node[midway,above,interval label] {$j\ne i$ 出发，首次到达：$\tau_i=3$};
+
+  \node[anchor=east,title,text=SLTeal] at (-.35,-1.10) {首次正回返 $\tau_i^+$};
+  \draw[timeline] (0,-1.10)--(7.45,-1.10) node[right] {$t$};
+  \foreach \t/\s in {0/i,1/k,2/k,3/i,4/k,5/i,6/k,7/k}{
+    \draw[tick mark] (\t,-1.02)--(\t,-1.18);
+    \node[below=2mm,tick label] at (\t,-1.18) {$\t$};
+    \node[event] at (\t,-.57) {$\s$};
+  }
+  \node[hit] at (3,-.57) {$i$};
+  \node[anchor=west,note,text=SLGold] at (.15,-.05) {$t>0$ 才计入};
+  \draw[interval] (0,.10)--(3,.10)
+    node[midway,above,interval label] {从 $i$ 出发，首次正回返：$\tau_i^+=3$};
+
+  \node[conclusion] at (8.85,.10)
+    {正常返考察\\$\mathbb E_i[\tau_i^+]<\infty$};
+\end{tikzpicture}
+\caption{首次到达与首次正回返的区分：正常返考察从$i$出发的$\mathbb E_i[\tau_i^+]$，而不是某个固定时刻首次到达的概率}\label{fig:V5-C01-return-time}
+\end{figure}

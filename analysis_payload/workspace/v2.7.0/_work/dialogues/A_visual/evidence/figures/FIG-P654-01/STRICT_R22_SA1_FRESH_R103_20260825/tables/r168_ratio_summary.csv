@@ -1,0 +1,11 @@
+scope,n,declared_effective_pt,pdf_extracted_pt,ink_px_min,ink_px_median,ink_px_max,ratio_min_to_median,ratio_max_to_median,r168_disposition,note
+general_CJK_across_nodes,73,10.1,10.062270,36,37-38,38,0.947,1.027,PASS,"All general CJK remains readable and visually level; the 37/38px cross-node difference is advisory-scale only."
+posterior_formula_label_CJK,2,11.6,11.556670,43,43,43,1.000,1.000,PASS,"参数 belongs to the 11.6pt formula block, not the 10.1pt heading peer class."
+posterior_coarse_CJK_if_unseparated,10,mixed,mixed,37,37,43,1.000,1.162,ADVISORY_COARSE_TAXONOMY_ONLY,"The coarse machine CJK bucket mixes heading and formula-label roles; visual and semantic role review resolves it without a hard failure."
+gamma_Latin_upper_G,1,10.1,10.162395,29,29,29,1.000,1.000,PASS,"Uppercase G is complete and readable."
+gamma_Latin_lower_amma,4,10.1,10.162395,21,21.5,22,0.977,1.023,PASS,"Lowercase Latin peers are balanced."
+base_math_trial_posterior_predictive,10,11.6,11.556670,27,27,27,1.000,1.000,PASS,"All base math glyphs/operators have the same 27px ink height."
+predictive_natural_scripts,3,natural_from_11.6,8.089630,24,26,26,0.923,1.000,PASS,"The two italic i scripts are 26px and subscript 0 is 24px; all exceed the 15px script floor and remain readable."
+formula_to_general_CJK_visual_height,NA,11.6_vs_10.1,11.556670_vs_10.062270,37,43,43,1.000,1.162,PASS,"43/37=1.162 lies inside the formula-block visual range [1.00,1.18]."
+font_metadata_10.1_text,NA,10.1,10.062270_or_10.162395,NA,NA,NA,0.996,1.006,ADVISORY_METADATA_ONLY,"Small extraction metadata differences do not change glyph identity or readability."
+font_metadata_11.6_math,NA,11.6,11.556670,NA,NA,NA,0.996,0.996,ADVISORY_METADATA_ONLY,"Small extraction metadata difference only."

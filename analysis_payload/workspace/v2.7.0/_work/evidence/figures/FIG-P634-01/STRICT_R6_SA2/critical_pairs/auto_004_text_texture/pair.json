@@ -1,0 +1,31 @@
+{
+  "object_a": "EL-016-NODE_3-CJK_FULL",
+  "object_b": "G-NODE-3-FINAL-TEXTURE",
+  "relation": "TEXT_TEXTURE",
+  "raw_1x_source": "renders/local_page_300dpi.png",
+  "raw_roi_page_px": [
+    916,
+    1351,
+    965,
+    1408
+  ],
+  "measurement": {
+    "PAIR_ID": "PAIR-001400",
+    "OBJECT_A": "EL-016-NODE_3-CJK_FULL",
+    "OBJECT_B": "G-NODE-3-FINAL-TEXTURE",
+    "CATEGORY_A": "TEXT_ELEMENT",
+    "CATEGORY_B": "GRAPHIC",
+    "RELATION": "TEXT_TEXTURE",
+    "THRESHOLD_PX": "3.0",
+    "METHOD": "exact separated 1:1 raw masks + local EDT",
+    "OVERLAP_PIXELS": 0,
+    "MIN_RAW_INK_GAP_PX": "7.000",
+    "A_NEAREST_X": 940,
+    "A_NEAREST_Y": 1375,
+    "B_NEAREST_X": 940,
+    "B_NEAREST_Y": 1383,
+    "STATUS": "PASS",
+    "REASON": "text/formula ink to final-visible hatch pixels"
+  },
+  "8x_policy": "nearest-neighbour human review only; never geometry input"
+}

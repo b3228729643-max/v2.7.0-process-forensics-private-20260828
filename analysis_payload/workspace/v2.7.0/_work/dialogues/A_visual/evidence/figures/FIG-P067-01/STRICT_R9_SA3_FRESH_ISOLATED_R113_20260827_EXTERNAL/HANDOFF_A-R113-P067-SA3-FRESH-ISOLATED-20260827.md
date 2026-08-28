@@ -1,0 +1,13 @@
+# FIG-P067-01 SA3 fresh isolated handoff
+
+- assigned_scope: Independently inspect only the frozen R113 official PDF Figure 4.1 / FIG-P067-01 and its current source under the strict R168 hard gates, without source, TeX, build, Git, process, or central-state mutation.
+- completed: Fresh location; native 300dpi and 8x-nearest, grayscale, standalone, and full-page review; 130-object denominator; all 8,385 unordered relationships; 130 per-object manual rows; 71 per-critical-pair manual rows; typography and math/semantic review; terminal validation; one-way ReadOnly seal; external post-seal audit.
+- files_changed: Evidence only under `D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\dialogues\A_visual\evidence\figures\FIG-P067-01\STRICT_R9_SA3_FRESH_ISOLATED_R113_20260827` plus this external immutable report/handoff directory. Frozen PDF and current source remained unchanged.
+- decisions: `SA3_FAIL_RETURN_TO_SA2`. P01916 and P01917 are real final-visible 34px illegal overlaps of T016 (p in p4) with G008 and G009. Nine source-font and nine glyph numeric observations are advisory only and actually readable. Mathematics, semantics, page integration, grayscale, codepoints, and clipping checks otherwise pass.
+- unresolved: The p4 label geometry must be corrected in a future official candidate; this SA3 role made no source patch.
+- validation: `final_crosscheck.json` passed with zero errors; external seal audit ok=true; WRITE_STOPPED unique-strict-latest=true; all payload/control files ReadOnly=true; all directories including root ReadOnly=true; root tree SHA-256 `7397ADB980AFCA61BBBAB599BBBD81056E325EA2FE086C308A67320B227911AD`.
+- next_action: Return to SA2. Reposition p4 or increase/reposition its real background to provide at least 3px final-visible clearance from both G008 and G009, rebuild a new official candidate, then route through fresh SA1 and fresh SA3.
+- sealed_root: `D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\dialogues\A_visual\evidence\figures\FIG-P067-01\STRICT_R9_SA3_FRESH_ISOLATED_R113_20260827`
+- root_external_auditor: `D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\dialogues\A_visual\evidence\figures\FIG-P067-01\STRICT_R9_SA3_FRESH_ISOLATED_R113_20260827_EXTERNAL\audit_sealed_root.py`
+- immutable_report: `D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\dialogues\A_visual\evidence\figures\FIG-P067-01\STRICT_R9_SA3_FRESH_ISOLATED_R113_20260827_EXTERNAL\POST_SEAL_AUDIT.json`
+- immutable_handoff: `D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\dialogues\A_visual\evidence\figures\FIG-P067-01\STRICT_R9_SA3_FRESH_ISOLATED_R113_20260827_EXTERNAL\HANDOFF_A-R113-P067-SA3-FRESH-ISOLATED-20260827.md`

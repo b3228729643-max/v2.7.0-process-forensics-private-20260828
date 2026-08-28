@@ -1,0 +1,33 @@
+review_id,object_id,reviewer_type,human_certification,manual_decision,manual_observation,evidence
+OBJR-001,T01,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Blue N(0.45,0.64) is intact, legible, and positioned above its curve without contact.",render/text_object_contact_sheet_8x.png
+OBJR-002,T02,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Blue mu_1=.45 has the correct subscript and value; no tofu or obscuration.",render/text_object_contact_sheet_8x.png
+OBJR-003,T03,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Gold N(0.60,0.64) is intact, legible, and positioned above its curve without contact.",render/text_object_contact_sheet_8x.png
+OBJR-004,T04,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Gold mu_2=.60 has the correct subscript and value; no tofu or obscuration.",render/text_object_contact_sheet_8x.png
+OBJR-005,T05,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"x tick -2 uses a true minus glyph and remains plainly readable.",crops_8x/T05_object_8x.png
+OBJR-006,T06,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"x tick -1 uses a true minus glyph and remains plainly readable.",crops_8x/T06_object_8x.png
+OBJR-007,T07,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"x tick 0 is distinct from the axis and tick mark.",crops_8x/T07_object_8x.png
+OBJR-008,T08,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"x tick 1 is distinct from the axis and tick mark.",crops_8x/T08_object_8x.png
+OBJR-009,T09,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"x tick 2 is distinct from the axis and tick mark.",crops_8x/T09_object_8x.png
+OBJR-010,T10,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"x tick 3 is distinct from the terminal arrowhead and remains readable.",crops_8x/T10_object_8x.png
+OBJR-011,T11,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"y tick 0 is distinct from the origin and not clipped.",crops_8x/T11_object_8x.png
+OBJR-012,T12,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"y tick 0.25 is intact and visually aligned with its tick mark.",crops_8x/T12_object_8x.png
+OBJR-013,T13,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"y tick 0.5 is intact and visually aligned with its tick mark.",crops_8x/T13_object_8x.png
+OBJR-014,T14,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Italic t is the correct x-axis variable and is not clipped.",crops_8x/T14_object_8x.png
+OBJR-015,T15,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Vertical Chinese density label contains the correct two glyphs and is readable.",crops_8x/T15_object_8x.png
+OBJR-016,T16,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Annotation line states common variance 0.64 correctly and clears the border and second line.",crops_8x/T16_object_8x.png
+OBJR-017,T17,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Annotation line correctly states that the mean changes with the other coordinate; all glyphs are intact.",crops_8x/T17_object_8x.png
+OBJR-018,T18,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Caption label 图33.6 is bold, correct, and not clipped.",crops_8x/T18_object_8x.png
+OBJR-019,T19,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Caption first line correctly lists rho=.6, a=1, b=.75 and both normal laws; no missing glyph.",render/figure_crop_native_300dpi.png
+OBJR-020,T20,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Caption second line completes the direct-computation statement with normal leading and no clipping.",crops_8x/T20_object_8x.png
+OBJR-021,G01,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Six x tick marks are present at the declared positions and meet the x-axis structurally.",render/actual_object_overlay_native_300dpi.png
+OBJR-022,G02,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Three y tick marks are present at 0,.25,.5 and meet the y-axis structurally.",render/actual_object_overlay_native_300dpi.png
+OBJR-023,G03,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"x-axis is continuous with a clear positive-direction arrowhead.",render/standalone_equivalent_native_300dpi.png
+OBJR-024,G04,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"x-axis arrowhead is intact; coincident density tails do not obscure its direction.",render/standalone_equivalent_native_300dpi.png
+OBJR-025,G05,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"y-axis is continuous with a clear positive-direction arrowhead.",render/standalone_equivalent_native_300dpi.png
+OBJR-026,G06,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"y-axis arrowhead is intact and clear of the 0.5 label.",render/standalone_equivalent_native_300dpi.png
+OBJR-027,G07,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Blue solid density curve is smooth, peaks at the blue mean, and has a conventional filled-area baseline closure.",render/standalone_equivalent_native_300dpi.png
+OBJR-028,G08,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Pale blue density fill is subordinate to all strokes and text and does not hide the gold curve.",render/standalone_equivalent_native_300dpi.png
+OBJR-029,G09,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Gold dashed density curve is smooth, peaks at the gold mean, and stays distinguishable in grayscale.",render/figure_grayscale_native_300dpi.png
+OBJR-030,G10,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Blue dashed mean marker lands at x=.45 and reaches the corresponding peak.",render/standalone_equivalent_native_300dpi.png
+OBJR-031,G11,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Gold dash-dot mean marker lands at x=.60 and reaches the corresponding peak.",render/standalone_equivalent_native_300dpi.png
+OBJR-032,G12,AI_SA1_VISUAL_REVIEW,false,OBJECT_CLEAR,"Rounded annotation border contains both note lines with visible interior clearance and no clipping.",render/actual_object_overlay_native_300dpi.png

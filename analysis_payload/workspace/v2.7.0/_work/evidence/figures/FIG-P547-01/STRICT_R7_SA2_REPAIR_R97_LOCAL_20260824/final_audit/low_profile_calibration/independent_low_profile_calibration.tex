@@ -1,0 +1,28 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\setmainfont{STIX Two Text}[Scale=1]
+\setCJKmainfont{Noto Serif SC}[Scale=1,BoldFont=Noto Sans SC Bold,ItalicFont=Noto Serif SC,BoldItalicFont=Noto Sans SC Bold]
+\setCJKsansfont{Noto Sans SC}[Scale=1,BoldFont=Noto Sans SC Bold,ItalicFont=Noto Sans SC,BoldItalicFont=Noto Sans SC Bold]
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\setmathfont{STIX Two Math}[Scale=1]
+\setmathfont[version=bold]{XITS Math Bold}
+\usepackage{xcolor}
+\definecolor{SLInk}{HTML}{1F2328}
+\definecolor{SLGold}{HTML}{B7791F}
+\begin{document}
+\pagestyle{empty}
+\color{SLInk}
+% Each target is deliberately isolated from neighbouring target glyphs.  This
+% makes the calibration a literal independent glyph measurement rather than a
+% component-sharing exercise.  The profile label is held at least 36 pt away.
+\noindent\texttt{CAL\_CJK\_TITLE\_BOLD\_10\_2\_COLON}\hspace{36pt}{\fontsize{10.2pt}{12.0pt}\selectfont\bfseries ：}\par\vspace{5pt}
+\noindent\texttt{CAL\_CJK\_MATRIX\_9\_8\_SEMICOLON}\hspace{36pt}{\fontsize{9.8pt}{11.7pt}\selectfont ；}\par\vspace{5pt}
+\noindent\texttt{CAL\_CJK\_BRIDGE\_11\_6\_COLON}\hspace{36pt}{\fontsize{11.6pt}{13.3pt}\selectfont ：}\par\vspace{5pt}
+\noindent\texttt{CAL\_CJK\_CAPTION\_SMALL\_COMMA}\hspace{36pt}{\small ，}\par\vspace{5pt}
+\noindent\texttt{CAL\_CJK\_CAPTION\_SMALL\_FULLSTOP}\hspace{36pt}{\small 。}\par\vspace{5pt}
+\noindent\texttt{CAL\_MATH\_11\_8\_PERIOD}\hspace{36pt}{\fontsize{11.8pt}{13.6pt}\selectfont $0.3$}\par\vspace{5pt}
+\noindent\texttt{CAL\_MATH\_11\_8\_GOLD\_PERIOD}\hspace{36pt}{\fontsize{11.8pt}{13.6pt}\selectfont {\color{SLGold}$\mathbf{0.3}$}}\par\vspace{5pt}
+\noindent\texttt{CAL\_MATH\_11\_6\_PERIOD}\hspace{36pt}{\fontsize{11.6pt}{13.3pt}\selectfont $0.3$}\par\vspace{5pt}
+\noindent\texttt{CAL\_TEXT\_BOLD\_9\_96\_PERIOD}\hspace{36pt}{\small\bfseries 0.3}\par
+\end{document}

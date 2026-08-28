@@ -1,0 +1,538 @@
+{
+  "mode": "apply",
+  "source_files": 33,
+  "input_boxes": 88,
+  "duplicates_removed": 29,
+  "five_step_boxes_retained": 59,
+  "result": "APPLIED",
+  "mapping": [
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C02.tex",
+      "original_line": 200,
+      "title": "归一化幂法",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C04.tex",
+      "original_line": 279,
+      "title": "有限假设空间上的贝叶斯更新",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C05.tex",
+      "original_line": 330,
+      "title": "狄利克雷--多项分布的顺序共轭更新",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C06.tex",
+      "original_line": 359,
+      "title": "离散特征的信息增益与增益比评估",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C06.tex",
+      "original_line": 369,
+      "title": "离散特征的信息增益与增益比评估",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C07.tex",
+      "original_line": 394,
+      "title": "候选原--对偶解的KKT残差检验",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C07.tex",
+      "original_line": 404,
+      "title": "候选原--对偶解的KKT残差检验",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C08.tex",
+      "original_line": 289,
+      "title": "带曲率保护的逆BFGS方法",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C08.tex",
+      "original_line": 451,
+      "title": "带Armijo回溯的梯度下降",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C09.tex",
+      "original_line": 217,
+      "title": "有限假设空间的经验风险选择",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C09.tex",
+      "original_line": 227,
+      "title": "有限假设空间的经验风险选择",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C10.tex",
+      "original_line": 303,
+      "title": "无泄漏的 模型选择",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第01册_数学基础与统计学习基本理论/chapters/V1-C11.tex",
+      "original_line": 326,
+      "title": "算法执行契约",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C01.tex",
+      "original_line": 282,
+      "title": "感知机学习算法的原始形式",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C01.tex",
+      "original_line": 488,
+      "title": "感知机学习算法的对偶形式",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C02.tex",
+      "original_line": 476,
+      "title": "kd树的精确 搜索",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C03.tex",
+      "original_line": 325,
+      "title": "带对称平滑的离散朴素贝叶斯训练与分类",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C04.tex",
+      "original_line": 371,
+      "title": "ID3/C4 5统一递归生成流程",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C04.tex",
+      "original_line": 470,
+      "title": "给定 的自底向上熵剪枝",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C04.tex",
+      "original_line": 480,
+      "title": "给定 的自底向上熵剪枝",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第02册_基础监督学习方法/chapters/V2-C05.tex",
+      "original_line": 333,
+      "title": "带回溯线搜索的阻尼Newton逻辑斯谛回归",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C01.tex",
+      "original_line": 335,
+      "title": "条件最大熵模型的BFGS学习",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C01.tex",
+      "original_line": 473,
+      "title": "改进的迭代尺度法（IIS）",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C01.tex",
+      "original_line": 483,
+      "title": "改进的迭代尺度法（IIS）",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C02.tex",
+      "original_line": 648,
+      "title": "序列最小最优化（SMO）",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 166,
+      "title": "二类AdaBoost训练",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 176,
+      "title": "二类AdaBoost训练",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 448,
+      "title": "平方损失回归提升树",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 458,
+      "title": "平方损失回归提升树",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 525,
+      "title": "一般损失梯度提升的候选生成",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 571,
+      "title": "一般损失下的梯度提升树：验收与提交",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C03.tex",
+      "original_line": 581,
+      "title": "一般损失下的梯度提升树：验收与提交",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 281,
+      "title": "EM算法",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 291,
+      "title": "EM算法",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 481,
+      "title": "受约束高斯混合模型的多启动EM",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 656,
+      "title": "基于 F 函数的交替极大化",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 666,
+      "title": "基于 F 函数的交替极大化",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 720,
+      "title": "以 Q 上升为门禁的GEM",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 730,
+      "title": "以 Q 上升为门禁的GEM",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 791,
+      "title": "逐参数块条件极大化的GEM",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C04.tex",
+      "original_line": 801,
+      "title": "逐参数块条件极大化的GEM",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 213,
+      "title": "HMM观测序列生成",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 223,
+      "title": "HMM观测序列生成",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 494,
+      "title": "缩放前向算法",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 504,
+      "title": "缩放前向算法",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 694,
+      "title": "区分ML与MAP目标的Baum--Welch学习",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 704,
+      "title": "区分ML与MAP目标的Baum--Welch学习",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 808,
+      "title": "对数域Viterbi算法",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C05.tex",
+      "original_line": 818,
+      "title": "对数域Viterbi算法",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C06.tex",
+      "original_line": 474,
+      "title": "线性链CRF的BFGS学习",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第03册_优化模型与序列模型/chapters/V3-C06.tex",
+      "original_line": 484,
+      "title": "线性链CRF的BFGS学习",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C01.tex",
+      "original_line": 300,
+      "title": "无监督模型的重复验证与选择",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "original_line": 252,
+      "title": "聚合层次聚类",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "original_line": 447,
+      "title": "带空类保护的单启动",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "original_line": 499,
+      "title": "的逐空类修复子程序",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "original_line": 545,
+      "title": "多启动 的记录与选择",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C02.tex",
+      "original_line": 555,
+      "title": "多启动 的记录与选择",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C03.tex",
+      "original_line": 437,
+      "title": "截断SVD的双边子空间迭代",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C03.tex",
+      "original_line": 447,
+      "title": "截断SVD的双边子空间迭代",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C04.tex",
+      "original_line": 487,
+      "title": "中心化样本的主成分分析",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C05.tex",
+      "original_line": 548,
+      "title": "基于截断SVD的潜在语义分析",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C05.tex",
+      "original_line": 558,
+      "title": "基于截断SVD的潜在语义分析",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C05.tex",
+      "original_line": 606,
+      "title": "平方损失NMF的顺序乘法更新",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C06.tex",
+      "original_line": 449,
+      "title": "稀疏共现计数上的PLSA EM训练",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C06.tex",
+      "original_line": 502,
+      "title": "固定主题--词分布的新文档折入",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第04册_无监督学习与矩阵分解/chapters/V4-C06.tex",
+      "original_line": 512,
+      "title": "固定主题--词分布的新文档折入",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C01.tex",
+      "original_line": 752,
+      "title": "有限状态链的分布推进与合法性检查",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "original_line": 531,
+      "title": "独立蒙特卡罗均值与Welford在线诊断",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "original_line": 541,
+      "title": "独立蒙特卡罗均值与Welford在线诊断",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "original_line": 663,
+      "title": "接受—拒绝抽样的数学主体",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "original_line": 728,
+      "title": "对数缩放的普通或自归一化重要性估计",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C02.tex",
+      "original_line": 738,
+      "title": "对数缩放的普通或自归一化重要性估计",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "original_line": 677,
+      "title": "带零流分支和完整状态轨迹的一般MH",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "original_line": 687,
+      "title": "带零流分支和完整状态轨迹的一般MH",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "original_line": 741,
+      "title": "固定顺序的单分量MH扫描",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C03.tex",
+      "original_line": 751,
+      "title": "固定顺序的单分量MH扫描",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+      "original_line": 552,
+      "title": "带部分扫描诊断的系统Gibbs抽样",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C04.tex",
+      "original_line": 562,
+      "title": "带部分扫描诊断的系统Gibbs抽样",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "original_line": 876,
+      "title": "LDA折叠Gibbs抽样",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "original_line": 886,
+      "title": "LDA折叠Gibbs抽样",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "original_line": 934,
+      "title": "算法执行契约",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "original_line": 965,
+      "title": "算法执行契约",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+      "original_line": 998,
+      "title": "点参数LDA变分EM（多启动）",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C07.tex",
+      "original_line": 606,
+      "title": "基本 的稀疏幂迭代",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C07.tex",
+      "original_line": 616,
+      "title": "基本 的稀疏幂迭代",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C07.tex",
+      "original_line": 665,
+      "title": "带悬挂修复的一般 稀疏幂法",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+      "original_line": 619,
+      "title": "协议A：开发集选择与一次锁定测试",
+      "action": "REMOVE_DUPLICATE"
+    },
+    {
+      "source_file": "第05册_采样方法主题模型与图排序/chapters/V5-C08.tex",
+      "original_line": 629,
+      "title": "协议A：开发集选择与一次锁定测试",
+      "action": "COMPACT_TO_FIVE_STEPS"
+    }
+  ]
+}

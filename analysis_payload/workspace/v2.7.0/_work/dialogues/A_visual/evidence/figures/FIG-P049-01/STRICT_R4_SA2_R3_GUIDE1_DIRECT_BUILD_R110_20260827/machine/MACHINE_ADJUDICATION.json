@@ -1,0 +1,21 @@
+{
+  "UID": "FIG-P049-01",
+  "round": "R4",
+  "raw_machine_file": "machine/all_unordered_pairs.csv",
+  "raw_candidate_pair_id": "P0110",
+  "raw_candidate": {
+    "object_a": "G_CONTOUR_C3",
+    "object_b": "T_CONTOUR_C2",
+    "raw_shared_visible_pixels": 4,
+    "raw_canonical_illegal_overlap_pixels": 4
+  },
+  "adjudication": "MASK_CONTAMINATION_CONFIRMED",
+  "decision": "PASS",
+  "final_canonical_illegal_overlap_pixels": 0,
+  "evidence_opened": [
+    "rois/c2_outer_candidate_native1x.png",
+    "rois/c2_outer_candidate_native8x.png"
+  ],
+  "object_specific_note": "The native 1x and nearest-neighbour 8x ROIs show a continuous white gap between the visible c2 label ink and the outer c3 contour. The four raw pixels arise from colour-mask attribution and are retained unchanged in the raw pair table; they are not visible shared ink.",
+  "recorded_at_utc": "2026-08-26T22:52:33.5112244Z"
+}

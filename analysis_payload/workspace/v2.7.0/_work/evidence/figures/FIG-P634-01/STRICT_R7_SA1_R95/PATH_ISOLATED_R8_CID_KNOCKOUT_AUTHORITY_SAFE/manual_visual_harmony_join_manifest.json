@@ -1,0 +1,19 @@
+{
+  "schema": "R8_POSTINSPECTION_VISUAL_LEDGER_JOIN_V1",
+  "evidence_identity_sha256": "3e8d102b15d1d40e9d08d8426b0cd7e849eb0cdb81625385c4e591a25f5cd4dd",
+  "template_row_count": 192,
+  "manual_input_row_count": 192,
+  "unique_view_element_script_count": 192,
+  "views": [
+    "FIGURE_CROP_300DPI",
+    "FULL_PAGE_200DPI",
+    "GRAYSCALE_300DPI",
+    "STANDALONE_300DPI"
+  ],
+  "rows_per_view": 48,
+  "pending_or_unknown_count": 0,
+  "manual_visual_fail_count": 24,
+  "font_visual_harmony_pass": false,
+  "decision_source": "manual_visual_harmony_completion.csv; explicit reviewer records after opening four views",
+  "result": "PASS"
+}

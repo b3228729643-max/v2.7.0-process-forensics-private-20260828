@@ -1,0 +1,8 @@
+# Pre-manual selector correction trace
+
+- The first provisional selector computed squared color distance in `int16`. Squaring overflowed that type and invalidated the selector predicate; the resulting seven provisional hard relations were never eligible for manual review.
+- Recomputing color distance in `float32` removed the overflow. Three provisional relations remained because a same-color drawing line inside a glyph bounding box contaminated the bbox-based glyph assignment.
+- The selector was then replaced with exact single-use glyph geometry from the SVG representation of the same official R110 PDF page. The page contained 720 PDF characters and 720 SVG glyph uses; 85 glyph uses fell inside the independently located figure-plus-caption crop, matching the frozen glyph denominator exactly.
+- Each exact vector selector was intersected with the native 300 dpi Poppler raster, so selectors assign pixels but do not resize or substitute the official raster. Opaque-halo occlusion was subtracted from final-visible drawing masks while pre-occlusion masks were retained separately.
+- After that correction, the complete denominator was frozen again as 85 glyphs plus 14 drawings (N=99), and all 4,851 unordered pairs were recomputed from the corrected masks. The seven provisional hard relations were withdrawn for the technical causes above. They are not cited by the manual ledgers.
+- Final corrected result: exactly one machine hard relation, R2886 (G036 vs D002), with 24 native overlapping pixels. All manual review cites only the corrected final contact sheets and corrected relation ROIs.

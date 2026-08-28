@@ -1,0 +1,59 @@
+% v2.3.1 figure UID: FIG-P660-01
+% Proposed post-v2.3.1 polish for FIG-P660-01: protect key-label size and stroke hierarchy.
+\tikzset{
+  slfig-FIG-P660-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P660-01-boundary/.style={draw=SLMidBlue,line width=0.90pt},
+  slfig-FIG-P660-01-grid/.style={draw=SLRuleGray,line width=0.40pt},
+  slfig-FIG-P660-01-component/.style={draw=SLTeal,line width=0.58pt,densely dashed},
+  slfig-FIG-P660-01-card/.style={rounded corners=2pt,text width=52mm,align=left,inner xsep=3.4mm,inner ysep=2.1mm}
+}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P660-01,>=Stealth,every node/.style={font=\fontsize{9.5pt}{11.4pt}\selectfont},
+  >={Stealth[length=2.3mm,width=1.6mm]},
+  every path/.append style={line width=0.55pt},
+  every node/.append style={line width=0.8pt},
+  alt={对象—关系—结论：三类别概率向量位于二维单纯形上，三个顶点分别代表一个类别概率为1；内部点的重心坐标就是三个类别概率，因此Dirichlet分布虽写在三维坐标中，实际支撑集只有二维}]
+\coordinate (e1) at (0,0);
+\coordinate (e2) at (7,0);
+\coordinate (e3) at (3.5,6.062);
+\coordinate (th) at (3.85,3.031);
+
+\fill[SLSoftBlue] (e1)--(e2)--(e3)--cycle;
+\draw[slfig-FIG-P660-01-boundary] (e1)--(e2)--(e3)--cycle;
+\foreach \t in {0.2,0.4,0.6,0.8}{
+  \draw[slfig-FIG-P660-01-grid]
+    ($(e1)!\t!(e2)$) -- ($(e3)!\t!(e2)$);
+  \draw[slfig-FIG-P660-01-grid]
+    ($(e2)!\t!(e3)$) -- ($(e1)!\t!(e3)$);
+  \draw[slfig-FIG-P660-01-grid]
+    ($(e3)!\t!(e1)$) -- ($(e2)!\t!(e1)$);
+}
+\coordinate (q1) at ($(e2)!(th)!(e3)$);
+\coordinate (q2) at ($(e1)!(th)!(e3)$);
+\coordinate (q3) at ($(e1)!(th)!(e2)$);
+\draw[slfig-FIG-P660-01-component] (th)--(q1)
+  node[anchor=west,inner sep=0pt,font=\fontsize{8.7pt}{10.4pt}\selectfont] at (5.15,4.08) {$\theta_1=.2$};
+\draw[slfig-FIG-P660-01-component] (th)--(q2)
+  node[anchor=east,inner sep=0pt,font=\fontsize{8.7pt}{10.4pt}\selectfont] at (1.95,4.08) {$\theta_2=.3$};
+\draw[slfig-FIG-P660-01-component] (th)--(q3)
+  node[anchor=north west,inner sep=0pt,font=\fontsize{8.7pt}{10.4pt}\selectfont] at (4.15,-0.32) {$\theta_3=.5$};
+\fill[SLDeepBlue] (th) circle (3.2pt);
+
+\node[below=1.6mm,align=center] at (e1) {$e_1=(1,0,0)$\\类别1确定};
+\node[below=1.6mm,align=center] at (e2) {$e_2=(0,1,0)$\\类别2确定};
+\node[above=1.6mm,align=center] at (e3) {$e_3=(0,0,1)$\\类别3确定};
+\node[anchor=west,inner sep=0pt] at (5.55,3.10)
+  {$\theta=(0.2,0.3,0.5)$};
+\node[slfig-FIG-P660-01-card,draw=SLRuleGray,fill=white] at (12.25,4.45)
+  {$\Delta^2=\{\theta\in\mathbb R^3:\theta_i\ge0,\ \sum_i\theta_i=1\}$\\
+   $\dim(\Delta^2)=2$};
+\node[slfig-FIG-P660-01-card,draw=SLRuleGray,fill=SLSoftGray] at (12.25,2.20)
+  {内部：三个分量均为正；\\边：一个分量为零；\\顶点：一个类别概率为1。};
+\node[slfig-FIG-P660-01-card,draw=SLMidBlue,fill=SLSoftBlue] at (12.25,-0.05)
+  {三元概率向量有三个坐标，却只具有两个自由度；三角形中的位置就是重心坐标。};
+\end{tikzpicture}
+\caption{三类别概率向量位于二维单纯形上，三个顶点分别代表一个类别概率为1；内部点的重心坐标就是三个类别概率，因此Dirichlet分布虽写在三维坐标中，实际支撑集只有二维}
+\label{fig:V5-C05-simplex-geometry}
+\end{figure}

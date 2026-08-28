@@ -1,0 +1,6 @@
+CHECK_ID,REVIEWER_ID,EVIDENCE,DECISION,REVIEWER_NOTE
+MATH01,A-R115-P109-SA3-FRESH-ISOLATED-20260828,"current source lines 21-33; figure_raw_300dpi; ROI_G01_raw_300dpi",PASS,"For x,y in C and lambda in [0,1], z=lambda x+(1-lambda)y is a convex combination and therefore lies on the segment joining x and y."
+MATH02,A-R115-P109-SA3-FRESH-ISOLATED-20260828,"ROI_G01_raw_300dpi; ROI_G01_nearest8x",PASS,"Both endpoints and all three interpolation markers are collinear; every marked point lies between x and y and inside the displayed region."
+MATH03,A-R115-P109-SA3-FRESH-ISOLATED-20260828,"figure_raw_300dpi; ROI_G02_raw_300dpi",PASS,"The full segment between the displayed endpoints remains within the closed region, directly illustrating the caption's defining convex-set property."
+MATH04,A-R115-P109-SA3-FRESH-ISOLATED-20260828,"V1-C07.tex lines 249-254; page_integration_300dpi",PASS,"The adjacent prose correctly states the universal quantifiers and distinguishes proving convexity from refuting it with one counterexample; it does not contradict the figure."
+MATH05,A-R115-P109-SA3-FRESH-ISOLATED-20260828,"figure_raw_300dpi; figure_grayscale_300dpi",PASS,"The geometry remains unambiguous without color: endpoints, segment, interior markers, boundary, formulas, and labels preserve their roles."

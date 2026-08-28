@@ -1,0 +1,3 @@
+# Mathematical and textual consistency review
+
+The diagram and adjacent paragraph agree on the system-scan invariant: at substep `j`, the left segment of `x^{[j]}` contains same-round updates, the right segment retains prior-round values, and only `x^{[d]} = x^{(t)}` is a completed-round sample. The source diagram, caption, reading-order paragraph, and V5-C04 surrounding text all preserve this distinction; arrows are directional update-order aids rather than a claim of parallel update. The visual review must still use the native/8x packages for final human confirmation of formula, state-card, arrow, border and texture separations.

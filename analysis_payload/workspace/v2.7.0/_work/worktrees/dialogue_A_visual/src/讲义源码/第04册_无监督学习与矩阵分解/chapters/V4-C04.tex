@@ -1,0 +1,1116 @@
+% STAGE12-CHAPTER: V4-C04
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V4-C04-CH01}; CH-02=\label{struct:V4-C04-CH02}; CH-03=\label{struct:V4-C04-CH03}; CH-04=\label{struct:V4-C04-CH04}; CH-05=\label{struct:V4-C04-CH05}; CH-06=\label{struct:V4-C04-CH06}; CH-07=\label{struct:V4-C04-CH07}; CH-08=\label{struct:V4-C04-CH08}; CH-09=\label{struct:V4-C04-CH09}; CH-10=\label{struct:V4-C04-CH10}; CH-11=\label{struct:V4-C04-CH11}; CH-12=\label{struct:V4-C04-CH12}; CH-13=\label{struct:V4-C04-CH13}; CH-14=\label{struct:V4-C04-CH14}; CH-15=\label{struct:V4-C04-CH15}; CH-16=\label{struct:V4-C04-CH16}; CH-17=\label{struct:V4-C04-CH17}; CH-18=\label{struct:V4-C04-CH18}; CH-19=\label{struct:V4-C04-CH19}; CH-20=\label{struct:V4-C04-CH20}; CH-21=\label{struct:V4-C04-CH21}; CH-22=\label{struct:V4-C04-CH22}; CH-23=\label{struct:V4-C04-CH23}; CH-24=\label{struct:V4-C04-CH24}; CH-25=\label{struct:V4-C04-CH25}; CH-26=\label{struct:V4-C04-CH26}; CH-27=\label{struct:V4-C04-CH27}; CH-28=\label{struct:V4-C04-CH28}; CH-29=\label{struct:V4-C04-CH29}; CH-30=\label{struct:V4-C04-CH30}; CH-31=\label{struct:V4-C04-CH31}; CH-32=\label{struct:V4-C04-CH32}; CH-33=\label{struct:V4-C04-CH33}; CH-34=\label{struct:V4-C04-CH34}; CH-35=\label{struct:V4-C04-CH35}; CH-36=\label{struct:V4-C04-CH36}; CH-37=\label{struct:V4-C04-CH37}
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% FIGURE-KNOWLEDGE-MAP: fig:V4-C04-ellipse -> SLM-16-01-005
+
+\chapter{主成分分析}\label{chap:V4-C04}
+\index{主成分分析}
+\index{协方差矩阵}
+\index{方差最大化}
+\index{重构误差}
+
+% KNOWLEDGE-PLAN: KN-V4-C27-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：主成分分析。}主成分分析章地图以“从中心化数据直达方差最大化、重构与SVD实现”组织内容；请把路线拆成起点、关键工具和终点，并核对三者的输入输出类型能依次衔接。\par
+
+\SLChapterOpening{从中心化数据直达方差最大化、重构与SVD实现}{怎样寻找保留最大变异且重构误差最小的正交子空间}{能推导总体/样本PCA、载荷边界、SVD对应和无偏协方差}{均值协方差、谱分解、正交投影、SVD与独立同分布样本}{中心化或$n\geq2$条件失败时回到\cref{sec:V4-C04-S01,sec:V4-C04-S03}；载荷或重构不清时回看\cref{sec:V4-C04-S02,sec:V4-C04-S04}}
+
+\phantomsection\label{struct:V4-C04-CH01}
+% KNOWLEDGE-PLAN: KN-V4-C27-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}主成分分析目标中的“能在中心化前提下严格定义总体主成分与样本主成分，并解释特征值、载荷与方差贡献率”必须可复核；请在中心化前提下严格定义总体主成分与样本主成分，并解释特征值、载荷与方差贡献率，所得结果仅在“中间结果逐项包含首目标“能在中心化前提下严格定义总体主成分与样本主成分，并解释特征值、载荷与方差贡献率”声明的对象、条件与结论”时通过。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能在中心化前提下严格定义总体主成分与样本主成分，并解释特征值、载荷与方差贡献率；
+  \item 能分三步推出方差最大化问题，证明前$q$个特征向量同时给出最小均方重构误差；
+  \item 能写清协方差PCA、相关系数PCA和基于SVD的PCA之间的尺寸关系与适用条件；
+  \item 能给出含输入、输出、初始化、更新、停止和诊断的完整算法，并估计主要时间、空间成本；
+  \item 能识别未中心化、量纲支配、符号不唯一、重复特征值和数据泄漏等常见问题。
+\end{itemize}}
+
+\phantomsection\label{struct:V4-C04-CH02}
+% KNOWLEDGE-PLAN: KN-V4-C27-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}主成分分析的最短先修明确要求“本章使用向量内积与正交投影、对称矩阵谱分解、半正定矩阵、迹运算、Lagrange乘子、协方差与相关系数”；请把首项“本章使用向量内积与正交投影、对称矩阵谱分解、半正定矩阵、迹运算、Lagrange乘子、协方差与相关系数”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章使用向量内积与正交投影、对称矩阵谱分解、半正定矩阵、迹运算、Lagrange乘子、协方差与相关系数”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章使用向量内积与正交投影、对称矩阵谱分解、半正定矩阵、迹运算、Lagrange乘子、协方差与相关系数，以及紧致奇异值分解。需要特别区分三个对象：随机向量的总体协方差、有限样本的样本协方差、以及中心化数据矩阵。三者尺寸相关但并不相同。
+
+沿用全书行样本主约定，原始矩阵记为$X_{\rm row}\in\mathbb R^{n\times m}$。为复用“左奇异向量就是变量主轴”的传统PCA公式，本章只在公式局部定义显式转置桥
+\[
+X_{c,{\rm row}}=X_{\rm row}-\boldsymbol1_n\bar x^{\mathsf T}\in\mathbb R^{n\times m},
+\qquad
+X_c=X_{c,{\rm col}}=X_{c,{\rm row}}^{\mathsf T}\in\mathbb R^{m\times n}.
+\]
+此后出现$X_c$都指右侧的列样本工作矩阵；输入和数据切分仍以$X_{\rm row}$为准。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V4-C04-CH03}
+% KNOWLEDGE-PLAN: KN-V4-C27-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}主成分分析先修自检固定核验“能否证明实对称矩阵具有一组标准正交特征向量”；请证明实对称矩阵具有一组标准正交特征向量并写出中间结果，再按“中间结果直接回答首项“能否证明实对称矩阵具有一组标准正交特征向量”并给出通过或失败”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em,itemsep=0.08em]
+  \item 能否证明实对称矩阵具有一组标准正交特征向量？
+  \item 能否把$\operatorname{var}(a^{\mathsf T}x)$写成$a^{\mathsf T}\Sigma a$？
+  \item 能否说明$UU^{\mathsf T}$在$U^{\mathsf T}U=I$时是正交投影矩阵？
+  \item 若$X_c=U\Gamma V^{\mathsf T}$，能否写出$X_cX_c^{\mathsf T}$的谱分解？
+\end{enumerate}
+若第1、4项不熟悉，应先复习矩阵谱分解与SVD；若第2、3项不能独立完成，应先复习协方差的双线性性质与正交投影。
+\end{precheckbox}
+
+\phantomsection\label{struct:V4-C04-CH04}
+% KNOWLEDGE-PLAN: KN-V4-C27-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}主成分分析依赖链含“中心化随机向量 $\to$ 协方差二次型 $\to$ 单位方向上的方差最大化”到“Rayleigh商 $\to$ 特征值问题 $\to$ 依次正交的总体主成分”这一跳；请固定写出前者输出类型与后者输入类型，并核对两者相同或存在正文声明的转换。\par
+
+\begin{dependencybox}
+中心化随机向量 $\to$ 协方差二次型 $\to$ 单位方向上的方差最大化；
+Rayleigh商 $\to$ 特征值问题 $\to$ 依次正交的总体主成分；
+投影矩阵 $\to$ 保留方差与残差方差分解 $\to$ 最小重构误差；
+样本中心化矩阵 $\to$ 样本协方差 $\to$ 特征分解或SVD实现；
+特征值谱 $\to$ 维数选择、稳定性诊断与解释边界。
+\end{dependencybox}
+
+\begin{keypointbox}[title=数据方向桥：PCA输入与工作矩阵]
+数据切分和预处理始终使用行样本输入$X_{\rm row}\in\mathbb R^{n\times m}$。中心化后，为让左奇异向量直接表示变量主轴，本章定义
+\[
+X_c=X_{c,{\rm row}}^{\mathsf T}\in\mathbb R^{m\times n}.
+\]
+例如$n=4,m=2$时，输入与工作矩阵分别为$4\times2$和$2\times4$。凡出现$X_cX_c^{\mathsf T}$，结果都是$m\times m$变量协方差尺度；不得漏掉这次显式转置。
+\end{keypointbox}
+
+\phantomsection\label{struct:V4-C04-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V4-C04
+\index[symbols]{x-minus-mu-minus-z-eq-x-minus-minus-mu-minus--sd94810fe68ea@$x,\mu,z=x-\mu$：随机向量、总体均值与中心化随机向量}
+\index[symbols]{minus-sigma-minus--se9a384bacc29@$\Sigma$：本章PCA总体协方差矩阵$\mathbb E(zz^{\mathsf T})$，不是SVD的矩形奇异值矩阵}
+\index[symbols]{minus-alpha-minus-i-minus-lambda-minus-i--s2c93d8b9f707@$\alpha_i,\lambda_i$：第$i$个标准正交方向及其方差}
+\index[symbols]{y-i--s125633ee5e0f@$y_i$：本章第$i$个总体主成分得分$\alpha_i^{\mathsf T}z$，不是监督标签}
+\index[symbols]{a-eq-minus-alpha-minus-1-minus-ldots-minus-minus-alpha-minus-m--s12cfb8b6b106@$A=[\alpha_1,\ldots,\alpha_m]$：正交主轴矩阵，$A^{\mathsf T}A=I$}
+\index[symbols]{b-eq-minus-alpha-minus-1-minus-ldots-minus-minus-alpha-minus-q--s397a4a676914@$B=[\alpha_1,\ldots,\alpha_q]$：前$q$个主轴，$B^{\mathsf T}B=I_q$}
+\index[symbols]{x-c--s6f18849de228@$X_{c,{\rm row}},X_c$：行样本中心化矩阵及其显式转置工作矩阵}
+\index[symbols]{s--sd0ea181ea42b@$S$：本章PCA样本协方差$X_cX_c^{\mathsf T}/(n-1)$，不是转移算子}
+\index[symbols]{r--s9b067bb2373a@$R$：标准化变量的样本相关系数矩阵}
+\index[symbols]{u-minus-gamma-minus-v--s99815180a64f@$U,\Gamma,V$：$X_c=U\Gamma V^{\mathsf T}$的紧致SVD}
+\index[symbols]{minus-eta-minus-i--s4c126ddb966b@$\eta_i$：第$i$主成分方差贡献率}
+% STAGE19-SYMBOL-INDEX-END: V4-C04
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$x,\mu,z=x-\mu$ & $\mathbb R^m$ & 随机向量、总体均值与中心化随机向量\\
+$\Sigma$ & $\mathbb R^{m\times m}$，$\Sigma\succeq0$ & 总体协方差矩阵$\mathbb E(zz^{\mathsf T})$\\
+$\alpha_i,\lambda_i$ & $\mathbb R^m,\mathbb R_{\ge0}$ & 第$i$个标准正交方向及其方差\\
+$y_i$ & $\mathbb R$ & 总体主成分$\alpha_i^{\mathsf T}z$\\
+$A=[\alpha_1,\ldots,\alpha_m]$ & $\mathbb R^{m\times m}$ & 正交主轴矩阵，$A^{\mathsf T}A=I$\\
+$B=[\alpha_1,\ldots,\alpha_q]$ & $\mathbb R^{m\times q}$ & 前$q$个主轴，$B^{\mathsf T}B=I_q$\\
+$X_{c,{\rm row}},X_c$ & $\mathbb R^{n\times m},\mathbb R^{m\times n}$ & 行样本中心化矩阵及$X_c=X_{c,{\rm row}}^{\mathsf T}$\\
+$S$ & $\mathbb R^{m\times m}$ & 样本协方差$X_cX_c^{\mathsf T}/(n-1)$\\
+$R$ & $\mathbb R^{m\times m}$ & 标准化变量的样本相关系数矩阵\\
+$U,\Gamma,V$ & 正交因子与非负对角矩阵 & $X_c=U\Gamma V^{\mathsf T}$的紧致SVD\\
+$\eta_i$ & $[0,1]$ & 第$i$主成分方差贡献率\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+
+\SLDirectSection{总体主成分}{sec:V4-C04-S01}
+\phantomsection\label{struct:V4-C04-CH06}
+当$m$个变量彼此相关时，逐变量观察既重复又难以形成整体结构。主成分分析寻找一组互相正交的线性组合，使第一组合具有最大方差，第二组合在与第一组合不相关的条件下具有最大方差，依次进行。它是坐标系的旋转与有序截断，不是对单个原变量的筛选。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-CONCEPT-002 L1
+\paragraph{读前自检：主成分分析。}PCA对中心化观测$z=x-\mu$取线性坐标$y=\alpha^{\mathsf T}z$；请核对$z,\alpha\in\mathbb R^m$时$y$为标量，并计算$\operatorname{var}(y)=\alpha^{\mathsf T}\Sigma\alpha$。\par
+
+\knowledgeanchor{SLM-16-00-001}{主成分分析}
+主成分分析把高维观测映射到少数线性坐标。排序依据是投影方差；若保留的方向解释了大部分总方差，就可用低维得分近似原数据。中心化是定义中的必要步骤，因为方差只描述围绕均值的变化。
+
+\knowledgeanchor{SLM-16-01-001}{总体主成分分析}
+设$z=x-\mu$，$\mathbb Ez=0$，$\operatorname{cov}(z)=\Sigma$。对任意单位向量$\alpha$，投影$y=\alpha^{\mathsf T}z$的方差为
+\[
+\operatorname{var}(y)=\mathbb E(\alpha^{\mathsf T}zz^{\mathsf T}\alpha)
+=\alpha^{\mathsf T}\Sigma\alpha.
+\]
+因此总体PCA只由$\Sigma$决定；平移$x$不会改变主轴，但若不做中心化，原点位置会错误地进入二阶矩。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-CONCEPT-004 L1
+\paragraph{读前自检：基本想法。}PCA基本想法令$A=[\alpha_1,\ldots,\alpha_m]$正交并取$y=A^{\mathsf T}z$；请计算$\operatorname{cov}(y)=A^{\mathsf T}\Sigma A$，核对选取协方差特征向量后该矩阵按降序对角化。\par
+
+\knowledgeanchor{SLM-16-01-002}{基本想法}
+选择标准正交基$A=[\alpha_1,\ldots,\alpha_m]$并令$y=A^{\mathsf T}z$。由于$A$正交，变换不改变欧氏长度；它只旋转坐标。PCA进一步要求$\operatorname{cov}(y)=A^{\mathsf T}\Sigma A$为对角矩阵，并按对角元从大到小排列。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-DEFINITION-001 L1
+\paragraph{读前自检：定义和导出。}第一主轴解$\max_{\alpha^{\mathsf T}\alpha=1}\alpha^{\mathsf T}\Sigma\alpha$；请写Lagrange驻点方程$\Sigma\alpha=\lambda\alpha$，核对后续主轴还需与已选方向正交。\par
+
+\knowledgeanchor{SLM-16-01-003}{定义和导出}
+第一主轴解决
+\[
+\max_{\alpha\in\mathbb R^m}\ \alpha^{\mathsf T}\Sigma\alpha
+\quad\text{s.t.}\quad \alpha^{\mathsf T}\alpha=1.
+\]
+后续主轴增加$\alpha^{\mathsf T}\alpha_j=0$的约束。对称矩阵的正交谱分解保证这些约束可同时满足。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-DEFINITION-002 L1
+\paragraph{读前自检：总体主成分定义。}总体主成分由$\Sigma$的标准正交特征向量定义为$y_i=\alpha_i^{\mathsf T}(x-\mu)$；请核对$\operatorname{var}(y_i)=\lambda_i$，并说明重复特征值时唯一的是特征子空间而非单根主轴。\par
+
+\phantomsection\label{struct:V4-C04-CH07}
+\knowledgeanchor{SLM-16-01-004}{总体主成分定义}
+% KNOWLEDGE-PLAN: KN-V4-C27-DEFINITION-003 L1
+\paragraph{读前自检：总体主成分。}总体主成分按$\lambda_1\ge\cdots\ge\lambda_m$排序；请把$y_i=\alpha_i^{\mathsf T}(x-\mu)$代入协方差，核对不同$i,j$时结果为0且每个得分为标量。\par
+
+\begin{definition}[总体主成分]
+设$\Sigma$的特征值按$\lambda_1\ge\cdots\ge\lambda_m\ge0$排列，相应标准正交特征向量为$\alpha_1,\ldots,\alpha_m$。随机变量
+\[
+y_i=\alpha_i^{\mathsf T}(x-\mu),\qquad i=1,\ldots,m,
+\]
+称为第$i$个总体主成分。若特征值互异，则每个方向除整体符号外唯一；若有重复特征值，则对应特征子空间唯一而其中的基不唯一。
+\end{definition}
+
+\phantomsection\label{struct:V4-C04-CH08}
+\textbf{模型。}总体PCA可写成$z=Ay$，其中$A$正交且$\operatorname{cov}(y)=\operatorname{diag}(\lambda_1,\ldots,\lambda_m)$。保留前$q$维时，近似模型为$z\approx B y_{1:q}$，再加回$\mu$得到$x$的重构。
+
+\phantomsection\label{struct:V4-C04-CH09}
+\textbf{学习策略。}总体层面从$\Sigma$的谱结构选择方向；有限样本中以$S$或$R$估计该结构。维数$q$必须在训练数据上用预先规定的贡献率、验证误差或下游任务准则选择，不能看测试集后再决定。
+
+
+% KNOWLEDGE-PLAN: KN-V4-C27-FORMULA-001 L1
+\paragraph{读前自检：协方差矩阵特征对刻画总体主成分。}协方差特征对刻画PCA要求$\Sigma=\Sigma^{\mathsf T}\succeq0$和单位方向；请对Rayleigh商做一次受约束求导，核对最大方差等于$\lambda_1$，正交子空间中的下一最大值为$\lambda_2$。\par
+
+\SLTeachSection{协方差矩阵与方差最大化}{sec:V4-C04-S02}
+\knowledgeanchor{SLM-16-01-005}{协方差矩阵特征对刻画总体主成分}
+\phantomsection\label{struct:V4-C04-CH11}
+% CORE-DERIVATION-PLAN: KN-V4-C27-DERIVATION-001
+\SLKnowledgeBridge{用 Rayleigh 商逐个得到最大方差方向及正交后续方向。}{对称半正定协方差矩阵 $\Sigma$ 与单位方向 $\alpha$。}{$\alpha^{\mathsf T}\alpha=1$；后续方向还需与已选方向正交。}{先极大化 $\alpha^{\mathsf T}\Sigma\alpha$，并为单位范数约束写拉格朗日函数。}
+
+\begin{derivationgoalbox}
+从单位方向的方差出发，依次推出第一主成分、后续主成分与协方差特征对的关系。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+设$\Sigma=\Sigma^{\mathsf T}\succeq0$，并按降序记其特征值。使用约束$\alpha^{\mathsf T}\alpha=1$排除任意缩放，否则二次型可随$\|\alpha\|$无限增大。
+\end{derivationprepbox}
+% DERIVATION-CHECK: step-1; step-2; step-3
+\textbf{推导第1步：构造约束目标。}第一投影方差为$\alpha^{\mathsf T}\Sigma\alpha$，Lagrange函数取
+\[
+\mathcal L(\alpha,\lambda)=\alpha^{\mathsf T}\Sigma\alpha
+-\lambda(\alpha^{\mathsf T}\alpha-1).
+\]
+\textbf{推导第2步：求驻点并识别目标值。}对$\alpha$求导得
+\[
+2\Sigma\alpha-2\lambda\alpha=0,
+\quad\text{即}\quad \Sigma\alpha=\lambda\alpha.
+\]
+左乘$\alpha^{\mathsf T}$并用单位约束，得到驻点方差等于$\lambda$。
+\textbf{推导第3步：排序并施加正交约束。}Rayleigh商最大值是$\lambda_1$。在$\alpha\perp\alpha_1,\ldots,\alpha_{k-1}$的子空间中重复同一论证，最大值为$\lambda_k$，方向可取$\alpha_k$。
+
+\phantomsection\label{struct:V4-C04-CH12}
+\begin{theorem}[协方差特征对与主成分]\label{thm:V4-C04-eigen-pc}
+设$\Sigma$为总体协方差矩阵。按降序排列的标准正交特征向量$\alpha_i$给出总体主成分$y_i=\alpha_i^{\mathsf T}z$，且
+\[
+\operatorname{var}(y_i)=\lambda_i,\qquad
+\operatorname{cov}(y_i,y_j)=0\quad(i\ne j).
+\]
+反之，依次解方差最大化与不相关约束得到的方向可选为这些特征向量。
+\end{theorem}
+
+\phantomsection\label{struct:V4-C04-CH13}
+% KNOWLEDGE-PLAN: KN-V4-C27-PROOF-001 L1
+\paragraph{读前自检：证明：协方差特征对与主成分。}协方差特征对证明使用$\Sigma\alpha_j=\lambda_j\alpha_j$与$\alpha_i^{\mathsf T}\alpha_j=0$；请展开$\operatorname{cov}(y_i,y_j)$，核对$i\ne j$时为0、$i=j$时为$\lambda_i$。\par
+
+\begin{proof}
+特征方程给出$\operatorname{var}(y_i)=\alpha_i^{\mathsf T}\Sigma\alpha_i=\lambda_i$。当$i\ne j$时，
+$\operatorname{cov}(y_i,y_j)=\alpha_i^{\mathsf T}\Sigma\alpha_j=\lambda_j\alpha_i^{\mathsf T}\alpha_j=0$。反向结论由上述三步推导和对称矩阵的Rayleigh--Ritz定理得到。若有重复特征值，结论理解为选择对应特征子空间中的任一标准正交基。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V4-C27-CONCEPT-005 L1
+\paragraph{读前自检：总体主成分的主要性质。}总体主成分满足$\operatorname{Cov}(y_j,y_k)=0\ (j\ne k)$且总方差为$\sum_i\lambda_i=\operatorname{tr}(\Sigma)$；请把$\alpha_{jk}$代入$\rho(x_j,y_k)=\sqrt{\lambda_k}\alpha_{jk}/\sqrt{\Sigma_{jj}}$，并核对$\Sigma_{jj}=0$或$\lambda_k=0$时该载荷应记为未定义。\par
+
+\knowledgeanchor{SLM-16-01-006}{总体主成分的主要性质}
+所有主成分两两不相关，总方差为$\sum_i\lambda_i=\operatorname{tr}(\Sigma)$；主轴的符号可任意翻转；原变量$x_j$与主成分$y_k$的相关系数为
+\[
+\rho(x_j,y_k)=\frac{\sqrt{\lambda_k}\,\alpha_{jk}}{\sqrt{\Sigma_{jj}}},
+\]
+这里$\alpha_{jk}$是$\alpha_k$的第$j$个分量。该式只在$\Sigma_{jj}>0$且$\lambda_k>0$时定义；零方差变量或零方差主成分与相关系数的分母不相容，此时载荷记为“未定义”，不能擅自填成0。该相关系数常称因子载荷，不能与特征向量分量本身混为一谈。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-CONCEPT-006 L1
+\paragraph{读前自检：主成分个数。}若$\operatorname{rank}(\Sigma)=r$，协方差矩阵恰有$r$个正特征值；请把主成分方差逐项写为$\lambda_i$，核对只有前$r$个主成分非退化，选择$q$时不得超过有效秩。\par
+
+\knowledgeanchor{SLM-16-01-007}{主成分个数}
+若$\operatorname{rank}(\Sigma)=r$，只有$r$个特征值为正，因而至多有$r$个非退化主成分。选择$q$时常令累计贡献率达到阈值，但阈值不是普适定律；特征值间隙、重构目标和下游性能也应共同考虑。
+
+\knowledgeanchor{SLM-16-01-008}{标准化变量的总体主成分分析}
+变量量纲差异很大且活动变量满足$\Sigma_{jj}>0$时，令$x_j^*=(x_j-\mu_j)/\sqrt{\Sigma_{jj}}$，再对相关矩阵$R_{\mathrm{pop}}=\operatorname{cov}(x^*)$做PCA。零方差变量不能执行该除法，必须由预处理契约明确保留为零行或删除并保存映射。相关PCA使每个活动变量的方差都为$1$，但也会放大原本方差很小、测量噪声却很大的变量；是否标准化应由数据含义决定。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-FORMULA-002 L1
+\paragraph{读前自检：前 q 个主成分具有最大方差。}对任意$B\in\mathbb R^{m\times q}$且$B^{\mathsf T}B=I_q$，保留方差为$\operatorname{tr}(B^{\mathsf T}\Sigma B)$；请代入前$q$个特征向量，核对达到上界$\sum_{i=1}^q\lambda_i$。\par
+
+\knowledgeanchor{SLM-16-02-001}{前$q$个主成分具有最大方差}
+\begin{theorem}[前$q$维最大保留方差]\label{thm:V4-C04-max-variance}
+对任意$B\in\mathbb R^{m\times q}$且$B^{\mathsf T}B=I_q$，有
+\[
+\operatorname{tr}(B^{\mathsf T}\Sigma B)\le\sum_{i=1}^q\lambda_i.
+\]
+令$\tau=\lambda_q$，并记
+\[
+E_{>}=\bigoplus_{\lambda_i>\tau}\ker(\Sigma-\lambda_iI),
+\qquad E_{=}=\ker(\Sigma-\tau I).
+\]
+等号成立当且仅当
+$E_{>}\subseteq\operatorname{col}(B)\subseteq E_{>}\oplus E_{=}$且$\dim\operatorname{col}(B)=q$。也就是说，最优子空间必须包含所有严格大于截断值的特征方向，并从边界重根空间中任取所需维数；只有$\lambda_q>\lambda_{q+1}$时，领先$q$维不变子空间才唯一（其正交基仍可旋转）。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V4-C27-PROOF-002 L2
+\begin{keypointbox}[title={证明：前 q 维最大保留方差：证明阅读检查}]
+\textbf{动手检查。}待证结论与所需条件分别是什么？请在最小维度或最小样本上写出第一处关键变形，并指出少一个条件时证明会在哪一步中断。\par
+\textbf{1.} 先写清对象类型、目标结论与符号作用域。\par
+\textbf{2.} 逐项核对定义域、维数、支持集、量词与交换运算所需条件。\par
+\textbf{3.} 写出第一处可执行的数学动作，不用“显然”跳过入口。\par
+\textbf{4.} 沿现有编号完成中间关系，并单独核对归一化、边界或等号条件。\par
+\textbf{5.} 回到待证结论，再说明它与后续公式、算法、图或例题的连接。
+\end{keypointbox}
+\paragraph{继续核对。}完成上面的最小任务后，再对照主体逐项核对定义域、更新式或关键变形、停止条件以及返回值；阅读检查不代替正文中的数学论证。
+
+\begin{proof}
+写$\Sigma=A\Lambda A^{\mathsf T}$并令$C=A^{\mathsf T}B$，则$C^{\mathsf T}C=I_q$。记$h_i=\sum_{j=1}^q c_{ij}^2$，有$0\le h_i\le1$且$\sum_i h_i=q$。于是
+$\operatorname{tr}(B^{\mathsf T}\Sigma B)=\sum_i\lambda_i h_i$。在这些约束下，把权重放在最大的$q$个$\lambda_i$上取得最大值$\sum_{i=1}^q\lambda_i$。若等号成立，则$\lambda_i>\tau$处必须有$h_i=1$，$\lambda_i<\tau$处必须有$h_i=0$，剩余权重只能位于$E_=$；这恰好等价于定理中的夹含条件。反之，满足该夹含条件的$q$维子空间显然取得同一迹值。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V4-C27-FORMULA-003 L1
+\paragraph{读前自检：舍弃主成分具有最小信息损失。}PCA用前$q$个主轴重构时，总体均方残差为$\sum_{i=q+1}^m\lambda_i$；请从总方差减去保留方差，核对该残差在所有$q$维正交投影中最小。\par
+
+\knowledgeanchor{SLM-16-03-002}{舍弃主成分具有最小信息损失}
+若用投影重构衡量信息损失，则保留前$q$维后的总体均方残差是$\sum_{i=q+1}^m\lambda_i$。因此“方差最大”与“平方重构误差最小”不是两条无关经验，而是同一正交投影问题的互补目标。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-FORMULA-004 L1
+\paragraph{读前自检：方差贡献率。}方差贡献率中的“$\eta_k=\frac{\lambda_k}{\sum_{i=1}^m\lambda_i}, \qquad \eta_{1:q}=\frac{\sum_{k=1}^q\lambda_k}{\sum_{i=1}^m\lambda_i}.$”决定可执行范围；请把$\eta_k$展开一次并检查其类型或边界，结果须满足展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-16-02-002}{方差贡献率}
+第$k$主成分的方差贡献率及前$q$维累计贡献率定义为
+\[
+\eta_k=\frac{\lambda_k}{\sum_{i=1}^m\lambda_i},
+\qquad
+\eta_{1:q}=\frac{\sum_{k=1}^q\lambda_k}{\sum_{i=1}^m\lambda_i}.
+\]
+只有在总方差大于零时这些比率才有定义。
+
+\knowledgeanchor{SLM-16-03-001}{前$k$个主成分对原变量的贡献率}
+对标准化变量，前$q$个主成分对第$j$个原变量的累计解释量为
+\[
+\nu_j^{(q)}=\sum_{k=1}^q\rho^2(x_j^*,y_k)
+=\sum_{k=1}^q\lambda_k\alpha_{jk}^2,
+\]
+其范围为$[0,1]$。它回答“某个原变量被保留子空间解释多少”，不同于全局累计方差贡献率。
+
+
+\phantomsection\label{struct:V4-C04-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}协方差椭球的主轴就是$\Sigma$的特征向量，半轴长度与$\sqrt{\lambda_i}$成正比。PCA把坐标轴旋转到椭球主轴，再保留最长的$q$根轴。若最大特征值重复，椭球在相应子空间内具有旋转对称性，所以单根轴无法由数据唯一确定。
+\end{geometrybox}
+
+\phantomsection\label{struct:V4-C04-CH15}
+\begin{probabilitybox}
+PCA只使用二阶矩，不要求数据服从高斯分布。若$z$恰为高斯向量，则主成分不相关进一步推出相互独立；对一般分布，不相关不代表独立。因此PCA消除的是线性二阶相关，而不是所有统计依赖。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V4-C04-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}单方向目标是Rayleigh商；多方向目标是Stiefel约束$B^{\mathsf T}B=I_q$上的迹最大化。最优值由谱决定，但当$\lambda_q=\lambda_{q+1}$时，截断边界穿过重复特征子空间，最优基和部分最优子空间均可能不唯一。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V4-C04-CH17}
+如\cref{fig:V4-C04-ellipse}所示，二维PCA保留协方差椭圆的最长主轴，并把与该轴正交的剩余变化计入重构误差。
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C04/fig_v4_c04_ellipse.tex}
+
+% KNOWLEDGE-PLAN: KN-V4-C27-CONCEPT-012 L1
+\paragraph{读前自检：样本主成分分析。}样本PCA先用$\bar x$中心化$x_1,\ldots,x_n\in\mathbb R^m$，再形成$S=(n-1)^{-1}\sum_i(x_i-\bar x)(x_i-\bar x)^{\mathsf T}$；请核对$S$为$m\times m$对称半正定矩阵。\par
+
+\SLReviewSection{样本主成分}{sec:V4-C04-S03}
+\knowledgeanchor{SLM-16-02-004}{样本主成分分析}
+给定样本$x_1,\ldots,x_n\in\mathbb R^m$，令$\bar x=n^{-1}\sum_{j=1}^n x_j$。主数据矩阵按行写为
+$X_{c,{\rm row}}=[(x_1-\bar x)^{\mathsf T};\ldots;(x_n-\bar x)^{\mathsf T}]$；公式工作矩阵为
+$X_c=X_{c,{\rm row}}^{\mathsf T}=[x_1-\bar x,\ldots,x_n-\bar x]$。无偏样本协方差与高斯极大似然协方差分别为
+\[
+S_{\rm unb}=\frac{1}{n-1}X_cX_c^{\mathsf T},
+\qquad
+S_{\rm ML}=\frac{1}{n}X_cX_c^{\mathsf T}
+=\frac{n-1}{n}S_{\rm unb}.
+\]
+本章以下约定$S:=S_{\rm unb}$。两种分母给出完全相同的特征向量、主成分得分方向和方差排序；$S_{\rm ML}$的全部特征值仅统一乘以$(n-1)/n$。因此子空间选择不变，但报告绝对方差、重构误差或似然时必须声明所用分母。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-DEFINITION-004 L1
+\paragraph{读前自检：样本主成分的定义和性质。}样本按列排列时$X_c\in\mathbb R^{m\times n}$，按行排列时$X_{c,{\rm row}}=X_c^{\mathsf T}$；请分别写出协方差乘积，核对两种约定都得到$m\times m$矩阵。\par
+
+\knowledgeanchor{SLM-16-02-003}{样本主成分的定义和性质}
+\begin{definition}[样本主成分]
+设$S a_i=\widehat\lambda_i a_i$，$a_i^{\mathsf T}a_j=\delta_{ij}$，且$\widehat\lambda_1\ge\cdots\ge0$。第$i$个样本主成分得分向量为
+\[
+s_i=a_i^{\mathsf T}X_c\in\mathbb R^{1\times n}.
+\]
+它在样本间的无偏方差为$\widehat\lambda_i$，不同得分向量的样本协方差为零。
+\end{definition}
+
+\begin{SLRunningExample}{RUN-DOC-TERM-01}{V4-C04-pca}{贯穿例：文档—词项矩阵小例}{先把特殊词--文档矩阵显式转置为行样本文档矩阵，再中心化并进入样本PCA。}
+词项为行、文档为列的特殊矩阵精确沿用
+\[
+\boldsymbol X=\begin{bmatrix}2&0&1\\1&2&0\\0&1&3\end{bmatrix},
+\]
+而行样本主对象是$X_{{\rm doc},{\rm row}}=\boldsymbol X^{\mathsf T}\in\mathbb R^{3\times3}$。为使用下述变量主轴公式，再令$X_c=X_{c,{\rm row}}^{\mathsf T}$，故数值上仍可按$\boldsymbol X$的三列求均值。其列和为$3,3,4$、总计数为$10$；把三列视为$\mathbb R^3$中的样本时，必须先按行计算
+\[
+\bar x=(1,1,4/3)^{\mathsf T},\qquad
+X_c=\boldsymbol X-\bar x\boldsymbol1_3^{\mathsf T}
+=\begin{bmatrix}1&-1&0\\0&1&-1\\-4/3&-1/3&5/3\end{bmatrix}.
+\]
+三列均有限且样本数$n=3\geq2$，所以样本协方差有定义；PCA分析的是$X_c$而不是上一站直接分解的原矩阵。上一站见\SLRunningExampleRef{RUN-DOC-TERM-01}{V4-C03-svd}{SVD对原始实矩阵的分解}；下一站见\SLRunningExampleRef{RUN-DOC-TERM-01}{V4-C05-nmf}{NMF对原始非负计数的加性分解}。
+\end{SLRunningExample}
+
+\knowledgeanchor{SLM-16-02-005}{样本主成分的定义和性质}
+若各变量单位不可比，对满足$\widehat\sigma_j$大于尺度容差的活动变量，用仅由训练集估计的标准差构造$Z_{j\ell}=(X_{j\ell}-\bar x_j)/\widehat\sigma_j$，再分解$R=ZZ^{\mathsf T}/(n-1)$；零方差行按本章算法固定为零并保存掩码，不执行除法。验证集和测试集必须沿用训练均值、训练尺度与同一掩码，不能各自重新标准化。
+
+\phantomsection\label{struct:V4-C04-CH10}
+\textbf{计算路线。}当$m$较小，可显式形成$S$再求前$q$个特征对；当$m$远大于$n$时，直接对$X_c$做薄SVD通常更节省时间与存储，并避免形成条件数平方化的$X_cX_c^{\mathsf T}$。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-FORMULA-005 L1
+\paragraph{读前自检：样本主成分的方差最大化刻画。}样本PCA算法依次中心化、求谱、按特征值降序取$q$维并计算得分；请对$S$的首个单位特征向量求$X_c$的投影，核对得分维数与所用列/行样本约定一致。\par
+
+\knowledgeanchor{SLM-16-04-001}{样本主成分的方差最大化刻画}
+样本算法的核心顺序是：中心化或标准化、求谱、按特征值排序、选择$q$、计算得分并保存重构所需的均值和主轴。输出不只是低维坐标，还应包含预处理参数、特征值谱和诊断信息。
+
+\phantomsection\label{struct:V4-C04-CH18}
+\textbf{小型数值例子。}取三个二维样本$(2,0)^{\mathsf T},(0,2)^{\mathsf T},(-2,-2)^{\mathsf T}$，均值为零，
+\[
+S=\frac12\begin{bmatrix}8&4\\4&8\end{bmatrix}
+=\begin{bmatrix}4&2\\2&4\end{bmatrix}.
+\]
+特征值为$6,2$，第一主轴可取$(1,1)^{\mathsf T}/\sqrt2$，其三个得分为$\sqrt2,\sqrt2,-2\sqrt2$，样本均值为零且无偏方差为$6$。
+
+\SLTeachSection{重构误差最小化}{sec:V4-C04-S04}
+设$B^{\mathsf T}B=I_q$。中心化向量$z$在子空间$\operatorname{col}(B)$上的正交投影为$BB^{\mathsf T}z$，加回均值后重构为$\widehat x=\mu+BB^{\mathsf T}(x-\mu)$。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-CONCEPT-013 L1
+\paragraph{读前自检：中心化--编码--重构三行桥接。}中心化--编码--重构链令$B\in\mathbb R^{m\times q}$且$B^{\mathsf T}B=I_q$；请依次计算$z=x-\mu$、$y=B^{\mathsf T}z$和$\widehat x=\mu+By$，核对维数为$m,q,m$。\par
+
+\begin{keypointbox}[title=中心化--编码--重构三行桥接]
+对$1\leq q\leq m$及$B\in\mathbb R^{m\times q}$、$B^{\mathsf T}B=I_q$，三个对象与映射方向为
+\[
+\begin{aligned}
+\text{中心化：}\quad & z=x-\mu\in\mathbb R^m,\\
+\text{编码：}\quad & y=B^{\mathsf T}z\in\mathbb R^q,\\
+\text{重构：}\quad & \widehat z=By=BB^{\mathsf T}z\in\mathbb R^m.
+\end{aligned}
+\]
+回到原坐标时$\widehat x=\mu+\widehat z\in\mathbb R^m$。
+\end{keypointbox}
+
+% CORE-DERIVATION-PLAN: KN-V4-C27-DERIVATION-002
+\SLKnowledgeBridge{把平方重构误差化成“总方差减投影方差”。}{中心化随机向量 $z$、协方差 $\Sigma$ 与秩 $q$ 正交投影 $P=BB^{\mathsf T}$。}{$B^{\mathsf T}B=I_q$，故 $P=P^{\mathsf T}=P^2$。}{先展开 $\norm{z-Pz}_2^2=z^{\mathsf T}(I-P)z$。}
+
+\begin{derivationgoalbox}
+把前$q$维PCA的平方重构误差化为“总方差减保留方差”，从而与方差最大化目标建立严格等价关系。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+令$P=BB^{\mathsf T}$，其中$B^{\mathsf T}B=I_q$，则$P=P^{\mathsf T}=P^2$是秩$q$正交投影；并使用恒等式$\mathbb E(z^{\mathsf T}Mz)=\operatorname{tr}(M\Sigma)$。
+\end{derivationprepbox}
+\textbf{推导第1步：展开平方残差。}
+由于$P=BB^{\mathsf T}$满足$P=P^{\mathsf T}=P^2$，
+\[
+\|z-Pz\|_2^2=z^{\mathsf T}(I-P)z.
+\]
+\textbf{推导第2步：取期望并化为迹。}
+\[
+\mathbb E\|z-Pz\|_2^2
+=\operatorname{tr}((I-P)\Sigma)
+=\operatorname{tr}(\Sigma)-\operatorname{tr}(B^{\mathsf T}\Sigma B).
+\]
+\textbf{推导第3步：转为最大保留方差。}
+第一项与$B$无关，所以最小残差等价于最大化$\operatorname{tr}(B^{\mathsf T}\Sigma B)$。由定理\ref{thm:V4-C04-max-variance}，最优$B$由前$q$个特征向量组成，最小值为$\sum_{i=q+1}^m\lambda_i$。
+
+% KNOWLEDGE-PLAN: KN-V4-C27-COROLLARY-001 L1
+\paragraph{读前自检：样本最优低维重构。}样本最优低维重构以“对中心化样本矩阵$X_c$，在所有秩不超过$q$的正交投影重构$BB^{\mathsf T}X_c$中”为约束；请独立化简$\min_{B^{\mathsf T}B=I_q}\|X_c-BB^{\mathsf T}X_c\|_F^2$的两端，并确认两端运算均有定义、类型一致且化为同一结果。\par
+
+\begin{corollary}[样本最优低维重构]\label{cor:V4-C04-sample-reconstruction}
+对中心化样本矩阵$X_c$，在所有秩不超过$q$的正交投影重构$BB^{\mathsf T}X_c$中，前$q$个左奇异向量给出最小Frobenius误差，且
+\[
+\min_{B^{\mathsf T}B=I_q}\|X_c-BB^{\mathsf T}X_c\|_F^2
+=\sum_{i=q+1}^r\gamma_i^2,
+\]
+其中$\gamma_i$为$X_c$的奇异值。
+\end{corollary}
+% KNOWLEDGE-PLAN: KN-V4-C27-PROOF-003 L1
+\paragraph{读前自检：证明：样本最优低维重构。}先锁定样本最优低维重构的条件“把$\Sigma$换为$X_cX_c^{\mathsf T}$重复总体推导”：把$X_cX_c^{\mathsf T}$用到的关键定义展开并完成下一步变形，所得结果应满足变形没有增加前提且得到证明所述结论。\par
+
+\begin{proof}
+把$\Sigma$换为$X_cX_c^{\mathsf T}$重复总体推导。其特征值是$\gamma_i^2$，迹目标等于保留的奇异值平方和，故残差为尾部奇异值平方和。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V4-C27-FORMULA-006 L1
+\paragraph{读前自检：数据矩阵的奇异值分解算法。}PCA的截断SVD路线对中心化矩阵$X_c$取前$q$个左奇异向量$U_q$；请计算得分$Y_q=U_q^{\mathsf T}X_c$与重构$U_qY_q$，核对形状分别为$q\times n$和$m\times n$。\par
+
+\SLAdvancedSection{PCA与SVD的联系}{sec:V4-C04-S05}
+\knowledgeanchor{SLM-16-02-007}{数据矩阵的奇异值分解算法}
+令$X_c=U\Gamma V^{\mathsf T}$为秩$r$的紧致SVD，其中$U\in\mathbb R^{m\times r}$、$V\in\mathbb R^{n\times r}$，$\Gamma=\operatorname{diag}(\gamma_1,\ldots,\gamma_r)$。则
+\[
+S=\frac1{n-1}X_cX_c^{\mathsf T}
+=U\frac{\Gamma^2}{n-1}U^{\mathsf T}.
+\]
+所以样本主轴是$U$的列，样本特征值为$\widehat\lambda_i=\gamma_i^2/(n-1)$，前$q$维得分矩阵为
+\[
+Y_q=U_q^{\mathsf T}X_c=\Gamma_qV_q^{\mathsf T}\in\mathbb R^{q\times n}.
+\]
+这三个尺寸等式是实现中最重要的自检。
+
+当只需前$q$维时，可用截断SVD而不形成完整矩阵。若$m\gg n$，计算右Gram矩阵$X_c^{\mathsf T}X_c$也可得到右奇异向量，再用$u_i=X_cv_i/\gamma_i$恢复非零左奇异向量；极小奇异值处不应使用该除法。
+
+
+% KNOWLEDGE-PLAN: KN-V4-C27-FORMULA-007 L1
+\paragraph{读前自检：相关矩阵的特征值分解算法。}相关矩阵PCA要求$n\ge2$、活动变量尺度非零且$1\le q\le\min(m,n-1)$；请标准化一个变量并形成相关矩阵，核对其对角元为1；零尺度变量须按预处理规则保留或删除。\par
+
+\SLDirectSection{主成分算法、例题与练习}{sec:V4-C04-S06}
+\knowledgeanchor{SLM-16-02-006}{相关矩阵的特征值分解算法}
+\phantomsection\label{struct:V4-C04-CH20}
+\textbf{算法所需量与计算结果。}计算需要有限训练矩阵$X\in\mathbb R^{m\times n}$、预处理方式、目标维数或选择规则以及数值容差。完成后得到训练均值与尺度、零方差变量集合、前$q$个主轴、特征值、得分、累计贡献率、重构公式和数值诊断。
+
+\phantomsection\label{struct:V4-C04-CH21}
+\textbf{参数含义。}$q$控制表示维数，必须满足$1\le q\le\min(m,n-1)$且不超过处理后数据的有效秩；贡献率阈值只是一种选择$q$的规则；标准化开关决定使用$S$还是$R$；容差用于识别数值零奇异值。此处采用确定性薄SVD，不含随机种子或幂迭代次数。
+
+\phantomsection\label{struct:V4-C04-CH22}
+\textbf{初始化。}先检查$m\ge1,n\ge2$、所有元素有限、选择规则合法；计算训练均值，并令尺度$s=\mathbf1_m$、零方差变量集合$Z_0=\varnothing$。确定性薄SVD无需随机初值。本算法采用“保留原维数”策略：标准化时只用训练矩阵估计尺度；若某行标准差不超过容差，则把其中心化训练行置零、保持$s_j=1$并把$j$加入$Z_0$，从而不执行除零。
+
+\phantomsection\label{struct:V4-C04-CH23}
+\textbf{计算顺序。}本过程不设外层训练循环，依次完成行样本数据检查、中心化、可选标准化、显式转置$X_c=X_{c,{\rm row}}^{\mathsf T}$、薄SVD、特征值换算、选择$q$、截断和诊断；后一步只使用此前已得到的对象。新增样本的在线PCA属于另一算法，必须同时更新均值和协方差。
+
+\phantomsection\label{struct:V4-C04-CH24}
+\textbf{判断与停止条件。}输入不合法、标准化后无有效变量、总方差为零或所选$q$超过有效秩时异常停止并返回诊断；否则在薄SVD、谱排序、截断和全部数值检查完成后正常停止。容差只用于判断数值秩、正交残差与重构残差，不等同于数学收敛阈值。
+
+\phantomsection\label{struct:V4-C04-CH25}
+\textbf{正确性依据。}由$X_c=U\Gamma V^{\mathsf T}$可得$S=U\Gamma^2U^{\mathsf T}/(n-1)$，所以$U_q$正是样本协方差前$q$个特征向量，$Y_q=\Gamma_qV_q^{\mathsf T}$是得分；前$q$维最大方差定理与样本最优低维重构推论给出目标正确性。该过程调用一次有限薄SVD，不讨论外层迭代收敛；数值正确性由正交残差、谱残差和重构残差检验。
+
+\textbf{异常与退化情形。}非有限输入、$n<2$、总方差为零或非法$q$都会使计算条件不成立；单个尺度不超过容差时按既定零行规则保留维数并说明，若全部变量均进入$Z_0$则等价于总方差为零。重复特征值使单根主轴不唯一，但对应子空间与重构仍可验证；若底层SVD数值失败，不能给出未经诊断的主轴。PCA不适用于以非线性流形、鲁棒损失、缺失加权或监督判别为主要目标的任务。
+
+\phantomsection\label{struct:V4-C04-CH19}
+% KNOWLEDGE-PLAN: KN-V4-C27-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：中心化样本的主成分分析：执行契约。}中心化样本PCA以有限训练矩阵、预处理规则和$q$或贡献率阈值为输入；请先提交均值/尺度，再完成一轮谱分解与主轴筛选，核对主轴正交、重构维数闭合并按残差或预算状态停止。\par
+% KNOWLEDGE-PLAN: KN-V4-C27-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={中心化样本的主成分分析：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限训练矩阵、中心化/标准化规则、目标维数或贡献率规则以及数值秩/残差容差},
+  output={最后合法预处理状态与PCA模型、完成阶段数$p_{\rm done}$、薄SVD调用数$s_{\rm done}$、状态及最终诊断},
+  preconditions={$m\ge1,n\ge2$；选择规则能给出合法$q$；标准化零方差策略、SVD实现和全部容差已登记},
+  initialization={$s=\mathbf1_m,Z_0=\varnothing,p_{\rm done}=s_{\rm done}=0$，尚无谱模型},
+  loop={不适用：这是数据检查、预处理、一次确定性薄SVD、谱选择和模型验收组成的有限流水线},
+  update={均值/尺度先独立提交为合法预处理状态；$U_q,\lambda,Y_q$及残差全部通过后再原子提交PCA模型},
+  domain={处理矩阵与谱量有限；尺度为正；$U_q$近似正交；特征值非负降序且$q$不超过有效秩},
+  failure={接口、维数或选择规则非法返回$\mathtt{invalid\_input}$；总方差为零、薄SVD失败、有效秩不足或残差非有限返回$\mathtt{numerical\_failure}$并保留最后合法预处理状态},
+  stop={五个流水线阶段全部完成或首次失败时停止},
+  budget={固定至多一次确定性薄SVD调用、一次$O(mn)$预处理扫描和一次谱诊断扫描；没有外层优化轮},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$p_{\rm done}$计已原子完成的流水线阶段，$s_{\rm done}\in\{0,1\}$计实际完成的薄SVD调用},
+  diagnostics={零方差变量、实际$q$与有效秩、总方差、正交/谱/重构残差、失败阶段和未执行阶段},
+  complexity={预处理$O(mn)$；一次稠密薄SVD为$O(mn\min(m,n))$；模型空间$O(mq+nq+m)$，另计SVD工作区}
+}
+\begin{algorithm}[!t]
+\SetArgSty{textnormal}
+\caption{中心化样本的主成分分析}\label{alg:V4-C04-pca}
+\KwIn{有限行样本训练矩阵$X_{\rm row}\in\mathbb R^{n\times m}$；选择规则；是否按变量标准化；数值容差}
+\KwOut{最后合法预处理/PCA模型；$p_{\rm done},s_{\rm done}$；$\mathtt{status}$与最终诊断}
+置$p_{\rm done}\leftarrow0,s_{\rm done}\leftarrow0$；若$m<1,n<2$、输入非有限或选择/标准化/容差规则非法，则返回$\bot$、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算$\bar x=n^{-1}X_{\rm row}^{\mathsf T}\boldsymbol1_n$与$X_{c,{\rm row}}=X_{\rm row}-\boldsymbol1_n\bar x^{\mathsf T}$；令$s\leftarrow\mathbf1_m,Z_0\leftarrow\varnothing$并在有限性核验后令$p_{\rm done}\leftarrow1$\;
+\If{选择标准化}{
+  对$X_{c,{\rm row}}$每列计算训练标准差$\widehat\sigma_j$；若$\widehat\sigma_j$大于尺度容差，则令$s_j\leftarrow\widehat\sigma_j$并以$s_j$缩放该列\;
+  否则令$s_j\leftarrow1$、把$X_{c,{\rm row}}$该列置零并把$j$加入$Z_0$，记录“零方差变量保留为零列”\;
+}
+若处理结果非有限或全部为零，则返回最后合法均值/尺度、$\mathtt{numerical\_failure}$及“标准化或总方差”诊断；否则令$X_c=X_{c,{\rm row}}^{\mathsf T}$，原子提交两种方向的处理矩阵并令$p_{\rm done}\leftarrow2$\;
+对$X_c$求一次薄SVD并令$s_{\rm done}\leftarrow1$；若求解失败或谱对象非有限，则返回最后合法预处理状态、$\mathtt{numerical\_failure}$及SVD诊断；否则令$p_{\rm done}\leftarrow3$\;
+计算$\widehat\lambda_i=\gamma_i^2/(n-1)$并按训练规则选$q$；若未满足
+$\widehat\lambda_1\ge\widehat\lambda_2\ge\cdots\ge0$，或$q$超过有效秩，则返回预处理与完整谱、$\mathtt{numerical\_failure}$及谱选择诊断；否则令$p_{\rm done}\leftarrow4$\;
+形成$U_q,Y_q$并核对正交、得分均值、谱与重构残差；失败则不提交PCA模型并返回最后合法预处理状态、$\mathtt{numerical\_failure}$及模型验收诊断\;
+原子提交$\bar x,s,Z_0,U_q,\widehat\lambda_{1:q},Y_q$，令$p_{\rm done}\leftarrow5$；返回模型、实际计数、$\mathtt{completed}$及求解器/残差诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+\phantomsection\label{struct:V4-C04-CH26}
+\phantomsection\label{struct:V4-C04-CH27}
+\begin{complexitybox}
+\textbf{训练时间复杂度。}形成中心化或标准化矩阵需$O(mn)$。本算法调用确定性稠密薄SVD，其成本为$O(mn\min(m,n))$；显式形成$m\times m$协方差则需$O(m^2n)$。若改用迭代截断SVD，必须另行把工作宽度、遍历轮数与正交化成本参数化，不能用$O(mnq)$替代本算法的实际界。\\
+\textbf{预测时间复杂度。}对$b$个新样本，沿用训练均值和尺度需$O(mb)$，计算$q$维得分需$O(mqb)$；若再重构，另需$O(mqb)$。\\
+\textbf{空间复杂度。}保存稠密$X_c$需$O(mn)$，薄SVD工作量与实现有关；模型持久化需$O(mq+m)$，训练得分另需$O(nq)$。\\
+\textbf{复杂度假设。}上述界假设输入是实值稠密$n\times m$行样本矩阵，SVD前显式取转置工作视图$X_c\in\mathbb R^{m\times n}$，标量运算为常数成本，并把底层SVD视为稳定稠密实现；稀疏数据应以非零元数替换相应的$mn$乘法成本。
+\end{complexitybox}
+
+\phantomsection\label{struct:V4-C04-CH28}
+\phantomsection\label{struct:V4-C04-CH29}
+\begin{applicabilitybox}
+\textbf{适用条件。}PCA适合以欧氏平方误差为合理度量、主要结构近似线性、二阶变化具有解释价值的数据，可用于压缩、去相关、可视化预处理和噪声方向截断。
+
+\textbf{局限性。}它对异常值敏感；不能捕捉弯曲流形；高方差不必然等于任务相关；主轴载荷可能难以解释；重复或接近的特征值使单根主轴不稳定；标准化选择会显著改变结果；PCA本身不提供因果解释或概率独立保证。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V4-C04-CH30}
+% KNOWLEDGE-PLAN: KN-V4-C27-BOUNDARY-003 L1
+\paragraph{读前自检：常见错误与误用边界：主成分算法、例题与练习。}主成分算法、例题与练习所用的明确前提是“边界框首项禁止把特征向量分量当作相关载荷”；完成把固定错误“把特征向量分量当作相关载荷”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法后，核对改写后的运算或判断有定义，且不再触发“把特征向量分量当作相关载荷”。\par
+
+\begin{warningbox}
+典型误用包括：未中心化便分解；未写$X_c=X_{c,{\rm row}}^{\mathsf T}$便在行/列样本公式间切换；混淆协方差PCA和相关PCA；把特征向量分量当作相关载荷；未明确按$\lambda_1\ge\lambda_2\ge\cdots$保留最大特征值；忽略主轴符号不唯一；用测试集均值标准化；在重复特征值下逐列比较向量；把累计贡献率当成预测性能保证；形成Gram矩阵后忽略条件数平方化；重构时忘记乘回尺度并加回均值。
+\end{warningbox}
+
+\phantomsection\label{struct:V4-C04-CH31}
+% KNOWLEDGE-PLAN: KN-V4-C27-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：主成分算法、例题与练习。}围绕主成分算法、例题与练习，先采用条件“对比表首个数据行是“输入处理｜只中心化｜中心化并逐变量缩放｜可实现前两者任一预处理””，再按列复述“输入处理｜只中心化｜中心化并逐变量缩放｜可实现前两者任一预处理”中的对象、假设与结论；最后验证各列均对应首行对象“输入处理”，且未与表中下一行互换。\par
+
+\begin{comparisonbox}
+\footnotesize
+\renewcommand{\arraystretch}{0.92}
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 维度 & 协方差PCA & 相关PCA & 截断SVD实现\\ \midrule
+输入处理 & 只中心化 & 中心化并逐变量缩放 & 可实现前两者任一预处理\\
+强调对象 & 原始单位下的方差 & 各变量等权后的相关结构 & 数值求解路线，不是另一统计目标\\
+主轴来源 & $S$的特征向量 & $R$的特征向量 & 处理后数据的左奇异向量\\
+主要风险 & 大量纲变量支配 & 放大小方差噪声 & 尺寸、缩放和截断秩写错\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+
+% KNOWLEDGE-PLAN: KN-V4-C27-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：主成分分析算法。}二维PCA例给出$S=\begin{bmatrix}5&2\\2&2\end{bmatrix}$；请展开$\det(S-\lambda I)$得到$\lambda_1=6,\lambda_2=1$，再核对首轴$(2,1)^{\mathsf T}/\sqrt5$的贡献率为$6/7$。\par
+
+\knowledgeanchor{SLM-16-01-009}{主成分分析算法}
+\phantomsection\label{struct:V4-C04-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[二维PCA投影与重构]\label{exm:V4-C04-pca-projection}
+某二维原始数据在中心化后的样本协方差为$S=\begin{bmatrix}5&2\\2&2\end{bmatrix}$。求第一主成分、方差贡献率，并写出一点$x=(4,1)^{\mathsf T}$在均值$\bar x=(1,1)^{\mathsf T}$下的一维重构。
+
+\phantomsection\label{struct:V4-C04-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V4-C04-pca-projection}
+\begin{solution}
+\SLReadTranslation{题目要求完成“二维PCA投影与重构”：依据题面矩阵/向量求出目标量，并核对每一步乘法与最终结果的维数。}
+\SolGiven 题面矩阵、向量与参数均按既定列向量约定；首次运算前写出各对象维数并确认内侧维数相等。
+\SLMethodTrigger{先写目标、可行域和必要条件，再求候选点并检查二阶/边界条件。}
+\SolPlan 先完成“二维PCA投影与重构”所需的中间量，再做一次题型相关核验，最后回收题目各问。
+\SolDerive
+\textbf{谱分解。}协方差矩阵的特征方程为
+\[
+\begin{aligned}
+\det(S-\lambda I)
+&=(5-\lambda)(2-\lambda)-4\\
+&=\lambda^2-7\lambda+6\\
+&=(\lambda-6)(\lambda-1)=0.
+\end{aligned}
+\]
+因此$\lambda_1=6$、$\lambda_2=1$。第一主轴及其方差贡献率为
+\[
+(S-6I)u_1=0
+\Longrightarrow -a_1+2a_2=0
+\Longrightarrow u_1=\frac{1}{\sqrt5}(2,1)^{\mathsf T},
+\qquad
+\rho_1=\frac{6}{6+1}=\frac67.
+\]
+\textbf{投影与重构。}对给定样本，中心化、投影和重构依次为
+\[
+\begin{aligned}
+z&=x-\bar x=(3,0)^{\mathsf T},\\
+y_1&=u_1^{\mathsf T}z=\frac6{\sqrt5},\\
+\widehat z&=u_1y_1=\left(\frac{12}{5},\frac65\right)^{\mathsf T},\\
+\widehat x&=\bar x+\widehat z
+=\left(\frac{17}{5},\frac{11}{5}\right)^{\mathsf T}.
+\end{aligned}
+\]
+\textbf{独立核验。}特征值满足
+$\lambda_1+\lambda_2=7=\operatorname{tr}(S)$且
+$\lambda_1\lambda_2=6=\det(S)$。此外，残差与第一主轴正交：
+\[
+r=x-\widehat x=\left(\frac35,-\frac65\right)^{\mathsf T},
+\qquad
+u_1^{\mathsf T}r
+=\frac1{\sqrt5}\left(\frac65-\frac65\right)=0.
+\]
+\textbf{结论。}第一主轴为$u_1=(2,1)^{\mathsf T}/\sqrt5$，贡献率为$6/7$，给定点的一维重构为
+$\widehat x=(17/5,11/5)^{\mathsf T}$。
+\end{solution}
+
+\phantomsection\label{struct:V4-C04-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V4-C04-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-OB-01}
+对数据矩阵
+\[
+X=\begin{bmatrix}
+2&3&3&4&5&7\\
+2&4&5&5&6&8
+\end{bmatrix}
+\]
+作样本主成分分析：求样本均值、协方差矩阵、主轴、主成分得分与方差贡献率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-OB-01}
+\begin{chapterexercisesolution}{ex:V4-C04-OB-01}
+六个样本的均值为
+\[
+\bar x=\begin{bmatrix}4\\5\end{bmatrix},
+\qquad
+X_c=\begin{bmatrix}
+-2&-1&-1&0&1&3\\
+-3&-1&0&0&1&3
+\end{bmatrix}.
+\]
+因此无偏样本协方差为
+\[
+S=\frac15X_cX_c^{\mathsf T}
+=\begin{bmatrix}16/5&17/5\\17/5&4\end{bmatrix}.
+\]
+令$s=\sqrt{293}$，其特征值为
+\[
+\widehat\lambda_1=\frac{18+s}{5},\qquad
+\widehat\lambda_2=\frac{18-s}{5}.
+\]
+可取标准正交主轴
+\[
+a_1=\frac1{\sqrt{17^2+(2+s)^2}}
+\begin{bmatrix}17\\2+s\end{bmatrix}
+\approx\begin{bmatrix}0.664514\\0.747275\end{bmatrix},
+\]
+\[
+a_2=\frac1{\sqrt{17^2+(2+s)^2}}
+\begin{bmatrix}2+s\\-17\end{bmatrix}
+\approx\begin{bmatrix}0.747275\\-0.664514\end{bmatrix}.
+\]
+得分矩阵$Y=A^{\mathsf T}X_c$的两行为
+\[
+\begin{aligned}
+y_1&\approx(-3.570855,-1.411790,-0.664514,0,1.411790,4.235370),\\
+y_2&\approx(0.498992,-0.082761,-0.747275,0,0.082761,0.248283).
+\end{aligned}
+\]
+总方差为$36/5$，故两个贡献率分别为
+\[
+\eta_1=\frac{18+\sqrt{293}}{36}\approx97.55\%,
+\qquad
+\eta_2=\frac{18-\sqrt{293}}{36}\approx2.45\%.
+\]
+主轴与得分可同时反号，不影响方差或重构。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-OB-02}
+设整数$n\geq2$，且$x_1,\ldots,x_n$独立同分布，均值为$\mu$、协方差为$\Sigma$且二阶矩有限。证明
+\[
+S=\frac1{n-1}\sum_{j=1}^n(x_j-\bar x)(x_j-\bar x)^{\mathsf T}
+\]
+是$\Sigma$的无偏估计。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-OB-02}
+\begin{chapterexercisesolution}{ex:V4-C04-OB-02}
+由题设$n\geq2$，分母$n-1$为正。令$z_j=x_j-\mu$、$\bar z=n^{-1}\sum_jz_j$，则
+\[
+\sum_{j=1}^n(z_j-\bar z)(z_j-\bar z)^{\mathsf T}
+=\sum_{j=1}^nz_jz_j^{\mathsf T}-n\bar z\bar z^{\mathsf T}.
+\]
+由$\mathbb E(z_jz_j^{\mathsf T})=\Sigma$，第一项的期望为$n\Sigma$。独立性给出
+\[
+\mathbb E(\bar z\bar z^{\mathsf T})
+=\operatorname{cov}(\bar z)=\frac{\Sigma}{n},
+\]
+所以第二项的期望为$\Sigma$。于是分子期望为$(n-1)\Sigma$，除以$n-1$得到$\mathbb E S=\Sigma$。有限二阶矩保证上述期望存在。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-OB-03}
+设样本矩阵已中心化（若变量量纲不可比，则先用训练样本标准化）。证明保留前$q$个样本主成分的PCA重构，等价于在所有秩不超过$q$的矩阵中求该中心化或标准化样本矩阵的Frobenius范数最佳近似。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-OB-03}
+\begin{chapterexercisesolution}{ex:V4-C04-OB-03}
+记待分析矩阵为$Z$；它可以是中心化矩阵$X_c$，也可以是只用训练统计量得到的标准化矩阵。设紧SVD为
+\[
+Z=U\Gamma V^{\mathsf T}.
+\]
+前$q$个样本主轴是$U_q$，得分为$Y_q=U_q^{\mathsf T}Z=\Gamma_qV_q^{\mathsf T}$，故PCA重构为
+\[
+U_qY_q=U_q\Gamma_qV_q^{\mathsf T}=Z_q.
+\]
+Eckart--Young--Mirsky定理说明，对任意$\operatorname{rank}(B)\le q$，
+\[
+\|Z-B\|_F\ge
+\|Z-Z_q\|_F
+=\left(\sum_{i>q}\gamma_i^2\right)^{1/2}.
+\]
+所以PCA重构正是秩不超过$q$的最佳Frobenius近似。若$Z$经过标准化，结论在标准化坐标中成立；回到原量纲时还要乘回训练尺度并加回训练均值。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S01-02}
+证明正交变换$y=A^{\mathsf T}z$保持总方差。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S01-02}
+\begin{chapterexercisesolution}{ex:V4-C04-S01-02}
+若$y=A^{\mathsf T}x$且$A^{\mathsf T}A=AA^{\mathsf T}=I$，则
+\[
+\operatorname{cov}(y)=A^{\mathsf T}\Sigma A.
+\]
+利用迹的循环不变性，
+\[
+\sum_j\operatorname{var}(y_j)
+=\operatorname{tr}(A^{\mathsf T}\Sigma A)
+=\operatorname{tr}(\Sigma AA^{\mathsf T})
+=\operatorname{tr}(\Sigma).
+\]
+总方差只被重新分配到新坐标，没有被正交旋转创造或消除。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S01-03}
+若$\lambda_1=\lambda_2>\lambda_3$，说明第一、第二主轴为何不唯一，但前二维投影为何唯一。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S01-03}
+\begin{chapterexercisesolution}{ex:V4-C04-S01-03}
+若最大特征值$\lambda$的特征子空间维数为2，取任意标准正交基$B\in\mathbb R^{m\times2}$，则
+\[
+\Sigma B=B(\lambda I_2),
+\qquad
+B^{\mathsf T}B=I_2.
+\]
+对任意$2\times2$正交矩阵$Q$，$BQ$仍是该子空间的基，而且
+\[
+(BQ)(BQ)^{\mathsf T}
+=BQQ^{\mathsf T}B^{\mathsf T}
+=BB^{\mathsf T}.
+\]
+所以单根主轴不唯一，但二维投影及其重构唯一。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S02-01}
+设$\Sigma=\begin{bmatrix}2&1\\1&2\end{bmatrix}$，求两个主轴、方差及第一主成分贡献率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S02-01}
+\begin{chapterexercisesolution}{ex:V4-C04-S02-01}
+特征方程给出
+\[
+(\lambda_1,\lambda_2)=(3,1),
+\qquad
+\alpha_1=\frac1{\sqrt2}(1,1)^{\mathsf T},
+\quad
+\alpha_2=\frac1{\sqrt2}(1,-1)^{\mathsf T}.
+\]
+因此
+\[
+\operatorname{var}(y_1)=3,
+\qquad
+\operatorname{var}(y_2)=1,
+\qquad
+\eta_1=\frac{3}{3+1}=\frac34.
+\]
+特征向量反号不改变方差或贡献率。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S02-02}
+设标准化变量的相关矩阵$R$正定。证明$\sum_{k=1}^m\rho^2(x_j^*,y_k)=1$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S02-02}
+\begin{chapterexercisesolution}{ex:V4-C04-S02-02}
+正定相关矩阵$R=A\Lambda A^{\mathsf T}$满足$\lambda_k>0$，且
+\[
+\operatorname{var}(y_k)=\lambda_k,
+\qquad
+\rho^2(x_j^*,y_k)=\lambda_k\alpha_{jk}^2.
+\]
+取谱分解第$j$个对角元，
+\[
+1=R_{jj}
+=\sum_k\lambda_k\alpha_{jk}^2
+=\sum_k\rho^2(x_j^*,y_k).
+\]
+若$R$仅半正定，$\lambda_k=0$对应的主成分方差为0，相关系数没有定义；代数恒等式仍成立，但相关解释只适用于$\lambda_k>0$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S02-03}
+解释为何“累计贡献率达到$90\%$”不能自动保证下游分类性能接近最优。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S02-03}
+\begin{chapterexercisesolution}{ex:V4-C04-S02-03}
+PCA按无监督贡献率选择维数：
+\[
+q_{\eta}=\min\left\{q:
+\frac{\sum_{j=1}^{q}\lambda_j}{\sum_{j=1}^{m}\lambda_j}
+\ge\eta\right\}.
+\]
+该准则没有使用标签$Y$，所以一般不能推出分类风险最小：
+\[
+q_{\eta}\not\Rightarrow
+\argmin_q\widehat R_{\mathrm{val}}(h_q).
+\]
+区分类别的方向可能低方差，高方差方向也可能只是背景变化；应在训练流程内用验证集选$q$并评价分类指标，测试集不得参与选择。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S03-01}
+证明$X_c\mathbf 1_n=0$，并据此说明$\operatorname{rank}(X_c)\le n-1$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S03-01}
+\begin{chapterexercisesolution}{ex:V4-C04-S03-01}
+由$\bar x=n^{-1}\sum_jx_j$，
+\[
+X_c\mathbf1_n
+=\sum_{j=1}^{n}(x_j-\bar x)
+=\sum_{j=1}^{n}x_j-n\bar x=0.
+\]
+所以$\mathbf1_n\ne0$是右零向量，进而
+\[
+\operatorname{rank}(X_c)\le n-1,
+\qquad
+\operatorname{rank}(X_c)\le m,
+\qquad
+\operatorname{rank}(X_c)\le\min\{m,n-1\}.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S03-03}
+说明为何在交叉验证的每个折中必须重新估计中心化均值。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S03-03}
+\begin{chapterexercisesolution}{ex:V4-C04-S03-03}
+在每个折中只允许用训练索引$T$估计
+\[
+\bar x_T=\frac1{|T|}\sum_{i\in T}x_i,
+\qquad
+X_{c,T}=[x_i-\bar x_T]_{i\in T},
+\qquad
+U_{q,T}=\operatorname{PCA}(X_{c,T}).
+\]
+验证样本必须按同一训练变换投影：
+\[
+y_i=U_{q,T}^{\mathsf T}(x_i-\bar x_T),
+\qquad i\in V.
+\]
+若用$T\cup V$估计均值或主轴，验证观测已进入训练变换，形成数据泄漏。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S04-01}
+若协方差特征值为$10,3,2,1$，求二维PCA的总体最小均方重构误差。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S04-01}
+\begin{chapterexercisesolution}{ex:V4-C04-S04-01}
+若特征值按$\lambda_1\ge\cdots\ge\lambda_4$排列且尾部为$2,1$，保留$q=2$维的最小总平方误差为
+\[
+E_2^{\min}=\sum_{j=3}^{4}\lambda_j=2+1=3.
+\]
+若题目另问每个原变量的平均误差，则
+\[
+\overline E_2=\frac{E_2^{\min}}{4}=\frac34;
+\]
+PCA定理本身给出的是总平方误差。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S04-02}
+证明$BB^{\mathsf T}$不随$B$的列作正交换基而改变。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S04-02}
+\begin{chapterexercisesolution}{ex:V4-C04-S04-02}
+令$\widetilde B=BQ$，其中$Q^{\mathsf T}Q=QQ^{\mathsf T}=I_q$。则
+\[
+\widetilde B\widetilde B^{\mathsf T}
+=BQQ^{\mathsf T}B^{\mathsf T}
+=BB^{\mathsf T}.
+\]
+对任意中心化样本$x$，
+\[
+\widetilde B^{\mathsf T}x=Q^{\mathsf T}B^{\mathsf T}x,
+\qquad
+\widetilde B\widetilde B^{\mathsf T}x=BB^{\mathsf T}x.
+\]
+低维坐标发生正交旋转，但重构和残差不变。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S04-03}
+给出不中心化直接最小化$\|X-BB^{\mathsf T}X\|_F^2$可能产生误导的原因。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S04-03}
+\begin{chapterexercisesolution}{ex:V4-C04-S04-03}
+未中心化目标使用过原点的线性子空间：
+\[
+\min_{B^{\mathsf T}B=I_q}
+\sum_i\norm{x_i-BB^{\mathsf T}x_i}_2^2.
+\]
+它会把均值向量的大小也当作要解释的变化。仿射PCA应改为
+\[
+\min_{B^{\mathsf T}B=I_q}
+\sum_i\norm{(x_i-\bar x)-BB^{\mathsf T}(x_i-\bar x)}_2^2,
+\]
+\[
+\widehat x_i=\bar x+BB^{\mathsf T}(x_i-\bar x).
+\]
+这样主轴描述协方差而不是数据云相对原点的位置。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S05-01}
+已知$X_c$的奇异值为$6,3,1$，样本数$n=10$。求样本协方差的非零特征值。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S05-01}
+\begin{chapterexercisesolution}{ex:V4-C04-S05-01}
+由$X_c=U\Gamma V^{\mathsf T}$与$n-1=9$，
+\[
+S=\frac1{n-1}X_cX_c^{\mathsf T}
+=U\frac{\Gamma^2}{9}U^{\mathsf T}.
+\]
+若奇异值为$6,3,1$，则
+\[
+(\widehat\lambda_1,\widehat\lambda_2,\widehat\lambda_3)
+=\left(\frac{36}{9},\frac9{9},\frac1{9}\right)
+=\left(4,1,\frac19\right),
+\]
+对应特征向量就是左奇异向量。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S05-02}
+若$U_q\in\mathbb R^{m\times q}$、$\Gamma_q\in\mathbb R^{q\times q}$、$V_q\in\mathbb R^{n\times q}$，核对$Y_q=\Gamma_qV_q^{\mathsf T}$与重构$U_qY_q$的尺寸。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S05-02}
+\begin{chapterexercisesolution}{ex:V4-C04-S05-02}
+得分矩阵的尺寸链为
+\[
+Y_q=\Gamma_qV_q^{\mathsf T}:
+(q\times q)(q\times n)=q\times n.
+\]
+重构尺寸为
+\[
+U_qY_q:
+(m\times q)(q\times n)=m\times n,
+\]
+与中心化数据矩阵$X_c\in\mathbb R^{m\times n}$一致。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S05-03}
+为何通过$X_cX_c^{\mathsf T}$求特征值可能比直接SVD更易受浮点误差影响？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S05-03}
+\begin{chapterexercisesolution}{ex:V4-C04-S05-03}
+Gram矩阵的非零特征值满足
+\[
+\lambda_j(X_cX_c^{\mathsf T})=\sigma_j(X_c)^2.
+\]
+若$X_c$满秩，则
+\[
+\kappa_2(X_cX_c^{\mathsf T})
+=\frac{\sigma_{\max}^2}{\sigma_{\min}^2}
+=\kappa_2(X_c)^2.
+\]
+小奇异方向因平方更接近机器精度，形成Gram矩阵时还会累积舍入误差，所以病态或近低秩数据通常直接做SVD更稳定。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S06-02}
+设计三项检查，用于发现PCA实现中的尺寸或预处理错误。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S06-02}
+\begin{chapterexercisesolution}{ex:V4-C04-S06-02}
+三项可计算不变量为
+\[
+\norm{X_c\mathbf1_n}_2\approx 0,
+\]
+\[
+\norm{U_q^{\mathsf T}U_q-I_q}_F\approx 0,
+\]
+\[
+\norm{X_c-U_qY_q}_F^2
+\approx \sum_{j>q}\gamma_j^2.
+\]
+它们分别检查中心化轴向、主轴正交/维数以及得分转置与截断。若还做标准化，应验证训练行方差满足
+\[
+\widehat{\operatorname{var}}_T(z_j)\approx 1.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C04-S06-03}
+若前两特征值为$5.00,4.99$，第三为$1.00$，解释为何分别比较第一、第二主轴可能不稳定，而二维子空间仍稳定。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C04-S06-03}
+\begin{chapterexercisesolution}{ex:V4-C04-S06-03}
+相邻谱隙为
+\[
+\delta_{1,2}=5.00-4.99=0.01,
+\qquad
+\delta_{2,3}=4.99-1.00=3.99.
+\]
+前者很小，故微小扰动可使第一、第二主轴在二维空间内明显旋转；后者较大，前二维空间与正交补分离良好。复核时应比较
+\[
+P_2=U_2U_2^{\mathsf T}
+\quad\text{或两个二维子空间的主角度},
+\]
+而不是要求两根主轴逐列稳定。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V4-C27-CONCEPT-014 L1
+\paragraph{读前自检：本章结论与下一步。}主成分分析章末结论把中心化矩阵$X_c$、薄SVD与保留维数$q$连在一起；请核对$X_c$的列维数、前$q$个主轴的正交性及重构维数，并确认总方差减保留方差等于舍弃方差。\par
+
+\begin{SLCompactClosure}
+\begin{spacing}{1.72}
+
+\phantomsection\label{struct:V4-C04-CH36}
+\SLChapterFiveSummary{中心化数据、协方差谱、主轴、得分与正交投影}{单位约束方差最大化导出特征方程；总方差减保留方差连接最优重构}{用训练均值/尺度构造$X_c$，对其薄SVD并按贡献率或验证准则选择$q$}{需要线性降维、去相关、压缩或可视化且方差是合理信号时}{进入LSA与NMF；继续保留训练预处理，重复根时比较子空间而非单根向量}
+
+\phantomsection\label{struct:V4-C04-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否从$\operatorname{var}(\alpha^{\mathsf T}z)$分三步推到$\Sigma\alpha=\lambda\alpha$？
+  \item 能否证明前$q$维最大保留方差，并推出尾部特征值和等于最小重构误差？
+  \item 能否区分特征向量分量、因子载荷、全局贡献率和单变量累计解释量？
+  \item 能否在样本按列的约定下写出$S$、SVD、得分与重构的全部尺寸？
+  \item 能否说明何时使用相关PCA、标准化为何只能使用训练统计量，并给出算法的输入、输出、数值停止规则、复杂度与至少三项可计算诊断？若未通过，应依次回看“总体主成分”“样本主成分”“最优低维重构”“PCA与SVD的关系”以及“主成分算法、例题与练习”等相关内容。
+\end{enumerate}
+\end{selfcheckbox}
+\end{spacing}
+\end{SLCompactClosure}

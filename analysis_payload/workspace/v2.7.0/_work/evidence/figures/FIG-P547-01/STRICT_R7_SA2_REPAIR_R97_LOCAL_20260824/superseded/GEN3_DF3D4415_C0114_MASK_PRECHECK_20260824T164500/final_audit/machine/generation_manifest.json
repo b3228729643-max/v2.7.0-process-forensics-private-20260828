@@ -1,0 +1,178 @@
+{
+  "boundary_summary": {
+    "adjacent_panel_required_px": 8,
+    "boundary_clip_gate_pass": true,
+    "clip_pixel_count": 0,
+    "closest_adjacent_panel_pairs": [
+      {
+        "decision": "PASS",
+        "distance_method": "EXACT_CKDTREE_FOREGROUND_PIXEL_CENTRE_DISTANCE_NO_SAMPLING",
+        "distance_px": 62.64982043070834,
+        "evidence": {},
+        "object_a": "TBLOCK_B11",
+        "object_b": "TBLOCK_B17",
+        "panel_a": "CENTRE",
+        "panel_b": "RIGHT",
+        "required_px": 8
+      },
+      {
+        "decision": "PASS",
+        "distance_method": "EXACT_CKDTREE_FOREGROUND_PIXEL_CENTRE_DISTANCE_NO_SAMPLING",
+        "distance_px": 81.32035415564789,
+        "evidence": {},
+        "object_a": "TBLOCK_B09",
+        "object_b": "TBLOCK_B11",
+        "panel_a": "LEFT",
+        "panel_b": "CENTRE",
+        "required_px": 8
+      },
+      {
+        "decision": "PASS",
+        "distance_method": "EXACT_CKDTREE_FOREGROUND_PIXEL_CENTRE_DISTANCE_NO_SAMPLING",
+        "distance_px": 107.0420478129973,
+        "evidence": {},
+        "object_a": "TBLOCK_B11",
+        "object_b": "TBLOCK_B16",
+        "panel_a": "CENTRE",
+        "panel_b": "RIGHT",
+        "required_px": 8
+      },
+      {
+        "decision": "PASS",
+        "distance_method": "EXACT_CKDTREE_FOREGROUND_PIXEL_CENTRE_DISTANCE_NO_SAMPLING",
+        "distance_px": 109.0,
+        "evidence": {},
+        "object_a": "TBLOCK_B08",
+        "object_b": "TBLOCK_B11",
+        "panel_a": "LEFT",
+        "panel_b": "CENTRE",
+        "required_px": 8
+      },
+      {
+        "decision": "PASS",
+        "distance_method": "EXACT_CKDTREE_FOREGROUND_PIXEL_CENTRE_DISTANCE_NO_SAMPLING",
+        "distance_px": 144.0,
+        "evidence": {},
+        "object_a": "TBLOCK_B12",
+        "object_b": "TLINE_B13_L02",
+        "panel_a": "RIGHT",
+        "panel_b": "CENTRE",
+        "required_px": 8
+      },
+      {
+        "decision": "PASS",
+        "distance_method": "EXACT_CKDTREE_FOREGROUND_PIXEL_CENTRE_DISTANCE_NO_SAMPLING",
+        "distance_px": 151.00331122197287,
+        "evidence": {},
+        "object_a": "TLINE_B05_L01",
+        "object_b": "TLINE_B05_L03",
+        "panel_a": "LEFT",
+        "panel_b": "CENTRE",
+        "required_px": 8
+      },
+      {
+        "decision": "PASS",
+        "distance_method": "EXACT_CKDTREE_FOREGROUND_PIXEL_CENTRE_DISTANCE_NO_SAMPLING",
+        "distance_px": 152.0131573252789,
+        "evidence": {},
+        "object_a": "TLINE_B13_L00",
+        "object_b": "TLINE_B13_L02",
+        "panel_a": "RIGHT",
+        "panel_b": "CENTRE",
+        "required_px": 8
+      },
+      {
+        "decision": "PASS",
+        "distance_method": "EXACT_CKDTREE_FOREGROUND_PIXEL_CENTRE_DISTANCE_NO_SAMPLING",
+        "distance_px": 171.32717239247253,
+        "evidence": {},
+        "object_a": "TBLOCK_B11",
+        "object_b": "TLINE_B05_L01",
+        "panel_a": "CENTRE",
+        "panel_b": "LEFT",
+        "required_px": 8
+      }
+    ],
+    "empty_mask_count": 0,
+    "figure_crop_px": [
+      250,
+      500,
+      2230,
+      1113
+    ],
+    "foreground_object_count": 258,
+    "minimum_adjacent_panel_reader_gap_px": 62.64982043070834,
+    "minimum_text_to_figure_crop_edge_px": 14.0,
+    "panel_gap_gate_pass": true,
+    "panel_reader_pair_count": 64,
+    "text_to_crop_edge_required_px": 6
+  },
+  "d_rows": 193,
+  "drawing_path_reconciliation": {
+    "all_drawings_in_figure_crop": true,
+    "dual_stroke_and_occlusion_fill_indices": [
+      14,
+      55
+    ],
+    "duplicate_primary_indices": [],
+    "expected_total": 71,
+    "foreground_object_count": 65,
+    "foreground_unique_drawing_indices": 65,
+    "occlusion_only_indices": [
+      8,
+      11,
+      19,
+      49,
+      52,
+      60
+    ],
+    "pdf_drawing_count": 71,
+    "reconciliation_pass": true,
+    "unassigned_indices": []
+  },
+  "e_rows": 9,
+  "generated_utc": "2026-08-24T08:31:18+00:00",
+  "glyph_count": 193,
+  "glyph_scope": {
+    "glyph_count": 193,
+    "raw_text_engine": "PyMuPDF page.get_text(rawdict)",
+    "scope": "all non-whitespace local-page PDF text glyphs fully within title/graphic/caption text boundary, y=123..265pt",
+    "text_scope_pt": [
+      60.0,
+      123.0,
+      535.0,
+      265.0
+    ],
+    "visual_crop_margin_excluded_character_count": 0,
+    "visual_crop_margin_exclusions": []
+  },
+  "glyph_size_gates": {
+    "PASS": 193
+  },
+  "graphic_foreground_count": 65,
+  "low_profile_entries": 24,
+  "manual_review_state": "PENDING_MANUAL",
+  "math_relation_composite_count": 15,
+  "math_relation_size_failures": 0,
+  "named_repair_hard_failures": 0,
+  "named_repair_relations": 6,
+  "occlusion_failures": 0,
+  "occlusion_rows": 6,
+  "pair_failures": 0,
+  "pair_rows": 33153,
+  "png_integrity": {
+    "duplicate_element_ids": [],
+    "duplicate_png_paths": [],
+    "expected_png_references": 1332,
+    "integrity_pass": true,
+    "mapping_rows": 273,
+    "missing_png_count": 0,
+    "unique_element_ids": 273,
+    "unique_png_paths": 1332,
+    "unopenable_png_count": 0,
+    "unsafe_colon_basename_count": 0
+  },
+  "raw_pixel_d_rows": 193,
+  "text_object_font_floor_failures": 0,
+  "text_object_font_rows": 21
+}

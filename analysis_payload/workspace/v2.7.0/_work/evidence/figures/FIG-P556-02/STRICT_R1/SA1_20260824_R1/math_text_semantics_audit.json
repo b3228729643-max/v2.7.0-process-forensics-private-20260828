@@ -1,0 +1,33 @@
+{
+  "FIGURE_MATH_SEMANTICS_PASS": true,
+  "IRREDUCIBILITY": {
+    "SOURCE_PDF": "two directed arrows 1↔2 plus i↔j (support-graph connectivity)",
+    "BODY": "V5-C01.tex:379 defines mutual reachability/communication; all states communicating means irreducible",
+    "RESULT": "PASS"
+  },
+  "PERIODICITY": {
+    "SOURCE_PDF": "d(i)=gcd{n≥1:P_ii^(n)>0}; 2,4,6,8 time markers illustrate return-length set with gcd 2",
+    "BODY": "V5-C01.tex:382-394 defines T_i and d(i)=gcd T_i",
+    "RESULT": "PASS"
+  },
+  "POSITIVE_RECURRENCE": {
+    "SOURCE_PDF": "E_i[tau_i^+]<∞ and a return loop",
+    "BODY": "V5-C01.tex:408-428 defines normal recurrence by finite expected first positive return time",
+    "RESULT": "PASS"
+  },
+  "SEPARATION": {
+    "SOURCE_PDF": "bottom summary says connectivity, return rhythm and expected return time must be checked separately",
+    "RESULT": "PASS"
+  },
+  "CAPTION": {
+    "SOURCE_PDF": "caption says three structures but explicitly explains only irreducibility and periodicity",
+    "MISSING": "normal recurrence / finite E_i[tau_i^+]",
+    "RESULT": "FAIL"
+  },
+  "DIRECT_ADJACENT_BODY": {
+    "BODY_LINE_639": "calls this figure three state graphs: reducible aperiodic, irreducible periodic, irreducible aperiodic",
+    "CURRENT_SOURCE_PDF": "is instead a three-card property explainer (irreducibility, periodicity, positive recurrence)",
+    "RESULT": "FAIL"
+  },
+  "INDEX_WARNING_HANDLING": "Did not copy the mismatched old-card reading conclusion. Source mathematics -> frozen final PDF -> direct body governed this audit."
+}

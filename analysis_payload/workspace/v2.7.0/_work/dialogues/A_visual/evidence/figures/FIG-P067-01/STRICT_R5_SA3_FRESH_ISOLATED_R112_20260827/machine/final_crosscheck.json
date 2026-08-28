@@ -1,0 +1,39 @@
+{
+  "checks": {
+    "identity_uid": true,
+    "identity_round": true,
+    "visible_denominator_130": true,
+    "visible_text_95": true,
+    "visible_graphics_35": true,
+    "element_ids_unique": true,
+    "safe_names_unique": true,
+    "all_masks_nonempty": true,
+    "manual_rows_130": true,
+    "manual_ids_exact": true,
+    "manual_fields_complete": true,
+    "manual_single_hard_fail": true,
+    "manual_hard_fail_is_gfx007": true,
+    "view_rows_6": true,
+    "all_views_opened": true,
+    "all_views_fail_consistent": true,
+    "pair_count_formula": true,
+    "pair_ids_unique": true,
+    "pair_elements_valid": true,
+    "pair_class_counts_sum": true,
+    "pair_total_row_8385": true,
+    "text_contact_sheets_8": true,
+    "graphic_contact_sheets_9": true,
+    "all_expected_png_openable": true,
+    "result_consistent": true,
+    "acceptance_contains_fail": true
+  },
+  "all_checks_pass": true,
+  "png_expected_count": 413,
+  "png_errors": [],
+  "manual_decisions": {
+    "PASS": 129,
+    "FAIL_SEMANTIC": 1
+  },
+  "pair_count": 8385,
+  "result": "SA3_FAIL_RETURN_TO_SA2"
+}

@@ -1,0 +1,66 @@
+% v2.3.1 figure UID: FIG-P429-01
+% Proposed post-v2.3.1 polish for FIG-P429-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P429-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P429-01,
+  branch title/.style={font=\bfseries\fontsize{9.6pt}{11.4pt}\selectfont},
+  branch note/.style={font=\fontsize{9pt}{10.6pt}\selectfont},
+  source arrow/.style={-{Stealth[length=2.1mm,width=1.3mm]},line width=.92pt},
+  local arrow/.style={-{Stealth[length=1.7mm,width=1mm]},line width=.68pt},
+  evidence arrow/.style={-{Stealth[length=1.9mm,width=1.15mm]},line width=.75pt},
+]
+  \node[slfig node,minimum width=32mm,line width=.80pt,
+        font=\fontsize{9.4pt}{11.2pt}\selectfont] (data) at (0,2.35) {观测数据 $X$};
+
+  \begin{scope}[shift={(-4.25,0)}]
+    \node[branch title,text=SLBlue] at (0,1.0) {聚类};
+    \fill[SLBlue] (-.75,.20) circle (2pt);
+    \fill[SLBlue] (-.50,-.12) circle (2pt);
+    \fill[SLBlue] (-.92,-.30) circle (2pt);
+    \node[draw=SLBlue,fill=white,circle,line width=.68pt,minimum size=4.2pt,inner sep=0pt] at (.55,.18) {};
+    \node[draw=SLBlue,fill=white,circle,line width=.68pt,minimum size=4.2pt,inner sep=0pt] at (.82,-.17) {};
+    \node[draw=SLBlue,fill=white,circle,line width=.68pt,minimum size=4.2pt,inner sep=0pt] at (.40,-.32) {};
+    \draw[draw=SLBlue!72,line width=.62pt,densely dashed,rounded corners=2mm]
+      (-1.15,.48) rectangle (-.25,-.55);
+    \draw[draw=SLBlue!72,line width=.62pt,densely dashed,rounded corners=2mm]
+      (.15,.48) rectangle (1.08,-.55);
+    \node[branch note,text=SLBlue] at (0,-.88) {样本分组};
+  \end{scope}
+
+  \begin{scope}[shift={(0,0)}]
+    \node[branch title,text=SLTeal] at (0,1.0) {降维};
+    \foreach \x/\y in {-.85/.30,-.55/-.20,-.15/.38,.30/-.30,.78/.22}{\fill[SLTeal!72] (\x,\y) circle (1.7pt);}
+    \draw[local arrow,draw=SLTeal]
+      (-.85,.30)--(-.72,-.55);
+    \draw[local arrow,draw=SLTeal]
+      (-.15,.38)--(-.10,-.55);
+    \draw[local arrow,draw=SLTeal]
+      (.78,.22)--(.70,-.55);
+    \draw[draw=SLTeal,line width=.96pt] (-1.1,-.55)--(1.1,-.55);
+    \foreach \x in {-.72,-.10,.70}{\fill[SLTeal] (\x,-.55) circle (2pt);}
+    \node[branch note,text=SLTeal] at (0,-.88) {高维点 $\to$ 低维坐标};
+  \end{scope}
+
+  \begin{scope}[shift={(4.25,0)}]
+    \node[branch title,text=SLGold!88!black] at (0,1.0) {概率建模};
+    \node[circle,draw=SLGold,fill=SLGoldBG,line width=.80pt,minimum size=7mm,inner sep=0pt] (z) at (0,.30) {$z$};
+    \foreach \x/\name in {-0.80/o1,0/o2,0.80/o3}{
+      \node[circle,draw=SLGold,fill=white,line width=.68pt,minimum size=5mm,inner sep=0pt] (\name) at (\x,-.45) {$x$};
+      \draw[local arrow,draw=SLGold,line width=.82pt] (z)--(\name);
+    }
+    \node[branch note,text=SLGold!88!black] at (0,-.88) {潜变量生成观测};
+  \end{scope}
+
+  \draw[source arrow,draw=SLBlue] (data)--(-4.25,.88);
+  \draw[source arrow,draw=SLTeal] (data)--(0,.88);
+  \draw[source arrow,draw=SLGold] (data)--(4.25,.88);
+  \node[slfig note,anchor=north,align=center,minimum width=46mm,line width=.72pt,
+        font=\fontsize{9.2pt}{11pt}\selectfont] (evidence) at (0,-1.55)
+    {可检验结构 / 评价证据};
+  \draw[evidence arrow,draw=SLBlue] (-4.25,-.95)--(evidence.west);
+  \draw[evidence arrow,draw=SLTeal] (0,-.95)--(evidence.north);
+  \draw[evidence arrow,draw=SLGold] (4.25,-.95)--(evidence.east);
+\end{tikzpicture}
+\caption{聚类、降维和概率建模分别从样本分组、属性压缩和联合生成三个方向把观测映射为可检验的潜在结构。}\label{fig:V4-C01-three-structures}
+\end{figure}

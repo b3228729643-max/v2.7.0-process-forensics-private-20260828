@@ -1,0 +1,1823 @@
+{
+  "handoff_id": "A-R107-P715-SA1-FRESH-ISOLATED-20260826",
+  "generated_utc": "2026-08-26T06:49:23.606835+00:00",
+  "scope": "all evidence-root files except both manifests and WRITE_STOPPED",
+  "payload_file_count": 363,
+  "entries": [
+    {
+      "path": "PRESEAL_HYGIENE.json",
+      "bytes": 401,
+      "sha256": "3439F7943D496C0F7C60249A889FD9660E323188F19C84C65BA4AD0250707FA9"
+    },
+    {
+      "path": "RESULT.json",
+      "bytes": 1279,
+      "sha256": "0336AB4E151B5BF08FAAA18DA0C9E426AF56356C213C577E01BE8BC7B066B19D"
+    },
+    {
+      "path": "RESULT.md",
+      "bytes": 244,
+      "sha256": "EDCB52C8827C3C2840C2742BAF70665B570942E3A7B6724977E58EC412FBFCBE"
+    },
+    {
+      "path": "SA1_REPORT.md",
+      "bytes": 3444,
+      "sha256": "DFAD533213483FDC19D628D509FDF5CE798529D6EAD7D65545AF24B2515A9AC2"
+    },
+    {
+      "path": "after_font_audit.csv",
+      "bytes": 736,
+      "sha256": "5691E8250CAB71676FB71D749281FDA7DB829E88AFEE9A9D090C9CA7167A5FEE"
+    },
+    {
+      "path": "after_overlap_adjudication.md",
+      "bytes": 1806,
+      "sha256": "FD57524843D0B8541B2C73BC7F103BAA792F8ABD659FFD58D13D3ECC1098042D"
+    },
+    {
+      "path": "after_overlap_report.csv",
+      "bytes": 7643770,
+      "sha256": "366E8F87E425FE17E26421108F1FE4E4479FCFFAF3806890D9F5D83A3CEC6FCB"
+    },
+    {
+      "path": "after_pixel_measurements.csv",
+      "bytes": 86868,
+      "sha256": "F103F39ABCEA230B123D2DB4E44650BD09F9E90B4A4AFF5FBD704AA8589B613A"
+    },
+    {
+      "path": "after_text_measurement_overlay_300dpi.png",
+      "bytes": 216085,
+      "sha256": "B8AC2E324DEB159EA5FEA8BFF5475F6A43CA14CE12106FAFE1C0A5F584E9D354"
+    },
+    {
+      "path": "after_visual_acceptance.md",
+      "bytes": 1596,
+      "sha256": "F991275AF497600D5DFBDA534E95A48ACB8F96EB48F7958CC6DF9368959F2744"
+    },
+    {
+      "path": "figure_crop_300dpi.png",
+      "bytes": 196160,
+      "sha256": "27A58A53FFE4D97357D8527583A53840385CA480BC06D6E1150D860BD12D3B81"
+    },
+    {
+      "path": "full_page_200dpi.png",
+      "bytes": 572413,
+      "sha256": "3690134EAFEB879A7F585B70ED106475D09166FA3A1E5E76D0F18D442A34EF50"
+    },
+    {
+      "path": "grayscale_300dpi.png",
+      "bytes": 91014,
+      "sha256": "F15C82080AFB8BC9023E68D1CCD89B41AB8C957FE6816936428E1E8FE9B642BB"
+    },
+    {
+      "path": "machine/after_font_audit.csv",
+      "bytes": 736,
+      "sha256": "5691E8250CAB71676FB71D749281FDA7DB829E88AFEE9A9D090C9CA7167A5FEE"
+    },
+    {
+      "path": "machine/after_pixel_measurements.csv",
+      "bytes": 86868,
+      "sha256": "F103F39ABCEA230B123D2DB4E44650BD09F9E90B4A4AFF5FBD704AA8589B613A"
+    },
+    {
+      "path": "machine/all_unordered_pairs.csv",
+      "bytes": 7643770,
+      "sha256": "366E8F87E425FE17E26421108F1FE4E4479FCFFAF3806890D9F5D83A3CEC6FCB"
+    },
+    {
+      "path": "machine/all_unordered_pairs_summary.json",
+      "bytes": 806,
+      "sha256": "D957C5477F287E514D56AAC0718A1250655D6775F8ACB42F610817D886ACECC6"
+    },
+    {
+      "path": "machine/build_dual_manifests.py",
+      "bytes": 2333,
+      "sha256": "4BA1082D9392D79EC53443F8254B081E87E1FCCCB99552CBA7C0BE0BF3102A7F"
+    },
+    {
+      "path": "machine/build_graphic_contact_sheets.py",
+      "bytes": 3558,
+      "sha256": "03DADCE4755DDF15465B8786854568E69B37E250D8FBCC22ACCCF2AEB5D3F2A0"
+    },
+    {
+      "path": "machine/build_r18_evidence.py",
+      "bytes": 39475,
+      "sha256": "AEFA8339C9D169CAA505E2C016AD7229971148C23896E37275494EB3BD97CBF5"
+    },
+    {
+      "path": "machine/critical_pair_sheet_index.json",
+      "bytes": 395,
+      "sha256": "158B7B19D10D4D643B0E72167CE0B5AE78DFC9F243256A6812200A7F71E0514E"
+    },
+    {
+      "path": "machine/critical_pairs.csv",
+      "bytes": 6402,
+      "sha256": "59B9FC95815034D4EC714B5EB473EADE6D8A827F77C5828A67B71A398AEF5A86"
+    },
+    {
+      "path": "machine/drawing_inventory.csv",
+      "bytes": 14422,
+      "sha256": "6535AF6DEE75DB0ADF4B4D5AD8F818D775C87E3D85A87312EEF516B956596023"
+    },
+    {
+      "path": "machine/final_crosscheck.py",
+      "bytes": 15615,
+      "sha256": "B2105C3C82BA978EEE13B53103547621EA17764961F120DF88389BE81FF24559"
+    },
+    {
+      "path": "machine/final_machine_crosscheck.json",
+      "bytes": 3185,
+      "sha256": "809ED6AF698835F912B9D70A868CF522B50CA66517892B176533213C4695E4AE"
+    },
+    {
+      "path": "machine/font_metadata.json",
+      "bytes": 1806,
+      "sha256": "939D7C7D49D0223BE612913505DC943EB784FCD518D156B72661A9C413ED0180"
+    },
+    {
+      "path": "machine/glyph_contact_sheet_index.json",
+      "bytes": 3443,
+      "sha256": "3F9BC7526631CFC7B9C63E0CC1D1279CCD00AC1F70297B04E5E070AE36294665"
+    },
+    {
+      "path": "machine/graphic_contact_sheet_index.json",
+      "bytes": 780,
+      "sha256": "DBA9B7C2996DC228107CE9EB5897AD7C8953E8EC431FF5C6D8DD6720CEBD1766"
+    },
+    {
+      "path": "machine/id_safe_filename.csv",
+      "bytes": 18388,
+      "sha256": "6783B667C66613DAB13404A351ED4BDF4B8F92B67BF998691190A26AC46F7DA3"
+    },
+    {
+      "path": "machine/machine_summary.json",
+      "bytes": 1970,
+      "sha256": "613A61AF065ABBE728992CAC151D98683BB029C360502948CEAC2A75FD84C719"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0001_u7F51.png",
+      "bytes": 256,
+      "sha256": "1210423EAB618F02CDD1E9ECF58FCEF2F56F3899DC43F7F22A5FBAFF34965B92"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0002_u9875.png",
+      "bytes": 211,
+      "sha256": "B2CC569B23982D902940DACA68FC2372436E93667C96FAA48A533CDDF1559A0E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0003_u56FE.png",
+      "bytes": 261,
+      "sha256": "DCA7FCB13C5D0038F0F4B5C5DA96B30AC9C7BBF458A5BC56DD3969EDB062CEC8"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0004_u3001.png",
+      "bytes": 140,
+      "sha256": "5719DEF4D84DDF11FB1D34F61C285027CD3353E6E29FABF3CB8C1A3691A1AA94"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0005_u90BB.png",
+      "bytes": 299,
+      "sha256": "4F07BB05370D22D39F815FE3A980451CC1B63B229F1AB315B44EC79B49F96527"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0006_u63A5.png",
+      "bytes": 255,
+      "sha256": "F29BA321127B345F15C35E0ADC1E25A0FFA178E34E210D91BCB478D855B9AD7C"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0007_u77E9.png",
+      "bytes": 246,
+      "sha256": "6D1C88D1844CB025C0D972FE9CE05B82BCD53D78ADB08D59348D3E9BE7B8BE7A"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0008_u9635.png",
+      "bytes": 233,
+      "sha256": "E9D899BB43385C6F08405A992C8C9BD0DFEA13F593387F44C57423419B0D54E1"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0009_u4E0E.png",
+      "bytes": 197,
+      "sha256": "694679A4FAB83AB86EE70E46152BAA7F2A97465B7F309CE74E0891EBCF67DEC6"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0010_u5217.png",
+      "bytes": 263,
+      "sha256": "C910C34BBB5670AB7B0418F174C8CFF298B475489908AE96A3E1FDF41A76E219"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0011_u5F52.png",
+      "bytes": 197,
+      "sha256": "3823AE6F5DF3BC518D38093423BF6827237DEB5E6D3AB41770018FFAF2F929DE"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0012_u4E00.png",
+      "bytes": 98,
+      "sha256": "5E8A8E543832FA30D68F447ED91FCCF726F41CAAC5F9581370306F8A36958769"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0013_u884C.png",
+      "bytes": 228,
+      "sha256": "06C6BD87F76CA4A345BA124D82117F3F1513BF5164E0699B33CE3F805F66CDEC"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0014_u968F.png",
+      "bytes": 286,
+      "sha256": "3C849652BEC8A8F601C3B0A60C473DDD8E027762C1E37865C30EE671330DDE84"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0015_u673A.png",
+      "bytes": 237,
+      "sha256": "F7E83692269D6E75ABF5FF44900DB68A59BA0D9BF7236128FB89035E2F2C7970"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0016_u8F6C.png",
+      "bytes": 278,
+      "sha256": "9C1D77D9375084140BCBB0BD28490942AFC47E5BA1FD275E679D615C781D3F76"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0017_u7F6E.png",
+      "bytes": 166,
+      "sha256": "BCE1960FD2EB07F53EBA2F7389396D6F8A490ED3994F8A5774EE9992285E4BD9"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0018_u6865.png",
+      "bytes": 284,
+      "sha256": "8070958146C5D5DCFAA2801B91393B70958865E32F35E97360B2F944E8712E43"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0019_u1D456.png",
+      "bytes": 147,
+      "sha256": "5E4D21B145C00E69B0747A23D4A11ECF7BF5C8558E63037006BA7A5F2845229D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0020_u1D457.png",
+      "bytes": 168,
+      "sha256": "7530654AA1C25EB12FCCC4417FB3485FAE4312DA0228E4128FF6DD30C093281B"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0021_u210E.png",
+      "bytes": 192,
+      "sha256": "9471B38ECDFA2CDC28CBA9F8227FAEBB4F17E8C15249F1EF314FB578FBDB360C"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0022_u1D457.png",
+      "bytes": 160,
+      "sha256": "A514385BC046DBD52EA1B27D5B3C6A00067BC6C67FD091FB76BD6D9DAEAA8948"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0023_u2192.png",
+      "bytes": 149,
+      "sha256": "151E881A053FD50E2383250952661D73506E152178A268403A92A634389861F6"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0024_u1D456.png",
+      "bytes": 141,
+      "sha256": "231E840E2B73AB28074D99ABD842CF8AC45AEE335D081B72AABCA207ACFE74AD"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0025_u1D456.png",
+      "bytes": 141,
+      "sha256": "231E840E2B73AB28074D99ABD842CF8AC45AEE335D081B72AABCA207ACFE74AD"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0026_u2192.png",
+      "bytes": 146,
+      "sha256": "B72BBDC0ABD92B15981E80BCC094741DCBA4635EFE03CFA0EE66FEEC8C38AE19"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0027_u1D457.png",
+      "bytes": 156,
+      "sha256": "D00EF6B0CAD5621B3A829CFD52E303AD6151306B29D7DF2FD7E1D3F4CAD69011"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0028_u56DB.png",
+      "bytes": 180,
+      "sha256": "02454D36E27B571E29BBFB1F444C4B66274BAF746C7A3B1F8F8A761C5A734A10"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0029_u6761.png",
+      "bytes": 273,
+      "sha256": "D169C9345A0AC71D81889E0DD44CAE27982160D52E520AB0A4949B55E1F3A235"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0030_u8FB9.png",
+      "bytes": 255,
+      "sha256": "8634A83F6D589CBD46391ABD269A21B0EA51F00751673FAFA4C588D56D8F89D5"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0031_u6743.png",
+      "bytes": 277,
+      "sha256": "07BFBF92BDBBE010CC6A5B31D42FACE4679FECB107080CD2CCAED4333C3BCC84"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0032_u5747.png",
+      "bytes": 265,
+      "sha256": "3446F8E879EEF9CF7C498E739B2B6156B1BBC00EE6AC801C5734C0093FC69F1F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0033_u4E3A.png",
+      "bytes": 240,
+      "sha256": "74A95326FE9A5DD1091D4EAF878B09334B7B074999144358E31739463B661569"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0034_u0031.png",
+      "bytes": 122,
+      "sha256": "88B65A2AC0F1F21237C3F8C0526B93A61FD21A56F349A335402C39413C9EDB04"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0035_u77E9.png",
+      "bytes": 251,
+      "sha256": "7BC17C30B8F77DBA4A2C884F2533DC8E1A5804C4F39E8273D6599012BA0A44BF"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0036_u9635.png",
+      "bytes": 244,
+      "sha256": "69CFBAC40010B34409B0DFABEFD31DE2932CAADE5623C3A1C919897160C7B410"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0037_u884C.png",
+      "bytes": 220,
+      "sha256": "682DA4233F414CC00935402C4D3896B3BDCCCD1A26CE8F7AB335DCF5C8300C1A"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0038_u3001.png",
+      "bytes": 127,
+      "sha256": "4B63201B7446ADB0EB62D7DF0BAFB9111B2CD0DD509925716C9C2B3F4513A44A"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0039_u5217.png",
+      "bytes": 244,
+      "sha256": "1D63692F4585E278CC3BD2BC34A9140A96CCAD7869314F29D864C4C05A3B9EED"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0040_u987A.png",
+      "bytes": 240,
+      "sha256": "DF5E4667AB159F932FB1B5EFEB0E143CC4B5F5B64F2F0DD63D05D6ECE9368FC6"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0041_u5E8F.png",
+      "bytes": 241,
+      "sha256": "20C50464C4E1BAA639FB3CFAB47D6E8530ACF107B9E34EC656F9DA78DD1DFD0D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0042_u5747.png",
+      "bytes": 266,
+      "sha256": "078DFC404F3E9C74A92B9BBCA45069B96FC7A1B297C031AC3D8E2CA40BFA57AA"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0043_u4E3A.png",
+      "bytes": 240,
+      "sha256": "B2F5FC779B4CEF922B28DC2800401B471789E37F27D91C17C35ABF739CD6C5E5"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0044_u0028.png",
+      "bytes": 163,
+      "sha256": "9CCB38822F3590335441F32087894FB5720BE57F7043EE6C8041878D34E0E42F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0045_u1D456.png",
+      "bytes": 145,
+      "sha256": "256122EB7896AC81A08B367985876053597DF36F0A6DDCAD99E9948EDFDE0BCC"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0046_u002C.png",
+      "bytes": 113,
+      "sha256": "DCCCCA4B46D263B69D17EA6FB3ECCA33354720E975939D9ABABEF8C31969095D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0047_u1D457.png",
+      "bytes": 159,
+      "sha256": "1A1224EC69D1B2F95376D8FBEEB976F40871C056565EF4D38A865F6AC77A2126"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0048_u002C.png",
+      "bytes": 113,
+      "sha256": "DCCCCA4B46D263B69D17EA6FB3ECCA33354720E975939D9ABABEF8C31969095D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0049_u210E.png",
+      "bytes": 180,
+      "sha256": "6EEE23140EE564E19890C2B8639BC9CEB8DDF3B07CC358A261555FAD833F9F48"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0050_u0029.png",
+      "bytes": 169,
+      "sha256": "E36958E9074FCC0CAD506841FA120A7856D55718BFFADFD03820BB8DB375CE26"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0051_u1D434.png",
+      "bytes": 204,
+      "sha256": "D5B6931981DEBEB6F1520140160940A65BA934712E3AAE5A7BF66BAA25CD0AEC"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0052_u1D456.png",
+      "bytes": 152,
+      "sha256": "4E196FBC290DD053451DDE50AC698465BEBC9833033C84B5B9B8030D97741404"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0053_u1D457.png",
+      "bytes": 176,
+      "sha256": "B6A8C4D8AD8A5C13E6E246D7C1EF7D40870126C4F2D4FDC541E80787173BDDFE"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0054_u003E.png",
+      "bytes": 196,
+      "sha256": "AC6DC9C32A42643CDAC58D101D8FE4E820C6F5979C3E89F90EB449D989418075"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0055_u0030.png",
+      "bytes": 178,
+      "sha256": "AB67FA66AD2D59522D71CCF77BE1A4A8EF66334EA90FCA1250912D6CE12F54C4"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0056_u27FA.png",
+      "bytes": 235,
+      "sha256": "F63EA5EB6C2344D7CF48F9F2BF8BE13B58F908F365EAA32F1CC38E1C78E0D9DC"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0057_u1D457.png",
+      "bytes": 178,
+      "sha256": "1323FC667039369495839EA2A99CE632B6F8BB48386D88F3CA299C5A18612F17"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0058_u2192.png",
+      "bytes": 161,
+      "sha256": "4F62621B3EE9F2E25850C73976BCBD6A95601F4B00F7C2B640C5E3E7FAE7F81B"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0059_u1D456.png",
+      "bytes": 164,
+      "sha256": "71773BFF54853B75C99D54FB4FF52360E9BB32613F1693885E52A86CE97EE382"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0060_u1D450.png",
+      "bytes": 151,
+      "sha256": "3A1C23998B395FF0D4F92B46BD579321C20F77D6B6A152167DBA0C17BFBB99B4"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0061_u1D457.png",
+      "bytes": 171,
+      "sha256": "9F72A8905CE6251BDF1B9BEA80D35234450909AC963EEFD55B02B632D9E5B773"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0062_u003D.png",
+      "bytes": 98,
+      "sha256": "C451C2E8F8D0A2CA35C4AB7D1D4344C10CD43A8BEF6E8FF85B99F158920357DE"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0063_u2211.png",
+      "bytes": 281,
+      "sha256": "A2AC3772985EDAAC13A64D0BD4C0265F968DBE291F8FA72F340C281AAA443DEE"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0064_u1D45F.png",
+      "bytes": 156,
+      "sha256": "2467273BD6DD7307A7F1F5D6F5A5904062C15454A772D7504474D8992DAEC192"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0065_u1D434.png",
+      "bytes": 211,
+      "sha256": "5E8E020FA91429618424EAE53CBB95062131C6942C99DCF31D51418820249EC8"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0066_u1D45F.png",
+      "bytes": 150,
+      "sha256": "E4C18D1B97E41773ECC6A33EA6F91E2D47A4AC176BD6DBB16A521D44FC5475DA"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0067_u1D457.png",
+      "bytes": 163,
+      "sha256": "88581B7F149C7076D81BE4935FD8E32A4AC940422AB3E0EA7F698A71B749D2BB"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0068_u0028.png",
+      "bytes": 191,
+      "sha256": "BA4D53AD1142CD4FD2DF208B671C47363AF929EE98D3969849FAC5EFCE221916"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0069_u1D450.png",
+      "bytes": 169,
+      "sha256": "ADBA2A79056714D375B80C465F2E0053B1A6AF7A8D07EF1A8BD67760308B57C4"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0070_u1D456.png",
+      "bytes": 159,
+      "sha256": "093CA50A8103A7C5375599748E22EFD7AE3B7E0FB3BD3D4F90AED177AF564D54"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0071_u002C.png",
+      "bytes": 122,
+      "sha256": "0A9D7C9C96AE22836968576D86E230DC374827E5D68FB987C7637B7C3B123531"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0072_u1D450.png",
+      "bytes": 151,
+      "sha256": "3A1C23998B395FF0D4F92B46BD579321C20F77D6B6A152167DBA0C17BFBB99B4"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0073_u1D457.png",
+      "bytes": 185,
+      "sha256": "3E1218230BF8E992FA14A57801451FB62F307D142D7D4685AABCB2EF6645473D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0074_u002C.png",
+      "bytes": 122,
+      "sha256": "0A9D7C9C96AE22836968576D86E230DC374827E5D68FB987C7637B7C3B123531"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0075_u1D450.png",
+      "bytes": 165,
+      "sha256": "AD477A060A4D7B6A13FD467725FD7162A063563002B640CDC5ABF28CB8253AF7"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0076_u210E.png",
+      "bytes": 205,
+      "sha256": "08C438E2B99FC445FAE4BA55E7EF6B0BF461429B0EA2B49D4C4CF095BC554934"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0077_u0029.png",
+      "bytes": 187,
+      "sha256": "CA19E2D0DC887AECAEEF0073F1091C118460FD24596E568F599FE9292A636875"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0078_u003D.png",
+      "bytes": 98,
+      "sha256": "212DED5D790F2A39A6521F54F93C2BDD722F545EC39BDA073B72FA0CEFAB93D8"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0079_u0028.png",
+      "bytes": 181,
+      "sha256": "338492BFC9ADB0257B4581E16F8B467707226E0F8F1C1AF55EB9B577E6222EC0"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0080_u0031.png",
+      "bytes": 134,
+      "sha256": "8A794785E8238D47A636E0FB529F595873FD1E06B5DEA98086314C1FFA17903F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0081_u002C.png",
+      "bytes": 121,
+      "sha256": "129D3853C3F0698552B24B3C67D04F7F331907C6046A01EABC359AE52B17FBB5"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0082_u0032.png",
+      "bytes": 193,
+      "sha256": "320C701617D98175F6D8D28B9F16EC7AC9DED95B9F86D7AF8CFFF4F7FDCDAD84"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0083_u002C.png",
+      "bytes": 122,
+      "sha256": "0A9D7C9C96AE22836968576D86E230DC374827E5D68FB987C7637B7C3B123531"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0084_u0031.png",
+      "bytes": 134,
+      "sha256": "8A794785E8238D47A636E0FB529F595873FD1E06B5DEA98086314C1FFA17903F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0085_u0029.png",
+      "bytes": 187,
+      "sha256": "CA19E2D0DC887AECAEEF0073F1091C118460FD24596E568F599FE9292A636875"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0086_u1D434.png",
+      "bytes": 205,
+      "sha256": "B4D19F38E81551EA6E58AF6309673F3FBE179FA4CC39BAE4F39E5DDBEC4AD16C"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0087_u003D.png",
+      "bytes": 100,
+      "sha256": "CC01CD0D0C7EB9F261DA5D63C7A9362836F1527AD17C609761502BBD1ACF5B20"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0088_u0030.png",
+      "bytes": 156,
+      "sha256": "8F4E9040B81E529F913E2C86B303DCD6D9F5FD4C603192C5BF9CD748E5B19E2D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0089_u0031.png",
+      "bytes": 118,
+      "sha256": "5A42564C45CC7AB847597101D170E6A597380DAD89CC545DFF5B5460DBD15010"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0090_u0031.png",
+      "bytes": 119,
+      "sha256": "09A09D5CA0A16042B06EBE7C1592314F77F57351DCA804BC40F3B8F99591F78E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0091_u0031.png",
+      "bytes": 118,
+      "sha256": "47AD4F5AE3F35E3F748794EC1F3E34DFED24ACD8FC22D300854BD3E462F9FAE0"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0092_u0030.png",
+      "bytes": 158,
+      "sha256": "8FA11F2C33F9AA9FD1C3DA10226CF0C6B1E27C0B32E430654F2A4D6657326C89"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0093_u0030.png",
+      "bytes": 170,
+      "sha256": "E72F867EAB8EFC24D412E2E4ADD0C3A8570B3D081072DF3063D90F34F036EF0E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0094_u0030.png",
+      "bytes": 156,
+      "sha256": "8F4E9040B81E529F913E2C86B303DCD6D9F5FD4C603192C5BF9CD748E5B19E2D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0095_u0031.png",
+      "bytes": 118,
+      "sha256": "5A42564C45CC7AB847597101D170E6A597380DAD89CC545DFF5B5460DBD15010"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0096_u0030.png",
+      "bytes": 170,
+      "sha256": "E72F867EAB8EFC24D412E2E4ADD0C3A8570B3D081072DF3063D90F34F036EF0E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0097_u1D440.png",
+      "bytes": 248,
+      "sha256": "A8D79F7057B61361164B8385CADA106A5CE0074BBC6DCBD00D5EBEAFD3DA86F8"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0098_u003D.png",
+      "bytes": 100,
+      "sha256": "E487858A7B49735D3734DCD87007578B48E4F8818A4734484128AF8B9DCD4F5F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0099_u0030.png",
+      "bytes": 156,
+      "sha256": "8F4E9040B81E529F913E2C86B303DCD6D9F5FD4C603192C5BF9CD748E5B19E2D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0100_u0031.png",
+      "bytes": 119,
+      "sha256": "09A09D5CA0A16042B06EBE7C1592314F77F57351DCA804BC40F3B8F99591F78E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0101_u002F.png",
+      "bytes": 151,
+      "sha256": "A56EB90D466F73588CE41E889574620D498A5C07815707155CA7BFE16E5D41E7"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0102_u0032.png",
+      "bytes": 173,
+      "sha256": "E18A9D4571BE2D9CAF6D9666905E861A68C436ABBA8BCA316CF47D801467FE5B"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0103_u0031.png",
+      "bytes": 119,
+      "sha256": "09A09D5CA0A16042B06EBE7C1592314F77F57351DCA804BC40F3B8F99591F78E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0104_u0031.png",
+      "bytes": 118,
+      "sha256": "47AD4F5AE3F35E3F748794EC1F3E34DFED24ACD8FC22D300854BD3E462F9FAE0"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0105_u0030.png",
+      "bytes": 170,
+      "sha256": "E72F867EAB8EFC24D412E2E4ADD0C3A8570B3D081072DF3063D90F34F036EF0E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0106_u0030.png",
+      "bytes": 170,
+      "sha256": "E72F867EAB8EFC24D412E2E4ADD0C3A8570B3D081072DF3063D90F34F036EF0E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0107_u0030.png",
+      "bytes": 156,
+      "sha256": "8F4E9040B81E529F913E2C86B303DCD6D9F5FD4C603192C5BF9CD748E5B19E2D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0108_u0031.png",
+      "bytes": 119,
+      "sha256": "09A09D5CA0A16042B06EBE7C1592314F77F57351DCA804BC40F3B8F99591F78E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0109_u002F.png",
+      "bytes": 151,
+      "sha256": "A56EB90D466F73588CE41E889574620D498A5C07815707155CA7BFE16E5D41E7"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0110_u0032.png",
+      "bytes": 173,
+      "sha256": "E18A9D4571BE2D9CAF6D9666905E861A68C436ABBA8BCA316CF47D801467FE5B"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0111_u0030.png",
+      "bytes": 170,
+      "sha256": "E72F867EAB8EFC24D412E2E4ADD0C3A8570B3D081072DF3063D90F34F036EF0E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0112_u1D440.png",
+      "bytes": 246,
+      "sha256": "5070AFA4949D94165E4819EFCB6F080BF33DF036962DD182A7F9EF74CF099200"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0113_u2236.png",
+      "bytes": 107,
+      "sha256": "E6CDFC843B9807A2F5935770809AAA325E91BE544B06B46EAAF357E574FAA24A"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0114_u1D457.png",
+      "bytes": 163,
+      "sha256": "5F53AD64EB760F34461AD0B0C16ECAD76087597811BAE25A479D1FC0328E963C"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0115_u003D.png",
+      "bytes": 98,
+      "sha256": "F5B240CF325F0895E7D43DE8C8EC0ED4B70E6D62FA526B3E35A3139FC0F0F6DD"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0116_u1D434.png",
+      "bytes": 204,
+      "sha256": "D5B6931981DEBEB6F1520140160940A65BA934712E3AAE5A7BF66BAA25CD0AEC"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0117_u2236.png",
+      "bytes": 107,
+      "sha256": "E6CDFC843B9807A2F5935770809AAA325E91BE544B06B46EAAF357E574FAA24A"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0118_u1D457.png",
+      "bytes": 163,
+      "sha256": "5F53AD64EB760F34461AD0B0C16ECAD76087597811BAE25A479D1FC0328E963C"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0119_u002F.png",
+      "bytes": 170,
+      "sha256": "B5004EC192ADC3AA9AF80FB65B922B4AC3ECDDE873E6C595DD9BD6889916653C"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0120_u1D450.png",
+      "bytes": 150,
+      "sha256": "4FC7F3B8F52919864327EF071C988658494B40F251E7A8BFB1B97E93EA877E3B"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0121_u1D457.png",
+      "bytes": 170,
+      "sha256": "0202EF57957E2E178B3253372C4EB4CB9C5D022F9E0ED9FAFDED8EEABC0E561A"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0122_u0031.png",
+      "bytes": 140,
+      "sha256": "C448BC7E6646594F1B22BD69E52E5620C606BDA834285453F0F0D66FB2E55E77"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0123_u0054.png",
+      "bytes": 115,
+      "sha256": "2CCBEB34EE1CA505766F80BBABC25726E52B9E6DC134C299B146D2054799F690"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0124_u1D440.png",
+      "bytes": 246,
+      "sha256": "5B30B935CBFA8EC6A4C9B058D9A4969700B40BB377E34A5364B2327A2C5C45DD"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0125_u003D.png",
+      "bytes": 100,
+      "sha256": "E487858A7B49735D3734DCD87007578B48E4F8818A4734484128AF8B9DCD4F5F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0126_u0031.png",
+      "bytes": 141,
+      "sha256": "BE974EE60F59D163029A1F8FAA2DC804BD88AFB280164819763BCD6E989876E6"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0127_u0054.png",
+      "bytes": 115,
+      "sha256": "2CCBEB34EE1CA505766F80BBABC25726E52B9E6DC134C299B146D2054799F690"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0128_u1D45D.png",
+      "bytes": 195,
+      "sha256": "D876F438FE08D0886EF0ACA9D8DC7AF1CD8DD343A1CE02100B3FA6F16D67821D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0129_u0028.png",
+      "bytes": 181,
+      "sha256": "B3941A769D4C4B7BD39DBB89EB8D2EB9A2B1981E96F1D5D289970550FFF8618A"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0130_u1D461.png",
+      "bytes": 156,
+      "sha256": "201F454D7C9D60F57938D108CBC0743ABF09C65132BA1981E3659E638AA72011"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0131_u002B.png",
+      "bytes": 106,
+      "sha256": "0C9BC58A00913A22A1EA6F63A3917AD4EC191C4971081462D09D1D4A5CF7D75C"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0132_u0031.png",
+      "bytes": 131,
+      "sha256": "87240D26CAB04908882580239D22FE6717380E016BCD69E2364ADC010E0A8DBC"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0133_u0029.png",
+      "bytes": 177,
+      "sha256": "DE27631120AC24791D709D11E270C3CA930F5C306F015DD67F8DFCE43D4013B8"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0134_u003D.png",
+      "bytes": 98,
+      "sha256": "212DED5D790F2A39A6521F54F93C2BDD722F545EC39BDA073B72FA0CEFAB93D8"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0135_u1D440.png",
+      "bytes": 247,
+      "sha256": "68883C6C29255FBA243224897531C6438A345177B7393A8D9D14ED7355CC8B54"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0136_u1D45D.png",
+      "bytes": 195,
+      "sha256": "F28275CD03357C22C31FCE470F6E3ED6966D6F22761E0F77C906E3A83DDF4AA9"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0137_u0028.png",
+      "bytes": 181,
+      "sha256": "3101450E0241CD7FF37749199582202482AAB879B50949D5ACC71B398781850C"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0138_u1D461.png",
+      "bytes": 155,
+      "sha256": "18A3FBE69B6C1FB2CAB797D48F1C89F9D94C531F4911AEE538F03DC7BF9551C3"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0139_u0029.png",
+      "bytes": 182,
+      "sha256": "9FBA547287D6A55A8F27C23D2F1536124D266D3740FDE465EAFD87B36CB1467B"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0140_u540C.png",
+      "bytes": 194,
+      "sha256": "10F2D3558E849C59468C1195BF220F9E80C69901C8D6BCBD0DBF99BAE3C36E05"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0141_u4E00.png",
+      "bytes": 106,
+      "sha256": "53CFC2267BDC18FC387ED5B335E95B2D7EFF268550536D856EF89E46DE8F69E0"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0142_u7ED3.png",
+      "bytes": 265,
+      "sha256": "16584C09999D2DFC4A4B742410C2DE9CAA290B97D7B4D9C86911342BBDC200C3"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0143_u70B9.png",
+      "bytes": 213,
+      "sha256": "7A97DB3FF4E1F74B5ECCA6D8784BA1C19DE6E6E6079A633AA273F915753311AF"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0144_u987A.png",
+      "bytes": 232,
+      "sha256": "D00528D4AE2F471C2F35A3750DBF86F27C07DB3BB5920526C329DAFFBEC1195C"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0145_u5E8F.png",
+      "bytes": 248,
+      "sha256": "70A68D024033B909EA292259FD726C23CA46BB95253B212244170B237A998448"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0146_u0028.png",
+      "bytes": 164,
+      "sha256": "8F8B8C45682ED148C4229B634DAC2D15D38A3C9752DB410C413698A5401F5A27"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0147_u1D456.png",
+      "bytes": 144,
+      "sha256": "536B9D26D11011646D7B43C07E65ACE80D5752A53CD0FFB2AC4C1588C7F7B562"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0148_u002C.png",
+      "bytes": 113,
+      "sha256": "CA5ED64DBC6524ECC5BD77E17FC77E4A50D9951EA6BB1B3C0556B81B05BC4631"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0149_u1D457.png",
+      "bytes": 160,
+      "sha256": "4766003614DD7AF382C4F4568F40424A05B98B8355ED1FC6C331A3E2307B3EC3"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0150_u002C.png",
+      "bytes": 113,
+      "sha256": "CA5ED64DBC6524ECC5BD77E17FC77E4A50D9951EA6BB1B3C0556B81B05BC4631"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0151_u210E.png",
+      "bytes": 181,
+      "sha256": "3BAEEE3D936FC9D93C8CEECE0D89701C9A4D3F554E1FDE877DD29FA554CCB018"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0152_u0029.png",
+      "bytes": 158,
+      "sha256": "602A0D45BA7363BB4E5026B711B744BFEAA5E212263E3DB2F4944676CD3289BB"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0153_u1D443.png",
+      "bytes": 188,
+      "sha256": "88AD717BBE7AE572713B980BFD76429FC95B899302C1DFC9FDA4CFE7D926DBA3"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0154_u003D.png",
+      "bytes": 100,
+      "sha256": "E487858A7B49735D3734DCD87007578B48E4F8818A4734484128AF8B9DCD4F5F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0155_u0030.png",
+      "bytes": 170,
+      "sha256": "E72F867EAB8EFC24D412E2E4ADD0C3A8570B3D081072DF3063D90F34F036EF0E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0156_u0031.png",
+      "bytes": 119,
+      "sha256": "09A09D5CA0A16042B06EBE7C1592314F77F57351DCA804BC40F3B8F99591F78E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0157_u0030.png",
+      "bytes": 156,
+      "sha256": "8F4E9040B81E529F913E2C86B303DCD6D9F5FD4C603192C5BF9CD748E5B19E2D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0158_u0031.png",
+      "bytes": 119,
+      "sha256": "09A09D5CA0A16042B06EBE7C1592314F77F57351DCA804BC40F3B8F99591F78E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0159_u002F.png",
+      "bytes": 151,
+      "sha256": "A56EB90D466F73588CE41E889574620D498A5C07815707155CA7BFE16E5D41E7"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0160_u0032.png",
+      "bytes": 173,
+      "sha256": "E18A9D4571BE2D9CAF6D9666905E861A68C436ABBA8BCA316CF47D801467FE5B"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0161_u0030.png",
+      "bytes": 170,
+      "sha256": "E72F867EAB8EFC24D412E2E4ADD0C3A8570B3D081072DF3063D90F34F036EF0E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0162_u0031.png",
+      "bytes": 118,
+      "sha256": "5A42564C45CC7AB847597101D170E6A597380DAD89CC545DFF5B5460DBD15010"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0163_u002F.png",
+      "bytes": 169,
+      "sha256": "7B589B88B88D95F6AE6030F443F03005C3B4CD3FCC4AB3A2A3F6748988E5C165"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0164_u0032.png",
+      "bytes": 181,
+      "sha256": "B3B0F565DA0B01E871F95090BAA215D0C3FAFEEEA8FE2ABA3EA10945F7167EF0"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0165_u0031.png",
+      "bytes": 119,
+      "sha256": "09A09D5CA0A16042B06EBE7C1592314F77F57351DCA804BC40F3B8F99591F78E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0166_u0030.png",
+      "bytes": 170,
+      "sha256": "E72F867EAB8EFC24D412E2E4ADD0C3A8570B3D081072DF3063D90F34F036EF0E"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0167_u0030.png",
+      "bytes": 156,
+      "sha256": "8F4E9040B81E529F913E2C86B303DCD6D9F5FD4C603192C5BF9CD748E5B19E2D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0168_u1D443.png",
+      "bytes": 188,
+      "sha256": "88AD717BBE7AE572713B980BFD76429FC95B899302C1DFC9FDA4CFE7D926DBA3"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0169_u003D.png",
+      "bytes": 100,
+      "sha256": "E487858A7B49735D3734DCD87007578B48E4F8818A4734484128AF8B9DCD4F5F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0170_u1D440.png",
+      "bytes": 248,
+      "sha256": "A8D79F7057B61361164B8385CADA106A5CE0074BBC6DCBD00D5EBEAFD3DA86F8"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0171_u0054.png",
+      "bytes": 114,
+      "sha256": "981B2F02EA61CD8BB9DEE9748D9486620BDD73923779149E34E82B837A8864DA"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0172_u1D443.png",
+      "bytes": 172,
+      "sha256": "C788E2068FED8BAF0038D888FEC19EDBDB2887B96277CED046DE966EC0C0338D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0173_u1D457.png",
+      "bytes": 191,
+      "sha256": "61848A6FEE0C0D8B5C36468ACA79E57D568C78CB443D73B36E92FAE8151C163F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0174_u1D456.png",
+      "bytes": 159,
+      "sha256": "F8C27443283D48A7E92718F2627C9DC2E7FCDD158679B1ED0D58041ADD5297A3"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0175_u003D.png",
+      "bytes": 100,
+      "sha256": "CC01CD0D0C7EB9F261DA5D63C7A9362836F1527AD17C609761502BBD1ACF5B20"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0176_u1D440.png",
+      "bytes": 248,
+      "sha256": "A8D79F7057B61361164B8385CADA106A5CE0074BBC6DCBD00D5EBEAFD3DA86F8"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0177_u1D456.png",
+      "bytes": 159,
+      "sha256": "F8C27443283D48A7E92718F2627C9DC2E7FCDD158679B1ED0D58041ADD5297A3"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0178_u1D457.png",
+      "bytes": 163,
+      "sha256": "88581B7F149C7076D81BE4935FD8E32A4AC940422AB3E0EA7F698A71B749D2BB"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0179_u003D.png",
+      "bytes": 98,
+      "sha256": "212DED5D790F2A39A6521F54F93C2BDD722F545EC39BDA073B72FA0CEFAB93D8"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0180_u0050.png",
+      "bytes": 169,
+      "sha256": "892DAF023B2414A5F55044861B2AAC2AF7A41D4AB474C6A378A7816B7EB3AE7C"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0181_u0072.png",
+      "bytes": 137,
+      "sha256": "C03968621955C3E2E6B065B0AF62EC2EF5E4AEF3B140AE4D304E36D648C72554"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0182_u0028.png",
+      "bytes": 181,
+      "sha256": "812883900D483A4D3D18DAF66AD389904131E2A80F8EEC1129FBDAF9D2AE7275"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0183_u1D44B.png",
+      "bytes": 226,
+      "sha256": "F1324160E6C0CE862304BD315E14677374675665A579EB6863670D75D09FE3F5"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0184_u1D461.png",
+      "bytes": 156,
+      "sha256": "72535F0304E3D7386501A9C034A43592339168D2E48082E445D2EF0418E7B45D"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0185_u002B.png",
+      "bytes": 108,
+      "sha256": "AB342AD7018D88B1313A1323F3FF1BAD9133673CF320101F69C6A2D8D1557603"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0186_u0031.png",
+      "bytes": 133,
+      "sha256": "B91010910BFA06081A8AC328D7479A151515F3F25F6C16BBC2237C6914BF6DDA"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0187_u003D.png",
+      "bytes": 98,
+      "sha256": "C451C2E8F8D0A2CA35C4AB7D1D4344C10CD43A8BEF6E8FF85B99F158920357DE"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0188_u1D456.png",
+      "bytes": 165,
+      "sha256": "8AF29F3E614C170E54D512E9801ABE1456D57AE5D3F89DE36C28FD5B6D26AB6B"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0189_u2223.png",
+      "bytes": 97,
+      "sha256": "C1B76FDE75FB8D5C310FB954727E21648D65580DDB863660135D202C31AF7201"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0190_u1D44B.png",
+      "bytes": 226,
+      "sha256": "F1324160E6C0CE862304BD315E14677374675665A579EB6863670D75D09FE3F5"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0191_u1D461.png",
+      "bytes": 156,
+      "sha256": "31DE95A9D167C4D9F260B483BDA497C07561C2217BE5A3E75E8B4C07F4698C46"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0192_u003D.png",
+      "bytes": 98,
+      "sha256": "C451C2E8F8D0A2CA35C4AB7D1D4344C10CD43A8BEF6E8FF85B99F158920357DE"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0193_u1D457.png",
+      "bytes": 175,
+      "sha256": "40DE449CE61417AC05654CFC5A0578106E77FB13A232D8D92C62E6E60DF16903"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0194_u0029.png",
+      "bytes": 187,
+      "sha256": "CA19E2D0DC887AECAEEF0073F1091C118460FD24596E568F599FE9292A636875"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0195_u1D443.png",
+      "bytes": 191,
+      "sha256": "14870E5148528E4B6261B44B943B5F4E7AEC4D1706B1C12E3AE36530FC60434A"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0196_u0031.png",
+      "bytes": 140,
+      "sha256": "C448BC7E6646594F1B22BD69E52E5620C606BDA834285453F0F0D66FB2E55E77"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0197_u003D.png",
+      "bytes": 100,
+      "sha256": "CC01CD0D0C7EB9F261DA5D63C7A9362836F1527AD17C609761502BBD1ACF5B20"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0198_u0031.png",
+      "bytes": 141,
+      "sha256": "BE974EE60F59D163029A1F8FAA2DC804BD88AFB280164819763BCD6E989876E6"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0199_u1D70C.png",
+      "bytes": 199,
+      "sha256": "8CD1C8A4D58AFCE968170C9952C120398DEDB994302F99C124EB19B623CF5550"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0200_u1D461.png",
+      "bytes": 156,
+      "sha256": "2E72895439996E3E5A116404B4B78ED0E5F4B4D0585B76015A27093DA6525F73"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0201_u002B.png",
+      "bytes": 106,
+      "sha256": "2C47947278F220271922FF098A9424F5AD12141989F27748783B8824B842D59A"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0202_u0031.png",
+      "bytes": 134,
+      "sha256": "756B6540EE406F7D7188B9C38B9D6E8B860BF332126BC9AC8A808A2DB1734D31"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0203_u003D.png",
+      "bytes": 99,
+      "sha256": "34BD87C65BAAAFEA78070B4C31A74D62C38AB377D501033CB987BF5457F4AEE7"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0204_u1D70C.png",
+      "bytes": 203,
+      "sha256": "CF49BE4DAEAA3D592724955CCB8D7C0E6FE2ADFAA76FF11FD60EBAAA647C1485"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0205_u1D461.png",
+      "bytes": 155,
+      "sha256": "E949DC70FFF55DB3A3EEA911FA1091B470CA78C5DFD0137B1C1AC28FB11C7917"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0206_u1D443.png",
+      "bytes": 188,
+      "sha256": "88AD717BBE7AE572713B980BFD76429FC95B899302C1DFC9FDA4CFE7D926DBA3"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0207_u1D70C.png",
+      "bytes": 203,
+      "sha256": "CF49BE4DAEAA3D592724955CCB8D7C0E6FE2ADFAA76FF11FD60EBAAA647C1485"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0208_u1D461.png",
+      "bytes": 156,
+      "sha256": "31DE95A9D167C4D9F260B483BDA497C07561C2217BE5A3E75E8B4C07F4698C46"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0209_u003D.png",
+      "bytes": 100,
+      "sha256": "E487858A7B49735D3734DCD87007578B48E4F8818A4734484128AF8B9DCD4F5F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0210_u0028.png",
+      "bytes": 184,
+      "sha256": "10F77CB4C830CBD65EDF0DE6994B04C5B86AE398BC5CD5A993C8ABD77575168B"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0211_u1D45D.png",
+      "bytes": 195,
+      "sha256": "158463D51F37FBB4D0F5FE1659A646F0AF03A4822285A962421317DEB1623A3F"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0212_u0028.png",
+      "bytes": 181,
+      "sha256": "AF1D0009F3B26DDCBE54389D4A8984841BCE5CC0558B9D29D5937743BE0A0912"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0213_u1D461.png",
+      "bytes": 156,
+      "sha256": "2E72895439996E3E5A116404B4B78ED0E5F4B4D0585B76015A27093DA6525F73"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0214_u0029.png",
+      "bytes": 177,
+      "sha256": "9C3CA6C12657FD959ED24643F58C94C409AB3BEE2309D846D538FDBB5FE55E66"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0215_u0029.png",
+      "bytes": 185,
+      "sha256": "DEE0CB125B2DBED433A6613DC4E5548C47F2B98A5662FC20B77F265CD39F1BC4"
+    },
+    {
+      "path": "machine/masks/glyph/glyph_0216_u0054.png",
+      "bytes": 115,
+      "sha256": "2CCBEB34EE1CA505766F80BBABC25726E52B9E6DC134C299B146D2054799F690"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0001_seq003.png",
+      "bytes": 2596,
+      "sha256": "44A4925201AAFD4D61E6C548CDF0730D1625123322DE82961283F9706C8E81E3"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0002_seq004.png",
+      "bytes": 2492,
+      "sha256": "6E09D924FE210F832AB15066DF6EADBE04A80C4935804398C954D7CA2123BA20"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0003_seq007.png",
+      "bytes": 572,
+      "sha256": "5566267A35D4D8969106B88FD4F08F4BA4B1327D1BA0E63AC937735AB8918AEA"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0004_seq010.png",
+      "bytes": 599,
+      "sha256": "358C6CB2146B607BE40A3C7E0C60EB107A5C924360EC4A4F6A2713367BB8D717"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0005_seq013.png",
+      "bytes": 564,
+      "sha256": "1C569809B98A084B6DB763C0D964A73678E972C97283A1799B566AEAA2F7022C"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0006_seq016.png",
+      "bytes": 229,
+      "sha256": "CC63C401A95A7D681B8A41B9FB632AFDB8915C630278C234FC36E4E958C0E380"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0007_seq017.png",
+      "bytes": 127,
+      "sha256": "5D40E129030DED2F5661C18506CF3FABEAB5074D138F5667A4AB35B1171AAB78"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0008_seq020.png",
+      "bytes": 230,
+      "sha256": "BCC57857256B1EF3876B2A0AE1062A4A8AAAEDFCFA8D7ED3934E76513EE3CE8F"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0009_seq021.png",
+      "bytes": 151,
+      "sha256": "20EF8F2CA09E70070BCE8DE9475C2E0B77E32C405F37020382888042AEE10126"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0010_seq024.png",
+      "bytes": 335,
+      "sha256": "D6BE5C7735612805E4F90CA8BA1BD87095929FBCB4A958208CBB545A9419DDF8"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0011_seq025.png",
+      "bytes": 144,
+      "sha256": "B95AD98BC00FD3473599BCB5A8920945D17DE55F0F1BBEDE94370E9A376A37C9"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0012_seq027.png",
+      "bytes": 357,
+      "sha256": "69590158988E19E6B534F6B477474B10C5E6FA235D1574DB80B987799AE00A42"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0013_seq028.png",
+      "bytes": 146,
+      "sha256": "AC45F719C0C800E0FDE684D47E76D6D1DC62D969D8FE22A181D4959DC4976BD7"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0014_seq035.png",
+      "bytes": 149,
+      "sha256": "D96FE6E50CF53D34749B1533F6C04353857C339D097D7B7F3EDF242FD54BD972"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0015_seq037.png",
+      "bytes": 152,
+      "sha256": "1BCDDD8367D793B0B309D98EE90A627A60FB7967B545418C257B2E526EDFEE74"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0016_seq039.png",
+      "bytes": 152,
+      "sha256": "39A41BE5FD84A069BE1586F143F075FD3951E35C3ACFC9B46A214EC32C49C7E6"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0017_seq041.png",
+      "bytes": 152,
+      "sha256": "1F58DDE8A106D4B32BA554B85FA48396B298F0ED0B2A6E3A72501F8D7F3CF1C5"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0018_seq043.png",
+      "bytes": 149,
+      "sha256": "D96FE6E50CF53D34749B1533F6C04353857C339D097D7B7F3EDF242FD54BD972"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0019_seq045.png",
+      "bytes": 154,
+      "sha256": "7B6E7AAEEC82B4BCA03DC77A6A5287EDF179D74300798DE2A229B29A03707392"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0020_seq047.png",
+      "bytes": 149,
+      "sha256": "D96FE6E50CF53D34749B1533F6C04353857C339D097D7B7F3EDF242FD54BD972"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0021_seq049.png",
+      "bytes": 152,
+      "sha256": "1BCDDD8367D793B0B309D98EE90A627A60FB7967B545418C257B2E526EDFEE74"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0022_seq051.png",
+      "bytes": 154,
+      "sha256": "7B6E7AAEEC82B4BCA03DC77A6A5287EDF179D74300798DE2A229B29A03707392"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0023_seq053.png",
+      "bytes": 165,
+      "sha256": "DA86D51D862E834A31C7E79186004CB9382E04A246432C28FCEA47F432476024"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0024_seq055.png",
+      "bytes": 149,
+      "sha256": "D96FE6E50CF53D34749B1533F6C04353857C339D097D7B7F3EDF242FD54BD972"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0025_seq057.png",
+      "bytes": 151,
+      "sha256": "4DBA93E12CAC75ED24A7D1E58294A9927CF093F353358F922EFFA86F4C402882"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0026_seq059.png",
+      "bytes": 167,
+      "sha256": "1C8A49BCB9ECC1B1A1527775427A3F002203EA79D577410FA15CF7AF1EF57F99"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0027_seq061.png",
+      "bytes": 149,
+      "sha256": "D96FE6E50CF53D34749B1533F6C04353857C339D097D7B7F3EDF242FD54BD972"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0028_seq063.png",
+      "bytes": 151,
+      "sha256": "4DBA93E12CAC75ED24A7D1E58294A9927CF093F353358F922EFFA86F4C402882"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0029_seq065.png",
+      "bytes": 159,
+      "sha256": "03FE2366E15CB71E7048B601E2A62645E7DDFF92730B999C8DF9FEAFD6F37A93"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0030_seq067.png",
+      "bytes": 149,
+      "sha256": "D96FE6E50CF53D34749B1533F6C04353857C339D097D7B7F3EDF242FD54BD972"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0031_seq069.png",
+      "bytes": 151,
+      "sha256": "4DBA93E12CAC75ED24A7D1E58294A9927CF093F353358F922EFFA86F4C402882"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0032_seq071.png",
+      "bytes": 159,
+      "sha256": "03FE2366E15CB71E7048B601E2A62645E7DDFF92730B999C8DF9FEAFD6F37A93"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0033_seq073.png",
+      "bytes": 158,
+      "sha256": "7468289EF6EE89830EC523CFE6432209D68D444602309073F27006B416327F19"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0034_seq079.png",
+      "bytes": 154,
+      "sha256": "7B6E7AAEEC82B4BCA03DC77A6A5287EDF179D74300798DE2A229B29A03707392"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0035_seq081.png",
+      "bytes": 151,
+      "sha256": "592BEF20396C42816D9E21E749313B8F4D226372303C8CB5E1C1A4875B276E66"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0036_seq083.png",
+      "bytes": 149,
+      "sha256": "D96FE6E50CF53D34749B1533F6C04353857C339D097D7B7F3EDF242FD54BD972"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0037_seq085.png",
+      "bytes": 154,
+      "sha256": "7B6E7AAEEC82B4BCA03DC77A6A5287EDF179D74300798DE2A229B29A03707392"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0038_seq087.png",
+      "bytes": 151,
+      "sha256": "592BEF20396C42816D9E21E749313B8F4D226372303C8CB5E1C1A4875B276E66"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0039_seq089.png",
+      "bytes": 149,
+      "sha256": "D96FE6E50CF53D34749B1533F6C04353857C339D097D7B7F3EDF242FD54BD972"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0040_seq091.png",
+      "bytes": 152,
+      "sha256": "DC7EE5CABAC302FCE96ADCA76990B4F2B0DB17631EBA0927D3700BC891DA7EF5"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0041_seq093.png",
+      "bytes": 149,
+      "sha256": "9098D704CC21D0111F47930D171239DBB004F13F3079AA343C8D194687CA7CAD"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0042_seq095.png",
+      "bytes": 149,
+      "sha256": "D96FE6E50CF53D34749B1533F6C04353857C339D097D7B7F3EDF242FD54BD972"
+    },
+    {
+      "path": "machine/masks/graphic/graphic_0043_seq097.png",
+      "bytes": 159,
+      "sha256": "CB60C14D3960E64310B0B5AB1C29342E0A6D10369CDF9002AD07A21CB2B198D3"
+    },
+    {
+      "path": "machine/object_ledger.csv",
+      "bytes": 100909,
+      "sha256": "66533D3ECCBD3046DEBCC914FFDB4EFBE9E2E6F9427DBA0B0994175010D791D6"
+    },
+    {
+      "path": "machine/object_ledger.json",
+      "bytes": 310656,
+      "sha256": "0F3915A33AAA7F72500DD941457A9D56AE9504EB8C3C9AA2BF256BFB8980D0B8"
+    },
+    {
+      "path": "machine/r107_fullbook_text.txt",
+      "bytes": 2694553,
+      "sha256": "7EC180F6AE0D23DDE0E7D75749D65794F69FEBF0819EF4E45085DA333399B405"
+    },
+    {
+      "path": "machine/render_metadata.json",
+      "bytes": 997,
+      "sha256": "8915096BD9AC3EA4878B0A18F866E7EED72516A50031DE7A57F2148EFC8D5B1D"
+    },
+    {
+      "path": "renders/after_text_measurement_overlay_300dpi.png",
+      "bytes": 216085,
+      "sha256": "B8AC2E324DEB159EA5FEA8BFF5475F6A43CA14CE12106FAFE1C0A5F584E9D354"
+    },
+    {
+      "path": "renders/figure_crop_300dpi.png",
+      "bytes": 196160,
+      "sha256": "27A58A53FFE4D97357D8527583A53840385CA480BC06D6E1150D860BD12D3B81"
+    },
+    {
+      "path": "renders/full_page_200dpi.png",
+      "bytes": 572413,
+      "sha256": "3690134EAFEB879A7F585B70ED106475D09166FA3A1E5E76D0F18D442A34EF50"
+    },
+    {
+      "path": "renders/full_page_300dpi.png",
+      "bytes": 915438,
+      "sha256": "48BBB5CF6E53BE7DC15B87E34C00EDCA7E565385F6B78BF11C38D48DC4AFEE78"
+    },
+    {
+      "path": "renders/grayscale_300dpi.png",
+      "bytes": 91014,
+      "sha256": "F15C82080AFB8BC9023E68D1CCD89B41AB8C957FE6816936428E1E8FE9B642BB"
+    },
+    {
+      "path": "renders/standalone_300dpi.png",
+      "bytes": 159509,
+      "sha256": "7D7CDCB67EE623E7C5022994AEF8C96747802F584699B55CDCD142CA65E22F16"
+    },
+    {
+      "path": "review/critical_pair_sheet_001.png",
+      "bytes": 47320,
+      "sha256": "E17761C9B204347A3E44AA1177EC8502BD23B381A6937D5599E1913B2532153D"
+    },
+    {
+      "path": "review/critical_pair_sheet_002.png",
+      "bytes": 46148,
+      "sha256": "B60C9B5CDE9E7A2C042F1E946436841179A8C05F2CE036FC4D6DF3D6527D87FB"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P14119_8x_nearest.png",
+      "bytes": 5512,
+      "sha256": "B2965B1B43B4793FCE9CA124E615988299796AAB1715E56038B4089F6BECDDDC"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P20832_8x_nearest.png",
+      "bytes": 3775,
+      "sha256": "4B01C14EF888C7EE1F68ED4C4076C746346EA70913ED984014DF8B64A2A7FF52"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P20840_8x_nearest.png",
+      "bytes": 3820,
+      "sha256": "EF58098ECB5E69B35777F0469FC5B8F8F73640337EE5B5D197AE78707507D4C8"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P21147_8x_nearest.png",
+      "bytes": 5020,
+      "sha256": "9A9B40E9A02A061A88E3EB55505F1DC263A32887C2E5099B1AAB8CF7A0B089F1"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P21155_8x_nearest.png",
+      "bytes": 5066,
+      "sha256": "4D198F8BDDBBC5255A17C40B2AE9C66BA04B351C1E1F556F5AAC5A344AF4350D"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P22074_8x_nearest.png",
+      "bytes": 3757,
+      "sha256": "B466C96D6B678CB764712E0B7FF1139B51D59DA22C89800A2AF8FBD8583C08D5"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P22373_8x_nearest.png",
+      "bytes": 4966,
+      "sha256": "C90E1E99D5BC208B6317FE5C1701A97B42EEF207BD884BD50C6210CFE5CF39DF"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P23411_8x_nearest.png",
+      "bytes": 6133,
+      "sha256": "D0B9A06F61E323AE0FB4F5AEC83E1AC5AF3F93D5FCEFC7BF3BBD501D8394400E"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P23831_8x_nearest.png",
+      "bytes": 5337,
+      "sha256": "7D40113AC23B337C561B7F1BC03B403624E8638E76521097C769DA0B020EEA2D"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P28355_8x_nearest.png",
+      "bytes": 3774,
+      "sha256": "BBF74C9C14AE877662EE8EC4FB53D268950A06C48D1CC7E1721959663FE131A9"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P28361_8x_nearest.png",
+      "bytes": 3816,
+      "sha256": "02603C5622CA8679D89FE2C013086C8432721CAFAB7ECC992998230130AE4A72"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P28554_8x_nearest.png",
+      "bytes": 5019,
+      "sha256": "57530D028E60F21A795BEC092D978E30287F1B0CE09FDC46D04333ACFF90D7B8"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P28560_8x_nearest.png",
+      "bytes": 5063,
+      "sha256": "20613F3608B6F2CA70CF9AA1F1DEAD1B53803A9C2949546D27B3D93428FB3E65"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P28751_8x_nearest.png",
+      "bytes": 3692,
+      "sha256": "85E4B0DB141E04824B53061C6763848814FDD990C312150A787354119A6BE23E"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P28942_8x_nearest.png",
+      "bytes": 4954,
+      "sha256": "23415735562CF2D3732A3C031A4DDD5649C35C547805D6651C6CCE12FC7A07A5"
+    },
+    {
+      "path": "review/critical_pairs/8x_nearest/P30101_8x_nearest.png",
+      "bytes": 5227,
+      "sha256": "E8A30FE9BE185A4FB699736729EC4B385B538048CEA814B86C364C002B27E977"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P14119_native1x.png",
+      "bytes": 2050,
+      "sha256": "FC47D4CB78661D524329E93EEBCD4E2CFCEA1A2827CBC8F67F92DD72068A80DF"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P20832_native1x.png",
+      "bytes": 1015,
+      "sha256": "9BCBDFDA7D806B241700779D211C3AB49BC3908A7C7E709CDA8369883C40ACCA"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P20840_native1x.png",
+      "bytes": 1041,
+      "sha256": "6F8ACBBC200EE1C3A82AA2082B120C5B10BD32FD30335FB2742D1EEFE2D37FB0"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P21147_native1x.png",
+      "bytes": 1811,
+      "sha256": "47EDC0FF8231EC35299886F9D917EBFDC7283E58D8857930FC0811E47BAC3F0F"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P21155_native1x.png",
+      "bytes": 1842,
+      "sha256": "8A592E8B8ACEF3BD68B73B7070A00E1EBFC1F7FBD8912C01DA4A847B6A9AC07E"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P22074_native1x.png",
+      "bytes": 1009,
+      "sha256": "2FB8A8926F0964096E8E1A8A34CFEA5A2C40AB58900BA060C77504E65E31A947"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P22373_native1x.png",
+      "bytes": 1785,
+      "sha256": "FA241D1D708AF3B88837347E9386692052A890D41F4F5F2DCA4B46814D953097"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P23411_native1x.png",
+      "bytes": 2461,
+      "sha256": "27FB3E7F33C75B9175D5F3FA593E8BD302A9FB5DCD41112908EA64AC8B0281D6"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P23831_native1x.png",
+      "bytes": 1900,
+      "sha256": "052497FBB6A5E8526639800E0D35D69EA4BDCDAE92F61D1E0C0842BF796BDD1C"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P28355_native1x.png",
+      "bytes": 1012,
+      "sha256": "A072B1628734A8FB2DD0DE10C61C2408B2629824A5736B554CD750F5BCD2E1F7"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P28361_native1x.png",
+      "bytes": 1039,
+      "sha256": "AEE4C2EB42311B9E3FF9A15835B04F0FA04500E9076CE7123C85F6B593C431D4"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P28554_native1x.png",
+      "bytes": 1803,
+      "sha256": "9DD46613D55FC30C315FDB5A82777624D9E0F2876C131A692E7667BFF5F6A6E5"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P28560_native1x.png",
+      "bytes": 1842,
+      "sha256": "40BC02BF4D61A0CFA31B739385DFE1A912BE905E1B1625C4EDB8B3EBB4881AE2"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P28751_native1x.png",
+      "bytes": 990,
+      "sha256": "E2AEDF9F8825E9D73CD7BFF482FB94A069BD1CA3B8DAB5ACE7F71B4542BCDA9B"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P28942_native1x.png",
+      "bytes": 1767,
+      "sha256": "46F2DCAD3166C1A6C1769B0B5C05220E3568040BD942FF32B2DA6EB0AB776771"
+    },
+    {
+      "path": "review/critical_pairs/native1x/P30101_native1x.png",
+      "bytes": 1862,
+      "sha256": "426C52B6DAAA660124996E83672613A13AE0ECC228AAEC0F9BADE71571A095FA"
+    },
+    {
+      "path": "review/glyph_contact_sheet_001.png",
+      "bytes": 85942,
+      "sha256": "16D2400195C3E69A1DA42E691DB9FE0BB94C714B3063166B5B8E11923794EDBA"
+    },
+    {
+      "path": "review/glyph_contact_sheet_002.png",
+      "bytes": 82021,
+      "sha256": "27D021D27337A4C12549863180AE87FC964BB3D16C17E3AEDFE7A22D2E5FC7E5"
+    },
+    {
+      "path": "review/glyph_contact_sheet_003.png",
+      "bytes": 73665,
+      "sha256": "F251732743DC457C82C5C99943832F9524227EAC77233620A87604256CA3FDB5"
+    },
+    {
+      "path": "review/glyph_contact_sheet_004.png",
+      "bytes": 66079,
+      "sha256": "A77A6A4EA26F5835774D83D7B26746D22D8C92A4316273ACDAE8B66F932FFCF8"
+    },
+    {
+      "path": "review/glyph_contact_sheet_005.png",
+      "bytes": 85956,
+      "sha256": "4B9405F34570C41DE9B8DBE319EE349F388C73B4EC8E25CC46B994F85E1355B7"
+    },
+    {
+      "path": "review/glyph_contact_sheet_006.png",
+      "bytes": 69451,
+      "sha256": "E758BB222DDDAC83884118DE123493E46FAE5D8A69FE6AE8C54A567B8BF6A941"
+    },
+    {
+      "path": "review/glyph_contact_sheet_007.png",
+      "bytes": 59500,
+      "sha256": "EAFEC9BA8306ED20920B4FEB338662CF8E42C0AC051A96E215832327A0B6BB9A"
+    },
+    {
+      "path": "review/glyph_contact_sheet_008.png",
+      "bytes": 59092,
+      "sha256": "DC1C8C195E42952BD1B243ACDC09B95A28DA3AA2A17F48A79F9535BC8B99D9B6"
+    },
+    {
+      "path": "review/glyph_contact_sheet_009.png",
+      "bytes": 59952,
+      "sha256": "C28BD4D4059A5C44360CEA0BFA573898A9F8A2B02E0D63CA1F64F65A720E912E"
+    },
+    {
+      "path": "review/glyph_contact_sheet_010.png",
+      "bytes": 66204,
+      "sha256": "85301BC4075EF0ADBBEAA7D96B9A960B8BA216C022BCAE1727F0E13E8908AA2C"
+    },
+    {
+      "path": "review/glyph_contact_sheet_011.png",
+      "bytes": 69277,
+      "sha256": "0A152B13CD1E5FA80533E125A73990A763B858ED55EE4C60571A37F984AD56CC"
+    },
+    {
+      "path": "review/glyph_contact_sheet_012.png",
+      "bytes": 72261,
+      "sha256": "2DFA4D7299A64C75C6622460BD6B6ED695A7E73EB7A23BBC5EF6DE9D0B15C311"
+    },
+    {
+      "path": "review/glyph_contact_sheet_013.png",
+      "bytes": 61422,
+      "sha256": "1D6E4C95290BD08C683944B2B5AFBD75A7200E7222D76AC99F068965930E1FC9"
+    },
+    {
+      "path": "review/glyph_contact_sheet_014.png",
+      "bytes": 57665,
+      "sha256": "4B210ED16F78AB9000CE32BCB19003981C47D93008E63C15612400867B16DAAF"
+    },
+    {
+      "path": "review/glyph_contact_sheet_015.png",
+      "bytes": 74582,
+      "sha256": "FEDFAC621A2AA73B169EE960DCBCA7F372CFD389F877119D02D58E0B7AF0ECFF"
+    },
+    {
+      "path": "review/glyph_contact_sheet_016.png",
+      "bytes": 59007,
+      "sha256": "B3A3BC0DBA41EB76613DF4D55ABCECE194CAE2FACEBADC94BB1AC8BC2444FBF7"
+    },
+    {
+      "path": "review/glyph_contact_sheet_017.png",
+      "bytes": 58701,
+      "sha256": "3151F548A41837192C5151E196E17A2C7E6485F3DBE899DC65CB76588C3F7A60"
+    },
+    {
+      "path": "review/glyph_contact_sheet_018.png",
+      "bytes": 71416,
+      "sha256": "6BB3072F901AA88F48555A3575AE7A57121432D5A1E60263A5CA8A876E8A9F6A"
+    },
+    {
+      "path": "review/graphic_contact_sheet_001.png",
+      "bytes": 123807,
+      "sha256": "9BFFA9B47A346589E8F09BD182DFF24DC59DDD23D601088232FB013B0ABC1690"
+    },
+    {
+      "path": "review/graphic_contact_sheet_002.png",
+      "bytes": 58242,
+      "sha256": "79FDB25CF5EEFC0654260487311FADBF0062DD465CB60F55BE97ED6282FAF52E"
+    },
+    {
+      "path": "review/graphic_contact_sheet_003.png",
+      "bytes": 60937,
+      "sha256": "A303302AFCE09A3C3E94FA7FD8C2485535F3A4A5321DCD33A1043B886E1A0A74"
+    },
+    {
+      "path": "review/graphic_contact_sheet_004.png",
+      "bytes": 45181,
+      "sha256": "2E59129388539FEC6D8157C174554F50C1C3D6C2C06E5061C79B0279F3BC4FD2"
+    },
+    {
+      "path": "review/manual_critical_pair_reviewer_ledger.tsv",
+      "bytes": 3364,
+      "sha256": "B7B9B3C0B52ABB75220E196E4CEAAAB0C84407607714F621293386C8D2ADEB40"
+    },
+    {
+      "path": "review/manual_four_view_ledger.tsv",
+      "bytes": 1242,
+      "sha256": "B1D22BDE183D6EDCB2848C39CD09B4460CDC12D94B57548F6E837F993D96A381"
+    },
+    {
+      "path": "review/manual_glyph_reviewer_ledger.tsv",
+      "bytes": 30126,
+      "sha256": "27B2FAAC15BE7E315C985C81898BF21F7A3D996D955F752240E8C418C2FB5F17"
+    },
+    {
+      "path": "review/manual_graphic_connection_ledger.tsv",
+      "bytes": 1016,
+      "sha256": "5583927011C14CDFE4119815B678134BA54025D375896457194E85B08BCD454D"
+    },
+    {
+      "path": "review/manual_graphic_reviewer_ledger.tsv",
+      "bytes": 7054,
+      "sha256": "160BFC5A8472E86DE9C3BED30A58F19E661AD2115BFE5D5E254B3157C7B3AAA5"
+    },
+    {
+      "path": "review/manual_panel_role_script_ledger.tsv",
+      "bytes": 2100,
+      "sha256": "E657EB65B0606A62B2DC1AE39BB4AFA9BA2215EF6E4D7FE7B00600AEE928474F"
+    },
+    {
+      "path": "review/manual_semantic_geometry_review.md",
+      "bytes": 1910,
+      "sha256": "101BDF895E64FC135FC1093C3BF5C4B2F1E0138A3246849D0EBDD68606925B6B"
+    },
+    {
+      "path": "standalone_300dpi.png",
+      "bytes": 159509,
+      "sha256": "7D7CDCB67EE623E7C5022994AEF8C96747802F584699B55CDCD142CA65E22F16"
+    }
+  ]
+}

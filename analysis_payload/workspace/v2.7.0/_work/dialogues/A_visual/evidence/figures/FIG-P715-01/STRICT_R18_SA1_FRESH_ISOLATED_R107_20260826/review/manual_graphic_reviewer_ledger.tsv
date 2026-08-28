@@ -1,0 +1,44 @@
+id	graphic_type	reviewer	sheet	cell	original_match	overlay_complete	mask_only_pure	missing_path_px	foreign_pixel_px	decision	note
+G0001	PANEL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	1	TRUE	TRUE	TRUE	0	0	PASS	Left rounded panel border is continuous on all four sides and contains no text ink.
+G0002	PANEL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	2	TRUE	TRUE	TRUE	0	0	PASS	Right rounded panel border is continuous on all four sides and mask-only is pure.
+G0003	NODE_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	3	TRUE	TRUE	TRUE	0	0	PASS	Node i circle is complete; label and incident-arrow pixels remain outside the mask.
+G0004	NODE_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	4	TRUE	TRUE	TRUE	0	0	PASS	Node j circle is complete and isolated from its label and incident edges.
+G0005	NODE_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	5	TRUE	TRUE	TRUE	0	0	PASS	Node h circle is complete and pure despite nearby incoming and outgoing edges.
+G0006	EDGE_SHAFT	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	6	TRUE	TRUE	TRUE	0	0	PASS	Orange curved edge shaft is continuous; arrowhead is correctly separate.
+G0007	ARROWHEAD	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	7	TRUE	TRUE	TRUE	0	0	PASS	Orange arrowhead has complete triangular visible form and no shaft contamination.
+G0008	EDGE_SHAFT	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	8	TRUE	TRUE	TRUE	0	0	PASS	Green lower curved edge shaft is continuous and isolated from its head.
+G0009	ARROWHEAD	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	9	TRUE	TRUE	TRUE	0	0	PASS	Green right-pointing arrowhead is complete; stray context pixels are absent from mask-only.
+G0010	EDGE_SHAFT	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	10	TRUE	TRUE	TRUE	0	0	PASS	First diagonal green edge shaft is continuous with separate endpoint heads.
+G0011	ARROWHEAD	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	11	TRUE	TRUE	TRUE	0	0	PASS	First diagonal green arrowhead is complete and pure.
+G0012	EDGE_SHAFT	gpt-5.6-sol/xhigh	graphic_contact_sheet_001.png	12	TRUE	TRUE	TRUE	0	0	PASS	Second diagonal green edge shaft is continuous and excludes node-label ink.
+G0013	ARROWHEAD	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	1	TRUE	TRUE	TRUE	0	0	PASS	Second diagonal green arrowhead is complete and correctly separated from shaft.
+G0014	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	2	TRUE	TRUE	TRUE	0	0	PASS	A-matrix cell border 1 is a complete rectangle with entry excluded.
+G0015	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	3	TRUE	TRUE	TRUE	0	0	PASS	A-matrix cell border 2 is complete and pure under focus-border context.
+G0016	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	4	TRUE	TRUE	TRUE	0	0	PASS	A-matrix cell border 3 is complete; highlight context is excluded.
+G0017	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	5	TRUE	TRUE	TRUE	0	0	PASS	A-matrix cell border 4 has four intact sides and no entry ink.
+G0018	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	6	TRUE	TRUE	TRUE	0	0	PASS	A-matrix cell border 5 is a complete isolated rectangle.
+G0019	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	7	TRUE	TRUE	TRUE	0	0	PASS	A-matrix cell border 6 retains all four sides without neighbour-border pixels.
+G0020	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	8	TRUE	TRUE	TRUE	0	0	PASS	A-matrix cell border 7 is complete and pure.
+G0021	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	9	TRUE	TRUE	TRUE	0	0	PASS	A-matrix cell border 8 is complete and excludes its numeral.
+G0022	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	10	TRUE	TRUE	TRUE	0	0	PASS	A-matrix cell border 9 is complete with no shared-line contamination.
+G0023	FOCUS_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	11	TRUE	TRUE	TRUE	0	0	PASS	A-matrix focus border forms the intended highlighted cell and is visually aligned.
+G0024	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_002.png	12	TRUE	TRUE	TRUE	0	0	PASS	M-matrix cell border 1 is complete; focus context is excluded.
+G0025	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	1	TRUE	TRUE	TRUE	0	0	PASS	M-matrix cell border 2 is complete and pure beneath the highlighted focus border.
+G0026	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	2	TRUE	TRUE	TRUE	0	0	PASS	M-matrix cell border 3 has all four sides and excludes entry ink.
+G0027	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	3	TRUE	TRUE	TRUE	0	0	PASS	M-matrix cell border 4 is complete with no neighbouring border contamination.
+G0028	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	4	TRUE	TRUE	TRUE	0	0	PASS	M-matrix cell border 5 is a complete isolated rectangle.
+G0029	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	5	TRUE	TRUE	TRUE	0	0	PASS	M-matrix cell border 6 is complete and pure.
+G0030	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	6	TRUE	TRUE	TRUE	0	0	PASS	M-matrix cell border 7 retains all four sides without entry pixels.
+G0031	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	7	TRUE	TRUE	TRUE	0	0	PASS	M-matrix cell border 8 is complete and correctly adjacent to focus context.
+G0032	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	8	TRUE	TRUE	TRUE	0	0	PASS	M-matrix cell border 9 is complete and uncontaminated.
+G0033	FOCUS_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	9	TRUE	TRUE	TRUE	0	0	PASS	M-matrix focus border cleanly identifies the 1/2 cell and remains aligned.
+G0034	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	10	TRUE	TRUE	TRUE	0	0	PASS	P-matrix cell border 1 is complete with focus context excluded.
+G0035	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	11	TRUE	TRUE	TRUE	0	0	PASS	P-matrix cell border 2 is complete and pure.
+G0036	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_003.png	12	TRUE	TRUE	TRUE	0	0	PASS	P-matrix cell border 3 retains all four sides and excludes zero ink.
+G0037	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_004.png	1	TRUE	TRUE	TRUE	0	0	PASS	P-matrix cell border 4 is complete beneath intended focus context.
+G0038	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_004.png	2	TRUE	TRUE	TRUE	0	0	PASS	P-matrix cell border 5 is complete and isolated.
+G0039	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_004.png	3	TRUE	TRUE	TRUE	0	0	PASS	P-matrix cell border 6 is complete and excludes fraction ink.
+G0040	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_004.png	4	TRUE	TRUE	TRUE	0	0	PASS	P-matrix cell border 7 is complete with no adjacent-cell contamination.
+G0041	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_004.png	5	TRUE	TRUE	TRUE	0	0	PASS	P-matrix cell border 8 is a complete isolated rectangle.
+G0042	CELL_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_004.png	6	TRUE	TRUE	TRUE	0	0	PASS	P-matrix cell border 9 retains all four sides without entry ink.
+G0043	FOCUS_BORDER	gpt-5.6-sol/xhigh	graphic_contact_sheet_004.png	7	TRUE	TRUE	TRUE	0	0	PASS	P-matrix focus border cleanly identifies the intended 1/2 cell and is aligned.

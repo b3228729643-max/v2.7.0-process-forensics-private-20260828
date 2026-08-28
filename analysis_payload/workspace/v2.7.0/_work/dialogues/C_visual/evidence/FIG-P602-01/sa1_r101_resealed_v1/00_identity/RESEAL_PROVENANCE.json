@@ -1,0 +1,74 @@
+{
+  "schema": "FIG-P602-01-evidence-reseal-provenance-v1",
+  "source_root_resolved": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa1_r101_initial",
+  "sealed_root_resolved": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa1_r101_resealed_v1",
+  "source_root_policy": "permanently read-only; no file was overwritten or deleted",
+  "source_ordinary_file_count": 492,
+  "source_inventory_sha256": "8B1FCE7C0A8F53C1042C16094AE226A713EC9FC421BBB8838468513A1986ECF4",
+  "source_manifest_audit": {
+    "physical_lines": 491,
+    "data_rows": 490,
+    "unmanifested": [
+      "_audit_tools/build_p602_r101_measurements.py",
+      "_audit_tools/inspect_p602_page.py"
+    ],
+    "mismatches": [
+      {
+        "path": "09_manifest/evidence_file_manifest.csv",
+        "kind": "bytes",
+        "recorded": 22692,
+        "actual": 22780
+      }
+    ]
+  },
+  "excluded_rejected_controls": [
+    "00_identity/WRITE_STOPPED.json",
+    "09_manifest/evidence_file_manifest.csv"
+  ],
+  "copied_payload_count": 490,
+  "copy_policy": "byte-identical copy with exact LastWriteTime preservation",
+  "copy_content_mismatch_count": 0,
+  "copy_mtime_mismatch_count": 0,
+  "manual_content_ledger_counts": {
+    "glyph_rows": 175,
+    "pair_rows": 325,
+    "object_rows": 26,
+    "critical_rows": 8,
+    "peer_rows": 27,
+    "role_rows": 50,
+    "clipping_rows": 26,
+    "glyph_unique": 175,
+    "pair_unique": 325,
+    "object_unique": 26,
+    "critical_unique": 8,
+    "peer_unique": 27,
+    "role_unique": 50,
+    "clipping_unique": 26,
+    "glyph_pass": 175,
+    "pair_pass": 325,
+    "review_result": "PASS",
+    "needs_source_writer": "no",
+    "needs_tex_slot": "no"
+  },
+  "worktree_gate": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual",
+    "branch": "v2.7.0/dialogue-c-visual",
+    "head": "eea4060c5229168e2b973bbaea81cf391e7a9dfd",
+    "status_porcelain": "",
+    "source_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+    "source_sha256": "18B88F4BC48A21D3FD1A246AC5B6909DEEB19900A3D0721C65F9A44369444084"
+  },
+  "r101_identity": {
+    "pdf_sha256": "0870FF226DC383875C4A1B6EABB06AAB942317DA294D90D2864B3030D46DF1A1",
+    "pdf_page": 651,
+    "printed_page": 638,
+    "native_page_png_sha256": "8E0DCE21A10BFCAAA5A5BE40627110E262459C0BE586626C9AF4EC8CAEC03C71"
+  },
+  "forbidden_actions_confirmed": {
+    "machine_evidence_rerun": false,
+    "manual_conclusion_changed": false,
+    "source_write": false,
+    "tex_or_build": false,
+    "sa3_started": false
+  }
+}

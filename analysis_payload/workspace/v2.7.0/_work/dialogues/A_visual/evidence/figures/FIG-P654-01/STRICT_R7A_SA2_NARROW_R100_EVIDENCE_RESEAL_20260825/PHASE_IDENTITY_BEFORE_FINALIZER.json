@@ -1,0 +1,27 @@
+{
+  "phase": "BEFORE_PACKAGE_FINALIZER_EXECUTION",
+  "finalizer": {
+    "relative_path": "tools/package_finalizer.py",
+    "bytes": 9640,
+    "mtime_utc": "2026-08-24T22:04:50.5846668Z",
+    "sha256": "8FAA5A2583FE6962245C43ECAEB7FA0340A329551489212E2C683F9A3C979BAD"
+  },
+  "consumer_validator": {
+    "relative_path": "tools/consumer_validator.py",
+    "bytes": 10921,
+    "sha256": "C9AD2D36DA7B87E32F4E63001FC5755DABC275C494A6B9094C1011F9E60344C1"
+  },
+  "consumer_result": {
+    "relative_path": "CONSUMER_VALIDATION.json",
+    "sha256": "7EE826FE14A1DE553407BD310B8C341A5D4A6E35518425C972650CBE3945131B"
+  },
+  "explicit_local_result": {
+    "relative_path": "RESULT.json",
+    "sha256": "2941F44675B9367D9AFD23FEC1A534352285E2DEE2382F29169EAF66090D6BD6"
+  },
+  "explicit_report": {
+    "relative_path": "SA2_REPORT.md",
+    "sha256": "490EE6FA1922E140C37A9ED19FB8384005878FBC068B6C41B53A8EAC4197893B"
+  },
+  "statement": "All human decisions and the explicit local status already exist. The finalizer may only validate and seal metadata; it may not generate or edit manual decisions or change the local status."
+}

@@ -1,0 +1,10 @@
+ledger_id,pdf_seqno_or_range,object_id,semantic_parent,kind,visible_raw_mask_nonempty,math_rule,decision,note
+DRAW_001,13+14,GFX_TICKS,plot axes,TICKS,true,false,PASS,x and y tick strokes combined as one explainable semantic object
+DRAW_002,15+16,GFX_X_AXIS,plot axes,LINE_ARROW,true,false,PASS,x-axis shaft and its arrowhead
+DRAW_003,17+18,GFX_Y_AXIS,plot axes,LINE_ARROW,true,false,PASS,y-axis shaft and its arrowhead
+DRAW_004,28,GFX_BLUE_CURVE,blue conditional density,DATA_CURVE,true,false,PASS,final-visible blue curve edge; pale fill is background below 20/255 foreground threshold
+DRAW_005,30,GFX_GOLD_CURVE,gold conditional density,DATA_CURVE,true,false,PASS,final-visible dashed gold curve
+DRAW_006,31,GFX_BLUE_GUIDE,blue conditional density,MEAN_GUIDE,true,false,PASS,blue vertical mean guide
+DRAW_007,32,GFX_GOLD_GUIDE,gold conditional density,MEAN_GUIDE,true,false,PASS,gold vertical mean guide
+DRAW_008,35,GFX_NOTE_BORDER,note box,NODE_BORDER,true,false,PASS,final-visible rounded border only; white fill excluded as background
+RULE_000,NONE,NONE,NONE,GRAPHIC_MATH_RULE,false,false,N/A,no overline underline accent radical fraction bar cancellation stroke or other path-rendered math rule is present in the figure

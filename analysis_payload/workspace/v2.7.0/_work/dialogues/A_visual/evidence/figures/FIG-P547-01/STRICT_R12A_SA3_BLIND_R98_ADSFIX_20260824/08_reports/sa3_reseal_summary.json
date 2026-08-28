@@ -1,0 +1,39 @@
+{
+  "figure_id": "FIG-P547-01",
+  "handoff_id": "A-R130-P547-SA3-RESUME-20260824",
+  "owner_dialogue": "DIALOGUE_A_VISUAL",
+  "reviewer": "SA3_gpt-5.6-sol_xhigh",
+  "result": "SA3_INDEPENDENT_PASS_RESEALED_NOT_FINAL",
+  "operation": "MECHANICAL_ADS_RESEAL_ONLY_NO_SEMANTIC_REAUDIT",
+  "source_package_untouched": true,
+  "ads_repair": {
+    "target_only_named_streams_removed": 2,
+    "target_only_named_stream_bytes_removed": 495125,
+    "recursive_non_default_stream_count": 0,
+    "recursive_non_default_stream_bytes": 0
+  },
+  "ordinary_copy_reconciliation": {
+    "source_file_count": 1862,
+    "source_bytes": 137637490,
+    "source_tree_sha256": "42bc2f4cf1833800335ad58d07f637b50038707cfc92570276cdd48374ccd256",
+    "reconstructed_pre_reseal_file_count": 1862,
+    "reconstructed_pre_reseal_bytes": 137637490,
+    "reconstructed_pre_reseal_tree_sha256": "42bc2f4cf1833800335ad58d07f637b50038707cfc92570276cdd48374ccd256",
+    "preserved_evidence_file_count": 1856,
+    "preserved_evidence_bytes": 137288966,
+    "preserved_evidence_tree_sha256": "4be1180bfed14b94b761c39c13615a3ac21986f8f7b4ea3ed48aa078c30cb224",
+    "preserved_evidence_mismatch_count": 0
+  },
+  "semantic_denominators_reused_without_reaudit": {
+    "text_parents": 23,
+    "vector_parents": 34,
+    "objects": 57,
+    "object_pairs": 1596,
+    "glyphs": 193,
+    "path_records": 71,
+    "path_pairs": 2485,
+    "commands": 143,
+    "within_record_command_pairs": 186
+  },
+  "unresolved": []
+}

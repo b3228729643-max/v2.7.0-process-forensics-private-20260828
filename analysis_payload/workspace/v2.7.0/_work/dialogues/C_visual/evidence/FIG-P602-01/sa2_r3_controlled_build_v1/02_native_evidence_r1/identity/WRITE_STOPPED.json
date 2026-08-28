@@ -1,0 +1,47 @@
+{
+  "uid": "FIG-P602-01",
+  "round": "SA2_R3_V1_NATIVE_R1",
+  "write_stopped": true,
+  "sealed_utc": "2026-08-25T08:28:22.999536Z",
+  "root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1\\02_native_evidence_r1",
+  "ordinary_files_expected": 896,
+  "manifest_rows": 894,
+  "manifest_model": {
+    "payload": 882,
+    "control": 12,
+    "seal": 1,
+    "manifest_self": 1,
+    "unique_unlisted": [
+      "09_manifest/evidence_file_manifest.csv",
+      "identity/WRITE_STOPPED.json"
+    ]
+  },
+  "canonical_payload_control_recordset_sha256": "100A570015E6F749624465C59464E4E14EEE00432A97E026BA56B457DFD697C3",
+  "manifest": {
+    "path": "09_manifest/evidence_file_manifest.csv",
+    "bytes": 133710,
+    "sha256": "517A70CB6C3A15253133348C6EEB5214BFFB0FD038480A1FBFBED01B04809D05"
+  },
+  "candidate_pdf_sha256": "68188DAAAF9B3C4233D5A032C3D8BE20A73B51D5E6058D0E1C12FDE6471093E7",
+  "source_sha256": "6C4E8F156709C0FF384F9E7B7F2BD5D9CB586E24206BF0BCD2E58933ED3DB47D",
+  "denominators": {
+    "objects": 30,
+    "glyphs": 154,
+    "unordered_pairs": 435,
+    "critical_pairs": 16,
+    "peer_rows": 28,
+    "role_rows": 3,
+    "clip_rows": 30,
+    "views": 4,
+    "hard_gates": 12
+  },
+  "machine_failures": 0,
+  "manual_failures": 0,
+  "root_validation": "PASS",
+  "decision": "C_LOCAL_PASS_CANDIDATE_PENDING_MAIN_ACCEPTANCE",
+  "tex_disabled": true,
+  "central_inventory_written": false,
+  "commit_created": false,
+  "global_pass_claimed": false,
+  "post_seal_writes_expected": 0
+}

@@ -1,0 +1,1131 @@
+% STAGE11-CHAPTER: V3-C03
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V3-C03-CH01}; CH-02=\label{struct:V3-C03-CH02}; CH-03=\label{struct:V3-C03-CH03}; CH-04=\label{struct:V3-C03-CH04}; CH-05=\label{struct:V3-C03-CH05}; CH-06=\label{struct:V3-C03-CH06}; CH-07=\label{struct:V3-C03-CH07}; CH-08=\label{struct:V3-C03-CH08}; CH-09=\label{struct:V3-C03-CH09}; CH-10=\label{struct:V3-C03-CH10}; CH-11=\label{struct:V3-C03-CH11}; CH-12=\label{struct:V3-C03-CH12}; CH-13=\label{struct:V3-C03-CH13}; CH-14=\label{struct:V3-C03-CH14}; CH-15=\label{struct:V3-C03-CH15}; CH-16=\label{struct:V3-C03-CH16}; CH-17=\label{struct:V3-C03-CH17}; CH-18=\label{struct:V3-C03-CH18}; CH-19=\label{struct:V3-C03-CH19}; CH-20=\label{struct:V3-C03-CH20}; CH-21=\label{struct:V3-C03-CH21}; CH-22=\label{struct:V3-C03-CH22}; CH-23=\label{struct:V3-C03-CH23}; CH-24=\label{struct:V3-C03-CH24}; CH-25=\label{struct:V3-C03-CH25}; CH-26=\label{struct:V3-C03-CH26}; CH-27=\label{struct:V3-C03-CH27}; CH-28=\label{struct:V3-C03-CH28}; CH-29=\label{struct:V3-C03-CH29}; CH-30=\label{struct:V3-C03-CH30}; CH-31=\label{struct:V3-C03-CH31}; CH-32=\label{struct:V3-C03-CH32}; CH-33=\label{struct:V3-C03-CH33}; CH-34=\label{struct:V3-C03-CH34}; CH-35=\label{struct:V3-C03-CH35}; CH-36=\label{struct:V3-C03-CH36}; CH-37=\label{struct:V3-C03-CH37}
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=12; source_group=none; supplement=12
+
+\chapter{提升方法}\label{chap:V3-C03}
+\index{提升方法}
+\index{AdaBoost}
+\index{前向分步算法}
+\index{提升树}
+\index{梯度提升}
+
+% KNOWLEDGE-PLAN: KN-V3-C19-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：提升方法。}提升方法章地图把“从弱学习器直达AdaBoost、加法模型与梯度提升”作为主线；请为其中首条箭头补出必要条件，并检查终点仍落在本章声明的输出域。\par
+
+\SLChapterOpening{从弱学习器直达AdaBoost、加法模型与梯度提升}{怎样逐轮组合简单学习器并控制代理损失}{能推导权重更新、训练误差界、残差拟合与一般负梯度更新}{经验风险、指数损失、条件期望与树回归}{权重归一化失败时回到\cref{sec:V3-C03-S02}；前向分步或伪残差不清时回看\cref{sec:V3-C03-S04,sec:V3-C03-S06}}
+\phantomsection\label{struct:V3-C03-CH01}
+% KNOWLEDGE-PLAN: KN-V3-C19-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}提升方法学习目标固定核验“区分弱学习器、强学习器与基学习器，说明样本权重和分类器权重在提升中的不同作用”；请实际完成“区分弱学习器、强学习器与基学习器，说明样本权重和分类器权重在提升中的不同作用”，并用“中间结果逐项包含首目标“区分弱学习器、强学习器与基学习器，说明样本权重和分类器权重在提升中的不同作用”声明的对象、条件与结论”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 区分弱学习器、强学习器与基学习器，说明样本权重和分类器权重在提升中的不同作用；
+  \item 能够逐轮执行AdaBoost，处理弱分类器误差为$0$、$1/2$或超过$1/2$的边界情形；
+  \item 从权重递推证明训练误差乘积上界，并解释间隔、噪声与泛化之间的关系；
+  \item 从加法模型和指数损失推导前向分步算法，证明AdaBoost是它的一个特例；
+  \item 掌握回归提升树与梯度提升的输入、参数、初始化、更新、停止、收敛条件和复杂度。
+\end{itemize}}
+
+\phantomsection\label{struct:V3-C03-CH02}
+% KNOWLEDGE-PLAN: KN-V3-C19-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}提升方法的最短先修明确要求“本章需要二类分类、经验风险、加权平均、指数函数与对数函数、条件概率、凸损失、一阶导数、函数空间方向导数、回归树的区域划分及平方损失”；请把首项“本章需要二类分类、经验风险、加权平均、指数函数与对数函数、条件概率、凸损失、一阶导数、函数空间方向导数、回归树的区域划分及平方损失”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章需要二类分类、经验风险、加权平均、指数函数与对数函数、条件概率、凸损失、一阶导数、函数空间方向导数、回归树的区域划分及平方损失”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章需要二类分类、经验风险、加权平均、指数函数与对数函数、条件概率、凸损失、一阶导数、函数空间方向导数、回归树的区域划分及平方损失。训练集记为$T=\{(x_i,y_i)\}_{i=1}^{N}$；分类时$y_i\in\{-1,+1\}$，回归时$y_i\in\mathbb R$。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V3-C03-CH03}
+% KNOWLEDGE-PLAN: KN-V3-C19-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}提升方法先修自检固定核验“给定非负数$D_1,\ldots,D_N$，能否检查$\sum_iD_i=1$并计算加权错误率”；请给定非负数$D_1,\ldots,D_N$，实际检查$\sum_iD_i=1$并计算加权错误率并写出中间结果，再按“$\sum_iD_i=1$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 给定非负数$D_1,\ldots,D_N$，能否检查$\sum_iD_i=1$并计算加权错误率？
+  \item 能否验证$\mathbf{1}\{u\leq0\}\leq e^{-u}$对任意实数$u$成立？
+  \item 能否对$e^{-\alpha}+e^\alpha$关于$\alpha$求极小值？
+  \item 能否说明对$L(y,f)=\tfrac12(y-f)^2$，关于当前预测值的负梯度等于残差；若损失不含$1/2$，负梯度则是残差的两倍？
+\end{enumerate}
+若第1项未通过，应复习概率分布与加权平均；若第2、3项未通过，应复习指数函数和一元优化；若第4项未通过，应复习导数与平方损失。
+\end{precheckbox}
+
+\phantomsection\label{struct:V3-C03-CH04}
+% KNOWLEDGE-PLAN: KN-V3-C19-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}提升方法把“弱学习器 $\to$ 样本分布重加权 $\to$ 加权多数表决”接到“AdaBoost递推 $\to$ 规范化因子 $\to$ 训练误差界与间隔解释”；请用$\to$补全这一步的等式或判据，再检查两端维数、支持或对象类型。\par
+
+\begin{dependencybox}
+弱学习器 $\to$ 样本分布重加权 $\to$ 加权多数表决；
+AdaBoost递推 $\to$ 规范化因子 $\to$ 训练误差界与间隔解释；
+加法模型 $\to$ 前向分步 $\to$ 指数损失 $\to$ AdaBoost；
+回归树 $\to$ 残差拟合 $\to$ 平方损失提升树；
+函数空间负梯度 $\to$ 伪残差 $\to$ 一般损失下的梯度提升。
+\end{dependencybox}
+
+\begin{keypointbox}[title=模型认识卡：提升方法]
+\textbf{任务与输入：}分类或回归，输入为训练集与可加和的基学习器族。\quad
+\textbf{输出类型：}加法得分、类别或实值。\par
+\textbf{模型：}$F_M(x)=F_0(x)+\sum_{m=1}^M\alpha_mG_m(x)$。\quad
+\textbf{策略：}前向分步降低代理损失或拟合函数空间负梯度。\quad
+\textbf{算法：}AdaBoost、残差提升树或梯度提升。\par
+\textbf{预测：}分类取得分符号，回归输出加法值。\quad
+\textbf{关键假设与边界：}基学习器须能产生有效下降方向；噪声、无正边缘、学习率和早停共同限制可推进程度。
+\end{keypointbox}
+
+\phantomsection\label{struct:V3-C03-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V3-C03
+\index[symbols]{g-m--sbcfd1bd2514a@$G_m$：第$m$轮基分类器}
+\index[symbols]{d-m-i--s498903d07eab@$D_m(i)$：第$m$轮第$i$个训练样本的权重}
+\index[symbols]{e-m--sdc88f6d82bd8@$e_m$：$G_m$在$D_m$下的加权错误率}
+\index[symbols]{minus-alpha-minus-m--sea3232993f8f@$\alpha_m$：第$m$个基分类器的组合系数}
+\index[symbols]{z-m--s0653f1736a26@$Z_m$：第$m$轮权重更新的规范化因子}
+\index[symbols]{f-m--s2bd06bc6ab8e@$F_m$：前$m$轮的实值加法模型}
+\index[symbols]{b-x-u003b-minus-gamma-minus--sdd0b9f9a8c47@$b(x;\gamma)$：参数为$\gamma$的基模型}
+\index[symbols]{t-x-u003b-minus-theta-minus-m--sf8fc4407b383@$T(x;\Theta_m)$：第$m$轮树及其区域、叶值参数}
+\index[symbols]{r-mi--s6c362ca9e1b0@$r_{mi}$：梯度提升第$m$轮伪残差}
+\index[symbols]{minus-nu-minus--s346974be234e@$\nu$：收缩率或学习率}
+% STAGE19-SYMBOL-INDEX-END: V3-C03
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$G_m$ & $\mathcal X\to\{-1,+1\}$ & 第$m$轮基分类器\\
+$D_m(i)$ & $[0,1]$ & 第$m$轮第$i$个训练样本的权重\\
+$e_m$ & $[0,1]$ & $G_m$在$D_m$下的加权错误率\\
+$\alpha_m$ & $\mathbb R$ & 第$m$个基分类器的组合系数\\
+$Z_m$ & $(0,\infty)$ & 第$m$轮权重更新的规范化因子\\
+$F_m$ & $\mathcal X\to\mathbb R$ & 前$m$轮的实值加法模型\\
+$b(x;\gamma)$ & 基函数类 & 参数为$\gamma$的基模型\\
+$T(x;\Theta_m)$ & 回归树 & 第$m$轮树及其区域、叶值参数\\
+$r_{mi}$ & $\mathbb R$ & 梯度提升第$m$轮伪残差\\
+$\nu$ & $(0,1]$ & 收缩率或学习率\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLReviewSection{弱学习与强学习}{sec:V3-C03-S01}
+\knowledgeanchor{SLM-08-00-001}{提升方法}
+\phantomsection\label{struct:V3-C03-CH06}
+提升方法按顺序训练多个基学习器，并把它们组合成一个性能更强的模型。后续基学习器针对当前组合尚未处理好的样本或函数方向工作，所以各轮并非相互独立。分类模型通常写成
+\[
+F_M(x)=\sum_{m=1}^{M}\alpha_mG_m(x),\qquad
+G(x)=\operatorname{sign}F_M(x).
+\]
+实值函数$F_M$保存组合置信方向，符号函数$G$给出最终类别。
+
+% KNOWLEDGE-PLAN: KN-V3-C19-CONCEPT-003 L1
+\paragraph{读前自检：提升方法的基本思路。}提升方法的基本思路中的“在二类分类问题中，若学习算法在相关数据分布下产生的分类器错误率只需稳定低于$1/2$”决定可执行范围；请把“在二类分类问题中，若学习算法在相关数据分布下产生的分类器错误率只需稳定低于$1/2$”中的已声明对象依次标成输入、输出与判据，结果须满足弱、强均相对于指定假设类、数据分布及可学习性条件而言。\par
+
+\knowledgeanchor{SLM-08-01-001}{提升方法的基本思路}
+\phantomsection\label{struct:V3-C03-CH07}
+\begin{definition}[弱学习器与强学习器]\label{def:V3-C03-weak-strong}
+在二类分类问题中，若学习算法在相关数据分布下产生的分类器错误率只需稳定低于$1/2$，则称其为弱学习器；若学习算法能在给定精度与置信要求下产生错误率足够小的分类器，则称其为强学习器。弱、强均相对于指定假设类、数据分布及可学习性条件而言。
+\end{definition}
+
+\knowledgeanchor{SLM-08-01-003}{提升方法的基本思路}
+\phantomsection\label{struct:V3-C03-CH08}
+\textbf{两个权重层次。}样本权重$D_m(i)$决定第$m$轮训练时哪些观测更受重视；分类器权重$\alpha_m$决定$G_m$在最终表决中的影响。AdaBoost提高被当前分类器错分样本的相对权重，同时让错误率较低的分类器取得较大的正系数。
+
+\phantomsection\label{struct:V3-C03-CH09}
+\textbf{学习策略。}提升法在加法模型族中逐轮降低经验代理损失：每轮先按当前模型诱导的样本权重或负梯度选择一个基学习器，再确定该学习器的系数。二类AdaBoost对应指数损失的前向分步；回归与一般梯度提升则分别使用平方损失或任务指定的可微损失。独立验证只负责选择轮数与复杂度，不参与同一轮参数拟合。
+
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C03/fig_v3_c03_adaboost_loop.tex}
+% FIGURE-KNOWLEDGE-MAP: fig:V3-C03-adaboost-loop -> SLM-08-01-001
+沿图\ref{fig:V3-C03-adaboost-loop}核对实现顺序时，$D_m$只能进入第$m$轮弱学习器，得到$G_m$与$\alpha_m$后才生成$D_{m+1}$；最终模型累加的是$\alpha_mG_m$。把$\alpha_m$写入样本分布或把$D_m$当作加法系数，虽可能维度合法，却已不对应指数损失推导。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：提升方法AdaBoost算法。}把提升方法AdaBoost算法放在“给定第$m$轮分布$D_m$，先训练$G_m$”下考察：把$\alpha_m$展开一次并检查其类型或边界，并检查两者之比为$e^{2\alpha_m}=(1-e_m)/e_m$。\par
+
+\SLTeachSection{AdaBoost算法}{sec:V3-C03-S02}
+\knowledgeanchor{SLM-08-01-002}{提升方法AdaBoost算法}
+给定第$m$轮分布$D_m$，先训练$G_m$，再计算
+\[
+e_m=\sum_{i=1}^{N}D_m(i)\mathbf{1}\{G_m(x_i)\neq y_i\}.
+\]
+当$0<e_m<1/2$时，组合系数和权重更新为
+\[
+\alpha_m=\frac12\log\frac{1-e_m}{e_m},\qquad
+D_{m+1}(i)=\frac{D_m(i)\exp[-\alpha_my_iG_m(x_i)]}{Z_m},
+\]
+\[
+Z_m=\sum_{i=1}^{N}D_m(i)\exp[-\alpha_my_iG_m(x_i)].
+\]
+正确分类时$y_iG_m(x_i)=1$，未规范化权重乘$e^{-\alpha_m}$；错分时乘$e^{\alpha_m}$。两者之比为$e^{2\alpha_m}=(1-e_m)/e_m$。
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：AdaBoost算法。}AdaBoost算法输入“有限非空二类训练集、可选验证集、带权基学习器$\mathcal A$、轮数与早停/数值参数”，条件“$y_i\in\{-1,+1\}$”；请做一轮“$D^+,F^+$、训练/验证指标全部有限且权重归一化后才原子提交完整轮”，以“零训练误差、弱学习条件失效、验证耐心耗尽、轮数预算耗尽或首次失败时停止”核对停止证书。\par
+
+\knowledgeanchor{SLM-08-01-004}{AdaBoost算法}
+\phantomsection\label{struct:V3-C03-CH10}
+\phantomsection\label{struct:V3-C03-CH11}
+\textbf{算法契约。}基学习算法必须接受样本权重，或通过按$D_m$重采样实现等价训练接口。若$e_m>1/2$而假设类不对反号封闭，本轮不能强行改号；若$e_m=1/2$，则$\alpha_m=0$，加入该分类器不改变模型；若$e_m=0$，理论系数发散，数值实现以$\varepsilon_{\mathrm{num}}$和$\alpha_{\max}$截断，但必须先把当前$G_m$实际并入$F_m$，再依据组合训练错误或验证规则决定是否停止。
+
+\textbf{停止条件。}三套提升算法都只在一个候选基学习器完成系数、权重与加法模型更新后检查停止。状态统一为：完成预定有限流程或达到零训练错误用$\mathtt{completed}$；目标/参数变化落入数值阈值但无最优性证书用$\mathtt{numerical\_failure}$，诊断写明“数值平台”；独立验证耐心或实际$M$轮预算耗尽用$\mathtt{budget\_stop}$，诊断区分预算种类；AdaBoost对冻结候选类完整核验后仍无正边缘时用$\mathtt{converged}$，诊断明确该证书只相对于当前候选类。同因必须同码，且每种出口同时报告触发指标。
+
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-003 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-004 L2
+\begin{keypointbox}[title={二类AdaBoost训练：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限非空二类训练集、可选验证集、带权基学习器$\mathcal A$、轮数与早停/数值参数},
+  output={最后合法加法轨迹、选定$F^*,G^*$、权重分布、完成轮数$m_{\rm done}$、基学习调用数$a_{\rm done}$、状态与诊断},
+  preconditions={$y_i\in\{-1,+1\}$；$\mathcal A$接受权重并返回覆盖训练集的二值预测；预算、截断与并列规则合法},
+  initialization={$D(i)=1/N,F=0,m_{\rm done}=a_{\rm done}=0$；可选验证最佳记录从$F_0$开始},
+  loop={每轮训练一个弱分类器，计算误差、系数、候选权重与候选加法模型},
+  update={$D^+,F^+$、训练/验证指标全部有限且权重归一化后才原子提交完整轮},
+  domain={$D$位于概率单纯形；$e\in[0,1]$；$\alpha$和指数权重有限；基预测属于$\{-1,+1\}$},
+  failure={非法接口返回$\mathtt{invalid\_input}$；基学习、误差、归一化或候选模型失败返回$\mathtt{numerical\_failure}$并保留旧轮},
+  stop={零训练误差、弱学习条件失效、验证耐心耗尽、轮数预算耗尽或首次失败时停止},
+  budget={至多$M$个完整提升轮；每轮恰好一次基学习调用和$N$个权重候选},
+  status={$\mathtt{completed}$、$\mathtt{budget\_stop}$、$\mathtt{converged}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$m_{\rm done}$计原子提交轮，$a_{\rm done}$计实际基学习调用；最佳验证轮另行记录},
+  diagnostics={失败轮与阶段、弱分类误差、截断原因、$Z_m$与权重和、训练/验证损失和最佳轮},
+  complexity={$m_{\rm done}$轮为$O(m_{\rm done}[C_{\mathcal A}(N,d)+N])$时间；保存轨迹时空间随轮数增长}
+}
+\begin{algorithm}[H]
+\SLStudentTallAlgorithmFont
+\caption{二类AdaBoost训练}\label{alg:V3-C03-adaboost}
+\KwIn{训练集$T$，可选验证集$T_{\mathrm{val}}$，带权基学习算法$\mathcal A$}
+\KwOut{最后合法轨迹与选定$F^*,G^*$、权重$D$、$m_{\rm done},a_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{$M\in\mathbb N_0$；早停耐心$p\in\mathbb N_+$；$0<\varepsilon_{\rm num}<1/2$；$\alpha_{\max}>0$；固定反号和并列规则}
+$D\leftarrow\varnothing$，$F\leftarrow0$，$m_{\rm done}\leftarrow0$，$a_{\rm done}\leftarrow0$，诊断为空\;
+若训练集为空、标签/特征非有限或非法，验证接口、基学习接口、预算、截断、反号或并列规则不合法，则返回空权重与零模型、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+置$D(i)\leftarrow1/N$；若有验证集，以$F_0$初始化最佳记录\;
+\While{$m_{\rm done}<M$}{
+  令$m\leftarrow m_{\rm done}+1$；用$(T,D)$训练临时$G_m\leftarrow\mathcal A(T,D)$并令$a_{\rm done}\leftarrow a_{\rm done}+1$\;
+  若拟合失败、预测不覆盖训练集、不是有限二值值，则返回最后合法$F,D,m_{\rm done},a_{\rm done},\mathtt{numerical\_failure}$，诊断为基学习阶段$m$\;
+  计算$e_m\leftarrow\sum_iD(i)\mathbf1\{G_m(x_i)\ne y_i\}$；若$e_m$非有限或不在$[0,1]$，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为误差阶段$m$\;
+  若$e_m>1/2$且规则允许反号，则在候选中取$G_m\leftarrow-G_m,e_m\leftarrow1-e_m$\;
+  \If{$e_m\ge1/2$}{返回最后合法轨迹与$\mathtt{converged}$，最终诊断记录“冻结候选类内无正边缘”及反号规则、$m,e_m$，不得外推为全局最优\;}
+  令$e_m^{\rm safe}\leftarrow\max(e_m,\varepsilon_{\rm num})$并计算有限截断系数$\alpha_m$；在临时状态计算$Z_m,D^+,F^+$、训练错误和可选验证指标\;
+  若$Z_m$不是有限正数、$D^+$含负数/非有限值或归一化残差超容差，或$F^+$与指标非有限，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为权重/模型验收阶段$m$\;
+  原子提交$D\leftarrow D^+,F\leftarrow F^+$及轨迹，令$m_{\rm done}\leftarrow m$；验证改善时更新最佳记录\;
+  \If{$\operatorname{sign}F$训练错误率为$0$}{返回当前完整模型与$\mathtt{completed}$，最终诊断记录零训练错误、截断和$Z_m$\;}
+  \If{验证指标连续$p$轮未改善}{返回最佳验证模型与$\mathtt{budget\_stop}$，最终诊断记录耐心耗尽、最佳轮和末轮指标\;}
+}
+返回最佳验证模型或最后完整模型、$D,m_{\rm done},a_{\rm done},\mathtt{budget\_stop}$，最终诊断记录轮数预算耗尽及末轮训练/验证误差\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{冻结候选类内无正边缘返回$\mathtt{converged}$并记录相对证书；验证耐心与轮数耗尽均返回$\mathtt{budget\_stop}$，由诊断区分。只有已提交完整轮才进入轨迹，失败时保留上一合法模型。}
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：AdaBoost算法的解释。}从AdaBoost算法的解释的条件“$\sum_iD_{m+1}(i)=1$”出发，请将$\sum_iD_{m+1}(i)=1$左端按正文定义展开一层，再逐项对齐右端；所得量应符合规范化因子使$\sum_iD_{m+1}(i)=1$，同时记录本轮指数经验风险的缩减程度。\par
+
+\knowledgeanchor{SLM-08-03-001}{AdaBoost算法的解释}
+\phantomsection\label{struct:V3-C03-CH12}
+更新式还可写成
+\[
+D_{m+1}(i)=
+\begin{cases}
+\dfrac{D_m(i)}{Z_m}e^{-\alpha_m},&G_m(x_i)=y_i,\\[6pt]
+\dfrac{D_m(i)}{Z_m}e^{\alpha_m},&G_m(x_i)\neq y_i.
+\end{cases}
+\]
+这不是把错分样本复制一次的启发式操作，而是指数损失坐标下降诱导的精确重加权。规范化因子使$\sum_iD_{m+1}(i)=1$，同时记录本轮指数经验风险的缩减程度。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-006 L1
+\paragraph{读前自检：AdaBoost最终分类器的训练误差。}AdaBoost训练误差以$y_iF_M(x_i)\le0$判错；请用$\mathbf1\{u\le0\}\le e^{-u}$逐样本上界错误指示，再按权重递推核对指数损失均值等于$\prod_mZ_m$。\par
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-007 L1
+\paragraph{读前自检：AdaBoost算法的训练误差分析。}按本节权重递推展开最终指数损失。请核对其等于$\prod_m Z_m$，并由此上界$0$--$1$训练误差。\par
+
+\SLAdvancedSection{训练误差与泛化解释}{sec:V3-C03-S03}
+\knowledgeanchor{SLM-08-01-006}{AdaBoost最终分类器的训练误差}
+\knowledgeanchor{SLM-08-02-001}{AdaBoost算法的训练误差分析}
+\phantomsection\label{struct:V3-C03-CH13}
+\begin{theorem}[AdaBoost训练误差的乘积上界]\label{thm:V3-C03-training-bound}
+设每轮权重均按AdaBoost规则规范化，$F_M(x)=\sum_{m=1}^{M}\alpha_mG_m(x)$，则
+\[
+\frac1N\sum_{i=1}^{N}\mathbf{1}\{y_iF_M(x_i)\leq0\}
+\leq \frac1N\sum_{i=1}^{N}e^{-y_iF_M(x_i)}
+=\prod_{m=1}^{M}Z_m.
+\]
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V3-C19-PROOF-001 L1
+\paragraph{读前自检：证明：AdaBoost训练误差的乘积上界。}先锁定AdaBoost训练误差的乘积上界的条件“指示函数满足$\mathbf{1}\{u\leq0\}\leq e^{-u}$，所以第一个不等式成立”：补出$D_{M+1}(i)$到下一关系的一步不等式或求导，所得结果应满足把权重递推连乘。\par
+
+\begin{proof}
+指示函数满足$\mathbf{1}\{u\leq0\}\leq e^{-u}$，所以第一个不等式成立。把权重递推连乘，
+\[
+D_{M+1}(i)
+=\frac{D_1(i)\exp[-y_i\sum_{m=1}^{M}\alpha_mG_m(x_i)]}
+{\prod_{m=1}^{M}Z_m}.
+\]
+由于$D_1(i)=1/N$且$\sum_iD_{M+1}(i)=1$，对$i$求和后得到
+\[
+\frac1N\sum_i e^{-y_iF_M(x_i)}=\prod_mZ_m.
+\]
+两式合并即为结论。
+\end{proof}
+
+\knowledgeanchor{SLM-08-02-002}{二类AdaBoost的训练误差界}
+\phantomsection\label{struct:V3-C03-CH14}
+将正确与错误样本分开可写出
+\[
+Z_m=(1-e_m)e^{-\alpha_m}+e_me^{\alpha_m}.
+\]
+代入$\alpha_m=\frac12\log[(1-e_m)/e_m]$，得到
+\[
+Z_m=2\sqrt{e_m(1-e_m)}.
+\]
+若$e_m=\frac12-\gamma_m$且$\gamma_m>0$，则
+\[
+Z_m=\sqrt{1-4\gamma_m^2}\leq e^{-2\gamma_m^2},
+\qquad
+\widehat R_{\mathrm{train}}(G)\leq
+\exp\!\left(-2\sum_{m=1}^{M}\gamma_m^2\right).
+\]
+只要各轮保持正边缘，乘积上界会持续收缩。
+
+\knowledgeanchor{SLM-08-01-007}{一致弱学习条件下的指数误差界}
+\phantomsection\label{struct:V3-C03-CH15}
+若存在常数$\gamma>0$使每轮$\gamma_m\geq\gamma$，则
+\[
+\widehat R_{\mathrm{train}}(G)\leq e^{-2M\gamma^2}.
+\]
+该结论是训练误差上界，不等同于测试误差保证。泛化还受假设类容量、轮数、基学习器复杂度、样本量、标签噪声和边际分布影响。常用归一化间隔为
+\[
+\rho_i=\frac{y_iF_M(x_i)}{\sum_m|\alpha_m|}.
+\]
+训练错误对应$\rho_i\leq0$；在训练错误已经为0后继续提升，仍可能把一部分小正间隔推大，这为实践中的泛化现象提供解释。若异常点或错标样本长期保持负间隔，指数损失会赋予它们很大影响并造成过拟合。
+
+\textbf{几何解释。}令$g(x)=(G_1(x),\ldots,G_M(x))^T$、$\alpha=(\alpha_1,\ldots,\alpha_M)^T$，则$yF_M(x)=\langle\alpha,yg(x)\rangle$是在“基分类器输出空间”中的有符号间隔。用$\lVert\alpha\rVert_1$归一化后，$\rho_i$等于正确表决权重比例减去错误表决权重比例，取值位于$[-1,1]$；它衡量样本离加权表决边界的相对位置，但不是原输入空间中的欧氏距离。
+
+\textbf{概率解释。}设$\eta(x)=P(Y=1\mid X=x)$，在固定$x$处，指数损失的条件风险为
+\[
+\mathcal R(F\mid x)=\eta e^{-F}+(1-\eta)e^F.
+\]
+令其关于$F$的导数为零，得到$F^\star(x)=\frac12\log[\eta(x)/(1-\eta(x))]$，从而$\eta(x)=\{1+\exp[-2F^\star(x)]\}^{-1}$。这一总体最优关系说明得分方向与条件概率相容；有限样本、受限基函数和早停下的$F_M$不必已经校准，若业务需要概率，应在独立校准数据上检查并校准。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-009 L1
+\paragraph{读前自检：前向分步算法。}对前向分步算法，条件“给定基函数$b(x;\gamma)$”不可省；请把$f_M(x)$展开一次并检查其类型或边界，再用代价是早期已选参数通常不再回溯重估作检查。\par
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-010 L1
+\paragraph{读前自检：前向分步算法。}前向分步算法把问题限定在“给定基函数$b(x;\gamma)$”；请把$f_M(x)$展开一次并检查其类型或边界，检查是否得到代价是早期已选参数通常不再回溯重估。\par
+
+\SLTeachSection{加法模型与前向分步算法}{sec:V3-C03-S04}
+\knowledgeanchor{SLM-08-03-002}{前向分步算法}
+\knowledgeanchor{SLM-08-02-003}{前向分步算法}
+\phantomsection\label{struct:V3-C03-CH16}
+% KNOWLEDGE-PLAN: KN-V3-C19-DEFINITION-002 L1
+\paragraph{读前自检：加法模型与前向分步。}在“给定基函数$b(x;\gamma)$”成立时处理加法模型与前向分步：请把$f_M(x)$展开一次并检查其类型或边界，并以展开后的量满足定义中的域、维数或符号限制判定结果。\par
+
+\begin{definition}[加法模型与前向分步]\label{def:V3-C03-forward-stagewise}
+给定基函数$b(x;\gamma)$，加法模型为
+\[
+f_M(x)=\sum_{m=1}^{M}\beta_mb(x;\gamma_m).
+\]
+前向分步算法在第$m$轮固定已有$f_{m-1}$，只优化新加入的$(\beta_m,\gamma_m)$：
+\[
+(\beta_m,\gamma_m)=\arg\min_{\beta,\gamma}
+\sum_{i=1}^{N}L\!\left(y_i,f_{m-1}(x_i)+\beta b(x_i;\gamma)\right),
+\quad
+f_m=f_{m-1}+\beta_mb(\cdot;\gamma_m).
+\]
+\end{definition}
+这种贪心分解把一次高维联合优化转化为一串低维子问题；代价是早期已选参数通常不再回溯重估。
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-011 L1
+\paragraph{读前自检：AdaBoost是前向分步加法算法的特例。}固定基分类器$G$，令误分与正确样本权重和分别为$W_-,W_+$；请最小化$W_+e^{-\alpha}+W_-e^{\alpha}$，核对$\alpha=\tfrac12\log(W_+/W_-)$且$e_m=W_-/(W_++W_-)$。\par
+
+\knowledgeanchor{SLM-08-03-003}{AdaBoost是前向分步加法算法的特例}
+\phantomsection\label{struct:V3-C03-CH17}
+% DERIVATION-CHECK: step-1; step-2; step-3
+\textbf{推导第1步：固定旧模型。}对二类标签采用指数损失$L(y,f)=e^{-yf}$，并令基函数$G(x)\in\{-1,+1\}$。第$m$轮目标为
+\[
+\sum_i\exp\{-y_i[F_{m-1}(x_i)+\alpha G(x_i)]\}
+=\sum_iw_{mi}e^{-\alpha y_iG(x_i)},
+\quad
+w_{mi}=e^{-y_iF_{m-1}(x_i)}.
+\]
+
+\textbf{推导第2步：先选择基分类器。}对固定$G$，记
+\[
+W_+=\sum_{y_i=G(x_i)}w_{mi},\qquad
+W_-=\sum_{y_i\neq G(x_i)}w_{mi}.
+\]
+目标化为$W_+e^{-\alpha}+W_-e^\alpha$。先在允许时对错误率大于$1/2$的分类器反号，使$e=W_-/(W_++W_-)\in[0,1/2]$；其关于$\alpha$的最小值为$2(W_++W_-)\sqrt{e(1-e)}$，在该区间随$e$单调增加，所以选择$G_m$等价于最小化当前加权分类错误。若不限制到$[0,1/2]$，这个单调性结论不成立。
+
+\textbf{推导第3步：求组合系数。}令目标对$\alpha$的导数为零，
+\[
+-W_+e^{-\alpha}+W_-e^\alpha=0,
+\]
+因而$e^{2\alpha}=W_+/W_-$。用$e_m=W_-/(W_++W_-)$表示，得到
+\[
+\alpha_m=\frac12\log\frac{1-e_m}{e_m}.
+\]
+把$w_{mi}$规范化后就是$D_m(i)$，下一轮的指数因子也与AdaBoost权重更新完全一致。
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-012 L1
+\paragraph{读前自检：前向分步算法与AdaBoost。}围绕前向分步算法与AdaBoost，先采用条件“若基函数类由取值$\{-1,+1\}$的分类器组成，每轮精确最小化指数经验损失，且$0<e_m<1/2$”，再把$\{-1,+1\}$展开一次并检查其类型或边界；最后验证前向分步得到的$G_m$、$\alpha_m$及样本权重递推与AdaBoost对应轮一致。\par
+
+\knowledgeanchor{SLM-08-03-004}{前向分步算法与AdaBoost}
+\phantomsection\label{struct:V3-C03-CH18}
+\begin{theorem}[指数损失前向分步与AdaBoost的等价性]\label{thm:V3-C03-forward-equivalence}
+若基函数类由取值$\{-1,+1\}$的分类器组成，每轮精确最小化指数经验损失，且$0<e_m<1/2$，则前向分步得到的$G_m$、$\alpha_m$及样本权重递推与AdaBoost对应轮一致。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V3-C19-PROOF-002 L1
+\paragraph{读前自检：证明：指数损失前向分步与AdaBoost的等价性。}指数损失前向分步固定$F_{m-1}$后选择$G_m,\alpha_m$；请把损失写成旧权重乘$e^{-\alpha y_iG(x_i)}$，按正确/错误样本分组求导，核对$\alpha_m=\tfrac12\log[(1-e_m)/e_m]$。\par
+
+\begin{proof}
+固定旧模型后，指数损失按乘法分解为旧权重$w_{mi}$与新因子$e^{-\alpha y_iG(x_i)}$。对$G$的优化等价于最小化规范化后的加权错误$e_m$；对$\alpha$的一元优化给出$\frac12\log[(1-e_m)/e_m]$。更新$f_m=f_{m-1}+\alpha_mG_m$后，新一轮权重满足$w_{m+1,i}=w_{mi}e^{-\alpha_my_iG_m(x_i)}$。除以权重和便得到AdaBoost的$D_{m+1}$，三部分逐项相同。
+\end{proof}
+
+\phantomsection\label{struct:V3-C03-CH19}
+\textbf{优化解释。}若候选基分类器集合有限，每个$G$可看成函数空间中的一个坐标，前向分步就是函数空间坐标下降：基学习器近似选择与负梯度最一致的坐标，$\alpha_m$则沿该坐标完成一维线搜索。这个视角解释了为何基学习器需要针对当前权重训练，也说明收缩步长、早停和基函数复杂度会共同正则化最终加法模型。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-013 L1
+\paragraph{读前自检：提升树。}把提升方法中的提升树放在“若第$m$棵回归树把输入空间划分为互不相交区域$R_{mj}$”下考察：独立化简$j=1,\ldots,J_m$的两端，并检查两端运算均有定义、类型一致且化为同一结果。\par
+
+\SLDirectSection{提升树}{sec:V3-C03-S05}
+\knowledgeanchor{SLM-08-04-001}{提升树}
+\knowledgeanchor{SLM-08-04-002}{提升树模型}
+\phantomsection\label{struct:V3-C03-CH20}
+提升树以决策树为基函数。若第$m$棵回归树把输入空间划分为互不相交区域$R_{mj}$，$j=1,\ldots,J_m$，并在每个叶区域输出$c_{mj}$，则
+\[
+T(x;\Theta_m)=\sum_{j=1}^{J_m}c_{mj}\mathbf{1}\{x\in R_{mj}\},
+\qquad
+f_M(x)=f_0(x)+\nu\sum_{m=1}^{M}T(x;\Theta_m),\qquad 0<\nu\leq1.
+\]
+树负责选择非线性分区，加法结构负责逐轮修正。分类提升树可使用二类分类树与指数损失；回归提升树可使用回归树与平方损失。
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-015 L1
+\paragraph{读前自检：提升树算法。}提升树以训练样本、损失、树轮数$M$和每轮基学习器预算为输入；请在当前加法模型$f_{m-1}$上拟合一棵使经验损失下降的回归树并提交$f_m=f_{m-1}+T_m$，再按轮数预算或验证停止规则核对输出。\par
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-016 L1
+\paragraph{读前自检：回归问题的提升树算法。}回归提升树在平方损失下把第$m$轮残差$r_{mi}=y_i-f_{m-1}(x_i)$作为拟合目标；请计算一组$r_{mi}$、拟合叶结点常数并更新$f_m$，核对训练平方损失不增，达到树轮数预算时停止。\par
+
+\knowledgeanchor{SLM-08-04-003}{提升树算法}
+\knowledgeanchor{SLM-08-03-005}{回归问题的提升树算法}
+\phantomsection\label{struct:V3-C03-CH21}
+% CORE-DERIVATION-PLAN: KN-V3-C19-DERIVATION-001
+\SLKnowledgeBridge{把平方损失前向分步子问题改写为对残差的回归。}{已有模型 $f_{m-1}$、残差 $r_i=y_i-f_{m-1}(x_i)$、固定叶区域 $R_{mj}$ 与叶值 $c_{mj}$。}{每个参与更新的叶区域非空；本轮区域划分固定。}{先代入平方损失并写 $y_i-[f_{m-1}(x_i)+g(x_i)]=r_i-g(x_i)$。}
+
+\begin{derivationgoalbox}
+把平方损失的前向分步子问题化为残差回归，并推导固定叶区域后的最优叶值。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+固定已有模型$f_{m-1}$和本轮树的区域划分$R_{m1},\ldots,R_{mJ_m}$；损失为$L(y,f)=\tfrac12(y-f)^2$，每个叶输出常数$c_{mj}$，空叶不允许进入求均值公式。
+\end{derivationprepbox}
+\textbf{推导第1步：把目标改写为残差平方和。}已有模型$f_{m-1}$的本轮目标为
+\[
+\frac12\sum_i[y_i-f_{m-1}(x_i)-T(x_i;\Theta_m)]^2.
+\]
+令残差$r_{mi}=y_i-f_{m-1}(x_i)$，问题变成用一棵回归树拟合$(x_i,r_{mi})$。这说明“拟合残差”不是额外经验规则，而是平方损失前向分步子问题的代数重写。
+
+\phantomsection\label{struct:V3-C03-CH22}
+\textbf{推导第2步：分离各叶子问题。}固定树划分后，不同叶包含互不相交的样本，第$j$个叶值独立求解
+\[
+\min_c\frac12\sum_{x_i\in R_{mj}}(r_{mi}-c)^2.
+\]
+\textbf{推导第3步：求驻点并核对极小性。}导数为$-\sum_{x_i\in R_{mj}}(r_{mi}-c)$，二阶导数为$|R_{mj}|>0$；令一阶导数为零得到叶内残差均值$c_{mj}$。若叶为空则二阶导数为0且均值无定义，构树阶段必须禁止或回退该叶。加入收缩率$\nu<1$后，每轮只沿该树方向走部分步长。
+
+\phantomsection\label{struct:V3-C03-CH28}
+\begin{complexitybox}
+\textbf{训练时间复杂度。}若一次带权基学习训练成本为$C_{\mathcal A}(N,d)$，AdaBoost的$M$轮训练约为$O(M[C_{\mathcal A}(N,d)+N])$。提升树若每棵深度受限树的训练成本为$C_{\mathrm{tree}}(N,d)$，总训练约为$O(MC_{\mathrm{tree}})$；预排序或直方图会改变该参数化成本。
+
+\textbf{正确性依据。}AdaBoost的权重更新以$Z_m$归一化为概率分布，并沿指数损失的一维精确系数更新；平方损失提升树的叶值是非空叶区域上的唯一均值极小点；一般梯度提升以负梯度构造下降方向，再由叶内一维优化确定步长。任一子问题不能完成时，算法停止并保留最后一个完整模型。
+\end{complexitybox}
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-017 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-018 L2
+\begin{keypointbox}[title={平方损失回归提升树：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限回归训练集、可选验证集、冻结树约束、收缩率、轮数预算、训练容差与早停耐心},
+  output={最后合法加法轨迹、选定$f^*$、完成轮数$m_{\rm done}$、树拟合调用数$a_{\rm done}$、状态与诊断},
+  preconditions={$T\ne\varnothing$且响应有限；$0<\nu\le1$；树容量/深度、预算、容差和验证规则合法},
+  initialization={$f=\bar y,m_{\rm done}=a_{\rm done}=0$并计算初始训练/验证损失},
+  loop={每轮计算旧模型残差，拟合一棵有限回归树，计算非空叶均值和候选损失},
+  update={区域、叶值、$f^+$及全部指标有限且划分合法后才原子提交完整轮},
+  domain={响应、残差、叶均值、模型预测和平方损失均为有限实数；叶区域非空且互斥覆盖},
+  failure={非法接口返回$\mathtt{invalid\_input}$；残差、树拟合、叶统计、候选模型或损失失败返回$\mathtt{numerical\_failure}$},
+  stop={训练相对下降满足容差、验证耐心耗尽、轮数预算耗尽或首次失败时停止},
+  budget={至多$M$个完整提升轮；每轮一次树拟合及$N$个残差计算},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$},
+  iterations={$m_{\rm done}$计原子提交轮，$a_{\rm done}$计实际树拟合调用；记录最佳验证轮},
+  diagnostics={失败轮/叶与阶段、树规模、训练/验证损失、相对下降、最佳轮和早停计数},
+  complexity={$m_{\rm done}$轮约$O(m_{\rm done}[C_{\rm tree}(N,d)+N])$时间，模型空间随树总规模增长}
+}
+\begin{algorithm}[H]
+\caption{平方损失回归提升树}\label{alg:V3-C03-regression-tree-boost}
+\KwIn{有限回归训练集$T$，可选验证集$T_{\rm val}$，冻结的树结构约束}
+\KwOut{最后合法轨迹与选定$f^*$、$m_{\rm done},a_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{$M\in\mathbb N_0$；$0<\nu\le1$；训练容差$\varepsilon_J>0$；早停耐心$p\in\mathbb N_+$}
+$f\leftarrow\bot$，$m_{\rm done}\leftarrow0$，$a_{\rm done}\leftarrow0$，诊断为空\;
+若训练集为空、特征/响应非有限，验证接口、树约束、$M,\nu,\varepsilon_J,p$或并列规则不合法，则返回空模型、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算$\bar y$及初始训练/验证损失；若非有限则返回空模型、$\mathtt{numerical\_failure}$及初始化阶段诊断；否则提交$f\leftarrow\bar y$并初始化可选验证最佳记录\;
+\While{$m_{\rm done}<M$}{
+  令$m\leftarrow m_{\rm done}+1$；在临时状态计算全部$r_i\leftarrow y_i-f(x_i)$；若任一残差非有限，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为残差阶段$m$\;
+  用$(x_i,r_i)$拟合树并令$a_{\rm done}\leftarrow a_{\rm done}+1$；若拟合失败、叶数为零、叶为空或区域不互斥覆盖，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为树阶段$m$\;
+  对每个叶$j$计算有限$c_j=|R_j|^{-1}\sum_{x_i\in R_j}r_i$，形成$T_m$、候选$f^+=f+\nu T_m$及训练/验证损失\;
+  若任一叶值、预测或损失非有限，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为叶/模型验收$(m,j)$\;
+  计算训练相对下降$\Delta_m$，原子提交$f\leftarrow f^+$及树、指标轨迹，令$m_{\rm done}\leftarrow m$；验证改善时更新最佳记录\;
+  \If{有验证集且验证损失连续$p$轮未改善}{返回最佳验证模型与$\mathtt{budget\_stop}$，最终诊断记录耐心耗尽、最佳轮和树规模\;}
+  \If{无验证集且$0\le\Delta_m\le\varepsilon_J$}{返回当前完整模型与$\mathtt{numerical\_failure}$，最终诊断记录训练相对下降与当前梯度代理\;}
+}
+返回最佳验证模型或最后完整模型、$m_{\rm done},a_{\rm done},\mathtt{budget\_stop}$，最终诊断记录轮数预算耗尽与末轮损失\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{验证耐心耗尽统一返回$\mathtt{budget\_stop}$；训练损失相对变化很小只返回$\mathtt{numerical\_failure}$，并报告残差/梯度代理，不把平台期称作数学收敛。}
+
+\SLAdvancedSection{梯度提升}{sec:V3-C03-S06}
+\knowledgeanchor{SLM-08-04-004}{梯度提升}
+\phantomsection\label{struct:V3-C03-CH23}
+对一般可微损失$L(y,f)$，第$m$轮在各训练点计算负梯度
+\[
+r_{mi}=-\left[\frac{\partial L(y_i,f)}{\partial f}\right]_{f=f_{m-1}(x_i)}.
+\]
+这些$r_{mi}$称为伪残差。基学习器拟合$(x_i,r_{mi})$，相当于在训练点构成的函数空间中逼近最速下降方向。平方损失$L=(y-f)^2/2$时$r_{mi}=y_i-f_{m-1}(x_i)$，退化为通常残差。
+
+% KNOWLEDGE-PLAN: KN-V3-C19-FORMULA-002 L1
+\paragraph{读前自检：梯度提升算法。}梯度提升算法依赖“下面的验收门使用预先固定的$0<\rho<1$、回溯上限$L_{\max}$、接受下降量$\tau_{\rm dec}\geq0$与停止容差$\varepsilon_J>0$”；请据此对$0<\rho<1$完成一项求导、代入或边界比较，并直接核对为避免“叶步长只算到一半就提交”，先把候选生成封装为不改主状态的子过程。\par
+
+\knowledgeanchor{SLM-08-04-005}{梯度提升算法}
+\phantomsection\label{struct:V3-C03-CH24}
+下面的验收门使用预先固定的$0<\rho<1$、回溯上限$L_{\max}$、接受下降量$\tau_{\rm dec}\geq0$与停止容差$\varepsilon_J>0$。树深、叶数和最小叶样本数也在训练前冻结。为避免“叶步长只算到一半就提交”，先把候选生成封装为不改主状态的子过程。
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-019 L1
+\paragraph{读前自检：一般损失梯度提升的候选生成：执行契约。}一般损失梯度提升的候选生成输入“有限训练集$T$、可微损失$L$、最后合法旧模型$f_{\rm old}$、冻结树约束与叶步长求解预算$B_\rho$”，条件“$T\ne\varnothing$”；请执行“只写临时候选”，以“完整候选形成、叶求解预算耗尽或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-020 L2
+\begin{keypointbox}[title={一般损失梯度提升的候选生成：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限训练集$T$、可微损失$L$、最后合法旧模型$f_{\rm old}$、冻结树约束与叶步长求解预算$B_\rho$},
+  output={完整候选$\mathcal C_m$或未改动$f_{\rm old}$、样本梯度数$i_{\rm done}$、完成叶数$j_{\rm done}$、叶目标求值数$q_{\rm done}$、状态与诊断},
+  preconditions={$T\ne\varnothing$；旧预测和损失定义；树约束、导数接口、求解预算及并列规则合法},
+  initialization={$\mathcal C_m=\varnothing,i_{\rm done}=j_{\rm done}=q_{\rm done}=0$并保持主模型只读},
+  loop={先有限扫描样本构造伪残差，再扫描非空叶并在各自预算内求有限常数步长},
+  update={只写临时候选；全部叶完成并通过划分与有限性核验后一次返回完整候选},
+  domain={$J_{\rm old}$、伪残差、叶目标和$\rho_j$必须有限；叶区域非空且互斥覆盖训练样本},
+  failure={非法接口返回$\mathtt{invalid\_input}$；目标、导数、树拟合、划分或叶解失败返回$\mathtt{numerical\_failure}$},
+  stop={完整候选形成、叶求解预算耗尽或首次失败时停止},
+  budget={固定$N$个样本导数；每个叶至多$B_\rho$次一维目标求值；树结构受冻结容量/深度限制},
+  status={$\mathtt{completed}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$i_{\rm done}$计有限伪残差，$j_{\rm done}$计已完成叶，$q_{\rm done}$计实际叶目标求值},
+  diagnostics={失败样本或叶及阶段、$J_{\rm old}$、树规模、求解括区间/残差和预算余量},
+  complexity={树拟合$C_{\rm tree}(N,d)$，另加$O(N+q_{\rm done})$损失/导数求值；候选空间为树规模}
+}
+\begin{algorithm}[H]
+\caption{一般损失梯度提升的候选生成}\label{alg:V3-C03-gradient-candidate}
+\KwIn{训练集$T$，损失$L$，最后合法旧模型$f_{\rm old}$，冻结树约束}
+\KwOut{完整候选$\mathcal C_m$或$f_{\rm old}$、$i_{\rm done},j_{\rm done},q_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{每叶一维求解预算$B_\rho\in\mathbb N_0$；导数、根/极小值与划分容差}
+$\mathcal C_m\leftarrow\varnothing$，$i_{\rm done}\leftarrow0$，$j_{\rm done}\leftarrow0$，$q_{\rm done}\leftarrow0$，诊断为空；主状态$f_{\rm old}$只读\;
+若训练集为空、输入或旧预测非有限、损失/导数接口、树约束、预算、容差或并列规则不合法，则返回未改动$f_{\rm old}$、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算$J_{\rm old}\leftarrow\sum_iL(y_i,f_{\rm old}(x_i))$；若非有限则返回未改动$f_{\rm old}$、$\mathtt{numerical\_failure}$及旧目标阶段诊断\;
+按$i=1,\ldots,N$计算伪残差$r_i$，每个有限结果令$i_{\rm done}\leftarrow i$；若失败则返回未改动$f_{\rm old}$与$\mathtt{numerical\_failure}$，诊断为导数位置$i$\;
+用$(x_i,r_i)$拟合临时树；若拟合失败、叶数为零、存在空叶或划分不互斥覆盖，则返回未改动$f_{\rm old}$与$\mathtt{numerical\_failure}$，诊断为候选树阶段\;
+\For{$j\leftarrow1$ \KwTo $J_m$}{
+  在至多$B_\rho$次有限目标求值内求叶步长$\rho_j$，每次令$q_{\rm done}\leftarrow q_{\rm done}+1$\;
+  若预算耗尽且无可接受有限步长，则返回$f_{\rm old},i_{\rm done},j_{\rm done},q_{\rm done},\mathtt{budget\_stop}$，最终诊断记录失败叶$j$及求解区间\;
+  若叶目标、求解残差或$\rho_j$非有限，则返回未改动$f_{\rm old}$与$\mathtt{numerical\_failure}$，诊断为叶求解$j$；否则令$j_{\rm done}\leftarrow j$\;
+}
+形成并核验$\mathcal C_m=(J_{\rm old},\{R_j,\rho_j\}_{j=1}^{J_m})$；返回完整候选、$i_{\rm done},j_{\rm done},q_{\rm done},\mathtt{completed}$，最终诊断记录树规模、叶残差和主状态未修改\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-021 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C19-ALGORITHM_IDEA-022 L2
+\begin{keypointbox}[title={一般损失下的梯度提升树：验收与提交：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={训练集、可选验证集、损失、候选生成器及冻结的轮数、收缩、回缩、下降和早停参数},
+  output={最后合法轨迹与选定$f^*$、提交轮数$m_{\rm done}$、回溯试算数$\ell_{\rm done}$、状态与诊断},
+  preconditions={数据和损失接口合法；$M,L_{\max},p$及$0<\nu\le1$、$0<\rho<1$、$\tau_{\rm dec}\ge0$、容差合法},
+  initialization={求有限常数模型$f_0$，置$m_{\rm done}=\ell_{\rm done}=0$并初始化可选验证记录},
+  loop={每轮只读调用候选生成器，再在有限回溯中验收候选方向并检查停止规则},
+  update={$f^+,J^+$、训练/验证指标有限且满足下降门禁后才原子提交一轮},
+  domain={损失、伪梯度、叶步长、模型预测和目标为有限实数；候选区域合法},
+  failure={非法接口返回$\mathtt{invalid\_input}$；候选/目标失败返回$\mathtt{numerical\_failure}$；候选或外层预算返回$\mathtt{budget\_stop}$；回溯耗尽返回$\mathtt{line\_search\_failed}$},
+  stop={训练目标证书、验证耐心耗尽、候选/外层预算耗尽或首次失败时停止},
+  budget={至多$M$个完整提交轮；每轮至多$L_{\max}+1$次外层目标试算，并继承候选生成器预算},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{line\_search\_failed}$},
+  iterations={$m_{\rm done}$计完整提交轮，$\ell_{\rm done}$计实际外层回溯试算；候选内部计数写入逐轮日志},
+  diagnostics={候选传播状态与失败叶、失败$(m,\ell)$、三重目标值、实际步长、梯度量、验证最佳轮和预算余量},
+  complexity={总成本为各轮候选生成成本加$O(\ell_{\rm done}N)$目标求值；模型空间为累计树规模}
+}
+\begin{algorithm}[H]
+\caption{一般损失下的梯度提升树：验收与提交}\label{alg:V3-C03-gradient-boost}
+\KwIn{$T$，可选$T_{\rm val}$，损失$L$，算法\ref{alg:V3-C03-gradient-candidate}候选生成器}
+\KwOut{最后合法轨迹与选定$f^*$、$m_{\rm done},\ell_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{$M\in\mathbb N_0$；$0<\nu\le1$；$0<\rho<1$；$L_{\max}\in\mathbb N_0$；$\tau_{\rm dec}\ge0$；$\varepsilon_J>0$；$p\in\mathbb N_+$}
+$m_{\rm done}\leftarrow0$，$\ell_{\rm done}\leftarrow0$，诊断为空\;
+若数据、验证接口、损失/候选接口、预算、收缩、回缩、下降、容差或早停规则不合法，则返回未提交模型、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+在临时状态求$f_0\leftarrow\arg\min_c\sum_iL(y_i,c)$\;
+若$f_0$、初始目标或验证损失非有限，则返回最后合法常数模型与$\mathtt{numerical\_failure}$及初始化阶段诊断；否则提交$f\leftarrow f_0$并初始化最佳记录\;
+\While{$m_{\rm done}<M$}{
+  令$m\leftarrow m_{\rm done}+1$，保持$f_{\rm old}\leftarrow f$只读并调用候选生成器\;
+  若候选返回$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$或$\mathtt{budget\_stop}$，则返回最后合法$f_{\rm old},m_{\rm done},\ell_{\rm done}$及同一规范状态，诊断附加候选阶段、叶和内部计数\;
+  $\nu_{\rm trial}\leftarrow\nu$，$\mathrm{accepted}\leftarrow\mathrm{false}$\;
+  \For{$\ell\leftarrow0$ \KwTo $L_{\max}$}{
+    在临时状态构造$f^+$并计算$J^+$，令$\ell_{\rm done}\leftarrow\ell_{\rm done}+1$\;
+    若$f^+,J^+$有限且$J^+\le J_{\rm old}-\tau_{\rm dec}$，则置$\mathrm{accepted}\leftarrow\mathrm{true}$并终止回溯；否则保持$f=f_{\rm old}$并令$\nu_{\rm trial}\leftarrow\rho\nu_{\rm trial}$\;
+  }
+  \If{$\neg\mathrm{accepted}$}{返回最后合法$f_{\rm old},m_{\rm done},\ell_{\rm done},\mathtt{line\_search\_failed}$，诊断记录失败轮、全部试算目标和末次步长\;}
+  计算候选训练/验证指标与$\Delta_m=(J_{\rm old}-J^+)/(1+|J_{\rm old}|)$；若任一指标或$\Delta_m$非有限，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为外层验收$m$\;
+  原子提交$f\leftarrow f^+$、目标、树、步长与指标轨迹，令$m_{\rm done}\leftarrow m$；验证改善时更新最佳记录\;
+  \If{验证耐心耗尽}{返回最佳验证模型与$\mathtt{budget\_stop}$，最终诊断记录最佳轮、末轮指标和实际步长\;}
+  \If{$0\le\Delta_m\le\varepsilon_J$}{返回当前完整模型与$\mathtt{numerical\_failure}$，最终诊断记录训练目标相对下降和梯度代理\;}
+}
+返回最佳验证模型或最后完整模型、$m_{\rm done},\ell_{\rm done},\mathtt{budget\_stop}$，最终诊断记录外层预算耗尽及末轮目标\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{回缩率严格满足$0<\rho<1$，故连续拒绝时$\nu_{\rm trial}$严格减小；验证平台与训练数值平台分别返回$\mathtt{budget\_stop}$和$\mathtt{numerical\_failure}$，外层轮数实际耗尽才返回$\mathtt{budget\_stop}$。}
+
+\phantomsection\label{struct:V3-C03-CH25}
+\textbf{更新与收敛。}负梯度只在训练点上给出数值，回归树承担“把离散梯度推广为输入函数”的投影任务，因此基学习器拟合误差会使方向偏离精确最速下降。若损失下有界、梯度具适当光滑性、每轮树方向与负梯度保持正相关，并用足够小的学习率或线搜索保证损失下降，则训练目标形成单调有下界的序列。该结论只保证目标值趋于极限；非凸树结构搜索和近似方向不保证到达全局最优模型。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C19-CONCEPT-005 L1
+\paragraph{读前自检：AdaBoost的计算例题。}AdaBoost计算例从归一权重$D_m(i)$得到弱分类器加权错误率$e_m$；请计算$\alpha_m=\tfrac12\log[(1-e_m)/e_m]$并更新一次权重，核对新$D_{m+1}$非负且和为1。\par
+
+\SLDirectSection{例题、迭代计算与练习}{sec:V3-C03-S07}
+\knowledgeanchor{SLM-08-01-005}{AdaBoost的计算例题}
+\phantomsection\label{struct:V3-C03-CH26}
+\begin{example}[两轮AdaBoost的完整计算]\label{exm:V3-C03-two-round}
+四个样本初始权重均为$1/4$。第一轮$G_1$只错分第4个样本；在更新后的分布上，第二轮$G_2$只错分第1个样本。计算两轮的错误率、分类器系数、权重分布与最终加法模型。
+\end{example}
+\SLExampleSolutionHeading{exm:V3-C03-two-round}
+\begin{solution}
+\SLReadTranslation{题目要求完成“两轮AdaBoost的完整计算”：按轮次重放加权错误率、分类器系数、权重归一化和最终加法模型。}
+\SolGiven 初始样本权重非负且和为 1；每轮错误率位于可定义分类器系数的范围，更新后的权重必须重新归一化。
+\SLMethodTrigger{按轮次计算加权错误率、分类器系数和样本权重归一化，再写出加法模型并核验权重和为 1。}
+\SolPlan 先完成“两轮AdaBoost的完整计算”所需的中间量，再做一次题型相关核验，最后回收题目各问。
+\SolDerive
+初始分布与第一轮错误率为
+\[
+D_1(i)=\frac14\quad(i=1,\ldots,4),
+\qquad
+e_1=\sum_{i=1}^{4}D_1(i)\mathbf1\{y_i\neq G_1(x_i)\}=\frac14.
+\]
+因此
+\[
+\alpha_1
+=\frac12\log\frac{1-e_1}{e_1}
+=\frac12\log3.
+\]
+未规范化权重、归一化因子与新分布形成状态链
+\[
+\begin{aligned}
+\widetilde D_2
+&=\left(\frac14e^{-\alpha_1},\frac14e^{-\alpha_1},
+\frac14e^{-\alpha_1},\frac14e^{\alpha_1}\right),\\
+Z_1
+&=\frac34e^{-\alpha_1}+\frac14e^{\alpha_1}
+=2\sqrt{\frac14\frac34}=\frac{\sqrt3}{2},\\
+D_2&=\frac{\widetilde D_2}{Z_1}
+=\left(\frac16,\frac16,\frac16,\frac12\right).
+\end{aligned}
+\]
+第二轮只有第1个样本错分，故
+\[
+e_2=D_2(1)=\frac16,
+\qquad
+\alpha_2=\frac12\log\frac{1-e_2}{e_2}
+=\frac12\log5.
+\]
+第二轮更新还必须落到新的概率分布。由于仅第1个样本错分，
+\[
+\begin{aligned}
+\widetilde D_3
+&=\left(\frac{\sqrt5}{6},
+\frac{1}{6\sqrt5},
+\frac{1}{6\sqrt5},
+\frac{1}{2\sqrt5}\right),\\
+Z_2&=\sum_{i=1}^{4}\widetilde D_3(i)
+=\frac{\sqrt5}{3},\\
+D_3&=\frac{\widetilde D_3}{Z_2}
+=\left(\frac12,\frac1{10},\frac1{10},\frac3{10}\right),
+\qquad \sum_{i=1}^{4}D_3(i)=1.
+\end{aligned}
+\]
+最终加法模型与比较结论为
+\[
+F_2(x)=\frac12\log3\,G_1(x)+\frac12\log5\,G_2(x),
+\qquad
+\alpha_2>\alpha_1.
+\]
+两轮状态可逐行重放：
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}c X X X X@{}}
+\toprule
+轮次 & 旧状态 & 候选/更新 & 不变量、目标或残差 & 状态与停止证书\\
+\midrule
+1 & $D_1=(1/4,1/4,1/4,1/4)$ & 错第4点，$e_1=1/4$，$\alpha_1=\tfrac12\log3$ & $Z_1=\sqrt3/2$，$D_2=(1/6,1/6,1/6,1/2)$ & 权重非负且和为1，提交第1轮\\
+2 & $D_2$ & 错第1点，$e_2=1/6$，$\alpha_2=\tfrac12\log5$ & $Z_2=\sqrt5/3$，$D_3=(1/2,\allowbreak 1/10,\allowbreak 1/10,\allowbreak 3/10)$ & 权重非负且和为1，完成两轮预算\\
+\bottomrule
+\end{tabularx}
+\end{center}
+独立核验是每轮唯一错分样本在更新后都获得总质量$1/2$：$D_2(4)=1/2$、$D_3(1)=1/2$，符合AdaBoost闭式更新。结论是$e_1=1/4,e_2=1/6$，$F_2=\tfrac12\log3\,G_1+\tfrac12\log5\,G_2$；当两者意见相反时，第二轮分类器因$\alpha_2>\alpha_1$主导表决。
+\SLStuckHint{先只写出对象、合法条件和第一轮/第一步中间量；若这些量无法定义，再返回相应定义。}
+\end{solution}
+
+\phantomsection\label{struct:V3-C03-CH27}
+\textbf{可复核实现流程。}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 在每轮开始检查权重非负、总和接近1，并记录权重有效样本量$1/\sum_iD_m(i)^2$；
+  \item 使用训练折内的权重拟合基学习器，所有预处理参数也只能由该训练折估计；
+  \item 同时保存$e_m,\alpha_m,Z_m$、训练指数损失、训练零一错误和独立验证指标；
+  \item 对指数更新采用对数权重或减去最大对数权重后再归一化，避免上溢与下溢；
+  \item 固定初始化与候选切分规则，并记录每棵树的结构，使每轮预测都可重复核验；
+  \item 预测时严格按训练顺序累加，分类只在最后取符号，回归则直接输出实值和。
+\end{enumerate}
+
+\begin{complexitybox}
+\textbf{预测时间复杂度。}若单个基学习器预测代价为$C_{\mathrm{pred}}$，顺序累加$M$个基模型为$O(MC_{\mathrm{pred}})$；深度至多$D$的树集成通常写为$O(MD)$。\\
+\textbf{存储与空间复杂度。}训练需$O(N)$样本权重或伪残差；保存$M$棵至多$J$叶的树约为$O(MJ)$。\textbf{复杂度假设：}基学习器串行训练且不同时保留每轮完整数据副本；并行候选会增加峰值存储。
+\textbf{更新顺序与停止情形。}每轮必须依次完成基学习器拟合、误差或负梯度计算、系数或叶值求解与模型累加，再检查停止。训练集为空、出现空叶、负梯度不是有限实数、叶内一维子问题无解或基学习器不能完成拟合时，算法在上一完整轮停止；达到$M$轮或验证早停条件而训练容差仍未满足时，不宣称优化已经收敛。
+\end{complexitybox}
+
+\begingroup
+\setstretch{1.42}
+\phantomsection\label{struct:V3-C03-CH29}
+% KNOWLEDGE-PLAN: KN-V3-C19-BOUNDARY-004 L1
+\paragraph{读前自检：适用条件与局限：例题、迭代计算与练习。}AdaBoost要求冻结权重分布下的弱分类器误差$e_m<1/2$；请代入$\alpha_m=\tfrac12\log[(1-e_m)/e_m]$，核对$e_m\ge1/2$时不产生正的提升系数并触发既定失败处理。\par
+
+\begin{applicabilitybox}
+\textbf{适用条件与适用性。}AdaBoost适合可提供稳定弱边缘、标签质量较好的二类分类；树提升适合表格数据中的非线性、阈值效应和变量交互；梯度提升通过选择损失可处理回归、分类、排序及部分稳健估计问题。应用前必须明确评价指标、类别代价、缺失值机制与部署延迟预算。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V3-C03-CH30}
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+指数损失会持续放大难分样本和错标样本的影响；树提升的轮数、深度、学习率、叶样本数高度耦合；小学习率通常要求更多树；相关特征可能使树结构解释不稳定；训练分布变化会让历史残差方向失效。概率输出还需检查所用损失与校准方法，组合得分本身不能一概当作条件概率。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V3-C03-CH31}
+% KNOWLEDGE-PLAN: KN-V3-C19-BOUNDARY-006 L1
+\paragraph{读前自检：常见错误与误用边界：例题、迭代计算与练习。}例题、迭代计算与练习把问题限定在“边界框首项禁止除以总权重”；请把固定错误“除以总权重”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，检查是否得到改写后的运算或判断有定义，且不再触发“除以总权重”。\par
+
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 用未规范化权重的错分和冒充错误率，却没有除以总权重；
+  \item 把$\alpha_m$误写为$\log[(1-e_m)/e_m]$，遗漏系数$1/2$；
+  \item 先对$G_m$取最终符号再累加，丢失实值加法模型的幅度；
+  \item 将回归残差公式用于任意损失，而没有计算相应负梯度和叶内线搜索；
+  \item 用测试集选择轮数、深度或学习率，造成评价信息泄漏；
+  \item 达到轮数上限便报告“收敛”，却没有给出损失、梯度或验证早停证据。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V3-C03-CH33}
+\textbf{选择顺序。}先按任务确定损失和评价指标，再用验证方案联合选择基学习器复杂度、学习率和轮数；类别极不平衡时需在权重或损失中体现代价；标签噪声明显时应比较对异常点不那么敏感的损失，并检查权重是否集中在少数样本。模型解释应同时报告全局性能、分组性能与误差案例，不能只展示训练损失曲线。
+\endgroup
+
+\phantomsection\label{struct:V3-C03-CH32}
+% KNOWLEDGE-PLAN: KN-V3-C19-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：例题、迭代计算与练习。}在“对比表首个数据行是“AdaBoost｜降低指数分类损失｜二类弱分类器｜样本重加权与加权表决具有闭式系数””成立时处理例题、迭代计算与练习：请按列复述“AdaBoost｜降低指数分类损失｜二类弱分类器｜样本重加权与加权表决具有闭式系数”中的对象、假设与结论，并以各列均对应首行对象“AdaBoost”，且未与表中下一行互换判定结果。\par
+
+\begin{comparisonbox}
+\textbf{对比与混淆类别。}提升与随机森林都组合多棵树，但前者串行修正损失方向，后者并行随机化后平均；不能因二者都输出树集成而混用训练逻辑。\par\smallskip
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 方法 & 每轮目标 & 典型基学习器 & 关键特点\\ \midrule
+AdaBoost & 降低指数分类损失 & 二类弱分类器 & 样本重加权与加权表决具有闭式系数\\
+回归提升树 & 拟合平方损失残差 & 回归树 & 残差就是平方损失负梯度\\
+梯度提升树 & 拟合一般损失伪残差 & 回归树 & 以损失负梯度统一分类与回归\\
+随机森林 & 并行降低方差 & 随机化决策树 & 不按残差串行训练，主要靠平均去相关\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+\phantomsection\label{struct:V3-C03-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V3-C03-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S01-01}
+某基分类器在均匀分布下错分$4$个样本中的1个。求其错误率，并判断它是否满足二类弱学习器在该轮所需的误差条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S01-01}
+\begin{chapterexercisesolution}{ex:V3-C03-S01-01}
+当前权重分布为
+\[
+D(i)=\frac14,
+\qquad i=1,\ldots,4,
+\qquad \sum_{i=1}^{4}D(i)=1.
+\]
+若错分集合只含一个样本$j$，加权错误率为
+\[
+e=\sum_{i=1}^{4}D(i)\mathbf1\{y_i\neq G(x_i)\}
+=D(j)=\frac14.
+\]
+因此
+\[
+0<e=\frac14<\frac12,
+\]
+该分类器在当前权重分布上优于随机猜测，满足本轮二类弱误差条件；权重改变后必须重新计算$e$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S01-02}
+解释为什么把全部样本权重同时乘以正数不会改变加权错误率，但实现中仍应将权重规范化。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S01-02}
+\begin{chapterexercisesolution}{ex:V3-C03-S01-02}
+对非负且总和为正的权重$w_i$，加权错误率定义为
+\[
+e(w)=\frac{\sum_iw_i\mathbf1\{y_i\neq G(x_i)\}}{\sum_iw_i}.
+\]
+任取$c>0$，缩放不变链为
+\[
+e(cw)
+=\frac{c\sum_iw_i\mathbf1\{y_i\neq G(x_i)\}}{c\sum_iw_i}
+=e(w).
+\]
+实现中仍令
+\[
+D(i)=\frac{w_i}{\sum_jw_j},
+\qquad D(i)\geq0,\quad \sum_iD(i)=1,
+\]
+从而把错误率写成离散期望，并避免多轮指数更新导致数值尺度持续膨胀或收缩。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S02-01}
+某轮错误率$e_m=0.2$。计算$\alpha_m$以及错分样本相对于正确样本的权重倍率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S02-01}
+\begin{chapterexercisesolution}{ex:V3-C03-S02-01}
+因$e_m=0.2\in(0,1/2)$，分类器系数为
+\[
+\alpha_m
+=\frac12\log\frac{1-e_m}{e_m}
+=\frac12\log\frac{0.8}{0.2}
+=\frac12\log4
+=\log2.
+\]
+权重更新中，正确与错分样本的未规范化倍率分别为
+\[
+e^{-\alpha_m}=\frac12,
+\qquad
+e^{\alpha_m}=2.
+\]
+因此错分样本相对正确样本的倍率为
+\[
+\frac{e^{\alpha_m}}{e^{-\alpha_m}}
+=e^{2\alpha_m}=4
+=\frac{1-e_m}{e_m}.
+\]
+因此当$e_m=0.2$时，$\alpha_m=\log2$，错分样本相对正确样本被放大$4$倍。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S02-02}
+设$D_m=(0.2,0.3,0.5)$，只有第二个样本被$G_m$错分，且$\alpha_m=\frac12\log(7/3)$。写出未规范化权重和$Z_m$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S02-02}
+\begin{chapterexercisesolution}{ex:V3-C03-S02-02}
+令$r=e^{\alpha_m}=\sqrt{7/3}>0$，则$e^{-\alpha_m}=r^{-1}$。第一、三个样本分类正确，第二个样本错分，所以
+\[
+\widetilde D_{m+1}
+=\left(0.2r^{-1},\ 0.3r,\ 0.5r^{-1}\right).
+\]
+归一化因子为
+\[
+\begin{aligned}
+Z_m
+&=0.7r^{-1}+0.3r\\
+&=2\sqrt{0.7\times0.3}\\
+&=\frac{\sqrt{21}}5\approx0.9165.
+\end{aligned}
+\]
+故下一轮状态为
+\[
+D_{m+1}=\frac1{Z_m}
+\left(0.2\sqrt{\frac37},\ 0.3\sqrt{\frac73},\ 0.5\sqrt{\frac37}\right),
+\qquad
+\sum_iD_{m+1}(i)=1.
+\]
+因此以上权重除以$Z_m=\sqrt{21}/5$后构成下一轮的合法概率分布。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S03-01}
+若三轮加权错误率均为$0.1$，计算训练误差乘积上界。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S03-01}
+\begin{chapterexercisesolution}{ex:V3-C03-S03-01}
+每轮$e_m=0.1\in(0,1/2)$，所以
+\[
+Z_m=2\sqrt{e_m(1-e_m)}
+=2\sqrt{0.1\times0.9}=0.6.
+\]
+三轮训练误差乘积界为
+\[
+\widehat R_{\mathrm{train}}(G_3)
+\leq\prod_{m=1}^{3}Z_m
+=0.6^3
+=0.216.
+\]
+这是指数损失导出的训练错误上界，实际训练错误可更小，且该数值不是测试错误率。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S03-02}
+已知每轮$e_m\leq0.4$，求使上界$e^{-2M(0.1)^2}\leq0.05$所需的最小整数$M$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S03-02}
+\begin{chapterexercisesolution}{ex:V3-C03-S03-02}
+每轮边缘满足
+\[
+\gamma_m=\frac12-e_m\geq\frac12-0.4=0.1.
+\]
+因此上界链为
+\[
+\widehat R_{\mathrm{train}}(G_M)
+\leq\exp\!\left(-2\sum_{m=1}^{M}\gamma_m^2\right)
+\leq e^{-2M(0.1)^2}=e^{-0.02M}.
+\]
+要求该上界不超过$0.05$，则
+\[
+\begin{aligned}
+e^{-0.02M}&\leq0.05\\
+\Longleftrightarrow\quad
+-0.02M&\leq\log0.05\\
+\Longleftrightarrow\quad
+M&\geq\frac{-\log0.05}{0.02}\approx149.7866.
+\end{aligned}
+\]
+由于$M\in\mathbb Z_{>0}$，最小整数为$M_{\min}=150$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S04-01}
+对$Q(\alpha)=W_+e^{-\alpha}+W_-e^\alpha$求一阶、二阶导数，并说明驻点为何是唯一极小点。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S04-01}
+\begin{chapterexercisesolution}{ex:V3-C03-S04-01}
+对$\alpha\in\mathbb R$，一、二阶导数为
+\[
+\begin{aligned}
+Q'(\alpha)&=-W_+e^{-\alpha}+W_-e^\alpha,\\
+Q''(\alpha)&=W_+e^{-\alpha}+W_-e^\alpha.
+\end{aligned}
+\]
+若$W_+>0$且$W_->0$，则
+\[
+Q''(\alpha)>0\quad(\forall\alpha\in\mathbb R)
+\Longrightarrow Q\ \text{严格凸}.
+\]
+驻点链为
+\[
+Q'(\alpha)=0
+\Longleftrightarrow W_-e^\alpha=W_+e^{-\alpha}
+\Longleftrightarrow e^{2\alpha}=\frac{W_+}{W_-}
+\Longleftrightarrow
+\alpha^\star=\frac12\log\frac{W_+}{W_-}.
+\]
+严格凸性保证该驻点是唯一全局极小点。若某一组权重为零，则有限驻点不存在，最优只在$\alpha\to\pm\infty$的边界极限达到。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S04-02}
+设$W_+=9,W_-=1$，求最优$\alpha$和最小目标值。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S04-02}
+\begin{chapterexercisesolution}{ex:V3-C03-S04-02}
+这里$W_+=9>0$、$W_-=1>0$，故有限唯一最优系数为
+\[
+\alpha^\star
+=\frac12\log\frac{W_+}{W_-}
+=\frac12\log9
+=\log3.
+\]
+代回目标得到
+\[
+\begin{aligned}
+Q(\alpha^\star)
+&=9e^{-\log3}+e^{\log3}\\
+&=\frac93+3\\
+&=6
+=2\sqrt{W_+W_-}.
+\end{aligned}
+\]
+并且$Q''(\alpha^\star)=6>0$，与唯一严格极小点的结论一致。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S05-01}
+当前预测为$(2,1,4)$，真实响应为$(3,0,5)$。求残差；若一棵只有单叶的树拟合这些残差，求叶值和更新后的预测。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S05-01}
+\begin{chapterexercisesolution}{ex:V3-C03-S05-01}
+令$y=(3,0,5)^{\mathsf T}$、$f=(2,1,4)^{\mathsf T}$。平方损失残差为
+\[
+r=y-f=(1,-1,1)^{\mathsf T}.
+\]
+单叶覆盖全部三个样本，其最优常数是
+\[
+c=\frac13\sum_{i=1}^{3}r_i
+=\frac{1-1+1}{3}=\frac13.
+\]
+对收缩率$0<\nu\leq1$，状态更新为
+\[
+f^+=f+\nu c\mathbf1
+=\left(2+\frac\nu3,\ 1+\frac\nu3,\ 4+\frac\nu3\right)^{\mathsf T}.
+\]
+特别地，$\nu=1$时$f^+=(7/3,4/3,13/3)^{\mathsf T}$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S05-02}
+证明固定叶区域$R$时，平方损失最优叶值是该区域残差均值，并说明区域为空时为何不能使用该公式。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S05-02}
+\begin{chapterexercisesolution}{ex:V3-C03-S05-02}
+令叶区域索引集$I_R=\{i:x_i\in R\}$。当$|I_R|>0$时，叶值子问题为
+\[
+\min_{c\in\mathbb R}Q(c),
+\qquad
+Q(c)=\frac12\sum_{i\in I_R}(r_i-c)^2.
+\]
+最优性条件给出
+\[
+\begin{aligned}
+Q'(c)&=-\sum_{i\in I_R}(r_i-c)=0\\
+&\Longleftrightarrow
+c^\star=\frac1{|I_R|}\sum_{i\in I_R}r_i,\\
+Q''(c)&=|I_R|>0.
+\end{aligned}
+\]
+因此残差均值是唯一最优叶值。若$I_R=\varnothing$，则
+\[
+Q(c)\equiv0,
+\qquad
+\frac1{|I_R|}\sum_{i\in I_R}r_i=\frac{0}{0}\ \text{未定义},
+\]
+叶值不可识别，树构造必须禁止空叶或删除该区域。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S06-01}
+分别求平方损失$L=(y-f)^2/2$和二类逻辑损失$L=\log(1+e^{-2yf})$关于$f$的伪残差。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S06-01}
+\begin{chapterexercisesolution}{ex:V3-C03-S06-01}
+伪残差定义为损失关于当前预测的负梯度：
+\[
+r=-\frac{\partial L(y,f)}{\partial f}.
+\]
+对平方损失，得到
+\[
+L(y,f)=\frac12(y-f)^2
+\Longrightarrow
+\frac{\partial L}{\partial f}=f-y
+\Longrightarrow
+r=y-f.
+\]
+对$y\in\{-1,+1\}$的二类逻辑损失，得到
+\[
+\begin{aligned}
+L(y,f)&=\log(1+e^{-2yf}),\\
+\frac{\partial L}{\partial f}
+&=-\frac{2y e^{-2yf}}{1+e^{-2yf}}
+=-\frac{2y}{1+e^{2yf}},\\
+r&=\frac{2y}{1+e^{2yf}}.
+\end{aligned}
+\]
+两式均应在$f=f_{m-1}(x_i)$处逐样本计算。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C03-S07-01}
+延续例题，计算第二轮系数$\alpha_2$，并比较$\alpha_2$与$\alpha_1$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C03-S07-01}
+\begin{chapterexercisesolution}{ex:V3-C03-S07-01}
+由例题的第二轮分布$D_2=(1/6,1/6,1/6,1/2)$，且$G_2$只错分第1个样本，故
+\[
+e_2=D_2(1)=\frac16.
+\]
+系数计算链为
+\[
+\alpha_2
+=\frac12\log\frac{1-e_2}{e_2}
+=\frac12\log\frac{5/6}{1/6}
+=\frac12\log5.
+\]
+与第一轮比较，
+\[
+\alpha_2-\alpha_1
+=\frac12\log\frac53>0
+\Longrightarrow
+\alpha_2>\alpha_1.
+\]
+第二个分类器在其对应加权分布下错误率更低，因此获得更大表决权；不能用未加权错误率替代该比较。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V3-C19-CONCEPT-006 L1
+\paragraph{读前自检：本章结论与下一步。}提升方法章末由“弱学习器、加法模型、样本权重与伪残差”落到“平方损失拟合残差”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V3-C03-CH36}
+\SLChapterFiveSummary{弱学习器、加法模型、样本权重与伪残差}{指数损失前向分步导出AdaBoost系数、权重递推和训练误差乘积界}{平方损失拟合残差；一般损失拟合负梯度并用叶内线搜索确定步长}{需要把多个简单分类器或回归树组合成高表达模型时}{进入EM的隐变量迭代；提升模型选择仍须联合验证学习率、轮数与树复杂度}
+
+\phantomsection\label{struct:V3-C03-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{概念与算法：}能否区分样本权重、分类器权重、弱学习器与强学习器，并从$D_m$完整算到$G_m,e_m,\alpha_m,Z_m,D_{m+1}$，同时处理三个边界误差？未通过则回看第1、2节。
+  \item \textbf{证明：}能否从指示函数上界和权重连乘证明训练误差界？未通过则回看第3节。
+  \item \textbf{推导：}能否从指数损失的前向分步推导AdaBoost系数？未通过则回看第4节。
+  \item \textbf{树模型：}能否说明平方损失下为何拟合残差，以及一般损失下为何拟合伪残差？未通过则回看第5、6节。
+  \item \textbf{实践：}能否给出无测试泄漏的早停、调参与诊断方案？未通过则回看第7节。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

@@ -1,0 +1,11 @@
+element_id,role,source_line,declared_pt,graphics_scale,effective_pt,pdf_metadata_pt,manual_decision,manual_note
+TXT_NODE_OBJECT_HEADING,NODE_HEADING,12,10.5,1.0,10.5,10.460770,PASS,stage统一10.5pt并以粗体标示对象阶段；无scale或transform shape
+TXT_NODE_RELATION_HEADING,NODE_HEADING,13,10.5,1.0,10.5,10.460770,PASS,stage统一10.5pt并以粗体标示关系阶段；无整体缩放
+TXT_NODE_LOGIC_HEADING,NODE_HEADING,20,10.5,1.0,10.5,10.460770,PASS,stage统一10.5pt并以粗体标示逻辑阶段；有效字号高于9.5pt
+TXT_NODE_TASK_HEADING,NODE_HEADING,21,10.5,1.0,10.5,10.460770,PASS,stage统一10.5pt并以粗体标示任务阶段；与其他标题一致
+TXT_NODE_OBJECT_BODY,NODE_BODY,12,10.0,1.0,10.0,9.962640,PASS,局部fontsize明确10pt；PDF元数据0.037pt差按R168 advisory
+TXT_NODE_RELATION_BODY,NODE_BODY,13,10.0,1.0,10.0,9.962640,PASS,定义域和值域同一10pt父对象；内嵌箭头不改变文字缩放
+TXT_NODE_LOGIC_BODY,NODE_BODY,20,10.0,1.0,10.0,9.962640,PASS,局部fontsize明确10pt；无resizebox/scalebox/transform shape
+TXT_NODE_TASK_BODY,NODE_BODY,21,10.0,1.0,10.0,9.962640,PASS,局部fontsize明确10pt；与其余节点正文一致
+TXT_FEEDBACK_ANNOTATION,ANNOTATION,34,10.0,1.0,10.0,9.962640,PASS,反馈节点font明确10pt；灰色是语义层级编码而非字号缩小
+TXT_CAPTION,CAPTION,38,10.0,1.0,10.0,9.962640,PASS,caption局部无缩放；最终PDF实现对应10pt名义值且清晰协调

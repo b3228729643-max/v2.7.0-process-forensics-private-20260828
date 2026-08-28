@@ -1,0 +1,20 @@
+{
+  "audit_stage": "before dual manifests and WRITE_STOPPED",
+  "ordinary_file_count": 1493,
+  "ads_count": 0,
+  "ads": [],
+  "pyc_count": 0,
+  "cache_dir_count": 0,
+  "colon_filename_count": 0,
+  "current_ordinary_file_count_crosscheck": 1493,
+  "expected_final_ordinary_file_count": 1497,
+  "expected_new_files": [
+    "machine/final_filesystem_audit.json",
+    "PAYLOAD_MANIFEST.json",
+    "SHA256_MANIFEST.csv",
+    "WRITE_STOPPED.md"
+  ],
+  "normal_filename_rule": "No colon in any filename; every ID is resolved through id_safe_filename_map.csv",
+  "ads_rule": "Only unnamed NTFS data stream is permitted; any named ADS is a hard failure",
+  "cache_rule": "No __pycache__, .pyc, or .pyo is permitted"
+}

@@ -1,0 +1,101 @@
+{
+  "uid": "FIG-P602-01",
+  "review": "fresh isolated SA3 official R101",
+  "RESULT": "FAIL",
+  "FIGURE_STRICT_RESULT": "FAIL",
+  "PACKAGE_COMPLETENESS": "PASS",
+  "official_inputs": {
+    "pdf": {
+      "bytes": 4947496,
+      "sha256": "0870ff226dc383875c4a1b6eabb06aab942317da294d90d2864b3030d46df1a1",
+      "mtime_ns": 1787597833697911500,
+      "page_count": 814,
+      "target_physical_page": 651,
+      "target_printed_page": 638
+    },
+    "figure_source": {
+      "bytes": 2711,
+      "sha256": "18b88f4bc48a21d3fd1a246ac5b6909deeb19900a3d0721c65f9a44369444084",
+      "mtime_ns": 1787625127884934000
+    },
+    "chapter_source": {
+      "bytes": 105168,
+      "sha256": "00f3537ae9dd6738f1bab414d587f18870a6b08d64663283c6f9a3f3048e6ba7",
+      "mtime_ns": 1787625128206720800
+    }
+  },
+  "denominators": {
+    "objects": {
+      "total": 32,
+      "PASS": 32,
+      "FAIL": 0
+    },
+    "glyphs": {
+      "total": 175,
+      "PASS": 158,
+      "FAIL": 17
+    },
+    "unordered_pairs": {
+      "total": 496,
+      "PASS": 496,
+      "FAIL": 0,
+      "c_n_2": 496
+    },
+    "critical_pairs": {
+      "total": 17,
+      "PASS": 17,
+      "FAIL": 0
+    },
+    "peer": {
+      "total": 42,
+      "PASS": 36,
+      "FAIL": 6
+    },
+    "role": {
+      "total": 3,
+      "PASS": 2,
+      "FAIL": 1
+    },
+    "clip": {
+      "total": 32,
+      "PASS": 32,
+      "FAIL": 0
+    },
+    "mandatory_views": {
+      "total": 4,
+      "PASS": 4,
+      "FAIL": 0
+    },
+    "hard_gates": {
+      "total": 12,
+      "PASS": 8,
+      "FAIL": 4
+    }
+  },
+  "manifest": {
+    "path": "evidence_manifest.csv",
+    "bytes": 165191,
+    "sha256": "98a0431433333ee55db8531c2ef8be8c605a84cc57301d69f42b538f496f2c81",
+    "mtime_utc_100ns": "2026-08-25T04:43:04.2515450Z",
+    "mtime_unix_100ns": 17876329842515450,
+    "mtime_ns": 1787632984251545000,
+    "listed_rows": 1018,
+    "coverage": "all ordinary files except evidence_manifest.csv and WRITE_STOPPED.json",
+    "unlisted_exact": [
+      "evidence_manifest.csv",
+      "WRITE_STOPPED.json"
+    ],
+    "final_ordinary_file_count": 1020
+  },
+  "seal": {
+    "policy": "WRITE_STOPPED.json is the strictly last file written; all post-seal checks are read-only and are reported externally",
+    "post_marker_writes_authorized": 0,
+    "created_utc": "2026-08-25T04:43:25.044350Z"
+  },
+  "boundaries": {
+    "business_sources_read_only": true,
+    "tex_or_build_invoked": false,
+    "source_or_central_state_written": false,
+    "prior_or_sibling_evidence_read": false
+  }
+}

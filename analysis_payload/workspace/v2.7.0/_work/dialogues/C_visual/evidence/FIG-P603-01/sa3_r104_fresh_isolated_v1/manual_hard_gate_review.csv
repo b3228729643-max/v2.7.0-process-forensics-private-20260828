@@ -1,0 +1,13 @@
+reviewer,gate_id,gate,review_basis,decision,note
+SA3,GATE-001,TOFU_OR_MISSING_GLYPH,150 native/8x glyph cells,PASS,"No tofu boxes, missing characters, blank foreground masks, or unrecoverable strokes were observed."
+SA3,GATE-002,WRONG_CODEPOINT_OR_MATH_GLYPH,manual_glyph_review.csv|manual_math_rule_review.csv,PASS,"Digits, CJK text, r/alpha/pi/q/w/x/y, inequalities, delimiters, and punctuation all match their intended identities."
+SA3,GATE-003,ACTUAL_UNREADABILITY,full page|figure crop|standalone|grayscale|150 glyph cells,PASS,"All plotted labels, equations, caption text, and punctuation are readable at the required views."
+SA3,GATE-004,CLEARLY_SEVERE_FONT_IMBALANCE,32 peer-role groups|source font facts,PASS,"No obviously severe size imbalance exists; metadata and heterogeneous-glyph ratios noted in advisory rows do not impair reading."
+SA3,GATE-005,REAL_CLIPPING,machine_clip_inventory.csv|manual_clip_boundary_review.csv|per-object ledgers,PASS,"All 165 mapped objects are contained and visually complete; real clip count is zero."
+SA3,GATE-006,ILLEGAL_OVERLAP,13530 pairs|53 native/8x critical cells|manual_pair_review.csv,PASS,"No text-text, text-graphic, or text-border collision exists; all 259 raw graphic-graphic pixels are intended topology."
+SA3,GATE-007,GEOMETRY_AND_RELATIONSHIP,standalone render|15 graphic cells|17 topology pairs,PASS,"Axes, arrowheads, ticks, guides, marker, rising segment, plateau, and card preserve the intended graph relationships."
+SA3,GATE-008,FORMULA_SEMANTICS,manual_math_rule_review.csv|caption|source|body context,PASS,"General ratio, independent-proposal simplification, and alpha=min{1,r} curve are mathematically consistent."
+SA3,GATE-009,OBJECT_AND_TEXT_CONTENT,165-object inventory|all object cells,PASS,"All visible labels, caption glyphs, rules, borders, lines, and markers are present; two background fills are mapped and explicitly excluded from foreground masks."
+SA3,GATE-010,CAPTION_AND_BODY_CONSISTENCY,full-page view|caption|necessary V5-C03 context,PASS,"Caption states the MH truncation and both ratios, matching the graph and surrounding explanation of r<1 versus r≥1."
+SA3,GATE-011,ACTUAL_RENDER_AND_VIEW,manual_view_review.csv,PASS,"Full page, native figure, native standalone, grayscale, overlay, glyph sheets, graphic sheets, and pair sheets were all opened and reviewed."
+SA3,GATE-012,R168_SCOPE,strict protocol plus user R168 rule,PASS,"Minor point-size metadata, peer taxonomy ratios, and subpixel topology are advisory only; none rises to a hard R168 defect."

@@ -1,0 +1,26 @@
+RESULT: FAIL
+
+FIGURE_ID = FIG-P126-01  
+ROUND = STRICT_R1  
+OFFICIAL_PAGE = R90 physical page 137  
+
+SOURCE_FONT_PASS = false  
+PIXEL_HEIGHT_PASS = false  
+SAME_CLASS_RATIO_PASS = true  
+ROLE_RATIO_PASS = false  
+OVERLAP_PIXEL_COUNT = 73  
+OVERLAP_OBJECT_PAIR_COUNT = 5  
+CLIP_PIXEL_COUNT = 0  
+MIN_TEXT_CLEARANCE_PX = 0  
+MIN_INDEPENDENT_TEXT_TEXT_CLEARANCE_PX = 38.319  
+MIN_NONOVERLAP_TEXT_GRAPHIC_CLEARANCE_PX = 1.000  
+VISUAL_HARMONY_PASS = false  
+MATH_SEMANTICS_PASS = false  
+TEXT_CONSISTENCY_PASS = false  
+GRAYSCALE_PASS = false  
+PAGE_INTEGRATION_PASS = true  
+TECHNICAL_BUILD_PASS = true  
+
+失败主因：9 个基准文字元素低于 9.5pt；步骤 2/7 与 `x*` 上标低于像素门槛；5 个对象对共有 73 个非法重叠像素，另有步骤 4/6 到内层等高线仅 2px/1px；字号角色比失衡；轴对齐等高线与正文“主轴不对齐”及精确坐标 `argmin` 轨迹不一致。
+
+完整证据与 SA2 修复坐标见 `FIG-P126-01-SA1-STRICT-R1.md`。

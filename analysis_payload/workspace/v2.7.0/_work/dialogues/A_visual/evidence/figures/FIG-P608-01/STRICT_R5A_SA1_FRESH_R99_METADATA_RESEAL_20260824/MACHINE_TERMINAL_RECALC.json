@@ -1,0 +1,114 @@
+{
+  "C_N_2_expected": 14365,
+  "N": 170,
+  "actual_execution_route": "SA1=gpt-5.6-terra/max",
+  "checks": {
+    "all_foreground_paths_accounted": true,
+    "all_masks_nonempty": true,
+    "all_object_files_exist": true,
+    "all_pairs_pass": true,
+    "calibration_artifacts_exist": true,
+    "candidate_identity_locked": true,
+    "character_mapping_closed": true,
+    "contact_coverage_closed": true,
+    "critical_pair_review_closed": true,
+    "four_required_views_exist": true,
+    "four_view_manual_pass": true,
+    "manual_mask_integrity": true,
+    "manual_object_review_closed": true,
+    "math_rules_accounted": true,
+    "pair_universe_complete": true,
+    "pixel_height_pass": false,
+    "preliminary_machine_counts_recomputed": true,
+    "punctuation_calibrated": true,
+    "rawdict_to_texttrace_closed": true,
+    "role_e_ratio_pass": true,
+    "role_panel_manual_pass": true,
+    "same_class_d_ratio_pass": true,
+    "semantic_consistency_pass": true,
+    "source_font_control_coverage": true,
+    "source_font_pass": true,
+    "source_scale_control_pass": true,
+    "text_crop_edge_clearance": true,
+    "text_measurement_overlay_exists": true,
+    "three_colour_vision_manual_pass": true,
+    "three_colour_vision_views_exist": true,
+    "unique_object_ids": true,
+    "zero_clip": true,
+    "zero_final_overlap": true
+  },
+  "critical_pair_rows": 13,
+  "design_pixel_failures": [
+    {
+      "element_id": "GLYPH_0025",
+      "height_px": "10",
+      "reason": "H_INK_PX 10 < 15",
+      "sample": "𝑡",
+      "script_class": "NATURAL_SCRIPT_LATIN_LOWER",
+      "threshold_px": "15"
+    },
+    {
+      "element_id": "GLYPH_0056",
+      "height_px": "10",
+      "reason": "H_INK_PX 10 < 15",
+      "sample": "𝑡",
+      "script_class": "NATURAL_SCRIPT_LATIN_LOWER",
+      "threshold_px": "15"
+    }
+  ],
+  "final_illegal_overlap_pixels": 0,
+  "glyph_rows": 112,
+  "handoff_id": "A-R99-P608-SA1-FRESH-R5A-METADATA-RESEAL-20260824",
+  "manual_object_rows": 170,
+  "metadata_reseal": {
+    "integrity_ledger": "reused_evidence_integrity.csv",
+    "no_audit_rerun": true,
+    "no_latex_or_graphics_source_change": true,
+    "no_pdf_rerender": true,
+    "origin_file_count": 799,
+    "packaging_only": true,
+    "replaced_terminal_metadata_files": [
+      "MACHINE_TERMINAL_RECALC.json",
+      "RESULT.txt",
+      "WRITE_STOPPED",
+      "after_visual_acceptance.md",
+      "manifest.json"
+    ],
+    "reused_bytes": 12216514,
+    "reused_file_count": 794,
+    "reused_file_mismatch_count": 0,
+    "strict_latest": true,
+    "strict_latest_scope": "FIG-P608-01 R5/R5A only; R5 is quarantined for timestamp-order defect"
+  },
+  "model_route": {
+    "SA1": "gpt-5.6-terra/max"
+  },
+  "origin_handoff_id": "A-R99-P608-SA1-FRESH-20260824",
+  "pair_rows": 14365,
+  "path_rows": 58,
+  "pre_occlusion_candidate_pixel_pair_sum": 99,
+  "r5_quarantine": {
+    "bottom_evidence_decision_rejected": false,
+    "exact_tie_verified": true,
+    "observed_last_write_ns": {
+      "MACHINE_TERMINAL_RECALC.json": 1787587006035584500,
+      "RESULT.txt": 1787587006035584500,
+      "WRITE_STOPPED": 1787587006035584500,
+      "after_visual_acceptance.md": 1787587006035584500,
+      "manifest.json": 1787587006035584500
+    },
+    "observed_last_write_utc": {
+      "MACHINE_TERMINAL_RECALC.json": "2026-08-24T15:56:46+00:00",
+      "RESULT.txt": "2026-08-24T15:56:46+00:00",
+      "WRITE_STOPPED": "2026-08-24T15:56:46+00:00",
+      "after_visual_acceptance.md": "2026-08-24T15:56:46+00:00",
+      "manifest.json": "2026-08-24T15:56:46+00:00"
+    },
+    "origin_package": "STRICT_R5_SA1_FRESH_R99_20260824",
+    "reason": "R5 WRITE_STOPPED LastWriteTimeUtc is exactly tied with MACHINE_TERMINAL_RECALC.json, manifest.json, after_visual_acceptance.md, and RESULT.txt; it is therefore quarantined as non-strict sealing only."
+  },
+  "result": "FAIL_TO_SA2",
+  "strict_latest": true,
+  "terminal_recalculation_time": "2026-08-24T23:56:46+08:00",
+  "write_stopped_next": true
+}

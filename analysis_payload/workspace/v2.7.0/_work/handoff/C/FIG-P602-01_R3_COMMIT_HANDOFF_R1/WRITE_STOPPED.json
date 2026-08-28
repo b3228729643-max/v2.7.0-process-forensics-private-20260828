@@ -1,0 +1,33 @@
+{
+  "schema": "P602_R3_COMMIT_HANDOFF_WRITE_STOPPED_V1",
+  "status": "P602_R3_SEALED_READY_FOR_MAIN",
+  "uid": "FIG-P602-01",
+  "write_stopped": true,
+  "sealed_utc": "2026-08-25T08:53:40.531561Z",
+  "root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\handoff\\C\\FIG-P602-01_R3_COMMIT_HANDOFF_R1",
+  "ordinary_files_expected": 5,
+  "manifest_rows": 3,
+  "unique_unlisted": [
+    "evidence_file_manifest.csv",
+    "WRITE_STOPPED.json"
+  ],
+  "canonical_recordset_sha256": "99EEB0B49834E3FAF1BA4FB8C14737250ED834EE35215C9F2EF9D826ABCD57C6",
+  "manifest_bytes": 430,
+  "manifest_sha256": "24E9E4F2301E0F9609B861AD5570D60B7B609F9F93A0579BEDD84E1AE3CA4F0D",
+  "identity_sha256": "076CA36AF01DE4EB13C176448B004E8D5AE98466EA3BB5DA584C26194DFFA6A9",
+  "handoff_sha256": "F6111D2A9638DFBB40194761B971000191A5511199549ECB2A193DF64747C270",
+  "commit_sha": "95ab454ce5846daba9b33dda2d5f68a6f993a1ef",
+  "parent_sha": "eea4060c5229168e2b973bbaea81cf391e7a9dfd",
+  "source_sha256": "6C4E8F156709C0FF384F9E7B7F2BD5D9CB586E24206BF0BCD2E58933ED3DB47D",
+  "candidate_pdf_sha256": "68188DAAAF9B3C4233D5A032C3D8BE20A73B51D5E6058D0E1C12FDE6471093E7",
+  "strict_original_route": "PASS",
+  "r168_user_route": "PASS",
+  "unresolved": "NONE",
+  "tex_disabled": true,
+  "central_state_written": false,
+  "central_inventory_written": false,
+  "second_commit_performed": false,
+  "fresh_role_started": false,
+  "next_business_source_started": false,
+  "post_seal_writes_expected": 0
+}

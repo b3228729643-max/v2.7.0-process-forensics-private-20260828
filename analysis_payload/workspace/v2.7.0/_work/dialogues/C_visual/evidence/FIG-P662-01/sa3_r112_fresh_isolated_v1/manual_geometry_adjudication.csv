@@ -1,0 +1,11 @@
+GEOMETRY_ID,SCOPE,MANUAL_DECISION,MEASUREMENT_OR_OBSERVATION,MANUAL_NOTE
+G01,input_stack,CLEAR,"Three rounded input nodes share left alignment and comparable widths; ellipsis centered between O03 and O05.","No node is clipped or visually displaced."
+G02,fanin,CLEAR,"O18/O19/O20 have three distinct arrowheads and converge on separate points at O08's left border.","Native1x and NN8x show no arrow-text strike or ambiguous direction."
+G03,main_flow,CLEAR,"O08->O09->O11->O12 follows one horizontal left-to-right axis.","All main arrows remain outside reader text and keep visible arrowheads."
+G04,auxiliary_evidence,CLEAR,"O24 and O25 descend from O08/O11 and terminate on O16's top border.","The dashed paths do not cross each other or enter the independence formula."
+G05,simplex_symbol,CLEAR,"O14 is strictly inside O13; native edge-to-point separation is plainly visible.","The point is a geometric member cue, not a collision with the triangle boundary."
+G06,simplex_label,CLEAR,"O15 remains visibly separated from O13 in NN8x evidence.","The 6-pixel machine candidate is rectangular-mask capture; semantic inks do not meet."
+G07,node_internal_clearance,CLEAR,"Conservative minimum reader-text-to-node-border clearance = 6 px at the lower Beta formula/border region.","No border cuts a glyph and every node retains visible padding."
+G08,caption_clearance,CLEAR,"Nearest artwork/caption bbox gap = 12.88 px for O16/O26 and O17/O26.","Caption is distinct from the diagram and is not clipped."
+G09,page_integration,CLEAR,"Figure occupies the center band between proof closure and the following construction/moment content.","No orphan, overflow, abnormal white block, or page-edge clipping."
+G10,clip_scan,CLEAR,"All 26 object extents and all 31 text/glyph extents are complete in native page pixels.","CLIP_PIXEL_COUNT=0."

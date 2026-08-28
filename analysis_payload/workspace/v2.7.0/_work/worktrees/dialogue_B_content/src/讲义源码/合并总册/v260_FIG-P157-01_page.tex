@@ -1,0 +1,19 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 1 册}{统计学习方法讲义 v2.6.0}{数学基础与统计学习基本理论}
+\begin{document}
+\setcounter{page}{182}
+\setcounter{chapter}{10}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{模型评估、选择与泛化}
+\begin{optimizationbox}
+\textbf{优化解释。}$\ell_2$惩罚提高光滑目标的曲率并缓解病态；$\ell_1$目标在零点不可微，需用次梯度、近端或坐标方法。正则化强度既改变统计偏差与方差，也改变数值条件，不能只按优化收敛速度选择。
+\end{optimizationbox}
+\begingroup
+\tikzset{every picture/.append style={scale=1.12}}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C10/fig_v1_c10_complexity.tex}
+\endgroup
+在\cref{fig:V1-C10-complexity}上选择容量时只使用验证曲线和预先约定的规则；训练误差持续下降并不构成增大容量的证据。候选锁定后还需在未参与选择的数据上报告一次最终误差。
+\end{document}
+

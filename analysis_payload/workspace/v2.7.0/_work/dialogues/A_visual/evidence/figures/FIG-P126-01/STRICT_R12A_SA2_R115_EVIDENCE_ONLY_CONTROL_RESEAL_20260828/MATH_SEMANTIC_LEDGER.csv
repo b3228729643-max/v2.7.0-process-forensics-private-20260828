@@ -1,0 +1,11 @@
+check_id,subject,manual_decision,calculation_or_observation
+M001,common quadratic contours,PASS,All four contours are level sets of f(x1 x2)=0.5*x1^2+x1*x2+x2^2 with only the level radius changed.
+M002,positive definite Hessian,PASS,Hessian [[1 1][1 2]] has determinant1 and eigenvalues0.3819660113 and2.6180339887 both positive.
+M003,vertical coordinate minimizers,PASS,q0->q1 q2->q3 q4->q5 q6->q7 keep x1 fixed and satisfy partial f/partial x2=x1+2*x2=0 at q1 q3 q5 q7.
+M004,horizontal coordinate minimizers,PASS,q1->q2 q3->q4 q5->q6 keep x2 fixed and satisfy partial f/partial x1=x1+x2=0 at q2 q4 q6.
+M005,objective descent,PASS,f(q0..q7)=2.92 2.56 1.28 0.64 0.32 0.16 0.08 0.04 and is strictly decreasing at every update.
+M006,axis-alternating path,PASS,Current blue and teal update arrows alternate horizontal and vertical moves exactly as coordinate descent requires.
+M007,optimum semantics,PASS,x*=0 is the unique minimizer of the positive definite quadratic and the plotted star is at the origin.
+M008,final-point semantics,PASS,q7=(-0.4 0.2) is a strict approximation with f=0.04 and is not falsely drawn as the optimum.
+M009,caption and axis semantics,PASS,x1/x2 axis labels and the caption statement that each substep changes one coordinate agree with the plotted trajectory.
+M010,legend role semantics,FAIL,The rendered x2 legend swatch is continuous and therefore does not communicate the segmented/dashed vertical-update role required by the source intent.

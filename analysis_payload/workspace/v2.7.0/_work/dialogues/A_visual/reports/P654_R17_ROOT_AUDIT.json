@@ -1,0 +1,89 @@
+{
+  "figure_uid": "FIG-P654-01",
+  "round": "STRICT_R17_SA2_R16B_R102_DIRECT_BUILD_20260825",
+  "root_decision": "ROOT_ACCEPT_R17_FAIL_TO_SA2_SOURCE_R3_REQUIRED",
+  "sealed_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R17_SA2_R16B_R102_DIRECT_BUILD_20260825",
+  "ordinary_file_count": 2054,
+  "payload_file_count": 2051,
+  "control_file_count": 3,
+  "extension_counts": {
+    "payload": {
+      ".aux": 1,
+      ".csv": 13,
+      ".fls": 1,
+      ".gz": 24,
+      ".idx": 2,
+      ".json": 296,
+      ".log": 3,
+      ".lua": 21,
+      ".luc": 44,
+      ".md": 1,
+      ".pdf": 1,
+      ".png": 1639,
+      ".ps1": 1,
+      ".py": 4
+    },
+    "control": {
+      ".csv": 1,
+      ".json": 2
+    },
+    "ordinary": {
+      ".aux": 1,
+      ".csv": 14,
+      ".fls": 1,
+      ".gz": 24,
+      ".idx": 2,
+      ".json": 298,
+      ".log": 3,
+      ".lua": 21,
+      ".luc": 44,
+      ".md": 1,
+      ".pdf": 1,
+      ".png": 1639,
+      ".ps1": 1,
+      ".py": 4
+    }
+  },
+  "manifest_csv_rows": 2051,
+  "manifest_json_rows": 2051,
+  "csv_json_field_mismatches": 0,
+  "manifest_fs_mismatches": 0,
+  "parse_failures": 0,
+  "ads_nondefault_streams": 0,
+  "forbidden_cache_or_bytecode": 0,
+  "symlinks": 0,
+  "readonly_failures": 0,
+  "write_stopped_ticks": "639232377685894293",
+  "non_strictly_earlier_files": 0,
+  "postseal_changes_from_readonly_audit": 0,
+  "hard_assertions": {
+    "ordinary_equals_payload_plus_3": true,
+    "wstop_payload_count": true,
+    "wstop_control_count": true,
+    "wstop_ordinary_total": true,
+    "wstop_manifest_csv_identity": true,
+    "wstop_manifest_json_identity": true,
+    "extension_equations": true,
+    "ads_zero": true,
+    "forbidden_zero": true,
+    "symlink_zero": true,
+    "all_files_readonly": true,
+    "write_stopped_strictly_latest": true,
+    "result_denominators": true,
+    "result_route_is_fail": true
+  },
+  "accepted_content_route": {
+    "glyph_failures": [
+      "G0040",
+      "G0059",
+      "G0064",
+      "G0065"
+    ],
+    "pair_failures": [
+      "P06198",
+      "P06219"
+    ],
+    "source_role_ratio_failure": true,
+    "status": "SA2_CONTINUE_NO_COMMIT_NO_FRESH_ROLE"
+  }
+}

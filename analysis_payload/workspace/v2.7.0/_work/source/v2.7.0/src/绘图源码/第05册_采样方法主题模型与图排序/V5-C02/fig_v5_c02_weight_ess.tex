@@ -1,0 +1,41 @@
+% v2.3.1 figure UID: FIG-P582-02
+% Proposed post-v2.3.1 polish for FIG-P582-02: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P582-02/.style={font=\fontsize{9.2pt}{11pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{slfig-FIG-P582-02-axis/.style={
+  axis line style={line width=.65pt},tick style={line width=.55pt},
+  tick label style={font=\fontsize{8.6pt}{10.3pt}\selectfont},
+  label style={font=\fontsize{9.6pt}{11.5pt}\selectfont},clip=false}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P582-02]
+\begin{axis}[slfig-FIG-P582-02-axis,ybar,width=10.2cm,height=5.6cm,xmin=.5,xmax=4.5,ymin=0,ymax=.98,
+  bar width=14pt,axis lines=left,xlabel={排序后样本编号},ylabel={归一化权重},
+  xtick={1,2,3,4},ytick={0,.25,.5,.9},
+  clip=false]
+  \addplot[draw=SLBlue,fill=SLBlue!8,pattern=north east lines,
+    pattern color=SLBlue!68,line width=.95pt]
+    coordinates {(1,.90)};
+  \addplot[draw=SLTeal,fill=SLTeal!28,line width=.75pt]
+    coordinates {(2,.05)(3,.03)(4,.02)};
+  \draw[draw=SLGray,line width=.55pt,densely dashed]
+    (axis cs:.5,.25)--(axis cs:4.5,.25);
+  \node[anchor=south west,font=\fontsize{9.2pt}{11pt}\selectfont,text=SLGray!90!black]
+    at (axis cs:2.15,.30) {理想均匀权重 $1/4$};
+  \node[font=\fontsize{9.2pt}{11pt}\selectfont,anchor=south,yshift=1pt]
+    at (axis cs:1,.90) {.90};
+  \node[font=\fontsize{9.2pt}{11pt}\selectfont,anchor=south,yshift=1pt]
+    at (axis cs:2,.05) {.05};
+  \node[font=\fontsize{9.2pt}{11pt}\selectfont,anchor=south,yshift=1pt]
+    at (axis cs:3,.03) {.03};
+  \node[font=\fontsize{9.2pt}{11pt}\selectfont,anchor=south,yshift=1pt]
+    at (axis cs:4,.02) {.02};
+  \node[draw=SLRuleGray!85!black,line width=.55pt,rounded corners=2pt,fill=white,
+    align=center,font=\fontsize{9.4pt}{11.3pt}\selectfont,inner xsep=4.5pt,inner ysep=3.4pt]
+    at (axis cs:3.15,.72)
+    {$\displaystyle\mathrm{ESS}=\frac{1}{\sum_i w_i^2}\approx1.23$\\
+     \fontsize{9.2pt}{11pt}\selectfont 权重集中度指标，不等于可靠性证明};
+\end{axis}
+\end{tikzpicture}
+\caption{退化归一化权重 $0.90,0.05,0.03,0.02$；其启发式有效样本量约为 $1.23$，提示少数样本主导估计，但不能单独证明估计可靠}\label{fig:V5-C02-weight-ess}
+\end{figure}

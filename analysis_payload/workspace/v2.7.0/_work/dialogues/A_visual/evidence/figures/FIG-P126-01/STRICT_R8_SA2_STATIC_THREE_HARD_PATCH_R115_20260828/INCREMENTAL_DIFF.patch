@@ -1,0 +1,21 @@
+--- P126 source before R8 static patch
++++ P126 source after R8 static patch
+@@
+   \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,
+-    anchor=south west,xshift=4pt,yshift=12pt] at (q6) {6};
++    anchor=south east,xshift=-6pt,yshift=10pt,
++    fill=white,fill opacity=1,text opacity=1,inner sep=.8pt] at (q6) {6};
+   \node[font=\fontsize{8.6pt}{10.1pt}\selectfont,
+-    anchor=south east,xshift=-4pt,yshift=8pt] at (q7) {7};
++    anchor=east,xshift=-8pt,yshift=-2pt,
++    fill=white,fill opacity=1,text opacity=1,inner sep=.8pt] at (q7) {7};
+@@
+-  \addlegendimage{/pgfplots/legend image code/.code={
+-    \draw[draw=SLTeal,line width=1.05pt]
+-      (0cm,0cm)--(.08cm,0cm)
+-      (.18cm,0cm)--(.26cm,0cm)
+-      (.36cm,0cm)--(.44cm,0cm)
+-      (.54cm,0cm)--(.62cm,0cm);
+-  }}
++  \addlegendimage{draw=SLTeal,line width=1.05pt,
++    dash pattern=on .06cm off .09cm,line cap=butt}

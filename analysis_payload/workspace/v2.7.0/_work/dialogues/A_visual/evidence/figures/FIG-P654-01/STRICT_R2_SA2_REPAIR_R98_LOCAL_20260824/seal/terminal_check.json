@@ -1,0 +1,512 @@
+{
+  "figure_uid": "FIG-P654-01",
+  "handoff_id": "A-R130-P654-SA2-REPAIR-V2-20260824",
+  "route": "LOCAL_SA2_PASS_AWAIT_OFFICIAL_CANDIDATE_AND_FRESH_SA1",
+  "terminal_check": "PASS",
+  "failure_count": 0,
+  "failures": [],
+  "checks": {
+    "preseal_marker_absent": {
+      "pass": true,
+      "detail": "no WRITE_STOPPED exists before terminal"
+    },
+    "identity_handoff_route": {
+      "pass": true,
+      "detail": {
+        "handoff": "A-R130-P654-SA2-REPAIR-V2-20260824",
+        "route": "LOCAL_SA2_PASS_AWAIT_OFFICIAL_CANDIDATE_AND_FRESH_SA1"
+      }
+    },
+    "source_identity": {
+      "pass": true,
+      "detail": "8041DAF98B04D763958DA9C83AF3472FA346D003F0FDCEF13A42FE1AA046B5F8"
+    },
+    "r98_identity_declaration": {
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r98_fullbook\\main_full.pdf",
+        "sha256": "52FA2EF0769553C8B6FD4B8D3CBA5BE671FA0F3190591A596FB8B6512C108A41",
+        "expected_sha256": "52FA2EF0769553C8B6FD4B8D3CBA5BE671FA0F3190591A596FB8B6512C108A41",
+        "identity_match": true,
+        "bytes": 4934249,
+        "pages": 813,
+        "pdf_target_physical_page": 702,
+        "pdf_target_printed_label": "689",
+        "page_size_pt": [
+          595.2760009765625,
+          841.8900146484375
+        ],
+        "source_normalized_sha256": "01EA85F46A9567D7ED6CF88C92346F9BE317FAFDDCF1F7791C07B2A3ED3858EB",
+        "sealed_sa1_terminal_commit_reference": "7f65bd75ce94aee876aa25735e92214bb5ebe004",
+        "note": "Read-only official R98 baseline identity; it does not contain the SA2 source repair."
+      }
+    },
+    "r98_identity_recheck": {
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r98_fullbook\\main_full.pdf",
+        "bytes": 4934249
+      }
+    },
+    "local_page_pdf_identity": {
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R2_SA2_REPAIR_R98_LOCAL_20260824\\build\\page\\v260_FIG-P654-01_page.pdf",
+        "sha256": "AAE9D6338AEAA19283AB3D98EEABA1B8692ADE8F10A0E72DF51A59E5C194F763",
+        "bytes": 63722,
+        "pages": 1,
+        "printed_label": "685",
+        "page_size_pt": [
+          595.2760009765625,
+          841.8900146484375
+        ],
+        "drawing_objects": 21
+      }
+    },
+    "local_standalone_pdf_identity": {
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R2_SA2_REPAIR_R98_LOCAL_20260824\\build\\standalone\\v260_FIG-P654-01_standalone.pdf",
+        "sha256": "0DBCAC072E9F89C34BBA8C5A2F4B2BC786E11743314510678EDBBB0E50242024",
+        "bytes": 43376,
+        "pages": 1,
+        "page_size_pt": [
+          595.2760009765625,
+          841.8900146484375
+        ],
+        "drawing_objects": 21
+      }
+    },
+    "git_base_head_unchanged": {
+      "pass": true,
+      "detail": "e933f09e757d406954edd09f8ce0a326248c7da9"
+    },
+    "sole_unstaged_business_source": {
+      "pass": true,
+      "detail": {
+        "unstaged": [
+          "src/绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dependency_graph.tex"
+        ],
+        "staged": [],
+        "untracked": []
+      }
+    },
+    "source_diff_frozen": {
+      "pass": true,
+      "detail": {
+        "diff_sha": "FA6FA8505A45C1C35061B7E582D396A0083CF39E00F87489A74AF95763F34497",
+        "numstat": {
+          "insertions": 21,
+          "deletions": 23,
+          "files": 1
+        }
+      }
+    },
+    "commit_deferred_to_root": {
+      "pass": true,
+      "detail": true
+    },
+    "denominator_N116": {
+      "pass": true,
+      "detail": {
+        "glyphs": 95,
+        "graphics": 21,
+        "unique": 116
+      }
+    },
+    "pair_denominator_6670": {
+      "pass": true,
+      "detail": 6670
+    },
+    "pair_endpoints_known": {
+      "pass": true,
+      "detail": "all 6,670 endpoints resolve"
+    },
+    "math_rule_one": {
+      "pass": true,
+      "detail": [
+        "P006"
+      ]
+    },
+    "trace_and_coverage_closure": {
+      "pass": true,
+      "detail": {
+        "raw_trace_character_slots_in_crop": 95,
+        "invisible_space_exclusions": 0,
+        "unassigned_text_pixels": 0,
+        "foreground_coverage_residual_pixels": 0,
+        "foreground_coverage_excess_pixels": 0
+      }
+    },
+    "empty_masks_zero": {
+      "pass": true,
+      "detail": "all 116 masks nonempty"
+    },
+    "glyph_numeric_all_pass": {
+      "pass": true,
+      "detail": {
+        "numeric_failures": [],
+        "note": "natural mathematical subscripts use the protocol's NATURAL_SCRIPT pixel gate; declared source size remains 11.6pt"
+      }
+    },
+    "low_profile_zero_target": {
+      "pass": true,
+      "detail": {
+        "status": "PASS_ZERO_TARGET",
+        "target_count": 0,
+        "pending_reference_count": 0,
+        "basis": "The 95 visible glyph inventory contains no LOW_PROFILE_PUNCTUATION entries; no surrogate reference was needed."
+      }
+    },
+    "graphic_numeric_all_pass": {
+      "pass": true,
+      "detail": []
+    },
+    "object_mask_manual_purity": {
+      "pass": true,
+      "detail": "all 116 foreign=0/missing=0"
+    },
+    "glyph_manual_95": {
+      "pass": true,
+      "detail": 95
+    },
+    "graphic_manual_21": {
+      "pass": true,
+      "detail": 21
+    },
+    "pair_specific_whitelist_exact": {
+      "pass": true,
+      "detail": [
+        "PAIR_096_105",
+        "PAIR_097_107",
+        "PAIR_098_106",
+        "PAIR_098_108",
+        "PAIR_098_109",
+        "PAIR_098_113",
+        "PAIR_099_110",
+        "PAIR_099_111",
+        "PAIR_099_114",
+        "PAIR_100_112",
+        "PAIR_100_115",
+        "PAIR_102_113",
+        "PAIR_103_114",
+        "PAIR_104_116",
+        "PAIR_105_106",
+        "PAIR_107_108",
+        "PAIR_109_110",
+        "PAIR_111_112",
+        "PAIR_115_116"
+      ]
+    },
+    "raw_contacts_exact_critical": {
+      "pass": true,
+      "detail": {
+        "raw": [
+          "PAIR_096_105",
+          "PAIR_097_107",
+          "PAIR_098_109",
+          "PAIR_098_113",
+          "PAIR_099_110",
+          "PAIR_099_111",
+          "PAIR_099_114",
+          "PAIR_100_112",
+          "PAIR_100_115",
+          "PAIR_102_113",
+          "PAIR_103_114",
+          "PAIR_104_116",
+          "PAIR_105_106",
+          "PAIR_107_108",
+          "PAIR_109_110",
+          "PAIR_111_112",
+          "PAIR_115_116"
+        ],
+        "critical": [
+          "PAIR_096_105",
+          "PAIR_097_107",
+          "PAIR_098_109",
+          "PAIR_098_113",
+          "PAIR_099_110",
+          "PAIR_099_111",
+          "PAIR_099_114",
+          "PAIR_100_112",
+          "PAIR_100_115",
+          "PAIR_102_113",
+          "PAIR_103_114",
+          "PAIR_104_116",
+          "PAIR_105_106",
+          "PAIR_107_108",
+          "PAIR_109_110",
+          "PAIR_111_112",
+          "PAIR_115_116"
+        ]
+      }
+    },
+    "critical_manual_17": {
+      "pass": true,
+      "detail": 17
+    },
+    "all_pair_manual_6670": {
+      "pass": true,
+      "detail": "every pair has row-specific PASS adjudication"
+    },
+    "pair_machine_final_zero_failures": {
+      "pass": true,
+      "detail": {
+        "machine_failures": 0,
+        "final_failures": 0,
+        "final_overlap_sum": 0
+      }
+    },
+    "parent_bbox_clearance": {
+      "pass": true,
+      "detail": {
+        "rows": 55,
+        "minimum_px": 7.0
+      }
+    },
+    "D_E_zero_failures": {
+      "pass": true,
+      "detail": {
+        "elements": 19,
+        "D": 0,
+        "E": 0
+      }
+    },
+    "font_audit_all_pass": {
+      "pass": true,
+      "detail": {
+        "rows": 25,
+        "summary": [
+          "SOURCE_FONT_PASS",
+          "PIXEL_HEIGHT_PASS",
+          "LOW_PROFILE_REFERENCE_PASS",
+          "SAME_CLASS_RATIO_PASS",
+          "ROLE_RATIO_PASS",
+          "FONT_VISUAL_HARMONY_PASS"
+        ]
+      }
+    },
+    "pixel_report_95": {
+      "pass": true,
+      "detail": 95
+    },
+    "visual_ledger_complete": {
+      "pass": true,
+      "detail": 24
+    },
+    "crop_final_pass": {
+      "pass": true,
+      "detail": {
+        "status": "PASS",
+        "candidate_page_pdf_complete": true,
+        "candidate_page_pdf_note": "The compiled page PDF was complete in both rounds; only the earlier evidence-analysis rectangle clipped foreground.",
+        "rejected_trial_crop_fullpage_px": [
+          326,
+          435,
+          2237,
+          1025
+        ],
+        "rejected_trial_foreground_margins_px": {
+          "left": 0,
+          "top": 3,
+          "right": 29,
+          "bottom": 4
+        },
+        "rejected_trial_path": "trials/crop_clipped_r3/figure_crop_300dpi.png",
+        "rejected_trial_disposition": "excluded from final conclusions",
+        "final_crop_fullpage_px": [
+          310,
+          428,
+          2245,
+          1032
+        ],
+        "final_crop_grid_px": [
+          1935,
+          604
+        ],
+        "final_foreground_bbox_px": [
+          10,
+          10,
+          1898,
+          593
+        ],
+        "final_foreground_margins_px": {
+          "left": 10,
+          "top": 10,
+          "right": 37,
+          "bottom": 11
+        },
+        "final_foreground_edge_min_px": 10,
+        "final_text_bbox_edge_min_px": 30,
+        "foreground_gate_px": 5,
+        "text_gate_px": 6
+      }
+    },
+    "crop_trial_distinguished": {
+      "pass": true,
+      "detail": "trials/crop_clipped_r3/figure_crop_300dpi.png"
+    },
+    "standalone_page_consistency": {
+      "pass": true,
+      "detail": {
+        "translation": [
+          1.282012939453125,
+          37.26300048828125
+        ],
+        "max_text_residual": 0.01007080078125
+      }
+    },
+    "text_math_semantics": {
+      "pass": true,
+      "detail": {
+        "node_count_8": true,
+        "source_relation_count_7": true,
+        "posterior_formula_present": true,
+        "predictive_fraction_present": true,
+        "caption_unchanged": true,
+        "application_label_present": true,
+        "all_visible_parent_strings_exact": true,
+        "math_rule_separate_path": true
+      }
+    },
+    "build_logs_pass": {
+      "pass": true,
+      "detail": {
+        "status": "PASS",
+        "rows": [
+          {
+            "wrapper": "page",
+            "log": "build\\page\\v260_FIG-P654-01_page.log",
+            "hard_pattern_hits": [],
+            "output_written_one_page": true,
+            "status": "PASS"
+          },
+          {
+            "wrapper": "standalone",
+            "log": "build\\standalone\\v260_FIG-P654-01_standalone.log",
+            "hard_pattern_hits": [],
+            "output_written_one_page": true,
+            "status": "PASS"
+          }
+        ]
+      }
+    },
+    "compiled_pdfs_openable": {
+      "pass": true,
+      "detail": {
+        "page": true,
+        "standalone": true
+      }
+    },
+    "matrix_local_route": {
+      "pass": true,
+      "detail": {
+        "route": "LOCAL_SA2_PASS_AWAIT_OFFICIAL_CANDIDATE_AND_FRESH_SA1",
+        "local": true,
+        "official_evaluated": false
+      }
+    },
+    "matrix_all_gates": {
+      "pass": true,
+      "detail": "all local gate booleans true"
+    },
+    "result_exact": {
+      "pass": true,
+      "detail": "LOCAL_SA2_PASS_AWAIT_OFFICIAL_CANDIDATE_AND_FRESH_SA1"
+    },
+    "summary_final_route": {
+      "pass": true,
+      "detail": {
+        "N": 116,
+        "pairs": 6670,
+        "route": "LOCAL_SA2_PASS_AWAIT_OFFICIAL_CANDIDATE_AND_FRESH_SA1"
+      }
+    },
+    "required_root_files": {
+      "pass": true,
+      "detail": []
+    },
+    "root_render_copies_exact": {
+      "pass": true,
+      "detail": "all five root/render copies byte-identical"
+    },
+    "report_route_boundary": {
+      "pass": true,
+      "detail": "report states exact local route and scope limit"
+    },
+    "view_attestation_counts": {
+      "pass": true,
+      "detail": {
+        "method": "actual image opening at original detail; nearest-neighbor cards inspected without smoothing",
+        "status": "COMPLETE",
+        "global_views": 5,
+        "glyph_native_1x_contact_sheets": 24,
+        "glyph_nearest_8x_contact_sheets": 24,
+        "glyph_object_coverage": 95,
+        "graphic_native_1x_contact_sheets": 6,
+        "graphic_nearest_8x_contact_sheets": 6,
+        "graphic_object_coverage": 21,
+        "critical_pair_native_1x_contacts": 17,
+        "critical_pair_nearest_8x_cards": 17,
+        "critical_pair_ids": 17,
+        "trial_views_opened": 7
+      }
+    },
+    "attested_views_exist": {
+      "pass": true,
+      "detail": []
+    },
+    "contact_sheet_counts": {
+      "pass": true,
+      "detail": {
+        "glyph_native": 24,
+        "glyph_8x": 24,
+        "graphic_native": 6,
+        "graphic_8x": 6
+      }
+    },
+    "critical_directory_exact": {
+      "pass": true,
+      "detail": {
+        "expected": 119,
+        "actual": 119,
+        "extra": [],
+        "missing": []
+      }
+    },
+    "referenced_png_openable": {
+      "pass": true,
+      "detail": {
+        "count": 660,
+        "bad": []
+      }
+    },
+    "render_dimensions": {
+      "pass": true,
+      "detail": {
+        "full_page_200dpi.png": [
+          1654,
+          2339
+        ],
+        "figure_crop_300dpi.png": [
+          1935,
+          604
+        ],
+        "standalone_300dpi.png": [
+          1935,
+          604
+        ],
+        "grayscale_300dpi.png": [
+          1935,
+          604
+        ]
+      }
+    },
+    "safe_relative_names": {
+      "pass": true,
+      "detail": "no colon/ADS-style relative names"
+    }
+  },
+  "referenced_png_opened": 660,
+  "seal_order_next": "finalize report with terminal result, then MANIFEST.json, then WRITE_STOPPED absolute last"
+}

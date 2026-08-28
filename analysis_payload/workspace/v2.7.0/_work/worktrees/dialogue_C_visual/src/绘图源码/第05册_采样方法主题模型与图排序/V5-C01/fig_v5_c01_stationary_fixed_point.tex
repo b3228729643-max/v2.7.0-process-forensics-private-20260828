@@ -1,0 +1,53 @@
+% v2.3.1 figure UID: FIG-P556-01
+% Proposed post-v2.3.1 polish for FIG-P556-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P556-01/.style={every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{
+  slfig-FIG-P556-01-axis/.style={
+    tick label style={font=\fontsize{8.7pt}{10.2pt}\selectfont},
+    label style={font=\fontsize{9.4pt}{11.2pt}\selectfont},
+    clip=false,
+  },
+  slfig-FIG-P556-01-reference/.style={draw=SLGray,line width=.58pt,densely dashed},
+  slfig-FIG-P556-01-map/.style={draw=SLTeal,line width=1.02pt},
+  slfig-FIG-P556-01-cobweb-low/.style={draw=SLBlue,line width=.72pt},
+  slfig-FIG-P556-01-cobweb-high/.style={draw=SLGold,line width=.72pt,densely dashed},
+}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P556-01]
+\begin{axis}[slfig-FIG-P556-01-axis,
+  width=9.2cm,height=7.3cm,
+  xmin=0,xmax=1,ymin=0,ymax=1,
+  axis equal image,axis lines=left,
+  xlabel={$r_t$},ylabel={$r_{t+1}$},
+  xtick={0,.2,.4,.6,.8,1},ytick={0,.2,.4,.6,.8,1},
+  clip=false,
+]
+  \addplot[slfig-FIG-P556-01-reference,domain=0:1,samples=201] {x}
+    node[pos=.88,above left,font=\fontsize{9.3pt}{11.0pt}\selectfont] {$y=r$};
+  \addplot[slfig-FIG-P556-01-map,domain=0:1,samples=201] {.2+.5*x}
+    node[pos=.94,above,yshift=1.6mm,font=\fontsize{9.3pt}{11.0pt}\selectfont,text=SLTeal] {$y=0.2+0.5r$};
+  \addplot[only marks,mark=*,mark size=2.7pt,draw=SLGold,fill=SLGold]
+    coordinates {(.4,.4)} node[above left,xshift=-.8mm,yshift=.8mm,font=\fontsize{9.4pt}{11.2pt}\selectfont,text=SLGold] {$r^*=0.4$};
+
+  % r_0=0.05：实线 cobweb。
+  \addplot[slfig-FIG-P556-01-cobweb-low] coordinates {
+    (.05,0)(.05,.225)(.225,.225)(.225,.3125)(.3125,.3125)
+    (.3125,.35625)(.35625,.35625)(.35625,.378125)(.378125,.378125)};
+  \addplot[only marks,mark=square*,mark size=2.1pt,draw=SLBlue,fill=SLBlue]
+    coordinates {(.05,0)};
+  \node[anchor=west,yshift=-.6mm,font=\fontsize{9.2pt}{11.0pt}\selectfont,text=SLBlue] at (axis cs:.08,.075) {$r_0=.05$};
+
+  % r_0=0.90：虚线 cobweb。
+  \addplot[slfig-FIG-P556-01-cobweb-high] coordinates {
+    (.90,0)(.90,.65)(.65,.65)(.65,.525)(.525,.525)
+    (.525,.4625)(.4625,.4625)(.4625,.43125)(.43125,.43125)};
+  \addplot[only marks,mark=triangle*,mark size=2.5pt,draw=SLGold,fill=SLGold]
+    coordinates {(.90,0)};
+  \node[anchor=east,yshift=-1.2mm,font=\fontsize{9.2pt}{11.0pt}\selectfont,text=SLGold] at (axis cs:.87,.075) {$r_0=.90$};
+  \node[anchor=east,draw=SLRuleGray,line width=.65pt,rounded corners=2pt,fill=white,inner sep=2.2pt,align=center,font=\fontsize{9.2pt}{11.0pt}\selectfont]
+    at (axis cs:.74,.18) {斜率 $0.5<1$\\压缩映射};
+\end{axis}
+\end{tikzpicture}
+\caption{两状态概率单纯形上的平稳固定点：映射$r\mapsto0.2+0.5r$把任意初值逐步拉向$r_\star=0.4$}\label{fig:V5-C01-stationary-fixed-point}
+\end{figure}

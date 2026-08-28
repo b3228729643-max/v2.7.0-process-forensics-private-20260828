@@ -1,0 +1,8 @@
+view_id,artifact,manual_observation,manual_decision
+V01,"render/native300_full_p682.png","Full A4 page shows printed page 669 and Fig 33.2 in context; header footer body and figure are balanced with no page-edge clipping","PASS"
+V02,"render/native300_figure_caption_p682.png","Complete figure and full caption are present at native 300dpi with a unique left-to-right and top-to-bottom reading route","PASS"
+V03,"render/native300_figure_grayscale_p682.png","Solid dashed dotted and pale contour encodings remain distinguishable without color; text hierarchy stays readable","PASS"
+V04,"overlays/object_overlay_p682.png","All fourteen frozen semantic visible objects are covered; broad boxes overlap only because they bound intended composite regions","PASS"
+V05,"overlays/semantic_overlay_p682.png","The semantic groups account for every visible figure mark and caption without an orphan object","PASS"
+V06,"overlays/text_glyph_overlay_p682.png","All 151 extracted spans are boxed; base 9.564pt and caption 9.963pt text are clear and natural 6.695pt math scripts remain readable","PASS"
+V07,"rois/R01-R06 native1x plus nearest8x","All twelve ROI files were individually opened; pixel edges are continuous and no tofu missing glyph clipping or illegal overlap appears","PASS"

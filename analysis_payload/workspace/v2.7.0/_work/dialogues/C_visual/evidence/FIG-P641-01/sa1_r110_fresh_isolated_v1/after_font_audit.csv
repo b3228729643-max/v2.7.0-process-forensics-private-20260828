@@ -1,0 +1,6 @@
+source_element,role,source_lines,declared_effective_pt,current_pdf_readable,current_pdf_balanced,missing_tofu_wrong_codepoint,actual_unreadability,severe_size_imbalance,R168_classification,decision,manual_note
+NODE_LABELS,NODE_LABEL,"9-16",9.5,YES,YES,NO,NO,NO,HARD_GATE_SATISFIED,PASS,all node labels are complete and comfortably readable
+ANN_BLANKET,ANNOTATION,"40-41",9.2,YES,YES,NO,NO,NO,ADVISORY_ONLY,PASS,explicit 9.2pt is below the historical threshold but native1x and nearest8x show no actual defect
+FORMULA_CONDITIONAL,FORMULA_BLOCK,"42-44",9.5,YES,YES,NO,NO,NO,HARD_GATE_SATISFIED,PASS,conditional formula is complete and unambiguous
+ANN_IRRELEVANT,ANNOTATION,"45-46",9.5,YES,YES,NO,NO,NO,HARD_GATE_SATISFIED,PASS,two-line explanatory annotation is complete and balanced
+CAPTION,CAPTION,"49-50",10.0,YES,YES,NO,NO,NO,HARD_GATE_SATISFIED,PASS,caption and embedded math are complete and readable

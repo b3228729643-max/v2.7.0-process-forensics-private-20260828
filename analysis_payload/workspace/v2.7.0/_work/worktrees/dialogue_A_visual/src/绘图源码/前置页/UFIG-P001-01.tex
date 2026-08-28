@@ -1,0 +1,30 @@
+% v2.6.0 figure UID: UFIG-P001-01
+% Image-informed reverse drawing: preserve the five-stage route while raising
+% effective label size, print-safe stroke hierarchy, and grayscale redundancy.
+\tikzset{slfig-UFIG-P001-01/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+% Unnumbered title-page route; intentionally outside the figure counter.
+\begin{tikzpicture}[slfig-UFIG-P001-01,
+  font=\SLTitleCJK\fontsize{9.4pt}{11.2pt}\selectfont,
+  route station/.style={rounded corners=1.8mm,draw=SLBlue,line width=.85pt,
+    minimum width=27mm,minimum height=9.6mm,inner xsep=2mm,inner ysep=1.3mm,
+    align=center,text=SLInk},
+  route terminal/.style={route station,fill=SLGoldBG,draw=SLBlue,
+    line width=1.05pt,text=SLInk}
+]
+  \matrix (route) [matrix of nodes,column sep=5.6mm,row sep=0mm,nodes={anchor=center}] {
+    |[route station,fill=SLBlueBG,name=v1]| {\bfseries 1}\enspace 数学基础 &
+    |[route station,fill=SLTealBG,name=v2]| {\bfseries 2}\enspace 监督学习 &
+    |[route station,fill=SLBlueBG,name=v3]| {\bfseries 3}\enspace 优化与序列 &
+    |[route station,fill=SLTealBG,name=v4]| {\bfseries 4}\enspace 无监督 &
+    |[route terminal,name=v5]| {{\bfseries\color{SLGold}5}\enspace 采样与图} \\
+  };
+  \foreach \a/\b in {v1/v2,v2/v3,v3/v4,v4/v5}
+    \draw[-{Stealth[length=2.2mm,width=1.4mm]},draw=SLBlue,line width=.95pt,
+      shorten <=1.0mm,shorten >=1.0mm]
+      (\a.east)--(\b.west);
+  \coordinate (guideL) at ($(v1.south)+(0,-5.0mm)$);
+  \coordinate (guideR) at ($(v5.south)+(0,-5.0mm)$);
+  \draw[draw=SLRule,line width=.50pt] (guideL)--(guideR);
+  \node[fill=white,inner xsep=4pt,inner ysep=.5pt,font=\fontsize{9.0pt}{10.6pt}\selectfont,
+    text=SLGray] at ($(guideL)!.5!(guideR)$) {基础 $\rightarrow$ 模型 $\rightarrow$ 推断 $\rightarrow$ 应用};
+\end{tikzpicture}

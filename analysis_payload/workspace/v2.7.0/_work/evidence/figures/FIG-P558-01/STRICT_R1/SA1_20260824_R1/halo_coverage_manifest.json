@@ -1,0 +1,202 @@
+{
+  "halos": [
+    {
+      "drawing_index": 6,
+      "id": "HALO_06",
+      "mask": {
+        "bbox_px": [
+          701,
+          446,
+          729,
+          480
+        ],
+        "foreground_px": 950,
+        "path": "masks/halo_raw/HALO_06.png"
+      },
+      "seqno": 16
+    },
+    {
+      "drawing_index": 9,
+      "id": "HALO_09",
+      "mask": {
+        "bbox_px": [
+          684,
+          534,
+          747,
+          574
+        ],
+        "foreground_px": 2520,
+        "path": "masks/halo_raw/HALO_09.png"
+      },
+      "seqno": 21
+    },
+    {
+      "drawing_index": 12,
+      "id": "HALO_12",
+      "mask": {
+        "bbox_px": [
+          891,
+          439,
+          953,
+          480
+        ],
+        "foreground_px": 2542,
+        "path": "masks/halo_raw/HALO_12.png"
+      },
+      "seqno": 26
+    },
+    {
+      "drawing_index": 15,
+      "id": "HALO_15",
+      "mask": {
+        "bbox_px": [
+          908,
+          534,
+          936,
+          567
+        ],
+        "foreground_px": 924,
+        "path": "masks/halo_raw/HALO_15.png"
+      },
+      "seqno": 31
+    },
+    {
+      "drawing_index": 21,
+      "id": "HALO_21",
+      "mask": {
+        "bbox_px": [
+          1546,
+          439,
+          1609,
+          480
+        ],
+        "foreground_px": 2583,
+        "path": "masks/halo_raw/HALO_21.png"
+      },
+      "seqno": 46
+    },
+    {
+      "drawing_index": 24,
+      "id": "HALO_24",
+      "mask": {
+        "bbox_px": [
+          1546,
+          534,
+          1609,
+          574
+        ],
+        "foreground_px": 2520,
+        "path": "masks/halo_raw/HALO_24.png"
+      },
+      "seqno": 51
+    },
+    {
+      "drawing_index": 27,
+      "id": "HALO_27",
+      "mask": {
+        "bbox_px": [
+          1752,
+          439,
+          1816,
+          480
+        ],
+        "foreground_px": 2624,
+        "path": "masks/halo_raw/HALO_27.png"
+      },
+      "seqno": 56
+    },
+    {
+      "drawing_index": 30,
+      "id": "HALO_30",
+      "mask": {
+        "bbox_px": [
+          1753,
+          534,
+          1815,
+          574
+        ],
+        "foreground_px": 2480,
+        "path": "masks/halo_raw/HALO_30.png"
+      },
+      "seqno": 61
+    },
+    {
+      "drawing_index": 33,
+      "id": "HALO_33",
+      "mask": {
+        "bbox_px": [
+          1286,
+          486,
+          1349,
+          527
+        ],
+        "foreground_px": 2581,
+        "path": "masks/halo_raw/HALO_33.png"
+      },
+      "seqno": 66
+    },
+    {
+      "drawing_index": 36,
+      "id": "HALO_36",
+      "mask": {
+        "bbox_px": [
+          1682,
+          379,
+          1744,
+          420
+        ],
+        "foreground_px": 2542,
+        "path": "masks/halo_raw/HALO_36.png"
+      },
+      "seqno": 71
+    },
+    {
+      "drawing_index": 39,
+      "id": "HALO_39",
+      "mask": {
+        "bbox_px": [
+          2013,
+          486,
+          2075,
+          527
+        ],
+        "foreground_px": 2541,
+        "path": "masks/halo_raw/HALO_39.png"
+      },
+      "seqno": 76
+    },
+    {
+      "drawing_index": 48,
+      "id": "HALO_48",
+      "mask": {
+        "bbox_px": [
+          666,
+          657,
+          820,
+          701
+        ],
+        "foreground_px": 6776,
+        "path": "masks/halo_raw/HALO_48.png"
+      },
+      "seqno": 94
+    },
+    {
+      "drawing_index": 66,
+      "id": "HALO_66",
+      "mask": {
+        "bbox_px": [
+          1528,
+          657,
+          1682,
+          701
+        ],
+        "foreground_px": 6776,
+        "path": "masks/halo_raw/HALO_66.png"
+      },
+      "seqno": 132
+    }
+  ],
+  "pre_occlusion_pair_count": 4,
+  "pre_occlusion_pixel_pair_sum": 41,
+  "rule": "final visible vector mask = independent vector raw mask minus only later opaque white halo paths; raw pre-occlusion is preserved"
+}

@@ -1,0 +1,8 @@
+﻿PANEL_ID,ROLE,BASE_ROLE,BASE_MEDIAN_PX,ROLE_MEDIAN_PX,ROLE_RATIO,LOWER,UPPER,PASS_FAIL,REASON
+P1,AXIS_TITLE,TICK,23.000,36.000,1.56522,1.000,1.180,FAIL,"axis title: ratio outside [1.0,1.18]"
+P1,CAPTION_TEXT,TICK,23.000,38.000,N/A,N/A,N/A,PASS,page-caption role; source/pixel audit retained separately; not an in-graphic competitor
+P1,CLUSTER_LABEL,TICK,23.000,28.000,1.21739,0.950,1.100,FAIL,"ordinary node / label: ratio outside [0.95,1.1]"
+P1,CUT_ANNOTATION,TICK,23.000,35.000,1.52174,0.950,1.100,FAIL,"annotation: ratio outside [0.95,1.1]"
+P1,LEAF_LABEL,TICK,23.000,20.000,0.86957,0.950,1.100,FAIL,"ordinary label: ratio outside [0.95,1.1]"
+P1,TICK,TICK,23.000,23.000,1.00000,0.950,1.100,PASS,BASE
+ALL,CROSS_PANEL,N/A,N/A,N/A,N/A,N/A,1.10,PASS,single-panel figure; cross-panel comparison not applicable

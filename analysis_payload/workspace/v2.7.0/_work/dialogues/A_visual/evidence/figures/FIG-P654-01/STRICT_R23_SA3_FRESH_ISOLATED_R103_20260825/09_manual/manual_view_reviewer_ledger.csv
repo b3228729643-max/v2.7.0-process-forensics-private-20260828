@@ -1,0 +1,12 @@
+view_id,path,reviewer,actually_opened,native_or_navigation,legibility,tofu_or_missing_glyph,wrong_codepoint_or_shape,severe_font_imbalance,real_crop,illegal_overlap,grayscale_or_page_integration,decision,note
+VIEW-01,01_native_views/full_page_200dpi.png,SA3-FRESH-ISOLATED,true,native,clear,false,false,false,false,false,page_integration_pass,PASS,物理页704整页实际打开：图与页眉、题注、读图段和符号表层级自然，无喇宾夺主。
+VIEW-02,01_native_views/figure_crop_300dpi.png,SA3-FRESH-ISOLATED,true,native,clear,false,false,false,false,false,figure_and_caption_pass,PASS,原生300dpi图体+题注裁图实际打开：8节点、7关系、公式和题注均完整可读。
+VIEW-03,01_native_views/standalone_300dpi.png,SA3-FRESH-ISOLATED,true,native,clear,false,false,false,false,false,standalone_pass,PASS,原生300dpi图体裁图实际打开：图形无裁断，文字和路径均清楚。
+VIEW-04,01_native_views/grayscale_300dpi.png,SA3-FRESH-ISOLATED,true,native,clear,false,false,false,false,false,grayscale_pass,PASS,原生300dpi灰度裁图实际打开：主链、边框、虚线和文字仍有充足对比。
+VIEW-05,02_machine/after_text_measurement_overlay_300dpi.png,SA3-FRESH-ISOLATED,true,native_coordinate_overlay,clear,false,false,false,false,false,object_mapping_pass,PASS,93个文字bbox与21个graphic bbox叠加实际打开：对象归属、公式规则和箭路标识正确。
+VIEW-06,05_pairs/pair_matrix_1x.png,SA3-FRESH-ISOLATED,true,native_index_matrix,clear,false,false,false,false,false,pair_denominator_navigation_pass,PASS,114x114原生索引矩阵实际打开，对角与分类块结构正确。
+VIEW-07,05_pairs/pair_matrix_8x_nearest.png,SA3-FRESH-ISOLATED,true,8x_nearest_navigation,clear,false,false,false,false,false,pair_classification_pass,PASS,8x nearest pair矩阵实际打开：无红色非法重叠或橙色独立对硬净空失败。
+VIEW-08,06_relations/seven_relations_overlay_300dpi.png,SA3-FRESH-ISOLATED,true,native_coordinate_overlay,clear,false,false,false,false,false,seven_relations_pass,PASS,R1-R7实际路径着色overlay实际打开：4实线有向主链、2细解释线、1虚线有向应用边与源一致。
+VIEW-09,07_contact_sheets/glyph_contact_sheet_01-07.png,SA3-FRESH-ISOLATED,true,all_seven_sheets,clear,false,false,false,false,false,glyph_mapping_pass,PASS,7/7字形contact sheets全部实际打开，93/93 original—overlay—mask-only完整纯净。
+VIEW-10,07_contact_sheets/graphic_contact_sheet_01-03.png,SA3-FRESH-ISOLATED,true,all_three_sheets,clear,false,false,false,false,false,graphic_mapping_pass,PASS,3/3 graphic contact sheets全部实际打开，21/21边框/规则/路径膜完整纯净。
+VIEW-11,08_critical_rois/CRITICAL_0001-0014.png,SA3-FRESH-ISOLATED,true,all_fourteen_1x_8x,clear,false,false,false,false,false,intentional_connections_pass,PASS,14/14关键1x/8x ROI全部实际打开，所有0px/少量像素接触均为节点—边或同一箭身—箭头设计连接。

@@ -1,0 +1,23 @@
+{
+  "uid": "FIG-P583-01",
+  "handoff_id": "A-R103-P583-SA3-FRESH-ISOLATED-20260825",
+  "round": "R103",
+  "physical_page": 633,
+  "policy": "R168",
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P583-01\\STRICT_R2_SA3_FRESH_ISOLATED_R103_R168_20260825",
+  "payload_file_count_including_inventory": 225,
+  "directory_count_including_root": 9,
+  "external_file_count": 2,
+  "manifest_rule": "all evidence files except MANIFEST.csv, MANIFEST.sha256, temporary marker, and WRITE_STOPPED; plus external report and handoff",
+  "manifest_self_exclusions": [
+    "seal/MANIFEST.csv",
+    "seal/MANIFEST.sha256",
+    "seal/.WRITE_STOPPED.tmp",
+    "WRITE_STOPPED"
+  ],
+  "cache_directory_count": 0,
+  "bytecode_file_count": 0,
+  "alternate_data_stream_count": 0,
+  "verdict": "PASS",
+  "route": "SA3_PASS_READY_FOR_MAIN_A_LOCAL_PASS_ACCEPTANCE"
+}

@@ -1,0 +1,23 @@
+{
+  "canonical_schema_files": [
+    "full_page_200dpi.png",
+    "figure_crop_300dpi.png",
+    "standalone_300dpi.png",
+    "grayscale_300dpi.png",
+    "after_font_audit.csv",
+    "after_pixel_measurements.csv",
+    "after_overlap_report.csv",
+    "after_text_measurement_overlay_300dpi.png"
+  ],
+  "source_paths": {
+    "full_page_200dpi.png": "views\\full_page_200dpi.png",
+    "figure_crop_300dpi.png": "views\\figure_crop_300dpi.png",
+    "standalone_300dpi.png": "views\\standalone_300dpi.png",
+    "grayscale_300dpi.png": "views\\grayscale_300dpi.png",
+    "after_font_audit.csv": "machine\\source_font_audit.csv",
+    "after_pixel_measurements.csv": "machine\\glyph_measurements.csv",
+    "after_overlap_report.csv": "pairs\\all_unordered_pairs.csv"
+  },
+  "manual_fields_generated_by_script": false,
+  "manual_review_state": "NOT_WRITTEN_BY_MACHINE"
+}

@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 4 册}{统计学习方法讲义 v2.6.0}{无监督学习与矩阵分解}
+\begin{document}
+\setcounter{page}{542}
+\setcounter{chapter}{24}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{无监督学习概论}
+\begin{geometrybox}
+把 $N$ 个样本看作 $\mathbb{R}^{M}$ 中的点：聚类沿样本方向寻找分组，降维沿属性方向寻找低维表示，概率建模则用潜变量解释观测的联合生成。
+\end{geometrybox}
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C01/fig_v4_c01_three_structures.tex}
+使用\Cref{fig:V4-C01-three-structures}比较方法时，应先写明采用的是分组、压缩还是生成假设，再为右侧输出安排稳定性、留出指标或下游效用检验；训练目标本身不能替潜在结构命名语义。
+\end{document}

@@ -1,0 +1,18 @@
+object_id,sheet,cell,opened_at,reviewer,visible,semantic_correct,clipped,illegal_overlap,decision,note
+GFX-001,1,1,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,first horizontal axis/tick drawing is continuous across the four sample positions.
+GFX-002,1,2,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,first vertical axis/tick drawing is intact from zero through 0.7.
+GFX-003,1,3,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,second horizontal axis stroke reaches the right arrow base without truncation.
+GFX-004,1,4,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,x-axis arrowhead is complete and points right.
+GFX-005,1,5,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,second vertical axis stroke and ticks remain continuous and unclipped.
+GFX-006,1,6,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,y-axis arrowhead is complete and points upward.
+GFX-007,1,7,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,composite plot drawing shows all four stems markers blue running-mean segments and teal reference line.
+GFX-008,1,8,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,foreground plot-body drawing preserves the four-point down/up/down geometry without edge loss.
+GFX-009,1,9,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,teal dashed truth line and overlaid blue point sequence remain visually distinguishable.
+GFX-010,1,10,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,x=1 square/circle/stem/blue-segment junction is the intended same-sample topology.
+GFX-011,1,11,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,x=2 gray square and stem are complete at the low raw value.
+GFX-012,1,12,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,x=3 gray square and vertical raw-value stem are complete above the running mean.
+GFX-013,1,13,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,x=4 gray square and stem are complete at raw value .16.
+GFX-014,1,14,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,x=1 combined marker/stem/segment drawing is intact and expected to share ink at its own node.
+GFX-015,1,15,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,x=2 blue running-mean marker joins the descending and rising segments cleanly near the truth line.
+GFX-016,1,16,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,x=3 blue running-mean marker joins both adjacent segments while remaining distinct from gray stem.
+GFX-017,1,17,2026-08-27T00:30:38.5354481+08:00,A_ROOT_MANUAL_R6,TRUE,TRUE,FALSE,FALSE,PASS,x=4 blue marker and final segment remain visible against the dashed truth reference.

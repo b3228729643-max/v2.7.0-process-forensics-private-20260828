@@ -1,0 +1,43 @@
+% v2.6.0 figure UID: FIG-P657-01
+% Image-guided reverse redraw: preserve the six-node distribution grid, seven semantic relations and two legend samples.
+\tikzset{slfig-FIG-P657-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P657-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.4pt}{11.3pt}\selectfont,align=center},
+  dist/.style={draw=SLTeal,fill=SLBlue!6,rounded corners=2pt,
+    minimum width=30mm,minimum height=10.5mm,inner xsep=4pt,inner ysep=3pt,line width=.82pt},
+  special/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,
+    minimum width=30mm,minimum height=10.5mm,inner xsep=4pt,inner ysep=3pt,line width=.78pt},
+  contain/.style={-{Stealth[open,length=1.9mm,width=1.4mm]},line width=.58pt,draw=SLTextGray},
+  conj/.style={-{Stealth[length=2.15mm,width=1.55mm]},line width=1pt,draw=SLDeepBlue},
+  edgelabel/.style={font=\fontsize{8.8pt}{10.5pt}\selectfont,text=SLTextGray,inner sep=0pt},
+  alt={对象—关系—结论：六个常用分布之间同时存在特殊情形关系和共轭关系：Beta是二维Dirichlet，二项是二维多项，类别分布是单次多项，Bernoulli同时是单次二项；粗箭头表示共轭先验而不是集合包含}]
+\node[font=\fontsize{9.5pt}{11.4pt}\selectfont\bfseries,text=SLBlue] at (-5.30,2.15) {先验族};
+\node[dist] (dir) at (-2.35,2.15) {Dirichlet分布};
+\node[dist] (beta) at (2.80,2.15) {Beta分布\\$K=2$};
+\node[font=\fontsize{9.5pt}{11.4pt}\selectfont\bfseries,text=SLBlue] at (-5.30,0) {似然族};
+\node[dist] (multi) at (-2.35,0) {多项分布};
+\node[dist] (binom) at (2.80,0) {二项分布\\$K=2$};
+\node[font=\fontsize{9.5pt}{11.4pt}\selectfont\bfseries,text=SLBlue] at (-5.30,-2.15) {单次试验};
+\node[special] (cat) at (-2.35,-2.15) {类别分布\\$N=1$};
+\node[special] (bern) at (2.80,-2.15) {Bernoulli分布\\$K=2,N=1$};
+
+\draw[conj] (dir)--(multi);
+\draw[conj] (beta)--(binom);
+\draw[contain] (dir)--node[edgelabel,above=5.4pt]{特殊情形}(beta);
+\draw[contain] (multi)--node[edgelabel,above=5.4pt]{特殊情形}(binom);
+\draw[contain] (multi)--node[edgelabel,pos=.52,right=6pt]{$N=1$}(cat);
+\draw[contain] (binom)--node[edgelabel,pos=.52,right=6pt]{$N=1$}(bern);
+\draw[contain] (cat)--node[edgelabel,above=5.4pt]{$K=2$}(bern);
+\draw[conj] (4.90,1.15)--(6.15,1.15)
+  node[edgelabel,right=5.5pt]{共轭};
+\draw[contain] (4.90,.30)--(6.15,.30)
+  node[edgelabel,right=5.5pt]{特殊情形};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{六个常用分布之间同时存在特殊情形关系和共轭关系：Beta是二维Dirichlet，二项是二维多项，类别分布是单次多项，Bernoulli同时是单次二项；粗箭头表示共轭先验而不是集合包含}
+\label{fig:V5-C05-distribution-relations}
+\end{figure}

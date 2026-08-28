@@ -1,0 +1,26 @@
+{
+  "figure_id": "FIG-P654-01",
+  "handoff_id": "A-R141-P654-SA2-R11-EVIDENCE-RESEAL-20260825",
+  "terminal": "R11_SEALED_AWAIT_FRESH_ROOT",
+  "scope": "P654_R11_EVIDENCE_ONLY_RESEAL_SCOPE_GRANTED",
+  "base_copy": {
+    "source_excluded_total": 1055,
+    "excluded": ["PAYLOAD_MANIFEST.csv", "PAYLOAD_MANIFEST.json", "WRITE_STOPPED.json"],
+    "base_payload": 1052,
+    "destination_payload": 1052,
+    "path_mismatch": 0,
+    "bytes_mismatch": 0,
+    "sha256_mismatch": 0,
+    "mtime_utc_ticks_mismatch": 0
+  },
+  "actual_payload": 1057,
+  "ordinary_files": 1060,
+  "manifest_identity": {"csv_count": 1057, "json_count": 1057, "filesystem_count": 1057, "filesystem_csv_equal": true, "filesystem_json_equal": true, "csv_json_equal": true, "all_fields_equal": true},
+  "validator": {"status": "PASS", "sha256": "EED27FA5934B64CEFF18E26EB8DB5047A6DCC5FD5C9F78A47BFE576F13AD3909", "stdout_summary": "filesystem=1057,csv=1057,json=1057,path/bytes/sha256/mtime_utc_ticks=all equal"},
+  "parse": {"csv": 24, "json_excluding_write_stopped": 69, "png": 856, "pdf": 1, "all_pass": true},
+  "ads": {"non_default_streams": 0},
+  "cache": {"pyc": 0, "pycache": 0, "pytest": 0, "mypy": 0, "ruff": 0},
+  "ticks": {"method": "System.IO.FileInfo.LastWriteTimeUtc.Ticks.ToString(CultureInfo.InvariantCulture)", "float_rounding_or_tolerance": false, "non_write_stopped_mtime_after_stop": 0},
+  "tex": "none",
+  "write_stop": "2026-08-25T00:24:07.3904218Z"
+}

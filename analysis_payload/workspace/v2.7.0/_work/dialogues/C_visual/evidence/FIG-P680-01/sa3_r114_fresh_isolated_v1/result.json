@@ -1,0 +1,52 @@
+{
+  "handoff_id": "C-FIG-P680-01-R114-SA3-FRESH-ISOLATED-V1",
+  "actual_canonical_instance": "/root/sa3_fig_p680_r114_fresh_isolated_v1",
+  "uid": "FIG-P680-01",
+  "role": "SA3",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "xhigh",
+  "candidate": {
+    "pdf_physical_page": 729,
+    "printed_page": 716,
+    "pdf_bytes": 4967122,
+    "pdf_sha256": "C3BB9B1C7FC9D7AF9178CD33F227F24899AA505FAB81840DB6E3AD8BD6CE78A6",
+    "figure_source_bytes": 3144,
+    "figure_source_sha256": "76474E18D9E735283274AF614DFAE606BA3683BDA2539168AC91920DDE6E22BA",
+    "chapter_source_bytes": 120809,
+    "chapter_source_sha256": "7276DDB767246292D0924D1651D560975E0FE6D2ACE47CBAEC4EE45CEB4A0029"
+  },
+  "denominator": {
+    "reader_visible_objects": 14,
+    "text_glyph_groups": 15,
+    "pdf_glyph_records": 212,
+    "unordered_pairs": 91
+  },
+  "manual_closure": {
+    "objects_clear": 14,
+    "pairs_clear": 91,
+    "glyph_groups_clear": 15,
+    "math_clear": 3,
+    "semantic_clear": 9,
+    "page_checks_clear": 1
+  },
+  "r168_hard_failures": {
+    "missing_tofu_wrong_codepoint_or_math": false,
+    "unreadability_or_severe_imbalance": false,
+    "true_clipping": false,
+    "illegal_visible_ink_overlap": false,
+    "semantic_geometric_or_math_error": false
+  },
+  "measurements": {
+    "native300_ink_height_px_range": [34, 44],
+    "minimum_text_arrow_bbox_gap_px": 19.05,
+    "minimum_node_text_border_clearance_px": 23.21,
+    "minimum_independent_text_bbox_gap_px": 10.83,
+    "illegal_overlap_candidate_pixel_count": 0,
+    "true_illegal_overlap_pixel_count": 0,
+    "clip_pixel_count": 0,
+    "pixel_adjudication_status": "CLEAR"
+  },
+  "verdict": "PASS",
+  "sealed_return_token": "SA3_PASS_AWAIT_MAIN_C_LOCAL_PASS_ACCEPTANCE",
+  "scope_note": "Isolated SA3 verdict only; not self-counted as local, global, final-99, or release pass."
+}

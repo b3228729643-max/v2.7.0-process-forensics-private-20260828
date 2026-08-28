@@ -1,0 +1,10 @@
+view_id,reviewer,decision,path,observation
+VIEW_01_FULL_PAGE_NATIVE300,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/standalone_native_300dpi.png,One-page A4 standalone output is intact with generous margins and no page-edge clipping.
+VIEW_02_FIGURE_NATIVE300,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/figure_crop_native_300dpi.png,Both panels titles legends labels curves axes and point annotation are complete.
+VIEW_03_FIGURE_GRAYSCALE300,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/figure_crop_grayscale_300dpi.png,Line styles and all textual content remain distinguishable without color.
+VIEW_04_RIGHT_PANEL_NATIVE300,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/right_panel_native_300dpi.png,The endpoint marker is visibly separated from the .99 tick while remaining correctly connected to the curve.
+VIEW_05_PAIR0779_NATIVE1X,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/pair_0779_native_1x.png,Ordinary-scale crop shows the marker above and clear of the tick.
+VIEW_06_PAIR0779_NATIVE8X,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/pair_0779_native_8x.png,Nearest-neighbor 8x view preserves a real blank band between tick and marker.
+VIEW_07_PAIR0779_OVERLAY8X,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/pair_0779_overlay_8x.png,Blue axis and amber marker masks have no magenta shared pixel and show three blank pixels.
+VIEW_08_OBJECT_SHEETS,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/object_contact_sheet_01.png,Three object sheets cover all 40 IDs and every semantic object is present and readable.
+VIEW_09_CRITICAL_SHEETS,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/critical_pair_contact_sheet_05.png,Five critical-pair sheets cover all 76 candidates with no illegal collision.

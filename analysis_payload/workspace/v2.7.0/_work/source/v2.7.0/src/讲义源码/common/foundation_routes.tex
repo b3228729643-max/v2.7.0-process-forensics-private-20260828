@@ -1,0 +1,28 @@
+% VISUAL-UID: BND-P015-01 (navigation object; excluded from formal figure counts)
+% v2.0.0：目录与符号索引之后的阅读图例；同时定义正文算法的双层阅读接口。
+\chapter*{阅读图例与使用说明}
+\phantomsection
+\hypertarget{SL:reading-legend}{}
+\addcontentsline{toc}{chapter}{阅读图例与使用说明}
+
+\begin{keypointbox}[title=先理解数学对象，再检查稳健实现]
+正文中的核心算法只回答五件事：数学输入与输出是什么、怎样初始化、核心量怎样更新、何时满足数学停止条件、最终返回什么；主线控制在10个数学步骤以内。超过10行的故障处理框一律视为稳健实现说明，不属于第一次阅读路径。第一次阅读先沿相邻灰色条带手算一轮；实现时再点击算法标题，查看定义域检查、失败分支、预算和状态语义。
+\end{keypointbox}
+
+\begin{comparisonbox}
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+标记 & 第一次阅读关注 & 复习或实现时关注\\ \midrule
+定义／定理 & 对象、条件与结论 & 边界、反例与证明细节\\
+例题 & 读题翻译、第一步与关键变形 & 核验、迁移与常见误区\\
+算法 & 初始化、核心更新与数学停止 & 数值检查、失败状态与资源预算\\
+扩展讨论 & 暂不阻断当前依赖链 & 需要严格推广时再进入\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+\noindent\textbf{怎样使用练习解析。}常规题给出3--6个必要数学动作；关键题保留完整推导、边界与反例；只有结果不能直接回代时才增加一次独立核验。读题后应先自行列出条件和第一步，再逐步对照解析；同一题不堆叠重复核验。
+
+\begin{selfcheckbox}[title=30秒阅读自检]
+看到新公式时，先说出对象类型和成立条件；看到算法时，先用最小数值例完成一轮更新。若两者任一做不到，就回到该节的定义或概念桥，而不是先记工程状态码。
+\end{selfcheckbox}

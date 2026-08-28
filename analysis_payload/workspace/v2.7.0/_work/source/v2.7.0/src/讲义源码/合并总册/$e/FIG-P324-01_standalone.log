@@ -1,0 +1,45 @@
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12) (format=lualatex 2026.8.11)  23 AUG 2026 22:15
+ restricted system commands enabled.
+**./v260_FIG-P324-01_standalone.tex
+(./v260_FIG-P324-01_standalone.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended 
+collection.
+luaotfload | load : FATAL ERROR
+luaotfload | load :   × Failed to load "fontloader" module "basics-gen".
+luaotfload | load :   × Error message:
+luaotfload | load :     × "...rograms/MiKTeX/tex/luatex/luaotfload/luaotfload-i
+nit.lua:301: system : no writeable cache path, quiting"....rograms/MiKTeX/tex/lu
+atex/luaotfload/luaotfload-init.lua:301: system : no writeable cache path, quiti
+ng
+stack traceback:
+	[C]: in function 'error'
+	...rograms/MiKTeX/tex/luatex/luaotfload/luaotfload-init.lua:301: in function 'o
+s.exit'
+	...cal/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua:203: in local 'load
+_fontloader_module'
+	...rograms/MiKTeX/tex/luatex/luaotfload/luaotfload-init.lua:303: in upvalue 'in
+it_main'
+	...rograms/MiKTeX/tex/luatex/luaotfload/luaotfload-init.lua:590: in function 'l
+uaotfload-init.lua'
+	...cal/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua:322: in field 'main
+'
+	[\directlua]:1: in main chunk.
+<everyjob> ...ring \\def\string \\encodingdefault{OT1}')end }
+                                                  \let \f@encoding \encoding...
+l.1 
+  \documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+
+Here is how much of LuaTeX's memory you used:
+ 9 strings out of 476081
+ 100000,460012 words of node,token memory allocated
+ 275 words of node memory still in use:
+   1 hlist, 1 dir, 39 glue_spec nodes
+   avail lists: 2:12,3:3,4:1
+ 22562 multiletter control sequences out of 65536+600000
+ 14 fonts using 591679 bytes
+ 5i,0n,0p,86b,15s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!

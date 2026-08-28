@@ -1,0 +1,44 @@
+pair_id,object_a,object_b,raw_intersection_px,relation_class,true_collision,illegal_overlap_px,decision,reviewer,note
+P11267,D_AXIS_X,D_AXIS_Y,16,coordinate_axes_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,x1 and x2 axes meet at the intended coordinate origin without obscuring text
+P11268,D_AXIS_X,D_ELLIPSE_OUTER,42,axis_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,horizontal coordinate axis legitimately passes through the outer target contour
+P11269,D_AXIS_X,D_ELLIPSE_MIDDLE,46,axis_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,x1 axis crossing of the middle density contour conveys the shared coordinate frame
+P11270,D_AXIS_X,D_ELLIPSE_INNER,51,axis_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,x1 axis and inner contour cross visibly with both strokes still distinguishable
+P11274,D_AXIS_X,D_STEP_34,20,axis_over_trajectory,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 3 to 4 crosses the x1 reference axis as the plotted state path requires
+P11284,D_AXIS_X,D_LONG_AXIS,30,reference_axes_relation,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,long-axis direction crosses the coordinate x1 axis as an intentional geometric overlay
+P11285,D_AXIS_X,D_SHORT_AXIS,19,reference_axes_relation,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,short-axis arrow crossing the x1 axis is structural and remains color-separated
+P11287,D_AXIS_Y,D_ELLIPSE_OUTER,35,axis_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,vertical coordinate axis passes through the target contours by design
+P11288,D_AXIS_Y,D_ELLIPSE_MIDDLE,39,axis_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,x2 axis and middle contour cross without hiding either semantic object
+P11289,D_AXIS_Y,D_ELLIPSE_INNER,41,axis_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,x2 axis crossing of the inner contour is a valid coordinate-frame relation
+P11292,D_AXIS_Y,D_STEP_23,20,axis_over_trajectory,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 2 to 3 crosses the x2 reference axis while both arrow and axis remain clear
+P11303,D_AXIS_Y,D_LONG_AXIS,19,reference_axes_relation,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,long-axis arrow crosses x2 as required to show the tilted principal direction
+P11304,D_AXIS_Y,D_SHORT_AXIS,27,reference_axes_relation,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,short-axis arrow crosses x2 and stays visibly distinct from the gray axis
+P11308,D_ELLIPSE_OUTER,D_STEP_01,20,trajectory_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,initial horizontal Gibbs move crosses the outer contour in the depicted path
+P11326,D_ELLIPSE_MIDDLE,D_STEP_12,22,trajectory_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,vertical step 1 to 2 crossing the middle contour is intentional target traversal
+P11329,D_ELLIPSE_MIDDLE,D_STEP_45,60,trajectory_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,horizontal step 4 to 5 meets the middle contour at its depicted endpoint region
+P11338,D_ELLIPSE_MIDDLE,D_LONG_AXIS,37,principal_axis_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,long principal-axis arrow lies through the middle ellipse as its intended diameter
+P11339,D_ELLIPSE_MIDDLE,D_SHORT_AXIS,8,principal_axis_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,short-axis arrow terminates at the middle contour boundary by design
+P11342,D_ELLIPSE_INNER,D_STEP_12,114,trajectory_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 1 to 2 intersects the inner contour during the vertical coordinate update
+P11343,D_ELLIPSE_INNER,D_STEP_23,101,trajectory_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 2 to 3 follows across the inner ellipse with distinguishable blue and green strokes
+P11344,D_ELLIPSE_INNER,D_STEP_34,99,trajectory_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 3 to 4 crosses the inner contour in the next vertical update
+P11349,D_ELLIPSE_INNER,D_MARKER_2,64,state_on_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,state marker 2 sits on the inner trajectory-contour meeting and remains a clear dot
+P11354,D_ELLIPSE_INNER,D_LONG_AXIS,53,principal_axis_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,long-axis arrow traces the inner ellipse major direction as an intended overlay
+P11355,D_ELLIPSE_INNER,D_SHORT_AXIS,34,principal_axis_over_contour,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,short-axis arrow crosses the inner ellipse to show the minor direction
+P11362,D_STEP_01,D_MARKER_0,53,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 0 to 1 starts at marker 0 with a required joined endpoint
+P11363,D_STEP_01,D_MARKER_1,29,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,first horizontal move terminates at marker 1 and its arrowhead remains recognizable
+P11377,D_STEP_12,D_MARKER_1,57,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,vertical step 1 to 2 begins at marker 1 as required by the state sequence
+P11378,D_STEP_12,D_MARKER_2,27,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 1 to 2 ends at marker 2 with a clean visible arrow joint
+P11383,D_STEP_12,D_LONG_AXIS,25,trajectory_over_reference,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,vertical Gibbs move crosses the orange long-axis guide without semantic ambiguity
+P11391,D_STEP_23,D_MARKER_2,57,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,horizontal step 2 to 3 starts at marker 2 and remains correctly connected
+P11392,D_STEP_23,D_MARKER_3,30,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 2 to 3 terminates at marker 3 with intact arrow direction
+P11396,D_STEP_23,D_LONG_AXIS,37,trajectory_over_reference,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,horizontal update crosses the long-axis guide and both colors remain separable
+P11397,D_STEP_23,D_SHORT_AXIS,22,trajectory_over_reference,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 2 to 3 crosses the gray short-axis arrow in the intended layered diagram
+P11404,D_STEP_34,D_MARKER_3,57,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,vertical step 3 to 4 begins at marker 3 with a required joint
+P11405,D_STEP_34,D_MARKER_4,29,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 3 to 4 ends at marker 4 and its upward direction stays clear
+P11408,D_STEP_34,D_LONG_AXIS,25,trajectory_over_reference,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,vertical move 3 to 4 crosses the long-axis guide as plotted
+P11416,D_STEP_45,D_MARKER_4,56,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,horizontal step 4 to 5 starts at marker 4 with a valid connected endpoint
+P11417,D_STEP_45,D_MARKER_5,27,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,step 4 to 5 ends at marker 5 and arrowhead remains legible
+P11419,D_STEP_45,D_LONG_AXIS,38,trajectory_over_reference,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,horizontal update 4 to 5 crosses the principal-axis guide without hiding it
+P11427,D_STEP_56,D_MARKER_5,53,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,final vertical step begins at marker 5 with correct topological connection
+P11428,D_STEP_56,D_MARKER_6,28,arrow_endpoint_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,final move terminates at marker 6 and retains its upward arrowhead
+P11474,D_LONG_AXIS,D_SHORT_AXIS,15,principal_axes_joint,false,0,LEGAL_DESIGN_INTERSECTION,SA3_FRESH_ISOLATED,long and short principal axes cross perpendicularly as the figure's key geometry
+

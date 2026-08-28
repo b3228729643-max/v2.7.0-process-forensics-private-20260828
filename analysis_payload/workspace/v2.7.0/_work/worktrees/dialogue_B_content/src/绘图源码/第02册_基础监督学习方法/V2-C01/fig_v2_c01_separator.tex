@@ -1,0 +1,44 @@
+% v2.3.1 figure UID: FIG-P186-01
+% v2.6.0 Image-reference reverse redraw: strengthen semantic hierarchy without moving geometry.
+\tikzset{
+  slfig-FIG-P186-01/.style={font=\fontsize{9.2pt}{11pt}\selectfont,every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P186-01-direct-label/.style={font=\fontsize{9.2pt}{11pt}\selectfont,fill=white,fill opacity=.84,text opacity=1,inner sep=.9pt},
+  slfig-FIG-P186-01-normal-label/.style={font=\fontsize{9.2pt}{11pt}\selectfont,text=SLGold,fill=white,fill opacity=.84,text opacity=1,inner sep=.9pt}
+}
+\pgfplotsset{
+  slfig-FIG-P186-01-axis/.style={tick label style={font=\footnotesize},label style={font=\fontsize{9.5pt}{11.4pt}\selectfont},axis line style={draw=SLInk,line width=.55pt},clip=false},
+  slfig-FIG-P186-01-separator/.style={draw=SLBlue,line width=1.02pt},
+  slfig-FIG-P186-01-normal/.style={-{Stealth[length=2.3mm,width=1.4mm]},draw=SLGold,line width=.96pt},
+  slfig-FIG-P186-01-positive/.style={only marks,mark=*,mark size=2.35pt,draw=SLBlue,fill=SLBlue},
+  slfig-FIG-P186-01-negative/.style={only marks,mark=triangle*,mark size=3pt,draw=SLTeal,fill=white,line width=.9pt}
+}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P186-01]
+\begin{axis}[slfig-FIG-P186-01-axis,
+  slfig axis,width=.76\linewidth,height=.57\linewidth,
+  xmin=-3.25,xmax=3.25,ymin=-2.45,ymax=2.85,
+  axis equal image,axis lines=middle,
+  xlabel={$x^{(1)}$},ylabel={$x^{(2)}$},
+  xtick=\empty,ytick=\empty,clip=false,
+]
+  \addplot[draw=none,fill=SLBlue,fill opacity=.04]
+    coordinates {(-3.2,2.376) (-3.2,2.8) (3.2,2.8) (3.2,-1.976)}\closedcycle;
+  \addplot[draw=none,fill=SLTeal,fill opacity=.04]
+    coordinates {(-3.2,-2.4) (3.2,-2.4) (3.2,-1.976) (-3.2,2.376)}\closedcycle;
+  \addplot[slfig-FIG-P186-01-separator,domain=-3.2:3.2,samples=2]
+    {-.68*x+.2};
+  \addplot[slfig-FIG-P186-01-normal]
+    coordinates {(0,.2) (.82,1.405)};
+  \addplot[slfig-FIG-P186-01-positive]
+    coordinates {(-2.15,2.15) (-1.25,1.85) (-.35,1.25) (.75,.95) (1.55,.40)};
+  \addplot[slfig-FIG-P186-01-negative]
+    coordinates {(-1.70,-1.35) (-.65,-1.25) (.15,-.75) (1.10,-1.35) (2.10,-1.05)};
+  \node[slfig-FIG-P186-01-direct-label,text=SLBlue,anchor=west] at (axis cs:-2.55,2.55) {$w^{\mathsf T}x+b>0$};
+  \node[slfig-FIG-P186-01-direct-label,text=SLTeal,anchor=west] at (axis cs:.45,-1.82) {$w^{\mathsf T}x+b<0$};
+  \node[slfig-FIG-P186-01-direct-label,text=SLBlue,anchor=south west] at (axis cs:1.25,-.70) {$w^{\mathsf T}x+b=0$};
+  \node[slfig-FIG-P186-01-normal-label,anchor=west] at (axis cs:.88,1.46) {$w$：分数增大};
+\end{axis}
+\end{tikzpicture}
+\caption{超平面、法向量与两类样本的几何关系。法向量指向分数增大的半空间。}\label{fig:V2-C01-separator}
+\end{figure}

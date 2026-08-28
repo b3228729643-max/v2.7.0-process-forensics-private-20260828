@@ -1,0 +1,13 @@
+check_id,criterion,reviewer,evidence_opened,decision,note
+M01,PMF support and values,/root/p067_r113_fresh_sa3,native figure plus current source,PASS,"Support is 1,2,3,4 with masses 0.15,0.30,0.35,0.20."
+M02,PMF normalization,/root/p067_r113_fresh_sa3,native figure plus machine semantic ledger,PASS,"0.15+0.30+0.35+0.20=1.00 and all masses are nonnegative."
+M03,CDF support values,/root/p067_r113_fresh_sa3,native figure plus current source,PASS,"CDF values at support points are 0.15,0.45,0.80,1.00."
+M04,CDF jump sizes,/root/p067_r113_fresh_sa3,native and 8x figure views,PASS,"Successive jumps are 0.15,0.30,0.35,0.20 and exactly equal the PMF masses."
+M05,CDF monotonicity and terminal value,/root/p067_r113_fresh_sa3,native and 8x figure views,PASS,"The staircase is nondecreasing and reaches 1.00."
+M06,Right continuity,/root/p067_r113_fresh_sa3,native and 8x figure views,PASS,"Filled endpoints are on the right-continuous values and open endpoints mark the left limits."
+M07,Filled endpoints,/root/p067_r113_fresh_sa3,native and 8x figure views,PASS,"Filled points appear at (1,.15),(2,.45),(3,.80),(4,1)."
+M08,Open endpoints,/root/p067_r113_fresh_sa3,native and 8x figure views,PASS,"Open points appear at (1,0),(2,.15),(3,.45),(4,.80)."
+M09,Axes labels and codepoints,/root/p067_r113_fresh_sa3,native page glyph sheets and overlays,PASS,"CDF/PMF axis labels ticks and mathematical italic t are correct; no missing/tofu/wrong codepoint is present."
+M10,Caption semantics,/root/p067_r113_fresh_sa3,full-page and figure crop views,PASS,"Caption correctly states that CDF jump heights equal the corresponding probability masses."
+M11,Clipping and figure integration,/root/p067_r113_fresh_sa3,full-page native figure and standalone views,PASS,"No real clipping is visible and page integration is balanced."
+M12,Math-rule artifacts,/root/p067_r113_fresh_sa3,current source and graphic overlay,PASS,"No source math-rule token or unexpected visible math-rule object is present."

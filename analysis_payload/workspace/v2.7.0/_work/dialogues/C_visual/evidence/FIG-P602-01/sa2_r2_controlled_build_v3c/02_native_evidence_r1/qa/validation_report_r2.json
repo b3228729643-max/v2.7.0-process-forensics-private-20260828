@@ -1,0 +1,345 @@
+{
+  "uid": "FIG-P602-01",
+  "round": "SA2_R2_V3C_NATIVE_R1",
+  "generated_utc": "2026-08-25T07:39:13.645331+00:00",
+  "validator_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v3c\\02_native_evidence_r1\\scripts\\validate_native_root.py",
+  "validator_sha256_pre_run": "45329C5AA318178FF89FF71B965CC7F8E88C158ACA128F1D1C7CA4136F7089DF",
+  "outcome": "PASS",
+  "expected_evidence_outcome": "STRICT_FAIL_G032_H06",
+  "failure_count": 0,
+  "failure_names": [],
+  "checks": [
+    {
+      "name": "objects_denominator_and_id_closure",
+      "pass": true,
+      "detail": {
+        "expected": 30,
+        "machine_rows": 30,
+        "manual_rows": 30,
+        "machine_unique": 30,
+        "manual_unique": 30,
+        "missing_manual": [],
+        "extra_manual": []
+      }
+    },
+    {
+      "name": "glyphs_denominator_and_id_closure",
+      "pass": true,
+      "detail": {
+        "expected": 154,
+        "machine_rows": 154,
+        "manual_rows": 154,
+        "machine_unique": 154,
+        "manual_unique": 154,
+        "missing_manual": [],
+        "extra_manual": []
+      }
+    },
+    {
+      "name": "pairs_denominator_and_id_closure",
+      "pass": true,
+      "detail": {
+        "expected": 435,
+        "machine_rows": 435,
+        "manual_rows": 435,
+        "machine_unique": 435,
+        "manual_unique": 435,
+        "missing_manual": [],
+        "extra_manual": []
+      }
+    },
+    {
+      "name": "critical_pairs_denominator_and_id_closure",
+      "pass": true,
+      "detail": {
+        "expected": 16,
+        "machine_rows": 16,
+        "manual_rows": 16,
+        "machine_unique": 16,
+        "manual_unique": 16,
+        "missing_manual": [],
+        "extra_manual": []
+      }
+    },
+    {
+      "name": "roles_denominator_and_id_closure",
+      "pass": true,
+      "detail": {
+        "expected": 3,
+        "machine_rows": 3,
+        "manual_rows": 3,
+        "machine_unique": 3,
+        "manual_unique": 3,
+        "missing_manual": [],
+        "extra_manual": []
+      }
+    },
+    {
+      "name": "clips_denominator_and_id_closure",
+      "pass": true,
+      "detail": {
+        "expected": 30,
+        "machine_rows": 30,
+        "manual_rows": 30,
+        "machine_unique": 30,
+        "manual_unique": 30,
+        "missing_manual": [],
+        "extra_manual": []
+      }
+    },
+    {
+      "name": "views_denominator_and_id_closure",
+      "pass": true,
+      "detail": {
+        "expected": 4,
+        "machine_rows": 4,
+        "manual_rows": 4,
+        "machine_unique": 4,
+        "manual_unique": 4,
+        "missing_manual": [],
+        "extra_manual": []
+      }
+    },
+    {
+      "name": "peers_denominator_and_id_closure",
+      "pass": true,
+      "detail": {
+        "expected": 28,
+        "machine_rows": 28,
+        "manual_rows": 28,
+        "manual_peer_id_unique": 28,
+        "compound_key_missing_manual": [],
+        "compound_key_extra_manual": []
+      }
+    },
+    {
+      "name": "hard_gate_denominator",
+      "pass": true,
+      "detail": {
+        "expected": 12,
+        "rows": 12,
+        "unique": 12
+      }
+    },
+    {
+      "name": "pair_endpoints_match_machine",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "pair_combinatorial_denominator",
+      "pass": true,
+      "detail": {
+        "objects": 30,
+        "pairs": 435,
+        "c_n_2": 435
+      }
+    },
+    {
+      "name": "non_glyph_manual_ledgers_all_explicit_pass",
+      "pass": true,
+      "detail": {
+        "objects": [
+          "PASS"
+        ],
+        "pairs": [
+          "PASS"
+        ],
+        "critical": [
+          "PASS"
+        ],
+        "peers": [
+          "PASS"
+        ],
+        "roles": [
+          "PASS"
+        ],
+        "clips": [
+          "PASS"
+        ],
+        "views": [
+          "PASS"
+        ]
+      }
+    },
+    {
+      "name": "glyph_visual_results",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "glyph_hard_failure_exactly_g032",
+      "pass": true,
+      "detail": {
+        "manual": [
+          "G032"
+        ],
+        "machine": [
+          "G032"
+        ]
+      }
+    },
+    {
+      "name": "hard_gate_failure_exactly_h06",
+      "pass": true,
+      "detail": [
+        "H06"
+      ]
+    },
+    {
+      "name": "machine_pair_failures_zero",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "machine_peer_failures_zero",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "machine_role_failures_zero",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "machine_clip_failures_zero",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "objects_observations_nonblank_unique",
+      "pass": true,
+      "detail": {
+        "rows": 30,
+        "nonblank": 30,
+        "unique": 30
+      }
+    },
+    {
+      "name": "glyphs_observations_nonblank_unique",
+      "pass": true,
+      "detail": {
+        "rows": 154,
+        "nonblank": 154,
+        "unique": 154
+      }
+    },
+    {
+      "name": "pairs_observations_nonblank_unique",
+      "pass": true,
+      "detail": {
+        "rows": 435,
+        "nonblank": 435,
+        "unique": 435
+      }
+    },
+    {
+      "name": "critical_observations_nonblank_unique",
+      "pass": true,
+      "detail": {
+        "rows": 16,
+        "nonblank": 16,
+        "unique": 16
+      }
+    },
+    {
+      "name": "peers_observations_nonblank_unique",
+      "pass": true,
+      "detail": {
+        "rows": 28,
+        "nonblank": 28,
+        "unique": 28
+      }
+    },
+    {
+      "name": "roles_observations_nonblank_unique",
+      "pass": true,
+      "detail": {
+        "rows": 3,
+        "nonblank": 3,
+        "unique": 3
+      }
+    },
+    {
+      "name": "clips_observations_nonblank_unique",
+      "pass": true,
+      "detail": {
+        "rows": 30,
+        "nonblank": 30,
+        "unique": 30
+      }
+    },
+    {
+      "name": "views_observations_nonblank_unique",
+      "pass": true,
+      "detail": {
+        "rows": 4,
+        "nonblank": 4,
+        "unique": 4
+      }
+    },
+    {
+      "name": "hard_gates_observations_nonblank_unique",
+      "pass": true,
+      "detail": {
+        "rows": 12,
+        "nonblank": 12,
+        "unique": 12
+      }
+    },
+    {
+      "name": "all_csv_parse",
+      "pass": true,
+      "detail": {
+        "count": 19,
+        "failures": []
+      }
+    },
+    {
+      "name": "all_json_parse",
+      "pass": true,
+      "detail": {
+        "count": 5,
+        "failures": []
+      }
+    },
+    {
+      "name": "all_png_open",
+      "pass": true,
+      "detail": {
+        "count": 864,
+        "failures": []
+      }
+    },
+    {
+      "name": "no_python_cache_artifacts",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "no_alternate_data_streams",
+      "pass": true,
+      "detail": {
+        "exit_code": 0,
+        "streams": [],
+        "stderr": ""
+      }
+    },
+    {
+      "name": "frozen_pdf_identity",
+      "pass": true,
+      "detail": {
+        "bytes": 41240,
+        "sha256": "203977543DB0F41686A955D33D83A55BA272A7AAE07599AED58227914019EE2C"
+      }
+    },
+    {
+      "name": "frozen_source_identity",
+      "pass": true,
+      "detail": {
+        "bytes": 2869,
+        "sha256": "2B15B4BEEA7A922FEE24259678DBAE2A54915955915E6714A350122A6251E349"
+      }
+    }
+  ]
+}

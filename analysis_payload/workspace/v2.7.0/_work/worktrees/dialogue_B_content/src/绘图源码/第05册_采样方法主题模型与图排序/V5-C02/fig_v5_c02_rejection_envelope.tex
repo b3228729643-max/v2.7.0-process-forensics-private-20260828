@@ -1,0 +1,72 @@
+% v2.7.0 figure UID: FIG-P577-01; legacy UID: FIG-V5-C02-05
+% FIGURE-ALT-COMBINED: 对象：在支撑集[0,1]上，实线为p(y)=6y(1-y)，虚线为cq(y)=8/5，浅填充为两者间的拒绝区；关系：p不超过cq（几乎处处），随机点(Y,Ucq(Y))落在p曲线下方或边界上时接受，否则普通拒绝；数值：最小包络差1/10，接受率5/8、平均提议数8/5、拒绝区面积3/5，圆点(1/4,4/5)接受而三角点(3/4,27/20)拒绝；结论：第二点仍低于合法包络，普通拒绝不等于包络失效。
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\tikzset{slfig-FIG-P577-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{slfig-FIG-P577-01-axis/.style={
+  tick label style={font=\fontsize{9.6pt}{11.6pt}\selectfont},
+  label style={font=\fontsize{9.6pt}{11.6pt}\selectfont},
+  axis line style={line width=.72pt},tick style={line width=.60pt},clip=false}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P577-01,
+  alt={对象：支撑集[0,1]上的实线p(y)=6y(1-y)、虚线cq(y)=8/5与浅填充拒绝区；关系：p不超过cq（几乎处处），最小差为1/10；圆点y=1/4、h=4/5、p=9/8、U=1/2不超过45/64，故接受；三角点y=3/4、h=27/20、p=9/8、U=27/32大于45/64，故普通拒绝但包络仍合法；接受率为5/8，平均提议数为8/5，拒绝区面积为3/5；结论：普通拒绝不等于包络失效。}]
+\begin{axis}[slfig-FIG-P577-01-axis,width=.88\textwidth,height=8.8cm,
+  xmin=-.035,xmax=1.035,ymin=0,ymax=1.78,
+  axis lines=left,xlabel={$y$},ylabel={密度高度},
+  xtick={0,.25,.5,.75,1},xticklabels={$0$,$\frac14$,$\frac12$,$\frac34$,$1$},
+  ytick={0,.4,.8,1.2,1.6},
+  xlabel style={yshift=-7pt},ylabel style={yshift=3pt},clip=false]
+  \addplot[name path=p,draw=SLBlue,line width=1.15pt,domain=0:1,samples=301]{6*x*(1-x)};
+  \addplot[name path=cq,draw=SLTeal,line width=.90pt,densely dashed,domain=0:1,samples=301]{1.6};
+  \addplot[fill=SLTeal,fill opacity=.09,draw=none] fill between[of=cq and p];
+
+  \node[anchor=south,draw=SLGray,rounded corners=1.5pt,fill=white,
+    line width=.55pt,inner xsep=3mm,inner ysep=1.4mm,text width=125mm]
+    at (axis description cs:.5,1.055)
+    {{\bfseries\fontsize{10.2pt}{12.2pt}\selectfont 合法包络与含边界接受门}\\[-.2mm]
+     $p(y)=6y(1-y),\ q(y)=1,\ c=\frac85=1.6\quad(y\in[0,1])$\\
+     $p\le cq\ \text{（几乎处处）},\quad
+      \min_{[0,1]}(cq-p)=\frac1{10}\ \text{（在 }y=\frac12\text{）}$\\
+     $Ucq(Y)\le p(Y)\Longleftrightarrow\text{接受（含边界）};\quad
+      P(\text{接受})=\frac58,\ \text{平均提议数/接受值}=\frac85,\
+      \int_0^1(cq-p)\,\mathrm dy=\frac35$};
+
+  \node[anchor=south east,text=SLBlue,fill=white,inner sep=.8pt]
+    at (axis cs:.40,1.39) {实线 $p(y)$};
+  \node[anchor=south east,text=SLTeal,fill=white,inner sep=.8pt]
+    at (axis cs:.97,1.60) {虚线 $cq(y)=\frac85$};
+  \draw[<->,draw=SLTextGray,line width=.72pt]
+    (axis cs:.50,1.50)--(axis cs:.50,1.60)
+    node[midway,right=1.5pt,fill=white,inner sep=.5pt] {$\frac1{10}$};
+  \node[anchor=west,text=SLTextGray,fill=white,inner sep=1pt,align=left]
+    at (axis cs:.055,1.15) {浅填充：包络差\\拒绝区面积 $\frac35$};
+
+  \draw[draw=SLTeal,line width=.74pt] (axis cs:.25,0)--(axis cs:.25,.80);
+  \addplot[only marks,mark=*,mark size=3.1pt,draw=SLTeal,fill=SLTeal]
+    coordinates {(.25,.80)};
+  \node[anchor=north east,draw=SLTeal,rounded corners=1.2pt,fill=white,
+    line width=.55pt,inner sep=1.2mm,align=right]
+    at (axis cs:.235,.77)
+    {接受（圆点）\\$y=\frac14,\ h=\frac45,\ p=\frac98$\\
+     $U=\frac{h}{cq}=\frac12\le\frac{p}{cq}=\frac{45}{64}$};
+
+  \draw[draw=SLGold,line width=.74pt,densely dotted] (axis cs:.75,0)--(axis cs:.75,1.35);
+  \addplot[only marks,mark=triangle*,mark size=3.6pt,draw=SLGold,fill=white,
+    line width=.85pt] coordinates {(.75,1.35)};
+  \node[anchor=north west,draw=SLGold,rounded corners=1.2pt,fill=white,
+    line width=.55pt,inner sep=1.2mm,align=left]
+    at (axis cs:.750,1.32)
+    {普通拒绝（三角点；包络合法）\\
+     $y=\frac34,\ h=\frac{27}{20},\ p=\frac98$\\
+     $U=\frac{h}{cq}=\frac{27}{32}>\frac{p}{cq}=\frac{45}{64}$};
+
+  \addplot[only marks,mark=square*,mark size=2.4pt,draw=SLTextGray,fill=white]
+    coordinates {(0,0) (1,0)};
+  \node[anchor=north west,text=SLTextGray,yshift=-3pt]
+    at (axis cs:0,0) {支撑集边界};
+  \node[anchor=north east,text=SLTextGray,yshift=-3pt]
+    at (axis cs:1,0) {支撑集边界};
+\end{axis}
+\end{tikzpicture}
+\caption{包络满足 $p\le cq$（几乎处处）；随机点 $(Y,Ucq(Y))$ 落在 $p$ 曲线下方（含边界）时接受 $Y$。}\label{fig:V5-C02-rejection-envelope}
+\end{figure}

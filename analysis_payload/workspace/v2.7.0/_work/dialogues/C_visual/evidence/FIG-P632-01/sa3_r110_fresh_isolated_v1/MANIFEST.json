@@ -1,0 +1,220 @@
+{
+  "schema": "SA3_ISOLATED_EVIDENCE_MANIFEST_V1",
+  "uid": "FIG-P632-01",
+  "handoff_id": "C-FIG-P632-01-R110-SA3-FRESH-ISOLATED-V1",
+  "outcome": "SA3_PASS_AWAIT_MAIN_C_LOCAL_PASS_ACCEPTANCE",
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P632-01\\sa3_r110_fresh_isolated_v1",
+  "created_utc": "2026-08-26T19:07:55.053338+00:00",
+  "entry_count": 38,
+  "entry_total_bytes": 3808163,
+  "excluded_from_entries": [
+    {
+      "path": "MANIFEST.json",
+      "reason": "manifest self-hash exclusion"
+    },
+    {
+      "path": "WRITE_STOPPED",
+      "reason": "last-write seal marker exclusion"
+    }
+  ],
+  "validation_before_marker": {
+    "json_parsed_before_manifest": 5,
+    "csv_parsed": 12,
+    "reparse_point_count": 0,
+    "cache_or_pyc_count": 0,
+    "manual_fail_count": 0,
+    "unordered_pair_coverage": 91
+  },
+  "entries": [
+    {
+      "path": "adjudications/hard_gate_adjudication_manual.csv",
+      "bytes": 1855,
+      "sha256": "D83CD133F73ED7FEDEB3C9ECD41393F9D3BCBD5AF10B36C0CD64CCF33B01534C"
+    },
+    {
+      "path": "adjudications/object_adjudication_manual.csv",
+      "bytes": 3730,
+      "sha256": "866FE81549C4BC8ADAF06406D350213CC623F1F1928F1D1D2FAA3C735E458C50"
+    },
+    {
+      "path": "adjudications/pair_adjudication_manual.csv",
+      "bytes": 13050,
+      "sha256": "38575EAFA1C8585B472FB68200A20654BDA2158A5FBD366E97F78D4E00924654"
+    },
+    {
+      "path": "adjudications/roi_adjudication_manual.csv",
+      "bytes": 1360,
+      "sha256": "EB7E8F2E8F660F4CAF092A85AA80501A1C53187CBC0A5533CF5A19C24CF00DDD"
+    },
+    {
+      "path": "adjudications/text_glyph_adjudication_manual.csv",
+      "bytes": 5102,
+      "sha256": "CF675DF60638DB7D4A9508D58E30D4181B04C058E025A7C7AF1D2678A0BC1D68"
+    },
+    {
+      "path": "adjudications/view_adjudication_manual.csv",
+      "bytes": 1274,
+      "sha256": "E704F0D23F2DF363598CAA343EA58DF9D886D712C41C799F61CA3A51223874C7"
+    },
+    {
+      "path": "HANDOFF.json",
+      "bytes": 3564,
+      "sha256": "A7B4C3BDE151C60080660778D91990B0CE8652A6F22723EFDB2FFA0CC9135112"
+    },
+    {
+      "path": "identity_verification.json",
+      "bytes": 1536,
+      "sha256": "5E50E2BB610A2DD5B329AF032B148FB616951E722BED823BCE956DDA30BC2E0E"
+    },
+    {
+      "path": "logs/PRESEAL_VALIDATION.json",
+      "bytes": 980,
+      "sha256": "B51A6607E822768FA144143301F04E1B730AE9B0A9A33E81669BB537B52E05ED"
+    },
+    {
+      "path": "math_recomputation.json",
+      "bytes": 1402,
+      "sha256": "B6CA4F3F19BE1273A2C30DE21A570DEF26E6F3CEE7460B2506D7BC0FBFF73F12"
+    },
+    {
+      "path": "overlays/object_overlay_p682.png",
+      "bytes": 347538,
+      "sha256": "C2C6C13E81B62C94AF9747F9271D97FF89A53CFF4AF43273D7C4F4E72F4B2D82"
+    },
+    {
+      "path": "overlays/semantic_overlay_p682.png",
+      "bytes": 394680,
+      "sha256": "E98F33ADFF50A3CE464647458E23D755C61A48114A174E42A35B60CFAD316BD6"
+    },
+    {
+      "path": "overlays/text_glyph_overlay_p682.png",
+      "bytes": 377151,
+      "sha256": "7F0E56FABC4E97D3CFE17749051DEBE0861B513D2E09B05DC8074306C73E56F1"
+    },
+    {
+      "path": "render/native300_figure_caption_p682.png",
+      "bytes": 336278,
+      "sha256": "517777D6E33355F90FD5AB669EA94C221FBFF507993484BAF18D929B6C5EC21C"
+    },
+    {
+      "path": "render/native300_figure_grayscale_p682.png",
+      "bytes": 154351,
+      "sha256": "BEECFE817481B19F9CB1DC8C84F226C9E888EC968C3520CC0299E0288DCA5E14"
+    },
+    {
+      "path": "render/native300_full_p682.png",
+      "bytes": 746347,
+      "sha256": "0A3B9FA01F0EED49B3A78C7B66B9BB9DF5DAFACB6A02220E5EDC243189F732B3"
+    },
+    {
+      "path": "rois/R01_joint_formula_native1x.png",
+      "bytes": 22593,
+      "sha256": "A0CDE1D2161A3D9B5586223B05D9AFA9D52038905D5421CAACABA47BD16AE630"
+    },
+    {
+      "path": "rois/R01_joint_formula_nearest8x.png",
+      "bytes": 78491,
+      "sha256": "F2EEB4B4E0709895A6048235D52FE47BD4B690068145F6B1A5B52F02FF0D4D53"
+    },
+    {
+      "path": "rois/R02_joint_slice_intersection_native1x.png",
+      "bytes": 18642,
+      "sha256": "2CD16F13F73F88D6972FABB20445E02E18880C2074D217DF0B3625A76BBD12C1"
+    },
+    {
+      "path": "rois/R02_joint_slice_intersection_nearest8x.png",
+      "bytes": 58687,
+      "sha256": "0AEBF51A1AA574DDE8DA05B5C64BDCFA7D9FD151BE624A36B68C34C7DB429DA9"
+    },
+    {
+      "path": "rois/R03_upper_conditional_native1x.png",
+      "bytes": 61800,
+      "sha256": "448AC747B3934237DA3EFFF3284A60DB158CE47A654DDEC3C10722F099885311"
+    },
+    {
+      "path": "rois/R03_upper_conditional_nearest8x.png",
+      "bytes": 213346,
+      "sha256": "1D92A7EAD299440DBA5CCF7E0185CCCF3728CFD83063820FFFA206D1678B1251"
+    },
+    {
+      "path": "rois/R04_lower_conditional_native1x.png",
+      "bytes": 51907,
+      "sha256": "D798B4F16D139FFC3B81172A19F22EE65C9D87DC1E30320F58266D9B403BBB4C"
+    },
+    {
+      "path": "rois/R04_lower_conditional_nearest8x.png",
+      "bytes": 189090,
+      "sha256": "404B1E67163DFF7D96E2C2A13C9F9861EB0CF221F2FEE62FFD63217219A43A5A"
+    },
+    {
+      "path": "rois/R05_mapping_junctions_native1x.png",
+      "bytes": 47073,
+      "sha256": "57B3892F528B2D5B5DC476322775CE3B1EC6900AC7CE50B80E041A20368AEB50"
+    },
+    {
+      "path": "rois/R05_mapping_junctions_nearest8x.png",
+      "bytes": 164153,
+      "sha256": "7456F1A607EF62DD3B4B611F09ABF358639BB27E92183940B29EBB1B413AD850"
+    },
+    {
+      "path": "rois/R06_note_and_caption_native1x.png",
+      "bytes": 123347,
+      "sha256": "243B4C204ED9B5B280FE3334C4597C11FE15F6E9BBBE6D7E647B7AD56F1D0FD9"
+    },
+    {
+      "path": "rois/R06_note_and_caption_nearest8x.png",
+      "bytes": 314094,
+      "sha256": "FD901210D3909046F6ECDCCA243C8973823DF0BB83046FCAA0ADA0E39917EDE0"
+    },
+    {
+      "path": "SA3_PAYLOAD.json",
+      "bytes": 974,
+      "sha256": "34C80A03FEBC8A4C97F435CE424443DE52700C14FC9099F2BDFF15F7D76C5567"
+    },
+    {
+      "path": "SA3_REPORT.md",
+      "bytes": 6836,
+      "sha256": "BCEFC9D6FC3E056736360C73BD48CC7705E70214F98D203B70CC66A200B7BF16"
+    },
+    {
+      "path": "scripts/build_visual_evidence.py",
+      "bytes": 9809,
+      "sha256": "7B597B066764441E82DEC68A0ACAB071DBC9CF426C08B31AB7DF4C87998A589F"
+    },
+    {
+      "path": "scripts/seal_evidence.py",
+      "bytes": 6622,
+      "sha256": "8BE25412504914948F00B57DE88C97E93BFA920400972770AEB10535A985DB3F"
+    },
+    {
+      "path": "tables/glyphs_machine.csv",
+      "bytes": 30479,
+      "sha256": "B8BD1A3DBCE3C2D988950C92E773344675B15484214340EEC26C0958B525D458"
+    },
+    {
+      "path": "tables/objects_machine.csv",
+      "bytes": 605,
+      "sha256": "9708FB1145FAC5EE3A1601CE337A7F0701513446D634F5B259E64D2AF33880B7"
+    },
+    {
+      "path": "tables/pairs_machine.csv",
+      "bytes": 3850,
+      "sha256": "CBF4FAA555C7BEDF00D04F329A61204FFDD552E797B20FFBAF8A537DDFDF394B"
+    },
+    {
+      "path": "tables/rois_machine.csv",
+      "bytes": 461,
+      "sha256": "8E7EFA27B6F21DB0D01E1A1CD5FC14A525715243244D9ABDADFF3E3479783ACC"
+    },
+    {
+      "path": "tables/text_pixel_metrics_machine.csv",
+      "bytes": 4836,
+      "sha256": "0E8DE6AA3FD4AF7CAAAE5FCB968A08EBBD5BCF35F3BBBA6032E5E2686B5498C3"
+    },
+    {
+      "path": "tables/text_spans_machine.csv",
+      "bytes": 10270,
+      "sha256": "65A814E8ED567041262F1CD6104E9A9F4D95BEF5BB7F853B02F8230FE65BC345"
+    }
+  ]
+}

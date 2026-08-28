@@ -1,0 +1,30 @@
+﻿OBJECT_ID,KIND,ROLE,VISIBLE_TEXT,BBOX_PX_LOCAL,RAW_MASK_PIXEL_COUNT,SEMANTIC_SCOPE
+T001_TOP_PROPOSAL_FLOW_LABEL,TEXT_PARENT,ANNOTATION,提议流：两方向一般不等,"[780, 27, 1170, 59]",2994,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+T002_A_FORMULA,TEXT_PARENT,FORMULA_BLOCK,"𝑎=𝜋(𝑥)𝑞(𝑥,𝑦)","[554, 118, 829, 157]",2263,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+T003_B_FORMULA,TEXT_PARENT,FORMULA_BLOCK,"𝑏=𝜋(𝑦)𝑞(𝑦,𝑥)","[1123, 118, 1395, 157]",2291,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+T004_MIN_FORMULA,TEXT_PARENT,FORMULA_BLOCK,"min(𝑎,𝑏)","[896, 254, 1054, 292]",1595,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+T005_STATE_X,TEXT_PARENT,NODE_LABEL,𝑥,"[350, 381, 372, 402]",194,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+T006_STATE_Y,TEXT_PARENT,NODE_LABEL,𝑦,"[1578, 377, 1601, 406]",214,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+T007_ACCEPTED_FLOW_X_TO_Y,TEXT_PARENT,KEY_MATH_LINE,"𝑥→𝑦∶𝜋(𝑥)𝑞(𝑥,𝑦)𝛼(𝑥,𝑦)=min(𝑎,𝑏)","[628, 479, 1322, 518]",5098,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+T008_ACCEPTED_FLOW_Y_TO_X,TEXT_PARENT,KEY_MATH_LINE,"𝑦→𝑥∶𝜋(𝑦)𝑞(𝑦,𝑥)𝛼(𝑦,𝑥)=min(𝑎,𝑏)","[628, 525, 1322, 563]",5043,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+T009_BALANCE_EXPLANATION_LINE1,TEXT_PARENT,ANNOTATION,接受后双向流等宽、等值⇒细致平衡,"[664, 617, 1287, 651]",6063,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+T010_BALANCE_EXPLANATION_LINE2,TEXT_PARENT,ANNOTATION,充分推出𝜋平稳，但非必要条件,"[706, 663, 1245, 701]",4607,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+T011_CAPTION,TEXT_PARENT,CAPTION,图32.4MH接受机制把两个方向的已接受概率流同时截为两者较小值，从而满足细致平衡；该条件足以推出𝜋平稳，但不是平稳性的必要条件,"[21, 739, 1931, 837]",26018,single semantic parent; internal glyph typography excluded from independent TEXT-TEXT clearance but checked glyph-by-glyph
+G001_MAINFLOW_X_TO_Y_CURVE,GRAPHIC,EDGE_CURVE,,"[417, 391, 1517, 420]",5450,intended curved accepted-flow edge x to y
+G002_MAINFLOW_X_TO_Y_ARROWHEAD,GRAPHIC,ARROWHEAD,,"[1512, 389, 1534, 403]",164,arrowhead for G001
+G003_MAINFLOW_Y_TO_X_CURVE,GRAPHIC,EDGE_CURVE,,"[434, 362, 1534, 391]",5451,intended curved accepted-flow edge y to x
+G004_MAINFLOW_Y_TO_X_ARROWHEAD,GRAPHIC,ARROWHEAD,,"[417, 378, 439, 395]",183,arrowhead for G003
+G005_STATE_X_BORDER,GRAPHIC,NODE_BORDER,,"[306, 336, 419, 446]",1364,final-visible blue circular border for state x
+G006_STATE_Y_BORDER,GRAPHIC,NODE_BORDER,,"[1532, 336, 1645, 446]",1354,final-visible blue circular border for state y
+G007_A_PROPOSAL_BOX_BORDER,GRAPHIC,NODE_BORDER,,"[483, 82, 900, 191]",3019,final-visible rounded border; soft-gray fill excluded as background
+G008_B_PROPOSAL_BOX_BORDER,GRAPHIC,NODE_BORDER,,"[1051, 82, 1468, 191]",3021,final-visible rounded border; soft-gray fill excluded as background
+G009_MIN_BOX_BORDER,GRAPHIC,NODE_BORDER,,"[784, 212, 1167, 334]",4001,final-visible gold rounded border; pale fill excluded as background
+G010_X_TO_A_CONNECTOR,GRAPHIC,LINE_ARROW,,"[396, 152, 479, 355]",780,connector stroke from state x to proposal a
+G011_X_TO_A_ARROWHEAD,GRAPHIC,ARROWHEAD,,"[470, 138, 487, 159]",178,arrowhead for G010
+G012_Y_TO_B_CONNECTOR,GRAPHIC,LINE_ARROW,,"[1472, 153, 1555, 355]",777,connector stroke from state y to proposal b
+G013_Y_TO_B_ARROWHEAD,GRAPHIC,ARROWHEAD,,"[1464, 138, 1482, 159]",179,arrowhead for G012
+G014_A_TO_MIN_CONNECTOR,GRAPHIC,LINE_ARROW,,"[801, 187, 901, 213]",384,connector stroke from proposal a to min box
+G015_A_TO_MIN_ARROWHEAD,GRAPHIC,ARROWHEAD,,"[785, 202, 808, 216]",172,arrowhead for G014
+G016_B_TO_MIN_CONNECTOR,GRAPHIC,LINE_ARROW,,"[1050, 188, 1150, 211]",383,connector stroke from proposal b to min box
+G017_B_TO_MIN_ARROWHEAD,GRAPHIC,ARROWHEAD,,"[1144, 202, 1166, 216]",169,arrowhead for G016
+G018_EXPLANATION_BOX_BORDER,GRAPHIC,NODE_BORDER,,"[641, 600, 1310, 713]",4611,final-visible rounded border for two-line explanation

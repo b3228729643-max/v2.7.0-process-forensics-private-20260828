@@ -1,0 +1,12 @@
+roi_id,manual_verdict,post_observation_note
+R01_cut_corridor,PASS,two slashes are separate; stubs stop before them; factor glyphs and circles are untouched
+R02_left_coupling,PASS,coupling edge and lower arrow meet node boundaries only; labels remain clear
+R03_left_word_arrow,PASS,word and fixed-parameter arrows end at z_mn boundary without entering glyph ink
+R04_right_word_arrow,PASS,word arrow ends at q(z_mn) boundary without entering glyph ink
+R05_right_phi_input,PASS,fixed-parameter arrow meets q(z_mn) boundary and remains clear of box text
+R06_transition_label_arrow,PASS,arrow passes below label and intentionally contacts panel boundaries only
+R07_bottom_summary_math,PASS,"w_mn, φ, and q(z_mn) are intact and separated from callout border"
+R08_caption_first_line,PASS,"figure number, dash, φ, bold θ_m, and z_mn are readable and complete"
+R09_caption_second_line,PASS,"second caption line is complete, unclipped, and evenly spaced"
+R10_true_posterior_formula,PASS,"conditional bar, commas, θ_m, z_mn, w_m, and φ are all correct"
+R11_factorized_formula,PASS,"product glyph, subscript n, factors, parentheses, and subscripts are all correct"

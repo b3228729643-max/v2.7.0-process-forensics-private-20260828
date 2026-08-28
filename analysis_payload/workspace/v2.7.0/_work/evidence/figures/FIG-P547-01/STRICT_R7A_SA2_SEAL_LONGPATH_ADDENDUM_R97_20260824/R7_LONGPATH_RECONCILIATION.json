@@ -1,0 +1,61 @@
+{
+  "schema": "FIG-P547-01_R7A_LONGPATH_RECONCILIATION_V1",
+  "generated_utc": "2026-08-24T09:40:28.0145426Z",
+  "r7_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P547-01\\STRICT_R7_SA2_REPAIR_R97_LOCAL_20260824",
+  "enumeration_engine": "System.IO.Directory.EnumerateFiles with Win32 extended path prefix",
+  "bound_identity": {
+    "r7_evidence_manifest_sha256": "9CDE425189C7149504C95DF4658B5572ED06EA2379CC6897178EC4E04AEE032E",
+    "r7_manifest_sha256": "E09227E2B66CE15F76891ADF7F943AB90402F27DF0CEADC37DECA2A2232A2C0F",
+    "r7_write_stopped_sha256": "01871051A57F9A64F0EE6D6935A41198D7350D74414EDB1B0A677643B8C4F80A",
+    "authorized_source_sha256": "DF3D4415EDC56D02E056CAE0F3E38830DF28E781BC67ECDFB69863C5038F1600"
+  },
+  "r7_set_reconciliation": {
+    "actual_file_count": 6732,
+    "actual_unique_relative_path_count": 6732,
+    "evidence_manifest_payload_count": 6669,
+    "manifest_line_count": 6670,
+    "manifest_unique_path_count": 6670,
+    "covered_union_count_including_manifest_self_and_write_stopped": 6672,
+    "omitted_count": 60,
+    "stale_covered_path_count": 0,
+    "closure_equation": "6672 covered + 60 omitted = 6732 actual",
+    "actual_pathset_sha256": "211C829C37B566A79B79535CF8887F36972AB394DA56DBF33D39E56D32D86677",
+    "covered_pathset_sha256": "E03FC3C47604EAF835CFE494D6EB21767CB4373FBAFCAFF7796E782EF5CE2218",
+    "omitted_pathset_sha256": "9A4E9C231BCC7E9220702C331E5430F71233CBB97F478A4F5779003DE726C9E6"
+  },
+  "omission_classification": {
+    "gen2_superseded_texmfvar_count": 30,
+    "gen3_superseded_texmfvar_count": 30,
+    "superseded_count": 60,
+    "active_count": 0,
+    "outside_exact_expected_prefix_count": 0,
+    "omitted_total_bytes": 139079066.0,
+    "creation_time_utc_min": "2026-08-24T08:19:13.6811759Z",
+    "creation_time_utc_max": "2026-08-24T08:33:10.5251156Z",
+    "last_write_time_utc_min": "2026-08-24T08:12:43.0630669Z",
+    "last_write_time_utc_max": "2026-08-24T08:31:05.8893264Z"
+  },
+  "r7_seal_temporal_integrity": {
+    "r7_write_stopped_last_write_utc": "2026-08-24T09:29:49.4822348Z",
+    "files_last_written_after_write_stopped": 0,
+    "files_created_after_write_stopped": 0,
+    "omitted_files_last_written_after_write_stopped": 0
+  },
+  "r7_declared_manifest_verification": {
+    "parsed_rows": 6670,
+    "parse_failures": 0,
+    "duplicate_paths": 0,
+    "missing_references": 0,
+    "sha256_mismatches": 0,
+    "evidence_duplicate_paths": 0,
+    "evidence_to_manifest_hash_mismatches": 0
+  },
+  "correction": {
+    "incorrect_r7_claim": "all superseded files were hash-covered",
+    "corrected_claim": "60 pre-seal superseded texmfvar cache files were omitted by R7 manifests and are exhaustively bound by this addendum",
+    "active_acceptance_evidence_omitted": 0,
+    "local_recommendation": "LOCAL_PASS_TO_ROOT_BUILD",
+    "local_recommendation_changed": false
+  },
+  "decision": "PASS_EXACT_60_LONGPATH_GAP_BOUND"
+}

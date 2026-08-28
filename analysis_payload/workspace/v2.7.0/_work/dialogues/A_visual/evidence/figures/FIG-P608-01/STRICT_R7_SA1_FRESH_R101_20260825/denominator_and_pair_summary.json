@@ -1,0 +1,33 @@
+{
+  "handoff_id": "A-R101-P608-SA1-FRESH-20260825",
+  "sa1_model_route": "gpt-5.6-sol/xhigh",
+  "figure_id": "FIG-P608-01",
+  "physical_page_1based": 659,
+  "N": 172,
+  "glyphs": 112,
+  "explicit_pdf_drawings": 58,
+  "visible_hatch_patterns": 2,
+  "C_expected": 14706,
+  "C_covered": 14706,
+  "critical_pair_count": 102,
+  "hard_failure_count": 1,
+  "hard_failures": [
+    {
+      "FAIL_ID": "PEER-TXT-098",
+      "TYPE": "FULLBOOK_LOW_PROFILE_RATIO",
+      "VALUE": [
+        1.0,
+        0.7777777777777778
+      ],
+      "THRESHOLD": [
+        0.92,
+        1.08
+      ]
+    }
+  ],
+  "clip_pixel_count": 0,
+  "minimum_text_crop_edge_clearance_px": 32,
+  "empty_mask_count": 0,
+  "outcome": "FAIL_TO_SA2",
+  "fullbook_peer_policy": "LP-PEER-R101-EXACTMETA-V1"
+}

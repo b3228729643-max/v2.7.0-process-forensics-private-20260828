@@ -1,0 +1,25 @@
+object_id,denominator_status,card_opened,shape_complete,mask_pure,semantic_decision,reviewer,note
+D_AXIS_X,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,horizontal x1 coordinate arrow is complete from shaft through arrowhead
+D_AXIS_Y,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,vertical x2 coordinate arrow is complete and properly oriented upward
+D_ELLIPSE_OUTER,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,outer pale target ellipse forms one closed contour
+D_ELLIPSE_MIDDLE,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,middle green target ellipse is a complete closed contour
+D_ELLIPSE_INNER,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,inner blue target ellipse is closed and concentric in role
+D_STEP_01,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,first Gibbs move is a complete rightward green arrow
+D_STEP_12,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,second Gibbs move is a complete upward blue arrow
+D_STEP_23,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,third Gibbs move is a complete rightward green arrow
+D_STEP_34,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,fourth Gibbs move is a complete upward blue arrow
+D_STEP_45,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,fifth Gibbs move is a complete rightward green arrow
+D_STEP_56,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,sixth Gibbs move is a complete upward blue arrow
+D_MARKER_0,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,state marker 0 is a full circular dot at the path start
+D_MARKER_1,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,state marker 1 is a full dot at the first turn
+D_MARKER_2,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,state marker 2 is a full dot at the second turn
+D_MARKER_3,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,state marker 3 is a full dot at the third turn
+D_MARKER_4,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,state marker 4 is a full dot at the fourth turn
+D_MARKER_5,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,state marker 5 is a full dot at the fifth turn
+D_MARKER_6,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,state marker 6 is a full dot at the final state
+D_LONG_AXIS,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,orange long-axis arrow spans the tilted major direction with intact head
+D_SHORT_AXIS,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,gray short-axis arrow is complete on the perpendicular minor direction
+D_NOTE_BORDER,FOREGROUND,true,true,true,PASS,SA3_FRESH_ISOLATED,rounded note border is closed and encloses rather than touches the note text
+X_BG_ELLIPSE_FILL,EXCLUDED_BACKGROUND,true,true,true,EXCLUDED_BACKGROUND,SA3_FRESH_ISOLATED,uniform light ellipse fill is background area and deliberately excluded from foreground pair denominator
+X_BG_NOTE_FILL,EXCLUDED_BACKGROUND,true,true,true,EXCLUDED_BACKGROUND,SA3_FRESH_ISOLATED,uniform note-box fill is background area and deliberately excluded from foreground pair denominator
+

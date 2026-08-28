@@ -1,0 +1,22 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{737}
+\setcounter{chapter}{37}
+\setcounter{section}{2}
+\setcounter{figure}{3}
+\pagestyle{headings}
+\chaptermark{无监督学习方法总结}
+\sectionmark{矩阵分解与概率模型比较}
+图\ref{fig:V5-C08-matrix-probability}展示低秩乘积、损失、约束和概率解释之间的桥梁。
+其中下层的条件高斯因子图表示：固定全局因子和第$n$个文档系数后生成观测文档；
+它是一种条件高斯表示，不是给所有因子都配置先验的完整贝叶斯模型。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/matrix_probability_bridge.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看上层$X\approx WH$的共同低秩外形；
+再比较LSA、NMF与概率因子模型框中的损失、约束和概率口径，并确认虚线只表示
+“共同乘积外形下进入概率建模分支”，不编码关系强弱；最后沿下层
+$W,h_n\to x_n$的两条有向边核对条件高斯公式，确认代数乘积共享不等于模型语义相同，
+条件高斯分支也不等于完整贝叶斯模型。
+\end{document}

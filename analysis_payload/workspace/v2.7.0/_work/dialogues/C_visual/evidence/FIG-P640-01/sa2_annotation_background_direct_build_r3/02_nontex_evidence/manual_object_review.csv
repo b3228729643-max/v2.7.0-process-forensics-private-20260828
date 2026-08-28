@@ -1,0 +1,41 @@
+object_id,reviewer,decision,observation
+T001,C_ROOT_MANUAL_R3,PASS,Left x-axis tick 0 is distinct from the perpendicular y-origin label and remains fully readable.
+T002,C_ROOT_MANUAL_R3,PASS,Left x-axis tick 2 is centered beneath its tick with clear surrounding white space.
+T003,C_ROOT_MANUAL_R3,PASS,Left x-axis tick 4 has intact glyph contours and no contact with either decay curve.
+T004,C_ROOT_MANUAL_R3,PASS,Left x-axis tick 6 remains separate from the axis label below and nearby dashed traces.
+T005,C_ROOT_MANUAL_R3,PASS,Left x-axis tick 8 is legible and does not merge with the near-zero curves.
+T006,C_ROOT_MANUAL_R3,PASS,Left x-axis tick 10 is complete and evenly placed under its tick mark.
+T007,C_ROOT_MANUAL_R3,PASS,Left x-axis tick 12 is inside the frame and not clipped at the right panel boundary.
+T008,C_ROOT_MANUAL_R3,PASS,Left y-axis origin 0 is independently readable beside the x-origin label.
+T009,C_ROOT_MANUAL_R3,PASS,Left y-axis 0.25 label is clear and separated from the vertical formula.
+T010,C_ROOT_MANUAL_R3,PASS,Left y-axis 0.5 label is aligned to its tick without curve contamination.
+T011,C_ROOT_MANUAL_R3,PASS,Left y-axis 0.75 label retains a clean gap from the formula and plotting frame.
+T012,C_ROOT_MANUAL_R3,PASS,Left y-axis 1 label is complete beside the shared curve start without illegal overlap.
+T013,C_ROOT_MANUAL_R3,PASS,The Chinese x-axis label and italic k are readable with correct semantic order.
+T014,C_ROOT_MANUAL_R3,PASS,The rotated correlation formula preserves subscripts superscripts parentheses and rho exponent.
+T015,C_ROOT_MANUAL_R3,PASS,Panel title a and rho-to-2k expression are centered and fully legible.
+T016,C_ROOT_MANUAL_R3,PASS,The rho .95 legend label matches the solid blue sample and is not clipped.
+T017,C_ROOT_MANUAL_R3,PASS,The rho .70 legend label matches the teal dashed sample with ordinary separation.
+T018,C_ROOT_MANUAL_R3,PASS,The rho .20 legend label matches the gray dash-dot sample and remains readable.
+T019,C_ROOT_MANUAL_R3,PASS,Right x-axis origin 0 is clear of the vertical axis and arrowhead.
+T020,C_ROOT_MANUAL_R3,PASS,Right x-axis .5 tick label is centered and separate from the rho axis label.
+T021,C_ROOT_MANUAL_R3,PASS,Right x-axis .99 label is complete beneath the endpoint and remains inside the panel.
+T022,C_ROOT_MANUAL_R3,PASS,Right y-axis origin 0 is distinct from the right x-origin and horizontal axis.
+T023,C_ROOT_MANUAL_R3,PASS,Right y-axis 0.5 label is readable beside its tick with no contact.
+T024,C_ROOT_MANUAL_R3,PASS,Right y-axis 1 label is separated from the curve start and arrow tip.
+T025,C_ROOT_MANUAL_R3,PASS,The point annotation (.99 .010) is readable on its own opaque background and does not cover the marker.
+T026,C_ROOT_MANUAL_R3,PASS,The two-line limit note is fully readable; the ESS curve no longer enters the first N or any other glyph.
+T027,C_ROOT_MANUAL_R3,PASS,The right x-axis absolute-rho label has intact bars and correct math semantics.
+T028,C_ROOT_MANUAL_R3,PASS,The rotated N-eff-over-N label has correct subscript and fraction meaning with no clipping.
+T029,C_ROOT_MANUAL_R3,PASS,Panel title b Chinese and ESS text are complete and aligned above the formula.
+T030,C_ROOT_MANUAL_R3,PASS,The asymptotic ESS fraction has an intact bar numerator denominator and squared rho terms.
+G01,C_ROOT_MANUAL_R3,PASS,Left axes frame ticks and arrow geometry are continuous and consistently aligned.
+G02,C_ROOT_MANUAL_R3,PASS,The solid rho .95 ACF curve is smooth from one to its expected slow-decay endpoint.
+G03,C_ROOT_MANUAL_R3,PASS,The teal rho .70 dashed curve decays smoothly and remains distinguishable from the other traces.
+G04,C_ROOT_MANUAL_R3,PASS,The gray rho .20 dash-dot curve rapidly decays to zero without clipping or broken segments.
+G05,C_ROOT_MANUAL_R3,PASS,The solid legend sample is complete and visually keyed to G02.
+G06,C_ROOT_MANUAL_R3,PASS,The dashed legend sample is complete and visually keyed to G03.
+G07,C_ROOT_MANUAL_R3,PASS,The dash-dot legend sample is complete and visually keyed to G04.
+G08,C_ROOT_MANUAL_R3,PASS,Right axes ticks and arrows are intact; the .99 tick stays visibly below the open marker.
+G09,C_ROOT_MANUAL_R3,PASS,The ESS curve is smooth and semantically decreasing; its visible endpoint stays clear of the limit-note glyphs.
+G10,C_ROOT_MANUAL_R3,PASS,The true open point marker is complete at the intended .99 endpoint and separated from the tick line.

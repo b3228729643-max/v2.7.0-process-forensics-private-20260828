@@ -1,0 +1,333 @@
+{
+  "validator": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\tools\\consumer_validator.py",
+    "bytes": 10921,
+    "sha256": "C9AD2D36DA7B87E32F4E63001FC5755DABC275C494A6B9094C1011F9E60344C1"
+  },
+  "status": "PASS",
+  "manual_decision_counts": {
+    "glyph": 95,
+    "graphic": 21,
+    "critical": 50,
+    "schema": 37,
+    "total": 203
+  },
+  "manual_files": {
+    "glyph": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\manual\\GLYPH_MANUAL_DECISIONS.csv",
+      "bytes": 22236,
+      "sha256": "1DB9850DEA2ECF94385A5BD98B85431A995C84156ACDC5F9DAF6057FD49BF59E"
+    },
+    "graphic": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\manual\\GRAPHIC_MANUAL_DECISIONS.csv",
+      "bytes": 9145,
+      "sha256": "30ED90CBCF4BD973FBFE5FD447287E866C4B26C511AB1E9A4257E87A347099C4"
+    },
+    "critical": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\manual\\CRITICAL_PAIR_MANUAL_DECISIONS.csv",
+      "bytes": 20549,
+      "sha256": "8DBC0AE1470489736A6B212F5998D2F38F9CBE6E86046A6C72C550AE71EDCCED"
+    },
+    "schema": {
+      "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\manual\\SCHEMA_MANUAL_DECISIONS.csv",
+      "bytes": 11309,
+      "sha256": "DA7B197C46035CA028B381343D31F40673DBEA4DD363AA7E7953646146A67378"
+    }
+  },
+  "checks": [
+    {
+      "name": "manual_file_exists_glyph",
+      "pass": true,
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\manual\\GLYPH_MANUAL_DECISIONS.csv"
+    },
+    {
+      "name": "manual_file_exists_graphic",
+      "pass": true,
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\manual\\GRAPHIC_MANUAL_DECISIONS.csv"
+    },
+    {
+      "name": "manual_file_exists_critical",
+      "pass": true,
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\manual\\CRITICAL_PAIR_MANUAL_DECISIONS.csv"
+    },
+    {
+      "name": "manual_file_exists_schema",
+      "pass": true,
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\manual\\SCHEMA_MANUAL_DECISIONS.csv"
+    },
+    {
+      "name": "row_count_glyph",
+      "pass": true,
+      "detail": {
+        "actual": 95,
+        "expected": 95
+      }
+    },
+    {
+      "name": "row_count_graphic",
+      "pass": true,
+      "detail": {
+        "actual": 21,
+        "expected": 21
+      }
+    },
+    {
+      "name": "row_count_critical",
+      "pass": true,
+      "detail": {
+        "actual": 50,
+        "expected": 50
+      }
+    },
+    {
+      "name": "row_count_schema",
+      "pass": true,
+      "detail": {
+        "actual": 37,
+        "expected": 37
+      }
+    },
+    {
+      "name": "decision_count_total",
+      "pass": true,
+      "detail": 203
+    },
+    {
+      "name": "decision_ids_unique",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "opened_all_true",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "reviewer_all_explicit",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "no_boolean_pass_decisions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "notes_nonempty_specific_length",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "notes_exact_unique",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "notes_numeric_normalized_unique",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "notes_no_forbidden_template_marker",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "evidence_exists_glyph",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "evidence_exists_graphic",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "evidence_exists_critical",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "evidence_exists_schema",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "glyph_exact_subject_set",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "graphic_exact_subject_set",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "glyph_machine_fields_match",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "graphic_machine_fields_match",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "critical_exact_pair_set",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "critical_machine_fields_match",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "schema_exact_decision_set",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "schema_subjects_unique",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "target_machine_gate",
+      "pass": true,
+      "detail": {
+        "H_INK_PX": "22",
+        "INK_AREA_PX": "297",
+        "PRE_OCCLUSION_AREA_PX": "297",
+        "MISSING_STROKE_PX": "0",
+        "FOREIGN_PIXEL_PX": "0",
+        "CLIP_PIXEL_COUNT": "0"
+      }
+    },
+    {
+      "name": "machine_summary_gates",
+      "pass": true,
+      "detail": {
+        "candidate": "R7 direct standalone from the authorized patched P654 source",
+        "pdf": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7_SA2_NARROW_R100_DIRECT_BUILD_20260825\\build\\v260_FIG-P654-01_standalone.pdf",
+        "physical_page": 1,
+        "printed_page": "standalone",
+        "page_pt": [
+          595.2760009765625,
+          841.8900146484375
+        ],
+        "full_page_200dpi_native_px": [
+          1654,
+          2339
+        ],
+        "full_page_300dpi_native_px_internal": [
+          2481,
+          3508
+        ],
+        "figure_crop_page_integer_px": [
+          270,
+          254,
+          2255,
+          959
+        ],
+        "figure_crop_native_px": [
+          1985,
+          705
+        ],
+        "standalone_page_integer_px": [
+          270,
+          254,
+          2255,
+          878
+        ],
+        "standalone_native_px": [
+          1985,
+          624
+        ],
+        "text_glyph_objects": 95,
+        "foreground_graphic_objects": 21,
+        "object_count_N": 116,
+        "expected_unordered_pairs": 6670,
+        "actual_unordered_pairs": 6670,
+        "relation_counts": {
+          "OWN_NODE_TEXT_BORDER": 93,
+          "OTHER_INDEPENDENT": 180,
+          "TEXT_OTHER_NODE_BORDER": 667,
+          "INTENDED_EDGE_NODE_ENDPOINT": 24,
+          "SAME_PARENT_TYPOGRAPHY": 448,
+          "INDEPENDENT_TEXT_TEXT": 4017,
+          "TEXT_MATH_RULE": 86,
+          "TEXT_LINE_OR_ARROWHEAD": 1140,
+          "FORMULA_RULE_OWN_NODE_BORDER": 1,
+          "MATH_RULE_COMPOSITION": 9,
+          "ARROW_COMPOSITION": 5
+        },
+        "drawing_inventory_rows_in_standalone": 21,
+        "foreground_drawing_paths_accounted": 21,
+        "low_profile_punctuation_objects": 0,
+        "empty_masks": 0,
+        "object_machine_failures": [],
+        "pair_machine_failures": [],
+        "overlap_candidate_pixel_count": 0,
+        "design_composition_contact_pixel_count": 167,
+        "mask_contamination_pixel_count": 0,
+        "overlap_pixel_count": 0,
+        "clip_pixel_count": 0,
+        "min_required_clearances": {
+          "FORMULA_RULE_OWN_NODE_BORDER": 118.0,
+          "INDEPENDENT_TEXT_TEXT": 8.0,
+          "OWN_NODE_TEXT_BORDER": 17.0,
+          "TEXT_LINE_OR_ARROWHEAD": 27.0,
+          "TEXT_MATH_RULE": 71.0,
+          "TEXT_OTHER_NODE_BORDER": 5.0
+        },
+        "critical_pair_count": 50,
+        "manual_review_status": "PENDING"
+      }
+    },
+    {
+      "name": "all_unordered_pair_rows",
+      "pass": true,
+      "detail": 6670
+    },
+    {
+      "name": "reuse_identity_count",
+      "pass": true,
+      "detail": 935
+    },
+    {
+      "name": "reuse_identity_all_match",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "frozen_identity_source",
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\frozen_identity\\fig_v5_c05_dependency_graph.tex",
+        "bytes": 3122,
+        "sha256": "EA4A19FF940A177D4D754C4277896A2F38B75C1E6F252D8A374F418B84E31E6D"
+      }
+    },
+    {
+      "name": "frozen_identity_wrapper",
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\frozen_identity\\v260_FIG-P654-01_standalone.tex",
+        "bytes": 397,
+        "sha256": "FE44F2E6005D884A6916A11C6EBCB89CF40BD523A64D8F8C6BC8124DBABC0CA1"
+      }
+    },
+    {
+      "name": "frozen_identity_pdf",
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R7A_SA2_NARROW_R100_EVIDENCE_RESEAL_20260825\\machine_reuse\\build\\v260_FIG-P654-01_standalone.pdf",
+        "bytes": 43385,
+        "sha256": "A7DBDECEA7B54C1649CD341112B7BB37FF379600CB6A61B54EDDBAF154E9E5D6"
+      }
+    }
+  ],
+  "errors": [],
+  "writes_to_manual_ledgers": 0
+}

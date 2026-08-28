@@ -1,0 +1,1162 @@
+% STAGE13-CHAPTER: V5-C08
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V5-C08-CH01}; CH-02=\label{struct:V5-C08-CH02}; CH-03=\label{struct:V5-C08-CH03}; CH-04=\label{struct:V5-C08-CH04}; CH-05=\label{struct:V5-C08-CH05}; CH-06=\label{struct:V5-C08-CH06}; CH-07=\label{struct:V5-C08-CH07}; CH-08=\label{struct:V5-C08-CH08}; CH-09=\label{struct:V5-C08-CH09}; CH-10=\label{struct:V5-C08-CH10}; CH-11=\label{struct:V5-C08-CH11}; CH-12=\label{struct:V5-C08-CH12}; CH-13=\label{struct:V5-C08-CH13}; CH-14=\label{struct:V5-C08-CH14}; CH-15=\label{struct:V5-C08-CH15}; CH-16=\label{struct:V5-C08-CH16}; CH-17=\label{struct:V5-C08-CH17}; CH-18=\label{struct:V5-C08-CH18}; CH-19=\label{struct:V5-C08-CH19}; CH-20=\label{struct:V5-C08-CH20}; CH-21=\label{struct:V5-C08-CH21}; CH-22=\label{struct:V5-C08-CH22}; CH-23=\label{struct:V5-C08-CH23}; CH-24=\label{struct:V5-C08-CH24}; CH-25=\label{struct:V5-C08-CH25}; CH-26=\label{struct:V5-C08-CH26}; CH-27=\label{struct:V5-C08-CH27}; CH-28=\label{struct:V5-C08-CH28}; CH-29=\label{struct:V5-C08-CH29}; CH-30=\label{struct:V5-C08-CH30}; CH-31=\label{struct:V5-C08-CH31}; CH-32=\label{struct:V5-C08-CH32}; CH-33=\label{struct:V5-C08-CH33}; CH-34=\label{struct:V5-C08-CH34}; CH-35=\label{struct:V5-C08-CH35}; CH-36=\label{struct:V5-C08-CH36}; CH-37=\label{struct:V5-C08-CH37}
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1.1-EXERCISE-LAYOUT: grouped; kept=10; source_group=0; supplement=10
+% DERIVATION-CHECK: step-1; step-2; step-3
+% FORMAL-RESULT-CHECK: results=3; proofs=3
+% ALGORITHM-CHECK: algorithms=1; deterministic-contracts=1
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C08-dependency -> SLM-22-00-001,SLM-22-01-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C08-method-map -> SLM-22-01-002,SLM-22-01-003
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C08-three-axis -> SLM-22-01-001,SLM-22-01-002
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C08-matrix-probability -> SLM-22-02-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C08-validation -> SLM-22-00-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C08-evaluation -> SLM-22-00-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C08-selection-map -> SLM-22-01-003,SLM-22-01-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C08-course-map -> SLM-22-00-001,SLM-22-01-001,SLM-22-02-001
+% REPRODUCTION-NODE: V5-C08-S01 -> SLM-14-00-001
+% REPRODUCTION-NODE: V5-C08-S01 -> SLM-19-00-001
+% REPRODUCTION-NODE: V5-C08-S01 -> SLM-20-00-001
+% REPRODUCTION-NODE: V5-C08-S02 -> SLM-15-00-001
+% REPRODUCTION-NODE: V5-C08-S02 -> SLM-16-00-001
+% REPRODUCTION-NODE: V5-C08-S02 -> SLM-17-00-001
+% REPRODUCTION-NODE: V5-C08-S02 -> SLM-18-00-001
+% REPRODUCTION-NODE: V5-C08-S04 -> SLM-21-00-001
+% REPRODUCTION-NODE: V5-C08-S05 -> SLM-22-00-001
+% SOURCE-BOUNDARY-DIFFERENCE: source evidence provides the method taxonomy and topic-model comparison; nested validation, multi-evidence evaluation and the selection protocol are lecture extensions.
+
+\hyphenation{PageRank}
+\chapter{无监督学习方法总结}\label{chap:V5-C08}
+\index{无监督学习}
+\index{模型选择}
+\index{矩阵分解}
+\index{话题模型}
+
+% KNOWLEDGE-PLAN: KN-V5-C37-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：无监督学习方法总结。}无监督学习方法总结章地图沿“任务语义$\to$表示与训练准则$\to$求解器$\to$无泄漏选择与评价”推进；请标出该路线第一次改变对象类型的位置，并核对前一步产出正是后一步输入。\par
+
+\SLChapterOpening{任务语义$\to$表示与训练准则$\to$求解器$\to$无泄漏选择与评价}
+{怎样比较聚类、降维、主题模型、采样与图排序，而不混淆任务、模型和算法？}
+{读完可写出工作性方法规格、推导损失—概率对应，并执行锁定测试协议。}
+{矩阵分解、潜变量模型、EM/VI/Gibbs、留出评价、稀疏复杂度与\PageRank{}。}
+{先按需要回看前七章的定义域和保证，再用本章表格统一比较。}
+
+\phantomsection\label{struct:V5-C08-CH01}
+% KNOWLEDGE-PLAN: KN-V5-C37-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}无监督学习方法总结学习目标固定核验“从任务、表示、准则和推断四个层次区分聚类、降维、话题分析与图排序”；请实际完成“从任务、表示、准则和推断四个层次区分聚类、降维、话题分析与图排序”，并用“中间结果逐项包含首目标“从任务、表示、准则和推断四个层次区分聚类、降维、话题分析与图排序”声明的对象、条件与结论”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 从任务、表示、准则和推断四个层次区分聚类、降维、话题分析与图排序；
+  \item 用统一的词--文档矩阵记号比较LSA、NMF、PLSA与LDA，并核验每个因子的维数与约束；
+  \item 推出高斯观测与平方损失、泊松计数与广义KL散度、PLSA联合似然与KL准则的对应关系；
+  \item 严格分开训练目标、验证指标、独立测试、稳定性、解释性和计算预算；
+  \item 按无泄漏协议选择方法、超参数和停止规则，并为失败与未收敛状态保留证据；
+  \item 能为新场景给出可复现的方法选择方案，而不是只报出一个方法名称。
+\end{itemize}
+}
+
+\phantomsection\label{struct:V5-C08-CH02}
+% KNOWLEDGE-PLAN: KN-V5-C37-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}无监督方法总结的先修要求区分PLSA的点参数似然与LDA的随机隐变量后验；请写出PLSA的$P(w\mid d)=\sum_zP(w\mid z)P(z\mid d)$和LDA的$p(z,\theta,\varphi\mid w,\alpha,\beta)$，核对前者是点参数似然、后者包含随机主题混合与主题词分布。\par
+
+\begin{prerequisitebox}
+本章直接使用聚类、奇异值分解、主成分分析、潜在语义分析、PLSA、MCMC、LDA和\PageRank{}。
+还需熟悉概率质量函数、极大似然、KL散度、交叉验证、矩阵范数与条件独立。
+若不能写出薄SVD的维数，先回看SVD；若不能区分似然和后验，先回看概率推断；
+若不能说明马尔可夫链平稳分布与迭代收敛的差别，先回看马尔可夫链与\PageRank{}。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V5-C08-CH03}
+% KNOWLEDGE-PLAN: KN-V5-C37-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}无监督学习方法总结先修自检固定核验“对$\boldsymbol X\in\mathbb R^{M\times N}$，能否解释行、列及秩$K$各自代表什么”；请对$\boldsymbol X\in\mathbb R^{M\times N}$，实际解释行、列及秩$K$各自代表什么并写出中间结果，再按“$\boldsymbol X\in\mathbb R^{M\times N}$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 对$\boldsymbol X\in\mathbb R^{M\times N}$，能否解释行、列及秩$K$各自代表什么？
+  \item 能否写出$\boldsymbol X\approx\boldsymbol W\boldsymbol H$并核验
+  $\boldsymbol W\in\mathbb R^{M\times K}$、$\boldsymbol H\in\mathbb R^{K\times N}$？
+  \item 能否区分“优化目标下降”“迭代到驻点”“样本均值收敛到后验期望”三个命题？
+  \item 能否说明为何用于选择超参数的数据不能再充当无偏测试数据？
+  \item 能否为聚类、话题模型、\PageRank{}和MCMC分别写出至少一个诊断量？
+\end{enumerate}
+第1--2项不足时回看矩阵分解；第3项不足时回看EM、变分推断与MCMC；
+第4项不足时回看模型选择；第5项不足时回看相应方法章的停止与诊断部分。
+\end{precheckbox}
+
+\phantomsection\label{struct:V5-C08-CH04}
+% KNOWLEDGE-PLAN: KN-V5-C37-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}无监督学习方法总结把“第4册的聚类与矩阵分解”接到“任务语义与数据结构$\to$候选表示”；请用$\to$补全这一步的等式或判据，再检查两端维数、支持或对象类型。\par
+
+\begin{dependencybox}
+第4册的聚类与矩阵分解，加上第5册第3、6、7章的MCMC、LDA与\PageRank{} $\to$ 本章的统一比较；
+任务语义与数据结构$\to$候选表示；表示与概率假设$\to$训练目标；
+训练目标与求解器条件$\to$可计算模型；独立验证与诊断$\to$方法选择；
+锁定测试与成本记录$\to$可复核结论。图\ref{fig:V5-C08-dependency}给出本章的依赖主线。
+\end{dependencybox}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/dependency_graph.tex}
+
+\begin{keypointbox}[title=数据方向桥：总结章统一采用列对象]
+本章比较矩阵分解与主题模型时，把$N$个$M$维文档向量按列组成$X_{\rm col}\in\mathbb R^{M\times N}$。它与全书默认行样本表示满足
+\[
+X_{\rm row}=X_{\rm col}^{\mathsf T}
+\in\mathbb R^{N\times M}.
+\]
+例如$M=1000,N=200$时，本章为$1000\times200$，默认接口为$200\times1000$。比较LSA、NMF、PLSA和LDA时统一沿用列文档；若接入普通学习器，先显式转置并重新核对每个因子维数。
+\end{keypointbox}
+
+\phantomsection\label{struct:V5-C08-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V5-C08
+\index[symbols]{minus-boldsymbolx-minus-eq-x-ij--sa19eea238649@$\boldsymbol X=[x_{ij}]$：词--文档或特征--样本矩阵；角色：观测数据；计数、NMF与话题场景另要求非负}
+\index[symbols]{minus-boldsymbolw-minus-minus-boldsymbolh-minus--sf37194dc7e03@$\boldsymbol W,\boldsymbol H$：左因子、右因子；角色：低秩表示}
+\index[symbols]{minus-boldsymbolu-minus-k-minus-boldsymbol-minus-minus-sigma-minus-k-min--se8e53d57da10@$\boldsymbol U_K,\boldsymbol\Sigma_K,\boldsymbol V_K$：截断SVD因子；角色：正交低秩坐标}
+\index[symbols]{z-minus-boldsymbol-minus-minus-theta-minus-j-minus-boldsymbol-minus-minu--s037c8a7000e4@$z,\boldsymbol\theta_j,\boldsymbol\varphi_k$：主题指标、文档主题分布、主题词分布；角色：概率话题表示}
+\index[symbols]{minus-mathcalm-minus-minus-lambda-minus--s730866929308@$\mathcal M,\lambda$：候选方法集合、超参数配置；角色：选择空间}
+\index[symbols]{j-minus-mathrm-minus-fit-q-minus-mathrm-minus-val--sa0c57a739072@$J_{\mathrm{fit}},Q_{\mathrm{val}}$：训练目标、验证指标；角色：拟合与选择}
+\index[symbols]{minus-widehatr-minus-minus-mathrm-minus-test--s0de85ce267fe@$\widehat R_{\mathrm{test}}$：锁定测试集平均损失；角色：最终性能估计}
+\index[symbols]{minus-mathcalg-minus-eq-minus-mathcalv-minus-minus-mathcale-minus--s997a0e46beee@$\mathcal G=(\mathcal V,\mathcal E)$：有向图；角色：图排序输入}
+\index[symbols]{b-cin-cout-tmax-v5c08@$B,C_{\mathrm{in}},C_{\mathrm{out}},T_{\max}$：候选数、内/外层折数、迭代上限；角色：复杂度规模}
+\index[symbols]{r-start-r-chain-r-bootstrap--sv5c08budget@$R_{\mathrm{start}},R_{\mathrm{chain}},R_{\mathrm{bootstrap}}$：多启动、独立链、重采样次数；角色：完整实验预算}
+% STAGE19-SYMBOL-INDEX-END: V5-C08
+% KNOWLEDGE-PLAN: KN-V5-C37-PREREQUISITE-006 L1
+\paragraph{读前自检：本章符号表。}无监督学习方法总结符号表规定$\boldsymbol X=[x_{ij}]$、$\mathbb R^{M\times N}$的类型或范围；请把$\boldsymbol X=[x_{ij}]$代入紧随其后的定义关系，逐项核对输入形状、输出形状与取值域。\par
+
+\begin{symboltablebox}
+\small
+\begin{longtable}{@{}p{0.18\textwidth}p{0.27\textwidth}p{0.22\textwidth}p{0.24\textwidth}@{}}
+\toprule
+符号 & 对象与读法 & 维数/范围 & 作用 \\
+\midrule
+$\boldsymbol X=[x_{ij}]$ & 词--文档或特征--样本矩阵 & $\mathbb R^{M\times N}$ & 观测数据；计数、NMF与话题场景另要求非负 \\
+$\boldsymbol W,\boldsymbol H$ & 左因子、右因子 & $M\times K,\ K\times N$ & 低秩表示 \\
+$\boldsymbol U_K,\boldsymbol\Sigma_K,\boldsymbol V_K$ & 截断SVD因子 & $M\times K,K\times K,N\times K$ & 正交低秩坐标 \\
+$z,\boldsymbol\theta_j,\boldsymbol\varphi_k$ & 主题指标、文档主题分布、主题词分布 & $z\in\{1,\ldots,K\}$，$\boldsymbol\theta_j\in\Delta^{K-1}$，$\boldsymbol\varphi_k\in\Delta^{M-1}$ & 概率话题表示 \\
+$\mathcal M,\lambda$ & 候选方法集合、超参数配置 & 有限集合 & 选择空间 \\
+$J_{\mathrm{fit}},Q_{\mathrm{val}}$ & 训练目标、验证指标 & 任务相关实数 & 拟合与选择 \\
+$\widehat R_{\mathrm{test}}$ & 锁定测试集平均损失 & 非负或可积实数 & 最终性能估计 \\
+$\mathcal G=(\mathcal V,\mathcal E)$ & 有向图 & 结点集与边集 & 图排序输入 \\
+$B,C_{\mathrm{in}},C_{\mathrm{out}},T_{\max}$ & 候选配置数、内层折数、外层折数、迭代上限 & 正整数 & $K$只留给秩、簇数或主题数 \\
+\shortstack{$R_{\mathrm{start}},R_{\mathrm{chain}}$\\$R_{\mathrm{bootstrap}}$} & 多启动、独立链、重采样次数 & 非负整数；适用项为正 & 完整实验预算 \\
+\bottomrule
+\end{longtable}
+本章统一把样本放在列中。图结点集用$\mathcal V$，SVD右奇异向量矩阵用
+$\boldsymbol V_K$，二者不可混写。
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V5-C37-CONCEPT-002 L1
+\paragraph{读前自检：无监督学习方法总结。}无监督学习只说明没有监督标签，不决定输出；请对同一矩阵分别指定聚类标签、低维坐标与概率密度三种任务，核对每种任务的输出域和训练准则不同。\par
+% KNOWLEDGE-PLAN: KN-V5-C37-CONCEPT-003 L1
+\paragraph{读前自检：无监督学习方法的关系和特点。}无监督方法关系表按任务、主要输出、表示、训练准则和求解器五列组织；请对照聚类与PCA两行，核对类别划分不能与正交低维得分互换。\par
+% KNOWLEDGE-PLAN: KN-V5-C37-CONCEPT-004 L1
+\paragraph{读前自检：各种方法之间的关系。}聚类、矩阵分解、话题模型与PageRank之间可共享求解器却不共享任务语义；请固定对照NMF与PLSA在同一非负矩阵上的表示，核对前者因子不自动归一、后者参数必须位于单纯形。\par
+
+\SLReviewSection{聚类、降维、主题模型与采样的联系}{sec:V5-C08-S01}
+\knowledgeanchor{SLM-22-00-001}{无监督学习方法总结}
+\knowledgeanchor{SLM-22-01-001}{无监督学习方法的关系和特点}
+\knowledgeanchor{SLM-22-01-002}{各种方法之间的关系}
+
+\phantomsection\label{struct:V5-C08-CH06}
+\textbf{问题提出。}“没有标签”只描述观测条件，并不规定输出。聚类要输出组或软成员度；
+降维要输出低维坐标或子空间；话题模型要输出词与文档的潜在结构；\PageRank{}要输出图上的平稳权重；
+MCMC则是从目标分布构造相关样本的推断引擎，并非一种数据任务。若只按名称选方法，
+就会把任务、模型、目标和求解器混为一谈。
+
+图\ref{fig:V5-C08-method-map}只总结本讲义中的代表性主路线和特定模型/求解方案的条件性复用；
+这些边都不是方法族与引擎之间的必要或充分关系，共享引擎也不意味着方法等价。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/method_family_relationships.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看四条近似竖直实线对应的代表性主路线；
+再看话题分析到SVD、EM的两条短虚线，分别把它们理解为LSA、PLSA等特定方案中的条件性复用，
+而不是关系强弱；最后确认任一边都不构成必要或充分条件，复用同一引擎也不使两个方法等价。
+
+图\ref{fig:V5-C08-three-axis}把“任务--表示--推断”三轴仅作为粗粒度定位投影：
+$(T,R,I)$不能唯一确定方法，完整可核验规格仍须写成
+$\mathfrak U=(\mathcal X,\mathcal T,\mathcal R,J,\mathcal A,\mathcal E,\mathcal B)$。
+图中的方法行都是限定条件下的代表示例，而非方法与三轴选项的唯一绑定。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/task_representation_inference_cube.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先按任务、表示、推断读取五行代表示例；
+再沿两处分叉核对“同一低秩$R$可接平方损失或计数似然$J$”以及“同一潜变量$R$可接VI或Gibbs推断$I$”；
+最后把候选补回$\mathfrak U=(\mathcal X,\mathcal T,\mathcal R,J,\mathcal A,\mathcal E,\mathcal B)$七项规格，
+确认三轴投影既非唯一绑定，也不是完整规格的替代。
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.18\textwidth}@{}}
+\toprule
+任务 & 主要输出 & 典型表示 & 训练准则 & 常见求解器 \\
+\midrule
+聚类 & 簇、树或成员度 & 中心、划分、混合分布 & 类内距离或似然 & 凝聚、交替更新、EM \\
+降维 & 子空间与低维坐标 & 正交子空间或低秩因子 & 方差、重构误差 & 特征分解、SVD \\
+话题分析 & 主题词与文档主题 & 矩阵因子或潜变量模型 & 重构损失、似然、ELBO & SVD、交替优化、EM、VI、Gibbs \\
+图排序 & 结点稳态权重 & 马尔可夫算子 & 固定点方程与残差 & 幂法、线性方程求解 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begingroup
+\setstretch{1.05}
+\setlength{\parskip}{0.10\baselineskip}
+
+\phantomsection\label{struct:V5-C08-CH07}
+% KNOWLEDGE-PLAN: KN-V5-C37-DEFINITION-001 L1
+\paragraph{读前自检：本讲义的无监督学习工作框架。}无监督学习规格$\mathfrak U=(\mathcal X,\mathcal T,\mathcal R,J,\mathcal A,\mathcal E,\mathcal B)$分别编码观测、任务、表示、准则、算法、评价和预算；请为一个聚类任务逐项填入对象，核对七项类型匹配。\par
+
+\begin{definition}[本讲义的无监督学习工作框架]\label{def:V5-C08-specification}
+这是本讲义为阅读、复现和比较方法采用的工作性约定，不是学界统一定义。
+一个可核验的无监督学习规格记为
+\[
+\mathfrak U=(\mathcal X,\mathcal T,\mathcal R,J,\mathcal A,\mathcal E,\mathcal B).
+\]
+其中$\mathcal X$是观测空间，$\mathcal T$是任务与输出语义，$\mathcal R$是表示族，
+$J$是训练准则，$\mathcal A$是求解或推断过程，$\mathcal E$是独立评价协议，
+$\mathcal B$是时间、内存和失败预算。只有七项共同确定，方法比较才有明确对象。
+\end{definition}
+
+\phantomsection\label{struct:V5-C08-CH08}
+\textbf{模型。}设$\boldsymbol x_j\in\mathbb R^M$是第$j$个观测列。
+低秩模型写成$\boldsymbol X\approx\boldsymbol W\boldsymbol H$；
+概率潜变量模型写成
+$p(\boldsymbol X,\boldsymbol Z\mid\boldsymbol\eta)$或
+$p(\boldsymbol X,\boldsymbol Z,\boldsymbol\eta)$。
+两种写法可共享乘积结构，却不因此拥有相同语义：约束、归一化、噪声分布和先验会改变可识别性与输出解释。
+
+\phantomsection\label{struct:V5-C08-CH09}
+\textbf{学习策略。}训练阶段只在开发数据上最小化$J_{\mathrm{fit}}$或最大化相应下界/似然；
+选择阶段用预先声明的$Q_{\mathrm{val}}$比较配置；测试阶段只对锁定模型做一次
+$\widehat R_{\mathrm{test}}$评估。稳定性、解释性和成本是并列证据，不能藏进一个未说明权重的总分。
+不同量纲或不同概率口径的目标值不得直接横向排序。
+
+\phantomsection\label{struct:V5-C08-CH10}
+\textbf{学习算法。}本章不发明替代各方法的“万能迭代”。
+算法\ref{alg:V5-C08-selection-protocol}是方法选择与评价协议：它调用候选方法已有的合法求解器，
+记录每次拟合状态，再在开发集内部完成选择。EM只保证其观测似然不降并通常到达驻点；
+变分坐标更新只保证所选变分族内的ELBO不降并可能停在局部解；
+Gibbs抽样的结论必须分层：有限不可约链或一般状态的正常Harris返链在可积条件下给出时间平均；非周期性另用于固定时刻边缘分布收敛；CLT与批均值还需额外矩和混合条件。它不提供全局优化保证。
+
+% KNOWLEDGE-PLAN: KN-V5-C37-CONCEPT-005 L1
+\paragraph{读前自检：话题模型之间的关系和特点。}话题模型比较在词--文档矩阵$X\in\mathbb R_{\ge0}^{M\times N}$与秩$K$下进行；请对照LSA、NMF、PLSA、LDA的因子符号，核对哪些允许负值、哪些列归一、哪些含随机先验。\par
+
+\SLTeachSection{矩阵分解与概率模型比较}{sec:V5-C08-S02}
+\knowledgeanchor{SLM-22-02-001}{话题模型之间的关系和特点}
+
+令$\boldsymbol X\in\mathbb R_{\ge0}^{M\times N}$按“词$\times$文档”排列，目标秩为
+$K\le\min(M,N)$。四类话题表示的边界如下。
+{\small
+\LTleft=\fill
+\LTright=\fill
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.10\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.32\textwidth}@{}}
+\toprule
+方法 & 共同乘积写法 & 关键约束或概率口径 & 训练/推断 \\
+\midrule
+\endfirsthead
+\toprule
+方法 & 共同乘积写法 & 关键约束或概率口径 & 训练/推断 \\
+\midrule
+\endhead
+LSA & $\boldsymbol W=\boldsymbol U_K,\ \boldsymbol H=\boldsymbol\Sigma_K\boldsymbol V_K^{\mathsf T}$ &
+$\boldsymbol W^{\mathsf T}\boldsymbol W=I_K$，
+$\boldsymbol H\boldsymbol H^{\mathsf T}=\boldsymbol\Sigma_K^2$ & 截断SVD给平方损失的最优秩不超过$K$近似 \\
+NMF & $\boldsymbol X\approx\boldsymbol W\boldsymbol H$ &
+$\boldsymbol W,\boldsymbol H\ge0$；损失须另行声明 & 交替非负优化，通常只保证驻点性质 \\
+PLSA & $\boldsymbol P=\boldsymbol W\boldsymbol H$ &
+$W_{ik}=p(w_i\mid z_k)$，$H_{kj}=p(d_j)p(z_k\mid d_j)$；
+$\sum_iW_{ik}=1,\ \sum_{k,j}H_{kj}=1$ & 联合token似然的EM \\
+LDA模型族 & $p(w,z,\theta,\varphi)$或$p_{\rm par}(w,z,\theta\mid\varphi)$ &
+完整Bayes版对$\boldsymbol\theta_j,\boldsymbol\varphi_k$置先验；点参数版只对$\boldsymbol\theta_j$置先验 &
+完整Bayes版用Gibbs；本书点参数版用变分EM \\
+\bottomrule
+\end{longtable}
+}
+\endgroup
+LSA的文档系数是$\boldsymbol H$的列；这些列一般不正交。
+PCA则从已经中心化的样本矩阵寻找方差最大的正交方向，不能与未中心化文本矩阵的LSA等同。
+
+图\ref{fig:V5-C08-matrix-probability}展示低秩乘积、损失、约束和概率解释之间的桥梁。
+其中下层的条件高斯因子图表示：固定全局因子和第$n$个文档系数后生成观测文档；
+它是一种条件高斯表示，不是给所有因子都配置先验的完整贝叶斯模型。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/matrix_probability_bridge.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看上层$X\approx WH$的共同低秩外形；
+再比较LSA、NMF与概率因子模型框中的损失、约束和概率口径，并确认虚线只表示
+“共同乘积外形下进入概率建模分支”，不编码关系强弱；最后沿下层
+$W,h_n\to x_n$的两条有向边核对条件高斯公式，确认代数乘积共享不等于模型语义相同，
+条件高斯分支也不等于完整贝叶斯模型。
+
+
+\phantomsection\label{struct:V5-C08-CH11}
+% CORE-DERIVATION-PLAN: KN-V5-C37-DERIVATION-001
+\SLKnowledgeBridge{从三种观测假设分别推出损失，避免把相同的 $WH$ 误当作相同模型。}{$W\in\R^{M\times K}$、$H\in\R^{K\times N}$ 与 $\Lambda=WH\in\R^{M\times N}$。}{高斯模型需 $\sigma^2>0$；泊松计数非负且正计数处 $\lambda_{ij}>0$；PLSA 概率矩阵需归一化。}{先为每种观测机制写联合对数似然，再删除与 $W,H$ 无关的常数。}
+
+\begin{derivationgoalbox}
+在统一乘积$\boldsymbol\Lambda=\boldsymbol W\boldsymbol H$下，
+分别从高斯连续观测、泊松计数和PLSA联合多项分布推出对应目标，
+说明“相同乘积”为什么仍可能是不同模型。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+设$\boldsymbol W\in\mathbb R^{M\times K}$、
+$\boldsymbol H\in\mathbb R^{K\times N}$，故
+$\boldsymbol\Lambda\in\mathbb R^{M\times N}$。
+高斯情形要求$\sigma^2>0$；泊松情形要求$n_{ij}\in\mathbb Z_{\ge0}$、
+$\lambda_{ij}\ge0$且$n_{ij}>0$时$\lambda_{ij}>0$；
+PLSA联合口径要求$p_{ij}\ge0$且$\sum_{i,j}p_{ij}=1$。
+\end{derivationprepbox}
+
+\Needspace{4\baselineskip}
+\textbf{推导第1步：高斯观测给出平方重构。}
+若在给定$\boldsymbol W,\boldsymbol H$后各元素独立且
+$X_{ij}\sim\mathcal N(\lambda_{ij},\sigma^2)$，则
+\[
+-\log p(\boldsymbol X\mid\boldsymbol W,\boldsymbol H)
+=\frac{MN}{2}\log(2\pi\sigma^2)
++\frac{1}{2\sigma^2}\sum_{i,j}(x_{ij}-\lambda_{ij})^2.
+\]
+固定$\sigma^2$时，最大化似然等价于最小化
+$\|\boldsymbol X-\boldsymbol W\boldsymbol H\|_F^2$。
+这可作为实值权重的工作模型；TF--IDF不是计数，不能据此改用泊松似然。
+
+\Needspace{4\baselineskip}
+\textbf{推导第2步：泊松计数给出广义KL。}
+若$N_{ij}\sim\operatorname{Poisson}(\lambda_{ij})$相互独立，则
+\[
+-\log p(\boldsymbol N\mid\boldsymbol\Lambda)
+=\sum_{i,j}\{\lambda_{ij}-n_{ij}\log\lambda_{ij}+\log(n_{ij}!)\}.
+\]
+定义
+\[
+D_{\mathrm{gKL}}(\boldsymbol N\Vert\boldsymbol\Lambda)
+=\sum_{i,j}\left[
+n_{ij}\log\frac{n_{ij}}{\lambda_{ij}}-n_{ij}+\lambda_{ij}\right],
+\]
+采用扩展实数约定：对任意$\lambda\ge0$令$0\log(0/\lambda):=0$，特别地$0\log0:=0$；若$n>0,\lambda=0$，则$-n\log\lambda=+\infty$且$n\log(n/\lambda)=+\infty$。因此$n=0,\lambda=0$时泊松负对数似然与广义KL的该格贡献都为$0$，$n=0,\lambda>0$时都贡献$\lambda$，而$n>0$时必须取$\lambda>0$才能得到有限值。两式之差只含观测计数，因此在同一扩展实数可行域上有相同极小点。
+
+\phantomsection\label{struct:V5-C08-CH12}
+\begin{proposition}[泊松负对数似然与广义KL等价]\label{prop:V5-C08-poisson-kl}
+在上述计数、正值和有限性条件下，关于$\boldsymbol\Lambda$最小化泊松负对数似然，
+等价于最小化$D_{\mathrm{gKL}}(\boldsymbol N\Vert\boldsymbol\Lambda)$。
+\end{proposition}
+\phantomsection\label{struct:V5-C08-CH13}
+% KNOWLEDGE-PLAN: KN-V5-C37-PROOF-001 L1
+\paragraph{读前自检：证明：泊松负对数似然与广义KL等价。}Poisson均值$\lambda_{ij}=(WH)_{ij}$时，负对数似然单项为$\lambda_{ij}-x_{ij}\log\lambda_{ij}$加只依赖$x_{ij}$的常数；请与广义KL单项相减，核对差与$W,H$无关。\par
+
+\begin{proof}
+逐元素相减得到
+\[
+\{-\log p(n_{ij}\mid\lambda_{ij})\}
+-\{n_{ij}\log(n_{ij}/\lambda_{ij})-n_{ij}+\lambda_{ij}\}
+=\log(n_{ij}!)-n_{ij}\log n_{ij}+n_{ij},
+\]
+其中$n_{ij}=0$时按$0\log0=0$解释；这同时覆盖$\lambda_{ij}=0$的零--零分支。右端不含$\lambda_{ij}$，对所有可行
+$\boldsymbol\Lambda$都是同一常数；因此两个目标的大小只差常数，极小点集合相同。
+若正计数位置取$\lambda_{ij}=0$，两目标都为正无穷，该点不属于有限目标域，结论仍与定义域一致。
+\end{proof}
+
+\Needspace{4\baselineskip}
+\textbf{推导第3步：PLSA联合token似然给出联合KL。}
+令总token数$N_{\mathrm{tok}}=\sum_{i,j}n_{ij}>0$，
+$\widehat p_{ij}=n_{ij}/N_{\mathrm{tok}}$，并采用
+\[
+p_{ij}=p(d_j)\sum_{k=1}^Kp(w_i\mid z_k)p(z_k\mid d_j)
+=(\boldsymbol W\boldsymbol H)_{ij}.
+\]
+多项分布对数似然除去组合常数后为$N_{\mathrm{tok}}\sum_{i,j}\widehat p_{ij}\log p_{ij}$，而
+\[
+D_{\mathrm{KL}}(\widehat{\boldsymbol P}\Vert\boldsymbol P)
+=\sum_{i,j}\widehat p_{ij}\log\widehat p_{ij}
+-\sum_{i,j}\widehat p_{ij}\log p_{ij}.
+\]
+第一项与模型无关，故最大化联合token似然等价于最小化联合KL。
+这里采用联合概率口径；没有同时要求$\boldsymbol H$每列和为$1$。
+
+\begin{proposition}[附加约束不会改进同一损失的无约束下界]\label{prop:V5-C08-feasible-inclusion}
+设$\varnothing\ne\mathcal F_c\subseteq\mathcal F$，且损失
+$\mathcal J:\mathcal F\to\mathbb R\cup\{+\infty\}$满足
+$-\infty<\inf_{\mathcal F}\mathcal J<+\infty$。则
+\[
+\inf_{(\boldsymbol W,\boldsymbol H)\in\mathcal F_c}\mathcal J
+\ge
+\inf_{(\boldsymbol W,\boldsymbol H)\in\mathcal F}\mathcal J.
+\]
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C37-PROOF-002 L1
+\paragraph{读前自检：证明：附加约束不会改进同一损失的无约束下界。}附加约束不会改进同一损失的无约束下界所用的明确前提是“右端是$\mathcal J$在更大集合$\mathcal F$上的共同下界”；完成补出$\mathcal J(\boldsymbol W,\boldsymbol H)\ge\inf_{\mathcal F}\mathcal J$到下一关系的一步不等式或求导后，核对不等号方向与取等条件同时成立。\par
+
+\begin{proof}
+右端是$\mathcal J$在更大集合$\mathcal F$上的共同下界，所以对每个
+$(\boldsymbol W,\boldsymbol H)\in\mathcal F_c$都有
+$\mathcal J(\boldsymbol W,\boldsymbol H)\ge\inf_{\mathcal F}\mathcal J$。
+再对左侧所有可行点取下确界，保持该不等式。
+\end{proof}
+该命题只允许在\emph{同一损失、同一数据和可嵌套可行域}下比较。
+平方损失、广义KL、联合对数似然与ELBO不能只看数值大小来决定优劣。
+若用Bregman散度，零点唯一性还要求生成函数在相应定义域严格凸；仅有凸性不足以推出唯一零点。
+
+\Needspace{6\baselineskip}
+\begin{example}[两候选、两折的完整选择轮次]\label{exm:V5-C08-two-candidate-selection}
+这是用于复算协议的确定性教学输入。预先声明“两个验证折都成功才可选，并在可选者中最小化平均损失”。候选A在两折的验证损失为$0.42,0.46$，成本为$8,9$分钟；候选B第一折损失为$0.35$、成本$12$分钟，第二折数值失败。执行选择、重拟合与一次锁定测试协议；测试损失规定为$0.47$。
+\end{example}
+
+\Needspace{4\baselineskip}
+\SLExampleSolutionHeading{exm:V5-C08-two-candidate-selection}
+\begin{solution}
+\SLReadTranslation{题目要求完成“两候选、两折的完整选择轮次”：在同一数据划分、指标口径与资源约束下比较候选并给出选择结论。}
+\SolGiven 候选模型使用同一评价协议；开发、验证与测试信息边界保持隔离，比较指标方向和并列规则预先固定。
+\SLMethodTrigger{先固定比较维度和数据隔离规则，再逐候选计算同口径指标并按预声明规则选择。}
+\SolPlan 先完成“两候选、两折的完整选择轮次”所需的中间量，再做一次题型相关核验，最后回收题目各问。
+\SolDerive
+\textbf{题意转译。}先按“所有折均成功”筛选合法候选，再只在合法集合内比较预先登记的平均验证损失；测试集不参与这两步。
+
+\textbf{计算。}令合法性指标$a_{bc}$表示候选$b$在第$c$折数值成功，则
+\[
+a_A=(1,1),\qquad a_B=(1,0),\qquad
+\mathcal B_{\rm ok}=\{b:\prod_{c=1}^2a_{bc}=1\}=\{A\}.
+\]
+因此不能用B的单个较好成功折掩盖失败折；唯一可选者A的汇总为
+\[
+\overline L_A=\frac{0.42+0.46}{2}=0.44,\qquad
+\overline C_A=\frac{8+9}{2}=8.5\text{分钟}.
+\]
+\textbf{独立核验。}$\prod_ca_{Ac}=1$而$\prod_ca_{Bc}=0$，所以B不属于可比集合；A的两个折损失和为$0.88$、成本和为$17$，分别除以$2$复得$0.44$与$8.5$。
+
+\textbf{结论。}随后只用完整开发集重拟合A，再解封一次锁定测试并报告$L_{\rm test}=0.47$；该值不再进入候选、超参数或预处理更新。
+\end{solution}
+
+
+\phantomsection\label{struct:V5-C08-CH14}
+\textbf{几何解释。}LSA用$K$维正交子空间逼近数据，允许因子坐标有正有负；
+NMF把每个文档放在$\boldsymbol W$列向量张成的非负锥中，部分表示更易解释却缩小可行域；
+聚类把数据压到有限原型或树结构；PCA必须先中心化，再以正交投影最大化方差或最小化重构误差。
+
+\phantomsection\label{struct:V5-C08-CH15}
+\textbf{概率解释。}PLSA对固定参数做极大似然，没有文档主题分布的生成先验；
+完整Bayes LDA为文档主题分布和主题词分布都配置狄利克雷先验，并可用Gibbs推断；
+第35章（第5册第6章）的点参数LDA变体只给文档主题分布配置先验，
+把主题词分布作为点参数并用变分EM估计。两种口径不能写成同一个后验。
+MCMC样本相关，有限运行不要求也通常无法给出“已经收敛到后验”的数学证书。评价后验期望时应执行预先声明的有限诊断/停止协议：至少报告独立链数$R_{\mathrm{chain}}$、每链预热与留样预算、参数级有效样本量（ESS）、$\widehat R$及Monte Carlo标准误；诊断未达阈值时保留运行记录并标记证据不足，不能把目标函数下降或$\mathtt{converged}$标签当作链收敛证明。
+
+\phantomsection\label{struct:V5-C08-CH16}
+\textbf{优化解释。}SVD在平方损失的秩不超过$K$问题中给出全局解；
+NMF、PLSA和多数变分目标非凸，初始化会改变局部结果。
+EM的观测似然不降、VI的ELBO不降都是各自更新条件下的单调性，不代表达到全局最优。
+Gibbs是马尔可夫链后验推断，不是以目标函数单调下降定义的优化算法。
+
+\phantomsection\label{struct:V5-C08-CH17}
+\textbf{图形辅助。}图\ref{fig:V5-C08-matrix-probability}说明矩阵与概率视角的共享部分；
+后续图\ref{fig:V5-C08-validation}--\ref{fig:V5-C08-selection-map}分别承担验证、评价和方法选择，
+每幅图都对应一个可执行检查，而非装饰性分类。
+
+\phantomsection\label{struct:V5-C08-CH18}
+\textbf{小型数值例子。}取
+\[
+\boldsymbol N=\begin{bmatrix}3&0\\1&2\end{bmatrix},\qquad
+\boldsymbol\Lambda=\begin{bmatrix}2&1\\2&1\end{bmatrix}.
+\]
+按零计数约定逐格计算，
+\[
+D_{\mathrm{gKL}}(\boldsymbol N\Vert\boldsymbol\Lambda)
+=3\log(3/2)+\log2\approx1.9095.
+\]
+四个单元的常数项抵消后可核验命题\ref{prop:V5-C08-poisson-kl}。
+若把$\boldsymbol N$替换成TF--IDF权重，则泊松计数语义消失，即使公式仍能算出一个数，也不能称为计数似然。
+
+\SLAdvancedSection{模型选择与评价}{sec:V5-C08-S03}
+
+把数据单元先定义清楚：独立单元可能是样本、文档、用户、时间块或整张图，而不一定是矩阵元素。
+在这些单元上划分训练集、验证集和锁定测试集。所有方法、秩$K$、簇数、先验、初始化次数与停止容差
+只能由训练/验证信息决定；测试标签或测试token不能反馈到选择过程。
+
+本章明确区分图\ref{fig:V5-C08-validation}中的两个并列、无泄漏且估计对象不同的完整协议。
+协议A由算法\ref{alg:V5-C08-selection-protocol}实现：只在开发数据$D$上选择并冻结候选，随后重训，锁定测试集$T$只开封一次。
+协议B是嵌套交叉验证：对每个外层折$c$，都须在$D_{-c}$上重新执行$C_{\rm in}$折候选选择与重训，再仅用$D_c$作外层评价，最终汇总$C_{\rm out}$个损失；它不是算法\ref{alg:V5-C08-selection-protocol}的隐藏外循环。
+任何用锁定测试或外层评价结果回调候选、超参数或停止规则的做法都属于信息泄漏。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/fig_v5_c08_validation_protocols.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先复述协议A中“开发集选择并冻结候选、完整$D$重训、$T$只开封一次”的方向；
+再复述协议B中“每个$c$都在$D_{-c}$内重做$C_{\rm in}$折选择、只用$D_c$评价、汇总$C_{\rm out}$”的方向；
+最后沿两条橙色虚线回箭头从最终评价指回选择节点，说明为何箭头在X处被阻断，以及这种反馈为何构成泄漏。
+
+% KNOWLEDGE-PLAN: KN-V5-C37-PROPOSITION-003 L1
+\paragraph{读前自检：独立测试均值对已锁定模型条件无偏。}模型$\widehat f$由开发数据锁定，独立测试基本单元$Z_s$条件iid；请写测试均值$S^{-1}\sum_sL(Z_s,\widehat f)$的条件期望，核对等于$R(\widehat f)$。\par
+
+\begin{proposition}[独立测试均值对已锁定模型条件无偏]\label{prop:V5-C08-test-unbiased}
+设$\mathcal D_{\mathrm{dev}}$包含训练与验证信息，
+$\widehat f$是其可测函数；测试样本$Z_1,\ldots,Z_m$在给定
+$\mathcal D_{\mathrm{dev}}$后仍独立同分布于目标分布$P$，且
+$\ell(\widehat f,Z)$可积，并定义
+$R(\widehat f):=\mathbb E_{Z\sim P}[\ell(\widehat f,Z)]$。则
+\[
+\mathbb E\!\left[\widehat R_{\mathrm{test}}\mid\mathcal D_{\mathrm{dev}}\right]
+=R(\widehat f),\qquad
+\widehat R_{\mathrm{test}}=\frac1m\sum_{s=1}^m\ell(\widehat f,Z_s).
+\]
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C37-PROOF-003 L1
+\paragraph{读前自检：证明：独立测试均值对已锁定模型条件无偏。}给定开发数据后$\widehat f$固定，测试单元与其独立且损失可积；请把条件期望移入有限和，核对每项期望均为同一$R(\widehat f)$，故测试均值条件无偏。\par
+
+\begin{proof}
+给定$\mathcal D_{\mathrm{dev}}$后，$\widehat f$固定，而每个$Z_s$仍服从$P$。
+可积性允许交换有限求和与条件期望，因此
+\[
+\mathbb E[\widehat R_{\mathrm{test}}\mid\mathcal D_{\mathrm{dev}}]
+=\frac1m\sum_{s=1}^m
+\mathbb E_{Z\sim P}[\ell(\widehat f,Z)]
+=R(\widehat f).
+\]
+若测试结果参与候选选择，$\widehat f$不再只由$\mathcal D_{\mathrm{dev}}$决定，上述条件独立结构被破坏。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V5-C37-CONCEPT-006 L1
+\paragraph{读前自检：这一定理不能按行看起来像样本自动套用。 若基本单元在给定开发数据后确为iid，直接应用命题。}独立测试均值定理要求基本评价单元条件iid，不能仅因表格按行排列就套用；请用同一图的相关结点行作反例，指出独立性失败，并改用图专用重采样或设计型分析。\par
+
+\begin{keypointbox}
+\textbf{这一定理不能按“行看起来像样本”自动套用。}
+若基本单元在给定开发数据后确为iid，直接应用命题。若只是交换但有共同用户、文档、时间块或抽样不放回结构，应把整个组作为切分单元，并按相应有限总体或簇抽样估计量分析。若结点、边来自同一张图，训练边与测试边通常共享端点且相互依赖；随机拆边并不产生iid测试样本。此时应按独立图、图快照、时间块或预先定义的结点群切分，并把风险定义为“新图”“未来快照”或“新群组”上的目标；若只有一张相依图，则命题\ref{prop:V5-C08-test-unbiased}不提供无偏保证，必须报告依赖假设并采用图专用重采样或设计型分析。
+\end{keypointbox}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.18\textwidth}XX@{}}
+\toprule
+数据结构 & 合法切分单元 & 可声称的评价结论 \\
+\midrule
+iid观测 & 单个观测 & 满足命题条件时，锁定测试均值条件无偏 \\
+组内相关/交换序列 & 用户、文档、家庭、会话或整组 & 组间独立时按组评价；不能把组内元素当独立样本扩大样本量 \\
+时间依赖 & 不交叠时间块，训练早于测试 & 估计未来时间块风险；需说明漂移与间隔策略 \\
+图结点/边 & 独立图、图快照或预定义结点群 & 只对声明的图单位泛化；单图随机拆边不自动继承iid无偏性 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+无监督评价至少保留以下证据：
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{拟合与任务效用：}重构误差、留出对数似然、文档完成困惑度、检索或下游效用；
+  \item \textbf{稳定性：}重采样后簇、子空间、主题或排序的一致性，并处理标签置换或因子旋转；
+  \item \textbf{解释性：}主题词一致性、原型可读性、负载稀疏性，连同人工规则和盲评协议；
+  \item \textbf{计算证据：}运行时间、最大工作存储量、迭代数、失败率，以及所有候选共用的固定执行环境说明；
+  \item \textbf{专用诊断：}\PageRank{}报告固定点残差和扰动稳定性；MCMC报告$R_{\mathrm{chain}}$、逐链预算、ESS、$\widehat R$、自相关和Monte Carlo标准误，并以“诊断通过/证据不足”而非有限步$\mathtt{converged}$表述。
+\end{itemize}
+话题模型的文档完成式评价应在每篇测试文档内部再分“已观察token”和“待评分token”：
+只用前者推断该文档的主题比例，再对后者计算预测概率，不能用待评分token反向推断后再评分。
+
+图\ref{fig:V5-C08-evaluation}把拟合、预登记任务效用、稳定性、可解释性和计算代价五个互补维度并列展示；
+各卡的点、区间、分布或资源微图只提示报告形态，不是可复算数值结果，也不定义单一总分。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/evaluation_dashboard.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先逐卡核对五个指标的方向和单位；
+再读取SE、95\%CI、IQR、CI所表达的不确定性或分布角色，以及时间／内存资源微图；
+最终把五类证据联合报告，并确认不得合成无依据的单一总分。
+
+% KNOWLEDGE-PLAN: KN-V5-C37-CONCEPT-007 L1
+\paragraph{读前自检：无监督学习方法。}无监督方法选择协议先按输出语义筛选候选，再在开发集内比较，锁定配置后只解封一次测试集；请把聚类、PCA、PLSA、PageRank各匹配到其输出，核对测试结果未反馈到候选或预算。\par
+
+\SLDirectSection{方法选择地图}{sec:V5-C08-S04}
+\knowledgeanchor{SLM-22-01-003}{无监督学习方法}
+\knowledgeanchor{SLM-22-01-004}{基础机器学习方法}
+
+选择顺序应从输出语义开始，而不是从算法熟悉度开始：
+需要离散分组时先考虑聚类；需要线性压缩时比较PCA、SVD/LSA与NMF；
+需要词与文档的概率生成结构时比较PLSA与LDA；需要图上的稳态重要性时使用\PageRank{}；
+需要难积分后验的期望时才考虑MCMC。图\ref{fig:V5-C08-selection-map}给出完整决策路径：
+唯一虚线只允许验证阶段回修候选族；一旦锁定选择，最终测试与报告都不得回流到候选或验证过程。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/method_selection_decision_map.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看输出语义与必要约束；
+再看聚类、降维、话题、图排序四族如何进入验证协议、计算预算和失败模式筛选；
+最终沿实线锁定选择，并确认只允许验证阶段以虚线回修候选族，最终测试或报告绝不回流。
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.15\textwidth}p{0.20\textwidth}Xp{0.23\textwidth}@{}}
+\toprule
+方法 & 核心模型 & 可声称的求解性质 & 主要警戒线 \\
+\midrule
+层次聚类 & 树状合并 & 有限次合并终止 & 距离与链接规则决定结果 \\
+\kMeans{} & 中心与硬划分 & 目标单调不增，通常到局部解 & 尺度、异常值、非球形簇 \\
+高斯混合 & 概率混合 & EM似然不降，通常到驻点 & 协方差退化与初始化 \\
+PCA/LSA & 正交低秩子空间 & 秩不超过$K$的相应平方损失有SVD全局解 & PCA需中心化；LSA语义不同 \\
+NMF & 非负低秩因子 & 交替优化通常只到驻点 & 尺度/置换不唯一、局部解 \\
+PLSA/LDA & 潜在主题模型 & EM、VI或Gibbs各有不同保证 & 似然、ELBO与链诊断不可混用 \\
+\PageRank{} & 图上马尔可夫链 & 阻尼模型有唯一固定点和幂法收敛 & 悬挂修复、列随机方向、图偏差 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+
+\phantomsection\label{struct:V5-C08-CH19}
+\textbf{算法伪代码。}算法\ref{alg:V5-C08-selection-protocol}只实现协议A：任务定义、开发集内$C_{\mathrm{in}}$折选择、一次锁定测试和多指标评价。协议B的$C_{\mathrm{out}}$个外层折必须各自完整重跑内层选择，不能把算法A的一次开发集选择误称为嵌套交叉验证。算法不替代候选方法的内部求解器，而是规定一致的比较方式。
+
+\phantomsection\label{struct:V5-C08-CH20}
+\textbf{输入与输出。}输入包括带独立单元标识的数据、任务规格、有限候选配置、拆分方案、
+主指标与约束指标、初始化规则和计算预算；输出包括锁定模型、一次测试结果，以及稳定性、解释性和成本比较。
+
+\phantomsection\label{struct:V5-C08-CH21}
+\textbf{参数含义。}$K$可表示秩、簇数或主题数，但每个候选必须写明含义；
+$C_{\mathrm{in}}$是开发集内验证折数，$C_{\mathrm{out}}$只用于协议B的外层折数，$B$是有限候选数，$T_{\max}$是内部迭代硬上限；
+主指标方向、容许退化阈值和资源上限必须在查看测试结果前确定。
+
+\phantomsection\label{struct:V5-C08-CH22}
+\textbf{初始化。}先确定独立单元、预处理和拆分规则；再只用训练折拟合预处理参数。
+随机方法使用预先声明的$R_{\mathrm{start}}$个初始化、$R_{\mathrm{chain}}$条链和
+$R_{\mathrm{bootstrap}}$次重采样计划。任何由完整数据计算的词表、中心、均值或缩放都可能造成泄漏。
+
+\phantomsection\label{struct:V5-C08-CH23}
+\textbf{参数更新与更新顺序。}候选循环依次遍历配置，内层循环依次遍历$C_{\mathrm{in}}$个验证折；
+每次先拟合训练折，再在验证折计算主指标、稳定性和成本。候选选定后在整个开发集重拟合一次，
+最后才解封测试集；测试结果不再触发参数更新。
+
+\phantomsection\label{struct:V5-C08-CH24}
+\textbf{判断条件、停止条件与返回。}内部求解器满足其预先声明的数值/诊断停止协议且检查通过时，该次拟合才进入比较。对优化或固定点方法，记录其规范状态与证书；对MCMC有限运行，不要求$\mathtt{converged}$，而是核验预登记的链数、预算、ESS与$\widehat R$门槛。
+达到$T_{\max}$、目标值不是有限实数、出现空簇或奇异协方差、MCMC诊断证据不足或预算超限时，记录具体原因。
+有限候选和有限折全部处理完毕后流程结束；若所有候选都不满足预先声明的要求，则停止选择且不查看测试集。
+
+\phantomsection\label{struct:V5-C08-CH25}
+\textbf{正确性依据、收敛条件与不适用情形。}数据隔离保证命题
+\ref{prop:V5-C08-test-unbiased}的条件结构；有限枚举保证协议本身终止。
+候选内部保证仍分别依赖SVD、EM、VI、MCMC或幂法的条件，协议不把预算终止改写成数学收敛，也不为MCMC有限运行生成$\mathtt{converged}$证书。
+命题\ref{prop:V5-C08-test-unbiased}只在其条件iid前提成立时提供无偏结论；依赖图、时间序列或组内相关数据必须改用前述结构化切分与相应估计对象。无法定义切分单元、评价指标与任务语义时，该协议不适用并应先修订实验设计。
+
+\phantomsection\label{struct:V5-C08-CH26}
+\textbf{训练时间复杂度与预测时间复杂度。}设第$b$个配置在第$c$折的一次初始化拟合、
+一条链、一次重采样重拟合/对齐和常规评价代价分别为
+$F^{\mathrm{start}}_{bc},F^{\mathrm{chain}}_{bc},F^{\mathrm{boot}}_{bc},E_{bc}$。
+不适用的项取零，则该折完整代价必须展开为
+\[
+F_{bc}=R_{\mathrm{start},bc}F^{\mathrm{start}}_{bc}
++R_{\mathrm{chain},bc}F^{\mathrm{chain}}_{bc}
++R_{\mathrm{bootstrap},bc}F^{\mathrm{boot}}_{bc},
+\]
+选择总时间为
+$O\!\left(\sum_{b=1}^{B}\sum_{c=1}^{C_{\mathrm{in}}}(F_{bc}+E_{bc})\right)$，另加一次开发集重拟合。
+主题稳定性的$F^{\mathrm{boot}}_{bc}$须包含主题匹配/最佳置换代价；不得把多启动、多链、重采样或匹配藏进常数。
+预测时间复杂度依锁定方法参数化报告：线性投影常为$O(MK)$每列，最近中心分配为$O(MK)$，
+\PageRank{}物化后单结点查询为$O(1)$；不得给所有方法写同一个预测界。
+
+\phantomsection\label{struct:V5-C08-CH27}
+\textbf{空间复杂度与复杂度假设。}串行复用中间存储时，峰值空间由数据和最大单次模型决定；
+并行执行会乘以并发数。复杂度假设包括稀疏/稠密存储、候选与折数有限、一次标量运算常数成本、
+不计外存和网络通信；比较时固定执行环境，并报告并行任务数、运行时间与最大工作存储量。
+
+\begingroup\SetAlgoLined
+% KNOWLEDGE-PLAN: KN-V5-C37-ALGORITHM_IDEA-001 L2
+
+% KNOWLEDGE-PLAN: KN-V5-C37-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={协议A：开发集选择与一次锁定测试：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={独立单元数据、任务规格、有限候选/折、冻结指标与并列规则、多启动/链/重采样种子表、候选内部及全局评价预算},
+  output={最后合法折记录、锁定配置/开发集模型、至多一次测试结果、候选完成$b_{\rm done}$、折评价$e_{\rm done}$、成功拟合$f_{\rm done}$、状态与最终诊断},
+  preconditions={切分单元符合已声明的iid/交换性/依赖结构且无跨划分泄漏；测试集封存；$B,C_{\rm in}\ge1$；候选、指标方向、硬约束、失败协议、种子与预算均预登记},
+  initialization={封存测试集，清空折记录/可选集合，$b_{\rm done}=e_{\rm done}=f_{\rm done}=0$},
+  loop={按固定候选/折顺序，仅由训练折拟合预处理与模型，再在验证折计算指标/稳定性并记录资源},
+  update={拟合状态、有限指标、约束与稳定性全部核验后才原子提交$(b,c)$记录；完整$C_{\rm in}$折后才提交候选汇总},
+  domain={训练/验证/测试切分单元不交叠且尊重声明的依赖边界；所有候选用共同分母$C_{\rm in}$；比较指标有限且方向统一；测试只读一次},
+  failure={数据隔离/规则/预算非法返回$\mathtt{invalid\_input}$；种子或随机源不可恢复失败返回$\mathtt{random\_source\_failure}$；汇总、开发集重拟合或测试评价失败返回$\mathtt{numerical\_failure}$；全局评价预算耗尽返回$\mathtt{budget\_stop}$并不从部分枚举选择},
+  stop={完成全部有限候选、无合格候选、全局预算耗尽、测试一次完成或首次全局失败时停止},
+  budget={协议A至多$BC_{\rm in}$个候选折评价、每折预登记多启动/链/重采样工作、一次开发集重拟合和一次测试评价},
+  status={$\mathtt{completed}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$b_{\rm done}$计完整审计候选，$e_{\rm done}$计原子提交折评价，$f_{\rm done}$计成功拟合/重拟合调用},
+  diagnostics={数据隔离与依赖结构声明、逐$(b,c)$内部状态/失败阶段、实际多启动/链/重采样量；MCMC另含$R_{\rm chain}$、逐链预算、ESS、$\widehat R$与诊断通过标志；以及共同分母、硬约束、资源与测试访问计数},
+  complexity={$O(\sum_{b=1}^{B}\sum_{c=1}^{C_{\rm in}}(F_{bc}+E_{bc}))$，另加一次开发集重拟合；串行空间由最大单次模型与记录表决定}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begin{algorithm}[tbp]
+\caption{协议A：开发集选择与一次锁定测试}\label{alg:V5-C08-selection-protocol}
+\KwIn{数据与独立单元ID；任务规格$\mathfrak U$；有限候选$\{(\mathcal M_b,\lambda_b)\}_{b=1}^{B}$；
+开发/测试拆分；$C_{\mathrm{in}}$折生成规则；指标方向；$R_{\mathrm{start}},R_{\mathrm{chain}},R_{\mathrm{bootstrap}}$及种子表；$T_{\max}$与资源预算}
+\KwOut{最后合法折记录与锁定结果；$b_{\rm done},e_{\rm done},f_{\rm done}$；$\mathtt{status}$与最终诊断}
+置$b_{\rm done}=e_{\rm done}=f_{\rm done}=0$；核验独立单元、候选/折、指标/约束/并列规则、种子表与预算并封存测试集；失败则返回空记录、$\mathtt{invalid\_input}$及字段诊断\;
+\For{$b\leftarrow1$ \KwTo $B$}{
+  \For{$c\leftarrow1$ \KwTo $C_{\mathrm{in}}$}{
+    若全局评价预算不足以启动本折，则返回最后合法记录、$\mathtt{budget\_stop}$及$(b,c)$预算诊断，且不选择部分枚举结果\;
+    读取预登记种子并执行训练折专属预处理与候选拟合；种子/随机源失败时返回记录、$\mathtt{random\_source\_failure}$及$(b,c)$阶段诊断\;
+    若候选为MCMC，则执行全部预登记链与预算，记录ESS、$\widehat R$、自相关和Monte Carlo标准误；诊断未通过时原子记录$\mathrm{valid}[b,c]=\mathrm{false}$与“有限运行证据不足”，增加$e_{\rm done}$并继续，不得要求或伪造$\mathtt{converged}$\;
+    若候选不是MCMC且内部停止状态不满足其预登记接纳规则，或任一候选发生数值失败，则原子记录$\mathrm{valid}[b,c]=\mathrm{false}$及内部状态，增加$e_{\rm done}$并继续；不得用失败折评价\;
+    在对应验证折计算预声明指标、约束与稳定性；非有限或对齐失败则原子记录不合格和诊断；否则原子提交完整成功记录并增加$f_{\rm done},e_{\rm done}$\;
+  }
+  令$b_{\rm done}\leftarrow b$；若任一折不合格，则候选$b$记为不可选且不得汇总成功折;
+  否则以共同分母$C_{\mathrm{in}}$汇总主指标、离散度、稳定性和成本;
+  若候选$b$违反预声明硬约束，则记为不可选;
+}
+若汇总非有限，则返回折记录、$\mathtt{numerical\_failure}$及候选汇总诊断；若无合格候选，则返回无配置、$\mathtt{completed}$及“测试集未访问”最终诊断\;
+按预声明排序与决胜规则选出$(\widehat{\mathcal M},\widehat\lambda)$;
+用整个开发集重拟合一次并增加$f_{\rm done}$；失败则保留选择/折记录，返回$\mathtt{numerical\_failure}$及重拟合诊断\;
+仅此时访问测试集一次；评价非有限则返回锁定模型、$\mathtt{numerical\_failure}$及测试阶段诊断；否则返回全部结果、实际计数、$\mathtt{completed}$及“测试访问次数1”最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\phantomsection\label{struct:V5-C08-CH28}
+\textbf{适用条件。}数据划分必须尊重用户、时间、文档或图快照等独立结构；
+候选集与指标须有限且预先声明；每种方法应说明停止原因和数值诊断。
+小数据可用协议B的$C_{\mathrm{out}}\times C_{\mathrm{in}}$嵌套重采样，大型数据可用协议A保留独立开发/测试划分，但隔离原则不变。
+
+\phantomsection\label{struct:V5-C08-CH29}
+\textbf{局限性。}没有标签时，内部指标可能偏爱错误几何；稳定不代表有用，易解释也不代表预测概率校准；
+同一语料上的困惑度与人工主题质量可能排序相反。嵌套验证降低选择偏差，却增加计算成本，
+也不能修复数据分布漂移、测量偏差或错误任务定义。
+
+\phantomsection\label{struct:V5-C08-CH30}
+\textbf{常见错误。}在完整数据上中心化后再划分；用测试集选$K$；把训练重构误差当泛化能力；
+把EM似然不降写成全局最优；把ELBO与真实对数证据混写；把Gibbs样本数当有效样本量；
+把TF--IDF代入泊松模型；声称LSA的文档列正交；同时要求PLSA联合归一化与右因子每列归一化；
+只报最好一次随机初始化而不报失败率。
+
+\phantomsection\label{struct:V5-C08-CH31}
+\begin{comparisonbox}
+\small
+\setstretch{1.03}
+下列概念对最易在报告中混淆；比较时必须区分它们的角色、证据口径和收敛含义。
+\begin{enumerate}[leftmargin=0pt,label={},topsep=0pt,itemsep=1pt,parsep=0pt,partopsep=0pt]
+  \item \textbf{任务与求解器：}聚类、降维、话题、排序规定输出；SVD、EM、VI、MCMC、幂法规定计算路线。
+  \item \textbf{训练目标与验证指标：}前者用于拟合参数；后者用于在独立数据上选择配置。
+  \item \textbf{验证集与测试集：}验证集可反复参与选择；锁定测试集只做一次最终评估。
+  \item \textbf{似然与 ELBO：}似然是模型对观测的概率；ELBO 是给定变分族的下界。
+  \item \textbf{优化收敛与链收敛：}前者指目标或梯度达到驻点条件；后者在马尔可夫链条件下讨论分布或遍历均值收敛。
+  \item \textbf{重构稳定与语义稳定：}前者指数值误差相近；后者要求因子经置换或旋转对齐后含义一致。
+\end{enumerate}
+\end{comparisonbox}
+
+
+\SLDirectSection{全书综合自检}{sec:V5-C08-S05}
+
+\phantomsection\label{struct:V5-C08-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[对象、目标与求解器分层]\label{exm:V5-C08-layering}
+某语料项目说“用Gibbs做无监督学习”。把这句话改写成可执行的任务规格。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C08-layering}
+\begin{solution}
+\SLReadTranslation{题目要求完成“对象、目标与求解器分层”：先写清目标分布、提议或满条件与支持，再构造转移/估计量并核验不变性或归一化。}
+\SolGiven 目标分布、提议核或满条件在题面支持上有定义；所有条件分母和归一化常数为正，状态空间与随机变量取值域保持一致。
+\SLMethodTrigger{先声明目标分布、提议/满条件与支持，再逐步构造转移或估计量并核验归一化。}
+\SolDerive
+\textbf{题意转译。}先把任务写成“估计文档主题分布并计算后验主题期望”；模型可选LDA，
+训练/推断采用塌缩Gibbs；评价使用文档完成式留出对数似然、主题稳定性和有效样本量；
+预算声明链数、预热、抽样长度与内存。Gibbs在这里是后验推断引擎，不是任务名称。
+\[
+\theta_d\sim\operatorname{Dir}(\boldsymbol\alpha),\quad
+z_{dn}\mid\theta_d\sim\operatorname{Cat}(\theta_d),\quad
+w_{dn}\mid z_{dn}=k\sim\operatorname{Cat}(\boldsymbol\varphi_k).
+\]
+\[
+\widehat E[h(\theta_d)\mid w_d]
+=\frac1S\sum_{s=1}^Sh(\theta_d^{(s)}),\qquad
+\widehat{\operatorname{MCSE}}\text{与ESS另行报告}.
+\]
+\textbf{独立核验。}把求解器由Gibbs替换为合法的变分推断时，任务、LDA生成模型和留出评价口径仍可保持不变；这说明“任务--模型--求解器--评价--预算”五个槽位已经分开，而不是把Gibbs误当任务名称。
+
+\SolAnswer 可执行规格必须同时声明任务、模型、推断引擎、评价证据与资源预算，不能只写“用Gibbs做无监督学习”。
+\end{solution}
+\Needspace{6\baselineskip}
+\begin{example}[LSA因子维数纠错]\label{exm:V5-C08-lsa-shape}
+设$\boldsymbol X\in\mathbb R^{6\times4}$、$K=2$。
+写出截断SVD因子的维数，并判断“两个文档系数列必正交”是否成立。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C08-lsa-shape}
+\begin{solution}
+\SLReadTranslation{题目要求完成“LSA因子维数纠错”：依据题面矩阵/向量求出目标量，并核对每一步乘法与最终结果的维数。}
+\SolGiven 题面矩阵、向量与参数均按既定列向量约定；首次运算前写出各对象维数并确认内侧维数相等。
+\SLMethodTrigger{先标注每个矩阵/向量维数，再按分解、乘法或投影公式计算并做形状核验。}
+\SolDerive
+\textbf{因子维数。}
+\[
+\boldsymbol U_2\in\mathbb R^{6\times2},\qquad
+\boldsymbol\Sigma_2\in\mathbb R^{2\times2},\qquad
+\boldsymbol V_2\in\mathbb R^{4\times2},\qquad
+\boldsymbol V_2^{\mathsf T}\in\mathbb R^{2\times4}.
+\]
+因此
+\[
+\boldsymbol X\approx\boldsymbol U_2\boldsymbol\Sigma_2\boldsymbol V_2^{\mathsf T}
+=\boldsymbol W\boldsymbol H,\qquad
+\boldsymbol W:=\boldsymbol U_2\in\mathbb R^{6\times2},\quad
+\boldsymbol H:=\boldsymbol\Sigma_2\boldsymbol V_2^{\mathsf T}
+\in\mathbb R^{2\times4}.
+\]
+\textbf{独立核验。}乘积维数逐项闭合为
+\[
+(6\times2)(2\times2)(2\times4)=6\times4,
+\]
+且成立的正交关系是
+\[
+\boldsymbol W^{\mathsf T}\boldsymbol W=I_2,\qquad
+\boldsymbol H\boldsymbol H^{\mathsf T}
+=\boldsymbol\Sigma_2\boldsymbol V_2^{\mathsf T}\boldsymbol V_2\boldsymbol\Sigma_2
+=\boldsymbol\Sigma_2^2.
+\]
+$\boldsymbol H$的四个文档列处在二维空间中，一般不会两两正交。
+
+\textbf{结论。}$V_2$是$4\times2$，只有$V_2^{\mathsf T}$是$2\times4$；LSA文档系数列一般不正交。
+\end{solution}
+\Needspace{6\baselineskip}
+\begin{example}[锁定测试的条件无偏]\label{exm:V5-C08-holdout}
+说明为什么比较20个秩后选出测试误差最小者，会破坏命题\ref{prop:V5-C08-test-unbiased}的条件。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C08-holdout}
+\begin{solution}
+\SLReadTranslation{题目要求完成“锁定测试的条件无偏”：在同一数据划分、指标口径与资源约束下比较候选并给出选择结论。}
+\SolGiven 候选模型使用同一评价协议；开发、验证与测试信息边界保持隔离，比较指标方向和并列规则预先固定。
+\SLMethodTrigger{先固定比较维度和数据隔离规则，再逐候选计算同口径指标并按预声明规则选择。}
+\SolDerive
+\textbf{条件检查。}若20个秩都在测试集上计算误差，再按这些误差定义$\widehat f$，则
+$\widehat f$依赖测试样本；它不再只是开发数据的可测函数。
+\[
+\widehat K=\arg\min_{1\le K\le20}\widehat R_{\rm test}(f_K)
+\Longrightarrow
+\widehat f=f_{\widehat K}=g(\mathcal D_{\rm dev},\mathcal D_{\rm test}),
+\]
+所以命题要求的$\widehat f=g(\mathcal D_{\rm dev})$失败。\textbf{独立核验。}由点态不等式“最小值不大于任一候选”可得
+\[
+E\!\left[\min_K\widehat R_{\rm test}(f_K)\right]
+\le\min_KE[\widehat R_{\rm test}(f_K)],
+\]
+最小测试误差受到向下选择偏差。\textbf{结论。}应在开发集内部用验证折选秩，锁定秩并重拟合后，才在未查看的测试集上计算一次结果；否则测试估计不再满足命题的条件无偏前提。
+\end{solution}
+
+图\ref{fig:V5-C08-course-map}把全书方法放回“问题定义--建模--计算--证据--边界”主闭环；
+下层监督与无监督任务共享线性代数、优化、概率、推断四类可复用计算引擎，隔离验证后的结论只能单向进入可复现报告，报告不回流。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/full_course_synthesis_map.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看上层五站主闭环及边界暴露／证据失败后返回问题定义的反馈；
+再看下层监督与无监督两路如何共同进入共享引擎池并汇入隔离验证；
+最终确认只有隔离验证后的结论能单向进入可复现报告，报告没有回流。
+
+\phantomsection\label{struct:V5-C08-CH33}
+\Needspace{4\baselineskip}
+\phantomsection\label{struct:V5-C08-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V5-C08-CH35}
+本章共10道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C08-S01-01}
+把“聚类、PCA、LDA、MCMC、\PageRank{}、EM、SVD”分成任务、模型和求解器三类；
+对兼具两种角色的名称说明具体语境。
+\end{exercise}
+\phantomsection\label{sol:V5-C08-S01-01}
+\begin{chapterexercisesolution}{ex:V5-C08-S01-01}
+聚类是输出分组的任务族；PCA是服务于降维任务的正交线性表示模型；
+LDA是概率话题模型；\PageRank{}是以图稳态权重为目标的排序模型。
+MCMC是后验期望估计的采样推断器，EM是潜变量模型的迭代优化框架。
+SVD既是代数分解对象，也是PCA/LSA中的计算工具。
+可用对象映射区分三类角色：
+\[
+\text{任务}:\mathcal D\mapsto\mathcal Y,\qquad
+\text{模型}:\theta\mapsto p_\theta(\mathcal D)\text{或}f_\theta,\qquad
+\text{求解器}:(\theta^{(t)},\mathcal D)\mapsto\theta^{(t+1)}.
+\]
+例如
+\[
+\text{\PageRank{}模型}:\boldsymbol r=G\boldsymbol r,\quad
+\text{幂法}:\boldsymbol r^{(t+1)}=G\boldsymbol r^{(t)};
+\qquad
+\text{LDA模型}\ne\text{Gibbs求解器}.
+\]
+因此“任务、模型、求解器”是角色分类而非互斥名称分类，必须同时说明输出量与计算目标。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C08-S02-01}
+对$\boldsymbol X\in\mathbb R^{M\times N}$、秩$K$写出LSA的
+$\boldsymbol W,\boldsymbol H$维数与两个正确正交关系，并纠正“文档列两两正交”。
+\end{exercise}
+\phantomsection\label{sol:V5-C08-S02-01}
+\begin{chapterexercisesolution}{ex:V5-C08-S02-01}
+薄截断SVD及维数为
+\[
+\boldsymbol X_{M\times N}\approx
+\boldsymbol U_{K,\,M\times K}
+\boldsymbol\Sigma_{K,\,K\times K}
+\boldsymbol V_{K,\,N\times K}^{\mathsf T}.
+\]
+取$\boldsymbol W=\boldsymbol U_K$、$\boldsymbol H=\boldsymbol\Sigma_K\boldsymbol V_K^{\mathsf T}$，
+则
+\[
+\boldsymbol W^{\mathsf T}\boldsymbol W=I_K,\qquad
+\boldsymbol H\boldsymbol H^{\mathsf T}
+=\boldsymbol\Sigma_K\boldsymbol V_K^{\mathsf T}\boldsymbol V_K\boldsymbol\Sigma_K
+=\boldsymbol\Sigma_K^2.
+\]
+维数链为$(M\times K)(K\times K)(K\times N)=M\times N$，与
+$\boldsymbol X$一致；这也复核了转置必须落在$\boldsymbol V_K$上。
+文档列是$\boldsymbol H$的$N$列，数量可超过维数$K$，一般不两两正交。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C08-S02-02}
+比较SVD、PCA与LSA：分别写明输入预处理、优化对象、输出解释和共同的线性代数工具。
+\end{exercise}
+\phantomsection\label{sol:V5-C08-S02-02}
+\begin{chapterexercisesolution}{ex:V5-C08-S02-02}
+SVD对任意实矩阵给出
+\[
+\boldsymbol X=\boldsymbol U\boldsymbol\Sigma\boldsymbol V^{\mathsf T},
+\qquad
+\boldsymbol X_K\in\arg\min_{\operatorname{rank}(Y)\le K}
+\|\boldsymbol X-\boldsymbol Y\|_F^2.
+\]
+PCA先中心化$\boldsymbol X_c=\boldsymbol X-\overline{\boldsymbol x}\boldsymbol1^{\mathsf T}$，再求
+\[
+\max_{\boldsymbol U^{\mathsf T}\boldsymbol U=I_K}
+\|\boldsymbol U^{\mathsf T}\boldsymbol X_c\|_F^2
+\Longleftrightarrow
+\min_{\boldsymbol U^{\mathsf T}\boldsymbol U=I_K}
+\|\boldsymbol X_c-\boldsymbol U\boldsymbol U^{\mathsf T}\boldsymbol X_c\|_F^2.
+\]
+LSA通常直接对词--文档权重矩阵$\boldsymbol X$作截断SVD，并把$\boldsymbol\Sigma_K\boldsymbol V_K^{\mathsf T}$解释为潜在语义坐标。
+三者共享奇异向量计算，但数据预处理和输出语义不同，不能互换名称。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C08-S02-03}
+从高斯与泊松观测模型分别推出平方损失和广义KL；说明哪一种可用于原始计数，
+以及为什么TF--IDF不应解释为泊松计数。
+\end{exercise}
+\phantomsection\label{sol:V5-C08-S02-03}
+\begin{chapterexercisesolution}{ex:V5-C08-S02-03}
+记$\lambda_{ij}=(\boldsymbol W\boldsymbol H)_{ij}$。独立同方差高斯模型给出
+\[
+p(\boldsymbol X\mid\boldsymbol W,\boldsymbol H)
+=\prod_{i,j}(2\pi\sigma^2)^{-1/2}
+\exp\!\left[-\frac{(x_{ij}-\lambda_{ij})^2}{2\sigma^2}\right],
+\]
+逐项取负对数即得常数加
+$\|\boldsymbol X-\boldsymbol W\boldsymbol H\|_F^2/(2\sigma^2)$。
+独立泊松模型则有
+$p(\boldsymbol N\mid\boldsymbol\Lambda)=\prod_{i,j}e^{-\lambda_{ij}}\lambda_{ij}^{n_{ij}}/n_{ij}!$，故
+\[
+-\log p=\sum_{i,j}\{\lambda_{ij}-n_{ij}\log\lambda_{ij}+\log(n_{ij}!)\}.
+\]
+逐格采用扩展实数定义：$n=0,\lambda=0$时，以$0\log0=0$和$0\log(0/0)=0$约定，两项目标都贡献$0$；$n=0,\lambda>0$时，两者都贡献$\lambda$；$n>0,\lambda=0$时，两者都为$+\infty$；只有$n>0,\lambda>0$时才按通常对数代数相减。因而在全部分支上，它与$D_{\mathrm{gKL}}(\boldsymbol N\Vert\boldsymbol\Lambda)$之差都是
+$\sum_{i,j}\{\log(n_{ij}!)-n_{ij}\log n_{ij}+n_{ij}\}$，只依赖观测。正计数处必须有$\lambda_{ij}>0$才能得到有限目标。
+原始非负整数频数适合检验泊松口径；TF--IDF经过归一化和逆文档频率变换，
+不是事件计数，所以可用平方损失工作模型，却不能声称泊松生成语义。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C08-S03-01}
+判断并修正三句话：“EM收敛到全局最优”“VI收敛到真实后验”“Gibbs收敛到全局最优参数”。
+\end{exercise}
+\phantomsection\label{sol:V5-C08-S03-01}
+\begin{chapterexercisesolution}{ex:V5-C08-S03-01}
+EM在精确E/M更新且似然有限时满足似然单调性
+\[
+\ell(\theta^{(t+1)};\boldsymbol x)\ge\ell(\theta^{(t)};\boldsymbol x).
+\]
+这条不等式本身既不保证参数序列收敛，也不排除非唯一M步在等似然集合内移动。若进一步假设更新在极限点附近单值连续、M步解局部唯一且参数迭代确实收敛到$\theta^\star$，才有
+\[
+\theta^{(t)}\to\theta^\star
+\Longrightarrow
+\|\theta^{(t+1)}-\theta^{(t)}\|\to0.
+\]
+相邻参数差趋零至多是停止诊断；在通常可微与内部点等正则条件下，极限点可为驻点或局部解，并不自动是全局最优。VI在给定变分族与合法坐标更新下满足
+\[
+\log p(\boldsymbol x)
+=\mathcal L(q,\theta)
++D_{\rm KL}(q(z)\|p(z\mid\boldsymbol x,\theta)),
+\qquad
+\mathcal L^{(t+1)}\ge\mathcal L^{(t)},
+\]
+所得是该族内近似后验，不自动等于真实后验。
+有限状态Gibbs链不可约时，目标后验唯一且可积函数的时间平均收敛；非周期性另保证固定时刻边缘分布收敛。一般状态链相应要求正常Harris返与可积性才能得到时间平均，再加非周期性才谈总变差或边缘收敛；CLT、有限渐近方差和批均值一致性还需额外矩与混合条件。它不是寻找“全局最优参数”的单调优化。
+\[
+\widehat I_n=\frac1n\sum_{t=1}^nf(X_t)\longrightarrow E_\pi f
+\quad\text{依赖链条件，而非“全局最优参数”}.
+\]
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C08-S02-04}
+采用本章PLSA联合概率口径，写出$\boldsymbol W,\boldsymbol H$的归一化约束；
+再说明LDA比PLSA多出的随机变量与先验。
+\end{exercise}
+\phantomsection\label{sol:V5-C08-S02-04}
+\begin{chapterexercisesolution}{ex:V5-C08-S02-04}
+联合口径取$W_{ik}=p(w_i\mid z_k)$，所以每列满足$\sum_iW_{ik}=1$；
+$H_{kj}=p(d_j)p(z_k\mid d_j)$，故$H\ge0$且$\sum_{k,j}H_{kj}=1$，
+但单列和是$p(d_j)$而非统一为$1$。完整Bayes LDA把每篇文档的主题比例
+$\boldsymbol\theta_j$和每个主题的词分布$\boldsymbol\varphi_k$都视为随机变量，
+分别配置狄利克雷先验，再对主题指派与参数后验作推断；
+第35章（第5册第6章）的点参数变体保留$\theta_j$先验，却把$\varphi_k$作为待估单纯形参数。
+\[
+W_{ik}\ge0,\quad \sum_iW_{ik}=1;\qquad
+H_{kj}\ge0,\quad \sum_{k,j}H_{kj}=1,\quad
+\sum_kH_{kj}=p(d_j).
+\]
+\[
+p(w_i,d_j)=\sum_kW_{ik}H_{kj},\qquad
+\sum_{i,j}p(w_i,d_j)=1.
+\]
+完整Bayes LDA额外引入
+\[
+\theta_j\sim\operatorname{Dir}(\boldsymbol\alpha),\qquad
+\varphi_k\sim\operatorname{Dir}(\boldsymbol\beta),\qquad
+z_{jn}\mid\theta_j\sim\operatorname{Cat}(\theta_j).
+\]
+点参数变体则用
+\[
+\theta_j\sim\operatorname{Dir}(\boldsymbol\alpha),\qquad
+\varphi_k\in\Delta^{V-1}\ \text{为参数},
+\]
+其ELBO和M步不含$\boldsymbol\beta$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C08-S04-01}
+数据由两个细长弯曲簇和少量异常点构成。设计至少三种聚类候选、验证指标、稳定性检查和失败诊断。
+\end{exercise}
+\phantomsection\label{sol:V5-C08-S04-01}
+\begin{chapterexercisesolution}{ex:V5-C08-S04-01}
+候选可含\kMeans{}、不同链接规则的层次聚类和能表达非凸连通结构的图聚类；
+先对特征尺度和异常值处理方案作开发集内选择。评价同时报告内部紧致/分离指标、
+重采样后经标签匹配的簇一致性、异常点扰动敏感度和运行成本。
+\kMeans{}的非球形失配、层次链接的链化、图聚类对邻接参数敏感都应列为失败诊断。
+\[
+\widehat b=\arg\max_{b\in\mathcal B_{\rm ok}}
+\left\{\overline{\operatorname{sil}}_b:
+\operatorname{stab}_b\ge s_0,\ C_b\le C_{\max}\right\},
+\]
+\[
+\operatorname{stab}_b
+=\frac{2}{R(R-1)}\sum_{r<s}
+\operatorname{ARI}(\widehat z_b^{(r)},\widehat z_b^{(s)}),
+\qquad
+\operatorname{fail}_b=R^{-1}\sum_r\boldsymbol1\{\text{拟合 }r\text{失败}\}.
+\]
+若全部候选违反稳定性、失败率或预算约束，则停止选择并报告“无合格候选”。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C08-S04-02}
+分别为\PageRank{}与MCMC列出模型方程、数值停止或诊断量，并解释为何两者都出现马尔可夫链却不能共用同一收敛报告。
+\end{exercise}
+\phantomsection\label{sol:V5-C08-S04-02}
+\begin{chapterexercisesolution}{ex:V5-C08-S04-02}
+\PageRank{}求列随机阻尼矩阵的固定点$\boldsymbol r=G\boldsymbol r$，
+用相邻迭代差、固定点残差、概率守恒和严格误差上界停止。
+\[
+\boldsymbol r^{(t+1)}=G\boldsymbol r^{(t)},\quad
+\eta_t=\|\boldsymbol r^{(t)}-G\boldsymbol r^{(t)}\|_1,\quad
+B_t=\frac{d}{1-d}\|\boldsymbol r^{(t)}-\boldsymbol r^{(t-1)}\|_1.
+\]
+MCMC构造转移核$K$满足$\pi K=\pi$，以目标后验$\pi$为平稳分布，并用
+\[
+\widehat I_n=\frac1n\sum_{t=1}^{n}f(X_t),\qquad
+\widehat{\operatorname{MCSE}}_{\rm BM}
+=\sqrt{\widehat\sigma_{\rm BM}^2/n}
+\]
+估计$\mathbb E_\pi[f(X)]$及其数值不确定性；
+有限链不可约或一般状态链正常Harris返且$f\in L^1(\pi)$时，才有相应时间平均结论；非周期性另用于固定时刻边缘或总变差收敛；CLT、MCSE和批均值还需额外矩与混合条件。有限运行必须报告独立链数$R_{\mathrm{chain}}$、逐链预热/留样预算、$\widehat R$、自相关、ESS和MCSE；这些只是诊断，不能替代上述条件，也不应汇总成$\mathtt{converged}$证书。
+前者是确定固定点数值迭代，后者是相关随机样本推断；共享马尔可夫术语不意味着共享停止阈值或证明。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C08-S03-02}
+某研究者在测试集上选择主题数、停词表和随机种子，再报告同一测试集困惑度。
+指出全部泄漏路径并重写嵌套验证流程。
+\end{exercise}
+\phantomsection\label{sol:V5-C08-S03-02}
+\begin{chapterexercisesolution}{ex:V5-C08-S03-02}
+主题数、停词表和随机种子都由测试困惑度选择，形成三条测试到模型的反馈路径；
+随后再报同一数值会产生选择偏差。应先封存测试文档，在开发集内执行$C_{\mathrm{in}}$折选择：
+每个内层训练折拟合词表与模型，在内层验证折选择全部配置；锁定后在完整开发集重拟合，
+最后按文档完成协议对测试文档评分一次，并同时报告稳定性、失败率和成本。
+\[
+\widehat\lambda
+=\arg\min_{\lambda=(K,\mathcal V,s)}
+\widehat{\operatorname{PPL}}_{\rm val}(\lambda),
+\qquad
+\lambda\text{仅由开发集内层折决定}.
+\]
+\[
+\widehat f=\operatorname{Refit}(\mathcal D_{\rm dev},\widehat\lambda),
+\qquad
+\widehat R_{\rm test}
+=m^{-1}\sum_{i=1}^m\ell(\widehat f,Z_i)
+\quad\text{只计算一次}.
+\]
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C08-S05-01}
+为“从百万篇新闻中提取可解释主题，并支持新文档快速表示”给出完整方案：
+说明任务、数据划分、候选模型、训练或推断、指标、诊断与计算成本。
+\end{exercise}
+\phantomsection\label{sol:V5-C08-S05-01}
+\begin{chapterexercisesolution}{ex:V5-C08-S05-01}
+任务定义为学习主题词分布并为新文档产生低维表示。按时间或来源划分开发/测试文档，
+候选设为NMF、PLSA和LDA及有限$K$；训练分别使用声明的损失与求解器。
+开发集内以文档完成对数似然或重构效用选配置，并联合主题稳定性、人工可读性、失败率、
+单文档推断时间和最大工作存储量。若词--文档矩阵含$\operatorname{nnz}(X)$个非零元，则稀疏截断LSA每次矩阵--向量/块乘的主成本为$O(\!\operatorname{nnz}(X)K)$。对平方Frobenius损失的标准稀疏NMF乘法更新，一轮还要形成或应用$K\times K$ Gram矩阵，故训练主成本为$O\!\left(\operatorname{nnz}(X)K+(M+N)K^2\right)$，$I$轮再乘$I$；其他散度、坐标更新或稠密实现必须另报。训练期保存两因子需$O((M+N)K)$，只部署主题词字典时可为$O(MK)$。对含$\operatorname{nnz}(x)$个非零词的新文档，LSA投影为$O(\operatorname{nnz}(x)K)$；若预先保存$W^{\mathsf T}W$，NMF的每轮非负系数更新为$O(\operatorname{nnz}(x)K+K^2)$。报告必须同时给出文档数$N$、词表大小$M$、秩/主题数$K$、训练轮数$I$和新文档轮数$I_{\mathrm{doc}}$；PLSA/LDA则按各自推断器另列。最终方案还应给出确定的词表、模型参数、变换规则、一次测试结果，以及新文档超出词表时的处理方式。
+\[
+\widehat\lambda=\arg\min_{\lambda\in\Lambda_{\rm ok}}
+\left\{\overline L_{\rm val}(\lambda):
+\operatorname{stab}(\lambda)\ge s_0,\quad
+\operatorname{fail}(\lambda)\le f_0,\ C(\lambda)\le C_{\max}\right\}.
+\]
+主要稀疏复杂度为
+\[
+\begin{aligned}
+T_{\rm NMF}&=O\!\left(I[\operatorname{nnz}(X)K+(M+N)K^2]\right),&
+S_{\rm train}&=O((M+N)K),\\
+T_{\rm LSA,new}&=O(\operatorname{nnz}(x)K),&
+T_{\rm NMF,new}&=O\!\left(I_{\rm doc}[\operatorname{nnz}(x)K+K^2]\right).
+\end{aligned}
+\]
+\end{chapterexercisesolution}
+
+\end{SLChapterExercisePairSection}
+
+\begingroup
+\normalsize
+\setstretch{1.08}
+\setlength{\parskip}{0.05\baselineskip}
+% KNOWLEDGE-PLAN: KN-V5-C37-CONCEPT-008 L1
+\paragraph{读前自检：本章结论与下一步。}无监督学习方法总结以任务、表示、准则、算法、评价和预算组成工作规格；请按“开发集内比较每个候选的各验证折--重拟合锁定配置--仅一次解封测试集”标出测试集首次可访问位置，核对候选选择和预算调整均未读取测试结果。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V5-C08-CH36}
+\SLChapterFiveSummary{本讲义用任务、表示、准则、算法、评价与预算组成工作性无监督学习规格，而非给出学界统一定义。}
+{高斯观测对应平方重构，泊松计数对应扩展实数广义KL，PLSA联合token似然对应联合KL；每个对应都有定义域。}
+{选择协议在开发集内完成全部候选与折比较，重拟合锁定配置后只解封一次测试集。}
+{共享低秩乘积或马尔可夫术语不意味着共享语义与保证；EM、VI、Gibbs、SVD和幂法必须各用自己的条件。}
+{回看全书时按“任务—表示—准则—求解—评价”五列核对；任一列缺失就返回相应章节补齐。}
+
+\phantomsection\label{struct:V5-C08-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.0em,topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt]
+  \item 我能把任务、模型、训练准则和求解器分开；否则回看定义\ref{def:V5-C08-specification}。
+  \item 我能写出LSA、NMF、PLSA因子的维数和约束，并逐行推出高斯、泊松与联合多项式目标；否则回看节\ref{sec:V5-C08-S02}和推导第1--3步。
+  \item 我不会把EM、VI和Gibbs的保证混写；否则回看本章优化与概率解释。
+  \item 我能设计训练/验证/测试隔离和文档完成评价，并为聚类、话题、\PageRank{}和MCMC选择各自诊断；否则回看图\ref{fig:V5-C08-validation}与评价面板。
+  \item 我能按算法\ref{alg:V5-C08-selection-protocol}说明停止原因、计算成本与一次锁定测试结果。
+\end{enumerate}
+\end{selfcheckbox}
+\begin{keypointbox}[title=全书回看建议]
+回看全书时可按“任务与数据结构—模型表示—学习或推断目标—求解器—诊断与评价”五列重整每一种方法。若某列无法明确填写，应返回相应章节核对定义域、维数、随机性、停止条件和失效模式；只有五列闭合且测试协议冻结，模型比较才具有可重复含义。
+\end{keypointbox}
+\end{SLCompactClosure}
+\endgroup

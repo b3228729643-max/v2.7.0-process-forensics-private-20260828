@@ -1,0 +1,26 @@
+bbox_300px,bbox_pdf,declared_pt,drawing_indexes,graphics_scale,group_ink_height_px,local_background_rgb,object_id,object_name,object_type,pdf_span_pt_max,pdf_span_pt_min,semantic_role,source_line,text_sample,thresholded_foreground_px
+"[1003, 613, 1628, 654]","[240.830994, 147.041122, 390.669067, 157.070908]",9.4,,1.0,36,"[242, 246, 250]",T01,shared_heading,text,9.364880,9.364880,node_text,16,共享“文档 主题 单词”条件结构––,4834
+"[1042, 660, 1589, 702]","[250.195999, 158.399094, 381.304169, 168.428879]",9.4,,1.0,36,"[242, 246, 250]",T02,shared_subtitle,text,9.364880,9.364880,node_text,16,两层混合、条件独立与词袋计数,5053
+"[446, 810, 609, 869]","[107.035004, 194.392487, 146.088562, 208.529877]",9.8,,1.0,39,"[255, 255, 255]",T03,row_model,text,9.763390,9.763390,row_label,17,模型目标,3590
+"[815, 800, 1084, 842]","[195.669998, 191.942123, 260.082153, 201.971909]",9.4,,1.0,42,"[241, 248, 246]",T04,full_bayes,text,9.364880,9.364880,node_text,18,完整Bayes LDA,2620
+"[797, 847, 1102, 889]","[191.386993, 203.299118, 264.365295, 213.328903]",9.4,,1.0,42,"[241, 248, 246]",T05,full_random,text,9.364880,9.364880,math_node_text,18,"均为随机变量𝜃, 𝜑",3160
+"[1536, 800, 1827, 842]","[368.679016, 191.942123, 438.569763, 201.971909]",9.4,,1.0,36,"[255, 248, 231]",T06,point_variant,text,9.364880,9.364880,node_text,19,点参数 变体LDA,2748
+"[1548, 847, 1815, 889]","[371.587036, 203.299118, 435.661224, 213.328903]",9.4,,1.0,42,"[255, 248, 231]",T07,point_parameter,text,9.364880,9.364880,math_node_text,19,作为待估参数𝜑,2585
+"[446, 999, 609, 1058]","[107.035004, 239.74649, 146.088562, 253.883881]",9.8,,1.0,39,"[255, 255, 255]",T08,row_inference,text,9.763390,9.763390,row_label,20,推断方法,3286
+"[858, 989, 1041, 1031]","[205.966995, 237.296127, 249.785767, 247.325912]",9.4,,1.0,36,"[255, 255, 255]",T09,collapsed_gibbs,text,9.364880,9.364880,node_text,21,折叠Gibbs,1941
+"[836, 1036, 1062, 1078]","[200.751999, 248.653122, 254.99411, 258.682892]",9.4,,1.0,42,"[255, 255, 255]",T10,integrate_theta_phi,text,9.364880,9.364880,math_node_text,21,"积分消去𝜃, 𝜑",1965
+"[1550, 991, 1814, 1032]","[371.98999, 237.750107, 435.259003, 247.779892]",9.4,,1.0,36,"[255, 255, 255]",T11,mean_field_vem,text,9.364880,9.364880,node_text,22,平均场变分EM,2396
+"[1549, 1038, 1814, 1080]","[371.778992, 249.107101, 435.469482, 259.136871]",9.4,,1.0,36,"[255, 255, 255]",T12,elbo_ascent,text,9.364880,9.364880,node_text,22, 坐标上升ELBO,2214
+"[915, 1186, 1717, 1227]","[219.511002, 284.614502, 411.989044, 294.430908]",9.2,,1.0,39,"[255, 243, 243]",T13,posterior_warning,text,9.165630,9.165630,warning_text,29,模型与后验不同，结果不可只按算法名直接比较,7420
+"[317, 1268, 439, 1328]","[76.138, 304.396271, 105.456329, 318.822174]",not_explicit,,1.0,38,"[255, 255, 255]",T14,caption_label,text,9.962640,9.862510,caption_label,32,图35.1,1918
+"[481, 1283, 2116, 1384]","[115.418999, 307.982819, 507.798737, 332.04187]",not_explicit,,1.0,100,"[255, 255, 255]",T15,caption_body,text,9.962640,9.862510,caption_body,32,本章从共享的文档 主题 单词条件结构分出两个模型目标：完整 由折叠––Bayes LDAGibbs参数 变体由平均场变分 估计；箭头表示学习依赖，不表示两个后验相同LDAEM,29106
+"[968, 582, 1663, 724]","[232.326, 139.645, 399.174, 173.661]",not_applicable,[3],1.0,not_applicable,not_applicable,G01,shared_container,graphic,not_applicable,not_applicable,node_container,"10-14,16-22,29",,not_applicable
+"[678, 771, 1221, 913]","[162.677, 185.0, 293.072, 219.016]",not_applicable,[4],1.0,not_applicable,not_applicable,G02,full_container,graphic,not_applicable,not_applicable,node_container,"10-14,16-22,29",,not_applicable
+"[1410, 771, 1953, 913]","[338.428, 185.0, 468.823, 219.016]",not_applicable,[5],1.0,not_applicable,not_applicable,G03,point_container,graphic,not_applicable,not_applicable,node_container,"10-14,16-22,29",,not_applicable
+"[678, 960, 1221, 1102]","[162.677, 230.354, 293.072, 264.37]",not_applicable,[6],1.0,not_applicable,not_applicable,G04,gibbs_container,graphic,not_applicable,not_applicable,node_container,"10-14,16-22,29",,not_applicable
+"[1410, 960, 1953, 1102]","[338.428, 230.354, 468.823, 264.37]",not_applicable,[7],1.0,not_applicable,not_applicable,G05,vem_container,graphic,not_applicable,not_applicable,node_container,"10-14,16-22,29",,not_applicable
+"[955, 719, 1233, 767]","[229.152, 172.566, 295.907, 184.135]",not_applicable,"[8, 9]",1.0,not_applicable,not_applicable,G06,arrow_shared_full,graphic,not_applicable,not_applicable,line_arrow,23-29,,not_applicable
+"[1398, 719, 1676, 767]","[335.593, 172.566, 402.348, 184.135]",not_applicable,"[10, 11]",1.0,not_applicable,not_applicable,G07,arrow_shared_point,graphic,not_applicable,not_applicable,line_arrow,23-29,,not_applicable
+"[945, 914, 954, 953]","[226.782, 219.394, 228.968, 228.823]",not_applicable,"[12, 13]",1.0,not_applicable,not_applicable,G08,arrow_full_gibbs,graphic,not_applicable,not_applicable,line_arrow,23-29,,not_applicable
+"[1677, 914, 1686, 953]","[402.532, 219.394, 404.718, 228.823]",not_applicable,"[14, 15]",1.0,not_applicable,not_applicable,G09,arrow_point_vem,graphic,not_applicable,not_applicable,line_arrow,23-29,,not_applicable
+"[631, 1149, 2001, 1255]","[151.338, 275.709, 480.162, 301.221]",not_applicable,[16],1.0,not_applicable,not_applicable,G10,warning_container,graphic,not_applicable,not_applicable,node_container,"10-14,16-22,29",,not_applicable

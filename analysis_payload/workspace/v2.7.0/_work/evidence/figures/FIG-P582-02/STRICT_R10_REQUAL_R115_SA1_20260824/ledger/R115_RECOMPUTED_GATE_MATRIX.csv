@@ -1,0 +1,14 @@
+GATE,RESULT,FAIL_COUNT,BASIS,EVIDENCE
+GLYPH_MAPPING_AND_RAW_MASK,PASS,0,149 unique ID↔safe-stem↔raw-mask mappings; all current reviewer contact-sheet cells opened,glyph_manual_review_ledger_R115_SA1.csv
+FONT_EFFECTIVE_PT_GE_9_5,FAIL,67,effective PDF pt from after_font_audit,after_font_audit.csv
+STRICT_RAW_D_HEIGHT,FAIL,3,= and ≈ use 22px; CJK 一 uses 30px,after_pixel_measurements.csv
+STRICT_RAW_E_MASK_QUALITY,PASS,0,missing/foreign/clip raw mask counters,after_pixel_measurements.csv
+LOW_PROFILE_CALIBRATION_CLOSURE,FAIL,21,independent same-codepoint/font/weight/effective-pt calibration missing,after_pixel_measurements.csv; low_profile_actual_open_ledger_R115_SA1.csv
+ALL_UNORDERED_TEXT_TEXT_AND_TEXT_GRAPHIC_RELATIONS,PASS,0,125 pairs; raw overlap=0 and clearance thresholds satisfied,relations/text_graphic_relations.csv
+TEXT_FIGURE_EDGE_AND_CLIP,PASS,0,10 edge relations; min raw clearance 32.000000px,relations/text_figure_edge_relations.csv
+PRE_OPAQUE_FINAL_VISIBLE_OCCLUSION,PASS,0,3 packages; covered XOR=0,occlusion/occlusion_ledger.csv
+MATH_AND_NEIGHBOR_TEXT_SEMANTICS,PASS,0,"0.90+0.05+0.03+0.02=1; reciprocal squared sum is 1/(0.81+0.0025+0.0009+0.0004)=1.2288..., correctly rounded to 1.23. The 1/4 reference and the reliability caveat agree with nearby text.",R115_MATH_SEMANTICS_LEDGER.csv
+FONT_VISUAL_HARMONY,FAIL,1,The 8.6pt tick labels and 9.2/9.4pt bar/card/annotation text look undersized beside the page body and the chart geometry. Stroke weight is restrained and internally coherent; blue/teal/gray encode roles coherently and remain distinguishable in grayscale. No scale reduction can repair this because the current effective sizes already violate the 9.5pt floor.,R115_FONT_VISUAL_HARMONY_LEDGER.csv; after_visual_acceptance.md
+EVIDENCE_INTEGRITY,FAIL,21,Calibration evidence is incomplete; this does not re-label raw overlap as a physical collision.,after_pixel_measurements.csv
+FIGURE_HARD_GATES,FAIL,71,Physical quality split from evidence-integrity status,R115_RECOMPUTED_GATE_MATRIX.csv
+FINAL_RESULT,FAIL_TO_SA2,1,SA1 failures require SA2 white-list repair then new official build and fresh requalification,R115_SA1_REQUAL_REPORT.md

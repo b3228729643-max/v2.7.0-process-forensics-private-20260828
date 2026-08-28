@@ -1,0 +1,21 @@
+view_id,file,manual_opened_observation,manual_hard_finding
+V01,full_page_200dpi.png,"Opened at original render: figure sits naturally below the running header; caption and following posterior derivation flow without collision or anomalous blank block.",CLEAR
+V02,full_page_300dpi.png,"Opened at original render: page-wide typography, figure, caption, theorem material, and footer show no clipping or broken glyph.",CLEAR
+V03,figure_crop_300dpi.png,"Opened: both panels are sharp, balanced, and entirely contained.",CLEAR
+V04,standalone_300dpi.png,"Opened direct PDF clip: matches the page crop semantically and geometrically.",CLEAR
+V05,subject_native_300dpi.png,"Opened: complete figure plus caption shows correct integration and no visible-ink collision.",CLEAR
+V06,grayscale_300dpi.png,"Opened: structure remains separable by position, outlines, fill tone, and the explicit inequality; no meaning depends on color alone.",CLEAR
+V07,page_integration_200dpi.png,"Opened: caption clears the warning card and the following paragraph begins with normal vertical rhythm.",CLEAR
+V08,object_overlay_300dpi.png,"Opened: all 14 frozen objects are covered once by IDs O01-O14.",CLEAR
+V09,semantic_overlay_300dpi.png,"Opened: left, right, gutter, and page-caption roles are spatially coherent.",CLEAR
+V10,text_overlay_300dpi.png,"Opened: all 16 text/glyph elements are covered once by IDs T01-T16.",CLEAR
+V11,reading_order_overlay_300dpi.png,"Opened: the intended left decomposition then right derivative chain then caption order is complete.",CLEAR
+V12,foreground_mask_300dpi.png,"Opened: foreground extraction retains all reader-visible text and structural ink; it is used only as machine risk support.",CLEAR
+V13,risk_roi_01_native1x_300dpi.png,"Opened: density formula, brace cusp, brace strokes, and explanatory line have distinct native ink.",CLEAR
+V14,risk_roi_01_nn8x.png,"Opened nearest-neighbor enlargement: no shared native pixel is revealed between formula and brace/annotation.",CLEAR
+V15,risk_roi_02_native1x_300dpi.png,"Opened: three cards and all internal text are separated and centered.",CLEAR
+V16,risk_roi_02_nn8x.png,"Opened nearest-neighbor enlargement: scripts and card margins remain intact; no hidden clipping.",CLEAR
+V17,risk_roi_03_native1x_300dpi.png,"Opened: formula-arrow-derivative-result chain is legible with no visible-ink contact.",CLEAR
+V18,risk_roi_03_nn8x.png,"Opened nearest-neighbor enlargement: arrow tip, derivative denominator/subscript, result-card border, and result text remain distinct.",CLEAR
+V19,risk_roi_04_native1x_300dpi.png,"Opened: warning formula and rounded border are intact; the subject view separately confirms caption clearance.",CLEAR
+V20,risk_roi_04_nn8x.png,"Opened nearest-neighbor enlargement: red formula, scripts, fill, and border show no missing or merged glyph.",CLEAR

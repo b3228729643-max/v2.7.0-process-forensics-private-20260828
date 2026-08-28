@@ -1,0 +1,112 @@
+{
+  "acceptance": {
+    "FIGURE_ID": "FIG-P521-01",
+    "FROZEN_PDF": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r93_fullbook\\main_full.pdf",
+    "ACTUAL_FINAL_PDF_PAGE": 567,
+    "PRINTED_PAGE": 554,
+    "SOURCE_FONT_PASS": false,
+    "PIXEL_HEIGHT_PASS": false,
+    "SAME_CLASS_RATIO_PASS": false,
+    "ROLE_RATIO_PASS": false,
+    "OVERLAP_PIXEL_COUNT": 0,
+    "CLIP_PIXEL_COUNT": 0,
+    "MIN_TEXT_TEXT_BBOX_CLEARANCE_PX": 19.0,
+    "MIN_TEXT_GRAPHIC_RAW_CLEARANCE_PX": 9.0,
+    "MIN_TEXT_CLEARANCE_PX": 9.0,
+    "PAGE_EDGE_CLEARANCE_PX": 379.588,
+    "VISUAL_HARMONY_PASS": false,
+    "FONT_VISUAL_HARMONY_PASS": false,
+    "MATH_SEMANTICS_PASS": false,
+    "TEXT_CONSISTENCY_PASS": false,
+    "GRAYSCALE_PASS": true,
+    "PAGE_INTEGRATION_PASS": true,
+    "RESULT": "FAIL",
+    "HARD_FAILS": [
+      "All primary TikZ text is 9.4pt and plate/legend text is 8.8pt, below 9.5pt.",
+      "Raw glyph measurement includes individual formula operators/punctuation; any failing glyph makes PIXEL_HEIGHT_PASS false.",
+      "Plate/legend role size is 8.8/9.4=0.9362, below the 0.95 annotation/legend floor.",
+      "φ_z=P(w|z) is inside the d=1:D plate even though it is a global topic-word distribution.",
+      "Inner plate says n=1:N_d while the adjacent text defines L_j repetitions for document d_j."
+    ],
+    "METHOD": "Native pdftocairo 300dpi PNG; PDF glyph bboxes; local-background >=20/255 raw foreground; no dilation; vector masks separated by original drawing rectangles and stroke colour; pairwise raw intersections and Euclidean clearances."
+  },
+  "role_audit": [
+    {
+      "ROLE": "CAPTION",
+      "BASE_ROLE": "NODE_LABEL",
+      "BASE_EFFECTIVE_PT": 9.4,
+      "ROLE_EFFECTIVE_PT": 10.0,
+      "ROLE_RATIO": 1.0638,
+      "ALLOWED_RANGE": "[0.95,1.18]",
+      "PASS": true,
+      "REASON": "source-effective-size comparison; cross-script ink heights are not conflated"
+    },
+    {
+      "ROLE": "LEGEND",
+      "BASE_ROLE": "NODE_LABEL",
+      "BASE_EFFECTIVE_PT": 9.4,
+      "ROLE_EFFECTIVE_PT": 8.8,
+      "ROLE_RATIO": 0.9362,
+      "ALLOWED_RANGE": "[0.95,1.10]",
+      "PASS": false,
+      "REASON": "source-effective-size comparison; cross-script ink heights are not conflated"
+    },
+    {
+      "ROLE": "NODE_LABEL",
+      "BASE_ROLE": "NODE_LABEL",
+      "BASE_EFFECTIVE_PT": 9.4,
+      "ROLE_EFFECTIVE_PT": 9.4,
+      "ROLE_RATIO": 1.0,
+      "ALLOWED_RANGE": "[0.92,1.08]",
+      "PASS": true,
+      "REASON": "source-effective-size comparison; cross-script ink heights are not conflated"
+    },
+    {
+      "ROLE": "PARAM_FORMULA",
+      "BASE_ROLE": "NODE_LABEL",
+      "BASE_EFFECTIVE_PT": 9.4,
+      "ROLE_EFFECTIVE_PT": 9.4,
+      "ROLE_RATIO": 1.0,
+      "ALLOWED_RANGE": "[1.00,1.18]",
+      "PASS": true,
+      "REASON": "source-effective-size comparison; cross-script ink heights are not conflated"
+    },
+    {
+      "ROLE": "PLATE_LABEL",
+      "BASE_ROLE": "NODE_LABEL",
+      "BASE_EFFECTIVE_PT": 9.4,
+      "ROLE_EFFECTIVE_PT": 8.8,
+      "ROLE_RATIO": 0.9362,
+      "ALLOWED_RANGE": "[0.95,1.10]",
+      "PASS": false,
+      "REASON": "source-effective-size comparison; cross-script ink heights are not conflated"
+    },
+    {
+      "ROLE": "SUMMARY_FORMULA",
+      "BASE_ROLE": "NODE_LABEL",
+      "BASE_EFFECTIVE_PT": 9.4,
+      "ROLE_EFFECTIVE_PT": 9.4,
+      "ROLE_RATIO": 1.0,
+      "ALLOWED_RANGE": "[1.00,1.18]",
+      "PASS": true,
+      "REASON": "source-effective-size comparison; cross-script ink heights are not conflated"
+    }
+  ],
+  "critical_pairs": [
+    {
+      "pair": "T02_PHI vs G15_OUTER_PLATE",
+      "finding": "φ_z is visually inside the D plate; semantic, not an overlap failure",
+      "roi": "rois/critical_phi_inside_D_plate_original.png"
+    },
+    {
+      "pair": "T07_PLATE_D vs G15_OUTER_PLATE",
+      "finding": "nearest plate-label/border pair; raw masks and overlay supplied",
+      "roi": "rois/critical_D_plate_label_clearance_original.png"
+    },
+    {
+      "pair": "T01_THETA vs G01_PARAM_BOX_THETA",
+      "finding": "source-font/operator evidence ROI",
+      "roi": "rois/critical_theta_operator_original.png"
+    }
+  ]
+}

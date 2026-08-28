@@ -1,0 +1,33 @@
+% v2.3.1 figure UID: FIG-P603-01
+% v2.6.0 reverse redraw for FIG-P603-01: explicit hierarchy and collision-free labels.
+\tikzset{slfig-FIG-P603-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{slfig-FIG-P603-01-axis/.style={
+  tick label style={font=\fontsize{8.5pt}{10.0pt}\selectfont},
+  label style={font=\fontsize{9.2pt}{11.0pt}\selectfont},
+  axis line style={line width=.65pt},tick style={line width=.55pt},clip=false}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P603-01,every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center}]
+\begin{axis}[slfig-FIG-P603-01-axis,
+  name=af,width=8.6cm,height=5.7cm,
+  xmin=0,xmax=3,ymin=0,ymax=1.15,axis lines=left,
+  xlabel={$r$},
+  ylabel={$\alpha(x,y)$},
+  xtick={0,1,2,3},ytick={0,.5,1},clip=false
+]
+  \addplot[draw=none,fill=SLBlue!7] coordinates {(0,0)(1,1)(3,1)(3,0)} \closedcycle;
+  \addplot[draw=SLBlue,line width=1.02pt,domain=0:1,samples=181]{x};
+  \addplot[draw=SLBlue,line width=1.02pt,domain=1:3,samples=181]{1};
+  \draw[draw=SLGray,line width=.55pt,densely dashed] (axis cs:1,0)--(axis cs:1,1)--(axis cs:0,1);
+  \addplot[only marks,mark=*,mark size=2.4pt,draw=SLGold,fill=SLGold] coordinates {(1,1)};
+  \node[align=center,text=SLBlue] at (axis cs:.68,.27) {$r<1$：\\按比例\\接受};
+  \node[text=SLBlue] at (axis cs:2.08,.80) {$r\ge1$：必然接受};
+  \node[anchor=south,inner sep=0pt,yshift=2.5mm,text=SLGold] at (axis cs:1,1) {折点};
+\end{axis}
+\node[right=8mm of af.east,draw=SLRuleGray,rounded corners=2pt,fill=white,line width=.58pt,
+  font=\fontsize{9.2pt}{11.0pt}\selectfont,align=left,inner xsep=3mm,inner ysep=2.3mm]
+  {$\displaystyle r=\frac{\pi(y)q(y,x)}{\pi(x)q(x,y)}$\\[3pt]
+   独立提议：$\displaystyle r=\frac{w(y)}{w(x)}$};
+\end{tikzpicture}
+\caption{MH接受概率是比值 $r$ 的截断函数 $\alpha=\min\{1,r\}$，其中 $r=\pi(y)q(y,x)/[\pi(x)q(x,y)]$；独立提议时可写为 $r=w(y)/w(x)$}\label{fig:V5-C03-acceptance-function}
+\end{figure}

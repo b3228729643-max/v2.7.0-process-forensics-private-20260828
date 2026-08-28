@@ -1,0 +1,29 @@
+ARTIFACT,ROLE_IN_R111,STATUS,REASON_OR_SUPERSEDENCE,REVIEWER
+render_manifest.json,final-candidate-render-identity,CANONICAL,"Direct 300dpi render identity for main_full.pdf p170 / printed p157.",SA1_R111_20260824
+semantic_text_inventory_machine.csv,raw-PDF-text-provenance,CANONICAL_WITH_SOURCE_MAP_SUPPLEMENT,"PDF text/font/bbox provenance; source locators are corrected only by R111_SEMANTIC_SOURCE_MAP.csv.",SA1_R111_20260824
+R111_SEMANTIC_SOURCE_MAP.csv,source-locator-authority,CANONICAL,"Direct current-source reread supplies corrected line/range for E001-E011.",SA1_R111_20260824
+glyph_file_manifest.csv,raw-glyph-provenance,CANONICAL,"80 native 1x original/overlay/mask records and contact-sheet mapping.",SA1_R111_20260824
+glyph_machine_integrity.csv,glyph-mask-machine-integrity,CANONICAL,"80/80 masks have nonempty, ownership-only, zero foreign and zero missing-stroke checks.",SA1_R111_20260824
+R111_GLYPH_MANUAL_LEDGER.csv,glyph-human-review,CANONICAL,"New SA1 personally opened every glyph original/overlay/mask at 1x and all 8x contact-sheet cells.",SA1_R111_20260824
+after_pixel_measurements.csv,raw-pixel-baseline,RAW_BASELINE_NOT_FINAL,"Its five low-profile PENDING calibration rows are not an R111 conclusion; superseded by validated calibration and R111 pixel adjudication.",SA1_R111_20260824
+low_profile_calibration/low_profile_calibration.csv,low-profile-raw-measurement,CANONICAL_INPUT,"Same-codepoint calibration data; method validity is separately proven in R111_LOW_PROFILE_CALIBRATION_VALIDATION.csv.",SA1_R111_20260824
+R111_LOW_PROFILE_CALIBRATION_VALIDATION.csv,low-profile-method-validity,CANONICAL,"Font/weight/colour/effective size/native 300dpi/crop/mask purity all verified for five targets.",SA1_R111_20260824
+R111_PIXEL_FINAL_ADJUDICATION.csv,pixel-final-decision,CANONICAL,"75 PASS and five calibrated hard FAIL; no PENDING final row.",SA1_R111_20260824
+R111_D_E_FINAL_ADJUDICATION.csv,D-E-per-glyph-final-decision,CANONICAL,"Native 1x mask recomputation; no inherited D/E result.",SA1_R111_20260824
+R111_D_E_ROLE_SUMMARY.csv,D-E-role-summary,CANONICAL,"D passes; E fails only BODY/REGION_LABEL/CJK_FULL at 0.9459.",SA1_R111_20260824
+R111_REQUIRED_VIEW_REVIEW_LEDGER.csv,required-four-view-human-review,CANONICAL,"SA1 actually opened full-page/crop/standalone/grayscale views.",SA1_R111_20260824
+R111_FONT_VISUAL_HARMONY_LEDGER.csv,panel-role-script-human-font-review,CANONICAL,"SA1 individually judged size, weight, colour, density, gray and page fusion; visual harmony is not script-hardcoded.",SA1_R111_20260824
+after_font_audit.csv,element-font-supporting-audit,SUPPORTING_NOT_SOLE_FINAL,"Element source/font and visual observations; R111 pixel and D/E ledgers close its otherwise separate hard gates.",SA1_R111_20260824
+R111_ALL_UNORDERED_PAIR_FINAL_ADJUDICATION.csv,all-pairs-final-decision,CANONICAL,"190 unordered pairs: 189 PASS and P0155 FAIL using canonical raw-mask replay.",SA1_R111_20260824
+R111_MANDATORY_RELATION_FINAL_ADJUDICATION.csv,mandatory-relations-final-decision,CANONICAL,"154/154 required text-related relations PASS.",SA1_R111_20260824
+R111_RELATION_MANUAL_LEDGER.csv,relation-human-review,CANONICAL,"SA1 personally opened all nine required/failure ROI packages at 1x and 8x.",SA1_R111_20260824
+r111_curve_raw_recheck_v2/R111_CURVE_RAW_RECHECK.json,curve-raw-mask-authority,CANONICAL,"Same-coordinate peer-independent final-visible raw-mask replay; 139px / clearance 0.",SA1_R111_20260824
+r111_curve_raw_recheck,curve-recheck-attempt,NONCANONICAL_INTERRUPTED,"Partial first attempt; preserved without deletion and superseded solely by r111_curve_raw_recheck_v2.",SA1_R111_20260824
+roi_packages/P0155_O-G001_O-G002,legacy-P0155-package,NONCANONICAL_SUPERSEDED,"Its removal-contribution 37px method is invalid for R111 final-visible raw masks; do not use for result.",SA1_R111_20260824
+unverified-516px-claim,legacy-claim,RETRACTED_NOT_EVIDENCE,"Not reproduced under R111 peer-independent raw-mask method; has no authority.",SA1_R111_20260824
+R111_CLIP_FINAL_ADJUDICATION.csv,clip-final-decision,CANONICAL,"20/20 objects pass crop/page edge and text-clearance adjudication.",SA1_R111_20260824
+R111_DRAW_ORDER_CLIP_AUDIT.md,draw-order-clip-human-audit,CANONICAL,"Documents emitted order, no peer deletion, true-opaque treatment, halo exclusion, clip and clearance closure.",SA1_R111_20260824
+R111_MATH_SEMANTICS_AUDIT.md,math-semantics-human-audit,CANONICAL,"Documents correct formulas/text but representation-semantic failure from visible curve-envelope merge.",SA1_R111_20260824
+after_visual_acceptance.md,required-visual-acceptance-summary,CANONICAL,"Required gate matrix with explicit FAIL result and separate visual-harmony finding.",SA1_R111_20260824
+R111_SA1_REPORT.md,final-SA1-handoff-report,CANONICAL,"Separates evidence integrity PASS from figure hard-gates FAIL and hands off only to SA2.",SA1_R111_20260824
+R111_MACHINE_FINAL_CHECK.json,machine-terminal-consistency,CANONICAL,"Terminal cross-check must report evidence integrity PASS and figure hard-gates FAIL before WRITE_STOPPED.",SA1_R111_20260824

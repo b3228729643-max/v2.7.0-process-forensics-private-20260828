@@ -1,0 +1,26 @@
+{
+  "schema": "P126_R13_STATIC_GAP_PROJECTION_V1",
+  "units": "cm",
+  "segments": [
+    [0.00, 0.06],
+    [0.18, 0.24],
+    [0.36, 0.42],
+    [0.54, 0.60]
+  ],
+  "subpath_count": 4,
+  "internal_gap_count": 3,
+  "nominal_internal_gaps_cm": [0.12, 0.12, 0.12],
+  "line_width_pt": 1.05,
+  "line_width_cm": 0.036903279369032795,
+  "conservative_gap_model": "subtract one full line width per gap, covering two half-width round-cap extensions",
+  "conservative_internal_gaps_cm": [0.08309672063096721, 0.08309672063096721, 0.08309672063096721],
+  "pixels_per_cm_at_300dpi": 118.11023622047244,
+  "nominal_internal_gaps_px_at_300dpi": [14.173228346456693, 14.173228346456693, 14.173228346456693],
+  "conservative_internal_gaps_px_at_300dpi": [9.814573302870143, 9.814573302870143, 9.814573302870143],
+  "required_minimum_gap_cm": 0.05,
+  "required_minimum_gap_px_at_300dpi": 5.905511811023622,
+  "all_conservative_gaps_pass": true,
+  "color": "SLTeal",
+  "line_width_frozen": true,
+  "rendered_pass_claimed": false
+}

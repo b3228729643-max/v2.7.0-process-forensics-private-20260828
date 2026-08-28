@@ -1,0 +1,6 @@
+view_id,manual_decision,viewed_evidence,view_specific_observation
+VIEW01,PASS,render/full_page_fitz_native_300dpi.png,"The one-page A4 standalone render contains the complete flowchart body with ample page margins and no page-edge clipping."
+VIEW02,PASS,render/figure_poppler_native_300dpi_1x.png,"Independent Poppler 300dpi native crop shows every node, branch, label, fraction, and the entire self-loop without collision or truncation."
+VIEW03,PASS,render/figure_grayscale_native_300dpi_1x.png,"In grayscale, solid/dashed/dash-dot branches, single/double borders, and hierarchy remain distinguishable; meaning does not depend on hue alone."
+VIEW04,PASS,render/landmarks_8x_index.csv; render/landmarks_8x/LANDMARK01_native_nearest_8x.png through LANDMARK05_native_nearest_8x.png,"Five native-pixel landmark crops enlarged 8x with nearest-neighbor preserve arrow tips, border joins, subscripts, braces, fraction rule, and loop dashes without hidden raster repair."
+

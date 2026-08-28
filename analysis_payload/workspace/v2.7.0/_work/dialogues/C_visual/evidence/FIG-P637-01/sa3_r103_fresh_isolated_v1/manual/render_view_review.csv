@@ -1,0 +1,8 @@
+view_id,opened_native,actual_view,hard_crop,tofu_or_missing_glyph,wrong_glyph_or_codepoint,actual_unreadable,severe_font_imbalance,illegal_overlap,decision,reviewer,note
+V01,true,full_page_200dpi,false,false,false,false,false,false,PASS,SA3_FRESH_ISOLATED,complete page shows figure placed cleanly between surrounding prose and page furniture
+V02,true,full_page_300dpi,false,false,false,false,false,false,PASS,SA3_FRESH_ISOLATED,native 300dpi full page confirms printed page 674 figure 33.4 and clear page integration
+V03,true,figure_crop_300dpi,false,false,false,false,false,false,PASS,SA3_FRESH_ISOLATED,color figure plus caption is complete with visible margins and no clipped terminal stroke
+V04,true,standalone_300dpi,false,false,false,false,false,false,PASS,SA3_FRESH_ISOLATED,PDF-derived body view keeps all axes labels contours states arrows and note box readable
+V05,true,grayscale_300dpi,false,false,false,false,false,false,PASS,SA3_FRESH_ISOLATED,grayscale conversion preserves arrow directions state markers text hierarchy and contour separation
+V06,true,measurement_overlay_300dpi,false,false,false,false,false,false,PASS,SA3_FRESH_ISOLATED,object and text boxes align to native render and reveal no hidden or cropped item
+

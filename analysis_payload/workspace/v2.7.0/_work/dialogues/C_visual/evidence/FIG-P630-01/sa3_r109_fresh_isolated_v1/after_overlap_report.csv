@@ -1,0 +1,137 @@
+PAIR_ID,OBJECT_A,OBJECT_B,MANUAL_NATIVE300_OBSERVATION,CRITICAL_NATIVE1X_VIEW,CRITICAL_NEAREST8X_VIEW,MANUAL_DECISION,TRUE_COLLISION_PX,UNRESOLVED,MANUAL_REVIEWER
+P001,O01,O02,Callout and joint node have visible blank separation before the leader segment,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P002,O01,O03,Wide blank region separates correctness callout from conditional node,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P003,O01,O04,Wide blank region separates correctness callout from coordinate node,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P004,O01,O05,Diagonal wide blank region separates correctness callout from scan node,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P005,O01,O06,Blank page field separates correctness callout from sample node,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P006,O01,O07,Blank page field separates correctness callout from diagnostic node,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P007,O01,O08,Opposite-side callouts are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P008,O01,O09,Correctness callout is well above and left of boundary banner,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P009,O01,O10,Correctness callout is separated from first flow arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P010,O01,O11,Correctness callout is widely separated from second flow arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P011,O01,O12,Correctness callout is widely separated from vertical flow arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P012,O01,O13,Correctness callout is widely separated from scan-to-sample arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P013,O01,O14,Correctness callout is separated from sample-to-diagnostics arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P014,O01,O15,Leader begins at the callout southeast boundary as an intentional semantic attachment,R08,R08,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P015,O01,O16,Correctness callout and mixing leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P016,O01,O17,Correctness callout is far above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P017,O02,O03,Joint and conditional nodes have clear horizontal gutter occupied only by O10,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P018,O02,O04,Joint and coordinate nodes have a full intervening node and gutters,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P019,O02,O05,Joint and scan nodes are diagonally separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P020,O02,O06,Joint and sample nodes have clear vertical-diagonal separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P021,O02,O07,Joint and diagnostics nodes have clear vertical gutter,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P022,O02,O08,Joint node and mixing callout are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P023,O02,O09,Joint node is clearly separated above boundary banner,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P024,O02,O10,Flow line leaves the joint east boundary at its intentional source endpoint,R05,R05,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P025,O02,O11,Joint node is separated from conditional-to-coordinate arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P026,O02,O12,Joint node is widely separated from vertical arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P027,O02,O13,Joint node is separated from lower-right-to-center arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P028,O02,O14,Joint node and lower-left arrow have clear vertical separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P029,O02,O15,Leader terminates at joint northwest boundary as intended without touching label ink,R08,R08,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P030,O02,O16,Joint node and mixing leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P031,O02,O17,Joint node is clearly above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P032,O03,O04,Conditional and coordinate nodes have clear horizontal gutter occupied only by O11,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P033,O03,O05,Conditional and scan nodes are diagonally separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P034,O03,O06,Conditional and sample nodes have clear vertical gutter,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P035,O03,O07,Conditional and diagnostics nodes are diagonally separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P036,O03,O08,Conditional node and mixing callout are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P037,O03,O09,Conditional node is clearly separated above banner,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P038,O03,O10,First arrowhead terminates just before conditional west border with visible intended endpoint clearance,R05,R05,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P039,O03,O11,Second flow line leaves conditional east boundary at intentional source endpoint,R05,R05,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P040,O03,O12,Conditional node and vertical arrow are clearly separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P041,O03,O13,Conditional node and lower right-to-center arrow have vertical separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P042,O03,O14,Conditional node and lower center-to-left arrow have vertical separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P043,O03,O15,Conditional node and correctness leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P044,O03,O16,Conditional node and mixing leader are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P045,O03,O17,Conditional node is clearly above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P046,O04,O05,Coordinate and scan nodes have clear vertical gutter occupied only by O12,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P047,O04,O06,Coordinate and sample nodes are diagonally separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P048,O04,O07,Coordinate and diagnostics nodes are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P049,O04,O08,Coordinate node and mixing callout have clear diagonal separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P050,O04,O09,Coordinate node is clearly separated above banner,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P051,O04,O10,Coordinate node is separated from first flow arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P052,O04,O11,Second arrowhead terminates just before coordinate west border with visible intended endpoint clearance,R05,R05,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P053,O04,O12,Vertical flow line leaves coordinate south boundary at intentional source endpoint,R06,R06,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P054,O04,O13,Coordinate node and lower right-to-center arrow have vertical separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P055,O04,O14,Coordinate node is widely separated from lower center-to-left arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P056,O04,O15,Coordinate node and correctness leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P057,O04,O16,Coordinate node and mixing leader have clear diagonal separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P058,O04,O17,Coordinate node is clearly above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P059,O05,O06,Scan and sample nodes have clear horizontal gutter occupied only by O13,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P060,O05,O07,Scan and diagnostics nodes have an intervening node and gutters,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P061,O05,O08,Scan node and mixing callout have a visible diagonal gap bridged only by O16,R09,R09,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P062,O05,O09,Scan node is clearly separated above boundary banner,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P063,O05,O10,Scan node is separated from first upper flow arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P064,O05,O11,Scan node and second upper arrow have vertical separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P065,O05,O12,Vertical arrowhead terminates just before scan north border with intended endpoint clearance,R06,R06,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P066,O05,O13,Leftward flow line leaves scan west boundary at intentional source endpoint,R07,R07,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P067,O05,O14,Scan node is separated from sample-to-diagnostics arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P068,O05,O15,Scan node and correctness leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P069,O05,O16,Leader begins at scan southeast boundary as an intentional semantic attachment,R09,R09,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P070,O05,O17,Scan node is visibly above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P071,O06,O07,Sample and diagnostics nodes have clear horizontal gutter occupied only by O14,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P072,O06,O08,Sample node and mixing callout are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P073,O06,O09,Sample node is clearly separated above boundary banner,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P074,O06,O10,Sample node and first upper arrow have vertical separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P075,O06,O11,Sample node and second upper arrow have vertical separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P076,O06,O12,Sample node and vertical right arrow are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P077,O06,O13,Leftward arrowhead terminates just before sample east border with intended endpoint clearance,R07,R07,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P078,O06,O14,Leftward flow line leaves sample west boundary at intentional source endpoint,R07,R07,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P079,O06,O15,Sample node and correctness leader are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P080,O06,O16,Sample node and mixing leader are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P081,O06,O17,Sample node is visibly above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P082,O07,O08,Diagnostics node and mixing callout are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P083,O07,O09,Diagnostics node is clearly separated above boundary banner,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P084,O07,O10,Diagnostics node and first upper arrow have vertical separation,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P085,O07,O11,Diagnostics node is widely separated from second upper arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P086,O07,O12,Diagnostics node is widely separated from vertical right arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P087,O07,O13,Diagnostics node is separated from scan-to-sample arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P088,O07,O14,Leftward arrowhead terminates just before diagnostics east border with intended endpoint clearance,R07,R07,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P089,O07,O15,Diagnostics node and correctness leader are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P090,O07,O16,Diagnostics node and mixing leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P091,O07,O17,Diagnostics node is visibly above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P092,O08,O09,Mixing callout is horizontally separated from boundary banner,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P093,O08,O10,Mixing callout is widely separated from first upper arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P094,O08,O11,Mixing callout is separated from second upper arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P095,O08,O12,Mixing callout is separated from vertical flow arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P096,O08,O13,Mixing callout is separated from scan-to-sample arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P097,O08,O14,Mixing callout is widely separated from sample-to-diagnostics arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P098,O08,O15,Opposite callout leader is widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P099,O08,O16,Leader terminates at mixing callout northwest boundary as intended without touching label ink,R09,R09,LEGAL_ENDPOINT_ATTACHMENT,0,false,SA3_FRESH_ISOLATED
+P100,O08,O17,Mixing callout bottom and caption retain clear visible whitespace,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P101,O09,O10,Boundary banner is separated from first upper arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P102,O09,O11,Boundary banner is separated from second upper arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P103,O09,O12,Boundary banner is separated from vertical flow arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P104,O09,O13,Boundary banner is separated from scan-to-sample arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P105,O09,O14,Boundary banner is separated from sample-to-diagnostics arrow,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P106,O09,O15,Boundary banner is widely separated from correctness leader,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P107,O09,O16,Boundary banner is separated from mixing leader,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P108,O09,O17,Banner bottom and caption top retain 13.14 px vector-bbox clearance with clean raster whitespace,R10,R10,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P109,O10,O11,Two upper arrows are separated by the full conditional node,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P110,O10,O12,First upper arrow and vertical arrow are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P111,O10,O13,First upper arrow and lower right-to-center arrow are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P112,O10,O14,First upper arrow and lower center-to-left arrow are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P113,O10,O15,First upper arrow and correctness leader are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P114,O10,O16,First upper arrow and mixing leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P115,O10,O17,First upper arrow is far above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P116,O11,O12,Second upper arrow and vertical arrow are separated by coordinate-node geometry,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P117,O11,O13,Second upper arrow and lower right-to-center arrow are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P118,O11,O14,Second upper arrow and lower center-to-left arrow are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P119,O11,O15,Second upper arrow and correctness leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P120,O11,O16,Second upper arrow and mixing leader are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P121,O11,O17,Second upper arrow is far above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P122,O12,O13,Vertical arrow and lower right-to-center arrow are separated by scan-node geometry,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P123,O12,O14,Vertical arrow and lower center-to-left arrow are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P124,O12,O15,Vertical arrow and correctness leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P125,O12,O16,Vertical arrow and mixing leader are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P126,O12,O17,Vertical arrow is clearly above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P127,O13,O14,Two lower arrows are separated by the full sample node,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P128,O13,O15,Lower right-to-center arrow and correctness leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P129,O13,O16,Lower right-to-center arrow and mixing leader are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P130,O13,O17,Lower right-to-center arrow is clearly above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P131,O14,O15,Lower center-to-left arrow and correctness leader are separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P132,O14,O16,Lower center-to-left arrow and mixing leader are widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P133,O14,O17,Lower center-to-left arrow is clearly above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P134,O15,O16,The two leaders are on opposite sides and widely separated,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P135,O15,O17,Correctness leader is far above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED
+P136,O16,O17,Mixing leader is clearly separated above caption,NONE,NONE,DISJOINT_CLEAR,0,false,SA3_FRESH_ISOLATED

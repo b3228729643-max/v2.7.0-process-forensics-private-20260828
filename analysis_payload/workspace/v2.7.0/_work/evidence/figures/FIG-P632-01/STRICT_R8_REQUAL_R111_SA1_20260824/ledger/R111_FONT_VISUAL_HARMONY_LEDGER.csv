@@ -1,0 +1,5 @@
+﻿DIMENSION,RESULT,BASIS,FOUR_VIEW_CONCLUSION
+SIZE,FAIL,30 of 413 glyphs fail the strict native-pixel threshold; base declared size is at least 9.5pt but strict visual-size gate is not closed.,"No abrupt layout collapse, but strict harmony cannot PASS while required glyph size pixels fail."
+WEIGHT,PASS,Current-identity four-view review found no unexplained heavy/light type shift; emphasis is semantically localized.,Weight hierarchy is visually coherent.
+COLOR,PASS,Blue/green data encodings and red warning treatment are semantically coherent; grayscale remains structurally legible.,Color supports rather than replaces structural distinction.
+FONT_VISUAL_HARMONY,FAIL,"Aggregate is governed by strict SIZE failure, not by a weight or color defect.",FAIL because any required subdimension failure prevents aggregate pass.

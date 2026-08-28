@@ -1,0 +1,284 @@
+{
+  "uid": "FIG-P605-01",
+  "handoff_id": "C-FIG-P605-01-R104-SA3-FRESH-ISOLATED-V1",
+  "check_count": 38,
+  "pass_count": 38,
+  "fail_count": 0,
+  "status": "PASS",
+  "manual_decisions_generated_or_overwritten": false,
+  "checks": [
+    {
+      "check": "identity_pdf_bytes",
+      "pass": true,
+      "observed": 4967222,
+      "expected": 4967222
+    },
+    {
+      "check": "identity_pdf_sha256",
+      "pass": true,
+      "observed": "E5C871642FBDDBEC6508BE1B61BD911FE281CA5ACFBD16B0449B13357770A641",
+      "expected": "exact R104 hash"
+    },
+    {
+      "check": "identity_pdf_pages",
+      "pass": true,
+      "observed": 817,
+      "expected": 817
+    },
+    {
+      "check": "identity_physical_page",
+      "pass": true,
+      "observed": 658,
+      "expected": 658
+    },
+    {
+      "check": "atomic_object_count",
+      "pass": true,
+      "observed": 173,
+      "expected": 173
+    },
+    {
+      "check": "atomic_object_ids_unique",
+      "pass": true,
+      "observed": 173,
+      "expected": 173
+    },
+    {
+      "check": "glyph_object_count",
+      "pass": true,
+      "observed": 150,
+      "expected": 150
+    },
+    {
+      "check": "graphic_object_count",
+      "pass": true,
+      "observed": 23,
+      "expected": 23
+    },
+    {
+      "check": "empty_mask_count",
+      "pass": true,
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "check": "pair_denominator",
+      "pass": true,
+      "observed": 14878,
+      "expected": 14878
+    },
+    {
+      "check": "pair_ids_unique",
+      "pass": true,
+      "observed": 14878,
+      "expected": 14878
+    },
+    {
+      "check": "candidate_pair_count",
+      "pass": true,
+      "observed": 13,
+      "expected": 13
+    },
+    {
+      "check": "manual_glyph_count",
+      "pass": true,
+      "observed": 150,
+      "expected": 150
+    },
+    {
+      "check": "manual_glyph_ids_exact",
+      "pass": true,
+      "observed": 150,
+      "expected": 150
+    },
+    {
+      "check": "manual_graphic_count",
+      "pass": true,
+      "observed": 23,
+      "expected": 23
+    },
+    {
+      "check": "manual_graphic_ids_exact",
+      "pass": true,
+      "observed": 23,
+      "expected": 23
+    },
+    {
+      "check": "manual_candidate_count",
+      "pass": true,
+      "observed": 13,
+      "expected": 13
+    },
+    {
+      "check": "manual_candidate_ids_exact",
+      "pass": true,
+      "observed": 13,
+      "expected": 13
+    },
+    {
+      "check": "manual_glyph_booleans",
+      "pass": true,
+      "observed": "all true",
+      "expected": "all true"
+    },
+    {
+      "check": "manual_glyph_decisions",
+      "pass": true,
+      "observed": [
+        "PASS"
+      ],
+      "expected": [
+        "PASS"
+      ]
+    },
+    {
+      "check": "manual_glyph_pixels",
+      "pass": true,
+      "observed": "all zero",
+      "expected": "all zero"
+    },
+    {
+      "check": "manual_graphic_booleans",
+      "pass": true,
+      "observed": "all true",
+      "expected": "all true"
+    },
+    {
+      "check": "manual_graphic_decisions",
+      "pass": true,
+      "observed": [
+        "PASS"
+      ],
+      "expected": [
+        "PASS"
+      ]
+    },
+    {
+      "check": "manual_graphic_pixels",
+      "pass": true,
+      "observed": "all zero",
+      "expected": "all zero"
+    },
+    {
+      "check": "manual_pair_views",
+      "pass": true,
+      "observed": "all true",
+      "expected": "all true"
+    },
+    {
+      "check": "manual_pair_adjudication",
+      "pass": true,
+      "observed": "all legal",
+      "expected": "all legal"
+    },
+    {
+      "check": "manual_pair_candidate_pixel_sum",
+      "pass": true,
+      "observed": 224,
+      "expected": 224
+    },
+    {
+      "check": "manual_role_decisions",
+      "pass": true,
+      "observed": [
+        "PASS"
+      ],
+      "expected": [
+        "ADVISORY",
+        "PASS"
+      ]
+    },
+    {
+      "check": "manual_view_decisions",
+      "pass": true,
+      "observed": [
+        "PASS"
+      ],
+      "expected": [
+        "PASS"
+      ]
+    },
+    {
+      "check": "manual_hard_no_fail",
+      "pass": true,
+      "observed": [
+        "ADVISORY",
+        "PASS"
+      ],
+      "expected": [
+        "ADVISORY",
+        "PASS"
+      ]
+    },
+    {
+      "check": "referenced_rasters_openable",
+      "pass": true,
+      "observed": 558,
+      "expected": 558
+    },
+    {
+      "check": "referenced_raster_paths_unique",
+      "pass": true,
+      "observed": 558,
+      "expected": 558
+    },
+    {
+      "check": "cache_pyc_zero",
+      "pass": true,
+      "observed": [],
+      "expected": []
+    },
+    {
+      "check": "result_overlap",
+      "pass": true,
+      "observed": [
+        224,
+        0,
+        0
+      ],
+      "expected": [
+        224,
+        0,
+        0
+      ]
+    },
+    {
+      "check": "result_clip",
+      "pass": true,
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "check": "result_booleans",
+      "pass": true,
+      "observed": "all true",
+      "expected": "all true"
+    },
+    {
+      "check": "result_local_only",
+      "pass": true,
+      "observed": [
+        "C_LOCAL_PASS_ONLY",
+        false,
+        "AWAITING_MAINLINE"
+      ],
+      "expected": [
+        "C_LOCAL_PASS_ONLY",
+        false,
+        "AWAITING_MAINLINE"
+      ]
+    },
+    {
+      "check": "tex_and_writer",
+      "pass": true,
+      "observed": [
+        "DISABLED",
+        "NONE"
+      ],
+      "expected": [
+        "DISABLED",
+        "NONE"
+      ]
+    }
+  ]
+}

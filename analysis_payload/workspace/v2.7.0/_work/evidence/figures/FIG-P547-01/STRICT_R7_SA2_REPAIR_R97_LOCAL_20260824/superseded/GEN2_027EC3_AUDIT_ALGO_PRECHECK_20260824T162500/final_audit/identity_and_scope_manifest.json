@@ -1,0 +1,116 @@
+{
+  "audit": "FIG-P547-01 STRICT_R7_SA2_REPAIR_R97_LOCAL",
+  "canonical_output_directory": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P547-01\\STRICT_R7_SA2_REPAIR_R97_LOCAL_20260824\\final_audit",
+  "expected_hashes": {
+    "authority_goal": "51BA862B1EEBCD6765565FEE6243BD2BC8BF2611D586115B52623668711928C2",
+    "direct_body": "CCD7F57CFDDD233126593CFFCEB03D4B1CD41C23BB72E09520233FC9C66D9E48",
+    "figure_source": "027EC3A9B000FBB3D91C1273A289496F4CC69952757658FF823F046C9C4E2A05",
+    "local_page_pdf": "92DC0A0EE0A310B34B07441B0D1C37A107048431E69F405424AB42003C1392ED",
+    "local_standalone_pdf": "5D462D5C1ACD042207B5F7A3D94A0654ABBB195DC27FCB0D074B0F57A3FA5496",
+    "r97_upstream_pdf": "062AD81020CB19A5C6688A45C73E00965F5060E0960A69AF820D7DC154DEE814",
+    "strict_protocol": "D8CD892CE6A33E6B8B9874B0BB3B35FDB537C2EE169401BCC4D85985465AEFA6",
+    "strict_schema": "D368ACDA21E755240F1842C2009D09C6DC6F3B88E113457A10F412708C8F4C86"
+  },
+  "generated_utc": "2026-08-24T08:12:25+00:00",
+  "hash_match": {
+    "authority_goal": true,
+    "direct_body": true,
+    "figure_source": true,
+    "local_page_pdf": true,
+    "local_standalone_pdf": true,
+    "r97_upstream_pdf": true,
+    "strict_protocol": true,
+    "strict_schema": true
+  },
+  "inputs": {
+    "authority_goal": {
+      "bytes": 285753,
+      "canonical_path": "D:\\Users\\ASUS\\.codex\\attachments\\e9427863-0663-4847-93b3-d9c784a212b5\\pasted-text.txt",
+      "exists": true,
+      "sha256": "51BA862B1EEBCD6765565FEE6243BD2BC8BF2611D586115B52623668711928C2"
+    },
+    "baseline_to_current_patch": {
+      "bytes": 5626,
+      "canonical_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P547-01\\STRICT_R7_SA2_REPAIR_R97_LOCAL_20260824\\source_identity\\baseline_to_current.patch",
+      "exists": true,
+      "sha256": "C86129484C3B2593FDC70C083CA84D12B42CD1B7A696051CB09FF0373B46C6FA"
+    },
+    "direct_body": {
+      "bytes": 83111,
+      "canonical_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\第05册_采样方法主题模型与图排序\\chapters\\V5-C01.tex",
+      "exists": true,
+      "sha256": "CCD7F57CFDDD233126593CFFCEB03D4B1CD41C23BB72E09520233FC9C66D9E48"
+    },
+    "figure_source": {
+      "bytes": 4358,
+      "canonical_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C01\\fig_v5_c01_transition_graph.tex",
+      "exists": true,
+      "sha256": "027EC3A9B000FBB3D91C1273A289496F4CC69952757658FF823F046C9C4E2A05"
+    },
+    "local_page_pdf": {
+      "bytes": 66404,
+      "canonical_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P547-01\\STRICT_R7_SA2_REPAIR_R97_LOCAL_20260824\\build\\page\\v260_FIG-P547-01_page.pdf",
+      "exists": true,
+      "sha256": "92DC0A0EE0A310B34B07441B0D1C37A107048431E69F405424AB42003C1392ED"
+    },
+    "local_standalone_pdf": {
+      "bytes": 38460,
+      "canonical_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P547-01\\STRICT_R7_SA2_REPAIR_R97_LOCAL_20260824\\build\\standalone\\v260_FIG-P547-01_standalone.pdf",
+      "exists": true,
+      "sha256": "5D462D5C1ACD042207B5F7A3D94A0654ABBB195DC27FCB0D074B0F57A3FA5496"
+    },
+    "r97_upstream_pdf": {
+      "bytes": 4933735,
+      "canonical_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r97_fullbook\\main_full.pdf",
+      "exists": true,
+      "sha256": "062AD81020CB19A5C6688A45C73E00965F5060E0960A69AF820D7DC154DEE814"
+    },
+    "strict_protocol": {
+      "bytes": 8066,
+      "canonical_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\audits\\OVERLAP-RECHECK-20260823\\STRICT-PIXEL-TYPOGRAPHY-PROTOCOL.md",
+      "exists": true,
+      "sha256": "D8CD892CE6A33E6B8B9874B0BB3B35FDB537C2EE169401BCC4D85985465AEFA6"
+    },
+    "strict_schema": {
+      "bytes": 11278,
+      "canonical_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\audits\\STRICT-GOAL-20260823\\STRICT_FIGURE_EVIDENCE_SCHEMA.md",
+      "exists": true,
+      "sha256": "D368ACDA21E755240F1842C2009D09C6DC6F3B88E113457A10F412708C8F4C86"
+    },
+    "style_file": {
+      "bytes": 54420,
+      "canonical_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\common\\statlearnbook.sty",
+      "exists": true,
+      "sha256": "DC48DB267E27C3AC449073ABAD91135B17C8FF8A8F7FB1623AA8334C0C1F9CDA"
+    },
+    "verified_baseline_source_snapshot": {
+      "bytes": 3363,
+      "canonical_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P547-01\\STRICT_R7_SA2_REPAIR_R97_LOCAL_20260824\\source_identity\\baseline_638CEA_fig_v5_c01_transition_graph.tex",
+      "exists": true,
+      "sha256": "638CEA4285D3A9411251DA149963CC7AE4500FA5827F0A99A51FF1FC76640D1A"
+    }
+  },
+  "local_target": {
+    "figure": "30.2",
+    "figure_crop_pt": [
+      60.0,
+      120.0,
+      535.0,
+      267.0
+    ],
+    "physical_pdf_page": 1,
+    "printed_page": 578
+  },
+  "native_render_contract": "pdftoppm direct local page/standalone PDFs at 200/300 dpi; crop only; grayscale without resize; 8x reviews use nearest neighbour only",
+  "pdf_geometry": {
+    "page_count": 1,
+    "page_height_pt": 841.8900146484375,
+    "page_width_pt": 595.2760009765625
+  },
+  "source_transition": {
+    "after_sha256": "027EC3A9B000FBB3D91C1273A289496F4CC69952757658FF823F046C9C4E2A05",
+    "baseline_snapshot_hash_match": true,
+    "before_sha256": "638CEA4285D3A9411251DA149963CC7AE4500FA5827F0A99A51FF1FC76640D1A",
+    "patch_present": true
+  }
+}

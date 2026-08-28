@@ -1,0 +1,8 @@
+@@ lower PMF axis options @@
+-  xtick={1,2,3,4},ytick={0,.15,.30,.35},
++  xtick={1,2,3,4},ytick={0,.15,.30,.35},yticklabels={0,0.15,,0.35},
+@@ lower PMF plot @@
+     coordinates {(1,.15) (2,.30) (3,.35) (4,.20)};
++  \node[anchor=east,xshift=-2pt,yshift=-4.5pt,font=\fontsize{8.6pt}{10.3pt}\selectfont]
++    at (axis cs:.45,.30) {$0.3$};
+

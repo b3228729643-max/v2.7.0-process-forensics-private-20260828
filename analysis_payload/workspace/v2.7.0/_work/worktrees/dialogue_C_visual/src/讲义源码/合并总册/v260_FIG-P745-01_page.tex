@@ -1,0 +1,26 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\makeatletter
+\@namedef{r@alg:V5-C08-selection-protocol}{{37.1}{742}{}{algorithm.37.1}{}}
+\makeatother
+\setcounter{page}{742}
+\setcounter{chapter}{37}
+\setcounter{section}{3}
+\setcounter{figure}{4}
+\pagestyle{headings}
+\chaptermark{无监督学习方法总结}
+\sectionmark{模型选择与评价}
+把数据单元先定义清楚：独立单元可能是样本、文档、用户、时间块或整张图，而不一定是矩阵元素。在这些单元上划分训练集、验证集和锁定测试集。所有方法、秩$K$、簇数、先验、初始化次数与停止容差只能由训练／验证信息决定；测试标签或测试token不能反馈到选择过程。
+
+本章明确区分图\ref{fig:V5-C08-validation}中的两个并列、无泄漏且估计对象不同的完整协议。
+协议A由算法\ref{alg:V5-C08-selection-protocol}实现：只在开发数据$D$上选择并冻结候选，随后重训，锁定测试集$T$只开封一次。
+协议B是嵌套交叉验证：对每个外层折$c$，都须在$D_{-c}$上重新执行$C_{\rm in}$折候选选择与重训，再仅用$D_c$作外层评价，最终汇总$C_{\rm out}$个损失；它不是算法\ref{alg:V5-C08-selection-protocol}的隐藏外循环。
+任何用锁定测试或外层评价结果回调候选、超参数或停止规则的做法都属于信息泄漏。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/fig_v5_c08_validation_protocols.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先复述协议A中“开发集选择并冻结候选、完整$D$重训、$T$只开封一次”的方向；
+再复述协议B中“每个$c$都在$D_{-c}$内重做$C_{\rm in}$折选择、只用$D_c$评价、汇总$C_{\rm out}$”的方向；
+最后沿两条橙色虚线回箭头从最终评价指回选择节点，说明为何箭头在X处被阻断，以及这种反馈为何构成泄漏。
+\end{document}

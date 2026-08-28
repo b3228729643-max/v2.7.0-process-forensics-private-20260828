@@ -1,0 +1,28 @@
+issue_id,upstream_or_intermediate_failure,final_object_or_resolution,final_native_300dpi_value,required_gate,decision,note
+EQ01,visible equals glyph H 12-14px,REL_EQ01 geometric equals,H=26px,H>=22px,PASS,two complete parallel TikZ rules
+EQ02,visible equals glyph H 12-14px,REL_EQ02 geometric equals,H=29px,H>=22px,PASS,two complete parallel TikZ rules
+EQ03,visible equals glyph H 12-14px,REL_EQ03 geometric equals,H=29px,H>=22px,PASS,two complete parallel TikZ rules
+EQ04,visible equals glyph H 12-14px,REL_EQ04 geometric equals,H=30px,H>=22px,PASS,two complete parallel TikZ rules
+EQ05,visible equals glyph H 12-14px,REL_EQ05 geometric equals,H=29px,H>=22px,PASS,two complete parallel TikZ rules
+EQ06,visible equals glyph H 12-14px,REL_EQ06 geometric equals,H=30px,H>=22px,PASS,two complete parallel TikZ rules
+EQ07,visible equals glyph H 12-14px,REL_EQ07 geometric equals,H=29px,H>=22px,PASS,two complete parallel TikZ rules
+EQ08,visible equals glyph H 12-14px,REL_EQ08 geometric equals,H=26px,H>=22px,PASS,two complete parallel TikZ rules
+EQ09,visible equals glyph H 12-14px,REL_EQ09 geometric equals,H=29px,H>=22px,PASS,two complete parallel TikZ rules
+EQ10,visible equals glyph H 12-14px,REL_EQ10 geometric equals,H=29px,H>=22px,PASS,two complete parallel TikZ rules
+EQ11,visible equals glyph H 12-14px,REL_EQ11 geometric equals,H=29px,H>=22px,PASS,two complete parallel TikZ rules
+EQ12,visible equals glyph H 12-14px,REL_EQ12 geometric equals,H=29px,H>=22px,PASS,two complete parallel TikZ rules
+AR01,visible right-arrow glyph H 18-19px,REL_ARROW01 geometric right arrow,H=24px,H>=22px,PASS,pure shaft/head composite with intended join
+AR02,visible right-arrow glyph H 18-19px,REL_ARROW02 geometric right arrow,H=24px,H>=22px,PASS,pure shaft/head composite with intended join
+AR03,visible right-arrow glyph H 18-19px,REL_ARROW03 geometric right arrow,H=23px,H>=22px,PASS,pure shaft/head composite with intended join
+LEGACY_C0073_U4E00,CJK 一 H=6px,semantic rewrite 同一条 to 物理边,C0065物 H44; C0066理 H41; C0067边 H43,CJK H>=30px,PASS,information preserved; current local C0073 is unrelated U1D457 j
+LEGACY_C0198_U006E,PageRank prose n H=21px misclassified as math base,current C0183 U006E prose n,H=21px,PROSE_LATIN_X_HEIGHT H>=17px,PASS,normal caption weight retained; no mechanical bolding
+PAIR_C0026_G07,non-whitelist clearance 1px,current closest C0024-G07,31.0644px,>=3px,PASS,left focus label to shaft
+PAIR_C0026_G09,non-whitelist clearance 1px,current closest C0022-G09,13.0000px,>=3px,PASS,left focus label to border
+PAIR_C0120_G24,non-whitelist clearance 1px,current closest C0109-G24,31.7805px,>=3px,PASS,right focus label to shaft
+PAIR_C0120_G26,non-whitelist clearance 1px,current closest C0107-G26,10.0000px,>=3px,PASS,right focus label to border; optional 12px target not reached but hard gate passes naturally
+UPSTREAM_R97_C0153_UFF1B,contaminated old semicolon mask and invalid contour decision,pure two-component historical mask,H=28px; area=57px; calibration H=28px area=58px,clean calibrated contour,PASS,foreign 45px component and 1px edge component excluded without morphology
+LEFT_GOLD_MATRIX,crossed left matrix closing bracket,current C0048-G14,19.1050px,>=3px,PASS,arrow begins outside formula foreground
+RIGHT_GOLD_P,intermediate 1px gap,current C0119-G17,25.4951px,>=3px,PASS,right gold bridge separated from P formula
+LEFT_LOWER_RETURN,intermediate 1px gap,current C0031-G10,12.6491px,>=3px,PASS,pure 0 and return shaft masks; empty intersection
+RIGHT_LOWER_RETURN,intermediate 1px gap,current C0116-G27,13.0000px,>=3px,PASS,pure 0 and return shaft masks; empty intersection
+GEN3_C0114_U0031,mask H33 area164 polluted by foreign rules,GEN4 C0114 exact component ownership,H=23px; area=122px,peer-consistent pure outline,PASS,exactly matches C0023 C0030 C0109 peers at same font/pt/role

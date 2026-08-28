@@ -1,0 +1,34 @@
+% v2.3.1 figure UID: FIG-P680-01
+% Proposed post-v2.3.1 polish for FIG-P680-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P680-01/.style={font=\fontsize{9.4pt}{11.4pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+% v2.1.0 priority-figure QA: 9.8pt labels, strengthened strokes, semantic direct labels.
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P680-01,slfig high,>=Stealth,
+  every node/.style={font=\fontsize{9.4pt}{11.4pt}\selectfont,align=center},
+  core/.style={draw=SLBlue,fill=SLBlueBG,line width=.80pt,rounded corners=2.5pt,minimum width=54mm,minimum height=12mm,inner xsep=3mm,inner ysep=1.4mm},
+  leftmodel/.style={draw=SLTeal,fill=SLTealBG,line width=.76pt,rounded corners=2.5pt,minimum width=46mm,minimum height=12mm,inner xsep=3mm,inner ysep=1.4mm},
+  rightmodel/.style={draw=SLGold,fill=SLGoldBG,line width=.76pt,rounded corners=2.5pt,minimum width=46mm,minimum height=12mm,inner xsep=3mm,inner ysep=1.4mm},
+  rowlabel/.style={font=\fontsize{9.8pt}{11.8pt}\selectfont\bfseries,text=SLGray,anchor=east},
+  warning/.style={draw=SLRed,fill=SLRedBG,text=SLRed,line width=.76pt,rounded corners=2.5pt,minimum width=116mm,minimum height=9mm,inner xsep=3mm,inner ysep=1.5mm,font=\fontsize{9.2pt}{11.2pt}\selectfont},
+  alt={对象—关系—结论：本章从共享的文档—主题—单词条件结构分出两个模型目标：完整Bayes LDA由折叠Gibbs推断，点参数LDA变体由平均场变分EM估计；箭头表示学习依赖，不表示两个后验相同}]
+\node[core] (shared) at (0,2.25) {共享“文档--主题--单词”条件结构\\两层混合、条件独立与词袋计数};
+\node[rowlabel] at (-5.85,.65) {模型目标};
+\node[leftmodel] (full) at (-3.10,.65) {完整 Bayes LDA\\$\theta,\varphi$ 均为随机变量};
+\node[rightmodel] (point) at (3.10,.65) {点参数 LDA 变体\\$\varphi$ 作为待估参数};
+\node[rowlabel] at (-5.85,-.95) {推断方法};
+\node[leftmodel,fill=white] (gibbs) at (-3.10,-.95) {折叠 Gibbs\\积分消去 $\theta,\varphi$};
+\node[rightmodel,fill=white] (vem) at (3.10,-.95) {平均场变分 EM\\ELBO 坐标上升};
+\draw[-{Stealth[length=2.1mm,width=1.55mm]},draw=SLTeal,line width=.95pt]
+  ([xshift=-7mm]shared.south) to[bend right=12] (full.north);
+\draw[-{Stealth[open,length=2.1mm,width=1.55mm]},draw=SLGold,line width=.95pt,densely dashed]
+  ([xshift=7mm]shared.south) to[bend left=12] (point.north);
+\draw[-{Stealth[length=1.9mm,width=1.4mm]},draw=SLTeal,line width=.80pt] (full.south)--(gibbs.north);
+\draw[-{Stealth[open,length=1.9mm,width=1.4mm]},draw=SLGold,line width=.80pt,densely dashed] (point.south)--(vem.north);
+\node[warning] at (0,-2.40) {模型与后验不同，结果不可只按算法名直接比较};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{本章从共享的文档--主题--单词条件结构分出两个模型目标：完整Bayes LDA由折叠Gibbs推断，点参数LDA变体由平均场变分EM估计；箭头表示学习依赖，不表示两个后验相同}
+\label{fig:V5-C06-dependency-graph}
+\end{figure}

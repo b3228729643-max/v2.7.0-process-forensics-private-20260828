@@ -1,0 +1,75 @@
+{
+  "figure_id": "FIG-P157-01",
+  "revision": "R111",
+  "machine_check_execution": "PASS",
+  "evidence_integrity_result": "PASS",
+  "figure_hard_gates_result": "FAIL",
+  "expected_final_result": "FAIL_TO_SA2",
+  "checks": {
+    "candidate_render_identity": true,
+    "foreground_objects_and_masks": {
+      "count": 20,
+      "all_opened": true
+    },
+    "semantic_source_map": {
+      "count": 11,
+      "canonical": true
+    },
+    "glyph_1x_8x_manual_and_machine": {
+      "count": 80,
+      "contacts": 10,
+      "pass": true
+    },
+    "pixel_and_low_profile": {
+      "rows": 80,
+      "pass": 75,
+      "fail": 5,
+      "calibration_method_valid": true
+    },
+    "D_E": {
+      "same_class_pass": true,
+      "role_pass": false,
+      "role_fail_glyphs": 8
+    },
+    "human_visual_review": {
+      "views": 4,
+      "panel_role_script_rows": 10,
+      "visual_harmony": true
+    },
+    "pairs_relations_and_raw_curve": {
+      "pairs": 190,
+      "pairs_pass": 189,
+      "pairs_fail": 1,
+      "mandatory": 154,
+      "P0155_overlap": 139,
+      "P0155_clearance": 0.0
+    },
+    "clip": {
+      "objects": 20,
+      "clip_pixel_count": 0,
+      "pass": true
+    },
+    "canonical_register": {
+      "rows": 28,
+      "pass": true
+    },
+    "reports": {
+      "final_result": "FAIL",
+      "integrity_claim": "PASS",
+      "figure_hard_gates": "FAIL"
+    }
+  },
+  "failures": [],
+  "canonical_curve_result": {
+    "pair": "P0155",
+    "final_visible_overlap_px": 139,
+    "min_clearance_px": 0.0,
+    "legacy_516_retracted": true,
+    "legacy_37_retracted": true
+  },
+  "hard_failures": [
+    "P0155 independent-curve final-visible raw-mask intersection 139px / clearance 0",
+    "five valid low-profile calibrated pixel failures",
+    "BODY REGION_LABEL/CJK role ratio 0.9459 below 0.95"
+  ]
+}

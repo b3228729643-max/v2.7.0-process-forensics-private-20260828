@@ -1,0 +1,6 @@
+﻿CHECK_ID,CLAIM,RESULT,EVIDENCE
+M01,Joint density normalization and support,PASS,"q(x1,x2)=1+rho(2x1-1)(2x2-1) on [0,1]^2; affine perturbation integrates to one."
+M02,X1 conditional at X2=b=4/5,PASS,"Mean 12/25, variance 16/25, second moment 29/100."
+M03,X2 conditional at X1=a=1/5,PASS,"Mean 3/5, variance 16/25, second moment 121/500."
+M04,Integral and geometric annotations,PASS,One integral; maximum 5/(4sqrt(2)pi); positive rho retains 45 degree ellipse direction.
+M05,Zero-density edge warning,PASS,Regular conditional convention is stated and does not assert an invalid pointwise density.

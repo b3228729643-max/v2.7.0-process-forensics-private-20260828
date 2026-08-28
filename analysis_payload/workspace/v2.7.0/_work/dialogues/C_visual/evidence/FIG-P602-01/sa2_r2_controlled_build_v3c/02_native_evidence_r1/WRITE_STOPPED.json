@@ -1,0 +1,70 @@
+{
+  "uid": "FIG-P602-01",
+  "round": "SA2_R2_V3C_NATIVE_R1",
+  "seal_status": "WRITE_STOPPED",
+  "sealed_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v3c\\02_native_evidence_r1",
+  "write_stopped_utc": "2026-08-25T07:39:20.935613+00:00",
+  "final_evidence_outcome": "STRICT_FAIL_G032_H06",
+  "local_pass_claimed": false,
+  "central_state_write_authorized": false,
+  "tex_invocations_in_native_evidence_phase": 0,
+  "candidate_pdf": {
+    "bytes": 41240,
+    "sha256": "203977543DB0F41686A955D33D83A55BA272A7AAE07599AED58227914019EE2C"
+  },
+  "source_sha256": "2B15B4BEEA7A922FEE24259678DBAE2A54915955915E6714A350122A6251E349",
+  "denominators": {
+    "objects": 30,
+    "glyphs": 154,
+    "unordered_pairs": 435,
+    "critical_pairs": 16,
+    "peers": 28,
+    "roles": 3,
+    "clips": 30,
+    "views": 4,
+    "hard_gates": 12
+  },
+  "final_manual_ledger_state": {
+    "objects": "30_UNIQUE_PASS",
+    "glyph_visual": "154_UNIQUE_PASS",
+    "glyph_hard": "153_PASS_1_FAIL_G032",
+    "pairs": "435_UNIQUE_PASS",
+    "critical_pairs": "16_UNIQUE_PASS",
+    "peers": "28_UNIQUE_PASS",
+    "roles": "3_UNIQUE_PASS",
+    "clips": "30_UNIQUE_PASS",
+    "views": "4_UNIQUE_PASS",
+    "hard_gates": "11_PASS_1_FAIL_H06"
+  },
+  "strict_failure": {
+    "glyph_id": "G032",
+    "char": "一",
+    "unicode": "U+4E00",
+    "script_class": "CJK_FULL",
+    "ink_width_px": 36,
+    "ink_height_px": 4,
+    "ink_pixel_count": 78,
+    "required_height_px": 30,
+    "manual_visual_decision": "PASS",
+    "hard_gate_decision": "FAIL",
+    "failed_gate": "H06"
+  },
+  "manifest_model": {
+    "listed_payload": 882,
+    "listed_control": 16,
+    "listed_rows": 898,
+    "unlisted_self": 1,
+    "unlisted_seal": 1,
+    "expected_final_ordinary_files": 900,
+    "unlisted_paths": [
+      "09_manifest/evidence_file_manifest.csv",
+      "WRITE_STOPPED.json"
+    ],
+    "manifest_path": "09_manifest/evidence_file_manifest.csv",
+    "manifest_bytes": 140612,
+    "manifest_sha256": "F26B3535E001550815A6616883FD3B9261F1D1B99A240AA956456047195D4F68",
+    "canonical_listed_recordset_sha256": "9DD45215B3ACF6DBD9AFD761004E827868C2BE04C19BE1861AEDC2A3C2923A85",
+    "pre_seal_latest_listed_mtime_ns": 1787643553647352300
+  },
+  "post_seal_policy": "No file in this root may be modified, added, removed, or regenerated. Acceptance must use a separate fresh root."
+}

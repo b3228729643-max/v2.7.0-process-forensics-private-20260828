@@ -1,0 +1,31 @@
+{
+  "assigned_scope": "Fresh isolated read-only SA1 inspection of FIG-P580-01 on official R108 only",
+  "completed": true,
+  "files_changed": [
+    "new evidence files under the assigned fresh evidence root",
+    "external formal report",
+    "external A handoff"
+  ],
+  "decisions": [
+    "SA1_PASS_READY_FOR_FRESH_ISOLATED_SA3",
+    "visible_object_denominator_N=32",
+    "unordered_pair_denominator_C=496",
+    "OVERLAP_PIXEL_COUNT=0",
+    "CLIP_PIXEL_COUNT=0",
+    "R168 raw contour/taxonomy differences are advisory, not hard failures"
+  ],
+  "unresolved": [],
+  "validation": {
+    "official_pdf_identity": "817 pages; 4967161 bytes; C2EC93425486A57DE4C6670E16FC7DA729649A183230C28E8A0652467D3B5B78",
+    "source_identity": "F0ECC9B28361A2AE73AF085A4958AD09F8F94575D789B8F776C55631FD45E161",
+    "route": "physical630/printed617/Fig31.6",
+    "objects": "32/32 PASS",
+    "pairs": "496/496 observed exactly once",
+    "bbox_candidates": "39/39 CLEAR",
+    "critical_unicode": "U+0338 and U+226A correct; zero tofu/replacement glyphs",
+    "math_semantics": "PASS",
+    "grayscale": "PASS",
+    "page_integration": "PASS"
+  },
+  "next_action": "Owner launches a separate fresh isolated SA3 against the same official R108 identities; do not inherit SA1 conclusions."
+}

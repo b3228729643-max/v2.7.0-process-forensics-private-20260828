@@ -1,0 +1,15 @@
+ELEMENT_ID,TEXT_SAMPLE,DECLARED_SOURCE_PT,FINAL_PDF_SPAN_PT,RAW_H_INK_PX_300DPI,POST_OBSERVATION_GLYPH_CHECK,POST_OBSERVATION_READABILITY,POST_OBSERVATION_R168_HARD_STATUS
+T01,−4,8.8,9.2653,26,"Correct minus and digit; no tofu or missing stroke","Clearly readable at native full page and ROI",CLEAR
+T02,0,8.8,9.2653,27,"Correct zero; no tofu or missing stroke","Clearly readable and centered",CLEAR
+T03,4,8.8,9.2653,26,"Correct digit; no tofu or missing stroke","Clearly readable at native full page",CLEAR
+T04,0,8.8,9.2653,27,"Correct zero; no tofu or missing stroke","Clearly readable beside origin",CLEAR
+T05,0.2,8.8,9.2653,27,"Correct decimal and digits; no tofu","Clearly readable and aligned with tick",CLEAR
+T06,0.4,8.8,9.2653,27,"Correct decimal and digits; no tofu","Clearly readable and aligned with peak tick",CLEAR
+T07,"N(0,1); peak 1/sqrt(2pi)",9.2,9.1656,40,"Calligraphic N, punctuation, radical and pi all render correctly","Readable at native1x; visually subordinate to the curves",CLEAR
+T08,"N(0,2^2); peak 1/(2sqrt(2pi)) base",9.2,9.1656,40,"Base formula, punctuation, radical and pi all render correctly","Readable at native1x; balanced with T07",CLEAR
+T09,superscript 2,"automatic script from 9.2 base",6.4159,19,"Correct superscript two; no wrong codepoint or clipping","Clearly legible in native1x and nearest8x",CLEAR
+T10,"two curves: area = 1",9.2,9.1656,41,"Chinese, colon, equals and digit all render correctly","Clearly readable; background separation preserves the message",CLEAR
+T11,x,9.4,9.9626,21,"Correct italic mathematical x","Clearly readable under center tick",CLEAR
+T12,density,9.4,9.9626,"80 total vertical; about 38 per glyph","Both Chinese glyphs complete and correctly oriented","Clearly readable; no crowding against y ticks",CLEAR
+T13,Figure 5.1,"inherited caption style",9.9626,38,"Chinese label and numerals render correctly","Bold caption label is clearly readable",CLEAR
+T14,"variance increase broadens Gaussian density, lowers peak, preserves area 1","inherited caption style",9.9626,41,"All Chinese glyphs and terminal digit are present and correct","One-line caption remains readable and page-balanced",CLEAR

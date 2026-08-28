@@ -1,0 +1,11 @@
+check_id,manual_verdict,manual_note,evidence
+M001,PASS,Hessian [[1,1],[1,2]] has determinant1 and positive eigenvalues0.381966 and2.618034,machine/MATH_SEMANTIC_CHECK.json
+M002,PASS,all four contours are level sets of the same rotated positive-definite quadratic,current source and whole-figure view
+M003,PASS,q1 through q7 alternately update x2 and x1 with exact updated-coordinate derivative residual0,machine/MATH_SEMANTIC_CHECK.json
+M004,PASS,objective values 2.92 2.56 1.28 .64 .32 .16 .08 .04 are strictly decreasing,machine/MATH_SEMANTIC_CHECK.json
+M005,PASS,the optimum star is at x-star=(0,0) and final q7 remains an approximation,current source and R07 view
+M006,PASS,axis labels trajectory colors and coordinate-update directions agree with source semantics,figure native300 and trajectory views
+M007,FAIL,x2 legend visual sample does not encode the dashed vertical-update role because it renders solid,H03 gray nearest8x and machine legend measurement
+M008,FAIL,step numerals 6 and 7 are not presented with lawful readable geometry,H01 and H02 nearest8x
+M009,PASS,all extracted codepoints are present with no tofu or wrong-codepoint substitution,MACHINE_OBJECTS and glyph contact sheet
+M010,PASS,caption claim that one coordinate changes per substep matches the alternating path geometry,current source caption and M003-M004

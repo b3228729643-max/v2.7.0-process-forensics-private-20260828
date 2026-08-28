@@ -1,0 +1,7 @@
+view_id	evidence	reviewer	actual_opened	content_legible	no_clip	no_illegal_overlap	no_severe_imbalance	decision	note
+SOURCE	web_random_walk.tex	gpt-5.6-sol/xhigh	TRUE	TRUE	TRUE	TRUE	TRUE	PASS	Source read independently; labels formulas matrices and four directed edges are internally coherent.
+FULL_PAGE_200	full_page_200dpi.png	gpt-5.6-sol/xhigh	TRUE	TRUE	TRUE	TRUE	TRUE	PASS	Printed page 752 / physical page 765 integrates the figure cleanly with surrounding text and margins.
+FIGURE_CROP_300	figure_crop_300dpi.png	gpt-5.6-sol/xhigh	TRUE	TRUE	TRUE	TRUE	TRUE	PASS	Both rounded panels titles graph matrices notes and equations are fully visible at native crop scale.
+STANDALONE_300	standalone_300dpi.png	gpt-5.6-sol/xhigh	TRUE	TRUE	TRUE	TRUE	TRUE	PASS	Figure body remains readable without page context; no side or bottom element is clipped.
+GRAYSCALE_300	grayscale_300dpi.png	gpt-5.6-sol/xhigh	TRUE	TRUE	TRUE	TRUE	TRUE	PASS	Color-coded edges highlights and hierarchy remain distinguishable through shape position and tonal contrast.
+TEXT_OVERLAY_300	after_text_measurement_overlay_300dpi.png	gpt-5.6-sol/xhigh	TRUE	TRUE	TRUE	TRUE	TRUE	PASS	All text objects are visibly accounted for; overlay boxes do not reveal omitted or displaced content.

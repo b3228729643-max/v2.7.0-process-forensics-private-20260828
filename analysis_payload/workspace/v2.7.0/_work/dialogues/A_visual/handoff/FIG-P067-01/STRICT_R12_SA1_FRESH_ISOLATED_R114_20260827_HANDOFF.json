@@ -1,0 +1,50 @@
+{
+  "assigned_scope": "Fresh isolated read-only SA1 review of UID FIG-P067-01 against the official R114 PDF and current P067 source only",
+  "completed": true,
+  "result": "PASS",
+  "files_changed": [
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P067-01\\STRICT_R12_SA1_FRESH_ISOLATED_R114_20260827",
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P067-01\\STRICT_R12_SA1_FRESH_ISOLATED_R114_20260827_REPORT.md",
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P067-01\\STRICT_R12_SA1_FRESH_ISOLATED_R114_20260827_POSTMARKER_AUDIT.json",
+    "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\handoff\\FIG-P067-01\\STRICT_R12_SA1_FRESH_ISOLATED_R114_20260827_HANDOFF.json"
+  ],
+  "decisions": {
+    "visible_object_denominator": 69,
+    "all_unordered_pairs": 2346,
+    "manual_object_reviews": 69,
+    "manual_candidate_pair_reviews": 97,
+    "overlap_candidate_pixel_count": 17244,
+    "true_illegal_overlap_pixel_count": 0,
+    "clip_pixel_count": 0,
+    "unresolved_candidate_count": 0,
+    "math_semantics_pass": true,
+    "right_continuity_pass": true,
+    "caption_and_page_integration_pass": true,
+    "r168_advisory": "T21-G46 has one native pixel of blank clearance and zero shared foreground; source font sizes below 9.5 pt are also advisory because final evidence is readable and semantically correct"
+  },
+  "unresolved": [],
+  "validation": {
+    "official_pdf_bytes_and_sha256_match": true,
+    "current_source_bytes_and_sha256_match": true,
+    "native1x_nearest8x_grayscale_page_evidence_opened": true,
+    "manual_ledger_crosscheck_pass": true,
+    "final_preseal_validation_pass": true,
+    "seal_call_count": 1,
+    "all_root_items_readonly": true,
+    "write_stopped_unique_strict_latest": true,
+    "at_or_after_excluding_marker_count": 0,
+    "postmarker_root_content_or_attribute_writes": 0,
+    "postmarker_snapshot_digest": "4A3107709F8896C2F30CE8D7F641D93443EEDE496FB35F7C8009556F027B7F3F"
+  },
+  "next_action": "Request a different fresh isolated R114 SA3. Do not count A_LOCAL_PASS and do not reuse this SA1 instance for another role.",
+  "identities": {
+    "handoff_id": "A-R114-P067-SA1-FRESH-ISOLATED-20260827",
+    "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P067-01\\STRICT_R12_SA1_FRESH_ISOLATED_R114_20260827",
+    "report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P067-01\\STRICT_R12_SA1_FRESH_ISOLATED_R114_20260827_REPORT.md",
+    "postmarker_audit": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P067-01\\STRICT_R12_SA1_FRESH_ISOLATED_R114_20260827_POSTMARKER_AUDIT.json",
+    "handoff": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\handoff\\FIG-P067-01\\STRICT_R12_SA1_FRESH_ISOLATED_R114_20260827_HANDOFF.json",
+    "write_stopped": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P067-01\\STRICT_R12_SA1_FRESH_ISOLATED_R114_20260827\\WRITE_STOPPED"
+  },
+  "a_local_pass_counted": false,
+  "second_role_started": false
+}

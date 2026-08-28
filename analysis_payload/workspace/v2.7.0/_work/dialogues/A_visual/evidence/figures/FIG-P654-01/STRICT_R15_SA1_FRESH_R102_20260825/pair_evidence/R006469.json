@@ -1,0 +1,32 @@
+{
+  "relation_id": "R006469",
+  "object_a": "D003_BORDER_NODE_TRIAL",
+  "object_b": "D029_EDGE_TRIAL_FAMILIES_SHAFT",
+  "kind_a": "GRAPHIC",
+  "kind_b": "GRAPHIC",
+  "parent_a": "NODE_TRIAL",
+  "parent_b": "EDGE_TRIAL_FAMILIES",
+  "role_a": "NODE_BORDER",
+  "role_b": "LINE_ARROW",
+  "gate_type": "EDGE_NODE_ENDPOINT_DESIGN",
+  "gate_px": "N/A_DESIGN",
+  "raw_overlap_pixel_count": 0,
+  "raw_mask_clearance_px": 0.0,
+  "text_text_vector_bbox_clearance_px": "N/A",
+  "ownership_or_whitelist_reason": "edge intentionally terminates at owned endpoint border",
+  "machine_decision": "PASS",
+  "critical_relation": true,
+  "evidence_1x": "pair_evidence/R006469__1x.png",
+  "evidence_8x": "pair_evidence/R006469__8x_nearest.png",
+  "raw": "pair_evidence/R006469__raw.png",
+  "mask_a": "pair_evidence/R006469__mask_a.png",
+  "mask_b": "pair_evidence/R006469__mask_b.png",
+  "intersection": "pair_evidence/R006469__intersection.png",
+  "overlay": "pair_evidence/R006469__overlay.png",
+  "roi_full_page_px": [
+    312,
+    275,
+    719,
+    437
+  ]
+}

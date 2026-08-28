@@ -1,0 +1,61 @@
+{
+  "schema": "P602_R3_V1_DIRECT_INVOCATION_RESULT_V1",
+  "ordinal": 1,
+  "invocation_limit": 1,
+  "invocation_count": 1,
+  "started": true,
+  "pid": 7324,
+  "attempted_utc": "2026-08-25T08:00:57.1753782Z",
+  "started_utc": "2026-08-25T08:00:57.1789073Z",
+  "finished_utc": "2026-08-25T08:01:33.3341027Z",
+  "duration_seconds": 36.159,
+  "natural_exit": true,
+  "interrupted": false,
+  "exit_code": 0,
+  "start_exception": null,
+  "start_record_exception": null,
+  "runtime_exception": null,
+  "controller_exception": null,
+  "pdf_identity_exception": null,
+  "output_persistence_exception": null,
+  "stdout": {
+    "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1\\01_build\\lualatex.stdout.txt",
+    "exists": true,
+    "bytes": 28275,
+    "sha256": "B786ED16AB440D98CD84335140FF4D75C49DAF7F4E249840319DB255112F2EC3",
+    "identity_recomputed": true
+  },
+  "stderr": {
+    "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1\\01_build\\lualatex.stderr.txt",
+    "exists": true,
+    "bytes": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "identity_recomputed": true
+  },
+  "candidate_pdf": {
+    "resolved_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1\\01_build\\v260_FIG-P602-01_standalone.pdf",
+    "count_in_build_directory": 1,
+    "exists": true,
+    "bytes": 41653,
+    "sha256": "68188DAAAF9B3C4233D5A032C3D8BE20A73B51D5E6058D0E1C12FDE6471093E7"
+  },
+  "post_tex_process_count": 0,
+  "post_tex_processes": [],
+  "retry_count": 0,
+  "second_start_attempted": false,
+  "success_hard_gate": {
+    "invocation_count_is_one": true,
+    "started_true": true,
+    "start_record_exists": true,
+    "natural_exit_true": true,
+    "exit_code_zero": true,
+    "pdf_count_exactly_one": true,
+    "expected_pdf_exists": true,
+    "expected_pdf_bytes_positive": true,
+    "post_tex_process_count_zero": true,
+    "all_exception_fields_empty": true,
+    "stdout_identity_recomputed": true,
+    "stderr_identity_recomputed": true,
+    "all_pass": true
+  }
+}

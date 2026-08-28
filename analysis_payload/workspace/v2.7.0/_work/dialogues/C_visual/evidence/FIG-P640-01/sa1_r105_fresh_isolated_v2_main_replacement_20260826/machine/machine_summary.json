@@ -1,0 +1,64 @@
+{
+  "candidate_identity_pass": true,
+  "foreground_object_count": 253,
+  "glyph_count": 242,
+  "path_foreground_count": 11,
+  "background_occluder_count": 2,
+  "expected_unordered_pair_count": 31878,
+  "actual_unordered_pair_count": 31878,
+  "empty_glyph_mask_count": 0,
+  "empty_path_mask_count": 0,
+  "hard_overlap_failure_count_before_manual_semantic_review": 1,
+  "hard_clearance_failure_count_before_manual_semantic_review": 0,
+  "machine_fail_pair_count": 1,
+  "machine_fail_pairs": [
+    {
+      "pair_index": 21723,
+      "object_a": "GLYPH-0109",
+      "object_b": "PATH-RIGHT-ESS-CURVE",
+      "category": "TEXT_FORMULA_TO_LINE_MARKER_RULE",
+      "metric_kind": "MASK",
+      "overlap_pixel_count": 103,
+      "clearance_native_px": 0,
+      "threshold_native_px": 3,
+      "machine_decision": "FAIL_OVERLAP"
+    }
+  ],
+  "marker_tick": {
+    "relationship_id": "REL-RIGHT-OPEN-MARKER-099__RIGHT-VERTICAL-TICK-099",
+    "roi_figure_crop_px": [
+      1770,
+      480,
+      1822,
+      546
+    ],
+    "roi_full_page_px": [
+      2070,
+      720,
+      2122,
+      786
+    ],
+    "marker_mask_id": "PATH-RIGHT-OPEN-MARKER-099",
+    "axis_tick_mask_id": "AUDIT-RIGHT-VERTICAL-TICK-099",
+    "intersection_px": 0,
+    "blank_clearance_native_px": 0,
+    "native1x": "roi/marker_tick_native1x.png",
+    "nearest8x": "roi/marker_tick_8x_nearest.png",
+    "vector_marker_bottom_outer_pt": 181.78033605217934,
+    "vector_tick_top_outer_pt": 181.99411165714264,
+    "positive_continuous_vector_gap_pt": 0.2137756049633026,
+    "positive_continuous_vector_gap_native_px": 0.8907316873470943,
+    "positive_continuous_whitespace": true,
+    "interpretation": "Zero intersecting native pixels and positive continuous vector whitespace; no complete intervening native pixel row at 300 dpi."
+  },
+  "contact_sheet_count": 16,
+  "contact_cell_count": 242,
+  "clip_pixel_count": 0,
+  "crop_edge_minimum_px": {
+    "left": 67,
+    "top": 58,
+    "right": 42,
+    "bottom": 34
+  },
+  "note": "Machine facts only. R168 font pixel/ratio values are advisory; manual visual and semantic fields are not generated here."
+}

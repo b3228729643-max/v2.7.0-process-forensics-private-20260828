@@ -1,0 +1,41 @@
+object_id,reviewer,decision,observation
+T001,C_ROOT_MANUAL_R2,PASS,Left x tick 0 is readable and separated from the origin y tick.
+T002,C_ROOT_MANUAL_R2,PASS,Left x tick 2 is centered under its tick without clipping.
+T003,C_ROOT_MANUAL_R2,PASS,Left x tick 4 is legible and does not touch either curve.
+T004,C_ROOT_MANUAL_R2,PASS,Left x tick 6 remains clear of the x-axis title.
+T005,C_ROOT_MANUAL_R2,PASS,Left x tick 8 is aligned consistently with neighboring ticks.
+T006,C_ROOT_MANUAL_R2,PASS,Left x tick 10 is fully rendered with both digits visible.
+T007,C_ROOT_MANUAL_R2,PASS,Left x tick 12 remains inside the panel footprint and unobscured.
+T008,C_ROOT_MANUAL_R2,PASS,Left y tick 0 is distinct from the x-axis origin label.
+T009,C_ROOT_MANUAL_R2,PASS,Left y tick 0.25 is readable beside the vertical axis.
+T010,C_ROOT_MANUAL_R2,PASS,Left y tick 0.5 is readable with normal axis clearance.
+T011,C_ROOT_MANUAL_R2,PASS,Left y tick 0.75 is complete and horizontally aligned.
+T012,C_ROOT_MANUAL_R2,PASS,Left y tick 1 is clear of the panel top border.
+T013,C_ROOT_MANUAL_R2,PASS,The left x-axis label 滞后 k is complete and centered.
+T014,C_ROOT_MANUAL_R2,PASS,The rotated Corr formula is complete with squared variables and rho exponent legible.
+T015,C_ROOT_MANUAL_R2,PASS,The left panel title correctly identifies the ACF panel and rho to the 2k power.
+T016,C_ROOT_MANUAL_R2,PASS,The rho .95 legend label is complete and paired with the solid blue sample.
+T017,C_ROOT_MANUAL_R2,PASS,The rho .70 legend label is complete and paired with the teal dashed sample.
+T018,C_ROOT_MANUAL_R2,PASS,The rho .20 legend label is complete and paired with the gray dash-dot sample.
+T019,C_ROOT_MANUAL_R2,PASS,Right x tick 0 is readable at the origin.
+T020,C_ROOT_MANUAL_R2,PASS,Right x tick .5 is centered below its tick and clear of the axis label.
+T021,C_ROOT_MANUAL_R2,PASS,Right x tick .99 is readable below the endpoint.
+T022,C_ROOT_MANUAL_R2,PASS,Right y tick 0 is readable and distinct from the x origin label.
+T023,C_ROOT_MANUAL_R2,PASS,Right y tick 0.5 is readable at the midpoint.
+T024,C_ROOT_MANUAL_R2,PASS,Right y tick 1 is readable near the upper arrow.
+T025,C_ROOT_MANUAL_R2,PASS,The point label (.99 .010) is complete and remains separated from the marker.
+T026,C_ROOT_MANUAL_R2,PASS,The limit note preserves rho tending to one from below and the effective sample ratio tending to zero.
+T027,C_ROOT_MANUAL_R2,PASS,The right x-axis label absolute rho is centered and unobstructed.
+T028,C_ROOT_MANUAL_R2,PASS,The rotated effective sample ratio label is complete and readable.
+T029,C_ROOT_MANUAL_R2,PASS,The right panel title identifies the asymptotic ESS ratio.
+T030,C_ROOT_MANUAL_R2,PASS,The title fraction has numerator one minus rho squared and denominator one plus rho squared.
+G01,C_ROOT_MANUAL_R2,PASS,Left axes and ticks form a complete rectangular plotting frame.
+G02,C_ROOT_MANUAL_R2,PASS,The solid rho .95 curve starts at one and decays slowly without breaks.
+G03,C_ROOT_MANUAL_R2,PASS,The teal rho .70 curve starts at one and decays faster with a consistent dashed stroke.
+G04,C_ROOT_MANUAL_R2,PASS,The gray rho .20 curve falls rapidly toward zero with a consistent dash-dot stroke.
+G05,C_ROOT_MANUAL_R2,PASS,The solid blue legend sample matches the rho .95 curve encoding.
+G06,C_ROOT_MANUAL_R2,PASS,The teal dashed legend sample matches the rho .70 curve encoding.
+G07,C_ROOT_MANUAL_R2,PASS,The gray dash-dot legend sample matches the rho .20 curve encoding.
+G08,C_ROOT_MANUAL_R2,PASS,The right axes ticks and arrowheads are individually complete and visually unobstructed.
+G09,C_ROOT_MANUAL_R2,PASS,The brown efficiency curve is continuous from one to the true endpoint.
+G10,C_ROOT_MANUAL_R2,PASS,The open brown marker is centered on the stated true endpoint and clear of the .99 tick.

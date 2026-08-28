@@ -1,0 +1,183 @@
+{
+  "figure": "FIG-P577-01",
+  "strict_run": "SA1_20260824_R1",
+  "machine_integrity_pass": true,
+  "quality_result": "FAIL→SA2",
+  "quality_failure_counts": {
+    "pixel_height_fail": 67,
+    "D_fail": 152,
+    "E_fail": 3,
+    "pair_fail": 3
+  },
+  "checks": [
+    {
+      "CHECK": "inventory_unique_ids",
+      "PASS": "PASS",
+      "OBSERVED": 193,
+      "EXPECTED": 193,
+      "DETAIL": "object_manifest IDs are unique"
+    },
+    {
+      "CHECK": "inventory_raw_masks_present",
+      "PASS": "PASS",
+      "OBSERVED": [],
+      "EXPECTED": "[]",
+      "DETAIL": "every inventory object has its raw-mask file"
+    },
+    {
+      "CHECK": "inventory_raw_masks_nonempty",
+      "PASS": "PASS",
+      "OBSERVED": [],
+      "EXPECTED": "[]",
+      "DETAIL": "every non-background inventory object has pixels"
+    },
+    {
+      "CHECK": "visible_primitive_count",
+      "PASS": "PASS",
+      "OBSERVED": 158,
+      "EXPECTED": 158,
+      "DETAIL": "source-occluded y=0.4 is intentionally not final-visible"
+    },
+    {
+      "CHECK": "semantic_font_element_count",
+      "PASS": "PASS",
+      "OBSERVED": "font=22,parents=22",
+      "EXPECTED": 22,
+      "DETAIL": "semantic font rows and parent object set agree"
+    },
+    {
+      "CHECK": "pixel_primitive_count",
+      "PASS": "PASS",
+      "OBSERVED": 158,
+      "EXPECTED": 158,
+      "DETAIL": "after_pixel covers every final-visible primitive"
+    },
+    {
+      "CHECK": "glyph_trace_count",
+      "PASS": "PASS",
+      "OBSERVED": 342,
+      "EXPECTED": 342,
+      "DETAIL": "glyph table count agrees with terminal"
+    },
+    {
+      "CHECK": "glyph_unique_ids",
+      "PASS": "PASS",
+      "OBSERVED": 342,
+      "EXPECTED": 342,
+      "DETAIL": "glyph IDs are unique"
+    },
+    {
+      "CHECK": "glyph_parent_membership",
+      "PASS": "PASS",
+      "OBSERVED": [],
+      "EXPECTED": "[]",
+      "DETAIL": "every glyph belongs to a visible primitive"
+    },
+    {
+      "CHECK": "glyph_raw_masks_present",
+      "PASS": "PASS",
+      "OBSERVED": [],
+      "EXPECTED": "[]",
+      "DETAIL": "all glyph raw-mask paths resolve"
+    },
+    {
+      "CHECK": "pixel_height_separate_count",
+      "PASS": "PASS",
+      "OBSERVED": 67,
+      "EXPECTED": 67,
+      "DETAIL": "D/E are not included in the pixel-height count"
+    },
+    {
+      "CHECK": "D_separate_count",
+      "PASS": "PASS",
+      "OBSERVED": 152,
+      "EXPECTED": 152,
+      "DETAIL": "D remains a same-role/same-script diagnostic"
+    },
+    {
+      "CHECK": "E_separate_count",
+      "PASS": "PASS",
+      "OBSERVED": 3,
+      "EXPECTED": 3,
+      "DETAIL": "E has explicit BASE or N/A, never cross-script"
+    },
+    {
+      "CHECK": "E_na_base_consistency",
+      "PASS": "PASS",
+      "OBSERVED": [],
+      "EXPECTED": "[]",
+      "DETAIL": "N/A E rows carry no invented BASE"
+    },
+    {
+      "CHECK": "pair_relation_row_count",
+      "PASS": "PASS",
+      "OBSERVED": "actual=495",
+      "EXPECTED": 495,
+      "DETAIL": "all unordered text-text and text-graphic relations are present"
+    },
+    {
+      "CHECK": "pair_relation_unique_ids",
+      "PASS": "PASS",
+      "OBSERVED": 495,
+      "EXPECTED": 495,
+      "DETAIL": "relation IDs are unique"
+    },
+    {
+      "CHECK": "pair_relation_object_refs",
+      "PASS": "PASS",
+      "OBSERVED": [],
+      "EXPECTED": "[]",
+      "DETAIL": "relations refer only to semantic text or non-background graphics"
+    },
+    {
+      "CHECK": "pair_fail_count",
+      "PASS": "PASS",
+      "OBSERVED": 3,
+      "EXPECTED": 3,
+      "DETAIL": "pair failure count agrees with terminal"
+    },
+    {
+      "CHECK": "critical_package_list",
+      "PASS": "PASS",
+      "OBSERVED": [
+        "TG304",
+        "TG317",
+        "TG457"
+      ],
+      "EXPECTED": [
+        "TG304",
+        "TG317",
+        "TG457"
+      ],
+      "DETAIL": "terminal and CSV point to same critical/failing pairs"
+    },
+    {
+      "CHECK": "critical_pair_packages_complete",
+      "PASS": "PASS",
+      "OBSERVED": [],
+      "EXPECTED": "[]",
+      "DETAIL": "raw/A/B/intersection/overlay/1:1/8x and focus set exist"
+    },
+    {
+      "CHECK": "glyph_failure_list",
+      "PASS": "PASS",
+      "OBSERVED": 67,
+      "EXPECTED": 67,
+      "DETAIL": "failure IDs agree exactly"
+    },
+    {
+      "CHECK": "glyph_failure_packages_complete",
+      "PASS": "PASS",
+      "OBSERVED": [],
+      "EXPECTED": "[]",
+      "DETAIL": "all failed glyphs have raw/1:1/8x packages"
+    },
+    {
+      "CHECK": "opaque_halo_triplets_complete",
+      "PASS": "PASS",
+      "OBSERVED": [],
+      "EXPECTED": "[]",
+      "DETAIL": "real pre-vector/halo-raw/final-visible triplets exist"
+    }
+  ]
+}

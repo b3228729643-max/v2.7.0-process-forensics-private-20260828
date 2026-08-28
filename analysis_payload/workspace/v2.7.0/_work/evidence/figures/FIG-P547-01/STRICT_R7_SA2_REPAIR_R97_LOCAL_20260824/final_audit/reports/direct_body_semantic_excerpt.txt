@@ -1,0 +1,31 @@
+0175: \SLTeachSection{状态转移矩阵}{sec:V5-C01-S02}
+0176: \index{状态转移矩阵}
+0177: \knowledgeanchor{SLM-19-02-003}{离散状态马尔可夫链}
+0178: 设有限状态空间为$\mathcal S=\{1,\ldots,n\}$。本讲义统一定义
+0179: \begin{equation}\label{eq:V5-C01-row-transition}
+0180: a_{ij}=P(X_{t+1}=j\mid X_t=i),\qquad
+0181: a_{ij}\ge0,\qquad \sum_{j=1}^n a_{ij}=1.
+0182: \end{equation}
+0183: 因此$A=(a_{ij})$是行随机矩阵，矩阵第$i$行是从状态$i$出发的下一状态条件分布。图\ref{fig:V5-C01-transition-graph}把矩阵元素与有向边一一对应；所有从$i$出发的箭头标签之和必须为$1$。
+0184: \input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_transition_graph.tex}
+0185: 
+0186: \noindent\textbf{读图顺序：}先看两侧相同的物理箭头$i\to j$；再看左侧用$A$的$a_{ij}$记录这条边，经中央$P=A^{\mathsf T}$对应到右侧的$P_{ji}$；最终得到两种等价推进$\rho_{t+1}=\rho_tA$与$\boldsymbol p^{(t+1)}=P\boldsymbol p^{(t)}$，边的方向和概率均未改变。
+0187: 
+0188: 若$\rho_t=(P(X_t=1),\ldots,P(X_t=n))$，全概率公式给出
+0189: \begin{equation}\label{eq:V5-C01-distribution-update}
+0190: \rho_{t+1}=\rho_tA,
+0191: \qquad
+0192: (\rho_{t+1})_j=\sum_{i=1}^n(\rho_t)_i a_{ij}.
+0193: \end{equation}
+0194: 进一步有$\rho_t=\rho_0A^t$，且
+0195: \begin{equation}\label{eq:V5-C01-mstep}
+0196: (A^m)_{ij}=P(X_m=j\mid X_0=i).
+0197: \end{equation}
+0198: 
+0199: 与\hyperref[chap:V5-C07]{第36章（第5册第7章）}的列随机\PageRank{}约定之间只有一次同时转置：令
+0200: \begin{equation}\label{eq:V5-C01-row-column-bridge}
+0201: P=A^{\mathsf T},\qquad
+0202: \boldsymbol p^{(t)}=\rho_t^{\mathsf T}.
+0203: \end{equation}
+0204: 则$\rho_{t+1}=\rho_tA$当且仅当$\boldsymbol p^{(t+1)}=P\boldsymbol p^{(t)}$；同样，$\rho_\star=\rho_\star A$当且仅当$\boldsymbol p_\star=P\boldsymbol p_\star$。因此改变行/列约定时必须同时转置矩阵与概率向量，不能只移动乘号一侧。
+0205: 

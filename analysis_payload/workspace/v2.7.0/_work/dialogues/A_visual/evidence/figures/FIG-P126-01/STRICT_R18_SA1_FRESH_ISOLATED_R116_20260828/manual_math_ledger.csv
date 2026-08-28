@@ -1,0 +1,8 @@
+math_check_id,object_ids,expected_math,observed_math,views_opened,manual_result,manual_notes
+M001,O032,$x_1$,$x_1$,native1x+nearest8x,PASS,"horizontal axis denotes coordinate 1"
+M002,O033,$x_2$,$x_2$,native1x+nearest8x,PASS,"vertical axis denotes coordinate 2"
+M003,O015,$x^{(0)}$,$x^{(0)}$,native1x+nearest8x,PASS,"initial-iterate notation is correct; collision is geometric not mathematical"
+M004,O031,$x^*$,$x^*$,native1x+nearest8x,PASS,"optimum notation is correct"
+M005,O035,更新 $x_1$,更新 $x_1$,native1x+nearest8x,PASS,"legend maps solid update to coordinate 1"
+M006,O037,更新 $x_2$,更新 $x_2$,native1x+nearest8x,PASS,"legend maps dashed update to coordinate 2"
+M007,O003-O006,"x=r(cos(t)-sin(t)), y=r sin(t)",four centered nested rotated ellipses,native+gray+overlay,PASS,"rendered contours agree with source parameterization"

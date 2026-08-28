@@ -1,0 +1,9 @@
+﻿GATE,MEASURED_PX,REQUIRED_PX,PASS_FAIL,DETAIL
+TEXT_TEXT,20.260,4,PASS,minimum exact foreground/bbox clearance among all 210 text-text pairs
+TEXT_FORMULA_TO_LINE_ARROW,4.000,3,PASS,minimum non-compositional text-to-line/arrow clearance
+NODE_TEXT_TO_BORDER,37.949,5,PASS,four named node enclosures
+HIGHLIGHT_TEXT_TO_BORDER,9.000,3,PASS,two boxed 0.3 highlights
+TEXT_TO_FIGURE_IMAGE_EDGE,12,6,PASS,standalone min=12; figure+caption min=15
+ADJACENT_PANEL_READER_ELEMENTS,30.017,8,PASS,left-to-bridge and bridge-to-right reader elements
+ILLEGAL_FOREGROUND_OVERLAP_PIXELS,0,0,PASS,92 actual pixels occur only in 9 individually anchored border-edge endpoint pairs; none is illegal
+CLIP_PIXEL_COUNT,0,0,PASS,min graphic bbox edge gap=19px; no foreground reaches crop/page boundary

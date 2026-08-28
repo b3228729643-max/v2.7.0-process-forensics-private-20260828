@@ -1,0 +1,23 @@
+OBJECT_ID,PANEL,CATEGORY,ROLE,SEMANTIC_LABEL,EXPECTED_SEMANTICS,BBOX_PT_X0,BBOX_PT_TOP,BBOX_PT_X1,BBOX_PT_BOTTOM,PAGE_PX_X0,PAGE_PX_Y0,PAGE_PX_X1,PAGE_PX_Y1,CROP_PX_X0,CROP_PX_Y0,CROP_PX_X1,CROP_PX_Y1,EXTRACTED_TEXT
+O01,L,TEXT,PANEL_TITLE,left panel title,左：Dirichlet 密度的指数族拆分,105.616,70.979,252.628,81.649,440,295,1053,341,190,45,803,91,左：Dirichlet 密度的指数族拆分
+O02,L,FORMULA,DENSITY_FORMULA,Dirichlet exponential-family density,p(theta|alpha)=h(theta) exp{sum_k eta_k T_k(theta)-A(alpha)},94.153,93.69,264.091,106.431,392,390,1101,444,142,140,851,194,𝑝(𝜃 ∣ 𝛼) = ℎ(𝜃) exp{∑ 𝜂 𝑇 (𝜃) − 𝐴(𝛼)} ⏎ 𝑘 𝑘 ⏎ 𝑘
+O03,L,BRACE,RELATION_BRACE,density decomposition brace,brace,75.655,107.442,281.169,111.427,315,447,1172,465,65,197,922,215,
+O04,L,TEXT,ANNOTATION,brace explanatory note,三项与对数配分函数共同确定密度,114.901,118.957,241.925,127.425,478,495,1009,531,228,245,759,281,三项与对数配分函数共同确定密度
+O05,L,BACKGROUND_CONTAINER,TERM_BOX,base-measure pale box,base measure container,74.238,137.75,173.452,163.908,309,573,723,683,59,323,473,433,
+O06,L,TEXT_FORMULA,TERM_CONTENT,base-measure label and formula,base measure; h(theta)=indicator_Delta(theta),91.186,140.638,156.508,162.033,379,585,653,676,129,335,403,426,base measure ⏎ ℎ(𝜃) = 1 (𝜃) ⏎ Δ𝐾−1
+O07,L,BACKGROUND_CONTAINER,TERM_BOX,natural-parameter pale box,natural parameter container,184.79,136.861,284.004,164.797,769,570,1184,687,519,320,934,437,
+O08,L,TEXT_FORMULA,TERM_CONTENT,natural-parameter label and formula,自然参数; eta_k=alpha_k-1,209.697,141.646,259.096,162.738,873,590,1080,679,623,340,830,429,自然参数 ⏎ 𝜂 = 𝛼 − 1 ⏎ 𝑘 𝑘
+O09,L,BACKGROUND_CONTAINER,TERM_BOX,sufficient-statistic pale box,sufficient statistic container,129.514,176.24,228.728,204.222,539,734,954,851,289,484,704,601,
+O10,L,TEXT_FORMULA,TERM_CONTENT,sufficient-statistic label and formula,充分统计量; T_k(theta)=log theta_k,149.196,181.024,208.681,202.117,621,754,870,843,371,504,620,593,充分统计量 ⏎ 𝑇 (𝜃) = log 𝜃 ⏎ 𝑘 𝑘
+O11,GUTTER,PANEL_BORDER,PANEL_DIVIDER,vertical panel divider,vertical divider,304.9,68.34,305.63,217.444,1270,284,1274,907,1020,34,1024,657,
+O12,R,TEXT,PANEL_TITLE,right panel title,右：对数配分函数给出对数矩,365.353,70.979,497.458,81.649,1522,295,2073,341,1272,45,1823,91,右：对数配分函数给出对数矩
+O13,R,FORMULA,LOG_PARTITION,log-partition formula,A(alpha)=sum_k log Gamma(alpha_k)-log Gamma(alpha_0),363.396,92.984,499.414,105.725,1514,387,2081,441,1264,137,1831,191,𝐴(𝛼) = ∑ log Γ(𝛼 ) − log Γ(𝛼 ) ⏎ 𝑘 0 ⏎ 𝑘
+O14,R,LINE_ARROW,DERIVATION_ARROW,downward implication arrow,down arrow,425.667,107.378,437.144,123.318,1773,447,1822,514,1523,197,1572,264,⇓
+O15,R,FORMULA,DERIVATIVE,partial derivative formula,partial A / partial alpha_k,422.934,125.213,439.876,147.583,1762,521,1833,615,1512,271,1583,365,𝜕𝐴 ⏎ 𝜕𝛼 ⏎ 𝑘
+O16,R,NODE_BORDER,RESULT_CONTAINER,blue result container,blue result box,359.123,147.994,503.692,179.175,1496,616,2099,747,1246,366,1849,497,
+O17,R,FORMULA,RESULT_FORMULA,expected log-moment identity,E[log Theta_k]=psi(alpha_k)-psi(alpha_0),374.956,159.304,487.855,169.74,1562,663,2033,708,1312,413,1783,458,𝔼[log Θ ] = 𝜓(𝛼 ) − 𝜓(𝛼 ) ⏎ 𝑘 𝑘 0
+O18,R,NODE_BORDER,WARNING_CONTAINER,red warning container,red warning box,353.453,191.365,509.361,219.712,1472,797,2123,916,1222,547,1873,666,
+O19,R,FORMULA,WARNING_FORMULA,noncommutation warning,E[log Theta_k] != log E[Theta_k],386.174,201.257,476.636,211.693,1609,838,1986,883,1359,588,1736,633,𝔼[log Θ ] ≠ log 𝔼[Θ ] ⏎ 𝑘 𝑘
+O20,CAPTION,TEXT,CAPTION_LABEL,caption label,图 34.6,76.138,226.811,107.581,237.272,317,945,449,989,67,695,199,739,图 34.6
+O21,CAPTION,TEXT_FORMULA,CAPTION_TEXT,caption line 1,把 Dirichlet 分布写成指数族后，充分统计量是 log theta_k，对数配分函数对 alpha_k 的导数给出,117.544,226.811,507.792,239.56,489,945,2116,999,239,695,1866,749,把 Dirichlet 分布写成指数族后，充分统计量是 log 𝜃 ，对数配分函数对 𝛼 的导数给出 ⏎ 𝑘 𝑘
+O22,CAPTION,TEXT_FORMULA,CAPTION_TEXT,caption line 2,E[log Theta_k]=psi(alpha_k)-psi(alpha_0)；该对数矩不能用均值取对数替代,76.138,240.201,340.523,252.95,317,1000,1419,1054,67,750,1169,804,𝔼[log Θ ] = 𝜓(𝛼 ) − 𝜓(𝛼 )；该对数矩不能用均值取对数替代 ⏎ 𝑘 𝑘 0

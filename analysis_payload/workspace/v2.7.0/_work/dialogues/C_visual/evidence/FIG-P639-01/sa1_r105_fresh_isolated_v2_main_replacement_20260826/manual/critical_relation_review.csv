@@ -1,0 +1,2 @@
+pair_id,a_id,b_id,opened_utc,reviewer,native_roi,original_match,a_mask_complete,b_mask_complete,intersection_px,raw_mask_clearance_px,pdf_bbox_clearance_px,threshold_px,manual_decision,note
+R00008,G001,G009,2026-08-25T22:54:32.938Z,SA1_R105_FRESH,"[507,1908,72,79]",true,true,true,0,28.0689,0.0,4.0,FAIL,"G001 is the U+2212 minus of x tick −2; G009 is the independent y=0 tick glyph. Native ink is visibly separate, but their PDF/vector bboxes nearly touch diagonally and provide 0px clearance, below the strict 4px geometry gate."

@@ -1,0 +1,34 @@
+object_id	class	contact_sheet	cell	original_reviewed	overlay_reviewed	mask_only_reviewed	complete	pure	clip_free	decision	reviewer	note
+T01_CURRENT_NODE_TITLE	TEXT	object_sheet_001	1	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	“当前状态”四字笔画完整，红色对象层只覆盖标题本身，未吞并下一行或圆角框。
+T02_CURRENT_NODE_VARIABLE	TEXT_FORMULA	object_sheet_001	2	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	“状态变量 X_t”六个可见字形均进入父对象，斜体变量与下标连续且与标题保持空隙。
+T03_CANDIDATE_NODE_ACTION	TEXT	object_sheet_001	3	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	“按提议核抽取候选”八字在掩膜中逐字闭合，未包含下方候选变量或框线。
+T04_CANDIDATE_NODE_VARIABLE	TEXT_FORMULA	object_sheet_001	4	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	“候选变量 Y”五个可见字形清楚，末尾 Y 未裁切，父对象与动作行独立。
+T05_RATIO_HEADER	TEXT	object_sheet_002	1	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	接受率说明行二十三字形完整覆盖，括号、π_u 与中文基线协调，未碰上边框。
+T06_RATIO_FORMULA	FORMULA	object_sheet_002	2	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	核心 α_t(Y) 与 min 比式三十八字形均可辨，分数横线另列 M01 后没有漏字或混入线条。
+T07_DECISION_DRAW	TEXT_FORMULA	object_sheet_002	3	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	抽取均匀变量 U 的整行十五字形完整，区间括号与 U 保持清晰间隔。
+T08_DECISION_COMPARE	FORMULA	object_sheet_002	4	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	判定式 U≤α_t(Y)? 十一字形完整，≤、下标和问号语义明确，未粘连上一行。
+T09_ACCEPT_NODE_ACTION	TEXT	object_sheet_003	1	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	“接受候选”四字均完整，掩膜不含接受分支箭头或赋值行。
+T10_ACCEPT_NODE_ASSIGNMENT	FORMULA	object_sheet_003	2	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	X_{t+1} 取 Y 六个可见字形及下标排列正确，左右均未触框。
+T11_REJECT_NODE_ACTION	TEXT	object_sheet_003	3	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	“拒绝并记录旧状态”八字清晰且独立，双边框和上方箭头均未进入文字对象。
+T12_REJECT_NODE_ASSIGNMENT	TEXT_FORMULA	object_sheet_003	4	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	X_{t+1} 保持 X_t 八个可见字形全部覆盖，两个下标均可辨且无裁切。
+T13_PROPOSAL_LABEL	EDGE_LABEL	object_sheet_004	1	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	“提议”两字完整并位于首段虚线箭头右侧，白底隔离未造成笔画缺失。
+T14_CALCULATE_LABEL	EDGE_LABEL	object_sheet_004	2	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	“计算”两字掩膜纯净，垂直实线箭头未穿入文字字面。
+T15_DECISION_LABEL	EDGE_LABEL	object_sheet_004	3	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	“判定”两字完整，居于比率框与菱形之间，未和任一节点边界重叠。
+T16_ACCEPT_LABEL	EDGE_LABEL	object_sheet_004	4	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	左分支“接受”两字轮廓齐全，与实线斜箭头保持实际前景净距。
+T17_REJECT_LABEL	EDGE_LABEL	object_sheet_005	1	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	右分支“拒绝”两字清晰，点划箭头经过下方而不侵入文字。
+T18_SELFLOOP_LABEL	SELF_LOOP_LABEL	object_sheet_005	2	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	“拒绝并保持当前状态”八字完整位于自环内侧，曲线未遮蔽任何字。
+T19_CAPTION_LABEL	CAPTION_LABEL	object_sheet_005	3	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	图号“图 32.5”五个可见字形清楚，未与后续说明串成同一对象。
+T20_CAPTION_TEXT	CAPTION	object_sheet_005	4	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	整句三十五可见字形覆盖到末句号，基线与图号协调且下缘保留四十一像素。
+B01_CURRENT_NODE_BORDER	NODE_BORDER	object_sheet_006	1	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	当前状态圆角矩形四边连续，首段箭头在下中点正常接出，框内文字未被掩入。
+B02_CANDIDATE_NODE_BORDER	NODE_BORDER	object_sheet_006	2	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	候选节点圆角边界闭合，提议箭头落点与计算箭头起点关系清楚，无断边。
+B03_RATIO_NODE_BORDER	NODE_BORDER	object_sheet_006	3	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	接受率大框连续包围说明与公式，计算/判定连接点明确且不切内容。
+B04_DECISION_NODE_BORDER	NODE_BORDER	object_sheet_006	4	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	判定菱形四条斜边连续，顶部入边及左右出边只在设计锚点相接。
+B05_ACCEPT_NODE_BORDER	NODE_BORDER	object_sheet_007	1	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	接受节点圆角框完整，虽距裁剪左缘七像素仍无边界触碰或缺线。
+B06_REJECT_DOUBLE_BORDER	NODE_BORDER	object_sheet_007	2	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	拒绝节点最终可见双蓝框两圈均连续，白色分隔未误判为前景且自环锚点可见。
+E01_PROPOSAL_ARROW	LINE_ARROW	object_sheet_007	3	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	提议箭头的虚线短轴与朝下箭头头部完整，起点连接当前框并在候选框前留一像素栅格间隙。
+E02_CALCULATE_ARROW	LINE_ARROW	object_sheet_007	4	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	计算箭头实线竖轴和箭头头完整，候选框到接受率框的上下关系无歧义。
+E03_DECISION_ARROW	LINE_ARROW	object_sheet_008	1	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	判定箭头轴和朝下箭头头齐全，指向菱形顶点的两像素抗锯齿空隙不影响关系读取。
+E04_ACCEPT_ARROW	LINE_ARROW	object_sheet_008	2	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	接受分支实线箭头从菱形左下边发出并终止于接受框上边，头部方向明确。
+E05_REJECT_ARROW	LINE_ARROW	object_sheet_008	3	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	拒绝分支点划箭头从菱形右下边通向拒绝框，节奏与箭头头均完整。
+E06_REJECT_SELFLOOP	SELF_LOOP_ARROW	object_sheet_008	4	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	拒绝自环曲线自右侧绕回左下，回指箭头及虚线全程可追踪，无裁剪。
+M01_RATIO_FRACTION_RULE	MATH_RULE	object_sheet_009	1	YES	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	比率分子与分母之间的独立横线连续三像素高，端点齐全且与邻近字形有七像素实际净距。

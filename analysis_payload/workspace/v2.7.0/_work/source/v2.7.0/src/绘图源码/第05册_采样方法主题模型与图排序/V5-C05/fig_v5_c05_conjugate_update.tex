@@ -1,0 +1,45 @@
+% v2.3.1 figure UID: FIG-P667-01
+% v2.6.0 reverse redraw: explicit grid, print-safe type and overlap-free conclusion paths.
+\tikzset{slfig-FIG-P667-01/.style={font=\fontsize{9.4pt}{11.3pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P667-01,slfig high,>=Stealth,
+  every node/.style={font=\fontsize{9.4pt}{11.3pt}\selectfont,align=center},
+  strip/.style={draw=SLRule,fill=white,rounded corners=2pt,
+    minimum width=69mm,minimum height=15mm,inner xsep=3.2mm,inner ysep=1.8mm},
+  main/.style={-{Stealth[length=2.4mm,width=1.8mm]},draw=SLBlue,line width=1pt},
+  branch/.style={-{Stealth[open,length=2mm,width=1.5mm]},draw=SLGray,
+    line width=.65pt,densely dashed},
+  alt={对象—关系—结论：Dirichlet—多项共轭来自先验核与多项似然核中同一组对数θ下标i充分统计量：相乘只把指数逐分量相加，因此后验参数是α+ n；保留归一化常数还可得到Dirichlet—多项边缘分布}]
+\matrix (kernels) [matrix of nodes,row sep=8mm,column sep=6mm,
+  nodes={anchor=center},column 1/.style={nodes={font=\bfseries\small,text=SLGray}},
+  column 2/.style={nodes={strip}}] {
+  先验核 & $p(\boldsymbol\theta\mid\boldsymbol\alpha)\propto
+    \prod_i\theta_i^{\underbrace{\alpha_i-1}_{\text{\fontsize{8.5pt}{10.2pt}\selectfont 先验指数}}}$ \\
+  似然核 & $p(\boldsymbol n\mid\boldsymbol\theta)\propto
+    \prod_i\theta_i^{\underbrace{n_i}_{\text{\fontsize{8.5pt}{10.2pt}\selectfont 计数}}}$ \\
+  后验核 & $p(\boldsymbol\theta\mid\boldsymbol n,\boldsymbol\alpha)\propto
+    \prod_i\theta_i^{\underbrace{\alpha_i+n_i-1}_{\text{\fontsize{8.5pt}{10.2pt}\selectfont 逐分量相加}}}$ \\
+};
+\node[font=\fontsize{15pt}{18pt}\selectfont,text=SLGold,inner sep=0pt]
+  at ($(kernels-1-2.south)!.5!(kernels-2-2.north)$) {$\times$};
+\draw[decorate,decoration={brace,amplitude=3.5pt,mirror},draw=SLGray,line width=.52pt]
+  ($(kernels-1-2.north east)+(4mm,0)$)--($(kernels-2-2.south east)+(4mm,0)$)
+  node[midway,right=6pt,font=\fontsize{8.8pt}{10.6pt}\selectfont,text=SLBlue,inner sep=0pt]
+  {指数逐分量相加};
+\node[draw=SLBlue,fill=SLBlueBG,rounded corners=2pt,minimum width=38mm,
+  minimum height=14mm,inner xsep=3mm,inner ysep=1.8mm,
+  font=\fontsize{9.4pt}{11.3pt}\selectfont] (post)
+  [right=18.5mm of kernels-3-2] {$\boldsymbol\theta\mid\boldsymbol n$\\$\sim\mathrm{Dir}(\boldsymbol\alpha+\boldsymbol n)$};
+\draw[main] (kernels-3-2.east)--(post.west);
+\node[font=\fontsize{8.8pt}{10.6pt}\selectfont,align=center,inner sep=0pt]
+  (marginal) [below=13mm of post]
+  {$p(\boldsymbol n\mid\boldsymbol\alpha)=\dfrac{N!}{\prod_i n_i!}
+   \dfrac{B(\boldsymbol\alpha+\boldsymbol n)}{B(\boldsymbol\alpha)}$\\保留归一化常数};
+\draw[branch,shorten >=1.8mm] (post.south)--(marginal.north);
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{Dirichlet--多项共轭来自先验核与多项似然核中同一组$\log\theta_i$充分统计量：相乘只把指数逐分量相加，因此后验参数是$\boldsymbol\alpha+\boldsymbol n$；保留归一化常数还可得到Dirichlet--多项边缘分布}
+\label{fig:V5-C05-conjugate-update}
+\end{figure}

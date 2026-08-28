@@ -1,0 +1,463 @@
+{
+  "uid": "FIG-P580-01",
+  "round": "R2C",
+  "schema_revision": 111,
+  "result": "SA2_LOCAL_PASS_AWAIT_ROOT_OFFICIAL_BUILD",
+  "root_acceptance_claimed": false,
+  "official_full_book_build_run": false,
+  "issues": [],
+  "checks": {
+    "write_stop_absent_before_finalizer": {
+      "status": "PASS",
+      "detail": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\figures\\FIG-P580-01\\STRICT_R2C_SA2_GRAPHIC_PAIR_REPAIR_R95_LOCAL_20260824\\WRITE_STOPPED.md"
+    },
+    "external_inputs_exist": {
+      "status": "PASS",
+      "detail": [
+        "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C02\\fig_v5_c02_is_support.tex",
+        "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\合并总册\\v260_FIG-P580-01_page.tex",
+        "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\合并总册\\v260_FIG-P580-01_standalone.tex",
+        "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\evidence\\audits\\STRICT-GOAL-20260823\\STRICT_FIGURE_EVIDENCE_SCHEMA.md",
+        "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\GPT_Pro_统计学习方法讲义_v2.7.0_Codex_Goal主提示词.md"
+      ]
+    },
+    "source_semantic_freeze": {
+      "status": "PASS",
+      "detail": {
+        "axis_extension": true,
+        "qR_height_unchanged": true,
+        "p4_coordinate_unchanged": true,
+        "p4_marker_size_unchanged": true,
+        "qR_composite_dash": true,
+        "qR_phase": true,
+        "hatch_domain_unchanged": true
+      }
+    },
+    "final_local_build_files": {
+      "status": "PASS",
+      "detail": {
+        "build/page/v260_FIG-P580-01_page.pdf": 69568,
+        "build/standalone/v260_FIG-P580-01_standalone.pdf": 40556,
+        "build/page/v260_FIG-P580-01_page.log": 146350,
+        "build/standalone/v260_FIG-P580-01_standalone.log": 144216,
+        "build/page/v260_FIG-P580-01_page.fls": 47798,
+        "build/standalone/v260_FIG-P580-01_standalone.fls": 47882
+      }
+    },
+    "final_build_identity": {
+      "status": "PASS",
+      "detail": {
+        "page_bytes": 69568,
+        "standalone_bytes": 40556,
+        "logs_ok": true,
+        "fls_mentions_business_source": true,
+        "pdfs_newer_than_source": true
+      }
+    },
+    "core_exact_counts": {
+      "status": "PASS",
+      "detail": {
+        "uid": "FIG-P580-01",
+        "strict_schema_revision": 111,
+        "glyph_count": 234,
+        "necessary_substring_count": 18,
+        "text_element_count": 32,
+        "graphic_count": 25,
+        "semantic_object_count": 57,
+        "expected_unordered_pair_count": 1596,
+        "actual_unordered_pair_count": 1596,
+        "graphic_graphic_pair_count": 300,
+        "graphic_graphic_assessed_count": 300,
+        "graphic_graphic_intentional_count": 48,
+        "graphic_graphic_overlap_pair_count": 25,
+        "graphic_graphic_disjoint_under_3px_count": 23,
+        "required_relation_count": 445,
+        "critical_relation_package_count": 53,
+        "pixel_failure_count": 0,
+        "font_failure_count": 0,
+        "D_failure_count": 0,
+        "E_failure_count": 0,
+        "pair_failure_count": 0,
+        "required_relation_failure_count": 0,
+        "clip_failure_count": 0,
+        "opaque_graphic_coverage_failure_count": 0,
+        "translucent_graphic_coverage_failure_count": 0,
+        "source_unassigned_text_pixels": 0,
+        "source_duplicate_text_pixels": 0,
+        "glyph_missing_stroke_total": 0,
+        "glyph_foreign_pixel_total": 0,
+        "contact_sheet_count": 15,
+        "contact_manifest_count": 234,
+        "visual_template_count": 50
+      }
+    },
+    "core_boolean_gates": {
+      "status": "PASS",
+      "detail": {
+        "text_completeness_pass": true,
+        "math_body_consistency_pass": true,
+        "anchor_checks_pass": true,
+        "text_replay_exact": true,
+        "empty_mask_ids": []
+      }
+    },
+    "object_inventory": {
+      "status": "PASS",
+      "detail": {
+        "rows": 57,
+        "unique": 57
+      }
+    },
+    "unordered_pair_closure": {
+      "status": "PASS",
+      "detail": {
+        "rows": 1596,
+        "unique": 1596,
+        "expected": 1596
+      }
+    },
+    "graphic_graphic_300_row_closure": {
+      "status": "PASS",
+      "detail": {
+        "rows": 300,
+        "assessed": 300,
+        "intentional": 48,
+        "overlap": 25,
+        "disjoint_under_3px": 23,
+        "unique_pair_specific_reasons": 300
+      }
+    },
+    "graphic_graphic_nonintentional_gate": {
+      "status": "PASS",
+      "detail": {
+        "rows": 252
+      }
+    },
+    "critical_package_closure": {
+      "status": "PASS",
+      "detail": {
+        "packages": 53,
+        "decoded_pngs": 530,
+        "problems": []
+      }
+    },
+    "three_repair_pairs": {
+      "status": "PASS",
+      "detail": {
+        "PAIR_GR004_GR025": {
+          "overlap_pixel_count": 0,
+          "clearance_px": 6.28011,
+          "required_clearance_px": 3.0,
+          "evidence_package": "critical_relations/PAIR_GR004_GR025",
+          "exact_11_file_set": true,
+          "pass": true
+        },
+        "PAIR_GR020_GR022": {
+          "overlap_pixel_count": 0,
+          "clearance_px": 5.0,
+          "required_clearance_px": 3.0,
+          "evidence_package": "critical_relations/PAIR_GR020_GR022",
+          "exact_11_file_set": true,
+          "pass": true
+        },
+        "PAIR_GR020_GR024": {
+          "overlap_pixel_count": 0,
+          "clearance_px": 9.77033,
+          "required_clearance_px": 3.0,
+          "evidence_package": "critical_relations/PAIR_GR020_GR024",
+          "exact_11_file_set": true,
+          "pass": true
+        }
+      }
+    },
+    "required_relations_445": {
+      "status": "PASS",
+      "detail": {
+        "rows": 445,
+        "failures": 0
+      }
+    },
+    "overlap_report_union": {
+      "status": "PASS",
+      "detail": {
+        "rows": 2041,
+        "union": 2041
+      }
+    },
+    "font_and_pixel_gates": {
+      "status": "PASS",
+      "detail": {
+        "font_rows": 32,
+        "minimum_effective_pt": 9.6,
+        "pixel_rows": 252
+      }
+    },
+    "D_and_E_gates": {
+      "status": "PASS",
+      "detail": {
+        "D_rows": 79,
+        "E_rows": 38,
+        "E_assessed": 10,
+        "E_justified_NA": 28
+      }
+    },
+    "clip_coverage_completeness": {
+      "status": "PASS",
+      "detail": {
+        "clip": 32,
+        "opaque": 25,
+        "translucent": 0,
+        "completeness": 8
+      }
+    },
+    "glyph_contact_inputs": {
+      "status": "PASS",
+      "detail": {
+        "glyphs": 234,
+        "sheets": 15
+      }
+    },
+    "visual_template_inputs": {
+      "status": "PASS",
+      "detail": {
+        "rows": 50,
+        "unique": 50
+      }
+    },
+    "final_views": {
+      "status": "PASS",
+      "detail": {
+        "actual": {
+          "full_page_200dpi.png": [
+            1654,
+            2339
+          ],
+          "full_page_300dpi.png": [
+            2481,
+            3508
+          ],
+          "figure_crop_300dpi.png": [
+            1980,
+            942
+          ],
+          "standalone_300dpi.png": [
+            2481,
+            3508
+          ],
+          "grayscale_300dpi.png": [
+            1980,
+            942
+          ],
+          "after_text_measurement_overlay_300dpi.png": [
+            2481,
+            3508
+          ]
+        },
+        "render_dpi": 300,
+        "resize_after_render": false
+      }
+    },
+    "revision111_low_profile_package": {
+      "status": "PASS",
+      "detail": {
+        "rows": 1,
+        "files": 13
+      }
+    },
+    "manual_glyph_234_individual": {
+      "status": "PASS",
+      "detail": {
+        "rows": 234,
+        "unique_notes": 234
+      }
+    },
+    "manual_visual_50_individual": {
+      "status": "PASS",
+      "detail": {
+        "rows": 50,
+        "unique_notes": 50
+      }
+    },
+    "manual_critical_relation_53_individual": {
+      "status": "PASS",
+      "detail": {
+        "rows": 53,
+        "unique_notes": 53,
+        "three_repair_full_sets_actually_opened": true
+      }
+    },
+    "all_current_pngs_openable": {
+      "status": "PASS",
+      "detail": {
+        "pngs": 1137,
+        "failures": []
+      }
+    },
+    "no_ordinary_zero_byte_file": {
+      "status": "PASS",
+      "detail": {
+        "ordinary_zero": [],
+        "nonordinary_latex_placeholders": [
+          "build/calibration/calibration_low_profile_punctuation.idx",
+          "build/calibration/calibration_low_profile_punctuation.ind",
+          "build/calibration/symbols.idx",
+          "build/calibration/symbols.ind",
+          "build/page/symbols.idx",
+          "build/page/symbols.ind",
+          "build/page/v260_FIG-P580-01_page.idx",
+          "build/page/v260_FIG-P580-01_page.ind",
+          "build/standalone/symbols.idx",
+          "build/standalone/symbols.ind",
+          "build/standalone/v260_FIG-P580-01_standalone.idx",
+          "build/standalone/v260_FIG-P580-01_standalone.ind"
+        ]
+      }
+    },
+    "safe_portable_filenames": {
+      "status": "PASS",
+      "detail": {
+        "files": 1348
+      }
+    },
+    "terminal_input_manifest": {
+      "status": "PASS",
+      "detail": {
+        "local_inputs": 1348,
+        "external_inputs": 5,
+        "entries": 1353,
+        "dynamic_exclusions": [
+          "WRITE_STOPPED.md",
+          "final_file_integrity.csv",
+          "machine_final_check.json",
+          "machine_final_check.md",
+          "machine_terminal_input_file_manifest.csv"
+        ]
+      }
+    },
+    "terminal_references_exist": {
+      "status": "PASS",
+      "detail": [
+        "manual_glyph_contact_ledger.csv",
+        "manual_visual_harmony_ledger.csv",
+        "manual_critical_relation_ledger.csv",
+        "after_visual_acceptance.md",
+        "source_diff_summary.md",
+        "build_commands.md",
+        "critical_relations/PAIR_GR004_GR025",
+        "critical_relations/PAIR_GR020_GR022",
+        "critical_relations/PAIR_GR020_GR024"
+      ]
+    },
+    "terminal_three_repair_packages_nonempty": {
+      "status": "PASS",
+      "detail": {
+        "PAIR_GR004_GR025": {
+          "overlap_pixel_count": 0,
+          "clearance_px": 6.28011,
+          "required_clearance_px": 3.0,
+          "evidence_package": "critical_relations/PAIR_GR004_GR025",
+          "exact_11_file_set": true,
+          "pass": true
+        },
+        "PAIR_GR020_GR022": {
+          "overlap_pixel_count": 0,
+          "clearance_px": 5.0,
+          "required_clearance_px": 3.0,
+          "evidence_package": "critical_relations/PAIR_GR020_GR022",
+          "exact_11_file_set": true,
+          "pass": true
+        },
+        "PAIR_GR020_GR024": {
+          "overlap_pixel_count": 0,
+          "clearance_px": 9.77033,
+          "required_clearance_px": 3.0,
+          "evidence_package": "critical_relations/PAIR_GR020_GR024",
+          "exact_11_file_set": true,
+          "pass": true
+        }
+      }
+    }
+  },
+  "metrics": {
+    "glyphs": 234,
+    "necessary_substrings": 18,
+    "pixel_measurements": 252,
+    "text_elements": 32,
+    "graphics": 25,
+    "objects": 57,
+    "unordered_pairs": 1596,
+    "graphic_graphic_pairs": 300,
+    "graphic_graphic_assessed": 300,
+    "graphic_graphic_intentional": 48,
+    "graphic_graphic_overlap_pairs": 25,
+    "graphic_graphic_disjoint_under_3px": 23,
+    "required_relations": 445,
+    "critical_relation_packages": 53,
+    "critical_relation_pngs": 530,
+    "manual_glyph_rows": 234,
+    "manual_visual_rows": 50,
+    "manual_critical_relation_rows": 53,
+    "minimum_effective_pt": 9.6,
+    "all_current_pngs_machine_opened": 1137,
+    "file_integrity_rows": 1348,
+    "terminal_manifest_rows": 1353,
+    "failure_counts": {
+      "font": 0,
+      "pixel": 0,
+      "D": 0,
+      "E": 0,
+      "pair": 0,
+      "required_relation": 0,
+      "clip": 0,
+      "opaque_coverage": 0,
+      "translucent_coverage": 0,
+      "glyph_missing_stroke": 0,
+      "glyph_foreign_pixel": 0
+    }
+  },
+  "repair_pairs": {
+    "PAIR_GR004_GR025": {
+      "overlap_pixel_count": 0,
+      "clearance_px": 6.28011,
+      "required_clearance_px": 3.0,
+      "evidence_package": "critical_relations/PAIR_GR004_GR025",
+      "exact_11_file_set": true,
+      "pass": true
+    },
+    "PAIR_GR020_GR022": {
+      "overlap_pixel_count": 0,
+      "clearance_px": 5.0,
+      "required_clearance_px": 3.0,
+      "evidence_package": "critical_relations/PAIR_GR020_GR022",
+      "exact_11_file_set": true,
+      "pass": true
+    },
+    "PAIR_GR020_GR024": {
+      "overlap_pixel_count": 0,
+      "clearance_px": 9.77033,
+      "required_clearance_px": 3.0,
+      "evidence_package": "critical_relations/PAIR_GR020_GR024",
+      "exact_11_file_set": true,
+      "pass": true
+    }
+  },
+  "references": {
+    "manual_glyph": "manual_glyph_contact_ledger.csv",
+    "manual_visual": "manual_visual_harmony_ledger.csv",
+    "manual_relations": "manual_critical_relation_ledger.csv",
+    "visual_acceptance": "after_visual_acceptance.md",
+    "source_diff": "source_diff_summary.md",
+    "build_record": "build_commands.md",
+    "repair_packages": {
+      "PAIR_GR004_GR025": "critical_relations/PAIR_GR004_GR025",
+      "PAIR_GR020_GR022": "critical_relations/PAIR_GR020_GR022",
+      "PAIR_GR020_GR024": "critical_relations/PAIR_GR020_GR024"
+    }
+  },
+  "freeze_hashes": {
+    "business_source_sha256": "f0ecc9b28361a2ae73af085a4958ad09f8f94575d789b8f776c55631fd45e161",
+    "page_pdf_sha256": "46e28a030f2f11c3147423a02f4fe99913ffd985caf6807a9473a3fbb5bd3934",
+    "standalone_pdf_sha256": "7dda4690cbd2eadd1dd0ec6841d14a866733ac8fa64066b1717c5f4e60ec9276"
+  },
+  "write_stop_rule": "WRITE_STOPPED.md is emitted only after this JSON/Markdown and all referenced paths are verified; it is the final filesystem write."
+}

@@ -1,0 +1,30 @@
+{
+  "domain": [
+    0,
+    5
+  ],
+  "p_integral": 1.0,
+  "qL_integral": 1.0,
+  "qR_integral": 1.0,
+  "p_values": {
+    "1": 0.192,
+    "2.5": 0.3,
+    "4": 0.192
+  },
+  "qR_values": {
+    "1": 0.2,
+    "2.5": 0.2,
+    "4": 0.2
+  },
+  "weights": {
+    "1": 0.96,
+    "2.5": 1.4999999999999998,
+    "4": 0.96
+  },
+  "support_qL": "[0,2.5] with qL=0.4; qL=0 on (2.5,5]",
+  "support_qR": "[0,5] with qR=0.2 everywhere",
+  "absolute_continuity": {
+    "p_ll_qL": false,
+    "p_ll_qR": true
+  }
+}

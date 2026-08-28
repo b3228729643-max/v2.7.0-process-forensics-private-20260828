@@ -1,0 +1,20 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{866}
+\setcounter{chapter}{35}
+\setcounter{section}{2}
+\setcounter{figure}{3}
+\pagestyle{headings}
+\chaptermark{潜在狄利克雷分配}
+\sectionmark{折叠 Gibbs 推断}
+\textbf{推导第3步：用留一状态的Beta函数比值形成满条件。}
+命题把折叠联合分布中所有与候选主题无关的因子约去，再对$K$个正权重统一归一化；这一“先留一、后作比”的顺序也是实现计数守恒的依据。
+
+图\ref{fig:V5-C06-collapsed-gibbs-counts}把一次更新需要读写的两张计数表并列画出：先从旧主题的文档--主题计数和主题--词计数各减一，再计算所有候选权重，抽取新主题后再各加一。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_collapsed_gibbs_counts.tex}
+\FloatBarrier
+样本之后可用后验均值平滑估计主题比例与主题--词分布；更稳健的做法是对多个保留样本的预测量或计数平滑估计取平均，而不是只报告最后一次扫描。
+\end{document}
+

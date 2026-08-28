@@ -1,0 +1,640 @@
+% STAGE08-CHAPTER: V1-C01
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{schema:V1-C01:CH-01}; CH-02=\label{schema:V1-C01:CH-02}; CH-03=\label{schema:V1-C01:CH-03}; CH-04=\label{schema:V1-C01:CH-04}; CH-05=\label{schema:V1-C01:CH-05}; CH-06=\label{schema:V1-C01:CH-06}; CH-07=\label{schema:V1-C01:CH-07}; CH-08=\label{schema:V1-C01:CH-08}; CH-09=\label{schema:V1-C01:CH-09}; CH-10=\label{schema:V1-C01:CH-10}; CH-11=\label{schema:V1-C01:CH-11}; CH-12=\label{schema:V1-C01:CH-12}; CH-13=\label{schema:V1-C01:CH-13}; CH-14=\label{schema:V1-C01:CH-14}; CH-15=\label{schema:V1-C01:CH-15}; CH-16=\label{schema:V1-C01:CH-16}; CH-17=\label{schema:V1-C01:CH-17}; CH-18=\label{schema:V1-C01:CH-18}; CH-19=\label{schema:V1-C01:CH-19}; CH-20=\label{schema:V1-C01:CH-20}; CH-21=\label{schema:V1-C01:CH-21}; CH-22=\label{schema:V1-C01:CH-22}; CH-23=\label{schema:V1-C01:CH-23}; CH-24=\label{schema:V1-C01:CH-24}; CH-25=\label{schema:V1-C01:CH-25}; CH-26=\label{schema:V1-C01:CH-26}; CH-27=\label{schema:V1-C01:CH-27}; CH-28=\label{schema:V1-C01:CH-28}; CH-29=\label{schema:V1-C01:CH-29}; CH-30=\label{schema:V1-C01:CH-30}; CH-31=\label{schema:V1-C01:CH-31}; CH-32=\label{schema:V1-C01:CH-32}; CH-33=\label{schema:V1-C01:CH-33}; CH-34=\label{schema:V1-C01:CH-34}; CH-35=\label{schema:V1-C01:CH-35}; CH-36=\label{schema:V1-C01:CH-36}; CH-37=\label{schema:V1-C01:CH-37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V1-C01-language-flow -> PRE-BM-002
+\chapter{数学语言、符号约定与学习路线}\label{chap:V1-C01}
+\SLChapterOpening{先建立符号阅读纪律，再沿定义依赖进入线性代数与概率论}{如何把含糊任务改写成类型、条件和结论都可核对的陈述}{一套可复用的对象--空间--关系--条件检查表}{集合、函数与基础代数记号}{若不能区分对象类型或量词，回看本章对应小节并重新完成章末自检}
+\index{数学语言、符号约定与学习路线}
+
+
+\chaptergoals{\label{schema:V1-C01:CH-01}
+\begin{itemize}[leftmargin=2em]
+  \item 能把自然语言陈述改写为集合、映射、量词和维数明确的数学陈述；
+  \item 能区分标量、向量、矩阵、参数、样本与标签，并核对上标、下标和转置；
+  \item 能执行“先读定义、再查条件、继而计算、最后解释”的学习流程，并据自检结果选择回看位置。
+\end{itemize}}
+
+\begin{prerequisitebox}\label{schema:V1-C01:CH-02}
+本章只要求整数和实数的四则运算，以及按条件判断一个对象是否属于某个集合。若对负数乘法、分数或括号运算仍不熟练，应先补齐这些运算；其余符号均在本章定义。
+\end{prerequisitebox}
+
+\begin{precheckbox}\label{schema:V1-C01:CH-03}\normalfont\unboldmath
+请在不查资料的情况下回答：$-2\in\R$ 是否成立；$2\times3$ 矩阵有多少个分量；命题“所有样本都分类正确”的否定是什么。三问中任一问无法说明理由时，应依次回看\cref{sec:V1-C01-S02,sec:V1-C01-S03,sec:V1-C01-S06}。
+\end{precheckbox}
+
+\begin{dependencybox}\label{schema:V1-C01:CH-04}
+本章的依赖顺序是
+\[
+\text{集合与映射}\longrightarrow\text{对象类型与索引}\longrightarrow
+\text{求和、连乘与指示函数}\longrightarrow\text{数据角色与逻辑陈述}.
+\]
+这条链也是后续学习路线的最短入口：线性代数依赖对象类型，概率论依赖集合与求和，优化依赖映射、变量和量词。
+\end{dependencybox}
+% STAGE19-SYMBOL-INDEX-BEGIN: V1-C01
+\index[symbols]{a-b--s2977c7fe26db@$A,B$：对象的无序汇集}
+\index[symbols]{f-u003a-x-minus-toy-minus--seed9538bcff7@$f:X\to Y$：把定义域中的每个元素指定到陪域中的唯一元素}
+\index[symbols]{a--s85aecdb4f2b3@$a$：单个实数}
+\index[symbols]{minus-boldsymbol-minus-x-minus-in-minus-minus-r-minus-d--s712fce017b19@$\boldsymbol{x}\in\R^d$：默认按列书写的向量}
+\index[symbols]{x-minus-in-minus-minus-r-minus-n-minus-timesd-minus--sec2216ed05ed@$X\in\R^{n\times d}$：行对应样本、列对应特征的数据矩阵}
+\index[symbols]{x-i-x-ij--s1a0b937962b6@$x_i,\,X_{ij}$：向量第$i$分量与矩阵第$i$行第$j$列分量}
+\index[symbols]{minus-ind-minus-p--sdc0382c3d2e1@$\ind\{P\}$：命题$P$成立取$1$，否则取$0$}
+\index[symbols]{minus-theta-minus--sa0314880acd9@$\theta$：由学习过程确定并用于描述模型的量}
+% STAGE19-SYMBOL-INDEX-END: V1-C01
+\begin{symboltablebox}\label{schema:V1-C01:CH-05}
+\begin{tabularx}{\linewidth}{@{}>{$}l<{$} X X@{}}
+\toprule
+\text{符号} & 类型或维数 & 含义\\
+\midrule
+A,B & 集合 & 对象的无序汇集\\
+f:X\to Y & 映射 & 把定义域中的每个元素指定到陪域中的唯一元素\\
+a & 标量 & 单个实数\\
+\boldsymbol{x}\in\R^d & $d\times1$ & 默认按列书写的向量\\
+X\in\R^{n\times d} & $n\times d$ & 行对应样本、列对应特征的数据矩阵\\
+x_i,\,X_{ij} & 标量 & 向量第$i$分量与矩阵第$i$行第$j$列分量\\
+\ind\{P\} & $\{0,1\}$ & 命题$P$成立取$1$，否则取$0$\\
+\theta & 参数 & 由学习过程确定并用于描述模型的量\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\subsection*{问题提出}\label{schema:V1-C01:CH-06}
+统计学习把数据、模型和评价准则放在同一套数学语言中。若不声明对象属于什么集合、下标表示什么、等式在什么条件下成立，同一串符号可能产生互相冲突的解释。本章要解决的问题是：怎样把一个含糊任务转写为类型可核对、运算可执行、结论可验证的陈述。
+
+\phantomsection\label{def:V1-C01-statement}\label{schema:V1-C01:CH-07}
+\paragraph{本讲义的工作性检查表。}
+阅读一个数学陈述时，依次核对四项：涉及哪些对象；每个对象属于什么取值空间；对象之间断言了什么关系；该关系在哪些条件下成立。这是一份帮助读者检查类型、定义域和前提的阅读约定，并非通行教材中的编号定义，也不把数学陈述限定为某种新的“四元组”对象。后文若引用本段，只表示应执行这四项检查。
+
+% CHAPTER-NOT-APPLICABLE: CH-08,CH-09,CH-10
+% CHAPTER-NOT-APPLICABLE-REASON: 本章是数学符号与阅读约定章，不定义统计学习模型、学习策略或独立学习算法。
+\phantomsection\label{schema:V1-C01:CH-08}
+\phantomsection\label{schema:V1-C01:CH-09}
+\phantomsection\label{schema:V1-C01:CH-10}
+
+\subsection*{核心推导：指示函数把逻辑条件变成计数}
+% CORE-DERIVATION-PLAN: KN-V1-C01-DERIVATION-001
+\SLKnowledgeBridge{把“命题成立/不成立”转换为可求和的数值，并得到样本计数公式。}{命题 $P_1,\ldots,P_n$ 及其指示量 $\ind\{P_i\}\in\{0,1\}$。}{$n<\infty$；每个 $P_i$ 的真假确定；求和项均为标量。}{先逐项写出：$P_i$ 成立时 $\ind\{P_i\}=1$，否则为 $0$。}
+
+\begin{derivationgoalbox}\label{schema:V1-C01:CH-11}
+给定命题$P_1,\ldots,P_n$，推导满足条件的命题个数，并说明该式如何用于统计分类正确的样本数。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+已知$\ind\{P_i\}\in\{0,1\}$；有限和允许逐项相加；所有求和项都是标量，因此维数一致。
+\end{derivationprepbox}
+% DERIVATION-CHECK: step-1; step-2; step-3
+\textbf{推导第1步：单项编码。} 按指示函数定义，$P_i$成立时第$i$项贡献$1$，不成立时贡献$0$。
+
+\textbf{推导第2步：有限累加。} 将$n$个互不要求独立的逻辑判断相加，得到
+\[
+C=\sum_{i=1}^{n}\ind\{P_i\}.
+\]
+每个成立命题恰贡献一个单位，不成立命题不改变总和。
+
+\textbf{推导第3步：对应学习任务。} 令$P_i$为“预测$\widehat y_i$等于标签$y_i$”，则正确数与正确率分别为
+\[
+C=\sum_{i=1}^{n}\ind\{\widehat y_i=y_i\},\qquad
+\widehat p=\frac1n\sum_{i=1}^{n}\ind\{\widehat y_i=y_i\}.
+\]
+除以$n>0$只改变尺度，不改变每个样本是否被计入的逻辑。
+
+\begin{theorem}[有限指示和的计数性质]\label{thm:V1-C01-indicator-count}\label{schema:V1-C01:CH-12}
+设$I=\{1,\ldots,n\}$且$n\in\N$、$n>0$，$S=\{i\in I:P_i\text{成立}\}$。则
+$\sum_{i=1}^{n}\ind\{P_i\}=|S|$，其中$|S|$表示有限集合$S$的元素个数。
+\end{theorem}
+\begin{proof}\label{schema:V1-C01:CH-13}
+证明目标是说明求和的每一个单位与$S$中的一个元素一一对应。对任意$i\in I$，若$i\in S$，则$P_i$成立，定义给出$\ind\{P_i\}=1$；若$i\notin S$，则$\ind\{P_i\}=0$。因此求和时只有属于$S$的下标贡献$1$。有限集合$S$中的每个下标被求和范围访问一次，既不重复也不遗漏，所以总和等于$S$的元素个数，结论成立。
+\end{proof}
+
+\begin{geometrybox}\label{schema:V1-C01:CH-14}
+\textbf{几何解释。} 向量$\boldsymbol{x}\in\R^d$可视为$d$维空间中的点，也可视为从原点指向该点的箭头；矩阵$X$把$n$个样本按行排列。维数核对相当于检查几何变换的输入空间与输出空间能否衔接。
+\end{geometrybox}
+\begin{probabilitybox}\label{schema:V1-C01:CH-15}
+事件是样本空间的子集，事件指示函数是取值为$0$或$1$的随机变量。其平均值记录事件在样本中的发生比例，并为后续“期望等于概率”的关系准备统一语言。
+\end{probabilitybox}
+\begin{optimizationbox}\label{schema:V1-C01:CH-16}
+\textbf{优化解释。} 参数$\theta$是搜索对象，允许取值的集合是可行域，评价参数优劣的函数是目标函数。先声明变量与条件，才能判断一次更新是否仍在可行域内。
+\end{optimizationbox}
+
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C01/fig_v1_c01_language_flow.tex}
+使用\cref{fig:V1-C01-language-flow}时应从任务端逆向核对：对象、取值域、映射和目标只要有一项未定义，就先补全声明再计算；箭头记录使用关系，不是可逆蕴含。
+
+\begin{example}[三样本数据的类型核对]\label{exm:V1-C01-small}\label{schema:V1-C01:CH-18}\label{schema:V1-C01:CH-32}
+设$X=\begin{bmatrix}1&0\\2&1\\0&1\end{bmatrix}\in\R^{3\times2}$，$\boldsymbol{w}=(2,-1)^{\mathsf T}\in\R^2$，标签$\boldsymbol{y}=(1,1,-1)^{\mathsf T}$。求$X\boldsymbol{w}$，并核对结果维数。
+\end{example}
+\phantomsection\label{schema:V1-C01:CH-33}
+\SLExampleSolutionHeading{exm:V1-C01-small}
+\begin{solution}
+\SLReadTranslation{题目要求完成“三样本数据的类型核对”：依据题面矩阵/向量求出目标量，并核对每一步乘法与最终结果的维数。}
+\SolGiven 题面矩阵、向量与参数均按既定列向量约定；首次运算前写出各对象维数并确认内侧维数相等。
+\SLMethodTrigger{先标注每个矩阵/向量维数，再按分解、乘法或投影公式计算并做形状核验。}
+\SolDerive
+先核对矩阵乘法的内侧维数：
+\[
+X\in\R^{3\times2},\qquad
+\boldsymbol{w}\in\R^{2\times1}
+\quad\Longrightarrow\quad
+X\boldsymbol{w}\in\R^{3\times1}.
+\]
+逐行计算得到
+\[
+\begin{aligned}
+X\boldsymbol{w}
+&=
+\begin{bmatrix}
+1&0\\
+2&1\\
+0&1
+\end{bmatrix}
+\begin{bmatrix}
+2\\
+-1
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+1\cdot2+0\cdot(-1)\\
+2\cdot2+1\cdot(-1)\\
+0\cdot2+1\cdot(-1)
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+2\\
+3\\
+-1
+\end{bmatrix}
+\in\R^{3\times1}.
+\end{aligned}
+\]
+独立地按列复算，$X\boldsymbol w=2X_{:1}-X_{:2}=(2,4,0)^{\mathsf T}-(0,1,1)^{\mathsf T}=(2,3,-1)^{\mathsf T}$，与逐行计算一致。三个分量依次对应三个样本；又因$\boldsymbol{y}\in\R^3$，结果行数与标签向量长度一致。因此所求结果为$(2,3,-1)^{\mathsf T}\in\mathbb R^3$。
+\end{solution}
+
+% CHAPTER-NOT-APPLICABLE: CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29
+% CHAPTER-NOT-APPLICABLE-REASON: 本章没有独立学习算法，故算法接口、迭代、收敛、复杂度、适用条件与局限均无可报告对象。
+\phantomsection\label{schema:V1-C01:CH-19}
+\phantomsection\label{schema:V1-C01:CH-20}
+\phantomsection\label{schema:V1-C01:CH-21}
+\phantomsection\label{schema:V1-C01:CH-22}
+\phantomsection\label{schema:V1-C01:CH-23}
+\phantomsection\label{schema:V1-C01:CH-24}
+\phantomsection\label{schema:V1-C01:CH-25}
+\phantomsection\label{schema:V1-C01:CH-26}
+\phantomsection\label{schema:V1-C01:CH-27}
+\phantomsection\label{schema:V1-C01:CH-28}
+\phantomsection\label{schema:V1-C01:CH-29}
+
+% KNOWLEDGE-PLAN: KN-V1-C01-BOUNDARY-001 L1
+\paragraph{读前自检：常见错误与误用边界：核心推导：指示函数把逻辑条件变成计数。}核心推导：指示函数把逻辑条件变成计数以“边界框首项禁止把$\in$写成$\subseteq$”为约束；请把固定错误“把$\in$写成$\subseteq$”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，并确认改写后的运算或判断有定义，且不再触发“把$\in$写成$\subseteq$”。\par
+
+\begin{warningbox}\label{schema:V1-C01:CH-30}
+典型误用包括把$\in$写成$\subseteq$、把向量上标当作幂、忽视矩阵乘法顺序、把参数当作已观测数据，以及否定全称命题时忘记把“所有”改为“至少一个不”。
+\end{warningbox}
+
+\begin{comparisonbox}\label{schema:V1-C01:CH-31}
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+概念 & 正确含义 & 识别问题\\
+\midrule
+$x\in A$与$A\subseteq B$ & 前者是元素关系，后者是集合关系 & 左端是对象还是集合？\\
+映射与函数值 & $f$是规则，$f(x)$是规则在$x$处的结果 & 当前谈的是规则还是输出？\\
+下标与上标 & 下标常标分量或样本，上标须由上下文声明 & 上标是样本编号、迭代编号还是幂？\\
+参数与变量 & 参数在一次模型确定后固定，变量可在定义域内变化 & 哪个量由学习过程选择？\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+\SLDirectSection{学习路线与使用说明}{sec:V1-C01-S01}
+第一册的必学顺序是数学语言、线性代数、多元微分、概率统计、信息论、优化基础、统计学习基本理论。定义后的直观说明可以在复习时跳读；首次出现的分量推导、概率归一化、对偶条件和算法更新不可跳过。每章结束都要完成自检；未通过时，应返回自检项指定的最早依赖节，而不是继续堆叠新概念。
+
+
+\SLReviewSection{集合、映射与函数}{sec:V1-C01-S02}
+\knowledgeanchor{PRE-BM-001}{集合、元素与集合运算}
+集合由互不重复的元素确定。$x\in A$表示$x$属于$A$，$A\subseteq B$表示$A$的每个元素都属于$B$。并集$A\cup B$保留至少属于一个集合的元素，交集$A\cap B$保留同时属于两者的元素，差集$A\setminus B$保留属于$A$而不属于$B$的元素。
+
+\knowledgeanchor{PRE-BM-002}{映射与函数}
+映射$f:X\to Y$要求每个$x\in X$恰有一个$f(x)\in Y$。$X$称定义域，$Y$称陪域，实际取得的值构成像$f(X)\subseteq Y$。若$x_1\ne x_2$总能推出$f(x_1)\ne f(x_2)$，则$f$为\textbf{单射}（injective）；若$f(X)=Y$，则$f$为\textbf{满射}（surjective）；同时为单射和满射的映射称为\textbf{双射}（bijective），此时才存在从$Y$到$X$的逆映射。函数是映射在数值语境中的常用名称。
+
+
+\SLTeachSection{标量、向量与矩阵记号}{sec:V1-C01-S03}
+\knowledgeanchor{PRE-BM-003}{标量、向量与矩阵记号}
+标量$a\in\R$是单个数；向量$\boldsymbol{x}\in\R^d$默认是$d\times1$列向量；矩阵$A\in\R^{m\times n}$有$m$行$n$列。粗体小写字母表示向量，大写字母表示矩阵，普通小写字母表示标量。运算前应先写维数，再核对内侧维数。
+
+\knowledgeanchor{PRE-BM-006}{上标、下标与转置记号}
+$x_i$表示第$i$个分量，$\boldsymbol{x}^{(r)}$常表示第$r$个样本或第$r$次迭代，具体含义必须就地声明。转置$A^{\mathsf T}$交换行列，满足$(A^{\mathsf T})_{ij}=A_{ji}$。上标若表示幂，应使用标量语境并避免与样本编号混用。
+
+
+\SLTeachSection{求和、连乘与指示函数}{sec:V1-C01-S04}
+\knowledgeanchor{PRE-BM-004}{求和、连乘与索引记号}
+$\sum_{i=1}^{n}a_i=a_1+\cdots+a_n$，$\prod_{i=1}^{n}a_i=a_1\cdots a_n$。索引$i$是局部记号，可改名而不改变值；范围和被运算项决定表达式。有限和满足线性性，有限连乘在出现零因子时等于零。
+
+% KNOWLEDGE-PLAN: KN-V1-C01-PREREQUISITE-012 L1
+\paragraph{读前自检：指示函数。}先锁定数学语言、符号约定与学习路线中的指示函数的条件“指示函数定义为$\ind\{P\}=1$当且仅当命题$P$成立，否则为$0$”：检查$\ind\{P\}=1$中每项的类型后完成等式变形，所得结果应满足两端运算均有定义、类型一致且化为同一结果。\par
+
+\knowledgeanchor{PRE-BM-005}{指示函数}
+指示函数定义为$\ind\{P\}=1$当且仅当命题$P$成立，否则为$0$。它把分类、集合成员关系和事件发生转换为可求和的数值，前述定理给出了其计数意义。
+
+
+\SLAdvancedSection{参数、变量、样本、特征与标签}{sec:V1-C01-S05}
+\knowledgeanchor{PRE-BM-007}{参数、变量、样本、特征与标签}
+一个监督学习数据集可写为$\mathcal D=\{(\boldsymbol{x}^{(i)},y_i)\}_{i=1}^{n}$。$\boldsymbol{x}^{(i)}\in\R^d$是第$i$个样本的特征向量，$x^{(i)}_j$是其第$j$个特征，$y_i$是标签。模型$f_{\theta}$以变量$\boldsymbol{x}$为输入，以参数$\theta$控制其具体形状；训练数据被观测，参数由学习策略和算法确定。
+
+
+\SLAdvancedSection{数学逻辑与前置自检}{sec:V1-C01-S06}
+\knowledgeanchor{PRE-BM-008}{命题、量词与常用数学逻辑}
+命题是可判断真假的陈述。$\forall x\in X,P(x)$表示定义域中每个$x$都满足$P$；$\exists x\in X,P(x)$表示至少存在一个满足者。全称命题的否定是$\exists x\in X,\neg P(x)$，存在命题的否定是$\forall x\in X,\neg P(x)$。蕴含$P\Rightarrow Q$只在$P$真而$Q$假时为假；充要条件写作$P\Leftrightarrow Q$。
+
+
+\begin{chapterexercisebox}
+\phantomsection\label{schema:V1-C01:CH-34}
+\phantomsection\label{schema:V1-C01:CH-35}
+本章共19道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[路线依赖]\label{ex:V1-C01-S01-01}
+说明为什么应在矩阵微分之前学习矩阵乘法的维数规则，并给出一个不合法乘积的例子。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S01-01}
+\begin{chapterexercisesolution}{ex:V1-C01-S01-01}
+矩阵乘法的合法性判据为
+\[
+A\in\R^{m\times n},\quad B\in\R^{p\times q}
+\quad\Longrightarrow\quad
+AB\text{有定义}\ \Longleftrightarrow\ n=p,
+\]
+并且在$n=p$时有$AB\in\R^{m\times q}$。矩阵微分中的Jacobian、Hessian与链式法则都要复用这一内侧维数判据。例如
+\[
+A\in\R^{2\times3},\qquad B\in\R^{4\times2},
+\qquad 3\ne4
+\quad\Longrightarrow\quad AB\text{无定义}.
+\]
+因此应先掌握矩阵乘法的维数规则，再进入矩阵微分。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[回看决策]\label{ex:V1-C01-S01-02}
+一名读者会计算导数，却无法解释$\boldsymbol{x}\in\R^d$。他应先回看哪一节，为什么？
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S01-02}
+\begin{chapterexercisesolution}{ex:V1-C01-S01-02}
+\SolGiven 读者会做标量求导，但尚不能解释$\boldsymbol{x}\in\R^d$所声明的对象类型与维数。
+\SolPlan 先补齐向量、矩阵及其维数规则，再把标量导数推广到梯度。
+\SolDerive 应回看\cref{sec:V1-C01-S03}。该节说明$\boldsymbol{x}\in\R^d$通常表示$d\times1$列向量，并给出转置和矩阵乘法的形状规则。于是对$f:\R^d\to\R$，才能判断
+\[
+\nabla f(\boldsymbol{x})
+=\begin{bmatrix}\partial f/\partial x_1&\cdots&\partial f/\partial x_d\end{bmatrix}^{\mathsf T}
+\in\R^d.
+\]
+\SolCheck 若把$\boldsymbol{x}$误作行向量，则$\boldsymbol{w}^{\mathsf T}\boldsymbol{x}$等常用表达式会立刻出现维数冲突。
+\SolAnswer 应先回看“对象、维数与基本记号”，因为矩阵微分不仅要求会求导，还要求导数对象的类型和维数合法。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[可跳读与不可跳过]\label{ex:V1-C01-S01-03}
+把“定义后的生活类比”和“二次型梯度的首次分量推导”分别归入可跳读或不可跳过，并说明标准。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S01-03}
+\begin{chapterexercisesolution}{ex:V1-C01-S01-03}
+\SolPlan 用“后文是否依赖其中的新定义、推导或合法条件”作为判断标准，而不以段落长短或阅读难度为标准。
+\SolDerive 定义后的生活类比只帮助形成直觉，不承担后续公式的逻辑前提；已理解定义时可以跳读。二次型梯度的首次分量推导给出偏导项、转置位置及$A+A^{\mathsf T}$的对称化来源，后文会直接调用这些结论，因此不可跳过。
+\SolCheck 去掉类比不影响任何符号的含义；去掉首次推导却无法独立判断$\nabla_{\boldsymbol{x}}(\boldsymbol{x}^{\mathsf T}A\boldsymbol{x})$的维数和系数。
+\SolAnswer 生活类比可跳读，首次分量推导不可跳过；标准是知识依赖而非篇幅。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[集合运算]\label{ex:V1-C01-S02-01}
+设$A=\{1,2,3\}$、$B=\{2,4\}$，求$A\cup B$、$A\cap B$和$A\setminus B$。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S02-01}
+\begin{chapterexercisesolution}{ex:V1-C01-S02-01}
+\SolGiven $A=\{1,2,3\}$，$B=\{2,4\}$。
+\SolPlan 分别按“至少属于一个集合”“同时属于两个集合”“属于$A$但不属于$B$”逐个筛选元素。
+\SolDerive 合并并去重得到$A\cup B=\{1,2,3,4\}$；共同元素只有$2$，故$A\cap B=\{2\}$；从$A$中删去同时属于$B$的$2$，得到$A\setminus B=\{1,3\}$。
+\SolCheck $|A\cup B|=|A|+|B|-|A\cap B|=3+2-1=4$，与结果一致。
+\SolAnswer
+\[
+A\cup B=\{1,2,3,4\},\qquad A\cap B=\{2\},\qquad A\setminus B=\{1,3\}.
+\]
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[函数判定]\label{ex:V1-C01-S02-02}
+关系$R=\{(1,a),(1,b),(2,a)\}$是否定义了从$\{1,2\}$到$\{a,b\}$的函数？
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S02-02}
+\begin{chapterexercisesolution}{ex:V1-C01-S02-02}
+令$D=\{1,2\}$、$C=\{a,b\}$。关系$R\subseteq D\times C$定义函数的充要条件是
+\[
+\forall x\in D,\qquad
+\left|\{y\in C:(x,y)\in R\}\right|=1.
+\]
+对当前关系，两个输入的像纤维分别为
+\[
+\{y:(1,y)\in R\}=\{a,b\},\qquad
+\{y:(2,y)\in R\}=\{a\}.
+\]
+第一集合的基数为$2\ne1$，故唯一性条件失败，$R$不是从$D$到$C$的函数。删除$(1,a)$与$(1,b)$中的任意一个、同时保留$(2,a)$，才可得到满足判据的函数关系。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[像与陪域]\label{ex:V1-C01-S02-03}
+令$f:\R\to\R$，$f(x)=x^2$。写出其像，并判断是否为满射。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S02-03}
+\begin{chapterexercisesolution}{ex:V1-C01-S02-03}
+\SolGiven $f:\R\to\R$，$f(x)=x^2$；满射要求每个$y\in\R$都能写成$f(x)$。
+\SolDerive 对任意$x\in\R$都有$x^2\ge0$，故$f(\R)\subseteq[0,+\infty)$。反之，对任意$y\ge0$取$x=\sqrt y\in\R$，便有$f(x)=y$，所以$[0,+\infty)\subseteq f(\R)$。
+\SolCheck 负数（例如$-1$）属于陪域$\R$，却不存在实数$x$使$x^2=-1$。
+\SolAnswer $f(\R)=[0,+\infty)\ne\R$，因此$f$不是从$\R$到$\R$的满射。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[维数核对]\label{ex:V1-C01-S03-01}
+设$A\in\R^{3\times2}$、$\boldsymbol{x}\in\R^2$，写出$A\boldsymbol{x}$的维数和第$i$个分量。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S03-01}
+\begin{chapterexercisesolution}{ex:V1-C01-S03-01}
+\SolGiven $A$有$3$行$2$列，$\boldsymbol{x}$是$2\times1$列向量。
+\SolPlan 先核对矩阵乘法的内侧维数，再按“第$i$行乘以列向量”写出分量。
+\SolDerive
+\[
+(3\times2)(2\times1)=(3\times1),
+\qquad
+(A\boldsymbol{x})_i=\sum_{j=1}^{2}A_{ij}x_j
+=A_{i1}x_1+A_{i2}x_2.
+\]
+这里$i\in\{1,2,3\}$标记输出行，$j\in\{1,2\}$遍历输入分量。
+\SolCheck 乘积的两个内侧维数均为$2$，而结果保留外侧维数$3\times1$。
+\SolAnswer $A\boldsymbol{x}\in\R^3$，其第$i$个分量如上式。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[转置]\label{ex:V1-C01-S03-02}
+令$A=\begin{bmatrix}1&2&3\\4&5&6\end{bmatrix}$，求$A^{\mathsf T}$并说明维数变化。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S03-02}
+\begin{chapterexercisesolution}{ex:V1-C01-S03-02}
+\SolGiven $A\in\R^{2\times3}$，且转置满足$(A^{\mathsf T})_{ij}=A_{ji}$。
+\SolDerive 把$A$的三列依次写成$A^{\mathsf T}$的三行，得到
+\[
+A^{\mathsf T}=\begin{bmatrix}1&4\\2&5\\3&6\end{bmatrix}\in\R^{3\times2}.
+\]
+\SolCheck 再转置一次可恢复原矩阵：$(A^{\mathsf T})^{\mathsf T}=A$。
+\SolAnswer 转置交换行列，因此维数由$2\times3$变为$3\times2$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[上标辨析]\label{ex:V1-C01-S03-03}
+解释$x^2$、$\boldsymbol{x}^{(2)}$和$A^{\mathsf T}$三个上标为什么不能采用同一含义。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S03-03}
+\begin{chapterexercisesolution}{ex:V1-C01-S03-03}
+先按对象类型与运算结果区分：
+\[
+\begin{array}{c|c|c}
+\text{记号}&\text{含义}&\text{结果类型}\\ \hline
+ a^2&a\cdot a\quad(a\in\R)&\R\\
+\boldsymbol{x}^{(2)}&\text{第2个样本或第2次迭代向量}&\R^d\\
+A^{\mathsf T}&\text{矩阵转置}&\R^{n\times m}\quad(A\in\R^{m\times n})
+\end{array}
+\]
+相应地，
+\[
+ a^2\ne\boldsymbol{x}^{(2)},
+\qquad
+(A^{\mathsf T})_{ij}=A_{ji}.
+\]
+标量平方也可与向量平方范数对照：$\lVert\boldsymbol{x}\rVert_2^2=\boldsymbol{x}^{\mathsf T}\boldsymbol{x}$，但不把$\boldsymbol{x}^2$当作默认记法。三种上标分别表示幂、编号与运算符；字体、括号和就地声明共同确定其含义。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[求和展开]\label{ex:V1-C01-S04-01}
+计算$\sum_{i=1}^{4}(2i-1)$，并写出每一项。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S04-01}
+\begin{chapterexercisesolution}{ex:V1-C01-S04-01}
+\SolPlan 让索引$i$依次取$1,2,3,4$，逐项代入被加数$2i-1$。
+\SolDerive
+\[
+\sum_{i=1}^{4}(2i-1)
+=(2\cdot1-1)+(2\cdot2-1)+(2\cdot3-1)+(2\cdot4-1)
+=1+3+5+7=16.
+\]
+\SolCheck 也可用$\sum_{i=1}^{4}(2i-1)=2(1+2+3+4)-4=20-4=16$核验。
+\SolAnswer 该和共有四项，结果为$16$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[连乘与零因子]\label{ex:V1-C01-S04-02}
+计算$\prod_{i=1}^{5}(i-3)$，并指出决定结果的关键因子。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S04-02}
+\begin{chapterexercisesolution}{ex:V1-C01-S04-02}
+\SolPlan 展开索引范围并先查找零因子；有限连乘中只要有一个因子为零，整个乘积即为零。
+\SolDerive
+\[
+\prod_{i=1}^{5}(i-3)
+=(-2)(-1)(0)(1)(2)=0.
+\]
+\SolCheck 索引集合$\{1,2,3,4,5\}$确实包含$i=3$，对应关键因子$i-3=0$。
+\SolAnswer 结果为$0$，决定结果的关键因子是$i=3$时的零因子。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[指示计数]\label{ex:V1-C01-S04-03}
+标签为$(1,-1,1,1)$，预测为$(1,1,1,-1)$。用指示函数求正确数和正确率。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S04-03}
+\begin{chapterexercisesolution}{ex:V1-C01-S04-03}
+令$n=4$，并逐项编码预测是否等于标签：
+\[
+\begin{aligned}
+(\ind\{\widehat y_i=y_i\})_{i=1}^{4}
+&=(1,0,1,0),\\
+C
+&=\sum_{i=1}^{4}\ind\{\widehat y_i=y_i\}\\
+&=1+0+1+0=2.
+\end{aligned}
+\]
+因为$n=4>0$，正确率有定义，且
+\[
+\widehat p=\frac{C}{n}=\frac{2}{4}=\frac12.
+\]
+这里只对四个逻辑值计数，不需要假设样本相互独立。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[角色识别]\label{ex:V1-C01-S05-01}
+在线性模型$f_{\boldsymbol{w},b}(\boldsymbol{x})=\boldsymbol{w}^{\mathsf T}\boldsymbol{x}+b$中，指出变量与参数。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S05-01}
+\begin{chapterexercisesolution}{ex:V1-C01-S05-01}
+\SolGiven $f_{\boldsymbol{w},b}(\boldsymbol{x})=\boldsymbol{w}^{\mathsf T}\boldsymbol{x}+b$，其中$\boldsymbol{x},\boldsymbol{w}\in\R^d$、$b\in\R$。
+\SolPlan 根据“调用模型时输入什么”和“训练阶段调节什么”区分变量与参数。
+\SolDerive 对固定的$(\boldsymbol{w},b)$，改变$\boldsymbol{x}$会改变函数输入，因此$\boldsymbol{x}$是输入变量；训练通过数据选择$\boldsymbol{w}$与$b$，所以它们是模型参数。
+\SolCheck $\boldsymbol{w}^{\mathsf T}\boldsymbol{x}$是标量，和$b$相加后仍属于$\R$，与$f_{\boldsymbol w,b}:\R^d\to\R$一致。
+\SolAnswer $\boldsymbol{x}$是变量，$(\boldsymbol{w},b)\in\R^d\times\R$是参数；参数在训练中更新不改变其对象角色。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[数据矩阵]\label{ex:V1-C01-S05-02}
+有$n=5$个样本、每个样本$d=3$个特征。按行放样本时，写出$X$与$\boldsymbol{y}$的维数。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S05-02}
+\begin{chapterexercisesolution}{ex:V1-C01-S05-02}
+由$n=5$、$d=3$且样本按行排列，
+\[
+\boldsymbol{x}^{(i)}\in\R^{3\times1},\qquad
+X=
+\begin{bmatrix}
+(\boldsymbol{x}^{(1)})^{\mathsf T}\\
+\vdots\\
+(\boldsymbol{x}^{(5)})^{\mathsf T}
+\end{bmatrix}
+\in\R^{5\times3}.
+\]
+每个样本对应一个标量标签，因此
+\[
+\boldsymbol{y}=
+\begin{bmatrix}y_1&\cdots&y_5\end{bmatrix}^{\mathsf T}
+\in\R^{5\times1}=\R^5.
+\]
+若$\boldsymbol{w}\in\R^{3\times1}$，则
+\[
+(5\times3)(3\times1)=(5\times1),
+\qquad X\boldsymbol{w}\in\R^5,
+\]
+其第$i$个分量与$y_i$逐行对应。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[双重下标]\label{ex:V1-C01-S05-03}
+解释$x^{(i)}_j$中$i$与$j$的不同角色，并给出允许的取值范围。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S05-03}
+\begin{chapterexercisesolution}{ex:V1-C01-S05-03}
+\SolGiven 数据集含$n$个样本，每个样本含$d$个特征，并按样本逐行组成$X$。
+\SolDerive 对第$i$个样本$\boldsymbol{x}^{(i)}$，下标$j$选取其第$j$个特征，故
+\[
+x_j^{(i)}=X_{ij},\qquad
+i\in\{1,\ldots,n\},quad j\in\{1,\ldots,d\}.
+\]
+于是$X=(x_j^{(i)})\in\R^{n\times d}$。
+\SolCheck 固定$i$并让$j$变化会得到第$i$个样本的全部特征；固定$j$并让$i$变化会得到第$j$个特征在全部样本上的取值。
+\SolAnswer 上标括号中的$i$标样本行，下标$j$标特征列，二者不能互换。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[量词否定]\label{ex:V1-C01-S06-01}
+写出“所有训练样本都被正确分类”的否定。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S06-01}
+\begin{chapterexercisesolution}{ex:V1-C01-S06-01}
+\SolGiven 令命题$P(i)$表示“第$i$个训练样本被正确分类”，即$\widehat y_i=y_i$。
+\SolPlan 使用量词否定规则$\neg(\forall i\,P(i))\Leftrightarrow\exists i\,\neg P(i)$。
+\SolDerive 若训练索引集为$\{1,\ldots,n\}$，则
+\[
+\neg\bigl(\forall i\in\{1,\ldots,n\},\ \widehat y_i=y_i\bigr)
+\Longleftrightarrow
+\exists i\in\{1,\ldots,n\},\ \widehat y_i\ne y_i.
+\]
+\SolCheck 否定“全部正确”只要求找到一个反例，不要求所有样本都分类错误。
+\SolAnswer 否定为“至少存在一个训练样本被错误分类”。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[逆命题]\label{ex:V1-C01-S06-02}
+已知命题“若$x>2$，则$x^2>4$”。写出逆命题，并判断其在实数域是否成立。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S06-02}
+\begin{chapterexercisesolution}{ex:V1-C01-S06-02}
+在实数域中定义
+\[
+P(x):x>2,\qquad Q(x):x^2>4.
+\]
+原命题与逆命题分别是
+\[
+\forall x\in\R,\ P(x)\Rightarrow Q(x),
+\qquad
+\forall x\in\R,\ Q(x)\Rightarrow P(x).
+\]
+取反例$x=-3$，则
+\[
+Q(-3):\ (-3)^2=9>4\ \text{为真},
+\qquad
+P(-3):\ -3>2\ \text{为假}.
+\]
+故逆命题为假。与原命题等价的是逆否命题
+\[
+\forall x\in\R,\quad x^2\le4\Rightarrow x\le2.
+\]
+因此，反例已经否定逆命题，而最后一式给出了原命题真正等价的逆否命题。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[条件核对]\label{ex:V1-C01-S06-03}
+判断陈述“对所有$x\in\R$，$\log x$有定义”并给出修正后的量词范围。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-S06-03}
+\begin{chapterexercisesolution}{ex:V1-C01-S06-03}
+\SolGiven 在实数范围内，对数函数的定义域是$(0,+\infty)$。
+\SolPlan 用定义域中的反例检验全称命题，再把量词范围缩到合法定义域。
+\SolDerive 原命题把$x=0$和所有负数也纳入$\R$，但$\log 0$与$\log(-1)$在实数范围内均无定义，因此全称命题为假。
+\SolCheck 对任意$x>0$，存在唯一实数$y$使$e^y=x$，所以$\log x=y$确有定义。
+\SolAnswer 修正为：“对所有$x\in(0,+\infty)$，$\log x$在实数范围内有定义。”
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[章末综合]\label{ex:V1-C01-CH-01}
+综合任务：把“选择参数，使分类错误尽量少”改写为含参数空间、样本索引、指示函数和最小化符号的数学问题；随后逐项标出对象、关系与成立条件。
+\end{exercise}
+\phantomsection\label{sol:V1-C01-CH-01}
+\begin{chapterexercisesolution}{ex:V1-C01-CH-01}
+先声明对象与合法条件：
+\[
+n\in\N,\quad n>0,
+\qquad
+\Theta\ne\varnothing,
+\qquad
+f_\theta(\boldsymbol{x}^{(i)})\text{对所有 }(\theta,i)\in\Theta\times\{1,\ldots,n\}\text{有定义}.
+\]
+定义经验错误数
+\[
+C(\theta)
+=\sum_{i=1}^{n}
+\ind\{f_\theta(\boldsymbol{x}^{(i)})\ne y_i\},
+\qquad \theta\in\Theta.
+\]
+每一项只取$0$或$1$，因此
+\[
+C(\Theta)=\{C(\theta):\theta\in\Theta\}
+\subseteq\{0,1,\ldots,n\}.
+\]
+又因$\Theta\ne\varnothing$，集合$C(\Theta)$是有限集合$\{0,1,\ldots,n\}$的非空子集，故最小值存在。于是
+\[
+\Theta^*
+=\argmin_{\theta\in\Theta}C(\theta)
+\ne\varnothing,
+\qquad
+\widehat\theta\in\Theta^*.
+\]
+对象是参数、样本与标签；关系是预测值是否等于标签；可行域是非空参数空间$\Theta$。若$\Theta^*$含多个参数，则需要额外的确定性并列规则才能使$\widehat\theta$唯一。
+\end{chapterexercisesolution}
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+\begin{SLCompactClosure}
+\phantomsection\label{schema:V1-C01:CH-36}
+\SLChapterFiveSummary{集合、映射、对象类型、索引与数据角色}{先核对定义域和维数，再执行求和、连乘与逻辑推演}{用对象--空间--关系--条件检查表逐句验算}{阅读任何新定义、公式或算法之前}{进入\cref{chap:V1-C02}；自检失败则回到最早缺失的定义}
+
+\begin{selfcheckbox}\label{schema:V1-C01:CH-37}
+\begin{enumerate}[leftmargin=2em]
+  \item 我能区分$\in$与$\subseteq$，并说明定义域、陪域和像；否则回看\cref{sec:V1-C01-S02}。
+  \item 我能在矩阵运算前写出每个对象的维数；否则回看\cref{sec:V1-C01-S03}。
+  \item 我能用指示函数计数并解释上下标；否则回看\cref{sec:V1-C01-S04,sec:V1-C01-S05}。
+  \item 我能否定含量词的命题并给出反例；否则回看\cref{sec:V1-C01-S06}。
+  \item 四项全部通过后，再进入线性代数；任一项未通过时，按所列位置复习并重新作答。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

@@ -1,0 +1,7 @@
+pair_id,object_a,object_b,reviewer,observed_at_utc,roi_1x,roi_8x,raw_mask_intersection_px,raw_mask_clearance_px,vector_bbox_clearance_px,mask_contamination_px,classification,decision,note
+P04848,T036,T054,SA3_FRESH_ISOLATED,2026-08-26T15:48:00Z,P04848_1x.png,P04848_8x_nearest.png,0,13.1421,0.0,0,BBOX_ONLY_ADVISORY,PASS_R168_ADVISORY,arrow and digit visibly separated; bbox contact is not pixel contact
+P05554,T042,T061,SA3_FRESH_ISOLATED,2026-08-26T15:48:00Z,P05554_1x.png,P05554_8x_nearest.png,0,6.6158,0.0,0,CLOSE_BUT_SEPARATED,PASS_R168_ADVISORY,arrow and digit 8 visibly separated and readable
+P05555,T042,T062,SA3_FRESH_ISOLATED,2026-08-26T15:48:00Z,P05555_1x.png,P05555_8x_nearest.png,14,0.0,0.0,0,TRUE_ILLEGAL_OVERLAP,FAIL_TRUE_ILLEGAL_OVERLAP,arrow tip intrudes into top of final digit 0 in .380
+P05668,T043,T062,SA3_FRESH_ISOLATED,2026-08-26T15:48:00Z,P05668_1x.png,P05668_8x_nearest.png,0,19.1246,7.0,0,CLEAR_SEPARATION,PASS,character 再 and digit 0 visibly separated
+P09144,T079,T136,SA3_FRESH_ISOLATED,2026-08-26T15:48:00Z,P09144_1x.png,P09144_8x_nearest.png,0,18.1050,10.0,0,CLEAR_SEPARATION,PASS,caption label 图 and body 单 visibly separated
+P09145,T079,T137,SA3_FRESH_ISOLATED,2026-08-26T15:48:00Z,P09145_1x.png,P09145_8x_nearest.png,0,19.2485,10.0,0,CLEAR_SEPARATION,PASS,caption label 图 and body 调 visibly separated

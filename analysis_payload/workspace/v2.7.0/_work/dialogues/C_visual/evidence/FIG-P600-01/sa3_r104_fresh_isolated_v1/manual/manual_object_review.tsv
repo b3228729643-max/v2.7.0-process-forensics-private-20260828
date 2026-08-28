@@ -1,0 +1,27 @@
+object_id	manual_reviewer	card_opened	mask_complete	content_or_role_correct	clipped	illegal_overlap	decision	manual_note
+G01	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	State-x circle is closed, round, and fully visible; incoming/outgoing contacts occur only at intended border points.
+G02	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	State-y circle is closed, round, and fully visible; intended loop and proposal contacts are preserved.
+G03	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Proposal-a rounded rectangle is complete and contains only the a formula with clear padding.
+G04	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Proposal-b rounded rectangle is complete and contains only the b formula with clear padding.
+G05	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Minimum rounded rectangle is complete; both converging proposal arrows terminate at its border by design.
+G06	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Directed edge x→a has continuous shaft and visible arrowhead at the proposal-a border.
+G07	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Directed edge y→b has continuous shaft and visible arrowhead at the proposal-b border.
+G08	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Directed edge a→min has continuous shaft and arrowhead terminating at the minimum border.
+G09	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Directed edge b→min has continuous shaft and arrowhead terminating at the minimum border.
+G10	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Upper main loop x→y is continuous with a distinct rightward arrowhead and no text collision.
+G11	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Lower main loop y→x is continuous with a distinct leftward arrowhead and no text collision.
+G12	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Conclusion rounded rectangle is complete and contains two centered conclusion lines without clipping.
+T01	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	State label is the mathematical glyph 𝑥, centered and legible inside G01.
+T02	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	State label is the mathematical glyph 𝑦, centered and legible inside G02.
+T03	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Formula reads 𝑎=𝜋(𝑥)𝑞(𝑥,𝑦); order, arguments, and symbols match the proposal-a meaning.
+T04	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Formula reads 𝑏=𝜋(𝑦)𝑞(𝑦,𝑥); reverse arguments and symbols are correct.
+T05	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Formula min(𝑎,𝑏) is complete, centered, and semantically the shared accepted flow.
+T06	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Annotation “提议流：两方向一般不等” is complete, readable, and correctly describes the unequal proposal flows.
+T07	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Accepted x→y equation is complete through α(x,y)=min(a,b); no symbol or argument is missing.
+T08	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Accepted y→x equation is complete through α(y,x)=min(a,b); reverse direction is correct.
+T09	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	First conclusion line states equal bidirectional accepted flow implies detailed balance; all text and ⇒ are visible.
+T10	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Second conclusion line correctly states detailed balance is sufficient for π stationarity but not necessary.
+T11	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Caption label “图32.4” is intact, correctly numbered, and visually separated from the figure body.
+T12	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Caption first line completely explains truncation to the smaller accepted flow and detailed balance.
+T13	SA3-FRESH	TRUE	TRUE	TRUE	FALSE	FALSE	PASS	Caption continuation completely states π stationarity sufficiency and non-necessity; no clipping at line end.
+

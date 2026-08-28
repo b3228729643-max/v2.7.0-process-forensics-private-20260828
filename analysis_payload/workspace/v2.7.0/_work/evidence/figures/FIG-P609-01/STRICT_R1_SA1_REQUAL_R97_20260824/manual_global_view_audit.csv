@@ -1,0 +1,5 @@
+view,file,dpi,scope_observation,manual_decision,reviewer,opened
+full_page_200dpi,full_page_200dpi.png,200,Official physical page 659 opened; Fig. 32.9 lower-page location and direct caption are visible.,PASS_CONTEXT_AND_PAGE_LOCATION_MANUAL,SA1_R97_MANUAL_NATIVE_20260824,YES
+strict_figure_crop_300dpi,figure_crop_300dpi.png,300,"Strict [70,525,510,702]pt P609 crop opened; excludes adjacent Fig. 32.8/body/caption from object scope.",PASS_STRICT_SCOPE_MANUAL,SA1_R97_MANUAL_NATIVE_20260824,YES
+standalone_300dpi,standalone_300dpi.png,300,"Both panels, axes, data stems/markers, annotation, formulas, rule/box and connector remain readable without page context.",PASS_STANDALONE_READABILITY_MANUAL,SA1_R97_MANUAL_NATIVE_20260824,YES
+grayscale_300dpi,grayscale_300dpi.png,300,"Axes/stems/markers, cutoff guide, connector and formulas remain distinguishable in grayscale.",PASS_GRAYSCALE_MANUAL,SA1_R97_MANUAL_NATIVE_20260824,YES

@@ -1,0 +1,39 @@
+% v2.3.1 figure UID: FIG-P392-01
+% Proposed post-v2.3.1 polish for FIG-P392-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P392-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P392-01,
+  var/.style={circle,draw=SLBlue,fill=white,line width=.82pt,minimum size=7mm,inner sep=0pt},
+  boundary/.style={var,double,double distance=1pt},
+  factor/.style={rectangle,draw=SLGold,fill=SLGoldBG,line width=.84pt,minimum size=4mm,inner sep=0pt},
+  edge/.style={draw=SLInk,line width=.82pt},
+]
+  \node[boundary] (y0) at (-5.4,1.0) {$y_0$};
+  \node[factor,label={[font=\fontsize{9.2pt}{11pt}\selectfont,text=SLGold!88!black]above:$M_1$}] (m1) at (-4.45,1.0) {};
+  \node[var] (y1) at (-3.50,1.0) {$y_1$};
+  \node[factor,label={[font=\fontsize{9.2pt}{11pt}\selectfont,text=SLGold!88!black]above:$M_2$}] (m2) at (-2.55,1.0) {};
+  \node[var] (y2) at (-1.60,1.0) {$y_2$};
+  \node at (0,1.0) {$\cdots$};
+  \node[var] (yn) at (1.60,1.0) {$y_n$};
+  \node[factor,label={[font=\fontsize{9.2pt}{11pt}\selectfont,text=SLGold!88!black]above:$M_{n+1}$}] (mn) at (2.55,1.0) {};
+  \node[boundary] (ye) at (3.50,1.0) {$y_{n+1}$};
+  \draw[edge] (y0)--(m1)--(y1)--(m2)--(y2);
+  \draw[edge] (y2)--(-.45,1.0);
+  \draw[edge] (.45,1.0)--(yn)--(mn)--(ye);
+
+  \node[draw=SLTeal,fill=SLTealBG,line width=.72pt,rounded corners=1.5mm,minimum width=77mm,
+        minimum height=8mm,align=center,font=\fontsize{9.2pt}{11pt}\selectfont] (xbar) at (-.95,-.65)
+    {固定输入条：$x=(x_1,\ldots,x_n)$ 已知};
+  \draw[draw=SLRule!80!SLTextGray,line width=.60pt,densely dashed] (xbar.north -| m1)--(m1);
+  \draw[draw=SLRule!80!SLTextGray,line width=.60pt,densely dashed] (xbar.north -| m2)--(m2);
+  \draw[draw=SLRule!80!SLTextGray,line width=.60pt,densely dashed] (xbar.north -| mn)--(mn);
+  \node[slfig note,font=\fontsize{9.2pt}{11pt}\selectfont,line width=.65pt,anchor=west,text width=35mm] at (3.95,-.65)
+    {$M_i(y_{i-1},y_i,x,i)$\\无向边不表示生成方向};
+  \draw[decorate,decoration={brace,mirror,amplitude=3pt},draw=SLTeal,line width=.62pt]
+    (-4.85,-1.22)--(2.95,-1.22)
+    node[midway,below=3pt,font=\fontsize{9pt}{10.6pt}\selectfont,text=SLTeal] {给定 $x$};
+\end{tikzpicture}
+\caption{线性链CRF的边界状态、相邻标签因子与已知观测依赖}\label{fig:V3-C06-chain}
+\end{figure}

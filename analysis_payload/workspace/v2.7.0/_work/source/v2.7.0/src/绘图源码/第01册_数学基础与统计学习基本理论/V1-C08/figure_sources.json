@@ -1,0 +1,39 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V1-C08",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 1,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V1-C08-01",
+      "source_path": "绘图源码/第01册_数学基础与统计学习基本理论/V1-C08/fig_v1_c08_coordinate.tex",
+      "source_file": "fig_v1_c08_coordinate.tex",
+      "source_kind": "tikz",
+      "label": "fig:V1-C08-coordinate",
+      "caption": "坐标下降的每个子步只改变一个坐标，因此轨迹沿轴向折线逼近最优点。",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "teaching_objective": "读图时应回答：“坐标下降沿轴向折线逼近最优点”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第01册_数学基础与统计学习基本理论/chapters/V1-C08.tex",
+        "target_label": "fig:V1-C08-coordinate",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-OP-025"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：坐标下降的每个子步只改变一个坐标，因此轨迹沿轴向折线逼近最优点。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

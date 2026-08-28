@@ -1,0 +1,11 @@
+﻿element_id,panel_id,role,source_file,source_line,declared_pt,graphics_scale,effective_pt,text_sample,pdf_font_sizes_pt,glyph_count,object_h_ink_px,min_glyph_h_ink_px,median_glyph_h_ink_px,max_glyph_h_ink_px
+E001,P_TOP,NODE_HEADING,D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第05册_采样方法主题模型与图排序\V5-C04\fig_v5_c04_gibbs_vs_mh.tex,14,9.2,1.0,9.2,1 精确满条件提议,9.1656,8,34,25,35.0,35
+E002,P_TOP,FORMULA,D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第05册_采样方法主题模型与图排序\V5-C04\fig_v5_c04_gibbs_vs_mh.tex,14,9.2,1.0,9.2,q_j=π(x_j∣x_{−j}),6.4159|9.1656,12,44,13,28.0,38
+E003,P_TOP,NODE_HEADING,D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第05册_采样方法主题模型与图排序\V5-C04\fig_v5_c04_gibbs_vs_mh.tex,15,9.2,1.0,9.2,2 MH 比值逐项抵消,9.1656,9,33,25,37.0,44
+E004,P_TOP,FORMULA,D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第05册_采样方法主题模型与图排序\V5-C04\fig_v5_c04_gibbs_vs_mh.tex,15,9.2,1.0,9.2,R=[π(y)π_j(x_j∣x_{−j})]/[π(x)π_j(y_j∣x_{−j})]=1,6.4159|9.1656,32,102,13,28.0,38
+E005,P_TOP,NODE_HEADING,D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第05册_采样方法主题模型与图排序\V5-C04\fig_v5_c04_gibbs_vs_mh.tex,16,9.2,1.0,9.2,3 α=1,9.1656,4,27,13,23.5,26
+E006,P_TOP,NODE_ACTION,D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第05册_采样方法主题模型与图排序\V5-C04\fig_v5_c04_gibbs_vs_mh.tex,16,9.2,1.0,9.2,直接接受 x_j←y_j,6.4159|9.1656,9,46,16,31.0,35
+E007,P_EXCEPTION,EXCEPTION_TEXT,D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第05册_采样方法主题模型与图排序\V5-C04\fig_v5_c04_gibbs_vs_mh.tex,20,9.2,1.0,9.2,近似满条件 / 其他提议 q_j,6.4159|9.1656,12,45,28,34.0,34
+E008,P_EXCEPTION,EXCEPTION_TEXT,D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第05册_采样方法主题模型与图排序\V5-C04\fig_v5_c04_gibbs_vs_mh.tex,20,9.2,1.0,9.2,恢复 MH 接受率校正；拒绝时保持 x_j（自环）,6.4159|9.1656,21,45,26,34.0,35
+E009,P_CAPTION,CAPTION,D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第05册_采样方法主题模型与图排序\V5-C04\fig_v5_c04_gibbs_vs_mh.tex,25,9.96,1.0,9.96,图 33.5 … Gibbs 更,9.8625|9.9626,57,44,7,31.0,38
+E010,P_CAPTION,CAPTION,D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\绘图源码\第05册_采样方法主题模型与图排序\V5-C04\fig_v5_c04_gibbs_vs_mh.tex,25,9.96,1.0,9.96,新无需拒绝；…拒绝自环,9.9626,38,41,13,37.0,38

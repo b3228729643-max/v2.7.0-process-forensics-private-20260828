@@ -1,0 +1,6 @@
+audit_id,source_selector,source_line,declared_pt,cumulative_graphics_scale,effective_pt,affected_role,affected_visible_glyph_count,minimum_required_pt,decision,note
+FONT_001,slfig-FIG-P639-01-label,5,9.2,1.0,9.2,TOP_FORMULA_LABEL,36,9.5,ADVISORY_R168,no enclosing scalebox resizebox scale or transform shape found; not a current hard fail
+FONT_002,slfig-FIG-P639-01-note,6-8,9.2,1.0,9.2,NOTE_TEXT,17,9.5,ADVISORY_R168,node box geometry does not scale the font; not a current hard fail
+FONT_003,slfig-FIG-P639-01-axis tick label style,11,8.5,1.0,8.5,X_TICK_LABEL plus Y_TICK_LABEL,16,9.5,ADVISORY_R168,current R168 makes this point-size difference advisory
+FONT_004,slfig-FIG-P639-01-axis label style,12,9.2,1.0,9.2,X_AXIS_TITLE plus Y_AXIS_TITLE,3,9.5,ADVISORY_R168,current R168 makes this point-size difference advisory
+FONT_005,explicit size-changing commands and transforms,whole source,NONE,1.0,NONE,all roles,72,N/A,PASS,no tiny scriptsize footnotesize small large resizebox scalebox scale or transform shape override exists

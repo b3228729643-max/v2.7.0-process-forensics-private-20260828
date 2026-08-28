@@ -1,0 +1,301 @@
+{
+  "handoff_id": "A-R107-P020-SA1-FRESH-ISOLATED-20260826",
+  "canonical_uid": "FIG-P020-01",
+  "role": "SA1",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "xhigh",
+  "R168": "Applied exactly; advisory categories cannot alone trigger FAIL/rebuild.",
+  "N": 122,
+  "C_N_2": 7381,
+  "manual_denominators": {
+    "manual_glyph_review.csv": 108,
+    "manual_graphic_review.csv": 14,
+    "manual_relation_review.csv": 11,
+    "manual_view_review.csv": 8,
+    "manual_panel_role_review.csv": 4,
+    "manual_source_font_review.csv": 10
+  },
+  "checks": [
+    {
+      "name": "identity_handoff",
+      "pass": true,
+      "detail": "A-R107-P020-SA1-FRESH-ISOLATED-20260826"
+    },
+    {
+      "name": "identity_role_model_effort",
+      "pass": true,
+      "detail": [
+        "SA1",
+        "gpt-5.6-sol",
+        "xhigh"
+      ]
+    },
+    {
+      "name": "identity_uid_round",
+      "pass": true,
+      "detail": [
+        "FIG-P020-01",
+        "R107"
+      ]
+    },
+    {
+      "name": "independent_unique_locator",
+      "pass": true,
+      "detail": [
+        1,
+        17,
+        16,
+        "4"
+      ]
+    },
+    {
+      "name": "input_hashes_frozen",
+      "pass": true,
+      "detail": "official PDF and source hashes exact"
+    },
+    {
+      "name": "N_and_C_frozen",
+      "pass": true,
+      "detail": {
+        "glyph_count": 108,
+        "foreground_graphic_path_count": 14,
+        "background_drawing_count_excluded": 2,
+        "math_rule_count": 0,
+        "N_total_foreground_objects": 122,
+        "C_N_2_expected_unordered_pairs": 7381,
+        "C_N_2_emitted_unordered_pairs": 7381,
+        "object_ids_unique": true,
+        "safe_filenames_unique": true
+      }
+    },
+    {
+      "name": "object_identity_unique",
+      "pass": true,
+      "detail": [
+        true,
+        true
+      ]
+    },
+    {
+      "name": "inventory_counts",
+      "pass": true,
+      "detail": {
+        "glyphs": 108,
+        "graphics": 14,
+        "safe_map": 122
+      }
+    },
+    {
+      "name": "inventory_ids_unique",
+      "pass": true,
+      "detail": 122
+    },
+    {
+      "name": "visible_drawing_accounting",
+      "pass": true,
+      "detail": {
+        "page_drawing_count_total": 29,
+        "target_foreground_seqnos": [
+          14,
+          17,
+          20,
+          21,
+          24,
+          27,
+          30,
+          31,
+          33,
+          34,
+          36,
+          37,
+          39,
+          40
+        ],
+        "target_foreground_count": 14,
+        "target_background_seqnos": [
+          13,
+          42
+        ],
+        "target_background_count": 2,
+        "target_math_rule_count": 0,
+        "target_unaccounted_visible_drawing_seqnos": [],
+        "scope_note": "Only drawing seqnos whose bboxes intersect the independently frozen figure region are target drawings; the two visible fills are explicitly background."
+      }
+    },
+    {
+      "name": "pixel_row_count",
+      "pass": true,
+      "detail": 108
+    },
+    {
+      "name": "machine_masks_nonempty_pure",
+      "pass": true,
+      "detail": "108/108 nonempty; foreign candidate 0"
+    },
+    {
+      "name": "raw_object_image_denominator",
+      "pass": true,
+      "detail": "366/366 valid PNGs"
+    },
+    {
+      "name": "source_font_elements",
+      "pass": true,
+      "detail": "10/10"
+    },
+    {
+      "name": "pair_exhaustiveness",
+      "pass": true,
+      "detail": {
+        "rows": 7381,
+        "unique_pairs": 7381
+      }
+    },
+    {
+      "name": "pair_gate_partition",
+      "pass": true,
+      "detail": {
+        "DESIGN_WHITELIST": 1174,
+        "MEETS_MACHINE_GATE": 6207
+      }
+    },
+    {
+      "name": "illegal_overlap_zero",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "machine_pair_failures_zero",
+      "pass": true,
+      "detail": "0 failure/unknown rows"
+    },
+    {
+      "name": "clip_gate",
+      "pass": true,
+      "detail": {
+        "rows": 122,
+        "clip_pixels": 0
+      }
+    },
+    {
+      "name": "minimum_crop_edge",
+      "pass": true,
+      "detail": 25
+    },
+    {
+      "name": "punctuation_calibration_partition",
+      "pass": true,
+      "detail": {
+        "all": 7,
+        "comparable": 5,
+        "separate_actual_font": [
+          "G053",
+          "G068"
+        ]
+      }
+    },
+    {
+      "name": "actual_font_punctuation_calibration",
+      "pass": true,
+      "detail": [
+        "G053",
+        "G068"
+      ]
+    },
+    {
+      "name": "calibration_image_denominator",
+      "pass": true,
+      "detail": "8/8"
+    },
+    {
+      "name": "glyph_contact_sheet_denominator",
+      "pass": true,
+      "detail": "12/12"
+    },
+    {
+      "name": "graphic_contact_sheet_denominator",
+      "pass": true,
+      "detail": "4/4"
+    },
+    {
+      "name": "required_view_files",
+      "pass": true,
+      "detail": "7/7"
+    },
+    {
+      "name": "critical_relation_count",
+      "pass": true,
+      "detail": 11
+    },
+    {
+      "name": "critical_relation_evidence_denominator",
+      "pass": true,
+      "detail": "77/77"
+    },
+    {
+      "name": "critical_machine_gates",
+      "pass": true,
+      "detail": "11/11"
+    },
+    {
+      "name": "manual_manual_glyph_review.csv_closed",
+      "pass": true,
+      "detail": "108/108; all fields nonblank; decisions PASS"
+    },
+    {
+      "name": "manual_manual_graphic_review.csv_closed",
+      "pass": true,
+      "detail": "14/14; all fields nonblank; decisions PASS"
+    },
+    {
+      "name": "manual_manual_relation_review.csv_closed",
+      "pass": true,
+      "detail": "11/11; all fields nonblank; decisions PASS"
+    },
+    {
+      "name": "manual_manual_view_review.csv_closed",
+      "pass": true,
+      "detail": "8/8; all fields nonblank; decisions PASS"
+    },
+    {
+      "name": "manual_manual_panel_role_review.csv_closed",
+      "pass": true,
+      "detail": "4/4; all fields nonblank; decisions PASS"
+    },
+    {
+      "name": "manual_manual_source_font_review.csv_closed",
+      "pass": true,
+      "detail": "10/10; all fields nonblank; decisions PASS"
+    },
+    {
+      "name": "manual_object_pixel_counts",
+      "pass": true,
+      "detail": "122/122"
+    },
+    {
+      "name": "manual_relation_open_denominator",
+      "pass": true,
+      "detail": "11/11 raw 1x and nearest 8x"
+    },
+    {
+      "name": "manual_view_open_denominator",
+      "pass": true,
+      "detail": "8/8"
+    },
+    {
+      "name": "hand_authored_reports_present",
+      "pass": true,
+      "detail": [
+        "00_identity/semantic_context.md",
+        "07_reports/after_overlap_adjudication.md",
+        "07_reports/after_visual_acceptance.md",
+        "07_reports/after_model_route.md",
+        "07_reports/RESULT.txt"
+      ]
+    }
+  ],
+  "check_count": 39,
+  "failed_check_count": 0,
+  "hard_fail_count": 0,
+  "verdict": "PASS",
+  "route": "SA1_PASS_READY_FOR_FRESH_ISOLATED_SA3"
+}

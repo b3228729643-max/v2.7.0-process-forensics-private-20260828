@@ -1,0 +1,31 @@
+{
+  "object_a": "CHAR-0072",
+  "object_b": "G-CARD1-BORDER",
+  "relation": "TEXT_BORDER",
+  "raw_1x_source": "renders/local_page_300dpi.png",
+  "raw_roi_page_px": [
+    1052,
+    1428,
+    1101,
+    1496
+  ],
+  "measurement": {
+    "PAIR_ID": "SELECTED",
+    "OBJECT_A": "CHAR-0072",
+    "OBJECT_B": "G-CARD1-BORDER",
+    "CATEGORY_A": "CHARACTER",
+    "CATEGORY_B": "GRAPHIC",
+    "RELATION": "TEXT_BORDER",
+    "THRESHOLD_PX": "5.0",
+    "METHOD": "exact separated 1:1 raw masks + local EDT",
+    "OVERLAP_PIXELS": 0,
+    "MIN_RAW_INK_GAP_PX": "18.000",
+    "A_NEAREST_X": 1076,
+    "A_NEAREST_Y": 1471,
+    "B_NEAREST_X": 1076,
+    "B_NEAREST_Y": 1452,
+    "STATUS": "PASS",
+    "REASON": "targeted repaired clearance"
+  },
+  "8x_policy": "nearest-neighbour human review only; never geometry input"
+}

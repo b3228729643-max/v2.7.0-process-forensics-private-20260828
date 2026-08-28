@@ -1,0 +1,11 @@
+check_id,evidence_opened,opened_at_utc,reviewer,decision,note
+M001,figure crop and CDF curve overlay,2026-08-27T12:17:30Z,/root,PASS,CDF is 0 on the interval [0.5 1) before the first support point.
+M002,figure crop and CDF curve overlay,2026-08-27T12:17:30Z,/root,PASS,CDF is 0.15 on [1 2) after the filled x=1 endpoint.
+M003,figure crop and CDF curve overlay,2026-08-27T12:17:30Z,/root,PASS,CDF is 0.45 on [2 3) matching cumulative 0.15+0.30.
+M004,figure crop and CDF curve overlay,2026-08-27T12:17:30Z,/root,PASS,CDF is 0.80 on [3 4) matching cumulative 0.15+0.30+0.35.
+M005,figure crop and CDF curve overlay,2026-08-27T12:17:30Z,/root,PASS,CDF is 1 on [4 4.5] after adding the final mass 0.20.
+M006,open and filled endpoint graphic sheets,2026-08-27T12:17:30Z,/root,PASS,Each support has an open pre-jump endpoint and filled post-jump endpoint so right continuity is explicit.
+M007,PMF panel and marker graphic sheets,2026-08-27T12:17:30Z,/root,PASS,PMF masses 0.15 0.30 0.35 and 0.20 are located at x=1 2 3 4 and sum to 1.
+M008,PMF numeric glyph sheets and grayscale crop,2026-08-27T12:17:30Z,/root,PASS,Labels 0.35 0.3 and 0.15 are distinct and correctly associated with their y ticks.
+M009,p4 target relation contact sheet,2026-08-27T12:17:30Z,/root,PASS,p4 still denotes the fourth jump and is clear of plateau dashed reference and open endpoint after the coordinate change.
+M010,standalone page and grayscale crop,2026-08-27T12:17:30Z,/root,PASS,Two-panel reading path consistently states that each CDF jump height equals the corresponding PMF mass.

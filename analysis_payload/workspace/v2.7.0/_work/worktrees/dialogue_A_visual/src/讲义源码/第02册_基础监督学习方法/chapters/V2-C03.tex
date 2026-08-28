@@ -1,0 +1,899 @@
+% STAGE10-CHAPTER: V2-C03
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; rigorous_modeling; mathematical_development; multiple_perspectives; algorithm_engineering; examples_exercises; closure_self_check
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V2-C03-CH01}; CH-02=\label{struct:V2-C03-CH02}; CH-03=\label{struct:V2-C03-CH03}; CH-04=\label{struct:V2-C03-CH04}; CH-05=\label{struct:V2-C03-CH05}; CH-06=\label{struct:V2-C03-CH06}; CH-07=\label{struct:V2-C03-CH07}; CH-08=\label{struct:V2-C03-CH08}; CH-09=\label{struct:V2-C03-CH09}; CH-10=\label{struct:V2-C03-CH10}; CH-11=\label{struct:V2-C03-CH11}; CH-12=\label{struct:V2-C03-CH12}; CH-13=\label{struct:V2-C03-CH13}; CH-14=\label{struct:V2-C03-CH14}; CH-15=\label{struct:V2-C03-CH15}; CH-16=\label{struct:V2-C03-CH16}; CH-17=\label{struct:V2-C03-CH17}; CH-18=\label{struct:V2-C03-CH18}; CH-19=\label{struct:V2-C03-CH19}; CH-20=\label{struct:V2-C03-CH20}; CH-21=\label{struct:V2-C03-CH21}; CH-22=\label{struct:V2-C03-CH22}; CH-23=\label{struct:V2-C03-CH23}; CH-24=\label{struct:V2-C03-CH24}; CH-25=\label{struct:V2-C03-CH25}; CH-26=\label{struct:V2-C03-CH26}; CH-27=\label{struct:V2-C03-CH27}; CH-28=\label{struct:V2-C03-CH28}; CH-29=\label{struct:V2-C03-CH29}; CH-30=\label{struct:V2-C03-CH30}; CH-31=\label{struct:V2-C03-CH31}; CH-32=\label{struct:V2-C03-CH32}; CH-33=\label{struct:V2-C03-CH33}; CH-34=\label{struct:V2-C03-CH34}; CH-35=\label{struct:V2-C03-CH35}; CH-36=\label{struct:V2-C03-CH36}; CH-37=\label{struct:V2-C03-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V2-C03-star -> SLM-04-01-001
+\chapter{朴素贝叶斯法}\label{chap:V2-C03}
+\index{朴素贝叶斯法}
+\index{条件独立}
+
+\SLChapterOpening{从条件独立假设直达后验比较、极大似然与平滑}{怎样用可估计的一维条件表完成稳定的多类分类}{能够从计数推导参数估计并在对数域完成预测}{条件概率、Bayes公式、拉格朗日乘子与计数统计}{若零概率、未知取值或独立性含义不清，回看估计与平滑两节}
+
+\phantomsection\label{struct:V2-C03-CH01}
+% KNOWLEDGE-PLAN: KN-V2-C14-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}朴素贝叶斯法目标中的“能够从生成式分类出发写出类别先验、类条件分布与条件独立假设，并说明参数量为何显著减少”必须可复核；请从生成式分类出发写出类别先验、类条件分布与条件独立假设，并说明参数量为何显著减少，所得结果仅在“中间结果逐项包含首目标“能够从生成式分类出发写出类别先验、类条件分布与条件独立假设，并说明参数量为何显著减少”声明的对象、条件与结论”时通过。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能够从生成式分类出发写出类别先验、类条件分布与条件独立假设，并说明参数量为何显著减少；
+  \item 能够逐步推出朴素贝叶斯后验得分，证明后验概率最大化在$0$--$1$损失下最优；
+  \item 能够从分类计数推导极大似然估计与对称Dirichlet平滑，辨认零频率问题；
+  \item 能够用对数域伪代码完成训练与预测，分析时间、空间、适用条件和模型错设风险。
+\end{itemize}}
+
+\phantomsection\label{struct:V2-C03-CH02}
+\begin{prerequisitebox}
+需要条件概率、贝叶斯公式、联合分布、条件独立、离散随机变量、指示函数、极大似然、Dirichlet先验以及生成方法与判别方法的区别。默认训练样本独立同分布，类别和本章主要讨论的特征取值均为有限集合。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V2-C03-CH03}
+% KNOWLEDGE-PLAN: KN-V2-C14-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}朴素贝叶斯法先修自检固定核验“能否把$P(X,Y)$写成$P(Y)P(X\mid Y)$并用贝叶斯公式求$P(Y\mid X)$”；请把$P(X,Y)$写成$P(Y)P(X\mid Y)$并用贝叶斯公式求$P(Y\mid X)$并写出中间结果，再按“$P(Y)P(X\mid Y)$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否把$P(X,Y)$写成$P(Y)P(X\mid Y)$并用贝叶斯公式求$P(Y\mid X)$？
+  \item 能否区分“给定类别后独立”和“无条件独立”？
+  \item 能否在概率和为1的约束下，用拉格朗日乘子最大化多项分布似然？
+  \item 能否解释乘积概率为何应在对数域计算？
+\end{enumerate}
+未通过时回看第一册的条件概率、条件独立、极大似然与生成模型部分。
+\end{precheckbox}
+
+\phantomsection\label{struct:V2-C03-CH04}
+\begin{dependencybox}
+联合分布分解 $\to$ 生成式分类；
+给定类别的特征条件独立 $\to$ 类条件分布乘积；
+贝叶斯公式 $\to$ 后验得分 $\to$ 最小条件分类风险；
+类别与特征计数 $\to$ 极大似然估计 $\to$ Dirichlet平滑 $\to$ 稳定预测。
+\end{dependencybox}
+
+\begin{keypointbox}[title=模型认识卡：朴素贝叶斯]
+\textbf{任务与输入：}有限离散特征分类，$x=(x^{(1)},\ldots,x^{(n)})$。\quad
+\textbf{输出类型：}类别后验与类别。\par
+\textbf{模型：}$P(Y)\prod_jP(X^{(j)}\mid Y)$。\quad
+\textbf{策略：}估计生成分布，并在0--1损失下取后验最大类。\quad
+\textbf{算法：}计数、正伪计数平滑、对数域评分。\par
+\textbf{预测：}比较各类对数未归一化得分。\quad
+\textbf{关键假设与边界：}给定类别后条件独立；零频、未知取值与概率校准必须显式处理。
+\end{keypointbox}
+
+\phantomsection\label{struct:V2-C03-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V2-C03
+\index[symbols]{x-eq-x-1-minus-ldots-minus-x-n--sae35294fc4a5@$X=(X^{(1)},\ldots,X^{(n)})$：含$n$个特征的随机输入}
+\index[symbols]{y--s3cb7bc05abdb@$Y$：类别随机变量}
+\index[symbols]{a-j-eq-a-j1-minus-ldots-minus-a-js-j--s250e517d43a4@$A_j=\{a_{j1},\ldots,a_{jS_j}\}$：第$j$个特征的可能取值}
+\index[symbols]{n-k--sc3c96e17a55a@$N_k$：训练集中类别$c_k$的样本数}
+\index[symbols]{n-jkl--s269ed8f07b5c@$N_{jkl}$：类别$c_k$且第$j$个特征取$a_{jl}$的样本数}
+\index[symbols]{minus-pi-minus-k-minus-theta-minus-jkl--sa0cf8458f742@$\pi_k,\theta_{jkl}$：类别先验与类条件概率}
+\index[symbols]{minus-lambda-minus--s31af2c88ea5b@$\lambda$：本章朴素贝叶斯计数的对称平滑强度}
+\index[symbols]{s-k-x--s9865088e456c@$s_k(x)$：类别$c_k$的对数后验未归一化得分}
+% STAGE19-SYMBOL-INDEX-END: V2-C03
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值 & 含义\\ \midrule
+$X=(X^{(1)},\ldots,X^{(n)})$ & $\mathcal X$ & 含$n$个特征的随机输入\\
+$Y$ & $\{c_1,\ldots,c_K\}$ & 类别随机变量\\
+$A_j=\{a_{j1},\ldots,a_{jS_j}\}$ & 有限集合 & 第$j$个特征的可能取值\\
+$N_k$ & 非负整数 & 训练集中类别$c_k$的样本数\\
+$N_{jkl}$ & 非负整数 & 类别$c_k$且第$j$个特征取$a_{jl}$的样本数\\
+$\pi_k,\theta_{jkl}$ & $[0,1]$ & 类别先验与类条件概率\\
+$\lambda$ & 非负实数 & 对称平滑强度\\
+$s_k(x)$ & 实数或$-\infty$ & 类别$c_k$的对数后验未归一化得分\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{生成式分类与条件独立}{sec:V2-C03-S01}
+\phantomsection\label{struct:V2-C03-CH06}
+直接为离散向量$X$在每个类别下建立联合频率表，需要面对取值组合数的乘法增长。朴素贝叶斯用一个强但可计算的条件独立假设，把高维联合分布拆成一维条件分布的乘积。
+
+% KNOWLEDGE-PLAN: KN-V2-C14-CONCEPT-002 L1
+\paragraph{读前自检：朴素贝叶斯法。}朴素贝叶斯法把问题限定在“朴素贝叶斯是生成式分类方法：先学习$P(Y)$与$P(X\mid Y)$”；请将$P(X,Y)=P(Y)P(X\mid Y)$左端按定义展开一层，再与右端逐项对齐，检查是否得到两端运算均有定义、类型一致且化为同一结果。\par
+
+\knowledgeanchor{SLM-04-00-001}{朴素贝叶斯法}
+朴素贝叶斯是生成式分类方法：先学习$P(Y)$与$P(X\mid Y)$，由$P(X,Y)=P(Y)P(X\mid Y)$得到联合模型，再通过贝叶斯公式进行分类。名称中的“贝叶斯”指分类时使用贝叶斯公式，不等同于参数的贝叶斯估计。
+
+% KNOWLEDGE-PLAN: KN-V2-C14-CONCEPT-003 L1
+\paragraph{读前自检：朴素贝叶斯法的学习与分类。}在“学习阶段估计类别先验和各特征在类别条件下的分布”成立时处理朴素贝叶斯法的学习与分类：请把“学习阶段估计类别先验和各特征在类别条件下的分布”中的已声明对象依次标成输入、输出与判据，并以分类阶段将观测特征代入各类别得分，输出得分最大的类别判定结果。\par
+
+\knowledgeanchor{SLM-04-01-001}{朴素贝叶斯法的学习与分类}
+学习阶段估计类别先验和各特征在类别条件下的分布；分类阶段将观测特征代入各类别得分，输出得分最大的类别。训练与预测共用同一生成模型，但二者的输入和计算任务不同。
+
+% KNOWLEDGE-PLAN: KN-V2-C14-CONCEPT-004 L1
+\paragraph{读前自检：基本方法。}朴素贝叶斯在$Y=c_k$下假设各特征条件独立；请展开$P(X=x,Y=c_k)=P(Y=c_k)\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}\mid Y=c_k)$，并核对分类时只需比较各$k$的这一未归一化得分。\par
+
+\knowledgeanchor{SLM-04-01-002}{基本方法}
+\phantomsection\label{struct:V2-C03-CH07}
+% KNOWLEDGE-PLAN: KN-V2-C14-DEFINITION-001 L1
+\paragraph{读前自检：朴素贝叶斯条件独立模型。}围绕朴素贝叶斯条件独立模型，先采用条件“$P(X=x,Y=c_k)=P(Y=c_k)\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}\mid Y=c_k).$”，再将$P(X=x,Y=c_k)$左端按正文定义展开一层，再逐项对齐右端；最后验证配合$P(Y=c_k)$。\par
+
+\begin{definition}[朴素贝叶斯条件独立模型]
+若对每个类别$c_k$和输入$x=(x^{(1)},\ldots,x^{(n)})$有
+\[
+P(X=x\mid Y=c_k)=\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}\mid Y=c_k),
+\]
+则称特征在给定类别后条件独立。配合$P(Y=c_k)$，得到朴素贝叶斯联合模型
+\[
+P(X=x,Y=c_k)=P(Y=c_k)\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}\mid Y=c_k).
+\]
+\end{definition}
+
+\phantomsection\label{struct:V2-C03-CH08}
+\textbf{模型。}若第$j$个离散特征有$S_j$个取值，完整类条件表每个类别需要$\prod_jS_j-1$个自由参数；条件独立模型只需$\sum_j(S_j-1)$个。加上$K-1$个类别先验自由度，总参数量从指数级组合表降为对特征数近似线性增长。
+
+\phantomsection\label{struct:V2-C03-CH09}
+\textbf{学习策略。}以类条件独立模型近似真实联合分布，并用似然或后验均值估计参数。即使条件独立不完全成立，只要各类别得分的相对次序仍正确，分类器仍可能有效；概率校准则通常比类别排序更敏感。
+
+\phantomsection\label{struct:V2-C03-CH17}
+% FIGURE-KNOWLEDGE: fig:V2-C03-star=SLM-04-01-002
+\input{../../绘图源码/第02册_基础监督学习方法/V2-C03/fig_v2_c03_star.tex}
+图\ref{fig:V2-C03-star}中从$Y$指向各特征的箭头表示类条件分布$P(X^{(j)}\mid Y)$；特征之间没有边，对应给定$Y$后的乘积分解。该图不表示特征在无条件分布下相互独立。
+
+
+\SLReviewSection{朴素贝叶斯学习与分类}{sec:V2-C03-S02}
+\knowledgeanchor{SLM-04-01-003}{后验概率最大化的含义}
+由贝叶斯公式与条件独立假设，
+\[
+P(Y=c_k\mid X=x)=
+\frac{P(Y=c_k)\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}\mid Y=c_k)}
+{\sum_{r=1}^{K}P(Y=c_r)\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}\mid Y=c_r)}.
+\]
+分母对所有候选类别相同，因此分类时只需比较分子。
+
+% KNOWLEDGE-PLAN: KN-V2-C14-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：朴素贝叶斯算法。}朴素贝叶斯算法中的“$\mathcal R(c_r\mid x)=\sum_{k\ne r}P(Y=c_k\mid X=x) =1-P(Y=c_r\mid X=x).$”决定可执行范围；请把$\mathcal R(c_r\mid x)$展开一次并检查其类型或边界，结果须满足需要概率输出、阈值决策或校准评估时必须归一化。\par
+
+\knowledgeanchor{SLM-04-01-004}{朴素贝叶斯算法}
+定义未归一化类别得分
+\[
+q_k(x)=P(Y=c_k)\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}\mid Y=c_k),
+\]
+则分类规则为$\widehat y=\argmax_{c_k}q_k(x)$。数值实现使用
+\[
+s_k(x)=\log P(Y=c_k)+\sum_{j=1}^{n}\log P(X^{(j)}=x^{(j)}\mid Y=c_k),
+\]
+因为对数严格递增，所以$\argmax_k s_k(x)=\argmax_k q_k(x)$。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V2-C03-CH11}
+% CORE-DERIVATION-PLAN: KN-V2-C14-DERIVATION-001
+\SLKnowledgeBridge{直接把 $0$--$1$ 条件风险改写成 $1$ 减后验概率。}{固定输入 $x$，候选输出类别 $c_r$ 与后验概率 $P(Y=c_k\mid x)$。}{类别有限，后验概率非负且总和为 $1$。}{先写 $R(c_r\mid x)=\sum_k\ind\{c_k\neq c_r\}P(Y=c_k\mid x)$。}
+
+\begin{derivationgoalbox}
+从条件风险出发，证明在等代价$0$--$1$损失下，后验概率最大化等价于Bayes风险最小化。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+对固定输入$x$，若决定输出类别$c_r$，条件风险是所有真实类别损失按后验概率加权的和。
+\end{derivationprepbox}
+
+\phantomsection\label{struct:V2-C03-CH12}
+\begin{theorem}[后验最大化的Bayes最优性]\label{thm:V2-C03-map}
+本章统一用$\mathbb I\{\cdot\}$表示指示函数。在$L(y,c)=\mathbb I\{y\ne c\}$下，对每个给定输入$x$，任何后验概率最大的类别都是条件风险最小的分类决定。
+\end{theorem}
+
+\phantomsection\label{struct:V2-C03-CH13}
+% CORE-DERIVATION-PLAN: KN-V2-C14-DERIVATION-002
+\SLKnowledgeBridge{在概率单纯形约束下从似然推出类别先验与类条件概率。}{计数 $m_l\ge0$、参数 $\theta_l\ge0$，满足 $\sum_l\theta_l=1$。}{总计数 $M=\sum_lm_l>0$；零计数分量允许得到边界估计。}{先写 $\ell(\theta)=\sum_lm_l\log\theta_l$，并为归一化约束引入拉格朗日乘子。}
+
+\begin{proof}
+\textbf{推导第1步：}输出$c_r$的条件风险为
+\[
+\mathcal R(c_r\mid x)=\sum_{k=1}^{K}L(c_k,c_r)P(Y=c_k\mid X=x).
+\]
+\textbf{推导第2步：}$0$--$1$损失只在$k\ne r$时为1，因此
+\[
+\mathcal R(c_r\mid x)=\sum_{k\ne r}P(Y=c_k\mid X=x)
+=1-P(Y=c_r\mid X=x).
+\]
+\textbf{推导第3步：}常数1与$r$无关，故最小化条件风险等价于最大化$P(Y=c_r\mid X=x)$。若多个类别后验并列，它们具有相同的最小条件风险，需用预先约定规则处理并列。
+\end{proof}
+
+\phantomsection\label{struct:V2-C03-CH15}
+\begin{probabilitybox}
+类别先验表达分类前的基准比例，似然乘积表达观测特征对类别的支持，归一化分母把非负得分变成概率。只做分类时分母可约去；需要概率输出、阈值决策或校准评估时必须归一化。
+\end{probabilitybox}
+
+
+% KNOWLEDGE-PLAN: KN-V2-C14-CONCEPT-006 L1
+\paragraph{读前自检：朴素贝叶斯法的参数估计。}朴素贝叶斯计数$N_k$与$N_{jkl}$分别统计类别和类别内特征取值；请对固定$k,j$将$N_{jkl}$按$l$求和，核对等于$N_k$，再归一得到条件概率行。\par
+
+\SLTeachSection{极大似然参数估计}{sec:V2-C03-S03}
+\knowledgeanchor{SLM-04-02-001}{朴素贝叶斯法的参数估计}
+训练阶段需要估计$\pi_k=P(Y=c_k)$与$\theta_{jkl}=P(X^{(j)}=a_{jl}\mid Y=c_k)$。定义
+\[
+N_k=\sum_{i=1}^{N}\mathbb I\{y_i=c_k\},\qquad
+N_{jkl}=\sum_{i=1}^{N}\mathbb I\{x_i^{(j)}=a_{jl},y_i=c_k\}.
+\]
+
+% KNOWLEDGE-PLAN: KN-V2-C14-FORMULA-002 L1
+\paragraph{读前自检：极大似然估计。}极大似然估计要求先确认“$\widehat\pi_k=\frac{N_k}{N},\qquad \widehat\theta_{jkl}=\frac{N_{jkl}}{N_k},$”；请随后把观测对应因子代入$\widehat\pi_k$并合并一次，用第一式是类别频率，第二式是在类别$c_k$子样本中的特征值频率验收。\par
+
+\knowledgeanchor{SLM-04-02-002}{极大似然估计}
+极大似然估计为
+\[
+\widehat\pi_k=\frac{N_k}{N},\qquad
+\widehat\theta_{jkl}=\frac{N_{jkl}}{N_k},
+\]
+其中$N_k>0$。第一式是类别频率，第二式是在类别$c_k$子样本中的特征值频率。
+
+% KNOWLEDGE-PLAN: KN-V2-C14-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：学习与分类算法。}离散朴素贝叶斯先由训练集形成$N_k,N_{jkl}$并转成概率表；请将查询的每个取值按训练时字典映射、累计各类别对数得分，再按冻结并列规则输出类别，核对预测阶段未重估编码。\par
+
+\knowledgeanchor{SLM-04-02-003}{学习与分类算法}
+学习先扫描训练集形成$N_k,N_{jkl}$，再转成概率表；分类将查询值映射到各表项并累计类别对数得分。计数表、取值字典和并列规则都是模型的一部分，预测时必须沿用训练时的编码。
+
+\paragraph{扩展讨论：极大似然解在单纯形边界上的严格处理。}
+主线只需使用频率闭式解并认识“零计数产生零概率”；下面证明解释为何零计数坐标的最优解落在边界，不参与后续分类例题的计算流程。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\begin{derivationgoalbox}
+在概率和为1的约束下，从多项分布似然推出类别先验和类条件概率的频率估计。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+对固定$j,k$，把$\theta_l=\theta_{jkl}$、$m_l=N_{jkl}$，有$\theta_l\ge0$、$\sum_l\theta_l=1$且$\sum_lm_l=N_k$。
+\end{derivationprepbox}
+\textbf{推导第1步：先分离正计数支持。}与$\theta$有关的对数似然为
+\[
+\ell(\theta)=\sum_{l=1}^{S_j}m_l\log\theta_l,
+\qquad 0\log0:=0.
+\]
+设$I_+=\{l:m_l>0\}$。当$N_k>0$时$I_+$非空。任何在$I_+$上取$\theta_l=0$的候选都有$\ell(\theta)=-\infty$，而单纯形内点给出有限似然，故最大点在$I_+$上的坐标必严格为正。若这样的候选还把总质量$s>0$分给$I_+^c$，则把正计数坐标改为$\theta'_l=\theta_l/(1-s)$并把零计数坐标改为$0$，可使目标增加
+\[
+\ell(\theta')-\ell(\theta)=-N_k\log(1-s)>0.
+\]
+因此最优解必在边界上满足$\theta_l=0$（$l\notin I_+$）。
+
+\textbf{推导第2步：在正计数支持上求内点解。}构造
+\[
+\mathcal L(\theta,\nu)
+=\sum_{l\in I_+}m_l\log\theta_l
++\nu\left(\sum_{l\in I_+}\theta_l-1\right).
+\]
+此时每个$m_l,\theta_l$都严格为正，驻点条件合法，并给出
+\[
+\frac{m_l}{\theta_l}+\nu=0,
+\qquad
+1=-\frac{\sum_{l\in I_+}m_l}{\nu}
+=-\frac{N_k}{\nu}.
+\]
+
+\textbf{推导第3步：恢复单纯形边界。}故$\nu=-N_k$，并得到
+\[
+\widehat\theta_l=
+\begin{cases}
+m_l/N_k,&m_l>0,\\
+0,&m_l=0.
+\end{cases}
+\]
+对类别计数作同样的正支持论证，得到$\widehat\pi_k=N_k/N$（$N>0$）。若$N_k=0$，则该类别的所有$m_l$均为0，类条件似然在整个单纯形上为常数，点估计不可由数据识别；此时应使用下节先验/平滑，而不能写$m_l/N_k$。
+
+\phantomsection\label{struct:V2-C03-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}离散朴素贝叶斯的极大似然在分组计数后有闭式解，无需迭代优化。对数似然对概率向量是凹函数，内部驻点为全局最大；零计数使最优点落在边界，也造成后续概率乘积被单个零因子归零。
+\end{optimizationbox}
+
+
+\SLAdvancedSection{贝叶斯估计与平滑}{sec:V2-C03-S04}
+\knowledgeanchor{SLM-04-02-004}{贝叶斯估计}
+对每个类别先验概率赋予对称Dirichlet参数$\lambda$，并对每个类别内第$j$个特征的$S_j$值赋予同样参数，后验均值为
+\[
+\widetilde\pi_k=\frac{N_k+\lambda}{N+K\lambda},\qquad
+\widetilde\theta_{jkl}=\frac{N_{jkl}+\lambda}{N_k+S_j\lambda},
+\quad \lambda>0.
+\]
+$\lambda=1$是加一平滑；当$\lambda\downarrow0$且相关分母非零时退回极大似然频率。
+
+\begin{theorem}[对称平滑的概率合法性]
+若$\lambda>0$，则所有$\widetilde\pi_k$与$\widetilde\theta_{jkl}$严格为正，并分别对$k$和$l$求和为1。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V2-C14-PROOF-002 L1
+\paragraph{读前自检：证明：对称平滑的概率合法性。}对称平滑令$\widetilde\theta_{jkl}=(N_{jkl}+\lambda)/(N_k+\lambda S_j)$且$\lambda>0$；请对$l=1,\ldots,S_j$求和，核对分子和等于分母，故每项为正且总和为1。\par
+
+\begin{proof}
+计数非负而$\lambda>0$，故每个分子严格为正，分母也为正。又有$\sum_kN_k=N$，所以
+$\sum_k\widetilde\pi_k=(N+K\lambda)/(N+K\lambda)=1$。固定$j,k$时，$\sum_lN_{jkl}=N_k$，因此
+$\sum_l\widetilde\theta_{jkl}=(N_k+S_j\lambda)/(N_k+S_j\lambda)=1$。故这些量构成合法概率分布。
+\end{proof}
+
+当$N_k>0$时，平滑还可写成样本频率和均匀分布的凸组合：
+\[
+\widetilde\theta_{jkl}=
+\frac{N_k}{N_k+S_j\lambda}\frac{N_{jkl}}{N_k}
++\frac{S_j\lambda}{N_k+S_j\lambda}\frac1{S_j}.
+\]
+若$N_k=0$，不能使用含$N_{jkl}/N_k$的拆分式；直接由原平滑公式得到
+\[
+\widetilde\theta_{jkl}
+=\frac{0+\lambda}{0+S_j\lambda}
+=\frac1{S_j}.
+\]
+因此空类别得到均匀类条件分布；非空类别中，类别样本越少，均匀先验的相对权重越大，数据增加后样本频率逐渐主导。只有在$N_k>0$时，$\lambda\downarrow0$才退回经验频率$N_{jkl}/N_k$。
+
+
+\SLAdvancedSection{参数估计、例题与练习}{sec:V2-C03-S05}
+实际实现应保存计数的取值字典、类别顺序和平滑强度，并在对数域累计得分。测试时遇到训练字典之外的新取值，需要预先设计“未知”桶或使用能为未知事件分配质量的模型；不能把不存在的表项静默当作概率1。
+
+\phantomsection\label{struct:V2-C03-CH10}
+\phantomsection\label{struct:V2-C03-CH19}
+\phantomsection\label{struct:V2-C03-CH20}
+\phantomsection\label{struct:V2-C03-CH21}
+% KNOWLEDGE-PLAN: KN-V2-C14-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：带对称平滑的离散朴素贝叶斯训练与分类：执行契约。}带对称平滑的离散朴素贝叶斯训练与分类输入“离散训练集$T$、查询$x$、取值字典$A_j$、类别集合、平滑强度$\lambda$与归一化容差$\tau_{\rm norm}$”，条件“$T\ne\varnothing$”；请执行“完整样本计数后增加$i_{\rm done}$”，以“训练及预测有限扫描完成或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V2-C14-ALGORITHM_IDEA-004 L2
+\begin{keypointbox}[title={带对称平滑的离散朴素贝叶斯训练与分类：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={离散训练集$T$、查询$x$、取值字典$A_j$、类别集合、平滑强度$\lambda$与归一化容差$\tau_{\rm norm}$},
+  output={最后合法模型、预测、得分、后验、训练样本数$i_{\rm done}$、预测因子数$e_{\rm done}$、状态与诊断},
+  preconditions={$T\ne\varnothing$；$K\ge2$；$\lambda>0$有限；$\tau_{\rm norm}\ge0$有限；类别、维数和训练/查询编码均合法},
+  initialization={$\mathcal M=\varnothing,\widehat y=\bot,i_{\rm done}=e_{\rm done}=0$；验证后计数全置零},
+  loop={先扫描$N$个训练样本计数，再对$K$类与$n$个特征累计预测对数因子},
+  update={完整样本计数后增加$i_{\rm done}$；有限候选对数得分形成后增加$e_{\rm done}$},
+  domain={计数为非负整数；平滑概率有限且位于$[0,1]$；对数和归一化结果有限},
+  failure={编码或参数非法返回$\mathtt{invalid\_input}$；概率表、对数和或归一化失败返回$\mathtt{numerical\_failure}$并保留计数或训练模型},
+  stop={训练及预测有限扫描完成或首次失败时停止},
+  budget={固定完成$N$个训练样本与至多$Kn$个已观测预测因子；无优化迭代预算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$i_{\rm done}$记录完整计数样本；$e_{\rm done}$记录已提交预测因子},
+  diagnostics={非法取值或失败表项$(i,j,k)$、归一化残差、未知桶次数与最终类别得分},
+  complexity={训练$O(Nn+K\sum_jS_j)$；单次预测$O(Kn)$；表空间$O(K+K\sum_jS_j)$}
+}
+\begin{algorithm}[H]
+\caption{带对称平滑的离散朴素贝叶斯训练与分类}\label{alg:V2-C03-nb}
+\KwIn{训练集$T=\{(x_i,y_i)\}_{i=1}^{N}$；待分类输入$x$；各特征取值集合$A_j$}
+\KwOut{最后合法模型$\mathcal M$、预测$\widehat y$、对数得分与后验概率；实际完成训练样本数$i_{\rm done}$、预测因子数$e_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{类别集合$\{c_1,\ldots,c_K\}$；平滑强度$\lambda>0$；归一化核验容差$\tau_{\rm norm}\ge0$；固定并列、缺失值与未知桶规则}
+$\mathcal M\leftarrow\varnothing$，$\widehat y\leftarrow\bot$，$i_{\rm done}\leftarrow0$，$e_{\rm done}\leftarrow0$，诊断初始化为空\;
+若$T=\varnothing$、$K<2$、$\lambda$不是有限正数、$\tau_{\rm norm}$不是有限非负数、登记字典为空、样本维数或类别非法、训练/查询值无法由登记字典或预设“未知”桶编码，则返回空模型、计数$0$、$\mathtt{invalid\_input}$及字段或取值位置诊断\;
+初始化$N_k\leftarrow0$、$N_{jkl}\leftarrow0$，并把计数结构作为当前最后合法$\mathcal M$\;
+\For{$i\leftarrow1$ \KwTo $N$}{
+  更新$N_{y_i}\leftarrow N_{y_i}+1$
+  \For{$j\leftarrow1$ \KwTo $n$}{按$x_i^{(j)}$的取值更新对应$N_{j,y_i,l}$}
+  $i_{\rm done}\leftarrow i$\;
+}
+在临时表中按平滑公式计算$\widetilde\pi_k$与$\widetilde\theta_{jkl}$；若分母、概率或对数不是有限实数，或概率未落在$[0,1]$，则返回计数模型、$i_{\rm done},e_{\rm done}$、$\mathtt{numerical\_failure}$及失败表项诊断\;
+核验各概率表归一化后，提交$\mathcal M\leftarrow(\widetilde\pi,\widetilde\theta,A_1,\ldots,A_n)$\;
+\For{$k\leftarrow1$ \KwTo $K$}{
+  初始化$s_k\leftarrow\log\widetilde\pi_k$
+  \For{$j\leftarrow1$ \KwTo $n$}{若$x^{(j)}$已观测，则先计算候选$s_k^+\leftarrow s_k+\log\widetilde\theta_{jk,l(x^{(j)})}$；若非有限则返回最后合法模型、未定义预测、当前计数、$\mathtt{numerical\_failure}$，诊断为失败项$(k,j)$；否则$s_k\leftarrow s_k^+$、$e_{\rm done}\leftarrow e_{\rm done}+1$}
+}
+取$\widehat y\leftarrow c_{\argmax_k s_k}$，用log-sum-exp在临时向量中归一化；若归一化常数或后验非有限、为负，或$|\sum_kp_k-1|>\tau_{\rm norm}$，则返回最后合法模型与$\mathtt{numerical\_failure}$诊断\;
+返回$\mathcal M,\widehat y,\boldsymbol s,\boldsymbol p,i_{\rm done}=N,e_{\rm done},\mathtt{completed}$，最终诊断记录类别票据、归一化残差和未知桶使用次数\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+\phantomsection\label{struct:V2-C03-CH22}
+\textbf{初始化。}计数必须从零开始，类别和特征值使用固定索引；训练前先确定缺失值与未知值的编码策略。
+
+\phantomsection\label{struct:V2-C03-CH23}
+\textbf{更新规则。}每个样本恰好更新一个类别计数，并为每个已观测特征更新一个类条件计数；预测阶段只累加对应表项的对数。
+
+\phantomsection\label{struct:V2-C03-CH24}
+\textbf{停止条件。}训练扫描完$N$个样本、预测扫描完$K$个类别和$n$个特征即停止；该闭式算法没有迭代容差。
+
+\phantomsection\label{struct:V2-C03-CH25}
+\textbf{收敛条件。}有限扫描精确得到给定数据上的平滑估计。若模型正确、取值集合固定且样本独立同分布，频率估计随各类样本数增加收敛到相应概率；模型错设不会因样本增加而消失。
+
+\textbf{有限步终止与统计一致性。}训练与预测均为有限计数、查表和归一化，不存在数值优化迭代；上句的“收敛到概率”是统计一致性陈述。输入条件不满足、未知值无法编码或log-sum-exp前得分不是有限实数时，算法停止并说明原因。
+
+\phantomsection\label{struct:V2-C03-CH26}
+\phantomsection\label{struct:V2-C03-CH27}
+% KNOWLEDGE-PLAN: KN-V2-C14-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：参数估计、例题与练习。}先锁定参数估计、例题与练习的条件“以下界假设每个样本的$n$个离散特征均可在单位时间映射到已登记状态，类别与条件概率表按稠密数组访问”：由$n$的总成本剥离一次迭代或一次样本因子，所得结果应满足存储复杂度：类别先验和全部离散条件表为$O(K+K\sum_jS_j)$，计数可原位转成对数概率。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界假设每个样本的$n$个离散特征均可在单位时间映射到已登记状态，类别与条件概率表按稠密数组访问；稀疏输入只扫描已观测项时，应以非零特征数代替$n$。开放词表扩容、哈希冲突和数据读取成本需另计。
+设样本数为$N$、特征数为$n$、类别数为$K$，第$j$个离散特征有$S_j$个取值。
+
+\textbf{训练复杂度：}一次稠密扫描计数为$O(Nn)$，将计数转成概率表需$O(K\sum_jS_j)$。
+
+\textbf{预测复杂度：}单个输入对$K$个类别累计$n$个条件对数概率，时间为$O(Kn)$；稀疏输入可按非零特征数计。
+
+\textbf{存储复杂度：}类别先验和全部离散条件表为$O(K+K\sum_jS_j)$，计数可原位转成对数概率。
+\end{complexitybox}
+
+\phantomsection\label{struct:V2-C03-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}在离散特征的一位有效编码$\phi(x)$中，对数得分$s_k(x)$是$\phi(x)$的线性函数；任意两类的决策边界由$s_k(x)=s_r(x)$给出。因此，生成模型的条件独立参数在对数空间诱导出分段线性的类别比较。
+\end{geometrybox}
+
+\phantomsection\label{struct:V2-C03-CH18}
+\phantomsection\label{struct:V2-C03-CH32}
+\begin{example}[加一平滑后的朴素Bayes分类]\label{exm:V2-C03-smoothed-score}
+两类$A,B$的训练计数为6和4。两个二值特征中，类$A$取值1的计数为4和3，类$B$为1和3。取$\lambda=1$，分类$x=(1,1)$。
+\phantomsection\label{struct:V2-C03-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V2-C03-smoothed-score}
+\begin{solution}
+\SLReadTranslation{题目要求完成“加一平滑后的朴素Bayes分类”：依据题面概率模型求出目标量，并解释条件化、归一化或边缘化。}
+\SolGiven 题面概率、权重或密度均处于合法范围；条件分母/归一化常数应为正，支持集与随机变量取值域保持一致。
+\SLMethodTrigger{先写支持集、条件分母或归一化常数，再代入概率公式并做概率和/边缘核验。}
+\SolDerive
+二类先验和平滑条件概率为
+\[
+\begin{aligned}
+\widehat P(A)&=\frac{6+1}{10+2}=\frac7{12},&
+\widehat P(B)&=\frac{4+1}{10+2}=\frac5{12},\\
+\widehat P(X_1=1\mid A)&=\frac{4+1}{6+2}=\frac58,&
+\widehat P(X_2=1\mid A)&=\frac{3+1}{6+2}=\frac48,\\
+\widehat P(X_1=1\mid B)&=\frac{1+1}{4+2}=\frac26,&
+\widehat P(X_2=1\mid B)&=\frac{3+1}{4+2}=\frac46.
+\end{aligned}
+\]
+未归一化得分及其归一化为
+\[
+\begin{aligned}
+q_A&=\frac7{12}\frac58\frac48=\frac{35}{192}\approx0.1823,\\
+q_B&=\frac5{12}\frac26\frac46=\frac5{54}\approx0.0926,\\
+P(A\mid x)&=\frac{q_A}{q_A+q_B}=\frac{189}{285}=\frac{63}{95}\approx0.663,\\
+P(B\mid x)&=\frac{32}{95}\approx0.337.
+\end{aligned}
+\]
+独立地比较后验赔率，$q_A/q_B=63/32>1$；且$63/95+32/95=1$验证归一化。由于$q_A>q_B$，结论是在$x=(1,1)$处预测类别$A$，其归一化后验概率为$63/95$。
+\end{solution}
+
+\phantomsection\label{struct:V2-C03-CH28}
+\phantomsection\label{struct:V2-C03-CH29}
+\begin{applicabilitybox}
+\textbf{适用条件：}朴素贝叶斯适合高维稀疏数据、样本较少、需要快速增量计数或希望得到可解释特征证据的任务。\textbf{局限性：}强相关特征会被重复计入证据；离散化和分布族选择影响结果；未校准后验可能过度自信；训练字典之外的取值需要额外机制。
+
+\textbf{复杂度边界：}稠密离散数据的计数训练时间复杂度为$O(Nn)$，单样本对$K$类评分的时间复杂度为$O(Kn)$；保存各类别、各特征取值的条件概率表时，空间复杂度为$O\!\left(K\sum_{j=1}^{n}S_j\right)$，其中$S_j$是第$j$个特征的取值数。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V2-C03-CH30}
+% KNOWLEDGE-PLAN: KN-V2-C14-BOUNDARY-003 L1
+\paragraph{读前自检：常见错误与误用边界：参数估计、例题与练习。}对参数估计、例题与练习，条件“边界框首项禁止把条件独立误写成无条件独立”不可省；请把固定错误“把条件独立误写成无条件独立”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，再用改写后的运算或判断有定义，且不再触发“把条件独立误写成无条件独立”作检查。\par
+
+\begin{warningbox}
+典型误用包括：把朴素贝叶斯与参数贝叶斯估计混为一谈；把条件独立误写成无条件独立；条件概率分母误用总样本数；分类时漏乘类别先验；直接连乘大量小概率造成下溢；平滑只改分子而不改分母；把缺失特征当作概率0；用同一强相关信息构造多个重复特征。
+\end{warningbox}
+
+\phantomsection\label{struct:V2-C03-CH31}
+\begin{comparisonbox}
+\textbf{概念对比。}
+极大似然用原始频率，零计数产生零概率；对称Dirichlet后验均值把频率向均匀分布收缩。朴素贝叶斯是带条件独立结构的生成分类器，“Bayes最优分类器”则指在真实后验已知时最小化给定损失的决策规则。前者用估计模型近似后者，两者不能互换称呼。
+\end{comparisonbox}
+
+\begin{SLRunningExample}{RUN-CLS-2D-01}{V2-C03-naive-bayes}{贯穿例：四点二维分类数据}{把两个坐标视为二值离散特征，展示条件概率分解与平滑，而不把条件独立当作数据事实。}
+复用四点数据，并令每个特征的取值字典为$\{-1,+1\}$。采用对称加一平滑时，查询$x=(1,-1)$的两个未归一化类别得分为
+\[
+\underbrace{\frac12\cdot\frac34\cdot\frac12}_{Y=+1}=\frac{3}{16},
+\qquad
+\underbrace{\frac12\cdot\frac14\cdot\frac12}_{Y=-1}=\frac{1}{16},
+\]
+因而预测$+1$。离散取值、固定字典和正平滑系数保证计算合法；给定类别后两坐标条件独立仍是本章的建模假设，不能由这四个样本验证。上一站见\SLRunningExampleRef{RUN-CLS-2D-01}{V2-C02-knn}{\kNN{}法的局部投票表示}；下一站见\SLRunningExampleRef{RUN-CLS-2D-01}{V2-C04-decision-tree}{决策树的递归划分表示}。
+\end{SLRunningExample}
+
+
+\phantomsection\label{struct:V2-C03-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V2-C03-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-4-0001
+% EXERCISE-TYPE: derivation_completion,comprehensive_proof_calculation
+% SOLUTION-SOURCE: original_book; source_id=EXR-4-0001
+\begin{exercise}\label{ex:V2-C03-S03-01}
+从离散朴素贝叶斯模型的多项分布似然出发，在概率和为1的约束下，推导类别先验与类条件概率的极大似然估计。须写出计数、拉格朗日函数和归一化步骤。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S03-01}
+\begin{chapterexercisesolution}{ex:V2-C03-S03-01}
+记
+\[
+N_k=\sum_i\mathbb I\{y_i=c_k\},
+\qquad
+N_{jkl}=\sum_i\mathbb I\{y_i=c_k,x_i^{(j)}=a_{jl}\},
+\]
+并约定$0\log0=0$。先考虑$N>0$且所有$N_k>0$的内点情形。类别先验的拉格朗日函数为
+\[
+\mathcal L(\pi,\nu)=\sum_kN_k\log\pi_k+\nu\left(\sum_k\pi_k-1\right).
+\]
+驻点与归一化条件给出
+\[
+\frac{N_k}{\pi_k}+\nu=0
+\Longrightarrow
+\pi_k=-\frac{N_k}{\nu},
+\qquad
+1=\sum_k\pi_k=-\frac{N}{\nu}
+\Longrightarrow
+\widehat\pi_k=\frac{N_k}{N}.
+\]
+若某些$N_k=0$，令$I_+=\{k:N_k>0\}$。任何给零计数类别分配总质量$s>0$的候选，都可把其余概率除以$1-s$而得到更大的对数似然：
+\[
+\sum_{k\in I_+}N_k\log\frac{\pi_k}{1-s}
+-\sum_{k\in I_+}N_k\log\pi_k
+=-N\log(1-s)>0.
+\]
+故边界最优解仍为
+\[
+\widehat\pi_k=\frac{N_k}{N},
+\]
+其中零计数类别满足$\widehat\pi_k=0$。
+
+固定$j,k$且$N_k>0$，对$\theta_{jk1},\ldots,\theta_{jkL_j}$同理有
+\[
+\begin{aligned}
+\mathcal L_{jk}(\theta,\mu)
+&=\sum_lN_{jkl}\log\theta_{jkl}
+ +\mu\left(\sum_l\theta_{jkl}-1\right),\\
+\frac{N_{jkl}}{\theta_{jkl}}+\mu&=0,
+\qquad
+1=-\frac{N_k}{\mu},\\
+\widehat\theta_{jkl}&=\frac{N_{jkl}}{N_k}.
+\end{aligned}
+\]
+零单元格$N_{jkl}=0$对应单纯形边界$\widehat\theta_{jkl}=0$，不能把含$1/\theta_{jkl}$的内点驻点式直接代入该格。若$N_k=0$，则所有$N_{jkl}=0$，类条件似然在整个单纯形上为常数，$\theta_{jkl}$不可由数据识别，需要平滑或先验；若$N=0$，类别先验也同样不可识别。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-4-0002
+% EXERCISE-TYPE: derivation_completion,probability_explanation
+% SOLUTION-SOURCE: original_book; source_id=EXR-4-0002
+\begin{exercise}\label{ex:V2-C03-S04-01}
+对类别数$K$、第$j$个特征取值数$S_j$和对称伪计数$\lambda>0$，推导平滑后的$\widetilde\pi_k$与$\widetilde\theta_{jkl}$，并验证两组概率分别归一化。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S04-01}
+\begin{chapterexercisesolution}{ex:V2-C03-S04-01}
+类别计数的总和为$\sum_kN_k=N$。给每个类别加入伪计数$\lambda$后，总伪样本数增加$K\lambda$，因此
+\[
+\widetilde\pi_k=\frac{N_k+\lambda}{N+K\lambda},\qquad
+\sum_{k=1}^{K}\widetilde\pi_k=\frac{N+K\lambda}{N+K\lambda}=1.
+\]
+对固定$j,k$，有$\sum_{l=1}^{S_j}N_{jkl}=N_k$。给每个取值加入$\lambda$后，
+\[
+\widetilde\theta_{jkl}=\frac{N_{jkl}+\lambda}{N_k+S_j\lambda},\qquad
+\sum_{l=1}^{S_j}\widetilde\theta_{jkl}=1.
+\]
+由于$\lambda>0$，分子和分母均为正，未出现过的取值不再得到零概率。该推导对应对称Dirichlet先验的后验均值或伪计数解释；若改用非对称先验，分子和分母中的伪计数也必须相应改变。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: basic_calculation,method_comparison
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C03-S01-01}
+设$K=3$，有4个特征且每个特征均有5个取值。比较完整离散类条件表与朴素条件独立模型的自由参数数目，不含类别先验。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S01-01}
+\begin{chapterexercisesolution}{ex:V2-C03-S01-01}
+完整联合取值数为
+\[
+M=\prod_{j=1}^{4}5=5^4=625.
+\]
+每个类别的条件概率表满足一条和为1的约束，故完整模型的自由参数数为
+\[
+d_{\rm full}=K(M-1)=3(625-1)=1872.
+\]
+朴素条件独立模型为每个类别、每个特征分别保存一个五项分布，因此
+\[
+d_{\rm NB}
+=K\sum_{j=1}^{4}(5-1)
+=3\times4\times4
+=48.
+\]
+参数减少量为$1872-48=1824$；这通常降低估计方差，但若条件独立假设不成立，会引入模型偏差。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: probability_explanation,comprehensive_proof_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C03-S01-03}
+构造一个例子，说明$X^{(1)}$与$X^{(2)}$给定$Y$后独立，但无条件下并不独立。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S01-03}
+\begin{chapterexercisesolution}{ex:V2-C03-S01-03}
+令
+\[
+P(Y=0)=P(Y=1)=\frac12,
+\qquad
+X^{(1)}=Y,\quad X^{(2)}=Y.
+\]
+给定$Y=y$后，对任意$a,b\in\{0,1\}$，
+\[
+\begin{aligned}
+P(X^{(1)}=a,X^{(2)}=b\mid Y=y)
+&=\mathbb I\{a=y,b=y\}\\
+&=\mathbb I\{a=y\}\mathbb I\{b=y\}\\
+&=P(X^{(1)}=a\mid Y=y)P(X^{(2)}=b\mid Y=y).
+\end{aligned}
+\]
+故$X^{(1)}\perp X^{(2)}\mid Y$。但无条件下
+\[
+P(X^{(1)}=1,X^{(2)}=1)=\frac12
+\neq
+\frac12\cdot\frac12
+=P(X^{(1)}=1)P(X^{(2)}=1),
+\]
+所以二者并不边缘独立；共同变量$Y$造成了相关性。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: probability_explanation,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C03-S02-01}
+两类先验为$0.6,0.4$。对观测$x$，两类的条件概率乘积为$0.10,0.18$。求未归一化得分、后验概率和预测类别。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S02-01}
+\begin{chapterexercisesolution}{ex:V2-C03-S02-01}
+未归一化得分为
+\[
+q_1=0.6\times0.10=0.060,
+\qquad
+q_2=0.4\times0.18=0.072.
+\]
+归一化常数和后验为
+\[
+\begin{aligned}
+Z&=q_1+q_2=0.132,\\
+P(Y=1\mid x)&=\frac{0.060}{0.132}=\frac5{11}\approx0.455,\\
+P(Y=2\mid x)&=\frac{0.072}{0.132}=\frac6{11}\approx0.545.
+\end{aligned}
+\]
+因此$\widehat y=2$。比较的是“先验$\times$条件似然”，条件似然较大的类别不一定获胜。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: probability_explanation,basic_calculation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C03-S02-03}
+二分类中，把真实正类判为负类的代价为4，把真实负类判为正类的代价为1。求选择正类的后验概率阈值。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S02-03}
+\begin{chapterexercisesolution}{ex:V2-C03-S02-03}
+记$p=P(Y=1\mid x)$，决策$\widehat y\in\{0,1\}$。两种决策的条件风险为
+\[
+R(1\mid x)=1\cdot(1-p),
+\qquad
+R(0\mid x)=4p.
+\]
+选择正类当且仅当
+\[
+R(1\mid x)\leq R(0\mid x)
+\Longleftrightarrow
+1-p\leq4p
+\Longleftrightarrow
+p\geq\frac15.
+\]
+故最小风险阈值为$1/5$；$p=1/5$时两种决策风险相同，须按预先规定的平局规则处理。$1/2$阈值只对应两类错分代价相等的情形。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: basic_calculation,parameter_update
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C03-S03-02}
+在类别$c$的10个样本中，某三值特征的计数为$6,3,1$。求其类条件概率极大似然估计并计算和。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S03-02}
+\begin{chapterexercisesolution}{ex:V2-C03-S03-02}
+对三个取值$l=1,2,3$，极大似然估计为
+\[
+\widehat\theta_l
+=\frac{N_l}{N_c},
+\qquad
+(N_1,N_2,N_3)=(6,3,1),\quad N_c=10.
+\]
+因此
+\[
+(\widehat\theta_1,\widehat\theta_2,\widehat\theta_3)
+=\left(\frac6{10},\frac3{10},\frac1{10}\right)
+=(0.6,0.3,0.1),
+\]
+并且
+\[
+\sum_{l=1}^{3}\widehat\theta_l
+=\frac{6+3+1}{10}=1.
+\]
+分母是类别$c$内样本数$N_c$；用全部训练样本数会得到联合频率而非类条件概率。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: error_diagnosis,probability_explanation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C03-S03-03}
+解释一个训练中未出现的“类别--特征值”组合为何会使某类别的整项朴素贝叶斯得分为0。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S03-03}
+\begin{chapterexercisesolution}{ex:V2-C03-S03-03}
+若类别$k$中取值$a_{jl}$未出现，且$N_k>0$，则
+\[
+N_{jkl}=0
+\Longrightarrow
+\widehat\theta_{jkl}=\frac{N_{jkl}}{N_k}=0.
+\]
+对包含该取值的观测$x$，类别$k$的未归一化得分为
+\[
+q_k(x)
+=\widehat\pi_k\prod_{r=1}^{n}\widehat\theta_{rk,x^{(r)}}
+=0,
+\]
+因为乘积中至少有一个零因子。在对数域中同一现象写成
+\[
+\log q_k(x)
+=\log\widehat\pi_k+\sum_r\log\widehat\theta_{rk,x^{(r)}}
+=-\infty.
+\]
+这只是有限样本的零计数，不证明总体概率为零；正伪计数平滑可使该因子严格为正。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: basic_calculation,parameter_update
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C03-S04-02}
+在某类别的5个样本中，四值特征计数为$(3,2,0,0)$。取$\lambda=1$，求平滑概率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S04-02}
+\begin{chapterexercisesolution}{ex:V2-C03-S04-02}
+四值特征有$S=4$，类别计数$N_k=5$，故加一平滑为
+\[
+\widetilde\theta_l
+=\frac{N_l+1}{N_k+S}
+=\frac{N_l+1}{9}.
+\]
+代入$(N_1,N_2,N_3,N_4)=(3,2,0,0)$得
+\[
+(\widetilde\theta_1,\widetilde\theta_2,
+\widetilde\theta_3,\widetilde\theta_4)
+=\left(\frac49,\frac39,\frac19,\frac19\right),
+\]
+且
+\[
+\sum_{l=1}^{4}\widetilde\theta_l
+=\frac{4+3+1+1}{9}=1.
+\]
+加一平滑是在计数上加1后重新归一化，不是直接给概率加1。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: definition_discrimination,probability_explanation
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C03-S04-03}
+固定计数后，说明$\lambda\to\infty$时$\widetilde\theta_{jkl}$的极限，并解释含义。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S04-03}
+\begin{chapterexercisesolution}{ex:V2-C03-S04-03}
+固定有限计数$N_{jkl},N_k$，有
+\[
+\begin{aligned}
+\widetilde\theta_{jkl}(\lambda)
+&=\frac{N_{jkl}+\lambda}{N_k+S_j\lambda}\\
+&=\frac{N_{jkl}/\lambda+1}{N_k/\lambda+S_j}.
+\end{aligned}
+\]
+因此
+\[
+\lim_{\lambda\to\infty}\widetilde\theta_{jkl}(\lambda)
+=\frac{0+1}{0+S_j}
+=\frac1{S_j}.
+\]
+极限分布在$S_j$个取值上均匀，表示无限强的对称先验压过有限数据；过大的$\lambda$会造成欠拟合，应结合先验知识或训练流程内的验证选择。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: manual_algorithm,parameter_update
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C03-S05-01}
+类别对数得分为$-12.4,-10.9,-15.2$。给出预测类别，并写出稳定归一化后验的计算方法。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S05-01}
+\begin{chapterexercisesolution}{ex:V2-C03-S05-01}
+记$s=(-12.4,-10.9,-15.2)$，先取
+\[
+m=\max_k s_k=-10.9.
+\]
+平移后的指数权重为
+\[
+u_k=e^{s_k-m},
+\qquad
+u=(e^{-1.5},1,e^{-4.3})
+\approx(0.22313,1,0.01357).
+\]
+归一化得到
+\[
+p_k=\frac{u_k}{\sum_ru_r},
+\qquad
+p\approx(0.1804,0.8086,0.0110).
+\]
+故$\widehat y=2$。对任意共同平移$c$，
+\[
+\frac{e^{s_k-c}}{\sum_re^{s_r-c}}
+=\frac{e^{s_k}}{\sum_re^{s_r}},
+\]
+所以减去最大值不改变后验，却避免直接计算极小的$e^{s_k}$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% EXERCISE-TYPE: complexity_analysis,method_comparison
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V2-C03-S05-03}
+有$N=10^5$个样本、$n=100$个离散特征和$K=4$类。给出朴素训练与单样本预测的渐近时间复杂度。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V2-C03-S05-03}
+\begin{chapterexercisesolution}{ex:V2-C03-S05-03}
+稠密离散数据训练时，每个样本扫描$n$个特征，因此
+\[
+T_{\rm count}=O(Nn)
+=O(10^5\times100)
+=O(10^7).
+\]
+由计数生成全部条件概率表另需
+\[
+T_{\rm table}=O\!\left(K\sum_{j=1}^{n}S_j\right),
+\]
+该步骤在训练后执行一次。单样本预测需对每个类别累计$n$项对数条件概率：
+\[
+T_{\rm pred}=O(Kn)
+=O(4\times100)
+=O(400).
+\]
+这些界假设离散取值能以常数时间映射到已登记表项；稀疏输入时可用非零特征数替代$n$。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% Keep the chapter summary and self-check together as a readable closing unit.
+% Without this local reservation the breakable self-check left only items 3--5
+% on an otherwise nearly empty final page.
+\Needspace{24\baselineskip}
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V2-C03-CH36}
+\SLChapterFiveSummary{类别先验、条件概率表与条件独立分解}{由受约束极大似然推得分组频率并用对称Dirichlet先验平滑}{固定取值字典，在对数域累计类别得分并显式处理未知值}{高维离散特征的快速生成式分类基线}{进入决策树，以数据驱动划分替代全局条件独立假设}
+
+\phantomsection\label{struct:V2-C03-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否写出条件独立分解并计算完整表与朴素表的自由参数数目？
+  \item 能否从条件风险三步证明后验最大化的最优性，并处理非对称代价？
+  \item 能否从计数和概率和约束推出极大似然公式，再写出平滑公式？
+  \item 能否给出对数域训练与预测伪代码，说明初始化、终止与复杂度？
+  \item 能否区分模型条件独立、参数贝叶斯估计和Bayes决策规则？未通过时依次回看第\ref{sec:V2-C03-S01}节、第\ref{sec:V2-C03-S02}节、第\ref{sec:V2-C03-S03}--\ref{sec:V2-C03-S04}节与第\ref{sec:V2-C03-S05}节。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

@@ -1,0 +1,41 @@
+{
+  "graphic_id": "GR019",
+  "roi_full_page_px": [
+    1373,
+    1437,
+    1983,
+    1753
+  ],
+  "source_pre_pixels": 4477,
+  "final_visible_pixels": 3517,
+  "pre_minus_final_pixels": 973,
+  "source_pre_halo_intersection_pixels": 650,
+  "pre_minus_final_under_halo_pixels": 643,
+  "opaque_halos": [
+    "HALO04",
+    "HALO05"
+  ],
+  "per_halo_coverage": [
+    {
+      "halo_id": "HALO04",
+      "draw_id": 34,
+      "source_pre_halo_intersection_pixels": 585,
+      "pre_minus_final_under_halo_pixels": 584
+    },
+    {
+      "halo_id": "HALO05",
+      "draw_id": 36,
+      "source_pre_halo_intersection_pixels": 65,
+      "pre_minus_final_under_halo_pixels": 59
+    }
+  ],
+  "files": [
+    "raw_final_roi_1x.png",
+    "raw_final_roi_8x_nearest.png",
+    "source_pre_raw.png",
+    "final_visible_raw.png",
+    "opaque_halo_raw.png",
+    "pre_minus_final_raw.png",
+    "pre_halo_final_overlay_1x.png"
+  ]
+}

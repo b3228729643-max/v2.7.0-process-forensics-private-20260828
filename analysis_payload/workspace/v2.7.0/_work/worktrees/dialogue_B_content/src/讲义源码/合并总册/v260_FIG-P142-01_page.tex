@@ -1,0 +1,22 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 1 册}{统计学习方法讲义 v2.6.0}{数学基础与统计学习基本理论}
+\begin{document}
+\setcounter{page}{162}
+\setcounter{chapter}{9}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{统计学习的基本框架}
+\begin{optimizationbox}
+\textbf{优化解释。}当策略取经验风险最小化时，学习被写成
+$\widehat f\in\arg\min_{f\in\mathcal F}\widehat R_T(f)$。
+假设空间给出可行域，风险给出目标函数，算法近似或精确求解该问题。若目标有多个极小点，还必须声明并列处理规则，输出才可复现。
+\end{optimizationbox}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C09/fig_v1_c09_learning_loop.tex}
+沿\cref{fig:V1-C09-learning-loop}审计实验时，应逐条标出哪些数据参与拟合、候选比较和最终评价；一旦测试反馈回流到策略或算法，测试集就已变成开发数据，不能再作为一次性泛化证据。
+\begin{example}[两个候选分类规则的经验比较]
+设$\mathcal X=\{a,b\}$、$\mathcal Y=\{0,1\}$，训练集为
+$T=\{(a,0),(a,0),(b,1),(b,0)\}$。
+\end{example}
+\end{document}
+

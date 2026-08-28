@@ -1,0 +1,58 @@
+{
+  "assigned_scope": {
+    "canonical_instance": "/root/sa2_fig_p634_r110_r168_readonly_v1",
+    "owner_dialogue": "C_visual",
+    "handoff_id": "C-FIG-P634-01-R110-SA2-R168-READONLY-ADJUDICATION-V1",
+    "role": "SA2 read-only R168 adjudicator",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh",
+    "fork_turns": "none",
+    "uid": "FIG-P634-01"
+  },
+  "completed": [
+    "verified current PDF and source byte/SHA256 identities",
+    "independently located Figure 33.3 at physical page 684 and printed page 671",
+    "opened native full-page figure caption grayscale overlay and ROI evidence",
+    "reviewed 47 semantic objects and all 1081 unordered pairs through complete geometry enumeration",
+    "manually adjudicated all 34 finalized proximity and containment candidates",
+    "audited all 34 text and formula elements plus 6 critical ROIs",
+    "applied R168 hard-defect criteria to semantics readability glyphs geometry overlap clipping and balance"
+  ],
+  "files_changed": {
+    "source_files": 0,
+    "tex_files": 0,
+    "central_files": 0,
+    "evidence_root_only": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P634-01\\sa2_r110_r168_readonly_adjudication_v1"
+  },
+  "decisions": {
+    "hard_defect": "NONE",
+    "outcome": "SA2_NO_SOURCE_CHANGE_READY_FOR_FRESH_SA1",
+    "source_changes": 0,
+    "tex_invocations": 0,
+    "bbox_proximity_pair_count": 34,
+    "overlap_candidate_pixel_count": 0,
+    "mask_contamination_pixel_count": 0,
+    "true_illegal_overlap_pixel_count": 0,
+    "clip_pixel_count": 0,
+    "min_text_clearance_px": 8,
+    "pixel_adjudication_status": "NO_PIXEL_CANDIDATES_ALL_PROXIMITY_PAIRS_MANUALLY_CLEARED"
+  },
+  "unresolved": [],
+  "validation": {
+    "pdf_bytes": 4967063,
+    "pdf_sha256": "B49C5CA920DDEF6C0CD004B2581EAF710F4D1E1115BB459A324A84594B3831F3",
+    "source_bytes": 4352,
+    "source_sha256": "903DE12067AF0B33F316EC09D65F6803F6BD212D64EB838F2FD8F264748F520E",
+    "csv_parse_preseal": "SUCCESS",
+    "json_parse_preseal": "SUCCESS",
+    "ads_preseal": 0,
+    "cache_preseal": 0,
+    "pyc_preseal": 0,
+    "reparse_preseal": 0,
+    "manifest_exclusions": [
+      "MANIFEST.json self-hash",
+      "WRITE_STOPPED created after manifest"
+    ]
+  },
+  "next_action": "Parent may start a fresh independent SA1; this SA2 instance must not edit source or start another role."
+}

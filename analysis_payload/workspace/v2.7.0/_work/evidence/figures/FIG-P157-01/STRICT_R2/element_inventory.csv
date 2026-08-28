@@ -1,0 +1,23 @@
+﻿ELEMENT_ID,PANEL_ID,OBJECT_CLASS,ROLE_OR_NAME,TEXT_OR_DESCRIPTION,SOURCE_LINE,STATUS,NOTES
+FIG-P157-01-T01,P01,TEXT,CURVE_LABEL,训练误差：单调下降,5-7; 44-46,PRESENT,local direct style; node
+FIG-P157-01-T02,P01,TEXT,CURVE_LABEL,验证误差：先降后升,5-7; 47-48,PRESENT,local direct style; node
+FIG-P157-01-T03,P01,TEXT,KEY_ANNOTATION,最低验证误差,8-9; 49-50,PRESENT,local key style; node
+FIG-P157-01-T04,P01,TEXT,KEY_ANNOTATION,选择复杂度,8-9; 51-52,PRESENT,local key style; node
+FIG-P157-01-T05,P01,TEXT,REGION_ANNOTATION,欠拟合,10; 53-54,PRESENT,local region style; node
+FIG-P157-01-T06,P01,TEXT,REGION_ANNOTATION,合适,10; 55-56,PRESENT,local region style; node
+FIG-P157-01-T07,P01,TEXT,REGION_ANNOTATION,过拟合,10; 57-58,PRESENT,local region style; node
+FIG-P157-01-T08,P01,TEXT,AXIS_TITLE,模型复杂度,20-25; styles/figure-style-v2.3.1.tex:67-78,PRESENT,slfig axis later overrides local label style with \small
+FIG-P157-01-T09,P01,TEXT,AXIS_TITLE,预测误差,20-25; styles/figure-style-v2.3.1.tex:67-78,PRESENT,slfig axis later overrides local label style with \small
+FIG-P157-01-T10,P01,TEXT,CAPTION_LABEL,图,61; common statlearnbook.sty:305,PRESENT,"caption \small, bold label"
+FIG-P157-01-T11,P01,TEXT,CAPTION_LABEL,10.1,61; common statlearnbook.sty:305,PRESENT,"caption \small, bold number"
+FIG-P157-01-T12,P01,TEXT,CAPTION_BODY,模型复杂度增加时训练误差通常下降，而验证误差可能先降后升。,61; common statlearnbook.sty:305,PRESENT,caption \small
+FIG-P157-01-G01,P01,DATA_CURVE,training error curve,,30-43,PRESENT,local candidate vector drawings=1
+FIG-P157-01-G02,P01,DATA_CURVE,validation error curve,,30-43,PRESENT,local candidate vector drawings=1
+FIG-P157-01-G03,P01,LINE_ARROW,selection reference line,,30-43,PRESENT,local candidate vector drawings=1
+FIG-P157-01-G04,P01,MARKER,minimum-validation-error marker,,30-43,PRESENT,local candidate vector drawings=1
+FIG-P157-01-G05,P01,LINE_ARROW,training-label leader,,30-43,PRESENT,local candidate vector drawings=1
+FIG-P157-01-G06,P01,LINE_ARROW,x-axis and arrowhead,,30-43,PRESENT,local candidate vector drawings=2
+FIG-P157-01-G07,P01,LINE_ARROW,y-axis and arrowhead,,30-43,PRESENT,local candidate vector drawings=2
+FIG-P157-01-G08,P01,NODE_BORDER,NODE_BORDER,,21-59,ABSENT,No node border: annotation fills are explicitly draw=none.
+FIG-P157-01-G09,P01,PANEL_BORDER,PANEL_BORDER,,21-59,ABSENT,No enclosing panel border: axis lines=left only.
+FIG-P157-01-G10,P01,LEGEND,LEGEND,,21-59,ABSENT,No legend object is drawn.

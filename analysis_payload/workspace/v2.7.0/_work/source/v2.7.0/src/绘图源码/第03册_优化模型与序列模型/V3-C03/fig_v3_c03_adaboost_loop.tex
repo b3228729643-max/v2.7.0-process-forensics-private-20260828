@@ -1,0 +1,42 @@
+% v2.3.1 figure UID: FIG-P324-01
+% Proposed post-v2.3.1 polish for FIG-P324-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P324-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P324-01,
+  dist/.style={slfig node,draw=SLBlue,fill=SLBlueBG,line width=.78pt,minimum width=25mm,text width=22mm},
+  weak/.style={trapezium,trapezium left angle=75,trapezium right angle=105,
+    draw=SLTeal,fill=SLTealBG,line width=.78pt,minimum width=25mm,minimum height=10mm,align=center},
+  scalar/.style={circle,draw=SLGold,fill=SLGoldBG,line width=.82pt,minimum size=10mm,inner sep=1pt,align=center},
+  ensemble/.style={slfig node,draw=SLBlue,fill=SLBlueBG,line width=.78pt,double,double distance=1.1pt,minimum width=30mm},
+  err/.style={diamond,aspect=1.7,draw=SLGold,fill=SLGoldBG,line width=.82pt,align=center,inner sep=1.5mm},
+]
+  \node[font=\bfseries\fontsize{9.7pt}{11.4pt}\selectfont,text=SLBlue] at (0,2.75) {权重更新通道};
+  \node[dist] (dm) at (-5.0,1.45) {样本分布\\$D_m$};
+  \node[weak] (gm) at (-1.85,1.45) {训练\\$G_m$};
+  \node[err] (em) at (1.15,1.45) {误差\\$e_m$};
+  \node[dist] (dn) at (4.25,1.45) {更新分布\\$D_{m+1}$};
+  \draw[slfig arrow,line width=.88pt] (dm)--(gm);
+  \draw[slfig arrow accent,line width=.90pt] (gm)--(em);
+  \draw[slfig arrow,line width=.88pt] (em)--(dn);
+
+  \node[font=\bfseries\fontsize{9.7pt}{11.4pt}\selectfont,text=SLTeal] at (-4.25,-.35) {加法模型通道};
+  \node[weak] (gcopy) at (-2.40,-1.35) {弱分类器\\$G_m$};
+  \node[scalar] (alpha) at (.15,-1.35) {$\alpha_m$};
+  \node[ensemble] (fm) at (3.30,-1.35) {集成模型\\$F_m=F_{m-1}+\alpha_mG_m$};
+  \draw[slfig arrow accent,line width=.90pt] (gcopy) to[bend right=13] (fm);
+  \draw[slfig arrow,line width=.84pt] (alpha)--(fm);
+  \draw[slfig guide,line width=.52pt] (gm.south)--(gcopy.north);
+  \draw[-{Stealth[length=1.9mm,width=1.2mm]},draw=SLGold,line width=.78pt]
+    (em.south)--(alpha.north)
+    node[midway,right=2.4mm,font=\fontsize{8.8pt}{10.2pt}\selectfont,text=SLGold,
+      fill=none,inner sep=0pt] {$e_m\mapsto\alpha_m$};
+  \draw[slfig return,draw=SLBlue!72,line width=.58pt]
+    (dn.south) |- ([yshift=-7mm]dn.south) -| (gm.south);
+  \node[anchor=north,font=\fontsize{8.5pt}{10.0pt}\selectfont,text=SLTextGray]
+    at (2.85,-.15) {仅权重更新返回训练};
+  \node[font=\fontsize{8.5pt}{10.0pt}\selectfont,text=SLTextGray] at (0,-2.35)
+    {形状编码：分布 / 分类器 / 标量 / 集成};
+\end{tikzpicture}
+\caption{AdaBoost中样本权重$D_m$决定下一轮训练重点，分类器权重$\alpha_m$与弱分类器$G_m$直接进入加法模型；两类权重位于不同计算支路。}\label{fig:V3-C03-adaboost-loop}
+\end{figure}

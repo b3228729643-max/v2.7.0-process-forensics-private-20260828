@@ -1,0 +1,33 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{FIG-P630-01 SA2-R2 局部页验证}
+\begin{document}
+\setcounter{page}{629}
+\setcounter{chapter}{33}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{Gibbs 抽样}
+\sectionmark{章首依赖路线}
+\SLChapterOpening{联合目标$\to$满条件概率核$\to$坐标更新$\to$扫描链与诊断}
+{怎样从联合分布构造可测的满条件版本，并证明逐坐标更新保持目标？}
+{读完可处理零边缘集合、证明坐标核可逆，并区分系统扫描的平稳性与可逆性。}
+{联合/边缘/条件分布、可测核、MH细致平衡，以及有限链与Harris条件。}
+{先复习\GlobalChapterRef{32}{5}{3}的MH零流与一般状态收敛层次，再进入满条件核。}
+\begin{dependencybox}
+\GlobalChapterRef{32}{5}{3}的MH可逆性、零流分支与一般状态收敛条件 $\to$ 本章的坐标Gibbs核；
+联合目标$\pi(x_1,\ldots,x_d)$
+$\to$ 每个坐标的满条件分布$\pi_j(\cdot\mid x_{-j})$
+$\to$ 单坐标Gibbs核$K_j$
+$\to$ 系统扫描乘积核或随机扫描混合核
+$\to$ 平稳性与可达性检查
+$\to$ 燃烧期后的相关样本与Monte Carlo诊断；
+概率图的局部分解
+$\to$ Markov毯
+$\to$ 只保留与当前变量相连的因子
+$\to$ 可计算的局部满条件分布。
+\end{dependencybox}
+图\ref{fig:V5-C04-dependency-graph}概括从联合目标与局部因子到Monte Carlo诊断的六节点学习与计算主链。
+\input{fig_v5_c04_dependency_graph.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先看给定其余坐标$x_{-j}$后，满条件$\pi_j(\cdot\mid x_{-j})$如何只重抽$x_j$；再看单坐标核$K_j$怎样组成系统或随机扫描核并产生相关样本；最终用MCSE、ESS与轨迹诊断评估统计误差和混合效率。主链箭头只表示学习与计算依赖，不是概率图的生成时间方向；目标保持仍不自动推出不可约、收敛或快速混合。\par
+\end{document}

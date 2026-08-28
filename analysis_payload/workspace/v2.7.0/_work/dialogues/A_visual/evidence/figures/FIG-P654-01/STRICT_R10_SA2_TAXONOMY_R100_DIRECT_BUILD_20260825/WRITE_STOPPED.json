@@ -1,0 +1,64 @@
+{
+  "sealed_utc": "2026-08-24T23:40:33.239741Z",
+  "root": "STRICT_R10_SA2_TAXONOMY_R100_DIRECT_BUILD_20260825",
+  "terminal": "LOCAL_SA2_PATCH_VERIFIED_AWAIT_R10_ROOT",
+  "payload_excludes": [
+    "PAYLOAD_MANIFEST.csv",
+    "PAYLOAD_MANIFEST.json",
+    "WRITE_STOPPED.json"
+  ],
+  "payload_count": 1052,
+  "payload_bytes": 116974049,
+  "ordinary_file_count_after_write_stopped": 1055,
+  "csv_manifest": {
+    "path": "PAYLOAD_MANIFEST.csv",
+    "bytes": 156573,
+    "mtime_utc": "2026-08-24T23:40:31.792509Z",
+    "sha256": "2BF8CB091E7B69D34318C7001252F5A899D5BE128F5F8B8BBE33C1C85C881370"
+  },
+  "json_manifest": {
+    "path": "PAYLOAD_MANIFEST.json",
+    "bytes": 253617,
+    "mtime_utc": "2026-08-24T23:40:31.785877Z",
+    "sha256": "AF5D8B6A62787AC794BC3541107C3B77158DD4633353935865CB1258AE7B1D6E"
+  },
+  "manifest_file_set_diff_count": 0,
+  "manifest_bytes_diff_count": 0,
+  "manifest_mtime_diff_count": 0,
+  "manifest_sha256_diff_count": 0,
+  "parse_gate": {
+    "csv_count": 23,
+    "json_count": 69,
+    "png_count": 856,
+    "pdf_count": 1,
+    "failure_count": 0,
+    "failures": []
+  },
+  "ads_gate": {
+    "failure_count": 0,
+    "failures": [],
+    "alternate_data_stream_count": 0,
+    "alternate_data_streams": []
+  },
+  "pyc_file_count": 0,
+  "pycache_directory_count": 0,
+  "consumer_validator": {
+    "sha256": "907D41E53BA99B26CF526D53A932629B430B46477FCAFF58E30145AB56FBFA27",
+    "run_limit": 1,
+    "failure_count": 0,
+    "conclusion": "LOCAL_SA2_PATCH_VERIFIED_AWAIT_R10_ROOT"
+  },
+  "denominators": {
+    "objects_N": 116,
+    "glyphs": 95,
+    "graphics": 21,
+    "unordered_pairs_C": 6670,
+    "critical_pairs": 50,
+    "manual_rows": 192,
+    "taxonomy_groups": 10
+  },
+  "previous_latest_path": "PAYLOAD_MANIFEST.csv",
+  "previous_latest_mtime_utc": "2026-08-24T23:40:31.792509Z",
+  "write_stopped_is_strictly_latest": true,
+  "no_post_seal_writes_authorized": true
+}

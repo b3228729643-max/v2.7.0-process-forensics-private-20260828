@@ -1,0 +1,21 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{826}
+\setcounter{chapter}{34}
+\setcounter{figure}{2}
+\setcounter{equation}{2}
+\pagestyle{headings}
+\chaptermark{狄利克雷分布与共轭先验}
+\sectionmark{Gamma函数与Beta分布}
+\textbf{模型。}本章的基本贝叶斯模型以类别集合、$K$维参数向量、严格正超参数$\boldsymbol\alpha$和观测计数为对象；若只收到计数，必须同时收到$N$或核验$N=\sum_i n_i$。
+
+\textbf{学习策略。}把多项似然写成各$\theta_i$的幂，再选择具有同样乘积幂结构的先验。观测到$n_i$次类别$i$后，指数由$\alpha_i-1$增加到$\alpha_i+n_i-1$。
+
+\textbf{学习算法。}从原始序列开始时先按类别扫描并累加计数，然后逐分量计算$\alpha_i^{\mathrm{post}}=\alpha_i+n_i$。图\ref{fig:V5-C05-distribution-relations}同时区分类别/多项、Bernoulli/二项以及Dirichlet/Beta之间的维数关系与共轭关系。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_distribution_relations.tex}
+\FloatBarrier
+\section*{Gamma函数与Beta分布}
+以下Gamma分布统一采用shape--rate参数化；变量变换证明同时记录取值域与Jacobian。
+\end{document}

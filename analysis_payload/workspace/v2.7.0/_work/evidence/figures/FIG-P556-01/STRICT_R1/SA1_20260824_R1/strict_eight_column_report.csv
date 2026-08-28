@@ -1,0 +1,21 @@
+﻿CHECK_ID,CATEGORY,EVIDENCE,METRIC,THRESHOLD,OBSERVED,BOOLEAN,STATUS
+R01,INPUT,render_manifest.json,frozen input / independent physical location,official R93 PDF only,page 601/813; sha256=8e1dc2f8ee0dea220db9445ab28c4cd2daecd232f3a36b98383d97caabc531ed,true,PASS
+R02,RENDER,full_page_200dpi.png,whole-page native render,200dpi,Poppler native,true,PASS
+R03,RENDER,full_page_300dpi_native.png,measurement view,"300dpi,1:1,no resize",2481x3508px; scale=4.167815,true,PASS
+R04,COVERAGE,glyph_inventory.csv;semantic_component_inventory.csv;graphic_component_inventory.csv,all visible reader-facing elements,complete,"glyph=124, semantic=21, graphic=25",true,PASS
+R05,MASKS,mask_manifest.csv,raw masks,PDF bbox + no dilation,masks=170,true,PASS
+R06,SOURCE_FONT,after_font_audit.csv;shared_style_font_context.tex,ordinary effective font size,>=9.5pt,"failure glyphs=76; components=20; explicit tick=8.7, labels=9.2--9.4",false,FAIL
+R07,PIXEL_HEIGHT,after_pixel_measurements.csv,literal-glyph H_ink,30/24/17/22/15px,pixel failures=30,false,FAIL
+R08,SAME_CLASS,same_class_ratio_audit.csv,same panel + semantic role + script raw H_ink ratio,"[0.92,1.08]",see CSV,false,FAIL
+R09,ROLE_RATIO,role_ratio_audit.csv,"actual raw-H_ink role hierarchy, same script only",role-specific bounds; no cross-script comparison,see CSV,false,FAIL
+R10,OVERLAP,after_overlap_report.csv,all registered raw-mask pairs,0 pixels,30,false,FAIL
+R11,CLIP,after_overlap_report.csv,text/graphics clipping,0 pixels,0,true,PASS
+R12,CLEARANCE,after_overlap_report.csv,text-text PDF bbox + raw mask / text-line / border / edge,>=4/>=3/>=5/>=6px,"text-text raw=28.000, bbox=14.412; line=0.000; border=6.000; edge=33.000",false,FAIL
+R13,CROSS_PANEL,cross_panel_ratio_audit.csv,cross-panel raw role+script median relations,<=1.10 or explicit single panel,PANEL_STATIONARY_MAP only,true,PASS
+R14,HARMONY,full_page_200dpi.png;figure_crop_300dpi.png;standalone_300dpi.png;grayscale_300dpi.png,FONT_VISUAL_HARMONY_PASS,no undersized/intrusive text,8.7--9.4pt in-chart text below 9.5pt,false,FAIL
+R15,MATH,math_semantics_recheck.md,"map, fixed point, cobweb coordinates",all correct,r*= 0.4; two cobweb sequences exact,true,PASS
+R16,TEXT,math_semantics_recheck.md;adjacent_source_context.tex,caption/figure/body variable consistency,one fixed-point notation,graph r^* vs caption r_star,false,FAIL
+R17,GRAYSCALE,grayscale_300dpi.png,noncolor distinguishability,stable,solid/dashed/marker shapes remain distinguishable,true,PASS
+R18,PAGE,full_page_200dpi.png,page integration,no clipping/broken flow,placement intact; typography fails separately,true,PASS
+R19,FINAL,strict_audit_summary.json,all hard gates,all true,FAIL,false,FAIL
+R20,MACHINE_FINAL,machine_terminal_check.csv/json,evidence completeness and count crosscheck,all machine checks PASS,integrity=True; quality=FAIL,true,PASS

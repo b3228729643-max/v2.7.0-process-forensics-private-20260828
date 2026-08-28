@@ -1,0 +1,59 @@
+% v2.3.1 figure UID: FIG-P719-01
+% v2.6.0 reverse redraw for FIG-P719-01: preserve the exact three-matrix/seven-edge semantics while opening real line-label corridors.
+\tikzset{slfig-FIG-P719-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\hbox to \linewidth\bgroup\hss
+\begin{tikzpicture}[slfig-FIG-P719-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  cell/.style={draw=SLRuleGray,line width=0.52pt,minimum size=4.5mm,inner sep=0pt},
+  branch/.style={draw=SLRuleGray,fill=white,rounded corners=2pt,text width=25mm,
+    minimum height=10mm,inner xsep=1.2mm,inner ysep=1.2mm},
+  main/.style={->,draw=SLDeepBlue,line width=0.98pt},
+  split/.style={->,draw=SLMidBlue,line width=0.78pt},
+  >={Stealth[length=2.25mm,width=1.62mm]},
+  alt={对象—关系—结论：三阶段算子从原始矩阵M识别并回填悬挂列得到S，再把沿链转移dS与虚线随机跳转项合并为G，最后驱动排名迭代；轻量网格突出零列修复和列和为一。}]
+
+\matrix (mm) [matrix of nodes,nodes={cell},row sep=-\pgflinewidth,column sep=-\pgflinewidth]
+  at (-6.60,0) {$0$&$0$&$a$\\ $b$&$0$&$0$\\$c$&$0$&$d$\\};
+\matrix (ms) [matrix of nodes,nodes={cell},row sep=-\pgflinewidth,column sep=-\pgflinewidth]
+  at (-2.75,0) {$0$&$v_1$&$a$\\ $b$&$v_2$&$0$\\$c$&$v_3$&$d$\\};
+\matrix (mg) [matrix of nodes,nodes={cell,minimum width=6.6mm,
+  font=\fontsize{8.9pt}{10.2pt}\selectfont},row sep=-\pgflinewidth,column sep=-\pgflinewidth]
+  at (4.60,0) {$g_{11}$&$g_{12}$&$g_{13}$\\$g_{21}$&$g_{22}$&$g_{23}$\\$g_{31}$&$g_{32}$&$g_{33}$\\};
+\begin{scope}[on background layer]
+  \node[draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,fit=(mm),inner xsep=3mm,inner ysep=1.6mm] (mcard) {};
+  \node[draw=SLMidBlue,fill=SLSoftBlue,rounded corners=2pt,fit=(ms),inner xsep=3mm,inner ysep=1.6mm] (scard) {};
+  \node[draw=SLDeepBlue,fill=white,rounded corners=2pt,fit=(mg),inner xsep=3mm,inner ysep=1.6mm] (gcard) {};
+\end{scope}
+\node[font=\bfseries] at (-6.60,1.83) {原始$M$};
+\node[text=SLAccentOrange] at (-6.60,-1.40) {悬挂零列};
+\node[font=\bfseries,text=SLMidBlue] at (-2.75,1.83) {修复$S$};
+\node[text=SLTextGray] at (-2.75,-1.40) {列和$=1$};
+\node[font=\bfseries,text=SLDeepBlue] at (4.60,1.83) {$G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$};
+\node[text=SLTextGray] at (4.60,-1.40) {列和$=1$};
+\node[draw=SLAccentOrange,line width=0.8pt,fit=(mm-1-2)(mm-3-2),inner sep=0pt] {};
+\node[draw=SLMidBlue,line width=0.8pt,fit=(ms-1-2)(ms-3-2),inner sep=0pt] {};
+
+\node[branch] (follow) at (0.40,0.98) {沿链：$dS$};
+\node[branch,densely dashed] (teleport) at (0.40,-1.20)
+  {随机跳转：\\$(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$};
+\node[circle,draw=SLDeepBlue,fill=white,line width=0.72pt,inner sep=1.8pt] (plus) at (2.45,0) {$+$};
+\node[draw=SLDeepBlue,fill=SLDeepBlue,text=white,rounded corners=2pt,
+  minimum width=23mm,minimum height=16mm,inner xsep=1.4mm,inner ysep=1.3mm] (update) at (7.65,0)
+  {排名更新\\$\boldsymbol p^{(t+1)}=G\boldsymbol p^{(t)}$};
+
+\draw[main] (mcard) -- node[above=1.8mm,inner sep=0pt]{回填零列} (scard);
+\draw[split] (scard.east) -- ++(0.25,0) |- (follow.west);
+\draw[split,densely dashed] (scard.east) -- ++(0.25,0) |- (teleport.west);
+\draw[split] (follow.east) -- (plus.north west);
+\draw[split,densely dashed] (teleport.east) -- (plus.south west);
+\draw[main] (plus) -- (gcard);
+\draw[main] (gcard) -- (update);
+\end{tikzpicture}
+\hss\egroup
+\caption{一般PageRank先修复悬挂列，再混合沿链转移与随机跳转}
+\label{fig:V5-C07-damping-teleportation}
+\end{figure}

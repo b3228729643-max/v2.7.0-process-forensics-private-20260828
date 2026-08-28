@@ -1,0 +1,7 @@
+MATH_ID,OBJECT_IDS,CLAIM_OR_RELATION,POST_OBSERVATION_STATUS,OBSERVATION
+M01,"O01;O03;O05","x and y are points in C",CORRECT,"Both endpoint markers are visibly inside the closed filled region."
+M02,"O02;O03;O05","The segment joins x to y",CORRECT,"The single straight segment terminates at the two labeled endpoint markers."
+M03,"O07;O08;O09;O10","z=lambda*x+(1-lambda)*y is a convex combination on the segment",CORRECT,"Three interior markers lie on the segment and the displayed interpolation formula has correct coefficients and signs."
+M04,O13,"x,y in C and lambda in [0,1] imply lambda*x+(1-lambda)*y in C",CORRECT,"This is the standard convex-set closure property and matches the chapter definition."
+M05,"O10;O13","Local interpolation formula agrees with the boxed general implication",CORRECT,"Variables x, y, z, lambda, and C are used consistently in both formulas."
+M06,O14,"Caption states that the segment between any two points of a convex set remains in the feasible region",CORRECT,"Caption is mathematically consistent with the figure, the chapter definition, and the adjacent explanatory paragraph."

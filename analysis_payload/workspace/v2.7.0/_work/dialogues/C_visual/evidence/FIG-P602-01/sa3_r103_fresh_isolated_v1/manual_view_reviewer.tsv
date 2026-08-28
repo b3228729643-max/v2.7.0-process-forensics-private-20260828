@@ -1,0 +1,8 @@
+view_id	file	pixels	reviewed_at_native_or_original	legible	geometry_complete	clip_free	grayscale_ok	decision	reviewer	note
+V01_FULL_PAGE_200	full_page_200dpi.png	1654x2339	YES	YES	YES	YES	N/A	PASS	SA3_FRESH_ISOLATED	200dpi 全页显示图32.5与上文、读图顺序及页脚共同排版稳定，图号和图注均可读。
+V02_FIGURE_CROP_300	figure_crop_300dpi.png	1810x1564	YES	YES	YES	YES	N/A	PASS	SA3_FRESH_ISOLATED	300dpi 原生裁剪完整包含六节点、五有向边、自环、分数线与图注，没有可见非法重叠。
+V03_STANDALONE_300	standalone_300dpi.png	1810x1564	YES	YES	YES	YES	N/A	PASS	SA3_FRESH_ISOLATED	独立视图从当前状态到拒绝自环的阅读路径连续，接受/拒绝分支和箭头方向一眼可辨。
+V04_FIGURE_GRAYSCALE_300	grayscale_300dpi.png	1810x1564	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	图级灰度视图中蓝色实线、浅灰节点及点划拒绝路径仍可区分，文字对比足够。
+V05_FULL_PAGE_300	full_page_300dpi.png	2481x3508	YES	YES	YES	YES	N/A	PASS	SA3_FRESH_ISOLATED	300dpi 全页核对印刷页640：图置于公式32.7–32.9后，图注与随后读图顺序均未碰撞或跨页。
+V06_FULL_PAGE_GRAYSCALE_300	full_page_grayscale_300dpi.png	2481x3508	YES	YES	YES	YES	YES	PASS	SA3_FRESH_ISOLATED	全页灰度下图的层级、双边框、自环和正文仍保持可辨，未依赖颜色才能理解关系。
+V07_OBJECT_OVERLAY	after_text_measurement_overlay_300dpi.png	1810x1564	YES	YES	YES	YES	N/A	PASS	SA3_FRESH_ISOLATED	对象叠加图逐项显示20个文字父对象、6框、6关系箭头与1数学线，各框紧贴自身前景且无漏标。

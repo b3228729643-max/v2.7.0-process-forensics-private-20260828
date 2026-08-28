@@ -1,0 +1,50 @@
+{
+  "schema": "P109_STATIC_CONTROL_RESEAL_PAYLOAD_MANIFEST_V1",
+  "handoff_id": "A-R114-P109-SA2-STATIC-DOMAIN-LABEL-PATCH-CONTROL-RESEAL-V1-20260828",
+  "operation": "P109_R2_STATIC_EVIDENCE_ONLY_CONTROL_RESEAL_V1",
+  "source_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P109-01\\STRICT_R2_SA2_STATIC_DOMAIN_LABEL_OPAQUE_PATCH_R114_20260828",
+  "target_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P109-01\\STRICT_R2A_SA2_STATIC_DOMAIN_LABEL_OPAQUE_PATCH_CONTROL_RESEAL_R114_20260828",
+  "payload_count": 5,
+  "excluded_controls": [
+    "PAYLOAD_MANIFEST.json",
+    "SEAL_AUDIT.json",
+    "WRITE_STOPPED"
+  ],
+  "rows": [
+    {
+      "relative_path": "PRESEAL_CHECKS.json",
+      "bytes": 773,
+      "sha256": "7FDFAA59E9478969FB52FD516B527DF75FF5EF56504048480E76E729DC653C96",
+      "creation_time_utc_ticks": "639234579454487648",
+      "last_write_time_utc_ticks": "639234579454508051"
+    },
+    {
+      "relative_path": "SOURCE_IDENTITY.json",
+      "bytes": 625,
+      "sha256": "31AA1B0F711613B51BFB78704303390AB9ED9C2A097EEB4769E48A6D6ADBA09B",
+      "creation_time_utc_ticks": "639234579439758474",
+      "last_write_time_utc_ticks": "639234579439758474"
+    },
+    {
+      "relative_path": "SOURCE_PATCH.diff",
+      "bytes": 1008,
+      "sha256": "0D3485B24A568237367E8A94744642BBC56C4A7CCA715AA844C3000722276AAE",
+      "creation_time_utc_ticks": "639234579444367788",
+      "last_write_time_utc_ticks": "639234579444367788"
+    },
+    {
+      "relative_path": "STATIC_PROJECTION.md",
+      "bytes": 1372,
+      "sha256": "DFB6C98D6BC0B164D81C74641B6BE2DB4B65F1B7D793881CC77425097ECF4DC7",
+      "creation_time_utc_ticks": "639234579450017554",
+      "last_write_time_utc_ticks": "639234579450017554"
+    },
+    {
+      "relative_path": "STATIC_SCOPE.md",
+      "bytes": 973,
+      "sha256": "7FDF06CB5B09CED0AB5502C609D630FCD577B7B6C141EEBC57C17BB954E1E255",
+      "creation_time_utc_ticks": "639234579435139875",
+      "last_write_time_utc_ticks": "639234579435139875"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "coordination": {
+    "ordinary_roles_meet_9_5pt": true,
+    "upper_lower_axis_label_size_match": true,
+    "upper_lower_tick_size_match": true,
+    "upper_lower_title_size_match": true
+  },
+  "observed_by_panel_role": {
+    "caption:caption_label": {
+      "count": 5,
+      "max_pt": 9.962639808654785,
+      "median_pt": 9.962639808654785,
+      "min_pt": 9.962639808654785
+    },
+    "caption:caption_text": {
+      "count": 39,
+      "max_pt": 9.962639808654785,
+      "median_pt": 9.962639808654785,
+      "min_pt": 9.962639808654785
+    },
+    "lower:target_annotation": {
+      "count": 4,
+      "max_pt": 9.564140319824219,
+      "median_pt": 9.564140319824219,
+      "min_pt": 9.564140319824219
+    },
+    "lower:title": {
+      "count": 12,
+      "max_pt": 10.759650230407715,
+      "median_pt": 10.759650230407715,
+      "min_pt": 7.531720161437988
+    },
+    "lower:x_label": {
+      "count": 1,
+      "max_pt": 10.759650230407715,
+      "median_pt": 10.759650230407715,
+      "min_pt": 10.759650230407715
+    },
+    "lower:x_tick": {
+      "count": 8,
+      "max_pt": 9.564140319824219,
+      "median_pt": 9.564140319824219,
+      "min_pt": 9.564140319824219
+    },
+    "lower:y_label": {
+      "count": 4,
+      "max_pt": 10.759650230407715,
+      "median_pt": 7.531720161437988,
+      "min_pt": 7.531720161437988
+    },
+    "lower:y_tick": {
+      "count": 10,
+      "max_pt": 9.564140319824219,
+      "median_pt": 9.564140319824219,
+      "min_pt": 9.564140319824219
+    },
+    "upper:annotation": {
+      "count": 12,
+      "max_pt": 9.564140319824219,
+      "median_pt": 9.564140319824219,
+      "min_pt": 9.564140319824219
+    },
+    "upper:title": {
+      "count": 4,
+      "max_pt": 10.759650230407715,
+      "median_pt": 10.759650230407715,
+      "min_pt": 7.531720161437988
+    },
+    "upper:warmup_annotation": {
+      "count": 10,
+      "max_pt": 9.564140319824219,
+      "median_pt": 9.564140319824219,
+      "min_pt": 9.564140319824219
+    },
+    "upper:y_tick": {
+      "count": 5,
+      "max_pt": 10.759650230407715,
+      "median_pt": 9.564140319824219,
+      "min_pt": 7.531720161437988
+    }
+  },
+  "source_declared": {
+    "math_script_raw_pdf_pt": 7.53,
+    "regular_label_pt": 9.6,
+    "title_and_axis_label_pt": 10.8
+  },
+  "status": "FAIL_MANUAL_D_E_AND_CROSS_PANEL_COORDINATION",
+  "human_review": {
+    "reviewer": "SA1_R1_20260824",
+    "views_opened": [
+      "full_page_200dpi.png",
+      "figure_crop_300dpi.png",
+      "standalone_300dpi.png",
+      "grayscale_300dpi.png",
+      "figure_crop_300dpi_8x_nearest.png"
+    ],
+    "normal_effective_label_gate": "PASS: normal labels/ticks >=9.5 pt; legal TeX scripts assessed by separate H_INK gate",
+    "same_role_and_cross_panel_coordination": "FAIL: R002 lower-title overbar has final unique-mask clearance 0 px to upper x-axis G001",
+    "global_font_visual_harmony_pass": false
+  }
+}

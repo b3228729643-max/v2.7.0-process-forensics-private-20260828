@@ -1,0 +1,31 @@
+object_id,manual_decision,manual_note
+O-G01,PASS,current-state frame is closed with even rounded corners and an unobstructed interior
+O-G02,PASS,proposal frame remains complete around both proposal lines without edge loss
+O-G03,PASS,acceptance-ratio frame encloses the full heading and fraction with clear padding
+O-G04,PASS,fraction rule is continuous and cleanly separates numerator from denominator
+O-G05,PASS,decision diamond has four intact sides and both branch vertices remain open
+O-G06,PASS,accepted-state frame is closed and the incoming accept arrow lands on its top edge
+O-G07,PASS,rejected-state double frame shows both outlines continuously at every corner
+O-G08,PASS,proposal arrow is vertically continuous with a distinct head at the proposal node
+O-G09,PASS,calculation arrow connects the proposal box to the ratio box without a broken shaft
+O-G10,PASS,decision arrow reaches the diamond apex and remains separate from nearby text
+O-G11,PASS,accept branch arrow is intact from diamond to accepted node with a visible arrowhead
+O-G12,PASS,reject branch uses the intended dash-dot stroke and terminates at the rejected frame
+O-G13,PASS,rejection self-loop is complete around the node and returns with a distinct head
+O-T01,PASS,current-state title has four complete CJK glyphs with balanced baseline placement
+O-T02,PASS,current-state variable line preserves X and the t subscript without crowding
+O-T03,PASS,proposal edge label is readable and stays centered beside its vertical connector
+O-T04,PASS,proposal instruction is complete across one line with no character intrusion
+O-T05,PASS,candidate-variable line preserves all CJK characters and the terminal Y
+O-T06,PASS,calculation edge label is legible and separated from the neighboring node borders
+O-T07,PASS,acceptance heading including the fresh phrase 未规范化目标 is fully legible
+O-T08,PASS,acceptance formula keeps braces fraction bars arguments and subscripts complete
+O-T09,PASS,decision edge label is isolated from the diamond apex and remains readable
+O-T10,PASS,decision text preserves interval inequality alpha expression and question mark
+O-T11,PASS,accept label is clear on the solid left branch without touching its arrow
+O-T12,PASS,reject label is clear above the dash-dot right branch without collision
+O-T13,PASS,accepted-node title is complete and centered inside its frame
+O-T14,PASS,accepted update displays X_t+1 取 Y with intact subscript and plus-one
+O-T15,PASS,rejected-node title is complete and centered inside the double frame
+O-T16,PASS,rejected update displays X_t+1 保持 X_t with both subscripts readable
+O-T17,PASS,self-loop label 拒绝后保持旧状态 follows the loop without clipping

@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 3 册}{统计学习方法讲义 v2.6.0}{优化模型与序列模型}
+\begin{document}
+\setcounter{page}{376}
+\setcounter{chapter}{18}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{支持向量机}
+\begin{geometrybox}
+两条间隔边界$w^Tx+b=\pm1$平行于分类面$w^Tx+b=0$，它们之间的距离为$2/\lVert w\rVert_2$；边界上的训练点最靠近分类面。
+\end{geometrybox}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C02/fig_v3_c02_margin.tex}
+图\ref{fig:V3-C02-margin}中的两条虚线法向量均为$w$；沿单位法向量测得的两边界距离为$2/\lVert w\rVert_2$，支持向量位于至少一条间隔边界上。
+\textbf{从 KKT 推导到 SMO 更新。}以上原始--对偶与 KKT 推导给出 SMO 的目标、可行域和停止证书。
+\end{document}

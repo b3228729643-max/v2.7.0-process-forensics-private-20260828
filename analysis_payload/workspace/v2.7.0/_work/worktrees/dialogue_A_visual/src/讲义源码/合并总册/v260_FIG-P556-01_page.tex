@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{708}
+\setcounter{chapter}{30}
+\setcounter{figure}{3}
+\pagestyle{headings}
+\chaptermark{马尔可夫链基础}
+\sectionmark{遍历定理与可逆性}
+\textbf{几何解释。}所有$n$维概率分布组成概率单纯形，映射$\rho\mapsto\rho A$把该单纯形映回自身。平稳分布是这个仿射映射的固定点。图\ref{fig:V5-C01-stationary-fixed-point}在两状态概率区间上画出$r\mapsto0.2+0.5r$，固定点$r=0.4$对应$\rho=(0.4,0.6)$。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_stationary_fixed_point.tex}
+\textbf{概率解释。}不可约性回答“能否在状态之间往返”，周期性回答“回来的时刻是否被某个公因数锁定”，“正常返”回答“平均要等多久才能回来”，平稳性回答“总体概率质量是否保持不变”。四者回答的问题不同，不能用其中一个术语替代另一个。
+\end{document}
+

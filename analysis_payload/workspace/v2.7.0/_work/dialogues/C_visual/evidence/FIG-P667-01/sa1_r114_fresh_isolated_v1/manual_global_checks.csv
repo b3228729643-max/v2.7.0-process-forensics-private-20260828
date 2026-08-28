@@ -1,0 +1,14 @@
+CHECK_ID,MANUAL_RESULT,POST_OBSERVATION_BASIS
+SOURCE_FONT_AUDIT,PASS,All current source declarations are traceable and there is no hidden whole-figure scaling; old 8.5/8.8/9.4 pt declarations are advisory under R168 and the current R114 rendering is actually readable
+PIXEL_HEIGHT_AUDIT,PASS,Native 300 dpi CJK row labels measure 40 px and CJK annotations 32-34 px; legal mathematical scripts reach at least 16 px; low-profile punctuation remains visually unambiguous
+SAME_CLASS_RATIO_AUDIT,PASS,Three row labels are each 40 px and the four CJK annotations span 32-34 px for a maximum ratio of 1.063
+ROLE_RATIO_AUDIT,PASS,The row-label-to-annotation height ratio is about 1.21 and consistently expresses an intentional hierarchy without visibly severe imbalance
+OVERLAP_ADJUDICATION,PASS,All 253 unordered pairs were enumerated; canonical illegal visible-ink overlap is 0 and the sole 14-pixel mask intersection is an intentional graphic junction
+CLIP_AUDIT,PASS,No semantic object touches a PDF page edge and every text formula arrowhead border and caption glyph is visibly complete
+MATH_SEMANTICS,PASS,Independent recomputation gives prior exponent alpha_i-1 plus count n_i equals posterior exponent alpha_i+n_i-1 and the displayed marginal is N!/prod n_i! times B(alpha+n)/B(alpha)
+TEXT_CONSISTENCY,PASS,Figure labels caption and adjacent V5-C05 prose agree that addition occurs componentwise in the parameters rather than between probability vectors
+ARROW_AND_FLOW,PASS,Reading order is prior times likelihood then posterior kernel then posterior distribution with a secondary dashed branch to the marginal evidence
+CODEPOINTS,PASS,The crop contains no replacement character white-square marker or NUL and manual viewing confirms theta alpha n product proportional minus multiplication tilde and en-dash glyphs
+VISUAL_HARMONY,PASS,The three aligned strips brace posterior box and marginal branch remain balanced in color and grayscale with the mathematical flow as the dominant visual path
+GRAYSCALE,PASS,Blue gray and gold elements retain separable line style shape weight and structure after grayscale conversion
+PAGE_INTEGRATION,PASS,The figure and caption fit naturally between the preceding explanation and the following subsection with no clipping overflow orphaning or abnormal blank region

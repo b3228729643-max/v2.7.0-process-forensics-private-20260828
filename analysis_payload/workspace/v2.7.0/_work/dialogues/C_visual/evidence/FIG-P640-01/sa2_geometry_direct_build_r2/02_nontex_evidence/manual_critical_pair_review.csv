@@ -1,0 +1,77 @@
+critical_id,pair_id,object_a,object_b,reviewer,decision,manual_observation
+CRIT_001,PAIR_0007,T001,T008,C_ROOT_MANUAL_R2,PASS,The two origin numerals remain visually separate on perpendicular axes.
+CRIT_002,PAIR_0030,T001,G01,C_ROOT_MANUAL_R2,PASS,Tick label 0 has ordinary clearance below the left frame.
+CRIT_003,PAIR_0032,T001,G03,C_ROOT_MANUAL_R2,PASS,The teal curve stays above the origin label despite enclosing-box proximity.
+CRIT_004,PAIR_0033,T001,G04,C_ROOT_MANUAL_R2,PASS,The gray curve approaches zero inside the plot and does not touch the label below.
+CRIT_005,PAIR_0068,T002,G01,C_ROOT_MANUAL_R2,PASS,Tick label 2 is below the axis with visible whitespace.
+CRIT_006,PAIR_0070,T002,G03,C_ROOT_MANUAL_R2,PASS,The teal curve near x=2 stays within the plot and clear of the numeral.
+CRIT_007,PAIR_0071,T002,G04,C_ROOT_MANUAL_R2,PASS,The near-zero gray curve does not contaminate the external tick label.
+CRIT_008,PAIR_0105,T003,G01,C_ROOT_MANUAL_R2,PASS,Tick label 4 has consistent baseline clearance from the frame.
+CRIT_009,PAIR_0107,T003,G03,C_ROOT_MANUAL_R2,PASS,The dashed teal curve remains above the axis while the numeral stays below it.
+CRIT_010,PAIR_0108,T003,G04,C_ROOT_MANUAL_R2,PASS,The gray dash-dot curve and numeral 4 are separated by the axis line.
+CRIT_011,PAIR_0123,T004,T013,C_ROOT_MANUAL_R2,PASS,Tick 6 and the centered 滞后 k title have a clear vertical gap.
+CRIT_012,PAIR_0141,T004,G01,C_ROOT_MANUAL_R2,PASS,Tick label 6 sits below its axis tick without touching it.
+CRIT_013,PAIR_0143,T004,G03,C_ROOT_MANUAL_R2,PASS,The teal curve is confined inside the frame and does not reach numeral 6.
+CRIT_014,PAIR_0144,T004,G04,C_ROOT_MANUAL_R2,PASS,The gray curve is visually distinct from the external x tick label.
+CRIT_015,PAIR_0176,T005,G01,C_ROOT_MANUAL_R2,PASS,Tick label 8 has normal axis clearance.
+CRIT_016,PAIR_0178,T005,G03,C_ROOT_MANUAL_R2,PASS,The teal dashed curve remains on the plot side of the x-axis.
+CRIT_017,PAIR_0179,T005,G04,C_ROOT_MANUAL_R2,PASS,The gray curve and tick label 8 do not share rendered pixels.
+CRIT_018,PAIR_0210,T006,G01,C_ROOT_MANUAL_R2,PASS,Two-digit label 10 remains fully below the frame.
+CRIT_019,PAIR_0212,T006,G03,C_ROOT_MANUAL_R2,PASS,The teal curve is separated from label 10 by the plot boundary.
+CRIT_020,PAIR_0213,T006,G04,C_ROOT_MANUAL_R2,PASS,The gray curve does not collide with either digit in 10.
+CRIT_021,PAIR_0243,T007,G01,C_ROOT_MANUAL_R2,PASS,Tick label 12 is entirely outside and below the frame.
+CRIT_022,PAIR_0245,T007,G03,C_ROOT_MANUAL_R2,PASS,The teal curve ends inside the plot and is clear of label 12.
+CRIT_023,PAIR_0246,T007,G04,C_ROOT_MANUAL_R2,PASS,The gray curve remains separate from the rightmost x label.
+CRIT_024,PAIR_0275,T008,G01,C_ROOT_MANUAL_R2,PASS,Left y tick 0 is left of the frame with visible clearance.
+CRIT_025,PAIR_0277,T008,G03,C_ROOT_MANUAL_R2,PASS,The teal curve starts inside the plot and does not touch the y tick label.
+CRIT_026,PAIR_0278,T008,G04,C_ROOT_MANUAL_R2,PASS,The gray curve starts at the plot corner while the label remains outside.
+CRIT_027,PAIR_0289,T009,T014,C_ROOT_MANUAL_R2,PASS,The 0.25 label is separated from the rotated Corr formula.
+CRIT_028,PAIR_0306,T009,G01,C_ROOT_MANUAL_R2,PASS,The 0.25 label has normal left-axis clearance.
+CRIT_029,PAIR_0307,T009,G02,C_ROOT_MANUAL_R2,PASS,The solid curve crosses y=.25 inside the plot far to the right of the label.
+CRIT_030,PAIR_0308,T009,G03,C_ROOT_MANUAL_R2,PASS,The teal curve and external 0.25 label share no visible pixels.
+CRIT_031,PAIR_0309,T009,G04,C_ROOT_MANUAL_R2,PASS,The gray curve and 0.25 label are separated by the y-axis.
+CRIT_032,PAIR_0336,T010,G01,C_ROOT_MANUAL_R2,PASS,The 0.5 label remains left of its y-axis tick.
+CRIT_033,PAIR_0337,T010,G02,C_ROOT_MANUAL_R2,PASS,The solid curve passes through y=.5 inside the plot far from the external label.
+CRIT_034,PAIR_0338,T010,G03,C_ROOT_MANUAL_R2,PASS,The teal curve remains on the plot side of the y-axis.
+CRIT_035,PAIR_0339,T010,G04,C_ROOT_MANUAL_R2,PASS,The gray curve and 0.5 label are visually isolated.
+CRIT_036,PAIR_0348,T011,T014,C_ROOT_MANUAL_R2,PASS,The 0.75 label does not touch the rotated formula.
+CRIT_037,PAIR_0365,T011,G01,C_ROOT_MANUAL_R2,PASS,The 0.75 label is spaced normally from the left axis.
+CRIT_038,PAIR_0366,T011,G02,C_ROOT_MANUAL_R2,PASS,The solid curve remains inside the panel with no contact to the external label.
+CRIT_039,PAIR_0367,T011,G03,C_ROOT_MANUAL_R2,PASS,The teal curve does not cross the left-side numeral.
+CRIT_040,PAIR_0368,T011,G04,C_ROOT_MANUAL_R2,PASS,The gray curve stays beyond the y-axis from label 0.75.
+CRIT_041,PAIR_0393,T012,G01,C_ROOT_MANUAL_R2,PASS,The top y tick label 1 remains left of the upper frame corner.
+CRIT_042,PAIR_0394,T012,G02,C_ROOT_MANUAL_R2,PASS,The solid curve starts at the intended top-left data point without touching the external label.
+CRIT_043,PAIR_0395,T012,G03,C_ROOT_MANUAL_R2,PASS,The teal curve shares the intended data origin inside the axes only.
+CRIT_044,PAIR_0396,T012,G04,C_ROOT_MANUAL_R2,PASS,The gray curve shares the intended data origin and remains clear of the numeral.
+CRIT_045,PAIR_0406,T013,T017,C_ROOT_MANUAL_R2,PASS,The centered x-axis title and middle legend label occupy separate rows.
+CRIT_046,PAIR_0499,T016,G05,C_ROOT_MANUAL_R2,PASS,The solid blue sample intentionally precedes the rho .95 legend text with a clean gap.
+CRIT_047,PAIR_0523,T017,G06,C_ROOT_MANUAL_R2,PASS,The teal dashed sample intentionally precedes the rho .70 legend text with a clean gap.
+CRIT_048,PAIR_0546,T018,G07,C_ROOT_MANUAL_R2,PASS,The gray dash-dot sample intentionally precedes the rho .20 legend text with a clean gap.
+CRIT_049,PAIR_0552,T019,T022,C_ROOT_MANUAL_R2,PASS,The two right-panel origin numerals remain distinct on perpendicular axes.
+CRIT_050,PAIR_0568,T019,G08,C_ROOT_MANUAL_R2,PASS,Right x tick 0 is below the horizontal axis and not pierced by the vertical arrow.
+CRIT_051,PAIR_0577,T020,T027,C_ROOT_MANUAL_R2,PASS,The .5 tick and absolute-rho axis title have a clear vertical separation.
+CRIT_052,PAIR_0588,T020,G08,C_ROOT_MANUAL_R2,PASS,The .5 numeral sits below its short tick without contact.
+CRIT_053,PAIR_0607,T021,G08,C_ROOT_MANUAL_R2,PASS,The .99 numeral is below the endpoint tick and remains readable.
+CRIT_054,PAIR_0609,T021,G10,C_ROOT_MANUAL_R2,PASS,The .99 numeral and open marker retain visible whitespace.
+CRIT_055,PAIR_0625,T022,G08,C_ROOT_MANUAL_R2,PASS,Right y tick 0 stays left of the vertical axis and clear of the horizontal line.
+CRIT_056,PAIR_0626,T022,G09,C_ROOT_MANUAL_R2,PASS,The curve endpoint region is to the right of the y tick label with no glyph contact.
+CRIT_057,PAIR_0632,T023,T028,C_ROOT_MANUAL_R2,PASS,The y tick 0.5 and rotated ratio label remain separated.
+CRIT_058,PAIR_0642,T023,G08,C_ROOT_MANUAL_R2,PASS,The 0.5 numeral has standard clearance from the vertical axis tick.
+CRIT_059,PAIR_0643,T023,G09,C_ROOT_MANUAL_R2,PASS,The curve crosses y=.5 inside the panel far from the external numeral.
+CRIT_060,PAIR_0658,T024,G08,C_ROOT_MANUAL_R2,PASS,The y tick 1 is left of the arrow and unobscured.
+CRIT_061,PAIR_0659,T024,G09,C_ROOT_MANUAL_R2,PASS,The curve starts at one inside the plot while the label remains outside.
+CRIT_062,PAIR_0673,T025,G08,C_ROOT_MANUAL_R2,PASS,The point-label bbox lies in the axes envelope but rendered glyphs do not collide with axis strokes.
+CRIT_063,PAIR_0674,T025,G09,C_ROOT_MANUAL_R2,PASS,The point-label bbox crosses the curve envelope only; white backing and visible gap preserve readability.
+CRIT_064,PAIR_0675,T025,G10,C_ROOT_MANUAL_R2,PASS,The endpoint label is intentionally adjacent to the marker and remains visually separated.
+CRIT_065,PAIR_0687,T026,G08,C_ROOT_MANUAL_R2,PASS,The two-line limit note lies inside the axes envelope without touching a tick or arrow.
+CRIT_066,PAIR_0688,T026,G09,C_ROOT_MANUAL_R2,PASS,The limit-note rectangle overlaps the curve envelope but rendered text is separated from the brown stroke.
+CRIT_067,PAIR_0715,T029,T030,C_ROOT_MANUAL_R2,PASS,The title and stacked fraction form one intentional heading with no illegal glyph collision.
+CRIT_068,PAIR_0736,G01,G02,C_ROOT_MANUAL_R2,PASS,The solid curve is intentionally contained by and starts on the left plotting frame.
+CRIT_069,PAIR_0737,G01,G03,C_ROOT_MANUAL_R2,PASS,The teal curve is intentionally contained by and starts on the left plotting frame.
+CRIT_070,PAIR_0738,G01,G04,C_ROOT_MANUAL_R2,PASS,The gray curve is intentionally contained by and starts on the left plotting frame.
+CRIT_071,PAIR_0745,G02,G03,C_ROOT_MANUAL_R2,PASS,The two ACF curves share the theoretical origin then diverge with distinct encodings.
+CRIT_072,PAIR_0746,G02,G04,C_ROOT_MANUAL_R2,PASS,The solid and gray curves share only the intended theoretical origin.
+CRIT_073,PAIR_0753,G03,G04,C_ROOT_MANUAL_R2,PASS,The teal and gray curves share the intended origin then separate visibly.
+CRIT_074,PAIR_0778,G08,G09,C_ROOT_MANUAL_R2,PASS,The efficiency curve intentionally starts on the y-axis and terminates at the endpoint region.
+CRIT_075,PAIR_0779,G08,G10,C_ROOT_MANUAL_R2,PASS,The .99 vertical tick and open marker share zero mask pixels and have three orthogonal blank native300dpi pixels.
+CRIT_076,PAIR_0780,G09,G10,C_ROOT_MANUAL_R2,PASS,The brown curve intentionally terminates at the center of the open true-point marker.

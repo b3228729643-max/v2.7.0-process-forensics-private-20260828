@@ -1,0 +1,4 @@
+﻿RELATION_ID,TEXT_OBJECT,GRAPHIC_OBJECT,CLASS,RAW_MASK_OVERLAP_PX,RAW_MASK_MIN_CLEARANCE_PX,THRESHOLD_PX,DECISION,METHOD
+TG304,P_LEGEND_BLUE,G01_P_CURVE,TEXT_DATA_CURVE,0,9.849,3,PASS,direct R95 native300dpi text-operator + extracted vector path replay; see critical_TG304_TG317_R95/TG304_*
+TG317,P_LEGEND_TEAL,G02_CQ_ENVELOPE,TEXT_LINE_ARROW,0,5.000,3,PASS,direct R95 native300dpi visible-contour replay; T177 dash separated; see critical_TG304_TG317_R95/TG317_*
+TG457,P_TICK_Y_0_8,G10_ACCEPT_BORDER,TEXT_NODE_BORDER,0,2.000,5,FAIL,"direct R95 native300dpi text-operator + R95 vector stroke-only acceptance border; nearest text 391,1200 / border 391,1202; see critical_TG457_R95/TG457_*"

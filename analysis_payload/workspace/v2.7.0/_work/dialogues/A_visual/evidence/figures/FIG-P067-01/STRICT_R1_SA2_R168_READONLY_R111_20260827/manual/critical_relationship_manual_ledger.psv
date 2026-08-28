@@ -1,0 +1,18 @@
+relation_id|manual_reviewer|observed_at_utc|native1x_gate|nearest8x_gate|manual_decision|object_specific_note
+REL001|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|mass values 0.15+0.30+0.35+0.20=1|same values preserved by nearest-neighbour enlargement|PASS|P047-P050 are nonnegative and normalized.
+REL002|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|CDF levels 0.15 0.45 0.80 1.00|stair geometry unchanged at 8x|PASS|P036 cumulatively matches P047-P050 and is monotone.
+REL003|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|filled P037-P040 at post-jump values and open P041-P044 at pre-jump values|open/filled centers remain distinct at 8x|PASS|Right continuity and endpoint semantics are correct at every t_i.
+REL004|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|P012-P015 and P030-P033 share x coordinates|8x alignment exact|PASS|Upper jumps and lower masses align at t=1 2 3 4.
+REL005|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|upper y-tick labels G001-G009 are distinct|8x reveals no contact|PASS|CDF tick set 0 0.45 0.8 1 remains readable.
+REL006|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|0.35 and 0.3 word boxes overlap 51x18px with 327 foreground pixels|8x overlap is 408x144px with 20928 foreground pixels|FAIL_TRUE_COLLISION|G043-G045 and G046-G049 form two separate PMF y-tick labels but visibly overprint; 18px vertical penetration causes actual misreading.
+REL007|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|0.3 versus 0.15 rows remain separated|8x preserves positive separation|PASS|G039-G042 are clear below the failed pair.
+REL008|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|axis labels G029-G033 G060-G065 clear their axes|8x reveals no clipping or line-through|PASS|F_X(t) p_X(t) and t are correctly placed.
+REL009|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|upper note G018-G028 is clear of staircase|8x preserves whitespace|PASS|The note accurately explains the filled post-jump marker.
+REL010|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|lower note G050-G059 is clear of PMF markers|8x preserves whitespace|PASS|The note correctly states jump height equals p_i at the same t_i.
+REL011|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|caption G066-G095 has one clean line|8x shows intact glyphs and punctuation|PASS|Caption is exactly the live source conclusion and matches the body context.
+REL012|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|native color view uses structural marker and line encodings|grayscale view retains open/filled and stem/stair distinction|PASS|Meaning does not depend on hue alone.
+REL013|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|full-page view has stable width and surrounding whitespace|not applicable beyond same native page|PASS|Figure caption and following explanatory paragraph integrate without clipping or abnormal blank region.
+REL014|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|all atoms lie inside body+caption ROI|8x edges retain all foreground|PASS|CLIP_PIXEL_COUNT is 0 for glyphs markers arrows axes caption.
+REL015|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|no missing glyph tofu or replacement character observed|8x confirms correct outlines|PASS|Extracted codepoints and visible forms agree for Chinese Latin digits and math glyphs.
+REL016|/root/p067_r111_r168_sa2|2026-08-27T05:54:13.7521987Z|source 8.6 8.8 9.2 9.4pt facts are below 9.5pt advisory target|native text remains readable apart from REL006|ADVISORY_ONLY|R168 forbids failure solely for source-size taxonomy; no separate size-based blocker is asserted.
+

@@ -1,0 +1,38 @@
+{
+  "a": "EL-012-UPDATE_ORDER-CJK_FULL",
+  "b": "G-TOP-ARROW-SHAFT",
+  "relation": "TEXT_LINE_ARROW",
+  "record": {
+    "PAIR_ID": "SELECTED",
+    "OBJECT_A": "EL-012-UPDATE_ORDER-CJK_FULL",
+    "OBJECT_B": "G-TOP-ARROW-SHAFT",
+    "RELATION": "TEXT_LINE_ARROW",
+    "THRESHOLD_PX": 3.0,
+    "OVERLAP_PIXELS": 0,
+    "MIN_RAW_INK_GAP_PX": "45.174",
+    "A_NEAREST_X": 1890,
+    "A_NEAREST_Y": 1911,
+    "B_NEAREST_X": 1846,
+    "B_NEAREST_Y": 1897,
+    "STATUS": "SELECTED",
+    "REASON": "text/formula ink to line/arrowhead"
+  },
+  "raw_roi_page_px": [
+    1822,
+    1873,
+    1915,
+    1936
+  ],
+  "context_roi_page_px": [
+    525,
+    1864,
+    2060,
+    1926
+  ],
+  "mask_color": {
+    "A": "red",
+    "B": "blue",
+    "intersection": "yellow"
+  },
+  "geometry": "all foreground mask pixels are sampled from official_page_682_300dpi.png at 1:1; 8x is nearest-only review"
+}

@@ -1,0 +1,1385 @@
+% STAGE11-CHAPTER: V3-C05
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V3-C05-CH01}; CH-02=\label{struct:V3-C05-CH02}; CH-03=\label{struct:V3-C05-CH03}; CH-04=\label{struct:V3-C05-CH04}; CH-05=\label{struct:V3-C05-CH05}; CH-06=\label{struct:V3-C05-CH06}; CH-07=\label{struct:V3-C05-CH07}; CH-08=\label{struct:V3-C05-CH08}; CH-09=\label{struct:V3-C05-CH09}; CH-10=\label{struct:V3-C05-CH10}; CH-11=\label{struct:V3-C05-CH11}; CH-12=\label{struct:V3-C05-CH12}; CH-13=\label{struct:V3-C05-CH13}; CH-14=\label{struct:V3-C05-CH14}; CH-15=\label{struct:V3-C05-CH15}; CH-16=\label{struct:V3-C05-CH16}; CH-17=\label{struct:V3-C05-CH17}; CH-18=\label{struct:V3-C05-CH18}; CH-19=\label{struct:V3-C05-CH19}; CH-20=\label{struct:V3-C05-CH20}; CH-21=\label{struct:V3-C05-CH21}; CH-22=\label{struct:V3-C05-CH22}; CH-23=\label{struct:V3-C05-CH23}; CH-24=\label{struct:V3-C05-CH24}; CH-25=\label{struct:V3-C05-CH25}; CH-26=\label{struct:V3-C05-CH26}; CH-27=\label{struct:V3-C05-CH27}; CH-28=\label{struct:V3-C05-CH28}; CH-29=\label{struct:V3-C05-CH29}; CH-30=\label{struct:V3-C05-CH30}; CH-31=\label{struct:V3-C05-CH31}; CH-32=\label{struct:V3-C05-CH32}; CH-33=\label{struct:V3-C05-CH33}; CH-34=\label{struct:V3-C05-CH34}; CH-35=\label{struct:V3-C05-CH35}; CH-36=\label{struct:V3-C05-CH36}; CH-37=\label{struct:V3-C05-CH37}
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=18; source_group=none; supplement=18
+
+\chapter{隐马尔可夫模型}\label{chap:V3-C05}
+\index{隐马尔可夫模型}
+\index{前向算法}
+\index{Baum--Welch算法}
+\index{Viterbi算法}
+
+% KNOWLEDGE-PLAN: KN-V3-C21-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：隐马尔可夫模型。}隐马尔可夫模型章地图以“从状态链直达前向--后向、Baum--Welch与Viterbi”组织内容；请把路线拆成起点、关键工具和终点，并核对三者的输入输出类型能依次衔接。\par
+
+\SLChapterOpening{从状态链直达前向--后向、Baum--Welch与Viterbi}{怎样对指数多条隐藏路径进行求和、学习和最优路径选择}{能推导联合分解、前后向后验、EM更新与Viterbi回溯}{条件概率、马尔可夫性、动态规划与EM}{观测概率为零时返回\cref{sec:V3-C05-S02,sec:V3-C05-S03}；更新行未占用时回看\cref{sec:V3-C05-S04}}
+\phantomsection\label{struct:V3-C05-CH01}
+% KNOWLEDGE-PLAN: KN-V3-C21-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}隐马尔可夫模型学习目标固定核验“能严格定义随机过程、马尔可夫链与离散隐马尔可夫模型”；请实际完成“严格定义随机过程、马尔可夫链与离散隐马尔可夫模型”，并用“中间结果逐项包含首目标“能严格定义随机过程、马尔可夫链与离散隐马尔可夫模型”声明的对象、条件与结论”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能严格定义随机过程、马尔可夫链与离散隐马尔可夫模型，写出状态转移、观测独立和齐次性假设及联合概率分解；
+  \item 能区分概率计算、参数学习和状态序列预测三个基本问题，并为同一模型选择正确算法；
+  \item 能从路径求和逐步推出前向与后向递推，计算状态后验、相邻状态后验及期望计数；
+  \item 能把Baum--Welch算法解释为EM，推导初始分布、转移概率与观测概率更新，并说明单调性、初始化和停止条件；
+  \item 能写出Viterbi最大乘积递推与回溯，比较逐时刻后验解码，分析时间空间复杂度、数值稳定性、适用条件和局限。
+\end{itemize}}
+
+\phantomsection\label{struct:V3-C05-CH02}
+\begin{prerequisitebox}
+本章使用条件概率、全概率公式、离散随机变量、矩阵乘法、极大似然、EM算法以及动态规划。还需能区分“状态在时间上相关”和“给定状态后观测条件独立”。阅读前应熟悉概率向量归一化、对数概率计算和有限状态有向图。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V3-C05-CH03}
+% KNOWLEDGE-PLAN: KN-V3-C21-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}隐马尔可夫模型先修自检固定核验“给定行随机矩阵$A$和概率行向量$\rho$，能否计算下一时刻分布$\rho A$”；请给定行随机矩阵$A$和概率行向量$\rho$，实际计算下一时刻分布$\rho A$并写出中间结果，再按“$\rho A$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 给定行随机矩阵$A$和概率行向量$\rho$，能否计算下一时刻分布$\rho A$？
+  \item 能否把链式法则$P(x_{1:T})=P(x_1)\prod_{t=2}^{T}P(x_t\mid x_{1:t-1})$写完整？
+  \item 能否说明动态规划为何要缓存“子问题值”而不是重复枚举整条路径？
+  \item 能否用log-sum-exp稳定计算$\log\sum_i e^{u_i}$？
+\end{enumerate}
+若第1--2项不能独立完成，应先复习离散概率与链式法则；若第3--4项不熟悉，应先复习递推、浮点下溢和对数域运算。
+\end{precheckbox}
+
+\phantomsection\label{struct:V3-C05-CH04}
+% KNOWLEDGE-PLAN: KN-V3-C21-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}隐马尔可夫模型依赖路线从“随机过程 $\to$ 一阶马尔可夫链 $\to$ 隐状态转移”进入“状态条件下的观测独立 $\to$ HMM联合概率分解”；请写出箭头成立所需的定义域条件，并核对前者输出能作为后者输入。\par
+
+\begin{dependencybox}
+随机过程 $\to$ 一阶马尔可夫链 $\to$ 隐状态转移；
+状态条件下的观测独立 $\to$ HMM联合概率分解；
+路径和的公共前缀/后缀 $\to$ 前向--后向递推 $\to$ 后验期望计数；
+期望计数 $\to$ Baum--Welch参数更新；
+路径概率的最大值 $\to$ Viterbi递推与回溯；
+转移矩阵结构 $\to$ 有限时刻可达性；长期平稳与遍历性质留到第30章。
+\end{dependencybox}
+
+% KNOWLEDGE-PLAN: KN-V3-C21-CONCEPT-001 L1
+\paragraph{读前自检：模型认识卡：隐马尔可夫模型。}HMM模型卡给定初始分布$\pi$、转移矩阵$A$、发射矩阵$B$与观测$O$；请为一条状态路径写出联合概率乘积，核对各因子索引合法并说明求和、后验或最大路径对应三类输出。\par
+
+\begin{keypointbox}[title=模型认识卡：隐马尔可夫模型]
+\textbf{任务与输入：}有限状态序列概率、学习与解码，观测$O=(o_1,\ldots,o_T)$。\quad
+\textbf{输出类型：}观测概率、状态后验或整条状态路径。\par
+\textbf{模型：}隐藏一阶链$A$与状态条件发射$B$，初始分布为$\pi$。\quad
+\textbf{策略：}利用链分解共享路径前缀/后缀。\quad
+\textbf{算法：}前向--后向、Baum--Welch与Viterbi。\par
+\textbf{预测：}边缘解码或全局MAP路径。\quad
+\textbf{关键假设与边界：}有限状态、一阶齐次与条件发射；零概率前缀、不可识别状态和局部最优需显式处理。
+\end{keypointbox}
+
+\phantomsection\label{struct:V3-C05-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V3-C05
+\index[symbols]{i-eq-i-1-minus-ldots-minus-i-t--s04ed476060db@$I=(i_1,\ldots,i_T)$：隐状态序列}
+\index[symbols]{o-eq-o-1-minus-ldots-minus-o-t--s5c02cac73797@$O=(o_1,\ldots,o_T)$：观测序列}
+\index[symbols]{a-eq-a-ij--sc10e5d046653@$A=(a_{ij})$：状态$i$到状态$j$的转移概率}
+\index[symbols]{b-eq-b-j-k--s149adab21c69@$B=(b_j(k))$：状态$j$产生观测$v_k$的概率}
+\index[symbols]{minus-pi-minus-eq-minus-pi-minus-i--s671442b3cede@$\pi=(\pi_i)$：初始状态分布}
+\index[symbols]{minus-lambda-minus-eq-a-b-minus-pi-minus--s018155bf16f1@$\lambda=(A,B,\pi)$：离散HMM模型参数}
+\index[symbols]{minus-alpha-minus-t-i-minus-beta-minus-t-i--se5ab1faa1c94@$\alpha_t(i),\beta_t(i)$：前向概率与后向概率}
+\index[symbols]{minus-gamma-minus-t-i--sfebed69226d2@$\gamma_t(i)$：给定完整观测时，时刻$t$处于状态$i$的后验}
+\index[symbols]{minus-xi-minus-t-i-j--s4efe090e8028@$\xi_t(i,j)$：给定完整观测时，相邻状态为$i,j$的后验}
+\index[symbols]{minus-delta-minus-t-i-minus-psi-minus-t-i--s4bdae9990418@$\delta_t(i),\psi_t(i)$：Viterbi最优前缀值与回溯指针}
+% STAGE19-SYMBOL-INDEX-END: V3-C05
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$I=(i_1,\ldots,i_T)$ & $\{1,\ldots,N\}^{T}$ & 隐状态序列\\
+$O=(o_1,\ldots,o_T)$ & $\{v_1,\ldots,v_M\}^{T}$ & 观测序列\\
+$A=(a_{ij})$ & $N\times N$行随机矩阵 & 状态$i$到状态$j$的转移概率\\
+$B=(b_j(k))$ & $N\times M$行随机矩阵 & 状态$j$产生观测$v_k$的概率\\
+$\pi=(\pi_i)$ & $N$维概率向量 & 初始状态分布\\
+$\lambda=(A,B,\pi)$ & 参数三元组 & 离散HMM模型参数\\
+$\alpha_t(i),\beta_t(i)$ & 非负实数 & 前向概率与后向概率\\
+$\gamma_t(i)$ & $[0,1]$ & 给定完整观测时，时刻$t$处于状态$i$的后验\\
+$\xi_t(i,j)$ & $[0,1]$ & 给定完整观测时，相邻状态为$i,j$的后验\\
+$\delta_t(i),\psi_t(i)$ & 非负实数、状态索引 & Viterbi最优前缀值与回溯指针\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLReviewSection{马尔可夫性质与概率图结构}{sec:V3-C05-S01}
+\phantomsection\label{struct:V3-C05-CH06}
+序列数据同时包含局部依赖与长期结果：若直接为每条可能状态路径分配概率，参数量和计算量都会随长度指数增长。HMM用“一阶隐藏状态链+状态条件下的局部观测”压缩依赖结构，使联合分布可以分解，并让求和与最大化都能用动态规划完成。
+
+\begin{keypointbox}[title=有限状态序列概念桥]
+长度为$T$的观测序列是$O=(o_1,\ldots,o_T)$，隐藏状态序列是$I=(i_1,\ldots,i_T)$；一条\textbf{路径}就是一组具体状态取值。转移概率$a_{ij}$描述相邻时刻，发射概率$b_j(o_t)$描述状态$j$生成当前观测。前向算法对所有合法路径\textbf{求和}，Viterbi对所有合法路径\textbf{取最大}，二者都只依赖有限层动态规划。学习本章无需预先掌握不可约、非周期或遍历定理；这些长期性质统一在第30章严格定义。
+\end{keypointbox}
+
+% KNOWLEDGE-PLAN: KN-V3-C21-CONCEPT-003 L1
+\paragraph{读前自检：随机过程。}在“离散时间、有限状态随机过程满足$t\in\{1,2,\ldots\}$且每个$X_t$取有限个值”成立时处理隐马尔可夫模型中的随机过程：请沿$\{X_t:t\in\mathcal T\}$标出输入域、输出域和一次运算结果的形状，并以运算闭合且结果落入声明的空间或集合判定结果。\par
+
+\knowledgeanchor{PRE-SQ-001}{随机过程}
+\begin{definition}[随机过程]
+随机过程是一族按时间或其他有序指标排列的随机变量$\{X_t:t\in\mathcal T\}$。其有限维分布描述任意有限时刻联合取值的概率。离散时间、有限状态随机过程满足$t\in\{1,2,\ldots\}$且每个$X_t$取有限个值。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C21-CONCEPT-004 L1
+\paragraph{读前自检：马尔可夫性质。}马尔可夫性质所用的明确前提是“对所有有正概率的历史”；完成检查$P(X_{t+1}=j\mid X_1=x_1,\ldots,X_t=i)$中每项的类型后完成等式变形后，核对并不表示不同时刻彼此独立。\par
+
+\knowledgeanchor{PRE-SQ-002}{马尔可夫性质}
+\begin{definition}[一阶马尔可夫性质]\label{def:V3-C05-markov}
+若对所有有正概率的历史，
+\[
+P(X_{t+1}=j\mid X_1=x_1,\ldots,X_t=i)
+=P(X_{t+1}=j\mid X_t=i),
+\]
+则过程具有一阶马尔可夫性质。它表示给定当前状态后，更早历史不再为下一状态提供额外信息；并不表示不同时刻彼此独立。
+\end{definition}
+
+\knowledgeanchor{PRE-SQ-003}{马尔可夫链}
+有限状态马尔可夫链由初始分布与转移概率决定。若转移概率不随$t$改变，称为齐次链，并记$a_{ij}=P(X_{t+1}=j\mid X_t=i)$。每行满足$a_{ij}\geq0$且$\sum_ja_{ij}=1$。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-CONCEPT-006 L1
+\paragraph{读前自检：隐马尔可夫模型。}围绕隐马尔可夫模型，先采用条件“HMM把马尔可夫链状态设为不可直接观测，并在每个时刻由当前状态随机生成一个观测”，再把“HMM把马尔可夫链状态设为不可直接观测，并在每个时刻由当前状态随机生成一个观测”中的已声明对象依次标成输入、输出与判据；最后验证状态链表达时序结构，观测分布表达状态如何留下可见证据。\par
+
+\knowledgeanchor{SLM-10-00-001}{隐马尔可夫模型}
+HMM把马尔可夫链状态设为不可直接观测，并在每个时刻由当前状态随机生成一个观测。状态链表达时序结构，观测分布表达状态如何留下可见证据。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-CONCEPT-007 L1
+\paragraph{读前自检：隐马尔可夫模型。}隐马尔可夫模型中的“观测$o_t\in\{v_1,\ldots,v_M\}$在给定$i_t$后独立于其他状态和观测”决定可执行范围；请沿$o_t\in\{v_1,\ldots,v_M\}$标出输入域、输出域和一次运算结果的形状，结果须满足运算闭合且结果落入声明的空间或集合。\par
+
+\knowledgeanchor{SLM-10-01-001}{隐马尔可夫模型}
+\phantomsection\label{struct:V3-C05-CH07}
+\begin{definition}[隐马尔可夫模型]\label{def:V3-C05-hmm}
+离散HMM是参数$\lambda=(A,B,\pi)$确定的时序概率模型。隐藏状态$i_t\in\{1,\ldots,N\}$构成齐次一阶马尔可夫链；观测$o_t\in\{v_1,\ldots,v_M\}$在给定$i_t$后独立于其他状态和观测，并按$b_{i_t}(o_t)$生成。
+\end{definition}
+
+\knowledgeanchor{SLM-10-01-002}{隐马尔可夫模型的基本概念}
+模型使用两项核心条件独立假设：
+\[
+P(i_t\mid i_{1:t-1},o_{1:t-1})=P(i_t\mid i_{t-1}),
+\]
+\[
+P(o_t\mid i_{1:T},o_{1:t-1},o_{t+1:T})=P(o_t\mid i_t).
+\]
+因此联合概率分解为
+\[
+P(O,I\mid\lambda)=\pi_{i_1}b_{i_1}(o_1)
+\prod_{t=1}^{T-1}a_{i_ti_{t+1}}b_{i_{t+1}}(o_{t+1}).
+\]
+
+\phantomsection\label{replay:V3-C05-S01-PRE-SQ-008}
+\textbf{动态规划预备复现。}同一终点状态的多条路径拥有相同的未来子问题；把它们的概率和或最大值压缩成一个状态量，便可避免重复枚举完整路径。
+
+\phantomsection\label{struct:V3-C05-CH08}
+\textbf{模型。}HMM是生成模型：它定义$P(O,I)$，从而也定义$P(O)$与$P(I\mid O)$。边缘观测通常在时间上相关；“观测独立”只在给定隐藏状态序列后成立。状态编号没有固有语义，交换全部相关参数的编号不改变观测分布。
+
+\begin{SLRunningExample}{RUN-SEQ-SHORT-01}{V3-C05-hmm}{贯穿例：三时刻天气序列}{把短序列解释为HMM的联合生成事件，明确正支撑与本章条件独立假设。}
+精确复用观测序列$x=(\text{干},\text{湿},\text{干})$与隐藏状态序列
+$y=(\text{晴},\text{雨},\text{晴})$。本章为二者建立联合生成模型，指定路径的联合概率为
+\[
+p(y,x)=\pi_{\text{晴}}b_{\text{晴}}(\text{干})
+a_{\text{晴},\text{雨}}b_{\text{雨}}(\text{湿})
+a_{\text{雨},\text{晴}}b_{\text{晴}}(\text{干}).
+\]
+要让该事件处在模型正支撑上，除$\pi_{\text{晴}}>0$外，路径实际使用的转移事件
+$a_{\text{晴},\text{雨}},a_{\text{雨},\text{晴}}$与发射事件
+$b_{\text{晴}}(\text{干}),b_{\text{雨}}(\text{湿})$都必须为正。有限状态、有限观测字典和这些正支撑条件使该短序列与HMM假设相容；观测条件独立只是在给定整条状态路径后的本章生成假设。下一站见\SLRunningExampleRef{RUN-SEQ-SHORT-01}{V3-C06-crf}{条件随机场对同一序列的条件建模}。
+\end{SLRunningExample}
+
+
+\SLDirectSection{HMM定义与三个基本问题}{sec:V3-C05-S02}
+\knowledgeanchor{PRE-SQ-004}{状态转移矩阵}
+状态转移矩阵$A=(a_{ij})_{N\times N}$的第$i$行是给定当前状态$i$后的下一状态条件分布。矩阵乘法$A^r$给出$r$步转移概率；行列方向必须与所用向量约定一致，本章统一用行概率向量。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-DEFINITION-005 L1
+\paragraph{读前自检：隐马尔可夫模型的定义。}把隐马尔可夫模型的定义放在“$A=(a_{ij}),\quad a_{ij}=P(i_{t+1}=q_j\mid i_t=q_i),$”下考察：把$A$展开一次并检查其类型或边界，并检查展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-10-01-003}{隐马尔可夫模型的定义}
+令状态集合$Q=\{q_1,\ldots,q_N\}$，观测集合$V=\{v_1,\ldots,v_M\}$。参数为
+\[
+A=(a_{ij}),\quad a_{ij}=P(i_{t+1}=q_j\mid i_t=q_i),
+\]
+\[
+B=(b_j(k)),\quad b_j(k)=P(o_t=v_k\mid i_t=q_j),
+\]
+\[
+\pi=(\pi_i),\quad \pi_i=P(i_1=q_i).
+\]
+三者每一行或向量都必须非负且归一化。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-CONCEPT-008 L1
+\paragraph{读前自检：观测序列的生成。}观测序列的生成输入“有限离散HMM参数$\lambda=(A,B,\pi)$、长度$T$、可复现随机源和固定离散采样器”，条件“$T\ge1$”；请做一轮“同一时刻的状态和观测两次抽样均成功且索引合法后才原子追加到前缀”，以“恰好生成$T$个时刻或首次失败时停止”核对停止证书。\par
+% KNOWLEDGE-PLAN: KN-V3-C21-CONCEPT-009 L1
+\paragraph{读前自检：观测序列的生成过程。}观测序列的生成过程输入“有限离散HMM参数$\lambda=(A,B,\pi)$、长度$T$、可复现随机源和固定离散采样器”，条件“$T\ge1$”；请做一轮“同一时刻的状态和观测两次抽样均成功且索引合法后才原子追加到前缀”，以“恰好生成$T$个时刻或首次失败时停止”核对停止证书。\par
+
+\knowledgeanchor{SLM-10-01-004}{观测序列的生成}
+\knowledgeanchor{SLM-10-01-005}{观测序列的生成过程}
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-001 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={HMM观测序列生成：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限离散HMM参数$\lambda=(A,B,\pi)$、长度$T$、可复现随机源和固定离散采样器},
+  output={最后合法观测/隐藏前缀$(O,I)$、完成时刻$t_{\rm done}$、成功随机调用数$q_{\rm done}$、状态与诊断},
+  preconditions={$T\ge1$；$A,B,\pi$维数一致、非负有限且逐行/向量归一化；随机源与采样规则合法},
+  initialization={$O=I=\varnothing,t_{\rm done}=q_{\rm done}=0$；先暂存首状态和首观测},
+  loop={每个后续时刻先暂存一次转移抽样，再暂存对应发射抽样},
+  update={同一时刻的状态和观测两次抽样均成功且索引合法后才原子追加到前缀},
+  domain={概率向量位于有限单纯形；随机变量属于规定区间；采样结果索引属于状态/观测字典},
+  failure={非法模型或长度返回$\mathtt{invalid\_input}$；累计概率或采样索引异常返回$\mathtt{numerical\_failure}$；随机源不可用返回$\mathtt{random\_source\_failure}$},
+  stop={恰好生成$T$个时刻或首次失败时停止},
+  budget={固定最多$2T$次成功离散抽样；不存在渐近迭代或额外轮数预算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$t_{\rm done}$计已原子追加的时刻，$q_{\rm done}$计实际成功随机调用},
+  diagnostics={失败时刻与转移/发射阶段、随机源位置/种子、概率和残差、最后状态及生成前缀长度},
+  complexity={完成时执行$2T$次离散抽样；线性累计采样为$O(T(N+M))$，别名表实现为$O(T)$}
+}
+\begin{algorithm}[H]
+\SetArgSty{textnormal}
+\caption{HMM观测序列生成}\label{alg:V3-C05-generate}
+\KwIn{HMM参数$\lambda=(A,B,\pi)$；长度$T$；可复现随机源}
+\KwOut{最后合法$(O,I)$前缀、$t_{\rm done},q_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{概率和容差$\varepsilon_{\rm prob}$；固定离散采样器与端点规则}
+$O\leftarrow\varnothing$，$I\leftarrow\varnothing$，$t_{\rm done}\leftarrow0$，$q_{\rm done}\leftarrow0$，诊断为空\;
+若$T<1$，$A,B,\pi$维数不一致、含负数/非有限值或未在容差内归一化，或随机源、采样器、端点规则不合法，则返回空前缀、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+调用随机源按$\pi$暂存$i^+$；若随机源失败则返回空前缀、$\mathtt{random\_source\_failure}$及首状态调用诊断；成功后令$q_{\rm done}\leftarrow q_{\rm done}+1$\;
+若累计概率非有限或$i^+$越界，则返回空前缀、$\mathtt{numerical\_failure}$及首状态采样诊断\;
+调用随机源按$B_{i^+}$暂存$o^+$；若随机源失败则返回空前缀、当前$q_{\rm done}$、$\mathtt{random\_source\_failure}$及首发射调用诊断；成功后令$q_{\rm done}\leftarrow q_{\rm done}+1$\;
+若累计概率非有限或$o^+$越界，则返回空前缀、$\mathtt{numerical\_failure}$及首发射采样诊断；否则原子追加$(i^+,o^+)$并令$t_{\rm done}\leftarrow1$\;
+\While{$t_{\rm done}<T$}{
+  令$t\leftarrow t_{\rm done}+1$；按$A_{i_{t-1}}$暂存$i^+$；随机源失败则返回最后合法前缀、$\mathtt{random\_source\_failure}$及转移阶段$t$诊断；成功令$q_{\rm done}\leftarrow q_{\rm done}+1$\;
+  若累计概率非有限或$i^+$越界，则返回最后合法前缀、$\mathtt{numerical\_failure}$及转移采样$(t,i_{t-1})$诊断\;
+  按$B_{i^+}$暂存$o^+$；随机源失败则返回最后合法前缀、$\mathtt{random\_source\_failure}$及发射阶段$t$诊断；成功令$q_{\rm done}\leftarrow q_{\rm done}+1$\;
+  若累计概率非有限或$o^+$越界，则返回最后合法前缀、$\mathtt{numerical\_failure}$及发射采样$(t,i^+)$诊断\;
+  原子追加$(i^+,o^+)$到$(I,O)$并令$t_{\rm done}\leftarrow t$\;
+}
+返回完整$(O,I),t_{\rm done}=T,q_{\rm done}=2T,\mathtt{completed}$，最终诊断记录种子、概率和最大残差与终态\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{核心四步是抽初态、按当前状态发射、按转移分布推进、返回完整路径；随机源与概率残差属于稳健实现细节}
+
+% KNOWLEDGE-PLAN: KN-V3-C21-CONCEPT-010 L1
+\paragraph{读前自检：隐马尔可夫模型的3个基本问题。}HMM三类基本问题分别输出$P(O\mid\lambda)$、参数估计$\widehat\lambda$和最优状态路径；请把同一$O,\lambda$映射到三项，核对状态未标注时学习需隐变量方法而状态已标注时可归一化频数。\par
+
+\knowledgeanchor{SLM-10-01-006}{隐马尔可夫模型的3个基本问题}
+给定模型或数据，HMM有三个基本问题：
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{概率计算：}给定$\lambda,O$，求$P(O\mid\lambda)$；
+  \item \textbf{学习：}给定一个或多个观测序列，估计$\lambda$使观测似然较大；
+  \item \textbf{预测或解码：}给定$\lambda,O$，求最可能状态路径，或计算逐时刻状态后验。
+\end{enumerate}
+
+\phantomsection\label{struct:V3-C05-CH09}
+\textbf{学习策略。}隐藏状态已标注时，极大似然估计由初始、转移和观测频数归一化得到；仅有观测时，使用Baum--Welch的软期望计数。模型选择如状态数$N$、拓扑约束与平滑强度必须在验证协议内确定，不能用最终测试序列反复调节。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：动态规划与递推。}HMM动态规划以“时刻$t$与状态$i$”标识子问题；请把所有到达$i$的前缀概率先求和，再乘同一出边和下一观测因子，核对所得递推无需重新枚举共享前缀。\par
+
+\SLTeachSection{前向与后向算法}{sec:V3-C05-S03}
+\knowledgeanchor{PRE-SQ-008}{动态规划与递推}
+动态规划把所有以同一状态$i$结束的前缀路径概率先求和，再通过同一组出边扩展；后向递推则把同一状态出发的所有后缀压缩。每个子问题由“时刻+状态”唯一标识。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：前向--后向递推。}前向量$\alpha_t(i)$表示截至$t$的观测与状态$i$的联合概率，后向量$\beta_t(i)$表示给定状态$i$后的未来观测概率；请相乘并对$i$求和，核对任意$t$都得到同一$P(O\mid\lambda)$。\par
+
+\knowledgeanchor{PRE-SQ-012}{前向--后向递推}
+前向量包含过去观测与当前状态的联合概率，后向量包含给定当前状态后的未来观测概率。二者在任一时刻相乘并归一化，可得到使用全部观测信息的平滑后验。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：概率计算算法。}HMM直接概率计算枚举$N^T$条状态路径且每条含$O(T)$个因子；请比较其$O(TN^T)$成本与前向算法$O(TN^2)$成本，并核对二者计算的是同一$P(O\mid\lambda)$。\par
+
+\knowledgeanchor{SLM-10-02-001}{概率计算算法}
+直接计算需要枚举$N^T$条路径，每条路径含$O(T)$个因子，成本为$O(TN^T)$。前向或后向算法利用分配律重排求和，把指数成本降为$O(TN^2)$。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-006 L1
+\paragraph{读前自检：直接计算法。}给定HMM参数$\lambda$与观测$O$。请枚举全部状态路径并累加其联合概率，核对总和为$P(O\mid\lambda)$。\par
+
+\knowledgeanchor{SLM-10-02-002}{直接计算法}
+直接表达式为
+\[
+P(O\mid\lambda)=\sum_{i_1=1}^{N}\cdots\sum_{i_T=1}^{N}
+\pi_{i_1}b_{i_1}(o_1)\prod_{t=1}^{T-1}
+a_{i_ti_{t+1}}b_{i_{t+1}}(o_{t+1}).
+\]
+它是递推算法的正确性基准，却不是长序列的可行实现。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-007 L1
+\paragraph{读前自检：前向概率。}前向概率定义为$\alpha_t(i)=P(o_{1:t},i_t=q_i\mid\lambda)$；请对$i$求和，核对结果是前缀观测概率$P(o_{1:t}\mid\lambda)$而不是必须等于1的状态后验。\par
+
+\knowledgeanchor{SLM-10-02-003}{前向概率}
+\begin{definition}[前向概率]\label{def:V3-C05-forward}
+\[
+\alpha_t(i)=P(o_1,\ldots,o_t,i_t=q_i\mid\lambda).
+\]
+它同时包含截至$t$的观测证据与当前状态事件，因而不是归一化的状态后验。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-008 L1
+\paragraph{读前自检：观测序列概率的前向算法。}观测序列概率的前向算法从$\alpha_1(i)=\pi_i b_i(o_1)$开始；请手算一轮$\alpha_{t+1}(i)=[\sum_j\alpha_t(j)a_{ji}]b_i(o_{t+1})$，再对终层求和核对$P(O\mid\lambda)$。\par
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-009 L1
+\paragraph{读前自检：前向算法。}前向算法利用给定当前状态后的转移与观测条件独立；请把$P(o_{1:t},i_t=q_j\mid\lambda)$、$a_{ji}$与$b_i(o_{t+1})$相乘并对$j$求和，核对得到$\alpha_{t+1}(i)$。\par
+
+\knowledgeanchor{SLM-10-02-004}{观测序列概率的前向算法}
+\knowledgeanchor{SLM-10-02-005}{前向算法}
+\phantomsection\label{struct:V3-C05-CH10}
+\textbf{学习算法。}前向递推为
+\[
+\alpha_1(i)=\pi_i b_i(o_1),
+\]
+\[
+\alpha_{t+1}(i)=\left[\sum_{j=1}^{N}\alpha_t(j)a_{ji}\right]b_i(o_{t+1}),
+\qquad
+P(O\mid\lambda)=\sum_{i=1}^{N}\alpha_T(i).
+\]
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V3-C05-CH11}
+% CORE-DERIVATION-PLAN: KN-V3-C21-DERIVATION-001
+\SLKnowledgeBridge{用全概率公式和条件独立性把长度 $t+1$ 的前缀概率拆开。}{前向概率 $\alpha_t(j)$、转移概率 $a_{ji}$ 与发射概率 $b_i(o_{t+1})$。}{时刻 $t$ 的状态构成互斥完备事件；模型满足一阶马尔可夫性和条件观测独立性。}{先固定终点状态 $i$，并对上一时刻状态 $j$ 应用全概率公式。}
+
+\begin{derivationgoalbox}
+从前向概率定义出发，分三步推出递推式，明确求和、转移和观测因子的条件独立来源。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+固定$t+1$的终点状态$i$，把时刻$t$的状态$j$作为互斥完备事件求和；使用一阶马尔可夫性与当前状态条件下的观测独立性。
+\end{derivationprepbox}
+\textbf{推导第1步：按前一状态分解。}
+\[
+\alpha_{t+1}(i)=\sum_jP(o_{1:t+1},i_t=q_j,i_{t+1}=q_i\mid\lambda).
+\]
+\textbf{推导第2步：使用条件独立结构。}
+\[
+P(o_{1:t},i_t=q_j\mid\lambda)P(i_{t+1}=q_i\mid i_t=q_j)
+P(o_{t+1}\mid i_{t+1}=q_i)
+=\alpha_t(j)a_{ji}b_i(o_{t+1}).
+\]
+\textbf{推导第3步：求和并终止。}对$j$求和得到递推式；在$t=T$对终点状态$i$求和，得到$P(O\mid\lambda)$。
+
+\phantomsection\label{struct:V3-C05-CH12}
+% KNOWLEDGE-PLAN: KN-V3-C21-THEOREM-001 L1
+\paragraph{读前自检：前向--后向分解。}前向--后向分解对任意$t\in\{1,\ldots,T\}$成立；请计算$\sum_i\alpha_t(i)\beta_t(i)$，核对前缀联合概率与条件未来概率相乘后恰为$P(O\mid\lambda)$。\par
+
+\begin{theorem}[前向--后向分解]\label{thm:V3-C05-forward-backward}
+对任意$t\in\{1,\ldots,T\}$，
+\[
+P(O\mid\lambda)=\sum_{i=1}^{N}\alpha_t(i)\beta_t(i),
+\]
+其中$\beta_t(i)=P(o_{t+1},\ldots,o_T\mid i_t=q_i,\lambda)$。
+\end{theorem}
+
+\phantomsection\label{struct:V3-C05-CH13}
+% KNOWLEDGE-PLAN: KN-V3-C21-PROOF-001 L1
+\paragraph{读前自检：证明：前向--后向分解。}前向--后向分解对时刻$t$的状态应用全概率公式；请在给定$i_t=q_i$后将过去与未来观测分离成$\alpha_t(i)\beta_t(i)$并对$i$求和，核对$t=T$时$\beta_T(i)=1$退化为前向终止式。\par
+
+\begin{proof}
+对时刻$t$的状态应用全概率公式：
+\[
+P(O\mid\lambda)=\sum_iP(o_{1:t},i_t=q_i,o_{t+1:T}\mid\lambda).
+\]
+给定$i_t$后，过去观测与未来观测由马尔可夫结构分离，所以每项可写为
+\[
+P(o_{1:t},i_t=q_i\mid\lambda)
+P(o_{t+1:T}\mid i_t=q_i,\lambda)=\alpha_t(i)\beta_t(i).
+\]
+对$i$求和即得结论。$t=T$时$\beta_T(i)=1$，退化为前向终止公式。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-010 L1
+\paragraph{读前自检：后向算法。}隐马尔可夫模型中的后向算法要求先确认“$\beta_t(i)=P(o_{t+1},\ldots,o_T\mid i_t=q_i,\lambda).$”；请随后把$\beta_t(i)$展开一次并检查其类型或边界，用$\beta_T(i)=1$验收。\par
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-011 L1
+\paragraph{读前自检：后向概率。}后向概率$\beta_t(i)=P(o_{t+1:T}\mid i_t=q_i,\lambda)$不是状态分布；请由$\beta_T(i)=1$向前做一次递推，核对各项非负，但不要把$\sum_i\beta_t(i)$误当成1。\par
+
+\knowledgeanchor{SLM-10-02-006}{后向算法}
+\knowledgeanchor{SLM-10-03-001}{后向概率}
+\begin{definition}[后向概率]\label{def:V3-C05-backward}
+\[
+\beta_t(i)=P(o_{t+1},\ldots,o_T\mid i_t=q_i,\lambda).
+\]
+末时刻未来观测为空，故$\beta_T(i)=1$。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-012 L1
+\paragraph{读前自检：观测序列概率的后向算法。}观测序列概率的后向算法以$\beta_T(i)=1$初始化；请计算$\beta_t(i)=\sum_j a_{ij}b_j(o_{t+1})\beta_{t+1}(j)$，再核对$P(O\mid\lambda)=\sum_i\pi_i b_i(o_1)\beta_1(i)$。\par
+
+\knowledgeanchor{SLM-10-03-002}{观测序列概率的后向算法}
+后向递推为
+\[
+\beta_t(i)=\sum_{j=1}^{N}a_{ij}b_j(o_{t+1})\beta_{t+1}(j),
+\quad t=T-1,\ldots,1,
+\]
+并有$P(O\mid\lambda)=\sum_i\pi_i b_i(o_1)\beta_1(i)$。
+
+\knowledgeanchor{SLM-10-02-007}{一些概率与期望值的计算}
+前向、后向量给出
+\[
+\gamma_t(i)=P(i_t=q_i\mid O,\lambda)
+=\frac{\alpha_t(i)\beta_t(i)}{P(O\mid\lambda)},
+\]
+\[
+\xi_t(i,j)=P(i_t=q_i,i_{t+1}=q_j\mid O,\lambda)
+=\frac{\alpha_t(i)a_{ij}b_j(o_{t+1})\beta_{t+1}(j)}{P(O\mid\lambda)}.
+\]
+于是$\sum_t\gamma_t(i)$是状态$i$出现次数的后验期望，$\sum_t\xi_t(i,j)$是$i\to j$转移次数的后验期望。
+
+\phantomsection\label{struct:V3-C05-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}长度$T$、每层$N$个结点的状态格构成有向无环图。前向算法从左到右做“入边加权求和”，后向算法从右到左做“出边加权求和”，Viterbi则把求和半环换成最大乘积半环。图结构相同，聚合运算不同。
+\end{geometrybox}
+
+\phantomsection\label{struct:V3-C05-CH15}
+\begin{probabilitybox}
+$\alpha_t(i)$只看过去与当前，$\beta_t(i)$只看给定当前状态后的未来；乘积合并两侧证据。$\gamma_t(i)$是归一化后的单状态后验，$\xi_t(i,j)$是相邻状态联合后验，分别为观测和转移的软计数提供权重。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V3-C05-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}前向--后向本身不是参数优化，而是固定参数下的精确求和推断。它为Baum--Welch的E步计算充分统计量；Viterbi把同一递推图上的求和换为最大化，从而求解最大概率单路径这一不同目标。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V3-C05-CH17}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C05/fig_v3_c05_lattice.tex}
+% FIGURE-KNOWLEDGE-MAP: fig:V3-C05-lattice -> SLM-10-02-005
+图\ref{fig:V3-C05-lattice}中每条边表示一次合法状态转移。前向与后向递推对到达同一结点的路径概率求和，Viterbi递推则取最大值并保存获胜前驱，因此二者不能只替换一个运算符而忽略回溯信息。
+
+\phantomsection\label{struct:V3-C05-CH18}
+\Needspace{6\baselineskip}
+\begin{example}[两状态HMM的前向概率]\label{exm:V3-C05-viterbi-numeric}
+二状态HMM有$\pi=(0.6,0.4)$，$A=\begin{pmatrix}0.7&0.3\\0.4&0.6\end{pmatrix}$。观测符号为$R,B$，且$b_1(R)=0.5,b_2(R)=0.1$、$b_1(B)=0.5,b_2(B)=0.9$。求$O=(R,B)$的概率。
+\end{example}
+\SLExampleSolutionHeading{exm:V3-C05-viterbi-numeric}
+\begin{solution}
+\SLReadTranslation{要求的是观测序列$O=(R,B)$的边缘概率，需要把所有隐藏状态路径的联合概率求和，而不是寻找最大概率路径。}
+\SolGiven 初始分布$\pi=(0.6,0.4)$，转移矩阵每行和为$1$；两个状态对$R,B$的发射概率均非负且各行归一化，观测长度为$2$。
+\SLMethodTrigger{前向算法按“初始概率乘首个发射—对前驱求和—乘当前发射”递推，最后对终态求和，正好完成隐藏路径边缘化。}
+\SolPlan 先计算$\alpha_1(j)=\pi_jb_j(R)$，再对每个终态按$\alpha_2(j)=[\sum_i\alpha_1(i)a_{ij}]b_j(B)$更新，最后求$\sum_j\alpha_2(j)$。
+\SolDerive
+初始化$\alpha_1=(0.6\cdot0.5,0.4\cdot0.1)=(0.30,0.04)$。递推得
+\[
+\alpha_2(1)=[0.30(0.7)+0.04(0.4)](0.5)=0.113,
+\]
+\[
+\alpha_2(2)=[0.30(0.3)+0.04(0.6)](0.9)=0.1026.
+\]
+\SolCheck 直接枚举四条状态路径的联合概率得到$0.105,0.081,0.008,0.0216$，其和为$0.2156$，与$0.113+0.1026$一致。前向量分量非负，但其和是观测前缀概率而非必须等于$1$的后验分布。
+\SolAnswer $\alpha_2=(0.113,0.1026)$，因此$P(O=(R,B)\mid\lambda)=0.2156$。
+\end{solution}
+
+\phantomsection\label{struct:V3-C05-CH19}
+\phantomsection\label{struct:V3-C05-CH20}
+\phantomsection\label{struct:V3-C05-CH21}
+\textbf{参数含义。}$N,M,T$分别控制状态数、观测符号数和序列长度；缩放因子$c_t$保存每步被除去的概率质量。若采用对数域，则用$-\infty$表示零概率，并用log-sum-exp聚合，不能把零概率替换为任意小常数而不说明模型变化。
+
+\phantomsection\label{struct:V3-C05-CH22}
+\textbf{初始化方法。}前向初值必须同时包含初始状态概率与首个观测概率；后向初值为$\beta_T(i)=1$，表示空后缀概率。Baum--Welch参数初值需全部合法且通常保持小的正概率；Viterbi的回溯指针首时刻设为空标记。
+
+\phantomsection\label{struct:V3-C05-CH23}
+\textbf{参数更新规则。}前向按“所有前驱之和--转移--当前观测”更新，后向按“转移--下一观测--下一后向值”更新；观测因子在两式中的时间下标不同。缩放前后向必须共用一致因子，否则$\gamma,\xi$归一化会出错。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-013 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-014 L2
+\begin{keypointbox}[title={缩放前向算法：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限合法HMM参数$\lambda$、非空观测$O$、概率警戒阈值与确定性对数域回退实现},
+  output={最后合法前向层、缩放或对数因子、$\log P(O\mid\lambda)$、完成层数$t_{\rm done}$、回退数$r_{\rm done}$、状态与诊断},
+  preconditions={$A,B,\pi$非负有限且归一化；观测均在字典中；$T\ge1$；阈值和log-sum-exp接口合法},
+  initialization={$t_{\rm done}=r_{\rm done}=0$，暂存首层未缩放向量和$c_1$},
+  loop={逐层由最后合法归一化前向量形成临时未缩放层；小正因子触发至多一次全序列对数域重算},
+  update={整层向量和因子有限、非负且归一化核验通过后才原子提交该层},
+  domain={缩放因子为有限正数；零因子表示合法零概率前缀；对数域允许$-\infty$但禁止NaN和$+\infty$},
+  failure={非法接口返回$\mathtt{invalid\_input}$；递推、归一化或log-sum-exp产生非法数返回$\mathtt{numerical\_failure}$},
+  stop={完成$T$层、发现零概率前缀或首次失败时停止},
+  budget={固定最多$T$个层提交；小因子时至多一次从首层开始的对数域重算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$t_{\rm done}$计当前实现中完整提交的前向层，$r_{\rm done}\in\{0,1\}$记录是否执行回退},
+  diagnostics={失败/零概率前缀时刻、最小缩放因子、归一化残差、使用域、回退原因和最终对数似然},
+  complexity={稠密时间$O(TN^2)$；一次回退仍为同阶；保存全部层为$O(TN)$，滚动似然为$O(N)$}
+}
+\begin{algorithm}[H]
+\SetArgSty{textnormal}
+\caption{缩放前向算法}\label{alg:V3-C05-forward-scaled}
+\KwIn{HMM参数$\lambda=(A,B,\pi)$；观测$O=(o_1,\ldots,o_T)$}
+\KwOut{最后合法前向层与因子、$\log P(O\mid\lambda)$、$t_{\rm done},r_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{$0<\varepsilon_{\rm prob}<1$；归一化容差；确定性log-sum-exp回退}
+$t_{\rm done}\leftarrow0$，$r_{\rm done}\leftarrow0$，前向层与因子为空，诊断为空\;
+若$T<1$、观测越出字典，模型维数/概率/归一化非法，或阈值、容差、回退接口不合法，则返回空前缀、$\mathtt{invalid\_input}$及字段诊断\;
+计算临时$\widetilde\alpha_1(i)=\pi_i b_i(o_1)$及$c_1=\sum_i\widetilde\alpha_1(i)$\;
+若$c_1=0$，则返回空前向前缀、$\log P=-\infty,t_{\rm done}=0,r_{\rm done}=0,\mathtt{completed}$，最终诊断记录零概率前缀$t=1$\;
+若$c_1$非有限或为负，则返回空前缀、$\mathtt{numerical\_failure}$及首层求和诊断\;
+若$0<c_1\le\varepsilon_{\rm prob}$，则令$r_{\rm done}\leftarrow1$并从$t=1$用log-sum-exp重算；每个无NaN/$+\infty$的归一化对数层增加$t_{\rm done}$，零路径返回$\mathtt{completed}$诊断，非法数返回$\mathtt{numerical\_failure}$诊断，完整重算返回$\mathtt{completed}$及对数域最终诊断\;
+计算候选$\widehat\alpha_1=\widetilde\alpha_1/c_1$；核验有限非负且和为$1$后原子提交首层并令$t_{\rm done}\leftarrow1$，否则返回空前缀、$\mathtt{numerical\_failure}$及首层归一化诊断\;
+\While{$t_{\rm done}<T$}{
+  令$t\leftarrow t_{\rm done}+1$，在临时状态计算$\widetilde\alpha_t(i)=[\sum_j\widehat\alpha_{t-1}(j)a_{ji}]b_i(o_t)$与$c_t$\;
+  若$c_t=0$，则返回最后合法前向前缀、$\log P=-\infty,t_{\rm done},r_{\rm done},\mathtt{completed}$，最终诊断记录零概率前缀$t$\;
+  若层或$c_t$非有限/为负，则返回最后合法前缀、$\mathtt{numerical\_failure}$及递推时刻$t$诊断\;
+  若$0<c_t\le\varepsilon_{\rm prob}$，则丢弃临时层、令$r_{\rm done}\leftarrow1$并在独立临时表中从首层执行同一对数域重算；零路径时返回$\mathtt{completed}$诊断，非法数时返回既有最后合法缩放前缀与$\mathtt{numerical\_failure}$诊断，完整重算后才原子替换全部层并返回$\mathtt{completed}$最终诊断\;
+  计算并核验候选$\widehat\alpha_t=\widetilde\alpha_t/c_t$后原子提交该层与$c_t$，令$t_{\rm done}\leftarrow t$；失败则返回最后合法前缀、$\mathtt{numerical\_failure}$及归一化时刻$t$诊断\;
+}
+计算$L\leftarrow\sum_{t=1}^T\log c_t$；若非有限则返回最后合法全部层、$\mathtt{numerical\_failure}$及末端求和诊断；否则返回$L$、全部层与因子、$t_{\rm done}=T,r_{\rm done},\mathtt{completed}$，最终诊断记录最小因子和最大归一化残差\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{核心流程保留首层归一化、递推未缩放前向量、记录缩放因子和累加对数似然；零缩放与非有限分支属于稳健实现细节}
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-015 L1
+\paragraph{读前自检：与前向缩放一致的后向算法：执行契约。}与前向缩放一致的后向算法输入“合法HMM与观测、前向算法的完整同域前向层和正缩放/对数因子、后验容差”，条件“前向状态为完整正概率结果”；请执行“每个临时候向量或后验张量有限、非负且归一化核验通过后才原子提交该层”，以“完成全部反向及后验层或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-016 L1
+\paragraph{读前自检：与前向缩放一致的后向算法。}与前向缩放一致的后向算法输入“合法HMM与观测、前向算法的完整同域前向层和正缩放/对数因子、后验容差”，条件“前向状态为完整正概率结果”；请做一轮“每个临时候向量或后验张量有限、非负且归一化核验通过后才原子提交该层”，以“完成全部反向及后验层或首次失败时停止”核对停止证书。\par
+
+\begin{AlgorithmContract}{
+  input={合法HMM与观测、前向算法的完整同域前向层和正缩放/对数因子、后验容差},
+  output={最后合法后向层、$\gamma,\xi$、反向更新数$b_{\rm done}$、状态后验层数$g_{\rm done}$、转移后验层数$x_{\rm done}$、状态与诊断},
+  preconditions={前向状态为完整正概率结果；模型、观测、层数、实现域和因子一致；容差合法},
+  initialization={$\widehat\beta_T=1$或对应对数值，$b_{\rm done}=g_{\rm done}=x_{\rm done}=0$},
+  loop={先反向递推$T-1$层，再逐时刻形成并归一化状态后验与转移后验},
+  update={每个临时候向量或后验张量有限、非负且归一化核验通过后才原子提交该层},
+  domain={缩放域因子有限正；对数域允许$-\infty$；后验必须位于相应概率单纯形},
+  failure={模型、前向层、因子或域不一致返回$\mathtt{invalid\_input}$；递推或后验归一化失败返回$\mathtt{numerical\_failure}$},
+  stop={完成全部反向及后验层或首次失败时停止},
+  budget={固定$T-1$次反向层、$T$次$\gamma$层和$T-1$次$\xi$层；无迭代优化预算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$b_{\rm done},g_{\rm done},x_{\rm done}$分别记录实际提交的反向、状态后验和转移后验层},
+  diagnostics={失败时刻/张量、实现域、最小因子、归一化常数与残差、前后向一致性误差},
+  complexity={稠密反向与$\xi$为$O(TN^2)$时间；显式保存$\xi$为$O(TN^2)$空间，流式累计可降低空间}
+}
+\begin{algorithm}[H]
+\SetArgSty{textnormal}
+\caption{与前向缩放一致的后向算法}\label{alg:V3-C05-backward-scaled}
+\KwIn{HMM与观测；前向算法输出的完整同域$\widehat\alpha_t$及缩放/对数因子}
+\KwOut{最后合法$\widehat\beta,\gamma,\xi$、$b_{\rm done},g_{\rm done},x_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{后验归一化容差；固定的缩放域或对数域标记}
+$b_{\rm done}\leftarrow0$，$g_{\rm done}\leftarrow0$，$x_{\rm done}\leftarrow0$，输出层为空，诊断为空\;
+若模型/观测非法、前向未完整完成正概率序列、层数或实现域不一致，缩放因子非有限正或对数因子非法，或容差不合法，则返回空后向结果、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+提交$\widehat\beta_T(i)\leftarrow1$（对数域为$0$）\;
+\For{$t\leftarrow T-1,T-2,\ldots,1$}{
+  在同一实现域临时计算后向层；若结果含NaN/$+\infty$、缩放域含负值，则返回最后合法后向前缀、$b_{\rm done},\mathtt{numerical\_failure}$及反向时刻$t$诊断\;
+  原子提交$\widehat\beta_t$并令$b_{\rm done}\leftarrow b_{\rm done}+1$\;
+}
+\For{$t\leftarrow1$ \KwTo $T$}{
+  临时归一化$\widehat\alpha_t(i)\widehat\beta_t(i)$得到$\gamma_t$；若常数非有限/非正或后验非法，则返回最后合法结果与$\mathtt{numerical\_failure}$，诊断为$\gamma$层$t$\;
+  原子提交$\gamma_t$并令$g_{\rm done}\leftarrow g_{\rm done}+1$\;
+}
+\For{$t\leftarrow1$ \KwTo $T-1$}{
+  临时归一化$\widehat\alpha_t(i)a_{ij}b_j(o_{t+1})\widehat\beta_{t+1}(j)$得到$\xi_t$；若常数非有限/非正或后验非法，则返回最后合法结果与$\mathtt{numerical\_failure}$，诊断为$\xi$层$t$\;
+  原子提交$\xi_t$并令$x_{\rm done}\leftarrow x_{\rm done}+1$\;
+}
+返回完整$\widehat\beta,\gamma,\xi,b_{\rm done}=T-1,g_{\rm done}=T,x_{\rm done}=T-1,\mathtt{completed}$，最终诊断记录归一化最大残差和前后向一致性误差\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+\phantomsection\label{struct:V3-C05-CH24}
+\textbf{停止条件。}前向、后向和Viterbi是有限长度递推，到达边界时严格终止；Baum--Welch的相对目标变化和后验充分统计量变化只构成数值平台判据，返回$\mathtt{numerical\_failure}$。参数变化仅在隐藏状态先完成标签匹配后作为辅助诊断；只有另行给出固定点/KKT残差才可报告数学收敛。达到最大轮数只说明计算被截断。
+
+\phantomsection\label{struct:V3-C05-CH25}
+\textbf{收敛与正确性。}前向、后向和Viterbi由子问题递推与数学归纳保证有限步正确，不涉及极限收敛。Baum--Welch是EM，在精确E/M步和支撑条件下使观测似然不下降；它仍可能停在局部驻点，不保证隐藏状态语义唯一。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-017 L1
+\paragraph{读前自检：学习算法。}对隐马尔可夫模型中的学习算法，条件“若隐藏状态序列可见，初始、转移和观测概率的极大似然估计都是相应频数归一化”不可省；请把“若隐藏状态序列可见，初始、转移和观测概率的极大似然估计都是相应频数归一化”中的已声明对象依次标成输入、输出与判据，再用隐藏状态不可见时，用后验期望计数替代真实计数，这正是EM在HMM上的实现作检查。\par
+
+\SLAdvancedSection{Baum--Welch学习算法}{sec:V3-C05-S04}
+\knowledgeanchor{SLM-10-03-003}{学习算法}
+若隐藏状态序列可见，初始、转移和观测概率的极大似然估计都是相应频数归一化。隐藏状态不可见时，用后验期望计数替代真实计数，这正是EM在HMM上的实现。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-CONCEPT-014 L1
+\paragraph{读前自检：监督学习方法。}监督学习方法把问题限定在“对多条带状态标注序列，$\pi_i$取首状态为$i$的序列比例”；请把$a_{ij}$展开一次并检查其类型或边界，检查是否得到零计数行需要预先规定平滑或结构约束。\par
+
+\knowledgeanchor{SLM-10-03-004}{监督学习方法}
+对多条带状态标注序列，$\pi_i$取首状态为$i$的序列比例，$a_{ij}$取$i\to j$次数除以从$i$出发的总转移次数，$b_j(k)$取状态$j$发射$v_k$次数除以状态$j$总出现次数。零计数行需要预先规定平滑或结构约束。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-018 L1
+\paragraph{读前自检：Baum--Welch算法。}在“把前向--后向得到的状态与转移后验转成期望计数”成立时处理Baum--Welch算法：请把$\gamma_t(i)$展开一次并检查其类型或边界，并以展开后的量满足定义中的域、维数或符号限制判定结果。\par
+
+\begingroup
+\setstretch{1.40}
+\knowledgeanchor{SLM-10-03-005}{Baum--Welch算法}
+% CORE-DERIVATION-PLAN: KN-V3-C21-DERIVATION-002
+\SLKnowledgeBridge{把状态后验与转移后验解释为期望计数，并按概率单纯形归一化。}{$\gamma_t(i)$、$\xi_t(i,j)$ 与 HMM 的初始、转移、发射参数。}{前向--后向量使用同一缩放约定；相关期望总计数为正，零分母由预登记规则处理。}{先把 EM 的 $Q$ 函数按初始分布、转移矩阵和发射矩阵三组参数分块。}
+
+\begin{derivationgoalbox}
+把前向--后向得到的状态与转移后验转成期望计数，推导Baum--Welch对初始分布、转移矩阵和发射矩阵的归一化更新。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+固定旧参数并用相同缩放约定计算$\gamma_t(i)$与$\xi_t(i,j)$；每个转移行和发射行分别位于概率单纯形。假设相应期望总计数为正；零分母情况留给预登记的平滑、重启或删状态规则。
+\end{derivationprepbox}
+未标注时，E步用前向--后向计算$\gamma_t(i)$和$\xi_t(i,j)$；M步极大化期望完全数据对数似然
+\[
+Q(\lambda,\lambda^{(r)})=
+\sum_i\gamma_1(i)\log\pi_i
++\sum_{t=1}^{T-1}\sum_{i,j}\xi_t(i,j)\log a_{ij}
++\sum_{t=1}^{T}\sum_i\gamma_t(i)\log b_i(o_t).
+\]
+
+% KNOWLEDGE-PLAN: KN-V3-C21-FORMULA-002 L1
+\paragraph{读前自检：Baum--Welch模型参数估计公式。}Baum--Welch的M步用$\gamma_t(i)$与$\xi_t(i,j)$作为期望计数；请对固定状态$i$将$\sum_t\xi_t(i,j)$按$j$归一化得到$a_{ij}^{\mathrm{new}}$，核对该行和为1，并指出零期望计数行没有无平滑ML更新。\par
+
+\knowledgeanchor{SLM-10-03-006}{Baum--Welch模型参数估计公式}
+\textbf{推导第1步：初始分布。}初始项为$\sum_i\gamma_1(i)\log\pi_i$；在$\sum_i\pi_i=1$下用Lagrange乘子求驻点，得到
+\[
+\pi_i^{\mathrm{new}}=\gamma_1(i),
+\]
+\textbf{推导第2步：转移行。}固定$i$，转移项是$\sum_j[\sum_{t=1}^{T-1}\xi_t(i,j)]\log a_{ij}$；在$\sum_ja_{ij}=1$下归一化期望转移计数，得到
+\[
+a_{ij}^{\mathrm{new}}=
+\frac{\sum_{t=1}^{T-1}\xi_t(i,j)}
+{\sum_{t=1}^{T-1}\gamma_t(i)},
+\]
+其中分母等于从状态$i$出发的期望转移总数。\par
+\textbf{推导第3步：发射行。}固定状态$j$，按观测符号$v_k$汇总期望占用次数，并在$\sum_kb_j(k)=1$下归一化，得到
+\[
+b_j^{\mathrm{new}}(k)=
+\frac{\sum_{t=1}^{T}\mathbf1\{o_t=v_k\}\gamma_t(j)}
+{\sum_{t=1}^{T}\gamma_t(j)}.
+\]
+每个子问题的Hessian在单纯形切空间上为负定或半负定，因此该归一化驻点达到对应$Q$块的最大值。多序列情形在分子、分母中再对序列求和，且$\pi_i$取各序列首状态后验的平均。
+
+上式是\textbf{无平滑的ML--EM}：目标是观测对数似然$\ell(\lambda)$，零期望计数行没有ML更新，必须返回失败、保留结构上固定的旧行或重启，但不能临时加伪计数后仍声称在执行同一个ML M步。
+
+若预先选择\textbf{Dirichlet先验下的MAP--EM}，令允许的初始、转移与发射坐标分别具有参数$\kappa_i,\eta_{ij},\beta_{jk}>1$，则M步极大化的是
+\[
+Q_{\rm MAP}(\lambda,\lambda^{(r)})
+=Q_{\rm ML}(\lambda,\lambda^{(r)})
++\sum_i(\kappa_i-1)\log\pi_i
++\sum_{i,j}(\eta_{ij}-1)\log a_{ij}
++\sum_{j,k}(\beta_{jk}-1)\log b_j(k).
+\]
+相应更新把各期望计数分别加上$\kappa_i-1,\eta_{ij}-1,\beta_{jk}-1$后逐行归一化。此时单调不减的目标是$\ell(\lambda)+\log p(\lambda)$，不是无先验的观测似然；先验、允许支撑与目标必须在训练前固定。
+\endgroup
+
+\phantomsection\label{struct:V3-C05-CH26}
+\phantomsection\label{struct:V3-C05-CH27}
+% KNOWLEDGE-PLAN: KN-V3-C21-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：Baum Welch学习算法。}围绕Baum Welch学习算法，先采用条件“若外层迭代数为$M$，总训练为$O(MRTN^2)$”，再由$T$的总成本剥离一次迭代或一次样本因子；最后验证稀疏转移图有$E$条允许边时，相应主项可降为$O(MRTE)$。\par
+
+\begin{complexitybox}
+\textbf{训练时间复杂度。}直接枚举长度$T$路径为$O(TN^T)$。对$R$条平均长度$T$的序列，Baum--Welch每轮为$O(RTN^2)$；若外层迭代数为$M$，总训练为$O(MRTN^2)$。稀疏转移图有$E$条允许边时，相应主项可降为$O(MRTE)$。
+\end{complexitybox}
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-019 L1
+\paragraph{读前自检：Baum--Welch算法。}Baum--Welch算法输入“非空观测序列集合、状态数/允许拓扑、目标$u\in\{\mathrm{ML},\mathrm{MAP}\}$、合法初值及可选Dirichlet先验”，条件“序列符号合法”；请做一轮“全部序列E步、M步行归一化、拓扑和单调目标门禁通过后才原子提交参数”，以“目标相对增量满足容差、轮数预算耗尽或首次失败时停止”核对停止证书。\par
+
+\knowledgeanchor{SLM-10-04-001}{Baum--Welch算法}
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-020 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-021 L2
+\begin{keypointbox}[title={区分ML与MAP目标的Baum--Welch学习：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={非空观测序列集合、状态数/允许拓扑、目标$u\in\{\mathrm{ML},\mathrm{MAP}\}$、合法初值及可选Dirichlet先验},
+  output={最后合法HMM参数$\lambda$、目标轨迹、完成轮数$r_{\rm done}$、序列E步数$s_{\rm done}$、状态与诊断},
+  preconditions={序列符号合法；初值在固定拓扑内概率归一化且目标有限；MAP先验、容差、预算和并列规则合法},
+  initialization={$\lambda=\lambda^{(0)},r_{\rm done}=s_{\rm done}=0$并按ML或MAP口径计算$L$},
+  loop={每轮只用旧参数对全部序列累计后验计数，再形成ML或MAP候选并计算同口径目标},
+  update={全部序列E步、M步行归一化、拓扑和单调目标门禁通过后才原子提交参数},
+  domain={$A,B,\pi$位于固定支撑的概率单纯形；后验与期望计数非负有限；选定目标有限},
+  failure={非法数据、目标、初值或先验返回$\mathtt{invalid\_input}$；零序列概率、后验/M步归一化、零允许行或目标门禁失败返回$\mathtt{numerical\_failure}$},
+  stop={目标相对增量满足容差、轮数预算耗尽或首次失败时停止},
+  budget={至多$R_{\max}$个完整Baum--Welch轮；每轮恰好扫描全部$S$条序列},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$},
+  iterations={$r_{\rm done}$计原子提交轮，$s_{\rm done}$计实际完成的单序列前向--后向E步},
+  diagnostics={失败$(r,s)$或参数行与E/M/目标阶段、零计数、目标增量、后验变化、ML/MAP口径和预算余量},
+  complexity={$S$条平均长$T$序列、$N$状态共$O(r_{\rm done}STN^2)$时间；后验可流式累计}
+}
+\begin{algorithm}[H]
+\SLStudentTallAlgorithmFont
+\SetArgSty{textnormal}
+\caption{区分ML与MAP目标的Baum--Welch学习}\label{alg:V3-C05-bw}
+\KwIn{观测序列$\{O_s\}_{s=1}^S$；状态数与允许拓扑；$u\in\{\mathrm{ML},\mathrm{MAP}\}$；初值$\lambda^{(0)}$}
+\KwOut{最后合法$\lambda$、目标轨迹、$r_{\rm done},s_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{$R_{\max}\in\mathbb N_0$；$\varepsilon_L>0$；$\tau_{\rm num}\ge0$；MAP时固定Dirichlet参数；固定并列规则}
+$\lambda\leftarrow\lambda^{(0)}$，$r_{\rm done}\leftarrow0$，$s_{\rm done}\leftarrow0$，目标轨迹与诊断为空\;
+若$S<1$、序列为空或含字典外符号、状态/拓扑/初值非法、$u$非法、MAP先验不合法，或预算、容差、并列规则不合法，则返回当前初值、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+按$u$计算$L\leftarrow\ell(\lambda)$或$\ell(\lambda)+\log p(\lambda)$；若非有限则返回最后合法初值、$\mathtt{numerical\_failure}$及初始化目标诊断\;
+\While{$r_{\rm done}<R_{\max}$}{
+  保存$\lambda_{\rm old}\leftarrow\lambda,L_{\rm old}\leftarrow L$，清零临时期望计数\;
+  \For{$s\leftarrow1$ \KwTo $S$}{
+    只用$\lambda_{\rm old}$执行同域前向--后向；若序列概率为零、后验归一化失败或结果非有限，则返回最后合法$\lambda_{\rm old},L_{\rm old},r_{\rm done},s_{\rm done},\mathtt{numerical\_failure}$，诊断为E步$(r_{\rm done},s)$\;
+    把有限$\gamma_1,\sum_t\xi_t$和发射占用加入临时累计量，令$s_{\rm done}\leftarrow s_{\rm done}+1$\;
+  }
+  若$u=\mathrm{ML}$，按原始期望计数形成$\lambda^+$；任一允许行分母为零时返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为ML M步零计数行\;
+  若$u=\mathrm{MAP}$，仅加预登记Dirichlet减一形成$\lambda^+$；候选计数为负、分母非正或先验支撑不一致时返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为MAP M步参数行\;
+  保持禁止转移为零并核验$\lambda^+$各行有限、非负、归一化；失败则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为候选参数核验\;
+  按同一$u$计算$L^+$；若非有限或$L^+<L_{\rm old}-\tau_{\rm num}$，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为目标门禁及新旧值\;
+  原子提交$\lambda\leftarrow\lambda^+,L\leftarrow L^+$及轨迹，令$r_{\rm done}\leftarrow r_{\rm done}+1$；记录后验变化与目标增量\;
+  \If{$|L-L_{\rm old}|\le\varepsilon_L(1+|L_{\rm old}|)$}{返回最后合法$\lambda,L,r_{\rm done},s_{\rm done},\mathtt{numerical\_failure}$，最终诊断记录目标平台、ML/MAP口径、后验变化及可用固定点残差\;}
+}
+返回最后合法$\lambda,L,r_{\rm done},s_{\rm done},\mathtt{budget\_stop}$，最终诊断记录轮数预算耗尽与末轮目标增量\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{Baum--Welch的似然小变化只返回$\mathtt{numerical\_failure}$；固定点/KKT残差未核验时不得写作$\mathtt{converged}$，实际耗尽$R_{\max}$才返回$\mathtt{budget\_stop}$。}
+
+
+\SLTeachSection{Viterbi预测算法}{sec:V3-C05-S05}
+\knowledgeanchor{PRE-SQ-013}{Viterbi最优路径递推}
+定义
+\[
+\delta_t(i)=\max_{i_1,\ldots,i_{t-1}}
+P(i_1,\ldots,i_{t-1},i_t=q_i,o_1,\ldots,o_t\mid\lambda).
+\]
+它保存所有以$i$结尾的前缀中概率最大者；$\psi_t(i)$保存实现最大值的前驱状态。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-022 L1
+\paragraph{读前自检：预测算法。}把隐马尔可夫模型中的预测算法放在“$I^*=\arg\max_I P(I\mid O,\lambda) =\arg\max_I P(O,I\mid\lambda),$”下考察：把$I^*$展开一次并检查其类型或边界，并检查展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-10-04-002}{预测算法}
+预测目标是
+\[
+I^*=\arg\max_I P(I\mid O,\lambda)
+=\arg\max_I P(O,I\mid\lambda),
+\]
+因为对固定$O,\lambda$，分母$P(O\mid\lambda)$与路径无关。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-023 L1
+\paragraph{读前自检：近似算法。}隐马尔可夫模型中的近似算法要求先确认“若两条前缀都到达同一状态，未来扩展因子完全相同，只需保留概率更大的前缀及其回溯指针”；请随后检查$i_t^*=\arg\max_i\gamma_t(i)$中每项的类型后完成等式变形，用两端运算均有定义、类型一致且化为同一结果验收。\par
+
+\knowledgeanchor{SLM-10-04-003}{近似算法}
+逐时刻后验解码取$i_t^*=\arg\max_i\gamma_t(i)$。它最大化每个位置正确的后验期望数，但不保证拼成的路径联合概率最大，也可能违反零转移约束。只有目标确实是逐位置损失时才应使用它。
+
+\phantomsection\label{replay:V3-C05-S05-PRE-SQ-008}
+\textbf{动态规划复现。}若两条前缀都到达同一状态，未来扩展因子完全相同，只需保留概率更大的前缀及其回溯指针。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-024 L1
+\paragraph{读前自检：Viterbi算法。}Viterbi递推维护最优路径分数$\delta_t(i)$与回溯指针$\psi_t(i)$；请完成一层最大--乘积更新，取$i_T^*=\arg\max_i\delta_T(i)$后按$\psi$逐层回溯，核对得到长度$T$的合法状态路径。\par
+
+\knowledgeanchor{SLM-10-04-004}{Viterbi算法}
+递推为
+\[
+\delta_1(i)=\pi_i b_i(o_1),\qquad\psi_1(i)=0,
+\]
+\[
+\delta_t(i)=\max_j[\delta_{t-1}(j)a_{ji}]b_i(o_t),
+\qquad
+\psi_t(i)=\arg\max_j[\delta_{t-1}(j)a_{ji}].
+\]
+终止时$i_T^*=\arg\max_i\delta_T(i)$，再按$i_t^*=\psi_{t+1}(i_{t+1}^*)$回溯。
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-025 L1
+\paragraph{读前自检：Viterbi算法。}Viterbi算法输入“有限合法HMM参数$\lambda$、非空观测$O$、$\log0=-\infty$约定及固定并列决胜规则”，条件“模型概率非负有限且归一化”；请做一轮“同一DP层的值和指针全部为有限或$-\infty$且索引合法后才原子提交整层”，以“完整递推与回溯完成、发现零合法路径前缀或首次失败时停止”核对停止证书。\par
+
+\knowledgeanchor{SLM-10-05-001}{Viterbi算法}
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-026 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C21-ALGORITHM_IDEA-027 L2
+\begin{keypointbox}[title={对数域Viterbi算法：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限合法HMM参数$\lambda$、非空观测$O$、$\log0=-\infty$约定及固定并列决胜规则},
+  output={最后合法DP层与回溯表、最大路径$I^*$或无路径标记、对数联合概率、完成层数$t_{\rm done}$、回溯步数$b_{\rm done}$、状态与诊断},
+  preconditions={模型概率非负有限且归一化；观测在字典内；$T\ge1$；对数和并列规则合法},
+  initialization={$d,\psi$为空，$I^*=\varnothing,t_{\rm done}=b_{\rm done}=0$；临时计算首层},
+  loop={逐时刻在临时层枚举全部前驱，固定决胜后整层提交；终点确定后反向读取指针},
+  update={同一DP层的值和指针全部为有限或$-\infty$且索引合法后才原子提交整层},
+  domain={对数值属于$\mathbb R\cup\{-\infty\}$，禁止NaN和$+\infty$；指针必须是合法状态索引或空标记},
+  failure={非法模型、观测或规则返回$\mathtt{invalid\_input}$；对数候选、最大化或指针核验失败返回$\mathtt{numerical\_failure}$},
+  stop={完整递推与回溯完成、发现零合法路径前缀或首次失败时停止},
+  budget={固定最多$T$个DP层、$TN^2$个前驱候选和$T-1$个回溯步；无优化迭代预算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$t_{\rm done}$计含至少一条有限路径的已提交层，$b_{\rm done}$计实际合法回溯指针读取},
+  diagnostics={失败/零路径前缀时刻、非法候选或指针位置、并列次数、终态和最大对数概率},
+  complexity={稠密时间$O(TN^2)$、回溯$O(T)$；保存指针$O(TN)$，DP值可滚动为$O(N)$}
+}
+\begin{algorithm}[H]
+\SetArgSty{textnormal}
+\caption{对数域Viterbi算法}\label{alg:V3-C05-viterbi}
+\KwIn{HMM参数$\lambda$；观测$O=(o_1,\ldots,o_T)$}
+\KwOut{最后合法$d,\psi$、$I^*$或无路径标记、对数概率、$t_{\rm done},b_{\rm done}$、$\mathtt{status}$与最终诊断}
+\KwData{$\log0=-\infty$；并列最优固定决胜规则；零路径判据}
+$d,\psi\leftarrow\varnothing$，$I^*\leftarrow\varnothing$，$t_{\rm done}\leftarrow0$，$b_{\rm done}\leftarrow0$，诊断为空\;
+若$T<1$、观测越出字典，模型维数/概率/归一化非法，或对数、并列、零路径规则不合法，则返回空DP、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+在临时层计算$d_1^+(i)=\log\pi_i+\log b_i(o_1)$、$\psi_1^+(i)=0$；若含NaN/$+\infty$，则返回空DP、$\mathtt{numerical\_failure}$及首层状态$i$诊断\;
+若所有$d_1^+(i)=-\infty$，则返回无路径标记、$-\infty,t_{\rm done}=0,b_{\rm done}=0,\mathtt{completed}$，最终诊断记录零合法初始路径\;
+原子提交$d_1\leftarrow d_1^+,\psi_1\leftarrow\psi_1^+$并令$t_{\rm done}\leftarrow1$\;
+\While{$t_{\rm done}<T$}{
+  令$t\leftarrow t_{\rm done}+1$；在临时层对每个$i,j$计算$c_t(j,i)=d_{t-1}(j)+\log a_{ji}$\;
+  若任一候选含NaN/$+\infty$，则返回最后合法DP与$\mathtt{numerical\_failure}$，诊断为候选位置$(t,j,i)$\;
+  对每个$i$按固定规则取最大前驱；全为$-\infty$时置$d_t^+(i)=-\infty,\psi_t^+(i)=0$，否则写入合法指针和$d_t^+(i)=\max_jc_t(j,i)+\log b_i(o_t)$\;
+  若临时层含非法数或指针越界，则返回最后合法DP与$\mathtt{numerical\_failure}$，诊断为层核验$(t,i)$\;
+  若所有$d_t^+(i)=-\infty$，则返回最后合法DP、无路径标记、$-\infty,t_{\rm done},b_{\rm done}=0,\mathtt{completed}$，最终诊断记录零合法观测前缀$t$\;
+  原子提交$d_t\leftarrow d_t^+,\psi_t\leftarrow\psi_t^+$并令$t_{\rm done}\leftarrow t$\;
+}
+按固定规则取有限终态$i_T^*$并暂存路径后缀；若终态选择失败则返回最后合法DP与$\mathtt{numerical\_failure}$，诊断为终止阶段\;
+\For{$t\leftarrow T-1,T-2,\ldots,1$}{读取$i_t^*\leftarrow\psi_{t+1}(i_{t+1}^*)$；若指针越界则返回最后合法DP和已暂存后缀、$\mathtt{numerical\_failure}$及回溯位置$t$诊断；否则令$b_{\rm done}\leftarrow b_{\rm done}+1$}
+提交完整$I^*$；返回$I^*,\max_i d_T(i),t_{\rm done}=T,b_{\rm done}=T-1,\mathtt{completed}$，最终诊断记录终态、并列次数与最大对数概率\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{有限DP有两类$\mathtt{completed}$结果：完整回溯得到最优路径，或某层全为$-\infty$并证明当前观测前缀无合法路径；最终诊断明确结果类型。NaN、非法指针等才返回$\mathtt{numerical\_failure}$。}
+
+
+\SLReviewSection{条件独立、复杂度与实现}{sec:V3-C05-S06}
+\phantomsection\label{replay:V3-C05-S06-PRE-SQ-009}
+\textbf{概率图与条件独立复现。}链式图中，给定$i_t$后，过去与未来由该状态分隔；给定完整状态序列后，各观测彼此独立。边缘化隐藏状态后，观测之间通常仍相关。
+
+\paragraph{到第30章的前向链接。}若概率行向量$\rho$满足代数固定点方程$\rho=\rho A$，以$\rho$初始化会使隐藏状态的单时刻边缘分布保持不变；本章只用这一有限时刻核验。固定点是否唯一、任意初值是否趋近它，以及“不可约、非周期、遍历”等严格条件，统一留到第30章。前向--后向、Baum--Welch和Viterbi处理有限序列，并不以那些长期定理为先修。
+
+\begin{complexitybox}
+\textbf{预测时间复杂度。}前向似然、后验边缘和Viterbi对每个时刻的$N$个终点扫描$N$个前驱，单序列均为$O(TN^2)$；稀疏拓扑为$O(TE)$。\\
+\textbf{存储与空间复杂度。}只求似然可滚动保存两层，额外空间$O(N)$；保存全部前向量或Viterbi回溯指针为$O(TN)$。若显式保存所有$\xi_t(i,j)$需$O(TN^2)$，可在反向扫描时流式累计。\textbf{复杂度假设：}状态离散且转移矩阵稠密；连续观测只改变发射概率计算项。
+
+\textbf{异常、退化与停止情形。}前向缩放因子为零表示观测在当前模型下没有合法路径；后向递推必须使用同一缩放约定；Viterbi若终点全为$-\infty$，应说明不存在可行路径。Baum--Welch的零期望计数行按给定平滑或重启规则处理；达到最大轮数而似然容差仍未满足时，应报告末轮似然增量，不能把EM的单调性等同于全局最优。
+\end{complexitybox}
+
+\textbf{数值实现。}长序列概率连乘会下溢，应使用一致缩放或对数域。缩放因子不仅用于稳定数值，也用于恢复对数似然。多序列训练必须在序列边界重置初始分布，不能把不同个体首尾错误地连接成一次转移。
+
+
+\SLDirectSection{例题与练习}{sec:V3-C05-S07}
+本节把概率计算、参数学习与序列预测放在同一模型流程中，比较五个算法的输入、递推量与适用条件。
+
+\phantomsection\label{replay:V3-C05-S07-SLM-10-01-004}
+\textbf{生成复现。}按$\pi$抽首状态，再交替按转移行和观测行抽样，序列边界重新初始化。
+\phantomsection\label{replay:V3-C05-S07-SLM-10-02-004}
+\textbf{前向复现。}先乘首观测，随后按前驱求和并乘当前观测，末端对状态求和。
+\phantomsection\label{replay:V3-C05-S07-SLM-10-03-002}
+\textbf{后向复现。}末端置1，向前聚合“转移--下一观测--下一后向值”，可与前向交叉核对似然。
+\phantomsection\label{replay:V3-C05-S07-SLM-10-04-001}
+\textbf{Baum--Welch复现。}用$\gamma,\xi$形成期望计数并逐行归一化，每轮检查总对数似然不下降。
+\phantomsection\label{replay:V3-C05-S07-SLM-10-05-001}
+\textbf{Viterbi复现。}前向最大化并保存前驱，终点选择后反向回溯整条路径。
+
+\phantomsection\label{struct:V3-C05-CH28}
+\phantomsection\label{struct:V3-C05-CH29}
+\begin{applicabilitybox}
+\textbf{适用条件。}HMM适合离散阶段随时间转移、每时刻观测主要由当前阶段解释、需要概率计算或路径解码的序列任务。转移结构应能表达领域允许路径，训练数据应覆盖主要状态和观测。
+
+\textbf{方法局限。}一阶齐次假设可能过强；状态持续时间隐含为几何分布；状态数与语义通常不可识别；Baum--Welch目标非凸且依赖初值；长程依赖、上下文相关发射和连续高维观测需要扩展模型；逐点后验与最优路径回答不同问题。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V3-C05-CH30}
+% KNOWLEDGE-PLAN: KN-V3-C21-BOUNDARY-004 L1
+\paragraph{读前自检：常见错误与误用边界：例题与练习。}例题与练习以“边界框首项禁止把$A$按列归一化却仍使用行向量约定”为约束；请把固定错误“把$A$按列归一化却仍使用行向量约定”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，并确认改写后的运算或判断有定义，且不再触发“把$A$按列归一化却仍使用行向量约定”。\par
+
+\begin{warningbox}
+典型误用包括：把$A$按列归一化却仍使用行向量约定；前向递推漏乘当前观测；后向递推误乘$o_t$而非$o_{t+1}$；把$\alpha_t$当成归一化状态后验；$\xi$漏掉转移或下一观测；Baum--Welch分母时间范围写错；多序列首尾相连；零概率在对数域未设为$-\infty$；Viterbi不保存回溯指针；把逐点后验路径当成全局最优路径；用测试序列选择状态数。
+\end{warningbox}
+
+\phantomsection\label{struct:V3-C05-CH31}
+% KNOWLEDGE-PLAN: KN-V3-C21-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：例题与练习。}先锁定例题与练习的条件“对比表首个数据行是“目标｜路径概率求和与后验｜提高观测似然｜最大概率单路径””：按列复述“目标｜路径概率求和与后验｜提高观测似然｜最大概率单路径”中的对象、假设与结论，所得结果应满足各列均对应首行对象“目标”，且未与表中下一行互换。\par
+
+\begin{comparisonbox}
+\par\medskip
+\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.05cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\toprule 维度 & 前向--后向 & Baum--Welch & Viterbi\\ \midrule
+目标 & 路径概率求和与后验 & 提高观测似然 & 最大概率单路径\\
+参数是否更新 & 否 & 是 & 否\\
+聚合运算 & 求和--乘积 & E步求和，M步归一化 & 最大--乘积\\
+主要输出 & $P(O),\gamma,\xi$ & $A,B,\pi$ & 路径与回溯指针\\
+典型复杂度 & $O(TN^2)$ & 每轮$O(TN^2)$ & $O(TN^2)$\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+\phantomsection\label{struct:V3-C05-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[两状态HMM的Viterbi路径]\label{exm:V3-C05-viterbi-path-rb}
+沿用第\ref{sec:V3-C05-S03}节的数值模型与观测$O=(R,B)$。求Viterbi最优路径，并与观测概率区分。
+
+\phantomsection\label{struct:V3-C05-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V3-C05-viterbi-path-rb}
+\begin{solution}
+\SLReadTranslation{这里要最大化单条隐藏路径与观测的联合概率；不能把前向算法的路径概率总和或逐时刻边缘最大状态当作Viterbi答案。}
+\SolGiven 沿用同一合法HMM和$O=(R,B)$；首层最优前缀为$\delta_1=(0.30,0.04)$，每个第二时刻终态都必须比较两个前驱并保存获胜指针。
+\SLMethodTrigger{Viterbi采用最大--乘积递推：到达同一终态的前缀共享相同未来，因此只保留较大联合概率及其前驱，再由最优终态回溯。}
+\SolPlan 初始化$\delta_1$，分别计算$\delta_2(1),\delta_2(2)$和$\psi_2$；选取最大终态并回溯，最后枚举四条路径核对最大值与前向总和的区别。
+\SolDerive
+初始化$\delta_1=(0.30,0.04)$。到时刻2：
+\[
+\delta_2(1)=\max\{0.30(0.7),0.04(0.4)\}(0.5)=0.105,
+\quad\psi_2(1)=1,
+\]
+\[
+\delta_2(2)=\max\{0.30(0.3),0.04(0.6)\}(0.9)=0.081,
+\quad\psi_2(2)=1.
+\]
+\SolCheck 四条路径概率为$0.105,0.081,0.008,0.0216$，唯一最大值是$0.105$；四项之和$0.2156$等于前向观测概率，验证“最大”与“求和”没有混用。
+\SolAnswer Viterbi唯一最优路径为$(1,1)$，联合概率为$0.105$；观测概率仍为全部路径之和$0.2156$。
+\SLStuckHint{先算首层两个$\delta_1$，再对第二层每个终态分别比较两个前驱。}
+\SLTransfer{把递推中的“最大”换成“求和”得到前向算法；但Viterbi还必须保存$\psi$，否则无法恢复整条路径。}
+\end{solution}
+
+
+\phantomsection\label{struct:V3-C05-CH34}
+\begingroup
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V3-C05-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S01-01}
+设二状态链转移矩阵为$A=\begin{pmatrix}0.8&0.2\\0.3&0.7\end{pmatrix}$，当前分布为$(0.6,0.4)$。求下一时刻分布。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S01-01}
+\begin{chapterexercisesolution}{ex:V3-C05-S01-01}
+以行向量表示当前分布$p_t=(0.6,0.4)$，状态更新为
+\[
+\begin{aligned}
+p_{t+1}&=p_tA\\
+&=(0.6,0.4)
+\begin{pmatrix}0.8&0.2\\0.3&0.7\end{pmatrix}\\
+&=(0.60,0.40).
+\end{aligned}
+\]
+归一化核验为
+\[
+p_{t+1}(i)\geq0,
+\qquad
+0.60+0.40=1.
+\]
+结果与$p_t$相同，所以该分布还是此链的平稳分布。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S01-02}
+为什么一阶马尔可夫性质不推出$i_{t+1}$与$i_{t-1}$边缘独立？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S01-02}
+\begin{chapterexercisesolution}{ex:V3-C05-S01-02}
+一阶马尔可夫性质给出的是
+\[
+I_{t+1}\perp I_{t-1}\mid I_t,
+\qquad
+P(i_{t+1}\mid i_t,i_{t-1})=P(i_{t+1}\mid i_t).
+\]
+边缘化中间状态后却有
+\[
+P(i_{t+1}\mid i_{t-1})
+=\sum_{i_t}P(i_{t+1}\mid i_t)P(i_t\mid i_{t-1}),
+\]
+右侧一般随$i_{t-1}$变化。因此删除条件变量$I_t$后，$I_{t+1}$与$I_{t-1}$通常仍相关。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S01-03}
+写出长度3状态路径$(i_1,i_2,i_3)$和观测$(o_1,o_2,o_3)$的联合概率。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S01-03}
+\begin{chapterexercisesolution}{ex:V3-C05-S01-03}
+对合法状态$i_t$与观测$o_t$，HMM联合概率按初始化、转移与发射分解：
+\[
+\begin{aligned}
+P(O,I\mid\lambda)
+&=P(i_1)P(o_1\mid i_1)
+P(i_2\mid i_1)P(o_2\mid i_2)\\
+&\quad\cdot P(i_3\mid i_2)P(o_3\mid i_3)\\
+&=\pi_{i_1}b_{i_1}(o_1)a_{i_1i_2}b_{i_2}(o_2)
+a_{i_2i_3}b_{i_3}(o_3).
+\end{aligned}
+\]
+每个转移只连接相邻状态，每个发射只依赖同一时刻状态。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S02-01}
+检查$A=\begin{pmatrix}0.4&0.6\\0.2&0.7\end{pmatrix}$能否作为转移矩阵；若不能，指出原因。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S02-01}
+\begin{chapterexercisesolution}{ex:V3-C05-S02-01}
+合法转移矩阵要求
+\[
+a_{ij}\geq0,
+\qquad
+\sum_ja_{ij}=1\quad\text{对每一行 }i.
+\]
+题设矩阵的行和为
+\[
+0.4+0.6=1,
+\qquad
+0.2+0.7=0.9\neq1,
+\]
+所以它不是合法转移矩阵。若输入只是未归一化非负权重，必须显式改成
+\[
+(0.2,0.7)/0.9=(2/9,7/9),
+\]
+不能在算法中静默接受原矩阵。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S02-02}
+对固定状态路径$I$，计算$P(O,I\mid\lambda)$属于三个基本问题中的哪一步？它为何还不是观测概率？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S02-02}
+\begin{chapterexercisesolution}{ex:V3-C05-S02-02}
+固定路径$I=(i_1,\ldots,i_T)$时，计算的是一个联合路径贡献
+\[
+P(O,I\mid\lambda)
+=\pi_{i_1}b_{i_1}(o_1)
+\prod_{t=2}^{T}a_{i_{t-1}i_t}b_{i_t}(o_t).
+\]
+观测概率属于概率计算问题，需边缘化全部$N^T$条路径：
+\[
+P(O\mid\lambda)=\sum_{I\in\{1,\ldots,N\}^{T}}P(O,I\mid\lambda).
+\]
+单一路径只是一项，不能替代路径和。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S02-03}
+说明逐时刻求$\arg\max_i P(i_t=i\mid O)$和求$\arg\max_I P(I\mid O)$分别属于什么输出，二者为何可能不同。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S02-03}
+\begin{chapterexercisesolution}{ex:V3-C05-S02-03}
+逐时刻后验解码输出
+\[
+\widehat i_t^{\mathrm{marg}}\in\arg\max_iP(I_t=i\mid O),
+\qquad t=1,\ldots,T.
+\]
+Viterbi输出整条MAP路径
+\[
+\widehat I^{\mathrm{MAP}}\in\arg\max_IP(I\mid O)
+=\arg\max_IP(O,I\mid\lambda),
+\]
+其中$P(O\mid\lambda)$对$I$为常数。逐点最大边缘可能来自不同高概率路径，其拼接甚至可能含非法转移，故一般不等于整条MAP路径。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S03-01}
+若某时刻$\alpha_t=(0.12,0.08)$、$\beta_t=(0.5,1.0)$，求归一化后的$\gamma_t$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S03-01}
+\begin{chapterexercisesolution}{ex:V3-C05-S03-01}
+单点后验的未归一化权重为
+\[
+u_i=\alpha_t(i)\beta_t(i),
+\qquad
+u=(0.12\cdot0.5,0.08\cdot1)=(0.06,0.08).
+\]
+归一化常数与后验为
+\[
+\sum_iu_i=0.14>0,
+\qquad
+\gamma_t=\frac{u}{0.14}
+=\left(\frac37,\frac47\right).
+\]
+两个分量非负且和为$1$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S03-02}
+证明对每个$t<T$有$\sum_j\xi_t(i,j)=\gamma_t(i)$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S03-02}
+\begin{chapterexercisesolution}{ex:V3-C05-S03-02}
+先假设$P(O\mid\lambda)>0$。相邻后验为
+\[
+\xi_t(i,j)=\frac{\alpha_t(i)a_{ij}b_j(o_{t+1})\beta_{t+1}(j)}{P(O\mid\lambda)}.
+\]
+对$j$求和并使用后向递推，得到
+\[
+\begin{aligned}
+\sum_j\xi_t(i,j)
+&=\frac{\alpha_t(i)\sum_ja_{ij}b_j(o_{t+1})\beta_{t+1}(j)}{P(O\mid\lambda)}\\
+&=\frac{\alpha_t(i)\beta_t(i)}{P(O\mid\lambda)}\\
+&=\gamma_t(i).
+\end{aligned}
+\]
+若$P(O\mid\lambda)=0$，两个后验分母均未定义，应停止并检查模型支撑。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S03-03}
+比较只求$P(O)$与还要保存全部$\gamma_t$时的空间需求。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S03-03}
+\begin{chapterexercisesolution}{ex:V3-C05-S03-03}
+只求$P(O)$时，前向状态更新为
+\[
+\alpha_t(j)=b_j(o_t)\sum_i\alpha_{t-1}(i)a_{ij},
+\]
+只需滚动保存两层$N$维向量，所以
+\[
+S_{P(O)}=O(N).
+\]
+若要输出全部$\gamma_t(i)$，通常保存$T$层前向量并反向扫描，故
+\[
+S_{\gamma}=O(TN),
+\]
+也可用检查点与重算换取较低空间和较高时间。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S04-01}
+某状态$i$的期望转移计数为$i\to1:2.4$、$i\to2:1.6$。求新转移行。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S04-01}
+\begin{chapterexercisesolution}{ex:V3-C05-S04-01}
+该行总期望转移计数为
+\[
+N_i=2.4+1.6=4>0.
+\]
+逐行归一化得到
+\[
+a_{i1}^{\mathrm{new}}=\frac{2.4}{4}=0.6,
+\qquad
+a_{i2}^{\mathrm{new}}=\frac{1.6}{4}=0.4.
+\]
+于是
+\[
+a_{ij}^{\mathrm{new}}\geq0,
+\qquad
+\sum_ja_{ij}^{\mathrm{new}}=1.
+\]
+若拓扑禁止某条转移，E步与归一化必须始终使用同一可行支持。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S04-02}
+从带约束目标$\sum_{i,j} n_{ij}\log a_{ij}$推导固定$i$时$a_{ij}=n_{ij}/\sum_r n_{ir}$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S04-02}
+\begin{chapterexercisesolution}{ex:V3-C05-S04-02}
+固定$i$并令$N_i=\sum_jn_{ij}>0$。优化问题为
+\[
+\max_{a_{i:}}\sum_jn_{ij}\log a_{ij},
+\qquad
+a_{ij}\geq0,\quad\sum_ja_{ij}=1.
+\]
+对正计数坐标写拉格朗日驻点：
+\[
+\frac{n_{ij}}{a_{ij}}-\eta_i=0
+\Longrightarrow a_{ij}=\frac{n_{ij}}{\eta_i},
+\qquad
+\sum_ja_{ij}=1
+\Longrightarrow \eta_i=N_i.
+\]
+因此
+\[
+a_{ij}^{\mathrm{new}}=\frac{n_{ij}}{\sum_rn_{ir}}.
+\]
+零计数坐标由边界KKT处理；若$N_i=0$，整行不可识别，公式成为$0/0$，须按预先规定的伪计数、保留或重初始化规则处理。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S04-03}
+若某状态在E步中的总期望占用为零，直接使用更新公式会怎样？给出可复现处理方案。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S04-03}
+\begin{chapterexercisesolution}{ex:V3-C05-S04-03}
+若状态$i$的总期望占用为零，则典型更新为
+\[
+a_{ij}^{\mathrm{new}}=\frac{n_{ij}}{\sum_rn_{ir}}
+=\frac0{0},
+\]
+没有定义。可复现方案必须在训练前固定，例如Dirichlet伪计数
+\[
+a_{ij}^{\mathrm{new}}
+=\frac{n_{ij}+\beta_{ij}}{\sum_r(n_{ir}+\beta_{ir})},
+\qquad \beta_{ij}>0,
+\]
+或保留上一轮合法行、重初始化状态；不同选择对应不同估计规则，不能由测试表现临时决定。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S05-01}
+某时刻到状态1的两个候选前缀值为$0.08,0.12$，对应转移概率为$0.5,0.2$，当前观测概率为$0.4$。求$\delta_t(1)$及回溯前驱。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S05-01}
+\begin{chapterexercisesolution}{ex:V3-C05-S05-01}
+到状态1的两个候选转移前缀为
+\[
+c_1=0.08\times0.5=0.04,
+\qquad
+c_2=0.12\times0.2=0.024.
+\]
+递推与指针为
+\[
+\begin{aligned}
+\psi_t(1)&=\arg\max\{c_1,c_2\}=\text{第一前驱},\\
+\delta_t(1)&=\max\{c_1,c_2\}\times0.4\\
+&=0.04\times0.4=0.016.
+\end{aligned}
+\]
+观测因子对固定终点相同，不改变前驱比较，但必须乘入最优前缀值。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S05-02}
+为什么只保存每层最大$\delta$值而不保存$\psi$，通常无法恢复整条最优路径？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S05-02}
+\begin{chapterexercisesolution}{ex:V3-C05-S05-02}
+Viterbi状态与前驱分别为
+\[
+\delta_t(j)=b_j(o_t)\max_i\delta_{t-1}(i)a_{ij},
+\qquad
+\psi_t(j)\in\arg\max_i\delta_{t-1}(i)a_{ij}.
+\]
+终止只给出
+\[
+i_T^*\in\arg\max_j\delta_T(j),
+\]
+而$\delta_T(j)$不编码获胜前驱身份。保存全部$\psi_t(j)$需$O(TN)$空间，并允许按
+\[
+i_{t-1}^*=\psi_t(i_t^*)
+\]
+线性回溯；否则必须重算或枚举前缀。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S06-01}
+验证$(0.6,0.4)$是$A=\begin{pmatrix}0.8&0.2\\0.3&0.7\end{pmatrix}$的平稳分布。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S06-01}
+\begin{chapterexercisesolution}{ex:V3-C05-S06-01}
+候选分布$p=(0.6,0.4)$满足$p_i\geq0$且$\sum_ip_i=1$。右乘转移矩阵得到
+\[
+\begin{aligned}
+pA
+&=(0.6,0.4)
+\begin{pmatrix}0.8&0.2\\0.3&0.7\end{pmatrix}\\
+&=(0.6\cdot0.8+0.4\cdot0.3,
+0.6\cdot0.2+0.4\cdot0.7)\\
+&=(0.6,0.4)=p.
+\end{aligned}
+\]
+因此$pA=p$，它是平稳分布；固定点核验本身不证明唯一性，唯一性还需链结构条件。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S06-02}
+一个二状态链只允许$1\to2$和$2\to1$，且两条转移概率均为1。从状态1出发写出前四个时刻的状态，并说明这种交替结构是否妨碍有限长度前向或Viterbi递推。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S06-02}
+\begin{chapterexercisesolution}{ex:V3-C05-S06-02}
+转移矩阵为
+\[
+A=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+从状态1出发，前四个时刻依次为$1,2,1,2$；允许路径被拓扑唯一确定并呈两步交替。有限长度前向递推仍可沿允许边求和，Viterbi也仍可沿允许边取最大并回溯，因此二者不需要先判断任何长期遍历性质。若要讨论任意初始分布的长期极限，再转到第30章学习严格条件。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S07-01}
+在代表例题中，计算路径$(1,2)$的联合概率，并验证它对应$\delta_2(2)$的获胜前驱。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S07-01}
+\begin{chapterexercisesolution}{ex:V3-C05-S07-01}
+路径$(1,2)$的联合概率为
+\[
+P(O,I=(1,2)\mid\lambda)
+=\pi_1b_1(R)a_{12}b_2(B)
+=0.6(0.5)(0.3)(0.9)=0.081.
+\]
+另一个到状态2的前驱路径为
+\[
+P(O,I=(2,2)\mid\lambda)
+=0.4(0.1)(0.6)(0.9)=0.0216.
+\]
+因此
+\[
+0.081>0.0216
+\Longrightarrow \delta_2(2)=0.081,\quad\psi_2(2)=1,
+\]
+与例题回溯指针一致。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C05-S07-02}
+设计一个前向与后向实现的交叉检查，不依赖已知答案。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C05-S07-02}
+\begin{chapterexercisesolution}{ex:V3-C05-S07-02}
+对同一合法模型和观测，未缩放前向量$\alpha_t$与后向量$\beta_t$应满足三种一致的似然表达：
+\[
+P(O)=\sum_i\alpha_T(i)
+=\sum_i\pi_i b_i(o_1)\beta_1(i)
+=\sum_i\alpha_t(i)\beta_t(i)\quad(1\leq t\leq T).
+\]
+若实现采用本章算法\ref{alg:V3-C05-forward-scaled}--\ref{alg:V3-C05-backward-scaled}的缩放约定，则不能把帽变量直接代入上式；应改查
+\[
+\sum_i\widehat\alpha_t(i)\widehat\beta_t(i)=1,
+\qquad
+\log P(O)=\sum_{t=1}^{T}\log c_t.
+\]
+后验还应满足
+\[
+\sum_i\gamma_t(i)=1,
+\qquad
+\sum_{i,j}\xi_t(i,j)=1,
+\qquad
+\sum_j\xi_t(i,j)=\gamma_t(i).
+\]
+将这些等式的最大绝对残差与预定浮点容差比较，超差即报告时间下标、归一化或缩放错误。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V3-C21-CONCEPT-016 L1
+\paragraph{读前自检：本章结论与下一步。}隐马尔可夫模型章末把“隐藏状态链、观测序列、转移与发射概率”收束为“Baum--Welch用期望计数逐行归一化”；请把$\gamma,\xi$代入对应定义并写出结果类型，再核对“代入结果满足定义域与取值域”且该结果能直接进入章末所述方法。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V3-C05-CH36}
+\SLChapterFiveSummary{隐藏状态链、观测序列、转移与发射概率}{前向--后向把路径求和化为动态规划并构造$\gamma,\xi$后验}{Baum--Welch用期望计数逐行归一化；Viterbi用最大递推和前驱回溯选择单路径}{序列具有一阶隐藏状态依赖且状态/观测空间有限时}{进入CRF；若观测概率、零占用行或缩放自检失败则返回本章对应递推与更新节}
+
+\phantomsection\label{struct:V3-C05-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否写出HMM两项条件独立假设和完整联合概率分解，解释观测为何边缘相关，并区分概率计算、学习、逐点后验和最优路径四类目标？
+  \item 能否分三步推出前向递推，并独立写出后向递推、$\gamma$与$\xi$？
+  \item 能否从期望计数推导Baum--Welch三组更新并处理零分母、多序列和拓扑约束？
+  \item 能否在对数域写出Viterbi初始化、递推、终止与回溯，并解释回溯指针的空间成本？
+  \item 能否核验$\rho=\rho A$这一代数固定点，并说明有限序列推断不以第30章的长期马尔可夫链定理为先修，同时设计数值与数据泄漏检查？若未通过，应依次回看第\ref{sec:V3-C05-S01}--\ref{sec:V3-C05-S02}节的模型结构、第\ref{sec:V3-C05-S03}节的求和递推、第\ref{sec:V3-C05-S04}--\ref{sec:V3-C05-S05}节的学习与预测，以及第\ref{sec:V3-C05-S06}--\ref{sec:V3-C05-S07}节的实现边界。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}
+\endgroup

@@ -1,0 +1,34 @@
+view_id,file,scale_or_mode,opened,manual_purpose
+VIEW-001,full_page_200dpi.png,Poppler 200dpi color,true,page integration
+VIEW-002,full_page_native_300dpi.png,Poppler 300dpi color true-native,true,page and target fidelity
+VIEW-003,full_page_gray_300dpi.png,Poppler 300dpi grayscale,true,grayscale encoding
+VIEW-004,target_with_caption_native_300dpi.png,300dpi native crop,true,plot legend caption integration
+VIEW-005,figure_native_300dpi.png,300dpi native crop,true,complete plot and legend
+VIEW-006,figure_gray_native_300dpi.png,300dpi native grayscale crop,true,grayscale hierarchy
+VIEW-007,target_object_navigation_overlay_300dpi.png,source-linked navigation overlay,true,object denominator navigation
+VIEW-008,ROI-01_start_steps_1_2_native1x.png,300dpi native1x,true,start and steps 1-2
+VIEW-009,ROI-01_start_steps_1_2_nearest8x.png,nearest-neighbor 8x,true,pixel/glyph/contact inspection
+VIEW-010,ROI-02_middle_steps_3_4_native1x.png,300dpi native1x,true,steps 3-4
+VIEW-011,ROI-02_middle_steps_3_4_nearest8x.png,nearest-neighbor 8x,true,pixel/glyph/contact inspection
+VIEW-012,ROI-03_inner_steps_5_6_7_native1x.png,300dpi native1x,true,steps 5-7
+VIEW-013,ROI-03_inner_steps_5_6_7_nearest8x.png,nearest-neighbor 8x,true,pixel/glyph/contact inspection
+VIEW-014,ROI-04_optimum_axes_native1x.png,300dpi native1x,true,optimum and axes
+VIEW-015,ROI-04_optimum_axes_nearest8x.png,nearest-neighbor 8x,true,pixel/glyph/contact inspection
+VIEW-016,ROI-05_x2_axis_label_native1x.png,300dpi native1x,true,x2 glyph and axis tip
+VIEW-017,ROI-05_x2_axis_label_nearest8x.png,nearest-neighbor 8x,true,pixel/glyph/contact inspection
+VIEW-018,ROI-06_x1_axis_label_native1x.png,300dpi native1x,true,x1 glyph and axis tip
+VIEW-019,ROI-06_x1_axis_label_nearest8x.png,nearest-neighbor 8x,true,pixel/glyph/contact inspection
+VIEW-020,ROI-07_legend_native1x.png,300dpi native1x,true,legend text and samples
+VIEW-021,ROI-07_legend_nearest8x.png,nearest-neighbor 8x,true,pixel/glyph/stroke inspection
+VIEW-022,ROI-08_caption_left_native1x.png,300dpi native1x,true,caption prefix and first segment
+VIEW-023,ROI-08_caption_left_nearest8x.png,nearest-neighbor 8x,true,caption glyph inspection
+VIEW-024,ROI-09_caption_right_native1x.png,300dpi native1x,true,caption final segment
+VIEW-025,ROI-09_caption_right_nearest8x.png,nearest-neighbor 8x,true,caption glyph inspection
+VIEW-026,ROI-10_x0_outer_contour_clearance_native1x.png,300dpi native1x,true,x0-contour clearance
+VIEW-027,ROI-10_x0_outer_contour_clearance_nearest8x.png,nearest-neighbor 8x unresized,true,confirmed O003-O015 true collision
+VIEW-028,ROI-11_step7_xaxis_clearance_native1x.png,300dpi native1x,true,digit7-axis clearance
+VIEW-029,ROI-11_step7_xaxis_clearance_nearest8x.png,nearest-neighbor 8x unresized,true,confirmed separation
+VIEW-030,ROI-12_step6_contour_clearance_native1x.png,300dpi native1x,true,digit6-contour clearance
+VIEW-031,ROI-12_step6_contour_clearance_nearest8x.png,nearest-neighbor 8x unresized,true,confirmed separation
+VIEW-032,ROI-13_step5_contour_contact_native1x.png,300dpi native1x,true,digit5-contour contact
+VIEW-033,ROI-13_step5_contour_contact_nearest8x.png,nearest-neighbor 8x unresized,true,confirmed O006-O020 true collision

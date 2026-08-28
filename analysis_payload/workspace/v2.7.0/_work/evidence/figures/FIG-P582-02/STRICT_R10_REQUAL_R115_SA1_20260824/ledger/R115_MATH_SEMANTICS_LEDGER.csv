@@ -1,0 +1,5 @@
+CHECK,CALCULATION,RESULT,REVIEWER
+NORMALIZATION,0.90+0.05+0.03+0.02=1.00,PASS,R115_SA1_requalification_current_identity
+ESS_NUMERIC,1/(0.90^2+0.05^2+0.03^2+0.02^2)=1.2288... -> 1.23,PASS,R115_SA1_requalification_current_identity
+UNIFORM_REFERENCE,"For four normalized weights, ideal uniform weight is 1/4",PASS,R115_SA1_requalification_current_identity
+NEIGHBOR_TEXT_CAVEAT,"Figure says concentration/ESS is not proof of reliability, matching adjacent prose",PASS,R115_SA1_requalification_current_identity

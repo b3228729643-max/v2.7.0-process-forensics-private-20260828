@@ -1,0 +1,22 @@
+manual_class_id,reviewer,semantic_pair_class,pair_type,covered_pair_count,evidence_opened,overlap_interpretation,clearance_interpretation,decision,note
+MPC-01,SA3-FRESH-ISOLATED,INDEPENDENT,ARROWHEAD|ARROWHEAD,10,pair_matrix_1x+8x;relation_overlay,无非法实墨交集,最小净空126px，远高于任何相关硬门,PASS,不同箭头互不侵入。
+MPC-02,SA3-FRESH-ISOLATED,INDEPENDENT,ARROWHEAD|GLYPH,465,pair_matrix_1x+8x;glyph_contacts;graphic_contacts,无非法实墨交集,最小净空26.019px大于3px硬门,PASS,全部箭头与文字/公式保持清晰白隙。
+MPC-03,SA3-FRESH-ISOLATED,DESIGN_COMPOSITION,ARROWHEAD|LINE_ARROW,5,graphic_contacts;critical_0010-0014,同一R1/R2/R3/R4/R7边的箭身—箭头设计组成,终态可见膜已分离且保持视觉0px接续,PASS,五组均为应连的同一箭头组成，非独立对象碰撞。
+MPC-04,SA3-FRESH-ISOLATED,INDEPENDENT,ARROWHEAD|LINE_ARROW,30,pair_matrix_1x+8x;graphic_contacts,无非法实墨交集,最小净空131px,PASS,异边箭头和箭身互不侵入。
+MPC-05,SA3-FRESH-ISOLATED,INDEPENDENT,ARROWHEAD|MATH_RULE,5,pair_matrix_1x+8x;fraction_rule_pack,无非法实墨交集,最小净空171px,PASS,箭头与分数线远离。
+MPC-06,SA3-FRESH-ISOLATED,INDEPENDENT,ARROWHEAD|NODE_BORDER,30,pair_matrix_1x+8x;graphic_contacts,无非法实墨交集,最小净空129.05px,PASS,非关联箭头与节点边框互不侵入。
+MPC-07,SA3-FRESH-ISOLATED,INTENTIONAL_EDGE_NODE_CONNECTION,ARROWHEAD|NODE_BORDER,10,relation_overlay;critical_ROIs,箭头终点对应源/目标节点设计连接,无文字介入且归属清楚,PASS,仅节点—其对应边箭头语义白名单。
+MPC-08,SA3-FRESH-ISOLATED,DESIGN_COMPOSITION,GLYPH|GLYPH,37,glyph_contact_sheet_01-07,同一公式或“应用”语义父对象内的组字,无非设计字形实墨遮挡,PASS,公式基字符、自然下标和边标注排版清楚。
+MPC-09,SA3-FRESH-ISOLATED,INDEPENDENT,GLYPH|GLYPH,3680,pair_matrix_1x+8x;glyph_contact_sheet_01-07,无非法实墨交集,最小净空46.096px大于4px硬门,PASS,不同语义父对象的文字/公式互不侵入。
+MPC-10,SA3-FRESH-ISOLATED,SAME_TEXT_PARENT,GLYPH|GLYPH,561,glyph_contact_sheet_01-07,同一节点文本父对象的自然排版,无非设计字形实墨交叉或遮挡,PASS,按R168合并同类视觉结论，每字独立contact已逐ID打开。
+MPC-11,SA3-FRESH-ISOLATED,INDEPENDENT,GLYPH|LINE_ARROW,651,pair_matrix_1x+8x;glyph_contacts;graphic_contacts,无非法实墨交集,最小净空29.463px大于3px硬门,PASS,文字/公式与所有线、箭身分离。
+MPC-12,SA3-FRESH-ISOLATED,DESIGN_COMPOSITION,GLYPH|MATH_RULE,9,glyph_contact_sheet_04-05;fraction_rule_pack,预测分数内字形—分数线语义组成,分数线与字形raw mask已独立分离，无缺笔或污染,PASS,分数规则对象1/1完整且与九个公式glyph归属明确。
+MPC-13,SA3-FRESH-ISOLATED,INDEPENDENT,GLYPH|MATH_RULE,84,pair_matrix_1x+8x;fraction_rule_pack,无非法实墨交集,最小净空70px,PASS,分数线与非父公式文字互不侵入。
+MPC-14,SA3-FRESH-ISOLATED,INDEPENDENT,GLYPH|NODE_BORDER,744,pair_matrix_1x+8x;glyph_contacts;graphic_contacts,无非法实墨交集,最小净空17px大于5px硬门,PASS,全部节点文字/公式对final-visible边框有充足内净空。
+MPC-15,SA3-FRESH-ISOLATED,INDEPENDENT,LINE_ARROW|LINE_ARROW,21,pair_matrix_1x+8x;relation_overlay,无非法实墨交集,最小净空137px,PASS,不同关系线互不侵入。
+MPC-16,SA3-FRESH-ISOLATED,INDEPENDENT,LINE_ARROW|MATH_RULE,7,pair_matrix_1x+8x;relation_overlay;fraction_rule_pack,无非法实墨交集,最小净空123px,PASS,关系线与分数线互不侵入。
+MPC-17,SA3-FRESH-ISOLATED,INDEPENDENT,LINE_ARROW|NODE_BORDER,42,pair_matrix_1x+8x;relation_overlay,无非法实墨交集,最小净空133.94px,PASS,非关联线与节点边框互不侵入。
+MPC-18,SA3-FRESH-ISOLATED,INTENTIONAL_EDGE_NODE_CONNECTION,LINE_ARROW|NODE_BORDER,14,relation_overlay;critical_0001-0009,对应节点—关系线终点的设计连接,已对14个近距离/接触对执行独立ROI复核，无文字介入,PASS,接触像素仅属路径—节点拓扑，非非法对象碰撞。
+MPC-19,SA3-FRESH-ISOLATED,INDEPENDENT,MATH_RULE|NODE_BORDER,8,pair_matrix_1x+8x;fraction_rule_pack,无非法实墨交集,最小净空119px,PASS,分数线在预测节点内且远离所有边框。
+MPC-20,SA3-FRESH-ISOLATED,INDEPENDENT,NODE_BORDER|NODE_BORDER,28,pair_matrix_1x+8x;relation_overlay,无非法实墨交集,最小净空29px,PASS,八个节点边框互不侵入。
+TOTAL,SA3-FRESH-ISOLATED,ALL,ALL,6441,pair_matrix_1x+8x;all_unordered_pairs.csv;all_contact_sheets;all_critical_ROIs,全部C114choose2无序对覆盖,各合并类行计数之和为6441,PASS,R168允许合并同类pair视觉结论，未改变每对机器账分母。

@@ -1,0 +1,49 @@
+OBJECT_ID,CLASS,MANUAL_VIEWS,OBSERVATION,ADJUDICATION
+G_ARROW_COUNT_TO_COEFFICIENT,LINE_ARROW,standalone+overlay+ROI1x+ROI8x,straight rightward arrow from count box to coefficient box; head is complete and does not touch text,NO_HARD_DEFECT
+G_ARROW_SEQUENCES_TO_COUNT,LINE_ARROW,standalone+overlay+ROI1x+ROI8x,straight rightward arrow toward count box; label remains above shaft and head is complete,NO_HARD_DEFECT
+G_COEFFICIENT_BOX,NODE_BORDER,standalone+grayscale+overlay+ROI1x+ROI8x,rounded border is complete; header and coefficient formula remain inside with measured clearance,NO_HARD_DEFECT
+G_COUNT_BOX,NODE_BORDER,standalone+grayscale+overlay+ROI1x+ROI8x,rounded border is complete; count formula is centered and clear,NO_HARD_DEFECT
+G_TOKEN_BODY_R1C1,NODE_BORDER,standalone+grayscale+overlay,row1 col1 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R1C2,NODE_BORDER,standalone+grayscale+overlay,row1 col2 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R1C3,NODE_BORDER,standalone+grayscale+overlay,row1 col3 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R1C4,NODE_BORDER,standalone+grayscale+overlay,row1 col4 hatched circle is complete; hatch remains a background encoding and digit is legible,NO_HARD_DEFECT
+G_TOKEN_BODY_R1C5,NODE_BORDER,standalone+grayscale+overlay,row1 col5 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R1C6,NODE_BORDER,standalone+grayscale+overlay,row1 col6 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R2C1,NODE_BORDER,standalone+grayscale+overlay,row2 col1 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R2C2,NODE_BORDER,standalone+grayscale+overlay,row2 col2 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R2C3,NODE_BORDER,standalone+grayscale+overlay,row2 col3 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R2C4,NODE_BORDER,standalone+grayscale+overlay,row2 col4 hatched circle is complete; hatch remains a background encoding and digit is legible,NO_HARD_DEFECT
+G_TOKEN_BODY_R2C5,NODE_BORDER,standalone+grayscale+overlay,row2 col5 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R2C6,NODE_BORDER,standalone+grayscale+overlay,row2 col6 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R3C1,NODE_BORDER,standalone+grayscale+overlay,row3 col1 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R3C2,NODE_BORDER,standalone+grayscale+overlay,row3 col2 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R3C3,NODE_BORDER,standalone+grayscale+overlay,row3 col3 hatched circle is complete; hatch remains a background encoding and digit is legible,NO_HARD_DEFECT
+G_TOKEN_BODY_R3C4,NODE_BORDER,standalone+grayscale+overlay,row3 col4 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R3C5,NODE_BORDER,standalone+grayscale+overlay,row3 col5 circle is complete and separated,NO_HARD_DEFECT
+G_TOKEN_BODY_R3C6,NODE_BORDER,standalone+grayscale+overlay,row3 col6 circle is complete and separated,NO_HARD_DEFECT
+G_WARNING_BOX,NODE_BORDER,standalone+grayscale+overlay+ROI1x+ROI8x,red rounded warning border is complete; minimum independent-mask text clearance is 9px,NO_HARD_DEFECT
+T_ARROW_LABEL,TEXT,standalone+grayscale+overlay+ROI1x+ROI8x,同一计数 is sharp and separated from arrow by 22.472px independent-mask clearance,NO_HARD_DEFECT
+T_COEF_FORMULA,FORMULA,standalone+grayscale+overlay+ROI1x+ROI8x,N!/product_k n_k! is complete; product limits and factorial marks are present,NO_HARD_DEFECT
+T_COEF_HEADER,TEXT,standalone+grayscale+overlay+ROI1x+ROI8x,产生同一计数的序列数 is complete and aligned above the formula,NO_HARD_DEFECT
+T_CONSTRAINT,FORMULA,standalone+grayscale+overlay,n_k in nonnegative integers and sum_k n_k=N are complete and centered,NO_HARD_DEFECT
+T_COUNT_FORMULA,FORMULA,standalone+grayscale+overlay,n=(n1;n2;n3)=(3;1;2) is complete and centered in its box,NO_HARD_DEFECT
+T_TITLE,TEXT,full200+standalone+grayscale+overlay,多个有序序列 is readable and forms a modest heading without dominating the figure,NO_HARD_DEFECT
+T_TOKEN_R1C1,TEXT,standalone+grayscale+overlay,visible value 1; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R1C2,TEXT,standalone+grayscale+overlay,visible value 1; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R1C3,TEXT,standalone+grayscale+overlay,visible value 1; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R1C4,TEXT,standalone+grayscale+overlay,visible value 2; readable over hatch background,NO_HARD_DEFECT
+T_TOKEN_R1C5,TEXT,standalone+grayscale+overlay,visible value 3; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R1C6,TEXT,standalone+grayscale+overlay,visible value 3; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R2C1,TEXT,standalone+grayscale+overlay,visible value 1; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R2C2,TEXT,standalone+grayscale+overlay,visible value 3; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R2C3,TEXT,standalone+grayscale+overlay,visible value 1; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R2C4,TEXT,standalone+grayscale+overlay,visible value 2; readable over hatch background,NO_HARD_DEFECT
+T_TOKEN_R2C5,TEXT,standalone+grayscale+overlay,visible value 1; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R2C6,TEXT,standalone+grayscale+overlay,visible value 3; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R3C1,TEXT,standalone+grayscale+overlay,visible value 3; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R3C2,TEXT,standalone+grayscale+overlay,visible value 1; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R3C3,TEXT,standalone+grayscale+overlay,visible value 2; readable over hatch background,NO_HARD_DEFECT
+T_TOKEN_R3C4,TEXT,standalone+grayscale+overlay,visible value 1; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R3C5,TEXT,standalone+grayscale+overlay,visible value 3; clear of its circle border,NO_HARD_DEFECT
+T_TOKEN_R3C6,TEXT,standalone+grayscale+overlay,visible value 1; clear of its circle border,NO_HARD_DEFECT
+T_WARNING,TEXT,standalone+grayscale+overlay+ROI1x+ROI8x,计数向量不是概率向量 is complete and legible; no clipping at the lower border,NO_HARD_DEFECT

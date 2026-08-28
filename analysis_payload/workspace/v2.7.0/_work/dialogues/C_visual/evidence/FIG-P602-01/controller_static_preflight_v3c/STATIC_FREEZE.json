@@ -1,0 +1,79 @@
+{
+  "schema": "P602_CONTROLLER_STATIC_FREEZE_V3C_V1",
+  "status": "P602_CONTROLLER_V3C_STATIC_READY_FOR_MAIN_REVIEW",
+  "old_v3b_status": "STATIC_REJECT_NO_EXECUTION_READONLY",
+  "static_package_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\controller_static_preflight_v3c",
+  "future_candidate_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v3c",
+  "future_cache_root": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_v3c",
+  "future_candidate_root_exists_at_freeze": false,
+  "future_cache_root_exists_at_freeze": false,
+  "controller_executed": false,
+  "kpsewhich_executed": false,
+  "tex_processes_started": 0,
+  "controller_lint": {
+    "ast_parse_errors": 0,
+    "syntactic_process_start_sites": 1,
+    "process_start_line": 180,
+    "build_helper_callsites": 1,
+    "build_helper_line": 346,
+    "start_process_cmdlet_sites": 0,
+    "while_loop_sites": 0,
+    "do_loop_sites": 0,
+    "self_recursion_sites": 0,
+    "stdout_atomic_write_line": 357,
+    "stderr_atomic_write_line": 358,
+    "result_atomic_write_line": 441,
+    "final_build_status_throw_line": 447,
+    "stdout_before_result": true,
+    "stderr_before_result": true,
+    "result_before_final_build_status_throw": true
+  },
+  "success_hard_gate_requires": [
+    "invocation_count_equals_1",
+    "started_true",
+    "start_record_exists",
+    "natural_exit_true",
+    "exit_code_equals_0",
+    "exactly_one_expected_pdf_with_positive_bytes_and_sha256",
+    "post_tex_process_count_equals_0",
+    "start_start_record_runtime_controller_pdf_identity_output_persistence_exceptions_all_empty",
+    "stdout_identity_recomputed",
+    "stderr_identity_recomputed"
+  ],
+  "files_before_marker": [
+    {
+      "path": "controller/P602_CONTROLLED_BUILD_V3C.ps1",
+      "bytes": 23783,
+      "sha256": "6C05D4EAEE2213E6B0A7808328B5EAC5A2B382E67814FD29706E6FB5D8F0EF78",
+      "mtime_utc_ticks": 639232370276043896
+    },
+    {
+      "path": "HANDOFF.md",
+      "bytes": 885,
+      "sha256": "DFA0F11972AB906CCA4E928E1DED4360AC11903320A7FCA9E7FB52AF8CC97DA3",
+      "mtime_utc_ticks": 639232370095079984
+    },
+    {
+      "path": "STATIC_DRY_RUN_REPORT.md",
+      "bytes": 4097,
+      "sha256": "F66C336FDF797F2EF16AF4282B318474FCD7B85FA323781573BF0FF836BBA5C8",
+      "mtime_utc_ticks": 639232370088642017
+    },
+    {
+      "path": "V3B_STATIC_REJECT_CORRECTION.md",
+      "bytes": 1063,
+      "sha256": "7F3DE62572D978CA95B336CCA1DB7BCAF761524B8310B92E399ACBC0091B7919",
+      "mtime_utc_ticks": 639232370091803014
+    }
+  ],
+  "frozen_source_sha256": "2B15B4BEEA7A922FEE24259678DBAE2A54915955915E6714A350122A6251E349",
+  "frozen_wrapper_sha256": "AFE3464AEA950331908CD3C56DD0392A6D5010138C4EE9341B78F7FD3E9F7279",
+  "frozen_engine_sha256": "CC944A1DB010B47FCF5CCB5D1B184CBA208FE7FEA9F18BEC414940E6FD3E24A6",
+  "frozen_kpsewhich_sha256": "90E5BD3477FB1AF7F9D1F8C858DE31137AAB4DF57B29928BA82B7D00B2DD85DB",
+  "expected_ordinary_files": 5,
+  "all_five_files_os_readonly_required": true,
+  "freeze_marker_strictly_latest_required": true,
+  "post_attribute_seal_content_writes_allowed": false,
+  "tex_disabled": true,
+  "third_build_authorized": false
+}

@@ -1,0 +1,82 @@
+1: % v2.6.0 figure UID: FIG-P049-01
+2: % Image-reference reverse redraw: exact contour geometry retained; hierarchy and label clearance refined.
+3: \tikzset{
+4:   slfig-FIG-P049-01/.style={every path/.append style={line cap=round,line join=round}},
+5:   slfig-FIG-P049-01-label/.style={
+6:     font=\fontsize{9.4pt}{11.2pt}\selectfont,
+7:     fill=white,fill opacity=.94,text opacity=1,inner sep=.8pt
+8:   },
+9:   slfig-FIG-P049-01-note/.style={
+10:     anchor=west,font=\fontsize{9.2pt}{11.2pt}\selectfont,text=SLInk,
+11:     fill=white,fill opacity=.94,text opacity=1,inner xsep=1pt,inner ysep=.8pt
+12:   },
+13:   slfig-FIG-P049-01-guide/.style={
+14:     draw=SLGray!82,line width=.50pt,dash pattern=on 2.2pt off 1.6pt
+15:   }
+16: }
+17: \pgfplotsset{slfig-FIG-P049-01-axis/.style={
+18:   tick label style={font=\fontsize{8.8pt}{10.4pt}\selectfont},
+19:   label style={font=\fontsize{9.4pt}{11.2pt}\selectfont},
+20:   clip=false
+21: }}
+22: \pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+23: \begin{figure}[H]\centering\label{schema:V1-C03:CH-17}
+24: \begin{tikzpicture}[slfig-FIG-P049-01,alt={对象—关系—结论：梯度与等值线。箭头在该点垂直于局部切线，并指向函数值增加的方向。}]
+25: \begin{axis}[slfig-FIG-P049-01-axis,
+26:   slfig axis,width=.96\linewidth,height=7.2cm,
+27:   axis lines=middle,axis equal image,clip=false,trig format plots=deg,
+28:   xmin=-3.8,xmax=6.1,ymin=-2.3,ymax=3.3,
+29:   xtick=\empty,ytick=\empty,xlabel={$x_1$},ylabel={$x_2$},
+30:   samples=241
+31: ]
+32:   \addplot[domain=0:360,draw=SLGray!78,line width=.72pt,
+33:     dash pattern=on 3.2pt off 1.4pt on .7pt off 1.4pt,no marks]
+34:     ({1.5*cos(x)},{.9*sin(x)});
+35:   \addplot[domain=0:360,draw=SLGray!86,line width=.78pt,
+36:     dash pattern=on 3.5pt off 1.8pt,no marks]
+37:     ({2.4*cos(x)},{1.44*sin(x)});
+38:   \addplot[domain=0:360,draw=SLBlue,line width=.95pt,no marks]
+39:     ({3*cos(x)},{1.8*sin(x)});
+40:   \node[slfig direct label,slfig-FIG-P049-01-label,anchor=south east]
+41:     at (axis cs:-1.30,.50) {$c_1$};
+42:   \node[slfig direct label,slfig-FIG-P049-01-label,anchor=south east]
+43:     at (axis cs:-2.20,.62) {$c_2$};
+44:   \node[slfig direct label,slfig-FIG-P049-01-label,anchor=south east]
+45:     at (axis cs:-3.05,.43) {$c_3$};
+46:   \node[font=\fontsize{9.2pt}{11.0pt}\selectfont,text=SLInk!82,anchor=north west]
+47:     at (axis cs:-3.42,-1.82) {$c_1<c_2<c_3$};
+48: 
+49:   \coordinate (P) at (axis cs:2.4,1.08);
+50:   \coordinate (G) at (axis cs:3.12,1.98);
+51:   \coordinate (T) at (axis cs:3.34,.33);
+52:   \coordinate (Tm) at (axis cs:1.46,1.83);
+53:   \filldraw[fill=SLBlue,draw=white,line width=.60pt] (P) circle (2.5pt);
+54:   \node[slfig-FIG-P049-01-label,anchor=north east]
+55:     at ([xshift=-2.2mm,yshift=-2.0mm]P) {$P=(2.4,1.08)$};
+56:   \draw[-{Stealth[length=2.35mm,width=1.45mm]},draw=SLBlue,line width=1.05pt]
+57:     (P)--(G) node[pos=.88,above left=1.8mm,slfig-FIG-P049-01-label] {$\nabla f(P)$};
+58:   \draw[draw=SLTeal,line width=.80pt,dash pattern=on 3.2pt off 1.8pt] (Tm)--(T)
+59:     node[pos=.13,above=2.0mm,slfig-FIG-P049-01-label]
+60:       {$\boldsymbol v_{\rm tan}$};
+61:   \pic[draw=SLGray,line width=.55pt,angle radius=3.6mm] {right angle=T--P--G};
+62:   \draw[-{Stealth[length=1.9mm,width=1.15mm]},draw=SLGold,line width=.80pt]
+63:     (axis cs:3.05,-.38)--(axis cs:3.70,-.38)
+64:     node[midway,below=1.5pt,fill=white,inner sep=.8pt,
+65:       font=\fontsize{9.2pt}{11.0pt}\selectfont] {$f$ 增大};
+66: 
+67:   \node[slfig-FIG-P049-01-note]
+68:     (s1) at (axis cs:4.12,2.78) {1. 定位 $P$ 所在等值线};
+69:   \node[slfig-FIG-P049-01-note]
+70:     (s2) at (axis cs:4.12,2.10) {2. 梯度指向函数增大};
+71:   \node[slfig-FIG-P049-01-note]
+72:     (s3) at (axis cs:4.12,1.42) {3. $\nabla f(P)^{\mathsf T}\boldsymbol v_{\rm tan}=0$};
+73:   \draw[slfig-FIG-P049-01-guide] (s1.west)--(axis cs:3.72,2.66)--(axis cs:2.75,1.36);
+74:   \draw[slfig-FIG-P049-01-guide] (s2.west)--(axis cs:3.70,2.10)--(G);
+75:   \draw[slfig-FIG-P049-01-guide] (s3.west)--(axis cs:3.66,1.42)--(axis cs:2.67,1.23);
+76:   \node[font=\fontsize{9.2pt}{11.0pt}\selectfont,text=SLInk!82,
+77:     fill=white,fill opacity=.96,text opacity=1,inner xsep=1.3pt,inner ysep=.8pt]
+78:     at (axis cs:1.15,-2.08) {$f(x_1,x_2)=x_1^2/9+x_2^2/3.24$};
+79: \end{axis}
+80: \end{tikzpicture}
+81: \caption{梯度与等值线。箭头在该点垂直于局部切线，并指向函数值增加的方向。}\label{fig:V1-C03-gradient-contour}
+82: \end{figure}

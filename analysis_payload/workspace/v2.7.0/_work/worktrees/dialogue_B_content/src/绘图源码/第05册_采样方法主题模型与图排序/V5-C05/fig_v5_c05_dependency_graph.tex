@@ -1,0 +1,54 @@
+% v2.7.0 figure UID: FIG-P654-01
+% Image-guided reverse redraw: preserve the 8-node/7-path dependency graph and separate all lower-row labels.
+\tikzset{slfig-FIG-P654-01/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P654-01,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont,align=center},
+  core/.style={draw=SLMidBlue,fill=SLSoftBlue,rounded corners=2pt,
+    minimum height=12mm,text width=31mm,inner xsep=4pt,inner ysep=3.5pt},
+  aux/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,
+    minimum height=11mm,text width=31mm,inner xsep=4pt,inner ysep=3.5pt},
+  result/.style={draw=SLDeepBlue,fill=white,rounded corners=2pt,
+    minimum height=14mm,text width=35mm,inner xsep=2pt,inner ysep=3.5pt},
+  arr/.style={->,draw=SLMidBlue,line width=.95pt},
+  interp/.style={draw=SLGray,line width=.62pt},
+  application/.style={->,draw=SLGray,line width=.70pt,dash pattern=on 2.2pt off 1.5pt},
+  >={Stealth[length=2.4mm,width=1.7mm]},
+  every node/.append style={line width=0.85pt},
+  alt={对象—关系—结论：类别计数与Gamma—Beta归一化两条前置线索汇入多项似然和Dirichlet先验，实线有向主链先以参数相加得到共轭后验，再由后验均值得到给定计数与超参数的类别预测概率；无箭头细线连接单纯形几何、均值浓度和对数矩等解释对象，虚线有向边仅把预测连到下游主题模型应用}]
+\node[aux,text width=28mm] (trial) at (-5.499,1.081) {类别计数\\$\boldsymbol n$};
+\node[aux,text width=28mm] (gamma) at (-5.499,-1.081) {Gamma/Beta\\归一化};
+\node[core] (families) at (-1.88,0)
+  {多项 / Dirichlet\\似然与先验};
+\node[result] (posterior) at (1.88,0)
+  {共轭后验\\[-1pt]
+   {\fontsize{11.8pt}{14.2pt}\selectfont
+    $\displaystyle\operatorname{Dir}(\boldsymbol\alpha+\boldsymbol n)$}};
+\node[result,text width=45mm,minimum height=23mm] (predictive) at (6.345,0)
+  {类别预测\\[-1pt]
+   {\fontsize{11.8pt}{14.2pt}\selectfont
+    $\displaystyle\begin{gathered}
+    \Pr(Y_{N+1}=i\mid\boldsymbol n,\boldsymbol\alpha)\\[-2pt]
+    =\frac{\alpha_i+n_i}{\alpha_0+N}
+    \end{gathered}$}};
+\node[aux,text width=23.5mm,inner xsep=2.5pt] (simplex) at (-1.41,-1.974) {单纯形几何};
+\node[aux,text width=23.5mm,inner xsep=2.5pt] (mom) at (1.692,-1.974) {均值、浓度\\与对数矩};
+\node[aux,text width=23.5mm,inner xsep=2.5pt] (lda) at (5.781,-2.303)
+  {后续主题模型\\伪计数与平滑};
+
+\draw[arr] (trial) -- (families);
+\draw[arr] (gamma) -- (families);
+\draw[arr] (families) -- (posterior);
+\draw[arr] (posterior) -- (predictive);
+\draw[interp] (families)--(simplex);
+\draw[interp] (posterior)--(mom);
+\draw[application] (predictive)--node[pos=.50,right=7pt,inner sep=0pt,
+  font=\fontsize{9.6pt}{11.5pt}\selectfont,text=SLTextGray]{应用}(lda);
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{Dirichlet--多项共轭更新与单步后验预测主链}
+\label{fig:V5-C05-dependency-graph}
+\end{figure}

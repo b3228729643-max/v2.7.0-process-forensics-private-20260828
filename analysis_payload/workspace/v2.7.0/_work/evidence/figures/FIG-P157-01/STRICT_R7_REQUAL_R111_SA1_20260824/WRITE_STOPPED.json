@@ -1,0 +1,35 @@
+{
+  "figure_id": "FIG-P157-01",
+  "revision": "R111",
+  "reviewer": "SA1_R111_20260824",
+  "stop_date": "2026-08-24",
+  "absolute_last_evidence_write": true,
+  "writes_after_this_file_prohibited": true,
+  "machine_terminal_check": "R111_MACHINE_FINAL_CHECK.json",
+  "machine_check_execution": "PASS",
+  "evidence_integrity_result": "PASS",
+  "figure_hard_gates_result": "FAIL",
+  "result": "FAIL_TO_SA2",
+  "final_evidence_file_count": 866,
+  "critical_counts": {
+    "glyphs_manually_opened_1x_8x": 80,
+    "foreground_objects": 20,
+    "unordered_pairs": 190,
+    "unordered_pair_pass": 189,
+    "unordered_pair_fail": 1,
+    "mandatory_relations": 154,
+    "mandatory_relation_pass": 154,
+    "low_profile_pixel_fail_glyphs": 5,
+    "role_ratio_fail_glyphs": 8,
+    "curve_final_visible_overlap_px": 139,
+    "curve_final_visible_clearance_px": 0,
+    "clip_pixel_count": 0,
+    "minimum_text_relation_clearance_px": 16
+  },
+  "legacy_retractions": {
+    "unverified_516px_claim": "retracted",
+    "37px_peer_removal_contribution": "retracted",
+    "canonical_curve_measurement": "139px peer-independent final-visible raw-mask intersection / clearance 0"
+  },
+  "handoff": "SA2 only; source and central state were not modified by SA1."
+}

@@ -1,0 +1,11 @@
+panel,role,script,source_effective_pt,pdf_h_ink_median_px,source_ratio_or_de,actual_crowding,actual_imbalance,grayscale,page_integration,reviewer_decision,note
+CDF,Y_TICKS,LATIN_DIGIT,8.8,25-26,cross-panel ratio 1.023,false,false,PASS,PASS,PASS_R168_ADVISORY,legacy 9.5pt reference is advisory; clearly readable
+CDF,AXIS_LABEL,MATH_LATIN,9.4,25,axis-label cross-panel ratio 1.000,false,false,PASS,PASS,PASS_R168_ADVISORY,0.1pt legacy delta only
+CDF,MASS_LABELS,MATH_LATIN_SCRIPT,9.2,base 29 / script 19-20,source declarations identical across p1-p4,false,false,PASS,PASS,PASS_R168_ADVISORY,p4 mask bbox has guide context but native label is clear
+CDF,EXPLANATORY_NOTE,CJK,9.2,35,CJK role median ratio to PMF note about 1.03,false,false,PASS,PASS,PASS_R168_ADVISORY,balanced and readable
+PMF,Y_TICKS,LATIN_DIGIT,8.6,24-25,cross-panel ratio 1.023,false,false,PASS,PASS,PASS_R168_ADVISORY,legacy 9.5pt reference is advisory; clearly readable
+PMF,X_TICKS,LATIN_DIGIT,8.6,24-25,within-role ratio <=1.04,false,false,PASS,PASS,PASS_R168_ADVISORY,uniform 1-4 labels
+PMF,AXIS_LABEL,MATH_LATIN,9.4,25,axis-label cross-panel ratio 1.000,false,false,PASS,PASS,PASS_R168_ADVISORY,0.1pt legacy delta only
+PMF,EXPLANATORY_NOTE,MIXED_CJK_MATH,9.2,CJK about 34 / math base 26-29,source role matches CDF note,false,false,PASS,PASS,PASS_R168_ADVISORY,readable; colon/guide mask spill is extraction-only
+CAPTION,CAPTION_CJK_AND_DIGITS,CJK_LATIN,9.963 PDF span,37-39 CJK / 26-27 digits,natural caption hierarchy,false,false,PASS,PASS,PASS,caption is complete and subordinate to figure body
+

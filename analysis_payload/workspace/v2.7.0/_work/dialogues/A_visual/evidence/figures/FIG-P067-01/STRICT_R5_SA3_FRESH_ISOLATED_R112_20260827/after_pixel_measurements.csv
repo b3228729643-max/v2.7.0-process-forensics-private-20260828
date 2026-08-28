@@ -1,0 +1,8 @@
+measurement_id,denominator,count_or_range,source,reviewer,manual_disposition,note
+PIX-01,text glyphs,95,machine/visible_elements.csv + 8 opened text contact sheets,SA3-R112-FRESH,REVIEWED,Every glyph has original target-overlay mask-only and 1x/nearest8x evidence.
+PIX-02,foreground graphic paths,35,machine/drawing_inventory.json + 9 opened graphic contact sheets,SA3-R112-FRESH,REVIEWED,Every path has full native 1x evidence and three native sampled nearest8x cells.
+PIX-03,visible denominator,130,machine/identity_and_denominator.json,SA3-R112-FRESH,FROZEN,95+35; no empty mask.
+PIX-04,text extracted point range,6.4159-9.9626,machine/visible_elements.csv,SA3-R112-FRESH,ADVISORY,Natural scripts form the minimum; R168 treats font microdifferences as advisory.
+PIX-05,text ink-height range,4-38px,machine/visible_elements.csv,SA3-R112-FRESH,ADVISORY,Low-profile punctuation accounts for the minimum; all glyphs are nonempty complete pure and readable.
+PIX-06,missing-stroke pixels,0,manual_object_ledger.csv,SA3-R112-FRESH,PASS,All 130 manual rows completed.
+PIX-07,foreign-pixel count in accepted target masks,0,manual_object_ledger.csv,SA3-R112-FRESH,PASS,Color-separated text masks and reconstructed graphic masks were visually checked.

@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{578}
+\setcounter{chapter}{30}
+\setcounter{figure}{1}
+\pagestyle{headings}
+\chaptermark{马尔可夫链基础}
+\sectionmark{状态转移矩阵}
+\paragraph{两种矩阵约定。}若把从状态 $i$ 到状态 $j$ 的转移概率写成 $a_{ij}$，则 $A=(a_{ij})$ 按行随机；PageRank 文献常用列随机矩阵 $P=A^{\mathsf T}$。两者描述同一组有向边，只相差一次转置。
+图\ref{fig:V5-C01-transition-graph}用两个状态说明下标如何互换。物理边 $1\to2$ 与 $2\to1$ 的方向和概率均不改变，只有矩阵中的行列位置互换。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_transition_graph.tex}
+
+\noindent\textbf{读图顺序：}先看两侧相同的物理箭头$i\to j$；再看左侧用$A$的$a_{ij}$记录这条边，经中央$P=A^{\mathsf T}$对应到右侧的$P_{ji}$；最终得到两种等价推进$\rho_{t+1}=\rho_tA$与$\boldsymbol p^{(t+1)}=P\boldsymbol p^{(t)}$，边的方向和概率均未改变。
+\end{document}

@@ -1,0 +1,13 @@
+gate_id,gate_name,manual_decision,manual_note
+H01,CANDIDATE_PDF_IDENTITY,PASS,reviewed render derives from the sole PDF whose SHA256 is 68188DAA...1093E7
+H02,SOURCE_IDENTITY,PASS,source identity is fixed at 6C4E8F15...3DB47D and no post-build source edit is present
+H03,OBJECT_DENOMINATOR,PASS,thirty current-candidate objects were enumerated and each object card was inspected
+H04,GLYPH_DENOMINATOR,PASS,all one hundred fifty-four extracted glyph IDs were reviewed from thirteen sheets
+H05,UNORDERED_PAIR_DENOMINATOR,PASS,four hundred thirty-five IDs equal C(30,2) and every pair card was inspected
+H06,STRICT_GLYPH_PROFILES,PASS,every glyph meets its script threshold including G032 范 at 37 by 34 pixels
+H07,CRITICAL_TOPOLOGY,PASS,sixteen critical pairs were enlarged and each visible contact matches intended topology
+H08,PEER_CONSISTENCY,PASS,twenty-eight peer rows preserve within-role and within-script visual sizing
+H09,ROLE_HIERARCHY,PASS,three role comparisons retain edge annotation and formula hierarchy without override
+H10,CLIPPING_AND_EMPTY_MASKS,PASS,thirty masks are nonempty and no object has a clipped pixel at the figure boundary
+H11,VIEW_COVERAGE,PASS,native300 full-page figure grayscale and five 8x landmarks all pass visual review
+H12,SEMANTIC_INTEGRITY,PASS,proposal ratio decision accept reject updates and rejection-only self-loop retain intended MH meaning

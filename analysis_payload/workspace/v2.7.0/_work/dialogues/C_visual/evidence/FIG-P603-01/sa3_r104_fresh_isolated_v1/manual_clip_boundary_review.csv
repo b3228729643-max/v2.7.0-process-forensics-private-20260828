@@ -1,0 +1,5 @@
+reviewer,check_id,boundary,objects_reviewed,machine_min_margin_px,render_viewed,real_clip,decision,note
+SA3,CLIP-001,PDF_PAGE,GLYPH-001..GLYPH-150|GRAPHIC-001..GRAPHIC-015,262,YES,NO,PASS,"Every mapped object lies inside the 2481x3508 native page; full-page rendering shows no trim loss."
+SA3,CLIP-002,FIGURE_CROP,GLYPH-001..GLYPH-150|GRAPHIC-001..GRAPHIC-015,10,YES,NO,PASS,"All figure and caption objects remain inside the 1934x771 evidence crop; the smallest coordinate margin is still positive."
+SA3,CLIP-003,STANDALONE_CROP,GLYPH-001..GLYPH-072|GRAPHIC-001..GRAPHIC-015,4,YES,NO,PASS,"All standalone-eligible plot and card objects lie inside the 1526x638 crop; visual inspection confirms the closest ink is complete rather than cut."
+SA3,CLIP-004,PER_OBJECT_MANUAL,manual_glyph_review.csv|manual_graphic_review.csv,N/A,YES,NO,PASS,"Per-ID clip fields were manually adjudicated for all 165 objects; each is NO, while background fills are explicitly mapped exclusions."

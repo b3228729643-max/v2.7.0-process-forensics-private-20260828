@@ -1,0 +1,70 @@
+% v2.7.0 figure UID: FIG-P745-01
+% Two parallel leakage-free protocols with explicit, broken return arrows for forbidden feedback.
+\tikzset{slfig-FIG-P745-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P745-01,
+  every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=center,outer sep=0pt},
+  lanetitle/.style={font=\bfseries\fontsize{10.2pt}{12.2pt}\selectfont,text=SLDeepBlue,inner sep=0pt},
+  stage/.style={draw=SLMidBlue,fill=SLSoftBlue,line width=.72pt,rounded corners=2pt,text width=38mm,minimum height=11.5mm,inner xsep=1.6mm,inner ysep=1.05mm},
+  finalstage/.style={stage,draw=SLDeepBlue,fill=white,line width=.9pt},
+  dev/.style={draw=SLMidBlue,densely dashed,fill=white,line width=.72pt,rounded corners=2pt,text width=23mm,minimum height=11.5mm,inner xsep=1.6mm,inner ysep=1.05mm},
+  test/.style={draw=SLDeepBlue,double,double distance=.8pt,fill=SLWarmGray,line width=.72pt,rounded corners=2pt,text width=23mm,minimum height=11.5mm,inner xsep=1.6mm,inner ysep=1.05mm},
+  crossmark/.style={font=\bfseries\fontsize{12pt}{14pt}\selectfont,text=SLAccentOrange,fill=white,inner sep=.35mm},
+  laneframe/.style={draw=SLRuleGray,line width=.55pt,rounded corners=4pt,inner xsep=5.5mm,inner ysep=3.5mm},
+  bottomnote/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,text=SLTextGray,text width=145mm,inner sep=0pt},
+  flow/.style={-{Stealth[length=2.2mm,width=1.55mm]},draw=SLDeepBlue,line width=.95pt},
+  forbidtail/.style={draw=SLAccentOrange,densely dashed,line width=.86pt},
+  forbidhead/.style={-{Stealth[length=2.0mm,width=1.45mm]},draw=SLAccentOrange,densely dashed,line width=.86pt},
+  alt={对象—关系—结论：左右泳道是两个并列且完整的无泄漏协议。协议A由开发数据D经过内层C_in折拟合、仅凭开发证据选择并冻结候选、在完整D上重训，最后把锁定测试T开封一次；协议B对每个外层折c都在D_-c内重新执行C_in折候选选择与重训，只用D_c产生外层损失，再汇总C_out个损失。实线箭头给出合法前向数据流；从最终评价返回选择节点的橙色虚线箭头表示企图用测试或外层评估结果回调候选、超参数或停止规则，并在断点以白底X明确阻断。虚线开发框、双线评估框、实线/虚线方向和X文字共同编码；结论是任何这类回流都属于泄漏，协议B不是算法37.1的隐藏外循环。}]
+\node[lanetitle] (atitle) at (-4.35,4.65) {协议 A：开发集选择＋锁定测试\\冻结候选后，$T$只开封一次};
+\node[lanetitle] (btitle) at (4.35,4.65) {协议 B（嵌套交叉验证）\\每个外层折$c$内重做内层选择};
+
+\node[dev] (adev) at (-5.90,3.00) {开发数据\\{\fontsize{12pt}{14pt}\selectfont $D$}};
+\node[test] (atest) at (-2.80,3.00) {锁定测试\\{\fontsize{12pt}{14pt}\selectfont $T$}};
+\node[stage] (afit) at (-4.35,1.45) {开发集内候选拟合\\{\fontsize{12pt}{14pt}\selectfont $C_{\rm in}$} 折};
+\node[stage] (asel) at (-4.35,-.05) {仅凭开发证据选定\\候选／超参／停止规则};
+\node[stage] (arefit) at (-4.35,-1.55) {冻结候选后\\完整 {\fontsize{12pt}{14pt}\selectfont $D$} 重训};
+\node[finalstage] (aeval) at (-4.35,-3.05) {锁定 {\fontsize{12pt}{14pt}\selectfont $T$} 只开封一次\\最终评价};
+
+\node[dev] (bdev) at (5.90,3.00) {外层训练\\{\fontsize{12pt}{14pt}\selectfont $D_{-c}$}};
+\node[test] (btest) at (2.80,3.00) {外层评估折\\{\fontsize{12pt}{14pt}\selectfont $D_c$}};
+\node[stage] (bfit) at (4.35,1.45) {每个外层折 {\fontsize{12pt}{14pt}\selectfont $c$} 内\\重做 {\fontsize{12pt}{14pt}\selectfont $C_{\rm in}$} 折拟合};
+\node[stage] (bsel) at (4.35,-.05) {仅据 {\fontsize{12pt}{14pt}\selectfont $D_{-c}$}\\重新选择候选};
+\node[stage] (brefit) at (4.35,-1.55) {冻结该折候选\\完整 {\fontsize{12pt}{14pt}\selectfont $D_{-c}$} 重训};
+\node[finalstage] (beval) at (4.35,-3.05) {只在 {\fontsize{12pt}{14pt}\selectfont $D_c$} 外层评价\\汇总 {\fontsize{12pt}{14pt}\selectfont $C_{\rm out}$} 个损失};
+
+\begin{scope}[on background layer]
+\node[laneframe,fit=(adev)(atest)(afit)(asel)(arefit)(aeval)] (aframe) {};
+\node[laneframe,fit=(bdev)(btest)(bfit)(bsel)(brefit)(beval)] (bframe) {};
+\end{scope}
+\node[bottomnote] (common) at (0,-4.65) {实线箭头：合法前向数据流；橙色虚线回箭头＋X：禁止评估结果回调候选、超参数或停止规则。\\任何来自锁定测试或外层评估的这类回流都属于信息泄漏。};
+
+\draw[flow] (adev)--(afit);
+\draw[flow] (afit)--(asel);
+\draw[flow] (asel)--(arefit);
+\draw[flow] (arefit)--(aeval);
+\draw[flow] (atest.east)--++(.35,0)|-(aeval.east);
+\draw[flow] (bdev)--(bfit);
+\draw[flow] (bfit)--(bsel);
+\draw[flow] (bsel)--(brefit);
+\draw[flow] (brefit)--(beval);
+\draw[flow] (btest.west)--++(-.35,0)|-(beval.west);
+
+% Forbidden, directed return paths: evaluation result -> selection.  Each path is physically broken at X.
+\coordinate (acutleft) at (-7.35,-.05);
+\coordinate (acutright) at (-6.95,-.05);
+\draw[forbidtail] (aeval.west)--++(-1.10,0)|-(acutleft);
+\draw[forbidhead] (acutright)--(asel.west);
+\node[crossmark] (across) at (-7.15,-.05) {X};
+
+\coordinate (bcutright) at (7.35,-.05);
+\coordinate (bcutleft) at (6.95,-.05);
+\draw[forbidtail] (beval.east)--++(1.10,0)|-(bcutright);
+\draw[forbidhead] (bcutleft)--(bsel.east);
+\node[crossmark] (bcross) at (7.15,-.05) {X};
+\end{tikzpicture}
+\caption{两种并列的无泄漏评价协议：协议A对应算法\ref{alg:V5-C08-selection-protocol}，冻结开发集候选后只开封测试集一次；协议B（嵌套交叉验证）在每个外层折$c$内重做$C_{\rm in}$折选择，再汇总$C_{\rm out}$个外层损失。虚线回箭头与X表示任何评估结果回调选择或停止规则都属于泄漏。}
+\label{fig:V5-C08-validation}
+\end{figure}

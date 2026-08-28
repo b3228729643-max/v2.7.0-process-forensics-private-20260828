@@ -1,0 +1,36 @@
+{
+  "CHECK_ID": "FIG-P556-02_STRICT_R1_SA1_FINAL_CONSISTENCY",
+  "CHECK_STATUS": "PASS",
+  "FIGURE_RESULT": "FAIL",
+  "REQUIRED_ARTIFACT_COUNT": 21,
+  "REQUIRED_ARTIFACT_MISSING": [],
+  "PAIR_ROWS": 343,
+  "PAIR_EXPECTED": 343,
+  "CRITICAL_PAIR_ROWS": 12,
+  "CRITICAL_8X_MISSING": [],
+  "CRITICAL_NATIVE_EVIDENCE_REQUIRED_PER_PAIR": [
+    "original.png",
+    "mask_a_raw.png",
+    "mask_b_raw.png",
+    "overlap_raw.png",
+    "overlay.png",
+    "raw_8x_nn.png",
+    "overlay_8x_nn.png",
+    "overlap_8x_nn.png"
+  ],
+  "CRITICAL_NATIVE_EVIDENCE_MISSING": [],
+  "METRICS_CROSSCHECK": {
+    "SOURCE_FONT_FAILURE_COUNT": 10,
+    "PIXEL_GLYPH_FAILURE_COUNT": 17,
+    "SAME_CLASS_GLYPH_FAILURE_COUNT": 34,
+    "SAME_CLASS_TOTAL_FAILURE_COUNT": 36,
+    "ROLE_RATIO_FAILURE_COUNT": 3,
+    "OVERLAP_PIXEL_COUNT": 0,
+    "OVERLAP_FAIL_PAIR_COUNT": 0,
+    "CLIP_PIXEL_COUNT": 0,
+    "SAME_CLASS_RATIO_PASS": false,
+    "ROLE_RATIO_PASS": false
+  },
+  "CANONICAL_GRID": "full-page direct 300dpi; crop slices only; no resize",
+  "FINAL_READ_ONLY_REVALIDATION": "PASS — required artifacts, CSV/metrics counts, 343 all-pair rows, 12 complete native/8x critical sets, overlap=0 and clip=0 agree."
+}

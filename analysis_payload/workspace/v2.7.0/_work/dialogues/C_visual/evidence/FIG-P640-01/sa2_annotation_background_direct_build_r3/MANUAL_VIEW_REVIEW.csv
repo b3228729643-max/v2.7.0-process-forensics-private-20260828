@@ -1,0 +1,13 @@
+view_id,reviewer,decision,path,observation
+VIEW_01_FULL_NATIVE300,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/standalone_native_300dpi.png,The one-page standalone is complete with intact margins caption figure and no page-edge clipping.
+VIEW_02_FULL_200DPI,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/standalone_200dpi.png,Normal-scale review preserves readable titles labels formulas curves legend and endpoint annotations.
+VIEW_03_FULL_GRAYSCALE300,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/standalone_grayscale_300dpi.png,Grayscale retains curve-style distinction and all text remains readable without disappearing strokes.
+VIEW_04_FIGURE_NATIVE300,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/figure_crop_native_300dpi.png,Both panels are balanced and all axes curves labels legend formulas and marker are complete.
+VIEW_05_RIGHT_PANEL_NATIVE300,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/right_panel_native_300dpi.png,The ESS panel shows a smooth curve readable limit note clean point label and unobstructed axes.
+VIEW_06_CURVE_NOTE_NATIVE1X,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/pair_0688_native_1x.png,At native scale the curve stays left-below the first N and no stroke enters any note glyph.
+VIEW_07_CURVE_NOTE_NATIVE8X,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/pair_0688_native_8x.png,Nearest-neighbor 8x inspection confirms white separation around the first N and subscripted eff.
+VIEW_08_CURVE_NOTE_OVERLAY,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/pair_0688_overlay_300dpi.png,Machine component overlay identifies the intended curve and note background without an unaccounted object.
+VIEW_09_MARKER_TICK_NATIVE1X,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/pair_0779_native_1x.png,At native scale the open marker is visibly above the .99 vertical tick and arrow line.
+VIEW_10_MARKER_TICK_NATIVE8X,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/pair_0779_native_8x.png,The 8x crop confirms the three blank-pixel rows measured between marker and tick foreground.
+VIEW_11_OBJECT_SHEETS,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/object_contact_sheet_01.png,All three object contact sheets were reviewed and every T001--T030 and G01--G10 object is present and readable.
+VIEW_12_CRITICAL_SHEETS,C_ROOT_MANUAL_R3,PASS,02_nontex_evidence/critical_pair_contact_sheet_01.png,All five critical sheets were reviewed and every CRIT_001--CRIT_076 relation has a corresponding manual row.

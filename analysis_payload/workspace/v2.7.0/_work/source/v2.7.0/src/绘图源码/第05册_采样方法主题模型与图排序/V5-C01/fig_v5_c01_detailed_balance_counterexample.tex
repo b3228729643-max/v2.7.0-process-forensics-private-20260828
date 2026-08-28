@@ -1,0 +1,57 @@
+% v2.3.1 figure UID: FIG-P556-03
+% Proposed post-v2.3.1 polish for FIG-P556-03: protect key-label size and stroke hierarchy.
+\tikzset{
+  slfig-FIG-P556-03/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P556-03-title/.style={font=\fontsize{10.4pt}{12.4pt}\selectfont\bfseries,text=SLBlue},
+  slfig-FIG-P556-03-verdict-text/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,anchor=west},
+}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P556-03,>=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  state/.style={circle,draw=SLBlue,fill=SLBlue!7,minimum size=9mm,inner sep=0pt,
+    font=\fontsize{9.4pt}{11.2pt}\selectfont,line width=.82pt},
+  flow/.style={-{Stealth[length=2mm]},draw=SLTeal,line width=1pt},
+  lab/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,fill=white,inner sep=1.2pt},
+  verdict/.style={draw=SLRuleGray,rounded corners=2pt,fill=white,
+    minimum width=38mm,minimum height=14mm,line width=.56pt},
+]
+  \node[slfig-FIG-P556-03-title] at (0,2.15) {逐边双向概率流};
+  \node[state] (x) at (-2.15,.85) {$x$};
+  \node[state] (y) at (2.15,.85) {$y$};
+  \draw[flow] (x) to[bend left=18]
+    node[lab,above] {$\pi(x)K(x,y)$} (y);
+  \draw[flow] (y) to[bend left=18]
+    node[lab,below,yshift=2.4mm] {$\pi(y)K(y,x)$} (x);
+  \node[draw=SLGold,rounded corners=2pt,fill=SLGold!8,
+    minimum width=63mm,minimum height=8mm,line width=.72pt,
+    font=\fontsize{9.4pt}{11.2pt}\selectfont] at (0,-.25)
+    {$\pi(x)K(x,y)=\pi(y)K(y,x)$};
+
+  \node[verdict] (v1) at (-4.45,-1.65) {};
+  \node[verdict] (v2) at (0,-1.65) {};
+  \node[verdict] (v3) at (4.45,-1.65) {};
+  \node[circle,draw=SLTeal,text=SLTeal,minimum size=5.5mm,inner sep=0pt,
+    line width=.72pt,font=\fontsize{9.2pt}{11.0pt}\selectfont]
+    at ([xshift=5mm]v1.west) {$\checkmark$};
+  \node[slfig-FIG-P556-03-verdict-text] at ([xshift=10mm]v1.west) {可推出平稳性};
+  \node[circle,draw=SLRed,text=SLRed,minimum size=5.5mm,inner sep=0pt,
+    line width=.72pt,font=\fontsize{9.2pt}{11.0pt}\selectfont]
+    at ([xshift=5mm]v2.west) {$\times$};
+  \node[slfig-FIG-P556-03-verdict-text] at ([xshift=10mm]v2.west) {不能推出连通};
+  \node[circle,draw=SLRed,text=SLRed,minimum size=5.5mm,inner sep=0pt,
+    line width=.72pt,font=\fontsize{9.2pt}{11.0pt}\selectfont]
+    at ([xshift=5mm]v3.west) {$\times$};
+  \node[slfig-FIG-P556-03-verdict-text] at ([xshift=10mm]v3.west) {不能推出唯一};
+
+  % 极小断开可逆链反例：A=I_2。
+  \node[state,minimum size=6.5mm,font=\fontsize{9.2pt}{11.0pt}\selectfont] (c1) at (-.65,-2.80) {$1$};
+  \node[state,minimum size=6.5mm,font=\fontsize{9.2pt}{11.0pt}\selectfont] (c2) at (.65,-2.80) {$2$};
+  \draw[flow,line width=.68pt] (c1) to[loop left,min distance=8mm] (c1);
+  \draw[flow,line width=.68pt] (c2) to[loop right,min distance=8mm] (c2);
+  \node[anchor=north west,yshift=-.8mm,
+    font=\fontsize{8.8pt}{10.5pt}\selectfont,text=SLGray] at (1.15,-2.80)
+    {$A=I_2$：可逆但断开，平稳分布不唯一};
+\end{tikzpicture}
+\caption{流量对称可证平稳，却不能证连通或唯一}\label{fig:V5-C01-detailed-balance}
+\end{figure}

@@ -1,0 +1,7 @@
+class_id,pair_set_definition,coverage_count,manual_verdict,manual_note,opened_evidence
+PC01,all machine pairs outside the 179 candidate set,1474,PASS,all have noncritical geometric separation and no unresolved reference,MACHINE_ALL_PAIRS plus object overlay and full figure
+PC02,179 candidate pairs excluding P00494 P00510 P00560 P00568,175,PASS,intended axis-contour or own-arrow-marker contacts and false-positive bounding-box nesting are visually lawful,object overlay glyph contact sheet and R03-R08 nearest8x
+PC03,P00494 G010-L002,1,FAIL,vertical x2 axis passes through the visible ink of numeric label 6,H01 native1x and nearest8x color-gray
+PC04,P00510 G010-C005,1,FAIL,gray contour passes through the visible ink of numeric label 6,H01 native1x and nearest8x color-gray
+PC05,P00560 G011-C008,1,FAIL,blue arrowhead occupies visible ink region of numeric label 7,H02 native1x and nearest8x color-gray
+PC06,P00568 G011-C016,1,FAIL,blue filled node occludes the central visible region of numeric label 7,H02 native1x and nearest8x color-gray

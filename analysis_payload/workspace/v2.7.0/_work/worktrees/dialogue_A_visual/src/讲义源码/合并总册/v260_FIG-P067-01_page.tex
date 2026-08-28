@@ -1,0 +1,21 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 1 册}{统计学习方法讲义 v2.6.0}{数学基础与统计学习基本理论}
+\begin{document}
+\setcounter{page}{66}
+\setcounter{chapter}{4}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{概率论基础}
+\begin{proof}
+令$\mu_X,\mu_Y$为$X,Y$在$(\mathbb R,\mathcal B(\mathbb R))$上的分布测度。对每个$b\in\mathbb R$，
+\[
+\mu_X(( -\infty,b])=F_X(b)=F_Y(b)=\mu_Y(( -\infty,b]).
+\]
+两个左半直线的交仍是左半直线；由概率测度的$\pi$--$\lambda$唯一性定理，$\mu_X$与$\mu_Y$在全部 Borel 集上一致。
+\end{proof}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C04/fig_v1_c04_cdf.tex}
+可用\cref{fig:V1-C04-cdf}做双向核对：由各跳跃量恢复概率质量，或把概率质量累加为分布函数；右连续约定决定跳点取上端值，而单调性与终值$1$是合法性检查。
+\paragraph{首次阅读检查：联合分布。}\textbf{需要解决的阅读阻塞。}表述过短，缺少可立即作答的自检与失败回看位置。
+\end{document}
+

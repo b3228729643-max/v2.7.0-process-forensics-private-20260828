@@ -1,0 +1,66 @@
+﻿OBJECT_ID,OBJECT_KIND,PANEL_ID,SOURCE_FILE,SOURCE_LINE,PDF_DRAW_IDS,TEXT_OR_LABEL,PDF_BBOX,PX_BBOX_300DPI,COUNT
+NODE_precheck,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,34,1,"随机调用前完整验证： | 𝑁, 𝐵∈ℕ | 0 | ， | 1 ≤𝑐< ∞ | ； | 𝑝, 𝑞 | 有 | 限非负； | 𝑝> 0 ⇒𝑞> 0 | ； | 𝜌= 𝑝/(𝑐𝑞) |  在 | 𝑞> 0 |  处有限； | supp | (𝑝) | ⊆ | supp | (𝑞) | ，且全局 | 𝑝≤𝑐𝑞","143.37,68.39,365.93,115.63","597,284,1526,483",1
+NODE_valid,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,38,2,全部输入与证书通过？,"184.79,118.70,324.51,162.83","769,494,1354,680",1
+NODE_badinput,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,39,3,"invalid | _ | input | 异常出口；字段 | / | 位置 | 𝑋 | 1∶𝑎 | = | ∅, 𝑚= | 𝑎= | 0 | envelope | _ | condition | _ | failure | （包络诊断）","372.13,119.29,485.83,193.42","1550,497,2026,807",1
+NODE_init,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,44,5,初始化 | 𝑚= | 𝑎= | 0 | ，有 | 效样本前缀 | 𝑋 | 1∶𝑎 | = ∅,"186.88,168.79,322.41,198.91","778,703,1345,830",1
+NODE_goal,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,46,6,𝑎= | 𝑁 | ？,"184.79,201.76,324.51,245.88","769,840,1354,1026",1
+NODE_completed,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,47,7,"completed |  ｜成功出口 | 𝑋 | 1∶𝑁 | , 𝑚, 𝑎= | 𝑁 | 完成（含零目标）","374.97,197.42,482.99,241.71","1562,822,2014,1009",1
+NODE_budgetcheck,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,49,8,𝑚= | 𝐵 | ？,"184.79,249.95,324.51,294.07","769,1041,1354,1227",1
+NODE_budget,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,50,9,"budget | _ | stop | 预算停止 | 𝑋 | 1∶𝑎 | , 𝑚= 𝐵, 𝑎< 𝑁","357.46,261.51,486.33,322.20","1489,1089,2028,1344",1
+NODE_proposal,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,53,10,调用 | 𝑌∼𝑞 | 成功？,"182.90,297.82,326.40,343.14","762,1240,1361,1431",1
+NODE_proposalfail,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,54,11,"random | _ | source | _ | failure | 𝑋 | 1∶𝑎 | , 𝑚, 𝑎 | 位置 | (𝑚+ 1, |  提议源 | )","372.13,336.10,485.83,381.40","1550,1400,2026,1591",1
+NODE_countproposal,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,56,13,候选生成成功：立 | 即令 | 𝑚←𝑚+ | 1,"186.88,349.11,322.41,378.03","778,1454,1345,1577",1
+NODE_uniform,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,57,14,"均匀源成功并 | 返回 | 𝑈∼ | U | (0, 1) | ？","159.09,381.82,350.20,442.26","662,1590,1461,1844",1
+NODE_uniformfail,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,58,15,"random | _ | source | _ | failure | 𝑋 | 1∶𝑎 | , 𝑚, 𝑎 | 位置 | (𝑚, |  均匀源 | )","372.13,412.07,485.83,457.37","1550,1716,2026,1907",1
+NODE_evaluate,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,61,17,"求 | 𝑝(𝑌), 𝑞(𝑌) | 与 | 𝜌= 𝑝(𝑌)/(𝑐𝑞(𝑌))","186.88,448.01,322.41,478.12","778,1866,1345,1994",1
+NODE_numericok,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,63,18,"𝑝(𝑌), 𝑞(𝑌) |  有限非负， | 𝑞(𝑌) | > | 0 |  且 | 𝜌 | 有限？","158.69,480.91,350.60,541.60","661,2003,1462,2258",1
+NODE_numericfail,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,64,19,"numerical | _ | failure | 𝑋 | 1∶𝑎 | , 𝑚, 𝑎 | 位置 | (𝑚, |  密度 | / | 比率 | )","372.13,491.44,485.83,536.74","1550,2047,2026,2238",1
+NODE_envelopeok,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,66,21,0 | ≤𝜌≤1 | ？,"182.97,545.31,326.33,590.59","762,2272,1361,2462",1
+NODE_envelopefail,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,67,22,"invalid | _ | input | 𝑋 | 1∶𝑎 | , 𝑚, 𝑎 | ；位置 | 𝑚 | envelope | _ | condition | _ | failure | （包络诊断）","372.13,564.08,485.83,622.84","1550,2350,2026,2597",1
+NODE_accept,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,72,24,𝑈≤𝜌 | ？,"182.97,594.35,326.33,639.63","762,2476,1361,2667",1
+NODE_commit,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,73,25,接受：原子追加 | 𝑌 | ， | 𝑎←𝑎+ | 1,"127.35,643.43,231.70,671.62","530,2680,967,2800",1
+NODE_reject,NODE_BORDER,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,74,26,普通拒绝：不追加， | 𝑎 | 与 | 𝑋 | 1∶𝑎 | 不变,"278.59,642.47,380.95,672.58","1160,2676,1589,2804",1
+EDGE_precheck_TO_valid,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,77,27/28,precheck → valid,"253.57,114.09,255.73,116.93","1056,475,1067,489",1
+EDGE_valid_TO_badinput,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,78,29/30,valid → badinput,"325.09,140.76,370.64,156.10","1354,586,1546,652",1
+EDGE_valid_TO_init,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,79,32/33,valid → init,"253.57,163.40,255.73,167.24","1056,680,1067,698",1
+EDGE_init_TO_goal,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,80,35/36,init → goal,"253.57,197.14,255.73,199.99","1056,821,1067,835",1
+EDGE_goal_TO_completed,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,81,37/38,goal → completed,"325.09,218.84,373.34,223.82","1354,911,1557,934",1
+EDGE_goal_TO_budgetcheck,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,82,40/41,goal → budgetcheck,"253.57,245.33,255.73,248.18","1056,1022,1067,1036",1
+EDGE_budgetcheck_TO_budget,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,83,43/44,budgetcheck → budget,"325.09,272.01,356.08,291.22","1354,1133,1485,1215",1
+EDGE_budgetcheck_TO_proposal,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,84,46/47,budgetcheck → proposal,"253.57,293.21,255.73,296.05","1056,1221,1067,1235",1
+EDGE_proposal_TO_proposalfail,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,85,49/50,proposal → proposalfail,"326.97,320.48,370.87,357.98","1362,1335,1547,1493",1
+EDGE_proposal_TO_countproposal,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,86,52/53,proposal → countproposal,"253.57,343.72,255.73,347.56","1056,1432,1067,1450",1
+EDGE_countproposal_TO_uniform,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,87,55/56,countproposal → uniform,"253.57,377.21,255.73,380.05","1056,1571,1067,1585",1
+EDGE_uniform_TO_uniformfail,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,88,57/58,uniform → uniformfail,"350.78,412.04,370.96,433.84","1461,1716,1547,1809",1
+EDGE_uniform_TO_evaluate,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,89,60/61,uniform → evaluate,"253.57,442.84,255.73,446.46","1056,1845,1067,1862",1
+EDGE_evaluate_TO_numericok,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,90,63/64,evaluate → numericok,"253.57,476.30,255.73,479.14","1056,1984,1067,1998",1
+EDGE_numericok_TO_numericfail,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,91,65/66,numericok → numericfail,"351.18,511.26,370.59,514.61","1463,2130,1546,2146",1
+EDGE_numericok_TO_envelopeok,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,92,68/69,numericok → envelopeok,"253.57,540.70,255.73,543.54","1056,2252,1067,2266",1
+EDGE_envelopeok_TO_envelopefail,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,93,71/72,envelopeok → envelopefail,"326.91,567.95,370.74,592.87","1362,2366,1546,2472",1
+EDGE_envelopeok_TO_accept,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,94,74/75,envelopeok → accept,"253.57,589.74,255.73,592.58","1056,2457,1067,2471",1
+EDGE_accept_TO_commit,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,95,77/78,accept → commit,"180.65,628.60,218.52,642.68","752,2619,912,2679",1
+EDGE_accept_TO_reject,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,96,80/81,accept → reject,"290.78,628.60,328.64,641.81","1211,2619,1371,2676",1
+EDGE_commit_TO_merge,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,97,83/84,commit → merge,"179.53,671.98,253.57,679.49","748,2799,1058,2833",1
+EDGE_reject_TO_merge,LINE_ARROW,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,98,85/86,reject → merge,"255.72,672.94,329.77,679.54","1065,2803,1376,2833",1
+EDGE_merge_TO_goal,RETURN_LOOP,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,99,87/88,merge → goal,"120.00,222.76,254.65,678.79","500,928,1063,2830",1
+BRANCH_valid_to_badinput,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,78,label background vector,否,"343.65,138.35,353.21,148.59","1431,576,1473,621",1
+BRANCH_valid_to_init,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,79,label background vector,是,"278.74,158.42,288.30,168.66","1161,660,1203,704",1
+BRANCH_goal_to_completed,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,81,label background vector,是：优先,"330.68,211.48,368.93,221.72","1377,881,1539,925",1
+BRANCH_goal_to_budgetcheck,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,82,label background vector,否,"278.74,243.90,288.30,254.14","1161,1016,1203,1060",1
+BRANCH_budgetcheck_to_budget,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,83,label background vector,是,"336.31,271.72,345.87,281.96","1401,1132,1443,1176",1
+BRANCH_budgetcheck_to_proposal,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,84,label background vector,否,"278.74,291.93,288.30,302.17","1161,1216,1203,1261",1
+BRANCH_proposal_to_proposalfail,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,85,label background vector,失败,"339.81,329.40,358.94,339.65","1415,1372,1497,1417",1
+BRANCH_proposal_to_countproposal,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,86,label background vector,成功,"278.74,338.73,297.87,348.97","1161,1411,1243,1456",1
+BRANCH_uniform_to_uniformfail,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,88,label background vector,失败,"349.19,410.44,368.32,420.69","1454,1710,1536,1754",1
+BRANCH_uniform_to_evaluate,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,89,label background vector,成功,"278.74,437.74,297.87,447.98","1161,1823,1243,1868",1
+BRANCH_numericok_to_numericfail,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,91,label background vector,否,"356.69,502.46,366.26,512.70","1486,2093,1528,2138",1
+BRANCH_numericok_to_envelopeok,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,92,label background vector,是,"278.74,539.44,288.30,549.68","1161,2247,1203,2292",1
+BRANCH_envelopeok_to_envelopefail,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,93,label background vector,否,"344.56,570.49,354.12,580.73","1435,2377,1477,2421",1
+BRANCH_envelopeok_to_accept,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,94,label background vector,是,"278.74,588.45,288.30,598.69","1161,2451,1203,2496",1
+BRANCH_accept_to_commit,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,95,label background vector,接受,"178.48,631.81,197.61,642.06","743,2632,825,2677",1
+BRANCH_accept_to_reject,BRANCH_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,96,label background vector,拒绝,"311.69,631.33,330.81,641.58","1298,2630,1380,2675",1
+LOOP_LABEL_1,LOOP_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,100,89,先,"124.00,518.60,133.57,528.84","516,2160,558,2205",1
+LOOP_LABEL_2,LOOP_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,100,89,𝑎= 𝑁,"135.96,518.13,163.08,528.79","566,2158,681,2205",1
+LOOP_LABEL_3,LOOP_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,100,89,再,"123.37,533.97,132.93,544.21","514,2224,555,2269",1
+LOOP_LABEL_4,LOOP_LABEL,state_machine_1,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,100,89,𝑚= 𝐵,"135.32,533.50,164.09,544.16","563,2222,685,2269",1
+CAPTION_FIG_31_5,CAPTION,page_626,src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex,102,N/A,图31.5 带预算的接受—拒绝必须区分普通拒绝、收满目标、未收满而预算耗尽，以及包络证书失败。,"79.17,683.09,527.45,697.35","329,2846,2199,2907",1

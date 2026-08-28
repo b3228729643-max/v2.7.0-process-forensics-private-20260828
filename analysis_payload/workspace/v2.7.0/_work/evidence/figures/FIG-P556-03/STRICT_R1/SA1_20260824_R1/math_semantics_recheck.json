@@ -1,0 +1,37 @@
+{
+  "math_semantics_pass": true,
+  "probability_semantics_pass": true,
+  "text_consistency_pass": true,
+  "checks": [
+    {
+      "CHECK_ID": "DETAILED_BALANCE_TO_STATIONARY",
+      "FORMULA": "sum_x pi(x)K(x,y)=pi(y)sum_x K(y,x)=pi(y)",
+      "OBSERVED": "row-stochastic K gives sum_x K(y,x) after balance substitution = sum_x K(y,x) with index x over K(y,x)=1",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "COUNTEREXAMPLE_A_I2",
+      "FORMULA": "K=I_2; pi=(a,1-a); pi K=pi",
+      "OBSERVED": "detailed balance holds; two singleton closed classes; every a in [0,1] is stationary",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "NONIMPLICATION",
+      "FORMULA": "detailed balance does not imply irreducibility/connectivity/unique stationary distribution",
+      "OBSERVED": "A=I_2 is disconnected and has nonunique stationary distributions",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "NOTATION_SPECIALIZATION",
+      "FORMULA": "finite K(i,j)=a_ij and pi_i=rho_i",
+      "OBSERVED": "figure's generic kernel/weight notation specializes consistently to chapter's finite A/rho convention; no direction reversal",
+      "PASS_FAIL": "PASS"
+    },
+    {
+      "CHECK_ID": "TEXT_CAPTION_CONTEXT",
+      "FORMULA": "figure/caption/body",
+      "OBSERVED": "all say flow symmetry proves stationarity but not connectivity or uniqueness",
+      "PASS_FAIL": "PASS"
+    }
+  ]
+}

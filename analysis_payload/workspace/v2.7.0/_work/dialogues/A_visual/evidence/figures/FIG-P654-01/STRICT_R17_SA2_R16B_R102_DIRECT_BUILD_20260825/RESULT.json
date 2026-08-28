@@ -1,0 +1,107 @@
+{
+  "figure_uid": "FIG-P654-01",
+  "round": "STRICT_R17_SA2_R16B_R102_DIRECT_BUILD_20260825",
+  "status": "LOCAL_SA2_FAIL_NEEDS_SOURCE_R3",
+  "build": {
+    "invocations": 1,
+    "engine": "direct_lualatex",
+    "exit_code": 0,
+    "pdf_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R17_SA2_R16B_R102_DIRECT_BUILD_20260825\\build\\v260_FIG-P654-01_standalone.pdf",
+    "pdf_bytes": 43510,
+    "pdf_sha256": "D83D577DEE19C1B279E7FE93DFFE99F67C3C1C49784392A490F1A79515C2311B",
+    "tex_processes_after_release": 0
+  },
+  "identities": {
+    "source_sha256": "0A7CAAA49978AA6193BA4DC4CB90845981599DFC161F5A8BD6B9143A1EA4C2EB",
+    "wrapper_sha256": "FE44F2E6005D884A6916A11C6EBCB89CF40BD523A64D8F8C6BC8124DBABC0CA1"
+  },
+  "denominators": {
+    "glyph": 93,
+    "graphic": 21,
+    "object": 114,
+    "unordered_pair_expected": 6441,
+    "unordered_pair_actual": 6441,
+    "critical_pair": 173,
+    "manual_glyph": 93,
+    "manual_graphic": 21,
+    "manual_pair": 6441,
+    "manual_critical": 173,
+    "view": 5
+  },
+  "passed_regressions": {
+    "target_n_id": "G0005",
+    "target_n_h_px": 24,
+    "target_n_abs_min_px": 22,
+    "target_n_ratio": 1.0,
+    "clip_failure_count": 0,
+    "illegal_overlap_failure_count_after_manual_adjudication": 0,
+    "semantic_layout_complete": true,
+    "literal_authoritative_N_preserved": true,
+    "math_plus_glyph_count": 3
+  },
+  "hard_failures": {
+    "glyph_ids": [
+      "G0040",
+      "G0059",
+      "G0064",
+      "G0065"
+    ],
+    "glyph_details": [
+      {
+        "id": "G0040",
+        "char": "+",
+        "h_px": 26,
+        "median_px": 24,
+        "ratio": 1.083333333333,
+        "gate": "<=1.08"
+      },
+      {
+        "id": "G0059",
+        "char": "+",
+        "h_px": 26,
+        "median_px": 24,
+        "ratio": 1.083333333333,
+        "gate": "<=1.08"
+      },
+      {
+        "id": "G0064",
+        "char": "+",
+        "h_px": 26,
+        "median_px": 24,
+        "ratio": 1.083333333333,
+        "gate": "<=1.08"
+      },
+      {
+        "id": "G0065",
+        "char": "N",
+        "h_px": 27,
+        "median_px": 24,
+        "ratio": 1.125,
+        "gate": "<=1.08"
+      }
+    ],
+    "pair_ids": [
+      "P06198",
+      "P06219"
+    ],
+    "pair_reason": "G0092/G0093 external application label glyphs have 0px native clearance to D0009 N_LDA border; required >=3px.",
+    "source_role_ratio": {
+      "max_min": 1.221052631579,
+      "abs_diff_pt": 2.1,
+      "required_ratio": "<=1.03",
+      "required_abs_diff_pt": "<=0.25"
+    }
+  },
+  "manual_geometric_connection_overrides": {
+    "P06240": "D0001 node border is the intentional endpoint of D0010 outgoing edge E_TRIAL_FAMILIES; 2 shared antialias pixels are a line-node connection, not an illegal collision.",
+    "P06261": "D0002 node border is the intentional endpoint of D0012 outgoing edge E_GAMMA_FAMILIES; 2 shared antialias pixels are a line-node connection, not an illegal collision.",
+    "P06285": "D0018 is the semantic relation line joining D0003 N_FAMILIES to D0007 N_SIMPLEX; its 1-pixel contact with D0003 is intentional.",
+    "P06347": "D0018 is the semantic relation line joining D0003 N_FAMILIES to D0007 N_SIMPLEX; its 1-pixel contact with D0007 is intentional."
+  },
+  "font_visual_harmony_pass": true,
+  "final_verdict": "FAIL_TO_SA2_SOURCE_R3_REQUIRED",
+  "commit_allowed": false,
+  "fresh_sa1_allowed": false,
+  "fresh_sa3_allowed": false,
+  "a_local_pass": false
+}

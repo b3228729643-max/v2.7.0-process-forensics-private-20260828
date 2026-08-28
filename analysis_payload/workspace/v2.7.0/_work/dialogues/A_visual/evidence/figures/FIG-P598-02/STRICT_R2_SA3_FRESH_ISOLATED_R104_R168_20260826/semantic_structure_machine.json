@@ -1,0 +1,58 @@
+{
+  "three_ordered_card_borders": [
+    "GRAPHIC_CARD1_BORDER",
+    "GRAPHIC_CARD2_BORDER",
+    "GRAPHIC_CARD3_BORDER"
+  ],
+  "two_flow_arrows": [
+    [
+      "GRAPHIC_FLOW1_BODY",
+      "GRAPHIC_FLOW1_HEAD"
+    ],
+    [
+      "GRAPHIC_FLOW2_BODY",
+      "GRAPHIC_FLOW2_HEAD"
+    ]
+  ],
+  "step1_text": {
+    "P_STEP1_HEADER": "1构造核",
+    "P_STEP1_KERNEL_FORMULA": "𝜋𝐾=𝜋",
+    "P_STEP1_STATE_LABELS": "𝑥𝑦",
+    "P_STEP1_NOTE": "保持目标分布𝜋"
+  },
+  "step1_graphics": [
+    "GRAPHIC_NODE_X_BORDER",
+    "GRAPHIC_NODE_Y_BORDER",
+    "GRAPHIC_KERNEL_XY_BODY",
+    "GRAPHIC_KERNEL_XY_HEAD",
+    "GRAPHIC_KERNEL_YX_BODY",
+    "GRAPHIC_KERNEL_YX_HEAD"
+  ],
+  "step2_text": {
+    "P_STEP2_HEADER": "2运行链",
+    "P_STEP2_SEGMENT_LABELS": "warm-up保留段"
+  },
+  "step2_graphics": [
+    "GRAPHIC_CHAIN_BASELINE",
+    "GRAPHIC_CHAIN_HATCH",
+    "GRAPHIC_CHAIN_CURVE",
+    "GRAPHIC_CHAIN_DIVIDER"
+  ],
+  "step3_text": {
+    "P_STEP3_HEADER": "3遍历平均",
+    "P_STEP3_ESTIMATOR": "𝐼𝑚,𝑛=1𝑛𝑚+𝑛∑𝑡=𝑚+1ℎ(𝑋𝑡)",
+    "P_STEP3_NOTE": "只用保留样本"
+  },
+  "step3_graphics": [
+    "GRAPHIC_DOT_1",
+    "GRAPHIC_DOT_2",
+    "GRAPHIC_DOT_3",
+    "GRAPHIC_DOT_4",
+    "GRAPHIC_DOT_5",
+    "GRAPHIC_DOT_6",
+    "GRAPHIC_DOT_7",
+    "GRAPHIC_WIDEHAT",
+    "GRAPHIC_FRACTION_BAR"
+  ],
+  "caption_text": "图32.3MCMC工作流按箭头依次完成三步：由目标分布𝜋构造以𝜋为平稳分布的转移核，运行链并舍弃预热段，再以保留样本的遍历平均估计𝔼𝜋[ℎ(𝑋)]。"
+}

@@ -1,0 +1,44 @@
+{
+  "candidate_id": "FIG-P020-01-STRICT-R4-OFFICIAL-R89",
+  "foreground_delta": 20,
+  "background": [255, 255, 255],
+  "views": {
+    "PAGE_300DPI": "full_page_300dpi.png",
+    "FIGURE_CROP_300DPI": "figure_crop_300dpi.png",
+    "STANDALONE_300DPI": "standalone_300dpi.png",
+    "GRAYSCALE_300DPI": "grayscale_300dpi.png"
+  },
+  "checks": [
+    {"id":"C01_OBJECT_TITLE_BODY","view":"PAGE_300DPI","element_a_id":"E01-OBJECT-T","element_a_class":"TEXT","element_b_id":"E01-OBJECT-B","element_b_class":"TEXT","a_box":[500,1263,735,1345],"b_box":[430,1348,805,1418],"a_mask":"31,41,55,35","b_mask":"31,41,55,35","required_clearance_px":4},
+    {"id":"C02_RELATION_TITLE_BODY","view":"PAGE_300DPI","element_a_id":"E02-RELATION-T","element_a_class":"TEXT","element_b_id":"E02-RELATION-BLOCK","element_b_class":"TEXT_FORMULA","a_box":[920,1263,1210,1345],"b_box":[900,1345,1230,1418],"a_mask":"31,41,55,35","b_mask":"31,41,55,35","required_clearance_px":4},
+    {"id":"C03_LOGIC_TITLE_BODY","view":"PAGE_300DPI","element_a_id":"E03-LOGIC-T","element_a_class":"TEXT","element_b_id":"E03-LOGIC-B","element_b_class":"TEXT","a_box":[1370,1263,1650,1345],"b_box":[1325,1348,1695,1418],"a_mask":"31,41,55,35","b_mask":"31,41,55,35","required_clearance_px":4},
+    {"id":"C04_TASK_TITLE_BODY","view":"PAGE_300DPI","element_a_id":"E04-TASK-T","element_a_class":"TEXT","element_b_id":"E04-TASK-B","element_b_class":"TEXT","a_box":[1815,1263,2100,1345],"b_box":[1770,1348,2140,1418],"a_mask":"31,41,55,35","b_mask":"31,41,55,35","required_clearance_px":4},
+
+    {"id":"C05_OBJECT_TEXT_BORDER","view":"PAGE_300DPI","element_a_id":"E01-OBJECT-TEXT","element_a_class":"TEXT","element_b_id":"OBJECT_NODE_BORDER","element_b_class":"NODE_BORDER","a_box":[430,1248,805,1423],"b_box":[395,1218,840,1463],"a_mask":"31,41,55,35","b_mask":"31,78,121,25","required_clearance_px":5},
+    {"id":"C06_RELATION_TEXT_BORDER","view":"PAGE_300DPI","element_a_id":"E02-RELATION-TEXT","element_a_class":"TEXT_FORMULA","element_b_id":"RELATION_NODE_BORDER","element_b_class":"NODE_BORDER","a_box":[900,1248,1230,1423],"b_box":[850,1218,1280,1463],"a_mask":"31,41,55,35","b_mask":"31,78,121,25","required_clearance_px":5},
+    {"id":"C07_LOGIC_TEXT_BORDER","view":"PAGE_300DPI","element_a_id":"E03-LOGIC-TEXT","element_a_class":"TEXT","element_b_id":"LOGIC_NODE_BORDER","element_b_class":"NODE_BORDER","a_box":[1325,1248,1695,1423],"b_box":[1280,1218,1730,1463],"a_mask":"31,41,55,35","b_mask":"31,78,121,25","required_clearance_px":5},
+    {"id":"C08_TASK_TEXT_BORDER","view":"PAGE_300DPI","element_a_id":"E04-TASK-TEXT","element_a_class":"TEXT","element_b_id":"TASK_NODE_BORDER","element_b_class":"NODE_BORDER","a_box":[1770,1248,2140,1423],"b_box":[1730,1218,2180,1463],"a_mask":"31,41,55,35","b_mask":"31,78,121,25","required_clearance_px":5},
+
+    {"id":"C09_RELATION_LEFT_ARROW","view":"PAGE_300DPI","element_a_id":"E02-RELATION-LEFT","element_a_class":"TEXT","element_b_id":"E02-RELATION-ARROW","element_b_class":"FORMULA","a_box":[900,1348,1048,1418],"b_box":[1050,1332,1122,1418],"a_mask":"31,41,55,35","b_mask":"31,41,55,35","required_clearance_px":4},
+    {"id":"C10_RELATION_ARROW_RIGHT","view":"PAGE_300DPI","element_a_id":"E02-RELATION-ARROW","element_a_class":"FORMULA","element_b_id":"E02-RELATION-RIGHT","element_b_class":"TEXT","a_box":[1050,1332,1122,1418],"b_box":[1124,1348,1225,1418],"a_mask":"31,41,55,35","b_mask":"31,41,55,35","required_clearance_px":4},
+
+    {"id":"C11_OBJECT_TEXT_CONNECTOR1","view":"PAGE_300DPI","element_a_id":"E01-OBJECT-TEXT","element_a_class":"TEXT","element_b_id":"CONNECTOR_OBJECT_RELATION","element_b_class":"LINE_ARROW","a_box":[430,1248,805,1423],"b_box":[810,1308,910,1408],"a_mask":"31,41,55,35","b_mask":"31,78,121,25","required_clearance_px":3},
+    {"id":"C12_RELATION_TEXT_CONNECTOR1","view":"PAGE_300DPI","element_a_id":"E02-RELATION-TEXT","element_a_class":"TEXT_FORMULA","element_b_id":"CONNECTOR_OBJECT_RELATION","element_b_class":"LINE_ARROW","a_box":[900,1248,1230,1423],"b_box":[810,1308,910,1408],"a_mask":"31,41,55,35","b_mask":"31,78,121,25","required_clearance_px":3},
+    {"id":"C13_RELATION_TEXT_CONNECTOR2","view":"PAGE_300DPI","element_a_id":"E02-RELATION-TEXT","element_a_class":"TEXT_FORMULA","element_b_id":"CONNECTOR_RELATION_LOGIC","element_b_class":"LINE_ARROW","a_box":[900,1248,1230,1423],"b_box":[1240,1308,1350,1408],"a_mask":"31,41,55,35","b_mask":"31,78,121,25","required_clearance_px":3},
+    {"id":"C14_LOGIC_TEXT_CONNECTOR2","view":"PAGE_300DPI","element_a_id":"E03-LOGIC-TEXT","element_a_class":"TEXT","element_b_id":"CONNECTOR_RELATION_LOGIC","element_b_class":"LINE_ARROW","a_box":[1325,1248,1695,1423],"b_box":[1240,1308,1350,1408],"a_mask":"31,41,55,35","b_mask":"31,78,121,25","required_clearance_px":3},
+    {"id":"C15_LOGIC_TEXT_CONNECTOR3","view":"PAGE_300DPI","element_a_id":"E03-LOGIC-TEXT","element_a_class":"TEXT","element_b_id":"CONNECTOR_LOGIC_TASK","element_b_class":"LINE_ARROW","a_box":[1325,1248,1695,1423],"b_box":[1690,1308,1800,1408],"a_mask":"31,41,55,35","b_mask":"31,78,121,25","required_clearance_px":3},
+    {"id":"C16_TASK_TEXT_CONNECTOR3","view":"PAGE_300DPI","element_a_id":"E04-TASK-TEXT","element_a_class":"TEXT","element_b_id":"CONNECTOR_LOGIC_TASK","element_b_class":"LINE_ARROW","a_box":[1770,1248,2140,1423],"b_box":[1690,1308,1800,1408],"a_mask":"31,41,55,35","b_mask":"31,78,121,25","required_clearance_px":3},
+
+    {"id":"C17_AUDIT_REVERSE_PATH","view":"PAGE_300DPI","element_a_id":"E05-AUDIT","element_a_class":"ANNOTATION","element_b_id":"REVERSE_DASHED_PATH","element_b_class":"LINE_ARROW","a_box":[250,1539,990,1603],"b_box":[620,1428,1990,1539],"a_mask":"107,114,128,35","b_mask":"107,114,128,35","required_clearance_px":3},
+    {"id":"C18_AUDIT_CAPTION","view":"PAGE_300DPI","element_a_id":"E05-AUDIT","element_a_class":"ANNOTATION","element_b_id":"E06-CAPTION-ALL","element_b_class":"TEXT","a_box":[250,1536,990,1598],"b_box":[320,1598,2120,1673],"a_mask":"107,114,128,35","b_mask":"31,35,40,35","required_clearance_px":4},
+    {"id":"C19_CAPTION_LABEL_NUM","view":"PAGE_300DPI","element_a_id":"E06-CAP-CJK","element_a_class":"TEXT","element_b_id":"E06-CAP-NUM","element_b_class":"TEXT","a_box":[325,1588,380,1668],"b_box":[380,1598,445,1668],"a_mask":"31,35,40,35","b_mask":"31,35,40,35","required_clearance_px":4},
+    {"id":"C20_CAPTION_NUM_BODY","view":"PAGE_300DPI","element_a_id":"E06-CAP-NUM","element_a_class":"TEXT","element_b_id":"E06-CAP-BODY","element_b_class":"TEXT","a_box":[380,1598,445,1668],"b_box":[465,1598,2120,1673],"a_mask":"31,35,40,35","b_mask":"31,35,40,35","required_clearance_px":4},
+    {"id":"C21_CAPTION_FOLLOWING_BODY","view":"PAGE_300DPI","element_a_id":"E06-CAPTION-ALL","element_a_class":"TEXT","element_b_id":"FOLLOWING_BODY","element_b_class":"TEXT","a_box":[320,1583,2120,1678],"b_box":[250,1820,2200,1975],"a_mask":"31,35,40,35","b_mask":"foreground","required_clearance_px":4},
+    {"id":"C22_PRECEDING_CONTENT_FIGURE","view":"PAGE_300DPI","element_a_id":"PRECEDING_CONTENT","element_a_class":"TEXT_GRAPHICS","element_b_id":"FIGURE_TOP_CONTENT","element_b_class":"TEXT_GRAPHICS","a_box":[250,800,2200,940],"b_box":[360,1218,2200,1310],"a_mask":"foreground","b_mask":"foreground","required_clearance_px":4},
+
+    {"id":"C23_FIGURE_CROP_EDGE","type":"edge","view":"FIGURE_CROP_300DPI","element_a_id":"ALL_FIGURE_FOREGROUND","element_a_class":"TEXT_GRAPHICS","element_b_id":"FIGURE_CROP_EDGE","element_b_class":"IMAGE_EDGE","required_clearance_px":6},
+    {"id":"C24_STANDALONE_EDGE","type":"edge","view":"STANDALONE_300DPI","element_a_id":"ALL_FIGURE_FOREGROUND","element_a_class":"TEXT_GRAPHICS","element_b_id":"STANDALONE_EDGE","element_b_class":"IMAGE_EDGE","required_clearance_px":6},
+    {"id":"C25_PAGE_EDGE","type":"edge","view":"PAGE_300DPI","element_a_id":"ALL_PAGE_FOREGROUND","element_a_class":"TEXT_GRAPHICS","element_b_id":"PAGE_EDGE","element_b_class":"IMAGE_EDGE","required_clearance_px":6},
+    {"id":"C26_GRAYSCALE_EDGE","type":"edge","view":"GRAYSCALE_300DPI","element_a_id":"ALL_PAGE_FOREGROUND","element_a_class":"TEXT_GRAPHICS","element_b_id":"GRAYSCALE_EDGE","element_b_class":"IMAGE_EDGE","required_clearance_px":6}
+  ]
+}

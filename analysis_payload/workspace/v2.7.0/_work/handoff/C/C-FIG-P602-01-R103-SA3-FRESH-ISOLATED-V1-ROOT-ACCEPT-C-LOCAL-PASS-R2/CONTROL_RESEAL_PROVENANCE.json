@@ -1,0 +1,24 @@
+{
+  "kind": "HANDOFF_CONTROL_ONLY_RESEAL",
+  "new_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\handoff\\C\\C-FIG-P602-01-R103-SA3-FRESH-ISOLATED-V1-ROOT-ACCEPT-C-LOCAL-PASS-R2",
+  "source_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\handoff\\C\\C-FIG-P602-01-R103-SA3-FRESH-ISOLATED-V1-ROOT-ACCEPT-C-LOCAL-PASS-R1",
+  "source_root_status": "CONTROL_REJECT_SPLIT_MARKER_HASH_VALUE_LINES",
+  "source_manifest_sha256": "000376EDB958626C6603FA8D3ED610BF541F3287F242391414090E03B5398B5D",
+  "source_marker_sha256": "19DD1AA5D1EB8DB5C6A47485D4A9D3BE9DB1A37C8AFE855F8D5E1F2D729EF57F",
+  "copied_payload": [
+    {
+      "path": "ROOT_AUDIT.json",
+      "bytes": 3268,
+      "sha256": "03316CA642C9C2D389C107C1F4C40548C5828E02085AAADB2467AA75DD3143EC"
+    },
+    {
+      "path": "ROOT_VISUAL_REVIEW.md",
+      "bytes": 908,
+      "sha256": "02C97D3C21E7FF6EA3171DD9EEB05BA3113240700AAE62517351900CA51C6728"
+    }
+  ],
+  "content_conclusion_changed": false,
+  "manual_conclusion_changed": false,
+  "evidence_root_changed": false,
+  "reason": "R1 marker split three hash key/value pairs across separate lines due PowerShell array expression; R2 writes parseable single-line key=value fields."
+}

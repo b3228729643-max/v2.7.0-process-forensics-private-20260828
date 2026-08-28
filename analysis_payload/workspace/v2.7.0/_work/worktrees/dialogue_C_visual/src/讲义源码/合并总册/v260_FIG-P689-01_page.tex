@@ -1,0 +1,19 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{869}
+\setcounter{chapter}{35}
+\setcounter{section}{3}
+\setcounter{figure}{4}
+\pagestyle{headings}
+\chaptermark{潜在狄利克雷分配}
+\sectionmark{变分 EM 推断}
+\textbf{KL--ELBO 恒等式给出可计算下界。}
+任意候选分布$q(h)$都把观测对数证据分成ELBO与到真实后验的非负KL散度；当变分族受限时，即使坐标更新稳定，这一间隙也未必消失。
+
+图\ref{fig:V5-C06-elbo-geometry}同时显示长度分解与一次有限坐标更新轨迹。右侧阶梯只表达本次运行的ELBO不降，不把未知上界或局部驻点误写成全局最优。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_elbo_geometry.tex}
+\FloatBarrier
+参数化变分分布把上述坐标更新改写为有限维优化；实际应用仍应检查多启动结果、目标值与预测表现，而不能仅凭一次稳定轨迹宣称全局收敛。
+\end{document}

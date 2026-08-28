@@ -1,0 +1,82 @@
+{
+  "a4_page_size": true,
+  "build_command": "D:/texlive/2026/bin/windows/lualatex.exe -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=<R6>/local_build_direct_r6 <R6>/local_wrapper_r6_worktree.tex",
+  "build_scope": "one_page_local_wrapper",
+  "captured_at": "2026-08-25T01:06:49+08:00",
+  "exit_code": 0,
+  "failed_cache_bootstrap_attempts": [
+    {
+      "attempt": 1,
+      "exit_code": 12,
+      "failure": "luaotfload no writeable cache path before source",
+      "method": "latexmk; default cache"
+    },
+    {
+      "attempt": 2,
+      "exit_code": 12,
+      "failure": "luaotfload no writeable cache path before source",
+      "method": "latexmk; three absolute R6 cache directories"
+    },
+    {
+      "attempt": 3,
+      "exit_code": 12,
+      "failure": "luaotfload no writeable cache path before source",
+      "method": "latexmk; three cache directories through ASCII junction"
+    },
+    {
+      "attempt": 4,
+      "exit_code": 12,
+      "failure": "luaotfload no writeable cache path before source",
+      "method": "require_escalated latexmk; three cache directories through ASCII junction"
+    }
+  ],
+  "full_book_build": false,
+  "handoff_id": "A-R99-P608-SA2-NARROW-20260825",
+  "hard_diagnostic_count": 0,
+  "local_only": true,
+  "overfull_count": 0,
+  "page_height_pt": 841.89,
+  "page_width_pt": 595.276,
+  "pdf_page_count": 1,
+  "rejected_layout_trials": [
+    {
+      "reason": "requested rotate=0 did not cancel PGFPlots default +90 rotation and the ylabels collided with adjacent y ticks",
+      "trial": "direct_r1"
+    },
+    {
+      "reason": "xshift followed the rotated local coordinate and moved ylabels down instead of left",
+      "trial": "direct_r2"
+    },
+    {
+      "reason": "bottom ylabel right edge exceeded nearest tick left edge by 0.80pt",
+      "trial": "direct_r3"
+    },
+    {
+      "reason": "position clearance passed, but full raw-mask audit proved rotate=0 was cumulative no-op and both natural-script t glyphs remained 10px high",
+      "trial": "direct_r4"
+    }
+  ],
+  "rejected_wrapper_trials": [
+    {
+      "reason": "layout repair passed rawdict, but the evidence wrapper redundantly overrode statlearnbook's official Noto Serif SC main font with Noto Sans SC; candidate rejected before final audit",
+      "trial": "direct_r5"
+    }
+  ],
+  "root_cache_line_count": 2,
+  "running_tex_processes_before": [],
+  "sa2_route": "SA2=gpt-5.6-sol/max",
+  "slot_token": "A_P608_BUILD_SLOT_GRANTED_AFTER_CANDIDATE",
+  "successful_method": {
+    "cwd": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/worktrees/dialogue_A_visual/src/讲义源码/合并总册",
+    "direct_single_engine_run": true,
+    "engine": "D:/texlive/2026/bin/windows/lualatex.exe",
+    "latexmk_used": false,
+    "output_directory": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P608-01\\STRICT_R6_SA2_REPAIR_R99_LOCAL_20260825\\local_build_direct_r6",
+    "texmfcache": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P608-01\\STRICT_R6_SA2_REPAIR_R99_LOCAL_20260825\\texcache",
+    "texmfconfig": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P608-01\\STRICT_R6_SA2_REPAIR_R99_LOCAL_20260825\\texcache",
+    "texmfvar": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P608-01\\STRICT_R6_SA2_REPAIR_R99_LOCAL_20260825\\texcache"
+  },
+  "tex_processes_before": "NONE",
+  "undefined_control_sequence_count": 0,
+  "underfull_count": 0
+}

@@ -1,0 +1,9 @@
+GROUP_ID,MEMBERS,OBSERVED_H_INK_PX,OBSERVED_MAX_MIN_RATIO,MANUAL_STATUS,POST_OBSERVATION_REASON
+R01,cross-panel titles E01 E08,43 43,1.000,PASS,Same role and script weight match exactly across panels.
+R02,left explanatory note E06 E07,40 38,1.053,PASS,Two wrapped lines use one source style and look uniform; glyph-content height explains the small difference.
+R03,right Han annotations E09 E10 E11,33 34 33,1.030,PASS,Same-script annotation and axis-label ink heights are visually stable.
+R04,right numeric ticks E12-E18,27 26 26 27 26 27 27,1.038,PASS,All seven digits have the same rendered font and stable apparent size.
+R05,caption lines E20 E21 E22,38 42 37,1.135,PASS,Same font is used; mixed Latin/math content changes raw ink bbox height but native and 8x views show no visible size drift. R168 makes legacy numeric ratios advisory absent actual imbalance.
+R06,left bar labels E03 E04,40 34,1.176,PASS,The labels mix math Latin and full-height Han and occupy unequal semantic segment widths; visual weights remain balanced and neither dominates.
+R07,title versus right annotation E08 versus E09 E10 E11,43 versus 33-34,1.303 max,PASS,Intentional bold panel-heading hierarchy is obvious and does not overpower the plot; legacy numeric ratio alone is advisory under R168.
+R08,caption label versus caption text E19-E22,38 versus 37-42,1.135 max,PASS,Bold label and regular caption text are coherent and readable at page scale.

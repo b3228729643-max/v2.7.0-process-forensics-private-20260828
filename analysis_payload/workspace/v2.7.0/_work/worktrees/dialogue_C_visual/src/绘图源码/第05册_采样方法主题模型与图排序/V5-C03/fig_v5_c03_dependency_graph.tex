@@ -1,0 +1,70 @@
+% v2.7.0 figure UID: FIG-P596-01
+% R2 semantic repair: separate stationarity, ergodic averages, marginal convergence, and diagnostics.
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\tikzset{slfig-FIG-P596-01/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  alt={对象—关系—结论：目标分布$\pi$与提议$q$经接受率$\alpha$构造MH转移核$K$；若$K$满足细致平衡$\pi(\mathrm dx)K(x,\mathrm dy)=\pi(\mathrm dy)K(y,\mathrm dx)$，则只推出$\pi K=\pi$，即$\pi$平稳。遍历时间平均还须另行核验有限状态不可约或一般状态正Harris常返；边缘分布收敛还须在相应结构条件上加非周期性。$K$通常形成相关轨迹，但独立核$K(x,\mathrm dy)=\pi(\mathrm dy)$是反例，相关性应由轨迹、自相关、MCSE与ESS诊断。},
+  slfig-FIG-P596-01,>=Stealth,
+  every node/.style={font=\fontsize{9.6pt}{11.5pt}\selectfont,align=center},
+  nodebox/.style={draw=SLRuleGray,fill=white,inner xsep=3.5pt,inner ysep=3.0pt,minimum height=8.5mm,line width=.72pt},
+  inputbox/.style={nodebox,rounded corners=5pt,draw=SLGold,fill=SLGold!7,line width=.90pt},
+  constructbox/.style={nodebox,rounded corners=5pt,draw=SLGold,fill=SLGold!11,line width=.90pt},
+  kernelbox/.style={circle,draw=SLBlue,fill=SLBlue!8,minimum size=14mm,inner sep=1.5pt,line width=.95pt},
+  certificatebox/.style={nodebox,rounded corners=0pt,draw=SLTeal,fill=SLTeal!6,line width=.82pt,densely dashed},
+  resultbox/.style={nodebox,rounded corners=0pt,draw=SLBlue,fill=SLBlue!7,line width=.95pt},
+  conditionbox/.style={nodebox,rounded corners=0pt,draw=SLBlue,fill=SLBlue!4,line width=.82pt,dash pattern=on 4pt off 1.5pt on .9pt off 1.5pt},
+  diagnosticbox/.style={nodebox,rounded corners=5pt,draw=SLGray,fill=SLSoftGray,line width=.82pt,densely dotted},
+  scopebox/.style={nodebox,rounded corners=2pt,draw=SLRuleGray,fill=SLSoftGray,line width=.68pt},
+  construction/.style={draw=SLGold,line width=.95pt},
+  certificate/.style={draw=SLTeal,line width=.82pt,densely dashed},
+  condition/.style={draw=SLBlue,line width=.82pt,dash pattern=on 4pt off 1.5pt on .9pt off 1.5pt},
+  diagnosis/.style={draw=SLGray,line width=.82pt,densely dotted}
+]
+  % MH construction and its stationarity certificate.
+  \node[inputbox,text width=19mm] (input) at (-5.70,2.75) {目标 $\pi$\\提议 $q$};
+  \node[constructbox,text width=20mm] (mh) at (-2.90,2.75) {接受率 $\alpha$\\MH 构造};
+  \node[kernelbox] (kernel) at (-.55,2.75) {核 $K$};
+  \node[certificatebox,text width=29mm] (balance) at (2.20,2.75)
+    {细致平衡证书\\$\pi(\mathrm dx)K(x,\mathrm dy)$\\$=\pi(\mathrm dy)K(y,\mathrm dx)$};
+  \node[resultbox,text width=20mm] (stationary) at (5.55,2.75) {$\pi K=\pi$\\$\pi$ 平稳};
+  \draw[->,construction] (input.east)--(mh.west);
+  \draw[->,construction] (mh.east)--(kernel.west);
+  \draw[->,certificate] (kernel.east)--(balance.west);
+  \draw[->,certificate] (balance.east)--(stationary.west);
+
+  \node[scopebox,text width=28mm] at (6.00,1.55)
+    {细致平衡止于平稳\\不证不可约 / 遍历};
+
+  % Separate branches for diagnostics and for convergence statements.
+  \node[diagnosticbox,text width=37mm] (trajectory) at (-3.65,.35)
+    {通常形成相关轨迹\\独立核 $K(x,\mathrm dy)$\\$=\pi(\mathrm dy)$ 是反例};
+  \node[diagnosticbox,text width=35mm] (diagnostics) at (-3.65,-1.50)
+    {相关性需诊断\\轨迹 / 自相关 / MCSE / ESS};
+  \node[conditionbox,text width=34mm] (structure) at (2.30,.35)
+    {另行核验链结构\\有限状态：不可约\\一般状态：正 Harris 常返};
+  \node[resultbox,text width=20mm] (average) at (5.70,.35) {遍历\\时间平均};
+  \node[conditionbox,text width=31mm] (margcond) at (2.30,-1.50)
+    {相应结构条件\\再加非周期性};
+  \node[resultbox,text width=20mm] (marginal) at (5.70,-1.50) {边缘分布\\收敛};
+
+  \draw[->,diagnosis] (kernel.south west) |- (trajectory.east);
+  \draw[->,diagnosis] (trajectory.south)--(diagnostics.north);
+  \draw[->,condition] (kernel.south east) |- (structure.west);
+  \draw[->,condition] (structure.east)--(average.west);
+  \draw[->,condition] (structure.south)--(margcond.north);
+  \draw[->,condition] (margcond.east)--(marginal.west);
+
+  % Grayscale-readable line samples; color is only a redundant cue.
+  \draw[construction] (-5.95,-2.85)--(-5.05,-2.85);
+  \node[anchor=west] at (-4.85,-2.87) {实线：MH 构造};
+  \draw[certificate] (.20,-2.85)--(1.10,-2.85);
+  \node[anchor=west] at (1.30,-2.87) {虚线：平稳证书};
+  \draw[condition] (-5.95,-3.50)--(-5.05,-3.50);
+  \node[anchor=west] at (-4.85,-3.52) {点划线：结构条件};
+  \draw[diagnosis] (.20,-3.50)--(1.10,-3.50);
+  \node[anchor=west] at (1.30,-3.52) {点线：相关性诊断};
+\end{tikzpicture}
+\caption{细致平衡只验证平稳性；遍历平均和分布收敛还需相应链结构条件。}\label{fig:V5-C03-dependency}
+\end{figure}

@@ -1,0 +1,23 @@
+view_id,evidence_path,manual_scope,decision,note
+V001,full_page_200dpi.png,page integration,PASS,printed page 752 is complete; figure sits naturally below running header and above adjacent exposition with no break or clipping
+V002,figure_crop_300dpi.png,figure plus caption,PASS,two panels and caption are wholly visible; hierarchy and spacing are balanced at actual inspection scale
+V003,standalone_300dpi.png,figure body,PASS,all titles nodes arrows matrices formulas and borders remain inside the standalone crop
+V004,grayscale_300dpi.png,grayscale robustness,PASS,graph directions cell focus outlines and mathematical text stay distinguishable without color
+S001,contact_sheets/glyphs/glyph_contact_sheet_01.png,glyphs G0001-G0032,PASS,each original overlay and mask-only cell was compared; titles nodes edges and first annotation run match
+S002,contact_sheets/glyphs/glyph_contact_sheet_02.png,glyphs G0033-G0064,PASS,weight annotation node-order tuple and first two formulas retain every visible glyph contour
+S003,contact_sheets/glyphs/glyph_contact_sheet_03.png,glyphs G0065-G0096,PASS,column sum degree tuple and full A matrix show complete isolated masks
+S004,contact_sheets/glyphs/glyph_contact_sheet_04.png,glyphs G0097-G0128,PASS,M matrix normalization identity and initial update p show no missing or foreign pixels
+S005,contact_sheets/glyphs/glyph_contact_sheet_05.png,glyphs G0129-G0160,PASS,update suffix right annotation and first P row including highlighted fraction are complete
+S006,contact_sheets/glyphs/glyph_contact_sheet_06.png,glyphs G0161-G0192,PASS,remaining P cells transpose relation probability expression and conditioning equality are complete
+S007,contact_sheets/glyphs/glyph_contact_sheet_07.png,glyphs G0193-G0224,PASS,probability tail row-vector identities and first caption segment are intact
+S008,contact_sheets/glyphs/glyph_contact_sheet_08.png,glyphs G0225-G0255,PASS,remaining caption glyphs and punctuation all match and are isolated
+S009,contact_sheets/drawings/drawing_contact_sheet_01.png,drawings D0001-D0024,PASS,panel borders graph nodes four directed edges full A grid and initial M cell all map completely
+S010,contact_sheets/drawings/drawing_contact_sheet_02.png,drawings D0025-D0043,PASS,remaining M grid and focus plus full P grid and focus all map to the original paths
+R001,critical_relations/r27974_g0118_g0129.png,independent text gap,PASS,nearest text pair shows white-space separation and no touching
+R002,critical_relations/r05711_g0020_d0004.png,node label margin,PASS,node j remains visibly centered and clear of the circular border
+R003,critical_relations/r25125_g0102_d0025.png,matrix digit margin,PASS,denominator 2 clears the M cell frame and is legible
+R004,critical_relations/r01433_g0005_d0001.png,title panel margin,PASS,title glyph clears the left panel boundary
+R005,critical_relations/r44090_d0025_d0033.png,focus overlay,PASS,the thick focus rectangle overlays only its intended M cell border
+R006,critical_relations/r43475_d0004_d0006.png,graph endpoint,PASS,the directed edge touches node j only at its intended attachment point
+R007,critical_relations/r44118_d0027_d0028.png,matrix shared grid,PASS,two adjacent cells meet on one intentional shared rule
+R008,critical_relations/r43551_d0006_d0007.png,shaft head join,PASS,the orange shaft and arrowhead meet continuously without geometric error

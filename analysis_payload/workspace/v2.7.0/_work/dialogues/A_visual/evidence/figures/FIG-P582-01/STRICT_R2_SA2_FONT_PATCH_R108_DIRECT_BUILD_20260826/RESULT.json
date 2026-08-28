@@ -1,0 +1,52 @@
+{
+  "uid": "FIG-P582-01",
+  "handoff_id": "A-R108-P582-SA2-DIRECT-BUILD-20260826",
+  "round": "STRICT_R2_SA2_FONT_PATCH_R108_DIRECT_BUILD_20260826",
+  "status": "LOCAL_SA2_PASS_AWAIT_OFFICIAL_CANDIDATE_AND_FRESH_SA1",
+  "build": {
+    "invocation_count": 1,
+    "retry_count": 0,
+    "latexmk_count": 0,
+    "exit_code": 0,
+    "natural_exit": true,
+    "interrupted": false,
+    "child_pid": 23084,
+    "duration_seconds": 56.64,
+    "pdf_path": "build/v260_FIG-P582-01_standalone.pdf",
+    "pdf_bytes": 31330,
+    "pdf_sha256": "988E672096CC34E5A9B1634D84D150C644A0E07B049D81A92FACFE7276269F5B",
+    "tex_processes_after": 0
+  },
+  "source": {
+    "path": "src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_running_mean.tex",
+    "before_sha256": "C075D4A44A60B95848614543D1D2DBCCCB53F1F776FFDD79A3BF1FEAE3F6550C",
+    "after_sha256": "4AB4E8D14252B20576F05BD1D5CB54BCB28F162B9E33EF439BD3ED6E01DBC65C",
+    "diffstat": "1 file changed, 12 insertions(+), 12 deletions(-)",
+    "scope": "fontsize declarations only"
+  },
+  "denominator": {
+    "glyphs": 78,
+    "foreground_graphics": 17,
+    "N": 95,
+    "C_unordered_pairs": 4465,
+    "critical_relations": 33
+  },
+  "hard_gates": {
+    "empty_masks": 0,
+    "page_edge_clip_candidates": 0,
+    "manual_object_failures": 0,
+    "manual_relation_failures": 0,
+    "manual_view_semantic_failures": 0,
+    "tofu_or_wrong_codepoint": 0,
+    "unreadable_or_severe_imbalance": 0,
+    "true_clip_or_illegal_overlap": 0,
+    "semantic_failures": 0
+  },
+  "r168_advisory": [
+    "PAIR-03495 down-arrow versus terminal zero of .380: shared_pixels=0; pixel-level adjacency only",
+    "normal within-number glyph spacing for .640 and .380 remains readable"
+  ],
+  "manual_fields_generated_by_machine": 0,
+  "commit_created": false,
+  "fresh_role_started": false
+}

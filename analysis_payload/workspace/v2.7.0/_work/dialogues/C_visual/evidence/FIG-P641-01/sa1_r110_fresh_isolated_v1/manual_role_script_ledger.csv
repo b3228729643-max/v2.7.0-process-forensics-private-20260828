@@ -1,0 +1,14 @@
+review_id,scope,effective_pt,h_ink_median_px,D_status,E_status,crowding,protrusion,cross_panel_consistency,grayscale,page_fusion,decision,manual_note
+ROLE_NODE_LABEL,node labels,9.5,29,OK,OK,NONE,NONE,OK,OK,OK,PASS,all seven node labels form a coherent hierarchy
+ROLE_ANN_BLANKET,Markov blanket annotation,9.2,23.5,OK,OK,NONE,NONE,OK,OK,OK,PASS,R168 advisory size is actually readable and balanced
+ROLE_FORMULA,conditional formula,9.5,28,OK,OK,NONE,NONE,OK,OK,OK,PASS,formula is centered and semantically legible
+ROLE_ANN_IRRELEVANT,irrelevance annotation,9.5,32,OK,OK,NONE,NONE,OK,OK,OK,PASS,two-line annotation is clear and does not crowd the graph
+ROLE_CAPTION_LABEL,caption label,10.0,28,OK,OK,NONE,NONE,OK,OK,OK,PASS,figure number is distinct and aligned
+ROLE_CAPTION_TEXT,caption body,10.0,34,OK,OK,NONE,NONE,OK,OK,OK,PASS,caption wraps naturally with no collision
+ROLE_NODE_BORDER,node borders,NA_NOT_TEXT,NA,OK,OK,NONE,NONE,OK,OK,OK,PASS,variable and factor shapes are visually consistent
+ROLE_ACTIVE_EDGE,active graph edges,NA_NOT_TEXT,NA,OK,OK,NONE,NONE,OK,OK,OK,PASS,all intended graph joins are continuous
+ROLE_BLANKET_BORDER,dashed blanket borders,NA_NOT_TEXT,NA,OK,OK,NONE,NONE,OK,OK,OK,PASS,dashed boundaries remain distinct in color and grayscale
+SCRIPT_HAN,Han glyphs,9.2_to_10.0,32_to_34,OK,OK,NONE,NONE,OK,OK,OK,PASS,no tofu wrong codepoint or missing stroke
+SCRIPT_LATIN_GREEK,Latin and Greek glyphs,9.2_to_10.0,role_specific,OK,OK,NONE,NONE,OK,OK,OK,PASS,all characters are complete and readable
+SCRIPT_MATH,math symbols and delimiters,9.5_to_10.0,role_specific,OK,OK,NONE,NONE,OK,OK,OK,PASS,conditioning bars proportional sign and delimiters are unambiguous
+SCRIPT_LOW_PROFILE,low-profile punctuation,9.2_to_10.0,codepoint_specific,OK,OK,NONE,NONE,OK,OK,OK,PASS,all seven peer or exact-font calibrations satisfy both ratios

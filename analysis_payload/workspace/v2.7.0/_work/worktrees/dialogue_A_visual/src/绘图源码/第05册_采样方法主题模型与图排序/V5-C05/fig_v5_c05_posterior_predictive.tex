@@ -1,0 +1,67 @@
+% v2.3.1 figure UID: FIG-P670-01
+% Proposed post-v2.3.1 polish for FIG-P670-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P670-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P670-01,slfig high,>=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  t1/.style={circle,draw=SLBlue,fill=SLBlueBG,line width=.68pt,minimum size=6mm,inner sep=0pt},
+  t2/.style={circle,draw=SLGold,fill=SLGoldBG,line width=.68pt,minimum size=6mm,inner sep=0pt},
+  t3/.style={circle,draw=SLTeal,fill=SLTealBG,line width=.68pt,minimum size=6mm,inner sep=0pt},
+  alt={对象—关系—结论：积分消去θ后，下一类别的后验预测概率等于当前伪计数占总伪计数的比例；观测到类别j只增加该类计数，因而实现平滑并产生可顺序更新的强化预测，但这不是固定参数下的独立同分布序列}]
+\begin{scope}[xshift=-11mm]
+\node[font=\fontsize{9.8pt}{11.8pt}\selectfont\bfseries,text=SLBlue] at (-3.55,2.20) {时刻 $N$：伪计数 $\alpha+n=(4,3,2)$};
+\foreach \x in {-5.65,-5.0,-4.35,-3.70}{\node[t1] at (\x,1.58) {1};}
+\foreach \x in {-3.00,-2.35,-1.70}{\node[t2] at (\x,1.58) {2};}
+\foreach \x in {-1.00,-.35}{\node[t3] at (\x,1.58) {3};}
+\node[font=\fontsize{9.2pt}{11.0pt}\selectfont] at (-3.40,.25)
+  {$P(Y_{N+1}=k\mid n)=\dfrac{\alpha_k+n_k}{\alpha_0+N}$};
+\fill[SLBlueBG] (-5.65,.78) rectangle (-3.65,1.10);
+\fill[SLGoldBG] (-3.65,.78) rectangle (-2.15,1.10);
+\fill[SLTealBG] (-2.15,.78) rectangle (-1.15,1.10);
+\draw[SLBlue,line width=.72pt] (-5.65,.78) rectangle (-1.15,1.10);
+\draw[SLBlue,line width=.50pt] (-3.65,.78)--(-3.65,1.10) (-2.15,.78)--(-2.15,1.10);
+\node[font=\fontsize{8.5pt}{10.2pt}\selectfont] at (-4.65,.94) {$4/9$};\node[font=\fontsize{8.5pt}{10.2pt}\selectfont] at (-2.90,.94) {$3/9$};\node[font=\fontsize{8.5pt}{10.2pt}\selectfont] at (-1.65,.94) {$2/9$};
+\end{scope}
+
+\node[circle,draw=SLGold,fill=SLGoldBG,line width=.72pt,minimum size=12mm] (obs) at (.35,.94) {观察\\$j=2$};
+\draw[-{Stealth[length=1.9mm]},draw=SLBlue,line width=.90pt] (-2.10,.94)--(obs.west)
+  node[pos=.70,above=32pt,font=\fontsize{8.8pt}{10.5pt}\selectfont,text=SLBlue]{预测};
+\draw[-{Stealth[length=1.9mm]},draw=SLBlue,line width=.90pt] (obs.east)--(2.95,.94)
+  node[pos=.42,above=32pt,font=\fontsize{8.8pt}{10.5pt}\selectfont,text=SLBlue]{只更新\\第 $j$ 类};
+
+\begin{scope}[xshift=11mm]
+\node[font=\fontsize{9.8pt}{11.8pt}\selectfont\bfseries,text=SLBlue] at (3.85,2.20) {时刻 $N+1$：$(4,4,2)$};
+\foreach \x in {1.55,2.20,2.85,3.50}{\node[t1] at (\x,1.58) {1};}
+\foreach \x in {4.20,4.85,5.50}{\node[t2] at (\x,1.58) {2};}
+\node[t2,path picture={
+  \begin{scope}[every path/.style={}]
+  \pgfseteorule
+  \pgfpathcircle{\pgfpointanchor{path picture bounding box}{center}}{2.80mm}
+  \pgfpathrectangle
+    {\pgfpointadd{\pgfpointanchor{path picture bounding box}{center}}{\pgfpoint{-2.30mm}{-3.20mm}}}
+    {\pgfpoint{4.60mm}{6.40mm}}
+  \pgfusepath{clip}
+  \path[pattern={Lines[angle=45,distance=2.8pt,line width=.42pt]},pattern color=SLGold]
+    (path picture bounding box.south west) rectangle (path picture bounding box.north east);
+  \end{scope}
+}] at (6.15,1.58) {2};
+\foreach \x in {6.85,7.50}{\node[t3] at (\x,1.58) {3};}
+\node[font=\fontsize{9.2pt}{11.0pt}\selectfont] at (4.35,.35) {$n_2\leftarrow n_2+1,\quad \alpha_0+N\leftarrow\alpha_0+N+1$};
+\fill[SLBlueBG] (2.05,.78) rectangle (3.85,1.10);
+\fill[SLGoldBG] (3.85,.78) rectangle (5.65,1.10);
+\fill[SLTealBG] (5.65,.78) rectangle (6.55,1.10);
+\draw[pattern={Lines[angle=45,distance=2pt]},pattern color=SLGold,draw=none] (5.20,.78) rectangle (5.65,1.10);
+\draw[SLBlue,line width=.72pt] (2.05,.78) rectangle (6.55,1.10);
+\draw[SLBlue,line width=.50pt] (3.85,.78)--(3.85,1.10) (5.65,.78)--(5.65,1.10);
+\node[font=\fontsize{8.5pt}{10.2pt}\selectfont] at (2.95,.94) {$4/10$};\node[font=\fontsize{8.5pt}{10.2pt}\selectfont] at (4.75,.94) {$4/10$};\node[font=\fontsize{8.5pt}{10.2pt}\selectfont] at (6.10,.94) {$2/10$};
+\end{scope}
+\node[draw=SLRule,fill=white,rounded corners=2pt,text width=125mm,
+  inner xsep=3mm,inner ysep=1.5mm,font=\fontsize{9.2pt}{11.0pt}\selectfont] at (1.05,-.55)
+  {顺序更新产生平滑与强化；积分掉 $\theta$ 后序列可交换，但它不是固定参数条件下的 iid 序列。};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{积分消去$\theta$后，下一类别的后验预测概率等于当前伪计数占总伪计数的比例；观测到类别$j$只增加该类计数，因而实现平滑并产生可顺序更新的强化预测，但这不是固定参数下的独立同分布序列}
+\label{fig:V5-C05-posterior-predictive}
+\end{figure}

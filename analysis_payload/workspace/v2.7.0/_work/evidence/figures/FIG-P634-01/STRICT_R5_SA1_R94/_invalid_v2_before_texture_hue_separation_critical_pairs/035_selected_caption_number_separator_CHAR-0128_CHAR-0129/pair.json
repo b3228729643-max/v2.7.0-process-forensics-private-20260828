@@ -1,0 +1,32 @@
+{
+  "a": "CHAR-0128",
+  "b": "CHAR-0129",
+  "relation": "GRAPHIC_GRAPHIC",
+  "record": {
+    "PAIR_ID": "SELECTED",
+    "OBJECT_A": "CHAR-0128",
+    "OBJECT_B": "CHAR-0129",
+    "RELATION": "GRAPHIC_GRAPHIC",
+    "THRESHOLD_PX": "N/A",
+    "OVERLAP_PIXELS": 0,
+    "MIN_RAW_INK_GAP_PX": "4.385",
+    "A_NEAREST_X": 455,
+    "A_NEAREST_Y": 2473,
+    "B_NEAREST_X": 460,
+    "B_NEAREST_Y": 2475,
+    "STATUS": "SELECTED",
+    "REASON": "graphic-to-graphic is inventory-only under this text-clearance gate"
+  },
+  "raw_roi_page_px": [
+    424,
+    2437,
+    481,
+    2493
+  ],
+  "mask_color": {
+    "A": "red",
+    "B": "blue",
+    "intersection": "yellow"
+  },
+  "geometry": "all foreground mask pixels are sampled from official_page_682_300dpi.png at 1:1; 8x is nearest-only review"
+}

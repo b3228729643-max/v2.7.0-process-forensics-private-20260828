@@ -1,0 +1,33 @@
+review_id,clip_id,reviewer_type,human_certification,manual_decision,manual_observation,evidence
+CLIPR-001,CLIP-T01,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"Blue distribution label is fully inside plot/figure boundaries.",inventory/clip_edge_measurements.csv
+CLIPR-002,CLIP-T02,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"Blue mean label including subscript is fully inside plot/figure boundaries.",inventory/clip_edge_measurements.csv
+CLIPR-003,CLIP-T03,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"Gold distribution label is fully inside plot/figure boundaries.",inventory/clip_edge_measurements.csv
+CLIPR-004,CLIP-T04,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"Gold mean label including subscript is fully inside plot/figure boundaries.",inventory/clip_edge_measurements.csv
+CLIPR-005,CLIP-T05,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"-2 tick label has ample left/bottom clearance.",inventory/clip_edge_measurements.csv
+CLIPR-006,CLIP-T06,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"-1 tick label has ample bottom clearance.",inventory/clip_edge_measurements.csv
+CLIPR-007,CLIP-T07,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"0 x tick label has ample bottom clearance.",inventory/clip_edge_measurements.csv
+CLIPR-008,CLIP-T08,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"1 x tick label has ample bottom clearance.",inventory/clip_edge_measurements.csv
+CLIPR-009,CLIP-T09,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"2 x tick label has ample bottom clearance.",inventory/clip_edge_measurements.csv
+CLIPR-010,CLIP-T10,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"3 x tick label clears the arrowhead and crop edge.",inventory/clip_edge_measurements.csv
+CLIPR-011,CLIP-T11,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"0 y tick label clears left and bottom boundaries.",inventory/clip_edge_measurements.csv
+CLIPR-012,CLIP-T12,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"0.25 y tick label clears left boundary.",inventory/clip_edge_measurements.csv
+CLIPR-013,CLIP-T13,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"0.5 y tick label clears left/top boundaries.",inventory/clip_edge_measurements.csv
+CLIPR-014,CLIP-T14,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"x-axis t has 9 px to the standalone-equivalent bottom edge, exceeding the 6 px image-edge floor.",inventory/clip_edge_measurements.csv
+CLIPR-015,CLIP-T15,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"vertical density label has 28 px to the standalone-equivalent left edge.",inventory/clip_edge_measurements.csv
+CLIPR-016,CLIP-T16,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"annotation first line is fully enclosed and far from image edges.",inventory/clip_edge_measurements.csv
+CLIPR-017,CLIP-T17,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"annotation second line is fully enclosed and far from image edges.",inventory/clip_edge_measurements.csv
+CLIPR-018,CLIP-T18,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"caption label is intentionally outside plot-only crop but has 30/77 px figure-crop edge clearance.",inventory/clip_edge_measurements.csv
+CLIPR-019,CLIP-T19,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"caption first line is intentionally outside plot-only crop and retains 31 px figure-crop right clearance.",inventory/clip_edge_measurements.csv
+CLIPR-020,CLIP-T20,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"caption second line is intentionally outside plot-only crop and retains 22 px figure-crop bottom clearance.",inventory/clip_edge_measurements.csv
+CLIPR-021,CLIP-G01,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"x tick marks lie well inside standalone-equivalent bounds.",inventory/clip_edge_measurements.csv
+CLIPR-022,CLIP-G02,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"y tick marks lie well inside standalone-equivalent bounds.",inventory/clip_edge_measurements.csv
+CLIPR-023,CLIP-G03,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"x-axis line is fully rendered.",inventory/clip_edge_measurements.csv
+CLIPR-024,CLIP-G04,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"x-axis arrowhead is fully rendered with 113 px standalone bottom clearance.",inventory/clip_edge_measurements.csv
+CLIPR-025,CLIP-G05,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"y-axis line is fully rendered.",inventory/clip_edge_measurements.csv
+CLIPR-026,CLIP-G06,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"y-axis arrowhead is fully rendered with 75 px standalone top clearance.",inventory/clip_edge_measurements.csv
+CLIPR-027,CLIP-G07,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"blue curve/fill boundary is fully rendered.",inventory/clip_edge_measurements.csv
+CLIPR-028,CLIP-G08,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"blue fill is fully rendered.",inventory/clip_edge_measurements.csv
+CLIPR-029,CLIP-G09,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"gold dashed curve is fully rendered.",inventory/clip_edge_measurements.csv
+CLIPR-030,CLIP-G10,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"blue mean marker is fully rendered.",inventory/clip_edge_measurements.csv
+CLIPR-031,CLIP-G11,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"gold mean marker is fully rendered.",inventory/clip_edge_measurements.csv
+CLIPR-032,CLIP-G12,AI_SA1_VISUAL_REVIEW,false,NO_CLIP,"annotation border has 34 px to the standalone-equivalent right edge and is complete.",inventory/clip_edge_measurements.csv

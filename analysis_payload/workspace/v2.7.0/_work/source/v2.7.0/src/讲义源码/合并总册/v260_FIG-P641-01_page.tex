@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{808}
+\setcounter{chapter}{33}
+\setcounter{figure}{7}
+\pagestyle{headings}
+\chaptermark{Gibbs 抽样}
+\sectionmark{收敛、抽样计算与练习}
+图\ref{fig:V5-C04-bayes-markov-blanket}把“只看 Markov 毯”的消因子规则画成概率图；未写入当前条件核的每个因子都必须确实与当前变量无关。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_bayes_markov_blanket.tex}
+\FloatBarrier
+因此更新某个变量时，只需保留含该变量的因子；与当前变量无关的因子可从满条件核中消去。
+\end{document}

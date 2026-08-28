@@ -1,0 +1,109 @@
+glyph_id,char,semantic_parent,sheet,cell,original_match,overlay_complete,mask_only_pure,missing_stroke_px,foreign_pixel_px,manual_decision,manual_note
+G001,对,TXT_NODE_OBJECT_HEADING,glyph_contact_sheet_01.png,1,true,true,true,0,0,PASS,对象标题“对”全部笔画与原图一致；红叠加完整且纯 mask 无邻字或边框
+G002,象,TXT_NODE_OBJECT_HEADING,glyph_contact_sheet_01.png,2,true,true,true,0,0,PASS,对象标题“象”复杂下部轮廓完整；未吞并相邻字
+G003,声,TXT_NODE_OBJECT_HEADING,glyph_contact_sheet_01.png,3,true,true,true,0,0,PASS,对象标题“声”三横与下部笔画完整；纯 mask 干净
+G004,明,TXT_NODE_OBJECT_HEADING,glyph_contact_sheet_01.png,4,true,true,true,0,0,PASS,对象标题“明”左右部件闭合；无缺笔和外来像素
+G005,关,TXT_NODE_RELATION_HEADING,glyph_contact_sheet_01.png,5,true,true,true,0,0,PASS,关系标题“关”上部两点及下部完整；红叠加贴合原轮廓
+G006,系,TXT_NODE_RELATION_HEADING,glyph_contact_sheet_01.png,6,true,true,true,0,0,PASS,关系标题“系”上下部件完整；纯 mask 未含背景
+G007,与,TXT_NODE_RELATION_HEADING,glyph_contact_sheet_01.png,7,true,true,true,0,0,PASS,关系标题“与”横折和底钩完整；未混入邻字
+G008,映,TXT_NODE_RELATION_HEADING,glyph_contact_sheet_01.png,8,true,true,true,0,0,PASS,关系标题“映”左右结构完整；红叠加无漏边
+G009,射,TXT_NODE_RELATION_HEADING,glyph_contact_sheet_01.png,9,true,true,true,0,0,PASS,关系标题“射”全部部件完整；纯 mask 干净
+G010,运,TXT_NODE_LOGIC_HEADING,glyph_contact_sheet_02.png,1,true,true,true,0,0,PASS,逻辑标题“运”走之与内部笔画完整；无邻字污染
+G011,算,TXT_NODE_LOGIC_HEADING,glyph_contact_sheet_02.png,2,true,true,true,0,0,PASS,逻辑标题“算”竹头和下部完整；红叠加覆盖全部有效墨迹
+G012,与,TXT_NODE_LOGIC_HEADING,glyph_contact_sheet_02.png,3,true,true,true,0,0,PASS,逻辑标题“与”横折和底钩完整；mask-only 纯净
+G013,逻,TXT_NODE_LOGIC_HEADING,glyph_contact_sheet_02.png,4,true,true,true,0,0,PASS,逻辑标题“逻”走之与内部结构完整；无漏笔
+G014,辑,TXT_NODE_LOGIC_HEADING,glyph_contact_sheet_02.png,5,true,true,true,0,0,PASS,逻辑标题“辑”车旁与右部完整；无外来像素
+G015,可,TXT_NODE_TASK_HEADING,glyph_contact_sheet_02.png,6,true,true,true,0,0,PASS,任务标题“可”横折与口部完整；叠加匹配
+G016,核,TXT_NODE_TASK_HEADING,glyph_contact_sheet_02.png,7,true,true,true,0,0,PASS,任务标题“核”左右复杂轮廓完整；纯 mask 干净
+G017,验,TXT_NODE_TASK_HEADING,glyph_contact_sheet_02.png,8,true,true,true,0,0,PASS,任务标题“验”左右结构完整；无漏笔和边框污染
+G018,任,TXT_NODE_TASK_HEADING,glyph_contact_sheet_02.png,9,true,true,true,0,0,PASS,任务标题“任”人旁与主干完整；红叠加准确
+G019,务,TXT_NODE_TASK_HEADING,glyph_contact_sheet_03.png,1,true,true,true,0,0,PASS,任务标题“务”上下部件完整；mask-only 无邻字
+G020,集,TXT_NODE_OBJECT_BODY,glyph_contact_sheet_03.png,2,true,true,true,0,0,PASS,对象正文“集”多横与竖笔完整；最近自边框仍有13px净空
+G021,合,TXT_NODE_OBJECT_BODY,glyph_contact_sheet_03.png,3,true,true,true,0,0,PASS,对象正文“合”人头与口部完整；叠加无漏边
+G022,、,TXT_NODE_OBJECT_BODY,glyph_contact_sheet_03.png,4,true,true,true,0,0,PASS,顿号轮廓完整纯净；同候选同字体同字号三例H=10px且面积42px
+G023,类,TXT_NODE_OBJECT_BODY,glyph_contact_sheet_03.png,5,true,true,true,0,0,PASS,对象正文“类”米部与下部完整；无外来像素
+G024,型,TXT_NODE_OBJECT_BODY,glyph_contact_sheet_03.png,6,true,true,true,0,0,PASS,对象正文“型”上下结构完整；右侧灰点仅属原图邻字上下文未进入mask
+G025,与,TXT_NODE_OBJECT_BODY,glyph_contact_sheet_03.png,7,true,true,true,0,0,PASS,对象正文“与”完整；纯 mask 不含相邻“型/维”
+G026,维,TXT_NODE_OBJECT_BODY,glyph_contact_sheet_03.png,8,true,true,true,0,0,PASS,对象正文“维”绞丝旁与右部完整；红叠加覆盖全部笔画
+G027,数,TXT_NODE_OBJECT_BODY,glyph_contact_sheet_03.png,9,true,true,true,0,0,PASS,对象正文“数”左右结构完整；距自节点边框14px以上
+G028,定,TXT_NODE_RELATION_BODY,glyph_contact_sheet_04.png,1,true,true,true,0,0,PASS,关系正文首个“定”宝盖与下部完整；无漏笔
+G029,义,TXT_NODE_RELATION_BODY,glyph_contact_sheet_04.png,2,true,true,true,0,0,PASS,关系正文“义”两撇捺完整；mask-only 纯净
+G030,域,TXT_NODE_RELATION_BODY,glyph_contact_sheet_04.png,3,true,true,true,0,0,PASS,“定义域”的“域”完整；与内嵌箭轴最近墨迹净空12px
+G031,值,TXT_NODE_RELATION_BODY,glyph_contact_sheet_04.png,4,true,true,true,0,0,PASS,“值域”的“值”完整；与内嵌箭头最近墨迹净空13px
+G032,域,TXT_NODE_RELATION_BODY,glyph_contact_sheet_04.png,5,true,true,true,0,0,PASS,“值域”的“域”全部部件完整；未混入节点边框
+G033,复,TXT_NODE_LOGIC_BODY,glyph_contact_sheet_04.png,6,true,true,true,0,0,PASS,逻辑正文“复”完整；距自节点边框14px以上
+G034,合,TXT_NODE_LOGIC_BODY,glyph_contact_sheet_04.png,7,true,true,true,0,0,PASS,逻辑正文“合”人头与口部完整；纯 mask 干净
+G035,、,TXT_NODE_LOGIC_BODY,glyph_contact_sheet_04.png,8,true,true,true,0,0,PASS,顿号轮廓完整纯净；与G022同候选参照H=10px面积42px一致
+G036,量,TXT_NODE_LOGIC_BODY,glyph_contact_sheet_04.png,9,true,true,true,0,0,PASS,逻辑正文“量”多横与下部完整；无外来像素
+G037,词,TXT_NODE_LOGIC_BODY,glyph_contact_sheet_05.png,1,true,true,true,0,0,PASS,逻辑正文“词”言旁与司部完整；右侧原图上下文未进入mask
+G038,与,TXT_NODE_LOGIC_BODY,glyph_contact_sheet_05.png,2,true,true,true,0,0,PASS,逻辑正文“与”完整；叠加边界清楚
+G039,约,TXT_NODE_LOGIC_BODY,glyph_contact_sheet_05.png,3,true,true,true,0,0,PASS,逻辑正文“约”绞丝旁与勺部完整；纯 mask 干净
+G040,束,TXT_NODE_LOGIC_BODY,glyph_contact_sheet_05.png,4,true,true,true,0,0,PASS,逻辑正文“束”中央竖与撇捺完整；距自边框15px以上
+G041,输,TXT_NODE_TASK_BODY,glyph_contact_sheet_05.png,5,true,true,true,0,0,PASS,任务正文首个“输”车旁与右部完整；距自边框15px以上
+G042,入,TXT_NODE_TASK_BODY,glyph_contact_sheet_05.png,6,true,true,true,0,0,PASS,任务正文“入”两笔完整；无邻字污染
+G043,、,TXT_NODE_TASK_BODY,glyph_contact_sheet_05.png,7,true,true,true,0,0,PASS,顿号轮廓完整纯净；H=10px且面积41/42=0.976在同候选参照内
+G044,输,TXT_NODE_TASK_BODY,glyph_contact_sheet_05.png,8,true,true,true,0,0,PASS,任务正文第二个“输”全部部件完整；红叠加准确
+G045,出,TXT_NODE_TASK_BODY,glyph_contact_sheet_05.png,9,true,true,true,0,0,PASS,任务正文“出”竖折结构完整；mask-only 无背景填充
+G046,与,TXT_NODE_TASK_BODY,glyph_contact_sheet_06.png,1,true,true,true,0,0,PASS,任务正文“与”横折和底钩完整；无外来像素
+G047,判,TXT_NODE_TASK_BODY,glyph_contact_sheet_06.png,2,true,true,true,0,0,PASS,任务正文“判”左右结构完整；叠加覆盖全部笔画
+G048,据,TXT_NODE_TASK_BODY,glyph_contact_sheet_06.png,3,true,true,true,0,0,PASS,任务正文“据”提手旁与居部完整；距自边框16px以上
+G049,逆,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_06.png,4,true,true,true,0,0,PASS,反馈注释“逆”走之与内部完整；无虚线污染
+G050,向,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_06.png,5,true,true,true,0,0,PASS,反馈注释“向”外框与口部完整；与题注最近独立文字bbox净空9px
+G051,核,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_06.png,6,true,true,true,0,0,PASS,反馈注释“核”左右轮廓完整；与题注最近bbox净空9px
+G052,对,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_06.png,7,true,true,true,0,0,PASS,反馈注释“对”完整；红叠加未含相邻全角冒号
+G053,：,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_06.png,8,true,true,true,0,0,PASS,全角冒号上下两点完整纯净；官方内嵌字体glyph30581校准H22=22px；面积差属R168渲染引擎advisory
+G054,任,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_06.png,9,true,true,true,0,0,PASS,反馈注释“任”人旁与主干完整；无外来像素
+G055,务,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_07.png,1,true,true,true,0,0,PASS,反馈注释“务”上下部件完整；纯 mask 干净
+G056,所,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_07.png,2,true,true,true,0,0,PASS,反馈注释“所”左右结构完整；无漏笔
+G057,用,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_07.png,3,true,true,true,0,0,PASS,反馈注释“用”外框与内横完整；距反馈虚线16px以上
+G058,定,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_07.png,4,true,true,true,0,0,PASS,反馈注释“定”全部笔画完整；距反馈虚线16px以上
+G059,义,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_07.png,5,true,true,true,0,0,PASS,反馈注释“义”两撇捺完整；距虚线16px以上
+G060,逐,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_07.png,6,true,true,true,0,0,PASS,反馈注释“逐”走之和内部完整；距虚线16px以上
+G061,项,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_07.png,7,true,true,true,0,0,PASS,反馈注释“项”左右部件完整；距虚线16px以上
+G062,返,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_07.png,8,true,true,true,0,0,PASS,反馈注释“返”走之和反部完整；距虚线16px以上
+G063,回,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_07.png,9,true,true,true,0,0,PASS,反馈注释“回”双框完整；纯 mask 无背景填充
+G064,检,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_08.png,1,true,true,true,0,0,PASS,反馈注释“检”左右部件完整；距虚线16px以上
+G065,查,TXT_FEEDBACK_ANNOTATION,glyph_contact_sheet_08.png,2,true,true,true,0,0,PASS,反馈注释“查”上下结构完整；距虚线16px以上
+G066,图,TXT_CAPTION,glyph_contact_sheet_08.png,3,true,true,true,0,0,PASS,题注粗体“图”全轮廓完整；与反馈注释最近bbox净空9px且mask净空32px
+G067,1,TXT_CAPTION,glyph_contact_sheet_08.png,4,true,true,true,0,0,PASS,题注编号首个数字1轮廓完整；数字像素门满足
+G068,.,TXT_CAPTION,glyph_contact_sheet_08.png,5,true,true,true,0,0,PASS,题注小数点圆点完整纯净；官方内嵌字体cid01829校准H7=7px；面积0.911为R168 raster advisory
+G069,1,TXT_CAPTION,glyph_contact_sheet_08.png,6,true,true,true,0,0,PASS,题注编号第二个数字1轮廓完整；无小数点污染
+G070,数,TXT_CAPTION,glyph_contact_sheet_08.png,7,true,true,true,0,0,PASS,题注“数”左右复杂结构完整；红叠加无漏边
+G071,学,TXT_CAPTION,glyph_contact_sheet_08.png,8,true,true,true,0,0,PASS,题注“学”上部与子部完整；纯 mask 干净
+G072,语,TXT_CAPTION,glyph_contact_sheet_08.png,9,true,true,true,0,0,PASS,题注“语”言旁与吾部完整；无外来像素
+G073,言,TXT_CAPTION,glyph_contact_sheet_09.png,1,true,true,true,0,0,PASS,题注“言”多横与口部完整；叠加匹配
+G074,从,TXT_CAPTION,glyph_contact_sheet_09.png,2,true,true,true,0,0,PASS,题注“从”两个人形完整；mask-only 纯净
+G075,对,TXT_CAPTION,glyph_contact_sheet_09.png,3,true,true,true,0,0,PASS,题注“对”全部笔画完整；无邻字污染
+G076,象,TXT_CAPTION,glyph_contact_sheet_09.png,4,true,true,true,0,0,PASS,题注“象”复杂下部完整；红叠加覆盖全部有效墨迹
+G077,声,TXT_CAPTION,glyph_contact_sheet_09.png,5,true,true,true,0,0,PASS,题注“声”三横及下部完整；纯 mask 未含邻字
+G078,明,TXT_CAPTION,glyph_contact_sheet_09.png,6,true,true,true,0,0,PASS,题注“明”日月两部完整；无外来像素
+G079,到,TXT_CAPTION,glyph_contact_sheet_09.png,7,true,true,true,0,0,PASS,题注“到”左右结构完整；叠加无漏笔
+G080,任,TXT_CAPTION,glyph_contact_sheet_09.png,8,true,true,true,0,0,PASS,题注“任”人旁与主干完整；mask-only 纯净
+G081,务,TXT_CAPTION,glyph_contact_sheet_09.png,9,true,true,true,0,0,PASS,题注“务”上下部件完整；无邻字污染
+G082,陈,TXT_CAPTION,glyph_contact_sheet_10.png,1,true,true,true,0,0,PASS,题注“陈”耳旁与东部完整；红叠加准确
+G083,述,TXT_CAPTION,glyph_contact_sheet_10.png,2,true,true,true,0,0,PASS,题注“述”走之与术部完整；无漏笔
+G084,的,TXT_CAPTION,glyph_contact_sheet_10.png,3,true,true,true,0,0,PASS,题注“的”左右结构完整；纯 mask 干净
+G085,依,TXT_CAPTION,glyph_contact_sheet_10.png,4,true,true,true,0,0,PASS,题注“依”人旁与衣部完整；无外来像素
+G086,赖,TXT_CAPTION,glyph_contact_sheet_10.png,5,true,true,true,0,0,PASS,题注“赖”多部件轮廓完整；叠加覆盖全部笔画
+G087,关,TXT_CAPTION,glyph_contact_sheet_10.png,6,true,true,true,0,0,PASS,题注“关”上部两点与下部完整；纯 mask 干净
+G088,系,TXT_CAPTION,glyph_contact_sheet_10.png,7,true,true,true,0,0,PASS,题注“系”上下部件完整；无邻字污染
+G089,。,TXT_CAPTION,glyph_contact_sheet_10.png,8,true,true,true,0,0,PASS,首个句号闭环完整纯净；与G108同条件H13px面积69px完全一致
+G090,每,TXT_CAPTION,glyph_contact_sheet_10.png,9,true,true,true,0,0,PASS,题注“每”全部横折与点完整；红叠加准确
+G091,一,TXT_CAPTION,glyph_contact_sheet_11.png,1,true,true,true,0,0,PASS,单横CJK“一”唯一横画完整可读且无遮挡；H5px按R168明确仅作advisory不触发FAIL
+G092,条,TXT_CAPTION,glyph_contact_sheet_11.png,2,true,true,true,0,0,PASS,题注“条”上下部件完整；mask-only 纯净
+G093,箭,TXT_CAPTION,glyph_contact_sheet_11.png,3,true,true,true,0,0,PASS,题注“箭”竹头与前部完整；无漏笔
+G094,头,TXT_CAPTION,glyph_contact_sheet_11.png,4,true,true,true,0,0,PASS,题注“头”点横撇捺完整；叠加匹配
+G095,都,TXT_CAPTION,glyph_contact_sheet_11.png,5,true,true,true,0,0,PASS,题注“都”左右结构完整；纯 mask 无邻字
+G096,表,TXT_CAPTION,glyph_contact_sheet_11.png,6,true,true,true,0,0,PASS,题注“表”中轴和下部完整；距裁图边27px以上
+G097,示,TXT_CAPTION,glyph_contact_sheet_11.png,7,true,true,true,0,0,PASS,题注“示”横竖撇点完整；无外来像素
+G098,右,TXT_CAPTION,glyph_contact_sheet_11.png,8,true,true,true,0,0,PASS,题注“右”横撇与口部完整；叠加准确
+G099,侧,TXT_CAPTION,glyph_contact_sheet_11.png,9,true,true,true,0,0,PASS,题注首个“侧”左右部件完整；mask-only 纯净
+G100,内,TXT_CAPTION,glyph_contact_sheet_12.png,1,true,true,true,0,0,PASS,题注“内”外框与人形完整；无邻字污染
+G101,容,TXT_CAPTION,glyph_contact_sheet_12.png,2,true,true,true,0,0,PASS,题注“容”宝盖与谷部完整；红叠加无漏边
+G102,使,TXT_CAPTION,glyph_contact_sheet_12.png,3,true,true,true,0,0,PASS,题注“使”人旁与吏部完整；纯 mask 干净
+G103,用,TXT_CAPTION,glyph_contact_sheet_12.png,4,true,true,true,0,0,PASS,题注“用”外框与内横完整；无背景填充污染
+G104,左,TXT_CAPTION,glyph_contact_sheet_12.png,5,true,true,true,0,0,PASS,题注“左”横撇与工部完整；叠加匹配
+G105,侧,TXT_CAPTION,glyph_contact_sheet_12.png,6,true,true,true,0,0,PASS,题注第二个“侧”左右部件完整；纯 mask 无邻字
+G106,定,TXT_CAPTION,glyph_contact_sheet_12.png,7,true,true,true,0,0,PASS,题注“定”宝盖与下部完整；距裁图边28px以上
+G107,义,TXT_CAPTION,glyph_contact_sheet_12.png,8,true,true,true,0,0,PASS,题注末尾“义”两撇捺完整；距裁图边28px以上
+G108,。,TXT_CAPTION,glyph_contact_sheet_12.png,9,true,true,true,0,0,PASS,末句号闭环完整纯净；与G089同条件H13px面积69px完全一致且距裁图边27px

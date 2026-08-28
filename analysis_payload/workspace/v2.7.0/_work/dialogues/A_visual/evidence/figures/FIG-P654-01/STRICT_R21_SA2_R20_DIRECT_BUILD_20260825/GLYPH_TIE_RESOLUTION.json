@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "rule": "For an equal-distance PDF-bbox tie, use the native 300dpi 8-connected foreground component and require one candidate glyph to have a unique positive majority of already-unique component pixels. No ELEMENT_ID, height, area, rank or decision is an input.",
+  "tie_pixel_count": 4,
+  "component_records": [
+    {
+      "component_label": 9,
+      "component_bbox_page_px": [
+        479,
+        314,
+        490,
+        352
+      ],
+      "component_foreground_pixel_count": 92,
+      "tie_pixels": [
+        {
+          "x": 484,
+          "y": 350,
+          "glyph_ids": [
+            "G0002",
+            "G0005"
+          ],
+          "distance_squared": 0.0
+        },
+        {
+          "x": 484,
+          "y": 351,
+          "glyph_ids": [
+            "G0002",
+            "G0005"
+          ],
+          "distance_squared": 0.0
+        },
+        {
+          "x": 485,
+          "y": 350,
+          "glyph_ids": [
+            "G0002",
+            "G0005"
+          ],
+          "distance_squared": 0.0
+        },
+        {
+          "x": 486,
+          "y": 350,
+          "glyph_ids": [
+            "G0002",
+            "G0005"
+          ],
+          "distance_squared": 0.0
+        }
+      ],
+      "candidate_unique_component_pixel_counts": {
+        "G0002": 88,
+        "G0005": 0
+      },
+      "winner": "G0002",
+      "decision": "PASS"
+    }
+  ],
+  "unresolved_component_count": 0,
+  "diagnostic_native_1x": "TRIAL_TIE_DIAGNOSTIC_NATIVE_1X.png",
+  "diagnostic_8x_nearest": "TRIAL_TIE_DIAGNOSTIC_8X_NEAREST.png"
+}

@@ -1,0 +1,71 @@
+Initial Win CP for (console input, console output, system): (CP936, CP936, CP936)
+I changed them all to CP936
+Rc files read:
+  NONE
+Latexmk: This is Latexmk, John Collins, 15 June 2025. Version 4.87.
+No existing .aux file, so I'll make a simple one, and require run of *latex.
+Latexmk: applying rule 'lualatex'...
+Rule 'lualatex':  Reasons for rerun
+Category 'other':
+  Rerun of 'lualatex' forced or previously required:
+    Reason or flag: 'Initial setup'
+
+------------
+Run number 1 of rule 'lualatex'
+------------
+------------
+Running 'lualatex  -interaction=nonstopmode -halt-on-error -file-line-error -recorder -output-directory="D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R4_SA2_NARROW_R100_SOURCE_PATCH_20260825/build"  "v260_FIG-P654-01_standalone.tex"'
+------------
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
+ restricted system commands enabled.
+(./v260_FIG-P654-01_standalone.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+
+
+luaotfload | load : FATAL ERROR
+luaotfload | load :   脳 Failed to load "fontloader" module "basics-gen".
+luaotfload | load :   脳 Error message:
+luaotfload | load :     脳 "...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:301: system : no writeable cache path, quiting".
+
+stack traceback:
+	...ive/2026/texmf-dist/tex/luatex/luaotfload/luaotfload.lua:200: in local 'load_fontloader_module'
+	...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:303: in upvalue 'init_main'
+	...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:590: in function 'luaotfload-init.lua'
+	...ive/2026/texmf-dist/tex/luatex/luaotfload/luaotfload.lua:322: in field 'main'
+	[\directlua]:1: in main chunk
+
+...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:301: system : no wr
+iteable cache path, quiting
+stack traceback:
+	[C]: in function 'error'
+	...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:301: in function '
+os.exit'
+	...ive/2026/texmf-dist/tex/luatex/luaotfload/luaotfload.lua:203: in local 'loa
+d_fontloader_module'
+	...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:303: in upvalue 'i
+nit_main'
+	...026/texmf-dist/tex/luatex/luaotfload/luaotfload-init.lua:590: in function '
+luaotfload-init.lua'
+	...ive/2026/texmf-dist/tex/luatex/luaotfload/luaotfload.lua:322: in field 'mai
+n'
+	[\directlua]:1: in main chunk.
+<everyjob> ...string \\encodingdefault{OT1}')end }
+                                                  \let \f@encoding \encoding...
+
+l.1 
+    \documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+ 275 words of node memory still in use:
+   1 hlist, 1 dir, 39 glue_spec nodes
+   avail lists: 2:12,3:3,4:1
+./v260_FIG-P654-01_standalone.tex:1:  ==> Fatal error occurred, no output PDF f
+ile produced!
+Transcript written on v260_FIG-P654-01_standalone.log.
+Latexmk: Getting log file 'D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R4_SA2_NARROW_R100_SOURCE_PATCH_20260825/build/v260_FIG-P654-01_standalone.log'
+Latexmk: Examining 'D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R4_SA2_NARROW_R100_SOURCE_PATCH_20260825/build/v260_FIG-P654-01_standalone.fls'
+Latexmk: Examining 'D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R4_SA2_NARROW_R100_SOURCE_PATCH_20260825/build/v260_FIG-P654-01_standalone.log'
+Latexmk: Errors, so I did not complete making targets
+Collected error summary (may duplicate other messages):
+  lualatex: Command for 'lualatex' gave return code 1
+      Refer to 'D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R4_SA2_NARROW_R100_SOURCE_PATCH_20260825/build/v260_FIG-P654-01_standalone.log' and/or above output for details
+

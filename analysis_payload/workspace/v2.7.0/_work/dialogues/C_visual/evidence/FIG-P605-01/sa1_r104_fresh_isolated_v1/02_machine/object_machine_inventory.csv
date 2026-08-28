@@ -1,0 +1,33 @@
+﻿object_id,safe_filename,kind,role,semantic_parent,source_ref,drawing_indices,bbox_crop_px,raw_mask_pixels,raw_mask_width_px,raw_mask_height_px,mask_file,crop_edge_touch_pixels,explicit_exclusion
+TXT-001,txt_001,TEXT,PANEL_TITLE,left_panel_title,source:系统扫描：固定复合,,"321,78,683,116",5512,362,38,02_machine/object_masks/txt_001.png,0,
+TXT-002,txt_002,TEXT,NODE_LABEL,left_kernel_k1,source:K_1,,"217,226,259,261",297,42,35,02_machine/object_masks/txt_002.png,0,
+TXT-003,txt_003,TEXT,NODE_LABEL,left_kernel_k2,source:K_2,,"429,226,473,261",311,44,35,02_machine/object_masks/txt_003.png,0,
+TXT-004,txt_004,TEXT,FORMULA,left_ellipsis,source:\cdots,,"598,238,632,243",64,34,5,02_machine/object_masks/txt_004.png,0,
+TXT-005,txt_005,TEXT,NODE_LABEL,left_kernel_kd,source:K_d,,"764,226,811,261",346,47,35,02_machine/object_masks/txt_005.png,0,
+TXT-006,txt_006,TEXT,FORMULA,system_kernel_formula,source:K_sys=K_1K_2\cdots K_d,,"344,356,657,397",1500,313,41,02_machine/object_masks/txt_006.png,0,
+TXT-007,txt_007,TEXT,ANNOTATION,left_note,source:固定次序复合：通常不保证可逆,,"239,560,766,595",2109,527,35,02_machine/object_masks/txt_007.png,0,
+TXT-008,txt_008,TEXT,PANEL_TITLE,right_panel_title,source:随机扫描：先抽坐标,,"1262,79,1623,116",5610,361,37,02_machine/object_masks/txt_008.png,0,
+TXT-009,txt_009,TEXT,FORMULA,choice_formula,source:J\sim\omega,,"1385,198,1497,225",353,112,27,02_machine/object_masks/txt_009.png,0,
+TXT-010,txt_010,TEXT,NODE_LABEL,right_kernel_k1,source:K_1,,"1132,354,1174,389",299,42,35,02_machine/object_masks/txt_010.png,0,
+TXT-011,txt_011,TEXT,NODE_LABEL,right_kernel_kj,source:K_j,,"1419,351,1461,392",304,42,41,02_machine/object_masks/txt_011.png,0,
+TXT-012,txt_012,TEXT,NODE_LABEL,right_kernel_kd,source:K_d,,"1697,353,1744,388",346,47,35,02_machine/object_masks/txt_012.png,0,
+TXT-013,txt_013,TEXT,FORMULA,random_kernel_formula,source:K_rand=sum_{j=1}^d omega_j K_j,,"1280,444,1600,511",1682,320,67,02_machine/object_masks/txt_013.png,0,
+TXT-014,txt_014,TEXT,ANNOTATION,right_note,source:若各K_j关于pi可逆；固定权重混合保持可逆,,"1238,552,1647,639",2915,409,87,02_machine/object_masks/txt_014.png,0,
+TXT-015,txt_015,TEXT,CAPTION,caption,source:图32.7 分量MH的系统扫描与随机扫描…,,"17,693,1926,786",11812,1909,93,02_machine/object_masks/txt_015.png,0,
+GFX-001,gfx_001,GRAPHIC,PANEL_BORDER,panel_border_left,PDF drawing/path,1,"97,33,908,668",7308,811,635,02_machine/object_masks/gfx_001.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-002,gfx_002,GRAPHIC,PANEL_BORDER,panel_border_right,PDF drawing/path,2,"1036,33,1847,668",7308,811,635,02_machine/object_masks/gfx_002.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-003,gfx_003,GRAPHIC,NODE_BORDER,node_border_left_k1,PDF drawing/path,3,"156,189,326,298",1233,170,109,02_machine/object_masks/gfx_003.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-004,gfx_004,GRAPHIC,NODE_BORDER,node_border_left_k2,PDF drawing/path,4,"366,189,538,298",1326,172,109,02_machine/object_masks/gfx_004.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-005,gfx_005,GRAPHIC,NODE_BORDER,node_border_left_kd,PDF drawing/path,5,"705,189,873,298",1318,168,109,02_machine/object_masks/gfx_005.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-006,gfx_006,GRAPHIC,LINE_ARROW,flow_arrow_left_1,PDF drawing/path,6;7,"321,236,366,252",244,45,16,02_machine/object_masks/gfx_006.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-007,gfx_007,GRAPHIC,LINE_ARROW,flow_arrow_left_2,PDF drawing/path,8;9,"534,236,575,252",231,41,16,02_machine/object_masks/gfx_007.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-008,gfx_008,GRAPHIC,LINE_ARROW,flow_arrow_left_3,PDF drawing/path,10;11,"651,236,702,252",234,51,16,02_machine/object_masks/gfx_008.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-009,gfx_009,GRAPHIC,NODE_BORDER,left_note_border,PDF drawing/path,12,"170,536,833,620",2302,663,84,02_machine/object_masks/gfx_009.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-010,gfx_010,GRAPHIC,NODE_BORDER,choice_diamond_border,PDF drawing/path,13,"1293,141,1590,283",1750,297,142,02_machine/object_masks/gfx_010.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-011,gfx_011,GRAPHIC,NODE_BORDER,node_border_right_k1,PDF drawing/path,14,"1071,317,1239,425",1170,168,108,02_machine/object_masks/gfx_011.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-012,gfx_012,GRAPHIC,NODE_BORDER,node_border_right_kj,PDF drawing/path,15,"1358,317,1526,425",1172,168,108,02_machine/object_masks/gfx_012.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-013,gfx_013,GRAPHIC,NODE_BORDER,node_border_right_kd,PDF drawing/path,16,"1638,317,1806,425",1167,168,108,02_machine/object_masks/gfx_013.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-014,gfx_014,GRAPHIC,LINE_ARROW,branch_arrow_right_1,PDF drawing/path,17;18,"1240,249,1374,326",454,134,77,02_machine/object_masks/gfx_014.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-015,gfx_015,GRAPHIC,LINE_ARROW,branch_arrow_right_2,PDF drawing/path,19;20,"1435,283,1449,315",139,14,32,02_machine/object_masks/gfx_015.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-016,gfx_016,GRAPHIC,LINE_ARROW,branch_arrow_right_3,PDF drawing/path,21;22,"1509,250,1637,325",435,128,75,02_machine/object_masks/gfx_016.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained
+GFX-017,gfx_017,GRAPHIC,NODE_BORDER,right_note_border,PDF drawing/path,23,"1098,534,1786,657",3988,688,123,02_machine/object_masks/gfx_017.png,0,fills/backgrounds excluded; only final-visible stroke/arrow ink retained

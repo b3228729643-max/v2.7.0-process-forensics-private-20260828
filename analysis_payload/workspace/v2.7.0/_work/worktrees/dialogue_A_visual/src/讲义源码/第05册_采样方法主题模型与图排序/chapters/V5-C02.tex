@@ -1,0 +1,1181 @@
+% STAGE13-CHAPTER: V5-C02
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V5-C02-CH01}; CH-02=\label{struct:V5-C02-CH02}; CH-03=\label{struct:V5-C02-CH03}; CH-04=\label{struct:V5-C02-CH04}; CH-05=\label{struct:V5-C02-CH05}; CH-06=\label{struct:V5-C02-CH06}; CH-07=\label{struct:V5-C02-CH07}; CH-08=\label{struct:V5-C02-CH08}; CH-09=\label{struct:V5-C02-CH09}; CH-10=\label{struct:V5-C02-CH10}; CH-11=\label{struct:V5-C02-CH11}; CH-12=\label{struct:V5-C02-CH12}; CH-13=\label{struct:V5-C02-CH13}; CH-14=\label{struct:V5-C02-CH14}; CH-15=\label{struct:V5-C02-CH15}; CH-16=\label{struct:V5-C02-CH16}; CH-17=\label{struct:V5-C02-CH17}; CH-18=\label{struct:V5-C02-CH18}; CH-19=\label{struct:V5-C02-CH19}; CH-20=\label{struct:V5-C02-CH20}; CH-21=\label{struct:V5-C02-CH21}; CH-22=\label{struct:V5-C02-CH22}; CH-23=\label{struct:V5-C02-CH23}; CH-24=\label{struct:V5-C02-CH24}; CH-25=\label{struct:V5-C02-CH25}; CH-26=\label{struct:V5-C02-CH26}; CH-27=\label{struct:V5-C02-CH27}; CH-28=\label{struct:V5-C02-CH28}; CH-29=\label{struct:V5-C02-CH29}; CH-30=\label{struct:V5-C02-CH30}; CH-31=\label{struct:V5-C02-CH31}; CH-32=\label{struct:V5-C02-CH32}; CH-33=\label{struct:V5-C02-CH33}; CH-34=\label{struct:V5-C02-CH34}; CH-35=\label{struct:V5-C02-CH35}; CH-36=\label{struct:V5-C02-CH36}; CH-37=\label{struct:V5-C02-CH37}
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1.1-EXERCISE-LAYOUT: grouped; kept=10; source_group=1; supplement=9
+% DERIVATION-CHECK: step-1; step-2; step-3
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C02-dependency -> PRE-SA-001 PRE-SA-002 PRE-SA-003 PRE-SA-004 PRE-SA-005
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C02-mc-integral -> SLM-19-01-005
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C02-running-mean -> PRE-SA-001 SLM-19-01-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C02-generalized-inverse -> PRE-SA-003
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C02-rejection-envelope -> PRE-SA-004 SLM-19-01-003
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C02-rejection-flow -> PRE-SA-004 SLM-19-01-003
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C02-is-support -> PRE-SA-005
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C02-weight-ess -> PRE-SA-005
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C02-rmse-rate -> PRE-SA-001
+% SOURCE-EXERCISE-MAPPING-DIFFERENCE: EXR-19-0001 is verified by the exercise index and source page but absent from the generated packet entity list.
+
+\chapter{蒙特卡罗方法与直接采样}\label{chap:V5-C02}
+
+% KNOWLEDGE-PLAN: KN-V5-C31-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：蒙特卡罗方法与直接采样。}蒙特卡罗方法与直接采样章地图给出“期望$\to$独立样本均值$\to$直接采样与重加权$\to$误差诊断”；请写成一条带方向的依赖链，再用终点的输出说明它怎样回答本章核心问题，并核对路线“期望$\to$独立样本均值$\to$直接采样与重加权$\to$误差诊断”的前一产出能够直接作为后一输入。\par
+
+\SLChapterOpening{期望$\to$独立样本均值$\to$直接采样与重加权$\to$误差诊断}
+{怎样从可抽样分布得到目标期望，并明确支持、矩条件和有限样本边界？}
+{读完可推导逆变换、接受—拒绝与重要性抽样，并选择合法的误差口径。}
+{概率密度、分布函数、期望方差、大数定律、中心极限定理与绝对连续。}
+{若不能区分一阶可积与有限方差，先回看概率基础再读蒙特卡罗估计。}
+\phantomsection\label{struct:V5-C02-CH01}
+% KNOWLEDGE-PLAN: KN-V5-C31-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}蒙特卡罗方法与直接采样目标中的“把期望与积分写成可验证的独立同分布样本均值，并分清可积、有限方差与中心极限定理所需的不同条件”必须可复核；请把期望与积分写成可验证的独立同分布样本均值，并分清可积、有限方差与中心极限定理所需的不同条件，所得结果仅在“中间结果逐项包含首目标“把期望与积分写成可验证的独立同分布样本均值，并分清可积、有限方差与中心极限定理所需的不同条件”声明的对象、条件与结论”时通过。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 把期望与积分写成可验证的独立同分布样本均值，并分清可积、有限方差与中心极限定理所需的不同条件；
+  \item 用广义逆严格证明逆变换抽样，处理分布函数的跳跃、平坦段以及数值求逆误差；
+  \item 推导接受--拒绝抽样的接受率和条件分布，理解支持覆盖、有限包络常数与预算停止；
+  \item 区分普通重要性抽样与自归一化重要性抽样，推导最优提议分布及其零方差条件；
+  \item 手工执行四个采样算法，识别数值异常与停止原因，并用标准误、有效样本量和支持检查诊断结果。
+\end{itemize}
+}
+
+\phantomsection\label{struct:V5-C02-CH02}
+% KNOWLEDGE-PLAN: KN-V5-C31-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}蒙特卡罗先修要求能区分可积与有限方差；请对$Y=h(X)$先检查$E|Y|<\infty$，再在$E(Y^2)<\infty$时写出$\operatorname{Var}(N^{-1}\sum_iY_i)=\sigma^2/N$。\par
+
+\begin{prerequisitebox}
+本章使用第1册中的随机变量、密度或概率质量函数、期望、方差、分布函数、全概率公式、大数定律与中心极限定理，也使用集合上的绝对连续记号。读者还应能计算有限和、定积分和二分查找的迭代次数。所有核心样本均先假设独立同分布；相关的马尔可夫链样本留到后续章节。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V5-C02-CH03}
+% KNOWLEDGE-PLAN: KN-V5-C31-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}蒙特卡罗方法与直接采样先修自检固定核验“若$Y_1,\ldots,Y_N$独立且方差均为$\sigma^2$，能否逐项计算$\operatorname{Var}(N^{-1}\sum_iY_i)$”；请在$Y_1,\ldots,Y_N$独立且方差均为$\sigma^2$条件下，实际逐项计算$\operatorname{Var}(N^{-1}\sum_iY_i)$并写出中间结果，再按“$\operatorname{Var}(N^{-1}\sum_iY_i)$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 若$Y_1,\ldots,Y_N$独立且方差均为$\sigma^2$，能否逐项计算$\operatorname{Var}(N^{-1}\sum_iY_i)$？
+  \item 能否区分条件$E|Y|<\infty$与$E(Y^2)<\infty$，并说明后者为何更强？
+  \item 给定分布函数$F$，能否用“第一个使$F$达到$u$的位置”处理离散跳跃？
+  \item 能否判断$p(x)>0$而$q(x)=0$时比值$p(x)/q(x)$为什么无法用有限权重补救？
+\end{enumerate}
+若第1--2项不能完成，应先复习期望、方差和大数定律；若第3项不能完成，应复习分布函数的单调性与右连续性；若第4项不能完成，应先复习绝对连续与支持集。
+\end{precheckbox}
+
+\phantomsection\label{struct:V5-C02-CH04}
+% KNOWLEDGE-PLAN: KN-V5-C31-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}蒙特卡罗方法与直接采样依赖链含“第1册概率基础中的期望、大数定律与中心极限定理 $\to$ 本章的蒙特卡罗估计与误差条件”到“期望与积分 $\to$ 独立随机抽样 $\to$ 样本均值”这一跳；请固定写出前者输出类型与后者输入类型，并核对两者相同或存在正文声明的转换。\par
+
+\begin{dependencybox}
+第1册概率基础中的期望、大数定律与中心极限定理 $\to$ 本章的蒙特卡罗估计与误差条件；
+期望与积分 $\to$ 独立随机抽样 $\to$ 样本均值；
+分布函数 $\to$ 广义逆 $\to$ 逆变换抽样；
+提议分布与支持覆盖 $\to$ 接受--拒绝抽样或重要性抽样；
+二阶矩、样本方差与权重集中 $\to$ 标准误、有效样本量和失效诊断。
+\end{dependencybox}
+图\ref{fig:V5-C02-dependency}只表示教学依赖，不表示三种采样方法彼此等价。接受--拒绝法输出未加权目标样本，重要性抽样则通常保留提议样本并改变其贡献大小。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_dependency_graph.tex}
+
+\phantomsection\label{struct:V5-C02-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V5-C02
+\index[symbols]{p-q--s13ab54f5cd13@$p,q$：目标分布与提议分布}
+\index[symbols]{x-i-y-i--s12b6df5b2f42@$X_i,Y_i$：目标样本与提议样本；下标$i$是样本编号}
+\index[symbols]{f-h--sa9886bb885cb@$f,h$：$f$用于期望，$h$用于积分或被积函数}
+\index[symbols]{minus-mu-minus--s22e601c64411@$\mu$：目标期望$E_p[f(X)]$或目标积分}
+\index[symbols]{minus-widehat-minus-minus-mu-minus-n--s854da1a86605@$\widehat\mu_N$：$N$个样本的蒙特卡罗均值}
+\index[symbols]{f-q--sb77f810630f5@$F,Q$：$Q(u)=\inf\{x:F(x)\ge u\}$}
+\index[symbols]{c--s5161b9b396f8@$c$：接受--拒绝包络$p\le cq$}
+\index[symbols]{w-x--s8c143fc1c518@$w(x)$：重要性权重$p(x)/q(x)$或未归一化权重}
+\index[symbols]{s-2-minus-widehat-minus-minus-mathrm-minus-se--s4b7761654a24@$s^2,\widehat{\mathrm{SE}}$：样本方差与估计标准误}
+\index[symbols]{n-b--s8e4a4de7845d@$N,B$：目标样本数与最多允许的提议次数}
+% STAGE19-SYMBOL-INDEX-END: V5-C02
+% KNOWLEDGE-PLAN: KN-V5-C31-PREREQUISITE-006 L1
+\paragraph{读前自检：本章符号表。}蒙特卡罗方法与直接采样符号表规定$p,q$、$X_i,Y_i$的类型或范围；请把$p,q$代入紧随其后的定义关系，逐项核对输入形状、输出形状与取值域。\par
+
+\begin{symboltablebox}
+\small
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 类型、维数或范围 & 读法与作用\\ \midrule
+$p,q$ & 同一可测空间上的概率密度或质量函数 & 目标分布与提议分布\\
+$X_i,Y_i$ & $\mathcal X$值随机变量 & 目标样本与提议样本；下标$i$是样本编号\\
+$f,h$ & 可测实函数 & $f$用于期望，$h$用于积分或被积函数\\
+$\mu$ & 实数 & 目标期望$E_p[f(X)]$或目标积分\\
+$\widehat\mu_N$ & 实值估计量 & $N$个样本的蒙特卡罗均值\\
+$F,Q$ & 分布函数与广义逆 & $Q(u)=\inf\{x:F(x)\ge u\}$\\
+$c$ & $[1,\infty)$中的有限常数 & 接受--拒绝包络$p\le cq$\\
+$w(x)$ & $[0,\infty)$ & 重要性权重$p(x)/q(x)$或未归一化权重\\
+$s^2,\widehat{\mathrm{SE}}$ & 非负统计量 & 样本方差与估计标准误\\
+$N,B$ & 非负整数 & 目标样本数与最多允许的提议次数\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLReviewSection{蒙特卡罗估计}{sec:V5-C02-S01}
+\phantomsection\label{struct:V5-C02-CH06}
+解析积分、复杂期望和分布特征常常没有闭式解。蒙特卡罗方法把“对整个空间求和或积分”改写为“从适当分布抽样后求平均”。这个改写只有在抽样分布、可积性和独立性都被说明时才成立；样本数增加本身不能修复支持缺口或无限期望。
+
+% KNOWLEDGE-PLAN: KN-V5-C31-CONCEPT-001 L1
+\paragraph{读前自检：蒙特卡罗估计。}蒙特卡罗估计以$X_i\stackrel{\mathrm{iid}}{\sim}p$和可积$h$为条件；请计算$\widehat\mu_N=N^{-1}\sum_i h(X_i)$，核对其目标是$\mu=E_p[h(X)]$。\par
+% KNOWLEDGE-PLAN: KN-V5-C31-CONCEPT-002 L1
+\paragraph{读前自检：蒙特卡罗法。}蒙特卡罗法把难积分$\int h(x)p(\mathrm dx)$改写为独立样本均值；请用一组样本做在线均值更新，核对第$N$步结果等于直接求和再除以$N$。\par
+% KNOWLEDGE-PLAN: KN-V5-C31-CONCEPT-003 L1
+\paragraph{读前自检：随机抽样。}随机抽样要求$X_1,\ldots,X_N$独立且共同服从目标分布$p$；请检查一组生成规则的边缘分布与独立性，核对任一失败时不能直接套用iid均值方差公式。\par
+% KNOWLEDGE-PLAN: KN-V5-C31-FORMULA-001 L1
+\paragraph{读前自检：数学期望估计。}数学期望估计先要求$E_p|h(X)|<\infty$；请把$\mu$写成积分或求和并以$h(X_i)$形成样本均值，核对强大数律的条件与目标对象一致。\par
+% KNOWLEDGE-PLAN: KN-V5-C31-CONCEPT-004 L1
+\paragraph{读前自检：积分计算。}积分计算令$Y_i=h(X_i)$且$X_i\stackrel{\mathrm{iid}}{\sim}p$；请代入一组$Y_i$计算均值，在$\operatorname{Var}(Y_i)=\sigma^2$时核对均方误差为$\sigma^2/N$。\par
+
+\phantomsection\label{struct:V5-C02-CH07}
+\knowledgeanchor{PRE-SA-001}{蒙特卡罗估计}
+\knowledgeanchor{SLM-19-01-001}{蒙特卡罗法}
+\knowledgeanchor{SLM-19-01-002}{随机抽样}
+\knowledgeanchor{SLM-19-01-004}{数学期望估计}
+\knowledgeanchor{SLM-19-01-005}{积分计算}
+% KNOWLEDGE-PLAN: KN-V5-C31-DEFINITION-001 L1
+\paragraph{读前自检：独立同分布蒙特卡罗估计。}iid蒙特卡罗估计$\widehat\mu_N=N^{-1}\sum_i h(X_i)$要求$h$可积；请分别计算其期望与有限方差情形的方差，核对无偏性及$1/N$方差缩减。\par
+
+\begin{definition}[独立同分布蒙特卡罗估计]
+设$(\mathcal X,\mathcal A)$为可测空间，$p$为其上的概率分布，$X_1,\ldots,X_N$独立同分布且共同服从$p$，记作$X_i\stackrel{\mathrm{iid}}{\sim}p$。若$f:\mathcal X\to\mathbb R$可测且$E_p|f(X)|<\infty$，则
+\begin{equation}\label{eq:V5-C02-mc-estimator}
+\mu=E_p[f(X)],\qquad
+\widehat\mu_N=\frac1N\sum_{i=1}^N f(X_i),\quad N\ge1,
+\end{equation}
+称为目标期望及其蒙特卡罗估计量。
+\end{definition}
+\index{蒙特卡罗估计}
+
+\phantomsection\label{struct:V5-C02-CH08}
+本章的统一模型由目标量、抽样机制和观测函数三部分组成：目标量是$\mu=E_p f$或$\int h$；抽样机制可以直接产生$p$的样本，也可以从较易抽样的$q$产生候选；观测函数把每个样本变成对目标量的一次贡献。模型必须同时给出分布的归一化、支持关系和函数的可积条件。
+
+\phantomsection\label{struct:V5-C02-CH09}
+学习策略是用可计算估计量逼近固定目标量，并在不改变目标的前提下控制均方误差。对无偏估计量，均方误差等于方差；选择提议分布$q$、包络常数$c$或样本数$N$，实质上是在计算代价与估计方差之间折中。
+
+\phantomsection\label{struct:V5-C02-CH10}
+学习算法由四类操作组成：独立抽样并在线更新均值、用广义逆把均匀数变成目标样本、用接受事件对提议样本进行筛选，以及保留提议样本并按似然比重加权。使用时应检查定义域、支持覆盖与有限性；遇到数值异常或达到预设采样上限，应停止并说明此前已经得到的部分。
+
+\phantomsection\label{struct:V5-C02-CH11}
+% CORE-DERIVATION-PLAN: KN-V5-C31-DERIVATION-001
+\SLKnowledgeBridge{分开核对无偏性、方差、均方误差与积分表示所需条件。}{独立样本 $X_i\sim p$、$Y_i=f(X_i)$ 与估计量 $\widehat\mu_N=N^{-1}\sum_iY_i$。}{$\mathbb E|Y_i|<\infty$ 保证期望；再有 $\mathbb E(Y_i^2)<\infty$ 才能讨论方差与标准误。}{先用期望线性性计算 $\mathbb E\widehat\mu_N$，再用独立性计算方差。}
+
+\begin{derivationgoalbox}
+从独立样本均值逐步推出无偏性、方差、均方误差和积分改写，并分开记录每个结论所需的矩条件。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+设$Y_i=f(X_i)$。一阶矩$E|Y_i|<\infty$保证期望存在并可用强大数定律；只有再假设$E(Y_i^2)<\infty$，方差和标准误才有定义。
+\end{derivationprepbox}
+\textbf{推导第1步：期望的线性性。}
+\[
+E(\widehat\mu_N)=\frac1N\sum_{i=1}^NE(Y_i)=\frac1N\cdot N\mu=\mu.
+\]
+\textbf{推导第2步：独立性消去协方差。}若$\sigma^2=\operatorname{Var}(Y_1)<\infty$，则
+\begin{equation}\label{eq:V5-C02-mc-variance}
+\operatorname{Var}(\widehat\mu_N)
+=\frac1{N^2}\sum_{i=1}^N\operatorname{Var}(Y_i)
++\frac2{N^2}\sum_{i<j}\operatorname{Cov}(Y_i,Y_j)
+=\frac{\sigma^2}{N}.
+\end{equation}
+\textbf{推导第3步：均方误差分解。}任意平方可积估计量$T$满足
+\begin{equation}\label{eq:V5-C02-mse-decomposition}
+E[(T-\mu)^2]=\operatorname{Var}(T)+\{E(T)-\mu\}^2.
+\end{equation}
+因此式\eqref{eq:V5-C02-mc-estimator}的均方误差为$\sigma^2/N$，均方根误差为$\sigma/\sqrt N$。这个速率依赖独立同分布和有限方差，不能原样套到相关样本或无限方差情形。
+
+积分改写也需要条件。设$h$在区域$\mathcal D$上可积，$p$是$\mathcal D$上的概率密度。要求
+\begin{equation}\label{eq:V5-C02-integral-support}
+p(x)=0\Longrightarrow h(x)=0\quad\text{几乎处处},
+\qquad \int_{\mathcal D}|h(x)|\,\mathrm dx<\infty.
+\end{equation}
+在$p(x)>0$处定义$f(x)=h(x)/p(x)$，在$p(x)=0$处定义$f(x)=0$，则
+\begin{equation}\label{eq:V5-C02-integral-expectation}
+\int_{\mathcal D}h(x)\,\mathrm dx
+=\int_{\mathcal D}f(x)p(x)\,\mathrm dx
+=E_p[f(X)].
+\end{equation}
+若还要使用有限方差误差公式，则必须再有
+\begin{equation}\label{eq:V5-C02-integral-second-moment}
+\int_{\{p>0\}}\frac{h(x)^2}{p(x)}\,\mathrm dx<\infty.
+\end{equation}
+所以“选任意密度就能计算任意积分”不是正确命题；密度必须覆盖被积函数的非零区域，且比值必须满足相应可积条件。阅读图\ref{fig:V5-C02-mc-integral}时应具体回答：被积函数非零而$p=0$的区域会在哪一步丢失，以及式\eqref{eq:V5-C02-integral-second-moment}为何比一阶积分改写多出一个$1/p$因子。图只表示这两个逻辑接口，不提供随机复算坐标。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_mc_integral.tex}
+
+\phantomsection\label{struct:V5-C02-CH12}
+% KNOWLEDGE-PLAN: KN-V5-C31-CONCEPT-005 L1
+\paragraph{读前自检：主线只使用强大数律结论。}主线只使用强大数律结论以“若$Y_i$独立同分布且$E|Y_1|<\infty$”为约束；请独立化简$N^{-1}\sum_{i=1}^NY_i\to EY_1$的两端，并确认$N^{-1}\sum_{i=1}^NY_i\to EY_1$几乎必然成立。\par
+
+\begin{keypointbox}[title=主线只使用强大数律结论]
+若$Y_i$独立同分布且$E|Y_1|<\infty$，则$N^{-1}\sum_{i=1}^NY_i\to EY_1$几乎必然成立。直接采样主线用这条强大数律解释一致性；无偏性来自期望线性，$\sigma^2/N$误差公式还需有限二阶矩。下面的Kolmogorov级数准则与截断证明仅用于补足理论链，第一次阅读和执行算法均可跳过。
+\end{keypointbox}
+\paragraph{进阶证明附录：强大数律的一条证明路线。}
+\begin{lemma}[Kolmogorov独立级数收敛准则]\label{lem:V5-C02-kolmogorov-series}
+若$Z_1,Z_2,\ldots$相互独立，$E(Z_n)=0$，且$\sum_{n\ge1}E(Z_n^2)<\infty$，则级数$\sum_{n\ge1}Z_n$几乎必然收敛。
+\end{lemma}
+\begin{proof}
+先证明最大不等式。令$S_k=\sum_{j=1}^kZ_j$，并把事件“首次有$|S_j|\ge\varepsilon$”记为
+$A_j=\{|S_1|<\varepsilon,\ldots,|S_{j-1}|<\varepsilon,|S_j|\ge\varepsilon\}$。这些事件互不相交；$A_j$只由$Z_1,\ldots,Z_j$决定，而$S_n-S_j$与它独立且均值为$0$。因此
+\[
+E[\boldsymbol1_{A_j}S_n^2]
+=E[\boldsymbol1_{A_j}S_j^2]+E[\boldsymbol1_{A_j}(S_n-S_j)^2]
+\ge\varepsilon^2P(A_j).
+\]
+对$j=1,\ldots,n$求和，并用事件互不相交，得到
+\[
+P\!\left(\max_{1\le j\le n}|S_j|\ge\varepsilon\right)
+\le\frac{E(S_n^2)}{\varepsilon^2}
+=\frac1{\varepsilon^2}\sum_{j=1}^nE(Z_j^2).
+\]
+同一论证可从任意$m+1$开始。由于方差级数收敛，可选递增整数$m_r$使$\sum_{j>m_r}E(Z_j^2)\le2^{-3r}$。令有限终点趋于无穷，便有
+\[
+P\!\left(\sup_{k>m_r}|S_k-S_{m_r}|>2^{-r}\right)\le2^{-r}.
+\]
+右端关于$r$可求和，Borel--Cantelli引理说明几乎每条样本路径从某个$r$起都满足该上确界不超过$2^{-r}$。于是任意$n,k>m_r$都有$|S_n-S_k|\le2^{1-r}$，故$(S_n)$几乎必然为Cauchy序列并收敛，等价于$\sum_nZ_n$收敛。
+\end{proof}
+
+\begin{theorem}[独立同分布蒙特卡罗估计的基本性质]\label{thm:V5-C02-iid-mc}
+若$X_i\stackrel{\mathrm{iid}}{\sim}p$且$f$可测、$E_p|f(X)|<\infty$，则$\widehat\mu_N$无偏且$\widehat\mu_N\to\mu$几乎必然成立。若进一步$E_p[f(X)^2]<\infty$，则式\eqref{eq:V5-C02-mc-variance}成立，并且均方误差为$\sigma^2/N$。
+\end{theorem}
+\phantomsection\label{struct:V5-C02-CH13}
+% KNOWLEDGE-PLAN: KN-V5-C31-PROOF-002 L1
+\paragraph{读前自检：证明：独立同分布蒙特卡罗估计的基本性质。}iid蒙特卡罗基本性质在$E|Y_1|<\infty$下给强一致性，在$E(Y_1^2)<\infty$下再给方差式；请展开样本均值期望和方差，核对交叉协方差因独立性为0。\par
+
+\begin{proof}
+令$Y_i=f(X_i)$，并以$Y$表示它们的共同分布。可积性使$E(Y_i)=\mu$存在，期望线性性给出$E(\widehat\mu_N)=\mu$，所以估计量无偏。下面在本章内证明所需的强大数结论。
+
+定义截断变量$T_i=Y_i\boldsymbol1_{\{|Y_i|\le i\}}$。尾和公式给出
+\[
+\sum_{i=1}^{\infty}P(T_i\ne Y_i)
+=\sum_{i=1}^{\infty}P(|Y|>i)\le E|Y|<\infty.
+\]
+Borel--Cantelli引理说明$T_i=Y_i$最终几乎必然成立。另一方面，交换非负求和与期望可得
+\[
+\sum_{i=1}^{\infty}\frac{E(T_i^2)}{i^2}
+=E\!\left[Y^2\sum_{i\ge\max(1,\lceil|Y|\rceil)}\frac1{i^2}\right]<\infty.
+\]
+最后一个有限性来自：$|Y|<1$时括号内有统一有限上界且$Y^2\le|Y|$；$|Y|\ge1$时尾和不超过$2/|Y|$，乘以$Y^2$后不超过$2|Y|$。因此
+$Z_i=(T_i-E T_i)/i$满足引理\ref{lem:V5-C02-kolmogorov-series}的条件，级数$\sum_i(T_i-E T_i)/i$几乎必然收敛。
+
+记$A_n=\sum_{i=1}^n(T_i-E T_i)/i$。分部求和恒等式给出
+\[
+\frac1n\sum_{i=1}^n(T_i-E T_i)
+=A_n-\frac1n\sum_{i=1}^{n-1}A_i\longrightarrow0,
+\]
+因为$A_n$与其Ces\`aro平均收敛到同一极限。又有$E T_i\to EY=\mu$，这是由$|Y|$支配和支配收敛定理得到的；故$N^{-1}\sum_{i=1}^NE T_i\to\mu$。再结合$T_i=Y_i$最终几乎必然成立，有限个差异除以$N$趋于$0$，从而$N^{-1}\sum_iY_i\to\mu$几乎必然成立。
+
+若二阶矩有限，则$\sigma^2$存在；独立性给出$i\ne j$时$\operatorname{Cov}(Y_i,Y_j)=0$，逐项展开方差便得到式\eqref{eq:V5-C02-mc-variance}。最后把无偏性代入式\eqref{eq:V5-C02-mse-decomposition}，得到均方误差$\sigma^2/N$。上述各步共同证明结论。
+\end{proof}
+该定理用于确定一致性与误差量级；若只有一阶矩，则仍可使用强大数定律，但方差、标准误和通常的正态区间可能不存在。马尔可夫链样本含有自相关，不能把本定理的$\sigma^2/N$直接当作其方差公式。
+
+% KNOWLEDGE-PLAN: KN-V5-C31-CONCEPT-006 L1
+\paragraph{读前自检：从给定分布抽样。}从CDF $F$抽样时用广义逆$Q(u)=\inf\{x:F(x)\ge u\}$；请给定一个$u\in(0,1)$求$Q(u)$，核对离散跳跃处选择第一个使$F(x)\ge u$的点。\par
+% KNOWLEDGE-PLAN: KN-V5-C31-CONCEPT-007 L1
+\paragraph{读前自检：逆变换抽样。}逆变换抽样取$U\sim\mathrm U(0,1)$并令$X=Q(U)$；请把事件$Q(U)\le x$改写成$U\le F(x)$，核对$P(X\le x)=F(x)$。\par
+
+\SLTeachSection{逆变换抽样}{sec:V5-C02-S02}
+\knowledgeanchor{PRE-SA-002}{从给定分布抽样}
+\knowledgeanchor{PRE-SA-003}{逆变换抽样}
+\index{逆变换抽样}
+\begin{definition}[分布函数的广义逆]
+设$F(x)=P(X\le x)$是实随机变量的分布函数。对$0<u<1$，定义
+\begin{equation}\label{eq:V5-C02-generalized-inverse}
+Q(u)=\inf\{x\in\mathbb R:F(x)\ge u\}.
+\end{equation}
+$Q$读作分位数函数或广义逆；“首次达到”中的不等号必须是$\ge$，这样才能覆盖离散跳跃和平坦区间。
+\end{definition}
+
+\begin{theorem}[广义逆变换定理]\label{thm:V5-C02-inverse-transform}
+若$U\sim\mathrm U(0,1)$，并令$X=Q(U)$，其中$Q$由式\eqref{eq:V5-C02-generalized-inverse}定义，则$X$的分布函数是$F$。此结论允许$F$有跳跃和平坦段。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C31-PROOF-003 L1
+\paragraph{读前自检：证明：广义逆变换定理。}在“若$u\le F(x)$”成立时处理广义逆变换定理：请把$Q(u)\le x$用到的关键定义展开并完成下一步变形，并以故$X$确实服从$F$判定结果。\par
+
+\begin{proof}
+先证明对每个$0<u<1$和$x\in\mathbb R$都有
+\begin{equation}\label{eq:V5-C02-quantile-event}
+Q(u)\le x\quad\Longleftrightarrow\quad u\le F(x).
+\end{equation}
+由于$0<u<1$且分布函数在两端的极限分别为$0$和$1$，集合$S_u=\{z:F(z)\ge u\}$非空且有下界，所以$a=Q(u)$是有限实数。若$u\le F(x)$，则$x\in S_u$，故$Q(u)\le x$。反过来，设$a=Q(u)\le x$。下确界定义保证对每个$n$存在$z_n\in S_u$使$a\le z_n<a+1/n$；又因$F$非降，$S_u$向上封闭，所以$a+1/n\in S_u$。序列$a+1/n$从右侧单调趋于$a$，分布函数右连续，从而$F(a)=\lim_nF(a+1/n)\ge u$；再由$a\le x$与单调性得到$F(x)\ge F(a)\ge u$。式\eqref{eq:V5-C02-quantile-event}成立。于是
+\[
+P(X\le x)=P\{Q(U)\le x\}=P\{U\le F(x)\}=F(x),
+\]
+最后一步使用$0\le F(x)\le1$以及均匀分布的分布函数。故$X$确实服从$F$。
+\end{proof}
+图\ref{fig:V5-C02-generalized-inverse}把严格递增与离散跳跃放在同一“首次达到”规则下。若$F$有平坦段，普通代数逆可能不存在或不唯一，广义逆仍有定义。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_generalized_inverse.tex}
+
+% KNOWLEDGE-PLAN: KN-V5-C31-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：逆变换抽样。}逆变换抽样固定采用只返回$u\in(0,1)$的随机源；若随机源返回精确$0$或$1$，立即报告$\mathtt{random\_source\_failure}$而不裁剪。请核对连续CDF求逆与离散最小下标规则均只接收合法$u$。\par
+
+\begin{comparisonbox}
+\textbf{理论事件与有限精度端点政策。}在概率论中，无论把连续均匀分布写作$\mathrm U(0,1)$还是$\mathrm U[0,1]$，都有$P(U\in\{0,1\})=0$，所以定理的分布结论不要求“观测到端点就失败”。有限精度生成器却可能返回精确$0$或$1$；这是接口政策问题。实现必须预先选择：使用保证开区间输出的生成器、在有限重抽预算内重抽，或以$\mathtt{random\_source\_failure}$停止。不得事后静默裁剪到最近内点，因为裁剪会在该机器数上制造额外点质量。连续数值求逆还需括区间$[L,R]$、宽度容差$\delta$和CDF残差；离散表使用最小下标$k$使$F_k\ge u$。逐坐标逆变换只能生成独立边缘，不能自动恢复多维相关结构。
+\end{comparisonbox}
+
+% KNOWLEDGE-PLAN: KN-V5-C31-CONCEPT-008 L1
+\paragraph{读前自检：接受—拒绝抽样。}接受--拒绝抽样要求归一化密度$p,q$同支配测度且$p(x)\le c q(x)$；请对$Y\sim q,U\sim U(0,1)$检查$U\le p(Y)/(cq(Y))$，核对接受率为$1/c$。\par
+
+\SLTeachSection{接受—拒绝抽样}{sec:V5-C02-S03}
+\knowledgeanchor{PRE-SA-004}{接受—拒绝抽样}
+\knowledgeanchor{SLM-19-01-003}{接受--拒绝法}
+\index{接受--拒绝抽样}
+设$p$与$q$是关于同一支配测度$\nu$的归一化密度；连续情形可取Lebesgue测度，离散情形可取计数测度。记$p\ll q$表示$q(x)=0$时$p(x)=0$对$\nu$几乎处处。假设存在有限常数
+\begin{equation}\label{eq:V5-C02-envelope}
+c\ge\operatorname*{ess\,sup}_{q(x)>0}\frac{p(x)}{q(x)},
+\qquad p(x)\le c q(x)\quad\text{几乎处处}.
+\end{equation}
+由两边积分可知$c\ge1$。抽取$Y\sim q$和独立的$U\sim\mathrm U(0,1)$，并在
+\begin{equation}\label{eq:V5-C02-accept-event}
+U\le\alpha(Y),\qquad \alpha(y)=\frac{p(y)}{c q(y)}
+\end{equation}
+时接受$Y$。在$q=0$的零概率区域可把$\alpha$定义为$0$；使用前仍需验证全局支配条件，不能靠恰好没抽到缺口来证明合法。
+
+\begin{theorem}[接受--拒绝抽样的分布与接受率]\label{thm:V5-C02-rejection-correctness}
+在式\eqref{eq:V5-C02-envelope}条件下，对任意可测集合$A$，单次提议满足
+\[
+P(Y\in A,\text{接受})=\frac1c\int_Ap(y)\,\mathrm d\nu(y),
+\qquad P(\text{接受})=\frac1c.
+\]
+因此条件分布$P(Y\in A\mid\text{接受})=\int_Ap(y)\,\mathrm d\nu(y)$；连续重复独立试验所得的接受值组成独立同分布的$p$样本。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C31-PROOF-004 L1
+\paragraph{读前自检：证明：接受--拒绝抽样的分布与接受率。}接受--拒绝证明以$0\le p(y)/(cq(y))\le1$为条件；请对集合$A$积分$q(y)p(y)/(cq(y))$，核对联合接受质量为$c^{-1}\int_Ap$，条件分布因此为$p$。\par
+
+\begin{proof}
+固定$Y=y$后，$U$与$Y$独立且$0\le\alpha(y)\le1$，所以条件接受概率是$\alpha(y)$。按$Y$积分得到
+\[
+P(Y\in A,\text{接受})
+=\int_{A\cap\{q>0\}}q(y)\alpha(y)\,\mathrm d\nu(y)
+=\frac1c\int_{A\cap\{q>0\}}p(y)\,\mathrm d\nu(y)
+=\frac1c\int_Ap(y)\,\mathrm d\nu(y),
+\]
+其中最后一个等号使用$p\ll q$。
+取$A=\mathcal X$并使用$\int p\,\mathrm d\nu=1$，得到$P(\text{接受})=1/c$。两式相除便得到接受值的条件分布。每次提议对$(Y,U)$都重新独立抽取；一次接受之后，后续提议块与此前提议块独立且规则不变。对连续多个接受值逐次使用这一条件分布，可把其联合概率分解为各自$p$概率的乘积，所以接受序列独立同分布。结论得证。
+\end{proof}
+每次成功概率为$1/c$，故得到一个接受值所需提议次数服从参数$1/c$的几何分布，期望为$c$。图\ref{fig:V5-C02-rejection-envelope}把合法包络、含边界接受门与普通拒绝放在同一绘图区；图示取$p(y)=6y(1-y)$、$q(y)=1$（$y\in[0,1]$）和$c=1.6=8/5$，故$p\le cq$几乎处处且接受率为$5/8$。圆点$y=1/4,h=4/5$满足$U=1/2\le45/64=p/(cq)$而接受；三角点$y=3/4,h=27/20$满足$U=27/32>45/64=p/(cq)$而拒绝，但仍位于合法包络之下。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_envelope.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看实线$p$与虚线$cq$在$[0,1]$上保持合法支配且最小差为$1/10$，再按$Ucq(Y)\le p(Y)$逐一核对圆点与三角点，最终由面积得到接受率$5/8$、平均提议数$8/5$和拒绝区面积$3/5$；三角点是普通拒绝，不是包络失效。
+
+图\ref{fig:V5-C02-rejection-flow}给出带预算接受--拒绝的工程状态机：全部输入与包络证书先于随机调用完成核验，之后才进入计数、提议和接受分支。
+\clearpage
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_flow.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看顶部预检和初始化后的$a=N$、$m=B$两级短路：$N=0$（包括$N=B=0$）先到$\mathtt{completed}$，而$N>0,B=0$到$\mathtt{budget\_stop}$，均不调用$q$抽样器或均匀源；再看一次候选成功后$m$立即增加，随机源或数值失败均保留$X_{1:a},m,a$并报告失败位置；最后沿接受与普通拒绝两支回到“先$a=N$、再$m=B$”的检查，得到只有接受分支追加$Y$并增加$a$，同轮同时命中目标与预算时仍优先$\mathtt{completed}$，包络越界则是$\mathtt{invalid\_input}$及$\mathtt{envelope\_condition\_failure}$诊断。
+
+有限状态例可把条件看清。若$p=(1/2,1/3,1/6)$，$q=(1/3,1/3,1/3)$，则$p/q=(3/2,1,1/2)$，最小可用包络常数为$c=3/2$。三个状态的条件接受概率依次为$1,2/3,1/3$，总体接受率为$2/3=1/c$。若错误地取$c=9/8$，第一个状态的比率会变成$4/3>1$；此时应停止并修正包络，而不是用$\min(1,\alpha)$静默裁剪。
+
+\SLTeachSection{重要性抽样}{sec:V5-C02-S04}
+\knowledgeanchor{PRE-SA-005}{重要性抽样}
+\index{重要性抽样}
+以下$p,q$仍表示关于同一支配测度$\nu$的密度。设目标量为$I=E_p[h(X)]$，但只能从$q$抽样。要求$p\ll q$，并在$q>0$处定义$w(x)=p(x)/q(x)$。若$Y_i\stackrel{\mathrm{iid}}{\sim}q$，普通重要性估计为
+\begin{equation}\label{eq:V5-C02-ordinary-is}
+\widehat I_N^{\mathrm{IS}}=\frac1N\sum_{i=1}^Nw(Y_i)h(Y_i).
+\end{equation}
+这不是“从$p$抽样后不加权”，而是从$q$抽样后用密度比改变量的贡献。
+
+若只能计算未归一化密度$\widetilde p=Zp$且归一化常数$Z>0$未知，令$\widetilde w=\widetilde p/q$，自归一化估计为
+\begin{equation}\label{eq:V5-C02-snis}
+\widehat I_N^{\mathrm{SNIS}}
+=\frac{\sum_{i=1}^N\widetilde w(Y_i)h(Y_i)}
+{\sum_{i=1}^N\widetilde w(Y_i)}.
+\end{equation}
+分母必须为有限正数。自归一化形式消去了未知$Z$，但有限样本下一般有偏；不能把普通重要性抽样的无偏性移植给它。
+
+\begin{theorem}[普通与自归一化重要性抽样]\label{thm:V5-C02-is-properties}
+若$p\ll q$且$E_q|w(Y)h(Y)|<\infty$，则式\eqref{eq:V5-C02-ordinary-is}无偏并几乎必然收敛到$I$。若再有$E_q[(w(Y)h(Y))^2]<\infty$，其方差为$\operatorname{Var}_q(wh)/N$。对式\eqref{eq:V5-C02-snis}，若$E_q|\widetilde w h|<\infty$且$E_q\widetilde w=Z\in(0,\infty)$，则以概率$1$存在随机整数$N_0$，使所有$N\ge N_0$时分母有限且为正；从此式\eqref{eq:V5-C02-snis}有定义，并几乎必然收敛到$I$。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C31-PROOF-005 L1
+\paragraph{读前自检：证明：普通与自归一化重要性抽样。}普通重要性抽样要求$p h$由$q$覆盖，自归一化形式还要求权重均值极限$Z>0$；请分别写出两个样本平均并取比值，核对分母最终大于$Z/2$后比值可定义。\par
+
+\begin{proof}
+支持覆盖使
+\[
+E_q[w(Y)h(Y)]
+=\int_{\{q>0\}}q(y)w(y)h(y)\,\mathrm d\nu(y)
+=\int_{\{q>0\}}p(y)h(y)\,\mathrm d\nu(y)
+=\int p(y)h(y)\,\mathrm d\nu(y)=I,
+\]
+其中最后一个等号使用$p\ll q$。
+期望线性性给出普通估计无偏；强大数定律给出其几乎必然一致性。二阶矩有限时，把随机变量$wh$代入定理\ref{thm:V5-C02-iid-mc}的方差结论，得到$\operatorname{Var}_q(wh)/N$。
+
+对自归一化估计，强大数定律分别给出
+\[
+\frac1N\sum_i\widetilde w(Y_i)h(Y_i)\to
+\int\widetilde p(y)h(y)\,\mathrm d\nu(y)=ZI,
+\quad
+\frac1N\sum_i\widetilde w(Y_i)\to Z
+\]
+几乎必然成立。因为$Z>0$，在该概率为$1$的收敛事件上，存在$N_0$使$N\ge N_0$时分母平均值大于$Z/2$且有限。除法在$(ZI,Z)$处连续，连续映射定理遂给出从$N_0$起有定义的比值收敛到$I$。有限样本分母仍可能恰为$0$，此时式\eqref{eq:V5-C02-snis}不定义；这不影响上述几乎必然的最终正性与收敛结论。证明完成。
+\end{proof}
+
+图\ref{fig:V5-C02-is-support}固定共同定义域$\mathcal X=[0,5]$，并取$p(x)=6x(5-x)/125$、$q_L(x)=(2/5)\mathbf 1_{[0,5/2]}(x)$、$q_R(x)=1/5$。支持覆盖是普通形式和自归一化形式共同的先决条件。观察任务：先找出左图$q_L$于$x=5/2$后的支持缺口，再在右图用$w=p/q_R$复算$x=1,5/2,4$处的真实密度比；最后只判断$p\ll q$是否成立，不据此断言方差低或估计可靠。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_is_support.tex}
+\FloatBarrier
+\noindent\textbf{读图检查（仅针对图\ref{fig:V5-C02-is-support}）。}先看左图的点线支撑边界、空心端点、$q_L=0$基线与$p>0$纹理区，确认增加样本或有限加权都不能恢复该缺失目标区域；再看右图$q_R=1/5>0$的全域覆盖，并由同一公式核对$w(1)=0.96$、$w(5/2)=1.50$、$w(4)=0.96$。结论只到$p\ll q_R$这一支持条件，不得从支持覆盖推成低方差或估计可靠性。
+
+\begin{proposition}[普通重要性抽样的方差最优提议]\label{prop:V5-C02-optimal-proposal}
+假设$0<\int|h(x)|p(x)\,\mathrm d\nu(x)<\infty$，且$|h(x)|>0$对$p$几乎处处成立。在所有满足$p\ll q$且使二阶矩有限的密度$q$中，
+\[
+q^\star(x)=\frac{|h(x)|p(x)}{\int|h(t)|p(t)\,\mathrm d\nu(t)}
+\]
+使普通重要性贡献$w(Y)h(Y)$的二阶矩最小。该提议给出零方差当且仅当$h$在$p$下几乎处处同号。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C31-PROOF-006 L1
+\paragraph{读前自检：证明：普通重要性抽样的方差最优提议。}普通重要性抽样的二阶矩在提议$q$下为$E_q[(p(X)h(X)/q(X))^2]$；请用Cauchy--Schwarz推出下界，并核对$q^*(x)\propto p(x)|h(x)|$达到该界。\par
+
+\begin{proof}
+对任意可行$q$，在$q=0$处把$|h|p/\sqrt q$与$h^2p^2/q$都约定为$0$；这些约定与$p\ll q$一致。Cauchy--Schwarz不等式给出
+\[
+\left(\int|h|p\,\mathrm d\nu\right)^2
+=\left(\int\frac{|h|p}{\sqrt q}\sqrt q\,\mathrm d\nu\right)^2
+\le\left(\int\frac{h^2p^2}{q}\,\mathrm d\nu\right)
+\left(\int q\,\mathrm d\nu\right)
+=\int\frac{h^2p^2}{q}\,\mathrm d\nu.
+\]
+右端正是$E_q[(wh)^2]$。等号条件要求$|h|p/\sqrt q$与$\sqrt q$成比例，即$q\propto|h|p$，归一化后得到$q^\star$。令$A=\int|h|p\,\mathrm d\nu$；在$q^\star$下，$w(x)h(x)=A\operatorname{sgn}(h(x))$。其方差为$A^2-I^2$，等于零当且仅当$|I|=A$，这等价于$h$几乎处处不改变符号。命题成立。
+\end{proof}
+这个结果是方差最小化的理论基准，不是可直接执行的万能选择，因为$q^\star$的归一化常数和抽样机制常与原积分同样困难。若$h=0$的集合具有正$p$概率，则$q^\star$会在该集合取零，不再满足本章统一采用的$p\ll q$强支持条件；可用$q_\varepsilon=(1-\varepsilon)q^\star+\varepsilon p$保持覆盖，并在$\varepsilon\downarrow0$时逼近理论下界。
+
+\SLAdvancedSection{估计误差与诊断}{sec:V5-C02-S05}
+令$Y_i$表示任一独立同分布且方差为$\sigma^2<\infty$的蒙特卡罗贡献。只有$N\ge2$时，样本方差和估计标准误才定义为
+\begin{equation}\label{eq:V5-C02-sample-variance}
+s^2=\frac1{N-1}\sum_{i=1}^N(Y_i-\overline Y_N)^2,
+\qquad \widehat{\mathrm{SE}}(\overline Y_N)=\frac{s}{\sqrt N}.
+\end{equation}
+为核对分母$N-1$，先使用恒等式
+\[
+\sum_{i=1}^N(Y_i-\overline Y_N)^2
+=\sum_{i=1}^N(Y_i-\mu)^2-N(\overline Y_N-\mu)^2.
+\]
+两边取期望：第一项贡献$N\sigma^2$，第二项贡献
+$N\operatorname{Var}(\overline Y_N)=\sigma^2$，故平方离差和的期望为$(N-1)\sigma^2$，从而$E(s^2)=\sigma^2$。在独立同分布、方差有限并满足中心极限定理的条件下，
+\begin{equation}\label{eq:V5-C02-clt-interval}
+\overline Y_N\ \dot\sim\ \mathcal N(\mu,\sigma^2/N),
+\qquad
+\overline Y_N\pm z_{1-\alpha/2}\frac{s}{\sqrt N}
+\end{equation}
+给出大样本近似区间，而不是有限样本精确覆盖保证。
+
+接受--拒绝法若固定做$B$次独立提议，则有效包络下的接受数$A_B$服从$\operatorname{Binomial}(B,1/c)$，所以$E(A_B)=B/c$、$\operatorname{Var}(A_B)=B(1/c)(1-1/c)$。观测接受率远低于$1/c$可能提示密度求值、已验证的包络不等式或随机数生成规则存在问题，但一次有限样本偏差本身不是反证。
+
+对非负权重$w_1,\ldots,w_N$且至少一个为正，常用启发式有效样本量为
+\begin{equation}\label{eq:V5-C02-ess}
+\operatorname{ESS}=\frac{(\sum_iw_i)^2}{\sum_iw_i^2}
+=\frac1{\sum_i\widetilde w_i^2},
+\qquad \widetilde w_i=\frac{w_i}{\sum_jw_j}.
+\end{equation}
+由于$\sum_i\widetilde w_i=1$，有$\sum_i\widetilde w_i^2\le1$；Cauchy--Schwarz又给出$1=(\sum_i\widetilde w_i)^2\le N\sum_i\widetilde w_i^2$。因此$1\le\operatorname{ESS}\le N$。它只衡量权重集中程度，不能发现共同遗漏的支持区域，也不是普通估计量方差的精确等价样本数。
+
+\nopagebreak[4]
+\phantomsection\label{struct:V5-C02-CH14}
+\nopagebreak[4]
+\textbf{几何解释。}蒙特卡罗积分用随机竖条的平均高度表示面积；广义逆在分布函数纵轴上取均匀高度，再水平投影到横轴；接受--拒绝法在包络曲线下均匀取点，只保留落到目标曲线下的点。三种图形共享“面积即概率”，但输出对象不同。
+
+\phantomsection\label{struct:V5-C02-CH15}
+\textbf{概率解释。}样本均值利用大数定律；逆变换利用事件等价$\{Q(U)\le x\}=\{U\le F(x)\}$；接受--拒绝法是对提议分布做条件化稀疏；重要性抽样是测度变换。条件化改变保留哪些样本，重加权改变每个样本对和的贡献。
+
+\phantomsection\label{struct:V5-C02-CH16}
+\textbf{优化解释。}包络常数越小，理论接受率$1/c$越高；但$c$必须保持全局支配，不能为追求接受率而取小。重要性抽样则通过命题\ref{prop:V5-C02-optimal-proposal}最小化二阶矩。两种优化都受支持和可抽样性约束，不能只看局部曲线接近程度。
+
+\phantomsection\label{struct:V5-C02-CH17}
+图\ref{fig:V5-C02-running-mean}用固定的四个均匀数说明运行均值可以上下波动；图\ref{fig:V5-C02-weight-ess}显示一个权重占$90\%$时ESS会接近$1$；图\ref{fig:V5-C02-rmse-rate}只在独立同分布且方差有限时画出$N^{-1/2}$速率。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_running_mean.tex}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_weight_ess.tex}
+% v2.6 layout: former forced clear removed; natural pagination.
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rmse_rate.tex}
+
+\phantomsection\label{struct:V5-C02-CH18}
+\Needspace{6\baselineskip}
+\begin{example}[稀有事件下的重要性抽样高方差]\label{exm:V5-C02-four-uniforms}
+在状态空间$\{0,1\}$上，目标分布为$p=(0.99,0.01)$，提议分布为$q=(0.9999,0.0001)$，且$h(0)=0,h(1)=100$。求$I=E_p h$、普通重要性贡献的方差，并解释为什么四次都抽到状态$0$时估计和样本ESS会给出误导性的乐观诊断。
+\end{example}
+
+\Needspace{4\baselineskip}
+\SLExampleSolutionHeading{exm:V5-C02-four-uniforms}
+\begin{solution}
+\SLReadTranslation{题目要求完成“稀有事件下的重要性抽样高方差”：先写清目标分布、提议或满条件与支持，再构造转移/估计量并核验不变性或归一化。}
+\SolGiven 目标分布、提议核或满条件在题面支持上有定义；所有条件分母和归一化常数为正，状态空间与随机变量取值域保持一致。
+\SLMethodTrigger{先声明目标分布、提议/满条件与支持，再逐步构造转移或估计量并核验归一化。}
+\SolDerive
+\textbf{计算。}精确目标值为$I=0.99\cdot0+0.01\cdot100=1$。两状态的重要性权重与贡献分别为
+\[
+\frac{p(0)}{q(0)}=\frac{0.99}{0.9999}\approx0.990099,
+\qquad \frac{p(1)}{q(1)}=100,
+\qquad Wh\in\{0,10000\}.
+\]
+故$E_q(Wh)=1$，但
+$\operatorname{Var}_q(Wh)=0.0001\times10000^2-1^2=9999$。若四次都抽到常见状态$0$，普通估计为$0$，相对真值误差为$-1$；四个已观察权重却完全相等，经验ESS会给出$4$。
+
+\textbf{独立核验。}二阶矩为$E_q[(Wh)^2]=10^4$，减去均值平方再次得到方差$9999$；而四次均未命中状态$1$的概率是$0.9999^4\approx0.99960006$，说明这种“ESS满额但估计为零”的样本并不罕见。
+
+\textbf{结论。}样本ESS只能诊断已出现权重的集中度，不能发现尚未命中的稀有高贡献区域；后文例\ref{exm:V5-C02-mc-audit}另行审计普通均匀样本均值，二者不再重复同一数据。
+\end{solution}
+
+\nopagebreak[4]
+\phantomsection\label{struct:V5-C02-CH19}
+\nopagebreak[4]
+以下四个算法都区分数学上概率为零的事件与实际出现的数值异常。有限值、定义域和支持覆盖必须逐项检查；任何非法概率、负权重或非有限数都不能通过裁剪掩盖。
+
+\phantomsection\label{struct:V5-C02-CH20}
+\paragraph{独立蒙特卡罗在线估计。}
+\textbf{输入与输出。}输入为独立目标抽样器、可测函数$f$和非负整数$N$；输出为已生成样本数、在线均值，以及在可定义时的样本方差与标准误。$N=0$时不调用随机源，均值、方差与标准误均未定义；$N=1$时均值已定义，但方差和标准误仍未定义。
+
+\phantomsection\label{struct:V5-C02-CH21}
+\textbf{参数含义。}$N$是请求的独立样本数；抽样器必须保证每次调用独立且共同服从$p$，$f$把样本映为实贡献。无限方差不是可由有限前缀可靠排除的输入错误，而是禁止使用常规标准误的适用性问题。
+
+\phantomsection\label{struct:V5-C02-CH22}
+\textbf{初始化。}令计数$k=0$、均值$m=0$、中心平方和$M_2=0$，不预先构造长度$N$的数组。先检查$N$是非负整数，并确认抽样器每次给出相互独立且同分布的样本。
+
+\phantomsection\label{struct:V5-C02-CH23}
+\textbf{循环变量、更新顺序与判断条件。}循环变量$i=1,\ldots,N$。每轮先抽取$X_i$并计算$y_i=f(X_i)$，只有$y_i$有限才执行Welford更新：$k\leftarrow k+1$，$d\leftarrow y_i-m$，$m\leftarrow m+d/k$，$M_2\leftarrow M_2+d(y_i-m)$。异常贡献不计入此前的统计量。
+
+\phantomsection\label{struct:V5-C02-CH24}
+\textbf{停止条件与返回结果。}正常完成$N$轮后有$k=N$；遇到非有限样本或贡献时立即停止，并保留此前已经计算的统计量。$k=0$时估计未定义，$k=1$时只给出$m$，$k\ge2$时再给出$s^2=M_2/(k-1)$与$s/\sqrt{k}$。
+
+\phantomsection\label{struct:V5-C02-CH25}
+\textbf{正确性依据与收敛条件。}Welford递推保持$m=k^{-1}\sum_{j=1}^ky_j$及$M_2=\sum_{j=1}^k(y_j-m)^2$。在独立同分布和一阶可积条件下，完成估计由强大数定律收敛；使用样本方差、标准误和正态近似还需有限二阶矩。不收敛或不适用情形包括相关样本、期望不存在，以及用iid标准误分析MCMC输出。
+
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C02-iid-mc-online | 训练时间复杂度=本算法估计固定期望而不拟合模型参数，没有训练阶段; 预测时间复杂度=本算法不执行模型预测，相关成本统一记为估计执行时间
+\begingroup
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V5-C31-ALGORITHM_IDEA-001 L2
+
+% KNOWLEDGE-PLAN: KN-V5-C31-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={独立蒙特卡罗均值与Welford在线诊断：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={每次调用相互独立同分布的目标抽样器$\mathcal S_p$、实值函数$f$与样本预算$N$},
+  output={最后合法Welford状态$(k,m,M_2)$、可定义时的方差/标准误、随机调用数$u_{\rm done}$、状态与最终诊断},
+  preconditions={$N\in\mathbb N_0$；抽样器契约声明独立同分布；$f$在样本支持上返回实值},
+  initialization={置$k=m=M_2=u_{\rm done}=0$；$N=0$时不调用随机源且统计量保持未定义},
+  loop={至多$N$次先调用随机源再计算$f(X)$，仅对有限贡献形成Welford三元组候选},
+  update={候选$k^+,m^+,M_2^+$全部有限且$M_2^+$不低于舍入容差下界后才原子提交},
+  domain={$k$为已提交有限贡献数；均值在$k\ge1$定义，样本方差与标准误仅在$k\ge2$定义},
+  failure={预算或抽样器接口非法返回$\mathtt{invalid\_input}$；随机源调用失败返回$\mathtt{random\_source\_failure}$；样本、函数贡献或递推非有限返回$\mathtt{numerical\_failure}$，均保留上一合法前缀},
+  stop={完成$N$次原子更新或首次失败时停止},
+  budget={至多$N$次随机源调用、$N$次函数求值和$N$次Welford提交},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$k$计实际提交贡献数，$u_{\rm done}$计实际随机源调用数，失败调用不增加$k$},
+  diagnostics={最终均值/方差定义标志、$M_2$、失败样本位置与随机源/函数/递推阶段},
+  complexity={$k$次成功更新和至多$N$次调用需$O(N(C_p+C_f))$时间、$O(1)$工作空间}
+}
+\begin{algorithm}[!t]
+\caption{独立蒙特卡罗均值与Welford在线诊断}\label{alg:V5-C02-iid-mc-online}
+\KwIn{每次调用相互独立且同分布的目标抽样器$\mathcal S_p$；实值函数$f$；$N\in\mathbb N_0$}
+\KwOut{最后合法$(k,m,M_2)$与可定义统计量；$u_{\rm done}$；$\mathtt{status}$与诊断}
+核验$N$与抽样器契约；若失败则返回$k=0$、$\mathtt{invalid\_input}$及字段诊断；令$k\leftarrow0,m\leftarrow0,M_2\leftarrow0,u_{\rm done}\leftarrow0$\;
+若$N=0$，不调用随机源，返回未定义估计、$\mathtt{completed}$及零预算诊断\;
+\For{$i\leftarrow1,\ldots,N$}{
+  调用$X\leftarrow\mathcal S_p()$并增加$u_{\rm done}$；若调用失败，返回此前状态、$\mathtt{random\_source\_failure}$及$i$诊断\;
+  计算$y\leftarrow f(X)$；若样本或$y$非有限，返回此前状态、$\mathtt{numerical\_failure}$及$(i,\text{function})$诊断\;
+  形成$k^+=k+1,d=y-m,m^+=m+d/k^+,M_2^+=M_2+d(y-m^+)$\;
+  若候选非有限或$M_2^+$显著为负，返回此前状态、$\mathtt{numerical\_failure}$及$(i,\text{update})$诊断\;
+  原子提交$(k,m,M_2)\leftarrow(k^+,m^+,\max\{M_2^+,0\})$\;
+}
+若$k=0$，返回未定义估计、$\mathtt{completed}$及零预算诊断；若$k=1$，返回$m$、未定义方差/标准误、$\mathtt{completed}$及单样本诊断\;
+形成$s^2=M_2/(k-1)$与$s/\sqrt{k}$；若非有限，返回Welford状态、$\mathtt{numerical\_failure}$及汇总诊断；否则返回完整统计量、$\mathtt{completed}$及最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\textbf{异常与退化。}若$N$不是整数、无法保证独立同分布抽样，或样本与函数值不是有限实数，算法停止并保留此前完成的更新。$N=0$和$N=1$是有定义的退化分支，不能执行除以$N$或$N-1$。\textbf{复杂度假设。}一次抽样和一次$f$求值的成本分别为$C_p,C_f$，标量运算按$O(1)$计；执行时间为$\Theta(N(C_p+C_f))$，除可选输出样本外工作空间为$\Theta(1)$。
+
+\paragraph{广义逆直接抽样。}
+\textbf{输入与输出。}输入为合法分布函数表示、模式（解析逆、离散累计表或连续数值逆）、各次调用相互独立且共同服从连续均匀分布的抽样器、预登记端点政策、均匀源调用预算$B_U$、$N$以及数值容差；输出为所得样本、每个数值逆的括区间与残差，以及完成次数。使用前必须验证CDF非降、右连续且具有正确两端极限；离散表还需非负增量与末项为$1$。端点政策只能是“生成器保证开区间”“预算内重抽”或“端点即报告随机源失败”，不得静默裁剪。
+
+\textbf{参数、初始化与循环变量。}$N\in\mathbb N_0$；连续数值模式给出$\delta>0$、残差阈值$\eta\ge0$、最大二分轮数$J$和能为每个$u$返回$F(L)<u\le F(R)$的括区间过程。初始化空前缀，循环变量为$i$及数值模式内的$j$。
+
+\textbf{更新顺序与判断条件。}每轮先取$u$；若命中端点，先执行已登记政策，重抽时增加调用计数且不得超过$B_U$。只有得到有限内点$0<u<1$后才进入求逆，且永不裁剪。解析模式计算$Q(u)$；离散模式取最小$k$使$F_k\ge u$；连续数值模式保持$F(L)<u\le F(R)$，按$F(M)\ge u$更新右端，否则更新左端。
+
+\textbf{停止条件、返回结果与异常退化。}解析和离散模式每轮一次完成；数值模式在区间宽度不超过$\delta$且右端残差$F(R)-u\le\eta$时取$R$。达到$J$仍不满足时停止，并保留此前已生成的样本。$N=0$不调用均匀随机源。分布函数非法、端点政策或重抽预算耗尽、求值不是有限实数、找不到离散下标或括区间失效时停止；端点本身不是概率定理失败。
+
+\textbf{正确性依据、收敛条件与不适用情形。}精确模式由定理\ref{thm:V5-C02-inverse-transform}保证单次输出分布正确；均匀数相互独立同分布进一步保证各次输出独立同分布。数值模式需$F$在目标分位点附近连续且严格递增；在有效括区间内二分使宽度至多$(R_0-L_0)2^{-j}$，$\delta,\eta\to0$时近似趋于广义逆。坐标逐一求逆不适用于直接生成有相关性的多元联合分布。
+
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C02-generalized-inverse | 训练时间复杂度=算法直接生成样本，不含参数训练阶段; 预测时间复杂度=算法不执行预测，按不同逆模式给出抽样执行时间
+\begingroup
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V5-C31-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：带离散和数值分支的广义逆抽样：执行契约。}带离散和数值分支的广义逆抽样输入“候选CDF及其解析逆/离散表/数值求值接口、独立均匀源、端点政策、均匀源调用预算$B_U$、样本数$N$、数值逆预算$J$与容差/括区间过程”，条件“$N,J,B_U\in\mathbb N_0$且$B_U\ge N$”；请执行“候选$x$及其括区间/残差全部通过定义域和有限性检查后才原子追加并增加$k$”，以“生成$N$个样本、当前数值逆耗尽$J$轮或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V5-C31-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：带离散和数值分支的广义逆抽样。}带离散和数值分支的广义逆抽样输入“候选CDF及其解析逆/离散表/数值求值接口、独立均匀源、端点政策、均匀源调用预算$B_U$、样本数$N$、数值逆预算$J$与容差/括区间过程”，条件“$N,J,B_U\in\mathbb N_0$且$B_U\ge N$”；请做一轮“候选$x$及其括区间/残差全部通过定义域和有限性检查后才原子追加并增加$k$”，以“生成$N$个样本、当前数值逆耗尽$J$轮或首次失败时停止”核对停止证书。\par
+
+\begin{AlgorithmContract}{
+  input={候选CDF及其解析逆/离散表/数值求值接口、独立均匀源、端点政策、均匀源调用预算$B_U$、样本数$N$、数值逆预算$J$与容差/括区间过程},
+  output={最后合法样本前缀、完成数$k$、累计二分轮数$j_{\rm done}$、均匀源调用数$u_{\rm done}$、状态与最终诊断},
+  preconditions={$N,J,B_U\in\mathbb N_0$且$B_U\ge N$；CDF非降右连续且两端极限正确；端点政策及所选模式接口、离散增量或数值括区间规则合法},
+  initialization={样本与诊断表清空，$k=j_{\rm done}=u_{\rm done}=0$；$N=0$时不调用随机源},
+  loop={逐样本调用均匀源，并按解析逆、离散二分或带$J$轮上限的连续二分分支形成候选},
+  update={候选$x$及其括区间/残差全部通过定义域和有限性检查后才原子追加并增加$k$},
+  domain={$u\in(0,1)$；离散下标存在；数值分支持续满足$F(L)<u\le F(R)$；返回样本有限且在支持内},
+  failure={接口/CDF/模式/端点政策非法返回$\mathtt{invalid\_input}$；均匀源调用失败、违反开区间合同或端点重抽耗尽$B_U$返回$\mathtt{random\_source\_failure}$；逆/CDF求值、索引或括区间失效返回$\mathtt{numerical\_failure}$；二分预算耗尽返回$\mathtt{budget\_stop}$},
+  stop={生成$N$个样本、当前数值逆耗尽$J$轮或首次失败时停止},
+  budget={至多$B_U$次均匀源调用；每个连续数值逆至多$J$轮二分，故累计二分不超过$NJ$},
+  status={$\mathtt{completed}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$k$计原子提交样本，$j_{\rm done}$计实际二分轮，$u_{\rm done}$计实际均匀源调用},
+  diagnostics={模式、失败样本/二分位置、最后括区间与残差、CDF/支持检查、计划/实际工作量及随机源末状态},
+  complexity={解析、离散、数值模式分别为$\Theta(N(C_U+C_Q))$、$\Theta(N(C_U+\log K))$、$O(N(C_U+JC_F))$，输出空间$\Theta(N)$}
+}
+\begin{algorithm}[!t]
+\caption{带离散和数值分支的广义逆抽样}\label{alg:V5-C02-generalized-inverse}
+\KwIn{候选CDF $F$；模式$\in\{$解析逆、离散累计表、连续数值逆$\}$；独立均匀抽样器$\mathcal U$；端点政策与$B_U$；$N\in\mathbb N_0$；数值模式的$\delta,\eta,J$与括区间过程}
+\KwOut{最后合法样本前缀；$k,j_{\rm done},u_{\rm done}$；$\mathtt{status}$、括区间/残差与最终诊断}
+令$k\leftarrow0,j_{\rm done}\leftarrow0,u_{\rm done}\leftarrow0$及样本前缀为空；核验CDF、模式、$N,J$与容差/括区间规则；失败则返回空前缀、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+若$N=0$，则返回空前缀、计数$0$、$\mathtt{completed}$及“零预算、未调用随机源”诊断\;
+\For{$i\leftarrow1,\ldots,N$}{
+  调用$u\leftarrow\mathcal U()$并增加$u_{\rm done}$；调用失败或$u$非有限时返回$\mathtt{random\_source\_failure}$；若$u\in\{0,1\}$则按登记政策重抽或停止，重抽不得使$u_{\rm done}>B_U$，且禁止裁剪；得到$u\notin(0,1)$仍返回随机源失败及样本$i$诊断\;
+  \uIf{解析逆模式}{计算临时$x=Q(u)$；若非有限或越出支持，返回前缀、$\mathtt{numerical\_failure}$及解析逆诊断\;}
+  \uElseIf{离散模式}{二分查找最小$r$使$F_r\ge u$；若不存在，返回前缀、$\mathtt{numerical\_failure}$及离散索引诊断；否则令$x$为该支持点\;}
+  \Else{取得临时括区间；无效则返回前缀、$\mathtt{numerical\_failure}$及括区间诊断；在保持不变量下至多二分$J$轮，每轮增加$j_{\rm done}$；若仍未同时满足宽度与残差门，则返回前缀、$\mathtt{budget\_stop}$及样本$i$预算诊断；否则令$x=R$\;}
+  原子追加$x$及括区间/残差诊断，并令$k\leftarrow k+1$\;
+}
+返回$X_{1:N}$、实际计数、$\mathtt{completed}$及最终模式/残差诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\textbf{复杂度假设。}一次均匀抽样为$C_U$，解析逆为$C_Q$，离散支持点数为$K$，一次CDF求值为$C_F$。解析模式为$\Theta(N(C_U+C_Q))$；离散二分查找为$\Theta(N(C_U+\log K))$，线性扫描则为$\Theta(N(C_U+K))$；数值模式至多为$\Theta(N(C_U+J C_F))$，通常$J$按$\lceil\log_2((R_0-L_0)/\delta)\rceil$设定。除输出外工作空间为$\Theta(1)$，保存全部诊断为$\Theta(N)$。
+
+\paragraph{接受--拒绝抽样的数学主体与预算实现。}
+算法\ref{alg:V5-C02-rejection-math}只保留证明分布正确性所需的数学主体；有限提议预算、随机源失败、密度有限性与前缀返回放入算法后的鲁棒实现条带。这样每种采样方法只有一个核心算法，$p\le cq$推出的接受分布证明不依赖人为预算，工程实现又不会把“尚未收满”伪装成成功。
+
+\textbf{输入与输出。}核心算法输入归一化密度$p,q$、$q$的独立抽样器、支配条件$p\le cq$、有限$c$与目标接受数$N$，输出$N$个独立目标样本。工程调用另显式输入提议上限$B$，输出已经接受的样本前缀$X_{1:a}$、实际提议数$m$、接受数$a$、状态和诊断；失败时不得丢弃此前合法样本，也不得把候选失败点计为接受。
+
+\textbf{参数、初始化与循环变量。}$N,B\in\mathbb N_0$且$1\le c<\infty$。先核对$p\ll q$与全局不等式$p\le cq$的调用方证书；工程包装初始化$m\leftarrow0$、$a\leftarrow0$、空样本表和空诊断。核心循环以$a<N$为条件；工程包装还同时检查$m<B$，每轮变量是候选$Y_m$和均匀数$U_m$。
+
+\textbf{更新顺序与判断条件。}先调用$q$抽样器得到$Y$并把实际提议数$m$增加$1$，再独立抽$U\in(0,1)$，随后求$p(Y),q(Y)$。密度必须有限非负且$q(Y)>0$；计算$\rho=p(Y)/(cq(Y))$后必须检查$0\le\rho\le1$。只有$U\le\rho$才追加$Y$并增加$a$。若$c$过小导致$\rho>1$，则状态为$\mathtt{invalid\_input}$、诊断为$\mathtt{envelope\_condition\_failure}$，禁止裁剪成$\min(1,\rho)$或当作一次普通拒绝。
+
+\textbf{停止条件、返回结果与异常退化。}$a=N$时以$\mathtt{completed}$结束；工程包装中$m=B$但$a<N$时以$\mathtt{budget\_stop}$返回样本前缀。$N=0$在检查标量条件后返回空样本、$m=a=0$与$\mathtt{completed}$，且不调用随机源；$N>0,B=0$返回$\mathtt{budget\_stop}$。随机源、密度求值、支持或包络失败的状态与最小诊断字段见算法后的鲁棒实现条带。
+
+\textbf{正确性依据、收敛条件与不适用情形。}定理\ref{thm:V5-C02-rejection-correctness}证明核心算法中每个接受值服从$p$且接受值相互独立。没有数值迭代收敛问题；有限$c$使每个接受值的等待时间几乎必然有限。工程包装只在$\mathtt{completed}$时返回完整的$N$个样本；$\mathtt{budget\_stop}$的前缀仍由合法接受事件产生，但不是“已经完成$N$样本”的结果。不满足支持覆盖或不存在有限$c$时方法不适用。
+
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C02-rejection-math | 训练时间复杂度=数学主体不拟合模型; 预测时间复杂度=数学主体不执行预测，只描述无预算抽样
+\begingroup
+\SetArgSty{textnormal}
+\renewcommand{\thealgocf}{\thechapter.\arabic{algocf}A}
+% KNOWLEDGE-PLAN: KN-V5-C31-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：接受—拒绝抽样的数学主体：执行契约。}接受—拒绝抽样的数学主体输入“归一化密度$p,q$、理想独立提议/均匀源、全局包络证书、有限$c$与目标接受数$N$”，条件“$N\in\mathbb N_0$、$1\le c<\infty$”；请执行“接受事件成立时才原子追加样本并增加$a$”，以“$a=N$时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V5-C31-ALGORITHM_IDEA-006 L2
+\begin{keypointbox}[title={接受—拒绝抽样的数学主体：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={归一化密度$p,q$、理想独立提议/均匀源、全局包络证书、有限$c$与目标接受数$N$},
+  output={最后合法接受样本表、实际提议数$m$、接受数$a$、规范状态与最终诊断},
+  preconditions={$N\in\mathbb N_0$、$1\le c<\infty$；调用方已证明$p\ll q$与$p\le cq$；随机源按理想分布独立调用},
+  initialization={$m=a=0$，接受样本表为空；$N=0$时直接完成且不调用理想随机源},
+  loop={在无人工截断的数学模型中重复独立提议，直到接受数达到$N$},
+  update={一次理想提议完成后增加$m$；接受事件成立时才原子追加样本并增加$a$},
+  domain={包络证书保证$q(Y)>0$且$p(Y)/(cq(Y))\in[0,1]$；接受表中每项位于目标支持},
+  failure={标量、密度或包络证书非法时返回$\mathtt{invalid\_input}$；理想随机源与精确密度模型下不设运行时失败，有限预算与实际接口失败由算法后的鲁棒实现条带处理},
+  stop={$a=N$时停止；有限$c$下等待时间几乎必然有限，但没有确定提议上界},
+  budget={目标接受量固定为$N$，人为提议预算不适用于数学主体；实际随机工作量由$m$报告},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$},
+  iterations={$m$记录实际理想提议数，$a$记录实际原子提交的接受数},
+  diagnostics={返回$m,a$、零目标分支、包络/支持证书标识及最终完成原因},
+  complexity={期望提议数$Nc$，期望时间$\Theta(NcC_R)$，输出空间$\Theta(N)$}
+}
+\begin{algorithm}[!t]
+\caption{接受—拒绝抽样的数学主体}\label{alg:V5-C02-rejection-math}\label{alg:V5-C02-rejection-budget}
+\KwIn{归一化密度$p,q$及理想$q$/均匀源；$p(x)\le cq(x)$证书；有限$c$；$N\in\mathbb N_0$；无人工提议上限}
+\KwOut{最后合法接受表$X_{1:a}$；实际$m,a$；$\mathtt{status}$与最终诊断}
+$m\leftarrow0,a\leftarrow0$，样本表$X$初始化为空；若$N,c$或支持/包络证书非法，则返回空表、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+若$N=0$，则返回空表、$m=a=0$、$\mathtt{completed}$及“无需理想随机调用”诊断\;
+\While{$a<N$}{
+  独立抽取$Y\sim q$与$U\sim\mathrm U(0,1)$\;
+  $m\leftarrow m+1$\;
+  \If{$U\le p(Y)/(cq(Y))$}{原子追加$Y$并令$a\leftarrow a+1$\;}
+}
+返回$X_{1:N},m,a=N,\mathtt{completed}$及实际等待量/包络证书诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\SLRobustImplementationStrip{实际调用另给提议上限$B$，循环条件改为$a<N$且$m<B$；$a=N$返回$\mathtt{completed}$，$m=B$且$a<N$时返回合法前缀与$\mathtt{budget\_stop}$。提议或均匀源失败返回$\mathtt{random\_source\_failure}$；密度非有限、$q(Y)\le0$或比率非有限返回$\mathtt{numerical\_failure}$；$p(Y)/(cq(Y))\notin[0,1]$返回$\mathtt{invalid\_input}$并标记包络证书失败。所有分支保留$m,a$、失败阶段与此前合法前缀。}
+
+\textbf{复杂度假设。}一次$q$抽样及$p,q$求值总成本为$C_R$，追加一个样本按$O(1)$均摊。最坏执行时间为$\Theta(B C_R)$，额外工作空间为$\Theta(1)$，输出空间为$\Theta(N)$。在有效包络、无预算截断且独立试验下，期望提议数为$Nc$，故期望时间为$\Theta(Nc C_R)$；这个期望式不能替代最坏预算界。
+
+\paragraph{普通与自归一化重要性估计。}
+\textbf{输入与输出。}输入为模式、各次调用相互独立且共同服从$q$的抽样器、目标密度$p$或未归一化密度$\widetilde p=Zp$、密度表示类型、可测函数$h$、支持覆盖条件、$N$及普通模式所需的归一化信息；输出为估计、此前已经得到的记录、归一化权重和ESS。普通模式若使用$\widetilde p$，必须给出并验证$Z\in(0,\infty)$；未知$Z$时不能使用普通模式。
+
+\textbf{参数、初始化与循环变量。}模式只能是普通或自归一化；$N\in\mathbb N_0$。初始化空的$(h_i,\ell_i)$前缀，其中$\ell_i$是对数权重。循环变量$i=1,\ldots,N$。$N=0$不调用随机源，估计与ESS未定义。
+
+\textbf{更新顺序与判断条件。}每轮先独立抽$Y_i\sim q$并计算$h_i$。普通模式输入$p$时取$\ell_i=\log p(Y_i)-\log q(Y_i)$；普通模式输入$\widetilde p$和已知$Z$时取$\ell_i=\log\widetilde p(Y_i)-\log q(Y_i)-\log Z$；自归一化模式对所给目标表示$\rho\in\{p,\widetilde p\}$取$\ell_i=\log\rho(Y_i)-\log q(Y_i)$，因为公共比例会在比值中消去。负密度、不是有限实数的求值或$q(Y_i)\le0$都会使本次估计停止；$\ell_i=-\infty$表示合法零权。完成后取$a=\max_i\ell_i$并令$v_i=\exp(\ell_i-a)$，以共同缩放避免极端权重先溢出；若$\ell_i$有限而机器数$v_i=0$，则发生了有限权重下溢。
+
+\textbf{停止条件与返回结果。}遇到异常就停止并保留此前已经得到的记录。为允许有符号$h$，分别计算
+$L_+=\operatorname{LSE}_{h_i>0}(\ell_i+\log h_i)$与
+$L_-=\operatorname{LSE}_{h_i<0}(\ell_i+\log(-h_i))$，空集合取$-\infty$；再用\emph{有符号对数差}（按较大者提取公因子并用$\log1p$或$\operatorname{expm1}$）得到分子符号$\sigma$与$L_{\rm num}=\log|e^{L_+}-e^{L_-}|$。普通模式返回$\sigma$和$L_{\rm num}-\log N$；自归一化模式还要求$L_w=\operatorname{LSE}_i\ell_i$有限，并返回$\sigma$和$L_{\rm num}-L_w$。只有该有符号对数值可表示为有限浮点数时才物化普通标量；正负贡献近抵消时也必须保留取消诊断。
+
+\textbf{异常与退化。}若有限样本的普通权重全为零，则按定义估计为$0$，但ESS未定义；同一情形在自归一化模式下因分母为零而不能形成估计。出现负权重、不是有限实数的权重或最终结果时也应停止。共同对数缩放降低中间溢出的风险，却不能保证$v_i$、$r$及最终乘积均可表示；有限$\ell_i$对应的$v_i=0$、或缩放和非零而乘积下溢成$0$时，普通模式不能继续。ESS按式\eqref{eq:V5-C02-ess}由$v_i$计算，并且只用作诊断。
+
+\textbf{正确性依据、收敛条件与不适用情形。}若从$q$得到的样本相互独立同分布，则普通模式在目标已归一化、支持覆盖和一阶可积条件下无偏一致；若输入$\widetilde p$，减去$\log Z$才恢复归一化权重。有限方差还需二阶矩。自归一化模式在定理\ref{thm:V5-C02-is-properties}条件下只保证渐近一致，有限$N$通常有偏。支持缺口、自归一化的全零权重、未知归一化常数下的普通模式以及无限一阶矩均不适用。
+
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C02-importance-estimation | 训练时间复杂度=算法估计给定目标量而不训练参数; 预测时间复杂度=算法没有模型预测阶段，报告采样、密度与函数求值成本
+\begingroup
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V5-C31-ALGORITHM_IDEA-007 L2
+
+% KNOWLEDGE-PLAN: KN-V5-C31-ALGORITHM_IDEA-008 L2
+\begin{keypointbox}[title={对数缩放的普通或自归一化重要性估计：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={普通/自归一化模式、独立$q$抽样器、目标密度或未归一化核、函数$h$、支持证书、样本预算$N$及普通模式归一化信息},
+  output={最后合法$(h_i,\ell_i)$记录、完成数$i_{\rm done}$、随机源调用数$q_{\rm done}$、估计/ESS、状态与最终诊断},
+  preconditions={$N\in\mathbb N_0$；模式合法；$q$覆盖目标支持；普通未归一化模式给出有限正$Z$；接口与维数已冻结},
+  initialization={记录表为空，$i_{\rm done}=q_{\rm done}=0$；$N=0$时估计/ESS未定义且不调用随机源},
+  loop={逐次从$q$抽样，在对数域形成函数值与普通或自归一化权重记录},
+  update={$Y_i,H_i,\ell_i$的求值与定义域全部通过后才原子追加并增加$i_{\rm done}$},
+  domain={$H_i$有限，$q(Y_i)>0$，目标值有限非负；零权用$\ell_i=-\infty$表示；聚合使用有符号log-sum-exp},
+  failure={模式/归一化/支持证书非法返回$\mathtt{invalid\_input}$；抽样器失败返回$\mathtt{random\_source\_failure}$；密度/函数求值、有限权重下溢、全零自归一化分母或聚合失败返回$\mathtt{numerical\_failure}$并保留记录},
+  stop={完成$N$条原子记录、$N=0$或首次失败时停止},
+  budget={至多$N$次$q$随机源调用及$N$组目标/$q$/$h$求值；最终聚合各线性扫描记录一次},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$i_{\rm done}$计实际提交记录，$q_{\rm done}$计实际$q$随机源调用；失败调用不增加前者},
+  diagnostics={模式、失败样本/求值阶段、最大对数权重、零权数、ESS、正负抵消、上下溢及计划/实际样本数},
+  complexity={$\Theta(NC_I)$时间、$\Theta(N)$记录空间；不返回ESS的流式普通估计可用$\Theta(1)$工作空间}
+}
+\begin{algorithm}[t]
+\caption{对数缩放的普通或自归一化重要性估计}\label{alg:V5-C02-importance-estimation}
+\KwIn{模式；独立$q$抽样器；$h$；目标$p$或$\widetilde p$；支持证书；$N\in\mathbb N_0$；普通模式所需$Z$}
+\KwOut{最后合法记录；$i_{\rm done},q_{\rm done}$；估计/ESS；$\mathtt{status}$与最终诊断}
+$i_{\rm done}\leftarrow0,q_{\rm done}\leftarrow0$，记录表为空；若模式、$N$、支持证书或普通模式归一化信息非法，则返回空记录、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+若$N=0$，则返回空记录、未定义估计/ESS、$\mathtt{completed}$及“零预算、未调用随机源”诊断\;
+\For{$i\leftarrow1,\ldots,N$}{
+  调用$q$抽样器并增加$q_{\rm done}$；调用失败或样本非法时，返回最后合法记录、实际计数、$\mathtt{random\_source\_failure}$及样本$i$诊断\;
+  在临时量中计算$H_i=h(Y_i)$、$q(Y_i)$及目标值；求值失败、非有限、$q(Y_i)\le0$或目标为负时，返回记录、$\mathtt{numerical\_failure}$及求值阶段诊断\;
+  按模式计算临时$\ell_i$，零目标记为$-\infty$；若有限对数权重不能稳定表示，则返回记录、$\mathtt{numerical\_failure}$及权重诊断\;
+  原子追加$(Y_i,H_i,\ell_i)$并令$i_{\rm done}\leftarrow i$\;
+}
+令$L_w\leftarrow\operatorname{LSE}_i\ell_i$，并在$L_w$有限时计算$\log\mathrm{ESS}=2L_w-\operatorname{LSE}_i(2\ell_i)$\;
+令$L_+\leftarrow\operatorname{LSE}_{H_i>0}(\ell_i+\log H_i)$、$L_-\leftarrow\operatorname{LSE}_{H_i<0}(\ell_i+\log(-H_i))$，由稳定的有符号对数差得到$(\sigma,L_{\rm num})$\;
+\uIf{模式为普通}{令$L_{\rm est}\leftarrow L_{\rm num}-\log N$；若正负项完全抵消则返回精确零\;}
+\Else{若$L_w=-\infty$则返回最后合法记录、未定义估计、$\mathtt{numerical\_failure}$及“自归一化总权重为零”诊断；令$L_{\rm est}\leftarrow L_{\rm num}-L_w$\;}
+若聚合结果非有限或标量物化违反记录的上下溢策略，则返回记录、$\mathtt{numerical\_failure}$及聚合诊断\;
+返回记录、$(\sigma,L_{\rm est})$、可表示标量、ESS、实际计数、$\mathtt{completed}$及取消/上下溢最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\FloatBarrier
+\SLRobustImplementationStrip{核心四步是从$q$抽样、计算对数权重、按普通或自归一模式聚合、报告估计与ESS；缩放和支撑失败属于稳健实现细节}
+\endgroup
+
+\textbf{复杂度假设。}一次$q$抽样、目标密度、$q$与$h$求值总成本为$C_I$。两种模式执行时间均为$\Theta(NC_I)$，保存权重、函数值和诊断需$\Theta(N)$空间；若只做流式普通估计且不返回ESS，可降到$\Theta(1)$工作空间，自归一化与ESS的稳定对数缩放通常保留$N$条记录。
+
+\phantomsection\label{struct:V5-C02-CH26}
+\begin{complexitybox}
+\textbf{时间复杂度总览。}算法\ref{alg:V5-C02-iid-mc-online}线性使用$N$次目标抽样；算法\ref{alg:V5-C02-generalized-inverse}取决于解析逆、离散查找或数值二分；算法\ref{alg:V5-C02-rejection-budget}的确定上界由预算$B$控制、期望成本由$Nc$控制；算法\ref{alg:V5-C02-importance-estimation}线性使用$N$次提议抽样与权重求值。所有复杂度都把随机数、密度和函数求值成本参数化，不能把它们无条件当作相同常数。
+
+\phantomsection\label{struct:V5-C02-CH27}
+\textbf{空间复杂度总览。}在线均值只需常数工作空间；返回全部样本、残差或权重时输出规模为$\Theta(N)$。接受--拒绝法还需保存最多$N$个接受值，但拒绝候选只需累计诊断；数值逆在单次二分中只保存区间端点。
+\end{complexitybox}
+
+\phantomsection\label{struct:V5-C02-CH28}
+\begin{applicabilitybox}
+\textbf{适用条件。}直接蒙特卡罗适用于能从目标分布独立抽样的可积期望；逆变换适用于有可靠CDF与可计算广义逆的实值分布；接受--拒绝法要求易抽样$q$和有限全局包络；重要性抽样要求支持覆盖且权重贡献可积。
+
+\phantomsection\label{struct:V5-C02-CH29}
+\textbf{局限性。}维数升高时包络常数和权重方差常迅速恶化；解析逆可能不存在，数值逆需要逐样本求根；ESS不能检测共同支持缺口；iid误差公式不覆盖相关样本和无限方差贡献。
+
+\phantomsection\label{struct:V5-C02-CH30}
+\textbf{常见错误。}包括把端点均匀数静默裁剪、把$c$过小造成的$\alpha>1$改成普通接受、把部分接受前缀标为完整、从$q$抽样却忘记权重、宣称SNIS有限样本无偏、在$N=0$或SNIS总权重为零时除法，以及只看ESS而不检查支持。
+
+\phantomsection\label{struct:V5-C02-CH31}
+\textbf{易混淆概念对比。}逆变换和接受--拒绝法产生未加权目标样本，普通重要性抽样产生无偏的加权估计而非目标样本；SNIS消去未知归一化常数但引入有限样本偏差；接受--拒绝中的$1/c$是精确接受率，ESS只是权重集中度的启发式摘要。接受--拒绝的独立提议筛选也不同于后续会保留当前状态的\MetropolisHastings{}转移。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V5-C02-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[固定样本下的蒙特卡罗估计与误差审计]\label{exm:V5-C02-mc-audit}
+令$U_1,U_2,U_3,U_4$是来自$\mathrm U(0,1)$的四个固定观测值
+\[
+(u_1,u_2,u_3,u_4)=(0.4,0.8,0.1,0.7),
+\]
+用$h(u)=u^2$估计$I=\int_0^1u^2\,\mathrm du$，并计算样本方差和标准误。
+\end{example}
+
+\phantomsection\label{struct:V5-C02-CH33}
+\Needspace{4\baselineskip}
+\SLExampleSolutionHeading{exm:V5-C02-mc-audit}
+\begin{solution}
+\SLReadTranslation{题目要求完成“固定样本下的蒙特卡罗估计与误差审计”：依据题面概率模型求出目标量，并解释条件化、归一化或边缘化。}
+\SolGiven 题面概率、权重或密度均处于合法范围；条件分母/归一化常数应为正，支持集与随机变量取值域保持一致。
+\SLMethodTrigger{先写支持集、条件分母或归一化常数，再代入概率公式并做概率和/边缘核验。}
+\SolDerive
+\textbf{计算。}四个函数值依次为$0.16,0.64,0.01,0.49$，所以
+\[
+\widehat I_4=\frac{0.16+0.64+0.01+0.49}{4}=0.325,
+\qquad
+I=\frac13,
+\qquad
+\widehat I_4-I=-\frac1{120}.
+\]
+运行均值依次为$0.16,0.40,0.27,0.325$，既有上升也有下降；有限样本的波动不违背大数定律。以$\bar z=0.325$记最终均值，样本离差平方和为
+\[
+(-0.165)^2+(0.315)^2+(-0.315)^2+(0.165)^2=0.2529.
+\]
+于是
+\[
+s^2=\frac{0.2529}{3}=0.0843,
+\qquad
+\widehat{\operatorname{SE}}=\frac{s}{\sqrt4}
+=\sqrt{\frac{0.0843}{4}}\approx0.14517.
+\]
+\textbf{独立核验。}由原始二阶和$\sum_i z_i^2=0.6754$可得
+\[
+s^2=\frac{\sum_i z_i^2-4\bar z^2}{3}
+=\frac{0.6754-4(0.325)^2}{3}=0.0843,
+\]
+与离差平方和算法一致。
+
+\textbf{结论。}该标准误只是一组极小样本下的随机诊断，数值大于本次实际误差并不构成矛盾，也不能据此声称有限样本正态区间具有精确覆盖率。
+\end{solution}
+
+\phantomsection\label{struct:V5-C02-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V5-C02-CH35}
+本章共10道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-19-0001; packet_mapping_note=exercise_index_only
+% SOLUTION-SOURCE: original_book; source_id=EXR-19-0001; packet_mapping_note=exercise_index_only
+\begin{exercise}\label{ex:V5-C02-S01-01}
+用蒙特卡罗积分法计算
+\[
+J=\int_{-\infty}^{\infty}x^2\exp\!\left(-\frac{x^2}{2}\right)\,\mathrm dx.
+\]
+选取一个可直接抽样的概率分布，把$J$写成期望，给出无偏估计量，并求出用于核验的精确值。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C02-S01-01}
+\begin{chapterexercisesolution}{ex:V5-C02-S01-01}
+令$X\sim\mathcal N(0,1)$，其密度为
+\[
+\phi(x)=\frac1{\sqrt{2\pi}}\exp\!\left(-\frac{x^2}{2}\right).
+\]
+因此
+\[
+J=\sqrt{2\pi}\int_{-\infty}^{\infty}x^2\phi(x)\,\mathrm dx
+=\sqrt{2\pi}\,E(X^2).
+\]
+若$X_1,\ldots,X_N$是独立标准正态样本，则
+\[
+\widehat J_N=\frac{\sqrt{2\pi}}{N}\sum_{i=1}^NX_i^2
+\]
+满足$E(\widehat J_N)=J$。标准正态分布有$E(X^2)=1$，故精确值为
+\[
+J=\sqrt{2\pi}.
+\]
+还可用$E(X^4)=3$核对单次贡献的方差：
+$\operatorname{Var}(\sqrt{2\pi}X^2)=2\pi(3-1)=4\pi$，从而
+$\operatorname{Var}(\widehat J_N)=4\pi/N$。实际运行必须报告随机样本或种子；原书页面未给出的一组坐标不能被反向伪造。
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C02-S01-02}
+取$U=(0.1,0.4,0.7,0.8)$并令$Z_i=U_i^2$。计算$\bar Z$、无偏样本方差$s^2$、标准误$s/\sqrt4$以及相对真值$E(U^2)=1/3$的误差。说明为什么这四个数不能证明收敛，也不能推出总体方差为零。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C02-S01-02}
+\begin{chapterexercisesolution}{ex:V5-C02-S01-02}
+函数值为$0.01,0.16,0.49,0.64$，因此
+\[
+\bar Z=\frac{1.30}{4}=0.325,
+\qquad
+\bar Z-\frac13=-\frac1{120}\approx-0.00833.
+\]
+相对$\bar Z$的离差依次为$-0.315,-0.165,0.165,0.315$，离差平方和为$0.2529$，故
+\[
+s^2=\frac{0.2529}{4-1}=0.0843,
+\qquad
+\frac{s}{\sqrt4}=\sqrt{0.0843/4}\approx0.14517.
+\]
+大数定律讨论无限样本序列的极限，四个固定数只能复算一次有限样本结果。即使这四次观测恰好相等，$s=0$也只表示样本内没有观测到波动，不能排除总体在未抽到位置上的变异。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C02-S02-01}
+设$X\sim\operatorname{Exp}(2)$。由$u=0.8$计算逆变换样本。另设离散分布在$\{1,2,3\}$上的概率为$(1/2,1/3,1/6)$，分别求$u=0.2,0.7,0.95$对应的广义逆样本，并写出每一步使用的“首次达到”不等式。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C02-S02-01}
+\begin{chapterexercisesolution}{ex:V5-C02-S02-01}
+指数分布的分布函数为$F(x)=1-e^{-2x}$（$x\ge0$），所以
+\[
+Q(u)=-\frac12\log(1-u),
+\qquad
+Q(0.8)=-\frac12\log0.2\approx0.804719.
+\]
+离散分布的累计概率为$F(1)=1/2$、$F(2)=5/6$、$F(3)=1$。按$Q(u)=\min\{x:F(x)\ge u\}$，
+\[
+Q(0.2)=1,
+\qquad
+Q(0.7)=2,
+\qquad
+Q(0.95)=3.
+\]
+对应核验分别是$0<0.2\le1/2$、$1/2<0.7\le5/6$和$5/6<0.95\le1$。这里的弱不等号属于广义逆定义的一部分，不能改成严格大于。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C02-S02-02}
+考虑满足
+\[
+P(X=0)=0.7,\qquad P(X=1)=0.3
+\]
+的伯努利分布。计算$Q(0.2),Q(0.7),Q(0.7001),Q(0.9)$。再判断把随机数源返回的$u=0$或$u=1$静默裁剪到机器可表示的最近内点是否保持本章算法的数学条件，并说明逐分量逆变换为何不能自动生成相关的多维分布。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C02-S02-02}
+\begin{chapterexercisesolution}{ex:V5-C02-S02-02}
+支持集$S=\{0,1\}$上的质量满足$0.7+0.3=1$。其CDF与广义逆判定链是
+\[
+\begin{aligned}
+F(x)&=0\ (x<0),\quad 0.7\ (0\le x<1),\quad 1\ (x\ge1),\\
+Q(u)&=\inf\{x:F(x)\ge u\}
+=\begin{cases}0,&0<u\le0.7,\\1,&0.7<u<1,
+\end{cases}\\
+(Q(0.2),Q(0.7),Q(0.7001),Q(0.9))&=(0,0,1,1).
+\end{aligned}
+\]
+算法要求均匀数严格位于$(0,1)$。若得到$0$、$1$或非有限值，应停止；静默裁剪会引入一个未说明的近似分布，并且在无界分布上可能掩盖无穷分位点。
+
+逐分量逆变换只给出$P(X_j\le x)=F_j(x)$，并不决定条件事件。令两个分量都有$P(X_j=1)=0.3$，则
+\[
+P(X_1=1,X_2=1)=0.3\quad(X_2=X_1),
+\qquad
+P(X_1=1,X_2=1)=0.3^2=0.09\quad(X_1\perp X_2).
+\]
+两者边缘相同而联合分布不同；还需条件分布、copula或其他联合抽样机制。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C02-S03-01}
+目标分布$p=(1/2,1/3,1/6)$，提议分布$q=(1/3,1/3,1/3)$。求最小包络常数$c$、各状态的条件接受概率、总接受率和得到一个接受值所需提议次数的期望。直接核验给定“接受”时输出分布恰为$p$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C02-S03-01}
+\begin{chapterexercisesolution}{ex:V5-C02-S03-01}
+三个比率$p_i/q_i$依次为$3/2,1,1/2$，故最小包络常数是$c=3/2$。条件接受概率为
+\[
+\alpha_i=\frac{p_i}{cq_i}=(1,2/3,1/3).
+\]
+一次提议的总接受率为
+\[
+\sum_{i=1}^3q_i\alpha_i
+=\frac13\left(1+\frac23+\frac13\right)=\frac23=\frac1c,
+\]
+所以得到一个接受值所需提议次数服从成功概率$2/3$的几何分布，期望为$c=3/2$。给定已经接受，状态$i$的概率是
+\[
+\frac{q_i\alpha_i}{2/3}
+=\left(\frac12,\frac13,\frac16\right)_i=p_i.
+\]
+这一步从联合提议--接受概率推导目标分布，没有预先假设接受样本已经服从$p$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C02-S03-02}
+设$p(x)=2x\boldsymbol1_{[0,1]}(x)$，$q(x)=\boldsymbol1_{[0,1]}(x)$。判断$c=2$与$c=1.5$是否分别给出合法包络。对目标样本数$N=2$、预算$B=0$说明算法应返回什么；若运行时算得$\alpha=4/3$，比较“停止并修正包络”与把$\alpha$裁剪成$1$两种处理的数学后果。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C02-S03-02}
+\begin{chapterexercisesolution}{ex:V5-C02-S03-02}
+两密度的共同支持集是$S=[0,1]$，且$\int_Sp=\int_Sq=1$。包络与接受概率为
+\[
+\begin{aligned}
+\sup_{x\in S}\frac{p(x)}{q(x)}&=\sup_{0\le x\le1}2x=2,\\
+c=2&\Longrightarrow \alpha(x)=x\in[0,1],\\
+c=1.5&\Longrightarrow \alpha(x)=\frac{4x}{3}>1\quad(x>0.75).
+\end{aligned}
+\]
+因此$c=2$合法，而$c=1.5$违反全局支配。
+
+当$N=2$而$B=0$时，算法不得调用提议或均匀随机数；应返回空样本、已接受数$0$和已提议数$0$，并说明预算不足，不能把空序列当成已生成两个样本。运行时出现$\alpha=4/3$说明支配条件、密度求值或$c$至少一项失效，必须停止。若改成$\min(1,\alpha)$，实际接受密度正比于
+\[
+q(x)\min\!\left\{1,\frac{p(x)}{cq(x)}\right\},
+\]
+一般不再与$p(x)$成比例，因而会在不报警的情况下改变输出分布。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C02-S04-01}
+在三点空间上令$p=(0.1,0.3,0.6)$、$h=(1,2,4)$、$q=(0.5,0.3,0.2)$。计算$I=E_ph$、权重$w=p/q$、单次普通重要性贡献的方差。若一次样本恰为$(1,2,3)$，计算自归一化估计和启发式ESS。最后求$q^\star\propto |h|p$并核验其零方差性质。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C02-S04-01}
+\begin{chapterexercisesolution}{ex:V5-C02-S04-01}
+目标期望与权重为
+\[
+I=0.1\times1+0.3\times2+0.6\times4=3.1,
+\qquad
+w=(0.2,1,3).
+\]
+单次普通重要性贡献$G=wh$在三点上的取值为$(0.2,2,12)$，所以
+\[
+E_q(G^2)=0.5(0.2)^2+0.3(2)^2+0.2(12)^2=30.02,
+\qquad
+\operatorname{Var}_q(G)=30.02-3.1^2=20.41.
+\]
+样本$(1,2,3)$各出现一次时，
+\[
+\widehat I_{\mathrm{SNIS}}
+=\frac{0.2\times1+1\times2+3\times4}{0.2+1+3}
+=\frac{14.2}{4.2}=\frac{71}{21}\approx3.38095,
+\]
+\[
+\operatorname{ESS}=\frac{4.2^2}{0.2^2+1^2+3^2}
+=\frac{17.64}{10.04}\approx1.75697.
+\]
+又因$|h|p=(0.1,0.6,2.4)$，
+$q^\star=(1,6,24)/31$。本题$h>0$，于是每个可能状态都有
+$p_i h_i/q_i^\star=3.1$，单次贡献为常数，理论方差为零。这个$q^\star$是可核验的有限例子，不表示一般问题中其归一化常数或抽样器已知。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C02-S04-02}
+区分以下三种情形：一是普通重要性抽样的有限样本权重全部为零；二是自归一化重要性抽样的权重和为零；三是目标函数非零的某个集合在$q$下概率为零。分别说明估计值、ESS或算法状态应如何报告，并判断“增加样本数总能修复问题”是否成立。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C02-S04-02}
+\begin{chapterexercisesolution}{ex:V5-C02-S04-02}
+令$w_i=p(Y_i)/q(Y_i)$（或同比分母未知的核权重）。三种状态应由定义直接分开：
+\[
+\begin{aligned}
+&\text{普通IS：}\quad \widehat I_N=\frac1N\sum_{i=1}^Nw_ih_i=0,
+&&\sum_iw_i^2=0\Longrightarrow \operatorname{ESS}\text{未定义};\\
+&\text{SNIS：}\quad \widehat I_{\rm SNIS}=\frac{\sum_iw_ih_i}{\sum_iw_i},
+&&\sum_iw_i=0\Longrightarrow \text{估计未定义};\\
+&\text{支持缺口：}\quad \exists A:\ \int_A|h|p>0,\ q(A)=0,
+&&E_p h=E_q(wh)\text{的改写失效}.
+\end{aligned}
+\]
+第一种是支持覆盖成立时可能出现的合法有限样本实现，估计值为$0$但ESS退化；第二种必须返回“零分母、未完成估计”；第三种是结构错误。对最后一种，$Y_i\sim q$给出
+\[
+P_q\!\left(\exists i\le N:Y_i\in A\right)
+=1-(1-q(A))^N=0,
+\]
+故增加样本数永远不能访问缺失区域。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C02-S05-01}
+归一化权重为$(0.90,0.05,0.03,0.02)$。计算ESS、最大归一化权重和零权重率。解释这些量能诊断什么、不能证明什么；再说明若四个函数值完全相同，为什么观测到$s=0$仍不能无条件推出总体方差为零。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C02-S05-01}
+\begin{chapterexercisesolution}{ex:V5-C02-S05-01}
+归一化权重平方和为
+\[
+0.9^2+0.05^2+0.03^2+0.02^2=0.8138,
+\]
+所以
+\[
+\operatorname{ESS}=\frac1{0.8138}\approx1.2288,
+\qquad
+\max_i\widetilde w_i=0.90,
+\qquad
+\text{零权重率}=0.
+\]
+这些数说明四个样本的加权贡献高度集中于一个样本，可用于比较提议分布或发现权重退化；它们不能证明支持覆盖、无偏性、一致性、有限方差或误差界。四个函数值完全相同时样本方差确为零，但总体仍可能在未抽到区域取不同值。只有另有数学条件证明函数在分布下几乎处处为常数，才能推出总体方差为零；否则学生化统计量还可能出现$0/0$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C02-S05-02}
+分别为下列任务选择逆变换、接受--拒绝、普通重要性抽样或自归一化重要性抽样，并写出最关键的适用条件与不能继续的情形：已知一维可逆CDF并要生成未加权样本；有全局包络但接受率很低；目标只知未归一化密度且只需期望；提议分布遗漏目标函数贡献区域。最后说明$N^{-1/2}$误差率在哪些条件下才可使用。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C02-S05-02}
+\begin{chapterexercisesolution}{ex:V5-C02-S05-02}
+四类选择可由输出对象和停止条件写成同一判定链：
+\[
+\begin{aligned}
+&F\text{合法且}Q(u)\text{可算},\ 0<u<1
+&&\Longrightarrow X=Q(U)\quad\text{（逆变换）},\\
+&p\le cq,\ c<\infty
+&&\Longrightarrow U\le p(Y)/(cq(Y))\quad\text{（接受--拒绝）},\\
+&p/q\text{可算且}q>0\text{覆盖}|h|p
+&&\Longrightarrow \widehat I=N^{-1}\sum_iw_ih_i\quad\text{（普通IS）},\\
+&\widetilde p\text{仅知到比例且}\sum_iw_i>0
+&&\Longrightarrow \widehat I=\sum_iw_ih_i/\sum_iw_i\quad\text{（SNIS）}.
+\end{aligned}
+\]
+第一类遇到非法端点或求逆失败停止；第二类低接受率不破坏正确性，但达到预设提议上限而未收集足量样本时不能冒充完成；第三类若归一化常数未知便不能继续；第四类必须接受有限样本通常有偏。若存在$q(A)=0$而$\int_A|h|p>0$，两种重要性改写都失效，只能更换$q$。
+
+对iid普通蒙特卡罗或普通IS，令单次贡献为$G$。只有$E(G^2)<\infty$时才有
+\[
+\operatorname{Var}(N^{-1}\textstyle\sum_iG_i)=\frac{\operatorname{Var}(G)}N
+\Longrightarrow \operatorname{RMSE}=\frac{\sigma}{\sqrt N}.
+\]
+正态近似还需相应中心极限定理条件；相关样本、无限方差贡献和一般有限样本SNIS不能无条件套用该速率。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V5-C31-CONCEPT-011 L1
+\paragraph{读前自检：本章结论与下一步。}蒙特卡罗方法与直接采样章末把“蒙特卡罗均值、广义逆、接受—拒绝和重要性抽样共享概率守恒，但输出对象与支持条件不同”收束为“数学主体分别是在线均值、$Q(U)$、包络筛选与加权平均”；请把$Q(U)$代入对应定义并写出结果类型，再核对“代入结果满足定义域与取值域”且该结果能直接进入章末所述方法。\par
+
+\begin{SLCompactClosure}
+\nopagebreak[4]
+\phantomsection\label{struct:V5-C02-CH36}
+\SLChapterFiveSummary{蒙特卡罗均值、广义逆、接受—拒绝和重要性抽样共享概率守恒，但输出对象与支持条件不同。}
+{广义逆用事件等价证明；接受—拒绝由条件分布推出；重要性恒等式依赖支持覆盖，误差结论另需矩条件。}
+{数学主体分别是在线均值、$Q(U)$、包络筛选与加权平均；数值合法性和预算状态在数值实现部分另行处理。}
+{能独立抽样或构造覆盖提议时使用；支持缺口、无限方差与零权分母不能靠增大样本修复。}
+{下一章以这些估计原则处理相关马尔可夫链样本，并把接受—拒绝思想改造成MH校正。}
+
+\phantomsection\label{struct:V5-C02-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否从$E_pf$推出样本均值的无偏性、方差和均方误差并写出矩条件，再用事件等价证明广义逆定理并处理CDF跳跃、平坦段和$u=0,1$？若不能，回看\cref{sec:V5-C02-S01,sec:V5-C02-S02}。
+  \item 能否从联合接受事件推导接受率$1/c$与条件输出分布，而不预设接受值已经服从$p$？若不能，回看\cref{sec:V5-C02-S03}。
+  \item 能否区分普通IS的无偏估计与SNIS的有限样本偏差，并分别处理全零权重？若不能，重做练习\ref{ex:V5-C02-S04-01}和\ref{ex:V5-C02-S04-02}。
+  \item 能否独立执行算法\ref{alg:V5-C02-iid-mc-online}至算法\ref{alg:V5-C02-importance-estimation}，说明适用条件、停止原因、已经得到的样本与复杂度？若不能，回看各算法前的实现说明。
+  \item 能否解释ESS、样本标准误和接受率各自能诊断什么、不能证明什么，并在相关样本、无限方差、支持缺口和数值溢出时拒绝套用不成立的$N^{-1/2}$结论？若不能，回看\cref{sec:V5-C02-S05}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

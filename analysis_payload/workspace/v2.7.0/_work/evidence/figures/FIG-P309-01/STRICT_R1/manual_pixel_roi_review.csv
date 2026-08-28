@@ -1,0 +1,13 @@
+VIEW_ID,FILE,VIEW_MODE,REVIEWED,OBSERVATION,PASS_FAIL
+V01,after_full_page_200dpi.png,full-page 200dpi,true,"Figure is centered; caption and adjacent prose remain on the page; no orphan line or abnormal whitespace.",PASS
+V02,after_figure_crop_300dpi.png,native 300dpi color crop 1:1,true,"All eight visible text groups, axes, three boundaries, markers, rings and arrows are present and unclipped.",PASS
+V03,after_standalone_300dpi.png,native 300dpi standalone crop 1:1,true,"Standalone geometry agrees with official page; template match score 0.956294 and offset (+5,+553) px.",PASS
+V04,after_grayscale_300dpi.png,native 300dpi grayscale crop 1:1,true,"Solid/dashed/dash-dot lines and filled-circle/hollow-triangle/outer-ring encodings remain distinguishable.",PASS
+V05,roi/F03_HPLUS_vs_G09_HPLUS_CONNECTOR_raw_1to1_300dpi.png,native 300dpi ROI 1:1,true,"No intersection; measured clearance 8.8489 px.",PASS
+V06,roi/F05_HMINUS_vs_G11_HMINUS_CONNECTOR_raw_1to1_300dpi.png,native 300dpi ROI 1:1,true,"No intersection; measured clearance 8.8489 px; subscript minus ink is only 3 px high.",FAIL
+V07,roi/F01_W_LABEL_vs_M03_BLUE_3_raw_1to1_300dpi.png,native 300dpi ROI 1:1,true,"No intersection; measured clearance 9.1980 px.",PASS
+V08,roi/F04_H_vs_G10_H_CONNECTOR_raw_1to1_300dpi.png,native 300dpi ROI 1:1,true,"No intersection; measured clearance 11.0416 px.",PASS
+V09,roi/F07_X1_vs_G01_X_AXIS_raw_1to1_300dpi.png,native 300dpi ROI 1:1,true,"No intersection; measured clearance 10.6619 px.",PASS
+V10,roi/F08_X2_vs_G02_Y_AXIS_raw_1to1_300dpi.png,native 300dpi ROI 1:1,true,"No intersection; measured clearance 11.1655 px.",PASS
+V11,roi/F02_MARGIN_FORMULA_raw_1to1_300dpi.png,native 300dpi ROI 1:1,true,"Formula is readable; slash is 33 px while norm bars are 36 px, giving 0.9167 same-class ratio.",FAIL
+V12,roi/F06_NOTE_raw_1to1_300dpi.png,native 300dpi ROI 1:1,true,"CJK ink line is 35 px and readable, but source effective font is 9.2 pt below the 9.5 pt floor.",FAIL

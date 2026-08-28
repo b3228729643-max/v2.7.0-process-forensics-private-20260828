@@ -1,0 +1,43 @@
+% v2.3.1 figure UID: FIG-P412-01
+% Proposed post-v2.3.1 polish for FIG-P412-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P412-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P412-01,
+  dev/.style={slfig node,minimum width=27mm,text width=24mm,line width=.78pt,
+    font=\fontsize{9.4pt}{11.2pt}\selectfont},
+  final/.style={slfig node accent,minimum width=27mm,text width=24mm,line width=.82pt,
+    font=\fontsize{9.4pt}{11.2pt}\selectfont},
+  flow/.style={slfig arrow,line width=.90pt},
+  feedback/.style={slfig return,draw=SLTextGray!72!SLRule,line width=.66pt},
+]
+  \node[dev] (task) at (-4.5,1.0) {任务定义};
+  \node[dev] (family) at (-1.5,1.0) {候选模型族};
+  \node[dev] (train) at (1.5,1.0) {训练候选};
+  \node[dev] (valid) at (4.5,1.0) {验证选择};
+  \draw[flow] (task)--(family);
+  \draw[flow] (family)--(train);
+  \draw[flow] (train)--(valid);
+  \draw[feedback] (valid.north) |- ([yshift=8mm]valid.north) -| (family.north)
+    node[pos=.48,above,font=\fontsize{9pt}{10.6pt}\selectfont,text=SLTextGray,
+      fill=white,inner sep=1pt] {开发反馈：仅返回候选族};
+
+  \node[diamond,aspect=1.8,draw=SLGold,fill=SLGoldBG,line width=.84pt,
+        align=center,inner sep=1.3mm,font=\fontsize{9.4pt}{11.2pt}\selectfont]
+        (freeze) at (4.5,-.45) {冻结};
+  \node[final] (test) at (4.5,-2.0) {一次最终测试};
+  \node[final] (report) at (1.5,-2.0) {报告结果};
+  \draw[-{Stealth[length=2.25mm,width=1.4mm]},draw=SLGold,line width=.98pt] (valid)--(freeze);
+  \draw[-{Stealth[length=2.25mm,width=1.4mm]},draw=SLTeal,line width=.98pt] (freeze)--(test);
+  \draw[-{Stealth[length=2.25mm,width=1.4mm]},draw=SLTeal,line width=.98pt] (test)--(report);
+
+  \node[draw=SLRed,fill=SLRedBG,rounded corners=1.6mm,line width=.78pt,
+        minimum width=26mm,minimum height=10mm,align=center,
+        font=\fontsize{9.2pt}{11pt}\selectfont] (locked) at (7.5,-2.0)
+    {锁定测试集\\禁止开发期访问};
+  \draw[-{Stealth[length=1.9mm,width=1.15mm]},draw=SLRed,line width=.72pt] (locked)--(test);
+  \node[font=\fontsize{9pt}{10.6pt}\selectfont,text=SLRed,below=2mm of locked]
+    {无任何返回候选族的路径};
+\end{tikzpicture}
+\caption{监督学习方法选择闭环。测试集不进入返回候选模型族的反馈回路。}\label{fig:V3-C07-selection-loop}
+\end{figure}

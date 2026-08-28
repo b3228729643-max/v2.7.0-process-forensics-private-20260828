@@ -1,0 +1,19 @@
+{
+  "handoff_id": "A-R106-P715-SA1-FRESH-ISOLATED-20260826",
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P715-01\\STRICT_R15_SA1_FRESH_ISOLATED_R106_20260826",
+  "prepared_utc": "2026-08-26T01:11:43.937789+00:00",
+  "decision": "FAIL",
+  "preseal_validation_overall": true,
+  "payload_manifest_csv_sha256": "7C318BC5FF7BDA4F4FA80DB4786176AB0B3B3A5EC7D7CE69176EE01F28040CE0",
+  "payload_manifest_json_sha256": "A1D16A222E080DE8E6AFA41F46C2EFCADBBD7A2AE73E3C99E989D186D871C7CF",
+  "manifest_identity_closure_sha256": "A572F23B1D377B308973F0ADF7783947EC48A0068DD056CEFAD2ED1C48117BD4",
+  "preseal_validation_sha256": "43A1EB1C1AB4B05F35D3861051C1BB01D69D838E570B2B8F47758E8FD243AC67",
+  "payload_entry_count": 502,
+  "expected_ordinary_files_before_marker": 506,
+  "expected_ordinary_files_after_marker": 507,
+  "nondefault_ads_count_preseal": 0,
+  "cache_directory_count_preseal": 0,
+  "pyc_file_count_preseal": 0,
+  "seal_order": "payload -> manifests -> identity closure -> seal audit -> make all ordinary files read-only -> create exactly one WRITE_STOPPED -> make marker read-only -> zero further root writes",
+  "marker_name": "WRITE_STOPPED"
+}

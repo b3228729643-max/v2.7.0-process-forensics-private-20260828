@@ -1,0 +1,18 @@
+glyph_id,object_id,glyph_or_expression,context
+G001,O001,"θ_m,z_mn",left title
+G002,O002,θ_m,left latent node
+G003,O003,z_mn,left latent node
+G004,O004,w_mn,left observed node
+G005,O005,φ,left fixed parameter
+G006,O010,"p(θ_m,z_mn∣w_m,φ)",true posterior formula
+G007,O012,q(θ_m),right factor node
+G008,O013,q(z_mn),right factor node
+G009,O014,w_mn,right observed node
+G010,O015,φ,right fixed parameter
+G011,O023,q(θ_m)∏_nq(z_mn),factorization formula
+G012,O026,w_mn,summary observed symbol
+G013,O026,φ,summary fixed parameter
+G014,O026,q(z_mn),summary responsibility factor
+G015,O028,φ,caption fixed parameter
+G016,O028,θ_m,caption topic mixture
+G017,O028,z_mn,caption assignment

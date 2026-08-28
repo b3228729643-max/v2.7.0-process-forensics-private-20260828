@@ -1,0 +1,25 @@
+check_id,subject,decision,reviewer,note
+S01,state_sequence_0_through_6,PASS,SA3_FRESH_ISOLATED,seven markers are labeled in order 0 1 2 3 4 5 6 with no skipped or duplicated state
+S02,move_0_to_1,PASS,SA3_FRESH_ISOLATED,first move is horizontal and rightward so only x1 changes
+S03,move_1_to_2,PASS,SA3_FRESH_ISOLATED,second move is vertical and upward so only x2 changes
+S04,move_2_to_3,PASS,SA3_FRESH_ISOLATED,third move returns to horizontal rightward x1 updating
+S05,move_3_to_4,PASS,SA3_FRESH_ISOLATED,fourth move is vertical upward x2 updating
+S06,move_4_to_5,PASS,SA3_FRESH_ISOLATED,fifth move is horizontal rightward x1 updating
+S07,move_5_to_6,PASS,SA3_FRESH_ISOLATED,sixth move is vertical upward x2 updating
+S08,alternating_coordinate_rule,PASS,SA3_FRESH_ISOLATED,the six arrows alternate horizontal and vertical exactly across the full path
+S09,coordinate_axis_orientation,PASS,SA3_FRESH_ISOLATED,x1 is horizontal rightward and x2 is vertical upward with correct mathematical labels
+S10,target_geometry,PASS,SA3_FRESH_ISOLATED,three tilted narrow concentric contours consistently depict a strongly correlated bivariate target
+S11,long_axis_semantics,PASS,SA3_FRESH_ISOLATED,orange arrow follows the positive-slope major direction and is labeled 长轴
+S12,short_axis_semantics,PASS,SA3_FRESH_ISOLATED,gray arrow follows the negative-slope minor direction and is labeled 短轴
+S13,principal_axis_relation,PASS,SA3_FRESH_ISOLATED,long and short arrows cross approximately perpendicularly at the target center
+S14,color_role_mapping,PASS,SA3_FRESH_ISOLATED,green horizontal steps pair with 更新 x1 and blue vertical steps pair with 更新 x2
+S15,note_content,PASS,SA3_FRESH_ISOLATED,note states one-coordinate-at-a-time updating and correctly attributes slow long-axis progress to short axis-aligned steps
+S16,caption_content,PASS,SA3_FRESH_ISOLATED,caption identifies two-dimensional Gibbs trajectory and accurately describes x1 horizontal and x2 vertical moves
+S17,caption_figure_consistency,PASS,SA3_FRESH_ISOLATED,every captioned object and relation is visible in the figure and no contradictory object appears
+S18,adjacent_pdf_prose_consistency,PASS,SA3_FRESH_ISOLATED,official PDF prose immediately below the figure repeats the same slow-mixing explanation without contradiction
+S19,math_glyph_semantics,PASS,SA3_FRESH_ISOLATED,all x variables use italic mathematical x with the intended 1 or 2 subscript and no wrong codepoint
+S20,reading_order,PASS,SA3_FRESH_ISOLATED,figure labels note and caption have an unambiguous visual reading order at full-page and crop scales
+S21,grayscale_semantics,PASS,SA3_FRESH_ISOLATED,arrow orientation labels and marker sequence preserve all hard semantics without relying only on hue
+S22,object_content_closure,PASS,SA3_FRESH_ISOLATED,131 visible glyphs and 21 foreground graphic objects cover all visible foreground content
+S23,drawing_mapping_closure,PASS,SA3_FRESH_ISOLATED,PDF drawing indices 1 through 31 are all mapped to 21 foreground objects or two explicit background fills
+S24,explicit_absences,PASS,SA3_FRESH_ISOLATED,no loop math rule legend panel border or other unmapped visible class exists; the note border is positively mapped

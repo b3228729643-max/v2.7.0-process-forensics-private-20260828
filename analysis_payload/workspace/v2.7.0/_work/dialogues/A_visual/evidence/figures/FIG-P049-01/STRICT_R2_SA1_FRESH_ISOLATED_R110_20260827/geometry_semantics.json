@@ -1,0 +1,95 @@
+{
+  "observed_at": "2026-08-27T05:55:33+08:00",
+  "function": "f(x1,x2)=x1^2/9+x2^2/3.24",
+  "contours": [
+    {
+      "label": "c1",
+      "a": 1.5,
+      "b": 0.9,
+      "f_constant_x": 0.25,
+      "f_constant_y": 0.25
+    },
+    {
+      "label": "c2",
+      "a": 2.4,
+      "b": 1.44,
+      "f_constant_x": 0.64,
+      "f_constant_y": 0.6399999999999999
+    },
+    {
+      "label": "c3",
+      "a": 3.0,
+      "b": 1.8,
+      "f_constant_x": 1.0,
+      "f_constant_y": 1.0
+    }
+  ],
+  "contour_order_strict": true,
+  "P": [
+    2.4,
+    1.08
+  ],
+  "f_P": 1.0,
+  "gradient_at_P": [
+    0.5333333333333333,
+    0.6666666666666666
+  ],
+  "gradient_arrow_vector": [
+    0.7200000000000002,
+    0.8999999999999999
+  ],
+  "gradient_arrow_positive_scale_factor": 1.3500000000000003,
+  "gradient_direction_exact_gate": true,
+  "tangent_vector_T_minus_Tm": [
+    1.88,
+    -1.5
+  ],
+  "gradient_dot_tangent": 0.002666666666666595,
+  "normalized_orthogonality_residual": 0.0012987002034915694,
+  "orthogonality_angle_deg": 89.9255899385702,
+  "P_is_tangent_segment_midpoint": true,
+  "right_angle_marker_source_triplet": "T--P--G",
+  "right_angle_dot": 0.0018000000000002458,
+  "right_angle_deg": 89.92558993857018,
+  "right_angle_gate": true,
+  "guide_line_semantics": {
+    "guide_1": {
+      "note": "定位 P 所在等值线",
+      "endpoint": [
+        2.75,
+        1.36
+      ],
+      "distance_to_P_axis_units": 0.4482186966202995,
+      "distance_to_P_px_300": 53.11711651997269,
+      "contour_c3_residual_abs": 0.41114197530864205,
+      "distance_to_gradient_segment_axis_units": 0.09838946998982159,
+      "distance_to_gradient_segment_px_300": 11.659854845847633,
+      "exact_target_gate": false,
+      "reason": "Endpoint is neither P nor the c3 contour and is materially nearer the gradient segment than the stated contour target."
+    },
+    "guide_2": {
+      "note": "梯度指向函数增大",
+      "endpoint": [
+        3.12,
+        1.98
+      ],
+      "target_G": [
+        3.12,
+        1.98
+      ],
+      "distance_to_target_axis_units": 0.0,
+      "exact_target_gate": true
+    },
+    "guide_3": {
+      "note": "gradient-transpose times tangent equals zero",
+      "endpoint": [
+        2.67,
+        1.23
+      ],
+      "distance_to_P_axis_units": 0.30886890422961,
+      "distance_to_P_px_300": 36.60317094995866,
+      "distance_to_right_angle_visible_mask_px_300": 0.0,
+      "exact_target_gate": true
+    }
+  }
+}

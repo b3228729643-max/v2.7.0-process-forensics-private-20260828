@@ -1,0 +1,9 @@
+element_id,visible_content,source_font_pt,effective_pt,override,graphics_font_scale,r168_hard_readability,advisory,notes
+TXT-X,x,9.4,9.4,global slfig/tikzpicture,1.0,PASS,YES,"Clear italic bold x; no missing stroke or miscoding."
+TXT-P,p=P_S x in S,9.4,9.4,global slfig/tikzpicture,1.0,PASS,YES,"P subscript S and membership sign are clear; 9.4pt is 0.1pt below the legacy 9.5pt gate but is not actually unreadable."
+TXT-R,r=x-p in S^perp,9.2,9.2,local node,1.0,PASS,YES,"Superscript perpendicular sign is intact and readable; 9.2pt is advisory under R168."
+TXT-DIST,最短距离,9.2,9.2,local brace node,1.0,PASS,YES,"All four CJK glyphs are intact and plainly readable; 9.2pt is advisory under R168."
+TXT-PYTHAG,||x||^2=||p||^2+||r||^2,9.2,9.2,local note node,1.0,PASS,YES,"Norm bars, superscript 2, equality and plus are distinct and complete; 9.2pt is advisory under R168."
+TXT-SUBSPACE,子空间 S,9.4,9.4,global slfig/tikzpicture,1.0,PASS,YES,"CJK label and S are intact; muted gray remains readable in grayscale."
+CAPTION,图2.1及完整题注,page caption style,N/A,outside tikz source,N/A,PASS,NO,"Caption is complete, uncut, and matches the diagram and V1-C02 prose."
+SOURCE-SCALE-AUDIT,"tiny/scriptsize/footnotesize/small/large/resizebox/scalebox/scale/transform shape",N/A,N/A,none present for text,N/A,PASS,NO,"x=1.45cm and y=1.45cm are coordinate-unit settings, not a graphics/font transform."

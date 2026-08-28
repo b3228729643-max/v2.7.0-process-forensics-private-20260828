@@ -1,0 +1,56 @@
+% v2.3.1 figure UID: FIG-P556-02
+% Proposed post-v2.3.1 polish for FIG-P556-02: protect key-label size and stroke hierarchy.
+\tikzset{
+  slfig-FIG-P556-02/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P556-02-title/.style={font=\fontsize{10.4pt}{12.4pt}\selectfont\bfseries,anchor=north},
+  slfig-FIG-P556-02-formula/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont},
+  slfig-FIG-P556-02-answer/.style={font=\fontsize{8.8pt}{10.5pt}\selectfont,text=SLGray,anchor=south},
+}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P556-02,>=Stealth,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center},
+  card/.style={draw=SLRuleGray,rounded corners=2pt,fill=white,
+    minimum width=41mm,minimum height=47mm,inner sep=5.5pt,line width=.55pt},
+  state/.style={circle,draw=SLBlue,fill=SLBlue!7,minimum size=6.5mm,inner sep=0pt,
+    font=\fontsize{9.4pt}{11.2pt}\selectfont,line width=.76pt},
+  edge/.style={-{Stealth[length=1.5mm]},draw=SLTeal,line width=.82pt},
+]
+  \matrix (cards) [matrix of nodes,nodes={card},column sep=3.6mm] {
+    |[name=irr]| {} & |[name=per]| {} & |[name=rec]| {} \\
+  };
+
+  \node[slfig-FIG-P556-02-title,text=SLBlue] at ([yshift=-3mm]irr.north) {不可约性};
+  \node[state] (i1) at ([xshift=-9mm,yshift=7mm]irr.center) {$1$};
+  \node[state] (i2) at ([xshift=9mm,yshift=7mm]irr.center) {$2$};
+  \draw[edge] (i1) to[bend left=18] (i2);
+  \draw[edge] (i2) to[bend left=18] (i1);
+  \node[slfig-FIG-P556-02-formula] at ([yshift=-7mm]irr.center) {$i\leftrightarrow j$（支撑图连通）};
+  \node[slfig-FIG-P556-02-answer] at ([yshift=3mm]irr.south)
+    {回答：状态能否互相到达？};
+
+  \node[slfig-FIG-P556-02-title,text=SLTeal] at ([yshift=-3mm]per.north) {周期性};
+  \draw[draw=SLTextGray,line width=.60pt] ([xshift=-14mm,yshift=7mm]per.center)--([xshift=14mm,yshift=7mm]per.center);
+  \foreach \x/\lab in {-12/2,-3/4,6/6,15/8}{
+    \fill[SLTeal] ([xshift=\x mm,yshift=7mm]per.center) circle (1.4pt);
+  }
+  \node[slfig-FIG-P556-02-formula] at ([yshift=-7mm]per.center)
+    {\shortstack{$d(i)=\gcd\{n\ge1:$\\[-.4mm]$P_{ii}^{(n)}>0\}$}};
+  \node[slfig-FIG-P556-02-answer] at ([yshift=3mm]per.south)
+    {回答：允许哪些回返步长？};
+
+  \node[slfig-FIG-P556-02-title,text=SLGold] at ([yshift=-3mm]rec.north) {正常返};
+  \node[state,draw=SLGold,fill=SLGold!8] (ri) at ([yshift=7mm]rec.center) {$i$};
+  \draw[-{Stealth[length=1.6mm]},draw=SLGold,line width=.88pt]
+    (ri) to[loop right,min distance=12mm] (ri);
+  \node[slfig-FIG-P556-02-formula] at ([yshift=-7mm]rec.center) {$\mathbb E_i[\tau_i^+]<\infty$};
+  \node[slfig-FIG-P556-02-answer] at ([yshift=3mm]rec.south)
+    {回答：平均多久回到自身？};
+
+  \node[draw=SLRuleGray,rounded corners=2pt,fill=SLSoftGray,
+    minimum width=112mm,minimum height=7mm,inner xsep=4pt,line width=.58pt,
+    font=\fontsize{9.2pt}{11.0pt}\selectfont] at ([yshift=-8mm]cards.south)
+    {结构性质不可相互替代：连通性、回返节律与期望回返时间必须分别检查};
+\end{tikzpicture}
+\caption{三类结构必须分别判断：支撑图连通性决定不可约性，正回返时长的最大公约数决定周期性}\label{fig:V5-C01-chain-properties}
+\end{figure}

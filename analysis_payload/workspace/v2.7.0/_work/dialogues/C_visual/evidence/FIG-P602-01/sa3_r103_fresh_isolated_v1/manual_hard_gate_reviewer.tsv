@@ -1,0 +1,20 @@
+gate_id	gate	manual_evidence	failure_ids	decision	reviewer	note
+H01	INDEPENDENT_PAGE_LOCATION	PDF own 817-page form-feed index plus direct render	NONE	PASS	SA3_FRESH_ISOLATED	从 PDF 本身定位到物理页653、印刷页640、图32.5，未使用预告页码或旧证据。
+H02	OFFICIAL_CANDIDATE_IDENTITY	machine_candidate_identity.json SHA256/bytes/mtime	NONE	PASS	SA3_FRESH_ISOLATED	官方 R103 PDF 身份被锁定为 9379a489…a0f23，大小4,967,184字节，审查期间只读。
+H03	SOURCE_IDENTITY	machine_candidate_identity.json source record	NONE	PASS	SA3_FRESH_ISOLATED	单一图源哈希 6c4e8f15…db47d、大小2,869字节，与本审查语义逐项对应且未修改。
+H04	FOREGROUND_DENOMINATOR_COMPLETENESS	SA3_COMPOSITE_PARENT_GATE.md; object/text/drawing inventories	NONE	PASS	SA3_FRESH_ISOLATED	复合父对象门后正式 N=33：20文字/公式、6节点框、5有向箭头、1自环箭头、1数学线。
+H05	PDF_TEXT_AND_GLYPH_CLOSURE	65 text runs; 194 visible nonspace glyphs; 8 spaces excluded	NONE	PASS	SA3_FRESH_ISOLATED	全部65个图内文字run映射到20父对象，194可见非空格字形均有父对象和人工记录，无漏 run。
+H06	DRAWING_PRIMITIVE_CLOSURE	manual_primitive_reviewer.tsv 28/28	NONE	PASS	SA3_FRESH_ISOLATED	28个页面drawing逐项闭合：19映射前景支撑、7白色遮挡/分隔排除、2图外排除。
+H07	OBJECT_COMPLETENESS_AND_PURITY	manual_object_reviewer.tsv 33/33	NONE	PASS	SA3_FRESH_ISOLATED	33个对象contact的原图、叠加和纯掩膜均逐ID人工看过，complete/pure/clip-free 全为YES。
+H08	UNORDERED_PAIR_CLOSURE	manual_pair_reviewer.tsv 528/528	NONE	PASS	SA3_FRESH_ISOLATED	C(33,2)=528 全部无序对逐行裁决，pair_id、A/B与machine顺序零失配，528条note互异。
+H09	CRITICAL_ROI_CLOSURE	manual_critical_roi_reviewer.tsv 37/37	NONE	PASS	SA3_FRESH_ISOLATED	37个机器临界对的1x与8x ROI全看完；所有相交只在合法边端点，未见非法覆盖。
+H10	ILLEGAL_OVERLAP	pair intersections and critical manual classifications	NONE	PASS	SA3_FRESH_ISOLATED	八个有原始前景交集的无序对均为边—节点设计锚点接触，文字、公式和不相关图元交集为零。
+H11	CLIPPING	manual_clip_reviewer.tsv 33/33; boundary touch 0	NONE	PASS	SA3_FRESH_ISOLATED	33个前景对象边界触点总计为零；最小画布边距为接受框7px，仍完整显示并非真实裁切。
+H12	GLYPH_CORRECTNESS	manual_glyph_reviewer.tsv 194/194	NONE	PASS	SA3_FRESH_ISOLATED	194个字形逐个检查，无 tofu、缺字、错误 codepoint、不可读轮廓或外来污染。
+H13	MATH_SEMANTICS	manual_semantic_reviewer.tsv S03-S08	NONE	PASS	SA3_FRESH_ISOLATED	MH 比率分子分母、min{1,·}、U≤α、接受取Y及拒绝保持X_t均正确。
+H14	FONT_ROLE_AND_BALANCE	manual_role_peer_reviewer.tsv 20/20	NONE	PASS	SA3_FRESH_ISOLATED	所有文字角色实际可读；核心公式有意11.2pt，其余图内9.6pt，图注约10pt，无明显严重失衡。
+H15	GRAYSCALE_AND_ACCESSIBILITY	V04 and V06 view rows	NONE	PASS	SA3_FRESH_ISOLATED	图级与全页灰度视图中实线、点划线、双框、文字和自环仍可辨，关系不依赖色相。
+H16	PAGE_INTEGRATION	V01 and V05 full-page rows	NONE	PASS	SA3_FRESH_ISOLATED	图在印刷页640与前后正文、图注、读图顺序和页脚间距稳定，无跨页、压字或页边裁切。
+H17	R168_ADVISORY_BOUNDARY	1–2px endpoint alias gaps; micro font ratios	NONE	PASS	SA3_FRESH_ISOLATED	P0467/P0478一像素、P0488两像素端点栅格间隙及1.042图注微比例仅属R168 advisory，均未单独升级为FAIL。
+H18	CONTROL_AND_WRITE_BOUNDARY	whitelist log; source/PDF read-only workflow	NONE	PASS	SA3_FRESH_ISOLATED	未运行 TeX/LuaLaTeX/latexmk/texlua，未改业务源或中央状态，也未读取任何禁读旧证据。
+H19	RENDER_FILE_VIEW_COVERAGE	manual_view_reviewer.tsv; manual_render_path_coverage.tsv; machine validation	NONE	PASS	SA3_FRESH_ISOLATED	当前根717个PNG均由7个主视图行或264个逐ID精确路径闭合行覆盖，唯一覆盖集合与磁盘render集合完全相等。

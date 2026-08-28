@@ -1,0 +1,30 @@
+{
+  "HANDOFF_ID": "A-R110-P049-SA1-FRESH-ISOLATED-20260827",
+  "UID": "FIG-P049-01",
+  "frozen_at": "2026-08-27T06:00:58+08:00",
+  "scope": "Reader-visible semantic foreground objects belonging to the FIG-P049-01 graphic plus its caption. Nested glyph pieces are measurements of their parent text object and are not independent pair-denominator objects.",
+  "visible_object_count": 28,
+  "unordered_pair_formula": "28*27/2",
+  "unordered_pair_count": 378,
+  "visible_object_denominator": {
+    "path": "visible_object_denominator.csv",
+    "bytes": 4390,
+    "sha256": "142EAC373F0A93656DC2012AED3898D3163D8B09745AB34F41576FBFF23A5764"
+  },
+  "all_unordered_pairs": {
+    "path": "all_unordered_pairs.csv",
+    "bytes": 40996,
+    "sha256": "9DE6860CDBE9C2D8FDE17B97D07A2AB8D0B10FDEB38C3AAC6C73DD27A0CF7EDD"
+  },
+  "text_element_measurements": {
+    "path": "text_element_measurements_300dpi.csv",
+    "bytes": 6881,
+    "sha256": "6B182B7CF21674547494172BA034A69957C66F65B89901829C8EAB9E1700CF4D"
+  },
+  "text_subspan_measurements": {
+    "path": "text_subspan_measurements_300dpi.csv",
+    "bytes": 8778,
+    "sha256": "B74B4F600692CE244EE3DFF6E24B1605E71EE5BEEBAFEA60BC3274A10552FC34"
+  },
+  "freshness": "Constructed only from the whitelisted R110 PDF, current P049 source, GOAL strict protocol, and current V1-C03 neighboring text; no former denominator or conclusion was reused."
+}

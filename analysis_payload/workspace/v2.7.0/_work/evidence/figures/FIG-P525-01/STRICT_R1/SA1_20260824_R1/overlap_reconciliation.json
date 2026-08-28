@@ -1,0 +1,58 @@
+{
+  "audit_id": "FIG-P525-01/STRICT_R1/SA1_20260824_R1",
+  "method": "Counts each native-300dpi no-dilation overlap mask; then uses disjoint A-side semantic PDF bboxes to prove pair counts are mutually exclusive.",
+  "failed_pair_count": 4,
+  "failed_pairs": [
+    {
+      "RELATION_ID": "REL_0164",
+      "ELEMENT_A": "SEM_TOPIC_PHI_1",
+      "ELEMENT_B": "GRAPHIC_OUTER_EDGE_3",
+      "OVERLAP_CSV_PIXELS": 88,
+      "OVERLAP_RAW_MASK_PIXELS": 88,
+      "NET_CLEARANCE_PX": "0.000",
+      "CLIP_PIXELS": "0",
+      "MASK_COUNT_MATCH": "PASS",
+      "A_PDF_BBOX": "132.307;569.695;147.697;581.735"
+    },
+    {
+      "RELATION_ID": "REL_0177",
+      "ELEMENT_A": "SEM_TOPIC_PHI_2",
+      "ELEMENT_B": "GRAPHIC_OUTER_EDGE_2",
+      "OVERLAP_CSV_PIXELS": 126,
+      "OVERLAP_RAW_MASK_PIXELS": 126,
+      "NET_CLEARANCE_PX": "0.000",
+      "CLIP_PIXELS": "0",
+      "MASK_COUNT_MATCH": "PASS",
+      "A_PDF_BBOX": "269.718;566.733;285.243;578.809"
+    },
+    {
+      "RELATION_ID": "REL_0191",
+      "ELEMENT_A": "SEM_TOPIC_PHI_3",
+      "ELEMENT_B": "GRAPHIC_OUTER_EDGE_2",
+      "OVERLAP_CSV_PIXELS": 170,
+      "OVERLAP_RAW_MASK_PIXELS": 170,
+      "NET_CLEARANCE_PX": "0.000",
+      "CLIP_PIXELS": "0",
+      "MASK_COUNT_MATCH": "PASS",
+      "A_PDF_BBOX": "212.743;465.402;228.268;477.478"
+    },
+    {
+      "RELATION_ID": "REL_0272",
+      "ELEMENT_A": "SEM_WEIGHT_THETA_2",
+      "ELEMENT_B": "GRAPHIC_DOCUMENT_DIAMOND",
+      "OVERLAP_CSV_PIXELS": 3,
+      "OVERLAP_RAW_MASK_PIXELS": 3,
+      "NET_CLEARANCE_PX": "0.000",
+      "CLIP_PIXELS": "0",
+      "MASK_COUNT_MATCH": "PASS",
+      "A_PDF_BBOX": "218.949;556.422;233.169;568.928"
+    }
+  ],
+  "pair_sum_overlap_pixels": 387,
+  "raw_mask_sum_overlap_pixels": 387,
+  "a_side_semantic_bboxes_pairwise_disjoint": true,
+  "duplicate_pixels_across_failed_pairs": 0,
+  "unique_overlap_pixels": 387,
+  "all_registered_relation_clip_pixels": 0,
+  "status": "PASS"
+}

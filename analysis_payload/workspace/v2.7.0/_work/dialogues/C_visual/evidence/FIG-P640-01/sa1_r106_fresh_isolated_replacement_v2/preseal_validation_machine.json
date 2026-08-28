@@ -1,0 +1,52 @@
+{
+  "validator_sha256": "BDA2DABE3848C6863DD8CF779B4EE3A02171A591245F3B7BCF4ADD5B5C6F21CE",
+  "status": "PASS",
+  "errors": [],
+  "identity_mismatch_count": 0,
+  "table_rows": {
+    "glyph_machine.csv": 242,
+    "manual_glyph_ledger.csv": 242,
+    "object_inventory_machine.csv": 45,
+    "manual_object_ledger.csv": 45,
+    "critical_relations_machine.csv": 37,
+    "manual_critical_relation_ledger.csv": 37,
+    "source_font_audit_machine.csv": 32,
+    "manual_font_element_ledger.csv": 32,
+    "peer_role_machine.csv": 10,
+    "manual_peer_role_ledger.csv": 10,
+    "views_machine.csv": 6,
+    "manual_view_ledger.csv": 6,
+    "manual_hard_gate_ledger.csv": 15,
+    "after_font_audit.csv": 32,
+    "after_pixel_measurements.csv": 242,
+    "after_overlap_report.csv": 37
+  },
+  "manual_pass_rows": 387,
+  "all_unordered_pairs_rows": 990,
+  "all_unordered_pairs_unique": 990,
+  "unknown_pair_object_ids": [],
+  "png_counts": {
+    "glyph_masks": 242,
+    "glyph_rois_1x": 242,
+    "glyph_rois_8x": 242,
+    "glyph_contact_sheets_8x": 21,
+    "object_masks": 43,
+    "critical_pair_rois_1x": 19,
+    "critical_pair_rois_8x": 19,
+    "critical_pair_contact_sheets_8x": 4
+  },
+  "cache_entries": [],
+  "id_safe_filename_rows": 324,
+  "id_safe_filename_unique_keys": 324,
+  "missing_ordinary_paths": [],
+  "final_mode": false,
+  "final_checks": {
+    "ordinary_file_count": null,
+    "manifest_listed_count": null,
+    "manifest_payload_count": null,
+    "manifest_control_count": null,
+    "self_excluded_count": null,
+    "manifest_identity_mismatch_count": null,
+    "write_stopped_is_strict_last_mtime": null
+  }
+}

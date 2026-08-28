@@ -1,0 +1,12 @@
+GATE_ID,R168_HARD_GATE,POST_OBSERVATION_STATUS,EVIDENCE_AND_REASON
+H01,CURRENT_PDF_MISSING,NOT_TRIGGERED,"R114 PDF identity matched and target appeared exactly once."
+H02,TOFU_OR_MISSING_GLYPH,NOT_TRIGGERED,"All T01-T06 glyphs are present in native 300 dpi and extracted to intended codepoints."
+H03,WRONG_CODEPOINT,NOT_TRIGGERED,"Glyph/codepoint ledger shows intended mathematical and Chinese characters; no substitution."
+H04,MATH_MEANING_ERROR,NOT_TRIGGERED,"M01-M06 agree with the convex-set definition and chapter context."
+H05,ACTUAL_UNREADABILITY_OR_SERIOUS_IMBALANCE,NOT_TRIGGERED,"All text remains readable at full-page 200 dpi and native 300 dpi; old numeric font thresholds are advisory under R168."
+H06,TRUE_CLIPPING,NOT_TRIGGERED,"No text, marker, boundary, formula frame, or caption is clipped."
+H07,ILLEGAL_INK_OVERLAP,TRIGGERED,"O01-O11 / P010: the convex-set boundary crosses the mathematical C glyph in the domain label; R06 nearest8x shows the native-pixel collision."
+H08,SEMANTIC_OR_GEOMETRIC_ERROR,TRIGGERED_SAME_SINGLE_DEFECT,"The domain label is geometrically placed across its own set boundary; semantic wording remains correct."
+H09,PAGE_INTEGRATION_FAILURE,NOT_TRIGGERED,"Full page has coherent spacing, ordering, and caption integration."
+H10,OLD_NUMERIC_FONT_OR_PIXEL_THRESHOLD,ADVISORY_ONLY,"Source 9.2pt and historical numeric thresholds do not independently decide R168; actual readability passes."
+H11,OLD_RATIO_OR_CLEARANCE_THRESHOLD,ADVISORY_ONLY,"No serious visual imbalance was observed; the boundary/C collision is a direct hard overlap independent of an old numeric clearance threshold."

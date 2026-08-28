@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{905}
+\setcounter{chapter}{36}
+\setcounter{section}{3}
+\setcounter{figure}{5}
+\pagestyle{headings}
+\chaptermark{PageRank算法}
+\sectionmark{平稳分布与主特征向量}
+\textbf{几何解释。}概率向量位于 $\Delta^{n-1}$；同一阻尼算子把任意两条轨迹的 $1$ 范数距离至多缩成 $d$ 倍。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/simplex_stationary_contraction.tex}
+\FloatBarrier
+\textbf{读图。}三个不同初值沿真实数值迭代折返并逐步靠近同一个 $r^*$；两个同心区域与右侧不等式共同说明唯一性和几何收敛。
+\end{document}

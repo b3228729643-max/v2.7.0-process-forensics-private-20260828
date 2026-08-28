@@ -1,0 +1,5 @@
+pair_id	object_a	object_b	reviewer	actual_views	intersection_px	semantic_relation	geometry_correct	decision	note
+P32596	G0003	G0008	gpt-5.6-sol/xhigh	figure_crop_300dpi.png;graphic_contact_sheet_001.png	7	EDGE_I_TO_J meets NODE_I boundary	TRUE	PASS	The shaft begins at the i-node perimeter as intended; this is graph topology not illegal overlap.
+P32633	G0004	G0006	gpt-5.6-sol/xhigh	figure_crop_300dpi.png;graphic_contact_sheet_001.png	13	EDGE_J_TO_I meets NODE_J boundary	TRUE	PASS	The curved return edge attaches to the j-node boundary in the intended direction.
+P32637	G0004	G0010	gpt-5.6-sol/xhigh	figure_crop_300dpi.png;graphic_contact_sheet_001.png	7	EDGE_J_TO_H meets NODE_J boundary	TRUE	PASS	The diagonal edge leaves node j at its perimeter with correct endpoint geometry.
+P32677	G0005	G0012	gpt-5.6-sol/xhigh	figure_crop_300dpi.png;graphic_contact_sheet_001.png	6	EDGE_H_TO_I meets NODE_H boundary	TRUE	PASS	The diagonal edge leaves node h at its perimeter; visible connection is intentional and correct.

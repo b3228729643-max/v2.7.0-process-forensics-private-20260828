@@ -1,0 +1,1150 @@
+% STAGE12-CHAPTER: V4-C05
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V4-C05-CH01}; CH-02=\label{struct:V4-C05-CH02}; CH-03=\label{struct:V4-C05-CH03}; CH-04=\label{struct:V4-C05-CH04}; CH-05=\label{struct:V4-C05-CH05}; CH-06=\label{struct:V4-C05-CH06}; CH-07=\label{struct:V4-C05-CH07}; CH-08=\label{struct:V4-C05-CH08}; CH-09=\label{struct:V4-C05-CH09}; CH-10=\label{struct:V4-C05-CH10}; CH-11=\label{struct:V4-C05-CH11}; CH-12=\label{struct:V4-C05-CH12}; CH-13=\label{struct:V4-C05-CH13}; CH-14=\label{struct:V4-C05-CH14}; CH-15=\label{struct:V4-C05-CH15}; CH-16=\label{struct:V4-C05-CH16}; CH-17=\label{struct:V4-C05-CH17}; CH-18=\label{struct:V4-C05-CH18}; CH-19=\label{struct:V4-C05-CH19}; CH-20=\label{struct:V4-C05-CH20}; CH-21=\label{struct:V4-C05-CH21}; CH-22=\label{struct:V4-C05-CH22}; CH-23=\label{struct:V4-C05-CH23}; CH-24=\label{struct:V4-C05-CH24}; CH-25=\label{struct:V4-C05-CH25}; CH-26=\label{struct:V4-C05-CH26}; CH-27=\label{struct:V4-C05-CH27}; CH-28=\label{struct:V4-C05-CH28}; CH-29=\label{struct:V4-C05-CH29}; CH-30=\label{struct:V4-C05-CH30}; CH-31=\label{struct:V4-C05-CH31}; CH-32=\label{struct:V4-C05-CH32}; CH-33=\label{struct:V4-C05-CH33}; CH-34=\label{struct:V4-C05-CH34}; CH-35=\label{struct:V4-C05-CH35}; CH-36=\label{struct:V4-C05-CH36}; CH-37=\label{struct:V4-C05-CH37}
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=12; source_group=4; supplement=8
+% FIGURE-KNOWLEDGE-MAP: fig:V4-C05-two-geometries -> SLM-17-01-003
+
+\chapter{潜在语义分析与非负矩阵分解}\label{chap:V4-C05}
+\index{潜在语义分析}
+\index{潜在语义索引}
+\index{非负矩阵分解}
+\index{单词--文本矩阵}
+\index{TF--IDF}
+
+\SLChapterOpening{从单词--文本矩阵直达LSA与非负主题分解}{怎样在高维稀疏共现矩阵中提取低维语义结构}{能构造TF/TF--IDF矩阵、推导截断SVD表示与NMF乘法更新}{稀疏矩阵、SVD、非负约束、平方损失与KL散度}{矩阵方向或权重不清时回到\cref{sec:V4-C05-S01}；低秩/非负更新失败时回看\cref{sec:V4-C05-S03,sec:V4-C05-S05}}
+\phantomsection\label{struct:V4-C05-CH01}
+% KNOWLEDGE-PLAN: KN-V4-C28-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}潜在语义分析与非负矩阵分解学习目标固定核验“能从词频或TF--IDF权值构造单词--文本矩阵，并核对“单词在行、文本在列”的维数约定”；请实际完成“从词频或TF--IDF权值构造单词--文本矩阵，并核对“单词在行、文本在列”的维数约定”，并用“中间结果逐项包含首目标“能从词频或TF--IDF权值构造单词--文本矩阵，并核对“单词在行、文本在列”的维数约定”声明的对象、条件与结论”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能从词频或TF--IDF权值构造单词--文本矩阵，并核对“单词在行、文本在列”的维数约定；
+  \item 能严格区分单词向量空间、话题向量空间、一般因子模型、基于截断SVD的潜在语义分析和非负矩阵分解；
+  \item 能逐行推出LSA文本坐标、NMF平方损失梯度、一套乘法更新与一套投影更新，并说明每一步的矩阵尺寸；
+  \item 能证明截断SVD的正交低秩最优性以及平方损失NMF乘法更新的目标单调不增性质，同时准确限定这些结论；
+  \item 能执行截断SVD、平方损失乘法更新与投影梯度的核心步骤；广义KL求解细节作为进阶对照；
+  \item 能用子空间与非负锥两种几何解释比较LSA和NMF，并完成章末12道题的计算、推导和诊断。
+\end{itemize}}
+
+\phantomsection\label{struct:V4-C05-CH02}
+% KNOWLEDGE-PLAN: KN-V4-C28-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}潜在语义分析与非负矩阵分解的最短先修明确要求“本章直接使用向量内积与余弦、矩阵乘法、Frobenius范数、梯度、凸函数、Jensen不等式、奇异值分解和最佳低秩近似”；请把首项“本章直接使用向量内积与余弦、矩阵乘法、Frobenius范数、梯度、凸函数、Jensen不等式、奇异值分解和最佳低秩近似”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章直接使用向量内积与余弦、矩阵乘法、Frobenius范数、梯度、凸函数、Jensen不等式、奇异值分解和最佳低秩近似”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章直接使用向量内积与余弦、矩阵乘法、Frobenius范数、梯度、凸函数、Jensen不等式、奇异值分解和最佳低秩近似。统一令词表含$m$个单词、语料含$n$篇文本、潜在维数为$k$，并假定已阅读本册奇异值分解与主成分分析两章。NMF的散度损失还用到KL散度的非负性与零项极限约定。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V4-C05-CH03}
+% KNOWLEDGE-PLAN: KN-V4-C28-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}潜在语义分析与非负矩阵分解先修自检固定核验“若$X\in\mathbb R^{m\times n}$且样本按列排列，能否写出$X^TX$、$XX^T$和$U_k^TX$的维数”；请在$X\in\mathbb R^{m\times n}$且样本按列排列条件下，实际写出$X^TX$、$XX^T$和$U_k^TX$的维数并写出中间结果，再按“$X\in\mathbb R^{m\times n}$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 若$X\in\mathbb R^{m\times n}$且样本按列排列，能否写出$X^TX$、$XX^T$和$U_k^TX$的维数？
+  \item 能否证明非零向量的余弦不随正比例缩放改变，并指出零向量为何没有余弦？
+  \item 能否写出$X_k=U_k\Sigma_kV_k^T$以及$\|X-X_k\|_F^2$的尾部奇异值表达式？
+  \item 能否按元素求出$\frac12\|X-WH\|_F^2$对$W$或$H$的梯度，并核对梯度与变量同维？
+\end{enumerate}
+若第1、3项未通过，应先回看奇异值分解；若第2项未通过，应复习内积与范数；若第4项未通过，应复习矩阵微分的分量推导。
+\end{precheckbox}
+
+\phantomsection\label{struct:V4-C05-CH04}
+% KNOWLEDGE-PLAN: KN-V4-C28-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}潜在语义分析与非负矩阵分解把“词频与文档频率 $\to$ TF--IDF权值 $\to$ 单词--文本矩阵”接到“单词向量空间的同义与多义困难 $\to$ 低维话题表示”；请用$\to$补全这一步的等式或判据，再检查两端维数、支持或对象类型。\par
+
+\begin{dependencybox}
+词频与文档频率 $\to$ TF--IDF权值 $\to$ 单词--文本矩阵；
+单词向量空间的同义与多义困难 $\to$ 低维话题表示；
+截断SVD与低秩最优性 $\to$ 正交LSA；
+非负约束与加性组合 $\to$ NMF话题表示；
+平方损失或广义KL散度 $\to$ 乘法更新；
+目标轨迹、残差与多初值 $\to$ 可复核的模型选择。
+\end{dependencybox}
+
+\begin{keypointbox}[title=数据方向桥：词为行、文档为列]
+本章使用词--文档矩阵$X_{\rm wd}\in\mathbb R^{m\times n}$，第$j$列是第$j$篇文档的$m$维词权向量。若把文档视为全书默认的行样本，则
+\[
+X_{{\rm doc},{\rm row}}=X_{\rm wd}^{\mathsf T}
+\in\mathbb R^{n\times m}.
+\]
+例如$m=1000,n=200$时，两种表示分别为$1000\times200$和$200\times1000$。LSA与NMF公式沿用前者，常规训练--验证切分可沿用后者，但转换时必须写出转置。
+\end{keypointbox}
+
+\phantomsection\label{struct:V4-C05-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V4-C05
+\index[symbols]{m-n-k--s5dc48a40005b@$m,n,k$：词数、文本数和潜在话题数}
+\index[symbols]{w-i-d-j--s8e6ca9098438@$w_i,d_j$：第$i$个单词与第$j$篇文本}
+\index[symbols]{f-ij-minus-operatorname-minus-df-i--sddd79b8aab81@$f_{ij},\operatorname{df}_i$：词频与包含$w_i$的文本数}
+\index[symbols]{x-eq-x-ij--sbc140214cd76@$X=[x_{ij}]$：单词--文本矩阵，$x_j=X[:,j]$表示文本$d_j$}
+\index[symbols]{t-y--sc02e33812c0a@$T,Y$：一般LSA中的单词--话题矩阵与话题--文本矩阵}
+\index[symbols]{u-k-minus-sigma-minus-k-v-k--se3e3f27e828a@$U_k,\Sigma_k,V_k$：$X$的前$k$个奇异三元组}
+\index[symbols]{w-eq-w-i-minus-ell-minus--s2e39e9f19721@$W=[W_{i\ell}]$：NMF的非负话题基矩阵}
+\index[symbols]{h-eq-h-minus-ellj-minus--s844059139c91@$H=[H_{\ell j}]$：NMF的非负文本系数矩阵}
+\index[symbols]{j-f-w-h--s5816f0c80490@$J_F(W,H)$：平方Frobenius损失$\frac12\lVert X-WH\rVert_F^2$}
+\index[symbols]{d-x-minus-vertwh-minus--saff61c7ac877@$D(X\Vert WH)$：广义KL散度型损失}
+\index[symbols]{s-t-s-t-n--sa68e85fd46d9@$s,T_s,T_N$：$s=\operatorname{nnz}(X)$及SVD、NMF迭代轮数}
+\index[symbols]{minus-varepsilon-minus-minus-delta-minus--s7898e601a98a@$\varepsilon,\delta$：停止容差与数值退化阈值}
+% STAGE19-SYMBOL-INDEX-END: V4-C05
+\begin{symboltablebox}
+\small
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$m,n,k$ & 正整数，$1\le k<\min(m,n)$ & 词数、文本数和潜在话题数\\
+$w_i,d_j$ & 离散对象 & 第$i$个单词与第$j$篇文本\\
+$f_{ij},\operatorname{df}_i$ & 非负整数、$1\le\operatorname{df}_i\le n$ & 词频与包含$w_i$的文本数\\
+$X=[x_{ij}]$ & $\mathbb R_{\ge0}^{m\times n}$ & 单词--文本矩阵，$x_j=X[:,j]$表示文本$d_j$\\
+$T,Y$ & $m\times k,k\times n$ & 一般LSA中的单词--话题矩阵与话题--文本矩阵\\
+$U_k,\Sigma_k,V_k$ & $m\times k,k\times k,n\times k$ & $X$的前$k$个奇异三元组\\
+$W=[W_{i\ell}]$ & $\mathbb R_{\ge0}^{m\times k}$ & NMF的非负话题基矩阵\\
+$H=[H_{\ell j}]$ & $\mathbb R_{\ge0}^{k\times n}$ & NMF的非负文本系数矩阵\\
+$J_F(W,H)$ & $\mathbb R_{\ge0}$ & 平方Frobenius损失$\frac12\|X-WH\|_F^2$\\
+$D(X\Vert WH)$ & $\mathbb R_{\ge0}\cup\{+\infty\}$ & 广义KL散度型损失\\
+$s,T_s,T_N$ & 非负整数 & $s=\operatorname{nnz}(X)$及SVD、NMF迭代轮数\\
+$\varepsilon,\delta$ & 正数 & 停止容差与数值退化阈值\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{文档--单词矩阵与潜在语义}{sec:V4-C05-S01}
+\phantomsection\label{struct:V4-C05-CH06}
+\knowledgeanchor{PRE-TM-001}{文档—单词矩阵与词袋表示}
+一篇文本先被分词并映射到固定词表$\mathcal V=\{w_1,\ldots,w_m\}$。若只记录每个词出现多少次而忽略顺序，就得到词袋表示。把文本集合$\mathcal D=\{d_1,\ldots,d_n\}$的列向量并排，形成
+\[
+X=[x_1,\ldots,x_n]=[x_{ij}]\in\mathbb R_{\ge0}^{m\times n},
+\qquad x_j=(x_{1j},\ldots,x_{mj})^T\in\mathbb R_{
+\ge0}^{m}.
+\]
+这里$i$始终是单词下标，$j$始终是文本下标。词袋模型保留“出现什么、出现多少”，舍弃词序；因而它是建模选择，不是原始文本的无损复制。
+
+若$x_{ij}$采用归一化TF--IDF权值，记$f_{ij}$为词频、$f_{\cdot j}=\sum_{r=1}^mf_{rj}$为文本长度、$\operatorname{df}_i$为含词$w_i$的文本数，则
+\[
+x_{ij}=\frac{f_{ij}}{f_{\cdot j}}
+\log\frac{n}{\operatorname{df}_i}.
+\]
+该式要求$f_{\cdot j}>0$且训练词表中的$\operatorname{df}_i\ge1$。空文本应在建矩阵前处理；新文本沿用训练语料确定的词表和逆文档频率，不能用测试语料重新估计。
+
+采用上述不平滑逆文档频率时，若$\operatorname{df}_i=n$，第$i$个词的整行TF--IDF权值会变为0；一篇只含这类词的文本也可能成为全零列。因此权值矩阵形成后必须再次检查全零行列：删除无信息词行并保存词表映射，回查或隔离全零文本列；若改用平滑逆文档频率，则应明确给出平滑公式和训练统计量。
+
+% KNOWLEDGE-PLAN: KN-V4-C28-CONCEPT-002 L1
+\paragraph{读前自检：潜在语义分析。}潜在语义分析先在固定词表的单词空间比较非零文本$x_p,x_q$；请计算$x_p^{\mathsf T}x_q/(\lVert x_p\rVert_2\lVert x_q\rVert_2)$，核对余弦落在$[-1,1]$，并指出任一文本为零向量时该式无定义。\par
+% KNOWLEDGE-PLAN: KN-V4-C28-PREREQUISITE-008 L1
+\paragraph{读前自检：单词向量空间与话题向量空间。}单词向量$x_j\in\mathbb R^m$经话题基$U_k\in\mathbb R^{m\times k}$编码为$y_j=U_k^{\mathsf T}x_j\in\mathbb R^k$；请核对编码与$U_ky_j$重构的维数，并说明$k<m$时有损。\par
+
+\knowledgeanchor{SLM-17-00-001}{潜在语义分析}
+\knowledgeanchor{SLM-17-01-001}{单词向量空间与话题向量空间}
+单词空间用两篇文本的内积$x_p^Tx_q$或
+\[
+\cos(x_p,x_q)=\frac{x_p^Tx_q}{\|x_p\|_2\|x_q\|_2}
+\]
+衡量两篇非零文本的相似度。它能利用共同词，却难以处理同义词分占不同坐标和多义词把不同语境错误连接的问题。潜在语义分析希望从大量共现模式中学习少量话题方向，再在话题空间中比较文本。
+
+% KNOWLEDGE-PLAN: KN-V4-C28-PREREQUISITE-009 L1
+\paragraph{读前自检：单词向量空间。}LSA因子$T\in\mathbb R^{m\times k},Y\in\mathbb R^{k\times n}$满足$X\approx TY$；请对可逆$R\in\mathbb R^{k\times k}$验证$(TR)(R^{-1}Y)=TY$，核对一般话题基存在换基不唯一性。\par
+
+\knowledgeanchor{SLM-17-01-002}{单词向量空间}
+在单词空间中，每个坐标轴对应一个词，维数为$m$；在话题空间中，每个坐标轴对应由若干词共同定义的潜在方向，维数为$k\ll m$。降维可能缓解稀疏和词面不一致，但也会混合原本不同的细节，因此必须报告截断误差和下游评价。
+
+\phantomsection\label{struct:V4-C05-CH07}
+\index{潜在语义因子模型!模型定义}
+\index{截断SVD!潜在维数选择}
+% CORE-DERIVATION-PLAN: KN-V4-C28-DERIVATION-001
+\SLKnowledgeBridge{区分投影、低维坐标与重构，并核对训练文本和新文本的尺寸。}{$X=U\Sigma V^{\mathsf T}\in\R^{m\times n}$、截断基 $U_k$ 与文本列 $x_j=Xe_j$。}{$U_k^{\mathsf T}U_k=I_k$；训练与新文本使用同一词表和预处理。}{先左乘 $U_k^{\mathsf T}$，计算训练文本坐标 $U_k^{\mathsf T}x_j$。}
+
+\begin{definition}[潜在语义因子模型]\label{def:V4-C05-lsa}
+给定非零矩阵$X\in\mathbb R_{\ge0}^{m\times n}$，令$r=\operatorname{rank}(X)$并取
+$1\le k\le r$。潜在语义因子模型寻找
+\[
+T\in\mathbb R^{m\times k},\qquad
+Y\in\mathbb R^{k\times n},\qquad X\approx TY.
+\]
+$T$的第$\ell$列$t_\ell\in\mathbb R^m$表示第$\ell$个话题方向，$Y$的第$j$列$y_j\in\mathbb R^k$表示文本$d_j$的话题坐标。若取$T=U_k$、$Y=\Sigma_kV_k^T$，称为基于截断SVD的LSA。
+$k<r$是降维且有损的截断选择，此时$X_k\ne X$；边界$k=r$保留全部非零奇异三元组，
+维数为$U_r\in\mathbb R^{m\times r}$、$\Sigma_r\in\mathbb R^{r\times r}$、
+$V_r\in\mathbb R^{n\times r}$，并精确重构$X_r=U_r\Sigma_rV_r^T=X$。
+\end{definition}
+
+一般分解存在缩放与换基不唯一性：对任意可逆$R\in\mathbb R^{k\times k}$，
+$TY=(TR)(R^{-1}Y)$。SVD用正交列和按序奇异值固定了大部分自由度，但成对符号仍可翻转；重复奇异值对应子空间内仍可旋转。因此解释应优先面向话题子空间、重构和相似关系，而不是执着于某一列的符号。
+
+\SLReviewSection{LSA模型}{sec:V4-C05-S02}
+\knowledgeanchor{SLM-17-01-003}{话题向量空间}
+\phantomsection\label{struct:V4-C05-CH08}
+\textbf{模型。}对薄SVD
+\[
+X=U\Sigma V^T,
+\]
+取前$k$项，得到
+\[
+X_k=U_k\Sigma_kV_k^T=U_kY,
+\qquad Y=\Sigma_kV_k^T.
+\]
+$U_k$列标准正交，因而文本$x_j$在该子空间中的坐标为$y_j=U_k^Tx_j$；其重构为$U_ky_j$。$U_k$和$Y$通常含正负元素，不能把它们直接解释为概率或非负份额。
+
+\phantomsection\label{struct:V4-C05-CH09}
+\textbf{学习策略。}SVD--LSA最小化秩不超过$k$的Frobenius重构误差：
+\[
+\min_{\operatorname{rank}(B)\le k}\|X-B\|_F^2.
+\]
+$k$由训练阶段的尾部奇异值能量、语义稳定性、检索或聚类验证指标共同选择。只凭低维图好看或训练误差下降来选择$k$，会把视觉偏好或过拟合当成语义证据。
+
+\phantomsection\label{struct:V4-C05-CH10}
+\textbf{先定义模型，再选择求解器。}LSA规定无约束秩$k$最佳近似问题，NMF规定非负因子下的平方或广义KL目标；这些最优性结论不依赖某个迭代器。求解阶段再选择完整或截断SVD、乘法更新或投影梯度，并报告残差与预算。两者不能因“都写成两个矩阵的乘积”便被视为同一模型或同一算法。
+
+% KNOWLEDGE-PLAN: KN-V4-C28-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：潜在语义分析算法。}基于截断SVD的LSA输入非零词--文档矩阵$X$与$1\le k\le\operatorname{rank}(X)$；请取$U_k,\Sigma_k,V_k$并计算$Y=U_k^{\mathsf T}X=\Sigma_kV_k^{\mathsf T}$，核对重构$U_kY=X_k$及残差后结束。\par
+% KNOWLEDGE-PLAN: KN-V4-C28-FORMULA-001 L1
+\paragraph{读前自检：矩阵奇异值分解算法。}LSA的矩阵SVD路线对$X\in\mathbb R^{m\times n}$提取前$k$个奇异三元组；请核对$U_k^{\mathsf T}U_k=I_k$，再算一列文本坐标$y_j=U_k^{\mathsf T}x_j$，以左右奇异残差判定分解是否合格。\par
+
+\SLTeachSection{截断SVD模型、坐标与最优性}{sec:V4-C05-S03}
+\knowledgeanchor{SLM-17-02-001}{潜在语义分析算法}
+\knowledgeanchor{SLM-17-02-002}{矩阵奇异值分解算法}
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V4-C05-CH11}
+\begin{derivationgoalbox}
+从截断SVD推出训练文本和新文本的话题坐标，并核对投影、坐标与重构的尺寸。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+设$X=U\Sigma V^T$，$U_k^TU_k=I_k$，并把第$j$个标准基记为$e_j\in\mathbb R^n$。第$j$列文本为$x_j=Xe_j\in\mathbb R^m$。
+\end{derivationprepbox}
+
+\textbf{推导第1步：取前$k$维正交投影坐标。}
+\[
+y_j=U_k^Tx_j\in\mathbb R^k.
+\]
+
+\textbf{推导第2步：把坐标写成右奇异向量形式。}
+\[
+U_k^Tx_j
+=U_k^TU\Sigma V^Te_j
+=\Sigma_kV_k^Te_j.
+\]
+因此全部训练文本的坐标矩阵为
+\[
+Y=[y_1,\ldots,y_n]=U_k^TX=\Sigma_kV_k^T\in\mathbb R^{k\times n}.
+\]
+
+\textbf{推导第3步：重构并推广到新文本。}
+\[
+\widehat x_j=U_ky_j=U_kU_k^Tx_j,
+\qquad
+\widehat X=U_kY=X_k.
+\]
+对使用同一词表和权值规则得到的新文本$x_{\rm new}\in\mathbb R^m$，编码为
+$y_{\rm new}=U_k^Tx_{\rm new}$，重构为$U_ky_{\rm new}$。维数链分别为$(k\times m)(m\times1)=k\times1$和$(m\times k)(k\times1)=m\times1$。
+
+\phantomsection\label{struct:V4-C05-CH12}
+\begin{theorem}[LSA的正交低秩最优性]\label{thm:V4-C05-lsa-optimal}
+设$X$的奇异值为$\sigma_1\ge\cdots\ge\sigma_r>0$，$1\le k<r$。则
+\[
+X_k=U_k\Sigma_kV_k^T
+\]
+在所有秩不超过$k$的矩阵中最小化Frobenius误差，并且
+\[
+\|X-X_k\|_F^2=\sum_{j=k+1}^{r}\sigma_j^2.
+\]
+此外，LSA训练坐标恰为$Y=U_k^TX=\Sigma_kV_k^T$。
+\end{theorem}
+
+\phantomsection\label{struct:V4-C05-CH13}
+% KNOWLEDGE-PLAN: KN-V4-C28-PROOF-001 L1
+\paragraph{读前自检：证明：LSA的正交低秩最优性。}围绕LSA的正交低秩最优性，先采用条件“由本册的Eckart--Young--Mirsky低秩最优性该定理”，再把$\langle u_iv_i^T,u_jv_j^T\rangle_F$按证明中的分解展开一层；最后验证三个结论均成立。\par
+
+\begin{proof}
+由本册的Eckart--Young--Mirsky低秩最优性定理\ref{thm:V4-C03-eym}，任意$\operatorname{rank}(B)\le k$的矩阵满足
+\[
+\|X-B\|_F^2\ge\sum_{j=k+1}^{r}\sigma_j^2.
+\]
+截断矩阵与原矩阵之差为
+$X-X_k=\sum_{j=k+1}^{r}\sigma_ju_jv_j^T$。这些秩一矩阵在Frobenius内积下两两正交，因为
+\[
+\langle u_iv_i^T,u_jv_j^T\rangle_F
+=(u_i^Tu_j)(v_i^Tv_j)=\delta_{ij}.
+\]
+所以$\|X-X_k\|_F^2=\sum_{j>k}\sigma_j^2$，达到上述下界。最后，
+\[
+U_k^TX=U_k^TU\Sigma V^T=\Sigma_kV_k^T,
+\]
+证明了坐标公式。三个结论均成立。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V4-C28-FORMULA-002 L1
+\paragraph{读前自检：非负矩阵分解算法。}NMF给定$X\in\mathbb R_{\ge0}^{m\times n}$与秩$k$，寻找$W\in\mathbb R_{\ge0}^{m\times k},H\in\mathbb R_{\ge0}^{k\times n}$；请核对$WH$的形状与非负性，并把一列写成非负基向量的加权和。\par
+% KNOWLEDGE-PLAN: KN-V4-C28-FORMULA-003 L1
+\paragraph{读前自检：非负矩阵分解。}非负矩阵分解要求输入和两因子逐项非负，但不自动要求列和为1；请用$X\approx WH$核对一列重构为$\sum_\ell H_{\ell j}w_\ell$，并说明若要概率解释还需额外归一化。\par
+
+\SLTeachSection{非负矩阵分解模型}{sec:V4-C05-S04}
+\knowledgeanchor{SLM-17-03-001}{非负矩阵分解算法}
+\knowledgeanchor{SLM-17-03-002}{非负矩阵分解}
+% KNOWLEDGE-PLAN: KN-V4-C28-DEFINITION-002 L1
+\paragraph{读前自检：非负矩阵分解。}非负矩阵分解的广义KL型损失约定$x_{ij}=0$时对数项为0；请检查一个$x_{ij}>0$的位置，若$(WH)_{ij}=0$则判损失为$+\infty$，否则代入单项并核对它不要求对称。\par
+
+\begin{definition}[非负矩阵分解]\label{def:V4-C05-nmf}
+给定$X\in\mathbb R_{\ge0}^{m\times n}$和潜在维数$k$，非负矩阵分解寻找
+\[
+W\in\mathbb R_{\ge0}^{m\times k},\qquad
+H\in\mathbb R_{\ge0}^{k\times n},\qquad X\approx WH.
+\]
+第$j$篇文本满足$x_j\approx Wh_j=\sum_{\ell=1}^kH_{\ell j}w_\ell$，其中$w_\ell=W[:,\ell]$是非负话题基，$h_j=H[:,j]$是非负组合系数。
+\end{definition}
+
+\begin{SLRunningExample}{RUN-DOC-TERM-01}{V4-C05-nmf}{贯穿例：文档—词项矩阵小例}{返回同一原始非负计数矩阵，用非负基与非负系数解释加性话题结构。}
+词项为行、文档为列，精确沿用
+\[
+\boldsymbol X=\begin{bmatrix}2&0&1\\1&2&0\\0&1&3\end{bmatrix}.
+\]
+三列总数仍为$3,3,4$，总计数仍为$10$。矩阵逐项非负，故与
+$\boldsymbol X\approx WH$、$W,H\geq0$的NMF定义相容；本章必须使用这张原始计数表，不能把上一站含负元素的中心化矩阵$X_c$直接作为NMF输入。非负约束给出加性锥组合，但在未另行归一化时不把$W,H$自动解释为概率。上一站见\SLRunningExampleRef{RUN-DOC-TERM-01}{V4-C04-pca}{PCA对同一数据的中心化表示}；下一站见\SLRunningExampleRef{RUN-DOC-TERM-01}{V4-C06-plsa}{PLSA对同一计数的概率分解}。
+\end{SLRunningExample}
+
+\knowledgeanchor{SLM-17-03-003}{潜在语义分析模型}
+NMF用于话题分析时，以$W$的列表示词在话题中的权重，以$H$的列表示文本的话题强度。所有项非负，所以重构只能“加入部件”，不会用正负抵消解释一个词。若希望把列解释为概率，还需另外归一化并声明概率模型；非负本身只给出锥组合，不给出总和为1。
+
+\knowledgeanchor{SLM-17-03-004}{非负矩阵分解的形式化}
+常用目标有两类：
+\[
+J_F(W,H)=\frac12\|X-WH\|_F^2,
+\qquad W,H\ge0,
+\]
+以及
+\[
+D(X\Vert WH)=\sum_{i=1}^m\sum_{j=1}^n
+\left[x_{ij}\log\frac{x_{ij}}{(WH)_{ij}}-x_{ij}+(WH)_{ij}\right],
+\qquad W,H\ge0.
+\]
+约定$x_{ij}=0$时首项为0；若$x_{ij}>0$而$(WH)_{ij}=0$，对应损失为$+\infty$。第二个量通常不对称，也不满足度量公理；只有在归一化条件下才退化为概率分布的KL散度。
+
+% CORE-DERIVATION-PLAN: KN-V4-C28-DERIVATION-002
+\SLKnowledgeBridge{把梯度的正、负部分与自适应正步长配对，得到保持非负的更新。}{$X\ge0$、$W\ge0$、$H\ge0$ 与目标 $\tfrac12\norm{X-WH}_F^2$。}{更新 $W$ 时固定 $H$；更新 $H$ 时使用当前最新 $W$；分母为正或按预先规则处理零项。}{先计算 $\nabla_WJ=WHH^{\mathsf T}-XH^{\mathsf T}$ 与 $\nabla_HJ=W^{\mathsf T}WH-W^{\mathsf T}X$。}
+
+\begin{derivationgoalbox}
+用分量形式求平方损失对$W_{i\ell}$和$H_{\ell j}$的梯度，再把自适应正步长写成乘法更新。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+令$Q=WH\in\mathbb R^{m\times n}$。固定$H$时更新$W$，固定新$W$时更新$H$；所有矩阵乘法都使用当前可用的最新因子。
+\end{derivationprepbox}
+
+\textbf{推导第1步：对单个元素求偏导。}
+\[
+\frac{\partial J_F}{\partial W_{i\ell}}
+=-\sum_{j=1}^n[x_{ij}-Q_{ij}]H_{\ell j},
+\qquad
+\frac{\partial J_F}{\partial H_{\ell j}}
+=-\sum_{i=1}^mW_{i\ell}[x_{ij}-Q_{ij}].
+\]
+
+\textbf{推导第2步：整理为矩阵梯度。}
+\[
+\nabla_WJ_F=WHH^T-XH^T\in\mathbb R^{m\times k},
+\qquad
+\nabla_HJ_F=W^TWH-W^TX\in\mathbb R^{k\times n}.
+\]
+
+\textbf{推导第3步：选择逐元素步长。}
+对正因子选择
+\[
+\lambda_{i\ell}=\frac{W_{i\ell}}{(WHH^T)_{i\ell}},
+\qquad
+\mu_{\ell j}=\frac{H_{\ell j}}{(W^TWH)_{\ell j}},
+\]
+把$W\leftarrow W-\lambda\odot\nabla_WJ_F$和
+$H\leftarrow H-\mu\odot\nabla_HJ_F$逐元素展开，得到
+\[
+W\leftarrow W\odot\frac{XH^T}{WHH^T},
+\qquad
+H\leftarrow H\odot\frac{W^TX}{W^TWH}.
+\]
+分式表示同位置元素相除；顺序更新时，第二式使用已经更新并完成尺度补偿的$W$。
+
+\begin{keypointbox}[title=核心替代：交替投影梯度]
+乘法更新易解释但会零锁定。对同一平方损失，可保留一套投影方法作为主线替代：
+\[
+W^+=\left[W-\eta_W(WHH^{\mathsf T}-XH^{\mathsf T})\right]_+,
+\qquad
+H^+=\left[H-\eta_H(W^{+\mathsf T}W^+H-W^{+\mathsf T}X)\right]_+,
+\]
+其中$[a]_+=\max(a,0)$逐元素作用，第二步使用新$W^+$。固定另一块时目标是凸二次函数；取
+\[
+0<\eta_W\le\|HH^{\mathsf T}\|_2^{-1},
+\qquad
+0<\eta_H\le\|W^{+\mathsf T}W^+\|_2^{-1}
+\]
+（或用回溯验证目标不增），即可把每块更新解释为非负正交投影后的梯度步。实现只需保留“更新$W$、更新$H$、检查目标/KKT、预算停止”四步；它允许零坐标重新变正，不继承乘法更新的零锁定。
+\end{keypointbox}
+
+\begin{theorem}[平方损失乘法更新的单调性]\label{thm:V4-C05-fro-monotone}
+若$X\ge0$且无全零行或全零列，当前$W,H$严格为正，按上式固定一块更新另一块，并在每个块更新后使用新因子，则各分母与乘法比率均为正，$J_F(W,H)$在每个子步均不增加。若一个子步不改变正因子，则该块的梯度为零。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V4-C28-PROOF-002 L1
+\paragraph{读前自检：证明：平方损失乘法更新的单调性。}从平方损失乘法更新的单调性的条件“记$A=W^TW\ge0$、$b=W^Tx\ge0$”出发，请补出$h^+$到下一关系的一步不等式或求导；所得量应符合另一块同样成立。\par
+
+\begin{proof}
+先固定$W$并考虑$H$的一列$h$及相应文本$x$。记$A=W^TW\ge0$、$b=W^Tx\ge0$，则
+\[
+F(h)=\frac12\|x-Wh\|_2^2,
+\qquad \nabla F(h)=Ah-b.
+\]
+在当前正向量$\widetilde h$处定义对角矩阵
+\[
+K_{aa}(\widetilde h)=\frac{(A\widetilde h)_a}{\widetilde h_a}
+\]
+和辅助函数
+\[
+G(h,\widetilde h)=F(\widetilde h)
++(h-\widetilde h)^T\nabla F(\widetilde h)
++\frac12(h-\widetilde h)^TK(\widetilde h)(h-\widetilde h).
+\]
+对任意向量$z$，利用$A_{ab}=A_{ba}\ge0$，逐项对称化得到
+\[
+z^T(K-A)z
+=\frac12\sum_{a,b}A_{ab}\widetilde h_a\widetilde h_b
+\left(\frac{z_a}{\widetilde h_a}-\frac{z_b}{\widetilde h_b}\right)^2\ge0.
+\]
+所以$K-A$半正定，$G(h,\widetilde h)\ge F(h)$且
+$G(\widetilde h,\widetilde h)=F(\widetilde h)$。令$G$对$h$的梯度为零，得到
+\[
+h^+=\widetilde h-K^{-1}(A\widetilde h-b)
+=\widetilde h\odot\frac{b}{A\widetilde h}.
+\]
+于是
+\[
+F(h^+)\le G(h^+,\widetilde h)
+\le G(\widetilde h,\widetilde h)=F(\widetilde h).
+\]
+对$H$的每一列求和，得到$H$子步单调不增。固定$H$并对$W^T$应用同一论证，得到$W$子步的结论。若正因子在子步中不变，乘法比率全为1，故$Ah-b=0$；另一块同样成立。
+\end{proof}
+
+\begin{corollary}[固定支持面的边界版本]\label{cor:V4-C05-fro-fixed-face}
+若$W,H$只要求非负，零坐标在更新中保持为零，并且所有正坐标对应的分母严格为正，则把定理\ref{thm:V4-C05-fro-monotone}的辅助函数论证限制到这些正坐标张成的固定支持面，仍可得到每个顺序子步目标不增加。该结论只说明当前支持面内的单调性；零锁定可能阻止新方向进入，因此既不等价于严格正初值定理，也不提供全局KKT证书。
+\end{corollary}
+
+\paragraph{扩展讨论：广义KL乘法更新。}
+下述定理用于Poisson型计数损失的对照，不属于第一次阅读必须掌握的两套NMF求解主线。
+% KNOWLEDGE-PLAN: KN-V4-C28-THEOREM-003 L1
+\paragraph{读前自检：广义KL损失乘法更新的单调性。}广义KL损失乘法更新的单调性依赖“固定$W$并记当前因子为$\widetilde H$、$\widetilde q_{ij}=(W\widetilde H)_{ij}>0$”；请据此对$\alpha_{i\ell j}$做一次条件化或边缘化，并直接核对固定更新后的$H$，把行、列和两个因子的角色交换，得到$W$更新及相同的不增链。\par
+
+\begin{theorem}[广义KL损失乘法更新的单调性]\label{thm:V4-C05-kl-monotone}
+若$X\ge0$且无全零行或全零列，$W,H$严格为正，则以下顺序块更新始终有定义、保持因子严格为正，并使$D(X\Vert WH)$在每个子步不增加：
+\[
+H_{\ell j}\leftarrow H_{\ell j}
+\frac{\sum_iW_{i\ell}X_{ij}/(WH)_{ij}}{\sum_iW_{i\ell}},
+\qquad
+W_{i\ell}\leftarrow W_{i\ell}
+\frac{\sum_jH_{\ell j}X_{ij}/(WH)_{ij}}{\sum_jH_{\ell j}}.
+\]
+第二个子步使用第一个子步后的$H$；交换两块顺序也保持结论。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V4-C28-PROOF-003 L1
+\paragraph{读前自检：证明：广义KL损失乘法更新的单调性。}广义KL损失乘法更新的单调性以“固定$W$并记当前因子为$\widetilde H$、$\widetilde q_{ij}=(W\widetilde H)_{ij}>0$”为约束；请对$\alpha_{i\ell j}$做一次条件化或边缘化，并确认固定更新后的$H$，把行、列和两个因子的角色交换，得到$W$更新及相同的不增链。\par
+
+\begin{proof}
+固定$W$并记当前因子为$\widetilde H$、$\widetilde q_{ij}=(W\widetilde H)_{ij}>0$。定义
+\[
+\alpha_{i\ell j}=
+\frac{W_{i\ell}\widetilde H_{\ell j}}{\widetilde q_{ij}},
+\qquad
+\sum_{\ell=1}^k\alpha_{i\ell j}=1.
+\]
+函数$-\log z$在$z>0$上凸。将
+$q_{ij}=\sum_\ell\alpha_{i\ell j}
+(W_{i\ell}H_{\ell j}/\alpha_{i\ell j})$代入Jensen不等式，得到
+\[
+-\log q_{ij}\le
+-\sum_\ell\alpha_{i\ell j}
+\log\frac{W_{i\ell}H_{\ell j}}{\alpha_{i\ell j}}.
+\]
+在$H=\widetilde H$处，各个对数自变量都等于$\widetilde q_{ij}$，故不等式取等号。把它乘以$X_{ij}\ge0$，再加上线性项$q_{ij}=\sum_\ell W_{i\ell}H_{\ell j}$和与$H$无关的项，得到一个在当前点相切且不小于原目标的辅助函数。该辅助函数对$H_{\ell j}$的偏导为
+\[
+-\frac{\sum_iX_{ij}\alpha_{i\ell j}}{H_{\ell j}}
++\sum_iW_{i\ell}.
+\]
+令其为零并代入$\alpha$，得到定理中的$H$更新。辅助函数在该点取最小值，所以原目标不增加。固定更新后的$H$，把行、列和两个因子的角色交换，得到$W$更新及相同的不增链。两个子步串联后，整轮目标不增加。
+\end{proof}
+
+\phantomsection\label{struct:V4-C05-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}SVD--LSA把$x_j$正交投影到$\operatorname{span}(U_k)$，该子空间允许正负坐标；NMF把$x_j$近似为$W$列向量的非负组合，所有重构落在这些列生成的凸锥中。前者强调正交与全局能量最优，后者强调非负的部件相加。
+\end{geometrybox}
+
+\phantomsection\label{struct:V4-C05-CH15}
+% KNOWLEDGE-PLAN: KN-V4-C28-CONCEPT-006 L1
+\paragraph{读前自检：概率解释：LSA本身不是概率模型； 若把 X TY E 并假设 E ij 独立服从同方差高斯分布……。}LSA只有在$X=TY+E$且$E_{ij}$独立同方差高斯时，平方重构才有似然解释；请提取负对数似然中依赖$T,Y$的项，核对它与$\lVert X-TY\rVert_F^2$成正比，且LSA本身不输出概率。\par
+
+\begin{probabilitybox}
+LSA本身不是概率模型；若把$X=TY+E$并假设$E_{ij}$独立服从同方差高斯分布，平方重构目标才获得高斯噪声的似然解释。对计数矩阵，若假设$X_{ij}$独立服从均值$(WH)_{ij}$的Poisson分布，去掉只依赖$X$的常数后，负对数似然等于广义KL损失。把$W,H$归一化为词分布与话题比例属于额外约束，不能由NMF自动推出。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V4-C05-CH16}
+% KNOWLEDGE-PLAN: KN-V4-C28-CONCEPT-007 L1
+\paragraph{读前自检：优化解释：截断SVD对无约束秩 k 问题给出全局最优解。}截断SVD对无约束秩$k$近似给出全局最优，而NMF要求$W,H\ge0$且联合非凸；请把同一秩$k$候选分别代入两种可行域，核对SVD最优性不能直接作为NMF全局最优证书。\par
+
+\begin{optimizationbox}
+\textbf{优化解释。}截断SVD对无约束秩$k$问题给出全局最优解。NMF的可行集要求两个因子均非负，目标对固定$W$的$H$子问题和固定$H$的$W$子问题分别为凸，但对$(W,H)$联合并非凸。乘法更新给出目标单调性，不给出全局最优证书；多初值和独立验证仍是必要步骤。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V4-C05-CH17}
+如\cref{fig:V4-C05-two-geometries}所示，两条路线从同一文本向量出发，却把“低维”解释为不同的可行几何。
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C05/fig_v4_c05_two_geometries.tex}
+
+\phantomsection\label{struct:V4-C05-CH18}
+\textbf{小型数值例子。}令
+\[
+W=\begin{bmatrix}1&0\\1&1\\0&1\end{bmatrix},
+\qquad
+H=\begin{bmatrix}2&0\\0&3\end{bmatrix}.
+\]
+则
+\[
+X=WH=\begin{bmatrix}2&0\\2&3\\0&3\end{bmatrix}.
+\]
+第一篇文本是第一个话题基的2倍，第二篇是第二个话题基的3倍；中间词同时属于两个话题。所有贡献均为非负加法。若把第一列$W$乘2并把第一行$H$除以2，$X$不变，说明解释前需要统一尺度。
+
+% KNOWLEDGE-PLAN: KN-V4-C28-FORMULA-005 L1
+\paragraph{读前自检：平方损失下的乘法更新规则。}平方损失NMF在固定$H$时更新$W\leftarrow W\odot(XH^{\mathsf T})/(WHH^{\mathsf T})$；请核对分子、分母与$W$同形且为非负，再用新$W$完成$H$子步并检查目标不增。\par
+% KNOWLEDGE-PLAN: KN-V4-C28-FORMULA-006 L1
+\paragraph{读前自检：散度损失下的乘法更新规则。}广义KL--NMF在严格正$W,H$和无全零行列的$X$上按$H\to W$顺序乘法更新；请手算一个$H_{\ell j}$比率，核对分母为正、更新保持正性且$D(X\Vert WH)$不增。\par
+% KNOWLEDGE-PLAN: KN-V4-C28-FORMULA-007 L1
+\paragraph{读前自检：非负矩阵分解算法。}非负矩阵分解算法以非负$X$、秩$k$、严格正$W,H$及目标/KKT容差为输入；请依次形成一轮$W$与$H$候选，核对非负、有限及目标不异常上升后提交，并按双证书或预算停止。\par
+% KNOWLEDGE-PLAN: KN-V4-C28-FORMULA-008 L1
+\paragraph{读前自检：非负矩阵分解的迭代算法。}NMF迭代维护$W,H,J_F$与KKT残差；请从合法旧状态完成$W\to$尺度补偿$\to H$的一整轮，只在候选有限非负且目标门禁通过时原子提交，再按相对目标变化与KKT双证书判停。\par
+
+\SLAdvancedSection{数值实现：截断SVD与平方损失NMF}{sec:V4-C05-S05}
+\knowledgeanchor{SLM-17-01-004}{平方损失下的乘法更新规则}
+\knowledgeanchor{SLM-17-02-004}{散度损失下的乘法更新规则}
+\knowledgeanchor{SLM-17-03-005}{非负矩阵分解算法}
+\knowledgeanchor{SLM-17-01-005}{非负矩阵分解的迭代算法}
+
+% KNOWLEDGE-PLAN: KN-V4-C28-CONCEPT-008 L1
+\paragraph{读前自检：算法菜单。}算法菜单把截断SVD求解器分配给LSA、平方损失乘法更新分配给NMF；请分别写出两者的输入与输出，核对前者返回正交三元组/坐标，后者返回非负因子/目标与KKT轨迹。\par
+
+\begin{keypointbox}[title=算法菜单]
+本节保留两个完整实现：截断SVD求解器负责LSA，平方损失乘法更新负责NMF；上一节的交替投影梯度给出第二套NMF核心路线。广义KL更新只保留公式、适用域与单调性依据，不再重复一套长工程伪代码。这样“模型/最优性”先于“求解器/状态”，初学者不必并行追踪三套NMF循环。
+\end{keypointbox}
+
+\phantomsection\label{struct:V4-C05-CH20}
+\textbf{所需量与计算结果。}SVD--LSA需要非负单词--文本矩阵、$k$、子空间宽度与数值预算，计算得到$U_k,\Sigma_k,V_k,Y$、残差、截断误差和停止原因。NMF需要$X,k$、损失类型、正初值、容差与最大轮数，计算得到$W,H$、目标与KKT残差轨迹、迭代数和停止原因。两类算法对新文本的处理均指低维编码，而不是监督标签预测。
+
+\phantomsection\label{struct:V4-C05-CH21}
+\textbf{参数含义。}$k$控制压缩与表达能力；LSA的子空间宽度满足$k\le\ell\le\min(m,n)$，残差容差$\varepsilon_{\rm svd}$和上限$T_s$控制迭代SVD；NMF的目标容差$\varepsilon_J$、KKT容差$\varepsilon_K$、上限$T_N$和退化阈值$\delta$控制停止与诊断。所有容差都应与数据尺度配套报告。
+
+\phantomsection\label{struct:V4-C05-CH22}
+\textbf{初始化。}LSA对子空间迭代使用列标准正交的$Q^{(0)}\in\mathbb R^{m\times\ell}$，并固定随机种子；必须确认初始子空间在目标奇异子空间上有非零投影。NMF使用严格正的$W^{(0)},H^{(0)}$，可由非负随机数或确定性非负SVD启发式产生；保存每组初值并使用相同预算比较。
+
+\textbf{KKT残差口径。}对可微目标$F(W,H)$及非负约束，本文使用逐元素最小值定义
+\[
+r_{\rm KKT}(W,H)=
+\frac{\sqrt{\|\min(W,\nabla_WF)\|_F^2+
+\|\min(H,\nabla_HF)\|_F^2}}
+{\max\{1,\|X\|_F\}}.
+\]
+这里平方损失梯度为$\nabla_WJ_F=WHH^T-XH^T$、$\nabla_HJ_F=W^TWH-W^TX$。对广义KL目标，在$q_{ij}=(WH)_{ij}>0$处有
+$\partial D/\partial W_{i\ell}=\sum_jH_{\ell j}(1-X_{ij}/q_{ij})$与
+$\partial D/\partial H_{\ell j}=\sum_iW_{i\ell}(1-X_{ij}/q_{ij})$。残差为零恰好编码可行性、驻点与互补条件；实现必须先完成$q_{ij}$有限且为正的检查。
+
+\phantomsection\label{struct:V4-C05-CH19}
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V4-C28-ALGORITHM_IDEA-002 L2
+
+% KNOWLEDGE-PLAN: KN-V4-C28-ALGORITHM_IDEA-003 L2
+\begin{keypointbox}[title={基于截断SVD的潜在语义分析：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={非负词--文档矩阵、目标秩$k$、工作宽度$\ell$、初始子空间、SVD迭代预算和残差容差},
+  output={最后合法$U_k,\Sigma_k,V_k,Y$、重构/残差证书、提交轮数$t_{\rm done}$、块乘数$b_{\rm done}$、状态与诊断},
+  preconditions={$X$非空有限非负，$1\le k\le\ell\le\min(m,n)$；预算为非负整数，容差为正；$Q^{(0)}$维数相容},
+  initialization={正交化$Q^{(0)}$，置$t_{\rm done}=b_{\rm done}=0$；检查有效宽度与目标子空间投影},
+  loop={每轮按$X^TQ\to XZ\to$压缩SVD顺序形成Ritz三元组、投影变化和双侧残差},
+  update={Ritz三元组、$Y$、残差和重构误差均有限后才原子提交；失败候选不覆盖上一合法结果},
+  domain={$Q,Z$正交且实际宽度至少$k$；奇异值有限非负；$Y=\Sigma_kV_k^T$维数合法},
+  failure={接口/维数/预算非法返回$\mathtt{invalid\_input}$；有效秩不足、非有限块乘、压缩SVD或重构诊断失败返回$\mathtt{numerical\_failure}$},
+  stop={投影变化与双侧残差均达标、$T_s$轮预算耗尽或首次失败时停止},
+  budget={至多$T_s$个原子提交轮；每轮两次矩阵块乘和一次宽度至多$\ell$的压缩SVD},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$t_{\rm done}$计完整Ritz提交轮，$b_{\rm done}$计实际完成的矩阵块乘，失败尝试按已完成块乘报告},
+  diagnostics={实际宽度/有效秩、双侧残差、投影变化、重构误差、失败轮与阶段及预算余量},
+  complexity={每轮$O(mn\ell+(m+n)\ell^2)$时间和$O((m+n)\ell)$工作空间，最终编码另需$O(kn)$}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begin{algorithm}[tbp]
+\caption{基于截断SVD的潜在语义分析}\label{alg:V4-C05-lsa}
+\KwIn{$X\in\mathbb R_{\ge0}^{m\times n}$，$k$，$k\le\ell\le\min(m,n)$，$Q^{(0)}$，$T_s$，$\varepsilon_{\rm svd}$}
+\KwOut{最后合法$U_k,\Sigma_k,V_k,Y$；$t_{\rm done},b_{\rm done}$；$\mathtt{status}$、残差与诊断}
+若$X,k,\ell,Q^{(0)},T_s$或容差非法，则返回$\bot$、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+正交化$Q^{(0)}$；若有效列数不足$\ell$，则返回$\bot$、计数$0$、$\mathtt{numerical\_failure}$及初始化秩诊断\;
+令$Q\leftarrow Q^{(0)},t_{\rm done}\leftarrow0,b_{\rm done}\leftarrow0$，最后合法模型为$\bot$\;
+\While{$t_{\rm done}<T_s$}{
+  计算$Z^+=\operatorname{orth}(X^TQ)$、$Q^+=\operatorname{orth}(XZ^+)$，每次完成块乘即增加$b_{\rm done}$；任一步非有限或有效秩小于$k$则返回最后合法模型、$\mathtt{numerical\_failure}$及左右阶段诊断\;
+  对$B^+=Q^{+T}X$求薄SVD并恢复候选三元组，计算前$k$个双侧残差、投影变化、$Y^+=\Sigma_k^+V_k^{+T}$及重构误差\;
+  若任一候选/诊断非有限，则返回上一合法模型、$\mathtt{numerical\_failure}$及Ritz阶段诊断\;
+  原子提交$(Q,U_k,\Sigma_k,V_k,Y)\leftarrow(Q^+,U_k^+,\Sigma_k^+,V_k^+,Y^+)$并令$t_{\rm done}\leftarrow t_{\rm done}+1$\;
+  若双侧残差与投影变化均不超过$\varepsilon_{\rm svd}$，则返回最后合法模型、实际计数、$\mathtt{converged}$及证书\;
+}
+返回最后合法模型、实际计数、$\mathtt{budget\_stop}$及“预算耗尽、证书未达标”诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+% KNOWLEDGE-PLAN: KN-V4-C28-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：平方损失NMF的顺序乘法更新：执行契约。}平方损失NMF的顺序乘法更新输入“非负有限矩阵$X$、秩$k$、严格正初值、轮预算、目标/KKT容差、分母阈值和零行列预处理映射”，条件“$1\le k\le\min(m,n)$”；请执行“$W^+,H^+,J_F^+,r_{\rm KKT}^+$均有限非负且目标不异常上升后才原子提交”，以“相对目标变化与KKT双证书、$T_N$轮预算耗尽或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V4-C28-ALGORITHM_IDEA-005 L2
+\begin{keypointbox}[title={平方损失NMF的顺序乘法更新：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={非负有限矩阵$X$、秩$k$、严格正初值、轮预算、目标/KKT容差、分母阈值和零行列预处理映射},
+  output={最后合法$W,H,J_F,r_{\rm KKT}$、提交轮数$t_{\rm done}$、尝试轮数$a_{\rm done}$、状态、轨迹与诊断},
+  preconditions={$1\le k\le\min(m,n)$；初值维数相容且严格正；预算非负，容差/阈值合法；零行列策略已完成},
+  initialization={验证后令$(W,H)=(W^{(0)},H^{(0)})$，新鲜计算$J_F,r_{\rm KKT}$，置$t_{\rm done}=a_{\rm done}=0$},
+  loop={每轮在临时量中依次完成$W$乘法更新、尺度补偿、$H$乘法更新及全候选诊断},
+  update={$W^+,H^+,J_F^+,r_{\rm KKT}^+$均有限非负且目标不异常上升后才原子提交},
+  domain={$X,W,H$非负有限；所有被除分母至少为$\delta$；尺度补偿保持乘积；KKT残差有定义},
+  failure={接口、初值或未处理零行列返回$\mathtt{invalid\_input}$；分母退化、非有限候选、目标上升或KKT计算失败返回$\mathtt{numerical\_failure}$并保留上一合法因子},
+  stop={相对目标变化与KKT双证书、$T_N$轮预算耗尽或首次失败时停止},
+  budget={至多$T_N$个完整原子提交轮；每个尝试轮各一次$W$和$H$顺序更新及诊断},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$a_{\rm done}$计已开始并完成分母检查的尝试轮，$t_{\rm done}$计实际原子提交轮，失败尝试不增加后者},
+  diagnostics={最终目标/KKT残差、相对变化、失败尝试与$W/H$阶段、最小分母、尺度补偿和预算余量},
+  complexity={每轮稠密时间$O(mnk+(m+n)k^2)$，因子空间$O((m+n)k)$，另计输入矩阵}
+}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begin{algorithm}[tbp]
+\caption{平方损失NMF的顺序乘法更新}\label{alg:V4-C05-nmf-fro}
+\KwIn{$X,k,W^{(0)},H^{(0)},T_N,\varepsilon_J,\varepsilon_K,\delta$及零行列预处理映射}
+\KwOut{最后合法$W,H,J_F,r_{\rm KKT}$；$t_{\rm done},a_{\rm done}$；$\mathtt{status}$、轨迹与诊断}
+若$X,k$、初值、预算、容差、阈值或预处理映射非法，或仍含未处理全零行列，则返回初值占位、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+令$(W,H)\leftarrow(W^{(0)},H^{(0)})$，计算$J_F,r_{\rm KKT}$并置$t_{\rm done}\leftarrow0,a_{\rm done}\leftarrow0$；若初始诊断非有限则返回$\mathtt{numerical\_failure}$\;
+若$r_{\rm KKT}\le\varepsilon_K$，则返回初值、$\mathtt{converged}$及零轮证书\;
+\While{$t_{\rm done}<T_N$}{
+  令$a_{\rm done}\leftarrow a_{\rm done}+1$；计算$N_W=XH^T,D_W=WHH^T$；若$D_W$含小于$\delta$或非有限元素，则返回旧因子、$\mathtt{numerical\_failure}$及$W$阶段诊断\;
+  在临时量中令$\overline W=W\odot N_W\oslash D_W$，归一化其列并反向缩放$H$的对应行，得到$\widetilde W,\widetilde H$\;
+  计算$N_H=\widetilde W^TX,D_H=\widetilde W^T\widetilde W\widetilde H$；若分母退化则返回旧因子、$\mathtt{numerical\_failure}$及$H$阶段诊断\;
+  形成$H^+=\widetilde H\odot N_H\oslash D_H,W^+=\widetilde W$，计算$J_F^+,r_{\rm KKT}^+$\;
+  若候选非有限/非负性失败或$J_F^+$异常上升，则拒绝整轮并返回上一合法因子、$\mathtt{numerical\_failure}$及尝试轮诊断\;
+  计算相对目标变化后原子提交$(W,H,J_F,r_{\rm KKT})\leftarrow(W^+,H^+,J_F^+,r_{\rm KKT}^+)$，令$t_{\rm done}\leftarrow t_{\rm done}+1$并追加轨迹\;
+  若相对目标变化$\le\varepsilon_J$且$r_{\rm KKT}\le\varepsilon_K$，则返回最后合法因子、$\mathtt{converged}$及双证书\;
+}
+返回最后合法因子、实际计数、$\mathtt{budget\_stop}$及“预算耗尽、双证书未满足”诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\FloatBarrier
+\SLRobustImplementationStrip{核心流程按$H\to W$顺序执行两条乘法更新，并在整轮后检查目标与KKT残差；零分母、支撑和单调门禁属于稳健实现细节}
+
+\begin{comparisonbox}
+\textbf{广义KL实现要点（进阶，不再列第三套长算法）。}严格正初始化后，按定理\ref{thm:V4-C05-kl-monotone}给出的$H\to W$顺序更新；每个子步只在$X_{ij}>0$处核对$q_{ij}=(WH)_{ij}>0$，整轮复算$D_{\rm KL}$与KKT残差。目标异常上升或支撑为零时返回$\mathtt{numerical\_failure}$，预算用尽而双条件未满足时返回$\mathtt{budget\_stop}$。这一工程合同与平方损失算法同构，差别只在损失、梯度、正支撑门和更新式，故不重复占用一整页伪代码。
+\end{comparisonbox}
+
+\phantomsection\label{struct:V4-C05-CH23}
+\textbf{参数更新与顺序。}LSA每轮依次更新右试探子空间、左试探子空间，再在小矩阵上提取奇异三元组。平方NMF按$W\to$尺度补偿$\to H$更新；KL--NMF按$H\to W\to$尺度补偿更新。每个分母都必须使用该子步规定的当前因子，混用同一轮的新旧矩阵会破坏单调性依据。
+
+\phantomsection\label{struct:V4-C05-CH24}
+\textbf{判断与停止条件。}LSA同时检查左右奇异残差和投影子空间变化。NMF同时检查相对目标变化与KKT残差；达到$T_s$或$T_N$只记为预算停止。任一算法出现非有限值、分母退化、目标异常上升或有效秩不足时，应保留诊断并停止，不能把异常退出写成收敛。
+
+\phantomsection\label{struct:V4-C05-CH25}
+\textbf{正确性依据与收敛条件。}定理\ref{thm:V4-C05-lsa-optimal}给出LSA重构正确性；子空间迭代在初始投影非退化且目标与其余奇异子空间存在谱隙时收敛，谱隙小时速度下降。定理\ref{thm:V4-C05-fro-monotone}与\ref{thm:V4-C05-kl-monotone}保证NMF目标单调且因下界为0而目标值收敛，但不保证因子序列唯一或达到全局最优。
+
+\textbf{不收敛或退化情形。}初始子空间与目标方向正交、目标谱隙过小、NMF出现数值下溢、零锁定或预算过少时，算法可能不能在预算内满足残差条件。若直接调用确定性全SVD，完成一次分解便停止，不存在外层训练迭代；此时应检查数值残差，而不应虚构迭代收敛条件。
+
+\phantomsection\label{struct:V4-C05-CH26}
+\phantomsection\label{struct:V4-C05-CH27}
+% KNOWLEDGE-PLAN: KN-V4-C28-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：数值实现：截断SVD与平方损失NMF。}数值实现：截断SVD与平方损失NMF要求先确认“平方损失NMF一轮若利用乘法次序，时间为 $O(sk+(m+n)k^2)$”；请随后由$s=\operatorname{nnz}(X)$的总成本剥离一次迭代或一次样本因子，用若求解器使用完整稠密中间矩阵，时间和空间上界会相应增加验收。\par
+
+\begin{complexitybox}
+\textbf{训练时间复杂度。}设$s=\operatorname{nnz}(X)$，迭代SVD子空间宽度为$\ell$。LSA训练一轮矩阵--块乘法需$O(s\ell)$，$T_s$轮连同正交化约为
+$O(T_s[s\ell+(m+n)\ell^2])$；稠密全SVD为
+$O(mn\min(m,n))$量级。平方损失NMF一轮若利用乘法次序，时间为
+$O(sk+(m+n)k^2)$；KL--NMF只在$\operatorname{supp}(X)$上求比率时为$O(sk+(m+n)k)$；二者稠密主项均为$O(mnk)$，$T_N$轮再乘$T_N$。
+
+\textbf{预测时间复杂度。}这里“预测”指新文本编码。LSA计算$U_k^Tx$，稠密代价$O(mk)$，稀疏代价$O(\operatorname{nnz}(x)k)$。固定$W$为新文本求非负系数，若运行$I$轮，时间为$O(Imk)$，批量$b$篇为$O(Imbk)$。
+
+\textbf{空间复杂度。}迭代截断SVD在训练中要同时保存稀疏$X$、宽度为$\ell$的子空间块$Q,Z$、小型正交化矩阵以及$B=Q^{\mathsf T}X$，峰值总存储为$O(s+(m+n)\ell+\ell^2)$，其中$n\ell$项覆盖$B$；算法结束后若只持久化$(U_k,\Sigma_k,V_k,Y)$，模型存储才降为$O((m+n)k+k^2)$。仅在另行声明$\ell=\Theta(k)$时，训练峰值中的$\ell$才能按量级换成$k$。NMF需$O(s+(m+n)k+k^2)$。KL更新只在$\operatorname{supp}(X)$上按需计算比率，并用因子边际和计算散度的线性项，因而不必保存完整$m\times n$重构矩阵。
+
+\textbf{复杂度假设。}上述估计假定$W,H$稠密、$k\ll\min(m,n)$、稀疏乘法按非零元素执行，KL比率只在$\operatorname{supp}(X)$上求值，并把$T_s,T_N,I$作为外部给定的实际迭代次数；若求解器使用完整稠密中间矩阵，时间和空间上界会相应增加。
+\end{complexitybox}
+
+\phantomsection\label{struct:V4-C05-CH28}
+% KNOWLEDGE-PLAN: KN-V4-C28-BOUNDARY-002 L1
+\paragraph{读前自检：适用条件与局限：数值实现：截断SVD与平方损失NMF。}固定训练词表后，LSA允许带符号低秩因子并优化Frobenius误差，NMF要求输入和因子非负；请对同一词--文档矩阵核对符号与损失条件，并据此判定应使用截断SVD还是平方损失NMF。\par
+
+\begin{applicabilitybox}
+\textbf{适用条件。}LSA适合需要正交低秩压缩、文档相似度或检索表示，且Frobenius误差与线性子空间假设合理的语料。NMF适合输入非负、希望得到加性部件解释的任务；平方损失适合近似同方差连续误差，广义KL损失更适合计数强度或相对误差结构。两者都要求固定训练词表、合理权值、足够样本和独立评价。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V4-C05-CH29}
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+词袋表示丢失词序与否定结构；线性低秩空间可能混合多个含义；LSA话题含正负载荷，语义解释依赖符号与旋转；NMF联合目标非凸并受初值影响，因子还存在置换和缩放不唯一性；两种方法都需预先选$k$，且高重构质量不保证检索、聚类或人工语义质量。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V4-C05-CH30}
+% KNOWLEDGE-PLAN: KN-V4-C28-BOUNDARY-004 L1
+\paragraph{读前自检：常见错误与误用边界：数值实现：截断SVD与平方损失NMF。}数值实现：截断SVD与平方损失NMF依赖“边界框首项禁止在测试集上重新计算词表”；请据此把固定错误“在测试集上重新计算词表”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，并直接核对改写后的运算或判断有定义，且不再触发“在测试集上重新计算词表”。\par
+
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 把文本放在行，却仍使用“$U_k$列是词空间话题”的尺寸解释；
+  \item 在测试集上重新计算词表、文档频率或归一化统计量，造成数据泄漏；
+  \item 把$V_k^T$误当成文本坐标，漏掉$\Sigma_k$；
+  \item 把LSA的负坐标或NMF的未归一化系数称为概率；
+  \item 在NMF中同时用旧$W$和旧$H$计算两个更新，却引用顺序块更新的单调性；
+  \item 用零初始化造成零锁定，或给分母机械加大常数而不检查目标是否仍单调；
+  \item 只报告目标变化，不报告残差、KKT条件、多初值差异和停止原因。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V4-C05-CH31}
+% KNOWLEDGE-PLAN: KN-V4-C28-COMPARISON-002 L1
+\paragraph{读前自检：易混淆概念对比：数值实现：截断SVD与平方损失NMF。}数值实现：截断SVD与平方损失NMF以“对比表首个数据行是“单词空间｜稀疏$x_j$与内积或余弦｜无训练即可计算｜同义、多义与高维稀疏””为约束；请按列复述“单词空间｜稀疏$x_j$与内积或余弦｜无训练即可计算｜同义、多义与高维稀疏”中的对象、假设与结论，并确认各列均对应首行对象“单词空间”，且未与表中下一行互换。\par
+
+\begin{comparisonbox}
+\small
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 方法 & 表示与目标 & 主要保证 & 关键边界\\ \midrule
+单词空间 & 稀疏$x_j$与内积或余弦 & 无训练即可计算 & 同义、多义与高维稀疏\\
+SVD--LSA & $X\approx U_k\Sigma_kV_k^T$ & 无约束秩$k$平方误差全局最优 & 坐标可正可负，受异常值影响\\
+平方NMF & $X\approx WH$，$W,H\ge0$ & 乘法子步目标不增 & 非凸、初值与尺度不唯一\\
+KL--NMF & 最小化$D(X\Vert WH)$ & 相应辅助函数下目标不增 & 零项、强度模型与数值下溢\\
+PCA & 中心化样本的方差最大化 & 最优正交重构子空间 & 中心化改变词频零点含义\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+% KNOWLEDGE-PLAN: KN-V4-C28-CONCEPT-009 L1
+\paragraph{读前自检：潜在语义分析数值例子。}潜在语义分析数值例子的初值$W^{(0)}$含零元素，并采用先更新$W$、再更新$H$的顺序；请完成题中一整轮平方损失乘法更新，核对零位置保持为零且重构损失不增。\par
+
+\SLDirectSection{例题、矩阵分解计算与练习}{sec:V4-C05-S06}
+\knowledgeanchor{SLM-17-02-003}{潜在语义分析数值例子}
+\phantomsection\label{struct:V4-C05-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[一次平方NMF顺序更新]\label{exm:V4-C05-one-nmf-step}
+取
+\[
+X=\begin{bmatrix}2&1\\1&2\end{bmatrix},\qquad
+W^{(0)}=I_2,\qquad
+H^{(0)}=\begin{bmatrix}1&1\\1&1\end{bmatrix}.
+\]
+本例故意使用含零元素的$W^{(0)}$来展示零锁定，适用的是推论\ref{cor:V4-C05-fro-fixed-face}的固定支持面边界版本，而不是定理\ref{thm:V4-C05-fro-monotone}的严格正初值假设。本例不执行可选的列归一化，并保持$W$先于$H$更新；执行一整轮平方损失乘法更新，求$W^{(1)},H^{(1)}$及新损失。
+
+\phantomsection\label{struct:V4-C05-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V4-C05-one-nmf-step}
+\begin{solution}
+\SLReadTranslation{题目要求完成“一次平方NMF顺序更新”：依据题面矩阵/向量求出目标量，并核对每一步乘法与最终结果的维数。}
+\SolGiven 题面矩阵、向量与参数均按既定列向量约定；首次运算前写出各对象维数并确认内侧维数相等。
+\SLMethodTrigger{先标注每个矩阵/向量维数，再按分解、乘法或投影公式计算并做形状核验。}
+\SolDerive
+\textbf{$W$子步。}先计算
+\[
+XH^{(0)T}=\begin{bmatrix}3&3\\3&3\end{bmatrix},
+\qquad
+W^{(0)}H^{(0)}H^{(0)T}
+=\begin{bmatrix}2&2\\2&2\end{bmatrix}.
+\]
+与$W^{(0)}$逐元素相乘后，非对角零元素保持为零，得到
+\[
+W^{(1)}=\begin{bmatrix}3/2&0\\0&3/2\end{bmatrix}.
+\]
+\textbf{$H$子步。}第二个子步使用$W^{(1)}$：
+\[
+W^{(1)T}X=
+\begin{bmatrix}3&3/2\\3/2&3\end{bmatrix},
+\qquad
+W^{(1)T}W^{(1)}H^{(0)}=
+\begin{bmatrix}9/4&9/4\\9/4&9/4\end{bmatrix}.
+\]
+所以
+\[
+H^{(1)}=\begin{bmatrix}4/3&2/3\\2/3&4/3\end{bmatrix},
+\qquad W^{(1)}H^{(1)}=X.
+\]
+新损失$J_F^{(1)}=0$。
+
+\textbf{独立核验。}初始残差为
+$X-W^{(0)}H^{(0)}=\operatorname{diag}(1,1)$，故
+$J_F^{(0)}=\tfrac12\|X-W^{(0)}H^{(0)}\|_F^2=1$；直接相乘又得
+$W^{(1)}H^{(1)}=X$，所以目标确由$1$降至$0$。
+
+\textbf{结论。}这个特例一步达到精确分解，但$W^{(0)}$的零元素被永久保留；一般实现仍应使用正初值以免零锁定阻止有益方向进入。
+\end{solution}
+
+\phantomsection\label{struct:V4-C05-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V4-C05-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S06-01}
+给定下列单词--文本频数矩阵，行依次为\{airplane, aircraft, computer, apple, fruit, produce\}，列为$d_1,\ldots,d_4$：
+\[
+X=\begin{bmatrix}
+2&0&0&0\\0&2&0&0\\0&0&1&0\\0&0&2&3\\0&0&0&1\\1&2&2&1
+\end{bmatrix}.
+\]
+取$k=2$作SVD--LSA，给出二维文本坐标的一个数值结果，并比较降维前后$(d_1,d_2)$与$(d_3,d_4)$的余弦相似度。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S06-01}
+\begin{chapterexercisesolution}{ex:V4-C05-S06-01}
+先计算
+\[
+X^TX=\begin{bmatrix}
+5&2&2&1\\2&8&4&2\\2&4&9&8\\1&2&8&11
+\end{bmatrix}.
+\]
+数值SVD的前两个奇异值约为$4.4770,2.7520$。一组二维坐标$Y=\Sigma_2V_2^T$为
+\[
+Y\approx\begin{bmatrix}
+-0.7861&-1.5721&-2.8586&-2.9635\\
+ 1.0770& 2.1540&-0.1045&-1.3276
+\end{bmatrix}.
+\]
+奇异向量整体变号会同步改变某一行坐标，但不改变重构或余弦。原空间中
+\[
+\cos(x_1,x_2)=\frac{2}{\sqrt5\sqrt8}\approx0.3162,
+\qquad
+\cos(x_3,x_4)=\frac8{3\sqrt{11}}\approx0.8040.
+\]
+二维坐标中，前两列成正比例，所以余弦为$1$；后两列余弦约为$0.9269$。低秩共现结构把airplane与aircraft关联起来，也增强了apple相关文本的联系。前两维保留的平方奇异值比例约为$0.8369$，因此这种语义平滑伴随可量化的信息损失。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S06-02}
+给出广义KL损失下NMF的完整乘法更新算法：推导$H$与$W$更新，写明输入、输出、初始化、顺序、停止、退化处理与返回结果。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S06-02}
+\begin{chapterexercisesolution}{ex:V4-C05-S06-02}
+记$q_{ij}=(WH)_{ij}>0$。固定$W$时，目标对$H_{\ell j}$的梯度为
+\[
+\frac{\partial D}{\partial H_{\ell j}}
+=\sum_iW_{i\ell}\left(1-\frac{X_{ij}}{q_{ij}}\right).
+\]
+定理\ref{thm:V4-C05-kl-monotone}的辅助函数最小化给出
+\[
+H_{\ell j}\leftarrow H_{\ell j}
+\frac{\sum_iW_{i\ell}X_{ij}/q_{ij}}{\sum_iW_{i\ell}}.
+\]
+固定新$H$时同样得到
+\[
+W_{i\ell}\leftarrow W_{i\ell}
+\frac{\sum_jH_{\ell j}X_{ij}/q_{ij}}{\sum_jH_{\ell j}}.
+\]
+每轮先更新一块、重算$q$，再更新另一块；辅助函数保证
+\[
+D_{\mathrm{KL}}(X\Vert W^{(t+1)}H^{(t)})
+\le D_{\mathrm{KL}}(X\Vert W^{(t)}H^{(t)}),
+\]
+\[
+D_{\mathrm{KL}}(X\Vert W^{(t+1)}H^{(t+1)})
+\le D_{\mathrm{KL}}(X\Vert W^{(t+1)}H^{(t)}).
+\]
+输入为$X,k$、严格正初值、容差与轮数上限；输出为$W,H$、散度与KKT轨迹和停止原因。散度相对变化与KKT残差同时满足
+\[
+\frac{|D_t-D_{t-1}|}{\max\{1,D_{t-1}\}}\le\varepsilon_D,
+\qquad
+r_{\mathrm{KKT}}^{(t)}\le\varepsilon_K
+\]
+时停止。结构性全零行列应先隔离并保存映射；若$q_{ij}$接近0、出现非有限值或分母退化，则停止并调整精度或重启正初值，不能继续除法。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S06-03}
+比较SVD--LSA与乘法更新NMF的训练时间、新文本编码时间和存储复杂度。分别说明稠密矩阵与$s=\operatorname{nnz}(X)$稀疏矩阵的假设。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S06-03}
+\begin{chapterexercisesolution}{ex:V4-C05-S06-03}
+对稠密$m\times n$矩阵，完整SVD与$T_s$轮、子空间宽度$\ell$的截断SVD分别为
+\[
+T_{\mathrm{full}}=O\bigl(mn\min\{m,n\}\bigr),
+\]
+\[
+T_{\mathrm{trunc,dense}}
+=O\bigl(T_s[mn\ell+(m+n)\ell^2]\bigr),
+\]
+\[
+T_{\mathrm{trunc,sparse}}
+=O\bigl(T_s[s\ell+(m+n)\ell^2]\bigr),
+\qquad s=\operatorname{nnz}(X).
+\]
+只有另行假设$\ell=\Theta(k)$时，才能把$\ell$按量级替换为$k$。新文本LSA编码$U_k^{\mathsf T}x$的代价为$O(mk)$，稀疏文本为$O(\operatorname{nnz}(x)k)$。
+
+迭代截断SVD的训练峰值与持久模型存储为
+\[
+M_{\mathrm{train}}
+=O\bigl(s+(m+n)\ell+\ell^2\bigr),
+\qquad
+M_{\mathrm{model}}=O\bigl((m+n)k+k^2\bigr).
+\]
+
+平方损失NMF每轮及$T_N$轮代价为
+\[
+T_{\mathrm{NMF,iter}}
+=O\bigl(mnk+(m+n)k^2\bigr),
+\qquad
+T_{\mathrm{NMF,total}}=T_NT_{\mathrm{NMF,iter}}.
+\]
+稀疏平方NMF把$mnk$换成$sk$；KL更新只在$\operatorname{supp}(X)$上求比率时每轮为$O(sk+(m+n)k)$。比较必须同时给出$\ell,T_s,T_N$、稀疏结构和求解器假设。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S06-04}
+列出潜在语义分析与主成分分析的相同点和不同点，重点讨论中心化、矩阵方向、优化目标、文本零值含义和坐标解释。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S06-04}
+\begin{chapterexercisesolution}{ex:V4-C05-S06-04}
+PCA先中心化数据，求解
+\[
+X_c=X-\bar x\mathbf1_n^{\mathsf T},
+\qquad
+\min_{\operatorname{rank}(B)\le k}\norm{X_c-B}_F^2.
+\]
+文本LSA通常直接分解非负词频或TF--IDF矩阵：
+\[
+X=U\Sigma V^{\mathsf T},
+\qquad
+X_k=U_k\Sigma_kV_k^{\mathsf T},
+\qquad
+Y=\Sigma_kV_k^{\mathsf T}.
+\]
+两者都用正交低维方向并与截断SVD相关，但PCA解释围绕均值的方差，LSA解释词--文本共现；逐词减均值会把大量文本零值变为负数并改变稀疏语义。只有对同一矩阵采用同一预处理时，两者才给出相同子空间。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S01-01}
+三篇文本在两个词上的频数列为$(2,0)^T,(0,1)^T,(1,1)^T$。按本章TF--IDF定义计算$X$，并求第三篇文本与前两篇的余弦。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S01-01}
+\begin{chapterexercisesolution}{ex:V4-C05-S01-01}
+两个词都出现在两篇文本中，所以逆文档频率相同，记
+$L=\log(3/2)$。三篇文本长度依次为$2,1,2$，故
+\[
+X=L\begin{bmatrix}1&0&1/2\\0&1&1/2\end{bmatrix}.
+\]
+第三列为$(L/2,L/2)^T$。与第一列的余弦为
+\[
+\frac{L^2/2}{L\cdot(L/\sqrt2)}=\frac1{\sqrt2},
+\]
+与第二列同样为$1/\sqrt2$。共同正比例因子$L$在余弦中抵消，但在未归一化内积中不会抵消。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S01-02}
+取$x=(1,1,0)^T$、$z=(2,0,0)^T$。计算内积和余弦；把$z$乘10后再计算，说明两种相似度分别保留什么信息，并指出哪个输入会使余弦没有定义。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S01-02}
+\begin{chapterexercisesolution}{ex:V4-C05-S01-02}
+先计算
+\[
+x^{\mathsf T}z=2,
+\qquad
+\norm{x}_2=\sqrt2,
+\qquad
+\norm{z}_2=2,
+\]
+故
+\[
+\cos(x,z)=\frac{x^{\mathsf T}z}{\norm{x}_2\norm{z}_2}
+=\frac1{\sqrt2}.
+\]
+把$z$改为$10z$后，内积变为20，而余弦仍为
+\[
+\frac{x^{\mathsf T}(10z)}{\norm{x}_2\norm{10z}_2}=\frac1{\sqrt2}.
+\]
+内积同时受方向与向量长度影响；余弦只比较方向并消除正比例长度。零向量的范数为0，使余弦分母为0，因此没有定义。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S02-01}
+若$X\in\mathbb R^{5\times4}$、$k=2$且$X\approx TY$，写出$T,Y$的维数。对$R=\operatorname{diag}(2,3)$证明$(TR)(R^{-1}Y)=TY$，并解释这对话题解释的影响。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S02-01}
+\begin{chapterexercisesolution}{ex:V4-C05-S02-01}
+维数与尺度变换为
+\[
+T\in\mathbb R^{5\times2},
+\qquad
+Y\in\mathbb R^{2\times4},
+\qquad
+TY\in\mathbb R^{5\times4}.
+\]
+$R$可逆，故
+\[
+(TR)(R^{-1}Y)=T(RR^{-1})Y=TI_2Y=TY.
+\]
+$TR$把两个话题方向分别放大2倍、3倍，$R^{-1}Y$把对应文本坐标分别缩小到$1/2,1/3$，重构不变。这说明一般因子分解的列尺度不能由数据唯一识别；比较话题强度前必须采用统一归一化约定。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S03-01}
+由$x_j=Xe_j$和$X=U\Sigma V^T$推导$U_k^Tx_j=\Sigma_kV_k^Te_j$，再写出一个新文本的编码与重构公式以及全部尺寸。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S03-01}
+\begin{chapterexercisesolution}{ex:V4-C05-S03-01}
+由$x_j=Xe_j=U\Sigma V^Te_j$，左乘$U_k^T$，
+\[
+U_k^Tx_j=U_k^TU\Sigma V^Te_j=\Sigma_kV_k^Te_j.
+\]
+新文本的编码、重构与尺寸链为
+\[
+y_{\rm new}=U_k^{\mathsf T}x_{\rm new}\in\mathbb R^k,
+\qquad
+(k\times m)(m\times1)=k\times1,
+\]
+\[
+\widehat x_{\rm new}=U_ky_{\rm new}\in\mathbb R^m,
+\qquad
+(m\times k)(k\times1)=m\times1.
+\]
+新文本必须使用训练词表和训练权值，否则坐标轴不一致。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S03-02}
+令$X=\operatorname{diag}(4,2,1)$。取$k=2$，求$U_k,\Sigma_k,V_k,Y$、重构、Frobenius误差和保留能量比例。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S03-02}
+\begin{chapterexercisesolution}{ex:V4-C05-S03-02}
+可取$U=V=I_3$，奇异值为$4,2,1$。于是
+\[
+U_2=\begin{bmatrix}1&0\\0&1\\0&0\end{bmatrix},
+\quad \Sigma_2=\begin{bmatrix}4&0\\0&2\end{bmatrix},
+\quad V_2=\begin{bmatrix}1&0\\0&1\\0&0\end{bmatrix},
+\]
+\[
+Y=\Sigma_2V_2^T=\begin{bmatrix}4&0&0\\0&2&0\end{bmatrix},
+\qquad
+X_2=U_2Y=\operatorname{diag}(4,2,0).
+\]
+Frobenius误差为$\|X-X_2\|_F=1$，保留能量比例为
+$(4^2+2^2)/(4^2+2^2+1^2)=20/21$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S04-01}
+对
+$W=\begin{bmatrix}1&0\\1&1\\0&1\end{bmatrix}$、
+$H=\begin{bmatrix}2&0\\0&3\end{bmatrix}$，计算$WH$并按列解释两篇文本。再用$R=\operatorname{diag}(2,3)$构造另一组非负因子，验证乘积不变。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S04-01}
+\begin{chapterexercisesolution}{ex:V4-C05-S04-01}
+矩阵乘法给出
+\[
+WH=\begin{bmatrix}2&0\\2&3\\0&3\end{bmatrix}.
+\]
+第一列是$2w_1$，第二列是$3w_2$。令
+$R=\operatorname{diag}(2,3)$，则
+\[
+W'=WR=\begin{bmatrix}2&0\\2&3\\0&3\end{bmatrix},
+\qquad
+H'=R^{-1}H=I_2.
+\]
+因此$W'H'=WH$且两因子仍非负。该构造再次表明尺度不唯一；若要比较话题权重，可先把$W$各列归一化，再把尺度补偿到$H$对应行。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S05-01}
+复算例\ref{exm:V4-C05-one-nmf-step}的一轮更新；若误把$H$更新的分母写成$W^{(0)T}W^{(0)}H^{(0)}$，求错误结果并说明违反了哪条更新顺序。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S05-01}
+\begin{chapterexercisesolution}{ex:V4-C05-S05-01}
+正确顺序在例题中给出
+$W^{(1)}=\operatorname{diag}(3/2,3/2)$和
+$H^{(1)}=\begin{bmatrix}4/3&2/3\\2/3&4/3\end{bmatrix}$，乘积等于$X$。题设只把$H$子步的分母误写成旧因子，因此分子仍为
+\[
+W^{(1)T}X=\begin{bmatrix}3&3/2\\3/2&3\end{bmatrix},
+\qquad W^{(0)T}W^{(0)}H^{(0)}=H^{(0)}.
+\]
+所以错误更新给
+\[
+H_{\rm err}^{(1)}=\begin{bmatrix}3&3/2\\3/2&3\end{bmatrix}.
+\]
+此时
+\[
+W^{(1)}H_{\rm err}^{(1)}=
+\begin{bmatrix}9/2&9/4\\9/4&9/2\end{bmatrix}\ne X.
+\]
+错误来自第二个子步的分母没有使用最新$W^{(1)}$，因而不再对应定理中“固定当前另一块后最小化辅助函数”的顺序。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C05-S05-02}
+某个NMF元素在第0轮取$W_{i\ell}^{(0)}=0$，之后所有乘法比率均有限且为正。证明它永远为0；若该位置梯度为负，解释为何这是错误锁定，并给出两种处理方法。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C05-S05-02}
+\begin{chapterexercisesolution}{ex:V4-C05-S05-02}
+乘法更新写成
+\[
+W_{i\ell}^{(t+1)}=W_{i\ell}^{(t)}r_t,
+\qquad
+0<r_t<\infty.
+\]
+由归纳链
+\[
+W_{i\ell}^{(0)}=0
+\Longrightarrow W_{i\ell}^{(1)}=0r_0=0
+\Longrightarrow\cdots\Longrightarrow
+W_{i\ell}^{(t)}=0\quad(t\ge0).
+\]
+若边界处$\partial F/\partial W_{i\ell}<0$，则存在充分小的$\epsilon>0$使
+\[
+F(W+\epsilon E_{i\ell},H)<F(W,H),
+\]
+而乘法更新仍不能离开0，这就是零锁定。可使用严格正初值，或改用投影梯度/主动集方法；仅给分母加常数不能改变$0$乘有限比率仍为0。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V4-C28-CONCEPT-010 L1
+\paragraph{读前自检：本章结论与下一步。}潜在语义分析与非负矩阵分解章末把“词项坐标、文本列、低秩语义子空间与非负因子”收束为“LSA一次SVD后投影”；请把$k$代入对应定义并写出结果类型，再核对“代入结果满足定义域与取值域”且该结果能直接进入章末所述方法。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V4-C05-CH36}
+\SLChapterFiveSummary{词项坐标、文本列、低秩语义子空间与非负因子}{截断SVD给出无约束Frobenius最佳秩$k$近似；辅助函数证明NMF顺序块更新不增目标}{LSA一次SVD后投影；NMF按固定顺序乘法更新并检查零锁定、残差与双重停止}{文本共现需要线性低秩压缩或非负加性主题表示时}{进入PLSA；冻结训练词表与IDF，并根据误差假设区分平方、KL和概率似然目标}
+
+\phantomsection\label{struct:V4-C05-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否从词频和文档频率构造$X$，并解释空文本、零向量和测试统计量泄漏？未通过则回看第1节。
+  \item 能否写出$T,Y,U_k,\Sigma_k,V_k$的尺寸，从$U_k^Tx_j$推出训练与新文本坐标，并证明LSA低秩最优性而不把负坐标误称为概率？未通过则回看第2、3节和概率解释。
+  \item 能否分量求出平方损失乘法更新，并说明投影梯度如何避免零锁定？未通过则回看第4节；广义KL证明属于扩展讨论。
+  \item 能否分别说明截断SVD求解器、平方损失乘法更新与交替投影梯度的输入、更新、停止和退化？未通过则回看第5节及“核心替代”框。
+  \item 能否从正交子空间、非负锥、中心化PCA三个角度比较方法，并完成两组来源的12道题？未通过则回看第4、6节；五项均可独立作答，并能解释一次数值结果的维数、符号、误差与停止原因，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

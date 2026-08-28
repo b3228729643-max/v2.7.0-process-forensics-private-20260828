@@ -1,0 +1,160 @@
+% Current compatibility note: the installed LaTeX tagged-PDF block layer
+% intercepts list options before enumitem and rejects its standard keys.
+% Keep deterministic standard PDF metadata through \SLSetBookMetadata and
+% hyperref while the experimental DocumentMetadata block layer is disabled;
+% labels, bookmarks and mathematical content are unaffected.  Re-enable
+% UA-2 only after the installed block layer and enumitem interoperate with the
+% standard key names required by Appendix H.
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{合并总册}{统计学习方法初学者讲义}{数学基础、监督学习、序列模型、无监督学习与采样方法}
+
+\newcommand{\SLMergedPart}[3]{%
+  % Freeze the preceding volume before changing any running-head state.
+  % This prevents the next volume mark from leaking onto the final page of
+  % the previous volume (LAY-001 and the four audited boundary pages).
+  \SLClearForMajorDivision
+  \renewcommand{\SLBookShortTitle}{第#1册\enspace·\enspace#2}%
+  \chapter*{第#1册：#2}%
+  \phantomsection
+  \addcontentsline{toc}{part}{第#1册：#2}%
+  \markboth{第#1册：#2}{第#1册：#2}%
+  \thispagestyle{plain}%
+  #3%
+}
+\newtcolorbox{SLMergedGuideBox}[1]{
+  enhanced,breakable,colback=SLSoftGray,colframe=SLRuleGray,boxrule=0pt,
+  borderline west={1pt}{0pt}{SLMidBlue},title=#1,fonttitle=\bfseries,
+  coltitle=SLDeepBlue,fontupper=\small,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  before skip=6pt,after skip=6pt
+}
+
+\begin{document}
+\raggedbottom
+\frontmatter
+\SLMakeTitle
+\chapter*{合订本导读}\addcontentsline{toc}{chapter}{合订本导读}
+本合订本把五个分册的37章统一组织为一条从数学基础到统计学习方法、从监督学习到无监督学习、再到采样方法、主题模型与图排序的完整学习路线。正文复用五个分册的同一套章节内容，并采用全书连续编号，使合订环境中的公式、图表、算法、定理与超链接锚点保持一致。
+\begin{keypointbox}
+建议先按目录顺序完成第1册的数学与统计学习基础，再进入第2—3册的监督学习和序列模型；第4册建立无监督学习与矩阵分解框架，第5册进一步连接随机模拟、主题模型和图排序。每章的学习目标、前置检查、推导、算法、例题、练习、完整解析和自检均可独立闭环。
+\end{keypointbox}
+\SLPrintContents
+\SLPrintSymbolIndex
+\SLPrintFoundationRoutes
+\SLBeginMainMatter
+\index{统计学习方法}
+
+\flushbottom
+\SLMergedPart{1}{数学基础与统计学习基本理论}{
+本册建立后续各类模型共同使用的符号、线性代数、微积分、概率统计、信息论和优化语言，并在此基础上形成统计学习的任务、评估和泛化框架。
+\begin{enumerate}[nosep,leftmargin=3em,label=\arabic{enumi}.]
+\item 数学语言、符号约定与学习路线；\item 线性代数基础；\item 多元微积分与矩阵微分；\item 概率论基础；\item 常用分布与统计推断；\item 信息论基础；\item 凸优化与拉格朗日对偶；\item 数值优化方法；\item 统计学习的基本框架；\item 模型评估、选择与泛化；\item 监督学习任务与应用。
+\end{enumerate}
+\begin{SLMergedGuideBox}{学习路径}
+前8章负责建立“表达—计算—概率—优化”工具链，第9—11章把这些工具放入经验风险、模型评估和监督学习任务中。遇到后续模型的矩阵、梯度、概率或对偶推导时，可沿章节标签回到相应基础章复习。
+\end{SLMergedGuideBox}
+\begin{SLMergedGuideBox}{入册准备与完成标准}
+学习前应能进行基本代数运算并理解函数与集合。完成本册后，应能独立辨认对象的维数与作用域，复算常见梯度和概率公式，解释经验风险与泛化误差的区别，并为监督学习问题选择合适的评价指标。
+\end{SLMergedGuideBox}}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C01}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C02}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C03}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C04}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C05}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C06}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C07}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C08}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C09}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C10}
+\input{../第01册_数学基础与统计学习基本理论/chapters/V1-C11}
+
+\flushbottom
+\SLMergedPart{2}{基础监督学习方法}{
+本册集中比较五类基础监督学习方法的表示、策略与算法：从线性分离和距离度量，到生成式概率模型、树结构划分与条件概率建模。
+\begin{enumerate}[nosep,leftmargin=3em,label=\arabic{enumi}.]
+\item 感知机；\item \kNN{}法；\item 朴素贝叶斯法；\item 决策树；\item 逻辑斯谛回归。
+\end{enumerate}
+\begin{keypointbox}学习时重点比较模型假设、损失或概率目标、训练算法、预测代价与适用数据结构，形成可复用的模型选择视角。\end{keypointbox}
+\begin{SLMergedGuideBox}{跨册依赖}
+本册默认掌握\chaprefdual{chap:V1-C02}{2}{1}{2}的向量与距离、\chaprefdual{chap:V1-C05}{5}{1}{5}的极大似然，以及\chaprefdual{chap:V1-C08}{8}{1}{8}的梯度与数值优化。感知机和逻辑斯谛回归突出线性决策边界，\kNN{}法和决策树强调局部结构，朴素贝叶斯法提供生成式概率视角。
+\end{SLMergedGuideBox}
+\begin{SLMergedGuideBox}{完成标准}
+完成本册后，应能从表示、策略、算法三个层面说明五类方法，手算小样本训练或预测过程，辨析生成式与判别式建模，并根据数据规模、特征类型和解释需求给出有依据的模型选择。
+\end{SLMergedGuideBox}
+\begin{SLMergedGuideBox}{建议用法}
+每学完一种方法，使用同一份小型分类数据记录其决策边界、训练信息、预测开销和主要误差来源；完成五章后再用统一表格横向比较，可避免只记公式而忽略适用条件。
+\end{SLMergedGuideBox}}
+\input{../第02册_基础监督学习方法/chapters/V2-C01}
+\input{../第02册_基础监督学习方法/chapters/V2-C02}
+\input{../第02册_基础监督学习方法/chapters/V2-C03}
+\input{../第02册_基础监督学习方法/chapters/V2-C04}
+\input{../第02册_基础监督学习方法/chapters/V2-C05}
+
+\SLMergedPart{3}{优化模型与序列模型}{
+本册沿最大熵、间隔、加法模型、隐变量和序列结构五条线索，连接凸优化、概率建模与动态规划，并以统一视角比较监督学习方法。
+\begin{enumerate}[nosep,leftmargin=3em,label=\arabic{enumi}.]
+\item 最大熵模型；\item 支持向量机；\item 提升方法；\item EM算法及其推广；\item 隐马尔可夫模型；\item 条件随机场；\item 监督学习方法总结。
+\end{enumerate}
+\begin{SLMergedGuideBox}{学习路径}
+最大熵与支持向量机分别从概率约束和最大间隔建立目标；提升方法研究加法模型；EM处理含隐变量的似然；隐马尔可夫模型与条件随机场把推断扩展到序列结构。末章负责横向比较并形成选择框架。
+\end{SLMergedGuideBox}
+\begin{SLMergedGuideBox}{跨册依赖与完成标准}
+建议先掌握\chaprefdual{chap:V1-C07}{7}{1}{7}的拉格朗日对偶、\chaprefdual{chap:V1-C08}{8}{1}{8}的数值优化，以及第2册的基础分类方法。完成后应能识别目标函数、约束、隐变量和图结构的作用，复述主要算法循环并判断收敛或推断条件。
+\end{SLMergedGuideBox}
+\begin{SLMergedGuideBox}{建议用法}
+阅读推导时为每个模型单独维护“观测量、参数、隐变量、目标函数、核心迭代、停止条件”六列表；比较相邻章节时先对齐这六项，再讨论概率解释或几何解释。
+\end{SLMergedGuideBox}}
+\input{../第03册_优化模型与序列模型/chapters/V3-C01}
+\input{../第03册_优化模型与序列模型/chapters/V3-C02}
+\input{../第03册_优化模型与序列模型/chapters/V3-C03}
+\input{../第03册_优化模型与序列模型/chapters/V3-C04}
+\input{../第03册_优化模型与序列模型/chapters/V3-C05}
+\input{../第03册_优化模型与序列模型/chapters/V3-C06}
+\input{../第03册_优化模型与序列模型/chapters/V3-C07}
+
+\SLMergedPart{4}{无监督学习与矩阵分解}{
+本册从没有标签监督的任务设定出发，通过相似性、低秩结构、重构目标与潜在变量逐步建立无监督学习方法体系。
+\begin{enumerate}[nosep,leftmargin=3em,label=\arabic{enumi}.]
+\item 无监督学习概论；\item 聚类方法；\item 奇异值分解；\item 主成分分析；\item 潜在语义分析与非负矩阵分解；\item 概率潜在语义分析。
+\end{enumerate}
+\begin{keypointbox}矩阵视角贯穿本册：既用于表示数据和相似关系，也用于提取低维结构，并与概率潜在变量模型建立联系。\end{keypointbox}
+\begin{SLMergedGuideBox}{学习路径}
+先用聚类明确相似性、目标函数和评价方式，再由SVD与PCA理解正交低秩表示；随后比较潜在语义分析、非负矩阵分解和概率潜在语义分析中的重构约束与潜在语义解释。
+\end{SLMergedGuideBox}
+\begin{SLMergedGuideBox}{跨册依赖与完成标准}
+本册依赖\chaprefdual{chap:V1-C02}{2}{1}{2}的矩阵与特征值基础，以及\chaprefdual{chap:V3-C04}{20}{3}{4}的隐变量与EM框架。完成后应能区分聚类、降维、矩阵分解与概率潜变量任务，手算小矩阵的关键步骤，并用重构、稳定性和下游表现评价无监督结果。
+\end{SLMergedGuideBox}}
+\input{../第04册_无监督学习与矩阵分解/chapters/V4-C01}
+\input{../第04册_无监督学习与矩阵分解/chapters/V4-C02}
+\input{../第04册_无监督学习与矩阵分解/chapters/V4-C03}
+\input{../第04册_无监督学习与矩阵分解/chapters/V4-C04}
+\input{../第04册_无监督学习与矩阵分解/chapters/V4-C05}
+\input{../第04册_无监督学习与矩阵分解/chapters/V4-C06}
+
+\SLMergedPart{5}{采样方法、主题模型与图排序}{
+本册把随机过程、蒙特卡罗计算、共轭先验、主题模型和网络排序串联起来，展示局部随机机制如何支持复杂分布推断与全局结构发现。
+\begin{enumerate}[nosep,leftmargin=3em,label=\arabic{enumi}.]
+\item 马尔可夫链基础；\item 蒙特卡罗方法与直接采样；\item 马尔可夫链蒙特卡罗法；\item Gibbs抽样；\item 狄利克雷分布与共轭先验；\item 潜在狄利克雷分配；\item \PageRank{}算法；\item 无监督学习方法总结。
+\end{enumerate}
+\begin{SLMergedGuideBox}{学习路径}
+先确认马尔可夫链的平稳性与收敛，再由直接采样过渡到MCMC和Gibbs抽样；狄利克雷共轭结构为主题模型提供可计算后验，\PageRank{}则把随机游走思想转化为图上的全局排序。
+\end{SLMergedGuideBox}
+\begin{SLMergedGuideBox}{跨册依赖与完成标准}
+建议复习第1册的条件概率、期望、矩阵谱性质和数值迭代，并联系\chaprefdual{chap:V4-C05}{28}{4}{5}的潜在语义矩阵分解与\chaprefdual{chap:V4-C06}{29}{4}{6}的概率潜变量模型。完成后应能检查采样链条件、解释后验更新与主题生成过程，并分析阻尼、悬挂节点和收敛阈值对图排序的影响。
+\end{SLMergedGuideBox}
+\begin{SLMergedGuideBox}{建议用法}
+对采样算法同时记录目标分布、转移核、接受或条件更新规则和诊断量；对主题模型与\PageRank{}则分别追踪生成假设和线性迭代。把“收敛到什么”与“如何判断收敛”分开书写。
+\end{SLMergedGuideBox}}
+\input{../第05册_采样方法主题模型与图排序/chapters/V5-C01}
+\input{../第05册_采样方法主题模型与图排序/chapters/V5-C02}
+\input{../第05册_采样方法主题模型与图排序/chapters/V5-C03}
+\input{../第05册_采样方法主题模型与图排序/chapters/V5-C04}
+\input{../第05册_采样方法主题模型与图排序/chapters/V5-C05}
+\input{../第05册_采样方法主题模型与图排序/chapters/V5-C06}
+\input{../第05册_采样方法主题模型与图排序/chapters/V5-C07}
+\input{../第05册_采样方法主题模型与图排序/chapters/V5-C08}
+
+\backmatter
+\SLPrintAlgorithmContractAppendix
+\printbookindexes
+\end{document}

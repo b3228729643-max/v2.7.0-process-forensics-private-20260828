@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "candidate_page_pdf_complete": true,
+  "candidate_page_pdf_note": "The compiled page PDF was complete in both rounds; only the earlier evidence-analysis rectangle clipped foreground.",
+  "rejected_trial_crop_fullpage_px": [
+    326,
+    435,
+    2237,
+    1025
+  ],
+  "rejected_trial_foreground_margins_px": {
+    "left": 0,
+    "top": 3,
+    "right": 29,
+    "bottom": 4
+  },
+  "rejected_trial_path": "trials/crop_clipped_r3/figure_crop_300dpi.png",
+  "rejected_trial_disposition": "excluded from final conclusions",
+  "final_crop_fullpage_px": [
+    310,
+    428,
+    2245,
+    1032
+  ],
+  "final_crop_grid_px": [
+    1935,
+    604
+  ],
+  "final_foreground_bbox_px": [
+    10,
+    10,
+    1898,
+    593
+  ],
+  "final_foreground_margins_px": {
+    "left": 10,
+    "top": 10,
+    "right": 37,
+    "bottom": 11
+  },
+  "final_foreground_edge_min_px": 10,
+  "final_text_bbox_edge_min_px": 30,
+  "foreground_gate_px": 5,
+  "text_gate_px": 6
+}

@@ -1,0 +1,39 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V3-C03",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 1,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V3-C03-01",
+      "source_path": "绘图源码/第03册_优化模型与序列模型/V3-C03/fig_v3_c03_adaboost_loop.tex",
+      "source_file": "fig_v3_c03_adaboost_loop.tex",
+      "source_kind": "tikz",
+      "label": "fig:V3-C03-adaboost-loop",
+      "caption": "AdaBoost中样本权重$D_m$决定下一轮训练重点，分类器权重$\\alpha_m$与弱分类器$G_m$直接进入加法模型；两类权重位于不同计算支路。",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读图时应回答：“AdaBoost从样本分布到基学习器、加权表决与下一轮分布的闭环；箭头表示本轮量对下一步计算的依赖”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第03册_优化模型与序列模型/chapters/V3-C03.tex",
+        "target_label": "fig:V3-C03-adaboost-loop",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-08-01-001"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：AdaBoost中样本权重D下标m决定下一轮训练重点，分类器权重α下标m与弱分类器G下标m直接进入加法模型；两类权重位于不同计算支路。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

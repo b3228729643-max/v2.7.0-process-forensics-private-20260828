@@ -1,0 +1,20 @@
+{
+  "source_manual_ledger": "manual_visual_harmony_ledger.csv",
+  "joined_current_machine_ledger": "manual_visual_harmony_ledger_CURRENT_MACHINE_JOIN.csv",
+  "reconciliation_csv": "manual_visual_harmony_metadata_reconciliation.csv",
+  "reconciled_machine_field_count": 52,
+  "source_manual_ledger_byte_unchanged_pass": true,
+  "human_field_utf8_byte_preservation_pass": true,
+  "human_fields": [
+    "REVIEWER",
+    "ORIGINAL_NATIVE_VIEWED",
+    "NO_INTRUSIVE_OR_CRAMPED",
+    "NO_CROSS_PANEL_INCONSISTENCY",
+    "GRAYSCALE_READABLE",
+    "PAGE_INTEGRATION_OK",
+    "FONT_HARMONY_OK",
+    "DECISION",
+    "NOTE"
+  ],
+  "note": "Only derived machine metadata was updated in the joined view; the reviewer-authored source CSV was never rewritten."
+}

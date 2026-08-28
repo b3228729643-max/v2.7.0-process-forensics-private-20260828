@@ -1,0 +1,191 @@
+pair_id,object_a,object_b,manual_decision,manual_note,evidence_opened
+P001,O01,O02,CLEAR,"Prior heading stays left of the Dirichlet node with a 96 px conservative bbox gap.",native300+mask
+P002,O01,O03,CLEAR,"Prior heading and Beta node occupy opposite sides of the row; no shared ink.",native300+mask
+P003,O01,O04,CLEAR,"Prior and likelihood row headings are vertically separated by 191 px.",native300+mask
+P004,O01,O05,CLEAR,"Prior heading is diagonally clear of the multinomial node.",native300+mask
+P005,O01,O06,CLEAR,"Prior heading is remote from the binomial node and its labels.",native300+mask
+P006,O01,O07,CLEAR,"Prior and single-trial headings form distinct rows with ample vertical space.",native300+mask
+P007,O01,O08,CLEAR,"Prior heading does not approach the categorical node.",native300+mask
+P008,O01,O09,CLEAR,"Prior heading and Bernoulli node are widely separated.",native300+mask
+P009,O01,O10,CLEAR,"Prior heading is well left of the top special-case relation.",native300+mask
+P010,O01,O11,CLEAR,"Prior heading is diagonally distant from the middle special-case arrow.",native300+mask
+P011,O01,O12,CLEAR,"Prior heading clears the left N=1 relation by hundreds of pixels.",native300+mask
+P012,O01,O13,CLEAR,"Prior heading is remote from the right N=1 relation.",native300+mask
+P013,O01,O14,CLEAR,"Prior heading has no contact with the bottom K=2 relation.",native300+mask
+P014,O01,O15,CLEAR,"Prior heading lies left of the Dirichlet–multinomial conjugacy arrow.",native300+mask
+P015,O01,O16,CLEAR,"Prior heading is far from the Beta–binomial conjugacy arrow.",native300+mask
+P016,O01,O17,CLEAR,"Prior heading and conjugacy legend sample are on opposite sides.",native300+mask
+P017,O01,O18,CLEAR,"Prior heading is completely separate from the special-case legend sample.",native300+mask
+P018,O01,O19,CLEAR,"Prior heading and caption label are separated vertically by the full diagram.",native300+mask
+P019,O01,O20,CLEAR,"Prior heading does not intrude into either caption line.",native300+mask
+P020,O02,O03,CLEAR,"Dirichlet and Beta node borders have a 249 px gap bridged only by O10.",native300+mask
+P021,O02,O04,CLEAR,"Dirichlet node is diagonally above and right of the likelihood heading.",native300+mask
+P022,O02,O05,CLEAR,"Dirichlet and multinomial boxes have 125 px vertical separation occupied by O15.",native300+mask
+P023,O02,O06,CLEAR,"Dirichlet and binomial nodes are diagonally separated.",native300+mask
+P024,O02,O07,CLEAR,"Dirichlet node stays far above the single-trial heading.",native300+mask
+P025,O02,O08,CLEAR,"Dirichlet and categorical nodes are in the same column but different rows.",native300+mask
+P026,O02,O09,CLEAR,"Dirichlet node is diagonally remote from Bernoulli.",native300+mask
+P027,O02,O10,LEGAL_ATTACHMENT,"O10 intentionally begins at the Dirichlet right border; label and arrow body do not touch node text.",native300+mask
+P028,O02,O11,CLEAR,"The middle special-case relation is 129 px below the Dirichlet node.",native300+mask
+P029,O02,O12,CLEAR,"The lower left N=1 relation begins below the multinomial node, not Dirichlet.",native300+mask
+P030,O02,O13,CLEAR,"Dirichlet node is far from the right lower vertical relation.",native300+mask
+P031,O02,O14,CLEAR,"Dirichlet node is separated from the bottom horizontal relation.",native300+mask
+P032,O02,O15,LEGAL_ATTACHMENT,"O15 intentionally leaves the Dirichlet bottom border; its thick stroke stays outside the label ink.",native300+mask
+P033,O02,O16,CLEAR,"The right conjugacy arrow is one full column away from Dirichlet.",native300+mask
+P034,O02,O17,CLEAR,"Dirichlet node and conjugacy legend have a 675 px gap.",native300+mask
+P035,O02,O18,CLEAR,"Dirichlet node is well separated from the thin-arrow legend.",native300+mask
+P036,O02,O19,CLEAR,"Dirichlet node remains far above the caption label.",native300+mask
+P037,O02,O20,CLEAR,"Dirichlet node has 535 px conservative separation from caption content.",native300+mask
+P038,O03,O04,CLEAR,"Beta node is remote from the left likelihood heading.",native300+mask
+P039,O03,O05,CLEAR,"Beta and multinomial nodes are diagonal with no shared pixels.",native300+mask
+P040,O03,O06,CLEAR,"Beta and binomial boxes have 125 px vertical separation occupied by O16.",native300+mask
+P041,O03,O07,CLEAR,"Beta node is far above the single-trial heading.",native300+mask
+P042,O03,O08,CLEAR,"Beta and categorical nodes are diagonally separated.",native300+mask
+P043,O03,O09,CLEAR,"Beta and Bernoulli nodes are distinct rows with 378 px bbox gap.",native300+mask
+P044,O03,O10,LEGAL_ATTACHMENT,"O10 intentionally terminates at the Beta left border with an open arrowhead; it never enters Beta text.",native300+mask
+P045,O03,O11,CLEAR,"The multinomial–binomial relation lies 129 px below Beta.",native300+mask
+P046,O03,O12,CLEAR,"Beta node is far from the left lower vertical relation.",native300+mask
+P047,O03,O13,CLEAR,"The right N=1 relation starts below binomial, not Beta.",native300+mask
+P048,O03,O14,CLEAR,"Beta is vertically separated from the categorical–Bernoulli arrow.",native300+mask
+P049,O03,O15,CLEAR,"Left conjugacy arrow is in the other column.",native300+mask
+P050,O03,O16,LEGAL_ATTACHMENT,"O16 intentionally leaves the Beta bottom border; the thick arrow remains clear of K=2.",native300+mask
+P051,O03,O17,CLEAR,"Beta node and thick-arrow legend retain 75 px minimum separation.",native300+mask
+P052,O03,O18,CLEAR,"Beta node is 151 px from the special-case legend sample.",native300+mask
+P053,O03,O19,CLEAR,"Beta node is far above and right of the caption label.",native300+mask
+P054,O03,O20,CLEAR,"Beta node has 535 px conservative separation from the caption body.",native300+mask
+P055,O04,O05,CLEAR,"Likelihood heading remains 96 px left of the multinomial node.",native300+mask
+P056,O04,O06,CLEAR,"Likelihood heading and binomial node are on opposite sides of the row.",native300+mask
+P057,O04,O07,CLEAR,"Likelihood and single-trial headings have 191 px vertical separation.",native300+mask
+P058,O04,O08,CLEAR,"Likelihood heading is diagonally clear of the categorical node.",native300+mask
+P059,O04,O09,CLEAR,"Likelihood heading is remote from the Bernoulli node.",native300+mask
+P060,O04,O10,CLEAR,"Likelihood heading does not reach the top-row relation.",native300+mask
+P061,O04,O11,CLEAR,"Likelihood heading stays 453 px left of the middle relation label and line.",native300+mask
+P062,O04,O12,CLEAR,"Likelihood heading is left of the N=1 vertical relation with clear whitespace.",native300+mask
+P063,O04,O13,CLEAR,"Likelihood heading is far from the right lower relation.",native300+mask
+P064,O04,O14,CLEAR,"Likelihood heading has no contact with the bottom K=2 relation.",native300+mask
+P065,O04,O15,CLEAR,"Likelihood heading is diagonally separate from the left conjugacy arrow.",native300+mask
+P066,O04,O16,CLEAR,"Likelihood heading is remote from the right conjugacy arrow.",native300+mask
+P067,O04,O17,CLEAR,"Likelihood heading and conjugacy legend are widely separated.",native300+mask
+P068,O04,O18,CLEAR,"Likelihood heading is independent of the special-case legend.",native300+mask
+P069,O04,O19,CLEAR,"Likelihood heading remains 307 px above the caption label.",native300+mask
+P070,O04,O20,CLEAR,"Likelihood heading is 307 px from the caption body envelope.",native300+mask
+P071,O05,O06,CLEAR,"Multinomial and binomial node borders have a 249 px horizontal gap bridged only by O11.",native300+mask
+P072,O05,O07,CLEAR,"Multinomial node is diagonally clear of the single-trial heading.",native300+mask
+P073,O05,O08,CLEAR,"Multinomial and categorical boxes have 124 px vertical separation occupied by O12.",native300+mask
+P074,O05,O09,CLEAR,"Multinomial and Bernoulli nodes are diagonally separate.",native300+mask
+P075,O05,O10,CLEAR,"Top-row special-case relation remains 180 px above multinomial.",native300+mask
+P076,O05,O11,LEGAL_ATTACHMENT,"O11 intentionally starts at the multinomial right border; arrow and label remain outside node text.",native300+mask
+P077,O05,O12,LEGAL_ATTACHMENT,"O12 intentionally descends from the multinomial bottom border; N=1 is offset right with 26 px stroke clearance.",native300+mask
+P078,O05,O13,CLEAR,"Right N=1 relation is one column away from multinomial.",native300+mask
+P079,O05,O14,CLEAR,"Bottom K=2 relation is 135 px below multinomial.",native300+mask
+P080,O05,O15,LEGAL_ATTACHMENT,"O15 intentionally terminates at the multinomial top border; the one-pixel bbox gap reflects vector rounding, not a broken arrow.",native300+mask
+P081,O05,O16,CLEAR,"Right conjugacy arrow is far from multinomial.",native300+mask
+P082,O05,O17,CLEAR,"Multinomial node has 675 px separation from the conjugacy legend.",native300+mask
+P083,O05,O18,CLEAR,"Multinomial node is well separated from the thin-arrow legend.",native300+mask
+P084,O05,O19,CLEAR,"Multinomial node remains diagonally above the caption label.",native300+mask
+P085,O05,O20,CLEAR,"Multinomial node has 281 px conservative separation from caption text.",native300+mask
+P086,O06,O07,CLEAR,"Binomial node is remote from the left single-trial heading.",native300+mask
+P087,O06,O08,CLEAR,"Binomial and categorical nodes are diagonally separated.",native300+mask
+P088,O06,O09,CLEAR,"Binomial and Bernoulli boxes have 124 px vertical separation occupied by O13.",native300+mask
+P089,O06,O10,CLEAR,"Top special-case relation is 180 px above binomial.",native300+mask
+P090,O06,O11,LEGAL_ATTACHMENT,"O11 intentionally terminates at the binomial left border with an open arrowhead outside label ink.",native300+mask
+P091,O06,O12,CLEAR,"Left N=1 relation is in the other node column.",native300+mask
+P092,O06,O13,LEGAL_ATTACHMENT,"O13 intentionally descends from binomial; its N=1 label is 26 px right of the stroke.",native300+mask
+P093,O06,O14,CLEAR,"Bottom K=2 relation remains 135 px below binomial.",native300+mask
+P094,O06,O15,CLEAR,"Left conjugacy arrow is one full column away.",native300+mask
+P095,O06,O16,LEGAL_ATTACHMENT,"O16 intentionally terminates at the binomial top border; vector rounding leaves a one-pixel bbox gap only.",native300+mask
+P096,O06,O17,CLEAR,"Binomial node and thick-arrow legend retain 79 px separation.",native300+mask
+P097,O06,O18,CLEAR,"Binomial node and thin-arrow legend retain 66 px separation.",native300+mask
+P098,O06,O19,CLEAR,"Binomial node is far above and right of the caption label.",native300+mask
+P099,O06,O20,CLEAR,"Binomial node has 281 px conservative separation from caption text.",native300+mask
+P100,O07,O08,CLEAR,"Single-trial heading stays left of the categorical node with a 78 px conservative gap.",native300+mask
+P101,O07,O09,CLEAR,"Single-trial heading and Bernoulli node are widely separated horizontally.",native300+mask
+P102,O07,O10,CLEAR,"Single-trial heading is far below the top special-case relation.",native300+mask
+P103,O07,O11,CLEAR,"Single-trial heading does not approach the middle relation.",native300+mask
+P104,O07,O12,CLEAR,"Single-trial heading is left of the N=1 relation with 252 px separation.",native300+mask
+P105,O07,O13,CLEAR,"Single-trial heading is remote from the right N=1 relation.",native300+mask
+P106,O07,O14,CLEAR,"Single-trial heading remains 435 px left of the K=2 relation.",native300+mask
+P107,O07,O15,CLEAR,"Single-trial heading is far below the left conjugacy arrow.",native300+mask
+P108,O07,O16,CLEAR,"Single-trial heading is far below and left of the right conjugacy arrow.",native300+mask
+P109,O07,O17,CLEAR,"Single-trial heading and conjugacy legend are on opposite sides.",native300+mask
+P110,O07,O18,CLEAR,"Single-trial heading is remote from the thin-arrow legend.",native300+mask
+P111,O07,O19,CLEAR,"Single-trial heading remains 53 px above-left of the caption label.",native300+mask
+P112,O07,O20,CLEAR,"Single-trial heading and caption body have a visible 53 px envelope gap.",native300+mask
+P113,O08,O09,CLEAR,"Categorical and Bernoulli node borders have a 249 px gap bridged only by O14.",native300+mask
+P114,O08,O10,CLEAR,"Categorical node is far below the top special-case relation.",native300+mask
+P115,O08,O11,CLEAR,"Categorical node remains 179 px below the middle horizontal relation.",native300+mask
+P116,O08,O12,LEGAL_ATTACHMENT,"O12 intentionally terminates at the categorical top border; the open arrowhead does not enter the node label.",native300+mask
+P117,O08,O13,CLEAR,"Right N=1 relation is one column away from categorical.",native300+mask
+P118,O08,O14,LEGAL_ATTACHMENT,"O14 intentionally starts at the categorical right border; K=2 sits 15 px above the line.",native300+mask
+P119,O08,O15,CLEAR,"Categorical node is vertically below but separate from the conjugacy arrow.",native300+mask
+P120,O08,O16,CLEAR,"Categorical node is remote from the right conjugacy arrow.",native300+mask
+P121,O08,O17,CLEAR,"Categorical node is far from the conjugacy legend sample.",native300+mask
+P122,O08,O18,CLEAR,"Categorical node is well separated from the special-case legend.",native300+mask
+P123,O08,O19,CLEAR,"Categorical node and caption label have 229 px diagonal separation.",native300+mask
+P124,O08,O20,CLEAR,"Categorical border remains 27 px above caption ink; no clipping or contact.",native300+mask
+P125,O09,O10,CLEAR,"Bernoulli node is far below the top special-case relation.",native300+mask
+P126,O09,O11,CLEAR,"Bernoulli node remains 179 px below the middle relation.",native300+mask
+P127,O09,O12,CLEAR,"Left N=1 relation is one column away from Bernoulli.",native300+mask
+P128,O09,O13,LEGAL_ATTACHMENT,"O13 intentionally terminates at the Bernoulli top border; its arrowhead is clear of label ink.",native300+mask
+P129,O09,O14,LEGAL_ATTACHMENT,"O14 intentionally terminates at the Bernoulli left border with an open arrowhead outside the text.",native300+mask
+P130,O09,O15,CLEAR,"Bernoulli node is remote from the left conjugacy arrow.",native300+mask
+P131,O09,O16,CLEAR,"Bernoulli node lies below but separate from the right conjugacy arrow.",native300+mask
+P132,O09,O17,CLEAR,"Bernoulli node and conjugacy legend have 303 px separation.",native300+mask
+P133,O09,O18,CLEAR,"Bernoulli node retains 205 px from the special-case legend.",native300+mask
+P134,O09,O19,CLEAR,"Bernoulli node is far to the right of the caption label.",native300+mask
+P135,O09,O20,CLEAR,"Bernoulli border remains 27 px above caption ink; no collision.",native300+mask
+P136,O10,O11,CLEAR,"Top and middle horizontal special-case arrows occupy distinct rows 184 px apart.",native300+mask
+P137,O10,O12,CLEAR,"Top horizontal and left lower vertical relations do not cross.",native300+mask
+P138,O10,O13,CLEAR,"Top horizontal relation is separate from the right lower vertical relation.",native300+mask
+P139,O10,O14,CLEAR,"Top and bottom horizontal special-case relations are 444 px apart.",native300+mask
+P140,O10,O15,CLEAR,"Top special-case arrow and left conjugacy arrow meet different sides of Dirichlet with 175 px separation.",native300+mask
+P141,O10,O16,CLEAR,"Top special-case arrow and right conjugacy arrow meet different sides of Beta without crossing.",native300+mask
+P142,O10,O17,CLEAR,"Top relation stays 435 px from the conjugacy legend sample.",native300+mask
+P143,O10,O18,CLEAR,"Top relation is separate from the special-case legend sample.",native300+mask
+P144,O10,O19,CLEAR,"Top relation is far above the caption label.",native300+mask
+P145,O10,O20,CLEAR,"Top relation remains 590 px from the caption body envelope.",native300+mask
+P146,O11,O12,CLEAR,"Middle horizontal relation and left N=1 relation approach the same node on different sides; 68 px remain between envelopes.",native300+mask
+P147,O11,O13,CLEAR,"Middle horizontal relation and right N=1 relation meet different sides of binomial without crossing.",native300+mask
+P148,O11,O14,CLEAR,"Middle and bottom horizontal relations occupy distinct rows 190 px apart.",native300+mask
+P149,O11,O15,CLEAR,"Middle special-case and left conjugacy arrows end on different sides of multinomial.",native300+mask
+P150,O11,O16,CLEAR,"Middle special-case and right conjugacy arrows end on different sides of binomial.",native300+mask
+P151,O11,O17,CLEAR,"Middle relation is 428 px from the conjugacy legend.",native300+mask
+P152,O11,O18,CLEAR,"Middle relation is 425 px from the special-case legend.",native300+mask
+P153,O11,O19,CLEAR,"Middle relation is well above the caption label.",native300+mask
+P154,O11,O20,CLEAR,"Middle relation has 336 px conservative separation from caption text.",native300+mask
+P155,O12,O13,CLEAR,"The two N=1 vertical relations are parallel and 468 px apart.",native300+mask
+P156,O12,O14,CLEAR,"Left N=1 and bottom K=2 relations meet categorical on different sides with 46 px envelope gap.",native300+mask
+P157,O12,O15,CLEAR,"Left special-case and conjugacy vertical arrows occupy the same column at different y intervals; 126 px separate them.",native300+mask
+P158,O12,O16,CLEAR,"Left N=1 relation is remote from the right conjugacy arrow.",native300+mask
+P159,O12,O17,CLEAR,"Left lower relation is far from the conjugacy legend.",native300+mask
+P160,O12,O18,CLEAR,"Left lower relation is far from the special-case legend.",native300+mask
+P161,O12,O19,CLEAR,"Left N=1 relation remains above-right of the caption label.",native300+mask
+P162,O12,O20,CLEAR,"Left N=1 relation is 157 px from caption text.",native300+mask
+P163,O13,O14,CLEAR,"Right N=1 and bottom K=2 relations meet Bernoulli on different sides and do not overlap.",native300+mask
+P164,O13,O15,CLEAR,"Right N=1 relation is remote from the left conjugacy arrow.",native300+mask
+P165,O13,O16,CLEAR,"Right special-case and conjugacy vertical arrows are collinear but separated by the binomial node and 126 px between envelopes.",native300+mask
+P166,O13,O17,CLEAR,"Right lower relation stays 203 px from the conjugacy legend.",native300+mask
+P167,O13,O18,CLEAR,"Right lower relation remains 132 px from the special-case legend.",native300+mask
+P168,O13,O19,CLEAR,"Right N=1 relation is far from the caption label.",native300+mask
+P169,O13,O20,CLEAR,"Right N=1 relation has 157 px conservative separation from caption text.",native300+mask
+P170,O14,O15,CLEAR,"Bottom K=2 relation is far below the left conjugacy arrow.",native300+mask
+P171,O14,O16,CLEAR,"Bottom K=2 relation is far below the right conjugacy arrow.",native300+mask
+P172,O14,O17,CLEAR,"Bottom relation is more than 524 px from the conjugacy legend.",native300+mask
+P173,O14,O18,CLEAR,"Bottom relation is 472 px from the special-case legend.",native300+mask
+P174,O14,O19,CLEAR,"Bottom relation is diagonally clear of the caption label.",native300+mask
+P175,O14,O20,CLEAR,"Bottom K=2 relation stays 82 px above the caption body envelope.",native300+mask
+P176,O15,O16,CLEAR,"The two thick conjugacy arrows are parallel and 591 px apart.",native300+mask
+P177,O15,O17,CLEAR,"Left conjugacy arrow is far from its legend sample; matching is by style, not proximity.",native300+mask
+P178,O15,O18,CLEAR,"Left conjugacy arrow is far from the thin special-case legend sample.",native300+mask
+P179,O15,O19,CLEAR,"Left conjugacy arrow remains far above the caption label.",native300+mask
+P180,O15,O20,CLEAR,"Left conjugacy arrow is 411 px from caption text.",native300+mask
+P181,O16,O17,CLEAR,"Right conjugacy arrow remains 236 px from the matching legend sample.",native300+mask
+P182,O16,O18,CLEAR,"Right conjugacy arrow is equally separate from the thin-arrow legend.",native300+mask
+P183,O16,O19,CLEAR,"Right conjugacy arrow is far from the caption label.",native300+mask
+P184,O16,O20,CLEAR,"Right conjugacy arrow is 411 px from caption text.",native300+mask
+P185,O17,O18,CLEAR,"Legend samples occupy separate rows with a 54 px bbox gap and visibly distinct arrowheads.",native300+mask
+P186,O17,O19,CLEAR,"Conjugacy legend sample is far above-right of the caption label.",native300+mask
+P187,O17,O20,CLEAR,"Conjugacy legend sample has 453 px separation from caption text.",native300+mask
+P188,O18,O19,CLEAR,"Special-case legend sample is far above-right of the caption label.",native300+mask
+P189,O18,O20,CLEAR,"Special-case legend sample retains 351 px from caption text.",native300+mask
+P190,O19,O20,CLEAR_BBOX_FALSE_POSITIVE,"The caption-body union bbox covers the second line below O19, causing bbox intersection only; native ink masks show the label and both body lines are disjoint.",native300+mask

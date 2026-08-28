@@ -1,0 +1,14 @@
+ELEMENT_ID,PANEL_ID,ROLE,SOURCE_LINES,DECLARED_PT,GRAPHICS_SCALE,TEXT_SAMPLE,SCRIPT_CLASS,NATIVE300_INK_HEIGHT_PX,MANUAL_SAME_CLASS_OBSERVATION,MANUAL_ROLE_OBSERVATION,R168_HARD_FAIL,MANUAL_DECISION
+T01,P1,axis_title,23,9.4,1.0,x,math_x_height,21,Natural x-height not compared to full-height digits,Readable subordinate axis title,false,PASS
+T02,P1,axis_title,23,9.4,1.0,密度,CJK_vertical_pair,80 total,Two glyphs visibly balanced,Readable axis title without dominant weight,false,PASS
+T03,P1,x_tick,26,8.8,1.0,−4,latin_digit,26,Tick class range 26-27 px ratio 1.038,Consistent tick role,false,PASS
+T04,P1,x_tick,26,8.8,1.0,0,latin_digit,27,Tick class range 26-27 px ratio 1.038,Consistent tick role,false,PASS
+T05,P1,x_tick,26,8.8,1.0,4,latin_digit,26,Tick class range 26-27 px ratio 1.038,Consistent tick role,false,PASS
+T06,P1,y_tick,26,8.8,1.0,0,latin_digit,27,Tick class range 26-27 px ratio 1.038,Consistent tick role,false,PASS
+T07,P1,y_tick,26,8.8,1.0,0.2,latin_digit,27,Tick class range 26-27 px ratio 1.038,Consistent tick role,false,PASS
+T08,P1,y_tick,26,8.8,1.0,0.4,latin_digit,27,Tick class range 26-27 px ratio 1.038,Consistent tick role,false,PASS
+T09,P1,direct_formula_label,44-45,9.2,1.0,N(0 1) / 峰值 / 1 over sqrt(2pi),mixed_math_CJK,38 / 36 / 41,The matching 峰值 substring is 36 px in T09 and T10,Direct label is salient but not obviously imbalanced,false,PASS
+T10,P1,direct_formula_label,46-47,9.2,1.0,N(0 2^2) / 峰值 / 1 over 2sqrt(2pi),mixed_math_CJK,39 base / 19 natural superscript / 38 parenthesis / 36 / 42,The matching 峰值 substring is 36 px in T09 and T10,Natural script-size superscript remains legible and label does not overpower curves,false,PASS
+T11,P1,area_formula_label,51-53,9.2,1.0,两条曲线：面积 / =1,mixed_CJK_math,43 / 26,Single repeated role so no cross-object drift,Readable subordinate area statement,false,PASS
+T12,P1,figure_number,56,document caption style,1.0,图 / 5.1,mixed_CJK_digit,38 / 28,Mixed scripts not directly ratio-compared,Appropriate bold number hierarchy,false,PASS
+T13,P1,caption,56,document caption style,1.0,caption Chinese / terminal 1,mixed_CJK_digit,43 / 27,Mixed scripts not directly ratio-compared,Caption remains subordinate to plot,false,PASS

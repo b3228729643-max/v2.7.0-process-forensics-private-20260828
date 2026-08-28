@@ -1,0 +1,54 @@
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LC_ALL = "C.UTF-8",
+	LC_CTYPE = "C",
+	LC_NUMERIC = "C",
+	LC_COLLATE = "C",
+	LC_TIME = (unset),
+	LC_MONETARY = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the system default locale ("Chinese (Simplified)_China.936").
+Latexmk: Missing input file 'main_full.toc' message in .log file:
+  No file main_full.toc.
+Latexmk: Missing input file 'symbols.ind' message in .log file:
+  No file symbols.ind.
+Latexmk: Missing input file 'main_full.ind' message in .log file:
+  No file main_full.ind.
+Latexmk: Using bibtex to make bibliography file(s).
+This is makeindex, version 2.18 [TeX Live 2026] (kpathsea + Thai support).
+Scanning input file symbols.idx....done (355 entries accepted, 0 rejected).
+Sorting entries......done (3405 comparisons).
+Generating output file symbols.ind....done (572 lines written, 0 warnings).
+Output written in symbols.ind.
+Transcript written in symbols.ilg.
+This is makeindex, version 2.18 [TeX Live 2026] (kpathsea + Thai support).
+Scanning input file main_full.idx....done (731 entries accepted, 0 rejected).
+Sorting entries........done (7271 comparisons).
+Generating output file main_full.ind....done (719 lines written, 0 warnings).
+Output written in main_full.ind.
+Transcript written in main_full.ilg.
+Latexmk: Using bibtex to make bibliography file(s).
+This is makeindex, version 2.18 [TeX Live 2026] (kpathsea + Thai support).
+Scanning input file main_full.idx....done (731 entries accepted, 0 rejected).
+Sorting entries........done (7271 comparisons).
+Generating output file main_full.ind....done (719 lines written, 0 warnings).
+Output written in main_full.ind.
+Transcript written in main_full.ilg.
+fatal: memory exhausted (xmalloc of 8716392 bytes).
+Latexmk: Using bibtex to make bibliography file(s).
+Latexmk: Sometimes, the -f option can be used to get latexmk
+  to try to force complete processing.
+  But normally, you will need to correct the file(s) that caused the
+  error, and then rerun latexmk.
+  In some cases, it is best to clean out generated files before rerunning
+  latexmk after you've corrected the files.
+D:\texlive\2026\bin\windows\runscript.tlu:933: command failed with exit code 12:
+perl.exe d:\texlive\2026\texmf-dist\scripts\latexmk\latexmk.pl -lualatex -g -interaction=nonstopmode -file-line-error -halt-on-error -outdir=D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\build\strict_current_r99_fullbook main_full.tex
+lualatex build failed with exit code 12.
+所在位置 D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\build_v2.7.0.ps1:136 字符: 9
++         throw "$Engine build failed with exit code $LASTEXITCODE."
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (lualatex build failed with exit code 12.:String) [], RuntimeException
+    + FullyQualifiedErrorId : lualatex build failed with exit code 12.
+ 

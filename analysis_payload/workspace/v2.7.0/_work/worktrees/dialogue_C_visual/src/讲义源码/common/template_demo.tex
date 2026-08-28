@@ -1,0 +1,180 @@
+% STAGE08_PUBLIC_INTERFACE_DEMO — template stress test.
+\DocumentMetadata{tagging=on,tagging-setup={math/setup=tex-AF},pdfversion=2.0,pdfstandard=ua-2,lang=zh-CN}
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{statlearnbook}
+\SLSetBookMetadata{模板样章}{统计学习方法初学者讲义}{公共环境、编号与交叉引用验证}
+\begin{document}
+\frontmatter
+\SLMakeTitle
+\SLPrintContents
+\mainmatter
+\chapter{公共模板验证}\label{chap:template-demo}
+\SLChapterOpening{从二次损失的定义进入梯度下降，再核对算法、图表和长内容的统一版式}{公共接口能否同时承载严格数学对象与稳定的读者导航}{识别章节结构、跟随一次梯度更新，并验证交叉引用与索引}{向量内积和一元函数求导}{若内积或求导自检失败，先回看先修框；其余对象按本章分级标题逐项复核}
+\chaptergoals{验证中文字体、数学字体、定理环境、算法、图表、书签、交叉引用与索引。}
+\begin{prerequisitebox}
+读者只需熟悉向量内积和一元函数求导。
+\end{prerequisitebox}
+\begin{precheckbox}
+请确认能够计算 $\inner{x,y}=x^{\mathsf T}y$，并说明 $\norm{x}_2^2=\inner{x,x}$。
+\end{precheckbox}
+\begin{dependencybox}
+向量内积与一元微分 $\longrightarrow$ 二次损失 $\longrightarrow$ 梯度下降。
+\end{dependencybox}
+\begin{symboltablebox}
+$y$：真实值；$\hat y$：预测值；$L$：损失函数；$w$：待更新参数。
+\end{symboltablebox}
+\SLTeachSection{定义、公式与定理}{sec:template-definition}
+\knowledgeanchor{TPL-DEF-001}{二次损失}
+\begin{definition}[二次损失]\label{def:quadratic-loss}
+对预测值 $\hat y\in\R$ 和真实值 $y\in\R$，定义
+\begin{equation}\label{eq:quadratic-loss}
+  L(y,\hat y)=\frac{1}{2}(y-\hat y)^2.
+\end{equation}
+\end{definition}
+\begin{theorem}[非负性]\label{thm:loss-nonnegative}
+\cref{eq:quadratic-loss} 定义的损失满足 $L(y,\hat y)\ge 0$，且等号成立当且仅当 $y=\hat y$。
+\end{theorem}
+\begin{proof}
+实数平方非负；平方为零当且仅当其底数为零。
+\end{proof}
+由\cref{def:quadratic-loss,thm:loss-nonnegative}可见，编号和交叉引用均按章组织。
+
+\begin{geometrybox}
+二次损失是误差到原点距离平方的一半。
+\end{geometrybox}
+\begin{probabilitybox}
+在方差固定的高斯噪声模型中，最小二乘与最大似然等价。
+\end{probabilitybox}
+\begin{optimizationbox}
+\termindex{二次损失}为凸函数，梯度为 $\hat y-y$。
+\end{optimizationbox}
+
+\SLDirectSection{算法、图与表}{sec:template-assets}
+\begin{algorithm}[H]
+\KwIn{初值 $w_0$、步长 $\eta>0$、迭代次数 $T$}
+\KwOut{参数 $w_T$}
+$w\leftarrow w_0$\;
+\For{$t\leftarrow 0$ \KwTo $T-1$}{
+  $w\leftarrow w-\eta\nabla f(w)$\;
+}
+\KwReturn{$w$}\;
+\caption{梯度下降模板}\label{alg:gradient-template}
+\end{algorithm}
+\begin{warningbox}
+若步长不是正数则拒绝执行；$T=0$ 时直接返回 $w_0$，用于覆盖合法退化输入。
+\end{warningbox}
+\begin{complexitybox}
+训练（一次更新）为 $O(d)$ 时间；预测复杂度取决于后续模型，本更新模板不单独定义预测；参数存储为 $O(d)$ 空间。
+\end{complexitybox}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth]
+  \draw[->] (-0.2,0)--(4.2,0) node[right] {$x$};
+  \draw[->] (0,-0.2)--(0,3.0) node[above] {$f(x)$};
+  \draw[SLDeepBlue,thick,domain=0.2:3.8,samples=80] plot (\x,{0.22*(\x-2)^2+0.35});
+  \fill[SLMidBlue] (2,0.35) circle (2pt) node[below=4pt] {最小点};
+\end{tikzpicture}
+\caption{克制配色的可复现示意图}\label{fig:template-curve}
+\end{figure}
+\cref{fig:template-curve}直观显示了凸二次函数的唯一最小点。
+
+\begin{table}[H]
+\centering
+\caption{环境编号测试}\label{tab:template-environments}
+\begin{tabular}{lll}
+\toprule
+对象 & 编号方式 & 引用示例\\
+\midrule
+公式 & 按章 & \cref{eq:quadratic-loss}\\
+算法 & 按章 & \cref{alg:gradient-template}\\
+图 & 按章 & \cref{fig:template-curve}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\SLDirectSection{例题、解释与自检}{sec:template-example}
+\begin{example}\label{ex:template-number}
+当 $y=2,\hat y=1$ 时，计算二次损失。
+\end{example}
+\begin{analysisnote}
+先代入\cref{eq:quadratic-loss}，再计算差值的平方。
+\end{analysisnote}
+\begin{solution}
+$L(2,1)=\tfrac12(2-1)^2=\tfrac12$。
+\end{solution}
+\begin{warningbox}
+不要漏掉定义中的系数 $\tfrac12$；它用于简化求导结果。
+\end{warningbox}
+\SLAdvancedSection{分页环境压力测试}{sec:template-pagination}
+\begin{derivationgoalbox}
+验证较长推导准备、长表格与章末结构环境在页边界处保持完整。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+已知 $w\in\R^d$、$\eta>0$ 与可微函数 $f:\R^d\to\R$。下列对象只用于模板排版测试，不作为教材数学结论。
+\end{derivationprepbox}
+\begin{longtable}{clp{0.55\textwidth}}
+\caption{长表格分页与重复表头测试}\label{tab:long-template}\\
+\toprule
+序号 & 对象 & 排版检查\\
+\midrule
+\endfirsthead
+\multicolumn{3}{c}{\small 表\thetable\ （续）}\\
+\toprule
+序号 & 对象 & 排版检查\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+1 & 定义 & 标题、编号、浅底与左侧细线\\
+2 & 定理 & 条件、结论与证明衔接\\
+3 & 公式 & 按章编号并保留足够行宽\\
+4 & 算法 & 输入、输出、循环与返回值\\
+5 & 图 & 坐标轴、曲线、标签与图注\\
+6 & 表 & 表头、对齐、边界与续表标记\\
+7 & 例题 & 题面、思路、计算与答案\\
+8 & 练习 & 题目来源类别与完整解析\\
+9 & 符号 & 含义、维数、取值空间与首次定义\\
+10 & 引用 & 中文对象名、编号与可点击链接\\
+11 & 页眉 & 册名、章名、节名与页码\\
+12 & 索引 & 符号索引与主题索引\\
+13 & 书签 & 章、节层级与中文标题\\
+14 & 长内容 & 允许在页边界处自然续排\\
+15 & 留白 & 不产生异常整页空白\\
+16 & 字体 & 宋体、黑体、Times与协调数学字体\\
+17 & 颜色 & 黑色正文与克制深色标题\\
+18 & 边距 & A4页面与合理版心\\
+\end{longtable}
+\begin{chapterexercisebox}
+\SLSourceBookExercises
+\textnormal{模板说明：此处只验证“原书练习整理”分类的版式；样题并非原书题，正式章节必须依据专门索引核准来源。}
+\begin{exercise}\label{exr:template-gradient}
+求 $L(y,\hat y)$ 关于 $\hat y$ 的导数。
+\end{exercise}
+\SLLectureSupplementExercises
+\begin{exercise}\label{exr:template-risk}
+指出\cref{tab:long-template}中覆盖的四类高风险排版对象。
+\end{exercise}
+\end{chapterexercisebox}
+\begin{chapteranswerbox}
+\SLExerciseSolutionHeading{exr:template-gradient}
+\begin{solution}
+$\partial L/\partial\hat y=\hat y-y$。
+\end{solution}
+\SLExerciseSolutionHeading{exr:template-risk}
+\begin{solution}
+公式、算法、图和长表格均已在样章中实际排版；验收时还需同时检查编译日志与页面图像。
+\end{solution}
+\end{chapteranswerbox}
+% Natural-language example for a chapter without executable steps.
+\begin{notapplicablebox}[title=契约示例：确实不适用]
+\SLNotApplicableItem{算法说明}{若某章只约定数学符号且没有可执行过程，可直接说明该章无需给出算法步骤；本例只演示排版，不代表任何正文结论。}
+\end{notapplicablebox}
+\SLChapterFiveSummary{二次损失与公共排版接口}{由平方非负性得到损失非负性，并由求导得到梯度更新}{按输入、循环、返回值执行梯度下降模板}{需要验证教材环境、编号、图表、分页、目录与索引时}{回到\cref{sec:template-definition,sec:template-assets}逐项核对，并用章末自检确认结果}
+\begin{selfcheckbox}
+能够解释\cref{eq:quadratic-loss}的非负性，并手工跟随\cref{alg:gradient-template}的一次更新。
+\end{selfcheckbox}
+\index[symbols]{L@$L$：损失函数}
+\backmatter
+\printbookindexes
+\end{document}

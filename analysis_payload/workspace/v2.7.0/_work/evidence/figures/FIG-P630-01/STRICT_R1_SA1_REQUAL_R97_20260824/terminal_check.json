@@ -1,0 +1,45 @@
+{
+  "reviewer": "FIG-P630-01-SA1-R97",
+  "terminal_result": "SA1_FAIL_ROUTE_SA2",
+  "evidence_closure_status": "PASS",
+  "content_hard_fail_count": 3,
+  "content_hard_fail_ids": [
+    "GLYPH-013",
+    "GLYPH-022",
+    "GLYPH-025"
+  ],
+  "glyph_count": 102,
+  "graphic_path_count": 21,
+  "foreground_N": 123,
+  "expected_pairs": 7503,
+  "actual_pairs": 7503,
+  "final_visible_overlap_pair_count": 0,
+  "empty_glyph_mask_count": 0,
+  "empty_graphic_mask_count": 0,
+  "glyph_manual_rows": 102,
+  "graphic_manual_rows": 21,
+  "critical_pair_manual_rows": 19,
+  "glyph_contact_sheets": 13,
+  "graphic_contact_sheets": 21,
+  "critical_glyph_native1x": 6,
+  "critical_glyph_8x": 6,
+  "critical_pair_cards": 19,
+  "validated_relative_references": 763,
+  "png_files_opened_by_machine": 911,
+  "zero_byte_file_count": 0,
+  "pending_token_file_count": 0,
+  "nondefault_ads_count": 0,
+  "failures": [],
+  "manifest_policy": {
+    "evidence_manifest_excludes": [
+      "MANIFEST.sha256",
+      "WRITE_STOPPED",
+      "evidence_manifest.csv"
+    ],
+    "sha_manifest_excludes": [
+      "MANIFEST.sha256",
+      "WRITE_STOPPED"
+    ],
+    "write_stopped_is_last_write_and_is_deliberately_not_self_manifested": true
+  }
+}

@@ -1,0 +1,27 @@
+reviewer,semantic_id,object_kind,visible_content_or_geometry,source_mapping,pdf_mapping,body_consistency,decision,note
+SA3,SEM-01,PANEL,LEFT_SYSTEM_PANEL,"panel rectangle (-7.4,-2.80) to (-.55,2.55)",drawing_001,N/A,PASS,左面板容纳系统扫描流程且无裁切
+SA3,SEM-02,TEXT,系统扫描：固定复合,title node at (-3.98,2.02),text_block_01,N/A,PASS,标题准确概括左面板语义
+SA3,SEM-03,NODE,K_1,left kernel k1,drawing_003+T02-G001..002,N/A,PASS,首坐标核节点与后续顺序一致
+SA3,SEM-04,NODE,K_2,left kernel k2,drawing_004+T02-G003..004,N/A,PASS,第二坐标核节点正确
+SA3,SEM-05,TEXT,centered ellipsis,left dots node,T02-G005,N/A,PASS,省略中间坐标核且三点可见
+SA3,SEM-06,NODE,K_d,left kernel kd,drawing_005+T02-G006..007,N/A,PASS,末坐标核节点正确
+SA3,SEM-07,EDGE,K_1_to_K_2,source draw k1--k2,drawings_006..007,N/A,PASS,水平箭头方向表示顺序复合
+SA3,SEM-08,EDGE,K_2_to_dots,source draw k2--dots,drawings_008..009,N/A,PASS,第二水平箭头方向正确
+SA3,SEM-09,EDGE,dots_to_K_d,source draw dots--kd,drawings_010..011,N/A,PASS,末水平箭头方向正确
+SA3,SEM-10,FORMULA,K_sys=K_1K_2...K_d,source K_{rm sys}=K_1K_2...K_d,text_block_03,PASS,PASS,乘积次序与正文命题及证明完全一致
+SA3,SEM-11,ANNOTATION,固定次序复合：通常不保证可逆,left note node,drawing_012+text_block_04,PASS,PASS,措辞与正文“一般不关于pi可逆”一致且未误写为不平稳
+SA3,SEM-12,PANEL,RIGHT_RANDOM_PANEL,"panel rectangle (.55,-2.80) to (7.4,2.55)",drawing_002,N/A,PASS,右面板容纳随机抽坐标流程且无裁切
+SA3,SEM-13,TEXT,随机扫描：先抽坐标,title node at (3.98,2.02),text_block_05,N/A,PASS,标题准确说明随机扫描先选坐标
+SA3,SEM-14,NODE,J~omega,choice diamond pick,drawing_013+text_block_06,PASS,PASS,随机变量J及权重分布omega codepoint与语义正确
+SA3,SEM-15,NODE,K_1,right kernel r1,drawing_014+T07-G001..002,N/A,PASS,随机分支首核节点正确
+SA3,SEM-16,NODE,K_j,right kernel rj,drawing_015+T07-G003..004,N/A,PASS,一般坐标核K_j节点正确
+SA3,SEM-17,NODE,K_d,right kernel rd,drawing_016+T07-G005..006,N/A,PASS,随机分支末核节点正确
+SA3,SEM-18,EDGE,J_to_K_1,source pick--r1,drawings_017..018,N/A,PASS,左下分支箭头由选择节点指向K_1
+SA3,SEM-19,EDGE,J_to_K_j,source pick--rj,drawings_019..020,N/A,PASS,中央分支箭头由选择节点指向K_j
+SA3,SEM-20,EDGE,J_to_K_d,source pick--rd,drawings_021..022,N/A,PASS,右下分支箭头由选择节点指向K_d
+SA3,SEM-21,FORMULA,K_rand=sum_{j=1}^d omega_j K_j,source K_{rm rand}=sum...,text_blocks_08..09,PASS,PASS,上下限/权重/核下标均正确并与正文固定权重混合一致
+SA3,SEM-22,ANNOTATION,若各K_j关于pi可逆\固定权重混合保持可逆,right note node,drawing_023+text_block_10,PASS,PASS,条件与结论无缺项；未暗示系统扫描可逆
+SA3,SEM-23,CAPTION,图32.7完整题注,source caption,text_block_11,PASS,PASS,题注逐句与单源一致且对两种扫描结论准确
+SA3,SEM-24,MATH_RULE,none_visible,source has no overline/root/fraction/cancel path,no target math-rule drawing,N/A,PASS,求和号由字体字符U+2211绘制；目标drawings_001..023中无遗漏公式规则路径
+SA3,SEM-25,LOOP,none_present,source contains no loop,none,N/A,PASS,本图语义不需要回路；明确排除而非漏盘点
+SA3,SEM-26,BODY_REFERENCE,图ref区分一次坐标更新与一轮扫描,chapter lines 443-458,printed context before figure,PASS,PASS,正文命题/证明/引图句与图示平稳性及可逆性区分一致

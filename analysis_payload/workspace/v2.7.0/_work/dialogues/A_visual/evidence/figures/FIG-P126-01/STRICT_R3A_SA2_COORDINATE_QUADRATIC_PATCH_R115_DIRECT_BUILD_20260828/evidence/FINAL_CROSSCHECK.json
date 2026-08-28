@@ -1,0 +1,127 @@
+{
+  "handoff_id": "A-R115-P126-SA2-DIRECT-BUILD-R3A-20260828",
+  "stage": "POST_BUILD_NON_TEX_FINAL_CROSSCHECK",
+  "manual_fields_generated_by_script": 0,
+  "pdf": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P126-01\\STRICT_R3A_SA2_COORDINATE_QUADRATIC_PATCH_R115_DIRECT_BUILD_20260828\\build\\v260_FIG-P126-01_standalone.pdf",
+    "bytes": 33952,
+    "sha256": "19F221487DB1930170608EAE0E09F019313791D808C724D05DBAC23465F746B2"
+  },
+  "source": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_A_visual\\src\\绘图源码\\第01册_数学基础与统计学习基本理论\\V1-C08\\fig_v1_c08_coordinate.tex",
+    "bytes": 4224,
+    "sha256": "366C905854F0F3952225600D5BD66AAB706B637A453FD23DDF9611E4C002AC20"
+  },
+  "chapter": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\讲义源码\\第01册_数学基础与统计学习基本理论\\chapters\\V1-C08.tex",
+    "bytes": 59218,
+    "sha256": "3C60FABCACA8BFC390323033F3CF6539CA5497EBF5A09641B8C4B78E81A0816C"
+  },
+  "machine": {
+    "N": 14,
+    "C": 91,
+    "formula_C": 91,
+    "candidate_pairs": 33,
+    "raw_visible_atoms": 58,
+    "raw_chars": 25,
+    "unassigned_atoms": 0,
+    "duplicate_assigned_atoms": 0
+  },
+  "manual": {
+    "objects": 14,
+    "pairs": 91,
+    "views": 17,
+    "math_semantic": 10,
+    "glyph_codepoint": 25,
+    "failure_rows": [
+      {
+        "ledger": "objects",
+        "row": {
+          "object_id": "O14",
+          "role": "LEGEND_UPDATE_X2",
+          "reviewer": "Codex-root",
+          "opened_at_utc": "2026-08-28T01:06:37Z",
+          "opened_evidence": "critical_legend_solid_vs_dash_native1x.png|critical_legend_solid_vs_dash_nearest8x.png|LEGEND_GRAYSCALE_PIXEL_RUN_AUDIT.json",
+          "decision": "FAIL",
+          "hard_defect": "true",
+          "note": "x2 legend text is readable but its requested dashed sample renders as one continuous solid run; grayscale role distinction fails"
+        }
+      },
+      {
+        "ledger": "pairs",
+        "row": {
+          "pair_id": "P0091",
+          "object_a": "O13",
+          "object_b": "O14",
+          "reviewer": "Codex-root",
+          "opened_at_utc": "2026-08-28T01:06:37Z",
+          "opened_evidence": "candidate_pair_contact_sheet_part04.png|critical_legend_solid_vs_dash_native1x.png|critical_legend_solid_vs_dash_nearest8x.png|LEGEND_GRAYSCALE_PIXEL_RUN_AUDIT.json",
+          "decision": "FAIL",
+          "hard_defect": "true",
+          "note": "x1 and x2 labels are readable and nonoverlapping but both swatches render as continuous solid runs so the two update roles are not grayscale-stable"
+        }
+      },
+      {
+        "ledger": "views",
+        "row": {
+          "view_id": "V11",
+          "reviewer": "Codex-root",
+          "opened_at_utc": "2026-08-28T01:06:37Z",
+          "evidence_path": "candidate_pair_contact_sheet_part04.png",
+          "decision": "FAIL",
+          "hard_defect": "true",
+          "note": "geometry candidates pass but the final legend pair shows two continuous samples rather than solid versus dashed"
+        }
+      },
+      {
+        "ledger": "views",
+        "row": {
+          "view_id": "V12",
+          "reviewer": "Codex-root",
+          "opened_at_utc": "2026-08-28T01:06:37Z",
+          "evidence_path": "critical_relation_contact_sheet.png",
+          "decision": "FAIL",
+          "hard_defect": "true",
+          "note": "four prior collision sites are clear; legend style contrast remains the sole failed relation"
+        }
+      },
+      {
+        "ledger": "views",
+        "row": {
+          "view_id": "V17",
+          "reviewer": "Codex-root",
+          "opened_at_utc": "2026-08-28T01:06:37Z",
+          "evidence_path": "critical_legend_solid_vs_dash_native1x.png|critical_legend_solid_vs_dash_nearest8x.png|LEGEND_GRAYSCALE_PIXEL_RUN_AUDIT.json",
+          "decision": "FAIL",
+          "hard_defect": "true",
+          "note": "both legend swatches are continuous horizontal runs; the x2 sample lacks multi-dash structure"
+        }
+      },
+      {
+        "ledger": "math",
+        "row": {
+          "check_id": "M10",
+          "reviewer": "Codex-root",
+          "opened_at_utc": "2026-08-28T01:06:37Z",
+          "evidence_or_input": "current source lines63-66|critical_legend_solid_vs_dash_nearest8x.png|LEGEND_GRAYSCALE_PIXEL_RUN_AUDIT.json",
+          "decision": "FAIL",
+          "hard_defect": "true",
+          "note": "source assigns solid x1 and dashed x2 roles but rendered grayscale legend exposes two continuous solid swatches"
+        }
+      }
+    ],
+    "unique_hard_defects": 1
+  },
+  "unique_hard_defect": {
+    "id": "HARD-LEGEND-GRAYSCALE-DASH-COLLAPSE",
+    "objects": [
+      "O13",
+      "O14"
+    ],
+    "pair": "P0091",
+    "fact": "The x2 legend swatch renders as one continuous horizontal run rather than the requested multi-dash sample; both legend swatches appear solid in grayscale native1x and nearest8x evidence.",
+    "r168_classification": "HARD_SEMANTIC_ROLE_FAILURE_NOT_FONT_PIXEL_ADVISORY"
+  },
+  "errors": [],
+  "hard_gate": true
+}

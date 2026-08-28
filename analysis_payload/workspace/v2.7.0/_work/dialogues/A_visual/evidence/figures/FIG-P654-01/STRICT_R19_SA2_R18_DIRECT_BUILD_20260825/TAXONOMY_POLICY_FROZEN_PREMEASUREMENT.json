@@ -1,0 +1,39 @@
+{
+  "frozen_before_pixel_measurement": true,
+  "mapping_inputs": [
+    "PANEL_ID",
+    "ROLE",
+    "SCRIPT_CLASS",
+    "PDF font metadata",
+    "semantic parent from current source"
+  ],
+  "forbidden_inputs": [
+    "ELEMENT_ID",
+    "H_INK_PX",
+    "area",
+    "PASS",
+    "rank"
+  ],
+  "group_key": "PANEL_ID|ROLE|SCRIPT_CLASS",
+  "ratio_interval": [
+    0.92,
+    1.08
+  ],
+  "absolute_height_px": {
+    "CJK": 30,
+    "LATIN_UPPER_DIGIT": 24,
+    "LATIN_LOWER_GREEK": 17,
+    "BASE_MATH": 22,
+    "SUBSCRIPT_MATH": 15
+  },
+  "glyph_count": 93,
+  "drawing_count": 21,
+  "glyph_groups": {
+    "PANEL_MAIN|EDGE_LABEL|CJK": 2,
+    "PANEL_MAIN|FORMULA_BLOCK|BASE_MATH": 10,
+    "PANEL_MAIN|FORMULA_SUBSCRIPT|SUBSCRIPT_MATH": 3,
+    "PANEL_MAIN|NODE_BODY|CJK": 73,
+    "PANEL_MAIN|NODE_BODY|LATIN_LOWER_GREEK": 4,
+    "PANEL_MAIN|NODE_BODY|LATIN_UPPER_DIGIT": 1
+  }
+}

@@ -1,0 +1,9 @@
+﻿DECLARATION_ID,SOURCE_LINE,SELECTOR_OR_ROLE,DECLARED_PT,GRAPHICS_SCALE,EFFECTIVE_PT,PDF_OBSERVED_PT,REQUIRED_MIN_PT,WITHIN_PANEL_RATIO,CROSS_PANEL_RATIO,DECISION,NOTE
+FONT-SRC-001,4,every node default,9.6,1.0,9.6,9.56414,9.5,1.0,N/A,PASS,Default reader text has no scale/transform override.
+FONT-SRC-002,21,tick label,9.6,1.0,9.6,9.56414,9.5,1.0,1.0,PASS,Top and bottom tick roles share the declared size.
+FONT-SRC-003,22,axis label,10.8,1.0,10.8,10.7591,9.5,1.0,1.0,PASS,Axis labels use the larger declared role consistently.
+FONT-SRC-004,24,panel title,10.8,1.0,10.8,10.7591,9.5,1.0,1.0,PASS,Top and bottom panel titles share the declared size.
+FONT-SRC-005,37,top warm-up annotation,9.6,1.0,9.6,9.56414,9.5,1.0,1.0,PASS,No local scale; natural script t remains separately gated at 15 px.
+FONT-SRC-006,40,top retained-sample annotation,9.6,1.0,9.6,9.56414,9.5,1.0,1.0,PASS,Same-role top annotations are equal-sized.
+FONT-SRC-007,53,bottom target annotation,9.6,1.0,9.6,9.56414,9.5,1.0,1.0,PASS,Bottom annotation remains within cross-panel role limit.
+FONT-SRC-008,57,caption natural paragraph,9.6,1.0,9.6,9.96264,9.5,1.0,N/A,FAIL,Source and visual size are acceptable but caption semicolon TXT-098 fails mandatory exact-metadata peer ink-area ratio.

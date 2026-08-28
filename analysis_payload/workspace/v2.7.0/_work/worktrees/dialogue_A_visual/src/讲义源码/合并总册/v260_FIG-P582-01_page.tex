@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{739}
+\setcounter{chapter}{31}
+\setcounter{figure}{6}
+\pagestyle{headings}
+\chaptermark{蒙特卡罗方法与直接采样}
+\sectionmark{估计误差与诊断}
+\textbf{优化解释。}包络常数越小，理论接受率 $1/c$ 越高；但 $c$ 必须保持全局支配。重要性抽样则通过命题31.1最小化二阶矩。两种优化都受支持和可抽样性约束，不能只看局部曲线接近程度。
+
+图\ref{fig:V5-C02-running-mean}用固定的四个均匀数说明运行均值可以上下波动；图\ref{fig:V5-C02-weight-ess}显示一个权重占 $90\%$ 时 ESS 会接近 $1$；图31.9只在独立同分布且方差有限时画出 $N^{-1/2}$ 速率。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_running_mean.tex}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_weight_ess.tex}
+\end{document}

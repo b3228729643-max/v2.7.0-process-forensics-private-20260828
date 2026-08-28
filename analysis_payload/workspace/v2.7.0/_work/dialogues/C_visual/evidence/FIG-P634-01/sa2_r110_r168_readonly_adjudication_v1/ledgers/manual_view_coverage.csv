@@ -1,0 +1,12 @@
+view_id,path,manual_coverage
+V01,renders/physical_0684_300dpi.png,Opened at native source resolution and checked page balance printed page number adjacent prose and full figure placement.
+V02,renders/figure_with_caption_300dpi.png,Opened and checked the complete title diagram panels and both caption lines together.
+V03,renders/figure_only_300dpi.png,Opened and checked internal geometry arrows labels formulas borders and whitespace without caption distraction.
+V04,renders/figure_with_caption_grayscale_300dpi.png,Opened and confirmed the colored roles remain distinguishable by position border grammar and readable luminance.
+V05,renders/figure_only_grayscale_300dpi.png,Opened and checked internal hierarchy and slot distinctions in grayscale.
+V06,overlays/object_id_overlay_300dpi.png,Opened after coordinate correction and checked all 47 IDs against their visible objects.
+V07,overlays/semantic_class_overlay_300dpi.png,Opened after coordinate correction and checked TEXT FORMULA LINE_ARROW NODE_BORDER and PANEL_BORDER mapping.
+V08,overlays/text_measurement_overlay_300dpi.png,Opened and checked all 34 text/formula IDs against the native glyph locations.
+V09,overlays/semantic_foreground_mask_overlay_300dpi.png,Opened and checked foreground extraction against visible ink for every semantic class.
+V10,rois/critical_rois_native1x_contact.png,Opened and checked all six native critical regions.
+V11,rois/critical_rois_nearest8x_contact.png,Opened and checked all six nearest-neighbour enlarged critical regions.

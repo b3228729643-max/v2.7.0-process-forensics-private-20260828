@@ -1,0 +1,55 @@
+{
+  "uid": "FIG-P602-01",
+  "addendum": "USER_FONT_REVIEW_RELAXATION_R168",
+  "old_sealed_roots_modified": false,
+  "old_strict_route": {
+    "result": "PASS",
+    "machine_failures": 0,
+    "manual_failures": 0,
+    "hard_gate_failures": 0,
+    "glyph_g032": "范 37x34 machine/manual/hard PASS"
+  },
+  "r168_user_route": {
+    "hard_font_failures": [
+      "missing glyph or tofu",
+      "wrong codepoint or wrong mathematical semantics",
+      "actually unreadable text",
+      "visibly obvious size imbalance",
+      "real clipping or overlap"
+    ],
+    "advisory_only": [
+      "0.92 to 1.08 micro-ratio differences",
+      "taxonomy or peer micro-differences",
+      "exact font metadata differences",
+      "one to two pixel raster differences"
+    ],
+    "geometry_relationship_formula_content_clip_overlap_gates_unchanged": true,
+    "result": "PASS",
+    "route": "LEAN_LOCAL_PASS_READY_REQUEST_COMMIT"
+  },
+  "identities": {
+    "candidate_pdf_sha256": "68188DAAAF9B3C4233D5A032C3D8BE20A73B51D5E6058D0E1C12FDE6471093E7",
+    "source_sha256": "6C4E8F156709C0FF384F9E7B7F2BD5D9CB586E24206BF0BCD2E58933ED3DB47D",
+    "evidence_write_stopped_sha256": "1420591BE0672AC4580D8C1551E131E4DD2D82F8FFE96BF4EC9A9E8C52B206C6",
+    "fresh_root_acceptance_sha256": "03C72281DED4F501294CDF801F5DA301A90134591ABE537E70F9F3EB359D3339",
+    "fresh_root_handoff_sha256": "C44DCCC8DDB30A5E30FCD69D2803275DA38BF98B34E3D3999DF831A954FFACDF",
+    "fresh_root_write_stopped_sha256": "67FBE1D1C6C4FC9DA63B3673870A39596CDAC0CC71911BD8D8E0B9A0FAC404A2"
+  },
+  "denominators": {
+    "objects": 30,
+    "glyphs": 154,
+    "unordered_pairs": 435,
+    "critical_pairs": 16,
+    "peer_rows": 28,
+    "role_rows": 3,
+    "clip_rows": 30,
+    "views": 4,
+    "hard_gates": 12
+  },
+  "commit_requested_not_performed": true,
+  "commit_scope_if_granted": "single authorized P602 source file only",
+  "tex_disabled": true,
+  "central_inventory_written": false,
+  "next_uid_started": false,
+  "global_pass_claimed": false
+}

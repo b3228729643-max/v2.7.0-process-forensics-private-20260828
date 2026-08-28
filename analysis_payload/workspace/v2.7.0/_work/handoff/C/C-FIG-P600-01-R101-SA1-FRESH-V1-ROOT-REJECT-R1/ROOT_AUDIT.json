@@ -1,0 +1,97 @@
+{
+  "schema": "C_P600_R101_SA1_ROOT_AUDIT_R1",
+  "handoff_id": "C-FIG-P600-01-R101-SA1-FRESH-V1-ROOT-REJECT-R1",
+  "status": "ROOT_REJECT_CONTROL_ONLY",
+  "request": "P600_R101_SA1_ROOT_REJECT_CONTROL_ONLY_REQUEST_RESEAL",
+  "uid": "FIG-P600-01",
+  "role": "fresh isolated read-only SA1",
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P600-01\\sa1_r101_fresh_v1",
+  "content_outcome": {
+    "result": "STRICT_FAIL",
+    "failed_ids": [
+      "S07",
+      "H07_TEXT_CONSISTENCY",
+      "H14_FINAL"
+    ],
+    "finding": "Adjacent chapter text says Figure 32.4 draws paired flows and the rejection self-loop separately, but the complete 22-object figure contains no rejection self-loop.",
+    "figure_source_writer_needed": false,
+    "chapter_text_single_writer_needed": true,
+    "future_tex_slot_needed_after_authorized_text_fix": true
+  },
+  "identity": {
+    "official_pdf": {
+      "physical_page": 649,
+      "printed_page": 636,
+      "pages": 814,
+      "bytes": 4947496,
+      "sha256": "0870FF226DC383875C4A1B6EABB06AAB942317DA294D90D2864B3030D46DF1A1"
+    },
+    "source": {
+      "bytes": 2497,
+      "sha256": "B1BCD4D10AA4FCCE86B11A8B5CFCEDD6AE231C0DC625AFD8B2AE95E93464F8E6"
+    },
+    "sa1_review": {
+      "bytes": 4045,
+      "sha256": "E080C3C35B0391BB0B967BB74534784B38195E250BB91CFA8DF54877286AAA7A"
+    }
+  },
+  "denominators": {
+    "semantic_objects": 22,
+    "visible_glyphs": 133,
+    "unordered_pairs": 231,
+    "unordered_pair_formula": "C(22,2)=231",
+    "critical_candidates": 24,
+    "peer_role_assignments": 10,
+    "peer_comparisons": 4,
+    "clip_objects": 22,
+    "views": 6,
+    "hard_gates": 14
+  },
+  "content_mechanical_audit": {
+    "manual_ledger_row_counts_match": true,
+    "manual_id_uniqueness_failures": 0,
+    "manual_blank_note_failures": 0,
+    "manual_duplicate_note_failures": 0,
+    "pair_missing": 0,
+    "pair_extra": 0,
+    "pair_unique": 231,
+    "critical_unique_pair_ids": 24,
+    "true_illegal_overlap_pixels": 0,
+    "mask_contamination_pixels": 10,
+    "clip_pixels": 0,
+    "visual_root_check": "PASS_FIGURE_GEOMETRY_FORMULA_GRAYSCALE_PAGE_FIT_AND_CONFIRMED_NO_SELF_LOOP"
+  },
+  "sealed_root_mechanical_audit": {
+    "actual_files": 52,
+    "manifest_model_files": 52,
+    "missing": 0,
+    "unlisted": 0,
+    "ordinary_identity_mismatches": 0,
+    "all_files_readonly": true,
+    "ads": 0,
+    "cache_pyc": 0,
+    "manifest_bytes": 13604,
+    "manifest_sha256": "1D29CDF92F3BA630FA75E4459673785A8E72C3A3CAD5DC7DDBA9CC17EEB2D3C0",
+    "write_stopped_bytes": 380,
+    "write_stopped_sha256": "444A5A6B9E63345E0BCA8C93AB3B8F1DDF93CF4E6E1651A4FEFFD3AC1143A070",
+    "canonical_recordset_sha256": "E45CA624C987EB35E9677D120652C12760AC6432D47A51EDE8A6C187B3394985",
+    "canonical_recordset_recomputed_match": true,
+    "complete_root_snapshot_sha256": "9AA00CB50BDD4729401B3EE65AE9BEA79CE27E538950B1C9F42F5DF29F82DB46",
+    "manifest_mtime_utc": "2026-08-25T09:21:10.2292507Z",
+    "write_stopped_mtime_utc": "2026-08-25T09:21:10.1158953Z",
+    "write_stopped_delta_from_latest_other_ns": -113355400,
+    "write_stopped_strict_latest": false
+  },
+  "control_rejection": {
+    "reason": "WRITE_STOPPED was prewritten as a temporary file before MANIFEST.json and renamed last; rename preserved its earlier mtime, so the marker is not strictly newer than the manifest.",
+    "content_conclusions_changed": false,
+    "old_root_must_remain_readonly": true,
+    "authorized_next_action_required": "evidence-only reseal into a new root with lossless copy provenance and a marker created after the final manifest",
+    "source_or_tex_action_authorized": false
+  },
+  "central_state_written": false,
+  "central_inventory_written": false,
+  "c_local_pass_claimed": false,
+  "global_pass_claimed": false,
+  "unresolved": "CONTROL_RESEAL_REQUIRED; CHAPTER_TEXT_MISMATCH_S07_REMAINS"
+}

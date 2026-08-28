@@ -1,0 +1,9 @@
+﻿CHECK_ID,REQUIREMENT,OBSERVED,EVIDENCE,STATUS
+MC01_REQUIRED_ARTIFACTS,all required evidence files exist,21/21,full_page_200dpi.png;full_page_300dpi_native.png;full_page_300dpi_grid.json;figure_crop_300dpi.png;standalone_300dpi.png;grayscale_300dpi.png;after_font_audit.csv;after_pixel_measurements.csv;after_overlap_report.csv;after_text_measurement_overlay_300dpi.png;after_visual_acceptance.md;same_class_ratio_audit.csv;role_ratio_audit.csv;cross_panel_ratio_audit.csv;math_semantics_recheck.md;math_semantics_recheck.csv;math_semantics_recheck.json;strict_audit_summary.json;strict_eight_column_report.csv;critical_artifacts.csv;SA1_RESULT.md,PASS
+MC02_FULL_PAGE_NATIVE_GRID,immutable full-page 300dpi 1:1 grid; integer-pixel rounding permitted,"actual=2481x3508px; target=2480.317x3507.875px; axis_relative_error=0.027550%,0.003562%",full_page_300dpi_native.png;full_page_300dpi_grid.json;render_manifest.json,PASS
+MC03_MASK_LINKS,every glyph/semantic/graphic mask resolves,170/170,mask_manifest.csv,PASS
+MC04_GLYPH_SCHEMA,"all 124 glyph rows have raw-H_ink, role/script and mask fields",glyphs=124; complete=True,after_pixel_measurements.csv,PASS
+MC05_RELATION_SCHEMA,all registered relations and all TEXT_TEXT vector bboxes are populated,relations=735; text-bbox=True,after_overlap_report.csv,PASS
+MC06_CRITICAL_EVIDENCE,"every failed/critical relation has raw ROI, two masks, overlap and 8x overlay",needed=2; manifest=4,critical_artifacts.csv,PASS
+MC07_COUNT_CROSSCHECK,summary counts equal CSV recomputation,overlap=30; clip=0; font_fail=76; pixel_fail=30,strict_audit_summary.json;after_*_audit.csv,PASS
+MC08_FINAL_RESULT,summary result equals all-hard-gates conjunction,expected=FAIL; summary=FAIL,strict_audit_summary.json,PASS

@@ -1,0 +1,9 @@
+\documentclass{article}
+\usepackage{unicode-math}
+\usepackage{tikz}
+\newcommand{\probeEq}{%
+  \mathrel{\raisebox{2.25pt}{\rule{5.5pt}{.85pt}}\kern-5.5pt
+    \raisebox{-2.25pt}{\rule{5.5pt}{.85pt}}}}
+\begin{document}
+\begin{tikzpicture}\node {$t\probeEq 1$};\end{tikzpicture}
+\end{document}

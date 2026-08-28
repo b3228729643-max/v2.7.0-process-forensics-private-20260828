@@ -1,0 +1,77 @@
+﻿check_type,panel,role,script_class,n,ratio,threshold,difference_pt,PASS_FAIL,basis
+SOURCE_SAME_PANEL_ROLE,TOPOLOGY_SIMPLE,TITLE,N/A_SOURCE_PT,1,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,TOPOLOGY_SIMPLE,STATE_LABEL,N/A_SOURCE_PT,3,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,TOPOLOGY_SIMPLE,EDGE_LABEL,N/A_SOURCE_PT,4,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,TOPOLOGY_LAZY,TITLE,N/A_SOURCE_PT,1,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,TOPOLOGY_LAZY,STATE_LABEL,N/A_SOURCE_PT,3,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,TOPOLOGY_LAZY,EDGE_LABEL,N/A_SOURCE_PT,7,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,PLOT_SIMPLE,TICK_LABEL,N/A_SOURCE_PT,8,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,PLOT_SIMPLE,ANNOTATION,N/A_SOURCE_PT,1,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,PLOT_SIMPLE,AXIS_TITLE,N/A_SOURCE_PT,2,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,PLOT_LAZY,TICK_LABEL,N/A_SOURCE_PT,8,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,PLOT_LAZY,ANNOTATION,N/A_SOURCE_PT,1,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,PLOT_LAZY,AXIS_TITLE,N/A_SOURCE_PT,2,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,SUMMARY,SUMMARY_FORMULA,N/A_SOURCE_PT,1,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_SAME_PANEL_ROLE,CAPTION,CAPTION,N/A_SOURCE_PT,1,1.0,max/min<=1.03; diff<=0.25pt,0.0,PASS,actual effective_pt from current source
+SOURCE_CROSS_PANEL_ROLE,CROSS_PANEL,TITLE,N/A_SOURCE_PT,2,1.0,max/min<=1.05,,PASS,actual effective_pt from current source
+SOURCE_CROSS_PANEL_ROLE,CROSS_PANEL,STATE_LABEL,N/A_SOURCE_PT,6,1.0,max/min<=1.05,,PASS,actual effective_pt from current source
+SOURCE_CROSS_PANEL_ROLE,CROSS_PANEL,EDGE_LABEL,N/A_SOURCE_PT,11,1.0,max/min<=1.05,,PASS,actual effective_pt from current source
+SOURCE_CROSS_PANEL_ROLE,CROSS_PANEL,TICK_LABEL,N/A_SOURCE_PT,16,1.0,max/min<=1.05,,PASS,actual effective_pt from current source
+SOURCE_CROSS_PANEL_ROLE,CROSS_PANEL,ANNOTATION,N/A_SOURCE_PT,2,1.0,max/min<=1.05,,PASS,actual effective_pt from current source
+SOURCE_CROSS_PANEL_ROLE,CROSS_PANEL,AXIS_TITLE,N/A_SOURCE_PT,4,1.0,max/min<=1.05,,PASS,actual effective_pt from current source
+SOURCE_CROSS_PANEL_ROLE,CROSS_PANEL,SUMMARY_FORMULA,N/A_SOURCE_PT,1,1.0,max/min<=1.05,,PASS,actual effective_pt from current source
+SOURCE_CROSS_PANEL_ROLE,CROSS_PANEL,CAPTION,N/A_SOURCE_PT,1,1.0,max/min<=1.05,,PASS,actual effective_pt from current source
+CROSS_PANEL_ROLE_SCRIPT,"{""PLOT_LAZY"": 33.0, ""PLOT_SIMPLE"": 33.0}",ANNOTATION,CJK,2,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,"{""PLOT_LAZY"": 26.0, ""PLOT_SIMPLE"": 26.0}",AXIS_TITLE,DIGIT,2,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,"{""PLOT_LAZY"": 26.0, ""PLOT_SIMPLE"": 26.0}",AXIS_TITLE,LOWER,2,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,"{""PLOT_LAZY"": 37.0, ""PLOT_SIMPLE"": 37.0}",AXIS_TITLE,MATH_OPERATOR_PUNCT,2,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,"{""PLOT_LAZY"": 19.0, ""PLOT_SIMPLE"": 19.0}",AXIS_TITLE,NATURAL_SCRIPT,2,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,"{""PLOT_LAZY"": 27.0, ""PLOT_SIMPLE"": 27.0}",AXIS_TITLE,UPPER,2,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,N/A,CAPTION,CJK,1,N/A,<=1.10,,N/A,only one panel has this comparable role+script
+CROSS_PANEL_ROLE_SCRIPT,N/A,CAPTION,DIGIT,1,N/A,<=1.10,,N/A,only one panel has this comparable role+script
+CROSS_PANEL_ROLE_SCRIPT,N/A,CAPTION,FULLWIDTH_PUNCT,1,N/A,<=1.10,,N/A,only one panel has this comparable role+script
+CROSS_PANEL_ROLE_SCRIPT,N/A,CAPTION,MATH_OPERATOR_PUNCT,1,N/A,<=1.10,,N/A,only one panel has this comparable role+script
+CROSS_PANEL_ROLE_SCRIPT,"{""TOPOLOGY_LAZY"": 25.0, ""TOPOLOGY_SIMPLE"": 25.0}",EDGE_LABEL,DIGIT,11,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,"{""TOPOLOGY_LAZY"": 32.0, ""TOPOLOGY_SIMPLE"": 31.5}",EDGE_LABEL,MATH_OPERATOR_PUNCT,9,1.0159,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,"{""TOPOLOGY_LAZY"": 26.0, ""TOPOLOGY_SIMPLE"": 26.0}",STATE_LABEL,DIGIT,6,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,N/A,SUMMARY_FORMULA,CJK,1,N/A,<=1.10,,N/A,only one panel has this comparable role+script
+CROSS_PANEL_ROLE_SCRIPT,N/A,SUMMARY_FORMULA,DIGIT,1,N/A,<=1.10,,N/A,only one panel has this comparable role+script
+CROSS_PANEL_ROLE_SCRIPT,N/A,SUMMARY_FORMULA,FULLWIDTH_PUNCT,1,N/A,<=1.10,,N/A,only one panel has this comparable role+script
+CROSS_PANEL_ROLE_SCRIPT,N/A,SUMMARY_FORMULA,LOWER,1,N/A,<=1.10,,N/A,only one panel has this comparable role+script
+CROSS_PANEL_ROLE_SCRIPT,N/A,SUMMARY_FORMULA,MATH_OPERATOR_PUNCT,1,N/A,<=1.10,,N/A,only one panel has this comparable role+script
+CROSS_PANEL_ROLE_SCRIPT,"{""PLOT_LAZY"": 25.0, ""PLOT_SIMPLE"": 25.0}",TICK_LABEL,DIGIT,16,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,"{""PLOT_LAZY"": 29.0, ""PLOT_SIMPLE"": 29.0}",TICK_LABEL,MATH_OPERATOR_PUNCT,6,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+CROSS_PANEL_ROLE_SCRIPT,"{""TOPOLOGY_LAZY"": 41.0, ""TOPOLOGY_SIMPLE"": 41.0}",TITLE,CJK,2,1.0,<=1.10,,PASS,actual raw H_ink_px semantic component medians; no cross-script comparison
+ROLE_HIERARCHY,CAPTION,CAPTION,CJK,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,CAPTION,CAPTION,DIGIT,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,CAPTION,CAPTION,FULLWIDTH_PUNCT,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,CAPTION,CAPTION,MATH_OPERATOR_PUNCT,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,PLOT_LAZY,ANNOTATION,CJK,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,PLOT_LAZY,AXIS_TITLE,DIGIT,1,1.04,"[1.00,1.18]",,PASS,actual raw H_ink_px: AXIS_TITLE / TICK_LABEL; script=DIGIT
+ROLE_HIERARCHY,PLOT_LAZY,AXIS_TITLE,LOWER,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,PLOT_LAZY,AXIS_TITLE,MATH_OPERATOR_PUNCT,1,1.2758620689655173,"[1.00,1.18]",,FAIL,actual raw H_ink_px: AXIS_TITLE / TICK_LABEL; script=MATH_OPERATOR_PUNCT
+ROLE_HIERARCHY,PLOT_LAZY,AXIS_TITLE,NATURAL_SCRIPT,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,PLOT_LAZY,AXIS_TITLE,UPPER,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,PLOT_LAZY,TICK_LABEL,DIGIT,8,1.0,BASE=1.00,,PASS,actual raw H_ink_px
+ROLE_HIERARCHY,PLOT_LAZY,TICK_LABEL,MATH_OPERATOR_PUNCT,3,1.0,BASE=1.00,,PASS,actual raw H_ink_px
+ROLE_HIERARCHY,PLOT_SIMPLE,ANNOTATION,CJK,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,PLOT_SIMPLE,AXIS_TITLE,DIGIT,1,1.04,"[1.00,1.18]",,PASS,actual raw H_ink_px: AXIS_TITLE / TICK_LABEL; script=DIGIT
+ROLE_HIERARCHY,PLOT_SIMPLE,AXIS_TITLE,LOWER,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,PLOT_SIMPLE,AXIS_TITLE,MATH_OPERATOR_PUNCT,1,1.2758620689655173,"[1.00,1.18]",,FAIL,actual raw H_ink_px: AXIS_TITLE / TICK_LABEL; script=MATH_OPERATOR_PUNCT
+ROLE_HIERARCHY,PLOT_SIMPLE,AXIS_TITLE,NATURAL_SCRIPT,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,PLOT_SIMPLE,AXIS_TITLE,UPPER,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,PLOT_SIMPLE,TICK_LABEL,DIGIT,8,1.0,BASE=1.00,,PASS,actual raw H_ink_px
+ROLE_HIERARCHY,PLOT_SIMPLE,TICK_LABEL,MATH_OPERATOR_PUNCT,3,1.0,BASE=1.00,,PASS,actual raw H_ink_px
+ROLE_HIERARCHY,SUMMARY,SUMMARY_FORMULA,CJK,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,SUMMARY,SUMMARY_FORMULA,DIGIT,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,SUMMARY,SUMMARY_FORMULA,FULLWIDTH_PUNCT,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,SUMMARY,SUMMARY_FORMULA,LOWER,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,SUMMARY,SUMMARY_FORMULA,MATH_OPERATOR_PUNCT,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,TOPOLOGY_LAZY,EDGE_LABEL,DIGIT,7,0.9615384615384616,"[1.00,1.18]",,FAIL,actual raw H_ink_px: EDGE_LABEL / STATE_LABEL; script=DIGIT
+ROLE_HIERARCHY,TOPOLOGY_LAZY,EDGE_LABEL,MATH_OPERATOR_PUNCT,7,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,TOPOLOGY_LAZY,STATE_LABEL,DIGIT,3,1.0,BASE=1.00,,PASS,actual raw H_ink_px
+ROLE_HIERARCHY,TOPOLOGY_LAZY,TITLE,CJK,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,TOPOLOGY_SIMPLE,EDGE_LABEL,DIGIT,4,0.9615384615384616,"[1.00,1.18]",,FAIL,actual raw H_ink_px: EDGE_LABEL / STATE_LABEL; script=DIGIT
+ROLE_HIERARCHY,TOPOLOGY_SIMPLE,EDGE_LABEL,MATH_OPERATOR_PUNCT,2,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy
+ROLE_HIERARCHY,TOPOLOGY_SIMPLE,STATE_LABEL,DIGIT,3,1.0,BASE=1.00,,PASS,actual raw H_ink_px
+ROLE_HIERARCHY,TOPOLOGY_SIMPLE,TITLE,CJK,1,N/A,N/A,,N/A,no comparable script in local BASE; no cross-script proxy

@@ -1,0 +1,12 @@
+diff --git a/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C02/fig_v1_c02_projection.tex b/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C02/fig_v1_c02_projection.tex
+--- a/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C02/fig_v1_c02_projection.tex
++++ b/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C02/fig_v1_c02_projection.tex
+@@ -13,7 +13,7 @@
+     (-.46,.04)--(4.84,1.49)--(4.96,1.01)--(-.34,-.44)--cycle;
+   \draw[draw=SLGray!72,line width=.60pt] (-.46,.04)--(4.84,1.49);
+   \draw[draw=SLGray!72,line width=.60pt] (-.34,-.44)--(4.96,1.01);
+-  \node[text=SLGray,anchor=north west] at (-.18,-.23) {子空间 $S$};
++  \node[text=SLGray,anchor=north west] at (-.18,-.39) {子空间 $S$};
+ 
+   \draw[-{Stealth[length=2.25mm,width=1.45mm]},draw=SLBlue,line width=.98pt]
+     (O)--(X) node[pos=.48,above left=4mm] {$\boldsymbol{x}$};

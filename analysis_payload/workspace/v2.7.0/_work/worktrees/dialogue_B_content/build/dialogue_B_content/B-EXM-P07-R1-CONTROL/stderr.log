@@ -1,0 +1,39 @@
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LC_ALL = "C.UTF-8",
+	LC_CTYPE = "C",
+	LC_NUMERIC = "C",
+	LC_COLLATE = "C",
+	LC_TIME = (unset),
+	LC_MONETARY = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the system default locale ("Chinese (Simplified)_China.936").
+Latexmk: Missing input file 'main_full.toc' message in .log file:
+  No file main_full.toc.
+Latexmk: Missing input file 'symbols.ind' message in .log file:
+  No file symbols.ind.
+Latexmk: Missing input file 'main_full.ind' message in .log file:
+  No file main_full.ind.
+Latexmk: Using bibtex to make bibliography file(s).
+This is makeindex, version 2.18 [TeX Live 2026] (kpathsea + Thai support).
+Scanning input file symbols.idx....done (355 entries accepted, 0 rejected).
+Sorting entries......done (3405 comparisons).
+Generating output file symbols.ind....done (572 lines written, 0 warnings).
+Output written in symbols.ind.
+Transcript written in symbols.ilg.
+This is makeindex, version 2.18 [TeX Live 2026] (kpathsea + Thai support).
+Scanning input file main_full.idx....done (731 entries accepted, 0 rejected).
+Sorting entries........done (7270 comparisons).
+Generating output file main_full.ind....done (719 lines written, 0 warnings).
+Output written in main_full.ind.
+Transcript written in main_full.ilg.
+Latexmk: Using bibtex to make bibliography file(s).
+This is makeindex, version 2.18 [TeX Live 2026] (kpathsea + Thai support).
+Scanning input file main_full.idx....done (731 entries accepted, 0 rejected).
+Sorting entries........done (7270 comparisons).
+Generating output file main_full.ind....done (719 lines written, 0 warnings).
+Output written in main_full.ind.
+Transcript written in main_full.ilg.
+Latexmk: Using bibtex to make bibliography file(s).
+Reverting Windows console CPs to (in,out) = (936,65001)

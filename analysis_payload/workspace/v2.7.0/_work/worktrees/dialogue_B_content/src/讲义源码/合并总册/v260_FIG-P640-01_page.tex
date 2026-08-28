@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{671}
+\setcounter{chapter}{33}
+\setcounter{figure}{6}
+\pagestyle{headings}
+\chaptermark{Gibbs 抽样}
+\sectionmark{收敛、抽样计算与练习}
+图\ref{fig:V5-C04-mixing-rho-comparison}使用上述解析自相关而非伪造轨迹，比较不同$|\rho|$下的混合速度。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_mixing_rho_comparison.tex}
+\FloatBarrier
+读图时应先看左面板中轮末自相关$\rho^{2k}$随滞后$k$的衰减，再看右面板中渐近有效样本比例$(1-\rho^2)/(1+\rho^2)$随$|\rho|$的下降；当$|\rho|\to1^-$时，前者衰减趋于停滞而后者趋于$0$，这只是从合法区域$|\rho|<1$内逼近边界的极限，并不表示可以取退化相关系数$|\rho|=1$。
+\end{document}

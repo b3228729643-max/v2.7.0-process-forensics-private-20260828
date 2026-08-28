@@ -1,0 +1,21 @@
+gate_id,reviewer,hard_gate,manual_evidence,observed_count_or_state,r168_classification,decision,note
+H001,SA1-FRESH,MISSING_GLYPH,13 glyph contacts plus 242 masks,0,HARD,PASS,Every nonwhitespace glyph has visible intended ink and no missing strokes
+H002,SA1-FRESH,TOFU_OR_REPLACEMENT_GLYPH,13 glyph contacts plus full figure,0,HARD,PASS,No square replacement marks tofu blocks or missing-codepoint placeholders are present
+H003,SA1-FRESH,WRONG_CODEPOINT,source-to-render semantic comparison,0,HARD,PASS,Latin Greek digits operators punctuation and CJK caption text match the current source semantics
+H004,SA1-FRESH,MATH_SEMANTICS,source chapter figure and math-rule views,CORRECT,HARD,PASS,ACF is rho to the power 2k and ESS is the ratio one minus rho squared over one plus rho squared with the correct limit
+H005,SA1-FRESH,ACTUAL_UNREADABILITY,native 300dpi figure plus all contacts,0,HARD,PASS,All titles axes ticks legends annotations caption and formulae are readable at native scale
+H006,SA1-FRESH,SEVERE_SIZE_IMBALANCE,native figure and role metrics,FALSE,HARD,PASS,No peer role or formula component exhibits obvious severe size imbalance
+H007,SA1-FRESH,REAL_CLIPPING,full page figure crop and 94 object masks,0,HARD,PASS,Every semantic and drawing object is within its intended figure or page region
+H008,SA1-FRESH,ILLEGAL_OVERLAP,71 manual critical relations,0,HARD,PASS,All measured contacts are intended joins shared data origins valid occlusions or clear independent objects
+H009,SA1-FRESH,GLYPH_MASK_COMPLETENESS,manual_glyph_review.csv,242/242,HARD,PASS,Every nonwhitespace glyph mask was opened and manually judged complete
+H010,SA1-FRESH,GLYPH_MASK_PURITY,manual_glyph_review.csv,242/242,HARD,PASS,Every nonwhitespace glyph mask was manually judged free of foreign-object pixels
+H011,SA1-FRESH,OBJECT_DENOMINATOR,manual_object_review.csv,94/94,HARD,PASS,All 74 text objects and 20 drawing or live-path objects have individual manual decisions
+H012,SA1-FRESH,PAIR_DENOMINATOR,machine_all_pairs.csv,4371/4371,HARD,PASS,Every unordered pair in C(94 2) is represented exactly once in the machine pair ledger
+H013,SA1-FRESH,CRITICAL_RELATION_DENOMINATOR,manual_critical_relation_review.csv,71/71,HARD,PASS,Every machine-critical relation has native and nearest-neighbor 8x manual review
+H014,SA1-FRESH,LIVE_MATH_RULE,math rule contacts and D020 mask,1/1,HARD,PASS,The PDF drawing-sequence fraction rule is nonempty unbroken correctly placed and semantically attached
+H015,SA1-FRESH,GRAYSCALE_DISTINCTION,grayscale_300dpi.png,PASS,HARD,PASS,Three left-panel curves remain distinguishable by line style and all right-panel information remains legible
+H016,SA1-FRESH,FULL_PAGE_INTEGRATION,full_page_300dpi.png,PASS,HARD,PASS,Figure caption following prose and example occupy the page without collision clipping or crowding
+H017,SA1-FRESH,VISUAL_HARMONY,figure crop right panel and grayscale,PASS,HARD,PASS,Panel balance spacing color hierarchy line styles and annotation placement are coherent
+H018,SA1-FRESH,R168_NUMERIC_SHORTFALLS,source font audit plus glyph contacts,30_ADVISORY,ADVISORY,PASS,Thirty small numeric glyph boxes are natural scripts punctuation delimiters or antialias extents and are readable without hard defects
+H019,SA1-FRESH,CAPTION_LABEL_PAGE_IDENTITY,source chapter and independently located PDF page,MATCH,HARD,PASS,Current label and caption resolve independently to Figure 33.7 on physical page 690 printed page 677
+H020,SA1-FRESH,PAYLOAD_COMPLETENESS,machine and manual ledger cross-check,COMPLETE,HARD,PASS,All required views ledgers masks inventories and identity records are present and the count sets are ready for the final parser

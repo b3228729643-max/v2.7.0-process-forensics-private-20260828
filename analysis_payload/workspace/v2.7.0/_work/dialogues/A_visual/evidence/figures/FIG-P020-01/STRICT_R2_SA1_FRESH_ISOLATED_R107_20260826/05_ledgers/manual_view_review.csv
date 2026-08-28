@@ -1,0 +1,9 @@
+view_id,path,native_dimensions,actually_opened,readability,clipping,harmony,manual_decision,manual_note
+FULL_PAGE_200,01_renders/full_page_200dpi.png,1654x2339,true,true,false,true,PASS,整页中图1.1宽度与版心协调；上接优化解释下接读图句和例题；无孤行大空白或分页断裂
+FIGURE_CROP_300,01_renders/figure_crop_300dpi.png,1960x475,true,true,false,true,PASS,四节点主链与反馈支线完整清晰；题注一行完整且边缘留白足够
+STANDALONE_300,01_renders/standalone_300dpi.png,1960x395,true,true,false,true,PASS,图体原生300dpi无二次缩放；四节点等宽等高并沿单一左到右路线排列
+GRAYSCALE_300,01_renders/grayscale_300dpi.png,1960x475,true,true,false,true,PASS,灰度下实线主链和虚线反馈仍可区分；文字层级与边框保持稳定
+TEXT_OVERLAY_300,01_renders/after_text_measurement_overlay_300dpi.png,1960x475,true,true,false,true,PASS,G001至G108全部有唯一红框；编号与正文轮廓位置一致且无漏对象
+GRAPHIC_OVERLAY_300,01_renders/foreground_object_overlay_300dpi.png,1960x475,true,true,false,true,PASS,14个前景路径均有唯一紫框；四边框五组箭体路径完整对账
+CAL_G053,02_extraction/punctuation_calibrations/G053_actual_pdf_font_calibration_overlay_8x_nearest.png,104x240,true,true,false,true,PASS,全角冒号实际内嵌字体glyph30581的上下两点完整；与目标字高22px一致
+CAL_G068,02_extraction/punctuation_calibrations/G068_actual_pdf_font_calibration_overlay_8x_nearest.png,120x120,true,true,false,true,PASS,小数点实际内嵌字体cid01829轮廓完整；与目标字高7px一致

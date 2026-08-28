@@ -1,0 +1,16 @@
+﻿VIEW_ID,FILE,PURPOSE,MANUAL_DECISION,MANUAL_NOTE
+V001,full_native300.png,full A4 page at native300,PASS,opened after final render; no additional hard defect observed
+V002,full_grayscale.png,full A4 page grayscale,FAIL,x2 legend continuity visible in this view; other content remains readable and unclipped
+V003,figure_native1x.png,full figure native300 crop,PASS,opened after final render; no additional hard defect observed
+V004,figure_grayscale.png,full figure grayscale,FAIL,x2 legend continuity visible in this view; other content remains readable and unclipped
+V005,legend_native1x.png,complete legend native1x,FAIL,x2 legend continuity visible in this view; other content remains readable and unclipped
+V006,legend_nearest8x.png,complete legend nearest8x,FAIL,x2 legend continuity visible in this view; other content remains readable and unclipped
+V007,legend_x2_native1x.png,x2 legend tight native1x,FAIL,x2 legend continuity visible in this view; other content remains readable and unclipped
+V008,legend_x2_nearest8x.png,x2 legend tight nearest8x,FAIL,x2 legend continuity visible in this view; other content remains readable and unclipped
+V009,legend_x2_grayscale.png,x2 legend tight grayscale,FAIL,x2 legend continuity visible in this view; other content remains readable and unclipped
+V010,legend_x2_run_overlay_native1x.png,measured run overlay native1x,FAIL,x2 legend continuity visible in this view; other content remains readable and unclipped
+V011,legend_x2_run_overlay_nearest8x.png,measured run overlay nearest8x,FAIL,x2 legend continuity visible in this view; other content remains readable and unclipped
+V012,label67_native1x.png,labels 6 and 7 native1x,PASS,opened after final render; no additional hard defect observed
+V013,label67_nearest8x.png,labels 6 and 7 nearest8x,PASS,opened after final render; no additional hard defect observed
+V014,MACHINE_REVIEW_CONTACT_SHEET.png,current-PDF navigation sheet,FAIL,x2 legend continuity visible in this view; other content remains readable and unclipped
+V015,text_bbox.html,Poppler current-PDF text/codepoint bbox extraction,PASS,opened after final render; no additional hard defect observed

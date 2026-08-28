@@ -1,0 +1,25 @@
+﻿CRITICAL_ID,OBJECTS,DESCRIPTION,CROP_X0_PT,CROP_Y0_PT,CROP_X1_PT,CROP_Y1_PT,MECHANICAL_EXPECTATION
+C01,T01/T02/B01,current-state text to node border,190.0,345.0,321.0,384.0,inspect native pixels and vector attachment/masking
+C02,T03/T04/B02,candidate text to node border,190.0,390.0,321.0,428.0,inspect native pixels and vector attachment/masking
+C03,T05/B03,ratio explanation to ratio border,92.0,435.0,420.0,462.0,inspect native pixels and vector attachment/masking
+C04,T06/M01/B03,fraction and closing brace to ratio border,165.0,455.0,345.0,495.0,inspect native pixels and vector attachment/masking
+C05,T07/T08/B04,decision text to diamond edges,138.0,500.0,373.0,582.0,inspect native pixels and vector attachment/masking
+C06,T09/T10/B05,accepted outcome text to border,72.0,578.0,201.0,619.0,inspect native pixels and vector attachment/masking
+C07,T11/T12/B06,rejected outcome text to compound border,310.0,578.0,440.0,619.0,inspect native pixels and vector attachment/masking
+C08,B01/E01,proposal connector leaves current-state boundary,245.0,373.0,290.0,398.0,inspect native pixels and vector attachment/masking
+C09,B02/E01,proposal arrowhead meets candidate boundary,245.0,385.0,290.0,402.0,inspect native pixels and vector attachment/masking
+C10,B02/E02,calculation connector leaves candidate boundary,245.0,416.0,290.0,432.0,inspect native pixels and vector attachment/masking
+C11,B03/E02,calculation arrowhead meets ratio boundary,245.0,431.0,290.0,445.0,inspect native pixels and vector attachment/masking
+C12,B03/E03,decision connector leaves ratio boundary,245.0,484.0,290.0,499.0,inspect native pixels and vector attachment/masking
+C13,B04/E03,decision arrowhead meets diamond apex,245.0,497.0,290.0,511.0,inspect native pixels and vector attachment/masking
+C14,B04/E04,accept branch leaves diamond edge,132.0,550.0,208.0,586.0,inspect native pixels and vector attachment/masking
+C15,B05/E04,accept arrowhead meets accepted node,132.0,568.0,205.0,590.0,inspect native pixels and vector attachment/masking
+C16,B04/E05,reject branch leaves diamond edge,304.0,550.0,382.0,586.0,inspect native pixels and vector attachment/masking
+C17,B06/E05,reject arrowhead meets rejected node,306.0,568.0,382.0,590.0,inspect native pixels and vector attachment/masking
+C18,B06/E06,self-loop attaches to rejected node,300.0,607.0,447.0,630.0,inspect native pixels and vector attachment/masking
+C19,T13/E01,proposal label opaque gap over vertical line,254.0,378.0,287.0,397.0,inspect native pixels and vector attachment/masking
+C20,T14/E02,calculation label opaque gap over vertical line,254.0,422.0,287.0,442.0,inspect native pixels and vector attachment/masking
+C21,T15/E03,decision label opaque gap over vertical line,254.0,489.0,287.0,507.0,inspect native pixels and vector attachment/masking
+C22,T16/E04,accept label above diagonal branch,134.0,554.0,205.0,579.0,inspect native pixels and vector attachment/masking
+C23,T17/E05,reject label above diagonal branch,307.0,554.0,378.0,579.0,inspect native pixels and vector attachment/masking
+C24,T18/E06,self-loop label above curved return path,328.0,678.0,421.0,700.0,inspect native pixels and vector attachment/masking

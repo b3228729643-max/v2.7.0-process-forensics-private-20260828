@@ -1,0 +1,26 @@
+ELEMENT_ID,PANEL_ID,ROLE,SOURCE_LINE,DECLARED_PT,GRAPHICS_SCALE,EFFECTIVE_PT,TEXT_SAMPLE,SCRIPT_CLASS,BBOX_X0,BBOX_Y0,BBOX_X1,BBOX_Y1,H_INK_PX,CLASS_MEDIAN_PX,RATIO_TO_CLASS_MEDIAN,ROLE_RATIO,TEXT_TEXT_OVERLAP_PX,TEXT_GRAPHIC_OVERLAP_PX,MIN_CLEARANCE_PX,PASS_FAIL,REASON
+T_TITLE,P1,figure_heading,22,9.9,1.0,9.9,多个有序序列,CHINESE,496,2371,743,2430,39,39,1.000,1.000,0,0,20,PASS,full Chinese line >=30px
+T_TOKEN_R1C1,P1,token_label,25,9.5,1.0,9.5,1,DIGIT,389,2468,408,2507,26,26,1.000,1.000,0,0,17,PASS,digit >=24px
+T_TOKEN_R1C2,P1,token_label,25,9.5,1.0,9.5,1,DIGIT,477,2468,497,2507,26,26,1.000,1.000,0,0,17,PASS,digit >=24px
+T_TOKEN_R1C3,P1,token_label,25,9.5,1.0,9.5,1,DIGIT,566,2468,585,2507,26,26,1.000,1.000,0,0,17,PASS,digit >=24px
+T_TOKEN_R1C4,P1,token_label,25,9.5,1.0,9.5,2,DIGIT,654,2468,674,2507,26,26,1.000,1.000,0,0,16.279,PASS,digit >=24px; hatch excluded by independent neutral-ink mask
+T_TOKEN_R1C5,P1,token_label,25,9.5,1.0,9.5,3,DIGIT,743,2468,762,2507,27,26,1.038,1.038,0,0,17,PASS,digit >=24px
+T_TOKEN_R1C6,P1,token_label,25,9.5,1.0,9.5,3,DIGIT,831,2468,851,2507,27,26,1.038,1.038,0,0,17,PASS,digit >=24px
+T_TOKEN_R2C1,P1,token_label,25,9.5,1.0,9.5,1,DIGIT,389,2592,408,2631,26,26,1.000,1.000,0,0,17,PASS,digit >=24px
+T_TOKEN_R2C2,P1,token_label,25,9.5,1.0,9.5,3,DIGIT,477,2592,497,2631,27,26,1.038,1.038,0,0,17,PASS,digit >=24px
+T_TOKEN_R2C3,P1,token_label,25,9.5,1.0,9.5,1,DIGIT,566,2592,585,2631,26,26,1.000,1.000,0,0,17,PASS,digit >=24px
+T_TOKEN_R2C4,P1,token_label,25,9.5,1.0,9.5,2,DIGIT,654,2592,674,2631,26,26,1.000,1.000,0,0,16.279,PASS,digit >=24px; hatch excluded by independent neutral-ink mask
+T_TOKEN_R2C5,P1,token_label,25,9.5,1.0,9.5,1,DIGIT,743,2592,762,2631,26,26,1.000,1.000,0,0,17,PASS,digit >=24px
+T_TOKEN_R2C6,P1,token_label,25,9.5,1.0,9.5,3,DIGIT,831,2592,851,2631,27,26,1.038,1.038,0,0,17,PASS,digit >=24px
+T_TOKEN_R3C1,P1,token_label,25,9.5,1.0,9.5,3,DIGIT,389,2716,408,2755,27,26,1.038,1.038,0,0,17,PASS,digit >=24px
+T_TOKEN_R3C2,P1,token_label,25,9.5,1.0,9.5,1,DIGIT,477,2716,497,2755,26,26,1.000,1.000,0,0,17,PASS,digit >=24px
+T_TOKEN_R3C3,P1,token_label,25,9.5,1.0,9.5,2,DIGIT,566,2716,585,2755,26,26,1.000,1.000,0,0,16.125,PASS,digit >=24px; hatch excluded by independent neutral-ink mask
+T_TOKEN_R3C4,P1,token_label,25,9.5,1.0,9.5,1,DIGIT,654,2716,674,2755,26,26,1.000,1.000,0,0,17,PASS,digit >=24px
+T_TOKEN_R3C5,P1,token_label,25,9.5,1.0,9.5,3,DIGIT,743,2716,762,2755,27,26,1.038,1.038,0,0,17,PASS,digit >=24px
+T_TOKEN_R3C6,P1,token_label,25,9.5,1.0,9.5,1,DIGIT,831,2716,851,2755,26,26,1.000,1.000,0,0,17,PASS,digit >=24px
+T_ARROW_LABEL,P1,edge_label,30-31,9.5,1.0,9.5,同一计数,CHINESE,898,2510,1055,2552,34,34,1.000,1.000,0,0,22.472,PASS,full Chinese line >=30px and text-arrow clearance >=3px
+T_COUNT_FORMULA,P1,count_vector_formula,28-29,9.5,1.0,9.5,"n=(n1,n2,n3)=(3,1,2)",MATH_MIXED,1109,2548,1530,2593,38,38,1.000,1.000,0,0,35,PASS,formula block >=22px; natural scripts audited separately >=15px
+T_CONSTRAINT,P1,support_constraint_formula,32-33,9.5,1.0,9.5,"nk in Z>=0; sum nk=N",MATH_MIXED,1118,2692,1518,2745,46,46,1.000,1.000,0,0,18,PASS,formula block >=22px; natural scripts audited separately >=15px
+T_WARNING,P1,warning_annotation,34-35,9.5,1.0,9.5,计数向量不是概率向量,CHINESE,1103,2779,1536,2822,38,38,1.000,1.000,0,0,9,PASS,full Chinese line >=30px and node-border clearance >=5px
+T_COEF_HEADER,P1,coefficient_header,36-37,9.5,1.0,9.5,产生同一计数的序列数,CHINESE,1651,2509,2051,2551,42,42,1.000,1.000,0,0,6,PASS,full Chinese line >=30px; 6px text-text bbox gap >=4px
+T_COEF_FORMULA,P1,coefficient_formula,36-37,9.5,1.0,9.5,N!/product_k nk!,MATH_MIXED,1765,2557,1938,2637,74,74,1.000,1.000,0,0,6,PASS,formula block >=22px; natural scripts audited separately >=15px

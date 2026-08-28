@@ -1,0 +1,903 @@
+% STAGE09-CHAPTER: V1-C10
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V1-C10-CH01}; CH-02=\label{struct:V1-C10-CH02}; CH-03=\label{struct:V1-C10-CH03}; CH-04=\label{struct:V1-C10-CH04}; CH-05=\label{struct:V1-C10-CH05}; CH-06=\label{struct:V1-C10-CH06}; CH-07=\label{struct:V1-C10-CH07}; CH-08=\label{struct:V1-C10-CH08}; CH-09=\label{struct:V1-C10-CH09}; CH-10=\label{struct:V1-C10-CH10}; CH-11=\label{struct:V1-C10-CH11}; CH-12=\label{struct:V1-C10-CH12}; CH-13=\label{struct:V1-C10-CH13}; CH-14=\label{struct:V1-C10-CH14}; CH-15=\label{struct:V1-C10-CH15}; CH-16=\label{struct:V1-C10-CH16}; CH-17=\label{struct:V1-C10-CH17}; CH-18=\label{struct:V1-C10-CH18}; CH-19=\label{struct:V1-C10-CH19}; CH-20=\label{struct:V1-C10-CH20}; CH-21=\label{struct:V1-C10-CH21}; CH-22=\label{struct:V1-C10-CH22}; CH-23=\label{struct:V1-C10-CH23}; CH-24=\label{struct:V1-C10-CH24}; CH-25=\label{struct:V1-C10-CH25}; CH-26=\label{struct:V1-C10-CH26}; CH-27=\label{struct:V1-C10-CH27}; CH-28=\label{struct:V1-C10-CH28}; CH-29=\label{struct:V1-C10-CH29}; CH-30=\label{struct:V1-C10-CH30}; CH-31=\label{struct:V1-C10-CH31}; CH-32=\label{struct:V1-C10-CH32}; CH-33=\label{struct:V1-C10-CH33}; CH-34=\label{struct:V1-C10-CH34}; CH-35=\label{struct:V1-C10-CH35}; CH-36=\label{struct:V1-C10-CH36}; CH-37=\label{struct:V1-C10-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V1-C10-complexity -> SLM-01-04-003
+\chapter{模型评估、选择与泛化}\label{chap:V1-C10}
+\SLChapterOpening{从损失与风险直达验证、选择和泛化界}{怎样避免把训练拟合误当成未知数据表现}{能够设计无泄漏的数据划分并解释有限类泛化界}{\cref{chap:V1-C04,chap:V1-C09}的概率与学习三要素}{数据角色或选择流程混淆时返回风险与交叉验证节}
+\index{模型评估}
+
+\index{泛化能力}
+
+
+\phantomsection\label{struct:V1-C10-CH01}
+% KNOWLEDGE-PLAN: KN-V1-C10-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}模型评估、选择与泛化学习目标固定核验“能够从损失函数严格定义期望风险、经验风险、训练误差、测试误差与泛化误差，并辨明它们各自依赖的数据”；请实际完成“从损失函数严格定义期望风险、经验风险、训练误差、测试误差与泛化误差，并辨明它们各自依赖的数据”，并用“中间结果逐项包含首目标“能够从损失函数严格定义期望风险、经验风险、训练误差、测试误差与泛化误差，并辨明它们各自依赖的数据”声明的对象、条件与结论”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能够从损失函数严格定义期望风险、经验风险、训练误差、测试误差与泛化误差，并辨明它们各自依赖的数据；
+  \item 能够用正则化和交叉验证完成模型选择，写出无数据泄漏的折叠评估流程并分析计算成本；
+  \item 能够逐步证明有限假设空间的泛化误差上界，解释样本容量、假设空间容量与置信度之间的定量关系；
+  \item 能够比较生成方法与判别方法的学习目标、信息利用方式、适用条件和局限。
+\end{itemize}}
+
+\phantomsection\label{struct:V1-C10-CH02}
+\begin{prerequisitebox}
+本章需要上一章中的监督学习三要素、训练集与假设空间，还需要条件概率、期望、独立同分布抽样、指示函数、对数、范数和优化中的最小化记号。泛化界证明将使用Hoeffding不等式与有限事件并集界。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V1-C10-CH03}
+% KNOWLEDGE-PLAN: KN-V1-C10-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}模型评估、选择与泛化先修自检固定核验“给定离散联合分布，能否计算函数$g(X,Y)$的期望”；请给定离散联合分布，实际计算函数$g(X,Y)$的期望并写出中间结果，再按“$g(X,Y)$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 给定离散联合分布，能否计算函数$g(X,Y)$的期望？
+  \item 能否解释训练集、验证集和测试集在信息流上的区别？
+  \item 若$A_1,\ldots,A_d$为事件，能否写出$\mathbb P(\bigcup_j A_j)$的并集上界？
+  \item 能否说明优化目标中的数据拟合项和复杂度惩罚项各自控制什么？
+\end{enumerate}
+未通过时回看概率论基础、统计推断与上一章的学习策略部分。
+\end{precheckbox}
+
+\phantomsection\label{struct:V1-C10-CH04}
+\begin{dependencybox}
+损失函数 $\to$ 期望风险与经验风险 $\to$ 经验风险最小化；
+训练误差与测试误差 $\to$ 过拟合诊断 $\to$ 正则化和交叉验证；
+独立同分布样本 $\to$ 集中不等式 $\to$ 有限假设空间泛化界；
+联合分布与条件分布 $\to$ 生成方法和判别方法。
+\end{dependencybox}
+
+\phantomsection\label{struct:V1-C10-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V1-C10
+\index[symbols]{z-eq-x-y--se01dd62441a6@$Z=(X,Y)$：输入输出对，服从未知分布$P$}
+\index[symbols]{t-eq-z-1-minus-ldots-minus-z-n--s0d92f332f675@$T=(z_1,\ldots,z_N)$：独立同分布训练样本}
+\index[symbols]{minus-mathcalf-minus--s3e6dd80e70d2@$\mathcal F$：候选模型或假设空间}
+\index[symbols]{l-y-f-x--s3b7e75c86330@$L(y,f(x))$：预测$f(x)$相对真实输出$y$的损失}
+\index[symbols]{r-f-minus-widehatr-minus-n-f--s60030ae27ace@$R(f),\widehat R_N(f)$：期望风险与训练样本上的经验风险}
+\index[symbols]{minus-lambda-minus-j-f--s45285a129945@$\lambda,J(f)$：正则化强度与复杂度函数}
+\index[symbols]{k-m--s4ef970f22481@$K,M$：交叉验证折数与候选配置数}
+\index[symbols]{d-minus-delta-minus--sc2e6ae019459@$d,\delta$：有限假设数与失败概率上限}
+% STAGE19-SYMBOL-INDEX-END: V1-C10
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值 & 含义\\ \midrule
+$Z=(X,Y)$ & $\mathcal X\times\mathcal Y$ & 输入输出对，服从未知分布$P$\\
+$T=(z_1,\ldots,z_N)$ & 样本序列 & 独立同分布训练样本\\
+$\mathcal F$ & 函数集合 & 候选模型或假设空间\\
+$L(y,f(x))$ & 非负实数 & 预测$f(x)$相对真实输出$y$的损失\\
+$R(f),\widehat R_N(f)$ & 非负实数 & 期望风险与训练样本上的经验风险\\
+$\lambda,J(f)$ & 非负数、非负函数 & 正则化强度与复杂度函数\\
+$K,M$ & 正整数 & 交叉验证折数与候选配置数\\
+$d,\delta$ & 正整数、$(0,1)$ & 有限假设数与失败概率上限\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{损失函数与风险函数}{sec:V1-C10-S01}
+\phantomsection\label{struct:V1-C10-CH06}
+监督学习必须回答一个先于优化的问题：什么样的预测算作好预测。损失函数度量一次预测的代价，风险函数则把这种代价放回数据分布中平均；更换损失函数就可能更换最优模型。
+
+% KNOWLEDGE-PLAN: KN-V1-C10-CONCEPT-001 L1
+\paragraph{读前自检：策略。}模型评估、选择与泛化中的策略依赖“对数损失的期望在真实条件分布处达到最小”；请据此把$R(f)$展开一次并检查其类型或边界，并直接核对它不仅要求类别预测正确，还要求概率校准合理。\par
+
+\knowledgeanchor{SLM-01-03-003}{策略}
+学习策略规定如何从假设空间$\mathcal F$中比较模型。理想策略是选择期望风险最小的模型，但未知分布使期望风险不能直接计算，因此实际策略要用样本构造可计算的替代目标，并控制替代目标与期望风险之间的偏差。
+
+\phantomsection\label{struct:V1-C10-CH07}
+\begin{definition}[损失函数与期望风险]
+设$f\in\mathcal F$，损失函数$L:\mathcal Y\times\widehat{\mathcal Y}\to[0,\infty)$。模型$f$的期望风险定义为
+\[
+R(f)=\mathbb E_{(X,Y)\sim P}\!\left[L(Y,f(X))\right].
+\]
+离散情形对所有$(x,y)$求和；连续情形对联合分布积分。期望风险也称期望损失。
+\end{definition}
+
+常用损失具有不同的统计含义：
+\[
+\begin{aligned}
+L_{01}(y,f(x))&=\mathbf 1\{y\ne f(x)\},\\
+L_2(y,f(x))&=(y-f(x))^2,\\
+L_1(y,f(x))&=|y-f(x)|,\\
+L_{\log}(y,q(\cdot\mid x))&=-\log q(y\mid x).
+\end{aligned}
+\]
+$0$--$1$损失直接对应分类错误率但通常不便优化；平方损失强调大残差；绝对损失对离群点更稳健；对数损失评价整个预测分布并对给真实类别极小概率施加强惩罚。
+
+\begin{probabilitybox}
+对数损失的期望在真实条件分布处达到最小，因此它不仅要求类别预测正确，还要求概率校准合理。平方损失下的Bayes预测是条件均值，绝对损失下是条件中位数，$0$--$1$损失下是条件众数。
+\end{probabilitybox}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C10-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：算法。}模型评估、选择与泛化以“给定训练样本$T=\{(x_i,y_i)\}_{i=1}^N$”为约束；请沿$\int L(y,f(x))\,\mathrm d\widehat P_N(x,y)$标出输入域、输出域和一次运算结果的形状，并确认推导第2步：以$\widehat P_N$替代$P$。\par
+
+\SLReviewSection{经验风险与期望风险}{sec:V1-C10-S02}
+\knowledgeanchor{SLM-01-03-004}{算法}
+算法是实现学习策略的具体计算过程。给定训练样本$T=\{(x_i,y_i)\}_{i=1}^N$，以经验分布替代未知分布，可得到经验风险
+\[
+\widehat R_N(f)=\frac1N\sum_{i=1}^N L(y_i,f(x_i)).
+\]
+在固定假设空间内，经验风险最小化选择
+\[
+\widehat f_N\in\operatorname*{arg\,min}_{f\in\mathcal F}\widehat R_N(f).
+\]
+
+\phantomsection\label{struct:V1-C10-CH08}
+\textbf{模型。}候选模型由假设空间$\mathcal F$给定；同一参数化族在不同参数处对应不同候选函数。模型规定可以表达什么，不能表达的关系无法靠优化补回。
+
+\phantomsection\label{struct:V1-C10-CH09}
+\textbf{学习策略。}经验风险最小化只比较样本拟合；结构风险最小化还加入复杂度：
+\[
+\widehat f_{\lambda}\in\operatorname*{arg\,min}_{f\in\mathcal F}
+\left\{\widehat R_N(f)+\lambda J(f)\right\},\qquad \lambda\ge0.
+\]
+前者追求样本内最优，后者用可控偏差换取较小波动和更好的样本外表现。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V1-C10-CH11}
+% CORE-DERIVATION-PLAN: KN-V1-C10-DERIVATION-001
+\SLKnowledgeBridge{把训练样本表示成经验测度，并由积分直接得到样本平均损失。}{经验分布 $\widehat P_N=N^{-1}\sum_i\delta_{(x_i,y_i)}$ 与损失 $L(y,f(x))$。}{样本数 $N\ge1$；损失在所有样本点上有定义。}{先把风险泛函中的总体分布 $P$ 替换为经验分布 $\widehat P_N$。}
+
+\begin{derivationgoalbox}
+从经验分布逐步推出经验风险，并说明为何最小化经验风险是对理想风险最小化的样本近似。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+把训练样本视为经验分布$\widehat P_N=\frac1N\sum_{i=1}^N\delta_{(x_i,y_i)}$的全部质量点；$\delta_z$表示集中在$z$处的点质量。
+\end{derivationprepbox}
+\textbf{推导第1步：}理想目标为$R(f)=\int L(y,f(x))\,\mathrm dP(x,y)$，未知量只在分布$P$。
+
+\textbf{推导第2步：}以$\widehat P_N$替代$P$，点质量积分化为有限和：
+\[
+\int L(y,f(x))\,\mathrm d\widehat P_N(x,y)
+=\frac1N\sum_{i=1}^N L(y_i,f(x_i))=\widehat R_N(f).
+\]
+
+\textbf{推导第3步：}在同一$\mathcal F$内最小化这个可计算量得到$\widehat f_N$。对固定$f$，大数定律使$\widehat R_N(f)$随$N$增加趋近$R(f)$；若$f$也由同一数据选择，还需控制整个假设空间上的偏差，这正是后续泛化界解决的问题。
+
+当$f$给出条件概率且采用对数损失时，
+\[
+\widehat R_N(f)=-\frac1N\sum_{i=1}^N\log p_f(y_i\mid x_i),
+\]
+最小化它等价于最大化条件似然。目标乘以正的常数$N$不会改变最优解。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C10-CONCEPT-003 L1
+\paragraph{读前自检：模型评估与模型选择。}模型选择固定使用训练折拟合、验证折选择，模型评估固定使用一次封存测试集；请标出候选配置锁定前后两个阶段，核对测试结果没有反馈到候选或超参数选择。\par
+
+\SLTeachSection{训练误差与测试误差}{sec:V1-C10-S03}
+\knowledgeanchor{SLM-01-04-001}{模型评估与模型选择}
+模型评估针对已经确定的学习流程估计样本外表现；模型选择则在候选模型、超参数或特征方案之间作决定。若用测试集反复挑选候选，测试集已经参与选择，所得数值不再是独立的最终评估。
+
+% KNOWLEDGE-PLAN: KN-V1-C10-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：训练误差与测试误差。}对训练误差与测试误差，条件“对独立测试集$T'=\{(x'_j,y'_j)\}_{j=1}^{N'}$”不可省；请把$e_{\mathrm{test}}(\widehat f)$展开一次并检查其类型或边界，再用展开后的量满足定义中的域、维数或符号限制作检查。\par
+
+\knowledgeanchor{SLM-01-04-002}{训练误差与测试误差}
+% KNOWLEDGE-PLAN: KN-V1-C10-DEFINITION-002 L1
+\paragraph{读前自检：训练误差与测试误差。}训练误差与测试误差把问题限定在“对独立测试集$T'=\{(x'_j,y'_j)\}_{j=1}^{N'}$”；请把$e_{\mathrm{test}}(\widehat f)$展开一次并检查其类型或边界，检查是否得到设学习算法从训练集得到$\widehat f$。\par
+
+\begin{definition}[训练误差与测试误差]
+设学习算法从训练集得到$\widehat f$。训练误差是$\widehat f$在训练集上的平均损失。对独立测试集$T'=\{(x'_j,y'_j)\}_{j=1}^{N'}$，测试误差为
+\[
+e_{\mathrm{test}}(\widehat f)=\frac1{N'}\sum_{j=1}^{N'}L(y'_j,\widehat f(x'_j)).
+\]
+只有测试集未参与拟合、超参数选择、阈值选择和特征选择时，它才是有效的样本外评估。
+\end{definition}
+
+在$0$--$1$损失下，测试错误率为$N'^{-1}\sum_j\mathbf1\{y'_j\ne\widehat f(x'_j)\}$，准确率为$N'^{-1}\sum_j\mathbf1\{y'_j=\widehat f(x'_j)\}$，二者之和为1。训练误差很大常提示欠拟合、优化失败或特征不足；训练误差很小而测试误差明显较大常提示过拟合，但差距也受样本随机性影响。
+
+\phantomsection\label{struct:V1-C10-CH18}
+\begin{example}[训练—测试错误率差距]\label{exm:V1-C10-generalization-gap}
+某分类器训练集上有200个样本并错分10个，独立测试集上有80个样本并错分12个。计算训练错误率、测试错误率及二者之差，并解释其边界。
+\end{example}
+\SLExampleSolutionHeading{exm:V1-C10-generalization-gap}
+\begin{solution}
+\SLReadTranslation{分别把训练、测试错分数除以各自样本数，并按题意计算“测试错误率减训练错误率”；最后解释这个样本差距能说明什么。}
+\SolGiven 训练集大小为$200$、错分$10$；独立测试集大小为$80$、错分$12$；差值方向固定为$\widehat R_{\rm te}-\widehat R_{\rm tr}$。
+\SLMethodTrigger{错误率是错分频数除以对应样本数；两个样本量不同，不能直接比较错分个数。}
+\SolPlan 先分别计算两个错误率，再作测试减训练，并用乘回样本数和概率边界复核。
+\SolDerive
+\[
+\begin{aligned}
+\widehat R_{\rm tr}&=\frac{10}{200}=0.05,\\
+\widehat R_{\rm te}&=\frac{12}{80}=0.15,\\
+\widehat R_{\rm te}-\widehat R_{\rm tr}&=0.15-0.05=0.10.
+\end{aligned}
+\]
+\SolCheck $0.05\times200=10$、$0.15\times80=12$，均恢复原错分数；两个错误率在$[0,1]$内，差$0.10$也属于允许的$[-1,1]$范围。
+\SolAnswer 训练错误率为$5\%$，测试错误率为$15\%$，测试减训练的差为$10$个百分点；它只是本次独立划分的样本估计，可提示泛化差距，但不能单独证明模型必然过拟合。
+\end{solution}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C10-CONCEPT-004 L1
+\paragraph{读前自检：过拟合与模型选择。}若增加模型复杂度后训练误差下降而独立验证误差上升，请据此判定过拟合，并核对模型选择应比较验证风险而不是继续最小化训练误差。\par
+
+\SLTeachSection{过拟合、正则化与模型选择}{sec:V1-C10-S04}
+\knowledgeanchor{SLM-01-04-003}{过拟合与模型选择}
+过拟合是模型把训练样本中的偶然波动也当作可推广规律，表现为训练误差继续降低而样本外误差反而上升。模型选择的目标不是找到训练误差最小的候选，而是找到预期样本外风险较小的学习流程。
+
+% KNOWLEDGE-PLAN: KN-V1-C10-CONCEPT-005 L1
+\paragraph{读前自检：正则化与交叉验证。}对固定候选正则强度表，训练阶段把$\lambda J(f)$加入经验风险，选择阶段只比较各候选的折外验证损失；请核对正则化改变训练准则，而交叉验证决定最终$\lambda$。\par
+
+\knowledgeanchor{SLM-01-05-001}{正则化与交叉验证}
+正则化通过改变拟合目标控制复杂度，交叉验证通过重复样本外评估选择复杂度。前者进入训练准则，后者进入选择准则；实践中常由交叉验证选择正则化强度。
+
+% KNOWLEDGE-PLAN: KN-V1-C10-CONCEPT-006 L1
+\paragraph{读前自检：正则化。}正则化经验风险为$N^{-1}\sum_iL(y_i,f(x_i))+\lambda J(f)$，其中$J(f)\ge0$；请比较$\lambda=0$与$\lambda>0$的同一候选，核对$\ell_2$光滑而$\ell_1$在零点需次梯度。\par
+
+\knowledgeanchor{SLM-01-05-002}{正则化}
+\begin{definition}[正则化经验风险]
+给定复杂度函数$J(f)\ge0$和$\lambda\ge0$，正则化学习求解
+\[
+\min_{f\in\mathcal F}\left\{\frac1N\sum_{i=1}^N L(y_i,f(x_i))+\lambda J(f)\right\}.
+\]
+$\lambda=0$退化为经验风险最小化；$\lambda$增大时，复杂度惩罚相对更重要。
+\end{definition}
+
+线性回归中常见$J(w)=\tfrac12\|w\|_2^2$与$J(w)=\|w\|_1$。$\ell_2$正则连续收缩全部系数，$\ell_1$正则的折角可把部分系数压到零。惩罚量必须结合特征尺度解释，未标准化的特征会受到不一致的有效惩罚。
+
+\phantomsection\label{struct:V1-C10-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}$\ell_2$约束集边界光滑，最优等高线通常在非坐标轴位置相切；$\ell_1$约束集带有坐标轴尖角，等高线更可能在尖角处首次接触，从而产生零系数。正则化也可理解为限制搜索区域。
+\end{geometrybox}
+
+\phantomsection\label{struct:V1-C10-CH15}
+\begin{probabilitybox}
+平方损失配合$\ell_2$惩罚对应高斯噪声下的高斯参数先验；$\ell_1$惩罚对应Laplace型先验。最大后验估计的负对数目标由负对数似然与负对数先验相加，因此正则化可解释为对复杂参数赋予较小先验权重。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V1-C10-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}$\ell_2$惩罚提高光滑目标的曲率并缓解病态；$\ell_1$目标在零点不可微，需用次梯度、近端或坐标方法。正则化强度既改变统计偏差与方差，也改变数值条件，不能只按优化收敛速度选择。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V1-C10-CH17}
+\begingroup
+\tikzset{every picture/.append style={scale=1.12}}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C10/fig_v1_c10_complexity.tex}
+\endgroup
+在\cref{fig:V1-C10-complexity}上选择容量时只使用验证曲线和预先约定的规则；训练误差持续下降并不构成增大容量的证据。灰度阅读时按线型和标记识别：实线表示训练误差，虚线表示验证误差，金色实心点和竖向参考线共同标出按预先约定规则选中的复杂度。候选锁定后还需在未参与选择的数据上报告一次最终误差。
+
+\phantomsection\label{struct:V1-C10-CH32}
+\begin{example}[验证误差选择多项式次数]\label{exm:V1-C10-model-selection}
+候选多项式次数为$1,3,9$，验证均方误差分别为$0.42,0.18,0.31$，训练均方误差分别为$0.40,0.12,0.01$。按验证误差选择次数。
+\end{example}
+\phantomsection\label{struct:V1-C10-CH33}
+\SLExampleSolutionHeading{exm:V1-C10-model-selection}
+\begin{solution}
+\SLReadTranslation{三个次数要按同一验证协议下的验证均方误差比较；训练误差只用于观察拟合程度，不能替代验证误差作次数选择。}
+\SolGiven 候选域为$\{1,3,9\}$，三者使用同一训练/验证划分和均方误差口径；最小验证误差规则及并列时的低复杂度优先规则在查看结果前固定，测试集保持封存。
+\SLMethodTrigger{逐项比较$\widehat R_{\rm val}(d)$并取最小者；再用最优值与次优值之差核对是否触发并列规则。}
+\SolPlan 列出训练与验证误差向量，求验证误差的唯一最小点，最后检查选择过程没有读取测试结果。
+\SolDerive
+令候选域$\mathcal D=\{1,3,9\}$，各模型只在训练子集拟合，验证子集仅用于选择。计算为
+\[
+\begin{aligned}
+\bigl(\widehat R_{\rm tr}(d)\bigr)_{d\in\mathcal D}
+  &=(0.40,0.12,0.01),\\
+\bigl(\widehat R_{\rm val}(d)\bigr)_{d\in\mathcal D}
+  &=(0.42,0.18,0.31),\\
+d^\star
+  &\in\arg\min_{d\in\mathcal D}\widehat R_{\rm val}(d)=\{3\}.
+\end{aligned}
+\]
+独立比较可见$0.18<0.31<0.42$，最优验证误差与次优值的间隔为$0.31-0.18=0.13>0$，所以并列规则不会被触发。九次模型训练误差最低却验证误差上升；一次划分下的这一现象仍需重复划分或交叉验证检查稳定性。
+\SolCheck 选择只读取训练/验证结果，$d=3$的验证误差唯一最小；测试集未参与次数选择，最终只对锁定模型评估一次。
+\SolAnswer 按验证误差规则唯一选择三次模型$d=3$；训练误差更低的九次模型不改变这一结论。
+\end{solution}
+
+
+\SLTeachSection{交叉验证}{sec:V1-C10-S05}
+\knowledgeanchor{SLM-01-05-003}{交叉验证}
+简单留出法把数据分为训练、验证与测试三部分；\kFold{}交叉验证把用于开发的数据划为$K$个互不相交折，每轮用一个折验证、其余折训练，最后平均验证损失；当$K=N$时称留一交叉验证。分类问题通常使用分层划分维持类别比例，分组或时间相关数据则必须按组或时间切分，不能假设样本可任意打乱。
+
+\phantomsection\label{struct:V1-C10-CH10}
+学习算法不仅包含单次模型拟合，还包含预处理、特征选择、超参数搜索和决策阈值选择。所有从数据估计的步骤都必须放入训练折内部，否则验证折的信息会提前进入模型。
+
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C10/UFIG-P158-01.tex}
+
+\phantomsection\label{struct:V1-C10-CH19}
+\phantomsection\label{struct:V1-C10-CH20}
+\phantomsection\label{struct:V1-C10-CH21}
+% KNOWLEDGE-PLAN: KN-V1-C10-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：无泄漏的 模型选择：执行契约。}无泄漏的 模型选择输入“开发数据$D$、有序候选配置$\Lambda$、完整训练流程、折数$K$、冻结划分/失败/并列规则与全局拟合预算$B_{\rm fit}$”，条件“$K\ge2$、候选与数据非空，划分规则可执行，损失/硬约束/失败和并列规则预先冻结，$B_{\rm fit}\in\mathbb N_0$”；请执行“单折拟合、预测、损失与硬约束诊断完成后才原子写入该折记录”，以“全部候选--折任务及一次重训完成、拟合预算不足或首次不可恢复失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V1-C10-ALGORITHM_IDEA-004 L2
+\begin{keypointbox}[title={无泄漏的 模型选择：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={开发数据$D$、有序候选配置$\Lambda$、完整训练流程、折数$K$、冻结划分/失败/并列规则与全局拟合预算$B_{\rm fit}$},
+  output={最后合法折记录、可比较配置集、选中配置与全开发集模型或未定义标志、实际拟合/评价/候选计数、状态与最终诊断},
+  preconditions={$K\ge2$、候选与数据非空，划分规则可执行，损失/硬约束/失败和并列规则预先冻结，$B_{\rm fit}\in\mathbb N_0$},
+  initialization={在查看得分前生成互斥折，置记录为未评价、$f_{\rm done}=e_{\rm done}=c_{\rm done}=0$并清空可比较集},
+  loop={按候选和折的固定次序，只用训练折拟合完整流水线并在对应验证折形成损失候选},
+  update={单折拟合、预测、损失与硬约束诊断完成后才原子写入该折记录；候选全折完成后才原子加入可比较集},
+  domain={各折互斥且并为$D$；所有可比较配置恰有$K$个同口径有限验证记录；测试集不属于本接口},
+  failure={输入/规则非法返回$\mathtt{invalid\_input}$；随机划分源失败返回$\mathtt{random\_source\_failure}$；拟合/评价非有限、无可比较配置或最终重训失败返回$\mathtt{numerical\_failure}$并保留最后合法记录},
+  stop={全部候选--折任务及一次重训完成、拟合预算不足或首次不可恢复失败时停止},
+  budget={至多$\min(B_{\rm fit},MK+1)$次完整拟合；完整成功需要$MK$个折拟合和一次全开发集重训},
+  status={$\mathtt{completed}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$f_{\rm done}$计实际拟合调用，$e_{\rm done}$计实际提交折评价，$c_{\rm done}$计实际完成全折候选},
+  diagnostics={划分摘要、逐折失败、有效折数、加权均值/离散程度、并列集合、重训结果和预算余量},
+  complexity={完整扫描含$MK$次折训练评价和一次重训；存储折记录$O(MK)$，训练器自身成本另计}
+}
+\begin{algorithm}[H]
+\caption{无泄漏的\kFold{}模型选择}\label{alg:V1-C10-kfold}
+\KwIn{开发数据$D$、候选集合$\Lambda$、折数$K$与完整训练流程$A_\lambda$}
+\KwOut{选中配置$\lambda^*$、全开发集重训模型与折外记录}
+在查看任何得分前冻结划分、预处理、损失、失败与并列规则，并生成互斥折$D_1,\ldots,D_K$\;
+\For{每个$\lambda\in\Lambda$}{只用$D\setminus D_k$拟合全部数据依赖步骤，再在$D_k$计算折外损失，遍历$k=1,\ldots,K$\;}
+只比较具有同口径$K$个合法折外记录的候选，按冻结规则选择$\lambda^*$\;
+用$\lambda^*$在全部$D$上重训一次；测试集始终不进入本协议\;
+返回$\lambda^*$、重训模型与完整折记录；失败、预算和随机源分支按进阶契约保留上一合法记录\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{核心五步是冻结规则、折内拟合、折外评价、同口径选择和全开发集重训；逐折失败、预算、随机源和原子记录留在进阶契约}
+
+\textbf{收敛与非收敛说明。}外层模型选择枚举有限候选与有限折，不形成趋于极限的参数序列，因此无需设置外层渐近收敛判据。若某折的内层训练未收敛或产生非有限指标，该折和配置按失败处理；全部配置失败时返回“无可行候选”，不得用测试集补选。
+
+\phantomsection\label{struct:V1-C10-CH22}
+\textbf{初始化。}划分规则、随机种子、指标方向、评价损失、硬约束、失败政策和并列规则应在观察验证结果前固定；每个折的预处理参数从该折训练部分重新估计。
+
+\phantomsection\label{struct:V1-C10-CH23}
+\textbf{更新规则。}每个样本恰作为验证样本一次，但不同折的训练集高度重叠，所以折外损失一般相关，不能称为独立观测或据此套用独立样本标准误。每完成一折就同时写入$E_{mk}$与有效标志$V_{mk}$；折容量不等时按验证样本数加权。
+
+\phantomsection\label{struct:V1-C10-CH24}
+\textbf{停止条件。}枚举完所有候选和折即停止；训练失败、非有限损失、硬约束违反或缺折不应被静默忽略，也不得通过仅平均成功折让有效折数不同的配置互相比较。
+
+\phantomsection\label{struct:V1-C10-CH25}
+\textbf{统计条件。}算法在有限循环后必然终止，但交叉验证估计的可靠性还依赖划分与部署数据机制一致。候选集合不断根据同一验证结果扩张，会使选择再次过拟合。
+
+\phantomsection\label{struct:V1-C10-CH26}
+\phantomsection\label{struct:V1-C10-CH27}
+% KNOWLEDGE-PLAN: KN-V1-C10-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：交叉验证。}把模型评估、选择与泛化中的交叉验证放在“复杂度假设”下考察：由$M,K$的总成本剥离一次迭代或一次样本因子，并检查并行折按并发数增加模型内存。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界假设$M,K$有限，折划分预先生成并顺序执行；$C_{\mathrm{fit}}$与$C_{\mathrm{eval}}$已经包含该折内预处理、模型训练和评价的完整实际成本。并行执行、缓存特征或折大小不等会改变常数与内存，应按并发数和实际折容量计数。
+\textbf{训练复杂度：}设样本数为$N$、特征数为$p$，单次训练和评价成本为$C_{\mathrm{fit}}(n,p)$、$C_{\mathrm{eval}}(n,p)$。$M$个候选的\kFold{}验证约为
+$O\!\left(MK[C_{\mathrm{fit}}((1-1/K)N,p)+C_{\mathrm{eval}}(N/K,p)]\right)$，另加一次全数据重训。\textbf{预测复杂度：}部署时只使用选中并重训的模型，单样本成本为$C_{\mathrm{pred}}(p)$，不再乘$M$或$K$。\textbf{存储复杂度：}顺序执行时除数据外需一个模型和$M\times K$得分，额外为$O(S_{\mathrm{model}}+MK)$；并行折按并发数增加模型内存。
+\end{complexitybox}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C10-CONCEPT-011 L1
+\paragraph{读前自检：泛化能力。}泛化误差把训练集$T$学习出的随机模型$\widehat f_T$固定在条件中；请写出$R(\widehat f_T)=\mathbb E_{(X,Y)\sim P}[L(Y,\widehat f_T(X))\mid T]$，并核对新样本与$T$独立时，更换$T$仍可能改变$\widehat f_T$及其风险。\par
+
+\SLAdvancedSection{泛化能力与泛化界}{sec:V1-C10-S06}
+\knowledgeanchor{SLM-01-06-001}{泛化能力}
+泛化能力是学习方法由有限训练数据得到模型后，对同一数据机制产生的未知样本进行预测的能力。测试误差是有限样本估计；理论分析关注风险与经验风险之间的随机偏差。
+
+\knowledgeanchor{SLM-01-06-002}{泛化误差}
+对训练集$T$学习得到的随机模型$\widehat f_T$，其泛化误差定义为
+\[
+R(\widehat f_T)=\mathbb E_{(X,Y)\sim P}\!\left[L(Y,\widehat f_T(X))\mid T\right].
+\]
+这里的新样本与训练集独立，条件在$T$上强调模型已经由训练数据确定。不同训练集会产生不同$\widehat f_T$和不同风险。
+
+% KNOWLEDGE-PLAN: KN-V1-C10-CONCEPT-013 L1
+\paragraph{读前自检：泛化误差上界。}从泛化误差上界的条件“好的上界随$N$增加而减小，并随假设空间容量或更高置信要求而增大”出发，请把$\widehat R_N(f)$展开一次并检查其类型或边界；所得量应符合展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-01-06-003}{泛化误差上界}
+泛化误差上界以高概率把不可见的$R(f)$控制在可计算的$\widehat R_N(f)$与复杂度项之和内。好的上界随$N$增加而减小，并随假设空间容量或更高置信要求而增大。
+
+% KNOWLEDGE-PLAN: KN-V1-C10-CONCEPT-014 L1
+\paragraph{读前自检：泛化误差上界：有限二类分类假设空间。}泛化误差上界：有限二类分类假设空间依赖“设$\mathcal F=\{f_1,\ldots,f_d\}$是含$d$个函数的二类分类假设空间”；请据此标出$\mathcal F=\{f_1,\ldots,f_d\}$两侧的形状并完成一次乘法或正交检查，并直接核对则对任意$0<\delta<1$，至少以概率$1-\delta$。\par
+
+\knowledgeanchor{SLM-01-01-002}{泛化误差上界：有限二类分类假设空间}
+\phantomsection\label{struct:V1-C10-CH12}
+\begin{theorem}[有限假设空间的泛化误差上界]\label{thm:V1-C10-finite-bound}
+设$\mathcal F=\{f_1,\ldots,f_d\}$是含$d$个函数的二类分类假设空间，训练样本独立同分布，损失为$0$--$1$损失。则对任意$0<\delta<1$，至少以概率$1-\delta$，对所有$f\in\mathcal F$同时成立
+\[
+R(f)\le \widehat R_N(f)+\varepsilon(d,N,\delta),
+\qquad
+\varepsilon(d,N,\delta)=
+\sqrt{\frac{\log d+\log(1/\delta)}{2N}}.
+\]
+概率取自训练样本的随机抽取。
+\end{theorem}
+
+\phantomsection\label{struct:V1-C10-CH13}
+% DERIVATION-CHECK: step-1; step-2; step-3
+% CORE-DERIVATION-PLAN: KN-V1-C10-DERIVATION-002
+\SLKnowledgeBridge{把固定模型的偏差界升级为对整个有限候选类同时成立的结论。}{有限候选类 $\mathcal F$、有界损失 $L\in[0,1]$ 与数据依赖选择结果 $\widehat f\in\mathcal F$。}{样本独立同分布；$\mathcal F$ 在应用界前固定且有限。}{先对每个固定 $f\in\mathcal F$ 应用 Hoeffding 界，再对坏事件取并集。}
+
+\begin{derivationgoalbox}
+从固定函数的Hoeffding偏差界，经过有限并集界，逐步推出可用于数据依赖选择结果的同时泛化界。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+固定$f$时，变量$L(Y_i,f(X_i))$独立且位于$[0,1]$，其均值为$R(f)$，样本均值为$\widehat R_N(f)$。
+\end{derivationprepbox}
+% KNOWLEDGE-PLAN: KN-V1-C10-PROOF-001 L1
+\paragraph{读前自检：证明：有限假设空间的泛化误差上界。}有限假设空间的泛化误差上界以“推导第1步：固定一个函数”为约束；请补出$\epsilon>0$到下一关系的一步不等式或求导，并确认因为结论同时覆盖全部$f$，所以也覆盖由同一训练集选出的随机函数。\par
+
+\begin{proof}
+\textbf{推导第1步：固定一个函数。}由Hoeffding不等式的单侧形式，对任意$\epsilon>0$，
+\[
+\mathbb P\!\left(R(f)-\widehat R_N(f)\ge\epsilon\right)
+\le \exp(-2N\epsilon^2).
+\]
+
+\textbf{推导第2步：同时控制有限集合。}令$A_f=\{R(f)-\widehat R_N(f)\ge\epsilon\}$。并集界给出
+\[
+\mathbb P\!\left(\exists f\in\mathcal F:A_f\right)
+\le\sum_{f\in\mathcal F}\mathbb P(A_f)
+\le d\exp(-2N\epsilon^2).
+\]
+因此，以至少$1-d\exp(-2N\epsilon^2)$的概率，没有任何$f$违反$R(f)<\widehat R_N(f)+\epsilon$。
+
+\textbf{推导第3步：换成置信参数。}令$\delta=d\exp(-2N\epsilon^2)$，取对数并解出
+\[
+\epsilon=\sqrt{\frac{\log d+\log(1/\delta)}{2N}}.
+\]
+把该值代回上一步即得同时上界。因为结论同时覆盖全部$f$，所以也覆盖由同一训练集选出的随机函数。
+\end{proof}
+
+\begin{corollary}[经验风险最小化解的上界]
+若$\widehat f_N\in\operatorname*{arg\,min}_{f\in\mathcal F}\widehat R_N(f)$，则在定理的同一事件上
+\[
+R(\widehat f_N)\le\widehat R_N(\widehat f_N)
++\sqrt{\frac{\log d+\log(1/\delta)}{2N}}.
+\]
+\end{corollary}
+% KNOWLEDGE-PLAN: KN-V1-C10-PROOF-002 L1
+\paragraph{读前自检：证明：经验风险最小化解的上界。}经验风险最小化上界的高概率事件对有限类$\mathcal F$中所有$f$同时成立；请在该事件中令$f=\widehat f_N$，核对随机选出的$\widehat f_N\in\mathcal F$仍受同一上界约束，并说明单个预固定$f$的界不能这样代入。\par
+
+\begin{proof}
+定理的事件对$\mathcal F$中的每个函数同时成立，而$\widehat f_N$无论由样本选成哪一个都属于$\mathcal F$，故可直接把$f$替换为$\widehat f_N$。只对预先固定的单个$f$成立的界不能做这一步，这正是并集界不可缺少的原因。
+\end{proof}
+
+上界揭示三种单调关系：$N$增大使置信项按$N^{-1/2}$下降；$d$增大只通过$\sqrt{\log d}$进入；$\delta$减小意味着要求更高置信度，因而$\log(1/\delta)$增大。该结果只处理有限假设空间和有界损失，对无限空间需要其他容量刻画。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C10-CONCEPT-015 L1
+\paragraph{读前自检：生成模型与判别模型。}对生成模型与判别模型，条件“生成方法学习联合分布$P(X,Y)$或等价分解$P(Y)P(X\mid Y)$”不可省；请将$P(Y\mid X)=\frac{P(X,Y)}{P(X)}$左端按正文定义展开一层，再逐项对齐右端，再用两端运算均有定义、类型一致且化为同一结果作检查。\par
+
+\SLAdvancedSection{生成方法与判别方法}{sec:V1-C10-S07}
+\knowledgeanchor{SLM-01-07-001}{生成模型与判别模型}
+\begin{definition}[生成方法与判别方法]
+生成方法学习联合分布$P(X,Y)$或等价分解$P(Y)P(X\mid Y)$，预测时由
+\[
+P(Y\mid X)=\frac{P(X,Y)}{P(X)}
+\]
+得到条件分布。判别方法直接学习$P(Y\mid X)$或决策函数$Y=f(X)$，不要求给出输入的边缘分布。
+\end{definition}
+
+生成模型描述不同类别如何产生输入，因而可以采样、处理部分隐变量或利用未标注结构；但对$P(X\mid Y)$的错误假设会影响最终判别。判别模型把表示能力直接用于预测边界，通常允许灵活特征并获得较好的预测精度；但它一般不能恢复完整联合分布。
+
+\phantomsection\label{struct:V1-C10-CH28}
+\phantomsection\label{struct:V1-C10-CH29}
+\begin{applicabilitybox}
+\textbf{适用条件：}需要模拟数据、补全缺失变量、显式建模类别机制或联合使用标注与未标注信息时，生成方法更自然；目标只是在给定输入后准确预测，且有充分标注数据和灵活特征时，判别方法常更直接。\textbf{局限性：}生成方法依赖联合分布假设，判别方法缺少输入机制模型；实际选择还受样本量、模型错设、计算成本和校准需求影响。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V1-C10-CH30}
+% KNOWLEDGE-PLAN: KN-V1-C10-BOUNDARY-003 L1
+\paragraph{读前自检：常见错误与误用边界：生成方法与判别方法。}生成方法与判别方法把问题限定在“边界框首项禁止把折内训练误差当作折外验证误差”；请把固定错误“把折内训练误差当作折外验证误差”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，检查是否得到改写后的运算或判断有定义，且不再触发“把折内训练误差当作折外验证误差”。\par
+
+\begin{warningbox}
+典型误用包括：把损失与评价指标混为一谈；用训练集评价泛化；用测试集选择超参数；在划分前用全数据拟合预处理；把折内训练误差当作折外验证误差；把高概率上界误读为每个数据集上的确定等式；在有限类上界中遗漏并集界产生的$\log d$；认为所有学习条件概率的模型都是生成模型。
+\end{warningbox}
+
+\phantomsection\label{struct:V1-C10-CH31}
+% KNOWLEDGE-PLAN: KN-V1-C10-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：生成方法与判别方法。}在“对比表首个数据行是“学习对象｜$P(X,Y)$或$P(Y)P(X\mid Y)$｜$P(Y\mid X)$或$f(X)$””成立时处理生成方法与判别方法：请按列复述“学习对象｜$P(X,Y)$或$P(Y)P(X\mid Y)$｜$P(Y\mid X)$或$f(X)$”中的对象、假设与结论，并以各列均对应首行对象“学习对象”，且未与表中下一行互换判定结果。\par
+
+\begin{comparisonbox}
+\textbf{概念对比：}\par\smallskip
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 比较维度 & 生成方法 & 判别方法\\ \midrule
+学习对象 & $P(X,Y)$或$P(Y)P(X\mid Y)$ & $P(Y\mid X)$或$f(X)$\\
+预测依据 & 由联合分布归一化得到后验 & 直接输出后验或决策\\
+附加能力 & 采样、输入似然、部分缺失机制 & 灵活边界、直接优化预测目标\\
+主要风险 & 联合模型错设传播到预测 & 缺乏完整数据生成解释\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V1-C10-CH34}
+\phantomsection\label{struct:V1-C10-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S02-02}
+证明独立样本上的条件对数似然最大化与平均对数损失最小化等价。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S02-02}
+\begin{chapterexercisesolution}{ex:V1-C10-S02-02}
+固定独立训练样本$D=\{(x_i,y_i)\}_{i=1}^{N}$，$N\ge1$，并令
+$p_f(y_i\mid x_i)>0$。条件独立性与对数单调性给出
+\[
+\begin{aligned}
+\mathcal L_D(f)
+  &=\prod_{i=1}^{N}p_f(y_i\mid x_i),\\
+\arg\max_{f\in\mathcal F}\mathcal L_D(f)
+  &=\arg\max_{f\in\mathcal F}
+    \sum_{i=1}^{N}\log p_f(y_i\mid x_i)\\
+  &=\arg\min_{f\in\mathcal F}
+    \left[-\frac1N\sum_{i=1}^{N}\log p_f(y_i\mid x_i)\right].
+\end{aligned}
+\]
+方括号内正是平均对数损失。若某个已发生标签的概率为零，则约定$\log0=-\infty$，相应负对数损失为$+\infty$；等价关系在扩展实数意义下仍成立。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S01-01}
+二分类标签为$\{0,1\}$。某输入处$\mathbb P(Y=1\mid X=x)=0.7$。分别求在$0$--$1$损失下预测0与预测1的条件风险，并给出最优预测。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S01-01}
+\begin{chapterexercisesolution}{ex:V1-C10-S01-01}
+动作域为$\mathcal A=\{0,1\}$，损失为$L(y,a)=\mathbf1\{y\ne a\}$。因
+$P(Y=1\mid x)=0.7$，
+\[
+\begin{aligned}
+\rho(0\mid x)&=P(Y=1\mid x)=0.7,\\
+\rho(1\mid x)&=P(Y=0\mid x)=1-0.7=0.3,\\
+\arg\min_{a\in\mathcal A}\rho(a\mid x)&=\{1\},&
+\min_{a\in\mathcal A}\rho(a\mid x)&=0.3.
+\end{aligned}
+\]
+所以最优类别输出为$1$；概率$0.7$是决策依据，不是类别标签本身。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S01-02}
+随机输出$Y$取0和2的概率分别为$0.25$和$0.75$。在常数预测$a$下，比较$a=1$与$a=1.5$的平方损失风险。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S01-02}
+\begin{chapterexercisesolution}{ex:V1-C10-S01-02}
+随机变量$Y$的支持集为$\{0,2\}$，故二阶矩有限。对$a\in\mathbb R$，
+\[
+\begin{aligned}
+R(1)
+  &=\tfrac14(0-1)^2+\tfrac34(2-1)^2=1,\\
+R(1.5)
+  &=\tfrac14(0-1.5)^2+\tfrac34(2-1.5)^2
+    =\tfrac34,\\
+\mathbb E[Y]&=0\cdot\tfrac14+2\cdot\tfrac34=\tfrac32,\\
+R(a)&=\operatorname{Var}(Y)+(a-\mathbb E Y)^2.
+\end{aligned}
+\]
+因此$a=1.5$风险更小，并且它是全部实数常数预测中的唯一最优点。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S01-03}
+说明为什么对数损失不能接受真实类别概率为0，并计算真实类别概率从$0.8$降至$0.2$时损失的增量。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S01-03}
+\begin{chapterexercisesolution}{ex:V1-C10-S01-03}
+真实类别的预测概率满足$q\in[0,1]$，对数损失按扩展值定义：
+\[
+\begin{aligned}
+\ell(q)&=-\log q,\qquad q\in(0,1],\\
+\ell(0)&:=\lim_{q\downarrow0}-\log q=+\infty,\\
+\ell(0.2)-\ell(0.8)
+  &=-\log0.2+\log0.8\\
+  &=\log\frac{0.8}{0.2}=\log4.
+\end{aligned}
+\]
+因此给已发生事件零概率会得到无限损失，且从$0.8$降至$0.2$的损失增量为$\log4$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S02-01}
+某二分类器在8个训练样本上错分2个，在另外5个独立样本上错分2个。求两个样本集上的$0$--$1$经验风险，并说明能否把它们直接合并为不加权平均。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S02-01}
+\begin{chapterexercisesolution}{ex:V1-C10-S02-01}
+两组样本互不相交，容量分别为$N_1=8,N_2=5$。在$0$--$1$损失下，
+\[
+\begin{aligned}
+\widehat R_1&=\frac{2}{8}=\frac14,\\
+\widehat R_2&=\frac{2}{5}=0.4,\\
+\widehat R_{1\cup2}
+  &=\frac{N_1\widehat R_1+N_2\widehat R_2}{N_1+N_2}\\
+  &=\frac{8(1/4)+5(2/5)}{13}
+    =\frac4{13}.
+\end{aligned}
+\]
+不加权平均会给容量不同的两组相同权重，因而不等于合并后逐样本平均。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S02-03}
+模型$A,B$的经验风险分别为$0.12,0.09$，复杂度分别为$2,5$。结构风险取$\widehat R+\lambda J$。求选择$A$的$\lambda$范围。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S02-03}
+\begin{chapterexercisesolution}{ex:V1-C10-S02-03}
+正则化参数的定义域为$\lambda\ge0$。两候选的目标值满足
+\[
+\begin{aligned}
+Q_A(\lambda)&=0.12+2\lambda,\\
+Q_B(\lambda)&=0.09+5\lambda,\\
+Q_A(\lambda)\le Q_B(\lambda)
+  &\Longleftrightarrow 0.03\le3\lambda\\
+  &\Longleftrightarrow \lambda\ge0.01.
+\end{aligned}
+\]
+故$\lambda>0.01$唯一选择$A$，$0\le\lambda<0.01$唯一选择$B$；$\lambda=0.01$时二者并列，尚需预先规定并列规则。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S03-01}
+一个模型在测试集中对40个样本预测正确34个。求测试错误率与准确率，并核对互补关系。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S03-01}
+\begin{chapterexercisesolution}{ex:V1-C10-S03-01}
+测试集容量$N_{\rm te}=40>0$，且每个样本恰分为正确或错误两类。于是
+\[
+\begin{aligned}
+n_{\rm err}&=40-34=6,\\
+\widehat R_{\rm te}
+  &=\frac{n_{\rm err}}{N_{\rm te}}=\frac6{40}=0.15,\\
+\widehat{\rm Acc}_{\rm te}
+  &=\frac{34}{40}=0.85,\\
+\widehat R_{\rm te}+\widehat{\rm Acc}_{\rm te}&=1.
+\end{aligned}
+\]
+若允许拒绝预测或改用代价加权损失，这个二项互补关系便不再直接适用。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S03-02}
+说明为什么不能根据较小的训练误差断定两个学习方法中哪一个泛化更好。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S03-02}
+\begin{chapterexercisesolution}{ex:V1-C10-S03-02}
+对学习算法$\mathcal A_k$，训练数据既生成模型又评价模型：
+\[
+\begin{aligned}
+\widehat f_k&=\mathcal A_k(D_{\rm tr}),\\
+\widehat R_{\rm tr}(\widehat f_k)
+  &=\frac1{|D_{\rm tr}|}\sum_{(x,y)\in D_{\rm tr}}
+    L(y,\widehat f_k(x)),\\
+R(\widehat f_k)
+  &=\mathbb E_{(X,Y)\sim P}
+    L(Y,\widehat f_k(X)).
+\end{aligned}
+\]
+前一量不等于后一总体风险，且因$\widehat f_k$依赖$D_{\rm tr}$通常偏乐观。比较方法应使用未参与拟合与选择的$D_{\rm te}$，或使用折外损失，并同时报告抽样不确定性。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S03-03}
+某研究者先在测试集上比较20个超参数，再报告其中最小的测试误差。指出信息泄漏发生在哪里，并给出修正后的数据角色。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S03-03}
+\begin{chapterexercisesolution}{ex:V1-C10-S03-03}
+泄漏发生在把测试损失写进二十选一的规则：
+\[
+\begin{aligned}
+\lambda^\star_{\rm leak}
+  &=\arg\min_{\lambda\in\{\lambda_1,\ldots,\lambda_{20}\}}
+    \widehat R_{\rm te}(\widehat f_\lambda),\\
+D&=D_{\rm tr}\,\dot\cup\,D_{\rm val}\,\dot\cup\,D_{\rm te},\\
+\widehat f_\lambda&=\mathcal A_\lambda(D_{\rm tr}),\\
+\lambda^\star&\in\arg\min_{\lambda}\widehat R_{\rm val}(\widehat f_\lambda),\\
+\text{最终评估}&=\widehat R_{\rm te}(\widehat f_{\lambda^\star}).
+\end{aligned}
+\]
+$D_{\rm te}$必须在全部选择冻结后只用一次；样本少时可用内层选择、外层评估的嵌套交叉验证。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S04-01}
+两个模型的训练误差和验证误差分别为$A:(0.04,0.09)$、$B:(0.01,0.18)$。应优先选择哪个模型？这能否证明另一个模型永远更差？
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S04-01}
+\begin{chapterexercisesolution}{ex:V1-C10-S04-01}
+模型均只在$D_{\rm tr}$拟合，并在同一独立$D_{\rm val}$上比较。给定数值为
+\[
+\begin{aligned}
+(\widehat R_{\rm tr}(A),\widehat R_{\rm val}(A))&=(0.04,0.09),\\
+(\widehat R_{\rm tr}(B),\widehat R_{\rm val}(B))&=(0.01,0.18),\\
+\arg\min_{m\in\{A,B\}}\widehat R_{\rm val}(m)&=\{A\}.
+\end{aligned}
+\]
+所以本次协议选$A$。有限验证集上的$0.09<0.18$不是总体风险的确定排序，不能证明$B$在所有未来样本上都更差。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S04-02}
+在目标$\widehat R(w)+\lambda\|w\|_2^2/2$中，把全部特征乘以常数$c>0$而不调整惩罚，会怎样影响系数尺度与有效正则化？
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S04-02}
+\begin{chapterexercisesolution}{ex:V1-C10-S04-02}
+设$x,w\in\mathbb R^d$且$c>0$。为保持同一线性预测，令$x'=cx$、$w'=w/c$，则
+\[
+\begin{aligned}
+{w'}^{\mathsf T}x'&=(w/c)^{\mathsf T}(cx)=w^{\mathsf T}x,\\
+\frac{\lambda}{2}\lVert w'\rVert_2^2
+  &=\frac{\lambda}{2c^2}\lVert w\rVert_2^2,\\
+\lambda_{\rm eff}&=\frac{\lambda}{c^2}.
+\end{aligned}
+\]
+因此特征换单位却保持$\lambda$不变，会改变有效正则化。交叉验证时，均值和尺度须在每个训练折内估计，再应用到对应验证折。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S04-03}
+设负对数似然为$-\ell(w)$，先验密度满足$p(w)\propto\exp(-\lambda\|w\|_1)$。写出最大后验估计对应的最小化目标。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S04-03}
+\begin{chapterexercisesolution}{ex:V1-C10-S04-03}
+参数域取$w\in\mathbb R^d$；当$\lambda>0$时
+$p(w)\propto e^{-\lambda\lVert w\rVert_1}$可归一化。由Bayes公式，
+\[
+\begin{aligned}
+p(w\mid D)&\propto p(D\mid w)p(w),\\
+-\log p(w\mid D)
+  &=-\ell(w)+\lambda\lVert w\rVert_1+C_D,\\
+\widehat w_{\rm MAP}
+  &\in\arg\min_{w\in\mathbb R^d}
+    \bigl\{-\ell(w)+\lambda\lVert w\rVert_1\bigr\}.
+\end{aligned}
+\]
+常数$C_D$与$w$无关，故不改变最小点；若最小点不唯一，$\arg\min$是集合。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S05-01}
+有6个候选配置，做5折交叉验证并在选定配置后全数据重训。总共需要多少次模型拟合？
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S05-01}
+\begin{chapterexercisesolution}{ex:V1-C10-S05-01}
+设候选数$M=6$、折数$K=5$，且每个“候选--折”组合独立拟合一次。则
+\[
+\begin{aligned}
+n_{\rm CV}&=MK=6\cdot5=30,\\
+n_{\rm refit}&=1,\\
+n_{\rm total}&=n_{\rm CV}+n_{\rm refit}=31.
+\end{aligned}
+\]
+这里未计外层嵌套评估；若存在外层，每个外层训练集都会重新发生内层拟合。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S05-02}
+说明留一交叉验证的折数、每次训练容量和验证容量，并指出它为何可能计算昂贵。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S05-02}
+\begin{chapterexercisesolution}{ex:V1-C10-S05-02}
+对$N\ge2$个样本，留一交叉验证的折集合为
+\[
+\begin{aligned}
+K&=N,\\
+D_{\rm val}^{(k)}&=\{z_k\},&
+|D_{\rm val}^{(k)}|&=1,\\
+D_{\rm tr}^{(k)}&=D\setminus\{z_k\},&
+|D_{\rm tr}^{(k)}|&=N-1,\\
+\widehat R_{\rm LOO}
+  &=\frac1N\sum_{k=1}^{N}
+    L\!\left(y_k,\mathcal A(D_{\rm tr}^{(k)})(x_k)\right).
+\end{aligned}
+\]
+算法需拟合$N$次近乎全量的数据；不能快速更新时，计算代价因而很高。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S06-01}
+取$d=1000$、$N=500$、$\delta=0.05$，估算定理中的置信项，并给出经验风险为$0.08$时的风险上界。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S06-01}
+\begin{chapterexercisesolution}{ex:V1-C10-S06-01}
+设$\mathcal F$是含$d=1000$个固定分类器的有限类，训练样本
+$D\sim P^N$独立同分布，损失为$[0,1]$值。取$N=500,\delta=0.05$，
+\[
+\begin{aligned}
+\varepsilon
+  &=\sqrt{\frac{\log d+\log(1/\delta)}{2N}}\\
+  &=\sqrt{\frac{\log1000+\log20}{1000}}
+    \approx0.0995,\\
+R(f)&\le \widehat R_D(f)+\varepsilon
+  \quad\text{对所有 }f\in\mathcal F,\\
+R(f)&\le\min\{1,0.08+0.0995\}\approx0.1795.
+\end{aligned}
+\]
+上述同时事件关于随机训练集$D$的概率至少为$1-\delta=0.95$，不是每个数据集上的确定等式。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S06-02}
+希望置信项不超过$\eta>0$。由定理求样本容量$N$的充分条件。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S06-02}
+\begin{chapterexercisesolution}{ex:V1-C10-S06-02}
+假设有限候选数$d\ge1$、置信参数$\delta\in(0,1)$及目标精度$\eta>0$。则
+\[
+\begin{aligned}
+\sqrt{\frac{\log d+\log(1/\delta)}{2N}}\le\eta
+&\Longleftrightarrow
+\frac{\log d+\log(1/\delta)}{2N}\le\eta^2\\
+&\Longleftrightarrow
+N\ge\frac{\log d+\log(1/\delta)}{2\eta^2}.
+\end{aligned}
+\]
+由于$N$为正整数，一个充分条件是
+\[
+\begin{aligned}
+N&\ge N_{\min},\\
+N_{\min}&:=
+\left\lceil\frac{\log d+\log(1/\delta)}{2\eta^2}\right\rceil.
+\end{aligned}
+\]
+它只控制置信项；若经验风险不小，总体风险上界仍可能很大。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S07-01}
+已知$P(Y=1)=0.4$、$P(X=x\mid Y=1)=0.6$、$P(X=x\mid Y=0)=0.2$。用生成模型计算$P(Y=1\mid X=x)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S07-01}
+\begin{chapterexercisesolution}{ex:V1-C10-S07-01}
+标签支持集为$\{0,1\}$，故$P(Y=0)=1-0.4=0.6$。Bayes分母为
+\[
+\begin{aligned}
+P(X=x)
+  &=P(X=x\mid Y=1)P(Y=1)\\
+  &\quad+P(X=x\mid Y=0)P(Y=0)\\
+  &=0.6(0.4)+0.2(0.6)=0.36>0.
+\end{aligned}
+\]
+因此条件概率合法且
+\[
+\begin{aligned}
+P(Y=1\mid X=x)
+  &=\frac{0.6(0.4)}{0.36}
+    =\frac{0.24}{0.36}=\frac23.
+\end{aligned}
+\]
+所以在观测到$X=x$后，类别$Y=1$的后验概率为$2/3$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C10-S07-02}
+判断下列学习目标属于生成式还是判别式：学习$P(X\mid Y)$与$P(Y)$；直接学习$P(Y\mid X)$；直接学习符号函数$f(X)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C10-S07-02}
+\begin{chapterexercisesolution}{ex:V1-C10-S07-02}
+以“是否刻画联合分布”为判据，
+\[
+\begin{aligned}
+\bigl(P(X\mid Y),P(Y)\bigr)
+  &\Longrightarrow P(X,Y)=P(Y)P(X\mid Y)
+    \Longrightarrow \text{生成式},\\
+P(Y\mid X)
+  &\Longrightarrow \text{概率判别式},\\
+f:\mathcal X\to\mathcal Y
+  &\Longrightarrow \text{非概率判别式}.
+\end{aligned}
+\]
+分类取决于学习对象，不取决于使用哪一种数值优化算法。
+\end{chapterexercisesolution}
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V1-C10-CONCEPT-016 L1
+\paragraph{读前自检：本章结论与下一步。}模型评估、选择与泛化章末由“损失、风险、数据划分、复杂度与假设空间”落到“训练用于拟合、验证用于选择、测试只用于一次最终评估”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V1-C10-CH36}
+\SLChapterFiveSummary{损失、风险、数据划分、复杂度与假设空间}{由Hoeffding不等式和并集界控制有限候选的泛化偏差}{训练用于拟合、验证用于选择、测试只用于一次最终评估}{调参、比较模型和陈述未知数据保证}{\NextChapter{11}{监督学习任务与应用}；随后由\GlobalChapterRef{12}{2}{1}开始第2册具体方法}
+
+\phantomsection\label{struct:V1-C10-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否针对分类、回归和概率预测选择损失，并写出对应风险？
+  \item 能否画出训练、验证、测试信息流，指出一次流程中是否发生泄漏？
+  \item 能否写出正则化目标和完整\kFold{}伪代码，并解释每个预处理步骤为何必须折内拟合？
+  \item 能否从固定函数的Hoeffding界开始，逐步完成并集界和$\delta$代换？
+  \item 能否根据学习对象而不是模型名称区分生成方法与判别方法？未通过时依次回看\cref{sec:V1-C10-S01,sec:V1-C10-S02,sec:V1-C10-S03,sec:V1-C10-S04,sec:V1-C10-S05,sec:V1-C10-S06,sec:V1-C10-S07}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

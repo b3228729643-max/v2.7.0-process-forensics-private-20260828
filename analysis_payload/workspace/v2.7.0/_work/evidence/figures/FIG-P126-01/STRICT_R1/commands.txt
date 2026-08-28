@@ -1,0 +1,18 @@
+OFFICIAL PAGE / NATIVE RENDER / OBJECT MASK AUDIT
+python D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\evidence\figures\FIG-P126-01\STRICT_R1\audit_p126_strict_r1.py
+
+The script performs these direct operations without resizing:
+- pypdf: PdfReader(main_full.pdf).pages[136] -> official_page_137.pdf
+- PyMuPDF: page.get_pixmap(matrix=fitz.Matrix(200/72,200/72), alpha=False) -> full_page_200dpi.png
+- PyMuPDF: page.get_pixmap(matrix=fitz.Matrix(300/72,300/72), alpha=False) -> full_page_300dpi.png (2481x3508)
+- official PDF page -> MuPDF SVG text paths -> selected semantic-object SVG -> MuPDF 300dpi masks
+- foreground threshold: max(255-RGB) >= 20; no resize or screenshot is used
+
+INDEPENDENT SOURCE COMPILE
+$cache=Join-Path ([System.IO.Path]::GetTempPath()) 'statlearn-v2.7.0-texmf-cache'
+$env:TEXMFCACHE=$cache
+$env:TEXMFVAR=$cache
+& 'D:\texlive\2026\bin\windows\lualatex.exe' -interaction=nonstopmode -halt-on-error -file-line-error -output-directory='D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\evidence\figures\FIG-P126-01\STRICT_R1' 'D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\evidence\figures\FIG-P126-01\STRICT_R1\standalone_wrapper.tex'
+
+Working directory for the independent compile:
+D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\讲义源码\合并总册

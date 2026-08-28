@@ -1,0 +1,108 @@
+{
+  "schema": "P654_R14E_STATIC_COUNT_AND_REVIEW_IDENTITY_MODEL_V1",
+  "round": "R14E_STATIC_PREFLIGHT_FOR_FUTURE_R14E_SEAL",
+  "stage": "STATIC_PREFLIGHT_ONLY_UNEXECUTED",
+  "preflight_directory_is_separate_from_future_sealed_root": true,
+  "future_sealed_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R14E_SA2_R10_EVIDENCE_ONLY_CONTROL_RESEAL_20260825",
+  "reviewed_draft_identities": [
+    {
+      "draft_relative_path": "R14E_prepare_draft.ps1",
+      "future_relative_path": "R14E_prepare.ps1",
+      "bytes": 5581,
+      "sha256": "7D747804413C10DBFD2C48F2D02787B77F4C8340A6C850829BAF8499F6BC03EA"
+    },
+    {
+      "draft_relative_path": "R14E_validator_draft.ps1",
+      "future_relative_path": "R14E_preseal_validator.ps1",
+      "bytes": 10470,
+      "sha256": "981106E2D0B9012697957D35967ABBC1DEF9A9F4F558E10783E11A5947B9EEBD"
+    },
+    {
+      "draft_relative_path": "R14E_seal_draft.ps1",
+      "future_relative_path": "R14E_seal.ps1",
+      "bytes": 7468,
+      "sha256": "AB57BAAC84A477A3FBFCE611988E6F44C249DABF3646FB548D1E041018D93A95"
+    }
+  ],
+  "base_payload_file_count": 1052,
+  "pre_report_new_payload_paths": [
+    "R14E_prepare.ps1",
+    "R14E_preseal_validator.ps1",
+    "R14E_seal.ps1",
+    "R14_BASE_COPY_IDENTITY.csv",
+    "R14_BASE_COPY_IDENTITY.json",
+    "R14_COPY_PROVENANCE.json"
+  ],
+  "future_preseal_report_path": "R14_PRESEAL_VALIDATION.json",
+  "final_counts": {
+    "payload_file_count": 1059,
+    "manifest_control_file_count": 2,
+    "write_stopped_control_file_count": 1,
+    "control_file_count": 3,
+    "ordinary_file_total": 1062
+  },
+  "final_payload_extensions": {
+    "aux": 1,
+    "csv": 23,
+    "fls": 1,
+    "gz": 24,
+    "idx": 2,
+    "json": 71,
+    "log": 3,
+    "lua": 21,
+    "luc": 44,
+    "md": 4,
+    "pdf": 1,
+    "png": 856,
+    "ps1": 4,
+    "py": 4
+  },
+  "final_control_extensions": {
+    "csv": 1,
+    "json": 2
+  },
+  "final_ordinary_extensions": {
+    "aux": 1,
+    "csv": 24,
+    "fls": 1,
+    "gz": 24,
+    "idx": 2,
+    "json": 73,
+    "log": 3,
+    "lua": 21,
+    "luc": 44,
+    "md": 4,
+    "pdf": 1,
+    "png": 856,
+    "ps1": 4,
+    "py": 4
+  },
+  "required_identity_invariants": {
+    "csv_rows": 1052,
+    "json_rows": 1052,
+    "unique_source_paths_each_table": true,
+    "unique_destination_paths_each_table": true,
+    "source_relative_path_equals_destination_relative_path": true,
+    "csv_equals_json_all_six_fields": true,
+    "both_table_path_sets_equal_r10_base": true,
+    "target_base_after_excluding_six_new_paths_equals_r10_base": true,
+    "source_destination_tables_bytes_sha_ticks_display_all_equal": true,
+    "missing_extra_duplicate": 0
+  },
+  "required_explicit_equations": {
+    "file_total": "1059 + 3 = 1062",
+    "json": "71 + 2 = 73",
+    "csv": "23 + 1 = 24",
+    "payload_extension_sum": 1059,
+    "control_extension_sum": 3,
+    "ordinary_extension_sum": 1062
+  },
+  "self_accounting": {
+    "validator_adds_future_preseal_report_to_payload_json": 1,
+    "seal_adds_future_write_stopped_to_control_json": 1,
+    "wstop_extension_field_prefix": "declared_final_",
+    "wstop_forbidden_extension_field_prefix": "actual_"
+  },
+  "status": "R14E_STATIC_MODEL_READY_FOR_MAIN_REVIEW_UNEXECUTED"
+}
+

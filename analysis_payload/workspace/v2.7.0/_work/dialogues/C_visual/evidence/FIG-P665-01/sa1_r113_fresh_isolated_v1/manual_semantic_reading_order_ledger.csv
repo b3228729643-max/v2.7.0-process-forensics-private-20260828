@@ -1,0 +1,10 @@
+semantic_id,scope,manual_review,manual_decision
+S01,left_panel_objects,"O01 names the task; O02 gives the density form; O03 groups the ingredients; O04/O05/O06 instantiate base measure, natural parameter, and sufficient statistic.",COHERENT
+S02,right_panel_objects,"O08 names the result; O09 supplies A; O10 signals implication; O11 specifies differentiation; O12 states the expected-log identity; O13 gives the non-substitution warning.",COHERENT
+S03,cross_panel_relation,"O07 cleanly separates construction from consequence; the two matched titles and aligned top formulas support left-to-right comparison.",COHERENT
+S04,caption_consistency,"O14 names Dirichlet, log theta_k, differentiation in alpha_k, the digamma difference, and the invalid mean-log substitution exactly as the figure does.",COHERENT
+S05,current_context_consistency,"V5-C05 Proposition 34.4 and its proof identify the same derivative and expectation; the following sentence explicitly invokes strict concavity for the distinction.",COHERENT
+R01,primary_reading_order,"O01 -> O02 -> O03 -> O04/O05 -> O06 is a clear top-down decomposition.",COHERENT
+R02,derivation_reading_order,"O08 -> O09 -> O10 -> O11 -> O12 -> O13 is a single unambiguous vertical chain.",COHERENT
+R03,whole_figure_reading_order,"The divider and titles establish left panel first, right panel second, then caption O14; no crossing connector exists in the rendered figure.",COHERENT
+R04,page_reading_order,"After O14, the page continues to the posterior derivation paragraph; no float collision or stranded line interrupts reading.",COHERENT

@@ -1,0 +1,12 @@
+Controller process exit code: 1
+LaTeX engine launch count: 0
+
+Get-Item : Cannot find path
+'D:\Users\ASUS\Desktop\鏈哄櫒瀛︿範\v2.7.0\_work\worktrees\dialogue_A_visual\src\璁蹭箟婧愮爜\鍚堝苟鎬诲唽\v260_FIG-P654-01_standalone.tex'
+because it does not exist.
+
+Failure site:
+run_direct_lualatex_once.ps1 line 40
+bytes = (Get-Item -LiteralPath $wrapperPath).Length
+
+The failure occurred before Start-Process for lualatex.

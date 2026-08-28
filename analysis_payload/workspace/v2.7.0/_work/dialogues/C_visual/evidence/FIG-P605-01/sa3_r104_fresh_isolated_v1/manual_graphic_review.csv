@@ -1,0 +1,24 @@
+reviewer,object_id,role,drawing_index,contact_1x,contact_8x,original_match,overlay_complete,mask_only_pure,missing_stroke_px,foreign_pixel_px,clip_pixel_count,decision,note
+SA3,G_PANEL_LEFT,PANEL_BORDER,1,contacts/graphic/one_x/graphic_001_1x.png,contacts/graphic/eight_x/graphic_001_8x_nearest.png,true,true,true,0,0,0,PASS,左面板浅灰圆角边框四边与四角连续；面板填充明确排除为背景
+SA3,G_PANEL_RIGHT,PANEL_BORDER,2,contacts/graphic/one_x/graphic_002_1x.png,contacts/graphic/eight_x/graphic_002_8x_nearest.png,true,true,true,0,0,0,PASS,右面板浅灰圆角边框连续闭合且无裁切；填充不进前景掩膜
+SA3,G_NODE_K1_LEFT,NODE_BORDER,3,contacts/graphic/one_x/graphic_003_1x.png,contacts/graphic/eight_x/graphic_003_8x_nearest.png,true,true,true,0,0,0,PASS,左K1蓝色圆角节点边框完整；内部文字未进入边框掩膜
+SA3,G_NODE_K2_LEFT,NODE_BORDER,4,contacts/graphic/one_x/graphic_004_1x.png,contacts/graphic/eight_x/graphic_004_8x_nearest.png,true,true,true,0,0,0,PASS,左K2蓝色圆角节点边框完整且文字区域纯净
+SA3,G_NODE_KD_LEFT,NODE_BORDER,5,contacts/graphic/one_x/graphic_005_1x.png,contacts/graphic/eight_x/graphic_005_8x_nearest.png,true,true,true,0,0,0,PASS,左Kd蓝色圆角节点边框闭合且无缺边
+SA3,G_EDGE_L1_LINE,EDGE_LINE,6,contacts/graphic/one_x/graphic_006_1x.png,contacts/graphic/eight_x/graphic_006_8x_nearest.png,true,true,true,0,0,0,PASS,左侧K1至K2水平蓝线完整；与箭头接缝是同一结构父对象
+SA3,G_EDGE_L1_ARROW,ARROWHEAD,7,contacts/graphic/one_x/graphic_007_1x.png,contacts/graphic/eight_x/graphic_007_8x_nearest.png,true,true,true,0,0,0,PASS,第一水平箭头三角头完整且方向指向K2
+SA3,G_EDGE_L2_LINE,EDGE_LINE,8,contacts/graphic/one_x/graphic_008_1x.png,contacts/graphic/eight_x/graphic_008_8x_nearest.png,true,true,true,0,0,0,PASS,左侧K2至省略号水平蓝线连续清楚
+SA3,G_EDGE_L2_ARROW,ARROWHEAD,9,contacts/graphic/one_x/graphic_009_1x.png,contacts/graphic/eight_x/graphic_009_8x_nearest.png,true,true,true,0,0,0,PASS,第二水平箭头头部完整且无文字污染
+SA3,G_EDGE_L3_LINE,EDGE_LINE,10,contacts/graphic/one_x/graphic_010_1x.png,contacts/graphic/eight_x/graphic_010_8x_nearest.png,true,true,true,0,0,0,PASS,省略号至Kd水平蓝线完整并与字符有充分净空
+SA3,G_EDGE_L3_ARROW,ARROWHEAD,11,contacts/graphic/one_x/graphic_011_1x.png,contacts/graphic/eight_x/graphic_011_8x_nearest.png,true,true,true,0,0,0,PASS,第三水平箭头完整并正确指向Kd
+SA3,G_NOTE_LEFT,NODE_BORDER,12,contacts/graphic/one_x/graphic_012_1x.png,contacts/graphic/eight_x/graphic_012_8x_nearest.png,true,true,true,0,0,0,PASS,左注释灰色圆角框完整；注释文字未混入边框mask
+SA3,G_PICK_DIAMOND,NODE_BORDER,13,contacts/graphic/one_x/graphic_013_1x.png,contacts/graphic/eight_x/graphic_013_8x_nearest.png,true,true,true,0,0,0,PASS,金色选择菱形四边连续闭合；J与omega未进入金色边框mask
+SA3,G_NODE_K1_RIGHT,NODE_BORDER,14,contacts/graphic/one_x/graphic_014_1x.png,contacts/graphic/eight_x/graphic_014_8x_nearest.png,true,true,true,0,0,0,PASS,右侧K1蓝色节点边框完整且无裁切
+SA3,G_NODE_KJ_RIGHT,NODE_BORDER,15,contacts/graphic/one_x/graphic_015_1x.png,contacts/graphic/eight_x/graphic_015_8x_nearest.png,true,true,true,0,0,0,PASS,右侧Kj蓝色节点边框闭合；内部公式保持黑色未污染mask
+SA3,G_NODE_KD_RIGHT,NODE_BORDER,16,contacts/graphic/one_x/graphic_016_1x.png,contacts/graphic/eight_x/graphic_016_8x_nearest.png,true,true,true,0,0,0,PASS,右侧Kd蓝色节点边框四边完整
+SA3,G_EDGE_R1_LINE,EDGE_LINE,17,contacts/graphic/one_x/graphic_017_1x.png,contacts/graphic/eight_x/graphic_017_8x_nearest.png,true,true,true,0,0,0,PASS,菱形到左分支的灰线沿矢量段完整；金框和蓝框未混入tube mask
+SA3,G_EDGE_R1_ARROW,ARROWHEAD,18,contacts/graphic/one_x/graphic_018_1x.png,contacts/graphic/eight_x/graphic_018_8x_nearest.png,true,true,true,0,0,0,PASS,左下灰色箭头头部完整且落向K1节点
+SA3,G_EDGE_R2_LINE,EDGE_LINE,19,contacts/graphic/one_x/graphic_019_1x.png,contacts/graphic/eight_x/graphic_019_8x_nearest.png,true,true,true,0,0,0,PASS,中央竖直分支线完整；上下设计连接可追溯
+SA3,G_EDGE_R2_ARROW,ARROWHEAD,20,contacts/graphic/one_x/graphic_020_1x.png,contacts/graphic/eight_x/graphic_020_8x_nearest.png,true,true,true,0,0,0,PASS,中央向下灰色箭头头部完整且指向Kj
+SA3,G_EDGE_R3_LINE,EDGE_LINE,21,contacts/graphic/one_x/graphic_021_1x.png,contacts/graphic/eight_x/graphic_021_8x_nearest.png,true,true,true,0,0,0,PASS,菱形到右分支灰线连续且没有邻框污染
+SA3,G_EDGE_R3_ARROW,ARROWHEAD,22,contacts/graphic/one_x/graphic_022_1x.png,contacts/graphic/eight_x/graphic_022_8x_nearest.png,true,true,true,0,0,0,PASS,右下灰色箭头头部完整并正确指向Kd
+SA3,G_NOTE_RIGHT,NODE_BORDER,23,contacts/graphic/one_x/graphic_023_1x.png,contacts/graphic/eight_x/graphic_023_8x_nearest.png,true,true,true,0,0,0,PASS,右注释蓝色圆角框完整且两行文字均未进入边框mask

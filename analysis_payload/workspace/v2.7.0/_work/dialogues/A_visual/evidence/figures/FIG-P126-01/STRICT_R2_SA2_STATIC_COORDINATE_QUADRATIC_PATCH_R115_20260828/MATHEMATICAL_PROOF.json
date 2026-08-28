@@ -1,0 +1,34 @@
+{
+  "quadratic": "f(x1,x2)=0.5*(x1^2+2*x1*x2+2*x2^2)",
+  "hessian": [[1, 1], [1, 2]],
+  "determinant": 1,
+  "eigenvalues": [0.3819660112501051, 2.618033988749895],
+  "positive_definite": true,
+  "off_diagonal_nonzero": true,
+  "principal_axes_equal_coordinate_axes": false,
+  "contour_parameterization": "x1=r*(cos(t)-sin(t)), x2=r*sin(t)",
+  "contour_identity": "(x1+x2)^2+x2^2=r^2",
+  "contour_radii": [2.70, 2.15, 1.65, 0.90],
+  "maximum_sampled_contour_equation_residual": 4.440892098500626e-15,
+  "coordinate_minimizers": {
+    "update_x2_at_fixed_x1": "x2=-x1/2",
+    "update_x1_at_fixed_x2": "x1=-x2"
+  },
+  "sequence": [
+    {"id":"q0","x1":-3.2,"x2":2.2,"f":2.92,"updated":"start"},
+    {"id":"q1","x1":-3.2,"x2":1.6,"f":2.56,"updated":"x2","stationarity_residual":0},
+    {"id":"q2","x1":-1.6,"x2":1.6,"f":1.28,"updated":"x1","stationarity_residual":0},
+    {"id":"q3","x1":-1.6,"x2":0.8,"f":0.64,"updated":"x2","stationarity_residual":0},
+    {"id":"q4","x1":-0.8,"x2":0.8,"f":0.32,"updated":"x1","stationarity_residual":0},
+    {"id":"q5","x1":-0.8,"x2":0.4,"f":0.16,"updated":"x2","stationarity_residual":0},
+    {"id":"q6","x1":-0.4,"x2":0.4,"f":0.08,"updated":"x1","stationarity_residual":0},
+    {"id":"q7","x1":-0.4,"x2":0.2,"f":0.04,"updated":"x2","stationarity_residual":0}
+  ],
+  "strict_objective_drops": [0.36, 1.28, 0.64, 0.32, 0.16, 0.08, 0.04],
+  "all_steps_axis_aligned": true,
+  "all_steps_exact_coordinate_minimizers": true,
+  "objective_strictly_decreases_each_step": true,
+  "true_minimizer": [0, 0],
+  "final_point": [-0.4, 0.2],
+  "final_point_is_only_an_approximation": true
+}

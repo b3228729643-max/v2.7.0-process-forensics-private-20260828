@@ -1,0 +1,58 @@
+{
+  "schema": "P602_EVIDENCE_WRITE_STOPPED_V1",
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r2_controlled_build_v2",
+  "status": "BUILD_FAIL_NO_CANDIDATE",
+  "preseal_audit_utc": "2026-08-25T05:50:25.8969364Z",
+  "writes_stopped": true,
+  "tex_disabled": true,
+  "build_slot_released": true,
+  "direct_lualatex_invocations": 1,
+  "direct_lualatex_invocation_limit": 1,
+  "natural_exit_code": 1,
+  "candidate_pdf_exists": false,
+  "source_sha256": "2B15B4BEEA7A922FEE24259678DBAE2A54915955915E6714A350122A6251E349",
+  "wrapper_sha256": "AFE3464AEA950331908CD3C56DD0392A6D5010138C4EE9341B78F7FD3E9F7279",
+  "manifest": {
+    "path": "09_manifest/evidence_file_manifest.csv",
+    "bytes": 1300,
+    "sha256": "9C56F0532CF5824CF897722C221140AF9250321E8FCDB8C2F65301244E49A106",
+    "mtime_utc_ticks": 639232337960578501,
+    "row_count": 8,
+    "payload_rows": 4,
+    "control_rows": 4,
+    "self_rows": 0,
+    "seal_rows": 0,
+    "canonical_recordset_sha256": "57851E845B08FE5DBB6095416E79B8F26470E1494C4947EE7FFF4C211DF314D8"
+  },
+  "ordinary_file_model": {
+    "expected_total_after_seal": 10,
+    "listed_payload_and_control": 8,
+    "manifest_self_unlisted": 1,
+    "final_seal_unlisted": 1,
+    "expected_unlisted_paths": [
+      "09_manifest/evidence_file_manifest.csv",
+      "WRITE_STOPPED.json"
+    ]
+  },
+  "preseal_checks": {
+    "manifest_path_duplicates": 0,
+    "manifest_missing": 0,
+    "manifest_bytes_sha_mtime_mismatches": 0,
+    "json_parse_failures": 0,
+    "csv_parse_failures": 0,
+    "alternate_data_streams": 0,
+    "pyc_or_cache_artifacts": 0,
+    "active_latexmk_lualatex_luatex_luahbtex_processes": 0
+  },
+  "no_second_invocation": true,
+  "no_automatic_retry": true,
+  "no_source_change_after_authorized_sha_gate": true,
+  "no_native_evidence_without_candidate_pdf": true,
+  "no_commit": true,
+  "no_central_state_or_inventory_write": true,
+  "no_fresh_role": true,
+  "no_next_figure": true,
+  "manual_ledgers": "NOT_CREATED_NO_CANDIDATE_PDF",
+  "strictly_last_file_by_mtime_required": true,
+  "post_seal_writes_allowed": false
+}

@@ -1,0 +1,49 @@
+--- FIG-P634-01 R5 baseline
++++ FIG-P634-01 R6 SA2 candidate
+@@ lines 16-17 @@
+-  alt={对象—关系—结论：固定顺序为 1,2,…,j−1,j,j+1,…,d；第 j 步的 x^[j] 左侧是同轮新值且右侧是上一轮旧值；只有 x^[d]=x^(t) 是轮末样本}]
+-  \node[font=\fontsize{10.6pt}{12.7pt}\selectfont\bfseries,text=SLBlue] at (0,2.16) {一轮系统扫描的坐标带};
++  alt={对象—关系—结论：固定顺序为 1,2,…,j−1,j,j+1,…,d；当前第 j 步的 x^[j] 前段是本轮新值且后段是前轮旧值；x^[d]=x^(t) 仅在末位更新结束后成立，并记录为轮末样本}]
++  \node[font=\fontsize{10.6pt}{12.7pt}\selectfont\bfseries,text=SLBlue] at (0,2.16) {单轮系统扫描坐标带};
+@@ lines 21-25 @@
+-  \node at (-.7,1.48) {$j$ 前一位};
+-  \node at (.8,1.48) {$j$};
+-  \node at (2.3,1.48) {$j$ 后一位};
++  \node at (-.7,1.48) {前位};
++  \node at (.8,1.48) {当前};
++  \node at (2.3,1.48) {后位};
+   \node at (3.8,1.48) {省略};
+-  \node at (5.3,1.48) {$d$};
++  \node at (5.3,1.48) {末位};
+@@ lines 35-42 @@
+-  \node[sl634-halo] at (-.7,0) {坐标 $j$\\前一位};
+-  \node[sl634-now] at (.8,0) {坐标\\$j$};
+-  \node[sl634-old] at (2.3,0) {坐标 $j$\\后一位};
++  \node[sl634-halo] at (-.7,0) {前段\\末位};
++  \node[sl634-now] at (.8,0) {当前\\坐标};
++  \node[sl634-old] at (2.3,0) {后段\\首位};
+   \node[sl634-old] at (3.8,0) {中间\\坐标};
+-  \node[sl634-old] at (5.3,0) {坐标\\$d$};
+-  \node[font=\fontsize{9.6pt}{11.5pt}\selectfont,text=SLBlue] at (-2.9,-.76) {同轮新值};
+-  \node[font=\fontsize{9.6pt}{11.5pt}\selectfont,text=SLGold] at (.8,-.76) {本步新值};
+-  \node[font=\fontsize{9.6pt}{11.5pt}\selectfont,text=SLTextGray] at (3.8,-.76) {上一轮旧值};
++  \node[sl634-old] at (5.3,0) {末位\\坐标};
++  \node[font=\fontsize{9.6pt}{11.5pt}\selectfont,text=SLBlue] at (-2.9,-.76) {本轮新值};
++  \node[font=\fontsize{9.6pt}{11.5pt}\selectfont,text=SLGold] at (.8,-.76) {当前新值};
++  \node[font=\fontsize{9.6pt}{11.5pt}\selectfont,text=SLTextGray] at (3.8,-.76) {前轮旧值};
+@@ lines 44-49 @@
+   \node[sl634-card,minimum width=118mm,minimum height=10.5mm] at (0,-1.52) {};
+-  \node[font=\fontsize{10.0pt}{12.0pt}\selectfont] at (0,-1.25) {$x^{[j]}$ 轮内状态};
++  \node[font=\fontsize{10.0pt}{12.0pt}\selectfont] at (0,-1.34) {$x^{[j]}$ 当前子步状态};
+   \node[font=\fontsize{9.8pt}{11.7pt}\selectfont,text=SLBlue] at (-2.65,-1.81)
+-    {坐标 $1$ 至 $j$\quad 同轮新值};
++    {起始至当前坐标\quad 本轮新值};
+   \node[font=\fontsize{9.8pt}{11.7pt}\selectfont,text=SLTextGray] at (2.65,-1.81)
+-    {坐标 $j$ 后一位至 $d$\quad 上一轮旧值};
++    {后续至末位坐标\quad 前轮旧值};
+@@ line 56 @@
+-    node[midway,above=4pt,font=\fontsize{9.6pt}{11.5pt}\selectfont,text=SLTextGray] {同一状态};
++    node[midway,above=4pt,font=\fontsize{9.6pt}{11.5pt}\selectfont,text=SLTextGray] {状态相同};
+@@ line 61 @@
+-\caption[系统扫描按固定次序立即写回并区分轮内状态与轮末样本]{系统扫描按固定次序立即写回\quad 第 $j$ 步的轮内状态 $x^{[j]}$ 左侧为同轮新值而右侧为上一轮旧值\quad 完成第 $d$ 步后 $x^{[d]}$ 与 $x^{(t)}$ 才是同一状态并记作轮末样本}
++\caption[系统扫描逐坐标即时写回并区分子步状态与轮末样本]{系统扫描按固定次序即时写回；当前子步的前段使用本轮新值，后段沿用前轮旧值；末位更新结束后，末位状态与本轮样本状态相同并记录为轮末样本。}

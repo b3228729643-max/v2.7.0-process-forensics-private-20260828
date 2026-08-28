@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{685}
+\setcounter{chapter}{34}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{狄利克雷分布与共轭先验}
+\sectionmark{共轭更新与预测主链}
+图\ref{fig:V5-C05-dependency-graph}给出本章共轭更新、预测结论与解释支线的学习顺序；后续主题模型只是应用出口，不是本章的学习前置。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dependency_graph.tex}
+\FloatBarrier
+\noindent\textbf{读图顺序。}先看左侧“类别计数”和“Gamma/Beta归一化”怎样汇入多项似然与Dirichlet先验；再看中央实线主链如何把参数逐分量相加为$\operatorname{Dir}(\boldsymbol\alpha+\boldsymbol n)$，并读出$\Pr(Y_{N+1}=i\mid\boldsymbol n,\boldsymbol\alpha)=(\alpha_i+n_i)/(\alpha_0+N)$；最终区分下方无箭头的参数解释支线与虚线的主题模型应用出口。
+\end{document}

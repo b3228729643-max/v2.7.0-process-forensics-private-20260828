@@ -1,0 +1,32 @@
+{
+  "relation_id": "R004331",
+  "object_a": "G0048",
+  "object_b": "G0055",
+  "kind_a": "GLYPH",
+  "kind_b": "GLYPH",
+  "parent_a": "N_PREDICTIVE_BODY_1",
+  "parent_b": "N_PREDICTIVE_BODY_2",
+  "role_a": "NODE_BODY",
+  "role_b": "NODE_BODY",
+  "gate_type": "TEXT_TEXT_BBOX",
+  "gate_px": 4,
+  "raw_overlap_pixel_count": 0,
+  "raw_mask_clearance_px": 13.0,
+  "text_text_vector_bbox_clearance_px": 5,
+  "ownership_or_whitelist_reason": "independent semantic text objects require vector bbox clearance >=4px",
+  "machine_decision": "PASS",
+  "critical_relation": true,
+  "evidence_1x": "pair_evidence/R004331__1x.png",
+  "evidence_8x": "pair_evidence/R004331__8x_nearest.png",
+  "raw": "pair_evidence/R004331__raw.png",
+  "mask_a": "pair_evidence/R004331__mask_a.png",
+  "mask_b": "pair_evidence/R004331__mask_b.png",
+  "intersection": "pair_evidence/R004331__intersection.png",
+  "overlay": "pair_evidence/R004331__overlay.png",
+  "roi_full_page_px": [
+    1956,
+    377,
+    2039,
+    483
+  ]
+}

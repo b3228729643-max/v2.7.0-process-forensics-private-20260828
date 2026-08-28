@@ -1,0 +1,20 @@
+{
+  "status": "PACKAGE_ASSEMBLED_PENDING_TERMINAL",
+  "started_at_utc": "2026-08-24T22:07:36.620707Z",
+  "assembled_at_utc": "2026-08-24T22:07:36.812999Z",
+  "finalizer": {
+    "relative_path": "tools/package_finalizer.py",
+    "bytes": 10315,
+    "sha256": "F20FCACEA4C52FBFC5CBDB04ACC7E11CAC8376AD749EB0953E7655E031ECDB54"
+  },
+  "preconditions": {
+    "consumer_status_pass": true,
+    "local_result_status_exact": true,
+    "validator_identity_matches_pre_execution": true,
+    "manual_identity_matches_pre_execution": true,
+    "consumer_declares_zero_manual_writes": true
+  },
+  "manual_mismatches": [],
+  "manual_files_modified": 0,
+  "local_status": "LOCAL_SA2_PATCH_VERIFIED_AWAIT_R7A_ROOT"
+}

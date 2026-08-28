@@ -1,0 +1,32 @@
+% Stage 17 final official entry: Volume 1, V1-C01--V1-C11.
+% Match the merged-book compatibility policy: the installed experimental
+% tagged-PDF block layer rejects enumitem keys used by the chapter map.
+% Standard PDF metadata remains supplied by \SLSetBookMetadata/hyperref.
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第1册}{统计学习方法初学者讲义}{数学基础与统计学习基本理论}
+\begin{document}
+\frontmatter
+\SLMakeTitle
+\chapter*{本册导读}\addcontentsline{toc}{chapter}{本册导读}
+本册先建立数学语言、线性代数、多元微积分、概率统计、信息论与优化基础，再说明统计学习的基本框架、模型评估与泛化，以及分类、标注和回归三类监督学习任务。各章采用统一的目标、前置检查、推导、算法、例题、练习与自检结构；建议按依赖顺序学习，并在进入后续具体模型前独立完成每节练习。
+\SLPrintContents
+\SLPrintSymbolIndex
+\SLPrintFoundationRoutes
+\mainmatter
+\index{统计学习方法}
+\input{chapters/V1-C01}
+\input{chapters/V1-C02}
+\input{chapters/V1-C03}
+\input{chapters/V1-C04}
+\input{chapters/V1-C05}
+\input{chapters/V1-C06}
+\input{chapters/V1-C07}
+\input{chapters/V1-C08}
+\input{chapters/V1-C09}
+\input{chapters/V1-C10}
+\input{chapters/V1-C11}
+\backmatter
+\SLPrintAlgorithmContractAppendix
+\printbookindexes
+\end{document}

@@ -1,0 +1,24 @@
+{
+  "observed_at_utc": "2026-08-24T22:07:36.806937Z",
+  "json_file_count": 68,
+  "csv_file_count": 17,
+  "json_errors": [],
+  "csv_errors": [],
+  "json_decode_fallbacks": [
+    {
+      "relative_path": "CURRENT_EXTERNAL_CHILD_STDOUT.json",
+      "raw_bytes_sha256": "FFBF3EB5BB693538C55BD6BCBB68FA6FDA9C8F2A28101B1349BC74BB5AFD0E98",
+      "decode_method": "GBK/CP936 fallback after UTF-8 decode failure"
+    }
+  ],
+  "selected_csv_row_counts": {
+    "machine_reuse/all_unordered_pairs.csv": 6670,
+    "machine_reuse/object_manifest.csv": 116,
+    "MACHINE_REUSE_IDENTITY_LEDGER.csv": 935,
+    "manual/CRITICAL_PAIR_MANUAL_DECISIONS.csv": 50,
+    "manual/GLYPH_MANUAL_DECISIONS.csv": 95,
+    "manual/GRAPHIC_MANUAL_DECISIONS.csv": 21,
+    "manual/SCHEMA_MANUAL_DECISIONS.csv": 37
+  },
+  "status": "PASS"
+}

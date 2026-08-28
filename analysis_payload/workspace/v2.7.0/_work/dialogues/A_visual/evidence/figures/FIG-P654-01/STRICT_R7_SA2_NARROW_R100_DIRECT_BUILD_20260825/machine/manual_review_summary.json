@@ -1,0 +1,39 @@
+{
+  "handoff_id": "A-R7-P654-SA2-NARROW-DIRECT-20260825",
+  "model_route": "SA2=gpt-5.6-sol/max",
+  "glyph_rows": 95,
+  "glyph_visual_complete_pure_rows": 95,
+  "glyph_manual_failures": [],
+  "graphic_rows": 21,
+  "graphic_manual_failures": [],
+  "critical_pair_rows": 50,
+  "critical_pair_manual_failures": [],
+  "views_opened": [
+    "full_page_200dpi.png",
+    "figure_crop_300dpi.png",
+    "standalone_300dpi.png",
+    "grayscale_300dpi.png",
+    "after_text_measurement_overlay_300dpi.png"
+  ],
+  "semantic_rows": [
+    {
+      "CHECK": "MATH_SEMANTICS",
+      "REVIEWER": "SA2=gpt-5.6-sol/max",
+      "PASS": "TRUE",
+      "NOTE": "The local 10.7pt command changes only the rendering of mathematical n; the count meaning, bold-math identity, dependency arrows, posterior alpha+n, predictive fraction, and downstream reading order are unchanged."
+    },
+    {
+      "CHECK": "TEXT_CONSISTENCY",
+      "REVIEWER": "SA2=gpt-5.6-sol/max",
+      "PASS": "TRUE",
+      "NOTE": "The local 10.7pt command changes only the rendering of mathematical n; the count meaning, bold-math identity, dependency arrows, posterior alpha+n, predictive fraction, and downstream reading order are unchanged."
+    },
+    {
+      "CHECK": "READING_ORDER",
+      "REVIEWER": "SA2=gpt-5.6-sol/max",
+      "PASS": "TRUE",
+      "NOTE": "The local 10.7pt command changes only the rendering of mathematical n; the count meaning, bold-math identity, dependency arrows, posterior alpha+n, predictive fraction, and downstream reading order are unchanged."
+    }
+  ],
+  "manual_result": "LOCAL_SA2_PATCH_VERIFIED_REQUEST_FRESH_SA1"
+}

@@ -1,0 +1,24 @@
+﻿PAIR_ID,CATEGORY,OBJECT_A,OBJECT_B,A_SOURCE_LINES,B_SOURCE_LINES,MEASUREMENT_METHOD,OVERLAP_PIXEL_COUNT,CLIP_PIXEL_COUNT,MASK_CLEARANCE_PX,BBOX_CLEARANCE_PX,MIN_CLEARANCE_PX,REQUIRED_MIN_CLEARANCE_PX,PASS_FAIL,REASON
+OVL-01,TEXT_TEXT,L_POINT_F,L_SPLIT2R,42,35/35/35,final 300dpi color-separated foreground masks + mapped vector bboxes,0,0,4,0,0,4,FAIL,mapped text bboxes intersect; Goal F4 requires >=4px bbox clearance
+OVL-02,TEXT_TEXT,L_POINT_D,L_SPLIT3R,42,39/39/39,final 300dpi color-separated foreground masks + mapped vector bboxes,1,0,0,0,0,4,FAIL,mapped text bboxes intersect; Goal F4 requires >=4px bbox clearance
+OVL-03,TEXT_TEXT,R_LEAF_NOTE,CAPTION,66,68/68/68/68/68,final 300dpi color-separated foreground masks + mapped vector bboxes,0,0,28,5,5,4,PASS,
+OVL-04,TEXT_LINE_ARROW,L_POINT_F,LINE_RIGHT_Y2,42,34-35,"native final 300dpi foreground masks, source-geometry constrained",0,0,5,n/a,5,3,PASS,opaque label fill is assessed in final candidate pixels
+OVL-05,TEXT_LINE_ARROW,L_POINT_C,LINE_LEFT_Y2,42,32-33,"native final 300dpi foreground masks, source-geometry constrained",0,0,4,n/a,4,3,PASS,opaque label fill is assessed in final candidate pixels
+OVL-06,TEXT_LINE_ARROW,L_POINT_D,LINE_ROOT_X1,42,30-31,"native final 300dpi foreground masks, source-geometry constrained",0,0,5,n/a,5,3,PASS,point label is assessed against visible root split pixels
+OVL-07,TEXT_LINE_ARROW,L_POINT_E,LINE_X3_RIGHT,42,38-39,"native final 300dpi foreground masks, source-geometry constrained",0,0,5,n/a,5,3,PASS,opaque label fill is assessed in final candidate pixels
+OVL-08,TEXT_MARKER,L_POINT_A,MARKER_A,42,41-42,"native final 300dpi foreground masks, source-geometry constrained",0,0,6,n/a,6,3,PASS,final 300dpi point marker foreground
+OVL-09,TEXT_MARKER,L_POINT_B,MARKER_B,42,41-42,"native final 300dpi foreground masks, source-geometry constrained",0,0,6,n/a,6,3,PASS,final 300dpi point marker foreground
+OVL-10,TEXT_MARKER,L_POINT_C,MARKER_C,42,41-42,"native final 300dpi foreground masks, source-geometry constrained",0,0,9,n/a,9,3,PASS,final 300dpi point marker foreground
+OVL-11,TEXT_MARKER,L_POINT_D,MARKER_D,42,41-42,"native final 300dpi foreground masks, source-geometry constrained",0,0,6,n/a,6,3,PASS,final 300dpi point marker foreground
+OVL-12,TEXT_MARKER,L_POINT_E,MARKER_E,42,41-42,"native final 300dpi foreground masks, source-geometry constrained",0,0,6,n/a,6,3,PASS,final 300dpi point marker foreground
+OVL-13,TEXT_MARKER,L_POINT_F,MARKER_F,42,41-42,"native final 300dpi foreground masks, source-geometry constrained",0,0,6,n/a,6,3,PASS,final 300dpi point marker foreground
+OVL-14,TEXT_NODE_BORDER,NODE_ROOT,NODE_BORDER,54-61,17-19,mapped candidate-PDF vector node rectangle versus final 300dpi text ink,0,0,15,15,15,5,PASS,minimum text-ink-to-rounded-border clearance
+OVL-15,TEXT_NODE_BORDER,NODE_C,NODE_BORDER,54-61,17-19,mapped candidate-PDF vector node rectangle versus final 300dpi text ink,0,0,15,15,15,5,PASS,minimum text-ink-to-rounded-border clearance
+OVL-16,TEXT_NODE_BORDER,NODE_F,NODE_BORDER,54-61,17-19,mapped candidate-PDF vector node rectangle versus final 300dpi text ink,0,0,15,15,15,5,PASS,minimum text-ink-to-rounded-border clearance
+OVL-17,TEXT_NODE_BORDER,NODE_A,NODE_BORDER,54-61,17-19,mapped candidate-PDF vector node rectangle versus final 300dpi text ink,0,0,15,15,15,5,PASS,minimum text-ink-to-rounded-border clearance
+OVL-18,TEXT_NODE_BORDER,NODE_B,NODE_BORDER,54-61,17-19,mapped candidate-PDF vector node rectangle versus final 300dpi text ink,0,0,15,15,15,5,PASS,minimum text-ink-to-rounded-border clearance
+OVL-19,TEXT_NODE_BORDER,NODE_E,NODE_BORDER,54-61,17-19,mapped candidate-PDF vector node rectangle versus final 300dpi text ink,0,0,15,15,15,5,PASS,minimum text-ink-to-rounded-border clearance
+OVL-20,TEXT_PANEL_BORDER,ALL_TEXT,IMAGE_EDGE (no explicit panel border),26-68,n/a,mapped final-PDF vector bboxes to native 300dpi figure crop,0,0,13,13,13,6,PASS,closest title bbox is 13px from crop top; no panel border is drawn
+OVL-21,LEGEND_DATA_CURVE,L_LEGEND_SOLID/L_LEGEND_DASH,DATA_CURVE absent,45,n/a,visual/source object inventory,0,0,999,999,999,3,PASS,no data curve in this geometric tree figure
+OVL-22,ANNOTATION_DATA_CURVE,R_LEAF_NOTE,DATA_CURVE absent,66,n/a,visual/source object inventory,0,0,999,999,999,3,PASS,no data curve in this geometric tree figure
+OVL-23,ARROWHEAD_TEXT,TREE_ARROWHEADS,ALL_TREE_TEXT,"19,55-66",55-66,final 300dpi 1:1 inspection and vector geometry,0,0,15,15,15,3,PASS,"arrowheads terminate on node borders, outside text ink"

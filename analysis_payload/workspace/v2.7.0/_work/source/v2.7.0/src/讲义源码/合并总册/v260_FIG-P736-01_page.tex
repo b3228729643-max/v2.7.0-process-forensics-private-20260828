@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{733}
+\setcounter{chapter}{37}
+\setcounter{section}{1}
+\setcounter{figure}{1}
+\pagestyle{headings}
+\chaptermark{无监督学习方法总结}
+\sectionmark{聚类、降维、主题模型与采样的联系}
+“没有标签”只描述观测条件，并不规定输出。聚类、降维、话题分析与图分析具有不同任务输出；MCMC等对象则是推断引擎，不能只按名称混为一谈。图\ref{fig:V5-C08-method-map}只总结本讲义中的代表性主路线和特定模型/求解方案的条件性复用；这些边都不是方法族与引擎之间的必要或充分关系，共享引擎也不意味着方法等价。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/method_family_relationships.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看四条近似竖直实线对应的代表性主路线；再看话题分析到SVD、EM的两条短虚线，分别把它们理解为LSA、PLSA等特定方案中的条件性复用，而不是关系强弱；最后确认任一边都不构成必要或充分条件，复用同一引擎也不使两个方法等价。
+\end{document}

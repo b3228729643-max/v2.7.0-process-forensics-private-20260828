@@ -1,0 +1,19 @@
+# P640 SA2 R1 handoff
+
+- HANDOFF_ID: `C-FIG-P640-01-SA2-GEOMETRY-DIRECT-BUILD-R1`
+- RESULT: `FAIL_TO_SA2`
+- LOCAL_PASS: `NOT_CLAIMED`
+- SOURCE_SHA256: `FFAE906011BBAD21FD1AD53997693934828394C2AE516649CCCF8DA5938D9B89`
+- WRAPPER_SHA256: `495C5D0D36BE60B82BDB44AF4E352960680416785F991F8F0A15F0E495ABDC5C`
+- PDF_SHA256: `0ECC4B13E75A981AD23E7EBCA1CB2BAEBEF83D85EEE3A4518395C54AC296B87A`
+- PDF_BYTES/PAGES: `40373 / 1`
+- BUILD: `invocation1 / retry0 / natural exit0 / post-TeX0`
+- DENOMINATORS: `objects40 / glyphs160(145 nonspace) / unordered_pairs780 / critical76 / clips40 / views9 / hard_gates15`
+- SOLE_HARD_FAILURE: `H09 / PAIR_0779 / G08-G10 / .99 vertical tick penetrates open marker lower ring / native300dpi mask overlap=6px`
+- R168_FONT_HARD_FAILURES: `0`
+- NEXT_ROLE: `SA2`
+- TEX_RETRY: `NOT_AUTHORIZED`
+- SOURCE_COMMIT: `NOT_AUTHORIZED`
+- CENTRAL_STATE_INVENTORY_WRITES: `0`
+
+Read `REPORT.md`, `SA2_RESULT.json`, the three manual ledgers under `02_nontex_evidence`, `MANUAL_HARD_GATE_REVIEW.csv`, `MANUAL_VIEW_REVIEW.csv`, and the PAIR_0779 native/overlay artifacts. The manifest and final write-stop marker provide the sealed-file identity.

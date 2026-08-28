@@ -1,0 +1,10 @@
+ELEMENT_ID,OBJECT_ID,PANEL_ID,ROLE,SOURCE_FILE,SOURCE_LINE,DECLARED_PT,GRAPHICS_SCALE,EFFECTIVE_PT,TEXT_SAMPLE,SCRIPT_CLASS,MISSING_GLYPH,TOFU,WRONG_CODEPOINT,READABLE,OBVIOUS_IMBALANCE,R168_HARD_GATE_RESULT,MANUAL_REVIEW_NOTE
+E08,O08,P1,ENDPOINT_LABEL,fig_v1_c07_convex_set.tex,24,9.2,1.0,9.2,x,LATIN_LOWERCASE_MATH,false,false,false,true,false,CLEAR,italic x is intact and unambiguous at native1x and nearest8x
+E09,O09,P1,ENDPOINT_LABEL,fig_v1_c07_convex_set.tex,25,9.2,1.0,9.2,y,LATIN_LOWERCASE_MATH,false,false,false,true,false,CLEAR,italic y is intact and unambiguous at native1x and nearest8x
+E10,O10,P1,CONVEX_COMBINATION_LABEL,fig_v1_c07_convex_set.tex,28,9.2,1.0,9.2,"z=lambda x+(1-lambda)y",MATH_FORMULA,false,false,false,true,false,CLEAR,all operators parentheses lambda x y and z render with the intended codepoints
+E11A,O11,P1,REGION_LABEL_CN,fig_v1_c07_convex_set.tex,30,9.2,1.0,9.2,凸可行域,CJK,false,false,false,true,false,CLEAR,four Chinese glyphs are complete with no tofu or missing strokes
+E11B,O11,P1,REGION_LABEL_MATH,fig_v1_c07_convex_set.tex,30,9.2,1.0,9.2,C,LATIN_UPPERCASE_MATH,false,false,false,true,false,CLEAR,italic C is complete and visually integrated with the Chinese label
+E13,O13,P1,CONCLUSION_TEXT,fig_v1_c07_convex_set.tex,32-33,9.2,1.0,9.2,"x,y in C; lambda in [0,1] => lambda x+(1-lambda)y in C",MATH_FORMULA,false,false,false,true,false,CLEAR,entire implication renders on one readable line without clipping or substituted glyphs
+E14A,O14,P1,CAPTION_NUMBER_CN,fig_v1_c07_convex_set.tex,35,INHERITED_CAPTION_STYLE,1.0,INHERITED_RENDERED,图,CJK,false,false,false,true,false,CLEAR,caption number Chinese glyph is complete; common style is outside the exact read whitelist
+E14B,O14,P1,CAPTION_NUMBER_DIGITS,fig_v1_c07_convex_set.tex,35,INHERITED_CAPTION_STYLE,1.0,INHERITED_RENDERED,7.1,LATIN_DIGITS,false,false,false,true,false,CLEAR,caption digits and decimal point are complete and readable
+E15,O15,P1,CAPTION_TEXT,fig_v1_c07_convex_set.tex,35,INHERITED_CAPTION_STYLE,1.0,INHERITED_RENDERED,凸集中任意两点的线段仍位于可行域内,CJK,false,false,false,true,false,CLEAR,caption conclusion is complete and matches source and neighboring prose

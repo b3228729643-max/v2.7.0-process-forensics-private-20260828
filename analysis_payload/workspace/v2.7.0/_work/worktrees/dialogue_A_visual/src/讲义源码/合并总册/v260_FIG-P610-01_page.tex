@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{774}
+\setcounter{chapter}{32}
+\setcounter{figure}{9}
+\pagestyle{headings}
+\chaptermark{马尔可夫链蒙特卡罗法}
+\sectionmark{收敛与样本诊断}
+图 32.9 展示固定窗口下的 ACF 与有效样本量。下图对比接受--拒绝抽样与 MH：前者拒绝后重新独立提议且只输出接受值，后者拒绝后把当前状态复制到下一时刻。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_rejection_sampling_comparison.tex}
+\paragraph{后续例题。}
+单向提议即使保持目标分布，也可能缺少反向流而不可约；因此需要同时检查支持连通性与拒绝留驻结构。
+\end{document}

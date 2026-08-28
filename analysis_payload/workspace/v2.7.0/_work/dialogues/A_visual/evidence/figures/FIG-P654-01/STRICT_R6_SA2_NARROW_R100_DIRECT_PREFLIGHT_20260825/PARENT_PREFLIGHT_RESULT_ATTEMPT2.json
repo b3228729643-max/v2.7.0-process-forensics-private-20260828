@@ -1,0 +1,89 @@
+{
+  "parent_pid": 12808,
+  "parent_executable": "D:\\PowerShell7\\pwsh.exe",
+  "parent_powershell_version": "7.6.4",
+  "child_launch": {
+    "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "mode": "ordinary PowerShell child; inherited process environment; no -Environment override",
+    "exit_code": 0,
+    "stdout": "CHILD_PREFLIGHT_JSON_WRITTEN"
+  },
+  "expected_texcache": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825\\texcache",
+  "exact_environment_binding": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+  "diagnostic_attempt": 2,
+  "attempt_1_retained": {
+    "child_json": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825\\CHILD_PREFLIGHT.json",
+    "parent_json": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825\\PARENT_PREFLIGHT_RESULT.json",
+    "failure": "kpsewhich CP936 bytes decoded as UTF-8 by the first child harness"
+  },
+  "parent_environment": {
+    "TEXMFVAR": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+    "TEXMFCACHE": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+    "TEXMFCONFIG": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache"
+  },
+  "child_pid": 15672,
+  "child_environment": {
+    "TEXMFVAR": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+    "TEXMFCACHE": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+    "TEXMFCONFIG": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache"
+  },
+  "child_kpsewhich": [
+    {
+      "variable": "TEXMFVAR",
+      "env_visible_value": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+      "kpsewhich_executable": "D:\\texlive\\2026\\bin\\windows\\kpsewhich.exe",
+      "var_value_exit": 0,
+      "var_value_raw": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+      "var_value_canonical": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825\\texcache",
+      "var_value_exact_expected": true,
+      "var_value_canonical_expected": true,
+      "expand_exit": 0,
+      "expand_raw": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+      "expand_canonical": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825\\texcache",
+      "expand_exact_expected": true,
+      "expand_canonical_expected": true
+    },
+    {
+      "variable": "TEXMFCACHE",
+      "env_visible_value": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+      "kpsewhich_executable": "D:\\texlive\\2026\\bin\\windows\\kpsewhich.exe",
+      "var_value_exit": 0,
+      "var_value_raw": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+      "var_value_canonical": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825\\texcache",
+      "var_value_exact_expected": true,
+      "var_value_canonical_expected": true,
+      "expand_exit": 0,
+      "expand_raw": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+      "expand_canonical": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825\\texcache",
+      "expand_exact_expected": true,
+      "expand_canonical_expected": true
+    },
+    {
+      "variable": "TEXMFCONFIG",
+      "env_visible_value": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+      "kpsewhich_executable": "D:\\texlive\\2026\\bin\\windows\\kpsewhich.exe",
+      "var_value_exit": 0,
+      "var_value_raw": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+      "var_value_canonical": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825\\texcache",
+      "var_value_exact_expected": true,
+      "var_value_canonical_expected": true,
+      "expand_exit": 0,
+      "expand_raw": "D:/Users/ASUS/Desktop/机器学习/v2.7.0/_work/dialogues/A_visual/evidence/figures/FIG-P654-01/STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825/texcache",
+      "expand_canonical": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825\\texcache",
+      "expand_exact_expected": true,
+      "expand_canonical_expected": true
+    }
+  ],
+  "child_probe": {
+    "absolute_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P654-01\\STRICT_R6_SA2_NARROW_R100_DIRECT_PREFLIGHT_20260825\\texcache\\P654_R6_CHILD_WRITE_PROBE.txt",
+    "bytes": 42,
+    "mtime_utc": "2026-08-24T20:06:34.9690479Z",
+    "mtime_ticks_utc": 639231987949690479,
+    "sha256": "4ECE7048D6D816959FD437DC55A8C7A3AED6ED6C4320C474F6D5B965225C21C8",
+    "existed_before_this_attempt": true
+  },
+  "texcache_entry_count": 1,
+  "forbidden_tex_engines_invoked_by_parent": [],
+  "forbidden_tex_engines_invoked_by_child": [],
+  "pass": true
+}

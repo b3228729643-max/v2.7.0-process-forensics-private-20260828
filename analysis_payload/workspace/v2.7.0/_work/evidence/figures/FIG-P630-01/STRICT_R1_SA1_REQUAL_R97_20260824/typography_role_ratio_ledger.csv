@@ -1,0 +1,14 @@
+GATE,SCOPE,VALUES,EXACT_RATIO,LIMIT,DECISION,NOTE
+SOURCE_SAME_ROLE_PT,BASE_NODE,9.6|9.6|9.6|9.6,1.0,max/min<=1.03 and delta<=0.25pt,PASS,All base nodes use effective 9.6pt
+SOURCE_SAME_ROLE_PT,FORMULA_NODE,9.6|9.6,1.0,max/min<=1.03 and delta<=0.25pt,PASS,Both formula nodes use effective 9.6pt
+SOURCE_SAME_ROLE_PT,SUPPORT_ANNOTATION,9.6|9.6,1.0,max/min<=1.03 and delta<=0.25pt,PASS,Both side annotation nodes use effective 9.6pt
+SOURCE_EFFECTIVE_MIN,ALL_GENERAL_TEXT,9.6,1.0,effective_pt>=9.5pt,PASS,Boundary emphasis is 10.0pt; no resizebox scalebox or cumulative graphics scaling
+PIXEL_ROLE_MEDIAN,BASE_NODE_CJK,33|33|33|33,1.0,extreme ratio<=1.08,PASS,Four comparable base-node CJK element medians
+PIXEL_ROLE_MEDIAN,BASE_NODE_BASE_MATH_OPERATOR,33|33|33,1.0,extreme ratio<=1.08,PASS,Comparable slash/operator element medians
+PIXEL_ROLE_MEDIAN,FORMULA_NODE_CJK,33|33,1.0,extreme ratio<=1.08,PASS,Two formula-node CJK element medians
+PIXEL_ROLE_MEDIAN,FORMULA_NODE_X_HEIGHT,20|20,1.0,extreme ratio<=1.08,PASS,Mathematical capital K is correctly excluded and classified LATIN_UPPER_DIGIT
+PIXEL_ROLE_MEDIAN,FORMULA_NODE_NATURAL_SCRIPT,29|28.5,1.0175438596491228,extreme ratio<=1.08,PASS,No rounding used
+PIXEL_ROLE_MEDIAN,SUPPORT_ANNOTATION_CJK,33|33,1.0,extreme ratio<=1.08,PASS,Two side-annotation medians
+RELATIVE_ROLE_PT,FORMULA_TO_BASE,9.6/9.6,1.0,[1.00|1.18],PASS,Formula blocks retain the base source size
+RELATIVE_ROLE_PT,SUPPORT_ANNOTATION_TO_BASE,9.6/9.6,1.0,[0.95|1.10],PASS,Annotation source size is coordinated with base
+RELATIVE_ROLE_PT,EMPHASIS_TO_BASE,10.0/9.6,1.0416666666666667,[0.90|1.25],PASS,Boundary conclusion is visibly emphasized without dominating the page

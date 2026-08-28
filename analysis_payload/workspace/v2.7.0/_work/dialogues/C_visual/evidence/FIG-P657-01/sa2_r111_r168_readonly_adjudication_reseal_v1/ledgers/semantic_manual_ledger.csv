@@ -1,0 +1,17 @@
+semantic_id,reviewer,kind,direction_or_value,decision,meaning
+NODE01,/root/sa2_fig_p657_r111_r168_readonly_v1,node,Dirichlet prior family,CLEAR,left prior node
+NODE02,/root/sa2_fig_p657_r111_r168_readonly_v1,node,Beta K=2 prior family,CLEAR,right prior node and K=2 Dirichlet specialization
+NODE03,/root/sa2_fig_p657_r111_r168_readonly_v1,node,multinomial likelihood family,CLEAR,left likelihood node
+NODE04,/root/sa2_fig_p657_r111_r168_readonly_v1,node,binomial K=2 likelihood family,CLEAR,right likelihood node and K=2 multinomial specialization
+NODE05,/root/sa2_fig_p657_r111_r168_readonly_v1,node,categorical N=1,CLEAR,left single-trial node and one-trial multinomial specialization
+NODE06,/root/sa2_fig_p657_r111_r168_readonly_v1,node,Bernoulli K=2 N=1,CLEAR,right single-trial node
+REL01,/root/sa2_fig_p657_r111_r168_readonly_v1,conjugacy,Dirichlet down to multinomial,CLEAR,Dirichlet is conjugate prior family for multinomial likelihood family; not set inclusion
+REL02,/root/sa2_fig_p657_r111_r168_readonly_v1,conjugacy,Beta down to binomial,CLEAR,Beta is conjugate prior family for binomial likelihood family; not set inclusion
+REL03,/root/sa2_fig_p657_r111_r168_readonly_v1,special case,Dirichlet right to Beta with K=2,CLEAR,K=2 Dirichlet parameterization is Beta
+REL04,/root/sa2_fig_p657_r111_r168_readonly_v1,special case,multinomial right to binomial with K=2,CLEAR,K=2 multinomial count model is binomial
+REL05,/root/sa2_fig_p657_r111_r168_readonly_v1,special case,multinomial down to categorical with N=1,CLEAR,categorical is one-trial multinomial
+REL06,/root/sa2_fig_p657_r111_r168_readonly_v1,special case,binomial down to Bernoulli with N=1,CLEAR,Bernoulli is one-trial binomial
+REL07,/root/sa2_fig_p657_r111_r168_readonly_v1,special case,categorical right to Bernoulli with K=2,CLEAR,K=2 categorical observation is Bernoulli
+LEG01,/root/sa2_fig_p657_r111_r168_readonly_v1,legend,thick filled right arrow,CLEAR,denotes conjugacy
+LEG02,/root/sa2_fig_p657_r111_r168_readonly_v1,legend,thin open right arrow,CLEAR,denotes special-case relation
+CAPTION,/root/sa2_fig_p657_r111_r168_readonly_v1,caption,Fig 34.3 two lines,CLEAR,states all special cases and explicitly says thick arrow is conjugate prior not set inclusion

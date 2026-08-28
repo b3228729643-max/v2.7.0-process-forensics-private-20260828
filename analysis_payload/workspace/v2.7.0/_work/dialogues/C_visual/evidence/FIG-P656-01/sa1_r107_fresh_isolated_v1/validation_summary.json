@@ -1,0 +1,71 @@
+{
+  "handoff_id": "C-FIG-P656-01-R107-SA1-FRESH-ISOLATED-V1",
+  "outcome": "SA1_PASS_AWAIT_FRESH_ISOLATED_SA3",
+  "all_checks_pass": true,
+  "identity": {
+    "pdf_pages": 817,
+    "pdf_bytes": 4967249,
+    "pdf_sha256": "8811950621E2D64A3C2A8F0F7A52DD0FAC2BDB12018F3EA052C1F58C94EF8DF3",
+    "physical_page": 705,
+    "printed_page": 692,
+    "source_sha256": "BC954A32F6FC8811F9557AD9A3147795CB6CB467DEAEF6195A3A0B1D9E855852"
+  },
+  "denominators": {
+    "glyph": 90,
+    "drawing": 25,
+    "math_rule": 0,
+    "object": 115,
+    "unordered_pairs": 6555,
+    "critical": 34,
+    "clip": 115,
+    "views": 10,
+    "font_groups": 10,
+    "peer_role_groups": 10,
+    "hard_gates": 13
+  },
+  "pixel_gates": {
+    "raw_nonzero_relations": 3,
+    "raw_intersection_pixels": 97,
+    "illegal_overlap_pixels": 0,
+    "clip_pixels": 0,
+    "empty_masks": 0,
+    "mask_contamination_pixels": 0
+  },
+  "manual": {
+    "glyph_rows": 90,
+    "drawing_rows": 25,
+    "critical_rows": 34,
+    "view_rows": 10,
+    "font_rows": 10,
+    "peer_role_rows": 10,
+    "hard_gate_rows": 13,
+    "missing_duplicate_unknown_pending_fail": 0
+  },
+  "references": {
+    "glyph_masks_png_json": "90/90 each opened and parsed",
+    "drawing_masks_png_json": "25/25 each opened and parsed",
+    "glyph_cards": "90/90 opened",
+    "glyph_contact_sheets": "6/6 opened manually and machine-verified",
+    "critical_rois": "34/34 opened",
+    "critical_sheets": "6/6 opened manually and machine-verified",
+    "core_views": "10/10 referenced and opened"
+  },
+  "integrity": {
+    "csv_reparse": "PASS",
+    "json_reparse": "PASS",
+    "png_open": "PASS",
+    "id_safe_filename_unique": "PASS",
+    "all_pair_uniqueness_and_complete_combination": "PASS",
+    "manual_machine_report_reconciliation": "PASS",
+    "ads_extra_stream_count_before_manifest": 0,
+    "cache_pyc_count": 0
+  },
+  "manifest": {
+    "expected_entry_count": 406,
+    "self_exclusions": [
+      "artifact_manifest.csv (self-referential hash impossible)",
+      "WRITE_STOPPED (created after manifest as final content write)"
+    ],
+    "ordinary_file_count_after_seal_formula": "manifest_entry_count + 2"
+  }
+}

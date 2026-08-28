@@ -1,0 +1,81 @@
+{
+  "handoff_id": "C-FIG-P641-01-R110-SA3-FRESH-ISOLATED-V1",
+  "uid": "FIG-P641-01",
+  "assigned_scope": "Independent fresh-isolated R110 SA3 visual, semantic, object, glyph, codepoint, clipping, overlap and typography audit of the single current figure in the official full-book PDF.",
+  "reviewer_instance": "/root/sa3_fig_p641_r110_fresh_isolated_v1",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "xhigh",
+  "fork_turns": "none",
+  "official_pdf": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r110_fullbook\\main_full.pdf",
+    "bytes": 4967063,
+    "sha256": "B49C5CA920DDEF6C0CD004B2581EAF710F4D1E1115BB459A324A84594B3831F3"
+  },
+  "current_figure_source": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C04\\fig_v5_c04_bayes_markov_blanket.tex",
+    "bytes": 3008,
+    "sha256": "8773FF1EFFCB79DDD44734E72F0B0101292F135165021B32A760A6151DC0DE15"
+  },
+  "localization": {
+    "physical_pdf_page": 691,
+    "printed_page": 678,
+    "figure_number": "33.8",
+    "page_pt": [595.276, 841.89],
+    "native_300dpi_px": [2481, 3508],
+    "complete_figure_caption_crop_px": [250, 2291, 2209, 3042],
+    "standalone_body_crop_px": [479, 2291, 1959, 2901]
+  },
+  "frozen_denominator": {
+    "glyph_objects": 162,
+    "graphic_objects": 18,
+    "total_visible_foreground_objects": 180,
+    "all_unordered_pairs": 16110,
+    "critical_relations": 41,
+    "semantic_text_parents": 11,
+    "empty_glyph_masks": 0,
+    "empty_graphic_masks": 0,
+    "unaccounted_pdf_drawing_objects_in_body": 0
+  },
+  "review_findings": {
+    "expected_vs_extracted_semantic_text_mismatches": 0,
+    "missing_tofu_wrong_codepoint": 0,
+    "unreadable_or_severely_imbalanced_text": 0,
+    "true_clipping": 0,
+    "illegal_overlap_pairs": 0,
+    "semantic_or_geometric_errors": 0,
+    "raw_nonzero_contact_pairs": 14,
+    "raw_contact_pixel_sum": 258,
+    "raw_nonzero_contacts_explained_by_source_design": 14,
+    "nested_alpha_node_blanket_clearance_px": 7.0,
+    "nested_z_node_blanket_clearance_px": 10.0,
+    "nested_y_node_blanket_clearance_px": 10.0
+  },
+  "semantic_recomputation": "From pi(alpha,theta,z|y) proportional to p(z,y|theta)p(theta|alpha)p(alpha), conditioning on alpha,z,y makes p(alpha) constant in theta, so pi(theta|alpha,z,y) is proportional to p(theta|alpha)p(z,y|theta). The graph, formula, annotation and caption match this result.",
+  "policy_application": "Numeric micro-font, raster-height and taxonomy observations are advisory under current Goal/R168. None becomes a hard failure because every item is actually readable, no severe size imbalance is visible, all codepoints and ink are present, no clipping or illegal overlap exists, and the semantics and geometry are correct.",
+  "manual_ledger_counts": {
+    "glyph_rows": 162,
+    "graphic_rows": 18,
+    "critical_relation_rows": 41,
+    "semantic_text_rows": 11,
+    "hard_gate_rows": 6,
+    "view_rows": 36,
+    "typography_role_rows": 7
+  },
+  "completed": true,
+  "decision": "SA3_PASS_AWAIT_MAIN_C_LOCAL_PASS_ACCEPTANCE",
+  "unresolved": [
+    "Root/main C local PASS acceptance only; this SA3 decision is not a main, global or final acceptance."
+  ],
+  "next_action": "Root/main independently verifies this sealed evidence root and performs the main C local acceptance step without asking this SA3 instance to start another UID or role.",
+  "forbidden_action_counters": {
+    "old_p641_or_other_uid_conclusions_read": 0,
+    "git_calls": 0,
+    "tex_lualatex_latexmk_calls": 0,
+    "pdf_authoring_marker_calls": 0,
+    "pdf_source_chapter_writes": 0,
+    "central_state_or_inventory_writes": 0,
+    "agent_thread_status_history_enumerations": 0,
+    "second_uid_or_role_starts": 0,
+    "process_management_actions": 0
+  }
+}

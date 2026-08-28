@@ -1,0 +1,27 @@
+{
+  "coordinates": {
+    "O": [
+      0.0,
+      0.0
+    ],
+    "P": [
+      3.2,
+      0.8
+    ],
+    "X": [
+      2.7,
+      2.8
+    ]
+  },
+  "residual_X_minus_P": [
+    -0.5,
+    2.0
+  ],
+  "dot_P_with_residual": 0.0,
+  "norm_x_squared": 15.129999999999999,
+  "norm_p_squared": 10.880000000000003,
+  "norm_r_squared": 4.25,
+  "pythagoras_residual": -3.552713678800501e-15,
+  "semantic_direction": "O->P is projection p in S; P->X is residual r=x-p; O->X is x; dot(p,r)=0; residual length is the distance to S.",
+  "hard_geometry_status": "PASS"
+}

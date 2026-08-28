@@ -1,0 +1,19 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法初学者讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{747}
+\setcounter{chapter}{37}
+\setcounter{section}{4}
+\setcounter{figure}{6}
+\pagestyle{headings}
+\chaptermark{无监督学习方法总结}
+\sectionmark{方法选择地图}
+选择顺序应从输出语义开始，而不是从算法熟悉度开始。图\ref{fig:V5-C08-selection-map}给出完整决策路径：
+唯一虚线只允许验证阶段回修候选族；一旦锁定选择，最终测试与报告都不得回流到候选或验证过程。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C08/method_selection_decision_map.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看输出语义与必要约束；
+再看聚类、降维、话题、图排序四族如何进入验证协议、计算预算和失败模式筛选；
+最终沿实线锁定选择，并确认只允许验证阶段以虚线回修候选族，最终测试或报告绝不回流。
+\end{document}

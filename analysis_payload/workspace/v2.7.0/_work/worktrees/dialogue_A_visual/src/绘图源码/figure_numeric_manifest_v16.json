@@ -1,0 +1,2040 @@
+{
+  "schema_version": "1.6.0",
+  "manifest_id": "FIGURE-NUMERIC-V16",
+  "generated_stage": "R08",
+  "status": "current_recomputable_contract",
+  "scope": "R07逐图审查中parameter_reproducibility=failed的34个旧图对象，经P668/P669语义拆分后对应35个当前对象；另含P694算法语义契约1项与P580解析归一化支持/比率复算1项",
+  "selection_rule": "覆盖R07逐图审查中parameter_reproducibility=failed的34个旧figure对象；P668/P669将其中一个旧混合对象拆成两个当前可复算对象。另按P694 R3设计门加入1个非数值算法语义契约记录，并按P580 R1数学失败加入1个解析密度与比率记录，因此当前记录数为37。",
+  "evidence_policy": "记录实际带具体参数或数据且在R07或当前独立逐图审查中要求复算的图对象，并记录P694唯一算法语义契约例外；不记录逐图文件哈希，符合G0.6。",
+  "record_count": 37,
+  "identity_count": 37,
+  "identity_unique": true,
+  "record_schema": [
+    "figure_id",
+    "source_path",
+    "label",
+    "semantic_type",
+    "r07_failure.parameter_reproducibility",
+    "r07_failure.math_status",
+    "r07_failure.reason",
+    "data_provenance",
+    "parameters",
+    "recomputation",
+    "boundary_conditions",
+    "randomness",
+    "verification.status",
+    "verification.tolerance",
+    "verification.residual_or_result"
+  ],
+  "records": [
+    {
+      "figure_id": "FIG-V1-C03-01",
+      "source_path": "绘图源码/第01册_数学基础与统计学习基本理论/V1-C03/fig_v1_c03_gradient_contour.tex",
+      "label": "fig:V1-C03-gradient-contour",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "旧P=(2.1,0.7)不在显示等高线上，旧梯度与切向量点积1.8375而非0。"
+      },
+      "data_provenance": "TeX源内嵌解析函数和精确坐标。",
+      "parameters": {
+        "function": "x1^2/9+x2^2/3.24",
+        "contour_levels": [
+          1,
+          0.49,
+          0.16
+        ],
+        "point": [
+          2.4,
+          1.08
+        ],
+        "gradient": [
+          0.5333333333333333,
+          0.6666666666666666
+        ],
+        "tangent": [
+          1.25,
+          -1
+        ]
+      },
+      "recomputation": "代入P得f(P)=1；grad=(2x1/9,2x2/3.24)=(8/15,2/3)；grad dot (5/4,-1)=0。",
+      "boundary_conditions": "三条椭圆分别对应正等值1、0.49、0.16；P位于外层等值线。",
+      "randomness": "not_applicable_deterministic",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "contour_residual": 0,
+          "orthogonality_residual": 0
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V1-C04-01",
+      "source_path": "绘图源码/第01册_数学基础与统计学习基本理论/V1-C04/fig_v1_c04_cdf.tex",
+      "label": "fig:V1-C04-cdf",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "具体参数和固定数据没有对象级当前复现manifest。"
+      },
+      "data_provenance": "TeX源内嵌四个质量点与阶跃高度。",
+      "parameters": {
+        "support": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "cdf_levels": [
+          0,
+          0.15,
+          0.45,
+          0.8,
+          1
+        ],
+        "masses": [
+          0.15,
+          0.3,
+          0.35,
+          0.2
+        ]
+      },
+      "recomputation": "相邻CDF高度之差得到四个质量；均非负且总和为1。",
+      "boundary_conditions": "采用右连续阶跃；最左为0，最右达到1。",
+      "randomness": "not_applicable_fixed_distribution",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "mass_sum_residual": 0,
+          "minimum_mass": 0.15
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V1-C05-01",
+      "source_path": "绘图源码/第01册_数学基础与统计学习基本理论/V1-C05/fig_v1_c05_gaussian.tex",
+      "label": "fig:V1-C05-gaussian",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "passed",
+        "reason": "旧数值manifest锁定Python 3.11.9而当前验证运行时为3.12.13；数学复算本身通过。"
+      },
+      "data_provenance": "TeX源内嵌正态密度解析式；无外部数据。",
+      "parameters": {
+        "mu": 0,
+        "sigma": [
+          1,
+          2
+        ],
+        "plot_domain": [
+          -4,
+          4
+        ],
+        "plot_samples": 120
+      },
+      "recomputation": "f_sigma(x)=exp(-x^2/(2 sigma^2))/(sigma sqrt(2 pi))；全实线积分为1，峰值分别约0.39894228与0.19947114。",
+      "boundary_conditions": "面积为1指全实线解析密度；[-4,4]只是显示窗口。",
+      "randomness": "not_applicable_deterministic_analytic",
+      "verification": {
+        "status": "passed",
+        "tolerance": "analytic",
+        "residual_or_result": "归一化、对称中心及sigma增大时变宽降峰均通过；不再依赖旧Python版本字段。"
+      }
+    },
+    {
+      "figure_id": "FIG-V1-C06-01",
+      "source_path": "绘图源码/第01册_数学基础与统计学习基本理论/V1-C06/fig_v1_c06_binary_entropy.tex",
+      "label": "fig:V1-C06-binary-entropy",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "passed",
+        "reason": "旧数值manifest的Python版本契约过期；数学复算通过。"
+      },
+      "data_provenance": "TeX源内嵌二元熵解析式。",
+      "parameters": {
+        "plot_domain": [
+          0.001,
+          0.999
+        ],
+        "plot_samples": 160,
+        "log_base": 2
+      },
+      "recomputation": "H_b(p)=-[p ln p+(1-p)ln(1-p)]/ln2；H_b(1/2)=1，关于1/2对称且端点极限为0。",
+      "boundary_conditions": "绘图区避开log(0)，端点结论按极限解释。",
+      "randomness": "not_applicable_deterministic_analytic",
+      "verification": {
+        "status": "passed",
+        "tolerance": "analytic",
+        "residual_or_result": {
+          "H_at_half_residual": 0,
+          "symmetry": "exact"
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V2-C01-01",
+      "source_path": "绘图源码/第02册_基础监督学习方法/V2-C01/fig_v2_c01_separator.tex",
+      "label": "fig:V2-C01-separator",
+      "semantic_type": "geometric_or_partition_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "旧分隔线方向(5.6,-3.8)与旧w=(1.1,1.6)点积0.08。"
+      },
+      "data_provenance": "TeX源内嵌直线端点与法向箭头端点。",
+      "parameters": {
+        "line_endpoints": [
+          [
+            -2.8,
+            2.1
+          ],
+          [
+            2.8,
+            -1.7
+          ]
+        ],
+        "line_direction": [
+          5.6,
+          -3.8
+        ],
+        "normal": [
+          0.95,
+          1.4
+        ]
+      },
+      "recomputation": "5.6*0.95-3.8*1.4=0。",
+      "boundary_conditions": "w方向指向分数增大的半空间；样本仅作类别示意。",
+      "randomness": "not_applicable_deterministic_geometry",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "normal_dot_line_direction": 0
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V2-C02-02",
+      "source_path": "绘图源码/第02册_基础监督学习方法/V2-C02/fig_v2_c02_kd_tree.tex",
+      "label": "fig:V2-C02-kd-tree",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "六点固定数据没有对象级当前复现manifest。"
+      },
+      "data_provenance": "TeX源内嵌六个二维点和切分轴。",
+      "parameters": {
+        "points": [
+          [
+            7,
+            2
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            8,
+            1
+          ]
+        ],
+        "root": [
+          7,
+          2
+        ],
+        "root_axis": 1,
+        "level_2_axes": 2
+      },
+      "recomputation": "根按第一坐标分为x1<7的三点与x1>7的两点；左子树以x2=4分为3与7，右子树以x2=6把(8,1)置左。",
+      "boundary_conditions": "本固定数据无切分坐标并列；缺失右孩子显式保留为空。",
+      "randomness": "not_applicable_fixed_data",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "point_count": 6,
+          "split_predicate_failures": 0
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V2-C05-01",
+      "source_path": "绘图源码/第02册_基础监督学习方法/V2-C05/fig_v2_c05_sigmoid.tex",
+      "label": "fig:V2-C05-sigmoid",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "具体参数a=2.2和固定绘图公式没有对象级当前复现manifest。"
+      },
+      "data_provenance": "TeX源内嵌sigmoid解析式与对称检查位置。",
+      "parameters": {
+        "a": 2.2,
+        "plot_domain": [
+          -4.3,
+          4.3
+        ],
+        "plot_samples": 120
+      },
+      "recomputation": "sigma(z)=1/(1+exp(-z))；sigma(0)=1/2，sigma(-a)+sigma(a)=1；a=2.2时约为0.09975049与0.90024951。",
+      "boundary_conditions": "值域为(0,1)，无有限z达到端点。",
+      "randomness": "not_applicable_deterministic_analytic",
+      "verification": {
+        "status": "passed",
+        "tolerance": 1e-15,
+        "residual_or_result": {
+          "center_residual": 0,
+          "symmetry_sum_residual": 0
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V3-C01-01",
+      "source_path": "绘图源码/第03册_优化模型与序列模型/V3-C01/fig_v3_c01_simplex.tex",
+      "label": "fig:V3-C01-simplex",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "旧P*=(3.15,2.17)并非y=1.1与第二条约束的交点。"
+      },
+      "data_provenance": "TeX源内嵌两条约束端点与交点。",
+      "parameters": {
+        "constraint_1": "y=1.1",
+        "constraint_2_endpoints": [
+          [
+            2,
+            0.5
+          ],
+          [
+            4,
+            3.4
+          ]
+        ],
+        "intersection": [
+          2.413793103448276,
+          1.1
+        ]
+      },
+      "recomputation": "第二条约束斜率为29/20；x=2+(1.1-0.5)/(29/20)=70/29。",
+      "boundary_conditions": "交点位于单纯形内部显示区域。",
+      "randomness": "not_applicable_deterministic_geometry",
+      "verification": {
+        "status": "passed",
+        "tolerance": 1e-15,
+        "residual_or_result": {
+          "exact_rational_residual": 0,
+          "floating_line_residual": 2.22e-16
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V3-C02-01",
+      "source_path": "绘图源码/第03册_优化模型与序列模型/V3-C02/fig_v3_c02_margin.tex",
+      "label": "fig:V3-C02-margin",
+      "semantic_type": "geometric_or_partition_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "旧双箭头端点不在两条边界，长度也不等于2/||w||。"
+      },
+      "data_provenance": "TeX源内嵌三条平行线与间隔箭头。",
+      "parameters": {
+        "g": "(-5*x1+5*x2+4)/6",
+        "upper_endpoint": [
+          3.9,
+          4.3
+        ],
+        "lower_endpoint": [
+          5.1,
+          3.1
+        ],
+        "w": [
+          -0.8333333333333334,
+          0.8333333333333334
+        ]
+      },
+      "recomputation": "两端点分别满足g=1与g=-1；箭头长sqrt(1.2^2+1.2^2)=6sqrt(2)/5，而2/||w||同为6sqrt(2)/5。",
+      "boundary_conditions": "虚线为g=+1与g=-1，实线为g=0。",
+      "randomness": "not_applicable_deterministic_geometry",
+      "verification": {
+        "status": "passed",
+        "tolerance": 1e-15,
+        "residual_or_result": {
+          "upper_g_residual": 0,
+          "lower_g_residual": 1.11e-16,
+          "length_residual": 4.44e-16
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V3-C04-01",
+      "source_path": "绘图源码/第03册_优化模型与序列模型/V3-C04/fig_v3_c04_bound.tex",
+      "label": "fig:V3-C04-bound",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "旧曲线在theta=2处函数值和导数均不等，且局部B高于ell。"
+      },
+      "data_provenance": "TeX源内嵌两条二次函数。",
+      "parameters": {
+        "ell": "3.8-0.18*(theta-4.5)^2",
+        "B": "ell-0.16*(theta-2)^2",
+        "tangent_theta": 2,
+        "B_maximizer": 3.323529411764706
+      },
+      "recomputation": "B<=ell由平方项直接得到；theta=2时两者值2.675且导数0.9；解B'=0得113/34。",
+      "boundary_conditions": "代数下界关系对全部实数theta成立；绘图区只是有限窗口。",
+      "randomness": "not_applicable_deterministic_analytic",
+      "verification": {
+        "status": "passed",
+        "tolerance": 1e-15,
+        "residual_or_result": {
+          "value_residual": 0,
+          "derivative_residual": 0,
+          "maximizer_derivative_residual": 1.11e-16
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C01-02",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_transition_graph.tex",
+      "label": "fig:V5-C01-transition-graph",
+      "semantic_type": "state_or_network_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "具体转移参数无对象级manifest，且与列随机PageRank约定之间缺显式转置桥。"
+      },
+      "data_provenance": "TeX源内嵌同一两状态转移核的行随机A、列随机P=A^T及两种状态推进。",
+      "parameters": {
+        "A": [
+          [
+            0.7,
+            0.3
+          ],
+          [
+            0.2,
+            0.8
+          ]
+        ],
+        "P": [
+          [
+            0.7,
+            0.2
+          ],
+          [
+            0.3,
+            0.8
+          ]
+        ],
+        "stationary_row": [
+          0.4,
+          0.6
+        ]
+      },
+      "recomputation": "A各行和为1，rho A=rho；P=A^T各列和为1。对同一条i→j有a_ij=P_ji；令p=rho^T，则Pp=(rho A)^T。",
+      "boundary_conditions": "箭头i→j的物理方向不随转置改变；行随机A用a_ij并作rho_(t+1)=rho_t A，列随机P用P_ji并作p^(t+1)=Pp^(t)，两种约定不可混写。",
+      "randomness": "not_applicable_fixed_transition_kernel",
+      "verification": {
+        "status": "passed",
+        "tolerance": 1e-15,
+        "residual_or_result": {
+          "maximum_row_sum_residual": 0,
+          "maximum_column_sum_residual": 0,
+          "stationarity_max_residual": 5.55e-17,
+          "maximum_transpose_residual": 0,
+          "edge_index_mapping": "a_ij=P_ji exact",
+          "state_update_bridge": "exact"
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C01-03",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_stationary_fixed_point.tex",
+      "label": "fig:V5-C01-stationary-fixed-point",
+      "semantic_type": "geometric_or_partition_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "固定映射和数值固定点没有对象级当前复现manifest。"
+      },
+      "data_provenance": "TeX源内嵌一维仿射映射。",
+      "parameters": {
+        "map": "0.2+0.5*r",
+        "domain": [
+          0,
+          1
+        ],
+        "fixed_point": 0.4,
+        "contraction_factor": 0.5
+      },
+      "recomputation": "解r=0.2+0.5r得r*=0.4，且r_(t+1)-0.4=0.5(r_t-0.4)。",
+      "boundary_conditions": "映射把[0,1]送入[0.2,0.7]。",
+      "randomness": "not_applicable_deterministic_map",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "fixed_point_residual": 0,
+          "contraction_identity": "exact"
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C01-05",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_return_time.tex",
+      "label": "fig:V5-C01-return-time",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "固定状态序列和到达时间没有对象级当前复现manifest。"
+      },
+      "data_provenance": "TeX源内嵌t=0到7的固定状态序列。",
+      "parameters": {
+        "states": [
+          "j",
+          "k",
+          "k",
+          "i",
+          "k",
+          "i",
+          "i",
+          "k"
+        ],
+        "first_arrival_time": 3,
+        "first_positive_return_elapsed": 2
+      },
+      "recomputation": "首次出现i在t=3；以t=3为新原点，下一次出现i在t=5，故首次正回返耗时2。",
+      "boundary_conditions": "到达时间允许n=0，正回返时间要求n>=1；t=6不是新的首次事件。",
+      "randomness": "not_applicable_fixed_illustrative_path",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "arrival_time": 3,
+          "positive_return_time": 2
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C01-06",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_detailed_balance_counterexample.tex",
+      "label": "fig:V5-C01-detailed-balance",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "固定流量0.12与A=I2反例没有对象级当前复现manifest。"
+      },
+      "data_provenance": "TeX源内嵌相等边流量和单位矩阵反例。",
+      "parameters": {
+        "balanced_flux": 0.12,
+        "counterexample_A": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "recomputation": "左图两向平稳流量均为0.12；右图跨状态两侧流量均为0，但任意概率向量都平稳，故不唯一。",
+      "boundary_conditions": "细致平衡推出平稳，不推出不可约性或唯一性。",
+      "randomness": "not_applicable_fixed_counterexample",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "flux_difference": 0,
+          "identity_matrix_stationary_family": "all_probability_vectors"
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C01-07",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C01/fig_v5_c01_random_walk.tex",
+      "label": "fig:V5-C01-random-walk",
+      "semantic_type": "state_or_network_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "简单游走和惰性游走的固定概率没有对象级当前复现manifest。"
+      },
+      "data_provenance": "TeX源内嵌三节点路径的两个转移核。",
+      "parameters": {
+        "simple_P": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0.5,
+            0,
+            0.5
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "lazy_P": [
+          [
+            0.5,
+            0.5,
+            0
+          ],
+          [
+            0.25,
+            0.5,
+            0.25
+          ],
+          [
+            0,
+            0.5,
+            0.5
+          ]
+        ],
+        "stationary": [
+          0.25,
+          0.5,
+          0.25
+        ]
+      },
+      "recomputation": "两个矩阵行和均为1，pi P=pi；简单游走周期2，加入1/2自环后周期1。",
+      "boundary_conditions": "惰性核为(I+P)/2，保持原平稳分布。",
+      "randomness": "not_applicable_fixed_transition_kernels",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "row_sum_residual": 0,
+          "stationarity_residual": 0,
+          "periods": [
+            2,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C02-02",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_mc_integral.tex",
+      "label": "fig:V5-C02-mc-integral",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "passed",
+        "reason": "旧数值manifest运行时版本不匹配；数学复算通过。"
+      },
+      "data_provenance": "TeX源内嵌h(x)=exp(-x^2/2)和四个固定横坐标。",
+      "parameters": {
+        "domain": [
+          0,
+          1
+        ],
+        "fixed_x": [
+          0.1,
+          0.4,
+          0.7,
+          0.8
+        ],
+        "displayed_y": [
+          0.995,
+          0.9231,
+          0.7827,
+          0.7261
+        ],
+        "reference_integral_display": 0.856
+      },
+      "recomputation": "积分=sqrt(pi/2)*erf(1/sqrt(2))=0.8556243919；四个纵坐标由exp(-x^2/2)计算。",
+      "boundary_conditions": "样本点是冻结的说明性点，不声称随机种子；虚线是解析积分参考值。",
+      "randomness": "not_applicable_fixed_sample_coordinates",
+      "verification": {
+        "status": "passed",
+        "tolerance": {
+          "point_rounding": 5e-05,
+          "integral_rounding": 0.0005
+        },
+        "residual_or_result": {
+          "max_point_rounding_error": 4.904e-05,
+          "integral_rounding_error": 0.0003756081
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C02-03",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_running_mean.tex",
+      "label": "fig:V5-C02-running-mean",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "passed",
+        "reason": "旧数值manifest运行时版本不匹配；数学复算通过。"
+      },
+      "data_provenance": "TeX源和图注内嵌固定序列。",
+      "parameters": {
+        "sample": [
+          0.8,
+          0.1,
+          0.7,
+          0.4
+        ],
+        "squares": [
+          0.64,
+          0.01,
+          0.49,
+          0.16
+        ],
+        "running_means": [
+          0.64,
+          0.325,
+          0.38,
+          0.325
+        ],
+        "reference": 0.3333333333333333
+      },
+      "recomputation": "逐项平方并取前缀平均；均值依次为0.64、0.325、0.38、0.325。",
+      "boundary_conditions": "固定四点只说明有限样本轨迹不必单调。",
+      "randomness": "not_applicable_fixed_sequence",
+      "verification": {
+        "status": "passed",
+        "tolerance": 1e-06,
+        "residual_or_result": {
+          "running_mean_max_error": 0,
+          "reference_line_error": 3.333333333e-07
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C02-04",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_generalized_inverse.tex",
+      "label": "fig:V5-C02-generalized-inverse",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "跳点和固定u值没有对象级当前复现manifest。"
+      },
+      "data_provenance": "TeX源内嵌连续线段及离散CDF的三个跳点。",
+      "parameters": {
+        "continuous_display_line": [
+          [
+            0,
+            0
+          ],
+          [
+            3.8,
+            3
+          ]
+        ],
+        "continuous_level_display": 1.8,
+        "continuous_Q_display": 2.28,
+        "discrete_breakpoints": [
+          1,
+          2.3,
+          3.6
+        ],
+        "discrete_cdf_levels": [
+          0.2,
+          0.7,
+          1
+        ],
+        "u_checks": [
+          0.7,
+          0.72
+        ]
+      },
+      "recomputation": "连续面板2.28=1.8*3.8/3；按Q(u)=inf{x:F(x)>=u}，Q(0.7)=2.3且Q(0.72)=3.6。",
+      "boundary_conditions": "在跳点处采用首次达到规则，包含等号。",
+      "randomness": "not_applicable_deterministic_CDF",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "continuous_intersection_residual": 0,
+          "discrete_quantiles": [
+            2.3,
+            3.6
+          ]
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-P577-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_envelope.tex",
+      "label": "fig:V5-C02-rejection-envelope",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "resolved",
+        "math_status": "passed",
+        "reason": "v2.7.0 已将图源、正文与数值清单统一到 c=8/5，并登记两个固定候选点及完整面积口径。"
+      },
+      "data_provenance": "TeX源内嵌Beta(2,2)密度、Uniform(0,1)提议、常数包络c=8/5和两个固定候选点；全部数值可由有理数精确复算。",
+      "parameters": {
+        "p": "6*y*(1-y)",
+        "q": "Uniform(0,1)",
+        "support": [
+          0,
+          1
+        ],
+        "c": 1.6,
+        "c_exact": "8/5",
+        "candidate_points": [
+          {
+            "role": "accept",
+            "y": 0.25,
+            "y_exact": "1/4",
+            "h": 0.8,
+            "h_exact": "4/5",
+            "p": 1.125,
+            "p_exact": "9/8",
+            "U": 0.5,
+            "U_exact": "1/2",
+            "p_over_cq": 0.703125,
+            "p_over_cq_exact": "45/64",
+            "decision": "accept"
+          },
+          {
+            "role": "ordinary_reject",
+            "y": 0.75,
+            "y_exact": "3/4",
+            "h": 1.35,
+            "h_exact": "27/20",
+            "p": 1.125,
+            "p_exact": "9/8",
+            "U": 0.84375,
+            "U_exact": "27/32",
+            "p_over_cq": 0.703125,
+            "p_over_cq_exact": "45/64",
+            "decision": "reject_envelope_still_valid"
+          }
+        ]
+      },
+      "recomputation": "积分p=积分q=1；p在y=1/2达到3/2，故min(cq-p)=8/5-3/2=1/10。接受率1/c=5/8，平均提议数c=8/5，拒绝区面积c-1=3/5。两点分别给出U=1/2与27/32，阈值均为45/64。",
+      "boundary_conditions": "定义域[0,1]，端点密度为0；算法接受门为Ucq(Y)<=p(Y)，包含等号；支配条件按一般形式为p<=cq几乎处处。",
+      "randomness": "algorithmic_U_is_Uniform_0_1; displayed_points_are_fixed_reproducible_examples",
+      "verification": {
+        "status": "passed_exact_formula_visual_recheck_fail_pending_relayout",
+        "tolerance": 1e-12,
+        "residual_or_result": {
+          "p_integral_residual": 0,
+          "q_integral_residual": 0,
+          "envelope_min_gap": 0.1,
+          "envelope_min_gap_at_y": 0.5,
+          "acceptance_rate": 0.625,
+          "mean_proposals_per_accept": 1.6,
+          "rejection_region_area": 0.6,
+          "accept_height_margin_p_minus_h": 0.325,
+          "accept_normalized_margin": 0.203125,
+          "reject_height_excess_h_minus_p": 0.225,
+          "reject_normalized_excess": 0.140625,
+          "candidate_count": 2
+        }
+      },
+      "legacy_figure_id": "FIG-V5-C02-05",
+      "canonical_uid": "FIG-P577-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-P580-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_is_support.tex",
+      "label": "fig:V5-C02-is-support",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "resolved",
+        "math_status": "passed",
+        "reason": "v2.7.0以共同有限域上的三条解析归一化密度替换旧未归一化曲线；代表点与密度比由同一公式派生，不再以曲线竖直差冒充比率。"
+      },
+      "data_provenance": "TeX源内嵌共同定义域[0,5]、解析目标密度、左右提议密度与三个固定代表点；全部积分、支持关系和比率可由有理数精确复算。",
+      "parameters": {
+        "domain": [
+          0,
+          5
+        ],
+        "p": "6*x*(5-x)/125",
+        "q_left": "(2/5)*1_{[0,5/2]}(x)",
+        "q_left_support_boundary": 2.5,
+        "q_right": "1/5",
+        "representative_points": [
+          {
+            "x": 1,
+            "p_exact": "24/125",
+            "q_right_exact": "1/5",
+            "w_exact": "24/25",
+            "w_display": 0.96,
+            "marker": "circle"
+          },
+          {
+            "x": 2.5,
+            "x_exact": "5/2",
+            "p_exact": "3/10",
+            "q_right_exact": "1/5",
+            "w_exact": "3/2",
+            "w_display": 1.5,
+            "marker": "square"
+          },
+          {
+            "x": 4,
+            "p_exact": "24/125",
+            "q_right_exact": "1/5",
+            "w_exact": "24/25",
+            "w_display": 0.96,
+            "marker": "triangle"
+          }
+        ],
+        "left_missing_target_mass_exact": "1/2"
+      },
+      "recomputation": "积分_0^5 6x(5-x)/125 dx=1；积分_0^(5/2) 2/5 dx=1；积分_0^5 1/5 dx=1。左图(5/2,5)上q_L=0而p>0，且该区目标质量为1/2；右图q_R>0，w(x)=6x(5-x)/25，在x=1,5/2,4依次为24/25、3/2、24/25。",
+      "boundary_conditions": "p在[0,5]非负且端点为0；q_L在x=5/2的单点取值不影响密度等价类，但其右侧开区间为零并违反p绝对连续于q_L；q_R在全域恒为1/5，故p绝对连续于q_R。支持覆盖仅是合法性条件，不推出低方差或可靠性。",
+      "randomness": "not_applicable_deterministic_analytic_densities",
+      "verification": {
+        "status": "passed_exact_formula_visual_recheck_fail_pending_relayout",
+        "tolerance": 1e-12,
+        "residual_or_result": {
+          "p_integral_residual": 0,
+          "q_left_integral_residual": 0,
+          "q_right_integral_residual": 0,
+          "representative_weight_max_residual": 0,
+          "left_missing_target_mass": 0.5,
+          "left_support_coverage": false,
+          "right_support_coverage": true,
+          "vertical_distance_used_as_ratio": false
+        }
+      },
+      "legacy_figure_id": "FIG-V5-C02-07",
+      "canonical_uid": "FIG-P580-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-V5-C02-08",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_weight_ess.tex",
+      "label": "fig:V5-C02-weight-ess",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "passed",
+        "reason": "旧数值manifest运行时版本不匹配；数学复算通过。"
+      },
+      "data_provenance": "TeX源内嵌四个归一化权重。",
+      "parameters": {
+        "weights": [
+          0.9,
+          0.05,
+          0.03,
+          0.02
+        ]
+      },
+      "recomputation": "权重和为1，平方和0.8138，ESS=1/0.8138=1.228802，图注正确舍入为1.23。",
+      "boundary_conditions": "ESS是启发式诊断，不能单独证明估计可靠。",
+      "randomness": "not_applicable_fixed_weights",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0.005,
+        "residual_or_result": {
+          "weight_sum_residual": 0,
+          "ESS": 1.228802,
+          "display_rounding_error": 0.001198
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C02-09",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rmse_rate.tex",
+      "label": "fig:V5-C02-rmse-rate",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "passed",
+        "reason": "旧数值manifest运行时版本不匹配；数学复算通过。"
+      },
+      "data_provenance": "TeX源内嵌N^(-1/2)的六个坐标。",
+      "parameters": {
+        "N": [
+          1,
+          4,
+          16,
+          64,
+          256,
+          1024
+        ],
+        "RMSE": [
+          1,
+          0.5,
+          0.25,
+          0.125,
+          0.0625,
+          0.03125
+        ],
+        "constant": 1
+      },
+      "recomputation": "对每个N直接计算N^(-1/2)，双对数斜率为-1/2。",
+      "boundary_conditions": "只适用于独立同分布且方差有限的理论速率。",
+      "randomness": "not_applicable_analytic_rate",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "coordinate_max_error": 0,
+          "loglog_slope": -0.5
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-02",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_markov_chain_path.tex",
+      "label": "fig:V5-C03-markov-chain-path",
+      "semantic_type": "state_or_network_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "旧状态图缺b到c边，但固定路径a,b,b,c,c包含该转移。"
+      },
+      "data_provenance": "TeX源内嵌有限状态支持图与固定路径。",
+      "parameters": {
+        "path": [
+          "a",
+          "b",
+          "b",
+          "c",
+          "c"
+        ],
+        "required_edges": [
+          "a->b",
+          "b->b",
+          "b->c",
+          "c->c"
+        ]
+      },
+      "recomputation": "逐相邻对回放固定路径，四条所需有向边均存在于当前支持图。",
+      "boundary_conditions": "边表示对应邻域有正转移质量；自环允许重复状态。",
+      "randomness": "not_applicable_fixed_support_example",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "required_edge_count": 4,
+          "missing_edges": 0
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-06",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_acceptance_function.tex",
+      "label": "fig:V5-C03-acceptance-function",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "passed",
+        "reason": "旧数值manifest运行时版本不匹配；数学复算通过。"
+      },
+      "data_provenance": "TeX源内嵌分段函数alpha=min(1,r)。",
+      "parameters": {
+        "r_domain": [
+          0,
+          2.5
+        ],
+        "breakpoint": 1
+      },
+      "recomputation": "0<=r<=1时alpha=r，r>=1时alpha=1；r=1处连续。",
+      "boundary_conditions": "MH比值非负；独立提议时可改写为w(y)/w(x)。",
+      "randomness": "not_applicable_deterministic_piecewise_function",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "breakpoint_left": 1,
+          "breakpoint_right": 1,
+          "continuity_residual": 0
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-09",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_trace_running_mean.tex",
+      "label": "fig:V5-C03-trace-running-mean",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "resolved",
+        "math_status": "passed",
+        "reason": "v2.7.0 R3将t=6至20的15个图示点统一为固定轨迹保留样本前缀均值的四位小数。"
+      },
+      "data_provenance": "TeX源内嵌20步固定轨迹和预热后运行均值。",
+      "parameters": {
+        "trace": [
+          3.8,
+          3.4,
+          3.0,
+          2.7,
+          2.4,
+          1.9,
+          2.2,
+          1.7,
+          2.1,
+          2.0,
+          2.3,
+          1.8,
+          2.1,
+          1.9,
+          2.2,
+          2.0,
+          1.8,
+          2.1,
+          2.0,
+          1.9
+        ],
+        "warmup_end": 5,
+        "running_mean_t_range": [
+          6,
+          20
+        ],
+        "running_means_rounded_4dp": [
+          1.9000,
+          2.0500,
+          1.9333,
+          1.9750,
+          1.9800,
+          2.0333,
+          2.0000,
+          2.0125,
+          2.0000,
+          2.0200,
+          2.0182,
+          2.0000,
+          2.0077,
+          2.0071,
+          2.0000
+        ],
+        "coordinate_tolerance": 0.00005
+      },
+      "recomputation": "舍弃t<=5后，对t=6至20逐步计算保留样本前缀均值。",
+      "boundary_conditions": "固定轨迹仅说明诊断读法，不构成收敛证明。",
+      "randomness": "not_applicable_fixed_trace",
+      "verification": {
+        "status": "passed_exact_formula_with_four_decimal_rounding",
+        "tolerance": 0.00005,
+        "residual_or_result": {
+          "max_coordinate_error": 0.0000428571,
+          "limitation": "15/15个图示点均与精确保留样本前缀均值的四位小数舍入结果一致；最大舍入误差出现在t=19。"
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C03-10",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C03/fig_v5_c03_autocorrelation_ess.tex",
+      "label": "fig:V5-C03-autocorrelation-ess",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "resolved",
+        "math_status": "passed",
+        "reason": "当前图源与数值清单统一为k=0到6的单组固定经验ACF及有限样本加权截断规则。"
+      },
+      "data_provenance": "TeX源内嵌k=0到6的七个固定经验ACF坐标；图中不固定样本量n，也不声称数值ESS。",
+      "parameters": {
+        "acf_lags": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "acf_values": [
+          1,
+          0.86,
+          0.74,
+          0.64,
+          0.55,
+          0.47,
+          0.4
+        ],
+        "lag_window_K": 6,
+        "sample_size_condition": "integer n>K, hence n>=7",
+        "finite_sample_weight": "1-k/n",
+        "truncation_rule": "include lags 1 through K=6; later lags are not drawn and not included",
+        "numeric_ess_claim": false
+      },
+      "recomputation": "sum_{k=1}^6 rho_k=3.66，sum_{k=1}^6 k*rho_k=11.21，因此hat_tau_{6,n}=1+2*sum_{k=1}^6(1-k/n)rho_k=8.32-22.42/n，hat_N_eff=n/hat_tau_{6,n}。",
+      "boundary_conditions": "K=6<n且hat_tau_{K,n}>0；后续滞后未绘出且未纳入；有限轨迹诊断不是收敛证明。",
+      "randomness": "not_applicable_fixed_ACF",
+      "verification": {
+        "status": "passed_exact_coordinates_and_symbolic_weighted_formula",
+        "tolerance": 0,
+        "residual_or_result": {
+          "coordinate_count": 7,
+          "sum_rho_1_to_6": 3.66,
+          "sum_k_rho_1_to_6": 11.21,
+          "tau_formula": "8.32-22.42/n",
+          "minimum_allowed_n": 7,
+          "tau_at_n_7": 5.1171428571,
+          "ess_at_n_7": 1.3679508654,
+          "qualitative_conclusion": "positive weighted autocorrelations increase the variance factor and reduce ESS for fixed n"
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-P632-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_conditional_slice.tex",
+      "label": "fig:V5-C04-conditional-slice",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "resolved",
+        "math_status": "passed",
+        "reason": "v2.7.0以同一rho=3/5二元正态解析模型统一派生联合等高线、两条原始截面、边缘分母和归一化满条件密度，替换旧未归一化且彼此不相容的说明曲线。"
+      },
+      "data_provenance": "TeX源内嵌零均值、单位边缘方差、相关系数3/5的二元正态，固定a=1、b=4/5；等高线半轴、两条截面、边缘分母与满条件参数均由同一组宏解析派生。",
+      "parameters": {
+        "rho_exact": "3/5",
+        "fixed_a_exact": "1",
+        "fixed_b_exact": "4/5",
+        "mean_vector": [
+          0,
+          0
+        ],
+        "covariance_matrix_exact": [
+          [
+            "1",
+            "3/5"
+          ],
+          [
+            "3/5",
+            "1"
+          ]
+        ],
+        "joint_density": "5/(8*pi)*exp[-25/32*(x1^2-(6/5)*x1*x2+x2^2)]",
+        "covariance_eigenvalues_exact": [
+          "8/5",
+          "2/5"
+        ],
+        "principal_axis_rotation_degrees": 45,
+        "mahalanobis_radii": [
+          2.25,
+          1.55,
+          0.9
+        ],
+        "ellipse_semiaxes_formula": {
+          "long": "c*sqrt(8/5)",
+          "short": "c*sqrt(2/5)"
+        },
+        "ellipse_semiaxes_decimal": [
+          {
+            "c": 2.25,
+            "long": 2.8460498941515415,
+            "short": 1.4230249470757708
+          },
+          {
+            "c": 1.55,
+            "long": 1.9606121493043953,
+            "short": 0.9803060746521977
+          },
+          {
+            "c": 0.9,
+            "long": 1.1384199576606167,
+            "short": 0.5692099788303083
+          }
+        ],
+        "x1_given_x2_b": {
+          "mean_exact": "12/25",
+          "variance_exact": "16/25",
+          "standard_deviation_exact": "4/5"
+        },
+        "x2_given_x1_a": {
+          "mean_exact": "3/5",
+          "variance_exact": "16/25",
+          "standard_deviation_exact": "4/5"
+        },
+        "conditional_peak_exact": "5/(4*sqrt(2*pi))",
+        "conditional_peak_decimal": 0.49867785050179086,
+        "marginal_denominators": {
+          "m2_b_exact": "exp(-8/25)/sqrt(2*pi)",
+          "m2_b_decimal": 0.28969155276148273,
+          "m1_a_exact": "exp(-1/2)/sqrt(2*pi)",
+          "m1_a_decimal": 0.24197072451914337
+        },
+        "raw_slice_peaks": {
+          "pi_mean1_b": 0.14446276083962234,
+          "pi_a_mean2": 0.1206654407875674
+        },
+        "zero_marginal_policy": "use_a_preselected_measurable_regular_conditional_version_unique_only_marginal_almost_everywhere"
+      },
+      "recomputation": "det(Sigma)=16/25，Sigma的特征值为8/5与2/5并给出45度主轴；pi(x1,x2)=5/(8*pi)exp[-25/32(x1^2-(6/5)x1x2+x2^2)]。固定b=4/5得到X1|X2=b~N(12/25,16/25)，固定a=1得到X2|X1=a~N(3/5,16/25)；两条条件密度峰值均为5/(4sqrt(2*pi))且全实线积分为1。原始截面分别除以m2(b)=phi(4/5)与m1(a)=phi(1)。",
+      "boundary_conditions": "本高斯模型的m2(4/5)与m1(1)严格为正；一般零边缘处不使用密度比，而采用预先指定的可测正则条件版本，该版本仅在边缘几乎处处意义下唯一。",
+      "randomness": "not_applicable_deterministic_analytic_bivariate_normal",
+      "verification": {
+        "status": "passed_exact_formula_root_r3p4_visual_fail_pending_relayout",
+        "tolerance": 1e-12,
+        "residual_or_result": {
+          "joint_normalization_residual": 0,
+          "covariance_eigenvalue_residual": 0,
+          "conditional_mean_residual": 0,
+          "conditional_variance_residual": 0,
+          "conditional_full_line_integral_residual": 0,
+          "raw_slice_peak_factorization_residual": 0,
+          "conditional_peak": 0.49867785050179086,
+          "m2_b": 0.28969155276148273,
+          "m1_a": 0.24197072451914337,
+          "zero_denominator_case_triggered_in_displayed_example": false
+        }
+      },
+      "legacy_figure_id": "FIG-V5-C04-02",
+      "canonical_uid": "FIG-P632-01",
+      "v240_resolution_status": "RESOLVED_EVIDENCE_CLEAR"
+    },
+    {
+      "figure_id": "FIG-V5-C04-06",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_bivariate_normal_conditionals.tex",
+      "label": "fig:V5-C04-bivariate-normal-conditionals",
+      "semantic_type": "process_or_algorithm_flow",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "旧a=.95、b=.75、两条件均值与指数系数无法来自同一rho，且无对象级manifest。"
+      },
+      "data_provenance": "TeX源内嵌标准二元正态协方差和两条条件密度。",
+      "parameters": {
+        "rho": 0.6,
+        "a": 1,
+        "b": 0.75,
+        "conditional_means": [
+          0.45,
+          0.6
+        ],
+        "conditional_variance": 0.64,
+        "exponent_coefficient": 0.78125,
+        "density_peak_display": 0.498678,
+        "ellipse_rotation_degrees": 45,
+        "ellipse_axis_ratio": 2
+      },
+      "recomputation": "rho*b=.45，rho*a=.60，1-rho^2=.64，1/(2*.64)=.78125，峰值1/sqrt(2*pi*.64)=.49867785；协方差特征值1.6与.4给出轴比2和45度方向。",
+      "boundary_conditions": "要求|rho|<1；此处0.6满足正定性。",
+      "randomness": "not_applicable_deterministic_analytic",
+      "verification": {
+        "status": "passed",
+        "tolerance": 1e-06,
+        "residual_or_result": {
+          "parameter_identity_max_residual": 5.55e-17,
+          "peak_display_error": 1.5e-07
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C04-08",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_mixing_rho_comparison.tex",
+      "label": "fig:V5-C04-mixing-rho-comparison",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "resolved",
+        "math_status": "passed",
+        "reason": "v2.7.0 R3将三条轮末ACF解析曲线、右面板合法域上限.99、非零端点与趋近1的边界极限纳入同一可复算记录。"
+      },
+      "data_provenance": "TeX源内嵌三条rho^(2k)解析曲线，并在0<=|rho|<=.99上绘制渐近ESS比例解析函数。",
+      "parameters": {
+        "absolute_rho": [
+          0.95,
+          0.7,
+          0.2
+        ],
+        "lags": [
+          0,
+          12
+        ],
+        "displayed_ESS_ratio": [
+          0.051,
+          0.342,
+          0.923
+        ],
+        "right_panel_abs_rho_domain": [
+          0,
+          0.99
+        ],
+        "right_panel_endpoint": [
+          0.99,
+          0.010049997474875
+        ],
+        "boundary_limit_abs_rho_to_1_minus": 0
+      },
+      "recomputation": "轮末相关系数为rho^(2k)，其中.95^24=0.291989024338772；ESS/N=(1-rho^2)/(1+rho^2)，在|rho|=.5时为.6，在.99时为.010049997474875，且|rho|趋近1的左极限为0。",
+      "boundary_conditions": "公式针对二元正态系统Gibbs且|rho|<1；右图只画到.99，零值是|rho|趋近1的左极限，不把退化边界当作可取参数。",
+      "randomness": "not_applicable_deterministic_analytic",
+      "verification": {
+        "status": "passed_exact_formula_and_boundary",
+        "tolerance": {
+          "displayed_ESS_rounding": 0.0005,
+          "analytic_endpoint": 1e-12
+        },
+        "residual_or_result": {
+          "maximum_ESS_rounding_error": 0.000282,
+          "rho_0_95_k12_acf": 0.291989024338772,
+          "rho_0_5_ess_ratio": 0.6,
+          "rho_0_99_ess_ratio": 0.010049997474875,
+          "boundary_limit": 0,
+          "curve_formula": "exact"
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-02",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_multinomial_counts.tex",
+      "label": "fig:V5-C05-multinomial-counts",
+      "semantic_type": "conceptual_mathematical_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "固定类别序列和计数没有对象级当前复现manifest。"
+      },
+      "data_provenance": "TeX源内嵌六次类别序列。",
+      "parameters": {
+        "sequence": [
+          1,
+          3,
+          1,
+          2,
+          1,
+          3
+        ],
+        "N": 6,
+        "K": 3,
+        "counts": [
+          3,
+          1,
+          2
+        ]
+      },
+      "recomputation": "逐类计数得(3,1,2)，总和6；多项系数6!/(3!1!2!)=60。",
+      "boundary_conditions": "计数必须为非负整数且总和为N；不能把计数误当概率向量。",
+      "randomness": "not_applicable_fixed_sequence",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "count_vector": [
+            3,
+            1,
+            2
+          ],
+          "count_sum_residual": 0,
+          "multinomial_coefficient": 60
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-05",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_simplex_geometry.tex",
+      "label": "fig:V5-C05-simplex-geometry",
+      "semantic_type": "geometric_or_partition_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "具体重心坐标没有对象级当前复现manifest。"
+      },
+      "data_provenance": "TeX源内嵌等边三角形坐标和概率向量。",
+      "parameters": {
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            7,
+            0
+          ],
+          [
+            3.5,
+            6.062
+          ]
+        ],
+        "theta": [
+          0.2,
+          0.3,
+          0.5
+        ],
+        "display_point": [
+          3.85,
+          3.031
+        ]
+      },
+      "recomputation": "重心映射0.2*e1+0.3*e2+0.5*e3=(3.85,3.031)，且theta分量和为1。",
+      "boundary_conditions": "内部点要求三分量均正；边上一分量为0；顶点一分量为1。",
+      "randomness": "not_applicable_deterministic_geometry",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "barycentric_coordinate_residual": 0,
+          "probability_sum_residual": 0
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-06",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_dirichlet_shape_atlas.tex",
+      "label": "fig:V5-C05-dirichlet-shape-atlas",
+      "semantic_type": "quantitative_density_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "resolved",
+        "math_status": "passed",
+        "reason": "v2.7.0以N=24确定性重心网格逐单元代入三组解析Dirichlet密度；根线程R3、全新SA1独立复审与隔离SA3盲审均通过。"
+      },
+      "data_provenance": "TeX源内嵌三组解析Dirichlet密度与确定性重心网格。",
+      "parameters": {
+        "K": 3,
+        "alpha_cases": [
+          [
+            2,
+            2,
+            2
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0.5,
+            0.5,
+            0.5
+          ]
+        ],
+        "density_formulas": [
+          "120*theta1*theta2*theta3",
+          "2",
+          "1/(2*pi*sqrt(theta1*theta2*theta3))"
+        ],
+        "triangle_vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            3.6,
+            0
+          ],
+          [
+            1.8,
+            3.117691454
+          ]
+        ],
+        "mesh_N": 24,
+        "cells_per_panel": 576,
+        "sample": "each_barycentric_cell_centroid_strictly_interior",
+        "minimum_sample_barycentric_coordinate": 0.013888888888889,
+        "display_log_density_range": [
+          -1.224073476033,
+          2.777394473238
+        ],
+        "display_reference_epsilon": 0.01,
+        "common_mean": [
+          0.333333333333333,
+          0.333333333333333,
+          0.333333333333333
+        ]
+      },
+      "recomputation": "B(2,2,2)=1/120，中心密度4.444444444444445；B(1,1,1)=1/2且密度恒2；B(1/2,1/2,1/2)=2*pi，中心密度0.826993343132688。近面(.01,.495,.495)三组密度分别.29403、2、3.215251375593845；近顶点(.01,.01,.98)的半参数密度为16.07707707423404。",
+      "boundary_conditions": "alpha_i>0；theta_i>0且和为1；网格采样点永不落在边界。全部alpha_i>1时面极限为0，等于1时密度恒2，小于1时面极限为infinity。epsilon=.01只定义共同显示色阶端点。",
+      "randomness": "not_applicable_deterministic_analytic_grid",
+      "verification": {
+        "status": "passed_exact_formula_recomputed_root_r3_and_independent_reviews",
+        "tolerance": 1e-09,
+        "residual_or_result": {
+          "total_formula_derived_cells": 1728,
+          "boundary_numeric_evaluations": 0,
+          "old_covariance_ellipses_remaining": 0,
+          "center_density": [
+            4.444444444444445,
+            2,
+            0.826993343132688
+          ],
+          "near_face_density": [
+            0.29403,
+            2,
+            3.215251375593845
+          ],
+          "half_parameter_near_vertex_density": 16.07707707423404
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C05-07",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C05/fig_v5_c05_concentration_mean.tex",
+      "label": "fig:V5-C05-concentration-mean",
+      "semantic_type": "quantitative_covariance_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "resolved",
+        "math_status": "passed",
+        "reason": "v2.7.0把固定均值下三组alpha0、线性轴、解析投影协方差与0.8sigma椭圆纳入对象级记录；根线程R3、全新SA1独立复审与隔离SA3盲审均通过。"
+      },
+      "data_provenance": "TeX源内嵌固定m、三组alpha0与解析投影协方差。",
+      "parameters": {
+        "m": [
+          0.5,
+          0.3,
+          0.2
+        ],
+        "alpha0": [
+          3,
+          10,
+          30
+        ],
+        "alpha": [
+          [1.5, 0.9, 0.6],
+          [5, 3, 2],
+          [15, 9, 6]
+        ],
+        "triangle_vertices": [
+          [0, 0],
+          [4, 0],
+          [2, 3.464101615138]
+        ],
+        "projection_matrix": [
+          [0, 4, 2],
+          [0, 0, 3.464101615138]
+        ],
+        "ellipse_mahalanobis_radius": 0.8,
+        "projected_center": [
+          1.6,
+          0.692820323028
+        ],
+        "projected_covariance_numerator": [
+          [3.04, 0.277128129211],
+          [0.277128129211, 1.92]
+        ],
+        "cholesky_factors": [
+          [[0.871779788708, 0], [0.079471941424, 0.688247201612]],
+          [[0.525702992538, 0], [0.047923383830, 0.415028678320]],
+          [[0.313152544504, 0], [0.028547164084, 0.247225693029]]
+        ],
+        "linear_scale_ratio": [
+          1,
+          0.603022689156,
+          0.359210604054
+        ],
+        "area_ratio": [
+          1,
+          0.363636363636,
+          0.129032258065
+        ]
+      },
+      "recomputation": "Sigma_Theta=(diag(m)-m*m^T)/(alpha0+1)。在x=4*theta2+2*theta3、y=2*sqrt(3)*theta3投影下，Sigma_xy=[[3.04,.277128129211],[.277128129211,1.92]]/(alpha0+1)，三组0.8*Cholesky椭圆共心且面积比1:4/11:4/31。",
+      "boundary_conditions": "alpha_i>0；m_i>0且和为1；Cov(Theta_i,Theta_j)公式仅对i!=j。椭圆是0.8sigma协方差尺度，不是密度等高线或置信域；最外层椭圆三个概率坐标下界为.30/.116696972202/.04，均在支持域内。",
+      "randomness": "not_applicable_deterministic_parameters",
+      "verification": {
+        "status": "passed_exact_formula_recomputed_root_r3_and_independent_reviews",
+        "tolerance": 1e-09,
+        "residual_or_result": {
+          "m_sum_residual": 0,
+          "maximum_alpha_sum_residual": 0,
+          "maximum_cholesky_reconstruction_residual": 4.49e-13,
+          "common_center_residual": 0,
+          "minimum_probability_coordinate_on_outer_ellipse": 0.04,
+          "ellipse_support_violations": 0
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C06-07",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_variational_updates.tex",
+      "label": "fig:V5-C06-variational-updates",
+      "semantic_type": "algorithm_semantic_contract",
+      "r07_failure": {
+        "parameter_reproducibility": "not_applicable_algorithm_semantic_contract",
+        "math_status": "passed",
+        "reason": "R3 当前图、正式算法、根级构建视觉门、独立 SA1 与盲审 SA3 已共同验证状态、禁止边、计数作用域与选择契约。"
+      },
+      "data_provenance": "当前TeX流程图与V5-C06正式算法第992--1049行；无随机数值曲线，不伪造参数扫描。",
+      "parameters": {
+        "local_update_contract": [
+          "a_mnk=log(varphi_k,w_mn)+psi(gamma_mk)-psi(sum_l gamma_ml)",
+          "eta_mn+=softmax_LSE(a_mn)",
+          "gamma_mk_plus=alpha_k+sum_n eta_mnk_plus"
+        ],
+        "local_success_statuses": [
+          "completed",
+          "converged"
+        ],
+        "local_blocked_statuses": [
+          "budget_stop",
+          "invalid_input",
+          "numerical_failure"
+        ],
+        "count_contract": "C_kv+=sum_m sum_n eta_mnk*1{w_mn=v}",
+        "varphi_contract": "varphi_kv+=C_kv+/C_kdot+ with every C_kv+>0 and sum_v varphi_kv+=1",
+        "newton_contract": "H(alpha)Delta=g(alpha); alpha+=alpha-rho*Delta; accept only min_k alpha_k+>0 and finite nondecreasing ELBO within J_ls candidates",
+        "local_certificates": [
+          "relative_ELBO_increment<=epsilon_loc_L",
+          "max_relative_gamma_change<=epsilon_loc_gamma"
+        ],
+        "outer_certificates": [
+          "relative_ELBO_increment<=epsilon_out_L",
+          "max(relative_alpha_change,max_abs_varphi_change)<=epsilon_out_Theta"
+        ],
+        "outer_accepted_statuses": [
+          "converged",
+          "budget_stop"
+        ],
+        "outer_failure_statuses": [
+          "invalid_input",
+          "numerical_failure",
+          "line_search_failed",
+          "random_source_failure"
+        ],
+        "accepted_set_contract": "S_acc={s:record[s].feasible=true and record[s].status in {converged,budget_stop}}",
+        "budget_candidate_label": "budget_stop; feasible=true; 预算候选/未收敛; preserve original status",
+        "current_start_budget_condition": "not C_out and r=T_out for this start",
+        "global_counter_contract": "r_done increments only after an atomic feasible outer-round commit and accumulates across starts"
+      },
+      "recomputation": "从当前图源按有向边复核：LocalOK仅接受completed/converged；全部m的LocalOK到齐后才可进入C、varphi与Newton；局部budget_stop/invalid_input/numerical_failure均无通往C/M或S_acc的边。S_acc精确接受feasible=true且原status为converged或外层budget_stop的记录；后者以预算候选/未收敛返回。正式算法逐行确认当前启动预算由r=T_out触发，r_done仅是跨启动全局累计。",
+      "boundary_conditions": "alpha与varphi严格正；词表、支持、维数、预算和容差合法。任何局部非成功态禁止C/M步；nonfinite_count、empty_topic、support_collapse及Newton回溯耗尽只写失败记录；仅完整可行且当前启动r=T_out的外层预算耗尽可进入S_acc。全局r_done不得用作单个启动的预算终止条件。",
+      "randomness": "random_source_failure_is_explicitly_audited; no_random_draw_or_numeric_scan_in_this_contract",
+      "verification": {
+        "status": "passed_algorithm_semantic_contract_root_r3_and_independent_reviews",
+        "tolerance": 0,
+        "residual_or_result": {
+          "local_success_status_count": 2,
+          "local_blocked_status_count": 3,
+          "outer_accepted_status_count": 2,
+          "outer_failure_status_count": 4,
+          "forbidden_local_to_count_or_mstep_paths": 0,
+          "forbidden_failure_to_sacc_paths": 0,
+          "budget_candidate_preserves_status": true,
+          "empty_accepted_set_returns_model": false,
+          "current_start_budget_uses_r": true,
+          "r_done_is_global_cumulative": true,
+          "independent_final_review_count": 2
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C07-02",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C07/web_random_walk.tex",
+      "label": "fig:V5-C07-web-random-walk",
+      "semantic_type": "state_or_network_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "failed",
+        "math_status": "failed",
+        "reason": "列随机图具体矩阵无对象级manifest，且与行随机约定缺转置桥。"
+      },
+      "data_provenance": "TeX源内嵌按(i,j,h)排序的三网页、四条单位权边及A、c、M、P。",
+      "parameters": {
+        "node_order": [
+          "i",
+          "j",
+          "h"
+        ],
+        "edges": [
+          {
+            "source": "i",
+            "target": "j",
+            "weight": 1
+          },
+          {
+            "source": "j",
+            "target": "i",
+            "weight": 1
+          },
+          {
+            "source": "j",
+            "target": "h",
+            "weight": 1
+          },
+          {
+            "source": "h",
+            "target": "i",
+            "weight": 1
+          }
+        ],
+        "c": [
+          1,
+          2,
+          1
+        ],
+        "A": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "M": [
+          [
+            0,
+            0.5,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0.5,
+            0
+          ]
+        ],
+        "P": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0.5,
+            0,
+            0.5
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "recomputation": "按(i,j,h)逐列记录来源：i→j给A_ji=1；j→i、j→h给A_ij=A_hj=1；h→i给A_ih=1。列和c=(1,2,1)，M_:j=A_:j/c_j；P=M^T。M列和与P行和均为(1,1,1)，且(Mp)^T=p^T P。",
+      "boundary_conditions": "图36.2选择无悬挂三结点例，只解释列/行随机转置桥；c_j=0零列及质量损失留给随后定义和图36.3，禁止把含零列的未修复M称为列随机矩阵。",
+      "randomness": "not_applicable_fixed_transition_matrix",
+      "verification": {
+        "status": "passed",
+        "tolerance": 0,
+        "residual_or_result": {
+          "dangling_node_count": 0,
+          "edge_to_A_support_bijection": "exact",
+          "A_to_M_support_bijection": "exact",
+          "maximum_out_degree_residual": 0,
+          "maximum_column_sum_residual": 0,
+          "maximum_row_sum_residual": 0,
+          "maximum_transpose_residual": 0,
+          "state_update_bridge": "exact"
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C07-03",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C07/periodic_dangling_failures.tex",
+      "label": "fig:V5-C07-periodic-dangling",
+      "semantic_type": "state_or_network_diagram",
+      "r07_failure": {
+        "parameter_reproducibility": "resolved",
+        "math_status": "passed",
+        "reason": "当前对象级记录冻结两个2乘2反例、初值、周期与零列质量结果；根R3、最终独立SA1与隔离盲审SA3均已精确复算通过。"
+      },
+      "data_provenance": "TeX源内嵌两个2乘2列随机或次随机反例。",
+      "parameters": {
+        "periodic_M": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "periodic_p0": [
+          1,
+          0
+        ],
+        "dangling_M": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      },
+      "recomputation": "周期例p0=e1、p1=e2、p2=e1循环；悬挂例第二列和为0，p=e2时一步后概率质量为0。",
+      "boundary_conditions": "周期故障不丢质量；悬挂零列破坏列随机性，两者须分开修复。",
+      "randomness": "not_applicable_fixed_counterexamples",
+      "verification": {
+        "status": "passed_exact_counterexamples_root_r3_and_independent_reviews",
+        "tolerance": 0,
+        "residual_or_result": {
+          "period": 2,
+          "dangling_column_sum": 0,
+          "mass_after_dangling_basis_vector": 0
+        }
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C07-08",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C07/numerical_rank_trajectory.tex",
+      "label": "fig:V5-C07-rank-trajectory",
+      "semantic_type": "quantitative_plot",
+      "r07_failure": {
+        "parameter_reproducibility": "passed",
+        "math_status": "passed",
+        "reason": "当前对象级记录冻结列随机矩阵、均匀初值、t=0..8 轨迹、t=6 非停止残差与精确固定点；根线程已独立有理数复算。"
+      },
+      "data_provenance": "V5-C07 正文三结点 PageRank 数值例；按正文列随机矩阵 G 从均匀初值作确定性有理数递推，图中冻结六位小数。",
+      "parameters": {
+        "M_tilde": [
+          [
+            0,
+            0,
+            0.3333333333333333
+          ],
+          [
+            0.5,
+            0,
+            0.3333333333333333
+          ],
+          [
+            0.5,
+            1,
+            0.3333333333333333
+          ]
+        ],
+        "G_rational": [
+          [
+            "1/15",
+            "1/15",
+            "1/3"
+          ],
+          [
+            "7/15",
+            "1/15",
+            "1/3"
+          ],
+          [
+            "7/15",
+            "13/15",
+            "1/3"
+          ]
+        ],
+        "d": 0.8,
+        "v": [
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333
+        ],
+        "r0": [
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333
+        ],
+        "r1_exact": [
+          0.15555555555555556,
+          0.28888888888888886,
+          0.5555555555555556
+        ],
+        "trajectory_display_t0_to_t8": [
+          [
+            0.333333,
+            0.333333,
+            0.333333
+          ],
+          [
+            0.155556,
+            0.288889,
+            0.555556
+          ],
+          [
+            0.214815,
+            0.277037,
+            0.508148
+          ],
+          [
+            0.202173,
+            0.288099,
+            0.509728
+          ],
+          [
+            0.202594,
+            0.283463,
+            0.513942
+          ],
+          [
+            0.203718,
+            0.284756,
+            0.511526
+          ],
+          [
+            0.203074,
+            0.284561,
+            0.512365
+          ],
+          [
+            0.203297,
+            0.284527,
+            0.512176
+          ],
+          [
+            0.203247,
+            0.284566,
+            0.512187
+          ]
+        ],
+        "r6_exact_rational": [
+          "6939409/34171875",
+          "9723979/34171875",
+          "17508487/34171875"
+        ],
+        "r_star_rational": [
+          "25/123",
+          "35/123",
+          "21/41"
+        ],
+        "r_star_exact": [
+          0.2032520325203252,
+          0.2845528455284553,
+          0.5121951219512195
+        ]
+      },
+      "recomputation": "迭代 r_(t+1)=G r_t；从 r0=(1/3,1/3,1/3) 逐步复算到 t=8。t=6 残差严格为 229376/512578125>0，只能作展示截断；固定点=(25/123,35/123,21/41)，精确回代残差为0，排序3>2>1。",
+      "boundary_conditions": "G 按列随机解释；左图按原始概率坐标直接显示、无9倍缩放。t=6 不作为停止判定；右图取精确固定点而非 t=8 中间迭代。",
+      "randomness": "not_applicable_deterministic_iteration",
+      "verification": {
+        "status": "passed_exact_trajectory_root_r3_and_independent_reviews",
+        "tolerance": 0.0000005,
+        "residual_or_result": {
+          "maximum_six_decimal_rounding_error_exact": "14587/32805000000",
+          "maximum_six_decimal_rounding_error_t0_to_t8": 4.446578265508307e-7,
+          "t6_l1_residual_exact": "229376/512578125",
+          "t6_l1_residual_decimal": 0.00044749471117208,
+          "stationary_exact_max_abs_residual": 0,
+          "stationary_double_max_abs_residual": 2.7755575616e-17,
+          "stationary_sum_residual": 0,
+          "ranking": "3>2>1"
+        }
+      }
+    }
+  ]
+}

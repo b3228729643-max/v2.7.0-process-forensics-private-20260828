@@ -1,0 +1,403 @@
+{
+  "uid": "FIG-P602-01",
+  "round": "SA2_R3_V1_NATIVE_R1",
+  "validator_is_read_only_over_manual_ledgers": true,
+  "outcome": "PASS",
+  "failures": [],
+  "checks": {
+    "candidate_pdf_identity": {
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P602-01\\sa2_r3_controlled_build_v1\\01_build\\v260_FIG-P602-01_standalone.pdf",
+        "bytes": 41653,
+        "sha256": "68188DAAAF9B3C4233D5A032C3D8BE20A73B51D5E6058D0E1C12FDE6471093E7"
+      }
+    },
+    "source_identity": {
+      "pass": true,
+      "detail": {
+        "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C03\\fig_v5_c03_mh_accept_reject.tex",
+        "bytes": 2869,
+        "sha256": "6C4E8F156709C0FF384F9E7B7F2BD5D9CB586E24206BF0BCD2E58933ED3DB47D"
+      }
+    },
+    "build_control_identity": {
+      "pass": true,
+      "detail": {
+        "start_sha256": "4079A8BA4C6054A6693C6052578BED3056EA9AAD5DA3626477001C7245EDAF57",
+        "result_sha256": "4746B6DA9D3F1F6DAA03DFBC31A8EBA6BFB6FC1A9A6048CBB8F878BEAB765D17"
+      }
+    },
+    "r3_phrase_identity": {
+      "pass": true,
+      "detail": {
+        "fresh_phrase_count": 1,
+        "old_phrase_count": 0,
+        "suggested_phrase_count": 0,
+        "u4e00_count": 0
+      }
+    },
+    "machine_denominators": {
+      "pass": true,
+      "detail": {
+        "objects": 30,
+        "glyphs": 154,
+        "pairs": 435,
+        "critical": 16,
+        "peer": 28,
+        "roles": 3,
+        "clips": 30,
+        "views": 4
+      }
+    },
+    "machine_id_uniqueness": {
+      "pass": true,
+      "detail": {
+        "object_unique": 30,
+        "glyph_unique": 154,
+        "pair_unique": 435
+      }
+    },
+    "unordered_pair_closure": {
+      "pass": true,
+      "detail": {
+        "expected": 435,
+        "actual": 435,
+        "missing": [],
+        "extra": []
+      }
+    },
+    "machine_decisions": {
+      "pass": true,
+      "detail": {
+        "pair_fail": [],
+        "glyph_fail": [],
+        "clip_fail": [],
+        "peer_fail": [],
+        "role_fail": []
+      }
+    },
+    "g032_strict_profile": {
+      "pass": true,
+      "detail": {
+        "glyph_id": "G032",
+        "char": "范",
+        "unicode": "U+8303",
+        "ink_width_px": "37",
+        "ink_height_px": "34",
+        "script_class": "CJK_FULL",
+        "threshold_px": "30",
+        "machine_threshold_pass": "True"
+      }
+    },
+    "manual_object_ledger": {
+      "pass": true,
+      "detail": {
+        "rows": 30,
+        "unique_ids": 30,
+        "decisions_ok": true,
+        "notes_unique_nonblank": true
+      }
+    },
+    "manual_glyph_ledger": {
+      "pass": true,
+      "detail": {
+        "rows": 154,
+        "unique_ids": 154,
+        "decisions_ok": true,
+        "notes_unique_nonblank": true
+      }
+    },
+    "manual_pair_ledger": {
+      "pass": true,
+      "detail": {
+        "rows": 435,
+        "unique_ids": 435,
+        "decisions_ok": true,
+        "notes_unique_nonblank": true
+      }
+    },
+    "manual_critical_ledger": {
+      "pass": true,
+      "detail": {
+        "rows": 16,
+        "unique_ids": 16,
+        "decisions_ok": true,
+        "notes_unique_nonblank": true
+      }
+    },
+    "manual_peer_ledger": {
+      "pass": true,
+      "detail": {
+        "rows": 28,
+        "unique_ids": 28,
+        "decisions_ok": true,
+        "notes_unique_nonblank": true
+      }
+    },
+    "manual_role_ledger": {
+      "pass": true,
+      "detail": {
+        "rows": 3,
+        "unique_ids": 3,
+        "decisions_ok": true,
+        "notes_unique_nonblank": true
+      }
+    },
+    "manual_clip_ledger": {
+      "pass": true,
+      "detail": {
+        "rows": 30,
+        "unique_ids": 30,
+        "decisions_ok": true,
+        "notes_unique_nonblank": true
+      }
+    },
+    "manual_view_ledger": {
+      "pass": true,
+      "detail": {
+        "rows": 4,
+        "unique_ids": 4,
+        "decisions_ok": true,
+        "notes_unique_nonblank": true
+      }
+    },
+    "manual_hard_ledger": {
+      "pass": true,
+      "detail": {
+        "rows": 12,
+        "unique_ids": 12,
+        "decisions_ok": true,
+        "notes_unique_nonblank": true
+      }
+    },
+    "manual_machine_id_alignment": {
+      "pass": true,
+      "detail": {
+        "objects_aligned": true,
+        "glyphs_aligned": true,
+        "pairs_aligned": true
+      }
+    },
+    "critical_alignment": {
+      "pass": true,
+      "detail": {
+        "machine": [
+          [
+            "P0007",
+            "O-G01",
+            "O-G08"
+          ],
+          [
+            "P0035",
+            "O-G02",
+            "O-G08"
+          ],
+          [
+            "P0036",
+            "O-G02",
+            "O-G09"
+          ],
+          [
+            "P0063",
+            "O-G03",
+            "O-G09"
+          ],
+          [
+            "P0064",
+            "O-G03",
+            "O-G10"
+          ],
+          [
+            "P0101",
+            "O-G04",
+            "O-T08"
+          ],
+          [
+            "P0115",
+            "O-G05",
+            "O-G10"
+          ],
+          [
+            "P0116",
+            "O-G05",
+            "O-G11"
+          ],
+          [
+            "P0117",
+            "O-G05",
+            "O-G12"
+          ],
+          [
+            "P0140",
+            "O-G06",
+            "O-G11"
+          ],
+          [
+            "P0164",
+            "O-G07",
+            "O-G12"
+          ],
+          [
+            "P0165",
+            "O-G07",
+            "O-G13"
+          ],
+          [
+            "P0300",
+            "O-T01",
+            "O-T02"
+          ],
+          [
+            "P0345",
+            "O-T04",
+            "O-T05"
+          ],
+          [
+            "P0426",
+            "O-T13",
+            "O-T14"
+          ],
+          [
+            "P0433",
+            "O-T15",
+            "O-T16"
+          ]
+        ],
+        "manual": [
+          [
+            "P0007",
+            "O-G01",
+            "O-G08"
+          ],
+          [
+            "P0035",
+            "O-G02",
+            "O-G08"
+          ],
+          [
+            "P0036",
+            "O-G02",
+            "O-G09"
+          ],
+          [
+            "P0063",
+            "O-G03",
+            "O-G09"
+          ],
+          [
+            "P0064",
+            "O-G03",
+            "O-G10"
+          ],
+          [
+            "P0101",
+            "O-G04",
+            "O-T08"
+          ],
+          [
+            "P0115",
+            "O-G05",
+            "O-G10"
+          ],
+          [
+            "P0116",
+            "O-G05",
+            "O-G11"
+          ],
+          [
+            "P0117",
+            "O-G05",
+            "O-G12"
+          ],
+          [
+            "P0140",
+            "O-G06",
+            "O-G11"
+          ],
+          [
+            "P0164",
+            "O-G07",
+            "O-G12"
+          ],
+          [
+            "P0165",
+            "O-G07",
+            "O-G13"
+          ],
+          [
+            "P0300",
+            "O-T01",
+            "O-T02"
+          ],
+          [
+            "P0345",
+            "O-T04",
+            "O-T05"
+          ],
+          [
+            "P0426",
+            "O-T13",
+            "O-T14"
+          ],
+          [
+            "P0433",
+            "O-T15",
+            "O-T16"
+          ]
+        ]
+      }
+    },
+    "clip_alignment": {
+      "pass": true,
+      "detail": {
+        "aligned": true
+      }
+    },
+    "role_view_alignment": {
+      "pass": true,
+      "detail": {
+        "roles_aligned": true,
+        "views_aligned": true
+      }
+    },
+    "png_parse": {
+      "pass": true,
+      "detail": {
+        "checked": 864,
+        "expected_complete_set": 864,
+        "failures": []
+      }
+    },
+    "structured_parse": {
+      "pass": true,
+      "detail": {
+        "csv_checked": 18,
+        "csv_failures": [],
+        "json_checked": 5,
+        "json_failures": []
+      }
+    },
+    "cache_hygiene": {
+      "pass": true,
+      "detail": {
+        "bad": []
+      }
+    },
+    "ads_hygiene": {
+      "pass": true,
+      "detail": {
+        "entries": [],
+        "probe_errors": []
+      }
+    },
+    "terminal_tex_processes": {
+      "pass": true,
+      "detail": {
+        "probe_exit": 0,
+        "processes": [],
+        "stderr": ""
+      }
+    }
+  }
+}

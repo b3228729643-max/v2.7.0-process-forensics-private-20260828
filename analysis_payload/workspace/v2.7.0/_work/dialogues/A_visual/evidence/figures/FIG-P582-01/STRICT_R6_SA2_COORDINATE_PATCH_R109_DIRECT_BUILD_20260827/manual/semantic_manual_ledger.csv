@@ -1,0 +1,9 @@
+check_id,observed_completed_at,reviewer,decision,note
+SEM-01,2026-08-27T00:34:55.9628165+08:00,A_ROOT_MANUAL_R6,PASS,source sample sequence remains U=(0.8 0.1 0.7 0.4) as stated by the figure meaning.
+SEM-02,2026-08-27T00:34:55.9628165+08:00,A_ROOT_MANUAL_R6,PASS,squaring the samples gives 0.64 0.01 0.49 0.16 which exactly matches the four gray square coordinates.
+SEM-03,2026-08-27T00:34:55.9628165+08:00,A_ROOT_MANUAL_R6,PASS,running means recompute as 0.64; (0.64+0.01)/2=0.325; (0.64+0.01+0.49)/3=0.38; total1.30/4=0.325.
+SEM-04,2026-08-27T00:34:55.9628165+08:00,A_ROOT_MANUAL_R6,PASS,the blue sequence therefore moves down from .640 to .325 then up to .380 then down to .325 matching all three direction labels.
+SEM-05,2026-08-27T00:34:55.9628165+08:00,A_ROOT_MANUAL_R6,PASS,the formula h(U_i)=U_i^2 uses correct mathematical italic codepoints subscripts and superscript semantics.
+SEM-06,2026-08-27T00:34:55.9628165+08:00,A_ROOT_MANUAL_R6,PASS,the dashed reference is exactly 0.333333 and the visible label truth 1/3 is consistent.
+SEM-07,2026-08-27T00:34:55.9628165+08:00,A_ROOT_MANUAL_R6,PASS,x-axis sample index i/sample count N and y-axis value labels are complete and semantically appropriate.
+SEM-08,2026-08-27T00:34:55.9628165+08:00,A_ROOT_MANUAL_R6,PASS,the only source change is annotation y .49 to .53; it changes no data formula color or direction semantics.

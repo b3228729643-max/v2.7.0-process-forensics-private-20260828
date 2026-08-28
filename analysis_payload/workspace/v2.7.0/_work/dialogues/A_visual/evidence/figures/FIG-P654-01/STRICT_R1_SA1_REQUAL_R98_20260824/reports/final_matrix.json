@@ -1,0 +1,82 @@
+{
+  "figure_uid": "FIG-P654-01",
+  "handoff_id": "A-R130-P654-SA1-RESUME-20260824",
+  "reviewer": "gpt-5.6-sol/xhigh SA1 A-R130-P654-SA1-RESUME-20260824",
+  "source_normalized_sha256": "01EA85F46A9567D7ED6CF88C92346F9BE317FAFDDCF1F7791C07B2A3ED3858EB",
+  "official_pdf_physical_page": 702,
+  "printed_page_label": "689",
+  "SOURCE_FONT_PASS": true,
+  "PIXEL_HEIGHT_PASS": false,
+  "LOW_PROFILE_REFERENCE_PASS": true,
+  "SAME_CLASS_RATIO_PASS": false,
+  "ROLE_RATIO_PASS": false,
+  "FONT_VISUAL_HARMONY_PASS": false,
+  "MASK_PURITY_COMPLETENESS_PASS": true,
+  "DENOMINATOR_PASS": true,
+  "PAIR_DENOMINATOR_PASS": true,
+  "OVERLAP_PIXEL_COUNT": 0,
+  "CLIP_PIXEL_COUNT": 0,
+  "CLEARANCE_PASS": false,
+  "TEXT_TO_IMAGE_EDGE_MIN_PX": 17,
+  "TEXT_TO_IMAGE_EDGE_PASS": true,
+  "MANUAL_LEDGER_COMPLETE": true,
+  "VISUAL_STRUCTURE_AND_SEMANTICS_PASS": true,
+  "SA1_PASS": false,
+  "route": "FAIL_TO_SA2",
+  "counts": {
+    "glyphs": 103,
+    "graphics": 21,
+    "objects_N": 124,
+    "pairs": 7626,
+    "glyph_numeric_failures": 3,
+    "D_failures": 5,
+    "E_failures": 5,
+    "pair_clearance_failures": 17,
+    "intentional_contact_pairs": 19,
+    "critical_pairs_opened_1x_8x": 37,
+    "glyph_manual_rows": 103,
+    "graphic_manual_rows": 21
+  },
+  "hard_failures": {
+    "glyphs": [
+      "G0017 一 H=4<30",
+      "G0059 = H=14<22",
+      "G0066 = H=14<22"
+    ],
+    "D_elements": [
+      "E002",
+      "E004",
+      "E010",
+      "E014",
+      "E018"
+    ],
+    "E_elements": [
+      "E012",
+      "E014",
+      "E016",
+      "E017",
+      "E018"
+    ],
+    "source_formula_base_ratio": "11.8/9.6=1.229166666667>1.18",
+    "text_bbox_pairs": [
+      "PAIR_036_040",
+      "PAIR_036_041",
+      "PAIR_036_042",
+      "PAIR_037_042",
+      "PAIR_037_043",
+      "PAIR_037_044",
+      "PAIR_038_044",
+      "PAIR_038_045",
+      "PAIR_039_045",
+      "PAIR_039_046",
+      "PAIR_039_047",
+      "PAIR_049_059",
+      "PAIR_050_059",
+      "PAIR_050_060",
+      "PAIR_051_060",
+      "PAIR_051_061",
+      "PAIR_051_062"
+    ],
+    "visual_harmony": "formula blocks visibly oversized relative to base node labels"
+  }
+}

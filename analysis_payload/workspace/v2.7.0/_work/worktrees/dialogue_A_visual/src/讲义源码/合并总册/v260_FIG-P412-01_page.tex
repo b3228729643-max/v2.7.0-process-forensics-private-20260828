@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 3 册}{统计学习方法讲义 v2.6.0}{优化模型与序列模型}
+\begin{document}
+\setcounter{page}{522}
+\setcounter{chapter}{23}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{监督学习方法总结}
+\begin{geometrybox}
+学习算法把策略变成可执行的求解过程；模型选择必须把训练与验证反馈限制在候选选择闭环内，并在冻结方案后才允许一次最终测试。
+\end{geometrybox}
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C07/fig_v3_c07_selection_loop.tex}
+图\ref{fig:V3-C07-selection-loop}把训练、验证反馈限制在候选选择闭环内；测试集只有从锁定方案到一次最终评价的单向边，若测试结果返回候选族或超参数，测试集便转化为新的验证信息。
+\end{document}

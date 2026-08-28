@@ -1,0 +1,16 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 4 册}{统计学习方法讲义 v2.6.0}{无监督学习与矩阵分解}
+\begin{document}
+\setcounter{page}{595}
+\setcounter{chapter}{26}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{奇异值分解}
+\SLAdvancedSection{代数推导与几何解释}{sec:V4-C03-S06}
+\begin{geometrybox}
+\textbf{几何解释。}单位球先经$V^T$旋转或反射，仍为单位球；再经$\Sigma$沿正交坐标轴缩放为半轴长度$\sigma_1,\ldots,\sigma_p$的椭球；最后经$U$旋转或反射到输出空间。
+\end{geometrybox}
+如\cref{fig:V4-C03-svd-geometry}所示，两个正交变换只改变坐标方向，所有长度伸缩都集中在$\Sigma$的非负对角元上。
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C03/fig_v4_c03_svd_geometry.tex}
+\end{document}

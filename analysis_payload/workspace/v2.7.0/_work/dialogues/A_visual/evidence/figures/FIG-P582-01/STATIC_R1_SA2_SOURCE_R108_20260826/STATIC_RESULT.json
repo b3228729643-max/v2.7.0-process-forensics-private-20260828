@@ -1,0 +1,62 @@
+{
+  "handoff_id": "A-R108-P582-SA2-STATIC-20260826",
+  "uid": "FIG-P582-01",
+  "role": "SA2_STATIC_ONLY",
+  "candidate": {
+    "round": "R108",
+    "physical_page": 632,
+    "printed_page": 619,
+    "figure_number": "31.7",
+    "pdf_bytes": 4967161,
+    "pdf_sha256": "C2EC93425486A57DE4C6670E16FC7DA729649A183230C28E8A0652467D3B5B78"
+  },
+  "source": {
+    "relative_path": "src/绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_running_mean.tex",
+    "before_sha256": "C075D4A44A60B95848614543D1D2DBCCCB53F1F776FFDD79A3BF1FEAE3F6550C",
+    "after_sha256": "4AB4E8D14252B20576F05BD1D5CB54BCB28F162B9E33EF439BD3ED6E01DBC65C",
+    "files_changed": 1,
+    "lines_added": 12,
+    "lines_removed": 12,
+    "diff_check": "PASS"
+  },
+  "font_scope": {
+    "explicit_font_occurrences": 14,
+    "before_below_9_5pt": 12,
+    "after_below_9_5pt": 0,
+    "after_9_5pt_occurrences": 12,
+    "unchanged_9_6pt_occurrences": 2,
+    "after_minimum_explicit_visible_pt": 9.5,
+    "replacement_leading_pt": 11.4,
+    "resizebox_count": 0,
+    "scalebox_count": 0,
+    "transform_shape_count": 0
+  },
+  "r108_native_collision_adjudication": {
+    "actual_hard_collision": false,
+    "first_value_arrow_shared_pixels": 0,
+    "first_value_arrow_min_center_distance_px": 20.0,
+    "first_value_arrow_approx_white_clearance_px": 18.5858,
+    "third_value_arrow_shared_pixels": 0,
+    "third_value_arrow_min_center_distance_px": 5.0,
+    "third_value_arrow_approx_white_clearance_px": 3.5858,
+    "decision": "NO_GEOMETRY_CHANGE_FOR_OLD_COLLISION_CLAIM"
+  },
+  "preserved": {
+    "raw_data_coordinates": true,
+    "running_mean_coordinates": true,
+    "truth_line_one_third": true,
+    "axis_limits_ticks_and_labels": true,
+    "curves_markers_colors_and_strokes": true,
+    "annotation_coordinates": true,
+    "formula_caption_and_label": true,
+    "page_relationship": true
+  },
+  "risk": {
+    "primary": "The existing .380-to-down-arrow region is collision-free but is the narrowest current R108 clearance; verify this ROI first after the authorized build because both text roles become larger.",
+    "secondary": "Tick labels and four numeric values widen; verify axis-border clearance and value-to-marker separation in the new PDF.",
+    "source_geometry_changed": false
+  },
+  "tex_invocations": 0,
+  "commit_count": 0,
+  "decision": "P582_SOURCE_STATIC_READY_REQUEST_BUILD_SLOT"
+}

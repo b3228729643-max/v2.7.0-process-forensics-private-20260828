@@ -1,0 +1,11 @@
+comparison_id,panel_scope,role_or_peer,basis,n,median_a_px,median_b_px,extreme_ratio,source_pt_a,source_pt_b,r168_status
+PR01,A,TICK,"all digit contours across T001-T012 excluding decimal points",19,27,27,1.038,9.6,9.6,ADVISORY_WITHIN
+PR02,B,TICK,"all digit contours across T019-T024 excluding decimal points",8,27,27,1.038,9.6,9.6,ADVISORY_WITHIN
+PR03,A_vs_B,TICK,"panel digit medians",27,27,27,1.000,9.6,9.6,ADVISORY_WITHIN
+PR04,A,LEGEND,"three same-structure legend elements T016-T018",3,28,28,1.000,9.6,9.6,ADVISORY_WITHIN
+PR05,A_vs_B,AXIS_LABEL,"source-declared effective point size and matched visual hierarchy",4,NA,NA,1.000,9.8,9.8,SOURCE_EQUAL
+PR06,A_vs_B,PANEL_TITLE_CJK,"CJK title glyph medians",6,36,36,1.000,9.6,9.6,ADVISORY_WITHIN
+PR07,A_vs_B,PANEL_TITLE_LATIN_UPPER,"ACF versus ESS uppercase title glyph medians",6,27,28,1.037,9.6,9.6,ADVISORY_WITHIN
+PR08,B,ANNOTATION_POINT_LABEL_DIGITS,"orange limit-note and endpoint-label digit medians",7,26.5,27,1.019,9.6,9.6,ADVISORY_WITHIN
+PR09,B,FORMULA_TITLE_SHARED_GLYPHS,"shared 1 rho 2 glyph heights numerator versus denominator",6,19,19,1.000,9.6,9.6,EXACT_SHARED_MATCH
+PR10,PAGE,CAPTION_VS_FIGURE,"source hierarchy; caption versus chart base labels",2,NA,NA,1.038,9.96,9.6,SOURCE_HIERARCHY

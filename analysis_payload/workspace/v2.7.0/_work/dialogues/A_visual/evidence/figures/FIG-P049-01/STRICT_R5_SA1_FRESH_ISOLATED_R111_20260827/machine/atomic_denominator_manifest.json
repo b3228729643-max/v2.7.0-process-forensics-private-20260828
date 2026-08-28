@@ -1,0 +1,54 @@
+{
+  "schema": "DIRECT_STRICT_ATOMIC_DENOMINATOR_V1",
+  "source_pdf_sha256": "DAB1062500E39DD2C34C6B4A9FF51CAC2BE0A4C84B2F45F5FB8E645C4BC012D6",
+  "physical_page_1based": 48,
+  "figure_body_bbox_pt": [
+    138.0,
+    60.0,
+    465.0,
+    230.0
+  ],
+  "caption_bbox_pt": [
+    126.0,
+    230.0,
+    481.0,
+    247.0
+  ],
+  "scope_rule": "Every non-whitespace raw PDF glyph whose bbox center is within BODY_PT or CAPTION_PT, plus every PDF display-list drawing path whose bbox inclusively meets BODY_PT. Zero-height/width strokes are included. Only listed white label backing paths are excluded as non-semantic backgrounds.",
+  "foreground_path_atomicity": "One atom per PDF display-list drawing/painting operation (get_drawings record); constituent line/curve items are retained losslessly in machine_payload and path_item_count, so no primitive is omitted.",
+  "glyph_count": 135,
+  "foreground_path_count": 17,
+  "background_exclusion_count": 11,
+  "N": 152,
+  "expected_C_N_choose_2": 11476,
+  "actual_pair_rows": 11476,
+  "pair_count_matches": true,
+  "manual_fields_in_machine_outputs": [],
+  "manual_judgment_values_in_machine_outputs": false,
+  "files": {
+    "machine/atomic_denominator_machine.csv": {
+      "bytes": 128019,
+      "sha256": "43E4C48148370B01255217112D7265EC505B016BF3109369B879D19FEA2C11E4"
+    },
+    "machine/background_exclusions_machine.csv": {
+      "bytes": 10420,
+      "sha256": "392083671435EAF733C3E0CCA1219477964A5A93FD495840A5F19218838B7DCB"
+    },
+    "machine/all_unordered_pairs_machine.csv": {
+      "bytes": 424658,
+      "sha256": "34FD76D6071E14FAA262A2E840BE35D3D52BDFD311DC112D319248AD8BDCEF65"
+    },
+    "visual/07_atomic_scope_native300dpi_native1x.png": {
+      "bytes": 119825,
+      "sha256": "860D4F0D1E8DB4DA222640433BAA34DADC59CAFA76AA3D9281C951BF7D3CC066"
+    },
+    "visual/08_atomic_id_overlay_native300dpi.png": {
+      "bytes": 188076,
+      "sha256": "58821912DE14235D9898A35ACADD49010D51EE00094878AEEA665DB1B979122C"
+    },
+    "visual/09_atomic_id_overlay_nearest_neighbor8x.png": {
+      "bytes": 512899,
+      "sha256": "3933345F1B24B917AD7A56D9D49858FF7C17612B6E270A7D6AE949AE19DE5058"
+    }
+  }
+}

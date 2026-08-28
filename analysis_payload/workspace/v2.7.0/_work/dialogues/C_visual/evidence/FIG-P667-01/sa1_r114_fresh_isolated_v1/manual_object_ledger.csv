@@ -1,0 +1,24 @@
+OBJECT_ID,MANUAL_REVIEW_STATUS,OBSERVED_VIEW,OBSERVATION,SEMANTIC_CHECK
+O01,PASS,figure_caption_native300dpi and grayscale,row label 先验核 is crisp and clearly subordinate to the mathematical content,correctly names the prior-kernel row
+O02,PASS,R01_prior_script native1x and nearest8x,prior kernel formula and its scripts are individually legible with no tofu or clipping,exponent alpha_i-1 is mathematically correct
+O03,PASS,R01_prior_script native1x and nearest8x,先验指数 remains readable and separated from the underbrace,current R114 has no actual unreadability
+O04,PASS,figure_caption_native300dpi,multiplication sign is centered between prior and likelihood and is immediately recognizable,correctly denotes multiplication of kernels
+O05,PASS,R02_brace_label native1x and nearest8x,brace is continuous and neither clipped nor touching text,groups the prior and likelihood rows
+O06,PASS,R02_brace_label native1x and nearest8x,指数逐分量相加 is clear and does not touch the brace,correctly states the exponent-addition operation
+O07,PASS,figure_caption_native300dpi and grayscale,row label 似然核 is crisp and aligned with the second strip,correctly names the likelihood-kernel row
+O08,PASS,figure_caption_native300dpi and semantic mask,likelihood formula and n_i script are legible with no visible-ink collision,exponent n_i is mathematically correct
+O09,PASS,figure_caption_native300dpi and semantic mask,计数 is compact but readable and distinct from n_i,current R114 has no actual unreadability
+O10,PASS,figure_caption_native300dpi and grayscale,row label 后验核 is crisp and aligned with the third strip,correctly names the posterior-kernel row
+O11,PASS,R06_posterior_script native1x and nearest8x,posterior kernel and alpha_i+n_i-1 script are unambiguous,exponent is the correct componentwise sum
+O12,PASS,R06_posterior_script native1x and nearest8x,逐分量相加 is readable and has no shared visible ink with the exponent,correctly explains the posterior exponent
+O13,PASS,R03_posterior_arrow native1x and nearest8x,two-line posterior result is balanced and fully legible,Dir(alpha+n) is the correct conjugate posterior family
+O14,PASS,R03_posterior_arrow native1x and nearest8x,posterior rounded box is complete and leaves ample interior clearance,visually emphasizes the posterior result
+O15,PASS,R03_posterior_arrow native1x and nearest8x,solid arrowhead stops at the posterior box border and does not enter text,correctly directs posterior kernel to posterior distribution
+O16,PASS,R04_marginal_branch native1x and nearest8x,marginal formula is fully readable including both fraction rules and subscripts,Dirichlet-multinomial marginal formula is correct
+O17,PASS,R04_marginal_branch native1x and nearest8x,保留归一化常数 is readable despite conservative zero-gap raster adjacency and shares no visible ink,correctly distinguishes the full normalized marginal
+O18,PASS,R04_marginal_branch native1x and nearest8x,dashed branch and open arrowhead are complete and do not touch formula ink,correctly marks the secondary marginal consequence
+O19,PASS,figure_caption_native300dpi and semantic mask,prior strip border is complete with generous formula clearance,contains the prior-kernel row
+O20,PASS,figure_caption_native300dpi and semantic mask,likelihood strip border is complete with generous formula clearance,contains the likelihood-kernel row
+O21,PASS,R03_posterior_arrow native1x and nearest8x,posterior strip border is complete and its arrow junction is an intentional graphic junction,contains the posterior-kernel row
+O22,PASS,R05_caption_math native1x and nearest8x,figure number is crisp and not clipped,identifies the figure as 34.7
+O23,PASS,R05_caption_math native1x and nearest8x,caption is readable on two lines with correct en dash math and symbols,states the same conjugacy conclusion as the figure and adjacent prose

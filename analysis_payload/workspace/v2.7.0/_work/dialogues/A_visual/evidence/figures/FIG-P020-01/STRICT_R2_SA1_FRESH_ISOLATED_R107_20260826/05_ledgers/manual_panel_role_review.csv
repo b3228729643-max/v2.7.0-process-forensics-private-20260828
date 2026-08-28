@@ -1,0 +1,5 @@
+panel_id,role,script_scope,declared_pt,pdf_metadata_pt,median_h_ink_px,min_h_ink_px,max_h_ink_px,ratio_to_base,source_ratio_gate,r168_advisories,visual_weight,manual_decision,manual_note
+PANEL_MAIN,NODE_HEADING,CJK_FULL,10.5,10.460770,41,38,42,1.138889,PASS,font metadata差0.039pt仅advisory,EMPHASIS_CONTROLLED,PASS,四个节点标题均为同一10.5pt粗体角色；同角色范围38至42px且最小比38/41=0.927；相对36px正文的1.139强调自然不压过结构
+PANEL_MAIN,NODE_BODY,CJK_FULL,10.0,9.962640,36,35,37,1.000000,PASS,font metadata差0.037pt仅advisory,BASE,PASS,四个节点正文同为10pt；同角色35至37px且比例0.972至1.028；作为BASE清晰一致
+PANEL_MAIN,ANNOTATION,CJK_FULL,10.0,9.962640,36,35,37,1.000000,PASS,font metadata差0.037pt仅advisory,SECONDARY,PASS,反馈注释与BASE同字高但使用灰色和虚线形成次级层级；可读且未喧宾夺主
+PANEL_MAIN,CAPTION,CJK_FULL,10.0,9.962640,36,35,38,1.000000,PASS,单横“一”H5px按R168仅advisory,CONTEXTUAL,PASS,题注正文中普通CJK为35至38px；“一”唯一横画完整且不用于严重失衡判断；题注与图体层级自然

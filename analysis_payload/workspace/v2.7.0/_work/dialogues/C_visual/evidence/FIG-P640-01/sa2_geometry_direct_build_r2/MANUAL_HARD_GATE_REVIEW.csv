@@ -1,0 +1,16 @@
+gate_id,reviewer,decision,evidence,observation
+H01_OBJECT_DENOMINATOR,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/machine_object_inventory.csv,40 unique objects comprise 30 text objects followed by 10 vector objects.
+H02_PAIR_DENOMINATOR,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/machine_pair_inventory.csv,All C(40 2)=780 unordered object pairs are enumerated exactly once.
+H03_CRITICAL_COVERAGE,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/manual_critical_pair_review.csv,All 76 bbox-intersection or gap-at-most-8pt candidates received explicit per-ID manual decisions and all pass.
+H04_CLIP,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/machine_clip_inventory.csv,All 40 objects have positive page-edge distance; minimum is 71.781509pt.
+H05_GLYPH_R168,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/manual_glyph_group_review.csv,160 glyphs including 145 nonspaces show no tofu wrong codepoint wrong mathematics unreadability severe imbalance or clipping.
+H06_LEFT_PANEL_SEMANTICS,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/figure_crop_native_300dpi.png,Three ACF curves share value one at lag zero and decay at rates consistent with .95 .70 and .20.
+H07_RIGHT_PANEL_SEMANTICS,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/right_panel_native_300dpi.png,The ESS ratio curve labels true point and limit behavior remain correct.
+H08_HORIZONTAL_AXIS_CLEARANCE,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/pair_0779_native_8x.png,The horizontal x-axis and arrow remain below the open marker.
+H09_P099_TICK_MARKER_CLEARANCE,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/pair_0779_native_clearance.json,The .99 tick and marker masks share0 pixels and have3 orthogonal blank native300dpi pixels.
+H10_CURVE_MARKER_RELATION,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/manual_critical_pair_review.csv,PAIR_0780 is an intended endpoint connection from the curve to the true-point marker.
+H11_COLOR_AND_GRAYSCALE,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/figure_crop_grayscale_300dpi.png,Curves text axes and endpoint remain distinguishable in color and grayscale.
+H12_STANDALONE_PAGE_INTEGRATION,C_ROOT_MANUAL_R2,PASS,02_nontex_evidence/standalone_native_300dpi.png,The one-page standalone candidate is complete with no clipping collision or broken content.
+H13_SOURCE_AND_WRAPPER_IDENTITY,C_ROOT_MANUAL_R2,PASS,SOURCE_WRAPPER_ENGINE_IDENTITY.json,Source and wrapper hashes match the frozen R2 build identities.
+H14_SINGLE_INVOCATION_CONTROL,C_ROOT_MANUAL_R2,PASS,DIRECT_INVOCATION_RESULT.json,Invocation count1 retry0 natural exit0 and post-TeX process count0 are recorded.
+H15_LOCAL_ROUTE,C_ROOT_MANUAL_R2,PASS,SA2_RESULT.json,All geometry semantic clip glyph view and control gates pass for LOCAL_SA2_PASS.

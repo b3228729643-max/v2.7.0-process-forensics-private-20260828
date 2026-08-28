@@ -1,0 +1,74 @@
+% v2.3.1 figure UID: FIG-P482-01
+% Proposed post-v2.3.1 polish for FIG-P482-01: protect key-label size and stroke hierarchy.
+\tikzset{
+  slfig-FIG-P482-01/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P482-01-residual/.style={draw=SLRed,line width=.76pt,densely dashed},
+  slfig-FIG-P482-01-right-angle/.style={draw=SLRed,line width=.62pt},
+}
+\pgfplotsset{
+  slfig-FIG-P482-01-axis/.style={
+    axis line style={draw=SLGray!88,line width=.58pt},
+    tick label style={font=\fontsize{8.8pt}{10.5pt}\selectfont},
+    label style={font=\fontsize{10pt}{12pt}\selectfont},clip=false,
+  },
+  slfig-FIG-P482-01-samples/.style={only marks,mark=*,mark size=1.55pt,
+    draw=SLBlue!72,fill=SLBlue!18,line width=.48pt,fill opacity=.72},
+  slfig-FIG-P482-01-inner/.style={draw=SLTeal!72,line width=.58pt},
+  slfig-FIG-P482-01-outer/.style={draw=SLTeal,line width=.82pt},
+  slfig-FIG-P482-01-axis-one/.style={draw=SLBlue,line width=1.08pt},
+  slfig-FIG-P482-01-axis-two/.style={draw=SLGray,line width=.72pt},
+  slfig-FIG-P482-01-mean/.style={only marks,mark=*,mark size=2.55pt,draw=SLGold,fill=SLGold},
+  slfig-FIG-P482-01-query/.style={only marks,mark=triangle*,mark size=2.9pt,
+    draw=SLRed,fill=white,line width=.85pt},
+  slfig-FIG-P482-01-projection/.style={only marks,mark=square*,mark size=2pt,
+    draw=SLRed,fill=SLRed},
+}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P482-01]
+\begin{axis}[slfig-FIG-P482-01-axis,
+  slfig axis,width=.78\linewidth,height=.61\linewidth,
+  xmin=-3.4,xmax=3.8,ymin=-2.45,ymax=2.55,
+  axis equal image,axis lines=middle,xlabel={$x_1$},ylabel={$x_2$},
+  xtick=\empty,ytick=\empty,clip=false,
+]
+  \addplot[slfig-FIG-P482-01-samples]
+    coordinates {(-2.45,-1.18) (-2.05,-.42) (-1.72,-1.02) (-1.45,-.05)
+      (-1.05,-.62) (-.72,.30) (-.35,-.35) (.02,.58) (.38,.12) (.72,.82)
+      (1.05,.32) (1.34,1.08) (1.66,.52) (1.98,1.32) (2.28,.78) (2.72,1.46)
+      (-.92,-1.12) (.38,-.48) (1.18,-.08) (2.10,.18)};
+  % Covariance eigenpairs: lambda_1=2.25, lambda_2=.36, angle=25 deg.
+  \addplot[slfig-FIG-P482-01-inner,domain=0:360,samples=241]
+    ({.3+1.3595*cos(x)-.2536*sin(x)},{-.1+.6339*cos(x)+.5438*sin(x)});
+  \addplot[slfig-FIG-P482-01-outer,domain=0:360,samples=241]
+    ({.3+2.7189*cos(x)-.5071*sin(x)},{-.1+1.2679*cos(x)+1.0876*sin(x)});
+  \addplot[slfig-FIG-P482-01-axis-one]
+    coordinates {(-2.4189,-1.3679) (3.0189,1.1679)};
+  \addplot[slfig-FIG-P482-01-axis-two]
+    coordinates {(.8071,-1.1876) (-.2071,.9876)};
+  \addplot[slfig-FIG-P482-01-mean]
+    coordinates {(.3,-.1)};
+  \node[font=\fontsize{9.4pt}{11.2pt}\selectfont,text=SLGold,anchor=north east]
+    at (axis cs:-.08,-.52) {均值 $\mu$};
+  \node[slfig direct label,text=SLBlue,anchor=west] at (axis cs:2.78,1.33) {第一主轴 $\lambda_1$};
+  \node[slfig direct label,text=SLGray,anchor=east] at (axis cs:-.30,1.22) {第二主轴 $\lambda_2$};
+  \node[font=\fontsize{9.4pt}{11.2pt}\selectfont,text=SLTeal,anchor=north east]
+    at (axis cs:-2.15,-1.52) {$2\sigma$};
+  \node[font=\fontsize{9.4pt}{11.2pt}\selectfont,text=SLTeal!78,anchor=north]
+    at (axis cs:-.96,-.96) {$1\sigma$};
+
+  % q = mu + 1.2 e_1 + .7 e_2; its projection is mu + 1.2 e_1.
+  \addplot[slfig-FIG-P482-01-query]
+    coordinates {(1.0918,1.0415)};
+  \draw[slfig-FIG-P482-01-residual]
+    (axis cs:1.0918,1.0415)--(axis cs:1.3876,.4071);
+  \addplot[slfig-FIG-P482-01-projection]
+    coordinates {(1.3876,.4071)};
+  \draw[slfig-FIG-P482-01-right-angle]
+    (axis cs:1.337,.385)--(axis cs:1.359,.334)--(axis cs:1.410,.356);
+  \node[slfig direct label,text=SLRed,anchor=south west] at (axis cs:1.16,1.12) {样本 $q$};
+  \node[slfig direct label,text=SLRed,anchor=west] at (axis cs:1.48,.31) {正交投影};
+\end{axis}
+\end{tikzpicture}
+\caption{二维协方差椭圆与主轴示意}\label{fig:V4-C04-ellipse}
+\end{figure}

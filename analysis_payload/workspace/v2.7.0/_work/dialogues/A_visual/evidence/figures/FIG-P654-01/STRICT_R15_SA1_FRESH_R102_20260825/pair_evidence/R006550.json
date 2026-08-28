@@ -1,0 +1,32 @@
+{
+  "relation_id": "R006550",
+  "object_a": "D015_BORDER_NODE_PREDICTIVE",
+  "object_b": "D044_EDGE_PREDICTIVE_LDA_HEAD",
+  "kind_a": "GRAPHIC",
+  "kind_b": "GRAPHIC",
+  "parent_a": "NODE_PREDICTIVE",
+  "parent_b": "EDGE_PREDICTIVE_LDA",
+  "role_a": "NODE_BORDER",
+  "role_b": "ARROWHEAD",
+  "gate_type": "EDGE_NODE_ENDPOINT_DESIGN",
+  "gate_px": "N/A_DESIGN",
+  "raw_overlap_pixel_count": 0,
+  "raw_mask_clearance_px": 20.0,
+  "text_text_vector_bbox_clearance_px": "N/A",
+  "ownership_or_whitelist_reason": "edge intentionally terminates at owned endpoint border",
+  "machine_decision": "PASS",
+  "critical_relation": true,
+  "evidence_1x": "pair_evidence/R006550__1x.png",
+  "evidence_8x": "pair_evidence/R006550__8x_nearest.png",
+  "raw": "pair_evidence/R006550__raw.png",
+  "mask_a": "pair_evidence/R006550__mask_a.png",
+  "mask_b": "pair_evidence/R006550__mask_b.png",
+  "intersection": "pair_evidence/R006550__intersection.png",
+  "overlay": "pair_evidence/R006550__overlay.png",
+  "roi_full_page_px": [
+    1662,
+    305,
+    2216,
+    726
+  ]
+}

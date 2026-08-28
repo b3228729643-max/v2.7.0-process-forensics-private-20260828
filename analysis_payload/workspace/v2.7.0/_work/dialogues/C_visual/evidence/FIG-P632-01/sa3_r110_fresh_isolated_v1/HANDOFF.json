@@ -1,0 +1,70 @@
+{
+  "assigned_scope": {
+    "uid": "FIG-P632-01",
+    "owner_dialogue": "C_visual",
+    "handoff_id": "C-FIG-P632-01-R110-SA3-FRESH-ISOLATED-V1",
+    "role": "SA3",
+    "canonical_instance": "/root/sa3_fig_p632_r110_fresh_isolated_v1",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh",
+    "fork_turns": "none",
+    "mode": "fresh isolated read-only PDF and source audit"
+  },
+  "completed": [
+    "Verified official R110 PDF and current single-source bytes and SHA256",
+    "Independently located physical page 682 printed page 669 Fig 33.2 by live caption and number",
+    "Rendered and opened a native 300dpi full page and complete figure-plus-caption crop",
+    "Opened grayscale object semantic and text-glyph overlays",
+    "Frozen and manually adjudicated 14 visible objects and all 91 unordered pairs",
+    "Reviewed 151 text spans and 413 glyph records through 22 complete semantic text IDs",
+    "Opened and adjudicated six native1x and six nearest-neighbour8x critical ROIs",
+    "Independently recomputed every displayed model formula probability normalization approximation and contour relationship",
+    "Completed seven view and twelve hard-gate manual adjudications",
+    "Applied R168 and found no genuine hard-fail condition"
+  ],
+  "files_changed": {
+    "source_or_pdf": [],
+    "evidence_only_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P632-01\\sa3_r110_fresh_isolated_v1",
+    "statement": "Only evidence artifacts inside the authorized isolated root were created."
+  },
+  "decisions": {
+    "outcome": "SA3_PASS_AWAIT_MAIN_C_LOCAL_PASS_ACCEPTANCE",
+    "source_font_pass": true,
+    "pixel_height_pass": true,
+    "same_class_ratio_pass": true,
+    "role_ratio_pass": true,
+    "overlap_candidate_pixel_count": 0,
+    "mask_contamination_pixel_count": 0,
+    "true_illegal_overlap_pixel_count": 0,
+    "pixel_adjudication_status": "NO_ILLEGAL_CANDIDATE",
+    "clip_pixel_count": 0,
+    "min_text_clearance_px": 23,
+    "visual_harmony_pass": true,
+    "math_probability_semantics": "PASS",
+    "caption_page_integration": "PASS"
+  },
+  "unresolved": [],
+  "validation": {
+    "object_manual_rows": 14,
+    "unordered_pair_manual_rows": 91,
+    "text_glyph_manual_rows": 22,
+    "critical_roi_manual_rows": 6,
+    "view_manual_rows": 7,
+    "hard_gate_manual_rows": 12,
+    "visible_text_spans_machine": 151,
+    "glyph_records_machine": 413,
+    "native_full_page_dimensions_px": [2481, 3508],
+    "figure_caption_crop_dimensions_px": [1960, 1530],
+    "json_csv_parse_required": true,
+    "ads_cache_pyc_reparse_expected": 0,
+    "manifest_model": "entries exclude MANIFEST.json self and WRITE_STOPPED explicitly",
+    "write_stopped_required_last": true
+  },
+  "next_action": "Main C reads the sealed report and ledgers and performs local-pass acceptance; SA3 performs no central-state update and no second UID.",
+  "paths": {
+    "report": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P632-01\\sa3_r110_fresh_isolated_v1\\SA3_REPORT.md",
+    "handoff": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P632-01\\sa3_r110_fresh_isolated_v1\\HANDOFF.json",
+    "manifest": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P632-01\\sa3_r110_fresh_isolated_v1\\MANIFEST.json",
+    "write_stopped": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P632-01\\sa3_r110_fresh_isolated_v1\\WRITE_STOPPED"
+  }
+}

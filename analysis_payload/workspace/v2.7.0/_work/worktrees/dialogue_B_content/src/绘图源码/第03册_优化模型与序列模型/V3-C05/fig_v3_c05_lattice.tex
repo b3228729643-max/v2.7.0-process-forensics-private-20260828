@@ -1,0 +1,45 @@
+% v2.3.1 figure UID: FIG-P372-01
+% Proposed post-v2.3.1 polish for FIG-P372-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P372-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P372-01,
+  state/.style={circle,draw=SLBlue,fill=SLBlueBG,line width=.78pt,minimum size=6.5mm,inner sep=0pt,font=\fontsize{9.2pt}{11pt}\selectfont},
+  obs/.style={rounded corners=1mm,draw=SLRule,fill=SLSoftGray,line width=.60pt,minimum width=7mm,minimum height=5mm,font=\fontsize{9.2pt}{11pt}\selectfont},
+  faint/.style={-{Stealth[length=1.5mm,width=.9mm]},draw=SLRule!78!SLTextGray,line width=.50pt},
+  focus/.style={-{Stealth[length=2mm,width=1.2mm]},draw=SLBlue,line width=1.02pt},
+]
+\foreach \shift/\title/\kind in {0/{前向：汇总进入路径 $\sum$}/F,4.65/{后向：汇总离开路径 $\sum$}/B,9.30/{Viterbi：获胜路径 $\max$}/V}{
+  \begin{scope}[xshift=\shift cm]
+    \node[font=\bfseries\fontsize{9.5pt}{11.2pt}\selectfont,text=SLInk] at (1.15,2.50) {\title};
+    \foreach \t/\lab in {0/{t-1},1/{t},2/{t+1}}{
+      \node[font=\fontsize{8.7pt}{10.3pt}\selectfont,text=SLTextGray] at ({1.15*\t},2.05) {$\lab$};
+      \node[state] (\kind\t a) at ({1.15*\t},1.18) {$q_1$};
+      \node[state] (\kind\t b) at ({1.15*\t},.28) {$q_2$};
+      \node[obs] (\kind\t x) at ({1.15*\t},-.72) {$x_{\the\numexpr\t+1\relax}$};
+      \draw[draw=SLRule!72!SLTextGray,line width=.46pt,densely dashed] (\kind\t x)--(\kind\t b);
+    }
+    \foreach \t/\u in {0/1,1/2}{
+      \draw[faint] (\kind\t a)--(\kind\u a);
+      \draw[faint] (\kind\t a)--(\kind\u b);
+      \draw[faint] (\kind\t b)--(\kind\u a);
+      \draw[faint] (\kind\t b)--(\kind\u b);
+    }
+  \end{scope}
+}
+% Forward: multiple paths entering q_2 at time t.
+\draw[focus] (F0a)--(F1b);
+\draw[focus] (F0b)--(F1b);
+% Backward: multiple paths leaving q_1 at time t.
+\draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLTeal,line width=1.02pt] (B1a)--(B2a);
+\draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLTeal,line width=1.02pt] (B1a)--(B2b);
+% Viterbi: one winning path plus small backtrace arrows.
+\draw[-{Stealth[length=2mm,width=1.2mm]},draw=SLGold,line width=1.08pt] (V0b)--(V1a)--(V2b);
+\draw[-{Stealth[length=1.8mm,width=1.1mm]},draw=SLGold,line width=.78pt,densely dashed]
+  ([yshift=2mm]V2b.west) to[bend left=18] ([yshift=2mm]V1a.east);
+\node[font=\fontsize{8.8pt}{10.4pt}\selectfont,text=SLTextGray] at (6.98,-1.35)
+  {同一状态格、时间刻度与观测行；浅灰边为非重点转移};
+\end{tikzpicture}
+\caption{HMM状态格的三种读法：前向与后向对共享路径求和，Viterbi只保存获胜前驱}\label{fig:V3-C05-lattice}
+\end{figure}

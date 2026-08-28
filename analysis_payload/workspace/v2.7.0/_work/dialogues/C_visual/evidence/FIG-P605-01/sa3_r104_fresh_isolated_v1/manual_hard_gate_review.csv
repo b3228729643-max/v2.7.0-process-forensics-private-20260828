@@ -1,0 +1,25 @@
+reviewer,gate_id,metric_or_scope,value,threshold_or_policy,decision,note
+SA3,HARD-IDENTITY,official_R104_pdf,"817 pages; 4967222 bytes; E5C871642FBDDBEC6508BE1B61BD911FE281CA5ACFBD16B0449B13357770A641",exact_match,PASS,官方候选身份全部匹配任务给定值
+SA3,HARD-LOCATION,physical_page,658,independent_caption_and_panel_title_match,PASS,从R104文本逐页搜索独立定位且打印页为645
+SA3,HARD-OBJECTS,total_atomic_foreground_objects,173,150_glyphs_plus_23_graphics,PASS,每个ID均有普通PNG mask和1x/8x contact
+SA3,HARD-PAIRS,unordered_pairs,14878,"C(173,2)",PASS,machine_pair_inventory逐行覆盖全部无序pair
+SA3,HARD-MASKS,empty_mask_count,0,must_equal_0,PASS,173个mask全部非空
+SA3,HARD-GLYPH-MAPPING,manual_glyph_rows,150,must_equal_glyph_count,PASS,150行逐ID人工original/overlay/mask-only裁决齐全
+SA3,HARD-GRAPHIC-MAPPING,manual_graphic_rows,23,must_equal_graphic_count,PASS,23行逐绘制对象人工裁决齐全
+SA3,HARD-CANDIDATES,machine_candidate_pairs,13,must_equal_manual_candidate_rows,PASS,13个候选均有1x/8x quint并逐pair人工裁决
+SA3,HARD-OVERLAP,overlap_candidate_pixel_count,224,adjudicate_all,PASS,224px全属于同父字形设计接缝或线/箭头/锚点设计连接
+SA3,HARD-ILLEGAL-OVERLAP,overlap_pixel_count,0,must_equal_0,PASS,未发现文字与无关线框或独立语义对象的真实非法重叠
+SA3,HARD-MASK-CONTAMINATION,mask_contamination_pixel_count,0,must_equal_0,PASS,逐contact与候选ROI未见邻字/纹理/边框误入目标mask
+SA3,HARD-CLIP,clip_pixel_count,0,must_equal_0,PASS,官方整页及带padding的两种裁图均无对象触边或缺笔
+SA3,HARD-CLEARANCE,TEXT_TEXT_min_px,41,minimum_4,PASS,不同语义文字父对象最小raw净空41px
+SA3,HARD-CLEARANCE,TEXT_LINE_ARROW_min_px,20.1,minimum_3,PASS,文字/公式到独立线与箭头最小raw净空20.1px
+SA3,HARD-CLEARANCE,TEXT_NODE_BORDER_min_px,16,minimum_5,PASS,节点/注释文字到最终可见边框最小raw净空16px
+SA3,HARD-CLEARANCE,TEXT_PANEL_BORDER_min_px,27,minimum_6,PASS,文字到面板边框最小raw净空27px
+SA3,HARD-CODEPOINT,replacement_character_count,0,must_equal_0,PASS,数学字母/Greek/CJK抽取均为预期Unicode且无tofu
+SA3,HARD-MATH-SEMANTICS,K_sys_and_K_rand,correct,source_pdf_body_agree,PASS,乘积与固定权重和的下标/上下限/条件全部一致
+SA3,HARD-READABILITY,actual_unreadable_count,0,R168_only_actual_unreadable_fails,PASS,原生300dpi与整页200dpi均无实际不可读字形
+SA3,HARD-FONT-BALANCE,severe_font_imbalance_count,0,R168_only_obvious_severe_imbalance_fails,PASS,标题39px/注释34px/公式基字27px层级自然且灰度下稳定
+SA3,HARD-VISUAL-HARMONY,font_visual_harmony_pass,true,must_be_true,PASS,四视图阅读路径清楚且无局部过密/突兀
+SA3,HARD-GRAYSCALE,grayscale_semantics,true,must_be_true,PASS,灰度下形状与明度足以保持系统/随机两面板关系
+SA3,ADVISORY-LEGACY-FONT,legacy_nonpass_measurements,17,R168_advisory_only,ADVISORY,9个低轮廓校准项与8个旧像素门差均逐ID实际可读；不升级为硬FAIL
+SA3,ADVISORY-SOURCE-PT,base_effective_pt,9.2,legacy_9.5_but_R168_advisory,ADVISORY,无scale且实际清晰；保留透明记录

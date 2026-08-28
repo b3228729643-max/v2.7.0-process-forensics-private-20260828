@@ -1,0 +1,51 @@
+% v2.3.1 figure UID: FIG-P467-01
+% Proposed post-v2.3.1 polish for FIG-P467-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P467-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P467-01,
+  curve trace/.style={draw=SLGray!80,line width=.52pt},
+  principal vector/.style={-{Stealth[length=1.95mm,width=1.18mm]},draw=SLBlue,line width=.98pt},
+  gray basis/.style={-{Stealth[length=1.72mm,width=1.05mm]},draw=SLGray!88!black,line width=.68pt},
+  teal basis/.style={-{Stealth[length=1.72mm,width=1.05mm]},draw=SLTeal,line width=.68pt},
+  phase arrow/.style={-{Stealth[length=2.1mm,width=1.25mm]},draw=SLGold,line width=.86pt},
+]
+\begin{groupplot}[
+  group style={group size=4 by 1,horizontal sep=8mm},
+  width=.20\linewidth,height=.20\linewidth,
+  xmin=-1.9,xmax=1.9,ymin=-1.9,ymax=1.9,
+  axis equal image,axis lines=middle,axis line style={draw=SLInk,line width=.58pt},
+  xtick=\empty,ytick=\empty,clip=false,
+  title style={font=\bfseries\fontsize{9.4pt}{11.2pt}\selectfont,yshift=1mm},
+]
+\nextgroupplot[title={输入：单位圆}]
+  \addplot[curve trace,domain=0:360,samples=181] ({cos(x)},{sin(x)});
+  \addplot[principal vector] coordinates {(0,0) (.8192,.5736)};
+  \addplot[gray basis] coordinates {(0,0) (1,0)};
+  \addplot[teal basis] coordinates {(0,0) (0,1)};
+  \addplot[only marks,mark=*,mark size=1.35pt,draw=SLBlue!58,fill=SLBlue!58]
+    coordinates {(.5,.866) (-.5,.866) (-.866,-.5) (.866,-.5)};
+\nextgroupplot[title={$V^{\mathsf T}$：正交旋转}]
+  \addplot[curve trace,domain=0:360,samples=181] ({cos(x)},{sin(x)});
+  \addplot[principal vector] coordinates {(0,0) (.9962,.0872)};
+  \addplot[gray basis] coordinates {(0,0) (.8660,-.5000)};
+  \addplot[teal basis] coordinates {(0,0) (.5000,.8660)};
+\nextgroupplot[title={$\Sigma$：轴向缩放}]
+  \addplot[curve trace,domain=0:360,samples=181] ({1.6*cos(x)},{.65*sin(x)});
+  \addplot[principal vector] coordinates {(0,0) (1.5939,.0567)};
+  \addplot[gray basis] coordinates {(0,0) (1.3856,-.3250)};
+  \addplot[teal basis] coordinates {(0,0) (.8000,.5629)};
+\nextgroupplot[title={$U$：正交旋转}]
+  \addplot[curve trace,domain=0:360,samples=181]
+    ({1.4501*cos(x)-.2747*sin(x)},{.6762*cos(x)+.5891*sin(x)});
+  \addplot[principal vector] coordinates {(0,0) (1.4205,.7248)};
+  \addplot[gray basis] coordinates {(0,0) (1.3931,.2910)};
+  \addplot[teal basis] coordinates {(0,0) (.4871,.8483)};
+\end{groupplot}
+\draw[phase arrow] (group c1r1.east)--(group c2r1.west);
+\draw[phase arrow] (group c2r1.east)--(group c3r1.west);
+\draw[phase arrow] (group c3r1.east)--(group c4r1.west);
+\node[font=\fontsize{9pt}{10.6pt}\selectfont,text=SLGray!94!black] at ([yshift=-6mm]group c2r1.south east) {蓝向量与两条基方向贯穿四个面板；坐标范围一致};
+\end{tikzpicture}
+\caption{SVD把线性变换分成正交变换、轴向缩放和正交变换}\label{fig:V4-C03-svd-geometry}
+\end{figure}

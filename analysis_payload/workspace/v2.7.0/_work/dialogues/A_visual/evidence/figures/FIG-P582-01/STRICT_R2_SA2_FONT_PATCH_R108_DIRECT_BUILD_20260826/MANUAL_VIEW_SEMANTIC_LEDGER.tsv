@@ -1,0 +1,16 @@
+check_id	observed_at_utc	view_or_source	decision	check_specific_note
+VIEW-001	2026-08-26T13:25:49Z	render/standalone_300dpi.png	PASS	one-page A4 standalone view contains exactly the intended running-mean figure with ample page margins and no clipping.
+VIEW-002	2026-08-26T13:25:49Z	render/figure_crop_300dpi.png	PASS	color crop clearly separates raw gray combs, blue running mean, and teal dashed truth reference.
+VIEW-003	2026-08-26T13:25:49Z	render/figure_crop_grayscale_300dpi.png	PASS	grayscale crop retains line-style and marker-shape distinctions; no label becomes unreadable.
+VIEW-004	2026-08-26T13:25:49Z	render/figure_crop_8x_nearest.png	PASS	8x nearest-neighbor view shows no tofu, truncated strokes, hidden glyphs, or illegal text/geometry overlap.
+VIEW-005	2026-08-26T13:25:49Z	rois/value_640_and_first_down_8x_nearest.png	PASS	.640, first down-arrow, first raw square, and first blue circle remain individually recognizable; equal-value marker coincidence is semantically correct.
+VIEW-006	2026-08-26T13:25:49Z	rois/value_380_and_second_down_8x_nearest.png	PASS	.380 and 再下降 are complete; the arrow tip has zero shared ink with the numeric label and no real readability failure.
+VIEW-007	2026-08-26T13:25:49Z	rois/truth_and_axis_8x_nearest.png	PASS	真值 1/3 and 样本编号 i / 样本数 N retain correct Chinese and mathematical codepoints and remain unclipped.
+SEM-001	2026-08-26T13:25:49Z	source+PDF text	PASS	raw values are exactly .64,.01,.49,.16 at samples 1--4; the figure encodes the fixed squared sample sequence stated by the source.
+SEM-002	2026-08-26T13:25:49Z	source+blue polyline	PASS	running means are exactly .640,.325,.380,.325; first decrease, then increase, then decrease is visually and numerically correct.
+SEM-003	2026-08-26T13:25:49Z	source+teal line	PASS	truth reference is y=.333333 and is labeled 真值 1/3, consistent with the intended limit.
+SEM-004	2026-08-26T13:25:49Z	formula card	PASS	visible formula is h(U_i)=U_i^2 with correct subscript/superscript structure and equality semantics.
+SEM-005	2026-08-26T13:25:49Z	axis labels	PASS	x-axis means sample index i / sample count N and y-axis means value; no symbol or codepoint substitution is present.
+SEM-006	2026-08-26T13:25:49Z	patched source	PASS	all 14 explicit visible fontsize declarations are at least 9.5pt; no resize, scalebox, or transform token is used.
+SEM-007	2026-08-26T13:25:49Z	all contact sheets	PASS	78 visible glyph masks and 17 foreground graphic masks are nonempty and accounted for; no visible object is silently omitted.
+SEM-008	2026-08-26T13:25:49Z	all_unordered_pairs.csv	PASS	all 4,465 unordered object pairs are present once; the 33 machine candidates were each visually adjudicated above.

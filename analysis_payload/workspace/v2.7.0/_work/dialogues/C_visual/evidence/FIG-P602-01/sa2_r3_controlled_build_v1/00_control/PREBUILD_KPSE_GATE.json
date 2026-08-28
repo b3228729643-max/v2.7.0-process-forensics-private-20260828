@@ -1,0 +1,119 @@
+{
+  "schema": "P602_R3_V1_PREBUILD_KPSE_GATE_V1",
+  "recorded_utc": "2026-08-25T08:00:57.1195495Z",
+  "candidate_root_exists_when_gate_recorded": false,
+  "working_directory": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\worktrees\\dialogue_C_visual\\src\\讲义源码\\合并总册",
+  "kpsewhich_path": "D:\\texlive\\2026\\bin\\windows\\kpsewhich.exe",
+  "kpsewhich_sha256": "90E5BD3477FB1AF7F9D1F8C858DE31137AAB4DF57B29928BA82B7D00B2DD85DB",
+  "child_environment": {
+    "TEXMFOUTPUT": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1",
+    "TEXMFVAR": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-var",
+    "TEXMFCACHE": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-cache",
+    "TEXMFCONFIG": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-config"
+  },
+  "probes": [
+    {
+      "name": "TEXMFOUTPUT",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1",
+      "write_read_pass": true,
+      "delete_pass": true,
+      "pass": true
+    },
+    {
+      "name": "TEXMFVAR",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-var",
+      "write_read_pass": true,
+      "delete_pass": true,
+      "pass": true
+    },
+    {
+      "name": "TEXMFCACHE",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-cache",
+      "write_read_pass": true,
+      "delete_pass": true,
+      "pass": true
+    },
+    {
+      "name": "TEXMFCONFIG",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-config",
+      "write_read_pass": true,
+      "delete_pass": true,
+      "pass": true
+    }
+  ],
+  "resolutions": [
+    {
+      "name": "openout_any",
+      "requested": "p",
+      "resolved": "p",
+      "stderr": "",
+      "exit_code": 0,
+      "started": true,
+      "natural_exit": true,
+      "non_ascii_count": 0,
+      "exact_after_slash_normalization": true,
+      "start_exception": null,
+      "runtime_exception": null,
+      "pass": true
+    },
+    {
+      "name": "TEXMFOUTPUT",
+      "requested": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1",
+      "resolved": "C:/Users/ASUS/AppData/Local/Temp/codex_v270_p602_texcache_r3_v1",
+      "stderr": "",
+      "exit_code": 0,
+      "started": true,
+      "natural_exit": true,
+      "non_ascii_count": 0,
+      "exact_after_slash_normalization": true,
+      "start_exception": null,
+      "runtime_exception": null,
+      "pass": true
+    },
+    {
+      "name": "TEXMFVAR",
+      "requested": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-var",
+      "resolved": "C:/Users/ASUS/AppData/Local/Temp/codex_v270_p602_texcache_r3_v1/texmf-var",
+      "stderr": "",
+      "exit_code": 0,
+      "started": true,
+      "natural_exit": true,
+      "non_ascii_count": 0,
+      "exact_after_slash_normalization": true,
+      "start_exception": null,
+      "runtime_exception": null,
+      "pass": true
+    },
+    {
+      "name": "TEXMFCACHE",
+      "requested": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-cache",
+      "resolved": "C:/Users/ASUS/AppData/Local/Temp/codex_v270_p602_texcache_r3_v1/texmf-cache",
+      "stderr": "",
+      "exit_code": 0,
+      "started": true,
+      "natural_exit": true,
+      "non_ascii_count": 0,
+      "exact_after_slash_normalization": true,
+      "start_exception": null,
+      "runtime_exception": null,
+      "pass": true
+    },
+    {
+      "name": "TEXMFCONFIG",
+      "requested": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codex_v270_p602_texcache_r3_v1\\texmf-config",
+      "resolved": "C:/Users/ASUS/AppData/Local/Temp/codex_v270_p602_texcache_r3_v1/texmf-config",
+      "stderr": "",
+      "exit_code": 0,
+      "started": true,
+      "natural_exit": true,
+      "non_ascii_count": 0,
+      "exact_after_slash_normalization": true,
+      "start_exception": null,
+      "runtime_exception": null,
+      "pass": true
+    }
+  ],
+  "probe_gate_pass": true,
+  "kpse_gate_pass": true,
+  "gate_pass": true
+}

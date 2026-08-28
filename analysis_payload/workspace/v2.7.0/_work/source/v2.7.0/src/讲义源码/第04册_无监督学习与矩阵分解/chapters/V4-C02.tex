@@ -1,0 +1,1040 @@
+% STAGE12-CHAPTER: V4-C02
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V4-C02-CH01}; CH-02=\label{struct:V4-C02-CH02}; CH-03=\label{struct:V4-C02-CH03}; CH-04=\label{struct:V4-C02-CH04}; CH-05=\label{struct:V4-C02-CH05}; CH-06=\label{struct:V4-C02-CH06}; CH-07=\label{struct:V4-C02-CH07}; CH-08=\label{struct:V4-C02-CH08}; CH-09=\label{struct:V4-C02-CH09}; CH-10=\label{struct:V4-C02-CH10}; CH-11=\label{struct:V4-C02-CH11}; CH-12=\label{struct:V4-C02-CH12}; CH-13=\label{struct:V4-C02-CH13}; CH-14=\label{struct:V4-C02-CH14}; CH-15=\label{struct:V4-C02-CH15}; CH-16=\label{struct:V4-C02-CH16}; CH-17=\label{struct:V4-C02-CH17}; CH-18=\label{struct:V4-C02-CH18}; CH-19=\label{struct:V4-C02-CH19}; CH-20=\label{struct:V4-C02-CH20}; CH-21=\label{struct:V4-C02-CH21}; CH-22=\label{struct:V4-C02-CH22}; CH-23=\label{struct:V4-C02-CH23}; CH-24=\label{struct:V4-C02-CH24}; CH-25=\label{struct:V4-C02-CH25}; CH-26=\label{struct:V4-C02-CH26}; CH-27=\label{struct:V4-C02-CH27}; CH-28=\label{struct:V4-C02-CH28}; CH-29=\label{struct:V4-C02-CH29}; CH-30=\label{struct:V4-C02-CH30}; CH-31=\label{struct:V4-C02-CH31}; CH-32=\label{struct:V4-C02-CH32}; CH-33=\label{struct:V4-C02-CH33}; CH-34=\label{struct:V4-C02-CH34}; CH-35=\label{struct:V4-C02-CH35}; CH-36=\label{struct:V4-C02-CH36}; CH-37=\label{struct:V4-C02-CH37}
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=12; source_group=4; supplement=8
+% FIGURE-KNOWLEDGE-MAP: fig:V4-C02-dendrogram -> SLM-14-02-002
+
+\chapter{聚类方法}\label{chap:V4-C02}
+\index{聚类}
+\index{层次聚类}
+\index{k均值聚类@\kMeans{}聚类}
+\index{距离}
+\index{连接}
+
+% KNOWLEDGE-PLAN: KN-V4-C25-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：聚类方法。}聚类方法章地图以“从表示与距离直达层次聚类和\kMeans{}”组织内容；请把路线拆成起点、关键工具和终点，并核对三者的输入输出类型能依次衔接。\par
+
+\SLChapterOpening{从表示与距离直达层次聚类和\kMeans{}}{怎样把相似性、类间连接与类内目标变成可复算的划分}{能核对度量边界、执行层次合并、推导\kMeans{}更新与单调性}{向量范数、均值、协方差、有限集合与循环不变量}{尺度或距离无定义时回到\cref{sec:V4-C02-S02}；目标不降或空类出现时回看\cref{sec:V4-C02-S04,sec:V4-C02-S05}}
+\phantomsection\label{struct:V4-C02-CH01}
+% KNOWLEDGE-PLAN: KN-V4-C25-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}聚类方法学习目标固定核验“能严格定义硬聚类、样本距离、类间连接和类内离差目标”；请实际完成“严格定义硬聚类、样本距离、类间连接和类内离差目标”，并用“中间结果逐项包含首目标“能严格定义硬聚类、样本距离、类间连接和类内离差目标”声明的对象、条件与结论”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能严格定义硬聚类、样本距离、类间连接和类内离差目标；
+  \item 能判断闵可夫斯基距离、马哈拉诺比斯距离、相关系数与夹角余弦各自忽略或保留的信息；
+  \item 能执行聚合层次聚类，并解释单连接、完全连接、中心连接和平均连接的边界；
+  \item 能逐步推导\kMeans{}中心更新，证明目标单调不增与有限分配下的终止；
+  \item 能完整说明算法输入、初始化、分配、更新、空类处理、停止、复杂度与模型选择。
+\end{itemize}}
+
+\phantomsection\label{struct:V4-C02-CH02}
+% KNOWLEDGE-PLAN: KN-V4-C25-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}聚类方法的最短先修明确要求“本章使用向量范数、内积、均值、协方差矩阵、正定矩阵、集合划分、有限组合、条件概率和交替优化”；请把首项“本章使用向量范数、内积、均值、协方差矩阵、正定矩阵、集合划分、有限组合、条件概率和交替优化”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章使用向量范数、内积、均值、协方差矩阵、正定矩阵、集合划分、有限组合、条件概率和交替优化”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章使用向量范数、内积、均值、协方差矩阵、正定矩阵、集合划分、有限组合、条件概率和交替优化。样本为$x_i\in\mathbb R^m$，$i=1,\ldots,n$；数据矩阵按列排列为$X=[x_1,\ldots,x_n]\in\mathbb R^{m\times n}$。距离计算前必须先确定缺失值、类别属性和量纲的处理规则。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V4-C02-CH03}
+% KNOWLEDGE-PLAN: KN-V4-C25-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}聚类方法先修自检固定核验“能否验证欧氏距离的非负性、对称性和三角不等式”；请验证欧氏距离的非负性、对称性和三角不等式并写出中间结果，再按“中间结果直接回答首项“能否验证欧氏距离的非负性、对称性和三角不等式”并给出通过或失败”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否验证欧氏距离的非负性、对称性和三角不等式？
+  \item 能否计算三个二维点的均值，并核对结果仍为二维向量？
+  \item 能否解释协方差矩阵奇异时$S^{-1}$为何不存在？
+  \item 能否区分“目标每轮不增”和“得到全局最优”？
+\end{enumerate}
+第1项未通过应复习范数；第2项未通过应复习向量均值；第3项未通过应复习正定性与广义逆；第4项未通过应复习局部优化。
+\end{precheckbox}
+
+\phantomsection\label{struct:V4-C02-CH04}
+\begin{dependencybox}
+数据预处理 $\to$ 距离或相似度；
+样本距离 $\to$ 类内特征与类间连接；
+连接规则 $\to$ 层次合并序列；
+平方欧氏距离 $\to$ \kMeans{}目标；
+固定中心的最近分配 $\leftrightarrow$ 固定分配的均值更新；
+交替下降 $\to$ 局部最优与多初值选择。
+\end{dependencybox}
+
+\begin{keypointbox}[title=数据方向桥：聚类公式采用列样本]
+本章为便于写中心和距离，采用$X_{\rm col}=[x_1,\ldots,x_n]\in\mathbb R^{m\times n}$；它与全书默认的行样本矩阵满足
+\[
+X_{\rm row}=X_{\rm col}^{\mathsf T}\in\mathbb R^{n\times m}.
+\]
+例如$n=4,m=2$时，本章矩阵为$2\times4$，默认表示为$4\times2$。均值、中心和距离都作用于$m$维样本，转置只改变矩阵存放方向。
+\end{keypointbox}
+
+\phantomsection\label{struct:V4-C02-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V4-C02
+\index[symbols]{n-m-k--secba3344e392@$n,m,k$：样本数、属性维数、类别数}
+\index[symbols]{x-i--s84f12042270c@$x_i$：第$i$个样本}
+\index[symbols]{g-minus-ell-minus--se06000cac047@$G_\ell$：第$\ell$个类或簇}
+\index[symbols]{c-i--s4ebb3923b221@$C(i)$：样本$i$的硬类别编号}
+\index[symbols]{d-x-i-x-j--s96b5cd1df2a3@$d(x_i,x_j)$：样本距离}
+\index[symbols]{d-g-p-g-q--s85d834346f21@$D(G_p,G_q)$：两类之间的连接距离}
+\index[symbols]{minus-mu-minus-minus-ell-minus--sea7945c710d3@$\mu_\ell$：第$\ell$类中心}
+\index[symbols]{n-minus-ell-minus--s0cb9ddde790e@$n_\ell$：第$\ell$类样本数}
+\index[symbols]{w-c-minus-mu-minus--sdf0f5e05fb89@$W(C,\mu)$：类内平方和目标}
+\index[symbols]{t-v--sf2507c4067a8@$T,V$：类内平均距离阈值与最大距离阈值}
+% STAGE19-SYMBOL-INDEX-END: V4-C02
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$n,m,k$ & 正整数 & 样本数、属性维数、类别数\\
+$x_i$ & $\mathbb R^m$ & 第$i$个样本\\
+$G_\ell$ & $\{x_1,\ldots,x_n\}$的非空子集 & 第$\ell$个类或簇\\
+$C(i)$ & $\{1,\ldots,k\}$ & 样本$i$的硬类别编号\\
+$d(x_i,x_j)$ & $[0,\infty)$ & 样本距离\\
+$D(G_p,G_q)$ & $[0,\infty)$ & 两类之间的连接距离\\
+$\mu_\ell$ & $\mathbb R^m$ & 第$\ell$类中心\\
+$n_\ell$ & 正整数 & 第$\ell$类样本数\\
+$W(C,\mu)$ & $[0,\infty)$ & 类内平方和目标\\
+$T,V$ & 正数 & 类内平均距离阈值与最大距离阈值\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-002 L1
+\paragraph{读前自检：聚类方法。}聚类方法中的聚类方法把问题限定在“聚类根据样本属性的相似度或距离，把样本归并为若干类”；请把“聚类根据样本属性的相似度或距离，把样本归并为若干类”中的已声明对象依次标成输入、输出与判据，检查是否得到聚类结果可用于数据概括、分层浏览、异常筛查和后续监督学习的预处理，但类别编号本身不具有数值次序。\par
+
+\SLDirectSection{聚类问题与相似度}{sec:V4-C02-S01}
+\phantomsection\label{struct:V4-C02-CH06}
+\knowledgeanchor{SLM-14-00-001}{聚类方法}
+聚类根据样本属性的相似度或距离，把样本归并为若干类。类并非预先标注；算法只能在选定表示和度量下寻找结构。聚类结果可用于数据概括、分层浏览、异常筛查和后续监督学习的预处理，但类别编号本身不具有数值次序。
+
+% KNOWLEDGE-PLAN: KN-V4-C25-DEFINITION-001 L1
+\paragraph{读前自检：聚类的基本概念。}在“样本集合$\mathcal X=\{x_1,\ldots,x_n\}$的$k$类硬聚类是非空子集$G_1,\ldots,G_k$”成立时处理聚类的基本概念：请把$G_p\cap G_q$展开一次并检查其类型或边界，并以展开后的量满足定义中的域、维数或符号限制判定结果。\par
+
+\knowledgeanchor{SLM-14-01-001}{聚类的基本概念}
+\phantomsection\label{struct:V4-C02-CH07}
+% KNOWLEDGE-PLAN: KN-V4-C25-DEFINITION-002 L1
+\paragraph{读前自检：硬聚类。}硬聚类$G_1,\ldots,G_k$均非空；请逐对核对$G_p\cap G_q=\varnothing\ (p\ne q)$并计算$\bigcup_{\ell=1}^kG_\ell=\mathcal X$，再验证对应映射$C$是满射。\par
+
+\begin{definition}[硬聚类]\label{def:V4-C02-hard-clustering}
+样本集合$\mathcal X=\{x_1,\ldots,x_n\}$的$k$类硬聚类是非空子集$G_1,\ldots,G_k$，满足
+\[
+G_p\cap G_q=\varnothing\quad(p\neq q),\qquad
+\bigcup_{\ell=1}^{k}G_\ell=\mathcal X.
+\]
+等价地，可用满射$C:\{1,\ldots,n\}\to\{1,\ldots,k\}$表示，其中$C(i)=\ell$当且仅当$x_i\in G_\ell$。
+\end{definition}
+
+\knowledgeanchor{SLM-14-01-004}{类或簇}
+\phantomsection\label{def:V4-C02-cluster-thresholds}
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-004 L1
+\paragraph{读前自检：工作性检查表：四种类内阈值。}四种类内阈值表设类$G$含$n_G\ge2$个样本；请对两点类计算全直径、近邻连通、平均距离与中心距离四项，核对平均距离分母$n_G(n_G-1)$非零。\par
+
+\begin{keypointbox}[title=工作性检查表：四种类内阈值]
+为比较不同聚类约束，设$G$含$n_G\geq2$个样本，$d_{ij}=d(x_i,x_j)$。给定$T>0$，以下四项是本讲义并列整理的检查条件，而不是来源教材中的一个编号定义；第四项另给$V>0$：
+\begin{enumerate}[leftmargin=2.2em]
+  \item 对任意不同的$x_i,x_j\in G$，有$d_{ij}\leq T$；
+  \item 对每个$x_i\in G$，至少存在$x_j\in G\setminus\{x_i\}$使$d_{ij}\leq T$；
+  \item 对每个$x_i\in G$，有$\frac1{n_G-1}\sum_{x_j\in G}d_{ij}\leq T$，其中$d_{ii}=0$；
+  \item 同时有$\frac1{n_G(n_G-1)}\sum_{x_i\in G}\sum_{x_j\in G}d_{ij}\leq T$和$d_{ij}\leq V$对所有点对成立。
+\end{enumerate}
+第一项控制全部点对，第二项只要求局部邻接，第三项限制每一点到类内其余样本的平均距离，第四项同时限制总体平均与极端距离。阈值含义不同，不能只保留“类”这个名称而丢弃约束。
+\end{keypointbox}
+
+\begin{definition}[距离与相似度]\label{def:V4-C02-distance-similarity}
+距离$d(x,y)$通常满足$d(x,y)\geq0$、$d(x,y)=0\Leftrightarrow x=y$、对称性和三角不等式；相似度$s(x,y)$通常数值越大表示越相似，但未必满足度量公理。把相似度改写为$1-s$只有在取值范围和三角性质经过核对后才可能成为距离。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-005 L1
+\paragraph{读前自检：相似度或距离。}相似度或距离中的“平方欧氏量$\|x_i-x_j\|_2^2$常用于优化，但它本身不满足三角不等式”决定可执行范围；请把$d_p(x_i,x_j)$展开一次并检查其类型或边界，结果须满足对$x_i=(x_{1i},\ldots,x_{mi})^T$和$x_j=(x_{1j},\ldots,x_{mj})^T$。\par
+
+\SLReviewSection{距离与相似度度量}{sec:V4-C02-S02}
+\knowledgeanchor{SLM-14-01-002}{相似度或距离}
+\knowledgeanchor{SLM-14-01-003}{闵可夫斯基距离}
+对$x_i=(x_{1i},\ldots,x_{mi})^T$和$x_j=(x_{1j},\ldots,x_{mj})^T$，$p\geq1$时的闵可夫斯基距离为
+\[
+d_p(x_i,x_j)=\left(\sum_{a=1}^{m}|x_{ai}-x_{aj}|^p\right)^{1/p}.
+\]
+$p=2$得到欧氏距离，$p=1$得到曼哈顿距离，$p\to\infty$得到切比雪夫距离$d_\infty(x_i,x_j)=\max_a|x_{ai}-x_{aj}|$。平方欧氏量$\|x_i-x_j\|_2^2$常用于优化，但它本身不满足三角不等式。
+
+\knowledgeanchor{SLM-14-02-001}{马哈拉诺比斯距离}
+若$S\in\mathbb R^{m\times m}$正定，马哈拉诺比斯距离为
+\[
+d_S(x_i,x_j)=\sqrt{(x_i-x_j)^TS^{-1}(x_i-x_j)}.
+\]
+令$S=LL^T$，则$d_S(x_i,x_j)=\|L^{-1}(x_i-x_j)\|_2$，所以它等于白化坐标中的欧氏距离。$S$奇异或估计不稳定时，应使用正则化$S_\gamma=S+\gamma I$；若改用Moore--Penrose伪逆$S^+$，则$\sqrt{(x_i-x_j)^TS^+(x_i-x_j)}$只保证为半度量，因为相差向量落在$N(S)$中的两个不同样本也可能得到零距离。
+
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-008 L1
+\paragraph{读前自检：夹角余弦。}把聚类方法中的夹角余弦放在“$s_{\cos}(x_i,x_j)=\frac{x_i^Tx_j}{\|x_i\|_2\|x_j\|_2}.$”下考察：把$s_{\cos}(x_i,x_j)$展开一次并检查其类型或边界，并检查若数据含负值，余弦可为负，评价时不能默认取值在$[0,1]$。\par
+
+\knowledgeanchor{SLM-14-04-001}{夹角余弦}
+非零向量的夹角余弦为
+\[
+s_{\cos}(x_i,x_j)=\frac{x_i^Tx_j}{\|x_i\|_2\|x_j\|_2}.
+\]
+它对正比例缩放不变，主要比较方向；零向量没有定义。若数据含负值，余弦可为负，评价时不能默认取值在$[0,1]$。
+
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-009 L1
+\paragraph{读前自检：相关系数。}聚类方法中的相关系数要求先确认“若某样本各属性恒定，分母为0，相关系数没有定义”；请随后检查$\bar x_i=m^{-1}\sum_{a=1}^{m}x_{ai}$中每项的类型后完成等式变形，用两种语义会产生不同聚类，不能在算法运行后按结果好坏临时决定是否取绝对值验收。\par
+
+\knowledgeanchor{SLM-14-03-001}{相关系数}
+将两个样本各自按属性中心化，记$\bar x_i=m^{-1}\sum_{a=1}^{m}x_{ai}$，则相关系数为
+\[
+r_{ij}=\frac{\sum_{a=1}^{m}(x_{ai}-\bar x_i)(x_{aj}-\bar x_j)}
+{\sqrt{\sum_a(x_{ai}-\bar x_i)^2}\sqrt{\sum_a(x_{aj}-\bar x_j)^2}}.
+\]
+相关系数同时忽略加性平移与正比例缩放；若某样本各属性恒定，分母为0，相关系数没有定义。
+若“同向变化”才算相似，应直接使用有符号$r_{ij}$，此时$r_{ij}\approx-1$表示强烈反向而不是相似；若只关心线性关联强度而不关心方向，可预先声明使用$|r_{ij}|$，此时接近$1$的正、负相关都被视为相似。两种语义会产生不同聚类，不能在算法运行后按结果好坏临时决定是否取绝对值。
+
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-010 L1
+\paragraph{读前自检：全直径阈值类。}全直径阈值类要求任意不同$x_i,x_j\in G$均满足$d_{ij}\le T$；请计算类内全部点对距离的最大值$D_G$，核对$D_G\le T$时且仅当该条件通过。\par
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-011 L1
+\paragraph{读前自检：近邻连通阈值类。}近邻连通阈值类要求每个$x_i\in G$至少存在一个不同点$x_j$使$d_{ij}\le T$；请对每个$i$计算$\min_{j\ne i}d_{ij}$，核对这些最小值全部不超过$T$。\par
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-012 L1
+\paragraph{读前自检：平均距离阈值类。}平均距离阈值类设$n_G\ge2$；请对每个$x_i\in G$计算$(n_G-1)^{-1}\sum_{j\ne i}d_{ij}$，核对分母非零且所有逐点平均均不超过$T$。\par
+
+\knowledgeanchor{SLM-14-05-001}{全直径阈值类}
+\knowledgeanchor{SLM-14-06-001}{近邻连通阈值类}
+\knowledgeanchor{SLM-14-07-001}{平均距离阈值类}
+\knowledgeanchor{SLM-14-08-001}{平均与最大距离阈值类}
+上述工作性检查表中的四个条件分别对应这四类约束。第一项会推出其余三项：逐点平均和总体平均均由不超过$T$的非负项组成，并可在第四项取$V=T$；完整证明见章末原书练习整理。
+
+类中心、直径、散布矩阵和样本协方差可写成
+\[
+\bar x_G=\frac1{n_G}\sum_{x_i\in G}x_i,\qquad
+D_G=\max_{x_i,x_j\in G}d_{ij},
+\]
+\[
+A_G=\sum_{x_i\in G}(x_i-\bar x_G)(x_i-\bar x_G)^T,\qquad
+S_G=\frac1{n_G-1}A_G\quad(n_G>1).
+\]
+\begin{warningbox}
+\textbf{经验证的来源勘误（ERR-14-001）。}核对对象为《统计学习方法（第2版）》2019年5月第2版、2019年6月第2次印刷，ISBN 978-7-302-51727-6；原书PDF第283页（印刷页第260页）式(14.13)写作$S_G=A_G/(m-1)$，同页把$m$定义为属性维数。建议更正为无偏样本协方差$S_G=A_G/(n_G-1)$；若明确采用高斯极大似然定义，则分母为$n_G$。独立核验包括：取$n_G=3,m=2$和样本$(0,0),(1,0),(2,0)$，有$A_G=\operatorname{diag}(2,0)$，无偏协方差应为$\operatorname{diag}(1,0)$，而原式错误给出$\operatorname{diag}(2,0)$；一维属性$m=1$时原式还会除以零。该结论另与NIST关于样本协方差自由度的定义交叉核对。此记录是工程内部页面、反例与权威定义核验，不冒充出版社官方勘误；完整证据见下列勘误记录。
+\end{warningbox}
+% ERRATA-RECORD: 审查报告/原书疑似勘误与人工核对/式14.13_类内样本协方差分母核对.md
+
+\knowledgeanchor{SLM-14-01-005}{类与类之间的距离}
+设$G_p,G_q$的中心分别为$\bar x_p,\bar x_q$，常见连接为
+\[
+\begin{aligned}
+D_{\rm single}(G_p,G_q)&=\min_{x_i\in G_p,x_j\in G_q}d_{ij},\\
+D_{\rm complete}(G_p,G_q)&=\max_{x_i\in G_p,x_j\in G_q}d_{ij},\\
+D_{\rm centroid}(G_p,G_q)&=d(\bar x_p,\bar x_q),\\
+D_{\rm average}(G_p,G_q)&=\frac1{n_pn_q}\sum_{x_i\in G_p}\sum_{x_j\in G_q}d_{ij}.
+\end{aligned}
+\]
+单连接重视最近桥点，完全连接重视最远点，平均连接折中全部点对，中心连接只保留一阶统计量。
+
+\begin{warningbox}
+\textbf{中心连接的合并高度不一定单调。}树状图的纵轴记录“本轮所选连接值”，但对中心连接，合并后中心移动可能使下一连接值反而更小，形成\emph{倒置}。例如在平面取
+\[
+x_1=(-1,0),\qquad x_2=(1,0),\qquad x_3=(0,\sqrt3).
+\]
+三个点两两距离均为$2$。若并列规则先合并$\{x_1\},\{x_2\}$，第一高度为$2$；新中心是$(0,0)$，到$x_3$的中心距离却为$\sqrt3<2$，故第二高度下降。这个反例说明不能把所有连接的合并高度都当作单调序列。初学实现优先使用single、complete、average或满足相应条件的Ward连接；若使用centroid，必须保留原始合并次序并显式标记倒置，不能排序高度来“修复”树。
+\end{warningbox}
+
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-015 L1
+\paragraph{读前自检：层次聚类。}聚合层次聚类从$n$个单点类开始，并须固定样本度量、类间连接、并列规则与停止条件；请对当前距离最小的两个类执行一次合并，核对新划分严格嵌套且类数减少1。\par
+
+\SLTeachSection{层次聚类}{sec:V4-C02-S03}
+\knowledgeanchor{SLM-14-02-002}{层次聚类}
+层次聚类输出一串嵌套划分。聚合法从$n$个单点类出发，每次合并两个类；分裂法从一个全集类出发，每次拆分一个类。本节采用聚合法。算法必须先固定样本度量、类间连接、并列最小值规则和停止条件，否则同一数据无法复现唯一合并序列。
+
+% CORE-DERIVATION-PLAN: KN-V4-C25-DERIVATION-001
+\SLKnowledgeBridge{在簇划分固定时证明样本均值是类内平方和的唯一极小点。}{非空簇 $G_\ell$、样本 $x_i\in\R^m$ 与中心 $\mu\in\R^m$。}{$n_\ell=|G_\ell|>0$；簇成员在本步固定。}{先令 $\bar x_\ell=n_\ell^{-1}\sum_{i\in G_\ell}x_i$，并把 $x_i-\mu$ 分解为 $(x_i-\bar x_\ell)+(\bar x_\ell-\mu)$。}
+
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：聚合聚类算法。}聚合聚类算法输入“有限样本、非负有限样本距离、已定义连接、目标类数或阈值以及固定并列规则”，条件“$n\ge1$，$1\le k_{\rm stop}\le n$”；请做一轮“新类到其余类的连接全部有限后，才原子替换两个旧类、提交合并记录并增加$m_{\rm done}$”，以“达到$k_{\rm stop}$、下一合并超过阈值或首次失败时停止”核对停止证书。\par
+
+\knowledgeanchor{SLM-14-01-006}{聚合聚类算法}
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={聚合层次聚类：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：聚合层次聚类。}聚合层次聚类输入“有限样本、非负有限样本距离、已定义连接、目标类数或阈值以及固定并列规则”，条件“$n\ge1$，$1\le k_{\rm stop}\le n$”；请做一轮“新类到其余类的连接全部有限后，才原子替换两个旧类、提交合并记录并增加$m_{\rm done}$”，以“达到$k_{\rm stop}$、下一合并超过阈值或首次失败时停止”核对停止证书。\par
+
+\begin{AlgorithmContract}{
+  input={有限样本、非负有限样本距离、已定义连接、目标类数或阈值以及固定并列规则},
+  output={最后合法划分、嵌套合并表、实际合并数$m_{\rm done}$、实际连接计算数$d_{\rm done}$、状态与最终诊断},
+  preconditions={$n\ge1$，$1\le k_{\rm stop}\le n$；阈值若启用则有限；距离/连接在所有将访问的非空类对上有定义},
+  initialization={$\mathcal G$为$n$个单点类，合并表为空，$m_{\rm done}=d_{\rm done}=0$并计算初始类对连接},
+  loop={在当前划分中按固定规则选择最小连接类对，先核对阈值，再构造一个合并候选},
+  update={新类到其余类的连接全部有限后，才原子替换两个旧类、提交合并记录并增加$m_{\rm done}$},
+  domain={$\mathcal G$始终为原样本集合的划分；连接值有限非负；合并高度和类标识可复现},
+  failure={维数、目标、阈值、距离或规则非法返回$\mathtt{invalid\_input}$；运行中连接计算非有限返回$\mathtt{numerical\_failure}$并保留上一划分},
+  stop={达到$k_{\rm stop}$、下一合并超过阈值或首次失败时停止},
+  budget={至多$n-k_{\rm stop}$次原子合并；朴素实现至多$\binom n2+\sum_{j=k_{\rm stop}+1}^{n}(j-2)$次已登记连接计算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$m_{\rm done}$计实际提交合并，$d_{\rm done}$计实际连接计算/更新，阈值拒绝不计合并},
+  diagnostics={最终类数、停止门、下一候选高度、每次合并成员/高度、失败类对与阶段以及计数},
+  complexity={预计算样本距离$O(n^2p)$；朴素扫描/更新最坏$O(n^3)$时间和$O(n^2)$空间}
+}
+\begin{algorithm}[!t]
+\caption{聚合层次聚类}\label{alg:V4-C02-agglomerative}
+\KwIn{样本$x_1,\ldots,x_n$，样本距离$d$，连接$D$，目标类数$k_{\rm stop}$或阈值$T$；仅用阈值时令$k_{\rm stop}=1$}
+\KwOut{最后合法划分与合并表；$m_{\rm done},d_{\rm done}$；$\mathtt{status}$与最终诊断}
+若$n,k_{\rm stop},T$、样本、距离/连接接口或并列规则非法，则返回$\bot$、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+初始化$\mathcal G\leftarrow\{\{x_1\},\ldots,\{x_n\}\}$，合并表为空，$m_{\rm done}\leftarrow0,d_{\rm done}\leftarrow0$；计算所有不同类对连接并累计$d_{\rm done}$；若有负值或非有限值则返回单点划分、$\mathtt{numerical\_failure}$及类对诊断\;
+\While{$|\mathcal G|>k_{\rm stop}$}{
+  选择连接距离最小的类对$(G_p,G_q)$；并列时按登记的类标识顺序选择\;
+  \If{使用阈值停止且$D(G_p,G_q)>T$}{返回当前划分与记录、$\mathtt{completed}$及“下一合并超过阈值”诊断\;}
+  在临时对象中创建$G_{\rm new}=G_p\cup G_q$，计算它到其余各类的连接并累计$d_{\rm done}$；若任一结果非有限或为负，则拒绝候选并返回上一划分、$\mathtt{numerical\_failure}$及失败类对诊断\;
+  原子地从$\mathcal G$删除$G_p,G_q$、加入$G_{\rm new}$并追加成员/高度记录；令$m_{\rm done}\leftarrow m_{\rm done}+1$\;
+}
+返回全部合并记录、最终划分、实际计数、$\mathtt{completed}$及“达到目标类数”诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+
+\textbf{参数、初始化与循环变量。}参数为$d,D,k_{\rm stop},T$和并列规则；初始化为$n$个单点类及其类间距离。循环变量可取当前类数$|\mathcal G|$，每次成功合并后严格减1。
+
+\textbf{更新顺序与判断条件。}每轮先找最小连接类对，再判断阈值；只有通过阈值判断才创建并替换新类，随后更新新类到其余类的距离。不得先更新距离再决定本轮合并。
+
+\textbf{停止条件与返回结果。}达到目标类数、下一合并超过阈值或发现输入异常时停止，返回嵌套合并记录、最终划分和停止原因。仅给阈值时，算法也会在至多$n-1$次合并后停止。
+
+\textbf{异常与退化。}若$n<1$、$k_{\rm stop}\notin\{1,\ldots,n\}$、距离为负或非有限、连接未定义，输入不合法；所有距离并列时必须使用固定规则。完全重合样本可在高度0合并，这不是错误，但应保留样本身份。
+
+\textbf{正确性依据。}初始时各单点类构成划分。每轮用两个不交类的并集替换它们，既不丢样本也不引入交叠，因此“当前类族是原样本集合的划分”是循环不变量；每个新划分由前一划分合并得到，所以输出层次嵌套。
+
+\textbf{终止条件与异常情形。}当类数达到$k_{\rm stop}$或下一合并越过$T$时满足终止条件。该算法是有限合并过程，不涉及连续参数的无限迭代极限；非法距离导致的提前退出也不能称为正常终止。
+
+% KNOWLEDGE-PLAN: KN-V4-C25-BOUNDARY-003 L1
+\paragraph{读前自检：复杂度分析：层次聚类。}在“优先队列可改变选择代价，但必须另行说明过期条目处理”成立时处理聚类方法中的层次聚类：请由$m$的总成本剥离一次迭代或一次样本因子，并以得到的单步时间与存储阶同复杂度框中的分解一致判定结果。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}假设样本为稠密$m$维向量，预先保存$n\times n$对称距离矩阵，并以朴素扫描寻找最小类对。\\
+\textbf{训练时间复杂度。}初始样本距离需$O(n^2m)$；至多$n-1$轮朴素扫描和更新共$O(n^3)$，总计$O(n^2m+n^3)$。\\
+\textbf{新样本归属。}标准层次聚类只定义训练样本的树，不自动给出新样本归属；只有另行固定“接到最近叶类”等规则后，才能按该规则分析推断代价。\\
+\textbf{空间复杂度。}距离矩阵为$O(n^2)$，合并记录为$O(n)$，样本数据为$O(nm)$。优先队列可改变选择代价，但必须另行说明过期条目处理。
+\end{complexitybox}
+
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-016 L1
+\paragraph{读前自检：\kMeans{}聚类。}\kMeans{}聚类所用的明确前提是“给定$1\leq k\leq n$”；完成检查$\mu=(\mu_1,\ldots,\mu_k)$中每项的类型后完成等式变形后，核对两端运算均有定义、类型一致且化为同一结果。\par
+
+\SLTeachSection{\kMeans{}模型与目标函数}{sec:V4-C02-S04}
+\knowledgeanchor{SLM-14-03-002}{k均值聚类@\kMeans{}聚类}
+\knowledgeanchor{SLM-14-03-003}{模型}
+\phantomsection\label{struct:V4-C02-CH08}
+\textbf{模型。}给定$1\leq k\leq n$，\kMeans{}模型是硬划分$C$与中心$\mu=(\mu_1,\ldots,\mu_k)$的组合，其中$\mu_\ell\in\mathbb R^m$且每个类非空。$k=1$与$k=n$分别是单类和每点一类的退化边界；通常只在$1<k<n$中选择有解释意义的结构。模型的预测规则是把新点分配给最近中心；若距离并列，使用固定的最小编号规则。
+
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-018 L1
+\paragraph{读前自检：策略。}围绕聚类方法中的策略，先采用条件“采用平方欧氏距离”，再把$J_\ell(\mu)$展开一次并检查其类型或边界；最后验证展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-14-03-004}{策略}
+\phantomsection\label{struct:V4-C02-CH09}
+\textbf{学习策略。}采用平方欧氏距离，最小化类内平方和
+\[
+W(C,\mu)=\sum_{\ell=1}^{k}\sum_{i:C(i)=\ell}\|x_i-\mu_\ell\|_2^2.
+\]
+把中心消去后，$\mu_\ell$等于第$\ell$类样本均值，问题变为在所有非空$k$划分中寻找最小$W(C)$。候选无标号划分数为第二类Stirling数
+\[
+S(n,k)=\frac1{k!}\sum_{r=1}^{k}(-1)^{k-r}\binom{k}{r}r^n,
+\]
+它随$n$指数增长，因此实际采用交替迭代而非穷举。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V4-C02-CH11}
+\begin{derivationgoalbox}
+在划分$C$固定时，逐步证明使类内平方和最小的中心是该类样本均值，并给出维数检查。该结论用于\kMeans{}的中心更新步。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+固定某个非空类$G_\ell$，记$n_\ell=|G_\ell|$、$\bar x_\ell=n_\ell^{-1}\sum_{i:C(i)=\ell}x_i\in\mathbb R^m$。只需最小化$J_\ell(\mu)=\sum_{i:C(i)=\ell}\|x_i-\mu\|_2^2$，其中$\mu\in\mathbb R^m$。
+\end{derivationprepbox}
+
+\textbf{推导第1步：围绕均值分解每个差向量。}
+\[
+x_i-\mu=(x_i-\bar x_\ell)+(\bar x_\ell-\mu).
+\]
+
+\textbf{推导第2步：展开并消去交叉项。}
+\[
+\begin{aligned}
+J_\ell(\mu)
+&=\sum_{i:C(i)=\ell}\|x_i-\bar x_\ell\|_2^2
++n_\ell\|\mu-\bar x_\ell\|_2^2\\
+&\quad+2(\bar x_\ell-\mu)^T\sum_{i:C(i)=\ell}(x_i-\bar x_\ell).
+\end{aligned}
+\]
+按均值定义，最后一个求和等于$\sum_i x_i-n_\ell\bar x_\ell=0\in\mathbb R^m$，所以交叉项是标量0。
+
+\textbf{推导第3步：确定唯一极小点。}
+\[
+J_\ell(\mu)=J_\ell(\bar x_\ell)+n_\ell\|\mu-\bar x_\ell\|_2^2
+\geq J_\ell(\bar x_\ell).
+\]
+由于$n_\ell>0$，等号仅在$\mu=\bar x_\ell$时成立，所以更新为
+\[
+\mu_\ell=\frac1{n_\ell}\sum_{i:C(i)=\ell}x_i\in\mathbb R^m.
+\]
+
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：算法特性。}聚类方法中的算法特性中的“若每当分配改变时目标严格下降”决定可执行范围；请把$W^{(t)}$展开一次并检查其类型或边界，结果须满足稳定点是交替优化的坐标极小点，但未必是全局极小点。\par
+
+\knowledgeanchor{SLM-14-03-006}{算法特性}
+\phantomsection\label{struct:V4-C02-CH12}
+\begin{theorem}[\kMeans{}的单调下降与有限终止]\label{thm:V4-C02-kmeans-descent}
+假设每轮分配步按固定规则选择最近中心，中心步对每个非空类取均值，且不出现空类。则目标序列$W^{(t)}$单调不增。若每当分配改变时目标严格下降，则算法经过有限轮后分配稳定；稳定点是交替优化的坐标极小点，但未必是全局极小点。
+\end{theorem}
+
+\phantomsection\label{struct:V4-C02-CH13}
+% KNOWLEDGE-PLAN: KN-V4-C25-PROOF-001 L1
+\paragraph{读前自检：证明：的单调下降与有限终止。}\kMeans{}的单调下降证明要求分配步取最近中心、中心步取非空类均值且不触发空类修复；请串联两步目标不增式，核对$W^{(t+1)}\le W^{(t)}$，并说明这不保证全局最优。\par
+
+\begin{proof}
+固定$\mu^{(t)}$时，最近中心分配逐样本最小化距离项，因此
+\[
+W(C^{(t+1)},\mu^{(t)})\leq W(C^{(t)},\mu^{(t)}).
+\]
+固定$C^{(t+1)}$时，上面的平方和分解表明类内均值使每一类目标最小，所以
+\[
+W(C^{(t+1)},\mu^{(t+1)})\leq W(C^{(t+1)},\mu^{(t)}).
+\]
+串联两式得到$W^{(t+1)}\leq W^{(t)}$。非空$k$划分的数量有限；若分配改变必使目标严格下降，就不能再次访问同一分配，也不能无限产生新分配，因此有限轮后分配保持不变。联合目标非凸，不同初值可能停在不同稳定分配，故结论不包含全局最优保证。
+\end{proof}
+
+\phantomsection\label{struct:V4-C02-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}聚类是在选定几何中划分点集。同一批坐标在欧氏球、马氏椭球或角度圆锥下会产生不同邻域；所谓“相近”不是数据自带的事实，而是度量和预处理共同定义的关系。
+\end{geometrybox}
+
+\phantomsection\label{struct:V4-C02-CH15}
+\begin{probabilitybox}
+若各类先验相同，且$x\mid z=\ell\sim\mathcal N(\mu_\ell,\sigma^2I)$共享同一球形协方差，则最大后验硬分配等于选择最近均值。固定硬分配时，极大似然均值也是类内样本均值。不同协方差、不同先验或软后验会导向高斯混合模型，而不再是标准\kMeans{}。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V4-C02-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}\kMeans{}在两个变量块之间交替精确极小化：固定中心时，每个样本独立选择最近中心；固定分配时，每个中心取类内均值。每个子问题都求到全局最小，但联合问题非凸，因此整体只保证到达局部稳定解。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V4-C02-CH17}
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C02/fig_v4_c02_dendrogram.tex}
+\Cref{fig:V4-C02-dendrogram}对应层次聚类知识点：在所示高度切割得到$\{x_1,x_2\}$、$\{x_3\}$和$\{x_4,x_5\}$三个类；改变切割高度只合并或拆分嵌套分支，不改变已经记录的合并顺序。
+
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：算法。}\kMeans{}算法需要数据、类别数$k$、启动数$R$、轮数预算$T_{\max}$及停止容差；请核对这些量的定义域，再完成一次最近中心分配和类均值更新，记录目标值与停止原因。\par
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-006 L1
+\paragraph{读前自检：\kMeans{}聚类算法。}\kMeans{}交替执行最近中心分配与非空类均值更新；请对一轮候选同时检查有限性、空类状态和目标不增，只在门禁通过时提交，并按分配稳定或双容差判停。\par
+
+\SLAdvancedSection{\kMeans{}算法与收敛}{sec:V4-C02-S05}
+\knowledgeanchor{SLM-14-03-005}{算法}
+\knowledgeanchor{SLM-14-02-003}{k均值聚类算法@\kMeans{}聚类算法}
+\phantomsection\label{struct:V4-C02-CH10}
+\textbf{学习算法。}\kMeans{}交替执行最近中心分配和类内均值更新，并在每次循环保留目标轨迹、空类修复记录与停止原因。
+
+\phantomsection\label{struct:V4-C02-CH19}
+\textbf{严格伪代码。}\Cref{alg:V4-C02-kmeans}给出单次启动的原子更新，\Cref{alg:V4-C02-kmeans-empty-repair}只负责逐空类修复，\Cref{alg:V4-C02-kmeans-multistart}负责多启动选择；\Cref{thm:V4-C02-kmeans-descent}的单调性只覆盖没有触发修复、且两个子问题都按定义精确求解的轮次。
+
+\phantomsection\label{struct:V4-C02-CH20}
+\textbf{算法所需量与计算结果。}计算需要数据、类别数、$R$组可复现初始中心或其种子、并列规则、空类规则和数值容差。多次启动后选取通过诊断且目标最小的非空划分与中心，并保留各次目标轨迹、迭代次数和停止原因。分配和更新必须使用同一预处理后的坐标与平方欧氏目标。
+
+\phantomsection\label{struct:V4-C02-CH21}
+\textbf{参数含义。}最大迭代数$T_{\max}\geq1$；目标相对变化容差$\varepsilon_W\geq0$；中心相对移动容差$\varepsilon_\mu\geq0$；重复初值数$R\geq1$；类别数$1\leq k\leq n$。容差用于浮点停止，$R$用于缓解局部最优，二者不能替代类别数选择。
+
+\phantomsection\label{struct:V4-C02-CH22}
+\textbf{初始化。}对$r=1,\ldots,R$分别生成一组中心。可从不同位置的样本中选$k$个中心；距离加权播种先随机选一个中心，再按到最近已选中心的平方距离加权选取后续中心。初始化前去除完全重复候选或登记重复处理；每组初值、随机种子和固定并列规则都应保存以便复现。
+
+\begingroup
+\renewcommand{\thealgocf}{\thechapter.\arabic{algocf}A}
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-007 L2
+\begin{keypointbox}[title={带空类保护的单启动：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-008 L1
+\paragraph{读前自检：带空类保护的单启动。}带空类保护的单启动输入“有限数据$X$、类别数$k$、一组有限初始中心、单启动预算$T_{\max}$、双容差、固定并列规则与空类修复子程序”，条件“$1\le k\le n$、$T_{\max}\ge1$”；请做一轮“$C^+,\mu^+,W^+$及单调性/有限性诊断全部通过后才原子提交，失败尝试不增加$t_{\rm done}$”，以“分配稳定、目标与中心双容差、$T_{\max}$轮预算耗尽或首次失败时停止”核对停止证书。\par
+
+\begin{AlgorithmContract}{
+  input={有限数据$X$、类别数$k$、一组有限初始中心、单启动预算$T_{\max}$、双容差、固定并列规则与空类修复子程序},
+  output={最后合法非空划分$C$、中心$\mu$、目标$W$、完成轮数$t_{\rm done}$、修复数$e_{\rm done}$、状态、轨迹与最终诊断},
+  preconditions={$1\le k\le n$、$T_{\max}\ge1$；数据与中心维数相容且有限；容差非负；并列和修复规则已登记},
+  initialization={$t_{\rm done}=e_{\rm done}=0$，载入$\mu^{(0)}$；第一次完整分配提交前以$(\mu^{(0)},\bot,\bot)$为最后合法初始化状态},
+  loop={每轮以当前中心作确定性最近分配，调用空类修复，再由完整非空分配形成中心与目标候选},
+  update={$C^+,\mu^+,W^+$及单调性/有限性诊断全部通过后才原子提交，失败尝试不增加$t_{\rm done}$},
+  domain={数据、中心与目标有限；提交后的$k$个类均非空；$C$为$\{1,\ldots,k\}$值分配},
+  failure={非法接口返回$\mathtt{invalid\_input}$；距离、均值、目标、修复不变量或单调性门失败返回$\mathtt{numerical\_failure}$并保留上一合法状态},
+  stop={分配稳定、目标与中心双容差、$T_{\max}$轮预算耗尽或首次失败时停止},
+  budget={至多$T_{\max}$个原子提交轮；每轮至多修复$k-1$个空类并完成一次全数据分配/重算},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$t_{\rm done}$计实际提交轮，$e_{\rm done}$计修复子程序已提交的样本移动，尝试失败轮不计入},
+  diagnostics={最终$W$、相对目标变化、最大中心移动、分配是否稳定、逐轮修复表、失败轮/阶段和预算余量},
+  complexity={每个提交轮分配与重算为$O(nkp)$时间和$O(np+kp)$空间，另计至多$k-1$次修复扫描}
+}
+\begin{algorithm}[H]
+\caption{带空类保护的单启动\kMeans{}}\label{alg:V4-C02-kmeans}
+\KwIn{$X,k,\mu^{(0)},T_{\max},\varepsilon_W,\varepsilon_\mu$及固定并列/修复规则}
+\KwOut{最后合法$C,\mu,W$；$t_{\rm done},e_{\rm done}$；$\mathtt{status}$、轨迹与诊断}
+若$X,k,\mu^{(0)},T_{\max}$、容差或规则非法，则返回初始化占位、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+令$\mu\leftarrow\mu^{(0)},C\leftarrow\bot,W\leftarrow\bot,t_{\rm done}\leftarrow0,e_{\rm done}\leftarrow0$，轨迹为空\;
+\While{$t_{\rm done}<T_{\max}$}{
+  以$\mu$按固定并列规则形成临时分配$C^+$；距离非有限则返回最后合法状态与$\mathtt{numerical\_failure}$及分配阶段诊断\;
+  调用算法\ref{alg:V4-C02-kmeans-empty-repair}修复$C^+$；若子程序未返回$\mathtt{completed}$，则保留旧状态并以$\mathtt{numerical\_failure}$返回，诊断嵌套其失败位置\;
+  由修复后$C^+$计算全部$\mu^+$和$W^+$；若非有限、有空类，或未修复轮的$W^+$超过旧$W$与舍入容差之和，则拒绝候选并返回最后合法状态、$\mathtt{numerical\_failure}$及均值/目标阶段诊断\;
+  若$C=\bot$则置分配稳定为假且$\delta_W=+\infty$；否则计算分配稳定标志与$\delta_W$；同时计算$\Delta_\mu$；原子提交$(C,\mu,W)\leftarrow(C^+,\mu^+,W^+)$，追加轨迹并增加$t_{\rm done}$及子程序移动数$e_{\rm done}$\;
+  若分配稳定，或$\delta_W\le\varepsilon_W$且$\Delta_\mu\le\varepsilon_\mu$，则返回最后合法状态、$\mathtt{converged}$及停止证书\;
+}
+返回最后合法状态、实际计数、$\mathtt{budget\_stop}$及“预算耗尽、双证书未满足”诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\begingroup
+\addtocounter{algocf}{-1}
+\renewcommand{\thealgocf}{\thechapter.\arabic{algocf}B}
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-009 L1
+\paragraph{读前自检：的逐空类修复子程序：执行契约。}\kMeans{}逐空类修复以当前分配、旧中心和固定供体规则为状态；请移动一个供体样本，同时更新两个类容量、空类队列与修复日志，核对事务原子提交后空类数减少，并在队列为空时停止。\par
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-010 L2
+\begin{keypointbox}[title={的逐空类修复子程序：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={数据$X$、由最近分配得到的临时$k$类分配、旧中心及固定的空类/供体/样本并列规则},
+  output={最后合法修复分配$C_{\rm rep}$、实际移动数$e_{\rm done}$、状态与逐移动诊断},
+  preconditions={$1\le k\le n$；输入分配覆盖全部样本且类标合法；数据与旧中心有限；规则给出全序},
+  initialization={$C_{\rm rep}$复制输入分配，$e_{\rm done}=0$，按类号建立空类队列与类容量},
+  loop={每次取编号最小空类，从容量至少$2$的供体中选择对旧中心平方贡献最大的样本},
+  update={一次样本移动及两个类容量、空类队列和修复日志作为单个原子事务提交},
+  domain={$C_{\rm rep}$始终覆盖每个样本恰一次；供体提交后仍非空；贡献值有限非负},
+  failure={接口/分配/规则非法返回$\mathtt{invalid\_input}$；贡献计算非有限或在$n\ge k$下找不到合法供体返回$\mathtt{numerical\_failure}$并保留最后合法修复状态},
+  stop={空类队列为空或首次失败时停止},
+  budget={至多初始空类数且不超过$k-1$次样本移动；每次至多扫描$n$个供体候选},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$e_{\rm done}$恰为已原子提交的样本移动数，失败候选移动不计入},
+  diagnostics={每次空类、供体类、样本标识、距离贡献、移动前后容量以及失败位置},
+  complexity={最坏$O(nk)$时间、$O(n+k)$工作空间；不重新计算中心或全局目标}
+}
+\begin{algorithm}[H]
+\caption{\kMeans{}的逐空类修复子程序}\label{alg:V4-C02-kmeans-empty-repair}
+\KwIn{$X$、临时分配$C$、旧中心$\mu$与固定并列规则}
+\KwOut{$C_{\rm rep},e_{\rm done},\mathtt{status}$及逐移动诊断}
+若分配未覆盖全部样本、类号越界，或$X,\mu,k$和规则非法，则返回原分配、$0,\mathtt{invalid\_input}$及字段诊断\;
+复制$C_{\rm rep}\leftarrow C$，置$e_{\rm done}\leftarrow0$并计算各类容量\;
+\While{存在空类}{
+  取编号最小空类$e$；在容量至少$2$的供体类中，按“对其旧中心平方贡献最大、再按固定标识”选择$x_{i^\star}$\;
+  若贡献非有限或无合法供体，则返回最后合法$C_{\rm rep},e_{\rm done},\mathtt{numerical\_failure}$及失败空类/阶段诊断\;
+  原子地把$x_{i^\star}$移入$e$，更新两个容量并追加日志；令$e_{\rm done}\leftarrow e_{\rm done}+1$\;
+}
+返回非空$C_{\rm rep},e_{\rm done},\mathtt{completed}$及完整修复诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\begingroup
+\addtocounter{algocf}{-1}
+\renewcommand{\thealgocf}{\thechapter.\arabic{algocf}C}
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-011 L2
+
+% KNOWLEDGE-PLAN: KN-V4-C25-ALGORITHM_IDEA-012 L2
+\begin{keypointbox}[title={多启动 的记录与选择：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={数据$X$、$R$组已登记初始中心、单启动预算与容差、近似稳定门槛$\delta_C$以及跨启动并列规则},
+  output={逐启动完整记录、最高接纳等级中的最佳结果$(C^\star,\mu^\star,W^\star)$、处理启动数$r_{\rm done}$、累计提交轮$t_{\rm total}$、状态与最终诊断},
+  preconditions={$R\ge1$且每组初值维数合法有限；所有启动调用相同单启动接口、预算、容差和空类规则},
+  initialization={记录表为空，A级与B级候选集$\mathcal S_A=\mathcal S_B=\varnothing$，$r_{\rm done}=t_{\rm total}=0$},
+  loop={按启动编号调用算法\ref{alg:V4-C02-kmeans}，无论成功或失败均保存其状态、计数和诊断},
+  update={一次启动完整返回后原子提交$\mathtt{record}[r]$；converged且诊断通过者进$\mathcal S_A$，预算停止但目标有限、划分非空、目标轨迹未异常上升且末轮分配改变率不超过$\delta_C$者进$\mathcal S_B$},
+  domain={被比较的$W$有限且对应非空划分；全部启动采用同一目标尺度与数据坐标},
+  failure={外层接口非法返回$\mathtt{invalid\_input}$；所有启动均数值失败且无预算停止时返回$\mathtt{numerical\_failure}$；单启动失败不污染其他启动},
+  stop={处理完$R$次启动后按固定规则选择，或外层接口失败时停止},
+  budget={恰好至多$R$次单启动调用、累计至多$RT_{\max}$个提交轮；不额外延长失败启动预算},
+  status={$\mathtt{completed}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$r_{\rm done}$计已完整记录的启动，$t_{\rm total}$为各启动实际$t_{\rm done}$之和，并同时汇总修复数},
+  diagnostics={逐启动可行性、接纳等级、最终状态、目标轨迹、末轮分配改变率、提交轮/修复数、失败阶段、择优路径和总预算余量},
+  complexity={最坏$O(RT_{\max}nkp)$时间；串行工作空间同单启动，另存$R$条诊断记录}
+}
+\begin{algorithm}[H]
+\caption{多启动\kMeans{}的记录与选择}\label{alg:V4-C02-kmeans-multistart}
+\KwIn{$X,k,\{\mu_r^{(0)}\}_{r=1}^R,T_{\max},\varepsilon_W,\varepsilon_\mu,\delta_C$及固定规则}
+\KwOut{$C^\star,\mu^\star,W^\star$；启动表、$r_{\rm done},t_{\rm total}$；$\mathtt{status}$与诊断}
+若$R$或任一初值/规则非法，则返回$\bot$、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+令$\mathcal S_A\leftarrow\varnothing,\mathcal S_B\leftarrow\varnothing,r_{\rm done}\leftarrow0,t_{\rm total}\leftarrow0$，记录表为空\;
+\For{$r\leftarrow1$ \KwTo $R$}{
+  调用算法\ref{alg:V4-C02-kmeans}；令$\mathtt{record}[r]$原子保存最后合法$C,\mu,W$、$t_{\rm done},e_{\rm done},\mathtt{status}$、末轮分配改变率、预算余量与诊断\;
+  若$\mathtt{record}[r]$状态为$\mathtt{converged}$且诊断通过，则标记A级并加入$\mathcal S_A$；若状态为$\mathtt{budget\_stop}$且$W$有限、划分非空、轨迹无异常上升且分配改变率$\le\delta_C$，则标记B级并加入$\mathcal S_B$；否则标记不接纳\;
+  令$r_{\rm done}\leftarrow r,t_{\rm total}\leftarrow t_{\rm total}+\mathtt{record}[r].t_{\rm done}$\;
+}
+若$\mathcal S_A\ne\varnothing$，则只读记录表，在$\mathcal S_A$中按最小$W$、再按启动编号选取并返回$\mathtt{completed}$及完整诊断\;
+若$\mathcal S_A=\varnothing$但$\mathcal S_B\ne\varnothing$，则只读记录表，在$\mathcal S_B$中按最小$W$、再按改变率和启动编号选取，返回该有限预算结果、$\mathtt{budget\_stop}$及“B级接纳、未获数学收敛证书”诊断\;
+否则返回$\bot$、全部记录、按失败记录确定的规范状态及“无可接纳启动”诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\phantomsection\label{struct:V4-C02-CH23}
+\textbf{循环变量、更新顺序与判断条件。}外层循环变量为启动编号$r=1,\ldots,R$，内层为$t=0,1,\ldots$。每轮先用当前中心得到$C_{\rm new}$，逐个修复所有空类，再只根据该分配计算$\mu_{\rm new}$与目标。它与上一轮已经用于生成当前中心的$C_{\rm prev}$比较，因此不会把同一组中心重复产生的初始化分配误判为收敛。判断条件包括距离并列、多空类、供体类大小、分配不变、双容差、预算和跨启动择优。
+
+\phantomsection\label{struct:V4-C02-CH24}
+\textbf{停止条件与返回结果。}单次启动首选相邻两轮分配完全不变；浮点大数据中可要求目标相对变化和中心相对移动同时满足容差。达到迭代上限仍只表示预算停止，不能改写为converged；但若其目标有限、划分非空、轨迹正常且末轮分配改变率通过预登记门槛，可作为B级有限预算结果透明比较。全部$R$次启动完成后，优先返回A级中最小目标；A级为空时才返回B级中最小目标，并连同状态、改变率、预算和所有失败记录报告。
+
+\phantomsection\label{struct:V4-C02-CH25}
+\textbf{正确性依据、收敛条件与不收敛或不适用情形。}无空类且不触发修复时，最近分配与均值更新分别精确极小化一个变量块，\Cref{thm:V4-C02-kmeans-descent}给出目标不增；若分配改变必严格下降，则有限划分保证终止。逐个空类修复保持$k$个类非空，但它改变标准坐标下降轨迹，因此修复后的目标必须重算，单调性需从下一次未修复轮重新核对。目标上升超过数值容差、没有可移动供体、达到迭代上限而容差未满足，均属于未收敛或异常状态。外层只在有限$R$个合格结果中按固定规则取最小值；它改善初值鲁棒性但不保证联合目标全局最优，因而“保证收敛到全局最优”不适用。
+
+\begin{warningbox}
+\textbf{异常与退化。}若$k\notin\{1,\ldots,n\}$、输入含未处理的非有限值、初始中心维数错误或空类没有可移动样本，必须停止并报告输入不合法。空类修复改变标准交替步骤，修复后应重算受影响中心和目标，不能沿用修复前的单调性结论。
+\end{warningbox}
+
+\phantomsection\label{struct:V4-C02-CH26}
+\phantomsection\label{struct:V4-C02-CH27}
+% KNOWLEDGE-PLAN: KN-V4-C25-BOUNDARY-005 L1
+\paragraph{读前自检：复杂度分析：\kMeans{}算法与收敛。}先锁定\kMeans{}算法与收敛的条件“假设$X$是稠密$n\times m$数据，距离逐点计算而不保存完整$n\times k$矩阵”：由$X$的总成本剥离一次迭代或一次样本因子，所得结果应满足得到的单步时间与存储阶同复杂度框中的分解一致。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}假设$X$是稠密$n\times m$数据，距离逐点计算而不保存完整$n\times k$矩阵，运行$T$轮并独立使用$R$组初值；层次聚类复杂度采用本章前述朴素距离矩阵实现。\\
+\textbf{训练时间复杂度。}\kMeans{}每轮分配为$O(nkm)$，更新为$O(nm)$，单组初值主代价为$O(Tnkm)$，$R$组初值为$O(RTnkm)$。聚合层次聚类为$O(n^2m+n^3)$。\\
+\textbf{预测时间复杂度。}对$n_{\rm new}$个新样本，\kMeans{}最近中心预测为$O(n_{\rm new}km)$；标准层次树未规定样本外预测，因此其预测复杂度不适用，除非另行给出归属规则。\\
+\textbf{空间复杂度。}\kMeans{}单次启动保存数据、中心、分配和最近距离需$O(nm+km+n)$；若完整保留$R$次、每次至多$T$轮且每轮最多$k-1$个空类修复事件的轨迹与诊断，再加$O(RTk)$，不必同时保存$R$份数据。若只保存每轮修复次数等压缩摘要，该诊断项才可降为$O(RT)$。层次聚类距离矩阵需$O(n^2)$。分块距离计算可降低\kMeans{}额外工作空间。
+\end{complexitybox}
+
+\subsection*{类别数$k$的选择}
+对候选$k\in\mathcal K$分别完成多初值训练。若最优合格划分为
+$\mathcal G(k)=\{G_1^{(k)},\ldots,G_k^{(k)}\}$，可用类的平均直径
+\[
+\overline D(k)=\frac1k\sum_{\ell=1}^{k}D_{G_\ell^{(k)}},
+\qquad
+D_G=\max_{x_i,x_j\in G}d(x_i,x_j)
+\]
+衡量类内尺度。随着$k$增加，$\overline D(k)$通常先明显下降，随后下降趋缓；可在预先规定的相对下降阈值下选择曲线由陡转平的最小$k$。若实测曲线及阈值谓词可靠地单调，可用二分方式缩小候选区间；启发式求解、异常点或平均操作可能破坏单调性时，应扫描全部候选而不能机械二分。
+
+平均直径的拐点只是内部几何启发式：它会偏好拆分大直径类，也可能因单点类而人为变小。最终选择还应同时报告最小类大小、重复抽样稳定性、目标与$\overline D(k)$曲线，并在存在独立任务时检查留出效用；不得看过测试标签后再挑$k$。
+
+\phantomsection\label{struct:V4-C02-CH28}
+% KNOWLEDGE-PLAN: KN-V4-C25-BOUNDARY-006 L1
+\paragraph{读前自检：适用条件与局限：类别数 k 的选择。}类别数$k$的选择只适合在固定预处理和独立评价下比较；请让$k=1$或$k=n$作边界对照，核对类内损失单独变好并不等于结构稳定，仍须用扰动稳定性或外部准则筛选。\par
+
+\begin{applicabilitybox}
+\textbf{适用条件。}层次聚类适合需要多尺度树结构、样本数允许保存距离矩阵的场景；\kMeans{}适合连续数值属性、平方欧氏几何合理、类别近似球形且类别数可预先选择的场景。两者都应在固定预处理和多次扰动下检查稳定性。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V4-C02-CH29}
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+层次聚类早期错误合并通常不能撤销，且对连接和异常点敏感；\kMeans{}必须给定$k$，受初值、尺度和异常点影响，难以表示细长、不同密度或不同方差的类。两种方法都不给类别自动赋予业务语义。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V4-C02-CH30}
+% KNOWLEDGE-PLAN: KN-V4-C25-BOUNDARY-008 L1
+\paragraph{读前自检：常见错误与误用边界：类别数 k 的选择。}\kMeans{}误用清单警告平方欧氏距离、单次初值与全局最优三者不可混淆；请让同一数据采用两个初值各跑一轮，对照最终目标值，核对单个局部稳定解不能证明全局最优。\par
+
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 把平方欧氏量当成满足三角不等式的距离；
+  \item 未标准化量纲差异巨大的属性，或对类别编码直接使用欧氏距离；
+  \item 在马氏距离中对奇异协方差机械求逆；
+  \item 把单连接、完全连接和中心连接的更新结果混合；
+  \item \kMeans{}出现空类后保留未定义均值，或不记录修复；
+  \item 只运行一个初值，并把局部稳定解称为全局最优。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V4-C02-CH31}
+% KNOWLEDGE-PLAN: KN-V4-C25-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：类别数 k 的选择。}在“对比表首个数据行是“单连接层次聚类｜最近跨类点对｜可发现连通链状结构｜易受桥点影响””成立时处理类别数 k 的选择：请按列复述“单连接层次聚类｜最近跨类点对｜可发现连通链状结构｜易受桥点影响”中的对象、假设与结论，并以各列均对应首行对象“单连接层次聚类”，且未与表中下一行互换判定结果。\par
+
+\begin{comparisonbox}
+\textbf{易混淆概念与方法对比。}\par\smallskip
+\begingroup
+\footnotesize
+\renewcommand{\arraystretch}{0.92}
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 方法 & 结构与目标 & 优势 & 主要边界\\ \midrule
+单连接层次聚类 & 最近跨类点对 & 可发现连通链状结构 & 易受桥点影响\\
+完全连接层次聚类 & 最远跨类点对 & 倾向紧致小直径类 & 对异常点敏感\\
+平均连接层次聚类 & 全部跨类距离平均 & 比两端规则平衡 & 需维护更多统计\\
+\kMeans{} & 类内平方和 & 计算简洁、可扩展 & 球形偏好、需给$k$\\
+高斯混合模型 & 观测似然与软后验 & 表达不确定性和协方差 & 参数更多、可能退化\\
+\bottomrule
+\end{tabularx}
+\endgroup
+\end{comparisonbox}
+
+\SLDirectSection{例题、聚类计算与练习}{sec:V4-C02-S06}
+\phantomsection\label{struct:V4-C02-CH18}
+\phantomsection\label{struct:V4-C02-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[五点的\kMeans{}计算]\label{exm:V4-C02-five-points}
+样本为
+\[
+x_1=(0,2)^T,\ x_2=(0,0)^T,\ x_3=(1,0)^T,\ x_4=(5,0)^T,\ x_5=(5,2)^T,
+\]
+取$k=2$，初始中心$\mu_1^{(0)}=x_1$、$\mu_2^{(0)}=x_2$，并列时取较小编号。求稳定划分。
+
+\phantomsection\label{struct:V4-C02-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V4-C02-five-points}
+\begin{solution}
+\SLReadTranslation{从题设两个初始中心出发执行\kMeans{}：每轮先按平方欧氏距离分配五个点，再以簇内均值更新中心，直到分配不变。}
+\SolGiven $k=2$，$\mu_1^{(0)}=x_1$、$\mu_2^{(0)}=x_2$；距离并列时取较小簇编号，本例每轮均无空簇。
+\SLMethodTrigger{给定中心时逐点选择平方距离最小的簇；给定非空分配时，簇内均值唯一最小化该簇平方误差和。}
+\SolPlan 计算第一轮五行两列距离矩阵并更新两个中心；再用新中心复算分配，若不变则计算最终类内平方和并停止。
+\SolDerive
+\textbf{第一轮分配与更新。}平方距离矩阵（行对应$x_i$，列对应$\mu_1^{(0)},\mu_2^{(0)}$）为
+\[
+D^{(0)}=
+\begin{bmatrix}
+0&4\\
+4&0\\
+5&1\\
+29&25\\
+25&29
+\end{bmatrix}.
+\]
+逐行取较小值，得到
+\[
+\begin{aligned}
+G_1^{(1)}&=\{x_1,x_5\},&
+G_2^{(1)}&=\{x_2,x_3,x_4\},\\
+\mu_1^{(1)}&=\frac{x_1+x_5}{2}=(2.5,2)^T,&
+\mu_2^{(1)}&=\frac{x_2+x_3+x_4}{3}=(2,0)^T.
+\end{aligned}
+\]
+\textbf{第二轮复核。}用新中心复核，平方距离矩阵变为
+\[
+D^{(1)}=
+\begin{bmatrix}
+6.25&8\\
+10.25&4\\
+6.25&1\\
+10.25&9\\
+6.25&13
+\end{bmatrix}.
+\]
+每行最小值对应的类别均未改变，因此划分已经稳定，且目标函数为
+\[
+J=6.25+6.25+4+1+9=26.5.
+\]
+\SolCheck 初始中心下的目标为各行最小平方距离之和
+$0+0+1+25+25=51$，更新后降至$26.5$；同时$D^{(1)}$逐行最小值仍给出
+$\{x_1,x_5\}$与$\{x_2,x_3,x_4\}$，故“目标不增”和“分配不变”两项检查一致。
+
+\SolAnswer 稳定划分为
+$G_1=\{x_1,x_5\}$、$G_2=\{x_2,x_3,x_4\}$，相应中心为
+$(2.5,2)^T$与$(2,0)^T$，最终目标值为$26.5$。
+\end{solution}
+
+\phantomsection\label{struct:V4-C02-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V4-C02-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-ORG-14-01}
+设计一种自上而下的分裂聚类算法，并在明确数据结构和距离计算假设后分析时间与空间复杂度。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-ORG-14-01}
+\begin{chapterexercisesolution}{ex:V4-C02-ORG-14-01}
+给出一种可复现的最远点二分方案。输入为$n$个$m$维样本、距离$d$、目标类数$k$和并列规则；初始化$\mathcal G=\{\mathcal X\}$。当$|\mathcal G|<k$时，先从可分类中选直径最大的$G$，再选达到直径的点对$(a,b)$作为两个种子；把$G$内每个点分给较近种子，并按固定规则处理并列。两个种子分别留在不同子类，所以当$d(a,b)>0$时两子类非空；若直径为0而仍要求继续分裂，则距离不能区分样本，应返回“按该度量不可分”，不能虚构几何边界。用两个子类替换$G$，直至达到$k$或不可再分。
+
+若当前被分裂的类为$G$，两个子类定义为
+\[
+G_a=\{x\in G:d(x,a)\le d(x,b)\},
+\qquad
+G_b=G\setminus G_a,
+\]
+其中距离并列再按固定样本序打破。预先计算稠密距离矩阵时，初始化代价为
+\[
+T_{\mathrm{dist}}=O(n^2m),
+\qquad
+M_{\mathrm{dist}}=O(n^2).
+\]
+一次大小为$s$的类扫描最远点对需$O(s^2)$，至多分裂$k-1$次，故朴素上界为
+\[
+T(n,m,k)=O(n^2m)+O(kn^2),
+\qquad
+M(n,m,k)=O(n^2)+O(n+k).
+\]
+若不保存距离而每次重算，则$T=O(kn^2m)$，除数据外的空间降为$O(n+k)$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-ORG-14-02}
+证明\Cref{def:V4-C02-cluster-thresholds}的第一种全直径条件可以推出其余三种类或簇条件，并写清$n_G$与阈值的条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-ORG-14-02}
+\begin{chapterexercisesolution}{ex:V4-C02-ORG-14-02}
+设$n_G\geq2$且第一项成立，即任意不同点对都有$0\leq d_{ij}\leq T$。对每个$x_i$任选一个不同的$x_j$，便有$d_{ij}\leq T$，所以第二项成立。第三项的分子是$n_G-1$个不超过$T$的非负数之和，因此
+\[
+\frac1{n_G-1}\sum_{x_j\in G}d_{ij}
+\leq\frac{(n_G-1)T}{n_G-1}=T.
+\]
+对所有有序点对求和同样得到
+\[
+\frac1{n_G(n_G-1)}\sum_{x_i\in G}\sum_{x_j\in G}d_{ij}\leq T.
+\]
+第一项还给出$\max_{i,j}d_{ij}\leq T$，故第四项可取$V=T$。$n_G\geq2$保证“另一个样本”和两个平均分母均有定义；$T>0$与距离非负性使这些界保持原方向。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-ORG-14-03}
+证明\kMeans{}的候选划分个数可以随样本数呈指数增长。可从$S(n,k)$的公式出发，并给出一个固定$k$的具体情形。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-ORG-14-03}
+\begin{chapterexercisesolution}{ex:V4-C02-ORG-14-03}
+对固定$k=2$，第二类Stirling数公式给出
+\[
+S(n,2)=\frac1{2!}\left[-\binom21 1^n+\binom22 2^n\right]
+=2^{n-1}-1.
+\]
+它是底数2的指数函数减去常数，因此仅二类非空无标号划分的数量已经随$n$指数增长。更一般地，对固定$k\geq2$，公式的首项为$k^n/k!$，其余项的底数至多$k-1$，所以主导增长率仍为$k^n$量级。每个候选划分都对应一组类均值和目标值，穷举这些划分不能成为大样本\kMeans{}的常规求解方式。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-ORG-14-04}
+比较\kMeans{}聚类与高斯混合模型的EM算法：说明模型、分配、目标、参数、退化情形和输出不确定性的异同。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-ORG-14-04}
+\begin{chapterexercisesolution}{ex:V4-C02-ORG-14-04}
+\kMeans{}使用硬分配$c_i$与中心$\mu_k$，目标为
+\[
+J(c,\mu)=\sum_{i=1}^{n}\norm{x_i-\mu_{c_i}}_2^2,
+\qquad
+(c^{(t+1)},\mu^{(t+1)})\Longrightarrow J_{t+1}\le J_t.
+\]
+高斯混合模型的参数为$\theta=(\pi_k,\mu_k,\Sigma_k)_{k=1}^{K}$，观测对数似然与E步责任度为
+\[
+\ell(\theta)=\sum_{i=1}^{n}\log\sum_{k=1}^{K}
+\pi_k\,\mathcal N(x_i\mid\mu_k,\Sigma_k),
+\]
+\[
+r_{ik}^{(t)}
+=\frac{\pi_k^{(t)}\mathcal N(x_i\mid\mu_k^{(t)},\Sigma_k^{(t)})}
+{\sum_j\pi_j^{(t)}\mathcal N(x_i\mid\mu_j^{(t)},\Sigma_j^{(t)})},
+\qquad
+\ell(\theta^{(t+1)})\ge\ell(\theta^{(t)}).
+\]
+\kMeans{}可视为等先验、共享球形协方差的高斯混合模型在方差趋零时的硬分配极限。
+
+\kMeans{}输出类别和中心，无法表达边界不确定性；高斯混合模型输出密度与后验责任度。标准\kMeans{}的主要退化是空类，处理不当会破坏更新；高斯混合模型还可能让某成分协方差趋于奇异并使似然无界。两者的单调性都只针对各自目标，均不保证全局最优，也不能把类别编号解释成固有数值次序。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-S01-01}
+集合$\{1,2,3,4\}$的候选聚类为$G_1=\{1,2\}$、$G_2=\{2,3\}$、$G_3=\{4\}$。它是否构成硬聚类？说明违反的条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-S01-01}
+\begin{chapterexercisesolution}{ex:V4-C02-S01-01}
+硬聚类$\{G_k\}_{k=1}^{K}$必须同时满足
+\[
+G_k\ne\varnothing,
+\qquad
+\bigcup_{k=1}^{K}G_k=\{1,2,3,4\},
+\qquad
+G_k\cap G_\ell=\varnothing\quad(k\ne\ell).
+\]
+本题虽然
+\[
+G_1\cup G_2\cup G_3=\{1,2,3,4\},
+\qquad
+G_1\cap G_2=\{2\}\ne\varnothing,
+\]
+但样本2同时属于两个类，故不构成硬聚类；必须删除其中一个集合里的2，或改用软分配。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-S02-01}
+对$x=(1,-1)^T$、$y=(4,3)^T$，计算曼哈顿距离、欧氏距离和切比雪夫距离。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-S02-01}
+\begin{chapterexercisesolution}{ex:V4-C02-S02-01}
+差向量与三种距离依次为
+\[
+x-y=(-3,-4)^{\mathsf T},
+\]
+\[
+d_1(x,y)=|-3|+|-4|=7,
+\qquad
+d_2(x,y)=\sqrt{(-3)^2+(-4)^2}=5,
+\]
+\[
+d_\infty(x,y)=\max\{3,4\}=4,
+\qquad
+d_\infty(x,y)\le d_2(x,y)\le d_1(x,y).
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-S02-02}
+设$S=\operatorname{diag}(4,1)$，$x-y=(2,2)^T$。计算马哈拉诺比斯距离，并与欧氏距离比较。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-S02-02}
+\begin{chapterexercisesolution}{ex:V4-C02-S02-02}
+$S^{-1}=\operatorname{diag}(1/4,1)$，所以
+\[
+d_S^2=(2,2)\begin{bmatrix}1/4&0\\0&1\end{bmatrix}\binom22=1+4=5,
+\quad d_S=\sqrt5.
+\]
+欧氏距离为$\sqrt8=2\sqrt2$。第一维方差较大，马氏距离把该维差异缩小，故结果较小。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-S02-03}
+类$G_p=\{0,4\}$、$G_q=\{5,9\}$位于实数轴上。分别计算单连接、完全连接、中心连接和平均连接。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-S02-03}
+\begin{chapterexercisesolution}{ex:V4-C02-S02-03}
+跨类距离矩阵为
+\[
+D_{pq}=\begin{bmatrix}|0-5|&|0-9|\\|4-5|&|4-9|\end{bmatrix}
+=\begin{bmatrix}5&9\\1&5\end{bmatrix}.
+\]
+因此
+\[
+d_{\min}(G_p,G_q)=1,
+\qquad
+d_{\max}(G_p,G_q)=9,
+\]
+\[
+d_{\mathrm{avg}}(G_p,G_q)=\frac{5+9+1+5}{4}=5,
+\qquad
+d_{\mathrm{cen}}(G_p,G_q)=|2-7|=5.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-S03-01}
+三点在实数轴上为$0,2,7$。使用欧氏距离和单连接，从单点类开始列出合并顺序与高度。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-S03-01}
+\begin{chapterexercisesolution}{ex:V4-C02-S03-01}
+初始距离满足
+\[
+d(0,2)=2<d(2,7)=5<d(0,7)=7,
+\]
+故第一次在高度$h_1=2$合并$\{0\},\{2\}$。随后单连接距离为
+\[
+d_{\min}(\{0,2\},\{7\})
+=\min\{d(0,7),d(2,7)\}
+=\min\{7,5\}=5,
+\]
+所以第二次在高度$h_2=5$合并，且$h_1\le h_2$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-S04-01}
+类$G=\{(0,0)^T,(2,0)^T,(4,3)^T\}$的最优\kMeans{}中心是什么？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-S04-01}
+\begin{chapterexercisesolution}{ex:V4-C02-S04-01}
+中心是坐标均值：
+\[
+\mu=\frac13\left[\binom00+\binom20+\binom43\right]=\binom21.
+\]
+该向量位于$\mathbb R^2$。对任意$u\in\mathbb R^2$，平方和分解为
+\[
+\sum_{x\in G}\norm{x-u}_2^2
+=\sum_{x\in G}\norm{x-\mu}_2^2+3\norm{u-\mu}_2^2
+\ge\sum_{x\in G}\norm{x-\mu}_2^2.
+\]
+等号仅在$u=\mu=(2,1)^{\mathsf T}$时成立，故它是唯一全局最小点。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-S05-01}
+一维数据$\{0,2,9,11\}$，初始中心为$0$和$2$。执行一轮分配与均值更新。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-S05-01}
+\begin{chapterexercisesolution}{ex:V4-C02-S05-01}
+对初始中心$(\mu_1^{(0)},\mu_2^{(0)})=(0,2)$，平方距离表为
+\[
+\begin{array}{c|rrrr}
+x&0&2&9&11\\\hline
+(x-\mu_1^{(0)})^2&0&4&81&121\\
+(x-\mu_2^{(0)})^2&4&0&49&81
+\end{array}.
+\]
+于是
+\[
+G_1^{(1)}=\{0\},
+\qquad
+G_2^{(1)}=\{2,9,11\},
+\]
+\[
+\mu_1^{(1)}=0,
+\qquad
+\mu_2^{(1)}=\frac{2+9+11}{3}=\frac{22}{3}.
+\]
+这只完成一轮，仍须在新中心下重新分配后才能判断是否稳定。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C02-S05-02}
+某轮目标从$100$降至$80$，下一轮升至$81$。在标准无空类\kMeans{}中，这说明什么？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C02-S05-02}
+\begin{chapterexercisesolution}{ex:V4-C02-S05-02}
+标准无空类\kMeans{}的分配步和均值步分别最小化同一平方和目标，因此
+\[
+J(c^{(t+1)},\mu^{(t)})
+\le J(c^{(t)},\mu^{(t)}),
+\]
+\[
+J(c^{(t+1)},\mu^{(t+1)})
+\le J(c^{(t+1)},\mu^{(t)}).
+\]
+合并即得$J_{t+1}\le J_t$；而$81>80$与此矛盾。应检查目标是否在同一分配--中心时点计算、是否使用平方欧氏距离、中心是否按当前分配更新，以及空类或并列处理是否改变了问题，不能把上升解释为正常振荡。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+% KNOWLEDGE-PLAN: KN-V4-C25-CONCEPT-022 L1
+\paragraph{读前自检：本章结论与下一步。}聚类方法章末由“表示、样本距离、类间连接、划分与中心”落到“层次法有限次合并”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V4-C02-CH36}
+\SLChapterFiveSummary{表示、样本距离、类间连接、划分与中心}{固定分配时平方距离的一阶条件给出类内均值，交替最小化推出目标不增}{层次法有限次合并；\kMeans{}交替最近分配与均值更新并按目标/分配停止}{需要探索样本分组且选定距离或平方欧氏原型假设合理时}{进入SVD；聚类自检失败应先返回距离定义、连接规则或空类边界}
+
+\phantomsection\label{struct:V4-C02-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{定义：}能否写出硬划分和四种类内阈值条件？未通过则回看第1、2节。
+  \item \textbf{度量：}能否计算并比较闵氏、马氏、相关、余弦与四种连接？未通过则回看第2节。
+  \item \textbf{层次：}能否按指定连接复现合并序列与高度，并给出有限终止理由？未通过则回看第3节。
+  \item \textbf{推导：}能否三步证明均值最小化类内平方和？未通过则回看第4节。
+  \item \textbf{算法：}能否证明单调下降并说明输入、更新、停止、复杂度、空类和局部最优？未通过则回看第5、6节；五项均可独立作答，并能完成至少八道练习，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

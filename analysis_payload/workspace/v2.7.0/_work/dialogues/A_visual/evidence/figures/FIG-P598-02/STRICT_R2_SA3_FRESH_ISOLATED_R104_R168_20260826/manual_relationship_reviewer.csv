@@ -1,0 +1,17 @@
+relationship_id,overlay_file,reviewer,opened_1x,opened_8x,object_identity_correct,mask_a_pure,mask_b_pure,intersection_px,raw_clearance_px,decision,note
+REL01,REL01_step1_header_to_card_border.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,51.0,PASS,Heading is fully inside card with ample clearance.
+REL02,REL02_kernel_equation_to_card_border.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,118.0,PASS,Kernel equation is isolated from card border and fully readable.
+REL03,REL03_state_labels_to_node_borders.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,17.0278,PASS,x and y labels are centered with ample visible node-border clearance.
+REL04,REL04_step1_note_to_card_border.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,97.0,PASS,Step-one note is clear and well separated from border.
+REL05,REL05_step2_header_to_card_border.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,51.0,PASS,Step-two heading is fully inside card with ample clearance.
+REL06,REL06_segment_labels_to_chain_graphics.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,26.5136,PASS,warm-up and retained labels are clear of curve hatch divider and baseline.
+REL07,REL07_step3_header_to_card_border.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,51.0,PASS,Step-three heading is fully inside card with ample clearance.
+REL08,REL08_estimator_to_dots_and_card.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,37.0,PASS,Estimator is isolated from retained dots and card border.
+REL09,REL09_step3_note_to_card_border.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,97.0,PASS,Step-three note is clear and well separated from border.
+REL10,REL10_caption_to_figure_bottom.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,26.0,PASS,Caption is separated from the three cards and remains an intact two-line paragraph.
+REL11,REL11_flow_arrow_one_continuity.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,0,PASS,Zero-clearance endpoints are intentional card-to-card flow continuity; no shared final-visible pixel.
+REL12,REL12_flow_arrow_two_continuity.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,0,PASS,Zero-clearance endpoints are intentional card-to-card flow continuity; no shared final-visible pixel.
+REL13,REL13_kernel_bidirectional_arrows.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,0,PASS,Zero-clearance node junctions are intentional bidirectional-kernel continuity; no shared final-visible pixel.
+REL14,REL14_widehat_rule_to_estimator_I.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,0,PASS,Widehat is a correct math component immediately adjacent to I with no shared final-visible pixel.
+REL15,REL15_fraction_rule_to_numerator_denominator.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,12.0,PASS,Fraction rule is correctly placed between complete numerator and denominator.
+REL16,REL16_chain_curve_pattern_divider_baseline.png,SA3-FRESH-ISOLATED,true,true,true,true,true,0,0,PASS,Zero-clearance crossings are intended plot composition; paint-order masks are pure and union is continuous.

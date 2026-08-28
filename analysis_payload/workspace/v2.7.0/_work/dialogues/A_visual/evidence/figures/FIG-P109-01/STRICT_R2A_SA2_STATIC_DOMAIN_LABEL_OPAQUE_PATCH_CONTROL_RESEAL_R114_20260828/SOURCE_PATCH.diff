@@ -1,0 +1,12 @@
+diff --git a/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C07/fig_v1_c07_convex_set.tex b/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C07/fig_v1_c07_convex_set.tex
+--- a/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C07/fig_v1_c07_convex_set.tex
++++ b/src/绘图源码/第01册_数学基础与统计学习基本理论/V1-C07/fig_v1_c07_convex_set.tex
+@@ -26,7 +26,7 @@
+   \foreach \f in {.25,.50,.75}{\fill[SLTeal] ($(x)!\f!(y)$) circle (2.25pt);}
+   \node[slfig-FIG-P109-01-label,anchor=south east]
+     at ($(x)!.50!(y)+(0,3mm)$) {$z=\lambda x+(1-\lambda)y$};
+-  \node[font=\fontsize{9.2pt}{11.2pt}\selectfont,text=SLInk!78,anchor=north east]
++  \node[font=\fontsize{9.2pt}{11.2pt}\selectfont,text=SLInk!78,fill=white,fill opacity=1,text opacity=1,inner sep=1.2pt,anchor=north east]
+     at (3.20,1.86) {凸可行域 $C$};
+   \node[slfig-FIG-P109-01-note,anchor=north]
+     at (0,-1.92) {$x,y\in C,\ \lambda\in[0,1]\ \Longrightarrow\

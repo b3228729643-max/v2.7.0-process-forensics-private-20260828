@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "audit": "root-external read-only P632 SA1 evidence reseal audit",
+  "audited_utc": "2026-08-26T18:44:13.9052636Z",
+  "old_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P632-01\\sa1_r110_fresh_isolated_v1",
+  "new_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P632-01\\sa1_r110_fresh_isolated_v1_readonly_reseal_v1",
+  "pass": true,
+  "counts": {
+    "source_material": 46,
+    "copy_identity_rows": 46,
+    "payload_manifest_rows": 48,
+    "payload": 48,
+    "controls": 3,
+    "ordinary": 51,
+    "directories": 1
+  },
+  "source_destination": {
+    "path_mismatch": 0,
+    "bytes_mismatch": 0,
+    "sha256_mismatch": 0,
+    "mtime_ticks_mismatch": 0
+  },
+  "manifest_filesystem": {
+    "duplicate": 0,
+    "missing": 0,
+    "extra": 0,
+    "bytes_mismatch": 0,
+    "sha256_mismatch": 0,
+    "mtime_ticks_mismatch": 0,
+    "old_controls_copied": 0
+  },
+  "readonly": {
+    "files_readonly": 51,
+    "files_total": 51,
+    "writable_files": 0,
+    "directories_readonly": 1,
+    "directories_total": 1,
+    "writable_directories": 0
+  },
+  "hygiene": {
+    "json_parse_failures": 0,
+    "csv_parse_failures": 0,
+    "ads": 0,
+    "cache_pyc_pyo": 0,
+    "reparse": 0
+  },
+  "marker": {
+    "unique_strict_latest": true,
+    "at_or_after_excluding_marker": 0,
+    "mtime_utc": "2026-08-26T18:43:40.1022209Z",
+    "mtime_utc_ticks": 639233666201022209,
+    "postmarker_content_writes": 0
+  },
+  "controls": {
+    "payload_manifest_bytes": 12728,
+    "payload_manifest_sha256": "71CE104CF63B628A936B5E206281F4E8A896EEBED0E958657C448B96632EA4DA",
+    "seal_audit_bytes": 1205,
+    "seal_audit_sha256": "8EA0A076855B492119F5903779BB6C46EE0BC023A25AF83CD35FA6818C0FEAB0",
+    "write_stopped_bytes": 701,
+    "write_stopped_sha256": "352A4B58EFCADDF2F194541134F24E47E97F17925601BE16ACC055D7457E94AA"
+  }
+}

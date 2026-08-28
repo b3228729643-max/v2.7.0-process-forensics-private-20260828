@@ -1,0 +1,52 @@
+% v2.7.0 figure UID: FIG-P740-01
+% Two-tier matrix-probability bridge with an explicit probabilistic-branch legend.
+\tikzset{slfig-FIG-P740-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P740-01,
+  every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=center,outer sep=0pt},
+  sectiontitle/.style={font=\bfseries\fontsize{10.2pt}{12.2pt}\selectfont,text=SLDeepBlue,anchor=west,inner sep=0pt},
+  core/.style={draw=SLDeepBlue,fill=SLDeepBlue,text=white,line width=.88pt,rounded corners=2pt,text width=39mm,minimum height=17mm,inner xsep=2mm,inner ysep=1.35mm},
+  method/.style={draw=SLRuleGray,fill=SLSoftGray,line width=.72pt,rounded corners=2pt,text width=38mm,minimum height=18mm,inner xsep=1.6mm,inner ysep=1.15mm},
+  var/.style={circle,draw=SLMidBlue,fill=SLSoftBlue,line width=.72pt,minimum size=10.5mm,inner sep=0pt},
+  observed/.style={circle,draw=SLDeepBlue,fill=white,line width=.90pt,minimum size=12.5mm,inner sep=0pt},
+  formula/.style={draw=SLRuleGray,fill=white,line width=.72pt,rounded corners=2pt,text width=60mm,inner xsep=1.8mm,inner ysep=1.4mm},
+  branchlegend/.style={draw=SLAccentOrange,dashed,fill=white,line width=.72pt,
+    rounded corners=1.5pt,text width=54mm,inner xsep=1.2mm,inner ysep=1.0mm},
+  conclusion/.style={text=SLTextGray,text width=135mm,inner sep=0pt},
+  prob/.style={-{Stealth[length=2.2mm,width=1.6mm]},draw=SLDeepBlue,line width=.95pt},
+  det/.style={draw=SLMidBlue,line width=.82pt},
+  alt={对象—关系—结论：上层以X约等于WH为共同低秩外形，实线连接LSA与NMF的代数分解语义，虚线连接概率因子模型并明确表示共同乘积外形下的概率建模分支，而不是关系强弱；三个方法框再用损失、约束、归一化、似然与先验标签区分。下层只在条件高斯解释中由全局因子W和第n个文档系数h_n分别以有向生成边指向观测文档x_n，即W、h_n到x_n。条件高斯分支不等于给全部因子配置先验的完整贝叶斯模型；共同乘积也不使LSA、NMF与概率模型具有相同统计语义。}]
+\node[sectiontitle] (upperheading) at (-6.65,3.65) {上层：共同低秩外形与不同语义};
+\node[core] (xwh) at (0,2.35)
+  {{\fontsize{11.8pt}{14.0pt}\selectfont $X\approx WH$}\\
+   共同表示，不等于共同模型};
+\matrix (methods) [matrix of nodes,column sep=6mm,nodes={method}] at (0,.35)
+ {\node (lsa) {LSA\\Frobenius损失；正交／子空间}; &
+  \node (nmf) {NMF\\$W,H\ge0$；可加表示}; &
+  \node (pfm) {概率因子模型\\归一化／似然／先验}; \\};
+\node[branchlegend] at (3.85,-1.10)
+  {虚线＝概率建模分支（非强弱编码）};
+\node[sectiontitle] (lowerheading) at (-6.65,-1.60) {下层：条件高斯因子图};
+\node[var] (w) at (-3.05,-2.60) {$W$};
+\node[var] (h) at (.15,-2.60) {$h_n$};
+\node[observed] (x) at (-1.45,-4.00) {$x_n$};
+\node[formula] (formula) at (4.18,-3.82)
+  {{\fontsize{11.8pt}{14.0pt}\selectfont
+    $x_n\mid W,h_n\sim\mathcal N(Wh_n,\sigma^2I)$}\\
+   概率边有方向；\\
+   LSA/NMF的代数等式无方向。};
+\node[conclusion] (conclusion) at (0,-5.35)
+  {$H$的第$n$列对应下层$h_n$；损失、约束、归一化和先验改变统计含义，
+   不能把LSA、NMF误画成同一概率模型。};
+\draw[det] (xwh.south west)--(lsa.north east);
+\draw[det] (xwh.south)--(nmf.north);
+\draw[det,densely dashed] (xwh.south east)--(pfm.north west);
+\draw[prob] (w)--(x);
+\draw[prob] (h)--(x);
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{矩阵分解与概率模型的桥接：$X\approx WH$只是共同外形；损失、约束和概率口径决定语义，下层以$W,h_n\to x_n$给出条件高斯分支。}
+\label{fig:V5-C08-matrix-probability}
+\end{figure}

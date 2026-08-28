@@ -1,0 +1,24 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{870}
+\setcounter{chapter}{35}
+\setcounter{section}{3}
+\setcounter{figure}{5}
+\pagestyle{headings}
+\chaptermark{潜在狄利克雷分配}
+\sectionmark{变分 EM 推断}
+对固定$\boldsymbol\varphi$的单文档，采用平均场族
+\[
+q(\boldsymbol\theta_m,\boldsymbol z_m\mid\boldsymbol\gamma_m,\boldsymbol\eta_m)
+=\operatorname{Dir}(\boldsymbol\theta_m\mid\boldsymbol\gamma_m)
+\prod_{n=1}^{N_m}\operatorname{Cat}(z_{mn}\mid\boldsymbol\eta_{mn}).
+\]
+图\ref{fig:V5-C06-mean-field-graph}强调：近似族主动切断了后验中
+$\boldsymbol\theta_m$与各$z_{mn}$的依赖，这换来可计算性，也造成近似误差。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_mean_field_graph.tex}
+\FloatBarrier
+\paragraph{首次阅读检查：平均场坐标最优形式。}
+固定其他变分因子后，每个坐标更新都来自归一化的指数期望；图中的切断只描述近似族，不删除观测词与固定主题--词参数对责任度的输入。
+\end{document}

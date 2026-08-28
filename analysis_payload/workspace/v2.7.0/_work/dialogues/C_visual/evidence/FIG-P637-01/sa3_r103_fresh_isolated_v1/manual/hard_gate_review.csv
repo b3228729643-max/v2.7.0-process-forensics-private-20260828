@@ -1,0 +1,14 @@
+gate_id,hard_gate,decision,reviewer,evidence_basis,note
+HG01,geometry,PASS,SA3_FRESH_ISOLATED,V02 V03 V04 and S09-S13,coordinate frame ellipses alternating path and principal directions are geometrically coherent
+HG02,relations_and_edges,PASS,SA3_FRESH_ISOLATED,42 critical pair cards and S01-S14,all six directed steps and all designed intersections preserve the intended topology
+HG03,formula_and_math_semantics,PASS,SA3_FRESH_ISOLATED,G001-G004 G018-G023 G104-G107 and S19,x1 and x2 use correct italic x codepoint and correct subscripts in every location
+HG04,object_content,PASS,SA3_FRESH_ISOLATED,131 glyph rows 21 foreground graphics and 23 graphic rows,every visible foreground text or drawing object is inventoried and manually reviewed
+HG05,caption_and_body_consistency,PASS,SA3_FRESH_ISOLATED,V02 V03 and S15-S18,caption note figure and adjacent official-PDF prose give the same Gibbs slow-mixing account
+HG06,font_tofu_wrong_glyph,PASS,SA3_FRESH_ISOLATED,131 glyph cards 16 parent roles and R168,no tofu missing glyph wrong codepoint unreadable item or visibly severe imbalance exists
+HG07,real_crop,PASS,SA3_FRESH_ISOLATED,152 per-object clip rows and six views,no object touches its applicable crop edge and every terminal is visually complete
+HG08,illegal_overlap,PASS,SA3_FRESH_ISOLATED,11476 all-pair rows and 42 individually reviewed critical pairs,no text collision or illegal graphic overlap remains
+HG09,standalone_render_path,PASS,SA3_FRESH_ISOLATED,V04 direct official-PDF integer crop,standalone body is derived from official PDF without TeX and retains all content
+HG10,grayscale_render_path,PASS,SA3_FRESH_ISOLATED,V05 and S21,semantic reading survives grayscale without reliance on hue alone
+HG11,full_page_integration,PASS,SA3_FRESH_ISOLATED,V01 V02,figure is positioned cleanly on physical page 687 printed page 674 without page-level collision
+HG12,drawing_path_closure,PASS,SA3_FRESH_ISOLATED,machine graphic inventory and explicit absence inventory,all PDF drawings 1 through 31 are mapped and all absent classes are explicitly closed
+

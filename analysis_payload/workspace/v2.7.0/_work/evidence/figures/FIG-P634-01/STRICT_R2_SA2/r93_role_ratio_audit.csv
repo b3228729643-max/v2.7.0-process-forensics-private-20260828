@@ -1,0 +1,6 @@
+﻿AUDIT_ID,BASE_ROLE,COMPARE_ROLE,SCRIPT_BASIS,BASE_MEDIAN_PX,COMPARE_MEDIAN_PX,RATIO,ALLOWED,PASS_FAIL,NOTES
+VR01,SLOT_FORMULA,STATE_FORMULA,math lowercase x,19.00,20.00,1.0526,"[1.00,1.18]",PASS,formula block versus ordinary coordinate-state formula
+VR02,STATE_LABEL,ORDER_ANNOTATION,CJK,34.00,35.00,1.0294,"[0.95,1.10]",PASS,ordinary annotation versus base status label
+VR03,STATE_LABEL,LEGEND,CJK,34.00,36.00,1.0588,"[0.95,1.10]",PASS,legend versus base status label
+VR04,STATE_LABEL,CAPTION,CJK parent median,34.00,36.00,1.0588,"[0.95,1.10]",PASS,caption is one reading-flow parent; raw glyph-dependent chunk heights remain in pixel CSV
+VR05,STATE_LABEL,TITLE,CJK bold title,34.00,41.00,1.2059,"[0.90,1.25]",PASS,semantic title emphasis

@@ -1,0 +1,59 @@
+object_id,object_type,manual_verdict,manual_note,recorded_after_opening_utc
+G001,glyph,PASS,x in x superscript zero is present and readable,2026-08-28T04:13:09.8380095Z
+G002,glyph,PASS,left parenthesis is present and readable,2026-08-28T04:13:09.8380095Z
+G003,glyph,PASS,superscript zero is present and readable,2026-08-28T04:13:09.8380095Z
+G004,glyph,PASS,right parenthesis is present and readable,2026-08-28T04:13:09.8380095Z
+G005,glyph,PASS,step label 1 has clear glyph ink and clearance,2026-08-28T04:13:09.8380095Z
+G006,glyph,PASS,step label 2 has clear glyph ink and clearance,2026-08-28T04:13:09.8380095Z
+G007,glyph,PASS,step label 3 has clear glyph ink and clearance,2026-08-28T04:13:09.8380095Z
+G008,glyph,PASS,step label 4 has clear glyph ink and clearance,2026-08-28T04:13:09.8380095Z
+G009,glyph,PASS,step label 5 has clear glyph ink and clearance,2026-08-28T04:13:09.8380095Z
+G010,glyph,FAIL,step label 6 is visibly crossed by vertical axis L002 and gray contour C005,2026-08-28T04:13:09.8380095Z
+G011,glyph,FAIL,step label 7 is materially occluded by blue arrowhead C008 and blue node C016,2026-08-28T04:13:09.8380095Z
+G012,glyph,PASS,x in optimum label is present and readable,2026-08-28T04:13:09.8380095Z
+G013,glyph,PASS,optimum star superscript is present and readable,2026-08-28T04:13:09.8380095Z
+G014,glyph,PASS,x in x1 axis label is present and readable,2026-08-28T04:13:09.8380095Z
+G015,glyph,PASS,subscript 1 in x1 axis label is present and readable,2026-08-28T04:13:09.8380095Z
+G016,glyph,PASS,x in x2 axis label is present and readable,2026-08-28T04:13:09.8380095Z
+G017,glyph,PASS,subscript 2 in x2 axis label is present and readable,2026-08-28T04:13:09.8380095Z
+G018,glyph,PASS,first CJK glyph in x1 legend is complete and readable,2026-08-28T04:13:09.8380095Z
+G019,glyph,PASS,second CJK glyph in x1 legend is complete and readable,2026-08-28T04:13:09.8380095Z
+G020,glyph,PASS,x in x1 legend is present and readable,2026-08-28T04:13:09.8380095Z
+G021,glyph,PASS,subscript 1 in x1 legend is present and readable,2026-08-28T04:13:09.8380095Z
+G022,glyph,PASS,first CJK glyph in x2 legend is complete and readable,2026-08-28T04:13:09.8380095Z
+G023,glyph,PASS,second CJK glyph in x2 legend is complete and readable,2026-08-28T04:13:09.8380095Z
+G024,glyph,PASS,x in x2 legend is present and readable,2026-08-28T04:13:09.8380095Z
+G025,glyph,PASS,subscript 2 in x2 legend is present and readable,2026-08-28T04:13:09.8380095Z
+L001,line,PASS,horizontal x1 axis is continuous and unclipped,2026-08-28T04:13:09.8380095Z
+L002,line,PASS,vertical x2 axis is continuous but participates in illegal relation P00494,2026-08-28T04:13:09.8380095Z
+L003,line,PASS,first horizontal coordinate update is continuous and directed,2026-08-28T04:13:09.8380095Z
+L004,line,PASS,second horizontal coordinate update is continuous and directed,2026-08-28T04:13:09.8380095Z
+L005,line,PASS,third horizontal coordinate update is continuous and directed,2026-08-28T04:13:09.8380095Z
+L006,line,PASS,first vertical coordinate update is dashed and directed,2026-08-28T04:13:09.8380095Z
+L007,line,PASS,second vertical coordinate update is dashed and directed,2026-08-28T04:13:09.8380095Z
+L008,line,PASS,third vertical coordinate update is dashed and directed,2026-08-28T04:13:09.8380095Z
+L009,line,PASS,fourth vertical coordinate update is dashed and directed,2026-08-28T04:13:09.8380095Z
+R001,rect,PASS,first hollow square coordinate endpoint is visible,2026-08-28T04:13:09.8380095Z
+R002,rect,PASS,second hollow square coordinate endpoint is visible,2026-08-28T04:13:09.8380095Z
+R003,rect,PASS,third hollow square coordinate endpoint is visible,2026-08-28T04:13:09.8380095Z
+R004,rect,PASS,fourth hollow square coordinate endpoint is visible,2026-08-28T04:13:09.8380095Z
+C001,curve,PASS,x1 axis arrowhead is visible and correctly oriented,2026-08-28T04:13:09.8380095Z
+C002,curve,PASS,x2 axis arrowhead is visible and correctly oriented,2026-08-28T04:13:09.8380095Z
+C003,curve,PASS,outer contour is continuous and belongs to common quadratic family,2026-08-28T04:13:09.8380095Z
+C004,curve,PASS,second contour is continuous and belongs to common quadratic family,2026-08-28T04:13:09.8380095Z
+C005,curve,PASS,third contour is continuous but participates in illegal relation P00510,2026-08-28T04:13:09.8380095Z
+C006,curve,PASS,inner contour is continuous and belongs to common quadratic family,2026-08-28T04:13:09.8380095Z
+C007,curve,PASS,first blue arrowhead is visible and correctly oriented,2026-08-28T04:13:09.8380095Z
+C008,curve,PASS,second blue arrowhead is visible but participates in illegal relation P00560,2026-08-28T04:13:09.8380095Z
+C009,curve,PASS,third blue arrowhead is visible and correctly oriented,2026-08-28T04:13:09.8380095Z
+C010,curve,PASS,first teal arrowhead is visible and correctly oriented,2026-08-28T04:13:09.8380095Z
+C011,curve,PASS,second teal arrowhead is visible and correctly oriented,2026-08-28T04:13:09.8380095Z
+C012,curve,PASS,third teal arrowhead is visible and correctly oriented,2026-08-28T04:13:09.8380095Z
+C013,curve,PASS,fourth teal arrowhead is visible and correctly oriented,2026-08-28T04:13:09.8380095Z
+C014,curve,PASS,initial black point is visible and correctly placed,2026-08-28T04:13:09.8380095Z
+C015,curve,PASS,first blue filled node is visible and correctly placed,2026-08-28T04:13:09.8380095Z
+C016,curve,PASS,second blue filled node is visible but participates in illegal relation P00568,2026-08-28T04:13:09.8380095Z
+C017,curve,PASS,third blue filled node is visible and correctly placed,2026-08-28T04:13:09.8380095Z
+C018,curve,PASS,optimum star is visible and centered at zero,2026-08-28T04:13:09.8380095Z
+C019,curve,PASS,x1 legend sample is a continuous 73px solid run as intended,2026-08-28T04:13:09.8380095Z
+C020,curve,FAIL,x2 legend sample is also a continuous 73px run with zero internal blank instead of four separated segments,2026-08-28T04:13:09.8380095Z

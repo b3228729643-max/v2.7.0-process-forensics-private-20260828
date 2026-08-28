@@ -1,0 +1,48 @@
+% v2.3.1 figure UID: FIG-P346-01
+% Proposed post-v2.3.1 polish for FIG-P346-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P346-01/.style={every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{slfig-FIG-P346-01-axis/.style={
+  tick label style={font=\fontsize{8.5pt}{10pt}\selectfont},
+  label style={font=\fontsize{9.5pt}{11pt}\selectfont},clip=false}}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P346-01]
+\begin{axis}[slfig-FIG-P346-01-axis,
+  name=boundaxis,
+  slfig axis,width=.82\linewidth,height=.51\linewidth,
+  xmin=.2,xmax=6.2,ymin=-.3,ymax=4.35,
+  axis lines=left,xlabel={$\theta$},ylabel={目标值},
+  xtick={2},xticklabels={2},ytick=\empty,clip=false,
+]
+  \addplot[name path=ell,draw=SLBlue,line width=1.05pt,domain=.3:6.1,samples=321]
+    {3.8-.18*(x-4.5)^2};
+  \addplot[name path=bound,draw=SLTeal,line width=.88pt,densely dashed,domain=.3:6.1,samples=321]
+    {3.8-.18*(x-4.5)^2-.16*(x-2)^2};
+  \addplot[draw=none,fill=SLTeal,fill opacity=.055]
+    fill between[of=ell and bound];
+  \addplot[slfig reference,line width=.52pt] coordinates {(2,-.05) (2,2.675)};
+  \addplot[draw=SLGold,line width=.76pt,domain=1.22:2.90,samples=2]
+    {2.675+.9*(x-2)};
+  \addplot[only marks,mark=*,mark size=2.5pt,draw=SLGold,fill=SLGold]
+    coordinates {(2,2.675)};
+  \draw[draw=SLBlue,line width=.46pt]
+    (axis cs:4.70,3.793)--(axis cs:4.94,4.04);
+  \node[slfig direct label,font=\fontsize{9.2pt}{10.8pt}\selectfont,text=SLBlue,
+    fill=none,inner sep=0pt,anchor=west] at (axis cs:5.04,4.10) {$\ell(\theta)$};
+  \draw[draw=SLTeal,line width=.46pt]
+    (axis cs:4.50,2.80)--(axis cs:4.57,2.47);
+  \node[slfig direct label,font=\fontsize{9.2pt}{10.8pt}\selectfont,text=SLTeal,
+    fill=none,inner sep=0pt,anchor=west] at (axis cs:4.65,2.34) {$B(\theta,2)$：下界};
+  \draw[draw=SLGold!88!black,line width=.46pt]
+    (axis cs:2.00,2.675)--(axis cs:1.58,3.16);
+  \node[font=\fontsize{9pt}{10.5pt}\selectfont,text=SLGold!88!black,
+    anchor=west] at (axis cs:.62,3.38) {相切点；共享切线};
+\end{axis}
+  \node[slfig note,font=\fontsize{9pt}{10.8pt}\selectfont,line width=.58pt,
+    fill=white,anchor=north,inner xsep=4mm,inner ysep=2.2mm]
+    at ([yshift=-10mm]boundaxis.south)
+    {$\ell(\theta)-B(\theta,2)=0.16(\theta-2)^2\ge0$};
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{可复算的相切下界：$B(\theta,2)=\ell(\theta)-0.16(\theta-2)^2\le\ell(\theta)$，并在$\theta=2$处函数值与导数同时相等。两条曲线按图中给定的显式函数精确绘制，而非未标比例的定性示意。}\label{fig:V3-C04-bound}
+\end{figure}

@@ -1,0 +1,2 @@
+FINDING_ID,SEVERITY,R168_GATE,OBJECT_PAIR,EVIDENCE,OBSERVATION,ROUTE,SOURCE_SCOPE
+F001,HARD,ILLEGAL_INK_OVERLAP,O01-O11,"R02_native1x.png; R02_nearest8x.png; R06_native1x.png; R06_nearest8x.png","The blue convex-set boundary passes through the mathematical C glyph in the domain label, visibly merging independent geometry and text foreground.",FAIL_TO_MAIN_SOURCE_SCOPE,"fig_v1_c07_convex_set.tex lines 29-30 only: reposition the domain-label node or give that label an opaque protective background so the boundary no longer crosses any glyph."

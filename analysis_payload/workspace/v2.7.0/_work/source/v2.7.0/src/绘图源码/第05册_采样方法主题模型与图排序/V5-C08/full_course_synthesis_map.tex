@@ -1,0 +1,85 @@
+% v2.7.0 canonical figure UID: FIG-P756-01
+% Legacy figure ID: FIG-V5-C08-08
+% Five-station loop plus a shared reusable engine pool for both task routes.
+\tikzset{slfig-FIG-P756-01/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P756-01,slfig high,
+  >=Stealth,
+  every node/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,align=center,outer sep=0pt},
+  panel title/.style={font=\bfseries\fontsize{10.2pt}{12.2pt}\selectfont,text=SLDeepBlue,inner sep=0pt},
+  main station/.style={draw=SLDeepBlue,fill=white,rounded corners=2.2pt,
+    minimum width=27mm,text width=23mm,minimum height=17mm,inner xsep=1.35mm,inner ysep=1.5mm,line width=.8pt},
+  main active/.style={main station,draw=SLMidBlue,fill=SLSoftBlue},
+  station badge/.style={circle,draw=white,fill=SLDeepBlue,minimum size=6mm,inner sep=0pt,
+    line width=.6pt,font=\bfseries\fontsize{9.6pt}{11.6pt}\selectfont,text=white},
+  route/.style={draw=SLDeepBlue,fill=white,rounded corners=2pt,text width=25mm,
+    minimum width=28mm,minimum height=16mm,inner xsep=1.35mm,inner ysep=1.3mm,line width=.74pt},
+  engine pool/.style={draw=SLMidBlue,fill=SLSoftBlue,rounded corners=3pt,
+    minimum width=53mm,minimum height=40mm,inner sep=0pt,line width=.82pt},
+  engine chip/.style={draw=SLRuleGray,fill=white,rounded corners=1.5pt,text width=19mm,
+    minimum height=8mm,inner xsep=1mm,inner ysep=.7mm,line width=.66pt},
+  audit/.style={draw=SLRuleGray,fill=SLSoftGray,rounded corners=2pt,text width=24mm,
+    minimum width=28mm,minimum height=18mm,inner xsep=1.35mm,inner ysep=1.4mm,line width=.74pt},
+  report/.style={draw=SLDeepBlue,double,double distance=.8pt,fill=white,rounded corners=2pt,
+    text width=24mm,minimum width=28mm,minimum height=20mm,inner xsep=1.35mm,inner ysep=1.4mm,line width=.74pt},
+  main line/.style={-{Stealth[length=2.2mm,width=1.55mm]},draw=SLDeepBlue,line width=.95pt},
+  feedback line/.style={-{Stealth[length=2.1mm,width=1.5mm]},draw=SLAccentOrange,line width=.8pt,dashed},
+  supervised line/.style={-{Stealth[length=2mm,width=1.45mm]},draw=SLDeepBlue,line width=.8pt},
+  unsupervised line/.style={-{Stealth[length=2mm,width=1.45mm]},draw=SLMidBlue,line width=.8pt,dashed},
+  legend/.style={font=\fontsize{9.6pt}{11.6pt}\selectfont,text=SLTextGray,text width=145mm,align=center,inner sep=0pt},
+  alt={对象—关系—结论：上层由问题定义、建模、计算、证据、边界五个站点组成前向主链；当边界暴露或证据失败时，橙色虚线反馈箭头从边界返回问题定义，形成主闭环。下层保留监督任务路线和无监督任务路线，两路分别以实线和虚线进入同一个“共享可复用计算引擎池”；池内同时列出线性代数、优化、概率、推断四类引擎，并明确两类任务都按具体问题调用这些引擎，而非各自排他占有。共享引擎池随后单向进入隔离验证，再经唯一单向通道进入双线框可复现报告；报告没有回流。节点形状、引擎池结构、实线/虚线、箭头方向、双线终点和文字共同编码；结论是任务路线共享计算引擎，只有隔离验证后的结论才能进入无回流报告。}]
+
+% 上层：五站主闭环。
+\node[panel title,anchor=west] at (-7.55,5.75) {(a) 问题到边界的五站主闭环};
+\matrix[column sep=4mm] (mainrow) at (0,3.00) {
+  \node[main station] (problem) {\textbf{问题定义}\\目标／数据\\独立单元}; &
+  \node[main active] (model) {\textbf{建模}\\表示／假设\\约束／先验}; &
+  \node[main active] (compute) {\textbf{计算}\\求解／推断\\状态／预算}; &
+  \node[main active] (evidence) {\textbf{证据}\\隔离评价\\稳定／成本}; &
+  \node[main station] (boundary) {\textbf{边界}\\失败模式\\适用范围}; \\
+};
+\draw[main line] (problem.east)--(model.west);
+\draw[main line] (model.east)--(compute.west);
+\draw[main line] (compute.east)--(evidence.west);
+\draw[main line] (evidence.east)--(boundary.west);
+\foreach \nodeid/\stepno in {problem/1,model/2,compute/3,evidence/4,boundary/5}{
+  \node[station badge] at ([xshift=3.5mm,yshift=1.8mm]\nodeid.north west) {\stepno};
+}
+\draw[feedback line,rounded corners=4pt]
+  (boundary.north)--([yshift=10mm]boundary.north)--
+  node[midway,above=1mm,fill=white,inner sep=.6mm]{边界暴露／证据失败：返回问题定义}
+  ([yshift=10mm]problem.north)--(problem.north);
+
+% 下层：两类任务共享同一可复用引擎池，再共同进入隔离验证。
+\node[panel title,anchor=west] at (-7.55,.78) {(b) 任务路线共享引擎与单向报告出口};
+\node[route] (supervised) at (-6.20,-1.00)
+  {\textbf{监督任务路线}\\任务损失\\标签结构};
+\node[route,dashed] (unsupervised) at (-6.20,-2.80)
+  {\textbf{无监督任务路线}\\结构目标\\潜变量};
+
+\node[engine pool] (pool) at (-1.20,-1.90) {};
+\node[panel title,anchor=north] at ([yshift=-3mm]pool.north) {共享可复用计算引擎池};
+\node[anchor=north] at ([yshift=-8mm]pool.north) {两类任务均按问题调用};
+\node[engine chip] (linalg) at ([xshift=-12mm,yshift=-1mm]pool.center) {线性代数};
+\node[engine chip] (optim) at ([xshift=12mm,yshift=-1mm]pool.center) {优化};
+\node[engine chip] (prob) at ([xshift=-12mm,yshift=-11mm]pool.center) {概率};
+\node[engine chip] (infer) at ([xshift=12mm,yshift=-11mm]pool.center) {推断};
+
+\node[audit] (validation) at (3.20,-1.90)
+  {\textbf{隔离验证}\\锁定评价／诊断\\计算资源预算};
+\node[report] (report) at (6.40,-1.90)
+  {\textbf{可复现报告}\\结论层级\\适用边界\\无回流};
+\node[anchor=south] (exitnote) at ([yshift=2.8mm]report.north) {仅此单向输出};
+
+\draw[supervised line] (supervised.east)--([yshift=7mm]pool.west);
+\draw[unsupervised line] (unsupervised.east)--([yshift=-7mm]pool.west);
+\draw[main line] (pool.east)--(validation.west);
+\draw[main line] (validation.east)--(report.west);
+\node[legend] at (0,-4.45)
+  {实线接入：监督任务；虚线接入：无监督任务；池内四类引擎均可复用；双线报告框：单向终点。};
+\end{tikzpicture}
+\caption{全书统计学习闭环分为两层：（a）问题定义、建模、计算、证据与边界构成五站主闭环，边界暴露或证据失败时返回问题定义；（b）监督与无监督任务都进入包含线性代数、优化、概率、推断的共享可复用计算引擎池，再共同进入隔离验证并单向到达无回流的可复现报告。}
+\label{fig:V5-C08-course-map}
+\end{figure}

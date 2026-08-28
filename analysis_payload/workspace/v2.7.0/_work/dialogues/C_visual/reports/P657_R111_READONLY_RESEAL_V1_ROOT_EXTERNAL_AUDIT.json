@@ -1,0 +1,55 @@
+{
+  "schema": "P657_R111_SA2_READONLY_RESEAL_ROOT_EXTERNAL_AUDIT_V1",
+  "controller": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\reports\\P657_R111_READONLY_RESEAL_V1_CONTROLLER.ps1",
+    "bytes": 25143,
+    "sha256": "A105B5833B3488324A7B50B40DEC325EEC93866EC716AED280F15607A7C40C2A"
+  },
+  "invocation_ordinal": 1,
+  "retry_count": 0,
+  "controller_pid": 14060,
+  "old_root_resolved": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_v1",
+  "new_root_resolved": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\C_visual\\evidence\\FIG-P657-01\\sa2_r111_r168_readonly_adjudication_reseal_v1",
+  "old_material_rows": 487,
+  "old_root_ordinary_files_before": 489,
+  "old_root_missing_paths_before": 0,
+  "old_root_extra_paths_before": 0,
+  "old_material_post_operation_identity_mismatch": 0,
+  "old_control_identity_changes": 0,
+  "source_to_destination_identity_mismatch": 0,
+  "payload_count": 489,
+  "control_count": 3,
+  "ordinary_file_count": 492,
+  "manifest_gate": {
+    "manifest_rows": 489,
+    "expected_file_count": 492,
+    "actual_file_count": 492,
+    "duplicate_paths": 0,
+    "missing_paths": 0,
+    "extra_paths": 0,
+    "bytes_mismatch": 0,
+    "sha256_mismatch": 0,
+    "last_write_ticks_mismatch": 0
+  },
+  "readonly_gate": {
+    "file_count": 492,
+    "readonly_file_count": 492,
+    "directory_count_including_root": 10,
+    "readonly_directory_count_including_root": 10,
+    "writable_file_count": 0,
+    "writable_directory_count_including_root": 0
+  },
+  "hygiene": {
+    "json_parse_failures": 0,
+    "csv_parse_failures": 0,
+    "ads_count": 0,
+    "cache_pyc_count": 0,
+    "reparse_count": 0
+  },
+  "write_stopped_count": 1,
+  "write_stopped_ticks": 639233989871623808,
+  "at_or_after_excluding_marker": 0,
+  "postmarker_root_content_or_attribute_writes": 0,
+  "business_decision": "SA2_NO_SOURCE_CHANGE_READY_FOR_FRESH_SA1",
+  "success": true
+}

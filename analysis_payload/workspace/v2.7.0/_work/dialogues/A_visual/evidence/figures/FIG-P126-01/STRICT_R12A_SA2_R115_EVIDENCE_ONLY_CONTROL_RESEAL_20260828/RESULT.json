@@ -1,0 +1,17 @@
+{
+  "schema": "P126_R12_LOCAL_SA2_RESULT_V1",
+  "handoff_id": "A-R115-P126-SA2-DIRECT-BUILD-R12-20260828",
+  "uid": "FIG-P126-01",
+  "stage": "SA2",
+  "candidate": "R115_STANDALONE_R12",
+  "verdict": "LOCAL_SA2_FAIL_RETURN_TO_MAIN_SOURCE_SCOPE",
+  "hard_defect_count": 1,
+  "hard_defect_id": "HARD-LEGEND-X2-CONTINUOUS",
+  "hard_defect_fact": "The x2 legend swatch renders as one continuous 73-pixel run with zero internal blank runs in native300 and nearest8x evidence.",
+  "label6_regression": "PASS_7PX_BLANK_GAP",
+  "label7_regression": "PASS_8PX_BLANK_GAP",
+  "math_semantic_regression": "PASS_EXCEPT_LEGEND_ROLE_ENCODING",
+  "commit_authorized": false,
+  "source_write_after_build": false,
+  "tex_after_build_release": false
+}

@@ -1,0 +1,45 @@
+% v2.3.1 figure UID: FIG-P610-01
+% Proposed post-v2.3.1 polish for FIG-P610-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P610-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P610-01,
+  panel/.style={draw=SLRuleGray,line width=.55pt,rounded corners=3pt},
+  title/.style={font=\bfseries\fontsize{10.2pt}{12.2pt}\selectfont,text=SLBlue,align=center},
+  cand/.style={circle,draw=SLRuleGray,fill=SLSoftGray,minimum size=9mm,inner sep=1pt,line width=.65pt},
+  outnode/.style={circle,draw=SLBlue,fill=white,minimum size=9.2mm,inner sep=1pt,line width=.95pt},
+  reject/.style={font=\fontsize{14pt}{14pt}\selectfont,text=SLRed,inner sep=0pt},
+  note/.style={font=\fontsize{8.5pt}{10.4pt}\selectfont,text=SLTextGray,align=center,text width=56mm,inner sep=0pt},
+  prop/.style={draw=SLGray,line width=.58pt,densely dashed},
+  actual/.style={-{Stealth[length=1.7mm,width=1.25mm]},draw=SLBlue,line width=.98pt,shorten <=1.2mm,shorten >=1.4mm},
+  divider/.style={draw=SLRuleGray,line width=.48pt,densely dashed}]
+  \draw[panel] (-6.65,-2.15) rectangle (-.35,2.25);
+  \draw[panel] (.35,-2.15) rectangle (6.65,2.25);
+  \node[title] at (-3.50,1.82) {接受--拒绝抽样};
+  \node[title] at (3.50,1.82) {Metropolis--Hastings};
+  \foreach \x/\name/\lab in {-5.30/lp1/$Y_1$,-3.50/lp2/$Y_2$,-1.70/lp3/$Y_3$}
+    \node[cand] (\name) at (\x,.82) {\lab};
+  \foreach \x/\name/\lab in {1.70/mp1/$Y_1$,3.50/mp2/$Y_2$,5.30/mp3/$Y_3$}
+    \node[cand] (\name) at (\x,.82) {\lab};
+  \node[outnode] (r1) at (-5.30,-.72) {$Y_1$};
+  \node[outnode] (r3) at (-1.70,-.72) {$Y_3$};
+  \node[reject] (rxL) at (-3.50,.05) {$\times$};
+  \draw[prop] ([yshift=-.7mm]lp1.south)--([yshift=.7mm]r1.north);
+  \draw[prop] ([yshift=-.7mm]lp3.south)--([yshift=.7mm]r3.north);
+  \node[note] at (-3.50,-1.60) {拒绝 $Y_2$：输出序列留空};
+
+  \node[outnode] (m1) at (1.70,-.72) {$Y_1$};
+  \node[outnode,double,double distance=1.1pt] (m2) at (3.50,-.72) {$Y_1$};
+  \node[outnode] (m3) at (5.30,-.72) {$Y_3$};
+  \node[reject] (rxM) at (3.50,.05) {$\times$};
+  \draw[prop] ([yshift=-.7mm]mp1.south)--([yshift=.7mm]m1.north);
+  \draw[prop] ([yshift=-.7mm]mp2.south)--([yshift=.7mm]rxM.north)
+              ([yshift=-.7mm]rxM.south)--([yshift=.7mm]m2.north);
+  \draw[prop] ([yshift=-.7mm]mp3.south)--([yshift=.7mm]m3.north);
+  \draw[actual] (m1.east)--(m2.west);
+  \draw[actual] (m2.east)--(m3.west);
+  \node[note] at (3.50,-1.60) {拒绝 $Y_2$：下一时刻仍记录当前 $Y_1$};
+  \draw[divider] (0,-2.0)--(0,2.1);
+\end{tikzpicture}
+\caption{接受--拒绝抽样拒绝候选后不输出该候选；MH拒绝候选后把当前状态再次记入链，因此输出通常相关而非独立}\label{fig:V5-C03-rejection-vs-mh}
+\end{figure}

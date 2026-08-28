@@ -1,0 +1,31 @@
+object_id,manual_decision,manual_note
+O-G01,PASS,current-state frame has visible whitespace on all four sides
+O-G02,PASS,proposal frame remains fully inside the figure crop
+O-G03,PASS,wide ratio frame retains both rounded outer corners
+O-G04,PASS,fraction rule terminates before either crop edge
+O-G05,PASS,diamond left and right tips are both fully rendered
+O-G06,PASS,accepted frame has complete top bottom and side borders
+O-G07,PASS,double rejected frame keeps both lower corner outlines
+O-G08,PASS,proposal arrow tail and head are both present
+O-G09,PASS,calculation arrow shows its entire vertical span
+O-G10,PASS,decision connector reaches both adjacent objects without truncation
+O-G11,PASS,accept branch includes its remote tail and node-side arrowhead
+O-G12,PASS,reject dash-dot branch is complete through the final arrowhead
+O-G13,PASS,self-loop curve and return head remain wholly within the crop
+O-T01,PASS,current-state title is not cut at its top or sides
+O-T02,PASS,current variable baseline and subscript have bottom clearance
+O-T03,PASS,proposal label has clear crop margin around both characters
+O-T04,PASS,proposal instruction retains its first and last glyph strokes
+O-T05,PASS,candidate-variable Y is complete at the right end
+O-T06,PASS,calculation label remains clear of the figure boundary
+O-T07,PASS,long acceptance heading is complete from 计 through the closing parenthesis
+O-T08,PASS,formula braces and rightmost denominator parenthesis are fully visible
+O-T09,PASS,decision label preserves its top accents and lower strokes
+O-T10,PASS,diamond sentence keeps both line ends and the final question mark
+O-T11,PASS,accept label has intact leftmost and rightmost strokes
+O-T12,PASS,reject label is fully contained above its branch
+O-T13,PASS,accepted title has safe side and top margins
+O-T14,PASS,accepted update keeps X subscripts and terminal Y inside the node
+O-T15,PASS,rejected title is fully contained by the double frame
+O-T16,PASS,rejected update retains both X glyphs and their t subscripts
+O-T17,PASS,self-loop phrase keeps its initial 拒 and final 态 inside the crop

@@ -1,0 +1,835 @@
+% STAGE08-CHAPTER: V1-C04
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V1-C04-CH01}; CH-02=\label{struct:V1-C04-CH02}; CH-03=\label{struct:V1-C04-CH03}; CH-04=\label{struct:V1-C04-CH04}; CH-05=\label{struct:V1-C04-CH05}; CH-06=\label{struct:V1-C04-CH06}; CH-07=\label{struct:V1-C04-CH07}; CH-08=\label{struct:V1-C04-CH08}; CH-09=\label{struct:V1-C04-CH09}; CH-10=\label{struct:V1-C04-CH10}; CH-11=\label{struct:V1-C04-CH11}; CH-12=\label{struct:V1-C04-CH12}; CH-13=\label{struct:V1-C04-CH13}; CH-14=\label{struct:V1-C04-CH14}; CH-15=\label{struct:V1-C04-CH15}; CH-16=\label{struct:V1-C04-CH16}; CH-17=\label{struct:V1-C04-CH17}; CH-18=\label{struct:V1-C04-CH18}; CH-19=\label{struct:V1-C04-CH19}; CH-20=\label{struct:V1-C04-CH20}; CH-21=\label{struct:V1-C04-CH21}; CH-22=\label{struct:V1-C04-CH22}; CH-23=\label{struct:V1-C04-CH23}; CH-24=\label{struct:V1-C04-CH24}; CH-25=\label{struct:V1-C04-CH25}; CH-26=\label{struct:V1-C04-CH26}; CH-27=\label{struct:V1-C04-CH27}; CH-28=\label{struct:V1-C04-CH28}; CH-29=\label{struct:V1-C04-CH29}; CH-30=\label{struct:V1-C04-CH30}; CH-31=\label{struct:V1-C04-CH31}; CH-32=\label{struct:V1-C04-CH32}; CH-33=\label{struct:V1-C04-CH33}; CH-34=\label{struct:V1-C04-CH34}; CH-35=\label{struct:V1-C04-CH35}; CH-36=\label{struct:V1-C04-CH36}; CH-37=\label{struct:V1-C04-CH37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V1-C04-cdf -> PRE-PR-007
+\chapter{概率论基础}\label{chap:V1-C04}
+\SLChapterOpening{从事件概率直达条件分布、独立性与矩}{不确定性怎样在条件化、边缘化和重复抽样中保持一致}{能够写出合法分母、支持集与完整概率推导}{集合运算、求和积分及基础函数知识}{分母或支持条件不清楚时返回条件概率与联合分布节}
+\index{概率论基础}
+
+
+\phantomsection\label{struct:V1-C04-CH01}
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 从样本空间和概率公理出发，严格建立条件概率、独立性与分布的语言；
+  \item 能够逐行推出全概率公式、贝叶斯公式、方差分解与样本均值收敛的条件；
+  \item 能够把联合分布转化为边缘量、条件量和可执行的概率推断流程。
+\end{itemize}}
+
+\phantomsection\label{struct:V1-C04-CH02}
+\begin{prerequisitebox}
+需要集合的并、交、补与划分，有限或可数求和，函数及其逆像，以及极限的基本概念。连续型部分还使用积分；向量随机变量的协方差矩阵需要内积与矩阵转置。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V1-C04-CH03}
+% KNOWLEDGE-PLAN: KN-V1-C04-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}概率论先修自检给出$A\cap B=\varnothing$；请把$A\cup B$拆成两个不交事件，核对$P(A\cup B)=P(A)+P(B)$，并据此判断该项是否通过。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 若 $A\cap B=\varnothing$，能否说明 $P(A\cup B)$ 如何由 $P(A),P(B)$ 组成？
+  \item 能否把“至少一次成功”写成补事件，并用连乘计算其概率？
+  \item 能否判断 $\sum_x p(x)=1$ 与 $\int p(x)\,\mathrm dx=1$ 分别适用于何种变量？
+\end{enumerate}
+任一问题无法完成时，先回看第一章的集合、求和及函数约定。
+\end{precheckbox}
+
+\phantomsection\label{struct:V1-C04-CH04}
+\begin{dependencybox}
+样本空间与事件 $\longrightarrow$ 概率公理 $\longrightarrow$ 条件概率 $\longrightarrow$ 全概率与贝叶斯公式；
+随机变量 $\longrightarrow$ 联合分布 $\longrightarrow$ 边缘、条件与独立 $\longrightarrow$ 期望、协方差和大数定律。
+\end{dependencybox}
+
+\phantomsection\label{struct:V1-C04-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V1-C04
+\index[symbols]{minus-omega-minus-minus-mathcalf-minus-p--s6dab7fc537da@$\Omega,\mathcal F,P$：概率空间}
+\index[symbols]{a-b--s6b0aaddcfab7@$A,B$：随机事件}
+\index[symbols]{x-y--sb6c5a11ba8ed@$X,Y$：随机变量}
+\index[symbols]{p-x-f-x-f-x--sa970f8029619@$p_X,f_X,F_X$：概率质量、密度、分布函数}
+\index[symbols]{minus-mathbbe-minus-minus-operatorname-minus-var-minus-operatorname-minu--s3ae17b2f1b7f@$\mathbb E,\operatorname{Var},\operatorname{Cov}$：期望、方差、协方差}
+% STAGE19-SYMBOL-INDEX-END: V1-C04
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值空间 & 含义\\ \midrule
+$\Omega,\mathcal F,P$ & 集合、事件族、$[0,1]$值函数 & 概率空间\\
+$A,B$ & $\mathcal F$ & 随机事件\\
+$X,Y$ & $\mathbb R$或有限集合 & 实值随机变量或有限集值随机元素\\
+$p_X,f_X,F_X$ & 非负函数、$[0,1]$值函数 & 概率质量、密度、分布函数\\
+$\mathbb E,\operatorname{Var},\operatorname{Cov}$ & 标量或矩阵 & 期望、方差、协方差\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{样本空间、事件与概率}{sec:V1-C04-S01}
+\phantomsection\label{struct:V1-C04-CH06}
+\knowledgeanchor{PRE-PR-001}{样本空间与随机事件}
+一次随机试验所有可能结果构成样本空间 $\Omega$；事件是可被判断是否发生的结果集合。统计学习中的“随机抽取一个训练样本”可把 $\Omega$ 取为特征与标签的所有可能配对，而事件 $\{Y=1\}$ 表示标签为正类。
+
+\phantomsection\label{struct:V1-C04-CH07}
+% KNOWLEDGE-PLAN: KN-V1-C04-DEFINITION-001 L1
+\paragraph{读前自检：概率空间。}概率空间$(\Omega,\mathcal F,P)$要求$\mathcal F$含$\Omega$、对补集和可数并封闭；请对任意已声明的$A\in\mathcal F$证明$A^c\in\mathcal F$，再核对$P(\Omega)=1$与可列可加性。\par
+
+\begin{definition}[概率空间]
+设非空事件族$\mathcal F\subseteq2^\Omega$满足$\Omega\in\mathcal F$，并且对补集与可数并封闭；这样的$\mathcal F$称为$\sigma$-代数。映射 $P:\mathcal F\to[0,1]$ 满足 $P(\Omega)=1$，且对两两不交事件 $A_1,A_2,\ldots$ 有
+\[
+P\!\left(\bigcup_{i=1}^{\infty}A_i\right)=\sum_{i=1}^{\infty}P(A_i),
+\]
+则 $(\Omega,\mathcal F,P)$ 称为概率空间。
+\end{definition}
+\knowledgeanchor{PRE-PR-002}{概率公理与基本运算}
+由公理可推出 $P(\varnothing)=0$、$P(A^{\mathrm c})=1-P(A)$，以及
+\[
+P(A\cup B)=P(A)+P(B)-P(A\cap B).
+\]
+这些式子依赖集合关系；不能在 $A,B$ 有交叠时把两项概率机械相加。
+
+\begin{example}[骰子事件并集的两种核验]\label{exm:V1-C04-dice}
+掷一枚均匀六面骰子，令 $A=\{2,4,6\}$、$B=\{4,5,6\}$。则 $P(A\cup B)=3/6+3/6-2/6=2/3$。
+\end{example}
+\SLExampleSolutionHeading{exm:V1-C04-dice}
+\begin{solution}
+\SLReadTranslation{题目要求围绕“骰子事件并集的两种核验”确定所求对象，依据题面数据完成必要推导并回收明确结论。}
+\SolGiven 保留题面全部已知量，并先核对“骰子事件并集的两种核验”中每个对象的取值域、维数与成立条件。
+\SLMethodTrigger{围绕“骰子事件并集的两种核验”先声明对象与条件，再完成必要计算并回收结论。}
+\SolDerive
+样本空间为$\Omega=\{1,2,3,4,5,6\}$，六个结果等概率。集合运算与概率链为
+\[
+\begin{aligned}
+A\cap B&=\{4,6\},
+&A\cup B&=\{2,4,5,6\},\\
+P(A\cup B)
+&=P(A)+P(B)-P(A\cap B)\\
+&=\frac36+\frac36-\frac26
+=\frac46=\frac23.
+\end{aligned}
+\]
+直接计数$|A\cup B|=4$得到同一结果，并验证交集只应扣除一次。因此所求并集概率为$P(A\cup B)=2/3$。
+\end{solution}
+\SLReviewSection{条件概率、全概率与贝叶斯公式}{sec:V1-C04-S02}
+\knowledgeanchor{PRE-PR-003}{条件概率}
+当 $P(B)>0$ 时，已知 $B$ 发生后的概率定义为
+\[
+P(A\mid B)=\frac{P(A\cap B)}{P(B)},\qquad
+P(A\cap B)=P(A\mid B)P(B).
+\]
+条件化把样本空间缩小到 $B$，同时重新归一化概率质量。
+
+% KNOWLEDGE-PLAN: KN-V1-C04-FORMULA-001 L1
+\paragraph{读前自检：全概率公式。}先锁定全概率公式的条件“若 $B_1,\ldots,B_m$ 两两不交、并为 $\Omega$ 且概率均为正”：把$P(A)=\sum_{i=1}^{m}P(A\mid B_i)P(B_i).$在其支持上求和或积分一次，所得结果应满足各项非负且总和或积分满足归一化条件。\par
+% KNOWLEDGE-PLAN: KN-V1-C04-FORMULA-002 L1
+\paragraph{读前自检：贝叶斯公式。}贝叶斯公式以正概率事件$A$和划分$B_1,\ldots,B_m$为条件；请将$P(A\cap B_j)=P(A\mid B_j)P(B_j)$代入条件概率，并核对分母$\sum_iP(A\mid B_i)P(B_i)$完成归一化。\par
+
+\knowledgeanchor{PRE-PR-004}{全概率公式}
+若 $B_1,\ldots,B_m$ 两两不交、并为 $\Omega$ 且概率均为正，则
+\[
+P(A)=\sum_{i=1}^{m}P(A\mid B_i)P(B_i).
+\]
+\knowledgeanchor{PRE-PR-005}{贝叶斯公式}
+对 $P(A)>0$，后验概率为
+\[
+P(B_j\mid A)=\frac{P(A\mid B_j)P(B_j)}{\sum_{i=1}^{m}P(A\mid B_i)P(B_i)}.
+\]
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V1-C04-CH11}
+% CORE-DERIVATION-PLAN: KN-V1-C04-DERIVATION-001
+\SLKnowledgeBridge{分清联合概率、证据概率与归一化后的后验概率。}{观察事件 $A$ 与互斥完备划分 $B_1,\ldots,B_m$。}{$P(B_i)>0$ 且 $P(A)>0$；$\{B_i\}$ 覆盖整个样本空间。}{先用全概率公式写 $P(A)=\sum_iP(A\mid B_i)P(B_i)$。}
+
+\begin{derivationgoalbox}
+从事件划分推导贝叶斯公式，并明确分子与归一化分母各自的来源。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+准备条件：$B_1,\ldots,B_m$ 构成划分，$P(B_i)>0$，且观察事件 $A$ 的概率为正。
+\end{derivationprepbox}
+\textbf{推导第1步：}由乘法公式，$P(A\cap B_j)=P(A\mid B_j)P(B_j)$。
+
+\textbf{推导第2步：}因 $A=\bigcup_i(A\cap B_i)$ 且各项不交，可数可加性给出 $P(A)=\sum_iP(A\mid B_i)P(B_i)$。
+
+\textbf{推导第3步：}把前两步代入 $P(B_j\mid A)=P(A\cap B_j)/P(A)$，得到贝叶斯公式。分母汇总所有能够产生观察 $A$ 的互斥来源，因而使后验概率之和为1。
+
+\phantomsection\label{struct:V1-C04-CH08}
+\textbf{模型。}诊断模型由先验 $P(B_i)$ 与观测模型 $P(A\mid B_i)$ 构成；二者相乘得到未归一化后验。
+\phantomsection\label{struct:V1-C04-CH09}
+\textbf{策略。}先列出完备且互斥的原因，再计算每个原因生成证据的概率，最后统一归一化，可避免漏项和把 $P(A\mid B)$ 误当作 $P(B\mid A)$。
+
+\phantomsection\label{struct:V1-C04-CH10}
+\phantomsection\label{struct:V1-C04-CH21}
+\phantomsection\label{struct:V1-C04-CH22}
+\phantomsection\label{struct:V1-C04-CH23}
+\phantomsection\label{struct:V1-C04-CH24}
+\phantomsection\label{struct:V1-C04-CH25}
+\phantomsection\label{struct:V1-C04-CH26}
+\phantomsection\label{struct:V1-C04-CH27}
+\begin{geometrybox}
+\textbf{几何解释。}
+联合密度的等高线若由两个一维因子的乘积生成，其轴向变化可分别控制；但“等高线像矩形”只是一种直观，独立性的判据仍是整个支持集上的精确因子分解。
+\end{geometrybox}
+\phantomsection\label{struct:V1-C04-CH17}
+\begin{probabilitybox}
+条件独立表达“固定背景信息后，一个变量不再为另一个提供额外概率信息”。朴素贝叶斯正是把各特征在类别给定时视为条件独立，而不要求特征在总体上独立。
+\end{probabilitybox}
+\phantomsection\label{struct:V1-C04-CH18}
+\begin{optimizationbox}
+\textbf{优化解释。}
+独立分解把联合对数似然转化为因子对数之和，使参数估计可分块计算；这是概率假设改变优化结构的典型例子，但分解错误会带来模型偏差。
+\end{optimizationbox}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C04-FORMULA-003 L1
+\paragraph{读前自检：数学期望。}概率论基础中的数学期望把问题限定在“只要相应绝对期望有限，线性性不要求变量独立”；请把$\mathbb E[g(X)]=\sum_xg(x)p_X(x)$按定义展开一层，检查是否得到展开结果为标量或声明形状且满足相应线性恒等式。\par
+% KNOWLEDGE-PLAN: KN-V1-C04-FORMULA-004 L1
+\paragraph{读前自检：方差。}在“$\operatorname{Var}(X)=\mathbb E[(X-\mathbb EX)^2]=\mathbb E[X^2]-(\mathbb EX)^2.$”成立时处理概率论基础中的方差：请把$\operatorname{Var}(X)$展开一次并检查其类型或边界，并以展开后的量满足定义中的域、维数或符号限制判定结果。\par
+% KNOWLEDGE-PLAN: KN-V1-C04-FORMULA-005 L1
+\paragraph{读前自检：协方差与协方差矩阵。}协方差矩阵$\Sigma=E[(X-EX)(X-EX)^{\mathsf T}]$针对$X\in\mathbb R^d$；请核对$\Sigma\in\mathbb R^{d\times d}$、对角元为方差，并对任意$a$验证$a^{\mathsf T}\Sigma a\ge0$。\par
+% KNOWLEDGE-PLAN: KN-V1-C04-FORMULA-006 L1
+\paragraph{读前自检：条件期望。}围绕概率论基础中的条件期望，先采用条件“先在每个条件分布中平均，再对 $Y$ 平均”，再把$\mathbb E\{\mathbb E[X\mid Y]\}$按定义展开一层；最后验证展开结果为标量或声明形状且满足相应线性恒等式。\par
+
+\SLAdvancedSection{期望、方差、协方差与大数定律}{sec:V1-C04-S06}
+\knowledgeanchor{PRE-PR-013}{数学期望}
+期望是按概率加权的平均：离散情形 $\mathbb E[g(X)]=\sum_xg(x)p_X(x)$，连续情形把求和换成积分。只要相应绝对期望有限，线性性不要求变量独立。
+\knowledgeanchor{PRE-PR-014}{方差}
+\[
+\operatorname{Var}(X)=\mathbb E[(X-\mathbb EX)^2]=\mathbb E[X^2]-(\mathbb EX)^2.
+\]
+\knowledgeanchor{PRE-PR-015}{协方差与协方差矩阵}
+$\operatorname{Cov}(X,Y)=\mathbb E[(X-\mathbb EX)(Y-\mathbb EY)]$。随机向量的协方差矩阵 $\Sigma=\mathbb E[(X-\mu)(X-\mu)^{\mathsf T}]$ 对称半正定。
+\knowledgeanchor{PRE-PR-026}{条件期望}
+$\mathbb E[X\mid Y]$ 是 $Y$ 的函数；先在每个条件分布中平均，再对 $Y$ 平均，得到塔式法则 $\mathbb E\{\mathbb E[X\mid Y]\}=\mathbb EX$。
+\knowledgeanchor{PRE-PR-027}{大数定律与样本均值}
+若 $X_1,\ldots,X_n$ 独立同分布且均值、方差有限，则 $\bar X_n=n^{-1}\sum_iX_i$ 满足 $\mathbb E\bar X_n=\mu$、$\operatorname{Var}(\bar X_n)=\sigma^2/n$，从而依概率收敛到 $\mu$。
+
+\phantomsection\label{struct:V1-C04-CH14}
+% KNOWLEDGE-PLAN: KN-V1-C04-COROLLARY-001 L1
+\paragraph{读前自检：切比雪夫界下的样本均值收敛。}样本均值满足$E\bar X_n=\mu$、$\operatorname{Var}(\bar X_n)=\sigma^2/n$；请代入Chebyshev不等式，核对$P(|\bar X_n-\mu|\ge\varepsilon)\le\sigma^2/(n\varepsilon^2)\to0$。\par
+
+\begin{corollary}[切比雪夫界下的样本均值收敛]
+对任意 $\varepsilon>0$，
+\[
+P(|\bar X_n-\mu|\ge\varepsilon)\le\frac{\sigma^2}{n\varepsilon^2}\longrightarrow0.
+\]
+\end{corollary}
+% KNOWLEDGE-PLAN: KN-V1-C04-PROOF-001 L1
+\paragraph{读前自检：证明：切比雪夫界下的样本均值收敛。}把切比雪夫界下的样本均值收敛放在“$\operatorname{Var}(\bar X_n)=n\sigma^2/n^2$”下考察：把$\operatorname{Var}(\bar X_n)$用到的关键定义展开并完成下一步变形，并检查当 $n$ 增大时分母线性增大，故上界趋于零。\par
+
+\begin{proof}
+独立性使和的方差等于各方差之和，所以 $\operatorname{Var}(\bar X_n)=n\sigma^2/n^2$。对 $\bar X_n$ 应用切比雪夫不等式即得上界；当 $n$ 增大时分母线性增大，故上界趋于零。
+\end{proof}
+\begin{example}[方差分解]\label{exm:V1-C04-total-variance}
+若 $Y\in\{0,1\}$，$P(Y=1)=1/2$，且 $X\mid Y=y$ 的均值为 $2y$、方差为1，求$\operatorname{Var}(X)$并解释两项来源。
+\end{example}
+\SLExampleSolutionHeading{exm:V1-C04-total-variance}
+\begin{solution}
+\SLReadTranslation{题目要求完成“方差分解”：依据题面概率模型求出目标量，并解释条件化、归一化或边缘化。}
+\SolGiven 题面概率、权重或密度均处于合法范围；条件分母/归一化常数应为正，支持集与随机变量取值域保持一致。
+\SLMethodTrigger{先写支持集、条件分母或归一化常数，再代入概率公式并做概率和/边缘核验。}
+\SolDerive
+对象满足$P(Y=0)=P(Y=1)=1/2$、$\mathbb E[X\mid Y]=2Y$及$\operatorname{Var}(X\mid Y)=1$。全方差公式逐项给出
+\[
+\begin{aligned}
+\mathbb E[\operatorname{Var}(X\mid Y)]&=\mathbb E[1]=1,\\
+\operatorname{Var}(\mathbb E[X\mid Y])
+&=\operatorname{Var}(2Y)=4\operatorname{Var}(Y)\\
+&=4\left(\frac12\right)\left(1-\frac12\right)=1,\\
+\operatorname{Var}(X)&=1+1=2.
+\end{aligned}
+\]
+第一项是组内变动，第二项是组间均值变动。
+独立地用$\operatorname{Var}(X)=\mathbb E[X^2]-\mathbb E[X]^2$核验：
+\[
+\mathbb E[X]=\mathbb E[2Y]=1,
+\qquad
+\mathbb E[X^2]=\mathbb E[1+(2Y)^2]=3,
+\]
+故$\operatorname{Var}(X)=3-1^2=2$。因此总方差为$2$，其中组内与组间变动各贡献$1$。
+\end{solution}
+
+
+\phantomsection\label{struct:V1-C04-CH28}
+\phantomsection\label{struct:V1-C04-CH29}
+% KNOWLEDGE-PLAN: KN-V1-C04-BOUNDARY-002 L1
+\paragraph{读前自检：复杂度分析：期望、方差、协方差与大数定律。}期望、方差、协方差与大数定律要求先确认“预测复杂度：若用后验权重对$m$个假设的单样本预测作模型平均”；请随后由$m,u,v$的总成本剥离一次迭代或一次样本因子，用只求证据归一化常数可流式降为$O(1)$额外空间，完整联合表为$O(uv)$验收。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界假设$m,u,v$均为有限且状态可显式枚举，单个先验、似然或联合表项可在单位时间读取；$C_{\rm pred}$包含一个候选假设对单样本的完整预测成本。连续积分或隐式状态表示不适用这些枚举界。
+设$m$为有限假设数，$u,v$为两个离散变量的状态数。\textbf{训练复杂度：}一次贝叶斯更新或边缘化为$O(m)$；遍历完整联合表为$O(uv)$。\textbf{预测复杂度：}若用后验权重对$m$个假设的单样本预测作模型平均，成本为$O(mC_{\rm pred})$，其中$C_{\rm pred}$是一个假设的预测成本；只选择最大后验假设则扫描权重为$O(m)$。\textbf{存储复杂度：}保存全部先验、似然和后验权重为$O(m)$；只求证据归一化常数可流式降为$O(1)$额外空间，完整联合表为$O(uv)$。
+\end{complexitybox}
+
+\phantomsection\label{struct:V1-C04-CH30}
+\phantomsection\label{struct:V1-C04-CH31}
+\begin{applicabilitybox}
+\textbf{适用条件：}上述有限求和适用于离散且状态可枚举的模型；连续变量需改用积分并检查密度可积性。\textbf{局限性：}大数定律结论依赖独立同分布和有限方差这一组充分条件，数据存在强依赖、分布漂移或重尾时，应重新核实相应收敛定理。概率模型能量化不确定性，但不能自动修正错误的样本空间或条件独立假设。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V1-C04-CH32}
+% KNOWLEDGE-PLAN: KN-V1-C04-BOUNDARY-004 L1
+\paragraph{读前自检：常见错误与误用边界：期望、方差、协方差与大数定律。}从期望、方差、协方差与大数定律的条件“边界框首项禁止把密度值当点概率”出发，请把固定错误“把密度值当点概率”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法；所得量应符合改写后的运算或判断有定义，且不再触发“把密度值当点概率”。\par
+
+\begin{warningbox}
+典型误用包括：把密度值当点概率；把 $P(A\mid B)$ 与 $P(B\mid A)$ 互换；未验证划分完备就使用全概率公式；由零协方差推断一般分布下的独立；对连续变量在条件概率分母中使用零概率单点而不引入条件密度。
+\end{warningbox}
+
+\phantomsection\label{struct:V1-C04-CH33}
+\begin{comparisonbox}
+\textbf{概念对比：}互斥描述事件不能同时发生，独立描述一个事件发生不改变另一个事件的概率；两个正概率互斥事件不可能独立。边缘独立忽略背景变量，条件独立固定背景变量，两者回答的问题不同。概率质量是点概率，概率密度必须经过积分才能得到概率。
+\end{comparisonbox}
+
+% KNOWLEDGE-PLAN: KN-V1-C04-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：有限假设空间上的贝叶斯更新：执行契约。}有限假设空间上的贝叶斯更新输入“有限假设数$m$、先验向量$\pi$与事件似然向量$\ell$”，条件“$m\ge1$，$\pi_i\ge0$且和为$1$，$0\le\ell_i\le1$，全部输入有限”；请执行“每个有限权重原子追加到合法前缀”，以“两次有限扫描完成或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V1-C04-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={有限假设空间上的贝叶斯更新：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限假设数$m$、先验向量$\pi$与事件似然向量$\ell$},
+  output={最后合法未归一化权重前缀、证据$Z$、完整后验$q$或未定义标志、实际权重/归一化计数、状态与最终诊断},
+  preconditions={$m\ge1$，$\pi_i\ge0$且和为$1$，$0\le\ell_i\le1$，全部输入有限},
+  initialization={置$Z=0$、$w=0$、$q$未定义以及$h_{\rm done}=n_{\rm done}=0$},
+  loop={先有限扫描$m$个假设形成权重和证据，再在$Z>0$时扫描$m$个分量形成后验候选},
+  update={每个有限权重原子追加到合法前缀；完整$q^+$通过有限性、非负与和为$1$核验后一次提交},
+  domain={权重与证据为有限非负数；后验只在$Z>0$时定义并位于概率单纯形},
+  failure={概率约束或维数非法、或$Z=0$返回$\mathtt{invalid\_input}$；乘积、累加或归一化非有限返回$\mathtt{numerical\_failure}$并保留最后合法权重前缀},
+  stop={两次有限扫描完成或首次失败时停止},
+  budget={至多$m$次权重乘加和$m$次后验归一化，输入规模给出确定上限$2m$},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$h_{\rm done}$计实际完成权重项，$n_{\rm done}$计实际完成归一化项},
+  diagnostics={最终$Z$、概率和误差、最小/最大权重、失败假设下标与计算阶段},
+  complexity={$O(m)$时间和$O(m)$输出空间；若只需证据可用$O(1)$额外累计空间}
+}
+\begin{algorithm}[H]
+\caption{有限假设空间上的贝叶斯更新}\label{alg:V1-C04-bayes}
+\KwIn{先验 $\pi_i=P(B_i)$，似然 $\ell_i=P(A\mid B_i)$，$i=1,\ldots,m$}
+\KwOut{最后合法$w$前缀、$Z,q$；$h_{\rm done},n_{\rm done}$；$\mathtt{status}$与诊断}
+若$m$、维数、有限性或概率约束非法，返回空后验、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+初始化 $Z\leftarrow0,w\leftarrow0,q\leftarrow\text{未定义},h_{\rm done}\leftarrow0,n_{\rm done}\leftarrow0$;
+\For{$i\leftarrow1$ \KwTo $m$}{
+  形成$w_i^+\leftarrow\pi_i\ell_i,Z^+\leftarrow Z+w_i^+$；若候选非有限，返回旧前缀、$\mathtt{numerical\_failure}$及$i$诊断\;
+  原子提交$(w_i,Z)\leftarrow(w_i^+,Z^+)$并增加$h_{\rm done}$\;
+}
+若$Z=0$，返回完整权重、未定义$q$、$\mathtt{invalid\_input}$及零证据诊断\;
+\For{$i\leftarrow1$ \KwTo $m$}{形成$q_i^+\leftarrow w_i/Z$；若非有限则返回未定义$q$、$\mathtt{numerical\_failure}$及$i$诊断；否则增加$n_{\rm done}$\;}
+若$q^+$非负性或和为$1$的核验失败，返回未定义$q$、$\mathtt{numerical\_failure}$及归一化诊断\;
+原子提交$q\leftarrow q^+$；返回完整结果、$\mathtt{completed}$及证据/归一化最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{首次阅读只做“权重—证据—归一化”三步；实现时检查零证据、概率约束、有限性与返回状态}
+
+\textbf{终止与定义域说明。}该过程只执行两次有限求和和一次归一化，不产生趋于极限的迭代序列，因此无需渐近收敛判据。若$Z=0$，则$P(B_i\mid A)$因分母为零而未定义；若先验或似然不满足概率约束，则输入不属于算法声明的定义域。这两种情形都不是“迭代未收敛”。
+
+\phantomsection\label{struct:V1-C04-CH20}
+\begin{example}[医学筛查的基率效应]\label{exm:V1-C04-base-rate}
+患病率为 $0.01$，灵敏度为 $0.95$，假阳性率为 $0.05$。求一次阳性后的患病概率。
+\end{example}
+\SLExampleSolutionHeading{exm:V1-C04-base-rate}
+\begin{solution}
+\SLReadTranslation{题目要求完成“医学筛查的基率效应”：依据题面概率模型求出目标量，并解释条件化、归一化或边缘化。}
+\SolGiven 题面概率、权重或密度均处于合法范围；条件分母/归一化常数应为正，支持集与随机变量取值域保持一致。
+\SLMethodTrigger{先写支持集、条件分母或归一化常数，再代入概率公式并做概率和/边缘核验。}
+\SolDerive
+令$D$表示患病、$+$表示阳性。条件为$P(D)=0.01$、$P(+\mid D)=0.95$、$P(+\mid D^{\mathrm c})=0.05$，且证据概率严格为正。于是
+\[
+\begin{aligned}
+P(+)&=0.95\times0.01+0.05\times0.99=0.059,\\
+P(D\cap+)&=0.95\times0.01=0.0095,\\
+P(D\mid+)&=\frac{P(D\cap+)}{P(+)}
+=\frac{0.0095}{0.059}\approx0.161.
+\end{aligned}
+\]
+用赔率作独立核验：先验赔率为$1:99$，阳性似然比为$0.95/0.05=19$，故后验赔率为$19:99$，即$P(D\mid+)=19/(19+99)=19/118\approx0.161$。因此一次阳性后的患病概率约为$16.1\%$；阳性并不等于“有95\%概率患病”，因为后验还取决于基率。
+\end{solution}
+
+
+\SLTeachSection{随机变量与概率分布}{sec:V1-C04-S03}
+\knowledgeanchor{PRE-PR-006}{随机变量}
+更一般地，\textbf{随机元素}是从概率空间到可测空间$(S,\mathcal S)$的可测映射$X:\Omega\to S$；当$S=\mathbb R$时称为\textbf{实值随机变量}。本讲义遇到类别标签等有限集值对象时，为保持统计学习中的通行说法，有时简称“离散随机变量”，其严格含义是取值于带离散$\sigma$代数的有限集值随机元素。离散对象由概率质量函数$p_X(x)=P(X=x)$描述；实值连续变量若具有密度，则以$f_X(x)$描述区间概率。
+\knowledgeanchor{PRE-PR-007}{概率分布与分布函数}
+分布函数
+\[
+F_X(t)=P(X\le t)
+\]
+单调不减、右连续，并满足两端极限为0和1。若密度存在，则 $F_X(t)=\int_{-\infty}^{t}f_X(x)\,\mathrm dx$；不能把连续变量的 $f_X(t)$ 当作点概率。
+
+\phantomsection\label{struct:V1-C04-CH12}
+\begin{theorem}[分布函数唯一确定分布]
+若随机变量 $X,Y$ 的分布函数在每个实数点相同，则二者具有相同分布。
+\end{theorem}
+\phantomsection\label{struct:V1-C04-CH15}
+\textbf{扩展讨论（严格测度论证明，主线可先使用定理结论）。}
+% KNOWLEDGE-PLAN: KN-V1-C04-PROOF-002 L1
+\paragraph{读前自检：证明：分布函数唯一确定分布。}分布函数相同给出$\mu_X(( -\infty,b])=\mu_Y(( -\infty,b])$对每个$b$成立；请核对左半直线族连同$\varnothing,\mathbb R$构成$\pi$系统且生成$\mathcal B(\mathbb R)$，再用$\pi$--$\lambda$唯一性推出$\mu_X=\mu_Y$。\par
+
+\begin{proof}
+令$\mu_X,\mu_Y$为$X,Y$在$(\mathbb R,\mathcal B(\mathbb R))$上的分布测度。对每个$b\in\mathbb R$，
+\[
+\mu_X(( -\infty,b])=F_X(b)=F_Y(b)=\mu_Y(( -\infty,b]).
+\]
+取
+\[
+\mathcal P=\{\varnothing,\mathbb R\}\cup
+\{(-\infty,b]:b\in\mathbb R\}.
+\]
+它确为$\pi$系统：两个左半直线的交仍是以较小端点为界的左半直线，且与$\varnothing,\mathbb R$作有限交仍留在$\mathcal P$中。又有$\sigma(\mathcal P)=\mathcal B(\mathbb R)$，并且两概率测度在$\mathcal P$上一致。由概率测度的$\pi$--$\lambda$唯一性定理，$\mu_X$与$\mu_Y$在全部Borel集上一致，故$X,Y$同分布。
+\end{proof}
+
+\phantomsection\label{struct:V1-C04-CH19}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C04/fig_v1_c04_cdf.tex}
+可用\cref{fig:V1-C04-cdf}做双向核对：由各跳跃量恢复概率质量，或把概率质量累加为分布函数；右连续约定决定跳点取上端值，而单调性与终值$1$是合法性检查。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C04-CONCEPT-006 L1
+\paragraph{读前自检：联合分布。}先锁定概率论基础中的联合分布的条件“离散变量的联合质量 $p_{XY}(x,y)=P(X=x,Y=y)$ 完整描述成对结果”：把$p_{XY}(x,y)=P(X=x,Y=y)$在其支持上求和或积分一次，所得结果应满足连续变量则用联合密度，使矩形区域概率等于密度在区域上的二重积分。\par
+% KNOWLEDGE-PLAN: KN-V1-C04-CONCEPT-007 L1
+\paragraph{读前自检：边缘分布。}对概率论基础中的边缘分布，条件“$p_X(x)=\sum_y p_{XY}(x,y),\qquad f_X(x)=\int f_{XY}(x,y)\,\mathrm dy.$”不可省；请把$p_X(x)$在其支持上求和或积分一次，再用各项非负且总和或积分满足归一化条件作检查。\par
+
+\SLTeachSection{联合、边缘与条件分布}{sec:V1-C04-S04}
+\knowledgeanchor{PRE-PR-008}{联合分布}
+离散变量的联合质量 $p_{XY}(x,y)=P(X=x,Y=y)$ 完整描述成对结果。连续变量则用联合密度，使矩形区域概率等于密度在区域上的二重积分。
+\knowledgeanchor{PRE-PR-009}{边缘分布}
+消去不关心的变量得到边缘分布：
+\[
+p_X(x)=\sum_y p_{XY}(x,y),\qquad f_X(x)=\int f_{XY}(x,y)\,\mathrm dy.
+\]
+\knowledgeanchor{PRE-PR-010}{条件分布}
+在 $p_Y(y)>0$ 时，$p_{X\mid Y}(x\mid y)=p_{XY}(x,y)/p_Y(y)$。联合分布可按 $p_{XY}=p_{X\mid Y}p_Y$ 分解，这正是概率图模型局部因子化的基础。
+
+\phantomsection\label{struct:V1-C04-CH13}
+% KNOWLEDGE-PLAN: KN-V1-C04-LEMMA-001 L1
+\paragraph{读前自检：条件分布归一化。}条件分布归一化把问题限定在“对任意满足 $p_Y(y)>0$ 的 $y$”；请把$\sum_xp_{X\mid Y}(x\mid y)=1$在其支持上求和或积分一次，检查是否得到各项非负且总和或积分满足归一化条件。\par
+
+\begin{lemma}[条件分布归一化]
+对任意满足 $p_Y(y)>0$ 的 $y$，有 $\sum_xp_{X\mid Y}(x\mid y)=1$。
+\end{lemma}
+% KNOWLEDGE-PLAN: KN-V1-C04-PROOF-003 L1
+\paragraph{读前自检：证明：条件分布归一化。}条件分布归一化要求$p_Y(y)>0$；请把$p_{X\mid Y}(x\mid y)=p_{XY}(x,y)/p_Y(y)$对$x$求和，用$\sum_xp_{XY}(x,y)=p_Y(y)$约去分母并核对结果为1。\par
+
+\begin{proof}
+把条件分布定义代入求和，分子之和为 $\sum_xp_{XY}(x,y)=p_Y(y)$；再除以同一个正数 $p_Y(y)$，结果为1。
+\end{proof}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C04-PREREQUISITE-009 L1
+\paragraph{读前自检：随机变量的独立性。}随机变量的独立性所用的明确前提是“$X,Y$ 独立是指对所有适当集合 $A,B$”；完成检查$P(X\in A,Y\in B)=P(X\in A)P(Y\in B)$中每项的类型后完成等式变形后，核对在质量或密度存在时可检验联合分布是否处处分解为边缘乘积。\par
+
+\SLAdvancedSection{独立与条件独立}{sec:V1-C04-S05}
+\knowledgeanchor{PRE-PR-011}{随机变量的独立性}
+$X,Y$ 独立是指对所有适当集合 $A,B$，$P(X\in A,Y\in B)=P(X\in A)P(Y\in B)$。在质量或密度存在时可检验联合分布是否处处分解为边缘乘积。
+\knowledgeanchor{PRE-PR-012}{条件独立}
+给定 $Z$ 后条件独立记为 $X\perp Y\mid Z$。当$Z$离散时，对每个满足
+$p_Z(z)>0$的取值，点条件质量函数应满足
+\[
+p(x,y\mid z)=p(x\mid z)p(y\mid z)
+\]
+（对所有$x,y$）。以上离散版本足以支撑本书主线例题与练习。
+
+\textbf{扩展讨论（一般条件分布）。}设$X,Y,Z$取值于标准Borel空间，并取其正则条件分布；
+$X\perp Y\mid Z$是指对所有可测集$A,B$，
+\[
+P_{(X,Y)\mid Z=z}(A\times B)
+=P_{X\mid Z=z}(A)P_{Y\mid Z=z}(B)
+\quad\text{对$P_Z$几乎处处的$z$成立。}
+\]
+正则条件分布的版本只需在$P_Z$零测集之外一致，因此连续$Z$不能用
+$P(Z=z)>0$的点事件商式作为定义。
+
+\textbf{离散例。}令$Z\sim\operatorname{Bernoulli}(1/2)$；给定$Z=z$后，独立生成
+$X\sim\operatorname{Bernoulli}(p_z)$与$Y\sim\operatorname{Bernoulli}(q_z)$。
+两个$z$都具有正概率，故可逐点用质量函数验证分解。
+\textbf{连续例。}令$Z\sim\operatorname{Uniform}(0,1)$，且
+$\varepsilon_1,\varepsilon_2\sim\mathcal N(0,1)$彼此独立并与$Z$独立；取
+$X=Z+\varepsilon_1$、$Y=Z+\varepsilon_2$。给定$Z=z$时，两者的正则条件分布为
+$\mathcal N(z,1)$的乘积分布，所以$X\perp Y\mid Z$，尽管每个$z\in[0,1]$都满足
+$P(Z=z)=0$。边缘独立与条件独立互不蕴含；共同原因可能造成边缘相关，而条件化共同原因后相关消失。
+
+\phantomsection\label{struct:V1-C04-CH16}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V1-C04-CH34}
+\phantomsection\label{struct:V1-C04-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S01-01}
+设 $P(A)=0.55,P(B)=0.40,P(A\cap B)=0.25$，求 $P(A\cup B)$、$P(A^{\mathrm c}\cap B)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S01-01}
+\begin{chapterexercisesolution}{ex:V1-C04-S01-01}
+对象$A,B\in\mathcal F$是同一概率空间中的事件；未给独立性，只能使用并集公式和不交分解。于是
+\[
+\begin{aligned}
+P(A\cup B)&=P(A)+P(B)-P(A\cap B)\\
+&=0.55+0.40-0.25=0.70,\\
+B&=(A\cap B)\,\dot\cup\,(A^{\mathrm c}\cap B),\\
+P(A^{\mathrm c}\cap B)&=P(B)-P(A\cap B)
+=0.40-0.25=0.15.
+\end{aligned}
+\]
+因此$P(A\cup B)=0.70$，且$P(A^{\mathrm c}\cap B)=0.15$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S01-02}
+证明对任意事件 $A,B$ 有 $P(A\cap B)\ge P(A)+P(B)-1$。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S01-02}
+\begin{chapterexercisesolution}{ex:V1-C04-S01-02}
+对同一概率空间中的任意事件$A,B\in\mathcal F$，概率上界与加法公式给出
+\[
+\begin{aligned}
+P(A\cup B)&\le P(\Omega)=1,\\
+P(A)+P(B)-P(A\cap B)&\le1,\\
+P(A\cap B)&\ge P(A)+P(B)-1.
+\end{aligned}
+\]
+当$A\cup B=\Omega$时第一步取等号，故该下界可以达到。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S01-03}
+从一副52张标准扑克牌中均匀抽一张。求“是红牌或是A”的概率，并说明重复计数发生在哪里。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S01-03}
+\begin{chapterexercisesolution}{ex:V1-C04-S01-03}
+样本空间含52张等可能的牌。令$R$为红牌事件、$E$为A事件，则$|R|=26$、$|E|=4$、$|R\cap E|=2$。容斥计算为
+\[
+\begin{aligned}
+|R\cup E|&=|R|+|E|-|R\cap E|=26+4-2=28,\\
+P(R\cup E)&=\frac{|R\cup E|}{52}
+=\frac{28}{52}=\frac7{13}.
+\end{aligned}
+\]
+重复计数发生在两张红色A上，它们同时属于$R$和$E$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S02-01}
+三台机器产量占比为 $0.2,0.3,0.5$，次品率为 $0.01,0.02,0.04$。随机抽到次品时，求其来自第三台机器的概率。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S02-01}
+\begin{chapterexercisesolution}{ex:V1-C04-S02-01}
+令$M_1,M_2,M_3$为互斥完备的机器来源，$D$为次品。给定先验和条件次品率均合法，且下式证据概率为正：
+\[
+\begin{aligned}
+P(D)&=\sum_{i=1}^3P(D\mid M_i)P(M_i)\\
+&=0.01(0.2)+0.02(0.3)+0.04(0.5)=0.028,\\
+P(D\cap M_3)&=0.04(0.5)=0.020,\\
+P(M_3\mid D)&=\frac{0.020}{0.028}=\frac57.
+\end{aligned}
+\]
+所以抽到的次品来自第三台机器的后验概率为$5/7$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S02-02}
+设$P(A)>0$、$P(B_1)>0$、$P(B_2)>0$且$P(A\cap B_2)>0$。证明后验比满足 $P(B_1\mid A)/P(B_2\mid A)=\{P(A\mid B_1)/P(A\mid B_2)\}\{P(B_1)/P(B_2)\}$。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S02-02}
+\begin{chapterexercisesolution}{ex:V1-C04-S02-02}
+对象是事件$A,B_1,B_2$；题设保证$P(A)>0$，且$P(A\cap B_2)>0$进一步保证待除的$P(A\mid B_2)$和$P(B_2\mid A)$均为正。贝叶斯公式与比值化简为
+\[
+\begin{aligned}
+P(B_j\mid A)&=\frac{P(A\mid B_j)P(B_j)}{P(A)},
+\qquad j=1,2,\\
+\frac{P(B_1\mid A)}{P(B_2\mid A)}
+&=\frac{P(A\mid B_1)P(B_1)}{P(A\mid B_2)P(B_2)}\\
+&=\frac{P(A\mid B_1)}{P(A\mid B_2)}\frac{P(B_1)}{P(B_2)}.
+\end{aligned}
+\]
+若缺少上述正分母条件，比值可能没有定义，不能沿用该式。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S02-03}
+若 $P(A\mid B)=0.8,P(A\mid B^{\mathrm c})=0.2,P(B)=0.4$，求 $P(B\mid A)$ 与 $P(B\mid A^{\mathrm c})$。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S02-03}
+\begin{chapterexercisesolution}{ex:V1-C04-S02-03}
+$B,B^{\mathrm c}$构成划分，且$P(B^{\mathrm c})=0.6$。先对证据$A$，再对其补事件分别归一化：
+\[
+\begin{aligned}
+P(A)&=0.8(0.4)+0.2(0.6)=0.44,\\
+P(B\mid A)&=\frac{0.8(0.4)}{0.44}=\frac8{11},\\
+P(A^{\mathrm c})&=0.2(0.4)+0.8(0.6)=0.56,\\
+P(B\mid A^{\mathrm c})&=\frac{0.2(0.4)}{0.56}=\frac17.
+\end{aligned}
+\]
+两个分母均严格为正，故条件概率都有定义。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S03-01}
+给定 $P(X=-1)=0.2,P(X=0)=0.5,P(X=2)=0.3$，写出 $F_X(t)$ 的分段形式并求 $P(-1<X\le2)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S03-01}
+\begin{chapterexercisesolution}{ex:V1-C04-S03-01}
+离散随机变量的支持集为$\{-1,0,2\}$，三点质量和为$0.2+0.5+0.3=1$。右连续分布函数为
+\[
+F_X(t)=
+\begin{cases}
+0,&t<-1,\\
+0.2,&-1\le t<0,\\
+0.7,&0\le t<2,\\
+1,&t\ge2.
+\end{cases}
+\]
+区间端点按$-1<X\le2$处理：
+\[
+P(-1<X\le2)=P(X=0)+P(X=2)=0.5+0.3=0.8.
+\]
+因此所求区间概率为$0.8$；这也与$F_X(2)-F_X(-1)$一致。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S03-02}
+设 $f(x)=c x$（$0\le x\le2$）且区间外为0。求 $c$、分布函数及 $P(X>1)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S03-02}
+\begin{chapterexercisesolution}{ex:V1-C04-S03-02}
+密度支持集是$[0,2]$；归一化且非负要求$c\ge0$并满足
+\[
+1=\int_{-\infty}^{\infty}f(x)\,\mathrm dx
+=\int_0^2cx\,\mathrm dx=2c
+\Longrightarrow c=\frac12.
+\]
+因此
+\[
+F_X(t)=
+\begin{cases}
+0,&t<0,\\
+\displaystyle\int_0^t\frac{x}{2}\,\mathrm dx=\dfrac{t^2}{4},&0\le t\le2,\\
+1,&t>2,
+\end{cases}
+\qquad
+P(X>1)=1-F_X(1)=\frac34.
+\]
+所以归一化常数为$1/2$，相应分布函数如上，且$P(X>1)=3/4$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S03-03}
+设 $Y=2X+1$，已知 $X$ 的分布函数为 $F_X$。分别写出系数2为正与一般负系数 $a<0$ 时 $aX+b$ 的分布函数。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S03-03}
+\begin{chapterexercisesolution}{ex:V1-C04-S03-03}
+令$Y=aX+b$，其定义域由$X$给定。单调方向决定不等号是否反转。对$a=2>0$，
+\[
+\begin{aligned}
+F_Y(y)&=P(2X+1\le y)
+=P\left(X\le\frac{y-1}{2}\right)\\
+&=F_X\left(\frac{y-1}{2}\right).
+\end{aligned}
+\]
+对一般$a<0$，令$c=(y-b)/a$，则
+\[
+\begin{aligned}
+F_{aX+b}(y)&=P(aX+b\le y)=P(X\ge c)\\
+&=1-P(X<c)=1-F_X(c^-).
+\end{aligned}
+\]
+若$X$连续，$F_X(c^-)=F_X(c)$；一般情形必须保留左极限以计入阈值处点质量。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S04-01}
+联合质量表为 $p(0,0)=0.2,p(0,1)=0.3,p(1,0)=0.1,p(1,1)=0.4$。求两边缘分布与 $P(X=1\mid Y=1)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S04-01}
+\begin{chapterexercisesolution}{ex:V1-C04-S04-01}
+联合支持集为$\{0,1\}^2$，四项质量非负且和为1。沿另一个变量求和得到
+\[
+\begin{aligned}
+p_X(0)&=0.2+0.3=0.5,
+&p_X(1)&=0.1+0.4=0.5,\\
+p_Y(0)&=0.2+0.1=0.3,
+&p_Y(1)&=0.3+0.4=0.7,\\
+P(X=1\mid Y=1)&=\frac{p(1,1)}{p_Y(1)}
+=\frac{0.4}{0.7}=\frac47.
+\end{aligned}
+\]
+条件分母$0.7>0$，所以后一步合法。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S04-02}
+设联合密度 $f(x,y)=2$ 定义在 $0<y<x<1$ 上，其余为0。求 $f_X(x)$、$f_Y(y)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S04-02}
+\begin{chapterexercisesolution}{ex:V1-C04-S04-02}
+联合支持集为$S=\{(x,y):0<y<x<1\}$；其面积为$1/2$，故常数密度$2$已归一化。按切片确定积分边界：
+\[
+\begin{aligned}
+f_X(x)&=\int_0^x2\,\mathrm dy=2x,
+&&0<x<1,\\
+f_Y(y)&=\int_y^12\,\mathrm dx=2(1-y),
+&&0<y<1.
+\end{aligned}
+\]
+支持集外两者均为零，并且
+\[
+\int_0^1 2x\,\mathrm dx=\int_0^1 2(1-y)\,\mathrm dy=1.
+\]
+因此边缘密度分别为$f_X(x)=2x$与$f_Y(y)=2(1-y)$（$0<x,y<1$），且均已归一化。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S04-03}
+对上题求 $f_{X\mid Y}(x\mid y)$，并计算 $\mathbb E[X\mid Y=y]$。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S04-03}
+\begin{chapterexercisesolution}{ex:V1-C04-S04-03}
+只对$0<y<1$有$f_Y(y)=2(1-y)>0$，因此普通条件密度在此条件值域内定义；给定$y$后的支持为$y<x<1$。于是
+\[
+\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&=\frac{f(x,y)}{f_Y(y)}
+=\frac{2}{2(1-y)}=\frac1{1-y},
+&&y<x<1,\\
+\mathbb E[X\mid Y=y]
+&=\int_y^1x\frac1{1-y}\,\mathrm dx\\
+&=\frac{1-y^2}{2(1-y)}=\frac{1+y}{2}.
+\end{aligned}
+\]
+条件支持之外密度为零；$y=1$处边缘密度为零，不能套用该比值。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S05-01}
+用练习\ref{ex:V1-C04-S04-01}的四格联合质量表判断 $X,Y$ 是否独立，并给出一个足以否定独立性的格子。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S05-01}
+\begin{chapterexercisesolution}{ex:V1-C04-S05-01}
+离散独立要求在整个支持集$\{0,1\}^2$上满足$p(x,y)=p_X(x)p_Y(y)$。找一个失败格子即可否定：
+\[
+\begin{aligned}
+p_X(0)&=0.2+0.3=0.5,\\
+p_Y(0)&=0.2+0.1=0.3,\\
+p_X(0)p_Y(0)&=0.5\times0.3=0.15
+\ne0.20=p(0,0).
+\end{aligned}
+\]
+故$X,Y$不独立。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S05-02}
+设两次抛公平硬币的结果为 $X_1,X_2\in\{0,1\}$，令 $S=X_1+X_2$。说明 $X_1,X_2$ 独立，但给定 $S=1$ 后不独立。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S05-02}
+\begin{chapterexercisesolution}{ex:V1-C04-S05-02}
+样本空间为$\{0,1\}^2$且四个序对等概率。未条件化时，对任意$i,j\in\{0,1\}$，
+\[
+P(X_1=i,X_2=j)=\frac14
+=\frac12\cdot\frac12=P(X_1=i)P(X_2=j),
+\]
+故$X_1\perp X_2$。事件$S=1$的条件支持仅含$(0,1),(1,0)$，于是
+\[
+\begin{aligned}
+P(X_1=1\mid S=1)&=P(X_2=1\mid S=1)=\frac12,\\
+P(X_1=1,X_2=1\mid S=1)&=0
+\ne\frac12\cdot\frac12.
+\end{aligned}
+\]
+故给定$S=1$后不独立。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S05-03}
+设 $Z\sim\mathrm{Bernoulli}(1/2)$，给定 $Z$ 后 $X,Y$ 独立且都以概率 $0.9$ 等于 $Z$。解释为什么 $X,Y$ 边缘上正相关。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S05-03}
+\begin{chapterexercisesolution}{ex:V1-C04-S05-03}
+对象$X,Y,Z\in\{0,1\}$；题设给出$X\perp Y\mid Z$。由对称性边缘化共同原因：
+\[
+\begin{aligned}
+P(X=1)&=\tfrac12(0.9)+\tfrac12(0.1)=0.5,
+&P(Y=1)&=0.5,\\
+P(X=1,Y=1)
+&=\tfrac12(0.9^2)+\tfrac12(0.1^2)=0.41,\\
+\operatorname{Cov}(X,Y)
+&=\mathbb E[XY]-\mathbb E[X]\mathbb E[Y]
+=0.41-0.25=0.16>0.
+\end{aligned}
+\]
+共同原因被边缘化后产生正相关，因此条件独立不推出边缘独立。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S06-01}
+设 $E[X]=2,E[Y]=-1,\operatorname{Var}(X)=4,\operatorname{Var}(Y)=9,\operatorname{Cov}(X,Y)=3$，求 $E[2X-Y]$ 与 $\operatorname{Var}(2X-Y)$。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S06-01}
+\begin{chapterexercisesolution}{ex:V1-C04-S06-01}
+对象$X,Y$具有题设给出的有限二阶矩，因此期望、方差与协方差展开均有定义。令$a=2,b=-1$，则
+\[
+\begin{aligned}
+\mathbb E[2X-Y]&=2\mathbb E[X]-\mathbb E[Y]
+=2(2)-(-1)=5,\\
+\operatorname{Var}(2X-Y)
+&=a^2\operatorname{Var}(X)+b^2\operatorname{Var}(Y)
++2ab\operatorname{Cov}(X,Y)\\
+&=4(4)+1(9)+2(2)(-1)(3)=16+9-12=13.
+\end{aligned}
+\]
+所以$\mathbb E[2X-Y]=5$，$\operatorname{Var}(2X-Y)=13$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S06-02}
+证明协方差矩阵半正定，并解释任意向量 $a$ 下二次型的概率意义。
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S06-02}
+\begin{chapterexercisesolution}{ex:V1-C04-S06-02}
+设随机向量$\boldsymbol X\in\R^d$具有有限二阶矩，$\boldsymbol\mu=\mathbb E\boldsymbol X$，$\Sigma=\mathbb E[(\boldsymbol X-\boldsymbol\mu)(\boldsymbol X-\boldsymbol\mu)^{\mathsf T}]$。对任意确定的$\boldsymbol a\in\R^d$，
+\[
+\begin{aligned}
+\boldsymbol a^{\mathsf T}\Sigma\boldsymbol a
+&=\mathbb E\!\left[
+\boldsymbol a^{\mathsf T}(\boldsymbol X-\boldsymbol\mu)
+(\boldsymbol X-\boldsymbol\mu)^{\mathsf T}\boldsymbol a\right]\\
+&=\mathbb E\!\left[(\boldsymbol a^{\mathsf T}(\boldsymbol X-\boldsymbol\mu))^2\right]\\
+&=\operatorname{Var}(\boldsymbol a^{\mathsf T}\boldsymbol X)\ge0.
+\end{aligned}
+\]
+故$\Sigma\succeq0$；二次型正是随机向量沿$\boldsymbol a$方向投影的方差。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V1-C04-S06-03}
+独立同分布变量方差为16。要使 $P(|\bar X_n-\mu|\ge0.5)\le0.04$，用切比雪夫界至少需要多大样本量？
+\end{exercise}
+\phantomsection\label{sol:V1-C04-S06-03}
+\begin{chapterexercisesolution}{ex:V1-C04-S06-03}
+对象$X_1,\ldots,X_n$独立同分布，方差$\sigma^2=16<\infty$，阈值$\varepsilon=0.5>0$。切比雪夫界给出
+\[
+\begin{aligned}
+P(|\bar X_n-\mu|\ge0.5)
+&\le\frac{\operatorname{Var}(\bar X_n)}{0.5^2}
+=\frac{16/n}{0.25}=\frac{64}{n},\\
+\frac{64}{n}\le0.04
+&\Longleftrightarrow n\ge\frac{64}{0.04}=1600.
+\end{aligned}
+\]
+样本量必须为正整数，因此最小可取$n=1600$；这是只使用二阶矩所得的保守保证。
+\end{chapterexercisesolution}
+
+\end{SLChapterExercisePairSection}
+
+\phantomsection\label{struct:V1-C04-CH36}
+\begin{SLCompactClosure}
+\SLChapterFiveSummary{事件、随机变量、联合与条件分布}{由划分和归一化推出全概率、贝叶斯与边缘化}{先声明支持与正分母，再计算并检查归一化}{概率建模、条件推断与经验平均的理论准备}{进入\cref{chap:V1-C05,chap:V1-C06}的统计推断与信息量}
+
+\phantomsection\label{struct:V1-C04-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em,nosep]
+  \item 能否先写出互斥完备的事件划分，再推导而不是背诵贝叶斯公式？
+  \item 能否从联合表或联合密度正确确定边缘化的求和范围或积分限？
+  \item 能否分别给出独立、条件独立、互斥和零协方差的反例关系？
+  \item 能否把协方差矩阵二次型解释成一维投影方差，并说明其非负性？未通过第1项回看\cref{sec:V1-C04-S02}，未通过第2项回看\cref{sec:V1-C04-S04}，未通过第3项回看\cref{sec:V1-C04-S05}，未通过第4项回看\cref{sec:V1-C04-S06}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

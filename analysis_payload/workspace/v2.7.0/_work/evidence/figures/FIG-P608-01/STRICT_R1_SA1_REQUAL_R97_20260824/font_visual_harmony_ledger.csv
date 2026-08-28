@@ -1,0 +1,5 @@
+role,scope,declared_pt,effective_pt_observed,numeric_gate,manual_visual,note
+normal_labels_and_ticks,both panels,9.6,9.564,PASS>=9.5,PASS_ROLE_HIERARCHY,Manual 1x/8x and standalone review: normal labels/ticks neither oversized nor reduced below readable hierarchy.
+titles_and_axis_labels,both panels,10.8,10.760,PASS>=9.5,FAIL_CROSS_PANEL_COORDINATION,"Role size is coherent, but lower title R002 overbar meets upper x-axis G001; spatial coordination fails."
+TeX_scripts,math subscripts,7.53,7.532,LEGAL_SCRIPT_EXCEPTION,FAIL_H_INK_G027_G058,"Scripts are semantically legal, but two isolated script glyphs have H_INK=10<15 (G027 and G058)."
+caption,caption below figure,9.96,9.963,PASS>=9.5,PASS_PAGE_INTEGRATION,Caption stays outside the figure crop and is readable at 1x/200dpi.

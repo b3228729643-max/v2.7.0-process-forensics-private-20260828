@@ -1,0 +1,304 @@
+% v2.7.0 figure UID: FIG-P694-01
+% R2.4 compact matrix/positioning layout; no overall scaling.
+\tikzset{slfig-FIG-P694-01/.style={
+  font=\fontsize{9.6pt}{10.3pt}\selectfont,
+  every path/.append style={line cap=round,line join=round}}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\makebox[\linewidth][c]{%
+\begin{tikzpicture}[slfig-FIG-P694-01,
+  every node/.style={
+    font=\fontsize{9.6pt}{10.3pt}\selectfont,
+    align=center},
+  box/.style={
+    draw=SLDeepBlue,fill=white,rounded corners=2pt,
+    line width=.78pt,inner xsep=1.6pt,inner ysep=1.6pt},
+  localbox/.style={
+    box,draw=SLMidBlue,fill=SLSoftTeal},
+  gate/.style={
+    box,double,double distance=.55pt,line width=.76pt},
+  localgate/.style={
+    gate,draw=SLMidBlue,fill=SLSoftTeal},
+  cert/.style={
+    gate,fill=SLSoftBlue},
+  localcert/.style={
+    localgate},
+  ok/.style={
+    draw=SLSelfCheckTeal,fill=SLSoftTeal,rounded corners=2pt,
+    line width=.82pt,inner xsep=1.6pt,inner ysep=1.6pt},
+  budget/.style={
+    draw=SLAccentOrange,fill=SLWarmGray,rounded corners=2pt,
+    dashed,line width=.82pt,inner xsep=1.6pt,inner ysep=1.6pt},
+  fail/.style={
+    draw=SLWarningRed,fill=white,rounded corners=2pt,
+    dash dot,line width=.82pt,inner xsep=1.6pt,inner ysep=1.6pt},
+  statusband/.style={
+    draw=SLTextGray,fill=white,rounded corners=2pt,
+    line width=.80pt,inner xsep=1.6pt,inner ysep=1.6pt},
+  ptitle/.style={
+    font=\fontsize{10.2pt}{12.2pt}\selectfont\bfseries,
+    inner sep=0pt},
+  main/.style={->,draw=SLDeepBlue,line width=.90pt},
+  success/.style={->,draw=SLSelfCheckTeal,line width=.90pt},
+  budgetedge/.style={->,draw=SLAccentOrange,line width=.82pt,dashed},
+  failure/.style={->,draw=SLWarningRed,line width=.82pt,dash dot},
+  >={Stealth[length=2.1mm,width=1.5mm]},
+  alt={对象—关系—结论：图由内容驱动的上下两面板组成。面板a把前置及空文档门、非空初始化与同步候选、可行门及原子提交和局部双证书排成一行，下一行分别承接输入失败、数值失败、局部预算停止和唯一LocalOK；非空初始化含均匀责任度、先验加平均词数及有限初始ELBO，只有completed或converged进入LocalOK。面板b先逐文档收齐全部LocalOK，再沿第二行从右向左完成全语料计数、严格正归一、受保护Newton、完整提交和外层双证书；下一行分开外层预算候选、收敛候选和F/X非成功状态，最终仅以feasible且状态为converged或budget_stop的记录参加跨启动选择，输出保留计数、诊断和原状态。}]
+
+% ==========================================================================
+% (a) Content-driven main row.
+\matrix (amain) [
+  column sep=3mm,
+  inner sep=0pt,
+  ampersand replacement=\&
+] {
+  \node[localgate,text width=40mm,minimum height=29mm] (a01)
+    {\textbf{A0+A1 前置／空文档门}\\
+     $\mathbf w_m;\ \alpha>0$\\
+     $\varphi_{k\cdot}\in\operatorname{ri}(\Delta^{V-1})$\\
+     $T_{\rm loc};\quad
+     \varepsilon_{\rm loc}^{\mathcal L},
+     \varepsilon_{\rm loc}^{\gamma}$\\
+     词表、支持、预算、容差合法？\\
+     $N_m=0$：$\mathtt{completed}\to L$\\
+     $N_m>0\to$ A2；非法 $\to I$};
+  \&
+  \node[localbox,text width=50mm,minimum height=29mm] (a2)
+    {\textbf{A2 非空初始化／同步候选（$R_A$ 入口）}\\
+     $\eta_{mnk}^{(0)}=1/K;\quad
+     \gamma_{mk}^{(0)}=\alpha_k+N_m/K$\\
+     $\mathcal L_m^{(0)}\in\mathbb R$（有限）\\
+     $a_{mnk}=\log\varphi_{k,w_{mn}}+\psi(\gamma_{mk})$\\
+     $\hphantom{a_{mnk}=}-\psi(\sum_\ell\gamma_{m\ell})$\\
+     $\eta^+_{mnk}=e^{a_{mnk}}\big/\sum_\ell e^{a_{mn\ell}}$\\
+     （LSE；同步全部 $n$）\\
+     $\gamma^+_{mk}=\alpha_k+\sum_n\eta^+_{mnk}$};
+  \&
+  \node[localcert,text width=52mm,minimum height=29mm] (a35)
+    {\textbf{A3--A5 可行门／提交／局部双证书}\\
+     $F_{\rm loc}$：$\eta^+\in\operatorname{ri}(\Delta),\quad
+     \gamma^+>0$\\
+     $\mathcal L_m^+\in\mathbb R,\quad
+     \mathcal L_m^+\ge\mathcal L_m$\\
+     通过才提交；$s_{\rm done}\mathrel{+}=1,\quad
+     p_{\rm done}\mathrel{+}=N_m$\\
+     $\delta_{\mathcal L,m}=
+     |\mathcal L_m^+-\mathcal L_m|/(1+|\mathcal L_m|)$\\
+     $\delta_{\gamma,m}=
+     \max_k|\gamma^+_{mk}-\gamma_{mk}|/(1+|\gamma_{mk}|)$\\
+     $C_{\rm loc}$：$\delta_{\mathcal L,m}\le
+     \varepsilon_{\rm loc}^{\mathcal L}$ 且\\
+     $\delta_{\gamma,m}\le\varepsilon_{\rm loc}^{\gamma}$？
+     否且 $s_{\rm done}<T_{\rm loc}\to R_A$};
+  \\
+};
+
+\node[ptitle,text=SLMidBlue,above=1mm of amain] (atitle)
+  {(a) 单文档局部 VI（$\mathrm{LL}=\mathtt{last\ legal}$）};
+
+% (a) Four compact direct status cells; true boundary gap is 3 mm.
+\matrix (astatus) [
+  below=3mm of amain,
+  column sep=3mm,
+  inner sep=0pt,
+  ampersand replacement=\&
+] {
+  \node[fail,text width=31mm,minimum height=12mm] (ainvalid)
+    {\textbf{$I:\ \mathtt{invalid\_input}$}\\
+     $\mathtt{support\_failure}$\\
+     存 $\mathrm{LL}/\mathtt{diag}$；\textbf{停／禁 C/M}};
+  \&
+  \node[fail,text width=30mm,minimum height=12mm] (anum)
+    {\textbf{$\mathtt{numerical\_failure}$}\\
+     回滚 $\mathrm{LL}$；gate／位置\\
+     存 diag；\textbf{停止；禁 C/M}};
+  \&
+  \node[budget,text width=35mm,minimum height=12mm] (alocbudget)
+    {\textbf{STOP：$\mathtt{budget\_stop}$}\\
+     $\neg C_{\rm loc}$；$s_{\rm done}=T_{\rm loc}$\\
+     存 $\mathrm{LL}$/计数/diag；$\nexists L$；\textbf{禁 C/M}};
+  \&
+  \node[ok,text width=42mm,minimum height=12mm] (aok)
+    {\textbf{$L:\ \mathrm{LocalOK}_m$}\\
+     $(\gamma_m,\eta_m,\mathcal L_m;\ \mathtt{counts},\mathtt{diag})$\\
+     $\mathtt{completed}/\mathtt{converged}$};
+  \\
+};
+
+% Only adjacent main arrows; the fan-out occupies the empty 3 mm gutter.
+\draw[main] (a01) -- (a2);
+\draw[main] (a2) -- (a35);
+\draw[failure] (a01.south west) -- (ainvalid.north);
+\draw[failure] (a35.south west) -- (anum.north);
+\draw[budgetedge] (a35.south) -- (alocbudget.north);
+\draw[success] (a35.south east) -- (aok.north);
+
+% ==========================================================================
+% (b) Title is content-positioned below panel (a); panel backgrounds are fit
+%     only after every node has its final natural bounding box.
+\node[ptitle,text=SLDeepBlue,below=3mm of astatus] (btitle)
+  {(b) 语料级外层 VEM};
+
+\matrix (btop) [
+  below=1mm of btitle,
+  column sep=3mm,
+  inner sep=0pt,
+  ampersand replacement=\&
+] {
+  \node[box,text width=52mm,minimum height=19mm] (b0)
+    {\textbf{B0 全局门／多启动}\\
+     $\mathcal D,K;\ \alpha,\varphi>0;\quad T_{\rm loc},T_{\rm out}$\\
+     $\varepsilon_{\rm out}^{\mathcal L,\Theta};\quad
+     s=1{:}R_{\rm start};\ J_{\rm ls}$\\
+     随机源失败：$\mathtt{random\_source\_failure}$\\
+     其余前置门否：$\mathtt{invalid\_input}$\\
+     通过 $\to r_{\rm done}=0$};
+  \&
+  \node[box,text width=54mm,minimum height=19mm] (b1)
+    {\textbf{B1 全部文档（$R$ 入口）}\\
+     对 $m=1,\ldots,M$ 调用面板 (a)\\
+     收集 $(\mathrm{LocalOK}_m,\mathtt{status}_m,
+     \mathcal L_m,\mathtt{diag}_m)$\\
+     局部 $\mathtt{budget\_stop}\to X$\\
+     局部 failure $\to F$};
+  \&
+  \node[gate,text width=28mm,minimum height=19mm] (b2)
+    {\textbf{B2 全收齐门}\\
+     $\forall m:\ \mathrm{LocalOK}_m$ 到齐？\\
+     是 $\to$ B3\\
+     否 $\to F/X$（按原 status）};
+  \\
+};
+
+% Right-to-left second row: B3 -> B4 -> B5/B6.
+\matrix (bmain) [
+  below=3mm of btop,
+  column sep=3mm,
+  inner sep=0pt,
+  ampersand replacement=\&
+] {
+  \node[cert,text width=56mm,minimum height=29mm] (b56)
+     {\textbf{B5--B6 提交／证书（$R:\ r<T_{\rm out}$）}\\
+     $\Theta^+=(\alpha^+,\varphi^+,
+     \{\gamma_m^+,\eta_m^+\}_{m=1}^{M},\mathcal L^+)$\\
+     可行、有限且不下降才提交；
+     $r_{\rm done}\mathrel{+}=1$\\
+     $\delta_{\mathcal L}=
+     |\mathcal L^+-\mathcal L|/(1+|\mathcal L|)$\\
+     $\delta_\alpha=
+     \max_k|\alpha_k^+-\alpha_k|/(1+|\alpha_k|)$\\
+     $\delta_\varphi=\max_{k,v}
+     |\varphi^+_{kv}-\varphi_{kv}|$\\
+     $\delta_\Theta=\max\{\delta_\alpha,\delta_\varphi\}$\\
+     $C_{\rm out}$：
+     $\delta_{\mathcal L}\le\varepsilon_{\rm out}^{\mathcal L}
+     \land\delta_\Theta\le\varepsilon_{\rm out}^{\Theta}$？};
+  \&
+  \node[cert,text width=40mm,minimum height=29mm,inner ysep=2.4pt] (b4)
+    {\textbf{B4 受保护 Newton}\\
+     \textbf{（$N$ 入口）}\\
+     $H(\alpha)\Delta=g(\alpha)$\\
+     $\alpha^+=\alpha-\rho\Delta$\\
+     $\rho\in\{1,\tfrac12,\tfrac14,\ldots\}$；
+     $j\le J_{\rm ls}$\\
+     $G_N$：$\min_k\alpha_k^+>0$\\
+     且新 ELBO 有限、不下降\\
+     拒绝且 $j<J_{\rm ls}$：
+     $\rho\leftarrow\rho/2\to N$\\
+     $j=J_{\rm ls}$：
+     $\mathtt{line\_search\_failed}\to F$};
+  \&
+  \node[box,text width=42mm,minimum height=29mm] (b3)
+    {\textbf{B3 全语料计数 $\to\varphi^+$}\\
+     $C^+_{kv}=\sum_{m=1}^{M}\sum_{n=1}^{N_m}$\\
+     $\eta_{mnk}\mathbf1\{w_{mn}=v\}$\\
+     $G_M$：计数有限；$C^+_{k\cdot}>0$\\
+     且每个 $C^+_{kv}>0$\\
+     $\varphi^+_{kv}=C^+_{kv}/C^+_{k\cdot}>0$\\
+     $\sum_v\varphi^+_{kv}=1$\\
+     失败 $\to F:\mathtt{numerical\_failure}$};
+  \\
+};
+
+% Compact two-row terminal table.  Its top row is addressable by all exits;
+% the full-width selection row is positioned from the completed top bbox.
+\matrix (bterminal) [
+  below=3mm of bmain,
+  column sep=3mm,
+  inner sep=0pt,
+  ampersand replacement=\&
+] {
+  \node[budget,text width=48mm,minimum height=12mm] (bbudget)
+    {\textbf{STOP：$\mathtt{budget\_stop}$（未收敛候选）}\\
+     $\neg C_{\rm out},\ r=T_{\rm out}$（本启动）\\
+     可行；存 $\mathrm{LL}$/计数/diag（原 status）};
+  \&
+  \node[ok,text width=36mm,minimum height=12mm] (bconv)
+    {$\checkmark$ \textbf{$\mathtt{converged}$ 候选}\\
+     $C_{\rm out}$；$\mathtt{feasible}=\mathtt{true}$\\
+     存 $\mathtt{record}[s]$（原 status）};
+  \&
+  \node[statusband,text width=58mm,minimum height=12mm] (bfail)
+    {\textbf{$F/X$：非成功；禁 C/M；$\notin\mathcal S_{\rm acc}$}\\
+     $F$：保留入口的原失败 status\\
+     $X$：局部 $\mathtt{budget\_stop}$（原 status）\\
+     $\mathtt{feasible}=\mathtt{false}$；仅存 status／$\mathrm{LL}$/diag};
+  \\
+};
+
+\node[box,text width=148mm,minimum height=15mm,fill=SLSoftTeal,
+  font=\fontsize{9.6pt}{9.9pt}\selectfont,
+  below=2mm of bterminal] (bselect)
+  {\textbf{跨启动选择／输出}\quad $q_s:=\mathtt{record}[s]$\\
+   $\mathcal S_{\rm acc}=\{s:q_s.\mathtt{feasible}=\mathtt{true},\quad
+   q_s.\mathtt{status}\in\{\mathtt{converged},\mathtt{budget\_stop}\}\}$\\
+   空集：仅返回全部 records；非空：按最终 ELBO／冻结并列规则返回
+   $(\widehat\alpha,\widehat\varphi,
+   \{\widehat\gamma_m,\widehat\eta_m\},\mathcal L)$\\
+   $s_{\rm done},r_{\rm done},m_{\rm done},k_{\rm done},j_{\rm done}$；
+   diagnostics；原 status：
+   \textcolor{SLSelfCheckTeal}{$\checkmark\mathtt{converged}$}／
+   \textcolor{SLAccentOrange}{STOP $\mathtt{budget\_stop}$（未收敛）}};
+
+% Main edges are only between adjacent nodes. Cross-row edges stay in the
+% 3 mm boundary gutters and preserve left-to-right endpoint ordering.
+\draw[main] (b0) -- (b1);
+\draw[main] (b1) -- (b2);
+\draw[main] (b2.south) -- (b3.north);
+\draw[main] (b3) -- (b4);
+\draw[main] (b4) -- (b56);
+
+% B3 and B4 each have a real, short failure edge to the right-hand F/X cell.
+\draw[failure] (b3.south) -- (bfail.north east);
+\draw[failure] (b4.south east) -- (bfail.north west);
+\draw[success] (b56.south east) -- (bconv.north);
+\draw[budgetedge] (b56.south west) -- (bbudget.north);
+
+\draw[budgetedge] (bbudget.south) -- (bselect.north west);
+\draw[success] (bconv.south) -- (bselect.north);
+
+% Content-derived backgrounds are created last, after every real node bbox.
+\begin{scope}[on background layer]
+  \node[
+    draw=SLMidBlue,fill=SLSoftTeal,fill opacity=.24,
+    line width=.80pt,rounded corners=4pt,
+    fit=(atitle)(amain)(astatus),
+    inner xsep=2mm,inner ysep=1mm] (apanel) {};
+  \node[
+    draw=SLDeepBlue,fill=SLSoftBlue,fill opacity=.22,
+    line width=.80pt,rounded corners=4pt,
+    fit=(btitle)(btop)(bmain)(bterminal)(bselect),
+    inner xsep=2mm,inner ysep=1mm] (bpanel) {};
+\end{scope}
+
+\end{tikzpicture}%
+}
+\captionsetup{width=.97\linewidth}
+\caption{点参数 LDA 两层变分 EM：仅 $\mathtt{completed}/\mathtt{converged}$
+形成 $\mathrm{LocalOK}_m$，全部 $m$ 到齐后才执行
+$C\to\varphi\to$ 受保护 Newton；可行的 $\mathtt{budget\_stop}$
+保留原 status，作为未收敛候选进入 $\mathcal S_{\rm acc}$，
+其余非成功状态止于记录。}
+\label{fig:V5-C06-variational-updates}
+\end{figure}

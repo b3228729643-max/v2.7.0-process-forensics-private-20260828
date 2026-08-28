@@ -1,0 +1,6 @@
+﻿PAIR,MEASUREMENT_BASIS,OVERLAP_PIXEL_COUNT,RAW_INK_CLEARANCE_PX,CLEARANCE_PX,REQUIRED_PX,EVIDENCE_PREFIX,PASS_FAIL
+L_PROJECTION vs all vector graphics,raw text mask vs independently rasterized vector graphics,0,24.00,24.00,3,critical_pair_L_projection_formula,PASS
+R_WH vs all vector graphics,raw text mask vs independently rasterized vector graphics,0,12.98,12.98,3,critical_pair_R_reconstruction_label_arrow,PASS
+R_TITLE vs R_W2,separated frozen-PDF raw text masks; PDF/vector bbox clearance,0,14.00,0.00,4,critical_pair_R_title_w2,FAIL
+L_U2 vs all vector graphics (nearest: vertical axis),raw text mask vs independently rasterized vector graphics,0,18.78,18.78,3,critical_pair_L_u2_axis,PASS
+SUMMARY vs all vector graphics (nearest: summary border),raw text mask vs independently rasterized vector graphics,0,20.00,20.00,5,critical_pair_summary_text_border,PASS

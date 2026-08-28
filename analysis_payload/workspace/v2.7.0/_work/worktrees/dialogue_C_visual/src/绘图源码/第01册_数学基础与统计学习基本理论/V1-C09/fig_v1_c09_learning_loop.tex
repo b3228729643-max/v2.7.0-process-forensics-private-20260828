@@ -1,0 +1,65 @@
+% v2.3.1 figure UID: FIG-P142-01
+% Proposed post-v2.3.1 polish for FIG-P142-01: protect key-label size and stroke hierarchy.
+\tikzset{
+  slfig-FIG-P142-01/.style={every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P142-01-node/.style={slfig process,text width=29mm,
+    minimum width=30mm,minimum height=10mm,align=center,
+    inner xsep=5pt,inner ysep=4.2pt,line width=.75pt,
+    font=\fontsize{9.2pt}{10.9pt}\selectfont},
+  slfig-FIG-P142-01-train/.style={-{Stealth[length=2.2mm,width=1.4mm]},
+    draw=SLBlue,line width=1.02pt,shorten >=1.5mm},
+  slfig-FIG-P142-01-use/.style={-{Stealth[length=2.2mm,width=1.4mm]},
+    draw=SLTeal,line width=1.02pt,shorten >=1.5mm},
+  slfig-FIG-P142-01-feedback/.style={-{Stealth[length=1.95mm,width=1.2mm]},
+    draw=SLGray,line width=.70pt,dash pattern=on 3.2pt off 2.1pt,
+    shorten >=1.5mm},
+  slfig-FIG-P142-01-feedback-label/.style={fill=white,inner sep=1.4pt,
+    text=SLInk,font=\fontsize{8.6pt}{10.2pt}\selectfont}
+}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[H]
+\centering
+\phantomsection\label{schema:V1-C09:CH-17}
+\begin{tikzpicture}[slfig-FIG-P142-01,
+  lane node/.style={slfig-FIG-P142-01-node},
+  alt={对象—关系—结论：统计学习从数据到模型再到新数据处理的基本闭环。反馈的形式由学习类型决定。}
+]
+  \node[lane node] (data) at (-5.2,1.35) {训练数据\\与任务反馈};
+  \node[lane node] (learn) at (-1.6,1.35) {学习算法 $\mathcal A$\\$\mathcal F$ 与策略 $L$};
+  \node[lane node,minimum height=23mm,fill=SLGoldBG,draw=SLBlue,line width=1pt] (model) at (2.05,0)
+    {共享模型枢纽\\$\widehat f$};
+  \node[lane node] (eval) at (5.7,1.35) {开发评价\\误差或结构稳定性};
+  \node[lane node,fill=SLTealBG] (new) at (-5.2,-1.35) {新输入\\$x_{\rm new}$};
+  \node[lane node,fill=SLTealBG] (pred) at (5.7,-1.35) {预测或结构\\可报告结果};
+
+  \begin{scope}[on background layer]
+    \node[fit=(data)(learn)(model)(eval),rounded corners=2mm,draw=SLRule,
+      fill=SLBlue!4,inner xsep=4mm,inner ysep=4mm,line width=.55pt,
+      label={[font=\bfseries\fontsize{9.2pt}{10.9pt}\selectfont,
+        text=SLBlue,yshift=-5mm]above left:训练阶段}] {};
+    \node[fit=(new)(model)(pred),rounded corners=2mm,draw=SLRule,
+      fill=SLTeal!4,inner xsep=4mm,inner ysep=4mm,line width=.55pt,
+      label={[font=\bfseries\fontsize{9.2pt}{10.9pt}\selectfont,
+        text=SLTeal,yshift=5mm]below left:使用阶段}] {};
+  \end{scope}
+
+  \draw[slfig-FIG-P142-01-train]
+    (data)--(learn);
+  \draw[slfig-FIG-P142-01-train]
+    (learn.east)--(model.north west);
+  \draw[slfig-FIG-P142-01-train]
+    (model.north east)--(eval.west);
+  \draw[slfig-FIG-P142-01-use]
+    (new.east)--(model.south west);
+  \draw[slfig-FIG-P142-01-use]
+    (model.south east)--(pred.west);
+
+  \draw[slfig-FIG-P142-01-feedback]
+    (eval.north)--++(0,7mm)-| node[slfig-FIG-P142-01-feedback-label,
+      pos=.45,above=1.5pt] {监督：验证误差与标签反馈} (data.north);
+  \draw[slfig-FIG-P142-01-feedback]
+    (eval.north)--++(0,12mm)-| node[slfig-FIG-P142-01-feedback-label,
+      pos=.42,above=1.5pt] {无监督：结构稳定性反馈} (learn.north);
+\end{tikzpicture}
+\caption{统计学习从数据到模型再到新数据处理的基本闭环。反馈的形式由学习类型决定。}\label{fig:V1-C09-learning-loop}
+\end{figure}

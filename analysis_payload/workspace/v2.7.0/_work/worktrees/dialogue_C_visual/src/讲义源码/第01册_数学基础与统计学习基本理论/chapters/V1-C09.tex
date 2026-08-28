@@ -1,0 +1,696 @@
+% STAGE09-CHAPTER: V1-C09
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{schema:V1-C09:CH-01}; CH-02=\label{schema:V1-C09:CH-02}; CH-03=\label{schema:V1-C09:CH-03}; CH-04=\label{schema:V1-C09:CH-04}; CH-05=\label{schema:V1-C09:CH-05}; CH-06=\label{schema:V1-C09:CH-06}; CH-07=\label{schema:V1-C09:CH-07}; CH-08=\label{schema:V1-C09:CH-08}; CH-09=\label{schema:V1-C09:CH-09}; CH-10=\label{schema:V1-C09:CH-10}; CH-11=\label{schema:V1-C09:CH-11}; CH-12=\label{schema:V1-C09:CH-12}; CH-13=\label{schema:V1-C09:CH-13}; CH-14=\label{schema:V1-C09:CH-14}; CH-15=\label{schema:V1-C09:CH-15}; CH-16=\label{schema:V1-C09:CH-16}; CH-17=\label{schema:V1-C09:CH-17}; CH-18=\label{schema:V1-C09:CH-18}; CH-19=\label{schema:V1-C09:CH-19}; CH-20=\label{schema:V1-C09:CH-20}; CH-21=\label{schema:V1-C09:CH-21}; CH-22=\label{schema:V1-C09:CH-22}; CH-23=\label{schema:V1-C09:CH-23}; CH-24=\label{schema:V1-C09:CH-24}; CH-25=\label{schema:V1-C09:CH-25}; CH-26=\label{schema:V1-C09:CH-26}; CH-27=\label{schema:V1-C09:CH-27}; CH-28=\label{schema:V1-C09:CH-28}; CH-29=\label{schema:V1-C09:CH-29}; CH-30=\label{schema:V1-C09:CH-30}; CH-31=\label{schema:V1-C09:CH-31}; CH-32=\label{schema:V1-C09:CH-32}; CH-33=\label{schema:V1-C09:CH-33}; CH-34=\label{schema:V1-C09:CH-34}; CH-35=\label{schema:V1-C09:CH-35}; CH-36=\label{schema:V1-C09:CH-36}; CH-37=\label{schema:V1-C09:CH-37}
+
+% FIGURE-KNOWLEDGE-MAP: fig:V1-C09-learning-loop -> SLM-01-01-001
+\chapter{统计学习的基本框架}\label{chap:V1-C09}
+\SLChapterOpening{从任务边界直达模型--策略--算法三要素}{有限数据上的学习问题怎样被完整而可复现地定义}{能够声明输入输出、反馈、假设空间、损失与求解过程}{前五章的数据角色、概率与优化基础}{任一接口缺失时返回本章对应空间或三要素小节}
+\index{统计学习的基本框架}
+
+
+% KNOWLEDGE-PLAN: KN-V1-C09-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}统计学习的基本框架目标中的“能用数据空间、假设空间、评价准则和求解过程完整表述一个统计学习问题”必须可复核；请用数据空间、假设空间、评价准则和求解过程完整表述一个统计学习问题，所得结果仅在“中间结果逐项包含首目标“能用数据空间、假设空间、评价准则和求解过程完整表述一个统计学习问题”声明的对象、条件与结论”时通过。\par
+
+\chaptergoals{\label{schema:V1-C09:CH-01}
+\begin{itemize}[leftmargin=2em]
+  \item 能用数据空间、假设空间、评价准则和求解过程完整表述一个统计学习问题；
+  \item 能区分监督学习、无监督学习与强化学习，并说明输入、特征和输出在三类任务中的角色；
+  \item 能辨认概率模型与非概率模型、在线学习与批量学习，并用“模型--策略--算法”三要素审查一种学习方法。
+\end{itemize}}
+
+\begin{prerequisitebox}\label{schema:V1-C09:CH-02}
+本章直接使用样本、特征、标签与参数的角色约定，以及总体、样本和统计量的区别。若不能说明“观测到的数据”与“由学习过程选出的参数”有何不同，应先回看\cref{sec:V1-C01-S05}；若不能区分总体规律与有限样本统计量，应回看\cref{sec:V1-C05-S04}。
+\end{prerequisitebox}
+
+\begin{precheckbox}\label{schema:V1-C09:CH-03}\normalfont\unboldmath
+请先判断：一组只有输入而没有标签的样本能否直接构成标准监督学习训练集；特征向量是否必与原始输入完全相同；一个给定的模型是否已经唯一确定了训练算法。任一判断无法给出理由时，分别回看\cref{sec:V1-C09-S02,sec:V1-C09-S03,sec:V1-C09-S05}。
+\end{precheckbox}
+
+\begin{dependencybox}\label{schema:V1-C09:CH-04}
+本章局部依赖关系为
+\[
+\text{数据及变量角色}\longrightarrow\text{学习类型}
+\longrightarrow\text{输入、特征与输出空间}
+\longrightarrow\text{假设空间}
+\longrightarrow\text{模型、策略与算法}.
+\]
+“学习类型”决定可获得的反馈，“空间”决定模型的定义域和值域，“假设空间”限定搜索范围，策略和算法才在该范围内选择具体模型。
+\end{dependencybox}
+% STAGE19-SYMBOL-INDEX-BEGIN: V1-C09
+\index[symbols]{minus-mathcalx-minus-minus-mathcalz-minus-minus-mathcaly-minus--se66d33acfe60@$\mathcal X,\mathcal Z,\mathcal Y$：输入空间、特征空间与输出空间}
+\index[symbols]{x-y-z--s642ab2bda9d4@$X,Y,Z$：输入、监督输出与潜在表示}
+\index[symbols]{x-minus-phi-minus-x-y--s6b5f66af22eb@$x,\phi(x),y$：一个实例、特征表示与输出值}
+\index[symbols]{t-eq-x-i-y-i-i-eq-1-n--s929bfae66202@$T=\{(x_i,y_i)\}_{i=1}^{N}$：含$N$个输入--输出对的监督训练集}
+\index[symbols]{p-x-y--s2fd933cbc720@$P(X,Y)$：产生监督样本的总体统计规律}
+\index[symbols]{minus-mathcalf-minus--s33fbff9d69d5@$\mathcal F$：学习算法允许选择的假设空间}
+\index[symbols]{f-minus-theta-minus-minus-text-minus-u6216-minus-p-minus-minus-theta-min--sb99358f54e9f@$f_\theta\ \text{或}\ P_\theta(Y\mid X)$：决策函数或条件概率分布}
+\index[symbols]{minus-theta-minus-minus-in-minus-minus-theta-minus--se9ba07e3b7f8@$\theta\in\Theta$：具体模型的索引及其允许取值范围}
+\index[symbols]{l-y-f-x--sd490f8c5f933@$L(y,f(x))$：单次预测的损失}
+\index[symbols]{r-f-minus-widehatr-minus-t-f--scee95469fb96@$R(f),\widehat R_T(f)$：期望风险与经验风险}
+\index[symbols]{minus-gamma-minus-minus-r-minus-t-minus-g-minus-t--sfaa4fbf411cf@$\gamma,\ r_t,\ G_t$：折扣因子、即时奖励与累计回报，其中$0\le\gamma\le1$}
+\index[symbols]{minus-mathcala-minus--s96db75b24a6e@$\mathcal A$：本章学习框架中把训练数据和设定变为所选模型的学习算法；其他章可另作事件族或算子}
+% STAGE19-SYMBOL-INDEX-END: V1-C09
+\begin{symboltablebox}\label{schema:V1-C09:CH-05}
+\begin{tabularx}{\linewidth}{@{}>{$}l<{$} X X@{}}
+\toprule
+\text{符号} & 类型或维数 & 含义\\
+\midrule
+\mathcal X,\mathcal Z,\mathcal Y & 集合 & 输入空间、特征空间与输出空间\\
+X,Y,Z & 随机变量 & 输入、监督输出与潜在表示\\
+x,\phi(x),y & 相应空间中的元素 & 一个实例、特征表示与输出值\\
+T=\{(x_i,y_i)\}_{i=1}^{N} & 样本集合 & 含$N$个输入--输出对的监督训练集\\
+P(X,Y) & 联合分布 & 产生监督样本的总体统计规律\\
+\mathcal F & 模型集合 & 学习算法允许选择的假设空间\\
+f_\theta\ \text{或}\ P_\theta(Y\mid X) & 模型 & 决策函数或条件概率分布\\
+\theta\in\Theta & 参数 & 具体模型的索引及其允许取值范围\\
+L(y,f(x)) & 非负标量 & 单次预测的损失\\
+R(f),\widehat R_T(f) & 非负标量 & 期望风险与经验风险\\
+\gamma,\ r_t,\ G_t & 标量 & 折扣因子、即时奖励与累计回报，其中$0\le\gamma\le1$\\
+\mathcal A & 映射 & 把训练数据和设定变为所选模型的学习算法\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\subsection*{问题提出}\label{schema:V1-C09:CH-06}
+统计学习面对的并不是“把数据代入一个现成公式”这一单步问题。它必须同时回答五个问题：数据怎样产生、允许考虑哪些模型、怎样比较模型、怎样找到较优模型，以及模型将怎样处理新输入。缺少其中任何一项，任务都可能没有可复现的含义。例如，只说“训练一个分类器”并未声明标签集合、候选模型、损失和训练规则，也就不能判断两个结果谁更好。
+
+% KNOWLEDGE-PLAN: KN-V1-C09-CONCEPT-001 L1
+\paragraph{读前自检：本讲义的工作性检查框架。}统计学习工作框架用输入空间$\mathcal X$、输出空间$\mathcal Y$、训练集$\mathcal D$、模型族$\mathcal F$与准则定义学习映射；请把一个候选训练集代入，核对输出$\widehat f$确属$\mathcal F$。\par
+
+\begin{keypointbox}[title=本讲义的工作性检查框架]\label{def:V1-C09-learning-problem}\label{schema:V1-C09:CH-07}
+为避免漏项，本讲义用六元组
+\[
+(\mathcal X,\mathcal Y,\mathcal D,\mathcal F,L,\mathcal A)
+\]
+检查任务接口。$\mathcal X$与$\mathcal Y$分别是输入、输出空间；$\mathcal D$规定可观测数据及其反馈形式；$\mathcal F$是候选模型集合；$L$度量模型一次输出的代价；学习算法$\mathcal A$依据数据、假设空间和准则返回$\widehat f\in\mathcal F$。这不是覆盖所有学习范式的公理化定义；无监督或强化学习可用潜变量、动作、奖励或环境状态改写相应槽位，但必须明确可观测量和评价目标。
+\end{keypointbox}
+
+本册统一约定：比较两个标量风险或损失时用绝对值$|a-b|$；比较向量参数、预测或残差时使用并就地声明范数$\|u-v\|$。
+
+\subsection*{模型、策略与学习算法}
+\phantomsection\label{schema:V1-C09:CH-08}
+\textbf{模型}描述输入与输出、表示或动作之间允许成立的关系。模型可以是函数$f_\theta:\mathcal X\to\mathcal Y$，也可以是条件分布$P_\theta(Y\mid X)$；参数$\theta$的可取范围连同函数形式共同确定假设空间，而一个具体$\theta$只确定其中一个模型。
+
+\phantomsection\label{schema:V1-C09:CH-09}
+\textbf{策略}规定怎样评价候选模型。监督学习中常把单次损失汇总为经验风险，并可加入复杂度惩罚；无监督学习可评价重构、聚类或概率拟合；强化学习常评价长期累计回报。策略给出“什么叫好”，却不自动给出达到该目标的计算步骤。
+
+\phantomsection\label{schema:V1-C09:CH-10}
+\textbf{算法}是由明确的状态、输入接口、可选随机源、更新规则以及停止或预算规则定义的可执行过程。确定性算法在给定输入时轨迹唯一；随机算法还必须声明随机种子或概率转移核。算法可以在有限预算后返回当前状态，也可以通过无限序列定义渐近性质，因此“算法”本身不限定为确定性的有限过程。它给出“怎样寻找”。同一模型和策略可以配合不同算法，同一算法也可在更换模型族或损失后用于不同任务，因此三要素必须分别声明。
+
+\subsection*{核心推导：经验风险为何能够估计期望风险}
+% CORE-DERIVATION-PLAN: KN-V1-C09-DERIVATION-001
+\SLKnowledgeBridge{用无偏性、方差缩减与概率界连接样本平均和总体风险。}{固定模型 $f$，令 $U_i=L(Y_i,f(X_i))$，经验风险为 $\widehat R_N(f)=N^{-1}\sum_iU_i$。}{$U_i$ 独立同分布，$\mathbb E U_i=R(f)$ 且 $\operatorname{Var}(U_i)=\sigma_f^2<\infty$；$f$ 必须固定。}{先分别写出总体风险 $R(f)=\mathbb E U_i$ 与样本平均 $\widehat R_N(f)$。}
+
+\begin{derivationgoalbox}\label{schema:V1-C09:CH-11}
+固定模型$f$，在样本独立同分布且损失方差有限时，推导经验风险的期望和偏离概率，说明样本平均与总体风险之间的联系。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+设$(X_i,Y_i)$独立同分布于$P(X,Y)$，$U_i=L(Y_i,f(X_i))$，且$\mathbb E[U_i]=R(f)$、$\operatorname{Var}(U_i)=\sigma_f^2<\infty$。固定$f$意味着本推导不把使用同一批数据选模造成的依赖混入计算。
+\end{derivationprepbox}
+% DERIVATION-CHECK: step-1; step-2; step-3
+\textbf{推导第1步：写出总体量与样本量。}定义
+\[
+R(f)=\mathbb E_{(X,Y)\sim P}[L(Y,f(X))],\qquad
+\widehat R_T(f)=\frac1N\sum_{i=1}^{N}U_i.
+\]
+
+\textbf{推导第2步：交换有限和与期望。}由期望的线性性和同分布性，
+\[
+\mathbb E[\widehat R_T(f)]
+=\frac1N\sum_{i=1}^{N}\mathbb E[U_i]
+=\frac1N\cdot N R(f)=R(f).
+\]
+所以对预先固定的$f$，经验风险是期望风险的无偏估计。
+
+\textbf{推导第3步：计算方差并控制偏离。}独立性使协方差项为零，因此
+\[
+\operatorname{Var}(\widehat R_T(f))
+=\frac{1}{N^2}\sum_{i=1}^{N}\operatorname{Var}(U_i)
+=\frac{\sigma_f^2}{N}.
+\]
+对任意$\varepsilon>0$应用Chebyshev不等式，得到
+\[
+\Pr\!\left(\left|\widehat R_T(f)-R(f)\right|\ge\varepsilon\right)
+\le \frac{\sigma_f^2}{N\varepsilon^2}.
+\]
+样本量增大使固定模型的估计更稳定；这一结论本身不等于对数据自适应选出的任意模型都已获得泛化保证。
+
+\begin{theorem}[固定模型经验风险的一致性界]\label{thm:V1-C09-risk-estimate}\label{schema:V1-C09:CH-12}
+在上述独立同分布和有限方差条件下，$\widehat R_T(f)$无偏估计$R(f)$，且对每个$\varepsilon>0$满足
+\[
+\Pr\!\left(\left|\widehat R_T(f)-R(f)\right|\ge\varepsilon\right)
+\le\frac{\sigma_f^2}{N\varepsilon^2}.
+\]
+从而$\widehat R_T(f)$依概率收敛到$R(f)$。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V1-C09-PROOF-001 L1
+\paragraph{读前自检：证明：固定模型经验风险的一致性界。}固定模型经验风险的一致性界以“独立性给出$\operatorname{Cov}(U_i,U_j)=0$（$i\ne j$）”为约束；请把$\mathbb E[\widehat R_T(f)]=R(f)$用到的关键定义展开并完成下一步变形，并确认固定$\varepsilon$后，右端随$N\to\infty$趋于零，这正是依概率收敛的定义。\par
+
+\begin{proof}\label{schema:V1-C09:CH-13}
+令$U_i=L(Y_i,f(X_i))$。同分布性给出$\mathbb E[U_i]=R(f)$，期望的线性性随即给出$\mathbb E[\widehat R_T(f)]=R(f)$。独立性给出$\operatorname{Cov}(U_i,U_j)=0$（$i\ne j$），所以样本平均的方差为$\sigma_f^2/N$。把随机变量$\widehat R_T(f)$、均值$R(f)$和方差$\sigma_f^2/N$代入Chebyshev不等式便得概率界。固定$\varepsilon$后，右端随$N\to\infty$趋于零，这正是依概率收敛的定义。证明中的每个条件都有作用：同分布性统一各项均值，独立性消去协方差，有限方差保证界为有限数。
+\end{proof}
+
+\begin{geometrybox}\label{schema:V1-C09:CH-14}
+\textbf{几何解释。}可把假设空间$\mathcal F$看成模型点构成的搜索区域，把风险看成该区域上的高度。策略确定等高线的形状，算法规定从初始点沿何种路径移动。改变特征映射会改变模型看到的数据几何，即使原始输入没有变化，搜索问题也可能由弯曲边界变为近似线性边界。
+\end{geometrybox}
+\begin{probabilitybox}\label{schema:V1-C09:CH-15}
+联合分布$P(X,Y)$刻画总体生成规律，训练集是从该规律得到的有限观测。概率模型直接给出$P_\theta(Y\mid X)$或相关分布，非概率模型则给出确定的函数输出。两类模型都可在随机数据上评价风险；“模型是否概率化”与“数据是否随机”是两个不同问题。
+\end{probabilitybox}
+\begin{optimizationbox}\label{schema:V1-C09:CH-16}
+\textbf{优化解释。}当策略取经验风险最小化时，学习被写成$\widehat f\in\arg\min_{f\in\mathcal F}\widehat R_T(f)$。假设空间给出可行域，风险给出目标函数，算法近似或精确求解该问题。若目标有多个极小点，还必须声明并列处理规则，输出才可复现。
+\end{optimizationbox}
+
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C09/fig_v1_c09_learning_loop.tex}
+沿\cref{fig:V1-C09-learning-loop}审计实验时，应逐条标出哪些数据参与拟合、候选比较和最终评价；一旦测试反馈回流到策略或算法，测试集就已变成开发数据，不能再作为一次性泛化证据。
+
+\begin{example}[两个候选分类规则的经验比较]\label{exm:V1-C09-finite-class}\label{schema:V1-C09:CH-18}\label{schema:V1-C09:CH-32}
+设$\mathcal X=\{a,b\}$、$\mathcal Y=\{0,1\}$，训练集为$T=\{(a,0),(a,0),(b,1),(b,0)\}$。假设空间只含$f_0(x)\equiv0$与$f_1(a)=0,f_1(b)=1$，策略取$0$--$1$经验风险。求两个风险并按“风险相同则优先$f_0$”的规则选模。
+\end{example}
+\phantomsection\label{schema:V1-C09:CH-33}
+\SLExampleSolutionHeading{exm:V1-C09-finite-class}
+\begin{solution}
+\SLReadTranslation{只需在给定四个训练样本上比较$f_0,f_1$的$0$--$1$经验风险；若两者并列，再应用题设优先$f_0$的规则。}
+\SolGiven $f_0$恒预测$0$；$f_1(a)=0,f_1(b)=1$；经验风险是四个误分类指示量的平均，并列规则已预先固定。
+\SLMethodTrigger{有限假设空间可逐候选、逐样本计数错误；风险最小化集合确定后，再单独执行并列规则。}
+\SolPlan 分别列出$f_0,f_1$在四个样本上的误分类指示量，求和除以$4$，比较风险并处理并列。
+\SolDerive
+固定训练集$T=((x_i,y_i))_{i=1}^{4}$，候选集
+$\mathcal F=\{f_0,f_1\}$，经验风险仅在该训练集上计算：
+\[
+\begin{aligned}
+\widehat R_T(f)
+  &:=\frac14\sum_{i=1}^{4}\mathbf 1\{f(x_i)\ne y_i\},\\
+\bigl(\mathbf 1\{f_0(x_i)\ne y_i\}\bigr)_{i=1}^{4}
+  &=(0,0,1,0),&
+\widehat R_T(f_0)&=\frac14,\\
+\bigl(\mathbf 1\{f_1(x_i)\ne y_i\}\bigr)_{i=1}^{4}
+  &=(0,0,0,1),&
+\widehat R_T(f_1)&=\frac14.
+\end{aligned}
+\]
+于是最小化集合为
+\[
+\arg\min_{f\in\mathcal F}\widehat R_T(f)=\{f_0,f_1\}.
+\]
+\SolCheck 两组指示量之和都为$1$，故$4\widehat R_T(f_0)=4\widehat R_T(f_1)=1$，恰好恢复各自的一个错分；这一并列只关于固定训练集，不能推出总体风险相等。
+\SolAnswer 两个经验风险均为$1/4$；按题设并列规则最终选择$\widehat f=f_0$。
+\end{solution}
+
+\subsection*{有限假设空间的经验风险选择算法}
+\phantomsection\label{schema:V1-C09:CH-19}
+下面给出可逐项审查的严格伪代码；它穷举有限假设空间，不使用任何特定编程语言语法。
+\phantomsection\label{schema:V1-C09:CH-20}
+输入为训练集$T$、有序候选集合$\mathcal F=(f_1,\ldots,f_M)$和可计算损失$L$；输出为经验风险最小的模型、最小风险与完整比较记录。
+\phantomsection\label{schema:V1-C09:CH-21}
+参数$N$是样本数，$M$是候选模型数；候选次序只用于风险并列时的确定性选择，不应被误解为模型质量排序。
+\phantomsection\label{schema:V1-C09:CH-22}
+初始化最优风险$r^*\leftarrow+\infty$、最优模型$\widehat f\leftarrow\varnothing$，比较记录为空。
+\phantomsection\label{schema:V1-C09:CH-23}
+第$m$轮计算$f_m$在全部样本上的平均损失；若严格小于当前最优风险，则同步更新$r^*$与$\widehat f$，相等时保留先出现的候选。
+\phantomsection\label{schema:V1-C09:CH-24}
+停止条件是$m=M$，即每个候选恰被评价一次；若$N=0$、$M=0$或损失不可计算，则在进入循环前停止并报告输入不合法。
+\phantomsection\label{schema:V1-C09:CH-25}
+收敛条件是$N,M$有限且每次损失计算在有限时间结束。算法终止时返回全局经验风险最小者；这项最优性只相对于给定有限$\mathcal F$和训练集成立。
+
+% KNOWLEDGE-PLAN: KN-V1-C09-ALGORITHM_IDEA-001 L2
+
+% KNOWLEDGE-PLAN: KN-V1-C09-ALGORITHM_IDEA-002 L2
+\begin{keypointbox}[title={有限假设空间的经验风险选择：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={非空训练集$T$、有序非空有限候选集$\mathcal F$、有限实值损失接口$L$与固定并列规则},
+  output={最后合法候选记录、当前最优模型与风险、实际候选/损失计数、状态与最终诊断},
+  preconditions={$N,M\ge1$，每个候选预测和损失接口与样本维数匹配，并列规则预先冻结},
+  initialization={置记录为空、$r^*=+\infty$、$\widehat f$未定义、$m_{\rm done}=l_{\rm done}=0$},
+  loop={按候选次序扫描，每个候选在临时和中恰评价$N$个样本损失},
+  update={某候选全部损失与经验风险有限后，才原子追加记录并按固定并列规则更新最优者},
+  domain={所有已提交风险为有限实数；所选模型始终来自已经完整评价的候选前缀},
+  failure={空数据/候选、维数、接口或规则非法返回$\mathtt{invalid\_input}$；预测、损失或累加非有限返回$\mathtt{numerical\_failure}$并保留最后合法候选前缀},
+  stop={完成全部$M$个候选或首次失败时停止},
+  budget={恰好至多$MN$次预测--损失求值与$M$次候选提交},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$m_{\rm done}$计实际完整评价候选数，$l_{\rm done}$计实际有限损失数},
+  diagnostics={最终最小风险、并列集合、候选覆盖率、失败候选/样本与预测或损失阶段},
+  complexity={$O(MNc)$时间；保存全部记录为$O(M)$额外空间，流式最优值为$O(1)$}
+}
+\begin{algorithm}[H]
+\caption{有限假设空间的经验风险选择}\label{alg:V1-C09-finite-erm}
+\KwIn{训练集$T=\{(x_i,y_i)\}_{i=1}^{N}$；有序候选$\mathcal F=(f_1,\ldots,f_M)$；损失$L$}
+\KwOut{最后合法记录与$(\widehat f,r^*)$；$m_{\rm done},l_{\rm done}$；$\mathtt{status}$与诊断}
+\KwData{预先冻结的风险并列规则；单次预测--损失必须返回有限实数}
+若$N,M$、维数、接口或并列规则非法，返回空记录、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+初始化$r^*\leftarrow+\infty,\widehat f\leftarrow\varnothing,m_{\rm done}\leftarrow0,l_{\rm done}\leftarrow0$并清空记录\;
+\For{$m\leftarrow1$ \KwTo $M$}{
+  $s_m\leftarrow0$\;
+  \For{$i\leftarrow1$ \KwTo $N$}{
+    计算临时损失$u_{mi}\leftarrow L(y_i,f_m(x_i))$；若非有限，返回旧记录与当前最优、$\mathtt{numerical\_failure}$及$(m,i)$诊断\;
+    $s_m\leftarrow s_m+u_{mi}$并增加$l_{\rm done}$；若和非有限则返回旧记录、$\mathtt{numerical\_failure}$及累加诊断\;
+  }
+  形成$\widehat R_m\leftarrow s_m/N$；若非有限则返回旧记录、$\mathtt{numerical\_failure}$及$m$诊断\;
+  原子追加$(m,\widehat R_m)$、按固定并列规则更新$(r^*,\widehat f)$并增加$m_{\rm done}$\;
+}
+返回完整记录、$\widehat f,r^*$、$\mathtt{completed}$及并列/覆盖最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{首次阅读只做“逐候选算经验风险并取最小者”；实现时再处理接口失败、并列、覆盖率和状态}
+
+% KNOWLEDGE-PLAN: KN-V1-C09-BOUNDARY-001 L1
+\paragraph{读前自检：复杂度分析：有限假设空间的经验风险选择算法。}先锁定有限假设空间的经验风险选择算法的条件“以下界假设$M$个候选函数均已给定，单个候选对单个样本完成预测与损失计算的最坏成本为$c$”：由$M$的总成本剥离一次迭代或一次样本因子，所得结果应满足保存全部$M$项比较记录则为$O(M)$。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}以下界假设$M$个候选函数均已给定，单个候选对单个样本完成预测与损失计算的最坏成本为$c$，且所有损失有限并可在单位额外空间累计。候选模型本身的训练与存储成本不包含在有限经验风险扫描中，若需要现场拟合必须另计。
+\phantomsection\label{schema:V1-C09:CH-26}
+\textbf{训练复杂度。}设候选数为$M$、样本数为$N$，一次候选预测与损失计算成本上界为$c$；有限经验风险选择为$O(MNc)$，当$c$视为常数时为$O(MN)$。
+\phantomsection\label{schema:V1-C09:CH-27}
+\textbf{预测复杂度。}选出$\widehat f$后，一个新样本的成本为$C_{\rm pred}(\widehat f)$；模型选择记录不会增加逐样本预测阶数。\textbf{存储复杂度。}除候选模型和输入数据外，只保留当前和最优风险需$O(1)$额外空间；保存全部$M$项比较记录则为$O(M)$。
+\end{complexitybox}
+
+\begin{applicabilitybox}\label{schema:V1-C09:CH-28}
+\textbf{适用条件。}有限穷举适合候选数较少、每个模型都能完整评价且需要可审计选择记录的任务；更一般的统计学习框架也适用于连续参数、无监督目标和强化学习，只需相应重定义数据反馈、模型与策略。\par
+\phantomsection\label{schema:V1-C09:CH-29}
+\textbf{方法局限。}候选空间巨大或连续时不能穷举；经验风险最小不自动保证总体风险最小；训练分布改变、反馈有偏或损失与实际目标不一致时，即使优化充分，所选模型也可能不适用于部署环境。
+\end{applicabilitybox}
+
+% KNOWLEDGE-PLAN: KN-V1-C09-BOUNDARY-003 L1
+\paragraph{读前自检：常见错误与误用边界：有限假设空间的经验风险选择算法。}对有限假设空间的经验风险选择算法，条件“边界框首项禁止把“训练集误差低”等同于“新数据表现好””不可省；请把固定错误“把“训练集误差低”等同于“新数据表现好””中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，再用改写后的运算或判断有定义，且不再触发“把“训练集误差低”等同于“新数据表现好””作检查。\par
+
+\begin{warningbox}\label{schema:V1-C09:CH-30}
+典型误用包括：把“训练集误差低”等同于“新数据表现好”；把特征空间与输入空间强行视为同一集合；把概率模型误写成只输出类别的函数；把在线学习等同于强化学习；只给模型公式而不声明策略与算法；在同一数据上反复选模后仍套用固定模型的无偏性结论。
+\end{warningbox}
+
+% KNOWLEDGE-PLAN: KN-V1-C09-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：有限假设空间的经验风险选择算法。}有限假设空间的经验风险选择算法把问题限定在“对比表首个数据行是“模型与假设空间｜一个候选关系还是全部候选的集合｜$f_\theta$与$\mathcal F=\{f_\theta:\theta\in\Theta\}$””；请按列复述“模型与假设空间｜一个候选关系还是全部候选的集合｜$f_\theta$与$\mathcal F=\{f_\theta:\theta\in\Theta\}$”中的对象、假设与结论，检查是否得到各列均对应首行对象“模型与假设空间”，且未与表中下一行互换。\par
+
+\begin{comparisonbox}\label{schema:V1-C09:CH-31}
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+概念 & 核心问题 & 典型形式\\
+\midrule
+模型与假设空间 & 一个候选关系还是全部候选的集合 & $f_\theta$与$\mathcal F=\{f_\theta:\theta\in\Theta\}$\\
+策略与算法 & 什么模型更好还是怎样找到它 & 风险最小化与梯度、穷举等求解过程\\
+概率与非概率模型 & 输出分布还是确定函数值 & $P_\theta(Y\mid X)$与$y=f_\theta(x)$\\
+在线与批量学习 & 数据逐次到达更新还是集中训练 & 逐时刻更新$\theta_t$与一次求得$\widehat\theta$\\
+监督与强化学习 & 标签反馈还是动作后的延迟回报 & $(x,y)$样本对与状态--动作--奖励序列\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+\SLDirectSection{统计学习与机器学习}{sec:V1-C09-S01}
+\knowledgeanchor{SLM-01-00-001}{统计学习及监督学习概论}
+统计学习以数据为研究对象，借助概率统计、信息论、优化和计算方法构建模型，并用模型预测或分析未观测数据。机器学习的范围常与统计学习高度重合；本讲义强调模型的统计假设、评价准则和可验证推导，因而使用“统计学习”这一名称。监督学习是其中从标注数据学习预测映射的重要部分，但不是全部。
+
+\knowledgeanchor{SLM-01-01-001}{统计学习}
+统计学习具有五个相互约束的特点：以计算系统为实现平台，以数据而非手写规则为主要信息来源，以预测和结构分析为主要目标，以学习方法连接数据与模型，并由概率、统计、信息和优化理论共同支撑。研究工作可分为方法、理论和应用三个层次：方法提出可执行过程，理论研究有效性与效率，应用把任务结构、数据质量和代价纳入设计。
+
+一个完整工作流可写为：明确任务与评价对象，收集并检查数据，确定假设空间，确定选择准则，执行算法得到模型，最后在未参与训练的数据或实际环境中评价。顺序不是形式要求：若先训练再决定评价指标，容易用结果反向选择有利指标；若训练与测试信息混合，所得评价会产生乐观偏差。
+
+
+\SLReviewSection{监督学习、无监督学习与强化学习}{sec:V1-C09-S02}
+\knowledgeanchor{SLM-01-02-001}{统计学习的分类}
+统计学习可按反馈形式、模型形式、数据到达方式和所用技巧分类。同一种方法可以同时拥有多个标签，例如一个方法既可以是监督的、概率的和在线的，也可以使用贝叶斯推断。分类的目的不是给算法贴唯一名称，而是明确它获得什么信息、输出什么对象以及受什么假设约束。
+
+% KNOWLEDGE-PLAN: KN-V1-C09-CONCEPT-008 L1
+\paragraph{读前自检：基本分类。}在“强化学习的动作会影响以后看到的数据，奖励还可能延迟”成立时处理统计学习的基本框架中的基本分类：请把$\phi(x)$展开一次并检查其类型或边界，并以“输出空间通常更小”是一种常见任务现象，不是数学定义中的必要条件判定结果。\par
+
+\knowledgeanchor{SLM-01-02-002}{基本分类}
+\begin{definition}[三类基本学习问题]\label{def:V1-C09-three-learning-types}
+监督学习从含目标输出的样本对中学习输入到输出的预测规律；无监督学习只观测输入，学习其表示、结构或生成规律；强化学习中的智能体通过状态、动作、奖励和后续状态的交互序列学习使长期累计回报较大的策略。
+\end{definition}
+
+监督学习的直接反馈是标签，典型输出包括类别、实数或结构化序列。无监督学习没有逐样本“标准答案”，聚类编号、低维表示和密度模型需通过任务目标评价。强化学习的动作会影响以后看到的数据，奖励还可能延迟，因此不能把每一步简单改写为相互独立的带标签样本。
+
+半监督学习联合少量标注数据与大量未标注数据；主动学习由系统选择最有信息的实例请求标注。二者通常更接近监督学习，因为最终目标仍是预测输出，但数据获得机制改变了。选择主动查询时还要记录标注成本和查询偏差。
+
+
+\SLTeachSection{输入、特征与输出空间}{sec:V1-C09-S03}
+在监督学习中，输入随机变量$X$取值于输入空间$\mathcal X$，输出随机变量$Y$取值于输出空间$\mathcal Y$。一个具体输入$x$称为实例。原始输入可以是文本、图像或复合记录，模型实际使用的特征由映射$\phi:\mathcal X\to\mathcal Z$给出；$\mathcal Z$称特征空间。只有在$\phi$为恒等映射时，输入空间与特征空间才可不加区分。
+
+若$\phi(x)=(x^{(1)},\ldots,x^{(d)})^{\mathsf T}\in\R^d$，上标标记同一实例的特征分量；训练集
+\[
+T=\{(x_1,y_1),\ldots,(x_N,y_N)\}
+\]
+中的下标标记样本。模型通常定义在特征空间上，可写为$f:\mathcal Z\to\mathcal Y$，完整预测是$f(\phi(x))$。把上标与下标混用会混淆“第几个特征”和“第几个样本”。
+
+输出空间的类型决定监督任务名称：$Y$为连续实数时通常是回归，$Y$取有限类别时是分类，$Y$为可变长的标签序列时是标注或结构预测。输入与输出都可为向量或结构对象；“输出空间通常更小”是一种常见任务现象，不是数学定义中的必要条件。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C09-CONCEPT-009 L1
+\paragraph{读前自检：按模型分类。}固定同一参数域$\Theta$，请比较确定性族$\{f_\theta:\mathcal X\to\mathcal Y\}$与概率族$\{P_\theta(Y\mid X)\}$；核对后者对$Y$非负归一，并用给定损失的Bayes决策把它转换为点预测。\par
+
+\SLTeachSection{假设空间与概率模型}{sec:V1-C09-S04}
+\knowledgeanchor{SLM-01-02-003}{按模型分类}
+\begin{definition}[假设空间]\label{def:V1-C09-hypothesis-space}
+假设空间$\mathcal F$是学习算法获准选择的全部模型集合。确定性监督模型可写为
+\[
+\mathcal F=\{f_\theta:\mathcal X\to\mathcal Y\mid\theta\in\Theta\},
+\]
+概率监督模型可写为
+\[
+\mathcal F=\{P_\theta(Y\mid X)\mid\theta\in\Theta\}.
+\]
+参数空间$\Theta$与函数或分布的形式共同限定学习范围。
+\end{definition}
+
+概率模型输出满足非负与归一化条件的分布，例如$P_\theta(y\mid x)$；需要点预测时可取概率最大的类别，或按任务损失计算Bayes决策。非概率模型直接给出$y=f_\theta(x)$。二者都描述输入与输出关系，区别在于是否显式保存不确定性，而不在于是否能够产生最终类别。
+
+概率模型的推理以加法与乘法规则为基础：对离散$Y$，
+\[
+P(x)=\sum_y P(x,y),\qquad P(x,y)=P(x)P(y\mid x).
+\]
+连续变量只需把求和换成对相应测度的积分。由乘法规则的两种分解还可推出Bayes公式。每次使用这些公式都要说明求和或积分变量，并检查所得边缘分布仍非负且归一化。
+
+模型还可沿另外两条轴分类。若$f(x)$或$g(x)$对输入是线性映射，则称为线性模型，否则为非线性模型；这里判断的是模型的函数结构，不是参数估计算法是否线性。参数化模型由固定维数的有限参数刻画，非参数化模型的有效复杂度可以随数据量增长。“非参数”不表示完全没有参数，而是模型容量不由预先固定的有限维参数完全限制。
+
+无监督情形可用$P_\theta(Z\mid X)$描述表示或聚类归属，用$P_\theta(X\mid Z)$描述潜在结构怎样生成观测，也可用$z=g_\theta(x)$给出确定表示。强化学习还可区分显式学习环境转移模型的方法与不直接学习环境模型的方法。由此可见，“概率/非概率”“有模型/无模型”是不同分类轴。
+
+条件概率模型与决策函数在特定操作后可以互相导出：从$P_\theta(Y\mid X)$可通过最小化条件期望损失得到决策；反方向则需补充分数标定或噪声假设，单个类别函数本身不能唯一恢复概率。
+
+
+% KNOWLEDGE-PLAN: KN-V1-C09-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：按算法分类。}围绕按算法分类，先采用条件“在线学习在时刻$t$先用当前参数产生$\widehat y_t=f_{\theta_t}(x_t)$”，再把$\theta_{t+1}$展开一次并检查其类型或边界；最后验证监督、无监督和强化学习都可有在线形式，强化交互天然带有逐时刻特征，但二者概念并不等同。\par
+
+\SLAdvancedSection{模型、策略与算法}{sec:V1-C09-S05}
+\knowledgeanchor{SLM-01-02-004}{按算法分类}
+按数据到达和更新方式，学习可分为批量学习与在线学习。批量学习在获得一批数据后集中求得模型$\widehat\theta=\mathcal A(T)$，随后用于预测；在线学习在时刻$t$先用当前参数产生$\widehat y_t=f_{\theta_t}(x_t)$，收到反馈后再更新
+\[
+\theta_{t+1}=U(\theta_t,x_t,\text{feedback}_t).
+\]
+在线方式适合数据流、存储受限或分布随时间变化的环境，但每次更新信息较少，结果还依赖到达次序。监督、无监督和强化学习都可有在线形式，强化交互天然带有逐时刻特征，但二者概念并不等同。
+
+\knowledgeanchor{SLM-01-02-005}{按技巧分类}
+按核心技巧还可区分贝叶斯方法与核方法等。贝叶斯方法用先验与似然得到后验，并依据后验进行估计或预测；核方法通过$K(x,x')=\langle\phi(x),\phi(x')\rangle$计算特征空间内积，避免显式构造高维$\phi(x)$。这两类名称描述所用推理或表示技巧，不直接规定任务是监督、无监督还是在线。
+
+若$D$表示观测数据，贝叶斯更新和后验预测分别为
+\[
+P(\theta\mid D)=\frac{P(\theta)P(D\mid\theta)}{P(D)},\qquad
+P(x\mid D)=\int P(x\mid\theta,D)P(\theta\mid D)\,\mathrm d\theta.
+\]
+前式中$P(D)$负责归一化，后式对参数不确定性做平均。极大似然估计只寻找使$P(D\mid\theta)$最大的点；在先验为常数且最大点存在时，最大后验点与极大似然点可重合，但完整后验分布仍比单个点包含更多不确定性信息。
+
+% KNOWLEDGE-PLAN: KN-V1-C09-CONCEPT-011 L1
+\paragraph{读前自检：统计学习方法三要素。}统计学习方法三要素中的“三者的接口必须匹配：模型输出要能被损失评价，策略形成的目标要能被算法计算或近似”决定可执行范围；请把$\text{统计学习方法}$展开一次并检查其类型或边界，结果须满足展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-01-03-001}{统计学习方法三要素}
+一种统计学习方法由模型、策略和算法构成，可用
+\[
+\text{统计学习方法}=\text{模型}+\text{策略}+\text{算法}
+\]
+概括。三者的接口必须匹配：模型输出要能被损失评价，策略形成的目标要能被算法计算或近似，算法返回的对象必须仍属于假设空间。只更换一个要素就可能形成另一种方法。
+
+\knowledgeanchor{SLM-01-03-002}{模型}
+在监督学习中，模型是条件概率分布或决策函数，假设空间包含全部候选。以线性回归为例，模型族可为$f_{w,b}(x)=w^{\mathsf T}x+b$，策略可取平方经验风险，算法可用正规方程或迭代优化。相同线性模型若改用绝对损失，策略已经改变；相同平方损失若把模型换成非线性函数族，搜索空间也已改变。
+
+设计算法规范时还应逐项写明输入输出、参数含义、初始化、更新和停止条件，并说明计算复杂度与适用范围。本章算法\ref{alg:V1-C09-finite-erm}给出有限空间的精确版本；连续参数算法通常以目标变化、梯度范数或迭代上限停止，收敛结论则取决于目标结构和更新规则。
+
+
+\begin{chapterexercisebox}
+\phantomsection\label{schema:V1-C09:CH-34}
+\phantomsection\label{schema:V1-C09:CH-35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[完整任务表述]\label{ex:V1-C09-S01-01}
+某系统根据邮件文本判断“正常”或“垃圾”。请分别指出输入、输出、数据反馈、候选模型、策略和算法需要声明的内容。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S01-01}
+\begin{chapterexercisesolution}{ex:V1-C09-S01-01}
+先固定邮件总体$\mathcal X$、标签空间$\mathcal Y=\{\text{正常},\text{垃圾}\}$与带标签训练集
+$T=\{(x_i,y_i)\}_{i=1}^{N}\subset\mathcal X\times\mathcal Y$，其中$N\ge1$。六个对象可形式化为
+\[
+\begin{aligned}
+\text{输入与输出}&:\quad x\in\mathcal X,\quad y\in\mathcal Y,\\
+\text{反馈与表示}&:\quad y_i\ \text{由预定标注规则取得},\quad
+z_i=\phi(x_i)\in\mathbb R^d,\\
+\text{候选模型}&:\quad
+\mathcal F=\{f_\theta:\mathbb R^d\to\mathcal Y\mid\theta\in\Theta\},\\
+\text{策略}&:\quad
+\widehat R_T(\theta)=\frac1N\sum_{i=1}^{N}L(y_i,f_\theta(z_i)),\\
+\text{算法}&:\quad
+\widehat\theta\in\arg\min_{\theta\in\Theta}\widehat R_T(\theta).
+\end{aligned}
+\]
+损失$L$须写明漏报与误报代价；算法还须规定初始化、停止条件及最小点不唯一时的并列规则。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[研究层次]\label{ex:V1-C09-S01-02}
+把下列工作分别归入方法、理论或应用研究：提出一种新的更新规则；证明其样本量增大时风险收敛；把它用于医学筛查并设计漏诊代价。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S01-02}
+\begin{chapterexercisesolution}{ex:V1-C09-S01-02}
+令$\mathsf M,\mathsf T,\mathsf A$分别表示方法、理论与应用研究，分类判据为“主要产出是什么”：
+\[
+\begin{aligned}
+\text{新更新规则 }U(\theta_t,\text{data}_t)
+  &\longmapsto \mathsf M,\\
+\bigl[\text{条件 }C_N\bigr]\Longrightarrow
+  R(\widehat f_N)\to R^\star
+  &\longmapsto \mathsf T,\\
+\bigl(\mathcal X,\mathcal Y,L_{\rm FN},L_{\rm FP}\bigr)_{\rm screening}
+  &\longmapsto \mathsf A.
+\end{aligned}
+\]
+因此三项依次属于方法、理论、应用；它们相互衔接，但一个工作可同时跨越多个层次。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[信息泄漏诊断]\label{ex:V1-C09-S01-03}
+研究者先查看测试集结果，再从十种特征方案中选择测试准确率最高者并报告同一准确率。指出问题并给出可复现修正。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S01-03}
+\begin{chapterexercisesolution}{ex:V1-C09-S01-03}
+原流程把测试误差写入了选择规则
+\[
+\begin{aligned}
+j^\star_{\rm leak}
+  &=\arg\min_{1\le j\le10}
+    \widehat R_{\rm test}\!\left(\widehat f_j\right),\\
+\widehat f_j&=\mathcal A_j(D_{\rm train}),
+\end{aligned}
+\]
+所以$D_{\rm test}$不再独立于最终模型。可复现修正是预先作互不相交的划分
+\[
+\begin{aligned}
+D&=D_{\rm tr}\,\dot\cup\,D_{\rm val}\,\dot\cup\,D_{\rm te},\\
+\widehat f_j&=\mathcal A_j(D_{\rm tr}),\\
+j^\star&=\arg\min_{1\le j\le10}\widehat R_{\rm val}(\widehat f_j),\\
+\text{最终报告}&=\widehat R_{\rm te}(\widehat f_{j^\star}).
+\end{aligned}
+\]
+$D_{\rm te}$只在方案、指标和并列规则冻结后使用一次；若数据独立同分布抽样，它才提供独立的最终评估。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[场景分类]\label{ex:V1-C09-S02-01}
+判断下列任务的基本类型并说明反馈：依据历史房价预测新房价格；把无标签新闻分组；机器人移动后收到耗电与到达奖励并改进路线。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S02-01}
+\begin{chapterexercisesolution}{ex:V1-C09-S02-01}
+按观测到的反馈对象分类：
+\[
+\begin{aligned}
+\{(x_i,y_i):y_i\in\mathbb R\}_{i=1}^{N}
+  &\longmapsto \text{监督回归（房价）},\\
+\{x_i\}_{i=1}^{N},\quad y_i\ \text{不可观测}
+  &\longmapsto \text{无监督聚类（新闻）},\\
+(S_t,A_t,R_{t+1},S_{t+1})_{t\ge0},\quad
+G_t=\sum_{k\ge0}\gamma^kR_{t+k+1}
+  &\longmapsto \text{强化学习（机器人）}.
+\end{aligned}
+\]
+第三类中动作会改变后续状态分布，故不能把各时刻反馈当成相互独立的固定标签。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[半监督与主动学习]\label{ex:V1-C09-S02-02}
+一个系统有一万张未标注图像和一百张已标注图像。比较“同时使用全部图像训练”与“挑选最不确定图像请专家标注后再训练”的学习类型。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S02-02}
+\begin{chapterexercisesolution}{ex:V1-C09-S02-02}
+记已标注集与未标注池为
+\[
+\begin{aligned}
+D_L&=\{(x_i,y_i)\}_{i=1}^{100},&
+D_U&=\{x_j\}_{j=1}^{10000}.
+\end{aligned}
+\]
+两种机制分别为
+\[
+\begin{aligned}
+\widehat f_{\rm semi}&=\mathcal A(D_L,D_U)
+  &&\text{（半监督：标签集合不由算法扩充）},\\
+x^\star&\in\arg\max_{x\in D_U}u_{\widehat f}(x),\qquad
+D_L\leftarrow D_L\cup\{(x^\star,y^\star)\}
+  &&\text{（主动学习）}.
+\end{aligned}
+\]
+主动查询会改变被标注样本的分布，因此还须记录查询规则、标注预算和标注成本。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[延迟回报]\label{ex:V1-C09-S02-03}
+某策略产生三步奖励$r_1=0,r_2=-1,r_3=4$，折扣因子$\gamma=1/2$。计算从第一步开始的折扣回报$G_1=r_1+\gamma r_2+\gamma^2r_3$，并说明为何不能只按$r_1$评价第一步动作。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S02-03}
+\begin{chapterexercisesolution}{ex:V1-C09-S02-03}
+奖励是同一条轨迹上的随机反馈；对给定实现$r_1=0,r_2=-1,r_3=4$，
+\[
+\begin{aligned}
+G_1
+  &=r_1+\gamma r_2+\gamma^2r_3\\
+  &=0+\frac12(-1)+\left(\frac12\right)^2 4\\
+  &=-\frac12+1=\frac12.
+\end{aligned}
+\]
+$r_1=0$只描述即时后果，而$G_1$还纳入动作通过后续状态带来的奖励，所以不能仅用$r_1$评价第一步动作。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[样本与特征索引]\label{ex:V1-C09-S03-01}
+数据矩阵$Z\in\R^{40\times6}$按行存放样本。写出第$7$个样本、第$3$个特征列和分量$Z_{7,3}$的维数与含义。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S03-01}
+\begin{chapterexercisesolution}{ex:V1-C09-S03-01}
+由“行存样本”且$Z\in\mathbb R^{40\times6}$，
+\[
+\begin{aligned}
+z_7^{\mathsf T}=Z_{7,:}&\in\mathbb R^{1\times6},
+&z_7&\in\mathbb R^6,\\
+Z_{:,3}&\in\mathbb R^{40},
+&Z_{7,3}&\in\mathbb R.
+\end{aligned}
+\]
+因此$z_7$是第$7$个样本的六维特征向量，$Z_{:,3}$收集全部$40$个样本的第$3$个特征，而$Z_{7,3}$是二者交叉处的标量。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[输出空间与任务]\label{ex:V1-C09-S03-02}
+分别判断$\mathcal Y=\R$、$\mathcal Y=\{\text{红},\text{黄},\text{绿}\}$、$\mathcal Y=\bigcup_{m\ge1}\{0,1\}^m$通常对应哪类监督任务。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S03-02}
+\begin{chapterexercisesolution}{ex:V1-C09-S03-02}
+输出对象的目标域直接给出任务类型：
+\[
+\begin{aligned}
+f:\mathcal X\to\mathbb R
+  &\quad\Longrightarrow\quad \text{实值回归},\\
+f:\mathcal X\to\{\text{红},\text{黄},\text{绿}\}
+  &\quad\Longrightarrow\quad \text{三分类},\\
+f:\mathcal X\to\bigcup_{m\ge1}\{0,1\}^{m}
+  &\quad\Longrightarrow\quad \text{可变长结构化序列预测}.
+\end{aligned}
+\]
+最后一个并集中的各分支长度不同，故输出域不是某个固定维数的$\{0,1\}^m$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[概率模型归一化]\label{ex:V1-C09-S04-01}
+二分类模型给出未归一化分数$s_0(x)=1$、$s_1(x)=3$。按$P(y\mid x)=s_y(x)/(s_0(x)+s_1(x))$归一化，求两类概率与最大概率决策。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S04-01}
+\begin{chapterexercisesolution}{ex:V1-C09-S04-01}
+支持集为$\mathcal Y=\{0,1\}$，且两个分数非负、总和严格为正。于是
+\[
+\begin{aligned}
+S(x)&=\sum_{y\in\mathcal Y}s_y(x)=1+3=4,\\
+P(0\mid x)&=\frac{s_0(x)}{S(x)}=\frac14,\\
+P(1\mid x)&=\frac{s_1(x)}{S(x)}=\frac34,\\
+\sum_{y\in\mathcal Y}P(y\mid x)&=1.
+\end{aligned}
+\]
+在$0$--$1$损失下$\arg\max_{y\in\mathcal Y}P(y\mid x)=\{1\}$，故唯一输出为$1$。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[模型与决策]\label{ex:V1-C09-S04-02}
+已知$P(Y=1\mid x)=0.6$。若把正类误判为负类的损失为$5$，把负类误判为正类的损失为$1$，比较输出$0$和$1$的条件期望损失。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S04-02}
+\begin{chapterexercisesolution}{ex:V1-C09-S04-02}
+令动作域$\mathcal A=\{0,1\}$，并取正确分类损失为$0$。由
+$P(Y=1\mid x)=0.6$、$P(Y=0\mid x)=0.4$，
+\[
+\begin{aligned}
+\rho(0\mid x)
+  &=5P(Y=1\mid x)+0P(Y=0\mid x)=3,\\
+\rho(1\mid x)
+  &=0P(Y=1\mid x)+1P(Y=0\mid x)=0.4,\\
+\arg\min_{a\in\mathcal A}\rho(a\mid x)&=\{1\}.
+\end{aligned}
+\]
+因此代价敏感决策输出$1$；这里它恰与最大后验决策一致，但依据是条件风险而非仅比较概率。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[三要素辨认]\label{ex:V1-C09-S05-01}
+某方法使用$f_{w,b}(x)=w^{\mathsf T}x+b$，最小化平方经验风险，并用梯度下降求参数。分别指出模型、策略和算法。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S05-01}
+\begin{chapterexercisesolution}{ex:V1-C09-S05-01}
+设$x_i,w\in\mathbb R^d$、$b,y_i\in\mathbb R$且$N\ge1$。三要素依次是
+\[
+\begin{aligned}
+\mathcal F
+  &=\{f_{w,b}(x)=w^{\mathsf T}x+b:(w,b)\in\mathbb R^{d+1}\},
+  &&\text{模型},\\
+J(w,b)
+  &=\frac1N\sum_{i=1}^{N}
+    \bigl(y_i-w^{\mathsf T}x_i-b\bigr)^2,
+  &&\text{策略},\\
+(w_{t+1},b_{t+1})
+  &=(w_t,b_t)-\eta_t\nabla J(w_t,b_t),
+  &&\text{算法}.
+\end{aligned}
+\]
+梯度下降还需给定初值、步长$\eta_t>0$与停止条件；只写$\min J$并未指定如何取得最小点。
+\end{chapterexercisesolution}
+
+\Needspace{6\baselineskip}
+\begin{exercise}[在线均值更新]\label{ex:V1-C09-S05-02}
+在线估计均值时令$\mu_1=x_1$，对$t\ge2$使用$\mu_t=\mu_{t-1}+(x_t-\mu_{t-1})/t$。样本依次为$2,4,9$，求$\mu_1,\mu_2,\mu_3$并核对最终结果。
+\end{exercise}
+\phantomsection\label{sol:V1-C09-S05-02}
+\begin{chapterexercisesolution}{ex:V1-C09-S05-02}
+对按顺序到达的实数流$(x_1,x_2,x_3)=(2,4,9)$，
+\[
+\begin{aligned}
+\mu_1&=x_1=2,\\
+\mu_2&=\mu_1+\frac{x_2-\mu_1}{2}
+      =2+\frac{4-2}{2}=3,\\
+\mu_3&=\mu_2+\frac{x_3-\mu_2}{3}
+      =3+\frac{9-3}{3}=5,\\
+\frac1{3}\sum_{i=1}^{3}x_i&=\frac{2+4+9}{3}=5.
+\end{aligned}
+\]
+最终在线均值与批量均值一致；此结论来自该递推式精确维护前$t$个样本均值。
+\end{chapterexercisesolution}
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V1-C09-CONCEPT-013 L1
+\paragraph{读前自检：本章结论与下一步。}统计学习的基本框架章末由“数据反馈、输入输出空间、假设空间与三要素”落到“冻结任务边界、训练数据和并列规则后执行学习与评价”；请把前者产出和后者输入逐项对齐，固定核对前者末项的输出类型能否作为后者首项的输入类型。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{schema:V1-C09:CH-36}
+\SLChapterFiveSummary{数据反馈、输入输出空间、假设空间与三要素}{用损失把模型输出变成策略目标，再由算法搜索候选}{冻结任务边界、训练数据和并列规则后执行学习与评价}{比较不同学习类型或完整描述一种方法}{进入\cref{chap:V1-C10}，区分拟合、选择与最终评估}
+
+\begin{selfcheckbox}\label{schema:V1-C09:CH-37}
+\begin{enumerate}[leftmargin=2.2em,nosep]
+  \item 能否把一个实际任务写成输入空间、反馈、假设空间、损失和算法均明确的学习问题？未通过时回看\cref{sec:V1-C09-S01}及本章严格定义。
+  \item 能否仅依据反馈结构区分监督、无监督和强化学习，并辨认半监督与主动学习？未通过时回看\cref{sec:V1-C09-S02}。
+  \item 能否区分样本下标与特征上标，并说明$\phi:\mathcal X\to\mathcal Z$何时丢失信息？未通过时回看\cref{sec:V1-C09-S03}。
+  \item 能否区分一个模型与假设空间、概率输出与最终决策？未通过时回看\cref{sec:V1-C09-S04}。
+  \item 能否为任一方法分别写出模型、策略、算法及输入、更新、停止和复杂度？未通过时回看\cref{sec:V1-C09-S05}与算法\ref{alg:V1-C09-finite-erm}。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

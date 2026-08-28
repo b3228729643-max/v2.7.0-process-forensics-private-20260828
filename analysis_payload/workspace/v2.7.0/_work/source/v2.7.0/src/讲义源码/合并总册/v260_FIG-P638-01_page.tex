@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.6.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{805}
+\setcounter{chapter}{33}
+\setcounter{figure}{4}
+\pagestyle{headings}
+\chaptermark{Gibbs 抽样}
+\sectionmark{与 \MetropolisHastings{} 的关系}
+因为$y_{-j}=x_{-j}$，所以精确满条件提议必接受。图\ref{fig:V5-C04-gibbs-vs-mh}同时说明：若只近似满条件或改用其他提议，接受率不再自动等于$1$，此时必须恢复\MetropolisHastings{}校正。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C04/fig_v5_c04_gibbs_vs_mh.tex}
+\FloatBarrier
+\textbf{优化解释及不适用边界。}标准Gibbs抽样没有要逐轮单调下降的目标函数，因此“优化收敛率”“局部最优点”和“每步改进损失”不适用于本算法。
+\end{document}

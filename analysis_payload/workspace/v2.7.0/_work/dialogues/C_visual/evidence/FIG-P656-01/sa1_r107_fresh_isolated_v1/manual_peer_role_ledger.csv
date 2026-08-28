@@ -1,0 +1,11 @@
+peer_role_id,reviewer,members,metric,decision,note
+PR001,SA1_FRESH_ISOLATED,G001-G006,"heading CJK H=32px for all six",PASS,"Same role/font/color/source size is exact; bold heading is internally uniform."
+PR002,SA1_FRESH_ISOLATED,G007-G024,"sequence digits H=25px for 1/2 and 27px for 3; max/min=1.08",PASS,"Difference follows digit shape taxonomy and reaches but does not exceed the legacy 1.08 peer bound."
+PR003,SA1_FRESH_ISOLATED,G010|G016|G021,"patterned digit 2 H=25/25/25px",PASS,"All three teal-node digits match after pure single-component mask isolation."
+PR004,SA1_FRESH_ISOLATED,G028|G031|G034,"count-vector n H=20/20/20px",PASS,"Identical codepoint/role/source size gives exact pixel-height agreement."
+PR005,SA1_FRESH_ISOLATED,G030|G033|G040|G042,"ASCII comma H=10px and area=40px for all four",PASS,"Exact codepoint/font/size/color peer calibration ratios are 1.000 for height and area."
+PR006,SA1_FRESH_ISOLATED,G050|G057|G059,"support natural-script k H=21/21/21px",PASS,"Natural subscripts are mutually identical and exceed the 15px script gate."
+PR007,SA1_FRESH_ISOLATED,G062-G072,"warning full CJK H=29-30px; punctuation G066 separate",PASS,"Full glyphs are visually uniform; 量 at 29px is a 1px contour difference and advisory under R168."
+PR008,SA1_FRESH_ISOLATED,G073-G082,"coefficient full CJK H=30-31px; one-stroke G076=5px",PASS,"Full-height peers have ratio 31/30=1.033; G076 is an intrinsic single-stroke taxonomy case, not missing ink."
+PR009,SA1_FRESH_ISOLATED,G083-G090,"coefficient formula base/operator/script roles",PASS,"N, factorial marks, slash, complete product, n and natural k scripts form a coherent hierarchy; no glyph is unreadable or dominant."
+PR010,SA1_FRESH_ISOLATED,G001-G090,"cross-role visual hierarchy",PASS,"Heading is the sole emphasized role; annotations are lighter but readable; formulas and warnings remain balanced across all panels."

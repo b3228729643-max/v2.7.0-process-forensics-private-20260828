@@ -1,0 +1,28 @@
+view_id,reviewer,file,native_dimensions_or_scope,opened,readability,geometry,grayscale_or_color,page_integration,decision,note
+V001,SA1-FRESH,full_page_200dpi.png,1654x2339,true,PASS,PASS,COLOR,PASS,PASS,Figure occupies the upper page cleanly and the following prose and example are not crowded
+V002,SA1-FRESH,figure_crop_300dpi.png,1855x960,true,PASS,PASS,COLOR,PASS,PASS,Entire figure body legend and two-line caption are complete within the crop
+V003,SA1-FRESH,standalone_300dpi.png,1855x814,true,PASS,PASS,COLOR,N/A,PASS,Both panels and legend remain clear at native 300dpi without caption context
+V004,SA1-FRESH,right_panel_300dpi.png,626x647,true,PASS,PASS,COLOR,N/A,PASS,Right-panel title fraction annotations endpoint marker and axes are all readable
+V005,SA1-FRESH,grayscale_300dpi.png,1855x960,true,PASS,PASS,GRAYSCALE,PASS,PASS,Three left curve styles remain distinguishable and right annotations preserve contrast in grayscale
+V006,SA1-FRESH,after_text_measurement_overlay_300dpi.png,1855x960,true,PASS,PASS,COLOR,PASS,PASS,All 74 text-span and 14 drawing-object boxes map to the intended visible objects
+V007,SA1-FRESH,right_panel_8x_nearest.png,5008x5176,true,PASS,PASS,COLOR,N/A,PASS,Nearest-neighbor targeted review shows intact fraction rule glyphs annotations and marker gaps
+V008,SA1-FRESH,contacts/glyph_contact_001.png,G001-G020,true,PASS,PASS,COLOR,N/A,PASS,Left tick digits and low-profile decimal points have complete pure masks
+V009,SA1-FRESH,contacts/glyph_contact_002.png,G021-G040,true,PASS,PASS,COLOR,N/A,PASS,Left axis-title glyphs and scripts are complete without foreign pixels
+V010,SA1-FRESH,contacts/glyph_contact_003.png,G041-G060,true,PASS,PASS,COLOR,N/A,PASS,Remaining left formula and panel-title glyphs are intact and correctly mapped
+V011,SA1-FRESH,contacts/glyph_contact_004.png,G061-G080,true,PASS,PASS,COLOR,N/A,PASS,All three legend expressions have complete delimiters operators dots and digits
+V012,SA1-FRESH,contacts/glyph_contact_005.png,G081-G100,true,PASS,PASS,COLOR,N/A,PASS,Right ticks and first point-note glyphs have clean corrected color masks
+V013,SA1-FRESH,contacts/glyph_contact_006.png,G101-G120,true,PASS,PASS,COLOR,N/A,PASS,Point-note and limit-note gold glyphs are fully captured and readable
+V014,SA1-FRESH,contacts/glyph_contact_007.png,G121-G140,true,PASS,PASS,COLOR,N/A,PASS,Right axis-title and panel-title bases are complete including CJK and fraction numerator
+V015,SA1-FRESH,contacts/glyph_contact_008.png,G141-G160,true,PASS,PASS,COLOR,N/A,PASS,Right title scripts and first caption glyphs are complete with no contamination
+V016,SA1-FRESH,contacts/glyph_contact_009.png,G161-G180,true,PASS,PASS,COLOR,N/A,PASS,Caption text and rho-2k sequence have complete pure masks
+V017,SA1-FRESH,contacts/glyph_contact_010.png,G181-G200,true,PASS,PASS,COLOR,N/A,PASS,Caption ratio operators punctuation and text are complete and readable
+V018,SA1-FRESH,contacts/glyph_contact_011.png,G201-G220,true,PASS,PASS,COLOR,N/A,PASS,Caption limit phrase and central clause contain no missing strokes
+V019,SA1-FRESH,contacts/glyph_contact_012.png,G221-G240,true,PASS,PASS,COLOR,N/A,PASS,Final caption clause glyphs are complete and uncontaminated
+V020,SA1-FRESH,contacts/glyph_contact_013.png,G241-G242,true,PASS,PASS,COLOR,N/A,PASS,Final two CJK glyphs 下 and 降 are complete and not clipped
+V021,SA1-FRESH,roi/P2550_1x.png+roi/P2550_8x_nearest.png,point-note-vs-curve,true,PASS,PASS,COLOR,N/A,PASS,Native and enlarged views confirm zero overlap and 9.487px clearance
+V022,SA1-FRESH,roi/P3807_1x.png+roi/P3807_8x_nearest.png,marker-vs-x-tick,true,PASS,PASS,COLOR,N/A,PASS,Native and enlarged views confirm a four-pixel white gap
+V023,SA1-FRESH,roi/P3818_1x.png+roi/P3818_8x_nearest.png,marker-vs-arrowhead,true,PASS,PASS,COLOR,N/A,PASS,Native and enlarged views confirm 8.944px clearance
+V024,SA1-FRESH,roi/P3825_1x.png+roi/P3825_8x_nearest.png,curve-vs-open-marker,true,PASS,PASS,COLOR,N/A,PASS,Final-visible curve and marker inks have no overlap after real white fill
+V025,SA1-FRESH,roi/all-71-machine-critical-native-and-8x,71 relation packages,true,PASS,PASS,COLOR,N/A,PASS,Every critical pair is individually decided in manual_critical_relation_review.csv with its own native and 8x files
+V026,SA1-FRESH,contacts/math_rule_D020_1x.png+contacts/math_rule_D020_8x_nearest.png,live title fraction rule,true,PASS,PASS,COLOR,N/A,PASS,Native and enlarged views show an unbroken pure fraction bar with correct numerator and denominator spacing
+V027,SA1-FRESH,figure_crop_300dpi.png+right_panel_300dpi.png,six supplemental live paths D015-D020,true,PASS,PASS,COLOR,PASS,PASS,Legend samples axis shafts and title fraction rule are all present complete correctly integrated and unclipped

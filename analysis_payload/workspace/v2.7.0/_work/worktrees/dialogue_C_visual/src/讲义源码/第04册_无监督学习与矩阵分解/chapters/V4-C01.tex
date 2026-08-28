@@ -1,0 +1,740 @@
+% STAGE12-CHAPTER: V4-C01
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V4-C01-CH01}; CH-02=\label{struct:V4-C01-CH02}; CH-03=\label{struct:V4-C01-CH03}; CH-04=\label{struct:V4-C01-CH04}; CH-05=\label{struct:V4-C01-CH05}; CH-06=\label{struct:V4-C01-CH06}; CH-07=\label{struct:V4-C01-CH07}; CH-08=\label{struct:V4-C01-CH08}; CH-09=\label{struct:V4-C01-CH09}; CH-10=\label{struct:V4-C01-CH10}; CH-11=\label{struct:V4-C01-CH11}; CH-12=\label{struct:V4-C01-CH12}; CH-13=\label{struct:V4-C01-CH13}; CH-14=\label{struct:V4-C01-CH14}; CH-15=\label{struct:V4-C01-CH15}; CH-16=\label{struct:V4-C01-CH16}; CH-17=\label{struct:V4-C01-CH17}; CH-18=\label{struct:V4-C01-CH18}; CH-19=\label{struct:V4-C01-CH19}; CH-20=\label{struct:V4-C01-CH20}; CH-21=\label{struct:V4-C01-CH21}; CH-22=\label{struct:V4-C01-CH22}; CH-23=\label{struct:V4-C01-CH23}; CH-24=\label{struct:V4-C01-CH24}; CH-25=\label{struct:V4-C01-CH25}; CH-26=\label{struct:V4-C01-CH26}; CH-27=\label{struct:V4-C01-CH27}; CH-28=\label{struct:V4-C01-CH28}; CH-29=\label{struct:V4-C01-CH29}; CH-30=\label{struct:V4-C01-CH30}; CH-31=\label{struct:V4-C01-CH31}; CH-32=\label{struct:V4-C01-CH32}; CH-33=\label{struct:V4-C01-CH33}; CH-34=\label{struct:V4-C01-CH34}; CH-35=\label{struct:V4-C01-CH35}; CH-36=\label{struct:V4-C01-CH36}; CH-37=\label{struct:V4-C01-CH37}
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=12; source_group=0; supplement=12
+% FIGURE-KNOWLEDGE-MAP: fig:V4-C01-three-structures -> SLM-13-02-001
+
+\chapter{无监督学习概论}\label{chap:V4-C01}
+\index{无监督学习}
+\index{潜在结构}
+\index{表示学习}
+\index{生成式学习}
+
+% KNOWLEDGE-PLAN: KN-V4-C24-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：无监督学习概论。}无监督学习概论章地图把“从无标签矩阵直达聚类、表示与潜变量建模”作为主线；请为其中首条箭头补出必要条件，并检查终点仍落在本章声明的输出域。\par
+
+\SLChapterOpening{从无标签矩阵直达聚类、表示与潜变量建模}{怎样在没有标签误差的情况下定义结构、目标和评价}{能区分纵向/横向结构、推导潜变量后验并执行重复验证选择}{矩阵维数、条件概率、优化目标与训练--验证划分}{行列约定不清时先核对本章入口；结构或评价混淆时返回\cref{sec:V4-C01-S01,sec:V4-C01-S04}}
+\phantomsection\label{struct:V4-C01-CH01}
+% KNOWLEDGE-PLAN: KN-V4-C24-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}无监督学习概论目标中的“能以无标签样本、潜在变量和学习结果三部分严格表述无监督学习问题”必须可复核；请以无标签样本、潜在变量和学习结果三部分严格表述无监督学习问题，所得结果仅在“中间结果逐项包含首目标“能以无标签样本、潜在变量和学习结果三部分严格表述无监督学习问题”声明的对象、条件与结论”时通过。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能以无标签样本、潜在变量和学习结果三部分严格表述无监督学习问题；
+  \item 能区分聚类、降维、概率模型估计以及它们所利用的数据结构；
+  \item 能把无监督方法拆成模型、策略、算法，并写出可复核的输入、更新与停止规则；
+  \item 能从联合分布逐步推导潜在变量后验，并解释生成、表示与压缩三种视角；
+  \item 能用稳定性、留出似然、重构误差和下游效用评价结果，同时识别不可辨识与数据泄漏。
+\end{itemize}}
+
+\phantomsection\label{struct:V4-C01-CH02}
+% KNOWLEDGE-PLAN: KN-V4-C24-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}无监督学习概论的最短先修明确要求“本章使用向量与矩阵、欧氏范数、条件概率、贝叶斯公式、经验风险、期望、优化迭代和训练集--验证集划分”；请把首项“本章使用向量与矩阵、欧氏范数、条件概率、贝叶斯公式、经验风险、期望、优化迭代和训练集--验证集划分”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章使用向量与矩阵、欧氏范数、条件概率、贝叶斯公式、经验风险、期望、优化迭代和训练集--验证集划分”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章使用向量与矩阵、欧氏范数、条件概率、贝叶斯公式、经验风险、期望、优化迭代和训练集--验证集划分。沿用全书“样本按行”的主约定：设无标签样本为
+\[
+\mathcal U=\{x_1,\ldots,x_N\},\qquad x_i\in\mathbb R^M,
+\]
+并记
+\[
+X=X_{\rm row}=
+\begin{bmatrix}x_1^{\mathsf T}\\ \vdots\\ x_N^{\mathsf T}\end{bmatrix}
+\in\mathbb R^{N\times M}.
+\]
+线性表示因此写成$Z=XW\in\mathbb R^{N\times q}$，其中$W\in\mathbb R^{M\times q}$。只有文档模型使用特殊的词--文档计数矩阵$\mathbf N_{\rm wd}\in\mathbb N_0^{V\times D}$（词按行、文档按列）；若把每篇文档的词频向量视为普通样本，则$X_{\rm doc}=\mathbf N_{\rm wd}^{\mathsf T}\in\mathbb R^{D\times V}$。独立符号和这条转置桥防止同一个$X$静默换向。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V4-C01-CH03}
+% KNOWLEDGE-PLAN: KN-V4-C24-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}无监督学习概论先修自检固定核验“能否核对矩阵$X\in\mathbb R^{N\times M}$的每一行对应一个样本、每一列对应一个属性”；请核对矩阵$X\in\mathbb R^{N\times M}$的每一行对应一个样本、每一列对应一个属性并写出中间结果，再按“$X\in\mathbb R^{N\times M}$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否核对矩阵$X\in\mathbb R^{N\times M}$的每一行对应一个样本、每一列对应一个属性？
+  \item 能否由联合概率$p(x,z)$写出边缘概率$p(x)=\sum_zp(x,z)$？
+  \item 能否说明经验目标值下降与发现真实结构不是同一件事？
+  \item 能否区分训练数据上的拟合指标和独立验证数据上的泛化指标？
+\end{enumerate}
+若第1项未通过，应先复习矩阵维数；若第2项未通过，应先复习条件概率；若第3、4项未通过，应先复习模型选择与过拟合。
+\end{precheckbox}
+
+\phantomsection\label{struct:V4-C01-CH04}
+\begin{dependencybox}
+无标签样本 $\to$ 相似关系与统计规律；
+纵向结构 $\to$ 聚类；
+横向结构 $\to$ 降维与表示；
+联合概率模型 $\to$ 潜在变量后验与生成；
+模型、策略、算法 $\to$ 可执行学习过程；
+内部指标、外部任务与重复抽样 $\to$ 结果评价和模型选择。
+\end{dependencybox}
+
+\begin{keypointbox}[title=数据方向桥：行样本与列样本]
+全书默认把$N$个$M$维样本按行写成$X_{\rm row}\in\mathbb R^{N\times M}$。若局部题目明确改用列样本，则必须同时写出
+\[
+X_{\rm col}=[x_1,\ldots,x_N]=X_{\rm row}^{\mathsf T}
+\in\mathbb R^{M\times N}.
+\]
+例如$N=4,M=2$时，两种表示分别为$4\times2$与$2\times4$；只改变存储方向，不改变样本数和属性数。文档模型的词--文档矩阵采用列文档，并使用独立符号避免静默换向。
+\end{keypointbox}
+
+\phantomsection\label{struct:V4-C01-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V4-C01
+\index[symbols]{n--s9d3457aec33b@$N$：样本数}
+\index[symbols]{m--s64af0531c4c9@$M$：本章无监督数据中每个样本的属性维数（正整数标量）}
+\index[symbols]{x--s03104f5cbe31@$X$：以样本为行的数据矩阵}
+\index[symbols]{x-i--s2b89e6de833e@$x_i$：第$i$个可观测样本}
+\index[symbols]{z-i--s9a6b89570bf4@$z_i$：与$x_i$对应的潜在结构，可为类别、低维向量或图结构}
+\index[symbols]{g-minus-theta-minus--s5fc0973e13a4@$g_\theta$：确定性表示或分配函数}
+\index[symbols]{p-minus-theta-minus-z-minus-midx-minus--sa892346c51a0@$p_\theta(z\mid x)$：给定样本后的潜在变量条件分布}
+\index[symbols]{p-minus-theta-minus-x-minus-midz-minus--s2a0db7ecb7f6@$p_\theta(x\mid z)$：潜在结构生成观测的条件模型}
+\index[symbols]{l-minus-theta-minus--s27d6a5ddff60@$L(\theta)$：训练策略定义的目标函数}
+\index[symbols]{k--s69289aed475b@$K$：本章按具体方法限定的候选阶数；在聚类中为类别数，在表示学习中为维数，不混作同一对象}
+% STAGE19-SYMBOL-INDEX-END: V4-C01
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$N$ & 正整数 & 样本数\\
+$M$ & 正整数 & 每个样本的属性维数\\
+$X$ & $\mathbb R^{N\times M}$ & 以样本为行的数据矩阵\\
+$x_i$ & $\mathbb R^M$ & 第$i$个可观测样本\\
+$z_i$ & $\mathcal Z$ & 与$x_i$对应的潜在结构，可为类别、低维向量或图结构\\
+$g_\theta$ & $\mathcal X\to\mathcal Z$ & 确定性表示或分配函数\\
+$p_\theta(z\mid x)$ & $[0,1]$ & 给定样本后的潜在变量条件分布\\
+$p_\theta(x\mid z)$ & 密度或概率质量 & 潜在结构生成观测的条件模型\\
+$L(\theta)$ & $\mathbb R$ & 训练策略定义的目标函数\\
+$K$ & 正整数 & 候选模型中的类别数、维数或复杂度参数\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{无监督学习问题}{sec:V4-C01-S01}
+\phantomsection\label{struct:V4-C01-CH06}
+\knowledgeanchor{SLM-13-00-001}{无监督学习概论}
+监督学习观察$(x_i,y_i)$并以标签误差约束预测；无监督学习只观察$x_i$，学习目标不能由标签逐样本给出。它试图在数据中发现可重复的统计规律或潜在结构，并把该结构用于描述、压缩、生成、异常识别或后续预测。缺少标签并不表示没有假设：距离、低秩、独立性、稀疏性、平滑性和概率分布族都是结构假设。
+
+% KNOWLEDGE-PLAN: KN-V4-C24-CONCEPT-003 L1
+\paragraph{读前自检：无监督学习基本原理。}从无监督学习基本原理的条件“给定仅含观测的样本集$\mathcal U=\{x_i\}_{i=1}^{N}$”出发，请沿$\widehat\theta\in\arg\min_{\theta\in\Theta}L(\theta;\mathcal U)$标出输入域、输出域和一次运算结果的形状；所得量应符合任何指标都只在其假设范围内有效，因此必须同时写出尺度、噪声模型和复杂度约束。\par
+
+\knowledgeanchor{SLM-13-01-001}{无监督学习基本原理}
+\phantomsection\label{struct:V4-C01-CH07}
+% KNOWLEDGE-PLAN: KN-V4-C24-DEFINITION-001 L1
+\paragraph{读前自检：无监督学习问题。}无监督学习问题给定无标签样本$\mathcal U$、结构空间$\Theta$和准则$L$；请求一个$\widehat\theta\in\arg\min_{\theta\in\Theta}L(\theta;\mathcal U)$，并核对其输出表示或后验落在声明空间。\par
+
+\begin{definition}[无监督学习问题]\label{def:V4-C01-unsupervised}
+给定仅含观测的样本集$\mathcal U=\{x_i\}_{i=1}^{N}$，选定潜在结构空间$\mathcal Z$、模型族$\mathcal M=\{M_\theta:\theta\in\Theta\}$和可由无标签数据计算的准则$L(\theta;\mathcal U)$，无监督学习求
+\[
+\widehat\theta\in\arg\min_{\theta\in\Theta}L(\theta;\mathcal U)
+\]
+或等价的极大化问题，并输出表示$z_i=g_{\widehat\theta}(x_i)$、后验$p_{\widehat\theta}(z_i\mid x_i)$、生成模型$p_{\widehat\theta}(x,z)$或它们的组合。
+\end{definition}
+
+\phantomsection\label{struct:V4-C01-CH08}
+\textbf{模型。}模型规定“结构是什么”。确定性模型可写成$z=g_\theta(x)$；概率模型可写成$p_\theta(x,z)$、$p_\theta(z\mid x)$或$p_\theta(x\mid z)$。若$z$是有限类别，模型表达分组；若$z\in\mathbb R^d$且$d<M$，模型表达低维坐标；若$z$是图或主题比例，模型表达关系或混合成分。
+
+\phantomsection\label{struct:V4-C01-CH09}
+\textbf{学习策略。}策略把结构质量变成目标。常见策略包括最小化类内离差、最小化重构误差、最大化观测数据似然，或在拟合项上加入复杂度惩罚。任何指标都只在其假设范围内有效，因此必须同时写出尺度、噪声模型和复杂度约束。
+
+% KNOWLEDGE-PLAN: KN-V4-C24-CONCEPT-004 L1
+\paragraph{读前自检：无监督学习的基本问题。}无监督学习的硬聚类输出$z_i\in\{1,\ldots,K\}$，软分配输出$q_{ik}$；请对一个样本检查$q_{ik}\ge0$并计算$\sum_kq_{ik}$，核对等于1后再与单一$z_i$的输出类型对照。\par
+
+\SLReviewSection{基本方法与任务分类}{sec:V4-C01-S02}
+\knowledgeanchor{SLM-13-02-001}{无监督学习的基本问题}
+无监督学习的基本任务可按所寻找的结构分类：
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{聚类：}把相似样本归入同一类，揭示数据的纵向结构；
+  \item \textbf{降维：}把高维样本变换为低维表示，揭示属性间的横向结构；
+  \item \textbf{概率模型估计：}学习$p_\theta(x,z)$的结构与参数，同时描述样本和潜在变量之间的关系；
+  \item \textbf{组合任务：}先学习表示再聚类，或在潜变量模型中同时得到低维表示与软分配。
+\end{enumerate}
+
+\begin{definition}[硬聚类与软聚类]\label{def:V4-C01-hard-soft}
+若每个样本只得到一个类别$z_i\in\{1,\ldots,K\}$，称为硬聚类；若输出满足
+\[
+q_{ik}\geq0,\qquad \sum_{k=1}^{K}q_{ik}=1
+\]
+的成员概率或隶属度向量$q_i$，称为软聚类。软分配经过最大分量决策可变成硬分配，但会丢失不确定性。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V4-C24-DEFINITION-003 L1
+\paragraph{读前自检：降维表示。}先锁定无监督学习概论中的降维表示的条件“给定$d<M$，降维学习编码器$g_\theta:\mathbb R^M\to\mathbb R^d$”：检查$\widehat x_i=h_\phi(z_i)$中每项的类型后完成等式变形，所得结果应满足线性降维限制$g_\theta,h_\phi$为线性映射，非线性降维允许曲面或分段结构。\par
+
+\begin{definition}[降维表示]\label{def:V4-C01-dimred}
+给定$d<M$，降维学习编码器$g_\theta:\mathbb R^M\to\mathbb R^d$，令$z_i=g_\theta(x_i)$；若同时有解码器$h_\phi:\mathbb R^d\to\mathbb R^M$，则重构为$\widehat x_i=h_\phi(z_i)$。线性降维限制$g_\theta,h_\phi$为线性映射，非线性降维允许曲面或分段结构。
+\end{definition}
+
+\begin{definition}[潜变量概率模型]\label{def:V4-C01-latent-model}
+潜变量模型以
+\[
+p_\theta(x,z)=p_\theta(z)p_\theta(x\mid z),\qquad
+p_\theta(x)=\sum_{z\in\mathcal Z}p_\theta(x,z)
+\]
+描述观测与未观测结构；连续$z$时将求和替换为积分。学习阶段用观测样本估计$\theta$，推断阶段计算或近似$p_\theta(z\mid x)$。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V4-C24-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：基本方法与任务分类。}无监督任务对比表区分聚类、降维、概率估计与组合任务；请固定核对聚类和降维两行，分别核对输出是类别/隶属度还是低维坐标/重构，并写出各自一项关键风险。\par
+
+\begin{comparisonbox}
+\textbf{任务分类与输出。}\par\smallskip
+\begin{tabularx}{\linewidth}{@{}l X X X@{}}
+\toprule 任务 & 主要输出 & 常见目标 & 关键风险\\ \midrule
+聚类 & 类别或隶属度 & 类内紧致、类间分离 & 距离和类别数依赖\\
+降维 & 低维坐标与可选重构 & 重构、方差或邻域保持 & 信息丢失与尺度失真\\
+概率估计 & 密度、参数、潜变量后验 & 观测似然或其下界 & 模型错设与不可辨识\\
+组合任务 & 表示、类别和生成结构 & 多个目标的加权组合 & 权重冲突与评价偏置\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+% KNOWLEDGE-PLAN: KN-V4-C24-CONCEPT-005 L1
+\paragraph{读前自检：机器学习三要素。}机器学习三要素把问题限定在“一个可复核的无监督方法必须同时给出三要素：模型规定候选结构”；请把“一个可复核的无监督方法必须同时给出三要素：模型规定候选结构”中的已声明对象依次标成输入、输出与判据，检查是否得到只给迭代步骤而不说明所优化的量，也无法判断停止结果的含义。\par
+
+\SLTeachSection{生成式与表示学习视角}{sec:V4-C01-S03}
+\knowledgeanchor{SLM-13-03-001}{机器学习三要素}
+一个可复核的无监督方法必须同时给出三要素：模型规定候选结构；策略规定比较候选结构的目标；算法规定怎样在有限计算预算内寻找候选解。只写一个损失函数而不说明参数化和优化过程，不能构成完整方法；只给迭代步骤而不说明所优化的量，也无法判断停止结果的含义。
+
+\knowledgeanchor{SLM-13-04-001}{无监督学习方法}
+生成式视角先描述潜变量怎样产生观测，即$p_\theta(z)p_\theta(x\mid z)$；表示学习视角先描述观测怎样变成结构，即$z=g_\theta(x)$或$q_\phi(z\mid x)$。二者可在同一模型中相遇：编码器近似后验，解码器近似生成条件分布。
+
+无监督方法还可以按数据结构形成一张完整路线图：聚类用距离或连通性刻画样本之间的纵向分组，本册随后学习层次聚类与\kMeans{}；降维用低秩或最大方差刻画属性之间的横向结构，本册随后学习奇异值分解、主成分分析、潜在语义分析与非负矩阵分解；话题分析把文档表示为主题混合，本册的PLSA从极大似然出发，下一册的LDA再为文档主题比例加入先验；图分析把对象和关系写成网络，并在下一册用随机游走与\PageRank{}寻找全局重要性。前两类首先回答“怎样分组或压缩”，后两类进一步回答“潜在混合或关系结构怎样生成观测”；它们都必须显式给出结构假设、评价准则和可复现算法。
+
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V4-C01-CH11}
+% CORE-DERIVATION-PLAN: KN-V4-C24-DERIVATION-001
+\SLKnowledgeBridge{从生成方向的联合分解得到归一化后验与 MAP 判别规则。}{潜变量 $z\in\{1,\ldots,K\}$、先验 $p(z=k)$ 与似然 $p(x\mid z=k)$。}{$p(z=k)>0$ 且给定观测满足 $p(x)>0$；求和遍历全部潜状态。}{先把证据写为 $p(x)=\sum_{\ell=1}^Kp(z=\ell)p(x\mid z=\ell)$。}
+
+\begin{derivationgoalbox}
+从潜变量联合分布推导离散潜变量的后验，明确归一化分母和均匀先验下的判别边界。结果用于潜变量推断和最大后验分配。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+设$\mathcal Z=\{1,\ldots,K\}$，$p_\theta(z=k)>0$，且对给定$x$有$p_\theta(x)>0$。联合分布按生成方向分解为$p_\theta(x,z=k)=p_\theta(z=k)p_\theta(x\mid z=k)$；所有求和均遍历完整潜变量取值集合。
+\end{derivationprepbox}
+
+\textbf{推导第1步：写出条件概率定义。}
+\[
+p_\theta(z=k\mid x)=\frac{p_\theta(x,z=k)}{p_\theta(x)}.
+\]
+
+\textbf{推导第2步：对潜变量边缘化。}
+\[
+p_\theta(x)=\sum_{j=1}^{K}p_\theta(x,z=j)
+=\sum_{j=1}^{K}p_\theta(z=j)p_\theta(x\mid z=j).
+\]
+
+\textbf{推导第3步：代入并归一化。}
+\[
+p_\theta(z=k\mid x)
+=\frac{p_\theta(z=k)p_\theta(x\mid z=k)}
+{\sum_{j=1}^{K}p_\theta(z=j)p_\theta(x\mid z=j)}.
+\]
+分母不依赖候选类别$k$，所以最大后验分配比较的是$p_\theta(z=k)p_\theta(x\mid z=k)$。
+
+\phantomsection\label{struct:V4-C01-CH12}
+\begin{theorem}[均匀先验下的后验排序]\label{thm:V4-C01-uniform-prior}
+若$p_\theta(z=k)=1/K$对所有$k$成立，则对任意$p_\theta(x)>0$的$x$，
+\[
+\arg\max_k p_\theta(z=k\mid x)
+=\arg\max_k p_\theta(x\mid z=k).
+\]
+若先验不均匀，条件密度相同的两个类别会优先选择先验概率较大的类别。
+\end{theorem}
+
+\phantomsection\label{struct:V4-C01-CH13}
+% KNOWLEDGE-PLAN: KN-V4-C24-PROOF-001 L1
+\paragraph{读前自检：证明：均匀先验下的后验排序。}均匀先验给出后验分子$K^{-1}p_\theta(x\mid z=k)$；请对固定$x$约去各类共同的正分母与$K^{-1}$，核对后验排序等于条件密度排序；先验不均匀时改按$p_\theta(z=k)p_\theta(x\mid z=k)$排序。\par
+
+\begin{proof}
+将均匀先验代入后验公式，分子为$K^{-1}p_\theta(x\mid z=k)$，分母为所有分子的和。对固定$x$，分母与$k$无关且为正，乘子$K^{-1}$也对各类相同，因此后验的大小顺序与条件密度的大小顺序一致。若先验不均匀，后验排序由$p_\theta(z=k)p_\theta(x\mid z=k)$决定；在两个条件密度相等时，乘积随先验增大而增大。两项结论均得到证明。
+\end{proof}
+
+\phantomsection\label{struct:V4-C01-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}把$N$个样本看作$\mathbb R^M$中的点。聚类沿样本方向寻找点集的纵向分组；降维沿属性方向寻找低维子空间或流形；联合模型同时解释点的分组和组内形状。改变坐标尺度会改变距离几何，因此标准化属于模型假设的一部分。
+\end{geometrybox}
+
+\phantomsection\label{struct:V4-C01-CH15}
+\begin{probabilitybox}
+生成模型把每个潜在结构看作一种数据产生机制。后验分配不是“最近中心”的同义词，而是先验与类条件密度的共同结果。密度形状、方差和混合权重都会移动分配边界；输出后验还能表达靠近边界时的不确定性。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V4-C01-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}表示学习常写成
+\[
+\min_{\theta,\phi}\frac1N\sum_{i=1}^{N}
+\ell\!\left(x_i,h_\phi(g_\theta(x_i))\right)
++\lambda\,\Omega(\theta,\phi).
+\]
+第一项要求表示足以重构观测，第二项控制维数、平滑性、稀疏性或参数规模。没有$\Omega$或容量限制时，模型可能记忆训练样本，而没有提取可迁移结构。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V4-C01-CH17}
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C01/fig_v4_c01_three_structures.tex}
+使用\Cref{fig:V4-C01-three-structures}比较方法时，应先写明采用的是分组、压缩还是生成假设，再为右侧输出安排稳定性、留出指标或下游效用检验；训练目标本身不能替潜在结构命名语义。
+
+\SLAdvancedSection{评价、选择与应用}{sec:V4-C01-S04}
+\phantomsection\label{struct:V4-C01-CH10}
+\textbf{学习算法。}下面给出通用的重复验证与有限候选选择流程。它不替代每个候选方法的内部求解算法，而是统一训练、诊断和比较协议。
+
+\phantomsection\label{struct:V4-C01-CH19}
+\textbf{严格伪代码。}\Cref{alg:V4-C01-selection}把数据划分、候选训练、独立评价、稳定性计算和最终重拟合按固定顺序连接起来。
+
+\phantomsection\label{struct:V4-C01-CH20}
+\textbf{流程所需资料与结果。}计算需要无标签样本、候选模型与超参数集合、评价准则、指标无量纲化规则、稳定性与复杂度权重$\alpha,\beta$以及计算预算。比较结束后得到选定模型、结构结果、各项诊断量和停止原因。拟合、稳定性和独立评价彼此分开，避免用同一随机结果同时训练和宣称有效。
+
+\phantomsection\label{struct:V4-C01-CH21}
+\textbf{参数含义。}设候选集合为$\mathcal H$，重复次数$R$，验证比例$\rho$，训练容差$\varepsilon$，最大迭代数$T_{\max}$，稳定性权重$\alpha\geq0$，复杂度权重$\beta\geq0$。$\mathcal H$可包含类别数、表示维数、正则强度和初始化方案。
+
+\phantomsection\label{struct:V4-C01-CH22}
+\textbf{初始化。}先固定数据预处理规则、随机重复方案、候选顺序和并列选择规则；每次重复仅用训练部分估计标准化参数。对每个候选配置使用预先登记的多组初值，使不同配置接受同等初始化预算。
+
+\begin{warningbox}
+\textbf{结构对齐、共同计划与接纳政策。}跨重复比较前必须先按对象类型对齐：聚类优先使用ARI、NMI或共聚类矩阵等标签置换不变统计量；子空间先正交化，再用主角或投影矩阵距离；非唯一矩阵因子先固定列尺度，并用匈牙利匹配或正交Procrustes对齐；主题模型以主题相似度构造代价矩阵后求最优置换。所有候选共用同一组预先登记的$R$次重复。一次失败即淘汰只是可选的保守政策，并非统计定理；默认采用预登记成功率门槛$\tau\in(0,1]$和每次启动的诊断门。状态为$\mathtt{budget\_stop}$，或状态为$\mathtt{numerical\_failure}$但诊断明确仅触发数值平台且目标有限、结构合法的记录，可以参与透明比较；其他数值失败不得冒充有效拟合。评价表不得删去失败记录，并同时报告$R$、成功数$c_h$、失败率、各状态与重启预算；严格全成功政策对应$\tau=1$。
+\end{warningbox}
+
+\SetArgSty{textnormal}
+% KNOWLEDGE-PLAN: KN-V4-C24-ALGORITHM_IDEA-001 L2
+\begin{keypointbox}[title={无监督模型的重复验证与选择：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+% KNOWLEDGE-PLAN: KN-V4-C24-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：无监督模型的重复验证与选择。}无监督模型的重复验证与选择输入“无标签样本、冻结的$R$次拆分或随机源、有限候选集、各候选内部预算、状态接纳规则、成功率门槛$\tau$、评价/对齐/尺度/并列规则与$\alpha,\beta$”，条件“$R\ge1$”；请做一轮“候选模型、有限指标与对齐结果全部核验后原子提交该$(h,r)$记录”，以“完成$R$次共同重复、无合格候选、全量重拟合完成或首次全局失败时停止”核对停止证书。\par
+
+\begin{AlgorithmContract}{
+  input={无标签样本、冻结的$R$次拆分或随机源、有限候选集、各候选内部预算、状态接纳规则、成功率门槛$\tau$、评价/对齐/尺度/并列规则与$\alpha,\beta$},
+  output={最后合法重复记录、所选$\widehat h$、全量拟合、完成重复数$r_{\rm done}$、提交评价数$e_{\rm done}$、各候选成功数$c_h$、状态与最终诊断},
+  preconditions={$R\ge1$；每次训练/验证均非空；候选、随机种子或生成器、共同分母、失败协议、指标与对齐规则预先登记},
+  initialization={$r_{\rm done}=e_{\rm done}=0,c_h=0$，逐候选状态计数与验证损失/稳定性/复杂度累计量清零},
+  loop={按共同的$R$次计划先生成合法拆分，再逐候选训练、独立评价，最后对本次成功结构执行预登记对齐},
+  update={候选模型、有限指标与对齐结果全部核验后原子提交该$(h,r)$记录；整次拆分审计完成后才增加$r_{\rm done}$},
+  domain={训练/验证索引不交叠；损失、稳定性、复杂度及评分有限；聚类/子空间/因子/主题使用各自合法对齐域},
+  failure={接口或预给拆分非法返回$\mathtt{invalid\_input}$；随机拆分源不可用返回$\mathtt{random\_source\_failure}$；全量重拟合或外层汇总失败返回$\mathtt{numerical\_failure}$；候选内部失败只取消该次记录，累计成功率未达$\tau$才取消候选资格},
+  stop={完成$R$次共同重复、无合格候选、全量重拟合完成或首次全局失败时停止},
+  budget={至多$R|\mathcal H|$次候选训练评价及一次全量重拟合；每次训练服从相同的候选内部预算},
+  status={$\mathtt{completed}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$、$\mathtt{random\_source\_failure}$},
+  iterations={$r_{\rm done}$计已完整审计的拆分，$e_{\rm done}$计原子提交评价，$c_h$计候选$h$的成功重复数},
+  diagnostics={计划/实际重复数、逐$(h,r)$内部状态与失败阶段、尺度和对齐诊断、可行集、评分分解及全量重拟合诊断},
+  complexity={外层至多$R|\mathcal H|$次训练评价与对齐，另加一次全量拟合；串行空间由最大候选工作区和记录表决定}
+}
+\begin{algorithm}[H]
+\caption{无监督模型的重复验证与选择}\label{alg:V4-C01-selection}
+\KwIn{$\mathcal U,\mathcal H,R,\rho,\tau,\alpha,\beta$，冻结的拆分源、指标尺度、对齐、状态接纳及并列规则}
+\KwOut{$\widehat h$与全量拟合；$r_{\rm done},e_{\rm done},\{c_h\}$；$\mathtt{status}$、记录表与最终诊断}
+若样本/候选为空，$R,\rho,\tau,\alpha,\beta$或规则非法，则返回$\bot$、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+对每个$h$置$c_h\leftarrow0$并清零状态计数与有限累计量；置$r_{\rm done}\leftarrow0,e_{\rm done}\leftarrow0$\;
+\For{$r\leftarrow1$ \KwTo $R$}{
+  从冻结计划读取或由登记随机源产生训练/验证索引；随机源中断则保留已有记录并返回$\mathtt{random\_source\_failure}$及随机源位置诊断；索引重叠、越界或出现空集则返回$\mathtt{invalid\_input}$及拆分诊断\;
+  只用训练部分拟合预处理变换\;
+  \ForEach{按固定顺序的$h\in\mathcal H$}{
+    在候选内部预算内求$\widehat\theta_{hr}$并无条件保存状态与诊断；若状态不在预登记接纳集，或目标/结构/必要诊断不合格，则记录失败但不提交评价\;
+    否则在验证部分计算固定损失/似然并执行本次结构对齐；若任一对象非有限或不可对齐，则记录失败但不提交评价\;
+    全部门禁通过后原子提交$(h,r)$记录，令$c_h\leftarrow c_h+1,e_{\rm done}\leftarrow e_{\rm done}+1$\;
+  }
+  令$r_{\rm done}\leftarrow r$\;
+}
+仅对$c_h\ge\lceil\tau R\rceil$者以其已登记有效记录形成有限平均量，并把$c_h/R$和失败状态并列报告；形成
+$S(h)=\overline L_{\rm val}(h)+\alpha\{1-\overline{\rm stab}(h)\}+\beta\,{\rm comp}(h)$\;
+若汇总非有限则返回已有记录、$\mathtt{numerical\_failure}$；若无合格候选则返回$\widehat h=\bot$、$\mathtt{completed}$及“无可用候选”诊断\;
+按$S$及冻结并列规则选$\widehat h$，再用全部样本新鲜重拟合；若失败则保留选择与记录，返回$\mathtt{numerical\_failure}$及重拟合阶段诊断\;
+返回$\widehat h$、全量模型、实际计数、$\mathtt{completed}$及最终评分/对齐/停止诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{核心五步是冻结重复划分、折内拟合、对象对齐、汇总稳定性与验证量、按冻结规则选择；失败记录和预算属于稳健实现细节}
+
+\phantomsection\label{struct:V4-C01-CH23}
+\textbf{循环变量、判断条件与更新顺序。}外层循环变量依次为$r=1,\ldots,R$，内层依次访问$h\in\mathcal H$。每个重复先划分数据并拟合预处理，再训练候选、保存状态、计算验证量，随后才按对象类型对齐并计算跨重复稳定性；全部重复完成后统一评分。判断条件包括数据划分合法、训练数值有限、候选诊断通过、$c_h\ge\lceil\tau R\rceil$以及评分并列规则。
+
+\phantomsection\label{struct:V4-C01-CH24}
+\textbf{停止条件与返回结果。}内层训练在目标相对变化、参数相对变化或一阶残差满足容差时停止；达到迭代上限、出现非有限数值或空结构时以相应原因停止，并使该候选整体不合格。外层在预定的同一组$R$次重复和全部候选完成后停止，返回选定配置、全量重拟合模型、含计划分母$R$与成功次数$c_h$的评价表和每次停止原因。
+
+\phantomsection\label{struct:V4-C01-CH25}
+\textbf{正确性依据、收敛条件与不收敛情形。}给定有限候选集合、固定评分和固定并列规则，外层选出通过检查者中评分最小的候选，这是有限枚举正确性的依据。某一候选满足其内部收敛条件，只说明它在相应优化问题上达到该算法承诺的状态。达到预算上限、目标仍下降或残差未达容差时必须注明“未收敛”，不得改记为收敛。外层只是有限枚举，因此不讨论渐近数值收敛；只需验证枚举终止及每个候选的内部停止条件。
+
+\begin{notapplicablebox}[title=\SLDegeneracyTitle]
+若某次划分使训练集或验证集为空、候选产生非有限目标、全部候选均未通过质量检查，或稳定性因共同样本不足而没有定义，就不能继续静默选择。应明确说明哪一项检查未通过；若全部候选均失败，则给出“无可用候选”的结论，并逐项列明原因。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V4-C01-CH26}
+\phantomsection\label{struct:V4-C01-CH27}
+% KNOWLEDGE-PLAN: KN-V4-C24-BOUNDARY-003 L1
+\paragraph{读前自检：复杂度分析：评价、选择与应用。}围绕评价、选择与应用，先采用条件“若候选$h$为每个样本保存宽度$d_h$的表示，令$D=\max_h d_h$”，再由$H=|\mathcal H|$的总成本剥离一次迭代或一次样本因子；最后验证不同候选没有唯一共同公式，因此保留参数化表达。\par
+
+\begin{complexitybox}
+\textbf{复杂度假设。}设候选数为$H=|\mathcal H|$；候选$h$在一次划分上的训练、验证和新样本推断代价分别为$C_h^{\rm train}(N,M)$、$C_h^{\rm eval}(N,M)$和$C_h^{\rm pred}(N_{\rm new},M)$。假设各重复顺序执行，数据以稠密$N\times M$行样本矩阵保存，结构一致性以每个样本的结构标签或表示计算。\\
+\textbf{训练时间复杂度。}重复选择主代价为
+$O\!\left(R\sum_{h\in\mathcal H}(C_h^{\rm train}+C_h^{\rm eval})\right)$，另加跨重复稳定性比较；全量重拟合再增加$C_{\widehat h}^{\rm train}(N,M)$。\\
+\textbf{预测时间复杂度。}对$N_{\rm new}$个新样本应用选定模型的代价为$O(C_{\widehat h}^{\rm pred}(N_{\rm new},M))$；不同候选没有唯一共同公式，因此保留参数化表达。\\
+\textbf{空间复杂度。}保存数据需$O(NM)$。若候选$h$为每个样本保存宽度$d_h$的表示，令$D=\max_h d_h$，全部重复的结构结果上界为$O(RNHD)$；纯类别标签对应$D=1$，才简化为$O(RNH)$。此外还要加各候选模型空间。大规模任务可只保存充分统计量和抽样一致性结果。
+\end{complexitybox}
+
+\phantomsection\label{struct:V4-C01-CH28}
+% KNOWLEDGE-PLAN: KN-V4-C24-BOUNDARY-004 L1
+\paragraph{读前自检：适用条件与局限：评价、选择与应用。}无监督任务使用距离或概率模型前，先固定样本单位、数据类型和独立评价准则；请核对所用距离对该数据类型有定义，并确认候选数和复杂度只由训练外准则选择。\par
+
+\begin{applicabilitybox}
+\textbf{适用条件。}无监督学习适合标签稀缺但观测较多、目标是探索结构或学习预处理表示的任务。应用前应确认样本具有可比含义，距离或概率模型与数据类型相容，样本量足以支持候选复杂度，并且存在至少一种独立评价途径。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V4-C01-CH29}
+\begin{notapplicablebox}[title=\SLMethodLimitationsTitle]
+无标签准则通常不能唯一指定语义；不同距离、先验或表示容量会得到不同结构。潜变量标签可任意置换，某些参数还存在旋转、缩放等不可辨识性。探索结果若没有稳定性与外部效用验证，不能解释为客观类别。
+\end{notapplicablebox}
+
+\phantomsection\label{struct:V4-C01-CH30}
+% KNOWLEDGE-PLAN: KN-V4-C24-BOUNDARY-006 L1
+\paragraph{读前自检：常见错误与误用边界：评价、选择与应用。}把评价、选择与应用放在“边界框首项禁止把低维图上的视觉分离当成高维空间中必然存在的类别”下考察：把固定错误“把低维图上的视觉分离当成高维空间中必然存在的类别”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，并检查改写后的运算或判断有定义，且不再触发“把低维图上的视觉分离当成高维空间中必然存在的类别”。\par
+
+\begin{warningbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 在全部数据上标准化后再划分验证集，造成信息泄漏；
+  \item 只报告一次初始化的结果，忽略局部最优与随机波动；
+  \item 用训练目标选择复杂度，又用同一训练目标宣称泛化有效；
+  \item 把低维图上的视觉分离当成高维空间中必然存在的类别；
+  \item 把潜变量编号当成具有固定语义的数值大小。
+\end{enumerate}
+\end{warningbox}
+
+\phantomsection\label{struct:V4-C01-CH31}
+% KNOWLEDGE-PLAN: KN-V4-C24-COMPARISON-002 L1
+\paragraph{读前自检：易混淆概念对比：评价、选择与应用。}评价、选择与应用要求先确认“对比表首个数据行是“训练目标｜是否拟合选定策略｜对新样本有效””；请随后按列复述“训练目标｜是否拟合选定策略｜对新样本有效”中的对象、假设与结论，用各列均对应首行对象“训练目标”，且未与表中下一行互换验收。\par
+
+\begin{comparisonbox}
+\textbf{易混淆概念与评价指标对比。}\par\smallskip
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule 指标 & 回答的问题 & 不能单独保证的性质\\ \midrule
+训练目标 & 是否拟合选定策略 & 对新样本有效\\
+留出似然或重构 & 是否泛化到同分布样本 & 结构具有目标语义\\
+重复稳定性 & 结构是否对抽样和初值稳健 & 结构有用或无偏\\
+下游效用 & 表示是否帮助指定任务 & 对其他任务仍有效\\
+人工审查 & 结构是否可解释 & 统计上可重复\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+\phantomsection\label{struct:V4-C01-CH18}
+\phantomsection\label{struct:V4-C01-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[两个候选表示维数的选择]\label{exm:V4-C01-model-choice}
+某数据集比较$d=2$与$d=10$两个表示。五次重复后，标准化验证重构损失分别为$0.40$和$0.25$，稳定性分别为$0.90$和$0.55$，复杂度分数分别为$0.2$和$1.0$。取$\alpha=0.5,\beta=0.1$，选择哪个维数？
+
+\phantomsection\label{struct:V4-C01-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V4-C01-model-choice}
+\begin{solution}
+\SLReadTranslation{两个维数要用同一预先登记的评分规则比较：验证重构损失和复杂度越小越好，稳定性越大越好，因此稳定性以惩罚项$1-\operatorname{stab}(d)$进入总分。}
+\SolGiven 两个候选使用同样的五次重复验证协议，权重$\alpha=0.5,\beta=0.1$在比较前固定；测试集不参与表示维数选择。
+\SLMethodTrigger{按$S(d)=L_{\rm val}(d)+\alpha\{1-\operatorname{stab}(d)\}+\beta\operatorname{comp}(d)$计算两项总分，并选择总分较小的维数。}
+\SolPlan 分别计算$d=2$与$d=10$的总分，再用分数之差独立核对排序，最后同时报告三项原始指标所体现的权衡。
+\SolDerive
+\textbf{计算。}评分统一为
+\[
+S(d)=L_{\rm val}(d)+0.5\{1-\operatorname{stab}(d)\}+0.1\operatorname{comp}(d).
+\]
+因此
+\[
+S(2)=0.40+0.5(0.10)+0.1(0.2)=0.47,
+\qquad
+S(10)=0.25+0.5(0.45)+0.1(1.0)=0.575.
+\]
+\textbf{独立核验。}直接比较两者分数之差，
+\[
+S(10)-S(2)=(0.25-0.40)+0.5(0.45-0.10)+0.1(1.0-0.2)
+=0.105>0,
+\]
+与逐项计算的排序一致。
+\SolCheck 权重和指标方向在比较前固定，$S(10)-S(2)=0.105>0$；测试集未参与选择，且最终只输出一个维数结论。
+\SolAnswer 按预先登记的规则选择$d=2$。$d=10$的重构损失更低，但稳定性下降和复杂度增加超过重构收益；报告结论时应同时保留三项原始指标。
+\end{solution}
+
+\phantomsection\label{struct:V4-C01-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V4-C01-CH35}
+本章共12道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S01-01}
+数据矩阵有$200$个样本、每个样本$30$个属性，并按样本为列存储。写出$X$的维数；若表示维数降为5，写出表示矩阵$Z$的维数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S01-01}
+\begin{chapterexercisesolution}{ex:V4-C01-S01-01}
+按“属性为行、样本为列”的约定，维数链为
+\[
+x_i\in\mathbb R^{30},\quad
+X=[x_1,\ldots,x_{200}]\in\mathbb R^{30\times200},
+\]
+\[
+z_i\in\mathbb R^{5},\quad
+Z=[z_1,\ldots,z_{200}]\in\mathbb R^{5\times200}.
+\]
+表示映射只把每列由30维变成5维，样本数仍是200；本题明确采用列样本，所以若改写成$200\times5$，必须同时声明使用转置后的行样本表示，不能静默换向。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S01-02}
+说明“没有标签”为什么不等于“没有目标”，并各举一个聚类和降维目标。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S01-02}
+\begin{chapterexercisesolution}{ex:V4-C01-S01-02}
+“无标签”只表示训练数据中没有给定$y_i$；结构假设仍会定义目标。例如，\kMeans{}聚类使用
+\[
+J_{\mathrm{clu}}(c,\mu)
+=\sum_{i=1}^{n}\norm{x_i-\mu_{c_i}}_2^2,
+\qquad
+(\widehat c,\widehat\mu)\in\argmin_{c_i\in[K],\,\mu_k\in\mathbb R^d}J_{\mathrm{clu}},
+\]
+而编码器$f$、解码器$g$的降维可使用
+\[
+J_{\mathrm{rec}}(f,g)
+=\sum_{i=1}^{n}\norm{x_i-g(f(x_i))}_2^2,
+\qquad
+(\widehat f,\widehat g)\in\argmin_{f,g}J_{\mathrm{rec}}.
+\]
+两式均只读取$x_i$，但分别引入簇中心结构与可重构的低维结构。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S01-03}
+两个属性分别以米和毫米记录。若直接使用欧氏距离，哪个属性更可能支配结果？给出一种处理方式及其代价。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S01-03}
+\begin{chapterexercisesolution}{ex:V4-C01-S01-03}
+同一物理差异满足$1\text{ m}=1000\text{ mm}$，所以直接计算平方距离时
+\[
+(\Delta x_{\mathrm{mm}})^2
+=10^6(\Delta x_{\mathrm m})^2,
+\]
+毫米坐标更容易支配欧氏距离。只用训练集估计$\mu_j,s_j>0$后，可作
+\[
+z_{ij}=\frac{x_{ij}-\mu_j}{s_j},
+\qquad
+\norm{z_i-z_\ell}_2^2
+=\sum_j\frac{(x_{ij}-x_{\ell j})^2}{s_j^2}.
+\]
+代价是距离从物理单位变成标准差单位；若原尺度本就表达重要性，这一变换也会移除相应权重。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S02-01}
+某方法为每个样本输出$(0.1,0.7,0.2)$。判断这是硬聚类还是软聚类；若转为硬分配，类别是什么，损失了什么信息？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S02-01}
+\begin{chapterexercisesolution}{ex:V4-C01-S02-01}
+令$r=(0.1,0.7,0.2)$。因为
+\[
+r_k\ge0\ (k=1,2,3),
+\qquad
+\sum_{k=1}^{3}r_k=0.1+0.7+0.2=1,
+\]
+$r$是三类软分配。最大分量规则给出
+\[
+\widehat c=\argmax_{k\in\{1,2,3\}}r_k=2,
+\qquad
+r\longmapsto e_2=(0,1,0).
+\]
+硬分配只保留索引2，丢失$0.7$的不确定程度以及其余两类的$0.1,0.2$权重，因此不能从$e_2$恢复$r$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S02-02}
+编码器把$\mathbb R^{100}$映射到$\mathbb R^{8}$。若没有解码器，能否仅由“维数更低”断言表示保留了主要信息？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S02-02}
+\begin{chapterexercisesolution}{ex:V4-C01-S02-02}
+不能。常数编码器就是反例：
+\[
+f:\mathbb R^{100}\to\mathbb R^8,
+\qquad
+f(x)\equiv0
+\quad\Longrightarrow\quad
+f(x_i)=f(x_j)\ \text{对任意 }i,j.
+\]
+它满足“100维降到8维”，却完全丢失样本差异。必须另定义可检验准则，例如有解码器$g$时的
+\[
+L_{\mathrm{rec}}=\frac1n\sum_{i=1}^{n}\norm{x_i-g(f(x_i))}_2^2,
+\]
+或邻域保持、独立下游损失与重复拟合稳定性，并与简单基线比较。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S02-03}
+给定二类潜变量$z\in\{1,2\}$，写出$p_\theta(x)$，并说明为什么只观察$x$仍可估计混合模型参数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S02-03}
+\begin{chapterexercisesolution}{ex:V4-C01-S02-03}
+边缘分布为
+\[
+p_\theta(x)=p_\theta(z=1)p_\theta(x\mid z=1)+p_\theta(z=2)p_\theta(x\mid z=2).
+\]
+若观测$x_1,\ldots,x_n$独立同分布，则
+\[
+\widehat\theta\in\argmax_{\theta\in\Theta}
+\ell(\theta),
+\qquad
+\ell(\theta)=\sum_{i=1}^{n}\log p_\theta(x_i).
+\]
+所以即使$z$未观测，样本仍通过边缘密度约束参数；能否唯一恢复各成分还取决于可辨识性、样本量和初始化。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S03-01}
+两类先验为$(0.8,0.2)$，某点的类条件密度为$(0.1,0.3)$。计算未归一化后验权重和归一化后验。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S03-01}
+\begin{chapterexercisesolution}{ex:V4-C01-S03-01}
+未归一化权重及归一化后验依次为
+\[
+\widetilde r_1=0.8\times0.1=0.08,
+\qquad
+\widetilde r_2=0.2\times0.3=0.06,
+\]
+\[
+r_1=\frac{0.08}{0.08+0.06}=\frac47,
+\qquad
+r_2=\frac{0.06}{0.08+0.06}=\frac37.
+\]
+尽管第二类条件密度更高，较大的第一类先验使最大后验类别变为第1类。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S03-02}
+证明后验公式对$k$求和等于1，并指出证明所需的分母条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S03-02}
+\begin{chapterexercisesolution}{ex:V4-C01-S03-02}
+对$k$求和，
+\[
+\sum_{k=1}^{K}p_\theta(z=k\mid x)
+=\frac{\sum_kp_\theta(z=k)p_\theta(x\mid z=k)}
+{\sum_jp_\theta(z=j)p_\theta(x\mid z=j)}=1.
+\]
+需要分母$p_\theta(x)$严格为正；若模型给$x$零边缘概率，条件分布在该点没有定义，应先修正支撑或模型。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S03-03}
+在重构目标中令编码器和解码器容量足以逐样本记忆。说明训练重构误差为0为什么不能证明学到了稳定表示。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S03-03}
+\begin{chapterexercisesolution}{ex:V4-C01-S03-03}
+若模型容量足够，可给每个训练样本分配专用码$z_i$并令
+\[
+f(x_i)=z_i,
+\qquad
+g(z_i)=x_i
+\quad\Longrightarrow\quad
+L_{\mathrm{train}}
+=\frac1n\sum_{i=1}^{n}\norm{x_i-g(f(x_i))}_2^2=0.
+\]
+这只证明训练点被记忆，并不推出对新样本$X'$有
+\[
+L_{\mathrm{test}}=\mathbb E\norm{X'-g(f(X'))}_2^2\approx0.
+\]
+因此还要检查独立样本重构或下游性能，并用低维、平滑、稀疏、噪声扰动或参数正则限制记忆。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S04-01}
+某配置三次聚类的一致性为$0.92,0.90,0.30$。只报告平均值是否充分？还应检查什么？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S04-01}
+\begin{chapterexercisesolution}{ex:V4-C01-S04-01}
+三次结果的均值和极差为
+\[
+\bar s=\frac{0.92+0.90+0.30}{3}=0.706\overline6,
+\qquad
+R=\max_t s_t-\min_t s_t=0.62.
+\]
+$\bar s$掩盖了一次明显失稳，所以还应报告逐次结果、最小值或分位数，并检查该次的数据划分、初始化、空类、异常点和停止原因。若低值可重复出现，应改进初始化、降低复杂度或承认结构对扰动敏感。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S04-02}
+为什么标准化参数必须只用训练部分估计？说明使用全体样本均值会泄漏什么。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S04-02}
+\begin{chapterexercisesolution}{ex:V4-C01-S04-02}
+设训练索引集为$T$、验证索引集为$V$。合法变换只由$T$决定：
+\[
+\mu_T=\frac1{|T|}\sum_{i\in T}x_i,
+\qquad
+s_T^2=\frac1{|T|}\sum_{i\in T}(x_i-\mu_T)^2,
+\qquad
+z_i=\frac{x_i-\mu_T}{s_T}\quad(i\in T\cup V).
+\]
+若改用
+\[
+\mu_{T\cup V}=\frac1{|T|+|V|}\sum_{i\in T\cup V}x_i,
+\]
+则$V$中的取值已进入训练坐标变换，验证集不再独立模拟新数据，指标可能偏乐观。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V4-C01-S04-03}
+一个模型达到最大迭代数时目标仍持续下降。应把停止状态写成“收敛”吗？给出后续处理。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V4-C01-S04-03}
+\begin{chapterexercisesolution}{ex:V4-C01-S04-03}
+不能。若停止准则是相对目标变化不超过$\varepsilon$，则在$t=T_{\max}$时仍有
+\[
+\delta_t=\frac{|J_t-J_{t-1}|}{\max\{1,|J_{t-1}|\}}>\varepsilon,
+\qquad
+J_t\le J_{t-1},
+\]
+只能记录为“达到迭代上限且尚未满足收敛准则”，不能写成收敛。应保存$J_t,\delta_t,T_{\max}$，增加迭代上限或调整优化参数后复核；比较模型时也不能把未充分优化的较差目标误判为模型本身能力不足。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+
+\Needspace{4\baselineskip}
+% KNOWLEDGE-PLAN: KN-V4-C24-CONCEPT-010 L1
+\paragraph{读前自检：本章结论与下一步。}无监督学习概论章末把“无标签样本、潜在结构、生成模型与表示映射”收束为“在重复划分中拟合有限候选，记录全部状态，并按预登记成功率和诊断门透明比较”；请把$z$代入对应定义并写出结果类型，再核对“代入结果满足定义域与取值域”且该结果能直接进入章末所述方法。\par
+
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V4-C01-CH36}
+\SLChapterFiveSummary{无标签样本、潜在结构、生成模型与表示映射}{由联合分布边缘化得到潜变量后验，并区分从$z$到$x$的生成方向和从$x$到$z$的表示方向}{在重复划分中拟合有限候选，记录全部状态，并按预登记成功率和诊断门透明比较}{需要聚类、降维、生成或异常结构而没有逐样本标签监督时}{进入聚类；继续使用$X\in\mathbb R^{N\times M}$的行样本约定，文档矩阵另用$\mathbf N_{\rm wd}$并显式转置}
+
+\phantomsection\label{struct:V4-C01-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{问题：}能否用$\mathcal U,\mathcal Z,\mathcal M,L$完整写出无监督学习问题？未通过则回看第1节。
+  \item \textbf{分类：}能否区分聚类、降维和概率模型估计的输出与假设？未通过则回看第2节。
+  \item \textbf{推导：}能否从联合分布三步得到潜变量后验并解释先验作用？未通过则回看第3节。
+  \item \textbf{算法：}能否说明输入、候选、初始化、更新、停止、收敛和复杂度？未通过则回看第4节。
+  \item \textbf{评价：}能否识别泄漏、随机失稳、不可辨识和训练指标复用？未通过则回看第4节；五项均可独立作答，并能完成至少八道练习，才算达到本章学习目标。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}

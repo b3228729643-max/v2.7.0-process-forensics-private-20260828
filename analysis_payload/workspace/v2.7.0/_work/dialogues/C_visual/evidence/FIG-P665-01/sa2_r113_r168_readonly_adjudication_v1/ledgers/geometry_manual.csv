@@ -1,0 +1,13 @@
+geometry_id,scope,native_manual_measurement_or_relation,r168_disposition
+G01,whole diagram boundary,"All semantic ink lies inside the native diagram crop; no title, card, border, arrowhead, formula, or divider is cut.",R168_CLEAR
+G02,left title to density,"Seventeen-pixel machine envelope gap; native ink bands are distinct and centered on the same left-panel axis.",R168_CLEAR
+G03,density to brace,"Machine envelopes overlap because O02/O03 boxes deliberately include padding, but native ROI shows the formula baseline and brace stroke as separate ink bands with white clearance.",R168_CLEAR_BBOX_CONTAMINATION_ONLY
+G04,brace to explanation,"Machine envelopes overlap from conservative boxes; native1x and NN8x show the brace below the formula and the explanation lower still, with no shared visible ink.",R168_CLEAR_BBOX_CONTAMINATION_ONLY
+G05,explanation to top cards,"Conservative explanation/card envelopes meet slightly, while native pixels show a clear white strip before both pale card fills and their text.",R168_CLEAR_BBOX_CONTAMINATION_ONLY
+G06,left card grid,"O05 and O06 have a 40 px horizontal envelope gap; O07 is centered 30 px below their envelopes, producing a stable triangular hierarchy.",R168_CLEAR
+G07,panel gutter,"Divider is isolated by 59 px or more from the closest left semantic card envelope and 148 px or more from right result/warning envelopes; native gutter ROI shows no ink crossing.",R168_CLEAR
+G08,right title to log partition,"Seventeen-pixel envelope gap; title and formula remain separate native ink bands with aligned centers.",R168_CLEAR
+G09,log partition to arrow to derivative,"Conservative O10/O11 and O11/O12 boxes overlap, but NN8x shows distinct formula, arrowhead, and derivative strokes with no touching or occlusion.",R168_CLEAR_BBOX_CONTAMINATION_ONLY
+G10,derivative to result card,"The derivative envelope meets the card envelope at the boundary, yet native pixels show white clearance between denominator/subscript ink and the blue frame.",R168_CLEAR_BBOX_CONTAMINATION_ONLY
+G11,result card to warning card,"Twenty-five-pixel envelope gap; both rounded frames are closed, horizontally balanced, and visually distinct.",R168_CLEAR
+G12,diagram to caption and page flow,"Warning/card ink ends before the caption; caption completes before the following posterior derivation. Page integration shows no crowding, clipping, or abnormal void.",R168_CLEAR

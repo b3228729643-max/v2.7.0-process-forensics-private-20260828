@@ -1,0 +1,37 @@
+﻿object_id,object_class,source_line,semantic_label,bbox_x0_px,bbox_y0_px,bbox_x1_px,bbox_y1_px
+B01,core_node_border,18,joint,620,1627,1009,1781
+B02,core_node_border,19,cond,1080,1627,1447,1781
+B03,core_node_border,20,coord,1529,1627,1896,1781
+B04,core_node_border,21,scan,1529,1851,1896,2006
+B05,core_node_border,22,sample,1080,1851,1447,2006
+B06,core_node_border,23,diag,631,1851,998,2006
+B07,side_node_border,29,correct,357,1375,659,1584
+B08,side_node_border,30,mix,1868,2040,2171,2230
+B09,boundary_node_border,34,boundary,814,2129,1713,2236
+F01,flow_arrow,24,joint_to_cond,998,1693,1091,1715
+F02,flow_arrow,25,cond_to_coord,1436,1693,1540,1715
+F03,flow_arrow,26,coord_to_scan,1701,1770,1723,1862
+F04,flow_arrow,27,scan_to_sample,1436,1917,1540,1939
+F05,flow_arrow,28,sample_to_diag,987,1917,1091,1939
+L01,leader_line,31,correct_to_joint,614,1577,665,1634
+L02,leader_line,32,mix_to_scan,1862,1998,1902,2047
+T01,text,18,联合目标 / 局部因子,638,1685,992,1727
+T02,text,19,给定 x_{-j} 的满条件,1104,1656,1424,1702
+T03,text,19,π_j(·|x_{-j}),1175,1704,1353,1751
+T04,text,20,单坐标核 K_j,1606,1653,1817,1699
+T05,text,20,只更新 x_j,1628,1707,1794,1753
+T06,text,21,扫描核,1652,1886,1773,1927
+T07,text,21,系统 / 随机,1615,1934,1810,1976
+T08,text,22,相关样本,1184,1911,1344,1952
+T09,text,23,诊断,775,1886,855,1927
+T10,text,23,MCSE / ESS / 轨迹,654,1934,976,1976
+T11,text,29,正确性条件,398,1390,618,1431
+T12,text,29,目标保持,415,1438,601,1479
+T13,text,29,支持可达,415,1486,601,1527
+T14,text,29,遍历性,435,1534,581,1575
+T15,text,30,混合效率,1927,2069,2113,2110
+T16,text,30,自相关长度,1910,2117,2130,2158
+T17,text,30,有效样本量,1910,2166,2130,2206
+T18,text,34,正确内核 ≠ 快速混合,1073,2162,1455,2207
+T19,text,37,图 33.1,374,2261,500,2306
+T20,text,37,满条件把联合目标转为单坐标更新，扫描后得到需以 MCSE、ESS 与轨迹诊断的相关样本,540,2261,2153,2305

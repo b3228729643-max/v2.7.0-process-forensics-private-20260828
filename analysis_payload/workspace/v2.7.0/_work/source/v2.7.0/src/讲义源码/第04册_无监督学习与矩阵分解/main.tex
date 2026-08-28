@@ -1,0 +1,30 @@
+% Stage 17 final official entry: Volume 4, V4-C01--V4-C06.
+% Match the merged-book compatibility policy: the installed experimental
+% tagged-PDF block layer rejects enumitem keys used by the chapter map.
+% Standard PDF metadata remains supplied by \SLSetBookMetadata/hyperref.
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第4册}{统计学习方法初学者讲义}{无监督学习与矩阵分解}
+\begin{document}
+\raggedbottom
+\frontmatter
+\SLMakeTitle
+\chapter*{本册导读}\addcontentsline{toc}{chapter}{本册导读}
+本册转向没有标签监督的学习问题，先建立无监督学习的任务、评价与模型选择框架，再依次学习聚类、奇异值分解、主成分分析、潜在语义分析、非负矩阵分解与概率潜在语义分析。学习时应同时追踪“相似性或重构目标如何定义、矩阵结构如何揭示低维表示、概率模型如何引入潜在变量”三条主线；各章均配置完整推导、算法伪代码、例题、分层练习和自检。
+\SLPrintSourceNotice
+\SLPrintContents
+\mainmatter
+\index{统计学习方法}
+\input{chapters/V4-C01}
+\input{chapters/V4-C02}
+\input{chapters/V4-C03}
+\input{chapters/V4-C04}
+\input{chapters/V4-C05}
+\input{chapters/V4-C06}
+\backmatter
+\SLPrintReferences
+\begingroup
+\addtolength{\textheight}{2pt}% keep the one-page topic index inside the output box
+\printbookindexes
+\endgroup
+\end{document}

@@ -1,0 +1,36 @@
+{
+  "schema": "P126_R8_STATIC_GEOMETRY_PROJECTION_V1",
+  "native_dpi": 300,
+  "legend": {
+    "actual_handler": "default pgfplots line legend",
+    "sample_length_cm": 0.6,
+    "on_cm": 0.06,
+    "off_cm": 0.09,
+    "line_cap": "butt",
+    "expected_visible_segment_count": 4,
+    "expected_segment_pixels": 7.087,
+    "expected_internal_blank_run_pixels": 10.630
+  },
+  "label6": {
+    "anchor": "south east",
+    "xshift_pt": -6,
+    "yshift_pt": 10,
+    "anchor_offset_pixels": 24.907,
+    "opaque_protection_inner_sep_pt": 0.8,
+    "opaque_protection_pixels": 3.321,
+    "expected_minimum_native_gap_pixels": 3.321,
+    "note": "The label is moved to the upper-left of q6, away from the y-axis; earlier contour ink is suppressed only within the local protection margin."
+  },
+  "label7": {
+    "anchor": "east",
+    "xshift_pt": -8,
+    "yshift_pt": -2,
+    "marker_radius_pt": 1.9,
+    "conservative_bbox_to_marker_gap_pt": 6.1,
+    "conservative_bbox_to_marker_gap_pixels": 25.322,
+    "opaque_protection_inner_sep_pt": 0.8,
+    "expected_minimum_native_gap_pixels": 25.322,
+    "note": "The label's right edge is projected 8 pt left of q7; subtracting the 1.9 pt marker radius leaves 6.1 pt before rasterization."
+  },
+  "rendered_pass_claimed": false
+}

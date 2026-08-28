@@ -1,0 +1,24 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 1 册}{统计学习方法讲义 v2.6.0}{数学基础与统计学习基本理论}
+\begin{document}
+\setcounter{page}{4}
+\setcounter{chapter}{1}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{数学语言、符号约定与学习路线}
+\begin{geometrybox}
+\textbf{几何解释。} 向量$\boldsymbol{x}\in\R^d$可视为$d$维空间中的点，也可视为从原点指向该点的箭头；矩阵$X$把$n$个样本按行排列。维数核对相当于检查几何变换的输入空间与输出空间能否衔接。
+\end{geometrybox}
+\begin{probabilitybox}
+事件是样本空间的子集，事件指示函数是取值为$0$或$1$的随机变量。其平均值记录事件在样本中的发生比例，并为后续“期望等于概率”的关系准备统一语言。
+\end{probabilitybox}
+\begin{optimizationbox}
+\textbf{优化解释。} 参数$\theta$是搜索对象，允许取值的集合是可行域，评价参数优劣的函数是目标函数。先声明变量与条件，才能判断一次更新是否仍在可行域内。
+\end{optimizationbox}
+\input{../../绘图源码/第01册_数学基础与统计学习基本理论/V1-C01/fig_v1_c01_language_flow.tex}
+使用\cref{fig:V1-C01-language-flow}时应从任务端逆向核对：对象、取值域、映射和目标只要有一项未定义，就先补全声明再计算；箭头记录使用关系，不是可逆蕴含。
+\begin{example}[三样本数据的类型核对]
+设$X=\begin{bmatrix}1&0\\2&1\\0&1\end{bmatrix}\in\R^{3\times2}$，$\boldsymbol{w}=(2,-1)^{\mathsf T}\in\R^2$，标签$\boldsymbol{y}=(1,1,-1)^{\mathsf T}$。求$X\boldsymbol{w}$，并核对结果维数。
+\end{example}
+\end{document}

@@ -1,0 +1,46 @@
+% v2.6.0 figure UID: FIG-P544-01
+\tikzset{
+  slfig-FIG-P544-01/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,
+    every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P544-01-base/.style={draw=SLBlue,rounded corners=2pt,fill=SLBlue!7,
+    minimum width=39mm,minimum height=9mm,line width=.84pt,align=center},
+  slfig-FIG-P544-01-mid/.style={draw=SLTeal,rounded corners=2pt,fill=SLTeal!7,
+    minimum width=39mm,minimum height=10mm,line width=.84pt,align=center},
+  slfig-FIG-P544-01-top/.style={draw=SLGold,rounded corners=2pt,fill=SLGold!10,
+    minimum width=54mm,minimum height=10mm,line width=.92pt,align=center},
+  slfig-FIG-P544-01-reversible/.style={draw=SLGold,rounded corners=2pt,fill=white,
+    minimum width=31mm,minimum height=9mm,line width=.78pt,align=center},
+  slfig-FIG-P544-01-dep/.style={-{Stealth[length=2.2mm]},draw=SLBlue,line width=1.0pt},
+  slfig-FIG-P544-01-sufficient/.style={-{Stealth[length=2mm]},draw=SLGold,
+    line width=.72pt,densely dashed},
+  slfig-FIG-P544-01-edgelabel/.style={font=\fontsize{8.8pt}{10.4pt}\selectfont,
+    text=SLGold,fill=white,inner sep=.8pt},
+  slfig-FIG-P544-01-legend/.style={anchor=west,text=SLTextGray,
+    font=\fontsize{8.8pt}{10.4pt}\selectfont,inner sep=0pt}
+}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P544-01,>=Stealth]
+  \node[slfig-FIG-P544-01-base] (foundation) at (0,-2.05) {马尔可夫性质 / 转移规则};
+  \node[slfig-FIG-P544-01-mid] (fixed) at (-2.55,-.15) {平稳固定点\\$\pi=\pi P$};
+  \node[slfig-FIG-P544-01-mid] (structure) at (2.55,-.15) {不可约 / 非周期 / 返性};
+  \node[slfig-FIG-P544-01-top] (longrun) at (0,1.85) {长期结论\\时间平均与逐步收敛};
+  \node[slfig-FIG-P544-01-reversible] (reversible) at (-5.25,-2.05)
+    {可逆性 / 细致平衡};
+
+  \draw[slfig-FIG-P544-01-dep] (foundation)--(fixed);
+  \draw[slfig-FIG-P544-01-dep] (foundation)--(structure);
+  \draw[slfig-FIG-P544-01-dep] (fixed)--(longrun);
+  \draw[slfig-FIG-P544-01-dep] (structure)--(longrun);
+  \draw[slfig-FIG-P544-01-sufficient] (reversible)--(fixed)
+    node[slfig-FIG-P544-01-edgelabel,midway,above left] {充分条件};
+
+  \node[slfig-FIG-P544-01-legend] at (-5.75,2.65)
+    {实线：必要依赖链};
+  \draw[slfig-FIG-P544-01-dep,yshift=1.8mm] (-3.65,2.66)--(-2.75,2.66);
+  \node[slfig-FIG-P544-01-legend] at (-1.95,2.65)
+    {虚线：仅充分，不是必要前置};
+  \draw[slfig-FIG-P544-01-sufficient,yshift=1.8mm] (1.20,2.66)--(2.10,2.66);
+\end{tikzpicture}
+\caption{本章概念依赖：从马尔可夫性质和转移规则出发，分别经平稳固定点与结构条件到达长期结论；可逆性只提供通向平稳性的充分条件}\label{fig:V5-C01-dependency}
+\end{figure}

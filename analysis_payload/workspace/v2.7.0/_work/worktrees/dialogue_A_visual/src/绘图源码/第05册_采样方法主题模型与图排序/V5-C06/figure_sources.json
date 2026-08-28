@@ -1,0 +1,261 @@
+{
+  "contract_version": "1.6.0",
+  "chapter_id": "V5-C06",
+  "status": "current_identity_semantics_and_source_mapping",
+  "notice": "本清单只维护当前图对象身份、语义与源码映射；R08数值复算契约见中央manifest。",
+  "figure_count": 8,
+  "numeric_manifest": "绘图源码/figure_numeric_manifest_v16.json",
+  "figures": [
+    {
+      "figure_id": "FIG-V5-C06-01",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_dependency_graph.tex",
+      "source_file": "fig_v5_c06_dependency_graph.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C06-dependency-graph",
+      "caption": "本章从共享的文档--主题--单词条件结构分出两个模型目标：完整Bayes LDA由折叠Gibbs推断，点参数LDA变体由平均场变分EM估计；箭头表示学习依赖，不表示两个后验相同",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读图时应回答：“完整Bayes LDA与点参数LDA变体共享什么条件结构、又在哪个模型目标处分叉？”",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+        "target_label": "fig:V5-C06-dependency-graph",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-00-001",
+        "PRE-TM-003",
+        "SLM-20-02-002",
+        "SLM-20-02-003"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：本章从共享的文档—主题—单词条件结构分出两个模型目标：完整Bayes LDA由折叠Gibbs推断，点参数LDA变体由平均场变分EM估计；箭头表示学习依赖，不表示两个后验相同"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C06-02",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_generative_process.tex",
+      "source_file": "fig_v5_c06_generative_process.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C06-generative-process",
+      "caption": "完整Bayes LDA 的三层祖先采样流程；点参数变体仅在侧注中区分。",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "读图时应沿五条祖先边核对完整Bayes联合分布的四类因子、每个m内的n嵌套，并说明点参数变体为何不含主题词Dirichlet先验。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+        "target_label": "fig:V5-C06-generative-process",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "PRE-TM-003",
+        "SLM-20-02-004",
+        "SLM-20-01-005"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：图保留全局主题、文档和词位三条泳道及四个生成步骤。固定超参数beta和alpha分别指向完整Bayes中的随机概率向量varphi_k和theta_m；随后theta_m指向潜在z_mn，z_mn与varphi_k共同指向观测w_mn。n=1到N_m嵌套在每个m内；侧注明确点参数变体中每个varphi_k是待估参数且不含beta先验。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C06-03",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_plate_graph.tex",
+      "source_file": "fig_v5_c06_plate_graph.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C06-plate-graph",
+      "caption": "完整Bayes LDA盘式图把超参数、潜变量和观测变量分开：每篇文档共享一个主题比例，每个词位拥有一个主题指派，所有文档共享带Dirichlet先验的主题词分布；盘框标明重复次数，箭头只表示条件依赖方向",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读图时应回答：“完整Bayes LDA中哪些变量按主题、文档和词位重复？”",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+        "target_label": "fig:V5-C06-plate-graph",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-02-005"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：完整Bayes LDA盘式图把超参数、潜变量和观测变量分开：每篇文档共享一个主题比例，每个词位拥有一个主题指派，所有文档共享带Dirichlet先验的主题词分布；盘框标明重复次数，箭头只表示条件依赖方向"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C06-04",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_collapsed_gibbs_counts.tex",
+      "source_file": "fig_v5_c06_collapsed_gibbs_counts.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C06-collapsed-gibbs-counts",
+      "caption": "折叠Gibbs更新先临时移除当前词位，再把文档--主题偏好与主题--单词证据相乘形成满条件分布，最后抽取新主题并恢复计数；上标负$i$防止当前词位对自身产生重复计数",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "读图时应回答：“折叠Gibbs更新先临时移除当前词位，再把文档--主题偏好与主题--单词证据相乘形成满条件分布，最后抽取新主题并恢复计数；上标负$i$防止当前词位对自身产生重复计数”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+        "target_label": "fig:V5-C06-collapsed-gibbs-counts",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-03-001",
+        "SLM-20-03-002",
+        "SLM-20-03-003",
+        "SLM-20-03-004",
+        "SLM-20-03-005",
+        "SLM-20-02-008"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：折叠Gibbs更新先临时移除当前词位，再把文档—主题偏好与主题—单词证据相乘形成满条件分布，最后抽取新主题并恢复计数；上标负i防止当前词位对自身产生重复计数"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C06-05",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_elbo_geometry.tex",
+      "source_file": "fig_v5_c06_elbo_geometry.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C06-elbo-geometry",
+      "caption": "观测对数证据等于ELBO与变分分布到真实后验的KL散度之和；平均场坐标更新可使ELBO逐步不降，但非凸目标下有限运行通常只得到坐标稳定点或局部驻点，多启动比较也不构成全局最优证明",
+      "semantic_type": "geometric_or_partition_diagram",
+      "teaching_objective": "读图时应回答：“ELBO单调不降为何只给出局部数值进展，而不是全局最优证书？”",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+        "target_label": "fig:V5-C06-elbo-geometry",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-04-001",
+        "SLM-20-04-002",
+        "SLM-20-04-003",
+        "SLM-20-03-006"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：观测对数证据等于ELBO与变分分布到真实后验的KL散度之和；平均场坐标更新可使ELBO逐步不降，但非凸目标下有限运行通常只得到坐标稳定点或局部驻点，多启动比较也不构成全局最优证明"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C06-06",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_mean_field_graph.tex",
+      "source_file": "fig_v5_c06_mean_field_graph.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C06-mean-field-graph",
+      "caption": "固定主题--词参数$\\boldsymbol\\varphi$时，平均场近似把单文档后验中耦合的$\\boldsymbol\\theta_m$与$z_{mn}$替换为两个变分因子族；被切断的是近似后验中的直接依赖，固定参数仍通过词似然进入责任度更新",
+      "semantic_type": "knowledge_dependency_graph",
+      "teaching_objective": "读图时应回答：“固定主题--词参数$\\boldsymbol\\varphi$时，平均场近似把单文档后验中耦合的$\\boldsymbol\\theta_m$与$z_{mn}$替换为两个变分因子族；被切断的是近似后验中的直接依赖，固定参数仍通过词似然进入责任度更新”如何由位置、方向、曲线或连接关系体现？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+        "target_label": "fig:V5-C06-mean-field-graph",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-04-004"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：固定主题—词参数φ时，平均场近似把单文档后验中耦合的θ下标m与z下标(mn)替换为两个变分因子族；被切断的是近似后验中的直接依赖，固定参数仍通过词似然进入责任度更新"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C06-07",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_variational_updates.tex",
+      "source_file": "fig_v5_c06_variational_updates.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C06-variational-updates",
+      "caption": "点参数LDA的两层变分EM：只有每篇局部VI以$\\mathtt{completed}/\\mathtt{converged}$成功后，才可汇总$C_{kv}$并执行M步；局部预算或任何失败均止于记录，外层可行的$\\mathtt{budget\\_stop}$仅以“预算候选／未收敛”及原$\\mathtt{status}$参加同口径选择，绝不冒充收敛。",
+      "semantic_type": "process_or_algorithm_flow",
+      "teaching_objective": "读图应能逐边回答：哪两个局部状态允许进入$C_{kv}$？为什么任何局部失败或局部预算耗尽都不能执行M步？受保护Newton要同时满足什么正域/ELBO门？为什么可行的$T_{\\rm out}$耗尽可作为“预算候选／未收敛”进入$\\mathcal S_{\\rm acc}$，却必须保留$\\mathtt{status}=\\mathtt{budget\\_stop}$而不能伪称收敛？",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+        "target_label": "fig:V5-C06-variational-updates",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-04-004",
+        "SLM-20-04-005",
+        "SLM-20-04-006",
+        "SLM-20-05-001"
+      ],
+      "numeric_recomputation": {
+        "required": true,
+        "reason": "P694_R3_algorithm_semantic_contract"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：图分为单文档局部VI与语料级外层VEM两面板。局部面板交替更新责任度eta和伪计数gamma，只有空文档completed或双证书converged才产生LocalOK；局部预算耗尽、支持或数值失败只记录并停止。外层面板只有收齐全部LocalOK后才汇总Ckv、归一化varphi、进行正域和ELBO门保护的Newton alpha更新；可行外层budget_stop以预算候选且未收敛身份连同原status进入Sacc，line-search或数值失败不进入该集合；最终选择可来自converged或可行budget_stop，但绝不把后者标成收敛。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    },
+    {
+      "figure_id": "FIG-V5-C06-08",
+      "source_path": "绘图源码/第05册_采样方法主题模型与图排序/V5-C06/fig_v5_c06_method_comparison.tex",
+      "source_file": "fig_v5_c06_method_comparison.tex",
+      "source_kind": "tikz",
+      "label": "fig:V5-C06-method-comparison",
+      "caption": "完整Bayes折叠Gibbs与无β先验的点参数变分EM：二者模型目标、状态、更新、输出和诊断均不同，公平比较须同时登记模型与推断差异。",
+      "semantic_type": "comparison_or_synthesis_map",
+      "teaching_objective": "读图时应先区分完整Bayes与无主题词先验的点参数模型，再核对局部/全局变量、更新、输出适用性与诊断，并说明公平比较为何必须同时登记模型差异和推断差异。",
+      "chapter_reference": {
+        "source": "讲义源码/第05册_采样方法主题模型与图排序/chapters/V5-C06.tex",
+        "target_label": "fig:V5-C06-method-comparison",
+        "locator_policy": "label_based_current_source"
+      },
+      "knowledge_ids": [
+        "SLM-20-03-001",
+        "SLM-20-04-001",
+        "SLM-20-04-006",
+        "SLM-20-05-001"
+      ],
+      "numeric_recomputation": {
+        "required": false,
+        "reason": "R07_parameter_reproducibility_not_failed"
+      },
+      "accessibility": {
+        "tikz_root_count": 1,
+        "alt_texts": [
+          "对象—关系—结论：左列是完整Bayes LDA的折叠Gibbs，积分消去随机的文档主题向量和主题词向量，以主题指派及计数为链状态并输出相关后验样本；右列是无主题词Dirichlet先验的点参数LDA变分EM，局部E步只固定当前主题词参数并更新每篇文档的gamma与eta，全局再以期望计数更新varphi、以受保护Newton更新alpha。前者适合需要后验不确定性或多峰信息的情形，后者适合大语料、批量化或预算敏感情形。同一点参数模型的可行块更新可使ELBO逐块非降，但ELBO不等于真实证据；公平比较须冻结相同切分、词表、预算与评价口径，并同时登记模型差异和推断差异。"
+        ],
+        "contract": "latex-2026-tikz-alt-object-relation-conclusion"
+      }
+    }
+  ]
+}

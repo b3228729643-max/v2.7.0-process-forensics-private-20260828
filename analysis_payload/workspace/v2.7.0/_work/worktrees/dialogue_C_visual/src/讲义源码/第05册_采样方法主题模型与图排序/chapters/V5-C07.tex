@@ -1,0 +1,1262 @@
+% STAGE13-CHAPTER: V5-C07
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-STATUS: CH-01=passed; CH-02=passed; CH-03=passed; CH-04=passed; CH-05=passed; CH-06=passed; CH-07=passed; CH-08=passed; CH-09=passed; CH-10=passed; CH-11=passed; CH-12=passed; CH-13=passed; CH-14=passed; CH-15=passed; CH-16=passed; CH-17=passed; CH-18=passed; CH-19=passed; CH-20=passed; CH-21=passed; CH-22=passed; CH-23=passed; CH-24=passed; CH-25=passed; CH-26=passed; CH-27=passed; CH-28=passed; CH-29=passed; CH-30=passed; CH-31=passed; CH-32=passed; CH-33=passed; CH-34=passed; CH-35=passed; CH-36=passed; CH-37=passed
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V5-C07-CH01}; CH-02=\label{struct:V5-C07-CH02}; CH-03=\label{struct:V5-C07-CH03}; CH-04=\label{struct:V5-C07-CH04}; CH-05=\label{struct:V5-C07-CH05}; CH-06=\label{struct:V5-C07-CH06}; CH-07=\label{struct:V5-C07-CH07}; CH-08=\label{struct:V5-C07-CH08}; CH-09=\label{struct:V5-C07-CH09}; CH-10=\label{struct:V5-C07-CH10}; CH-11=\label{struct:V5-C07-CH11}; CH-12=\label{struct:V5-C07-CH12}; CH-13=\label{struct:V5-C07-CH13}; CH-14=\label{struct:V5-C07-CH14}; CH-15=\label{struct:V5-C07-CH15}; CH-16=\label{struct:V5-C07-CH16}; CH-17=\label{struct:V5-C07-CH17}; CH-18=\label{struct:V5-C07-CH18}; CH-19=\label{struct:V5-C07-CH19}; CH-20=\label{struct:V5-C07-CH20}; CH-21=\label{struct:V5-C07-CH21}; CH-22=\label{struct:V5-C07-CH22}; CH-23=\label{struct:V5-C07-CH23}; CH-24=\label{struct:V5-C07-CH24}; CH-25=\label{struct:V5-C07-CH25}; CH-26=\label{struct:V5-C07-CH26}; CH-27=\label{struct:V5-C07-CH27}; CH-28=\label{struct:V5-C07-CH28}; CH-29=\label{struct:V5-C07-CH29}; CH-30=\label{struct:V5-C07-CH30}; CH-31=\label{struct:V5-C07-CH31}; CH-32=\label{struct:V5-C07-CH32}; CH-33=\label{struct:V5-C07-CH33}; CH-34=\label{struct:V5-C07-CH34}; CH-35=\label{struct:V5-C07-CH35}; CH-36=\label{struct:V5-C07-CH36}; CH-37=\label{struct:V5-C07-CH37}
+% CHAPTER-MODULE-SEQUENCE: learning_navigation; strict_modeling; mathematical_development; multi_view_understanding; algorithm_engineering; examples_exercises; closure_self_check
+% PROJECT_SPEC-V1.1-EXERCISE-LAYOUT: grouped; kept=10; source_group=4; supplement=6
+% DERIVATION-CHECK: step-1; step-2; step-3
+% FORMAL-RESULT-CHECK: results=6; proofs=6
+% ALGORITHM-CHECK: algorithms=2; deterministic-contracts=2
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C07-basic-power | 训练时间复杂度=基本\PageRank{}不含监督训练，正文以离线排名构建时间给出对应预算; 预测时间复杂度=基本\PageRank{}不做单样本预测，正文给出排名物化后的查询时间
+% ALGORITHM-FIELD-NOT-APPLICABLE: alg:V5-C07-general-power | 训练时间复杂度=一般\PageRank{}不含监督训练，正文以离线排名构建时间给出对应预算; 预测时间复杂度=一般\PageRank{}不做单样本预测，正文给出排名物化后的查询时间
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C07-dependency -> SLM-21-00-001,SLM-21-01-004
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C07-web-random-walk -> SLM-21-01-003,SLM-21-01-004,SLM-21-02-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C07-periodic-dangling -> SLM-21-01-005,SLM-21-03-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C07-inbound-contribution -> SLM-21-01-005,SLM-21-03-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C07-damping-teleportation -> SLM-21-01-006,SLM-21-04-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C07-simplex-contraction -> SLM-21-01-006,SLM-21-04-001
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C07-power-flow -> SLM-21-01-007,SLM-21-02-002,SLM-21-02-003,SLM-21-02-004,SLM-21-02-005
+% FIGURE-KNOWLEDGE-MAP: fig:V5-C07-rank-trajectory -> SLM-21-02-002,SLM-21-02-003,SLM-21-02-004,SLM-21-02-005
+% REPRODUCTION-NODE: V5-C07-S01 -> PRE-SQ-007
+% REPRODUCTION-NODE: V5-C07-S02 -> SLM-21-01-002
+% REPRODUCTION-NODE: V5-C07-S04 -> PRE-SQ-005
+% REPRODUCTION-NODE: V5-C07-S05 -> PRE-LA-023
+% SOURCE-BOUNDARY-DIFFERENCE: frozen page images establish the source examples and theorem semantics; the dangling-column repair and certified sparse implementation are lecture corrections/extensions.
+
+\hyphenation{PageRank}
+\chapter{\PageRank{} 算法}\label{chap:V5-C07}
+\index{PageRank@\PageRank{}}
+\index{随机游走}
+\index{幂法}
+
+% KNOWLEDGE-PLAN: KN-V5-C36-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：算法。}\PageRank{} 算法章地图给出“网页图$\to$列随机游走$\to$悬挂修复与阻尼$\to$稀疏幂法”；请写成一条带方向的依赖链，再用终点的输出说明它怎样回答本章核心问题，并核对路线“网页图$\to$列随机游走$\to$悬挂修复与阻尼$\to$稀疏幂法”的前一产出能够直接作为后一输入。\par
+
+\SLChapterOpening{网页图$\to$列随机游走$\to$悬挂修复与阻尼$\to$稀疏幂法}
+{怎样把链接方向写成概率算子，并在悬挂、可约或周期图上得到可计算的唯一排序？}
+{读完可桥接行/列约定、证明阻尼压缩性，并给出稀疏复杂度与误差界。}
+{有向图、概率向量、马尔可夫链、特征向量、诱导$1$范数与几何级数。}
+{先复习第30章（第5册第1章）的平稳分布及式\eqref{eq:V5-C01-row-column-bridge}，再固定本章列随机方向。}
+
+\phantomsection\label{struct:V5-C07-CH01}
+% KNOWLEDGE-PLAN: KN-V5-C36-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}\PageRank{} 算法学习目标固定核验“采用列随机约定，把网页有向图、出度和随机游走写成维数明确的转移矩阵”；请实际完成“采用列随机约定，把网页有向图、出度和随机游走写成维数明确的转移矩阵”，并用“中间结果逐项包含首目标“采用列随机约定，把网页有向图、出度和随机游走写成维数明确的转移矩阵”声明的对象、条件与结论”判定通过或失败。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 采用列随机约定，把网页有向图、出度和随机游走写成维数明确的转移矩阵；
+  \item 区分基本\PageRank{}与一般\PageRank{}，识别周期、可约和悬挂结点造成的不同故障；
+  \item 严格执行“先修复悬挂列，再构造阻尼矩阵”，并始终保持$0\le d<1$；
+  \item 从入链贡献、平稳分布、压缩映射和线性方程四个角度理解\PageRank{}；
+  \item 用稀疏幂法计算排序，给出可核验的停止误差界、异常情形和时间空间复杂度；
+  \item 能复算本章四个代表性例题，并独立完成存在性、收敛性和复杂度证明。
+\end{itemize}
+}
+
+\phantomsection\label{struct:V5-C07-CH02}
+% KNOWLEDGE-PLAN: KN-V5-C36-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}\PageRank{}先修采用列随机约定；请给结点$j$的三条出链各写$1/3$到矩阵第$j$列，核对该列和为1，并说明分布按$\boldsymbol p^{(t+1)}=M\boldsymbol p^{(t)}$推进。\par
+
+\begin{prerequisitebox}
+本章直接使用有向图、矩阵乘法、概率向量、一阶马尔可夫链、特征值与特征向量、
+诱导$1$范数、几何级数和线性方程组。必须先固定矩阵方向：本章所有概率分布均为
+列向量，$M_{ij}$表示“从结点$j$转到结点$i$”的概率，故随机矩阵按列归一化。
+与第30章（第5册第1章）的行随机约定桥接时，为避免与本章邻接矩阵$A$混淆，把该章的行随机转移矩阵在此记作$P$；于是$P_{ji}=\Pr(X_{t+1}=i\mid X_t=j)$且$\rho_{t+1}=\rho_tP$，并令
+\[
+M=P^{\mathsf T},\qquad \boldsymbol p^{(t)}=\rho_t^{\mathsf T}.
+\]
+于是$\boldsymbol p^{(t+1)}=M\boldsymbol p^{(t)}$与$\rho_{t+1}=\rho_tP$完全等价，平稳方程$\boldsymbol p_\star=M\boldsymbol p_\star$也等价于$\rho_\star=\rho_\star P$；这正是式\eqref{eq:V5-C01-row-column-bridge}。因此转换约定时必须同时转置矩阵和概率向量，不能只转置某一个公式。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V5-C07-CH03}
+% KNOWLEDGE-PLAN: KN-V5-C36-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}\PageRank{} 算法先修自检固定核验“若$j$有三条出链，能否在矩阵第$j$列写出三个$1/3$，并核验列和为$1$”；请在$j$有三条出链条件下，实际在矩阵第$j$列写出三个$1/3$，并核验列和为$1$并写出中间结果，再按“中间结果直接回答首项“若$j$有三条出链，能否在矩阵第$j$列写出三个$1/3$，并核验列和为$1$”并给出通过或失败”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 若$j$有三条出链，能否在矩阵第$j$列写出三个$1/3$，并核验列和为$1$？
+  \item 能否证明非负列随机矩阵把概率单纯形映回自身？
+  \item 能否区分“平稳分布存在”“平稳分布唯一”和“从任意初值收敛”这三个命题？
+  \item 能否解释不可约排除互不沟通的闭类、非周期排除轮流振荡？
+  \item 能否由$\|Tx-Ty\|_1\le d\|x-y\|_1$和$d<1$写出几何误差界？
+\end{enumerate}
+第1--2项不足时回看随机矩阵；第3--4项不足时回看有限状态马尔可夫链；
+第5项不足时回看压缩映射与几何级数。
+\end{precheckbox}
+
+\phantomsection\label{struct:V5-C07-CH04}
+% KNOWLEDGE-PLAN: KN-V5-C36-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}\PageRank{} 算法把“第30章（第5册第1章）的行随机链及该等式 $\to$ 第36章（第5册第7章）的列随机网页游走”接到“有向图与出度$\to$列随机游走”；请用$\to$补全这一步的等式或判据，再检查两端维数、支持或对象类型。\par
+
+\begin{dependencybox}
+第30章（第5册第1章）的行随机链及式\eqref{eq:V5-C01-row-column-bridge} $\to$ 第36章（第5册第7章）的列随机网页游走；
+有向图与出度$\to$列随机游走；随机游走$\to$平稳分布$\to$基本\PageRank{}；
+悬挂列修复与随机跳转$\to$正的阻尼矩阵$\to$唯一一般\PageRank{}；
+主特征向量与压缩映射$\to$幂法和误差证书；稀疏矩阵--向量乘法$\to$大图实现。
+图\ref{fig:V5-C07-dependency}给出这些直接依赖。
+\end{dependencybox}
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/dependency_graph.tex}
+
+\begin{keypointbox}[title=方向桥：行随机链与列随机\PageRank{}]
+第30章用行向量$\rho_t\in\mathbb R^{1\times n}$和行随机矩阵；本章在桥接处把该行随机核记作$P$，以区别本章的网页邻接矩阵$A$。本章用列向量$\boldsymbol p^{(t)}\in\mathbb R^{n\times1}$和列随机矩阵$M$。二者必须成对转置：
+\[
+M=P^{\mathsf T},\qquad
+\boldsymbol p^{(t)}=\rho_t^{\mathsf T},\qquad
+\boldsymbol p^{(t+1)}=M\boldsymbol p^{(t)}.
+\]
+例如$n=4$时，$P,M$均为$4\times4$，但概率向量分别为$1\times4$和$4\times1$。只转置矩阵或只转置向量都会破坏乘法方向。
+\end{keypointbox}
+
+\phantomsection\label{struct:V5-C07-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V5-C07
+\index[symbols]{minus-mathcalv-minus-minus-mathcale-minus--sc8a9857ad94b@$\mathcal V,\mathcal E$：结点集、有向边集；角色：网页图}
+\index[symbols]{a--s0f07e615b951@$A$：邻接矩阵，$A_{ij}>0$表示$j\to i$；角色：边权存储}
+\index[symbols]{c-j--s3b36b3b9dba4@$c_j$：结点$j$的加权出度；角色：列归一化分母}
+\index[symbols]{d--s606e21164ef7@$D$：悬挂结点集合；角色：需要先修复的零列}
+\index[symbols]{m--s536069282e27@$M$：未修复的沿链矩阵；角色：非悬挂列转移}
+\index[symbols]{minus-boldsymbolv-minus--s0e3a104317e5@$\boldsymbol v$：个性化跳转分布；角色：悬挂修复与随机跳转}
+\index[symbols]{s--s2bc07df6e04f@$S$：悬挂修复后的沿链矩阵；角色：基础转移算子}
+\index[symbols]{d--s9e17d1c3f6b7@$d$：阻尼因子；角色：沿链转移概率}
+\index[symbols]{g--s7e7f1f2ba7dd@$G$：一般\PageRank{}转移矩阵；角色：列随机压缩算子；$\boldsymbol v>0$时严格正}
+\index[symbols]{minus-boldsymbolr-minus-t--s1d1e0338849f@$\boldsymbol r^{(t)}$：第$t$步排名向量；角色：幂迭代状态}
+\index[symbols]{minus-varepsilon-minus-t-minus-max-minus--sda885ef269cd@$\varepsilon,T_{\max}$：目标$1$范数误差、迭代上限；角色：停止与失败保护}
+\index[symbols]{minus-rho-minus-b-u007c-b-u007c-1--s7883b9472d06@$\rho(B),\lVert B\rVert_1$：谱半径、诱导$1$范数；角色：收敛与复杂度分析}
+% STAGE19-SYMBOL-INDEX-END: V5-C07
+% KNOWLEDGE-PLAN: KN-V5-C36-PREREQUISITE-006 L1
+\paragraph{读前自检：本章符号表。}\PageRank{} 算法符号表规定$\mathcal V,\mathcal E$、$|\mathcal V|=n,|\mathcal E|=m$的类型或范围；请把$\mathcal V,\mathcal E$代入紧随其后的定义关系，逐项核对输入形状、输出形状与取值域。\par
+
+\begin{symboltablebox}
+\small
+\begin{longtable}{@{}p{0.17\textwidth}p{0.26\textwidth}p{0.22\textwidth}p{0.26\textwidth}@{}}
+\toprule
+符号 & 对象与读法 & 维数/范围 & 角色 \\
+\midrule
+$\mathcal V,\mathcal E$ & 结点集、有向边集 & $|\mathcal V|=n,|\mathcal E|=m$ & 网页图 \\
+$A$ & 邻接矩阵，$A_{ij}>0$表示$j\to i$ & $\mathbb R_{\ge0}^{n\times n}$ & 边权存储 \\
+$c_j$ & 结点$j$的加权出度 & $c_j=\sum_iA_{ij}$ & 列归一化分母 \\
+$D$ & 悬挂结点集合 & $\{j:c_j=0\}$ & 需要先修复的零列 \\
+$M$ & 未修复的沿链矩阵 & $M_{ij}=A_{ij}/c_j$（$c_j>0$） & 非悬挂列转移 \\
+$\boldsymbol v$ & 个性化跳转分布 & $\boldsymbol v\ge0,\ \boldsymbol1^{\mathsf T}\boldsymbol v=1$ & 悬挂修复与随机跳转 \\
+$S$ & 悬挂修复后的沿链矩阵 & 非负列随机 & 基础转移算子 \\
+$d$ & 阻尼因子 & $0\le d<1$ & 沿链转移概率 \\
+$G$ & 一般\PageRank{}转移矩阵 & $G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$ & 列随机；$\boldsymbol v>0$时严格正 \\
+$\boldsymbol r^{(t)}$ & 第$t$步排名向量 & $\Delta^{n-1}$ & 幂迭代状态 \\
+$\varepsilon,T_{\max}$ & 目标$1$范数误差、迭代上限 & 正数、正整数 & 停止与失败保护 \\
+$\rho(B),\|B\|_1$ & 谱半径、诱导$1$范数 & 非负实数 & 收敛与复杂度分析 \\
+\bottomrule
+\end{longtable}
+下文的$\boldsymbol1$均为维数由上下文确定的全一列向量，
+$\Delta^{n-1}=\{\boldsymbol x\ge0:\boldsymbol1^{\mathsf T}\boldsymbol x=1\}$。
+\end{symboltablebox}
+
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：\PageRank{}的随机游走思想。}\PageRank{}随机游走以列随机网页矩阵$M$和概率列向量$\boldsymbol p^{(t)}$为状态；请完成一次$\boldsymbol p^{(t+1)}=M\boldsymbol p^{(t)}$，核对非负且分量和仍为1。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：\PageRank{}阻尼排序算法。}阻尼\PageRank{}使用悬挂修复矩阵$S$、$0\le d<1$和跳转分布$\boldsymbol v$；请计算一轮$dS\boldsymbol p+(1-d)\boldsymbol v$，核对结果仍在概率单纯形。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-DEFINITION-001 L1
+\paragraph{读前自检：\PageRank{}固定点定义。}\PageRank{}固定点$\boldsymbol r=dS\boldsymbol r+(1-d)\boldsymbol v$要求$\boldsymbol r\in\Delta^{n-1}$；请把候选$\boldsymbol r$回代两边，核对残差与分量和。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-CONCEPT-002 L1
+\paragraph{读前自检：链接权重按出度分配。}网页$j$的出权和$c_j=\sum_iA_{ij}>0$时令$M_{ij}=A_{ij}/c_j$；请归一化一列并核对来源页的全部排名质量恰按出链权重分完。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-CONCEPT-003 L1
+\paragraph{读前自检：有向图和随机游走模型。}有向图约定$A_{ij}>0$表示$j\to i$，非悬挂列按$c_j$归一为$M_{:j}$；请把一条边放到正确行列，再核对随机游走从$j$转到$i$的概率为$M_{ij}$。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-CONCEPT-004 L1
+\paragraph{读前自检：有向图上的随机游走例。}有向图随机游走例强调箭头$j\to i$写入第$j$列第$i$行；请沿图中一个来源结点分配其整列出链概率，再推进一次$M\boldsymbol p$，核对输出是结点概率分布而非内容相关度。\par
+
+\SLReviewSection{网页图与随机游走}{sec:V5-C07-S01}
+\knowledgeanchor{SLM-21-01-001}{PageRank的随机游走思想@\PageRank{} 的随机游走思想}
+\knowledgeanchor{SLM-21-00-001}{PageRank阻尼排序算法@\PageRank{} 阻尼排序算法}
+\knowledgeanchor{SLM-21-01-002}{PageRank固定点定义@\PageRank{} 固定点定义}
+\knowledgeanchor{SLM-21-01-003}{链接权重按出度分配}
+\knowledgeanchor{SLM-21-01-004}{有向图和随机游走模型}
+\knowledgeanchor{SLM-21-02-001}{有向图上的随机游走例}
+
+\phantomsection\label{struct:V5-C07-CH06}
+\textbf{问题提出。}网页的重要性不能只由入链条数决定：一个被许多低质量页面引用的网页，
+未必比一个被少数高质量页面引用的网页更重要。\PageRank{}把链接解释为“重要性投票”，
+但每个来源网页的票又要由它自己的重要性加权。这个循环定义自然变成随机游走的平稳方程。
+算法的输出是结点上的概率分布，不是网页内容的相关性分数；主题相关检索仍需另一个模型。
+
+图\ref{fig:V5-C07-web-random-walk}取结点顺序$(i,j,h)$和四条单位权边
+$i\to j,j\to i,j\to h,h\to i$，故$(c_i,c_j,c_h)=(1,2,1)$且没有悬挂结点。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/web_random_walk.tex}
+
+\textbf{读图。}先按箭头写邻接矩阵$A$，再用$c_j$逐列归一得到$M$，最后转置为行随机矩阵
+$P=M^{\mathsf T}$；两种推进分别为$\boldsymbol p^{(t+1)}=M\boldsymbol p^{(t)}$
+与$\rho_{t+1}=\rho_tP$。
+
+\phantomsection\label{struct:V5-C07-CH07}
+% KNOWLEDGE-PLAN: KN-V5-C36-DEFINITION-002 L1
+\paragraph{读前自检：网页随机游走矩阵。}网页随机游走矩阵对非悬挂列取$M_{ij}=A_{ij}/c_j$；请计算$\boldsymbol1^{\mathsf T}M$，核对等于$\boldsymbol1^{\mathsf T}$，并说明悬挂列为何尚需修复。\par
+
+\begin{definition}[网页随机游走矩阵]\label{def:V5-C07-transition}
+给定加权有向图，约定$A_{ij}\ge0$是边$j\to i$的权重，
+$c_j=\sum_{i=1}^nA_{ij}$。对$c_j>0$定义
+\[
+M_{ij}=\frac{A_{ij}}{c_j};
+\]
+对$c_j=0$暂令$M_{ij}=0$。若所有$c_j>0$，则$M\ge0$且
+$\boldsymbol1^{\mathsf T}M=\boldsymbol1^{\mathsf T}$，称$M$为列随机矩阵。
+在状态$j$时，游走者以$M_{ij}$的概率转到$i$。
+\end{definition}
+
+\phantomsection\label{struct:V5-C07-CH08}
+\textbf{模型。}若$\boldsymbol p^{(t)}\in\Delta^{n-1}$是时刻$t$的状态分布，则
+\begin{equation}
+\boldsymbol p^{(t+1)}=M\boldsymbol p^{(t)},\qquad
+p_i^{(t+1)}=\sum_{j:j\to i}\frac{A_{ij}}{c_j}p_j^{(t)}.
+\label{eq:V5-C07-random-walk}
+\end{equation}
+右式显示入链贡献由来源结点的出度摊薄。无出链结点对应零列，概率一旦进入便无法按该式继续分配；
+因此“零列仍是随机矩阵的一列”是错误说法。
+
+\phantomsection\label{struct:V5-C07-CH09}
+\textbf{学习策略。}\PageRank{}没有带标签损失函数，也不从特征拟合监督参数。
+它把图结构转换成马尔可夫算子，再以平稳分布作为全局排序。
+建模阶段确定边方向、边权、悬挂修复分布$\boldsymbol v$和阻尼$d$；
+计算阶段求固定点；验证阶段检查概率守恒、固定点残差和排序稳定性。
+
+\phantomsection\label{struct:V5-C07-CH10}
+\textbf{学习算法。}基本模型直接反复乘$M$，但只有在结构条件成立时才从任意初值收敛。
+一般模型先把每个悬挂零列替换为$\boldsymbol v$，再加入概率$1-d$的随机跳转；
+最终用稀疏矩阵--向量乘法实现幂迭代。这里的“先修复、后混合”是定义的一部分，
+不能在已经含零列的$M$上直接写$G=dM+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$并声称$G$列随机。
+
+% KNOWLEDGE-PLAN: KN-V5-C36-DEFINITION-003 L1
+\paragraph{读前自检：\PageRank{}的基本定义。}基本\PageRank{}只在$M$列随机时定义为$M\boldsymbol r=\boldsymbol r$的概率向量；请从一个归一候选做一次$M\boldsymbol r$，核对固定点残差为0。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：基本\PageRank{}固定点。}基本\PageRank{}固定点要求$\boldsymbol r\ge0$、$\boldsymbol1^{\mathsf T}\boldsymbol r=1$与$M\boldsymbol r=\boldsymbol r$；请逐项检查候选，指出只满足特征方程但未归一时还不能作为排名分布。\par
+
+\SLTeachSection{基本\PageRank{}}{sec:V5-C07-S02}
+\knowledgeanchor{SLM-21-01-005}{PageRank的基本定义@\PageRank{} 的基本定义}
+\knowledgeanchor{SLM-21-03-001}{基本PageRank固定点@基本\PageRank{} 固定点}
+
+\begin{definition}[基本\PageRank{}]\label{def:V5-C07-basic}
+设$M$是网页图的列随机转移矩阵。满足
+\begin{equation}
+M\boldsymbol r=\boldsymbol r,\qquad
+\boldsymbol r\in\Delta^{n-1}
+\label{eq:V5-C07-basic-fixed}
+\end{equation}
+的概率向量称为该随机游走的平稳分布。若它唯一，就把其第$i$个分量$r_i$称为结点$i$的基本\PageRank{}值。
+\end{definition}
+
+\begin{proposition}[列随机矩阵保持概率单纯形]\label{prop:V5-C07-simplex-invariance}
+若$P\ge0$且$\boldsymbol1^{\mathsf T}P=\boldsymbol1^{\mathsf T}$，则
+$P\Delta^{n-1}\subseteq\Delta^{n-1}$；并且对任意自然数$k$，$P^k$仍为列随机矩阵。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C36-PROOF-001 L1
+\paragraph{读前自检：证明：列随机矩阵保持概率单纯形。}列随机矩阵$P$满足$P\ge0$与$\boldsymbol1^{\mathsf T}P=\boldsymbol1^{\mathsf T}$；请对$\boldsymbol x\in\Delta^{n-1}$核对$P\boldsymbol x$非负且分量和为1，再归纳到$P^k$。\par
+
+\begin{proof}
+对$\boldsymbol x\in\Delta^{n-1}$，非负性给出$P\boldsymbol x\ge0$，而
+$\boldsymbol1^{\mathsf T}P\boldsymbol x=\boldsymbol1^{\mathsf T}\boldsymbol x=1$。
+再由$\boldsymbol1^{\mathsf T}P^k=(\boldsymbol1^{\mathsf T}P)P^{k-1}
+=\boldsymbol1^{\mathsf T}P^{k-1}$归纳得到$P^k$的列和为$1$；矩阵乘积的非负性给出其元素非负。
+\end{proof}
+
+\phantomsection\label{struct:V5-C07-CH12}
+\begin{theorem}[有限不可约非周期链的基本\PageRank{}]\label{thm:V5-C07-basic-convergence}
+若有限状态马尔可夫链的列随机转移矩阵$M$不可约且非周期，则存在唯一
+$\boldsymbol r\in\Delta^{n-1}$满足$M\boldsymbol r=\boldsymbol r$，且对任意
+$\boldsymbol r^{(0)}\in\Delta^{n-1}$都有
+$M^t\boldsymbol r^{(0)}\to\boldsymbol r$。
+\end{theorem}
+\phantomsection\label{struct:V5-C07-CH13}
+\paragraph{进阶证明（首次阅读可跳过）。}
+正文主线只使用“有限、不可约、非周期$\Rightarrow$唯一平稳分布且幂迭代收敛”的结论；下面用本原矩阵给出完整证明。
+% KNOWLEDGE-PLAN: KN-V5-C36-PROOF-002 L1
+\paragraph{读前自检：证明：有限不可约非周期链的基本。}有限不可约非周期列随机矩阵$M$有唯一平稳概率向量$\boldsymbol r$；请把$M^t\boldsymbol x$按剩余类分解，核对各子序列都趋于$\boldsymbol r$，从而整序列收敛。\par
+
+\begin{proof}
+有限、不可约且非周期蕴含$M$是本原矩阵：存在正整数$q$使$M^q$的所有元素严格为正。
+令$\delta=\min_{i,j}(M^q)_{ij}>0$、$\alpha=n\delta\in(0,1]$，并记
+$U=\boldsymbol1\boldsymbol1^{\mathsf T}/n$。若$\alpha<1$，可写
+$M^q=\alpha U+(1-\alpha)Q$，其中$Q$非负列随机；若$\alpha=1$则$M^q=U$。
+对概率向量$\boldsymbol x,\boldsymbol y$，有$U(\boldsymbol x-\boldsymbol y)=0$，故
+\[
+\|M^q\boldsymbol x-M^q\boldsymbol y\|_1
+\le(1-\alpha)\|\boldsymbol x-\boldsymbol y\|_1.
+\]
+于是$M^q$在完备的概率单纯形上是严格压缩，存在唯一不动点$\boldsymbol r$，且
+$M^{qk}\boldsymbol x\to\boldsymbol r$。又因$M\boldsymbol r$也是$M^q$的不动点，唯一性给出
+$M\boldsymbol r=\boldsymbol r$。对$0\le s<q$，
+$M^{qk+s}\boldsymbol x=M^s(M^{qk}\boldsymbol x)\to M^s\boldsymbol r=\boldsymbol r$，
+从而整个序列收敛。任一$M$的平稳分布也是$M^q$的不动点，故平稳分布唯一。
+\end{proof}
+
+这一定理同时包含“唯一平稳分布”和“从任意初始分布收敛”两个结论。
+不可约但周期为$2$的链仍可有唯一平稳分布，却可能在两个状态间振荡；
+可约链则可能有多个闭类和多个平稳分布。图\ref{fig:V5-C07-periodic-dangling}
+在本章列向量、列随机约定下并列展示周期振荡与悬挂零列两类故障及其不同修复顺序。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/periodic_dangling_failures.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}左栏先核对
+$M_{\mathrm p}\boldsymbol e_1=\boldsymbol e_2$、
+$M_{\mathrm p}\boldsymbol e_2=\boldsymbol e_1$，再区分“唯一平稳分布
+$(1/2,1/2)^{\mathsf T}$存在”与“从$\boldsymbol e_1$逐步收敛”（后者不成立）；
+右栏核对$M_{\mathrm d}$第$2$列和为$0$且
+$M_{\mathrm d}\boldsymbol e_2=\boldsymbol0$，故它不是列随机概率核并丢失质量，
+最后复述一般\PageRank{}必须先以$\boldsymbol v$回填悬挂列得到$S$，再由$S$构造阻尼$G$。
+
+\phantomsection\label{struct:V5-C07-CH11}
+% CORE-DERIVATION-PLAN: KN-V5-C36-DERIVATION-001
+\SLKnowledgeBridge{从入链贡献式构造随机跳转固定点，并得到可计算残差界。}{列随机链接矩阵、悬挂列、随机跳转分布 $v$ 与阻尼系数 $0<\alpha<1$。}{修复后的 $S$ 非负列随机，$\boldsymbol1^{\mathsf T}v=1$。}{先把 $x=Sx$ 的第 $i$ 个分量写成所有入链结点贡献之和，再修复悬挂列。}
+
+\begin{derivationgoalbox}
+从列随机固定点逐行推出入链贡献式，再把悬挂修复和随机跳转合成为一般\PageRank{}方程；
+最后推出可计算的线性方程与$1$范数误差证书。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+准备三个事实：$A_{ij}/c_j$是从$j$到$i$的转移概率；
+$\boldsymbol1^{\mathsf T}\boldsymbol x=1$可把常向量项写成秩一矩阵作用；
+非负列随机矩阵满足$\|S\|_1=1$。
+\end{derivationprepbox}
+
+\textbf{推导第1步：展开固定点的第$i$个分量。}
+由式\eqref{eq:V5-C07-basic-fixed}和定义\ref{def:V5-C07-transition}，
+\begin{equation}
+r_i=\sum_{j=1}^nM_{ij}r_j
+=\sum_{j:j\to i}\frac{A_{ij}}{c_j}r_j.
+\label{eq:V5-C07-inbound}
+\end{equation}
+% KNOWLEDGE-PLAN: KN-V5-C36-PROPOSITION-002 L1
+\paragraph{读前自检：基本 的入链平衡。}基本\PageRank{}的入链平衡为$r_i=\sum_{j:j\to i}A_{ij}r_j/c_j$；请对结点$i$逐入链累加，核对每个来源$j$只贡献其排名质量的出链份额。\par
+
+\begin{proposition}[基本\PageRank{}的入链平衡]\label{prop:V5-C07-inbound-balance}
+在无悬挂结点的非加权图中，式\eqref{eq:V5-C07-inbound}化为
+$r_i=\sum_{j:j\to i}r_j/c_j$。每个来源$j$把自身质量$r_j$等分给$c_j$条出链，
+而结点$i$累加全部入链贡献。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C36-PROOF-003 L1
+\paragraph{读前自检：证明：基本 的入链平衡。}非加权图中$A_{ij}\in\{0,1\}$；请把基本固定点第$i$分量展开，核对仅入链来源保留且每项为$r_j/c_j$，从而得到入链平衡式。\par
+
+\begin{proof}
+非加权图有$A_{ij}\in\{0,1\}$。固定$i$，矩阵乘法只保留满足$A_{ij}=1$的列$j$，
+每个保留项为$(1/c_j)r_j$，逐项相加即得结论。
+\end{proof}
+图\ref{fig:V5-C07-inbound-contribution}在“基本 \PageRank{}、无悬挂且此处$S=M$”的作用域内，把来源列的分摊与目标行的累加画成连续因果链，并在图内同时封住一般 \PageRank{} 的符号边界。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/inbound_contribution.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}沿每个来源$j$到目标$i$核对
+$M_{ij}r_j^{(t)}$来自第$j$列，非加权时分母$\deg^+(j)$属于来源$j$；
+再复述边界：上方只适用于基本无悬挂的$M(=S)$，一般 \PageRank{} 先用
+$S=M+\boldsymbol v\boldsymbol a^{\mathsf T}$修复悬挂列，再构造
+$G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$，故修复后的$S/G$正元素
+不必对应原图中的入链。
+
+% KNOWLEDGE-PLAN: KN-V5-C36-DEFINITION-005 L1
+\paragraph{读前自检：\PageRank{}的一般定义。}一般\PageRank{}先用$S=M+\boldsymbol v\boldsymbol a^{\mathsf T}$修复悬挂列，再取$G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$；请核对$S,G$均列随机并写出$G\boldsymbol r=\boldsymbol r$。\par
+
+\SLTeachSection{一般\PageRank{}与阻尼}{sec:V5-C07-S03}
+\knowledgeanchor{SLM-21-01-006}{PageRank的一般定义@\PageRank{} 的一般定义}
+\knowledgeanchor{SLM-21-04-001}{阻尼随机游走}
+
+先定义悬挂指示向量$\boldsymbol a$：$a_j=1$当且仅当$c_j=0$。
+以概率向量$\boldsymbol v\in\Delta^{n-1}$填补每个悬挂列，得到
+\begin{equation}
+S=M+\boldsymbol v\boldsymbol a^{\mathsf T},
+\qquad
+S_{:j}=\begin{cases}M_{:j},&c_j>0,\\ \boldsymbol v,&c_j=0.\end{cases}
+\label{eq:V5-C07-dangling-repair}
+\end{equation}
+此时$S$才是列随机矩阵。
+
+\textbf{推导第2步：在修复后的沿链矩阵上加入随机跳转。}
+对$0\le d<1$定义
+\begin{equation}
+G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}.
+\label{eq:V5-C07-google-matrix}
+\end{equation}
+当输入是概率向量$\boldsymbol x$时，
+$G\boldsymbol x=dS\boldsymbol x+(1-d)\boldsymbol v$；
+即以概率$d$沿修复后的链接行走，以概率$1-d$按$\boldsymbol v$跳转。
+对尚未按分量和归一化的任意向量，必须使用完整线性式
+$G\boldsymbol x=dS\boldsymbol x+(1-d)\boldsymbol v
+(\boldsymbol1^{\mathsf T}\boldsymbol x)$，不能漏掉最后的尺度因子。
+
+% KNOWLEDGE-PLAN: KN-V5-C36-DEFINITION-006 L1
+\paragraph{读前自检：一般 矩阵与向量。}一般\PageRank{}向量满足$\boldsymbol r=dS\boldsymbol r+(1-d)\boldsymbol v$；请标出$S\in\mathbb R^{n\times n}$与各向量的形状，核对两项同为$n$维概率质量。\par
+
+\begin{definition}[一般\PageRank{}矩阵与向量]\label{def:V5-C07-google}
+给定式\eqref{eq:V5-C07-dangling-repair}的$S$、概率向量$\boldsymbol v\in\Delta^{n-1}$和
+$0\le d<1$，称式\eqref{eq:V5-C07-google-matrix}的$G$为一般\PageRank{}转移矩阵。
+若概率向量$\boldsymbol r$满足
+\begin{equation}
+\boldsymbol r=G\boldsymbol r
+=dS\boldsymbol r+(1-d)\boldsymbol v,\qquad
+\boldsymbol r\in\Delta^{n-1}
+\label{eq:V5-C07-general-fixed}
+\end{equation}
+则称$\boldsymbol r$为一般\PageRank{}向量。其存在性与解集大小由下节定理
+\ref{thm:V5-C07-contraction}建立。
+\end{definition}
+
+\begin{proposition}[阻尼矩阵的随机性与正性]\label{prop:V5-C07-google-positive}
+按上述次序先修复悬挂列再构造$G$，则对任意概率向量$\boldsymbol v$，$G$都是非负列随机矩阵；
+若额外有$\boldsymbol v>0$，则
+$G_{ij}\ge(1-d)v_i>0$，因而$G$严格正。
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C36-PROOF-004 L1
+\paragraph{读前自检：证明：阻尼矩阵的随机性与正性。}阻尼矩阵$G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}$中$S$列随机、$0\le d<1$；请计算列和并在$v_i>0$时核对$G_{ij}\ge(1-d)v_i>0$。\par
+
+\begin{proof}
+$S$和$\boldsymbol v\boldsymbol1^{\mathsf T}$都非负且每列和为$1$，
+其凸组合$G$仍非负且每列和为$d+(1-d)=1$。
+又因$S_{ij}\ge0$与$1-d>0$，当$v_i>0$时给定严格正下界成立；
+$v_i=0$时不保证该行所有元素为正，但不影响列随机性。
+\end{proof}
+图\ref{fig:V5-C07-damping-teleportation}把悬挂修复与随机跳转分成两个有顺序的操作。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/damping_teleportation.tex}
+
+
+\SLTeachSection{平稳分布与主特征向量}{sec:V5-C07-S04}
+
+\begin{definition}[平稳排名与主特征向量]\label{def:V5-C07-stationary-pr}
+对列随机矩阵$P$，概率向量$\boldsymbol r$若满足$P\boldsymbol r=\boldsymbol r$，
+就称为平稳排名。它是特征值$1$的右特征向量；“排名”还要求用
+$\boldsymbol1^{\mathsf T}\boldsymbol r=1$固定尺度，不能把任意倍数当作概率分布。
+\end{definition}
+
+\begin{theorem}[一般\PageRank{}的唯一性与几何收敛]\label{thm:V5-C07-contraction}
+设$S$非负列随机，$\boldsymbol v\ge0$且$\boldsymbol1^{\mathsf T}\boldsymbol v=1$，
+$0\le d<1$。映射$T(\boldsymbol x)=dS\boldsymbol x+(1-d)\boldsymbol v$
+在$\Delta^{n-1}$上有唯一不动点$\boldsymbol r$，且对任意初始概率向量
+\begin{equation}
+\|\boldsymbol r^{(t)}-\boldsymbol r\|_1
+\le d^t\|\boldsymbol r^{(0)}-\boldsymbol r\|_1.
+\label{eq:V5-C07-geometric-bound}
+\end{equation}
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V5-C36-PROOF-005 L1
+\paragraph{读前自检：证明：一般 的唯一性与几何收敛。}一般\PageRank{}映射$T(x)=dSx+(1-d)v$在$\ell_1$上满足$\lVert T(x)-T(y)\rVert_1\le d\lVert x-y\rVert_1$；请迭代此界，核对$d<1$给唯一固定点与几何收敛。\par
+
+\begin{proof}
+命题\ref{prop:V5-C07-simplex-invariance}说明$T$把概率单纯形映回自身。
+对任意$\boldsymbol x,\boldsymbol y\in\Delta^{n-1}$，
+\[
+\|T(\boldsymbol x)-T(\boldsymbol y)\|_1
+=d\|S(\boldsymbol x-\boldsymbol y)\|_1
+\le d\|S\|_1\|\boldsymbol x-\boldsymbol y\|_1
+=d\|\boldsymbol x-\boldsymbol y\|_1.
+\]
+当$d<1$时这是严格压缩；完备性与压缩映射定理给出唯一不动点。
+对上式反复应用$t$次即得式\eqref{eq:V5-C07-geometric-bound}。
+\end{proof}
+
+\phantomsection\label{struct:V5-C07-CH14}
+\textbf{几何解释。}概率向量位于$\Delta^{n-1}$。沿链映射$S$可在单纯形内剪切或旋转质量，
+随机跳转则把每个点向$\boldsymbol v$拉回；二者组合后，任意两条轨迹的$1$范数距离至多缩成$d$倍。
+图\ref{fig:V5-C07-simplex-contraction}中的唯一交点就是平稳排名。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/simplex_stationary_contraction.tex}
+
+\phantomsection\label{struct:V5-C07-CH15}
+\textbf{概率解释。}一般随机游走每一步先掷一枚独立硬币：以概率$d$沿链接（悬挂时按
+$\boldsymbol v$离开），以概率$1-d$重新按$\boldsymbol v$选择结点。
+当$\boldsymbol v>0$时，随机跳转为任意两点之间提供正概率路径，并额外保证$G$严格正；
+若$\boldsymbol v$允许零分量，压缩性仍给出唯一固定点和几何收敛，但不能再声称$G$严格正或所有结点都可由跳转直接到达。
+$r_i$是稳态下访问$i$的长期频率，不是“用户必然喜欢$i$”的概率。
+
+\phantomsection\label{struct:V5-C07-CH16}
+\textbf{优化解释。}\PageRank{}通常不写成经验风险最小化；它是线性固定点问题。
+可把计算理解为最小化固定点残差$\|\boldsymbol x-T(\boldsymbol x)\|_1$，
+但幂迭代直接利用压缩结构，比对这个非光滑目标调用通用优化器更自然。
+
+\textbf{推导第3步：把固定点改写成线性方程并给出证书。}
+由式\eqref{eq:V5-C07-general-fixed}移项得
+\begin{equation}
+(I-dS)\boldsymbol r=(1-d)\boldsymbol v,\qquad
+\boldsymbol r=(1-d)(I-dS)^{-1}\boldsymbol v.
+\label{eq:V5-C07-linear-system}
+\end{equation}
+% KNOWLEDGE-PLAN: KN-V5-C36-PROPOSITION-004 L1
+\paragraph{读前自检：代数表示与迭代残差证书。}\PageRank{}迭代令$\delta_t=\lVert\boldsymbol r^{(t+1)}-\boldsymbol r^{(t)}\rVert_1$；请代入收缩因子$d<1$，核对$\lVert\boldsymbol r^{(t+1)}-\boldsymbol r\rVert_1\le\delta_t/(1-d)$，并用该上界判断是否达到目标误差。\par
+
+\begin{proposition}[代数表示与迭代残差证书]\label{prop:V5-C07-linear-residual}
+在$0\le d<1$时，$I-dS$可逆，且
+\begin{equation}
+\boldsymbol r=(1-d)\sum_{k=0}^{\infty}d^kS^k\boldsymbol v.
+\label{eq:V5-C07-neumann}
+\end{equation}
+若$\boldsymbol r^{(t+1)}=T(\boldsymbol r^{(t)})$且
+$\delta_t=\|\boldsymbol r^{(t+1)}-\boldsymbol r^{(t)}\|_1$，则
+\begin{equation}
+\|\boldsymbol r^{(t+1)}-\boldsymbol r\|_1
+\le\frac{d}{1-d}\delta_t
+\le\frac{1}{1-d}\delta_t.
+\label{eq:V5-C07-residual-certificate}
+\end{equation}
+\end{proposition}
+% KNOWLEDGE-PLAN: KN-V5-C36-PROOF-006 L1
+\paragraph{读前自检：证明：代数表示与迭代残差证书。}\PageRank{}相邻差满足$\delta_{t+j}\le d^j\delta_t$；请对$j\ge0$求几何级数，核对从第$t+1$步到极限的尾和不超过$\delta_t/(1-d)$。\par
+
+\begin{proof}
+列随机性给出$\rho(S)\le\|S\|_1=1$，故$\rho(dS)<1$。
+Neumann级数$\sum_{k\ge0}(dS)^k$绝对收敛并等于$(I-dS)^{-1}$，从而得到
+式\eqref{eq:V5-C07-neumann}。再由压缩性，后续步长满足
+$\delta_{t+j}\le d^j\delta_t$。极限存在且为$\boldsymbol r$，于是
+\[
+\|\boldsymbol r^{(t+1)}-\boldsymbol r\|_1
+\le\sum_{j=1}^{\infty}\delta_{t+j}
+\le\sum_{j=1}^{\infty}d^j\delta_t
+=\frac{d}{1-d}\delta_t.
+\]
+最后一个较松界由$d\le1$得到。
+\end{proof}
+
+\phantomsection\label{struct:V5-C07-CH17}
+\textbf{图形辅助。}图\ref{fig:V5-C07-periodic-dangling}、
+图\ref{fig:V5-C07-damping-teleportation}与图\ref{fig:V5-C07-power-flow}
+构成本章“故障诊断--修复与阻尼--误差证书”三张主图。入链分解、单纯形几何和数值轨迹
+只作为相应推导、定理与小型例子的就近辅助，不再与三张主图连续堆叠。
+
+\phantomsection\label{struct:V5-C07-CH18}
+\textbf{小型数值例子。}取三结点图$1\to2,3$、$2\to3$，结点$3$悬挂，
+$\boldsymbol v=(1/3,1/3,1/3)^{\mathsf T}$、$d=0.8$。先修复悬挂列得
+\[
+S=\begin{bmatrix}0&0&1/3\\1/2&0&1/3\\1/2&1&1/3\end{bmatrix},
+\qquad
+G=\begin{bmatrix}1/15&1/15&1/3\\7/15&1/15&1/3\\7/15&13/15&1/3\end{bmatrix}.
+\]
+从均匀分布出发，第一步为
+$\boldsymbol r^{(1)}=(7/45,13/45,5/9)^{\mathsf T}$；
+精确固定点为
+$\boldsymbol r=(25/123,35/123,21/41)^{\mathsf T}\approx(0.2033,0.2846,0.5122)^{\mathsf T}$。
+图\ref{fig:V5-C07-rank-trajectory}左侧展示从均匀初值得到的
+$t=0,\ldots,8$有限轨迹，其中$t=6$只是展示截断、不是停止判定；
+右侧给出精确固定点（显示六位小数）及排序$3\succ2\succ1$。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/numerical_rank_trajectory.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}核对
+$\lVert G\boldsymbol r^{(6)}-\boldsymbol r^{(6)}\rVert_1
+=4.474947\times10^{-4}>0$，所以$t=6$不是停止判定；再比较
+$\boldsymbol r_*=(25/123,35/123,21/41)^{\mathsf T}$与图中六位小数，
+验证精确固定点的排序为$3\succ2\succ1$。
+
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：\PageRank{}迭代算法。}\PageRank{}迭代以修复矩阵$S$、跳转分布$v$、$0\le d<1$、初始排名和预算为输入；请完成一轮$r^+=dSr+(1-d)v$，核对概率守恒后提交，并按后验误差界或预算停止。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：\PageRank{}的计算。}\PageRank{}计算先汇总悬挂质量$h_t=\sum_{j\in D}r_j^{(t)}$；请把非悬挂边散射项、$dh_t\boldsymbol v$与$(1-d)\boldsymbol v$相加，核对新向量分量和为1。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-006 L1
+\paragraph{读前自检：迭代算法。}\PageRank{}迭代算法维护排名向量、相邻差$\delta_t$和误差上界；请形成一轮候选并在非负/质量门通过后提交，核对$\delta_t/(1-d)\le\varepsilon$时可停止。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-007 L1
+\paragraph{读前自检：代数算法。}\PageRank{}代数算法解$(I-dS)\boldsymbol r=(1-d)\boldsymbol v$；请把解回代线性方程，核对同时满足固定点式与概率归一化，并与幂迭代目标一致。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-008 L1
+\paragraph{读前自检：幂法。}\PageRank{}幂法从$\boldsymbol r^{(0)}\in\Delta^{n-1}$反复应用$G$；请做一次$G\boldsymbol r^{(t)}$并计算$\ell_1$相邻差，核对候选仍归一且收缩因子不超过$d$。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-009 L1
+\paragraph{读前自检：一般\PageRank{}的幂法计算。}一般\PageRank{}稀疏幂法不显式形成$G$，而是沿非悬挂边散射并补悬挂/跳转质量；请完成一次等价更新，核对与$dS\boldsymbol r+(1-d)\boldsymbol v$逐分量一致。\par
+
+\SLAdvancedSection{幂法计算}{sec:V5-C07-S05}
+\knowledgeanchor{SLM-21-01-007}{PageRank迭代算法@\PageRank{} 迭代算法}
+\knowledgeanchor{SLM-21-02-002}{PageRank的计算@\PageRank{} 的计算}
+\knowledgeanchor{SLM-21-02-003}{迭代算法}
+\knowledgeanchor{SLM-21-02-006}{代数算法}
+\knowledgeanchor{SLM-21-02-004}{幂法}
+\knowledgeanchor{SLM-21-02-005}{一般PageRank的幂法计算@一般\PageRank{} 的幂法计算}
+
+一般\PageRank{}的幂迭代就是
+\begin{equation}
+\boldsymbol r^{(t+1)}=G\boldsymbol r^{(t)}
+=dS\boldsymbol r^{(t)}+(1-d)\boldsymbol v.
+\label{eq:V5-C07-power-update}
+\end{equation}
+实际实现不显式形成稠密的$G$。令
+$h_t=\sum_{j\in D}r_j^{(t)}$，只对非悬挂边做稀疏乘法，便有
+\begin{equation}
+r_i^{(t+1)}
+=d\sum_{\substack{j\notin D\\j\to i}}
+\frac{A_{ij}}{c_j}r_j^{(t)}
++(1-d+dh_t)v_i.
+\label{eq:V5-C07-sparse-update}
+\end{equation}
+
+% v2.6 layout: former forced clear removed; natural pagination.
+图\ref{fig:V5-C07-power-flow}给出输入检查、悬挂汇总、稀疏乘法、残差计算和停止判断的顺序。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C07/power_method_flow_convergence.tex}
+
+
+\phantomsection\label{struct:V5-C07-CH19}
+\textbf{算法伪代码。}算法\ref{alg:V5-C07-basic-power}只处理已经核验为无悬挂、不可约、非周期的基本链；
+算法\ref{alg:V5-C07-general-power}处理任意有向图，并在每次稀疏乘法中等价地完成悬挂修复。
+二者都采用列向量和确定性更新，并明确说明停止原因。
+
+\phantomsection\label{struct:V5-C07-CH20}
+\textbf{输入与输出。}基本算法输入稀疏列随机矩阵、初始概率向量、容差和上限，
+输出基本\PageRank{}、残差轨迹和迭代次数；一般算法输入稀疏边表、
+$\boldsymbol v,d,\varepsilon,T_{\max}$和可选初值，输出一般\PageRank{}、误差上界、轨迹与悬挂集合。
+
+\phantomsection\label{struct:V5-C07-CH21}
+\textbf{参数含义。}$d$是沿修复链接行走的概率，必须满足$0\le d<1$；
+基本算法中的$\varepsilon$只是相邻差与固定点残差的数值阈值；一般阻尼算法中的$\varepsilon$才是由压缩证书保证的目标$1$范数误差。$T_{\max}$是硬上限；
+$\boldsymbol v$同时定义悬挂结点的离开分布和随机跳转分布，使模型语义一致。
+
+\phantomsection\label{struct:V5-C07-CH22}
+\textbf{初始化。}两种算法都要求$\boldsymbol r^{(0)}\in\Delta^{n-1}$。
+缺省取$\boldsymbol v$；若用户给定非负但仅有微小浮点和误差的向量，可核验后归一化一次；
+负分量、零总和或非有限值必须报错，不能静默修补。
+
+\phantomsection\label{struct:V5-C07-CH23}
+\textbf{循环变量与更新顺序。}迭代变量为$t=0,1,\ldots,T_{\max}-1$。
+基本算法先做$M\boldsymbol r^{(t)}$再核验；一般算法依次汇总悬挂质量、沿非悬挂边散射、加入
+$(1-d+dh_t)\boldsymbol v$、核验概率守恒、计算$\delta_t$，不得颠倒悬挂修复与阻尼混合。
+
+\phantomsection\label{struct:V5-C07-CH24}
+\textbf{判断、停止、返回与异常。}基本算法以相邻差和固定点残差均不超过$\varepsilon$作为数值停止条件；
+该出口只报告$\mathtt{numerical\_failure}$，因为没有已知压缩因子或谱隙时，两个小残差不能直接换算成到真解的距离。一般算法以$B_t=\delta_t/(1-d)\le\varepsilon$给出式\eqref{eq:V5-C07-residual-certificate}的保守误差证书，只有该出口报告$\mathtt{converged}$。
+若出现非法索引、负边权、非正规模、非有限数或严重质量漂移，则停止并指出位置；达到迭代上限仍未满足停止准则时，保留最后一个合法向量并说明原因。
+
+\phantomsection\label{struct:V5-C07-CH25}
+\textbf{正确性依据与收敛条件。}基本算法的正确性和从任意初值收敛由定理
+\ref{thm:V5-C07-basic-convergence}保证，但定理只给渐近结论，未给当前残差到真解距离的可计算常数；一般算法的唯一性、几何收敛和停止证书由定理
+\ref{thm:V5-C07-contraction}及命题\ref{prop:V5-C07-linear-residual}保证。
+若基本链没有不可约、非周期证书，则该算法不适用；一般算法的唯一性与压缩收敛只需
+$\boldsymbol v\in\Delta^{n-1}$、$0\le d<1$和输入图有限；严格正$\boldsymbol v$只用于额外推出$G>0$与全支撑可达。
+
+\phantomsection\label{struct:V5-C07-CH26}
+\textbf{离线构建与查询复杂度。}\PageRank{}没有监督训练；离线排名构建中，
+基本算法每步一次稀疏乘法，$T$步为$O(T(n+m))$；一般算法预处理出度$O(n+m)$，
+每步悬挂汇总、稀疏散射和跳转均为$O(n+m)$，总计$O(n+m+T(n+m))$。
+若显式使用稠密$G$则为$O(Tn^2)$。排名查询中，
+物化全部结果后读取一个结点为$O(1)$，输出完整向量为$O(n)$；改变图、$d$或$\boldsymbol v$必须重新计算。
+
+\phantomsection\label{struct:V5-C07-CH27}
+\textbf{空间复杂度与复杂度假设。}邻接表或压缩稀疏列存储占$O(n+m)$，
+出度、悬挂标志、当前向量和下一向量占$O(n)$，故工作内存为$O(n+m)$；
+显式形成$G$会升为$O(n^2)$。这些界假设边索引和一次浮点加乘为$O(1)$、单机可存下稀疏图，
+且不计分布式通信、外存扫描和排序展示成本。若还要全排序，另需$O(n\log n)$时间或选择算法的相应代价。
+
+\paragraph{算法\ref{alg:V5-C07-basic-power}的实现要点。}
+初值必须是合法概率向量；每轮依次进行稀疏乘法、概率检查和双残差判断。定理\ref{thm:V5-C07-basic-convergence}要求有限、不可约和非周期；周期链、可约链或悬挂列不满足本算法前提。稀疏离线构建为$O(T(n+m))$，单个排名查询为$O(1)$，工作空间为$O(n+m)$。
+
+\begingroup\SetAlgoLined
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-010 L2
+
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-011 L2
+\begin{keypointbox}[title={基本 的稀疏幂迭代：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限非负稀疏列随机矩阵、不可约/非周期证书、初始概率向量、容差与迭代预算$T_{\max}$},
+  output={最后合法排名、差分/固定点残差轨迹、提交轮$t_{\rm done}$、稀疏乘法数$m_{\rm done}$、状态与最终诊断},
+  preconditions={$n\ge1,T_{\max}\in\mathbb N_0$；矩阵列随机无悬挂列；结构证书有效；初值在单纯形，容差正},
+  initialization={$r=r^{(0)}$，$t_{\rm done}=m_{\rm done}=0$，残差轨迹为空},
+  loop={每轮先算$y=Mr$，再算固定点复检$My-y$并形成双残差候选},
+  update={$y$、质量、非负性与双残差全部通过后才原子提交$r\leftarrow y$和轨迹},
+  domain={$r,y\in\Delta^{n-1}$；稀疏乘积与$\ell_1$残差有限；只修正舍入级质量漂移},
+  failure={矩阵/证书/初值/预算非法返回$\mathtt{invalid\_input}$；乘法、质量、负分量或残差异常返回$\mathtt{numerical\_failure}$并保留上一合法排名},
+  stop={相邻差与固定点残差达到登记阈值、$T_{\max}$轮耗尽或首次失败时停止；前一出口只是数值停止，不是到真解距离证书},
+  budget={至多$T_{\max}$个提交轮和$2T_{\max}$次稀疏矩阵--向量乘法；零预算不执行乘法},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$},
+  iterations={$t_{\rm done}$计原子提交轮，$m_{\rm done}$计实际完成的稀疏矩阵--向量乘法},
+  diagnostics={初末质量、$\delta_t,q_t$、最大负漂移、失败轮/乘法阶段、结构证书ID与预算余量，并明确“无压缩/谱隙信息，未给出$\|r-r_\star\|$证书”},
+  complexity={$O(t_{\rm done}(n+|E|))$时间、$O(n+|E|)$工作空间}
+}
+\begin{algorithm}[tbp]
+\caption{基本\PageRank{}的稀疏幂迭代}\label{alg:V5-C07-basic-power}
+\KwIn{非负稀疏矩阵$M\in\mathbb R^{n\times n}$；不可约、非周期条件；$\boldsymbol r^{(0)}\in\Delta^{n-1}$；$\varepsilon>0,T_{\max}\in\mathbb N_0$}
+\KwOut{最后合法$\widehat r$、残差轨迹；$t_{\rm done},m_{\rm done}$；$\mathtt{status}$与最终诊断}
+置$r\leftarrow r^{(0)},t_{\rm done}=m_{\rm done}=0$；若矩阵、证书、初值、预算或容差非法，则返回初始占位、$\mathtt{invalid\_input}$及字段诊断；若$T_{\max}=0$，返回$r$、$\mathtt{budget\_stop}$及零预算诊断\;
+\While{$t_{\rm done}<T_{\max}$}{
+  计算临时$y=Mr$并增加$m_{\rm done}$；非有限、显著为负或质量漂移超限时，返回最后合法$r$、$\mathtt{numerical\_failure}$及首个乘法诊断\;
+  仅对舍入级质量漂移归一化$\boldsymbol y$，计算$\delta_t\leftarrow\|\boldsymbol y-\boldsymbol r\|_1$;
+  计算$q_t=\|My-y\|_1$并增加$m_{\rm done}$；非有限则返回$r$、$\mathtt{numerical\_failure}$及固定点复检诊断\;
+  原子提交$r\leftarrow y$、轨迹$(\delta_t,q_t)$并增加$t_{\rm done}$；若双残差均不超过$\varepsilon$，返回$r$、实际计数、$\mathtt{numerical\_failure}$及“数值稳定但无真解距离证书”诊断\;
+}
+返回最后合法$r$、轨迹、实际计数、$\mathtt{budget\_stop}$及“达到上限、未满足双证书”最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\endgroup
+
+\paragraph{算法\ref{alg:V5-C07-general-power}的实现要点。}
+更新顺序严格对应式\eqref{eq:V5-C07-sparse-update}。空边图、全悬挂图和$d=0$是合法退化情形，均给出$\boldsymbol v$；压缩定理要求$\boldsymbol v\in\Delta^{n-1}$和$0\le d<1$。稀疏离线排名为$O(n+m+T(n+m))$，物化后的单点查询为$O(1)$，空间为$O(n+m)$。
+
+\begingroup\SetAlgoLined
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-012 L1
+\paragraph{读前自检：带悬挂修复的一般 稀疏幂法：执行契约。}带悬挂修复的一般 稀疏幂法输入“结点/加权边表、跳转分布$v$、阻尼$d$、初始排名、目标误差、质量容差和迭代预算”，条件“$n\ge1,T_{\max}\in\mathbb N_0,0\le d<1$”；请执行“完整边扫描、质量/非负性/差分检查通过后才原子提交$y$、误差上界和轨迹”，以“显式满足$B_t=\delta_t/(1-d)\le\varepsilon$、$T_{\max}$轮耗尽或首次失败时停止”判停。\par
+% KNOWLEDGE-PLAN: KN-V5-C36-ALGORITHM_IDEA-013 L2
+\begin{keypointbox}[title={带悬挂修复的一般 稀疏幂法：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={结点/加权边表、跳转分布$v$、阻尼$d$、初始排名、目标误差、质量容差和迭代预算},
+  output={最后合法排名、误差上界/差分轨迹、悬挂集合、提交轮$t_{\rm done}$、边贡献$e_{\rm done}$、预处理边$p_{\rm done}$、状态与最终诊断},
+  preconditions={$n\ge1,T_{\max}\in\mathbb N_0,0\le d<1$；边合法非负有限；$v,r^{(0)}$为概率向量；容差正},
+  initialization={有限扫描边表形成出度和悬挂集，$r=r^{(0)}$，$t_{\rm done}=e_{\rm done}=p_{\rm done}=0$},
+  loop={每轮先汇总悬挂质量，以跳转项初始化临时$y$，再按固定边序散射非悬挂贡献},
+  update={完整边扫描、质量/非负性/差分检查通过后才原子提交$y$、误差上界和轨迹},
+  domain={$r,y,v\in\Delta^{n-1}$；出度有限非负；边贡献有限非负；$B_t=\delta_t/(1-d)$有定义},
+  failure={参数/边/概率向量非法返回$\mathtt{invalid\_input}$；出度、悬挂质量、边贡献、质量或差分异常返回$\mathtt{numerical\_failure}$并保留上一合法排名},
+  stop={显式满足$B_t=\delta_t/(1-d)\le\varepsilon$、$T_{\max}$轮耗尽或首次失败时停止},
+  budget={预处理至多$|E|$条边；迭代至多$T_{\max}|E|$条边贡献；零预算只完成输入预处理},
+  status={$\mathtt{converged}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{numerical\_failure}$},
+  iterations={$t_{\rm done}$计原子提交轮，$e_{\rm done}$计实际边贡献，$p_{\rm done}$计已核验预处理边},
+  diagnostics={悬挂结点/质量、初末概率质量、$\delta_t,B_t$、失败边/阶段、计划/实际边工作量及预算余量},
+  complexity={$O(n+|E|+t_{\rm done}(n+|E|))$时间、$O(n+|E|)$空间}
+}
+\begin{algorithm}[tbp]
+\caption{带悬挂修复的一般\PageRank{}稀疏幂法}\label{alg:V5-C07-general-power}
+\KwIn{结点数$n$与加权边表$\mathcal E$；$\boldsymbol v\in\Delta^{n-1}$；$0\le d<1$；
+$\boldsymbol r^{(0)}\in\Delta^{n-1}$；目标误差$\varepsilon>0$；上限$T_{\max}\in\mathbb N_0$；质量容差$\tau_{\mathrm{mass}}$}
+\KwOut{最后合法$r$、误差轨迹与$D$；$t_{\rm done},e_{\rm done},p_{\rm done}$；$\mathtt{status}$及最终诊断}
+置$t_{\rm done}=e_{\rm done}=p_{\rm done}=0$；若$n,T_{\max},d$、容差、$v,r^{(0)}$非法，则返回初始占位、$\mathtt{invalid\_input}$及字段诊断\;
+逐边核验索引/权重并增加$p_{\rm done}$，非法时返回已检前缀、$\mathtt{invalid\_input}$及边诊断；计算出度，非有限或为负时返回$\mathtt{numerical\_failure}$及出度诊断\;
+构造悬挂集合$D\leftarrow\{j:c_j=0\}$\;
+令$r\leftarrow r^{(0)}$；若$T_{\max}=0$，返回$r,D$、$\mathtt{budget\_stop}$及零预算/预处理最终诊断\;
+\While{$t_{\rm done}<T_{\max}$}{
+  $h\leftarrow\sum_{j\in D}r_j$；异常时返回最后合法$r$、$\mathtt{numerical\_failure}$及悬挂质量诊断\;
+  $\boldsymbol y\leftarrow(1-d+dh)\boldsymbol v$\;
+  \For{每条非悬挂边$j\to i$依固定存储顺序遍历}{
+    $q\leftarrow d(A_{ij}/c_j)r_j$并增加$e_{\rm done}$；异常时返回$r$、$\mathtt{numerical\_failure}$及边贡献诊断；否则累加到临时$y_i$\;
+  }
+  若$y$含非有限值或严重负分量，则返回$r$、$\mathtt{numerical\_failure}$及分量诊断\;
+  $s_t\leftarrow\boldsymbol1^{\mathsf T}\boldsymbol y$\;
+  若质量漂移超限，返回$r$、$\mathtt{numerical\_failure}$及质量诊断\;
+  仅对舍入级漂移令$\boldsymbol y\leftarrow\boldsymbol y/s_t$\;
+  $\delta_t\leftarrow\|y-r\|_1$；非有限时返回$r$、$\mathtt{numerical\_failure}$及差分诊断\;
+  $B_t\leftarrow\delta_t/(1-d)$\;
+  原子提交$r\leftarrow y$、轨迹$(\delta_t,B_t)$并增加$t_{\rm done}$；\If{$B_t\le\varepsilon$}{返回$r,B_t,D$、实际计数、$\mathtt{converged}$及证书$\|r-r_\star\|_1\le B_t\le\varepsilon$诊断\;}
+}
+返回最后合法$r$、误差轨迹、$D$、实际计数、$\mathtt{budget\_stop}$及“达到上限、证书未满足”最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\FloatBarrier
+\SLRobustImplementationStrip{核心四步是修复悬挂列、形成随机转移、执行幂迭代、以残差停止；规范化、预算与数值失败属于稳健实现细节}
+\endgroup
+
+代数法可直接解式\eqref{eq:V5-C07-linear-system}，但显式求逆既不必要也会破坏稀疏性；
+稠密求解通常需$O(n^3)$时间与$O(n^2)$空间。实际若采用线性求解器，应解方程而不是形成逆矩阵，
+并报告线性残差与停止原因。
+
+\phantomsection\label{struct:V5-C07-CH28}
+\textbf{适用条件。}\PageRank{}适合“有向关系可解释为重要性传递”的网页、引用、关注或推荐候选图。
+需要冻结结点/边版本、边权语义、去重规则、$\boldsymbol v,d$和停止容差。
+若任务是查询相关性、因果效应或时间顺序预测，\PageRank{}只能作为结构特征，不能替代专门模型。
+
+\phantomsection\label{struct:V5-C07-CH29}
+\textbf{局限性。}分数受链接操纵、重复页、边权和个性化分布影响；单一静态图不建模时间与内容；
+$d$越接近$1$越强调链接却越慢收敛，也越放大图结构偏差。\PageRank{}给出相对稳态权重，
+不自动提供公平性、可信度或语义质量保证。
+
+\phantomsection\label{struct:V5-C07-CH30}
+\begin{pitfallbox}
+把行随机矩阵与列向量混用；把边$i\to j$写入$M_{ij}$而未说明约定；
+遗漏出度分母；直接在零列矩阵上构造$G$；取$d=1$却仍引用压缩保证；
+每步按$\|\cdot\|_\infty$归一化后又把向量当概率；只看相邻差而不报告固定点残差；
+显式存储稠密$G$并声称复杂度仍是$O(m)$。
+\end{pitfallbox}
+
+\phantomsection\label{struct:V5-C07-CH31}
+\begin{comparisonbox}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.19\textwidth}XX@{}}
+\toprule
+对象 & 第一项 & 第二项 \\
+\midrule
+列随机与行随机 & 列和为$1$，列向量左乘$P$ & 行和为$1$，行向量右乘$P$ \\
+基本与一般\PageRank{} & 依赖不可约、非周期且无悬挂的原链 & 修复悬挂并以$d<1$跳转，任意有限图均有唯一解 \\
+平稳与收敛 & $P\boldsymbol r=\boldsymbol r$是静态方程 & $P^t\boldsymbol r^{(0)}\to\boldsymbol r$还需动力学条件 \\
+悬挂与无入链 & 悬挂结点没有出边，对应零列 & 无入链结点没有来自图的贡献，但仍可由跳转获得质量 \\
+幂法与代数法 & 反复稀疏乘法，适合大图 & 解$(I-dS)\boldsymbol r=(1-d)\boldsymbol v$，适合小型核验 \\
+阻尼与停止容差 & $d$定义模型及收敛率 & $\varepsilon$只定义计算精度，不应改变模型 \\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+
+\SLDirectSection{例题、排序计算与练习}{sec:V5-C07-S06}
+\begin{SLRunningExample}{RUN-GRAPH-04-01}{V5-C07-pagerank}{贯穿例：四节点小图}{复用第30章（第5册第1章）的加权有向小图；同时转置矩阵与概率向量后计算列随机\PageRank{}。}
+下例的$M$就是第30章（第5册第1章）贯穿例中$A^{\mathsf T}$，且$\boldsymbol r^{(0)}=\rho_0^{\mathsf T}$。由于$A$非负且行随机，$M$非负且列随机，满足第36章（第5册第7章）的链接转移矩阵假设。在未加阻尼的基本核$M$下，两个章节的推进满足$\boldsymbol r^{(t)}=\rho_t^{\mathsf T}$，其平稳向量也互为转置，因而可在不更换图数据的前提下检验行/列桥接。加入阻尼与正概率个性化向量后，\PageRank{}核仍为合法的列随机矩阵并继续复用同一链接数据，但推进序列与平稳解一般都会改变。上一站见\SLRunningExampleRef{RUN-GRAPH-04-01}{V5-C01-row-chain}{第30章（第5册第1章）的行随机马尔可夫链表示}。
+\end{SLRunningExample}
+
+\phantomsection\label{struct:V5-C07-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[四结点基本\PageRank{}复算]\label{exm:V5-C07-basic-four}
+给定列随机矩阵
+\[
+M=\begin{bmatrix}
+0&1/2&1&0\\1/3&0&0&1/2\\1/3&0&0&1/2\\1/3&1/2&0&0
+\end{bmatrix},
+\qquad \boldsymbol r^{(0)}=\tfrac14\boldsymbol1.
+\]
+复算第一步，并核验极限$\boldsymbol r=(1/3,2/9,2/9,2/9)^{\mathsf T}$。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C07-basic-four}
+\begin{solution}
+\SLReadTranslation{题目要求完成“四结点基本 复算”：依据题面矩阵/向量求出目标量，并核对每一步乘法与最终结果的维数。}
+\SolGiven 题面矩阵、向量与参数均按既定列向量约定；首次运算前写出各对象维数并确认内侧维数相等。
+\SLMethodTrigger{先标注每个矩阵/向量维数，再按分解、乘法或投影公式计算并做形状核验。}
+\SolDerive
+\textbf{计算。}直接相乘得到
+\[
+\boldsymbol r^{(1)}=M\boldsymbol r^{(0)}
+=\left(\frac38,\frac5{24},\frac5{24},\frac5{24}\right)^{\mathsf T},
+\qquad
+\boldsymbol1^{\mathsf T}\boldsymbol r^{(1)}=1.
+\]
+\textbf{独立核验。}第一轮分量和为$1$；候选极限也非负且分量和为$1$，并且
+\[
+M\begin{bmatrix}1/3\\2/9\\2/9\\2/9\end{bmatrix}
+=\begin{bmatrix}1/3\\2/9\\2/9\\2/9\end{bmatrix}.
+\]
+该图对应链满足不可约、非周期条件，故定理\ref{thm:V5-C07-basic-convergence}保证从给定初值收敛到此唯一向量。
+这个论证不要求$M$可对角化；即便改用Jordan标准形，次特征值对应的多项式因子也会被模小于$1$的幂压过。
+
+\textbf{结论。}第一步是$(3/8,5/24,5/24,5/24)^{\mathsf T}$，并收敛到唯一概率向量$(1/3,2/9,2/9,2/9)^{\mathsf T}$。
+\end{solution}
+
+\Needspace{6\baselineskip}
+\begin{example}[删除一条边后的概率质量流失]\label{exm:V5-C07-dangling-loss}
+从例\ref{exm:V5-C07-basic-four}的图删除结点$C$指向$A$的唯一出边，于是第$C$列变为零。
+说明为何未经修复的迭代会丢失概率质量，并判断长期结果能否称为\PageRank{}概率分布。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C07-dangling-loss}
+\begin{solution}
+\SLReadTranslation{题目要求完成“删除一条边后的概率质量流失”：依据题面概率模型求出目标量，并解释条件化、归一化或边缘化。}
+\SolGiven 题面概率、权重或密度均处于合法范围；条件分母/归一化常数应为正，支持集与随机变量取值域保持一致。
+\SLMethodTrigger{先写支持集、条件分母或归一化常数，再代入概率公式并做概率和/边缘核验。}
+\SolDerive
+\textbf{守恒诊断。}删除边后第$C$列和为$0$，其余列和为$1$。因此对任意概率向量$\boldsymbol x$，
+\[
+\boldsymbol1^{\mathsf T}M\boldsymbol x=1-x_C.
+\]
+\textbf{独立核验。}只要$C$仍有正质量，下一步总质量就严格小于$1$。从均匀初值逐轮复算，
+\[
+\boldsymbol1^{\mathsf T}\boldsymbol r^{(0)}=1,\quad
+\boldsymbol1^{\mathsf T}\boldsymbol r^{(1)}=\frac34,\quad
+\boldsymbol1^{\mathsf T}\boldsymbol r^{(2)}=\frac{13}{24},\quad
+\boldsymbol1^{\mathsf T}\boldsymbol r^{(3)}=\frac{19}{48}.
+\]
+流入$C$的质量继续消失。
+\textbf{结论。}未修复序列最终趋向零向量，而零向量不是概率分布；这个过程不能称为\PageRank{}概率分布，必须先修复悬挂列。
+\end{solution}
+
+\Needspace{6\baselineskip}
+\begin{example}[四结点阻尼\PageRank{}]\label{exm:V5-C07-damped-four}
+取$d=0.8$、$\boldsymbol v=\boldsymbol1/4$及
+\[
+S=\begin{bmatrix}
+0&1/2&0&0\\1/3&0&0&1/2\\1/3&0&1&1/2\\1/3&1/2&0&0
+\end{bmatrix}.
+\]
+由线性方程求一般\PageRank{}，并给出排序。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C07-damped-four}
+\begin{solution}
+\SLReadTranslation{题目要求围绕“四结点阻尼”确定所求对象，依据题面数据完成必要推导并回收明确结论。}
+\SolGiven 保留题面全部已知量，并先核对“四结点阻尼”中每个对象的取值域、维数与成立条件。
+\SLMethodTrigger{围绕“四结点阻尼”先声明对象与条件，再完成必要计算并回收结论。}
+\SolDerive
+\textbf{计算。}固定点、线性方程与解依次为
+\[
+\boldsymbol r=0.8S\boldsymbol r+0.05\boldsymbol1
+\Longleftrightarrow
+(I-0.8S)\boldsymbol r=0.05\boldsymbol1,
+\]
+\[
+\boldsymbol r=\frac1{148}(15,19,95,19)^{\mathsf T}.
+\]
+\textbf{独立核验。}四个分量均正且
+\[
+\boldsymbol1^{\mathsf T}\boldsymbol r=1,\qquad
+\|\boldsymbol r-0.8S\boldsymbol r-0.05\boldsymbol1\|_1=0.
+\]
+\textbf{结论。}排序为$C\succ B=D\succ A$，其中$C$的自环保留了较多沿链质量。
+\end{solution}
+
+\Needspace{6\baselineskip}
+\begin{example}[三结点幂法与概率归一化]\label{exm:V5-C07-power-three}
+取$d=0.85$、$\boldsymbol v=\boldsymbol1/3$及
+\[
+S=\begin{bmatrix}0&0&1\\1/2&0&0\\1/2&1&0\end{bmatrix}.
+\]
+求平稳概率向量，并解释为什么幂法中按最大分量归一化得到的特征向量还需按分量和归一化。
+\end{example}
+\SLExampleSolutionHeading{exm:V5-C07-power-three}
+\begin{solution}
+\SLReadTranslation{题目要求完成“三结点幂法与概率归一化”：依据题面概率模型求出目标量，并解释条件化、归一化或边缘化。}
+\SolGiven 题面概率、权重或密度均处于合法范围；条件分母/归一化常数应为正，支持集与随机变量取值域保持一致。
+\SLMethodTrigger{先写支持集、条件分母或归一化常数，再代入概率公式并做概率和/边缘核验。}
+\SolPlan 先完成“三结点幂法与概率归一化”所需的中间量，再做一次题型相关核验，最后回收题目各问。
+\SolDerive
+\textbf{逐轮状态。}从$\boldsymbol r^{(0)}=\boldsymbol1/3$开始，前两轮可重放为
+\[
+\begin{array}{c|ccc|c}
+t&r_1^{(t)}&r_2^{(t)}&r_3^{(t)}&\boldsymbol1^{\mathsf T}\boldsymbol r^{(t)}\\\hline
+0&1/3&1/3&1/3&1\\
+1&1/3&23/120&19/40&1\\
+2&363/800&23/120&851/2400&1
+\end{array}
+\]
+\textbf{精确解。}由
+\[
+\boldsymbol r=0.85S\boldsymbol r+0.05\boldsymbol1
+\Longleftrightarrow
+(I-0.85S)\boldsymbol r=0.05\boldsymbol1
+\]
+得到
+\[
+\boldsymbol r=\frac1{1769}(686,380,703)^{\mathsf T}
+\approx(0.3877897,0.2148106,0.3973997)^{\mathsf T}.
+\]
+\textbf{独立核验。}分子满足$686+380+703=1769$，且把该精确向量代回
+$(I-0.85S)\boldsymbol r=0.05\boldsymbol1$得到零残差。有限步幂迭代在较松停止精度下可记录为
+$(0.3877,0.2149,0.3974)^{\mathsf T}$；它是迭代近似，不是上述精确分数的逐坐标四位舍入。
+按最大分量归一化只固定特征向量尺度，使最大坐标为$1$，并不保证分量和为$1$；
+\PageRank{}解释要求最后除以全部分量之和。概率单纯形迭代则每步已保持分量和为$1$，无需这种额外尺度归一化。
+\[
+\widetilde{\boldsymbol r}=\frac{\boldsymbol z}{\|\boldsymbol z\|_\infty}
+\quad\Longrightarrow\quad
+\boldsymbol r=\frac{\widetilde{\boldsymbol r}}
+{\boldsymbol1^{\mathsf T}\widetilde{\boldsymbol r}},
+\qquad \boldsymbol1^{\mathsf T}\boldsymbol r=1.
+\]
+\textbf{结论。}平稳概率向量为$(686,380,703)^{\mathsf T}/1769$，排序为$3\succ1\succ2$；最大分量归一化的特征向量必须再按分量和归一化，才具有概率解释。
+\end{solution}
+
+\phantomsection\label{struct:V5-C07-CH33}
+\Needspace{4\baselineskip}
+\phantomsection\label{struct:V5-C07-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V5-C07-CH35}
+本章共10道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\SLSourceBookExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-21-0001; source_number=21.1
+% SOLUTION-SOURCE: original_book; source_id=EXR-21-0001; source_number=21.1
+\begin{exercise}\label{ex:V5-C07-S01-01}
+设$A$为非负列随机矩阵。证明对每个自然数$k$，$A^k$仍为列随机矩阵。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C07-S01-01}
+\begin{chapterexercisesolution}{ex:V5-C07-S01-01}
+对$k\ge1$，矩阵乘积的每个元素满足
+\[
+(A^k)_{ij}=\sum_{i_1,\ldots,i_{k-1}}
+a_{ii_{k-1}}\cdots a_{i_1j}\ge0.
+\]
+由列随机性$\boldsymbol1^{\mathsf T}A=\boldsymbol1^{\mathsf T}$归纳得到
+\[
+\boldsymbol1^{\mathsf T}A^k
+=(\boldsymbol1^{\mathsf T}A)A^{k-1}
+=\boldsymbol1^{\mathsf T}A^{k-1}
+=\cdots=\boldsymbol1^{\mathsf T}.
+\]
+因此$A^k$非负且每列和为$1$，仍为列随机矩阵；$k=0$时$A^0=I$也满足结论。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-21-0002; source_number=21.2
+% SOLUTION-SOURCE: original_book; source_id=EXR-21-0002; source_number=21.2
+\begin{exercise}\label{ex:V5-C07-S02-01}
+对例\ref{exm:V5-C07-basic-four}，把初值分别改为
+$(1,0,0,0)^{\mathsf T}$和$(0,1/2,1/2,0)^{\mathsf T}$。
+说明为何两条迭代仍收敛到同一基本\PageRank{}，并给出可核验的方法而非只报告小数。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C07-S02-01}
+\begin{chapterexercisesolution}{ex:V5-C07-S02-01}
+两初值均非负且分量和为$1$。第一步可精确复算为
+\[
+M(1,0,0,0)^{\mathsf T}
+=\left(0,\frac13,\frac13,\frac13\right)^{\mathsf T},
+\]
+\[
+M\left(0,\frac12,\frac12,0\right)^{\mathsf T}
+=\left(\frac34,0,0,\frac14\right)^{\mathsf T}.
+\]
+从矩阵的有向图可核验任意状态可达任意状态，且存在长度互素的闭游走，
+故链不可约且非周期。定理\ref{thm:V5-C07-basic-convergence}于是对每个初值给出同一唯一极限。
+精确核验不必依赖小数；候选极限满足
+\[
+\boldsymbol r_\star=\left(\frac13,\frac29,\frac29,\frac29\right)^{\mathsf T},
+\qquad M\boldsymbol r_\star=\boldsymbol r_\star,\qquad
+\boldsymbol1^{\mathsf T}\boldsymbol r_\star=1.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-21-0003; source_number=21.3
+% SOLUTION-SOURCE: original_book; source_id=EXR-21-0003; source_number=21.3
+\begin{exercise}\label{ex:V5-C07-S03-01}
+证明按本章一般定义构造的\PageRank{}马尔可夫链具有平稳分布，并说明在
+$\boldsymbol v>0$、$0\le d<1$下为什么它唯一。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C07-S03-01}
+\begin{chapterexercisesolution}{ex:V5-C07-S03-01}
+先按式\eqref{eq:V5-C07-dangling-repair}得到列随机$S$，再令
+\[
+G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T},\qquad
+\boldsymbol1^{\mathsf T}G=\boldsymbol1^{\mathsf T},\qquad G\ge0.
+\]
+命题\ref{prop:V5-C07-google-positive}说明$G$是严格正的列随机矩阵，故它把紧凸的概率单纯形连续映回自身，
+至少有一个不动点。更强地，对任意概率向量$\boldsymbol x,\boldsymbol y$，
+\[
+\|G\boldsymbol x-G\boldsymbol y\|_1
+=d\|S(\boldsymbol x-\boldsymbol y)\|_1
+\le d\|\boldsymbol x-\boldsymbol y\|_1.
+\]
+$d<1$使其成为压缩，故不动点存在且唯一，并由任意初值迭代到达。
+\[
+\|\boldsymbol r^{(t)}-\boldsymbol r_\star\|_1
+\le d^t\|\boldsymbol r^{(0)}-\boldsymbol r_\star\|_1
+\longrightarrow0.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: original_book; source_id=EXR-21-0004; source_number=21.4
+% SOLUTION-SOURCE: original_book; source_id=EXR-21-0004; source_number=21.4
+\begin{exercise}\label{ex:V5-C07-S04-01}
+证明非负列随机矩阵$P$的谱半径为$1$，也就是说特征值的最大模为$1$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C07-S04-01}
+\begin{chapterexercisesolution}{ex:V5-C07-S04-01}
+列随机性给出$\|P\|_1=\max_j\sum_i|P_{ij}|=1$，所以
+\[
+\rho(P)\le\|P\|_1=1.
+\]
+另一方面
+\[
+\boldsymbol1^{\mathsf T}P=\boldsymbol1^{\mathsf T}
+\Longleftrightarrow
+P^{\mathsf T}\boldsymbol1=\boldsymbol1
+\]
+说明$1$是$P^{\mathsf T}$的特征值；
+$P$与$P^{\mathsf T}$有相同特征多项式，故$1$也是$P$的特征值。
+\[
+1\in\sigma(P)\Longrightarrow\rho(P)\ge1
+\Longrightarrow\rho(P)=1.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\SLLectureSupplementExercises
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C07-S03-02}
+证明式\eqref{eq:V5-C07-dangling-repair}所得$S$列随机，并给出一个全悬挂图的$S$和一般\PageRank{}。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C07-S03-02}
+\begin{chapterexercisesolution}{ex:V5-C07-S03-02}
+若$c_j>0$，$S$第$j$列就是$M$第$j$列，列和为$1$；若$c_j=0$，该列被替换为
+$\boldsymbol v$。统一写成
+\[
+\sum_iS_{ij}=
+\begin{cases}\sum_iM_{ij}=1,&c_j>0,\\
+\sum_iv_i=1,&c_j=0,
+\end{cases}
+\qquad S_{ij}\ge0.
+\]
+故$S$列随机。
+全悬挂图有$M=0$、$\boldsymbol a=\boldsymbol1$，所以
+\[
+S=M+\boldsymbol v\boldsymbol a^{\mathsf T}
+=\boldsymbol v\boldsymbol1^{\mathsf T},
+\]
+\[
+G=dS+(1-d)\boldsymbol v\boldsymbol1^{\mathsf T}
+=\boldsymbol v\boldsymbol1^{\mathsf T},
+\qquad G\boldsymbol v=\boldsymbol v.
+\]
+压缩性给出唯一\PageRank{}为$\boldsymbol v$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C07-S02-02}
+从$M\boldsymbol r=\boldsymbol r$推出非加权图的入链贡献式，并解释同一来源网页增加一条出链时，
+它给原有每个目标的直接贡献如何变化。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C07-S02-02}
+\begin{chapterexercisesolution}{ex:V5-C07-S02-02}
+固定点第$i$行是
+\[
+r_i=(M\boldsymbol r)_i=\sum_jM_{ij}r_j.
+\]
+非加权且无悬挂时，$M_{ij}=c_j^{-1}\boldsymbol1\{j\to i\}$，故
+\[
+r_i=\sum_{j:j\to i}\frac{r_j}{c_j}.
+\]
+若来源$j$的出度由$c_j$增为$c_j+1$且暂时固定$r_j$，则每条原有目标的直接贡献变化为
+\[
+\frac{r_j}{c_j}\longmapsto\frac{r_j}{c_j+1},\qquad
+\Delta=-\frac{r_j}{c_j(c_j+1)}<0.
+\]
+全局平稳解还会通过其他结点继续联动。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C07-S04-02}
+若一次一般\PageRank{}迭代的相邻差为$2\times10^{-7}$、$d=0.9$，
+用式\eqref{eq:V5-C07-residual-certificate}给出返回向量到真解的保守$1$范数误差上界。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C07-S04-02}
+\begin{chapterexercisesolution}{ex:V5-C07-S04-02}
+令$\delta_t=\|\boldsymbol r^{(t+1)}-\boldsymbol r^{(t)}\|_1=2\times10^{-7}$。较松而直接的证书为
+\[
+\|\boldsymbol r^{(t+1)}-\boldsymbol r\|_1
+\le\frac{\delta_t}{1-d}
+=\frac{2\times10^{-7}}{1-0.9}=2\times10^{-6}.
+\]
+若使用命题中的较紧界，则
+\[
+\|\boldsymbol r^{(t+1)}-\boldsymbol r\|_1
+\le\frac{d\,\delta_t}{1-d}
+=\frac{0.9(2\times10^{-7})}{0.1}
+=1.8\times10^{-6}.
+\]
+两者都必须连同$d$和采用的残差定义一起报告。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C07-S05-01}
+对$n$个结点、$m$条边、$T$次迭代，分别给出稀疏隐式算法、显式稠密$G$和稠密代数法的时间空间复杂度，
+并写出所用实现假设。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C07-S05-01}
+\begin{chapterexercisesolution}{ex:V5-C07-S05-01}
+若输入已是去重后的加权边表，稀疏隐式法的预处理、总时间和工作存储量分别为
+\[
+\begin{aligned}
+T_{\mathrm{pre}}&=O(n+m),\\
+T_{\mathrm{total}}&=O(n+m)+T\,O(n+m)=O((T+1)(n+m)),\\
+S_{\mathrm{work}}&=O(n+m).
+\end{aligned}
+\]
+三种主体比较为
+\[
+\begin{array}{c|c|c}
+\text{实现}&\text{时间}&\text{空间}\\\hline
+\text{稀疏隐式幂法}&O((T+1)(n+m))&O(n+m)\\
+\text{显式稠密 }G&O(Tn^2)&O(n^2)\\
+\text{稠密线性方程}&O(n^3)&O(n^2)
+\end{array}
+\]
+若原始边表还需排序聚合重复边，构图另需$O(m\log m)$；期望常数时间哈希则为期望$O(m)$。
+若最终要输出全部结点的有序名次，还需$O(n\log n)$排序；只取前$k$名可用大小为$k$的堆在$O(n\log k)$时间、$O(k)$附加空间完成。这些界假设稀疏图驻留内存、一次边访问和浮点运算为$O(1)$，且不计分布式通信；报告必须给出$n,m,T,k$以及边去重实现，
+若$m=\Theta(n^2)$，稀疏界自然退化到稠密量级。
+\[
+m=\Theta(n^2)\Longrightarrow O(T(n+m))=O(Tn^2).
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C07-S04-03}
+固定$S,d$，令$\boldsymbol r(\boldsymbol v)$和$\boldsymbol r(\boldsymbol w)$分别是两个个性化分布的\PageRank{}。
+证明$\|\boldsymbol r(\boldsymbol v)-\boldsymbol r(\boldsymbol w)\|_1
+\le\|\boldsymbol v-\boldsymbol w\|_1$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C07-S04-03}
+\begin{chapterexercisesolution}{ex:V5-C07-S04-03}
+由Neumann表示，
+\[
+\boldsymbol r(\boldsymbol v)-\boldsymbol r(\boldsymbol w)
+=(1-d)\sum_{k=0}^{\infty}d^kS^k(\boldsymbol v-\boldsymbol w).
+\]
+利用$\|S^k\|_1=1$和三角不等式，
+\[
+\|\boldsymbol r(\boldsymbol v)-\boldsymbol r(\boldsymbol w)\|_1
+\le(1-d)\sum_{k=0}^{\infty}d^k
+\|\boldsymbol v-\boldsymbol w\|_1
+=\|\boldsymbol v-\boldsymbol w\|_1.
+\]
+所以个性化输入的$1$范数扰动不会被放大。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+% EXERCISE-SOURCE: lecture_supplement
+% SOLUTION-SOURCE: lecture_supplement
+\begin{exercise}\label{ex:V5-C07-S05-02}
+设计一次\PageRank{}对比实验：说明图的构造规则、预处理、参数、初始化、停止准则、残差和复杂度；比较两个$d$时指出哪些条件必须保持不变。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V5-C07-S05-02}
+\begin{chapterexercisesolution}{ex:V5-C07-S05-02}
+固定结点集合、边集、去重/自环规则、边权和悬挂处理，得到同一个列随机$S$；再固定$\boldsymbol v$与初值。对每个候选$d$执行
+\[
+\boldsymbol r^{(t+1)}
+=dS\boldsymbol r^{(t)}+(1-d)\boldsymbol v,
+\qquad \boldsymbol1^{\mathsf T}\boldsymbol r^{(t+1)}=1.
+\]
+定义相邻差、固定点残差与误差证书
+\[
+\delta_t=\|\boldsymbol r^{(t+1)}-\boldsymbol r^{(t)}\|_1,\quad
+\eta_t=\|\boldsymbol r^{(t)}-dS\boldsymbol r^{(t)}-(1-d)\boldsymbol v\|_1,
+\quad B_t=\frac{d\,\delta_t}{1-d}.
+\]
+停止规则预先固定为$B_t\le\varepsilon$或$t=T_{\max}$；后者必须报告为达到迭代上限且尚未满足收敛准则。结果同时报告迭代数、$\delta_t,\eta_t,B_t$、质量守恒误差与
+\[
+T_{\rm run}=O(T(n+m)),\qquad S_{\rm run}=O(n+m).
+\]
+比较两个$d$时必须保持图、边权、$\boldsymbol v$、初值、$\varepsilon$和误差口径不变；不能用相同迭代次数替代相同误差标准。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+
+\begingroup
+\setstretch{1.10}
+\setlength{\parskip}{0pt}
+% KNOWLEDGE-PLAN: KN-V5-C36-CONCEPT-006 L1
+\paragraph{读前自检：本章结论与下一步。}\PageRank{} 算法章末把“本章采用列随机约定”收束为“稀疏幂法汇总悬挂质量并沿边散射贡献，避免显式形成稠密Google矩阵”；请将$M=P^{\mathsf T}$的左端按定义展开一层并与右端对齐，再核对“等号两端有定义且化为同一量”且该结果能直接进入章末所述方法。\par
+
+% Reserve the complete closing unit so the final checklist pair stays attached.
+\Needspace{24\baselineskip}
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V5-C07-CH36}
+\SLChapterFiveSummary{本章采用列随机约定；$M=P^{\mathsf T}$与概率向量转置把它精确接到\GlobalChapterRef{30}{5}{1}的行随机链。}
+{先修复悬挂列，再加入$0\le d<1$的跳转；$1$范数压缩给出唯一固定点、几何收敛与误差界。}
+{稀疏幂法汇总悬挂质量并沿边散射贡献，避免显式形成稠密Google矩阵。}
+{适合关系图上的稳态结构排序；它不等于查询相关性、内容质量、因果影响或公平性。}
+{\NextChapter{37}{无监督学习方法总结}，把图排序与聚类、矩阵分解、主题模型和MCMC放入统一任务—模型—评价框架。}
+
+\phantomsection\label{struct:V5-C07-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em,topsep=0.08\baselineskip,itemsep=0.08\baselineskip,parsep=0pt,partopsep=0pt]
+  \item 我能从边$j\to i$正确写出第$j$列并核验概率守恒，区分可约、周期和悬挂问题，再写出先修复零列的$S$与$G$。
+  \item 我能完整证明一般\PageRank{}唯一并给出$d^t$误差界，再由相邻差生成$1$范数误差证书。
+  \item 我能解释稀疏更新为何是$O(n+m)$而显式$G$是$O(n^2)$，并指出实现中需保留的概率和诊断。
+  \item 我能复算四个例题的精确或指定精度结果，并同时报告概率和与固定点残差。
+  \item 我能说明图结构排序与内容质量、因果影响和公平性不是同一结论，并给出适用边界。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}
+\endgroup

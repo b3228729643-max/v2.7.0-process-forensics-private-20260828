@@ -1,0 +1,55 @@
+% v2.6.0 figure UID: FIG-P689-01
+% Iteration 05: use an explicit 8 mm x-shift to move the complete right-hand axis into its panel.
+\tikzset{slfig-FIG-P689-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\pgfplotsset{slfig-FIG-P689-01-axis/.style={tick label style={font=\footnotesize},label style={font=\small},clip=false}}
+\pgfkeysifdefined{/tikz/alt}{}{\tikzset{alt/.code={}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P689-01,
+  every node/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,align=center,outer sep=0pt},
+  panel/.style={draw=SLRuleGray,line width=.55pt,rounded corners=3pt,
+    minimum width=67mm,minimum height=53mm,inner sep=0pt},
+  alt={对象—关系—结论：左侧以长度分解直接显示观测对数证据等于ELBO与非负KL间隙之和；右侧坐标更新使ELBO形成非降阶梯，但只能到坐标稳定或局部驻点，未知全局上限不应被解释为已经达到。}]
+
+\node[panel] at (-3.85,0.10) {};
+\node[font=\bfseries,text=SLDeepBlue] at (-3.85,2.42)
+  {证据的长度分解};
+\fill[SLMidBlue,opacity=0.08] (-6.55,0.50) rectangle (-2.55,1.25);
+\fill[fill=SLAccentOrange,opacity=0.08] (-2.55,0.50) rectangle (-0.95,1.25);
+\draw[draw=SLDeepBlue,line width=.95pt] (-6.55,0.50) rectangle (-0.95,1.25);
+\draw[draw=SLMidBlue,line width=.90pt] (-2.55,0.50) -- (-2.55,1.25);
+\node[text=SLDeepBlue] at (-4.55,0.875) {$\mathcal L(q)$：证据下界};
+\node[text=SLAccentOrange] at (-1.75,0.875) {KL\ 间隙};
+\draw[<->,draw=SLTextGray,line width=.58pt] (-6.55,1.46) -- (-0.95,1.46)
+  node[midway,above=2.0mm] {$\log p(w)$};
+\node[align=left,text width=59mm] at (-3.85,-0.15)
+  {$\displaystyle \log p(w)=\mathcal L(q)+
+    \operatorname{KL}\!\left(q(h)\,\|\,p(h\mid w)\right)$};
+\node[align=left,text width=59mm,text=SLTextGray] at (-3.85,-1.35)
+  {KL$\ge0$，故$\mathcal L(q)\le\log p(w)$；变分族受限时，间隙可保持为正。};
+
+\node[panel] at (3.85,0.10) {};
+\node[font=\bfseries,text=SLDeepBlue] at (3.85,2.42)
+  {坐标更新下的 ELBO 非降阶梯};
+\begin{axis}[slfig-FIG-P689-01-axis,
+  at={(0.80,-1.55)},anchor=south west,xshift=8mm,yshift=-10.5mm,
+  width=59mm,height=34mm,scale only axis,
+  xmin=0,xmax=6.3,ymin=0,ymax=1.12,
+  axis lines=left,axis line style={draw=SLTextGray,line width=.55pt},
+  tick style={draw=SLRuleGray},xtick={0,1,2,3,4,5,6},ytick=\empty,
+  xlabel={坐标更新轮次},xlabel style={font=\fontsize{9.0pt}{10.6pt}\selectfont},
+  clip=false]
+  \addplot+[const plot,draw=SLMidBlue,line width=.95pt,mark=*,mark size=1.5pt]
+    coordinates {(0,0.12) (1,0.34) (2,0.50) (3,0.64) (4,0.73) (5,0.79) (6,0.80)};
+  \addplot+[draw=SLAccentOrange,dashed,line width=.70pt,mark=none]
+    coordinates {(0,1.02) (6.3,1.02)};
+  \node[anchor=north west,font=\fontsize{9.0pt}{10.6pt}\selectfont,text=SLAccentOrange]
+    at (axis cs:0.15,0.98) {未知全局上限};
+  \node[anchor=north east,font=\fontsize{9.0pt}{10.6pt}\selectfont,text=SLDeepBlue]
+    at (axis cs:6.18,0.48) {坐标稳定／局部驻点};
+\end{axis}
+\end{tikzpicture}
+\captionsetup{width=.94\linewidth}
+\caption{观测对数证据等于ELBO与变分分布到真实后验的KL散度之和；平均场坐标更新可使ELBO逐步不降，但非凸目标下有限运行通常只得到坐标稳定点或局部驻点，多启动比较也不构成全局最优证明}
+\label{fig:V5-C06-elbo-geometry}
+\end{figure}

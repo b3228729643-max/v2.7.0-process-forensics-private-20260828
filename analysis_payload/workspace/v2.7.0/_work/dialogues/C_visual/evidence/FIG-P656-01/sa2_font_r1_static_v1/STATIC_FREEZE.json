@@ -1,0 +1,44 @@
+{
+  "schema": "P656_SOURCE_FONT_STATIC_FREEZE_V1",
+  "uid": "FIG-P656-01",
+  "status": "STATIC_FROZEN_BUILD_AUTHORIZED",
+  "payload_count": 4,
+  "payload": [
+    {
+      "path": "P656_CONTROLLED_BUILD_R1.ps1",
+      "bytes": 24330,
+      "sha256": "9115575EC97DA14A448E8EF09630B99B84C737846B9B11DFFE535208E955DB10"
+    },
+    {
+      "path": "STATIC_DIFF.patch",
+      "bytes": 2268,
+      "sha256": "5ACD47C4B509ECD5F2BC9433C403AC9BD795CC52DE7A7E128F41B89921DB010A"
+    },
+    {
+      "path": "STATIC_IDENTITY.json",
+      "bytes": 1578,
+      "sha256": "093709B7F024A35DD59AC7A0DFF06B564F74091AF276940309CC2D97699BF7D4"
+    },
+    {
+      "path": "STATIC_RISK.md",
+      "bytes": 1092,
+      "sha256": "385820B9A4DEC2D054435FB1FED8FF281335D88C952507E3DD22C6F2888CF926"
+    }
+  ],
+  "lint": {
+    "sole_process_start_site": 1,
+    "sole_build_helper_callsite": 1,
+    "start_process_cmdlet_calls": 0,
+    "latexmk_executable_calls": 0,
+    "retry_or_build_loop_calls": 0,
+    "invocation_limit": 1,
+    "retry_count": 0
+  },
+  "future_build_root_existed_before_freeze": false,
+  "future_cache_root_existed_before_freeze": false,
+  "source_sha256": "9D404ED0694D575DE89038D3D6485C49AA4C60DCC3238AD8318CADACF810B381",
+  "wrapper_sha256": "6092B8A09AC8AF8C0605599CA6C2583530EC2D5DE13F4F6847244015AAC0A3C9",
+  "controller_sha256": "9115575EC97DA14A448E8EF09630B99B84C737846B9B11DFFE535208E955DB10",
+  "freeze_marker_must_be_strict_latest": true,
+  "all_static_files_and_root_must_be_read_only": true
+}

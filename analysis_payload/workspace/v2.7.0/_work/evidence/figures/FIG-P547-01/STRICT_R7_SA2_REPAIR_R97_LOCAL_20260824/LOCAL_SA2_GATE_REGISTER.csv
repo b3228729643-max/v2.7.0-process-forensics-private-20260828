@@ -1,0 +1,32 @@
+gate_id,denominator_or_subject,result,fail_count,evidence
+IDENTITY_R97,upstream fullbook SHA256 062AD81020CB19A5C6688A45C73E00965F5060E0960A69AF820D7DC154DEE814,PASS,0,final_audit/identity_and_scope_manifest.json
+SOURCE_BASELINE,baseline SHA256 638CEA4285D3A9411251DA149963CC7AE4500FA5827F0A99A51FF1FC76640D1A,PASS,0,source_identity/baseline_638CEA_fig_v5_c01_transition_graph.tex
+SOURCE_CURRENT,current SHA256 DF3D4415EDC56D02E056CAE0F3E38830DF28E781BC67ECDFB69863C5038F1600,PASS,0,source_identity/current_DF3D4415_fig_v5_c01_transition_graph.tex
+LOCAL_BUILD,page and standalone double-pass wrapper PDFs,PASS,0,final_audit/identity_and_scope_manifest.json
+VISIBLE_GLYPHS,193 unique glyphs,PASS,0,final_audit/glyphs/all_visible_glyph_raw_measurements.csv
+FOREGROUND_GRAPHICS,65 unique foreground graphics,PASS,0,final_audit/graphics/graphic_object_inventory.csv
+DRAWING_PATHS,63 foreground-only + 2 dual + 6 occlusion-only = 71 PDF drawings,PASS,0,final_audit/graphics/drawing_path_reconciliation.json
+OBJECT_SET,193 glyph + 65 foreground graphic = 258 disjoint objects,PASS,0,final_audit/pairs/foreground_object_inventory.csv
+MATH_RELATIONS,12 geometric equals + 3 geometric arrows = 15 composites,PASS,0,final_audit/math_relations/math_relation_composite_measurements.csv
+RELATION_HEIGHTS,equals H26-30 and arrows H23-24 with gate22,PASS,0,final_audit/math_relations/math_relation_composite_measurements.csv
+UNORDERED_PAIRS,258*257/2 = 33153 unique pairs; every object degree257,PASS,0,final_audit/pairs/all_foreground_unordered_pairs.csv
+PAIR_MASKS,33153 pairs use nonempty final separated raw masks,PASS,0,final_audit/pairs/pair_coverage_manifest.json
+LOW_PROFILE,24 calibrated glyphs,PASS,0,final_audit/low_profile_calibration/low_profile_calibration_ledger.csv
+D_RAW_OUTLINE,193 rows: 136 PASS + 57 no comparable peer,PASS,0,final_audit/reports/D_raw_pixel_object_role_audit.csv
+D_EMITTED_SCALE,193 rows: 191 PASS + 2 no comparable peer,PASS,0,final_audit/reports/D_same_role_scale_audit.csv
+E_HIERARCHY,9 semantic roles,PASS,0,final_audit/reports/E_cross_role_hierarchy_audit.csv
+FONT_FLOOR,165 normal PASS + 28 natural-script exemptions traced to valid base formulas,PASS,0,final_audit/reports/font_floor_and_emitted_font_audit.csv
+SOURCE_FONT_COORDINATION,minimum explicit 9.6pt; no whole-figure scale or forbidden small-font token,PASS,0,final_audit/reports/source_font_floor_summary.json
+BOUNDARY_CLIP,258 objects; zero clipped pixels and zero empty masks,PASS,0,final_audit/reports/boundary_clip_and_panel_gap_summary.json
+OCCLUSION_REVERSE,6 occlusion-only drawings,PASS,0,final_audit/occlusion_reverse/occlusion_reverse_ledger.csv
+NAMED_CLEARANCES,6 repaired relations all >=3px,PASS,0,final_audit/reports/named_repair_clearance_and_manual_ledger.csv
+RIGHT_FOCUS_OPTIONAL_TARGET,right focus label-border 10px vs hard3 optional12,PASS_HARD_TARGET_NOT_OPTIONAL,0,final_audit/reports/named_repair_clearance_and_manual_ledger.csv
+C0153_CLEAN_MASK,UPSTREAM_R97::C0153::UFF1B pure H28 area57,PASS,0,final_audit/reports/C0153_clean_mask_binding.json
+C0153_NAMESPACE,upstream C0153 UFF1B distinct from GEN4 local C0153 U0030,PASS,0,final_audit/reports/C0153_NAMESPACE_DISAMBIGUATION.md
+C0114_MASK,GEN4 local C0114 U0031 H23 area122 pure and peer-identical,PASS,0,final_audit/glyphs/C0114_MANUAL_COMPONENT_RESEGMENTATION.md
+PNG_REFERENCES,1332 unique referenced PNG paths,PASS,0,final_audit/machine/safe_filename_and_png_integrity.json
+MANUAL_REVIEW,all signed ledgers pending0 fail0,PASS,0,final_audit/machine/manual_review_completion.json
+SEMANTIC_CONSISTENCY,12 equals and 3 arrows mapped to unchanged mathematical relations; 物理边 rewrite preserves information,PASS,0,final_audit/reports/mathematical_semantic_and_text_consistency_audit.md
+GLOBAL_VISUALS,page and standalone 200/300dpi plus grayscale/crops,PASS,0,final_audit/reports/manual_visual_semantic_review_ledger.csv
+ZERO_BYTE_FILES,entire package before seal,PASS,0,TEMPORARY_ZERO_BYTE_CLEANUP.md
+SCOPE_WRITES,one authorized business source and one evidence directory,PASS,0,final_audit/identity_and_scope_manifest.json

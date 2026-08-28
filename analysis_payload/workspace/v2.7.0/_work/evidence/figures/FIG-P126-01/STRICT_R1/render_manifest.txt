@@ -1,0 +1,27 @@
+FIGURE_ID=FIG-P126-01
+OFFICIAL_PDF=D:\Users\ASUS\Desktop\机器学习\v2.7.0\_work\source\v2.7.0\src\build\strict_current_r90_fullbook\main_full.pdf
+PHYSICAL_PAGE=137
+PAGE_INDEX_ZERO_BASED=136
+OFFICIAL_PAGE_SIZE_PT=595.276001x841.890015
+FULL_PAGE_200DPI_PIXELS=1654x2339
+FULL_PAGE_300DPI_PIXELS=2481x3508
+FULL_PAGE_RENDER=PyMuPDF get_pixmap matrix=(300/72,300/72), alpha=false; no resize
+FIGURE_WITH_CAPTION_CROP_PT=(105.0, 55.0, 475.0, 263.0)
+FIGURE_WITH_CAPTION_CROP_PX=(437, 229, 1980, 1096)
+FIGURE_ONLY_CROP_PT=(145.0, 55.0, 440.0, 243.0)
+FIGURE_ONLY_CROP_PX=(604, 229, 1834, 1013)
+MASK_RENDER=official PDF -> MuPDF SVG paths -> selected-object SVG -> MuPDF 300dpi; local background difference >=20/255
+CLEARANCE=Euclidean foreground-center distance minus 1 pixel (conservative empty-pixel gap)
+STANDALONE_FULL_300DPI_PIXELS=2481x3508
+STANDALONE_TIGHT_CROP_PX=(670, 260, 1847, 1012)
+TOTAL_ILLEGAL_OVERLAP_PAIRS=5
+TOTAL_ILLEGAL_OVERLAP_PIXEL_INTERSECTIONS=73
+TOTAL_FAILED_OVERLAP_OR_CLEARANCE_PAIRS=7
+MIN_CONSERVATIVE_CLEARANCE_PX=0.000
+MIN_INDEPENDENT_TEXT_TEXT_CLEARANCE_PX=38.319
+MIN_TEXT_TO_OFFICIAL_PAGE_EDGE_PX=300
+CLIP_PIXEL_COUNT=0
+STANDALONE_LOG_HARD_PATTERN_COUNTS={'LaTeX Error': 0, 'Package .* Error': 0, 'Undefined control sequence': 0, 'Emergency stop': 0, 'Fatal error': 0, 'Float\\(s\\) lost': 0, 'Overfull \\\\hbox': 0, 'Underfull \\\\hbox': 0}
+ROI_CROPS_PT={'roi_x0_300dpi_1to1.png': (175.0, 67.0, 222.0, 131.0), 'roi_steps_300dpi_1to1.png': (175.0, 98.0, 316.0, 168.0), 'roi_xstar_300dpi_1to1.png': (278.0, 126.0, 322.0, 172.0), 'roi_axes_300dpi_1to1.png': (286.0, 60.0, 380.0, 160.0), 'roi_legend_300dpi_1to1.png': (202.0, 218.0, 326.0, 243.0)}
+SOURCE_LINES_1_70_CAPTURED_IN=source_excerpt_numbered.txt
+CONTEXT_LINES_341_356_CAPTURED_IN=context_excerpt_numbered.txt

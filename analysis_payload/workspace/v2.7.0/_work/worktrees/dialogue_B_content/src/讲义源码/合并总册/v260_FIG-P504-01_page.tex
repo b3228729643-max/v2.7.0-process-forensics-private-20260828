@@ -1,0 +1,15 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 4 册}{统计学习方法讲义 v2.6.0}{无监督学习与矩阵分解}
+\begin{document}
+\setcounter{page}{644}
+\setcounter{chapter}{28}
+\setcounter{figure}{0}
+\pagestyle{headings}
+\chaptermark{潜在语义分析与非负矩阵分解}
+\begin{optimizationbox}
+\textbf{优化解释。}截断 SVD 对无约束秩 $k$ 问题给出全局最优解。NMF 的可行集要求两个因子均非负，联合目标并非凸；乘法更新不给出全局最优证书。
+\end{optimizationbox}
+如\cref{fig:V4-C05-two-geometries}所示，两条路线从同一文本向量出发，却把“低维”解释为不同的可行几何。
+\input{../../绘图源码/第04册_无监督学习与矩阵分解/V4-C05/fig_v4_c05_two_geometries.tex}
+\end{document}

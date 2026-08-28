@@ -1,0 +1,79 @@
+{
+  "state_sequence": [
+    "a",
+    "b",
+    "b",
+    "c",
+    "c",
+    "b",
+    "a"
+  ],
+  "time_sequence": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "T"
+  ],
+  "node_center_px": [
+    [
+      242,
+      274
+    ],
+    [
+      467,
+      197
+    ],
+    [
+      690,
+      197
+    ],
+    [
+      916,
+      339
+    ],
+    [
+      1139,
+      339
+    ],
+    [
+      1364,
+      197
+    ],
+    [
+      1588,
+      274
+    ]
+  ],
+  "adjacent_center_dx_px": [
+    225,
+    223,
+    226,
+    223,
+    225,
+    224
+  ],
+  "adjacent_center_dx_range_px": 3,
+  "visible_transition_line_count": 6,
+  "visible_transition_arrowhead_count": 6,
+  "axis_line_count": 1,
+  "axis_arrowhead_count": 1,
+  "repeat_double_border_nodes": [
+    "t1",
+    "t2",
+    "t3",
+    "t4"
+  ],
+  "kernel_formula_pdf_text": "K(x_t, d x_{t+1})",
+  "caption_semantic_tokens": [
+    "K",
+    "x→y",
+    "K(x,dy)",
+    "y",
+    "positive mass",
+    "self-loop wording"
+  ],
+  "page_text_sequence": "时间𝑡𝑎𝑏𝑏𝑐𝑐𝑏𝑎𝑡=0𝑡=1𝑡=2𝑡=3𝑡=4𝑡=5𝑡=T保持𝐾(𝑥𝑡,d𝑥𝑡+1)保持重复状态形成相邻相关等时间间距；双边圆表示链在相邻时刻停留于同一状态图32.2马尔可夫链在转移核𝐾下产生相关样本路径；箭头𝑥→𝑦表示𝐾(𝑥,d𝑦)在𝑦附近有正质量，自环表示链可能保持在当前状态"
+}

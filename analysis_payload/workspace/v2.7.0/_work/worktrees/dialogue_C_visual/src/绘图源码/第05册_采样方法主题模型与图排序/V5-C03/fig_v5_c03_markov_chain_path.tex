@@ -1,0 +1,38 @@
+% v2.3.1 figure UID: FIG-P598-01
+% Proposed post-v2.3.1 polish for FIG-P598-01: protect key-label size and stroke hierarchy.
+\tikzset{slfig-FIG-P598-01/.style={font=\fontsize{9.2pt}{11.0pt}\selectfont,every path/.append style={line cap=round,line join=round}}}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[slfig-FIG-P598-01,>=Stealth,
+  every node/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,align=center},
+  state/.style={circle,draw=SLBlue,fill=white,minimum size=7.2mm,inner sep=0pt,line width=.80pt},
+  repeat/.style={state,fill=SLBlue!7,double},
+  trans/.style={-{Stealth[length=2.0mm]},draw=SLBlue,line width=.92pt}]
+  \draw[draw=SLRuleGray,line width=.52pt,-{Stealth[length=1.7mm]}] (-6.3,-1.55)--(6.45,-1.55)
+    node[below,font=\fontsize{8.6pt}{10.2pt}\selectfont,text=SLTextGray] {时间 $t$};
+  \node[state]  (x0) at (-5.8,0) {$a$};
+  \node[repeat] (x1) at (-3.9,.65) {$b$};
+  \node[repeat] (x2) at (-2.0,.65) {$b$};
+  \node[repeat] (x3) at (-.1,-.55) {$c$};
+  \node[repeat] (x4) at (1.8,-.55) {$c$};
+  \node[state]  (x5) at (3.7,.65) {$b$};
+  \node[state]  (xT) at (5.6,0) {$a$};
+  \foreach \n/\lab in {x0/$0$,x1/$1$,x2/$2$,x3/$3$,x4/$4$,x5/$5$,xT/$T$}
+    \node[above=2.5mm of \n,font=\fontsize{8.6pt}{10.2pt}\selectfont,text=SLGray] {$t=\lab$};
+  \draw[trans] (x0)--(x1);
+  \draw[trans] (x1)--(x2);
+  \node[font=\fontsize{8.6pt}{10.2pt}\selectfont] at (-2.95,.18) {保持};
+  \draw[trans] (x2)--node[below left=2.5mm,xshift=-1.5pt,yshift=-.5pt,fill=none,inner sep=0pt,
+    font=\fontsize{8.6pt}{10.2pt}\selectfont] {$K(x_t,\mathrm d x_{t+1})$} (x3);
+  \draw[trans] (x3)--(x4);
+  \node[font=\fontsize{8.6pt}{10.2pt}\selectfont] at (.85,-.10) {保持};
+  \draw[trans] (x4)--(x5);
+  \draw[trans] (x5)--(xT);
+  \draw[draw=SLGray,line width=.58pt,densely dashed]
+    (x1.north west) to[bend left=50] node[above=10pt,fill=none,inner sep=0pt,
+      font=\fontsize{8.6pt}{10.2pt}\selectfont] {重复状态形成相邻相关} (x2.north east);
+  \node[font=\fontsize{8.6pt}{10.2pt}\selectfont,text=SLTextGray] at (0,-2.15)
+    {等时间间距；双边圆表示链在相邻时刻停留于同一状态};
+\end{tikzpicture}
+\caption{马尔可夫链在转移核 $K$ 下产生相关样本路径；箭头 $x\to y$ 表示 $K(x,\mathrm{d}y)$ 在 $y$ 附近有正质量，自环表示链可能保持在当前状态}\label{fig:V5-C03-markov-chain-path}
+\end{figure}

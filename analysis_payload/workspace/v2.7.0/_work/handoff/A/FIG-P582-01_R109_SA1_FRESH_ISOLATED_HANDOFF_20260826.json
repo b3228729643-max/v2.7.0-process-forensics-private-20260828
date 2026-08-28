@@ -1,0 +1,72 @@
+{
+  "schema": "FIGURE_FRESH_ISOLATED_SA1_HANDOFF_V1",
+  "handoff_id": "A-R109-P582-SA1-FRESH-ISOLATED-20260826",
+  "figure_id": "FIG-P582-01",
+  "official_release": "R109",
+  "role": "SA1_FRESH_ISOLATED",
+  "verdict": "PASS",
+  "a_local_pass_claimed": false,
+  "official_pdf": {
+    "path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\build\\strict_current_r109_fullbook\\main_full.pdf",
+    "pages": 817,
+    "size_bytes": 4967054,
+    "sha256": "936162A637DCE09EE02B3F83CB1C21A61A87EFBB9A7C8DDE2FB11A326EB552A9",
+    "physical_page": 632,
+    "printed_page": 619
+  },
+  "source_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\source\\v2.7.0\\src\\绘图源码\\第05册_采样方法主题模型与图排序\\V5-C02\\fig_v5_c02_running_mean.tex",
+  "visible_denominator": {
+    "glyphs": 78,
+    "graphics": 27,
+    "N": 105,
+    "unordered_pairs_C": 5460,
+    "hidden_source_primitive_excluded": "G016",
+    "exclusion_reason": "fully occluded by its later-painted square marker in official final pixels"
+  },
+  "machine": {
+    "direction": "PASS_CANDIDATE",
+    "native_300dpi_dimensions": [1313, 684],
+    "empty_masks": 0,
+    "illegal_overlap_pairs_r168": 0,
+    "overlap_pixels": 0,
+    "clip_pixels": 0,
+    "minimum_crop_edge_clearance_px": 30,
+    "strict_same_class_ratio_failures": 0,
+    "r168_advisory_glyph_ids": ["T016", "T019", "T032", "T059", "T063"],
+    "r168_advisory_pair_ids": ["P3464"]
+  },
+  "manual": {
+    "reviewer_id": "SA1_FRESH_ISOLATED_R109",
+    "observation_timestamp": "2026-08-26T22:58:54.0216802+08:00",
+    "glyph_rows_passed": 78,
+    "graphic_rows_passed": 27,
+    "critical_pair_rows_passed": 20,
+    "decision": "PASS"
+  },
+  "evidence_root": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\evidence\\figures\\FIG-P582-01\\STRICT_R3_SA1_FRESH_ISOLATED_R109_20260826",
+  "seal": {
+    "payload_files": 383,
+    "root_files_total": 386,
+    "payload_manifest_sha256": "7B712A3A357766DC42AAB5FC8E4F0B1067DF243E718ADB562D7F75B1D65462FA",
+    "seal_manifest_sha256": "F824AC33005705C05E7A3F3C5F5756300F818AD2ABAA7305748CBA698031D0BE",
+    "write_stopped_sha256": "6C678A5240A56B9B1534C0AB9DD253F8108C9C71A4FBDDDAF6500FB51D2C3EF1",
+    "root_writes_after_write_stopped": 0
+  },
+  "root_external_audit": {
+    "timestamp": "2026-08-26T23:07:13.9433159+08:00",
+    "normalized_type_comparison": true,
+    "manifest_fs_identity_pass": true,
+    "all_files_readonly_pass": true,
+    "ads_count": 0,
+    "pyc_or_cache_count": 0,
+    "reparse_count": 0,
+    "write_stopped_unique": true,
+    "write_stopped_strict_latest": true,
+    "postmarker_file_count": 0,
+    "official_pdf_identity_pass": true,
+    "external_audit_pass": true,
+    "sealed_helper_advisory": "machine/07_external_audit.py raw-compares CSV strings to JSON typed fields and therefore emits one spurious embedded-row difference; normalized independent read-only audit passes"
+  },
+  "report_path": "D:\\Users\\ASUS\\Desktop\\机器学习\\v2.7.0\\_work\\dialogues\\A_visual\\reports\\FIG-P582-01_R109_SA1_FRESH_ISOLATED_REPORT_20260826.md",
+  "next_action": "request a different fresh isolated SA3; do not infer A_LOCAL_PASS"
+}

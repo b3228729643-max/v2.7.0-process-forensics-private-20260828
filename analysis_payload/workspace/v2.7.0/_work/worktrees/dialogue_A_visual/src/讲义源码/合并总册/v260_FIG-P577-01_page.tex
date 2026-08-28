@@ -1,0 +1,22 @@
+\documentclass[UTF8,a4paper,11pt,openany]{ctexbook}
+\usepackage{../common/statlearnbook}
+\SLSetBookMetadata{第 5 册}{统计学习方法讲义 v2.7.0}{采样方法、主题模型与图排序}
+\begin{document}
+\setcounter{page}{576}
+\setcounter{chapter}{31}
+\setcounter{figure}{3}
+\pagestyle{headings}
+\chaptermark{蒙特卡罗方法与直接采样}
+\sectionmark{接受--拒绝抽样}
+图\ref{fig:V5-C02-rejection-envelope}取 $p(y)=6y(1-y)$、$q(y)=1$（$y\in[0,1]$）与 $c=1.6=8/5$。
+此时 $p\le cq$ 几乎处处、最小包络差为 $1/10$；随机点 $(Y,Ucq(Y))$ 满足 $Ucq(Y)\le p(Y)$ 时接受。
+接受率为 $5/8$，每个接受值所需平均提议数为 $8/5$；圆点 $(1/4,4/5)$ 接受，三角点 $(3/4,27/20)$ 普通拒绝但包络仍合法。
+\input{../../绘图源码/第05册_采样方法主题模型与图排序/V5-C02/fig_v5_c02_rejection_envelope.tex}
+\FloatBarrier
+\noindent\textbf{读图检查。}先看实线 $p$ 与虚线 $cq$ 的合法支配和最小差；
+再按含边界门 $Ucq(Y)\le p(Y)$ 核对圆点与三角点；
+最终由面积确认接受率 $5/8$、平均提议数 $8/5$ 与拒绝区面积 $3/5$，并区分普通拒绝和包络失效。
+\begin{comparisonbox}
+\textbf{包络条件是算法合法性的前提。} 若某处 $p(y)>cq(y)$，接受比率会越过 1；此时必须停止并修正包络，不能把它当作一次普通拒绝。
+\end{comparisonbox}
+\end{document}

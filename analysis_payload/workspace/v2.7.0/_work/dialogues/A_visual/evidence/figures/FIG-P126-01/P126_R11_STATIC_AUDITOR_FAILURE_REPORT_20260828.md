@@ -1,0 +1,7 @@
+# P126 R11 external auditor failure disclosure
+
+The R11 static content gate passed and the one seal controller invocation completed naturally with exit0. The sealed root contains payload10/controls3/ordinary13; all 13 files and the root directory were ReadOnly before the root-external marker entered as the sole final root operation. Controller postmarker snapshots are identical at SHA256 `BD0BDDCACD07C5E80D3EB99A12A05B9ADF400431842D8338B8663AAEC15FA113`; WSTOP SHA256 is `E3676F88F38A8AA28A4EDFEEDDE18ABFADAFA64C65D651913322DC458AC03611`, with controller-computed strict-latest margin 2,999,698,984 ticks and at-or-after0.
+
+The separate frozen auditor was invoked exactly once and stopped before writing its external result. At line18 it called helper `R` for relative paths; PowerShell resolved the single-letter name to the built-in `r`/`Invoke-History` alias and raised `Cannot locate the history for command line ...AGGREGATE_DIFF.patch`. Auditor invocation1/exit1/retry0; auditor result absent. The auditor contains no root write operation, so postmarker root content/attribute writes remain zero. No script edit, retry, second auditor, repair, or reseal was attempted.
+
+The sealed root and its content remain frozen. Main may independently audit the root or explicitly authorize a differently named root-external read-only auditor; no new build slot is consumed or requested until Main accepts the static control package.

@@ -1,0 +1,6 @@
+view_id,reviewer,path,opened_native_or_original,legible,balanced,no_tofu,no_clipping,no_illegal_overlap,decision,note
+V01,SA3,full_page_200dpi.png,true,true,true,true,true,true,PASS,physical 632 page fusion is natural; Figure 31.7 is distinct from surrounding prose and Figure 31.8
+V02,SA3,figure_crop_300dpi.png,true,true,true,true,true,true,PASS,complete body plus caption reviewed at native 300dpi coordinates
+V03,SA3,standalone_300dpi.png,true,true,true,true,true,true,PASS,body-only crop preserves axes labels annotations curves and all data marks without resize
+V04,SA3,grayscale_300dpi.png,true,true,true,true,true,true,PASS,curve stems truth line labels and markers remain separable in grayscale
+V05,SA3,after_text_measurement_overlay_300dpi.png,true,true,true,true,true,true,PASS,all 156 IDs are visibly anchored to the intended glyph or drawing/path

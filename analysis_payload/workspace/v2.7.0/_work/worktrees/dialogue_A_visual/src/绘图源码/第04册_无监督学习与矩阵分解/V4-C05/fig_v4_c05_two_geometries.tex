@@ -1,0 +1,61 @@
+% v2.3.1 figure UID: FIG-P504-01
+% Proposed post-v2.3.1 polish for FIG-P504-01: protect key-label size and stroke hierarchy.
+\tikzset{
+  slfig-FIG-P504-01/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont,
+    every path/.append style={line cap=round,line join=round}},
+  slfig-FIG-P504-01-axis/.style={draw=SLGray,line width=.52pt,-{Stealth[length=1.6mm,width=1mm]}},
+  slfig-FIG-P504-01-basis/.style={-{Stealth[length=2.1mm,width=1.25mm]},line width=1pt,draw=SLBlue},
+  slfig-FIG-P504-01-target/.style={-{Stealth[length=2.1mm,width=1.25mm]},line width=1.02pt,draw=SLGold},
+  slfig-FIG-P504-01-residual/.style={draw=SLGray,densely dashed,line width=.58pt},
+  slfig-FIG-P504-01-right-angle/.style={draw=SLBlue,line width=.68pt},
+  slfig-FIG-P504-01-reconstruction/.style={-{Stealth[length=1.9mm,width=1.15mm]},draw=SLTeal,line width=.96pt},
+  slfig-FIG-P504-01-title/.style={font=\bfseries\fontsize{10.2pt}{12.2pt}\selectfont},
+  slfig-FIG-P504-01-note/.style={font=\fontsize{9.2pt}{11pt}\selectfont,align=center,text=SLGray},
+  slfig-FIG-P504-01-summary/.style={font=\fontsize{9.2pt}{11pt}\selectfont,
+    draw=SLRuleGray,line width=.58pt,rounded corners=2pt,fill=SLSoftGray,
+    minimum width=116mm,minimum height=6.5mm,align=center},
+}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[slfig-FIG-P504-01,>=Stealth,
+  every node/.style={font=\fontsize{9.4pt}{11.2pt}\selectfont},
+]
+  % 两面板共享同一目标向量 x 与秩 K=2。
+  \begin{scope}[shift={(-3.55,0)}]
+    \node[slfig-FIG-P504-01-title,text=SLBlue] at (0,2.62) {LSA：正交子空间（$K=2$）};
+    \fill[SLBlue!6] (-2.15,-1.55) rectangle (2.15,1.70);
+    \draw[slfig-FIG-P504-01-axis] (-2.35,0)--(2.45,0);
+    \draw[slfig-FIG-P504-01-axis] (0,-1.75)--(0,1.95);
+    \draw[slfig-FIG-P504-01-basis] (0,0)--(1.65,0) node[below right] {$u_1$};
+    \draw[slfig-FIG-P504-01-basis] (0,0)--(0,1.45) node[above left] {$u_2$};
+    \draw[slfig-FIG-P504-01-right-angle] (.23,0)--(.23,.23)--(0,.23);
+    \draw[slfig-FIG-P504-01-target] (0,0)--(-1.05,1.28) node[above left] {$x$};
+    \draw[slfig-FIG-P504-01-residual] (-1.05,1.28)--(-1.05,0);
+    \fill[SLGold] (-1.05,0) circle (1.85pt);
+    \node[anchor=north,text=SLGold] at (-1.05,-.06) {$\widehat x=U_2U_2^{\mathsf T}x$};
+    \node[slfig-FIG-P504-01-note] at (0,-2.05)
+      {$y=U_2^{\mathsf T}x$，坐标可正可负};
+  \end{scope}
+
+  \begin{scope}[shift={(3.55,0)}]
+    \node[slfig-FIG-P504-01-title,text=SLTeal] at (0,2.62) {NMF：非负锥（$K=2$）};
+    \fill[SLTeal,opacity=.09] (0,0)--(2.10,.48)--(.72,1.95)--cycle;
+    \draw[slfig-FIG-P504-01-axis] (-2.35,0)--(2.45,0);
+    \draw[slfig-FIG-P504-01-axis] (0,-1.75)--(0,1.95);
+    \draw[slfig-FIG-P504-01-basis,draw=SLTeal] (0,0)--(2.10,.48) node[right] {$w_1$};
+    \draw[slfig-FIG-P504-01-basis,draw=SLTeal] (0,0)--(.72,1.95) node[above] {$w_2$};
+    % 与左图完全相同的目标向量坐标。
+    \draw[slfig-FIG-P504-01-target] (0,0)--(-1.05,1.28) node[above left] {$x$};
+    \draw[slfig-FIG-P504-01-residual] (-1.05,1.28)--(.72,1.20);
+    \draw[slfig-FIG-P504-01-reconstruction]
+      (0,0)--(.72,1.20) node[right] {$Wh$};
+    \fill[SLTeal] (.72,1.20) circle (1.85pt);
+    \node[slfig-FIG-P504-01-note] at (0,-2.05)
+      {$h_1,h_2\ge0$，只允许锥内组合};
+  \end{scope}
+
+  \node[slfig-FIG-P504-01-summary] at (0,-2.82)
+    {同秩 $K=2$\quad/\quad 不同约束与目标：正交投影 vs. 非负重构};
+\end{tikzpicture}
+\caption{LSA的正交子空间表示与NMF的非负锥表示：二者维数相同，坐标约束和最优性不同}\label{fig:V4-C05-two-geometries}
+\end{figure}

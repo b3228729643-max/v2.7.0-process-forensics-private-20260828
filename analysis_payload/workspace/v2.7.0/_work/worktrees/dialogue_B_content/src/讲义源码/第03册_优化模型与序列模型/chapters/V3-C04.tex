@@ -1,0 +1,1402 @@
+% STAGE11-CHAPTER: V3-C04
+% CHAPTER-SCHEMA-COVERAGE: CH-01,CH-02,CH-03,CH-04,CH-05,CH-06,CH-07,CH-08,CH-09,CH-10,CH-11,CH-12,CH-13,CH-14,CH-15,CH-16,CH-17,CH-18,CH-19,CH-20,CH-21,CH-22,CH-23,CH-24,CH-25,CH-26,CH-27,CH-28,CH-29,CH-30,CH-31,CH-32,CH-33,CH-34,CH-35,CH-36,CH-37
+% CHAPTER-SCHEMA-EVIDENCE: CH-01=\label{struct:V3-C04-CH01}; CH-02=\label{struct:V3-C04-CH02}; CH-03=\label{struct:V3-C04-CH03}; CH-04=\label{struct:V3-C04-CH04}; CH-05=\label{struct:V3-C04-CH05}; CH-06=\label{struct:V3-C04-CH06}; CH-07=\label{struct:V3-C04-CH07}; CH-08=\label{struct:V3-C04-CH08}; CH-09=\label{struct:V3-C04-CH09}; CH-10=\label{struct:V3-C04-CH10}; CH-11=\label{struct:V3-C04-CH11}; CH-12=\label{struct:V3-C04-CH12}; CH-13=\label{struct:V3-C04-CH13}; CH-14=\label{struct:V3-C04-CH14}; CH-15=\label{struct:V3-C04-CH15}; CH-16=\label{struct:V3-C04-CH16}; CH-17=\label{struct:V3-C04-CH17}; CH-18=\label{struct:V3-C04-CH18}; CH-19=\label{struct:V3-C04-CH19}; CH-20=\label{struct:V3-C04-CH20}; CH-21=\label{struct:V3-C04-CH21}; CH-22=\label{struct:V3-C04-CH22}; CH-23=\label{struct:V3-C04-CH23}; CH-24=\label{struct:V3-C04-CH24}; CH-25=\label{struct:V3-C04-CH25}; CH-26=\label{struct:V3-C04-CH26}; CH-27=\label{struct:V3-C04-CH27}; CH-28=\label{struct:V3-C04-CH28}; CH-29=\label{struct:V3-C04-CH29}; CH-30=\label{struct:V3-C04-CH30}; CH-31=\label{struct:V3-C04-CH31}; CH-32=\label{struct:V3-C04-CH32}; CH-33=\label{struct:V3-C04-CH33}; CH-34=\label{struct:V3-C04-CH34}; CH-35=\label{struct:V3-C04-CH35}; CH-36=\label{struct:V3-C04-CH36}; CH-37=\label{struct:V3-C04-CH37}
+% PROJECT_SPEC-V1-EXERCISE-LAYOUT: grouped; kept=18; source_group=none; supplement=18
+
+\chapter{EM算法及其推广}\label{chap:V3-C04}
+\index{EM算法}
+\index{隐变量}
+\index{高斯混合模型}
+\index{GEM算法}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-PREREQUISITE-001 L1
+\paragraph{读前自检：本章地图：EM算法及其推广。}EM算法及其推广章地图把“从边缘似然直达Jensen下界、EM与高斯混合”作为主线；请为其中首条箭头补出必要条件，并检查终点仍落在本章声明的输出域。\par
+
+\SLChapterOpening{从边缘似然直达Jensen下界、EM与高斯混合}{怎样在隐变量不可见时交替完成后验计算与参数极大化}{能推导E/M步、单调性条件、混合权重和退化边界}{条件概率、Jensen不等式、Lagrange乘子与高斯分布}{支撑或后验无定义时返回\cref{sec:V3-C04-S01,sec:V3-C04-S02}；混合更新失败时回看\cref{sec:V3-C04-S05}}
+\phantomsection\label{struct:V3-C04-CH01}
+% KNOWLEDGE-PLAN: KN-V3-C20-PREREQUISITE-002 L1
+\paragraph{读前自检：本章可检验学习目标。}EM算法及其推广目标中的“能从不完全数据的边缘似然出发，说明直接极大化的困难，并严格定义完全数据对数似然与$Q$函数”必须可复核；请从不完全数据的边缘似然出发，说明直接极大化的困难，并严格定义完全数据对数似然与$Q$函数，所得结果仅在“中间结果逐项包含首目标“能从不完全数据的边缘似然出发，说明直接极大化的困难，并严格定义完全数据对数似然与$Q$函数”声明的对象、条件与结论”时通过。\par
+
+\chaptergoals{
+\begin{itemize}[leftmargin=2em]
+  \item 能从不完全数据的边缘似然出发，说明直接极大化的困难，并严格定义完全数据对数似然与$Q$函数；
+  \item 能逐步用Jensen不等式构造与当前参数相切的下界，推出E步、M步及似然单调不减性质；
+  \item 能为高斯混合模型推导责任度、混合权重、均值和方差更新，并说明退化解、局部最优与初始化敏感性；
+  \item 能解释$F$函数、坐标上升、EM、GEM与条件极大化之间的关系，写出输入、输出、初始化、更新和停止条件完整的伪代码；
+  \item 能估算主要实现的时间与空间复杂度，判断算法适用范围，并通过例题、练习和自检验证推导是否闭合。
+\end{itemize}}
+
+\phantomsection\label{struct:V3-C04-CH02}
+% KNOWLEDGE-PLAN: KN-V3-C20-PREREQUISITE-003 L1
+\paragraph{读前自检：最短先修。}EM算法及其推广的最短先修明确要求“本章直接使用离散与连续随机变量的联合、条件和边缘分布”；请把首项“本章直接使用离散与连续随机变量的联合、条件和边缘分布”中的第一个先修对象写成定义域--运算--输出三元组，并以“该三元组逐项满足首项“本章直接使用离散与连续随机变量的联合、条件和边缘分布”的对象类型与成立条件”判断能否进入本章。\par
+
+\begin{prerequisitebox}
+本章直接使用离散与连续随机变量的联合、条件和边缘分布，极大似然估计，条件期望，Jensen不等式，KL散度，Lagrange乘子以及高斯分布。还需理解“观测变量”与“模型参数”不是同一类对象：前者来自数据，后者由学习过程估计。高斯混合部分默认已掌握加权均值和加权平方偏差。
+\end{prerequisitebox}
+
+\phantomsection\label{struct:V3-C04-CH03}
+% KNOWLEDGE-PLAN: KN-V3-C20-PREREQUISITE-004 L1
+\paragraph{读前自检：先修自检。}EM算法及其推广先修自检固定核验“能否把$P(Y\mid\theta)$写成对隐变量$Z$的求和或积分，并说明为何对数不能直接穿过求和”；请把$P(Y\mid\theta)$写成对隐变量$Z$的求和或积分，并说明为何对数不能直接穿过求和并写出中间结果，再按“$P(Y\mid\theta)$的计算或证明结果满足首项所列等式、定义域或判断”明确判为通过或失败。\par
+
+\begin{precheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否把$P(Y\mid\theta)$写成对隐变量$Z$的求和或积分，并说明为何对数不能直接穿过求和？
+  \item 能否写出凹函数$\log$的Jensen不等式，并给出等号成立条件？
+  \item 能否证明$D_{\mathrm{KL}}(q\Vert p)\geq0$，并解释等号何时成立？
+  \item 能否在约束$\sum_k\alpha_k=1$下极大化$\sum_kn_k\log\alpha_k$？
+\end{enumerate}
+若第1--3项不能独立完成，应先复习边缘化、条件期望与信息论不等式；若第4项不熟悉，应先复习Lagrange乘子法。
+\end{precheckbox}
+
+\phantomsection\label{struct:V3-C04-CH04}
+% KNOWLEDGE-PLAN: KN-V3-C20-PREREQUISITE-005 L1
+\paragraph{读前自检：依赖路线。}EM算法及其推广依赖链含“不完全数据与边缘化 $\to$ 难以直接极大化的对数似然”到“当前参数下的隐变量后验 $\to$ Jensen下界与$Q$函数”这一跳；请固定写出前者输出类型与后者输入类型，并核对两者相同或存在正文声明的转换。\par
+
+\begin{dependencybox}
+不完全数据与边缘化 $\to$ 难以直接极大化的对数似然；
+当前参数下的隐变量后验 $\to$ Jensen下界与$Q$函数；
+下界相切 $\to$ E步和M步 $\to$ 似然单调不减；
+混合成分指示变量 $\to$ 责任度 $\to$ 高斯混合参数更新；
+变分分布与熵 $\to$ $F$函数坐标上升 $\to$ EM、GEM与条件极大化。
+\end{dependencybox}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-CONCEPT-001 L1
+\paragraph{读前自检：模型认识卡：EM算法。}EM算法及其推广中的EM算法依赖“任务与输入：含隐变量的概率模型，观测$Y$、隐变量$Z$与初值$\theta^{(0)}$”；请据此把$P(Z\mid Y,\theta^{(t)})$展开一次并检查其类型或边界，并直接核对展开后的量满足定义中的域、维数或符号限制。\par
+
+\begin{keypointbox}[title=模型认识卡：EM算法]
+\textbf{任务与输入：}含隐变量的概率模型，观测$Y$、隐变量$Z$与初值$\theta^{(0)}$。\quad
+\textbf{输出类型：}参数估计、后验充分统计量与似然轨迹。\par
+\textbf{模型：}$P(Y,Z\mid\theta)$，观测似然由对$Z$边缘化得到。\quad
+\textbf{策略：}交替提高与观测似然相切的Jensen下界。\quad
+\textbf{算法：}E步求$P(Z\mid Y,\theta^{(t)})$，M步提高同一$Q$函数。\par
+\textbf{预测：}由具体隐变量模型定义。\quad
+\textbf{关键假设与边界：}E步可算、M步可行且支撑稳定；单调性不保证参数唯一或全局最优。
+\end{keypointbox}
+
+\phantomsection\label{struct:V3-C04-CH05}
+% STAGE19-SYMBOL-INDEX-BEGIN: V3-C04
+\index[symbols]{y-eq-y-1-minus-ldots-minus-y-n--sc297eb427f1c@$Y=(y_1,\ldots,y_N)$：已观测数据；连续情形把对$Z$的和改为积分}
+\index[symbols]{z--s4b74b872b28d@$Z$：未直接观测的完整数据分量}
+\index[symbols]{minus-theta-minus-minus-theta-minus-t--sc608f80cbf49@$\theta,\theta^{(t)}$：模型参数及第$t$次迭代值}
+\index[symbols]{minus-ell-minus-minus-theta-minus--s11c3ae88948d@$\ell(\theta)$：观测数据对数似然$\log P(Y\mid\theta)$}
+\index[symbols]{q-t-z--s2eee300400fd@$q_t(z)$：当前后验$P(z\mid Y,\theta^{(t)})$}
+\index[symbols]{q-minus-theta-minus-minus-theta-minus-t--se5cf5ec24d22@$Q(\theta,\theta^{(t)})$：$q_t$下完全数据对数似然的期望}
+\index[symbols]{minus-alpha-minus-k--s6360f87ac594@$\alpha_k$：第$k$个混合成分的权重}
+\index[symbols]{minus-mu-minus-k-minus-sigma-minus-k-2--s3299be9b369c@$\mu_k,\sigma_k^2$：一维高斯成分的均值和方差}
+\index[symbols]{minus-gamma-minus-jk--sebb2d4984ae7@$\gamma_{jk}$：样本$j$属于成分$k$的后验责任度}
+\index[symbols]{f-q-minus-theta-minus--s93ff59a3b35c@$F(q,\theta)$：期望完全数据对数似然与熵之和}
+% STAGE19-SYMBOL-INDEX-END: V3-C04
+\begin{symboltablebox}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule 符号 & 取值或维数 & 含义\\ \midrule
+$Y=(y_1,\ldots,y_N)$ & 观测空间 & 已观测数据；连续情形把对$Z$的和改为积分\\
+$Z$ & 隐变量空间 & 未直接观测的完整数据分量\\
+$\theta,\theta^{(t)}$ & 参数空间$\Theta$ & 模型参数及第$t$次迭代值\\
+$\ell(\theta)$ & $\mathbb R\cup\{-\infty\}$ & 观测数据对数似然$\log P(Y\mid\theta)$\\
+$q_t(z)$ & 概率分布 & 当前后验$P(z\mid Y,\theta^{(t)})$\\
+$Q(\theta,\theta^{(t)})$ & $\mathbb R\cup\{-\infty\}$ & $q_t$下完全数据对数似然的期望\\
+$\alpha_k$ & $[0,1]$且和为1 & 第$k$个混合成分的权重\\
+$\mu_k,\sigma_k^2$ & $\mathbb R,(0,\infty)$ & 一维高斯成分的均值和方差\\
+$\gamma_{jk}$ & $[0,1]$且对$k$求和为1 & 样本$j$属于成分$k$的后验责任度\\
+$F(q,\theta)$ & $\mathbb R\cup\{-\infty\}$ & 期望完全数据对数似然与熵之和\\
+\bottomrule
+\end{tabularx}
+\end{symboltablebox}
+
+\SLDirectSection{隐变量、不完全数据与边缘似然}{sec:V3-C04-S01}
+\phantomsection\label{struct:V3-C04-CH06}
+许多模型容易描述“若隐含选择已经知道，数据怎样生成”，却难以从观测数据直接求参数。例如混合模型中不知道每个样本来自哪个成分，含缺失值的数据中不知道未记录分量，序列模型中不知道隐藏状态路径。把这些未观测量统一记为$Z$，则参数学习面对的是对所有可能$Z$求和或积分后的边缘似然。
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-001 L1
+\paragraph{读前自检：EM算法及其推广。}EM算法及其推广以“它交替完成两件事：在当前参数下计算隐变量的条件分布，再在该条件分布给出的“软完整数据”上更新参数”为约束；请把“它交替完成两件事：在当前参数下计算隐变量的条件分布，再在该条件分布给出的“软完整数据”上更新参数”中的已声明对象代回EM算法及其推广的定义，并确认推广方法可以不把每个子问题精确求到最大，只要保持适当的上升性质。\par
+
+\knowledgeanchor{SLM-09-00-001}{EM算法及其推广}
+EM是一类处理含隐变量概率模型的迭代方法。它交替完成两件事：在当前参数下计算隐变量的条件分布，再在该条件分布给出的“软完整数据”上更新参数。推广方法可以不把每个子问题精确求到最大，只要保持适当的上升性质。
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-002 L1
+\paragraph{读前自检：EM算法的引入。}先锁定EM算法的引入的条件“若$Z$离散”：把$P(Y\mid\theta)$展开一次并检查其类型或边界，所得结果应满足展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-09-01-001}{EM算法的引入}
+若$Z$离散，观测似然与对数似然为
+\[
+P(Y\mid\theta)=\sum_zP(Y,z\mid\theta),\qquad
+\ell(\theta)=\log\sum_zP(Y,z\mid\theta).
+\]
+连续隐变量时把求和换为积分。困难来自“对数包着求和”：即使固定$z$时$\log P(Y,z\mid\theta)$容易优化，$\log\sum_zP(Y,z\mid\theta)$通常也不能分解。
+
+\phantomsection\label{struct:V3-C04-CH07}
+\begin{definition}[不完全数据与完全数据]
+观测到的$Y$称为不完全数据；若同时知道隐变量$Z$，则$(Y,Z)$称为完全数据。完全数据似然为$P(Y,Z\mid\theta)$，观测数据似然由对$Z$边缘化得到。隐变量不是待优化的固定参数；它在模型中是随机变量，其不确定性必须由条件分布表达。
+\end{definition}
+
+\phantomsection\label{struct:V3-C04-CH08}
+\textbf{模型。}EM要求能够计算当前后验$q_t(z)=P(z\mid Y,\theta^{(t)})$，并能处理加权的完全数据对数似然。它不限定$Y,Z$必须离散，也不限定参数必须有闭式更新；但若E步后验不可计算，或M步连可靠的上升方向也难获得，就需要近似推断或其他优化方法。
+
+\phantomsection\label{struct:V3-C04-CH09}
+\textbf{学习策略。}目标仍是极大化$\ell(\theta)$，不是最大化隐变量后验本身。E步固定参数、更新关于$Z$的分布；M步固定该分布、更新参数。两步分别简化了边缘化和参数优化，却共同服务于同一个观测似然目标。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-003 L1
+\paragraph{读前自检：EM算法。}对EM算法及其推广中的EM算法，条件“若$q(z)>0$而$P(Y,z\mid\theta)=0$，对应对数项为$-\infty$”不可省；请把$\ell(\theta)$展开一次并检查其类型或边界，再用在这些扩展实数约定下，再由凹函数$\log$应用Jensen不等式作检查。\par
+
+\SLReviewSection{Jensen不等式与下界构造}{sec:V3-C04-S02}
+\knowledgeanchor{SLM-09-01-002}{EM算法}
+令$S_q=\{z:q(z)>0\}$。对任意$q$，先有
+\[
+\ell(\theta)=\log\sum_zP(Y,z\mid\theta)
+\geq\log\sum_{z\in S_q}q(z)\frac{P(Y,z\mid\theta)}{q(z)}.
+\]
+第一步在$q(z)=0$而$P(Y,z\mid\theta)>0$时一般是严格不等式；只有$P(Y,\cdot\mid\theta)$的正支撑包含于$S_q$时才能把它写成等号。若$q(z)>0$而$P(Y,z\mid\theta)=0$，对应对数项为$-\infty$。在这些扩展实数约定下，再由凹函数$\log$应用Jensen不等式。
+
+% KNOWLEDGE-PLAN: KN-V3-C20-PREREQUISITE-007 L1
+\paragraph{读前自检：Q函数。}EM算法及其推广中的Q函数把问题限定在“给定当前参数$\theta^{(t)}$，令$q_t(z)=P(z\mid Y,\theta^{(t)})$”；请把$Q(\theta,\theta^{(t)})$展开一次并检查其类型或边界，检查是否得到展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-09-01-003}{Q函数}
+% KNOWLEDGE-PLAN: KN-V3-C20-DEFINITION-002 L1
+\paragraph{读前自检：Q 函数。}EM算法及其推广中的Q 函数输入“观测$Y$、联合模型$P(Y,Z\mid\theta)$、可行域$\Theta$、合法初值、容差与轮数预算”，条件“$Y$与模型接口合法”；请做一轮“$q,\theta^+,\ell^+$有限、可行且单调门禁通过后才原子提交参数和一轮轨迹”，以“似然与参数双容差满足、轮数预算耗尽或首次失败时停止”核对停止证书。\par
+
+\begin{definition}[$Q$函数]\label{def:V3-C04-Q}
+给定当前参数$\theta^{(t)}$，令$q_t(z)=P(z\mid Y,\theta^{(t)})$。完全数据对数似然关于$q_t$的条件期望称为$Q$函数：
+\[
+Q(\theta,\theta^{(t)})
+=\mathbb E_{q_t}\!\left[\log P(Y,Z\mid\theta)\right]
+=\sum_zq_t(z)\log P(Y,z\mid\theta).
+\]
+连续$Z$时相应改用积分，并要求期望存在。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-004 L1
+\paragraph{读前自检：EM算法的导出。}EM下界在当前后验$q_t$的支持$S_t$上计算；请在边缘似然求和中乘除$q_t(z)$并应用Jensen，得到$F(q_t,\theta)\le\ell(\theta)$，再代入$\theta^{(t)}$核对下界在当前参数处取等。\par
+
+\knowledgeanchor{SLM-09-01-005}{EM算法的导出}
+% DERIVATION-CHECK: step-1; step-2; step-3
+\phantomsection\label{struct:V3-C04-CH11}
+% CORE-DERIVATION-PLAN: KN-V3-C20-DERIVATION-001
+\SLKnowledgeBridge{通过当前后验构造与边缘对数似然相切的 Jensen 下界。}{边缘似然 $\ell(\theta)=\log\sum_zp(y,z\mid\theta)$ 与当前后验 $q_t(z)$。}{只在 $q_t(z)>0$ 的支持上计算比值；候选参数不得在该支持上把联合概率置零。}{先在求和中乘除 $q_t(z)$，把对数写成 $\log\sum_zq_t(z)\,p(y,z\mid\theta)/q_t(z)$。}
+
+\begin{derivationgoalbox}
+从边缘似然出发，分三步构造在当前参数处相切的下界，并证明极大化该下界等价于极大化$Q(\theta,\theta^{(t)})$。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+记$S_t=\{z:q_t(z)>0\}$；只在$S_t$上计算比值，约定$0\log0=0$。若候选参数在$S_t$上令联合概率为零，则下界为$-\infty$；候选参数在$S_t$外新增正质量不破坏下界，但第一步不再是恒等式。定义熵$H(q)=-\sum_zq(z)\log q(z)$。
+\end{derivationprepbox}
+\textbf{推导第1步：插入当前后验。}
+\[
+\ell(\theta)\geq\log\sum_{z\in S_t}q_t(z)
+\frac{P(Y,z\mid\theta)}{q_t(z)}.
+\]
+
+\textbf{推导第2步：应用Jensen不等式。}
+\[
+\ell(\theta)\geq
+\sum_{z\in S_t}q_t(z)\log\frac{P(Y,z\mid\theta)}{q_t(z)}
+=Q(\theta,\theta^{(t)})+H(q_t)
+\equiv B(\theta,\theta^{(t)}).
+\]
+
+\textbf{推导第3步：验证相切并极大化。}当$\theta=\theta^{(t)}$时，
+$P(Y,z\mid\theta^{(t)})/q_t(z)=P(Y\mid\theta^{(t)})$与$z$无关，Jensen取等号。因此
+\[
+\ell(\theta^{(t)})=B(\theta^{(t)},\theta^{(t)}),\qquad
+\arg\max_\theta B(\theta,\theta^{(t)})
+=\arg\max_\theta Q(\theta,\theta^{(t)}),
+\]
+因为熵$H(q_t)$对待优化的$\theta$是常数。
+
+\phantomsection\label{struct:V3-C04-CH12}
+\begin{theorem}[EM下界的KL分解]\label{thm:V3-C04-lower-bound}
+若$P(Y\mid\theta)>0$且$q\ll P(Z\mid Y,\theta)$，则在相关量有限时
+\[
+\ell(\theta)=F(q,\theta)+D_{\mathrm{KL}}
+\!\left(q(Z)\Vert P(Z\mid Y,\theta)\right),
+\quad F(q,\theta)=\mathbb E_q\log P(Y,Z\mid\theta)+H(q).
+\]
+故$F(q,\theta)\leq\ell(\theta)$；等号成立当且仅当$q(Z)=P(Z\mid Y,\theta)$几乎处处成立。
+\end{theorem}
+
+\phantomsection\label{struct:V3-C04-CH13}
+% KNOWLEDGE-PLAN: KN-V3-C20-PROOF-001 L1
+\paragraph{读前自检：证明：EM下界的KL分解。}围绕EM下界的KL分解，先采用条件“KL散度为零当且仅当两个分布几乎处处相同”，再对$P(Y,Z\mid\theta)$做一次条件化或边缘化；最后验证给出等号条件。\par
+
+\begin{proof}
+由Bayes公式$P(Y,Z\mid\theta)=P(Z\mid Y,\theta)P(Y\mid\theta)$，有
+\[
+\begin{aligned}
+D_{\mathrm{KL}}(q\Vert P_\theta)
+&=\sum_zq(z)\log\frac{q(z)}{P(z\mid Y,\theta)}\\
+&=\sum_zq(z)\log q(z)-\sum_zq(z)\log P(Y,z\mid\theta)+\ell(\theta)\\
+&=\ell(\theta)-F(q,\theta).
+\end{aligned}
+\]
+移项即得分解。KL散度非负，所以$F$是下界；KL散度为零当且仅当两个分布几乎处处相同，因此给出等号条件。
+\end{proof}
+
+\phantomsection\label{struct:V3-C04-CH14}
+\begin{geometrybox}
+\textbf{几何解释。}在参数轴上，$B(\theta,\theta^{(t)})$是一条不超过$\ell(\theta)$、并在当前点与其相接的代理曲线。M步把参数移动到代理曲线更高的位置；新点处再由E步换一条相切下界。路径依赖初值，因而不同初值可能进入不同峰或鞍点邻域。
+\end{geometrybox}
+
+\phantomsection\label{struct:V3-C04-CH15}
+\begin{probabilitybox}
+E步不是“猜一个缺失值”，而是计算所有隐状态的条件概率；$Q$函数用这些概率对完全数据对数似然加权。后验越集中，软计数越接近硬计数；后验越分散，一个样本对多个隐状态同时贡献信息。
+\end{probabilitybox}
+
+\phantomsection\label{struct:V3-C04-CH16}
+\begin{optimizationbox}
+\textbf{优化解释。}EM可视为在$q$与$\theta$两个坐标块上对$F(q,\theta)$做坐标上升。E步令KL项为零，M步提高期望完全数据对数似然。该解释说明“每步上升”不等于“达到全局最大值”，也说明GEM只需提高而不必完全最大化$Q$。
+\end{optimizationbox}
+
+\phantomsection\label{struct:V3-C04-CH17}
+% v2.6 layout: former forced clear removed; natural pagination.
+\begingroup
+\fontsize{10pt}{12pt}\selectfont
+\input{../../绘图源码/第03册_优化模型与序列模型/V3-C04/fig_v3_c04_bound.tex}
+\endgroup
+% FIGURE-KNOWLEDGE-MAP: fig:V3-C04-bound -> SLM-09-01-005
+图\ref{fig:V3-C04-bound}只需抓住五个对象：似然、当前相切下界、旧点、新点和上升箭头。E步建立相切，M步抬高该下界；单调性链条的代数证明见定理\ref{thm:V3-C04-monotone}。
+
+
+\SLTeachSection{E步与M步}{sec:V3-C04-S03}
+\phantomsection\label{replay:V3-C04-S03-SLM-09-01-001}
+\textbf{引入复现。}边缘似然仍是原始目标；本节只把上一节的后验下界转成可执行的两步迭代。
+\phantomsection\label{replay:V3-C04-S03-SLM-09-01-002}
+\textbf{EM复现。}E步更新$q_t$，M步更新$\theta$，两步优化的变量不同。
+\phantomsection\label{replay:V3-C04-S03-SLM-09-01-003}
+\textbf{$Q$函数复现。}$Q$的第二个参数决定取期望所用的后验，第一个参数才是M步中的待优化参数。
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-005 L1
+\paragraph{读前自检：EM算法。}EM算法及其推广中的EM算法输入“观测$Y$、联合模型$P(Y,Z\mid\theta)$、可行域$\Theta$、合法初值、容差与轮数预算”，条件“$Y$与模型接口合法”；请做一轮“$q,\theta^+,\ell^+$有限、可行且单调门禁通过后才原子提交参数和一轮轨迹”，以“似然与参数双容差满足、轮数预算耗尽或首次失败时停止”核对停止证书。\par
+
+\knowledgeanchor{SLM-09-01-004}{EM算法}
+\phantomsection\label{struct:V3-C04-CH10}
+\textbf{学习算法。}第$t+1$轮先以$\theta^{(t)}$计算$q_t$与$Q(\theta,\theta^{(t)})$，再求
+\[
+\theta^{(t+1)}\in\arg\max_{\theta\in\Theta}Q(\theta,\theta^{(t)}).
+\]
+若有多个最大点，必须采用预先固定的选择规则；否则同一输入可能产生不同轨迹。
+
+\phantomsection\label{struct:V3-C04-CH19}
+\phantomsection\label{struct:V3-C04-CH20}
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-006 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-007 L2
+\begin{keypointbox}[title={EM算法：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={观测$Y$、联合模型$P(Y,Z\mid\theta)$、可行域$\Theta$、合法初值、容差与轮数预算},
+  output={最后合法$\theta,\ell(\theta)$、完成EM轮数$t_{\rm done}$、状态、目标轨迹与诊断},
+  preconditions={$Y$与模型接口合法；$\Theta$非空；初值可行有限；E/M步选择规则、容差和预算已固定},
+  initialization={$\theta=\theta^{(0)},t_{\rm done}=0$并新鲜计算有限观测对数似然$\ell$},
+  loop={每轮只用旧$\theta$计算后验与$Q$，再在临时状态求M步候选并验收新似然},
+  update={$q,\theta^+,\ell^+$有限、可行且单调门禁通过后才原子提交参数和一轮轨迹},
+  domain={$q$为归一化非负分布；$\theta\in\Theta$；$Q$与$\ell$为有限实数},
+  failure={非法接口返回$\mathtt{invalid\_input}$；E步归一化、M步、目标或单调门禁失败返回$\mathtt{numerical\_failure}$},
+  stop={似然与参数双容差满足、轮数预算耗尽或首次失败时停止},
+  budget={至多$T_{\max}$个完整E/M提交轮；每轮一次E步和一次M步求解},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$},
+  iterations={$t_{\rm done}$只在完整E/M候选通过门禁并提交后增加},
+  diagnostics={失败轮与E/M/似然阶段、后验归一化常数、目标增量、参数变化、选择规则和预算余量},
+  complexity={$t_{\rm done}$轮为$O(t_{\rm done}(C_E+C_M+C_\ell))$时间；显式后验空间由隐变量规模决定}
+}
+\begin{algorithm}[H]
+\SetArgSty{textnormal}
+\caption{EM算法}\label{alg:V3-C04-em}
+\KwIn{观测$Y$；联合模型$P(Y,Z\mid\theta)$；可行域$\Theta$；初值$\theta^{(0)}$}
+\KwOut{最后合法$\theta,\ell$、$t_{\rm done}$、$\mathtt{status}$、目标轨迹与最终诊断}
+\KwData{$T_{\max}\in\mathbb N_0$；$\varepsilon_\ell,\varepsilon_\theta>0$；单调数值容差$\tau_{\rm num}\ge0$；固定M步并列规则}
+$\theta\leftarrow\theta^{(0)}$，$t_{\rm done}\leftarrow0$，诊断与目标轨迹初始化为空\;
+若数据/模型接口非法、$\Theta$为空、初值不可行或非有限，或预算、容差、M步选择规则不合法，则返回当前初值、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算$\ell\leftarrow\log P(Y\mid\theta)$；若非有限则返回最后合法初值、$\mathtt{numerical\_failure}$及初始化似然阶段诊断\;
+\While{$t_{\rm done}<T_{\max}$}{
+  保存$\theta_{\rm old}\leftarrow\theta,\ell_{\rm old}\leftarrow\ell$；在临时状态计算$q=P(Z\mid Y,\theta_{\rm old})$及$Q(\cdot,\theta_{\rm old})$\;
+  若后验归一化常数非有限或非正、$q$非负/归一化核验失败，或$Q$含非有限值，则返回最后合法$\theta_{\rm old},\ell_{\rm old},t_{\rm done},\mathtt{numerical\_failure}$，诊断为E步及失败轮\;
+  按固定规则求$\theta^+\in\arg\max_{\theta\in\Theta}Q(\theta,\theta_{\rm old})$；若最大值集合为空、候选不可行或非有限，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为M步及失败轮\;
+  计算$\ell^+\leftarrow\log P(Y\mid\theta^+)$；若非有限或$\ell^+<\ell_{\rm old}-\tau_{\rm num}$，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为似然门禁及新旧值\;
+  计算$q_\ell\leftarrow|\ell^+-\ell_{\rm old}|/(1+|\ell_{\rm old}|)$与$q_\theta\leftarrow\|\theta^+-\theta_{\rm old}\|/(1+\|\theta_{\rm old}\|)$\;
+  原子提交$\theta\leftarrow\theta^+,\ell\leftarrow\ell^+$及轨迹，令$t_{\rm done}\leftarrow t_{\rm done}+1$\;
+  \If{$q_\ell\le\varepsilon_\ell$且$q_\theta\le\varepsilon_\theta$}{返回最后合法$\theta,\ell,t_{\rm done},\mathtt{numerical\_failure}$，最终诊断记录双容差、末轮目标增量及可用的固定点/KKT残差\;}
+}
+返回最后合法$\theta,\ell,t_{\rm done},\mathtt{budget\_stop}$，最终诊断记录轮数预算耗尽、末轮目标与参数变化\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{似然与参数双小变化只是数值停止，返回$\mathtt{numerical\_failure}$；只有另行核验EM固定点或相应KKT残差时，才可在研究性报告中升级为数学收敛证书。}
+
+\phantomsection\label{struct:V3-C04-CH21}
+\textbf{参数含义。}$\varepsilon_{\ell}$控制目标值相对变化，$\varepsilon_{\theta}$控制参数变化，$T_{\max}$防止无限运行。两种容差同时使用可避免“似然平台上参数仍漂移”或“参数尺度很大时绝对容差失真”，但双容差仅产生$\mathtt{numerical\_failure}$，不自动证明到达驻点或最优点。
+
+\phantomsection\label{struct:V3-C04-CH22}
+\textbf{初始化方法。}初值必须满足概率归一化、方差为正等约束。非凸问题应从多个可复现初值运行，并只用训练目标及独立验证准则选择；不能看到测试结果后再挑初值。混合模型应避免所有成分完全相同，否则对称性可能使迭代停在无区分状态。
+
+\phantomsection\label{struct:V3-C04-CH23}
+\textbf{参数更新规则。}E步的后验必须使用同一轮旧参数$\theta^{(t)}$；M步的所有闭式更新应由同一批后验充分统计量得到。若在一轮中边算责任度边改参数，就改变了所极大化的$Q$函数，单调性证明不再直接适用。
+
+\phantomsection\label{struct:V3-C04-CH24}
+\textbf{停止条件。}相对似然变化和相对参数变化同时足够小可作为数值停止规则；最大轮数是保护条件，不是收敛证据。还应记录每轮目标值、最小方差、有效样本数等诊断量，发现非有限数、空成分或似然异常下降时立即报告。
+
+\phantomsection\label{struct:V3-C04-CH25}
+\textbf{收敛条件。}精确E步与精确M步保证观测似然不下降。在似然有上界、映射具有适当闭性与连续性等条件下，似然值序列收敛；参数序列未必唯一收敛，更不保证到达全局最大值。参数不可识别时，不同参数还可能表示同一分布。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C20-FORMULA-001 L1
+\paragraph{读前自检：EM算法似然函数序列的单调性。}EM似然序列令$q_t=P(Z\mid Y,\theta^{(t)})$；请串联$\ell(\theta^{(t+1)})\ge F(q_t,\theta^{(t+1)})\ge F(q_t,\theta^{(t)})=\ell(\theta^{(t)})$，逐步标出KL非负、$Q$不降和当前后验三个依据，并核对$\ell(\theta^{(t+1)})\ge\ell(\theta^{(t)})$。\par
+
+\SLAdvancedSection{单调性与收敛性质}{sec:V3-C04-S04}
+\knowledgeanchor{SLM-09-01-006}{EM算法似然函数序列的单调性}
+\begin{theorem}[EM的似然单调性]\label{thm:V3-C04-monotone}
+若E步计算精确后验，M步选取的$\theta^{(t+1)}$满足
+$Q(\theta^{(t+1)},\theta^{(t)})\geq Q(\theta^{(t)},\theta^{(t)})$，且相关支撑条件成立，则
+\[
+\ell(\theta^{(t+1)})\geq\ell(\theta^{(t)}).
+\]
+\end{theorem}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-PROOF-002 L1
+\paragraph{读前自检：证明：EM的似然单调性。}EM似然单调性固定当前后验$q_t$；请先用KL非负把$F(q_t,\theta^{(t+1)})$压在新似然下，再用M步的$Q$不降比较两个$F$值，核对终点等于$\ell(\theta^{(t)})$。\par
+
+\begin{proof}
+记$q_t=P(Z\mid Y,\theta^{(t)})$。由定理\ref{thm:V3-C04-lower-bound}，
+\[
+\ell(\theta^{(t+1)})\geq F(q_t,\theta^{(t+1)})
+\geq F(q_t,\theta^{(t)})=\ell(\theta^{(t)}).
+\]
+第一步来自KL散度非负，第二步来自$H(q_t)$固定且$Q$不下降，最后一步来自$q_t$恰为当前后验。三个关系串联即得结论。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-008 L1
+\paragraph{读前自检：EM算法的收敛性。}从EM算法的收敛性的条件“若$\ell(\theta)$有有限上界”出发，请把$\ell(\theta^{(t)})$展开一次并检查其类型或边界；所得量应符合单调序列$\ell(\theta^{(t)})$必收敛。\par
+
+\knowledgeanchor{SLM-09-02-001}{EM算法的收敛性}
+单调性控制的是目标值，不自动控制参数。若$\ell(\theta)$有有限上界，则单调序列$\ell(\theta^{(t)})$必收敛；但参数可能在等价表示之间移动，或在平坦区域中形成多个聚点。要推出参数聚点为驻点，还需参数位于可行域内部、目标和更新映射足够光滑、M步满足相应一阶条件等额外假设。
+
+% KNOWLEDGE-PLAN: KN-V3-C20-FORMULA-002 L1
+\paragraph{读前自检：EM对数似然值与参数估计序列的收敛性。}EM对数似然值与参数估计序列的收敛性依赖“若观测似然值有上界”；请据此把观测对应因子代入EM对数似然值与参数估计序列的收敛性并合并一次，并直接核对“参数收敛”“收敛到局部极大”“收敛到全局极大”是更强的三种说法，必须分别验证，不能由第一层直接推出。\par
+
+\knowledgeanchor{SLM-09-02-003}{EM对数似然值与参数估计序列的收敛性}
+\begin{theorem}[EM收敛结论的边界]\label{thm:V3-C04-convergence-scope}
+若观测似然值有上界，则精确EM产生的似然值序列收敛。若进一步假定迭代序列有聚点、模型在聚点邻域可微、支撑不突变且更新映射满足标准正则性，则每个内部聚点是观测似然的驻点；该结论不声称聚点是全局最大点。
+\end{theorem}
+
+单调但有界的数列收敛是第一层结论；“参数收敛”“收敛到局部极大”“收敛到全局极大”是更强的三种说法，必须分别验证，不能由第一层直接推出。
+
+
+% KNOWLEDGE-PLAN: KN-V3-C20-CONCEPT-005 L1
+\paragraph{读前自检：高斯混合模型。}高斯混合密度$ p(y\mid\theta)=\sum_{k=1}^K\alpha_k\phi(y\mid\mu_k,\sigma_k^2)$要求$\alpha_k\ge0$且$\sum_k\alpha_k=1$；请对$y$积分，核对各成分归一时混合密度也积分为1。\par
+% KNOWLEDGE-PLAN: KN-V3-C20-CONCEPT-006 L1
+\paragraph{读前自检：高斯混合模型。}高斯混合模型的第$k$个成分采用方差$\sigma_k^2>0$的高斯密度；请把$\phi(y\mid\mu_k,\sigma_k^2)$代入混合和，核对$\sigma_k^2=0$会使密度公式失去定义。\par
+
+\SLTeachSection{高斯混合模型}{sec:V3-C04-S05}
+\knowledgeanchor{SLM-09-02-002}{高斯混合模型}
+\knowledgeanchor{SLM-09-03-002}{高斯混合模型}
+% KNOWLEDGE-PLAN: KN-V3-C20-DEFINITION-003 L1
+\paragraph{读前自检：一维高斯混合模型。}设$\alpha_k\ge0$、$\sum_k\alpha_k=1$且$\sigma_k^2>0$。请核对各高斯成分是密度，从而混合式非负且积分为$1$。\par
+
+\begin{definition}[一维高斯混合模型]\label{def:V3-C04-gmm}
+含$K$个成分的高斯混合密度为
+\[
+p(y\mid\theta)=\sum_{k=1}^{K}\alpha_k\phi(y\mid\mu_k,\sigma_k^2),\qquad
+\alpha_k\geq0,\quad\sum_{k=1}^{K}\alpha_k=1,\quad\sigma_k^2>0,
+\]
+其中
+\[
+\phi(y\mid\mu_k,\sigma_k^2)=\frac{1}{\sqrt{2\pi\sigma_k^2}}
+\exp\!\left[-\frac{(y-\mu_k)^2}{2\sigma_k^2}\right].
+\]
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-009 L1
+\paragraph{读前自检：EM算法在高斯混合模型学习中的应用。}EM算法在高斯混合模型学习中的应用把问题限定在“从高斯混合完全数据对数似然推导责任度、混合权重、均值和方差的EM更新，并核对归一化与正方差条件”；请把$\Theta_{\sigma}$展开一次并检查其类型或边界，检查是否得到展开后的量满足定义中的域、维数或符号限制。\par
+
+\knowledgeanchor{SLM-09-03-001}{EM算法在高斯混合模型学习中的应用}
+% CORE-DERIVATION-PLAN: KN-V3-C20-DERIVATION-002
+\SLKnowledgeBridge{把后验责任度转成各成分的期望充分统计量。}{样本 $y_j$、独热隐变量 $z_{jk}$、责任度 $\gamma_{jk}$ 及参数 $(\alpha_k,\mu_k,\sigma_k^2)$。}{旧参数合法、混合密度为正；M 步在 $\sigma_k^2\ge\sigma_{\min}^2>0$ 的受约束空间内进行。}{先用 Bayes 公式计算 $\gamma_{jk}=P(z_{jk}=1\mid y_j,\theta^{(t)})$。}
+
+\begin{derivationgoalbox}
+从高斯混合完全数据对数似然推导责任度、混合权重、均值和方差的EM更新，并核对归一化与正方差条件。
+\end{derivationgoalbox}
+\begin{derivationprepbox}
+样本$y_1,\ldots,y_N$独立；$z_{jk}$为独热隐变量；旧参数合法且每个样本的混合密度为正。为避免方差塌缩，本节算法从建模开始就采用受约束参数空间
+\[
+\Theta_{\sigma}=\left\{\theta:\alpha_k\geq0,\ \sum_k\alpha_k=1,\ \sigma_k^2\geq\sigma_{\min}^2>0\right\}.
+\]
+E步固定旧参数，M步把$\gamma_{jk}=\mathbb E(z_{jk}\mid y_j)$视作常数，并在$\Theta_\sigma$内最大化$Q$；这不是在无约束MLE之后临时裁剪。
+\end{derivationprepbox}
+为样本$y_j$引入独热隐变量$z_{jk}\in\{0,1\}$，且$\sum_kz_{jk}=1$。完全数据对数似然为
+\[
+\log P(Y,Z\mid\theta)=\sum_{j=1}^{N}\sum_{k=1}^{K}z_{jk}
+\left[\log\alpha_k-\frac12\log(2\pi\sigma_k^2)
+-\frac{(y_j-\mu_k)^2}{2\sigma_k^2}\right].
+\]
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-010 L1
+\paragraph{读前自检：高斯混合模型参数估计的EM算法。}在“推导第1步：条件化独热变量”成立时处理高斯混合模型参数估计的EM算法：请把$(\sigma_k^2)^{(t+1)}$展开一次并检查其类型或边界，并以展开后的量满足定义中的域、维数或符号限制判定结果。\par
+
+\knowledgeanchor{SLM-09-03-003}{高斯混合模型参数估计的EM算法}
+\textbf{推导第1步：条件化独热变量。}E步计算责任度
+\[
+\gamma_{jk}=P(z_{jk}=1\mid y_j,\theta^{(t)})
+=\frac{\alpha_k^{(t)}\phi(y_j\mid\mu_k^{(t)},(\sigma_k^2)^{(t)})}
+{\sum_{r=1}^{K}\alpha_r^{(t)}\phi(y_j\mid\mu_r^{(t)},(\sigma_r^2)^{(t)})}.
+\]
+\textbf{推导第2步：更新混合权重。}记$n_k=\sum_j\gamma_{jk}$。对$\sum_{j,k}\gamma_{jk}\log\alpha_k$加入乘子$\eta(\sum_k\alpha_k-1)$，驻点给出$\alpha_k=-n_k/\eta$；求和并用$\sum_kn_k=N$得到$\eta=-N$，故$\alpha_k=n_k/N$。\par
+\textbf{推导第3步：更新均值和受约束方差。}固定$\sigma_k^2$对$\mu_k$求导，得到$\sum_j\gamma_{jk}(y_j-\mu_k)=0$。令新均值下的加权平方残差为$S_k=\sum_j\gamma_{jk}(y_j-\mu_k^{(t+1)})^2$，方差块目标为
+\[
+Q_k(s)=-\frac{n_k}{2}\log s-\frac{S_k}{2s}+\mathrm{const},
+\qquad s\geq\sigma_{\min}^2.
+\]
+其导数为$(S_k-n_ks)/(2s^2)$，故无约束极大点是$S_k/n_k$，受约束极大点是二者与边界的较大者。所以M步为
+\[
+\alpha_k^{(t+1)}=\frac{n_k}{N},\qquad
+\mu_k^{(t+1)}=\frac{\sum_j\gamma_{jk}y_j}{n_k},
+\]
+\[
+(\sigma_k^2)^{(t+1)}=
+\max\left\{\sigma_{\min}^2,
+\frac{\sum_j\gamma_{jk}(y_j-\mu_k^{(t+1)})^2}{n_k}\right\}.
+\]
+方差更新必须使用新均值，因为它是当前加权平方误差的唯一极小点；$\max$来自$\Theta_\sigma$内的精确M步，因而保持同一受约束模型的EM单调性。若在无约束MLE后另行裁剪，则不能援引这条证明。若$n_k=0$，三个更新均无定义，必须按预登记空成分规则处理。
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-011 L1
+\paragraph{读前自检：高斯混合模型参数估计的EM算法。}高斯混合EM以样本、成分数$K$和合法初值$(\alpha_k,\mu_k,\sigma_k^2)$为输入，其中$\alpha_k\ge0$、$\sum_k\alpha_k=1$且$\sigma_k^2>0$；请完成一次责任度与参数更新，核对新权重归一、方差为正，并按似然增量容差判停。\par
+
+\knowledgeanchor{SLM-09-02-004}{高斯混合模型参数估计的EM算法}
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-012 L1
+\paragraph{读前自检：受约束高斯混合模型的多启动EM：执行契约。}高斯混合模型EM从归一化混合权重和正方差初值出发；请先计算一轮$\gamma_{ik}$，再用责任度加权均值、方差和成分质量更新参数，核对$\sum_k\gamma_{ik}=1$及观测对数似然不降。\par
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-013 L2
+\begin{keypointbox}[title={受约束高斯混合模型的多启动EM：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={有限训练样本、成分数$K$、启动数$R$、冻结种子表、方差下界、双容差、数值容差、每启动轮预算与空成分规则},
+  output={最后合法的各启动状态/轨迹、同口径选中参数或未定义标志、实际启动/提交轮/责任度行计数、规范状态与最终诊断},
+  preconditions={$N,K,R\ge1$，$\sigma_{\min}^2>0$，容差与$T_{\max}\in\mathbb N_0$合法，种子和空成分规则在训练前冻结},
+  initialization={清空启动记录并置$r_{\rm done}=t_{\rm done}=e_{\rm done}=0$；每启动只由训练集和对应种子形成严格合法初值},
+  loop={按启动编号执行至多$T_{\max}$个EM轮；每轮以旧参数形成完整责任度和受约束M步候选},
+  update={责任度、参数、似然、归一化与单调门禁全部通过后才原子提交该启动整轮，并增加实际计数},
+  domain={混合权重位于单纯形、方差不低于下界、责任度每行归一，所有已提交参数和似然有限},
+  failure={全局输入非法返回$\mathtt{invalid\_input}$；种子或重初始化随机源失败记录$\mathtt{random\_source\_failure}$；E/M步、归一化或似然门禁失败记录$\mathtt{numerical\_failure}$并保留该启动上一合法状态},
+  stop={每启动满足似然/责任度双证书、轮预算耗尽或首次启动内失败；全部启动完成后按冻结口径选择},
+  budget={至多$R$个启动和$RT_{\max}$个原子EM轮；每轮至多处理$N$行、$K$个成分},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{random\_source\_failure}$},
+  iterations={$r_{\rm done}$计实际完成启动记录数，$t_{\rm done}$累计原子提交轮，$e_{\rm done}$累计有限责任度行},
+  diagnostics={每启动初值来源、似然轨迹、双停止量、空成分动作、失败$(r,t,j,k)$与阶段、标签匹配和选择分母$R$},
+  complexity={最坏$O(RT_{\max}NK)$标量密度/责任度工作，保存全部轨迹的空间按$R,T_{\max},N,K$实际配置累计}
+}
+\begin{algorithm}[H]
+\SetArgSty{textnormal}
+\caption{受约束高斯混合模型的多启动EM}\label{alg:V3-C04-gmm}
+\KwIn{训练样本$y_1,\ldots,y_N$；成分数$K$；启动数$R$；预先固定的种子表$(s_1,\ldots,s_R)$}
+\KwOut{各启动最后合法状态与选中$\widehat\theta$；$r_{\rm done},t_{\rm done},e_{\rm done}$；$\mathtt{status}$与诊断}
+\KwData{$\sigma_{\min}^2$、似然/责任度双容差、数值容差$\tau_{\rm num}$、轮预算$T_{\max}$与冻结空成分规则}
+若数据、维数、下界、容差、预算、种子表或空成分规则非法，返回空记录、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+清空启动记录并置$r_{\rm done}=t_{\rm done}=e_{\rm done}=0$\;
+\For{$r\leftarrow1$ \KwTo $R$}{
+  仅由训练数据和$s_r$生成初值；若随机源调用失败，原子记录该启动$\mathtt{random\_source\_failure}$及位置，增加$r_{\rm done}$并进入下一启动\;
+  核验$\theta_r^{(0)}\in\Theta_\sigma$并计算$\ell_r^{(0)}$；若失败，原子记录$\mathtt{numerical\_failure}$及初始化诊断，增加$r_{\rm done}$并进入下一启动\;
+  置该启动最后合法$(\widehat\theta_r,\widehat\ell_r)\leftarrow(\theta_r^{(0)},\ell_r^{(0)})$且启动状态为$\mathtt{budget\_stop}$\;
+  \For{本启动轮$t\leftarrow0$ \KwTo $T_{\max}-1$}{
+    以$\widehat\theta_r$在临时表稳定形成全部$\gamma^+_{jk}$；每个有限归一行增加$e_{\rm done}$\;
+    若E步任一行失败，则记录$\mathtt{numerical\_failure}$与$(r,t,j)$，保留上一合法状态并退出当前启动\;
+    形成临时$n_k^+$；若触发空成分，则只执行预登记修复，随机源失败记$\mathtt{random\_source\_failure}$，无合法修复记$\mathtt{numerical\_failure}$，并退出当前启动\;
+    在同一$\Theta_\sigma$内形成精确M步候选$\theta_r^+$及$\ell_r^+$\;
+    若候选非有限、不归一或$\ell_r^+<\widehat\ell_r-\tau_{\rm num}$，记录$\mathtt{numerical\_failure}$并退出当前启动\;
+    计算$\Delta_\gamma$；原子提交$(\widehat\theta_r,\widehat\ell_r)\leftarrow(\theta_r^+,\ell_r^+)$并增加$t_{\rm done}$\;
+    若似然与责任度双阈值满足，设置启动状态$\mathtt{numerical\_failure}$并记录责任度/参数变化，然后退出当前启动\;
+  }
+  原子保存该启动的最后合法参数、实际轮数、状态与诊断，并增加$r_{\rm done}$\;
+}
+在状态为$\mathtt{numerical\_failure}$或$\mathtt{budget\_stop}$的合法启动中按冻结口径选择；测试集不得参与\;
+若没有合法启动，则按全部失败类型返回$\mathtt{random\_source\_failure}$或$\mathtt{numerical\_failure}$及全失败诊断\;
+返回选中启动、其规范状态、全部记录、实际计数及选择分母$R$最终诊断\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{多启动中的似然/责任度平台统一记为$\mathtt{numerical\_failure}$；标签置换匹配只让诊断可比，不构成最优性证书。选择只在合法启动间进行并保留各自原始状态。}
+
+\textbf{停止量与标签置换。}观测似然和责任度变化不依赖成分标签的命名，故作为主停止量。若还报告参数差，必须先在$K!$个置换（或等价的指派算法）中匹配新旧成分，再计算
+\[
+\Delta_\theta=\min_{\pi\in\mathfrak S_K}
+\frac{\|\theta_{\rm new}-\pi(\theta_{\rm old})\|}{1+\|\theta_{\rm old}\|}.
+\]
+未经成分匹配的参数差只能作诊断，不能单独决定停止；单纯达到轮数上限也不是收敛证书。
+
+\phantomsection\label{struct:V3-C04-CH18}
+\Needspace{6\baselineskip}
+\begin{example}[责任度加权的高斯混合M步]\label{exm:V3-C04-three-coins-em}
+两个样本为$y_1=0,y_2=10$，某轮两个成分对它们的责任度分别为$(0.9,0.1)$与$(0.2,0.8)$。求M步的新权重和均值。
+\end{example}
+\SLExampleSolutionHeading{exm:V3-C04-three-coins-em}
+\begin{solution}
+\SLReadTranslation{两行责任度分别对应样本$y_1,y_2$，两列对应两个高斯成分；M步要把每列责任度当作该成分的软计数，更新混合权重和均值。}
+\SolGiven $y_1=0,y_2=10$，责任度矩阵的两行为$(0.9,0.1)$与$(0.2,0.8)$，每行和为$1$；样本数$N=2$，两个成分的有效样本数均为正。
+\SLMethodTrigger{高斯混合M步用充分统计量$N_k=\sum_i\gamma_{ik}$，再取$\alpha_k'=N_k/N$与$\mu_k'=\sum_i\gamma_{ik}y_i/N_k$。}
+\SolPlan 先按列求$N_1,N_2$，再分别更新两项权重和两项责任度加权均值；最后核对软计数和、权重归一化与加权一阶矩。
+\SolDerive
+有效样本数$N_1=0.9+0.2=1.1$、$N_2=0.1+0.8=0.9$，所以
+\[
+\alpha_1'=\frac{1.1}{2}=\frac{11}{20},\quad
+\alpha_2'=\frac{0.9}{2}=\frac9{20},
+\]
+\[
+\mu_1'=\frac{0.9\cdot0+0.2\cdot10}{1.1}=\frac{20}{11},\qquad
+\mu_2'=\frac{0.1\cdot0+0.8\cdot10}{0.9}=\frac{80}{9}.
+\]
+\SolCheck $N_1+N_2=2$且$\alpha_1'+\alpha_2'=1$；两个均值都位于样本凸包$[0,10]$内。代回一阶矩得$1.1(20/11)=2$、$0.9(80/9)=8$，与两列责任度加权数据和一致。
+\SolAnswer 新权重为$(\alpha_1',\alpha_2')=(11/20,9/20)$，新均值为$(\mu_1',\mu_2')=(20/11,80/9)$。
+\end{solution}
+
+
+% KNOWLEDGE-PLAN: KN-V3-C20-PREREQUISITE-008 L1
+\paragraph{读前自检：F函数。}EM算法及其推广中的F函数中的“对隐变量上的任意分布$q$”决定可执行范围；请把$F(q,\theta)$展开一次并检查其类型或边界，结果须满足展开后的量满足定义中的域、维数或符号限制。\par
+
+\SLAdvancedSection{EM算法推广与GEM}{sec:V3-C04-S06}
+\knowledgeanchor{SLM-09-03-004}{F函数}
+\begin{definition}[$F$函数]\label{def:V3-C04-F}
+对隐变量上的任意分布$q$，定义
+\[
+F(q,\theta)=\mathbb E_q[\log P(Y,Z\mid\theta)]+H(q),
+\qquad H(q)=-\mathbb E_q\log q(Z).
+\]
+它同时依赖变分分布$q$和模型参数$\theta$。
+\end{definition}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-PREREQUISITE-009 L1
+\paragraph{读前自检：固定参数时F函数极大化的唯一分布。}把固定参数时F函数极大化的唯一分布放在“固定$\theta$并假定后验在相关支撑上确定”下考察：把$q(Z)=P(Z\mid Y,\theta)$在其支持上求和或积分一次，并检查$F(q,\theta)$关于$q$的唯一最大点是$q(Z)=P(Z\mid Y,\theta)$。\par
+
+\knowledgeanchor{SLM-09-01-008}{固定参数时F函数极大化的唯一分布}
+% KNOWLEDGE-PLAN: KN-V3-C20-LEMMA-001 L1
+\paragraph{读前自检：固定参数的 F 极大化。}固定参数的 F 极大化要求先确认“固定$\theta$并假定后验在相关支撑上确定”；请随后检查$q(Z)=P(Z\mid Y,\theta)$中每项的类型后完成等式变形，用$F(q,\theta)$关于$q$的唯一最大点是$q(Z)=P(Z\mid Y,\theta)$验收。\par
+
+\begin{lemma}[固定参数的$F$极大化]\label{lem:V3-C04-F-posterior}
+固定$\theta$并假定后验在相关支撑上确定，则$F(q,\theta)$关于$q$的唯一最大点是$q(Z)=P(Z\mid Y,\theta)$，最大值为$\ell(\theta)$。
+\end{lemma}
+% KNOWLEDGE-PLAN: KN-V3-C20-PROOF-003 L1
+\paragraph{读前自检：证明：固定参数的 F 极大化。}固定参数$\theta$时，$F(q,\theta)=\ell(\theta)-D_{\mathrm{KL}}(q\Vert P_\theta)$；请用KL非负性比较任意$q$与$q=P_\theta$，核对后者使散度为零并唯一达到最大值$\ell(\theta)$。\par
+
+\begin{proof}
+由定理\ref{thm:V3-C04-lower-bound}，$F(q,\theta)=\ell(\theta)-D_{\mathrm{KL}}(q\Vert P_\theta)$。固定$\theta$时第一项为常数，KL散度的唯一零点是$q=P_\theta$，故结论成立。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-014 L1
+\paragraph{读前自检：EM算法的推广。}EM算法的推广依赖“在$(q,\theta)$两个坐标块上交替极大化$F$：先取$q_{t+1}=P(Z\mid Y,\theta^{(t)})$”；请据此将$q_{t+1}=P(Z\mid Y,\theta^{(t)})$左端按定义展开一层，再与右端逐项对齐，并直接核对第二步中熵固定，故等价于极大化$Q$。\par
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-015 L1
+\paragraph{读前自检：F函数的极大-极大算法。}F函数的极大-极大算法以“在$(q,\theta)$两个坐标块上交替极大化$F$：先取$q_{t+1}=P(Z\mid Y,\theta^{(t)})$”为约束；请独立化简$q_{t+1}=P(Z\mid Y,\theta^{(t)})$的两端，并确认第二步中熵固定，故等价于极大化$Q$。\par
+
+\knowledgeanchor{SLM-09-04-001}{EM算法的推广}
+\knowledgeanchor{SLM-09-04-002}{F函数的极大-极大算法}
+在$(q,\theta)$两个坐标块上交替极大化$F$：先取$q_{t+1}=P(Z\mid Y,\theta^{(t)})$，再极大化$F(q_{t+1},\theta)$。第二步中熵固定，故等价于极大化$Q$。这给出EM的“极大--极大”解释。
+
+% KNOWLEDGE-PLAN: KN-V3-C20-FORMULA-003 L1
+\paragraph{读前自检：F函数与观测数据对数似然的等价关系。}先锁定F函数与观测数据对数似然的等价关系的条件“若把$q$限制在较小分布族中，只能得到变分下界问题，等价性一般不再成立”：把观测对应因子代入$F(q_\theta,\theta)=\ell(\theta).$并合并一次，所得结果应满足所得目标保留参数定义域且无需对参数归一化。\par
+
+\knowledgeanchor{SLM-09-02-005}{F函数与观测数据对数似然的等价关系}
+由KL分解，对后验$q_\theta=P(Z\mid Y,\theta)$恒有
+\[
+F(q_\theta,\theta)=\ell(\theta).
+\]
+因此在精确后验族中最大化$F$与最大化观测对数似然等价；若把$q$限制在较小分布族中，只能得到变分下界问题，等价性一般不再成立。
+
+% KNOWLEDGE-PLAN: KN-V3-C20-FORMULA-004 L1
+\paragraph{读前自检：F函数极大值与观测数据对数似然极大值的关系。}对F函数极大值与观测数据对数似然极大值的关系，条件“若允许$q$遍历全部合法分布，并把可能的无界情形按扩展实数理解”不可省；请把观测对应因子代入$\sup_{\theta}\ell(\theta)$并合并一次，再用所得目标保留参数定义域且无需对参数归一化作检查。\par
+
+\knowledgeanchor{SLM-09-03-005}{F函数极大值与观测数据对数似然极大值的关系}
+\begin{theorem}[$F$函数与似然上确界]\label{thm:V3-C04-F-max}
+若允许$q$遍历全部合法分布，并把可能的无界情形按扩展实数理解，则
+\[
+\sup_{\theta}\ell(\theta)=\sup_{q,\theta}F(q,\theta).
+\]
+若这个共同上确界有限且由某个联合最大对$(q^*,\theta^*)$达到，则$q^*=P(Z\mid Y,\theta^*)$，且$\theta^*$也是观测似然的最大点。
+\end{theorem}
+% KNOWLEDGE-PLAN: KN-V3-C20-PROOF-004 L1
+\paragraph{读前自检：证明：F 函数与似然上确界。}F 函数与似然上确界把问题限定在“$\max_q F(q,\theta)=\ell(\theta)$”；请对$\max_q F(q,\theta)=\ell(\theta)$做一次条件化或边缘化，检查是否得到所以$q^*$是后验，并且$F(q^*,\theta^*)=\ell(\theta^*)$达到左侧最大值。\par
+
+\begin{proof}
+对每个固定$\theta$，引理\ref{lem:V3-C04-F-posterior}给出$\max_q F(q,\theta)=\ell(\theta)$。再对$\theta$取上确界便得到等式；这个论证不要求参数域紧致，也不预设似然最大值存在。若有限共同上确界由$(q^*,\theta^*)$达到而$q^*$不是对应后验，则用对应后验替换会严格提高$F$，矛盾；所以$q^*$是后验，并且$F(q^*,\theta^*)=\ell(\theta^*)$达到左侧最大值。
+\end{proof}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-016 L1
+\paragraph{读前自检：EM算法的一次迭代可由F函数的极大-极大算法实现。}F函数坐标上升先令$q=P(Z\mid Y,\theta^{(t)})$完成E步，再在固定$q$下最大化$F(q,\theta)$完成M步；请核对熵项与$\theta$无关，故两次坐标更新与一次EM迭代相同。\par
+
+\knowledgeanchor{SLM-09-04-003}{EM算法的一次迭代可由F函数的极大-极大算法实现}
+第一坐标极大化由引理\ref{lem:V3-C04-F-posterior}给出精确后验，即E步；第二坐标极大化中熵与$\theta$无关，等价于M步。因此两种描述产生相同的参数迭代。
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-017 L1
+\paragraph{读前自检：GEM算法。}GEM不要求精确最大化M步，只要求$Q(\theta^{t+1},\theta^t)\ge Q(\theta^t,\theta^t)$；请比较一个候选的两侧，核对通过该上升门后观测似然不降。\par
+
+\knowledgeanchor{SLM-09-04-004}{GEM算法}
+GEM放宽精确M步，只要求选取$\theta^{(t+1)}$使
+\[
+Q(\theta^{(t+1)},\theta^{(t)})\geq
+Q(\theta^{(t)},\theta^{(t)}).
+\]
+它适合M步无闭式解但能用梯度、Newton或受约束优化器找到上升点的模型。若内部优化使用近似值，必须以实际$Q$值验收，而不能只假设优化器“应该上升”。
+
+\knowledgeanchor{SLM-09-03-006}{基于F函数的交替极大化}
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-018 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-019 L2
+\begin{keypointbox}[title={基于 F 函数的交替极大化：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={观测$Y$、有限可评估$F(q,\theta)$、合法分布族$\mathcal Q$、参数域$\Theta$、初值与停止参数},
+  output={最后合法$(q,\theta),F$、完成坐标轮数$t_{\rm done}$、坐标求解数$c_{\rm done}$、状态、轨迹与诊断},
+  preconditions={$\mathcal Q,\Theta$非空；初值$\theta^{(0)}$可行；两个坐标选择规则、容差和预算合法},
+  initialization={$t_{\rm done}=c_{\rm done}=0$；由$\theta^{(0)}$求合法$q^{(0)}$并计算有限$F(q^{(0)},\theta^{(0)})$},
+  loop={每轮在临时状态先极大化$q$坐标，再用该候选极大化$\theta$坐标},
+  update={两个坐标候选均合法有限且逐段不下降后才原子提交完整$(q^+,\theta^+)$},
+  domain={$q\in\mathcal Q$非负归一化，$\theta\in\Theta$，全部$F$值为有限实数},
+  failure={非法接口返回$\mathtt{invalid\_input}$；坐标最大值不存在、候选非有限/不可行或下降返回$\mathtt{numerical\_failure}$},
+  stop={$F$与参数双容差满足、轮数预算耗尽或首次失败时停止},
+  budget={至多$T_{\max}$个完整双坐标轮；初始化一次$q$求解，每轮至多两个坐标求解},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$},
+  iterations={$t_{\rm done}$计完整双坐标提交，$c_{\rm done}$计实际坐标求解调用},
+  diagnostics={失败轮/坐标、分布归一化残差、分段$F$值、参数变化、并列选择与预算余量},
+  complexity={$t_{\rm done}$轮为$O(t_{\rm done}(C_q+C_\theta+C_F))$时间；空间由$q$和参数工作区决定}
+}
+\begin{algorithm}[H]
+\SetArgSty{textnormal}
+\caption{基于$F$函数的交替极大化}\label{alg:V3-C04-gem-f}
+\KwIn{观测$Y$；$F(q,\theta)$；合法分布族$\mathcal Q$与参数域$\Theta$；初值$\theta^{(0)}$}
+\KwOut{最后合法$(q,\theta),F$、$t_{\rm done},c_{\rm done}$、$\mathtt{status}$、轨迹与最终诊断}
+\KwData{$T_{\max}\in\mathbb N_0$；目标与参数容差；单调数值容差；固定坐标并列规则}
+$t_{\rm done}\leftarrow0$，$c_{\rm done}\leftarrow0$，$\theta\leftarrow\theta^{(0)}$，诊断与轨迹为空\;
+若$F$接口、$\mathcal Q,\Theta$或初值非法，或预算、容差、坐标选择规则不合法，则返回空分布、当前初值、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+求$q\in\arg\max_{u\in\mathcal Q}F(u,\theta)$并令$c_{\rm done}\leftarrow c_{\rm done}+1$；若最大值不存在、$q$不归一化或$F(q,\theta)$非有限，则返回当前初值、$\mathtt{numerical\_failure}$及初始化$q$坐标诊断\;
+令$F_{\rm old}\leftarrow F(q,\theta)$并把$(q,\theta)$作为最后合法对\;
+\While{$t_{\rm done}<T_{\max}$}{
+  在临时状态求$q^+\in\arg\max_{u\in\mathcal Q}F(u,\theta)$并令$c_{\rm done}\leftarrow c_{\rm done}+1$；若失败、不可行、非有限或$F(q^+,\theta)<F_{\rm old}-\tau_{\rm num}$，则返回最后合法对与$\mathtt{numerical\_failure}$，诊断为$q$坐标及失败轮\;
+  再求$\theta^+\in\arg\max_{v\in\Theta}F(q^+,v)$并令$c_{\rm done}\leftarrow c_{\rm done}+1$；若失败、不可行、非有限或$F(q^+,\theta^+)<F(q^+,\theta)-\tau_{\rm num}$，则返回未改动的最后合法对与$\mathtt{numerical\_failure}$，诊断为$\theta$坐标及失败轮\;
+  令$F^+\leftarrow F(q^+,\theta^+)$，计算$q_F\leftarrow|F^+-F_{\rm old}|/(1+|F_{\rm old}|)$与$q_\theta\leftarrow\|\theta^+-\theta\|/(1+\|\theta\|)$\;
+  原子提交$(q,\theta,F_{\rm old})\leftarrow(q^+,\theta^+,F^+)$及轨迹，令$t_{\rm done}\leftarrow t_{\rm done}+1$\;
+  \If{$q_F\le\varepsilon_F$且$q_\theta\le\varepsilon_\theta$}{返回最后合法$(q,\theta),F_{\rm old},t_{\rm done},c_{\rm done},\mathtt{numerical\_failure}$，最终诊断记录双容差、分段增量与坐标残差\;}
+}
+返回最后合法$(q,\theta),F_{\rm old},t_{\rm done},c_{\rm done},\mathtt{budget\_stop}$，最终诊断记录轮数预算耗尽与末轮增量\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{双坐标目标和参数平台只返回$\mathtt{numerical\_failure}$；每个坐标块均须完成并通过单调门禁后，才提交一轮。}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-020 L1
+\paragraph{读前自检：Q函数单调上升的广义EM。}Q函数单调上升的广义EM输入“观测$Y$、联合模型、参数域$\Theta$、合法初值、GEM内层方向/回缩规则与停止参数”，条件“模型、E步和内层方向接口合法”；请做一轮“候选$\theta^+,Q_t(\theta^+),\ell^+$有限、可行且双门禁通过后才原子提交”，以“目标与参数双容差满足、外层预算耗尽、回缩失败或首次数值失败时停止”核对停止证书。\par
+
+% v2.6 layout: former forced clear removed; natural pagination.
+\knowledgeanchor{SLM-09-04-005}{Q函数单调上升的广义EM}
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-021 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-022 L2
+\begin{keypointbox}[title={以 Q 上升为门禁的GEM：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={观测$Y$、联合模型、参数域$\Theta$、合法初值、GEM内层方向/回缩规则与停止参数},
+  output={最后合法$\theta,\ell$、完成外层轮数$t_{\rm done}$、内层试算数$\ell_{\rm done}$、状态、轨迹与诊断},
+  preconditions={模型、E步和内层方向接口合法；初值可行有限；回缩、门禁、容差与预算合法},
+  initialization={$\theta=\theta^{(0)},t_{\rm done}=\ell_{\rm done}=0$并计算有限观测似然},
+  loop={每轮固定旧后验和$Q_t$，从旧参数产生有限可行候选并回缩至通过$Q$上升门禁},
+  update={候选$\theta^+,Q_t(\theta^+),\ell^+$有限、可行且双门禁通过后才原子提交},
+  domain={$q$为合法后验，$\theta\in\Theta$，$Q_t$和观测似然为有限实数},
+  failure={非法接口返回$\mathtt{invalid\_input}$；E步、方向、候选或似然失败返回$\mathtt{numerical\_failure}$；有限回缩无上升候选返回$\mathtt{line\_search\_failed}$},
+  stop={目标与参数双容差满足、外层预算耗尽、回缩失败或首次数值失败时停止},
+  budget={至多$T_{\max}$个完整GEM轮；每轮至多$L_{\max}+1$次内层候选试算},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$、$\mathtt{line\_search\_failed}$},
+  iterations={$t_{\rm done}$计原子提交外层轮，$\ell_{\rm done}$计实际内层候选试算},
+  diagnostics={失败$(t,\ell)$与阶段、后验归一化、$Q$门禁差、似然增量、参数变化、实际步长和预算余量},
+  complexity={$t_{\rm done}$轮含E步与方向成本，另加$O(\ell_{\rm done}C_Q)$门禁求值；空间由后验统计量决定}
+}
+\begin{algorithm}[H]
+\SetArgSty{textnormal}
+\caption{以$Q$上升为门禁的GEM}\label{alg:V3-C04-gem-q}
+\KwIn{观测$Y$；联合模型；参数可行域$\Theta$；初值$\theta^{(0)}$}
+\KwOut{最后合法$\theta,\ell$、$t_{\rm done},\ell_{\rm done}$、$\mathtt{status}$、轨迹与最终诊断}
+\KwData{$T_{\max},L_{\max}\in\mathbb N_0$；回缩率$0<\rho<1$；$Q$/似然门禁容差及外层停止容差}
+$\theta\leftarrow\theta^{(0)}$，$t_{\rm done}\leftarrow0$，$\ell_{\rm done}\leftarrow0$，诊断与轨迹为空\;
+若数据/模型/E步/方向接口、$\Theta$或初值非法，或预算、回缩、门禁和停止容差不合法，则返回当前初值、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算$\ell\leftarrow\log P(Y\mid\theta)$；若非有限则返回最后合法初值、$\mathtt{numerical\_failure}$及初始化似然诊断\;
+\While{$t_{\rm done}<T_{\max}$}{
+  保存$\theta_{\rm old}\leftarrow\theta,\ell_{\rm old}\leftarrow\ell$；精确E步得到$q_t$与固定$Q_t(\cdot)=Q(\cdot,\theta_{\rm old})$\;
+  若后验归一化失败或$q_t,Q_t(\theta_{\rm old})$非有限，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为E步$t_{\rm done}$\;
+  计算有限内层方向$d$；若方向非有限或不能产生可行试算，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为方向阶段$t_{\rm done}$\;
+  $\alpha\leftarrow1$，$\mathrm{accepted}\leftarrow\mathrm{false}$\;
+  \For{$j\leftarrow0$ \KwTo $L_{\max}$}{
+    在临时状态形成可行$\theta^+$并计算$Q_t(\theta^+)$，令$\ell_{\rm done}\leftarrow\ell_{\rm done}+1$\;
+    若候选与$Q$有限且$Q_t(\theta^+)\ge Q_t(\theta_{\rm old})-\tau_Q$，则置$\mathrm{accepted}\leftarrow\mathrm{true}$并终止回缩；否则保持主状态并令$\alpha\leftarrow\rho\alpha$\;
+  }
+  \If{$\neg\mathrm{accepted}$}{返回最后合法$\theta_{\rm old},\ell_{\rm old},t_{\rm done},\ell_{\rm done},\mathtt{line\_search\_failed}$，诊断记录失败轮、全部$Q$值和末次步长\;}
+  计算$\ell^+\leftarrow\log P(Y\mid\theta^+)$；若非有限或$\ell^+<\ell_{\rm old}-\tau_\ell$，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为似然门禁及新旧值\;
+  计算似然与参数相对变化$q_\ell,q_\theta$；原子提交$\theta\leftarrow\theta^+,\ell\leftarrow\ell^+$及轨迹，令$t_{\rm done}\leftarrow t_{\rm done}+1$\;
+  \If{$q_\ell\le\varepsilon_\ell$且$q_\theta\le\varepsilon_\theta$}{返回最后合法状态与$\mathtt{numerical\_failure}$，最终诊断记录双容差、$Q$增量、实际步长与方向残差\;}
+}
+返回最后合法$\theta,\ell,t_{\rm done},\ell_{\rm done},\mathtt{budget\_stop}$，最终诊断记录外层预算耗尽与末轮增量\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{GEM只要求每轮$Q$不下降；双小变化返回$\mathtt{numerical\_failure}$，回缩耗尽返回$\mathtt{line\_search\_failed}$，不能用前者代替驻点证书。}
+
+% KNOWLEDGE-PLAN: KN-V3-C20-BOUNDARY-001 L1
+\paragraph{读前自检：分块条件极大化的广义EM。}分块条件极大化的广义EM输入“观测$Y$、分块参数$\theta=(\theta_1,\ldots,\theta_d)$、联合模型、各块可行域/求解器与初值”，条件“$d\ge1$”；请做一轮“所有块逐步不降且最终似然/可行性核验通过后才原子提交整轮参数”，以“似然与参数双容差满足、外层/块求解预算耗尽或首次失败时停止”核对停止证书。\par
+
+\knowledgeanchor{SLM-09-05-001}{分块条件极大化的广义EM}
+当$\theta=(\theta_1,\ldots,\theta_d)$时，可把M步分成$d$个条件更新：更新第$r$块时固定已经更新的前块和仍为旧值的后块。每个子步都不降低同一个$Q(\cdot,\theta^{(t)})$，完成一轮后仍满足GEM门禁。这类方法也称条件极大化或ECM式更新。
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-023 L2
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-024 L2
+\begin{keypointbox}[title={逐参数块条件极大化的GEM：五步阅读}]
+\textbf{输入。}写出数据对象、固定参数与必须成立的条件。\par
+\textbf{初始化。}标明主状态、计数器和第一个合法状态。\par
+\textbf{核心更新。}只手算一次从旧状态到候选状态的更新，并指出何时提交。\par
+\textbf{数学停止。}写出能直接核验的停止证书；预算耗尽不等同于收敛。\par
+\textbf{输出。}列出返回对象、实际计数、中心状态和用于复核的诊断。
+\end{keypointbox}
+
+\begin{AlgorithmContract}{
+  input={观测$Y$、分块参数$\theta=(\theta_1,\ldots,\theta_d)$、联合模型、各块可行域/求解器与初值},
+  output={最后合法$\theta,\ell$、完整外层轮数$t_{\rm done}$、实际块求解数$b_{\rm done}$、状态、轨迹与诊断},
+  preconditions={$d\ge1$；各块域非空；模型、E步、块求解器和初值合法；外层及各块预算/容差已固定},
+  initialization={$\theta=\theta^{(0)},t_{\rm done}=b_{\rm done}=0$并计算有限观测似然},
+  loop={每轮固定旧后验和同一$Q_t$，在临时参数中按$1,\ldots,d$顺序验收各块},
+  update={所有块逐步不降且最终似然/可行性核验通过后才原子提交整轮参数},
+  domain={$\theta_r\in\Theta_r$；后验归一化；每个块候选、$Q_t$与似然均为有限实数},
+  failure={非法接口返回$\mathtt{invalid\_input}$；E步、块候选、$Q$或似然失败返回$\mathtt{numerical\_failure}$},
+  stop={似然与参数双容差满足、外层/块求解预算耗尽或首次失败时停止},
+  budget={至多$T_{\max}$个完整外层轮；第$r$块每次调用至多$B_r$个有限候选试算},
+  status={$\mathtt{numerical\_failure}$、$\mathtt{budget\_stop}$、$\mathtt{invalid\_input}$},
+  iterations={$t_{\rm done}$计整轮原子提交，$b_{\rm done}$计实际完成的临时块求解调用},
+  diagnostics={失败$(t,r)$与阶段、各块$Q$增量、似然/参数变化、回滚位置、块及外层预算余量},
+  complexity={$t_{\rm done}$轮含E步及$d$个块成本，写为$O(\sum_t[C_E+\sum_r C_r])$；空间由后验和临时参数决定}
+}
+\begin{algorithm}[H]
+\SetArgSty{textnormal}
+\caption{逐参数块条件极大化的GEM}\label{alg:V3-C04-gem-block}
+\KwIn{观测$Y$；分块参数$\theta=(\theta_1,\ldots,\theta_d)$；联合模型；初值$\theta^{(0)}$}
+\KwOut{最后合法$\theta,\ell$、$t_{\rm done},b_{\rm done}$、$\mathtt{status}$、轨迹与最终诊断}
+\KwData{$T_{\max}\in\mathbb N_0$；各块候选预算$B_r\in\mathbb N_0$；目标、参数及单调数值容差；固定块次序}
+$\theta\leftarrow\theta^{(0)}$，$t_{\rm done}\leftarrow0$，$b_{\rm done}\leftarrow0$，诊断与轨迹为空\;
+若$d<1$、数据/模型/E步/块求解接口、任一块域或初值非法，或外层/块预算、容差、块次序不合法，则返回当前初值、计数$0$、$\mathtt{invalid\_input}$及字段诊断\;
+计算$\ell\leftarrow\log P(Y\mid\theta)$；若非有限则返回最后合法初值、$\mathtt{numerical\_failure}$及初始化似然诊断\;
+\While{$t_{\rm done}<T_{\max}$}{
+  保存$\theta_{\rm old}\leftarrow\theta,\ell_{\rm old}\leftarrow\ell$；以$\theta_{\rm old}$执行E步并固定$Q_t(\cdot)$\;
+  若后验归一化失败或$Q_t(\theta_{\rm old})$非有限，则返回最后合法状态与$\mathtt{numerical\_failure}$，诊断为E步$t_{\rm done}$\;
+  令临时参数$\widetilde\theta\leftarrow\theta_{\rm old}$\;
+  \For{$r\leftarrow1$ \KwTo $d$}{
+    在至多$B_r$次试算内求有限可行$u_r$使$Q_t(\widetilde\theta_{-r},u_r)\ge Q_t(\widetilde\theta)-\tau_Q$\;
+    若块预算耗尽仍无合格候选，则返回未改动的最后合法$\theta_{\rm old},\ell_{\rm old},t_{\rm done},b_{\rm done},\mathtt{budget\_stop}$，最终诊断记录失败块$(t_{\rm done},r)$及试算值\;
+    若候选或$Q$非有限、候选离开块域，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为块验收$(t_{\rm done},r)$\;
+    仅更新临时块$\widetilde\theta_r\leftarrow u_r$，令$b_{\rm done}\leftarrow b_{\rm done}+1$；主状态保持不变\;
+  }
+  计算$\ell^+\leftarrow\log P(Y\mid\widetilde\theta)$；若非有限或$\ell^+<\ell_{\rm old}-\tau_\ell$，则返回未改动的最后合法状态与$\mathtt{numerical\_failure}$，诊断为整轮似然门禁$t_{\rm done}$\;
+  计算似然与参数相对变化$q_\ell,q_\theta$；原子提交$\theta\leftarrow\widetilde\theta,\ell\leftarrow\ell^+$及轨迹，令$t_{\rm done}\leftarrow t_{\rm done}+1$\;
+  \If{$q_\ell\le\varepsilon_\ell$且$q_\theta\le\varepsilon_\theta$}{返回最后合法状态与$\mathtt{numerical\_failure}$，最终诊断记录双容差、各块$Q$增量和块残差\;}
+}
+返回最后合法$\theta,\ell,t_{\rm done},b_{\rm done},\mathtt{budget\_stop}$，最终诊断记录外层预算耗尽与末轮增量\;
+\end{algorithm}
+\end{AlgorithmContract}
+\SLRobustImplementationStrip{分块M步必须整轮原子提交；似然与参数平台返回$\mathtt{numerical\_failure}$，任何块失败都回滚到上一完整外层轮。}
+
+\phantomsection\label{struct:V3-C04-CH26}
+\phantomsection\label{struct:V3-C04-CH27}
+\begin{complexitybox}
+\textbf{训练时间复杂度。}设$N$个样本、$K$个隐状态、参数维数$d$、外层迭代数$T$。可分解离散模型的一次E/M轮通常为$O(NK)$，总训练为$O(TNK)$。全协方差$d$维高斯混合每轮约为$O(NKd^2+Kd^3)$，总训练再乘$T$；GEM还需计入每轮内层优化步数。
+
+\textbf{预测时间复杂度。}离散$K$成分模型对一个新样本计算全部后验责任度通常为$O(K)$；全协方差高斯混合在已缓存分解时约为$O(Kd^2)$，再作归一化与最大责任度选择。\\
+\textbf{存储与空间复杂度。}显式保存全部责任度需要$O(NK)$空间；若M步只依赖可流式累积的充分统计量，可把额外工作空间降至$O(Kd^2)$或相应模型规模。\textbf{复杂度假设：}样本条件独立且责任度可按样本计算；具有链或图结构的隐变量需换用相应推断复杂度。
+
+\textbf{正确性依据。}精确EM的E步使Jensen下界在旧参数处取等，M步最大化该下界，从而保证观测似然不降；GMM更新分别是单纯形约束权重与加权均值、方差子问题的驻点。GEM及分块版本不要求精确极大化，但每个被接受候选都必须通过同一轮$Q$函数的上升门禁。
+
+\textbf{异常、退化与停止情形。}若E步后验无法归一化、M步不存在使目标不下降的可行候选、内部优化不能完成、混合成分有效样本数为零、协方差失去正定性或目标不是有限实数，必须拒绝该步并停在上一合法参数。似然增量小、参数增量小或达到迭代上限是不同的停止条件；在非凸模型中，满足任一停止条件都不等于获得全局最优解。
+\end{complexitybox}
+
+
+% KNOWLEDGE-PLAN: KN-V3-C20-ALGORITHM_IDEA-025 L1
+\paragraph{读前自检：EM算法在无监督学习中的应用。}把EM算法在无监督学习中的应用放在“M步候选必须通过实际$Q$值不下降检查”下考察：把“M步候选必须通过实际$Q$值不下降检查”中的已声明对象依次标成输入、输出与判据，并检查接近驻点时可能收敛缓慢。\par
+
+\SLDirectSection{例题、EM计算与练习}{sec:V3-C04-S07}
+\knowledgeanchor{SLM-09-01-007}{EM算法在无监督学习中的应用}
+无监督学习中隐变量常表示簇、主题、隐藏状态或缺失机制。EM能把这些未观测结构转成后验软计数，但“能迭代”不代表模型假设正确；成分数、可识别性、退化约束和样本外检验仍需单独处理。
+
+\phantomsection\label{replay:V3-C04-S07-SLM-09-01-004}
+\textbf{EM复现。}每轮完整保存后验统计量、参数和观测似然，检查似然不下降。
+\phantomsection\label{replay:V3-C04-S07-SLM-09-02-004}
+\textbf{高斯混合EM复现。}使用责任度而非硬类别，空成分与方差下界规则在训练前固定。
+\phantomsection\label{replay:V3-C04-S07-SLM-09-03-005}
+\textbf{$F$极值复现。}仅在$q$可取精确后验时，$F$的联合最大值与观测似然最大值等价。
+\phantomsection\label{replay:V3-C04-S07-SLM-09-03-006}
+\textbf{$F$坐标上升复现。}E步与M步分别优化不同坐标块。
+\phantomsection\label{replay:V3-C04-S07-SLM-09-04-005}
+\textbf{GEM复现。}M步候选必须通过实际$Q$值不下降检查。
+\phantomsection\label{replay:V3-C04-S07-SLM-09-05-001}
+\textbf{条件极大化复现。}一轮内所有参数块共享同一个旧后验，并逐块保持$Q$不下降。
+
+\phantomsection\label{struct:V3-C04-CH28}
+\phantomsection\label{struct:V3-C04-CH29}
+\begin{applicabilitybox}
+\textbf{适用条件。}EM适合联合模型易写、当前后验可精确或可靠计算、完全数据对数似然比边缘似然更易优化的问题。典型应用包括混合模型、含缺失数据模型和带隐藏结构的概率模型。
+
+\textbf{方法局限。}目标通常非凸且依赖初值；接近驻点时可能收敛缓慢；高斯混合似然可退化无界；隐变量后验难算时E步仍不可行；参数不可识别会产生等价解；单调训练似然不能替代样本外模型检验。
+\end{applicabilitybox}
+
+\phantomsection\label{struct:V3-C04-CH30}
+% KNOWLEDGE-PLAN: KN-V3-C20-BOUNDARY-004 L1
+\paragraph{读前自检：常见错误与误用边界：例题、EM计算与练习。}例题、EM计算与练习要求先确认“边界框首项禁止把$Q$函数两个参数的角色写反”；请随后把固定错误“把$Q$函数两个参数的角色写反”中的对象、操作与结论按本节定义拆开，指出第一个不满足的定义条件，再把该处改为本节允许的写法，用改写后的运算或判断有定义，且不再触发“把$Q$函数两个参数的角色写反”验收。\par
+
+\begin{warningbox}
+典型误用包括：把$Q$函数两个参数的角色写反；在E步使用已局部更新的新参数；把期望的对数误写成对数的期望；漏掉熵项却仍声称在优化$F$；把软责任度强制成0--1；高斯方差更新使用旧均值；忽略空成分与方差塌缩；只看参数差不看似然；把“似然单调”误写成“必达全局最优”；用测试集选择初值或成分数。
+\end{warningbox}
+
+\phantomsection\label{struct:V3-C04-CH31}
+% KNOWLEDGE-PLAN: KN-V3-C20-COMPARISON-001 L1
+\paragraph{读前自检：易混淆概念对比：例题、EM计算与练习。}从例题、EM计算与练习的条件“对比表首个数据行是“E步｜完整后验｜通常仍为完整后验｜取单一最可能隐状态””出发，请按列复述“E步｜完整后验｜通常仍为完整后验｜取单一最可能隐状态”中的对象、假设与结论；所得量应符合各列均对应首行对象“E步”，且未与表中下一行互换。\par
+
+\begin{comparisonbox}
+\par\medskip
+\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.0cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\toprule 维度 & 精确EM & GEM & 硬分配迭代\\ \midrule
+E步 & 完整后验 & 通常仍为完整后验 & 取单一最可能隐状态\\
+参数步 & 精确最大化$Q$ & 只要求$Q$不下降 & 在硬标签上重新估计\\
+单调依据 & 相切下界 & 下界上升门禁 & 一般不是同一软下界\\
+典型优点 & 理论关系清楚 & 复杂M步可行 & 计算和解释较简单\\
+主要风险 & 局部解、慢收敛 & 内层门禁实现错误 & 丢失隐变量不确定性\\
+\bottomrule
+\end{tabularx}
+\end{comparisonbox}
+
+\phantomsection\label{struct:V3-C04-CH32}
+\Needspace{6\baselineskip}
+\begin{example}[三硬币模型的一轮EM]\label{exm:V3-C04-three-coins-one-round}
+一个“三硬币”模型先抛选择硬币A：正面时选择硬币B，反面时选择硬币C；随后抛被选硬币一次，B、C出现正面的概率分别为$p,q$。观测为$Y=(1,0,1)$，当前参数为$(\pi,p,q)=(1/2,3/4,1/4)$，其中$\pi$是A出现正面的概率。完成一轮EM。
+
+\phantomsection\label{struct:V3-C04-CH33}
+\end{example}
+\SLExampleSolutionHeading{exm:V3-C04-three-coins-one-round}
+\begin{solution}
+\SLReadTranslation{隐藏变量$Z_i\in\{B,C\}$表示第$i$次观测由哪枚硬币产生；E步求“来自B”的后验责任度，M步再用软计数更新$\pi,p,q$。}
+\SolGiven $Y=(1,0,1)$，旧参数为$\pi=1/2,p=3/4,q=1/4$；$Z_i=B$等价于选择硬币A首次抛掷为正面。两种观测的边缘概率均严格为正，因此责任度有定义。
+\SLMethodTrigger{先用Bayes公式计算$\gamma_i=P(Z_i=B\mid Y_i)$；随后$\pi'$取责任度均值，$p'$和$q'$分别取对应软样本中的正面比例。}
+\SolPlan 分别计算$y=1$与$y=0$的责任度并映射到三次观测，汇总B、C的有效使用次数和加权正面数，再更新三个参数。
+\SolDerive
+E步中，对$y=1$，选择B的后验责任度（等价于选择硬币A首次抛掷为正面）为
+\[
+\gamma(1)=\frac{(1/2)(3/4)}{(1/2)(3/4)+(1/2)(1/4)}=\frac34;
+\]
+对$y=0$，
+\[
+\gamma(0)=\frac{(1/2)(1/4)}{(1/2)(1/4)+(1/2)(3/4)}=\frac14.
+\]
+三个责任度为$(3/4,1/4,3/4)$，和为$7/4$。M步得到
+\[
+\pi'=\frac{7}{12},\qquad
+p'=\frac{(3/4)1+(1/4)0+(3/4)1}{7/4}=\frac67,
+\]
+\[
+q'=\frac{(1/4)1+(3/4)0+(1/4)1}{5/4}=\frac25.
+\]
+\SolCheck 三个新参数都在$[0,1]$内。旧参数下每次正面或反面的边缘概率均为$1/2$，故观测似然为$1/8$；新参数下正面概率为
+$(7/12)(6/7)+(5/12)(2/5)=2/3$，似然为$(2/3)^2(1/3)=4/27>1/8$，与EM单调性一致。
+\SolAnswer E步责任度为$\gamma=(3/4,1/4,3/4)$；M步更新为$(\pi',p',q')=(7/12,6/7,2/5)$。
+\SLStuckHint{先分别算$\gamma(1)$和$\gamma(0)$，再按观测序列复用为$(\gamma(1),\gamma(0),\gamma(1))$。}
+\SLTransfer{混合Bernoulli或高斯模型都遵循同一软计数模板；若某成分有效使用次数为0，必须调用预先声明的平滑、保留或重启规则。}
+\end{solution}
+
+
+\phantomsection\label{struct:V3-C04-CH34}
+\begin{chapterexercisebox}
+\phantomsection\label{struct:V3-C04-CH35}
+本章共18道练习。每道题干后立即给出同号解析；长解析可自然跨页，续页标题保留题号。
+\end{chapterexercisebox}
+
+\begin{SLChapterExercisePairSection}
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S01-01}
+设$Z\in\{1,2\}$，且$P(Y,z=1\mid\theta)=0.3\theta$、$P(Y,z=2\mid\theta)=0.2(1-\theta)$，$0\leq\theta\leq1$。写出观测似然并求最大点。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S01-01}
+\begin{chapterexercisesolution}{ex:V3-C04-S01-01}
+隐变量支持为$\{1,2\}$，参数可行域为$\Theta=[0,1]$。边缘似然为
+\[
+L(\theta)=P(Y\mid\theta)
+=\sum_{z=1}^{2}P(Y,z\mid\theta)
+=0.2+0.1\theta.
+\]
+因为
+\[
+L'(\theta)=0.1>0\quad(\theta\in[0,1]),
+\]
+目标在可行区间严格递增，故边界最优解为
+\[
+\theta^\star=1,
+\qquad
+L(\theta^\star)=0.3.
+\]
+两个完全数据项共享同一$\theta$，不能分别最大化后再相加。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S01-02}
+解释为何把每个样本硬分给当前最可能的隐类别，再把该类别当作已观测标签，不等同于一般EM的E步。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S01-02}
+\begin{chapterexercisesolution}{ex:V3-C04-S01-02}
+一般E步使用完整后验分布
+\[
+q_t(z)=P(z\mid y,\theta^{(t)}),
+\qquad q_t(z)\geq0,\quad \sum_zq_t(z)=1.
+\]
+硬分配改成点质量
+\[
+z^\star\in\arg\max_zq_t(z),
+\qquad
+q_t^{\mathrm{hard}}(z)=\mathbf1\{z=z^\star\}.
+\]
+两者产生的辅助目标分别为
+\[
+Q_t(\theta)=\sum_zq_t(z)\log P(y,z\mid\theta),
+\qquad
+Q_t^{\mathrm{hard}}(\theta)=\log P(y,z^\star\mid\theta).
+\]
+只有$q_t$本身为点质量时二者相同；否则硬分配是分类EM式近似，不是精确E步。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S01-03}
+一个模型的隐变量有$K$个可能值，$N$个样本条件独立。直接枚举联合隐配置有多少种？为何EM常按样本责任度计算而不枚举联合配置？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S01-03}
+\begin{chapterexercisesolution}{ex:V3-C04-S01-03}
+每个$Z_j$有$K$种取值，故联合隐配置数为
+\[
+|\mathcal Z^N|=K^N.
+\]
+若给定参数后样本条件独立，则后验因子化为
+\[
+P(z_1,\ldots,z_N\mid Y,\theta)
+=\prod_{j=1}^{N}P(z_j\mid y_j,\theta),
+\]
+只需保存局部责任度
+\[
+\gamma_{jk}=P(Z_j=k\mid y_j,\theta),
+\qquad j=1,\ldots,N, k=1,\ldots,K,
+\]
+即$NK$个量，而不枚举$K^N$条配置。若后验不具这种分解，E步仍可能需要结构化推断。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S02-01}
+设$q=(1/4,3/4)$，对应比值$P(Y,z\mid\theta)/q(z)$为$2,6$。计算Jensen下界并与对数边缘似然比较。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S02-01}
+\begin{chapterexercisesolution}{ex:V3-C04-S02-01}
+令$r(z)=P(Y,z\mid\theta)/q(z)$。边缘似然为
+\[
+P(Y\mid\theta)=\sum_zq(z)r(z)
+=\frac14\cdot2+\frac34\cdot6=5.
+\]
+Jensen下界为
+\[
+\begin{aligned}
+\sum_zq(z)\log r(z)
+&=\frac14\log2+\frac34\log6\\
+&=\log\!\left(2^{1/4}6^{3/4}\right)\\
+&\approx1.5171.
+\end{aligned}
+\]
+而$\log P(Y\mid\theta)=\log5\approx1.6094$。因$2\neq6$且$q$两项均为正，严格Jensen不等式给出$1.5171<1.6094$。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S02-02}
+为什么$H(q_t)$在M步可忽略，而在比较不同$q$时不能忽略？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S02-02}
+\begin{chapterexercisesolution}{ex:V3-C04-S02-02}
+$F$函数为
+\[
+F(q,\theta)=\mathbb E_q[\log P(Y,Z\mid\theta)]+H(q).
+\]
+M步固定$q_t$，因此
+\[
+\arg\max_{\theta}F(q_t,\theta)
+=\arg\max_{\theta}\mathbb E_{q_t}[\log P(Y,Z\mid\theta)],
+\]
+因为$H(q_t)$与$\theta$无关。比较不同$q$时却有
+\[
+H(q_1)\neq H(q_2)\quad\text{一般成立},
+\]
+删除熵会改变$q$坐标目标，并可能把软后验优化误写成硬选择。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S02-03}
+给出Jensen下界在当前点取等号的充分必要条件，并把它翻译为后验分布条件。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S02-03}
+\begin{chapterexercisesolution}{ex:V3-C04-S02-03}
+先要求$P(Y\mid\theta)>0$，且在联合概率的正支撑上$q(z)>0$。严格凹函数$\log$的Jensen等号条件为
+\[
+\frac{P(Y,z\mid\theta)}{q(z)}=c
+\qquad(q(z)>0).
+\]
+对$z$求和得到
+\[
+P(Y\mid\theta)=\sum_zP(Y,z\mid\theta)
+=c\sum_zq(z)=c.
+\]
+于是
+\[
+q(z)=\frac{P(Y,z\mid\theta)}{P(Y\mid\theta)}
+=P(z\mid Y,\theta).
+\]
+反向取$q$为该后验时，比值恒为$P(Y\mid\theta)$，故这是取等的充分必要条件。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S03-01}
+某轮$Q$函数为$Q(\theta,\theta^{(t)})=-4(\theta-3)^2+C$。若$\Theta=\mathbb R$，写出M步更新；若$\Theta=[0,2]$，更新为何改变？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S03-01}
+\begin{chapterexercisesolution}{ex:V3-C04-S03-01}
+M步子问题为
+\[
+\theta^{(t+1)}\in\operatorname*{arg\,max}_{\theta\in\Theta}
+\bigl\{-4(\theta-3)^2+C\bigr\}.
+\]
+若$\Theta=\mathbb R$，一阶条件给出
+\[
+Q'(\theta)=-8(\theta-3)=0
+\Longrightarrow \theta^{(t+1)}=3.
+\]
+若$\Theta=[0,2]$，无约束解不可行，故投影到最近端点：
+\[
+\theta^{(t+1)}=\arg\min_{\theta\in[0,2]}(\theta-3)^2=2.
+\]
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S03-02}
+若连续两轮对数似然分别为$-100.0000$与$-99.9995$，取$\varepsilon_\ell=10^{-5}$，是否满足算法中的相对似然停止条件？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S03-02}
+\begin{chapterexercisesolution}{ex:V3-C04-S03-02}
+相对似然变化为
+\[
+r_\ell
+=\frac{|{-99.9995}-(-100.0000)|}{1+|-100.0000|}
+=\frac{0.0005}{101}
+\approx4.95\times10^{-6}.
+\]
+因此
+\[
+r_\ell\approx4.95\times10^{-6}<10^{-5},
+\]
+似然条件满足。若算法还规定参数条件
+\[
+\frac{\lVert\theta^{(t+1)}-\theta^{(t)}\rVert}{1+\lVert\theta^{(t)}\rVert}
+\leq\varepsilon_\theta,
+\]
+则必须同时核验，不能仅凭平坦目标区的似然变化宣布停止。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S03-03}
+说明为何每轮都重算观测似然虽有额外成本，仍是重要的实现检查。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S03-03}
+\begin{chapterexercisesolution}{ex:V3-C04-S03-03}
+精确EM的理论门禁为
+\[
+\ell(\theta^{(t+1)})-\ell(\theta^{(t)})\geq0.
+\]
+实现中可登记容差$\tau_{\mathrm{num}}\geq0$并检查
+\[
+\Delta_t=\ell(\theta^{(t+1)})-\ell(\theta^{(t)})
+\begin{cases}
+\geq-\tau_{\mathrm{num}},&\text{接受并记录},\\
+<-\tau_{\mathrm{num}},&\text{拒绝并报告异常}.
+\end{cases}
+\]
+明显下降通常暴露后验归一化、更新公式、数值缩放或新旧参数混用错误；似然序列同时提供停止诊断。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S04-01}
+构造一个单调递增且有上界的数列，说明它的增量趋于零为何不代表对应参数已经到达全局最优。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S04-01}
+\begin{chapterexercisesolution}{ex:V3-C04-S04-01}
+取
+\[
+a_t=1-\frac1{t+1},
+\qquad t=0,1,\ldots.
+\]
+则
+\[
+a_{t+1}-a_t
+=\frac1{(t+1)(t+2)}>0,
+\qquad
+a_t<1,
+\qquad
+a_{t+1}-a_t\to0.
+\]
+若$a_t$只是非凸目标沿某条轨迹的值，而另有可行参数$\theta'$满足
+\[
+J(\theta')=2>\lim_ta_t=1,
+\]
+则增量趋零只说明轨迹停滞，不构成全局最优证书。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S04-02}
+若M步只找到$Q$值比旧参数更高的新参数，但没有找到最大点，定理\ref{thm:V3-C04-monotone}是否仍适用？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S04-02}
+\begin{chapterexercisesolution}{ex:V3-C04-S04-02}
+GEM只要求候选通过上升门禁
+\[
+Q(\theta^{(t+1)},\theta^{(t)})
+\geq Q(\theta^{(t)},\theta^{(t)}),
+\]
+不要求达到该轮全局最大值。由EM下界关系得到
+\[
+Q\text{不降}
+\Longrightarrow
+\ell(\theta^{(t+1)})\geq\ell(\theta^{(t)}).
+\]
+因此定理的单调结论仍适用；若$Q$下降，上述蕴含链的门禁失效。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S04-03}
+标签交换为何会使混合模型的参数估计不唯一，但不改变观测分布？
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S04-03}
+\begin{chapterexercisesolution}{ex:V3-C04-S04-03}
+混合密度为
+\[
+p(y\mid\theta)=\sum_{k=1}^{K}\alpha_kp(y\mid\eta_k).
+\]
+对任意置换$\sigma$，令
+\[
+\alpha_k'=\alpha_{\sigma(k)},
+\qquad
+\eta_k'=\eta_{\sigma(k)}.
+\]
+则
+\[
+p(y\mid\theta')
+=\sum_k\alpha_{\sigma(k)}p(y\mid\eta_{\sigma(k)})
+=p(y\mid\theta).
+\]
+因此标签交换改变参数坐标而不改变观测分布或似然，参数估计只在置换等价类上可识别。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S05-01}
+证明责任度对每个固定样本满足$\sum_k\gamma_{jk}=1$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S05-01}
+\begin{chapterexercisesolution}{ex:V3-C04-S05-01}
+若混合权重非负、各成分密度非负，且样本$y_j$的混合密度
+\[
+d_j=\sum_{r=1}^{K}\alpha_r\phi(y_j\mid\mu_r,\sigma_r^2)>0,
+\]
+则责任度定义为
+\[
+\gamma_{jk}=\frac{\alpha_k\phi(y_j\mid\mu_k,\sigma_k^2)}{d_j}\geq0.
+\]
+对$k$求和得到归一化链
+\[
+\sum_{k=1}^{K}\gamma_{jk}
+=\frac{\sum_k\alpha_k\phi(y_j\mid\mu_k,\sigma_k^2)}{d_j}
+=\frac{d_j}{d_j}=1.
+\]
+$d_j=0$时后验未定义，不能继续E步。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S05-02}
+在固定责任度下，用Lagrange乘子推导$\alpha_k=n_k/N$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S05-02}
+\begin{chapterexercisesolution}{ex:V3-C04-S05-02}
+令$n_k=\sum_j\gamma_{jk}\geq0$，则$\sum_kn_k=N$。权重子问题为
+\[
+\max_{\alpha\in\Delta_K}\sum_{k=1}^{K}n_k\log\alpha_k,
+\qquad
+\Delta_K=\{\alpha:\alpha_k\geq0,\ \sum_k\alpha_k=1\}.
+\]
+对$n_k>0$的内点坐标，拉格朗日驻点给出
+\[
+\frac{n_k}{\alpha_k}-\lambda=0
+\Longrightarrow
+\alpha_k=\frac{n_k}{\lambda},
+\qquad
+\sum_k\alpha_k=1
+\Longrightarrow \lambda=N.
+\]
+故
+\[
+\alpha_k^{\mathrm{new}}=\frac{n_k}{N}.
+\]
+若$n_k=0$，该坐标的结论来自边界KKT条件$\alpha_k=0$，而不能使用未定义的$n_k/\alpha_k$内点方程。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S06-01}
+若GEM候选使$Q$从$-120$提高到$-119.5$，但没有求到该轮最大值$-117$，是否可接受？说明理由。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S06-01}
+\begin{chapterexercisesolution}{ex:V3-C04-S06-01}
+候选的实际增量为
+\[
+\Delta Q=(-119.5)-(-120)=0.5>0.
+\]
+所以它满足GEM门禁
+\[
+Q(\theta^{(t+1)},\theta^{(t)})
+\geq Q(\theta^{(t)},\theta^{(t)}),
+\]
+可以接受。未达到该轮最大值$-117$只影响内层优化充分程度与收敛速度，不破坏单调性；仍应记录$\Delta Q$与外层停止原因。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S06-02}
+证明依次更新两个参数块，若每个子步都不降低固定后验下的同一$Q$函数，则整轮更新也不降低$Q$。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S06-02}
+\begin{chapterexercisesolution}{ex:V3-C04-S06-02}
+固定第$t$轮后验并记$Q_t(a,b)=Q((a,b),\theta^{(t)})$。两个子步满足
+\[
+Q_t(a',b^{(t)})\geq Q_t(a^{(t)},b^{(t)}),
+\]
+以及
+\[
+Q_t(a',b')\geq Q_t(a',b^{(t)}).
+\]
+由传递性得到整轮链
+\[
+Q_t(a',b')
+\geq Q_t(a',b^{(t)})
+\geq Q_t(a^{(t)},b^{(t)}).
+\]
+两步必须共享同一个固定后验；中途重算后验会改变$Q_t$，不能沿用该链。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S07-01}
+在练习题设的三硬币模型中，若所有最终观测均为正面，说明$p$与$q$为何可能难以分别识别。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S07-01}
+\begin{chapterexercisesolution}{ex:V3-C04-S07-01}
+单次观测的正面概率只依赖组合量
+\[
+r=P(Y=1)=\pi p+(1-\pi)q.
+\]
+若$N$次观测全为正面，观测似然为
+\[
+L(\pi,p,q)=r^N
+=\left[\pi p+(1-\pi)q\right]^N.
+\]
+因此
+\[
+\pi p+(1-\pi)q=r
+\Longrightarrow
+L\ \text{相同},
+\]
+许多参数三元组无法由观测区分；EM可返回其中一组，但分解依赖初值且不唯一。
+\end{chapterexercisesolution}
+\fi
+
+\Needspace{6\baselineskip}
+\begin{exercise}\label{ex:V3-C04-S07-02}
+设计多初值EM的无数据泄漏选择流程。
+\end{exercise}
+\ifSLFullEdition
+\phantomsection\label{sol:V3-C04-S07-02}
+\begin{chapterexercisesolution}{ex:V3-C04-S07-02}
+先固定互不重叠的数据角色
+\[
+D=D_{\mathrm{train}}\mathbin{\dot\cup}D_{\mathrm{val}}
+\mathbin{\dot\cup}D_{\mathrm{test}}.
+\]
+只在训练集上生成预先规定的合法初值$\theta_0^{(r)}$，并用同一停止规则得到
+\[
+\widehat\theta^{(r)}=\operatorname{EM}(D_{\mathrm{train}},\theta_0^{(r)}),
+\qquad r=1,\ldots,R.
+\]
+排除非有限或退化运行后，按预先固定的验证准则选择
+\[
+r^\star\in\arg\max_{r\in\mathcal R_{\mathrm{valid}}}
+\ell_{\mathrm{val}}(\widehat\theta^{(r)}).
+\]
+锁定规则后可在开发数据上重训；$D_{\mathrm{test}}$只用于一次最终评价，不反向选择初值。
+\end{chapterexercisesolution}
+\fi
+
+\end{SLChapterExercisePairSection}
+\begin{SLCompactClosure}
+\phantomsection\label{struct:V3-C04-CH36}
+\SLChapterFiveSummary{观测似然、隐变量后验、辅助函数与责任度}{以当前后验构造相切Jensen下界，M步提高同一$Q$函数从而推出观测似然不降}{E步更新后验；M步在参数域内极大化；GEM只要求同一辅助函数不降}{边缘化困难而完整数据似然易处理的潜变量模型}{进入HMM；使用EM前必须先核对观测概率、后验支撑、空成分和边界KKT条件}
+
+\phantomsection\label{struct:V3-C04-CH37}
+\begin{selfcheckbox}
+\begin{enumerate}[leftmargin=2.2em]
+  \item 能否从边缘似然分三步推出Jensen下界，并写出取等号的后验条件？
+  \item 能否说明$Q(\theta,\theta^{(t)})$两个参数的不同职责，写出完整EM伪代码，并比较显式保存责任度与流式统计的时间、空间成本？
+  \item 能否用KL分解证明似然单调性，同时准确表述收敛结论不包含什么？
+  \item 能否从责任度推导高斯混合的权重、均值与方差更新，并处理空成分和方差塌缩？
+  \item 能否证明固定$\theta$时$F$由后验唯一最大化，区分EM、GEM与硬分配迭代，并设计开发集选择、完整重拟合和一次测试解封的无泄漏多初值流程？若未通过，应依次回看第\ref{sec:V3-C04-S01}--\ref{sec:V3-C04-S02}节的目标与下界、第\ref{sec:V3-C04-S03}--\ref{sec:V3-C04-S04}节的算法和证明，以及第\ref{sec:V3-C04-S05}--\ref{sec:V3-C04-S07}节的模型更新与实现边界。
+\end{enumerate}
+\end{selfcheckbox}
+\end{SLCompactClosure}
